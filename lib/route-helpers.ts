@@ -1,4 +1,4 @@
-import { SourceError } from "./http";
+import { InputError, SourceError } from "./http";
 
 // Public API: any website or browser-based agent may call it (no cookies are used, so this is safe).
 export const CORS_HEADERS = {
@@ -19,7 +19,7 @@ export function corsPreflight() {
 }
 
 export function errorResponse(e: any) {
-  const status = e instanceof SourceError ? (/required|must be|Give a|Not yet/.test(e.message) ? 400 : 502) : 500;
+  const status = e instanceof InputError ? 400 : e instanceof SourceError ? (/required|must be|Give a|Not yet/.test(e.message) ? 400 : 502) : 500;
   return json({ error: e?.message ?? String(e), detail: e?.detail ?? null }, status);
 }
 

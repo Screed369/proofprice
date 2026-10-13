@@ -1,0 +1,49 @@
+# The daily collector: "AI builds it once, code collects it forever."
+# Every day, for each source with a harvest() function, download the official bulk data once,
+# store the day's aggregates in library/, run the tests, and commit. No AI, no keys, no cost.
+name: Daily price library harvest
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # 03:17 UTC every day
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: "Only these source ids (space-separated). Empty = all."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Harvest
+        run: npm run harvest -- ${{ github.event.inputs.sources }}
+      - name: Check the library and code still pass the tests
+        run: npm test
+      - name: Commit the day's library
+        run: |
+          git config user.name "proofprice-librarian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add library
+          if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
+          git commit -m "Library: daily harvest $(date -u +%F)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1

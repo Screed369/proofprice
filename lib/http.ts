@@ -16,7 +16,8 @@ export async function fetchJson(url: string, init: RequestInit = {}, timeoutMs =
     return await res.json();
   } catch (err: any) {
     if (err?.name === "AbortError") throw new SourceError("Source timed out", url);
-    throw err;
+    if (err instanceof SourceError) throw err;
+    throw new SourceError("Could not reach the official source", String(err?.cause?.code ?? err?.message ?? err));
   } finally {
     clearTimeout(timer);
   }
@@ -29,3 +30,6 @@ export class SourceError extends Error {
     this.detail = detail;
   }
 }
+
+/** Bad or missing input from the caller (HTTP 400), as opposed to an unreachable source (HTTP 502). */
+export class InputError extends SourceError {}

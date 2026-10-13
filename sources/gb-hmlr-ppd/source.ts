@@ -2,9 +2,29 @@
 // We fetch recent standard-price sales for a town (optionally a postcode district and property type)
 // and return aggregates only. Addresses are never returned.
 
-import { fetchJson, SourceError } from "../http";
-import { summarise } from "../stats";
-import { buildAnswer, fmtMoney, PriceAnswer } from "../answer";
+import { fetchJson, SourceError } from "../../lib/http";
+import { summarise } from "../../lib/stats";
+import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
+import type { SourceInfo } from "../../lib/plugin";
+
+export const INFO: SourceInfo = {
+  id: "gb-hmlr-ppd",
+  country: "GB (England & Wales)",
+  category: "home sales",
+  name: "Price Paid Data",
+  publisher: "HM Land Registry",
+  what_is_recorded: "Residential property sales: price paid, completion date, property type, address.",
+  price_type: "transaction",
+  freshness: "Monthly",
+  licence: "Open Government Licence v3.0",
+  licence_url: "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+  attribution:
+    "Contains HM Land Registry data © Crown copyright and database right. This data is licensed under the Open Government Licence v3.0.",
+  homepage: "https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads",
+  limits:
+    "We return aggregates only (median, range, count), never individual addresses. Standard-price sales only (category A).",
+};
+
 
 const ENDPOINT = "https://landregistry.data.gov.uk/landregistry/query";
 
@@ -83,7 +103,7 @@ export async function ukHomeSales(input: {
   const where = [input.postcode_district?.toUpperCase(), input.town.toUpperCase()].filter(Boolean).join(", ");
   const typeLabel = propertyType === "any" ? "homes" : propertyType.replace("-", " ") + " homes";
   return buildAnswer({
-    sourceId: "gb-hmlr-ppd",
+    source: INFO,
     query: { country: "GB", town: input.town, postcode_district: input.postcode_district ?? null, property_type: propertyType, months },
     summary: s,
     currency: "GBP",

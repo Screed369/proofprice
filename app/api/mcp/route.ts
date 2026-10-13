@@ -1,9 +1,9 @@
-// The AI-agent plug (MCP server). Plain, factual tool descriptions with "use when / do not use" lines.
-// No pricing, no self-promotion and no instructions to the model, per directory rules.
+// The AI-agent plug (MCP server). One tool per category folder in categories/, built from the source manifests.
+// Plain, factual tool descriptions with "use when / do not use" lines. No pricing, self-promotion or instructions to the model.
 
 import { createMcpHandler } from "mcp-handler";
 import { z } from "zod";
-import { homeSales, fuelNow, coverage } from "../../../lib/tools";
+import { CATEGORIES, coverage, historyDays, runCategory, runHistory, toolDescription, toolShape } from "../../../lib/registry";
 
 const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } as const;
 
@@ -23,72 +23,46 @@ function asError(err: any) {
 
 const handler = createMcpHandler(
   (server) => {
-    server.registerTool(
-      "pricepaid_home_sales",
-      {
-        title: "Home sale prices actually paid",
-        description:
-          "Use this when a user asks what homes actually sold for in a town or area, what a fair price for a home is, or how much property costs there, " +
-          "in England & Wales (country GB), France (country FR) or Singapore public housing (country SG). Returns the median sale price, a typical range (10th–90th percentile), " +
-          "the number of sales, the period covered, a confidence label, and the official source and licence, from government sale records. " +
-          "Do not use for rents, asking prices, commercial property, or other countries.",
-        inputSchema: z.object({
-          country: z.enum(["GB", "FR", "SG"]).describe("GB = England & Wales (HM Land Registry); FR = France (DVF); SG = Singapore HDB resale flats"),
-          town: z.string().min(2).optional().describe("Town or city, e.g. 'Bristol' (GB), 'Bordeaux' (FR), 'Tampines' (SG). Required for GB and SG"),
-          postcode: z.string().optional().describe("FR only: 5-digit postcode, e.g. '69003'. Use instead of town for a precise area"),
-          postcode_district: z.string().optional().describe("GB only: postcode district such as 'BS8' to narrow the area"),
-          property_type: z
-            .enum(["detached", "semi-detached", "terraced", "flat-maisonette", "house", "apartment", "any"])
-            .optional()
-            .describe("GB: detached, semi-detached, terraced, flat-maisonette. FR: house or apartment. Default 'any'"),
-          flat_type: z
-            .enum(["1 ROOM", "2 ROOM", "3 ROOM", "4 ROOM", "5 ROOM", "EXECUTIVE", "MULTI-GENERATION"])
-            .optional()
-            .describe("SG only"),
-          months: z.number().int().min(1).max(36).optional().describe("How many recent months to include. Default 12"),
-        }),
-        annotations: { title: "Home sale prices actually paid", ...READ_ONLY },
-      },
-      async (args) => {
-        try {
-          return asResult(await homeSales(args));
-        } catch (e) {
-          return asError(e);
-        }
-      },
-    );
-
-    server.registerTool(
-      "pricepaid_fuel_prices_now",
-      {
-        title: "Live fuel prices at the pump",
-        description:
-          "Use this when a user asks the current price of petrol, diesel, E10, E85, LPG or CNG near a place in France, Spain or Italy, or where fuel is cheapest there. " +
-          "Returns the median and typical range of pump prices across stations in the area, the three cheapest stations, " +
-          "and the official source and licence. France and Spain update during the day; Italy daily. Do not use for other countries or for historical prices.",
-        inputSchema: z.object({
-          country: z.enum(["FR", "ES", "IT"]).describe("FR = France; ES = Spain; IT = Italy"),
-          fuel: z
-            .enum(["diesel", "petrol95", "petrol98", "e10", "e85", "lpg", "methane"])
-            .describe("petrol95 = unleaded 95; methane = CNG (priced per kg). Italy: diesel, petrol95, lpg, methane only"),
-          postcode: z.string().optional().describe("FR or ES: 5-digit postcode, e.g. '75015' or '28001'"),
-          area: z
-            .string()
-            .optional()
-            .describe("Wider area when no postcode: FR department ('69', '2A'), ES province code ('28' = Madrid), IT province ('MI', 'RM')"),
-          town: z.string().optional().describe("ES or IT: town / comune name, e.g. 'Valencia', 'Bologna'"),
-          service: z.enum(["self", "served"]).optional().describe("IT only: self-service (default) or attended service, which costs more"),
-        }),
-        annotations: { title: "Live fuel prices at the pump", ...READ_ONLY },
-      },
-      async (args) => {
-        try {
-          return asResult(await fuelNow(args));
-        } catch (e) {
-          return asError(e);
-        }
-      },
-    );
+    for (const cat of CATEGORIES) {
+      server.registerTool(
+        cat.tool,
+        {
+          title: cat.title,
+          description: toolDescription(cat),
+          inputSchema: z.object(toolShape(cat)),
+          annotations: { title: cat.title, ...READ_ONLY },
+        },
+        async (args: Record<string, unknown>) => {
+          try {
+            return asResult(await runCategory(cat, args));
+          } catch (e) {
+            return asError(e);
+          }
+        },
+      );
+      // History tools appear once the price library holds enough days to be useful.
+      if (cat.history && historyDays(cat) >= cat.history.minDays) {
+        server.registerTool(
+          cat.history.tool,
+          {
+            title: cat.history.title,
+            description: cat.history.description,
+            inputSchema: z.object({
+              ...toolShape(cat),
+              days: z.number().int().min(2).max(366).optional().describe("How many recent days to include. Default 30."),
+            }),
+            annotations: { title: cat.history.title, ...READ_ONLY, openWorldHint: false },
+          },
+          async (args: Record<string, unknown>) => {
+            try {
+              return asResult(runHistory(cat, args));
+            } catch (e) {
+              return asError(e);
+            }
+          },
+        );
+      }
+    }
 
     server.registerTool(
       "pricepaid_coverage",
@@ -103,7 +77,7 @@ const handler = createMcpHandler(
     );
   },
   {
-    serverInfo: { name: "pricepaid-plug", version: "0.2.0" },
+    serverInfo: { name: "proofprice", version: "0.3.0" },
     instructions:
       "Tools that return real prices actually paid, from official records, as a range with sample size, period, confidence and source. Cite the source and attribution line when you use a figure.",
   },

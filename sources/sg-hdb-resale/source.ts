@@ -1,8 +1,27 @@
 // Singapore public-housing (HDB) resale prices from data.gov.sg.
 
-import { fetchJson, SourceError } from "../http";
-import { summarise } from "../stats";
-import { buildAnswer, fmtMoney, PriceAnswer } from "../answer";
+import { fetchJson, SourceError } from "../../lib/http";
+import { summarise } from "../../lib/stats";
+import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
+import type { SourceInfo } from "../../lib/plugin";
+
+export const INFO: SourceInfo = {
+  id: "sg-hdb-resale",
+  country: "SG",
+  category: "home sales (public housing resale)",
+  name: "Resale flat prices (from Jan 2017)",
+  publisher: "Housing & Development Board via data.gov.sg",
+  what_is_recorded: "HDB resale transactions: month, town, flat type, floor area, lease, resale price.",
+  price_type: "transaction",
+  freshness: "Daily updates of registered resales",
+  licence: "Singapore Open Data Licence v1.0",
+  licence_url: "https://data.gov.sg/open-data-licence",
+  attribution:
+    "Contains information from Resale flat prices accessed from data.gov.sg, made available under the terms of the Singapore Open Data Licence version 1.0.",
+  homepage: "https://data.gov.sg/datasets/d_8b84c4ee58e3cfc0ece0d773c8ca6abc/view",
+  limits: "Public housing (HDB) only; private condominium sales are a separate source (not yet included).",
+};
+
 
 const RESOURCE_ID = "d_8b84c4ee58e3cfc0ece0d773c8ca6abc";
 const ENDPOINT = "https://data.gov.sg/api/action/datastore_search";
@@ -46,7 +65,7 @@ export async function sgHomeSales(input: {
   const psm = summarise(rows.filter((r) => r.area > 0).map((r) => r.price / r.area));
   const label = `${input.flat_type ? input.flat_type.toUpperCase() + " " : ""}HDB resale flats in ${input.town.toUpperCase()}`;
   return buildAnswer({
-    sourceId: "sg-hdb-resale",
+    source: INFO,
     query: { country: "SG", town: input.town, flat_type: input.flat_type ?? null, months },
     summary: s,
     currency: "SGD",

@@ -1,13 +1,19 @@
 {
-  "name": "pricepaid-plug",
+  "name": "proofprice",
   "version": "1.0.0",
-  "description": "",
+  "description": "ProofPrice: what people actually paid, for AI agents (MCP + REST).",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "gen": "node scripts/gen-registry.mjs",
+    "postinstall": "node scripts/gen-registry.mjs",
+    "dev": "node scripts/gen-registry.mjs && next dev",
+    "prebuild": "node scripts/gen-registry.mjs",
     "build": "next build",
     "start": "next start",
-    "test": "node --import tsx --test tests/*.test.ts"
+    "pretest": "node scripts/gen-registry.mjs",
+    "test": "node --import tsx --test tests/*.test.ts sources/*/*.test.ts",
+    "typecheck": "node scripts/gen-registry.mjs && tsc --noEmit",
+    "harvest": "node scripts/gen-registry.mjs && tsx scripts/harvest.ts"
   },
   "keywords": [],
   "author": "",

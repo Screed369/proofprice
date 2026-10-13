@@ -1,0 +1,108 @@
+// The gate every new source must pass. If this file fails after you add a source, read the message:
+// it says exactly which manifest field is wrong.
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { readdirSync, existsSync } from "node:fs";
+import { z } from "zod";
+import {
+  CATEGORIES, SOURCE_PLUGINS, categoryById, exampleUrls, paramSchemas, paramsFromQuery, runCategory, sourcesFor, toolDescription, toolShape,
+} from "../lib/registry";
+import { SOURCE_FOLDERS, CATEGORY_FOLDERS } from "../lib/registry.generated";
+import { normaliseCountry } from "../lib/countries";
+
+const RESERVED_PATHS = ["coverage", "receipts", "library", "history", "mcp"];
+
+test("every folder in sources/ and categories/ is registered", () => {
+  const onDisk = (d: string) =>
+    readdirSync(d, { withFileTypes: true })
+      .filter((e) => e.isDirectory() && !e.name.startsWith("_") && !e.name.startsWith(".") && existsSync(`${d}/${e.name}/index.ts`))
+      .map((e) => e.name)
+      .sort();
+  assert.deepEqual(SOURCE_FOLDERS, onDisk("sources"));
+  assert.deepEqual(CATEGORY_FOLDERS, onDisk("categories"));
+});
+
+test("categories: ids match folders, tool names and REST paths are unique and well formed", () => {
+  const tools = new Set<string>();
+  const paths = new Set<string>();
+  CATEGORIES.forEach((c, i) => {
+    assert.equal(c.id, CATEGORY_FOLDERS[i], `categories/${CATEGORY_FOLDERS[i]}: id must equal the folder name`);
+    assert.match(c.tool, /^pricepaid_[a-z0-9_]+$/, `${c.id}: tool name must look like pricepaid_xxx`);
+    assert.ok(!tools.has(c.tool), `${c.id}: duplicate tool name ${c.tool}`);
+    tools.add(c.tool);
+    assert.match(c.restPath, /^[a-z0-9-]+$/);
+    assert.ok(!RESERVED_PATHS.includes(c.restPath), `${c.id}: restPath ${c.restPath} is reserved`);
+    assert.ok(!paths.has(c.restPath), `${c.id}: duplicate restPath`);
+    paths.add(c.restPath);
+    assert.ok(!("country" in c.params), `${c.id}: do not declare country; it is built from the sources`);
+    assert.ok(sourcesFor(c.id).length > 0, `${c.id}: has no sources yet`);
+  });
+});
+
+test("sources: manifests are complete and honest", () => {
+  const seen = new Map<string, string>();
+  SOURCE_PLUGINS.forEach((s, i) => {
+    const where = `sources/${SOURCE_FOLDERS[i]}`;
+    const info = s.info as unknown as Record<string, unknown>;
+    assert.equal(s.info.id, SOURCE_FOLDERS[i], `${where}: info.id must equal the folder name`);
+    for (const k of ["country", "category", "name", "publisher", "what_is_recorded", "price_type", "freshness", "licence", "licence_url", "attribution", "homepage", "limits"]) {
+      assert.ok(typeof info[k] === "string" && (info[k] as string).trim().length >= 2, `${where}: info.${k} is missing`);
+    }
+    assert.match(s.info.licence_url, /^https:\/\//, `${where}: licence_url must be an https link`);
+    assert.match(s.info.homepage, /^https:\/\//, `${where}: homepage must be an https link`);
+    assert.ok(categoryById(s.category), `${where}: category "${s.category}" has no folder in categories/`);
+    assert.ok(s.countries.length > 0, `${where}: countries is empty`);
+    for (const c of s.countries) {
+      assert.match(c, /^[A-Z]{2}$/, `${where}: country "${c}" must be an ISO 3166 alpha-2 code (GB, not UK)`);
+      const key = `${s.category}/${c}`;
+      assert.ok(!seen.has(key), `${where}: ${key} is already answered by ${seen.get(key)}`);
+      seen.set(key, s.info.id);
+      assert.match(s.countryHelp, new RegExp(`\\b${c}\\b`), `${where}: countryHelp should mention ${c}`);
+    }
+    assert.ok(s.placeName.trim(), `${where}: placeName is missing`);
+    assert.ok(s.examples.length > 0, `${where}: add at least one working example`);
+    const cat = categoryById(s.category)!;
+    const known = new Set(["country", ...Object.keys(paramSchemas(cat))]);
+    for (const ex of s.examples) {
+      assert.ok(s.countries.includes(normaliseCountry(ex.params.country) ?? ""), `${where}: example country must be one of ${s.countries}`);
+      for (const k of Object.keys(ex.params)) assert.ok(known.has(k), `${where}: example uses unknown parameter "${k}"`);
+    }
+    for (const k of Object.keys(s.paramNotes ?? {})) assert.ok(k in cat.params, `${where}: paramNotes.${k} is not a parameter of ${cat.id}`);
+    for (const k of Object.keys(s.paramValues ?? {})) assert.ok(k in cat.params, `${where}: paramValues.${k} is not a parameter of ${cat.id}`);
+    if (s.harvest && cat.history) assert.ok(s.historyKey, `${where}: has harvest() but no historyKey()`);
+  });
+});
+
+test("every tool schema builds and describes every covered place", () => {
+  for (const c of CATEGORIES) {
+    const shape = toolShape(c);
+    assert.ok(z.object(shape));
+    const d = toolDescription(c);
+    assert.match(d, /^Use this when/);
+    assert.match(d, /Do not use/);
+    for (const s of sourcesFor(c.id)) assert.ok(d.includes(s.placeName), `${c.tool} description should mention ${s.placeName}`);
+  }
+});
+
+test("REST query parsing: numbers are coerced, aliases pass through", () => {
+  const hs = categoryById("home-sales")!;
+  const p = paramsFromQuery(hs, new URLSearchParams("country=uk&town=Bristol&months=6&department=x&empty="));
+  assert.equal(p.months, 6);
+  assert.equal(p.department, "x");
+  assert.ok(!("empty" in p));
+});
+
+test("routing: unknown countries and fuels get a clear 400 message", async () => {
+  const fuel = categoryById("fuel")!;
+  await assert.rejects(runCategory(fuel, { country: "XX", fuel: "diesel" }), /Live fuel prices are available for ES, FR and IT so far\. Not yet: XX/);
+  await assert.rejects(runCategory(fuel, { country: "ES", fuel: "kerosene" }), /fuel must be one of/);
+  await assert.rejects(runCategory(fuel, {}), /country is required/);
+  const hs = categoryById("home-sales")!;
+  await assert.rejects(runCategory(hs, { country: "england" }), /A town is required/); // "england" -> GB, then GB needs a town
+});
+
+test("smoke tests: one per source, all on known endpoints", () => {
+  const smoke = exampleUrls().filter((e) => e.smoke);
+  assert.equal(new Set(smoke.map((e) => e.source)).size, SOURCE_PLUGINS.length);
+  for (const e of smoke) assert.match(e.path, /^\/api\/v1\/[a-z0-9-]+\?country=[A-Z]{2}/);
+});

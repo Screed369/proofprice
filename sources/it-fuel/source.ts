@@ -1,9 +1,28 @@
 // Italy: pump prices from MIMIT's daily open-data files (format checked live on 13 Oct 2026).
 // Two pipe-separated files: station list and the prices in force at 8:00. Line 1 is "Estrazione del YYYY-MM-DD".
-import { SourceError } from "../http";
-import { summarise } from "../stats";
-import { buildAnswer, fmtMoney, PriceAnswer } from "../answer";
-import { Fuel, FUEL_LABEL, stripAccents } from "../fuels";
+import { SourceError } from "../../lib/http";
+import { summarise } from "../../lib/stats";
+import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
+import { Fuel, FUEL_LABEL, stripAccents } from "../../lib/fuels";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { aggregateDaily } from "../../lib/library/aggregate";
+
+export const INFO: SourceInfo = {
+  id: "it-fuel",
+  country: "IT",
+  category: "fuel (pump prices)",
+  name: "Carburanti – Prezzi praticati e anagrafica degli impianti",
+  publisher: "Ministero delle Imprese e del Made in Italy (MIMIT), Osservaprezzi carburanti",
+  what_is_recorded: "Pump prices in force at 08:00 each day at every station in Italy, by fuel and service type (self or attended).",
+  price_type: "posted_pump_price",
+  freshness: "Daily (prices at 08:00 of the extraction day)",
+  licence: "Italian Open Data Licence v2.0 (IODL 2.0)",
+  licence_url: "https://www.dati.gov.it/content/italian-open-data-license-v20",
+  attribution: "Fonte: Ministero delle Imprese e del Made in Italy – Osservaprezzi carburanti (IODL 2.0).",
+  homepage: "https://www.mimit.gov.it/it/open-data/elenco-dataset/carburanti-prezzi-praticati-e-anagrafica-degli-impianti",
+  limits: "Posted pump prices, not individual receipts. Prices not updated in 30 days are left out.",
+};
+
 
 const STATIONS_URL = "https://www.mimit.gov.it/images/exportCSV/anagrafica_impianti_attivi.csv";
 const PRICES_URL = "https://www.mimit.gov.it/images/exportCSV/prezzo_alle_8.csv";
@@ -147,7 +166,7 @@ export async function itFuelNow(input: {
   const area = input.town ? `${input.town}${province ? ` (${province})` : ""}` : `province ${province}`;
   const serviceLabel = input.fuel === "lpg" || input.fuel === "methane" ? "" : service === "self" ? " (self-service)" : " (attended service)";
   return buildAnswer({
-    sourceId: "it-fuel",
+    source: INFO,
     query: { country: "IT", area: province ?? null, town: input.town ?? null, fuel: input.fuel, service },
     summary: s,
     currency: "EUR",
@@ -160,4 +179,35 @@ export async function itFuelNow(input: {
     baseUrl: input.baseUrl,
     extra: { cheapest_stations: cheapest, stations_counted: rows.length, extraction_date: data.extracted },
   });
+}
+
+/** Library item name: the fuel, with "/served" for attended-service prices (LPG and CNG have one price). */
+export function itItem(fuel: Fuel, service: "self" | "served"): string {
+  return fuel === "lpg" || fuel === "methane" || service === "self" ? fuel : `${fuel}/served`;
+}
+
+/** One day of aggregates for the price library: every province, fuel and service, plus Italy as a whole ("ALL"). */
+export function itDailyRows(prices: ItPrice[], stations: Map<string, ItStation>, extracted: string | null): HarvestResult {
+  const rows: { area: string; item: string; price: number }[] = [];
+  for (const fuel of Object.keys(IT_FUEL) as Fuel[]) {
+    const services: ("self" | "served")[] = fuel === "lpg" || fuel === "methane" ? ["self"] : ["self", "served"];
+    for (const service of services) {
+      for (const r of selectItPrices(prices, stations, { fuel, service, extracted })) {
+        if (r.station.province) rows.push({ area: r.station.province, item: itItem(fuel, service), price: r.price });
+      }
+    }
+  }
+  return { date: extracted ?? new Date().toISOString().slice(0, 10), currency: "EUR", unit: "per litre (CNG per kg)", rows: aggregateDaily(rows) };
+}
+
+export async function itHarvest(): Promise<HarvestResult> {
+  const data = await loadItaly();
+  return itDailyRows(data.prices, data.stations, data.extracted);
+}
+
+export function itHistoryKey(p: { area?: string; fuel: string; service?: string }): { area: string; item: string; label: string } | null {
+  const service = p.service === "served" ? "served" : "self";
+  const item = itItem(p.fuel as Fuel, service);
+  const prov = p.area?.trim().toUpperCase();
+  return prov && /^[A-Z]{2}$/.test(prov) ? { area: prov, item, label: `province ${prov}` } : { area: "ALL", item, label: "Italy" };
 }

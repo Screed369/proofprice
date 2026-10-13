@@ -2,7 +2,9 @@
 // where it came from, and a sentence an AI can quote. Never a bare number.
 
 import { confidenceLabel, MIN_PUBLISH, PriceSummary } from "./stats";
-import { SOURCES, METHOD_URL } from "./sources";
+import type { SourceInfo } from "./plugin";
+
+export const METHOD_URL = "/method";
 
 export interface PriceAnswer {
   query: Record<string, unknown>;
@@ -40,7 +42,7 @@ export interface PriceAnswer {
 const NOTICE = "Information, not a valuation or offer. Ranges describe past recorded prices.";
 
 export function buildAnswer(opts: {
-  sourceId: string;
+  source: SourceInfo;
   query: Record<string, unknown>;
   summary: PriceSummary | null;
   currency: string;
@@ -51,7 +53,7 @@ export function buildAnswer(opts: {
   baseUrl?: string;
   extra?: Record<string, unknown>;
 }): PriceAnswer {
-  const src = SOURCES[opts.sourceId];
+  const src = opts.source;
   const n = opts.summary?.count ?? 0;
   const conf = confidenceLabel(n);
   const enough = opts.summary && n >= MIN_PUBLISH;

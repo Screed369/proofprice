@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Price Paid plug",
-  description: "Real prices actually paid, from official records, in one place for AI agents. Private test.",
+  title: "ProofPrice: what people actually paid",
+  description: "Real prices actually paid, from official records, in one place for AI agents.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,8 +1,27 @@
 // France: home sale prices from DVF (Demandes de valeurs foncières, DGFiP), using Etalab's
 // per-commune geo-dvf files. We only ever return aggregates (never addresses or parcels).
-import { fetchJson, SourceError } from "../http";
-import { summarise } from "../stats";
-import { buildAnswer, fmtMoney, PriceAnswer } from "../answer";
+import { fetchJson, SourceError } from "../../lib/http";
+import { summarise } from "../../lib/stats";
+import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
+import type { SourceInfo } from "../../lib/plugin";
+
+export const INFO: SourceInfo = {
+  id: "fr-dvf",
+  country: "FR",
+  category: "home sales",
+  name: "Demandes de valeurs foncières (DVF), geo-dvf per-commune files",
+  publisher: "Direction générale des Finances publiques (DGFiP), files prepared by Etalab",
+  what_is_recorded: "Property sales recorded by French land registries: date, nature, price, type of property, built surface.",
+  price_type: "transaction",
+  freshness: "Twice a year, with a delay of several months",
+  licence: "Licence Ouverte / Etalab 2.0, plus the DVF reuse conditions (no re-identification of people; raw data not to be indexed by search engines)",
+  licence_url: "https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/",
+  attribution: "Source: DGFiP, Demandes de valeurs foncières (DVF), via geo-dvf (Etalab), Licence Ouverte 2.0.",
+  homepage: "https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/",
+  limits:
+    "We return aggregates only (median, range, count), never addresses or parcels. Alsace-Moselle and Mayotte are not covered by DVF.",
+};
+
 
 const DVF_BASE = "https://files.data.gouv.fr/geo-dvf/latest/csv/";
 const GEO_API = "https://geo.api.gouv.fr/communes";
@@ -173,7 +192,7 @@ export async function frHomeSales(input: {
   const psm = summarise(kept.filter((x) => x.surface >= 9).map((x) => x.price / x.surface));
   const place = input.postcode ? `postcode ${input.postcode}` : communes.length === 1 ? communes[0].nom : input.town!;
   return buildAnswer({
-    sourceId: "fr-dvf",
+    source: INFO,
     query: { country: "FR", postcode: input.postcode ?? null, town: input.town ?? null, property_type: type, months },
     summary: s,
     currency: "EUR",

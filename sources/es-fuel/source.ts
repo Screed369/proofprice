@@ -1,11 +1,30 @@
 // Spain: live pump prices from the Ministry's open REST service (format checked live on 13 Oct 2026).
-import { fetchJson, SourceError } from "../http";
-import { summarise } from "../stats";
-import { buildAnswer, fmtMoney, PriceAnswer } from "../answer";
-import { Fuel, FUEL_LABEL, stripAccents } from "../fuels";
+import { fetchJson, SourceError } from "../../lib/http";
+import { summarise } from "../../lib/stats";
+import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
+import { Fuel, FUEL_LABEL, stripAccents } from "../../lib/fuels";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { aggregateDaily } from "../../lib/library/aggregate";
 
-const BASE =
-  "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProvincia/";
+export const INFO: SourceInfo = {
+  id: "es-fuel",
+  country: "ES",
+  category: "fuel (pump prices)",
+  name: "Precios de carburantes en las estaciones de servicio terrestres",
+  publisher: "Ministerio para la Transición Ecológica y el Reto Demográfico (Geoportal de hidrocarburos), via datos.gob.es",
+  what_is_recorded: "Current pump price at each public filling station in Spain, by fuel type.",
+  price_type: "posted_pump_price",
+  freshness: "Several times a day",
+  licence: "Spanish public-sector information reuse terms (Ley 37/2007, RD 1495/2011): reuse allowed with the source and update date cited. Exact licence text to be confirmed.",
+  licence_url: "https://datos.gob.es/en/catalogo/e05068001-precio-de-carburantes-en-las-gasolineras-espanolas",
+  attribution: "Source: Ministerio para la Transición Ecológica y el Reto Demográfico – precios de carburantes (datos.gob.es).",
+  homepage: "https://geoportalgasolineras.es/",
+  limits: "Posted pump prices, not individual receipts. Restricted-sale stations are excluded.",
+};
+
+
+const NATIONAL_URL = "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/";
+const BASE = NATIONAL_URL + "FiltroProvincia/";
 
 export const ES_FIELD: Partial<Record<Fuel, string>> = {
   diesel: "Precio Gasoleo A",
@@ -23,6 +42,7 @@ export interface EsStation {
   address: string;
   town: string;
   postcode: string;
+  province: string | null;
   price: number;
 }
 
@@ -42,6 +62,12 @@ export function parseEsPrice(v: unknown): number {
   return Number.isFinite(n) && n > 0 ? n : NaN;
 }
 
+function provinceOf(r: any): string | null {
+  const id = String(r.IDProvincia ?? "").replace(/\D/g, "");
+  if (id && Number(id) >= 1 && Number(id) <= 52) return id.padStart(2, "0");
+  return esProvinceFromPostcode(String(r["C.P."] ?? ""));
+}
+
 export function parseEsStations(json: any, fuel: Fuel): { stations: EsStation[]; fecha: string | null } {
   const list = json?.ListaEESSPrecio;
   if (!Array.isArray(list)) throw new SourceError("Unexpected response from the Spanish fuel price service");
@@ -56,6 +82,7 @@ export function parseEsStations(json: any, fuel: Fuel): { stations: EsStation[];
       address: String(r["Dirección"] ?? ""),
       town: String(r.Municipio ?? r.Localidad ?? ""),
       postcode: String(r["C.P."] ?? ""),
+      province: provinceOf(r),
       price: parseEsPrice(r[field]),
     }))
     .filter((s: EsStation) => Number.isFinite(s.price));
@@ -108,7 +135,7 @@ export async function esFuelNow(input: {
   const cheapest = [...picked].sort((a, b) => a.price - b.price).slice(0, 3);
   const unit = input.fuel === "methane" ? "per kg" : "per litre";
   return buildAnswer({
-    sourceId: "es-fuel",
+    source: INFO,
     query: { country: "ES", postcode: input.postcode ?? null, area: input.area ?? null, town: input.town ?? null, fuel: input.fuel },
     summary: s,
     currency: "EUR",
@@ -121,4 +148,33 @@ export async function esFuelNow(input: {
     baseUrl: input.baseUrl,
     extra: { cheapest_stations: cheapest, stations_counted: picked.length, ...(note ? { note } : {}) },
   });
+}
+
+/** One day of aggregates for the price library: every province and fuel, plus Spain as a whole ("ALL"). */
+export function esDailyRows(json: any): HarvestResult {
+  const records: { area: string; item: string; price: number }[] = [];
+  let fecha: string | null = null;
+  for (const fuel of Object.keys(ES_FIELD) as Fuel[]) {
+    const parsed = parseEsStations(json, fuel);
+    fecha = parsed.fecha;
+    for (const s of parsed.stations) if (s.province) records.push({ area: s.province, item: fuel, price: s.price });
+  }
+  const date = fechaToIso(fecha) ?? new Date().toISOString().slice(0, 10);
+  return { date, currency: "EUR", unit: "per litre (CNG per kg)", rows: aggregateDaily(records) };
+}
+
+export async function esHarvest(): Promise<HarvestResult> {
+  const json = await fetchJson(NATIONAL_URL, { headers: { accept: "application/json" } }, 180000);
+  return esDailyRows(json);
+}
+
+/** Library keys for a request: province from the postcode or area, or the whole country. */
+export function esHistoryKey(p: { postcode?: string; area?: string; fuel: string }): { area: string; item: string; label: string } | null {
+  const cp = p.postcode?.replace(/\D/g, "");
+  let province = cp ? esProvinceFromPostcode(cp) : null;
+  if (!province && p.area) {
+    const a = p.area.replace(/\D/g, "").padStart(2, "0");
+    if (Number(a) >= 1 && Number(a) <= 52) province = a;
+  }
+  return province ? { area: province, item: p.fuel, label: `province ${province}` } : { area: "ALL", item: p.fuel, label: "Spain" };
 }
