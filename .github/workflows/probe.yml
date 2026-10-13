@@ -1,0 +1,77 @@
+# Probe: fetch one public open-data URL from GitHub's servers and save what came back, so the Verifier can see the
+# real format of a government file or API that our AI workspaces cannot reach.
+# Start:  gh workflow run probe.yml -R Screed369/proofprice -f url=https://example.gov/data.csv -f name=ie-ppr
+# Read:   git fetch origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/<name>.txt
+# Read-only towards the source: one plain GET, an honest user agent, nothing submitted.
+name: Probe a public data URL
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "https URL of an official open-data file or API (GET only)"
+        required: true
+      name:
+        description: "Short name for the result file, e.g. ie-ppr"
+        required: true
+      bytes:
+        description: "How many bytes of the body to keep (max 200000)"
+        required: false
+        default: "30000"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Fetch and save
+        env:
+          URL: ${{ github.event.inputs.url }}
+          NAME: ${{ github.event.inputs.name }}
+          BYTES: ${{ github.event.inputs.bytes }}
+        run: |
+          set -u
+          case "$URL" in https://*) ;; *) echo "Only https URLs are allowed"; exit 1;; esac
+          SAFE=$(printf '%s' "$NAME" | tr -cd 'a-z0-9-' | cut -c1-60); SAFE=${SAFE:-probe}
+          N=$(printf '%s' "$BYTES" | tr -cd '0-9'); N=${N:-30000}; [ "$N" -gt 200000 ] && N=200000
+          mkdir -p /tmp/p && cd /tmp/p
+          curl -sS -L --max-time 120 --max-filesize 500000000 \
+            -A "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)" \
+            -D headers.txt -o body.bin -w "%{http_code} %{content_type} %{size_download}\n" "$URL" > status.txt 2> err.txt || true
+          {
+            echo "URL: $URL"
+            echo "Fetched: $(date -u +%FT%TZ) from GitHub Actions"
+            echo "Status, type, bytes: $(cat status.txt)"
+            echo "Errors: $(cat err.txt)"
+            echo; echo "=== RESPONSE HEADERS"; cat headers.txt
+            echo "=== FILE TYPE: $(file -b body.bin 2>/dev/null)"
+            if file -b body.bin | grep -qi zip; then
+              echo "=== ZIP CONTENTS"; unzip -l body.bin | head -60
+              FIRST=$(unzip -Z1 body.bin | grep -iE '\.(csv|txt|json|xml)$' | head -1)
+              if [ -n "$FIRST" ]; then echo "=== FIRST $N BYTES OF $FIRST"; unzip -p body.bin "$FIRST" | head -c "$N" | iconv -f utf-8 -t utf-8 -c; fi
+            elif file -b body.bin | grep -qi gzip; then
+              echo "=== FIRST $N BYTES (gunzipped)"; gunzip -c body.bin | head -c "$N" | iconv -f utf-8 -t utf-8 -c
+            else
+              echo "=== FIRST $N BYTES"; head -c "$N" body.bin | iconv -f utf-8 -t utf-8 -c
+            fi
+          } > "result.txt"
+          cd "$GITHUB_WORKSPACE"
+          git config user.name "proofprice-librarian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes; then git checkout -q -B probes origin/probes; else git checkout -q --orphan probes; fi
+          git rm -rq --cached . >/dev/null 2>&1 || true
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name probes -exec rm -rf {} +
+          mkdir -p probes && cp /tmp/p/result.txt "probes/$SAFE.txt"
+          git add probes
+          git commit -qm "Probe $SAFE" || exit 0
+          git push origin probes
