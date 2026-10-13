@@ -1,0 +1,32 @@
+URL: https://zenodo.org/api/records/23122401
+Fetched: 2026-10-13T20:32:41Z from GitHub Actions
+Status, type, bytes: 200 application/json 7069
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+server: nginx
+date: Tue, 13 Oct 2026 20:32:41 GMT
+content-type: application/json
+content-length: 7069
+vary: Accept-Encoding
+etag: "4"
+link: <https://zenodo.org/api/records/23122401> ; rel="linkset" ; type="application/linkset+json"
+access-control-allow-origin: *
+access-control-expose-headers: Content-Type, ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset
+x-ratelimit-limit: 133
+x-ratelimit-remaining: 132
+x-ratelimit-reset: 1791923622
+retry-after: 60
+permissions-policy: interest-cohort=()
+x-frame-options: sameorigin
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+content-security-policy: default-src 'self' fonts.googleapis.com *.gstatic.com data: 'unsafe-inline' 'unsafe-eval' blob: zenodo-broker.web.cern.ch zenodo-broker-qa.web.cern.ch maxcdn.bootstrapcdn.com cdnjs.cloudflare.com ajax.googleapis.com webanalytics.web.cern.ch
+strict-transport-security: max-age=31556926; includeSubDomains
+referrer-policy: strict-origin-when-cross-origin
+x-source: api
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+{"created": "2026-10-03T14:36:49.706199+00:00", "modified": "2026-10-03T14:36:50.066301+00:00", "id": 23122401, "conceptrecid": "23122400", "doi": "10.5281/zenodo.23122401", "conceptdoi": "10.5281/zenodo.23122400", "doi_url": "https://doi.org/10.5281/zenodo.23122401", "metadata": {"title": "Fuel price changes at every service station, Queensland, latest month", "doi": "10.5281/zenodo.23122401", "publication_date": "2026-09-02", "description": "<p>Every fuel price change reported by Queensland service stations in the newest month Queensland Treasury has published, with station, brand, location, fuel type and time.</p><p>This is the 2026-09-02 version of this dataset on publicdata.au, with 92,244 rows and 12 fields. The same version is kept at <a href=\"https://publicdata.au/d/qld-fuel-prices/v/2026-09-02/\">https://publicdata.au/d/qld-fuel-prices/v/2026-09-02/</a> in 12 formats, with every earlier version and a query API. Each Zenodo version of this record is one publicdata.au version.</p><p>The data is published by Queensland Treasury under CC BY 4.0, <a href=\"https://creativecommons.org/licenses/by/4.0/\">https://creativecommons.org/licenses/by/4.0/</a>. The licence requires this attribution:</p><blockquote>Queensland Treasury, Queensland Government, Fuel price reporting, sourced 3 October 2026, https://www.data.qld.gov.au/dataset/fuel-price-reporting-2026, licensed under CC BY 4.0.</blockquote><p>This is an independent republication. The publisher has not endorsed this site.</p><p>The rows are in data.parquet, data.csv, data.json and data.xlsx. schema.json describes the fields, and publicdata.json names the version, licence, attribution and the SHA-256 of the publisher's file.</p>", "access_right": "open", "creators": [{"name": "Queensland Treasury", "affiliation": null}], "contributors": [{"name": "National Digital", "affiliation": null, "type": "DataCurator"}], "keywords": ["Australia", "government open data", "publicdata.au", "fuel prices", "petrol prices", "diesel prices", "service stations", "fuel price reporting", "Queensland", "QLD fuel price reporting data", "Queensland petrol prices history", "Fuel Prices Qld data", "Brisbane petrol prices by station"], "related_identifiers": [{"identifier": "https://publicdata.au/d/qld-fuel-prices/v/2026-09-02/", "relation": "isIdenticalTo", "resource_type": "dataset", "scheme": "url"}, {"identifier": "https://publicdata.au/d/qld-fuel-prices/", "relation": "isVersionOf", "resource_type": "dataset", "scheme": "url"}, {"identifier": "https://www.data.qld.gov.au/dataset/fuel-price-reporting-2026", "relation": "isDerivedFrom", "resource_type": "dataset", "scheme": "url"}], "version": "2026-09-02", "language": "eng", "resource_type": {"title": "Dataset", "type": "dataset"}, "license": {"id": "cc-by-4.0"}, "relations": {"version": [{"index": 0, "is_last": true, "parent": {"pid_type": "recid", "pid_value": "23122400"}}]}, "notes": "Cite as: Queensland Treasury, Queensland Government, Fuel price reporting, sourced 3 October 2026, https://www.data.qld.gov.au/dataset/fuel-price-reporting-2026, licensed under CC BY 4.0. Serialised and versioned by National Digital at publicdata.au, https://publicdata.au/d/qld-fuel-prices/v/2026-09-02/"}, "title": "Fuel price changes at every service station, Queensland, latest month", "links": {"self": "https://zenodo.org/api/records/23122401", "self_html": "https://zenodo.org/records/23122401", "preview_html": "https://zenodo.org/records/23122401?preview=1", "doi": "https://doi.org/10.5281/zenodo.23122401", "self_doi": "https://doi.org/10.5281/zenodo.23122401", "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.23122401", "reserve_doi": "https://zenodo.org/api/records/23122401/draft/pids/doi", "parent": "https://zenodo.org/api/records/23122400", "parent_html": "https://zenodo.org/records/23122400", "parent_doi": "https://doi.org/10.5281/zenodo.23122400", "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.23122400", "self_iiif_manifest": "https://zenodo.org/api/iiif/record:23122401/manifest", "self_iiif_sequence": "https://zenodo.org/api/iiif/record:23122401/sequence/default", "files": "https://zenodo.org/api/records/23122401/files", "media_files": "https://zenodo.org/api/records/23122401/media-files", "latest": "https://zenodo.org/api/records/23122401/versions/latest", "latest_html": "https://zenodo.org/records/23122401/latest", "versions": "https://zenodo.org/api/records/23122401/versions", "draft": "https://zenodo.org/api/records/23122401/draft", "access_links": "https://zenodo.org/api/records/23122401/access/links", "access_grants": "https://zenodo.org/api/records/23122401/access/grants", "access_users": "https://zenodo.org/api/records/23122401/access/users", "access_request": "https://zenodo.org/api/records/23122401/access/request", "access": "https://zenodo.org/api/records/23122401/access", "communities": "https://zenodo.org/api/records/23122401/communities", "communities-suggestions": "https://zenodo.org/api/records/231
