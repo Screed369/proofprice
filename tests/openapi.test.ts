@@ -9,7 +9,7 @@ test("openapi lists the REST endpoints with required params", () => {
   for (const p of ["/api/v1/coverage", "/api/v1/fuel", "/api/v1/home-sales", "/api/v1/fuel/history"]) assert.ok(paths.includes(p), p);
   const hs = spec.paths["/api/v1/home-sales"].get.parameters;
   assert.ok(hs.find((p: any) => p.name === "country" && p.required));
-  assert.deepEqual(hs.find((p: any) => p.name === "country").schema.enum.sort(), ["FR", "GB", "SG"]);
+  assert.deepEqual(hs.find((p: any) => p.name === "country").schema.enum.sort(), ["FR", "GB", "IE", "SG"]);
   assert.ok(hs.find((p: any) => p.name === "postcode_district")); // a source's extra parameter
   const pt = hs.find((p: any) => p.name === "property_type");
   for (const v of ["terraced", "apartment", "any"]) assert.ok(pt.schema.enum.includes(v), v);
