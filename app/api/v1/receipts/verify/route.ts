@@ -1,5 +1,5 @@
 import { verifyReceiptEmail } from "../../../../../lib/receipts/verify";
-import { json, errorResponse } from "../../../../../lib/route-helpers";
+import { json, errorResponse, corsPreflight } from "../../../../../lib/route-helpers";
 
 export const maxDuration = 30;
 const MAX_BYTES = 3 * 1024 * 1024;
@@ -25,4 +25,8 @@ export async function POST(req: Request) {
   } catch (e) {
     return errorResponse(e);
   }
+}
+
+export function OPTIONS() {
+  return corsPreflight();
 }
