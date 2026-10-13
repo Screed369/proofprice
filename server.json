@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.proofprice/pricepaid",
+  "title": "ProofPrice",
+  "description": "Real prices actually paid (not asking prices): home sales and fuel, with sample size and licence.",
+  "version": "0.3.0",
+  "websiteUrl": "https://proofprice.com",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://proofprice.com/api/mcp"
+    }
+  ]
+}

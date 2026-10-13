@@ -41,7 +41,8 @@ export default function Home() {
         </li>
       </ul>
       <p>
-        <a href="/method">How the numbers are made</a> · <a href="/llms.txt">llms.txt (menu for AIs)</a> ·{" "}
+        <a href="/connect">Connect your AI</a> · <a href="/method">How the numbers are made</a> ·{" "}
+        <a href="/llms.txt">llms.txt (menu for AIs)</a> · <a href="/llms-full.txt">llms-full.txt</a> ·{" "}
         <a href="/openapi.json">openapi.json</a> · Contact: <a href="mailto:hello@proofprice.com">hello@proofprice.com</a>
       </p>
     </main>

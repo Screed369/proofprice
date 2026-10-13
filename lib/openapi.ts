@@ -14,7 +14,7 @@ const answerResponses = {
   "502": { description: "The official source could not be reached.", content: { "application/json": { schema: { $ref: "#/components/schemas/Error" } } } },
 };
 
-function jsonSchemaOf(schema: z.ZodTypeAny): Record<string, unknown> {
+export function jsonSchemaOf(schema: z.ZodTypeAny): Record<string, unknown> {
   const s: any = z.toJSONSchema(schema, { unrepresentable: "any" });
   delete s.$schema;
   delete s.description;
@@ -98,6 +98,16 @@ export function buildOpenApi(baseUrl: string) {
   };
 }
 
+/** The answer format and citing rules, shared by llms.txt and llms-full.txt. */
+export const ANSWER_FORMAT =
+  'JSON with: query, status ("ok" or not), price {currency, unit, median, typical_low, typical_high, min, max}, sample_size, period {from, to}, confidence (low / medium / high), price_type ("transaction" or "posted_pump_price"), as_of, source {id, name, publisher, licence, licence_url, attribution, url}, method, method_url, summary (one plain sentence), notice, and an optional extra object.\ntypical_low and typical_high are the 10th and 90th percentiles.';
+
+export const CITING_RULES = [
+  "Cite the source and attribution line returned with each answer.",
+  "Home figures are prices paid (transactions). Fuel figures are posted pump prices, not receipts.",
+  "Never treat a range as an asking price. Figures from fewer than 5 records are not returned.",
+];
+
 export function buildLlmsTxt(baseUrl: string): string {
   const tools = CATEGORIES.map((c) => c.tool).concat("pricepaid_coverage").join(", ");
   const endpoints = CATEGORIES.map((c) => {
@@ -123,13 +133,14 @@ ${history.join("\n")}
 - GET ${baseUrl}/api/v1/coverage — sources, licences, update frequency
 
 ## Answer format (every endpoint)
-JSON with: query, status ("ok" or not), price {currency, unit, median, typical_low, typical_high, min, max}, sample_size, period {from, to}, confidence (low / medium / high), price_type ("transaction" or "posted_pump_price"), as_of, source {id, name, publisher, licence, licence_url, attribution, url}, method, method_url, summary (one plain sentence), notice, and an optional extra object.
-typical_low and typical_high are the 10th and 90th percentiles.
+${ANSWER_FORMAT}
 
 ## Rules for citing
-- Cite the source and attribution line returned with each answer.
-- Home figures are prices paid (transactions). Fuel figures are posted pump prices, not receipts.
-- Never treat a range as an asking price. Figures from fewer than 5 records are not returned.
+${CITING_RULES.map((r) => `- ${r}`).join("\n")}
+
+## More
+- Setup for every AI client and framework: ${baseUrl}/connect
+- Everything in one file (tools, parameters, examples, sources, licences): ${baseUrl}/llms-full.txt
 
 ## Contact
 - hello@proofprice.com
