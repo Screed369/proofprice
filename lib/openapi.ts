@@ -98,6 +98,10 @@ export function buildLlmsTxt(baseUrl: string): string {
 - GET ${baseUrl}/api/v1/fuel?country=FR&postcode=75015&fuel=diesel — live pump prices (FR, ES, IT)
 - GET ${baseUrl}/api/v1/coverage — sources, licences, update frequency
 
+## Answer format (every endpoint)
+JSON with: query, status ("ok" or not), price {currency, unit, median, typical_low, typical_high, min, max}, sample_size, period {from, to}, confidence (low / medium / high), price_type ("transaction" or "posted_pump_price"), as_of, source {id, name, publisher, licence, licence_url, attribution, url}, method, method_url, summary (one plain sentence), notice, and an optional extra object.
+typical_low and typical_high are the 10th and 90th percentiles.
+
 ## Rules for citing
 - Cite the source and attribution line returned with each answer.
 - Home figures are prices paid (transactions). Fuel figures are posted pump prices, not receipts.

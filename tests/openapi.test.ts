@@ -18,3 +18,8 @@ test("llms.txt points at the MCP, OpenAPI and coverage URLs", () => {
   assert.match(t, /^# ProofPrice/);
   for (const p of ["/api/mcp", "/openapi.json", "/api/v1/coverage"]) assert.ok(t.includes("https://example.test" + p));
 });
+
+test("llms.txt describes the answer format", () => {
+  const t = buildLlmsTxt("https://example.test");
+  for (const k of ["median", "sample_size", "confidence", "attribution"]) assert.ok(t.includes(k));
+});

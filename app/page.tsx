@@ -16,7 +16,7 @@ export default function Home() {
         <li><code>/api/v1/coverage</code></li>
         <li><code>POST /api/v1/receipts/verify</code>: send an order email (.eml) to check its seal</li>
       </ul>
-      <p><a href="/method">How the numbers are made</a></p>
+      <p><a href="/method">How the numbers are made</a> · <a href="/llms.txt">llms.txt (menu for AIs)</a> · <a href="/openapi.json">openapi.json</a></p>
     </main>
   );
 }
