@@ -7,6 +7,7 @@ export default defineCategory({
   id: "home-sales",
   tool: "pricepaid_home_sales",
   restPath: "home-sales",
+  cacheSeconds: 86400,
   title: "Home sale prices actually paid",
   noun: "Home sales",
   description: (places) =>

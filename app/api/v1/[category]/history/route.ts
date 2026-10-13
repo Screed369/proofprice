@@ -10,7 +10,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ category: strin
   if (!cat.history) return json({ error: `No daily history is kept for ${cat.restPath} yet.` }, 404);
   try {
     const params = paramsFromQuery(cat, new URL(req.url).searchParams);
-    return json(runHistory(cat, params, { baseUrl: baseUrl(req) }));
+    return json(runHistory(cat, params, { baseUrl: baseUrl(req) }), 200, 3600);
   } catch (e) {
     return errorResponse(e);
   }

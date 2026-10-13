@@ -9,6 +9,7 @@ export default defineCategory({
   id: "fuel",
   tool: "pricepaid_fuel_prices_now",
   restPath: "fuel",
+  cacheSeconds: 600,
   title: "Live fuel prices at the pump",
   noun: "Live fuel prices",
   description: (places) =>

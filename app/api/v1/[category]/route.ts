@@ -11,7 +11,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ category: strin
   if (!cat) return json({ error: `Unknown endpoint /api/v1/${category}. See /api/v1/coverage.` }, 404);
   try {
     const params = paramsFromQuery(cat, new URL(req.url).searchParams);
-    return json(await runCategory(cat, params, { baseUrl: baseUrl(req) }));
+    return json(await runCategory(cat, params, { baseUrl: baseUrl(req) }), 200, cat.cacheSeconds ?? 600);
   } catch (e) {
     return errorResponse(e);
   }

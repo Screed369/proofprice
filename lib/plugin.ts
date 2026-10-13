@@ -103,6 +103,8 @@ export interface CategoryPlugin {
   required?: string[];
   /** Normalise parameters once for every source (e.g. fuel name aliases). Throw SourceError if invalid. */
   prepare?(params: Params): Params;
+  /** How long the CDN may reuse an answer (seconds). Fuel: 600. Home sales: 86400. Default 600. */
+  cacheSeconds?: number;
   /** Optional history tool built from the price library. Shown to agents once enough days are collected. */
   history?: {
     tool: string;

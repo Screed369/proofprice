@@ -7,10 +7,16 @@ export const CORS_HEADERS = {
   "access-control-allow-headers": "content-type",
 };
 
-export function json(data: unknown, status = 200) {
+/** cacheSeconds > 0 lets Vercel's CDN serve repeat questions without running the function (cost and abuse control).
+ *  Errors and receipts are never cached. */
+export function json(data: unknown, status = 200, cacheSeconds = 0) {
+  const cache =
+    status === 200 && cacheSeconds > 0
+      ? `public, max-age=60, s-maxage=${cacheSeconds}, stale-while-revalidate=${cacheSeconds * 6}`
+      : "no-store";
   return new Response(JSON.stringify(data, null, 2), {
     status,
-    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...CORS_HEADERS },
+    headers: { "content-type": "application/json; charset=utf-8", "cache-control": cache, ...CORS_HEADERS },
   });
 }
 
