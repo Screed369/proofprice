@@ -1,0 +1,27 @@
+URL: https://api.usaspending.gov/api/v2/references/data_dictionary/
+Fetched: 2026-10-13T20:28:34Z from GitHub Actions
+Status, type, bytes: 200 application/json 358054
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Tue, 13 Oct 2026 20:28:34 GMT
+Content-Type: application/json
+Content-Length: 358054
+Connection: keep-alive
+Vary: Accept, Cookie, origin
+Allow: GET, HEAD, OPTIONS
+Cache-Trace: hit-cache
+key: 2c5b6774d4f3dc865fed02e2780449a2
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: cookiesession1=678A3E0D943F3A12A26926A9DFC7F909;Expires=Wed, 13 Oct 2027 20:28:34 GMT;Path=/;HttpOnly
+Set-Cookie: BIGipServer~api.usaspending.gov~Shared~api.usaspending.gov_443_lbve_tcp_pl=!LJqk7Ypb0RHiJ9fwwTZg/0veML+8xnPY0FmJ/Fp3C9yPYjPW+xJv+ehSeP8TZBlFY9Gk/j/ZcCJ+NQ==; path=/; Httponly; Secure
+Set-Cookie: TS01d83a7d=012fea399da2016b2d992a3266f5adc10790b270e24bbdba6a1611cc5584f90d6da69ff8aa537109dc374f41fe14f61a084030bb43899cb8015a6faf6a202aa0af4c29f76041969f0b6c6eea2feb31d0abe8589466; Path=/
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"document":{"rows":[["1862LandGrantCollege","https://www.sam.gov","1862 Land Grant College","Award Recipient","F = False\nT = True",null,"Contracts_PrimeAwardSummaries.csv,\nContracts_PrimeTransactions.csv","1862_land_grant_college",null,null,null,null,"transaction_fpds","c1862_land_grant_college","Contracts","is1862landgrantcollege",null,null],["1890LandGrantCollege","https://www.sam.gov","1890 Land Grant College","Award Recipient","F = False\nT = True",null,"Contracts_PrimeAwardSummaries.csv,\nContracts_PrimeTransactions.csv","1890_land_grant_college",null,null,null,null,"transaction_fpds","c1890_land_grant_college","Contracts","is1890landgrantcollege",null,null],["1994LandGrantCollege","https://www.sam.gov","1994 Land Grant College","Award Recipient","F = False\nT = True",null,"Contracts_PrimeAwardSummaries.csv,\nContracts_PrimeTransactions.csv","1994_land_grant_college",null,null,null,null,"transaction_fpds","c1994_land_grant_college","Contracts","is1994landgrantcollege",null,null],["8aProgramParticipant","List characteristic of the contractor such as whether the selected contractor is an 8(a) Program Participant Organization or not. It can be derived from the SAM data element, 'Business Types'.","8(a) Program Participant","Award Recipient","F = False\nT = True",null,"Contracts_PrimeAwardSummaries.csv,\nContracts_PrimeTransactions.csv","c8a_program_participant",null,null,null,null,"transaction_fpds","c8a_program_participant","Contracts","firm8aflag",null,null],["A-76 FAIR Act Action Description Tag","Description tag (by way of the FPDS Atom Feed) that explains the meaning of the code provided in the A-76 FAIR Act Action Field.",null,"Award Attribute","Y = Yes\nN = No","Y = Contract action resulted from an A-76/Fair Act competitive sourcing process.\nN = Contract action did not result from an A-76/Fair Act competitive sourcing process.","Contracts_PrimeAwardSummaries.csv,\nContracts_PrimeTransactions.csv","a76_fair_act_action",null,null,null,null,"transaction_fpds","a_76_fair_act_action_desc","Contracts","a76action",null,null],["A-76FAIRActAction","Indicates whether the contract action has resulted from an A-76/Fair Act competitive sourcing process.","A-76 (FAIR Act) Action","Award Attribute","Y = Yes\nN = No","Y = Contract action resulted from an A-76/Fair Act competitive sourcing process.\nN = Contract action did not result from an A-76/Fair Act competitive sourcing process.","Contracts_PrimeAwardSummaries.csv,\nContracts_PrimeTransactions.csv","a76_fair_act_action_code",null,null,null,null,"transaction_fpds","a_76_fair_act_action","Contracts","a76action",null,null],["AccountTitle","A descriptive name of the Treasury Account Symbol (TAS).",null,"Treasury Account","See https://sam.for.fiscal.treasury.gov/sampublic/tasbetc.htm (GWA TAS NAME column)",null,null,null,null,null,"FA_AccountBalances.csv,\nTAS_AccountBalances.csv,\nFA_AccountBreakdownByPA-OC.csv,\nTAS_AccountBreakdownByPA-OC.csv,\nFA_AccountBreakdownByAward.csv,\nTAS_AccountBreakdow
