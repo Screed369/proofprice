@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "receipt-record/v0.1",
+  "title": "Receipt Record v0.1",
+  "description": "One real purchase or sale, in a standard shape any person, business or AI agent can share. Holds the facts needed for a fair-price answer and nothing that identifies a person. Open format: free to use, copy and extend.",
+  "type": "object",
+  "required": ["schema_version", "category", "item", "transaction", "evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "receipt_id": {
+      "type": "string",
+      "description": "Hash that identifies this receipt for de-duplication (e.g. SHA-256 of the seal signature). Never an order number."
+    },
+    "category": {
+      "type": "string",
+      "description": "Dotted category path.",
+      "examples": ["used_electronics.phone", "used_electronics.laptop", "used_electronics.console", "used_vehicles.car", "home_services.plumbing"]
+    },
+    "item": {
+      "type": "object",
+      "required": ["brand", "model"],
+      "additionalProperties": false,
+      "properties": {
+        "brand": { "type": "string", "examples": ["Apple"] },
+        "model": { "type": "string", "examples": ["iPhone 13"] },
+        "variant": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "What changes the price within a model.",
+          "properties": {
+            "storage_gb": { "type": "integer", "examples": [128] },
+            "ram_gb": { "type": "integer" },
+            "colour": { "type": "string" },
+            "connectivity": { "type": "string", "examples": ["5G", "wifi", "wifi+cellular"] },
+            "year": { "type": "integer" }
+          }
+        },
+        "identifiers": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Product-level codes only. Never a serial number or IMEI.",
+          "properties": {
+            "gtin": { "type": "string" },
+            "mpn": { "type": "string" }
+          }
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "grade": {
+          "enum": ["new", "like_new", "excellent", "good", "fair", "poor", "for_parts", "unknown"],
+          "description": "Normalised grade."
+        },
+        "seller_grade_label": { "type": "string", "description": "The seller's own wording, e.g. 'Good' or 'Grade B'." },
+        "battery_health_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "carrier_lock": { "enum": ["unlocked", "locked", "unknown"] },
+        "warranty_months": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "transaction": {
+      "type": "object",
+      "required": ["item_price", "currency", "date", "country"],
+      "additionalProperties": false,
+      "description": "A payment is not the item's price: keep each part separate.",
+      "properties": {
+        "item_price": { "type": "number", "exclusiveMinimum": 0, "description": "Price of the item itself, after any discount." },
+        "shipping": { "type": "number", "minimum": 0 },
+        "fees": { "type": "number", "minimum": 0, "description": "Buyer protection, service or platform fees paid by the buyer." },
+        "discount": { "type": "number", "minimum": 0 },
+        "tax_included": { "type": "boolean" },
+        "total_paid": { "type": "number", "exclusiveMinimum": 0 },
+        "trade_in_credit": { "type": "number", "minimum": 0, "description": "Value given for a traded-in item, if any. Kept separate from the price." },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "date": { "type": "string", "format": "date" },
+        "country": { "type": "string", "pattern": "^[A-Z]{2}$" },
+        "region": { "type": "string", "description": "Optional coarse region only (e.g. 'London'). Never an address or full postcode." },
+        "channel": { "enum": ["marketplace", "retailer", "buyback", "private", "auction", "agent_checkout"] },
+        "marketplace_domain": { "type": "string", "examples": ["ebay.co.uk", "backmarket.fr"] },
+        "side": { "enum": ["buyer", "seller"], "description": "Whether this receipt comes from the buyer or the seller." }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["method", "verified"],
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "enum": ["email_seal_dkim", "email_seal_zk_proof", "agent_signed_receipt_ap2", "payment_match", "official_record", "manual_review", "self_reported"],
+          "description": "How the price was proven. Self-reported receipts never move a published price on their own."
+        },
+        "verified": { "type": "boolean" },
+        "signing_domain": { "type": "string", "description": "Domain that sealed the evidence, e.g. ebay.co.uk." },
+        "verified_at": { "type": "string", "format": "date-time" },
+        "proof_ref": { "type": "string", "description": "Hash of the proof, so it can be re-checked without storing the email." }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contributor_type": { "enum": ["person", "agent", "business", "official_source"] },
+        "submitted_via": { "enum": ["email_forward", "upload", "api", "mcp", "partner_feed"] },
+        "consent_version": { "type": "string", "description": "Version of the terms the contributor agreed to." },
+        "agent_owner_id": { "type": "string", "description": "For agent contributions: pseudonymous ID of the accountable owner." }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "0.1",
+      "receipt_id": "sha256:4f1c…",
+      "category": "used_electronics.phone",
+      "item": { "brand": "Apple", "model": "iPhone 13", "variant": { "storage_gb": 128, "colour": "Midnight" } },
+      "condition": { "grade": "good", "seller_grade_label": "Good", "carrier_lock": "unlocked" },
+      "transaction": {
+        "item_price": 298.0, "shipping": 4.99, "fees": 0, "total_paid": 302.99,
+        "currency": "GBP", "date": "2026-10-05", "country": "GB", "region": "South West England",
+        "channel": "marketplace", "marketplace_domain": "ebay.co.uk", "side": "buyer"
+      },
+      "evidence": { "method": "email_seal_dkim", "verified": true, "signing_domain": "ebay.co.uk", "verified_at": "2026-10-12T11:00:00Z" },
+      "provenance": { "contributor_type": "person", "submitted_via": "email_forward", "consent_version": "2026-10" }
+    }
+  ]
+}
