@@ -35,6 +35,7 @@ export interface ReceiptCheck {
   likely_total: AmountHit | null;
   item_hints: string[];
   reasons: string[];
+  all_seals: { domain: string | null; result: string | null; comment: string | null }[];
   privacy: string;
 }
 
@@ -119,8 +120,12 @@ export async function verifyReceiptEmail(raw: Buffer | string, opts: { resolver?
   );
   const passing = results.filter((r) => r?.status?.result === "pass");
   // Prefer a passing signature from a known marketplace domain.
+  // Prefer a passing seal from a known marketplace that matches the From address; an email can carry several
+  // seals (e.g. amazon.es plus its mail provider amazonses.com) and only the brand's own seal proves the receipt.
   const best =
-    passing.find((r) => matchMarketplace(r.signingDomain)) ?? passing[0] ?? results[0] ?? null;
+    passing.find((r) => matchMarketplace(r.signingDomain) && fromDomain && sameOrgDomain(r.signingDomain, fromDomain)) ??
+    passing.find((r) => matchMarketplace(r.signingDomain)) ??
+    passing[0] ?? results[0] ?? null;
 
   const signingDomain: string | null = best?.signingDomain ?? null;
   const valid = best?.status?.result === "pass";
@@ -170,6 +175,11 @@ export async function verifyReceiptEmail(raw: Buffer | string, opts: { resolver?
     likely_total: total,
     item_hints: findItemHints(text),
     reasons,
+    all_seals: results.map((r) => ({
+      domain: r?.signingDomain ?? null,
+      result: r?.status?.result ?? null,
+      comment: r?.status?.comment ?? null,
+    })),
     privacy: "The email was checked in memory and not stored. Names, email addresses, phone numbers and postcodes are removed from returned snippets.",
   };
 }
