@@ -1,0 +1,23 @@
+URL: https://files.usaspending.gov/award_data_archive/?list-type=2&prefix=FY2026_All_Contracts_Full&max-keys=5
+Fetched: 2026-10-13T20:31:47Z from GitHub Actions
+Status, type, bytes: 200 application/xml 618
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Tue, 13 Oct 2026 20:31:46 GMT
+Content-Type: application/xml
+Connection: keep-alive
+x-amz-id-2: QTjYx0sYACl0bfWfpLBa7o/mkm7G/O0yAAiOyWEyXOckYtBAE8wZGLwNXCqmHYUeAB1ji+j5McI=
+x-amz-request-id: A2NMQBY8K4CCHXNB
+x-amz-bucket-region: us-gov-west-1
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: cookiesession1=678A3E0D3BCA3A46206ABAF11F5946F1;Expires=Wed, 13 Oct 2027 20:31:46 GMT;Path=/;HttpOnly
+content-length: 618
+Set-Cookie: BIGipServer~api.usaspending.gov~Shared~api.usaspending.gov_443_lbve_tcp_pl=!/l30YLIEvJvILJjwwTZg/0veML+8xs/Iby9PzOAZcgF53BIv1dvMdzqMe954CfljM5jhNMbrdWB5bA==; path=/; Httponly; Secure
+Set-Cookie: TS01d83a7d=012fea399dd63099ac94d69f48cc81703de79173482392d50abdb70d079e86e82566ad07ca683a6e1c8f657fdb2067f8d3cd1d7f736184402c3a2cb59ae66cec0346f667f1d5f9fb7d0ba2b68f491759a306a5ff7d; Path=/
+
+=== FILE TYPE: XML 1.0 document, ASCII text, with very long lines (579)
+=== FIRST 2500 BYTES
+<?xml version="1.0" encoding="UTF-8"?>
+<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>dti-usaspending-monthly-downloads</Name><Prefix>FY2026_All_Contracts_Full</Prefix><KeyCount>1</KeyCount><MaxKeys>5</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>FY2026_All_Contracts_Full_20260906.zip</Key><LastModified>2026-09-14T01:07:39.000Z</LastModified><ETag>&quot;e5d201354eb871cf36bb215054980efc-165&quot;</ETag><ChecksumAlgorithm>CRC64NVME</ChecksumAlgorithm><ChecksumType>FULL_OBJECT</ChecksumType><Size>1383095241</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
