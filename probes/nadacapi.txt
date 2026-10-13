@@ -1,0 +1,34 @@
+URL: https://data.medicaid.gov/api/1/metastore/schemas/dataset/items?show-reference-ids=false&limit=1
+Fetched: 2026-10-13T20:29:55Z from GitHub Actions
+Status, type, bytes: 200 application/json 1177119
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+x-drupal-dynamic-cache: MISS
+content-language: en
+x-content-type-options: nosniff
+x-generator: Drupal 11 (https://www.drupal.org)
+x-drupal-cache: MISS
+last-modified: Tue, 13 Oct 2026 20:29:37 GMT
+etag: "1791923377-gzip"
+x-request-id: v-cf55a400-c744-11f1-8a2e-9b18fade07a2
+x-ah-environment: prod
+x-age: 0
+cache-control: public, max-age=300
+expires: Tue, 13 Oct 2026 20:34:55 GMT
+date: Tue, 13 Oct 2026 20:29:55 GMT
+set-cookie: cms_fpid=a1a2d613-6781-1c64-f43f-b16acf4a9684; expires=Thu, 12-Oct-2028 20:29:55 GMT; path=/; domain=.medicaid.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.8d6d3e17.1791923377.db0b44c
+
+=== FILE TYPE: JSON text data
+=== FIRST 1500 BYTES
+[{"@type":"dcat:Dataset","title":"State Drug Utilization Data 1991","identifier":"ae4d5347-5137-5f6c-b66c-3420fa0316d8","description":"Drug utilization data are reported by states for covered outpatient drugs that are paid for by state Medicaid agencies since the start of the Medicaid Drug Rebate Program. The data includes state, drug name, National Drug Code, number of prescriptions and dollars reimbursed. Data descriptions are available on Medicaid.gov: https:\/\/www.medicaid.gov\/medicaid\/prescription-drugs\/state-drug-utilization-data\/state-drug-utilization-data-faq\/index.html","accessLevel":"public","issued":"2015-06-11T17:19:41+00:00","modified":"2026-04-03T13:53:37+00:00","license":"https:\/\/www.usa.gov\/publicdomain\/label\/1.0\/","publisher":{"identifier":"4f3cccad-4fcd-5411-9d07-c23ed9e20068","data":{"@type":"org:Organization","name":"data.medicaid.gov"}},"contactPoint":{"fn":"Medicaid.gov","hasEmail":"mailto:Medicaid.gov@cms.hhs.gov"},"theme":[{"identifier":"8f59d3fa-be5b-55ad-b502-fd936cf74d50","data":"State Drug Utilization"}],"keyword":[{"identifier":"c9059e86-abd7-5a06-ad68-ffec9dc8b72f","data":"Medicaid Reimbursements"},{"identifier":"f4c56ef5-b619-5439-a61c-7f8c859fdde1","data":"Drug Utilization"},{"identifier":"6a6f9f2b-b2e6-5fe5-8537-d7573b76105a","data":"Pharmacy"}],"distribution":[{"identifier":"13d1f0b9-d8c1-5a73-92f7-fd249d8e4b2b","data":{"@type":"dcat:Distribution","format":"csv","mediaType":"text\/csv","downloadURL":"https:\/\/download.medicaid.go
