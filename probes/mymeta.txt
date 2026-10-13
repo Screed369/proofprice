@@ -1,0 +1,46 @@
+URL: https://api.data.gov.my/data-catalogue?id=fuelprice&limit=1&sort=-date&meta=true
+Fetched: 2026-10-13T20:36:26Z from GitHub Actions
+Status, type, bytes: 200 application/json 451
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+date: Tue, 13 Oct 2026 20:36:25 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+location: /data-catalogue/?id=fuelprice&limit=1&sort=-date&meta=true
+vary: Origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-do-app-origin: 404fac77-61ff-48b1-8339-787252035e9b
+cache-control: private
+x-do-orig-status: 301
+set-cookie: __cf_bm=TbPJ4w7txceB908si0rQLOWmdf_E4fY6Ov04Kcyi1F8-1791923785.171836-1.0.1.1-9sUFICeFaf1bA1liG9FwIPbLWPDNiCJ5PZgGLbuKEZLTh8PntYlPs4nQoI7CfSDe5zmsglLG_vm.IxiVbrU7T5d4NKLLmQxe0JDuLU5cZgBTurW.R8J1K9usqsvSW9As; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.data.gov.my; Expires=Tue, 13 Oct 2026 21:06:25 GMT
+cf-cache-status: BYPASS
+cf-ray: a4a122e95d28e8d9-SJC
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 200 
+date: Tue, 13 Oct 2026 20:36:26 GMT
+content-type: application/json
+content-length: 451
+server: cloudflare
+allow: GET, HEAD, OPTIONS
+x-frame-options: DENY
+vary: Origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+set-cookie: __cf_bm=Xjh.Mqm41IjUGS1ThsLUPPj7SgpCTbL371BCtBReKh0-1791923785.9552195-1.0.1.1-l9SrkkaTwTOF4Pm6p61FRj5mHTkMkJXzq9wfMicsluwNYGknAuJX5t.Vl5r7LhOOSrVqB5oP0zPiZN7U8TaoDVF4tiCYMDfBQUUIM4l5hHEMq80MDX5X94hazEOdkRqs; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.data.gov.my; Expires=Tue, 13 Oct 2026 21:06:26 GMT
+x-do-app-origin: 404fac77-61ff-48b1-8339-787252035e9b
+cache-control: private
+x-do-orig-status: 200
+accept-ranges: bytes
+cf-cache-status: BYPASS
+cf-ray: a4a122ee3b46e8d9-SJC
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 2500 BYTES
+{"meta": {"catalogue_id": "fuelprice", "data_as_of": "2026-10-08 00:01", "last_updated": "2026-10-07 23:59", "next_update": "2026-10-14 23:59", "data_source": ["MOF"], "update_frequency": "WEEKLY", "total": 1, "sort": "-date", "limit": 1}, "data": [{"date": "2026-10-08", "ron95": 4.67, "ron97": 5.15, "diesel": 5.27, "ron95_skps": 2.05, "diesel_budi": 2.1, "diesel_skds": 2.15, "series_type": "level", "ron95_budi95": 1.99, "diesel_eastmsia": 2.15}]}
