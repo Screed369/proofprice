@@ -54,6 +54,10 @@ Branch `src/<id>`, push, preview-deploy, test the example live, merge to `main`.
 - `npm ci` (generates the registry) · `npm test` · `npm run typecheck` · `npm run build` · `npm run harvest -- <id>`
 - The workspace shell usually cannot reach government sites; test live behaviour through a Vercel deployment.
   The collector runs on GitHub Actions, which can reach them.
+- **Probe** (see a government file's real format from GitHub's servers):
+  `gh workflow run probe.yml -R Screed369/proofprice --ref main -f url=<https url> -f name=<short-id>`, wait ~40 s, then
+  `git fetch origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/<short-id>.txt`.
+  One plain GET, honest user agent; official open-data URLs only.
 
 ## Deploying and testing
 - Preferred: push to GitHub, then deploy with the Vercel connector `create_deployment` using
