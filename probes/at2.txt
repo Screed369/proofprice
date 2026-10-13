@@ -1,0 +1,23 @@
+URL: https://api.e-control.at/sprit/1.0/search/gas-stations/by-address?latitude=48.2082&longitude=16.3738&fuelType=SUP&includeClosed=true
+Fetched: 2026-10-13T20:36:25Z from GitHub Actions
+Status, type, bytes: 200 application/json 12286
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+date: Tue, 13 Oct 2026 20:36:25 GMT
+server: Tomcat
+vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+transfer-encoding: chunked
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-content-type-options: nosniff
+
+=== FILE TYPE: JSON text data
+=== FIRST 1000 BYTES
+[{"id":1476471,"name":"Turmöl","location":{"address":"Margaretenstraße 28","postalCode":"1040","city":"Wien","latitude":48.19633,"longitude":16.36464},"contact":{"telephone":"+43 1 802 2686","fax":"04212/2766-24","mail":"marketing-box@orlen-austria.at","website":"http://www.turmöl.at"},"openingHours":[{"day":"MO","label":"Montag","order":1,"from":"06:00","to":"22:00"},{"day":"DI","label":"Dienstag","order":2,"from":"06:00","to":"22:00"},{"day":"MI","label":"Mittwoch","order":3,"from":"06:00","to":"22:00"},{"day":"DO","label":"Donnerstag","order":4,"from":"06:00","to":"22:00"},{"day":"FR","label":"Freitag","order":5,"from":"06:00","to":"22:00"},{"day":"SA","label":"Samstag","order":6,"from":"08:00","to":"22:00"},{"day":"SO","label":"Sonntag","order":7,"from":"08:00","to":"22:00"},{"day":"FE","label":"Feiertag","order":8,"from":"08:00","to":"22:00"}],"offerInformation":{"service":false,"selfService":true,"unattended":false},"paymentMethods":{"cash":true,"debitCard":true,"creditCard":t
