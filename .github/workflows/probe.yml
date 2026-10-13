@@ -22,10 +22,6 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: probe
-  cancel-in-progress: false
-
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -74,4 +70,10 @@ jobs:
           mkdir -p probes && cp /tmp/p/result.txt "probes/$SAFE.txt"
           git add probes
           git commit -qm "Probe $SAFE" || exit 0
-          git push origin probes
+          # Several probes may run at once: retry on a busy branch (each writes its own file, so no conflicts).
+          for i in 1 2 3 4 5; do
+            git push -q origin probes && exit 0
+            sleep $((i * 3))
+            git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git rebase -q origin/probes
+          done
+          exit 1
