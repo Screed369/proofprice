@@ -169,6 +169,12 @@ export function historyDays(cat: CategoryPlugin): number {
   return daysCache.get(cat.id)!;
 }
 
+/** Echo only the parameters the tool understands (never stray query-string keys). */
+function knownParams(cat: CategoryPlugin, p: Params): Params {
+  const keys = new Set(["country", ...Object.keys(paramSchemas(cat)), "department"]);
+  return Object.fromEntries(Object.entries(p).filter(([k, v]) => keys.has(k) && v !== undefined));
+}
+
 export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, today = new Date()): HistoryAnswer {
   const { src, prepared } = pickSource(cat, params);
   if (!src.harvest || !src.historyKey) {
@@ -211,7 +217,7 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
         : `No history yet for ${itemLabel} in ${key.label}. ProofPrice snapshots this source once a day; history builds up from the first collection.`;
   const src_ = src.info;
   return {
-    query: { ...prepared, days, area_key: key.area, item: key.item },
+    query: { ...knownParams(cat, prepared), days, area_key: key.area, item: key.item },
     status,
     currency,
     unit,
