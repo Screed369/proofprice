@@ -39,3 +39,18 @@ test("ES: daily library rows by province (IDProvincia, else postcode) plus Spain
   assert.deepEqual(esHistoryKey({ postcode: "28001", fuel: "diesel" }), { area: "28", item: "diesel", label: "province 28" });
   assert.equal(esHistoryKey({ fuel: "diesel" })!.area, "ALL");
 });
+
+test("ES: live answer keeps its public shape (no library-only fields)", async () => {
+  const { esFuelNow } = await import("./source");
+  const many = { ...esSample, ListaEESSPrecio: Array.from({ length: 6 }, (_, i) => ({ "C.P.": "42146", IDEESS: String(i), Municipio: "Abejar", "Precio Gasoleo A": `1,9${i}0`, "Rótulo": "X", "Dirección": "A", "Tipo Venta": "P" })) };
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async () => new Response(JSON.stringify(many), { status: 200 })) as typeof fetch;
+  try {
+    const a = await esFuelNow({ area: "42", fuel: "diesel" });
+    assert.equal(a.status, "ok");
+    const cheapest = (a.extra as any).cheapest_stations;
+    assert.deepEqual(Object.keys(cheapest[0]).sort(), ["address", "brand", "id", "postcode", "price", "town"]);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

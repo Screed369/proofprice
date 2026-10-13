@@ -89,9 +89,17 @@ export function writeDaily(sourceId: string, result: HarvestResult): { file: str
   const dir = path.join(sourceDir(sourceId), "daily");
   mkdirSync(dir, { recursive: true });
   const file = path.join(dir, `${result.date.slice(0, 7)}.csv`);
-  const existing = existsSync(file) ? csvToRows(readFileSync(file, "utf8")) : [];
-  const keep = existing.filter((r) => r.date !== result.date);
   const fresh = result.rows.filter((r) => r.n >= MIN_PUBLISH).map((r) => ({ ...r, date: result.date }));
+  if (!fresh.length) return { file, rows: 0 }; // never replace a good day with nothing
+  let existing: LibraryRow[] = [];
+  if (existsSync(file)) {
+    const text = readFileSync(file, "utf8");
+    if (text.trim() && text.split(/\r?\n/)[0].trim() !== DAILY_HEADER) {
+      throw new Error(`${file} has an unexpected header; refusing to overwrite stored history`);
+    }
+    existing = csvToRows(text);
+  }
+  const keep = existing.filter((r) => r.date !== result.date);
   writeFileSync(file, rowsToCsv(sortRows([...keep, ...fresh])));
   return { file, rows: fresh.length };
 }
@@ -129,7 +137,7 @@ export function readDaily(sourceId: string, q: { area: string; item: string; fro
   return sortRows(out);
 }
 
-/** Every date we hold for a source (cheap: reads file names, then the newest file). */
+/** Every date we hold for a source. Reads every month file: use in the collector, not per request. */
 export function libraryDates(sourceId: string): string[] {
   const dir = path.join(sourceDir(sourceId), "daily");
   if (!existsSync(dir)) return [];
@@ -161,7 +169,7 @@ export function libraryStatus(): SourceMeta[] {
   const root = libraryRoot();
   if (!existsSync(root)) return [];
   return readdirSync(root, { withFileTypes: true })
-    .filter((d) => d.isDirectory() && !d.name.startsWith("_") && !d.name.startsWith("."))
+    .filter((d) => d.isDirectory() && /^[a-z0-9][a-z0-9-]*$/.test(d.name))
     .map((d) => readMeta(d.name))
     .filter((m): m is SourceMeta => !!m)
     .sort((a, b) => a.source.localeCompare(b.source));

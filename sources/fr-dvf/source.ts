@@ -1,6 +1,6 @@
 // France: home sale prices from DVF (Demandes de valeurs foncières, DGFiP), using Etalab's
 // per-commune geo-dvf files. We only ever return aggregates (never addresses or parcels).
-import { fetchJson, SourceError } from "../../lib/http";
+import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import type { SourceInfo } from "../../lib/plugin";
@@ -118,7 +118,7 @@ export async function resolveCommunes(input: { postcode?: string; town?: string 
   const fields = "fields=nom,code,codeDepartement";
   if (input.postcode) {
     const cp = input.postcode.replace(/\D/g, "").slice(0, 5);
-    if (cp.length !== 5) throw new SourceError("A French postcode must have 5 digits.");
+    if (cp.length !== 5) throw new InputError("A French postcode must have 5 digits.");
     let list: Commune[] = await fetchJson(`${GEO_API}?codePostal=${cp}&${fields}`, {}, 10000);
     if (list.some((c) => CITY_WITH_ARRONDISSEMENTS.has(c.code))) {
       const arr: Commune[] = await fetchJson(`${GEO_API}?codePostal=${cp}&type=arrondissement-municipal&${fields}`, {}, 10000);
@@ -138,7 +138,7 @@ export async function resolveCommunes(input: { postcode?: string; town?: string 
     }
     return list.slice(0, 1);
   }
-  throw new SourceError("Give a French postcode or town.");
+  throw new InputError("Give a French postcode or town.");
 }
 
 let yearsCache: { at: number; years: number[] } | null = null;
@@ -179,11 +179,11 @@ export async function frHomeSales(input: {
   baseUrl?: string;
 }): Promise<PriceAnswer> {
   const type = (input.property_type ?? "any").toLowerCase() as FrPropertyType;
-  if (!FR_PROPERTY_TYPES.includes(type)) throw new SourceError(`property_type must be one of: ${FR_PROPERTY_TYPES.join(", ")} for France`);
+  if (!FR_PROPERTY_TYPES.includes(type)) throw new InputError(`property_type must be one of: ${FR_PROPERTY_TYPES.join(", ")} for France`);
   const months = Math.max(1, Math.min(24, Math.round(input.months ?? 12)));
   const communes = await resolveCommunes(input);
-  if (!communes.length) throw new SourceError("No French commune found for that postcode or town.");
-  if (communes.length > 25) throw new SourceError("That area covers too many communes; give a postcode instead.");
+  if (!communes.length) throw new InputError("No French commune found for that postcode or town.");
+  if (communes.length > 25) throw new InputError("That area covers too many communes; give a postcode instead.");
   const years = (await dvfYears()).slice(-2);
   const files = await Promise.all(years.flatMap((y) => communes.map((c) => fetchCommuneCsv(y, c))));
   const sales = files.flatMap(dvfSales).filter((s) => type === "any" || s.type === type);

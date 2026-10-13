@@ -1,7 +1,7 @@
 // Manifest: England & Wales home sales (HM Land Registry Price Paid Data). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { SourceError } from "../../lib/http";
+import { InputError } from "../../lib/http";
 import { INFO, ukHomeSales, UK_PROPERTY_TYPES, UkPropertyType } from "./source";
 
 export default defineSource({
@@ -23,10 +23,10 @@ export default defineSource({
   method: "England & Wales: standard-price sales (category A) only; repossessions and transfers to companies are excluded.",
   handle: (p, ctx) => {
     const town = str(p.town);
-    if (!town) throw new SourceError("A town is required.");
+    if (!town) throw new InputError("A town is required.");
     const pt = (str(p.property_type) ?? "any").toLowerCase();
     if (!UK_PROPERTY_TYPES.includes(pt as UkPropertyType)) {
-      throw new SourceError(`property_type must be one of: ${UK_PROPERTY_TYPES.join(", ")}`);
+      throw new InputError(`property_type must be one of: ${UK_PROPERTY_TYPES.join(", ")}`);
     }
     return ukHomeSales({
       town,

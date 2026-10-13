@@ -1,6 +1,6 @@
 // Manifest: France home sales (DVF, DGFiP via Etalab geo-dvf). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { SourceError } from "../../lib/http";
+import { InputError } from "../../lib/http";
 import { INFO, frHomeSales } from "./source";
 
 export default defineSource({
@@ -20,7 +20,7 @@ export default defineSource({
   method:
     "France (DVF): only plain sales of exactly one house or apartment are counted; sales that bundle several homes or commercial premises are left out. DVF arrives with a delay of several months, so the period shown is the latest available.",
   handle: (p, ctx) => {
-    if (!str(p.town) && !str(p.postcode)) throw new SourceError("A French town or postcode is required.");
+    if (!str(p.town) && !str(p.postcode)) throw new InputError("A French town or postcode is required.");
     return frHomeSales({
       postcode: str(p.postcode),
       town: str(p.town),

@@ -1,6 +1,6 @@
 // Manifest: France live pump prices. Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { SourceError } from "../../lib/http";
+import { InputError } from "../../lib/http";
 import { Fuel } from "../../lib/fuels";
 import { INFO, FR_NAME, frFuelNow, frHarvest, frHistoryKey } from "./source";
 
@@ -18,7 +18,7 @@ export default defineSource({
   examples: [{ params: { country: "FR", postcode: "75015", fuel: "diesel" } }],
   handle: (p, ctx) => {
     const fr = FR_NAME[p.fuel as Fuel];
-    if (!fr) throw new SourceError(`Fuel '${p.fuel}' is not published for France.`);
+    if (!fr) throw new InputError(`Fuel '${p.fuel}' is not published for France.`);
     return frFuelNow({ postcode: str(p.postcode), department: str(p.department) ?? str(p.area), fuel: fr, baseUrl: ctx.baseUrl });
   },
   harvest: frHarvest,

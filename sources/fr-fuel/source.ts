@@ -1,7 +1,7 @@
 // France live pump prices from the Ministère de l'Économie open feed (updated ~every 10 minutes).
 // Station addresses are business addresses and are returned for the cheapest stations.
 
-import { fetchJson, SourceError } from "../../lib/http";
+import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import type { HarvestResult, SourceInfo } from "../../lib/plugin";
@@ -115,7 +115,7 @@ export async function frFuelNow(input: {
     where = `code_departement="${d}"`;
     area = `department ${d}`;
   } else {
-    throw new SourceError("Give a French postcode or department code.");
+    throw new InputError("Give a French postcode or department code.");
   }
   const stations: Station[] = [];
   for (let offset = 0; offset < 500; offset += 100) {
@@ -126,7 +126,7 @@ export async function frFuelNow(input: {
   }
   const s = summarise(stations.map((x) => x.price));
   const updates = stations.map((x) => x.updated).filter(Boolean).sort() as string[];
-  const cheapest = [...stations].sort((a, b) => a.price - b.price).slice(0, 3);
+  const cheapest = [...stations].sort((a, b) => a.price - b.price).slice(0, 3).map(({ department, ...s }) => s);
   return buildAnswer({
     source: INFO,
     query: { country: "FR", postcode: input.postcode ?? null, department: input.department ?? null, fuel: input.fuel },
@@ -146,20 +146,24 @@ export async function frFuelNow(input: {
 const EXPORT_URL =
   "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/exports/json";
 const STALE_DAYS = 8;
+/** National row: metropolitan France only (overseas departments have regulated, very different prices). */
+const METRO = "ALL";
 
 /** One day of aggregates for the price library: every department and fuel, plus France as a whole ("ALL").
  *  Prices not updated in the last 8 days are left out, so closed stations do not freeze the figures. */
 export function frDailyRows(records: any[], today: string): HarvestResult {
-  const cutoff = new Date(Date.parse(today + "T00:00:00Z") - STALE_DAYS * 86400000).toISOString();
+  const cutoffMs = Date.parse(today + "T00:00:00Z") - STALE_DAYS * 86400000;
   const rows: { area: string; item: string; price: number }[] = [];
   for (const [common, fr] of Object.entries(FR_NAME) as [Fuel, FrFuel][]) {
     for (const st of parseFrRecords({ results: records }, fr)) {
       if (!st.department) continue;
-      if (st.updated && new Date(st.updated).toISOString() < cutoff) continue;
+      const t = st.updated ? Date.parse(st.updated) : NaN;
+      if (Number.isFinite(t) && t < cutoffMs) continue;
       rows.push({ area: st.department, item: common, price: st.price });
+      if (!st.department.startsWith("97") && !st.department.startsWith("98")) rows.push({ area: METRO, item: common, price: st.price });
     }
   }
-  return { date: today, currency: "EUR", unit: "per litre", rows: aggregateDaily(rows) };
+  return { date: today, currency: "EUR", unit: "per litre", rows: aggregateDaily(rows, false) };
 }
 
 export async function frHarvest(): Promise<HarvestResult> {
@@ -175,8 +179,14 @@ export async function frHarvest(): Promise<HarvestResult> {
 }
 
 export function frHistoryKey(p: { postcode?: string; department?: string; fuel: string }): { area: string; item: string; label: string } | null {
-  let d: string | null = null;
-  if (p.postcode) d = frDepartment({ cp: p.postcode });
-  else if (p.department) d = p.department.replace(/[^0-9AB]/gi, "").toUpperCase().slice(0, 3) || null;
-  return d ? { area: d, item: p.fuel, label: `department ${d}` } : { area: "ALL", item: p.fuel, label: "France" };
+  if (!FR_NAME[p.fuel as Fuel]) return null;
+  if (p.postcode) {
+    const d = frDepartment({ cp: p.postcode });
+    return d ? { area: d, item: p.fuel, label: `department ${d}` } : null;
+  }
+  if (p.department) {
+    const d = p.department.trim().toUpperCase();
+    return /^(\d{2,3}|2A|2B)$/.test(d) ? { area: d, item: p.fuel, label: `department ${d}` } : null;
+  }
+  return { area: "ALL", item: p.fuel, label: "metropolitan France" };
 }

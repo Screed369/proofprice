@@ -1,5 +1,5 @@
 // Spain: live pump prices from the Ministry's open REST service (format checked live on 13 Oct 2026).
-import { fetchJson, SourceError } from "../../lib/http";
+import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { Fuel, FUEL_LABEL, stripAccents } from "../../lib/fuels";
@@ -72,7 +72,7 @@ export function parseEsStations(json: any, fuel: Fuel): { stations: EsStation[];
   const list = json?.ListaEESSPrecio;
   if (!Array.isArray(list)) throw new SourceError("Unexpected response from the Spanish fuel price service");
   const field = ES_FIELD[fuel];
-  if (!field) throw new SourceError(`Fuel '${fuel}' is not published for Spain.`);
+  if (!field) throw new InputError(`Fuel '${fuel}' is not published for Spain.`);
   const stations = list
     // "P" = open to the public; "R" = restricted (e.g. members only), so left out.
     .filter((r: any) => String(r["Tipo Venta"] ?? "P").toUpperCase() === "P")
@@ -101,14 +101,14 @@ export async function esFuelNow(input: {
   fuel: Fuel;
   baseUrl?: string;
 }): Promise<PriceAnswer> {
-  if (!ES_FIELD[input.fuel]) throw new SourceError(`Fuel '${input.fuel}' is not published for Spain.`);
+  if (!ES_FIELD[input.fuel]) throw new InputError(`Fuel '${input.fuel}' is not published for Spain.`);
   const cp = input.postcode?.replace(/\D/g, "");
   let province = cp ? esProvinceFromPostcode(cp) : null;
   if (!province && input.area) {
     const a = input.area.replace(/\D/g, "").padStart(2, "0");
     if (Number(a) >= 1 && Number(a) <= 52) province = a;
   }
-  if (!province) throw new SourceError("Give a 5-digit Spanish postcode, or a province code (01–52) as area.");
+  if (!province) throw new InputError("Give a 5-digit Spanish postcode, or a province code (01–52) as area.");
 
   const json = await fetchJson(BASE + province, { headers: { accept: "application/json" } }, 20000);
   const { stations: all, fecha } = parseEsStations(json, input.fuel);
@@ -132,7 +132,7 @@ export async function esFuelNow(input: {
 
   const s = summarise(picked.map((x) => x.price));
   const day = fechaToIso(fecha);
-  const cheapest = [...picked].sort((a, b) => a.price - b.price).slice(0, 3);
+  const cheapest = [...picked].sort((a, b) => a.price - b.price).slice(0, 3).map(({ province, ...s }) => s);
   const unit = input.fuel === "methane" ? "per kg" : "per litre";
   return buildAnswer({
     source: INFO,
@@ -150,6 +150,8 @@ export async function esFuelNow(input: {
   });
 }
 
+const ES_OUTSIDE_NATIONAL = new Set(["35", "38", "51", "52"]);
+
 /** One day of aggregates for the price library: every province and fuel, plus Spain as a whole ("ALL"). */
 export function esDailyRows(json: any): HarvestResult {
   const records: { area: string; item: string; price: number }[] = [];
@@ -157,10 +159,15 @@ export function esDailyRows(json: any): HarvestResult {
   for (const fuel of Object.keys(ES_FIELD) as Fuel[]) {
     const parsed = parseEsStations(json, fuel);
     fecha = parsed.fecha;
-    for (const s of parsed.stations) if (s.province) records.push({ area: s.province, item: fuel, price: s.price });
+    for (const s of parsed.stations) {
+      if (!s.province) continue;
+      records.push({ area: s.province, item: fuel, price: s.price });
+      // National row: mainland Spain and the Balearics (Canarias, Ceuta and Melilla have different fuel taxes).
+      if (!ES_OUTSIDE_NATIONAL.has(s.province)) records.push({ area: "ALL", item: fuel, price: s.price });
+    }
   }
   const date = fechaToIso(fecha) ?? new Date().toISOString().slice(0, 10);
-  return { date, currency: "EUR", unit: "per litre (CNG per kg)", rows: aggregateDaily(records) };
+  return { date, currency: "EUR", unit: "per litre (CNG per kg)", rows: aggregateDaily(records, false) };
 }
 
 export async function esHarvest(): Promise<HarvestResult> {
@@ -170,11 +177,15 @@ export async function esHarvest(): Promise<HarvestResult> {
 
 /** Library keys for a request: province from the postcode or area, or the whole country. */
 export function esHistoryKey(p: { postcode?: string; area?: string; fuel: string }): { area: string; item: string; label: string } | null {
-  const cp = p.postcode?.replace(/\D/g, "");
-  let province = cp ? esProvinceFromPostcode(cp) : null;
-  if (!province && p.area) {
-    const a = p.area.replace(/\D/g, "").padStart(2, "0");
-    if (Number(a) >= 1 && Number(a) <= 52) province = a;
+  if (!ES_FIELD[p.fuel as Fuel]) return null;
+  if (p.postcode) {
+    const province = esProvinceFromPostcode(p.postcode);
+    return province ? { area: province, item: p.fuel, label: `province ${province}` } : null;
   }
-  return province ? { area: province, item: p.fuel, label: `province ${province}` } : { area: "ALL", item: p.fuel, label: "Spain" };
+  if (p.area) {
+    if (!/^\d{1,2}$/.test(p.area.trim())) return null;
+    const a = p.area.trim().padStart(2, "0");
+    return Number(a) >= 1 && Number(a) <= 52 ? { area: a, item: p.fuel, label: `province ${a}` } : null;
+  }
+  return { area: "ALL", item: p.fuel, label: "mainland Spain and the Balearics" };
 }

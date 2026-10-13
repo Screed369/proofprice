@@ -1,7 +1,7 @@
 // Manifest: Singapore public-housing (HDB) resale prices. Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { SourceError } from "../../lib/http";
+import { InputError } from "../../lib/http";
 import { INFO, sgHomeSales, SG_FLAT_TYPES } from "./source";
 
 export default defineSource({
@@ -21,7 +21,7 @@ export default defineSource({
   ],
   handle: (p, ctx) => {
     const town = str(p.town);
-    if (!town) throw new SourceError("A town is required.");
+    if (!town) throw new InputError("A town is required.");
     return sgHomeSales({ town, flat_type: str(p.flat_type), months: num(p.months), baseUrl: ctx.baseUrl });
   },
 });

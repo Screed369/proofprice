@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { aggregateDaily } from "../lib/library/aggregate";
@@ -46,4 +46,24 @@ test("history: a series with the change over the period, honest when empty", () 
   assert.equal(none.series.length, 0);
   assert.equal(libraryStatus()[0].source, "es-fuel");
   assert.throws(() => runHistory(categoryById("home-sales")!, { country: "GB", town: "Bristol" }), /daily history/);
+});
+
+test("store: never wipes history (bad header refused, empty day ignored)", () => {
+  writeDaily("it-fuel", { date: "2026-10-20", currency: "EUR", unit: "per litre", rows: [row("MI", "diesel", 40, 1.8)] });
+  const res = writeDaily("it-fuel", { date: "2026-10-20", currency: "EUR", unit: "per litre", rows: [row("MI", "diesel", 2, 1.9)] });
+  assert.equal(res.rows, 0);
+  assert.equal(readDaily("it-fuel", { area: "MI", item: "diesel", from: "2026-10-01", to: "2026-10-31" }).length, 1);
+  const file = path.join(dir, "it-fuel", "daily", "2026-10.csv");
+  writeFileSync(file, "date,area,item,n,median,low,high,min,max,extra\n2026-10-19,MI,diesel,40,1.8,1.7,1.9,1.6,2,x\n");
+  assert.throws(() => writeDaily("it-fuel", { date: "2026-10-21", currency: "EUR", unit: "per litre", rows: [row("MI", "diesel", 40, 1.8)] }), /unexpected header/);
+  mkdirSync(path.join(dir, "Odd_Folder"), { recursive: true });
+  assert.ok(Array.isArray(libraryStatus()));
+});
+
+test("history: asks the same questions the live tool accepts", () => {
+  const fuel = categoryById("fuel")!;
+  const now = new Date("2026-11-02T12:00:00Z");
+  assert.throws(() => runHistory(fuel, { country: "FR", fuel: "methane" }, {}, now), /History is kept by area and fuel/);
+  assert.throws(() => runHistory(fuel, { country: "ES", area: "Madrid", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
+  assert.throws(() => runHistory(fuel, { country: "IT", area: "Milano", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
 });

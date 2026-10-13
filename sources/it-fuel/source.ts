@@ -1,6 +1,6 @@
 // Italy: pump prices from MIMIT's daily open-data files (format checked live on 13 Oct 2026).
 // Two pipe-separated files: station list and the prices in force at 8:00. Line 1 is "Estrazione del YYYY-MM-DD".
-import { SourceError } from "../../lib/http";
+import { InputError, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { Fuel, FUEL_LABEL, stripAccents } from "../../lib/fuels";
@@ -150,10 +150,10 @@ export async function itFuelNow(input: {
   service?: "self" | "served";
   baseUrl?: string;
 }): Promise<PriceAnswer> {
-  if (!IT_FUEL[input.fuel]) throw new SourceError(`Fuel '${input.fuel}' is not published for Italy. Use diesel, petrol95, lpg or methane.`);
+  if (!IT_FUEL[input.fuel]) throw new InputError(`Fuel '${input.fuel}' is not published for Italy. Use diesel, petrol95, lpg or methane.`);
   const province = input.area?.trim().toUpperCase();
-  if (!province && !input.town) throw new SourceError("Give an Italian town (comune) or a 2-letter province code as area, e.g. 'MI' or 'RM'.");
-  if (province && !/^[A-Z]{2}$/.test(province)) throw new SourceError("Italian area must be a 2-letter province code, e.g. 'MI' or 'RM'.");
+  if (!province && !input.town) throw new InputError("Give an Italian town (comune) or a 2-letter province code as area, e.g. 'MI' or 'RM'.");
+  if (province && !/^[A-Z]{2}$/.test(province)) throw new InputError("Italian area must be a 2-letter province code, e.g. 'MI' or 'RM'.");
   const service = input.service === "served" ? "served" : "self";
   const data = await loadItaly();
   const rows = selectItPrices(data.prices, data.stations, { fuel: input.fuel, service, province, town: input.town, extracted: data.extracted });
@@ -206,8 +206,12 @@ export async function itHarvest(): Promise<HarvestResult> {
 }
 
 export function itHistoryKey(p: { area?: string; fuel: string; service?: string }): { area: string; item: string; label: string } | null {
+  if (!IT_FUEL[p.fuel as Fuel]) return null;
   const service = p.service === "served" ? "served" : "self";
   const item = itItem(p.fuel as Fuel, service);
-  const prov = p.area?.trim().toUpperCase();
-  return prov && /^[A-Z]{2}$/.test(prov) ? { area: prov, item, label: `province ${prov}` } : { area: "ALL", item, label: "Italy" };
+  if (p.area) {
+    const prov = p.area.trim().toUpperCase();
+    return /^[A-Z]{2}$/.test(prov) ? { area: prov, item, label: `province ${prov}` } : null;
+  }
+  return { area: "ALL", item, label: "Italy" };
 }

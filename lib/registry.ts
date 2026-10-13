@@ -8,7 +8,7 @@ import { num } from "./plugin";
 import { normaliseCountry } from "./countries";
 import { InputError } from "./http";
 import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
-import { readDaily, readMeta, libraryDates } from "./library/store";
+import { readDaily, readMeta } from "./library/store";
 import { MIN_PUBLISH } from "./stats";
 import { joinAnd } from "./text";
 
@@ -147,7 +147,7 @@ export interface HistoryAnswer {
   change: null | { from_median: number; to_median: number; absolute: number; percent: number };
   price_type: string;
   source: PriceAnswer["source"];
-  library: { first_date: string | null; last_date: string | null; days_collected: number };
+  library: { first_date: string | null; last_date: string | null; days_collected: number; days_since_last_snapshot: number | null };
   method: string;
   method_url: string;
   summary: string;
@@ -158,9 +158,15 @@ export function historySources(cat: CategoryPlugin): SourcePlugin[] {
   return sourcesFor(cat.id).filter((s) => s.harvest && s.historyKey);
 }
 
-/** Days of history held for a category (the best source), to decide whether to offer the history tool. */
+const daysCache = new Map<string, number>();
+
+/** Days of history held for a category (the best source), to decide whether to offer the history tool.
+ *  Read from meta.json (written by the collector) and memoised: the library cannot change inside one deployment. */
 export function historyDays(cat: CategoryPlugin): number {
-  return Math.max(0, ...historySources(cat).map((s) => libraryDates(s.info.id).length));
+  if (!daysCache.has(cat.id)) {
+    daysCache.set(cat.id, Math.max(0, ...historySources(cat).map((s) => readMeta(s.info.id)?.days ?? 0)));
+  }
+  return daysCache.get(cat.id)!;
 }
 
 export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, today = new Date()): HistoryAnswer {
@@ -169,12 +175,16 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
     throw new InputError(`We do not keep daily history for ${src.info.country} ${cat.noun.toLowerCase()} yet.`);
   }
   const key = src.historyKey(prepared);
-  if (!key) throw new InputError("History is kept by area; give an area or postcode this source understands.");
+  if (!key) throw new InputError("History is kept by area and fuel; give an area or postcode and a fuel this source publishes.");
   const days = Math.max(2, Math.min(366, Math.round(num(params.days) ?? 30)));
-  const to = today.toISOString().slice(0, 10);
-  const from = new Date(today.getTime() - (days - 1) * 86400000).toISOString().slice(0, 10);
-  const rows = readDaily(src.info.id, { area: key.area, item: key.item, from, to }).filter((r) => r.n >= MIN_PUBLISH);
   const meta = readMeta(src.info.id);
+  // The window ends on the last day the library holds (normally today), so a late deploy never hides the data.
+  const todayIso = today.toISOString().slice(0, 10);
+  const to = meta?.last_date ?? todayIso;
+  const end = new Date(to + "T00:00:00Z");
+  const from = new Date(end.getTime() - (days - 1) * 86400000).toISOString().slice(0, 10);
+  const rows = readDaily(src.info.id, { area: key.area, item: key.item, from, to }).filter((r) => r.n >= MIN_PUBLISH);
+  const staleDays = meta?.last_date ? Math.max(0, Math.round((Date.parse(todayIso) - Date.parse(meta.last_date)) / 86400000)) : null;
   const unit = cat.history?.unit?.(key.item) ?? meta?.unit ?? null;
   const currency = meta?.currency ?? null;
   const itemLabel = cat.history?.itemLabel?.(key.item) ?? key.item;
@@ -218,7 +228,12 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
       attribution: src_.attribution,
       url: src_.homepage,
     },
-    library: { first_date: meta?.first_date ?? null, last_date: meta?.last_date ?? null, days_collected: meta?.days ?? 0 },
+    library: {
+      first_date: meta?.first_date ?? null,
+      last_date: meta?.last_date ?? null,
+      days_collected: meta?.days ?? 0,
+      days_since_last_snapshot: staleDays,
+    },
     method:
       "Once a day ProofPrice takes a snapshot of the official source and stores, for each area and item, the median, 10th–90th percentile and count. " +
       `Days with fewer than ${MIN_PUBLISH} records are not shown.`,

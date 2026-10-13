@@ -30,3 +30,10 @@ test("FR: departments (Corsica, overseas) and daily library rows skip stale pric
   assert.deepEqual(keys, ["75/diesel/2", "75/petrol95/1", "ALL/diesel/2", "ALL/petrol95/1"]);
   assert.equal(frHistoryKey({ postcode: "69003", fuel: "diesel" })!.area, "69");
 });
+
+test("FR: an unreadable timestamp never stops the daily collection", async () => {
+  const { frDailyRows } = await import("./source");
+  const day = frDailyRows([{ id: 1, cp: "75015", gazole_prix: 1.75, gazole_maj: "13/10/2026 08:00" }, { id: 2, cp: "97110", gazole_prix: 1.9, gazole_maj: "2026-10-13T08:00:00+00:00" }], "2026-10-14");
+  const keys = day.rows.map((r) => `${r.area}/${r.item}/${r.n}`);
+  assert.deepEqual(keys, ["75/diesel/1", "971/diesel/1", "ALL/diesel/1"]); // overseas kept per department, left out of the national row
+});

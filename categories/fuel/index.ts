@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { FUELS, FUEL_LABEL, normaliseFuel, Fuel } from "../../lib/fuels";
-import { SourceError } from "../../lib/http";
+import { InputError } from "../../lib/http";
 import { joinOr } from "../../lib/text";
 
 export default defineCategory({
@@ -26,7 +26,7 @@ export default defineCategory({
   required: ["fuel"],
   prepare: (p) => {
     const fuel = normaliseFuel(str(p.fuel) ?? "");
-    if (!fuel) throw new SourceError(`fuel must be one of: ${FUELS.join(", ")}`);
+    if (!fuel) throw new InputError(`fuel must be one of: ${FUELS.join(", ")}`);
     return { ...p, fuel };
   },
   history: {
