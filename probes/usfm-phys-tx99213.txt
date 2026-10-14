@@ -1,0 +1,35 @@
+URL: https://data.cms.gov/data-api/v1/dataset/6fea9d79-0129-4e4c-b1b8-23cd86a4f435/data?filter%5BRndrng_Prvdr_Geo_Lvl%5D=State&filter%5BRndrng_Prvdr_Geo_Desc%5D=Texas&filter%5BHCPCS_Cd%5D=99213
+Fetched: 2026-10-14T15:56:39Z from GitHub Actions
+Status, type, bytes: 200 application/json 1059
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-language: en
+content-security-policy: report-uri /report-csp-violation
+content-type: application/json
+etag: "1791993398-gzip"
+last-modified: Wed, 14 Oct 2026 15:56:38 GMT
+referrer-policy: no-referrer-when-downgrade
+x-age: 0
+x-ah-environment: prod
+x-akamai-original-url: 08ff4c8072129a48657f3e6043a1820662e60637
+x-consumer-id: 07eafadc-1bac-4607-8441-20c35fa46f17
+x-content-type-options: nosniff
+x-drupal-dynamic-cache: MISS
+x-frame-options: SAMEORIGIN
+x-generator: Drupal 10 (https://www.drupal.org)
+x-request-id: v-d715643e-c7e7-11f1-a6ea-f3e01cc81fb6
+x-xss-protection: 1; mode=block
+expires: Wed, 14 Oct 2026 15:56:39 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Wed, 14 Oct 2026 15:56:39 GMT
+content-length: 1059
+strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+x-xss-protection: 1; mode=block
+akamai-grn: 0.17192117.1791993398.fdbbe9b
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+[{"Rndrng_Prvdr_Geo_Lvl":"State","Rndrng_Prvdr_Geo_Cd":"48","Rndrng_Prvdr_Geo_Desc":"Texas","HCPCS_Cd":"99213","HCPCS_Desc":"Established patient office or other outpatient visit with low level od decision making, if using time, 20 minutes or more","HCPCS_Drug_Ind":"N","Place_Of_Srvc":"F","Tot_Rndrng_Prvdrs":"6932","Tot_Benes":"121289","Tot_Srvcs":"237389","Tot_Bene_Day_Srvcs":"237361","Avg_Sbmtd_Chrg":"178.19305789","Avg_Mdcr_Alowd_Amt":"60.407738943","Avg_Mdcr_Pymt_Amt":"43.615550004","Avg_Mdcr_Stdzd_Amt":"43.984135659"},{"Rndrng_Prvdr_Geo_Lvl":"State","Rndrng_Prvdr_Geo_Cd":"48","Rndrng_Prvdr_Geo_Desc":"Texas","HCPCS_Cd":"99213","HCPCS_Desc":"Established patient office or other outpatient visit with low level od decision making, if using time, 20 minutes or more","HCPCS_Drug_Ind":"N","Place_Of_Srvc":"O","Tot_Rndrng_Prvdrs":"43385","Tot_Benes":"1284409","Tot_Srvcs":"4080342","Tot_Bene_Day_Srvcs":"4079908","Avg_Sbmtd_Chrg":"185.41948879","Avg_Mdcr_Alowd_Amt":"83.754834965","Avg_Mdcr_Pymt_Amt":"57.851644859","Avg_Mdcr_Stdzd_Amt":"59.570995466"}]
