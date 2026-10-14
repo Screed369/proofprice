@@ -1,0 +1,33 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/09895?lang=en
+Fetched: 2026-10-14T15:44:51Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1331
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:44:51 GMT
+server: 
+content-type: application/json; charset=utf-8
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 91369092
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=62600422.742; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"language":"en","id":"09895","label":"09895: Rental market survey. Average monthly rents and annual rents per sqm, by price zone and number of rooms (NOK) 2012-2025","description":"","sortCode":"0000000040","updated":"2025-12-22T07:00:00Z","firstPeriod":"2012","lastPeriod":"2025","category":"public","variableNames":["price zone","number of rooms","contents","year"],"source":"Statistics Norway","subjectCode":"pp","timeUnit":"Annual","paths":[[{"id":"bb","label":"Construction, housing and property","sortCode":"0000026"},{"id":"bb01","label":"Dwelling and housing conditions","sortCode":"0000027"},{"id":"lmu","label":"Rental market survey","sortCode":"0000028"}],[{"id":"pp","label":"Prices and price indices","sortCode":"0000083"},{"id":"pp01","label":"House prices and house price indices","sortCode":"0000084"},{"id":"lmu","label":"Rental market survey","sortCode":"0000085"}]],"links":[{"rel":"self","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/09895?lang=en"},{"rel":"alternate","hreflang":"no","href":"https://data.ssb.no/api/pxwebapi/v2/tables/09895?lang=no"},{"rel":"metadata","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/09895/metadata?lang=en"},{"rel":"data","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/09895/data?lang=en&outputFormat=json-stat2"}]}
