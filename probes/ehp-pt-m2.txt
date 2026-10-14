@@ -1,0 +1,5751 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0012241&lang=EN
+Fetched: 2026-10-14T15:56:39Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 172301
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Wed, 14 Oct 2026 15:56:39 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=8ThKpxrMufxERNJHuHvQb-ozD0K_7aQCKTCNwl7E.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+[ {
+  "IndicadorCod" : "0012241",
+  "IndicadorNome" : "Median value of dwellings sales in the last 12 months (Methodology 2022 - €/ m²) by Geographic location (NUTS - 2024) and Dwelling typology; Quarterly - Statistics on house prices at local level (Methodology 2022)",
+  "Periodic" : "Quarterly",
+  "PrimeiroPeriodo" : "4th Quarter 2019",
+  "UltimoPeriodo" : "1st Quarter 2026",
+  "UnidadeMedida" : "Euro/ Square metre (€/ m²)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-07-17",
+  "DataExtracao" : "2026-10-14T16:56:38.940+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Quarter)",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic location (NUTS - 2024)",
+      "versao" : "05432",
+      "nota_dsg" : "Geographical breakdown at the municipality and parish level occurs only in the metropolitan areas of Lisboa and Porto, the Algarve region and other municipalities with more than 100 thousand inhabitants (2021 Census)."
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Dwelling typology",
+      "versao" : "00515"
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S5A20194" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20194",
+        "categ_cod" : "S5A20194",
+        "categ_dsg" : "4th Quarter 2019",
+        "categ_ord" : "20191001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20201" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20201",
+        "categ_cod" : "S5A20201",
+        "categ_dsg" : "1st Quarter 2020",
+        "categ_ord" : "20200101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20202" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20202",
+        "categ_cod" : "S5A20202",
+        "categ_dsg" : "2nd Quarter 2020",
+        "categ_ord" : "20200401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20203" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20203",
+        "categ_cod" : "S5A20203",
+        "categ_dsg" : "3rd Quarter 2020",
+        "categ_ord" : "20200701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20204" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20204",
+        "categ_cod" : "S5A20204",
+        "categ_dsg" : "4th Quarter 2020",
+        "categ_ord" : "20201001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20211" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20211",
+        "categ_cod" : "S5A20211",
+        "categ_dsg" : "1st Quarter 2021",
+        "categ_ord" : "20210101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20212" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20212",
+        "categ_cod" : "S5A20212",
+        "categ_dsg" : "2nd Quarter 2021",
+        "categ_ord" : "20210401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20213" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20213",
+        "categ_cod" : "S5A20213",
+        "categ_dsg" : "3rd Quarter 2021",
+        "categ_ord" : "20210701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20214" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20214",
+        "categ_cod" : "S5A20214",
+        "categ_dsg" : "4th Quarter 2021",
+        "categ_ord" : "20211001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20221" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20221",
+        "categ_cod" : "S5A20221",
+        "categ_dsg" : "1st Quarter 2022",
+        "categ_ord" : "20220101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20222" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20222",
+        "categ_cod" : "S5A20222",
+        "categ_dsg" : "2nd Quarter 2022",
+        "categ_ord" : "20220401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20223" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20223",
+        "categ_cod" : "S5A20223",
+        "categ_dsg" : "3rd Quarter 2022",
+        "categ_ord" : "20220701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20224" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20224",
+        "categ_cod" : "S5A20224",
+        "categ_dsg" : "4th Quarter 2022",
+        "categ_ord" : "20221001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20231" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20231",
+        "categ_cod" : "S5A20231",
+        "categ_dsg" : "1st Quarter 2023",
+        "categ_ord" : "20230101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20232" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20232",
+        "categ_cod" : "S5A20232",
+        "categ_dsg" : "2nd Quarter 2023",
+        "categ_ord" : "20230401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20233" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20233",
+        "categ_cod" : "S5A20233",
+        "categ_dsg" : "3rd Quarter 2023",
+        "categ_ord" : "20230701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20234" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20234",
+        "categ_cod" : "S5A20234",
+        "categ_dsg" : "4th Quarter 2023",
+        "categ_ord" : "20231001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20241" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20241",
+        "categ_cod" : "S5A20241",
+        "categ_dsg" : "1st Quarter 2024",
+        "categ_ord" : "20240101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20242" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20242",
+        "categ_cod" : "S5A20242",
+        "categ_dsg" : "2nd Quarter 2024",
+        "categ_ord" : "20240401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20243" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20243",
+        "categ_cod" : "S5A20243",
+        "categ_dsg" : "3rd Quarter 2024",
+        "categ_ord" : "20240701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20244" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20244",
+        "categ_cod" : "S5A20244",
+        "categ_dsg" : "4th Quarter 2024",
+        "categ_ord" : "20241001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20251" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20251",
+        "categ_cod" : "S5A20251",
+        "categ_dsg" : "1st Quarter 2025",
+        "categ_ord" : "20250101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20252" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20252",
+        "categ_cod" : "S5A20252",
+        "categ_dsg" : "2nd Quarter 2025",
+        "categ_ord" : "20250401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20253" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20253",
+        "categ_cod" : "S5A20253",
+        "categ_dsg" : "3rd Quarter 2025",
+        "categ_ord" : "20250701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20254" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20254",
+        "categ_cod" : "S5A20254",
+        "categ_dsg" : "4th Quarter 2025",
+        "categ_ord" : "20251001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20261" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20261",
+        "categ_cod" : "S5A20261",
+        "categ_dsg" : "1st Quarter 2026",
+        "categ_ord" : "20260101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num2_PT" : [ {
+        "dim_num" : "2",
+        "cat_id" : "PT",
+        "categ_cod" : "PT",
+        "categ_dsg" : "Portugal",
+        "categ_ord" : "1",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num2_1" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1",
+        "categ_cod" : "1",
+        "categ_dsg" : "Continente",
+        "categ_ord" : "2",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_11" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11",
+        "categ_cod" : "11",
+        "categ_dsg" : "Norte",
+        "categ_ord" : "3",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_111" : [ {
+        "dim_num" : "2",
+        "cat_id" : "111",
+        "categ_cod" : "111",
+        "categ_dsg" : "Alto Minho",
+        "categ_ord" : "4",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_112" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112",
+        "categ_cod" : "112",
+        "categ_dsg" : "Cávado",
+        "categ_ord" : "5",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1120302" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302",
+        "categ_cod" : "1120302",
+        "categ_dsg" : "Barcelos",
+        "categ_ord" : "6",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_112030201" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030201",
+        "categ_cod" : "112030201",
+        "categ_dsg" : "Abade de Neiva",
+        "categ_ord" : "7",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030202" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030202",
+        "categ_cod" : "112030202",
+        "categ_dsg" : "Aborim",
+        "categ_ord" : "8",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030203" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030203",
+        "categ_cod" : "112030203",
+        "categ_dsg" : "Adães",
+        "categ_ord" : "9",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030205" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030205",
+        "categ_cod" : "112030205",
+        "categ_dsg" : "Airó",
+        "categ_ord" : "10",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030206" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030206",
+        "categ_cod" : "112030206",
+        "categ_dsg" : "Aldreu",
+        "categ_ord" : "11",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030208" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030208",
+        "categ_cod" : "112030208",
+        "categ_dsg" : "Alvelos",
+        "categ_ord" : "12",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030209" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030209",
+        "categ_cod" : "112030209",
+        "categ_dsg" : "Arcozelo",
+        "categ_ord" : "13",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030210" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030210",
+        "categ_cod" : "112030210",
+        "categ_dsg" : "Areias",
+        "categ_ord" : "14",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030212" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030212",
+        "categ_cod" : "112030212",
+        "categ_dsg" : "Balugães",
+        "categ_ord" : "15",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030213" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030213",
+        "categ_cod" : "112030213",
+        "categ_dsg" : "Barcelinhos",
+        "categ_ord" : "16",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030215" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030215",
+        "categ_cod" : "112030215",
+        "categ_dsg" : "Barqueiros",
+        "categ_ord" : "17",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030216" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030216",
+        "categ_cod" : "112030216",
+        "categ_dsg" : "Cambeses",
+        "categ_ord" : "18",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030218" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030218",
+        "categ_cod" : "112030218",
+        "categ_dsg" : "Carapeços",
+        "categ_ord" : "19",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030220" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030220",
+        "categ_cod" : "112030220",
+        "categ_dsg" : "Carvalhal",
+        "categ_ord" : "20",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030221" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030221",
+        "categ_cod" : "112030221",
+        "categ_dsg" : "Carvalhas",
+        "categ_ord" : "21",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030224" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030224",
+        "categ_cod" : "112030224",
+        "categ_dsg" : "Cossourado",
+        "categ_ord" : "22",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030228" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030228",
+        "categ_cod" : "112030228",
+        "categ_dsg" : "Cristelo",
+        "categ_ord" : "23",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030234" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030234",
+        "categ_cod" : "112030234",
+        "categ_dsg" : "Fornelos",
+        "categ_ord" : "24",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030235" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030235",
+        "categ_cod" : "112030235",
+        "categ_dsg" : "Fragoso",
+        "categ_ord" : "25",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030268" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030268",
+        "categ_cod" : "112030268",
+        "categ_dsg" : "Galegos (Santa Maria)",
+        "categ_ord" : "26",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030272" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030272",
+        "categ_cod" : "112030272",
+        "categ_dsg" : "Galegos (São Martinho)",
+        "categ_ord" : "27",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030237" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030237",
+        "categ_cod" : "112030237",
+        "categ_dsg" : "Gilmonde",
+        "categ_ord" : "28",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030242" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030242",
+        "categ_cod" : "112030242",
+        "categ_dsg" : "Lama",
+        "categ_ord" : "29",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030243" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030243",
+        "categ_cod" : "112030243",
+        "categ_dsg" : "Lijó",
+        "categ_ord" : "30",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030244" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030244",
+        "categ_cod" : "112030244",
+        "categ_dsg" : "Macieira de Rates",
+        "categ_ord" : "31",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030245" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030245",
+        "categ_cod" : "112030245",
+        "categ_dsg" : "Manhente",
+        "categ_ord" : "32",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030247" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030247",
+        "categ_cod" : "112030247",
+        "categ_dsg" : "Martim",
+        "categ_ord" : "33",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030252" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030252",
+        "categ_cod" : "112030252",
+        "categ_dsg" : "Moure",
+        "categ_ord" : "34",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030254" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030254",
+        "categ_cod" : "112030254",
+        "categ_dsg" : "Oliveira",
+        "categ_ord" : "35",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030255" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030255",
+        "categ_cod" : "112030255",
+        "categ_dsg" : "Palme",
+        "categ_ord" : "36",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030256" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030256",
+        "categ_cod" : "112030256",
+        "categ_dsg" : "Panque",
+        "categ_ord" : "37",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030257" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030257",
+        "categ_cod" : "112030257",
+        "categ_dsg" : "Paradela",
+        "categ_ord" : "38",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030259" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030259",
+        "categ_cod" : "112030259",
+        "categ_dsg" : "Pereira",
+        "categ_ord" : "39",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030260" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030260",
+        "categ_cod" : "112030260",
+        "categ_dsg" : "Perelhal",
+        "categ_ord" : "40",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030261" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030261",
+        "categ_cod" : "112030261",
+        "categ_dsg" : "Pousa",
+        "categ_ord" : "41",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030263" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030263",
+        "categ_cod" : "112030263",
+        "categ_dsg" : "Remelhe",
+        "categ_ord" : "42",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030265" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030265",
+        "categ_cod" : "112030265",
+        "categ_dsg" : "Rio Covo (Santa Eugénia)",
+        "categ_ord" : "43",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030264" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030264",
+        "categ_cod" : "112030264",
+        "categ_dsg" : "Roriz",
+        "categ_ord" : "44",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030279" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030279",
+        "categ_cod" : "112030279",
+        "categ_dsg" : "Silva",
+        "categ_ord" : "45",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030277" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030277",
+        "categ_cod" : "112030277",
+        "categ_dsg" : "Tamel (São Veríssimo)",
+        "categ_ord" : "46",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030282" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030282",
+        "categ_cod" : "112030282",
+        "categ_dsg" : "Ucha",
+        "categ_ord" : "47",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030290" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030290",
+        "categ_cod" : "112030290",
+        "categ_dsg" : "União das freguesias de Alheira e Igreja Nova",
+        "categ_ord" : "48",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030291" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030291",
+        "categ_cod" : "112030291",
+        "categ_dsg" : "União das freguesias de Alvito (São Pedro e São Martinho) e Couto",
+        "categ_ord" : "49",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030292" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030292",
+        "categ_cod" : "112030292",
+        "categ_dsg" : "União das freguesias de Areias de Vilar e Encourados",
+        "categ_ord" : "50",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030293" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030293",
+        "categ_cod" : "112030293",
+        "categ_dsg" : "União das freguesias de Barcelos, Vila Boa e Vila Frescainha (São Martinho e São Pedro)",
+        "categ_ord" : "51",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030294" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030294",
+        "categ_cod" : "112030294",
+        "categ_dsg" : "União das freguesias de Campo e Tamel (São Pedro Fins)",
+        "categ_ord" : "52",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030295" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030295",
+        "categ_cod" : "112030295",
+        "categ_dsg" : "União das freguesias de Carreira e Fonte Coberta",
+        "categ_ord" : "53",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030296" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030296",
+        "categ_cod" : "112030296",
+        "categ_dsg" : "União das freguesias de Chorente, Góios, Courel, Pedra Furada e Gueral",
+        "categ_ord" : "54",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030297" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030297",
+        "categ_cod" : "112030297",
+        "categ_dsg" : "União das freguesias de Creixomil e Mariz",
+        "categ_ord" : "55",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030298" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030298",
+        "categ_cod" : "112030298",
+        "categ_dsg" : "União das freguesias de Durrães e Tregosa",
+        "categ_ord" : "56",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030299" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030299",
+        "categ_cod" : "112030299",
+        "categ_dsg" : "União das freguesias de Gamil e Midões",
+        "categ_ord" : "57",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120302FA" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302FA",
+        "categ_cod" : "1120302FA",
+        "categ_dsg" : "União das freguesias de Milhazes, Vilar de Figos e Faria",
+        "categ_ord" : "58",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120302FB" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302FB",
+        "categ_cod" : "1120302FB",
+        "categ_dsg" : "União das freguesias de Negreiros e Chavão",
+        "categ_ord" : "59",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120302FC" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302FC",
+        "categ_cod" : "1120302FC",
+        "categ_dsg" : "União das freguesias de Quintiães e Aguiar",
+        "categ_ord" : "60",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120302FD" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302FD",
+        "categ_cod" : "1120302FD",
+        "categ_dsg" : "União das freguesias de Sequeade e Bastuço (São João e Santo Estevão)",
+        "categ_ord" : "61",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120302FE" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302FE",
+        "categ_cod" : "1120302FE",
+        "categ_dsg" : "União das freguesias de Silveiros e Rio Covo (Santa Eulália)",
+        "categ_ord" : "62",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120302FF" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302FF",
+        "categ_cod" : "1120302FF",
+        "categ_dsg" : "União das freguesias de Tamel (Santa Leocádia) e Vilar do Monte",
+        "categ_ord" : "63",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120302FG" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302FG",
+        "categ_cod" : "1120302FG",
+        "categ_dsg" : "União das freguesias de Viatodos, Grimancelos, Minhotães e Monte de Fralães",
+        "categ_ord" : "64",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120302FH" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120302FH",
+        "categ_cod" : "1120302FH",
+        "categ_dsg" : "União das freguesias de Vila Cova e Feitos",
+        "categ_ord" : "65",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030283" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030283",
+        "categ_cod" : "112030283",
+        "categ_dsg" : "Várzea",
+        "categ_ord" : "66",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030287" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030287",
+        "categ_cod" : "112030287",
+        "categ_dsg" : "Vila Seca",
+        "categ_ord" : "67",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1120303" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1120303",
+        "categ_cod" : "1120303",
+        "categ_dsg" : "Braga",
+        "categ_ord" : "68",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_112030301" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030301",
+        "categ_cod" : "112030301",
+        "categ_dsg" : "Adaúfe",
+        "categ_ord" : "69",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030349" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030349",
+        "categ_cod" : "112030349",
+        "categ_dsg" : "Braga (São Vicente)",
+        "categ_ord" : "70",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030351" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030351",
+        "categ_cod" : "112030351",
+        "categ_dsg" : "Braga (São Vítor)",
+        "categ_ord" : "71",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030312" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030312",
+        "categ_cod" : "112030312",
+        "categ_dsg" : "Espinho",
+        "categ_ord" : "72",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030313" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030313",
+        "categ_cod" : "112030313",
+        "categ_dsg" : "Esporões",
+        "categ_ord" : "73",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030315" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030315",
+        "categ_cod" : "112030315",
+        "categ_dsg" : "Figueiredo",
+        "categ_ord" : "74",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030319" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030319",
+        "categ_cod" : "112030319",
+        "categ_dsg" : "Gualtar",
+        "categ_ord" : "75",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030322" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030322",
+        "categ_cod" : "112030322",
+        "categ_dsg" : "Lamas",
+        "categ_ord" : "76",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030325" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030325",
+        "categ_cod" : "112030325",
+        "categ_dsg" : "Mire de Tibães",
+        "categ_ord" : "77",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030330" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030330",
+        "categ_cod" : "112030330",
+        "categ_dsg" : "Padim da Graça",
+        "categ_ord" : "78",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030331" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030331",
+        "categ_cod" : "112030331",
+        "categ_dsg" : "Palmeira",
+        "categ_ord" : "79",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030334" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030334",
+        "categ_cod" : "112030334",
+        "categ_dsg" : "Pedralva",
+        "categ_ord" : "80",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030336" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030336",
+        "categ_cod" : "112030336",
+        "categ_dsg" : "Priscos",
+        "categ_ord" : "81",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030338" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030338",
+        "categ_cod" : "112030338",
+        "categ_dsg" : "Ruilhe",
+        "categ_ord" : "82",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030354" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030354",
+        "categ_cod" : "112030354",
+        "categ_dsg" : "Sequeira",
+        "categ_ord" : "83",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030355" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030355",
+        "categ_cod" : "112030355",
+        "categ_dsg" : "Sobreposta",
+        "categ_ord" : "84",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030356" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030356",
+        "categ_cod" : "112030356",
+        "categ_dsg" : "Tadim",
+        "categ_ord" : "85",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030357" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030357",
+        "categ_cod" : "112030357",
+        "categ_dsg" : "Tebosa",
+        "categ_ord" : "86",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030363" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030363",
+        "categ_cod" : "112030363",
+        "categ_dsg" : "União das freguesias de Arentim e Cunha",
+        "categ_ord" : "87",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030364" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030364",
+        "categ_cod" : "112030364",
+        "categ_dsg" : "União das freguesias de Braga (Maximinos, Sé e Cividade)",
+        "categ_ord" : "88",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030365" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030365",
+        "categ_cod" : "112030365",
+        "categ_dsg" : "União das freguesias de Braga (São José de São Lázaro e São João do Souto)",
+        "categ_ord" : "89",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030366" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030366",
+        "categ_cod" : "112030366",
+        "categ_dsg" : "União das freguesias de Cabreiros e Passos (São Julião)",
+        "categ_ord" : "90",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030367" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030367",
+        "categ_cod" : "112030367",
+        "categ_dsg" : "União das freguesias de Celeirós, Aveleda e Vimieiro",
+        "categ_ord" : "91",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030368" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030368",
+        "categ_cod" : "112030368",
+        "categ_dsg" : "União das freguesias de Crespos e Pousada",
+        "categ_ord" : "92",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030369" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030369",
+        "categ_cod" : "112030369",
+        "categ_dsg" : "União das freguesias de Escudeiros e Penso (Santo Estêvão e São Vicente)",
+        "categ_ord" : "93",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030370" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030370",
+        "categ_cod" : "112030370",
+        "categ_dsg" : "União das freguesias de Este (São Pedro e São Mamede)",
+        "categ_ord" : "94",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030371" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030371",
+        "categ_cod" : "112030371",
+        "categ_dsg" : "União das freguesias de Ferreiros e Gondizalves",
+        "categ_ord" : "95",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030372" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030372",
+        "categ_cod" : "112030372",
+        "categ_dsg" : "União das freguesias de Guisande e Oliveira (São Pedro)",
+        "categ_ord" : "96",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030373" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030373",
+        "categ_cod" : "112030373",
+        "categ_dsg" : "União das freguesias de Lomar e Arcos",
+        "categ_ord" : "97",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030374" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030374",
+        "categ_cod" : "112030374",
+        "categ_dsg" : "União das freguesias de Merelim (São Paio), Panoias e Parada de Tibães",
+        "categ_ord" : "98",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030375" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030375",
+        "categ_cod" : "112030375",
+        "categ_dsg" : "União das freguesias de Merelim (São Pedro) e Frossos",
+        "categ_ord" : "99",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030376" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030376",
+        "categ_cod" : "112030376",
+        "categ_dsg" : "União das freguesias de Morreira e Trandeiras",
+        "categ_ord" : "100",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030377" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030377",
+        "categ_cod" : "112030377",
+        "categ_dsg" : "União das freguesias de Nogueira, Fraião e Lamaçães",
+        "categ_ord" : "101",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030378" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030378",
+        "categ_cod" : "112030378",
+        "categ_dsg" : "União das freguesias de Nogueiró e Tenões",
+        "categ_ord" : "102",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030379" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030379",
+        "categ_cod" : "112030379",
+        "categ_dsg" : "União das freguesias de Real, Dume e Semelhe",
+        "categ_ord" : "103",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030380" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030380",
+        "categ_cod" : "112030380",
+        "categ_dsg" : "União das freguesias de Santa Lucrécia de Algeriz e Navarra",
+        "categ_ord" : "104",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_112030381" : [ {
+        "dim_num" : "2",
+        "cat_id" : "112030381",
+        "categ_cod" : "112030381",
+        "categ_dsg" : "União das freguesias de Vilaça e Fradelos",
+        "categ_ord" : "105",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119",
+        "categ_cod" : "119",
+        "categ_dsg" : "Ave",
+        "categ_ord" : "106",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1190308" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1190308",
+        "categ_cod" : "1190308",
+        "categ_dsg" : "Guimarães",
+        "categ_ord" : "107",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_119030801" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030801",
+        "categ_cod" : "119030801",
+        "categ_dsg" : "Aldão",
+        "categ_ord" : "108",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030804" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030804",
+        "categ_cod" : "119030804",
+        "categ_dsg" : "Azurém",
+        "categ_ord" : "109",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030806" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030806",
+        "categ_cod" : "119030806",
+        "categ_dsg" : "Barco",
+        "categ_ord" : "110",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030807" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030807",
+        "categ_cod" : "119030807",
+        "categ_dsg" : "Brito",
+        "categ_ord" : "111",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030808" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030808",
+        "categ_cod" : "119030808",
+        "categ_dsg" : "Caldelas",
+        "categ_ord" : "112",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030857" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030857",
+        "categ_cod" : "119030857",
+        "categ_dsg" : "Candoso (São Martinho)",
+        "categ_ord" : "113",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030812" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030812",
+        "categ_cod" : "119030812",
+        "categ_dsg" : "Costa",
+        "categ_ord" : "114",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030813" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030813",
+        "categ_cod" : "119030813",
+        "categ_dsg" : "Creixomil",
+        "categ_ord" : "115",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030815" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030815",
+        "categ_cod" : "119030815",
+        "categ_dsg" : "Fermentões",
+        "categ_ord" : "116",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030820" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030820",
+        "categ_cod" : "119030820",
+        "categ_dsg" : "Gonça",
+        "categ_ord" : "117",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030821" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030821",
+        "categ_cod" : "119030821",
+        "categ_dsg" : "Gondar",
+        "categ_ord" : "118",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030823" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030823",
+        "categ_cod" : "119030823",
+        "categ_dsg" : "Guardizela",
+        "categ_ord" : "119",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030824" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030824",
+        "categ_cod" : "119030824",
+        "categ_dsg" : "Infantas",
+        "categ_ord" : "120",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030827" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030827",
+        "categ_cod" : "119030827",
+        "categ_dsg" : "Longos",
+        "categ_ord" : "121",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030828" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030828",
+        "categ_cod" : "119030828",
+        "categ_dsg" : "Lordelo",
+        "categ_ord" : "122",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030830" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030830",
+        "categ_cod" : "119030830",
+        "categ_dsg" : "Mesão Frio",
+        "categ_ord" : "123",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030831" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030831",
+        "categ_cod" : "119030831",
+        "categ_dsg" : "Moreira de Cónegos",
+        "categ_ord" : "124",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030832" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030832",
+        "categ_cod" : "119030832",
+        "categ_dsg" : "Nespereira",
+        "categ_ord" : "125",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030835" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030835",
+        "categ_cod" : "119030835",
+        "categ_dsg" : "Pencelo",
+        "categ_ord" : "126",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030836" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030836",
+        "categ_cod" : "119030836",
+        "categ_dsg" : "Pinheiro",
+        "categ_ord" : "127",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030837" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030837",
+        "categ_cod" : "119030837",
+        "categ_dsg" : "Polvoreira",
+        "categ_ord" : "128",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030838" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030838",
+        "categ_cod" : "119030838",
+        "categ_dsg" : "Ponte",
+        "categ_ord" : "129",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030842" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030842",
+        "categ_cod" : "119030842",
+        "categ_dsg" : "Prazins (Santa Eufémia)",
+        "categ_ord" : "130",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030840" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030840",
+        "categ_cod" : "119030840",
+        "categ_dsg" : "Ronfe",
+        "categ_ord" : "131",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030858" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030858",
+        "categ_cod" : "119030858",
+        "categ_dsg" : "Sande (São Martinho)",
+        "categ_ord" : "132",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030865" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030865",
+        "categ_cod" : "119030865",
+        "categ_dsg" : "São Torcato",
+        "categ_ord" : "133",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030850" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030850",
+        "categ_cod" : "119030850",
+        "categ_dsg" : "Selho (São Cristóvão)",
+        "categ_ord" : "134",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030854" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030854",
+        "categ_cod" : "119030854",
+        "categ_dsg" : "Selho (São Jorge)",
+        "categ_ord" : "135",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030866" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030866",
+        "categ_cod" : "119030866",
+        "categ_dsg" : "Serzedelo",
+        "categ_ord" : "136",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030868" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030868",
+        "categ_cod" : "119030868",
+        "categ_dsg" : "Silvares",
+        "categ_ord" : "137",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030875" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030875",
+        "categ_cod" : "119030875",
+        "categ_dsg" : "União das freguesias de Abação e Gémeos",
+        "categ_ord" : "138",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030876" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030876",
+        "categ_cod" : "119030876",
+        "categ_dsg" : "União das freguesias de Airão Santa Maria, Airão São João e Vermil",
+        "categ_ord" : "139",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030877" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030877",
+        "categ_cod" : "119030877",
+        "categ_dsg" : "União das freguesias de Arosa e Castelões",
+        "categ_ord" : "140",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030878" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030878",
+        "categ_cod" : "119030878",
+        "categ_dsg" : "União das freguesias de Atães e Rendufe",
+        "categ_ord" : "141",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030879" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030879",
+        "categ_cod" : "119030879",
+        "categ_dsg" : "União das freguesias de Briteiros Santo Estêvão e Donim",
+        "categ_ord" : "142",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030880" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030880",
+        "categ_cod" : "119030880",
+        "categ_dsg" : "União das freguesias de Briteiros São Salvador e Briteiros Santa Leocádia",
+        "categ_ord" : "143",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030881" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030881",
+        "categ_cod" : "119030881",
+        "categ_dsg" : "União das freguesias de Candoso São Tiago e Mascotelos",
+        "categ_ord" : "144",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030882" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030882",
+        "categ_cod" : "119030882",
+        "categ_dsg" : "União das freguesias de Conde e Gandarela",
+        "categ_ord" : "145",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030883" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030883",
+        "categ_cod" : "119030883",
+        "categ_dsg" : "União das freguesias de Leitões, Oleiros e Figueiredo",
+        "categ_ord" : "146",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030884" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030884",
+        "categ_cod" : "119030884",
+        "categ_dsg" : "União das freguesias de Oliveira, São Paio e São Sebastião",
+        "categ_ord" : "147",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030885" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030885",
+        "categ_cod" : "119030885",
+        "categ_dsg" : "União das freguesias de Prazins Santo Tirso e Corvite",
+        "categ_ord" : "148",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030886" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030886",
+        "categ_cod" : "119030886",
+        "categ_dsg" : "União das freguesias de Sande São Lourenço e Balazar",
+        "categ_ord" : "149",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030887" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030887",
+        "categ_cod" : "119030887",
+        "categ_dsg" : "União das freguesias de Sande Vila Nova e Sande São Clemente",
+        "categ_ord" : "150",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030888" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030888",
+        "categ_cod" : "119030888",
+        "categ_dsg" : "União das freguesias de Selho São Lourenço e Gominhães",
+        "categ_ord" : "151",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030889" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030889",
+        "categ_cod" : "119030889",
+        "categ_dsg" : "União das freguesias de Serzedo e Calvos",
+        "categ_ord" : "152",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030890" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030890",
+        "categ_cod" : "119030890",
+        "categ_dsg" : "União das freguesias de Souto Santa Maria, Souto São Salvador e Gondomar",
+        "categ_ord" : "153",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030891" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030891",
+        "categ_cod" : "119030891",
+        "categ_dsg" : "União das freguesias de Tabuadelo e São Faustino",
+        "categ_ord" : "154",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119030871" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119030871",
+        "categ_cod" : "119030871",
+        "categ_dsg" : "Urgezes",
+        "categ_ord" : "155",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1190312" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1190312",
+        "categ_cod" : "1190312",
+        "categ_dsg" : "Vila Nova de Famalicão",
+        "categ_ord" : "156",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_119031204" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031204",
+        "categ_cod" : "119031204",
+        "categ_dsg" : "Bairro",
+        "categ_ord" : "157",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031206" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031206",
+        "categ_cod" : "119031206",
+        "categ_dsg" : "Brufe",
+        "categ_ord" : "158",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031210" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031210",
+        "categ_cod" : "119031210",
+        "categ_dsg" : "Castelões",
+        "categ_ord" : "159",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031212" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031212",
+        "categ_cod" : "119031212",
+        "categ_dsg" : "Cruz",
+        "categ_ord" : "160",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031213" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031213",
+        "categ_cod" : "119031213",
+        "categ_dsg" : "Delães",
+        "categ_ord" : "161",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031215" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031215",
+        "categ_cod" : "119031215",
+        "categ_dsg" : "Fradelos",
+        "categ_ord" : "162",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031216" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031216",
+        "categ_cod" : "119031216",
+        "categ_dsg" : "Gavião",
+        "categ_ord" : "163",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031219" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031219",
+        "categ_cod" : "119031219",
+        "categ_dsg" : "Joane",
+        "categ_ord" : "164",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031221" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031221",
+        "categ_cod" : "119031221",
+        "categ_dsg" : "Landim",
+        "categ_ord" : "165",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031223" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031223",
+        "categ_cod" : "119031223",
+        "categ_dsg" : "Louro",
+        "categ_ord" : "166",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031224" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031224",
+        "categ_cod" : "119031224",
+        "categ_dsg" : "Lousado",
+        "categ_ord" : "167",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031225" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031225",
+        "categ_cod" : "119031225",
+        "categ_dsg" : "Mogege",
+        "categ_ord" : "168",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031227" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031227",
+        "categ_cod" : "119031227",
+        "categ_dsg" : "Nine",
+        "categ_ord" : "169",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031239" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031239",
+        "categ_cod" : "119031239",
+        "categ_dsg" : "Oliveira (Santa Maria)",
+        "categ_ord" : "170",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031242" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031242",
+        "categ_cod" : "119031242",
+        "categ_dsg" : "Oliveira (São Mateus)",
+        "categ_ord" : "171",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031230" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031230",
+        "categ_cod" : "119031230",
+        "categ_dsg" : "Pedome",
+        "categ_ord" : "172",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031232" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031232",
+        "categ_cod" : "119031232",
+        "categ_dsg" : "Pousada de Saramagos",
+        "categ_ord" : "173",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031233" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031233",
+        "categ_cod" : "119031233",
+        "categ_dsg" : "Requião",
+        "categ_ord" : "174",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031234" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031234",
+        "categ_cod" : "119031234",
+        "categ_dsg" : "Riba de Ave",
+        "categ_ord" : "175",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031235" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031235",
+        "categ_cod" : "119031235",
+        "categ_dsg" : "Ribeirão",
+        "categ_ord" : "176",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031250" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031250",
+        "categ_cod" : "119031250",
+        "categ_dsg" : "União das freguesias de Antas e Abade de Vermoim",
+        "categ_ord" : "177",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031251" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031251",
+        "categ_cod" : "119031251",
+        "categ_dsg" : "União das freguesias de Arnoso (Santa Maria e Santa Eulália) e Sezures",
+        "categ_ord" : "178",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031252" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031252",
+        "categ_cod" : "119031252",
+        "categ_dsg" : "União das freguesias de Avidos e Lagoa",
+        "categ_ord" : "179",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031253" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031253",
+        "categ_cod" : "119031253",
+        "categ_dsg" : "União das freguesias de Carreira e Bente",
+        "categ_ord" : "180",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031254" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031254",
+        "categ_cod" : "119031254",
+        "categ_dsg" : "União das freguesias de Esmeriz e Cabeçudos",
+        "categ_ord" : "181",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031255" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031255",
+        "categ_cod" : "119031255",
+        "categ_dsg" : "União das freguesias de Gondifelos, Cavalões e Outiz",
+        "categ_ord" : "182",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031256" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031256",
+        "categ_cod" : "119031256",
+        "categ_dsg" : "União das freguesias de Lemenhe, Mouquim e Jesufrei",
+        "categ_ord" : "183",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031257" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031257",
+        "categ_cod" : "119031257",
+        "categ_dsg" : "União das freguesias de Ruivães e Novais",
+        "categ_ord" : "184",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031258" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031258",
+        "categ_cod" : "119031258",
+        "categ_dsg" : "União das freguesias de Seide",
+        "categ_ord" : "185",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031259" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031259",
+        "categ_cod" : "119031259",
+        "categ_dsg" : "União das freguesias de Vale (São Cosme), Telhado e Portela",
+        "categ_ord" : "186",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031260" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031260",
+        "categ_cod" : "119031260",
+        "categ_dsg" : "União das freguesias de Vila Nova de Famalicão e Calendário",
+        "categ_ord" : "187",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031241" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031241",
+        "categ_cod" : "119031241",
+        "categ_dsg" : "Vale (São Martinho)",
+        "categ_ord" : "188",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031247" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031247",
+        "categ_cod" : "119031247",
+        "categ_dsg" : "Vermoim",
+        "categ_ord" : "189",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_119031249" : [ {
+        "dim_num" : "2",
+        "cat_id" : "119031249",
+        "categ_cod" : "119031249",
+        "categ_dsg" : "Vilarinho das Cambas",
+        "categ_ord" : "190",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A",
+        "categ_cod" : "11A",
+        "categ_dsg" : "Área Metropolitana do Porto",
+        "categ_ord" : "191",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_11A0104" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A0104",
+        "categ_cod" : "11A0104",
+        "categ_dsg" : "Arouca",
+        "categ_ord" : "192",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A010402" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010402",
+        "categ_cod" : "11A010402",
+        "categ_dsg" : "Alvarenga",
+        "categ_ord" : "193",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010407" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010407",
+        "categ_cod" : "11A010407",
+        "categ_dsg" : "Chave",
+        "categ_ord" : "194",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010409" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010409",
+        "categ_cod" : "11A010409",
+        "categ_dsg" : "Escariz",
+        "categ_ord" : "195",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010411" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010411",
+        "categ_cod" : "11A010411",
+        "categ_dsg" : "Fermedo",
+        "categ_ord" : "196",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010413" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010413",
+        "categ_cod" : "11A010413",
+        "categ_dsg" : "Mansores",
+        "categ_ord" : "197",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010414" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010414",
+        "categ_cod" : "11A010414",
+        "categ_dsg" : "Moldes",
+        "categ_ord" : "198",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010415" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010415",
+        "categ_cod" : "11A010415",
+        "categ_dsg" : "Rossas",
+        "categ_ord" : "199",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010416" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010416",
+        "categ_cod" : "11A010416",
+        "categ_dsg" : "Santa Eulália",
+        "categ_ord" : "200",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010417" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010417",
+        "categ_cod" : "11A010417",
+        "categ_dsg" : "São Miguel do Mato",
+        "categ_ord" : "201",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010418" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010418",
+        "categ_cod" : "11A010418",
+        "categ_dsg" : "Tropeço",
+        "categ_ord" : "202",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010421" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010421",
+        "categ_cod" : "11A010421",
+        "categ_dsg" : "União das freguesias de Arouca e Burgo",
+        "categ_ord" : "203",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010422" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010422",
+        "categ_cod" : "11A010422",
+        "categ_dsg" : "União das freguesias de Cabreiros e Albergaria da Serra",
+        "categ_ord" : "204",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010423" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010423",
+        "categ_cod" : "11A010423",
+        "categ_dsg" : "União das freguesias de Canelas e Espiunca",
+        "categ_ord" : "205",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010424" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010424",
+        "categ_cod" : "11A010424",
+        "categ_dsg" : "União das freguesias de Covelo de Paivó e Janarde",
+        "categ_ord" : "206",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010419" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010419",
+        "categ_cod" : "11A010419",
+        "categ_dsg" : "Urrô",
+        "categ_ord" : "207",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010420" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010420",
+        "categ_cod" : "11A010420",
+        "categ_dsg" : "Várzea",
+        "categ_ord" : "208",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A0107" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A0107",
+        "categ_cod" : "11A0107",
+        "categ_dsg" : "Espinho",
+        "categ_ord" : "209",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A010702" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010702",
+        "categ_cod" : "11A010702",
+        "categ_dsg" : "Espinho",
+        "categ_ord" : "210",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010704" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010704",
+        "categ_cod" : "11A010704",
+        "categ_dsg" : "Paramos",
+        "categ_ord" : "211",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010705" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010705",
+        "categ_cod" : "11A010705",
+        "categ_dsg" : "Silvalde",
+        "categ_ord" : "212",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010706" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010706",
+        "categ_cod" : "11A010706",
+        "categ_dsg" : "União das freguesias de Anta e Guetim",
+        "categ_ord" : "213",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1304" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1304",
+        "categ_cod" : "11A1304",
+        "categ_dsg" : "Gondomar",
+        "categ_ord" : "214",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A130412" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130412",
+        "categ_cod" : "11A130412",
+        "categ_dsg" : "Baguim do Monte (Rio Tinto)",
+        "categ_ord" : "215",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130405" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130405",
+        "categ_cod" : "11A130405",
+        "categ_dsg" : "Lomba",
+        "categ_ord" : "216",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130408" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130408",
+        "categ_cod" : "11A130408",
+        "categ_dsg" : "Rio Tinto",
+        "categ_ord" : "217",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130413" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130413",
+        "categ_cod" : "11A130413",
+        "categ_dsg" : "União das freguesias de Fânzeres e São Pedro da Cova",
+        "categ_ord" : "218",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130414" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130414",
+        "categ_cod" : "11A130414",
+        "categ_dsg" : "União das freguesias de Foz do Sousa e Covelo",
+        "categ_ord" : "219",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130415" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130415",
+        "categ_cod" : "11A130415",
+        "categ_dsg" : "União das freguesias de Gondomar (São Cosme), Valbom e Jovim",
+        "categ_ord" : "220",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130416" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130416",
+        "categ_cod" : "11A130416",
+        "categ_dsg" : "União das freguesias de Melres e Medas",
+        "categ_ord" : "221",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1306" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1306",
+        "categ_cod" : "11A1306",
+        "categ_dsg" : "Maia",
+        "categ_ord" : "222",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A130601" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130601",
+        "categ_cod" : "11A130601",
+        "categ_dsg" : "Águas Santas",
+        "categ_ord" : "223",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130618" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130618",
+        "categ_cod" : "11A130618",
+        "categ_dsg" : "Castêlo da Maia",
+        "categ_ord" : "224",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130619" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130619",
+        "categ_cod" : "11A130619",
+        "categ_dsg" : "Cidade da Maia",
+        "categ_ord" : "225",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130603" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130603",
+        "categ_cod" : "11A130603",
+        "categ_dsg" : "Folgosa",
+        "categ_ord" : "226",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130608" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130608",
+        "categ_cod" : "11A130608",
+        "categ_dsg" : "Milheirós",
+        "categ_ord" : "227",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130609" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130609",
+        "categ_cod" : "11A130609",
+        "categ_dsg" : "Moreira",
+        "categ_ord" : "228",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130620" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130620",
+        "categ_cod" : "11A130620",
+        "categ_dsg" : "Nogueira e Silva Escura",
+        "categ_ord" : "229",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130617" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130617",
+        "categ_cod" : "11A130617",
+        "categ_dsg" : "Pedrouços",
+        "categ_ord" : "230",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130613" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130613",
+        "categ_cod" : "11A130613",
+        "categ_dsg" : "São Pedro Fins",
+        "categ_ord" : "231",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130616" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130616",
+        "categ_cod" : "11A130616",
+        "categ_dsg" : "Vila Nova da Telha",
+        "categ_ord" : "232",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1308" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1308",
+        "categ_cod" : "11A1308",
+        "categ_dsg" : "Matosinhos",
+        "categ_ord" : "233",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A130811" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130811",
+        "categ_cod" : "11A130811",
+        "categ_dsg" : "União das freguesias de Custóias, Leça do Balio e Guifões",
+        "categ_ord" : "234",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130812" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130812",
+        "categ_cod" : "11A130812",
+        "categ_dsg" : "União das freguesias de Matosinhos e Leça da Palmeira",
+        "categ_ord" : "235",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130813" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130813",
+        "categ_cod" : "11A130813",
+        "categ_dsg" : "União das freguesias de Perafita, Lavra e Santa Cruz do Bispo",
+        "categ_ord" : "236",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A130814" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A130814",
+        "categ_cod" : "11A130814",
+        "categ_dsg" : "União das freguesias de São Mamede de Infesta e Senhora da Hora",
+        "categ_ord" : "237",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A0113" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A0113",
+        "categ_cod" : "11A0113",
+        "categ_dsg" : "Oliveira de Azeméis",
+        "categ_ord" : "238",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A011301" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011301",
+        "categ_cod" : "11A011301",
+        "categ_dsg" : "Carregosa",
+        "categ_ord" : "239",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011302" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011302",
+        "categ_cod" : "11A011302",
+        "categ_dsg" : "Cesar",
+        "categ_ord" : "240",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011303" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011303",
+        "categ_cod" : "11A011303",
+        "categ_dsg" : "Fajões",
+        "categ_ord" : "241",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011304" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011304",
+        "categ_cod" : "11A011304",
+        "categ_dsg" : "Loureiro",
+        "categ_ord" : "242",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011305" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011305",
+        "categ_cod" : "11A011305",
+        "categ_dsg" : "Macieira de Sarnes",
+        "categ_ord" : "243",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011310" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011310",
+        "categ_cod" : "11A011310",
+        "categ_dsg" : "Ossela",
+        "categ_ord" : "244",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011315" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011315",
+        "categ_cod" : "11A011315",
+        "categ_dsg" : "São Martinho da Gândara",
+        "categ_ord" : "245",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011318" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011318",
+        "categ_cod" : "11A011318",
+        "categ_dsg" : "São Roque",
+        "categ_ord" : "246",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011320" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011320",
+        "categ_cod" : "11A011320",
+        "categ_dsg" : "União das freguesias de Nogueira do Cravo e Pindelo",
+        "categ_ord" : "247",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011321" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011321",
+        "categ_cod" : "11A011321",
+        "categ_dsg" : "União das freguesias de Oliveira de Azeméis, Santiago de Riba-Ul, Ul, Macinhata da Seixa e Madail",
+        "categ_ord" : "248",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011322" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011322",
+        "categ_cod" : "11A011322",
+        "categ_dsg" : "União das freguesias de Pinheiro da Bemposta, Travanca e Palmaz",
+        "categ_ord" : "249",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011319" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011319",
+        "categ_cod" : "11A011319",
+        "categ_dsg" : "Vila de Cucujães",
+        "categ_ord" : "250",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1310" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1310",
+        "categ_cod" : "11A1310",
+        "categ_dsg" : "Paredes",
+        "categ_ord" : "251",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A131001" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131001",
+        "categ_cod" : "11A131001",
+        "categ_dsg" : "Aguiar de Sousa",
+        "categ_ord" : "252",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131002" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131002",
+        "categ_cod" : "11A131002",
+        "categ_dsg" : "Astromil",
+        "categ_ord" : "253",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131003" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131003",
+        "categ_cod" : "11A131003",
+        "categ_dsg" : "Baltar",
+        "categ_ord" : "254",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131004" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131004",
+        "categ_cod" : "11A131004",
+        "categ_dsg" : "Beire",
+        "categ_ord" : "255",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131008" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131008",
+        "categ_cod" : "11A131008",
+        "categ_dsg" : "Cete",
+        "categ_ord" : "256",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131009" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131009",
+        "categ_cod" : "11A131009",
+        "categ_dsg" : "Cristelo",
+        "categ_ord" : "257",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131010" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131010",
+        "categ_cod" : "11A131010",
+        "categ_dsg" : "Duas Igrejas",
+        "categ_ord" : "258",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131011" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131011",
+        "categ_cod" : "11A131011",
+        "categ_dsg" : "Gandra",
+        "categ_ord" : "259",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131013" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131013",
+        "categ_cod" : "11A131013",
+        "categ_dsg" : "Lordelo",
+        "categ_ord" : "260",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131014" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131014",
+        "categ_cod" : "11A131014",
+        "categ_dsg" : "Louredo",
+        "categ_ord" : "261",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131017" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131017",
+        "categ_cod" : "11A131017",
+        "categ_dsg" : "Parada de Todeia",
+        "categ_ord" : "262",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131025" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131025",
+        "categ_cod" : "11A131025",
+        "categ_dsg" : "Paredes",
+        "categ_ord" : "263",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131018" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131018",
+        "categ_cod" : "11A131018",
+        "categ_dsg" : "Rebordosa",
+        "categ_ord" : "264",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131019" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131019",
+        "categ_cod" : "11A131019",
+        "categ_dsg" : "Recarei",
+        "categ_ord" : "265",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131020" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131020",
+        "categ_cod" : "11A131020",
+        "categ_dsg" : "Sobreira",
+        "categ_ord" : "266",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131021" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131021",
+        "categ_cod" : "11A131021",
+        "categ_dsg" : "Sobrosa",
+        "categ_ord" : "267",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131022" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131022",
+        "categ_cod" : "11A131022",
+        "categ_dsg" : "Vandoma",
+        "categ_ord" : "268",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131024" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131024",
+        "categ_cod" : "11A131024",
+        "categ_dsg" : "Vilela",
+        "categ_ord" : "269",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1312" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1312",
+        "categ_cod" : "11A1312",
+        "categ_dsg" : "Porto",
+        "categ_ord" : "270",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A131202" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131202",
+        "categ_cod" : "11A131202",
+        "categ_dsg" : "Bonfim",
+        "categ_ord" : "271",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131203" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131203",
+        "categ_cod" : "11A131203",
+        "categ_dsg" : "Campanhã",
+        "categ_ord" : "272",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131210" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131210",
+        "categ_cod" : "11A131210",
+        "categ_dsg" : "Paranhos",
+        "categ_ord" : "273",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131211" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131211",
+        "categ_cod" : "11A131211",
+        "categ_dsg" : "Ramalde",
+        "categ_ord" : "274",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131216" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131216",
+        "categ_cod" : "11A131216",
+        "categ_dsg" : "União das freguesias de Aldoar, Foz do Douro e Nevogilde",
+        "categ_ord" : "275",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131217" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131217",
+        "categ_cod" : "11A131217",
+        "categ_dsg" : "União das freguesias de Cedofeita, Santo Ildefonso, Sé, Miragaia, São Nicolau e Vitória",
+        "categ_ord" : "276",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131218" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131218",
+        "categ_cod" : "11A131218",
+        "categ_dsg" : "União das freguesias de Lordelo do Ouro e Massarelos",
+        "categ_ord" : "277",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1313" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1313",
+        "categ_cod" : "11A1313",
+        "categ_dsg" : "Póvoa de Varzim",
+        "categ_ord" : "278",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A131305" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131305",
+        "categ_cod" : "11A131305",
+        "categ_dsg" : "Balazar",
+        "categ_ord" : "279",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131307" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131307",
+        "categ_cod" : "11A131307",
+        "categ_dsg" : "Estela",
+        "categ_ord" : "280",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131308" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131308",
+        "categ_cod" : "11A131308",
+        "categ_dsg" : "Laundos",
+        "categ_ord" : "281",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131311" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131311",
+        "categ_cod" : "11A131311",
+        "categ_dsg" : "Rates",
+        "categ_ord" : "282",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131315" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131315",
+        "categ_cod" : "11A131315",
+        "categ_dsg" : "União das freguesias da Póvoa de Varzim, Beiriz e Argivai",
+        "categ_ord" : "283",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131314" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131314",
+        "categ_cod" : "11A131314",
+        "categ_dsg" : "União das freguesias de Aguçadoura e Navais",
+        "categ_ord" : "284",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131313" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131313",
+        "categ_cod" : "11A131313",
+        "categ_dsg" : "União das freguesias de Aver-o-Mar, Amorim e Terroso",
+        "categ_ord" : "285",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A0109" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A0109",
+        "categ_cod" : "11A0109",
+        "categ_dsg" : "Santa Maria da Feira",
+        "categ_ord" : "286",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A010901" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010901",
+        "categ_cod" : "11A010901",
+        "categ_dsg" : "Argoncilhe",
+        "categ_ord" : "287",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010902" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010902",
+        "categ_cod" : "11A010902",
+        "categ_dsg" : "Arrifana",
+        "categ_ord" : "288",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010904" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010904",
+        "categ_cod" : "11A010904",
+        "categ_dsg" : "Escapães",
+        "categ_ord" : "289",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010907" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010907",
+        "categ_cod" : "11A010907",
+        "categ_dsg" : "Fiães",
+        "categ_ord" : "290",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010908" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010908",
+        "categ_cod" : "11A010908",
+        "categ_dsg" : "Fornos",
+        "categ_ord" : "291",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010913" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010913",
+        "categ_cod" : "11A010913",
+        "categ_dsg" : "Lourosa",
+        "categ_ord" : "292",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010914" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010914",
+        "categ_cod" : "11A010914",
+        "categ_dsg" : "Milheirós de Poiares",
+        "categ_ord" : "293",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010916" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010916",
+        "categ_cod" : "11A010916",
+        "categ_dsg" : "Mozelos",
+        "categ_ord" : "294",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010917" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010917",
+        "categ_cod" : "11A010917",
+        "categ_dsg" : "Nogueira da Regedoura",
+        "categ_ord" : "295",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010919" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010919",
+        "categ_cod" : "11A010919",
+        "categ_dsg" : "Paços de Brandão",
+        "categ_ord" : "296",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010921" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010921",
+        "categ_cod" : "11A010921",
+        "categ_dsg" : "Rio Meão",
+        "categ_ord" : "297",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010922" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010922",
+        "categ_cod" : "11A010922",
+        "categ_dsg" : "Romariz",
+        "categ_ord" : "298",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010924" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010924",
+        "categ_cod" : "11A010924",
+        "categ_dsg" : "Sanguedo",
+        "categ_ord" : "299",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010925" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010925",
+        "categ_cod" : "11A010925",
+        "categ_dsg" : "Santa Maria de Lamas",
+        "categ_ord" : "300",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010926" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010926",
+        "categ_cod" : "11A010926",
+        "categ_dsg" : "São João de Ver",
+        "categ_ord" : "301",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010918" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010918",
+        "categ_cod" : "11A010918",
+        "categ_dsg" : "São Paio de Oleiros",
+        "categ_ord" : "302",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010932" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010932",
+        "categ_cod" : "11A010932",
+        "categ_dsg" : "União das freguesias de Caldas de São Jorge e Pigeiros",
+        "categ_ord" : "303",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010933" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010933",
+        "categ_cod" : "11A010933",
+        "categ_dsg" : "União das freguesias de Canedo, Vale e Vila Maior",
+        "categ_ord" : "304",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010934" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010934",
+        "categ_cod" : "11A010934",
+        "categ_dsg" : "União das freguesias de Lobão, Gião, Louredo e Guisande",
+        "categ_ord" : "305",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010935" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010935",
+        "categ_cod" : "11A010935",
+        "categ_dsg" : "União das freguesias de Santa Maria da Feira, Travanca, Sanfins e Espargo",
+        "categ_ord" : "306",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A010936" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A010936",
+        "categ_cod" : "11A010936",
+        "categ_dsg" : "União de freguesias de São Miguel de Souto e Mosteirô",
+        "categ_ord" : "307",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1314" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1314",
+        "categ_cod" : "11A1314",
+        "categ_dsg" : "Santo Tirso",
+        "categ_ord" : "308",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A131401" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131401",
+        "categ_cod" : "11A131401",
+        "categ_dsg" : "Agrela",
+        "categ_ord" : "309",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131402" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131402",
+        "categ_cod" : "11A131402",
+        "categ_dsg" : "Água Longa",
+        "categ_ord" : "310",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131405" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131405",
+        "categ_cod" : "11A131405",
+        "categ_dsg" : "Aves",
+        "categ_ord" : "311",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131413" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131413",
+        "categ_cod" : "11A131413",
+        "categ_dsg" : "Monte Córdova",
+        "categ_ord" : "312",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131430" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131430",
+        "categ_cod" : "11A131430",
+        "categ_dsg" : "Negrelos (São Tomé)",
+        "categ_ord" : "313",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131416" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131416",
+        "categ_cod" : "11A131416",
+        "categ_dsg" : "Rebordões",
+        "categ_ord" : "314",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131418" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131418",
+        "categ_cod" : "11A131418",
+        "categ_dsg" : "Reguenga",
+        "categ_ord" : "315",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131419" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131419",
+        "categ_cod" : "11A131419",
+        "categ_dsg" : "Roriz",
+        "categ_ord" : "316",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131433" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131433",
+        "categ_cod" : "11A131433",
+        "categ_dsg" : "União das freguesias de Areias, Sequeiró, Lama e Palmeira",
+        "categ_ord" : "317",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131435" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131435",
+        "categ_cod" : "11A131435",
+        "categ_dsg" : "União das freguesias de Carreira e Refojos de Riba de Ave",
+        "categ_ord" : "318",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131436" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131436",
+        "categ_cod" : "11A131436",
+        "categ_dsg" : "União das freguesias de Lamelas e Guimarei",
+        "categ_ord" : "319",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131437" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131437",
+        "categ_cod" : "11A131437",
+        "categ_dsg" : "União das freguesias de Santo Tirso, Couto (Santa Cristina e São Miguel) e Burgães",
+        "categ_ord" : "320",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131434" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131434",
+        "categ_cod" : "11A131434",
+        "categ_dsg" : "Vila Nova do Campo",
+        "categ_ord" : "321",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131432" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131432",
+        "categ_cod" : "11A131432",
+        "categ_dsg" : "Vilarinho",
+        "categ_ord" : "322",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A0116" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A0116",
+        "categ_cod" : "11A0116",
+        "categ_dsg" : "São João da Madeira",
+        "categ_ord" : "323",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A011601" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011601",
+        "categ_cod" : "11A011601",
+        "categ_dsg" : "São João da Madeira",
+        "categ_ord" : "324",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1318" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1318",
+        "categ_cod" : "11A1318",
+        "categ_dsg" : "Trofa",
+        "categ_ord" : "325",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A131806" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131806",
+        "categ_cod" : "11A131806",
+        "categ_dsg" : "Covelas",
+        "categ_ord" : "326",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131808" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131808",
+        "categ_cod" : "11A131808",
+        "categ_dsg" : "Muro",
+        "categ_ord" : "327",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131809" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131809",
+        "categ_cod" : "11A131809",
+        "categ_dsg" : "União das freguesias de Alvarelhos e Guidões",
+        "categ_ord" : "328",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131810" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131810",
+        "categ_cod" : "11A131810",
+        "categ_dsg" : "União das freguesias de Bougado (São Martinho e Santiago)",
+        "categ_ord" : "329",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131811" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131811",
+        "categ_cod" : "11A131811",
+        "categ_dsg" : "União das freguesias de Coronado (São Romão e São Mamede)",
+        "categ_ord" : "330",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A0119" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A0119",
+        "categ_cod" : "11A0119",
+        "categ_dsg" : "Vale de Cambra",
+        "categ_ord" : "331",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A011901" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011901",
+        "categ_cod" : "11A011901",
+        "categ_dsg" : "Arões",
+        "categ_ord" : "332",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011903" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011903",
+        "categ_cod" : "11A011903",
+        "categ_dsg" : "Cepelos",
+        "categ_ord" : "333",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011905" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011905",
+        "categ_cod" : "11A011905",
+        "categ_dsg" : "Junqueira",
+        "categ_ord" : "334",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011906" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011906",
+        "categ_cod" : "11A011906",
+        "categ_dsg" : "Macieira de Cambra",
+        "categ_ord" : "335",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011907" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011907",
+        "categ_cod" : "11A011907",
+        "categ_dsg" : "Roge",
+        "categ_ord" : "336",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011902" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011902",
+        "categ_cod" : "11A011902",
+        "categ_dsg" : "São Pedro de Castelões",
+        "categ_ord" : "337",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A011910" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A011910",
+        "categ_cod" : "11A011910",
+        "categ_dsg" : "União das freguesias de Vila Chã, Codal e Vila Cova de Perrinho",
+        "categ_ord" : "338",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1315" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1315",
+        "categ_cod" : "11A1315",
+        "categ_dsg" : "Valongo",
+        "categ_ord" : "339",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A131501" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131501",
+        "categ_cod" : "11A131501",
+        "categ_dsg" : "Alfena",
+        "categ_ord" : "340",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131503" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131503",
+        "categ_cod" : "11A131503",
+        "categ_dsg" : "Ermesinde",
+        "categ_ord" : "341",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131506" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131506",
+        "categ_cod" : "11A131506",
+        "categ_dsg" : "União das freguesias de Campo e Sobrado",
+        "categ_ord" : "342",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131505" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131505",
+        "categ_cod" : "11A131505",
+        "categ_dsg" : "Valongo",
+        "categ_ord" : "343",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1316" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1316",
+        "categ_cod" : "11A1316",
+        "categ_dsg" : "Vila do Conde",
+        "categ_ord" : "344",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A131602" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131602",
+        "categ_cod" : "11A131602",
+        "categ_dsg" : "Árvore",
+        "categ_ord" : "345",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131603" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131603",
+        "categ_cod" : "11A131603",
+        "categ_dsg" : "Aveleda",
+        "categ_ord" : "346",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131604" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131604",
+        "categ_cod" : "11A131604",
+        "categ_dsg" : "Azurara",
+        "categ_ord" : "347",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131607" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131607",
+        "categ_cod" : "11A131607",
+        "categ_dsg" : "Fajozes",
+        "categ_ord" : "348",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131610" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131610",
+        "categ_cod" : "11A131610",
+        "categ_dsg" : "Gião",
+        "categ_ord" : "349",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131611" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131611",
+        "categ_cod" : "11A131611",
+        "categ_dsg" : "Guilhabreu",
+        "categ_ord" : "350",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131612" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131612",
+        "categ_cod" : "11A131612",
+        "categ_dsg" : "Junqueira",
+        "categ_ord" : "351",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131613" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131613",
+        "categ_cod" : "11A131613",
+        "categ_dsg" : "Labruge",
+        "categ_ord" : "352",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131614" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131614",
+        "categ_cod" : "11A131614",
+        "categ_dsg" : "Macieira da Maia",
+        "categ_ord" : "353",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131616" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131616",
+        "categ_cod" : "11A131616",
+        "categ_dsg" : "Mindelo",
+        "categ_ord" : "354",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131617" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131617",
+        "categ_cod" : "11A131617",
+        "categ_dsg" : "Modivas",
+        "categ_ord" : "355",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131631" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131631",
+        "categ_cod" : "11A131631",
+        "categ_dsg" : "União das freguesias de Bagunte, Ferreiró, Outeiro Maior e Parada",
+        "categ_ord" : "356",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131632" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131632",
+        "categ_cod" : "11A131632",
+        "categ_dsg" : "União das freguesias de Fornelo e Vairão",
+        "categ_ord" : "357",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131633" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131633",
+        "categ_cod" : "11A131633",
+        "categ_dsg" : "União das freguesias de Malta e Canidelo",
+        "categ_ord" : "358",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131634" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131634",
+        "categ_cod" : "11A131634",
+        "categ_dsg" : "União das freguesias de Retorta e Tougues",
+        "categ_ord" : "359",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131635" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131635",
+        "categ_cod" : "11A131635",
+        "categ_dsg" : "União das freguesias de Rio Mau e Arcos",
+        "categ_ord" : "360",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131636" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131636",
+        "categ_cod" : "11A131636",
+        "categ_dsg" : "União das freguesias de Touguinha e Touguinhó",
+        "categ_ord" : "361",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131637" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131637",
+        "categ_cod" : "11A131637",
+        "categ_dsg" : "União das freguesias de Vilar e Mosteiró",
+        "categ_ord" : "362",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131627" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131627",
+        "categ_cod" : "11A131627",
+        "categ_dsg" : "Vila Chã",
+        "categ_ord" : "363",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131628" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131628",
+        "categ_cod" : "11A131628",
+        "categ_dsg" : "Vila do Conde",
+        "categ_ord" : "364",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131630" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131630",
+        "categ_cod" : "11A131630",
+        "categ_dsg" : "Vilar de Pinheiro",
+        "categ_ord" : "365",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A1317" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A1317",
+        "categ_cod" : "11A1317",
+        "categ_dsg" : "Vila Nova de Gaia",
+        "categ_ord" : "366",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_11A131701" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131701",
+        "categ_cod" : "11A131701",
+        "categ_dsg" : "Arcozelo",
+        "categ_ord" : "367",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131702" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131702",
+        "categ_cod" : "11A131702",
+        "categ_dsg" : "Avintes",
+        "categ_ord" : "368",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131703" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131703",
+        "categ_cod" : "11A131703",
+        "categ_dsg" : "Canelas",
+        "categ_ord" : "369",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131704" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131704",
+        "categ_cod" : "11A131704",
+        "categ_dsg" : "Canidelo",
+        "categ_ord" : "370",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131709" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131709",
+        "categ_cod" : "11A131709",
+        "categ_dsg" : "Madalena",
+        "categ_ord" : "371",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131712" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131712",
+        "categ_cod" : "11A131712",
+        "categ_dsg" : "Oliveira do Douro",
+        "categ_ord" : "372",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131717" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131717",
+        "categ_cod" : "11A131717",
+        "categ_dsg" : "São Félix da Marinha",
+        "categ_ord" : "373",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131725" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131725",
+        "categ_cod" : "11A131725",
+        "categ_dsg" : "União das freguesias de Grijó e Sermonde",
+        "categ_ord" : "374",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131726" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131726",
+        "categ_cod" : "11A131726",
+        "categ_dsg" : "União das freguesias de Gulpilhares e Valadares",
+        "categ_ord" : "375",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131727" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131727",
+        "categ_cod" : "11A131727",
+        "categ_dsg" : "União das freguesias de Mafamude e Vilar do Paraíso",
+        "categ_ord" : "376",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131728" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131728",
+        "categ_cod" : "11A131728",
+        "categ_dsg" : "União das freguesias de Pedroso e Seixezelo",
+        "categ_ord" : "377",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131729" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131729",
+        "categ_cod" : "11A131729",
+        "categ_dsg" : "União das freguesias de Sandim, Olival, Lever e Crestuma",
+        "categ_ord" : "378",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131730" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131730",
+        "categ_cod" : "11A131730",
+        "categ_dsg" : "União das freguesias de Santa Marinha e São Pedro da Afurada",
+        "categ_ord" : "379",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131731" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131731",
+        "categ_cod" : "11A131731",
+        "categ_dsg" : "União das freguesias de Serzedo e Perosinho",
+        "categ_ord" : "380",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11A131723" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11A131723",
+        "categ_cod" : "11A131723",
+        "categ_dsg" : "Vilar de Andorinho",
+        "categ_ord" : "381",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_11B" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11B",
+        "categ_cod" : "11B",
+        "categ_dsg" : "Alto Tâmega e Barroso",
+        "categ_ord" : "382",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_11C" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11C",
+        "categ_cod" : "11C",
+        "categ_dsg" : "Tâmega e Sousa",
+        "categ_ord" : "383",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_11D" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11D",
+        "categ_cod" : "11D",
+        "categ_dsg" : "Douro",
+        "categ_ord" : "384",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_11E" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11E",
+        "categ_cod" : "11E",
+        "categ_dsg" : "Terras de Trás-os-Montes",
+        "categ_ord" : "385",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_19" : [ {
+        "dim_num" : "2",
+        "cat_id" : "19",
+        "categ_cod" : "19",
+        "categ_dsg" : "Centro",
+        "categ_ord" : "386",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_191" : [ {
+        "dim_num" : "2",
+        "cat_id" : "191",
+        "categ_cod" : "191",
+        "categ_dsg" : "Região de Aveiro",
+        "categ_ord" : "387",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_192" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192",
+        "categ_cod" : "192",
+        "categ_dsg" : "Região de Coimbra",
+        "categ_ord" : "388",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1920603" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1920603",
+        "categ_cod" : "1920603",
+        "categ_dsg" : "Coimbra",
+        "categ_ord" : "389",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_192060301" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060301",
+        "categ_cod" : "192060301",
+        "categ_dsg" : "Almalaguês",
+        "categ_ord" : "390",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060309" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060309",
+        "categ_cod" : "192060309",
+        "categ_dsg" : "Brasfemes",
+        "categ_ord" : "391",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060311" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060311",
+        "categ_cod" : "192060311",
+        "categ_dsg" : "Ceira",
+        "categ_ord" : "392",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060312" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060312",
+        "categ_cod" : "192060312",
+        "categ_dsg" : "Cernache",
+        "categ_ord" : "393",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060318" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060318",
+        "categ_cod" : "192060318",
+        "categ_dsg" : "Santo António dos Olivais",
+        "categ_ord" : "394",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060320" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060320",
+        "categ_cod" : "192060320",
+        "categ_dsg" : "São João do Campo",
+        "categ_ord" : "395",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060324" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060324",
+        "categ_cod" : "192060324",
+        "categ_dsg" : "São Silvestre",
+        "categ_ord" : "396",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060329" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060329",
+        "categ_cod" : "192060329",
+        "categ_dsg" : "Torres do Mondego",
+        "categ_ord" : "397",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060332" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060332",
+        "categ_cod" : "192060332",
+        "categ_dsg" : "União das freguesias de Antuzede e Vil de Matos",
+        "categ_ord" : "398",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060333" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060333",
+        "categ_cod" : "192060333",
+        "categ_dsg" : "União das freguesias de Assafarge e Antanhol",
+        "categ_ord" : "399",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060334" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060334",
+        "categ_cod" : "192060334",
+        "categ_dsg" : "União das freguesias de Coimbra (Sé Nova, Santa Cruz, Almedina e São Bartolomeu)",
+        "categ_ord" : "400",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060335" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060335",
+        "categ_cod" : "192060335",
+        "categ_dsg" : "União das freguesias de Eiras e São Paulo de Frades",
+        "categ_ord" : "401",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060336" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060336",
+        "categ_cod" : "192060336",
+        "categ_dsg" : "União das freguesias de Santa Clara e Castelo Viegas",
+        "categ_ord" : "402",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060337" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060337",
+        "categ_cod" : "192060337",
+        "categ_dsg" : "União das freguesias de São Martinho de Árvore e Lamarosa",
+        "categ_ord" : "403",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060338" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060338",
+        "categ_cod" : "192060338",
+        "categ_dsg" : "União das freguesias de São Martinho do Bispo e Ribeira de Frades",
+        "categ_ord" : "404",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060339" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060339",
+        "categ_cod" : "192060339",
+        "categ_dsg" : "União das freguesias de Souselas e Botão",
+        "categ_ord" : "405",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060340" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060340",
+        "categ_cod" : "192060340",
+        "categ_dsg" : "União das freguesias de Taveiro, Ameal e Arzila",
+        "categ_ord" : "406",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_192060341" : [ {
+        "dim_num" : "2",
+        "cat_id" : "192060341",
+        "categ_cod" : "192060341",
+        "categ_dsg" : "União das freguesias de Trouxemil e Torre de Vilela",
+        "categ_ord" : "407",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193",
+        "categ_cod" : "193",
+        "categ_dsg" : "Região de Leiria",
+        "categ_ord" : "408",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1931009" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1931009",
+        "categ_cod" : "1931009",
+        "categ_dsg" : "Leiria",
+        "categ_ord" : "409",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_193100901" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100901",
+        "categ_cod" : "193100901",
+        "categ_dsg" : "Amor",
+        "categ_ord" : "410",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100902" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100902",
+        "categ_cod" : "193100902",
+        "categ_dsg" : "Arrabal",
+        "categ_ord" : "411",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100925" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100925",
+        "categ_cod" : "193100925",
+        "categ_dsg" : "Bajouca",
+        "categ_ord" : "412",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100926" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100926",
+        "categ_cod" : "193100926",
+        "categ_dsg" : "Bidoeira de Cima",
+        "categ_ord" : "413",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100907" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100907",
+        "categ_cod" : "193100907",
+        "categ_dsg" : "Caranguejeira",
+        "categ_ord" : "414",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100909" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100909",
+        "categ_cod" : "193100909",
+        "categ_dsg" : "Coimbrão",
+        "categ_ord" : "415",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100913" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100913",
+        "categ_cod" : "193100913",
+        "categ_dsg" : "Maceira",
+        "categ_ord" : "416",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100915" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100915",
+        "categ_cod" : "193100915",
+        "categ_dsg" : "Milagres",
+        "categ_ord" : "417",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100921" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100921",
+        "categ_cod" : "193100921",
+        "categ_dsg" : "Regueira de Pontes",
+        "categ_ord" : "418",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100932" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100932",
+        "categ_cod" : "193100932",
+        "categ_dsg" : "União das freguesias de Colmeias e Memória",
+        "categ_ord" : "419",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100933" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100933",
+        "categ_cod" : "193100933",
+        "categ_dsg" : "União das freguesias de Leiria, Pousos, Barreira e Cortes",
+        "categ_ord" : "420",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100934" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100934",
+        "categ_cod" : "193100934",
+        "categ_dsg" : "União das freguesias de Marrazes e Barosa",
+        "categ_ord" : "421",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100935" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100935",
+        "categ_cod" : "193100935",
+        "categ_dsg" : "União das freguesias de Monte Real e Carvide",
+        "categ_ord" : "422",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100936" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100936",
+        "categ_cod" : "193100936",
+        "categ_dsg" : "União das freguesias de Monte Redondo e Carreira",
+        "categ_ord" : "423",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100937" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100937",
+        "categ_cod" : "193100937",
+        "categ_dsg" : "União das freguesias de Parceiros e Azoia",
+        "categ_ord" : "424",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100938" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100938",
+        "categ_cod" : "193100938",
+        "categ_dsg" : "União das freguesias de Santa Catarina da Serra e Chainça",
+        "categ_ord" : "425",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100939" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100939",
+        "categ_cod" : "193100939",
+        "categ_dsg" : "União das freguesias de Santa Eufémia e Boa Vista",
+        "categ_ord" : "426",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_193100940" : [ {
+        "dim_num" : "2",
+        "cat_id" : "193100940",
+        "categ_cod" : "193100940",
+        "categ_dsg" : "União das freguesias de Souto da Carpalhosa e Ortigosa",
+        "categ_ord" : "427",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_194" : [ {
+        "dim_num" : "2",
+        "cat_id" : "194",
+        "categ_cod" : "194",
+        "categ_dsg" : "Viseu Dão Lafões",
+        "categ_ord" : "428",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_195" : [ {
+        "dim_num" : "2",
+        "cat_id" : "195",
+        "categ_cod" : "195",
+        "categ_dsg" : "Beira Baixa",
+        "categ_ord" : "429",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_196" : [ {
+        "dim_num" : "2",
+        "cat_id" : "196",
+        "categ_cod" : "196",
+        "categ_dsg" : "Beiras e Serra da Estrela",
+        "categ_ord" : "430",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1D" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1D",
+        "categ_cod" : "1D",
+        "categ_dsg" : "Oeste e Vale do Tejo",
+        "categ_ord" : "431",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_1D1" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1D1",
+        "categ_cod" : "1D1",
+        "categ_dsg" : "Oeste",
+        "categ_ord" : "432",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1D2" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1D2",
+        "categ_cod" : "1D2",
+        "categ_dsg" : "Médio Tejo",
+        "categ_ord" : "433",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1D3" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1D3",
+        "categ_cod" : "1D3",
+        "categ_dsg" : "Lezíria do Tejo",
+        "categ_ord" : "434",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1A" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A",
+        "categ_cod" : "1A",
+        "categ_dsg" : "Grande Lisboa",
+        "categ_ord" : "435",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_1A0" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0",
+        "categ_cod" : "1A0",
+        "categ_dsg" : "Grande Lisboa",
+        "categ_ord" : "436",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1A01115" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01115",
+        "categ_cod" : "1A01115",
+        "categ_dsg" : "Amadora",
+        "categ_ord" : "437",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0111513" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111513",
+        "categ_cod" : "1A0111513",
+        "categ_dsg" : "Águas Livres",
+        "categ_ord" : "438",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111512" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111512",
+        "categ_cod" : "1A0111512",
+        "categ_dsg" : "Alfragide",
+        "categ_ord" : "439",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111514" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111514",
+        "categ_cod" : "1A0111514",
+        "categ_dsg" : "Encosta do Sol",
+        "categ_ord" : "440",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111515" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111515",
+        "categ_cod" : "1A0111515",
+        "categ_dsg" : "Falagueira-Venda Nova",
+        "categ_ord" : "441",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111516" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111516",
+        "categ_cod" : "1A0111516",
+        "categ_dsg" : "Mina de Água",
+        "categ_ord" : "442",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111517" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111517",
+        "categ_cod" : "1A0111517",
+        "categ_dsg" : "Venteira",
+        "categ_ord" : "443",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A01105" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01105",
+        "categ_cod" : "1A01105",
+        "categ_dsg" : "Cascais",
+        "categ_ord" : "444",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0110501" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110501",
+        "categ_cod" : "1A0110501",
+        "categ_dsg" : "Alcabideche",
+        "categ_ord" : "445",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110506" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110506",
+        "categ_cod" : "1A0110506",
+        "categ_dsg" : "São Domingos de Rana",
+        "categ_ord" : "446",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110507" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110507",
+        "categ_cod" : "1A0110507",
+        "categ_dsg" : "União das freguesias de Carcavelos e Parede",
+        "categ_ord" : "447",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110508" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110508",
+        "categ_cod" : "1A0110508",
+        "categ_dsg" : "União das freguesias de Cascais e Estoril",
+        "categ_ord" : "448",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A01106" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01106",
+        "categ_cod" : "1A01106",
+        "categ_dsg" : "Lisboa",
+        "categ_ord" : "449",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0110601" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110601",
+        "categ_cod" : "1A0110601",
+        "categ_dsg" : "Ajuda",
+        "categ_ord" : "450",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110602" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110602",
+        "categ_cod" : "1A0110602",
+        "categ_dsg" : "Alcântara",
+        "categ_ord" : "451",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110654" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110654",
+        "categ_cod" : "1A0110654",
+        "categ_dsg" : "Alvalade",
+        "categ_ord" : "452",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110655" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110655",
+        "categ_cod" : "1A0110655",
+        "categ_dsg" : "Areeiro",
+        "categ_ord" : "453",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110656" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110656",
+        "categ_cod" : "1A0110656",
+        "categ_dsg" : "Arroios",
+        "categ_ord" : "454",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110657" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110657",
+        "categ_cod" : "1A0110657",
+        "categ_dsg" : "Avenidas Novas",
+        "categ_ord" : "455",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110607" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110607",
+        "categ_cod" : "1A0110607",
+        "categ_dsg" : "Beato",
+        "categ_ord" : "456",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110658" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110658",
+        "categ_cod" : "1A0110658",
+        "categ_dsg" : "Belém",
+        "categ_ord" : "457",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110608" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110608",
+        "categ_cod" : "1A0110608",
+        "categ_dsg" : "Benfica",
+        "categ_ord" : "458",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110659" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110659",
+        "categ_cod" : "1A0110659",
+        "categ_dsg" : "Campo de Ourique",
+        "categ_ord" : "459",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110610" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110610",
+        "categ_cod" : "1A0110610",
+        "categ_dsg" : "Campolide",
+        "categ_ord" : "460",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110611" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110611",
+        "categ_cod" : "1A0110611",
+        "categ_dsg" : "Carnide",
+        "categ_ord" : "461",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110660" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110660",
+        "categ_cod" : "1A0110660",
+        "categ_dsg" : "Estrela",
+        "categ_ord" : "462",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110618" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110618",
+        "categ_cod" : "1A0110618",
+        "categ_dsg" : "Lumiar",
+        "categ_ord" : "463",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110621" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110621",
+        "categ_cod" : "1A0110621",
+        "categ_dsg" : "Marvila",
+        "categ_ord" : "464",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110661" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110661",
+        "categ_cod" : "1A0110661",
+        "categ_dsg" : "Misericórdia",
+        "categ_ord" : "465",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110633" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110633",
+        "categ_cod" : "1A0110633",
+        "categ_dsg" : "Olivais",
+        "categ_ord" : "466",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110662" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110662",
+        "categ_cod" : "1A0110662",
+        "categ_dsg" : "Parque das Nações",
+        "categ_ord" : "467",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110663" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110663",
+        "categ_cod" : "1A0110663",
+        "categ_dsg" : "Penha de França",
+        "categ_ord" : "468",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110664" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110664",
+        "categ_cod" : "1A0110664",
+        "categ_dsg" : "Santa Clara",
+        "categ_ord" : "469",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110665" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110665",
+        "categ_cod" : "1A0110665",
+        "categ_dsg" : "Santa Maria Maior",
+        "categ_ord" : "470",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110666" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110666",
+        "categ_cod" : "1A0110666",
+        "categ_dsg" : "Santo António",
+        "categ_ord" : "471",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110639" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110639",
+        "categ_cod" : "1A0110639",
+        "categ_dsg" : "São Domingos de Benfica",
+        "categ_ord" : "472",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110667" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110667",
+        "categ_cod" : "1A0110667",
+        "categ_dsg" : "São Vicente",
+        "categ_ord" : "473",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A01107" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01107",
+        "categ_cod" : "1A01107",
+        "categ_dsg" : "Loures",
+        "categ_ord" : "474",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0110702" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110702",
+        "categ_cod" : "1A0110702",
+        "categ_dsg" : "Bucelas",
+        "categ_ord" : "475",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110705" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110705",
+        "categ_cod" : "1A0110705",
+        "categ_dsg" : "Fanhões",
+        "categ_ord" : "476",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110707" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110707",
+        "categ_cod" : "1A0110707",
+        "categ_dsg" : "Loures",
+        "categ_ord" : "477",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110708" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110708",
+        "categ_cod" : "1A0110708",
+        "categ_dsg" : "Lousa",
+        "categ_ord" : "478",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110731" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110731",
+        "categ_cod" : "1A0110731",
+        "categ_dsg" : "União das freguesias de Camarate, Unhos e Apelação",
+        "categ_ord" : "479",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110726" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110726",
+        "categ_cod" : "1A0110726",
+        "categ_dsg" : "União das freguesias de Moscavide e Portela",
+        "categ_ord" : "480",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110727" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110727",
+        "categ_cod" : "1A0110727",
+        "categ_dsg" : "União das freguesias de Sacavém e Prior Velho",
+        "categ_ord" : "481",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110728" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110728",
+        "categ_cod" : "1A0110728",
+        "categ_dsg" : "União das freguesias de Santa Iria de Azoia, São João da Talha e Bobadela",
+        "categ_ord" : "482",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110729" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110729",
+        "categ_cod" : "1A0110729",
+        "categ_dsg" : "União das freguesias de Santo Antão e São Julião do Tojal",
+        "categ_ord" : "483",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110730" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110730",
+        "categ_cod" : "1A0110730",
+        "categ_dsg" : "União das freguesias de Santo António dos Cavaleiros e Frielas",
+        "categ_ord" : "484",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A01109" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01109",
+        "categ_cod" : "1A01109",
+        "categ_dsg" : "Mafra",
+        "categ_ord" : "485",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0110902" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110902",
+        "categ_cod" : "1A0110902",
+        "categ_dsg" : "Carvoeira",
+        "categ_ord" : "486",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110904" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110904",
+        "categ_cod" : "1A0110904",
+        "categ_dsg" : "Encarnação",
+        "categ_ord" : "487",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110906" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110906",
+        "categ_cod" : "1A0110906",
+        "categ_dsg" : "Ericeira",
+        "categ_ord" : "488",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110909" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110909",
+        "categ_cod" : "1A0110909",
+        "categ_dsg" : "Mafra",
+        "categ_ord" : "489",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110911" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110911",
+        "categ_cod" : "1A0110911",
+        "categ_dsg" : "Milharado",
+        "categ_ord" : "490",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110913" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110913",
+        "categ_cod" : "1A0110913",
+        "categ_dsg" : "Santo Isidoro",
+        "categ_ord" : "491",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110918" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110918",
+        "categ_cod" : "1A0110918",
+        "categ_dsg" : "União das freguesias de Azueira e Sobral da Abelheira",
+        "categ_ord" : "492",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110919" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110919",
+        "categ_cod" : "1A0110919",
+        "categ_dsg" : "União das freguesias de Enxara do Bispo, Gradil e Vila Franca do Rosário",
+        "categ_ord" : "493",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110920" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110920",
+        "categ_cod" : "1A0110920",
+        "categ_dsg" : "União das freguesias de Igreja Nova e Cheleiros",
+        "categ_ord" : "494",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110921" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110921",
+        "categ_cod" : "1A0110921",
+        "categ_dsg" : "União das freguesias de Malveira e São Miguel de Alcainça",
+        "categ_ord" : "495",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0110922" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0110922",
+        "categ_cod" : "1A0110922",
+        "categ_dsg" : "União das freguesias de Venda do Pinheiro e Santo Estêvão das Galés",
+        "categ_ord" : "496",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A01116" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01116",
+        "categ_cod" : "1A01116",
+        "categ_dsg" : "Odivelas",
+        "categ_ord" : "497",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0111603" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111603",
+        "categ_cod" : "1A0111603",
+        "categ_dsg" : "Odivelas",
+        "categ_ord" : "498",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111608" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111608",
+        "categ_cod" : "1A0111608",
+        "categ_dsg" : "União das freguesias de Pontinha e Famões",
+        "categ_ord" : "499",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111609" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111609",
+        "categ_cod" : "1A0111609",
+        "categ_dsg" : "União das freguesias de Póvoa de Santo Adrião e Olival Basto",
+        "categ_ord" : "500",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111610" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111610",
+        "categ_cod" : "1A0111610",
+        "categ_dsg" : "União das freguesias de Ramada e Caneças",
+        "categ_ord" : "501",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A01110" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01110",
+        "categ_cod" : "1A01110",
+        "categ_dsg" : "Oeiras",
+        "categ_ord" : "502",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0111002" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111002",
+        "categ_cod" : "1A0111002",
+        "categ_dsg" : "Barcarena",
+        "categ_ord" : "503",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111009" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111009",
+        "categ_cod" : "1A0111009",
+        "categ_dsg" : "Porto Salvo",
+        "categ_ord" : "504",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111012" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111012",
+        "categ_cod" : "1A0111012",
+        "categ_dsg" : "União das freguesias de Algés, Linda-a-Velha e Cruz Quebrada-Dafundo",
+        "categ_ord" : "505",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111013" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111013",
+        "categ_cod" : "1A0111013",
+        "categ_dsg" : "União das freguesias de Carnaxide e Queijas",
+        "categ_ord" : "506",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111014" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111014",
+        "categ_cod" : "1A0111014",
+        "categ_dsg" : "União das freguesias de Oeiras e São Julião da Barra, Paço de Arcos e Caxias",
+        "categ_ord" : "507",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A01111" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01111",
+        "categ_cod" : "1A01111",
+        "categ_dsg" : "Sintra",
+        "categ_ord" : "508",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0111102" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111102",
+        "categ_cod" : "1A0111102",
+        "categ_dsg" : "Algueirão-Mem Martins",
+        "categ_ord" : "509",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111115" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111115",
+        "categ_cod" : "1A0111115",
+        "categ_dsg" : "Casal de Cambra",
+        "categ_ord" : "510",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111105" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111105",
+        "categ_cod" : "1A0111105",
+        "categ_dsg" : "Colares",
+        "categ_ord" : "511",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111108" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111108",
+        "categ_cod" : "1A0111108",
+        "categ_dsg" : "Rio de Mouro",
+        "categ_ord" : "512",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111122" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111122",
+        "categ_cod" : "1A0111122",
+        "categ_dsg" : "União das freguesias de Agualva e Mira-Sintra",
+        "categ_ord" : "513",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111123" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111123",
+        "categ_cod" : "1A0111123",
+        "categ_dsg" : "União das freguesias de Almargem do Bispo, Pêro Pinheiro e Montelavar",
+        "categ_ord" : "514",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111125" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111125",
+        "categ_cod" : "1A0111125",
+        "categ_dsg" : "União das freguesias de Massamá e Monte Abraão",
+        "categ_ord" : "515",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111126" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111126",
+        "categ_cod" : "1A0111126",
+        "categ_dsg" : "União das freguesias de Queluz e Belas",
+        "categ_ord" : "516",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111127" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111127",
+        "categ_cod" : "1A0111127",
+        "categ_dsg" : "União das freguesias de São João das Lampas e Terrugem",
+        "categ_ord" : "517",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111128" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111128",
+        "categ_cod" : "1A0111128",
+        "categ_dsg" : "União das freguesias de Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)",
+        "categ_ord" : "518",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111124" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111124",
+        "categ_cod" : "1A0111124",
+        "categ_dsg" : "União das freguesias do Cacém e São Marcos",
+        "categ_ord" : "519",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A01114" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A01114",
+        "categ_cod" : "1A01114",
+        "categ_dsg" : "Vila Franca de Xira",
+        "categ_ord" : "520",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1A0111412" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111412",
+        "categ_cod" : "1A0111412",
+        "categ_dsg" : "União das freguesias de Alhandra, São João dos Montes e Calhandriz",
+        "categ_ord" : "521",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111413" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111413",
+        "categ_cod" : "1A0111413",
+        "categ_dsg" : "União das freguesias de Alverca do Ribatejo e Sobralinho",
+        "categ_ord" : "522",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111414" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111414",
+        "categ_cod" : "1A0111414",
+        "categ_dsg" : "União das freguesias de Castanheira do Ribatejo e Cachoeiras",
+        "categ_ord" : "523",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111415" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111415",
+        "categ_cod" : "1A0111415",
+        "categ_dsg" : "União das freguesias de Póvoa de Santa Iria e Forte da Casa",
+        "categ_ord" : "524",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111408" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111408",
+        "categ_cod" : "1A0111408",
+        "categ_dsg" : "Vialonga",
+        "categ_ord" : "525",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1A0111409" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1A0111409",
+        "categ_cod" : "1A0111409",
+        "categ_dsg" : "Vila Franca de Xira",
+        "categ_ord" : "526",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B",
+        "categ_cod" : "1B",
+        "categ_dsg" : "Península de Setúbal",
+        "categ_ord" : "527",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_1B0" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0",
+        "categ_cod" : "1B0",
+        "categ_dsg" : "Península de Setúbal",
+        "categ_ord" : "528",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1B01502" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01502",
+        "categ_cod" : "1B01502",
+        "categ_dsg" : "Alcochete",
+        "categ_ord" : "529",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0150201" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150201",
+        "categ_cod" : "1B0150201",
+        "categ_dsg" : "Alcochete",
+        "categ_ord" : "530",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150202" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150202",
+        "categ_cod" : "1B0150202",
+        "categ_dsg" : "Samouco",
+        "categ_ord" : "531",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150203" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150203",
+        "categ_cod" : "1B0150203",
+        "categ_dsg" : "São Francisco",
+        "categ_ord" : "532",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B01503" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01503",
+        "categ_cod" : "1B01503",
+        "categ_dsg" : "Almada",
+        "categ_ord" : "533",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0150303" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150303",
+        "categ_cod" : "1B0150303",
+        "categ_dsg" : "Costa da Caparica",
+        "categ_ord" : "534",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150312" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150312",
+        "categ_cod" : "1B0150312",
+        "categ_dsg" : "União das freguesias de Almada, Cova da Piedade, Pragal e Cacilhas",
+        "categ_ord" : "535",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150313" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150313",
+        "categ_cod" : "1B0150313",
+        "categ_dsg" : "União das freguesias de Caparica e Trafaria",
+        "categ_ord" : "536",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150314" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150314",
+        "categ_cod" : "1B0150314",
+        "categ_dsg" : "União das freguesias de Charneca de Caparica e Sobreda",
+        "categ_ord" : "537",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150315" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150315",
+        "categ_cod" : "1B0150315",
+        "categ_dsg" : "União das freguesias de Laranjeiro e Feijó",
+        "categ_ord" : "538",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B01504" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01504",
+        "categ_cod" : "1B01504",
+        "categ_dsg" : "Barreiro",
+        "categ_ord" : "539",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0150407" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150407",
+        "categ_cod" : "1B0150407",
+        "categ_dsg" : "Santo António da Charneca",
+        "categ_ord" : "540",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150409" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150409",
+        "categ_cod" : "1B0150409",
+        "categ_dsg" : "União das freguesias de Alto do Seixalinho, Santo André e Verderena",
+        "categ_ord" : "541",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150410" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150410",
+        "categ_cod" : "1B0150410",
+        "categ_dsg" : "União das freguesias de Barreiro e Lavradio",
+        "categ_ord" : "542",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150411" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150411",
+        "categ_cod" : "1B0150411",
+        "categ_dsg" : "União das freguesias de Palhais e Coina",
+        "categ_ord" : "543",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B01506" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01506",
+        "categ_cod" : "1B01506",
+        "categ_dsg" : "Moita",
+        "categ_ord" : "544",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0150601" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150601",
+        "categ_cod" : "1B0150601",
+        "categ_dsg" : "Alhos Vedros",
+        "categ_ord" : "545",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150603" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150603",
+        "categ_cod" : "1B0150603",
+        "categ_dsg" : "Moita",
+        "categ_ord" : "546",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150607" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150607",
+        "categ_cod" : "1B0150607",
+        "categ_dsg" : "União das freguesias de Baixa da Banheira e Vale da Amoreira",
+        "categ_ord" : "547",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150608" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150608",
+        "categ_cod" : "1B0150608",
+        "categ_dsg" : "União das freguesias de Gaio-Rosário e Sarilhos Pequenos",
+        "categ_ord" : "548",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B01507" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01507",
+        "categ_cod" : "1B01507",
+        "categ_dsg" : "Montijo",
+        "categ_ord" : "549",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0150701" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150701",
+        "categ_cod" : "1B0150701",
+        "categ_dsg" : "Canha",
+        "categ_ord" : "550",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150704" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150704",
+        "categ_cod" : "1B0150704",
+        "categ_dsg" : "Sarilhos Grandes",
+        "categ_ord" : "551",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150709" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150709",
+        "categ_cod" : "1B0150709",
+        "categ_dsg" : "União das freguesias de Atalaia e Alto Estanqueiro-Jardia",
+        "categ_ord" : "552",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150710" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150710",
+        "categ_cod" : "1B0150710",
+        "categ_dsg" : "União das freguesias de Montijo e Afonsoeiro",
+        "categ_ord" : "553",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150711" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150711",
+        "categ_cod" : "1B0150711",
+        "categ_dsg" : "União das freguesias de Pegões",
+        "categ_ord" : "554",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B01508" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01508",
+        "categ_cod" : "1B01508",
+        "categ_dsg" : "Palmela",
+        "categ_ord" : "555",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0150802" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150802",
+        "categ_cod" : "1B0150802",
+        "categ_dsg" : "Palmela",
+        "categ_ord" : "556",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150803" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150803",
+        "categ_cod" : "1B0150803",
+        "categ_dsg" : "Pinhal Novo",
+        "categ_ord" : "557",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150804" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150804",
+        "categ_cod" : "1B0150804",
+        "categ_dsg" : "Quinta do Anjo",
+        "categ_ord" : "558",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0150806" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0150806",
+        "categ_cod" : "1B0150806",
+        "categ_dsg" : "União das freguesias de Poceirão e Marateca",
+        "categ_ord" : "559",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B01510" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01510",
+        "categ_cod" : "1B01510",
+        "categ_dsg" : "Seixal",
+        "categ_ord" : "560",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0151002" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151002",
+        "categ_cod" : "1B0151002",
+        "categ_dsg" : "Amora",
+        "categ_ord" : "561",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151005" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151005",
+        "categ_cod" : "1B0151005",
+        "categ_dsg" : "Corroios",
+        "categ_ord" : "562",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151006" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151006",
+        "categ_cod" : "1B0151006",
+        "categ_dsg" : "Fernão Ferro",
+        "categ_ord" : "563",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151007" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151007",
+        "categ_cod" : "1B0151007",
+        "categ_dsg" : "União das freguesias do Seixal, Arrentela e Aldeia de Paio Pires",
+        "categ_ord" : "564",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B01511" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01511",
+        "categ_cod" : "1B01511",
+        "categ_dsg" : "Sesimbra",
+        "categ_ord" : "565",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0151103" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151103",
+        "categ_cod" : "1B0151103",
+        "categ_dsg" : "Quinta do Conde",
+        "categ_ord" : "566",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151101" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151101",
+        "categ_cod" : "1B0151101",
+        "categ_dsg" : "Sesimbra (Castelo)",
+        "categ_ord" : "567",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151102" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151102",
+        "categ_cod" : "1B0151102",
+        "categ_dsg" : "Sesimbra (Santiago)",
+        "categ_ord" : "568",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B01512" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B01512",
+        "categ_cod" : "1B01512",
+        "categ_dsg" : "Setúbal",
+        "categ_ord" : "569",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_1B0151207" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151207",
+        "categ_cod" : "1B0151207",
+        "categ_dsg" : "Gâmbia-Pontes-Alto da Guerra",
+        "categ_ord" : "570",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151208" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151208",
+        "categ_cod" : "1B0151208",
+        "categ_dsg" : "Sado",
+        "categ_ord" : "571",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151205" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151205",
+        "categ_cod" : "1B0151205",
+        "categ_dsg" : "Setúbal (São Sebastião)",
+        "categ_ord" : "572",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151209" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151209",
+        "categ_cod" : "1B0151209",
+        "categ_dsg" : "União das freguesias de Azeitão (São Lourenço e São Simão)",
+        "categ_ord" : "573",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1B0151210" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1B0151210",
+        "categ_cod" : "1B0151210",
+        "categ_dsg" : "União das freguesias de Setúbal (São Julião, Nossa Senhora da Anunciada e Santa Maria da Graça)",
+        "categ_ord" : "574",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1C" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1C",
+        "categ_cod" : "1C",
+        "categ_dsg" : "Alentejo",
+        "categ_ord" : "575",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_1C1" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1C1",
+        "categ_cod" : "1C1",
+        "categ_dsg" : "Alentejo Litoral",
+        "categ_ord" : "576",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1C2" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1C2",
+        "categ_cod" : "1C2",
+        "categ_dsg" : "Baixo Alentejo",
+        "categ_ord" : "577",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1C3" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1C3",
+        "categ_cod" : "1C3",
+        "categ_dsg" : "Alto Alentejo",
+        "categ_ord" : "578",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1C4" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1C4",
+        "categ_cod" : "1C4",
+        "categ_dsg" : "Alentejo Central",
+        "categ_ord" : "579",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_15" : [ {
+        "dim_num" : "2",
+        "cat_id" : "15",
+        "categ_cod" : "15",
+        "categ_dsg" : "Algarve",
+        "categ_ord" : "580",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_150" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150",
+        "categ_cod" : "150",
+        "categ_dsg" : "Algarve",
+        "categ_ord" : "581",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_1500801" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500801",
+        "categ_cod" : "1500801",
+        "categ_dsg" : "Albufeira",
+        "categ_ord" : "582",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080106" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080106",
+        "categ_cod" : "150080106",
+        "categ_dsg" : "Albufeira e Olhos de Água",
+        "categ_ord" : "583",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080104" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080104",
+        "categ_cod" : "150080104",
+        "categ_dsg" : "Ferreiras",
+        "categ_ord" : "584",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080102" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080102",
+        "categ_cod" : "150080102",
+        "categ_dsg" : "Guia",
+        "categ_ord" : "585",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080103" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080103",
+        "categ_cod" : "150080103",
+        "categ_dsg" : "Paderne",
+        "categ_ord" : "586",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500802" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500802",
+        "categ_cod" : "1500802",
+        "categ_dsg" : "Alcoutim",
+        "categ_ord" : "587",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080202" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080202",
+        "categ_cod" : "150080202",
+        "categ_dsg" : "Giões",
+        "categ_ord" : "588",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080203" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080203",
+        "categ_cod" : "150080203",
+        "categ_dsg" : "Martim Longo",
+        "categ_ord" : "589",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080206" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080206",
+        "categ_cod" : "150080206",
+        "categ_dsg" : "União das freguesias de Alcoutim e Pereiro",
+        "categ_ord" : "590",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080205" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080205",
+        "categ_cod" : "150080205",
+        "categ_dsg" : "Vaqueiros",
+        "categ_ord" : "591",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500803" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500803",
+        "categ_cod" : "1500803",
+        "categ_dsg" : "Aljezur",
+        "categ_ord" : "592",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080301" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080301",
+        "categ_cod" : "150080301",
+        "categ_dsg" : "Aljezur",
+        "categ_ord" : "593",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080302" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080302",
+        "categ_cod" : "150080302",
+        "categ_dsg" : "Bordeira",
+        "categ_ord" : "594",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080303" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080303",
+        "categ_cod" : "150080303",
+        "categ_dsg" : "Odeceixe",
+        "categ_ord" : "595",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080304" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080304",
+        "categ_cod" : "150080304",
+        "categ_dsg" : "Rogil",
+        "categ_ord" : "596",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500804" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500804",
+        "categ_cod" : "1500804",
+        "categ_dsg" : "Castro Marim",
+        "categ_ord" : "597",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080404" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080404",
+        "categ_cod" : "150080404",
+        "categ_dsg" : "Altura",
+        "categ_ord" : "598",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080401" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080401",
+        "categ_cod" : "150080401",
+        "categ_dsg" : "Azinhal",
+        "categ_ord" : "599",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080402" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080402",
+        "categ_cod" : "150080402",
+        "categ_dsg" : "Castro Marim",
+        "categ_ord" : "600",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080403" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080403",
+        "categ_cod" : "150080403",
+        "categ_dsg" : "Odeleite",
+        "categ_ord" : "601",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500805" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500805",
+        "categ_cod" : "1500805",
+        "categ_dsg" : "Faro",
+        "categ_ord" : "602",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080506" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080506",
+        "categ_cod" : "150080506",
+        "categ_dsg" : "Montenegro",
+        "categ_ord" : "603",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080503" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080503",
+        "categ_cod" : "150080503",
+        "categ_dsg" : "Santa Bárbara de Nexe",
+        "categ_ord" : "604",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080507" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080507",
+        "categ_cod" : "150080507",
+        "categ_dsg" : "União das freguesias de Conceição e Estoi",
+        "categ_ord" : "605",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080508" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080508",
+        "categ_cod" : "150080508",
+        "categ_dsg" : "União das freguesias de Faro (Sé e São Pedro)",
+        "categ_ord" : "606",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500806" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500806",
+        "categ_cod" : "1500806",
+        "categ_dsg" : "Lagoa",
+        "categ_ord" : "607",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080602" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080602",
+        "categ_cod" : "150080602",
+        "categ_dsg" : "Ferragudo",
+        "categ_ord" : "608",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080604" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080604",
+        "categ_cod" : "150080604",
+        "categ_dsg" : "Porches",
+        "categ_ord" : "609",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080607" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080607",
+        "categ_cod" : "150080607",
+        "categ_dsg" : "União das freguesias de Estômbar e Parchal",
+        "categ_ord" : "610",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080608" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080608",
+        "categ_cod" : "150080608",
+        "categ_dsg" : "União das freguesias de Lagoa e Carvoeiro",
+        "categ_ord" : "611",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500807" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500807",
+        "categ_cod" : "1500807",
+        "categ_dsg" : "Lagos",
+        "categ_ord" : "612",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080703" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080703",
+        "categ_cod" : "150080703",
+        "categ_dsg" : "Luz",
+        "categ_ord" : "613",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080704" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080704",
+        "categ_cod" : "150080704",
+        "categ_dsg" : "Odiáxere",
+        "categ_ord" : "614",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080708" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080708",
+        "categ_cod" : "150080708",
+        "categ_dsg" : "São Gonçalo de Lagos",
+        "categ_ord" : "615",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080707" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080707",
+        "categ_cod" : "150080707",
+        "categ_dsg" : "União das freguesias de Bensafrim e Barão de São João",
+        "categ_ord" : "616",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500808" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500808",
+        "categ_cod" : "1500808",
+        "categ_dsg" : "Loulé",
+        "categ_ord" : "617",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080801" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080801",
+        "categ_cod" : "150080801",
+        "categ_dsg" : "Almancil",
+        "categ_ord" : "618",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080802" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080802",
+        "categ_cod" : "150080802",
+        "categ_dsg" : "Alte",
+        "categ_ord" : "619",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080803" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080803",
+        "categ_cod" : "150080803",
+        "categ_dsg" : "Ameixial",
+        "categ_ord" : "620",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080804" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080804",
+        "categ_cod" : "150080804",
+        "categ_dsg" : "Boliqueime",
+        "categ_ord" : "621",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080808" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080808",
+        "categ_cod" : "150080808",
+        "categ_dsg" : "Loulé (São Clemente)",
+        "categ_ord" : "622",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080809" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080809",
+        "categ_cod" : "150080809",
+        "categ_dsg" : "Loulé (São Sebastião)",
+        "categ_ord" : "623",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080805" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080805",
+        "categ_cod" : "150080805",
+        "categ_dsg" : "Quarteira",
+        "categ_ord" : "624",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080807" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080807",
+        "categ_cod" : "150080807",
+        "categ_dsg" : "Salir",
+        "categ_ord" : "625",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080812" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080812",
+        "categ_cod" : "150080812",
+        "categ_dsg" : "União de freguesias de Querença, Tôr e Benafim",
+        "categ_ord" : "626",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500809" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500809",
+        "categ_cod" : "1500809",
+        "categ_dsg" : "Monchique",
+        "categ_ord" : "627",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150080901" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080901",
+        "categ_cod" : "150080901",
+        "categ_dsg" : "Alferce",
+        "categ_ord" : "628",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080902" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080902",
+        "categ_cod" : "150080902",
+        "categ_dsg" : "Marmelete",
+        "categ_ord" : "629",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150080903" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150080903",
+        "categ_cod" : "150080903",
+        "categ_dsg" : "Monchique",
+        "categ_ord" : "630",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500810" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500810",
+        "categ_cod" : "1500810",
+        "categ_dsg" : "Olhão",
+        "categ_ord" : "631",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150081003" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081003",
+        "categ_cod" : "150081003",
+        "categ_dsg" : "Olhão",
+        "categ_ord" : "632",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081004" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081004",
+        "categ_cod" : "150081004",
+        "categ_dsg" : "Pechão",
+        "categ_ord" : "633",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081005" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081005",
+        "categ_cod" : "150081005",
+        "categ_dsg" : "Quelfes",
+        "categ_ord" : "634",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081006" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081006",
+        "categ_cod" : "150081006",
+        "categ_dsg" : "União das freguesias de Moncarapacho e Fuseta",
+        "categ_ord" : "635",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500811" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500811",
+        "categ_cod" : "1500811",
+        "categ_dsg" : "Portimão",
+        "categ_ord" : "636",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150081101" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081101",
+        "categ_cod" : "150081101",
+        "categ_dsg" : "Alvor",
+        "categ_ord" : "637",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081102" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081102",
+        "categ_cod" : "150081102",
+        "categ_dsg" : "Mexilhoeira Grande",
+        "categ_ord" : "638",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081103" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081103",
+        "categ_cod" : "150081103",
+        "categ_dsg" : "Portimão",
+        "categ_ord" : "639",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500812" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500812",
+        "categ_cod" : "1500812",
+        "categ_dsg" : "São Brás de Alportel",
+        "categ_ord" : "640",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150081201" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081201",
+        "categ_cod" : "150081201",
+        "categ_dsg" : "São Brás de Alportel",
+        "categ_ord" : "641",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500813" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500813",
+        "categ_cod" : "1500813",
+        "categ_dsg" : "Silves",
+        "categ_ord" : "642",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150081303" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081303",
+        "categ_cod" : "150081303",
+        "categ_dsg" : "Armação de Pêra",
+        "categ_ord" : "643",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081305" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081305",
+        "categ_cod" : "150081305",
+        "categ_dsg" : "São Bartolomeu de Messines",
+        "categ_ord" : "644",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081306" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081306",
+        "categ_cod" : "150081306",
+        "categ_dsg" : "São Marcos da Serra",
+        "categ_ord" : "645",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081307" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081307",
+        "categ_cod" : "150081307",
+        "categ_dsg" : "Silves",
+        "categ_ord" : "646",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081309" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081309",
+        "categ_cod" : "150081309",
+        "categ_dsg" : "União das freguesias de Alcantarilha e Pêra",
+        "categ_ord" : "647",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081310" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081310",
+        "categ_cod" : "150081310",
+        "categ_dsg" : "União das freguesias de Algoz e Tunes",
+        "categ_ord" : "648",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500814" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500814",
+        "categ_cod" : "1500814",
+        "categ_dsg" : "Tavira",
+        "categ_ord" : "649",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150081401" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081401",
+        "categ_cod" : "150081401",
+        "categ_dsg" : "Cachopo",
+        "categ_ord" : "650",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081404" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081404",
+        "categ_cod" : "150081404",
+        "categ_dsg" : "Santa Catarina da Fonte do Bispo",
+        "categ_ord" : "651",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081408" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081408",
+        "categ_cod" : "150081408",
+        "categ_dsg" : "Santa Luzia",
+        "categ_ord" : "652",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081410" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081410",
+        "categ_cod" : "150081410",
+        "categ_dsg" : "União das freguesias de Conceição e Cabanas de Tavira",
+        "categ_ord" : "653",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081411" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081411",
+        "categ_cod" : "150081411",
+        "categ_dsg" : "União das freguesias de Luz de Tavira e Santo Estêvão",
+        "categ_ord" : "654",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081412" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081412",
+        "categ_cod" : "150081412",
+        "categ_dsg" : "União das freguesias de Tavira (Santa Maria e Santiago)",
+        "categ_ord" : "655",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500815" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500815",
+        "categ_cod" : "1500815",
+        "categ_dsg" : "Vila do Bispo",
+        "categ_ord" : "656",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150081501" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081501",
+        "categ_cod" : "150081501",
+        "categ_dsg" : "Barão de São Miguel",
+        "categ_ord" : "657",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081502" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081502",
+        "categ_cod" : "150081502",
+        "categ_dsg" : "Budens",
+        "categ_ord" : "658",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081504" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081504",
+        "categ_cod" : "150081504",
+        "categ_dsg" : "Sagres",
+        "categ_ord" : "659",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081506" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081506",
+        "categ_cod" : "150081506",
+        "categ_dsg" : "Vila do Bispo e Raposeira",
+        "categ_ord" : "660",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_1500816" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1500816",
+        "categ_cod" : "1500816",
+        "categ_dsg" : "Vila Real de Santo António",
+        "categ_ord" : "661",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_150081603" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081603",
+        "categ_cod" : "150081603",
+        "categ_dsg" : "Monte Gordo",
+        "categ_ord" : "662",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081601" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081601",
+        "categ_cod" : "150081601",
+        "categ_dsg" : "Vila Nova de Cacela",
+        "categ_ord" : "663",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_150081602" : [ {
+        "dim_num" : "2",
+        "cat_id" : "150081602",
+        "categ_cod" : "150081602",
+        "categ_dsg" : "Vila Real de Santo António",
+        "categ_ord" : "664",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_2" : [ {
+        "dim_num" : "2",
+        "cat_id" : "2",
+        "categ_cod" : "2",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "665",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_20" : [ {
+        "dim_num" : "2",
+        "cat_id" : "20",
+        "categ_cod" : "20",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "666",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_200" : [ {
+        "dim_num" : "2",
+        "cat_id" : "200",
+        "categ_cod" : "200",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "667",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_3" : [ {
+        "dim_num" : "2",
+        "cat_id" : "3",
+        "categ_cod" : "3",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "668",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_30" : [ {
+        "dim_num" : "2",
+        "cat_id" : "30",
+        "categ_cod" : "30",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "669",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_300" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300",
+        "categ_cod" : "300",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "670",
+        "categ_nivel" : "4"
+      } ],
+      "Dim_Num2_3003103" : [ {
+        "dim_num" : "2",
+        "cat_id" : "3003103",
+        "categ_cod" : "3003103",
+        "categ_dsg" : "Funchal",
+        "categ_ord" : "671",
+        "categ_nivel" : "5"
+      } ],
+      "Dim_Num2_300310303" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310303",
+        "categ_cod" : "300310303",
+        "categ_dsg" : "Funchal (Santa Luzia)",
+        "categ_ord" : "672",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310304" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310304",
+        "categ_cod" : "300310304",
+        "categ_dsg" : "Funchal (Santa Maria Maior)",
+        "categ_ord" : "673",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310308" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310308",
+        "categ_cod" : "300310308",
+        "categ_dsg" : "Funchal (São Pedro)",
+        "categ_ord" : "674",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310310" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310310",
+        "categ_cod" : "300310310",
+        "categ_dsg" : "Funchal (Sé)",
+        "categ_ord" : "675",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310301" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310301",
+        "categ_cod" : "300310301",
+        "categ_dsg" : "Imaculado Coração de Maria",
+        "categ_ord" : "676",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310302" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310302",
+        "categ_cod" : "300310302",
+        "categ_dsg" : "Monte",
+        "categ_ord" : "677",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310305" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310305",
+        "categ_cod" : "300310305",
+        "categ_dsg" : "Santo António",
+        "categ_ord" : "678",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310306" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310306",
+        "categ_cod" : "300310306",
+        "categ_dsg" : "São Gonçalo",
+        "categ_ord" : "679",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310307" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310307",
+        "categ_cod" : "300310307",
+        "categ_dsg" : "São Martinho",
+        "categ_ord" : "680",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num2_300310309" : [ {
+        "dim_num" : "2",
+        "cat_id" : "300310309",
+        "categ_cod" : "300310309",
+        "categ_dsg" : "São Roque",
+        "categ_ord" : "681",
+        "categ_nivel" : "6"
+      } ],
+      "Dim_Num3_T" : [ {
+        "dim_num" : "3",
+        "cat_id" : "T",
+        "categ_cod" : "T",
+        "categ_dsg" : "Total",
+        "categ_ord" : "10",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num3_1" : [ {
+        "dim_num" : "3",
+        "cat_id" : "1",
+        "categ_cod" : "1",
+        "categ_dsg" : "0 or 1 bedroom",
+        "categ_ord" : "20",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_2" : [ {
+        "dim_num" : "3",
+        "cat_id" : "2",
+        "categ_cod" : "2",
+        "categ_dsg" : "2 bedrooms",
+        "categ_ord" : "30",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_3" : [ {
+        "dim_num" : "3",
+        "cat_id" : "3",
+        "categ_cod" : "3",
+        "categ_dsg" : "3 bedrooms",
+        "categ_ord" : "40",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_4" : [ {
+        "dim_num" : "3",
+        "cat_id" : "4",
+        "categ_cod" : "4",
+        "categ_dsg" : "4 or more bedrooms",
+        "categ_ord" : "50",
+        "categ_nivel" : "2"
+      } ]
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
