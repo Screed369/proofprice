@@ -1,0 +1,29 @@
+URL: https://datacatalog.cookcountyil.gov/resource/nj4t-kc8j.json?$select=tax_municipality_name%2Ccount(*)%20as%20n&$where=year%20%3D%20'2024'%20AND%20township_code%20in%20('70'%2C'71'%2C'72'%2C'73'%2C'74'%2C'75'%2C'76'%2C'77')&$group=tax_municipality_name&$order=n%20DESC&$limit=20
+Fetched: 2026-10-14T14:15:57Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 73
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:57 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuMTkwNThfMTdfNTY0MERRanBWazl1cGFrY25FbGgwR0dKb0dwWWhfWQ-TPZEA62Nfvot6eVQ25SClrOI118--gzip--gzip"
+X-SODA2-Fields: ["tax_municipality_name","n"]
+X-SODA2-Types: ["text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 0e33639c18ca3bb0414c878f61aa2488
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"tax_municipality_name":"CITY OF CHICAGO","n":"880755"}
+,{"n":"2149"}]
