@@ -1,0 +1,27 @@
+URL: https://data.bts.gov/api/catalog/v1?q=itinerary%20fares&limit=10&only=datasets
+Fetched: 2026-10-14T15:56:34Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 129
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:56:34 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 0469f67fb325a78b552f851db25380cb
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 50000 BYTES
+{
+  "results" : [],
+  "resultSetSize" : 0,
+  "timings" : { "serviceMillis" : 28, "searchMillis" : [ 5, 6 ] },
+  "warnings" : []
+}
