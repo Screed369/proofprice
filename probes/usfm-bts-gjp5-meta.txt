@@ -1,0 +1,568 @@
+URL: https://data.bts.gov/api/views/gjp5-nh2u.json
+Fetched: 2026-10-14T15:55:27Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 22110
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:55:27 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: b3775bcbaf72fa49466daa632eb80947
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{
+  "id" : "gjp5-nh2u",
+  "name" : "AFF - Average Air Fare by Carrier",
+  "assetType" : "dataset",
+  "attribution" : "U.S. DOT/Bureau of Transportation Statistics",
+  "attributionLink" : "https://transtats.bts.gov/Fields.asp?gnoyr_VQ=FHK",
+  "averageRating" : 0,
+  "category" : "Aviation",
+  "createdAt" : 1729192615,
+  "description" : "Average domestic market air fare by carrier.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 3230,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "USGOV_WORKS",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 42420329,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1787246278,
+  "publicationGroup" : 19669422,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1787246266,
+  "rowsUpdatedBy" : "y96g-mvgi",
+  "tableId" : 20529732,
+  "totalTimesRated" : 0,
+  "viewCount" : 5481,
+  "viewLastModified" : 1790681260,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1734023200,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 7629992,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1734010574,
+    "targetAudience" : "public",
+    "workflowId" : 2520,
+    "reviewer" : {
+      "id" : "y96g-mvgi",
+      "displayName" : "Robinson, Ramond (OST)"
+    },
+    "submissionDetails" : {
+      "permissionType" : "read"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1734023200,
+      "failureCount" : 0,
+      "startedAt" : 1734023200,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "f8pz-h9c6",
+      "displayName" : "Nicolas Hinze"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 641970559,
+    "name" : "Year",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "year",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 155217464,
+    "cachedContents" : {
+      "non_null" : "4214",
+      "largest" : "2026",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2025",
+        "count" : "192"
+      }, {
+        "item" : "1996",
+        "count" : "162"
+      }, {
+        "item" : "2008",
+        "count" : "153"
+      }, {
+        "item" : "1997",
+        "count" : "152"
+      }, {
+        "item" : "2009",
+        "count" : "151"
+      }, {
+        "item" : "1995",
+        "count" : "150"
+      }, {
+        "item" : "2000",
+        "count" : "148"
+      }, {
+        "item" : "1999",
+        "count" : "145"
+      }, {
+        "item" : "1998",
+        "count" : "144"
+      }, {
+        "item" : "2007",
+        "count" : "143"
+      }, {
+        "item" : "2006",
+        "count" : "143"
+      }, {
+        "item" : "2010",
+        "count" : "143"
+      }, {
+        "item" : "2005",
+        "count" : "141"
+      }, {
+        "item" : "2001",
+        "count" : "139"
+      }, {
+        "item" : "2004",
+        "count" : "138"
+      }, {
+        "item" : "2002",
+        "count" : "135"
+      }, {
+        "item" : "2011",
+        "count" : "133"
+      }, {
+        "item" : "2003",
+        "count" : "129"
+      }, {
+        "item" : "1994",
+        "count" : "128"
+      }, {
+        "item" : "2012",
+        "count" : "115"
+      } ],
+      "smallest" : "1993",
+      "count" : "4214",
+      "cardinality" : "4214"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 641970560,
+    "name" : "RpCarrier",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "rpcarrier",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 155217469,
+    "cachedContents" : {
+      "non_null" : "4214",
+      "largest" : "ZW",
+      "null" : "0",
+      "top" : [ {
+        "item" : "DL",
+        "count" : "133"
+      }, {
+        "item" : "YX",
+        "count" : "133"
+      }, {
+        "item" : "UA",
+        "count" : "133"
+      }, {
+        "item" : "WN",
+        "count" : "133"
+      }, {
+        "item" : "AA",
+        "count" : "133"
+      }, {
+        "item" : "AS",
+        "count" : "133"
+      }, {
+        "item" : "NK",
+        "count" : "133"
+      }, {
+        "item" : "HA",
+        "count" : "132"
+      }, {
+        "item" : "QX",
+        "count" : "127"
+      }, {
+        "item" : "F9",
+        "count" : "126"
+      }, {
+        "item" : "ZW",
+        "count" : "118"
+      }, {
+        "item" : "MQ",
+        "count" : "109"
+      }, {
+        "item" : "SY",
+        "count" : "107"
+      }, {
+        "item" : "G4",
+        "count" : "104"
+      }, {
+        "item" : "B6",
+        "count" : "104"
+      }, {
+        "item" : "EV",
+        "count" : "99"
+      }, {
+        "item" : "YV",
+        "count" : "95"
+      }, {
+        "item" : "OH",
+        "count" : "92"
+      }, {
+        "item" : "US",
+        "count" : "90"
+      }, {
+        "item" : "OO",
+        "count" : "82"
+      } ],
+      "smallest" : "16",
+      "count" : "4214",
+      "cardinality" : "4214"
+    },
+    "format" : { }
+  }, {
+    "id" : 641970561,
+    "name" : "Average Market Fare (Current $)",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "average_market_fare_real",
+    "position" : 3,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155217470,
+    "cachedContents" : {
+      "non_null" : "4214",
+      "largest" : "2118",
+      "null" : "0",
+      "top" : [ {
+        "item" : "199",
+        "count" : "40"
+      }, {
+        "item" : "189",
+        "count" : "40"
+      }, {
+        "item" : "200",
+        "count" : "35"
+      }, {
+        "item" : "208",
+        "count" : "35"
+      }, {
+        "item" : "186",
+        "count" : "34"
+      }, {
+        "item" : "206",
+        "count" : "33"
+      }, {
+        "item" : "180",
+        "count" : "33"
+      }, {
+        "item" : "209",
+        "count" : "32"
+      }, {
+        "item" : "195",
+        "count" : "32"
+      }, {
+        "item" : "247",
+        "count" : "31"
+      }, {
+        "item" : "202",
+        "count" : "30"
+      }, {
+        "item" : "203",
+        "count" : "30"
+      }, {
+        "item" : "207",
+        "count" : "30"
+      }, {
+        "item" : "253",
+        "count" : "29"
+      }, {
+        "item" : "204",
+        "count" : "29"
+      }, {
+        "item" : "201",
+        "count" : "28"
+      }, {
+        "item" : "196",
+        "count" : "28"
+      }, {
+        "item" : "237",
+        "count" : "28"
+      }, {
+        "item" : "205",
+        "count" : "27"
+      }, {
+        "item" : "218",
+        "count" : "27"
+      } ],
+      "smallest" : "27",
+      "count" : "4214",
+      "cardinality" : "4214"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 641970562,
+    "name" : "Market Passengers",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "market_passengers",
+    "position" : 4,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155217471,
+    "cachedContents" : {
+      "non_null" : "4214",
+      "largest" : "11221349",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1",
+        "count" : "12"
+      }, {
+        "item" : "6",
+        "count" : "9"
+      }, {
+        "item" : "4",
+        "count" : "7"
+      }, {
+        "item" : "7",
+        "count" : "5"
+      }, {
+        "item" : "2",
+        "count" : "5"
+      }, {
+        "item" : "5",
+        "count" : "4"
+      }, {
+        "item" : "12",
+        "count" : "3"
+      }, {
+        "item" : "3",
+        "count" : "3"
+      }, {
+        "item" : "107481",
+        "count" : "2"
+      }, {
+        "item" : "495",
+        "count" : "2"
+      }, {
+        "item" : "917",
+        "count" : "2"
+      }, {
+        "item" : "24607",
+        "count" : "2"
+      }, {
+        "item" : "515",
+        "count" : "2"
+      }, {
+        "item" : "18",
+        "count" : "2"
+      }, {
+        "item" : "27610",
+        "count" : "2"
+      }, {
+        "item" : "50395",
+        "count" : "2"
+      }, {
+        "item" : "50",
+        "count" : "2"
+      }, {
+        "item" : "46024",
+        "count" : "2"
+      }, {
+        "item" : "1136",
+        "count" : "2"
+      }, {
+        "item" : "58",
+        "count" : "2"
+      } ],
+      "smallest" : "1",
+      "count" : "4214",
+      "cardinality" : "4214"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 641970563,
+    "name" : "Market Revenue (Current $)",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "market_revenue_real",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155217472,
+    "cachedContents" : {
+      "non_null" : "4214",
+      "largest" : "3353800827",
+      "null" : "0",
+      "top" : [ {
+        "item" : "7517927",
+        "count" : "2"
+      }, {
+        "item" : "4265698",
+        "count" : "2"
+      }, {
+        "item" : "288483",
+        "count" : "2"
+      }, {
+        "item" : "2180757",
+        "count" : "2"
+      }, {
+        "item" : "37113373",
+        "count" : "1"
+      }, {
+        "item" : "389355667",
+        "count" : "1"
+      }, {
+        "item" : "1187186",
+        "count" : "1"
+      }, {
+        "item" : "2787433",
+        "count" : "1"
+      }, {
+        "item" : "20183667",
+        "count" : "1"
+      }, {
+        "item" : "2938698",
+        "count" : "1"
+      }, {
+        "item" : "5934699",
+        "count" : "1"
+      }, {
+        "item" : "18475946",
+        "count" : "1"
+      }, {
+        "item" : "248685",
+        "count" : "1"
+      }, {
+        "item" : "45723829",
+        "count" : "1"
+      }, {
+        "item" : "2345396",
+        "count" : "1"
+      }, {
+        "item" : "29704130",
+        "count" : "1"
+      }, {
+        "item" : "2309599",
+        "count" : "1"
+      }, {
+        "item" : "82483377",
+        "count" : "1"
+      }, {
+        "item" : "62528346",
+        "count" : "1"
+      }, {
+        "item" : "106206737",
+        "count" : "1"
+      } ],
+      "smallest" : "27",
+      "count" : "4214",
+      "cardinality" : "4214"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 641970564,
+    "name" : "Market Passenger Miles Flown (sm)",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "market_passenger_miles_flown",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155217465,
+    "cachedContents" : {
+      "non_null" : "4214",
+      "largest" : "13643105733",
+      "null" : "0",
+      "top" : [ {
+        "item" : "337",
+        "count" : "2"
+      }, {
+        "item" : "673508",
+        "count" : "2"
+      }, {
+        "item" : "32419686",
+        "count" : "2"
+      }, {
+        "item" : "32254427",
+        "count" : "2"
+      }, {
+        "item" : "85901375",
+        "count" : "2"
+      }, {
+        "item" : "2611",
+        "count" : "2"
+      }, {
+        "item" : "788018186",
+        "count" : "1"
+      }, {
+        "item" : "308015315",
+        "count" : "1"
+      }, {
+        "item" : "5620855",
+        "count" : "1"
+      }, {
+        "item" : "71412358",
+        "count" : "1"
+      }, {
+        "item" : "1284598",
+        "count" : "1"
+      }, {
+        "item" : "686044921",
+        "count" : "1"
+      }, {
+        "item" : "112106760",
+        "count" : "1"
+      }, {
+        "item" : "7189642",
+        "count" : "1"
+      }, {
+        "item" : "104190722",
+        "count" : "1"
+      }, {
+        "item" : "844119846",
+        "count" : "1"
+      }, {
+        "item" : "539222962",
+        "count" : "1"
+      }, {
+        "item" : "135562359",
+        "count" : "1"
+      }, {
+        "item" : "65355271",
+        "count" : "1"
+      }, {
+        "item" : "91679125",
+        "count" : "1"
+      } ],
+      "smallest" : "96",
+      "count" : "4214",
+      "card
