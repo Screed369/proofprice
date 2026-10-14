@@ -1,0 +1,37 @@
+URL: https://data.medicaid.gov/api/1/datastore/query/f38d0706-1239-442c-a3cc-40ef1b686ac0/0?limit=3
+Fetched: 2026-10-14T15:44:39Z from GitHub Actions
+Status, type, bytes: 200 application/json 2847
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+x-drupal-dynamic-cache: MISS
+content-language: en
+x-content-type-options: nosniff
+x-generator: Drupal 11 (https://www.drupal.org)
+x-drupal-cache: MISS
+last-modified: Wed, 14 Oct 2026 09:00:47 GMT
+etag: "1791968447-gzip"
+x-request-id: v-bf0c0288-c7ad-11f1-8890-ebaf7b71134f
+x-ah-environment: prod
+x-cache-hits: 1
+x-age: 24231
+expires: Wed, 14 Oct 2026 15:44:39 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Wed, 14 Oct 2026 15:44:39 GMT
+content-length: 2847
+set-cookie: cms_fpid=e2e7f025-9847-751a-5b30-7380e530b60d; expires=Fri, 13-Oct-2028 15:44:39 GMT; path=/; domain=.medicaid.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.6c5ed617.1791992679.1bc0b74
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"results":[{"ndc_description":"12HR NASAL DECONGEST ER 120 MG","ndc":"24385005452","nadac_per_unit":"0.28683","effective_date":"2024-12-18","pricing_unit":"EA","pharmacy_type_indicator":"C\/I","otc":"Y","explanation_code":"1","classification_for_rate_setting":"G","corresponding_generic_drug_nadac_per_unit":"","corresponding_generic_drug_effective_date":null,"as_of_date":"2025-01-01"},{"ndc_description":"12HR NASAL DECONGEST ER 120 MG","ndc":"70000047501","nadac_per_unit":"0.28683","effective_date":"2024-12-18","pricing_unit":"EA","pharmacy_type_indicator":"C\/I","otc":"Y","explanation_code":"1","classification_for_rate_setting":"G","corresponding_generic_drug_nadac_per_unit":"","corresponding_generic_drug_effective_date":null,"as_of_date":"2025-01-01"},{"ndc_description":"24H NASAL ALLERGY 55 MCG SPRAY","ndc":"46122038576","nadac_per_unit":"0.72316","effective_date":"2024-12-18","pricing_unit":"ML","pharmacy_type_indicator":"C\/I","otc":"Y","explanation_code":"1, 5","classification_for_rate_setting":"G","corresponding_generic_drug_nadac_per_unit":"","corresponding_generic_drug_effective_date":null,"as_of_date":"2025-01-01"}],"count":1608416,"schema":{"ae004d7f-5799-5de3-91ec-f1247f1a5452":{"fields":{"ndc_description":{"type":"text","mysql_type":"text","description":"NDC Description"},"ndc":{"type":"text","mysql_type":"text","description":"NDC"},"nadac_per_unit":{"type":"numeric","precision":"10","scale":"5","mysql_type":"decimal","description":"NADAC Per Unit"},"effective_date":{"type":"varchar","mysql_type":"date","description":"Effective Date"},"pricing_unit":{"type":"text","mysql_type":"text","description":"Pricing Unit"},"pharmacy_type_indicator":{"type":"text","mysql_type":"text","description":"Pharmacy Type Indicator"},"otc":{"type":"text","mysql_type":"text","description":"OTC"},"explanation_code":{"type":"text","mysql_type":"text","description":"Explanation Code"},"classification_for_rate_setting":{"type":"text","mysql_type":"text","description":"Classification for Rate Setting"},"corresponding_generic_drug_nadac_per_unit":{"type":"text","mysql_type":"text","description":"Corresponding Generic Drug NADAC Per Unit"},"corresponding_generic_drug_effective_date":{"type":"varchar","mysql_type":"date","description":"Corresponding Generic Drug Effective Date"},"as_of_date":{"type":"varchar","mysql_type":"date","description":"As of Date"}}}},"query":{"limit":3,"resources":[{"id":"ae004d7f-5799-5de3-91ec-f1247f1a5452","alias":"t"}],"offset":0,"count":true,"results":true,"schema":true,"keys":true,"format":"json","rowIds":false,"properties":["ndc_description","ndc","nadac_per_unit","effective_date","pricing_unit","pharmacy_type_indicator","otc","explanation_code","classification_for_rate_setting","corresponding_generic_drug_nadac_per_unit","corresponding_generic_drug_effective_date","as_of_date"]}}
