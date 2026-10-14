@@ -1,0 +1,380 @@
+URL: https://data.transportation.gov/resource/yj5y-b2ir.json?$select=city2,count(*)&$group=city2&$limit=1000
+Fetched: 2026-10-14T15:58:42Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 15164
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:58:42 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDg1MV81XzMzOU92dzVlR2d0Z3JPenJ5V2dSdlRmT29rN21TUQ---gzihfYc4mV6lz4VVWyrADpbyiDcDds--gzip--gzip"
+X-SODA2-Fields: ["city2","count"]
+X-SODA2-Types: ["text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: dc25f8f7462c33ed993b7ba8cb0071a4
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+[{"city2":"Albuquerque, NM","count":"115"}
+,{"city2":"Allentown/Bethlehem/Easton, PA","count":"4"}
+,{"city2":"Amarillo, TX","count":"53"}
+,{"city2":"Appleton, WI","count":"2"}
+,{"city2":"Asheville, NC","count":"80"}
+,{"city2":"Atlanta, GA (Metropolitan Area)","count":"1017"}
+,{"city2":"Atlantic City, NJ","count":"49"}
+,{"city2":"Augusta, GA","count":"104"}
+,{"city2":"Austin, TX","count":"810"}
+,{"city2":"Bakersfield, CA","count":"92"}
+,{"city2":"Bangor, ME","count":"148"}
+,{"city2":"Baton Rouge, LA","count":"321"}
+,{"city2":"Beaumont/Port Arthur, TX","count":"41"}
+,{"city2":"Bellingham, WA","count":"7"}
+,{"city2":"Bend/Redmond, OR","count":"118"}
+,{"city2":"Billings, MT","count":"289"}
+,{"city2":"Binghamton, NY","count":"80"}
+,{"city2":"Birmingham, AL","count":"540"}
+,{"city2":"Bismarck/Mandan, ND","count":"113"}
+,{"city2":"Bloomington/Normal, IL","count":"159"}
+,{"city2":"Boise, ID","count":"616"}
+,{"city2":"Boston, MA (Metropolitan Area)","count":"1928"}
+,{"city2":"Bozeman, MT","count":"474"}
+,{"city2":"Branson, MO","count":"31"}
+,{"city2":"Bristol/Johnson City/Kingsport, TN","count":"283"}
+,{"city2":"Brownsville, TX","count":"67"}
+,{"city2":"Brunswick, GA","count":"118"}
+,{"city2":"Buffalo, NY","count":"748"}
+,{"city2":"Bullhead City, AZ","count":"9"}
+,{"city2":"Burlington, VT","count":"384"}
+,{"city2":"Carlsbad, CA","count":"14"}
+,{"city2":"Carlsbad, NM","count":"8"}
+,{"city2":"Cedar Rapids/Iowa City, IA","count":"482"}
+,{"city2":"Champaign/Urbana, IL","count":"172"}
+,{"city2":"Charleston/Dunbar, WV","count":"320"}
+,{"city2":"Charleston, SC","count":"1140"}
+,{"city2":"Charlotte, NC","count":"2150"}
+,{"city2":"Charlottesville, VA","count":"467"}
+,{"city2":"Chattanooga, TN","count":"421"}
+,{"city2":"Chicago, IL","count":"3989"}
+,{"city2":"Cincinnati, OH","count":"1985"}
+,{"city2":"Clarksburg/Fairmont, WV","count":"10"}
+,{"city2":"Cleveland, OH (Metropolitan Area)","count":"2344"}
+,{"city2":"Clovis, NM","count":"2"}
+,{"city2":"Cody, WY","count":"5"}
+,{"city2":"College Station/Bryan, TX","count":"160"}
+,{"city2":"Colorado Springs, CO","count":"1363"}
+,{"city2":"Columbia, SC","count":"1078"}
+,{"city2":"Columbus, GA","count":"70"}
+,{"city2":"Columbus, MS","count":"61"}
+,{"city2":"Columbus, OH","count":"2292"}
+,{"city2":"Concord, NC","count":"10"}
+,{"city2":"Corpus Christi, TX","count":"802"}
+,{"city2":"Dallas/Fort Worth, TX","count":"5352"}
+,{"city2":"Daytona Beach, FL","count":"1307"}
+,{"city2":"Dayton, OH","count":"1523"}
+,{"city2":"Decatur, IL","count":"5"}
+,{"city2":"Del Rio, TX","count":"13"}
+,{"city2":"Denver, CO","count":"5222"}
+,{"city2":"Des Moines, IA","count":"1862"}
+,{"city2":"Detroit, MI","count":"4508"}
+,{"city2":"Devils Lake, ND","count":"20"}
+,{"city2":"Dickinson, ND","count":"33"}
+,{"city2":"Dothan, AL","count":"97"}
+,{"city2":"Dubuque, IA","count":"39"}
+,{"city2":"Duluth, MN","count":"639"}
+,{"city2":"Durango, CO","count":"587"}
+,{"city2":"Eagle, CO","count":"573"}
+,{"city2":"Eau Claire, WI","count":"41"}
+,{"city2":"Elko, NV","count":"134"}
+,{"city2":"Elmira/Corning, NY","count":"489"}
+,{"city2":"El Paso, TX","count":"2265"}
+,{"city2":"Erie, PA","count":"519"}
+,{"city2":"Escanaba, MI","count":"45"}
+,{"city2":"Eugene, OR","count":"1079"}
+,{"city2":"Eureka/Arcata, CA","count":"117"}
+,{"city2":"Evansville, IN","count":"799"}
+,{"city2":"Everett, WA","count":"23"}
+,{"city2":"Fargo, ND","count":"974"}
+,{"city2":"Farmington, NM","count":"17"}
+,{"city2":"Fayetteville, AR","count":"1537"}
+,{"city2":"Fayetteville, NC","count":"892"}
+,{"city2":"Flagstaff, AZ","count":"202"}
+,{"city2":"Flint, MI","count":"693"}
+,{"city2":"Florence, SC","count":"217"}
+,{"city2":"Fort Dodge, IA","count":"1"}
+,{"city2":"Fort Leonard Wood, MO","count":"4"}
+,{"city2":"Fort Myers, FL","count":"4112"}
+,{"city2":"Fort Smith, AR","count":"288"}
+,{"city2":"Fort Wayne, IN","count":"981"}
+,{"city2":"Fresno, CA","count":"1679"}
+,{"city2":"Gainesville, FL","count":"934"}
+,{"city2":"Garden City, KS","count":"53"}
+,{"city2":"Gillette, WY","count":"38"}
+,{"city2":"Grand Forks, ND","count":"223"}
+,{"city2":"Grand Island, NE","count":"57"}
+,{"city2":"Grand Junction, CO","count":"649"}
+,{"city2":"Grand Rapids, MI","count":"2522"}
+,{"city2":"Great Falls, MT","count":"443"}
+,{"city2":"Green Bay, WI","count":"1378"}
+,{"city2":"Greensboro/High Point, NC","count":"2542"}
+,{"city2":"Greenville, MS","count":"6"}
+,{"city2":"Greenville, NC","count":"185"}
+,{"city2":"Greenville/Spartanburg, SC","count":"2233"}
+,{"city2":"Gulfport/Biloxi, MS","count":"1110"}
+,{"city2":"Gulf Shores, AL","count":"15"}
+,{"city2":"Gunnison, CO","count":"235"}
+,{"city2":"Hagerstown, MD","count":"2"}
+,{"city2":"Hancock/Houghton, MI","count":"78"}
+,{"city2":"Harlingen/San Benito, TX","count":"1071"}
+,{"city2":"Harrisburg, PA","count":"2344"}
+,{"city2":"Harrison, AR","count":"3"}
+,{"city2":"Hartford, CT","count":"4265"}
+,{"city2":"Hattiesburg/Laurel, MS","count":"9"}
+,{"city2":"Hays, KS","count":"10"}
+,{"city2":"Helena, MT","count":"232"}
+,{"city2":"Hickory, NC","count":"1"}
+,{"city2":"Hilton Head, SC","count":"497"}
+,{"city2":"Hobbs, NM","count":"19"}
+,{"city2":"Hot Springs, AR","count":"2"}
+,{"city2":"Houston, TX","count":"8418"}
+,{"city2":"Huntsville, AL","count":"2221"}
+,{"city2":"Hyannis, MA","count":"2"}
+,{"city2":"Idaho Falls, ID","count":"554"}
+,{"city2":"Indianapolis, IN","count":"5275"}
+,{"city2":"International Falls, MN","count":"21"}
+,{"city2":"Inyokern, CA","count":"1"}
+,{"city2":"Iron Mountain/Kingsfd, MI","count":"34"}
+,{"city2":"Ironwood, MI","count":"3"}
+,{"city2":"Ithaca/Cortland, NY","count":"416"}
+,{"city2":"Jackson, TN","count":"6"}
+,{"city2":"Jackson/Vicksburg, MS","count":"2187"}
+,{"city2":"Jacksonville/Camp Lejeune, NC","count":"768"}
+,{"city2":"Jacksonville, FL","count":"5181"}
+,{"city2":"Jackson, WY","count":"1368"}
+,{"city2":"Jamestown, ND","count":"23"}
+,{"city2":"Jamestown, NY","count":"5"}
+,{"city2":"Jefferson City/Columbia, MO","count":"206"}
+,{"city2":"Johnstown, PA","count":"2"}
+,{"city2":"Joplin, MO","count":"56"}
+,{"city2":"Kalamazoo, MI","count":"779"}
+,{"city2":"Kalispell, MT","count":"944"}
+,{"city2":"Kansas City, MO","count":"7075"}
+,{"city2":"Kearney, NE","count":"6"}
+,{"city2":"Key West, FL","count":"1992"}
+,{"city2":"Killeen, TX","count":"829"}
+,{"city2":"Kinston, NC","count":"7"}
+,{"city2":"Kirksville, MO","count":"2"}
+,{"city2":"Knoxville, TN","count":"2928"}
+,{"city2":"La Crosse, WI","count":"528"}
+,{"city2":"Lafayette, IN","count":"5"}
+,{"city2":"Lafayette, LA","count":"947"}
+,{"city2":"Lake Charles, LA","count":"224"}
+,{"city2":"Lansing, MI","count":"952"}
+,{"city2":"Laredo, TX","count":"455"}
+,{"city2":"Las Cruces, NM","count":"6"}
+,{"city2":"Las Vegas, NV","count":"10539"}
+,{"city2":"Latrobe, PA","count":"38"}
+,{"city2":"Lawton/Fort Sill, OK","count":"107"}
+,{"city2":"Lewisburg, WV","count":"12"}
+,{"city2":"Lewiston, ID","count":"171"}
+,{"city2":"Lexington, KY","count":"2120"}
+,{"city2":"Liberal, KS","count":"4"}
+,{"city2":"Lincoln, NE","count":"873"}
+,{"city2":"Little Rock, AR","count":"3784"}
+,{"city2":"Longview, TX","count":"12"}
+,{"city2":"Los Angeles, CA (Metropolitan Area)","count":"13249"}
+,{"city2":"Louisville, KY","count":"4624"}
+,{"city2":"Lubbock, TX","count":"1875"}
+,{"city2":"Lynchburg, VA","count":"593"}
+,{"city2":"Macon, GA","count":"1"}
+,{"city2":"Madison, WI","count":"3605"}
+,{"city2":"Mammoth Lakes, CA","count":"48"}
+,{"city2":"Manhattan/Ft. Riley, KS","count":"195"}
+,{"city2":"Manistee/Ludington, MI","count":"3"}
+,{"city2":"Marathon, FL","count":"17"}
+,{"city2":"Marion/Herrin, IL","count":"3"}
+,{"city2":"Marquette, MI","count":"251"}
+,{"city2":"Martha's Vineyard, MA","count":"65"}
+,{"city2":"Mason City, IA","count":"3"}
+,{"city2":"Massena, NY","count":"3"}
+,{"city2":"Medford, OR","count":"1162"}
+,{"city2":"Melbourne, FL","count":"1798"}
+,{"city2":"Memphis, TN","count":"5543"}
+,{"city2":"Merced, CA","count":"6"}
+,{"city2":"Meridian, MS","count":"59"}
+,{"city2":"Miami, FL (Metropolitan Area)","count":"10774"}
+,{"city2":"Midland/Odessa, TX","count":"2119"}
+,{"city2":"Milwaukee, WI","count":"6221"}
+,{"city2":"Minneapolis/St. Paul, MN","count":"10920"}
+,{"city2":"Minot, ND","count":"698"}
+,{"city2":"Mission/McAllen/Edinburg, TX","count":"2272"}
+,{"city2":"Missoula, MT","count":"1622"}
+,{"city2":"Moab, UT","count":"8"}
+,{"city2":"Mobile, AL","count":"2190"}
+,{"city2":"Modesto, CA","count":"78"}
+,{"city2":"Monroe, LA","count":"851"}
+,{"city2":"Montgomery, AL","count":"1595"}
+,{"city2":"Montrose/Delta, CO","count":"845"}
+,{"city2":"Morgantown, WV","count":"3"}
+,{"city2":"Muscle Shoals, AL","count":"3"}
+,{"city2":"Muskegon, MI","count":"43"}
+,{"city2":"Myrtle Beach, SC","count":"3482"}
+,{"city2":"Nantucket, MA","count":"164"}
+,{"city2":"Naples, FL","count":"84"}
+,{"city2":"Nashville, TN","count":"8982"}
+,{"city2":"New Bedford/Fall River, MA","count":"1"}
+,{"city2":"New Bern/Morehead/Beaufort, NC","count":"920"}
+,{"city2":"New Haven, CT","count":"280"}
+,{"city2":"New Orleans, LA","count":"8679"}
+,{"city2":"New York City, NY (Metropolitan Area)","count":"15266"}
+,{"city2":"Niagara Falls, NY","count":"74"}
+,{"city2":"Norfolk, VA (Metropolitan Area)","count":"7143"}
+,{"city2":"North Bend/Coos Bay, OR","count":"85"}
+,{"city2":"North Platte, NE","count":"8"}
+,{"city2":"Ogdensburg, NY","count":"4"}
+,{"city2":"Ogden, UT","count":"13"}
+,{"city2":"Oklahoma City, OK","count":"7002"}
+,{"city2":"Omaha, NE","count":"6349"}
+,{"city2":"Orlando, FL","count":"13581"}
+,{"city2":"Owensboro, KY","count":"6"}
+,{"city2":"Oxnard/Ventura, CA","count":"7"}
+,{"city2":"Paducah, KY","count":"39"}
+,{"city2":"Palm Springs, CA","count":"3734"}
+,{"city2":"Panama City, FL","count":"2912"}
+,{"city2":"Parkersburg, WV","count":"16"}
+,{"city2":"Pasco/Kennewick/Richland, WA","count":"1730"}
+,{"city2":"Paso Robles/San Luis Obispo, CA","count":"1316"}
+,{"city2":"Pellston, MI","count":"96"}
+,{"city2":"Pensacola, FL","count":"5053"}
+,{"city2":"Peoria, IL","count":"1859"}
+,{"city2":"Philadelphia, PA","count":"12341"}
+,{"city2":"Philipsburg/State College, PA","count":"1449"}
+,{"city2":"Phoenix, AZ","count":"14876"}
+,{"city2":"Pierre, SD","count":"10"}
+,{"city2":"Pinehurst/Southern Pines, NC","count":"17"}
+,{"city2":"Pittsburgh, PA","count":"9292"}
+,{"city2":"Plattsburgh, NY","count":"114"}
+,{"city2":"Pocatello, ID","count":"88"}
+,{"city2":"Port Angeles, WA","count":"31"}
+,{"city2":"Portland, ME","count":"5032"}
+,{"city2":"Portland, OR","count":"11357"}
+,{"city2":"Portsmouth, NH","count":"37"}
+,{"city2":"Prescott, AZ","count":"22"}
+,{"city2":"Presque Isle/Houlton, ME","count":"70"}
+,{"city2":"Provincetown, MA","count":"20"}
+,{"city2":"Provo, UT","count":"206"}
+,{"city2":"Pueblo, CO","count":"5"}
+,{"city2":"Pullman, WA","count":"189"}
+,{"city2":"Punta Gorda, FL","count":"1427"}
+,{"city2":"Quad Cities, IL (Metropolitan Area)","count":"3044"}
+,{"city2":"Quincy, IL","count":"6"}
+,{"city2":"Raleigh/Durham, NC","count":"10485"}
+,{"city2":"Rapid City, SD","count":"2435"}
+,{"city2":"Reading, PA","count":"65"}
+,{"city2":"Redding, CA","count":"281"}
+,{"city2":"Reno, NV","count":"6425"}
+,{"city2":"Rhinelander, WI","count":"98"}
+,{"city2":"Richmond, VA","count":"7621"}
+,{"city2":"Riverton/Lander, WY","count":"6"}
+,{"city2":"Roanoke, VA","count":"3004"}
+,{"city2":"Rochester, MN","count":"1404"}
+,{"city2":"Rochester, NY","count":"5483"}
+,{"city2":"Rockford, IL","count":"269"}
+,{"city2":"Rockland, ME","count":"16"}
+,{"city2":"Rock Springs, WY","count":"88"}
+,{"city2":"Roswell, NM","count":"138"}
+,{"city2":"Rutland, VT","count":"1"}
+,{"city2":"Sacramento, CA","count":"9937"}
+,{"city2":"Saginaw/Bay City/Midland, MI","count":"1852"}
+,{"city2":"Salem, OR","count":"15"}
+,{"city2":"Salina, KS","count":"18"}
+,{"city2":"Salinas/Monterey, CA","count":"1534"}
+,{"city2":"Salisbury, MD","count":"560"}
+,{"city2":"Salt Lake City, UT","count":"12266"}
+,{"city2":"San Angelo, TX","count":"285"}
+,{"city2":"San Antonio, TX","count":"11980"}
+,{"city2":"San Bernardino, CA","count":"10"}
+,{"city2":"San Diego, CA","count":"15031"}
+,{"city2":"Sanford, FL","count":"3346"}
+,{"city2":"San Francisco, CA (Metropolitan Area)","count":"17722"}
+,{"city2":"Santa Barbara, CA","count":"3569"}
+,{"city2":"Santa Fe, NM","count":"556"}
+,{"city2":"Santa Maria, CA","count":"210"}
+,{"city2":"Santa Rosa, CA","count":"429"}
+,{"city2":"Sarasota/Bradenton, FL","count":"5946"}
+,{"city2":"Sault Ste. Marie, MI","count":"33"}
+,{"city2":"Savannah, GA","count":"6755"}
+,{"city2":"Scottsbluff, NE","count":"10"}
+,{"city2":"Scranton/Wilkes-Barre, PA","count":"2805"}
+,{"city2":"Seattle, WA","count":"17170"}
+,{"city2":"Sheridan, WY","count":"8"}
+,{"city2":"Show Low, AZ","count":"3"}
+,{"city2":"Shreveport, LA","count":"3881"}
+,{"city2":"Silver City/Hurley, NM","count":"4"}
+,{"city2":"Sioux City, IA","count":"362"}
+,{"city2":"Sioux Falls, SD","count":"4381"}
+,{"city2":"South Bend, IN","count":"3866"}
+,{"city2":"Spokane, WA","count":"6879"}
+,{"city2":"Springfield, IL","count":"727"}
+,{"city2":"Springfield, MO","count":"4213"}
+,{"city2":"St. Augustine, FL","count":"9"}
+,{"city2":"Staunton, VA","count":"9"}
+,{"city2":"St. Cloud, MN","count":"81"}
+,{"city2":"Steamboat Springs, CO","count":"1392"}
+,{"city2":"St. George, UT","count":"603"}
+,{"city2":"Stillwater, OK","count":"9"}
+,{"city2":"St. Louis, MO","count":"13655"}
+,{"city2":"Stockton, CA","count":"155"}
+,{"city2":"Sun Valley/Hailey/Ketchum, ID","count":"706"}
+,{"city2":"Syracuse, NY","count":"7074"}
+,{"city2":"Tallahassee, FL","count":"4005"}
+,{"city2":"Tampa, FL (Metropolitan Area)","count":"16112"}
+,{"city2":"Telluride, CO","count":"68"}
+,{"city2":"Teterboro, NJ","count":"2"}
+,{"city2":"Texarkana, AR","count":"80"}
+,{"city2":"Thief River Falls, MN","count":"9"}
+,{"city2":"Toledo, OH","count":"1640"}
+,{"city2":"Topeka, KS","count":"9"}
+,{"city2":"Traverse City, MI","count":"2887"}
+,{"city2":"Trenton, NJ","count":"523"}
+,{"city2":"Tucson, AZ","count":"9096"}
+,{"city2":"Tulsa, OK","count":"8387"}
+,{"city2":"Tunica, MS","count":"2"}
+,{"city2":"Tupelo, MS","count":"14"}
+,{"city2":"Twin Falls, ID","count":"170"}
+,{"city2":"Tyler, TX","count":"497"}
+,{"city2":"Valdosta, GA","count":"91"}
+,{"city2":"Valparaiso, FL","count":"5660"}
+,{"city2":"Vernal, UT","count":"9"}
+,{"city2":"Vero Beach, FL","count":"43"}
+,{"city2":"Victoria, TX","count":"27"}
+,{"city2":"Waco, TX","count":"372"}
+,{"city2":"Walla Walla, WA","count":"287"}
+,{"city2":"Washington, DC (Metropolitan Area)","count":"22254"}
+,{"city2":"Waterloo, IA","count":"171"}
+,{"city2":"Watertown, NY","count":"11"}
+,{"city2":"Watertown, SD","count":"4"}
+,{"city2":"Wausau/Mosinee/Stevens Point, WI","count":"2010"}
+,{"city2":"Wenatchee, WA","count":"586"}
+,{"city2":"Westerly, RI","count":"3"}
+,{"city2":"West Palm Beach/Palm Beach, FL","count":"10384"}
+,{"city2":"West Yellowstone, MT","count":"53"}
+,{"city2":"Wichita Falls, TX","count":"142"}
+,{"city2":"Wichita, KS","count":"6492"}
+,{"city2":"Williamsport, PA","count":"99"}
+,{"city2":"Williston, ND","count":"386"}
+,{"city2":"Wilmington, DE","count":"146"}
+,{"city2":"Wilmington, NC","count":"4993"}
+,{"city2":"Worcester, MA","count":"219"}
+,{"city2":"Yakima, WA","count":"602"}
+,{"city2":"Youngstown/Warren, OH","count":"134"}
+,{"city2":"Yuma, AZ","count":"855"}]
