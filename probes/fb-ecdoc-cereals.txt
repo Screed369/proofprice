@@ -1,0 +1,78 @@
+URL: https://agridata.ec.europa.eu/extensions/API_Documentation/cereals.html
+Fetched: 2026-10-14T14:13:59Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=utf-8 2284
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 14:13:59 GMT
+content-type: text/html;charset=utf-8
+set-cookie: X-Qlik-Session-v2-HTTP=605ce803-eb8b-4d16-97c0-5d4300e7b031; Path=/; HttpOnly; SameSite=Strict; Secure
+cache-control: private, must-revalidate, max-age=0
+expires: Mon, 01 Jan 0001 00:00:00 GMT
+last-modified: Thu, 21 May 2026 12:40:02 GMT
+accept-ranges: bytes
+etag: 639149640029121027
+x-ua-compatible: IE=edge
+access-control-allow-origin: https://agridata.ec.europa.eu
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000;includeSubDomains;Preload
+server: -
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text
+=== FIRST 80000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cereals</title>
+	<link id="bootstrapCSS" href="../CommonStyles/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../DataPortal/API_Documentation.css">
+</head>
+<body>
+
+<div class="sect1">
+	<div class="intro_section">
+		<div class="intro_desc">
+			<div>
+				<h2 id="resources-cereal-prices" class="section_heading">Cereals</h2>
+				<div class="paragraph" style="line-height:1.5em">
+					Prices of different kinds of cereals at a number of important EU markets, in different stages of the value chain (Free On Board, Departure from Silo etc.) as well as gross production, area and yield values by Member State.
+					More information can be found on the Info tab of the portal’s <a href="https://agridata.ec.europa.eu/extensions/DashboardCereals/ExtCerealsPrice.html" style="color:#004494; text-decoration:none" target="_blank" ><strong>cereals prices</strong></a> app and
+					<a href="https://agridata.ec.europa.eu/extensions/DashboardCereals/CerealsProduction.html"  style="color:#004494; text-decoration:none" target="_blank"><strong>cereals production</strong></a> app.
+					<br/><br/>
+					For cereal production, results are ordered in the following manner :
+					<ol>
+						<li>Year in reverse chronological order</li>
+						<li>Member State name in alphabetical order</li>
+					</ol>
+					The general sorting mechanism for other data can be found in the <i>API Guide</i> page.
+					<br/><br/>
+				</div>
+				<p class="paragraph">
+					The base url for API endpoints is <b><em>https://api.tech.ec.europa.eu/agrifood</em></b>.
+				</p>
+			</div>
+			<img src="../CommonImages/cereals.png">
+		</div>
+	</div>
+
+	<div class="sectionbody">
+		<iframe
+				src="https://api.tech.ec.europa.eu/agrifood/swagger-ui/index.html?url=/agrifood/v3/api-docs/cereals&defaultModelsExpandDepth=-1&defaultModelExpandDepth=100&validatorUrl=none"
+				id="swagger-iframe"
+				title="Swagger UI"
+				class="swagger_ui_container"
+		>
+		</iframe>
+	</div>
+</div>
+<div style="height:30px"></div>
+
+<script src="./swagger_ui_height_script.js"></script>
+</body>
+</html>
