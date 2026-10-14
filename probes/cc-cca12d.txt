@@ -1,0 +1,21 @@
+URL: https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA12/JSON-stat/2.0/en
+Fetched: 2026-10-14T19:21:53Z from GitHub Actions
+Status, type, bytes: 200 application/json 2944
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 19:21:53 GMT
+content-type: application/json
+cache-control: no-cache
+vary: Origin
+server: n/a
+content-disposition: inline; filename=CCA12.20261014202153
+access-control-allow-origin: 
+access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept, subscription_key,MSAL
+access-control-allow-credentials: true
+www-authenticate: Anonymous
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"class":"dataset","dimension":{"C02196V02652":{"category":{"index":["-","IE11","IE12","IE13","IE21","IE22","IE23","IE24","IE25"],"label":{"-":"State","IE11":"Border","IE12":"Midland","IE13":"West","IE21":"Dublin","IE22":"Mid-East","IE23":"Mid-West","IE24":"South-East","IE25":"South-West"}},"label":"Region"},"C03404V04099":{"category":{"index":["01","02","03"],"label":{"01":"Pre-School children","02":"Primary school children","03":"All children aged 0-12 years"}},"label":"School Going Status"},"TLIST(A1)":{"category":{"index":["2016"],"label":{"2016":"2016"}},"label":"Year"},"STATISTIC":{"category":{"index":["CCA12C01","CCA12C02","CCA12C03"],"label":{"CCA12C01":"Average Hourly Cost","CCA12C02":"Average Hours per Week","CCA12C03":"Average Cost per Week"},"unit":{"CCA12C01":{"decimals":2,"label":"Euro","position":"end"},"CCA12C02":{"decimals":0,"label":"Euro","position":"end"},"CCA12C03":{"decimals":0,"label":"Euro","position":"end"}}},"label":"Statistic"}},"extension":{"matrix":"CCA12","language":{"code":"en","name":"English"},"elimination":{"C02196V02652":null,"C03404V04099":null},"contact":{"name":"Keith McSweeney","email":"health@cso.ie","phone":"(+353) 21 453 5423"},"subject":{"code":54,"value":"Social Modules"},"product":{"code":"QCHI","value":"QNHS Childcare"},"official":true,"copyright":{"name":"Central Statistics Office, Ireland","code":"CSO","href":"https://www.cso.ie/"},"exceptional":false,"reservation":false,"archive":false,"experimental":false,"analytical":false},"href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA12/PX/2013/en","id":["C02196V02652","C03404V04099","TLIST(A1)","STATISTIC"],"label":"Cost of Childcare","link":{"alternate":[{"type":"text/csv","href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA12/CSV/1.0/en"},{"type":"application/json","href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA12/JSON-stat/2.0/en"},{"type":"application/json","href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA12/JSON-stat/1.0/en"},{"type":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA12/XLSX/2007/en"}]},"note":["","For more information, please go to the [url=https://www.cso.ie/en/statistics/surveys/qnhsmoduleonchildcare/]statistical release page[/url] on our website"],"role":{"metric":["STATISTIC"],"time":["TLIST(A1)"]},"size":[9,3,1,3],"updated":"2020-09-16T11:00:00.000Z","value":[4.2,27.0,118.0,5.3,14.0,73.0,4.7,20.0,96.0,3.8,26.0,102.0,4.7,15.0,61.0,4.3,20.0,81.0,3.7,25.0,91.0,4.6,14.0,62.0,4.1,19.0,78.0,3.8,30.0,111.0,5.2,12.0,63.0,4.4,21.0,89.0,4.9,28.0,150.0,6.4,15.0,95.0,5.6,21.0,125.0,4.6,25.0,115.0,4.9,16.0,72.0,4.7,20.0,89.0,3.5,27.0,97.0,4.8,14.0,59.0,4.1,21.0,80.0,3.5,23.0,83.0,4.2,13.0,48.0,3.9,18.0,65.0,4.3,25.0,117.0,5.2,15.0,75.0,4.8,20.0,96.0],"version":"2.0"}
