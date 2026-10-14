@@ -12,8 +12,25 @@ export const COUNTRY_NAMES: Record<string, string> = {
   SG: "Singapore",
 };
 
+const REGION_NAMES = (() => {
+  try {
+    return new Intl.DisplayNames(["en"], { type: "region" });
+  } catch {
+    return null;
+  }
+})();
+
+/** Our own names first (GB data covers England and Wales only), then the standard English country name. */
 export function countryName(code: string): string {
-  return COUNTRY_NAMES[code.toUpperCase()] ?? code.toUpperCase();
+  const c = code.toUpperCase();
+  if (COUNTRY_NAMES[c]) return COUNTRY_NAMES[c];
+  try {
+    const n = REGION_NAMES?.of(c);
+    if (n && n !== c) return n;
+  } catch {
+    // not a region code
+  }
+  return c;
 }
 
 /** lower-case ASCII slug: "A Coruña" -> "a-coruna", "Côte-d'Or" -> "cote-d-or". */

@@ -258,6 +258,7 @@ const BASIS: Record<SourceInfo["price_type"], string> = {
   posted_price: "Posted prices, as published by the official source. They are not individual receipts.",
   contract_price: "Contract prices, as published by the official source.",
   reimbursement_price: "Reimbursement prices set by the official source.",
+  official_statistic: "An official average or median published by a statistics office or regulator, not individual sales.",
 };
 
 function askText(page: { category: PageCategory; area: AreaInfo; headline: Figure }): string {

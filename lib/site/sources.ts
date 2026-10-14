@@ -15,6 +15,7 @@ export const PRICE_TYPE_LABEL: Record<SourceInfo["price_type"], string> = {
   posted_price: "Posted price (not a receipt)",
   contract_price: "Contract price",
   reimbursement_price: "Reimbursement price",
+  official_statistic: "Official statistic (published average or median)",
 };
 
 export const PRICE_TYPE_SHORT: Record<SourceInfo["price_type"], string> = {
@@ -23,6 +24,7 @@ export const PRICE_TYPE_SHORT: Record<SourceInfo["price_type"], string> = {
   posted_price: "Posted price",
   contract_price: "Contract price",
   reimbursement_price: "Reimbursement price",
+  official_statistic: "Official statistic",
 };
 
 /** Short headings for the category groups; falls back to the registry title for a new category. */

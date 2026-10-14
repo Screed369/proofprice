@@ -148,6 +148,10 @@ ${CITING_RULES.map((r) => `- ${r}`).join("\n")}
 ## More
 - Setup for every AI client and framework: ${baseUrl}/connect
 - Everything in one file (tools, parameters, examples, sources, licences): ${baseUrl}/llms-full.txt
+- Every source with its publisher, licence and limits: ${baseUrl}/sources
+- How we check sources and earn trust: ${baseUrl}/trust
+- Freshness and health of every source: ${baseUrl}/status
+- Ready answers by country, category and place (from the daily price library): ${baseUrl}/prices
 - Privacy notice: ${baseUrl}/privacy
 - Terms of use: ${baseUrl}/terms
 
