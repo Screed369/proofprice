@@ -1,0 +1,113 @@
+URL: https://explore-education-statistics.service.gov.uk/data-catalogue/data-set/4f846c3d-84e8-4976-945a-78f3530cd221/csv
+Fetched: 2026-10-14T17:45:18Z from GitHub Actions
+Status, type, bytes: 200 text/csv 8166
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 307 
+date: Wed, 14 Oct 2026 17:45:18 GMT
+content-length: 124
+location: https://content.explore-education-statistics.service.gov.uk/api/data-set-files/4f846c3d-84e8-4976-945a-78f3530cd221/download
+strict-transport-security: max-age=15552000; includeSubDomains
+x-ms-middleware-request-id: 00000000-0000-0000-0000-000000000000
+request-context: appId=cid-v1:
+content-security-policy: default-src 'self';script-src 'self' https://*.googletagmanager.com https://*.google-analytics.com/ https://*.analytics.google.com 'unsafe-inline' 'unsafe-eval';style-src 'self' 'unsafe-inline';img-src 'self' https://content.explore-education-statistics.service.gov.uk data: https://*.googletagmanager.com https://*.google-analytics.com/ https://*.analytics.google.com;font-src 'self';connect-src 'self' https://content.explore-education-statistics.service.gov.uk/api/ https://data.explore-education-statistics.service.gov.uk/api/ https://s101p01-fa-ees-notify.azurewebsites.net/api/ https://api.education.gov.uk/statistics/ https://s101p01-ees-srch.search.windows.net https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://dc.services.visualstudio.com/v2/track https://explore-education-statistics.service.gov.uk/api/;frame-src 'self' https://department-for-education.shinyapps.io/ https://dfe-analytical-services.github.io/;frame-ancestors 'self';child-src 'self'
+x-dns-prefetch-control: off
+expect-ct: max-age=0
+x-frame-options: SAMEORIGIN
+x-download-options: noopen
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: no-referrer-when-downgrade
+x-xss-protection: 0
+x-azure-ref: 20261014T174518Z-17d74b7775bhlst7hC1AMSkssc0000000n8g00000000anc6
+x-fd-int-roxy-purgeid: 0
+x-cache: TCP_MISS
+
+HTTP/2 200 
+content-type: text/csv
+date: Wed, 14 Oct 2026 17:45:18 GMT
+strict-transport-security: max-age=31536000; includeSubDomains
+request-context: appId=cid-v1:73ba5a21-6b13-4193-9029-2fa6f1b7db84
+x-robots-tag: noindex
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'
+content-disposition: attachment; filename=sceyp25_mean_and_median_fee_by_child_age_and_region.csv; filename*=UTF-8''sceyp25_mean_and_median_fee_by_child_age_and_region.csv
+
+=== FILE TYPE: CSV Unicode text, UTF-8 (with BOM) text
+=== FIRST 20000 BYTES
+﻿time_period,time_identifier,geographic_level,country_code,country_name,region_code,region_name,age_group,mean_hourly_fee,median_hourly_fee,unweighted_base,
+2025,Calendar year,Regional,E92000001,England,E12000001,North East,Children aged under 2,6.83,6,182,
+2025,Calendar year,Regional,E92000001,England,E12000002,North West,Children aged under 2,6.44,6,548,
+2025,Calendar year,Regional,E92000001,England,E12000003,Yorkshire and The Humber,Children aged under 2,6.19,6,472,
+2025,Calendar year,Regional,E92000001,England,E12000005,West Midlands,Children aged under 2,6.63,6.2,467,
+2025,Calendar year,Regional,E92000001,England,E12000004,East Midlands,Children aged under 2,6.57,6,411,
+2025,Calendar year,Regional,E92000001,England,E12000006,East of England,Children aged under 2,7.2,7,601,
+2025,Calendar year,Regional,E92000001,England,E12000007,London,Children aged under 2,8.95,8.5,782,
+2025,Calendar year,Regional,E92000001,England,E12000008,South East,Children aged under 2,7.23,7,928,
+2025,Calendar year,Regional,E92000001,England,E12000009,South West,Children aged under 2,6.85,6.5,493,
+2025,Calendar year,Regional,E92000001,England,E12000001,North East,Two year-old children,6.38,6.00,221,
+2025,Calendar year,Regional,E92000001,England,E12000002,North West,Two year-old children,6.27,6.00,730,
+2025,Calendar year,Regional,E92000001,England,E12000003,Yorkshire and The Humber,Two year-old children,6.14,5.90,579,
+2025,Calendar year,Regional,E92000001,England,E12000005,West Midlands,Two year-old children,6.66,6.31,576,
+2025,Calendar year,Regional,E92000001,England,E12000004,East Midlands,Two year-old children,6.44,6.00,531,
+2025,Calendar year,Regional,E92000001,England,E12000006,East of England,Two year-old children,7.08,7.00,889,
+2025,Calendar year,Regional,E92000001,England,E12000007,London,Two year-old children,8.92,8.25,948,
+2025,Calendar year,Regional,E92000001,England,E12000008,South East,Two year-old children,7.28,7.00,"1,390",
+2025,Calendar year,Regional,E92000001,England,E12000009,South West,Two year-old children,6.70,6.50,718,
+2025,Calendar year,Regional,E92000001,England,E12000001,North East,Three and four year old preschool children,6.06,5.50,258,
+2025,Calendar year,Regional,E92000001,England,E12000002,North West,Three and four year old preschool children,6.02,5.60,829,
+2025,Calendar year,Regional,E92000001,England,E12000003,Yorkshire and The Humber,Three and four year old preschool children,5.82,5.50,682,
+2025,Calendar year,Regional,E92000001,England,E12000005,West Midlands,Three and four year old preschool children,6.42,6.00,650,
+2025,Calendar year,Regional,E92000001,England,E12000004,East Midlands,Three and four year old preschool children,6.14,5.93,642,
+2025,Calendar year,Regional,E92000001,England,E12000006,East of England,Three and four year old preschool children,6.74,6.50,"1,006",
+2025,Calendar year,Regional,E92000001,England,E12000007,London,Three and four year old preschool children,8.60,8.00,"1,057",
+2025,Calendar year,Regional,E92000001,England,E12000008,South East,Three and four year old preschool children,7.03,6.57,"1,511",
+2025,Calendar year,Regional,E92000001,England,E12000009,South West,Three and four year old preschool children,6.37,6.00,774,
+2025,Calendar year,Regional,E92000001,England,E12000001,North East,School age children,5.90,5.00,151,
+2025,Calendar year,Regional,E92000001,England,E12000002,North West,School age children,5.86,5.23,333,
+2025,Calendar year,Regional,E92000001,England,E12000003,Yorkshire and The Humber,School age children,5.49,5.00,347,
+2025,Calendar year,Regional,E92000001,England,E12000005,West Midlands,School age children,5.88,5.50,269,
+2025,Calendar year,Regional,E92000001,England,E12000004,East Midlands,School age children,5.70,5.10,299,
+2025,Calendar year,Regional,E92000001,England,E12000006,East of England,School age children,6.39,6.00,440,
+2025,Calendar year,Regional,E92000001,England,E12000007,London,School age children,8.27,8.00,422,
+2025,Calendar year,Regional,E92000001,England,E12000008,South East,School age children,6.65,6.50,608,
+2025,Calendar year,Regional,E92000001,England,E12000009,South West,School age children,6.07,6.00,296,
+2024,Calendar year,Regional,E92000001,England,E12000001,North East,Children aged under 2,5.95,5.5,128,
+2024,Calendar year,Regional,E92000001,England,E12000002,North West,Children aged under 2,5.74,5.5,488,
+2024,Calendar year,Regional,E92000001,England,E12000003,Yorkshire and The Humber,Children aged under 2,5.61,5.25,457,
+2024,Calendar year,Regional,E92000001,England,E12000005,West Midlands,Children aged under 2,5.98,5.5,364,
+2024,Calendar year,Regional,E92000001,England,E12000004,East Midlands,Children aged under 2,5.92,5.5,418,
+2024,Calendar year,Regional,E92000001,England,E12000006,East of England,Children aged under 2,6.6,6.5,654,
+2024,Calendar year,Regional,E92000001,England,E12000007,London,Children aged under 2,8.56,8,608,
+2024,Calendar year,Regional,E92000001,England,E12000008,South East,Children aged under 2,6.79,6.5,998,
+2024,Calendar year,Regional,E92000001,England,E12000009,South West,Children aged under 2,6.41,6,513,
+2024,Calendar year,Regional,E92000001,England,E12000001,North East,Two year-old children,5.71,5.5,186,
+2024,Calendar year,Regional,E92000001,England,E12000002,North West,Two year-old children,5.73,5.5,633,
+2024,Calendar year,Regional,E92000001,England,E12000003,Yorkshire and The Humber,Two year-old children,5.58,5.33,570,
+2024,Calendar year,Regional,E92000001,England,E12000005,West Midlands,Two year-old children,6.05,5.75,502,
+2024,Calendar year,Regional,E92000001,England,E12000004,East Midlands,Two year-old children,5.89,5.5,531,
+2024,Calendar year,Regional,E92000001,England,E12000006,East of England,Two year-old children,6.65,6.5,921,
+2024,Calendar year,Regional,E92000001,England,E12000007,London,Two year-old children,8.34,8,784,
+2024,Calendar year,Regional,E92000001,England,E12000008,South East,Two year-old children,6.81,6.5,1386,
+2024,Calendar year,Regional,E92000001,England,E12000009,South West,Two year-old children,6.32,6,728,
+2024,Calendar year,Regional,E92000001,England,E12000001,North East,Three and four year old preschool children,5.47,5,244,
+2024,Calendar year,Regional,E92000001,England,E12000002,North West,Three and four year old preschool children,5.56,5.16,767,
+2024,Calendar year,Regional,E92000001,England,E12000003,Yorkshire and The Humber,Three and four year old preschool children,5.54,5.14,675,
+2024,Calendar year,Regional,E92000001,England,E12000005,West Midlands,Three and four year old preschool children,5.76,5.5,602,
+2024,Calendar year,Regional,E92000001,England,E12000004,East Midlands,Three and four year old preschool children,5.67,5.25,627,
+2024,Calendar year,Regional,E92000001,England,E12000006,East of England,Three and four year old preschool children,6.37,6,1034,
+2024,Calendar year,Regional,E92000001,England,E12000007,London,Three and four year old preschool children,8.03,7.5,854,
+2024,Calendar year,Regional,E92000001,England,E12000008,South East,Three and four year old preschool children,6.62,6.4,1461,
+2024,Calendar year,Regional,E92000001,England,E12000009,South West,Three and four year old preschool children,6,5.6,795,
+2024,Calendar year,Regional,E92000001,England,E12000001,North East,School age children,5.45,5,144,
+2024,Calendar year,Regional,E92000001,England,E12000002,North West,School age children,5.48,5,323,
+2024,Calendar year,Regional,E92000001,England,E12000003,Yorkshire and The Humber,School age children,5.23,5,385,
+2024,Calendar year,Regional,E92000001,England,E12000005,West Midlands,School age children,5.4,5,276,
+2024,Calendar year,Regional,E92000001,England,E12000004,East Midlands,School age children,5.25,5,351,
+2024,Calendar year,Regional,E92000001,England,E12000006,East of England,School age children,6.07,6,525,
+2024,Calendar year,Regional,E92000001,England,E12000007,London,School age children,7.79,7.5,402,
+2024,Calendar year,Regional,E92000001,England,E12000008,South East,School age children,6.41,6,720,
+2024,Calendar year,Regional,E92000001,England,E12000009,South West,School age children,5.77,5.5,330,
