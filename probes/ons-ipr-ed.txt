@@ -1,0 +1,22 @@
+URL: https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices/editions
+Fetched: 2026-10-14T15:44:52Z from GitHub Actions
+Status, type, bytes: 200 application/json 689
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:44:52 GMT
+content-type: application/json
+content-length: 689
+allow: DELETE, GET, HEAD, POST, PUT, OPTIONS, PATCH
+strict-transport-security: max-age=31536000; includeSubDomains
+x-xss-protection: 1
+cf-cache-status: DYNAMIC
+set-cookie: __cf_bm=4k2_SG_hykCqnpe1oxOTL6Ob.UeSp.Au0Hp47didb1k-1791992692.0891194-1.0.1.1-uCqHyjqWvKsif_ibPn_Li0YqRM5FJFXm2b_oLt3TdNekuNGJLgpVZazZsoH..LlGFqM9b3B3zJDvY6BxrPn6TK3YqHjOMxmvtxrTChgKBT0t93C5CH1hZtq.d_O32Ltl; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk; Expires=Wed, 14 Oct 2026 16:14:52 GMT
+set-cookie: _cfuvid=p_6Y_IjLljpVL4RTjDY4RZASURn1T_N2e4.iuDJbNKc-1791992692.0891194-1.0.1.1-ASqDG.7z6ZbjTjaAJHET3xwmpngs15qk4Y.hnvLJoes; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk
+server: cloudflare
+cf-ray: a4a7b5358d4d72d4-IAD
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"items":[{"edition":"time-series","id":"da26a177-7621-43ec-b3db-aad0ced9ec30","links":{"dataset":{"href":"https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices","id":"index-private-housing-rental-prices"},"latest_version":{"href":"https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices/editions/time-series/versions/41","id":"41"},"self":{"href":"https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices/editions/time-series"},"versions":{"href":"https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices/editions/time-series/versions"}},"state":"published"}],"count":1,"offset":0,"limit":20,"total_count":1}
