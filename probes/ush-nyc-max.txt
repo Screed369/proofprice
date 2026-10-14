@@ -1,0 +1,28 @@
+URL: https://data.cityofnewyork.us/resource/usep-8jbt.json?$select=max(sale_date)%20as%20latest%2Cmin(sale_date)%20as%20earliest%2Ccount(*)%20as%20n
+Fetched: 2026-10-14T14:15:34Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 88
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:34 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42NzE1N180XzY1TmNxcjB6a016emY2RDd2cjJtU0h0djVDNHlr---gzippuj2NcftwLNXbwgMZUvUfhL58QE--gzip--gzip"
+X-SODA2-Fields: ["latest","earliest","n"]
+X-SODA2-Types: ["floating_timestamp","floating_timestamp","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+X-SODA2-Secondary-Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 48f4af5ed72b01943b8aaceb144463d3
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 2000 BYTES
+[{"latest":"2026-08-31T00:00:00.000","earliest":"2025-09-01T00:00:00.000","n":"82345"}]
