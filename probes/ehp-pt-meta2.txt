@@ -1,0 +1,38 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0008074&lang=PT
+Fetched: 2026-10-14T15:54:57Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 85149
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Wed, 14 Oct 2026 15:54:56 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly
+Set-Cookie: JSESSIONID=q2HgLJjvfhBDHW7cx6cOnn4_0H9N9YIgXWU1CSQO.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[ {
+  "IndicadorCod" : "0008074",
+  "IndicadorNome" : "Taxa de criminalidade (‰) por Localização geográfica (NUTS - 2013) e Categoria de crime; Anual - Direcção-Geral da Política de Justiça",
+  "Periodic" : "Anual",
+  "PrimeiroPeriodo" : "2011",
+  "UltimoPeriodo" : "2022",
+  "UnidadeMedida" : "Permilagem (‰)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "1",
+  "Nota" : "A partir do ano de 2017, os dados estatísticos sobre crimes registados pela área tributária da Autoridade Tributária e Aduaneira foram coligidos com base num novo webservice que veio substituir os anteriores formulários de recolha. A informação relativa a crimes contra animais de companhia resulta da entrada em vigor da Lei nº 69/2014 de 29 de agosto. A partir do ano de 2013 a leitura dos dados deverá ter em consideração a Lei nº 56/2012, de 8 de novembro, reorganização administrativa de Lisboa, que reconfigura o mapa de freguesias do concelho de Lisboa, a Lei nº 61/2012, de 5 de dezembro, fixação dos limites territoriais dos municípios de Faro e de Loulé, que alterou os limites das freguesias de Montenegro, São Pedro e Santa Bárbara de Nexe, no município de Faro e da freguesia de Almancil, no município de Loulé e a Lei nº 11-A/2013, de 28 de janeiro, reorganização administrativa do território das freguesias, que criou, com efeitos a partir de 30 de setembro de 2013, a União das Freguesias de Faro por agregação das freguesias de Montenegro, São Pedro e Sé, que alterou os limites territoriais dos municípios de Lisboa e de Loures, com a criação da freguesia do Parque das Nações no município de Lisboa e que alterou os municípios de Santarém e da Golegã com a passagem da freguesia de Pombalinho de Santarém para a Golegã.",
+  "Lingua" : "PT",
+  "DataUltimaAtualizacao" : "2026-06-30",
+  "DataExtracao" : "2026-10-14T16:54:56.371+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Período de referência dos dados",
+      "versao" : "XXXXX",
+      "nota_dsg" : "Dados revistos para o período de 2021 a 2022, na sequência da revisão das Estimativas Anuais de População Residente, divulgada pelo INE em 22 de junho de 2026. Os totais contemplam os dados da Polícia Judiciária (PJ), da Polícia de Segurança Pública (PSP), da Guarda Nacional Republicana (GNR), da Autoridade Tributária e Aduaneira (AT), da Polícia Municipal (PM), da Polícia Marítima (PM), da Polícia Judiciária Militar (PJM), do Serviço de Estrangeiros e Fronteiras (SEF), da Autoridade de Segurança Alimentar e Económica (ASAE) e incluem crimes de localização desconhecida ou não classificável, registados por entidades que operam a nível nacional - Polícia Judiciária (PJ), Autoridade de Segurança Alimentar e Económica (ASAE), Serviço de Estrangeiros e Fronteiras (SEF), Autoridade Tributária e Aduaneira (AT), Direções Distritais de Finanças (DDF), Direção de Serviços Antifraude (DSAF), Polícia de Segurança 
