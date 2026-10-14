@@ -1,0 +1,213 @@
+URL: https://api.us.socrata.com/api/catalog/v1?ids=usep-8jbt&domains=data.cityofnewyork.us
+Fetched: 2026-10-14T14:15:52Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 7371
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:52 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 15000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "NYC Citywide Rolling Calendar Sales",
+            "id" : "usep-8jbt",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "This dataset includes all recorded sales within New York City over the prior twelve-month period. This dataset is updated around the 15th of the month with recorded sales through the end of the prior month.",
+            "attribution" : "Department of Finance",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-15T15:57:00.000Z",
+            "createdAt" : "2019-07-02T20:45:37.000Z",
+            "metadata_updated_at" : "2026-09-15T15:56:40.000Z",
+            "data_updated_at" : "2026-09-15T15:57:00.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 434,
+                "page_views_last_month" : 2074,
+                "page_views_total" : 25732,
+                "page_views_last_week_log" : 8.76487159073609,
+                "page_views_last_month_log" : 11.018895621121649,
+                "page_views_total_log" : 14.651332038441016
+              },
+            "columns_name" :
+              [
+                "TOTAL UNITS",
+                "BUILDING CLASS AT TIME OF SALE",
+                "APARTMENT NUMBER",
+                "SALE DATE",
+                "ADDRESS",
+                "NEIGHBORHOOD",
+                "LOT",
+                "BUILDING CLASS AT PRESENT",
+                "BLOCK",
+                "SALE PRICE",
+                "BOROUGH",
+                "TAX CLASS AT TIME OF SALE",
+                "RESIDENTIAL UNITS",
+                "TAX CLASS AT PRESENT",
+                "LAND SQUARE FEET",
+                "GROSS SQUARE FEET",
+                "YEAR BUILT",
+                "BUILDING CLASS CATEGORY",
+                "EASE-MENT",
+                "COMMERCIAL UNITS",
+                "ZIP CODE"
+              ],
+            "columns_field_name" :
+              [
+                "total_units",
+                "building_class_at_time_of",
+                "apartment_number",
+                "sale_date",
+                "address",
+                "neighborhood",
+                "lot",
+                "building_class_at_present",
+                "block",
+                "sale_price",
+                "borough",
+                "tax_class_at_time_of_sale",
+                "residential_units",
+                "tax_class_at_present",
+                "land_square_feet",
+                "gross_square_feet",
+                "year_built",
+                "building_class_category",
+                "ease_ment",
+                "commercial_units",
+                "zip_code"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "The total number of units at the listed property",
+                "The building classification at the time of sale",
+                "",
+                "Date the property sold",
+                "The street  address of the property as listed on the Sales File. Coop sales include the apartment in the address field",
+                "DOF assessors determine the neighborhood name in the course of valuing properties.",
+                "A tax Lot is a subdivision of a tax Block and represents the property unique location",
+                "The building classification is used to describe a property's constructive use",
+                "A Tax Block is a sub-division of the borough on which real properties are located ",
+                "Price paid for the property",
+                "The name of the borough in which the property is located",
+                "Tax Class at time of sale",
+                "The number of residential units at the listed property",
+                "Present Tax Class. Every property in the city is assigned to one of four tax classes (Classes 1,2, 3, and 4) based on the use of the property",
+                "The land are of the property listed in square feet",
+                "The total area of all e floors of a building as measured from the exterior surfaces of the outside walls of the building , including the land area and space within any building structure on the property",
+                "Year the structure on the property was built.",
+                "This identifies properties broad usage (e.g. One Family Home).",
+                "An easement is a right, such as a right of way, which allows an entity to make limited use of another's real property",
+                "The number of commercial units at the listed property",
+                "The property's postal code"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                { "view" : "date" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "precisionStyle" : "currency" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 5478,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-06-13T22:27:10.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                { "key" : "Update_Automation", "value" : "No" },
+                { "key" : "Update_Update-Frequency", "value" : "Monthly" },
+                {
+                  "key" : "Dataset-Information_Agency",
+                  "value" : "Department of Finance (DOF)"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.cityofnewyork.us" },
+        "permalink" : "https://data.cityofnewyork.us/d/usep-8jbt",
+        "link" : "https://data.cityofnewyork.us/dataset/NYC-Citywide-Rolling-Calendar-Sales/usep-8jbt",
+        "owner" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          },
+        "creator" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          }
+      }
+    ],
+  "resultSetSize" : 1,
+  "timings" : { "serviceMillis" : 16, "searchMillis" : [ 3, 3 ] },
+  "warnings" : []
+}
