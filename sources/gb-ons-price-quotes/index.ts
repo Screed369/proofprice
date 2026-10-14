@@ -45,6 +45,38 @@ async function explore(item: string, arg: string) {
     const all = [...counts.entries()];
     return { status: res.status, bytes: text.length, lines: lines.length, distinctCs: all.length, header: lines[0], matches: all.filter(([k]) => rx.test(k)).slice(0, 120), first: all.slice(0, 40) };
   }
+  if (item === "find") {
+    // arg = "<regex>|<sheet index list, comma>|<maxPerSheet>"
+    const [re, sheetList, maxStr] = arg.split("|");
+    const u = "https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/adhocs/3607consumerpricespriceleveldistributionsmicrodataaugust2026/consumerpricespriceleveldistributionsmicrodata202608.xlsx";
+    const res = await fetch(u, { headers: UA });
+    const buf = Buffer.from(await res.arrayBuffer());
+    const sheets = readWorkbook(buf);
+    const rx = new RegExp(re, "i");
+    const wanted = (sheetList || "2,3,4,5,6").split(",").map(Number);
+    const max = Number(maxStr || 12);
+    const out: any[] = [];
+    for (const i of wanted) {
+      const s = sheets[i];
+      if (!s) continue;
+      const hits: any[] = [];
+      s.rows.forEach((r, ri) => {
+        if (hits.length < max && r.some((c) => typeof c === "string" && rx.test(c))) hits.push({ row: ri, cells: r.slice(0, 18) });
+      });
+      out.push({ sheet: i, name: s.name, rows: s.rows.length, header: s.rows.slice(0, 5).map((r) => r.slice(0, 18)), hits });
+    }
+    return { sheets: out };
+  }
+  if (item === "links") {
+    // arg = "<url>|<regex>"
+    const [url, re] = arg.split("|");
+    const res = await fetch(url, { headers: UA });
+    const html = await res.text();
+    const rx = new RegExp(re || "adhocs", "i");
+    const found = new Set<string>();
+    for (const m of html.matchAll(/href="([^"]+)"/g)) if (rx.test(m[1])) found.add(m[1]);
+    return { status: res.status, bytes: html.length, links: [...found].slice(0, 60) };
+  }
   return { hint: "item must be xlsx | sheet | quotes" };
 }
 
