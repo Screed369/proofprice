@@ -1,0 +1,850 @@
+URL: https://plvr.land.moi.gov.tw/DownloadOpenData
+Fetched: 2026-10-14T17:23:20Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 30512
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: SAMEORIGIN
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE,OPTIONS
+Access-Control-Allow-Credentials: false
+Content-Security-Policy: default-src 'self';frame-ancestors 'self';font-src 'self' data: https: http:;img-src * data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google-analytics.com https://www.googletagmanager.com https://www.google-analytics.com ; style-src 'self' 'unsafe-inline' https:;connect-src *;object-src 'none' ; base-uri 'none';
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: origin
+Permissions-Policy: microphone=(),camera=()
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: JSESSIONID=410C0522BC678AB4723B2ED3B69541C2;Path=/;  HttpOnly; Secure; SameSite=strict
+Access-Control-Max-Age: 60
+Content-Type: text/html;charset=UTF-8
+Content-Language: zh-TW
+Transfer-Encoding: chunked
+Date: Wed, 14 Oct 2026 17:23:20 GMT
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 60000 BYTES
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="內政部不動產成交案件實際資訊資料供應系統" />
+<meta name="keywords"
+	content="內政部不動產成交案件實際資訊資料供應系統,不動產成交案件實際資訊資料,不動產成交案件電子資料申請,不動產成交案件實際資訊資料供應系統,內政部不動產成交案件電子資料申請" />
+<meta property="og:site_name" content="內政部不動產成交案件實際資訊資料供應系統" />
+<meta property="og:title" content="不動產成交案件實際資訊資料供應系統" />
+<title>內政部不動產成交案件實際資訊資料供應系統</title>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<!-- Bootstrap -->
+<link href="/css/bootstrap-4.4.1.css" rel="stylesheet" type="text/css" />
+<link href="/css/x11p_style.css" rel="stylesheet" type="text/css" />
+<link href="/css/scrolling-nav.css" rel="stylesheet" type="text/css" />
+<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-4.4.1.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script type="text/javascript" src="/js/jquery.loadmask.js"></script>
+<script type="text/javascript" src="/js/jquery.fileDownload.js"></script>
+
+
+<script src="/js/qt/qt.js?v=1791998600398"></script>
+<script src="/js/qt/qt-ajax.js?v=1791998600398"></script>
+<script src="/js/qt/qt-util.js?v=1791998600398"></script>
+
+<script type="text/javascript" src="/js/menu_ajax.js"></script>
+<script type="text/javascript" src="/js/qt_util.js"></script>
+<script type="text/javascript" src="/js/jquery.printElement.min.js"></script>
+
+
+<script type="text/javascript" src="/js/jquery.flot.js"></script> 
+<script type="text/javascript" src="/js/jquery.flot.pie.js"></script> 
+<script type="text/javascript" src="/js/jquery.base64.js"></script> 
+<link href="/css/jquery.flot.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="/js/jquery.timers.js"></script>
+
+
+<link href="/css/datatables.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/datatables.min.js"></script>
+<link href="/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/dataTables.responsive.min.js"></script>
+
+<link href="/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/css/jBox.css" />
+<link rel="stylesheet" href="/css/jBox.Notice.css" />
+
+
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jBox.min.js"></script>
+<script src="/js/jBox.Notice.min.js"></script>
+<script src="/js/jquery.ui.datepicker-zh-TW.js"></script>
+
+
+<!-- jquery tip -->
+<link href="/css/tip-twitter/tip-twitter.css" rel="stylesheet" type="text/css" /> 
+<link href="/css/tip-yellowsimple/tip-yellowsimple.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="/js/jquery.poshytip.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42358654-1', 'auto');
+  ga('send', 'pageview');
+  ga('set', 'forceSSL', true);
+</script>
+
+
+</head>
+<body  style="padding-top: 00px" id="page-top">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+	  
+	<nav class="navbar fixed-top navbar-expand-lg  shadow-sm border-bottom"
+		style="background: rgba(255, 255, 255, 1.0)">
+
+		<a class="navbar-brand logo" href="#"></a>
+
+		<div class="ml-auto">
+			<nav class="main-nav d-none d-lg-block ml-2">
+				<ul>
+					<li class="drop-down" >
+						
+					
+					<a class="nav-link mx-2" href="./Index" >登入</a>
+					
+					</li>
+					<li class="nav-item">
+						<a href="javascript:void(0);" class="nav-link mx-2"   onclick="clickIndex('Use_ajax_info');" >使用說明</a>
+					</li>
+					<li class="nav-item">
+						<a href="javascript:void(0);" class="nav-link mx-2"   onclick="clickIndex('Use_ajax_feeinfo');" >計費說明</a>
+					</li>
+
+						  
+					<li class="nav-item">
+						<a href="javascript:void(0);" class="nav-link mx-2"   onclick="clickIndex('Use_ajax_doc');" >法規/文件</a>
+					</li>
+						
+					
+					<li class="nav-item">
+						<a href="javascript:void(0);" class="nav-link mx-2"   onclick="clickIndex('Download_ajax_list');" >Ｏpen Data</a>
+					</li>
+					
+				</ul>
+			</nav>
+		</div>
+	</nav>
+
+
+<div id="div_body" >
+	
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+	<div id="intro" class="second-section font">
+		<div
+			class="container-fluid col-xl-10 col-lg-10 col-md-12 col-sm-12 p-0">
+			<div class="rounded-0 border-0">
+				<a
+					class="h5 text-center text-secondary text-decoration-none d-block"
+					data-toggle="collapse" href="#collapseExample" role="button"
+					aria-expanded="false" aria-controls="collapseExample"> 系統簡介<i
+					class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+				</a>
+
+				<div class="collapse my-0 py-0 border-top" id="collapseExample">
+					<div class="card-body text-justify border-0 my-0 py-0 pt-1">
+						<div class="media text-justify pb-0">
+							不動產成交案件實際資訊（含買賣、租賃及預售屋）批次電子資料自即日起提供申請，爾後不動產成交案件實際資訊批次電子資料，原則於對外提供最新之不動產成交實際資訊查詢時，同步提供申請。本部維持續提書面申請、人工付費之申請方式，另增提供線上申請、線上付費、線上下載及線上申請、人工付費、線上下載等申請方式。<br>
+							為配合行政院有關政府資料開放應以免費為原則之政策(open
+							data)，增列授權下載免收費用之方式，該方式指申請人經與內政部完成非專屬之私法授權(詳閱使用規範)，得下載發布當期之不動產成交案件實際資訊批次電子資料。本網站所提供Open
+							Data下載當期資料係指「內政部不動產交易實價查詢服務網」當期公布(每月1日、11日或21日)之靜態資料，實際資料仍以「內政部不動產交易實價查詢服務網」動態之資料為準。
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="dl" class="third-section row-bg px-0 font">
+		<div
+			class="container-fluid col-xl-10 col-lg-10 col-md-12 col-sm-12 bg-white p-3 shadow-sm rounded">
+			<div class="row">
+				<div
+					class="col-md-3 text-center  justify-content-center d-none d-sm-none d-md-block d-md-flex">
+					<div class="pt-2">
+						<img src="images/opendata-t.png" alt="" width="167" height="183"
+							class="img-fluid" /><br>
+							<a
+							class="btn btn-sm btn-a px-4 mt-3" href="#" 
+							onclick="javascript:Newopenurl('https://data.gov.tw/license','WinX','top=100,left=10,width=870,height=600,scrollbars=yes');"  
+							>授權條款</a>
+					</div>
+				</div>
+				<div class="col-md-9" id="tab_opendata">
+					<div
+						class="text-center font-weight-bold px-0 d-xl-none d-lg-none d-md-none pb-1 my-0 text-b058a4">OpenData</div>
+					<ul class="nav nav-tabs nav-fill">
+						<li class="nav-item"><a
+							class="active btndl px-1 py-2 text-decoration-none" href="#tab_opendata_active_content"
+							 data-toggle="tab" aria-controls="tab_opendata_active_content" 
+							onClick="$('.tabOpenDataCss').empty();loadAjaxUrl('Download_ajax_active','tab_opendata_active_content');$('#tab_opendata_history_content').empty();$('#tab_opendata_saleremark_content').empty();"
+							aria-expanded="true">本期下載</a></li>
+  							
+						<li class="nav-item"><a
+							class="btndl px-1 py-2 text-decoration-none" href="#tab_saleremark_active_content"
+							 data-toggle="tab" aria-controls="tab_opendata_active_content" 
+							onClick="$('.tabOpenDataCss').empty();loadAjaxUrl('Download_ajax_salermark','tab_saleremark_active_content');$('#tab_opendata_history_content').empty();$('#tab_opendata_active_content').empty();"
+							aria-expanded="true">預售備查建案下載</a></li>
+							
+						<li class="nav-item"><a
+							class="btndl px-1 py-2 text-decoration-none" href="#tab_opendata_history_content"
+							data-toggle="tab" aria-controls="tab_opendata_history_content"
+							onClick="$('.tabOpenDataCss').empty();loadAjaxUrl('DownloadHistory_ajax_list','tab_opendata_history_content');$('#tab_opendata_active_content').empty();$('#tab_saleremark_active_content').empty();"
+							>非本期下載</a></li>
+					</ul>
+					<!-- Content Panel -->
+					<div id="clothingnavcontent1" class="tab-content px-2 pt-3">
+						<div role="tabpanel" class="tab-pane fade show active text-left"  id="tab_opendata_active_content" aria-labelledby="tab_opendata_active_content">
+						</div>
+						
+						<div role="tabpanel" class="tab-pane fade show text-left"  id="tab_saleremark_active_content" aria-labelledby="tab_saleremark_active_content">
+						</div>
+						
+						<div role="tabpanel" class="tab-pane fade text-left" id="tab_opendata_history_content" aria-labelledby="tab_opendata_history_content">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+ 
+<script> 
+	$(function(){
+		loadAjaxUrl('Download_ajax_active','tab_opendata_active_content');
+	});
+	Newopenurl('https://data.gov.tw/license','WinX','top=100,left=10,width=870,height=600,scrollbars=yes');
+</script>  
+</div>
+	
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+<div class="modal fade " id="modal-showalert" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header font modal-header-green">
+				<ul class="nav nav-pills"  role="tablist">
+					<li class="nav-item">系統提醒</li>
+				</ul>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body" >
+				<div>
+					<div id = "showinfo"></div>
+				</div>			
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade " id="modal-showsrdata" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header font modal-header-green">
+				<ul class="nav nav-pills" role="tablist">
+					<li class="nav-item"><span id = "showsrdata_title">系統提醒</span></li>
+				</ul>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body" >
+				<div id = "showsrdata_body">
+				</div>			
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="modal-confirm-label" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header modal-header-green">
+				<ul class="nav nav-pills" role="tablist">
+					<li class="nav-item"><span id = "showsrdata_title">系統提示</span></li>
+				</ul>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" id="modal-confirm-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-default" id="modal-confirm-confirm">確定</button>
+				<input type="hidden" id="modal-confirm-result" value="false"/>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade " id="modal-websafety" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header font modal-header-green">
+				<ul class="nav nav-pills"  role="tablist">
+					<li class="nav-item">網站安全政策</li>
+				</ul>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body" >
+				<div>
+					<div class="l_subtitle">個人資料之蒐集及運用</div>
+					<div class="l_content_text">將依個人資料保護法及相關法令之規定，只就其特定目的，做為承辦所提供服務之用，不會任意對其他第三者揭露
+				使用本網站時，本網站將自動收集下列資訊：日期和時間、您所擷取之網頁、您所在之網址、您的瀏覽器種類、您對本網站網頁所做行動（如下載等）及成功與否。這些資訊可能被用來改善本網站之效能。
+				對本網站造成重大負荷的網址上的行為進行監測。</div>
+						<div class="l_subtitle">資訊安全權責與教育訓練</div>
+					  <div class="l_content_text">對處理敏感性、機密性資料之人員及因工作需要須賦於系統管理權限之人員，妥適分工，分散權責並建立評估及考核制度，及視需要建立人員相互支援制度。
+				對離（休、停）職人員，依據人員離（休、停）職之處理程序辦理，並立即取消使用各項系統資源所有權限
+				依角色及職能為基礎，針對不同層級人員，視實際需要辦理資訊安全教育訓練及宣導，促使員工瞭解資訊安全的重要性，各種可能的安全風險，以提高員工資訊安全意識，促其遵守資訊安全規定。</div>
+					  <div class="l_subtitle">資訊安全作業及保護</div>
+					  <div class="l_content_text">建立處理資訊安全事件之作業程序，並課予相關人員必要的責任，以便迅速有效處理資訊安全事件。
+				建立資訊設施及系統的變更管理通報機制，以免造成系統安全上的漏洞。
+				依據電腦處理個人資料保護法之相關規定，審慎處理及保護個人資訊。
+				建立系統備援設施，定期執行必要的資料、軟體備份及備援作業，以便發生災害或儲存媒體失效時，可迅速回復正常作業。</div>
+					  <div class="l_subtitle">網路安全管理</div>
+					  <div class="l_content_text">與外界網路連接之網點，設立防火牆控管外界與內部網路之資料傳輸及資源存取，並執行嚴謹的身分辨識作業。
+				機密性及敏感性的資料或文件，不存放在對外開放的資訊系統中，機密性文件不以電子郵件傳送。
+				定期對內部網路資訊安全設施與防毒進行查核，並更新防毒系統之病毒碼，及各項安全措施。</div>
+					  <div class="l_subtitle">系統存取控制管理</div>
+					  <div class="l_content_text">視作業系統及安全管理需求訂定通行密碼核發及變更程序並作成記錄。
+				登入各作業系統時，依各級人員執行任務所必要之系統存取權限，由資訊室系統管理人員設定賦予權限之帳號與密碼，並定期更新。</div>
+				</div>			
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade " id="modal-websolitude" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header font modal-header-green">
+				<ul class="nav nav-pills" id="dpills-00" role="tablist">
+					<li class="nav-item">隱私權保護政策</li>
+				</ul>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" >
+
+				<div >
+					<div class="l_content_text">非常歡迎您光臨內政部不動產交易實價查詢服務網(以下簡稱本網站)，為了讓您能夠安心的使用本網站的各項服務與資訊，特此向您說明本網站的隱私權保護政策，以保障您的權益，請您詳閱下列內容：</div>
+					<div class="l_subtitle">一、隱私權保護政策的適用範圍</div>
+					<div class="l_content_text">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>隱私權保護政策內容，包括本網站如何處理在您使用網站服務時收集到的個人識別資料。</td>
+								</tr>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>隱私權保護政策不適用於本網站以外的相關連結網站 ，也不適用於非本網站所委託或參與管理的人員。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_subtitle">二、資料的蒐集與使用方式</div>
+					<div class="l_content_text">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+									<td colspan="2">為了在本網站上提供您最佳的互動性服務，可能會請您提供相關個人的資料，其範圍如下：</td>
+								</tr>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>本網站在您使用服務信箱、問卷調查等互動性功能時，會保留您所提供的姓名、電子郵件地址、連絡方式及使用時間等。</td>
+								</tr>
+
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>於一般瀏覽時，伺服器會自行記錄相關行徑，包括您使用連線設備的IP位址、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進網站服務的參考依據，此記錄為內部應用，決不對外公佈。</td>
+								</tr>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>為提供精確的服務，我們會將收集的問卷調查內容進行統計與分析，分析結果將之統計後的數據或說明文字呈現，除供內部研究外，我們會視需要公佈該數據及說明文字，但不涉及特定個人之資料。</td>
+								</tr>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>除非取得您的同意或其他法令之特別規定，本網站絕不會將您的個人資料揭露於第三人或使用於蒐集目的以外之其他用途。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_subtitle">三、資料之保護</div>
+					<div class="l_content_text">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>本網站主機均設有防火牆、防毒系統等相關的各項資訊安全設備及必要的安全防護措施，加以保護網站及您的個人資料採用嚴格的保護措施，只由經過授權的人員才能接觸您的個人資料，相關處理人員皆簽有保密合約，如有違反保密義者，將會受到相關的法律處分。</td>
+								</tr>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>如因業務需要有必要委託本部相關單位提供服務時，本網站亦會嚴格要求其遵守保密義務，並且採取必要檢查程序以確定其將確實遵守。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_subtitle">四、網站對外的相關連結</div>
+					<div class="l_content_text">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>本網站的網頁提供其他網站的網路連結，您也可經由本網站所提供的連結，點選進入其他網站。但該連結網站中不適用於本網站的隱私權保護政策，您必須參考該連結網站中的隱私權保護政策。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_subtitle">五、Cookie之使用</div>
+					<div class="l_content_text">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>為了提供您最佳的服務，本網站會在您的電腦中放置並取用我們的Cookie
+										，若您不願接受Cookie的寫入，您可在您使用的瀏覽器功能項中設定隱私權等級為高，即可拒絕Cookie的寫入，但可能會導至網站某些功能無法正常執行
+										。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_subtitle">六、隱私權保護政策之修正</div>
+					<div class="l_content_text">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+
+									<td class="l_list_dot"><img src="../images/dot.png" width="7" height="7" alt=""></td>
+									<td>本網站隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於網站上。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade " id="modal-webopen" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header font modal-header-green">
+				<ul class="nav nav-pills" id="dpills-00" role="tablist">
+					<li class="nav-item">政府網站資料開放宣告</li>
+				</ul>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" >
+				<div>
+
+					<div class="l_subtitle">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+									<td width="5" class="vertical_top">一、</td>
+									<td>授權方式及範圍</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_content_text">為利各界廣為利用網站資料，內政部全球資訊網站上刊載之所有資料與素材，其得受著作權保護之範圍，以無償、非專屬，得再授權之方式提供公眾使用，使用者得不限時間及地域，重製、改作、編輯、公開傳輸或為其他方式之利用，開發各種產品或服務（簡稱加值衍生物），此一授權行為不會嗣後撤回，使用者亦無須取得本機關之書面或其他方式授權。然使用時，應註明出處。
+					</div>
+					<div class="l_subtitle">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+									<td width="5" class="vertical_top">二、</td>
+									<td>相關事項說明</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_content_text">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+									<td>(一)</td>
+									<td>本授權範圍僅及於著作權保護之範圍，不及於其他智慧財產權利，包括但不限於專利、商標、及機關標誌之提供。</td>
+								</tr>
+								<tr>
+									<td class="vertical_top">(二)</td>
+									<td>當事人自行公開或依法令公開之個人資料是否得被蒐集、處理及利用，使用者須自行依照個人資料保護法之相關規定，規劃並執行法律要求之相應措施。</td>
+								</tr>
+								<tr>
+									<td>(三)</td>
+									<td>部分的影音、圖像、樂譜、專人專案撰文或其他著作，經機關特別聲明須經同意方可使用者。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_subtitle_unline">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+									<td width="5" class="vertical_top">三、</td>
+									<td>應注意不得侵害第三人之著作人格權(包括姓名表示權及禁止不當變更權)。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_subtitle_unline">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+									<td width="5" class="vertical_top">四、</td>
+									<td>使用本授權提供之資料與素材，不得惡意變更其相關資訊，若利用後所展示之資訊與原資料與素材不符，使用者須自負民事、刑事上之法律責任。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="l_subtitle_unline">
+						<table width="100%" border="0">
+							<tbody>
+								<tr>
+									<td width="5" class="vertical_top">五、</td>
+									<td>本網站之授權，並不授予使用者代表本機關建議、認可或贊同其加值衍生物之地位。</td>
+								</tr>
+							</tbody>
+						</table>
+					</div></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" >
+"use strict";
+var mheight=$(window).height()-200;
+$('.modal-tab-pane').css("overflow-y","auto");
+$('.modal-tab-pane').css("overflow-x","hidden");
+</script>
+
+	<div id="menu" class="fourth-section px-0">
+		
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+		<div class="container-fluid col-md-10  col-sm-11 pb-3  pt-2 px-1 font">
+			<ul class="nav nav-fill justify-content-center">
+				<li class="border col-btn-4"><a
+					class="text-center text-decoration-none btn-light card p-0 border-0 rounded-0 bg-ffbf7b"
+					href="javascript:void(0);" onclick="loadAjaxUrl('Use_ajax_info','div_body',null);" >
+						<div
+							class="card-body card-text py-1 text-d6923f bg-white px-0 menu-4-t btn-block" >使用說明</div>
+						<div class="card-img-bottom useinfo-btn btn-block "></div>
+				</a></li>
+				<li class="border col-btn-4"><a
+					class="text-center text-decoration-none btn-light card p-0 border-0 rounded-0 bg-a3d4ea"
+					href="javascript:void(0);" onclick="loadAjaxUrl('Use_ajax_feeinfo','div_body',null);" >
+						<div
+							class="card-body card-text py-1 text-269acd bg-white px-0 menu-4-t btn-block">計費說明</div>
+						<div class="card-img-bottom feeinfo-btn btn-block "></div>
+				</a></li>
+				<li class="border col-btn-4"><a
+					class="text-center text-decoration-none btn-light card p-0 border-0 rounded-0 bg-d7da64"
+					href="javascript:void(0);" onclick="loadAjaxUrl('Use_ajax_doc','div_body',null);">
+						<div
+							class="card-body card-text py-1 text-9FA300 bg-white px-0 menu-4-t btn-block">法規文件</div>
+						<div class="card-img-bottom doc-btn btn-block"></div>
+				</a></li>
+				<li class="border col-btn-4"><a
+					class="text-center text-decoration-none btn-light card p-0 border-0 rounded-0 bg-ecb1e5"
+					href="javascript:void(0);" onclick="loadAjaxUrl('Download_ajax_list','div_body',null);" >
+						<div
+							class="card-body card-text py-1 text-b058a4 bg-white px-0 menu-4-t btn-block">ＯpenData</div>
+						<div
+							class="align-self-end   justify-content-end opendata-btn btn-block justify-content-center"></div>
+				</a></li>
+			</ul>
+		</div>
+
+
+	</div>
+	<footer class="footer-text footer-top bg-secondary">
+		
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+	<footer class="footer-bk">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-2 d-none d-lg-block d-xl-block"></div>
+				<div class="col-lg-8 col-md-12">
+					<div class="row footer-links">
+						<div class="col-lg-4 col-sm-3  col-md-4  text-center">
+							<a href="javascript:void(0);" onclick="$('#modal-websafety').modal({backdrop: false});"  >網站安全政策</a>
+						</div>
+						<div class="col-lg-4 col-sm-4  col-md-4  text-center">
+							<a href="javascript:void(0);" onclick="$('#modal-websolitude').modal({backdrop: false});">隱私權保護政策</a>
+						</div>
+						<div class="col-lg-4 col-sm-5  col-md-4  text-center">
+							<a href="javascript:void(0);" onclick="$('#modal-webopen').modal({backdrop: false});">政府網站資料開放宣告</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 d-none d-lg-block d-xl-block"></div>
+			</div>
+		</div>
+	</footer>
+	<footer class="footer">
+		<div
+			class="container-fluid  col-xl-6 col-lg-7 col-md-9 col-sm-12  text-white py-0 text-white">
+			<div class="row">
+
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 pt-1">
+					<div class="py-1 footer-title d-none d-sm-block border-bottom">聯絡我們</div>
+					<div class="footer-contact-text pt-1">
+						地址：(10055) 臺北市中正區徐州路五號七樓<br>系統服務專線：1996<br>為民服務時間：週一至週五08:00~17:30<br>
+						<a href="mailto:q11@quantasoft.com.tw?subject=內政部不動產交易實價查詢服務系統意見建議&amp;oq=內政部不動產交易實價查詢服務系統意見建議" class="text-white py-2 btn px-0 "><i
+							class="fa fa-pencil pr-1" aria-hidden="true"></i>系統問題反應</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+	<footer>
+		<div class="text-center py-2 px-4 bg-light">
+			<span>©Copyright All Rights Reserved By 內 政 部 地 政 司(Dept of
+				Land Administration M. O. I. )</span>
+			<div class="font" id="gotop">
+				<img src="./images/gototop.svg" width="20" alt="gototop">
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="/js/mobile-nav.js"></script>
+	<script type="text/javascript" src="/js/gototop.js"></script>
+	
+
+
+	</footer>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+</script>
