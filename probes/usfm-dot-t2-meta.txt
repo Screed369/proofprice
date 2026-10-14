@@ -1,0 +1,126 @@
+URL: https://data.transportation.gov/api/views/wqw2-rjgd.json
+Fetched: 2026-10-14T15:55:33Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 40060
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:55:33 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 0e629d589f92f8de18f0c10098d871c3
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 3500 BYTES
+{
+  "id" : "wqw2-rjgd",
+  "name" : "Consumer Airfare Report: Table 2 - Top 1,000 City-Pair Markets",
+  "assetType" : "dataset",
+  "attribution" : "Department of Transportation Office of the Assistant Secretary for Aviation and International Affairs",
+  "attributionLink" : "https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+  "averageRating" : 0,
+  "category" : "Aviation",
+  "createdAt" : 1491236437,
+  "description" : "Data summarized by city, includes the number of city-pair markets in the top 1,000 in either comparison period that involve each city, the number of passengers traveling to and from each city, the average fare, average fare per mile (yield), and average distance traveled.  All records are aggregated as directionless city pair markets.  All traffic traveling in both directions is added together.  https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "domainCName" : "data.transportation.gov",
+  "downloadCount" : 69323,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "indexUpdatedAt" : 1550592200,
+  "licenseId" : "USGOV_WORKS",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 27141625,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1509475489,
+  "publicationGroup" : 14128504,
+  "publicationStage" : "published",
+  "rowClass" : "",
+  "rowIdentifierColumnId" : 327785227,
+  "rowsUpdatedAt" : 1788458020,
+  "rowsUpdatedBy" : "k8vj-xcy6",
+  "tableId" : 14580835,
+  "totalTimesRated" : 0,
+  "viewCount" : 40172,
+  "viewLastModified" : 1788458019,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1495568065,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 801001,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1495568065,
+    "targetAudience" : "public",
+    "workflowId" : 568,
+    "reviewer" : {
+      "id" : "9ni7-629e",
+      "displayName" : "Daniel Morgan"
+    },
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "9ni7-629e",
+      "displayName" : "Daniel Morgan"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 5258
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 327785212,
+    "name" : "tbl",
+    "dataTypeName" : "text",
+    "description" : "Name of the data table",
+    "fieldName" : "tbl",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 45679580,
+    "width" : 136,
+    "cachedContents" : {
+      "largest" : "Table 2",
+      "non_null" : "8749",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Table 2",
+        "count" : "8749"
+      } ],
+      "smallest" : "Table 2",
+      "not_null" : "6732",
+      "count" : "8749",
+      "cardinality" : "8749"
+    },
+    "format" : {
+      "displayStyle" : "plain",
+      "align" : "center"
+    }
+  }, {
+    "id" : 327785213,
+    "name" : "Year",
+    "dataTypeName" : "number",
+    "description" : "Data Year",
+    "fieldName" : "year",
+    "position" : 2,
+    "
