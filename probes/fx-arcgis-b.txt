@@ -1,0 +1,20 @@
+URL: https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer/12/query?where=1%3D1&outFields=*&returnGeometry=false&resultRecordCount=2&f=json
+Fetched: 2026-10-14T13:19:48Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 2675
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: max-age=0,must-revalidate
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+Vary: Origin
+ETag: "1784720347"
+Content-Type: application/json;charset=UTF-8
+Content-Length: 2675
+Date: Wed, 14 Oct 2026 13:19:48 GMT
+Set-Cookie: TS01d8b8de=01283c52a4decd2eedcf8446ae32fa15eebf093b81886922108e1148bb93eb31f9836bfbf22d4f6e0ce6ff9a44260b7f8ab49ab2eb; Path=/; Domain=.tigerweb.geo.census.gov; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"displayFieldName":"BASENAME","fieldAliases":{"MTFCC":"MTFCC","OID":"OID","GEOID":"GEOID","STATE":"STATE","STATENS":"STATENS","BASENAME":"BASENAME","NAME":"NAME","LSADC":"LSADC","FUNCSTAT":"FUNCSTAT","AREALAND":"AREALAND","AREAWATER":"AREAWATER","REGION":"REGION","DIVISION":"DIVISION","STUSAB":"STUSAB","CENTLAT":"CENTLAT","CENTLON":"CENTLON","INTPTLAT":"INTPTLAT","INTPTLON":"INTPTLON","OBJECTID":"OBJECTID"},"fields":[{"name":"MTFCC","type":"esriFieldTypeString","alias":"MTFCC","length":5},{"name":"OID","type":"esriFieldTypeString","alias":"OID","length":22},{"name":"GEOID","type":"esriFieldTypeString","alias":"GEOID","length":2},{"name":"STATE","type":"esriFieldTypeString","alias":"STATE","length":2},{"name":"STATENS","type":"esriFieldTypeString","alias":"STATENS","length":8},{"name":"BASENAME","type":"esriFieldTypeString","alias":"BASENAME","length":100},{"name":"NAME","type":"esriFieldTypeString","alias":"NAME","length":100},{"name":"LSADC","type":"esriFieldTypeString","alias":"LSADC","length":2},{"name":"FUNCSTAT","type":"esriFieldTypeString","alias":"FUNCSTAT","length":1},{"name":"AREALAND","type":"esriFieldTypeBigInteger","alias":"AREALAND"},{"name":"AREAWATER","type":"esriFieldTypeBigInteger","alias":"AREAWATER"},{"name":"REGION","type":"esriFieldTypeString","alias":"REGION","length":1},{"name":"DIVISION","type":"esriFieldTypeString","alias":"DIVISION","length":1},{"name":"STUSAB","type":"esriFieldTypeString","alias":"STUSAB","length":2},{"name":"CENTLAT","type":"esriFieldTypeString","alias":"CENTLAT","length":11},{"name":"CENTLON","type":"esriFieldTypeString","alias":"CENTLON","length":12},{"name":"INTPTLAT","type":"esriFieldTypeString","alias":"INTPTLAT","length":11},{"name":"INTPTLON","type":"esriFieldTypeString","alias":"INTPTLON","length":12},{"name":"OBJECTID","type":"esriFieldTypeOID","alias":"OBJECTID"}],"features":[{"attributes":{"MTFCC":"G4000","OID":"27490228303490","GEOID":"78","STATE":"78","STATENS":"01802710","BASENAME":"United States Virgin Islands","NAME":"United States Virgin Islands","LSADC":"00","FUNCSTAT":"A","AREALAND":348021910,"AREAWATER":1550236220,"REGION":"9","DIVISION":"0","STUSAB":"VI","CENTLAT":"+18.0593788","CENTLON":"-064.8387617","INTPTLAT":"+18.3392359","INTPTLON":"-064.9500433","OBJECTID":1}},{"attributes":{"MTFCC":"G4000","OID":"27490140608205","GEOID":"24","STATE":"24","STATENS":"01714934","BASENAME":"Maryland","NAME":"Maryland","LSADC":"00","FUNCSTAT":"A","AREALAND":25151392945,"AREAWATER":6979677385,"REGION":"3","DIVISION":"5","STUSAB":"MD","CENTLAT":"+38.9463607","CENTLON":"-076.6789664","INTPTLAT":"+38.9466584","INTPTLON":"-076.6744939","OBJECTID":2}}],"exceededTransferLimit":true}
