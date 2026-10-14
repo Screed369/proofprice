@@ -5,7 +5,7 @@ import { InputError } from "../../lib/http";
 import { categoryById, countriesFor, runCategory, SOURCE_PLUGINS } from "../../lib/registry";
 import {
   ageOf, COUNTRIES, euLandPrices, INFO, isReading, landAnswer, landFilters, nationalCurrency, normaliseLandType, normaliseMeasure,
-  normaliseRegion, readLand, regionsOf,
+  normaliseRegion, readLand, regionsOf, withThe,
 } from "./source";
 import * as F from "./fixtures";
 
@@ -282,6 +282,19 @@ test("eu-land-prices: a region Eurostat does not hold is a plain no_matches that
   const parsed = parseJsonStat(F.PRICE_UNKNOWN_REGION);
   assert.equal(parsed.rows.length, 0);
   assert.equal(isReading(readLand(parsed, { country: "ES", measure: "price", geo: "ZZ99", landType: null })), false);
+});
+
+test("eu-land-prices: the Netherlands is 'the Netherlands' in a sentence, other countries are not", () => {
+  // wording only: the Irish figures relabelled as the Netherlands, to see the sentence it would produce
+  const asNl = JSON.parse(JSON.stringify(F.PRICE_IE).replaceAll('"IE"', '"NL"').replaceAll('"Ireland"', '"Netherlands"'));
+  const nl = answer(asNl, { country: "NL", measure: "price" });
+  assert.match(nl.summary, /^In the Netherlands the average price of /);
+  assert.equal(extra(nl).country_name, "Netherlands", "the data keeps the plain name");
+  const region = answer(F.PRICE_UNKNOWN_REGION, { country: "NL", measure: "price", geo: "ZZ99", region: "NL99" });
+  assert.match(region.summary, /for region NL99 of the Netherlands \(apri_lprc\)/);
+  assert.match(answer(F.PRICE_IE, { country: "IE", measure: "price" }).summary, /^In Ireland the average price of /);
+  assert.equal(withThe("Netherlands"), "the Netherlands");
+  assert.equal(withThe("Czechia"), "Czechia");
 });
 
 test("eu-land-prices: euLandPrices asks Eurostat for one country (GR as EL), reads the answer and echoes the API link", async () => {

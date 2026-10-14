@@ -152,9 +152,13 @@ const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 // ---------- quotes ----------
 
+/** A quote covers a week or a month. Raw milk is monthly; some fruit and vegetable series switch between the two (seen for Poland's apples). */
+export type PeriodKind = "week" | "month";
+
 export interface Quote {
   begin: string; // ISO date
   end: string; // ISO date, last day of the week or month
+  kind: PeriodKind;
   value: number; // as published
   variantIdx: number;
   raw: string; // the variant text in the row
@@ -192,7 +196,7 @@ export function toQuotes(rows: unknown, product: Product, geo: string): Quote[] 
     const key = [variantIdx, raw, market, stage, end].join("|"); // olive oil lists the same week under two marketing years
     if (seen.has(key)) continue;
     seen.add(key);
-    out.push({ begin, end, value, variantIdx, raw, market, stage });
+    out.push({ begin, end, kind: dayNo(end) - dayNo(begin) >= 20 ? "month" : "week", value, variantIdx, raw, market, stage });
   }
   return out;
 }
@@ -205,6 +209,8 @@ export interface Period {
   value: number;
   /** Quotes averaged into the value (markets, or varieties); 1 when the portal publishes the figure directly. */
   n: number;
+  /** The quotes behind the value, by "market|variety": what lets a change be worked out on the same markets and varieties in both periods. */
+  parts: Record<string, number>;
 }
 
 export interface MarketBasis {
@@ -214,14 +220,15 @@ export interface MarketBasis {
 
 export interface Pick {
   variantIdx: number;
+  kind: PeriodKind;
   stage: string | null;
   markets: MarketBasis;
   periods: Period[]; // oldest first
   raws: string[]; // distinct variety texts behind the figure
 }
 
-const isMonthly = (family: Family) => family === "milk";
-const freshDays = (family: Family) => (isMonthly(family) ? 45 : 28);
+/** Days a series may lag behind the freshest one and still count as "recent": a month's quote is dated its last day, so allow more. */
+const freshDays = (kind: PeriodKind) => (kind === "month" ? 45 : 28);
 const isNationalMarket = (m: string) => /national|average/i.test(m) || /^all$/i.test(m);
 
 function stageRank(family: Family, stage: string): number {
@@ -237,18 +244,24 @@ export function chooseVariant(quotes: Quote[], product: Product): number | null 
   for (const q of quotes) last.set(q.variantIdx, Math.max(last.get(q.variantIdx) ?? -Infinity, dayNo(q.end)));
   if (!last.size) return null;
   const freshest = Math.max(...last.values());
+  const tol = freshDays(quotes.every((q) => q.kind === "month") ? "month" : "week");
   for (let i = 0; i < product.variants.length; i++) {
     const l = last.get(i);
-    if (l !== undefined && l >= freshest - freshDays(product.family)) return i;
+    if (l !== undefined && l >= freshest - tol) return i;
   }
   return null;
 }
 
 /** For one variant: choose the supply-chain stage and the markets, then give one value per week (or month). */
 export function seriesFor(all: Quote[], product: Product, variantIdx: number, forceStage?: string | null): Pick | null {
-  const mine = all.filter((q) => q.variantIdx === variantIdx);
-  if (!mine.length) return null;
-  const tol = freshDays(product.family);
+  const ofVariant = all.filter((q) => q.variantIdx === variantIdx);
+  if (!ofVariant.length) return null;
+
+  // week or month: a series that reports both (Poland's apples) uses the weekly quotes while they are as fresh as the monthly ones
+  const newestOf = (k: PeriodKind) => Math.max(-Infinity, ...ofVariant.filter((q) => q.kind === k).map((q) => dayNo(q.end)));
+  const kind: PeriodKind = newestOf("week") >= newestOf("month") - freshDays("week") ? "week" : "month";
+  const mine = ofVariant.filter((q) => q.kind === kind);
+  const tol = freshDays(kind);
 
   // stage
   let stage: string | null = null;
@@ -307,9 +320,16 @@ export function seriesFor(all: Quote[], product: Product, variantIdx: number, fo
       end,
       value: roundTo(qs.reduce((s, q) => s + q.value, 0) / qs.length, 2), // prices have two decimals; so does an average of them
       n: qs.length,
+      parts: Object.fromEntries(qs.map((q) => [`${q.market ?? ""}|${q.raw}`, q.value])),
     }))
     .sort((a, b) => (a.end < b.end ? -1 : 1));
-  return { variantIdx, stage, markets, periods, raws: [...new Set(used.map((q) => q.raw))] };
+  // what the newest figure is made of: the markets and varieties quoted in that period (the window may hold more)
+  const newestQuotes = byEnd.get(periods[periods.length - 1].end) ?? [];
+  if (markets.mode === "average") {
+    const inNewest = [...new Set(newestQuotes.map((q) => q.market).filter((m): m is string => !!m))];
+    markets = inNewest.length === 1 ? { mode: "single", names: inNewest } : { mode: "average", names: inNewest };
+  }
+  return { variantIdx, kind, stage, markets, periods, raws: [...new Set(newestQuotes.map((q) => q.raw))] };
 }
 
 // ---------- the reading (pure) ----------
@@ -317,8 +337,11 @@ export function seriesFor(all: Quote[], product: Product, variantIdx: number, fo
 export interface Compared {
   begin: string;
   end: string;
+  /** The other period's figure as it was published or averaged. */
   value: number;
   change_percent: number;
+  /** Present when the markets or varieties reported differ between the two periods: the change then compares only those reported in both. */
+  like_for_like?: { compared: number; in_latest: number; in_other: number };
 }
 
 export interface FarmReading {
@@ -336,7 +359,7 @@ export interface FarmReading {
   latest: Period;
   previous: Compared | null;
   yearAgo: Compared | null;
-  last12: { from: string; to: string; periods: number; min: number; max: number; average: number };
+  last12: { from: string; to: string; periods: number; min: number; max: number; average: number; same_basis_throughout: boolean };
   series: Period[]; // up to the last 12, oldest first
   otherSeries: Array<{ id: string; label: string; stage: string | null; end: string; value: number }>;
   otherStages: Array<{ stage: string; end: string; value: number }>;
@@ -351,10 +374,30 @@ export function isFarmReading(x: FarmReading | FarmMiss | null): x is FarmReadin
   return !!x && "latest" in x;
 }
 
+/** Change from another period. Where the markets or varieties reported differ, only those reported in both are compared (a new market must not look like a price move). */
 function compare(latest: Period, other: Period | undefined): Compared | null {
-  if (!other || other.value <= 0) return null;
-  return { begin: other.begin, end: other.end, value: other.value, change_percent: roundTo(((latest.value - other.value) / other.value) * 100, 1) };
+  if (!other) return null;
+  const inLatest = Object.keys(latest.parts);
+  const common = inLatest.filter((k) => k in other.parts);
+  if (!common.length) return null;
+  const same = common.length === inLatest.length && common.length === Object.keys(other.parts).length;
+  const mean = (p: Period) => common.reduce((s, k) => s + p.parts[k], 0) / common.length;
+  const a = same ? latest.value : mean(latest);
+  const b = same ? other.value : mean(other);
+  if (b <= 0) return null;
+  return {
+    begin: other.begin,
+    end: other.end,
+    value: other.value,
+    change_percent: roundTo(((a - b) / b) * 100, 1),
+    ...(same ? {} : { like_for_like: { compared: common.length, in_latest: inLatest.length, in_other: Object.keys(other.parts).length } }),
+  };
 }
+
+const sameParts = (a: Period, b: Period) => {
+  const ka = Object.keys(a.parts), kb = Object.keys(b.parts);
+  return ka.length === kb.length && ka.every((k) => k in b.parts);
+};
 
 export function readFarm(rows: unknown, q: { product: Product; country: string; geo: string }): FarmReading | FarmMiss {
   const { product } = q;
@@ -368,7 +411,7 @@ export function readFarm(rows: unknown, q: { product: Product; country: string; 
   }
   const idx = chooseVariant(quotes, product)!;
   const pick = seriesFor(quotes, product, idx)!;
-  const monthly = isMonthly(product.family);
+  const monthly = pick.kind === "month";
   const latest = pick.periods[pick.periods.length - 1];
   const latestDay = dayNo(latest.end);
 
@@ -392,6 +435,7 @@ export function readFarm(rows: unknown, q: { product: Product; country: string; 
     min: Math.min(...values),
     max: Math.max(...values),
     average: roundTo(values.reduce((s, v) => s + v, 0) / values.length, 2),
+    same_basis_throughout: year.every((p) => sameParts(p, latest)),
   };
 
   const otherSeries: FarmReading["otherSeries"] = [];
@@ -471,6 +515,11 @@ export function stageShort(stage: string): string {
   return STAGE_SHORT.find(([re]) => re.test(stage))?.[1] ?? stage.toLowerCase();
 }
 
+/** A country name as it reads in a sentence ("in the Netherlands"). Only the Netherlands takes "the" among the countries covered. */
+export function withThe(name: string, capital = false): string {
+  return name === "Netherlands" ? (capital ? "The Netherlands" : "the Netherlands") : name;
+}
+
 function changePhrase(c: Compared | null, what: string): string | null {
   if (!c) return null;
   if (c.change_percent === 0) return `unchanged from ${what}`;
@@ -495,6 +544,7 @@ export function farmAnswer(
   const p = q.product;
   const unit = UNIT_TEXT[p.unit];
   const countryName = COUNTRIES[q.country] ?? q.country;
+  const inCountry = withThe(countryName);
   const query = { country: q.country, product: p.key };
   const method =
     "The European Commission's Agri-food data portal publishes the prices Member States report for each week (raw milk: month), product and stage of the supply chain. " +
@@ -507,8 +557,8 @@ export function farmAnswer(
     const miss = result ?? { reason: "no_rows" as const, seen: [] };
     const summary =
       miss.reason === "no_variant"
-        ? `The Agri-food data portal has ${p.group.split(" (")[0].toLowerCase()} prices for ${countryName} but none for ${p.name}: it holds ${miss.seen.join(", ")}.`
-        : `The Agri-food data portal holds no ${p.name} price for ${countryName} in the last ${WINDOW_MONTHS} months. Not every country reports every product, and fruit and vegetables are only quoted in season.`;
+        ? `The Agri-food data portal has ${p.group.split(" (")[0].toLowerCase()} prices for ${inCountry} but none for ${p.name}: it holds ${miss.seen.join(", ")}.`
+        : `The Agri-food data portal holds no ${p.name} price for ${inCountry} in the last ${WINDOW_MONTHS} months. Not every country reports every product, and fruit and vegetables are only quoted in season.`;
     return {
       ...none,
       summary,
@@ -537,9 +587,19 @@ export function farmAnswer(
 
   const notes: string[] = [];
   if (r.variantChoice === "preferred") notes.push(`${p.key} has several series; ${phrase} is shown (the others are in extra.other_series).`);
-  if (r.variantChoice === "fallback") notes.push(`The usual series for ${p.key} has no recent price in ${countryName}, so ${phrase} is shown (see extra.other_series).`);
-  if (r.markets.mode === "average") notes.push(`${countryName} reports ${r.markets.names.length} markets and no national average here: the figure is their simple, unweighted average.`);
+  if (r.variantChoice === "fallback") notes.push(`The usual series for ${p.key} has no recent price in ${inCountry}, so ${phrase} is shown (see extra.other_series).`);
+  if (r.markets.mode === "average") notes.push(`${withThe(countryName, true)} reports ${r.markets.names.length} markets and no national average here: the figure is their simple, unweighted average.`);
   if (r.product.family === "fruitveg" && r.raws.length > 1) notes.push(`The portal gives no all-varieties figure at this stage, so the figure is the simple average of ${r.raws.length} varieties: ${r.raws.slice(0, 6).join("; ")}.`);
+  const partWord =
+    r.markets.mode === "average" ? (r.product.family === "fruitveg" && r.raws.length > 1 ? "market and variety quotes" : "markets") : r.product.family === "fruitveg" && r.raws.length > 1 ? "varieties" : "quotes";
+  const lfl = ([[r.previous, r.monthly ? "the previous month" : "the previous week"], [r.yearAgo, "a year earlier"]] as Array<[Compared | null, string]>).filter(([c]) => c?.like_for_like);
+  if (lfl.length) {
+    notes.push(
+      `The ${partWord} reported differ between periods: ${lfl.map(([c, w]) => `the change from ${w} uses only the ${c!.like_for_like!.compared} of the ${c!.like_for_like!.in_latest} reported in both`).join(", and ")}. ` +
+        "One that came or went is not read as a price move.",
+    );
+  }
+  if (!r.last12.same_basis_throughout) notes.push(`The last 12 months mix periods that average different ${partWord}, so their range is a guide, not a like-for-like series.`);
   if (r.product.family === "poultry") notes.push("The portal labels poultry prices 'national currency/100kg' but the figures are euro-scale; they are treated as euro.");
   if (r.stage && r.product.family === "fruitveg" && /retail selling/i.test(r.stage)) notes.push("This is a retail shelf price, the only stage the portal holds for this product here.");
   if (age.sentence) notes.push(age.sentence);
@@ -573,7 +633,7 @@ export function farmAnswer(
     reference_period: referencePeriod(r),
     note: notes.length ? notes.join(" ") : undefined,
     describe: (v) =>
-      `In ${countryName} the latest published price for ${what} was ${eur(v)} ${unit}${kg ? ` (${perKgText(v / kg)} per kg)` : ""} for ${periodWords(r)}.` +
+      `In ${inCountry} the latest published price for ${what} was ${eur(v)} ${unit}${kg ? ` (${perKgText(v / kg)} per kg)` : ""} for ${periodWords(r)}.` +
       (changes.length ? ` That is ${changes.join(" and ")}.` : "") +
       (age.sentence ? ` ${age.sentence}` : ""),
     extra,

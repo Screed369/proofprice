@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { categoryById, countriesFor, runCategory, SOURCE_PLUGINS } from "../../lib/registry";
 import {
-  ageOf, COUNTRIES, euFarmPrices, farmAnswer, farmUrl, INFO, isFarmReading, parseDate, parsePrice, readFarm, stageShort, toQuotes, WINDOW_DAYS,
+  ageOf, COUNTRIES, euFarmPrices, farmAnswer, farmUrl, INFO, isFarmReading, parseDate, parsePrice, readFarm, stageShort, toQuotes, WINDOW_DAYS, withThe,
 } from "./source";
 import { CATALOGUE, kgPerUnit, productGroups, resolveProduct } from "./products";
 import * as F from "./fixtures";
@@ -221,10 +221,11 @@ test("eu-farm-prices: cereals use the stage most markets quote and average the m
   assert.equal(gr.price!.value, 245);
   assert.match(gr.summary, /^In Greece .*milling \(bread-making\) wheat \(farm-gate\) was €245\.00 per tonne/);
 
-  assert.match(answer(F.CEREAL_MIX, "DE", "wheat").summary, /ex-silo, simple average of 6 markets/);
+  // the count is of the markets in the newest week's figure, not of every market that reported in the 15 months
+  assert.match(answer(F.CEREAL_MIX, "DE", "wheat").summary, /ex-silo, simple average of 5 markets/);
   assert.match(answer(F.CEREAL_MIX, "ES", "wheat").summary, /^In Spain /);
   assert.match(answer(F.CEREAL_MIX, "IT", "durum").summary, /durum wheat \(delivered to the first buyer, simple average of 3 markets\)/);
-  assert.match(answer(F.CEREAL_MIX, "DE", "corn").summary, /feed maize \(ex-silo, simple average of 4 markets\)/);
+  assert.match(answer(F.CEREAL_MIX, "DE", "corn").summary, /feed maize \(ex-silo, simple average of 3 markets\)/);
 });
 
 test("eu-farm-prices: raw milk is monthly, with the month as its period", () => {
@@ -373,6 +374,80 @@ test("eu-farm-prices: rows without a price, from other countries, or for other p
   const r = readFarm(rows, { product: p, country: "IE", geo: "IE" });
   assert.ok(isFarmReading(r));
   assert.equal((r as any).previous, null); // the zero-price week is not a previous week
+});
+
+test("eu-farm-prices: a series that mixes weekly and monthly quotes (Poland's apples) uses the weeks while they are fresh, else the months", () => {
+  const row = (beginDate: string, endDate: string, price: string, periodType: string) => ({
+    memberStateCode: "PL", memberStateName: "Poland", beginDate, endDate, price, unit: "€/100Kg", periodType, period: 40, year: 2026,
+    variety: "Apples - National weighted average of all types and varieties", productStage: "Ex-packaging station price", market: "National average (PL)",
+  });
+  const fresh = [row("01/09/2026", "30/09/2026", "€70.00", "Month"), row("21/09/2026", "27/09/2026", "€71.00", "Week"), row("28/09/2026", "04/10/2026", "€73.00", "Week")];
+  const a = answer(fresh, "PL", "apples");
+  assert.equal(a.price!.value, 73);
+  assert.match(a.summary, /for the week 28 Sep 2026 to 4 Oct 2026\. That is 2\.8% higher than the previous week\./);
+  assert.equal(extra(a).reference.kind, "week");
+  assert.equal(extra(a).previous_period.value, 71, "the month is not the previous week");
+  assert.equal(extra(a).recent_series.length, 2);
+
+  const stopped = [row("01/08/2026", "31/08/2026", "€70.00", "Month"), row("01/09/2026", "30/09/2026", "€72.00", "Month"), row("03/08/2026", "09/08/2026", "€69.00", "Week")];
+  const m = answer(stopped, "PL", "apples");
+  assert.equal(m.price!.value, 72);
+  assert.match(m.summary, /for September 2026\. That is 2\.9% higher than the previous month\./);
+  assert.equal(extra(m).reference.kind, "month");
+  assert.equal(m.confidence, "high", "monthly data 14 days after the month ends is current");
+});
+
+test("eu-farm-prices: a market or variety that came or went is not read as a price move (changes compare what both periods report)", () => {
+  // Germany's wheat: 4 markets in the previous week, 5 in the latest, 3 in both. Averaging all would give +5.7%; like for like is +3.2%.
+  const de = answer(F.CEREAL_MIX, "DE", "wheat");
+  assert.equal(de.price!.value, 240.8);
+  assert.match(de.summary, /That is 3\.2% higher than the previous week\./);
+  assert.deepEqual(extra(de).previous_period.like_for_like, { compared: 3, in_latest: 5, in_other: 4 });
+  assert.equal(extra(de).previous_period.value, 227.88, "the other period's own figure is still the one published/averaged for it");
+  assert.match(de.statistic!.note!, /markets reported differ between periods: the change from the previous week uses only the 3 of the 5 reported in both/);
+  assert.equal(extra(de).last_12_months.same_basis_throughout, false);
+  assert.match(de.statistic!.note!, /last 12 months mix periods that average different markets/);
+
+  // Spain's tomatoes: the newest week has a third variety (vine tomatoes) that the week before did not
+  const es = answer(F.FV_ES_TOMATO, "ES", "tomato");
+  assert.deepEqual(extra(es).previous_period.like_for_like, { compared: 2, in_latest: 3, in_other: 2 });
+  near(extra(es).previous_period.change_percent, 15.8, 0.05); // (225.78+140.26)/2 against (211.22+104.86)/2, not 183.47 against 158.04
+  assert.match(es.statistic!.note!, /varieties reported differ between periods: the change from the previous week uses only the 2 of the 3/);
+
+  // the same markets in both periods: nothing to say, and no like_for_like key
+  const ie = answer(F.CEREAL_IE, "IE", "wheat");
+  assert.equal(extra(ie).previous_period.like_for_like, undefined);
+  assert.equal(extra(ie).last_12_months.same_basis_throughout, true);
+  assert.doesNotMatch(ie.statistic!.note!, /differ between periods|like-for-like/);
+
+  // a figure the portal publishes whole (a national average) has one part, so nothing differs
+  const pig = answer(F.PIG_IE_YEAR, "IE", "pig");
+  assert.equal(extra(pig).previous_period.like_for_like, undefined);
+  assert.equal(extra(pig).last_12_months.same_basis_throughout, true);
+
+  // nothing in common: no change is claimed
+  const row = (end: string, begin: string, market: string, price: string) => ({
+    memberStateCode: "IE", memberStateName: "Ireland", beginDate: begin, endDate: end, price, unit: "€/100Kg", periodType: "Week", period: 40, year: 2026,
+    variety: "Tomatoes - Round", productStage: "Ex-packaging station price", market,
+  });
+  const apart = answer([row("27/09/2026", "21/09/2026", "Market A", "€100.00"), row("04/10/2026", "28/09/2026", "Market B", "€120.00")], "IE", "tomatoes");
+  assert.equal(apart.price!.value, 120);
+  assert.equal(extra(apart).previous_period, null);
+  assert.doesNotMatch(apart.summary, /previous week/);
+});
+
+test("eu-farm-prices: the Netherlands is 'the Netherlands' in a sentence, other countries are not", () => {
+  const nl = F.EGG_IE.map((r: any) => ({ ...r, memberStateCode: "NL", memberStateName: "Netherlands" }));
+  const a = answer(nl, "NL", "eggs");
+  assert.match(a.summary, /^In the Netherlands the latest published price for /);
+  assert.equal(extra(a).country_name, "Netherlands", "the data keeps the plain name");
+  assert.match(answer(F.CEREAL_IE, "IE", "wheat").summary, /^In Ireland /);
+  const none = answer([], "NL", "tomatoes");
+  assert.match(none.summary, /holds no tomatoes price for the Netherlands in the last/);
+  assert.equal(withThe("Netherlands"), "the Netherlands");
+  assert.equal(withThe("Netherlands", true), "The Netherlands");
+  assert.equal(withThe("Czechia"), "Czechia");
+  assert.equal(withThe("Ireland", true), "Ireland");
 });
 
 test("eu-farm-prices: no data is a clear no_matches, never an invented price", () => {
