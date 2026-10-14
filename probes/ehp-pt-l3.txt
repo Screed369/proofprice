@@ -1,0 +1,42 @@
+URL: https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012241&Dim1=S5A20261&Dim2=PT&Dim3=T&lang=EN
+Fetched: 2026-10-14T16:00:40Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 778
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Wed, 14 Oct 2026 16:00:40 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 778
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=n7_V4DRFxrCp_S4nkG3AZjOWLE-UTw2Ivd-7rHv7.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indica.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+[ {
+  "IndicadorCod" : "0012241",
+  "IndicadorDsg" : "Median value of dwellings sales in the last 12 months (Methodology 2022 - €/ m²) by Geographic location (NUTS - 2024) and Dwelling typology; Quarterly - Statistics on house prices at local level (Methodology 2022)",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012241&lingua=EN",
+  "DataExtracao" : "2026-10-14T17:00:39.786+01:00",
+  "DataUltimoAtualizacao" : "2026-07-17",
+  "UltimoPref" : "1st Quarter 2026",
+  "Dados" : {
+    "1st Quarter 2026" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "2 168",
+      "valor" : "2168"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
