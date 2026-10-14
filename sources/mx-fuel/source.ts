@@ -29,8 +29,7 @@ export const INFO: SourceInfo = {
   freshness:
     "The feeds are current prices reported by the stations and carry no timestamps; our copy is taken once a day and every answer shows the day of that copy",
   licence:
-    "No licence text is published with the CRE feeds themselves (publicacionexterna.azurewebsites.net). Mexico's national open-data portal datos.gob.mx publishes its datasets under the \"Libre Uso MX\" terms, which allow anyone to exploit the data commercially provided the source is cited (\"Citar la fuente de origen de donde obtuvo el conjunto de datos\"; https://datos.gob.mx/libreusomx/). " +
-    "We could not open the portal's page for this dataset to confirm that it carries those terms, so reuse has not been confirmed with the publisher.",
+    "UNCONFIRMED: no licence text is published with the CRE/CNE feeds themselves (publicacionexterna.azurewebsites.net). The former national portal (historico.datos.gob.mx) listed the CRE dataset 'Estaciones de Servicio (Gasolineras) y Precios finales de Gasolina y Diesel' with this XML feed as a resource; datos.gob.mx datasets are published under the \"Libre Uso MX\" terms, which allow commercial exploitation provided the source is cited (\"Citar la fuente de origen de donde obtuvo el conjunto de datos\"), the download URL and consultation date are given, and the use is not presented as an official government position (https://datos.gob.mx/libreusomx/). We could not open the portal record to confirm the licence field, so reuse has not been confirmed with the publisher.",
   licence_url: "https://datos.gob.mx/libreusomx/",
   attribution:
     "Fuente: Comisión Reguladora de Energía (CRE), precios al público de gasolinas y diésel (datos abiertos, Libre Uso MX); consultado por ProofPrice. Medians and ranges are calculated by ProofPrice.",

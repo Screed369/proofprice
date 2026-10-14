@@ -24,9 +24,8 @@ export const INFO: SourceInfo = {
   freshness:
     "ANP publishes the survey as one file per month, so the newest survey week is usually one to four weeks old. Our copy is refreshed daily, and every answer states the survey week it describes",
   licence:
-    "Creative Commons Attribution (CC BY): the licence label on the record of ANP's fuel price series (\"Série histórica de preços de combustíveis por revenda\") on the AmeriGEOSS data portal, which reads \"License Creative Commons Attribution\" and links http://www.opendefinition.org/licenses/cc-by. " +
-    "ANP's own open-data page (gov.br/anp, Dados abertos) shows no licence text that we could read, so this label comes from the mirror and has not been confirmed with ANP.",
-  licence_url: "https://data.amerigeoss.org/dataset/serie-historica-de-precos-de-combustiveis-por-revenda",
+    "UNCONFIRMED: ANP's open-data page for the series (gov.br/anp, Série histórica de preços de combustíveis) states no licence. Brazil's federal open-data decree binds ANP: open data are released 'sob licença aberta que permita sua livre utilização, consumo ou cruzamento, limitando-se a creditar a autoria ou a fonte' and there is 'permissão irrestrita de reuso das bases de dados publicadas em formato aberto' (Decreto 8.777/2016, art. 2 III and 3 IV). But ANP's website terms say 'É autorizada a reprodução total ou parcial, sem fins lucrativos, do conteúdo, mediante a citação obrigatória da fonte' (https://www.gov.br/anp/pt-br/acesso-a-informacao/termos-de-uso-privacidade-e-seguranca-1). Whether that non-profit clause reaches the open datasets has not been confirmed with ANP (permission requested).",
+  licence_url: "https://www2.camara.leg.br/legin/fed/decret/2016/decreto-8777-11-maio-2016-783082-normaatualizada-pe.pdf",
   attribution:
     "Fonte: ANP – Agência Nacional do Petróleo, Gás Natural e Biocombustíveis, Levantamento de Preços de Combustíveis (dados abertos), CC BY. Medians and ranges are calculated by ProofPrice.",
   homepage: "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis",

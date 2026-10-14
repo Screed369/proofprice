@@ -201,7 +201,7 @@ test("Hartford: a full answer from Connecticut's live format", async () => {
   assert.equal(a.price_type, "transaction");
   assert.deepEqual(a.period, { from: "2025-09-17", to: "2025-09-30" });
   assert.equal(a.source.id, "us-home-sales");
-  assert.equal(a.source.licence, "Public Domain (as labelled on the data.ct.gov dataset page)");
+  assert.match(a.source.licence, /^Public Domain \(licence field/);
   assert.equal(a.source.publisher, "State of Connecticut, Office of Policy and Management (OPM)");
   assert.match(a.summary, /^Homes in Hartford, CT sold for a median of US\$350,000; 10th–90th percentile range US\$\d/);
   // The annual-file lag is in the summary sentence itself.
@@ -241,7 +241,7 @@ test("Chicago: Cook County prices arrive as '1045000.0'", async () => {
   assert.deepEqual(a.period, { from: "2026-08-10", to: "2026-08-12" });
   assert.match(a.summary, /^Houses and townhomes in Chicago, IL sold for a median of US\$565,000/);
   assert.match(a.summary, /reported with a lag, so the latest weeks are incomplete/);
-  assert.match(a.source.licence, /^Cook County Terms of Use/);
+  assert.match(a.source.licence, /Cook County Open Data dataset record/);
   assert.match(JSON.stringify((a.extra as any).notes), /reported on a lag/);
 });
 

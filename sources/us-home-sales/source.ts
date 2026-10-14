@@ -38,7 +38,8 @@ const CT_INFO: SourceInfo = {
   publisher: "State of Connecticut, Office of Policy and Management (OPM)",
   what_is_recorded: "Real estate sales of $2,000 or more recorded by Connecticut towns: town, date recorded, property type, residential type, sale amount, non-use code.",
   freshness: "Annual: one grand-list year (1 October to 30 September) at a time; the file currently runs to 30 September 2025",
-  licence: "Public Domain (as labelled on the data.ct.gov dataset page)",
+  licence:
+    "Public Domain (licence field 'Public Domain', licenseId PUBLIC_DOMAIN, on the data.ct.gov dataset record; data provided 'as is' without warranty)",
   licence_url: "https://data.ct.gov/d/5mzw-sjtu",
   attribution: "Source: State of Connecticut Office of Policy and Management, Real Estate Sales 2001-2024 GL (data.ct.gov). Public Domain.",
   homepage: "https://data.ct.gov/d/5mzw-sjtu",
@@ -54,7 +55,7 @@ const NYC_INFO: SourceInfo = {
   what_is_recorded: "All recorded sales in New York City over the prior twelve months: borough, neighborhood, ZIP code, building class, sale price, sale date.",
   freshness: "Monthly, around the 15th, with sales recorded through the end of the prior month",
   licence:
-    "NYC Open Data Terms of Use (no licence is stated on the dataset page; NYC Admin. Code 23-502(d), the Open Data Law, says public data sets are made available 'without any registration requirement, license requirement or restrictions', with users to identify the source and version and describe any modifications; data are provided without warranty)",
+    "NYC Open Data Terms of Use (no licence is stated on the dataset page; NYC Admin. Code 23-502(d), the Open Data Law, says public data sets are made available 'without any registration requirement, license requirement or restrictions on their use', with users to identify the source and version and describe any modifications; data are provided without warranty)",
   licence_url: "https://www.nyc.gov/html/data/terms.html",
   attribution:
     "Source: New York City Department of Finance, NYC Citywide Rolling Calendar Sales (NYC Open Data, data.cityofnewyork.us). Figures are ProofPrice aggregates of the published sale records; the City does not warrant the data.",
@@ -71,7 +72,7 @@ const COOK_INFO: SourceInfo = {
   what_is_recorded: "Real property sales in Cook County from 1999 to the present: sale price, sale date, assessment township, property class, deed type and the Assessor's sale-filter flags.",
   freshness: "Uploaded about twice a month; sales are reported on a lag, so the latest weeks are incomplete",
   licence:
-    "Cook County Terms of Use (no data licence is stated on the dataset page, access level 'public'; the County provides information 'as is' without warranty)",
+    "UNCONFIRMED: no data licence is stated on the Cook County Open Data dataset record (access level 'public'; attribution 'Cook County Assessor's Office'). The County's website terms (https://www.cookcountyil.gov/terms-use) grant no data licence, say the information is 'as is' and that it 'shall not be used for advertising or product endorsement purposes'. Commercial reuse of the aggregates has not been confirmed with the Assessor's Office (permission requested).",
   licence_url: "https://www.cookcountyil.gov/terms-use",
   attribution:
     "Source: Cook County Assessor's Office, Assessor - Parcel Sales (Cook County Open Data, datacatalog.cookcountyil.gov). Figures are ProofPrice aggregates; the County provides the data without warranty.",
@@ -89,7 +90,7 @@ export const INFO: SourceInfo = {
   what_is_recorded: "Residential sales recorded by three US public authorities: price paid, sale date, property type and place (no addresses kept).",
   freshness: "Connecticut: annual file; New York City: monthly; Cook County: about twice a month (with a reporting lag)",
   licence:
-    "Differs by dataset. Connecticut: Public Domain (as labelled on data.ct.gov). New York City: NYC Open Data Terms of Use (no licence stated on the dataset; the Open Data Law requires no licence or restrictions). Cook County: Cook County Terms of Use (no data licence stated on the dataset page)",
+    "Differs by dataset. Connecticut: Public Domain (licence field on the data.ct.gov record). New York City: NYC Open Data Terms of Use (no licence stated on the dataset; the Open Data Law requires no licence or restrictions on use). Cook County: no data licence stated on the dataset record; commercial reuse not yet confirmed with the Assessor's Office",
   licence_url: "https://data.ct.gov/d/5mzw-sjtu",
   attribution:
     "Connecticut Office of Policy and Management (Real Estate Sales 2001-2024 GL); New York City Department of Finance (NYC Citywide Rolling Calendar Sales, NYC Open Data); Cook County Assessor's Office (Assessor - Parcel Sales, Cook County Open Data). Figures are ProofPrice aggregates; none of the three publishers warrants the data.",

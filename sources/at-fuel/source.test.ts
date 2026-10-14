@@ -104,7 +104,7 @@ test("AT: the answer says plainly that only the cheapest stations are listed", (
   assert.equal((a.extra as any).coverage, "cheapest_stations_only");
   assert.equal((a.extra as any).cheapest_stations.length, 3);
   assert.deepEqual(Object.keys((a.extra as any).cheapest_stations[0]).sort(), ["address", "brand", "id", "postcode", "price", "town"]);
-  assert.match(a.source.licence, /No reuse licence/);
+  assert.match(a.source.licence, /publishes no reuse licence/);
   // fewer than 5 stations: no figure
   const few = atAnswer(parseAtStations(district, "DIE"), { fuel: "diesel", where: "district 901", query: { area: "901" }, today: "2026-10-14" });
   assert.equal(few.status, "insufficient_data");

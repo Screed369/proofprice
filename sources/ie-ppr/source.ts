@@ -19,8 +19,9 @@ export const INFO: SourceInfo = {
   what_is_recorded: "Residential property sales declared to Revenue for stamp duty: price paid, sale date, county, new or second-hand.",
   price_type: "transaction",
   freshness: "Updated about monthly; sales appear a few weeks after they happen",
-  licence: "Creative Commons Attribution 4.0 (PSRA open data; wording to be confirmed with the publisher)",
-  licence_url: "https://creativecommons.org/licenses/by/4.0/",
+  licence:
+    "PSRA re-use terms (https://www.propertypriceregister.ie/website/npsra/ppr-copyright-en.html): the Authority encourages re-use of its information 'free of charge in any format', provided users 'Acknowledge the source and our copyright', reproduce it accurately and not in a misleading context, and do not use it for 'the principal purpose of advertising or promoting a particular product'. PSRA register data is also listed under Creative Commons Attribution 4.0 on data.gov.ie.",
+  licence_url: "https://www.propertypriceregister.ie/website/npsra/ppr-copyright-en.html",
   attribution: "Source: Property Services Regulatory Authority (PSRA), Residential Property Price Register. Licensed under CC BY 4.0.",
   homepage: "https://www.propertypriceregister.ie/",
   limits:

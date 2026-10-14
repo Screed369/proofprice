@@ -35,7 +35,8 @@ export const INFO: SourceInfo = {
     "Aggregated by region, dispenser type and supplier; never a patient or a prescription.",
   price_type: "reimbursement_price",
   freshness: "Monthly, published about two months after the month ends (July data appears in September); each answer states the month it describes",
-  licence: "Open Government Licence 3.0 (United Kingdom); NHSBSA's dataset page adds: \"You may use the data freely, provided that you attribute the source.\"",
+  licence:
+    "Open Government Licence 3.0 (United Kingdom); NHSBSA's dataset page adds: \"You may use the data freely, provided that you attribute the source.\" It also asks anyone producing a press or broadcast story from the data to contact its communications team; that is a request, not a licence condition.",
   licence_url: "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
   attribution:
     "Source: NHS Business Services Authority, \"Prescription Cost Analysis (PCA) Monthly Administrative Data\", NHSBSA Open Data Portal, " +

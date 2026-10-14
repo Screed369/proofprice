@@ -20,7 +20,7 @@ export const INFO: SourceInfo = {
   price_type: "official_statistic",
   freshness: "Quarterly; a quarter is published about five months after it ends",
   licence:
-    "Creative Commons Attribution 4.0 (CC BY 4.0), as stated on data.gov.ie for the RTB Average Monthly Rent Report; the CSO table names the RTB as copyright holder",
+    "Creative Commons Attribution 4.0 (CC BY 4.0): the CSO copyright policy states that its statistical information is licensed under CC BY 4.0 (https://www.cso.ie/en/aboutus/whoweare/copyrightpolicy/), and data.gov.ie lists the RTB Average Monthly Rent Report tables published by the CSO under CC BY 4.0. The CSO logo may not be used.",
   licence_url: "https://creativecommons.org/licenses/by/4.0/",
   attribution:
     "Source: Residential Tenancies Board (RTB), RTB Average Monthly Rent Report, published by the Central Statistics Office (CSO) as PxStat table RIQ02. Licensed under CC BY 4.0.",

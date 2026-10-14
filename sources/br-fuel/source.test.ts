@@ -164,7 +164,7 @@ test("BR: the answer names the survey week, the sample, the unit and flags old d
   assert.doesNotMatch(a.summary, /\b(costs?|paid|pays?)\b/i);
   assert.equal((a.extra as any).data_age_days, 18);
   assert.equal((a.extra as any).coverage, "surveyed_stations_only");
-  assert.match(a.source.licence, /Creative Commons Attribution/);
+  assert.match(a.source.licence, /Decreto 8\.777\/2016/);
   // 40 days old: flagged in the summary and in extra
   const old = brAnswerFromRow(row, { fuel: "petrol95", place, query: {}, libraryDate: "2026-09-26", now: "2026-11-05" });
   assert.match(old.summary, /This is old data: 40 days/);

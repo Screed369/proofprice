@@ -18,9 +18,8 @@ export const INFO: SourceInfo = {
   price_type: "posted_pump_price",
   freshness: "Daily (prices are locked in for 24 hours from 6am; tomorrow's prices appear at 2:30pm)",
   licence:
-    "Creative Commons Attribution 4.0 (CC BY 4.0): the licence the department states for FuelWatch price data (dataset 'FuelWatch Historic Fuel Prices', https://catalogue.data.wa.gov.au/dataset/fuelwatch-historic-fuel-prices). " +
-    "The live RSS feed itself carries only the notice 'Copyright 2025 FuelWatch. All Rights Reserved.' and no licence text, so reuse of the live feed has not been separately confirmed.",
-  licence_url: "https://catalogue.data.wa.gov.au/dataset/fuelwatch-historic-fuel-prices",
+    "NOT CLEARED FOR REUSE (source offline since 2026-10-14). The live FuelWatch RSS feed carries only 'Copyright 2025 FuelWatch. All Rights Reserved.' and no licence. The CC BY 4.0 record on data.wa.gov.au ('FuelWatch Historic Fuel Prices', https://catalogue.data.wa.gov.au/dataset/fuelwatch-historic-fuel-prices) lists only the historic monthly files, not the RSS feed. The WA Government terms of use (https://www.wa.gov.au/terms-of-use) say: 'no part may be reproduced or re-used for any commercial purposes whatsoever without prior written permission of the State of Western Australia.'",
+  licence_url: "https://www.wa.gov.au/terms-of-use",
   attribution: "Source: FuelWatch, Government of Western Australia (Department of Energy, Mines, Industry Regulation and Safety), CC BY 4.0.",
   homepage: "https://www.fuelwatch.wa.gov.au/",
   limits:

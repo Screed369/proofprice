@@ -15,8 +15,9 @@ export const INFO: SourceInfo = {
   what_is_recorded: "Current pump price at each public filling station in Spain, by fuel type.",
   price_type: "posted_pump_price",
   freshness: "Several times a day",
-  licence: "Spanish public-sector information reuse terms (Ley 37/2007, RD 1495/2011): reuse allowed with the source and update date cited. Exact licence text to be confirmed.",
-  licence_url: "https://datos.gob.es/en/catalogo/e05068001-precio-de-carburantes-en-las-gasolineras-espanolas",
+  licence:
+    "Reuse allowed, including commercial, under Spain's public-sector information reuse law (Ley 37/2007 as amended by Ley 18/2015; datos.gob.es aviso legal: reuse 'para fines comerciales y no comerciales'). The ministry's conditions: 'Que el contenido de la información, incluyendo sus metadatos, no sea alterado. Que no se desnaturalice el sentido de la información. Que se cite la fuente. Que se mencione la fecha de la última actualización.' (https://sede.serviciosmin.gob.es/es-ES/Paginas/aviso.aspx). It also reserves measures against abusive or robotised use.",
+  licence_url: "https://sede.serviciosmin.gob.es/es-ES/Paginas/aviso.aspx",
   attribution: "Source: Ministerio para la Transición Ecológica y el Reto Demográfico – precios de carburantes (datos.gob.es).",
   homepage: "https://geoportalgasolineras.es/",
   limits: "Posted pump prices in euros per litre (CNG per kg), taxes included; not individual receipts. Restricted-sale stations are excluded. Prices of 0 and implausible entries (under 0.30 or over 5 EUR) are treated as missing.",
