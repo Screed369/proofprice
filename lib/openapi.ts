@@ -4,7 +4,8 @@
 import { z } from "zod";
 import type { CategoryPlugin } from "./plugin";
 import { CATEGORIES, countriesFor, countryHelp, exampleUrls, historySources, paramSchemas, sourcesFor, toolDescription } from "./registry";
-import { coverageSchema, errorSchema, historyAnswerSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
+import { CHECK_REST, CHECK_TOOL } from "./check";
+import { checkResultSchema, coverageSchema, errorSchema, historyAnswerSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { joinAnd } from "./text";
 
@@ -68,6 +69,7 @@ function parameters(catId: string, onlyCountries?: string[]) {
 }
 
 const FIXED_TAG = "Coverage";
+const CHECK_TAG = "Price check";
 
 /** The text of an MCP tool description names other tools (pricepaid_fuel_prices_now); in the REST description say the endpoint instead. */
 function restWording(text: string): string {
@@ -77,6 +79,7 @@ function restWording(text: string): string {
     if (c.history) byTool.set(c.history.tool, `GET /api/v1/${c.restPath}/history`);
   }
   byTool.set("pricepaid_coverage", "GET /api/v1/coverage");
+  byTool.set(CHECK_TOOL, `GET ${CHECK_REST}`);
   return text.replace(/pricepaid_[a-z0-9_]+/g, (name) => byTool.get(name) ?? name);
 }
 
@@ -91,6 +94,31 @@ function tagFor(cat: CategoryPlugin) {
     name: cat.title,
     description: `${cat.noun}: ${joinAnd(countriesFor(cat.id))}. Sources: ${joinAnd(sources)}.`,
   };
+}
+
+/** Parameters of GET /api/v1/check: the check's own fields, country, and the union of every category's parameters. */
+function checkParameters() {
+  const params: any[] = [
+    { name: "category", in: "query", required: true, description: `Which kind of price: ${joinAnd(CATEGORIES.map((c) => c.id))} (the REST path or the tool name also works).`, schema: { type: "string", enum: CATEGORIES.map((c) => c.id) } },
+    { name: "country", in: "query", required: true, description: "ISO country code of the place (for example IE, GB, FR). Which countries a category covers: /api/v1/coverage.", schema: { type: "string" } },
+    { name: "price", in: "query", required: true, description: "The price to check, a number above zero (for example 2400 or 1.95), in the currency and unit below (or the evidence's, if those are left out).", schema: { type: "number", exclusiveMinimum: 0 } },
+    { name: "currency", in: "query", required: false, description: "ISO 4217 currency code of the price. Defaults to the evidence currency. A different currency gives cannot_judge: ProofPrice never converts.", schema: { type: "string" } },
+    { name: "unit", in: "query", required: false, description: "What the price is per, for example 'per month' or 'per litre'. Defaults to the evidence unit. A different unit gives cannot_judge.", schema: { type: "string" } },
+    { name: "includes", in: "query", required: false, description: "What the price includes or excludes, free text (for example 'VAT included, delivery excluded'). Echoed back as a caution; it does not adjust the figure.", schema: { type: "string" } },
+  ];
+  const seen = new Map<string, { notes: string[]; schema: z.ZodTypeAny }>();
+  for (const cat of CATEGORIES) {
+    for (const [name, schema] of Object.entries(paramSchemas(cat))) {
+      const e = seen.get(name) ?? { notes: [], schema };
+      e.notes.push(`${cat.id}: ${(schema.description ?? "").replace(/\s+/g, " ").slice(0, 200)}`);
+      seen.set(name, e);
+    }
+  }
+  for (const [name, e] of seen) {
+    if (["category", "country", "price", "currency", "unit", "includes"].includes(name)) continue;
+    params.push({ name, in: "query", required: false, description: `Parameter of the category (same name and meaning as on its own endpoint). ${e.notes.join(" | ")}`, schema: {} });
+  }
+  return params;
 }
 
 export function buildOpenApi(baseUrl: string) {
@@ -124,6 +152,22 @@ export function buildOpenApi(baseUrl: string) {
       };
     }
   }
+  paths[CHECK_REST] = {
+    get: {
+      operationId: operationId(CHECK_TOOL),
+      tags: [CHECK_TAG],
+      summary: "Check a price before you pay",
+      description:
+        "Compare a proposed price with recorded official evidence. Runs the category's normal answer (same data, cache and stale-if-error) and returns a verdict: within_typical_range, above_typical_range or below_typical_range when the evidence is a set of records (10th–90th percentile); about_average, above_average or below_average when the evidence is one official average or median (within 5% is about_average; it says plainly this is an average, not a distribution); or cannot_judge when the currency or unit differs (never converted), there are too few records or nothing matched. " +
+        "Also returns where the price sits, the reasons and cautions (posted prices are not paid prices, old periods), what is missing, one quotable sentence, and the full evidence answer with its audit-trail fields. Information, not a valuation or advice.",
+      parameters: checkParameters(),
+      responses: {
+        "200": { description: "A verdict with its evidence. cannot_judge is a normal 200 answer, with the reason in reasons and missing.", headers: STALE_HEADER, ...jsonBody("CheckResult") },
+        "400": { description: "Missing or invalid parameter (for example no price, or a country the category does not cover).", ...jsonBody("Error") },
+        "502": { description: "The official source could not be reached and ProofPrice holds no recent copy of it.", ...jsonBody("Error") },
+      },
+    },
+  };
   paths["/api/v1/coverage"] = {
     get: {
       operationId: "coverage",
@@ -151,12 +195,13 @@ export function buildOpenApi(baseUrl: string) {
         "The ProofPrice terms of use govern use of the API itself. Free, read-only, no API key.",
     },
     servers: [{ url: baseUrl }],
-    tags: [...CATEGORIES.map(tagFor), { name: FIXED_TAG, description: "Which countries, categories and official sources are covered." }],
+    tags: [...CATEGORIES.map(tagFor), { name: CHECK_TAG, description: "Check a proposed price against recorded official evidence before paying." }, { name: FIXED_TAG, description: "Which countries, categories and official sources are covered." }],
     paths,
     components: {
       schemas: {
         Error: toJsonSchema(errorSchema),
         PriceAnswer: toJsonSchema(priceAnswerSchema),
+        CheckResult: toJsonSchema(checkResultSchema),
         HistoryAnswer: toJsonSchema(historyAnswerSchema),
         Coverage: toJsonSchema(coverageSchema),
       },
@@ -167,6 +212,7 @@ export function buildOpenApi(baseUrl: string) {
 /** The answer format and citing rules, shared by llms.txt and llms-full.txt. */
 export const ANSWER_FORMAT =
   'JSON with: query, status ("ok" or not), price {currency, unit, value, measure ("median" for ranges built from records, "average" or "median" for official statistics), median, typical_low, typical_high, min, max}, sample_size, period {from, to}, confidence (low / medium / high), price_type ("transaction", "posted_pump_price", "posted_price", "contract_price", "reimbursement_price" or "official_statistic"), as_of, source {id, name, publisher, licence, licence_url, attribution, url}, method, method_url, summary (one plain sentence), notice, an optional statistic {measure, reference_period} (official statistics only), and an optional extra object.\n' +
+  "Audit trail (every answer): answer_id (a stable hash of source id, normalised query, data period and method_version: the same question on the same data gives the same id, so keep it with your reasoning), method_version (per source, default \"1\"), retrieved_at (when ProofPrice produced the answer) and evidence {type (same as price_type), label (for example \"Recorded sale prices\", \"Official published average\", \"Posted shelf or pump price\", \"Contract award value\", \"Regulated reimbursement price\"), meaning (one sentence on what this kind of evidence does and does not establish)}.\n" +
   "value is the headline figure and measure says what kind of figure it is. typical_low and typical_high are the 10th and 90th percentiles.\n" +
   "For official statistics (price_type official_statistic) the range fields (median, typical_low, typical_high, min, max) may be null, because the publisher gives one figure and not a distribution, and sample_size may be null when the publisher does not state it.\n" +
   "If the official source did not respond and ProofPrice holds a recent daily copy of it, the answer is that copy instead of an error: status is ok, period and as_of give the snapshot date, the notice says so and extra.stale is true (REST also sets an X-ProofPrice-Stale header).";
@@ -179,7 +225,9 @@ export const CITING_RULES = [
 ];
 
 export function buildLlmsTxt(baseUrl: string): string {
-  const tools = CATEGORIES.map((c) => c.tool).concat("pricepaid_coverage").join(", ");
+  const tools = CATEGORIES.map((c) => c.tool).concat(CHECK_TOOL, "pricepaid_coverage").join(", ");
+  const checkEx = exampleUrls()[0];
+  const checkExample = `${baseUrl}${CHECK_REST}?category=${checkEx?.category ?? "rent"}&${new URLSearchParams(checkEx?.path.split("?")[1] ?? "country=IE")}&price=1000&unit=${encodeURIComponent("per month")}`;
   const endpoints = CATEGORIES.map((c) => {
     const ex = exampleUrls().find((e) => e.category === c.id);
     return `- GET ${baseUrl}${ex?.path ?? `/api/v1/${c.restPath}`} — ${c.title.toLowerCase()} (${joinAnd(countriesFor(c.id))})`;
@@ -192,7 +240,12 @@ export function buildLlmsTxt(baseUrl: string): string {
   });
   return `# ProofPrice
 
-> Real prices actually paid, for AI agents. Ask "what did people actually pay for X, here, recently?" and get a range (median, 10th–90th percentile), sample size, period, confidence, source and licence. Built from official open data. Aggregates only.
+> Real prices actually paid, for AI agents. Ask "what did people actually pay for X, here, recently?" and get a range (median, 10th–90th percentile), sample size, period, confidence, source and licence. Built from official open data. Aggregates only. Check a price before you pay: give a proposed price and get a verdict against the recorded evidence.
+
+## Check a price before you pay
+- MCP tool ${CHECK_TOOL}, or GET ${baseUrl}${CHECK_REST}: give category, country, the category's own parameters and price (optional: currency, unit, includes).
+- Returns a verdict (within_typical_range, above_typical_range, below_typical_range, about_average, above_average, below_average or cannot_judge), where the price sits, the reasons, what is missing, one quotable sentence and the full evidence answer. Currencies and units are never converted: a mismatch is cannot_judge.
+- Example: ${checkExample}
 
 ## Use it
 - MCP server (Streamable HTTP): ${baseUrl}/api/mcp — tools: ${tools}

@@ -25,7 +25,17 @@ export default function Home() {
     <main>
       <JsonLd data={homeGraph()} />
       <section className="hero">
-        <h1>What people actually paid, for AI agents</h1>
+        <h1>Check a price before you pay</h1>
+        <p className="lede">
+          Before an AI agent pays, it can ask ProofPrice whether the price is typical. Give a price and a place and get a verdict against recorded
+          evidence (within, above or below the typical range, or against the official average), the reasons, and the evidence to keep with the
+          reasoning. Currencies and units are never converted, and a comparison that cannot be made honestly says so.
+        </p>
+        <p className="muted">
+          Try it: <a href="/api/v1/check?category=rent&country=IE&town=Dublin&price=2400&unit=per%20month"><code>/api/v1/check?category=rent&amp;country=IE&amp;town=Dublin&amp;price=2400</code></a>{" "}
+          · MCP tool <code>pricepaid_check_price</code> · <a href="/connect#check-a-price">how it works</a>
+        </p>
+        <h2>What people actually paid, for AI agents</h2>
         <p className="lede">
           ProofPrice answers one question: what did people actually pay for something, here, recently? It returns a price range built from
           official records, with the sample size, period, source and licence on every answer. It is free, read-only and needs no API key.

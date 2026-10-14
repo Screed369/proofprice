@@ -22,6 +22,8 @@ export interface SourceInfo {
   attribution: string;
   homepage: string;
   limits: string;
+  /** Optional: bump this string when the way this source turns raw data into an answer changes (it is part of the answer_id). Default "1". */
+  method_version?: string;
 }
 
 /** Loose request parameters, as they arrive from REST (strings) or MCP (typed values). */

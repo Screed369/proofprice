@@ -2,6 +2,7 @@
 // Pure functions generated from the plug-in registry, so a new source appears here automatically.
 // Used by app/robots.ts, app/sitemap.ts, app/llms-full.txt, app/connect and server.json checks (tests/open-book.test.ts).
 
+import { CHECK_REST, CHECK_TOOL } from "./check";
 import { ANSWER_FORMAT, CITING_RULES, jsonSchemaOf } from "./openapi";
 import {
   CATEGORIES,
@@ -30,11 +31,14 @@ export { CONTACT, MCP_URL, SITE_URL };
 
 /** Crawlers we name explicitly so there is no doubt they are welcome. */
 export const AI_CRAWLERS = [
-  "GPTBot",
   "OAI-SearchBot",
+  "ChatGPT-User",
+  "GPTBot",
   "ClaudeBot",
+  "Claude-User",
   "Claude-SearchBot",
   "PerplexityBot",
+  "Perplexity-User",
   "Google-Extended",
   "Applebot-Extended",
   "CCBot",
@@ -231,6 +235,25 @@ ${pricePageLines(baseUrl).join("\n")}
     }
     out.push("");
   }
+  out.push(`### ${CHECK_TOOL}  —  Check a price before you pay
+REST: GET ${baseUrl}${CHECK_REST}
+Description: Compare a proposed price with the recorded evidence before paying, and keep the reasoning. Runs the category's normal answer (same data, cache and stale-if-error) and compares the price with it.
+Parameters (the same names work as MCP tool arguments and REST query parameters):
+  - category (required): ${CATEGORIES.map((c) => c.id).join(", ")} (the REST path or the tool name also works)
+  - country (required): ISO country code of the place
+  - price (required): the price to check, a number above zero
+  - currency (optional): ISO 4217 code; defaults to the evidence currency; a different currency gives cannot_judge (never converted)
+  - unit (optional): for example "per month" or "per litre"; defaults to the evidence unit; a different unit gives cannot_judge
+  - includes (optional): free text such as "VAT included, delivery excluded"; echoed back as a caution, not used to adjust the figure
+  - plus the category's own parameters, with the same names and validation as its tool (see the category sections above)
+Verdicts:
+  - within_typical_range / above_typical_range / below_typical_range: the evidence is a set of records; the price is compared with the 10th–90th percentile, and position says where it sits (for example "27% above the median and above the 90th percentile").
+  - about_average / above_average / below_average: the evidence is one official average or median, not a distribution; within ±5% of it is about_average, and position says the % difference from the published figure.
+  - cannot_judge: currency or unit differs, fewer than ${MIN_PUBLISH} records, or nothing matched; reasons and missing say why.
+Also returned: reasons (posted prices are not paid prices, old periods, assumptions made), missing, a one-sentence summary, and the full evidence answer embedded as "answer" (with its audit-trail fields). Deterministic: no benchmark is ever invented.
+Example: GET ${baseUrl}${CHECK_REST}?category=${exampleUrls()[0]?.category ?? "rent"}&${new URLSearchParams(exampleUrls()[0]?.path.split("?")[1] ?? "country=IE")}&price=1000&unit=${encodeURIComponent("per month")}
+`);
+
   out.push(`### pricepaid_coverage  —  What price data is covered
 REST: GET ${baseUrl}/api/v1/coverage
 Description: Which countries, categories and official sources the price-paid tools cover, with each source's licence and update frequency. Takes no parameters. Call it first when unsure whether a place is covered.

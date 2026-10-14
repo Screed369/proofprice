@@ -7,7 +7,7 @@
 // summary say plainly that the official source did not respond and this is our copy. extra.stale is true so a Monitor or an
 // agent can tell it apart from a live answer. A snapshot older than STALE_MAX_DAYS is not "recent" and is never served.
 
-import { fmtMoney, METHOD_URL, NOTICE, sourceBlock } from "./answer";
+import { fmtMoney, METHOD_URL, NOTICE, sourceBlock, withAudit } from "./answer";
 import type { PriceAnswer } from "./answer";
 import type { CategoryPlugin, Params, SourcePlugin } from "./plugin";
 import { readDaily, readMeta } from "./library/store";
@@ -64,7 +64,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
     const conf = confidenceLabel(last.n);
     const sentence = staleSentence(last.date);
     const err: any = o.error;
-    return {
+    return withAudit({
       query: o.query,
       status: "ok",
       price: {
@@ -99,7 +99,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         snapshot_item: itemLabel,
         live_source_error: String(err?.message ?? err ?? "unknown").slice(0, 200),
       },
-    };
+    }, src.info);
   } catch {
     return null; // any trouble reading the library: fall back to the honest 502
   }

@@ -20,10 +20,10 @@ const BASE = "https://example.test";
 test("robots.txt welcomes every AI crawler and points at the sitemap", () => {
   const r = buildRobots("https://proofprice.com");
   const agents = r.rules.map((x) => x.userAgent);
-  for (const bot of ["GPTBot", "OAI-SearchBot", "ClaudeBot", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "CCBot", "*"]) {
+  for (const bot of ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Claude-SearchBot", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot", "*"]) {
     assert.ok(agents.includes(bot), bot);
   }
-  assert.equal(AI_CRAWLERS.length, 8);
+  assert.equal(AI_CRAWLERS.length, 11);
   assert.ok(r.rules.every((x) => x.allow === "/" && !("disallow" in x)));
   assert.equal(r.sitemap, "https://proofprice.com/sitemap.xml");
 });
@@ -154,4 +154,19 @@ test("privacy and terms are public, in the sitemap and linked for AIs", async ()
     assert.ok(t.includes("https://x.test/terms"));
   }
   assert.equal((buildOpenApi("https://x.test") as any).info.termsOfService, "https://proofprice.com/terms");
+});
+
+test("JSON-LD: Dataset markup only on the sources page; answer and example pages use WebPage, FAQPage and breadcrumbs", async () => {
+  const { answerPageGraph, examplePageGraph, sourcesGraph, homeGraph, breadcrumbGraph } = await import("../lib/site/jsonld");
+  const source = { publisher: "A publisher", licence: "A licence" };
+  const answerPage: any = { path: "/prices/ie/rent/dublin", h1: "Rent in Dublin", description: "d", asOf: "2026-10-14", source, figures: [{ question: "q?", answer: "a", caveat: "" }] };
+  const examplePage: any = { path: "/prices/ie/rent/dublin", h1: "Rent in Dublin", description: "d", asOf: "2026-10-14", source, figure: { answer: "a", caveat: "" } };
+  const crumbs = [{ name: "Home", path: "/" }];
+  for (const g of [answerPageGraph(answerPage, crumbs), examplePageGraph(examplePage, crumbs), homeGraph(), breadcrumbGraph(crumbs)]) {
+    assert.ok(!JSON.stringify(g).includes('"Dataset"'));
+  }
+  const ds = sourcesGraph([
+    { id: "x", name: "X", whatIsRecorded: "r", limits: "l", publisher: "p", publisherUrl: "https://p.example", licenceUrl: "https://l.example", attribution: "a", countries: [{ code: "IE", name: "Ireland" }], restUrl: "/api/v1/rent", categoryTitle: "Rents" },
+  ]);
+  assert.ok(JSON.stringify(ds).includes('"Dataset"'));
 });

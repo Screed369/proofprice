@@ -60,8 +60,65 @@ export const priceAnswerSchema = z
     summary: z.string().describe("One plain sentence an AI can quote."),
     notice: z.string().describe("Information, not a valuation or offer. Also says when the answer is our copy because the official source did not respond."),
     extra: z.record(z.string(), z.unknown()).optional().describe("Source-specific details (for example cheapest stations). extra.stale is true when the answer comes from our copy of the source."),
+    answer_id: z.string().optional().describe("Audit trail: a stable id (hash of source id, normalised query, data period and method_version). The same question on the same data gives the same id; keep it with the reasoning that used the figure."),
+    method_version: z.string().optional().describe("Audit trail: version of the way this source turns raw data into an answer (per source, default '1')."),
+    retrieved_at: z.string().optional().describe("Audit trail: when ProofPrice produced this answer (ISO 8601). For an answer from our own copy this is now, while as_of is the snapshot date."),
+    evidence: z
+      .looseObject({
+        type: z.string().describe("Same as price_type."),
+        label: z.string().describe("Short name of the kind of evidence, e.g. 'Recorded sale prices', 'Official published average', 'Posted shelf or pump price', 'Contract award value', 'Regulated reimbursement price'."),
+        meaning: z.string().describe("One sentence on what this kind of evidence does and does not establish."),
+      })
+      .optional()
+      .describe("Audit trail: what kind of evidence the figure is."),
   })
   .describe("A price answer: a range or an official statistic with sample size, period, confidence, source and licence.");
+
+const verdictEnum = z.enum([
+  "within_typical_range",
+  "above_typical_range",
+  "below_typical_range",
+  "about_average",
+  "above_average",
+  "below_average",
+  "cannot_judge",
+]);
+
+export const checkResultSchema = z
+  .looseObject({
+    verdict: verdictEnum.describe(
+      "within/above/below_typical_range: the price compared with the 10th–90th percentile of recorded prices. about_average/above_average/below_average: compared with one published official average or median (within ±5% = about_average). cannot_judge: the evidence cannot honestly be compared (see reasons and missing).",
+    ),
+    summary: z.string().describe("One plain sentence an AI can quote."),
+    position: z
+      .looseObject({
+        basis: z.enum(["range", "average"]).describe("range = records with a 10th–90th percentile; average = one published official figure, not a distribution."),
+        text: z.string().describe("Where the price sits, e.g. '27% above the median and above the 90th percentile'."),
+        vs_median_percent: nullableNumber.optional().describe("Percent difference from the median (range basis) or from the published figure (average basis); positive = above."),
+        vs_typical_low_percent: nullableNumber.optional(),
+        vs_typical_high_percent: nullableNumber.optional(),
+        reference_value: number.describe("The median or published average the price is compared with."),
+        typical_low: nullableNumber.optional(),
+        typical_high: nullableNumber.optional(),
+      })
+      .nullable()
+      .describe("Where the price sits against the evidence; null when cannot_judge."),
+    reasons: z.array(z.string()).describe("Why this verdict, including cautions (posted versus paid prices, old periods, assumptions made)."),
+    missing: z.array(z.string()).describe("What stopped or limits the comparison (currency or unit mismatch, too few records, nothing matched). Empty when nothing is missing."),
+    input: z
+      .looseObject({
+        category: z.string(),
+        country: z.string(),
+        price: number,
+        currency: z.string().nullable(),
+        unit: z.string().nullable(),
+        includes: z.string().nullable(),
+      })
+      .describe("The price check as understood, echoed back. currency and unit are null when not given (the evidence currency and unit were assumed)."),
+    answer: priceAnswerSchema.describe("The full evidence answer (the same answer the category tool returns), embedded so the reasoning can be kept with its source, licence and audit-trail fields."),
+    notice: z.string(),
+  })
+  .describe("A price check: a verdict on a proposed price against recorded evidence, where it sits, why, what is missing, and the full evidence answer. Deterministic: no benchmark is ever invented.");
 
 export const historyAnswerSchema = z
   .looseObject({

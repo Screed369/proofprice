@@ -1,11 +1,16 @@
 // The daily collector. Runs on GitHub Actions (.github/workflows/harvest.yml), never in the app.
 // For every source with a harvest() function: fetch the official bulk data once, turn it into aggregate rows,
 // and add them to the price library (library/<source>/). One failing source never stops the others.
-// Usage: npm run harvest            (all sources)
-//        npm run harvest -- es-fuel (one source)
+// Before a day is written, the data checker (lib/library/check.ts) compares each key with its previous value: a median above 3x or
+// below a third, or a change of currency or unit, is not published (the previous value stays) and is recorded in meta.json last_error.
+// Usage: npm run harvest                          (all sources)
+//        npm run harvest -- es-fuel               (one source)
+//        npm run harvest -- --accept-changes es-fuel   (accept a real jump or unit change once: skips the data checker)
 
 import { SOURCE_PLUGINS } from "../lib/registry";
+import { dataCheck, previousByKey } from "../lib/library/check";
 import { libraryDates, readMeta, writeDaily, writeMeta, SourceMeta } from "../lib/library/store";
+import { MIN_PUBLISH } from "../lib/stats";
 
 const TIMEOUT_MS = 10 * 60 * 1000;
 
@@ -18,6 +23,7 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
 
 async function main() {
   const only = process.argv.slice(2).filter((a) => !a.startsWith("-"));
+  const acceptChanges = process.argv.includes("--accept-changes");
   const targets = SOURCE_PLUGINS.filter((s) => s.harvest && (only.length === 0 || only.includes(s.info.id)));
   if (!targets.length) {
     console.log("Nothing to harvest.");
@@ -35,7 +41,11 @@ async function main() {
     try {
       const result = await withTimeout(s.harvest!(), TIMEOUT_MS, id);
       if (!result.rows.length) throw new Error("harvest returned no rows");
-      const { rows } = writeDaily(id, result);
+      // the data checker: a first harvest has no previous values, so it passes untouched
+      const check = acceptChanges ? null : dataCheck({ result, prevMeta: prev, previous: previousByKey(id, result.date) });
+      if (check?.unitChange) throw new Error(check.unitChange);
+      if (check && !check.rows.some((r) => r.n >= MIN_PUBLISH)) throw new Error(check.message ?? "every row had fewer than 5 records");
+      const { rows } = writeDaily(id, check ? { ...result, rows: check.rows } : result);
       if (!rows) throw new Error("every row had fewer than 5 records");
       const dates = libraryDates(id);
       writeMeta(id, {
@@ -48,11 +58,11 @@ async function main() {
         last_harvest_at: started,
         last_rows: rows,
         last_ok_at: started,
-        last_error: null,
+        last_error: check?.message ?? null,
         note: result.note ?? null,
       });
       ok++;
-      report.push(`OK   ${id}: ${rows} rows for ${result.date} (${dates.length} days held)`);
+      report.push(`${check?.held.length ? "HELD" : "OK  "} ${id}: ${rows} rows for ${result.date} (${dates.length} days held)${check?.message ? ` | ${check.message}` : ""}`);
     } catch (e: any) {
       const msg = String(e?.message ?? e).slice(0, 300);
       writeMeta(id, { ...prev, last_harvest_at: started, last_error: msg });

@@ -9,8 +9,10 @@ import { z } from "zod";
 import type { ZodTypeAny } from "zod";
 import type { CategoryPlugin } from "./plugin";
 import { CATEGORIES, coverage, historyDays, runCategory, runHistory, toolDescription, toolShape } from "./registry";
-import { coverageSchema, historyAnswerSchema, priceAnswerSchema } from "./schemas";
+import { CHECK_TOOL, checkToolDescription, checkToolShape, runCheck } from "./check";
+import { checkResultSchema, coverageSchema, historyAnswerSchema, priceAnswerSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
+import { recordUsage, statusOfAnswer, statusOfError, usageKey } from "./usage";
 
 /** The same four hints on every tool: they read official sources and never change anything. */
 export const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } as const;
@@ -57,10 +59,14 @@ export function asError(err: any): McpToolResult {
   return { isError: true, content: [{ type: "text", text: `Could not answer: ${err?.message ?? String(err)}` }] };
 }
 
-async function guarded(fn: () => unknown | Promise<unknown>): Promise<McpToolResult> {
+async function guarded(fn: () => unknown | Promise<unknown>, count?: { tool: string; args: Record<string, unknown> }): Promise<McpToolResult> {
   try {
-    return asResult(await fn());
+    const out: any = await fn();
+    // anonymous usage counting: does nothing unless it has been switched on (lib/usage.ts)
+    if (count) recordUsage({ tool: count.tool, country: count.args.country, key: usageKey(count.args), status: statusOfAnswer(out?.answer ?? out) });
+    return asResult(out);
   } catch (e) {
+    if (count) recordUsage({ tool: count.tool, country: count.args.country, key: usageKey(count.args), status: statusOfError(e) });
     return asError(e);
   }
 }
@@ -77,7 +83,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
         outputSchema: priceAnswerSchema,
         annotations: { title: cat.title, ...READ_ONLY },
       },
-      call: (args) => guarded(() => deps.runCategory(cat, args, { baseUrl: SITE_URL })),
+      call: (args) => guarded(() => deps.runCategory(cat, args, { baseUrl: SITE_URL }), { tool: cat.tool, args }),
     });
     // History tools appear once the price library holds enough days to be useful.
     if (cat.history && deps.historyDays(cat) >= cat.history.minDays) {
@@ -98,6 +104,18 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
       });
     }
   }
+  const checkTitle = "Check a price before you pay";
+  specs.push({
+    name: CHECK_TOOL,
+    config: {
+      title: checkTitle,
+      description: checkToolDescription(deps.categories),
+      inputSchema: z.object(checkToolShape(deps.categories)),
+      outputSchema: checkResultSchema,
+      annotations: { title: checkTitle, ...READ_ONLY },
+    },
+    call: (args) => guarded(() => runCheck(args, { categories: deps.categories, runCategory: deps.runCategory }, { baseUrl: SITE_URL }), { tool: CHECK_TOOL, args }),
+  });
   const coverageTitle = "What price data is covered";
   specs.push({
     name: "pricepaid_coverage",

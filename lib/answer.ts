@@ -6,6 +6,7 @@
 //  - buildStatisticAnswer: an official statistic (an average or median that a statistics office or regulator
 //    publishes). We pass on the published figure with its reference period and source; the range fields are null.
 
+import { createHash } from "node:crypto";
 import { confidenceLabel, MIN_PUBLISH, PriceSummary } from "./stats";
 import type { SourceInfo } from "./plugin";
 
@@ -50,6 +51,94 @@ export interface PriceAnswer {
   summary: string;
   notice: string;
   extra?: Record<string, unknown>;
+  // ----- audit trail (additive, optional: added by withAudit, so every answer carries them) -----
+  /** Stable id of this answer: a hash of the source id, the normalised query, the data period and the method version. The same question on the same data gives the same id, so a buyer can keep it as a receipt for the reasoning. */
+  answer_id?: string;
+  /** Version of the way this source turns raw data into an answer (per source, default "1"). */
+  method_version?: string;
+  /** When ProofPrice produced this answer (ISO 8601). For an answer from our own copy this is now, while as_of is the snapshot date. */
+  retrieved_at?: string;
+  /** What kind of evidence the figure is, in words. */
+  evidence?: AnswerEvidence;
+}
+
+export interface AnswerEvidence {
+  /** Same as price_type. */
+  type: string;
+  /** Short name of the kind of evidence, e.g. "Recorded sale prices". */
+  label: string;
+  /** One sentence on what this kind of evidence does and does not establish. */
+  meaning: string;
+}
+
+/** What each kind of price is, and what it does and does not establish. One place, used by every answer. */
+export const EVIDENCE_KINDS: Record<string, { label: string; meaning: string }> = {
+  transaction: {
+    label: "Recorded sale prices",
+    meaning: "Prices recorded in official records of completed sales: they show what others paid, not what a particular item is worth or what is on offer now.",
+  },
+  official_statistic: {
+    label: "Official published average",
+    meaning: "One average or median that a statistics office or regulator publishes for a reference period: it describes a group, not a distribution, and says nothing about any single price.",
+  },
+  posted_pump_price: {
+    label: "Posted shelf or pump price",
+    meaning: "The price a seller displays (for example at a pump or on a shelf): it is what is asked at the time, not a record of what each customer paid.",
+  },
+  posted_price: {
+    label: "Posted shelf or pump price",
+    meaning: "The price a seller displays (for example at a pump or on a shelf): it is what is asked at the time, not a record of what each customer paid.",
+  },
+  contract_price: {
+    label: "Contract award value",
+    meaning: "The value of a contract awarded under public procurement rules: it shows what a buyer agreed to pay for that contract, not a price list for the same goods or services.",
+  },
+  reimbursement_price: {
+    label: "Regulated reimbursement price",
+    meaning: "A price set or reimbursed by a regulator or health system: it is what that scheme pays, not necessarily what a consumer pays in a shop.",
+  },
+};
+
+export function evidenceFor(priceType: string, measure?: string): AnswerEvidence {
+  const k = EVIDENCE_KINDS[priceType] ?? {
+    label: "Published price",
+    meaning: "A price published by the official source: check price_type and the method before relying on it.",
+  };
+  const label = priceType === "official_statistic" && measure === "median" ? "Official published median" : k.label;
+  return { type: priceType, label, meaning: k.meaning };
+}
+
+/** The query in a fixed form, so the same question always gives the same answer_id: keys sorted, text trimmed, lower-cased and
+ *  with inner spaces collapsed, empty values dropped. */
+export function normaliseQuery(query: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const k of Object.keys(query).sort()) {
+    const v = query[k];
+    if (v === undefined || v === null) continue;
+    if (typeof v === "string") {
+      const t = v.trim().replace(/\s+/g, " ").toLowerCase();
+      if (t) out[k] = t;
+    } else out[k] = v;
+  }
+  return out;
+}
+
+export function answerIdFor(sourceId: string, query: Record<string, unknown>, period: { from: string | null; to: string | null }, methodVersion: string): string {
+  const basis = JSON.stringify([sourceId, normaliseQuery(query), period.from ?? null, period.to ?? null, methodVersion]);
+  return "ans_" + createHash("sha256").update(basis).digest("hex").slice(0, 20);
+}
+
+/** Add the audit-trail fields to an answer. Central: every builder, and the stale-if-error copy, goes through here.
+ *  Only adds fields; nothing that was already in the answer changes. */
+export function withAudit<T extends PriceAnswer>(answer: T, src: SourceInfo, retrievedAt: string = new Date().toISOString()): T {
+  const methodVersion = src.method_version ?? "1";
+  return {
+    ...answer,
+    answer_id: answerIdFor(src.id, answer.query, answer.period, methodVersion),
+    method_version: methodVersion,
+    retrieved_at: retrievedAt,
+    evidence: evidenceFor(src.price_type, answer.statistic?.measure),
+  };
 }
 
 export const NOTICE = "Information, not a valuation or offer. Ranges describe past recorded prices.";
@@ -91,7 +180,7 @@ export function buildAnswer(opts: {
       ? `No matching records found in ${src.name} (${src.publisher}) for this query.`
       : `Only ${n} matching record(s) in ${src.name}; at least ${MIN_PUBLISH} are needed before we publish a range.`;
 
-  return {
+  return withAudit({
     query: opts.query,
     status,
     price: enough
@@ -118,7 +207,7 @@ export function buildAnswer(opts: {
     summary: summaryText,
     notice: NOTICE,
     ...(opts.extra ? { extra: opts.extra } : {}),
-  };
+  }, src);
 }
 
 /**
@@ -151,7 +240,7 @@ export function buildStatisticAnswer(opts: {
   const value = ok ? (opts.value as number) : null;
   const statistic: NonNullable<PriceAnswer["statistic"]> = { measure: opts.measure, reference_period: opts.reference_period };
   if (opts.note) statistic.note = opts.note;
-  return {
+  return withAudit({
     query: opts.query,
     status: ok ? "ok" : "no_matches",
     price:
@@ -183,7 +272,7 @@ export function buildStatisticAnswer(opts: {
         : `No matching official statistic found in ${src.name} (${src.publisher}) for this query.`,
     notice: NOTICE,
     ...(opts.extra ? { extra: opts.extra } : {}),
-  };
+  }, src);
 }
 
 export function fmtMoney(v: number, currency: string): string {
