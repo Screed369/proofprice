@@ -1,0 +1,30 @@
+URL: https://data.cityofchicago.org/resource/4ijn-s7e5.json?%24select=results%2C%20count(*)%20as%20n&%24group=results&%24order=n%20DESC&%24limit=3
+Fetched: 2026-10-14T13:20:35Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 112
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 13:20:34 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC43MTE2XzE0NzRfMTY5MDkxNlJodXRjQ0g0d0l5ZVFweURtZmJ6dVdZbWU0--gzitT6vAaMgN0qpwUQpRMUSCfCJkOt---gzip"
+X-SODA2-Fields: ["results","n"]
+X-SODA2-Types: ["text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 14 Oct 2026 09:17:56 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 14 Oct 2026 09:17:56 GMT
+Last-Modified: Wed, 14 Oct 2026 09:17:56 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 5ebb2f8e73778b2157d7972a2cf1d88d
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+[{"results":"Pass","n":"164093"}
+,{"results":"Fail","n":"61050"}
+,{"results":"Pass w/ Conditions","n":"46994"}]
