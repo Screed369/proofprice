@@ -1,0 +1,24 @@
+URL: https://data.gov.ie/api/3/action/package_search?q=creche&rows=50&fl=name,title,organization
+Fetched: 2026-10-14T17:27:29Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 223
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx/1.30.4
+date: Wed, 14 Oct 2026 17:27:29 GMT
+content-type: application/json;charset=utf-8
+content-length: 223
+cache-control: public, max-age=0, must-revalidate
+x-cached: MISS
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000; includeSubDomains
+content-security-policy: frame-ancestors 'self' https://data.gov.ie
+access-control-allow-origin: https://superset.data.gov.ie
+access-control-allow-headers: x-csrftoken
+access-control-allow-headers: content-type
+access-control-allow-credentials: true
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{"help": "https://data.gov.ie/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 0, "facets": {}, "results": [], "sort": "featured desc,score desc,metadata_created desc", "search_facets": {}}}
