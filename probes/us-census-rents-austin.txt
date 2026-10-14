@@ -1,0 +1,112 @@
+URL: https://api.census.gov/data/2024/acs/acs5?get=NAME,B25064_001E,B25064_001M&for=place:05000&in=state:48
+Fetched: 2026-10-14T15:42:17Z from GitHub Actions
+Status, type, bytes: 200 text/html 8531
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 302 
+Set-Cookie: originalReferer=http%3A%2F%2Fapi.census.gov%2Fdata%2F2024%2Facs%2Facs5%3Fget%3DNAME%2CB25064_001E%2CB25064_001M%26for%3Dplace%3A05000%26in%3Dstate%3A48; Path=/; Secure
+X-DataWebAPI-KeyError: 1
+Location: https://api.census.gov/data/missing_key.html
+Content-Length: 0
+Date: Wed, 14 Oct 2026 15:42:17 GMT
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS010383f0=01283c52a4b7f61709f3a00c5b6f66679cecd615d5a955a221d914c1a9fb13c7b691a1d6fb9848864b83311419f45784ccee7c7d45; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+
+HTTP/1.1 200 
+Cache-Control: private
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,OPTIONS
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Referrer-Policy: same-origin
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content
+X-Content-Type-Options: nosniff
+Accept-Ranges: bytes
+ETag: W/"8531-1785156040730"
+Last-Modified: Mon, 27 Jul 2026 12:40:40 GMT
+Content-Type: text/html
+Content-Length: 8531
+Date: Wed, 14 Oct 2026 15:42:17 GMT
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS010383f0=01283c52a4379a9e23f0fbeb11f5cb892bbdae856b5e785d4843365835252e8205290217b4cfeefd2136aea56898f017401421e312; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text
+=== FIRST 5000 BYTES
+<html style="font-size: 14px;">
+
+<head>
+    <title>Missing Key</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <script type="text/javascript" src="assets/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
+
+            // Get the referrer from the cookie
+            document.getElementById('text-field').value = decodeURIComponent(getCookie('originalReferer'));
+            
+            $(".menu-activator").click(function () {
+                $(".gov-menu").toggle()
+                $(".chevron").toggleClass('rotate')
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <div data-v-8adc6fed="" data-v-2f72e816="" class="gov-banner noprint">
+            <div data-v-8adc6fed="" class="aqua-layout horizontal align-start justify-start banner-header">
+                <img data-v-8adc6fed=""
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII="
+                    alt="U.S flag" class="usflag" role="img" aria-hidden="true">
+                <span data-v-8adc6fed="">
+                    <div data-v-8adc6fed="" class="aqua-layout horizontal" tabindex="0">
+                        <div data-v-8adc6fed="" tabindex="0"
+                            aria-label="An official website of the United States government">
+                            An official website of the United States government
+                        </div>
+                        <div data-v-8adc6fed="" class="menu-activator"
+                            aria-label="Here's how you know. Press enter for more information." tabindex="0">
+                            <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start"> Here&rsquo;s how you
+                                know <div data-v-8adc6fed="" class="chevron"><img data-v-8adc6fed="" class="aqua-icon"
+                                        src="assets/images/chevron-down.svg"
+                                        style="width: 0.75rem; height: 0.75rem; max-height: 0.75rem; transition: all 500ms ease 0s; filter: invert(30%) sepia(8%) saturate(3837%) hue-rotate(171deg) brightness(99%) contrast(89%);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start gov-menu" style="display: none;">
+                <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start menu-paragraph"><img
+                        data-v-8adc6fed="" class="menu-svg" src="assets/images/icon-gov-building.svg" role="img"
+                        alt="government building image" aria-hidden="true">
+                    <div data-v-8adc6fed="" tabindex="0" aria-label="Official websites use .gov. A .gov website belongs to an official government
+                organization in the United States."><strong data-v-8adc6fed=""> Official websites use .gov </strong>
+                        <br data-v-8adc6fed=""> A <strong data-v-8adc6fed="">.gov</strong> website belongs to an
+                        official government organization in the United States.
+                    </div>
+                </div>
+                <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start menu-paragraph"><img
+                        data-v-8adc6fed="" class="menu-svg" src="assets/images/icon-lock.svg" role="img"
+                        alt="lock image" aria-hidden="true">
+                    <div data-v-8adc6fed="" tabindex="0" aria-label="Secure .gov websites use HTTPS. A lock or https:// means you’ve safely connected to the
+                .gov website. Share sensitive information only on official, secure
+                websites."><strong data-v-8adc6fed=""> Secure .gov websites use HTTPS </strong>
+                        <br data-v-8adc6fed=""> A <strong data-v-8adc6fed="">lock</strong> ( <img data-v-8adc6fed=""
+                            class="menu-lock" src="assets/images/lock.svg" role="img" alt="lock image"
+                            aria-hidden="true"> ) or <strong data-v-8adc6fed="">https://</strong> means you&lsquo;ve
+                        safely connected to the .gov website. Share sensitive information only on official, secure
+                        websites.
+                    </div>
+                </div>
+            </div>
+        </div>
+      
