@@ -4,7 +4,7 @@
 import { z } from "zod";
 import type { CategoryPlugin } from "./plugin";
 import { CATEGORIES, countriesFor, countryHelp, exampleUrls, historySources, paramSchemas, sourcesFor, toolDescription } from "./registry";
-import { CHECK_REST, CHECK_TOOL } from "./check";
+import { CHECK_REST, CHECK_TOOL, checkExamplePath } from "./check";
 import { checkResultSchema, coverageSchema, errorSchema, historyAnswerSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { joinAnd } from "./text";
@@ -226,8 +226,7 @@ export const CITING_RULES = [
 
 export function buildLlmsTxt(baseUrl: string): string {
   const tools = CATEGORIES.map((c) => c.tool).concat(CHECK_TOOL, "pricepaid_coverage").join(", ");
-  const checkEx = exampleUrls()[0];
-  const checkExample = `${baseUrl}${CHECK_REST}?category=${checkEx?.category ?? "rent"}&${new URLSearchParams(checkEx?.path.split("?")[1] ?? "country=IE")}&price=1000&unit=${encodeURIComponent("per month")}`;
+  const checkExample = `${baseUrl}${checkExamplePath()}`;
   const endpoints = CATEGORIES.map((c) => {
     const ex = exampleUrls().find((e) => e.category === c.id);
     return `- GET ${baseUrl}${ex?.path ?? `/api/v1/${c.restPath}`} — ${c.title.toLowerCase()} (${joinAnd(countriesFor(c.id))})`;

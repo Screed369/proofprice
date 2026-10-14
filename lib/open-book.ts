@@ -2,7 +2,7 @@
 // Pure functions generated from the plug-in registry, so a new source appears here automatically.
 // Used by app/robots.ts, app/sitemap.ts, app/llms-full.txt, app/connect and server.json checks (tests/open-book.test.ts).
 
-import { CHECK_REST, CHECK_TOOL } from "./check";
+import { CHECK_REST, CHECK_TOOL, checkExamplePath } from "./check";
 import { ANSWER_FORMAT, CITING_RULES, jsonSchemaOf } from "./openapi";
 import {
   CATEGORIES,
@@ -251,7 +251,7 @@ Verdicts:
   - about_average / above_average / below_average: the evidence is one official average or median, not a distribution; within ±5% of it is about_average, and position says the % difference from the published figure.
   - cannot_judge: currency or unit differs, fewer than ${MIN_PUBLISH} records, or nothing matched; reasons and missing say why.
 Also returned: reasons (posted prices are not paid prices, old periods, assumptions made), missing, a one-sentence summary, and the full evidence answer embedded as "answer" (with its audit-trail fields). Deterministic: no benchmark is ever invented.
-Example: GET ${baseUrl}${CHECK_REST}?category=${exampleUrls()[0]?.category ?? "rent"}&${new URLSearchParams(exampleUrls()[0]?.path.split("?")[1] ?? "country=IE")}&price=1000&unit=${encodeURIComponent("per month")}
+Example: GET ${baseUrl}${checkExamplePath()}
 `);
 
   out.push(`### pricepaid_coverage  —  What price data is covered

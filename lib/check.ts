@@ -9,7 +9,7 @@ import type { PriceAnswer } from "./answer";
 import { normaliseCountry } from "./countries";
 import { InputError } from "./http";
 import type { CategoryPlugin, HandleContext, Params } from "./plugin";
-import { pickSource, toolShape, paramSchemas } from "./registry";
+import { exampleUrls, pickSource, toolShape, paramSchemas } from "./registry";
 import { joinAnd } from "./text";
 
 export type Verdict =
@@ -316,7 +316,7 @@ export function judge(answer: PriceAnswer, input: JudgeInput, today: Date = new 
     position = { basis: "average", text, vs_median_percent: r1(d), reference_value: ref };
     summary =
       `${priceText} is ${near ? `within ${ABOUT_AVERAGE_PERCENT}% of ${refPhrase} (${d === 0 ? "equal to it" : rel(d) + " it"})` : `${rel(d)} ${refPhrase}`} ` +
-      `for ${scope} in ${period}, published by ${answer.source.publisher} (an official ${measure}, not a range).`;
+      `for ${scope} in ${period} (an official ${measure}, not a range).`;
     reasons.push(
       `This compares the price with one published ${measure}, not with a distribution of individual prices. Within ${ABOUT_AVERAGE_PERCENT}% of it counts as "about_average".`,
     );
@@ -395,6 +395,14 @@ export async function runCheck(raw: Record<string, unknown>, deps: CheckDeps, ct
     },
     today,
   );
+}
+
+/** A working example of GET /api/v1/check, built from the registry's first example (with a made-up price in the right order of magnitude). */
+export function checkExamplePath(): string {
+  const ex = exampleUrls().find((e) => e.category === "rent") ?? exampleUrls().find((e) => e.category === "fuel") ?? exampleUrls()[0];
+  const illustrative: Record<string, number> = { rent: 1500, fuel: 1.8, "home-sales": 350000 };
+  if (!ex) return `${CHECK_REST}?category=rent&country=IE&town=Dublin&price=2400`;
+  return `${CHECK_REST}?category=${ex.category}&${new URLSearchParams(ex.path.split("?")[1] ?? "")}&price=${illustrative[ex.category] ?? 100}`;
 }
 
 // ---------- the MCP input shape ----------

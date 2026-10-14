@@ -90,7 +90,7 @@ test("official statistic: compared with the published average, not a distributio
   assert.equal(r.position!.basis, "average");
   assert.equal(r.position!.vs_median_percent, 10.9);
   assert.equal(r.position!.text, "11% above the official average");
-  assert.match(r.summary, /^€2,400 per month is 11% above the official average of €2,165 per month for Dublin in 2026-Q2/);
+  assert.match(r.summary, /^€2,400 per month is 11% above the official average of €2,165 per month for Dublin in 2026-Q2 \(an official average, not a range\)\.$/);
   assert.match(r.summary, /\(an official average, not a range\)\.$/);
   assert.ok(r.reasons.some((x) => /not with a distribution of individual prices/.test(x)));
 
