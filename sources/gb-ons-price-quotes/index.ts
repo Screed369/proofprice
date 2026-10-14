@@ -146,6 +146,48 @@ async function explore(item: string, arg: string) {
     const text = await res.text();
     return { status: res.status, bytes: text.length, text: text.slice(0, 6000) };
   }
+  if (item === "rows") {
+    // arg = "<ID_DESC regex>~<z|all>" : compact pipe-separated rows of the data tabs
+    const [re, scope] = arg.split("~");
+    const u = "https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/adhocs/3607consumerpricespriceleveldistributionsmicrodataaugust2026/consumerpricespriceleveldistributionsmicrodata202608.xlsx";
+    const res = await fetch(u, { headers: UA });
+    const buf = Buffer.from(await res.arrayBuffer());
+    const sheets = readWorkbook(buf);
+    const rx = new RegExp(re || ".", "i");
+    const out: string[] = [];
+    for (let i = 4; i < sheets.length; i++) {
+      const s = sheets[i];
+      const hi = s.rows.findIndex((r) => r[0] === "INDEX_DATE");
+      if (hi < 0) continue;
+      for (const r of s.rows.slice(hi + 1)) {
+        if (!r.length || r[0] === null || r[0] === undefined) continue;
+        if (!rx.test(String(r[1]))) continue;
+        if (scope !== "all" && r[7] !== "[z]") continue;
+        out.push([s.name, ...r.slice(0, 18)].join("|"));
+      }
+    }
+    return { count: out.length, rows: out };
+  }
+  if (item === "suppressed") {
+    // rows whose MEDIAN is not a number
+    const u = "https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/adhocs/3607consumerpricespriceleveldistributionsmicrodataaugust2026/consumerpricespriceleveldistributionsmicrodata202608.xlsx";
+    const res = await fetch(u, { headers: UA });
+    const buf = Buffer.from(await res.arrayBuffer());
+    const sheets = readWorkbook(buf);
+    const found: string[] = [];
+    let total = 0;
+    for (let i = 4; i < sheets.length; i++) {
+      const s = sheets[i];
+      const hi = s.rows.findIndex((r) => r[0] === "INDEX_DATE");
+      if (hi < 0) continue;
+      for (const r of s.rows.slice(hi + 1)) {
+        if (!r.length || r[0] === null || r[0] === undefined) continue;
+        total++;
+        if (typeof r[10] !== "number") { if (found.length < 6) found.push([s.name, ...r.slice(0, 18)].join("|")); }
+      }
+    }
+    return { total, bytes: buf.length, found };
+  }
   return { hint: "item must be xlsx | sheet | quotes" };
 }
 
