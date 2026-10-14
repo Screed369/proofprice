@@ -28,6 +28,14 @@ export async function GET(req: Request) {
   if (sheetQ === null) return Response.json({ status: res.status, total: buf.length, parse_ms: ms, sheets: list });
   const sh = sheets.find((s, i) => s.name === sheetQ || String(i) === sheetQ);
   if (!sh) return Response.json({ error: "no such sheet", sheets: list });
+  const ranges = q.get("ranges");
+  if (ranges) {
+    const out = ranges.split(",").map((rg) => {
+      const [a, b] = rg.split("-").map(Number);
+      return sh.rows.slice(a, b).map((r, k) => [a + k, ...r.slice(0, cols)]);
+    });
+    return Response.json({ sheet: sh.name, rows: sh.rows.length, out });
+  }
   const tail = Number(q.get("tail") ?? 0);
   const rows = sh.rows.slice(from, to).map((r, k) => [from + k, ...r.slice(0, cols)]);
   const tailRows = tail ? sh.rows.slice(-tail).map((r, k) => [sh.rows.length - tail + k, ...r.slice(0, cols)]) : [];
