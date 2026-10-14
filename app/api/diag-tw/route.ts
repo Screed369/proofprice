@@ -71,6 +71,33 @@ export async function GET(req: Request) {
       }
       return Response.json({ task, ms: Date.now() - t0, releases: perRelease, kept, stats, rssMB: Math.round(memMax / 1e6), kinds: top(kinds), services: top(services), phrases: top(phrases, 70) });
     }
+    if (task === "uses") {
+      const all = await fetchReleases();
+      const rel = selectReleases(all, "sales", "2026-01-01").find((r) => r.id === (q.get("id") ?? "115S3"))!;
+      const buf = await download(rel.url);
+      const out: Record<string, unknown> = {};
+      for (const kind of ["a", "c"] as const) {
+        const uses = new Map<string, number>();
+        const types = new Map<string, number>();
+        const objs = new Map<string, number>();
+        const useByType = new Map<string, number>();
+        const svcByUse = new Map<string, number>();
+        for (const f of cityFiles(listZip(buf), kind)) {
+          const table = parseTable(decodeCsv(readZipEntry(buf, f.entry)));
+          const iU = table.col("主要用途"), iT = table.col("建物型態"), iO = table.col("交易標的"), iS = table.col("租賃住宅服務"), iN = table.col("備註");
+          for (const r of table.rows) {
+            const pre = kind === "a" && (r[iN] ?? "").includes("預售屋");
+            bump(uses, (pre ? "[presale] " : "") + (r[iU] ?? "").slice(0, 20));
+            bump(types, (r[iT] ?? "").slice(0, 14));
+            bump(objs, (r[iO] ?? "").slice(0, 20));
+            bump(useByType, `${(r[iU] ?? "").slice(0, 10)} | ${(r[iT] ?? "").slice(0, 6)}`);
+            if (iS >= 0) bump(svcByUse, `${(r[iU] ?? "").slice(0, 10)} | ${(r[iS] ?? "").slice(0, 10)}`);
+          }
+        }
+        out[kind] = { uses: top(uses, 25), types: top(types, 20), objs: top(objs, 12), useByType: top(useByType, 30), svcByUse: top(svcByUse, 20) };
+      }
+      return Response.json({ id: rel.id, ...out });
+    }
     if (task === "harvest-sales" || task === "harvest-rents") {
       const deps = { fetchReleases, download, stored: () => null, now: () => new Date() };
       const res = task === "harvest-sales" ? await twHomeSalesHarvest(deps) : await twRentsHarvest(deps);
