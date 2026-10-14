@@ -1,0 +1,108 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0008074&lang=EN
+Fetched: 2026-10-14T15:48:59Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 84640
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Wed, 14 Oct 2026 15:48:58 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=rk968gcq4I9pwz4qSU6iTK8nZOUmmjyDV21ra5cp.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+[ {
+  "IndicadorCod" : "0008074",
+  "IndicadorNome" : "Crime rate (‰) by Geographic localization (NUTS - 2013) and Category of crime; Annual - Directorate General for Justice Policy",
+  "Periodic" : "Annual",
+  "PrimeiroPeriodo" : "2011",
+  "UltimoPeriodo" : "2022",
+  "UnidadeMedida" : "Permillage (‰)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "1",
+  "Nota" : "From 2017 onwards statistical data on registered crimes by the Customs Tax Authority were collected based on a new webservice that replaced the previous collection procedure. Data on crimes against pet animals is the result of the entry into force of Law no. 69/2014 of August 29. From 2013 onwards please notice the changes introduced by the Law No. 56/2012, November 8th, administrative reorganization of Lisbon, which redraws the parishes map of Lisbon municipality, the Law No. 61/2012, December 5th, fixing the boundaries of the municipalities of Faro and Loulé, which redraws the parishes of Montenegro, São Pedro and Santa Bárbara de Nexe boundaries, in the municipality of Faro as well as the parish of Almancil boundaries, in the municipality of Loulé and the Law No. 11-A/2018, January 28th, administrative reorganization of the parishes boundaries, that creates, from 2013, September 30th, the parish União das Freguesias de Faro, by aggregation of the parish of Montenegro, São Pedro and Sé, changes the bo undaries of Lisbon and Loures municipalities, by creating the new parish of Parque das Nações in Lisbon and redraws the municipalities of Santarém and Golegã by moving the parish of Pombalinho from Santarém to Golegã.",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-06-30",
+  "DataExtracao" : "2026-10-14T16:48:58.426+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period",
+      "versao" : "XXXXX",
+      "nota_dsg" : "Data revised for the period 2021 to 2022, following the revision of the Annual Estimates of Resident Population, published by Statistics Portugal on 22 June 2026. Total values comprise data from Criminal Police, Public Security Police, National Republican Guard, Customs Tax Authority, Municipal Police, Maritime Police, Military Judicial Police, Immigration and Borders Service, Economic and Food Safety Authority and include crimes with unknown location or not classified, which were registered by entities operating nationwide - Criminal Police, Economic and Food Safety Authority, Immigration and Borders Service, Customs Tax Authority, District Tax Directions, Anti-fraud Service of the Customs Directorate-General, Public Security Police, National Direction and National Police Unit of the Public Security Police, National Republican Guard, Territorial Commands, National Road Traffic Unit, Safety Unit and State Honors, Intervention Unit, Coastal Control Unit and Fiscal Action Unit of the National Republican Guard."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (NUTS - 2013)",
+      "versao" : "03505",
+      "nota_dsg" : "From January 1st, 2015 came into force a new version of NUTS (NUTS 2013). At NUTS II level was just a name change in \"Lisboa\" which became known as \"Área Metropolitana de Lisboa\"."
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Category of crime",
+      "versao" : "00902"
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S7A2011" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2011",
+        "categ_cod" : "S7A2011",
+        "categ_dsg" : "2011",
+        "categ_ord" : "20110101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2012" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2012",
+        "categ_cod" : "S7A2012",
+        "categ_dsg" : "2012",
+        "categ_ord" : "20120101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2013" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2013",
+        "categ_cod" : "S7A2013",
+        "categ_dsg" : "2013",
+        "categ_ord" : "20130101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2014" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2014",
+        "categ_cod" : "S7A2014",
+        "categ_dsg" : "2014",
+        "categ_ord" : "20140101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2015" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2015",
+        "categ_cod" : "S7A2015",
+        "categ_dsg" : "2015",
+        "categ_ord" : "20150101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2016" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2016",
+        "categ_cod" : "S7A2016",
+        "categ_dsg" : "2016",
+        "categ_ord" : "20160101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2017" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2017",
+        "categ_cod" : "S7A2017",
+        "categ_dsg" : "2017",
+        "categ_ord" : "20170101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2018" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2018",
