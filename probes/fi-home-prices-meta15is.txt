@@ -1,0 +1,25 @@
+URL: https://pxdata.stat.fi/PxWeb/api/v1/en/StatFin/ashi/15is.px
+Fetched: 2026-10-14T15:47:45Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 3678
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private,no-cache, must-revalidate Pragma: no-cache Expires: 0
+Content-Type: application/json; charset=utf-8
+Server: 
+Access-Control-Allow-Origin: *
+Set-Cookie: rxid=bd016bc9-6dda-41ad-b035-9eca504a484d; path=/
+X-Powered-By: ASP.NET
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.matomo.cloud https://stat.matomo.cloud 
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: same-origin
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Date: Wed, 14 Oct 2026 15:47:45 GMT
+Content-Length: 3678
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+{"title":"Price index, prices per square metre and transactions of old dwellings in housing companies (2025=100), quarterly by Region, Building type, Number of rooms, Quarter and Information","variables":[{"code":"alue_43_20260625","text":"Region","values":["SSS","pks","msu","kas","muu","MK01","091","091-1","091-2","091-3","091-4","049","049-1","049-2","049-3","092","092-1","092-2","092-3","keh","638","106","186","245","MK02","853","853-1","853-2","853-3","MK04","609","609-1","609-2","684","MK05","109","109-1","109-2","694","MK06","837","837-1","837-2","837-3","MK07","398","398-1","398-2","MK08","285","285-1","285-2","286","MK09","405","405-1","405-2","MK10","491","MK11","297","297-1","297-2","MK12","167","167-1","167-2","MK13","179","179-1","179-2","MK14","743","MK15","905","905-1","905-2","MK16","272","MK17","564","564-1","564-2","MK18","205","MK19","698"],"valueTexts":["WHOLE COUNTRY","Greater Helsinki","Whole country excluding Greater Helsinki","Major cities","Whole country excluding major cities","MK01 Uusimaa","Helsinki","Helsinki 1","Helsinki 2","Helsinki 3","Helsinki 4","Espoo-Kauniainen","Espoo-Kauniainen 1","Espoo-Kauniainen 2","Espoo-Kauniainen 3","Vantaa","Vantaa 1","Vantaa 2","Vantaa 3","Satellite municipalities","Porvoo","Hyvinkää","Järvenpää","Kerava","MK02 Varsinais-Suomi","Turku","Turku 1","Turku 2","Turku 3","MK04 Satakunta","Pori","Pori 1","Pori 2","Rauma","MK05 Kanta-Häme","Hämeenlinna","Hämeenlinna 1","Hämeenlinna 2","Riihimäki","MK06 Pirkanmaa","Tampere","Tampere 1","Tampere 2","Tampere 3","MK07 Päijät-Häme","Lahti","Lahti 1","Lahti 2","MK08 Kymenlaakso","Kotka","Kotka 1","Kotka 2","Kouvola","MK09 South Karelia","Lappeenranta","Lappeenranta 1","Lappeenranta 2","MK10 Etelä-Savo","Mikkeli","MK11 Pohjois-Savo","Kuopio","Kuopio 1","Kuopio 2","MK12 Northern Karelia","Joensuu","Joensuu 1","Joensuu 2","MK13 Central Finland","Jyväskylä","Jyväskylä 1","Jyväskylä 2","MK14 Southern Ostrobothnia","Seinäjoki","MK15 Ostrobothnia","Vaasa","Vaasa 1","Vaasa 2","MK16 Central Ostrobothnia","Kokkola","MK17 Northern Ostrobothnia","Oulu","Oulu 1","Oulu 2","MK18 Kainuu","Kajaani","MK19 Lapland","Rovaniemi"],"elimination":true},{"code":"talotyyppi_5_20111209","text":"Building type","values":["0","1","3"],"valueTexts":["Building types total","Terraced houses","Blocks of flats"],"elimination":true},{"code":"huoneluku_1_20111212","text":"Number of rooms","values":["00","01","02","03"],"valueTexts":["Total","One-room flat","Two-room flat","Three-room flat+"],"elimination":true},{"code":"timeperiod_q","text":"Quarter","values":["2025Q1","2025Q2","2025Q3","2025Q4","2026Q1","2026Q2"],"valueTexts":["2025Q1","2025Q2","2025Q3","2025Q4","2026Q1*","2026Q2*"],"time":true},{"code":"contentscode","text":"Information","values":["ashivq_indeksi_2025","ashivq_indeksi_nmuutos_2025","ashivq_indeksi_vmuutos_2025","ashivq_realindeksi_2025","ashivq_realindeksi_nmuutos_2025","ashivq_realindeksi_vmuutos_2025","ashivq_keskineliohinta","ashivq_kauppamaara_vvero"],"valueTexts":["Price index of old dwellings in housing companies (2025=100)","Quarterly change of price index (2025=100) of old dwellings in housing companies, %","Annual change of price index (2025=100) of old dwellings in housing companies, %","Real price index of old dwellings in housing companies (2025=100)","Quarterly change of real price index (2025=100) of old dwellings in housing companies, %","Annual change of real price index (2025=100) of old dwellings in housing companies, %","Average price per square metre of old dwellings in housing companies (eur/m2)","Number of transactions of old dwellings in housing companies from asset transfer tax data"]}]}
