@@ -1,0 +1,31 @@
+URL: https://data-api.health.gov.au/pbs/api/v3/schedules
+Fetched: 2026-10-14T15:54:26Z from GitHub Actions
+Status, type, bytes: 401 application/json 514
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 401 
+content-length: 514
+content-type: application/json
+access-control-allow-origin: *
+request-context: appId=cid-v1:97d4d11f-ce51-4c25-97dc-1dd7f616fd1f
+date: Wed, 14 Oct 2026 15:54:25 GMT
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{
+  "errors": [
+    {
+      "detail": "Access denied due to missing subscription key. Make sure to include subscription key when making requests to this API",
+      "code": "401",
+      "timestamp": "2026-10-15T02:54:26.568+11:00",
+      "source": [
+        {
+          "target": "header",
+          "header": "Subscription-Key",
+          "example": "Provide Subscription Key. You can obtain your subscription key by logging into https://data-api-portal.health.gov.au"
+        }
+      ]
+    }
+  ]
+}
