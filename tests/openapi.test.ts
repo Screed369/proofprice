@@ -50,7 +50,7 @@ test("openapi and llms.txt list the energy endpoint with its parameters and exam
   assert.match(energy.description, /^Use this when/);
   const params = energy.parameters;
   const country = params.find((p: any) => p.name === "country");
-  assert.equal(country.schema.enum.length, 29);
+  assert.ok(country.schema.enum.length >= 29); // EU27 + NO + IS, plus other sources (e.g. US EIA)
   for (const c of ["GR", "IE", "DE", "NO", "IS"]) assert.ok(country.schema.enum.includes(c), c);
   assert.ok(params.find((p: any) => p.name === "energy" && p.required));
   assert.deepEqual(params.find((p: any) => p.name === "energy").schema.enum, ["electricity", "gas"]);
