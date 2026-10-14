@@ -158,7 +158,7 @@ test("fi-home-prices: periods and the old-figure caveat", () => {
   assert.match(ageNote("2024-12-31", NOW)!, /old: its period ended about 22 months ago/);
   assert.equal(
     changeSentence({ previous: { reference_period: "2026-Q1", change_percent: 0 }, year_earlier: { reference_period: "2025-Q2", change_percent: 2.5 } }),
-    " Statistics Finland's price index for these dwellings (a quality-adjusted measure, not this average) is unchanged from in the first quarter of 2026 and 2.5% higher than a year earlier (the second quarter of 2025).",
+    " Statistics Finland's price index for these dwellings (a quality-adjusted measure, not this average) is unchanged from the first quarter of 2026 and 2.5% higher than a year earlier (the second quarter of 2025).",
   );
   assert.equal(changeSentence(null), "");
   assert.equal(roomsPhrase("Blocks of flats, two-room flat"), "two-room flats");
@@ -301,7 +301,7 @@ test("fi-home-prices: the postal code answer says which room size it is and list
   assert.equal(a.price!.unit, "per m²");
   assert.equal(a.sample_size, 35);
   assert.deepEqual(a.query, { country: "FI", postcode: "00100", property_type: "flat" });
-  assert.match(a.summary, /In postal code 00100 \(Helsinki keskusta - Etu-Töölö \(Helsinki\)\) the average price per m² of two-room flats in blocks of flats was €7,167 in the first quarter of 2026 \(provisional\), from 35 transactions\./);
+  assert.match(a.summary, /In postal code area 00100 Helsinki keskusta - Etu-Töölö \(Helsinki\) the average price per m² of two-room flats in blocks of flats was €7,167 in the first quarter of 2026 \(provisional\), from 35 transactions\./);
   assert.match(a.summary, /Other sizes: one-room flats €7,735 \(21 transactions\); flats with three or more rooms €6,533 \(19 transactions\)\./);
   assert.doesNotMatch(a.summary, /price index/); // no change figure exists for postal codes
   assert.match(a.statistic!.note!, /by number of rooms, with no total/);

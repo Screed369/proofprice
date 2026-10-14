@@ -499,7 +499,7 @@ export function readYearly(
 // ---------- the answer (pure) ----------
 
 function oneChange(percent: number, label: string): string {
-  if (percent === 0) return `unchanged from ${label}`;
+  if (percent === 0) return `unchanged from ${label.replace(/^in /, "")}`;
   return `${Math.abs(percent)}% ${percent > 0 ? "higher" : "lower"} than ${label}`;
 }
 
@@ -541,7 +541,10 @@ export function roomsPhrase(label: string): string {
 }
 
 function whereOf(q: AnswerInput, f?: Figure): string {
-  if (q.postcode) return `postal code ${q.postcode}${f ? ` (${f.areaLabel.replace(/^\d{5}\s*/, "")})` : ""}`;
+  if (q.postcode) {
+    const name = f ? f.areaLabel.replace(/^\d{5}\s*/, "").trim() : "";
+    return name ? `postal code area ${q.postcode} ${name}` : `postal code ${q.postcode}`; // the name already ends in "(Helsinki)", so no extra brackets
+  }
   return q.place && q.place.level !== "country" ? q.place.short : "Finland";
 }
 

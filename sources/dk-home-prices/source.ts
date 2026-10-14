@@ -349,7 +349,7 @@ export function readDenmark(table: JsonStatTable, q: { place: Place; type: TypeK
 // ---------- the answer (pure) ----------
 
 function oneChange(c: Change, label: string): string {
-  if (c.change_percent === 0) return `unchanged from ${label}`;
+  if (c.change_percent === 0) return `unchanged from ${label.replace(/^in /, "")}`;
   return `${Math.abs(c.change_percent)}% ${c.change_percent > 0 ? "higher" : "lower"} than ${label}`;
 }
 

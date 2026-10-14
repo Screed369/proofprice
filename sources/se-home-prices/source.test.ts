@@ -108,6 +108,10 @@ test("se-home-prices: periods and changes", () => {
     changeSentence({ reference_period: "2026-Q1", value: 1, change_percent: -3.3 }, { reference_period: "2025-Q2", value: 1, change_percent: 0 }),
     " That is 3.3% lower than in the first quarter of 2026 and unchanged from a year earlier (the second quarter of 2025).",
   );
+  assert.equal(
+    changeSentence({ reference_period: "2024", value: 1, change_percent: 0 }, null),
+    " That is unchanged from 2024.", // not "unchanged from in 2024"
+  );
   assert.equal(ageNote("2025-12-31", NOW), null);
   assert.match(ageNote("2024-12-31", NOW)!, /old: its period ended about 22 months ago/);
 });
