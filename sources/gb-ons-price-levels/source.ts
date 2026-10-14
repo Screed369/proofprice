@@ -655,7 +655,7 @@ export async function gbOnsPriceLevels(input: GbQuery): Promise<PriceAnswer> {
   if (!item) throw new InputError("item is required: an everyday item such as 'eggs', 'milk' or 'butter'.");
   const { region, note } = resolveRegion(input.region);
   const day = readLatestDay(INFO.id);
-  if (!day) throw new SourceError("ProofPrice collects the ONS price level data daily; data appears after the next collection.");
+  if (!day) throw new SourceError("Not yet available: ProofPrice collects the ONS price level data daily; data appears after the next collection.");
   const held = indexDay(day);
   const m = matchItem(defsFor(held), item);
   if (!m.primary) return gbAnswer(null, null, [], input, held, region, note);

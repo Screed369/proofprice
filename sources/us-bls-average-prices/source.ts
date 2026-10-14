@@ -386,7 +386,7 @@ export async function usBlsPrices(input: UsQuery): Promise<PriceAnswer> {
   const m = matchItem(ITEMS, item);
   if (!m.primary) return usAnswer(null, null, [], input, note, area);
   const meta = readMeta(INFO.id);
-  if (!meta?.last_date) throw new SourceError("ProofPrice collects the BLS average prices daily; data appears after the next collection.");
+  if (!meta?.last_date) throw new SourceError("Not yet available: ProofPrice collects the BLS average prices daily; data appears after the next collection.");
   const reading = readUsReading(m.primary.code, area, meta.last_date);
   return usAnswer(reading, m.primary, m.related, input, note, area);
 }
