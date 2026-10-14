@@ -1,0 +1,80 @@
+URL: https://agridata.ec.europa.eu/extensions/API_Documentation/milk.html
+Fetched: 2026-10-14T14:14:17Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=utf-8 2456
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 14:14:17 GMT
+content-type: text/html;charset=utf-8
+set-cookie: X-Qlik-Session-v2-HTTP=a202d921-dc45-4dd5-9777-ee75246ffc6e; Path=/; HttpOnly; SameSite=Strict; Secure
+cache-control: private, must-revalidate, max-age=0
+expires: Mon, 01 Jan 0001 00:00:00 GMT
+last-modified: Thu, 21 May 2026 12:42:00 GMT
+accept-ranges: bytes
+etag: 639149641209384272
+x-ua-compatible: IE=edge
+access-control-allow-origin: https://agridata.ec.europa.eu
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000;includeSubDomains;Preload
+server: -
+
+=== FILE TYPE: HTML document, ASCII text
+=== FIRST 80000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Milk and dairy products</title>
+	<link id="bootstrapCSS" href="../CommonStyles/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../DataPortal/API_Documentation.css">
+</head>
+<body>
+<div class="sect1">
+	<div class="intro_section">
+		<div class="intro_desc">
+			<div>
+				<h2 id="resources-milk-dairy-prices" class="section_heading">Milk and dairy products</h2>
+				<div class="paragraph" style="line-height:1.5em">
+					Weekly prices of raw milk as well as eight representative dairy products per Member State and weighted averages over the Union.
+					More information can be found on the info tab of the portal&#8217;s <a href="https://agridata.ec.europa.eu/extensions/DashboardRawMilk/RawMilkPrices.html" style="color:#004494; text-decoration:none" target="_blank"><strong>raw milk prices</strong></a>
+					and <a href="https://agridata.ec.europa.eu/extensions/DashboardDairy/DairyPrices.html" style="color:#004494; text-decoration:none" target="_blank"><strong>dairy prices</strong></a> apps and
+					<a href="https://agridata.ec.europa.eu/extensions/DashboardDairy/DairyProduction.html"  style="color:#004494; text-decoration:none" target="_blank"><strong>dairy production</strong></a> app.
+					<br/><br/>
+					For dairy production, results are ordered in the following manner :
+					<ol>
+						<li>Year in reverse chronological order</li>
+						<li>Member State code in alphabetical order</li>
+						<li>Product in alphabetical order</li>
+					</ol>
+					The general sorting mechanism for other data can be found in the <i>API Guide</i> page.
+					<br/><br/>
+				</div>
+				<p class="paragraph">
+					The base url for API endpoints is <b><em>https://api.tech.ec.europa.eu/agrifood</em></b>.
+				</p>
+			</div>
+			<img src="../CommonImages/milk.png">
+		</div>
+	</div>
+
+	<div class="sectionbody">
+		<iframe
+				src="https://api.tech.ec.europa.eu/agrifood/swagger-ui/index.html?url=/agrifood/v3/api-docs/milk_and_dairy&defaultModelsExpandDepth=-1&defaultModelExpandDepth=100&validatorUrl=none"
+				id="swagger-iframe"
+				title="Swagger UI"
+				class="swagger_ui_container"
+		>
+		</iframe>
+	</div>
+</div>
+
+<div style="height:30px"></div>
+
+<script src="./swagger_ui_height_script.js"></script>
+</body>
+</html>
