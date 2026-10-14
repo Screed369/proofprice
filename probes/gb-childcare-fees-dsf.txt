@@ -1,0 +1,20 @@
+URL: https://content.explore-education-statistics.service.gov.uk/api/data-set-files?publicationId=79a08466-dace-4ff0-94b6-59c5528c9262&releaseVersionId=0b509b6d-f73f-4dee-2c54-08de07d61913&pageSize=100&page=1
+Fetched: 2026-10-14T17:34:45Z from GitHub Actions
+Status, type, bytes: 400 application/json; charset=utf-8 339
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+content-type: application/json; charset=utf-8
+date: Wed, 14 Oct 2026 17:34:44 GMT
+content-length: 339
+strict-transport-security: max-age=31536000; includeSubDomains
+request-context: appId=cid-v1:73ba5a21-6b13-4193-9029-2fa6f1b7db84
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":[{"message":"Must be between 1 and 40 (inclusive).","path":"pageSize","code":"InclusiveBetween","detail":{"from":1,"to":40,"value":100}}],"traceId":"00-251d8fa3bcd2e52ed29cdc517fdb8476-a0549f99a5486a8f-00"}
