@@ -1,0 +1,22 @@
+URL: https://statistikdatabasen.scb.se/api/v2/tables?query=one-%20and%20two-dwelling%20buildings&lang=en&pageSize=30
+Fetched: 2026-10-14T15:44:45Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 281
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Length: 281
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-14T15:44:55.4105610Z
+X-Powered-By: ASP.NET
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Wed, 14 Oct 2026 15:44:44 GMT
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"language":"en","tables":[],"page":{"pageNumber":1,"pageSize":30,"totalElements":0,"totalPages":1,"links":[]},"links":[{"rel":"self","hreflang":"en","href":"https://statistikdatabasen.scb.se/api/v2/tables/?lang=en&query=one- and two-dwelling buildings&pagesize=30&pageNumber=1"}]}
