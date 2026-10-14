@@ -1,0 +1,385 @@
+URL: https://www.transtats.bts.gov/AverageFare/
+Fetched: 2026-10-14T15:56:39Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 491697
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Set-Cookie: ASP.NET_SessionId=gv3etqq4jacr2xf4qyqnojbq; path=/; secure; HttpOnly; SameSite=Lax
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: same-origin
+Date: Wed, 14 Oct 2026 15:56:38 GMT
+Content-Length: 491697
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Set-Cookie: f5avraaaaaaaaaaaaaaaa_session_=JAOHDCEJLEFPCINICADJLKANLICBNLKAEJFJGANGCCGNEBDDAEPIFINLCFDNLOPLAEKDIBNPJFJHALAJLFNALKFOOKFBDNLHCKLBLDDOHGNANHDEHMMPGAMMAEDDNMLO; HttpOnly; secure;
+Set-Cookie: f5_cspm=1234;;
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text, with very long lines (948), with CRLF, LF line terminators
+=== FIRST 12000 BYTES
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Average Domestic Airline Itinerary Fares</title>
+
+<meta name="robots" content="index,nofollow"/>
+<meta name="description" content="This is the TranStats homepage. TranStats provides one-stop shopping for intermodal transportation data for researchers, decision-makers, as well as the general public interested in transportation issues."/>
+
+<script src="lib/ITDBfunc.js" language="JavaScript" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">
+    if (!document.getElementById) {
+        location.href = "UpdateBrowser.asp";
+    }
+</script>
+
+<link href="styles/global.css" rel="stylesheet" type="text/css"/>
+
+<style type="text/css">
+    body {
+        background: #f4f7fb;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #1f2937;
+    }
+
+    #formdiv {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 20px 16px 40px 16px;
+    }
+
+    .topBcrumbs {
+        margin: 8px 0 14px 0;
+        font-size: 12px;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        color: #4b5563;
+    }
+
+    .topBcrumbs a {
+        color: #1d4ed8;
+        text-decoration: none;
+    }
+
+    .topBcrumbs a:hover {
+        text-decoration: underline;
+    }
+
+    .page-shell {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #ffffff;
+        border: 1px solid #d9e2ef;
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+    }
+
+    .page-title {
+        background: linear-gradient(135deg, #15396C, #1f5a99);
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 22px 28px;
+        border: none;
+    }
+
+    .related-title {
+        background: #f8fafc;
+        color: #15396C;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 16px 28px 6px 28px;
+        border: none;
+    }
+
+    .related-links {
+        background: #f8fafc;
+        padding: 0 28px 18px 28px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .related-links ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .related-links li {
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+    }
+
+    .related-links a {
+        color: #1d4ed8;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .related-links a:hover {
+        text-decoration: underline;
+    }
+
+    .filter-section {
+        padding: 24px 28px;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .filter-card {
+        width: auto;
+        margin: 0 auto;
+        border-collapse: separate;
+        border-spacing: 14px 0;
+        background: #f8fafc;
+        border: 1px solid #dbe4f0;
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    }
+
+    .filter-cell {
+        border: none;
+        vertical-align: bottom;
+        padding: 0;
+    }
+
+    .filter-label {
+        display: block;
+        margin-bottom: 6px;
+        color: #374151;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 0.02em;
+    }
+
+    .modern-select {
+        min-width: 150px;
+        height: 40px;
+        padding: 8px 42px 8px 12px;
+        border: 2px solid #6b8fbd;
+        border-radius: 8px;
+        background-color: #ffffff;
+        color: #111827;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        outline: none;
+
+        appearance: auto;
+        -webkit-appearance: menulist;
+        -moz-appearance: menulist;
+    }
+
+    .modern-select:hover {
+        border-color: #1d4ed8;
+        background-color: #f9fbff;
+    }
+
+    .modern-select:focus {
+        border-color: #15396C;
+        box-shadow: 0 0 0 3px rgba(21, 57, 108, 0.18);
+    }
+
+    .modern-button {
+        height: 40px;
+        min-width: 96px;
+        padding: 0 16px;
+        border: 1px solid #15396C;
+        border-radius: 8px;
+        background: #15396C;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+    }
+
+    .modern-button:hover {
+        background: #1f5a99;
+        box-shadow: 0 4px 12px rgba(21, 57, 108, 0.24);
+    }
+
+    .modern-button:active {
+        transform: translateY(1px);
+    }
+
+    .download-button {
+        background: #0f766e;
+        border-color: #0f766e;
+    }
+
+    .download-button:hover {
+        background: #115e59;
+    }
+
+    .title-row {
+        padding: 20px 80px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.5;
+        color: #111827;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .note-row {
+        padding: 14px 80px;
+        font-size: 13px;
+        text-align: center;
+        color: #4b5563;
+        background: #f8fafc;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .grid-wrap {
+        padding: 24px 20px;
+        text-align: center;
+        overflow-x: auto;
+    }
+
+    .dataTD3 {
+        border-collapse: collapse;
+        width: 1000px;
+        margin: 0 auto;
+        font-size: 13px;
+        background: #ffffff;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .dataTD3 th {
+        background: #15396C !important;
+        color: #ffffff !important;
+        font-weight: bold;
+        padding: 11px 8px;
+        border: 1px solid #15396C;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .dataTD3 th a {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+
+    .dataTD3 th a:hover {
+        text-decoration: underline;
+    }
+
+    .dataTD3 td {
+        padding: 9px 8px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .dataTD3 tr:hover td {
+        background: #eef5ff;
+    }
+
+    .source-row,
+    .definition-row {
+        padding: 14px 80px;
+        text-align: center;
+        color: #374151;
+        background: #ffffff;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .definition-row {
+        padding-bottom: 26px;
+    }
+
+    .info-label {
+        display: inline-block;
+        max-width: 800px;
+        line-height: 1.5;
+    }
+
+    @media screen and (max-width: 800px) {
+        #formdiv {
+            padding: 12px;
+        }
+
+        .page-title {
+            font-size: 20px;
+            padding: 18px;
+        }
+
+        .filter-card {
+            width: 100%;
+            border-spacing: 0 12px;
+        }
+
+        .filter-card tr,
+        .filter-card td {
+            display: block;
+            width: 100% !important;
+        }
+
+        .modern-select,
+        .modern-button {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .title-row,
+        .note-row,
+        .source-row,
+        .definition-row {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    }
+</style>
+
+
+
+<meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-18660041-1"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "UA-18660041-1", { "groups": "default", "anonymize_ip": true, "page_placeholder": "PLACEHOLDER_page_path" }); gtag("config", "G-TS9639848Y", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location" });//gtag('config', 'G-G4Y2DGXG7K');</script>
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&amp;l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NX5ZB78W');
+</script>
+<meta name="description" content="The Bureau of Transportation Statistics (BTS), part of the Department of Transportation (DOT) is the preeminent source of statistics on commercial aviation, multimodal freight activity, and transportation economics, and provides context to decision makers and the public for understanding statistics on transportation." />
+
+
+
+
+
+
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<link rel="icon" href="https://www.bts.gov/themes/custom/dot_cms/favicon_dot.png" type="image/png" />
+</head-placeholder>
+
+<link rel="stylesheet" media="all" href="https://www.bts.gov/sites/bts.dot.gov/files/css/css_OsrKkZ3QkLIGsRlqsSKkXw1WDGcvDGBTe9TU77zZPYI.css?delta=0&amp;language=en&amp;theme=bts&amp;include=eJx1kFFuxDAIRC_kxj9Vr2Nhm6QoBCIgu93bN01adRupP4h5SAxMVQ0Pg7VUMCPNoh1TDc-jSsAdXRcsbweZWCvwi8eDSaYD6YpSHMRL65LajJ1CrZB0lKisbc5PfWrKDKvTOWlqmLpGacvVDj9i95hzt20FHr7lFzYoIyH30tGb0Rqkkv_hpbmnRTvwZf3JLv-c8O9HKxhMezrvXiajni96qD_xvSZ_eOCSKzimjYMWlC03MIwhjEAmfuLHwf6rdRwbyA188AaMJOlGePd81GG_bGP8BEWbp78" />
+<link rel="stylesheet" media="all" href="https://www.bts.gov/sites/bts.dot.gov/files/css/css_6stvmepcbIxTTzLHJwhg03K5RNWKhpAFqTT9_G4nEUE.css?delta=1&amp;language=en&amp;theme=bts&amp;include=eJx1kFFuxDAIRC_kxj9Vr2Nhm6QoBCIgu93bN01adRupP4h5SAxMVQ0Pg7VUMCPNoh1TDc-jSsAdXRcsbweZWCvwi8eDSaYD6YpSHMRL65LajJ1CrZB0lKisbc5PfWrKDKvTOWlqmLpGacvVDj9i95hzt20FHr7lFzYoIyH30tGb0Rqkkv_hpbmnRTvwZf3JLv-c8O9HKxhMezrvXiajni96qD_xvSZ_eOCSKzimjYMWlC03MIwhjEAmfuLHwf6rdRwbyA188AaMJOlGePd81GG_bGP8BEWbp78" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" />
+<link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" crossorigin="anonymous" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" />
+<link rel="stylesheet" media="all" href="https://www.bts.gov/sites/bts.dot.gov/files/css/css_gXrKTQATDoxuJXcscH4XZtxmLNRRWKHA0BAoMCtEElg.css?delta=4&amp;language=en&amp;theme=bts&amp;include=eJx1kFFuxDAIRC_kxj9Vr2Nhm6QoBCIgu93bN01adRupP4h5SAxMVQ0Pg7VUMCPNoh1TDc-jSsAdXRcsbweZWCvwi8eDSaYD6YpSHMRL65LajJ1CrZB0lKisbc5PfWrKDKvTOWlqmLpGacvVDj9i95hzt20FHr7lFzYoIyH30tGb0Rqkkv_hpbmnRTvwZf3JLv-c8O9HKxhMezrvXiajni96qD_xvSZ_eOCSKzimjYMWlC03MIwhjEAmfuLHwf6rdRwbyA188AaMJOlGePd81GG_bGP8BEWbp78" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&amp;display=swap" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;display=swap" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&amp;display=swap" />
+</css-placeholder>
+<script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPat
