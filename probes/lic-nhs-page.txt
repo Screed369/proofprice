@@ -1,0 +1,1813 @@
+URL: https://opendata.nhsbsa.net/dataset/prescription-cost-analysis-pca-monthly-data
+Fetched: 2026-10-14T17:37:58Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 199057
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 17:37:58 GMT
+content-type: text/html; charset=utf-8
+content-length: 199057
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+set-cookie: ckan=eyJfY3NyZl90b2tlbiI6ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODcifQ.as-99g.lRXqjByMzI3DCX04INgyTxv1ycE; Domain=; HttpOnly; Path=/; SameSite=Lax
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (553)
+=== FIRST 60000 BYTES
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en-GB" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-GB"  > <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+      <meta name="csrf_field_name" content="_csrf_token" />
+      <meta name="_csrf_token" content="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs" />
+
+      <meta name="generator" content="ckan 2.11.6" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Cost Analysis (PCA) Monthly Administrative Data - Datasets - Open Data Portal</title>
+
+    
+     <link rel="shortcut icon" href="/base/images/ckan.ico" />
+     
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNCHRPRBKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NNCHRPRBKF');
+</script>
+
+  
+  
+  
+  
+      
+      
+      
+    
+  
+
+  
+
+  <link rel="stylesheet" href="/restricted_theme.css" />
+
+  
+
+
+    
+    <link href="/webassets/base/51d427fe_main.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-scheming/728ec589_scheming_css.css" rel="stylesheet"/>
+<link href="/webassets/vendor/f3b8236b_select2.css" rel="stylesheet"/>
+<link href="/webassets/vendor/53df638c_fontawesome.css" rel="stylesheet"/>
+<link href="/webassets/styles/nhs_style.css?3f9e521b" rel="stylesheet"/>
+<link href="/webassets/ckanext-activity/8dd77216_activity.css" rel="stylesheet"/><style>
+        .notes.embedded-content > p > img {width: 100%;}
+      </style>
+    
+    
+  
+  <meta property="og:title" content="Prescription Cost Analysis (PCA) Monthly Administrative Data - Open Data Portal">
+  <meta property="og:description" content="Dataset Description Prescription Cost Analysis (PCA) shows the total volume and cost for drugs, dressings, appliances, and medical devices that have been dispensed in the community in England and...">
+
+
+  </head>
+
+  
+  <body data-site-root="https://opendata.nhsbsa.net/" data-locale-root="https://opendata.nhsbsa.net/" >
+
+    
+<a href="#content" class="skip-content">Skip to content</a>   
+
+ 
+
+
+    <div class="top-flash-message">
+        <div class="nhsuk-width-container message" style="font-size: 15px;">
+            <strong class="nhsuk-tag" style="font-size: 15px;">NEW</strong>
+            <span style="font-size: 15px;">Log in to the Open Data Portal to unlock additional features: <a style="font-size: 15px;" href="https://opendata.nhsbsa.net/news/get-more-from-the-open-data-portal-register-to-explore" title="Find out about the new features">find out more.</a></span>
+        </div>
+    </div> 
+
+<div class="top-flash-message" style="background: #ae2573; display: none;">
+    <div class="nhsuk-width-container message" style="font-size: 15px;">
+        <strong class="nhsuk-tag" style="font-size: 15px;height: 22px;">Alert</strong>
+           <span style="font-size: 15px;">29 August 2025
+            <br><br>Deployment completed.
+            <br><br>
+            The follow-up deployment on the NHSBSA Open Data Portal has now been completed. This release addresses outstanding actions from the previous update and delivers improvements as detailed in <a href="https://opendata.nhsbsa.net/news/deployment-update-improvements-and-fixes-now-live-on-the-nhsbsa-open-data-portal" target="_blank" style="color: white;text-decoration: underline;font-size: 15px;">this news article.</a>
+            <br><br>If you encounter any issues or require support, please contact us at <a href="mailto:DataServicesSupport@nhsbsa.nhs.uk" style="color: white;text-decoration: underline;font-size: 15px;">
+                DataServicesSupport@nhsbsa.nhs.uk.
+            </a>
+            </span>
+    </div>
+</div>
+<div class="account-masthead" role="navigation" aria-label="Account Navigation">
+    <div class="container">
+         
+        
+        <span></span>
+         
+        
+    </div>
+</div>
+
+
+<header class="masthead">
+     
+     
+    
+    
+    <div class="nhsuk-width-container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <hgroup class="header-image navbar-topgroup">
+                <div class="nhsuk-header__logo custom-header">
+                    <a href="/" aria-label="NHS Open Data Portal Homepage">
+                       <img src="/images/nhs-logo-new.png" alt="NHS Open Data Portal" class="nhsuk-logo">
+                    </a>
+                </div>
+            </hgroup>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation-toggle"
+                aria-controls="main-navigation-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+            </button>
+
+            <div class="main-navbar collapse navbar-collapse section navigation" id="main-navigation-toggle">
+                
+                <ul class="nav nav-pils">
+                    <li><a href="/#home-page" title="Go to Home">Home</a></li>
+                    <li><a href="/dataset/" title="Go to Data">Data</a></li>
+                    <li><a href="/theme/freedom-of-information-disclosure-log" title="FOI DATA">FOI Responses</a></li>
+                    <li><a href="/news" title="Go to News">News</a></li>
+                    <li><a href="/pages/documentation" title="Go to Documentation">Documentation</a></li>
+                    <li><a href="/pages/about" title="Go to About">About</a></li>
+                </ul>
+                
+                <ul class="nav nav-pils nav-right">
+                  <li style="padding-top: 0; padding-bottom: 0;" class="login"><a href="/user/login">Log in</a></li>
+                </ul>
+                
+                
+            </div>
+        </nav>
+    </div>
+</header>
+
+  
+<div role="main" class="bg-blue">
+    <div id="content" class="nhsuk-width-container">
+        
+        
+        <div class="flash-messages">
+             
+            
+        
+        </div>
+        
+    </div>
+
+    
+    <div class="toolbar">
+        <div class="nhsuk-width-container">
+             
+            <ol class="breadcrumb">
+                
+<li class="home"><a href="/">Home</a></li> 
+  
+    
+    
+      
+      
+      <li><a href="/theme/">Themes</a></li>
+      <li><a href="/theme/community_prescribing_dispensing">Community Prescribing &amp; Dispensing</a></li>
+    
+    <li class="active"><a href="/dataset/prescription-cost-analysis-pca-monthly-data">Prescription Cost Analysis...</a></li>
+  
+
+            </ol>
+             
+        </div>
+    </div>
+    
+
+    <div class="nhsuk-width-container page-container">
+        <div class="row wrapper-custom dataset-read">
+               
+            <div class="secondary col-sm-3">
+
+  
+
+  
+    
+
+  
+    <section id="package-info" class="module module-narrow">
+      <div class="module context-info">
+        <div class="module-content">
+          
+            
+              <h1 class="heading">Prescription Cost Analysis (PCA) Monthly Administrative Data</h1>
+            
+            
+              
+              <div class="nums">
+                <dl>
+                  <dt>Followers</dt>
+                  <dd><span>50</span></dd>
+                </dl>
+              </div>
+            
+            
+              
+            
+          
+        </div>
+      </div>
+    </section>
+  
+
+  
+
+  
+    
+      
+      
+
+
+
+
+
+  <section id="organization-info" class="module module-narrow">
+    <div class="module context-info">
+    <div class="module-content">
+      
+      
+        <div class="image">
+          <a href="/organization/community_prescribing_dispensing">
+            <img src="https://storage.googleapis.com/dx-nhs-production/_assets/group/2020-11-29-111330.020756-prescribing-Icon.jpg" width="200" alt="community_prescribing_dispensing" />
+          </a>
+        </div>
+      
+      
+      <h1 class="heading">Community Prescribing &amp; Dispensing
+        
+      </h1>
+      
+      
+      
+        <p class="description">
+          Datasets on the prescribing and dispensing of medicines in the community
+        </p>
+        <p class="read-more">
+          <a href="/organization/about/community_prescribing_dispensing">read more</a>
+        </p>
+      
+      
+      
+      
+      </div>
+    </div>
+  </section>
+  
+    
+  
+
+  
+    
+
+  <section class="module module-narrow social">
+    
+      <h2 class="module-heading"><i class="fa fa-share-square"></i> Social</h2>
+    
+    
+      <ul class="nav nav-simple">
+        <li class="nav-item"><a href="https://twitter.com/share?url=https://opendata.nhsbsa.net/dataset/prescription-cost-analysis-pca-monthly-data" target="_blank"><i class="fa-brands fa-twitter-square"></i> Twitter</a></li>
+        <li class="nav-item"><a href="https://www.facebook.com/sharer.php?u=https://opendata.nhsbsa.net/dataset/prescription-cost-analysis-pca-monthly-data" target="_blank"><i class="fa-brands fa-facebook-square"></i> Facebook</a></li>
+      </ul>
+    
+  </section>
+
+  
+
+  
+    
+
+
+  
+    
+      
+        <section class="module module-narrow module-shallow license">
+          
+          <h2 class="module-heading"><i class="fa fa-lock"></i> Licence</h2>
+          
+          
+            <p class="module-content">
+              
+                
+  
+    <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="dc:rights">Open Government Licence 3.0 (United Kingdom)</a>
+  
+
+                
+                  <a href="http://opendefinition.org/okd/" title="This dataset satisfies the Open Definition.">
+                      <img class="open-data" src="/base/images/od_80x15_blue.png" alt="[Open Data]" />
+                  </a>
+                
+              
+            </p>
+          
+        </section>
+      
+    
+  
+
+  
+
+</div>
+             
+            <div class="primary col-sm-9 col-xs-12">
+                 
+                <article class="module">
+                    
+                    <header class="module-content page-header">
+                        
+                        <ul class="nav nav-tabs">
+                            
+  
+  
+  <li class="active"><a href="/dataset/prescription-cost-analysis-pca-monthly-data"><i class="fa fa-sitemap"></i> Dataset</a></li>
+   
+     
+    <li><a href="/dataset/prescription-cost-analysis-pca-monthly-data/discussions">Discussions</a></li>
+  
+  
+
+  <li><a href="/dataset/activity/prescription-cost-analysis-pca-monthly-data"><i class="fa fa-clock"></i> Activity Stream</a></li>
+
+  
+    <li><a href="/dataset/prescription-cost-analysis-pca-monthly-data/discussions">Discussions</a></li>
+  
+
+                        </ul>
+                    </header>
+                    
+                    <div class="module-content">
+                         
+  
+    
+      
+    
+
+  
+  
+	<div class="report-container">	
+		<a type="button" class="dataset-report-link" data-bs-toggle="modal" data-bs-target="#reportModal">
+			<i class="fa fa-flag"></i> Report an issue
+		</a>
+	</div>
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportDatasetModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="modal-title" id="reportDatasetModal">Report an issue</h2>
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/report" class="report-dataset"
+                    data-module="report-dataset" method="post">
+                    
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+                    
+                    <div class="mb-3 control-medium">
+                        <label class="control-label" for="field-type"><span title="This field is required"
+                                class="control-required">*</span> Issue type</label>
+
+                        <div class="controls">
+                            <select class="form-select" id="field-type" name="type"> 
+                                <option value="" disabled selected>Select an issue type from the list</option>
+
+                                
+                                <option value="Data download problem or error">Data download problem or error</option>
+                                
+                                <option value="API problem or error">API problem or error</option>
+                                
+                                <option value="Missing or incorrect data">Missing or incorrect data</option>
+                                
+                                <option value="Functionality issue">Functionality issue</option>
+                                
+                                <option value="Other">Other</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <div class="mb-3">
+                    
+
+
+<div class="form-group control-full">
+<label class="form-label" for="field-description"><span title="This field is required" class="control-required">*</span> Issue
+                    description</label>
+<div class="controls ">
+
+<textarea id="field-description" name="description" cols="20" rows="5" placeholder="Please provide a description of the issue that you are reporting."  class="form-control"></textarea>
+
+
+
+</div>
+</div>
+
+
+                    </div>
+
+                    
+                    
+                    <div class="mb-3">
+                    
+<div class="form-group ">
+<label class="form-label" for="field-email">Email (optional)</label>
+<div class="controls ">
+ 
+<input id="field-email" type="email" name="email" value="" placeholder="Your email address"  class="form-control" />
+
+
+
+                    <div class="info-block ">
+<i class="fa fa-info-circle"></i>
+If you would like us to contact you about the issue raised, please enter your email
+                    address.
+</div>
+                    
+</div>
+</div>
+ 
+
+                    </div>
+
+                    <p class="captcha-disclaimer mb-3">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</p>                    
+                    
+                    
+                    <div class="action text-end"> 
+                        <button type="submit" class="btn btn-primary" aria-label="Submit" 
+                            data-module="reCaptcha"
+                            data-module-sitekey="6LdrAo4mAAAAAFONApUnuwmUTDVaJtdXF7fdJHxH"
+                        >
+                            Submit</button>
+                        
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                            aria-label="Close">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+	
+    
+    <h1>
+      
+        Prescription Cost Analysis (PCA) Monthly Administrative Data
+        
+        
+      
+    </h1>
+    
+    <div class="notes embedded-content">
+      <h2>Dataset Description</h2>
+<p>Prescription Cost Analysis (PCA) shows the total volume and cost for drugs, dressings, appliances, and medical devices that have been dispensed in the community in England and submitted to the NHSBSA for reimbursement monthly.&nbsp;</p>
+<p>This dataset is designed to provide the total number of prescription items and spend for any individual product, at any level of the British National Formulary (BNF) hierarchy. For example, for Paracetamol 500mg tablets, or collections of products such as antibacterial drugs, antidepressant drugs, or dressings.&nbsp;</p>
+<p>This data mirrors the methodology used in the PCA Annual National Statistics publication.&nbsp;&nbsp;</p>
+<p>The latest statistical release, along with more information on what PCA contains, can be found on the <a href="https://www.nhsbsa.nhs.uk/statistical-collections/prescription-cost-analysis-england">NHSBSA website</a> and you can specifically read the <a href="https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/pca/pca_background_info_methodology_v001.html">Prescription Cost Analysis Background Information and Methodology</a>. The monthly PCA release is a monthly management information data set and is not an Official Statistic.&nbsp;</p>
+<p style="margin: 0;">Data for February 2008 to March 2021 is available on the <a href="https://www.nhsbsa.nhs.uk/prescription-data/dispensing-data/prescription-cost-analysis-pca-data">NHSBSA website</a> in a legacy format.&nbsp;</p>
+<h2 style="margin: 0 0 5px 0;">Overview of Service</h2>
+<p>
+<p style="margin: 0;">Information about our NHSBSA Prescriptions Data service can be found here - <a href="https://www.nhsbsa.nhs.uk/prescription-data">Prescription data | NHSBSA</a></p>
+<h2 style="margin: 0 0 5px 0;">Dataset Details</h2>
+<p>
+<!-- Expander 1 -->
+<details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text nhsuk-u-font-size-24">Data Source</span>
+    </summary>
+    <div class="nhsuk-details__text">
+       <p>NHS Business Services Authority (NHSBSA) Data Warehouse.</p>
+    </div>
+</details>
+
+<!-- Expander 2 -->
+<details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text nhsuk-u-font-size-24">Data Collection</span>
+    </summary>
+    <div class="nhsuk-details__text">
+        <p>The dataset is provided from Prescription data collected by the NHS Business Services Authority (NHSBSA) for the operational purpose of reimbursing and remunerating dispensing contractors for the costs of supplying drugs and devices, and providing essential and advanced services, to NHS patients. The data that forms the basis of these statistics is collected as a by-product of this process.</p>
+    </div>
+</details>
+
+<!-- Expander 3 -->
+<details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text nhsuk-u-font-size-24">Time Periods</span>
+    </summary>
+    <div class="nhsuk-details__text">
+        <p>Data is published retrospectively with a two-month delay. For example, January data is published in March.
+<p><strong>Historical Data:</strong> Data is available from January 2021 onwards.</p>
+</details>
+
+<!-- Expander 4 -->
+<details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text nhsuk-u-font-size-24">Geography</span>
+    </summary>
+    <div class="nhsuk-details__text">
+        <p>The PCA dataset is limited to a view of items dispensed only in the community in England, regardless of whether they were prescribed in England, Scotland, Wales, Northern Ireland, and State authorities such as Guernsey, Jersey, Alderney, and Isle of Man.</p>
+    </div>
+</details>
+
+<!-- Expander Statistics -->
+<details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text nhsuk-u-font-size-24">Statistical Classification</span>
+    </summary>
+   <div class="nhsuk-details__text">
+<p>Management Information - This is not an official statistic.</p>
+    </div>
+</details>
+
+<h2>Caveats</h2>
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <h3 class="nhsuk-u-font-size-32">Excluded Items</h3>
+  The dataset does not include items that were not dispensed, were disallowed, or were returned to the contractor for further clarification.
+</div>
+
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <h3 class="nhsuk-u-font-size-32">Prescribing Contexts Not Included</h3>
+  Prescriptions that are prescribed and dispensed within prisons, hospitals, or issued as private prescriptions are not included in this dataset.
+</div>
+
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+ <h3 class="nhsuk-u-font-size-32">Unsubmitted or Unclaimed Items</h3>
+  Items that were prescribed but either not presented for dispensing, or not submitted to NHS Prescription Services by the dispenser, are also excluded.
+</div>
+
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <h3 class="nhsuk-u-font-size-32 nhsuk-u-margin-bottom-0">Further Information</h3>
+  Additional limitations of the dataset can be found in the 
+  <a href="https://nhsbsa-opendata.s3.eu-west-2.amazonaws.com/pca/pca_background_info_methodology_v001.html">Prescription Cost Analysis Background Information and Methodology</a>.
+</div>
+
+<h2>Enquiries</h2>
+<!---Who can I contact Section-->
+<details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text nhsuk-u-font-size-24">Who can I contact if I have queries relating to the data?</span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>If you have any queries regarding the data provided, or if you plan on publishing the data, please contact <a href="mailto:DataServicesSupport@nhsbsa.nhs.uk">DataServicesSupport@nhsbsa.nhs.uk</a> ensuring you quote the name of the dataset for reference. This is important to ensure that the figures are not misunderstood or misrepresented.</p>
+  </div>
+</details>
+
+<h2>Citing and Reusing This Data</h2>
+<!---Reusing the data and copyright Section-->
+<details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text nhsuk-u-font-size-24">Important information regarding reusing the data and copyright</span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>If you plan on producing a press or broadcast story based upon the data, please contact <a href="mailto:communicationsteam@nhsbsa.nhs.uk">communicationsteam@nhsbsa.nhs.uk</a>. This is important to ensure that the figures are not misunderstood or misrepresented.</p>
+    <p>The information supplied to you continues to be protected by the Copyright, Designs and Patents Act 1988 and/or other applicable law. You may use the data freely, provided that you attribute the source.</p>
+  </div>
+</details>
+
+<!---Citation-->
+<details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text nhsuk-u-font-size-24">Citation
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+<p>NHS Business Services Authority. "Prescription Cost Analysis (PCA) Monthly Administrative Data.” NHS Business Services Authority Open Data. Accessed **[Date Accessed]**. URL: <a href=" https://opendata.nhsbsa.net/dataset/prescription-cost-analysis-pca-monthly-data"> https://opendata.nhsbsa.net/dataset/prescription-cost-analysis-pca-monthly-data</a></p>
+</div>
+</details>
+    </div>
+  
+
+  
+
+
+
+  
+    
+
+<section id="dataset-resources" class="resources">
+  <h2>Data and Resources</h2>
+  
+
+  <ul id="resource-list" data-module="resource-list-view" class="resource-list testing">
+      
+      
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="7381ba61-c25d-488d-8c46-688530a92765">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/7381ba61-c25d-488d-8c46-688530a92765">
+    
+      Prescription Cost Analysis (PCA) - Jul 2026
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/7381ba61-c25d-488d-8c46-688530a92765">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/7381ba61-c25d-488d-8c46-688530a92765/download/pca_202607.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202607.ZIP?response-content-disposition=filename%3DPCA_202607.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ea0ac56c8eef5012ec264ef6f553dc0498e1d8a4c7599dec608f824d5611770d" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_7381ba61-c25d-488d-8c46-688530a92765"
+          id="popup_7381ba61-c25d-488d-8c46-688530a92765"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202607"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="b7854c66-7925-4e4d-809d-e6b7f5e37c1c">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/b7854c66-7925-4e4d-809d-e6b7f5e37c1c">
+    
+      Prescription Cost Analysis (PCA) - Jun 2026
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/b7854c66-7925-4e4d-809d-e6b7f5e37c1c">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/b7854c66-7925-4e4d-809d-e6b7f5e37c1c/download/pca_202606.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202606.ZIP?response-content-disposition=filename%3DPCA_202606.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4221ebe05e2808d4d6f40282549b9fd81df545b267c5e1266ea305b83c116a44" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_b7854c66-7925-4e4d-809d-e6b7f5e37c1c"
+          id="popup_b7854c66-7925-4e4d-809d-e6b7f5e37c1c"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202606"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="9d3fe484-3521-47f6-98cd-4d4fb5848211">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/9d3fe484-3521-47f6-98cd-4d4fb5848211">
+    
+      Prescription Cost Analysis (PCA) - May 2026
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/9d3fe484-3521-47f6-98cd-4d4fb5848211">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/9d3fe484-3521-47f6-98cd-4d4fb5848211/download/pca_202605.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202605.ZIP?response-content-disposition=filename%3DPCA_202605.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6a3882aeeb93bda0d80806b37e727b246db2dc52209e0cf65bea80e8181292fd" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_9d3fe484-3521-47f6-98cd-4d4fb5848211"
+          id="popup_9d3fe484-3521-47f6-98cd-4d4fb5848211"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202605"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="3ed35c79-04b1-4ced-af00-d1078b2b871b">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/3ed35c79-04b1-4ced-af00-d1078b2b871b">
+    
+      Prescription Cost Analysis (PCA) - Apr 2026
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/3ed35c79-04b1-4ced-af00-d1078b2b871b">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/3ed35c79-04b1-4ced-af00-d1078b2b871b/download/pca_202604.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202604.ZIP?response-content-disposition=filename%3DPCA_202604.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7067f08fd397ed186e52907c3b47e7b7f9c808fe80087c2bc9fd414bd5399c77" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_3ed35c79-04b1-4ced-af00-d1078b2b871b"
+          id="popup_3ed35c79-04b1-4ced-af00-d1078b2b871b"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202604"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="0318b9ba-cd88-4014-9d76-2ff1c341734b">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/0318b9ba-cd88-4014-9d76-2ff1c341734b">
+    
+      Prescription Cost Analysis (PCA) - Mar 2026
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/0318b9ba-cd88-4014-9d76-2ff1c341734b">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/0318b9ba-cd88-4014-9d76-2ff1c341734b/download/pca_202603.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202603.ZIP?response-content-disposition=filename%3DPCA_202603.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=819e690339583856bce7a72ca5d634f4eac2568698fbf33349104e97c5b4ae4f" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_0318b9ba-cd88-4014-9d76-2ff1c341734b"
+          id="popup_0318b9ba-cd88-4014-9d76-2ff1c341734b"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202603"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="f481c3e6-9ffd-4e36-8183-f025157205cf">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/f481c3e6-9ffd-4e36-8183-f025157205cf">
+    
+      Prescription Cost Analysis (PCA) - Feb 2026
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+        2026-04-29: Corrected file uploaded - see change log
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/f481c3e6-9ffd-4e36-8183-f025157205cf">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/f481c3e6-9ffd-4e36-8183-f025157205cf/download/pca_202602.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202602.ZIP?response-content-disposition=filename%3DPCA_202602.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3d7a79f0da2271128a16ab8e61c7624bccca0101cca86a15f680c913c102c17e" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_f481c3e6-9ffd-4e36-8183-f025157205cf"
+          id="popup_f481c3e6-9ffd-4e36-8183-f025157205cf"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202602"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="e8b3fcc8-02b8-445b-a65e-5a1621ddda3e">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/e8b3fcc8-02b8-445b-a65e-5a1621ddda3e">
+    
+      Prescription Cost Analysis (PCA) - Jan 2026
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/e8b3fcc8-02b8-445b-a65e-5a1621ddda3e">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/e8b3fcc8-02b8-445b-a65e-5a1621ddda3e/download/pca_202601.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202601.ZIP?response-content-disposition=filename%3DPCA_202601.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6e66da82730074ff28d621f73f737b7a9ddb02b29a761a02088f41d87855cb97" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_e8b3fcc8-02b8-445b-a65e-5a1621ddda3e"
+          id="popup_e8b3fcc8-02b8-445b-a65e-5a1621ddda3e"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202601"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="523d30ed-11a1-4897-b723-31d5163a9b2e">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/523d30ed-11a1-4897-b723-31d5163a9b2e">
+    
+      Prescription Cost Analysis (PCA) - Dec 2025
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/523d30ed-11a1-4897-b723-31d5163a9b2e">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/523d30ed-11a1-4897-b723-31d5163a9b2e/download/pca_202512.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202512.ZIP?response-content-disposition=filename%3DPCA_202512.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1e108c98194efc8e968c052751703f3520ccdc286ca2a0563f93b2599a0694e5" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_523d30ed-11a1-4897-b723-31d5163a9b2e"
+          id="popup_523d30ed-11a1-4897-b723-31d5163a9b2e"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202512"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="c3c2c089-fb82-4c89-a877-fcd75d6711bd">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/c3c2c089-fb82-4c89-a877-fcd75d6711bd">
+    
+      Prescription Cost Analysis (PCA) - Nov 2025
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/c3c2c089-fb82-4c89-a877-fcd75d6711bd">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/c3c2c089-fb82-4c89-a877-fcd75d6711bd/download/pca_202511.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202511.ZIP?response-content-disposition=filename%3DPCA_202511.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2963f63143642a51b90189652f583c4629211e6075d232404fe00a3eb9e22f6e" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_c3c2c089-fb82-4c89-a877-fcd75d6711bd"
+          id="popup_c3c2c089-fb82-4c89-a877-fcd75d6711bd"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202511"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="b7e09a8f-05db-4665-9c68-0f96d6108a9f">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/b7e09a8f-05db-4665-9c68-0f96d6108a9f">
+    
+      Prescription Cost Analysis (PCA) - Oct 2025
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/b7e09a8f-05db-4665-9c68-0f96d6108a9f">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/b7e09a8f-05db-4665-9c68-0f96d6108a9f/download/pca_202510.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202510.ZIP?response-content-disposition=filename%3DPCA_202510.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e795f0e8f5f0831f2596b70ffc6cb4cf7219189c5e6dd269a78212cbceaa2c09" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_b7e09a8f-05db-4665-9c68-0f96d6108a9f"
+          id="popup_b7e09a8f-05db-4665-9c68-0f96d6108a9f"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202510"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="7fae2c7a-2309-4593-9fd0-05df62d77d33">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/7fae2c7a-2309-4593-9fd0-05df62d77d33">
+    
+      Prescription Cost Analysis (PCA) - Sep 2025
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+        2026-01-07: Data file re-run to remove data for coronavirus...
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/7fae2c7a-2309-4593-9fd0-05df62d77d33">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/7fae2c7a-2309-4593-9fd0-05df62d77d33/download/pca_202509.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202509.ZIP?response-content-disposition=filename%3DPCA_202509.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=eb54cdcbe0cdd5bcc873d83c7bf65fbe7b6bdde61ea539e9e7918a57cd36864c" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_7fae2c7a-2309-4593-9fd0-05df62d77d33"
+          id="popup_7fae2c7a-2309-4593-9fd0-05df62d77d33"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202509"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="fdc081c1-1dd4-4e99-b03e-ae1a3eeb143b">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/fdc081c1-1dd4-4e99-b03e-ae1a3eeb143b">
+    
+      Prescription Cost Analysis (PCA) - Aug 2025
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/fdc081c1-1dd4-4e99-b03e-ae1a3eeb143b">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/fdc081c1-1dd4-4e99-b03e-ae1a3eeb143b/download/pca_202508.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202508.ZIP?response-content-disposition=filename%3DPCA_202508.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d4631c3485f48d85450c5b79ea08e5d9c4f0e462d22fde5b6a2e2a7e26cb3bdd" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_fdc081c1-1dd4-4e99-b03e-ae1a3eeb143b"
+          id="popup_fdc081c1-1dd4-4e99-b03e-ae1a3eeb143b"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202508"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="6b2b930b-2f4e-4320-af9c-e44e20f5bdda">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/6b2b930b-2f4e-4320-af9c-e44e20f5bdda">
+    
+      Prescription Cost Analysis (PCA) - Jul 2025
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/6b2b930b-2f4e-4320-af9c-e44e20f5bdda">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/6b2b930b-2f4e-4320-af9c-e44e20f5bdda/download/pca_202507.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202507.ZIP?response-content-disposition=filename%3DPCA_202507.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=895d3096dfc69e6156a083a191560658407340f043fcbb4add25d2534b7bb4d7" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_6b2b930b-2f4e-4320-af9c-e44e20f5bdda"
+          id="popup_6b2b930b-2f4e-4320-af9c-e44e20f5bdda"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202507"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="30091016-2423-44db-be8f-6f3db4682753">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/30091016-2423-44db-be8f-6f3db4682753">
+    
+      Prescription Cost Analysis (PCA) - Jun 2025
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/30091016-2423-44db-be8f-6f3db4682753">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://opendata.nhsbsa.net/dataset/358e443c-b299-4370-aed4-eca63ce3ba68/resource/30091016-2423-44db-be8f-6f3db4682753/download/pca_202506.csv" target="_blank">
+            <i class="fa fa-file"></i>
+            Download(CSV)
+        </a>
+      </li>
+      
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://83025b28472d6aa2bf5ae59f3724aa78.eu.r2.cloudflarestorage.com/dx-nhs-production/DATOPIAN_DATA/PCA_202506.ZIP?response-content-disposition=filename%3DPCA_202506.ZIP&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=d1d532dd4244a61845b7ea3d94bcd4d9%2F20261014%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20261014T173753Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6044a1c97b026ad380a1a96cae04e4f914704c4c7d4615216854f64a6a287aef" target="_blank">
+            <i class="fa fa-file-archive-o"></i>
+            Download(ZIP)
+        </a>
+      </li>
+      
+      
+      <li>
+        
+<input type="hidden" name="_csrf_token" value="ImI4OThiOTM0ZWVmYzdmMjA3ZDExYzBjOWEwNGNiZWFjNzZkNGIzODci.as-99A.n1WKmwyy4gYy3yQ-1QPSmzXm3fs"/>
+        <a
+          class="dropdown-item pointer"
+          data-module-id="popup_30091016-2423-44db-be8f-6f3db4682753"
+          id="popup_30091016-2423-44db-be8f-6f3db4682753"
+          data-module="example_field_popup"
+          data-module-bq_table_name="PCA_202506"
+          data-module-template="" data-loading-text="Loading..."><i class="fa fa-flask fa-lg"></i>
+          Data API
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  
+</li>
+
+
+      
+        
+
+
+
+
+
+
+
+
+
+
+<li class="resource-item no-indentation" data-id="20e8c84d-ef2c-4bb9-889c-48517024e5eb">
+  
+  <a class="heading" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/20e8c84d-ef2c-4bb9-889c-48517024e5eb">
+    
+      Prescription Cost Analysis (PCA) - May 2025
+    
+    
+  </a>
+  
+  
+    <p class="description">
+      
+    </p>
+  
+  
+
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      
+      
+        <li>
+          <a class="dropdown-item" href="/dataset/prescription-cost-analysis-pca-monthly-data/resource/20e8c84d-ef2c-4bb9-889c-48517024e5eb">
+            <i class="fa fa-bar-chart-o"></i>
+            Preview
+          </a>
+        </li>
+      
+      <li>
+  
