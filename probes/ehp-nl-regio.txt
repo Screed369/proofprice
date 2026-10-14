@@ -1,0 +1,888 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/83625NED/RegioS
+Fetched: 2026-10-14T15:42:45Z from GitHub Actions
+Status, type, bytes: 200 application/json 102775
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 14 Oct 2026 15:42:44 GMT
+Content-Length: 102775
+TXID: 011c2c01
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=011d8aff-a2f4-1acf-9678-0050569bed16_3159565113_3980881384_00000000004313590785; Path=/; Expires=Wed, 14-Oct-2026 15:42:59 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/83625NED/$metadata#Cbs.OData.WebAPI.RegioS","value":[
+    {
+      "Key":"NL01  ","Title":"Nederland","Description":"","CategoryGroupID":null
+    },{
+      "Key":"LD01  ","Title":"Noord-Nederland (LD)","Description":"LD = Landsdeel\r\n\r\nNoord-Nederland: Groningen, Frysl\u00e2n, Drenthe\r\n\r\nRegionale groepering van provincies. Nederland telt 4 landsdelen.","CategoryGroupID":null
+    },{
+      "Key":"LD02  ","Title":"Oost-Nederland (LD)","Description":"LD = Landsdeel\r\n\r\nOost-Nederland: Overijssel, Flevoland, Gelderland\r\n\r\nRegionale groepering van provincies. Nederland telt 4 landsdelen.","CategoryGroupID":null
+    },{
+      "Key":"LD03  ","Title":"West-Nederland (LD)","Description":"LD = Landsdeel\r\n\r\nWest-Nederland: Utrecht, Noord-Holland, Zuid-Holland, Zeeland\r\n\r\nRegionale groepering van provincies. Nederland telt 4 landsdelen.","CategoryGroupID":null
+    },{
+      "Key":"LD04  ","Title":"Zuid-Nederland (LD)","Description":"LD = Landsdeel\r\n\r\nZuid-Nederland: Noord-Brabant, Limburg\r\n\r\nRegionale groepering van provincies. Nederland telt 4 landsdelen.","CategoryGroupID":null
+    },{
+      "Key":"PV20  ","Title":"Groningen (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV21  ","Title":"Frysl\u00e2n (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV22  ","Title":"Drenthe (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV23  ","Title":"Overijssel (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV24  ","Title":"Flevoland (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV25  ","Title":"Gelderland (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV26  ","Title":"Utrecht (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV27  ","Title":"Noord-Holland (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV28  ","Title":"Zuid-Holland (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV29  ","Title":"Zeeland (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV30  ","Title":"Noord-Brabant (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"PV31  ","Title":"Limburg (PV)","Description":"PV = Provincie\r\n\r\nBestuurlijke onderverdeling van het Nederlands grondgebied. Sinds het instellen van de provincie Flevoland per 1 januari 1986 telt Nederland 12 provincies.","CategoryGroupID":null
+    },{
+      "Key":"GM1680","Title":"Aa en Hunze","Description":"Ontstaan per 01-01-1998","CategoryGroupID":null
+    },{
+      "Key":"GM0738","Title":"Aalburg","Description":"Opgeheven per 01-01-2019\r\nOntstaan per 01-01-1973","CategoryGroupID":null
+    },{
+      "Key":"GM0358","Title":"Aalsmeer","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0197","Title":"Aalten","Description":"Gemeentelijke herindeling per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0480","Title":"Ter Aar","Description":"Opgeheven per 01-01-2007\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0739","Title":"Aarle-Rixtel","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0305","Title":"Abcoude","Description":"Opgeheven per 01-01-2011\r\nOntstaan per 01-05-1941","CategoryGroupID":null
+    },{
+      "Key":"GM0059","Title":"Achtkarspelen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0360","Title":"Akersloot","Description":"Opgeheven per 01-01-2002\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0482","Title":"Alblasserdam","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0613","Title":"Albrandswaard","Description":"Ontstaan per 01-01-1985","CategoryGroupID":null
+    },{
+      "Key":"GM0483","Title":"Alkemade","Description":"Opgeheven per 01-01-2009\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0361","Title":"Alkmaar","Description":"Gemeentelijke herindeling per 01-01-2015\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0141","Title":"Almelo","Description":"Begindatum 01-12-1913","CategoryGroupID":null
+    },{
+      "Key":"GM0034","Title":"Almere","Description":"Ontstaan per 01-01-1984","CategoryGroupID":null
+    },{
+      "Key":"GM0484","Title":"Alphen aan den Rijn","Description":"Gemeentelijke herindeling per 01-01-2014\r\nNaamswijziging per 01-01-1918","CategoryGroupID":null
+    },{
+      "Key":"GM0741","Title":"Alphen en Riel","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1723","Title":"Alphen-Chaam","Description":"Ontstaan per 01-01-1997","CategoryGroupID":null
+    },{
+      "Key":"GM1959","Title":"Altena","Description":"Ontstaan per 01-01-2019","CategoryGroupID":null
+    },{
+      "Key":"GM0142","Title":"Ambt Delden","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1679","Title":"Ambt Montfort","Description":"Opgeheven per 01-01-2007\r\nNaamswijziging per 01-02-1994","CategoryGroupID":null
+    },{
+      "Key":"GM0060","Title":"Ameland","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0306","Title":"Amerongen","Description":"Opgeheven per 01-01-2006\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0307","Title":"Amersfoort","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0198","Title":"Ammerzoden","Description":"Opgeheven per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0362","Title":"Amstelveen","Description":"Naamswijziging per 01-01-1964","CategoryGroupID":null
+    },{
+      "Key":"GM0363","Title":"Amsterdam","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0364","Title":"Andijk","Description":"Opgeheven per 01-01-2011\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0199","Title":"Angerlo","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0105","Title":"Anloo","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0366","Title":"Anna Paulowna","Description":"Opgeheven per 01-01-2012\r\nBegindatum 18-07-1870","CategoryGroupID":null
+    },{
+      "Key":"GM0200","Title":"Apeldoorn","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0003","Title":"Appingedam","Description":"Opgeheven per 01-01-2021\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0885","Title":"Arcen en Velden","Description":"Opgeheven per 01-01-2010\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0649","Title":"Arnemuiden","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0202","Title":"Arnhem","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0106","Title":"Assen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0743","Title":"Asten","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0143","Title":"Avereest","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0650","Title":"Axel","Description":"Opgeheven per 01-01-2003\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0744","Title":"Baarle-Nassau","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0308","Title":"Baarn","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0745","Title":"Bakel en Milheeze","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0489","Title":"Barendrecht","Description":"Naamswijziging per 10-12-1886","CategoryGroupID":null
+    },{
+      "Key":"GM0203","Title":"Barneveld","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0144","Title":"Bathmen","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0005","Title":"Bedum","Description":"Opgeheven per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0888","Title":"Beek (L.)","Description":"Begindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0746","Title":"Beek en Donk","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1954","Title":"Beekdaelen","Description":"Ontstaan per 01-01-2019","CategoryGroupID":null
+    },{
+      "Key":"GM0370","Title":"Beemster","Description":"Begindatum voor 1830\r\nOpgeheven per 01-01-2022","CategoryGroupID":null
+    },{
+      "Key":"GM0889","Title":"Beesel","Description":"Begindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0107","Title":"Beilen","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0890","Title":"Belfeld","Description":"Opgeheven per 01-01-2001\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0007","Title":"Bellingwedde","Description":"Opgeheven per 01-01-2018\r\nOntstaan per 01-09-1968","CategoryGroupID":null
+    },{
+      "Key":"GM0206","Title":"Bemmel","Description":"Naamswijziging per 01-01-2003\r\nGemeentelijke herindeling per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0372","Title":"Bennebroek","Description":"Opgeheven per 01-01-2009\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1945","Title":"Berg en Dal","Description":"Naamswijziging per 01-01-2016","CategoryGroupID":null
+    },{
+      "Key":"GM0491","Title":"Bergambacht","Description":"Opgeheven per 01-01-2015\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1724","Title":"Bergeijk","Description":"Naamswijziging per 25-09-1998","CategoryGroupID":null
+    },{
+      "Key":"GM0893","Title":"Bergen (L.)","Description":"Begindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0373","Title":"Bergen (NH.)","Description":"Gemeentelijke herindeling per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0748","Title":"Bergen op Zoom","Description":"Gemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0749","Title":"Bergeyk","Description":"Naamswijziging per 25-09-1998\r\nGemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0207","Title":"Bergh","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0492","Title":"Bergschenhoek","Description":"Opgeheven per 01-01-2007\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0493","Title":"Berkel en Rodenrijs","Description":"Opgeheven per 01-01-2007\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0751","Title":"Berkel-Enschot","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1859","Title":"Berkelland","Description":"Ontstaan per 01-01-2005","CategoryGroupID":null
+    },{
+      "Key":"GM0752","Title":"Berlicum","Description":"Opgeheven per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1721","Title":"Bernheze","Description":"Naamswijziging per 28-01-1995","CategoryGroupID":null
+    },{
+      "Key":"GM0568","Title":"Bernisse","Description":"Opgeheven per 01-01-2015\r\nOntstaan per 01-01-1980","CategoryGroupID":null
+    },{
+      "Key":"GM0753","Title":"Best","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0209","Title":"Beuningen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0375","Title":"Beverwijk","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0063","Title":"het Bildt","Description":"Opgeheven per 01-01-2018\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0310","Title":"De Bilt","Description":"Gemeentelijke herindeling per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0585","Title":"Binnenmaas","Description":"Opgeheven per 01-01-2019\r\nGemeentelijke herindeling per 01-01-2007\r\nOntstaan per 01-01-1984","CategoryGroupID":null
+    },{
+      "Key":"GM1728","Title":"Bladel","Description":"Ontstaan per 01-01-1997","CategoryGroupID":null
+    },{
+      "Key":"GM0754","Title":"Bladel en Netersel","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0376","Title":"Blaricum","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0495","Title":"Bleiswijk","Description":"Opgeheven per 01-01-2007\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0377","Title":"Bloemendaal","Description":"Gemeentelijke herindeling per 01-01-2009\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0055","Title":"Boarnsterhim","Description":"Opgeheven per 01-01-2014\r\nNaamswijziging per 03-01-1985","CategoryGroupID":null
+    },{
+      "Key":"GM0497","Title":"Bodegraven","Description":"Opgeheven per 01-01-2011\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1901","Title":"Bodegraven-Reeuwijk","Description":"Ontstaan per 01-01-2011","CategoryGroupID":null
+    },{
+      "Key":"GM0755","Title":"Boekel","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0009","Title":"Ten Boer","Description":"Opgeheven per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0064","Title":"Bolsward","Description":"Opgeheven per 01-01-2011\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0211","Title":"Borculo","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0108","Title":"Borger","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1681","Title":"Borger-Odoorn","Description":"Ontstaan per 01-01-1998","CategoryGroupID":null
+    },{
+      "Key":"GM0897","Title":"Born","Description":"Opgeheven per 01-01-2001\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0147","Title":"Borne","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0654","Title":"Borsele","Description":"Naamswijziging per 01-01-1970","CategoryGroupID":null
+    },{
+      "Key":"GM0499","Title":"Boskoop","Description":"Opgeheven per 01-01-2014\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0756","Title":"Boxmeer","Description":"Gemeentelijke herindeling per 01-01-1998\r\nGemeentelijke herindeling per 01-01-1994\r\nBegindatum voor 1830\r\nOpgeheven per 01-01-2022 wordt Land van Cuijk GM1982","CategoryGroupID":null
+    },{
+      "Key":"GM0757","Title":"Boxtel","Description":"Opgeheven per 01-01-2021\r\nGemeentelijke herindeling per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0212","Title":"Brakel","Description":"Opgeheven per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0758","Title":"Breda","Description":"Gemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0194","Title":"Brederwiede","Description":"Opgeheven per 01-01-2001\r\nOntstaan per 01-01-1973","CategoryGroupID":null
+    },{
+      "Key":"GM0311","Title":"Breukelen","Description":"Opgeheven per 01-01-2011\r\nOntstaan per 01-01-1949","CategoryGroupID":null
+    },{
+      "Key":"GM0501","Title":"Brielle","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0898","Title":"Broekhuizen","Description":"Opgeheven per 01-01-2001\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM1876","Title":"Bronckhorst","Description":"Ontstaan per 01-01-2005","CategoryGroupID":null
+    },{
+      "Key":"GM0656","Title":"Brouwershaven","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0657","Title":"Bruinisse","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0213","Title":"Brummen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0899","Title":"Brunssum","Description":"Begindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0759","Title":"Budel","Description":"Naamswijziging per 28-01-1998\r\nGemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0312","Title":"Bunnik","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0313","Title":"Bunschoten","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0214","Title":"Buren","Description":"Gemeentelijke herindeling per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0381","Title":"Bussum","Description":"Opgeheven per 01-01-2016\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0502","Title":"Capelle aan den IJssel","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0383","Title":"Castricum","Description":"Gemeentelijke herindeling per 01-01-2002\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0760","Title":"Chaam","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0109","Title":"Coevorden","Description":"Gemeentelijke herindeling per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0314","Title":"Cothen","Description":"Opgeheven per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1706","Title":"Cranendonck","Description":"Naamswijziging per 28-01-1998","CategoryGroupID":null
+    },{
+      "Key":"GM0611","Title":"Cromstrijen","Description":"Opgeheven per 01-01-2019\r\nOntstaan per 01-01-1984","CategoryGroupID":null
+    },{
+      "Key":"GM1684","Title":"Cuijk","Description":"Ontstaan per 01-01-1994\r\nOpgeheven per 01-01-2022","CategoryGroupID":null
+    },{
+      "Key":"GM0216","Title":"Culemborg","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0110","Title":"Dalen","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0148","Title":"Dalfsen","Description":"Gemeentelijke herindeling per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0065","Title":"Dantumadeel","Description":"Naamswijziging per 01-01-2009\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1891","Title":"Dantumadiel","Description":"Naamswijziging per 01-01-2009","CategoryGroupID":null
+    },{
+      "Key":"GM0503","Title":"Delft","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0010","Title":"Delfzijl","Description":"Opgeheven per 01-01-2021\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0149","Title":"Denekamp","Description":"Naamswijziging per 01-06-2002\r\nGemeentelijke herindeling per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0762","Title":"Deurne","Description":"Naamswijziging per 01-01-1926","CategoryGroupID":null
+    },{
+      "Key":"GM0150","Title":"Deventer","Description":"Gemeentelijke herindeling per 01-01-2005\r\nGemeentelijke herindeling per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0218","Title":"Didam","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0384","Title":"Diemen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0151","Title":"Diepenheim","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0152","Title":"Diepenveen","Description":"Opgeheven per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0763","Title":"Diessen","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0111","Title":"Diever","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1980","Title":"Dijk en Waard","Description":"Begin datum 01-01-2022 \r\nGemeente Heerhugowaard en Langedijk","CategoryGroupID":null
+    },{
+      "Key":"GM1774","Title":"Dinkelland","Description":"Naamswijziging per 01-06-2002","CategoryGroupID":null
+    },{
+      "Key":"GM0764","Title":"Dinteloord en Prinsenland","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0219","Title":"Dinxperlo","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0504","Title":"Dirksland","Description":"Opgeheven per 01-01-2013\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0220","Title":"Dodewaard","Description":"Opgeheven per 01-01-2002\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0221","Title":"Doesburg","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0222","Title":"Doetinchem","Description":"Gemeentelijke herindeling per 01-01-2005\r\nBegindatum 01-01-1920","CategoryGroupID":null
+    },{
+      "Key":"GM0660","Title":"Domburg","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0766","Title":"Dongen","Description":"Gemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0058","Title":"Dongeradeel","Description":"Opgeheven per 01-01-2019\r\nOntstaan per 01-01-1984","CategoryGroupID":null
+    },{
+      "Key":"GM0315","Title":"Doorn","Description":"Opgeheven per 01-01-2006\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0505","Title":"Dordrecht","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0498","Title":"Drechterland","Description":"Gemeentelijke herindeling per 01-01-2006\r\nNaamswijziging per 01-01-1980","CategoryGroupID":null
+    },{
+      "Key":"GM0316","Title":"Driebergen-Rijsenburg","Description":"Opgeheven per 01-01-2006\r\nBegindatum 01-05-1931","CategoryGroupID":null
+    },{
+      "Key":"GM1719","Title":"Drimmelen","Description":"Naamswijziging per 25-04-1998","CategoryGroupID":null
+    },{
+      "Key":"GM0303","Title":"Dronten","Description":"Ontstaan per 01-01-1972","CategoryGroupID":null
+    },{
+      "Key":"GM0767","Title":"Drunen","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0225","Title":"Druten","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0662","Title":"Duiveland","Description":"Opgeheven per 01-01-1997\r\nOntstaan per 01-01-1961","CategoryGroupID":null
+    },{
+      "Key":"GM0226","Title":"Duiven","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0768","Title":"Den Dungen","Description":"Opgeheven per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0769","Title":"Dussen","Description":"Opgeheven per 01-01-1997\r\nNaamswijziging per 08-01-1908","CategoryGroupID":null
+    },{
+      "Key":"GM0112","Title":"Dwingeloo","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0902","Title":"Echt","Description":"Opgeheven per 01-01-2003\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0227","Title":"Echteld","Description":"Opgeheven per 01-01-2002\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1711","Title":"Echt-Susteren","Description":"Ontstaan per 01-01-2003","CategoryGroupID":null
+    },{
+      "Key":"GM0385","Title":"Edam-Volendam","Description":"Gemeentelijke herindeling per 01-01-2016\r\nNaamswijziging per 01-01-1975","CategoryGroupID":null
+    },{
+      "Key":"GM0228","Title":"Ede","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0113","Title":"Eelde","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0317","Title":"Eemnes","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1979","Title":"Eemsdelta","Description":"Ontstaan per 01-01-2021","CategoryGroupID":null
+    },{
+      "Key":"GM1651","Title":"Eemsmond","Description":"Opgeheven per 01-01-2019\r\nNaamswijziging per 01-01-1992","CategoryGroupID":null
+    },{
+      "Key":"GM0770","Title":"Eersel","Description":"Gemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0357","Title":"Egmond","Description":"Opgeheven per 01-01-2001\r\nOntstaan per 01-07-1978","CategoryGroupID":null
+    },{
+      "Key":"GM0229","Title":"Eibergen","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0905","Title":"Eijsden","Description":"Opgeheven per 01-01-2011\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM1903","Title":"Eijsden-Margraten","Description":"Ontstaan per 01-01-2011","CategoryGroupID":null
+    },{
+      "Key":"GM0772","Title":"Eindhoven","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0230","Title":"Elburg","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0231","Title":"Elst","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0114","Title":"Emmen","Description":"Gemeentelijke herindeling per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0388","Title":"Enkhuizen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0153","Title":"Enschede","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0232","Title":"Epe","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0233","Title":"Ermelo","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0776","Title":"Esch","Description":"Opgeheven per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0777","Title":"Etten-Leur","Description":"Naamswijziging per 01-01-1968","CategoryGroupID":null
+    },{
+      "Key":"GM0068","Title":"Ferwerderadeel","Description":"Naamswijziging per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1722","Title":"Ferwerderadiel","Description":"Opgeheven per 01-01-2019\r\nNaamswijziging per 01-01-1999","CategoryGroupID":null
+    },{
+      "Key":"GM0778","Title":"Fijnaart en Heijningen","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0070","Title":"Franekeradeel","Description":"Opgeheven per 01-01-2018\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1921","Title":"De Friese Meren","Description":"Naamswijziging per 01-07-2015\r\nOntstaan per 01-01-2014","CategoryGroupID":null
+    },{
+      "Key":"GM1940","Title":"De Fryske Marren","Description":"Naamswijziging per 01-07-2015","CategoryGroupID":null
+    },{
+      "Key":"GM0653","Title":"Gaasterl\u00e2n-Sleat","Description":"Opgeheven per 01-01-2014\r\nNaamswijziging per 05-06-1985","CategoryGroupID":null
+    },{
+      "Key":"GM0115","Title":"Gasselte","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0779","Title":"Geertruidenberg","Description":"Gemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0236","Title":"Geldermalsen","Description":"Opgeheven per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0781","Title":"Geldrop","Description":"Opgeheven per 01-01-2004\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1771","Title":"Geldrop-Mierlo","Description":"Ontstaan per 01-01-2004","CategoryGroupID":null
+    },{
+      "Key":"GM0906","Title":"Geleen","Description":"Opgeheven per 01-01-2001\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0782","Title":"Gemert","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1652","Title":"Gemert-Bakel","Description":"Ontstaan per 01-01-1997","CategoryGroupID":null
+    },{
+      "Key":"GM0237","Title":"Gendringen","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0238","Title":"Gendt","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0154","Title":"Genemuiden","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0907","Title":"Gennep","Description":"Begindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0689","Title":"Giessenlanden","Description":"Opgeheven per 01-01-2019\r\nOntstaan per 01-01-1986","CategoryGroupID":null
+    },{
+      "Key":"GM0116","Title":"Gieten","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0784","Title":"Gilze en Rijen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0511","Title":"Goedereede","Description":"Opgeheven per 01-01-2013\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1924","Title":"Goeree-Overflakkee","Description":"Ontstaan per 01-01-2013","CategoryGroupID":null
+    },{
+      "Key":"GM0664","Title":"Goes","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0785","Title":"Goirle","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1942","Title":"Gooise Meren","Description":"Ontstaan per 01-01-2016","CategoryGroupID":null
+    },{
+      "Key":"GM0156","Title":"Goor","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0512","Title":"Gorinchem","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0239","Title":"Gorssel","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0513","Title":"Gouda","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0693","Title":"Graafstroom","Description":"Opgeheven per 01-01-2013\r\nOntstaan per 01-01-1986","CategoryGroupID":null
+    },{
+      "Key":"GM0365","Title":"Graft-De Rijp","Description":"Opgeheven per 01-01-2015\r\nOntstaan per 01-08-1970","CategoryGroupID":null
+    },{
+      "Key":"GM0157","Title":"Gramsbergen","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0786","Title":"Grave","Description":"Begindatum voor 1830\r\nOpgeheven per 01-01-2022","CategoryGroupID":null
+    },{
+      "Key":"GM0390","Title":"'s-Graveland","Description":"Opgeheven per 01-01-2002\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0517","Title":"'s-Gravendeel","Description":"Opgeheven per 01-01-2007\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0518","Title":"'s-Gravenhage (gemeente)","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0787","Title":"'s-Gravenmoer","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0519","Title":"'s-Gravenzande","Description":"Opgeheven per 01-01-2004\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0240","Title":"Groenlo","Description":"Naamswijziging per 19-05-2006\r\nGemeentelijke herindeling per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0241","Title":"Groesbeek","Description":"Naamswijziging per 01-01-2016\r\nGemeentelijke herindeling per 01-01-2015\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0014","Title":"Groningen (gemeente)","Description":"Gemeentelijke herindeling per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0015","Title":"Grootegast","Description":"Opgeheven per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0912","Title":"Grubbenvorst","Description":"Opgeheven per 01-01-2001\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0913","Title":"Gulpen","Description":"Opgeheven per 01-01-1999\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM1729","Title":"Gulpen-Wittem","Description":"Ontstaan per 01-01-1999","CategoryGroupID":null
+    },{
+      "Key":"GM0158","Title":"Haaksbergen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0788","Title":"Haaren","Description":"Gemeentelijke herindeling per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0392","Title":"Haarlem","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0393","Title":"Haarlemmerliede en Spaarnwoude","Description":"Opgeheven per 01-01-2019\r\nBegindatum 13-06-1857","CategoryGroupID":null
+    },{
+      "Key":"GM0394","Title":"Haarlemmermeer","Description":"Gemeentelijke herindeling per 01-01-2019\r\nBegindatum 16-11-1855","CategoryGroupID":null
+    },{
+      "Key":"GM0914","Title":"Haelen","Description":"Opgeheven per 01-01-2007\r\nGemeentelijke herindeling per 01-01-1991\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM1655","Title":"Halderberge","Description":"Ontstaan per 01-01-1997","CategoryGroupID":null
+    },{
+      "Key":"GM0789","Title":"Halsteren","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0159","Title":"Den Ham","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0160","Title":"Hardenberg","Description":"Gemeentelijke herindeling per 01-01-2001\r\nOntstaan per 01-05-1941","CategoryGroupID":null
+    },{
+      "Key":"GM0243","Title":"Harderwijk","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0523","Title":"Hardinxveld-Giessendam","Description":"Ontstaan per 01-01-1957","CategoryGroupID":null
+    },{
+      "Key":"GM0017","Title":"Haren","Description":"Opgeheven per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0395","Title":"Harenkarspel","Description":"Opgeheven per 01-01-2013\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0072","Title":"Harlingen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0318","Title":"Harmelen","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0161","Title":"Hasselt","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0244","Title":"Hattem","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0117","Title":"Havelte","Description":"Opgeheven per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0245","Title":"Hedel","Description":"Opgeheven per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1937","Title":"Heel","Description":"Opgeheven per 01-01-2007\r\nOntstaan per 01-01-1991","CategoryGroupID":null
+    },{
+      "Key":"GM0396","Title":"Heemskerk","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0397","Title":"Heemstede","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0246","Title":"Heerde","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0074","Title":"Heerenveen","Description":"Gemeentelijke herindeling per 01-01-2014\r\nBegindatum 01-07-1934","CategoryGroupID":null
+    },{
+      "Key":"GM0247","Title":"Heerewaarden","Description":"Opgeheven per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0398","Title":"Heerhugowaard","Description":"Begindatum voor 1830\r\nOpgeheven per 01-01-2022 wordt Dijk en Waard GM1980","CategoryGroupID":null
+    },{
+      "Key":"GM0526","Title":"Heerjansdam","Description":"Opgeheven per 01-01-2003\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0917","Title":"Heerlen","Description":"Begindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0791","Title":"Heesch","Description":"Naamswijziging per 28-01-1995\r\nGemeentelijke herindeling per 01-01-1994\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0793","Title":"Heeze","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1658","Title":"Heeze-Leende","Description":"Ontstaan per 01-01-1997","CategoryGroupID":null
+    },{
+      "Key":"GM0399","Title":"Heiloo","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0162","Title":"Heino","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0918","Title":"Helden","Description":"Opgeheven per 01-01-2010\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0400","Title":"Den Helder","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0163","Title":"Hellendoorn","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0530","Title":"Hellevoetsluis","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0794","Title":"Helmond","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0795","Title":"Helvoirt","Description":"Opgeheven per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0531","Title":"Hendrik-Ido-Ambacht","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0248","Title":"Hengelo (Gld.)","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0164","Title":"Hengelo (O.)","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0796","Title":"'s-Hertogenbosch","Description":"Gemeentelijke herindeling per 01-01-2015\r\nGemeentelijke herindeling per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0251","Title":"Heteren","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0252","Title":"Heumen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0797","Title":"Heusden","Description":"Gemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0920","Title":"Heythuysen","Description":"Opgeheven per 01-01-2007\r\nGemeentelijke herindeling per 01-01-1991\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0534","Title":"Hillegom","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0798","Title":"Hilvarenbeek","Description":"Gemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0402","Title":"Hilversum","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1963","Title":"Hoeksche Waard","Description":"Ontstaan per 01-01-2019","CategoryGroupID":null
+    },{
+      "Key":"GM0253","Title":"Hoevelaken","Description":"Opgeheven per 01-01-2000\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0799","Title":"Hoeven","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1735","Title":"Hof van Twente","Description":"Ontstaan per 01-01-2001","CategoryGroupID":null
+    },{
+      "Key":"GM1966","Title":"Het Hogeland","Description":"Ontstaan per 01-01-2019","CategoryGroupID":null
+    },{
+      "Key":"GM1911","Title":"Hollands Kroon","Description":"Ontstaan per 01-01-2012","CategoryGroupID":null
+    },{
+      "Key":"GM0165","Title":"Holten","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0675","Title":"Hontenisse","Description":"Opgeheven per 01-01-2003\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0801","Title":"Hooge en Lage Mierde","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0802","Title":"Hooge en Lage Zwaluwe","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0800","Title":"Hoogeloon, Hapert en Casteren","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0118","Title":"Hoogeveen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0018","Title":"Hoogezand-Sappemeer","Description":"Opgeheven per 01-01-2018\r\nOntstaan per 01-04-1949","CategoryGroupID":null
+    },{
+      "Key":"GM0405","Title":"Hoorn","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0923","Title":"Horst","Description":"Opgeheven per 01-01-2001\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM1507","Title":"Horst aan de Maas","Description":"Gemeentelijke herindeling per 01-01-2010\r\nOntstaan per 01-01-2001","CategoryGroupID":null
+    },{
+      "Key":"GM0321","Title":"Houten","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0803","Title":"Huijbergen","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0255","Title":"Huissen","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0406","Title":"Huizen","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0677","Title":"Hulst","Description":"Gemeentelijke herindeling per 01-01-2003\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0256","Title":"Hummelo en Keppel","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0925","Title":"Hunsel","Description":"Opgeheven per 01-01-2007\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0195","Title":"IJsselham","Description":"Opgeheven per 01-01-2001\r\nOntstaan per 01-01-1973","CategoryGroupID":null
+    },{
+      "Key":"GM0191","Title":"IJsselmuiden","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0353","Title":"IJsselstein","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0645","Title":"Jacobswoude","Description":"Opgeheven per 01-01-2009\r\nOntstaan per 01-01-1991","CategoryGroupID":null
+    },{
+      "Key":"GM1884","Title":"Kaag en Braassem","Description":"Ontstaan per 01-01-2009","CategoryGroupID":null
+    },{
+      "Key":"GM0166","Title":"Kampen","Description":"Gemeentelijke herindeling per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0678","Title":"Kapelle","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0537","Title":"Katwijk","Description":"Gemeentelijke herindeling per 01-01-2006\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0928","Title":"Kerkrade","Description":"Begindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0257","Title":"Kerkwijk","Description":"Opgeheven per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0929","Title":"Kessel","Description":"Opgeheven per 01-01-2010\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0258","Title":"Kesteren","Description":"Naamswijziging per 01-04-2003\r\nGemeentelijke herindeling per 01-01-2002\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0804","Title":"Klundert","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1598","Title":"Koggenland","Description":"Ontstaan per 01-01-2007","CategoryGroupID":null
+    },{
+      "Key":"GM0079","Title":"Kollumerland en Nieuwkruisland","Description":"Opgeheven per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0588","Title":"Korendijk","Description":"Opgeheven per 01-01-2019\r\nOntstaan per 01-01-1984","CategoryGroupID":null
+    },{
+      "Key":"GM0542","Title":"Krimpen aan den IJssel","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1931","Title":"Krimpenerwaard","Description":"Ontstaan per 01-01-2015","CategoryGroupID":null
+    },{
+      "Key":"GM1659","Title":"Laarbeek","Description":"Ontstaan per 01-01-1997","CategoryGroupID":null
+    },{
+      "Key":"GM1685","Title":"Landerd","Description":"Ontstaan per 01-01-1994\r\nOpgeheven per 01-01-2022","CategoryGroupID":null
+    },{
+      "Key":"GM1982","Title":"Land van Cuijk","Description":"Begindatum 01-01-2022\r\nGemeente Boxmeer, Cuijk, Grave, Mil en Sint Hubert, en Sint Anthonis","CategoryGroupID":null
+    },{
+      "Key":"GM0882","Title":"Landgraaf","Description":"Ontstaan per 01-01-1982","CategoryGroupID":null
+    },{
+      "Key":"GM0415","Title":"Landsmeer","Description":"Gemeentelijke herindeling per 01-01-1991\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0325","Title":"Langbroek","Description":"Opgeheven per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0416","Title":"Langedijk","Description":"Ontstaan per 01-08-1941\r\nOpgeheven per 01-01-2022","CategoryGroupID":null
+    },{
+      "Key":"GM1621","Title":"Lansingerland","Description":"Ontstaan per 01-01-2007","CategoryGroupID":null
+    },{
+      "Key":"GM0417","Title":"Laren (NH.)","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0022","Title":"Leek","Description":"Opgeheven per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0805","Title":"Leende","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0545","Title":"Leerdam","Description":"Opgeheven per 01-01-2019\r\nProvinciale wijziging per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0326","Title":"Leersum","Description":"Opgeheven per 01-01-2006\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0080","Title":"Leeuwarden","Description":"Gemeentelijke herindeling per 01-01-2018\r\nGemeentelijke herindeling per 01-01-2014\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0081","Title":"Leeuwarderadeel","Description":"Opgeheven per 01-01-2018\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0546","Title":"Leiden","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0547","Title":"Leiderdorp","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0548","Title":"Leidschendam","Description":"Opgeheven per 01-01-2002\r\nOntstaan per 01-01-1938","CategoryGroupID":null
+    },{
+      "Key":"GM1916","Title":"Leidschendam-Voorburg","Description":"Ontstaan per 01-01-2002","CategoryGroupID":null
+    },{
+      "Key":"GM0995","Title":"Lelystad","Description":"Ontstaan per 01-01-1980","CategoryGroupID":null
+    },{
+      "Key":"GM0082","Title":"Lemsterland","Description":"Opgeheven per 01-01-2014\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1640","Title":"Leudal","Description":"Ontstaan per 01-01-2007","CategoryGroupID":null
+    },{
+      "Key":"GM0327","Title":"Leusden","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0260","Title":"Lichtenvoorde","Description":"Opgeheven per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1673","Title":"Liemeer","Description":"Opgeheven per 01-01-2007\r\nNaamswijziging per 01-01-1994","CategoryGroupID":null
+    },{
+      "Key":"GM0806","Title":"Liempde","Description":"Opgeheven per 01-01-1996\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0261","Title":"Lienden","Description":"Opgeheven per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0552","Title":"De Lier","Description":"Opgeheven per 01-01-2004\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0807","Title":"Lieshout","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0694","Title":"Liesveld","Description":"Opgeheven per 01-01-2013\r\nOntstaan per 01-01-1986","CategoryGroupID":null
+    },{
+      "Key":"GM0418","Title":"Limmen","Description":"Opgeheven per 01-01-2002\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0733","Title":"Lingewaal","Description":"Opgeheven per 01-01-2019\r\nNaamswijziging per 03-01-1987","CategoryGroupID":null
+    },{
+      "Key":"GM1705","Title":"Lingewaard","Description":"Naamswijziging per 01-01-2003","CategoryGroupID":null
+    },{
+      "Key":"GM0553","Title":"Lisse","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0808","Title":"Lith","Description":"Opgeheven per 01-01-2011\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0140","Title":"Littenseradiel","Description":"Opgeheven per 01-01-2018\r\nNaamswijziging per 26-01-1985","CategoryGroupID":null
+    },{
+      "Key":"GM0262","Title":"Lochem","Description":"Gemeentelijke herindeling per 01-01-2005\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0329","Title":"Loenen","Description":"Opgeheven per 01-01-2011\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0809","Title":"Loon op Zand","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0330","Title":"Loosdrecht","Description":"Opgeheven per 01-01-2002\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0331","Title":"Lopik","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0024","Title":"Loppersum","Description":"Opgeheven per 01-01-2021\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0168","Title":"Losser","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0810","Title":"Luyksgestel","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0811","Title":"Maarheeze","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0332","Title":"Maarn","Description":"Opgeheven per 01-01-2006\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0333","Title":"Maarssen","Description":"Opgeheven per 01-01-2011\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0334","Title":"Maartensdijk","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0933","Title":"Maasbracht","Description":"Opgeheven per 01-01-2007\r\nGemeentelijke herindeling per 01-01-1991\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0934","Title":"Maasbree","Description":"Opgeheven per 01-01-2010\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM1671","Title":"Maasdonk","Description":"Opgeheven per 01-01-2015\r\nOntstaan per 01-01-1993","CategoryGroupID":null
+    },{
+      "Key":"GM0263","Title":"Maasdriel","Description":"Gemeentelijke herindeling per 01-01-1999\r\nNaamswijziging per 01-08-1944","CategoryGroupID":null
+    },{
+      "Key":"GM1641","Title":"Maasgouw","Description":"Ontstaan per 01-01-2007","CategoryGroupID":null
+    },{
+      "Key":"GM1991","Title":"Maashorst","Description":"Begindatum 01-01-2022\r\nGemeente Uden en Landerd","CategoryGroupID":null
+    },{
+      "Key":"GM0555","Title":"Maasland","Description":"Opgeheven per 01-01-2004\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0556","Title":"Maassluis","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0935","Title":"Maastricht","Description":"Begindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1665","Title":"Made","Description":"Naamswijziging per 25-04-1998\r\nOntstaan per 01-01-1997","CategoryGroupID":null
+    },{
+      "Key":"GM0812","Title":"Made en Drimmelen","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0936","Title":"Margraten","Description":"Opgeheven per 01-01-2011\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0686","Title":"Mariekerke","Description":"Opgeheven per 01-01-1997\r\nOntstaan per 01-07-1966","CategoryGroupID":null
+    },{
+      "Key":"GM0169","Title":"Markelo","Description":"Opgeheven per 01-01-2001\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1663","Title":"De Marne","Description":"Opgeheven per 01-01-2019\r\nNaamswijziging per 01-01-1992","CategoryGroupID":null
+    },{
+      "Key":"GM0025","Title":"Marum","Description":"Opgeheven per 01-01-2019\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0264","Title":"Maurik","Description":"Opgeheven per 01-01-1999\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0420","Title":"Medemblik","Description":"Gemeentelijke herindeling per 01-01-2011\r\nGemeentelijke herindeling per 01-01-2007\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0993","Title":"Meerlo-Wanssum","Description":"Opgeheven per 01-01-2010\r\nOntstaan per 01-07-1969","CategoryGroupID":null
+    },{
+      "Key":"GM0938","Title":"Meerssen","Description":"Begindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM1948","Title":"Meierijstad","Description":"Ontstaan per 01-01-2017","CategoryGroupID":null
+    },{
+      "Key":"GM0941","Title":"Meijel","Description":"Opgeheven per 01-01-2010\r\nBegindatum 02-01-1839","CategoryGroupID":null
+    },{
+      "Key":"GM0083","Title":"Menaldumadeel","Description":"Naamswijziging per 01-01-2011\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1908","Title":"Menameradiel","Description":"Opgeheven per 01-01-2018\r\nNaamswijziging per 01-01-2011","CategoryGroupID":null
+    },{
+      "Key":"GM1987","Title":"Menterwolde","Description":"Opgeheven per 01-01-2018\r\nNaamswijziging per 01-02-1991","CategoryGroupID":null
+    },{
+      "Key":"GM0119","Title":"Meppel","Description":"Gemeentelijke herindeling per 01-01-1998\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0687","Title":"Middelburg (Z.)","Description":"Gemeentelijke herindeling per 01-01-1997\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0559","Title":"Middelharnis","Description":"Opgeheven per 01-01-2013\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM1842","Title":"Midden-Delfland","Description":"Ontstaan per 01-01-2004","CategoryGroupID":null
+    },{
+      "Key":"GM1731","Title":"Midden-Drenthe","Description":"Naamswijziging per 01-01-2000","CategoryGroupID":null
+    },{
+      "Key":"GM1952","Title":"Midden-Groningen","Description":"Ontstaan per 01-01-2018","CategoryGroupID":null
+    },{
+      "Key":"GM0688","Title":"Middenschouwen","Description":"Opgeheven per 01-01-1997\r\nOntstaan per 01-01-1961","CategoryGroupID":null
+    },{
+      "Key":"GM1697","Title":"Middenveld","Description":"Naamswijziging per 01-01-2000\r\nOntstaan per 01-01-1998","CategoryGroupID":null
+    },{
+      "Key":"GM0814","Title":"Mierlo","Description":"Opgeheven per 01-01-2004\r\nBegindatum voor 1830","CategoryGroupID":null
+    },{
+      "Key":"GM0815","Title":"Mill en Sint Hubert","Description":"Begindatum voor 1830\r\nOpgeheven per 01-01-2022","CategoryGroupID":null
+    },{
+      "Key":"GM0265","Title":"Millingen aan de Rijn","Description":"Opgeheven per 01-01-2015\r\nNaamswijziging per 01-01-1954","CategoryGroupID":null
+    },{
+      "Key":"GM1709","Title":"Moerdijk","Description":"Naamswijziging per 04-04-1998","CategoryGroupID":null
+    },{
+      "Key":"GM0816","Title":"Moergestel","Description":"Opgeheven per 01-01-1997\r\nBegindatum voor 1830",
