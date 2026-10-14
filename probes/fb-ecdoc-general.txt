@@ -1,0 +1,134 @@
+URL: https://agridata.ec.europa.eu/extensions/API_Documentation/GeneralInfo.html
+Fetched: 2026-10-14T14:13:50Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=utf-8 6635
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 14:13:50 GMT
+content-type: text/html;charset=utf-8
+set-cookie: X-Qlik-Session-v2-HTTP=08c34810-016a-458f-9fd6-03f5814a872d; Path=/; HttpOnly; SameSite=Strict; Secure
+cache-control: private, must-revalidate, max-age=0
+expires: Mon, 01 Jan 0001 00:00:00 GMT
+last-modified: Mon, 31 Aug 2026 12:04:50 GMT
+accept-ranges: bytes
+etag: 639237746901340020
+x-ua-compatible: IE=edge
+access-control-allow-origin: https://agridata.ec.europa.eu
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000;includeSubDomains;Preload
+server: -
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text
+=== FIRST 80000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>General Info</title>
+	<link id="bootstrapCSS" href="../CommonStyles/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../DataPortal/API_Documentation.css">
+</head>
+<body>
+<div class="sect1">
+	<h2 id="generalinfo"  class="section_heading">General information</h2>
+	<div class="sectionbody">
+		<div class="sect2">
+
+			<div class="warning_box">
+				<p class="paragraph warning_box_title">
+					<strong>
+						IMPORTANT NOTE
+					</strong>
+					<br>
+				</p>
+				<p class="paragraph">
+					Please note that the new domain for API endpoints is <b><em>https://api.tech.ec.europa.eu</em></b>.
+					The previous API endpoints are still working temporarily to give users time to adapt their queries.
+					The switch off date will be communicated in advance.
+				</p>
+			</div>
+
+			<h3 id="whatisitabout"><a class="link" href="#whatisitabout">What is it about?</a></h3>
+			<div class="paragraph" style="line-height:1.5em">
+				An API, short for Application Programming Interface, is a set of services that can be called from a computer program (“Machine to Machine” interface).
+				It's a computer interface, as opposed to a (human) graphical user interface.
+				Technically the Agri-food Data API is a <strong>Web API,</strong> consisting of a set of addresses (URLs) that may be used to retrieve information from
+				the portal's database. The information is substantially the same as what you can see in the "Data Explorer" tab of the corresponding portal app,
+				but the format is suitable for consumption by computers rather than human beings – even though humans can still read it! It is formatted in a structure
+				known as <a href="https://www.w3.org/standards/webarch/metaformats.html" style="color:#004494; text-decoration:none" target="_blank" ><strong>JSON</strong></a>.
+			</div><br>
+			<div class="paragraph" style="line-height:1.5em">
+				Here is an example of a query URL to retrieve some Slovenian pigmeat prices prices from 2020:
+			</div>
+			<br>
+			<div class="paragraph" style="line-height:1.5em; word-wrap:break-word">
+				<a href="https://api.tech.ec.europa.eu/agrifood/api/pigmeat/prices?memberStateCodes=SI&pigClasses=S&beginDate=22/01/2020&endDate=09/02/2020" style="color:#004494" target="_blank">
+					https://api.tech.ec.europa.eu/agrifood/api/pigmeat/prices?memberStateCodes=SI&pigClasses=S&beginDate=22/01/2020&endDate=09/02/2020
+				</a>
+			</div>
+			<br>
+			<div class="paragraph" style="line-height:1.5em">
+				The key=value pairs after the question mark are filtering parameters to limit the reply to only those records that you need.
+				If you click on that link you will see a typical JSON-formatted reply with curly braces {} to separate records.
+				You can also experiment by varying the parameter values in the address bar of your browser. The general structure of a request is:
+			</div><br>
+			<img src="../CommonImages/url_api.png">
+			<br><br>
+
+			<div class="paragraph" style="line-height:1.5em">
+				Where <strong>host_URL</strong> is the fixed address of our API server, <span style="color:red"><strong>service</strong></span> is the name of the
+				particular web service, and <span style="color:orange"><strong>filters</strong></span> is a series of parameter-based
+				restrictions separated by & signs. The available filter parameters depend on the service, as described in later sections of this document.
+			</div><br>
+
+			<h3>OpenAPI documentation</h3>
+			<div class="paragraph" style="line-height:1.5em">
+				The OpenAPI documentation ready to use by machine is available in double format at the following links:
+				<ul>
+					<li>JSON - <a href="https://api.tech.ec.europa.eu/agrifood/v3/api-docs" style="color:#004494" target="_blank">https://api.tech.ec.europa.eu/agrifood/v3/api-docs</a></li>
+					<li>YAML - <a href="https://api.tech.ec.europa.eu/agrifood/v3/api-docs.yaml" style="color:#004494" target="_blank">https://api.tech.ec.europa.eu/agrifood/v3/api-docs.yaml</a></li>
+				</ul>
+			</div>
+
+			<h3>Using your favourite spreadsheet application</h3>
+			<div class="paragraph" style="line-height:1.5em">
+				A relatively simple way of putting the API to work is by launching the query from <strong>inside a spreadsheet application</strong>. Consult the documentation
+				of your favourite spreadsheet tool and look for something like “getting data from the Web”. Where it says "address" or "URL", paste the above URL.
+				In some spreadsheet applications this may require writing a macro.
+			</div><br>
+
+			<h3>Rate limiting policy: protection against API abuse</h3>
+			<div class="paragraph" style="line-height:1.5em">
+				Our API is protected against abusive behaviour. We have in place a rate limiting policy
+				to protect the application and the ability for users to fetch data in an orderly and sensible manner.<br>
+			</div><br>
+
+			<h3>CORS policy: protection against cross-scripting attacks</h3>
+			<div class="paragraph" style="line-height:1.5em">
+				Https responses from API endpoints do not enable <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" style="color:#004494; text-decoration:none" target="_blank"><strong>CORS</strong></a> scripting.<br>
+			</div><br>
+			<div class="paragraph" style="line-height:1.5em">
+				If you try to make our data available to users within your organisation by developing an internal web application of your own, please be aware that modern browsers will block third-party responses (where the Agri-food data portal API is the third party in this case) by default.
+			</div><br>
+			<div class="paragraph" style="line-height:1.5em">
+				As a web developer, you may circumvent this limitation by offering our data through a proxy service under the same hostname and port number as your web application. From the perspective of the browser, the web application and the data will then appear to come from a single web server.
+			</div><br>
+			<div class="paragraph" style="line-height:1.5em">
+				As an end user, you can configure your browser to disable protection against cross-scripting, but obviously this comes with the risk of exposure to such attacks.
+			</div><br>
+
+			<h3>Query monitoring</h3>
+			<div class="paragraph" style="line-height:1.5em">
+				Query parameters are monitored by the system and may be used for anonymised statistics and debugging purposes.<br>
+			</div><br>
+		</div>
+	</div>
+</div>
+<div style="height:30px"></div>
+</body>
+</html>
