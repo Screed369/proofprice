@@ -286,8 +286,9 @@ export function coverage() {
     sources: SOURCE_PLUGINS.map((s) => s.info),
     examples: exampleUrls().map((e) => e.path),
     rules: [
-      "Every answer is a range with its sample size, period, confidence, source and licence.",
-      "No figure is published from fewer than 5 records.",
+      "Every answer carries its period, confidence, source and licence. Most are a range (median, 10th–90th percentile) with the sample size.",
+      "Official statistics (price_type official_statistic, e.g. Eurostat household energy prices) are an average or median published by a statistics office or regulator, with its reference period: no range, and no sample size unless the publisher gives one.",
+      "No range is published from fewer than 5 records.",
       "Aggregates only: no individual addresses or personal data are returned for home sales.",
       "Information, not a valuation or offer.",
     ],

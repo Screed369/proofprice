@@ -14,7 +14,8 @@ export interface SourceInfo {
   name: string;
   publisher: string;
   what_is_recorded: string;
-  price_type: "transaction" | "posted_pump_price" | "posted_price" | "contract_price" | "reimbursement_price";
+  /** official_statistic = an average or median published by a statistics office or regulator (not built from records we hold). */
+  price_type: "transaction" | "posted_pump_price" | "posted_price" | "contract_price" | "reimbursement_price" | "official_statistic";
   freshness: string;
   licence: string;
   licence_url: string;
