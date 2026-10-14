@@ -1,0 +1,35 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/14310/data?lang=en&outputFormat=json-stat2&valueCodes%5BRegion%5D=0301,03,0&valueCodes%5BBoligtype%5D=00,01,03&valueCodes%5BContentsCode%5D=KvPris,Omsetninger&valueCodes%5BTid%5D=top(8)
+Fetched: 2026-10-14T15:50:19Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 3852
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:50:18 GMT
+server: 
+content-type: application/json; charset=UTF-8
+content-disposition: inline; filename="14310.json"
+content-disposition: inline; filename="14310.json"
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 106798781
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=8955579.046; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{"version":"2.0","class":"dataset","label":"14310: Average price per square meter and number of sales, by region, type of dwelling and quarter","source":"Statistics Norway","updated":"2026-10-12T06:00:00Z","note":["Price is per square meter usable floor area within the enclosing walls of the dwelling unit. Exact definition can be found in NS 3940:2023."],"role":{"time":["Tid"],"geo":["Region"],"metric":["ContentsCode"]},"id":["Region","Boligtype","ContentsCode","Tid"],"size":[3,3,2,7],"dimension":{"Region":{"label":"region","note":["[See list over changes in regional classifications](https://www.ssb.no/offentlig-sektor/kommunekatalog/endringer-i-de-regionale-inndelingene) (in Norwegian).\n"],"category":{"index":{"0301":0,"03":1,"0":2},"label":{"0301":"Oslo - Oslove","03":"Oslo - Oslove","0":"The whole country"}},"extension":{"elimination":true,"eliminationValueCode":"0","show":"code_value"},"link":{"describedby":[{"extension":{"Region":"urn:ssb:classification:klass:104 urn:ssb:classification:klass:131"}}]}},"Boligtype":{"label":"type of dwelling","category":{"index":{"00":0,"01":1,"03":2},"label":{"00":"Total","01":"Detached houses","03":"Multi-dwelling"}},"extension":{"elimination":true,"eliminationValueCode":"00","show":"value"},"link":{"describedby":[{"extension":{"Boligtype":"urn:ssb:classification:klass:40"}}]}},"ContentsCode":{"label":"contents","category":{"index":{"KvPris":0,"Omsetninger":1},"label":{"KvPris":"Average price per square meter (NOK)","Omsetninger":"Number of sales"},"unit":{"KvPris":{"base":"NOK","decimals":0},"Omsetninger":{"base":"number","decimals":0}}},"extension":{"elimination":false,"refperiod":{"KvPris":"","Omsetninger":""},"show":"value","measuringType":{"KvPris":"Average","Omsetninger":"Average"},"priceType":{"KvPris":"NotApplicable","Omsetninger":"NotApplicable"},"adjustment":{"KvPris":"None","Omsetninger":"None"},"alternativeText":{"KvPris":"Average price per square meter (NOK)","Omsetninger":"Number of sales"}},"link":{"describedby":[{"extension":{"KvPris":"urn:ssb:conceptvariable:vardok:1152"}}]}},"Tid":{"label":"quarter","category":{"index":{"2025K1":0,"2025K2":1,"2025K3":2,"2025K4":3,"2026K1":4,"2026K2":5,"2026K3":6},"label":{"2025K1":"2025K1","2025K2":"2025K2","2025K3":"2025K3","2025K4":"2025K4","2026K1":"2026K1","2026K2":"2026K2","2026K3":"2026K3"}},"extension":{"elimination":false,"show":"code"}}},"extension":{"px":{"infofile":"None","tableid":"14310","decimals":0,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"14310: Average price per square meter and number of sales,","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["Region","Boligtype"],"matrix":"14310","subject-code":"pp","subject-area":"Prices and price indices"},"discontinued":null,"contact":[{"name":"Per Medby","organization":"Statistics Norway","phone":"90 24 11 27","mail":"pme@ssb.no","raw":"Per Medby, Statistics Norway# +47 90 24 11 27#pme@ssb.no"},{"name":"Mona Takle","organization":"Statistics Norway","phone":"40 81 14 12","mail":"mta@ssb.no","raw":"Mona Takle, Statistics Norway# +47 40 81 14 12#mta@ssb.no"}]},"value":[100286,97689,98780,96449,100834,99096,98802,5584,6748,5433,4212,5603,6389,5066,68729,69768,68971,67314,73444,70833,71030,203,337,245,197,180,290,209,103244,101126,102047,99609,103313,102372,101568,5073,5937,4850,3738,5136,5659,4570,100286,97689,98780,96449,100834,99096,98802,5584,6748,5433,4212,5603,6389,5066,68729,69768,68971,67314,73444,70833,71030,203,337,245,197,180,290,209,103244,101126,102047,99609,103313,102372,101568,5073,5937,4850,3738,5136,5659,4570,56627,54606,54642,53092,58350,56197,55627,25126,32184,26193,20975,24697,31406,24662,29395,30543,29292,28666,30394,31443,29924,5917,9398,7635,6038,5775,9260,7057,70609,70415,70779,68468,72517,72318,71644,15670,18083,14995,11971,15486,17737,14233]}
