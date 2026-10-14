@@ -1,0 +1,76 @@
+URL: https://agridata.ec.europa.eu/extensions/API_Documentation/swagger.html
+Fetched: 2026-10-14T14:14:31Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=utf-8 2682
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 14:14:31 GMT
+content-type: text/html;charset=utf-8
+set-cookie: X-Qlik-Session-v2-HTTP=64782313-f174-49a7-a5db-90edc2966dcc; Path=/; HttpOnly; SameSite=Strict; Secure
+cache-control: private, must-revalidate, max-age=0
+expires: Mon, 01 Jan 0001 00:00:00 GMT
+last-modified: Thu, 21 May 2026 12:45:35 GMT
+accept-ranges: bytes
+etag: 639149643357742152
+x-ua-compatible: IE=edge
+access-control-allow-origin: https://agridata.ec.europa.eu
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000;includeSubDomains;Preload
+server: -
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text
+=== FIRST 80000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swagger UI</title>
+    <link id="bootstrapCSS" href="../CommonStyles/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../DataPortal/API_Documentation.css">
+</head>
+<body>
+<div class="sect1">
+    <div class="intro_section">
+        <div class="intro_desc">
+            <div>
+                <h2 id="resources-beef" class="section_heading">Swagger UI</h2>
+                <div class="paragraph" style="line-height:1.5em; margin-bottom: 20px;">
+                    <p>You can find below the Swagger User Interface with the complete list of Agrifood public API endpoints grouped by sector.</p>
+                    <p>Swagger User Interface allows anyone — be it your development team or your end consumers — to visualize and interact with the API’s resources.</p>
+                    <p class="paragraph" style="line-height:1.5em">
+                        The Swagger UI is automatically generated from the OpenAPI (formerly known as Swagger) specification, with the visual documentation making it easy for back end implementation and client side consumption.<br>
+                        The OpenAPI specification, ready to use by machine, is available in double format at the following links:
+                    </p>
+                    <div>
+                        <ul>
+                            <li>JSON - <a href="https://api.tech.ec.europa.eu/agrifood/v3/api-docs" style="color:#004494" target="_blank">https://api.tech.ec.europa.eu/agrifood/v3/api-docs</a></li>
+                            <li>YAML - <a href="https://api.tech.ec.europa.eu/agrifood/v3/api-docs.yaml" style="color:#004494" target="_blank">https://api.tech.ec.europa.eu/agrifood/v3/api-docs.yaml</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="paragraph">
+                    The base url for API endpoints is <b><em>https://api.tech.ec.europa.eu/agrifood</em></b>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="sectionbody">
+        <iframe
+                src="https://api.tech.ec.europa.eu/agrifood/swagger-ui/index.html?configUrl=/agrifood/v3/api-docs/swagger-config"
+                id="swagger-iframe"
+                title="Swagger UI"
+                class="swagger_ui_container"
+        >
+        </iframe>
+    </div>
+</div>
+<div style="height:30px"></div>
+
+<script src="./swagger_ui_height_script.js"></script>
+</body>
+</html>
