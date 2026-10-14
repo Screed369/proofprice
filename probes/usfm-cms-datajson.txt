@@ -1,0 +1,38 @@
+URL: https://data.cms.gov/data.json
+Fetched: 2026-10-14T15:44:02Z from GitHub Actions
+Status, type, bytes: 200 application/json 17786258
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-language: en
+content-security-policy: report-uri /report-csp-violation
+content-type: application/json
+etag: "1791983504-gzip"
+last-modified: Wed, 14 Oct 2026 13:11:44 GMT
+referrer-policy: no-referrer-when-downgrade
+x-age: 6012
+x-ah-environment: prod
+x-akamai-original-url: 08ff4c8072129a48657f3e6043a1820662e60637
+x-cache-hits: 84
+x-consumer-id: 07eafadc-1bac-4607-8441-20c35fa46f17
+x-content-type-options: nosniff
+x-drupal-dynamic-cache: HIT
+x-drupal-stale-response: true
+x-drupal-stale-response-date: Wed, 14 Oct 2026 13:11:08 GMT
+x-file-system-cache: MISS
+x-frame-options: SAMEORIGIN
+x-generator: Drupal 10 (https://www.drupal.org)
+x-request-id: v-cdb32c6c-c7d0-11f1-b135-571581fcdc77
+x-xss-protection: 1; mode=block
+expires: Wed, 14 Oct 2026 15:44:01 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Wed, 14 Oct 2026 15:44:01 GMT
+strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+x-xss-protection: 1; mode=block
+akamai-grn: 0.505ed617.1791992641.a199b83
+
+=== FILE TYPE: ASCII text, with very long lines (65536), with no line terminators
+=== FIRST 3000 BYTES
+{"@id":"https:\/\/data.cms.gov\/data.json","@type":"Catalog","title":"Data.CMS.gov DCAT-US v3 Catalog","description":"DCAT-US v3 catalog for Data.CMS.gov public datasets.","conformsTo":{"@type":"Standard","title":"DCAT-US 3.0","identifier":"https:\/\/resources.data.gov\/dcat-us\/3.0.0"},"publisher":{"@type":"Agent","name":"Centers for Medicare & Medicaid Services (CMS)"},"contactPoint":[{"@type":"Kind","fn":"Centers for Medicare & Medicaid Services Metadata Team","hasEmail":"mailto:data.support@cms.hhs.gov"}],"language":["en"],"accessRights":"public","modified":"2026-10-14","dataset":[{"@id":"https:\/\/data.cms.gov\/data-api\/v1\/dataset\/5ebc6246-1861-4d9f-92b4-33c69b315d64\/data-viewer","@type":"Dataset","title":"Accountable Care Organization Participants : 2014-12-31","description":"The Accountable Care Organization (ACO) Participants data presents overview information on ACO participants in the Medicare Shared Savings Program (Shared Savings Program), including their name, track status, number of years in the program, and contact information of key personnel.","publisher":{"@type":"Organization","name":"Office of Enterprise Data and Analytics (OEDA)","subOrganizationOf":[{"@type":"Organization","name":"Centers for Medicare and Medicaid Services (CMS)"}]},"contactPoint":{"@type":"Kind","fn":"Shared Savings Program - CM","hasEmail":"mailto:SharedSavingsProgram@cms.hhs.gov"},"identifier":"https:\/\/data.cms.gov\/data-api\/v1\/dataset\/5ebc6246-1861-4d9f-92b4-33c69b315d64\/data-viewer","accessRights":"public","sourceSite":"data.cms.gov","sourceCatalog":"https:\/\/data.cms.gov\/data.json","modified":"2022-01-27","language":["en"],"temporal":[{"@type":"PeriodOfTime","startDate":"2014-01-01","endDate":"2014-12-31"}],"landingPage":{"@type":"Document","title":"Accountable Care Organization Participants","accessURL":"https:\/\/data.cms.gov\/medicare-shared-savings-program\/accountable-care-organization-participants"},"describedBy":{"@type":"Distribution","title":"ACO Participants Data Dictionary 2014-2022","downloadURL":"https:\/\/data.cms.gov\/resources\/aco-participants-data-dictionary-2014-2022"},"keyword":["Medicare","Value-Based Care","Coordinated Care","Payment Models","Accountable Care Organizations"],"theme":["Medicare"],"accrualPeriodicity":"annually","accessLevel":"public","bureauCode":["009:38"],"programCode":["009:000"],"references":["https:\/\/data.cms.gov\/resources\/acos-aco-participants-and-snf-affiliates-methodology"],"distribution":[{"@type":"Distribution","downloadURL":"https:\/\/data.cms.gov\/sites\/default\/files\/2021-11\/d6084efd-ae4b-4633-8983-25485978717c\/SSP_ACO_Participants_2014_01_01.csv","mediaType":"application\/vnd.ms-excel","format":"XLSX","resourcesAPI":"https:\/\/data.cms.gov\/data-api\/v1\/dataset-resources\/5ebc6246-1861-4d9f-92b4-33c69b315d64","title":"Accountable Care Organization Participants : 2014-12-31","describedBy":{"@type":"Distribution","title":"Data dictionary for Accountable Care Organization Participant
