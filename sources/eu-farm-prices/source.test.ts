@@ -499,6 +499,38 @@ test("eu-farm-prices: euFarmPrices makes one request, treats 404 as no data and 
   await assert.rejects(euFarmPrices({ country: "IE", product: "pig", now: NOW }, { fetcher: async () => ({ message: "weird" }) }), /unexpected answer/);
 });
 
+test("eu-farm-prices: a momentary gateway error (HTTP 500 'endpoint SUSPENDED', seen live on a cold call) is retried once", async () => {
+  const suspended = JSON.stringify({ code: "303001", type: "Status report", message: "Runtime Error", description: "Currently , Address endpoint : [ Name : AgrifoodPublicData--vprod_APIproductionEndpoint ] [ State : SUSPENDED ]" });
+  let calls = 0;
+  const flaky = async () => {
+    calls++;
+    if (calls === 1) throw new SourceError("Source returned HTTP 500", suspended);
+    return F.PIG_IE_YEAR;
+  };
+  const ok = await euFarmPrices({ country: "IE", product: "pig", now: NOW }, { fetcher: flaky });
+  assert.equal(calls, 2);
+  assert.equal(ok.status, "ok");
+  assert.equal(ok.price!.value, 168.2);
+
+  // still failing on the second try: the error is passed on (after exactly two tries), never an invented price
+  let tries = 0;
+  const dead = async () => {
+    tries++;
+    throw new SourceError("Source returned HTTP 500", suspended);
+  };
+  await assert.rejects(euFarmPrices({ country: "IE", product: "pig", now: NOW }, { fetcher: dead }), /HTTP 500/);
+  assert.equal(tries, 2);
+
+  // a 404 or 429 is an answer, not a hiccup: no retry
+  let once = 0;
+  const limited = async () => {
+    once++;
+    throw new SourceError("Source returned HTTP 429", "Too Many Requests");
+  };
+  await assert.rejects(euFarmPrices({ country: "IE", product: "pig", now: NOW }, { fetcher: limited }), /limiting requests/);
+  assert.equal(once, 1);
+});
+
 test("eu-farm-prices: bad input gets a clear InputError before any request", async () => {
   const f = fake([]);
   await assert.rejects(euFarmPrices({ country: "LU", product: "pig" }, { fetcher: f.fetcher }), (e: any) => e instanceof InputError && /Not yet: LU/.test(e.message));

@@ -658,10 +658,21 @@ export function farmUrl(product: Product, geo: string, now: Date): string {
   return `${API_BASE}/${ENDPOINT[product.family]}?${parts.join("&")}`;
 }
 
+/** The portal's gateway now and then answers HTTP 500 "endpoint SUSPENDED" for a moment (seen on a cold call, fine a second later): one retry after this pause. */
+export const RETRY_DELAY_MS = 500;
+
 /** Rows from the portal. HTTP 404 "No results found" is how it says "nothing matches": that is no data, not a failure. */
 async function fetchRows(url: string, o: FetchOptions): Promise<unknown[]> {
   try {
-    const body = await resolveFetcher(o)(url);
+    const get = resolveFetcher(o);
+    let body: unknown;
+    try {
+      body = await get(url);
+    } catch (first) {
+      if (!(first instanceof SourceError) || !/HTTP (500|502|503|504)\b/.test(first.message)) throw first;
+      await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+      body = await get(url);
+    }
     if (Array.isArray(body)) return body;
     throw new SourceError("The Agri-food data portal returned an unexpected answer", JSON.stringify(body)?.slice(0, 300));
   } catch (err) {
