@@ -1,0 +1,64 @@
+URL: https://datacatalog.cookcountyil.gov/resource/nj4t-kc8j.json?$select=township_code%2Ctax_municipality_name%2Ccount(*)%20as%20n&$where=year%20%3D%20'2024'%20AND%20township_code%20in%20('11'%2C'15'%2C'17'%2C'27'%2C'33'%2C'23'%2C'10'%2C'39')&$group=township_code%2Ctax_municipality_name&$order=n%20DESC&$limit=60
+Fetched: 2026-10-14T14:24:29Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2651
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:24:29 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuMTkwNThfMTdfNTY0MHo3dU1qNmRUWHVlVjhMNVA1SXhmNGJFTGRRSQ---gzigo6ah_9t81h-QAfaQkNfYGAaTb6--gzip--gzip"
+X-SODA2-Fields: ["township_code","tax_municipality_name","n"]
+X-SODA2-Types: ["text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: b975ce45be2fdf5aa410181a5aacef52
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+[{"township_code":"39","tax_municipality_name":"VILLAGE OF OAK LAWN","n":"26000"}
+,{"township_code":"17","tax_municipality_name":"CITY OF EVANSTON","n":"24646"}
+,{"township_code":"27","tax_municipality_name":"VILLAGE OF OAK PARK","n":"18734"}
+,{"township_code":"15","tax_municipality_name":"TOWN OF CICERO","n":"17274"}
+,{"township_code":"11","tax_municipality_name":"CITY OF BERWYN","n":"15569"}
+,{"township_code":"23","tax_municipality_name":"VILLAGE OF WILMETTE","n":"10868"}
+,{"township_code":"39","tax_municipality_name":"VILLAGE OF EVERGREEN PARK","n":"8928"}
+,{"township_code":"39","tax_municipality_name":"VILLAGE OF ALSIP","n":"7207"}
+,{"township_code":"23","tax_municipality_name":"VILLAGE OF WINNETKA","n":"4886"}
+,{"township_code":"39","tax_municipality_name":"VILLAGE OF CHICAGO RIDGE","n":"4681"}
+,{"township_code":"33","tax_municipality_name":"VILLAGE OF RIVER FOREST","n":"4532"}
+,{"township_code":"39","tax_municipality_name":"CITY OF BLUE ISLAND","n":"3900"}
+,{"township_code":"23","tax_municipality_name":"VILLAGE OF GLENCOE","n":"3738"}
+,{"township_code":"39","tax_municipality_name":"VILLAGE OF WORTH","n":"3170"}
+,{"township_code":"39","tax_municipality_name":"CITY OF PALOS HEIGHTS","n":"2860"}
+,{"township_code":"10","tax_municipality_name":"VILLAGE OF SOUTH BARRINGTON","n":"2326"}
+,{"township_code":"39","tax_municipality_name":"VILLAGE OF CRESTWOOD","n":"2298"}
+,{"township_code":"10","tax_municipality_name":"VILLAGE OF BARRINGTON","n":"2257"}
+,{"township_code":"39","tax_municipality_name":"CITY OF HOMETOWN","n":"1681"}
+,{"township_code":"39","n":"1673"}
+,{"township_code":"10","tax_municipality_name":"VILLAGE OF BARRINGTON HILLS","n":"1331"}
+,{"township_code":"39","tax_municipality_name":"VILLAGE OF ROBBINS","n":"1218"}
+,{"township_code":"23","tax_municipality_name":"VILLAGE OF NORTHFIELD","n":"1203"}
+,{"township_code":"23","tax_municipality_name":"VILLAGE OF GLENVIEW","n":"1191"}
+,{"township_code":"23","tax_municipality_name":"VILLAGE OF KENILWORTH","n":"1001"}
+,{"township_code":"10","tax_municipality_name":"VILLAGE OF HOFFMAN ESTATES","n":"936"}
+,{"township_code":"10","tax_municipality_name":"VILLAGE OF INVERNESS","n":"796"}
+,{"township_code":"39","tax_municipality_name":"VILLAGE OF MERRIONETTE PARK","n":"664"}
+,{"township_code":"39","tax_municipality_name":"VILLAGE OF BRIDGEVIEW","n":"622"}
+,{"township_code":"10","n":"606"}
+,{"township_code":"23","n":"283"}
+,{"township_code":"17","n":"15"}
+,{"township_code":"11","n":"11"}
+,{"township_code":"27","n":"3"}
+,{"township_code":"33","n":"3"}
+,{"township_code":"15","n":"3"}
+,{"township_code":"10","tax_municipality_name":"VILLAGE OF EAST DUNDEE","n":"2"}]
