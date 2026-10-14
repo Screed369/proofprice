@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/package_search?q=prescription&rows=30&fl=name,title,license_title,metadata_modified
+Fetched: 2026-10-14T15:43:23Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3346
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:43:23 GMT
+content-type: application/json;charset=utf-8
+content-length: 3346
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 876, "facets": {}, "results": [{"name": "prescription-cost-analysis-pca-annual-statistics", "title": "Prescription Cost Analysis (PCA) Annual Statistics", "metadata_modified": "2026-09-14T08:29:33.247Z"}, {"name": "prescription-cost-analysis-pca-monthly-data", "title": "Prescription Cost Analysis (PCA) Monthly Administrative Data", "metadata_modified": "2026-09-18T15:57:03.003Z"}, {"name": "hormone-replacement-therapy-prescription-prepayment-certificate-hrt-ppc-volumes", "title": "Hormone Replacement Therapy Prescription Prepayment Certificate (HRT PPC) volumes", "metadata_modified": "2026-08-18T13:19:58.415Z"}, {"name": "foi-01763", "title": "FOI-01763", "metadata_modified": "2024-04-15T07:26:41.864Z"}, {"name": "foi-01747", "title": "FOI-01747", "metadata_modified": "2024-03-08T14:52:02.872Z"}, {"name": "foi-04092", "title": "FOI-04092", "metadata_modified": "2026-09-29T07:24:10.372Z"}, {"name": "foi-01563", "title": "FOI-01563", "metadata_modified": "2023-12-14T16:46:46.175Z"}, {"name": "foi-02009", "title": "FOI-02009", "metadata_modified": "2024-08-07T07:48:05.114Z"}, {"name": "foi-04061", "title": "FOI-04061", "metadata_modified": "2026-09-29T06:57:46.352Z"}, {"name": "foi-02798", "title": "FOI-02798", "metadata_modified": "2025-05-21T14:02:11.627Z"}, {"name": "foi-01593", "title": "FOI-01593", "metadata_modified": "2023-12-28T10:33:33.452Z"}, {"name": "foi-01882", "title": "FOI-01882", "metadata_modified": "2024-06-05T16:15:34.620Z"}, {"name": "foi-02855", "title": "FOI-02855", "metadata_modified": "2025-06-03T11:21:13.482Z"}, {"name": "foi-01677", "title": "FOI-01677", "metadata_modified": "2024-02-15T11:55:32.463Z"}, {"name": "foi-02100", "title": "FOI-02100", "metadata_modified": "2024-08-27T08:55:21.318Z"}, {"name": "foi-02425", "title": "FOI-02425", "metadata_modified": "2025-01-02T19:45:57.316Z"}, {"name": "foi-02921", "title": "FOI-02921", "metadata_modified": "2026-03-26T10:20:05.226Z"}, {"name": "foi-02743", "title": "FOI-02743", "metadata_modified": "2025-04-25T14:19:07.017Z"}, {"name": "foi-01918", "title": "FOI-01918", "metadata_modified": "2024-06-12T12:36:07.139Z"}, {"name": "foi-01524", "title": "FOI-01524", "metadata_modified": "2023-11-28T11:32:13.574Z"}, {"name": "foi-01398", "title": "FOI-01398", "metadata_modified": "2023-09-26T08:51:26.238Z"}, {"name": "foi-01517", "title": "FOI-01517", "metadata_modified": "2024-02-12T10:32:20.688Z"}, {"name": "foi-02695", "title": "FOI-02695", "metadata_modified": "2025-04-17T08:11:37.678Z"}, {"name": "foi-01607", "title": "FOI-01607", "metadata_modified": "2024-01-16T07:45:29.895Z"}, {"name": "foi-01597", "title": "FOI-01597", "metadata_modified": "2023-12-21T11:47:49.560Z"}, {"name": "foi-01897", "title": "FOI-01897", "metadata_modified": "2024-05-31T12:52:20.482Z"}, {"name": "foi-03290", "title": "FOI-03290", "metadata_modified": "2026-03-26T12:28:19.020Z"}, {"name": "foi-03037", "title": "FOI-03037", "metadata_modified": "2026-01-22T10:47:16.053Z"}, {"name": "foi-03624", "title": "FOI-03624", "metadata_modified": "2026-03-24T16:39:16.668Z"}, {"name": "foi-03402", "title": "FOI-03402", "metadata_modified": "2025-12-16T08:29:57.980Z"}], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
