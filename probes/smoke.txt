@@ -1,0 +1,203 @@
+Smoke test of https://proofprice.com at 2026-10-14T17:16:11Z
+12 tools, 40 sources, 99 examples
+
+OK    200   0.9s /api/v1/fuel?country=AT&area=9&fuel=diesel
+      Diesel in Wien: the 14 cheapest stations listed by E-Control charge a median of €2.089 per litre, range €2.074–€2.089. This is the cheap end of the ma
+OK    200   0.3s /api/v1/fuel?country=AT&area=6&fuel=petrol95
+      Unleaded 95 in Steiermark: the 12 cheapest stations listed by E-Control charge a median of €1.773 per litre, range €1.759–€1.776. This is the cheap en
+OK    200   0.2s /api/v1/home-sales?country=AT&town=Wien&property_type=apartment
+      In Wien the median price paid for owner-occupied flats (Eigentumswohnungen) was €5,212 per m² of living area in 2025. That is 5.5% higher than in 2024
+OK    200   0.2s /api/v1/home-sales?country=AT&town=Graz&property_type=house
+      In Graz the median price paid for houses (Wohnhäuser) was €4,034 per m² of living area in 2025. That is 0.9% higher than in 2024 (€4,000 per m²). The 
+OK    200   0.1s /api/v1/home-sales?country=AT&postcode=1020&property_type=apartment
+      In Wien 2 (Leopoldstadt) the median price paid for owner-occupied flats (Eigentumswohnungen) was €5,878 per m² of living area in 2025. That is 10.4% h
+OK    200   0.2s /api/v1/rent?country=AU&postcode=2000
+      Rental bonds lodged for homes in postcode 2000, NSW show a median weekly rent of A$900 (about A$3,900 a month); typical range A$609–A$1,650 a week. Ba
+OK    200   0.2s /api/v1/rent?country=AU&postcode=2150&property_type=apartment&bedrooms=2
+      Rental bonds lodged for 2-bedroom flats and units in postcode 2150, NSW show a median weekly rent of A$730 (about A$3,163 a month); typical range A$55
+OK    200   1.1s /api/v1/fuel?country=AU&area=Perth&fuel=petrol95
+      Unleaded petrol (ULP, 91 RON) in Perth (metropolitan area) costs a median of A$2.439 per litre; typical range A$2.336–A$2.479 across stations (standar
+OK    200   0.3s /api/v1/fuel?country=AU&town=Rockingham&fuel=petrol95
+      Unleaded petrol (ULP, 91 RON) in Rockingham and neighbouring suburbs costs a median of A$2.459 per litre; typical range A$2.396–A$2.473 across station
+OK    200   0.1s /api/v1/home-sales?country=BE&town=Antwerpen&property_type=apartment
+      In Antwerpen / Anvers the median sale price of apartments was €255,000 in the second quarter of 2026 (April to June), from 1,645 transactions; half of
+OK    200   0.2s /api/v1/home-sales?country=BE&town=Gent&property_type=house
+      In Gent / Gand the median sale price of houses (all types, not apartments) was €412,064 in the second quarter of 2026 (April to June), from 609 transa
+OK    200   0.2s /api/v1/home-sales?country=BE&town=Brussels&property_type=apartment
+      In Brussel / Bruxelles the median sale price of apartments was €270,000 in the second quarter of 2026 (April to June), from 367 transactions; half of 
+OK    200   0.1s /api/v1/fuel?country=BR&town=S%C3%A3o+Paulo&fuel=petrol95
+      Regular petrol (gasolina comum) in São Paulo, SP: median R$6.29 per litre in ANP's survey of the week ending 2026-09-30; typical range R$5.89–R$6.89 a
+OK    200   0.2s /api/v1/fuel?country=BR&area=MG&fuel=diesel
+      Diesel S10 in Minas Gerais (state): median R$6.99 per litre in ANP's survey of the week ending 2026-09-30; typical range R$6.79–R$7.59 across the surv
+OK    200   9.2s /api/v1/home-sales?country=DK&town=K%C3%B8benhavn
+      In Copenhagen (province Byen København) the average price of an owner-occupied flat (ordinary free-trade sales) was DKK 6,168,000 in the second quarte
+OK    200   6.5s /api/v1/home-sales?country=DK&town=Aarhus&property_type=flat
+      In Aarhus (province Østjylland) the average price of an owner-occupied flat (ordinary free-trade sales) was DKK 3,010,000 in the second quarter of 202
+OK    200   6.0s /api/v1/home-sales?country=DK&town=Fyn&property_type=house
+      In Fyn the average price of a one-family house (ordinary free-trade sales) was DKK 2,268,000 in the second quarter of 2026 (preliminary), from 1,301 s
+OK    200   0.8s /api/v1/fuel?country=ES&area=42&fuel=diesel
+      Diesel in province 42 costs a median of €1.909 per litre right now; typical range €1.785–€1.959 across stations. Based on 41 records from Ministerio p
+OK    200   1.7s /api/v1/fuel?country=ES&postcode=28001&fuel=petrol95
+      Unleaded 95 in province 28 (around postcode 28001) costs a median of €1.834 per litre right now; typical range €1.659–€1.898 across stations. Based on
+OK    200   0.4s /api/v1/energy?country=IE&energy=electricity
+      In Ireland the average household price of electricity was €0.3871 per kWh in the first half of 2026 (all taxes and levies included; annual consumption
+OK    200   0.2s /api/v1/energy?country=DE&energy=gas
+      In Germany the average household price of natural gas was €0.1156 per kWh in the first half of 2026 (all taxes and levies included; annual consumption
+OK    200   0.4s /api/v1/farm-prices?country=IE&product=pig
+      In Ireland the latest published price for pig carcasses (class E) was €168.20 per 100 kg (€1.68 per kg) for the week 28 Sep 2026 to 4 Oct 2026. That i
+OK    200   0.4s /api/v1/farm-prices?country=FR&product=wheat
+      In France the latest published price for milling (bread-making) wheat (delivered to port, simple average of 2 markets) was €251.44 per tonne (€0.251 p
+OK    200   0.5s /api/v1/farm-prices?country=ES&product=olive+oil
+      In Spain the latest published price for extra virgin olive oil (national average) was €343.19 per 100 kg (€3.43 per kg) for the week 28 Sep 2026 to 4 
+OK    200   0.6s /api/v1/farm-prices?country=IE&product=milk
+      In Ireland the latest published price for raw cow's milk was €40.79 per 100 kg (€0.408 per kg) for September 2026. That is unchanged from the previous
+OK    200   0.5s /api/v1/farm-prices?country=PL&product=apples
+      In Poland the latest published price for apples (ex-packaging station, national average) was €73.82 per 100 kg (€0.738 per kg) for the week 28 Sep 202
+OK    200   0.5s /api/v1/farm-prices?country=DE&product=butter
+      In Germany the latest published price for butter was €419.00 per 100 kg (€4.19 per kg) for the week 28 Sep 2026 to 4 Oct 2026. That is 16.5% lower tha
+OK    200   0.3s /api/v1/land-prices?country=IE&measure=price
+      In Ireland the average price of arable land was €50,375 per hectare in 2024 (provisional). That is 43.3% higher than in 2023. Eurostat publishes land 
+OK    200   0.3s /api/v1/land-prices?country=ES&measure=price&region=ES51
+      In Cataluña (ES51), Spain the average price of arable land was €15,278 per hectare in 2024. That is 3.6% higher than in 2023. Eurostat publishes land 
+OK    200   0.3s /api/v1/land-prices?country=FR&measure=rent
+      In France the average rent for arable land and/or permanent grassland was €171 per hectare per year in 2024. That is 4.9% higher than in 2023. Eurosta
+OK    200   0.2s /api/v1/land-prices?country=PL&measure=price&land_type=permanent+grassland
+      In Poland the average price of permanent grassland was €10,710 per hectare in 2024 (estimated). That is 23.3% higher than in 2023. Eurostat publishes 
+OK    200   0.5s /api/v1/contracts?country=FR&what=laptops
+      Public buyers in France awarded laptops contracts with a median total value of €3,208,275 per contract (typical range €102,201 to €24,781,000, 10th to
+OK    200   1.7s /api/v1/contracts?country=DE&what=school+meals
+      Public buyers in Germany awarded school meals contracts with a median total value of €643,765 per contract (typical range €109,846 to €2,417,921, 10th
+OK    200   0.8s /api/v1/contracts?country=ES&what=road+resurfacing
+      Public buyers in Spain awarded road resurfacing and repair contracts with a median total value of €2,920,811 per contract (typical range €551,402 to €
+OK    200   0.3s /api/v1/contracts?country=IE&what=office+cleaning
+      Public buyers in Ireland awarded office cleaning contracts with a median total value of €800,000 per contract (typical range €130,198 to €2,314,814, 1
+OK    200   1.3s /api/v1/home-sales?country=FI&town=Helsinki
+      In Helsinki the average price per m² of old dwellings in housing companies (all building types) was €4,916 in the second quarter of 2026 (provisional)
+OK    200   1.5s /api/v1/home-sales?country=FI&postcode=00100&property_type=flat
+      In postal code area 00100 Helsinki keskusta - Etu-Töölö (Helsinki) the average price per m² of two-room flats in blocks of flats was €7,167 in the fir
+OK    200   0.4s /api/v1/home-sales?country=FI&town=Tampere&property_type=terraced
+      In Tampere the average price per m² of old dwellings in housing companies (terraced houses) was €2,763 in the second quarter of 2026 (provisional), fr
+OK    200   2.8s /api/v1/home-sales?country=FR&postcode=69003&property_type=apartment
+      Apartments in postcode 69003 sold for a median of €250,000; typical range €127,000–€466,085. Based on 1350 records from Direction générale des Finance
+OK    200   0.5s /api/v1/fuel?country=FR&postcode=75015&fuel=diesel
+      Diesel (Gazole) in postcode 75015 costs a median of €2.449/litre right now; typical range €2.322–€2.569 across stations. Based on 6 records from Minis
+OK    200   0.1s /api/v1/medicines?country=FR&medicine=doliprane
+      Packs of "doliprane" in France have a legally fixed price of a median €2.35 per box; typical range €2.18–€2.45, across pack sizes and strengths. These
+OK    200   0.1s /api/v1/medicines?country=FR&medicine=paracetamol
+      Packs of "paracetamol" in France have a legally fixed price of a median €2.18 per box; typical range €2.18–€2.18, across pack sizes and strengths. The
+OK    200   2.2s /api/v1/contracts?country=GB&what=road+resurfacing
+      Public buyers in the UK awarded road resurfacing and repair contracts with a median total value of £141,664 per contract (typical range £31,215 to £1,
+OK    200   1.0s /api/v1/contracts?country=GB&what=laptops&buyer_area=London
+      Public buyers in the UK (London) awarded laptops contracts with a median total value of £130,993 per contract (typical range £31,177 to £2,021,029, 10
+OK    200   8.8s /api/v1/home-sales?country=GB&town=Bristol&property_type=terraced
+      Terraced homes in BRISTOL sold for a median of £344,000; typical range £255,000–£550,000. Based on 3145 records from HM Land Registry (2025-10-14 to 2
+OK    200   1.4s /api/v1/medicines?country=GB&medicine=omeprazole
+      The NHS in England paid on average about £0.03307 per capsule in ingredient cost (the Drug Tariff basic price, before discounts and fees) for Omeprazo
+OK    200   1.2s /api/v1/medicines?country=GB&medicine=atorvastatin
+      The NHS in England paid on average about £0.02995 per tablet in ingredient cost (the Drug Tariff basic price, before discounts and fees) for Atorvasta
+OK    200   0.2s /api/v1/medicines?country=GB&medicine=atorvastatin+20mg
+      The NHS in England paid on average about £0.02604 per tablet in ingredient cost (the Drug Tariff basic price, before discounts and fees) for Atorvasta
+OK    200   0.2s /api/v1/groceries?country=GB&item=eggs
+      In the United Kingdom the median shop price of "Free-range eggs, pack of 12" was £3.40 in August 2026 (half of the prices ran from £2.98 to £4.20; mea
+OK    200   0.1s /api/v1/groceries?country=GB&item=milk
+      In the United Kingdom the median shop price of "Whole milk, fresh, 2272 ml (4 pints)" was £1.75 in August 2026 (half of the prices ran from £1.65 to £
+OK    200   0.1s /api/v1/rent?country=GB&town=Manchester
+      The average monthly private rent for all homes in Manchester was £1,373, up 4.2% on a year earlier. Official average published by Office for National 
+OK    200   0.1s /api/v1/rent?country=GB&town=Westminster&bedrooms=2
+      The average monthly private rent for two-bedroom homes in Westminster was £3,305, down 0.3% on a year earlier. Official average published by Office fo
+OK    200   0.2s /api/v1/rent?country=GB&town=Cardiff&property_type=house&house_type=terraced
+      The average monthly private rent for terraced houses in Cardiff was £1,177, up 3.9% on a year earlier. Official average published by Office for Nation
+OK    200   0.5s /api/v1/groceries?country=IE&item=milk
+      In Ireland the national average shop price of "Full-fat milk, per 2 litres" was €2.37 in September 2026 (Consumer Price Index price collection, not re
+OK    200   0.2s /api/v1/groceries?country=IE&item=white+bread
+      In Ireland the national average shop price of "White sliced pan bread, large (800 g)" was €1.67 in September 2026 (Consumer Price Index price collecti
+OK    200   0.1s /api/v1/home-sales?country=IE&town=Dublin&property_type=second-hand
+      Second-hand homes in Dublin sold for a median of €490,000; typical range €300,000–€1,000,000. Based on 14094 records from Property Services Regulatory
+OK    200   0.1s /api/v1/home-sales?country=IE&town=Dublin+6&months=24
+      Homes in Dublin 6 sold for a median of €760,000; typical range €373,100–€2,000,000. Based on 813 records from Property Services Regulatory Authority (
+OK    200   0.5s /api/v1/rent?country=IE&town=Dublin
+      The average monthly rent of homes (all sizes) registered with the RTB in Dublin was €2,165. Official average published by Residential Tenancies Board 
+OK    200   1.0s /api/v1/rent?country=IE&town=Swords%2C+Dublin&property_type=apartment&bedrooms=2
+      The average monthly rent of apartments (2 bedrooms) registered with the RTB in Swords, Dublin was €1,847. Official average published by Residential Te
+OK    200   9.3s /api/v1/fuel?country=IT&area=MI&fuel=diesel
+      Diesel (self-service) in province MI costs a median of €2.249 per litre; typical range €2.19–€2.299 across stations. Based on 645 records from Ministe
+OK    200   0.1s /api/v1/fuel?country=MX&area=Ciudad+de+M%C3%A9xico&fuel=petrol95
+      Regular petrol (gasolina regular, Magna) in Ciudad de México: median MX$23.99 per litre on 2026-10-14; typical range MX$23.01–MX$23.99 across stations
+OK    200   0.1s /api/v1/fuel?country=MX&area=Jalisco&fuel=diesel
+      Diesel in Jalisco: median MX$27.00 per litre on 2026-10-14; typical range MX$26.98–MX$27.55 across stations. Based on 781 records from Comisión Regula
+OK    200   0.7s /api/v1/home-sales?country=NL&town=Amsterdam
+      In Amsterdam the average sale price of existing owner-occupied homes was €630,621 in 2025. That is 2.1% higher than in 2024 (€617,647). The national a
+OK    200   0.3s /api/v1/home-sales?country=NL&town=Den+Haag
+      In 's-Gravenhage the average sale price of existing owner-occupied homes was €465,418 in 2025. That is 4% higher than in 2024 (€447,417). The national
+OK    200   0.4s /api/v1/home-sales?country=NL
+      In the Netherlands the average sale price of existing owner-occupied homes was €479,527 in 2025. That is 6.3% higher than in 2024 (€450,985). Official
+OK    200   0.5s /api/v1/home-sales?country=NO&town=Oslo
+      In Oslo the average price paid per m² for all dwellings (existing dwellings) was NOK 98,802 in the third quarter of 2026, from 5,066 sales. That is 0.
+OK    200   0.7s /api/v1/home-sales?country=NO&town=Bergen&property_type=flat
+      In Bergen the average price paid per m² for multi-dwelling buildings (flats) (existing dwellings) was NOK 73,406 in the third quarter of 2026, from 1,
+OK    200   1.1s /api/v1/home-sales?country=NO&town=Tromso&property_type=detached
+      In Tromsø the average price paid per m² for detached houses (existing dwellings) was NOK 43,591 in the third quarter of 2026, from 83 sales. That is 2
+OK    200   1.3s /api/v1/rent?country=NO&town=Oslo&rooms=2
+      The average monthly rent of rented homes with 2 rooms in Oslo and Bærum municipality was NOK 15,260 in 2025. Official average published by Statistics 
+OK    200   0.4s /api/v1/rent?country=NO&town=Norway&rooms=3
+      The average monthly rent of rented homes with 3 rooms in The whole country was NOK 13,910 in 2025. Official average published by Statistics Norway (SS
+OK    200   2.9s /api/v1/home-sales?country=PT&town=Lisboa
+      In Lisboa the median sale price of dwellings sold in the 12 months to March 2026 was €5,082 per m². That is 15.2% higher than a year earlier (2025-Q1:
+OK    200   2.4s /api/v1/home-sales?country=PT&town=Porto
+      In Porto the median sale price of dwellings sold in the 12 months to March 2026 was €3,510 per m². That is 16.7% higher than a year earlier (2025-Q1: 
+OK    200   2.3s /api/v1/home-sales?country=PT
+      In Portugal the median sale price of dwellings sold in the 12 months to March 2026 was €2,168 per m². That is 17.5% higher than a year earlier (2025-Q
+OK    200   3.8s /api/v1/home-sales?country=SE&town=Stockholm
+      In Stockholm the average purchase price of a house (one- or two-dwelling building) was SEK 8,850,000 in 2025, from 1,380 sales. That is 2.9% higher th
+OK    200   1.7s /api/v1/home-sales?country=SE&town=Goteborg&property_type=flat
+      In Göteborg the median purchase price of a tenant-owned flat in Greater Gothenburg was SEK 2,750,000 in 2025, from 10,957 sales. That is unchanged fro
+OK    200   1.8s /api/v1/home-sales?country=SE&town=Sk%C3%A5ne&property_type=house
+      In Skåne county the average purchase price of a house (one- or two-dwelling building) was SEK 4,090,000 in the second quarter of 2026, from 2,059 sale
+OK    200   1.8s /api/v1/cars?country=SG&product=coe&vehicle_class=A
+      COE Category A (Cars up to 1600cc) in Singapore: median winning premium SGD 123,010; typical range SGD 106,392–SGD 129,601. Based on 25 records from L
+OK    200   1.5s /api/v1/cars?country=SG&product=coe&vehicle_class=D&months=24
+      COE Category D (Motorcycles) in Singapore: median winning premium SGD 9,201; typical range SGD 8,289–SGD 10,262. Based on 49 records from Land Transpo
+OK    200   1.9s /api/v1/rent?country=SG&town=Tampines&flat_type=4+ROOM
+      4-ROOM HDB flats in TAMPINES were approved for rent at a median of SGD 3,400 a month; typical range SGD 2,800–SGD 3,800. Based on 924 records from Hou
+OK    200   3.3s /api/v1/rent?country=SG&town=Bedok
+      HDB flats in BEDOK were approved for rent at a median of SGD 3,000 a month; typical range SGD 2,400–SGD 3,800. Based on 2105 records from Housing & De
+OK    200   2.8s /api/v1/home-sales?country=SG&town=Tampines
+      HDB resale flats in TAMPINES sold for a median of SGD 715,000; typical range SGD 487,989–SGD 948,000. Based on 1000 records from Housing & Development
+OK    200   2.9s /api/v1/home-sales?country=SG&town=Tampines&flat_type=4+ROOM
+      4 ROOM HDB resale flats in TAMPINES sold for a median of SGD 668,000; typical range SGD 585,000–SGD 805,000. Based on 939 records from Housing & Devel
+OK    200   0.1s /api/v1/groceries?country=US&item=eggs
+      In the United States (U.S. city average) the average retail price of "Eggs, grade A, large, per dozen" was $2.27 in September 2026 (Consumer Price Ind
+OK    200   0.1s /api/v1/groceries?country=US&item=coffee
+      In the United States (U.S. city average) the average retail price of "Coffee, 100% ground roast, all sizes, per lb (453.6 g)" was $9.33 in September 2
+OK    200   0.5s /api/v1/medical?country=US&service=99213
+      For established-patient office visit, level 3 (low complexity) (code 99213) in the United States, Medicare allowed an average of $85.37 per service in
+OK    200   0.4s /api/v1/medical?country=US&service=knee+replacement&state=TX
+      For knee replacement (MS-DRG 470: major hip and knee joint replacement or reattachment of lower extremity without MCC) in Texas, hospitals were paid a
+OK    200   0.3s /api/v1/medical?country=US&service=MRI+lower+back&state=CA
+      For MRI of the lower (lumbar) spine without contrast (code 72148) in California, Medicare allowed an average of $169.20 per service in 2024 in an offi
+OK    200   0.2s /api/v1/medical?country=US&service=pneumonia
+      For pneumonia hospital stay (MS-DRG 193: simple pneumonia and pleurisy with MCC) in the United States, hospitals were paid an average of $12,050 per M
+OK    200   0.3s /api/v1/airfares?country=US&from=JFK&to=LAX
+      People paid an average of US$508 each way between JFK (New York City, NY) and LAX (Los Angeles, CA) in the first quarter of 2026, with about 5,780 pas
+OK    200   0.2s /api/v1/airfares?country=US&from=Chicago&to=Miami
+      People paid an average of US$229 each way between Chicago, IL and Miami, FL in the first quarter of 2026, with about 5,589 passengers a day in both di
+OK    200   0.3s /api/v1/airfares?country=US&from=Boston
+      Across its busiest routes, passengers travelling to or from Boston, MA paid an average of US$257 each way in the first quarter of 2026 (49 city-pair m
+OK    200   0.4s /api/v1/home-sales?country=US&town=Hartford
+      Homes in Hartford, CT sold for a median of US$290,000; typical range US$85,900–US$450,200. Based on 530 records from State of Connecticut, Office of P
+OK    200   2.1s /api/v1/home-sales?country=US&town=Brooklyn
+      Homes (houses, condos and co-ops) in Brooklyn, New York City sold for a median of US$999,999; typical range US$390,000–US$2,850,000. Based on 11063 re
+OK    200   2.7s /api/v1/home-sales?country=US&town=Chicago
+      Homes (houses, condos and small apartment buildings) in Chicago, IL sold for a median of US$350,000; typical range US$126,000–US$925,000. Based on 201
+OK    200   0.3s /api/v1/medicines?country=US&medicine=atorvastatin
+      US retail pharmacies paid on average about $0.02792 per tablet to acquire ATORVASTATIN (4 strengths and forms; median across 275 NDC rates); across th
+OK    200   0.3s /api/v1/medicines?country=US&medicine=metformin
+      US retail pharmacies paid on average about $0.02398 per tablet to acquire METFORMIN (11 strengths and forms; median across 244 NDC rates); across thes
+OK    200   0.4s /api/v1/medicines?country=US&medicine=atorvastatin+20mg
+      US retail pharmacies paid on average about $0.02792 per tablet to acquire ATORVASTATIN 20 MG TABLET. This is the pharmacy's acquisition cost (NADAC), 
+OK    200   0.6s /api/v1/contracts?country=US&what=laptops
+      Public buyers in the United States (federal agencies) awarded laptops contracts with a median total value of US$34,680 per contract (typical range US$
+OK    200   0.5s /api/v1/contracts?country=US&what=road+resurfacing&buyer_area=Virginia
+      Public buyers in the United States (federal agencies, work in Virginia) awarded road resurfacing and repair contracts with a median total value of US$
+
+SUMMARY: 99 ok, 0 stale, 0 failed; library: 0 collector error(s)
