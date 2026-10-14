@@ -1,0 +1,22 @@
+URL: https://api.e-control.at/sprit/1.0/v2/api-docs
+Fetched: 2026-10-14T15:56:06Z from GitHub Actions
+Status, type, bytes: 401  252
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 401 Unauthorized
+date: Wed, 14 Oct 2026 15:56:06 GMT
+server: Tomcat
+vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+transfer-encoding: chunked
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-content-type-options: nosniff
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{"uuid":"98f7b99c-292d-4993-b113-22c168c1974a","errors":["Der eingegebene Benutzername und/oder das eingegebene Passwort sind falsch!"],"exceptionMessage":"Full authentication is required to access this resource","name":"UNAUTHORIZED","code":"SPE_G05"}
