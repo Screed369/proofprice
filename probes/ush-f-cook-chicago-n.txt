@@ -1,0 +1,28 @@
+URL: https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.json?$select=count(*)%20as%20n&$where=sale_date%20%3E%20'2025-08-12T00%3A00%3A00'%20AND%20sale_date%20%3C%20'2026-08-13T00%3A00%3A00'%20AND%20sale_price%20%3E%3D%2010000%20AND%20township_code%20in%20('70'%2C'71'%2C'72'%2C'73'%2C'74'%2C'75'%2C'76'%2C'77')%20AND%20class%20in%20('202'%2C'203'%2C'204'%2C'205'%2C'206'%2C'207'%2C'208'%2C'209'%2C'210'%2C'211'%2C'234'%2C'278'%2C'295'%2C'299')%20AND%20is_multisale%20%3D%20false%20AND%20sale_filter_same_sale_within_365%20%3D%20false%20AND%20sale_filter_less_than_10k%20%3D%20false%20AND%20sale_filter_deed_type%20%3D%20false
+Fetched: 2026-10-14T14:32:25Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 16
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:32:25 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuMzg2NF8xNV8xNDY2dGZsZXI2bVMtc0k5ZXNPelVtODhGZTA3OG9z--gzivtbL45rRDolTRDnu0NWaMIJtc0T---gzip"
+X-SODA2-Fields: ["n"]
+X-SODA2-Types: ["number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 79cb4bda8cf5fd4aa842fdc74f010751
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"n":"20150"}]
