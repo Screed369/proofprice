@@ -126,6 +126,26 @@ async function explore(item: string, arg: string) {
     }
     return { sheets: info, dates: [...dates], regions: [...regions.entries()], count: products.length, products };
   }
+  if (item === "csv") {
+    // arg = "<url>~<line regex>~<max lines>"
+    const [url, re, nStr] = arg.split("~");
+    const res = await fetch(url, { headers: UA });
+    const text = await res.text();
+    const lines = text.split(/\r?\n/);
+    const rx = new RegExp(re || ".", "i");
+    const dates = new Map<string, number>();
+    for (const l of lines.slice(1)) {
+      const d = l.split(",")[0];
+      dates.set(d, (dates.get(d) ?? 0) + 1);
+    }
+    return { status: res.status, type: res.headers.get("content-type"), bytes: text.length, lines: lines.length, header: lines[0], dates: [...dates.entries()].slice(0, 30), matches: lines.slice(1).filter((l) => rx.test(l)).slice(0, Number(nStr || 10)) };
+  }
+  if (item === "search") {
+    // arg = "<ONS search api url>"
+    const res = await fetch(arg, { headers: UA });
+    const text = await res.text();
+    return { status: res.status, bytes: text.length, text: text.slice(0, 6000) };
+  }
   return { hint: "item must be xlsx | sheet | quotes" };
 }
 
