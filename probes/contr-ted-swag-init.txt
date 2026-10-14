@@ -1,0 +1,53 @@
+URL: https://api.ted.europa.eu/swagger-ui/swagger-initializer.js
+Fetched: 2026-10-14T15:52:12Z from GitHub Actions
+Status, type, bytes: 200 text/javascript 670
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: text/javascript
+content-length: 670
+date: Wed, 14 Oct 2026 15:52:12 GMT
+x-amz-cf-pop: DUB56-P3
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers
+vary: Origin
+strict-transport-security: max-age=31536000; includeSubDomains
+strict-transport-security: max-age=31536000; includeSubDomains
+last-modified: Tue, 24 Mar 2026 15:52:15 GMT
+accept-ranges: bytes
+via: 1.1 2d6a842ce062743cb59760fe19c49a42.cloudfront.net (CloudFront), 1.1 594d6e43a4b7edb10443ddc27d344208.cloudfront.net (CloudFront)
+x-cache: Miss from cloudfront
+x-amz-cf-pop: PHX50-P2
+x-amz-cf-id: iCA3Y_RgKh24YPDTTtKXVNrc-FdY69ULJbugDvF2EeUYYC6GuHo4PA==
+vary: Origin
+
+=== FILE TYPE: ASCII text
+=== FIRST 6000 BYTES
+window.onload = function() {
+  //<editor-fold desc="Changeable Configuration Block">
+
+  // the following lines will be replaced by docker/configurator, when it runs in a docker-container
+  window.ui = SwaggerUIBundle({
+    url: "https://petstore.swagger.io/v2/swagger.json",
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    plugins: [
+      SwaggerUIBundle.plugins.DownloadUrl
+    ],
+    layout: "StandaloneLayout" ,
+
+  "configUrl" : "/v3/api-docs/swagger-config",
+  "operationsSorter" : "alpha",
+  "tagsSorter" : "alpha",
+  "validatorUrl" : ""
+
+  });
+
+  //</editor-fold>
+};
