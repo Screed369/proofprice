@@ -1,0 +1,20 @@
+URL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apri_lprc?format=JSON&lang=EN&geo=HR&unit=EUR_HA&unit=NAC_HA&lastTimePeriod=14
+Fetched: 2026-10-14T14:39:26Z from GitHub Actions
+Status, type, bytes: 200 application/json 3437
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Wed, 14 Oct 2026 14:39:26 GMT
+Content-Length: 3437
+Content-Type: application/json
+X-ORACLE-DMS-ECID: 512c4214-15f3-455b-a497-ad087e40a2cd-00faaf66
+Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With
+Access-Control-Allow-Methods: GET
+X-ORACLE-DMS-RID: 0
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{"version":"2.0","class":"dataset","label":"Agricultural land prices by region","source":"ESTAT","updated":"2026-07-10T23:00:00+0200","value":{"4":2726,"5":2835,"6":3005,"7":3282,"8":3395,"9":3440,"10":3661,"11":3700,"12":4491,"13":5965,"46":1637,"47":1510,"48":1651,"49":1751,"50":1848,"51":2160,"52":2422,"53":2786,"54":2916,"55":3762,"60":2754,"61":2834,"62":2977,"63":3231,"64":3343,"65":3442,"66":3658,"67":3700,"68":4491,"69":5965,"102":1654,"103":1510,"104":1636,"105":1724,"106":1820,"107":2161,"108":2420,"109":2786,"110":2916,"111":3762},"id":["freq","unit","agriprod","geo","time"],"size":[1,2,4,1,14],"dimension":{"freq":{"label":"Time frequency","category":{"index":{"A":0},"label":{"A":"Annual"}}},"unit":{"label":"Unit of measure","category":{"index":{"EUR_HA":0,"NAC_HA":1},"label":{"EUR_HA":"Euro per hectare","NAC_HA":"National currency per hectare"}}},"agriprod":{"label":"Agricultural products","category":{"index":{"ARA":0,"ARAIB":1,"ARAXIB":2,"J0000":3},"label":{"ARA":"Arable land","ARAIB":"Irrigable arable land","ARAXIB":"Non-irrigable arable land","J0000":"Permanent grassland"}}},"geo":{"label":"Geopolitical entity (reporting)","category":{"index":{"HR":0},"label":{"HR":"Croatia"}}},"time":{"label":"Time","category":{"index":{"2011":0,"2012":1,"2013":2,"2014":3,"2015":4,"2016":5,"2017":6,"2018":7,"2019":8,"2020":9,"2021":10,"2022":11,"2023":12,"2024":13},"label":{"2011":"2011","2012":"2012","2013":"2013","2014":"2014","2015":"2015","2016":"2016","2017":"2017","2018":"2018","2019":"2019","2020":"2020","2021":"2021","2022":"2022","2023":"2023","2024":"2024"}}}},"extension":{"lang":"EN","id":"APRI_LPRC","agencyId":"ESTAT","version":"1.0","datastructure":{"id":"APRI_LPRC","agencyId":"ESTAT","version":"55.0"},"annotation":[{"type":"CREATED","date":"2018-03-21T08:11:14+0100"},{"type":"DISSEMINATION_DOI_XML","title":"<adms:identifier xmlns:adms=\"http://www.w3.org/ns/adms#\" xmlns:skos=\"http://www.w3.org/2004/02/skos/core.html\" xmlns:dct=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"><adms:Identifier rdf:about=\"https://doi.org/10.2908/APRI_LPRC\"><skos:notation rdf:datatype=\"http://purl.org/spar/datacite/doi\">10.2908/APRI_LPRC</skos:notation><dct:creator rdf:resource=\"http://publications.europa.eu/resource/authority/corporate-body/ESTAT\"/><dct:issued rdf:datatype=\"http://www.w3.org/2001/XMLSchema#date\">2023-01-19</dct:issued></adms:Identifier></adms:identifier>"},{"type":"DISSEMINATION_OBJECT_TYPE","title":"DATASET"},{"type":"DISSEMINATION_TIMESTAMP_DATA","date":"2026-07-10T23:00:00+0200"},{"type":"DISSEMINATION_TIMESTAMP_GLOBAL","date":"2026-07-10T23:00:00+0200"},{"type":"DISSEMINATION_TIMESTAMP_PLANNED","date":"2026-07-10T23:00:00+0200"},{"type":"ESMS_HTML","title":"Explanatory texts (metadata)","href":"https://ec.europa.eu/eurostat/cache/metadata/en/apri_lpr_esms.htm"},{"type":"ESMS_SDMX","title":"Explanatory texts (metadata)","href":"https://ec.europa.eu/eurostat/api/dissemination/files?file=metadata/apri_lpr_esms.sdmx.zip"},{"type":"OBS_COUNT","title":"16918"},{"type":"OBS_PERIOD_OVERALL_LATEST","title":"2024"},{"type":"OBS_PERIOD_OVERALL_OLDEST","title":"2011"},{"type":"SOURCE_INSTITUTIONS","text":"Eurostat"},{"type":"UPDATE_DATA","date":"2026-07-10T23:00:00+0200"},{"type":"UPDATE_STRUCTURE","date":"2026-01-26T23:00:00+0100"}],"positions-with-no-data":{"freq":[],"unit":[],"agriprod":[1,2],"geo":[],"time":[0,1,2,3]}}}
