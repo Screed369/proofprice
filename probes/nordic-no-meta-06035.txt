@@ -1,0 +1,33 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/06035
+Fetched: 2026-10-14T15:40:41Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1486
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:40:40 GMT
+server: 
+content-type: application/json; charset=utf-8
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 96947140
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=60362011.017; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"language":"no","id":"06035","label":"06035: Selveierboliger. Gjennomsnittlig kvadratmeterpris og antall omsetninger (K) (avslutta serie) 2002-2024","description":"","sortCode":"0000000009","updated":"2025-01-13T07:00:00Z","firstPeriod":"2002","lastPeriod":"2024","category":"public","variableNames":["region","boligtype","statistikkvariabel","år"],"discontinued":true,"source":"Statistisk sentralbyrå","subjectCode":"pp","timeUnit":"Annual","paths":[[{"id":"bb","label":"Bygg, bolig og eiendom","sortCode":"0000026"},{"id":"bb01","label":"Bolig og boforhold","sortCode":"0000027"},{"id":"bpi","label":"Prisindeks for brukte boliger","sortCode":"0000028"},{"id":"FRA_GAMMEL_00276","label":"Avslutta tidsserier","sortCode":"0000900020"}],[{"id":"pp","label":"Priser og prisindekser","sortCode":"0000083"},{"id":"pp01","label":"Boligpriser og boligprisindekser","sortCode":"0000084"},{"id":"bpi","label":"Prisindeks for brukte boliger","sortCode":"0000085"},{"id":"FRA_GAMMEL_00276","label":"Avslutta tidsserier","sortCode":"0000900020"}]],"links":[{"rel":"self","hreflang":"no","href":"https://data.ssb.no/api/pxwebapi/v2/tables/06035?lang=no"},{"rel":"alternate","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/06035?lang=en"},{"rel":"metadata","hreflang":"no","href":"https://data.ssb.no/api/pxwebapi/v2/tables/06035/metadata?lang=no"},{"rel":"data","hreflang":"no","href":"https://data.ssb.no/api/pxwebapi/v2/tables/06035/data?lang=no&outputFormat=json-stat2"}]}
