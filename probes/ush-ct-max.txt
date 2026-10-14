@@ -1,0 +1,28 @@
+URL: https://data.ct.gov/resource/5mzw-sjtu.json?$select=max(daterecorded)%20as%20latest%2Cmin(daterecorded)%20as%20earliest&$where=daterecorded%20%3C%3D%20'2026-10-14T00%3A00%3A00'
+Fetched: 2026-10-14T14:15:29Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 76
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:29 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Z29sZi4xNzM1NF83XzIxOEcyWDg1QV9vWlZSQkpwWXlRVW5nZnh4cVpjVQ-C07uaeqD94Uh4Slxqys1MDU_Fto--gzip--gzip"
+X-SODA2-Fields: ["latest","earliest"]
+X-SODA2-Types: ["floating_timestamp","floating_timestamp"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: afdfec1abe35b7d709191a45b34dd746
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 2000 BYTES
+[{"latest":"2025-09-30T00:00:00.000","earliest":"0023-10-02T00:00:00.000"}]
