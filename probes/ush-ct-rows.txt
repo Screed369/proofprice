@@ -1,0 +1,31 @@
+URL: https://data.ct.gov/resource/5mzw-sjtu.json?$limit=4
+Fetched: 2026-10-14T14:12:23Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1023
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:12:23 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Z29sZi4xNzM1NF83XzIxODBoTnZhazdHWENEbWlnaG16VGhnSUNENlNzQQ---gziqSrRHupnwLWXjjxpRoevVM_XxGh--gzip--gzip"
+X-SODA2-Fields: ["serialnumber","listyear","daterecorded","town","address","assessedvalue","saleamount","salesratio","propertytype","residentialtype","nonusecode","remarks","opm_remarks","geo_coordinates",":@computed_region_dam5_q64j",":@computed_region_nhmp_cq6b",":@computed_region_m4y2_whse",":@computed_region_snd5_k6zv"]
+X-SODA2-Types: ["number","number","floating_timestamp","text","text","number","number","text","text","text","text","text","text","point","number","number","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: d7cefe2e4a2425ade7cb1c65fd0ea8d2
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"serialnumber":"24079","listyear":"2024","daterecorded":"2025-09-26T00:00:00.000","town":"Ashford","address":"SECKAR RD","assessedvalue":"54460","saleamount":"95000","salesratio":"0.5732","propertytype":"Vacant Land","remarks":"MBL 23 D 4"}
+,{"serialnumber":"240171","listyear":"2024","daterecorded":"2025-06-06T00:00:00.000","town":"Berlin","address":"251400","assessedvalue":"251400","saleamount":"350000","salesratio":"0.7182","propertytype":"Commercial","nonusecode":"25 - Other","remarks":"N/A"}
+,{"serialnumber":"24071","listyear":"2024","daterecorded":"2024-12-31T00:00:00.000","town":"Bethel","address":"25.5 TAYLOR AVENUE","assessedvalue":"221480","saleamount":"480000","salesratio":"0.4614","propertytype":"Residential","residentialtype":"Two Family"}
+,{"serialnumber":"24018","listyear":"2024","daterecorded":"2024-12-18T00:00:00.000","town":"Columbia","address":"PINE STREET","assessedvalue":"3640","saleamount":"15000","salesratio":"0.2426666666666667","propertytype":"Vacant Land","remarks":"VACANT LAND"}]
