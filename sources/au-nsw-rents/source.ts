@@ -284,7 +284,7 @@ export async function nswRents(input: NswInput): Promise<PriceAnswer> {
   const t = nswType(input.property_type);
   const b = nswBeds(input.bedrooms);
   const meta = readMeta(INFO.id);
-  if (!meta?.last_date) throw new SourceError("ProofPrice collects NSW rental bond data daily; figures appear after the next collection.");
+  if (!meta?.last_date) throw new SourceError("Not yet available: ProofPrice collects NSW rental bond data daily; figures appear after the next collection.");
   const to = meta.last_date;
   const from = new Date(Date.parse(to + "T00:00:00Z") - 45 * 86400000).toISOString().slice(0, 10);
   // Default: the latest 3 months, falling back to 12 when a postcode is too quiet. months <= 4 asks for 3, anything longer for 12.

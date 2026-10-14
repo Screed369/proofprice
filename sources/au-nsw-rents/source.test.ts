@@ -238,7 +238,7 @@ test("answers from the library: median and range in AUD per week, period, fallba
 test("no library yet gives a readable error", async () => {
   process.env.PROOFPRICE_LIBRARY_DIR = mkdtempSync(path.join(tmpdir(), "nsw-empty-"));
   try {
-    await assert.rejects(nswRents({ postcode: "2000" }), /figures appear after the next collection/);
+    await assert.rejects(nswRents({ postcode: "2000" }), /Not yet available.*figures appear after the next collection/);
   } finally {
     delete process.env.PROOFPRICE_LIBRARY_DIR;
   }
