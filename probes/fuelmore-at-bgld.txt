@@ -1,0 +1,23 @@
+URL: https://api.e-control.at/sprit/1.0/search/gas-stations/by-region?code=1&type=BL&fuelType=SUP&includeClosed=false
+Fetched: 2026-10-14T15:56:18Z from GitHub Actions
+Status, type, bytes: 200 application/json 11550
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+date: Wed, 14 Oct 2026 15:56:17 GMT
+server: Tomcat
+vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+transfer-encoding: chunked
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-content-type-options: nosniff
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[{"id":5124,"name":"PPSKONT","location":{"address":"Hauptstrasse 98","postalCode":"7331","city":"Weppersdorf","latitude":47.5763843,"longitude":16.4264557},"contact":{"fax":"4326182276"},"openingHours":[{"day":"MO","label":"Montag","order":1,"from":"06:00","to":"18:00"},{"day":"DI","label":"Dienstag","order":2,"from":"06:00","to":"18:00"},{"day":"MI","label":"Mittwoch","order":3,"from":"06:00","to":"18:00"},{"day":"DO","label":"Donnerstag","order":4,"from":"06:00","to":"18:00"},{"day":"FR","label":"Freitag","order":5,"from":"06:00","to":"18:00"},{"day":"SA","label":"Samstag","order":6,"from":"08:00","to":"13:00"},{"day":"SO","label":"Sonntag","order":7,"from":"00:00","to":"00:00"},{"day":"FE","label":"Feiertag","order":8,"from":"00:00","to":"00:00"}],"offerInformation":{"service":true,"selfService":false,"unattended":false},"paymentMethods":{"cash":true,"debitCard":true,"creditCard":false},"paymentArrangements":{"cooperative":false,"clubCard":false},"position":1,"open":true,"prices":[{"fuelType":"SUP","amount":1.789,"label":"Super 95"}]},{"id":34499,"name":"Diskont Pöltl","location":{"address":"Hofstatt 21","postalCode":"7312","city":"Unterpetersdorf","latitude":47.5907015,"longitude":16.579503},"contact":{"telephone":"43261042240","fax":"4326104224040","mail":"diskont.poeltl@speed.at"},"openingHours":[{"day":"MO","label":"Montag","order":1,"from":"00:00","to":"24:00"},{"day":"DI","label":"Dienstag","order":2,"from":"00:00","to":"24:00"},{"day":"MI","label":"Mittwoch","order":3,"from":"00:00","to":"24:00"},{"day":"DO","label":"Donnerstag","order":4,"from":"00:00","to":"24:00"},{"day":"FR","label":"Freitag","order":5,"from":"00:00","to":"24:00"},{"day":"SA","label":"Samstag","order":6,"from":"00:00","to":"24:00"},{"day":"SO","label":"Sonntag","order":7,"from":"00:00","to":"24:00"},{"day":"FE","label":"Feiertag","order":8,"from":"00:00","to":"24:00"}],"offerInformation":{"service":true,"selfService":false,"unattended":true},"paymentMethods":{"cash":true,"debitCard":true,"creditCard":true,"others":"Kundenchip"},"paymentArrangements":{"cooperative":false,"clubCard":false},"position":2,"open":true,"prices":[{"fuelType":"SUP","amount":1.789,"label":"Super 95"}]},{"id":1110070,"name":"Turmöl Quick","location":{"address":"Hauptstraße 78","postalCode":"7341","city":"Markt Sankt Martin","latitude":47.5591137,"longitude":16.4324706},"contact":{"mail":"marketing-box@orlen-austria.at"},"openingHours":[{"day":"MO","label":"Montag","order":1,"from":"00:00","to":"24:00"},{"day":"DI","label":"Dienstag","order":2,"from":"00:00","to":"24:00"},{"day":"MI","label":"Mittwoch","order":3,"from":"00:00","to":"24:00"},{"day":"DO","label":"Donnerstag","order":4,"from":"00:00","to":"24:00"},{"day":"FR","label":"Freitag","order":5,"from":"00:00","to":"24:00"},{"day":"SA","label":"Samstag","order":6,"from":"00:00","to":"24:00"},{"day":"SO","label":"Sonntag","order":7,"from":"00:00","to":"24:00"},{"day":"FE","label":"Feiertag","order":8,"from":"00:00","to":"24:00"}],"offerI
