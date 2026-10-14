@@ -1,0 +1,236 @@
+URL: https://agridata.ec.europa.eu/extensions/DataPortal/api_documentation.html
+Fetched: 2026-10-14T14:11:39Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=utf-8 9828
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 14:11:39 GMT
+content-type: text/html;charset=utf-8
+set-cookie: X-Qlik-Session-v2-HTTP=c6620f57-107e-4e42-a510-3c2615e2ec6d; Path=/; HttpOnly; SameSite=Strict; Secure
+cache-control: private, must-revalidate, max-age=0
+expires: Mon, 01 Jan 0001 00:00:00 GMT
+last-modified: Mon, 01 Jun 2026 14:03:39 GMT
+accept-ranges: bytes
+etag: 639159194199686253
+x-ua-compatible: IE=edge
+access-control-allow-origin: https://agridata.ec.europa.eu
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000;includeSubDomains;Preload
+server: -
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<title>European Commission | Agri-food data portal | API Documentation</title>
+	<meta name="agrititle" content="Agri-food data portal | API Documentation" />
+	<meta name="description" content="Technical details about the machine to machine interface available for most of the markets apps. ">
+	<meta name="keywords" content="application programming interface, API, machine to machine, interface, software interface, Agri-food Data Portal">
+	<meta name="author" content="European Commission - Directorate-General for Agriculture and Rural Development">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<meta property="og:image:type" content="image/png"/>
+	<meta property="og:image" content="https://agridata.ec.europa.eu/extensions/CommonImages/social_cover.png"/>
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="600" />
+	<meta property="og:title" content="European Commission | Agri-food data portal"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content=" Short-term outlook" />
+	<meta property="og:description" content=" Short-term outlook" />
+	<meta name="twitter:image:alt" content=" Short-term outlook" />
+	<meta property="twitter:card" content="summary_large_image" />
+	<link type="text/css" rel="stylesheet" media="all" crossorigin="anonymous" href="https://webtools.europa.eu/webtools.sbkm.css?utilities=true"/>
+	<link rel="icon" type="image/png" sizes="96x96" href="../CommonImages/favicon-96x96.png"/>
+	<link rel="shortcut icon" href="../CommonImages/favicon.ico" type="image/ico"/>
+
+	<!-- Europa Guidelines -->
+	<link
+      rel="stylesheet"
+      href="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v2.10.0/ec-preset-website/styles/ecl-ec-preset-website.css"
+      integrity="sha256-D76hr+ETQxRcQFuqMRDLhDziqoVkZtGrtpDkJGuuZrs="
+      crossorigin="anonymous"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v2.10.0/ec-preset-website/styles/ecl-ec-preset-website-print.css"
+      integrity="sha256-ooOQ+NF+4jyFKTbs0W1QXsmJJnyIPn/kw0OBPoaIjXs="
+      crossorigin="anonymous"
+      media="print"
+    />
+
+	<script defer src="https://webtools.europa.eu/load.js?globan=1000"></script>
+
+	<script type="application/json">{
+	  "utility": "cck",
+	  "url": "https://commission.europa.eu/cookies-policy_en",
+	  "target": true
+	}</script>
+
+	<script type="application/json">{
+	"utility": "piwik",
+	"siteID": "527",
+	"sitePath": ["agridata.ec.europa.eu"]
+	}</script>
+
+	<script>
+	  window.frctl = {
+		env: 'static'
+	  };
+	</script>
+	<!-- Europa Guidelines -->
+
+	<link id="bootstrapCSS" href="../CommonStyles/bootstrap.min.css" rel="stylesheet">
+	<link id="europaCSS" href="../CommonStyles/europa.css" rel="stylesheet"/>
+	<link id="dataportalCSS" href="dataportal.css" rel="stylesheet"/>
+	<link id="finalCSS" href="../CommonStyles/fractal.css?cachebust=0.11.2" rel="stylesheet"  type="text/css"/>
+
+	<script src="../CommonScripts/jquery.min.js"></script>
+	<script src="html_elements.js"></script>
+	<script>var cl = document.querySelector('html').classList; cl.remove('no-js'); cl.add('has-js');</script>
+
+	<script type="text/javascript">
+        function setIframeSource() {
+            var theSelect = document.getElementById('iframeSelector');
+            var theIframe = document.getElementById('iframeContainer');
+            var theUrl;
+
+            theUrl = theSelect.options[theSelect.selectedIndex].value;
+            theIframe.src = theUrl;
+        }
+
+		function resizeIframe(iframe) {
+    		iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
+  		}
+
+		window.addEventListener('resize', function () {
+			resizeIframe(document.getElementById('iframeContainer'));
+		});
+    </script>
+
+</head>
+<body>
+<div id="marketPageMarker"></div>
+
+<div id="content">
+	<div id="headerHTML"></div>
+
+	<script
+		src="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v2.10.0/ec-preset-website/scripts/ecl-ec-preset-website.js"
+		integrity="sha256-5TAbV5Zc4vkWUldTK8bQupMClLaRM8hi7R/G2x2fdRE="
+		crossorigin="anonymous">
+	</script>
+
+	<!-- page header -->
+	<div class="ecl-page-header" id="header-background">
+	  <div class="container-fluid">
+
+	    <!-- breadcrumbs -->
+		<nav class="ecl-breadcrumbs" aria-label="breadcrumbs">
+		  <span class="ecl-sr-only">You are here:</span>
+		  <ol class="ecl-breadcrumbs__segments-wrapper">
+			<li class="ecl-breadcrumbs__segment ecl-breadcrumbs__segment--first">
+			  <a href="https://ec.europa.eu/info/" class="ecl-breadcrumbs__link">Home</a>
+			</li>
+			<li class="ecl-breadcrumbs__segment">
+				<a href="https://agriculture.ec.europa.eu/index_en" class="ecl-breadcrumbs__link">Agriculture and rural development</a>
+			</li>
+			<li class="ecl-breadcrumbs__segment">
+				<a href="https://agriculture.ec.europa.eu/data-and-analysis_en" class="ecl-breadcrumbs__link">Data and analysis</a>
+			</li>
+			<li class="ecl-breadcrumbs__segment">
+			  <a href="home.html" class="ecl-breadcrumbs__link">Agri-food data portal</a>
+			</li>
+			<li class="ecl-breadcrumbs__segment">
+			  <a href="agricultural_markets.html" class="ecl-breadcrumbs__link">Agri-food markets</a>
+			</li>
+			<li class="ecl-breadcrumbs__segment ecl-breadcrumbs__segment--last">
+			  <span class="selected_breadcrumb">API Documentation</span>
+			</li>
+		  </ol>
+		</nav>
+		<!-- breadcrumbs -->
+
+		<!-- page header body -->
+
+		<div class="ecl-page-header__body">
+			  <div class="ecl-page-header__title">
+				<h1 id="divPageTitle" class="ecl-heading ecl-heading--h1 ecl-u-color-white">API Documentation</h1>
+			  </div>
+			  <div class="ecl-page-header__intro" >
+				<p class="ecl-paragraph ecl-paragraph--l">Detailed instructions about the requests that can be sent to interact with the Agri-food data portal database as well as examples of responses and parameters that can be used.</p>
+			  </div>
+		</div>
+		<!-- page header body -->
+
+	  </div>
+	</div>
+	<!-- page header -->
+
+	<main>
+
+		<div class="container">
+			<form id="api_section" method="post" style="padding-top:30px; font-size:16px; background-color:light-blue;">
+				<label>CHOOSE SECTION:</label>
+				<select id="iframeSelector" name="iframeSelector" onchange="setIframeSource()" aria-label="Section">
+				  <option value="../API_Documentation/GeneralInfo.html">General Info</option>
+				  <option value="../API_Documentation/API-Guide.html">API Guide</option>
+				  <option value="../API_Documentation/swagger.html">Swagger UI</option>
+				  <option disabled>──────────────────────</option>
+				  <option value="../API_Documentation/Beef.html" style="line-height:40px;">Beef</option>
+				  <option value="../API_Documentation/Pigmeat.html">Pigmeat</option>
+				  <option value="../API_Documentation/eggspoultry.html">Eggs and Poultry</option>
+				  <option value="../API_Documentation/sheepandgoatmeat.html">Sheep and goat meat</option>
+				  <option value="../API_Documentation/milk.html">Milk and dairy</option>
+				  <option value="../API_Documentation/fruitandvegetables.html">Fruit and vegetables</option>
+				  <option value="../API_Documentation/cereals.html">Cereals</option>
+				  <option value="../API_Documentation/rice.html">Rice</option>
+				  <option value="../API_Documentation/oilseeds.html">Oilseeds and protein crops</option>
+				  <option value="../API_Documentation/sugar.html">Sugar</option>
+				  <option value="../API_Documentation/oliveoil.html">Olive oil</option>
+				  <option value="../API_Documentation/wine.html">Wine</option>
+				  <option value="../API_Documentation/taxud.html">Weekly Taxud</option>
+				  <option value="../API_Documentation/cmefindicators.html">CMEF Indicators</option>
+				  <option value="../API_Documentation/pmefindicators.html">PMEF Indicators</option>
+				  <option value="../API_Documentation/fertiliser.html">Fertiliser</option>
+				  <option value="../API_Documentation/organic.html">Organic</option>
+			   </select>
+			</form>
+
+			<iframe id="iframeContainer" name="iframeContainer" src="../API_Documentation/GeneralInfo.html" frameborder="0" marginwidth="0" marginheight="0" width=100%
+			onload="resizeIframe(this)" seamless="seamless" scrolling="no" allowtransparency="true" aria-label="iframe section"></iframe>
+
+			<br><br>
+			<a href="#" onclick="document.body.scrollTop=0;document.documentElement.scrollTop=0;event.preventDefault()" class="back-to-top-btn" aria-label="back to top"><i class="btt-arrow btt-up"></i></a>
+
+		 </div>
+
+
+		 <section class="bottom-section-container">
+			<div class="bottom-section">
+				<a class="bottom-section-icon" href="mailto:agri-ext-helpdesk@ec.europa.eu"><img src="../CommonImages/email-us.png" alt="email"></a>
+				<div class="bottom-section-content">
+					<h3 class="bottom-section-title">Email us</h3>
+					<p class="bottom-section-text"><a href="mailto:agri-ext-helpdesk@ec.europa.eu">agri-ext-helpdesk@ec.europa.eu</a></p>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<!-- site footer -->
+	<footer class="ecl-footer">
+		<script src="../CommonScripts/bootstrap.min.js"></script>
+		<script src="home_new.js"></script>
+		<script src="../CommonScripts/europa.js"></script>
+		<script src="../CommonScripts/jquery-resizable.min.js?cachebust=0.11.2"></script>
+		<script src="../CommonScripts/ecl-fractal-theme.js?cachebust=0.11.2"></script>
+		<script>document.addEventListener('DOMContentLoaded', function () { ECL.initExpandables(); ECL.navigationInpages(); });</script>
+		<div id="footerHTML" class="ecl-footer"></div>
+	</footer>
+	<!-- site footer -->
+
+</div>
+</body>
+</html>
