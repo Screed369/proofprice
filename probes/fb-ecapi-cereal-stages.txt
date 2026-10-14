@@ -1,0 +1,64 @@
+URL: https://api.tech.ec.europa.eu/agrifood/api/cereal/stages
+Fetched: 2026-10-14T14:19:32Z from GitHub Actions
+Status, type, bytes: 200 application/json 1462
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Wed, 14 Oct 2026 14:19:32 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+activityid: bb9727f7-176f-4a94-afb8-782ec9a54952
+Access-Control-Expose-Headers: 
+Access-Control-Allow-Origin: 
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Headers: authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,Authorization
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Server: Europa
+Connection: close
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[ {
+  "stageName" : "Cost, Insurance and Freight - Incoterm",
+  "stageCode" : "CIF"
+}, {
+  "stageName" : "Deliver to first customer - silo or processing plant - on truck or other transport means",
+  "stageCode" : "DELFIRST"
+}, {
+  "stageName" : "Delivered to a port silo, by train or truck or barge - grain exchange quotation",
+  "stageCode" : "DELPORT-GEX"
+}, {
+  "stageName" : "Delivered to port - grain delivered to a port silo by train or truck or barge",
+  "stageCode" : "DELPORT"
+}, {
+  "stageName" : "Delivered to processor after one intermediary",
+  "stageCode" : "DELPROC"
+}, {
+  "stageName" : "Delivered to processor after one intermediary - grains exchange quotation",
+  "stageCode" : "DELPROC-GEX"
+}, {
+  "stageName" : "Departure from farm or from production area - on truck or other transport means",
+  "stageCode" : "DEPPROD"
+}, {
+  "stageName" : "Departure from silo - after some storage - on truck or other transport means",
+  "stageCode" : "DEPSILO"
+}, {
+  "stageName" : "Free On Board - Incoterm",
+  "stageCode" : "FOB"
+}, {
+  "stageName" : "National Average - Not Specified",
+  "stageCode" : "Not Specified"
+}, {
+  "stageName" : "Price at farm gate",
+  "stageCode" : "FGATE"
+}, {
+  "stageName" : "Rendu Port - Delivered",
+  "stageCode" : "DEL"
+}, {
+  "stageName" : "Ribatejo e Oeste - Not Defined",
+  "stageCode" : "Not Defined"
+}, {
+  "stageName" : "Shipped to the place (port), unloaded, on truck leaving port",
+  "stageCode" : "DEPPORT"
+} ]
