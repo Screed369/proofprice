@@ -1,0 +1,32 @@
+URL: https://data.transportation.gov/resource/tfrh-tu9e.json?$limit=5
+Fetched: 2026-10-14T15:45:34Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2359
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:45:34 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDg1NF81XzM1NlJDb3ZrWTRZdFQ5QkcxVXNpQTRUaTRibjdIYw---gziir5N8-mpaxdtXkGEMrOWAtJ-Wpu--gzip--gzip"
+X-SODA2-Fields: ["tbl","year","quarter","citymarketid_1","citymarketid_2","city1","city2","airportid_1","airportid_2","airport_1","airport_2","nsmiles","passengers","fare","carrier_lg","large_ms","fare_lg","carrier_low","lf_ms","fare_low","location_1","location_1_address","location_1_city","location_1_state","location_1_zip","location_2","location_2_address","location_2_city","location_2_state","location_2_zip","tbl1apk"]
+X-SODA2-Types: ["text","number","number","number","number","text","text","number","number","text","text","number","number","number","text","number","number","text","number","number","point","text","text","text","text","point","text","text","text","text","text"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 29b7f3fbfa1f9a78912afe86df73c910
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+[{"tbl":"Table1a","year":"2026","quarter":"1","citymarketid_1":"30257","citymarketid_2":"30852","city1":"Albany, NY","city2":"Washington, DC (Metropolitan Area)","airportid_1":"10257","airportid_2":"12264","airport_1":"ALB","airport_2":"IAD","nsmiles":"324","passengers":"63.6","fare":"251.9750175","carrier_lg":"UA","large_ms":"0.9900419287","fare_lg":"251.0919358","carrier_low":"UA","lf_ms":"0.9900419287","fare_low":"251.0919358","tbl1apk":"202611025712264ALBIAD"}
+,{"tbl":"Table1a","year":"2026","quarter":"1","citymarketid_1":"30257","citymarketid_2":"32467","city1":"Albany, NY","city2":"Miami, FL (Metropolitan Area)","airportid_1":"10257","airportid_2":"11697","airport_1":"ALB","airport_2":"FLL","nsmiles":"1225","passengers":"541.1777778","fare":"219.7698025","carrier_lg":"B6","large_ms":"0.6461626904","fare_lg":"224.1828292","carrier_low":"B6","lf_ms":"0.6461626904","fare_low":"224.1828292","tbl1apk":"202611025711697ALBFLL"}
+,{"tbl":"Table1a","year":"2026","quarter":"1","citymarketid_1":"30257","citymarketid_2":"30852","city1":"Albany, NY","city2":"Washington, DC (Metropolitan Area)","airportid_1":"10257","airportid_2":"10821","airport_1":"ALB","airport_2":"BWI","nsmiles":"324","passengers":"85.3","fare":"258.9395597","carrier_lg":"WN","large_ms":"0.9934870392","fare_lg":"258.1894585","carrier_low":"WN","lf_ms":"0.9934870392","fare_low":"258.1894585","tbl1apk":"202611025710821ALBBWI"}
+,{"tbl":"Table1a","year":"2026","quarter":"1","citymarketid_1":"30257","citymarketid_2":"30852","city1":"Albany, NY","city2":"Washington, DC (Metropolitan Area)","airportid_1":"10257","airportid_2":"11278","airport_1":"ALB","airport_2":"DCA","nsmiles":"324","passengers":"125.4888889","fare":"253.4590048","carrier_lg":"AA","large_ms":"0.9586506109","fare_lg":"254.0580031","carrier_low":"WN","lf_ms":"0.0115105366","fare_low":"198.7153846","tbl1apk":"202611025711278ALBDCA"}
+,{"tbl":"Table1a","year":"2026","quarter":"1","citymarketid_1":"30257","citymarketid_2":"32467","city1":"Albany, NY","city2":"Miami, FL (Metropolitan Area)","airportid_1":"10257","airportid_2":"13303","airport_1":"ALB","airport_2":"MIA","nsmiles":"1225","passengers":"74.85555556","fare":"292.2343773","carrier_lg":"WN","large_ms":"0.4463411014","fare_lg":"245.4293316","carrier_low":"WN","lf_ms":"0.4463411014","fare_low":"245.4293316","tbl1apk":"202611025713303ALBMIA"}]
