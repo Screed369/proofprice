@@ -90,6 +90,10 @@ export function openWorkbook(buf: Buffer, sheetName?: string): { dir: Map<string
 }
 
 /** The cells of one <row> element's inner XML. Empty styled cells come back as null and trailing nulls are cut. */
+const REF_RE = /(?:^|\s)r="([A-Za-z]+)\d*"/;
+const TYPE_RE = /(?:^|\s)t="([^"]*)"/;
+const VALUE_RE = /<v(?:\s[^>]*)?>([\s\S]*?)<\/v>/;
+
 export function parseRowCells(body: string, shared: string[]): Cell[] {
   const cells: Cell[] = [];
   const cellRe = /<c(\s[^>]*?)?(?:\/>|>([\s\S]*?)<\/c>)/g;
@@ -98,24 +102,21 @@ export function parseRowCells(body: string, shared: string[]): Cell[] {
   while ((cm = cellRe.exec(body))) {
     const tag = cm[1] ?? "";
     const inner = cm[2];
-    const ref = attr(tag, "r");
-    if (ref) {
-      const letters = /^[A-Za-z]+/.exec(ref);
-      if (letters) col = columnIndex(letters[0]);
-    }
+    const ref = REF_RE.exec(tag);
+    if (ref) col = columnIndex(ref[1]);
     if (inner === undefined || inner === "") {
       col++;
       continue; // empty cell (a style only)
     }
-    const type = attr(tag, "t");
+    const type = TYPE_RE.exec(tag)?.[1];
     let value: Cell = null;
     if (type === "inlineStr") {
       value = "";
       for (const t of inner.matchAll(/<t(?:\s[^>]*?)?>([\s\S]*?)<\/t>/g)) value += xmlText(t[1]);
     } else {
-      const v = /<v(?:\s[^>]*)?>([\s\S]*?)<\/v>/.exec(inner);
+      const v = VALUE_RE.exec(inner);
       if (v) {
-        const raw = xmlText(v[1]);
+        const raw = v[1].includes("&") ? xmlText(v[1]) : v[1];
         if (type === "s") value = shared[Number(raw)] ?? null;
         else if (type === "str" || type === "d") value = raw;
         else if (type === "b") value = raw === "1";
@@ -203,8 +204,14 @@ export async function streamSheet(
   // Feed the compressed bytes in pieces so memory stays flat and early stops are quick.
   for (let off = 0; off < raw.length && !stopped; off += chunkBytes) {
     const piece = raw.subarray(off, Math.min(raw.length, off + chunkBytes));
-    if (!inflater.write(piece)) await new Promise<void>((r) => inflater.once("drain", () => r()));
-    else await new Promise<void>((r) => setImmediate(r));
+    if (stopped || inflater.destroyed) break;
+    if (!inflater.write(piece)) {
+      // Wait until the inflater has caught up, or until it was stopped (a destroyed stream never drains).
+      await new Promise<void>((r) => {
+        inflater.once("drain", () => r());
+        inflater.once("close", () => r());
+      });
+    } else await new Promise<void>((r) => setImmediate(r));
   }
   if (!stopped) inflater.end();
   await done;
