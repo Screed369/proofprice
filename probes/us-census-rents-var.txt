@@ -1,0 +1,31 @@
+URL: https://api.census.gov/data/2024/acs/acs5/variables/B25064_001E.json
+Fetched: 2026-10-14T15:46:19Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 231
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: private
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,OPTIONS
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Referrer-Policy: same-origin
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content
+X-Content-Type-Options: nosniff
+Content-Type: application/json;charset=utf-8
+Content-Length: 231
+Date: Wed, 14 Oct 2026 15:46:19 GMT
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS010383f0=01283c52a48e4c4d3b18ab189dd3a69dcb3073887192425ed9de8a814f16b517543ac5373b7a9e7f843d91941a8b88194ebb5982b1; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+{
+  "name": "B25064_001E",
+  "label": "Estimate!!Median gross rent",
+  "concept": "Median Gross Rent (Dollars)",
+  "predicateType": "int",
+  "group": "B25064",
+  "limit": 0,
+  "attributes": "B25064_001EA,B25064_001M,B25064_001MA"
+}
