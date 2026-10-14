@@ -1,0 +1,281 @@
+URL: https://data.cityofnewyork.us/resource/usep-8jbt.json?$select=borough%2Cneighborhood%2Ccount(*)%20as%20n&$group=borough%2Cneighborhood&$order=borough%20ASC%2Cneighborhood%20ASC&$limit=500
+Fetched: 2026-10-14T14:15:33Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 14681
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:32 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42NzE1N180XzY1ZFRkdzZ2d1NadGxKekVsUFdFRUhON0FYcjMw---gzipe6KjbOShCXnzvPQKMcTAX4tHi0w--gzip--gzip"
+X-SODA2-Fields: ["borough","neighborhood","n"]
+X-SODA2-Types: ["text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+X-SODA2-Secondary-Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 343115871279663c3631c9d89f7ba7ac
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+[{"borough":"1","neighborhood":"ALPHABET CITY","n":"157"}
+,{"borough":"1","neighborhood":"CHELSEA","n":"870"}
+,{"borough":"1","neighborhood":"CHINATOWN","n":"104"}
+,{"borough":"1","neighborhood":"CIVIC CENTER","n":"200"}
+,{"borough":"1","neighborhood":"CLINTON","n":"280"}
+,{"borough":"1","neighborhood":"EAST VILLAGE","n":"192"}
+,{"borough":"1","neighborhood":"FASHION","n":"149"}
+,{"borough":"1","neighborhood":"FINANCIAL","n":"481"}
+,{"borough":"1","neighborhood":"FLATIRON","n":"334"}
+,{"borough":"1","neighborhood":"GRAMERCY","n":"560"}
+,{"borough":"1","neighborhood":"GREENWICH VILLAGE-CENTRAL","n":"722"}
+,{"borough":"1","neighborhood":"GREENWICH VILLAGE-WEST","n":"670"}
+,{"borough":"1","neighborhood":"HARLEM-CENTRAL","n":"585"}
+,{"borough":"1","neighborhood":"HARLEM-EAST","n":"198"}
+,{"borough":"1","neighborhood":"HARLEM-UPPER","n":"213"}
+,{"borough":"1","neighborhood":"HARLEM-WEST","n":"30"}
+,{"borough":"1","neighborhood":"INWOOD","n":"116"}
+,{"borough":"1","neighborhood":"JAVITS CENTER","n":"101"}
+,{"borough":"1","neighborhood":"KIPS BAY","n":"327"}
+,{"borough":"1","neighborhood":"LITTLE ITALY","n":"90"}
+,{"borough":"1","neighborhood":"LOWER EAST SIDE","n":"368"}
+,{"borough":"1","neighborhood":"MANHATTAN VALLEY","n":"224"}
+,{"borough":"1","neighborhood":"MIDTOWN CBD","n":"327"}
+,{"borough":"1","neighborhood":"MIDTOWN EAST","n":"1324"}
+,{"borough":"1","neighborhood":"MIDTOWN WEST","n":"927"}
+,{"borough":"1","neighborhood":"MORNINGSIDE HEIGHTS","n":"108"}
+,{"borough":"1","neighborhood":"MURRAY HILL","n":"672"}
+,{"borough":"1","neighborhood":"ROOSEVELT ISLAND","n":"57"}
+,{"borough":"1","neighborhood":"SOHO","n":"655"}
+,{"borough":"1","neighborhood":"SOUTHBRIDGE","n":"175"}
+,{"borough":"1","neighborhood":"TRIBECA","n":"516"}
+,{"borough":"1","neighborhood":"UPPER EAST SIDE (59-79)","n":"2082"}
+,{"borough":"1","neighborhood":"UPPER EAST SIDE (79-96)","n":"1867"}
+,{"borough":"1","neighborhood":"UPPER EAST SIDE (96-110)","n":"67"}
+,{"borough":"1","neighborhood":"UPPER WEST SIDE (59-79)","n":"1650"}
+,{"borough":"1","neighborhood":"UPPER WEST SIDE (79-96)","n":"1180"}
+,{"borough":"1","neighborhood":"UPPER WEST SIDE (96-116)","n":"466"}
+,{"borough":"1","neighborhood":"WASHINGTON HEIGHTS LOWER","n":"156"}
+,{"borough":"1","neighborhood":"WASHINGTON HEIGHTS UPPER","n":"353"}
+,{"borough":"2","neighborhood":"BATHGATE","n":"54"}
+,{"borough":"2","neighborhood":"BAYCHESTER","n":"416"}
+,{"borough":"2","neighborhood":"BEDFORD PARK/NORWOOD","n":"262"}
+,{"borough":"2","neighborhood":"BELMONT","n":"78"}
+,{"borough":"2","neighborhood":"BRONXDALE","n":"272"}
+,{"borough":"2","neighborhood":"BRONX PARK","n":"6"}
+,{"borough":"2","neighborhood":"CASTLE HILL/UNIONPORT","n":"153"}
+,{"borough":"2","neighborhood":"CITY ISLAND","n":"109"}
+,{"borough":"2","neighborhood":"CITY ISLAND-PELHAM STRIP","n":"4"}
+,{"borough":"2","neighborhood":"COUNTRY CLUB","n":"194"}
+,{"borough":"2","neighborhood":"CROTONA PARK","n":"62"}
+,{"borough":"2","neighborhood":"EAST TREMONT","n":"108"}
+,{"borough":"2","neighborhood":"FIELDSTON","n":"32"}
+,{"borough":"2","neighborhood":"FORDHAM","n":"78"}
+,{"borough":"2","neighborhood":"HIGHBRIDGE/MORRIS HEIGHTS","n":"140"}
+,{"borough":"2","neighborhood":"HUNTS POINT","n":"74"}
+,{"borough":"2","neighborhood":"KINGSBRIDGE HTS/UNIV HTS","n":"123"}
+,{"borough":"2","neighborhood":"KINGSBRIDGE/JEROME PARK","n":"147"}
+,{"borough":"2","neighborhood":"MELROSE/CONCOURSE","n":"156"}
+,{"borough":"2","neighborhood":"MORRISANIA/LONGWOOD","n":"398"}
+,{"borough":"2","neighborhood":"MORRIS PARK/VAN NEST","n":"218"}
+,{"borough":"2","neighborhood":"MOTT HAVEN/PORT MORRIS","n":"117"}
+,{"borough":"2","neighborhood":"MOUNT HOPE/MOUNT EDEN","n":"57"}
+,{"borough":"2","neighborhood":"PARKCHESTER","n":"390"}
+,{"borough":"2","neighborhood":"PELHAM GARDENS","n":"55"}
+,{"borough":"2","neighborhood":"PELHAM PARKWAY NORTH","n":"133"}
+,{"borough":"2","neighborhood":"PELHAM PARKWAY SOUTH","n":"100"}
+,{"borough":"2","neighborhood":"RIVERDALE","n":"608"}
+,{"borough":"2","neighborhood":"SCHUYLERVILLE/PELHAM BAY","n":"267"}
+,{"borough":"2","neighborhood":"SOUNDVIEW","n":"407"}
+,{"borough":"2","neighborhood":"THROGS NECK","n":"383"}
+,{"borough":"2","neighborhood":"VAN CORTLANDT PARK","n":"5"}
+,{"borough":"2","neighborhood":"WAKEFIELD","n":"235"}
+,{"borough":"2","neighborhood":"WESTCHESTER","n":"150"}
+,{"borough":"2","neighborhood":"WILLIAMSBRIDGE","n":"325"}
+,{"borough":"2","neighborhood":"WOODLAWN","n":"108"}
+,{"borough":"3","neighborhood":"BATH BEACH","n":"339"}
+,{"borough":"3","neighborhood":"BAY RIDGE","n":"1076"}
+,{"borough":"3","neighborhood":"BEDFORD STUYVESANT","n":"1229"}
+,{"borough":"3","neighborhood":"BENSONHURST","n":"643"}
+,{"borough":"3","neighborhood":"BERGEN BEACH","n":"181"}
+,{"borough":"3","neighborhood":"BOERUM HILL","n":"250"}
+,{"borough":"3","neighborhood":"BOROUGH PARK","n":"1170"}
+,{"borough":"3","neighborhood":"BRIGHTON BEACH","n":"403"}
+,{"borough":"3","neighborhood":"BROOKLYN HEIGHTS","n":"379"}
+,{"borough":"3","neighborhood":"BROWNSVILLE","n":"210"}
+,{"borough":"3","neighborhood":"BUSH TERMINAL","n":"44"}
+,{"borough":"3","neighborhood":"BUSHWICK","n":"594"}
+,{"borough":"3","neighborhood":"CANARSIE","n":"816"}
+,{"borough":"3","neighborhood":"CARROLL GARDENS","n":"242"}
+,{"borough":"3","neighborhood":"CLINTON HILL","n":"351"}
+,{"borough":"3","neighborhood":"COBBLE HILL","n":"148"}
+,{"borough":"3","neighborhood":"COBBLE HILL-WEST","n":"79"}
+,{"borough":"3","neighborhood":"CONEY ISLAND","n":"257"}
+,{"borough":"3","neighborhood":"CROWN HEIGHTS","n":"944"}
+,{"borough":"3","neighborhood":"CYPRESS HILLS","n":"332"}
+,{"borough":"3","neighborhood":"DOWNTOWN-FULTON FERRY","n":"219"}
+,{"borough":"3","neighborhood":"DOWNTOWN-FULTON MALL","n":"195"}
+,{"borough":"3","neighborhood":"DOWNTOWN-METROTECH","n":"114"}
+,{"borough":"3","neighborhood":"DYKER HEIGHTS","n":"354"}
+,{"borough":"3","neighborhood":"EAST NEW YORK","n":"874"}
+,{"borough":"3","neighborhood":"FLATBUSH-CENTRAL","n":"586"}
+,{"borough":"3","neighborhood":"FLATBUSH-EAST","n":"876"}
+,{"borough":"3","neighborhood":"FLATBUSH-LEFFERTS GARDEN","n":"203"}
+,{"borough":"3","neighborhood":"FLATBUSH-NORTH","n":"367"}
+,{"borough":"3","neighborhood":"FLATLANDS","n":"210"}
+,{"borough":"3","neighborhood":"FORT GREENE","n":"244"}
+,{"borough":"3","neighborhood":"GERRITSEN BEACH","n":"112"}
+,{"borough":"3","neighborhood":"GOWANUS","n":"164"}
+,{"borough":"3","neighborhood":"GRAVESEND","n":"686"}
+,{"borough":"3","neighborhood":"GREENPOINT","n":"466"}
+,{"borough":"3","neighborhood":"JAMAICA BAY","n":"1"}
+,{"borough":"3","neighborhood":"KENSINGTON","n":"122"}
+,{"borough":"3","neighborhood":"MADISON","n":"414"}
+,{"borough":"3","neighborhood":"MANHATTAN BEACH","n":"107"}
+,{"borough":"3","neighborhood":"MARINE PARK","n":"362"}
+,{"borough":"3","neighborhood":"MIDWOOD","n":"449"}
+,{"borough":"3","neighborhood":"MILL BASIN","n":"141"}
+,{"borough":"3","neighborhood":"NAVY YARD","n":"22"}
+,{"borough":"3","neighborhood":"OCEAN HILL","n":"303"}
+,{"borough":"3","neighborhood":"OCEAN PARKWAY-NORTH","n":"591"}
+,{"borough":"3","neighborhood":"OCEAN PARKWAY-SOUTH","n":"332"}
+,{"borough":"3","neighborhood":"OLD MILL BASIN","n":"225"}
+,{"borough":"3","neighborhood":"PARK SLOPE","n":"714"}
+,{"borough":"3","neighborhood":"PARK SLOPE SOUTH","n":"371"}
+,{"borough":"3","neighborhood":"PROSPECT HEIGHTS","n":"265"}
+,{"borough":"3","neighborhood":"RED HOOK","n":"75"}
+,{"borough":"3","neighborhood":"SEAGATE","n":"59"}
+,{"borough":"3","neighborhood":"SHEEPSHEAD BAY","n":"828"}
+,{"borough":"3","neighborhood":"SPRING CREEK","n":"12"}
+,{"borough":"3","neighborhood":"SUNSET PARK","n":"644"}
+,{"borough":"3","neighborhood":"WILLIAMSBURG-CENTRAL","n":"207"}
+,{"borough":"3","neighborhood":"WILLIAMSBURG-EAST","n":"479"}
+,{"borough":"3","neighborhood":"WILLIAMSBURG-NORTH","n":"336"}
+,{"borough":"3","neighborhood":"WILLIAMSBURG-SOUTH","n":"321"}
+,{"borough":"3","neighborhood":"WINDSOR TERRACE","n":"196"}
+,{"borough":"3","neighborhood":"WYCKOFF HEIGHTS","n":"108"}
+,{"borough":"4","neighborhood":"AIRPORT JFK","n":"2"}
+,{"borough":"4","neighborhood":"AIRPORT LA GUARDIA","n":"10"}
+,{"borough":"4","neighborhood":"ARVERNE","n":"184"}
+,{"borough":"4","neighborhood":"ASTORIA","n":"1439"}
+,{"borough":"4","neighborhood":"BAYSIDE","n":"1231"}
+,{"borough":"4","neighborhood":"BEECHHURST","n":"186"}
+,{"borough":"4","neighborhood":"BELLE HARBOR","n":"113"}
+,{"borough":"4","neighborhood":"BELLEROSE","n":"224"}
+,{"borough":"4","neighborhood":"BREEZY POINT","n":"107"}
+,{"borough":"4","neighborhood":"BRIARWOOD","n":"152"}
+,{"borough":"4","neighborhood":"BROAD CHANNEL","n":"45"}
+,{"borough":"4","neighborhood":"CAMBRIA HEIGHTS","n":"187"}
+,{"borough":"4","neighborhood":"COLLEGE POINT","n":"374"}
+,{"borough":"4","neighborhood":"CORONA","n":"497"}
+,{"borough":"4","neighborhood":"DOUGLASTON","n":"249"}
+,{"borough":"4","neighborhood":"EAST ELMHURST","n":"203"}
+,{"borough":"4","neighborhood":"ELMHURST","n":"881"}
+,{"borough":"4","neighborhood":"FAR ROCKAWAY","n":"372"}
+,{"borough":"4","neighborhood":"FLORAL PARK","n":"200"}
+,{"borough":"4","neighborhood":"FLUSHING MEADOW PARK","n":"7"}
+,{"borough":"4","neighborhood":"FLUSHING-NORTH","n":"3633"}
+,{"borough":"4","neighborhood":"FLUSHING-SOUTH","n":"783"}
+,{"borough":"4","neighborhood":"FOREST HILLS","n":"1160"}
+,{"borough":"4","neighborhood":"FRESH MEADOWS","n":"185"}
+,{"borough":"4","neighborhood":"GLENDALE","n":"402"}
+,{"borough":"4","neighborhood":"GLEN OAKS","n":"365"}
+,{"borough":"4","neighborhood":"HAMMELS","n":"68"}
+,{"borough":"4","neighborhood":"HILLCREST","n":"119"}
+,{"borough":"4","neighborhood":"HOLLIS","n":"451"}
+,{"borough":"4","neighborhood":"HOLLIS HILLS","n":"74"}
+,{"borough":"4","neighborhood":"HOLLISWOOD","n":"130"}
+,{"borough":"4","neighborhood":"HOWARD BEACH","n":"529"}
+,{"borough":"4","neighborhood":"JACKSON HEIGHTS","n":"941"}
+,{"borough":"4","neighborhood":"JAMAICA","n":"308"}
+,{"borough":"4","neighborhood":"JAMAICA BAY","n":"12"}
+,{"borough":"4","neighborhood":"JAMAICA ESTATES","n":"142"}
+,{"borough":"4","neighborhood":"JAMAICA HILLS","n":"97"}
+,{"borough":"4","neighborhood":"KEW GARDENS","n":"301"}
+,{"borough":"4","neighborhood":"LAURELTON","n":"368"}
+,{"borough":"4","neighborhood":"LITTLE NECK","n":"268"}
+,{"borough":"4","neighborhood":"LONG ISLAND CITY","n":"703"}
+,{"borough":"4","neighborhood":"MASPETH","n":"372"}
+,{"borough":"4","neighborhood":"MIDDLE VILLAGE","n":"495"}
+,{"borough":"4","neighborhood":"NEPONSIT","n":"29"}
+,{"borough":"4","neighborhood":"OAKLAND GARDENS","n":"358"}
+,{"borough":"4","neighborhood":"OZONE PARK","n":"472"}
+,{"borough":"4","neighborhood":"QUEENS VILLAGE","n":"591"}
+,{"borough":"4","neighborhood":"REGO PARK","n":"854"}
+,{"borough":"4","neighborhood":"RICHMOND HILL","n":"748"}
+,{"borough":"4","neighborhood":"RIDGEWOOD","n":"424"}
+,{"borough":"4","neighborhood":"ROCKAWAY PARK","n":"109"}
+,{"borough":"4","neighborhood":"ROSEDALE","n":"421"}
+,{"borough":"4","neighborhood":"SO. JAMAICA-BAISLEY PARK","n":"526"}
+,{"borough":"4","neighborhood":"SOUTH JAMAICA","n":"446"}
+,{"borough":"4","neighborhood":"SOUTH OZONE PARK","n":"446"}
+,{"borough":"4","neighborhood":"SPRINGFIELD GARDENS","n":"485"}
+,{"borough":"4","neighborhood":"ST. ALBANS","n":"570"}
+,{"borough":"4","neighborhood":"SUNNYSIDE","n":"282"}
+,{"borough":"4","neighborhood":"WHITESTONE","n":"401"}
+,{"borough":"4","neighborhood":"WOODHAVEN","n":"358"}
+,{"borough":"4","neighborhood":"WOODSIDE","n":"372"}
+,{"borough":"5","neighborhood":"ANNADALE","n":"182"}
+,{"borough":"5","neighborhood":"ARDEN HEIGHTS","n":"236"}
+,{"borough":"5","neighborhood":"ARROCHAR","n":"27"}
+,{"borough":"5","neighborhood":"ARROCHAR-SHORE ACRES","n":"32"}
+,{"borough":"5","neighborhood":"BULLS HEAD","n":"285"}
+,{"borough":"5","neighborhood":"CASTLETON CORNERS","n":"138"}
+,{"borough":"5","neighborhood":"CLOVE LAKES","n":"106"}
+,{"borough":"5","neighborhood":"CONCORD","n":"70"}
+,{"borough":"5","neighborhood":"CONCORD-FOX HILLS","n":"33"}
+,{"borough":"5","neighborhood":"DONGAN HILLS","n":"86"}
+,{"borough":"5","neighborhood":"DONGAN HILLS-COLONY","n":"69"}
+,{"borough":"5","neighborhood":"DONGAN HILLS-OLD TOWN","n":"16"}
+,{"borough":"5","neighborhood":"ELTINGVILLE","n":"321"}
+,{"borough":"5","neighborhood":"EMERSON HILL","n":"15"}
+,{"borough":"5","neighborhood":"FRESH KILLS","n":"1"}
+,{"borough":"5","neighborhood":"GRANT CITY","n":"160"}
+,{"borough":"5","neighborhood":"GRASMERE","n":"90"}
+,{"borough":"5","neighborhood":"GREAT KILLS","n":"663"}
+,{"borough":"5","neighborhood":"GREAT KILLS-BAY TERRACE","n":"54"}
+,{"borough":"5","neighborhood":"GRYMES HILL","n":"77"}
+,{"borough":"5","neighborhood":"HUGUENOT","n":"153"}
+,{"borough":"5","neighborhood":"LIVINGSTON","n":"35"}
+,{"borough":"5","neighborhood":"MANOR HEIGHTS","n":"138"}
+,{"borough":"5","neighborhood":"MARINERS HARBOR","n":"166"}
+,{"borough":"5","neighborhood":"MIDLAND BEACH","n":"227"}
+,{"borough":"5","neighborhood":"NEW BRIGHTON","n":"191"}
+,{"borough":"5","neighborhood":"NEW BRIGHTON-ST. GEORGE","n":"31"}
+,{"borough":"5","neighborhood":"NEW DORP","n":"164"}
+,{"borough":"5","neighborhood":"NEW DORP-BEACH","n":"71"}
+,{"borough":"5","neighborhood":"NEW DORP-HEIGHTS","n":"72"}
+,{"borough":"5","neighborhood":"NEW SPRINGVILLE","n":"370"}
+,{"borough":"5","neighborhood":"OAKWOOD","n":"61"}
+,{"borough":"5","neighborhood":"OAKWOOD-BEACH","n":"52"}
+,{"borough":"5","neighborhood":"PLEASANT PLAINS","n":"63"}
+,{"borough":"5","neighborhood":"PORT IVORY","n":"35"}
+,{"borough":"5","neighborhood":"PORT RICHMOND","n":"129"}
+,{"borough":"5","neighborhood":"PRINCES BAY","n":"122"}
+,{"borough":"5","neighborhood":"RICHMONDTOWN","n":"84"}
+,{"borough":"5","neighborhood":"RICHMONDTOWN-LIGHTHS HILL","n":"15"}
+,{"borough":"5","neighborhood":"ROSEBANK","n":"196"}
+,{"borough":"5","neighborhood":"ROSSVILLE","n":"137"}
+,{"borough":"5","neighborhood":"ROSSVILLE-CHARLESTON","n":"47"}
+,{"borough":"5","neighborhood":"ROSSVILLE-PORT MOBIL","n":"7"}
+,{"borough":"5","neighborhood":"ROSSVILLE-RICHMOND VALLEY","n":"42"}
+,{"borough":"5","neighborhood":"SILVER LAKE","n":"59"}
+,{"borough":"5","neighborhood":"SOUTH BEACH","n":"198"}
+,{"borough":"5","neighborhood":"STAPLETON","n":"87"}
+,{"borough":"5","neighborhood":"STAPLETON-CLIFTON","n":"30"}
+,{"borough":"5","neighborhood":"SUNNYSIDE","n":"77"}
+,{"borough":"5","neighborhood":"TODT HILL","n":"47"}
+,{"borough":"5","neighborhood":"TOMPKINSVILLE","n":"58"}
+,{"borough":"5","neighborhood":"TOTTENVILLE","n":"234"}
+,{"borough":"5","neighborhood":"TRAVIS","n":"61"}
+,{"borough":"5","neighborhood":"WESTERLEIGH","n":"214"}
+,{"borough":"5","neighborhood":"WEST NEW BRIGHTON","n":"252"}
+,{"borough":"5","neighborhood":"WILLOWBROOK","n":"159"}
+,{"borough":"5","neighborhood":"WOODROW","n":"121"}]
