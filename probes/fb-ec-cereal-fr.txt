@@ -1,0 +1,33 @@
+URL: https://agridata.ec.europa.eu/api/cereal/prices?memberStateCodes=FR&beginDate=01-09-2026
+Fetched: 2026-10-14T14:11:38Z from GitHub Actions
+Status, type, bytes: 404 text/html; charset=utf-8 581
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 404 
+date: Wed, 14 Oct 2026 14:11:38 GMT
+content-type: text/html; charset=utf-8
+set-cookie: dtCookie=v_4_srv_50_sn_6751A5943697F20EB1BD65E616CDB6F2_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1; Path=/; Domain=.internal.cloudapp.net
+set-cookie: X-Qlik-Session-v2-HTTP=d32f5791-b681-4a9f-ba9b-5282e7322a4e; Path=/; HttpOnly; SameSite=Strict; Secure
+content-security-policy: default-src 'none'
+x-content-type-options: nosniff
+server-timing: dtSInfo;desc="0", dtRpid;desc="-1224723506"
+x-oneagent-js-injection: true
+x-ruxit-js-agent: true
+access-control-allow-origin: https://agridata.ec.europa.eu
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000;includeSubDomains;Preload
+server: -
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (432)
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+<script type="text/javascript" src="/ruxitagentjs_ICANVfqru_10339260603164134.js" data-dtconfig="rid=RID_873468440|rpid=-1224723506|domain=internal.cloudapp.net|reportUrl=/rb_eace972e-a298-4edf-9524-340a4a3689bc|app=ea7c4b59f27d43eb|cuc=u0gq6tih|owasp=1|mel=100000|featureHash=ICANVfqru|dpvc=1|lastModification=1791617834171|tp=500,50,0|rdnt=1|uxrgce=1|srbbv=2|agentUri=/ruxitagentjs_ICANVfqru_10339260603164134.js"></script></head>
+<body>
+<pre>Cannot GET /api/cereal/prices</pre>
+</body>
+</html>
