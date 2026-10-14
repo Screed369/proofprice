@@ -138,7 +138,7 @@ export function normaliseRegion(country: string, raw?: string): string | null {
   }
   const geo = toEurostatGeo(s.slice(0, 2)) + s.slice(2); // GR43 -> EL43
   const want = toEurostatGeo(country);
-  if (!geo.startsWith(want)) throw new InputError(`Region ${s} is not in ${COUNTRIES[country] ?? country}: its code must start with ${want}.`);
+  if (!geo.startsWith(want)) throw new InputError(`Region ${s} is not in ${withThe(COUNTRIES[country] ?? country)}: its code must start with ${want}.`);
   return geo === want ? null : geo;
 }
 
@@ -311,8 +311,13 @@ export function ageOf(year: number, now: Date): { years: number; level: "usual" 
   };
 }
 
+/** A country name as it reads in a sentence ("in the Netherlands"). Only the Netherlands takes "the" among the countries covered. */
+export function withThe(name: string): string {
+  return name === "Netherlands" ? "the Netherlands" : name;
+}
+
 function placeOf(r: { countryName: string; regionName: string | null; geo: string }): string {
-  return r.regionName ? `${r.regionName} (${r.geo}), ${r.countryName}` : r.countryName;
+  return r.regionName ? `${r.regionName} (${r.geo}), ${withThe(r.countryName)}` : withThe(r.countryName);
 }
 
 export function landAnswer(
@@ -331,14 +336,14 @@ export function landAnswer(
   if (!isReading(result)) {
     const none = buildStatisticAnswer({ ...base, value: null, period: { from: null, to: null }, reference_period: "", describe: () => "" });
     const name = COUNTRIES[q.country] ?? q.country;
-    const place = q.region ? `region ${q.region} of ${name}` : name;
+    const place = q.region ? `region ${q.region} of ${withThe(name)}` : withThe(name);
     const miss = result ?? { reason: "no_figures" as const, available: [], datasetLatest: null };
     const what = q.landType ? q.landType.phrase : "agricultural land";
     let summary: string;
     if (miss.reason === "no_place") {
       summary = q.region
         ? `Eurostat holds no land ${q.measure} for ${place} (${ds.code}). Try the country as a whole, or one of its regions listed in extra.regions_available.`
-        : `Eurostat holds no land ${q.measure} for ${name} in the last ${WINDOW_YEARS} years (${ds.code}).`;
+        : `Eurostat holds no land ${q.measure} for ${withThe(name)} in the last ${WINDOW_YEARS} years (${ds.code}).`;
     } else if (miss.reason === "no_land_type") {
       summary =
         `Eurostat holds no ${what} ${q.measure} for ${place}. It does hold: ` +
@@ -366,7 +371,7 @@ export function landAnswer(
   const notes: string[] = [];
   if (r.flag) notes.push(`Eurostat flags this figure as ${FLAG_MEANING[r.flag] ?? `"${r.flag}"`}.`);
   if (r.previous && r.history.find((h) => h.year === r.previous!.year)?.flag === "b") notes.push(`Eurostat flags ${r.previous.year} as a break in the series, so the change may not be like for like.`);
-  if (r.history.find((h) => h.year === r.year)?.viaNational) notes.push(`Eurostat's euro column is empty for ${r.year}; the figure is the national-currency one, and ${r.countryName} uses the euro.`);
+  if (r.history.find((h) => h.year === r.year)?.viaNational) notes.push(`Eurostat's euro column is empty for ${r.year}; the figure is the national-currency one, and ${withThe(r.countryName)} uses the euro.`);
   if (r.usedDefault) notes.push(`No land_type was asked for, so ${r.landType.phrase} is shown.`);
   if (age.level !== "usual") notes.push(age.sentence);
 
