@@ -1,0 +1,23 @@
+URL: https://dadosabertos.aneel.gov.br/api/3/action/datastore_search?resource_id=fcf2906c-7c32-4b9b-a637-054e7a5234f4&limit=0
+Fetched: 2026-10-14T12:42:39Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1051
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Wed, 14 Oct 2026 12:42:39 GMT
+content-type: application/json;charset=utf-8
+content-length: 1051
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: geolocation=(), microphone=(), camera=()
+strict-transport-security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"help": "https://dadosabertos.aneel.gov.br/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_next_page": false, "include_total": true, "limit": 0, "records_format": "objects", "resource_id": "fcf2906c-7c32-4b9b-a637-054e7a5234f4", "records": [], "fields": [{"id": "_id", "type": "int"}, {"id": "DatGeracaoConjuntoDados", "type": "text"}, {"id": "DscREH", "type": "text"}, {"id": "SigAgente", "type": "text"}, {"id": "NumCNPJDistribuidora", "type": "text"}, {"id": "DatInicioVigencia", "type": "text"}, {"id": "DatFimVigencia", "type": "text"}, {"id": "DscBaseTarifaria", "type": "text"}, {"id": "DscSubGrupo", "type": "text"}, {"id": "DscModalidadeTarifaria", "type": "text"}, {"id": "DscClasse", "type": "text"}, {"id": "DscSubClasse", "type": "text"}, {"id": "DscDetalhe", "type": "text"}, {"id": "NomPostoTarifario", "type": "text"}, {"id": "DscUnidadeTerciaria", "type": "text"}, {"id": "SigAgenteAcessante", "type": "text"}, {"id": "VlrTUSD", "type": "text"}, {"id": "VlrTE", "type": "text"}], "total": 332545}}
