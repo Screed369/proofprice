@@ -256,7 +256,7 @@ export async function ieRent(input: IeRentInput, fetcher?: (url: string) => Prom
   if (pick) {
     for (const r of rowsWhere(table, { [D_TIME]: pick.code })) {
       const lbl = table.labels[D_BEDS][String(r[D_BEDS])];
-      if (lbl && r.value > 0) breakdown[lbl] = r.value;
+      if (lbl && r.value !== null && r.value > 0) breakdown[lbl] = r.value;
     }
   }
 
