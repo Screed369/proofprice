@@ -1,0 +1,47 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/83625NED/TypedDataSet?$filter=RegioS%20eq%20'GM0363'&$orderby=Perioden%20desc&$top=6
+Fetched: 2026-10-14T15:53:03Z from GitHub Actions
+Status, type, bytes: 200 application/json 733
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 14 Oct 2026 15:53:03 GMT
+Content-Length: 733
+TXID: 011c423d
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=0124acd4-a55e-1acf-9678-0050569bed16_1620057628_2207525761_00000000004313596477; Path=/; Expires=Wed, 14-Oct-2026 15:53:18 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/83625NED/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":1333,"RegioS":"GM0363","Perioden":"1995JJ00","GemiddeldeVerkoopprijs_1":98008
+    },{
+      "ID":1334,"RegioS":"GM0363","Perioden":"1996JJ00","GemiddeldeVerkoopprijs_1":110420
+    },{
+      "ID":1335,"RegioS":"GM0363","Perioden":"1997JJ00","GemiddeldeVerkoopprijs_1":126024
+    },{
+      "ID":1336,"RegioS":"GM0363","Perioden":"1998JJ00","GemiddeldeVerkoopprijs_1":151254
+    },{
+      "ID":1337,"RegioS":"GM0363","Perioden":"1999JJ00","GemiddeldeVerkoopprijs_1":189227
+    },{
+      "ID":1338,"RegioS":"GM0363","Perioden":"2000JJ00","GemiddeldeVerkoopprijs_1":224938
+    }
+  ]
+}
