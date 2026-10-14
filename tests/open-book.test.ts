@@ -28,13 +28,55 @@ test("robots.txt welcomes every AI crawler and points at the sitemap", () => {
   assert.equal(r.sitemap, "https://proofprice.com/sitemap.xml");
 });
 
+test("robots.txt leaves every public page open to every crawler, AI crawlers included", () => {
+  const r = buildRobots("https://proofprice.com");
+  for (const page of ["/sources", "/trust", "/status", "/prices", "/prices/es/fuel/madrid"]) {
+    for (const rule of r.rules) {
+      assert.equal(rule.allow, "/", `${rule.userAgent} may fetch ${page}`);
+      assert.ok(!("disallow" in rule), `${rule.userAgent} has no disallow`);
+    }
+  }
+});
+
 test("sitemap lists the pages and the machine-readable files", () => {
   const urls = buildSitemap("https://proofprice.com", new Date("2026-10-13T00:00:00Z")).map((e) => e.url);
-  for (const u of ["https://proofprice.com", "https://proofprice.com/connect", "https://proofprice.com/method", "https://proofprice.com/llms.txt", "https://proofprice.com/llms-full.txt", "https://proofprice.com/openapi.json"]) {
+  for (const u of [
+    "https://proofprice.com",
+    "https://proofprice.com/connect",
+    "https://proofprice.com/sources",
+    "https://proofprice.com/trust",
+    "https://proofprice.com/status",
+    "https://proofprice.com/prices",
+    "https://proofprice.com/method",
+    "https://proofprice.com/llms.txt",
+    "https://proofprice.com/llms-full.txt",
+    "https://proofprice.com/openapi.json",
+  ]) {
     assert.ok(urls.includes(u), u);
   }
-  assert.equal(urls.length, PUBLIC_PATHS.length);
+  for (const p of PUBLIC_PATHS) assert.ok(urls.includes(p === "/" ? "https://proofprice.com" : `https://proofprice.com${p}`), p);
+  assert.ok(urls.length > PUBLIC_PATHS.length, "answer pages are listed too");
   assert.equal(new Set(urls).size, urls.length);
+});
+
+test("sitemap adds the price indexes and every answer page, with a date and a sensible frequency", () => {
+  const library = {
+    answerPages: [
+      { path: "/prices/es/fuel/madrid", category: "fuel", asOf: "2026-10-14" },
+      { path: "/prices/ie/home-sales/dublin-6", category: "home-sales", asOf: "2026-10-02" },
+    ],
+    indexPaths: ["/prices/es", "/prices/es/fuel", "/prices/ie", "/prices/ie/home-sales"],
+    newestDay: "2026-10-14",
+  };
+  const entries = buildSitemap("https://proofprice.com", new Date("2026-10-15T00:00:00Z"), library);
+  const by = Object.fromEntries(entries.map((e) => [e.url, e]));
+  assert.equal(by["https://proofprice.com/prices/es/fuel/madrid"].changeFrequency, "daily");
+  assert.equal(by["https://proofprice.com/prices/es/fuel/madrid"].lastModified, "2026-10-14");
+  assert.equal(by["https://proofprice.com/prices/ie/home-sales/dublin-6"].changeFrequency, "weekly");
+  assert.equal(by["https://proofprice.com/prices/es/fuel"].lastModified, "2026-10-14");
+  assert.equal(by["https://proofprice.com/prices/ie"].changeFrequency, "daily");
+  assert.equal(entries.length, PUBLIC_PATHS.length + 4 + 2);
+  assert.equal(by["https://proofprice.com"].priority, 1);
 });
 
 test("llms-full.txt covers every tool, parameter, example and source from the registry", () => {

@@ -15,13 +15,15 @@ import {
   sourcesFor,
   toolDescription,
 } from "./registry";
+import { CATEGORY_LABEL, PAGE_SOURCES } from "./site/answer-pages";
+import { countryName } from "./site/areas";
+import { CONTACT, MCP_URL, SITE_URL } from "./site/constants";
+import { allAnswerPages, countryGroups, newestLibraryDay } from "./site/prices";
 import { MIN_PUBLISH } from "./stats";
 import { joinAnd } from "./text";
 
-/** The canonical public address. Used where the page cannot know the request host (robots, sitemap, setup guides). */
-export const SITE_URL = "https://proofprice.com";
-export const MCP_URL = `${SITE_URL}/api/mcp`;
-export const CONTACT = "hello@proofprice.com";
+// The canonical public address and the contact live in lib/site/constants.ts (shared with the website pages); re-exported here.
+export { CONTACT, MCP_URL, SITE_URL };
 
 // ---------- robots.txt and sitemap ----------
 
@@ -45,16 +47,96 @@ export function buildRobots(site = SITE_URL) {
   };
 }
 
-/** Public pages and machine-readable files. */
-export const PUBLIC_PATHS = ["/", "/connect", "/method", "/privacy", "/terms", "/llms.txt", "/llms-full.txt", "/openapi.json", "/api/v1/coverage"];
+/** Fixed public pages and machine-readable files. The /prices indexes and answer pages are added by buildSitemap from the price library. */
+export const PUBLIC_PATHS = [
+  "/",
+  "/connect",
+  "/sources",
+  "/trust",
+  "/status",
+  "/prices",
+  "/method",
+  "/privacy",
+  "/terms",
+  "/llms.txt",
+  "/llms-full.txt",
+  "/openapi.json",
+  "/api/v1/coverage",
+];
 
-export function buildSitemap(site = SITE_URL, now = new Date()) {
-  return PUBLIC_PATHS.map((p) => ({
-    url: p === "/" ? site : `${site}${p}`,
+type Freq = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
+
+const STATIC_CHANGE: Record<string, Freq> = {
+  "/": "weekly",
+  "/connect": "weekly",
+  "/sources": "weekly",
+  "/trust": "monthly",
+  "/status": "daily",
+  "/prices": "daily",
+  "/method": "monthly",
+  "/privacy": "monthly",
+  "/terms": "monthly",
+  "/api/v1/coverage": "daily",
+};
+
+const STATIC_PRIORITY: Record<string, number> = {
+  "/": 1,
+  "/connect": 0.9,
+  "/sources": 0.8,
+  "/prices": 0.8,
+  "/trust": 0.7,
+  "/status": 0.4,
+};
+
+export interface SitemapEntry {
+  url: string;
+  lastModified?: string | Date;
+  changeFrequency: Freq;
+  priority: number;
+}
+
+/** What the sitemap needs to know about the price library (injectable, so tests can check the rules without the files on disk). */
+export interface SitemapLibrary {
+  answerPages: { path: string; category: string; asOf: string }[];
+  indexPaths: string[]; // /prices/<country> and /prices/<country>/<category>
+  newestDay: string | null;
+}
+
+export function libraryForSitemap(): SitemapLibrary {
+  return {
+    answerPages: allAnswerPages().map((p) => ({ path: p.path, category: p.category, asOf: p.asOf })),
+    indexPaths: countryGroups().flatMap((g) => [g.path, ...g.categories.map((c) => c.path)]),
+    newestDay: newestLibraryDay(),
+  };
+}
+
+/** A place's page changes as often as its source: fuel daily, the home sale registers about monthly. */
+function pageFreq(category: string): Freq {
+  return category === "fuel" ? "daily" : "weekly";
+}
+
+/** Every page we want found: the fixed pages, the /prices indexes and one answer page per place in the price library. */
+export function buildSitemap(site = SITE_URL, now = new Date(), library: SitemapLibrary = libraryForSitemap()): SitemapEntry[] {
+  const at = (p: string) => (p === "/" ? site : `${site}${p}`);
+  const fixed: SitemapEntry[] = PUBLIC_PATHS.map((p) => ({
+    url: at(p),
     lastModified: now,
-    changeFrequency: p === "/api/v1/coverage" ? ("daily" as const) : ("weekly" as const),
-    priority: p === "/" ? 1 : p === "/connect" ? 0.9 : 0.6,
+    changeFrequency: STATIC_CHANGE[p] ?? "weekly",
+    priority: STATIC_PRIORITY[p] ?? 0.6,
   }));
+  const indexes: SitemapEntry[] = library.indexPaths.map((p) => ({
+    url: at(p),
+    lastModified: library.newestDay ?? now,
+    changeFrequency: "daily",
+    priority: 0.6,
+  }));
+  const answers: SitemapEntry[] = library.answerPages.map((p) => ({
+    url: at(p.path),
+    lastModified: p.asOf,
+    changeFrequency: pageFreq(p.category),
+    priority: 0.5,
+  }));
+  return [...fixed, ...indexes, ...answers];
 }
 
 // ---------- llms-full.txt ----------
@@ -68,6 +150,14 @@ function describeParam(name: string, schema: any, required: boolean): string {
   const allowed = Array.isArray(js.enum) ? `\n    Allowed values: ${js.enum.join(", ")}` : "";
   const desc = schema.description ? `\n    ${schema.description}` : "";
   return `  - ${name} (${bits.join(", ")})${desc}${allowed}`;
+}
+
+/** One line per country and category that has answer pages. Built from the page specs, not from the library files,
+ *  so llms-full.txt never depends on reading the library at request time. */
+export function pricePageLines(baseUrl: string): string[] {
+  return PAGE_SOURCES.map(
+    (p) => `  - ${baseUrl}/prices/${p.country.toLowerCase()}/${p.category}: ${CATEGORY_LABEL[p.category]} in ${countryName(p.country)}, by place`,
+  );
 }
 
 export function buildLlmsFullTxt(baseUrl: string): string {
@@ -85,6 +175,14 @@ Contact: ${CONTACT}
 - MCP server (Streamable HTTP, no key, no sign-in): ${baseUrl}/api/mcp
 - REST (GET, JSON, CORS open): ${baseUrl}/api/v1/<category>
 - Add-to-client instructions for Claude, ChatGPT, Cursor, VS Code, Windsurf, Claude Code and agent frameworks: ${baseUrl}/connect
+
+## Pages for people and crawlers
+- Sources, licences and attribution (every source with its publisher, licence and limits): ${baseUrl}/sources
+- How we earn trust (rules, checks before a source goes live, corrections): ${baseUrl}/trust
+- Status of the price library and sources (last collection, days held, last error): ${baseUrl}/status
+- Prices by place (latest median and typical range, from the daily price library): ${baseUrl}/prices
+${pricePageLines(baseUrl).join("\n")}
+- Each place has its own page at ${baseUrl}/prices/<country>/<category>/<place>: the latest median, the typical range (10th–90th percentile), the number of records, the date, the source and licence, and a link to the live REST answer. A place appears only when at least ${MIN_PUBLISH} records sit behind a figure.
 `);
 
   out.push("## Tools (MCP) and endpoints (REST)\n");
