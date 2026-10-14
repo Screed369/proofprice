@@ -77,6 +77,7 @@ test("us-cms-inpatient: DRG 470 in Texas - the average total payment per stay, w
   assert.match(a.summary, /national average is \$17,364/);
   assert.match(a.summary, /Medicare itself paid \$11,958/);
   assert.match(a.summary, /not a private-insurance or cash price/);
+  assert.match(a.summary, /not the hospital's billed \(list\) charge, and it excludes the surgeon's fee\./);
   assert.match(a.summary, /excludes the surgeon's fee/);
   const x = a.extra as any;
   assert.equal(x.drg, "470");

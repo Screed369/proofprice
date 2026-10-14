@@ -6,7 +6,7 @@ export default defineSource({
   info: INFO,
   category: "medicines",
   countries: ["GB"],
-  countryHelp: "GB = England (NHS Prescription Cost Analysis: what the NHS pays for the drug, per tablet/capsule/ml; England only)",
+  countryHelp: "GB = England (NHS Prescription Cost Analysis: the basic price the NHS reimburses for the drug, per tablet/capsule/ml, not a patient price; England only)",
   placeName: "England (NHS)",
   status: "live",
   paramNotes: {

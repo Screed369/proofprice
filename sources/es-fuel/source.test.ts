@@ -16,6 +16,15 @@ const esSample = {
 test("ES: stations parse, comma decimals, restricted stations excluded", () => {
   assert.equal(parseEsPrice("1,945"), 1.945);
   assert.ok(Number.isNaN(parseEsPrice("")));
+  // placeholders and typing slips are missing values, never a price
+  assert.ok(Number.isNaN(parseEsPrice("0,000")));
+  assert.ok(Number.isNaN(parseEsPrice("0")));
+  assert.ok(Number.isNaN(parseEsPrice("0,019")));
+  assert.ok(Number.isNaN(parseEsPrice("19,450")));
+  assert.ok(Number.isNaN(parseEsPrice(null)));
+  assert.ok(Number.isNaN(parseEsPrice("n/d")));
+  const zeros = parseEsStations({ Fecha: "13/10/2026 16:12:37", ListaEESSPrecio: [{ "C.P.": "42146", "Precio Gasoleo A": "0,000", "Tipo Venta": "P" }, { "C.P.": "42146", "Precio Gasoleo A": "1,900", "Tipo Venta": "P" }] }, "diesel");
+  assert.deepEqual(zeros.stations.map((s) => s.price), [1.9]);
   assert.equal(esProvinceFromPostcode("28001"), "28");
   assert.equal(esProvinceFromPostcode("99001"), null);
   const { stations, fecha } = parseEsStations(esSample, "diesel");
@@ -48,6 +57,11 @@ test("ES: live answer keeps its public shape (no library-only fields)", async ()
   try {
     const a = await esFuelNow({ area: "42", fuel: "diesel" });
     assert.equal(a.status, "ok");
+    // posted prices are never described as what people pay; tax status and range definition are stated
+    assert.match(a.summary, /current posted pump prices \(taxes included\) have a median of €1\.925 per litre/);
+    assert.match(a.summary, /typical range \(10th–90th percentile\)/);
+    assert.doesNotMatch(a.summary, /\b(costs?|paid|pays?)\b/i);
+    assert.equal(a.price!.unit, "per litre");
     const cheapest = (a.extra as any).cheapest_stations;
     assert.deepEqual(Object.keys(cheapest[0]).sort(), ["address", "brand", "id", "postcode", "price", "town"]);
   } finally {

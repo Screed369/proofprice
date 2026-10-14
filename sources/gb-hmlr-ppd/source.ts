@@ -15,14 +15,15 @@ export const INFO: SourceInfo = {
   publisher: "HM Land Registry",
   what_is_recorded: "Residential property sales: price paid, completion date, property type, address.",
   price_type: "transaction",
-  freshness: "Monthly",
+  freshness: "Monthly; sales appear only once registered, often weeks to months after completion, so the latest months are incomplete",
   licence: "Open Government Licence v3.0",
   licence_url: "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
   attribution:
     "Contains HM Land Registry data © Crown copyright and database right. This data is licensed under the Open Government Licence v3.0.",
   homepage: "https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads",
   limits:
-    "We return aggregates only (median, range, count), never individual addresses. Standard-price sales only (category A).",
+    "We return aggregates only (median, range, count), never individual addresses. Standard-price sales only (category A): repossessions, buy-to-lets identified by a mortgage, transfers to companies and other non-standard sales (category B) are left out. " +
+    "Prices are per home, as paid at completion. Sales reach the data only once registered, often weeks to months after completion, so the most recent months are incomplete. England and Wales only.",
 };
 
 
@@ -112,7 +113,7 @@ export async function ukHomeSales(input: {
     method:
       "Median and 10th–90th percentile of standard-price residential sales (category A) recorded by HM Land Registry in the selected area and period. Repossessions, buy-to-let and transfers to companies (category B) are excluded.",
     describe: (x) =>
-      `${capitalise(typeLabel)} in ${where} sold for a median of ${fmtMoney(x.median, "GBP")}; typical range ${fmtMoney(x.low, "GBP")}–${fmtMoney(x.high, "GBP")}.`,
+      `${capitalise(typeLabel)} in ${where} sold for a median of ${fmtMoney(x.median, "GBP")} (standard-price sales); typical range (10th–90th percentile) ${fmtMoney(x.low, "GBP")}–${fmtMoney(x.high, "GBP")}.`,
     baseUrl: input.baseUrl,
     extra: rows.length >= 5000 ? { note: "Result capped at the 5,000 most recent sales." } : undefined,
   });

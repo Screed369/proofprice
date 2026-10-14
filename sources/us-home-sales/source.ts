@@ -454,6 +454,21 @@ function methodBase(dataset: UsDataset, type: UsType, applied: number, latest: s
   );
 }
 
+/** Whole months from `date` (YYYY-MM-DD) to `today`. */
+function monthsSince(date: string, today: Date): number {
+  const d = new Date(date + "T00:00:00Z");
+  const m = (today.getUTCFullYear() - d.getUTCFullYear()) * 12 + (today.getUTCMonth() - d.getUTCMonth()) - (today.getUTCDate() < d.getUTCDate() ? 1 : 0);
+  return Math.max(0, m);
+}
+
+/** The publisher lag, in the summary sentence itself (not only in notes), so a reader sees how old the newest sale is. */
+export function lagSentence(dataset: UsDataset, latest: string, today: Date): string {
+  const age = monthsSince(latest, today);
+  if (dataset === "ct") return ` Connecticut publishes these sales once a year: the newest recorded sale in the file is ${latest}${age >= 2 ? `, ${age} months ago` : ""}.`;
+  if (dataset === "cook") return " Cook County sales are reported with a lag, so the latest weeks are incomplete.";
+  return age >= 3 ? ` The newest recorded sale in the city's file is ${latest}, ${age} months ago.` : "";
+}
+
 export interface UsHomeSalesInput {
   town?: string;
   postcode?: string;
@@ -506,7 +521,10 @@ export async function usHomeSales(input: UsHomeSalesInput, opts: UsHomeSalesOpti
     unit: type === "any" ? "per sale" : "per home",
     period: { from: dates[0] ?? null, to: dates[dates.length - 1] ?? null },
     method: methodText(place.dataset, type, applied, latest, collected.truncated),
-    describe: (x) => `${typeNoun(type, place.dataset)} in ${place.label} sold for a median of ${fmtMoney(x.median, "USD")}; typical range ${fmtMoney(x.low, "USD")}–${fmtMoney(x.high, "USD")}.`,
+    describe: (x) =>
+      `${typeNoun(type, place.dataset)} in ${place.label} sold for a median of ${fmtMoney(x.median, "USD")}; 10th–90th percentile range ${fmtMoney(x.low, "USD")}–${fmtMoney(x.high, "USD")}.` +
+      lagSentence(place.dataset, latest, opts.today ?? new Date()) +
+      (collected.truncated ? ` Only the ${MAX_ROWS.toLocaleString("en-US")} most recent matching sales are used.` : ""),
     baseUrl: input.baseUrl,
     extra: {
       area: place.label,

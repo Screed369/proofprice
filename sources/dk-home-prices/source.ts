@@ -460,7 +460,7 @@ export function denmarkAnswer(reading: Reading | null, q: AnswerInput): PriceAns
     sample_size: f.sales,
     note: notes.length ? notes.join(" ") : undefined,
     describe: (v) =>
-      `In ${where(place)} the average price of ${cat.noun} (ordinary free-trade sales) was ${fmtMoney(v, "DKK")} in ${periodWords(f.reference_period)}${prelim ? " (preliminary)" : ""}` +
+      `In ${where(place)} the average price of ${cat.noun} (ordinary free-trade sales) was ${fmtMoney(v, "DKK")} in ${periodWords(f.reference_period)}${prelim ? " (preliminary; Statistics Denmark says preliminary averages are underestimated)" : ""}` +
       (f.sales !== null ? `, from ${f.sales.toLocaleString("en-GB")} sales.` : ".") +
       changeSentence(f.previous, f.year_earlier),
     extra,

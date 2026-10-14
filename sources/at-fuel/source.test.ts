@@ -94,6 +94,12 @@ test("AT: the answer says plainly that only the cheapest stations are listed", (
   assert.deepEqual(a.period, { from: "2026-10-14", to: "2026-10-14" });
   assert.match(a.summary, /cheapest stations/);
   assert.match(a.summary, /not every station/);
+  // the bias is in the first sentence, the prices are called posted (not charged or paid), and min-max is not called a "range"
+  assert.match(a.summary.split(". ")[0], /only the 11 cheapest stations/);
+  assert.match(a.summary, /posted pump prices/);
+  assert.doesNotMatch(a.summary, /\b(charge|cost|paid|pay)\w*/i);
+  assert.match(a.summary, /lowest €2\.074, highest €2\.09\b/);
+  assert.doesNotMatch(a.summary, /\brange\b/);
   assert.match(a.method, /cheap end of the market/);
   assert.equal((a.extra as any).coverage, "cheapest_stations_only");
   assert.equal((a.extra as any).cheapest_stations.length, 3);

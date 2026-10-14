@@ -95,6 +95,7 @@ test("us-cms-physician: 99213 in Texas - the Medicare-allowed average, with serv
   assert.match(a.summary, /4,080,342 services/);
   assert.match(a.summary, /Medicare allowed/);
   assert.match(a.summary, /not a private-insurance or cash price/);
+  assert.match(a.summary, /what Medicare allowed \(its payment plus the patient's cost-sharing\), not a private-insurance or cash price and not the provider's billed \(list\) charge\./);
   assert.match(a.summary, /national average is \$85\.37/);
   assert.match(a.summary, /Official average published by Centers for Medicare & Medicaid Services \(CMS\) for 2024/);
   const x = a.extra as any;

@@ -130,6 +130,9 @@ test("MX: the answer names the place, the day, the unit and flags an old copy", 
   assert.deepEqual(a.period, { from: "2026-10-14", to: "2026-10-14" });
   assert.match(a.summary, /Regular petrol \(gasolina regular, Magna\) in Ciudad de México: median .*23\.45 per litre on 2026-10-14/);
   assert.doesNotMatch(a.summary, /old data/);
+  // posted prices are never described as what people pay; tax status and range definition are stated
+  assert.match(a.summary, /typical range \(10th–90th percentile\) .* across stations \(posted pump prices, taxes included\)\./);
+  assert.doesNotMatch(a.summary, /\b(costs?|paid|pays?)\b/i);
   assert.match(a.source.licence, /Libre Uso MX/);
   const old = mxAnswerFromRow(row, { fuel: "petrol95", place, query: {}, now: "2026-10-20" });
   assert.match(old.summary, /This is old data: our copy of the regulator's feeds is 6 days old/);

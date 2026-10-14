@@ -19,7 +19,10 @@ export const INFO: SourceInfo = {
   attribution: "Source: DGFiP, Demandes de valeurs foncières (DVF), via geo-dvf (Etalab), Licence Ouverte 2.0.",
   homepage: "https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/",
   limits:
-    "We return aggregates only (median, range, count), never addresses or parcels. Alsace-Moselle and Mayotte are not covered by DVF.",
+    "We return aggregates only (median, range, count), never addresses or parcels. Alsace-Moselle and Mayotte are not covered by DVF. " +
+    "Prices are per home: the whole declared price of a sale of exactly one house or apartment, including any outbuildings, parking or land sold with it; sales of several homes in one deed (multi-lot sales) and sales including commercial premises are left out. " +
+    "The price per m² in extra divides that whole price by the built floor area (surface réelle bâtie), so it is not a Carrez-area price. " +
+    "DVF is published twice a year with a delay of several months, so the latest months are missing.",
 };
 
 
@@ -171,6 +174,14 @@ export function windowSales(sales: DvfSale[], months: number): { kept: DvfSale[]
   return { kept, from: kept.map((s) => s.date).sort()[0] ?? null, to: latest };
 }
 
+/** The summary sentence (pure). */
+export function frDescribe(type: FrPropertyType, place: string, x: { median: number; low: number; high: number }, to: string | null): string {
+  return (
+    `${TYPE_LABEL[type]} in ${place} sold for a median of ${fmtMoney(x.median, "EUR")} per home (single-home sales only); typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")}. ` +
+    `DVF is published with a delay of several months, so the latest sale included is from ${to}.`
+  );
+}
+
 export async function frHomeSales(input: {
   postcode?: string;
   town?: string;
@@ -202,11 +213,16 @@ export async function frHomeSales(input: {
       `Median and 10th–90th percentile of sales recorded in DVF for the commune(s), over the latest ${months} months available. ` +
       "Only plain sales ('Vente') of exactly one house or apartment are counted (with or without outbuildings or land); sales that include commercial premises or several homes are left out. DVF is published with a delay of several months.",
     describe: (x) =>
-      `${TYPE_LABEL[type]} in ${place} sold for a median of ${fmtMoney(x.median, "EUR")}; typical range ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")}.`,
+frDescribe(type, place, x, to),
     baseUrl: input.baseUrl,
     extra: {
       communes: communes.map((c) => ({ code: c.code, name: c.nom })),
-      ...(psm && psm.count >= 5 ? { median_price_per_sqm: psm.median } : {}),
+      ...(psm && psm.count >= 5
+        ? {
+            median_price_per_sqm: psm.median,
+            price_per_sqm_note: "Median of each sale's whole price divided by its built floor area (surface réelle bâtie), in EUR per m²; outbuildings, parking or land sold with the home are in the price but not in the area.",
+          }
+        : {}),
       data_lag_note: "DVF is updated twice a year; the most recent months are not yet included.",
     },
   });

@@ -28,6 +28,8 @@ test("fr-medicines parses priced, on-sale packs only", () => {
 });
 test("fr-medicines number and name helpers", () => {
   assert.equal(parseEuro("1 234,56"), 1234.56);
+  assert.equal(parseEuro("1,234,56"), 1234.56); // thousands comma: the last comma is the decimal mark, the pack is not dropped
+  assert.equal(parseEuro("0,00"), null); // a 0 placeholder is missing, never a price of 0
   assert.equal(parseEuro(""), null);
   assert.equal(parseRate("15 %"), 15);
   assert.equal(nameKey("ÉNOXAPARINE TEVA 4000 UI"), "enoxaparine");
@@ -47,8 +49,21 @@ test("fr-medicines keys and answer", () => {
   assert.throws(() => frKey(""));
   assert.equal(frHistoryKey({})?.item, undefined);
   assert.equal(frHistoryKey({ medicine: "doliprane" })?.item, "name:doliprane");
-  const a = frAnswerFromRow({ date: "2026-10-14", area: "ALL", item: "name:doliprane", n: 12, median: 2.5, low: 1.8, high: 4.2, min: 1.5, max: 5 }, { key: "doliprane" });
+  const row = { date: "2026-10-14", area: "ALL", item: "name:doliprane", n: 12, median: 2.5, low: 1.8, high: 4.2, min: 1.5, max: 5 };
+  const a = frAnswerFromRow(row, { key: "doliprane", today: "2026-10-14" });
   assert.equal(a.status, "ok");
   assert.equal(a.price_type, "posted_price");
   assert.equal(a.price?.median, 2.5);
+  assert.equal(a.price?.unit, "per box (incl. dispensing fee)");
+  assert.match(a.summary, /legally fixed public price \(per box, incl\. VAT and the dispensing fee; also the base Assurance Maladie reimburses from\)/);
+  assert.match(a.summary, /10th–90th percentile €1\.80–€4\.20 across the packs listed, which mix pack sizes and strengths/);
+  assert.match(a.summary, /not market transactions; the patient pays this minus the reimbursement/);
+  assert.doesNotMatch(a.summary, /paid|sold for/);
+  assert.equal(a.extra, undefined);
+  const old = frAnswerFromRow(row, { key: "doliprane", today: "2026-10-30" });
+  assert.match(old.summary, /Our copy of the database is 16 days old \(collected 2026-10-14\)/);
+  assert.equal((old.extra as any).stale, true);
+  const few = frAnswerFromRow({ ...row, n: 4 }, { key: "doliprane", today: "2026-10-14" });
+  assert.equal(few.status, "insufficient_data");
+  assert.equal(few.price, null);
 });

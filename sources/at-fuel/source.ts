@@ -26,7 +26,7 @@ export const INFO: SourceInfo = {
   homepage: "https://www.spritpreisrechner.at/",
   limits:
     "E-Control returns only the cheapest stations for the region asked for (about 10-15), so the median and range describe the cheapest stations, not the whole market: the true market average is higher. " +
-    "Posted pump prices, not receipts. Individual prices carry no timestamp, so the date shown is the day of the query.",
+    "Posted pump prices in euros (per litre; CNG per kg), taxes included, not receipts. Individual prices carry no timestamp, so the date shown is the day of the query.",
 };
 
 const BASE = "https://api.e-control.at/sprit/1.0";
@@ -250,8 +250,8 @@ export function atAnswer(
       "The median and the 10th–90th percentile are computed over those stations only, so they describe the cheap end of the market and sit below the average price across all stations in the region. " +
       "Posted prices of the stations E-Control lists, whether open or closed at the moment of the query; a price more than 20% from the median of the list is treated as an entry error and left out.",
     describe: (x) =>
-      `${FUEL_LABEL[q.fuel]} in ${q.where}: the ${stations.length} cheapest stations listed by E-Control charge a median of ${fmtMoney(x.median, "EUR")} ${unit}, ` +
-      `range ${fmtMoney(x.min, "EUR")}–${fmtMoney(x.max, "EUR")}. This is the cheap end of the market, not every station, so the typical price across all stations is higher.`,
+      `${FUEL_LABEL[q.fuel]} in ${q.where}: E-Control lists only the ${stations.length} cheapest stations, and their posted pump prices have a median of ${fmtMoney(x.median, "EUR")} ${unit} (taxes included), ` +
+      `lowest ${fmtMoney(x.min, "EUR")}, highest ${fmtMoney(x.max, "EUR")}. This is the cheap end of the market, not every station, so the typical price across all stations is higher.`,
     baseUrl: q.baseUrl,
     extra: {
       coverage: "cheapest_stations_only",

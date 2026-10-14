@@ -59,3 +59,52 @@ test("blank cell gives no_matches; missing rooms is an input error", async () =>
 test("licence info", () => {
   assert.match(INFO.licence, /CC BY 4.0/);
 });
+
+// A copy of the real fixture with a second measure added ("per sqm", values about 300 NOK), as the table title suggests SSB could publish.
+function withPerSqm(): unknown {
+  const f = JSON.parse(JSON.stringify(FIX));
+  const zones = f.size[0];
+  const rooms = f.size[3];
+  const value: (number | null)[] = [];
+  const status: Record<string, string> = {};
+  for (let z = 0; z < zones; z++) {
+    for (let k = 0; k < rooms; k++) {
+      const pos = z * rooms + k;
+      value.push(f.value[pos]);
+      if (f.status?.[String(pos)]) status[String(value.length - 1)] = f.status[String(pos)];
+    }
+    for (let k = 0; k < rooms; k++) value.push(300 + k);
+  }
+  f.value = value;
+  f.status = status;
+  f.size[1] = 2;
+  f.dimension.ContentsCode.category.index = { Husleie: 0, KvmLeie: 1 };
+  f.dimension.ContentsCode.category.label = { Husleie: "Average monthly rents", KvmLeie: "Average rent per sqm" };
+  return f;
+}
+
+test("only the monthly-rent measure is read, never a per-sqm figure; unit is per month", async () => {
+  const t = parseTable(withPerSqm());
+  assert.equal(pickLatest(t, "01", "2")?.value, 15260);
+  assert.equal(pickLatest(t, "02", "1"), null); // ".." stays missing, not replaced by the per-sqm cell
+  const a = await noRent({ town: "Oslo", rooms: 2 }, async () => withPerSqm());
+  assert.equal(a.price?.value, 15260);
+  assert.equal(a.price?.unit, "per month");
+  assert.match(a.summary, /average monthly rent/);
+  assert.equal(a.sample_size, null);
+  assert.equal(a.price?.typical_low, null);
+  assert.ok(Object.values((a.extra as any).by_rooms).every((v) => (v as number) > 1000));
+});
+
+test("a table without the monthly-rent measure is refused, not misread", () => {
+  const f = JSON.parse(JSON.stringify(FIX));
+  f.dimension.ContentsCode.category.index = { KvmLeie: 0 };
+  f.dimension.ContentsCode.category.label = { KvmLeie: "Average rent per sqm" };
+  assert.throws(() => parseTable(f), /Husleie/);
+});
+
+test("suppressed '..' cells are missing, never a rent of 0", () => {
+  const t = parseTable(FIX);
+  assert.ok(t.rows.every((r) => r.value !== null && (r.value as number) > 0));
+  assert.doesNotMatch(INFO.what_is_recorded, /year end/);
+});

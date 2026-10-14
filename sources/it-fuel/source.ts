@@ -20,13 +20,18 @@ export const INFO: SourceInfo = {
   licence_url: "https://www.dati.gov.it/content/italian-open-data-license-v20",
   attribution: "Fonte: Ministero delle Imprese e del Made in Italy – Osservaprezzi carburanti (IODL 2.0).",
   homepage: "https://www.mimit.gov.it/it/open-data/elenco-dataset/carburanti-prezzi-praticati-e-anagrafica-degli-impianti",
-  limits: "Posted pump prices, not individual receipts. Prices not updated in 30 days are left out.",
+  limits:
+    "Posted pump prices in euros per litre (CNG per kg), taxes included; not individual receipts. Prices not updated in 30 days are left out, and prices of 0 or outside 0.30-5 EUR are treated as missing. " +
+    "The period shown runs from the oldest to the newest date on which a counted station last changed its price; every price counted was still in force at 08:00 on the extraction day.",
 };
 
 
 const STATIONS_URL = "https://www.mimit.gov.it/images/exportCSV/anagrafica_impianti_attivi.csv";
 const PRICES_URL = "https://www.mimit.gov.it/images/exportCSV/prezzo_alle_8.csv";
 const MAX_AGE_DAYS = 30;
+/** Plausible pump price bounds in EUR per litre (CNG per kg). */
+export const IT_MIN_PRICE = 0.3;
+export const IT_MAX_PRICE = 5;
 
 export const IT_FUEL: Partial<Record<Fuel, string>> = {
   diesel: "Gasolio",
@@ -86,7 +91,8 @@ export function parseItPrices(text: string): ItPrice[] {
     if (f.length < 5) continue;
     const price = Number(f[2]);
     const reportedAt = itDateToIso(f[4]);
-    if (!Number.isFinite(price) || price <= 0 || !reportedAt) continue;
+    // 0 and out-of-range entries are placeholders or typing slips, never a pump price.
+    if (!Number.isFinite(price) || price < IT_MIN_PRICE || price > IT_MAX_PRICE || !reportedAt) continue;
     out.push({ id: f[0].trim(), fuel: f[1].trim(), price, self: f[3].trim() === "1", reportedAt });
   }
   return out;
@@ -175,7 +181,7 @@ export async function itFuelNow(input: {
     method:
       `Median and 10th–90th percentile of the pump price in force at 08:00 on the extraction day at each station in the area, for the selected fuel and service type. Prices not reported in the last ${MAX_AGE_DAYS} days are left out.`,
     describe: (x) =>
-      `${FUEL_LABEL[input.fuel]}${serviceLabel} in ${area} costs a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+      `${FUEL_LABEL[input.fuel]}${serviceLabel} in ${area}: posted pump prices in force at 08:00${data.extracted ? ` on ${data.extracted}` : ""} (taxes included) have a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
     baseUrl: input.baseUrl,
     extra: { cheapest_stations: cheapest, stations_counted: rows.length, extraction_date: data.extracted },
   });

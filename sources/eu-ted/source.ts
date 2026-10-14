@@ -428,15 +428,16 @@ export async function euTedContracts(input: TedInput): Promise<PriceAnswer> {
       `${head.frameworks.length} framework agreement${plural} in the same notices ${head.frameworks.length === 1 ? "is" : "are"} left out of this figure, because the stated value of a framework is usually a ceiling over several years rather than a price paid` +
         (fwSummary ? `; they have a median of ${fmtMoney(fwSummary.median, currency)} (see extra.framework_agreements_figure).` : "."),
     );
-  } else if (head.frameworks.length) {
-    notes.push(
-      `${head.frameworks.length} of the ${inCurrency.length} awards are framework agreements, whose stated value is usually a ceiling over several years rather than a price paid; ` +
-        `fewer than ${MIN_PUBLISH} single contracts matched, so this figure includes them.`,
-    );
   }
+  // When frameworks are in the headline, say so right after the range, not at the end: their stated value is a ceiling, not a price paid.
+  const mixedNote = head.basis === "all_awards" && head.frameworks.length
+    ? `${head.frameworks.length} of the ${inCurrency.length} awards are framework agreements, whose stated value is usually a ceiling over several years rather than a price paid; ` +
+      `fewer than ${MIN_PUBLISH} single contracts matched, so this figure includes them.`
+    : null;
+  if (mixedNote) notes.push(mixedNote);
   if (truncated) notes.push(`TED holds ${total} matching award notices; the newest ${notices.length} were read.`);
   const leftOut: Record<string, number> = { ...skipped, other_currency: otherCount };
-  return contractAnswer({
+  const answer = contractAnswer({
     source: INFO,
     query: { country: input.country, what: input.what, ...(input.cpv ? { cpv: input.cpv } : {}), ...(input.buyer_area ? { buyer_area: input.buyer_area } : {}), months: input.months },
     values: head.lots.map((l) => l.value),
@@ -477,4 +478,15 @@ export async function euTedContracts(input: TedInput): Promise<PriceAnswer> {
       ...(otherCount ? { other_currencies: others } : {}),
     },
   });
+  return mixedNote ? frameworkFirst(answer, mixedNote) : answer;
+}
+
+/** Moves the "these include framework ceilings" sentence from the tail of the summary to just after the range sentence. Pure. */
+export function frameworkFirst(answer: PriceAnswer, note: string): PriceAnswer {
+  const anchor = "10th to 90th percentile). ";
+  const at = answer.summary.indexOf(anchor);
+  if (answer.status !== "ok" || at < 0 || !answer.summary.includes(note)) return answer;
+  const without = answer.summary.replace(` ${note}`, "");
+  const cut = at + anchor.length;
+  return { ...answer, summary: `${without.slice(0, cut)}${note.charAt(0).toUpperCase()}${note.slice(1)} ${without.slice(cut)}` };
 }

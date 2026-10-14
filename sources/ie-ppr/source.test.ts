@@ -94,3 +94,19 @@ test("IE: the answer echoes the town parameter as 'town'", () => {
   assert.equal((a.query as Record<string, unknown>).town, "Dublin");
   assert.equal((a.query as Record<string, unknown>).place, undefined);
 });
+
+test("IE: VAT basis is in the summary sentence itself (audit 2026-10-14)", () => {
+  const row = { date: "2026-09-30", area: "dublin", item: "new:12m", n: 900, median: 450000, low: 350000, high: 650000, min: 100000, max: 2000000 };
+  const neu = ieAnswerFromRow(row, { label: "Dublin", type: "new", months: 12 });
+  assert.match(neu.summary, /New homes in Dublin sold for a median of €450,000 \(full-market-price sales\); typical range \(10th–90th percentile\)/);
+  assert.match(neu.summary, /mostly without 13\.5% VAT/);
+  const any = ieAnswerFromRow({ ...row, item: "any:12m" }, { label: "Dublin", type: "any", months: 12 });
+  assert.match(any.summary, /recorded without VAT \(most new homes\) are left out/);
+  const sh = ieAnswerFromRow({ ...row, item: "second-hand:12m" }, { label: "Dublin", type: "second-hand", months: 12 });
+  assert.doesNotMatch(sh.summary, /VAT/);
+});
+
+test("IE: an empty or unreadable price is skipped, never read as 0", () => {
+  const s = parseIePpr(header + '\n"01/09/2026","1 Road","Cork","","","No","No","Second-Hand Dwelling house /Apartment",""\n"01/09/2026","2 Road","Cork","","n/a","No","No","Second-Hand Dwelling house /Apartment",""');
+  assert.equal(s.length, 0);
+});

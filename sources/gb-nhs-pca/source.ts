@@ -310,7 +310,7 @@ export function gbpPack(v: number): string {
 function methodText(): string {
   return (
     "From NHSBSA's Prescription Cost Analysis (PCA) monthly table for the newest month published: for every presentation whose name starts with the medicine name (narrowed by any strength, form or extra word you gave), " +
-    "we add up Net Ingredient Cost (the Drug Tariff basic price of the quantity dispensed) and the quantity, over the unit of measure with the most prescription items, and divide: the average the NHS in England paid for the drug per tablet, capsule or ml. " +
+    "we add up Net Ingredient Cost (the Drug Tariff basic price of the quantity dispensed) and the quantity, over the unit of measure with the most prescription items, and divide: the average basic price the NHS in England reimbursed for the drug per tablet, capsule or ml. " +
     "Aggregated by NHSBSA across all dispensers and suppliers; before dispenser discounts, fees and patient charges."
   );
 }
@@ -355,7 +355,7 @@ export function buildGbAnswer(opts: {
       ? "Presentations starting with this name exist, but none has the strength, form or words you gave. Try the name alone, or one of: " + opts.unmatched.slice(0, 12).join("; ")
       : "No NHS presentation name starts with this word. NHS names follow the British National Formulary: use the generic or brand name, first word, e.g. 'paracetamol' for acetaminophen."
     : undefined;
-  return buildStatisticAnswer({
+  const answer = buildStatisticAnswer({
     source: INFO,
     query,
     value,
@@ -367,7 +367,7 @@ export function buildGbAnswer(opts: {
     sample_size: enough ? items : null,
     method: methodText(),
     describe: (v) =>
-      `The NHS in England paid on average about ${gbp(v)} per ${unit} in ingredient cost (the Drug Tariff basic price, before discounts and fees) for ${what}, ` +
+      `The NHS in England reimbursed on average about ${gbp(v)} per ${unit} in ingredient cost (Net Ingredient Cost: the Drug Tariff basic price, before dispenser discounts and fees) for ${what}, ` +
       `dispensed in the community in ${month.label}` +
       (solid ? `; roughly ${gbpPack((nic / quantity) * 28)} for a 28-${unit} supply` : "") +
       `. Based on ${items.toLocaleString("en-GB")} prescription items. This is what the NHS reimburses for the drug, not a shop price or what a patient pays.` +
@@ -418,6 +418,21 @@ export function buildGbAnswer(opts: {
         : {}),
     },
   });
+  // NHSBSA publishes totals (NIC, quantity, items), not this average, and calls the series management information, not an
+  // official statistic: say who calculated the figure instead of the generic "Official average published by ..." ending.
+  const generic = ` Official average published by ${INFO.publisher} for `;
+  if (answer.status === "ok" && answer.summary.includes(generic)) {
+    answer.summary =
+      answer.summary.slice(0, answer.summary.indexOf(generic)) +
+      ` Average calculated by ProofPrice (Net Ingredient Cost divided by quantity) from the totals ${INFO.publisher} publishes for ${month.label} (management information, not an official statistic).`;
+  }
+  if (!enough && used.length > 0) {
+    // Data exists but rests on fewer than MIN_PUBLISH prescription items: say so instead of "no matching statistic".
+    answer.status = "insufficient_data";
+    answer.confidence = "insufficient";
+    answer.summary = `Only ${items} prescription item(s) for ${what} in ${month.label} in NHSBSA's Prescription Cost Analysis; at least ${MIN_PUBLISH} are needed before we publish a figure.`;
+  }
+  return answer;
 }
 
 // ---------- fetching ----------

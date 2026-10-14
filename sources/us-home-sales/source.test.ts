@@ -203,7 +203,9 @@ test("Hartford: a full answer from Connecticut's live format", async () => {
   assert.equal(a.source.id, "us-home-sales");
   assert.equal(a.source.licence, "Public Domain (as labelled on the data.ct.gov dataset page)");
   assert.equal(a.source.publisher, "State of Connecticut, Office of Policy and Management (OPM)");
-  assert.match(a.summary, /^Homes in Hartford, CT sold for a median of US\$350,000; typical range US\$\d/);
+  assert.match(a.summary, /^Homes in Hartford, CT sold for a median of US\$350,000; 10th–90th percentile range US\$\d/);
+  // The annual-file lag is in the summary sentence itself.
+  assert.match(a.summary, /Connecticut publishes these sales once a year: the newest recorded sale in the file is 2025-09-30, 12 months ago\./);
   assert.equal(a.method_url, "https://x.test/method");
   assert.equal((a.extra as any).dataset_latest_sale, "2025-09-30");
   assert.deepEqual((a.extra as any).window, { months: 12, from_exclusive: "2024-09-30", to: "2025-09-30" });
@@ -238,6 +240,7 @@ test("Chicago: Cook County prices arrive as '1045000.0'", async () => {
   assert.equal(a.price?.max, 1825000);
   assert.deepEqual(a.period, { from: "2026-08-10", to: "2026-08-12" });
   assert.match(a.summary, /^Houses and townhomes in Chicago, IL sold for a median of US\$565,000/);
+  assert.match(a.summary, /reported with a lag, so the latest weeks are incomplete/);
   assert.match(a.source.licence, /^Cook County Terms of Use/);
   assert.match(JSON.stringify((a.extra as any).notes), /reported on a lag/);
 });
@@ -265,6 +268,7 @@ test("paging stops at the row cap and says so", async () => {
   assert.equal(offsets.length, Math.ceil(MAX_ROWS / PAGE_SIZE));
   assert.deepEqual(offsets, [0, PAGE_SIZE, 2 * PAGE_SIZE].slice(0, offsets.length));
   assert.match(JSON.stringify((a.extra as any).notes), /capped at the 30,000 most recent/);
+  assert.match(a.summary, /Only the 30,000 most recent matching sales are used\./);
   assert.match(a.method, /uses the 30,000 most recent ones: the period field shows the dates actually covered/);
   const small = await usHomeSales({ town: "Hartford" }, { fetcher: fakePortal(CT_HARTFORD, LATEST.ct).fetcher, today: new Date("2026-10-14T12:00:00Z") });
   assert.doesNotMatch(small.method, /most recent ones/);

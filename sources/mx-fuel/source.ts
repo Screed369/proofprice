@@ -36,7 +36,7 @@ export const INFO: SourceInfo = {
     "Fuente: Comisión Reguladora de Energía (CRE), precios al público de gasolinas y diésel (datos abiertos, Libre Uso MX); consultado por ProofPrice. Medians and ranges are calculated by ProofPrice.",
   homepage: "https://publicacionexterna.azurewebsites.net/publicaciones/prices",
   limits:
-    "Posted pump prices reported by the stations, not receipts. The feeds give coordinates but no address fields, so ProofPrice assigns each station to a state from its coordinates (Natural Earth state boundaries, simplified): a station within about a kilometre of a state border can land in the neighbouring state, and there is no city or municipality level. " +
+    "Posted pump prices reported by the stations, in Mexican pesos per litre with taxes (IVA and IEPS) included, not receipts. The feeds give coordinates but no address fields, so ProofPrice assigns each station to a state from its coordinates (Natural Earth state boundaries, simplified): a station within about a kilometre of a state border can land in the neighbouring state, and there is no city or municipality level. " +
     "Regular and premium are Mexican grades (their octane ratings use a different scale from Europe's RON), not 95 or 98 RON. A station that does not report a fuel is not counted for it. The feeds carry no timestamps, so a price is as current as the station's last report.",
 };
 
@@ -298,7 +298,7 @@ export function mxAnswerFromRow(
       "Median and 10th–90th percentile of the pump prices the stations in the place reported to the regulator, taken from its public feeds on the day shown. " +
       "ProofPrice puts each station into its state from its coordinates, so a station right on a border can fall in the neighbouring state.",
     describe: (x) =>
-      `${MX_LABEL[q.fuel]} in ${q.place.label}: median ${fmtMoney(x.median, "MXN")} per litre on ${row.date}; typical range ${fmtMoney(x.low, "MXN")}–${fmtMoney(x.high, "MXN")} across stations.` +
+      `${MX_LABEL[q.fuel]} in ${q.place.label}: median ${fmtMoney(x.median, "MXN")} per litre on ${row.date}; typical range (10th–90th percentile) ${fmtMoney(x.low, "MXN")}–${fmtMoney(x.high, "MXN")} across stations (posted pump prices, taxes included).` +
       (old ? ` This is old data: our copy of the regulator's feeds is ${age} days old.` : ""),
     baseUrl: q.baseUrl,
     extra: {

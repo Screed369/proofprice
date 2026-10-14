@@ -171,6 +171,11 @@ test("AU: answer is in Australian dollars per litre, dated, with the right cavea
   assert.deepEqual(a.period, { from: "2026-10-14", to: "2026-10-14" });
   assert.match(a.summary, /Diesel in Perth \(metropolitan area\)/);
   assert.match(a.summary, /A\$2\./);
+  // posted prices are never described as what people pay; tax status and range definition are stated
+  assert.match(a.summary, /Perth \(metropolitan area\), Western Australia: posted pump prices/);
+  assert.match(a.summary, /GST included/);
+  assert.match(a.summary, /typical range \(10th–90th percentile\)/);
+  assert.doesNotMatch(a.summary, /\b(costs?|paid|pays?)\b/i);
   assert.equal((a.extra as any).price_cycle_note, undefined); // diesel has no price cycle
   assert.deepEqual(Object.keys((a.extra as any).cheapest_stations[0]).sort(), ["address", "brand", "date", "name", "price", "suburb"]);
   // old data is flagged plainly

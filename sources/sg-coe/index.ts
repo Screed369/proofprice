@@ -18,6 +18,7 @@ export default defineSource({
     { params: { country: "SG", product: "coe", vehicle_class: "A" } },
     { params: { country: "SG", product: "coe", vehicle_class: "D", months: "24" }, smoke: false },
   ],
-  method: "Singapore COE: median of the winning premium across bidding rounds from the Land Transport Authority's official results.",
+  method:
+    "Singapore COE: the latest round's clearing premium (paid by every successful bidder in that round), plus the median and 10th–90th percentile of the premiums across the bidding rounds in the period, from the Land Transport Authority's official results. The range is over rounds through time, not between buyers.",
   handle: (p, ctx) => sgCoe({ vehicle_class: str(p.vehicle_class), months: num(p.months), baseUrl: ctx.baseUrl }),
 });

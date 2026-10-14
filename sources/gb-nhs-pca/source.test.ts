@@ -40,6 +40,15 @@ test("gb-nhs-pca matches strengths and forms in BNF presentation names", () => {
   assert.equal(matchesQuery("Omeprazole 20mg gastro-resistant capsules", parseMedicine("omeprazole dispersible")), false);
 });
 
+test("gb-nhs-pca refuses a figure under 5 prescription items and says why", () => {
+  const q = parseMedicine("rarezumab");
+  const a = buildGbAnswer({ q, rows: [{ presentation: "Rarezumab 10mg tablets", unit: "tablet", prepClass: "01", items: 3, quantity: 84, nic: 120 }], table: "PCA_202607", today: "2026-10-14" });
+  assert.equal(a.status, "insufficient_data");
+  assert.equal(a.price, null);
+  assert.equal(a.sample_size, null);
+  assert.match(a.summary, /^Only 3 prescription item\(s\) for Rarezumab 10mg tablets in July 2026.*at least 5 are needed/);
+});
+
 test("gb-nhs-pca picks the newest month the portal holds", () => {
   assert.deepEqual(candidateTables("2026-10-14"), ["PCA_202607", "PCA_202608", "PCA_202606", "PCA_202605"]); // before the 15th: month-3 first (July)
   assert.deepEqual(candidateTables("2026-10-20"), ["PCA_202608", "PCA_202607", "PCA_202606", "PCA_202605"]); // after the 15th: month-2 first
@@ -86,6 +95,9 @@ test("gb-nhs-pca answers a strength-specific question with the NHS ingredient co
   assert.match(a.summary, /Atorvastatin 20mg tablets/);
   assert.match(a.summary, /3,629,410 prescription items/);
   assert.match(a.summary, /not a shop price or what a patient pays/);
+  assert.match(a.summary, /^The NHS in England reimbursed on average/);
+  assert.doesNotMatch(a.summary, /Official average published by/); // NHSBSA publishes totals; ProofPrice divides them
+  assert.match(a.summary, /Average calculated by ProofPrice \(Net Ingredient Cost divided by quantity\) from the totals NHS Business Services Authority \(NHSBSA\) publishes for July 2026 \(management information, not an official statistic\)\.$/);
   const extra = a.extra as any;
   assert.equal(extra.typical_pack.cost_for_28_units_gbp, 0.72916);
   assert.match(a.summary, /roughly £0\.73 for a 28-tablet supply/);

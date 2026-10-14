@@ -153,7 +153,8 @@ export async function sgRents(input: SgRentInput, fetcher?: Fetcher, now = new D
       "Median and 10th–90th percentile of the monthly rents of HDB flats approved for renting out in the selected town, flat type and window (by month of approval). " +
       "The publisher describes the rents as indicative only: declared by the owner and not verified by HDB.",
     describe: (x) =>
-      `${label} were approved for rent at a median of ${fmtMoney(x.median, "SGD")} a month; typical range ${fmtMoney(x.low, "SGD")}–${fmtMoney(x.high, "SGD")}.`,
+      `${label} were approved for rent at a median of ${fmtMoney(x.median, "SGD")} a month; 10th–90th percentile range ${fmtMoney(x.low, "SGD")}–${fmtMoney(x.high, "SGD")}. ` +
+      "These are the monthly rents owners declared when HDB approved the rental, not verified by HDB; HDB public-housing flats only, no private condominiums.",
     baseUrl: input.baseUrl,
     extra: {
       ...(byFlatType && Object.keys(byFlatType).length ? { by_flat_type: byFlatType } : {}),

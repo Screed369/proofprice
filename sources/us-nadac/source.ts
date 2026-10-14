@@ -17,7 +17,6 @@
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { buildQuery } from "../../lib/adapters/common";
-import { percentile } from "../../lib/stats";
 import type { SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
@@ -47,7 +46,8 @@ export const INFO: SourceInfo = {
     "it leaves out the pharmacy's dispensing fee, mark-up and any insurance or coupon effect, so the counter price is higher. " +
     "It is a national average, not a transaction, and says nothing about one pharmacy. CMS does not publish how many invoices stand behind each rate. " +
     "Only drugs in the NADAC survey appear (outpatient drugs sold at retail pharmacies; no hospital, specialty-only or compounded products). " +
-    "A name query spans several strengths and forms: we take the median over all matching NDC rates, which lands on the strength with the most NDCs, and list every product so the choice is visible. " +
+    "A name query spans several strengths and forms: the headline is the published rate of one of them (the product in the middle when all matching NDCs are ranked by rate), named in the summary; every product and its rate is listed so the choice is visible. " +
+    "CMS does not publish how many invoices stand behind a rate, so no sample size is given (the number of NDCs is a count of products, not of purchases). " +
     "The cost of 30 units is the unit cost multiplied by 30, shown for scale, not a price list.",
 };
 
@@ -296,7 +296,7 @@ export function parseRows(json: unknown): { rows: NadacRow[]; total: number | nu
 export interface Product {
   description: string;
   ndcs: number;
-  rate: number; // median across this product's NDCs
+  rate: number; // lower median across this product's NDCs (one of the published NDC rates)
   low: number;
   high: number;
   unit: string;
@@ -306,9 +306,13 @@ export interface Product {
 }
 
 const r5 = (v: number) => Math.round(v * 100000) / 100000;
-const median = (v: number[]) => percentile([...v].sort((a, b) => a - b), 0.5);
+/** The lower median: always one of the published values, never an interpolation between two rates that no product carries. */
+export const lowerMedian = (v: number[]): number => {
+  const s = [...v].sort((a, b) => a - b);
+  return s[Math.floor((s.length - 1) / 2)];
+};
 
-/** One entry per distinct product description (strength + form), valued at the median of its NDC rates. */
+/** One entry per distinct product description (strength + form), valued at the (lower) median of its NDC rates: a rate CMS published. */
 export function groupProducts(rows: NadacRow[]): Product[] {
   const by = new Map<string, NadacRow[]>();
   for (const r of rows) {
@@ -325,7 +329,7 @@ export function groupProducts(rows: NadacRow[]): Product[] {
     out.push({
       description,
       ndcs: g.length,
-      rate: r5(median(rates)),
+      rate: r5(lowerMedian(rates)),
       low: Math.min(...rates),
       high: Math.max(...rates),
       unit,
@@ -380,8 +384,8 @@ function methodText(): string {
   return (
     "NADAC (National Average Drug Acquisition Cost) is calculated by the Centers for Medicare & Medicaid Services from a survey of invoice prices that U.S. retail community pharmacies pay to buy drugs, " +
     "and published weekly per National Drug Code (NDC, one packaged product). We read the newest weekly file live from data.medicaid.gov, keep the NDCs whose description starts with the medicine name " +
-    "(narrowed by any strength, form or extra word you gave), and take the median of their per-unit rates in the most common pricing unit (tablet or capsule, mL or gram). " +
-    "When the name spans several strengths or forms, the median falls on the strength that has the most NDCs, so every product is listed. " +
+    "(narrowed by any strength, form or extra word you gave), in the most common pricing unit (tablet or capsule, mL or gram), and pass on one published per-unit rate unchanged. " +
+    "When the name spans several strengths or forms, we show the rate of the product in the middle when the matching NDCs are ranked by rate, name that product, and list every product with its own rate; no average or range is calculated across products. " +
     "This is what pharmacies pay to acquire the drug, not what a patient pays at the counter."
   );
 }
@@ -429,7 +433,12 @@ export function buildNadacAnswer(opts: {
   const used = groupProducts(usedRows);
   const other = groupProducts(otherRows);
   const rates = usedRows.map((r) => r.rate);
-  const value = r5(median(rates));
+  // The headline is one published NADAC rate, never a number computed across products: the NDC in the middle by rate
+  // (lower median), valued at its product's published rate.
+  const sortedRows = [...usedRows].sort((a, b) => a.rate - b.rate || a.description.localeCompare(b.description));
+  const headRow = sortedRows[Math.floor((sortedRows.length - 1) / 2)];
+  const headProduct = used.find((p) => p.description === headRow.description) ?? used[0];
+  const value = headProduct.rate;
   const word = unitWord(unit, used.map((p) => p.description));
   const solid = unit === "EA" && (word === "tablet" || word === "capsule");
   const ndcCount = usedRows.length;
@@ -439,7 +448,7 @@ export function buildNadacAnswer(opts: {
   const stale = ageDays > STALE_AFTER_DAYS;
   const classes = new Set(used.map((p) => p.cls));
   const single = used.length === 1;
-  const what = single ? used[0].description : `${q.name.toUpperCase()} (${used.length} strengths and forms; median across ${ndcCount} NDC rates)`;
+  const what = headProduct.description;
   const pack = (n: number) => r5(value * n);
   const noteParts = [
     "NADAC is the pharmacy's average acquisition cost, not the patient's price.",
@@ -455,11 +464,13 @@ export function buildNadacAnswer(opts: {
     unit: `per ${word}`,
     period: { from: oldestEffective || null, to: asOf },
     reference_period: `NADAC weekly file as of ${asOf} (rates effective ${oldestEffective === newestEffective ? newestEffective : `${oldestEffective} to ${newestEffective}`})`,
-    sample_size: ndcCount,
+    sample_size: null, // CMS does not publish how many invoices stand behind a rate; NDCs are products, not purchases
     method: methodText(),
     describe: (v) =>
       `US retail pharmacies paid on average about ${usd(v)} per ${word} to acquire ${what}` +
-      (single ? "" : `; across these products the published rates range from ${usd(Math.min(...rates))} to ${usd(Math.max(...rates))}`) +
+      (single
+        ? ""
+        : ` (one of ${used.length} matching strengths and forms of ${q.name.toUpperCase()}, the one in the middle by rate; their published rates run from ${usd(Math.min(...used.map((p) => p.rate)))} to ${usd(Math.max(...used.map((p) => p.rate)))} per ${word}, so give a strength for an exact figure)`) +
       `. This is the pharmacy's acquisition cost (NADAC), not the price a patient pays at the counter.` +
       (solid ? ` At that unit cost, 30 ${word}s would cost the pharmacy roughly ${usdPack(v * 30)}.` : "") +
       (stale ? ` The newest NADAC file is ${ageDays} days old.` : ""),
@@ -470,8 +481,9 @@ export function buildNadacAnswer(opts: {
       what_the_figure_is:
         "NADAC: the national average price retail community pharmacies pay to acquire this drug per unit, from a CMS survey of purchase invoices. It excludes the pharmacy's dispensing fee and mark-up and any insurance or coupon effect.",
       headline_basis: single
-        ? "the median of the NDC rates of this one product (NDCs of the same product usually carry the same rate)"
-        : "the median of the per-unit rates of all matching NDCs (every packaged product) in the most common pricing unit; it falls on the strength with the most NDCs, so give a strength for an exact figure",
+        ? "the published NADAC rate of this one product (NDCs of the same product usually carry the same rate; if they differ, the middle one)"
+        : `the published NADAC rate of ${headProduct.description}, the product in the middle when all ${ndcCount} matching NDCs are ranked by rate; no average is calculated across strengths, so give a strength for an exact figure`,
+      headline_product: headProduct.description,
       weekly_file_date: asOf,
       rates_effective_from: oldestEffective,
       rates_effective_to: newestEffective,

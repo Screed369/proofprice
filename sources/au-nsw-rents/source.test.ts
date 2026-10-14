@@ -110,13 +110,16 @@ test("daily rows: windows, types, bedrooms, postcode and state level", () => {
   assert.ok(flats2.median >= 600 && flats2.median <= 710);
   assert.ok(flats2.low <= flats2.median && flats2.median <= flats2.high);
   assert.equal(get("2000", "house:3:3m")!.n, 48); // houses and townhouses together
-  assert.equal(get("2000", "any:any:3m")!.n, 24 * 5); // five kinds of bond a month
-  assert.equal(get("2000", "any:0:3m")!.n, 24); // the garages are in 'any' type only
+  // Audit 2026-10-14: 'other' bonds (garages, car spaces, rooms) are not homes and are left out everywhere, even from 'any'
+  // (production showed postcode 2000 'any' at a A$50 minimum and a median A$250 below flats).
+  assert.equal(get("2000", "any:any:3m")!.n, 24 * 4); // four kinds of home bond a month; the garages are not counted
+  assert.equal(get("2000", "any:0:3m"), undefined); // the only 0-bedroom bonds are garages
   assert.equal(get("2000", "apartment:0:3m"), undefined);
   assert.equal(get("2150", "any:any:12m")!.n, 96);
   assert.equal(get("2150", "apartment:any:3m")!.n, 24);
   assert.equal(get("2150", "apartment:2:3m"), undefined); // unknown bedrooms only count in 'any'
-  assert.equal(get("ALL", "any:any:3m")!.n, 24 * 6);
+  assert.equal(get("ALL", "any:any:3m")!.n, 24 * 5);
+  assert.ok(!rows.some((r) => r.min < 500 && r.item.startsWith("any:"))); // no garage rent (100-107) in any row
   // fewer than 12 months: only the 3 month windows
   const short = nswDailyRows(MONTHS.slice(0, 6).map((m) => ({ month: m, bonds: bondsFor(600) })));
   assert.ok(short.rows.some((r) => r.item.endsWith(":3m")));
@@ -212,7 +215,9 @@ test("answers from the library: median and range in AUD per week, period, fallba
     assert.ok(a.price!.typical_low! <= a.price!.median! && a.price!.median! <= a.price!.typical_high!);
     assert.ok(a.sample_size! >= 5);
     assert.deepEqual(a.period, { from: "2026-07-01", to: "2026-09-30" });
-    assert.match(a.summary, /Rental bonds lodged for 2-bedroom flats and units in postcode 2000, NSW show a median weekly rent of A\$\d+/);
+    assert.match(a.summary, /Rental bonds lodged for new tenancies of 2-bedroom flats and units in postcode 2000, NSW show a median agreed weekly rent of A\$\d+/);
+    assert.match(a.summary, /typical range \(10th–90th percentile\) A\$[\d,]+–A\$[\d,]+ a week/);
+    assert.match(a.summary, /new leases .* not what sitting tenants pay/);
     assert.equal((a.extra as any).window_months, 3);
     assert.equal((a.extra as any).median_per_month_equivalent, Math.round((a.price!.median! * 52) / 12));
     assert.equal(a.source.licence.startsWith("Creative Commons Attribution"), true);

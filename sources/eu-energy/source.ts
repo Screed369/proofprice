@@ -200,7 +200,8 @@ export function readEnergy(table: JsonStatTable, q: { country: string; energy: E
   const ds = DATASETS[q.energy];
   const tax = TAX_LEVELS[q.taxes].code;
   const geo = toEurostatGeo(q.country);
-  const mine = table.rows.filter((r) => r.unit === "KWH" && r.geo === geo);
+  // A missing cell (":" in Eurostat's tables) never reaches here as a row; a zero or negative price is treated the same way: no figure.
+  const mine = table.rows.filter((r) => r.unit === "KWH" && r.geo === geo && typeof r.value === "number" && Number.isFinite(r.value) && r.value > 0);
   const main = mine.filter((r) => r.nrg_cons === q.band.code && r.tax === tax && r.currency === "EUR");
   if (!main.length) return null;
   const latest = main.reduce((a, r) => (String(r.time) > String(a.time) ? r : a));

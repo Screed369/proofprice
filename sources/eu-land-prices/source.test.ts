@@ -333,3 +333,19 @@ test("eu-land-prices: the shared tool routes by country, normalises measure alia
   assert.equal((cat.prepare!({ country: "IE", measure: "Leasing" }) as any).measure, "rent");
   assert.equal((cat.prepare!({ country: "IE", measure: "sale price" }) as any).measure, "price");
 });
+
+test("eu-land-prices: a missing (':') or zero latest figure is no figure: the year before is returned, never a price of 0", () => {
+  const t = parseJsonStat(F.PRICE_IE);
+  const latest = Math.max(...t.rows.filter((r) => r.geo === "IE" && r.agriprod === "ARA" && r.unit === "EUR_HA").map((r) => Number(r.time)));
+  t.rows = t.rows.map((r) => (r.geo === "IE" && r.agriprod === "ARA" && Number(r.time) === latest ? { ...r, value: 0 } : r));
+  const r = readLand(t, { country: "IE", measure: "price", geo: "IE", landType: normaliseLandType("price", "arable") });
+  assert.ok(isReading(r));
+  assert.equal(r.year, latest - 1);
+  assert.ok(r.value > 0);
+  assert.ok(r.history.every((h) => h.value > 0 && h.year !== latest));
+  const empty = parseJsonStat(F.PRICE_IE);
+  empty.rows = empty.rows.map((x) => ({ ...x, value: 0 }));
+  const a = landAnswer(readLand(empty, { country: "IE", measure: "price", geo: "IE", landType: null }), { country: "IE", measure: "price", landType: null, region: null, now: NOW });
+  assert.equal(a.status, "no_matches");
+  assert.equal(a.price, null);
+});

@@ -634,7 +634,9 @@ export function finlandAnswer(result: Figure | { insufficient: { sales: number; 
       return (
         `In ${whereOf(q, f)} the average price per m² of ${what} ` +
         `was ${eur(v)} in ${periodWords(f.reference_period)}${f.provisional ? " (provisional)" : ""}` +
-        (f.sales !== null ? `, from ${nf(f.sales)} transactions.` : ".") +
+        // Statistics Finland's count also holds price-controlled (HITAS) and subsidised dwellings and outliers that are left out of the
+        // average, so the count is not the number of sales behind the price: say so in the sentence itself.
+        (f.sales !== null ? `, with ${nf(f.sales)} transactions counted (a count that also includes price-controlled and subsidised dwellings left out of the average).` : ".") +
         (others.length ? ` Other sizes: ${others.join("; ")}.` : "") +
         changeSentence(f.index_change)
       );

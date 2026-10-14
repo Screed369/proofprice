@@ -83,7 +83,9 @@ test("ieRent: a full answer for Dublin, with the period, source and the actual-a
   assert.equal(a.statistic?.reference_period, "2025-Q4");
   assert.match(a.statistic?.note ?? "", /not standardised/);
   assert.match(a.statistic?.note ?? "", /ended about 9 months ago/);
-  assert.match(a.summary, /registered with the RTB in Dublin was €/);
+  assert.match(a.summary, /registered with the RTB in Dublin was €[\d,]+ \(one published average, not a range; not mix-adjusted\)/);
+  assert.match(a.summary, /That quarter ended about 9 months ago, so rents today may differ\./); // audit 2026-10-14: lag in the sentence itself
+  assert.doesNotMatch(a.summary, /paid|typical range/);
   assert.equal(a.source.id, "ie-rtb-rents");
   assert.equal((a.extra as any).previous_quarter.quarter, "2025Q3");
   assert.ok(Object.keys((a.extra as any).by_bedrooms).includes("Two bed"));
@@ -102,4 +104,10 @@ test("INFO states the licence and the kind of figure", () => {
   assert.match(INFO.licence, /CC BY 4\.0/);
   assert.equal(INFO.price_type, "official_statistic");
   assert.match(INFO.limits, /not the standardised/);
+});
+
+test("ieRent: a recent quarter carries no age warning in the summary", async () => {
+  const fetcher = async (url: string) => (url.includes("ReadMetadata") ? META : RPC);
+  const a = await ieRent({ town: "Dublin" }, fetcher, new Date("2026-03-01T00:00:00Z"));
+  assert.doesNotMatch(a.summary, /quarter ended about/);
 });

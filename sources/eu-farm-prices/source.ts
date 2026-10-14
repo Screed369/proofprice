@@ -536,6 +536,14 @@ function referencePeriod(r: { monthly: boolean; latest: Period }): string {
 
 // ---------- the answer (pure) ----------
 
+/** Sectors whose prices are per 100 kg of carcass weight (cold carcass on the EU grid), said so in the sentence. */
+/** A real market name worth naming in the sentence: not a country code ("IE", "ES") or a country written in capitals ("HRVATSKA"). */
+export function isNamedMarket(name: string | undefined): boolean {
+  return !!name && /\p{Ll}/u.test(name);
+}
+
+export const CARCASS_FAMILIES: Family[] = ["beef", "pig", "sheep"];
+
 export function farmAnswer(
   result: FarmReading | FarmMiss | null,
   q: { country: string; product: Product; baseUrl?: string; apiUrl?: string; now?: Date },
@@ -574,11 +582,14 @@ export function farmAnswer(
   const r = result;
   const age = ageOf(r.latest.end, now, r.monthly);
   const kg = kgPerUnit(p.unit);
+  // Beef, pig and lamb prices are per 100 kg of carcass weight (the EU carcass grid), not per kg of meat bought in a shop.
+  const cw = CARCASS_FAMILIES.includes(r.product.family) && p.unit === "100kg" ? " carcass weight" : "";
   const phrase = r.variant.label || p.name;
   const detail: string[] = [];
   if (r.stage && r.product.family !== "poultry") detail.push(stageShort(r.stage));
   if (r.markets.mode === "national" && !(r.stage && /^national average/i.test(r.stage))) detail.push("national average");
   else if (r.markets.mode === "average") detail.push(`simple average of ${r.markets.names.length} markets`);
+  else if (r.markets.mode === "single" && isNamedMarket(r.markets.names[0])) detail.push(`${r.markets.names[0]} market only`);
   const what = detail.length ? `${phrase} (${detail.join(", ")})` : phrase;
 
   const prevText = changePhrase(r.previous, r.monthly ? "the previous month" : "the previous week");
@@ -607,7 +618,7 @@ export function farmAnswer(
   const extra: Record<string, unknown> = {
     country_name: countryName,
     product: { key: p.key, name: p.name, group: p.group, series: { id: r.variant.id, label: phrase, chosen_by: r.variantChoice === "only" ? "only series" : r.variantChoice === "preferred" ? "default" : "fallback" } },
-    published_unit: unit,
+    published_unit: unit + (cw ? cw : ""),
     ...(kg ? { price_per_kg: roundTo(r.latest.value / kg, 4) } : {}),
     reference: { kind: r.monthly ? "month" : "week", from: r.latest.begin, to: r.latest.end },
     basis: {
@@ -633,7 +644,7 @@ export function farmAnswer(
     reference_period: referencePeriod(r),
     note: notes.length ? notes.join(" ") : undefined,
     describe: (v) =>
-      `In ${inCountry} the latest published price for ${what} was ${eur(v)} ${unit}${kg ? ` (${perKgText(v / kg)} per kg)` : ""} for ${periodWords(r)}.` +
+      `In ${inCountry} the latest published price for ${what} was ${eur(v)} ${unit}${cw}${kg ? ` (${perKgText(v / kg)} per kg${cw})` : ""} for ${periodWords(r)}.` +
       (changes.length ? ` That is ${changes.join(" and ")}.` : "") +
       (age.sentence ? ` ${age.sentence}` : ""),
     extra,

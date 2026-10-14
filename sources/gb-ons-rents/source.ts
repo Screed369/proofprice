@@ -335,7 +335,10 @@ export function gbAnswer(
     method:
       "England and Wales (ONS Price Index of Private Rents): the average monthly private rent published by the Office for National Statistics for the chosen local authority, region or country, bedrooms or property type, and month. We pass on the published average; it is built from administrative data on rents and covers new and existing tenancies. It is an average, not a range built from individual rents.",
     describe: (v) =>
-      `The average monthly private rent for ${sel.measure.label} in ${display} was ${fmtMoney(v, "GBP")}${change !== null ? `, ${change >= 0 ? "up" : "down"} ${Math.abs(change)}% on a year earlier` : ""}.`,
+      `The average monthly private rent for ${sel.measure.label} in ${display} was ${fmtMoney(v, "GBP")}` +
+      (change === null ? "" : change === 0 ? ", unchanged on a year earlier" : `, ${change > 0 ? "up" : "down"} ${Math.abs(change)}% on a year earlier`) +
+      ". It averages new and existing private tenancies, so a tenancy starting today usually costs more; one published average, not a range." +
+      (ageDays > 75 ? ` That month ended about ${ageDays} days ago, so rents today may differ.` : ""),
     note: notes.join(" "),
     baseUrl: input.baseUrl,
     extra:

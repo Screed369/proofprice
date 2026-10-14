@@ -224,7 +224,7 @@ export function physicianAnswer(rows: PhysicianRow[], ctx: PhysicianContext): Pr
       `For ${label} (code ${code}) in ${ctx.geo.label}, Medicare allowed an average of ${usd(v)} per service in ${yearWords} in ${placeInfo.words}, across ${count(row.services)} services.` +
       (row.payment !== null ? ` Medicare itself paid ${usd(row.payment)} of that on average; the patient's share and any other insurer cover the rest.` : "") +
       (natl ? ` The national average is ${usd(natl.allowed)}.` : "") +
-      " This is what Medicare allowed, not a private-insurance or cash price.",
+      " This is what Medicare allowed (its payment plus the patient's cost-sharing), not a private-insurance or cash price and not the provider's billed (list) charge.",
     extra: {
       code,
       service: label,

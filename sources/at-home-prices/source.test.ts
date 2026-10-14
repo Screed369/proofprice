@@ -292,10 +292,17 @@ test("at-home-prices: Wien apartment — the first example — is a finished off
   assert.equal(a.statistic!.reference_period, "2025");
   assert.equal(a.statistic!.measure, "median");
   assert.match(a.statistic!.note ?? "", /purchase contracts from 2021 to 2025, the earlier years revalued to 2025 with a regression model/);
-  assert.match(a.summary, /^In Wien the median price paid for owner-occupied flats \(Eigentumswohnungen\) was €5,212 per m² of living area in 2025\./);
+  // The summary itself says per m² (not per home) and that the figure is a model over five years of contracts, not one year's sales.
+  assert.match(
+    a.summary,
+    /^In Wien the median price paid for owner-occupied flats \(Eigentumswohnungen\) was €5,212 per m² of living area \(not per home\) for 2025, a model figure from purchase contracts of 2021 to 2025, the earlier years revalued to 2025\./,
+  );
   assert.match(a.summary, /5\.5% higher than in 2024 \(€4,940 per m²\)/);
-  assert.match(a.summary, /The Austrian median for 2025 was €4,162 per m² \(25\.2% above\)/);
-  assert.match(a.summary, /Official median published by STATISTIK AUSTRIA .* for 2025\./);
+  // which side is above is named, not left ambiguous
+  assert.match(a.summary, /The Austrian median for 2025 was €4,162 per m² \(Wien is 25\.2% above it\)/);
+  // the publisher's name no longer reads "purchase contracts from the land register for 2025" (one year's contracts)
+  assert.match(a.summary, /Official median published by STATISTIK AUSTRIA \(Bundesanstalt Statistik Österreich\) for 2025\.$/);
+  assert.doesNotMatch(a.summary, /land register for 2025/);
   assert.equal(a.source.licence_url, LICENCE_URL);
   const x = a.extra as any;
   assert.deepEqual(x.region, { name: "Wien", published_as: "Wien", level: "municipality", code: "90001", bundesland: "Wien" });

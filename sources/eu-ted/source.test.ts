@@ -207,6 +207,12 @@ test("TED end to end with a stubbed API: laptops in France", async () => {
       // Only 2 single contracts matched, so every award counts and the answer says so.
       assert.equal(a.extra?.headline_basis, "all_awards");
       assert.match(a.summary, /fewer than 5 single contracts matched/);
+      // ... and that caveat comes straight after the range, before the sample size line, not at the very end.
+      const [first, second] = a.summary.split(/(?<=\.)\s+/);
+      assert.match(first, /median total value of .* per contract \(typical range .*10th to 90th percentile\)\./);
+      assert.match(second, /^4 of the 6 awards are framework agreements, whose stated value is usually a ceiling/);
+      assert.equal(a.summary.match(/framework agreements, whose stated value/g)!.length, 1);
+      assert.ok(a.summary.indexOf("framework agreements") < a.summary.indexOf("Based on 6 records"));
       assert.equal(a.extra?.framework_agreements_figure, undefined);
       assert.deepEqual(a.extra?.matched_codes, ["30213100"]);
       assert.equal((a.extra?.left_out as any).no_winner, 1);

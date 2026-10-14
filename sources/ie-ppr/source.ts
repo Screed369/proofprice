@@ -24,7 +24,7 @@ export const INFO: SourceInfo = {
   attribution: "Source: Property Services Regulatory Authority (PSRA), Residential Property Price Register. Licensed under CC BY 4.0.",
   homepage: "https://www.propertypriceregister.ie/",
   limits:
-    "Aggregates only, by county or Dublin postal district and rolling window; never individual addresses. Excludes sales flagged 'not full market price' and records above EUR 10 million (bulk sales). New homes are usually recorded without VAT.",
+    "Aggregates only, by county or Dublin postal district and rolling window; never individual addresses. Excludes sales flagged 'not full market price' (for example family transfers), prices under EUR 10,000 and records above EUR 10 million (bulk sales). Prices are per sale as declared for stamp duty, usually one home. New homes are usually recorded without 13.5% VAT: 'new' keeps them as recorded, 'any' leaves out prices recorded without VAT.",
 };
 
 /** Single-home ceiling: bulk or portfolio sales (whole apartment blocks) sometimes lack the 'not full market price' flag. */
@@ -219,7 +219,13 @@ export function ieAnswerFromRow(
     method:
       "Median and 10th–90th percentile of full-market-price residential sales over the last 3, 6, 12, 24 or 36 months (your request is rounded to the nearest) ending at the latest sale in the register. " +
       "Sales flagged 'not full market price' are excluded, as are records above €10 million (bulk or portfolio sales, not single homes). 'any' also leaves out prices recorded without VAT; 'new' keeps prices as recorded, and new homes are usually recorded without 13.5% VAT, so do not compare new with second-hand directly.",
-    describe: (x) => `${cap(typeLabel)} in ${q.label} sold for a median of ${fmtMoney(x.median, "EUR")}; typical range ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")}.`,
+    describe: (x) =>
+      `${cap(typeLabel)} in ${q.label} sold for a median of ${fmtMoney(x.median, "EUR")} (full-market-price sales); typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")}.` +
+      (q.type === "new"
+        ? " New-home prices are as recorded on the register, mostly without 13.5% VAT, so the price a buyer paid is usually higher."
+        : q.type === "any"
+          ? " Prices recorded without VAT (most new homes) are left out, so this mostly reflects second-hand homes."
+          : ""),
     baseUrl: q.baseUrl,
   });
 }

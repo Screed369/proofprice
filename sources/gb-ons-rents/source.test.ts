@@ -223,6 +223,9 @@ test("answers from the library: the published average, its month, the annual cha
     assert.equal(a.statistic?.reference_period, "2026-08");
     assert.match(a.summary, /The average monthly private rent for all homes in Manchester was £1,373, up 4\.2% on a year earlier\./);
     assert.match(a.summary, /Official average published by Office for National Statistics \(ONS\) for 2026-08\./);
+    // audit 2026-10-14: the new-and-existing-tenancies bias is in the sentence itself, not only in the note
+    assert.match(a.summary, /averages new and existing private tenancies, so a tenancy starting today usually costs more; one published average, not a range\./);
+    assert.doesNotMatch(a.summary, /paid|typical range|days ago/);
     assert.match(a.statistic?.note ?? "", /new and existing/);
     assert.ok(!/ended about/.test(a.statistic?.note ?? ""));
     const extra = a.extra as any;
@@ -253,6 +256,7 @@ test("answers from the library: the published average, its month, the annual cha
     // old data is flagged
     const old = await gbRents({ town: "Manchester" }, new Date("2027-01-20T00:00:00Z"));
     assert.match(old.statistic?.note ?? "", /latest month we hold is 2026-08, which ended about 142 days ago/);
+    assert.match(old.summary, /That month ended about 142 days ago, so rents today may differ\./);
   } finally {
     delete process.env.PROOFPRICE_LIBRARY_DIR;
   }
@@ -293,4 +297,13 @@ test("INFO: licence quoted from the ONS dataset page; what the figures are and a
   assert.equal(INFO.licence_url, "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/");
   assert.equal(INFO.price_type, "official_statistic");
   assert.match(INFO.limits, /Scotland \(mainly advertised new lets\)/);
+});
+
+test("a published annual change of 0 reads 'unchanged', not 'up 0%'", async () => {
+  const lib = { date: "2026-08-31", rows: [
+    { area: "E08000003 Manchester", item: "all", median: 1373 },
+    { area: "E08000003 Manchester", item: "all:yoy", median: 0 },
+  ] };
+  const a = gbAnswer(lib, { town: "Manchester" }, new Date("2026-10-14T12:00:00Z"));
+  assert.match(a.summary, /was £1,373, unchanged on a year earlier\./);
 });

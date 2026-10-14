@@ -19,7 +19,7 @@ export const INFO: SourceInfo = {
   licence_url: "https://datos.gob.es/en/catalogo/e05068001-precio-de-carburantes-en-las-gasolineras-espanolas",
   attribution: "Source: Ministerio para la Transición Ecológica y el Reto Demográfico – precios de carburantes (datos.gob.es).",
   homepage: "https://geoportalgasolineras.es/",
-  limits: "Posted pump prices, not individual receipts. Restricted-sale stations are excluded.",
+  limits: "Posted pump prices in euros per litre (CNG per kg), taxes included; not individual receipts. Restricted-sale stations are excluded. Prices of 0 and implausible entries (under 0.30 or over 5 EUR) are treated as missing.",
 };
 
 
@@ -54,12 +54,17 @@ export function esProvinceFromPostcode(cp: string): string | null {
   return n >= 1 && n <= 52 ? p : null;
 }
 
+/** Plausible pump price bounds in EUR per litre (CNG per kg). */
+export const ES_MIN_PRICE = 0.3;
+export const ES_MAX_PRICE = 5;
+
 export function parseEsPrice(v: unknown): number {
   if (v === null || v === undefined) return NaN;
   const s = String(v).trim().replace(",", ".");
   if (!s) return NaN;
   const n = Number(s);
-  return Number.isFinite(n) && n > 0 ? n : NaN;
+  // 0 and out-of-range entries are placeholders or typing slips, never a pump price: treat them as missing.
+  return Number.isFinite(n) && n >= ES_MIN_PRICE && n <= ES_MAX_PRICE ? n : NaN;
 }
 
 function provinceOf(r: any): string | null {
@@ -144,7 +149,7 @@ export async function esFuelNow(input: {
     method:
       "Median and 10th–90th percentile of the current pump price reported by each public filling station in the area for the selected fuel. Restricted-sale stations are excluded.",
     describe: (x) =>
-      `${FUEL_LABEL[input.fuel]} in ${area} costs a median of ${fmtMoney(x.median, "EUR")} ${unit} right now; typical range ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+      `${FUEL_LABEL[input.fuel]} in ${area}: current posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
     baseUrl: input.baseUrl,
     extra: { cheapest_stations: cheapest, stations_counted: picked.length, ...(note ? { note } : {}) },
   });

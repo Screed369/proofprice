@@ -296,3 +296,23 @@ test("energy category: DATASETS describe the standard bands", () => {
   assert.deepEqual(DATASETS.electricity.bands.map((b) => b.letter), ["ALL", "DA", "DB", "DC", "DD", "DE"]);
   assert.deepEqual(DATASETS.gas.bands.map((b) => b.letter), ["ALL", "D1", "D2", "D3"]);
 });
+
+test("eu-energy: a missing (':') or zero latest cell is no figure: the previous half-year is returned, never a price of 0", () => {
+  const isMain = (r: any, t: string) => r.geo === "IE" && r.unit === "KWH" && r.nrg_cons === "KWH2500-4999" && r.tax === "I_TAX" && r.currency === "EUR" && r.time === t;
+  // zero placeholder in the newest half-year
+  const zero = ie();
+  zero.rows = zero.rows.map((r) => (isMain(r, "2026-S1") ? { ...r, value: 0 } : r));
+  const rz = readEnergy(zero, { country: "IE", energy: "electricity", band: DC, taxes: "all" })!;
+  assert.equal(rz.reference_period, "2025-S2");
+  assert.equal(rz.value, 0.4042);
+  // the cell missing altogether (Eurostat ":")
+  const gone = ie();
+  gone.rows = gone.rows.filter((r) => !isMain(r, "2026-S1"));
+  assert.equal(readEnergy(gone, { country: "IE", energy: "electricity", band: DC, taxes: "all" })!.reference_period, "2025-S2");
+  // nothing left at all: no_matches, not a 0 price
+  const none = ie();
+  none.rows = none.rows.map((r) => ({ ...r, value: 0 }));
+  const a = energyAnswer(readEnergy(none, { country: "IE", energy: "electricity", band: DC, taxes: "all" }), { country: "IE", energy: "electricity", band: DC, taxes: "all" });
+  assert.equal(a.status, "no_matches");
+  assert.equal(a.price, null);
+});

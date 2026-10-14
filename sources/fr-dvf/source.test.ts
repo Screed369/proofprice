@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseCsv, dvfSales, windowSales } from "./source";
+import { parseCsv, dvfSales, windowSales, frDescribe, INFO } from "./source";
 
 // Columns as published in geo-dvf; values invented for the test.
 const dvfCsv = [
@@ -28,4 +28,24 @@ test("FR DVF: one sale per mutation, single homes only, quoted commas handled", 
   const w = windowSales(sales, 12);
   assert.equal(w.to, "2025-06-10");
   assert.deepEqual(w.kept.map((s) => s.id).sort(), ["2025-1", "2025-2"]); // Jan 2024 falls outside 12 months
+});
+
+test("FR DVF: a missing or tiny valeur_fonciere is never a price (audit 2026-10-14)", () => {
+  const h = dvfCsv.split("\n")[0];
+  const rows = parseCsv([
+    h,
+    "2025-7,2025-05-01,000001,Vente,,1,RUE A,69003,69383,Lyon 3e Arrondissement,Appartement,30,1",
+    "2025-8,2025-05-02,000001,Vente,0,1,RUE B,69003,69383,Lyon 3e Arrondissement,Appartement,30,1",
+    "2025-9,2025-05-03,000001,Vente,9500,1,RUE C,69003,69383,Lyon 3e Arrondissement,Maison,30,1",
+  ].join("\n"));
+  assert.deepEqual(dvfSales(rows), []);
+});
+
+test("FR DVF: summary says per home, single-home sales, the percentile range and the publication delay (audit 2026-10-14)", () => {
+  const t = frDescribe("apartment", "postcode 69003", { median: 250000, low: 127000, high: 466085 }, "2025-12-31");
+  assert.match(t, /^Apartments in postcode 69003 sold for a median of €250,000 per home \(single-home sales only\)/);
+  assert.match(t, /typical range \(10th–90th percentile\) €127,000–€466,085/);
+  assert.match(t, /delay of several months, so the latest sale included is from 2025-12-31/);
+  assert.match(INFO.limits, /several homes in one deed \(multi-lot sales\)/);
+  assert.match(INFO.limits, /price per m² .* built floor area/);
 });

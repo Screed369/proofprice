@@ -24,7 +24,7 @@ export const INFO: SourceInfo = {
   attribution: "Source: FuelWatch, Government of Western Australia (Department of Energy, Mines, Industry Regulation and Safety), CC BY 4.0.",
   homepage: "https://www.fuelwatch.wa.gov.au/",
   limits:
-    "Western Australia only (not the rest of Australia). Prices are standard cash prices: they exclude supermarket and shopper-docket discounts and card fees. " +
+    "Western Australia only (not the rest of Australia). Prices are posted standard cash prices in Australian dollars per litre, GST included: they exclude supermarket and shopper-docket discounts and card fees. " +
     "Membership-only stations are left out. Perth and Mandurah unleaded follows a seven-day price cycle, so one day can sit well above or below the weekly average. " +
     "In Australia standard unleaded (ULP) is 91 RON, not 95.",
 };
@@ -219,7 +219,7 @@ export function auAnswer(
       "Median and 10th–90th percentile of the standard cash price per litre notified to FuelWatch by each fuel retailer in the area for the selected fuel, for the day shown. " +
       "Membership-only stations are left out. Standard unleaded (ULP) is 91 RON in Australia.",
     describe: (x) =>
-      `${AU_LABEL[q.fuel]} in ${label} costs a median of ${fmtMoney(x.median, "AUD")} per litre; typical range ${fmtMoney(x.low, "AUD")}–${fmtMoney(x.high, "AUD")} across stations (standard cash prices, Western Australia).` +
+      `${AU_LABEL[q.fuel]} in ${label}${q.scope.kind === "state" ? "" : ", Western Australia"}: posted pump prices (standard cash price notified to FuelWatch, GST included) have a median of ${fmtMoney(x.median, "AUD")} per litre; typical range (10th–90th percentile) ${fmtMoney(x.low, "AUD")}–${fmtMoney(x.high, "AUD")} across stations.` +
       (stale ? ` WARNING: the newest price date is ${newest}, which is old.` : ""),
     baseUrl: q.baseUrl,
     extra: {

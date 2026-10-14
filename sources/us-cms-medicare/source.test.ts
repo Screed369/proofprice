@@ -289,6 +289,8 @@ test("us-cms-medicare: every answer says these are Medicare amounts, not private
     const a = await medicalPrices(req, { fetcher: fakeCms().fetcher });
     assert.match(a.summary, /Medicare/);
     assert.match(a.summary, /not a private-insurance or cash price/);
+    assert.match(a.summary, /patient's cost-sharing/); // what Medicare allowed/paid, not what the patient alone pays
+    assert.match(a.summary, /not the (provider|hospital)'s billed \(list\) charge/); // never the list charge
     assert.match(a.statistic!.note!, /not what private insurance pays or the cash price/);
     assert.ok(Object.keys(a.extra as any).includes("average_billed_charge_not_a_price_paid"));
     assert.equal(a.price_type, "official_statistic");

@@ -26,16 +26,21 @@ export const INFO: SourceInfo = {
     "Source: Base de données publique des médicaments (ANSM, HAS, Assurance Maladie), licence ouverte Etalab 2.0; data not altered.",
   homepage: "https://base-donnees-publique.medicaments.gouv.fr/",
   limits:
-    "Regulated (posted) prices of reimbursable packs on sale, not market transactions; a range spans all pack sizes and strengths of one medicine name. Packs without a fixed price (not reimbursed, or no longer sold) are left out. Overseas departments have mark-ups.",
+    "Regulated (posted) public prices of reimbursable packs on sale, not market transactions: the price per box including VAT and the per-box dispensing fee, which is also the base Assurance Maladie reimburses from; " +
+    "the patient pays it minus the reimbursement (and any top-up insurance), and per-prescription pharmacy fees are not included. " +
+    "Each pack counts once, so a range spans all pack sizes and strengths of one medicine name (a box of 8 and a box of 100 sit side by side); it is a spread of list prices, not of what people paid. " +
+    "Packs without a fixed price (not reimbursed, or no longer sold) are left out. Overseas departments have mark-ups.",
 };
 
 export const CIP_URL = "https://base-donnees-publique.medicaments.gouv.fr/download/file/CIS_CIP_bdpm.txt";
 export const NAMES_URL = "https://base-donnees-publique.medicaments.gouv.fr/download/file/CIS_bdpm.txt";
 export const MAX_NAMES = 2000; // library size guard: the medicine names with the most packs
 
-/** "24,34" or "1 234,56" -> 24.34 / 1234.56; null when empty or not a number. */
+/** "24,34", "1 234,56" or "1,234,56" -> 24.34 / 1234.56 / 1234.56 (the LAST comma is the decimal mark); null when empty or not a number. */
 export function parseEuro(v: string): number | null {
-  const t = v.replace(/[\s ]/g, "").replace(/\./g, "").replace(",", ".");
+  const s = v.replace(/[\s\u00a0]/g, "").replace(/\./g, "");
+  const i = s.lastIndexOf(",");
+  const t = i < 0 ? s : s.slice(0, i).replace(/,/g, "") + "." + s.slice(i + 1);
   if (!t) return null;
   const n = Number(t);
   return Number.isFinite(n) && n > 0 ? n : null;
@@ -141,7 +146,12 @@ export function frHistoryKey(p: { medicine?: string }) {
 }
 
 /** Pure: turn the latest library row into an answer. */
-export function frAnswerFromRow(row: DailyRow & { date: string }, q: { key: string; baseUrl?: string }): PriceAnswer {
+export const STALE_AFTER_DAYS = 7; // the collector runs daily; an older copy means it has stopped
+
+export function frAnswerFromRow(row: DailyRow & { date: string }, q: { key: string; baseUrl?: string; today?: string }): PriceAnswer {
+  const today = q.today ?? new Date().toISOString().slice(0, 10);
+  const ageDays = Math.round((Date.parse(today + "T00:00:00Z") - Date.parse(row.date + "T00:00:00Z")) / 86400000);
+  const stale = ageDays > STALE_AFTER_DAYS;
   return buildAnswer({
     source: INFO,
     query: { country: "FR", medicine: q.key },
@@ -151,8 +161,12 @@ export function frAnswerFromRow(row: DailyRow & { date: string }, q: { key: stri
     period: { from: row.date, to: row.date },
     method: methodText(),
     describe: (x) =>
-      `Packs of "${q.key}" in France have a legally fixed price of a median ${fmtMoney(x.median, "EUR")} per box; typical range ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")}, across pack sizes and strengths. These are regulated prices, the same in every pharmacy, not market transactions.`,
+      `Reimbursable packs of "${q.key}" in France have a legally fixed public price (per box, incl. VAT and the dispensing fee; also the base Assurance Maladie reimburses from) of a median ${fmtMoney(x.median, "EUR")} per box; ` +
+      `10th–90th percentile ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across the packs listed, which mix pack sizes and strengths. ` +
+      `These are regulated list prices, the same in every pharmacy in mainland France, not market transactions; the patient pays this minus the reimbursement.` +
+      (stale ? ` Our copy of the database is ${ageDays} days old (collected ${row.date}).` : ""),
     baseUrl: q.baseUrl,
+    ...(stale ? { extra: { stale: true, days_since_collected: ageDays } } : {}),
   });
 }
 

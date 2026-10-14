@@ -220,7 +220,7 @@ test("dk-home-prices: the answer is an official average with its quarter, sales,
   assert.equal(a.statistic!.reference_period, "2026-Q2");
   assert.deepEqual(a.period, { from: "2026-04-01", to: "2026-06-30" });
   assert.equal(a.source.licence_url, "https://www.dst.dk/en/presse/kildeangivelse");
-  assert.match(a.summary, /In Copenhagen \(province Byen København\) the average price of an owner-occupied flat \(ordinary free-trade sales\) was DKK\s6,168,000 in the second quarter of 2026 \(preliminary\), from 1,384 sales\./);
+  assert.match(a.summary, /In Copenhagen \(province Byen København\) the average price of an owner-occupied flat \(ordinary free-trade sales\) was DKK\s6,168,000 in the second quarter of 2026 \(preliminary; Statistics Denmark says preliminary averages are underestimated\), from 1,384 sales\./);
   assert.match(a.summary, /That is 0\.5% lower than in the first quarter of 2026 and 16\.7% higher than a year earlier \(the second quarter of 2025\)\./);
   assert.match(a.summary, /Official average published by Statistics Denmark \(Danmarks Statistik\) for 2026-Q2\./);
   const note = a.statistic!.note!;

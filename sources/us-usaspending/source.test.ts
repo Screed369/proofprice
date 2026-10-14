@@ -173,3 +173,15 @@ test("USAspending: a bad buyer_area or code is the caller's mistake", async () =
   await assert.rejects(() => usContracts({ what: "laptops", buyer_area: "Ontario", months: 12 }), InputError);
   await assert.rejects(() => usContracts({ what: "laptops", cpv: "30213100", months: 12 }), InputError);
 });
+
+test("USAspending: a missing, empty, text or negative (de-obligated) amount is never counted as a price", () => {
+  const rows = [
+    { internal_id: 1, "Award Amount": null, "Base Obligation Date": "2026-01-01" },
+    { internal_id: 2, "Award Amount": "", "Base Obligation Date": "2026-01-01" },
+    { internal_id: 3, "Award Amount": "n/a", "Base Obligation Date": "2026-01-01" },
+    { internal_id: 4, "Award Amount": -5000, "Base Obligation Date": "2026-01-01" },
+    { internal_id: 5, "Base Obligation Date": "2026-01-01" },
+    { internal_id: 6, "Award Amount": 2500, "Base Obligation Date": "2026-01-01" },
+  ];
+  assert.deepEqual(parseAwards({ results: rows }).map((a) => [a.id, a.amount]), [["6", 2500]]);
+});

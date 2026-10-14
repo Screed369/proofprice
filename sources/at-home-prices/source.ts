@@ -22,7 +22,9 @@ export const INFO: SourceInfo = {
   country: "AT (Austria)",
   category: "home sales (official median price per m²)",
   name: "Immobilien-Durchschnittspreise: median price per m² of houses and owner-occupied flats, by district, municipality and Bundesland",
-  publisher: "STATISTIK AUSTRIA (Bundesanstalt Statistik Österreich), based on purchase contracts from the land register",
+  // Kept short: buildStatisticAnswer appends "Official median published by <publisher> for <year>.", and a longer publisher read as
+  // "purchase contracts from the land register for 2025", as if the figure rested on one year's contracts. The land register is in what_is_recorded.
+  publisher: "STATISTIK AUSTRIA (Bundesanstalt Statistik Österreich)",
   what_is_recorded:
     "For Austria, its nine Bundesländer (Vienna included), the 100 most populous municipalities and the political districts (Bezirke; Vienna's 23 districts included), and each year from 2015: " +
     "the median price per square metre of living area paid for houses and for owner-occupied flats, calculated by STATISTIK AUSTRIA from the purchase contracts in the land register " +
@@ -538,9 +540,10 @@ export function atAnswer(data: AtData, q: AtQuery): PriceAnswer {
     note: notes.join(" "),
     baseUrl: q.baseUrl,
     describe: (v) =>
-      `In ${label} the median price paid for ${typeWords} was ${fmtMoney(v, "EUR")} per m² of living area in ${year}.` +
+      `In ${label} the median price paid for ${typeWords} was ${fmtMoney(v, "EUR")} per m² of living area (not per home) for ${year}, ` +
+      `a model figure from purchase contracts of ${year - 4} to ${year}, the earlier years revalued to ${year}.` +
       (previous ? pctWords(previous.change_percent, String(previous.year), previous.value) : "") +
-      (austria ? ` The Austrian median for ${year} was ${fmtMoney(austria.median, "EUR")} per m² (${Math.abs(austria.area_vs_this_percent)}% ${austria.area_vs_this_percent >= 0 ? "above" : "below"}).` : "") +
+      (austria ? ` The Austrian median for ${year} was ${fmtMoney(austria.median, "EUR")} per m² (${label} is ${Math.abs(austria.area_vs_this_percent)}% ${austria.area_vs_this_percent >= 0 ? "above" : "below"} it).` : "") +
       (stateFigure ? ` The ${stateArea!.name} median was ${fmtMoney(stateFigure.median, "EUR")} per m².` : ""),
     extra,
   });

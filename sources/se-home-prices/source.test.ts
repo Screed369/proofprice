@@ -208,6 +208,13 @@ test("se-home-prices: a flat is answered with the median and says which area the
   assert.match(a.summary, /In Göteborg the median purchase price of a tenant-owned flat in Greater Gothenburg was SEK\s2,750,000 in 2025, from 10,957 sales\./);
   assert.match(a.statistic!.note!, /not for municipalities: the figure is for Greater Gothenburg, where Göteborg lies/);
   assert.equal((a.extra as any).average_price, 3104000);
+  // the known bias of a tenant-owned flat price is in the summary sentence itself, not only in limits
+  assert.match(a.summary, /does not include the flat's share of the housing cooperative's debt/);
+  assert.match(INFO.limits, /excludes the flat's share of the housing cooperative's debt/);
+  // and never on a house answer
+  const st = resolvePlace("Stockholm");
+  const h = readFigure(parseJsonStat(F.STOCKHOLM), { kind: "house", asked: st, place: st, cadence: "yearly", tableId: "TAB1169", codes: HY })!;
+  assert.doesNotMatch(swedenAnswer(h, { type: "house", asked: st, now: NOW }).summary, /cooperative/);
 });
 
 test("se-home-prices: a small municipality still has its figure; fewer than 5 sales never do", () => {

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { categoryById, countriesFor, runCategory, SOURCE_PLUGINS } from "../../lib/registry";
 import {
-  ageOf, COUNTRIES, euFarmPrices, farmAnswer, farmUrl, INFO, isFarmReading, parseDate, parsePrice, readFarm, stageShort, toQuotes, WINDOW_DAYS, withThe,
+  ageOf, COUNTRIES, euFarmPrices, isNamedMarket, farmAnswer, farmUrl, INFO, isFarmReading, parseDate, parsePrice, readFarm, stageShort, toQuotes, WINDOW_DAYS, withThe,
 } from "./source";
 import { CATALOGUE, kgPerUnit, productGroups, resolveProduct } from "./products";
 import * as F from "./fixtures";
@@ -138,12 +138,12 @@ test("eu-farm-prices: Irish pig carcasses (class E), the smoke-test example", ()
   assert.equal(a.confidence, "high");
   assert.equal(a.source.id, "eu-farm-prices");
   assert.equal(a.source.licence_url, "https://commission.europa.eu/legal-notice_en");
-  assert.match(a.summary, /^In Ireland the latest published price for pig carcasses \(class E\) was €168\.20 per 100 kg \(€1\.68 per kg\) for the week 28 Sep 2026 to 4 Oct 2026\./);
+  assert.match(a.summary, /^In Ireland the latest published price for pig carcasses \(class E\) was €168\.20 per 100 kg carcass weight \(€1\.68 per kg carcass weight\) for the week 28 Sep 2026 to 4 Oct 2026\./);
   assert.match(a.summary, /10\.8% lower than a year earlier/);
   assert.match(a.summary, /Official average published by European Commission, DG Agriculture and Rural Development/);
   const x = extra(a);
   near(x.price_per_kg, 1.682, 0.0001);
-  assert.equal(x.published_unit, "per 100 kg");
+  assert.equal(x.published_unit, "per 100 kg carcass weight");
   assert.equal(x.product.series.id, "E");
   assert.deepEqual(x.previous_period, { begin: "2026-09-21", end: "2026-09-27", value: 168.15, change_percent: 0 });
   assert.deepEqual(x.year_earlier, { begin: "2025-09-29", end: "2025-10-05", value: 188.59, change_percent: -10.8 });
@@ -180,7 +180,7 @@ test("eu-farm-prices: the same fixture reads for other countries and classes, an
 test("eu-farm-prices: beef shows the national indicative price first and lists the classes", () => {
   const a = answer(F.BEEF_FR_YEAR, "FR", "beef");
   assert.equal(a.price!.value, 623.97);
-  assert.match(a.summary, /adult male cattle carcasses \(national indicative price\) was €623\.97 per 100 kg \(€6\.24 per kg\)/);
+  assert.match(a.summary, /adult male cattle carcasses \(national indicative price\) was €623\.97 per 100 kg carcass weight \(€6\.24 per kg carcass weight\)/);
   assert.match(a.summary, /0\.1% lower than the previous week and 11\.7% lower than a year earlier/);
   const x = extra(a);
   assert.equal(x.year_earlier.value, 706.39);
@@ -219,7 +219,7 @@ test("eu-farm-prices: cereals use the stage most markets quote and average the m
 
   const gr = answer(F.CEREAL_MIX, "GR", "wheat");
   assert.equal(gr.price!.value, 245);
-  assert.match(gr.summary, /^In Greece .*milling \(bread-making\) wheat \(farm-gate\) was €245\.00 per tonne/);
+  assert.match(gr.summary, /^In Greece .*milling \(bread-making\) wheat \(farm-gate, Ioannina market only\) was €245\.00 per tonne/);
 
   // the count is of the markets in the newest week's figure, not of every market that reported in the 15 months
   assert.match(answer(F.CEREAL_MIX, "DE", "wheat").summary, /ex-silo, simple average of 5 markets/);
@@ -556,4 +556,25 @@ test("eu-farm-prices: stage words are plain", () => {
   assert.equal(stageShort("Deliver to first customer - silo or processing plant - on truck or other transport means"), "delivered to the first buyer");
   assert.equal(stageShort("Delivered to port - grain delivered to a port silo by train or truck or barge"), "delivered to port");
   assert.equal(stageShort("Something else entirely"), "something else entirely");
+});
+
+test("eu-farm-prices: carcass prices say 'carcass weight' in the sentence; other per-100-kg products do not", () => {
+  const pig = answer(F.PIG_IE_YEAR, "IE", "pig");
+  assert.match(pig.summary, /per 100 kg carcass weight \(€1\.68 per kg carcass weight\)/);
+  assert.equal(pig.price!.unit, "per 100 kg"); // the answer's unit field keeps the published unit
+  assert.match(answer(F.SHEEP_MIX, "IE", "lamb").summary, /€790\.21 per 100 kg carcass weight/);
+  assert.match(answer(F.BEEF_IE, "IE", "heifer").summary, /per 100 kg carcass weight/);
+  assert.doesNotMatch(answer(F.MILK_IE, "IE", "milk").summary, /carcass weight/);
+  assert.doesNotMatch(answer(F.EGG_IE, "IE", "eggs").summary, /carcass weight/);
+  assert.doesNotMatch(answer(F.POULTRY_MIX, "PL", "chicken").summary, /carcass weight/);
+});
+
+test("eu-farm-prices: a figure from one market names that market; a country code standing in for a market is not named", () => {
+  assert.match(answer(F.CEREAL_MIX, "GR", "wheat").summary, /\(farm-gate, Ioannina market only\)/);
+  const lamb = answer(F.SHEEP_MIX, "IE", "lamb"); // the portal writes the market as "IE"
+  assert.doesNotMatch(lamb.summary, /IE market/);
+  assert.equal(isNamedMarket("IE"), false);
+  assert.equal(isNamedMarket("HRVATSKA"), false);
+  assert.equal(isNamedMarket("Ioannina"), true);
+  assert.equal(isNamedMarket(undefined), false);
 });

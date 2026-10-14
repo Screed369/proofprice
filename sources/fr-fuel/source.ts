@@ -22,12 +22,16 @@ export const INFO: SourceInfo = {
   attribution: "Source: Ministère de l'Économie – prix des carburants (Licence Ouverte / Etalab 2.0).",
   homepage: "https://data.economie.gouv.fr/explore/dataset/prix-des-carburants-en-france-flux-instantane-v2/",
   limits:
-    "Pump prices are what every customer pays at that station at that moment; they are posted prices, not individual receipts.",
+    "Posted pump prices in euros per litre, taxes included, as each station reports them; not individual receipts (loyalty-card or other discounts are not shown). " +
+    "Prices a station has not updated in the last 8 days are left out, and prices of 0 or outside 0.30-5 EUR are treated as missing.",
 };
 
 
 const ENDPOINT =
   "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records";
+
+/** A price not updated for this many days is treated as no longer posted (closed or silent station). */
+const STALE_DAYS = 8;
 
 export const FR_FUELS = ["gazole", "sp95", "sp98", "e10", "e85", "gplc"] as const;
 export type FrFuel = (typeof FR_FUELS)[number];
@@ -55,10 +59,16 @@ export function buildFrUrl(where: string, offset: number): string {
   return `${ENDPOINT}?${p.toString()}`;
 }
 
+/** Plausible pump price bounds in EUR per litre: anything else (0, 0.001, 9.999...) is a placeholder or slip, not a price. */
+export const FR_MIN_PRICE = 0.3;
+export const FR_MAX_PRICE = 5;
+
 export function normalisePrice(v: unknown): number {
+  if (v === null || v === undefined || (typeof v === "string" && !v.trim())) return NaN;
   const n = Number(v);
   if (!Number.isFinite(n) || n <= 0) return NaN;
-  return n > 20 ? n / 1000 : n; // older feeds used milli-euros
+  const eur = n > 20 ? n / 1000 : n; // older feeds used milli-euros
+  return eur >= FR_MIN_PRICE && eur <= FR_MAX_PRICE ? eur : NaN;
 }
 
 export interface Station {
@@ -98,10 +108,20 @@ export function parseFrRecords(json: any, fuel: FrFuel): Station[] {
     .filter((s: Station) => Number.isFinite(s.price));
 }
 
+/** Prices not updated in the last STALE_DAYS days (closed or silent stations) are left out; an unreadable timestamp is kept. */
+export function frFreshStations<T extends { updated: string | null }>(stations: T[], today: string): T[] {
+  const cutoffMs = Date.parse(today + "T00:00:00Z") - STALE_DAYS * 86400000;
+  return stations.filter((st) => {
+    const t = st.updated ? Date.parse(st.updated) : NaN;
+    return !(Number.isFinite(t) && t < cutoffMs);
+  });
+}
+
 export async function frFuelNow(input: {
   postcode?: string;
   department?: string;
   fuel: FrFuel;
+  today?: string;
   baseUrl?: string;
 }): Promise<PriceAnswer> {
   let where: string;
@@ -117,13 +137,24 @@ export async function frFuelNow(input: {
   } else {
     throw new InputError("Give a French postcode or department code.");
   }
-  const stations: Station[] = [];
+  const reported: Station[] = [];
   for (let offset = 0; offset < 500; offset += 100) {
     const json = await fetchJson(buildFrUrl(where, offset), {}, 15000);
     const page = parseFrRecords(json, input.fuel);
-    stations.push(...page);
+    reported.push(...page);
     if (!Array.isArray(json?.results) || json.results.length < 100) break;
   }
+  return frAnswer(reported, { fuel: input.fuel, area, query: input, today: input.today, baseUrl: input.baseUrl });
+}
+
+export function frAnswer(
+  reported: Station[],
+  q: { fuel: FrFuel; area: string; query: { postcode?: string; department?: string }; today?: string; baseUrl?: string },
+): PriceAnswer {
+  const input = { ...q.query, fuel: q.fuel, baseUrl: q.baseUrl };
+  const area = q.area;
+  const stations = frFreshStations(reported, q.today ?? new Date().toISOString().slice(0, 10));
+  const leftOut = reported.length - stations.length;
   const s = summarise(stations.map((x) => x.price));
   const updates = stations.map((x) => x.updated).filter(Boolean).sort() as string[];
   const cheapest = [...stations].sort((a, b) => a.price - b.price).slice(0, 3).map(({ department, ...s }) => s);
@@ -135,30 +166,26 @@ export async function frFuelNow(input: {
     unit: "per litre",
     period: { from: updates[0]?.slice(0, 10) ?? null, to: updates[updates.length - 1]?.slice(0, 10) ?? null },
     method:
-      "Median and 10th–90th percentile of the latest pump price per litre reported by each station in the area for the selected fuel.",
+      `Median and 10th–90th percentile of the latest pump price per litre reported by each station in the area for the selected fuel. Prices not updated in the last ${STALE_DAYS} days are left out.`,
     describe: (x) =>
-      `${FUEL_LABEL[input.fuel]} in ${area} costs a median of ${fmtMoney(x.median, "EUR")}/litre right now; typical range ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+      `${FUEL_LABEL[input.fuel]} in ${area}: the latest posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} per litre; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
     baseUrl: input.baseUrl,
-    extra: { cheapest_stations: cheapest, stations_counted: stations.length },
+    extra: { cheapest_stations: cheapest, stations_counted: stations.length, ...(leftOut > 0 ? { stale_prices_left_out: leftOut } : {}) },
   });
 }
 
 const EXPORT_URL =
   "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/exports/json";
-const STALE_DAYS = 8;
 /** National row: metropolitan France only (overseas departments have regulated, very different prices). */
 const METRO = "ALL";
 
 /** One day of aggregates for the price library: every department and fuel, plus France as a whole ("ALL").
  *  Prices not updated in the last 8 days are left out, so closed stations do not freeze the figures. */
 export function frDailyRows(records: any[], today: string): HarvestResult {
-  const cutoffMs = Date.parse(today + "T00:00:00Z") - STALE_DAYS * 86400000;
   const rows: { area: string; item: string; price: number }[] = [];
   for (const [common, fr] of Object.entries(FR_NAME) as [Fuel, FrFuel][]) {
-    for (const st of parseFrRecords({ results: records }, fr)) {
+    for (const st of frFreshStations(parseFrRecords({ results: records }, fr), today)) {
       if (!st.department) continue;
-      const t = st.updated ? Date.parse(st.updated) : NaN;
-      if (Number.isFinite(t) && t < cutoffMs) continue;
       rows.push({ area: st.department, item: common, price: st.price });
       if (!st.department.startsWith("97") && !st.department.startsWith("98")) rows.push({ area: METRO, item: common, price: st.price });
     }

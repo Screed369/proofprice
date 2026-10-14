@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   DATASET_IDS, datasetSearchUrl, descriptionStrengths, groupProducts, latestUrl, matchesQuery, nadacMedicine, nadacTitle, parseDatasetSearch,
-  parseLatest, parseMedicine, parseRows, rowsUrl, usd, dominantUnit,
+  parseLatest, parseMedicine, parseRows, rowsUrl, usd, dominantUnit, lowerMedian,
 } from "./source";
 import { ATORVASTATIN_JSON, METFORMIN_JSON, LIPITOR_JSON, ACETAMINOPHEN_JSON } from "./fixtures";
 
@@ -96,6 +96,8 @@ test("us-nadac parses real portal responses", () => {
   // the same product can carry different rates on different NDCs, so products keep a range
   const liq = groupProducts(apap).find((p) => p.description === "ACETAMINOPHEN 160 MG/5 ML LIQ")!;
   assert.deepEqual([liq.ndcs, liq.low, liq.high], [2, 0.01067, 0.02406]);
+  assert.equal(liq.rate, 0.01067); // a published NDC rate (lower median), not the invented midpoint 0.017365
+  assert.equal(lowerMedian([3, 1, 2, 4]), 2);
 });
 
 test("us-nadac dominant pricing unit ignores the odd one out", () => {
@@ -115,7 +117,8 @@ test("us-nadac answers a strength-specific question from one product", async () 
   assert.equal(a.price?.currency, "USD");
   assert.equal(a.price?.unit, "per tablet");
   assert.equal(a.price?.median, null); // the publisher's average, no distribution
-  assert.equal(a.sample_size, 3);
+  assert.equal(a.sample_size, null); // CMS publishes no invoice count; the 3 NDCs are products, not purchases
+  assert.equal((a.extra as any).ndc_rows_used, 3);
   assert.equal(a.period.to, "2026-10-14");
   assert.equal(a.period.from, "2026-09-23");
   assert.equal(a.confidence, "high");
@@ -136,14 +139,21 @@ test("us-nadac answers a strength-specific question from one product", async () 
 test("us-nadac says which strengths a name query spans", async () => {
   const a = await nadacMedicine({ medicine: "atorvastatin" }, { fetcher: portal({ rows: { "ATORVASTATIN%20%25": ATORVASTATIN_JSON } }), today: "2026-10-14" });
   assert.equal(a.status, "ok");
-  assert.ok(Math.abs((a.price?.value ?? 0) - 0.032675) < 0.00002); // median of 12 NDC rates (3 per strength)
-  assert.equal(a.sample_size, 12);
+  // The headline is a rate CMS published (the 20 mg product, in the middle of the 12 NDCs by rate), never the interpolated
+  // 0.032675 between the 20 mg and 40 mg rates that no product carries.
+  assert.equal(a.price?.value, 0.02792);
+  assert.equal(a.price?.median, null);
+  assert.equal(a.sample_size, null);
+  assert.equal((a.extra as any).ndc_rows_used, 12);
+  assert.equal((a.extra as any).headline_product, "ATORVASTATIN 20 MG TABLET");
   const extra = a.extra as any;
   assert.deepEqual(extra.products.map((p: any) => p.description), ["ATORVASTATIN 10 MG TABLET", "ATORVASTATIN 20 MG TABLET", "ATORVASTATIN 40 MG TABLET", "ATORVASTATIN 80 MG TABLET"]);
   assert.deepEqual(extra.products.map((p: any) => p.nadac_per_unit_usd), [0.02283, 0.02792, 0.03743, 0.06926]);
-  assert.match(extra.headline_basis, /median of the per-unit rates of all matching NDCs/);
-  assert.match(a.summary, /4 strengths and forms; median across 12 NDC rates/);
-  assert.match(a.summary, /range from \$0\.02283 to \$0\.06926/);
+  assert.match(extra.headline_basis, /published NADAC rate of ATORVASTATIN 20 MG TABLET.*no average is calculated across strengths/);
+  assert.match(a.summary, /to acquire ATORVASTATIN 20 MG TABLET \(one of 4 matching strengths and forms of ATORVASTATIN/);
+  assert.match(a.summary, /rates run from \$0\.02283 to \$0\.06926 per tablet/);
+  assert.match(a.summary, /pharmacy's acquisition cost \(NADAC\), not the price a patient pays/);
+  assert.doesNotMatch(a.summary, /median across/);
 });
 
 test("us-nadac maps paracetamol to acetaminophen and keeps liquids out of a tablet answer", async () => {

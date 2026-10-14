@@ -90,6 +90,10 @@ test("sgRents: median and range, period, caveat, and the paging stops at the win
   assert.equal(a.sample_size, 6 * 30); // 30 four-room rents a month, April..September
   assert.equal(a.confidence, "high");
   assert.match(a.summary, /4-ROOM HDB flats in TAMPINES were approved for rent at a median of SGD\s[\d,]+ a month/);
+  // The owner-declared bias and the HDB-only coverage are in the summary sentence itself, not only in limits.
+  assert.match(a.summary, /owners declared when HDB approved the rental, not verified by HDB/);
+  assert.match(a.summary, /no private condominiums/);
+  assert.match(a.summary, /10th–90th percentile range SGD\s[\d,]+–SGD\s[\d,]+\./);
   assert.match(a.method, /declared by the owner and not verified/);
   assert.match(String((a.extra as any).caveat), /not verified by HDB/);
   assert.equal(calls.length, 1); // 180 rents fit in one page of 1 000, and the page reached back before the window
@@ -120,4 +124,15 @@ test("INFO carries the Singapore Open Data Licence and the owner-declared warnin
   assert.equal(INFO.licence, "Singapore Open Data Licence v1.0");
   assert.equal(INFO.licence_url, "https://data.gov.sg/open-data-licence");
   assert.match(INFO.limits, /owner-declared/);
+});
+
+test("parse: empty, 'na' or 0 rents are dropped, never counted as a rent of 0", () => {
+  const r = parseSgRents([
+    { rent_approval_date: "2026-09", flat_type: "4-ROOM", monthly_rent: "" },
+    { rent_approval_date: "2026-09", flat_type: "4-ROOM", monthly_rent: "na" },
+    { rent_approval_date: "2026-09", flat_type: "4-ROOM", monthly_rent: "0" },
+    { rent_approval_date: "2026-09", flat_type: "4-ROOM", monthly_rent: null },
+    { rent_approval_date: "2026-09", flat_type: "4-ROOM", monthly_rent: "2900" },
+  ]);
+  assert.deepEqual(r, [{ month: "2026-09", flat_type: "4-ROOM", rent: 2900 }]);
 });

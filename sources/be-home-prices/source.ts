@@ -598,7 +598,8 @@ export function beAnswer(snap: Snapshot, q: BeQuery): PriceAnswer {
   if (typeKey === "house-closed" && q.property_type === "house") notes.push("Statbel's all-houses figure is not available for this place; this is the figure for houses with 2 or 3 facades.");
   if (typeKey === "house-open" && q.property_type === "villa") notes.push("Statbel has no separate villa category; this is its figure for houses with 4 or more facades (open construction, which includes villas and other detached houses).");
   if (typeKey === "house-closed" && (q.property_type === "terraced" || q.property_type === "semi-detached")) notes.push("Statbel combines terraced and semi-detached houses (2 or 3 facades) in one figure.");
-  if (periodEnd(p) === snap.date) notes.push("Statbel treats the data for the latest quarter as provisional and revises it in its next publication.");
+  const provisional = periodEnd(p) === snap.date;
+  if (provisional) notes.push("Statbel treats the data for the latest quarter as provisional and revises it in its next publication.");
 
   const typeWords = TYPE_WORDS[typeKey];
   const extra: Record<string, unknown> = {
@@ -612,7 +613,8 @@ export function beAnswer(snap: Snapshot, q: BeQuery): PriceAnswer {
     other_periods: others
       .sort((a, b) => periodEnd(b.period).localeCompare(periodEnd(a.period)))
       .map((f) => ({ reference_period: periodLabel(f.period), median: f.p50, transactions: f.n, p25: f.p25, p75: f.p75 })),
-    collected: snap.date,
+    // The library day is dated by the end of the newest period Statbel publishes, not by the day we collected it.
+    library_snapshot_date: snap.date,
     dataset: { url: FILE_URL, page: THEME_URL },
   };
   const out = buildStatisticAnswer({
@@ -629,9 +631,9 @@ export function beAnswer(snap: Snapshot, q: BeQuery): PriceAnswer {
     baseUrl: q.baseUrl,
     note: notes.length ? notes.join(" ") : undefined,
     describe: (v) =>
-      `In ${label} the median sale price of ${typeWords} was ${fmtMoney(v, "EUR")} in ${periodWords(p)}, from ${fig!.n.toLocaleString("en-GB")} transactions; ` +
+      `In ${label} the median sale price of ${typeWords} (per home, not per m²) was ${fmtMoney(v, "EUR")} in ${periodWords(p)}${provisional ? " (provisional)" : ""}, from ${fig!.n.toLocaleString("en-GB")} transactions; ` +
       `half of the sales were between ${fmtMoney(fig!.p25, "EUR")} and ${fmtMoney(fig!.p75, "EUR")} (25th to 75th percentile).` +
-      (belgium ? ` The Belgian median for the same period was ${fmtMoney(belgium.median, "EUR")} (${Math.abs(belgium.difference_percent)}% ${belgium.difference_percent >= 0 ? "above" : "below"}).` : ""),
+      (belgium ? ` The Belgian median for the same period was ${fmtMoney(belgium.median, "EUR")} (${label} is ${Math.abs(belgium.difference_percent)}% ${belgium.difference_percent >= 0 ? "above" : "below"} it).` : ""),
     extra,
   });
   return { ...out, confidence: confidenceLabel(fig.n) };

@@ -33,7 +33,7 @@ export const INFO: SourceInfo = {
   limits:
     "A weekly survey of a sample of stations, not every station: a place's figure rests on the stations ANP surveyed there, and a place with fewer than 5 surveyed stations in the week is not published. " +
     "Only regular petrol (gasolina comum, which Brazilian law blends with ethanol; it is not RON 95) and diesel S10 are covered; ethanol, additive petrol, natural gas (GNV) and LPG are not. " +
-    "ANP publishes the survey in monthly files, so the newest week can be several weeks old (the survey week is stated in every answer). Pump selling prices observed by the survey, not receipts.",
+    "ANP publishes the survey in monthly files, so the newest week can be several weeks old (the survey week is stated in every answer). Pump selling prices observed by the survey (Brazilian reais per litre, taxes included), not receipts.",
 };
 
 // ---------- fuels ----------
@@ -300,7 +300,7 @@ export function brAnswerFromRow(
       "Median and 10th–90th percentile of the pump selling prices that ANP's weekly survey recorded at the stations it visited in the place, over the 7 days ending on the date shown (one price per station). " +
       "It is a sample of stations, not every station. Place and fuel as described in the summary; ProofPrice copies the ANP files once a day.",
     describe: (x) =>
-      `${label} in ${q.place.label}: median ${fmtMoney(x.median, "BRL")} per litre in ANP's survey of the week ending ${row.date}; typical range ${fmtMoney(x.low, "BRL")}–${fmtMoney(x.high, "BRL")} across the surveyed stations.` +
+      `${label} in ${q.place.label}: median ${fmtMoney(x.median, "BRL")} per litre in ANP's survey of the week ending ${row.date}; typical range (10th–90th percentile) ${fmtMoney(x.low, "BRL")}–${fmtMoney(x.high, "BRL")} across the surveyed stations (posted pump prices, taxes included).` +
       (old ? ` This is old data: ${age} days have passed since that survey week.` : ""),
     baseUrl: q.baseUrl,
     extra: {

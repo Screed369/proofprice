@@ -42,6 +42,8 @@ export const INFO: SourceInfo = {
     "Houses are one- and two-dwelling buildings for permanent living (villas, terraced and semi-detached houses are not split) sold at a purchase price of at most SEK 20 million; " +
     "extreme purchase-price coefficients are excluded by Statistics Sweden. Municipalities are covered for houses only and yearly; tenant-owned flats are published only for counties, " +
     "Greater Gothenburg, Greater Malmö, Greater Stockholm and Sweden, only second-hand sales of whole flats bought by private persons up to SEK 20 million. " +
+    "A tenant-owned flat's price is for the right of occupancy only: it excludes the flat's share of the housing cooperative's debt, so it is not comparable with a house price or a freehold flat price. " +
+    "Houses by municipality and all flats are yearly figures, so they can be up to 18 months old. " +
     "The latest quarter or year is preliminary. No price per square metre is published.",
 };
 
@@ -306,6 +308,10 @@ export function changeSentence(previous: Change | null, yearAgo: Change | null):
   return parts.length ? ` That is ${parts.join(" and ")}.` : "";
 }
 
+/** A tenant-owned flat (bostadsrätt) is bought as a right of occupancy in a housing cooperative: its price never includes the cooperative's debt. */
+export const FLAT_DEBT_NOTE =
+  "This is the price paid for the tenant-owned right; it does not include the flat's share of the housing cooperative's debt or the monthly fee.";
+
 const KIND_WORDS: Record<Kind, { label: string; what: string }> = {
   house: { label: "one- and two-dwelling buildings for permanent living (houses)", what: "average purchase price of a house" },
   flat: { label: "tenant-owned flats", what: "median purchase price of a tenant-owned flat" },
@@ -397,6 +403,7 @@ export function swedenAnswer(fig: Figure | null, q: AnswerInput): PriceAnswer {
       `In ${where} the ${f.measure === "median" ? "median" : "average"} purchase price of ${kind === "flat" ? "a tenant-owned flat" : "a house (one- or two-dwelling building)"}` +
       `${f.place.code !== f.asked.code ? ` in ${f.place.name}` : ""} was ${fmtMoney(v, "SEK")} in ${f.cadence === "yearly" ? f.reference_period : periodWords(f.reference_period)}` +
       (f.sales !== null ? `, from ${f.sales.toLocaleString("en-GB")} sales.` : ".") +
+      (kind === "flat" ? ` ${FLAT_DEBT_NOTE}` : "") +
       changeSentence(f.previous, f.year_earlier),
     extra,
   });
@@ -552,6 +559,7 @@ export async function swedenHomePrices(input: SwedenInput, o: FetchOptions & { n
         median_price: flats.fig.median,
         average_price: flats.fig.average,
         sales: flats.fig.sales,
+        note: FLAT_DEBT_NOTE,
       },
     ];
     urls.push(...flats.urls);

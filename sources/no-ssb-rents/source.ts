@@ -14,7 +14,7 @@ export const INFO: SourceInfo = {
   name: "Rental market survey, average monthly rents (Statistics Norway, table 09895)",
   publisher: "Statistics Norway (SSB)",
   what_is_recorded:
-    "Average monthly rent in NOK of rented homes, by price zone (Oslo and Baerum, Akershus, Bergen, Trondheim, Stavanger, three size classes of town and the whole country) and number of rooms (1 to 5 or more). Weighted survey average, as of year end.",
+    "Average monthly rent in NOK of rented homes, by price zone (Oslo and Baerum, Akershus, Bergen, Trondheim, Stavanger, three size classes of town and the whole country) and number of rooms (1 to 5 or more). Weighted survey average for the survey year; SSB publishes no number of observations per cell.",
   price_type: "official_statistic",
   freshness: "Annual; the 2025 survey was published on 22 December 2025",
   licence: "Creative Commons Attribution 4.0 (CC BY 4.0), Statistics Norway",
@@ -35,6 +35,9 @@ export const URL_RECENT = `${BASE}&valueCodes%5BTid%5D=top(3)`;
 const D_ZONE = "Soner2";
 const D_YEAR = "Tid";
 const D_ROOMS = "AntRom";
+const D_CONTENTS = "ContentsCode";
+/** The only contents we read: "Average monthly rents" (NOK). The table title says "per sqm"; never mix in another measure if SSB adds one. */
+export const CONTENTS_RENT = "Husleie";
 
 export const ROOM_CODES: Record<string, string> = { "1": "1", "2": "2", "3": "3", "4": "4", "5": "5+" };
 
@@ -78,6 +81,9 @@ export function parseTable(json: unknown): JsonStatTable {
   for (const d of [D_ZONE, D_YEAR, D_ROOMS]) {
     if (!t.codes[d]) throw new SourceError("Statistics Norway changed the layout of table 09895; this source needs updating.");
   }
+  if (t.codes[D_CONTENTS] && !t.codes[D_CONTENTS].includes(CONTENTS_RENT)) {
+    throw new SourceError("Statistics Norway no longer publishes 'Average monthly rents' (Husleie) in table 09895; this source needs updating.");
+  }
   return t;
 }
 
@@ -88,8 +94,14 @@ export interface RentPick {
 }
 
 /** Newest year with a figure for this zone and room count, plus the year before it when it has one. */
+/** Cells of the monthly-rent measure only (when the table has a contents dimension). */
+export function rentCells(table: JsonStatTable, match: Record<string, string>) {
+  const hasContents = Boolean(table.codes[D_CONTENTS]);
+  return rowsWhere(table, hasContents ? { ...match, [D_CONTENTS]: CONTENTS_RENT } : match);
+}
+
 export function pickLatest(table: JsonStatTable, zone: string, rooms: string): RentPick | null {
-  const cells = rowsWhere(table, { [D_ZONE]: zone, [D_ROOMS]: rooms });
+  const cells = rentCells(table, { [D_ZONE]: zone, [D_ROOMS]: rooms });
   const byYear = new Map<string, number>();
   for (const r of cells) if (r.value !== null && r.value > 0) byYear.set(String(r[D_YEAR]), r.value);
   const years = [...byYear.keys()].sort();
@@ -131,7 +143,7 @@ export async function noRent(input: NoRentInput, fetcher?: (url: string) => Prom
 
   const breakdown: Record<string, number> = {};
   if (pick) {
-    for (const r of rowsWhere(table, { [D_ZONE]: zone.code, [D_YEAR]: pick.year })) {
+    for (const r of rentCells(table, { [D_ZONE]: zone.code, [D_YEAR]: pick.year })) {
       if (r.value !== null && r.value > 0) breakdown[table.labels[D_ROOMS][String(r[D_ROOMS])]] = r.value;
     }
   }

@@ -289,9 +289,13 @@ test("be-home-prices: Antwerpen apartment — the first example — is a finishe
   assert.equal(a.statistic!.reference_period, "2026-Q2");
   assert.equal(a.statistic!.measure, "median");
   assert.match(a.summary, /Antwerpen \/ Anvers/);
-  assert.match(a.summary, /apartments was €255,000 in the second quarter of 2026 \(April to June\), from 1,645 transactions/);
+  // per home, and the latest quarter is marked provisional in the summary itself, not only in the note
+  assert.match(a.summary, /apartments \(per home, not per m²\) was €255,000 in the second quarter of 2026 \(April to June\) \(provisional\), from 1,645 transactions/);
   assert.match(a.summary, /between €200,000 and €341,777 \(25th to 75th percentile\)/);
-  assert.match(a.summary, /Belgian median for the same period was €257,500 \(1% below\)/);
+  // which side is below is named, not left ambiguous
+  assert.match(a.summary, /Belgian median for the same period was €257,500 \(Antwerpen \/ Anvers is 1% below it\)/);
+  assert.equal((a.extra as any).library_snapshot_date, "2026-06-30");
+  assert.equal((a.extra as any).collected, undefined);
   assert.match(a.summary, /Official median published by Statbel \(Statistics Belgium\) for 2026-Q2\./);
   const x = a.extra as any;
   assert.equal(x.region.code, "11002");
@@ -389,6 +393,15 @@ test("be-home-prices: unknown places, ambiguous names and missing types are answ
 test("be-home-prices: an old figure is flagged plainly", () => {
   const old = beAnswer(snapshot(), { town: "Antwerpen", property_type: "apartment", now: new Date("2028-01-01T00:00:00Z") });
   assert.match(old.statistic!.note ?? "", /more than a year old/);
+});
+
+test("be-home-prices: only a figure for the newest period Statbel publishes is called provisional", () => {
+  // the library already holds a newer period than this place's figure: the figure is not the provisional latest quarter
+  const later = { ...snapshot(), date: "2026-09-30" };
+  const a = beAnswer(later, { town: "Antwerpen", property_type: "apartment", now: NOW });
+  assert.equal(a.status, "ok");
+  assert.doesNotMatch(a.summary, /provisional/);
+  assert.doesNotMatch(a.statistic!.note ?? "", /provisional/);
 });
 
 test("be-home-prices: beHomePrices validates input and reports an empty library as a source problem", async () => {

@@ -194,7 +194,7 @@ export function inpatientAnswer(rows: InpatientRow[], ctx: InpatientContext): Pr
       `For ${name} in ${where}, hospitals were paid an average of ${usd(v)} per Medicare stay in ${yearWords}, across ${count(headRow.discharges)} discharges.` +
       (headRow.medicare !== null ? ` Medicare itself paid ${usd(headRow.medicare)} of that on average; the patient's share and any other insurer cover the rest.` : "") +
       (natl ? ` The national average is ${usd(natl.total)}.` : "") +
-      " This is the hospital's payment at Medicare rates, not a private-insurance or cash price, and it excludes the surgeon's fee.",
+      " This is the hospital's payment at Medicare rates (Medicare's payment plus the patient's cost-sharing), not a private-insurance or cash price and not the hospital's billed (list) charge, and it excludes the surgeon's fee.",
     extra: {
       drg: headRow.drg,
       drg_title: headRow.title,

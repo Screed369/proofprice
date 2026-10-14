@@ -201,7 +201,8 @@ const roundTo = (v: number, digits: number) => Math.round(v * 10 ** digits) / 10
 
 function seriesOf(rows: JsonStatRow[], unit: string, geo: string, code: string): YearValue[] {
   return rows
-    .filter((r) => r.unit === unit && r.geo === geo && r.agriprod === code)
+    // Missing cells (":" in Eurostat's tables, also when flagged "c" confidential) are not rows; a zero or negative figure counts as missing too.
+    .filter((r) => r.unit === unit && r.geo === geo && r.agriprod === code && typeof r.value === "number" && Number.isFinite(r.value) && r.value > 0)
     .map((r) => ({ year: Number(r.time), value: r.value as number, flag: typeof r.status === "string" && r.status ? r.status : null }))
     .filter((r) => Number.isFinite(r.year))
     .sort((a, b) => a.year - b.year);

@@ -159,6 +159,9 @@ test("BR: the answer names the survey week, the sample, the unit and flags old d
   assert.match(a.summary, /Regular petrol \(gasolina comum\) in São Paulo, SP/);
   assert.match(a.summary, /survey of the week ending 2026-09-26/);
   assert.doesNotMatch(a.summary, /old data/);
+  // posted prices are never described as what people pay; tax status and range definition are stated
+  assert.match(a.summary, /typical range \(10th–90th percentile\) .* across the surveyed stations \(posted pump prices, taxes included\)\./);
+  assert.doesNotMatch(a.summary, /\b(costs?|paid|pays?)\b/i);
   assert.equal((a.extra as any).data_age_days, 18);
   assert.equal((a.extra as any).coverage, "surveyed_stations_only");
   assert.match(a.source.licence, /Creative Commons Attribution/);

@@ -272,7 +272,9 @@ export async function ieRent(input: IeRentInput, fetcher?: (url: string) => Prom
     reference_period: pick ? pick.quarter.replace("Q", "-Q") : "",
     method:
       "Ireland (RTB, via the CSO table RIQ02): the average monthly rent of tenancies registered with the Residential Tenancies Board in the quarter, for the chosen place, bedrooms and property type. We pass on the published average and its quarter; it is an average, not a range built from individual rents, and it is not standardised.",
-    describe: (v) => `The average monthly rent of ${typeLabel} (${bedLabel}) registered with the RTB in ${loc.label} was ${fmtMoney(v, "EUR")}.`,
+    describe: (v) =>
+      `The average monthly rent of ${typeLabel} (${bedLabel}) registered with the RTB in ${loc.label} was ${fmtMoney(v, "EUR")} (one published average, not a range; not mix-adjusted).` +
+      (ageMonths !== null && ageMonths > 6 ? ` That quarter ended about ${Math.round(ageMonths)} months ago, so rents today may differ.` : ""),
     note: notes.join(" "),
     baseUrl: input.baseUrl,
     extra: pick

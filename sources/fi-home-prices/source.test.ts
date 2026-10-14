@@ -280,7 +280,7 @@ test("fi-home-prices: the quarterly answer is an official average with its quart
   assert.equal(a.statistic!.reference_period, "2026-Q2");
   assert.deepEqual(a.period, { from: "2026-04-01", to: "2026-06-30" });
   assert.equal(a.source.licence_url, "https://stat.fi/en/about-us/get-to-know-statistics-finland/legislation/terms-of-use");
-  assert.match(a.summary, /In Helsinki the average price per m² of old dwellings in housing companies \(all building types\) was €4,916 in the second quarter of 2026 \(provisional\), from 1,986 transactions\./);
+  assert.match(a.summary, /In Helsinki the average price per m² of old dwellings in housing companies \(all building types\) was €4,916 in the second quarter of 2026 \(provisional\), with 1,986 transactions counted \(a count that also includes price-controlled and subsidised dwellings left out of the average\)\./);
   assert.match(a.summary, /price index for these dwellings \(a quality-adjusted measure, not this average\) is 0\.3% lower than in the first quarter of 2026 and 4\.3% lower than a year earlier \(the second quarter of 2025\)\./);
   assert.match(a.summary, /Official average published by Statistics Finland \(Tilastokeskus\) for 2026-Q2\./);
   assert.match(a.statistic!.note!, /Provisional: Statistics Finland marks the newest periods with \*/);
@@ -301,7 +301,7 @@ test("fi-home-prices: the postal code answer says which room size it is and list
   assert.equal(a.price!.unit, "per m²");
   assert.equal(a.sample_size, 35);
   assert.deepEqual(a.query, { country: "FI", postcode: "00100", property_type: "flat" });
-  assert.match(a.summary, /In postal code area 00100 Helsinki keskusta - Etu-Töölö \(Helsinki\) the average price per m² of two-room flats in blocks of flats was €7,167 in the first quarter of 2026 \(provisional\), from 35 transactions\./);
+  assert.match(a.summary, /In postal code area 00100 Helsinki keskusta - Etu-Töölö \(Helsinki\) the average price per m² of two-room flats in blocks of flats was €7,167 in the first quarter of 2026 \(provisional\), with 35 transactions counted \(a count that also includes price-controlled and subsidised dwellings left out of the average\)\./);
   assert.match(a.summary, /Other sizes: one-room flats €7,735 \(21 transactions\); flats with three or more rooms €6,533 \(19 transactions\)\./);
   assert.doesNotMatch(a.summary, /price index/); // no change figure exists for postal codes
   assert.match(a.statistic!.note!, /by number of rooms, with no total/);
@@ -317,7 +317,8 @@ test("fi-home-prices: the yearly answer for a municipality says it is yearly and
   assert.equal(a.status, "ok");
   assert.equal(a.price!.value, 1243);
   assert.deepEqual(a.period, { from: "2025-01-01", to: "2025-12-31" });
-  assert.match(a.summary, /In Akaa the average price per m² of old dwellings in housing companies \(all building types\) was €1,243 in 2025, from 153 transactions\./);
+  assert.match(a.summary, /In Akaa the average price per m² of old dwellings in housing companies \(all building types\) was €1,243 in 2025, with 153 transactions counted \(a count that also includes price-controlled and subsidised dwellings left out of the average\)\./);
+  assert.doesNotMatch(a.summary, /from 153 transactions/); // the count is not the number of sales behind the average
   assert.doesNotMatch(a.summary, /provisional|price index/);
   assert.match(a.statistic!.note!, /quarterly figures only for the whole country, regions and larger cities; for Akaa the yearly municipality figure is used/);
 });

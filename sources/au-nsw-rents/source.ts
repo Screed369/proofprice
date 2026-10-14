@@ -27,7 +27,7 @@ export const INFO: SourceInfo = {
   attribution: "Source: NSW Fair Trading (NSW Government), Rental bond lodgement data. Licensed under Creative Commons Attribution (CC BY).",
   homepage: "https://www.nsw.gov.au/housing-and-construction/rental-forms-surveys-and-data/rental-bond-data",
   limits:
-    "New South Wales only (not the rest of Australia). Rents of newly lodged bonds, so new tenancies, not sitting tenants. Rents are as provided by the agent or landlord. 'Other' dwellings (rented rooms, garages and car spaces) and unknown types are in 'any' only. Aggregates by postcode; a postcode with fewer than 5 bonds in the window gets no figure. Houses include terraces, townhouses and semi-detached homes.",
+    "New South Wales only (not the rest of Australia). Rents of newly lodged bonds, so new tenancies, not sitting tenants. Rents are as provided by the agent or landlord. 'Other' bonds (rented rooms, garages and car spaces) are left out altogether, so they never pull a home's rent down; bonds of unknown dwelling type count in 'any' only. Aggregates by postcode; a postcode with fewer than 5 bonds in the window gets no figure. Houses include terraces, townhouses and semi-detached homes.",
 };
 
 export const PAGE_URL = "https://www.nsw.gov.au/housing-and-construction/rental-forms-surveys-and-data/rental-bond-data";
@@ -125,9 +125,11 @@ export function nswItem(type: NswType, beds: string, months: number): string {
   return `${type}:${beds}:${months}m`;
 }
 
-function typesOf(b: Bond): NswType[] {
+/** Which library types a bond counts in. 'O' (other: rented rooms, garages, car spaces) is not a home and counts nowhere. */
+export function typesOf(b: Bond): NswType[] {
   if (b.type === "F") return ["any", "apartment"];
   if (b.type === "H" || b.type === "T") return ["any", "house"];
+  if (b.type === "O") return [];
   return ["any"];
 }
 
@@ -267,9 +269,10 @@ export function nswAnswerFromRow(
     period: latestMonth ? { from: windowStart(latestMonth, q.window), to: row!.date } : { from: null, to: null },
     method:
       `Median and 10th–90th percentile of the weekly rent agreed on rental bonds lodged in NSW over the last ${q.window} months ` +
-      "(the latest published months), for the chosen postcode, dwelling type and bedrooms. Rents are as provided by the agent or landlord when the bond is lodged, so they describe new tenancies.",
+      "(the latest published months), for the chosen postcode, dwelling type and bedrooms. Rooms, garages and car spaces ('other' bonds) are left out. Rents are as provided by the agent or landlord when the bond is lodged, so they describe new tenancies.",
     describe: (x) =>
-      `Rental bonds lodged for ${q.bedLabel}${q.typeLabel} in ${q.areaLabel}, NSW show a median weekly rent of ${fmtMoney(x.median, "AUD")} (about ${fmtMoney(monthly(x.median), "AUD")} a month); typical range ${fmtMoney(x.low, "AUD")}–${fmtMoney(x.high, "AUD")} a week.`,
+      `Rental bonds lodged for new tenancies of ${q.bedLabel}${q.typeLabel} in ${q.areaLabel}, NSW show a median agreed weekly rent of ${fmtMoney(x.median, "AUD")} (about ${fmtMoney(monthly(x.median), "AUD")} a month); typical range (10th–90th percentile) ${fmtMoney(x.low, "AUD")}–${fmtMoney(x.high, "AUD")} a week. ` +
+      "These are rents of new leases as reported by the agent or landlord, not what sitting tenants pay.",
     baseUrl: q.baseUrl,
     extra: {
       ...(row ? { median_per_month_equivalent: monthly(row.median), per_month_note: "Weekly rent x 52 / 12; the published figures are weekly." } : {}),
