@@ -148,6 +148,24 @@ export function libraryDates(sourceId: string): string[] {
   return [...dates].sort();
 }
 
+/** The newest day held for a source: every aggregate row of that day. Reads only the newest non-empty month file,
+ *  so it is cheap enough for building the static answer pages (one call per source). Returns null if nothing is stored. */
+export function readLatestDay(sourceId: string): { date: string; rows: LibraryRow[] } | null {
+  const dir = path.join(sourceDir(sourceId), "daily");
+  if (!existsSync(dir)) return null;
+  const files = readdirSync(dir)
+    .filter((f) => /^\d{4}-\d{2}\.csv$/.test(f))
+    .sort()
+    .reverse();
+  for (const f of files) {
+    const rows = csvToRows(readFileSync(path.join(dir, f), "utf8"));
+    if (!rows.length) continue;
+    const date = rows.reduce((a, r) => (r.date > a ? r.date : a), "");
+    return { date, rows: rows.filter((r) => r.date === date) };
+  }
+  return null;
+}
+
 export function readMeta(sourceId: string): SourceMeta | null {
   const file = path.join(sourceDir(sourceId), "meta.json");
   if (!existsSync(file)) return null;

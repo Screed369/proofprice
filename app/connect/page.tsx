@@ -1,12 +1,11 @@
-import { CONTACT, MCP_URL, SITE_URL, connectGuides } from "../../lib/open-book";
+import { CONTACT, MCP_URL, connectGuides } from "../../lib/open-book";
+import { pageMetadata } from "../../lib/site/meta";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Connect ProofPrice to your AI",
   description: "Copy-paste setup for Claude, ChatGPT, Cursor, VS Code, Windsurf, Claude Code and agent frameworks. No key needed.",
-  alternates: { canonical: `${SITE_URL}/connect` },
-};
-
-const pre = { background: "#f4f4f5", padding: 12, borderRadius: 6, overflowX: "auto" as const, fontSize: 13 };
+  path: "/connect",
+});
 
 export default function Connect() {
   const guides = connectGuides();
@@ -16,7 +15,7 @@ export default function Connect() {
       <p>
         ProofPrice is a free, read-only MCP server. No API key, no sign-in. Add this address to any MCP-capable AI app:
       </p>
-      <pre style={pre}>
+      <pre className="selectall">
         <code>{MCP_URL}</code>
       </pre>
       <p>Transport: Streamable HTTP. Tools: price paid for home sales, live fuel prices, and a coverage check.</p>
@@ -39,8 +38,8 @@ export default function Connect() {
           )}
           {g.code && (
             <>
-              {g.codeLabel && <p style={{ margin: "8px 0 2px", fontSize: 13, color: "#555" }}>{g.codeLabel}</p>}
-              <pre style={pre}>
+              {g.codeLabel && <p className="muted small">{g.codeLabel}</p>}
+              <pre>
                 <code>{g.code}</code>
               </pre>
             </>
@@ -51,7 +50,7 @@ export default function Connect() {
           </p>
         </section>
       ))}
-      <p style={{ fontSize: 13, color: "#555" }}>
+      <p className="muted small">
         Setup formats were checked against each vendor's documentation on 13 October 2026. Vendors change menus and file formats, so if a step
         differs, follow the official guide linked in each section.
       </p>

@@ -1,9 +1,11 @@
 // Terms of use for the public API and MCP server. Plain English. Version history in git.
-export const metadata = {
-  title: "Terms of use · ProofPrice",
+import { pageMetadata } from "../../lib/site/meta";
+
+export const metadata = pageMetadata({
+  title: "Terms of use",
   description: "Free use for people and AI agents, cite the source, fair use, no guarantees, Irish law.",
-  alternates: { canonical: "https://proofprice.com/terms" },
-};
+  path: "/terms",
+});
 
 export default function Terms() {
   return (

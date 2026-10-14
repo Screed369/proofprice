@@ -1,9 +1,11 @@
 // Privacy notice. Plain English, matching what the code does (see lib/receipts and app/api). Version history in git.
-export const metadata = {
-  title: "Privacy notice · ProofPrice",
+import { pageMetadata } from "../../lib/site/meta";
+
+export const metadata = pageMetadata({
+  title: "Privacy notice",
   description: "What ProofPrice collects (very little), why, who else sees it, and your rights.",
-  alternates: { canonical: "https://proofprice.com/privacy" },
-};
+  path: "/privacy",
+});
 
 export default function Privacy() {
   return (
