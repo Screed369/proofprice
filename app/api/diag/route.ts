@@ -32,14 +32,20 @@ export async function GET(req: NextRequest) {
     const grep0 = q.get("grep");
     const re0 = grep0 ? new RegExp(grep0, "i") : null;
     const out: { n: number; cells: unknown[] }[] = [];
+    let header: string[] = [];
     let seenRows = 0;
     let lastRow = 0;
     const total = await streamSheet(buf0, wb.dir.get(wb.sheetPath)!, wb.shared, (cells, n) => {
       seenRows++;
       lastRow = n;
       if (seenRows <= skip) return;
-      if (re0 && !re0.test(cells.map((c) => String(c ?? "")).join("|"))) return;
-      out.push({ n, cells });
+      if (n === 1) header = cells.map((c) => String(c ?? ""));
+      if (re0 && n > 1 && !re0.test(cells.slice(0, 5).map((c) => String(c ?? "")).join("|"))) return;
+      const colsQ = q.get("cols");
+      if (colsQ) {
+        const idx = colsQ.split(",").map((nm) => header.indexOf(nm));
+        out.push({ n, cells: idx.map((i) => (i >= 0 ? cells[i] ?? null : "?")) });
+      } else out.push({ n, cells });
       if (out.length >= maxRows && q.get("count") !== "1") return false;
     });
     return Response.json({ sheet: wb.sheetTitle, bytes: buf0.length, entry: wb.dir.get(wb.sheetPath), seenRows, total, lastRow, ms: Date.now() - t0, rows: out });
