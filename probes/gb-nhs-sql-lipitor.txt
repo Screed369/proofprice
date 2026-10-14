@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/datastore_search_sql?resource_id=PCA_202607&sql=SELECT%20BNF_PRESENTATION_NAME%2C%20UNIT_OF_MEASURE%2C%20PREP_CLASS%2C%20SUM%28ITEMS%29%20AS%20items%2C%20SUM%28TOTAL_QUANTITY%29%20AS%20quantity%2C%20SUM%28NIC%29%20AS%20nic%20FROM%20%60PCA_202607%60%20WHERE%20UPPER%28BNF_PRESENTATION_NAME%29%20LIKE%20%27LIPITOR%25%27%20GROUP%20BY%201%2C%202%2C%203%20ORDER%20BY%20items%20DESC%20LIMIT%20300
+Fetched: 2026-10-14T15:56:17Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1185
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:56:17 GMT
+content-type: application/json;charset=utf-8
+content-length: 1185
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search_sql", "success": true, "result": {"help": "https://demo.ckan.org/api/3/action/help_show?name=datastore_search_sql", "success": "true", "result": {"records": [{"BNF_PRESENTATION_NAME": "Lipitor 20mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "03", "items": 7021, "quantity": 222494, "nic": 195794.72}, {"BNF_PRESENTATION_NAME": "Lipitor 20mg chewable tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "03", "items": 4513, "quantity": 186799, "nic": 164383.12}, {"BNF_PRESENTATION_NAME": "Lipitor 40mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "03", "items": 4041, "quantity": 124610, "nic": 109656.8}, {"BNF_PRESENTATION_NAME": "Lipitor 10mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "03", "items": 2488, "quantity": 90655, "nic": 42089.83}, {"BNF_PRESENTATION_NAME": "Lipitor 80mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "03", "items": 1074, "quantity": 34674, "nic": 34933.72}, {"BNF_PRESENTATION_NAME": "Lipitor 10mg chewable tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "03", "items": 616, "quantity": 22113, "nic": 10171.98}], "fields": []}}}
