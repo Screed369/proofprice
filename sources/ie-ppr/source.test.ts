@@ -80,3 +80,17 @@ test("IE: answer from a library row", () => {
   assert.equal(a.period.from, "2025-09-30");
   assert.equal(ieHistoryKey({ town: "dublin 6", months: 24 })?.item, "any:24m");
 });
+
+test("IE: bulk or portfolio records above 10 million are dropped (14 Oct 2026: a Dublin max of 217,488,769 was seen live)", () => {
+  const s = parseIePpr(
+    header + '\n"01/09/2026","Block A, Dublin 2","Dublin","","217,488,769.00","No","No","New Dwelling house /Apartment",""\n"02/09/2026","1 Road, Dublin 4","Dublin","","10,000,000.00","No","No","Second-Hand Dwelling house /Apartment",""\n"02/09/2026","2 Road, Dublin 4","Dublin","","10,000,001.00","No","No","Second-Hand Dwelling house /Apartment",""',
+  );
+  assert.equal(s.length, 1);
+  assert.equal(s[0].price, 10000000);
+});
+
+test("IE: the answer echoes the town parameter as 'town'", () => {
+  const a = ieAnswerFromRow({ date: "2026-09-30", n: 50, median: 400000, low: 300000, high: 600000, min: 200000, max: 900000 } as never, { label: "Dublin", type: "any", months: 12 });
+  assert.equal((a.query as Record<string, unknown>).town, "Dublin");
+  assert.equal((a.query as Record<string, unknown>).place, undefined);
+});
