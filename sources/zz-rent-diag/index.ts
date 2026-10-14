@@ -36,17 +36,36 @@ async function ons(): Promise<Record<string, unknown>> {
   const out: Record<string, unknown> = {};
   const list = await fetchJson("https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/data", {}, 20000);
   const uri = list?.datasets?.[0]?.uri as string;
-  out.latestUri = uri;
   const ed = await fetchJson("https://www.ons.gov.uk" + uri + "/data", {}, 20000);
-  out.downloads = ed?.downloads;
   const file = ed?.downloads?.[0]?.file as string;
   const url = "https://www.ons.gov.uk/file?uri=" + uri + "/" + file;
+  const t0 = Date.now();
   const f = await getBuf(url);
-  out.fileStatus = f.status; out.fileType = f.type; out.fileBytes = f.buf.length;
-  if (f.status === 200) {
-    const sheets = readXlsx(f.buf);
-    out.sheets = sheets.map((s) => ({ name: s.name, rowCount: s.rows.length, head: s.rows.slice(0, 9).map((r) => r.slice(0, 12)), tail: s.rows.slice(-2).map((r) => r.slice(0, 12)) }));
-  }
+  out.downloadMs = Date.now() - t0;
+  out.fileBytes = f.buf.length;
+  const t1 = Date.now();
+  const sheets = readXlsx(f.buf);
+  out.parseMs = Date.now() - t1;
+  const cover = sheets.find((s) => s.name === "Cover sheet");
+  out.cover = cover?.rows.map((r) => r.join(" | ").slice(0, 900));
+  const notes = sheets.find((s) => s.name === "Notes");
+  out.notes = notes?.rows.map((r) => r.join(" | ").slice(0, 500));
+  const t = sheets.find((s) => s.name === "Table 1")!;
+  const hi = t.rows.findIndex((r) => r[0] === "Time period");
+  out.header = t.rows[hi];
+  const data = t.rows.slice(hi + 1);
+  out.dataRows = data.length;
+  const dates = new Set(data.map((r) => r[0]));
+  out.maxDate = Math.max(...[...dates].filter((d): d is number => typeof d === "number"));
+  const latest = out.maxDate as number;
+  const latestRows = data.filter((r) => r[0] === latest);
+  out.latestRowCount = latestRows.length;
+  out.areaCodePrefixes = Object.fromEntries([...new Set(latestRows.map((r) => String(r[1]).slice(0, 3)))].map((p) => [p, latestRows.filter((r) => String(r[1]).startsWith(p)).length]));
+  out.regions = [...new Set(latestRows.map((r) => r[3]))];
+  out.manchester = data.filter((r) => String(r[2]).startsWith("Manchester") && (r[0] === latest || r[0] === latest - 31)).map((r) => r.slice(0, 20));
+  out.sample = latestRows.slice(0, 6).map((r) => r.slice(0, 20));
+  out.londonLikes = latestRows.filter((r) => /London|Westminster|Camden|Leeds|Bristol/.test(String(r[2]))).slice(0, 8).map((r) => r.slice(0, 20));
+  out.nonNumericRentCount = latestRows.filter((r) => typeof r[7] !== "number").length;
   return out;
 }
 
