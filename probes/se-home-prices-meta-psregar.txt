@@ -1,0 +1,22 @@
+URL: https://api.scb.se/OV0104/v1/doris/en/ssd/START/BO/BO0501/BO0501B/FastprisPSRegAr
+Fetched: 2026-10-14T15:46:44Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1689
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date: Wed, 14 Oct 2026 15:46:44 GMT
+Content-Length: 1689
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Max-Age: 86400
+Allow: GET,HEAD,POST,OPTIONS
+Vary: Origin
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: TS0187a64b=017dca055ce58978bc2ab0d65fa0dcedc047ee748e1d9565e23dd1302a363f1232e531a2e2243c5ef167af3526f73fbbe0fca16041; Path=/; Domain=.api.scb.se; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 25000 BYTES
+{"title":"Sold one- and two-dwelling buildings by region, observations and year","variables":[{"code":"Region","text":"region","values":["00","0010","0020","0030","01","03","04","05","06","07","08","09","10","12","13","14","17","18","19","20","21","22","23","24","25","RIKS1","RIKS2","RIKS3","RIKS4","RIKS5","RIKS6","RIKS7","RIKS8"],"valueTexts":["Sweden","Greater Stockholm","Greater Gothenburg","Greater Malmö","Stockholm county","Uppsala county","Södermanland county","Östergötland county","Jönköping county","Kronoberg county","Kalmar county","Gotland county","Blekinge county","Skåne county","Halland county","Västra Götaland county","Värmland county","Örebro county","Västmanland county","Dalarna county","Gävleborg county","Västernorrland county","Jämtland county","Västerbotten county","Norrbotten county","Stockholm production county","Eastern Central Sweden","Småland with the islands","South Sweden","West Sweden","Northern Central Sweden","Central Norrland","Upper Norrland"],"elimination":true},{"code":"ContentsCode","text":"observations","values":["BO0501O3","BO0501O4","BO0501O5","BO0501O6"],"valueTexts":["Number","Purchase price, average in 1 000 SEK","Assessed value, average in 1 000 SEK","Purchase-price-coefficient"]},{"code":"Tid","text":"year","values":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"valueTexts":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],"time":true}]}
