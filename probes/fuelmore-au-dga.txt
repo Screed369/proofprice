@@ -1,0 +1,28 @@
+URL: https://data.gov.au/data/api/3/action/package_show?id=fuelwatch-historic-fuel-prices
+Fetched: 2026-10-14T15:50:37Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3888
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 3888
+date: Wed, 14 Oct 2026 15:50:36 GMT
+set-cookie: ckan=; Domain=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/
+server: nginx
+cache-control: public, max-age=2592000, must-revalidate
+vary: Cookie,Origin
+x-cache: Miss from cloudfront
+via: 1.1 a1ee2f3d4ad7afa58c3219e56c8cd250.cloudfront.net (CloudFront)
+x-amz-cf-pop: DFW57-P9
+x-amz-cf-id: 9FbPeZewWfnZN3iUCYcgkB7gSrtQxk05rA73Ll9-7Jgo7a79pwTBgw==
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000
+vary: Origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"help": "https://data.gov.au/data/api/3/action/help_show?name=package_show", "success": true, "result": {"archived": false, "author": "FuelWatch", "author_email": null, "contact_point": "fuelwatch@demirs.wa.gov.au", "creator_user_id": "c2fbbe4a-4ba0-4945-808b-67454605a4cf", "duplicate_score": 2, "geospatial_topic": [], "id": "7a968fa8-15a4-4992-b5b9-5e2765f2b410", "isopen": false, "license_id": "cc-by", "license_title": "Creative Commons Attribution 3.0 Australia", "license_url": "http://creativecommons.org/licenses/by/3.0/au/", "maintainer": "Ben Derecki", "maintainer_email": "ben.derecki@demirs.wa.gov.au", "metadata_created": "2025-06-23T04:49:44.087876", "metadata_modified": "2025-12-20T12:42:36.851019", "name": "fuelwatch-historic-fuel-prices", "notes": "This dataset contains daily fuel prices provided to FuelWatch by fuel retailers captured under the FuelWatch scheme in Western Australia since January 2001.\n\nEach day, the current monthly dataset is updated with the previous day's fuel prices.", "num_resources": 1, "num_tags": 4, "organization": {"id": "69d87f0f-eb7e-43de-a529-896e8180837d", "name": "department-of-energy-mines-industry-regulation-and-safety-western-australia-government", "title": "Department of Energy, Mines, Industry Regulation and Safety", "type": "organization", "description": "The Department of Energy, Mines, Industry Regulation and Safety has brought together the Department of Mines and Petroleum and most of the Department of Commerce. ", "image_url": "", "created": "2025-06-23T13:19:35.481779", "is_organization": true, "approval_status": "approved", "state": "active"}, "original_harvest_source": {"site_url": "https://catalogue.data.wa.gov.au", "href": "https://catalogue.data.wa.gov.au/dataset/fuelwatch-historic-fuel-prices", "title": "Western Australia Government"}, "original_name": "fuelwatch-historic-fuel-prices", "owner_org": "69d87f0f-eb7e-43de-a529-896e8180837d", "private": false, "promotion_level": "0", "remote_last_updated": "2025-11-04 07:11:31.920897", "spatial": "Western Australia", "spatial_coverage": "", "state": "active", "temporal_coverage_from": "2024-11-28 04:57:51.621111", "title": "FuelWatch Historic Fuel Prices", "type": "dataset", "unpublished": false, "url": null, "version": null, "extras": [{"key": "harvest_object_id", "value": "553ee1e4-dce4-453d-a35f-543427f92e3f"}, {"key": "harvest_source_id", "value": "1aa77fd2-6ef6-4687-ab94-0cc2f998cd41"}, {"key": "harvest_source_title", "value": "Western Australia Government"}], "resources": [{"access_level": "open", "cache_last_updated": null, "cache_url": null, "created": "2024-11-28T05:00:38.711937", "datastore_active": false, "datastore_contains_all_records_of_source_file": false, "description": "", "format": "HTML", "hash": "", "id": "903a3bfb-b8ea-4cff-8c24-47a05d40b112", "last_modified": null, "metadata_modified": "2025-12-20T12:42:30.417630", "mimetype": null, "mimetype_inner": null, "name": "FuelWatch Historic Fuel Prices", "package_id": "7a968fa8-15a4-4992-b5b9-5e2765f2b410", "position": 0, "resource_type": null, "section": "resources", "size": null, "state": "active", "url": "https://www.fuelwatch.wa.gov.au/retail/historic", "url_type": null, "zip_extract": false}], "tags": [{"display_name": "fuel prices", "id": "9df13b15-d38b-45b0-8821-7d19f9a4f43b", "name": "fuel prices", "state": "active", "vocabulary_id": null}, {"display_name": "fuel watch", "id": "3f0570bf-0f1a-4eff-a85b-484a714cc38a", "name": "fuel watch", "state": "active", "vocabulary_id": null}, {"display_name": "fuelwatch", "id": "4f9d856e-ae96-4f70-bfba-74da56321c1c", "name": "fuelwatch", "state": "active", "vocabulary_id": null}, {"display_name": "petrol prices", "id": "8ac10197-9906-4f74-8d7c-b21a365c73db", "name": "petrol prices", "state": "active", "vocabulary_id": null}], "groups": [], "relationships_as_subject": [], "relationships_as_object": []}}
