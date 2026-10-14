@@ -1,0 +1,30 @@
+URL: https://data.transportation.gov/resource/wqw2-rjgd.json?$limit=3
+Fetched: 2026-10-14T15:53:48Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1013
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:53:48 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDY2Ml81XzM1OTZUenNiZk9VV3B3dmh2Y3J2MTA2VFNGUld3UQ---gzis6dS1AmBvVao_LDOv77cfBpzuw0--gzip--gzip"
+X-SODA2-Fields: ["tbl","year","quarter","citymarketid","city","markets","cur_passengers","cur_fare","cur_yield","distance","ly_passengers","ly_fare","ly_yield","ly_distance","location_1","location_1_address","location_1_city","location_1_state","location_1_zip","unique_id",":@computed_region_28hd_vqqn"]
+X-SODA2-Types: ["text","number","number","number","text","number","number","number","number","number","number","number","number","number","point","text","text","text","text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:53:41 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:53:41 GMT
+Last-Modified: Thu, 03 Sep 2026 17:53:41 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 8811fa3303392354650998e6d05a7463
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"tbl":"Table 2","year":"2026","quarter":"1","citymarketid":"35412","city":"Knoxville, TN","markets":"11","cur_passengers":"276827","cur_fare":"224.1574449","cur_yield":"29.44338691","distance":"761.3167791","ly_passengers":"261110","ly_fare":"211.6507794","ly_yield":"28.0275801","ly_distance":"755.1518134","unique_id":"2026135412"}
+,{"tbl":"Table 2","year":"2026","quarter":"1","citymarketid":"35096","city":"Syracuse, NY","markets":"4","cur_passengers":"142498","cur_fare":"207.8699491","cur_yield":"21.07661848","distance":"986.258537","ly_passengers":"145670","ly_fare":"182.6710235","ly_yield":"19.27319153","ly_distance":"947.7985172","unique_id":"2026135096"}
+,{"tbl":"Table 2","year":"2026","quarter":"1","citymarketid":"34986","city":"Sarasota/Bradenton, FL","markets":"18","cur_passengers":"706330","cur_fare":"246.3407614","cur_yield":"24.022522","distance":"1025.457533","ly_passengers":"686190","ly_fare":"212.8500342","ly_yield":"20.767341","ly_distance":"1024.926755","unique_id":"2026134986"}]
