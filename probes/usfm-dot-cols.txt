@@ -1,0 +1,1473 @@
+URL: https://data.transportation.gov/api/views/tfrh-tu9e/columns.json
+Fetched: 2026-10-14T15:45:26Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 47817
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:45:26 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 2402de4f52bf55e456744a369bbb17cc
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[ {
+  "id" : 325631200,
+  "name" : "tbl",
+  "dataTypeName" : "text",
+  "description" : "Name of data table",
+  "fieldName" : "tbl",
+  "position" : 1,
+  "renderTypeName" : "text",
+  "tableColumnId" : 45687048,
+  "width" : 136,
+  "cachedContents" : {
+    "largest" : "Table 1a",
+    "non_null" : "262087",
+    "null" : "0",
+    "top" : [ {
+      "item" : "Table 1a",
+      "count" : "200897"
+    }, {
+      "item" : "Table1a",
+      "count" : "61190"
+    } ],
+    "smallest" : "Table1a",
+    "not_null" : "209084",
+    "count" : "262087",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631201,
+  "name" : "Year",
+  "dataTypeName" : "number",
+  "description" : "Year",
+  "fieldName" : "year",
+  "position" : 2,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687049,
+  "width" : 148,
+  "cachedContents" : {
+    "largest" : "2026",
+    "non_null" : "262087",
+    "average" : "2005.886233297860",
+    "null" : "0",
+    "top" : [ {
+      "item" : "1993",
+      "count" : "9739"
+    }, {
+      "item" : "1996",
+      "count" : "9081"
+    }, {
+      "item" : "1997",
+      "count" : "8949"
+    }, {
+      "item" : "1999",
+      "count" : "8757"
+    }, {
+      "item" : "1998",
+      "count" : "8708"
+    }, {
+      "item" : "2001",
+      "count" : "8648"
+    }, {
+      "item" : "2002",
+      "count" : "8589"
+    }, {
+      "item" : "2000",
+      "count" : "8541"
+    }, {
+      "item" : "2003",
+      "count" : "8488"
+    }, {
+      "item" : "2004",
+      "count" : "8466"
+    }, {
+      "item" : "2005",
+      "count" : "8365"
+    }, {
+      "item" : "2013",
+      "count" : "8301"
+    }, {
+      "item" : "2012",
+      "count" : "8238"
+    }, {
+      "item" : "2017",
+      "count" : "8232"
+    }, {
+      "item" : "2014",
+      "count" : "8229"
+    }, {
+      "item" : "2016",
+      "count" : "8227"
+    }, {
+      "item" : "2006",
+      "count" : "8200"
+    }, {
+      "item" : "2018",
+      "count" : "8195"
+    }, {
+      "item" : "2015",
+      "count" : "8150"
+    }, {
+      "item" : "2019",
+      "count" : "8148"
+    } ],
+    "smallest" : "1993",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "407130717",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "true",
+    "align" : "center",
+    "mask" : "####"
+  }
+}, {
+  "id" : 325631202,
+  "name" : "quarter",
+  "dataTypeName" : "number",
+  "description" : "Quarter",
+  "fieldName" : "quarter",
+  "position" : 3,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687050,
+  "width" : 184,
+  "cachedContents" : {
+    "largest" : "4",
+    "non_null" : "262087",
+    "average" : "2.472503054668716",
+    "null" : "0",
+    "top" : [ {
+      "item" : "1",
+      "count" : "67919"
+    }, {
+      "item" : "3",
+      "count" : "65323"
+    }, {
+      "item" : "2",
+      "count" : "64502"
+    }, {
+      "item" : "4",
+      "count" : "64343"
+    } ],
+    "smallest" : "1",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "501839",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631203,
+  "name" : "citymarketid_1",
+  "dataTypeName" : "number",
+  "description" : "City market ID is an identification number assigned by US DOT\nto identify a city market.  Use this field to consolidate airports serving the same city market",
+  "fieldName" : "citymarketid_1",
+  "position" : 4,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687051,
+  "width" : 268,
+  "cachedContents" : {
+    "largest" : "35412",
+    "non_null" : "262087",
+    "average" : "31556.78898151433",
+    "null" : "0",
+    "top" : [ {
+      "item" : "32575",
+      "count" : "27849"
+    }, {
+      "item" : "30721",
+      "count" : "24970"
+    }, {
+      "item" : "31703",
+      "count" : "24513"
+    }, {
+      "item" : "30977",
+      "count" : "19581"
+    }, {
+      "item" : "30194",
+      "count" : "15987"
+    }, {
+      "item" : "31453",
+      "count" : "14480"
+    }, {
+      "item" : "30647",
+      "count" : "9595"
+    }, {
+      "item" : "32467",
+      "count" : "8756"
+    }, {
+      "item" : "30397",
+      "count" : "4509"
+    }, {
+      "item" : "31295",
+      "count" : "4079"
+    }, {
+      "item" : "30423",
+      "count" : "3838"
+    }, {
+      "item" : "31066",
+      "count" : "3788"
+    }, {
+      "item" : "31057",
+      "count" : "3735"
+    }, {
+      "item" : "32457",
+      "count" : "3558"
+    }, {
+      "item" : "33198",
+      "count" : "3395"
+    }, {
+      "item" : "30140",
+      "count" : "3390"
+    }, {
+      "item" : "30325",
+      "count" : "3367"
+    }, {
+      "item" : "33105",
+      "count" : "3202"
+    }, {
+      "item" : "32211",
+      "count" : "3044"
+    }, {
+      "item" : "30599",
+      "count" : "2930"
+    } ],
+    "smallest" : "30135",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "6405018346",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "true",
+    "align" : "center",
+    "mask" : "#####"
+  }
+}, {
+  "id" : 325631204,
+  "name" : "citymarketid_2",
+  "dataTypeName" : "number",
+  "description" : "City market ID is an identification number assigned by US DOT\nto identify a city market.  Use this field to consolidate airports serving the same city market",
+  "fieldName" : "citymarketid_2",
+  "position" : 5,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687052,
+  "width" : 268,
+  "cachedContents" : {
+    "largest" : "35628",
+    "non_null" : "262087",
+    "average" : "32180.76932324307",
+    "null" : "0",
+    "top" : [ {
+      "item" : "31703",
+      "count" : "39038"
+    }, {
+      "item" : "30852",
+      "count" : "33584"
+    }, {
+      "item" : "32457",
+      "count" : "23414"
+    }, {
+      "item" : "32575",
+      "count" : "22988"
+    }, {
+      "item" : "33195",
+      "count" : "9951"
+    }, {
+      "item" : "32467",
+      "count" : "9405"
+    }, {
+      "item" : "31453",
+      "count" : "6637"
+    }, {
+      "item" : "30466",
+      "count" : "6168"
+    }, {
+      "item" : "33667",
+      "count" : "5992"
+    }, {
+      "item" : "30194",
+      "count" : "4484"
+    }, {
+      "item" : "30559",
+      "count" : "3946"
+    }, {
+      "item" : "31454",
+      "count" : "3696"
+    }, {
+      "item" : "31123",
+      "count" : "3675"
+    }, {
+      "item" : "34492",
+      "count" : "3094"
+    }, {
+      "item" : "33570",
+      "count" : "3040"
+    }, {
+      "item" : "34057",
+      "count" : "3037"
+    }, {
+      "item" : "34614",
+      "count" : "3027"
+    }, {
+      "item" : "33214",
+      "count" : "2982"
+    }, {
+      "item" : "30198",
+      "count" : "2961"
+    }, {
+      "item" : "30977",
+      "count" : "2954"
+    } ],
+    "smallest" : "30189",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "6531666388",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "true",
+    "align" : "center",
+    "mask" : "#####"
+  }
+}, {
+  "id" : 325631205,
+  "name" : "city1",
+  "dataTypeName" : "text",
+  "description" : "City1 is used to consolidate airports serving the same city market",
+  "fieldName" : "city1",
+  "position" : 6,
+  "renderTypeName" : "text",
+  "tableColumnId" : 45687053,
+  "width" : 160,
+  "cachedContents" : {
+    "largest" : "Washington, DC (Metropolitan Area)",
+    "non_null" : "262087",
+    "null" : "0",
+    "top" : [ {
+      "item" : "Los Angeles, CA (Metropolitan Area)",
+      "count" : "27849"
+    }, {
+      "item" : "Boston, MA (Metropolitan Area)",
+      "count" : "24970"
+    }, {
+      "item" : "New York City, NY (Metropolitan Area)",
+      "count" : "24513"
+    }, {
+      "item" : "Chicago, IL",
+      "count" : "19581"
+    }, {
+      "item" : "Dallas/Fort Worth, TX",
+      "count" : "15987"
+    }, {
+      "item" : "Houston, TX",
+      "count" : "14480"
+    }, {
+      "item" : "Cleveland, OH (Metropolitan Area)",
+      "count" : "9595"
+    }, {
+      "item" : "Miami, FL (Metropolitan Area)",
+      "count" : "8756"
+    }, {
+      "item" : "Atlanta, GA (Metropolitan Area)",
+      "count" : "4509"
+    }, {
+      "item" : "Detroit, MI",
+      "count" : "4079"
+    }, {
+      "item" : "Austin, TX",
+      "count" : "3838"
+    }, {
+      "item" : "Columbus, OH",
+      "count" : "3788"
+    }, {
+      "item" : "Charlotte, NC",
+      "count" : "3735"
+    }, {
+      "item" : "San Francisco, CA (Metropolitan Area)",
+      "count" : "3558"
+    }, {
+      "item" : "Kansas City, MO",
+      "count" : "3395"
+    }, {
+      "item" : "Albuquerque, NM",
+      "count" : "3390"
+    }, {
+      "item" : "Denver, CO",
+      "count" : "3367"
+    }, {
+      "item" : "Cincinnati, OH",
+      "count" : "3202"
+    }, {
+      "item" : "Las Vegas, NV",
+      "count" : "3044"
+    }, {
+      "item" : "Birmingham, AL",
+      "count" : "2930"
+    } ],
+    "smallest" : "Albany, NY",
+    "not_null" : "209084",
+    "count" : "262087",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 325631206,
+  "name" : "city2",
+  "dataTypeName" : "text",
+  "description" : "City2 is used to consolidate airports serving the same city market",
+  "fieldName" : "city2",
+  "position" : 7,
+  "renderTypeName" : "text",
+  "tableColumnId" : 45687054,
+  "width" : 160,
+  "cachedContents" : {
+    "largest" : "Worcester, MA",
+    "non_null" : "262087",
+    "null" : "0",
+    "top" : [ {
+      "item" : "New York City, NY (Metropolitan Area)",
+      "count" : "39038"
+    }, {
+      "item" : "Washington, DC (Metropolitan Area)",
+      "count" : "33584"
+    }, {
+      "item" : "San Francisco, CA (Metropolitan Area)",
+      "count" : "23414"
+    }, {
+      "item" : "Los Angeles, CA (Metropolitan Area)",
+      "count" : "22988"
+    }, {
+      "item" : "Tampa, FL (Metropolitan Area)",
+      "count" : "9951"
+    }, {
+      "item" : "Miami, FL (Metropolitan Area)",
+      "count" : "9405"
+    }, {
+      "item" : "Houston, TX",
+      "count" : "6637"
+    }, {
+      "item" : "Phoenix, AZ",
+      "count" : "6168"
+    }, {
+      "item" : "Norfolk, VA (Metropolitan Area)",
+      "count" : "5992"
+    }, {
+      "item" : "Dallas/Fort Worth, TX",
+      "count" : "4484"
+    }, {
+      "item" : "Seattle, WA",
+      "count" : "3946"
+    }, {
+      "item" : "Orlando, FL",
+      "count" : "3696"
+    }, {
+      "item" : "St. Louis, MO",
+      "count" : "3675"
+    }, {
+      "item" : "Raleigh/Durham, NC",
+      "count" : "3094"
+    }, {
+      "item" : "San Diego, CA",
+      "count" : "3040"
+    }, {
+      "item" : "Portland, OR",
+      "count" : "3037"
+    }, {
+      "item" : "Salt Lake City, UT",
+      "count" : "3027"
+    }, {
+      "item" : "San Antonio, TX",
+      "count" : "2982"
+    }, {
+      "item" : "Pittsburgh, PA",
+      "count" : "2961"
+    }, {
+      "item" : "Chicago, IL",
+      "count" : "2954"
+    } ],
+    "smallest" : "Boston, MA (Metropolitan Area)",
+    "not_null" : "209084",
+    "count" : "262087",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 325631207,
+  "name" : "airportid_1",
+  "dataTypeName" : "number",
+  "description" : "Airport ID is an identification number assigned by US DOT\nto identify a airport.",
+  "fieldName" : "airportid_1",
+  "position" : 8,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687055,
+  "width" : 232,
+  "cachedContents" : {
+    "largest" : "16440",
+    "non_null" : "262087",
+    "average" : "12441.09511844232",
+    "null" : "0",
+    "top" : [ {
+      "item" : "13930",
+      "count" : "9403"
+    }, {
+      "item" : "13232",
+      "count" : "9223"
+    }, {
+      "item" : "10721",
+      "count" : "8565"
+    }, {
+      "item" : "11298",
+      "count" : "8562"
+    }, {
+      "item" : "14307",
+      "count" : "8204"
+    }, {
+      "item" : "13296",
+      "count" : "8201"
+    }, {
+      "item" : "11259",
+      "count" : "7418"
+    }, {
+      "item" : "12266",
+      "count" : "6395"
+    }, {
+      "item" : "12191",
+      "count" : "6338"
+    }, {
+      "item" : "12892",
+      "count" : "5842"
+    }, {
+      "item" : "14908",
+      "count" : "5722"
+    }, {
+      "item" : "13891",
+      "count" : "5700"
+    }, {
+      "item" : "10800",
+      "count" : "5540"
+    }, {
+      "item" : "12954",
+      "count" : "5043"
+    }, {
+      "item" : "11042",
+      "count" : "4969"
+    }, {
+      "item" : "10874",
+      "count" : "4626"
+    }, {
+      "item" : "10397",
+      "count" : "4509"
+    }, {
+      "item" : "11697",
+      "count" : "4400"
+    }, {
+      "item" : "13303",
+      "count" : "4351"
+    }, {
+      "item" : "12953",
+      "count" : "4224"
+    } ],
+    "smallest" : "10135",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "2525144194",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "true",
+    "align" : "center",
+    "mask" : "#####"
+  }
+}, {
+  "id" : 325631208,
+  "name" : "airportid_2",
+  "dataTypeName" : "number",
+  "description" : "Airport ID is an identification number assigned by US DOT\nto identify a airport.",
+  "fieldName" : "airportid_2",
+  "position" : 9,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687056,
+  "width" : 232,
+  "cachedContents" : {
+    "largest" : "15919",
+    "non_null" : "262087",
+    "average" : "13255.38244452327",
+    "null" : "0",
+    "top" : [ {
+      "item" : "11278",
+      "count" : "10928"
+    }, {
+      "item" : "10821",
+      "count" : "10871"
+    }, {
+      "item" : "12264",
+      "count" : "10705"
+    }, {
+      "item" : "15304",
+      "count" : "8184"
+    }, {
+      "item" : "14771",
+      "count" : "7853"
+    }, {
+      "item" : "14831",
+      "count" : "7780"
+    }, {
+      "item" : "13796",
+      "count" : "7773"
+    }, {
+      "item" : "11618",
+      "count" : "6881"
+    }, {
+      "item" : "12953",
+      "count" : "6863"
+    }, {
+      "item" : "12478",
+      "count" : "6707"
+    }, {
+      "item" : "12197",
+      "count" : "6386"
+    }, {
+      "item" : "12391",
+      "count" : "6146"
+    }, {
+      "item" : "14107",
+      "count" : "5444"
+    }, {
+      "item" : "15070",
+      "count" : "5278"
+    }, {
+      "item" : "11697",
+      "count" : "4752"
+    }, {
+      "item" : "12892",
+      "count" : "4751"
+    }, {
+      "item" : "13891",
+      "count" : "4710"
+    }, {
+      "item" : "14908",
+      "count" : "4708"
+    }, {
+      "item" : "13303",
+      "count" : "4652"
+    }, {
+      "item" : "10800",
+      "count" : "4629"
+    } ],
+    "smallest" : "10325",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "2690418464",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "true",
+    "align" : "center",
+    "mask" : "#####"
+  }
+}, {
+  "id" : 325631209,
+  "name" : "airport_1",
+  "dataTypeName" : "text",
+  "description" : "Airport code",
+  "fieldName" : "airport_1",
+  "position" : 10,
+  "renderTypeName" : "text",
+  "tableColumnId" : 45687057,
+  "width" : 208,
+  "cachedContents" : {
+    "largest" : "XNA",
+    "non_null" : "262087",
+    "null" : "0",
+    "top" : [ {
+      "item" : "ORD",
+      "count" : "9403"
+    }, {
+      "item" : "MDW",
+      "count" : "9223"
+    }, {
+      "item" : "BOS",
+      "count" : "8565"
+    }, {
+      "item" : "DFW",
+      "count" : "8562"
+    }, {
+      "item" : "PVD",
+      "count" : "8204"
+    }, {
+      "item" : "MHT",
+      "count" : "8201"
+    }, {
+      "item" : "DAL",
+      "count" : "7418"
+    }, {
+      "item" : "IAH",
+      "count" : "6395"
+    }, {
+      "item" : "HOU",
+      "count" : "6338"
+    }, {
+      "item" : "LAX",
+      "count" : "5842"
+    }, {
+      "item" : "SNA",
+      "count" : "5722"
+    }, {
+      "item" : "ONT",
+      "count" : "5700"
+    }, {
+      "item" : "BUR",
+      "count" : "5540"
+    }, {
+      "item" : "LGB",
+      "count" : "5043"
+    }, {
+      "item" : "CLE",
+      "count" : "4969"
+    }, {
+      "item" : "CAK",
+      "count" : "4626"
+    }, {
+      "item" : "ATL",
+      "count" : "4509"
+    }, {
+      "item" : "FLL",
+      "count" : "4400"
+    }, {
+      "item" : "MIA",
+      "count" : "4351"
+    }, {
+      "item" : "LGA",
+      "count" : "4224"
+    } ],
+    "smallest" : "ABE",
+    "not_null" : "209084",
+    "count" : "262087",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631210,
+  "name" : "airport_2",
+  "dataTypeName" : "text",
+  "description" : "Airport code",
+  "fieldName" : "airport_2",
+  "position" : 11,
+  "renderTypeName" : "text",
+  "tableColumnId" : 45687058,
+  "width" : 208,
+  "cachedContents" : {
+    "largest" : "XNA",
+    "non_null" : "262087",
+    "null" : "0",
+    "top" : [ {
+      "item" : "DCA",
+      "count" : "10928"
+    }, {
+      "item" : "BWI",
+      "count" : "10871"
+    }, {
+      "item" : "IAD",
+      "count" : "10705"
+    }, {
+      "item" : "TPA",
+      "count" : "8184"
+    }, {
+      "item" : "SFO",
+      "count" : "7853"
+    }, {
+      "item" : "SJC",
+      "count" : "7780"
+    }, {
+      "item" : "OAK",
+      "count" : "7773"
+    }, {
+      "item" : "EWR",
+      "count" : "6881"
+    }, {
+      "item" : "LGA",
+      "count" : "6863"
+    }, {
+      "item" : "JFK",
+      "count" : "6707"
+    }, {
+      "item" : "HPN",
+      "count" : "6386"
+    }, {
+      "item" : "ISP",
+      "count" : "6146"
+    }, {
+      "item" : "PHX",
+      "count" : "5444"
+    }, {
+      "item" : "SWF",
+      "count" : "5278"
+    }, {
+      "item" : "FLL",
+      "count" : "4752"
+    }, {
+      "item" : "LAX",
+      "count" : "4751"
+    }, {
+      "item" : "ONT",
+      "count" : "4710"
+    }, {
+      "item" : "SNA",
+      "count" : "4708"
+    }, {
+      "item" : "MIA",
+      "count" : "4652"
+    }, {
+      "item" : "BUR",
+      "count" : "4629"
+    } ],
+    "smallest" : "APA",
+    "not_null" : "209084",
+    "count" : "262087",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631211,
+  "name" : "nsmiles",
+  "dataTypeName" : "number",
+  "description" : "Non-Stop market miles (using radian measure)",
+  "fieldName" : "nsmiles",
+  "position" : 12,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687059,
+  "width" : 184,
+  "cachedContents" : {
+    "largest" : "2724",
+    "non_null" : "262087",
+    "average" : "1187.800544913484",
+    "null" : "0",
+    "top" : [ {
+      "item" : "2510",
+      "count" : "3416"
+    }, {
+      "item" : "2619",
+      "count" : "2154"
+    }, {
+      "item" : "1246",
+      "count" : "2030"
+    }, {
+      "item" : "2329",
+      "count" : "1938"
+    }, {
+      "item" : "2611",
+      "count" : "1825"
+    }, {
+      "item" : "773",
+      "count" : "1815"
+    }, {
+      "item" : "372",
+      "count" : "1704"
+    }, {
+      "item" : "1465",
+      "count" : "1677"
+    }, {
+      "item" : "1139",
+      "count" : "1639"
+    }, {
+      "item" : "209",
+      "count" : "1554"
+    }, {
+      "item" : "337",
+      "count" : "1374"
+    }, {
+      "item" : "590",
+      "count" : "1354"
+    }, {
+      "item" : "677",
+      "count" : "1286"
+    }, {
+      "item" : "1428",
+      "count" : "1278"
+    }, {
+      "item" : "265",
+      "count" : "1201"
+    }, {
+      "item" : "487",
+      "count" : "1191"
+    }, {
+      "item" : "418",
+      "count" : "1176"
+    }, {
+      "item" : "2457",
+      "count" : "1176"
+    }, {
+      "item" : "2073",
+      "count" : "1155"
+    }, {
+      "item" : "2371",
+      "count" : "1134"
+    } ],
+    "smallest" : "109",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "241085501",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631212,
+  "name" : "passengers",
+  "dataTypeName" : "number",
+  "description" : "Passenger per day",
+  "fieldName" : "passengers",
+  "position" : 13,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687060,
+  "width" : 220,
+  "cachedContents" : {
+    "largest" : "8301.208791",
+    "non_null" : "262087",
+    "average" : "292.5935964816867",
+    "null" : "0",
+    "top" : [ {
+      "item" : "0.21",
+      "count" : "1530"
+    }, {
+      "item" : "0.1",
+      "count" : "1451"
+    }, {
+      "item" : "0.43",
+      "count" : "879"
+    }, {
+      "item" : "0.32",
+      "count" : "711"
+    }, {
+      "item" : "0.65",
+      "count" : "699"
+    }, {
+      "item" : "0.54",
+      "count" : "596"
+    }, {
+      "item" : "0.76",
+      "count" : "506"
+    }, {
+      "item" : "0.22",
+      "count" : "451"
+    }, {
+      "item" : "0.11",
+      "count" : "391"
+    }, {
+      "item" : "1.08",
+      "count" : "337"
+    }, {
+      "item" : "0.86",
+      "count" : "332"
+    }, {
+      "item" : "1.3",
+      "count" : "285"
+    }, {
+      "item" : "0.97",
+      "count" : "282"
+    }, {
+      "item" : "1.52",
+      "count" : "272"
+    }, {
+      "item" : "1.63",
+      "count" : "263"
+    }, {
+      "item" : "5",
+      "count" : "261"
+    }, {
+      "item" : "2.5",
+      "count" : "260"
+    }, {
+      "item" : "1.41",
+      "count" : "250"
+    }, {
+      "item" : "0.44",
+      "count" : "243"
+    }, {
+      "item" : "1.19",
+      "count" : "243"
+    } ],
+    "smallest" : "0.0217391304",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "59387137.090694977",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "0",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631213,
+  "name" : "fare",
+  "dataTypeName" : "number",
+  "description" : "Overall average fare",
+  "fieldName" : "fare",
+  "position" : 14,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687061,
+  "width" : 148,
+  "cachedContents" : {
+    "largest" : "3377",
+    "non_null" : "262087",
+    "average" : "216.5555394323002",
+    "null" : "0",
+    "top" : [ {
+      "item" : "209",
+      "count" : "26"
+    }, {
+      "item" : "231",
+      "count" : "26"
+    }, {
+      "item" : "178",
+      "count" : "25"
+    }, {
+      "item" : "175",
+      "count" : "24"
+    }, {
+      "item" : "192",
+      "count" : "24"
+    }, {
+      "item" : "213",
+      "count" : "24"
+    }, {
+      "item" : "156.5",
+      "count" : "23"
+    }, {
+      "item" : "172.66",
+      "count" : "23"
+    }, {
+      "item" : "154",
+      "count" : "23"
+    }, {
+      "item" : "170.5",
+      "count" : "23"
+    }, {
+      "item" : "183.23",
+      "count" : "22"
+    }, {
+      "item" : "182.48",
+      "count" : "22"
+    }, {
+      "item" : "176.5",
+      "count" : "22"
+    }, {
+      "item" : "170",
+      "count" : "22"
+    }, {
+      "item" : "196",
+      "count" : "22"
+    }, {
+      "item" : "238",
+      "count" : "22"
+    }, {
+      "item" : "191.77",
+      "count" : "22"
+    }, {
+      "item" : "211.5",
+      "count" : "22"
+    }, {
+      "item" : "164.9",
+      "count" : "22"
+    }, {
+      "item" : "165",
+      "count" : "21"
+    } ],
+    "smallest" : "50",
+    "not_null" : "209084",
+    "count" : "262087",
+    "sum" : "43953844.72749511",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "currency",
+    "humane" : "false",
+    "currencyStyle" : "USD",
+    "precision" : "2",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631214,
+  "name" : "carrier_lg",
+  "dataTypeName" : "text",
+  "description" : "Carrier with the largest market share",
+  "fieldName" : "carrier_lg",
+  "position" : 15,
+  "renderTypeName" : "text",
+  "tableColumnId" : 45687062,
+  "width" : 220,
+  "cachedContents" : {
+    "largest" : "ZW",
+    "non_null" : "260507",
+    "null" : "1580",
+    "top" : [ {
+      "item" : "WN",
+      "count" : "64807"
+    }, {
+      "item" : "AA",
+      "count" : "49375"
+    }, {
+      "item" : "DL",
+      "count" : "36112"
+    }, {
+      "item" : "UA",
+      "count" : "32199"
+    }, {
+      "item" : "US",
+      "count" : "25836"
+    }, {
+      "item" : "CO",
+      "count" : "14415"
+    }, {
+      "item" : "NW",
+      "count" : "7173"
+    }, {
+      "item" : "B6",
+      "count" : "6669"
+    }, {
+      "item" : "AS",
+      "count" : "4617"
+    }, {
+      "item" : "HP",
+      "count" : "3721"
+    }, {
+      "item" : "FL",
+      "count" : "3097"
+    }, {
+      "item" : "G4",
+      "count" : "2561"
+    }, {
+      "item" : "TW",
+      "count" : "1806"
+    }, {
+      "item" : "NK",
+      "count" : "1476"
+    }, {
+      "item" : "F9",
+      "count" : "1398"
+    }, {
+      "item" : "TZ",
+      "count" : "1357"
+    }, {
+      "item" : "YX",
+      "count" : "942"
+    }, {
+      "item" : "MX",
+      "count" : "537"
+    }, {
+      "item" : "JI",
+      "count" : "319"
+    }, {
+      "item" : "RU",
+      "count" : "198"
+    } ],
+    "smallest" : "3M",
+    "not_null" : "207591",
+    "count" : "262087",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631215,
+  "name" : "large_ms",
+  "dataTypeName" : "number",
+  "description" : "Market share for the carrier with the largest market share",
+  "fieldName" : "large_ms",
+  "position" : 16,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687063,
+  "width" : 196,
+  "cachedContents" : {
+    "largest" : "1",
+    "non_null" : "260507",
+    "average" : "0.6557540614941726",
+    "null" : "1580",
+    "top" : [ {
+      "item" : "1",
+      "count" : "15100"
+    }, {
+      "item" : "0.99",
+      "count" : "4673"
+    }, {
+      "item" : "0.5",
+      "count" : "4513"
+    }, {
+      "item" : "0.98",
+      "count" : "3707"
+    }, {
+      "item" : "0.97",
+      "count" : "3351"
+    }, {
+      "item" : "0.96",
+      "count" : "3027"
+    }, {
+      "item" : "0.66",
+      "count" : "2866"
+    }, {
+      "item" : "0.6",
+      "count" : "2789"
+    }, {
+      "item" : "0.52",
+      "count" : "2735"
+    }, {
+      "item" : "0.51",
+      "count" : "2715"
+    }, {
+      "item" : "0.48",
+      "count" : "2694"
+    }, {
+      "item" : "0.47",
+      "count" : "2666"
+    }, {
+      "item" : "0.53",
+      "count" : "2651"
+    }, {
+      "item" : "0.95",
+      "count" : "2645"
+    }, {
+      "item" : "0.54",
+      "count" : "2634"
+    }, {
+      "item" : "0.46",
+      "count" : "2620"
+    }, {
+      "item" : "0.57",
+      "count" : "2605"
+    }, {
+      "item" : "0.55",
+      "count" : "2556"
+    }, {
+      "item" : "0.75",
+      "count" : "2555"
+    }, {
+      "item" : "0.44",
+      "count" : "2517"
+    } ],
+    "smallest" : "0.00378787878787879",
+    "not_null" : "207591",
+    "count" : "262087",
+    "sum" : "132123.29557203036835447",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "4",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631216,
+  "name" : "fare_lg",
+  "dataTypeName" : "number",
+  "description" : "Average fare for the carrier with the largest market share",
+  "fieldName" : "fare_lg",
+  "position" : 17,
+  "renderTypeName" : "number",
+  "tableColumnId" : 45687064,
+  "width" : 184,
+  "cachedContents" : {
+    "largest" : "2725.6",
+    "non_null" : "260507",
+    "average" : "216.3249085586498",
+    "null" : "1580",
+    "top" : [ {
+      "item" : "171",
+      "count" : "28"
+    }, {
+      "item" : "149",
+      "count" : "25"
+    }, {
+      "item" : "183",
+      "count" : "25"
+    }, {
+      "item" : "206",
+      "count" : "24"
+    }, {
+      "item" : "167",
+      "count" : "24"
+    }, {
+      "item" : "138",
+      "count" : "24"
+    }, {
+      "item" : "245",
+      "count" : "23"
+    }, {
+      "item" : "147",
+      "count" : "23"
+    }, {
+      "item" : "179.5",
+      "count" : "23"
+    }, {
+      "item" : "149.5",
+      "count" : "22"
+    }, {
+      "item" : "160.15",
+      "count" : "22"
+    }, {
+      "item" : "174",
+      "count" : "22"
+    }, {
+      "item" : "194.5",
+      "count" : "22"
+    }, {
+      "item" : "127",
+      "count" : "21"
+    }, {
+      "item" : "178",
+      "count" : "21"
+    }, {
+      "item" : "203.35",
+      "count" : "21"
+    }, {
+      "item" : "202",
+      "count" : "21"
+    }, {
+      "item" : "189.17",
+      "count" : "21"
+    }, {
+      "item" : "184.32",
+      "count" : "21"
+    }, {
+      "item" : "177",
+      "count" : "21"
+    } ],
+    "smallest" : "50",
+    "not_null" : "207591",
+    "count" : "262087",
+    "sum" : "43585791.55112244",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "precisionStyle" : "currency",
+    "humane" : "false",
+    "currencyStyle" : "USD",
+    "precision" : "2",
+    "align" : "center"
+  }
+}, {
+  "id" : 325631217,
+  "name" : "carrier_low",
+  "dataTypeName" : "text",
+  "description" : "Carrier with the lowest fare",
+  "fieldName" : "carrier_low",
+  "position" : 18,
+  "renderTypeName" : "text",
+  "tableColumnId" : 45687065,
+  "width" : 232,
+  "cachedContents" : {
+    "largest" : "ZW",
+    "non_null" : "260435",
+    "null" : "1652",
+    "top" : [ {
+      "item" : "WN",
+      "count" : "62073"
+    }, {
+      "item" : "AA",
+      "count" : "39141"
+    }, {
+      "item" : "DL",
+      "count" : "30605"
+    }, {
+      "item" : "US",
+      "count" : "24811"
+    }, {
+      "item" : "UA",
+      "count" : "21787"
+    }, {
+      "item" : "CO",
+      "count" : "15936"
+    }, {
+      "item" : "NW",
+      "count" : "9728"
+    }, {
+      "item" : "F9",
+      "count" : "7791"
+    }, {
+      "item" : "NK",
+      "count" : "7587"
+    }, {
+      "item" : "FL",
+      "count" : "7544"
+    }, {
+      "item" : "B6",
+      "count" : "7479"
+    }, {
+      "item" : "HP",
+      "count" : "6973"
+    }, {
+      "item" : "AS",
+      "count" : "4729"
+    }, {
+      "item" : "G4",
+      "count" : "3320"
+    }, {
+      "item" : "TW",
+      "count" : "3103"
+    }, {
+      "item" : "TZ",
+      "count" : "1628"
+    }, {
+      "item" : "SY",
+      "count" : "855"
+    }, {
+      "item" : "MX",
+      "count" : "744"
+    }, {
+      "item" : "JI",
+      "count" : "531"
+    }, {
+      "item" : "VX",
+      "count" : "511"
+    } ],
+    "smallest" : "3M",
+    "not_null" : "207519",
+    "count" : "262087",
+    "cardinality" : "262087"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "
