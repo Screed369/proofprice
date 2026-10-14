@@ -1,0 +1,595 @@
+URL: https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages?stages=award&updatedFrom=2026-09-01T00:00:00&updatedTo=2026-09-03T00:00:00&limit=3
+Fetched: 2026-10-14T15:42:23Z from GitHub Actions
+Status, type, bytes: 200 application/json 22510
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:42:23 GMT
+content-type: application/json
+server: http/s
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+pragma: no-cache
+set-cookie: SRSI_FT_AUTH=dbf4mfopin6sfvmcli6qu0l234; path=/; domain=www.find-tender.service.gov.uk; secure; HttpOnly
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-frame-options: DENY
+access-control-allow-methods: POST, GET
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+cache-control: max-age=0, private, no-store, no-cache, must-revalidate
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+    "uri": "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages?stages=award&updatedFrom=2026-09-01T00:00:00&updatedTo=2026-09-03T00:00:00&limit=3",
+    "version": "1.1",
+    "extensions": [
+        "https://standard.open-contracting.org/profiles/eu/latest/en/extension.json",
+        "https://raw.githubusercontent.com/open-contracting-extensions/ocds_amendment_rationale_classifications_extension/master/extension.json",
+        "https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_breakdown_extension/master/extension.json",
+        "https://raw.githubusercontent.com/open-contracting-extensions/ocds_contract_completion_extension/master/extension.json",
+        "https://raw.githubusercontent.com/open-contracting-extensions/ocds_documentation_extension/master/extension.json",
+        "https://raw.githubusercontent.com/open-contracting-extensions/ocds_pagination_extension/master/extension.json",
+        "https://raw.githubusercontent.com/open-contracting-extensions/ocds_suitability_extension/master/extension.json",
+        "https://raw.githubusercontent.com/portaledcahn/ocds_Links_extension/main/extension.json",
+        "https://raw.githubusercontent.com/cabinetoffice/ocds_uk_extension/main/extension.json"
+    ],
+    "publishedDate": "2026-09-02T18:04:31+01:00",
+    "publisher": {
+        "name": "Cabinet Office",
+        "scheme": "GB-GOR",
+        "uid": "D2",
+        "uri": "https://www.gov.uk/government/organisations/cabinet-office"
+    },
+    "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "publicationPolicy": "https://www.gov.uk/government/publications/open-contracting",
+    "releases": [
+        {
+            "ocid": "ocds-h6vhtk-06f0c4",
+            "id": "083245-2026",
+            "date": "2026-09-02T18:04:31+01:00",
+            "tag": [
+                "award",
+                "contract"
+            ],
+            "description": "This contract has been awarded in line with the direct award provisions of framework agreement NEPO531 General Banking Services.",
+            "initiationType": "tender",
+            "tender": {
+                "id": "T.2026.10",
+                "legalBasis": {
+                    "id": "32014L0024",
+                    "scheme": "CELEX"
+                },
+                "title": "Banking Services",
+                "status": "complete",
+                "classification": {
+                    "scheme": "CPV",
+                    "id": "66110000",
+                    "description": "Banking services"
+                },
+                "mainProcurementCategory": "services",
+                "description": "Provision of general banking services.",
+                "lots": [
+                    {
+                        "id": "1",
+                        "description": "General banking services.",
+                        "awardCriteria": {
+                            "criteria": [
+                                {
+                                    "type": "price"
+                                }
+                            ]
+                        },
+                        "hasOptions": true,
+                        "options": {
+                            "description": "3 options to extend for 12 month periods following the initial 2 year contract term."
+                        },
+                        "status": "cancelled"
+                    }
+                ],
+                "items": [
+                    {
+                        "id": "1",
+                        "deliveryAddresses": [
+                            {
+                                "region": "UKH12"
+                            }
+                        ],
+                        "relatedLot": "1"
+                    }
+                ],
+                "procurementMethod": "limited",
+                "procurementMethodDetails": "Award procedure without prior publication of a call for competition",
+                "coveredBy": [
+                    "GPA"
+                ],
+                "procurementMethodRationaleClassifications": [
+                    {
+                        "scheme": "TED_PT_AWARD_CONTRACT_WITHOUT_CALL",
+                        "id": "D_OUTSIDE_SCOPE",
+                        "description": "The procurement falls outside the scope of application of the directive"
+                    }
+                ],
+                "procurementMethodRationale": "The contract has been awarded in line with the direct award procedure permitted by framework NEPO531 General Banking Services."
+            },
+            "awards": [
+                {
+                    "id": "083245-2026-1",
+                    "relatedLots": [
+                        "1"
+                    ],
+                    "status": "active",
+                    "suppliers": [
+                        {
+                            "id": "GB-COH-929027",
+                            "name": "NatWest Group"
+                        }
+                    ]
+                }
+            ],
+            "parties": [
+                {
+                    "name": "Huntingdonshire District Council",
+                    "id": "GB-FTS-163840",
+                    "identifier": {
+                        "legalName": "Huntingdonshire District Council",
+                        "noIdentifierRationale": "notOnAnyRegister"
+                    },
+                    "address": {
+                        "streetAddress": "Pathfinder House St Mary's Street Huntingdon,",
+                        "locality": "Cambridgeshire",
+                        "region": "UKH12",
+                        "postalCode": "PE293TN",
+                        "countryName": "United Kingdom"
+                    },
+                    "contactPoint": {
+                        "name": "Felicity Younger",
+                        "telephone": "+44 1480388471",
+                        "email": "felicity.younger@huntingdonshire.gov.uk"
+                    },
+                    "roles": [
+                        "buyer"
+                    ],
+                    "details": {
+                        "url": "http://www.huntingdonshire.gov.uk",
+                        "classifications": [
+                            {
+                                "scheme": "TED_CA_TYPE",
+                                "id": "REGIONAL_AUTHORITY",
+                                "description": "Regional or local authority"
+                            },
+                            {
+                                "scheme": "COFOG",
+                                "id": "01",
+                                "description": "General public services"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "NatWest Group",
+                    "id": "GB-COH-929027",
+                    "identifier": {
+                        "legalName": "NatWest Group",
+                        "id": "929027",
+                        "scheme": "GB-COH"
+                    },
+                    "address": {
+                        "streetAddress": "250 Bishopsgate",
+                        "locality": "London",
+                        "region": "UKI4",
+                        "postalCode": "EC2M 4AA",
+                        "countryName": "United Kingdom"
+                    },
+                    "roles": [
+                        "supplier"
+                    ],
+                    "details": {
+                        "scale": "large"
+                    }
+                },
+                {
+                    "name": "High Court of England and Wales",
+                    "id": "GB-FTS-22176",
+                    "identifier": {
+                        "legalName": "High Court of England and Wales"
+                    },
+                    "address": {
+                        "locality": "London",
+                        "postalCode": "WC2A 2LL",
+                        "countryName": "United Kingdom"
+                    },
+                    "roles": [
+                        "reviewBody"
+                    ]
+                }
+            ],
+            "buyer": {
+                "id": "GB-FTS-163840",
+                "name": "Huntingdonshire District Council"
+            },
+            "contracts": [
+                {
+                    "id": "083245-2026-1",
+                    "awardID": "083245-2026-1",
+                    "status": "active",
+                    "value": {
+                        "amount": 169513,
+                        "currency": "GBP"
+                    },
+                    "dateSigned": "2026-09-02T00:00:00+01:00"
+                }
+            ],
+            "bids": {
+                "statistics": [
+                    {
+                        "id": "1",
+                        "measure": "bids",
+                        "relatedLot": "1",
+                        "value": 1
+                    }
+                ]
+            },
+            "language": "en"
+        },
+        {
+            "ocid": "ocds-h6vhtk-06f0bc",
+            "id": "083229-2026",
+            "date": "2026-09-02T17:10:36+01:00",
+            "tag": [
+                "award",
+                "contract"
+            ],
+            "initiationType": "tender",
+            "tender": {
+                "id": "ocds-h6vhtk-06f0bc",
+                "legalBasis": {
+                    "id": "32014L0024",
+                    "scheme": "CELEX"
+                },
+                "title": "CPU 8607 Call off from DSVA Framework(CPU 5144) Lot 1 Prevention and Early Intervention Services 0 CYP",
+                "status": "complete",
+                "classification": {
+                    "scheme": "CPV",
+                    "id": "85000000",
+                    "description": "Health and social work services"
+                },
+                "mainProcurementCategory": "services",
+                "description": "Prevention CYP in Schools",
+                "lots": [
+                    {
+                        "id": "1",
+                        "description": "Call off from DSVA Framework(CPU 5144)",
+                        "awardCriteria": {
+                            "criteria": [
+                                {
+                                    "type": "price"
+                                }
+                            ]
+                        },
+                        "hasOptions": false,
+                        "status": "cancelled"
+                    }
+                ],
+                "items": [
+                    {
+                        "id": "1",
+                        "deliveryAddresses": [
+                            {
+                                "region": "UKF"
+                            }
+                        ],
+                        "relatedLot": "1"
+                    }
+                ],
+                "procurementMethod": "limited",
+                "procurementMethodDetails": "Award procedure without prior publication of a call for competition",
+                "procurementMethodRationaleClassifications": [
+                    {
+                        "scheme": "TED_PT_AWARD_CONTRACT_WITHOUT_CALL",
+                        "id": "D_OUTSIDE_SCOPE",
+                        "description": "The procurement falls outside the scope of application of the directive"
+                    }
+                ],
+                "procurementMethodRationale": "Won't link to existing Framework Notice reference - 2023/S 000-023816 CPU5144 Framework for the provision of services for Domestic and Sexual Violence and Abuse and Violence Against Women and Girls."
+            },
+            "awards": [
+                {
+                    "id": "083229-2026-1",
+                    "relatedLots": [
+                        "1"
+                    ],
+                    "status": "active",
+                    "suppliers": [
+                        {
+                            "id": "GB-COH-04517544",
+                            "name": "Equation"
+                        }
+                    ]
+                }
+            ],
+            "parties": [
+                {
+                    "name": "Nottingham City Council",
+                    "id": "GB-FTS-145349",
+                    "identifier": {
+                        "legalName": "Nottingham City Council",
+                        "noIdentifierRationale": "notOnAnyRegister"
+                    },
+                    "address": {
+                        "streetAddress": "Loxley House",
+                        "locality": "Nottingham",
+                        "region": "UKF14",
+                        "postalCode": "NG23NG",
+                        "countryName": "United Kingdom"
+                    },
+                    "contactPoint": {
+                        "email": "procurement@nottinghamcity.gov.uk"
+                    },
+                    "roles": [
+                        "buyer"
+                    ],
+                    "details": {
+                        "url": "http://www.nottinghamcity.gov.uk",
+                        "classifications": [
+                            {
+                                "scheme": "TED_CA_TYPE",
+                                "id": "REGIONAL_AUTHORITY",
+                                "description": "Regional or local authority"
+                            },
+                            {
+                                "scheme": "COFOG",
+                                "id": "10",
+                                "description": "Social protection"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Equation",
+                    "id": "GB-COH-04517544",
+                    "identifier": {
+                        "legalName": "Equation",
+                        "id": "04517544",
+                        "scheme": "GB-COH"
+                    },
+                    "address": {
+                        "streetAddress": "2 First Avenue",
+                        "locality": "Nottingham",
+                        "region": "UKF",
+                        "postalCode": "NG7 6JL",
+                        "countryName": "United Kingdom"
+                    },
+                    "roles": [
+                        "supplier"
+                    ],
+                    "details": {
+                        "scale": "sme"
+                    }
+                },
+                {
+                    "name": "Nottingham City Council",
+                    "id": "GB-FTS-2012",
+                    "identifier": {
+                        "legalName": "Nottingham City Council"
+                    },
+                    "address": {
+                        "locality": "Nottingham",
+                        "countryName": "United Kingdom"
+                    },
+                    "roles": [
+                        "reviewBody"
+                    ]
+                }
+            ],
+            "buyer": {
+                "id": "GB-FTS-145349",
+                "name": "Nottingham City Council"
+            },
+            "contracts": [
+                {
+                    "id": "083229-2026-1",
+                    "awardID": "083229-2026-1",
+                    "status": "active",
+                    "value": {
+                        "amount": 91500,
+                        "currency": "GBP"
+                    },
+                    "dateSigned": "2026-04-01T00:00:00+01:00"
+                }
+            ],
+            "bids": {
+                "statistics": [
+                    {
+                        "id": "1",
+                        "measure": "bids",
+                        "relatedLot": "1",
+                        "value": 1
+                    }
+                ]
+            },
+            "language": "en"
+        },
+        {
+            "ocid": "ocds-h6vhtk-06f0b4",
+            "id": "083217-2026",
+            "date": "2026-09-02T16:46:22+01:00",
+            "tag": [
+                "award",
+                "contract"
+            ],
+            "initiationType": "tender",
+            "tender": {
+                "id": "ocds-h6vhtk-06f0b4",
+                "legalBasis": {
+                    "id": "32014L0024",
+                    "scheme": "CELEX"
+                },
+                "title": "250237 - DFG - Lot 8",
+                "status": "complete",
+                "classification": {
+                    "scheme": "CPV",
+                    "id": "45210000",
+                    "description": "Building construction work"
+                },
+                "mainProcurementCategory": "works",
+                "description": "250237 - DFG - Lot 8 in North Lincolnshire",
+                "lots": [
+                    {
+                        "id": "1",
+                        "description": "250237 - DFG - Lot 8 C & H Framework",
+                        "awardCriteria": {
+                            "criteria": [
+                                {
+                                    "type": "price"
+                                }
+                            ]
+                        },
+                        "hasOptions": false,
+                        "status": "cancelled"
+                    }
+                ],
+                "items": [
+                    {
+                        "id": "1",
+                        "deliveryAddresses": [
+                            {
+                                "region": "UKE13"
+                            }
+                        ],
+                        "relatedLot": "1"
+                    }
+                ],
+                "procurementMethod": "selective",
+                "procurementMethodDetails": "Restricted procedure",
+                "coveredBy": [
+                    "GPA"
+                ]
+            },
+            "awards": [
+                {
+                    "id": "083217-2026-1",
+                    "relatedLots": [
+                        "1"
+                    ],
+                    "status": "active",
+                    "suppliers": [
+                        {
+                            "id": "GB-COH-03873231",
+                            "name": "JP Developers Ltd"
+                        }
+                    ]
+                }
+            ],
+            "parties": [
+                {
+                    "name": "North Lincolnshire Council",
+                    "id": "GB-FTS-4589",
+                    "identifier": {
+                        "legalName": "North Lincolnshire Council",
+                        "noIdentifierRationale": "notOnAnyRegister"
+                    },
+                    "address": {
+                        "streetAddress": "Church Square House",
+                        "locality": "Scunthorpe",
+                        "region": "UKE13",
+                        "postalCode": "DN156NL",
+                        "countryName": "United Kingdom"
+                    },
+                    "contactPoint": {
+                        "email": "procurement@northlincs.gov.uk"
+                    },
+                    "roles": [
+                        "buyer"
+                    ],
+                    "details": {
+                        "url": "http://www.northlincs.gov.uk",
+                        "classifications": [
+                            {
+                                "scheme": "TED_CA_TYPE",
+                                "id": "REGIONAL_AUTHORITY",
+                                "description": "Regional or local authority"
+                            },
+                            {
+                                "scheme": "COFOG",
+                                "id": "01",
+                                "description": "General public services"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "JP Developers Ltd",
+                    "id": "GB-COH-03873231",
+                    "identifier": {
+                        "legalName": "JP Developers Ltd",
+                        "id": "03873231",
+                        "scheme": "GB-COH"
+                    },
+                    "address": {
+                        "locality": "Kingston upon Hull",
+                        "region": "UKE11",
+                        "countryName": "United Kingdom"
+                    },
+                    "roles": [
+                        "supplier"
+                    ],
+                    "details": {
+                        "scale": "sme"
+                    }
+                },
+                {
+                    "name": "High Court of England and Wales",
+                    "id": "GB-FTS-136",
+                    "identifier": {
+                        "legalName": "High Court of England and Wales"
+                    },
+                    "address": {
+                        "locality": "London",
+                        "countryName": "United Kingdom"
+                    },
+                    "roles": [
+                        "reviewBody"
+                    ]
+                }
+            ],
+            "buyer": {
+                "id": "GB-FTS-4589",
+                "name": "North Lincolnshire Council"
+            },
+            "contracts": [
+                {
+                    "id": "083217-2026-1",
+                    "awardID": "083217-2026-1",
+                    "status": "active",
+                    "value": {
+                        "amount": 8376.27,
+                        "currency": "GBP"
+                    },
+                    "dateSigned": "2026-08-07T00:00:00+01:00"
+                }
+            ],
+            "bids": {
+                "statistics": [
+                    {
+                        "id": "1",
+                        "measure": "bids",
+                        "relatedLot": "1",
+                        "value": 1
+                    }
+                ]
+            },
+            "links": [
+                {
+                    "rel": "prev",
+                    "href": "https://ted.europa.eu/udl?uri=TED:NOTICE:391716-2018:TEXT:EN:HTML"
+                }
+            ],
+            "language": "en"
+        }
+    ],
+    "links": {
+        "next": "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages?stages=award&updatedFrom=2026-09-01T00:00:00&updatedTo=2026-09-03T00:00:00&limit=3&cursor=dXBkYXRlZEZyb209MjAyNi0wOS0wMVQwMDowMDowMHx1cGRhdGVkVG89MjAyNi0wOS0wM1QwMDowMDowMHxuZXh0Q3Vyc29yPTU5MDA4OA=="
+    }
+}
