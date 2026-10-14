@@ -102,3 +102,14 @@ test("connect guides cover every client and use the real MCP address", () => {
   const curl = by.rest.code!;
   assert.ok(exampleUrls().some((e) => curl.includes(e.path)));
 });
+
+test("privacy and terms are public, in the sitemap and linked for AIs", async () => {
+  const { PUBLIC_PATHS, buildLlmsFullTxt } = await import("../lib/open-book");
+  const { buildLlmsTxt, buildOpenApi } = await import("../lib/openapi");
+  for (const p of ["/privacy", "/terms"]) assert.ok(PUBLIC_PATHS.includes(p), p);
+  for (const t of [buildLlmsTxt("https://x.test"), buildLlmsFullTxt("https://x.test")]) {
+    assert.ok(t.includes("https://x.test/privacy"));
+    assert.ok(t.includes("https://x.test/terms"));
+  }
+  assert.equal((buildOpenApi("https://x.test") as any).info.termsOfService, "https://proofprice.com/terms");
+});

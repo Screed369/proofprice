@@ -84,6 +84,8 @@ export function buildOpenApi(baseUrl: string) {
     openapi: "3.1.0",
     info: {
       title: "ProofPrice API",
+      termsOfService: "https://proofprice.com/terms",
+      contact: { name: "ProofPrice", email: "hello@proofprice.com", url: "https://proofprice.com" },
       version: "0.3.0",
       description:
         "What did people actually pay for X, here, recently? Returns a price range from official open data: median, 10th–90th percentile, sample size, period, confidence, source and licence. Aggregates only; never individual records.",
@@ -141,6 +143,8 @@ ${CITING_RULES.map((r) => `- ${r}`).join("\n")}
 ## More
 - Setup for every AI client and framework: ${baseUrl}/connect
 - Everything in one file (tools, parameters, examples, sources, licences): ${baseUrl}/llms-full.txt
+- Privacy notice: ${baseUrl}/privacy
+- Terms of use: ${baseUrl}/terms
 
 ## Contact
 - hello@proofprice.com

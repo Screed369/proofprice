@@ -46,7 +46,7 @@ export function buildRobots(site = SITE_URL) {
 }
 
 /** Public pages and machine-readable files. */
-export const PUBLIC_PATHS = ["/", "/connect", "/method", "/llms.txt", "/llms-full.txt", "/openapi.json", "/api/v1/coverage"];
+export const PUBLIC_PATHS = ["/", "/connect", "/method", "/privacy", "/terms", "/llms.txt", "/llms-full.txt", "/openapi.json", "/api/v1/coverage"];
 
 export function buildSitemap(site = SITE_URL, now = new Date()) {
   return PUBLIC_PATHS.map((p) => ({
@@ -78,6 +78,7 @@ export function buildLlmsFullTxt(baseUrl: string): string {
 
 This file is generated from the live service, so it always matches what is deployed.
 Short version: ${baseUrl}/llms.txt · OpenAPI 3.1: ${baseUrl}/openapi.json · Setup for AI clients: ${baseUrl}/connect · Method: ${baseUrl}/method
+Privacy notice: ${baseUrl}/privacy · Terms of use: ${baseUrl}/terms
 Contact: ${CONTACT}
 
 ## How to connect
