@@ -1,0 +1,21 @@
+URL: https://api.beta.ons.gov.uk/v1/search?q=price%20level%20distributions%20microdata&limit=10
+Fetched: 2026-10-14T15:50:06Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2481
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:50:06 GMT
+content-type: application/json;charset=utf-8
+allow: DELETE, GET, HEAD, POST, PUT, OPTIONS, PATCH
+strict-transport-security: max-age=31536000; includeSubDomains
+x-xss-protection: 1
+cf-cache-status: DYNAMIC
+set-cookie: __cf_bm=LhB3FWGaPhg5Rxbax7Xh61PirwEIwhhmBxOPGma1AG8-1791993005.9415748-1.0.1.1-mk.l1L3AfzqHCYdNBVYZFjpv6YbH9AwIeASC5RJvnk4e2PhJ_UuJMyKd8XFls2iiFca.n0ORh00S7MIxzSFbp1hKHep03AhiSwbh3D04d_ybd8f0R87Xb8OgHB0y1to2; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk; Expires=Wed, 14 Oct 2026 16:20:06 GMT
+set-cookie: _cfuvid=GkgVGK7g0lAd6Ly8yW_TrFtDy22PsGGoRX3j7hzetRE-1791993005.9415748-1.0.1.1-xngQn71syLQi9RoPqFmdKu4SwXjrnhiNXkpJ_tWcfYM; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk
+server: cloudflare
+cf-ray: a4a7bcdf2bd7cb83-LAX
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"count":3,"took":127,"distinct_items_count":3,"topics":[{"type":"1245","label":"","count":3},{"type":"4972","label":"","count":3}],"content_types":[{"type":"static_adhoc","label":"","count":3}],"items":[{"type":"static_adhoc","cdid":"","dataset_id":"","edition":"","keywords":[],"meta_description":"","release_date":"2026-07-26T23:00:00.000Z","summary":"","title":"Consumer prices price level distributions microdata: June 2026","topics":["1245","4972"],"uri":"/economy/inflationandpriceindices/adhocs/3543consumerpricespriceleveldistributionsmicrodatajune2026","highlight":{"title":"Consumer \u003cem class=\"ons-highlight\"\u003eprices\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003eprice\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003elevel\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003edistributions\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003emicrodata\u003c/em\u003e: June 2026"},"canonical_topic":""},{"type":"static_adhoc","cdid":"","dataset_id":"","edition":"","keywords":[],"meta_description":"","release_date":"2026-09-22T23:00:00.000Z","summary":"","title":"Consumer Prices Price Level Distributions Microdata: August 2026","topics":["4972","1245"],"uri":"/economy/inflationandpriceindices/adhocs/3607consumerpricespriceleveldistributionsmicrodataaugust2026","highlight":{"title":"Consumer \u003cem class=\"ons-highlight\"\u003ePrices\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003ePrice\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003eLevel\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003eDistributions\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003eMicrodata\u003c/em\u003e: August 2026"},"canonical_topic":""},{"type":"static_adhoc","cdid":"","dataset_id":"","edition":"","keywords":[],"meta_description":"","release_date":"2026-08-19T23:00:00.000Z","summary":"","title":"Consumer prices price level distributions microdata: July 2026","topics":["4972","1245"],"uri":"/economy/inflationandpriceindices/adhocs/3585consumerpricespriceleveldistributionsmicrodatajuly2026","highlight":{"title":"Consumer \u003cem class=\"ons-highlight\"\u003eprices\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003eprice\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003elevel\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003edistributions\u003c/em\u003e \u003cem class=\"ons-highlight\"\u003emicrodata\u003c/em\u003e: July 2026"},"canonical_topic":""}],"additional_suggestions":["price","level","distributions","microdata"]}
