@@ -1,0 +1,57 @@
+URL: https://data.ct.gov/resource/5mzw-sjtu.json?$select=nonusecode%2Ccount(*)%20as%20n&$where=daterecorded%20%3E%20'2024-10-01T00%3A00%3A00'&$group=nonusecode&$order=n%20DESC&$limit=80
+Fetched: 2026-10-14T14:15:25Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1393
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:25 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Z29sZi4xNzM1NF83XzIxOHc2R3VGVFlmOTlleUctak9wQ0lqQlBzN01Scw---gziphA_46nr4uZJivHAmmppV-Wg98d--gzip--gzip"
+X-SODA2-Fields: ["nonusecode","n"]
+X-SODA2-Types: ["text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 3d45acdb057204e6159a881bfe99a07a
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"n":"35579"}
+,{"nonusecode":"25 - Other","n":"3760"}
+,{"nonusecode":"07 - Change in Property","n":"2834"}
+,{"nonusecode":"08 - Part Interest","n":"1020"}
+,{"nonusecode":"14 - Foreclosure","n":"786"}
+,{"nonusecode":"01 - Family","n":"687"}
+,{"nonusecode":"28 - Use Assessment","n":"345"}
+,{"nonusecode":"24 - Plottage","n":"263"}
+,{"nonusecode":"10 - A Will","n":"256"}
+,{"nonusecode":"06 - Portion of Property","n":"197"}
+,{"nonusecode":"26 - Rehabilitation Deferred","n":"151"}
+,{"nonusecode":"11 - Court Order","n":"148"}
+,{"nonusecode":"17 - Two Towns","n":"142"}
+,{"nonusecode":"03 - Inter Corporation","n":"130"}
+,{"nonusecode":"16 - Charitable Group","n":"119"}
+,{"nonusecode":"15 - Government Agency","n":"86"}
+,{"nonusecode":"09 - Tax","n":"80"}
+,{"nonusecode":"18 - In Lieu Of Foreclosure","n":"64"}
+,{"nonusecode":"12 - Non Buildable Lot","n":"53"}
+,{"nonusecode":"04 - Correcting Deed","n":"40"}
+,{"nonusecode":"22 - Money and Personal Property","n":"38"}
+,{"nonusecode":"02 - Love and Affection","n":"25"}
+,{"nonusecode":"19 - Easement","n":"21"}
+,{"nonusecode":"13 - Bankruptcy","n":"9"}
+,{"nonusecode":"30 - Auction","n":"9"}
+,{"nonusecode":"27 - CRUMBLING FOUNDATION ASSESSMENT REDUCTION","n":"8"}
+,{"nonusecode":"21 - Personal Property Exchange","n":"8"}
+,{"nonusecode":"05 - Deed Date","n":"2"}
+,{"nonusecode":"23 - Zoning","n":"2"}
+,{"nonusecode":"20 - Cemetery","n":"1"}]
