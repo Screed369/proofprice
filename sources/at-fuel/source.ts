@@ -20,7 +20,7 @@ export const INFO: SourceInfo = {
   freshness: "Live (stations must report changes to E-Control by law); cheapest stations per region only",
   licence:
     "No reuse licence or terms of use are published for this service: its documentation page (https://api.e-control.at/sprit/1.0/doc/index.html) is a bare Swagger interface with no terms, and it needs no key. " +
-    "It is the open interface of E-Control's statutory fuel price database (Preistransparenzgesetz, § 1a). Reuse terms have not been confirmed with E-Control.",
+    "It is the open interface of E-Control's statutory fuel price database (Preistransparenzgesetz, § 1a). E-Control's only terms page for the database (\"Nutzungsbedingungen für die Preistransparenzdatenbank der E-Control für CNG-Tankstellen\", https://www.e-control.at/nutzungsbedingungen-spritpreisrechner-cng) was unreadable when we checked, so reuse terms have not been confirmed with E-Control.",
   licence_url: "https://api.e-control.at/sprit/1.0/doc/index.html",
   attribution: "Quelle: E-Control – Spritpreisrechner (Preistransparenzdatenbank für Treibstoffe).",
   homepage: "https://www.spritpreisrechner.at/",
