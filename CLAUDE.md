@@ -73,5 +73,9 @@ Branch `src/<id>`, push, preview-deploy, test the example live, merge to `main`.
   Production is public at https://proofprice.com.
 - Production smoke tests (all must return status "ok"): `/api/v1/coverage`, plus every path in the `examples` list
   that `/api/v1/coverage` returns (the first example of each source). Also check `/api/v1/library` for collector errors.
+- **Smoke test (free, GitHub Actions, runs 06:40 and 18:40 UTC daily):** after any production deploy run
+  `gh workflow run smoke.yml -R Screed369/proofprice --ref main`, wait ~4 min, then
+  `git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/smoke.txt`.
+  It asks every coverage example and lists OK / STALE (answered from our library copy) / FAIL, plus collector errors.
 - The library only reaches production when `main` is deployed: the daily Librarian task deploys `main` after the harvest.
 - If production breaks, redeploy the last good deployment and log it in Notion (Run Log + Source Pipeline status "Broken").
