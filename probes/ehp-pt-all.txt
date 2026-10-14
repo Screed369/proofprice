@@ -1,0 +1,30 @@
+URL: https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0018373&lang=EN
+Fetched: 2026-10-14T15:52:47Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 284
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Wed, 14 Oct 2026 15:52:47 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 284
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=iL37rtwNpIIs4u-prbtJ_J-gfE7IVICZWGmUqQVW.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indica.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+[ {
+  "Sucesso" : {
+    "Falso" : [ {
+      "IndicadorCod" : "0018373",
+      "Lingua" : "EN",
+      "DataExtracao" : "2026-10-14T16:52:47.583+01:00",
+      "Msg" : "(PT) O código do indicador não existe. / (EN) The indicator code does not exist.",
+      "Cod" : "1"
+    } ]
+  }
+} ]
