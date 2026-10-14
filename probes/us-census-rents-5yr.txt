@@ -1,0 +1,486 @@
+URL: https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/
+Fetched: 2026-10-14T16:27:23Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=ISO-8859-1 285572
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 16:27:23 GMT
+content-type: text/html;charset=ISO-8859-1
+content-security-policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' census.gov *.census.gov http://www.census.gov assets.adobedtm.com www.googletagmanager.com https://dpm.demdex.net https://cm.everesttech.net https://uscensusbureau.demdex.net dap.digitalgov.gov www.google-analytics.com https://static.cloudflareinsights.com; frame-ancestors 'self';
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+cache-control: public, max-age=14400
+referrer-policy: strict-origin-when-cross-origin
+vary: Accept-Encoding
+x-xss-protection: 1; mode=block
+set-cookie: __cf_bm=nGhVzYNHa7GYlOPZ.fYg9FmGZ8QYSRvcv3efrkV0Qgo-1791995243.0419421-1.0.1.1-JrpHcugvUtFrpJADzv14CaUm32w9IZhJ5lA5uHmik9LLBnLO9SnGB4BJoqUCw2Xw3OKY.XrePudYPUj81tpsInzQbJOeqPnV_ayjWJCwxvHLZNRMjx5cGCx04ZIIQmCm; HttpOnly; SameSite=None; Secure; Path=/; Domain=www2.census.gov; Expires=Wed, 14 Oct 2026 16:57:23 GMT
+strict-transport-security: max-age=31536000
+age: 131414
+last-modified: Tue, 13 Oct 2026 03:57:08 GMT
+expires: Wed, 14 Oct 2026 20:27:23 GMT
+cf-cache-status: HIT
+server: cloudflare
+cf-ray: a4a7f37ce9b0f897-SJC
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text
+=== FIRST 60000 BYTES
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData</title>
+ </head>
+ <body>
+<!-- GOV BANNER AND SIMPLE HEADER LAST UPDATED 11/17/2021 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="/main/uswds/uswds-2.12.0/js/uswds-init.min.js" type="9459c4dab16c337038ec4eee-text/javascript"></script>
+    <script async type="9459c4dab16c337038ec4eee-text/javascript" id="_fed_an_ua_tag" src="/main/javascript/dap/Universal-Federated-Analytics-Min.js?agency=DOC"></script>
+   <!-- <link rel="stylesheet" href="https://www.census.gov/main/uswds/uswds-2.12.0/css/uswds.min.css" /> -->
+  <!--  <link rel="stylesheet" href="https://www.census.gov/main/.in/css/all_header_styles.css" /> -->
+  <link rel="stylesheet" href="/main/css/all_header_styles.css" />
+   
+   
+  </head>
+  <body>
+    <script src="/main/uswds/uswds-2.12.0/js/uswds.min.js" type="9459c4dab16c337038ec4eee-text/javascript"></script>
+    <section class="usa-banner" aria-label="Official government website">
+        <div class="usa-accordion">
+          <header class="usa-banner__header">
+            <div class="usa-banner__inner">
+              <div class="grid-col-auto">
+                <img
+                  class="usa-banner__header-flag"
+                  src="/main/uswds/uswds-2.12.0/img/us_flag_small.png"
+                  alt="U.S. flag"
+                />
+              </div>
+              <div class="grid-col-fill tablet:grid-col-auto">
+                <p class="usa-banner__header-text">
+                  An official website of the United States government
+                </p>
+                <!-- <p class="usa-banner__header-action" aria-hidden="true">
+                  Here's how you know
+                </p>
+              </div>
+              <button
+                class="usa-accordion__button usa-banner__button"
+                aria-expanded="false"
+                aria-controls="gov-banner-default"
+              >
+                <span class="usa-banner__button-text">Here's how you know</span>
+              </button>
+            </div>
+          </header>
+          <div class="usa-banner__content usa-accordion__content" id="gov-banner-default">
+            <div class="grid-row grid-gap-lg">
+              <div class="usa-banner__guidance tablet:grid-col-6">
+                <img
+                  class="usa-banner__icon usa-media-block__img"
+                  src="https://www.census.gov/main/uswds/uswds-2.12.0/img/icon-dot-gov.svg"
+                  role="img"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <div class="usa-media-block__body">
+                  <p>
+                    <strong> Official websites use .gov </strong>
+                    <br />
+                    A <strong>.gov</strong> website belongs to an official government
+                    organization in the United States.
+                  </p>
+                </div>
+              </div>
+              <div class="usa-banner__guidance tablet:grid-col-6">
+                <img
+                  class="usa-banner__icon usa-media-block__img"
+                  src="https://www.census.gov/main/uswds/uswds-2.12.0/img/icon-https.svg"
+                  role="img"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <div class="usa-media-block__body">
+                  <p>
+                    <strong> Secure .gov websites use HTTPS </strong>
+                    <br />
+                    A <strong>lock</strong> (
+                    <span class="icon-lock"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="52"
+                        height="64"
+                        viewBox="0 0 52 64"
+                        class="usa-banner__lock-image"
+                        role="img"
+                        aria-labelledby="banner-lock-title-default banner-lock-description-default"
+                        focusable="false"
+                      >
+                        <title id="banner-lock-title-default">Lock</title>
+                        <desc id="banner-lock-description-default">A locked padlock</desc>
+                        <path
+                          fill="#000000"
+                          fill-rule="evenodd"
+                          d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"/>
+                        </svg></span>
+                    ) or <strong>https://</strong> means you’ve safely connected to
+                    the .gov website. Share sensitive information only on official,
+                    secure websites.
+                  </p> -->
+                </div>
+              </div>
+            </div>
+         <!-- </div>
+        </div>-->
+      </section>
+
+
+<!-- Adding original census.gov css -->
+<!-- 
+<link rel="stylesheet" href="https://www.census.gov/main/css/_new/bootstrap.css" class="cb-main-support global-file">
+<link rel="stylesheet" href="https://www.census.gov/main/css/_new/base.css" class="cb-main-support global-file">
+<link rel="stylesheet" href="https://www.census.gov/main/css/_new/extra.css" class="cb-main-support global-file">
+<link rel="stylesheet" href="https://www.census.gov/main/css/_new/typeahead.css" class="cb-main-support global-file">
+<link rel="stylesheet" href="https://www.census.gov/main/css/_new/header.css" class="cb-main-support global-file">
+<link rel="stylesheet" href="https://www.census.gov/main/css/_new/search.css" class="cb-main-support global-file">
+ -->
+<!--
+<style id="antiClickjack">
+    body {
+        display: none !important
+    }
+</style>
+-->
+<!--
+<script type="text/javascript" src="/main/javascript/clickjack.js"></script>
+-->
+<script src="/main/responsive-header/jquery/jquery.js" class="cb-main-support global-file" type="9459c4dab16c337038ec4eee-text/javascript"></script>
+<!-- <script src="https://www.census.gov/main/javascript/jquery-ui-1.13.2/jquery-ui.js" class="cb-main-support global-file"></script> -->
+
+<!-- Check for jquery conflict -->
+<script type="9459c4dab16c337038ec4eee-text/javascript">
+
+	$.ajax({
+		type : 'get',
+		url : '/main/app-config/header/adobe-launch.txt',	
+		dataType: 'text',            	
+		success : function(data){		 		
+	                var adobeLaunchScript = document.createElement("script");
+	                adobeLaunchScript.setAttribute("src",data);
+	                document.head.appendChild(adobeLaunchScript);
+	            },
+	    error : function(xhr, errorText, errorMessage){
+	                console.log('adobe-launch URL recognition failed: ' + errorText);
+	            }
+	});
+
+    $acn = jQuery.noConflict();
+    if (typeof jQuery === 'undefined' || typeof $ === 'undefined') {
+        jQuery = $acn;
+        $ = $acn;
+    }
+    $(function () {
+        $('.cb-header-skip-nav').click(function () {
+            $('#cb-after-header-anchor').focus();
+        });
+    });
+</script>
+
+<script src="/main/responsive-header/bootstrap-custom/js/bootstrap.js" class="cb-main-support global-file" type="9459c4dab16c337038ec4eee-text/javascript"></script>
+<!-- <script src="https://www.census.gov/main/responsive-header/js/typeahead.js" class="cb-main-support global-file"></script> -->
+
+
+<style type="text/css">
+    header.hdr-primary,
+    header.hdr-primary>nav {
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 64px !important;
+        background-color: #ffffff !important;
+       /* border-color: #112e51 !important;*/
+    }
+
+    header.hdr-primary>nav>div {
+        box-sizing: border-box !important;
+        height: 36.62px !important;
+        font-size: 20px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.02em !important;
+        line-height: 30px !important;
+        white-space: nowrap !important;
+        vertical-align: baseline !important;
+        padding: 0 0 0 16px !important;
+        margin: 0 !important;
+        min-width: 150px !important;
+    }
+
+    header.hdr-primary>nav>div>a,
+    header.hdr-primary>nav>div>a>img {
+        padding: 0 !important;
+        margin: 0 !important;
+        border-style: none !important;
+        background: transparent !important;
+        text-decoration: none !important;
+    }
+
+    header.hdr-primary>nav>div>a {
+        box-sizing: border-box !important;
+        cursor: pointer !important;
+        text-decoration: none !important;
+    }
+
+    header.hdr-primary>nav>div>a>img {
+        width: 86px !important;
+        height: 33.62px !important;
+        margin-left: 15px !important;
+    }
+    hr.blue-line {
+   /* border-top-width: 2px;*/
+   /* border-color: #d0dce1;*/
+    margin: 0px;
+    border-bottom: #d0dce1 1px solid;
+    
+    }
+    
+</style>
+<button class="cb-header-skip-nav sr-only sr-only-focusable">Skip to main content</button>
+<header class="hdr-primary">
+    <nav>
+        <!--  <div><a href="https://www.census.gov" id="census-home-link"><img src="https://data.census.gov/cedsci/img/census-logo-white.25c8cb29.svg" alt="United States Census Bureau" title="U.S. Census Bureau"></a></div> 
+          <div><a href="https://www.census.gov" id="census-home-link"><img src="https://www.census.gov/main/.in/USCENSUS_IDENTITY_SOLO_White_2in_TM.svg" alt="United States Census Bureau" title="U.S. Census Bureau"></a></div>
+    -->
+        <div><a href="https://www.census.gov" id="census-home-link"><img
+                    src="/main/img/USCENSUS_IDENTITY_SOLO_BLACK_1.5in_R_no_padding.svg"
+                    alt="United States Census Bureau" title="U.S. Census Bureau"></a></div>
+    </nav>
+</header>
+<hr class="blue-line">
+<a class="sr-only" tabindex="-1" id="cb-after-header-anchor">end of header</a>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9459c4dab16c337038ec4eee-|49" defer></script></body>
+
+</html>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=D">Name</a></th><th><a href="?C=M;O=A">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th><th><a href="?C=D;O=A">Description</a></th></tr>
+   <tr><th colspan="5"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/programs-surveys/acs/summary_file/2024/table-based-SF/data/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="5YRData.zip">5YRData.zip</a></td><td align="right">2026-01-29 07:30  </td><td align="right"> 12G</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001.dat">acsdt5y2024-b01001.dat</a></td><td align="right">2026-01-29 07:30  </td><td align="right">191M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001a.dat">acsdt5y2024-b01001a.dat</a></td><td align="right">2026-01-29 07:30  </td><td align="right"> 64M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001b.dat">acsdt5y2024-b01001b.dat</a></td><td align="right">2026-01-29 07:30  </td><td align="right"> 55M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001c.dat">acsdt5y2024-b01001c.dat</a></td><td align="right">2026-01-29 07:30  </td><td align="right"> 51M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001d.dat">acsdt5y2024-b01001d.dat</a></td><td align="right">2026-01-29 07:30  </td><td align="right"> 53M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001e.dat">acsdt5y2024-b01001e.dat</a></td><td align="right">2026-01-29 07:30  </td><td align="right"> 50M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001f.dat">acsdt5y2024-b01001f.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 54M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001g.dat">acsdt5y2024-b01001g.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 56M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001h.dat">acsdt5y2024-b01001h.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 63M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01001i.dat">acsdt5y2024-b01001i.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 57M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002.dat">acsdt5y2024-b01002.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 25M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002a.dat">acsdt5y2024-b01002a.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 26M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002b.dat">acsdt5y2024-b01002b.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 35M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002c.dat">acsdt5y2024-b01002c.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 41M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002d.dat">acsdt5y2024-b01002d.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 37M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002e.dat">acsdt5y2024-b01002e.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 44M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002f.dat">acsdt5y2024-b01002f.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 36M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002g.dat">acsdt5y2024-b01002g.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 30M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002h.dat">acsdt5y2024-b01002h.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 27M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01002i.dat">acsdt5y2024-b01002i.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 32M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b01003.dat">acsdt5y2024-b01003.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 17M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02001.dat">acsdt5y2024-b02001.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 52M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02008.dat">acsdt5y2024-b02008.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02009.dat">acsdt5y2024-b02009.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 14M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02010.dat">acsdt5y2024-b02010.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 14M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02011.dat">acsdt5y2024-b02011.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 14M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02012.dat">acsdt5y2024-b02012.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 13M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02013.dat">acsdt5y2024-b02013.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 14M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02015.dat">acsdt5y2024-b02015.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 57M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02016.dat">acsdt5y2024-b02016.dat</a></td><td align="right">2026-01-29 07:31  </td><td align="right"> 26M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02018.dat">acsdt5y2024-b02018.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 56M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02019.dat">acsdt5y2024-b02019.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 24M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02020.dat">acsdt5y2024-b02020.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 65M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02021.dat">acsdt5y2024-b02021.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 65M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02022.dat">acsdt5y2024-b02022.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 97M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02023.dat">acsdt5y2024-b02023.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 39M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02024.dat">acsdt5y2024-b02024.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 99M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b02025.dat">acsdt5y2024-b02025.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 38M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b03001.dat">acsdt5y2024-b03001.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 56M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b03002.dat">acsdt5y2024-b03002.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 79M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b03003.dat">acsdt5y2024-b03003.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 24M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b04004.dat">acsdt5y2024-b04004.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right">169M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b04005.dat">acsdt5y2024-b04005.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right">170M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b04006.dat">acsdt5y2024-b04006.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right">176M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b04007.dat">acsdt5y2024-b04007.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 22M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05001.dat">acsdt5y2024-b05001.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right"> 17M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05001pr.dat">acsdt5y2024-b05001pr.dat</a></td><td align="right">2026-01-29 07:32  </td><td align="right">230K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05002.dat">acsdt5y2024-b05002.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 55M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003.dat">acsdt5y2024-b05003.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 51M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003a.dat">acsdt5y2024-b05003a.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 49M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003b.dat">acsdt5y2024-b05003b.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 43M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003c.dat">acsdt5y2024-b05003c.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 40M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003d.dat">acsdt5y2024-b05003d.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 42M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003e.dat">acsdt5y2024-b05003e.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 39M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003f.dat">acsdt5y2024-b05003f.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 43M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003g.dat">acsdt5y2024-b05003g.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 45M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003h.dat">acsdt5y2024-b05003h.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 48M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05003i.dat">acsdt5y2024-b05003i.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 46M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05004.dat">acsdt5y2024-b05004.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 59M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05005.dat">acsdt5y2024-b05005.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right"> 41M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05005pr.dat">acsdt5y2024-b05005pr.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right">525K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05006.dat">acsdt5y2024-b05006.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right">267M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05006pr.dat">acsdt5y2024-b05006pr.dat</a></td><td align="right">2026-01-29 07:33  </td><td align="right">948K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05007.dat">acsdt5y2024-b05007.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">172M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05008.dat">acsdt5y2024-b05008.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">115M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05009.dat">acsdt5y2024-b05009.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 70M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05010.dat">acsdt5y2024-b05010.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 51M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05011.dat">acsdt5y2024-b05011.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 23M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05012.dat">acsdt5y2024-b05012.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 12M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05012pr.dat">acsdt5y2024-b05012pr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">163K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05013.dat">acsdt5y2024-b05013.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 67M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05014.dat">acsdt5y2024-b05014.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 37M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b05015.dat">acsdt5y2024-b05015.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 55M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06001.dat">acsdt5y2024-b06001.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">116M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06001pr.dat">acsdt5y2024-b06001pr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">1.4M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06002.dat">acsdt5y2024-b06002.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 22M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06002pr.dat">acsdt5y2024-b06002pr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">321K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06003.dat">acsdt5y2024-b06003.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 37M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06003pr.dat">acsdt5y2024-b06003pr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">471K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004a.dat">acsdt5y2024-b06004a.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 16M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004apr.dat">acsdt5y2024-b06004apr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">193K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004b.dat">acsdt5y2024-b06004b.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 14M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004bpr.dat">acsdt5y2024-b06004bpr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">180K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004c.dat">acsdt5y2024-b06004c.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 13M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004cpr.dat">acsdt5y2024-b06004cpr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">165K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004d.dat">acsdt5y2024-b06004d.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 13M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004dpr.dat">acsdt5y2024-b06004dpr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">165K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004e.dat">acsdt5y2024-b06004e.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 13M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004epr.dat">acsdt5y2024-b06004epr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">162K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004f.dat">acsdt5y2024-b06004f.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right"> 14M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004fpr.dat">acsdt5y2024-b06004fpr.dat</a></td><td align="right">2026-01-29 07:34  </td><td align="right">194K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004g.dat">acsdt5y2024-b06004g.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004gpr.dat">acsdt5y2024-b06004gpr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">195K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004h.dat">acsdt5y2024-b06004h.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right"> 16M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004hpr.dat">acsdt5y2024-b06004hpr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">169K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004i.dat">acsdt5y2024-b06004i.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06004ipr.dat">acsdt5y2024-b06004ipr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">205K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06007.dat">acsdt5y2024-b06007.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right"> 77M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06007pr.dat">acsdt5y2024-b06007pr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">1.0M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06008.dat">acsdt5y2024-b06008.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right"> 62M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06008pr.dat">acsdt5y2024-b06008pr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">792K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06009.dat">acsdt5y2024-b06009.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right"> 63M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06009pr.dat">acsdt5y2024-b06009pr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">795K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06010.dat">acsdt5y2024-b06010.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">109M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06010pr.dat">acsdt5y2024-b06010pr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">1.3M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06011.dat">acsdt5y2024-b06011.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right"> 25M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06011pr.dat">acsdt5y2024-b06011pr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">360K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06012.dat">acsdt5y2024-b06012.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right"> 46M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b06012pr.dat">acsdt5y2024-b06012pr.dat</a></td><td align="right">2026-01-29 07:35  </td><td align="right">580K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07001.dat">acsdt5y2024-b07001.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">169M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07001pr.dat">acsdt5y2024-b07001pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">2.1M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07002.dat">acsdt5y2024-b07002.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 27M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07002pr.dat">acsdt5y2024-b07002pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">393K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07003.dat">acsdt5y2024-b07003.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 41M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07003pr.dat">acsdt5y2024-b07003pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">520K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004a.dat">acsdt5y2024-b07004a.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 17M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004apr.dat">acsdt5y2024-b07004apr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">211K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004b.dat">acsdt5y2024-b07004b.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004bpr.dat">acsdt5y2024-b07004bpr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">198K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004c.dat">acsdt5y2024-b07004c.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 14M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004cpr.dat">acsdt5y2024-b07004cpr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">183K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004d.dat">acsdt5y2024-b07004d.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004dpr.dat">acsdt5y2024-b07004dpr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">183K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004e.dat">acsdt5y2024-b07004e.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 14M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004epr.dat">acsdt5y2024-b07004epr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">180K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004f.dat">acsdt5y2024-b07004f.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004fpr.dat">acsdt5y2024-b07004fpr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">212K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004g.dat">acsdt5y2024-b07004g.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 16M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004gpr.dat">acsdt5y2024-b07004gpr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">213K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004h.dat">acsdt5y2024-b07004h.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 17M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004hpr.dat">acsdt5y2024-b07004hpr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">187K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004i.dat">acsdt5y2024-b07004i.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 16M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07004ipr.dat">acsdt5y2024-b07004ipr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">225K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07007.dat">acsdt5y2024-b07007.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 60M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07007pr.dat">acsdt5y2024-b07007pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">737K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07008.dat">acsdt5y2024-b07008.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 70M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07008pr.dat">acsdt5y2024-b07008pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">901K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07009.dat">acsdt5y2024-b07009.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 70M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07009pr.dat">acsdt5y2024-b07009pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">901K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07010.dat">acsdt5y2024-b07010.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">123M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07010pr.dat">acsdt5y2024-b07010pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">1.5M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07011.dat">acsdt5y2024-b07011.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 32M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07011pr.dat">acsdt5y2024-b07011pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">438K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07012.dat">acsdt5y2024-b07012.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right"> 51M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07012pr.dat">acsdt5y2024-b07012pr.dat</a></td><td align="right">2026-01-29 07:36  </td><td align="right">656K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07013.dat">acsdt5y2024-b07013.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 41M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07013pr.dat">acsdt5y2024-b07013pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">520K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07101.dat">acsdt5y2024-b07101.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">2.2K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07201.dat">acsdt5y2024-b07201.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 54M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07201pr.dat">acsdt5y2024-b07201pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">894K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07202.dat">acsdt5y2024-b07202.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 48M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07202pr.dat">acsdt5y2024-b07202pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">469K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07203.dat">acsdt5y2024-b07203.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 39M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07203pr.dat">acsdt5y2024-b07203pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">373K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07204.dat">acsdt5y2024-b07204.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 40M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07204pr.dat">acsdt5y2024-b07204pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">454K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07401.dat">acsdt5y2024-b07401.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 21M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07401pr.dat">acsdt5y2024-b07401pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">156K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07402.dat">acsdt5y2024-b07402.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">3.1M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07402pr.dat">acsdt5y2024-b07402pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 22K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07403.dat">acsdt5y2024-b07403.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">5.1M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07403pr.dat">acsdt5y2024-b07403pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 38K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404a.dat">acsdt5y2024-b07404a.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">2.1M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404apr.dat">acsdt5y2024-b07404apr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 10K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404b.dat">acsdt5y2024-b07404b.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">1.3M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404bpr.dat">acsdt5y2024-b07404bpr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">7.2K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404c.dat">acsdt5y2024-b07404c.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">1.2M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404cpr.dat">acsdt5y2024-b07404cpr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 11K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404d.dat">acsdt5y2024-b07404d.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">1.2M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404dpr.dat">acsdt5y2024-b07404dpr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 12K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404e.dat">acsdt5y2024-b07404e.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">1.7M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404epr.dat">acsdt5y2024-b07404epr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 15K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404f.dat">acsdt5y2024-b07404f.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">1.1M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404fpr.dat">acsdt5y2024-b07404fpr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 11K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404g.dat">acsdt5y2024-b07404g.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">882K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404gpr.dat">acsdt5y2024-b07404gpr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 12K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404h.dat">acsdt5y2024-b07404h.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">2.1M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404hpr.dat">acsdt5y2024-b07404hpr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">9.2K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404i.dat">acsdt5y2024-b07404i.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">1.0M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07404ipr.dat">acsdt5y2024-b07404ipr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 16K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07407.dat">acsdt5y2024-b07407.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">7.3M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07407pr.dat">acsdt5y2024-b07407pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 52K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07408.dat">acsdt5y2024-b07408.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">8.4M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07408pr.dat">acsdt5y2024-b07408pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 63K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07409.dat">acsdt5y2024-b07409.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">8.2M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07409pr.dat">acsdt5y2024-b07409pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 60K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07410.dat">acsdt5y2024-b07410.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07410pr.dat">acsdt5y2024-b07410pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">108K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07411.dat">acsdt5y2024-b07411.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">3.5M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07411pr.dat">acsdt5y2024-b07411pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 21K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07412.dat">acsdt5y2024-b07412.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">6.2M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07412pr.dat">acsdt5y2024-b07412pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 48K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07413.dat">acsdt5y2024-b07413.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right">5.1M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b07413pr.dat">acsdt5y2024-b07413pr.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 38K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08006.dat">acsdt5y2024-b08006.dat</a></td><td align="right">2026-03-30 15:30  </td><td align="right"> 94M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08007.dat">acsdt5y2024-b08007.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 75M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08008.dat">acsdt5y2024-b08008.dat</a></td><td align="right">2026-01-29 07:37  </td><td align="right"> 74M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08011.dat">acsdt5y2024-b08011.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 88M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08012.dat">acsdt5y2024-b08012.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 78M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08013.dat">acsdt5y2024-b08013.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08014.dat">acsdt5y2024-b08014.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 47M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08015.dat">acsdt5y2024-b08015.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 12M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08016.dat">acsdt5y2024-b08016.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 78M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08017.dat">acsdt5y2024-b08017.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 72M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08018.dat">acsdt5y2024-b08018.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 32M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08101.dat">acsdt5y2024-b08101.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right">102M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08103.dat">acsdt5y2024-b08103.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 33M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105a.dat">acsdt5y2024-b08105a.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 19M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105b.dat">acsdt5y2024-b08105b.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 17M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105c.dat">acsdt5y2024-b08105c.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 16M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105d.dat">acsdt5y2024-b08105d.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 16M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105e.dat">acsdt5y2024-b08105e.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 15M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105f.dat">acsdt5y2024-b08105f.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 17M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105g.dat">acsdt5y2024-b08105g.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 17M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105h.dat">acsdt5y2024-b08105h.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 19M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08105i.dat">acsdt5y2024-b08105i.dat</a></td><td align="right">2026-01-29 07:38  </td><td align="right"> 17M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="acsdt5y2024-b08111.dat">acsdt5y2024-
