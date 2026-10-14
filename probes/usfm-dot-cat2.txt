@@ -1,0 +1,801 @@
+URL: https://data.transportation.gov/api/catalog/v1?q=airfare&limit=50
+Fetched: 2026-10-14T15:47:29Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1208010
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:47:28 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 3749d1e6de4918faf809be5d93713f3c
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Consumer Airfare Report: Table 1a - All U.S. Airport Pair Markets",
+            "id" : "tfrh-tu9e",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Available only on the web, provides information for airport pair markets rather than city pair markets. This table only lists airport markets where the origin or destination airport is an airport that has other commercial airports in the same city. Midway Airport (MDW) and O'Hare (ORD) are examples of this.  All records are aggregated as directionless markets.  The combination of Airport_1 and Airport_2 define the airport pair market.  All traffic traveling in both directions is added together.\n\nhttps://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "attribution" : "Department of Transportation Office of the Assistant Secretary for Aviation and International Affairs",
+            "attribution_link" : "https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "contact_email" : "Randall.Keizer@dot.gov",
+            "type" : "dataset",
+            "updatedAt" : "2026-09-03T17:49:47.000Z",
+            "createdAt" : "2017-04-03T18:47:04.000Z",
+            "metadata_updated_at" : "2026-09-03T17:49:45.000Z",
+            "data_updated_at" : "2026-09-03T17:49:47.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 2,
+                "page_views_last_month" : 34,
+                "page_views_total" : 81034,
+                "page_views_last_week_log" : 1.5849625007211563,
+                "page_views_last_month_log" : 5.129283016944966,
+                "page_views_total_log" : 16.306257539649238
+              },
+            "columns_name" :
+              [
+                "carrier_low",
+                "Geocoded_City1",
+                "Geocoded_City1 (zip)",
+                "Geocoded_City2 (address)",
+                "Geocoded_City2 (city)",
+                "tbl1apk",
+                "Year",
+                "Geocoded_City1 (city)",
+                "tbl",
+                "Geocoded_City2 (zip)",
+                "Geocoded_City2",
+                "Geocoded_City1 (state)",
+                "Geocoded_City1 (address)",
+                "fare_low",
+                "lf_ms",
+                "airport_2",
+                "quarter",
+                "Geocoded_City2 (state)",
+                "airportid_2",
+                "airport_1",
+                "airportid_1",
+                "nsmiles",
+                "passengers",
+                "fare",
+                "carrier_lg",
+                "city2",
+                "city1",
+                "citymarketid_2",
+                "citymarketid_1",
+                "large_ms",
+                "fare_lg"
+              ],
+            "columns_field_name" :
+              [
+                "carrier_low",
+                "location_1",
+                "location_1_zip",
+                "location_2_address",
+                "location_2_city",
+                "tbl1apk",
+                "year",
+                "location_1_city",
+                "tbl",
+                "location_2_zip",
+                "location_2",
+                "location_1_state",
+                "location_1_address",
+                "fare_low",
+                "lf_ms",
+                "airport_2",
+                "quarter",
+                "location_2_state",
+                "airportid_2",
+                "airport_1",
+                "airportid_1",
+                "nsmiles",
+                "passengers",
+                "fare",
+                "carrier_lg",
+                "city2",
+                "city1",
+                "citymarketid_2",
+                "citymarketid_1",
+                "large_ms",
+                "fare_lg"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Point",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Point",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Text",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "Carrier with the lowest fare",
+                "Geocoded - City1 is used to consolidate airports serving the same city market with Latitude and Longitude",
+                "",
+                "",
+                "",
+                "Primary Key for Table 1a,  Unique ID",
+                "Year",
+                "",
+                "Name of data table",
+                "",
+                "Geocoded - City2 is used to consolidate airports serving the same city market with Latitude and Longitude",
+                "",
+                "",
+                "Average fare for the lowest carrier",
+                "Market share for the lowest carrier",
+                "Airport code",
+                "Quarter",
+                "",
+                "Airport ID is an identification number assigned by US DOT\nto identify a airport.",
+                "Airport code",
+                "Airport ID is an identification number assigned by US DOT\nto identify a airport.",
+                "Non-Stop market miles (using radian measure)",
+                "Passenger per day",
+                "Overall average fare",
+                "Carrier with the largest market share",
+                "City2 is used to consolidate airports serving the same city market",
+                "City1 is used to consolidate airports serving the same city market",
+                "City market ID is an identification number assigned by US DOT\nto identify a city market.  Use this field to consolidate airports serving the same city market",
+                "City market ID is an identification number assigned by US DOT\nto identify a city market.  Use this field to consolidate airports serving the same city market",
+                "Market share for the carrier with the largest market share",
+                "Average fare for the carrier with the largest market share"
+              ],
+            "columns_format" :
+              [
+                { "displayStyle" : "plain", "align" : "center" },
+                { "view" : "address_coords", "align" : "left" },
+                {},
+                {},
+                {},
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center",
+                  "mask" : "####"
+                },
+                {},
+                { "displayStyle" : "plain", "align" : "center" },
+                {},
+                { "view" : "address_coords", "align" : "left" },
+                {},
+                {},
+                {
+                  "precision" : "2",
+                  "align" : "center",
+                  "currencyStyle" : "USD",
+                  "humane" : "false",
+                  "precisionStyle" : "currency"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center",
+                  "mask" : "#####"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center",
+                  "mask" : "#####"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "0",
+                  "align" : "center"
+                },
+                {
+                  "precision" : "2",
+                  "align" : "center",
+                  "currencyStyle" : "USD",
+                  "humane" : "false",
+                  "precisionStyle" : "currency"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                { "displayStyle" : "plain", "align" : "left" },
+                { "displayStyle" : "plain", "align" : "left" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center",
+                  "mask" : "#####"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center",
+                  "mask" : "#####"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {
+                  "precision" : "2",
+                  "align" : "center",
+                  "currencyStyle" : "USD",
+                  "humane" : "false",
+                  "precisionStyle" : "currency"
+                }
+              ],
+            "download_count" : 122107,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2017-10-31T16:39:07.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Aviation",
+            "domain_tags" :
+              [
+                "table 1a",
+                "top 1000",
+                "office of aviation analysis",
+                "fares",
+                "fare levels",
+                "consumer airfare report",
+                "city pair",
+                "aviation policy",
+                "aviation",
+                "airport pair markets",
+                "airfares"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "Randall.Keizer@dot.gov"
+                },
+                {
+                  "key" : "Common-Core_License",
+                  "value" : "http://www.usa.gov/publicdomain/label/1.0/"
+                },
+                { "key" : "Common-Core_Program-Code", "value" : "021:058" },
+                {
+                  "key" : "Common-Core_Public-Access-Level",
+                  "value" : "public"
+                },
+                { "key" : "Common-Core_Is-Quality-Data", "value" : "true" },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "Office of the Secretary of Transportation"
+                },
+                { "key" : "Common-Core_Update-Frequency", "value" : "R/P3M" },
+                { "key" : "Common-Core_Bureau-Code", "value" : "021:04" },
+                {
+                  "key" : "Common-Core_Contact-Name",
+                  "value" : "Randall Keizer"
+                },
+                {
+                  "key" : "Common-Core-3_Contact-Email",
+                  "value" : "Randall.Keizer@dot.gov"
+                },
+                { "key" : "Common-Core-3_Rights", "value" : "public" },
+                { "key" : "Common-Core-3_Program-Code", "value" : "021:058" },
+                {
+                  "key" : "Common-Core-3_Publisher",
+                  "value" : "Office of the Secretary of Transportation"
+                },
+                { "key" : "Common-Core-3_Bureau-Code", "value" : "021:04" },
+                {
+                  "key" : "Common-Core-3_Contact-Name",
+                  "value" : "Randall Keizer"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "datahub.transportation.gov",
+            "license" : "Public Domain U.S. Government"
+          },
+        "permalink" : "https://datahub.transportation.gov/d/tfrh-tu9e",
+        "link" : "https://datahub.transportation.gov/Aviation/Consumer-Airfare-Report-Table-1a-All-U-S-Airport-P/tfrh-tu9e",
+        "owner" :
+          {
+            "id" : "yucm-c89i",
+            "user_type" : "team",
+            "display_name" : "OSTX_X50 Data Team"
+          },
+        "creator" :
+          {
+            "id" : "yucm-c89i",
+            "user_type" : "team",
+            "display_name" : "OSTX_X50 Data Team"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Consumer Airfare Report: Table 2 - Top 1,000 City-Pair Markets",
+            "id" : "wqw2-rjgd",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Data summarized by city, includes the number of city-pair markets in the top 1,000 in either comparison period that involve each city, the number of passengers traveling to and from each city, the average fare, average fare per mile (yield), and average distance traveled.  All records are aggregated as directionless city pair markets.  All traffic traveling in both directions is added together.  https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "attribution" : "Department of Transportation Office of the Assistant Secretary for Aviation and International Affairs",
+            "attribution_link" : "https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "contact_email" : "Randall.Keizer@dot.gov",
+            "type" : "dataset",
+            "updatedAt" : "2026-09-03T17:53:40.000Z",
+            "createdAt" : "2017-04-03T16:20:37.000Z",
+            "metadata_updated_at" : "2026-09-03T17:53:39.000Z",
+            "data_updated_at" : "2026-09-03T17:53:40.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 1,
+                "page_views_last_month" : 18,
+                "page_views_total" : 27218,
+                "page_views_last_week_log" : 1.0,
+                "page_views_last_month_log" : 4.247927513443585,
+                "page_views_total_log" : 14.73232644413044
+              },
+            "columns_name" :
+              [
+                "Year",
+                "US States",
+                "quarter",
+                "tbl",
+                "cur_fare",
+                "ly_fare",
+                "Geocoded_City",
+                "Geocoded_City (address)",
+                "Geocoded_City (city)",
+                "city",
+                "ly_distance",
+                "citymarketid",
+                "markets",
+                "cur_passengers",
+                "cur_yield",
+                "distance",
+                "ly_passengers",
+                "ly_yield",
+                "Geocoded_City (state)",
+                "Geocoded_City (zip)",
+                "tbl2pk"
+              ],
+            "columns_field_name" :
+              [
+                "year",
+                ":@computed_region_28hd_vqqn",
+                "quarter",
+                "tbl",
+                "cur_fare",
+                "ly_fare",
+                "location_1",
+                "location_1_address",
+                "location_1_city",
+                "city",
+                "ly_distance",
+                "citymarketid",
+                "markets",
+                "cur_passengers",
+                "cur_yield",
+                "distance",
+                "ly_passengers",
+                "ly_yield",
+                "location_1_state",
+                "location_1_zip",
+                "unique_id"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Point",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Data Year",
+                "",
+                "Data Quarter",
+                "Name of the data table",
+                "Current year fare",
+                "Last year fare",
+                "Geocoded - City is used to consolidate airports serving the same city market with Latitude and Longitude",
+                "",
+                "",
+                "City is used to consolidate airports serving the same city market",
+                "Last year distance",
+                "City market ID is an identification number assigned by US DOT\nto identify a city market.  Use this field to consolidate airports serving the same city market",
+                "Number of Markert",
+                "Current year passengers",
+                "Current year yield in Cents",
+                "Current year distance",
+                "Last year passengers",
+                "Last year yield in Cents",
+                "",
+                "",
+                "Primary Key for Table 2; Unique Id"
+              ],
+            "columns_format" :
+              [
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center",
+                  "mask" : "####"
+                },
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precision" : "2",
+                  "align" : "center",
+                  "currencyStyle" : "USD",
+                  "humane" : "false",
+                  "precisionStyle" : "currency"
+                },
+                {
+                  "precision" : "2",
+                  "align" : "center",
+                  "currencyStyle" : "USD",
+                  "humane" : "false",
+                  "precisionStyle" : "currency"
+                },
+                { "view" : "address_coords", "align" : "left" },
+                {},
+                {},
+                { "displayStyle" : "plain", "align" : "left" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "1",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center",
+                  "mask" : "#####"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "2",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "1",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "2",
+                  "align" : "center"
+                },
+                {},
+                {},
+                { "displayStyle" : "plain", "align" : "left" }
+              ],
+            "download_count" : 53273,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2017-10-31T18:44:49.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Aviation",
+            "domain_tags" :
+              [
+                "consumer airfare report",
+                "fare levels",
+                "airfares",
+                "aviation policy",
+                "aviation",
+                "city pair",
+                "table 2",
+                "fares",
+                "office of aviation analysis",
+                "city summary"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "Randall.Keizer@dot.gov"
+                },
+                { "key" : "Common-Core_Last-Update", "value" : "4/25/2017" },
+                {
+                  "key" : "Common-Core_License",
+                  "value" : "http://www.usa.gov/publicdomain/label/1.0/"
+                },
+                { "key" : "Common-Core_Program-Code", "value" : "021:058" },
+                {
+                  "key" : "Common-Core_Public-Access-Level",
+                  "value" : "public"
+                },
+                { "key" : "Common-Core_Is-Quality-Data", "value" : "true" },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "Office of the Secretary of Transportation"
+                },
+                { "key" : "Common-Core_Update-Frequency", "value" : "R/P3M" },
+                { "key" : "Common-Core_Bureau-Code", "value" : "021:04" },
+                {
+                  "key" : "Common-Core_Contact-Name",
+                  "value" : "Randall Keizer"
+                },
+                {
+                  "key" : "Common-Core-3_Contact-Email",
+                  "value" : "Randall.Keizer@dot.gov"
+                },
+                { "key" : "Common-Core-3_Rights", "value" : "public" },
+                { "key" : "Common-Core-3_Program-Code", "value" : "021:058" },
+                {
+                  "key" : "Common-Core-3_Publisher",
+                  "value" : "Office of the Secretary of Transportation"
+                },
+                { "key" : "Common-Core-3_Bureau-Code", "value" : "021:04" },
+                {
+                  "key" : "Common-Core-3_Contact-Name",
+                  "value" : "Randall Keizer"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "datahub.transportation.gov",
+            "license" : "Public Domain U.S. Government"
+          },
+        "permalink" : "https://datahub.transportation.gov/d/wqw2-rjgd",
+        "link" : "https://datahub.transportation.gov/Aviation/Consumer-Airfare-Report-Table-2-Top-1-000-City-Pai/wqw2-rjgd",
+        "owner" :
+          {
+            "id" : "yucm-c89i",
+            "user_type" : "team",
+            "display_name" : "OSTX_X50 Data Team"
+          },
+        "creator" :
+          {
+            "id" : "yucm-c89i",
+            "user_type" : "team",
+            "display_name" : "OSTX_X50 Data Team"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Consumer Airfare Report: Table 1 - Top 1,000 Contiguous State City-Pair Markets",
+            "id" : "4f3n-jbg2",
+            "resource_name" : null,
+            "parent_fxf" : [ "yj5y-b2ir" ],
+            "description" : "Table 1 of this report covers the 1,000 largest city-pair markets in the 48 contiguous states. For each of the 1,000 largest city-pair markets, Table 1 lists the number of one-way passenger trips per day, the nonstop distance, the average market fare, and identifies the airlines with the largest market share and the lowest average fare; market share and average fares are provided for both airlines. Average fares are average prices paid by all fare paying passengers. They therefore cover first class fares paid to carriers offering such service but do not cover free tickets, such as those awarded by carriers offering frequent flyer programs.\r\n\r\nhttps://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "attribution" : "Department of Transportation Office of the Assistant Secretary for Aviation and International Affairs",
+            "attribution_link" : "https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "contact_email" : null,
+            "type" : "filter",
+            "updatedAt" : "2026-09-03T17:51:21.000Z",
+            "createdAt" : "2017-04-13T18:10:59.000Z",
+            "metadata_updated_at" : "2025-01-30T04:33:16.000Z",
+            "data_updated_at" : "2026-09-03T17:51:21.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 56,
+                "page_views_last_month" : 129,
+                "page_views_total" : 95316,
+                "page_views_last_week_log" : 5.832890014164742,
+                "page_views_last_month_log" : 7.022367813028454,
+                "page_views_total_log" : 16.54044592451833
+              },
+            "columns_name" :
+              [
+                "quarter",
+                "Geocoded_City2",
+                "Geocoded_City2 (state)",
+                "Geocoded_City2 (address)",
+                "Geocoded_City2 (zip)",
+                "Year",
+                "Geocoded_City2 (city)",
+                "fare_low",
+                "lf_ms",
+                "carrier_low",
+                "passengers",
+                "Geocoded_City1 (city)",
+                "citymarketid_1",
+                "citymarketid_2",
+                "city1",
+                "city2",
+                "nsmiles",
+                "fare",
+                "carrier_lg",
+                "large_ms",
+                "fare_lg",
+                "Geocoded_City1 (zip)",
+                "Geocoded_City1 (state)",
+                "Geocoded_City1 (address)",
+                "Geocoded_City1",
+                "table_1_flag"
+              ],
+            "columns_field_name" :
+              [
+                "quarter",
+                "location_2",
+                "location_2_state",
+                "location_2_address",
+                "location_2_zip",
+                "year",
+                "location_2_city",
+                "fare_low",
+                "lf_ms",
+                "carrier_low",
+                "passengers",
+                "location_1_city",
+                "citymarketid_1",
+                "citymarketid_2",
+                "city1",
+                "city2",
+                "nsmiles",
+                "fare",
+                "carrier_lg",
+                "large_ms",
+                "fare_lg",
+                "location_1_zip",
+                "location_1_state",
+                "location_1_address",
+                "location_1",
+                "table_1_flag"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Point",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Point",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "Quarter",
+                "Geocoded - City2 is used to consolidate airports serving the same city market with Latitude and Longitude",
+                "",
+                "",
+                "",
+                "Year",
+                "",
+                "Average fare for the carrier with the lowest fare",
+                "Market share for the carrier with the lowest fare",
+                "Carrier with the lowest fare",
+                "Passenger per day",
+                "",
+                "City market ID is an identification number assigned by US DOT to identify a city market.  Use this field to consolidate airports serving the same city market",
+                "City market ID is an identification number assigned by US DOT to identify a city market.  Use this field to consolidate airports serving the same city market",
+                "City1 is used to consolidate airports servin
