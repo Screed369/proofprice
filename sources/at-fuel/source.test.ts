@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseAtStations, flattenAtRegions, resolveAtRegion, atNameKey, atAnswer, atDailyRows, atHistoryKey } from "./source";
+import { parseAtStations, dropAtOutliers, flattenAtRegions, resolveAtRegion, atNameKey, atAnswer, atDailyRows, atHistoryKey } from "./source";
 
 // Rows copied from the live E-Control service on 14 Oct 2026 (by-region?code=9&type=BL&fuelType=DIE&includeClosed=true),
 // trimmed to the fields we read (contact details and opening hours dropped).
@@ -50,6 +50,12 @@ test("AT: stations parse; placeholder prices and stations without the fuel are d
   assert.equal(parseAtStations(district, "DIE").length, 1);
   assert.equal(parseAtStations(wien, "SUP").length, 0);
   assert.throws(() => parseAtStations({ error: 1 }, "DIE"));
+});
+
+test("AT: a price far from the rest of its list is dropped as an entry error (seen live: 1.129 beside 2.09)", () => {
+  const odd = [...wien.slice(0, 6), st(99, "Typo Tankstelle", "Weg 1", "9020", "Klagenfurt", 1.129, true)];
+  assert.equal(parseAtStations(odd, "DIE").length, 6);
+  assert.equal(dropAtOutliers(parseAtStations(wien.slice(0, 4), "DIE")).length, 4); // under 5 stations: nothing is judged
 });
 
 test("AT: region resolution by code, Bundesland name, district name and postcode", () => {
