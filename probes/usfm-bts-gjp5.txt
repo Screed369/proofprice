@@ -1,0 +1,32 @@
+URL: https://data.bts.gov/resource/gjp5-nh2u.json?$limit=5
+Fetched: 2026-10-14T15:55:30Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1759
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:55:30 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC40MjcyOF8yXzMxaTV3UE5oUXBwTUxtNTE2eG1oVDMtU1JEUkt3---gzipLfHaMwTvNiM7yyKWK88SJ1SgKuM--gzip--gzip"
+X-SODA2-Fields: ["year","rpcarrier","average_market_fare_real","market_passengers","market_revenue_real","market_passenger_miles_flown","average_market_yield_real","average_market_miles_flown","carrier_name","year_quarter"]
+X-SODA2-Types: ["text","text","number","number","number","number","number","number","text","floating_timestamp"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 20 Aug 2026 17:17:58 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 20 Aug 2026 17:17:58 GMT
+Last-Modified: Thu, 20 Aug 2026 17:17:58 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: e729f58a269280695d4e684b37055a60
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"year":"1993","rpcarrier":"AA","average_market_fare_real":"234","market_passengers":"960529","market_revenue_real":"224532943","market_passenger_miles_flown":"1158155982","average_market_yield_real":"0.193871072756761","average_market_miles_flown":"1205.748063827328","carrier_name":"American Airlines Inc. - AA","year_quarter":"1993-01-01T00:00:00.000"}
+,{"year":"1993","rpcarrier":"AQ","average_market_fare_real":"40","market_passengers":"103997","market_revenue_real":"4151984","market_passenger_miles_flown":"15978007","average_market_yield_real":"0.2598562161100568","average_market_miles_flown":"153.6391145898439","carrier_name":"Aloha Airlines Inc. - AQ","year_quarter":"1993-01-01T00:00:00.000"}
+,{"year":"1993","rpcarrier":"AS","average_market_fare_real":"187","market_passengers":"90455","market_revenue_real":"16935615","market_passenger_miles_flown":"64667754","average_market_yield_real":"0.2618865526085845","average_market_miles_flown":"714.916300923111","carrier_name":"Alaska Airlines Inc. - AS","year_quarter":"1993-01-01T00:00:00.000"}
+,{"year":"1993","rpcarrier":"BF","average_market_fare_real":"151","market_passengers":"17736","market_revenue_real":"2672741","market_passenger_miles_flown":"18278687","average_market_yield_real":"0.1462216990749937","average_market_miles_flown":"1030.598049165539","carrier_name":"French bee - BF","year_quarter":"1993-01-01T00:00:00.000"}
+,{"year":"1993","rpcarrier":"CO","average_market_fare_real":"204","market_passengers":"452603","market_revenue_real":"92365516","market_passenger_miles_flown":"534585629","average_market_yield_real":"0.1727796466447848","average_market_miles_flown":"1181.13584974028","carrier_name":"Continental Air Lines Inc. - CO","year_quarter":"1993-01-01T00:00:00.000"}]
