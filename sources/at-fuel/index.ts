@@ -13,12 +13,12 @@ export default defineSource({
   paramNotes: {
     fuel: "Austria: diesel, petrol95 (Super 95) or methane (CNG) only.",
     postcode: "AT: 4-digit postcode, e.g. '1010'.",
-    area: "AT: Bundesland code 1-9 ('9' = Wien) or a place name ('Wien', 'Tirol', 'Graz', 'Linz'); 3-digit district codes such as '901' also work.",
+    area: "AT: Bundesland code 1-9 ('9' = Wien) or a place name ('Wien', 'Tirol', 'Graz', 'Linz'); 3-digit district codes such as '901' also work. A small district may list fewer than 5 stations and then gives no figure.",
     town: "AT: city or district name, e.g. 'Graz'.",
   },
   examples: [
     { params: { country: "AT", area: "9", fuel: "diesel" } },
-    { params: { country: "AT", town: "Graz", fuel: "petrol95" }, smoke: false },
+    { params: { country: "AT", area: "6", fuel: "petrol95" }, smoke: false },
   ],
   method:
     "Austria: E-Control's Spritpreisrechner returns only the cheapest stations for a region (about 10-15), so the median and range describe the cheap end of the market, not every station.",
