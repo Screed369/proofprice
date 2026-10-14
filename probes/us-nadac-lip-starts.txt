@@ -1,0 +1,36 @@
+URL: https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?conditions%5B0%5D%5Bproperty%5D=ndc_description&conditions%5B0%5D%5Boperator%5D=starts%20with&conditions%5B0%5D%5Bvalue%5D=LIPITOR&conditions%5B1%5D%5Bproperty%5D=as_of_date&conditions%5B1%5D%5Boperator%5D=%3D&conditions%5B1%5D%5Bvalue%5D=2026-10-14&properties%5B0%5D=ndc_description&properties%5B1%5D=ndc&properties%5B2%5D=nadac_per_unit&properties%5B3%5D=effective_date&properties%5B4%5D=pricing_unit&properties%5B5%5D=classification_for_rate_setting&properties%5B6%5D=otc&properties%5B7%5D=as_of_date&sorts%5B0%5D%5Bproperty%5D=ndc_description&sorts%5B0%5D%5Border%5D=asc&sorts%5B1%5D%5Bproperty%5D=ndc&sorts%5B1%5D%5Border%5D=asc&limit=50&offset=0&schema=false&count=true
+Fetched: 2026-10-14T15:56:01Z from GitHub Actions
+Status, type, bytes: 200 application/json 1453
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+x-drupal-dynamic-cache: MISS
+content-language: en
+x-content-type-options: nosniff
+x-generator: Drupal 11 (https://www.drupal.org)
+x-drupal-cache: MISS
+last-modified: Wed, 14 Oct 2026 15:55:58 GMT
+etag: "1791993358-gzip"
+x-request-id: v-bf449208-c7e7-11f1-b77c-ab295fa227f8
+x-ah-environment: prod
+x-age: 0
+expires: Wed, 14 Oct 2026 15:56:01 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Wed, 14 Oct 2026 15:56:01 GMT
+content-length: 1453
+set-cookie: cms_fpid=03c0a443-4c6d-a1f4-cdc4-5322b8223c86; expires=Fri, 13-Oct-2028 15:56:01 GMT; path=/; domain=.medicaid.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.92f92917.1791993358.11524fa4
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+{"results":[{"ndc_description":"LIPITOR 10 MG TABLET","ndc":"58151015577","nadac_per_unit":"13.40831","effective_date":"2026-09-23","pricing_unit":"EA","classification_for_rate_setting":"B","otc":"N","as_of_date":"2026-10-14"},{"ndc_description":"LIPITOR 20 MG TABLET","ndc":"58151015677","nadac_per_unit":"19.07256","effective_date":"2026-09-23","pricing_unit":"EA","classification_for_rate_setting":"B","otc":"N","as_of_date":"2026-10-14"},{"ndc_description":"LIPITOR 40 MG TABLET","ndc":"58151015777","nadac_per_unit":"19.11383","effective_date":"2026-09-23","pricing_unit":"EA","classification_for_rate_setting":"B","otc":"N","as_of_date":"2026-10-14"},{"ndc_description":"LIPITOR 80 MG TABLET","ndc":"58151015877","nadac_per_unit":"19.00394","effective_date":"2026-09-23","pricing_unit":"EA","classification_for_rate_setting":"B","otc":"N","as_of_date":"2026-10-14"}],"count":4,"query":{"conditions":[{"property":"ndc_description","operator":"starts with","value":"LIPITOR"},{"property":"as_of_date","operator":"=","value":"2026-10-14"}],"properties":["ndc_description","ndc","nadac_per_unit","effective_date","pricing_unit","classification_for_rate_setting","otc","as_of_date"],"sorts":[{"property":"ndc_description","order":"asc"},{"property":"ndc","order":"asc"}],"limit":50,"offset":0,"schema":false,"count":true,"resources":[{"id":"409070b1-a2cf-5aea-b8ac-10c025f7113e","alias":"t"}],"results":true,"keys":true,"format":"json","rowIds":false}}
