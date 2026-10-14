@@ -1,0 +1,222 @@
+URL: https://data.transportation.gov/resource/tfrh-tu9e.json?$select=airport_1,city1,count(*)&$group=airport_1,city1&$limit=1000
+Fetched: 2026-10-14T15:54:08Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 12394
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:54:07 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDg1NF81XzM1NmxkWUp6TmFtcXZ6clhCNFZiZ3RlNE9TTXlWSQ---gzihApBtXJYlyi5iCeaMrGJxO22xuu--gzip--gzip"
+X-SODA2-Fields: ["airport_1","city1","count"]
+X-SODA2-Types: ["text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 1b83a065799d184e8cb054f076bc95cb
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+[{"airport_1":"ABE","city1":"Allentown/Bethlehem/Easton, PA","count":"70"}
+,{"airport_1":"ABQ","city1":"Albuquerque, NM","count":"3390"}
+,{"airport_1":"ACK","city1":"Nantucket, MA","count":"111"}
+,{"airport_1":"ACV","city1":"Eureka/Arcata, CA","count":"20"}
+,{"airport_1":"ACY","city1":"Atlantic City, NJ","count":"315"}
+,{"airport_1":"AGS","city1":"Augusta, GA","count":"7"}
+,{"airport_1":"AIY","city1":"Atlantic City, NJ","count":"4"}
+,{"airport_1":"ALB","city1":"Albany, NY","count":"1650"}
+,{"airport_1":"AMA","city1":"Amarillo, TX","count":"437"}
+,{"airport_1":"APA","city1":"Denver, CO","count":"7"}
+,{"airport_1":"ASE","city1":"Aspen, CO","count":"274"}
+,{"airport_1":"ATL","city1":"Atlanta, GA (Metropolitan Area)","count":"4509"}
+,{"airport_1":"ATW","city1":"Appleton, WI","count":"24"}
+,{"airport_1":"AUS","city1":"Austin, TX","count":"3838"}
+,{"airport_1":"AVL","city1":"Asheville, NC","count":"379"}
+,{"airport_1":"AZA","city1":"Phoenix, AZ","count":"257"}
+,{"airport_1":"BDL","city1":"Hartford, CT","count":"2146"}
+,{"airport_1":"BFI","city1":"Seattle, WA","count":"1"}
+,{"airport_1":"BGR","city1":"Bangor, ME","count":"60"}
+,{"airport_1":"BHC","city1":"Bullhead City, AZ","count":"3"}
+,{"airport_1":"BHM","city1":"Birmingham, AL","count":"2930"}
+,{"airport_1":"BIL","city1":"Billings, MT","count":"31"}
+,{"airport_1":"BIS","city1":"Bismarck/Mandan, ND","count":"36"}
+,{"airport_1":"BLI","city1":"Bellingham, WA","count":"263"}
+,{"airport_1":"BLV","city1":"Belleville, IL","count":"1"}
+,{"airport_1":"BMI","city1":"Bloomington/Normal, IL","count":"1"}
+,{"airport_1":"BNA","city1":"Nashville, TN","count":"1823"}
+,{"airport_1":"BOI","city1":"Boise, ID","count":"1281"}
+,{"airport_1":"BOS","city1":"Boston, MA (Metropolitan Area)","count":"8565"}
+,{"airport_1":"BTR","city1":"Baton Rouge, LA","count":"179"}
+,{"airport_1":"BTV","city1":"Burlington, VT","count":"754"}
+,{"airport_1":"BUF","city1":"Buffalo, NY","count":"2909"}
+,{"airport_1":"BUR","city1":"Los Angeles, CA (Metropolitan Area)","count":"5540"}
+,{"airport_1":"BWI","city1":"Washington, DC (Metropolitan Area)","count":"134"}
+,{"airport_1":"BZN","city1":"Bozeman, MT","count":"379"}
+,{"airport_1":"CAE","city1":"Columbia, SC","count":"906"}
+,{"airport_1":"CAK","city1":"Cleveland, OH (Metropolitan Area)","count":"4626"}
+,{"airport_1":"CGX","city1":"Chicago, IL","count":"16"}
+,{"airport_1":"CHA","city1":"Chattanooga, TN","count":"33"}
+,{"airport_1":"CHI","city1":"Chicago, IL","count":"933"}
+,{"airport_1":"CHO","city1":"Charlottesville, VA","count":"25"}
+,{"airport_1":"CHS","city1":"Charleston, SC","count":"1985"}
+,{"airport_1":"CID","city1":"Cedar Rapids/Iowa City, IA","count":"118"}
+,{"airport_1":"CLE","city1":"Cleveland, OH (Metropolitan Area)","count":"4969"}
+,{"airport_1":"CLT","city1":"Charlotte, NC","count":"3735"}
+,{"airport_1":"CMH","city1":"Columbus, OH","count":"3668"}
+,{"airport_1":"COS","city1":"Colorado Springs, CO","count":"1494"}
+,{"airport_1":"CRP","city1":"Corpus Christi, TX","count":"403"}
+,{"airport_1":"CVG","city1":"Cincinnati, OH","count":"3202"}
+,{"airport_1":"DAB","city1":"Daytona Beach, FL","count":"393"}
+,{"airport_1":"DAL","city1":"Dallas/Fort Worth, TX","count":"7418"}
+,{"airport_1":"DAY","city1":"Dayton, OH","count":"1686"}
+,{"airport_1":"DCA","city1":"Washington, DC (Metropolitan Area)","count":"134"}
+,{"airport_1":"DEN","city1":"Denver, CO","count":"3360"}
+,{"airport_1":"DET","city1":"Detroit, MI","count":"128"}
+,{"airport_1":"DFW","city1":"Dallas/Fort Worth, TX","count":"8562"}
+,{"airport_1":"DSM","city1":"Des Moines, IA","count":"1747"}
+,{"airport_1":"DTT","city1":"Detroit, MI","count":"230"}
+,{"airport_1":"DTW","city1":"Detroit, MI","count":"3721"}
+,{"airport_1":"ECP","city1":"Panama City, FL","count":"78"}
+,{"airport_1":"EFD","city1":"Houston, TX","count":"1747"}
+,{"airport_1":"EGE","city1":"Eagle, CO","count":"213"}
+,{"airport_1":"ELP","city1":"El Paso, TX","count":"2052"}
+,{"airport_1":"EUG","city1":"Eugene, OR","count":"901"}
+,{"airport_1":"EWR","city1":"New York City, NY (Metropolitan Area)","count":"4146"}
+,{"airport_1":"EYW","city1":"Key West, FL","count":"395"}
+,{"airport_1":"FAR","city1":"Fargo, ND","count":"91"}
+,{"airport_1":"FAT","city1":"Fresno, CA","count":"62"}
+,{"airport_1":"FCA","city1":"Kalispell, MT","count":"50"}
+,{"airport_1":"FLL","city1":"Miami, FL (Metropolitan Area)","count":"4400"}
+,{"airport_1":"FMY","city1":"Fort Myers, FL","count":"16"}
+,{"airport_1":"FNL","city1":"Fort Collins/Loveland, CO","count":"1"}
+,{"airport_1":"FNT","city1":"Flint, MI","count":"103"}
+,{"airport_1":"FSD","city1":"Sioux Falls, SD","count":"2"}
+,{"airport_1":"FTW","city1":"Dallas/Fort Worth, TX","count":"7"}
+,{"airport_1":"FWA","city1":"Fort Wayne, IN","count":"22"}
+,{"airport_1":"FXE","city1":"Miami, FL (Metropolitan Area)","count":"1"}
+,{"airport_1":"FYV","city1":"Fayetteville, AR","count":"1"}
+,{"airport_1":"GEG","city1":"Spokane, WA","count":"79"}
+,{"airport_1":"GFK","city1":"Grand Forks, ND","count":"6"}
+,{"airport_1":"GPT","city1":"Gulfport/Biloxi, MS","count":"64"}
+,{"airport_1":"GRR","city1":"Grand Rapids, MI","count":"2007"}
+,{"airport_1":"GSO","city1":"Greensboro/High Point, NC","count":"1153"}
+,{"airport_1":"GSP","city1":"Greenville/Spartanburg, SC","count":"1054"}
+,{"airport_1":"GYY","city1":"Chicago, IL","count":"6"}
+,{"airport_1":"HFD","city1":"Hartford, CT","count":"3"}
+,{"airport_1":"HHH","city1":"Hilton Head, SC","count":"5"}
+,{"airport_1":"HHR","city1":"Los Angeles, CA (Metropolitan Area)","count":"2"}
+,{"airport_1":"HOU","city1":"Houston, TX","count":"6338"}
+,{"airport_1":"HPN","city1":"New York City, NY (Metropolitan Area)","count":"3987"}
+,{"airport_1":"HRL","city1":"Harlingen/San Benito, TX","count":"264"}
+,{"airport_1":"HSV","city1":"Huntsville, AL","count":"442"}
+,{"airport_1":"HTS","city1":"Ashland, WV","count":"2"}
+,{"airport_1":"HVN","city1":"New Haven, CT","count":"17"}
+,{"airport_1":"IAD","city1":"Washington, DC (Metropolitan Area)","count":"134"}
+,{"airport_1":"IAH","city1":"Houston, TX","count":"6395"}
+,{"airport_1":"IDA","city1":"Idaho Falls, ID","count":"6"}
+,{"airport_1":"IND","city1":"Indianapolis, IN","count":"2748"}
+,{"airport_1":"ISP","city1":"New York City, NY (Metropolitan Area)","count":"3980"}
+,{"airport_1":"JAC","city1":"Jackson, WY","count":"184"}
+,{"airport_1":"JAN","city1":"Jackson/Vicksburg, MS","count":"362"}
+,{"airport_1":"JAX","city1":"Jacksonville, FL","count":"2593"}
+,{"airport_1":"JFK","city1":"New York City, NY (Metropolitan Area)","count":"4158"}
+,{"airport_1":"JRB","city1":"New York City, NY (Metropolitan Area)","count":"4"}
+,{"airport_1":"LAN","city1":"Lansing, MI","count":"5"}
+,{"airport_1":"LAS","city1":"Las Vegas, NV","count":"3040"}
+,{"airport_1":"LAX","city1":"Los Angeles, CA (Metropolitan Area)","count":"5842"}
+,{"airport_1":"LBE","city1":"Latrobe, PA","count":"3"}
+,{"airport_1":"LCK","city1":"Columbus, OH","count":"120"}
+,{"airport_1":"LEX","city1":"Lexington, KY","count":"140"}
+,{"airport_1":"LGA","city1":"New York City, NY (Metropolitan Area)","count":"4224"}
+,{"airport_1":"LGB","city1":"Los Angeles, CA (Metropolitan Area)","count":"5043"}
+,{"airport_1":"LIT","city1":"Little Rock, AR","count":"1352"}
+,{"airport_1":"MCI","city1":"Kansas City, MO","count":"3314"}
+,{"airport_1":"MCO","city1":"Orlando, FL","count":"959"}
+,{"airport_1":"MDT","city1":"Harrisburg, PA","count":"40"}
+,{"airport_1":"MDW","city1":"Chicago, IL","count":"9223"}
+,{"airport_1":"MEM","city1":"Memphis, TN","count":"1880"}
+,{"airport_1":"MFR","city1":"Medford, OR","count":"6"}
+,{"airport_1":"MGM","city1":"Montgomery, AL","count":"4"}
+,{"airport_1":"MHT","city1":"Boston, MA (Metropolitan Area)","count":"8201"}
+,{"airport_1":"MIA","city1":"Miami, FL (Metropolitan Area)","count":"4351"}
+,{"airport_1":"MKC","city1":"Kansas City, MO","count":"81"}
+,{"airport_1":"MKE","city1":"Milwaukee, WI","count":"1730"}
+,{"airport_1":"MLB","city1":"Melbourne, FL","count":"220"}
+,{"airport_1":"MOB","city1":"Mobile, AL","count":"12"}
+,{"airport_1":"MOT","city1":"Minot, ND","count":"16"}
+,{"airport_1":"MPB","city1":"Miami, FL (Metropolitan Area)","count":"2"}
+,{"airport_1":"MSN","city1":"Madison, WI","count":"1137"}
+,{"airport_1":"MSO","city1":"Missoula, MT","count":"5"}
+,{"airport_1":"MSP","city1":"Minneapolis/St. Paul, MN","count":"1840"}
+,{"airport_1":"MSY","city1":"New Orleans, LA","count":"1793"}
+,{"airport_1":"MVY","city1":"Martha's Vineyard, MA","count":"54"}
+,{"airport_1":"MYR","city1":"Myrtle Beach, SC","count":"859"}
+,{"airport_1":"NYC","city1":"New York City, NY (Metropolitan Area)","count":"540"}
+,{"airport_1":"OAK","city1":"San Francisco, CA (Metropolitan Area)","count":"1169"}
+,{"airport_1":"OKC","city1":"Oklahoma City, OK","count":"762"}
+,{"airport_1":"OMA","city1":"Omaha, NE","count":"941"}
+,{"airport_1":"ONT","city1":"Los Angeles, CA (Metropolitan Area)","count":"5700"}
+,{"airport_1":"OPF","city1":"Miami, FL (Metropolitan Area)","count":"2"}
+,{"airport_1":"ORD","city1":"Chicago, IL","count":"9403"}
+,{"airport_1":"ORF","city1":"Norfolk, VA (Metropolitan Area)","count":"962"}
+,{"airport_1":"ORL","city1":"Orlando, FL","count":"22"}
+,{"airport_1":"PAE","city1":"Everett, WA","count":"99"}
+,{"airport_1":"PDX","city1":"Portland, OR","count":"891"}
+,{"airport_1":"PHF","city1":"Norfolk, VA (Metropolitan Area)","count":"860"}
+,{"airport_1":"PHL","city1":"Philadelphia, PA","count":"617"}
+,{"airport_1":"PHX","city1":"Phoenix, AZ","count":"1942"}
+,{"airport_1":"PIA","city1":"Peoria, IL","count":"28"}
+,{"airport_1":"PIE","city1":"Tampa, FL (Metropolitan Area)","count":"30"}
+,{"airport_1":"PIT","city1":"Pittsburgh, PA","count":"944"}
+,{"airport_1":"PNS","city1":"Pensacola, FL","count":"392"}
+,{"airport_1":"PSC","city1":"Pasco/Kennewick/Richland, WA","count":"14"}
+,{"airport_1":"PSP","city1":"Palm Springs, CA","count":"380"}
+,{"airport_1":"PVD","city1":"Boston, MA (Metropolitan Area)","count":"8204"}
+,{"airport_1":"PWM","city1":"Portland, ME","count":"347"}
+,{"airport_1":"RDM","city1":"Bend/Redmond, OR","count":"278"}
+,{"airport_1":"RDU","city1":"Raleigh/Durham, NC","count":"916"}
+,{"airport_1":"RIC","city1":"Richmond, VA","count":"248"}
+,{"airport_1":"RNO","city1":"Reno, NV","count":"673"}
+,{"airport_1":"ROC","city1":"Rochester, NY","count":"565"}
+,{"airport_1":"RSW","city1":"Fort Myers, FL","count":"1681"}
+,{"airport_1":"SAC","city1":"Sacramento, CA","count":"14"}
+,{"airport_1":"SAN","city1":"San Diego, CA","count":"913"}
+,{"airport_1":"SAT","city1":"San Antonio, TX","count":"877"}
+,{"airport_1":"SAV","city1":"Savannah, GA","count":"352"}
+,{"airport_1":"SBA","city1":"Santa Barbara, CA","count":"2"}
+,{"airport_1":"SBN","city1":"South Bend, IN","count":"22"}
+,{"airport_1":"SCF","city1":"Phoenix, AZ","count":"3"}
+,{"airport_1":"SDF","city1":"Louisville, KY","count":"1789"}
+,{"airport_1":"SEA","city1":"Seattle, WA","count":"583"}
+,{"airport_1":"SFO","city1":"San Francisco, CA (Metropolitan Area)","count":"1214"}
+,{"airport_1":"SGF","city1":"Springfield, MO","count":"12"}
+,{"airport_1":"SJC","city1":"San Francisco, CA (Metropolitan Area)","count":"1175"}
+,{"airport_1":"SLC","city1":"Salt Lake City, UT","count":"859"}
+,{"airport_1":"SMF","city1":"Sacramento, CA","count":"479"}
+,{"airport_1":"SNA","city1":"Los Angeles, CA (Metropolitan Area)","count":"5722"}
+,{"airport_1":"SRQ","city1":"Sarasota/Bradenton, FL","count":"248"}
+,{"airport_1":"STL","city1":"St. Louis, MO","count":"543"}
+,{"airport_1":"STP","city1":"Minneapolis/St. Paul, MN","count":"1"}
+,{"airport_1":"STS","city1":"Santa Rosa, CA","count":"1"}
+,{"airport_1":"SWF","city1":"New York City, NY (Metropolitan Area)","count":"3444"}
+,{"airport_1":"SYR","city1":"Syracuse, NY","count":"463"}
+,{"airport_1":"TLH","city1":"Tallahassee, FL","count":"118"}
+,{"airport_1":"TPA","city1":"Tampa, FL (Metropolitan Area)","count":"435"}
+,{"airport_1":"TSS","city1":"New York City, NY (Metropolitan Area)","count":"30"}
+,{"airport_1":"TUL","city1":"Tulsa, OK","count":"273"}
+,{"airport_1":"TUS","city1":"Tucson, AZ","count":"386"}
+,{"airport_1":"TYS","city1":"Knoxville, TN","count":"1185"}
+,{"airport_1":"USA","city1":"Concord, NC","count":"5"}
+,{"airport_1":"VGT","city1":"Las Vegas, NV","count":"4"}
+,{"airport_1":"VPS","city1":"Valparaiso, FL","count":"99"}
+,{"airport_1":"WAS","city1":"Washington, DC (Metropolitan Area)","count":"14"}
+,{"airport_1":"WHR","city1":"Eagle, CO","count":"2"}
+,{"airport_1":"XNA","city1":"Fayetteville, AR","count":"613"}]
