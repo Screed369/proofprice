@@ -1,0 +1,72 @@
+URL: https://api.tech.ec.europa.eu/agrifood/api/dairy/prices?memberStateCodes=IE&products=BUTTER&beginDate=01/09/2026&endDate=14/10/2026
+Fetched: 2026-10-14T14:52:38Z from GitHub Actions
+Status, type, bytes: 200 application/json 1152
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Wed, 14 Oct 2026 14:52:37 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+activityid: 8bc8f610-0e99-4674-aa2e-a054a3acfaf5
+Access-Control-Expose-Headers: 
+Access-Control-Allow-Origin: 
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Headers: authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,Authorization
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Server: Europa
+Connection: close
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+[ {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "05/10/2026",
+  "endDate" : "11/10/2026",
+  "price" : "€393.57",
+  "unit" : "100KG",
+  "weekNumber" : 41,
+  "year" : 2026,
+  "product" : "BUTTER"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "28/09/2026",
+  "endDate" : "04/10/2026",
+  "price" : "€393.57",
+  "unit" : "100KG",
+  "weekNumber" : 40,
+  "year" : 2026,
+  "product" : "BUTTER"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "21/09/2026",
+  "endDate" : "27/09/2026",
+  "price" : "€396.06",
+  "unit" : "100KG",
+  "weekNumber" : 39,
+  "year" : 2026,
+  "product" : "BUTTER"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "14/09/2026",
+  "endDate" : "20/09/2026",
+  "price" : "€396.06",
+  "unit" : "100KG",
+  "weekNumber" : 38,
+  "year" : 2026,
+  "product" : "BUTTER"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "07/09/2026",
+  "endDate" : "13/09/2026",
+  "price" : "€396.06",
+  "unit" : "100KG",
+  "weekNumber" : 37,
+  "year" : 2026,
+  "product" : "BUTTER"
+} ]
