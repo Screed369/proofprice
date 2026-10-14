@@ -1,0 +1,24 @@
+URL: https://statistikdatabasen.scb.se/api/v2/tables/TAB1151/data?lang=en&outputFormat=json-stat2&valueCodes%5BRegion%5D=0020,00&valueCodes%5BContentsCode%5D=BO0501R6,BO0501R7,BO0501R8&valueCodes%5BTid%5D=top(3)
+Fetched: 2026-10-14T16:05:57Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 3619
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: application/json; charset=UTF-8
+Server: Microsoft-IIS/10.0
+Content-Disposition: inline; filename="TAB1151.json"
+Content-Disposition: inline; filename="TAB1151.json"
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-14T16:06:06.7975593Z
+X-Powered-By: ASP.NET
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Wed, 14 Oct 2026 16:05:57 GMT
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+{"version":"2.0","class":"dataset","label":"Sold tenant-owned flats by region and year","source":"Statistics Sweden","updated":"2026-07-03T06:00:00Z","link":{"related":[{"extension":{"relation":"statistics-homepage","category":null,"metaid":"PRODUCTCODE:BO0501"},"href":"https://www.scb.se/BO0501-en","label":"Statistics page","type":"text/html"}]},"note":["The calculation of purchase prices of tenant-owned flats are based on the statement of earnings and deductions that the tenant-owners building society provide to the tax authority in connection with a flat sales. The sales are only from the second sale market and not new build flats. This report includes all purchases of flats regardless of lowest price up to a highest price of 20 SEK millions. Conveyances through inheritance, gift or separation of property are not included. Only purchases made by physical persons and where the whole flat is sold are included. It is difficult to use these statistics to make any conclusion concerning the development of prices on flats. In order to do that you must have a better measurement than only the average- or median price that not consider the size of the flat, the location or other elements that affect the market price.","Most recent year’s figures are preliminary."],"role":{"time":["Tid"],"metric":["ContentsCode"]},"id":["Region","ContentsCode","Tid"],"size":[2,3,3],"dimension":{"Region":{"label":"region","category":{"index":{"0020":0,"00":1},"label":{"0020":"Greater Gothenburg","00":"Sweden"}},"extension":{"elimination":true,"eliminationValueCode":"00","show":"code_value"}},"ContentsCode":{"label":"observations","category":{"index":{"BO0501R6":0,"BO0501R7":1,"BO0501R8":2},"label":{"BO0501R6":"Number of","BO0501R7":"Average price in SEK thousands","BO0501R8":"Median price in SEK thousands"},"unit":{"BO0501R6":{"base":"number of","decimals":0},"BO0501R7":{"base":"SEK thousands","decimals":0},"BO0501R8":{"base":"SEK thousands","decimals":0}}},"extension":{"elimination":false,"refperiod":{"BO0501R6":"During the year","BO0501R7":"During the year","BO0501R8":"During the year"},"show":"value","measuringType":{"BO0501R6":"Stock","BO0501R7":"Stock","BO0501R8":"Stock"},"priceType":{"BO0501R6":"NotApplicable","BO0501R7":"NotApplicable","BO0501R8":"NotApplicable"},"adjustment":{"BO0501R6":"None","BO0501R7":"None","BO0501R8":"None"},"alternativeText":{"BO0501R6":"Number of sold tenant-owned flats","BO0501R7":"Average price in SEK thousands","BO0501R8":"Median price in SEK thousands"}}},"Tid":{"label":"year","category":{"index":{"2023":0,"2024":1,"2025":2},"label":{"2023":"2023","2024":"2024","2025":"2025"}},"extension":{"elimination":false,"show":"code"}}},"extension":{"noteMandatory":{"0":true},"px":{"infofile":"BO0501","tableid":"TAB1151","decimals":0,"official-statistics":false,"aggregallowed":false,"copyright":false,"language":"en","contents":"Sold tenant-owned flats","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["Region"],"matrix":"TAB1151","subject-code":"BO","subject-area":"Housing, construction and building"},"discontinued":null,"contact":[{"name":"Niclas Sjölund","organization":"Statistics Sweden","phone":"010-479 43 42","mail":"niclas.sjolund@scb.se","raw":"Niclas Sjölund, Statistics Sweden# +46 010-479 43 42#niclas.sjolund@scb.se"},{"name":"Byggande och bebyggelse","organization":"Statistics Sweden","phone":"-","mail":"byggande.bebyggelse@scb.se","raw":" Byggande och bebyggelse, Statistics Sweden# - -#byggande.bebyggelse@scb.se"}]},"value":[9268,10854,10957,3019,3113,3104,2660,2750,2750,90063,102424,102062,2704,2829,2888,2200,2280,2295]}
