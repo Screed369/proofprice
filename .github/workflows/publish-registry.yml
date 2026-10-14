@@ -1,0 +1,111 @@
+# Publish server.json to the official MCP Registry (registry.modelcontextprotocol.io) as com.proofprice/pricepaid.
+# Our AI workspaces cannot reach the registry, so this runs on GitHub's servers.
+#
+# Safe by design: a fresh one-time key is made INSIDE this run and the private half never leaves it.
+#  1. Start:  gh workflow run publish-registry.yml -R Screed369/proofprice --ref main
+#  2. The run writes the TXT line it needs to probes/registry-publish.txt on the "probes" branch:
+#     git fetch origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/registry-publish.txt
+#  3. Add that line as a TXT record on proofprice.com (apex, Vercel DNS). The run waits up to 15 minutes for it.
+#  4. The run logs in, publishes, and writes the result to the same file.
+#  5. Delete the TXT record afterwards (the key dies with the run anyway).
+# To update the listing later: bump "version" in server.json, merge to main, repeat.
+name: Publish to the MCP Registry
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-registry
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PUBLISHER_VERSION: "1.8.1"
+      DOMAIN: proofprice.com
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Status helper
+        run: |
+          cat > /tmp/save.sh <<'EOF'
+          #!/usr/bin/env bash
+          # Usage: save.sh <file with status text>. Writes it to probes/registry-publish.txt on the probes branch.
+          set -u
+          cd "$GITHUB_WORKSPACE"
+          git config user.name "proofprice-librarian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          W="$RUNNER_TEMP/probes-wt"
+          for i in 1 2 3 4 5; do
+            git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes || exit 1
+            if [ -d "$W" ]; then git -C "$W" reset -q --hard origin/probes; else git worktree add -q -B probes "$W" origin/probes; fi
+            mkdir -p "$W/probes" && cp "$1" "$W/probes/registry-publish.txt"
+            git -C "$W" add probes/registry-publish.txt
+            git -C "$W" commit -qm "Registry publish: status" || exit 0
+            git -C "$W" push -q origin probes && exit 0
+            sleep $((i * 3))
+          done
+          exit 1
+          EOF
+          chmod +x /tmp/save.sh
+
+      - name: Make a one-time key
+        run: |
+          set -eu
+          openssl genpkey -algorithm Ed25519 -out /tmp/key.pem
+          PRIV=$(openssl pkey -in /tmp/key.pem -noout -text | grep -A3 "priv:" | tail -n +2 | tr -d ' :\n')
+          PUB=$(openssl pkey -in /tmp/key.pem -pubout -outform DER | tail -c 32 | base64)
+          echo "::add-mask::$PRIV"
+          rm -f /tmp/key.pem
+          printf '%s' "$PRIV" > /tmp/priv.hex && chmod 600 /tmp/priv.hex
+          echo "PUB=$PUB" >> "$GITHUB_ENV"
+          {
+            echo "STATUS: WAITING_FOR_TXT"
+            echo "Run: $GITHUB_RUN_ID   Started: $(date -u +%FT%TZ)"
+            echo "Add this TXT record at the apex of $DOMAIN (name empty / @):"
+            echo "v=MCPv1; k=ed25519; p=$PUB"
+          } > /tmp/status.txt
+          /tmp/save.sh /tmp/status.txt
+
+      - name: Wait for the TXT record (up to 15 minutes)
+        run: |
+          set -u
+          for i in $(seq 1 90); do
+            if dig +short TXT "$DOMAIN" @1.1.1.1 | tr -d '"' | grep -qF "p=$PUB" && \
+               dig +short TXT "$DOMAIN" @8.8.8.8 | tr -d '"' | grep -qF "p=$PUB"; then
+              echo "TXT record found"; exit 0
+            fi
+            sleep 10
+          done
+          { echo "STATUS: FAILED_NO_TXT"; echo "Run: $GITHUB_RUN_ID"; echo "The TXT record did not appear within 15 minutes."; } > /tmp/status.txt
+          /tmp/save.sh /tmp/status.txt
+          exit 1
+
+      - name: Log in and publish
+        run: |
+          set -u
+          curl -sSL "https://github.com/modelcontextprotocol/registry/releases/download/v${PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          sleep 20  # give the registry's own DNS lookup a moment to see the new record
+          OK=1
+          ./mcp-publisher login dns --domain "$DOMAIN" --private-key "$(cat /tmp/priv.hex)" > /tmp/login.txt 2>&1 || OK=0
+          if [ "$OK" = 1 ]; then ./mcp-publisher publish > /tmp/publish.txt 2>&1 || OK=0; else echo "(skipped: login failed)" > /tmp/publish.txt; fi
+          sed -i "s/$(cat /tmp/priv.hex)/[redacted]/g" /tmp/login.txt /tmp/publish.txt
+          rm -f /tmp/priv.hex ~/.mcp_publisher_token
+          curl -sS "https://registry.modelcontextprotocol.io/v0/servers?search=com.proofprice" > /tmp/listing.json 2>&1 || true
+          {
+            if [ "$OK" = 1 ]; then echo "STATUS: PUBLISHED"; else echo "STATUS: FAILED"; fi
+            echo "Run: $GITHUB_RUN_ID   Finished: $(date -u +%FT%TZ)"
+            echo "You can now delete the TXT record v=MCPv1; k=ed25519; p=$PUB"
+            echo; echo "=== LOGIN"; cat /tmp/login.txt
+            echo; echo "=== PUBLISH"; cat /tmp/publish.txt
+            echo; echo "=== REGISTRY SEARCH com.proofprice"; head -c 6000 /tmp/listing.json
+          } > /tmp/status.txt
+          /tmp/save.sh /tmp/status.txt
+          [ "$OK" = 1 ]
