@@ -1,0 +1,23 @@
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&limit=3&filters=%7B%22town%22%3A%22TAMPINES%22%2C%22flat_type%22%3A%224-ROOM%22%7D&sort=rent_approval_date%20desc%2C_id%20desc&include_total=true
+Fetched: 2026-10-14T15:58:22Z from GitHub Actions
+Status, type, bytes: 200 application/json 1363
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:58:22 GMT
+content-type: application/json
+vary: Accept-Encoding
+apigw-requestid: FPb4zg6lyQ0EJhw=
+x-content-type-options: nosniff
+last-modified: Wed, 14 Oct 2026 15:58:22 GMT
+cache-control: max-age=300
+cf-cache-status: MISS
+set-cookie: _cfuvid=Dx2rj7KKlXa_8rhhRPXFaNRPsBqGBUm3JtP.uHIdqN8-1791993501.6799636-1.0.1.1-4I6m7SEEk5nXM.ESTtc2O0uQPj7.fVOgTWEgzG._Htk; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+strict-transport-security: max-age=31536000; includeSubDomains
+server: cloudflare
+cf-ray: a4a7c8f97b90a364-SJC
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"success":true,"result":{"resource_id":"d_c9f57187485a850908655db0e8cfe651","fields":[{"type":"text","id":"rent_approval_date"},{"type":"text","id":"town"},{"type":"text","id":"block"},{"type":"text","id":"street_name"},{"type":"text","id":"flat_type"},{"type":"numeric","id":"monthly_rent"},{"type":"int4","id":"_id"}],"records":[{"_id":212576,"rent_approval_date":"2026-09","town":"TAMPINES","block":"159","street_name":"TAMPINES ST 12","flat_type":"4-ROOM","monthly_rent":"3500"},{"_id":212532,"rent_approval_date":"2026-09","town":"TAMPINES","block":"122","street_name":"SIMEI ST 1","flat_type":"4-ROOM","monthly_rent":"2000"},{"_id":212523,"rent_approval_date":"2026-09","town":"TAMPINES","block":"285","street_name":"TAMPINES ST 22","flat_type":"4-ROOM","monthly_rent":"3300"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&limit=3&sort=rent_approval_date%20desc%2C_id%20desc&filters=%7B%22town%22%3A%22TAMPINES%22%2C%22flat_type%22%3A%224-ROOM%22%7D","next":"/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&offset=3&limit=3&sort=rent_approval_date%20desc%2C_id%20desc&filters=%7B%22town%22%3A%22TAMPINES%22%2C%22flat_type%22%3A%224-ROOM%22%7D"},"total":5416,"limit":3,"sort":"rent_approval_date%20desc%2C_id%20desc","filters":"{\"town\":\"TAMPINES\",\"flat_type\":\"4-ROOM\"}"}}
