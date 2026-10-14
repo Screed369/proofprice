@@ -1,0 +1,23 @@
+URL: https://dadosabertos.aneel.gov.br/api/3/action/datastore_search?resource_id=fcf2906c-7c32-4b9b-a637-054e7a5234f4&limit=5
+Fetched: 2026-10-14T12:41:34Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3820
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Wed, 14 Oct 2026 12:41:34 GMT
+content-type: application/json;charset=utf-8
+content-length: 3820
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: geolocation=(), microphone=(), camera=()
+strict-transport-security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://dadosabertos.aneel.gov.br/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_next_page": false, "include_total": true, "limit": 5, "records_format": "objects", "resource_id": "fcf2906c-7c32-4b9b-a637-054e7a5234f4", "records": [{"_id":1,"DatGeracaoConjuntoDados":"2026-10-14","DscREH":"RESOLUÇÃO HOMOLOGATÓRIA Nº 0.937, DE 2 DE FEVEREIRO DE 2010","SigAgente":"CPFL JAGUARI","NumCNPJDistribuidora":"53859112000169","DatInicioVigencia":"2010-02-03","DatFimVigencia":"2011-02-02","DscBaseTarifaria":"Tarifa de Aplicação","DscSubGrupo":"A2","DscModalidadeTarifaria":"Azul","DscClasse":"Não se aplica","DscSubClasse":"Não se aplica","DscDetalhe":"APE","NomPostoTarifario":"Fora ponta","DscUnidadeTerciaria":"kW","SigAgenteAcessante":"Não se aplica","VlrTUSD":"1,85","VlrTE":",00"},{"_id":2,"DatGeracaoConjuntoDados":"2026-10-14","DscREH":"RESOLUÇÃO HOMOLOGATÓRIA Nº 0.937, DE 2 DE FEVEREIRO DE 2010","SigAgente":"CPFL JAGUARI","NumCNPJDistribuidora":"53859112000169","DatInicioVigencia":"2010-02-03","DatFimVigencia":"2011-02-02","DscBaseTarifaria":"Base Econômica","DscSubGrupo":"A2","DscModalidadeTarifaria":"Azul","DscClasse":"Não se aplica","DscSubClasse":"Não se aplica","DscDetalhe":"APE","NomPostoTarifario":"Fora ponta","DscUnidadeTerciaria":"kW","SigAgenteAcessante":"Não se aplica","VlrTUSD":"1,85","VlrTE":",00"},{"_id":3,"DatGeracaoConjuntoDados":"2026-10-14","DscREH":"RESOLUÇÃO HOMOLOGATÓRIA Nº 0.937, DE 2 DE FEVEREIRO DE 2010","SigAgente":"CPFL JAGUARI","NumCNPJDistribuidora":"53859112000169","DatInicioVigencia":"2010-02-03","DatFimVigencia":"2011-02-02","DscBaseTarifaria":"Tarifa de Aplicação","DscSubGrupo":"A2","DscModalidadeTarifaria":"Azul","DscClasse":"Não se aplica","DscSubClasse":"Não se aplica","DscDetalhe":"APE","NomPostoTarifario":"Ponta","DscUnidadeTerciaria":"kW","SigAgenteAcessante":"Não se aplica","VlrTUSD":"20,64","VlrTE":",00"},{"_id":4,"DatGeracaoConjuntoDados":"2026-10-14","DscREH":"RESOLUÇÃO HOMOLOGATÓRIA Nº 0.937, DE 2 DE FEVEREIRO DE 2010","SigAgente":"CPFL JAGUARI","NumCNPJDistribuidora":"53859112000169","DatInicioVigencia":"2010-02-03","DatFimVigencia":"2011-02-02","DscBaseTarifaria":"Base Econômica","DscSubGrupo":"A2","DscModalidadeTarifaria":"Azul","DscClasse":"Não se aplica","DscSubClasse":"Não se aplica","DscDetalhe":"APE","NomPostoTarifario":"Ponta","DscUnidadeTerciaria":"kW","SigAgenteAcessante":"Não se aplica","VlrTUSD":"19,05","VlrTE":",00"},{"_id":5,"DatGeracaoConjuntoDados":"2026-10-14","DscREH":"RESOLUÇÃO HOMOLOGATÓRIA Nº 0.937, DE 2 DE FEVEREIRO DE 2010","SigAgente":"CPFL JAGUARI","NumCNPJDistribuidora":"53859112000169","DatInicioVigencia":"2010-02-03","DatFimVigencia":"2011-02-02","DscBaseTarifaria":"Base Econômica","DscSubGrupo":"A2","DscModalidadeTarifaria":"Azul","DscClasse":"Não se aplica","DscSubClasse":"Não se aplica","DscDetalhe":"Não se aplica","NomPostoTarifario":"Fora ponta","DscUnidadeTerciaria":"kW","SigAgenteAcessante":"Não se aplica","VlrTUSD":"1,85","VlrTE":",00"}], "fields": [{"id": "_id", "type": "int"}, {"id": "DatGeracaoConjuntoDados", "type": "text"}, {"id": "DscREH", "type": "text"}, {"id": "SigAgente", "type": "text"}, {"id": "NumCNPJDistribuidora", "type": "text"}, {"id": "DatInicioVigencia", "type": "text"}, {"id": "DatFimVigencia", "type": "text"}, {"id": "DscBaseTarifaria", "type": "text"}, {"id": "DscSubGrupo", "type": "text"}, {"id": "DscModalidadeTarifaria", "type": "text"}, {"id": "DscClasse", "type": "text"}, {"id": "DscSubClasse", "type": "text"}, {"id": "DscDetalhe", "type": "text"}, {"id": "NomPostoTarifario", "type": "text"}, {"id": "DscUnidadeTerciaria", "type": "text"}, {"id": "SigAgenteAcessante", "type": "text"}, {"id": "VlrTUSD", "type": "text"}, {"id": "VlrTE", "type": "text"}], "total": 332545}}
