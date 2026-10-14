@@ -1,0 +1,474 @@
+URL: https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?publishedFrom=2026-09-01&publishedTo=2026-09-07&stages=award&limit=3
+Fetched: 2026-10-14T15:49:23Z from GitHub Actions
+Status, type, bytes: 200 application/json 19697
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:49:23 GMT
+content-type: application/json
+server: http/s
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-frame-options: DENY
+access-control-allow-methods: POST, GET
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+cache-control: max-age=0, private, no-store, no-cache, must-revalidate
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+    "uri": "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?publishedFrom=2026-09-01&publishedTo=2026-09-07&stages=award&limit=3",
+    "version": "1.1",
+    "extensions": [
+        "https://standard.open-contracting.org/profiles/eu/master/en/extension.json",
+        "https://raw.githubusercontent.com/portaledcahn/ocds_tenderDatePublished_extension/master/extension.json",
+        "https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_breakdown_extension/master/extension.json",
+        "https://raw.githubusercontent.com/Crown-Commercial-Service/ocds_awards_datePublished_extension/main/extension.json",
+        "https://raw.githubusercontent.com/Crown-Commercial-Service/ocds_partyDetails_vcse_extension/main/extension.json",
+        "https://raw.githubusercontent.com/Crown-Commercial-Service/ocds_tender_suitability_extension/main/extension.json",
+        "https://raw.githubusercontent.com/open-contracting-extensions/ocds_pagination_extension/master/extension.json"
+    ],
+    "publishedDate": "2026-09-06T16:58:43+01:00",
+    "publisher": {
+        "name": "Cabinet Office",
+        "scheme": "GB-GOR",
+        "uid": "D2",
+        "uri": "https://www.gov.uk/government/organisations/cabinet-office"
+    },
+    "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "publicationPolicy": "https://www.gov.uk/government/publications/open-contracting",
+    "releases": [
+        {
+            "ocid": "ocds-b5fd17-c807205b-b095-4dad-80ed-5eb64a2885e7",
+            "id": "64f3f764-9aae-4773-a766-7551fd636c46-913091",
+            "language": "en",
+            "date": "2026-09-06T16:58:43+01:00",
+            "tag": [
+                "award"
+            ],
+            "initiationType": "tender",
+            "tender": {
+                "id": "5DD870A3-2EF4-4C20-8BCA-CBFF30B266F9",
+                "title": "Taxi and MPV (1-8 seats) Passenger Assistant - Taxi and MPV (1-8 seats) Passenger Assistant",
+                "description": "Vehicle type: Saloon\r\nPassenger Assistant Required: PA required\r\n\r\nProposed Taxi Route: \r\nFrom: TN5 7FE\r\nTo: Ticehurst and Flimwell, TN5 7DH\r\n\r\nFrequency: Monday to Friday\r\nDaily School Time: Mon-Fri - 08:50-15:15\r\n\r\nComments for Operator: PA required\r\n\r\n This opportunity has been distributed on SProc.net",
+                "datePublished": "2026-09-02T16:54:32+01:00",
+                "status": "complete",
+                "classification": {
+                    "scheme": "CPV",
+                    "id": "60000000",
+                    "description": "Transport services (excl. Waste transport)"
+                },
+                "items": [
+                    {
+                        "id": "1",
+                        "deliveryAddresses": [
+                            {
+                                "countryName": "United Kingdom"
+                            }
+                        ]
+                    }
+                ],
+                "procurementMethod": "selective",
+                "procurementMethodDetails": "Restricted procedure (above threshold)",
+                "tenderPeriod": {
+                    "endDate": "2026-09-04T11:00:00+01:00"
+                },
+                "contractPeriod": {
+                    "startDate": "2026-09-07T01:00:00+01:00",
+                    "endDate": "2029-07-31T23:59:59+01:00"
+                },
+                "suitability": {
+                    "sme": true,
+                    "vcse": false
+                },
+                "mainProcurementCategory": "services"
+            },
+            "parties": [
+                {
+                    "id": "GB-CFS-334419",
+                    "name": "East Sussex County Council",
+                    "identifier": {
+                        "legalName": "East Sussex County Council"
+                    },
+                    "address": {
+                        "streetAddress": "County Hall, St Anne's Crescent",
+                        "locality": "Lewes",
+                        "postalCode": "BN7 1UE",
+                        "countryName": "United Kingdom"
+                    },
+                    "contactPoint": {
+                        "name": "Katia Lebon",
+                        "email": "procurement@eastsussex.gov.uk"
+                    },
+                    "details": {
+                        "url": "http://www.eastsussex.gov.uk"
+                    },
+                    "roles": [
+                        "buyer"
+                    ]
+                },
+                {
+                    "id": "GB-COH-12897621",
+                    "name": "Southern Travel Solutions Ltd",
+                    "identifier": {
+                        "legalName": "Southern Travel Solutions Ltd",
+                        "scheme": "GB-COH",
+                        "id": "12897621"
+                    },
+                    "address": {
+                        "streetAddress": "16 Hunter Road, , Crawley, West Sussex, RH106DD"
+                    },
+                    "details": {
+                        "scale": "large",
+                        "vcse": false
+                    },
+                    "roles": [
+                        "supplier"
+                    ]
+                }
+            ],
+            "buyer": {
+                "id": "GB-CFS-334419",
+                "name": "East Sussex County Council"
+            },
+            "awards": [
+                {
+                    "id": "ocds-b5fd17-c807205b-b095-4dad-80ed-5eb64a2885e7-1",
+                    "status": "active",
+                    "date": "2026-09-04T00:00:00+01:00",
+                    "datePublished": "2026-09-06T16:58:43+01:00",
+                    "value": {
+                        "amount": 125179,
+                        "currency": "GBP"
+                    },
+                    "suppliers": [
+                        {
+                            "id": "GB-COH-12897621",
+                            "name": "Southern Travel Solutions Ltd"
+                        }
+                    ],
+                    "contractPeriod": {
+                        "startDate": "2026-09-07T00:00:00+01:00",
+                        "endDate": "2029-07-31T23:59:59+01:00"
+                    },
+                    "documents": [
+                        {
+                            "id": "1",
+                            "documentType": "awardNotice",
+                            "description": "Awarded contract notice on Contracts Finder",
+                            "url": "https://www.contractsfinder.service.gov.uk/Notice/64f3f764-9aae-4773-a766-7551fd636c46",
+                            "datePublished": "2026-09-06T16:58:43+01:00",
+                            "format": "text/html",
+                            "language": "en"
+                        },
+                        {
+                            "id": "2",
+                            "url": "https://www.sproc.net"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "ocid": "ocds-b5fd17-b94faf4e-06c9-470e-af64-acbf9a5af410",
+            "id": "6e4bcc54-0543-4cc9-898c-15bd38b35cc6-913090",
+            "language": "en",
+            "date": "2026-09-06T15:58:39+01:00",
+            "tag": [
+                "award"
+            ],
+            "initiationType": "tender",
+            "tender": {
+                "id": "C467172",
+                "title": "Oracle Fusion Enterprise Software",
+                "description": "Oracle Fusion Enterprise Software modules to continue Agency's ability to have operable ERP system.",
+                "status": "complete",
+                "classification": {
+                    "scheme": "CPV",
+                    "id": "48451000",
+                    "description": "Enterprise resource planning software package"
+                },
+                "items": [
+                    {
+                        "id": "1",
+                        "deliveryAddresses": [
+                            {
+                                "postalCode": "E14 4PU"
+                            }
+                        ]
+                    }
+                ],
+                "value": {
+                    "amount": 1206670.12,
+                    "currency": "GBP"
+                },
+                "procurementMethod": "selective",
+                "procurementMethodDetails": "Call-off from a framework agreement",
+                "tenderPeriod": {
+                    "endDate": "2026-08-15T14:00:00+01:00"
+                },
+                "contractPeriod": {
+                    "startDate": "2026-08-31T00:00:00+01:00",
+                    "endDate": "2028-11-29T23:59:59Z"
+                },
+                "suitability": {
+                    "sme": true,
+                    "vcse": false
+                },
+                "mainProcurementCategory": "services"
+            },
+            "parties": [
+                {
+                    "id": "GB-GOR-EA63",
+                    "name": "DEPARTMENT OF HEALTH AND SOCIAL CARE",
+                    "identifier": {
+                        "legalName": "DEPARTMENT OF HEALTH AND SOCIAL CARE",
+                        "scheme": "GB-GOR",
+                        "id": "EA63"
+                    },
+                    "address": {
+                        "streetAddress": "10 South Colonnade",
+                        "locality": "LONDON",
+                        "postalCode": "E14 4PU",
+                        "countryName": "England"
+                    },
+                    "contactPoint": {
+                        "email": "commercial@mhra.gov.uk",
+                        "telephone": "00000000000"
+                    },
+                    "roles": [
+                        "buyer"
+                    ]
+                },
+                {
+                    "id": "GB-COH-01782505",
+                    "name": "Oracle Corporation Uk Limited",
+                    "identifier": {
+                        "legalName": "Oracle Corporation Uk Limited",
+                        "scheme": "GB-COH",
+                        "id": "01782505"
+                    },
+                    "address": {
+                        "streetAddress": "Oracle Parkway\nRG6 1RA\nGB"
+                    },
+                    "details": {
+                        "scale": "large",
+                        "vcse": false
+                    },
+                    "roles": [
+                        "supplier"
+                    ]
+                }
+            ],
+            "buyer": {
+                "id": "GB-GOR-EA63",
+                "name": "DEPARTMENT OF HEALTH AND SOCIAL CARE"
+            },
+            "awards": [
+                {
+                    "id": "ocds-b5fd17-b94faf4e-06c9-470e-af64-acbf9a5af410-1",
+                    "status": "active",
+                    "date": "2026-08-20T00:00:00+01:00",
+                    "datePublished": "2026-09-06T15:58:39+01:00",
+                    "value": {
+                        "amount": 1206670.12,
+                        "currency": "GBP"
+                    },
+                    "suppliers": [
+                        {
+                            "id": "GB-COH-01782505",
+                            "name": "Oracle Corporation Uk Limited"
+                        }
+                    ],
+                    "contractPeriod": {
+                        "startDate": "2026-08-31T00:00:00+01:00",
+                        "endDate": "2028-11-29T23:59:59Z"
+                    },
+                    "documents": [
+                        {
+                            "id": "1",
+                            "documentType": "awardNotice",
+                            "description": "Awarded contract notice on Contracts Finder",
+                            "url": "https://www.contractsfinder.service.gov.uk/Notice/6e4bcc54-0543-4cc9-898c-15bd38b35cc6",
+                            "datePublished": "2026-09-06T15:58:39+01:00",
+                            "format": "text/html",
+                            "language": "en"
+                        },
+                        {
+                            "id": "2",
+                            "documentType": "contractSigned",
+                            "url": "https://www.contractsfinder.service.gov.uk/Notice/Attachment/e0ca2ea7-d2b4-4d85-b097-4626eca3acb1",
+                            "format": "application/pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "ocid": "ocds-b5fd17-4a336c05-e4fd-4530-86b6-b037c17f1acd",
+            "id": "883ce98b-3552-4303-bd02-5a00c8d66519-913088",
+            "language": "en",
+            "date": "2026-09-05T22:20:36+01:00",
+            "tag": [
+                "award"
+            ],
+            "initiationType": "tender",
+            "tender": {
+                "id": "tender_541404/1607066",
+                "title": "National Roads Telecommunications Service 3 (NRTS3) Independent Assurance Review",
+                "description": "Independent assurance of models for the National Roads Telecommunications Service 3 (NRTS3) project. Call off contract from Lot 8 of the Government Commercial Agency&apos;s Management Consultancy Framework 4.",
+                "status": "complete",
+                "classification": {
+                    "scheme": "CPV",
+                    "id": "79411000",
+                    "description": "General management consultancy services"
+                },
+                "items": [
+                    {
+                        "id": "1",
+                        "deliveryAddresses": [
+                            {
+                                "region": "North East",
+                                "countryName": "United Kingdom"
+                            },
+                            {
+                                "region": "North West",
+                                "countryName": "United Kingdom"
+                            },
+                            {
+                                "region": "Yorkshire and the Humber",
+                                "countryName": "United Kingdom"
+                            },
+                            {
+                                "region": "East Midlands",
+                                "countryName": "United Kingdom"
+                            },
+                            {
+                                "region": "West Midlands",
+                                "countryName": "United Kingdom"
+                            },
+                            {
+                                "region": "East of England",
+                                "countryName": "United Kingdom"
+                            },
+                            {
+                                "region": "London",
+                                "countryName": "United Kingdom"
+                            },
+                            {
+                                "region": "South East",
+                                "countryName": "United Kingdom"
+                            },
+                            {
+                                "region": "South West",
+                                "countryName": "United Kingdom"
+                            }
+                        ]
+                    }
+                ],
+                "value": {
+                    "amount": 65000,
+                    "currency": "GBP"
+                },
+                "procurementMethod": "selective",
+                "procurementMethodDetails": "Call-off from a framework agreement",
+                "tenderPeriod": {
+                    "endDate": "2026-08-06T23:59:00+01:00"
+                },
+                "contractPeriod": {
+                    "startDate": "2026-08-10T00:00:00+01:00",
+                    "endDate": "2026-09-18T23:59:59+01:00"
+                },
+                "suitability": {
+                    "sme": false,
+                    "vcse": false
+                },
+                "mainProcurementCategory": "services"
+            },
+            "parties": [
+                {
+                    "id": "GB-CFS-328372",
+                    "name": "National Highways Limited",
+                    "identifier": {
+                        "legalName": "National Highways Limited"
+                    },
+                    "address": {
+                        "streetAddress": "Three Snowhill, Snow Hill Queensway",
+                        "locality": "Birmingham",
+                        "postalCode": "B4 6GA",
+                        "countryName": "England"
+                    },
+                    "contactPoint": {
+                        "email": "James.mayer@nationalhighways.co.uk"
+                    },
+                    "details": {
+                        "url": "https://nationalhighways.co.uk/"
+                    },
+                    "roles": [
+                        "buyer"
+                    ]
+                },
+                {
+                    "id": "GB-COH-12495519",
+                    "name": "Turner & Townsend Infrastructure Limited",
+                    "identifier": {
+                        "legalName": "Turner & Townsend Infrastructure Limited",
+                        "scheme": "GB-COH",
+                        "id": "12495519"
+                    },
+                    "address": {
+                        "streetAddress": "Low Hall Calverley Lane, Horsforth, Leeds, LS18 4GH"
+                    },
+                    "details": {
+                        "scale": "large",
+                        "vcse": false
+                    },
+                    "roles": [
+                        "supplier"
+                    ]
+                }
+            ],
+            "buyer": {
+                "id": "GB-CFS-328372",
+                "name": "National Highways Limited"
+            },
+            "awards": [
+                {
+                    "id": "ocds-b5fd17-4a336c05-e4fd-4530-86b6-b037c17f1acd-1",
+                    "status": "active",
+                    "date": "2026-08-07T00:00:00+01:00",
+                    "datePublished": "2026-09-05T22:20:36+01:00",
+                    "value": {
+                        "amount": 65000,
+                        "currency": "GBP"
+                    },
+                    "suppliers": [
+                        {
+                            "id": "GB-COH-12495519",
+                            "name": "Turner & Townsend Infrastructure Limited"
+                        }
+                    ],
+                    "contractPeriod": {
+                        "startDate": "2026-08-10T00:00:00+01:00",
+                        "endDate": "2026-09-18T23:59:59+01:00"
+                    },
+                    "documents": [
+                        {
+                            "id": "1",
+                            "documentType": "awardNotice",
+                            "description": "Awarded contract notice on Contracts Finder",
+                            "url": "https://www.contractsfinder.service.gov.uk/Notice/883ce98b-3552-4303-bd02-5a00c8d66519",
+                            "datePublished": "2026-09-05T22:20:36+01:00",
+                            "format": "text/html",
+                            "language": "en"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "links": {
+        "next": "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?publishedFrom=2026-09-01&publishedTo=2026-09-07&stages=award&limit=3&cursor=cHVibGlzaGVkRnJvbT0yMDI2LTA5LTAxfHB1Ymxpc2hlZFRvPTIwMjYtMDktMDd8c3RhZ2VzPWF3YXJkfGxpbWl0PTN8bmV4dEN1cnNvcj03ODI0MTA="
+    }
+}
