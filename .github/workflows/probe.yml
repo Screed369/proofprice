@@ -37,13 +37,16 @@ jobs:
           BYTES: ${{ github.event.inputs.bytes }}
         run: |
           set -u
-          case "$URL" in https://*) ;; *) echo "Only https URLs are allowed"; exit 1;; esac
           SAFE=$(printf '%s' "$NAME" | tr -cd 'a-z0-9-' | cut -c1-60); SAFE=${SAFE:-probe}
           N=$(printf '%s' "$BYTES" | tr -cd '0-9'); N=${N:-30000}; [ "$N" -gt 200000 ] && N=200000
           mkdir -p /tmp/p && cd /tmp/p
+          # A refused URL is reported in the result file (not as a failed run, which would email the owner).
+          case "$URL" in https://*) ;; *) URL_REFUSED=1;; esac
+          if [ "${URL_REFUSED:-0}" = 1 ]; then echo "000 refused 0" > status.txt; echo "Refused: only https URLs are allowed" > err.txt; : > headers.txt; : > body.bin; else
           curl -sS -L --max-time 120 --max-filesize 500000000 \
             -A "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)" \
             -D headers.txt -o body.bin -w "%{http_code} %{content_type} %{size_download}\n" "$URL" > status.txt 2> err.txt || true
+          fi
           {
             echo "URL: $URL"
             echo "Fetched: $(date -u +%FT%TZ) from GitHub Actions"
@@ -76,4 +79,4 @@ jobs:
             sleep $((i * 3))
             git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git rebase -q origin/probes
           done
-          exit 1
+          echo "::warning::Could not save the probe result after 5 tries (busy branch); run the probe again."
