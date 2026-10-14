@@ -1,0 +1,734 @@
+URL: https://www.contractsfinder.service.gov.uk/apidocumentation
+Fetched: 2026-10-14T15:50:58Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 45718
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:50:57 GMT
+content-type: text/html; charset=utf-8
+server: http/s
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-frame-options: DENY
+access-control-allow-methods: POST, GET
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+cache-control: max-age=0, private, no-store, no-cache, must-revalidate
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (4392)
+=== FIRST 60000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"5ddf34d866","applicationID":"8587010","transactionName":"YgBTZxNUDxFUVxcKXVtKdVwVewQWdlsNF0BaCV1WExopB1lETCpcUQBJ","queueTime":0,"applicationTime":10,"ttGuid":"235878E7E94FEBC","agent":""}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(u(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(2),u=t(3),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var s=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit"],p="api-",l=p+"ixn-";a(s,function(t,e){f[e]=o(p+e,!0,"api")}),f.addPageAction=o(p+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var d=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){d[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],2:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],3:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?u(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),u=a.length,c=0;c<u;c++)a[c].apply(i,r);var s=f[m[n]];return s&&s.push([w,n,r,i]),i}function p(t,e){g[t]=l(t).concat(e)}function l(t){return g[t]||[]}function d(t){return s[t]=s[t]||o(n)}function v(t,e){c(t,function(t,n){e=e||"feature",m[n]=e,e in f||(f[e]=[])})}var g={},m={},w={on:p,emit:n,get:d,listeners:l,context:e,buffer:v};return w}function i(){return new r}var a="nr@context",u=t("gos"),c=t(2),f={},s={},p=e.exports=o();p.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!h++){var t=y.info=NREUM.info,e=s.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(m,function(e,n){t[e]||(t[e]=n)});var n="https"===g.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",u("mark",["onload",a()],null,"api");var r=s.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===s.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=t("handle"),c=t(2),f=window,s=f.document,p="addEventListener",l="attachEvent",d=f.XMLHttpRequest,v=d&&d.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:d,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(1);var g=""+location,m={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-974.min.js"},w=d&&v&&v[p]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:g,features:{},xhrWrappable:w};s[p]?(s[p]("DOMContentLoaded",i,!1),f[p]("load",r,!1)):(s[l]("onreadystatechange",o),f[l]("onload",r)),u("mark",["firstbyte",a()],null,"api");var h=0},{}]},{},["loader"]);</script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contracts Finder API Help Page</title>
+    
+    <style>
+        body { max-width:65em; margin: 0 1em 3em 1em; }
+        pre.doc-code { font-size: 90%; color: #B32; font-weight: bold; }
+        span.doc-code { font-family: monospace; color: #954; font-weight: bold; }
+    </style>
+</head>
+<body><div id="skiplink-container" class="help-page"><div class="skiplink-box"><a href="#body" class="skiplink">Skip to main content</a></div></div>
+    
+<link type="text/css" href="https://www.contractsfinder.service.gov.uk/stylesheets/notice_api_documentation_style.css" rel="stylesheet" />
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>Contracts Finder API Help Page</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+	    <h2>Contracts Finder Update</h2>
+	    <p>Contracts Finder API is updating. Version 2 of the API attempts to improve the structure and standardise approaches to aid the user in posting and retrieving notices. For more details, please visit <a href="/apidocumentation/V2">Version 2</a>.</p>
+            
+            <h2>Introduction</h2>
+            <p>
+                This document sets out to describe the mechanisms by which eOpportunity providers and others can feed their opportunities to the Contracts Finder Service.
+                This can be done via this WebAPI individually at the point of publication, or via bulk import at a convenient time.
+                Both mechanisms use common interfaces, with the latter accepting collections of data in one go.
+            </p>
+            <h3>Scope and purpose</h3>
+            <p>The purpose of this document is to describe the interfaces available to approved external notice publication providers that enable them to publish their notices in the Contracts Finder service.</p>
+            <p>Notice types that can be uploaded are:</p>
+            <ul>
+                <li>Future Opportunities, i.e. pre-procurement notices to publicise forthcoming activity</li>
+                <li>Live Opportunities, i.e. invitations to tender</li>
+                <li>Awards, i.e. transparency publications of awarded contract details</li>
+                <li>Early Engagements, i.e. notices of intent which invite discussion on the way forward</li>
+            </ul>
+            <p>
+                Whilst this is primarily a specification document to describe the inbound interface, some consideration shall be given to explain how particular aspects of the specification are handled by the inbound feed, specifically around the handling of category and region information.
+                It shall describe, where appropriate, any specific data types and field length limitations placed upon external providers, in order that their opportunities are aggregated within the Contracts Finder service.
+            </p>
+            <p>This document shall provide an overview of how warnings and error messages shall be communicated to providers, but at this time shall not include specific warnings or errors.</p>
+           <h2>Technical Specification</h2>
+            <h3>REST</h3>
+            <p>
+                Representational State Transfer (REST) is an architectural style based on the architecture of the Web and embraces HTTP.
+                Clients initiate requests to servers; servers process requests and return appropriate responses.
+                Requests and responses are built around the transfer of "representations" of "resources".
+                The central resource with respect to the Contracts Finder service is the procurement opportunity.
+            </p>
+            <h3>Unique provider identifier</h3>
+            <p>
+                There is a potential for confusion since each notice will have 2 unique identifiers.
+                One is provided by the creator in a format meaningful to them and must be unique within the creating organisation.
+                Another is assigned internally by Contracts Finder, which will be a GUID.
+            </p>
+            <p>
+                So, upon creating a new notice, a unique provider identifier needs to be supplied by the creator.
+                This identifier must not have been used previously by the originating organisation, otherwise a validation error occurs.
+                On successful creation of a notice, a new unique identifier (in GUID form) is returned.
+                This new unique reference is then used throughout the Web API to perform further operations on the notice.
+            </p>
+            <h3>Security and Authorisation</h3>
+            <p>
+                Authentication is required to access certain parts of the Web API.
+                To obtain an access token you must <a href="/apidocumentation/Authentication">POST to the token endpoint</a>.
+                The POST request must include a basic authorization header containing <span class="doc-code">username:password</span> in base-64 encoded format.
+                It must also have a body with type <span class="doc-code">application/x-www-form-urlencoded</span> specifying <span class="doc-code">grant_type=client_credentials</span>.
+                The username and password are the Sid4Gov login credentials.
+            </p>
+            <p>In response you are granted an access token, a sample response may look like:</p>
+            <pre class="doc-code">{ "access_token":"2YotnFZFEjr1zCsicMWpAA", "expires_in":3600, "token_type":"bearer" }</pre>
+            <h3>Headers</h3>
+            <p>To request either JSON or XML MIME types the request needs to contain the appropriate Accept header, <span class="doc-code">application/json</span> or <span class="doc-code">application/xml</span> respectively.</p>
+            <p>To access authenticated endpoints a bearer token is needed in the HTTP authorization header, this is the returned access_token described in section 2.4, for example "<span class="doc-code">bearer 2YotnFZFEjr1zCsicMWpAA</span>".</p>
+            <h3>Error Handling</h3>
+            <p>The standard HTTP status codes are used to indicate errors throughout the system from invalid authentication to validation errors. Please see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a> for details on the status codes.</p>
+            <p>For specific validation errors a 400 status code response is returned with a list of validation errors.</p>
+            <p>The following is an example:</p>
+<pre class="doc-code">&lt;ArrayOfValidationError&gt;
+  &lt;ValidationError&gt;
+    &lt;Message i:nil="true"/&gt;
+    &lt;Code&gt;NotFound&lt;/Code&gt;
+    &lt;Property&gt;PublishedNoticeId&lt;/Property&gt;
+  &lt;/ValidationError&gt;
+&lt;/ArrayOfValidationError&gt;</pre>
+            <h3>Line Breaks</h3>
+            <p>
+                Some text fields support the use of line breaks to allow long passages to be divided into paragraphs.
+                For example, the description field in notices.
+            </p>
+            <p>
+                In order to include a line break you need to insert a CR/LF combination.
+                In JSON this is encoded as "\r\n", and in XML it is encoded as "&amp;#13;&amp;#10;".
+            </p>
+            <h2>Mappings</h2>
+            <h3>Delivery Location</h3>
+            <p>The region(s) of a notice applies to the location of works for the contract - the delivery location. Providers are asked to supply either one or more regions and/or postcode and/or a region of "Any Region". The provider must supply one, but choice is dependent on preference and the scope of the delivery.</p>
+            <p>Postcode information provided shall be used to look-up geo-co-ordinates and a corresponding region.</p>
+            <h3>Email Addresses</h3>
+            <p>Email addresses must conform with the standard pattern, i.e. similar to <span class="doc-code">given.family@domain.ext</span>. There is no further validation checking.</p>
+            <h3>Country</h3>
+            <p>Country must be one "name" value selected from <a href="/apidocumentation/Notices/1/GET-Country-Countries">the countries API method</a></p>
+            <p>There is no further validation checking.</p>
+            <h3>Dates and times</h3>
+            <p>Combined date-time values are used, formatted as YYYY-MM-DDThh:mm:ss, e.g. 2014-01-29T15:09:00Z for exactly 3:09pm on 29 January 2014.</p>
+            <p>The time part is included even for date-only fields.</p>
+            <p>All times are local UK times, in GMT or BST depending on which is in effect on the date. Timezone information is appended to the date-time such that “Z” indicates GMT (October to March) and “+01:00” indicates BST (March to October).</p>
+            <p>The time part is valid for the DeadlineDate field for notices published from 1 August 2020.</p>
+            <h3>Regions</h3>
+            <p>Region must be a list of one or more comma separated "name" values from <a href="/apidocumentation/Notices/1/GET-Region-Regions">the regions API method</a>. Note that API names have commas removed and accented characters changed to normal ones compared with names shown on the website. For example, "Saint Helena Ascension and Tristan da Cunha" instead of "Saint Helena, Ascension and Tristan da Cunha", "Curacao" instead of "Curaçao" and "Saint Barthelemy" instead of "Saint Barthélemy".</p>
+            <h3>Type</h3>
+            <p>Valid notice types are defined by <a href="/apidocumentation/ResourceModel?modelName=NoticeType">the NoticeType enumeration</a>.</p>
+            <h3>OjeuContractType</h3>
+            <p>Valid contract types are defined by <a href="/apidocumentation/ResourceModel?modelName=OjeuContractType">the OjeuContractType enumeration</a>.</p>
+            <h3>ProcedureType</h3>
+            <p>Valid procedure types are defined by <a href="/apidocumentation/ResourceModel?modelName=ProcedureType">the ProcedureType enumeration</a>.</p>
+            <h3>AwardedProcedureType</h3>
+            <p>A different set of procedure types is defined for awards - see <a href="/apidocumentation/ResourceModel?modelName=AwardedProcedureType">the AwardedProcedureType enumeration</a>.</p>
+            <h3>AnnexDOptionType</h3>
+            <p>Valid Annex D options are defined by <a href="/apidocumentation/ResourceModel?modelName=AnnexDOptionType">the AnnexDOptionType enumeration</a>.</p>
+            <h3>Mime Type</h3>
+            <p>Valid mime types are defined by <a href="/apidocumentation/ResourceModel?modelName=MimeType">MimeType enumeration</a>.</p>
+            <h3>CPV codes</h3>
+            <p>For more information on CPV codes, see <a href="http://simap.europa.eu/codes-and-nomenclatures/codes-cpv/codes-cpv_en.htm" target="_blank">http://simap.europa.eu/codes-and-nomenclatures/codes-cpv/codes-cpv_en.htm</a>.</p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h1>Interface specification</h1>
+
+
+<h2 id="OcdsApi">OcdsApi</h2>
+<p>Methods for retrieving notices in OCDS compliant data formats.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+		<tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Published-Notice-OCDS-Search">GET Published/Notices/OCDS/Search?publishedFrom={publishedFrom}&publishedTo={publishedTo}&stages={stages}&limit={limit}&cursor={cursor}</a></td>
+            <td class="api-documentation">
+                <p>Search for published notice OCDS releases package with optional search criteria.</p>
+            </td>
+        </tr>
+		<tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Published-OCDS-Record">GET Published/OCDS/Record/{ocid}</a></td>
+            <td class="api-documentation">
+                <p>Retrieves the OCDS record package from a provided ocid.</p>
+            </td>
+        </tr>
+		<tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Published-OCDS-Release">GET Published/OCDS/Release/{id}</a></td>
+            <td class="api-documentation">
+                <p>Retrieves the OCDS release package from a provided id.</p>
+            </td>
+        </tr>		
+		<tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Harvester-Notices-Data-CSV-Daily">GET Harvester/Notices/Data/CSV/Daily</a></td>
+            <td class="api-documentation">
+                <p>Retrieves the OCDS releases in CSV format for the current date.</p>
+            </td>
+        </tr>		
+		<tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Harvester-Notices-Data-CSV">GET Harvester/Notices/Data/CSV/{year}/{month}/{day}</a></td>
+            <td class="api-documentation">
+                <p>Retrieves the OCDS releases in CSV format from a specific date.</p>
+            </td>
+        </tr>
+	</tbody>
+</table>
+
+<h2 id="PostcodeApi">PostcodeApi</h2>
+    <p>Methods related to postal codes.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Postcode-Postcodes-postCode">GET Postcode/Postcodes/{postCode}</a></td>
+            <td class="api-documentation">
+                <p>Retrieves a list of valid UK postcodes that start with the provided prefix.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="UserProfileApi">UserProfileApi</h2>
+    <p>Methods for creating, updating and deleting user profile information.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-User-MyProfile">GET User/MyProfile</a></td>
+            <td class="api-documentation">
+                <p>Get the profile details for the signed in user, contained in a User object.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-User-MyProfile-Save">POST User/MyProfile/Save</a></td>
+            <td class="api-documentation">
+                <p>Update the profile details for the signed in user.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-User-MyProfile-SavedSearch-GetAll">GET User/MyProfile/SavedSearch/GetAll</a></td>
+            <td class="api-documentation">
+                <p>Gets details of the saved searches associated with the signed in user.
+            Returns a collection of SavedSearch objects, each representing a saved search.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-User-MyProfile-SavedSearch-Get_id">GET User/MyProfile/SavedSearch/Get?id={id}</a></td>
+            <td class="api-documentation">
+                <p>Gets details of a saved search by its unique identifier.
+            The requested information must be associated with the signed in user.
+            Returns the requested SavedSearch object.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-User-MyProfile-SavedSearch-Update">POST User/MyProfile/SavedSearch/Update</a></td>
+            <td class="api-documentation">
+                <p>Updates an existing saved search associated with the signed in user.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-User-MyProfile-SavedSearch-Delete">POST User/MyProfile/SavedSearch/Delete</a></td>
+            <td class="api-documentation">
+                <p>Deletes a number of saved searches associated with the signed in users.
+            The saved searches to be deleted are identified by a collection of integers,
+            each being the id of a saved search associated with the user.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-User-MyProfile-SavedSearch-Create">POST User/MyProfile/SavedSearch/Create</a></td>
+            <td class="api-documentation">
+                <p>Creates a new saved search for the signed in user.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-User-MyProfile-WatchedNotice-GetAll">GET User/MyProfile/WatchedNotice/GetAll</a></td>
+            <td class="api-documentation">
+                <p>Gets details of all the watched notices for the signed in user,
+            contained in a collection of WatchedNotice objects.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-User-MyProfile-WatchedNotice-Get_id">GET User/MyProfile/WatchedNotice/Get?id={id}</a></td>
+            <td class="api-documentation">
+                <p>Gets details of the watched notices with the given identifier.
+            The requested watched notice must be associated with the signed in user.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-User-MyProfile-WatchedNotice-Create">POST User/MyProfile/WatchedNotice/Create</a></td>
+            <td class="api-documentation">
+                <p>Creates a new watched notice for the signed in user.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-User-MyProfile-WatchedNotice-Update">POST User/MyProfile/WatchedNotice/Update</a></td>
+            <td class="api-documentation">
+                <p>Updates an existing watched notice associated with the signed in user.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-User-MyProfile-WatchedNotice-Delete">POST User/MyProfile/WatchedNotice/Delete</a></td>
+            <td class="api-documentation">
+                <p>Deletes a number of watched notices associated with the signed in user.
+            The watched notices to be deleted are identified by a collection of integers,
+            each being the id of a watched notice associated with the user.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="PublishNoticeApi">PublishNoticeApi</h2>
+    <p>Methods for managing published notices.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Published-AdditionalDetails-id">GET Published/AdditionalDetails/{id}</a></td>
+            <td class="api-documentation">
+                <p>Gets a single additional detail object by its unique identifier.
+            The identifier is a GUID.
+            The returned additional detail is contained in a AdditionalDetail object.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name">
+			Version 2 = <a href="/apidocumentation/Notices/2/GET-rest-get-published-notice">GET api/rest/2/get_published_notice/{MimeType}/{id}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/GET-Published-Notice-id">GET Published/Notice/{id}</a>
+			</td>
+			<td class="api-documentation">
+                <p>Gets a published notice by its unique identifier, which is a GUID.
+            The returned notice is described by a FullNotice xml object.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Published-Notice-OCDS-id">GET Published/Notice/OCDS/{id}</a></td>
+            <td class="api-documentation">
+                <p>Gets the OCDS  for the provided notice identity.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Published-Notices">POST Published/Notices</a></td>
+            <td class="api-documentation">
+                <p>Gets a collection of published  for the provided list of identities.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Published-Notice-Withdraw">POST Published/Notice/Withdraw</a></td>
+            <td class="api-documentation">
+                <p>Withdraws the published notice identified by the provided identifier.
+            A reason needs to be provided and is recorded against the withdrawal action.</p>
+            </td>
+        </tr>
+	<tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Published-Notice-Withdraw-2">POST Published/Notice/Withdraw/2</a></td>
+            <td class="api-documentation">
+                <p>Withdraws the published notice identified by the provided identifier.
+            A reason needs to be provided and is recorded against the withdrawal action (version:2).</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Published-CpvCodes-id">GET Published/CpvCodes/{id}</a></td>
+            <td class="api-documentation">
+                <p>Gets a collection of CPV codes associated with the identified notice.
+            The provided id should be a GUID that uniquely identifies a published notice.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Published-LogNoticeView-id">GET Published/LogNoticeView/{id}</a></td>
+            <td class="api-documentation">
+                <p>Log a view event for the published notice with the given identity.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Published-NoticeVersions-id">GET Published/NoticeVersions/{id}</a></td>
+            <td class="api-documentation">
+                <p>Gets historical version details for the published notice identified by the provided id.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="NoticeApi">NoticeApi</h2>
+    <p>Methods for managing draft notices.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Draft-FindNoticesForUser_noticeType_noticeStatus_filter_page_numberPerPage_showMyNoticesOnly">GET Draft/FindNoticesForUser?noticeType={noticeType}&amp;noticeStatus={noticeStatus}&amp;filter={filter}&amp;page={page}&amp;numberPerPage={numberPerPage}&amp;showMyNoticesOnly={showMyNoticesOnly}</a></td>
+            <td class="api-documentation">
+                <p>Returns details of the notices that match the specified search criteria.
+            Only notices associated with the organization of the current user are included.
+            The current user must be a buyer in order to use this service.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name">
+				Version 2 = <a href="/apidocumentation/Notices/2/GET-rest-get-draft-notice">GET api/rest/2/get_draft_notice/{MimeType}/{id}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/GET-Draft-Notice-id">GET Draft/Notice/{id}</a>
+			</td>
+            <td class="api-documentation">
+                <p>Gets the draft notice identified by the provided GUID.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Notices">POST Draft/Notices</a></td>
+            <td class="api-documentation">
+                <p>Gets a collection of draft  for the provided list of identities.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name">
+				Version 2 = <a href="/apidocumentation/Notices/2/POST-rest-create-draft-notice">POST api/rest/2/create_draft_notice/{MimeType}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/POST-Draft-Notice-Add_isPreAwarded">POST Draft/Notice/Add?isPreAwarded={isPreAwarded}</a>
+			</td>
+            <td class="api-documentation">
+                <p>This operation is used to upload an individual notice.
+            The payload consists of a single notice definition, configured to be an Early Engagement, a Future Opportunity, or a Live Opportunity.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Notice-Copy">POST Draft/Notice/Copy</a></td>
+            <td class="api-documentation">
+                <p>This operation will create a copy of an identified notice using the provided new notice identifier.
+            The notice being copied is identified by the internally assigned GUID.
+            The provided identifier should be the user-defined notice id, which cannot be the same as an existing notice
+            - a new GUID will be assigned and returned to the caller.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Notice-CopyAwarded">POST Draft/Notice/CopyAwarded</a></td>
+            <td class="api-documentation">
+                <p>This operation will create a copy of an identified awarded notice using the provided new notice identifier and the new type.
+            The notice being copied is identified by the internally assigned GUID.
+            The provided identifier should be the user-defined notice id, which cannot be the same as an existing notice
+            - a new GUID will be assigned and returned to the caller.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Notice-Convert">POST Draft/Notice/Convert</a></td>
+            <td class="api-documentation">
+                <p>Converts an existing future opportunity into a current opportunity.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Notice-Update">POST Draft/Notice/Update</a></td>
+            <td class="api-documentation">
+                <p>This operation allows an existing notice to be updated.
+            A Notice object is provided including the notice id and its new state.
+            The provided details will replace those currently stored.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name">
+				Version 2 = <a href="/apidocumentation/Notices/2/POST-rest-publish-draft-notice">POST api/rest/2/publish_draft_notice/{MimeType}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/POST-Draft-Notice-Publish">POST Draft/Notice/Publish</a>
+			</td>
+            <td class="api-documentation">
+                <p>This operation allows an existing notice to be published.
+            This will make the current state of the notice visible to the public through the Contracts Finder online service.
+            The publish request may include comments that are recorded against the publish action.
+            If the VisibleToPublic flag is false, notifications will be suppressed to anybody watching this notice
+            - this is only appropriate for minor modifications to existing notices.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Notice-Validate">POST Draft/Notice/Validate</a></td>
+            <td class="api-documentation">
+                <p>This operation is used to simply validate the notice. This is used when validation has already failed after a user has
+            attempted to publish the notice. Needed because we refresh the page if validation fails - losing the error messages.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-AdditionalDetail-Add">POST Draft/AdditionalDetail/Add</a></td>
+            <td class="api-documentation">
+                <p>This operation is to be used to upload additional information relating to a single notice.
+            The payload consists of a single additional detail definition.
+            The operation requires the identity of a previously created notice, with which the additional detail data will be associated.
+            This requires the caller to have access to the GUID identifying the notice, which could be obtained using Draft/Notices/Lookup.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Draft-AdditionalDetails-id">GET Draft/AdditionalDetails/{id}</a></td>
+            <td class="api-documentation">
+                <p>Gets a collection of AdditionalDetail objects associated with the specified notice.
+            The notice is identified by its GUID.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-AdditionalDetail-Update">POST Draft/AdditionalDetail/Update</a></td>
+            <td class="api-documentation">
+                <p>This operation allows an individual additional detail to be updated.
+            The provided AdditionalDetail object identifies the additional detail and describes its updated state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-AdditionalDetail-Set">POST Draft/AdditionalDetail/Set</a></td>
+            <td class="api-documentation">
+                <p>This operation allows multiple additional details to be added or updated.
+            The provided AdditionalDetails object contains all the new and updated AdditionalDetail objects.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Notice-Delete">POST Draft/Notice/Delete</a></td>
+            <td class="api-documentation">
+                <p>This operation allows a draft notice to be deleted, as identified by the provided GUID.
+            A draft notice cannot be deleted once it has been published.
+            To remove a published notice from the Contracts Finder online service, use the Published/Notice/Withdraw operation.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-AdditionalDetail-Delete">POST Draft/AdditionalDetail/Delete</a></td>
+            <td class="api-documentation">
+                <p>This operation allows an additional detail to be deleted, as identified by the provided GUID.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Draft-AdditionalDetail-Attachment-id">GET Draft/AdditionalDetail/Attachment/{id}</a></td>
+            <td class="api-documentation">
+                <p>Get an attachment given its id.
+            The return is an AdditionalDetail object containing all of the information necessary to create the file attachment.</p>
+            </td>
+        </tr>
+        <tr>
+			<td>
+				Version 2 = <a href="/apidocumentation/Notices/2/GET-rest-get-draft-awards">GET api/rest/2/get_draft_awards/{MimeType}/{id}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/GET-Draft-Awards-id">GET Draft/Awards/{id}</a>
+			</td>
+            <td class="api-documentation">
+                <p>Gets all award details for the specified notice.
+		            This method will return multiple items if present.
+				    Multiple award details identify multiple suppliers associated with a single award.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name">
+				Version 2 = <a href="/apidocumentation/Notices/2/POST-rest-add-draft-award">POST api/rest/2/add_draft_award/{MimeType}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/POST-Draft-Award-Add">POST Draft/Award/Add</a>
+			</td>
+            <td class="api-documentation">
+                <p>This operation is used to award a single notice.
+            The payload consists of a single award definition.
+            The operation requires the identity of a previously created notice with which the award data will be associated.
+            The caller needs to have access to the GUID identifying the notice - which could be obtained using Draft/Notices/Lookup.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name">
+				Version 2 = <a href="/apidocumentation/Notices/2/POST-rest-update-draft-award">POST api/rest/2/update_draft_award/{MimeType}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/POST-Draft-Award-Update">POST Draft/Award/Update</a>
+			</td>
+            <td class="api-documentation">
+                <p>This method allows the award details for a notice to be updated.
+            The provided AwardDetail should identify the notice associated with the award and contain its updated state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Award-SetNoticeAwards">POST Draft/Award/SetNoticeAwards</a></td>
+            <td class="api-documentation">
+                <p>This method allows multiple award details for a notice to be updated.
+            The provided AwardDetails should identify the notice associated with the awards and contain the updated state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name">
+				Version 2 = <a href="/apidocumentation/Notices/2/POST-rest-import-draft-notices">POST api/rest/2/import_draft_notices/{MimeType}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/POST-Draft-Notices-Import">POST Draft/Notices/Import</a>
+			</td>
+            <td class="api-documentation">
+                <p>This operation is to be used to upload multiple notices, including award information and additional data where relevant.
+            Note that the operation may be used to upload notices with award information, but cannot be used to add award details to already existing notices.
+            Similarly, uploaded notices may include additional data, but additional cannot be added to already existing notices.
+            This is because the awarded and additional detail information supplied in the import is implicitly associated with an imported notice
+            and there is no means to select a previously imported notice.
+            Where a notice is awarded to multiple suppliers, this is indicated by providing multiple AwardDetail items. Note that only supplier-specific
+            information should vary between AwardDetail items - award-level information will be set by the first item only: i.e. Value, Start Date, End
+            Date, Awarded Date, Procedure Type.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/POST-Draft-Notices-ImportFlat">POST Draft/Notices/ImportFlat</a></td>
+            <td class="api-documentation">
+                <p>This operation provides the same functionality as Draft/Notices/Import.
+            However, the input format for this variant is simpler in structure, but is more restrictive.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Draft-Notices-Lookup-identifier">GET Draft/Notices/Lookup/{identifier}</a></td>
+            <td class="api-documentation">
+                <p>This operation is used to return the internal system ID for the specified notice(s).
+            The notice of interest is indicated by passing in the user-defined unique identifier.
+            (The user-defined identifier is specified by a user at creation, for example through the Contracts Finder online service).
+            All notices that have an identifier beginning with the supplied text are returned.
+            A collection of details are returned for the notices matching the seach criterion.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Draft-Notices-Statistics">GET Draft/Notices/Statistics</a></td>
+            <td class="api-documentation">
+                <p>Get basic statistics for signed in user&#39;s organisation notices.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="CountryApi">CountryApi</h2>
+    <p>Methods for retrieving country data.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Country-Countries">GET Country/Countries</a></td>
+            <td class="api-documentation">
+                <p>Gets country data relevant to the Contracts Finder system.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="CpvCodeApi">CpvCodeApi</h2>
+    <p>Methods for retrieving CPV Codes information.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-CpvCodes-Children-requestCode">GET CpvCodes/Children/{requestCode}</a></td>
+            <td class="api-documentation">
+                <p>Gets a collection of CPVCode objects where the parent code matches the supplied CPV code.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-CpvCodes-Parents-requestCode">GET CpvCodes/Parents/{requestCode}</a></td>
+            <td class="api-documentation">
+                <p>Returns any CPVCode object that is a parent of the supplied request code.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-CpvCodes-Sectors">GET CpvCodes/Sectors</a></td>
+            <td class="api-documentation">
+                <p>Gets a collection of the root CPVCode objects.
+            These are the &quot;sector&quot; codes, beneath which all other CPV codes are arranged.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-CpvCodes-Codes-codes">GET CpvCodes/Codes/{codes}</a></td>
+            <td class="api-documentation">
+                <p>Gets a collection of CPVCode objects according to the provided, comma-separated list of CPV codes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-CpvCodes-Search-identifier">GET CpvCodes/Search/{identifier}</a></td>
+            <td class="api-documentation">
+                <p>Gets a collection of CPVCode objects based on the supplied identifier.
+            If the identifier is numeric then the lookup will match against the CPV code,
+            otherwise it will match against the CPV description.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="SearchApi">SearchApi</h2>
+    <p>Methods to support searching the Contracts Finder notices.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name">
+				Version 2 = <a href="/apidocumentation/Notices/2/POST-rest-searches-search">POST api/rest/2/search_notices/{MimeType}</a>
+				<br>
+				<br>
+				Version 1 = <a href="/apidocumentation/Notices/1/POST-Searches-Search">POST Searches/Search</a>
+			</td>
+            <td class="api-documentation">
+                <p>Searches for notices based on the provided search criteria.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="RegionApi">RegionApi</h2>
+    <p>Methods related to region data.</p>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="/apidocumentation/Notices/1/GET-Region-Regions">GET Region/Regions</a></td>
+            <td class="api-documentation">
+                <p>Gets all Region data relevant to the Contracts Finder system.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>        <h2>Authorisation</h2>
+        <p>Authorisation is based on the <a href="http://tools.ietf.org/html/rfc6749#page-40" target="_blank">OAuth 2.0 client credentials grant </a>.</p>
+        <table class="help-page-table">
+            <thead>
+                <tr><th>API</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="api-name">
+                        <a href="/apidocumentation/Authentication">POST token</a>
+                    </td>
+                    <td class="api-documentation">
+                        <p>OAuth token end point</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+</body>
+</html>
