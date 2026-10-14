@@ -1,0 +1,23 @@
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&limit=5&sort=rent_approval_date%20desc
+Fetched: 2026-10-14T15:42:06Z from GitHub Actions
+Status, type, bytes: 200 application/json 1423
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:42:06 GMT
+content-type: application/json
+vary: Accept-Encoding
+apigw-requestid: FPZgUginyQ0EM2A=
+x-content-type-options: nosniff
+last-modified: Wed, 14 Oct 2026 15:42:06 GMT
+cache-control: max-age=300
+cf-cache-status: MISS
+set-cookie: _cfuvid=T6eTvLr3wZS7RMfJzkbL_da7kFG6.1GZq6GaTyauqYE-1791992525.6545715-1.0.1.1-IjL87DjZj40ifS7TkQuZ5n9LMv65QH5Zmtzlmx2bMvo; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+strict-transport-security: max-age=31536000; includeSubDomains
+server: cloudflare
+cf-ray: a4a7b1255f207aa8-YYZ
+
+=== FILE TYPE: JSON text data
+=== FIRST 10000 BYTES
+{"success":true,"result":{"resource_id":"d_c9f57187485a850908655db0e8cfe651","fields":[{"type":"text","id":"rent_approval_date"},{"type":"text","id":"town"},{"type":"text","id":"block"},{"type":"text","id":"street_name"},{"type":"text","id":"flat_type"},{"type":"numeric","id":"monthly_rent"},{"type":"int4","id":"_id"}],"records":[{"_id":209854,"rent_approval_date":"2026-09","town":"TAMPINES","block":"627B","street_name":"TAMPINES ST 61","flat_type":"4-ROOM","monthly_rent":"3500"},{"_id":209855,"rent_approval_date":"2026-09","town":"TAMPINES","block":"663C","street_name":"TAMPINES ST 64","flat_type":"5-ROOM","monthly_rent":"2800"},{"_id":209856,"rent_approval_date":"2026-09","town":"TOA PAYOH","block":"263","street_name":"TOA PAYOH EAST","flat_type":"3-ROOM","monthly_rent":"3650"},{"_id":209857,"rent_approval_date":"2026-09","town":"BEDOK","block":"808A","street_name":"CHAI CHEE RD","flat_type":"4-ROOM","monthly_rent":"3500"},{"_id":209858,"rent_approval_date":"2026-09","town":"BEDOK","block":"123","street_name":"BEDOK RESERVOIR RD","flat_type":"4-ROOM","monthly_rent":"3900"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&limit=5&sort=rent_approval_date%20desc","next":"/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&offset=5&limit=5&sort=rent_approval_date%20desc"},"total":212597,"limit":5,"sort":"rent_approval_date%20desc"}}
