@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/package_search?q=tariff&rows=15&fl=name,title,license_title
+Fetched: 2026-10-14T15:45:43Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 894
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:45:43 GMT
+content-type: application/json;charset=utf-8
+content-length: 894
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 10000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 165, "facets": {}, "results": [{"name": "foi-02429", "title": "FOI-02429"}, {"name": "foi-03361", "title": "FOI-03361"}, {"name": "foi-02889", "title": "FOI-02889"}, {"name": "foi-03787", "title": "FOI-03787"}, {"name": "foi-02239", "title": "FOI-02239"}, {"name": "foi-02179", "title": "FOI-02179"}, {"name": "foi-01567", "title": "FOI-01567"}, {"name": "foi-03961", "title": "FOI-03961"}, {"name": "foi-01347", "title": "FOI-01347"}, {"name": "foi-02052", "title": "FOI-02052"}, {"name": "foi-01518", "title": "FOI-01518"}, {"name": "foi-02661", "title": "FOI-02661"}, {"name": "foi-02295", "title": "FOI-02295"}, {"name": "foi-02294", "title": "FOI-02294"}, {"name": "foi-03081", "title": "FOI-03081"}], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
