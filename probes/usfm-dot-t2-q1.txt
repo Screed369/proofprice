@@ -1,0 +1,32 @@
+URL: https://data.transportation.gov/resource/wqw2-rjgd.json?$where=year=2026%20AND%20quarter=1&$select=city,cur_fare&$order=cur_passengers%20DESC&$limit=5
+Fetched: 2026-10-14T15:58:51Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 314
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:58:51 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDY2Ml81XzM1OTNiRDVSYk1FSmZ5dVhSa19VSjZvNFlpUHVTdw---gzilJ3VuGHs4P9DZSpyEgQmVlIV4yN--gzip--gzip"
+X-SODA2-Fields: ["city","cur_fare"]
+X-SODA2-Types: ["text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:53:41 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:53:41 GMT
+Last-Modified: Thu, 03 Sep 2026 17:53:41 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: c9b30d98124eadd1272e85667c1dd36e
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+[{"city":"New York City, NY (Metropolitan Area)","cur_fare":"272.1276572"}
+,{"city":"Los Angeles, CA (Metropolitan Area)","cur_fare":"283.8684885"}
+,{"city":"Miami, FL (Metropolitan Area)","cur_fare":"251.3520265"}
+,{"city":"Orlando, FL","cur_fare":"226.9444088"}
+,{"city":"Chicago, IL","cur_fare":"241.3742367"}]
