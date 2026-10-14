@@ -1,0 +1,28 @@
+URL: https://datacatalog.cookcountyil.gov/resource/nj4t-kc8j.json?$select=township_code%2Ctownship_name&$where=year%20%3D%20'2024'%20AND%20township_code%20%3D%20'19'&$limit=1
+Fetched: 2026-10-14T14:34:41Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 50
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:34:41 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuMTkwNThfMTdfNTY0MHUzVTZzTEsxVDFrMVg0a2FKbjFDRlQ2LXhuZw-qvkaYKI1lSHDKh4Jn1fiDZV24k0--gzip--gzip"
+X-SODA2-Fields: ["township_code","township_name"]
+X-SODA2-Types: ["text","text"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+Last-Modified: Thu, 01 Oct 2026 15:48:40 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 57192810d7196712c6808405eeb73e1c
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 600 BYTES
+[{"township_code":"19","township_name":"Lemont"}]
