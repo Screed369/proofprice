@@ -1,0 +1,23 @@
+URL: https://www.data.qld.gov.au/api/3/action/datastore_search_sql?sql=SELECT%20COUNT(*)%20AS%20n%20FROM%20%22420319e2-6518-4243-83a6-3c7769bd7e6c%22
+Fetched: 2026-10-14T13:20:10Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 262
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 262
+date: Wed, 14 Oct 2026 13:20:10 GMT
+strict-transport-security: max-age=31536000
+server: nginx
+cache-control: public, max-age=1800, must-revalidate
+vary: Cookie
+x-cache: Miss from cloudfront
+via: 1.1 b3878c2824f290db3e70933a839545a8.cloudfront.net (CloudFront)
+x-amz-cf-pop: DFW56-P8
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: hBv2iA_s5wyO_TyhoSfLn-fIPoOA0LX9Ne6SnWWX9s0XEIKBaLQ2SQ==
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+{"help": "https://www.data.qld.gov.au/api/3/action/help_show?name=datastore_search_sql", "success": true, "result": {"sql": "SELECT COUNT(*) AS n FROM \"420319e2-6518-4243-83a6-3c7769bd7e6c\"", "records": [{"n": 92244}], "fields": [{"id": "n", "type": "int8"}]}}
