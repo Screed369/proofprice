@@ -1,0 +1,22 @@
+URL: https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices
+Fetched: 2026-10-14T15:44:53Z from GitHub Actions
+Status, type, bytes: 200 application/json 1095
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:44:53 GMT
+content-type: application/json
+content-length: 1095
+allow: DELETE, GET, HEAD, POST, PUT, OPTIONS, PATCH
+strict-transport-security: max-age=31536000; includeSubDomains
+x-xss-protection: 1
+cf-cache-status: DYNAMIC
+set-cookie: __cf_bm=CYcqfUzHLp7Kd.w01dFLXHO.1tf4K2eOdNHqzmfdVAs-1791992693.4838634-1.0.1.1-91V3qp3CbZRcBbwj9rug7g6Rgza2EfJ1Kg5qE2GGmuhNKVX9H_568LbNSY2QlwwwRufLVMvnL8NXbjetw1KXUFi2lcX47dJOW5hNm_E6VHGBLCeIKIwWYD1E8acOFEI2; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk; Expires=Wed, 14 Oct 2026 16:14:53 GMT
+set-cookie: _cfuvid=d_T8zeUU0ucjyVhGftqNIVY4RxgC0S_6rwKEFJP.FMY-1791992693.4838634-1.0.1.1-iBNh61alWttq9Rjx2opI.TSskCRtVc2nlrBevD2ktbQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk
+server: cloudflare
+cf-ray: a4a7b53e4b0ceb00-ORD
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"contacts":[{"email":"hpi@ons.gov.uk","name":"Ceri Lewis","telephone":"+44 (0)1633 456400"}],"description":"An experimental price index tracking the prices paid for renting property from private landlords in the United Kingdom","keywords":["private renting","regions,IPHRP,rent,inflation"],"id":"index-private-housing-rental-prices","last_updated":"2024-02-14T09:54:29.063Z","links":{"editions":{"href":"https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices/editions"},"latest_version":{"href":"https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices/editions/time-series/versions/41","id":"41"},"self":{"href":"https://api.beta.ons.gov.uk/v1/datasets/index-private-housing-rental-prices"},"taxonomy":{"href":"https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/housing"}},"national_statistic":false,"next_release":"TBC","qmi":{"href":"https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/indexofprivatehousingrentalpricesqmi"},"release_frequency":"Monthly","state":"published","title":"Index of Private Housing Rental Prices"}
