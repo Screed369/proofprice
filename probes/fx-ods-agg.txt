@@ -1,0 +1,32 @@
+URL: https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records?select=dep_code%2C%20count(*)%20as%20n%2C%20avg(gazole_prix)%20as%20avg_diesel&where=gazole_prix%3E0&group_by=dep_code&order_by=n%20desc&limit=3
+Fetched: 2026-10-14T13:20:25Z from GitHub Actions
+Status, type, bytes: 400 application/json 144
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+server: openresty
+date: Wed, 14 Oct 2026 13:20:24 GMT
+content-type: application/json
+content-length: 144
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+vary: Accept-Language, Cookie, Host
+content-language: fr-fr
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS
+access-control-max-age: 1000
+access-control-allow-headers: Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type, ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+access-control-expose-headers: ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit, X-RateLimit-dataset-Reset
+strict-transport-security: max-age=31536000;includeSubdomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: upgrade-insecure-requests; 
+x-ua-compatible: IE=edge
+permissions-policy: midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{
+  "error_code": "ODSQLError",
+  "message": "ODSQL query is malformed: Unknown field: dep_code. Clause(s) containing the error(s): group_by."
+}
