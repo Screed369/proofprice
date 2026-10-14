@@ -99,6 +99,33 @@ async function explore(item: string, arg: string) {
     }
     return { status: res.status, bytes: text.length, lineCount, head, series: [...bySeries.entries()].slice(0, 40) };
   }
+  if (item === "catalog") {
+    const u = "https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/adhocs/3607consumerpricespriceleveldistributionsmicrodataaugust2026/consumerpricespriceleveldistributionsmicrodata202608.xlsx";
+    const res = await fetch(u, { headers: UA });
+    const buf = Buffer.from(await res.arrayBuffer());
+    const sheets = readWorkbook(buf);
+    const info: any[] = [];
+    const products: any[] = [];
+    const regions = new Map<string, string>();
+    const dates = new Set<unknown>();
+    for (let i = 4; i < sheets.length; i++) {
+      const s = sheets[i];
+      const hi = s.rows.findIndex((r) => r[0] === "INDEX_DATE");
+      if (hi < 0) {
+        info.push({ i, name: s.name, rows: s.rows.length, first: s.rows.slice(0, 3).map((r) => r.slice(0, 6)) });
+        continue;
+      }
+      const header = s.rows[hi];
+      info.push({ i, name: s.name, title: s.rows[0][0], rows: s.rows.length, cols: header.length, extraHeader: header.slice(18, 30) });
+      for (const r of s.rows.slice(hi + 1)) {
+        if (!r.length || r[0] === null || r[0] === undefined) continue;
+        dates.add(r[0]);
+        regions.set(String(r[7]), String(r[8]));
+        if (r[7] === "[z]") products.push([s.name, r[1], r[2], r[3], r[10], r[9], r[16], r[17]]);
+      }
+    }
+    return { sheets: info, dates: [...dates], regions: [...regions.entries()], count: products.length, products };
+  }
   return { hint: "item must be xlsx | sheet | quotes" };
 }
 
