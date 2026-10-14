@@ -2,18 +2,43 @@
 // Pure functions, unit-tested. Nothing here needs editing when a source or category is added.
 
 import { z } from "zod";
-import { CATEGORIES, countriesFor, countryHelp, exampleUrls, paramSchemas, sourcesFor } from "./registry";
+import type { CategoryPlugin } from "./plugin";
+import { CATEGORIES, countriesFor, countryHelp, exampleUrls, historySources, paramSchemas, sourcesFor } from "./registry";
+import { coverageSchema, errorSchema, historyAnswerSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
+import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { joinAnd } from "./text";
+
+const jsonBody = (schemaName: string) => ({ content: { "application/json": { schema: { $ref: `#/components/schemas/${schemaName}` } } } });
+
+const STALE_HEADER = {
+  "X-ProofPrice-Stale": {
+    description:
+      "Present only when the official source did not respond and the answer is ProofPrice's own recent daily copy: snapshot=<date>. The body says so too (extra.stale is true).",
+    schema: { type: "string" },
+  },
+};
 
 const answerResponses = {
   "200": {
     description:
       "A price answer: median, 10th–90th percentile range, sample size, period, confidence, source and licence. " +
-      "For an official statistic: the published average or median (value, measure), its reference period, confidence, source and licence; the range fields and sample_size may be null.",
-    content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
+      "For an official statistic: the published average or median (value, measure), its reference period, confidence, source and licence; the range fields and sample_size may be null. " +
+      "If the official source does not respond and ProofPrice holds a recent daily copy of it, you get that copy instead of an error: status is ok, period and as_of carry the snapshot date, the notice says so and extra.stale is true.",
+    headers: STALE_HEADER,
+    ...jsonBody("PriceAnswer"),
   },
-  "400": { description: "Missing or invalid parameter.", content: { "application/json": { schema: { $ref: "#/components/schemas/Error" } } } },
-  "502": { description: "The official source could not be reached.", content: { "application/json": { schema: { $ref: "#/components/schemas/Error" } } } },
+  "400": { description: "Missing or invalid parameter, or a country that is not covered yet.", ...jsonBody("Error") },
+  "502": { description: "The official source could not be reached and ProofPrice holds no recent copy of it.", ...jsonBody("Error") },
+};
+
+const historyResponses = {
+  "200": {
+    description:
+      "A daily series from the ProofPrice price library: date, median, typical_low, typical_high and sample_size for each day, with the change over the period, source and licence. " +
+      "status is ok (two or more days), insufficient_history (one day so far) or no_history_yet.",
+    ...jsonBody("HistoryAnswer"),
+  },
+  "400": { description: "Missing or invalid parameter, a country that is not covered yet, or a place this history does not key on.", ...jsonBody("Error") },
 };
 
 export function jsonSchemaOf(schema: z.ZodTypeAny): Record<string, unknown> {
@@ -24,7 +49,7 @@ export function jsonSchemaOf(schema: z.ZodTypeAny): Record<string, unknown> {
   return s;
 }
 
-function parameters(catId: string) {
+function parameters(catId: string, onlyCountries?: string[]) {
   const cat = CATEGORIES.find((c) => c.id === catId)!;
   const required = new Set(cat.required ?? []);
   const params = [
@@ -33,7 +58,7 @@ function parameters(catId: string) {
       in: "query",
       required: true,
       description: countryHelp(cat),
-      schema: { type: "string", enum: countriesFor(cat.id) },
+      schema: { type: "string", enum: onlyCountries ?? countriesFor(cat.id) },
     },
   ];
   for (const [name, schema] of Object.entries(paramSchemas(cat))) {
@@ -42,16 +67,46 @@ function parameters(catId: string) {
   return params;
 }
 
+const FIXED_TAG = "Coverage";
+
+/** The text of an MCP tool description names other tools (pricepaid_fuel_prices_now); in the REST description say the endpoint instead. */
+function restWording(text: string): string {
+  const byTool = new Map<string, string>();
+  for (const c of CATEGORIES) {
+    byTool.set(c.tool, `GET /api/v1/${c.restPath}`);
+    if (c.history) byTool.set(c.history.tool, `GET /api/v1/${c.restPath}/history`);
+  }
+  byTool.set("pricepaid_coverage", "GET /api/v1/coverage");
+  return text.replace(/pricepaid_[a-z0-9_]+/g, (name) => byTool.get(name) ?? name);
+}
+
+function operationId(tool: string): string {
+  return tool.replace(/^pricepaid_/, "").replace(/_([a-z])/g, (_, c) => c.toUpperCase());
+}
+
+/** One tag per category, named after the category's title, so directories group the operations the way the MCP tools are grouped. */
+function tagFor(cat: CategoryPlugin) {
+  const sources = sourcesFor(cat.id).map((s) => s.info.name);
+  return {
+    name: cat.title,
+    description: `${cat.noun}: ${joinAnd(countriesFor(cat.id))}. Sources: ${joinAnd(sources)}.`,
+  };
+}
+
 export function buildOpenApi(baseUrl: string) {
   const paths: Record<string, unknown> = {};
   for (const cat of CATEGORIES) {
     const places = joinAnd(sourcesFor(cat.id).flatMap((s) => s.countries));
+    const tag = cat.title;
     paths[`/api/v1/${cat.restPath}`] = {
       get: {
-        operationId: cat.tool.replace(/^pricepaid_/, "").replace(/_([a-z])/g, (_, c) => c.toUpperCase()),
+        operationId: operationId(cat.tool),
+        tags: [tag],
         summary: `${cat.title} (${places})`,
-        description: cat.description(
-          sourcesFor(cat.id).flatMap((s) => s.countries.map((code) => ({ place: s.placeName, code, freshness: s.info.freshness }))),
+        description: restWording(
+          cat.description(
+            sourcesFor(cat.id).flatMap((s) => s.countries.map((code) => ({ place: s.placeName, code, freshness: s.info.freshness }))),
+          ),
         ),
         parameters: parameters(cat.id),
         responses: answerResponses,
@@ -60,17 +115,15 @@ export function buildOpenApi(baseUrl: string) {
     if (cat.history) {
       paths[`/api/v1/${cat.restPath}/history`] = {
         get: {
-          operationId: cat.history.tool.replace(/^pricepaid_/, "").replace(/_([a-z])/g, (_, c) => c.toUpperCase()),
-          summary: `${cat.history.title} (daily snapshots, building up from October 2026)`,
-          description: cat.history.description,
+          operationId: operationId(cat.history.tool),
+          tags: [tag],
+          summary: `${cat.history.title} (daily snapshots, ${joinAnd(historySources(cat).flatMap((s) => s.countries))})`,
+          description: restWording(cat.history.description),
           parameters: [
-            ...parameters(cat.id),
-            { name: "days", in: "query", required: false, description: "How many recent days to include. Default 30.", schema: { type: "integer", minimum: 2, maximum: 366 } },
+            ...parameters(cat.id, [...new Set(historySources(cat).flatMap((s) => s.countries))]),
+            { name: "days", in: "query", required: false, description: "How many recent days to include (2–366). Default 30.", schema: { type: "integer", minimum: 2, maximum: 366, default: 30 } },
           ],
-          responses: {
-            ...answerResponses,
-            "200": { description: "A daily series: date, median, typical_low, typical_high, sample_size, with the change over the period, source and licence.", content: { "application/json": { schema: { type: "object", additionalProperties: true } } } },
-          },
+          responses: historyResponses,
         },
       };
     }
@@ -78,25 +131,38 @@ export function buildOpenApi(baseUrl: string) {
   paths["/api/v1/coverage"] = {
     get: {
       operationId: "coverage",
+      tags: [FIXED_TAG],
       summary: "Which countries, categories and sources are covered",
-      responses: { "200": { description: "Sources with licence and update frequency.", content: { "application/json": { schema: { type: "object", additionalProperties: true } } } } },
+      description:
+        "Call this first when unsure whether a place is covered. Lists every tool and REST path with its countries, every source with its publisher, licence and update frequency, working example requests and what is coming next.",
+      responses: {
+        "200": { description: "Tools, sources with licence and update frequency, examples and rules.", ...jsonBody("Coverage") },
+      },
     },
   };
   return {
     openapi: "3.1.0",
     info: {
       title: "ProofPrice API",
-      termsOfService: "https://proofprice.com/terms",
-      contact: { name: "ProofPrice", email: "hello@proofprice.com", url: "https://proofprice.com" },
-      version: "0.3.0",
+      termsOfService: `${SITE_URL}/terms`,
+      contact: { name: "ProofPrice", email: "hello@proofprice.com", url: SITE_URL },
+      license: { name: "ProofPrice terms of use", url: `${SITE_URL}/terms` },
+      "x-logo": { url: `${SITE_URL}/icon-512.png` },
+      version: SERVICE_VERSION,
       description:
-        "What did people actually pay for X, here, recently? Returns a price range from official open data: median, 10th–90th percentile, sample size, period, confidence, source and licence. Aggregates only; never individual records.",
+        "What did people actually pay for X, here, recently? Returns a price range from official open data: median, 10th–90th percentile, sample size, period, confidence, source and licence. Aggregates only; never individual records. " +
+        "The data keeps each source's own licence: every answer names its source, that source's licence and the attribution line to show, so reuse follows the publisher's licence. " +
+        "The ProofPrice terms of use govern use of the API itself. Free, read-only, no API key.",
     },
     servers: [{ url: baseUrl }],
+    tags: [...CATEGORIES.map(tagFor), { name: FIXED_TAG, description: "Which countries, categories and official sources are covered." }],
     paths,
     components: {
       schemas: {
-        Error: { type: "object", properties: { error: { type: "string" }, detail: {} }, required: ["error"] },
+        Error: toJsonSchema(errorSchema),
+        PriceAnswer: toJsonSchema(priceAnswerSchema),
+        HistoryAnswer: toJsonSchema(historyAnswerSchema),
+        Coverage: toJsonSchema(coverageSchema),
       },
     },
   };
@@ -106,7 +172,8 @@ export function buildOpenApi(baseUrl: string) {
 export const ANSWER_FORMAT =
   'JSON with: query, status ("ok" or not), price {currency, unit, value, measure ("median" for ranges built from records, "average" or "median" for official statistics), median, typical_low, typical_high, min, max}, sample_size, period {from, to}, confidence (low / medium / high), price_type ("transaction", "posted_pump_price", "posted_price", "contract_price", "reimbursement_price" or "official_statistic"), as_of, source {id, name, publisher, licence, licence_url, attribution, url}, method, method_url, summary (one plain sentence), notice, an optional statistic {measure, reference_period} (official statistics only), and an optional extra object.\n' +
   "value is the headline figure and measure says what kind of figure it is. typical_low and typical_high are the 10th and 90th percentiles.\n" +
-  "For official statistics (price_type official_statistic) the range fields (median, typical_low, typical_high, min, max) may be null, because the publisher gives one figure and not a distribution, and sample_size may be null when the publisher does not state it.";
+  "For official statistics (price_type official_statistic) the range fields (median, typical_low, typical_high, min, max) may be null, because the publisher gives one figure and not a distribution, and sample_size may be null when the publisher does not state it.\n" +
+  "If the official source did not respond and ProofPrice holds a recent daily copy of it, the answer is that copy instead of an error: status is ok, period and as_of give the snapshot date, the notice says so and extra.stale is true (REST also sets an X-ProofPrice-Stale header).";
 
 export const CITING_RULES = [
   "Cite the source and attribution line returned with each answer.",
@@ -121,9 +188,12 @@ export function buildLlmsTxt(baseUrl: string): string {
     const ex = exampleUrls().find((e) => e.category === c.id);
     return `- GET ${baseUrl}${ex?.path ?? `/api/v1/${c.restPath}`} — ${c.title.toLowerCase()} (${joinAnd(countriesFor(c.id))})`;
   });
-  const history = CATEGORIES.filter((c) => c.history).map(
-    (c) => `- GET ${baseUrl}/api/v1/${c.restPath}/history?${new URLSearchParams(exampleUrls().find((e) => e.category === c.id)?.path.split("?")[1] ?? "")}&days=30 — ${c.history!.title.toLowerCase()} (daily snapshots, building up from October 2026)`,
-  );
+  const history = CATEGORIES.filter((c) => c.history).map((c) => {
+    // an example of a source that really keeps history (the first example of the category may belong to one that does not)
+    const keepers = new Set(historySources(c).map((s) => s.info.id));
+    const ex = exampleUrls().find((e) => e.category === c.id && keepers.has(e.source)) ?? exampleUrls().find((e) => e.category === c.id);
+    return `- GET ${baseUrl}/api/v1/${c.restPath}/history?${new URLSearchParams(ex?.path.split("?")[1] ?? "")}&days=30 — ${c.history!.title.toLowerCase()} (daily snapshots of ${joinAnd(historySources(c).flatMap((s) => s.countries))})`;
+  });
   return `# ProofPrice
 
 > Real prices actually paid, for AI agents. Ask "what did people actually pay for X, here, recently?" and get a range (median, 10th–90th percentile), sample size, period, confidence, source and licence. Built from official open data. Aggregates only.

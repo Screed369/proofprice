@@ -1,0 +1,106 @@
+// Stale-if-error. When a live official source times out or answers with a server error, and the price library holds a
+// recent daily snapshot for the same source, area and item, the shared request path (runCategory in lib/registry.ts)
+// answers from that snapshot instead of failing with a 502. One implementation for every source: a source qualifies by
+// having harvest() and historyKey() (the same two hooks that feed /history), so nothing is written per source.
+//
+// The answer keeps the one answer format. status is "ok", period and as_of carry the snapshot date, and the notice and
+// summary say plainly that the official source did not respond and this is our copy. extra.stale is true so a Monitor or an
+// agent can tell it apart from a live answer. A snapshot older than STALE_MAX_DAYS is not "recent" and is never served.
+
+import { fmtMoney, METHOD_URL, NOTICE, sourceBlock } from "./answer";
+import type { PriceAnswer } from "./answer";
+import type { CategoryPlugin, Params, SourcePlugin } from "./plugin";
+import { readDaily, readMeta } from "./library/store";
+import { MIN_PUBLISH, confidenceLabel } from "./stats";
+
+/** A snapshot older than this many days is not recent enough to stand in for a live answer. */
+export const STALE_MAX_DAYS = 7;
+
+export interface StaleOptions {
+  cat: CategoryPlugin;
+  src: SourcePlugin;
+  /** The prepared request parameters (country already normalised). */
+  params: Params;
+  /** The request as echoed in the answer's query. */
+  query: Record<string, unknown>;
+  /** Why the live source failed (its message is kept in extra.live_source_error; the detail, which may hold a URL, is not). */
+  error: unknown;
+  baseUrl?: string;
+  today?: Date;
+}
+
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+
+/** Parameters that name a place. A request that names one cannot be answered from a whole-country row. */
+const PLACE_PARAMS = ["postcode", "area", "town", "region", "county", "department", "province", "city", "commune", "postcode_district"];
+
+/** The sentence agents and people see, word for word. */
+export const staleSentence = (date: string) => `The official source did not respond; this is our copy from ${date}.`;
+
+/** An answer built from the newest recent library snapshot for this request, or null if there is none to stand in. */
+export function staleAnswer(o: StaleOptions): PriceAnswer | null {
+  const { cat, src } = o;
+  if (!src.harvest || !src.historyKey) return null;
+  try {
+    const key = src.historyKey(o.params);
+    if (!key) return null;
+    // The library keys some requests to the whole country ("ALL"). If the caller named a smaller place, a national figure
+    // would answer a different question, so keep the honest 502 instead.
+    if (key.area === "ALL" && PLACE_PARAMS.some((k) => String(o.params[k] ?? "").trim() !== "")) return null;
+    const today = o.today ?? new Date();
+    const from = iso(new Date(today.getTime() - STALE_MAX_DAYS * 86400000));
+    const rows = readDaily(src.info.id, { area: key.area, item: key.item, from, to: iso(today) }).filter(
+      (r) => r.n >= MIN_PUBLISH && Number.isFinite(r.median) && r.median > 0,
+    );
+    const last = rows[rows.length - 1];
+    if (!last) return null;
+    const meta = readMeta(src.info.id);
+    const currency = meta?.currency;
+    const unit = cat.history?.unit?.(key.item) ?? meta?.unit;
+    if (!currency || !unit) return null; // never state a price without saying in what currency and per what
+
+    const itemLabel = cat.history?.itemLabel?.(key.item) ?? key.item;
+    const money = (v: number) => fmtMoney(v, currency);
+    const conf = confidenceLabel(last.n);
+    const sentence = staleSentence(last.date);
+    const err: any = o.error;
+    return {
+      query: o.query,
+      status: "ok",
+      price: {
+        currency,
+        unit,
+        value: last.median,
+        measure: "median",
+        median: last.median,
+        typical_low: last.low,
+        typical_high: last.high,
+        min: last.min,
+        max: last.max,
+      },
+      sample_size: last.n,
+      period: { from: last.date, to: last.date },
+      confidence: conf,
+      price_type: src.info.price_type,
+      as_of: last.date,
+      source: sourceBlock(src.info),
+      method:
+        "Our copy of the official source: once a day ProofPrice stores, for each area and item, the median, 10th–90th percentile and count. " +
+        "It is shown because the live source did not respond. The copy covers the area named in the summary.",
+      method_url: (o.baseUrl ?? "") + METHOD_URL,
+      summary:
+        `${itemLabel} in ${key.label}: median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), ` +
+        `based on ${last.n} records in our copy of ${src.info.name} (${src.info.publisher}) taken on ${last.date}. ${sentence} Confidence: ${conf}.`,
+      notice: `${sentence} ${NOTICE}`,
+      extra: {
+        stale: true,
+        snapshot_date: last.date,
+        snapshot_area: key.label,
+        snapshot_item: itemLabel,
+        live_source_error: String(err?.message ?? err ?? "unknown").slice(0, 200),
+      },
+    };
+  } catch {
+    return null; // any trouble reading the library: fall back to the honest 502
+  }
+}

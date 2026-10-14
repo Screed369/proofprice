@@ -6,9 +6,10 @@ import { CATEGORY_MODULES, SOURCE_MODULES } from "./registry.generated";
 import type { CategoryPlugin, HandleContext, Params, SourceInfo, SourcePlugin } from "./plugin";
 import { num } from "./plugin";
 import { normaliseCountry } from "./countries";
-import { InputError } from "./http";
+import { InputError, isSourceOutage } from "./http";
 import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
 import { readDaily, readMeta } from "./library/store";
+import { staleAnswer } from "./stale";
 import { MIN_PUBLISH } from "./stats";
 import { joinAnd } from "./text";
 
@@ -130,9 +131,24 @@ function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePlugin; p
   return { src, prepared: cat.prepare ? cat.prepare(withCountry) : withCountry };
 }
 
+/** Answer one request. Stale-if-error lives here, once, for every source: if the live official source times out, cannot be
+ *  reached or answers with a server error, and the price library holds a recent snapshot for this source, area and item
+ *  (a source with harvest() and historyKey()), the answer comes from that snapshot (lib/stale.ts) instead of a 502.
+ *  Bad input, an unrecognised reply and sources without library data still fail as before. */
 export async function runCategory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}): Promise<PriceAnswer> {
   const { src, prepared } = pickSource(cat, params);
-  return src.handle(prepared, ctx);
+  try {
+    return await src.handle(prepared, ctx);
+  } catch (err) {
+    if (isSourceOutage(err)) {
+      const stale = staleAnswer({ cat, src, params: prepared, query: knownParams(cat, prepared), error: err, baseUrl: ctx.baseUrl });
+      if (stale) {
+        console.warn(`[stale-if-error] ${src.info.id}: ${(err as Error).message}; answered from the library copy of ${stale.as_of}`);
+        return stale;
+      }
+    }
+    throw err;
+  }
 }
 
 // ---------- history (from the price library) ----------
@@ -269,9 +285,9 @@ export function exampleUrls(): { category: string; source: string; path: string;
 }
 
 export const COMING_NEXT = [
-  "Verified used-phone receipts",
-  "More countries: Taiwan, South Korea, Japan, NSW (Australia)",
-  "Daily price history (fuel) from the ProofPrice price library",
+  "Rents, government contract prices, groceries, airfares and medical prices (being added now)",
+  "Home prices for the Nordics, Benelux, Portugal and Austria (being added now)",
+  "Verified receipts",
 ];
 
 export function coverage() {

@@ -217,7 +217,9 @@ Description: Which countries, categories and official sources the price-paid too
 ${ANSWER_FORMAT}
 
 Confidence: high = 50+ records, medium = 15–49, low = ${MIN_PUBLISH}–14. Below ${MIN_PUBLISH} records no figure is returned.
-Errors: HTTP 400 with {error, detail} for a missing or invalid parameter or an uncovered country; 502 when the official source cannot be reached. MCP tools return isError with a plain message.
+Errors: HTTP 400 with {error, detail} for a missing or invalid parameter or an uncovered country; 502 when the official source cannot be reached and we hold no recent copy of it. MCP tools return isError with a plain message.
+Stale-if-error: when the official source does not respond but our price library holds a recent daily snapshot for the same source, area and item, you get that copy instead of an error (status ok, extra.stale true, the snapshot date in period and as_of, and the notice says "The official source did not respond; this is our copy from <date>."). REST also sets an X-ProofPrice-Stale header.
+MCP tools declare an outputSchema and return the answer both as text and as structuredContent.
 
 ## Rules for citing
 ${CITING_RULES.map((r) => `- ${r}`).join("\n")}
@@ -261,13 +263,16 @@ ${COMING_NEXT.map((c) => `- ${c}`).join("\n")}
 export const MCP_REGISTRY_SCHEMA = "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json";
 export const MCP_REGISTRY_NAME = "com.proofprice/pricepaid";
 
+/** The MCP Registry allows at most 100 characters. */
+export const SERVER_DESCRIPTION = "Prices people actually paid, from official open data: homes, rents, fuel, energy, food, medicines.";
+
 /** The shape of server.json at the repo root (also used by tests to check the file has not drifted). */
 export function buildServerJson(version: string) {
   return {
     $schema: MCP_REGISTRY_SCHEMA,
     name: MCP_REGISTRY_NAME,
     title: "ProofPrice",
-    description: "Real prices actually paid (not asking prices): home sales and fuel, with sample size and licence.",
+    description: SERVER_DESCRIPTION,
     version,
     websiteUrl: SITE_URL,
     remotes: [{ type: "streamable-http", url: MCP_URL }],

@@ -52,9 +52,9 @@ export interface PriceAnswer {
   extra?: Record<string, unknown>;
 }
 
-const NOTICE = "Information, not a valuation or offer. Ranges describe past recorded prices.";
+export const NOTICE = "Information, not a valuation or offer. Ranges describe past recorded prices.";
 
-function sourceBlock(src: SourceInfo): PriceAnswer["source"] {
+export function sourceBlock(src: SourceInfo): PriceAnswer["source"] {
   return {
     id: src.id,
     name: src.name,
