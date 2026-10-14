@@ -270,7 +270,7 @@ export function exampleUrls(): { category: string; source: string; path: string;
 
 export const COMING_NEXT = [
   "Verified used-phone receipts",
-  "More countries: Ireland, Taiwan, South Korea, Japan, NSW (Australia)",
+  "More countries: Taiwan, South Korea, Japan, NSW (Australia)",
   "Daily price history (fuel) from the ProofPrice price library",
 ];
 
