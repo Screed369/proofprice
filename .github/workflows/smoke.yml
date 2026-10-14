@@ -1,0 +1,54 @@
+# Smoke test: ask production every example question listed in /api/v1/coverage, from GitHub's servers, and save a
+# one-line-per-example report. Runs twice a day for free and on demand.
+# Start:  gh workflow run smoke.yml -R Screed369/proofprice --ref main
+# Read:   git fetch origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/smoke.txt
+# Read-only: plain GETs to our own public API.
+name: Smoke test production
+
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Base URL to test"
+        required: false
+        default: "https://proofprice.com"
+  schedule:
+    - cron: "40 6 * * *"
+    - cron: "40 18 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Ask every example question
+        env:
+          BASE: ${{ github.event.inputs.base || 'https://proofprice.com' }}
+        run: |
+          set -u
+          case "$BASE" in https://*) ;; *) echo "Only https bases are allowed"; exit 1;; esac
+          python3 -I scripts/smoke.py "$BASE" > /tmp/smoke.txt; echo "exit=$?" > /tmp/smoke-exit.txt
+          cat /tmp/smoke.txt
+      - name: Save the report to the probes branch
+        run: |
+          set -u
+          git config user.name "proofprice-librarian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes; then git checkout -q -B probes origin/probes; else git checkout -q --orphan probes; fi
+          git rm -rq --cached . >/dev/null 2>&1 || true
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name probes -exec rm -rf {} +
+          mkdir -p probes && cp /tmp/smoke.txt probes/smoke.txt
+          git add probes
+          git commit -qm "Smoke test $(date -u +%FT%TZ)" || true
+          for i in 1 2 3 4 5; do
+            git push -q origin probes && break
+            sleep $((i * 3))
+            git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git rebase -q origin/probes
+          done
+          grep -q "exit=0" /tmp/smoke-exit.txt
