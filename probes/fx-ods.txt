@@ -1,0 +1,32 @@
+URL: https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records?select=id,ville,gazole_prix&limit=3
+Fetched: 2026-10-14T13:17:23Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 233
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: openresty
+date: Wed, 14 Oct 2026 13:17:23 GMT
+content-type: application/json; charset=utf-8
+content-length: 233
+x-ratelimit-remaining: 49999
+x-ratelimit-limit: 50000
+x-ratelimit-reset: 2026-10-15 00:00:00+00:00
+cache-control: public, max-age=300
+vary: Accept-Language, Cookie, Host
+content-language: fr-fr
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS
+access-control-max-age: 1000
+access-control-allow-headers: Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type, ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+access-control-expose-headers: ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit, X-RateLimit-dataset-Reset
+strict-transport-security: max-age=31536000;includeSubdomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: upgrade-insecure-requests; 
+x-ua-compatible: IE=edge
+permissions-policy: midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"total_count": 9818, "results": [{"id": 58240003, "ville": "Chantenay-Saint-Imbert", "gazole_prix": 2.25}, {"id": 80570001, "ville": "Dargnies", "gazole_prix": 2.419}, {"id": 56580001, "ville": "Br\u00e9han", "gazole_prix": 2.399}]}
