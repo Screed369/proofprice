@@ -1,0 +1,484 @@
+URL: https://data.transportation.gov/api/views/yj5y-b2ir.json
+Fetched: 2026-10-14T17:37:20Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 52135
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 17:37:20 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 49c9ff0bbad01c91e88ffb438834551b
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{
+  "id" : "yj5y-b2ir",
+  "name" : "Consumer Airfare Report: Table 6 - Contiguous State City-Pair Markets That Average At Least 10 Passengers Per Day",
+  "assetType" : "dataset",
+  "attribution" : "Department of Transportation Office of the Assistant Secretary for Aviation and International Affairs",
+  "attributionLink" : "https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+  "averageRating" : 0,
+  "category" : "Aviation",
+  "createdAt" : 1491928049,
+  "description" : "Available on the internet only, this table is an expanded version of Table 1 that lists all city-pair markets in the contiguous United States that average at least 10 passengers each day.  All records are aggregated as directionless city pair markets.  All traffic traveling in both directions is added together.\r\nhttps://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "domainCName" : "data.transportation.gov",
+  "downloadCount" : 69782,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "indexUpdatedAt" : 1550768385,
+  "licenseId" : "USGOV_WORKS",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 29356237,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1550768284,
+  "publicationGroup" : 14142910,
+  "publicationStage" : "published",
+  "rowIdentifierColumnId" : 368606723,
+  "rowsUpdatedAt" : 1788457881,
+  "rowsUpdatedBy" : "k8vj-xcy6",
+  "tableId" : 15406690,
+  "totalTimesRated" : 0,
+  "viewCount" : 106718,
+  "viewLastModified" : 1788457878,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1495714161,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 801087,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1495714161,
+    "targetAudience" : "public",
+    "workflowId" : 568,
+    "reviewer" : {
+      "id" : "9ni7-629e",
+      "displayName" : "Daniel Morgan"
+    },
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "9ni7-629e",
+      "displayName" : "Daniel Morgan"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 5258
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 368606704,
+    "name" : "tbl",
+    "dataTypeName" : "text",
+    "description" : "Name of the data table",
+    "fieldName" : "tbl",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 46033415,
+    "width" : 136,
+    "cachedContents" : {
+      "largest" : "Table 6",
+      "non_null" : "669547",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Table 6",
+        "count" : "669547"
+      } ],
+      "smallest" : "Table 6",
+      "not_null" : "513926",
+      "count" : "669547",
+      "cardinality" : "669547"
+    },
+    "format" : {
+      "displayStyle" : "plain",
+      "align" : "center"
+    }
+  }, {
+    "id" : 368606705,
+    "name" : "Year",
+    "dataTypeName" : "number",
+    "description" : "Year",
+    "fieldName" : "year",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 46033416,
+    "width" : 148,
+    "cachedContents" : {
+      "largest" : "2026",
+      "non_null" : "669547",
+      "average" : "2006.931826399600",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2025",
+        "count" : "26380"
+      }, {
+        "item" : "2024",
+        "count" : "25342"
+      }, {
+        "item" : "2019",
+        "count" : "25075"
+      }, {
+        "item" : "2023",
+        "count" : "23902"
+      }, {
+        "item" : "2018",
+        "count" : "23718"
+      }, {
+        "item" : "2022",
+        "count" : "23178"
+      }, {
+        "item" : "2017",
+        "count" : "22751"
+      }, {
+        "item" : "2014",
+        "count" : "22741"
+      }, {
+        "item" : "2016",
+        "count" : "22564"
+      }, {
+        "item" : "2015",
+        "count" : "22460"
+      }, {
+        "item" : "2005",
+        "count" : "22243"
+      }, {
+        "item" : "2011",
+        "count" : "22177"
+      }, {
+        "item" : "2021",
+        "count" : "22105"
+      }, {
+        "item" : "2006",
+        "count" : "22099"
+      }, {
+        "item" : "2012",
+        "count" : "22064"
+      }, {
+        "item" : "2013",
+        "count" : "22014"
+      }, {
+        "item" : "2010",
+        "count" : "21933"
+      }, {
+        "item" : "2007",
+        "count" : "21928"
+      }, {
+        "item" : "2000",
+        "count" : "21848"
+      }, {
+        "item" : "2008",
+        "count" : "21580"
+      } ],
+      "smallest" : "1996",
+      "not_null" : "513926",
+      "count" : "669547",
+      "sum" : "982423233",
+      "cardinality" : "669547"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "center",
+      "mask" : "####"
+    }
+  }, {
+    "id" : 368606706,
+    "name" : "quarter",
+    "dataTypeName" : "number",
+    "description" : "Quarter",
+    "fieldName" : "quarter",
+    "position" : 3,
+    "renderTypeName" : "number",
+    "tableColumnId" : 46033417,
+    "width" : 184,
+    "cachedContents" : {
+      "largest" : "4",
+      "non_null" : "669547",
+      "average" : "2.509534947856552",
+      "null" : "0",
+      "top" : [ {
+        "item" : "3",
+        "count" : "170756"
+      }, {
+        "item" : "2",
+        "count" : "167962"
+      }, {
+        "item" : "4",
+        "count" : "167425"
+      }, {
+        "item" : "1",
+        "count" : "163404"
+      } ],
+      "smallest" : "1",
+      "not_null" : "513926",
+      "count" : "669547",
+      "sum" : "1228455",
+      "cardinality" : "669547"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "center"
+    }
+  }, {
+    "id" : 368606707,
+    "name" : "citymarketid_1",
+    "dataTypeName" : "number",
+    "description" : "City market ID is an identification number assigned by US DOT to identify a city market.  Use this field to consolidate airports serving the same city market",
+    "fieldName" : "citymarketid_1",
+    "position" : 4,
+    "renderTypeName" : "number",
+    "tableColumnId" : 46033418,
+    "width" : 268,
+    "cachedContents" : {
+      "largest" : "36587",
+      "non_null" : "669547",
+      "average" : "31637.21149300839",
+      "null" : "0",
+      "top" : [ {
+        "item" : "30397",
+        "count" : "19391"
+      }, {
+        "item" : "30977",
+        "count" : "17929"
+      }, {
+        "item" : "30721",
+        "count" : "17387"
+      }, {
+        "item" : "30194",
+        "count" : "17011"
+      }, {
+        "item" : "30325",
+        "count" : "15724"
+      }, {
+        "item" : "30423",
+        "count" : "13531"
+      }, {
+        "item" : "31057",
+        "count" : "12343"
+      }, {
+        "item" : "31295",
+        "count" : "12105"
+      }, {
+        "item" : "32575",
+        "count" : "11390"
+      }, {
+        "item" : "31453",
+        "count" : "10904"
+      }, {
+        "item" : "30140",
+        "count" : "10658"
+      }, {
+        "item" : "30647",
+        "count" : "10488"
+      }, {
+        "item" : "32211",
+        "count" : "9931"
+      }, {
+        "item" : "31066",
+        "count" : "9400"
+      }, {
+        "item" : "33105",
+        "count" : "8728"
+      }, {
+        "item" : "30257",
+        "count" : "8141"
+      }, {
+        "item" : "30599",
+        "count" : "7979"
+      }, {
+        "item" : "32467",
+        "count" : "7893"
+      }, {
+        "item" : "30792",
+        "count" : "7851"
+      }, {
+        "item" : "33198",
+        "count" : "7818"
+      } ],
+      "smallest" : "30135",
+      "not_null" : "513926",
+      "count" : "669547",
+      "sum" : "15486889584",
+      "cardinality" : "669547"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "center",
+      "mask" : "#####"
+    }
+  }, {
+    "id" : 368606708,
+    "name" : "citymarketid_2",
+    "dataTypeName" : "number",
+    "description" : "City market ID is an identification number assigned by US DOT to identify a city market.  Use this field to consolidate airports serving the same city market",
+    "fieldName" : "citymarketid_2",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 46033419,
+    "width" : 268,
+    "cachedContents" : {
+      "largest" : "36422",
+      "non_null" : "669547",
+      "average" : "32560.79547102745",
+      "null" : "0",
+      "top" : [ {
+        "item" : "30852",
+        "count" : "22254"
+      }, {
+        "item" : "32457",
+        "count" : "17722"
+      }, {
+        "item" : "30559",
+        "count" : "17170"
+      }, {
+        "item" : "33195",
+        "count" : "16112"
+      }, {
+        "item" : "31703",
+        "count" : "15266"
+      }, {
+        "item" : "33570",
+        "count" : "15031"
+      }, {
+        "item" : "30466",
+        "count" : "14876"
+      }, {
+        "item" : "31123",
+        "count" : "13655"
+      }, {
+        "item" : "31454",
+        "count" : "13581"
+      }, {
+        "item" : "32575",
+        "count" : "13249"
+      }, {
+        "item" : "34100",
+        "count" : "12341"
+      }, {
+        "item" : "34614",
+        "count" : "12266"
+      }, {
+        "item" : "33214",
+        "count" : "11980"
+      }, {
+        "item" : "34057",
+        "count" : "11357"
+      }, {
+        "item" : "31650",
+        "count" : "10920"
+      }, {
+        "item" : "32467",
+        "count" : "10774"
+      }, {
+        "item" : "32211",
+        "count" : "10539"
+      }, {
+        "item" : "34492",
+        "count" : "10485"
+      }, {
+        "item" : "34027",
+        "count" : "10384"
+      }, {
+        "item" : "33192",
+        "count" : "9937"
+      } ],
+      "smallest" : "30135",
+      "not_null" : "513926",
+      "count" : "669547",
+      "sum" : "15938997795",
+      "cardinality" : "669547"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "center",
+      "mask" : "#####"
+    }
+  }, {
+    "id" : 368606709,
+    "name" : "city1",
+    "dataTypeName" : "text",
+    "description" : "City1 is used to consolidate airports serving the same city market",
+    "fieldName" : "city1",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 46033420,
+    "width" : 160,
+    "cachedContents" : {
+      "largest" : "Wilmington, DE",
+      "non_null" : "669547",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Atlanta, GA (Metropolitan Area)",
+        "count" : "19391"
+      }, {
+        "item" : "Chicago, IL",
+        "count" : "17929"
+      }, {
+        "item" : "Boston, MA (Metropolitan Area)",
+        "count" : "17387"
+      }, {
+        "item" : "Dallas/Fort Worth, TX",
+        "count" : "17011"
+      }, {
+        "item" : "Denver, CO",
+        "count" : "15724"
+      }, {
+        "item" : "Austin, TX",
+        "count" : "13531"
+      }, {
+        "item" : "Charlotte, NC",
+        "count" : "12343"
+      }, {
+        "item" : "Detroit, MI",
+        "count" : "12105"
+      }, {
+        "item" : "Los Angeles, CA (Metropolitan Area)",
+        "count" : "11390"
+      }, {
+        "item" : "Houston, TX",
+        "count" : "10904"
+      }, {
+        "item" : "Albuquerque, NM",
+        "count" : "10658"
+      }, {
+        "item" : "Cleveland, OH (Metropolitan Area)",
+        "count" : "10488"
+      }, {
+        "item" : "Las Vegas, NV",
+        "count" : "9931"
+      }, {
+        "item" : "Columbus, OH",
+        "count" : "9400"
+      }, {
+        "item" : "Cincinnati, OH",
+        "count" : "8728"
+      }, {
+        "item" : "Albany, NY",
+        "count" : "8141"
+      }, {
+        "item" : "Birmingham, AL"
