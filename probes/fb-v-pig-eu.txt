@@ -1,0 +1,58 @@
+URL: https://api.tech.ec.europa.eu/agrifood/api/pigmeat/prices?memberStateCodes=EU&pigClasses=SE&beginDate=01/09/2026&endDate=14/10/2026
+Fetched: 2026-10-14T14:52:34Z from GitHub Actions
+Status, type, bytes: 200 application/json 918
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Wed, 14 Oct 2026 14:52:34 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+activityid: 6b0c6575-d57f-4d64-ba32-2d357d1d58aa
+Access-Control-Expose-Headers: 
+Access-Control-Allow-Origin: 
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Headers: authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,Authorization
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Server: Europa
+Connection: close
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+[ {
+  "memberStateCode" : "EU",
+  "memberStateName" : "European Union",
+  "beginDate" : "28/09/2026",
+  "endDate" : "04/10/2026",
+  "price" : "€160.43",
+  "unit" : "100 KG",
+  "weekNumber" : 40,
+  "pigClass" : "Average S + E"
+}, {
+  "memberStateCode" : "EU",
+  "memberStateName" : "European Union",
+  "beginDate" : "21/09/2026",
+  "endDate" : "27/09/2026",
+  "price" : "€162.27",
+  "unit" : "100 KG",
+  "weekNumber" : 39,
+  "pigClass" : "Average S + E"
+}, {
+  "memberStateCode" : "EU",
+  "memberStateName" : "European Union",
+  "beginDate" : "14/09/2026",
+  "endDate" : "20/09/2026",
+  "price" : "€167.17",
+  "unit" : "100 KG",
+  "weekNumber" : 38,
+  "pigClass" : "Average S + E"
+}, {
+  "memberStateCode" : "EU",
+  "memberStateName" : "European Union",
+  "beginDate" : "07/09/2026",
+  "endDate" : "13/09/2026",
+  "price" : "€170.05",
+  "unit" : "100 KG",
+  "weekNumber" : 37,
+  "pigClass" : "Average S + E"
+} ]
