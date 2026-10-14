@@ -2,7 +2,7 @@
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
-const ALLOWED = ["www.tenancy.govt.nz", "www.mbie.govt.nz", "data.api.abs.gov.au", "services2.arcgis.com", "services.arcgis.com"];
+const ALLOWED = ["www.tenancy.govt.nz", "www.mbie.govt.nz", "data.api.abs.gov.au", "services2.arcgis.com", "services.arcgis.com", "www.abs.gov.au"];
 
 export async function GET(req: Request) {
   const u = new URL(req.url);
@@ -19,6 +19,10 @@ export async function GET(req: Request) {
   const headers: Record<string, string> = { "user-agent": "ProofPrice-diag/1.0 (+https://proofprice.com; hello@proofprice.com)" };
   if (mode === "tail") headers.range = `bytes=-${n}`;
   const res = await fetch(t, { headers, signal: AbortSignal.timeout(50000) });
+  if (mode === "b64") {
+    const buf = Buffer.from(await res.arrayBuffer());
+    return new Response(`status ${res.status} type ${res.headers.get("content-type")} bytes ${buf.length}\n` + buf.toString("base64"), { headers: { "content-type": "text/plain; charset=utf-8" } });
+  }
   const meta = `status ${res.status} type ${res.headers.get("content-type")} length ${res.headers.get("content-length")} range ${res.headers.get("content-range")}\n`;
   const text = await res.text();
   if (mode === "tail") return new Response(meta + `full body chars ${text.length}\n` + text.slice(-n), { headers: { "content-type": "text/plain; charset=utf-8" } });
