@@ -122,6 +122,50 @@ export async function GET(req: Request) {
         tables: Object.fromEntries(Object.entries(maps).map(([k, v]) => [k, top(v, k === "notes" ? 80 : 40)])),
       });
     }
+    if (task === "filter") {
+      const { buf } = await get(q.get("url")!);
+      const district = q.get("district") ?? "大安區";
+      const cityLetter = (q.get("city") ?? "a").toLowerCase();
+      const from = q.get("from") ?? "1141001";
+      const to = q.get("to") ?? "1150930";
+      const kinds = ["a"];
+      const stages: Record<string, { all: number[]; allUnit: number[]; dist: number[]; distUnit: number[] }> = {};
+      const st = (k: string) => (stages[k] ??= { all: [], allUnit: [], dist: [], distUnit: [] });
+      const dateByFlag = new Map<string, number>();
+      const stage = (k: string, total: number, unit: number, isDist: boolean) => {
+        const s = st(k); s.all.push(total); if (unit > 0) s.allUnit.push(unit);
+        if (isDist) { s.dist.push(total); if (unit > 0) s.distUnit.push(unit); }
+      };
+      const pct = (a: number[], p: number) => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y); const i = (s.length - 1) * p; const lo = Math.floor(i), hi = Math.ceil(i); return Math.round(s[lo] + (s[hi] - s[lo]) * (i - lo)); };
+      const sum = (a: number[]) => ({ n: a.length, p10: pct(a, 0.1), med: pct(a, 0.5), p90: pct(a, 0.9) });
+      for (const e of entries(buf).filter((e) => /^[a-z]_lvr_land_a\.csv$/i.test(e.name))) {
+        const rec = csv(read(buf, e).toString("utf8"));
+        const h = rec[0]; const ix = (n: string) => h.indexOf(n);
+        for (const r of rec.slice(2)) {
+          const g = (n: string) => r[ix(n)] ?? "";
+          const d = g("交易年月日");
+          if (d < from || d > to) continue;
+          const obj = g("交易標的");
+          if (obj !== "房地(土地+建物)" && obj !== "房地(土地+建物)+車位") continue;
+          const t = g("建物型態");
+          if (!/^(住宅大樓|華廈|公寓|透天厝|套房)/.test(t)) continue;
+          if (g("主要用途") !== "住家用") continue;
+          const total = Number(g("總價元")); const unit = Number(g("單價元平方公尺"));
+          const isDist = e.name[0].toLowerCase() === cityLetter && g("鄉鎮市區") === district;
+          const note = g("備註");
+          stage("S0 residential", total, unit, isDist);
+          const rel = note.includes("特殊關係");
+          const pre = note.includes("預售屋、或土地及建物分件登記案件");
+          const other = /協議價購|政府機關|標讓售|急買急賣|債權債務|毛胚|瑕疵|地上權|重建或重劃|畸零地|民情風俗|拍賣|法拍|地清/.test(note);
+          bump(dateByFlag, (pre ? "pre " : "nopre ") + d.slice(0, 5));
+          if (!rel) stage("S1 no relatives", total, unit, isDist);
+          if (!rel && !other) stage("S2 no relatives/other", total, unit, isDist);
+          if (!rel && !other && !pre) stage("S3 also no presale flag", total, unit, isDist);
+          if (pre && !rel && !other) stage("S4 presale-flag only", total, unit, isDist);
+        }
+      }
+      return Response.json({ district, from, to, stages: Object.fromEntries(Object.entries(stages).map(([k, v]) => [k, { nation_total: sum(v.all), nation_unit: sum(v.allUnit), dist_total: sum(v.dist), dist_unit: sum(v.distUnit) }])), dateByFlag: top(dateByFlag, 60) });
+    }
     return Response.json({ error: "unknown task" }, { status: 400 });
   } catch (e: any) {
     return Response.json({ error: String(e?.message ?? e), cause: String(e?.cause?.code ?? "") }, { status: 500 });
