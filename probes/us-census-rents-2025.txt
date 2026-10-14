@@ -1,0 +1,87 @@
+URL: https://api.census.gov/data/2025/acs/acs5?get=NAME,B25064_001E&for=state:48
+Fetched: 2026-10-14T15:42:23Z from GitHub Actions
+Status, type, bytes: 200 text/html 8531
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 302 
+Set-Cookie: originalReferer=http%3A%2F%2Fapi.census.gov%2Fdata%2F2025%2Facs%2Facs5%3Fget%3DNAME%2CB25064_001E%26for%3Dstate%3A48; Path=/; Secure
+X-DataWebAPI-KeyError: 1
+Location: https://api.census.gov/data/missing_key.html
+Content-Length: 0
+Date: Wed, 14 Oct 2026 15:42:22 GMT
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS010383f0=01283c52a424bbf10ede2d2c057749cbc7025c077bed990d359d5c6952ff07eb1a83b0be1a2a2af459d925524dd1890c0c13d07c99; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+
+HTTP/1.1 200 
+Cache-Control: private
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,OPTIONS
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Referrer-Policy: same-origin
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content
+X-Content-Type-Options: nosniff
+Accept-Ranges: bytes
+ETag: W/"8531-1785156040889"
+Last-Modified: Mon, 27 Jul 2026 12:40:40 GMT
+Content-Type: text/html
+Content-Length: 8531
+Date: Wed, 14 Oct 2026 15:42:22 GMT
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS010383f0=01283c52a45abe1be49a3415508275f65d315381cc43f57eb0d54615810b8e3b63d77cdc1679c6517b57565a6d42576c581f716af0; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text
+=== FIRST 3000 BYTES
+<html style="font-size: 14px;">
+
+<head>
+    <title>Missing Key</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <script type="text/javascript" src="assets/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
+
+            // Get the referrer from the cookie
+            document.getElementById('text-field').value = decodeURIComponent(getCookie('originalReferer'));
+            
+            $(".menu-activator").click(function () {
+                $(".gov-menu").toggle()
+                $(".chevron").toggleClass('rotate')
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <div data-v-8adc6fed="" data-v-2f72e816="" class="gov-banner noprint">
+            <div data-v-8adc6fed="" class="aqua-layout horizontal align-start justify-start banner-header">
+                <img data-v-8adc6fed=""
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII="
+                    alt="U.S flag" class="usflag" role="img" aria-hidden="true">
+                <span data-v-8adc6fed="">
+                    <div data-v-8adc6fed="" class="aqua-layout horizontal" tabindex="0">
+                        <div data-v-8adc6fed="" tabindex="0"
+                            aria-label="An official website of the United States government">
+                            An official website of the United States government
+                        </div>
+                        <div data-v-8adc6fed="" class="menu-activator"
+                            aria-label="Here's how you know. Press enter for more information." tabindex="0">
+                            <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start"> Here&rsquo;s how you
+                                know <div data-v-8adc6fed="" class="chevron"><img data-v-8adc6fed="" class="aqua-icon"
+                                        src="assets/images/chevron-down.svg"
+                                        style="width: 0.75rem; height: 0.75rem; max-height: 0.75rem; transition: all 500ms ease 0s; filter: invert(30%) sepia(8%) saturate(3837%) hue-rotate(171deg) brightness(99%) contrast(89%);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start gov-menu" style="d
