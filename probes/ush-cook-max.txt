@@ -1,0 +1,28 @@
+URL: https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.json?$select=max(sale_date)%20as%20latest%2Ccount(*)%20as%20n&$where=sale_date%20%3C%3D%20'2026-10-14T00%3A00%3A00'
+Fetched: 2026-10-14T14:15:39Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 53
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:39 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuMzg2NF8xNV8xNDY2aTVWY3RhWDFMVmZGY0praFd5MWN1TWJJSWxV--gzit6PPyEaITbfMUQ_fJcNa31AJud2---gzip"
+X-SODA2-Fields: ["latest","n"]
+X-SODA2-Types: ["floating_timestamp","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 1269060f83250842edd4b18165626c94
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 2000 BYTES
+[{"latest":"2026-08-12T00:00:00.000","n":"2688811"}]
