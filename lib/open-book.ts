@@ -298,6 +298,7 @@ export function buildServerJson(version: string) {
     description: SERVER_DESCRIPTION,
     version,
     websiteUrl: SITE_URL,
+    repository: { url: "https://github.com/Screed369/proofprice-mcp", source: "github" },
     remotes: [{ type: "streamable-http", url: MCP_URL }],
   };
 }

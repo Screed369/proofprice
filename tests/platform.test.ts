@@ -107,12 +107,12 @@ test("the service version is 0.4.0 in OpenAPI, MCP serverInfo and server.json", 
   assert.match(await res.text(), /"serverInfo":\{"name":"proofprice","version":"0\.4\.0"\}/);
 });
 
-test("server.json: the registry description is at most 100 characters and has no repository field yet", () => {
+test("server.json: the registry description is at most 100 characters and links the public integration repo", () => {
   const file = JSON.parse(readFileSync(new URL("../server.json", import.meta.url), "utf8"));
   assert.equal(file.description, "Prices people actually paid, from official open data: homes, rents, fuel, energy, food, medicines.");
   assert.equal(SERVER_DESCRIPTION, file.description);
   assert.ok(file.description.length <= 100);
-  assert.ok(!("repository" in file));
+  assert.deepEqual(file.repository, { url: "https://github.com/Screed369/proofprice-mcp", source: "github" });
 });
 
 test("coming next lists the work in progress", () => {
