@@ -1,0 +1,31 @@
+URL: https://opendata.cbs.nl/ODataCatalog/Tables?$format=json&$filter=substringof('koopwoningen',Title)&$select=Identifier,Title,Period,Frequency
+Fetched: 2026-10-14T15:42:54Z from GitHub Actions
+Status, type, bytes: 200 application/json;odata=minimalmetadata;streaming=true;charset=utf-8 2645
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+Expires: Thu, 15 Oct 2026 15:42:54 GMT
+Vary: *
+X-Request-Origin: External
+X-Content-Type-Options: nosniff
+DataServiceVersion: 3.0;
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 14 Oct 2026 15:42:54 GMT
+Content-Length: 2645
+TXID: 011c2c51
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=0122609a-a2fd-1acf-9678-0050569bed16_1129130162_4015613539_00000000004313590865; Path=/; Expires=Wed, 14-Oct-2026 15:43:09 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"odata.metadata":"https://opendata.cbs.nl/ODataCatalog/$metadata#Tables&$select=Identifier,Title,Period,Frequency","value":[{"Identifier":"85773NED","Title":"Bestaande koopwoningen; verkoopprijzen prijsindex 2020=100","Frequency":"Permaand","Period":"januari 1995 - augustus 2026"},{"Identifier":"85791NED","Title":"Bestaande koopwoningen; verkoopprijzen; woningtype; prijsindex 2020=100","Frequency":"Perkwartaal","Period":"1995 kwartaal 1 - 2026 kwartaal 2"},{"Identifier":"85792NED","Title":"Bestaande koopwoningen; verkoopprijzen, prijsindex 2020=100, regio","Frequency":"Perkwartaal","Period":"1e kwartaal 1995 - 2e kwartaal 2026"},{"Identifier":"85819NED","Title":"Bestaande koopwoningen; verkoopprijzen prijsindex 2020=100, regio (COROP)","Frequency":"Perkwartaal","Period":"1995 1e kwartaal - 2026 2e kwartaal"},{"Identifier":"83625NED","Title":"Bestaande koopwoningen; gemiddelde verkoopprijzen, regio","Frequency":"Perjaar","Period":"1995 t/m 2025"},{"Identifier":"70171ned","Title":"Bouwvergunningen; huur- en koopwoningen, bouwkosten, inhoud 1990-2016","Frequency":"Stopgezet","Period":"1990 - 2016"},{"Identifier":"81776NED","Title":"Energielabels van huur- en koopwoningen naar regio in 2011","Frequency":"Stopgezet","Period":"2011"},{"Identifier":"83906NED","Title":"Bestaande koopwoningen; verkoopprijzen prijsindex 2015=100 1995-2023","Frequency":"Stopgezet","Period":"januari 1995 - december 2023"},{"Identifier":"83913NED","Title":"Bestaande koopwoningen; verkoopprijzen prijsindex 2015=100, regio 1995-2023","Frequency":"Stopgezet","Period":"2015 kwartaal 1- 2023 kwartaal 4"},{"Identifier":"84997NED","Title":"Bestaande koopwoningen; verkoopprijzen prijsindex regio (COROP) 1995-2023","Frequency":"Stopgezet","Period":"1995 kwartaal 1- 2023 kwartaal 4"},{"Identifier":"83910NED","Title":"Bestaande koopwoningen; verkoopprijzen; woningtype; 1995-2023","Frequency":"Stopgezet","Period":"1995 1e kwartaal - 2023 4e kwartaal"},{"Identifier":"80330ned","Title":"Bestaande koopwoningen; COROP en grote gemeenten; 1995-2012; 2005=100","Frequency":"Stopgezet","Period":"januari 1995 - december 2012"},{"Identifier":"81884NED","Title":"Bestaande koopwoningen; verkoopprijzen prijsindex 2010=100   1995-2017","Frequency":"Stopgezet","Period":"januari 1995 - december 2017"},{"Identifier":"81885NED","Title":"Bestaande koopwoningen; regio; verkoopprijzen prijsindex 2010=100;1995-2017","Frequency":"Stopgezet","Period":"1e kwartaal 1995 - 4e kwartaal 2017"},{"Identifier":"71533ned","Title":"Bestaande koopwoningen naar woningtype en regio 1995 - 2012; 2005=100     ","Frequency":"Stopgezet","Period":"januari 1995 - december 2012"}]}
