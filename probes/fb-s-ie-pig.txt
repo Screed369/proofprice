@@ -1,0 +1,58 @@
+URL: https://api.tech.ec.europa.eu/agrifood/api/pigmeat/prices?memberStateCodes=IE&beginDate=21/09/2026&endDate=14/10/2026
+Fetched: 2026-10-14T14:27:45Z from GitHub Actions
+Status, type, bytes: 200 application/json 842
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Wed, 14 Oct 2026 14:27:45 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+activityid: 6975b9cf-1515-4615-b709-2d96fe1cdda4
+Access-Control-Expose-Headers: 
+Access-Control-Allow-Origin: 
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Headers: authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,Authorization
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Server: Europa
+Connection: close
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+[ {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "28/09/2026",
+  "endDate" : "04/10/2026",
+  "price" : "€168.20",
+  "unit" : "100 KG",
+  "weekNumber" : 40,
+  "pigClass" : "E"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "28/09/2026",
+  "endDate" : "04/10/2026",
+  "price" : "€169.80",
+  "unit" : "100 KG",
+  "weekNumber" : 40,
+  "pigClass" : "S"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "21/09/2026",
+  "endDate" : "27/09/2026",
+  "price" : "€168.15",
+  "unit" : "100 KG",
+  "weekNumber" : 39,
+  "pigClass" : "E"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "21/09/2026",
+  "endDate" : "27/09/2026",
+  "price" : "€169.94",
+  "unit" : "100 KG",
+  "weekNumber" : 39,
+  "pigClass" : "S"
+} ]
