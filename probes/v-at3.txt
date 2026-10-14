@@ -1,0 +1,23 @@
+URL: https://api.e-control.at/sprit/1.0/search/gas-stations/by-postalcode?postalCode=1010&fuelType=DIE&includeClosed=false
+Fetched: 2026-10-14T06:43:05Z from GitHub Actions
+Status, type, bytes: 404 application/json 140
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 404 Not Found
+date: Wed, 14 Oct 2026 06:43:05 GMT
+server: Tomcat
+vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+transfer-encoding: chunked
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-content-type-options: nosniff
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"timestamp":"2026-10-14T06:43:05.912+00:00","status":404,"error":"Not Found","path":"/sprit-backend/api/search/gas-stations/by-postalcode"}
