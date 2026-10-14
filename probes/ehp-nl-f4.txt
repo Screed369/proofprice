@@ -1,0 +1,37 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/83625NED/RegioS?$filter=Title%20eq%20'Amsterdam'
+Fetched: 2026-10-14T15:53:05Z from GitHub Actions
+Status, type, bytes: 200 application/json 239
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 14 Oct 2026 15:53:04 GMT
+Content-Length: 239
+TXID: 010976c8
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=0110d7a2-a560-1acf-9678-0050569bed16_3862664219_0582984070_00000000000017397448; Path=/; Expires=Wed, 14-Oct-2026 15:53:19 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/83625NED/$metadata#Cbs.OData.WebAPI.RegioS","value":[
+    {
+      "Key":"GM0363","Title":"Amsterdam","Description":"Begindatum voor 1830","CategoryGroupID":null
+    }
+  ]
+}
