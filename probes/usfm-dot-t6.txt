@@ -1,0 +1,31 @@
+URL: https://data.transportation.gov/resource/yj5y-b2ir.json?$limit=4
+Fetched: 2026-10-14T15:53:43Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1647
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:53:43 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDg1MV81XzMzOWNVMmMyNUo2cm5CMXpScVh0eHBmaW5VSXRtRQ---gzityMX9DTGm3iykwm9enPdHbS4SMg--gzip--gzip"
+X-SODA2-Fields: ["tbl","year","quarter","citymarketid_1","citymarketid_2","city1","city2","nsmiles","passengers","fare","carrier_lg","large_ms","fare_lg","carrier_low","lf_ms","fare_low","table_1_flag","location_1","location_1_address","location_1_city","location_1_state","location_1_zip","location_2","location_2_address","location_2_city","location_2_state","location_2_zip","tbl6pk"]
+X-SODA2-Types: ["text","number","number","number","number","text","text","number","number","number","text","number","number","text","number","number","number","point","text","text","text","text","point","text","text","text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 9f0f6180e1001c7eddf7fcf5d4b448a2
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"tbl":"Table 6","year":"2026","quarter":"1","citymarketid_1":"30135","citymarketid_2":"30194","city1":"Allentown/Bethlehem/Easton, PA","city2":"Dallas/Fort Worth, TX","nsmiles":"1307","passengers":"23.95555556","fare":"346.2875696","carrier_lg":"AA","large_ms":"0.6618738404","fare_lg":"327.9628591","carrier_low":"AA","lf_ms":"0.6618738404","fare_low":"327.9628591","table_1_flag":"0","tbl6pk":"202613013530194"}
+,{"tbl":"Table 6","year":"2026","quarter":"1","citymarketid_1":"30135","citymarketid_2":"30325","city1":"Allentown/Bethlehem/Easton, PA","city2":"Denver, CO","nsmiles":"1539","passengers":"11.68888889","fare":"344.0655894","carrier_lg":"AA","large_ms":"0.4657794677","fare_lg":"303.9836735","carrier_low":"AA","lf_ms":"0.4657794677","fare_low":"303.9836735","table_1_flag":"0","tbl6pk":"202613013530325"}
+,{"tbl":"Table 6","year":"2026","quarter":"1","citymarketid_1":"30135","citymarketid_2":"30397","city1":"Allentown/Bethlehem/Easton, PA","city2":"Atlanta, GA (Metropolitan Area)","nsmiles":"692","passengers":"79.48888889","fare":"384.2811015","carrier_lg":"DL","large_ms":"0.967291026","fare_lg":"383.6764451","carrier_low":"DL","lf_ms":"0.967291026","fare_low":"383.6764451","table_1_flag":"0","tbl6pk":"202613013530397"}
+,{"tbl":"Table 6","year":"2026","quarter":"1","citymarketid_1":"30135","citymarketid_2":"30423","city1":"Allentown/Bethlehem/Easton, PA","city2":"Austin, TX","nsmiles":"1441","passengers":"11.24444444","fare":"331.5988142","carrier_lg":"DL","large_ms":"0.4743083004","fare_lg":"331.4875","carrier_low":"AA","lf_ms":"0.4100790514","fare_low":"325.8746988","table_1_flag":"0","tbl6pk":"202613013530423"}]
