@@ -1,0 +1,17 @@
+URL: https://api.education.gov.uk/statistics/v1/publications?search=childcare
+Fetched: 2026-10-14T17:22:49Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 422
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 17:22:49 GMT
+content-type: application/json; charset=utf-8
+x-ms-middleware-request-id: 038580b4-3c45-4827-85eb-31c7a62b17f6
+request-context: appId=cid-v1:fbc5ade5-78af-4f9c-b4f4-ab63017ba9fc
+api-supported-versions: 1
+strict-transport-security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"paging":{"page":1,"pageSize":20,"totalResults":1,"totalPages":1},"results":[{"id":"0ce6a6c6-5451-4967-8dd4-2f4fa8131982","title":"Funded early education and childcare","slug":"funded-early-education-and-childcare","summary":"Annual January statistics on children under 5 registered for government funded entitlements in England, and on providers and staff delivering them.","lastPublished":"2026-07-02T08:30:03+00:00"}]}
