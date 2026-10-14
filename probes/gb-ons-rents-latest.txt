@@ -1,0 +1,214 @@
+URL: https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/latest/data
+Fetched: 2026-10-14T15:52:28Z from GitHub Actions
+Status, type, bytes: 400 text/html 7294
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+date: Wed, 14 Oct 2026 15:52:28 GMT
+content-type: text/html
+access-control-allow-methods: GET
+access-control-allow-origin: *
+allow: DELETE, GET, HEAD, POST, PUT, OPTIONS, PATCH
+strict-transport-security: max-age=31536000; includeSubDomains
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+cf-cache-status: BYPASS
+set-cookie: __cf_bm=KdOkScQaTBaaGN9X0tzmYIbiiSxHoJY15lI9B_15nfo-1791993146.6083562-1.0.1.1-uw8uULNgEPjar96LsiXvTwN433tYFUrh7JiGxf.uT1DLccfI1xRrfFiMnIqRx2I06GVPrzaYU7VAFgzlxX7XKXBWloaGIH2DyYiEHEJ2Ru3oBwZHuRYlq9CmaF.wT9fp; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk; Expires=Wed, 14 Oct 2026 16:22:28 GMT
+set-cookie: _cfuvid=W1ePzYW4boxfwuLXqjw5qNx539Qvy2yRoHsUZ.SO_Oo-1791993146.6083562-1.0.1.1-QmBbBvL7caS0ghjBxMr0SleEceiy9dY7z6.9YRUKvuc; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk
+vary: accept-encoding
+server: cloudflare
+cf-ray: a4a7c04e4bc21360-LAX
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (946)
+=== FIRST 20000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Page not found - Office for National Statistics</title>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1.0,user-scalable=1" name="viewport">
+        <meta name="theme-color" content="#58595B">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
+
+        
+
+        
+        <link rel="stylesheet" type="text/css" href="//cdn.ons.gov.uk/sixteens/ef5a1ca/css/main.css">
+		
+
+        <script>
+    // extractValue extracts the value from an undecodeable json cookie string
+    function extractValue(key, extractionString) {
+        const extractionRegex = new RegExp(`'${key}':(.*?)[,}]`)
+        const match = extractionString.match(extractionRegex)
+        if (match) {
+            return match[1]
+        }
+        
+        return null
+    }
+
+    // isUsageCookieAllowed reads the ons_cookie_policy to determine the user's usage preference. 
+    function isUsageCookieAllowed() {
+        // ons_cookie_policy handler
+        var policyCookie = document.cookie.match('(?:^|; )ons_cookie_policy=({.*?})');
+        if (policyCookie) {
+            console.debug('ons_cookie_policy found');
+
+            var usageValue = extractValue("usage", policyCookie[1]);
+            console.debug('usage is', usageValue);
+
+            return (usageValue == "true") ? true : false
+        }
+        console.debug('no cookie found - opting out');
+        return false
+    }
+
+    // unescape html entities
+    function htmlUnescape(str){
+        return str
+                .replace(/&#x3D;/g, "=");
+    }
+
+    
+    var dataLayer = [{
+        contentTitle: htmlUnescape("Page not found"),
+        "gtm.whitelist": ["google","hjtc","lcl"],
+        "gtm.blacklist": ["customScripts","sp","adm","awct","k","d","j"]
+    }];
+
+    
+
+    
+
+    
+    
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+</script>
+
+
+        <!-- Google Tag Manager -->
+        <script>
+			// The naming of this function is important as it is called from sixteens as well as from other DOM code
+			function loadGTM(){
+				(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer'
+					? '&l=' + l
+					: '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+				})(window, document, 'script', 'dataLayer', 'GTM-MBCBVQS');
+      		}
+
+			if (isUsageCookieAllowed()) {
+				loadGTM();
+			}
+	  	</script>
+        <!-- End Google Tag Manager -->
+
+        
+
+		
+		
+			<style>
+				body {
+    				min-height: 100vh;
+   	 				display: flex;
+    				flex-direction: column;
+				}
+
+				footer {
+    				margin-top: auto;
+				}
+			</style>
+		
+
+	</head>
+	<body class="error">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js' : 'js');</script>
+    <form action="/cookies/accept-all" method="GET" id="global-cookie-message"
+      class="cookies-banner cookies-banner--hidden js-cookies-banner-form clearfix"
+      aria-label="cookie banner">
+    <div class="cookies-banner__wrapper wrapper js-cookies-banner-inform">
+        <div>
+            <div class="cookies-banner__message adjust-font-size--18">
+                <h3 class="cookies-banner__heading">Cookies on ons.gov.uk</h3>
+                <p class="cookies-banner__body">Cookies are small files stored on your device when you visit a website. We use some essential cookies to make this website work.</p>
+                <p class="cookies-banner__body">We would like to set <a href="/cookies">additional cookies</a> to remember your settings and understand how you use the site. This helps us to improve our services.</p>
+            </div>
+            <div class="cookies-banner__buttons">
+                <div class="nojs--hide cookies-banner__button cookies-banner__button--accept">
+                    <button class="btn btn--full-width btn--primary btn--focus margin-right--2 font-weight-700 font-size--17 text-wrap js-accept-cookies" data-gtm-accept-cookies="true" type="submit" data-action="accept" tabindex="0">
+                        Accept additional cookies
+                    </button>
+                </div>
+                <div class="nojs--hide cookies-banner__button cookies-banner__button--reject">
+                    <button class="btn btn--full-width btn--primary btn--focus margin-right--2 font-weight-700 font-size--17 text-wrap js-reject-cookies" data-gtm-accept-cookies="false" type="submit" data-action="reject" tabindex="0">
+                        Reject additional cookies
+                    </button>
+                </div>
+                <div class="cookies-banner__button">
+                    <a href="/cookies">Manage settings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden js-cookies-banner-confirmation" tabindex="-1">
+        <div class="cookies-banner__wrapper wrapper">
+            <div class="col">
+                <div class="cookies-banner__message adjust-font-size--18">
+                    <p class="cookies-banner__confirmation-message">
+                        <span class="hidden ons-js-accepted-text">You have accepted all additional cookies.</span>
+                        <span class="hidden ons-js-rejected-text">You have rejected all additional cookies.</span>
+                        <span>You can <a href="/cookies">change your cookie preferences</a> at any time.</span>
+                        <button type="button" class="cookies-banner__button--hide js-hide-cookies-banner">Hide</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBCBVQS"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+        
+        
+		
+
+		
+
+		
+		
+			
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="//cdn.ons.gov.uk/sixteens/ef5a1ca/js/main.js"></script>
+        <script src="/js/app.js"></script>
+
+        
+        
+
+	<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4a7c04e4bc21360',t:'MTc5MTk5MzE0Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
