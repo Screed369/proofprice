@@ -51,7 +51,8 @@ export function makeZip(files: Record<string, string>, deflate = false): Buffer 
 }
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const colLetter = (i: number) => String.fromCharCode(65 + i);
+/** 0 -> A, 25 -> Z, 26 -> AA, ... */
+const colLetter = (i: number): string => (i < 26 ? "" : colLetter(Math.floor(i / 26) - 1)) + String.fromCharCode(65 + (i % 26));
 
 /**
  * A one-or-more-sheet .xlsx from rows of strings and numbers, written the way Excel does: strings are shared strings,

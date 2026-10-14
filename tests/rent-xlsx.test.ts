@@ -72,6 +72,12 @@ test("makeXlsx round trip: strings stay strings, numbers stay numbers, several s
   assert.deepEqual(sheets[1].rows, [["a", 1]]);
 });
 
+test("makeXlsx round trip with more than 26 columns (AA, AB, ...)", () => {
+  const wide = Array.from({ length: 80 }, (_, i) => (i % 3 === 0 ? i : `c${i}`));
+  const sheets = readXlsx(makeXlsx({ Wide: [wide] }));
+  assert.deepEqual(sheets[0].rows[0], wide);
+});
+
 test("excelDate converts serial numbers and rejects other numbers", () => {
   assert.equal(excelDate(45000), "2023-03-15");
   assert.equal(excelDate(46000), "2025-12-09");

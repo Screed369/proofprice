@@ -1,7 +1,7 @@
 // Tool: rents people actually agreed or paid. Sources plug in by declaring category "rent".
 // The tool name pricepaid_rent_prices is public: never rename it.
-// Rents here are always paid or agreed rents (registered tenancies, rental bonds, approved rentals, or surveys of
-// sitting tenants), never the asking rents of listings.
+// Rents here are always paid or agreed rents (registered tenancies, rental bonds, approved rentals, or official rent
+// statistics built from administrative records of tenancies), never the asking rents of listings.
 import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
@@ -30,7 +30,7 @@ export default defineCategory({
   description: (places) =>
     "Use this when a user asks what rent tenants actually pay or have agreed for a home in a town, area or postcode, how much it costs to rent a flat, house or room there, " +
     `or how rents compare, in ${joinOr(places.map((p) => `${p.place} (country ${p.code})`))}. ` +
-    "These are rents actually agreed or paid, taken from official records: registered tenancies, rental bond lodgements, approved rentals, or official surveys of sitting tenants. " +
+    "These are rents actually agreed or paid, taken from official records and statistics: registered tenancies, rental bond lodgements, approved rentals, or official rent statistics built from administrative records of tenancies. " +
     "Where the source holds individual rents the answer is a median with a typical range (10th–90th percentile) and the number of rents; " +
     "where the source publishes an average or median (price_type official_statistic) the range fields are null and there is no sample size. " +
     "Every answer states its unit (rent per month or per week, in the local currency), the period covered, a confidence label, and the official source and licence. " +
