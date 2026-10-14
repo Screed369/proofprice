@@ -1,0 +1,532 @@
+URL: https://www.contractsfinder.service.gov.uk/apidocumentation/Notices/2/POST-rest-searches-search
+Fetched: 2026-10-14T15:53:19Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 28210
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:53:19 GMT
+content-type: text/html; charset=utf-8
+server: http/s
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-frame-options: DENY
+access-control-allow-methods: POST, GET
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+cache-control: max-age=0, private, no-store, no-cache, must-revalidate
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (4394)
+=== FIRST 80000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"5ddf34d866","applicationID":"8587010","transactionName":"YgBTZxNUDxFUVxcKXVtKdVwVewQWdlsNF0BaCV1WExopB1lETCJCXA==","queueTime":0,"applicationTime":109,"ttGuid":"4D04FFF4929871C7","agent":""}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(u(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(2),u=t(3),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var s=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit"],p="api-",l=p+"ixn-";a(s,function(t,e){f[e]=o(p+e,!0,"api")}),f.addPageAction=o(p+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var d=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){d[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],2:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],3:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?u(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),u=a.length,c=0;c<u;c++)a[c].apply(i,r);var s=f[m[n]];return s&&s.push([w,n,r,i]),i}function p(t,e){g[t]=l(t).concat(e)}function l(t){return g[t]||[]}function d(t){return s[t]=s[t]||o(n)}function v(t,e){c(t,function(t,n){e=e||"feature",m[n]=e,e in f||(f[e]=[])})}var g={},m={},w={on:p,emit:n,get:d,listeners:l,context:e,buffer:v};return w}function i(){return new r}var a="nr@context",u=t("gos"),c=t(2),f={},s={},p=e.exports=o();p.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!h++){var t=y.info=NREUM.info,e=s.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(m,function(e,n){t[e]||(t[e]=n)});var n="https"===g.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",u("mark",["onload",a()],null,"api");var r=s.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===s.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=t("handle"),c=t(2),f=window,s=f.document,p="addEventListener",l="attachEvent",d=f.XMLHttpRequest,v=d&&d.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:d,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(1);var g=""+location,m={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-974.min.js"},w=d&&v&&v[p]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:g,features:{},xhrWrappable:w};s[p]?(s[p]("DOMContentLoaded",i,!1),f[p]("load",r,!1)):(s[l]("onreadystatechange",o),f[l]("onload",r)),u("mark",["firstbyte",a()],null,"api");var h=0},{}]},{},["loader"]);</script>
+    <meta name="viewport" content="width=device-width" />
+    <title>POST api/rest/2/search_notices/{MimeType}</title>
+</head>
+<body class="body-margins">
+<link type="text/css" href="https://www.contractsfinder.service.gov.uk/stylesheets/notice_api_documentation_style.css" rel="stylesheet" />
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                <a href="/apidocumentation/home">Help Page Home</a>
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        
+<h1>POST api/rest/2/search_notices/{MimeType}</h1>
+<p><b>For the Version 1 equivalent method, please visit <a href="/apidocumentation/Notices/1/POST-Searches-Search">POST Searches/Search</a>. However please note that whilst we are still supporting Version 1 methods for the foreseeable future to provide backwards compatibility, they should be considered deprecated and we encourage the use of this Version 2 method.</b></p>
+<div>
+    <p>Searches for notices based on the provided search criteria.</p>
+
+    <h2>Request Information</h2>
+
+    <h3>URI Parameters</h3>
+        <p>None.</p>
+
+
+
+    <h3>Body Parameters</h3>
+
+    <p>The search criteria.</p>
+
+	<p><a href="/apidocumentation/ResourceModel?modelName=NoticeSearchRequest_version2">NoticeSearchRequest</a></p>
+	<table class="help-page-table">
+        <thead>
+            <tr><th>Name</th><th>Description</th><th>Type</th><th>Additional information</th></tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td class="parameter-name">SearchCriteria</td>
+                    <td class="parameter-documentation">
+                        <p>Gets or sets the search criteria.</p>
+                    </td>
+                    <td class="parameter-type">
+                        <a href="/apidocumentation/ResourceModel?modelName=SearchCriteria_version2">SearchCriteria</a>
+                    </td>
+                    <td class="parameter-annotations">
+                            <p>None.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="parameter-name">Size</td>
+                    <td class="parameter-documentation">
+                        <p>Gets or sets the maximum size of the results.</p>
+                    </td>
+                    <td class="parameter-type">
+                        integer
+                    </td>
+                    <td class="parameter-annotations">
+                            <p>None.</p>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+
+        <h3>Request Formats</h3>
+
+<div>
+        <h4 class="sample-header">application/json, text/json</h4>
+        <div class="sample-content">
+            <span><b>Sample:</b></span>
+<pre class="wrapped">
+{
+  &quot;searchCriteria&quot;: {
+    &quot;types&quot;: [
+      &quot;Contract&quot;
+    ],
+    &quot;statuses&quot;: [
+      &quot;Awarded&quot;
+    ],
+    &quot;keyword&quot;: &quot;Window cleaning&quot;,
+    &quot;queryString&quot;: null,
+    &quot;regions&quot;: &quot;Wales,South East&quot;,
+    &quot;postcode&quot;: null,
+    &quot;radius&quot;: 0.0,
+    &quot;valueFrom&quot;: 3000.0,
+    &quot;valueTo&quot;: 20000.0,
+    &quot;publishedFrom&quot;: null,
+    &quot;publishedTo&quot;: null,
+    &quot;deadlineFrom&quot;: null,
+    &quot;deadlineTo&quot;: null,
+    &quot;approachMarketFrom&quot;: null,
+    &quot;approachMarketTo&quot;: null,
+    &quot;awardedFrom&quot;: null,
+    &quot;awardedTo&quot;: null,
+    &quot;isSubcontract&quot;: null,
+    &quot;suitableForSme&quot;: true,
+    &quot;suitableForVco&quot;: false,
+    &quot;awardedToSme&quot;: true,
+    &quot;awardedToVcse&quot;: false,
+    &quot;cpvCodes&quot;: null
+  },
+  &quot;size&quot;: 1000
+}
+</pre>
+        </div>
+        <h4 class="sample-header">application/xml, text/xml</h4>
+        <div class="sample-content">
+            <span><b>Sample:</b></span>
+<pre class="wrapped">
+&lt;NoticeSearchRequest xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://schemas.datacontract.org/2004/07/IPL.ContractsFinder.WebApi.Shared.Models&quot;&gt;
+  &lt;SearchCriteria xmlns:d2p1=&quot;http://schemas.datacontract.org/2004/07/IPL.ContractsFinder.BusinessEntities&quot;&gt;
+    &lt;d2p1:ApproachMarketFrom i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:ApproachMarketTo i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:AwardedFrom i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:AwardedTo i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:CpvCodes xmlns:d3p1=&quot;http://schemas.microsoft.com/2003/10/Serialization/Arrays&quot; i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:DeadlineFrom i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:DeadlineTo i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:IsSubcontract i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:Keyword&gt;Window cleaning&lt;/d2p1:Keyword&gt;
+    &lt;d2p1:Postcode i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:PublishedFrom i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:PublishedTo i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:QueryString i:nil=&quot;true&quot; /&gt;
+    &lt;d2p1:Radius&gt;0.0&lt;/d2p1:Radius&gt;
+    &lt;d2p1:Regions&gt;Wales,South East&lt;/d2p1:Regions&gt;
+    &lt;d2p1:Statuses&gt;
+    &lt;d2p1:NoticeStatus&gt;Awarded&lt;/d2p1:NoticeStatus&gt;
+    &lt;/d2p1:Statuses&gt;
+    &lt;d2p1:SuitableForSme&gt;true&lt;/d2p1:SuitableForSme&gt;
+    &lt;d2p1:SuitableForVco&gt;false&lt;/d2p1:SuitableForVco&gt;
+    &lt;d2p1:AwardedToSme&gt;true&lt;/d2p1:AwardedToSme&gt;
+    &lt;d2p1:AwardedToVcse&gt;false&lt;/d2p1:AwardedToVcse&gt;
+    &lt;d2p1:Types&gt;
+    &lt;d2p1:NoticeType&gt;Contract&lt;/d2p1:NoticeType&gt;
+    &lt;/d2p1:Types&gt;
+    &lt;d2p1:ValueFrom&gt;3000.0&lt;/d2p1:ValueFrom&gt;
+    &lt;d2p1:ValueTo&gt;20000.0&lt;/d2p1:ValueTo&gt;
+  &lt;/SearchCriteria&gt;
+  &lt;Size&gt;1000&lt;/Size&gt;
+&lt;/NoticeSearchRequest&gt;
+</pre>
+
+        </div>
+</div>
+    <h2>Response Information</h2>
+
+    <h3>Resource Description</h3>
+
+    <p>A collection of notice summaries matching the search criteria.</p>
+
+	<p><a href="/apidocumentation/ResourceModel?modelName=NoticeSearchResponse_version2">NoticeSearchResponse</a></p>
+	<table class="help-page-table">
+        <thead>
+            <tr><th>Name</th><th>Description</th><th>Type</th><th>Additional information</th></tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td class="parameter-name">HitCount</td>
+                    <td class="parameter-documentation">
+                        <p>Gets or sets the hit count</p>
+                    </td>
+                    <td class="parameter-type">
+                        integer
+                    </td>
+                    <td class="parameter-annotations">
+                            <p>None.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="parameter-name">NoticeList</td>
+                    <td class="parameter-documentation">
+                        <p>Gets or sets the Notice list</p>
+                    </td>
+                    <td class="parameter-type">
+                                Collection of <a href="/apidocumentation/ResourceModel?modelName=HitOfNoticeIndex_version2">HitOfNoticeIndex</a>
+
+                    </td>
+                    <td class="parameter-annotations">
+                            <p>None.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="parameter-name">MaxHits</td>
+                    <td class="parameter-documentation">
+                        <p>Gets or sets the Maximum hits returned by the search engine, or 0 if unlimited</p>
+                    </td>
+                    <td class="parameter-type">
+                        integer
+                    </td>
+                    <td class="parameter-annotations">
+                            <p>None.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="parameter-name">ByRegion</td>
+                    <td class="parameter-documentation">
+                        <p>Gets or sets the aggregations by region</p>
+                    </td>
+                    <td class="parameter-type">
+                        <a href="/apidocumentation/ResourceModel?modelName=StatisticsOfString">StatisticsOfString</a>
+                    </td>
+                    <td class="parameter-annotations">
+                            <p>None.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="parameter-name">ByType</td>
+                    <td class="parameter-documentation">
+                        <p>Gets or sets the aggregations by notice type</p>
+                    </td>
+                    <td class="parameter-type">
+                        <a href="/apidocumentation/ResourceModel?modelName=StatisticsOfNullableOfNoticeType">StatisticsOfNullableOfNoticeType</a>
+                    </td>
+                    <td class="parameter-annotations">
+                            <p>None.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="parameter-name">ByStatus</td>
+                    <td class="parameter-documentation">
+                        <p>Gets or sets the aggregations by notice status</p>
+                    </td>
+                    <td class="parameter-type">
+                        <a href="/apidocumentation/ResourceModel?modelName=StatisticsOfNullableOfNoticeStatus">StatisticsOfNullableOfNoticeStatus</a>
+                    </td>
+                    <td class="parameter-annotations">
+                            <p>None.</p>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+
+
+        <h3>Response Formats</h3>
+
+<div>
+		<h4>HTTP response status code: 200</h4>
+        <h4 class="sample-header">application/json, text/json</h4>
+        <div class="sample-content">
+            <span><b>Sample:</b></span>
+<pre class="wrapped">
+{
+  &quot;hitCount&quot;: 1,
+  &quot;noticeList&quot;: [
+    {
+      &quot;score&quot;: 1.1,
+      &quot;item&quot;: {
+        &quot;id&quot;: &quot;sample string 1&quot;,
+        &quot;parentId&quot;: &quot;sample string 2&quot;,
+        &quot;noticeIdentifier&quot;: &quot;sample string 3&quot;,
+        &quot;title&quot;: &quot;sample string 4&quot;,
+        &quot;description&quot;: &quot;sample string 5&quot;,
+        &quot;cpvDescription&quot;: &quot;sample string 6&quot;,
+        &quot;cpvDescriptionExpanded&quot;: &quot;sample string 7&quot;,
+        &quot;publishedDate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;deadlineDate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;awardedDate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;awardedValue&quot;: 1.0,
+        &quot;awardedSupplier&quot;: &quot;sample string 10&quot;,
+        &quot;approachMarketDate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;valueLow&quot;: 11.0,
+        &quot;valueHigh&quot;: 1.0,
+        &quot;postcode&quot;: &quot;sample string 12&quot;,
+        &quot;coordinates&quot;: &quot;sample string 13&quot;,
+        &quot;isSubNotice&quot;: true,
+        &quot;noticeType&quot;: &quot;sample string 14&quot;,
+        &quot;noticeStatus&quot;: &quot;sample string 15&quot;,
+        &quot;isSuitableForSme&quot;: true,
+        &quot;isSuitableForVco&quot;: true,
+        &quot;awardedToSme&quot;: true,
+        &quot;awardedToVcse&quot;: false,
+        &quot;lastNotifiableUpdate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;organisationName&quot;: &quot;sample string 19&quot;,
+        &quot;sector&quot;: &quot;sample string 20&quot;,
+        &quot;cpvCodes&quot;: &quot;sample string 21&quot;,
+        &quot;cpvCodesExtended&quot;: &quot;sample string 22&quot;,
+        &quot;region&quot;: &quot;sample string 23&quot;,
+        &quot;regionText&quot;: &quot;sample string 24&quot;,
+        &quot;start&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;end&quot;: &quot;2016-09-12T11:23:39+01:00&quot;
+      }
+    },
+    {
+      &quot;score&quot;: 1.1,
+      &quot;item&quot;: {
+        &quot;id&quot;: &quot;sample string 1&quot;,
+        &quot;parentId&quot;: &quot;sample string 2&quot;,
+        &quot;noticeIdentifier&quot;: &quot;sample string 3&quot;,
+        &quot;title&quot;: &quot;sample string 4&quot;,
+        &quot;description&quot;: &quot;sample string 5&quot;,
+        &quot;cpvDescription&quot;: &quot;sample string 6&quot;,
+        &quot;cpvDescriptionExpanded&quot;: &quot;sample string 7&quot;,
+        &quot;publishedDate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;deadlineDate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;awardedDate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;awardedValue&quot;: 1.0,
+        &quot;awardedSupplier&quot;: &quot;sample string 10&quot;,
+        &quot;approachMarketDate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;valueLow&quot;: 11.0,
+        &quot;valueHigh&quot;: 1.0,
+        &quot;postcode&quot;: &quot;sample string 12&quot;,
+        &quot;coordinates&quot;: &quot;sample string 13&quot;,
+        &quot;isSubNotice&quot;: true,
+        &quot;noticeType&quot;: &quot;sample string 14&quot;,
+        &quot;noticeStatus&quot;: &quot;sample string 15&quot;,
+        &quot;isSuitableForSme&quot;: true,
+        &quot;isSuitableForVco&quot;: true,
+        &quot;awardedToSme&quot;: true,
+        &quot;awardedToVcse&quot;: false,
+        &quot;lastNotifiableUpdate&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;organisationName&quot;: &quot;sample string 19&quot;,
+        &quot;sector&quot;: &quot;sample string 20&quot;,
+        &quot;cpvCodes&quot;: &quot;sample string 21&quot;,
+        &quot;cpvCodesExtended&quot;: &quot;sample string 22&quot;,
+        &quot;region&quot;: &quot;sample string 23&quot;,
+        &quot;regionText&quot;: &quot;sample string 24&quot;,
+        &quot;start&quot;: &quot;2016-09-12T11:23:39+01:00&quot;,
+        &quot;end&quot;: &quot;2016-09-12T11:23:39+01:00&quot;
+      }
+    }
+  ],
+  &quot;maxHits&quot;: 2,
+  &quot;byRegion&quot;: {
+    &quot;other&quot;: 1,
+    &quot;items&quot;: [
+      {
+        &quot;key&quot;: &quot;sample string 1&quot;,
+        &quot;value&quot;: 2
+      },
+      {
+        &quot;key&quot;: &quot;sample string 1&quot;,
+        &quot;value&quot;: 2
+      }
+    ]
+  },
+  &quot;byType&quot;: {
+    &quot;other&quot;: 1,
+    &quot;items&quot;: [
+      {
+        &quot;key&quot;: &quot;Contract&quot;,
+        &quot;value&quot;: 1
+      },
+      {
+        &quot;key&quot;: &quot;Contract&quot;,
+        &quot;value&quot;: 1
+      }
+    ]
+  },
+  &quot;byStatus&quot;: {
+    &quot;other&quot;: 1,
+    &quot;items&quot;: [
+      {
+        &quot;key&quot;: &quot;Open&quot;,
+        &quot;value&quot;: 1
+      },
+      {
+        &quot;key&quot;: &quot;Open&quot;,
+        &quot;value&quot;: 1
+      }
+    ]
+  }
+}
+</pre>
+        </div>
+        <h4 class="sample-header">application/xml, text/xml</h4>
+        <div class="sample-content">
+            <span><b>Sample:</b></span>
+<pre class="wrapped">
+&lt;NoticeSearchResponse xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://schemas.datacontract.org/2004/07/IPL.ContractsFinder.WebApi.Shared.Models&quot;&gt;
+  &lt;ByRegion xmlns:d2p1=&quot;http://schemas.datacontract.org/2004/07/IPL.ContractsFinder.BusinessEntities&quot;&gt;
+    &lt;d2p1:Items xmlns:d3p1=&quot;http://schemas.datacontract.org/2004/07/System.Collections.Generic&quot;&gt;
+      &lt;d3p1:KeyValuePairOfstringlong&gt;
+        &lt;d3p1:key&gt;sample string 1&lt;/d3p1:key&gt;
+        &lt;d3p1:value&gt;2&lt;/d3p1:value&gt;
+      &lt;/d3p1:KeyValuePairOfstringlong&gt;
+      &lt;d3p1:KeyValuePairOfstringlong&gt;
+        &lt;d3p1:key&gt;sample string 1&lt;/d3p1:key&gt;
+        &lt;d3p1:value&gt;2&lt;/d3p1:value&gt;
+      &lt;/d3p1:KeyValuePairOfstringlong&gt;
+    &lt;/d2p1:Items&gt;
+    &lt;d2p1:Other&gt;1&lt;/d2p1:Other&gt;
+  &lt;/ByRegion&gt;
+  &lt;ByStatus xmlns:d2p1=&quot;http://schemas.datacontract.org/2004/07/IPL.ContractsFinder.BusinessEntities&quot;&gt;
+    &lt;d2p1:Items xmlns:d3p1=&quot;http://schemas.datacontract.org/2004/07/System.Collections.Generic&quot;&gt;
+      &lt;d3p1:KeyValuePairOfNullableOfNoticeStatus&gt;
+        &lt;d3p1:key&gt;Open&lt;/d3p1:key&gt;
+        &lt;d3p1:value&gt;1&lt;/d3p1:value&gt;
+      &lt;/d3p1:KeyValuePairOfNullableOfNoticeStatus&gt;
+      &lt;d3p1:KeyValuePairOfNullableOfNoticeStatus&gt;
+        &lt;d3p1:key&gt;Open&lt;/d3p1:key&gt;
+        &lt;d3p1:value&gt;1&lt;/d3p1:value&gt;
+      &lt;/d3p1:KeyValuePairOfNullableOfNoticeStatus&gt;
+    &lt;/d2p1:Items&gt;
+    &lt;d2p1:Other&gt;1&lt;/d2p1:Other&gt;
+  &lt;/ByStatus&gt;
+  &lt;ByType xmlns:d2p1=&quot;http://schemas.datacontract.org/2004/07/IPL.ContractsFinder.BusinessEntities&quot;&gt;
+    &lt;d2p1:Items xmlns:d3p1=&quot;http://schemas.datacontract.org/2004/07/System.Collections.Generic&quot;&gt;
+      &lt;d3p1:KeyValuePairOfNullableOfNoticeType&gt;
+        &lt;d3p1:key&gt;Contract&lt;/d3p1:key&gt;
+        &lt;d3p1:value&gt;1&lt;/d3p1:value&gt;
+      &lt;/d3p1:KeyValuePairOfNullableOfNoticeType&gt;
+      &lt;d3p1:KeyValuePairOfNullableOfNoticeType&gt;
+        &lt;d3p1:key&gt;Contract&lt;/d3p1:key&gt;
+        &lt;d3p1:value&gt;1&lt;/d3p1:value&gt;
+      &lt;/d3p1:KeyValuePairOfNullableOfNoticeType&gt;
+    &lt;/d2p1:Items&gt;
+    &lt;d2p1:Other&gt;1&lt;/d2p1:Other&gt;
+  &lt;/ByType&gt;
+  &lt;HitCount&gt;2&lt;/HitCount&gt;
+  &lt;MaxHits&gt;2&lt;/MaxHits&gt;
+  &lt;NoticeList xmlns:d2p1=&quot;http://schemas.datacontract.org/2004/07/IPL.ContractsFinder.BusinessEntities&quot;&gt;
+    &lt;d2p1:HitOfNoticeIndex&gt;
+      &lt;d2p1:Item&gt;
+        &lt;d2p1:ApproachMarketDate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:ApproachMarketDate&gt;
+        &lt;d2p1:AwardedDate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:AwardedDate&gt;
+        &lt;d2p1:AwardedSupplier&gt;sample string 10&lt;/d2p1:AwardedSupplier&gt;
+        &lt;d2p1:AwardedValue&gt;1&lt;/d2p1:AwardedValue&gt;
+        &lt;d2p1:Coordinates&gt;sample string 13&lt;/d2p1:Coordinates&gt;
+        &lt;d2p1:CpvCodesExtended&gt;sample string 22&lt;/d2p1:CpvCodesExtended&gt;
+        &lt;d2p1:CpvCodes&gt;sample string 21&lt;/d2p1:CpvCodes&gt;
+        &lt;d2p1:CpvDescriptionExpanded&gt;sample string 7&lt;/d2p1:CpvDescriptionExpanded&gt;
+        &lt;d2p1:CpvDescription&gt;sample string 6&lt;/d2p1:CpvDescription&gt;
+        &lt;d2p1:DeadlineDate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:DeadlineDate&gt;
+        &lt;d2p1:Description&gt;sample string 5&lt;/d2p1:Description&gt;
+        &lt;d2p1:End&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:End&gt;
+        &lt;d2p1:Id&gt;sample string 1&lt;/d2p1:Id&gt;
+        &lt;d2p1:IsSuitableForSme&gt;true&lt;/d2p1:IsSuitableForSme&gt;
+        &lt;d2p1:IsSuitableForVco&gt;true&lt;/d2p1:IsSuitableForVco&gt;
+        &lt;d2p1:AwardedToSme&gt;true&lt;/d2p1:AwardedToSme&gt;
+        &lt;d2p1:AwardedToVcse&gt;false&lt;/d2p1:AwardedToVcse&gt;
+        &lt;d2p1:LastNotifiableUpdate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:LastNotifiableUpdate&gt;
+        &lt;d2p1:NoticeIdentifier&gt;sample string 3&lt;/d2p1:NoticeIdentifier&gt;
+        &lt;d2p1:NoticeStatus&gt;sample string 15&lt;/d2p1:NoticeStatus&gt;
+        &lt;d2p1:NoticeType&gt;sample string 14&lt;/d2p1:NoticeType&gt;
+        &lt;d2p1:OrganisationName&gt;sample string 19&lt;/d2p1:OrganisationName&gt;
+        &lt;d2p1:ParentId&gt;sample string 2&lt;/d2p1:ParentId&gt;
+        &lt;d2p1:Postcode&gt;sample string 12&lt;/d2p1:Postcode&gt;
+        &lt;d2p1:PublishedDate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:PublishedDate&gt;
+        &lt;d2p1:RegionText&gt;sample string 24&lt;/d2p1:RegionText&gt;
+        &lt;d2p1:Region&gt;sample string 23&lt;/d2p1:Region&gt;
+        &lt;d2p1:Sector&gt;sample string 20&lt;/d2p1:Sector&gt;
+        &lt;d2p1:Start&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:Start&gt;
+        &lt;d2p1:Title&gt;sample string 4&lt;/d2p1:Title&gt;
+        &lt;d2p1:ValueHigh&gt;1&lt;/d2p1:ValueHigh&gt;
+        &lt;d2p1:ValueLow&gt;11&lt;/d2p1:ValueLow&gt;
+      &lt;/d2p1:Item&gt;
+      &lt;d2p1:Score&gt;1.1&lt;/d2p1:Score&gt;
+    &lt;/d2p1:HitOfNoticeIndex&gt;
+    &lt;d2p1:HitOfNoticeIndex&gt;
+      &lt;d2p1:Item&gt;
+        &lt;d2p1:ApproachMarketDate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:ApproachMarketDate&gt;
+        &lt;d2p1:AwardedDate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:AwardedDate&gt;
+        &lt;d2p1:AwardedSupplier&gt;sample string 10&lt;/d2p1:AwardedSupplier&gt;
+        &lt;d2p1:AwardedValue&gt;1&lt;/d2p1:AwardedValue&gt;
+        &lt;d2p1:Coordinates&gt;sample string 13&lt;/d2p1:Coordinates&gt;
+        &lt;d2p1:CpvCodesExtended&gt;sample string 22&lt;/d2p1:CpvCodesExtended&gt;
+        &lt;d2p1:CpvCodes&gt;sample string 21&lt;/d2p1:CpvCodes&gt;
+        &lt;d2p1:CpvDescriptionExpanded&gt;sample string 7&lt;/d2p1:CpvDescriptionExpanded&gt;
+        &lt;d2p1:CpvDescription&gt;sample string 6&lt;/d2p1:CpvDescription&gt;
+        &lt;d2p1:DeadlineDate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:DeadlineDate&gt;
+        &lt;d2p1:Description&gt;sample string 5&lt;/d2p1:Description&gt;
+        &lt;d2p1:End&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:End&gt;
+        &lt;d2p1:Id&gt;sample string 1&lt;/d2p1:Id&gt;
+        &lt;d2p1:IsSuitableForSme&gt;true&lt;/d2p1:IsSuitableForSme&gt;
+        &lt;d2p1:IsSuitableForVco&gt;true&lt;/d2p1:IsSuitableForVco&gt;
+        &lt;d2p1:AwardedToSme&gt;true&lt;/d2p1:AwardedToSme&gt;
+        &lt;d2p1:AwardedToVcse&gt;false&lt;/d2p1:AwardedToVcse&gt;
+        &lt;d2p1:LastNotifiableUpdate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:LastNotifiableUpdate&gt;
+        &lt;d2p1:NoticeIdentifier&gt;sample string 3&lt;/d2p1:NoticeIdentifier&gt;
+        &lt;d2p1:NoticeStatus&gt;sample string 15&lt;/d2p1:NoticeStatus&gt;
+        &lt;d2p1:NoticeType&gt;sample string 14&lt;/d2p1:NoticeType&gt;
+        &lt;d2p1:OrganisationName&gt;sample string 19&lt;/d2p1:OrganisationName&gt;
+        &lt;d2p1:ParentId&gt;sample string 2&lt;/d2p1:ParentId&gt;
+        &lt;d2p1:Postcode&gt;sample string 12&lt;/d2p1:Postcode&gt;
+        &lt;d2p1:PublishedDate&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:PublishedDate&gt;
+        &lt;d2p1:RegionText&gt;sample string 24&lt;/d2p1:RegionText&gt;
+        &lt;d2p1:Region&gt;sample string 23&lt;/d2p1:Region&gt;
+        &lt;d2p1:Sector&gt;sample string 20&lt;/d2p1:Sector&gt;
+        &lt;d2p1:Start&gt;2016-09-12T11:23:39+01:00&lt;/d2p1:Start&gt;
+        &lt;d2p1:Title&gt;sample string 4&lt;/d2p1:Title&gt;
+        &lt;d2p1:ValueHigh&gt;1&lt;/d2p1:ValueHigh&gt;
+        &lt;d2p1:ValueLow&gt;11&lt;/d2p1:ValueLow&gt;
+      &lt;/d2p1:Item&gt;
+      &lt;d2p1:Score&gt;1.1&lt;/d2p1:Score&gt;
+    &lt;/d2p1:HitOfNoticeIndex&gt;
+  &lt;/NoticeList&gt;
+&lt;/NoticeSearchResponse&gt;
+</pre>
+        </div>
+</div>
+</div>
+	<div>
+		<h4>HTTP response status code: 403</h4>
+					<p>When the user has submitted too many requests, no further requests should be made until after 5 minutes</p>
+		        <h4 class="sample-header">text/plain</h4>
+        <div class="sample-content">
+            <span><b>Sample:</b></span>
+						<p><strong>Body:</strong></p>
+							<p>&lt;html&gt;&lt;head&gt;&lt;title&gt;Forbidden - Contracts Finder&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;h1&gt;&lt;strong&gt;Request forbidden&lt;/strong&gt;&lt;/h1&gt;&lt;/p&gt;&lt;p&gt;The request rate limit may have been exceeded. If you believe this is an error &lt;a href="https://www.contractsfinder.service.gov.uk/Home/Contact"&gt;contact us&lt;/a&gt; quoting 0QrFmYQAAAABs5RRpp9L8RbtJ8k4jz8gwTE9OMjFFREdFMDIwOABiYTEyMjkxMi0zZWE0LTQ1NTQtYjNjNi1mNmRmZDU2MGY2ZDM=.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</p>
+			
+		</div>
+	</div>
+    </section>
+</div>
+
+</body>
+</html>
