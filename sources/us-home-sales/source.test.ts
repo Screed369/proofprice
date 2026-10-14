@@ -265,6 +265,9 @@ test("paging stops at the row cap and says so", async () => {
   assert.equal(offsets.length, Math.ceil(MAX_ROWS / PAGE_SIZE));
   assert.deepEqual(offsets, [0, PAGE_SIZE, 2 * PAGE_SIZE].slice(0, offsets.length));
   assert.match(JSON.stringify((a.extra as any).notes), /capped at the 30,000 most recent/);
+  assert.match(a.method, /uses the 30,000 most recent ones: the period field shows the dates actually covered/);
+  const small = await usHomeSales({ town: "Hartford" }, { fetcher: fakePortal(CT_HARTFORD, LATEST.ct).fetcher, today: new Date("2026-10-14T12:00:00Z") });
+  assert.doesNotMatch(small.method, /most recent ones/);
 });
 
 test("bad input is a clear error before any request is made", async () => {

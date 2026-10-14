@@ -425,7 +425,14 @@ function typeNoun(type: UsType, dataset: UsDataset): string {
   return dataset === "nyc" ? "Homes (houses, condos and co-ops)" : dataset === "cook" ? "Homes (houses, condos and small apartment buildings)" : "Homes";
 }
 
-function methodText(dataset: UsDataset, type: UsType, applied: number, latest: string): string {
+function methodText(dataset: UsDataset, type: UsType, applied: number, latest: string, capped: boolean): string {
+  const cap = capped
+    ? ` This place has more matching sales than one answer reads, so it uses the ${MAX_ROWS.toLocaleString("en-US")} most recent ones: the period field shows the dates actually covered.`
+    : "";
+  return methodBase(dataset, type, applied, latest) + cap;
+}
+
+function methodBase(dataset: UsDataset, type: UsType, applied: number, latest: string): string {
   if (dataset === "ct") {
     return (
       `Median and 10th–90th percentile of residential sales recorded by Connecticut towns (OPM file Real Estate Sales 2001-2024 GL) in the ${applied} months up to the latest recorded sale in the file (${latest}). ` +
@@ -498,7 +505,7 @@ export async function usHomeSales(input: UsHomeSalesInput, opts: UsHomeSalesOpti
     currency: "USD",
     unit: type === "any" ? "per sale" : "per home",
     period: { from: dates[0] ?? null, to: dates[dates.length - 1] ?? null },
-    method: methodText(place.dataset, type, applied, latest),
+    method: methodText(place.dataset, type, applied, latest, collected.truncated),
     describe: (x) => `${typeNoun(type, place.dataset)} in ${place.label} sold for a median of ${fmtMoney(x.median, "USD")}; typical range ${fmtMoney(x.low, "USD")}–${fmtMoney(x.high, "USD")}.`,
     baseUrl: input.baseUrl,
     extra: {
