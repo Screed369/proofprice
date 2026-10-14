@@ -1,0 +1,25 @@
+URL: https://api.statbank.dk/v1/tableinfo/BM010?lang=en&format=JSON
+Fetched: 2026-10-14T15:48:53Z from GitHub Actions
+Status, type, bytes: 400 application/json; charset=utf-8 76
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+cache-control: no-cache
+pragma: no-cache
+content-type: application/json; charset=utf-8
+expires: -1
+server: Microsoft-IIS/10.0
+statbankapi-error-extract-notfound: Table does not exist: BM010
+access-control-expose-headers: StatbankAPI-Error-EXTRACT-NOTFOUND
+access-control-expose-headers: StatbankAPI-Request-Id
+statbankapi-request-id: 228c6cc8-9c5b-4bca-a274-aad085c64402
+x-aspnet-version: 4.0.30319
+x-powered-by: ASP.NET
+strict-transport-security: max-age=31536000
+date: Wed, 14 Oct 2026 15:48:52 GMT
+content-length: 76
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"errorTypeCode":"EXTRACT-NOTFOUND","message":"Table does not exist: BM010"}
