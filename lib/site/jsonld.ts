@@ -3,6 +3,7 @@
 
 import { noFullStop, type AnswerPage } from "./answer-pages";
 import { CONTACT, MCP_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./constants";
+import type { ExamplePage } from "./example-pages";
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -175,6 +176,42 @@ export function breadcrumbLd(items: { name: string; path: string }[]) {
 /** A page that only needs breadcrumbs (index pages). */
 export function breadcrumbGraph(crumbs: { name: string; path: string }[]) {
   return { "@context": "https://schema.org", ...breadcrumbLd(crumbs) };
+}
+
+/** An example page: breadcrumbs, and its Q&A only when the page shows an answer. The "ask live" form states no answer, so it has no FAQ. */
+export function examplePageGraph(page: ExamplePage, crumbs: { name: string; path: string }[]) {
+  const url = absolute(page.path);
+  const graph: Record<string, unknown>[] = [
+    {
+      "@type": "WebPage",
+      "@id": `${url}#webpage`,
+      url,
+      name: page.h1,
+      description: page.description,
+      ...(page.asOf ? { dateModified: page.asOf } : {}),
+      isPartOf: { "@id": WEBSITE_ID },
+      breadcrumb: breadcrumbLd(crumbs),
+    },
+  ];
+  if (page.figure) {
+    const f = page.figure;
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      url,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: page.h1,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `${f.answer} Source: ${noFullStop(page.source.publisher)}. Licence: ${noFullStop(page.source.licence)}.${f.caveat ? ` ${f.caveat}` : ""}`,
+          },
+        },
+      ],
+    });
+  }
+  return { "@context": "https://schema.org", "@graph": graph };
 }
 
 /** An answer page: its Q&A (the same questions and answers the page shows), plus breadcrumbs. */

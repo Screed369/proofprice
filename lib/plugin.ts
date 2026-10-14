@@ -56,6 +56,20 @@ export interface Example {
   smoke?: boolean; // default true for the first example: checked by the Monitor after every deploy
 }
 
+/** One ready answer page on the website (/prices/<country>/<category>/<place>), described by the request it answers.
+ *  Optional: a source that lists no pages gets one page per example (see SourcePlugin.pages). */
+export interface PageSpec {
+  /** REST query parameters of the question this page answers, including country. Same shape as an example. */
+  params: Record<string, string>;
+  /** Short name for headings and the URL, e.g. "Manchester" or "Milk". Default: built from the parameters. */
+  label?: string;
+  /** The question as a person would ask it, ending in "?". Default: built from the category and the parameters. */
+  question?: string;
+}
+
+/** The most pages one source puts on the website, so the build stays fast however many examples it lists. */
+export const MAX_PAGES_PER_SOURCE = 12;
+
 export interface SourcePlugin {
   info: SourceInfo;
   /** Folder name of the tool this source answers for, e.g. "fuel" or "home-sales". */
@@ -75,6 +89,10 @@ export interface SourcePlugin {
   extraParams?: Record<string, ZodTypeAny>;
   /** Working example requests. The first is a production smoke test unless smoke:false. */
   examples: Example[];
+  /** Optional: the ready answer pages this source gets on the website (a few places or items worth a page of their own, at most
+   *  MAX_PAGES_PER_SOURCE). Leave it out and every example becomes a page. A page shows a real figure when the source can answer
+   *  from the price library without the network, and the "ask live" form (question, tool, REST link, no number) otherwise. */
+  pages?: PageSpec[];
   /** One plain sentence for the /method page. */
   method?: string;
   /** Answer one request. Throw SourceError for bad input or an unreachable source. */
@@ -83,6 +101,21 @@ export interface SourcePlugin {
   harvest?(): Promise<HarvestResult>;
   /** Optional: map a request to the library keys used by harvest, so /history can answer. */
   historyKey?(params: Params): { area: string; item: string; label: string } | null;
+}
+
+/** One country entry of a tool description, filled from the registry (the source's placeName, countries and info), never typed by hand in a category. */
+export interface ToolPlace {
+  place: string; // the source's placeName, e.g. "Spain" or "Singapore public housing"
+  code: string; // ISO country code this entry is for (one entry per country a source covers)
+  freshness: string;
+  /** SourceInfo.price_type of the source behind this entry. */
+  priceType: SourceInfo["price_type"];
+  /** "Official statistic (published average or median)", "Posted pump price ..." : the label the website shows for the price type. */
+  priceTypeLabel: string;
+  sourceName: string;
+  publisher: string;
+  /** SourceInfo.what_is_recorded: one sentence on what a record is. */
+  whatIsRecorded: string;
 }
 
 export interface CategoryPlugin {
@@ -94,8 +127,8 @@ export interface CategoryPlugin {
   title: string;
   /** Plural noun for "not covered" messages, e.g. "Live fuel prices". */
   noun: string;
-  /** MCP tool description. `places` are the sources' placeName values; `freshness` lines per place. */
-  description(places: { place: string; code: string; freshness: string }[]): string;
+  /** MCP tool description, built from what the registry knows about each source behind the tool, so it never goes stale. */
+  description(places: ToolPlace[]): string;
   /** Base help for the country parameter; country codes are appended. */
   countryHelp?: string;
   /** Parameters other than country (zod). Use .optional() for anything not always required. */

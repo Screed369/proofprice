@@ -3,8 +3,9 @@
 
 import { z, ZodTypeAny } from "zod";
 import { CATEGORY_MODULES, SOURCE_MODULES } from "./registry.generated";
-import type { CategoryPlugin, HandleContext, Params, SourceInfo, SourcePlugin } from "./plugin";
+import type { CategoryPlugin, HandleContext, Params, SourceInfo, SourcePlugin, ToolPlace } from "./plugin";
 import { num } from "./plugin";
+import { PRICE_TYPE_LABEL } from "./price-types";
 import { normaliseCountry } from "./countries";
 import { InputError, isSourceOutage } from "./http";
 import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
@@ -99,10 +100,25 @@ export function toolShape(cat: CategoryPlugin): Record<string, ZodTypeAny> {
   return { country: z.enum(countries as [string, ...string[]]).describe(countryHelp(cat)), ...paramSchemas(cat) };
 }
 
-export function toolDescription(cat: CategoryPlugin): string {
-  return cat.description(
-    sourcesFor(cat.id).flatMap((s) => s.countries.map((code) => ({ place: s.placeName, code, freshness: s.info.freshness }))),
+/** One entry per source and country behind a tool, with what the registry knows about it. Category descriptions are written
+ *  from this, never with country names typed in, so they cannot go stale when a source is added. */
+export function toolPlaces(cat: CategoryPlugin): ToolPlace[] {
+  return sourcesFor(cat.id).flatMap((s) =>
+    s.countries.map((code) => ({
+      place: s.placeName,
+      code,
+      freshness: s.info.freshness,
+      priceType: s.info.price_type,
+      priceTypeLabel: PRICE_TYPE_LABEL[s.info.price_type] ?? s.info.price_type,
+      sourceName: s.info.name,
+      publisher: s.info.publisher,
+      whatIsRecorded: s.info.what_is_recorded,
+    })),
   );
+}
+
+export function toolDescription(cat: CategoryPlugin): string {
+  return cat.description(toolPlaces(cat));
 }
 
 /** REST query string -> params. Every query parameter is passed through (aliases like `department` keep working). */
@@ -118,7 +134,9 @@ export function paramsFromQuery(cat: CategoryPlugin, q: URLSearchParams): Params
 
 // ---------- answering ----------
 
-function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePlugin; prepared: Params } {
+/** Which source answers a request, and the request after the category's own normalisation (country upper-cased, fuel aliases ...).
+ *  Throws InputError for a missing or uncovered country or invalid input. Shared by runCategory, runHistory and the answer pages. */
+export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePlugin; prepared: Params } {
   const country = normaliseCountry(params.country);
   const covered = countriesFor(cat.id);
   if (!country) throw new InputError(`country is required: one of ${covered.join(", ")}.`);
@@ -285,8 +303,7 @@ export function exampleUrls(): { category: string; source: string; path: string;
 }
 
 export const COMING_NEXT = [
-  "Rents, government contract prices, groceries, airfares and medical prices (being added now)",
-  "Home prices for the Nordics, Benelux, Portugal and Austria (being added now)",
+  "More countries and more kinds of price, one official source at a time (see the sources list for what is live)",
   "Verified receipts",
 ];
 

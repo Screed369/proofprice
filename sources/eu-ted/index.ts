@@ -28,7 +28,7 @@ export default defineSource({
   ],
   method:
     "Contract award notices (form type 'result') published on TED by public buyers in the chosen country, found by CPV product code or free text. Each lot with a chosen winner and a stated value counts as one contract; " +
-    "the answer is the median and 10th–90th percentile of those values, in the notice currency. Totals per contract (lot), not unit prices; framework agreements are counted and flagged; suppliers are never named.",
+    "the answer is the median and 10th–90th percentile of those values, in the notice currency. Totals per contract (lot), not unit prices. Framework agreements (whose stated value is usually a ceiling) are kept out of the headline when at least 5 single contracts match, and their figure is given separately; suppliers are never named.",
   handle: (p, ctx) => {
     return euTedContracts({
       country: String(p.country),

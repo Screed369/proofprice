@@ -3,29 +3,14 @@
 
 import type { SourceInfo } from "../plugin";
 import { readMeta, type SourceMeta } from "../library/store";
+import { PRICE_TYPE_LABEL, PRICE_TYPE_SHORT } from "../price-types";
 import { SOURCE_PLUGINS, categoryById, coverage, exampleUrls } from "../registry";
 import { countryName } from "./areas";
-import { PAGE_SOURCES } from "./answer-pages";
 import { SITE_URL } from "./constants";
 import type { DatasetInput } from "./jsonld";
+import { pricesPathFor, pricesPathsFor } from "./prices";
 
-export const PRICE_TYPE_LABEL: Record<SourceInfo["price_type"], string> = {
-  transaction: "Price actually paid (completed sale)",
-  posted_pump_price: "Posted pump price (what the station displays; not a receipt)",
-  posted_price: "Posted price (not a receipt)",
-  contract_price: "Contract price",
-  reimbursement_price: "Reimbursement price",
-  official_statistic: "Official statistic (published average or median)",
-};
-
-export const PRICE_TYPE_SHORT: Record<SourceInfo["price_type"], string> = {
-  transaction: "Paid (completed sale)",
-  posted_pump_price: "Posted pump price",
-  posted_price: "Posted price",
-  contract_price: "Contract price",
-  reimbursement_price: "Reimbursement price",
-  official_statistic: "Official statistic",
-};
+export { PRICE_TYPE_LABEL, PRICE_TYPE_SHORT };
 
 /** Short headings for the category groups; falls back to the registry title for a new category. */
 const CATEGORY_HEADING: Record<string, string> = {
@@ -59,7 +44,8 @@ export interface SourceCard {
   exampleRest: string | null; // path and query, relative to the site
   collected: boolean; // true when the source feeds the daily price library
   library: SourceMeta | null;
-  pricesPath: string | null; // /prices/<cc>/<category> when this source has answer pages
+  pricesPath: string | null; // /prices/<cc>/<category> of the first country this source has answer pages for
+  pricesPaths: { country: string; path: string }[]; // one per country the source has answer pages for
 }
 
 export function sourceCards(): SourceCard[] {
@@ -71,7 +57,6 @@ export function sourceCards(): SourceCard[] {
   for (const s of SOURCE_PLUGINS) {
     const info = byId.get(s.info.id) ?? s.info;
     const cat = categoryById(s.category);
-    const pages = PAGE_SOURCES.find((p) => p.sourceId === info.id);
     cards.push({
       id: info.id,
       name: info.name,
@@ -96,7 +81,8 @@ export function sourceCards(): SourceCard[] {
       exampleRest: exampleFor.get(info.id) ?? null,
       collected: !!s.harvest,
       library: s.harvest ? readMeta(info.id) : null,
-      pricesPath: pages ? `/prices/${pages.country.toLowerCase()}/${pages.category}` : null,
+      pricesPath: pricesPathFor(info.id),
+      pricesPaths: pricesPathsFor(info.id),
     });
   }
   return cards;

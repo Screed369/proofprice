@@ -4,6 +4,7 @@ import { JsonLd } from "../../_components/JsonLd";
 import { breadcrumbGraph } from "../../../lib/site/jsonld";
 import { longDate, plural } from "../../../lib/site/format";
 import { pageMetadata } from "../../../lib/site/meta";
+import { joinAnd } from "../../../lib/text";
 import { countryGroups } from "../../../lib/site/prices";
 
 export const dynamic = "force-static";
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: Props) {
   if (!g) return {};
   return pageMetadata({
     title: `Prices in ${g.name}`,
-    description: `Latest official figures for ${g.name}: ${g.categories.map((c) => c.label.toLowerCase()).join(" and ")}, by place, with sample size, source and licence.`,
+    description: `Latest official figures for ${g.name}: ${joinAnd(g.categories.map((c) => c.label.toLowerCase()))}, with the source and licence of every figure.`,
     path: g.path,
   });
 }
@@ -43,7 +44,8 @@ export default async function CountryPrices({ params }: Props) {
       <ul>
         {g.categories.map((c) => (
           <li key={c.path}>
-            <a href={c.path}>{c.label} in {g.name}</a>: {plural(c.pages.length, "place")}, figures of {longDate(c.asOf)}
+            <a href={c.path}>{c.label} in {g.name}</a>: {c.mode === "bulk" ? plural(c.refs.length, "place") : plural(c.refs.length, "ready answer")}
+            {c.asOf ? <>, figures of {longDate(c.asOf)}</> : null}
           </li>
         ))}
       </ul>

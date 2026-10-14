@@ -33,7 +33,7 @@ export default defineCategory({
     cpv: z
       .string()
       .optional()
-      .describe("Optional official product code, to be exact. A CPV code (EU and GB), e.g. 30213100 for portable computers; a prefix such as 3021 covers the whole group."),
+      .describe("Optional official product code, to be exact, where the source uses one (the country notes say which code system), e.g. the CPV code 30213100 for portable computers; a prefix such as 3021 covers the whole group."),
     buyer_area: z
       .string()
       .optional()

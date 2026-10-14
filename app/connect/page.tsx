@@ -1,5 +1,7 @@
 import { CONTACT, MCP_URL, connectGuides } from "../../lib/open-book";
+import { CATEGORIES } from "../../lib/registry";
 import { pageMetadata } from "../../lib/site/meta";
+import { joinAnd } from "../../lib/text";
 
 export const metadata = pageMetadata({
   title: "Connect ProofPrice to your AI",
@@ -18,7 +20,9 @@ export default function Connect() {
       <pre className="selectall">
         <code>{MCP_URL}</code>
       </pre>
-      <p>Transport: Streamable HTTP. Tools: price paid for home sales, live fuel prices, and a coverage check.</p>
+      <p>
+        Transport: Streamable HTTP. Tools: {joinAnd([...CATEGORIES.map((c) => c.title.toLowerCase()), "a coverage check"])}.
+      </p>
       <ul>
         {guides.map((g) => (
           <li key={g.id}>

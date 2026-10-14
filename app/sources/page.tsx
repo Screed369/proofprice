@@ -125,12 +125,19 @@ export default function Sources() {
                       Collected once a day.{" "}
                       {c.library?.last_date ? <>Newest figures: {longDate(c.library.last_date)}. </> : <>First collection pending. </>}
                       <a href="/status">Library status</a>
-                      {c.pricesPath && (
-                        <>
-                          {" "}
-                          · <a href={c.pricesPath}>Prices by place</a>
-                        </>
-                      )}
+                    </dd>
+                  </>
+                )}
+                {c.pricesPaths.length > 0 && (
+                  <>
+                    <dt>Ready answers</dt>
+                    <dd>
+                      {c.pricesPaths.map((p, i) => (
+                        <span key={p.path}>
+                          {i > 0 && " · "}
+                          <a href={p.path}>{c.pricesPaths.length > 1 ? p.country : "Ready answer pages"}</a>
+                        </span>
+                      ))}
                     </dd>
                   </>
                 )}

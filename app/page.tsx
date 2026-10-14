@@ -3,7 +3,9 @@ import { CONTACT, MCP_URL, SITE_DESCRIPTION } from "../lib/site/constants";
 import { homeExamples } from "../lib/site/examples";
 import { homeGraph } from "../lib/site/jsonld";
 import { pageMetadata } from "../lib/site/meta";
+import { countryGroups } from "../lib/site/prices";
 import { sourceCards, groupByCategory } from "../lib/site/sources";
+import { joinAnd } from "../lib/text";
 import { shortPublisher } from "../lib/site/answer-pages";
 
 export const metadata = pageMetadata({
@@ -18,6 +20,7 @@ export default function Home() {
   const groups = groupByCategory(cards);
   const countries = new Set(cards.flatMap((c) => c.countryCodes));
   const examples = homeExamples(3);
+  const topics = joinAnd([...new Set(countryGroups().flatMap((g) => g.categories.map((c) => c.label.toLowerCase())))]);
   return (
     <main>
       <JsonLd data={homeGraph()} />
@@ -97,8 +100,8 @@ export default function Home() {
         </div>
       ))}
       <p>
-        Home sale and fuel prices also have pages you can read without an AI: <a href="/prices">prices by place</a>, with the latest median
-        and typical range for each province, department, county and Dublin district in our daily price library.
+        Many answers also have pages you can read without an AI ({topics}): <a href="/prices">prices by place and item</a>, with the latest figure,
+        its source and its licence where our daily price library holds it, and the exact request to ask for it live where it does not.
       </p>
 
       <h2>Why you can rely on it</h2>

@@ -20,7 +20,7 @@ export default defineCategory({
   description: (places) =>
     "Use this when a user asks what agricultural land (farmland, arable land or grassland) sells for, or what it costs to rent, per hectare in " +
     `${joinOr(places.map((p) => p.place))}, in a particular region of such a country, or how it changed since the year before. ` +
-    "Returns the official average price per hectare (or the average rent per hectare for one year) for the latest year published, in euro and in national currency, " +
+    "Returns the official average price per hectare (or the average rent per hectare for one year) for the latest year published, in the currency the answer states (euro and national currency where the source gives both), " +
     "for the chosen land type (arable, permanent grassland and others), the previous year and change, the history, the other land types, the regions that exist, and the official source and licence. " +
     "This is a published average (price_type official_statistic), not a range built from sales, so the range fields are null and there is no sample size. " +
     `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
@@ -29,7 +29,7 @@ export default defineCategory({
   params: {
     measure: z.enum(["price", "rent"]).describe("price = what agricultural land sells for per hectare; rent = what it costs to rent per hectare for one year."),
     land_type: z.string().optional().describe("Land type, e.g. 'arable', 'permanent grassland', 'arable or grassland' (rent only), 'irrigable arable' (price only). Leave out for the usual one."),
-    region: z.string().optional().describe("Optional NUTS region code for a regional figure, e.g. ES51. Leave out for the whole country."),
+    region: z.string().optional().describe("Optional region code for a regional figure, where the source publishes one (the country notes say which codes). Leave out for the whole country."),
   },
   required: ["measure"],
   prepare: (p) => {

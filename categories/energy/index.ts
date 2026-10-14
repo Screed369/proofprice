@@ -25,15 +25,15 @@ export default defineCategory({
   noun: "Household energy prices",
   description: (places) =>
     "Use this when a user asks what households pay for electricity or natural gas per kWh in " +
-    `${joinOr(places.map((p) => p.place))}, how that compares with another country, or how it changed since the last half-year. ` +
-    "Returns the official average price per kWh for a standard household consumption band, for the latest half-year published, " +
-    "with the same band excluding VAT and excluding all taxes, every band, the previous half-year and the change, and the official source and licence. " +
+    `${joinOr(places.map((p) => p.place))}, how that compares with another country, or how it changed since the previous period. ` +
+    "Returns the official average price per kWh for a standard household consumption band, for the latest period published, " +
+    "with the same band excluding VAT and excluding all taxes, every band, the previous period and the change, and the official source and licence. " +
     "This is a published average (price_type official_statistic), not a range built from sales, so the range fields are null and there is no sample size. " +
     `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
     "Do not use for business or industrial tariffs, for a specific supplier's offer or a quote for a particular home, for petrol and diesel (use the fuel tool), or for other countries.",
   params: {
     energy: z.enum(["electricity", "gas"]).describe("electricity or gas (natural gas)."),
-    consumption_band: z.string().optional().describe("Standard household consumption band, by letter or Eurostat code. Leave out for the standard band."),
+    consumption_band: z.string().optional().describe("Standard household consumption band, by letter or by the publisher's code (the country notes list them). Leave out for the standard band."),
     taxes: z.enum(["all", "excl_vat", "none"]).optional().describe("Tax level of the price. 'all' = all taxes and levies included (what a household pays, default); 'excl_vat' = excluding VAT and other recoverable taxes; 'none' = excluding all taxes and levies."),
   },
   required: ["energy"],

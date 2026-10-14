@@ -18,8 +18,8 @@ export default defineCategory({
     "Use this when a user asks what an everyday grocery item (milk, bread, eggs, butter, cheese, chicken, bananas, potatoes, sugar, tea, coffee, beer, wine...) costs in the shops in " +
     `${joinOr(places.map((p) => `${p.place} (country ${p.code})`))}, or how that price has changed over the last year. ` +
     "Returns the official average or median shop price that the national statistics office publishes for a standard item, built from the shelf prices its price collectors record in shops for the consumer price index " +
-    "(shelf prices observed by price collectors, not receipts and not what one shopper paid; the UK also uses retailers' scanner data), with the exact item definition (for example 'Full-fat milk, per 2 litres'), the unit, the reference month, " +
-    "the change on a year earlier where the office publishes comparable figures (Ireland and the United States do; the UK statistics office advises against comparing months, so its answer carries none), the official source and licence. " +
+    "(shelf prices observed by price collectors, not receipts and not what one shopper paid; some offices also use retailers' scanner data), with the exact item definition (for example 'Full-fat milk, per 2 litres'), the unit, the reference month, " +
+    "the change on a year earlier where the office publishes comparable figures (an answer carries none where the office advises against comparing months), the official source and licence. " +
     "Each country defines its own standard items, so the item definition in the answer matters and related definitions are listed. " +
     `How fresh: ${[...new Set(places.map((p) => `${p.place}: ${p.freshness.charAt(0).toLowerCase()}${p.freshness.slice(1)}`))].join("; ")}. ` +
     "This is a published national (or regional) average, not a range of individual transactions, so the range fields can be null. " +

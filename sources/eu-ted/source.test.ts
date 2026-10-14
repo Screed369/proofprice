@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildTedQuery, collect, COUNTRIES, euTedContracts, INFO, isRetryable, MIN_VALUE, parseTedNotice, pickCurrency, unitName, CORE_FIELDS } from "./source";
+import { buildTedQuery, chooseHeadline, collect, COUNTRIES, euTedContracts, INFO, isRetryable, MIN_VALUE, parseTedNotice, pickCurrency, unitName, CORE_FIELDS, type TedLot } from "./source";
 import { SourceError, InputError } from "../../lib/http";
 import { cpvStem } from "../../categories/contracts/purchases";
 
@@ -204,6 +204,10 @@ test("TED end to end with a stubbed API: laptops in France", async () => {
       assert.match(a.query.country as string, /FR/);
       assert.match(a.summary, /not unit prices/);
       assert.match(a.summary, /framework agreements/);
+      // Only 2 single contracts matched, so every award counts and the answer says so.
+      assert.equal(a.extra?.headline_basis, "all_awards");
+      assert.match(a.summary, /fewer than 5 single contracts matched/);
+      assert.equal(a.extra?.framework_agreements_figure, undefined);
       assert.deepEqual(a.extra?.matched_codes, ["30213100"]);
       assert.equal((a.extra?.left_out as any).no_winner, 1);
     },
@@ -245,4 +249,121 @@ test("TED end to end with a stubbed API: a rate limit is retried, a country outs
   assert.equal(calls, 2);
   await assert.rejects(() => euTedContracts({ country: "US", what: "laptops", months: 12 }), InputError);
   await assert.rejects(() => euTedContracts({ country: "FR", what: "laptops", cpv: "abc", months: 12 }), InputError);
+});
+
+// ---------- single contracts vs framework agreements in the headline ----------
+
+/** Synthetic: the real single laptop notice (FR_287033) with another number and value. */
+function single(pub: string, value: number) {
+  return {
+    ...FR_287033,
+    "publication-number": pub,
+    "total-value": value,
+    "tender-value": [String(value)],
+    "quantity-lot": undefined,
+    "quantity-unit-lot": undefined,
+  };
+}
+/** Synthetic: the real framework laptop notice (FR_504855) with another number and value. */
+function framework(pub: string, value: number) {
+  return { ...FR_504855, "publication-number": pub, "total-value": value * 2, "tender-value": [String(value)] };
+}
+
+const lot = (framework: boolean | null, value: number): TedLot => ({ id: `x#${value}`, date: "2026-07-01", value, currency: "EUR", basis: "tender", framework });
+
+test("TED headline: single contracts alone from 5 of them, when frameworks are in the mix", () => {
+  const five = [1, 2, 3, 4, 5].map((i) => lot(false, 1000 * i));
+  const mixed = chooseHeadline([...five, lot(true, 9_000_000), lot(true, 14_000_000)]);
+  assert.equal(mixed.basis, "single_contracts");
+  assert.equal(mixed.lots.length, 5);
+  assert.equal(mixed.frameworks.length, 2);
+  assert.equal(mixed.singles.length, 5);
+  // 4 single contracts are not enough to publish a figure of their own: everything counts, as before.
+  const four = chooseHeadline([...five.slice(0, 4), lot(true, 9_000_000)]);
+  assert.equal(four.basis, "all_awards");
+  assert.equal(four.lots.length, 5);
+  // No frameworks at all: nothing to separate, even with lots whose notice does not say.
+  const none = chooseHeadline([...five, lot(null, 777)]);
+  assert.equal(none.basis, "all_awards");
+  assert.equal(none.lots.length, 6);
+  assert.equal(none.unknown, 1);
+  // Lots whose notice does not say are not single contracts: they stay out of a single-contract headline but are counted.
+  const unknown = chooseHeadline([...five, lot(true, 5_000_000), lot(null, 777)]);
+  assert.equal(unknown.basis, "single_contracts");
+  assert.equal(unknown.lots.length, 5);
+  assert.equal(unknown.unknown, 1);
+});
+
+test("TED end to end with a stubbed API: 6 single contracts and 5 frameworks, the headline is the single contracts", async () => {
+  const singles = [
+    single("900001-2026", 90_000), single("900002-2026", 100_000), single("900003-2026", 110_000),
+    single("900004-2026", 120_000), single("900005-2026", 130_000), single("900006-2026", 140_000),
+  ];
+  const frameworks = [
+    framework("910001-2026", 4_000_000), framework("910002-2026", 6_000_000), framework("910003-2026", 8_000_000),
+    framework("910004-2026", 10_000_000), framework("910005-2026", 14_000_000),
+  ];
+  const notices = [...frameworks, ...singles];
+  await withFetch(
+    () => ({ totalNoticeCount: notices.length, notices }),
+    async () => {
+      const a = await euTedContracts({ country: "FR", what: "laptops", months: 24 });
+      assert.equal(a.status, "ok");
+      assert.equal(a.sample_size, 6);
+      // 90k, 100k, 110k, 120k, 130k, 140k -> median 115k; not the millions of the frameworks.
+      assert.equal(a.price?.median, 115_000);
+      assert.ok((a.price?.typical_high ?? Infinity) <= 140_000);
+      assert.ok((a.price?.typical_low ?? 0) >= 90_000);
+      assert.equal(a.extra?.headline_basis, "single_contracts");
+      assert.equal(a.extra?.awards_used, 6);
+      assert.equal(a.extra?.awards_in_currency, 11);
+      assert.equal(a.extra?.single_contracts, 6);
+      assert.equal(a.extra?.framework_agreements, 5);
+      // The framework figure moved to extra, with its own sample size.
+      const fw: any = a.extra?.framework_agreements_figure;
+      assert.equal(fw.currency, "EUR");
+      assert.equal(fw.median, 8_000_000);
+      assert.equal(fw.sample_size, 5);
+      // One sentence about the frameworks in the summary, and the headline range does not mention their numbers.
+      const sentences = a.summary.split(/(?<=\.)\s+/).filter((x) => /framework/.test(x));
+      assert.equal(sentences.length, 1, a.summary);
+      assert.match(sentences[0], /5 framework agreements/);
+      assert.match(sentences[0], /left out of this figure/);
+      assert.match(a.summary, /not unit prices/);
+      assert.match(a.method, /Framework agreements are left out of the headline/);
+      assert.ok(!/14,000,000|14000000/.test(a.summary.split(/(?<=\.)\s+/)[0]));
+    },
+  );
+});
+
+test("TED end to end with a stubbed API: fewer than 5 frameworks give no framework figure, only the count", async () => {
+  const singles = ["900001", "900002", "900003", "900004", "900005"].map((p, i) => single(`${p}-2026`, 100_000 + i * 10_000));
+  const notices = [...singles, framework("910001-2026", 6_000_000), framework("910002-2026", 8_000_000)];
+  await withFetch(
+    () => ({ totalNoticeCount: notices.length, notices }),
+    async () => {
+      const a = await euTedContracts({ country: "FR", what: "laptops", months: 24 });
+      assert.equal(a.status, "ok");
+      assert.equal(a.sample_size, 5);
+      assert.equal(a.price?.median, 120_000);
+      assert.equal(a.extra?.framework_agreements, 2);
+      assert.equal(a.extra?.framework_agreements_figure, undefined);
+      assert.match(a.summary, /2 framework agreements in the same notices are left out of this figure/);
+      assert.ok(!/median of/.test(a.summary.split("left out of this figure")[1].split(/(?<=\.)\s/)[0]));
+    },
+  );
+});
+
+test("TED end to end with a stubbed API: no frameworks at all, the answer is unchanged and has no framework sentence", async () => {
+  const notices = ["900001", "900002", "900003", "900004", "900005", "900006"].map((p, i) => single(`${p}-2026`, 100_000 + i * 10_000));
+  await withFetch(
+    () => ({ totalNoticeCount: notices.length, notices }),
+    async () => {
+      const a = await euTedContracts({ country: "FR", what: "laptops", months: 24 });
+      assert.equal(a.sample_size, 6);
+      assert.equal(a.extra?.headline_basis, "all_awards");
+      assert.equal(a.extra?.framework_agreements, 0);
+      assert.ok(!/framework/i.test(a.summary));
+    },
+  );
 });

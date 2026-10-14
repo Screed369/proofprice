@@ -1,16 +1,15 @@
-// Loads the answer pages from the price library once per build (or per server process) and offers the lookups the
-// /prices pages, the sitemap and llms-full.txt need. The rules live in answer-pages.ts; this file only reads and groups.
+// Loads the ready answer pages and offers the lookups the /prices pages, the sitemap, llms-full.txt and /sources need.
+// Two kinds of page share the /prices/<country>/<category>/<place> address space:
+//   bulk    one page for EVERY place of a library source (Spain, France, Italy fuel; Irish home sales), built from the newest
+//           library day (answer-pages.ts, place names in areas.ts);
+//   example the pages a source's manifest asks for (`pages`, default its `examples`): every other source (example-pages.ts).
+// Everything here is synchronous and derived from the registry and the library files, so the sitemap and llms-full.txt never
+// wait for an answer. The figures of example pages are built asynchronously (loadExamplePages) and only the page components need them.
 
 import { readLatestDay, readMeta } from "../library/store";
 import { SOURCE_PLUGINS, categoryById } from "../registry";
-import {
-  CATEGORY_LABEL,
-  PAGE_SOURCES,
-  buildSourcePages,
-  type AnswerPage,
-  type BuildResult,
-  type PageCategory,
-} from "./answer-pages";
+import { PAGE_SOURCES, buildSourcePages, type AnswerPage, type BuildResult } from "./answer-pages";
+import { examplePlans } from "./example-pages";
 
 export interface LoadedPages extends BuildResult {
   /** Library days that produced pages, by source id. */
@@ -19,7 +18,7 @@ export interface LoadedPages extends BuildResult {
 
 let cache: LoadedPages | null = null;
 
-/** Build every answer page from the newest library day of each source. Memoised: the library cannot change inside one build. */
+/** Build the bulk answer pages from the newest library day of each source. Memoised: the library cannot change inside one build. */
 export function loadAnswerPages(): LoadedPages {
   if (cache) return cache;
   const out: LoadedPages = { pages: [], skipped: [], days: {} };
@@ -41,6 +40,7 @@ export function loadAnswerPages(): LoadedPages {
   return out;
 }
 
+/** The bulk pages (one per place). */
 export function allAnswerPages(): AnswerPage[] {
   return loadAnswerPages().pages;
 }
@@ -49,13 +49,67 @@ export function findAnswerPage(countrySlug: string, category: string, areaSlug: 
   return allAnswerPages().find((p) => p.countrySlug === countrySlug && p.category === category && p.area.slug === areaSlug);
 }
 
+// ---------- every page, as a light reference (no figures) ----------
+
+export interface PageRef {
+  mode: "bulk" | "example";
+  path: string;
+  sourceId: string;
+  country: string;
+  countrySlug: string;
+  countryName: string;
+  category: string; // registry category id
+  categoryLabel: string;
+  slug: string;
+  label: string;
+  asOf: string | null; // YYYY-MM-DD of the newest data behind the page, when known without building it
+}
+
+let refCache: PageRef[] | null = null;
+
+/** Every page that exists under /prices: bulk pages first, then the pages the manifests ask for. Memoised. */
+export function pageRefs(): PageRef[] {
+  if (refCache) return refCache;
+  const refs: PageRef[] = allAnswerPages().map((p) => ({
+    mode: "bulk",
+    path: p.path,
+    sourceId: p.sourceId,
+    country: p.country,
+    countrySlug: p.countrySlug,
+    countryName: p.countryName,
+    category: p.category,
+    categoryLabel: p.categoryLabel,
+    slug: p.area.slug,
+    label: p.area.label,
+    asOf: p.asOf,
+  }));
+  for (const plan of examplePlans()) {
+    refs.push({
+      mode: "example",
+      path: plan.path,
+      sourceId: plan.sourceId,
+      country: plan.country,
+      countrySlug: plan.countrySlug,
+      countryName: plan.countryName,
+      category: plan.category,
+      categoryLabel: plan.categoryLabel,
+      slug: plan.slug,
+      label: plan.label,
+      asOf: readMeta(plan.sourceId)?.last_date ?? null,
+    });
+  }
+  refCache = refs;
+  return refs;
+}
+
 export interface CategoryGroup {
-  category: PageCategory;
+  mode: "bulk" | "example";
+  category: string; // registry category id
   label: string;
   path: string; // /prices/es/fuel
   sourceId: string;
-  asOf: string;
-  pages: AnswerPage[];
+  asOf: string | null;
+  refs: PageRef[];
 }
 
 export interface CountryGroup {
@@ -66,10 +120,12 @@ export interface CountryGroup {
   categories: CategoryGroup[];
 }
 
+const newest = (a: string | null, b: string | null) => (a && b ? (a > b ? a : b) : (a ?? b));
+
 /** Pages grouped by country, then category. */
 export function countryGroups(): CountryGroup[] {
   const groups = new Map<string, CountryGroup>();
-  for (const p of allAnswerPages()) {
+  for (const p of pageRefs()) {
     let g = groups.get(p.countrySlug);
     if (!g) {
       g = { slug: p.countrySlug, code: p.country, name: p.countryName, path: `/prices/${p.countrySlug}`, categories: [] };
@@ -77,11 +133,13 @@ export function countryGroups(): CountryGroup[] {
     }
     let c = g.categories.find((x) => x.category === p.category);
     if (!c) {
-      c = { category: p.category, label: CATEGORY_LABEL[p.category], path: `/prices/${p.countrySlug}/${p.category}`, sourceId: p.sourceId, asOf: p.asOf, pages: [] };
+      c = { mode: p.mode, category: p.category, label: p.categoryLabel, path: `/prices/${p.countrySlug}/${p.category}`, sourceId: p.sourceId, asOf: null, refs: [] };
       g.categories.push(c);
     }
-    c.pages.push(p);
+    c.refs.push(p);
+    c.asOf = newest(c.asOf, p.asOf);
   }
+  for (const g of groups.values()) g.categories.sort((a, b) => a.label.localeCompare(b.label, "en"));
   return [...groups.values()].sort((a, b) => a.name.localeCompare(b.name, "en"));
 }
 
@@ -91,7 +149,18 @@ export function findCategoryGroup(countrySlug: string, category: string): { coun
   return country && group ? { country, group } : undefined;
 }
 
-/** Index pages, then answer pages: every path under /prices that exists. */
+/** The /prices page(s) of a source: one per country it has pages for. Empty when it has none. */
+export function pricesPathsFor(sourceId: string): { country: string; path: string }[] {
+  const out: { country: string; path: string }[] = [];
+  for (const g of countryGroups()) for (const c of g.categories) if (c.sourceId === sourceId) out.push({ country: g.name, path: c.path });
+  return out;
+}
+
+export function pricesPathFor(sourceId: string): string | null {
+  return pricesPathsFor(sourceId)[0]?.path ?? null;
+}
+
+/** Index pages: /prices, then each country and each country's categories. */
 export function pricesIndexPaths(): string[] {
   const paths = ["/prices"];
   for (const g of countryGroups()) {
@@ -101,12 +170,12 @@ export function pricesIndexPaths(): string[] {
   return paths;
 }
 
+/** Every individual answer page path (bulk and example). */
 export function answerPagePaths(): string[] {
-  return allAnswerPages().map((p) => p.path);
+  return pageRefs().map((p) => p.path);
 }
 
-/** The newest library day behind any answer page (for sitemap lastmod and the /prices index). */
+/** The newest data day behind any page (for sitemap lastmod and the /prices index). */
 export function newestLibraryDay(): string | null {
-  const days = Object.values(loadAnswerPages().days);
-  return days.length ? days.sort().reverse()[0] : null;
+  return pageRefs().reduce<string | null>((acc, p) => newest(acc, p.asOf), null);
 }

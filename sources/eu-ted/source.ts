@@ -8,7 +8,7 @@
 import { fetchJson, InputError, SourceError } from "../../lib/http";
 import type { SourceInfo } from "../../lib/plugin";
 import { fmtMoney, type PriceAnswer } from "../../lib/answer";
-import { summarise } from "../../lib/stats";
+import { MIN_PUBLISH, summarise } from "../../lib/stats";
 import { contractAnswer, unitPriceFrom } from "../../categories/contracts/answer";
 import { cleanCpv, cpvInGroups, cpvStem, matchPurchase, monthsWindow } from "../../categories/contracts/purchases";
 
@@ -33,7 +33,8 @@ export const INFO: SourceInfo = {
   limits:
     "Award notices of public buyers above the EU procurement thresholds (smaller purchases are published on national portals, not TED). Aggregates only; suppliers are never named. " +
     "Each lot with a chosen winner and a stated value counts as one contract; lots without a winner, without a value (or with a placeholder such as 1 or -1) are left out, so the sample is smaller than the number of notices. " +
-    "Values are totals per contract (lot) in the notice currency, not unit prices; the stated value of a framework agreement is usually a ceiling over several years rather than a price paid, and the answer says how many framework lots it holds. " +
+    "Values are totals per contract (lot) in the notice currency, not unit prices; the stated value of a framework agreement is usually a ceiling over several years rather than a price paid, " +
+    "so when at least 5 single (non-framework) contracts match, the headline median and range use those only and the framework figure is given separately. " +
     "Only the newest 1,000 matching notices are read. Mostly eForms notices (compulsory from late 2023).",
 };
 
@@ -279,6 +280,32 @@ export function pickCurrency(records: { currency: string }[]): { currency: strin
   return { currency, others: Object.fromEntries(ranked.slice(1)) };
 }
 
+/** Which lots the headline median and range are built from, and the lots kept out of it. */
+export interface Headline {
+  /** The lots the headline is built from. */
+  lots: TedLot[];
+  basis: "single_contracts" | "all_awards";
+  /** Framework agreements (their stated value is usually a ceiling over several years, not a price paid). */
+  frameworks: TedLot[];
+  /** Single contracts: the notice says there is no framework agreement. */
+  singles: TedLot[];
+  /** Lots whose notice does not say either way. */
+  unknown: number;
+}
+
+/**
+ * Single contracts alone when at least MIN_PUBLISH of them match and framework agreements would otherwise be mixed in: a framework's stated
+ * value is a ceiling over several years, so one big framework should not move the median of what buyers paid. Otherwise every award counts,
+ * as before (a figure from fewer than 5 single contracts would not be published on its own).
+ */
+export function chooseHeadline(lots: TedLot[]): Headline {
+  const frameworks = lots.filter((l) => l.framework === true);
+  const singles = lots.filter((l) => l.framework === false);
+  const unknown = lots.length - frameworks.length - singles.length;
+  const singleOnly = frameworks.length > 0 && singles.length >= MIN_PUBLISH;
+  return { lots: singleOnly ? singles : lots, basis: singleOnly ? "single_contracts" : "all_awards", frameworks, singles, unknown };
+}
+
 // ---------- fetching ----------
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -383,22 +410,28 @@ export async function euTedContracts(input: TedInput): Promise<PriceAnswer> {
 
   const { currency, others } = pickCurrency(lots);
   const inCurrency = lots.filter((l) => l.currency === currency);
-  const dates = inCurrency.map((l) => l.date).filter(Boolean).sort();
+  const head = chooseHeadline(inCurrency);
+  const dates = head.lots.map((l) => l.date).filter(Boolean).sort();
   const truncated = total > notices.length;
   const unit = unitPriceFrom(
     inCurrency.filter((l) => l.quantity && l.unit).map((l) => ({ value: l.value, quantity: l.quantity!, unit: unitName(l.unit!) })),
     currency,
   );
   const otherCount = Object.values(others).reduce((a, b) => a + b, 0);
-  const frameworks = inCurrency.filter((l) => l.framework === true).length;
-  const singles = inCurrency.filter((l) => l.framework === false);
-  const singleSummary = singles.length >= 5 ? summarise(singles.map((l) => l.value)) : null;
+  const fwSummary = head.frameworks.length >= MIN_PUBLISH ? summarise(head.frameworks.map((l) => l.value)) : null;
+  const plural = head.frameworks.length === 1 ? "" : "s";
   const notes: string[] = [];
   if (otherCount) notes.push(`${otherCount} award(s) in other currencies were left out; figures are in ${currency}.`);
-  if (frameworks) {
+  if (head.frameworks.length && head.basis === "single_contracts") {
+    // One sentence: what was kept out of the headline and why. The framework figure itself is in `extra`.
     notes.push(
-      `${frameworks} of the ${inCurrency.length} awards are framework agreements, whose stated value is usually a ceiling over several years rather than a price paid` +
-        (singleSummary ? `; the ${singleSummary.count} single contracts alone have a median of ${fmtMoney(singleSummary.median, currency)}.` : "."),
+      `${head.frameworks.length} framework agreement${plural} in the same notices ${head.frameworks.length === 1 ? "is" : "are"} left out of this figure, because the stated value of a framework is usually a ceiling over several years rather than a price paid` +
+        (fwSummary ? `; they have a median of ${fmtMoney(fwSummary.median, currency)} (see extra.framework_agreements_figure).` : "."),
+    );
+  } else if (head.frameworks.length) {
+    notes.push(
+      `${head.frameworks.length} of the ${inCurrency.length} awards are framework agreements, whose stated value is usually a ceiling over several years rather than a price paid; ` +
+        `fewer than ${MIN_PUBLISH} single contracts matched, so this figure includes them.`,
     );
   }
   if (truncated) notes.push(`TED holds ${total} matching award notices; the newest ${notices.length} were read.`);
@@ -406,7 +439,7 @@ export async function euTedContracts(input: TedInput): Promise<PriceAnswer> {
   return contractAnswer({
     source: INFO,
     query: { country: input.country, what: input.what, ...(input.cpv ? { cpv: input.cpv } : {}), ...(input.buyer_area ? { buyer_area: input.buyer_area } : {}), months: input.months },
-    values: inCurrency.map((l) => l.value),
+    values: head.lots.map((l) => l.value),
     currency,
     what: matched ?? input.what,
     where: c.name + (city ? ` (buyers in ${city})` : ""),
@@ -416,7 +449,11 @@ export async function euTedContracts(input: TedInput): Promise<PriceAnswer> {
       `Contract award notices (form type 'result') on TED whose buyer is in ${c.name}${city ? ` and in ${city}` : ""}, published since ${win.from}, ` +
       (codes ? `with CPV code(s) ${codes.join(", ")}` : `found by free-text search for "${text}"`) +
       (stems ? `. Each lot whose own main product code is in that group, with a chosen winner and a stated value, is one contract; its value is the winning tender's value` : `. Each single-lot notice with a chosen winner and a stated value is one contract; its value is the winning tender's value`) +
-      ` (or the notice total when a single-lot notice gives no tender value). Median and 10th–90th percentile of those values in ${currency}; never supplier names. Values are totals per contract (lot), not unit prices.`,
+      ` (or the notice total when a single-lot notice gives no tender value). ` +
+      (head.basis === "single_contracts"
+        ? `Framework agreements are left out of the headline because their stated value is usually a ceiling over several years; the median and 10th–90th percentile are those of the single contracts in ${currency}.`
+        : `Median and 10th–90th percentile of those values in ${currency}.`) +
+      ` Never supplier names. Values are totals per contract (lot), not unit prices.`,
     unitPrice: unit,
     notes,
     baseUrl: input.baseUrl,
@@ -425,11 +462,17 @@ export async function euTedContracts(input: TedInput): Promise<PriceAnswer> {
       free_text: text ?? null,
       notices_found: total,
       notices_read: notices.length,
-      awards_used: inCurrency.length,
-      value_from: { winning_tender: inCurrency.filter((l) => l.basis === "tender").length, notice_total: inCurrency.filter((l) => l.basis === "notice_total").length },
-      framework_agreements: frameworks,
-      single_contracts: singles.length,
-      ...(singleSummary ? { single_contracts_only: { median: singleSummary.median, typical_low: singleSummary.low, typical_high: singleSummary.high, sample_size: singleSummary.count } } : {}),
+      awards_used: head.lots.length,
+      awards_in_currency: inCurrency.length,
+      headline_basis: head.basis,
+      value_from: { winning_tender: head.lots.filter((l) => l.basis === "tender").length, notice_total: head.lots.filter((l) => l.basis === "notice_total").length },
+      framework_agreements: head.frameworks.length,
+      single_contracts: head.singles.length,
+      ...(head.unknown ? { framework_unknown: head.unknown } : {}),
+      // The framework figure, kept out of the headline. Only from 5 or more framework agreements.
+      ...(fwSummary && head.basis === "single_contracts"
+        ? { framework_agreements_figure: { currency, median: fwSummary.median, typical_low: fwSummary.low, typical_high: fwSummary.high, sample_size: fwSummary.count, value_basis: "stated value of a framework agreement, usually a ceiling over several years" } }
+        : {}),
       left_out: leftOut,
       ...(otherCount ? { other_currencies: others } : {}),
     },

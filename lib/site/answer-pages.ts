@@ -9,11 +9,13 @@
 import { fmtMoney } from "../answer";
 import { FUEL_LABEL, type Fuel } from "../fuels";
 import type { SourceInfo } from "../plugin";
+import { PRICE_TYPE_BASIS } from "../price-types";
 import { MIN_PUBLISH, confidenceLabel } from "../stats";
 import { areaFor, countryName, NATIONAL_KEY, type AreaInfo } from "./areas";
 import { int, longDate, moneyFixed, monthsBefore, shortDate } from "./format";
+import { FUEL_PHRASE } from "./page-wording";
 
-// ---------- which library sources get pages ----------
+// ---------- which library sources get a page for every place ----------
 
 export type PageCategory = "fuel" | "home-sales";
 
@@ -23,7 +25,10 @@ export interface PageSourceSpec {
   category: PageCategory;
 }
 
-/** Library sources with answer pages. A new library source needs one line here plus its place names in lib/site/areas.ts. */
+/** Sources with a page for EVERY place in their newest library day (Spain, France and Italy by province or department, Ireland by
+ *  county and Dublin district). These need the place names in lib/site/areas.ts, so they are the exception.
+ *  Every other source gets its pages from its manifest (SourcePlugin.pages, default: its examples), with nothing to edit here:
+ *  see lib/site/example-pages.ts. */
 export const PAGE_SOURCES: PageSourceSpec[] = [
   { sourceId: "es-fuel", country: "ES", category: "fuel" },
   { sourceId: "fr-fuel", country: "FR", category: "fuel" },
@@ -31,10 +36,41 @@ export const PAGE_SOURCES: PageSourceSpec[] = [
   { sourceId: "ie-ppr", country: "IE", category: "home-sales" },
 ];
 
-export const CATEGORY_LABEL: Record<PageCategory, string> = {
+/** Headings for categories whose plain registry noun reads badly ("Live fuel prices", "Home sales"). Any other category uses its noun. */
+export const CATEGORY_LABEL: Record<string, string> = {
   fuel: "Fuel prices",
   "home-sales": "Home sale prices",
+  cars: "Car prices",
 };
+
+/** Where a figure comes from, as every answer page prints it. */
+export interface PageSource {
+  id: string;
+  name: string;
+  publisher: string;
+  licence: string;
+  licence_url: string;
+  attribution: string;
+  homepage: string;
+  freshness: string;
+  limits: string;
+  price_type: SourceInfo["price_type"];
+}
+
+export function pageSourceOf(i: SourceInfo): PageSource {
+  return {
+    id: i.id,
+    name: i.name,
+    publisher: i.publisher,
+    licence: i.licence,
+    licence_url: i.licence_url,
+    attribution: i.attribution,
+    homepage: i.homepage,
+    freshness: i.freshness,
+    limits: i.limits,
+    price_type: i.price_type,
+  };
+}
 
 export interface CategoryFacts {
   tool: string; // MCP tool name, from the registry
@@ -77,6 +113,7 @@ export interface Figure {
 }
 
 export interface AnswerPage {
+  mode: "bulk"; // a page for one place of a library source (the other kind is ExamplePage in example-pages.ts)
   path: string; // /prices/es/fuel/madrid
   sourceId: string;
   country: string; // "ES"
@@ -96,18 +133,7 @@ export interface AnswerPage {
   mcpTool: string;
   historyRestPath: string | null;
   ask: string; // copy-paste text for the reader's AI
-  source: {
-    id: string;
-    name: string;
-    publisher: string;
-    licence: string;
-    licence_url: string;
-    attribution: string;
-    homepage: string;
-    freshness: string;
-    limits: string;
-    price_type: SourceInfo["price_type"];
-  };
+  source: PageSource;
 }
 
 export interface BuildResult {
@@ -118,17 +144,6 @@ export interface BuildResult {
 // ---------- fuel ----------
 
 const FUEL_ORDER = ["diesel", "diesel/served", "petrol95", "petrol95/served", "petrol98", "petrol98/served", "e10", "e85", "lpg", "methane"];
-
-/** How a fuel reads inside a question. */
-const FUEL_PHRASE: Record<Fuel, string> = {
-  diesel: "diesel",
-  petrol95: "unleaded 95 petrol",
-  petrol98: "unleaded 98 petrol",
-  e10: "unleaded 95-E10 petrol",
-  e85: "E85 bioethanol",
-  lpg: "LPG (autogas)",
-  methane: "compressed natural gas (CNG)",
-};
 
 const fuelOrder = (item: string) => {
   const i = FUEL_ORDER.indexOf(item);
@@ -252,15 +267,6 @@ function homeFigures(spec: PageSourceSpec, area: AreaInfo, rows: DayRow[], date:
 
 // ---------- page assembly ----------
 
-const BASIS: Record<SourceInfo["price_type"], string> = {
-  transaction: "Prices recorded in official records of completed sales. Asking prices are never used.",
-  posted_pump_price: "Posted pump prices: what each filling station displays for a litre, as published in the official feed. They are not individual receipts.",
-  posted_price: "Posted prices, as published by the official source. They are not individual receipts.",
-  contract_price: "Contract prices, as published by the official source.",
-  reimbursement_price: "Reimbursement prices set by the official source.",
-  official_statistic: "An official average or median published by a statistics office or regulator, not individual sales.",
-};
-
 function askText(page: { category: PageCategory; area: AreaInfo; headline: Figure }): string {
   const { category, area, headline } = page;
   if (category === "fuel") {
@@ -317,10 +323,11 @@ export function buildSourcePages(
       : `Median pump prices in ${area.label} on ${longDate(day.date)}: ` +
         figures
           .slice(0, 3)
-          .map((f) => `${FUEL_PHRASE[f.id.split("/")[0] as Fuel] ?? f.label}${f.id.endsWith("/served") ? " (attended)" : ""} ${f.medianText} ${f.unit}`)
+          .map((f) => `${FUEL_PHRASE[f.id.split("/")[0]] ?? f.label}${f.id.endsWith("/served") ? " (attended)" : ""} ${f.medianText} ${f.unit}`)
           .join(", ") +
         `. Posted prices from ${sourceShort}, not receipts.`;
     const page: AnswerPage = {
+      mode: "bulk",
       path: `/prices/${countrySlug}/${spec.category}/${slug}`,
       sourceId: spec.sourceId,
       country: spec.country,
@@ -338,7 +345,7 @@ export function buildSourcePages(
       figures,
       asOf: day.date,
       period: homes ? { from: monthsBefore(day.date, HOME_MONTHS), to: day.date } : null,
-      basis: BASIS[i.price_type] ?? "",
+      basis: PRICE_TYPE_BASIS[i.price_type] ?? "",
       mcpTool: ctx.category.tool,
       historyRestPath:
         ctx.category.hasHistory && spec.category === "fuel"
@@ -350,18 +357,7 @@ export function buildSourcePages(
             })
           : null,
       ask: "",
-      source: {
-        id: i.id,
-        name: i.name,
-        publisher: i.publisher,
-        licence: i.licence,
-        licence_url: i.licence_url,
-        attribution: i.attribution,
-        homepage: i.homepage,
-        freshness: i.freshness,
-        limits: i.limits,
-        price_type: i.price_type,
-      },
+      source: pageSourceOf(i),
     };
     page.ask = askText({ category: spec.category, area, headline });
     pages.push(page);

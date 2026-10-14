@@ -14,11 +14,11 @@ export default defineCategory({
   description: (places) =>
     "Use this when a user asks what people actually pay for a flight between two cities or airports (for example JFK to LAX, or Chicago to Miami), " +
     `or what the average airfare out of a city is, in ${joinOr(places.map((p) => `${p.place} (country ${p.code})`))}. ` +
-    "Returns the official average fare in US dollars per passenger each way for the latest quarter published, with the passengers per day behind it, " +
+    "Returns the official average fare per passenger each way, in the currency the answer states, for the latest quarter published, with (where the source publishes them) the passengers per day behind it, " +
     "the share of the largest carrier, the change on a year earlier and the last few quarters, plus the official source and licence. " +
     "This is a published quarterly average of fares paid (price_type official_statistic), not a range built from tickets, so the range fields are null and there is no sample size; " +
     `how fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
-    "Do not use for today's fare, a specific date, airline or cabin, a booking or price alert, international flights, flights to or from Alaska, Hawaii or US territories, hotels, or other countries.",
+    "Do not use for today's fare, a specific date, airline or cabin, a booking or price alert, international flights, routes outside the places named above, hotels, or other countries.",
   params: {
     from: z.string().min(2).describe("Where the flight starts: an airport code (JFK, LAX) or a city (Chicago, 'Portland, OR'). Required."),
     to: z.string().min(2).optional().describe("Where it ends: an airport code or a city. Leave out to get the average fare over the busiest routes out of the 'from' city."),

@@ -2,10 +2,11 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../../_components/Breadcrumbs";
 import { JsonLd } from "../../../_components/JsonLd";
 import { noFullStop, shortLicence, type AnswerPage, type Figure } from "../../../../lib/site/answer-pages";
+import { examplePagesIn } from "../../../../lib/site/example-pages";
 import { breadcrumbGraph } from "../../../../lib/site/jsonld";
 import { int, longDate, plural } from "../../../../lib/site/format";
 import { pageMetadata } from "../../../../lib/site/meta";
-import { countryGroups, findCategoryGroup } from "../../../../lib/site/prices";
+import { allAnswerPages, countryGroups, findCategoryGroup } from "../../../../lib/site/prices";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -21,9 +22,13 @@ export async function generateMetadata({ params }: Props) {
   const found = findCategoryGroup(country, category);
   if (!found) return {};
   const { country: c, group } = found;
+  const what = group.mode === "bulk" ? plural(group.refs.length, "place") : plural(group.refs.length, "ready answer");
   return pageMetadata({
-    title: `${group.label} in ${c.name}, by place`,
-    description: `Latest median and typical range of ${group.label.toLowerCase()} in ${c.name}, for ${plural(group.pages.length, "place")}, from official data (figures of ${longDate(group.asOf)}). Source and licence on every page.`,
+    title: group.mode === "bulk" ? `${group.label} in ${c.name}, by place` : `${group.label} in ${c.name}`,
+    description:
+      group.mode === "bulk"
+        ? `Latest median and typical range of ${group.label.toLowerCase()} in ${c.name}, for ${what}, from official data${group.asOf ? ` (figures of ${longDate(group.asOf)})` : ""}. Source and licence on every page.`
+        : `Ready answers on ${group.label.toLowerCase()} in ${c.name} (${what}), from official data: the question, the figure where we hold it, the source and the licence, and how to ask for the latest.`,
     path: group.path,
   });
 }
@@ -35,15 +40,73 @@ export default async function CategoryIndex({ params }: Props) {
   const found = findCategoryGroup(country, category);
   if (!found) notFound();
   const { country: c, group } = found;
-  const homes = group.category === "home-sales";
-  const first = group.pages[0];
   const crumbs = [
     { name: "Home", path: "/" },
     { name: "Prices", path: "/prices" },
     { name: c.name, path: c.path },
     { name: group.label, path: group.path },
   ];
-  const nationalPage = group.pages.find((p) => p.national);
+
+  if (group.mode === "example") {
+    const pages = await examplePagesIn(country, category);
+    const first = pages[0];
+    return (
+      <main>
+        <JsonLd data={breadcrumbGraph(crumbs)} />
+        <Breadcrumbs items={[...crumbs.slice(0, 3), { name: group.label }]} />
+        <h1>
+          {group.label} in {c.name}
+        </h1>
+        <p className="lede">
+          {plural(pages.length, "ready answer")} from official data. Open one for the figure where we hold it, the source and the licence, and the exact request to
+          get the latest.
+        </p>
+        <div className="table-wrap">
+          <table>
+            <caption>Latest figure, where the ProofPrice library holds it</caption>
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th className="num">Figure</th>
+                <th>Kind</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pages.map((p) => (
+                <tr key={p.path}>
+                  <td>
+                    <a href={p.path}>{p.h1}</a>
+                  </td>
+                  <td className="num">
+                    {p.figure ? (
+                      <>
+                        {p.figure.headline} <span className="muted small">{p.figure.unit}</span>
+                      </>
+                    ) : (
+                      <span className="muted">ask live</span>
+                    )}
+                  </td>
+                  <td>{p.figure ? (p.figure.statistic ? `official ${p.figure.measure}` : `${p.figure.measure} of ${p.figure.n === null ? "records" : `${int(p.figure.n)} records`}`) : "answered live"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {first && (
+          <p className="cite">
+            Source: {noFullStop(first.source.publisher)}. Licence: <a href={first.source.licence_url}>{shortLicence(first.source.licence)}</a>.{" "}
+            {first.source.attribution} {first.basis} A figure built from records is shown only when at least 5 records sit behind it; where no figure is shown the
+            source is answered live. See <a href="/sources">/sources</a> and <a href="/method">/method</a>.
+          </p>
+        )}
+      </main>
+    );
+  }
+
+  const homes = group.category === "home-sales";
+  const pages = allAnswerPages().filter((p) => p.countrySlug === country && p.category === category);
+  const first = pages[0];
+  const nationalPage = pages.find((p) => p.national);
   return (
     <main>
       <JsonLd data={breadcrumbGraph(crumbs)} />
@@ -53,9 +116,9 @@ export default async function CategoryIndex({ params }: Props) {
       </h1>
       <p className="lede">
         {homes
-          ? `What homes sold for in each place, over the 12 months to ${longDate(group.asOf)}.`
-          : `What fuel costs at the pump in each place, on ${longDate(group.asOf)}.`}{" "}
-        {plural(group.pages.length, "place")}. Open a place for every figure, its source and licence.
+          ? `What homes sold for in each place, over the 12 months to ${longDate(group.asOf ?? "")}.`
+          : `What fuel costs at the pump in each place, on ${longDate(group.asOf ?? "")}.`}{" "}
+        {plural(pages.length, "place")}. Open a place for every figure, its source and licence.
       </p>
       {nationalPage && (
         <p>
@@ -86,7 +149,7 @@ export default async function CategoryIndex({ params }: Props) {
             </tr>
           </thead>
           <tbody>
-            {group.pages.map((p) => {
+            {pages.map((p) => {
               const h = p.figures[0];
               const diesel = byId(p, "diesel");
               const petrol = byId(p, "petrol95");
@@ -117,7 +180,7 @@ export default async function CategoryIndex({ params }: Props) {
       <p className="cite">
         Source: {noFullStop(first.source.publisher)}. Licence: <a href={first.source.licence_url}>{shortLicence(first.source.licence)}</a>.{" "}
         {first.source.attribution} {first.basis}{" "}
-        Figures of {longDate(group.asOf)}; rebuilt when the daily price library is deployed. Only places with at least 5 records are listed. See{" "}
+        Figures of {longDate(group.asOf ?? "")}; rebuilt when the daily price library is deployed. Only places with at least 5 records are listed. See{" "}
         <a href="/sources">/sources</a> and <a href="/method">/method</a>.
       </p>
     </main>

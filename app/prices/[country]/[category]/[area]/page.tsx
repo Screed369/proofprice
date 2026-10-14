@@ -6,7 +6,9 @@ import { answerPageGraph } from "../../../../../lib/site/jsonld";
 import { longDate } from "../../../../../lib/site/format";
 import { MCP_URL } from "../../../../../lib/site/constants";
 import { pageMetadata } from "../../../../../lib/site/meta";
-import { allAnswerPages, findAnswerPage } from "../../../../../lib/site/prices";
+import { findExamplePage } from "../../../../../lib/site/example-pages";
+import { allAnswerPages, findAnswerPage, pageRefs } from "../../../../../lib/site/prices";
+import { ExampleAnswerPage } from "../../../../_components/ExampleAnswerPage";
 
 // Built at deploy time from the newest day of the price library (library/<source>/daily/*.csv).
 export const dynamic = "force-static";
@@ -15,18 +17,31 @@ export const dynamicParams = false;
 type Props = { params: Promise<{ country: string; category: string; area: string }> };
 
 export function generateStaticParams() {
-  return allAnswerPages().map((p) => ({ country: p.countrySlug, category: p.category, area: p.area.slug }));
+  return pageRefs().map((p) => ({ country: p.countrySlug, category: p.category, area: p.slug }));
 }
+
+const refOf = (country: string, category: string, area: string) =>
+  pageRefs().find((r) => r.countrySlug === country && r.category === category && r.slug === area);
 
 export async function generateMetadata({ params }: Props) {
   const { country, category, area } = await params;
-  const page = findAnswerPage(country, category, area);
+  const ref = refOf(country, category, area);
+  if (!ref) return {};
+  const page = ref.mode === "example" ? await findExamplePage(country, category, area) : findAnswerPage(country, category, area);
   if (!page) return {};
   return pageMetadata({ title: page.title, description: page.description, path: page.path });
 }
 
 export default async function AnswerPageView({ params }: Props) {
   const { country, category, area } = await params;
+  const ref = refOf(country, category, area);
+  if (!ref) notFound();
+  if (ref.mode === "example") {
+    const example = await findExamplePage(country, category, area);
+    if (!example) notFound();
+    const siblings = pageRefs().filter((r) => r.countrySlug === country && r.category === category);
+    return <ExampleAnswerPage page={example} siblings={siblings} />;
+  }
   const page = findAnswerPage(country, category, area);
   if (!page) notFound();
   const homes = page.category === "home-sales";

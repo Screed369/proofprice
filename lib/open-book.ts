@@ -18,7 +18,8 @@ import {
 import { CATEGORY_LABEL, PAGE_SOURCES } from "./site/answer-pages";
 import { countryName } from "./site/areas";
 import { CONTACT, MCP_URL, SITE_URL } from "./site/constants";
-import { allAnswerPages, countryGroups, newestLibraryDay } from "./site/prices";
+import { examplePlans } from "./site/example-pages";
+import { countryGroups, newestLibraryDay, pageRefs } from "./site/prices";
 import { MIN_PUBLISH } from "./stats";
 import { joinAnd } from "./text";
 
@@ -97,14 +98,19 @@ export interface SitemapEntry {
 
 /** What the sitemap needs to know about the price library (injectable, so tests can check the rules without the files on disk). */
 export interface SitemapLibrary {
-  answerPages: { path: string; category: string; asOf: string }[];
+  /** One entry per answer page. asOf is the newest data day behind it when known (null: the page is dated by the build). */
+  answerPages: { path: string; category: string; asOf: string | null; priority?: number }[];
   indexPaths: string[]; // /prices/<country> and /prices/<country>/<category>
   newestDay: string | null;
 }
 
+/** Pages with a place of their own (every place of a library source) rank above the pages a manifest lists as examples. */
+const BULK_PRIORITY = 0.5;
+const EXAMPLE_PRIORITY = 0.4;
+
 export function libraryForSitemap(): SitemapLibrary {
   return {
-    answerPages: allAnswerPages().map((p) => ({ path: p.path, category: p.category, asOf: p.asOf })),
+    answerPages: pageRefs().map((p) => ({ path: p.path, category: p.category, asOf: p.asOf, priority: p.mode === "bulk" ? BULK_PRIORITY : EXAMPLE_PRIORITY })),
     indexPaths: countryGroups().flatMap((g) => [g.path, ...g.categories.map((c) => c.path)]),
     newestDay: newestLibraryDay(),
   };
@@ -115,7 +121,12 @@ function pageFreq(category: string): Freq {
   return category === "fuel" ? "daily" : "weekly";
 }
 
-/** Every page we want found: the fixed pages, the /prices indexes and one answer page per place in the price library. */
+/** A data day as the page's last-modified date, never later than now (a feed can carry tomorrow's prices). */
+function dayOrNow(day: string | null, now: Date): string | Date {
+  return day && day <= now.toISOString().slice(0, 10) ? day : now;
+}
+
+/** Every page we want found: the fixed pages, the /prices indexes and one answer page per page in the price library or manifests. */
 export function buildSitemap(site = SITE_URL, now = new Date(), library: SitemapLibrary = libraryForSitemap()): SitemapEntry[] {
   const at = (p: string) => (p === "/" ? site : `${site}${p}`);
   const fixed: SitemapEntry[] = PUBLIC_PATHS.map((p) => ({
@@ -126,15 +137,15 @@ export function buildSitemap(site = SITE_URL, now = new Date(), library: Sitemap
   }));
   const indexes: SitemapEntry[] = library.indexPaths.map((p) => ({
     url: at(p),
-    lastModified: library.newestDay ?? now,
+    lastModified: dayOrNow(library.newestDay, now),
     changeFrequency: "daily",
     priority: 0.6,
   }));
   const answers: SitemapEntry[] = library.answerPages.map((p) => ({
     url: at(p.path),
-    lastModified: p.asOf,
+    lastModified: dayOrNow(p.asOf, now),
     changeFrequency: pageFreq(p.category),
-    priority: 0.5,
+    priority: p.priority ?? BULK_PRIORITY,
   }));
   return [...fixed, ...indexes, ...answers];
 }
@@ -152,12 +163,24 @@ function describeParam(name: string, schema: any, required: boolean): string {
   return `  - ${name} (${bits.join(", ")})${desc}${allowed}`;
 }
 
-/** One line per country and category that has answer pages. Built from the page specs, not from the library files,
- *  so llms-full.txt never depends on reading the library at request time. */
+/** One line per category that has ready answer pages, listing the page of each country. Built from the page specs and the
+ *  registry's page plans, not from the library files, so llms-full.txt never depends on reading the library at request time
+ *  and every new source appears here without an edit. */
 export function pricePageLines(baseUrl: string): string[] {
-  return PAGE_SOURCES.map(
-    (p) => `  - ${baseUrl}/prices/${p.country.toLowerCase()}/${p.category}: ${CATEGORY_LABEL[p.category]} in ${countryName(p.country)}, by place`,
-  );
+  const byCategory = new Map<string, { label: string; seen: Set<string>; items: { name: string; path: string }[] }>();
+  const add = (country: string, category: string, label: string) => {
+    const path = `/prices/${country.toLowerCase()}/${category}`;
+    const entry = byCategory.get(category) ?? { label, seen: new Set<string>(), items: [] };
+    byCategory.set(category, entry);
+    if (entry.seen.has(path)) return;
+    entry.seen.add(path);
+    entry.items.push({ name: countryName(country), path });
+  };
+  for (const p of PAGE_SOURCES) add(p.country, p.category, CATEGORY_LABEL[p.category]);
+  for (const p of examplePlans()) add(p.country, p.category, p.categoryLabel);
+  return [...byCategory.values()]
+    .sort((a, b) => a.label.localeCompare(b.label, "en"))
+    .map((e) => `  - ${e.label}, by country: ${e.items.sort((a, b) => a.name.localeCompare(b.name, "en")).map((i) => `${i.name} ${baseUrl}${i.path}`).join("; ")}`);
 }
 
 export function buildLlmsFullTxt(baseUrl: string): string {
@@ -182,7 +205,7 @@ Contact: ${CONTACT}
 - Status of the price library and sources (last collection, days held, last error): ${baseUrl}/status
 - Prices by place (latest median and typical range, from the daily price library): ${baseUrl}/prices
 ${pricePageLines(baseUrl).join("\n")}
-- Each place has its own page at ${baseUrl}/prices/<country>/<category>/<place>: the latest median, the typical range (10th–90th percentile), the number of records, the date, the source and licence, and a link to the live REST answer. A place appears only when at least ${MIN_PUBLISH} records sit behind a figure.
+- Each place or item has its own page at ${baseUrl}/prices/<country>/<category>/<place>: the latest figure with its date, the source and licence, and a link to the live REST answer. Figures built from records show the median, the typical range (10th–90th percentile) and the number of records, and only when at least ${MIN_PUBLISH} records sit behind them; official statistics are shown as such, with the reference period the publisher states. Where a source is answered live only, the page gives the question, the MCP tool and the REST link and no number: call the tool for the figure.
 `);
 
   out.push("## Tools (MCP) and endpoints (REST)\n");

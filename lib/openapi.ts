@@ -3,7 +3,7 @@
 
 import { z } from "zod";
 import type { CategoryPlugin } from "./plugin";
-import { CATEGORIES, countriesFor, countryHelp, exampleUrls, historySources, paramSchemas, sourcesFor } from "./registry";
+import { CATEGORIES, countriesFor, countryHelp, exampleUrls, historySources, paramSchemas, sourcesFor, toolDescription } from "./registry";
 import { coverageSchema, errorSchema, historyAnswerSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { joinAnd } from "./text";
@@ -103,11 +103,7 @@ export function buildOpenApi(baseUrl: string) {
         operationId: operationId(cat.tool),
         tags: [tag],
         summary: `${cat.title} (${places})`,
-        description: restWording(
-          cat.description(
-            sourcesFor(cat.id).flatMap((s) => s.countries.map((code) => ({ place: s.placeName, code, freshness: s.info.freshness }))),
-          ),
-        ),
+        description: restWording(toolDescription(cat)),
         parameters: parameters(cat.id),
         responses: answerResponses,
       },

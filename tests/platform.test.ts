@@ -117,8 +117,7 @@ test("server.json: the registry description is at most 100 characters and has no
 
 test("coming next lists the work in progress", () => {
   assert.deepEqual(COMING_NEXT, [
-    "Rents, government contract prices, groceries, airfares and medical prices (being added now)",
-    "Home prices for the Nordics, Benelux, Portugal and Austria (being added now)",
+    "More countries and more kinds of price, one official source at a time (see the sources list for what is live)",
     "Verified receipts",
   ]);
   assert.deepEqual(coverage().coming_next, COMING_NEXT);

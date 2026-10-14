@@ -39,6 +39,14 @@ export function slugify(s: string): string {
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
+    // letters that do not decompose: "København" -> "kobenhavn", not "k-benhavn"
+    .replace(/ø/g, "o")
+    .replace(/æ/g, "ae")
+    .replace(/œ/g, "oe")
+    .replace(/ß/g, "ss")
+    .replace(/[đð]/g, "d")
+    .replace(/ł/g, "l")
+    .replace(/þ/g, "th")
     .replace(/&/g, " and ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
