@@ -1,0 +1,86 @@
+URL: https://www150.statcan.gc.ca/n1/tbl/csv/18100245-eng.zip
+Fetched: 2026-10-14T17:22:00Z from GitHub Actions
+Status, type, bytes: 200 application/zip 1678815
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx/1.24.0
+Date: Wed, 14 Oct 2026 17:21:53 GMT
+Content-Type: application/zip
+Content-Length: 1678815
+Connection: keep-alive
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Last-Modified: Wed, 07 Oct 2026 12:30:29 GMT
+ETag: "199ddf-65d3f47d2b481"
+Cache-Control: max-age=120
+Pragma: no-cache
+Expires: Wed, 14 Oct 2026 17:23:53 GMT
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: default-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net *.everesttech.net blob:; style-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca https://fonts.googleapis.com blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.statcan.gc.ca *.statcan.ca *.googletagmanager.com *.adobedtm.com *.jsdelivr.net *.mathjax.org cdnjs.cloudflare.com blob:; connect-src 'self' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net https://api.mapbox.com/ https://events.mapbox.com/ https://energy-information.canada.ca; img-src 'self' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net *.everesttech.net *.jsdelivr.net data: blob:; font-src 'self' *.statcan.gc.ca *.statcan.ca https://fonts.gstatic.com; worker-src 'self' 'unsafe-inline' 'unsafe-eval' *.statcan.gc.ca *.statcan.ca blob:; frame-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca *.stc.ca https://dv-vd.shinyapps.io *.demdex.net blob:;
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Frame-Options: SAMEORIGIN
+X-Proxy-Cache: EXPIRED
+Cache-Control: public
+Accept-Ranges: bytes
+
+=== FILE TYPE: Zip archive data, at least v2.0 to extract, compression method=deflate
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+ 18960843  2026-10-07 00:02   18100245.csv
+    10423  2026-10-07 00:02   18100245_MetaData.csv
+---------                     -------
+ 18971266                     2 files
+=== FIRST 6000 BYTES OF 18100245.csv
+﻿"REF_DATE","GEO","DGUID","Products","UOM","UOM_ID","SCALAR_FACTOR","SCALAR_ID","VECTOR","COORDINATE","VALUE","STATUS","SYMBOL","TERMINATED","DECIMALS"
+"2017-01","Canada","2021A000011124","Beef stewing cuts, per kilogram","Dollars","81","units","0","v1353834271","11.1","12.66","","","","2"
+"2017-01","Canada","2021A000011124","Beef striploin cuts, per kilogram","Dollars","81","units","0","v1353834272","11.2","21.94","","","","2"
+"2017-01","Canada","2021A000011124","Beef top sirloin cuts, per kilogram","Dollars","81","units","0","v1353834273","11.3","13.44","","","","2"
+"2017-01","Canada","2021A000011124","Beef rib cuts, per kilogram","Dollars","81","units","0","v1353834311","11.41","20.17","","","","2"
+"2017-01","Canada","2021A000011124","Ground beef, per kilogram","Dollars","81","units","0","v1353834274","11.4","9.12","","","","2"
+"2017-01","Canada","2021A000011124","Pork loin cuts, per kilogram","Dollars","81","units","0","v1353834275","11.5","7.34","","","","2"
+"2017-01","Canada","2021A000011124","Pork rib cuts, per kilogram","Dollars","81","units","0","v1353834276","11.6","7.37","","","","2"
+"2017-01","Canada","2021A000011124","Pork shoulder cuts, per kilogram","Dollars","81","units","0","v1353834312","11.42","4.76","","","","2"
+"2017-01","Canada","2021A000011124","Whole chicken, per kilogram","Dollars","81","units","0","v1353834277","11.7","5.15","","","","2"
+"2017-01","Canada","2021A000011124","Chicken breasts, per kilogram","Dollars","81","units","0","v1353834278","11.8","11.38","","","","2"
+"2017-01","Canada","2021A000011124","Chicken thigh, per kilogram","Dollars","81","units","0","v1353834279","11.9","8.93","","","","2"
+"2017-01","Canada","2021A000011124","Chicken drumsticks, per kilogram","Dollars","81","units","0","v1353834313","11.43","5.99","","","","2"
+"2017-01","Canada","2021A000011124","Bacon, 500 grams","Dollars","81","units","0","v1353834280","11.10","5.03","","","","2"
+"2017-01","Canada","2021A000011124","Wieners, 400 grams","Dollars","81","units","0","v1353834281","11.11","3.12","","","","2"
+"2017-01","Canada","2021A000011124","Salmon, per kilogram","Dollars","81","units","0","v1458869929","11.78","24.83","","","","2"
+"2017-01","Canada","2021A000011124","Shrimp, 300 grams","Dollars","81","units","0","v1458869931","11.79","6.59","","","","2"
+"2017-01","Canada","2021A000011124","Canned salmon, 213 grams","Dollars","81","units","0","v1353834314","11.44","3.03","","","","2"
+"2017-01","Canada","2021A000011124","Canned tuna, 170 grams","Dollars","81","units","0","v1353834282","11.12","1.44","","","","2"
+"2017-01","Canada","2021A000011124","Meatless burgers, 226 grams","Dollars","81","units","0","v1458869922","11.80","4.19","","","","2"
+"2017-01","Canada","2021A000011124","Milk, 1 litre","Dollars","81","units","0","v1353834283","11.13","2.17","","","","2"
+"2017-01","Canada","2021A000011124","Milk, 2 litres","Dollars","81","units","0","v1353834284","11.14","4.04","","","","2"
+"2017-01","Canada","2021A000011124","Milk, 4 litres","Dollars","81","units","0","v1353834285","11.15","5.13","","","","2"
+"2017-01","Canada","2021A000011124","Soy milk, 1.89 litres","Dollars","81","units","0","v1458869932","11.81","3.71","","","","2"
+"2017-01","Canada","2021A000011124","Nut milk, 1.89 litres","Dollars","81","units","0","v1458869923","11.82","3.79","","","","2"
+"2017-01","Canada","2021A000011124","Cream, 1 litre","Dollars","81","units","0","v1353834286","11.16","3.35","","","","2"
+"2017-01","Canada","2021A000011124","Butter, 454 grams","Dollars","81","units","0","v1353834287","11.17","4.10","","","","2"
+"2017-01","Canada","2021A000011124","Margarine, 907 grams","Dollars","81","units","0","v1458869921","11.83","4.23","","","","2"
+"2017-01","Canada","2021A000011124","Block cheese, 500 grams","Dollars","81","units","0","v1353834288","11.18","5.82","","","","2"
+"2017-01","Canada","2021A000011124","Yogurt, 500 grams","Dollars","81","units","0","v1353834289","11.19","2.48","","","","2"
+"2017-01","Canada","2021A000011124","Eggs, 1 dozen","Dollars","81","units","0","v1353834290","11.20","3.01","","","","2"
+"2017-01","Canada","2021A000011124","Apples, per kilogram","Dollars","81","units","0","v1353834291","11.21","3.75","","","","2"
+"2017-01","Canada","2021A000011124","Oranges, per kilogram","Dollars","81","units","0","v1353834292","11.22","2.71","","","","2"
+"2017-01","Canada","2021A000011124","Oranges, 1.36 kilograms","Dollars","81","units","0","v1353834293","11.23","3.95","","","","2"
+"2017-01","Canada","2021A000011124","Bananas, per kilogram","Dollars","81","units","0","v1353834294","11.24","1.58","","","","2"
+"2017-01","Canada","2021A000011124","Pears, per kilogram","Dollars","81","units","0","v1353834295","11.25","3.58","","","","2"
+"2017-01","Canada","2021A000011124","Lemons, unit","Dollars","81","units","0","v1353834296","11.26","0.88","","","","2"
+"2017-01","Canada","2021A000011124","Limes, unit","Dollars","81","units","0","v1353834315","11.45","0.42","","","","2"
+"2017-01","Canada","2021A000011124","Grapes, per kilogram","Dollars","81","units","0","v1353834297","11.27","7.22","","","","2"
+"2017-01","Canada","2021A000011124","Cantaloupe, unit","Dollars","81","units","0","v1353834298","11.28","2.97","","","","2"
+"2017-01","Canada","2021A000011124","Strawberries, 454 grams","Dollars","81","units","0","v1458869934","11.84","3.26","","","","2"
+"2017-01","Canada","2021A000011124","Avocado, unit","Dollars","81","units","0","v1353834299","11.29","1.51","","","","2"
+"2017-01","Canada","2021A000011124","Potatoes, 4.54 kilograms","Dollars","81","units","0","v1353834300","11.30","4.20","","","","2"
+"2017-01","Canada","2021A000011124","Potatoes, per kilogram","Dollars","81","units","0","v1353834316","11.46","2.99","","","","2"
+"2017-01","Canada","2021A000011124","Sweet potatoes, per kilogram","Dollars","81","units","0","v1353834317","11.47","2.85","","","","2"
+"2017-01","Canada","2021A000011124","Tomatoes, per kilogram","Dollars","81","units","0","v1353834301","11.31","4.48","","","","2"
+"2017-01",
