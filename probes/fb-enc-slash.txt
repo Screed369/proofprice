@@ -1,0 +1,55 @@
+URL: https://api.tech.ec.europa.eu/agrifood/api/rawMilk/prices?memberStateCodes=IE&beginDate=01%2F08%2F2026&endDate=14%2F10%2F2026
+Fetched: 2026-10-14T14:38:03Z from GitHub Actions
+Status, type, bytes: 200 application/json 754
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Wed, 14 Oct 2026 14:38:03 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+activityid: cb723c0a-af3c-4b8f-b947-28e5e7ce9028
+Access-Control-Expose-Headers: 
+Access-Control-Allow-Origin: 
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Headers: authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,Authorization
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Server: Europa
+Connection: close
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[ {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "01/09/2026",
+  "endDate" : "30/09/2026",
+  "month" : 9,
+  "monthName" : "Sep",
+  "price" : "€40.79",
+  "unit" : "100KG",
+  "year" : 2026,
+  "product" : "Raw milk"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "01/08/2026",
+  "endDate" : "31/08/2026",
+  "month" : 8,
+  "monthName" : "Aug",
+  "price" : "€62.66",
+  "unit" : "100KG",
+  "year" : 2026,
+  "product" : "Organic raw milk"
+}, {
+  "memberStateCode" : "IE",
+  "memberStateName" : "Ireland",
+  "beginDate" : "01/08/2026",
+  "endDate" : "31/08/2026",
+  "month" : 8,
+  "monthName" : "Aug",
+  "price" : "€40.79",
+  "unit" : "100KG",
+  "year" : 2026,
+  "product" : "Raw milk"
+} ]
