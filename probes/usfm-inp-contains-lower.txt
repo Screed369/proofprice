@@ -1,0 +1,35 @@
+URL: https://data.cms.gov/data-api/v1/dataset/2941ab09-8cee-49d8-9703-f3c5b854e388/data?filter%5Bd%5D%5Bcondition%5D%5Bpath%5D=DRG_Desc&filter%5Bd%5D%5Bcondition%5D%5Boperator%5D=CONTAINS&filter%5Bd%5D%5Bcondition%5D%5Bvalue%5D=pneumonia&filter%5BRndrng_Prvdr_Geo_Lvl%5D=National&size=100
+Fetched: 2026-10-14T16:06:43Z from GitHub Actions
+Status, type, bytes: 200 application/json 882
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-language: en
+content-security-policy: report-uri /report-csp-violation
+content-type: application/json
+etag: "1791994002-gzip"
+last-modified: Wed, 14 Oct 2026 16:06:42 GMT
+referrer-policy: no-referrer-when-downgrade
+x-age: 0
+x-ah-environment: prod
+x-akamai-original-url: 08ff4c8072129a48657f3e6043a1820662e60637
+x-consumer-id: 07eafadc-1bac-4607-8441-20c35fa46f17
+x-content-type-options: nosniff
+x-drupal-dynamic-cache: MISS
+x-frame-options: SAMEORIGIN
+x-generator: Drupal 10 (https://www.drupal.org)
+x-request-id: v-3ed100dc-c7e9-11f1-9b16-c352adad40af
+x-xss-protection: 1; mode=block
+expires: Wed, 14 Oct 2026 16:06:43 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Wed, 14 Oct 2026 16:06:43 GMT
+content-length: 882
+strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+x-xss-protection: 1; mode=block
+akamai-grn: 0.826d3e17.1791994001.3ccdc7cb
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"Rndrng_Prvdr_Geo_Lvl":"National","Rndrng_Prvdr_Geo_Cd":"","Rndrng_Prvdr_Geo_Desc":"National","DRG_Cd":"193","DRG_Desc":"SIMPLE PNEUMONIA AND PLEURISY WITH MCC","Tot_Dschrgs":"139034","Avg_Submtd_Cvrd_Chrg":"59757.332171","Avg_Tot_Pymt_Amt":"12049.620107","Avg_Mdcr_Pymt_Amt":"9899.1545305"},{"Rndrng_Prvdr_Geo_Lvl":"National","Rndrng_Prvdr_Geo_Cd":"","Rndrng_Prvdr_Geo_Desc":"National","DRG_Cd":"194","DRG_Desc":"SIMPLE PNEUMONIA AND PLEURISY WITH CC","Tot_Dschrgs":"48668","Avg_Submtd_Cvrd_Chrg":"38378.594148","Avg_Tot_Pymt_Amt":"8027.974213","Avg_Mdcr_Pymt_Amt":"5976.0187803"},{"Rndrng_Prvdr_Geo_Lvl":"National","Rndrng_Prvdr_Geo_Cd":"","Rndrng_Prvdr_Geo_Desc":"National","DRG_Cd":"195","DRG_Desc":"SIMPLE PNEUMONIA AND PLEURISY WITHOUT CC\/MCC","Tot_Dschrgs":"8023","Avg_Submtd_Cvrd_Chrg":"30173.392497","Avg_Tot_Pymt_Amt":"6243.9128755","Avg_Mdcr_Pymt_Amt":"4311.7028543"}]
