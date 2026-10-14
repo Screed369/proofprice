@@ -1,0 +1,24 @@
+URL: https://statistikdatabasen.scb.se/api/v2/tables/TAB1167/data?lang=en&outputFormat=json-stat2&valueCodes%5BRegion%5D=01,00&valueCodes%5BContentsCode%5D=BO0501L2,BO0501L3&valueCodes%5BTid%5D=top(6)
+Fetched: 2026-10-14T16:05:52Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 3171
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: application/json; charset=UTF-8
+Server: Microsoft-IIS/10.0
+Content-Disposition: inline; filename="TAB1167.json"
+Content-Disposition: inline; filename="TAB1167.json"
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-14T16:06:02.4020070Z
+X-Powered-By: ASP.NET
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Wed, 14 Oct 2026 16:05:52 GMT
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+{"version":"2.0","class":"dataset","label":"Sold one- and two-dwelling buildings by region and quarter","source":"Statistics Sweden","updated":"2026-08-21T06:00:00Z","link":{"related":[{"extension":{"relation":"statistics-homepage","category":null,"metaid":"PRODUCTCODE:BO0501"},"href":"https://www.scb.se/BO0501-en","label":"Statistics page","type":"text/html"}]},"note":["The delimitation of the metropolitan areas has been revised as from 2005-01-01. Greater Stockholm has been expanded with the municipalities of Norrtälje, Nykvarn, Nynäshamn and Södertälje and now coincides with Stockholm county. Greater Göteborg has been expanded with the municipalities of Alingsås and Lilla Edet. Greater Malmö has been expanded with the municipalities of Eslöv, Höör och Skurup.","The figures from 2026 are preliminary."],"role":{"time":["Tid"],"metric":["ContentsCode"]},"id":["Region","ContentsCode","Tid"],"size":[2,2,6],"dimension":{"Region":{"label":"region","category":{"index":{"01":0,"00":1},"label":{"01":"Stockholm county","00":"Sweden"}},"extension":{"elimination":true,"eliminationValueCode":"00","show":"code_value"}},"ContentsCode":{"label":"observations","category":{"index":{"BO0501L2":0,"BO0501L3":1},"label":{"BO0501L2":"Number","BO0501L3":"Purchase price, average in 1 000 SEK"},"unit":{"BO0501L2":{"base":"number of","decimals":0},"BO0501L3":{"base":"average, 1 000 SEK","decimals":0}}},"extension":{"elimination":false,"refperiod":{"BO0501L2":"During the quarter","BO0501L3":""},"show":"value","measuringType":{"BO0501L2":"Stock","BO0501L3":"Average"},"priceType":{"BO0501L2":"NotApplicable","BO0501L3":"NotApplicable"},"adjustment":{"BO0501L2":"None","BO0501L3":"None"},"alternativeText":{"BO0501L2":"Number of sold one- and two-dwelling buildings for permanent living","BO0501L3":"Purchase price for one- and two-dwelling buildings for permanent living, average in 1 000 SEK"}}},"Tid":{"label":"quarter","category":{"index":{"2025K1":0,"2025K2":1,"2025K3":2,"2025K4":3,"2026K1":4,"2026K2":5},"label":{"2025K1":"2025K1","2025K2":"2025K2","2025K3":"2025K3","2025K4":"2025K4","2026K1":"2026K1","2026K2":"2026K2"}},"extension":{"elimination":false,"show":"code"}}},"extension":{"noteMandatory":{"0":true,"1":true},"px":{"infofile":"BO0501","tableid":"TAB1167","decimals":0,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"Sold one- and two-dwelling buildings","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["Region"],"matrix":"TAB1167","subject-code":"BO","subject-area":"Housing, construction and building"},"discontinued":null,"contact":[{"name":"Niclas Sjölund","organization":"Statistics Sweden","phone":"010-479 43 42","mail":"niclas.sjolund@scb.se","raw":"Niclas Sjölund, Statistics Sweden# +46 010-479 43 42#niclas.sjolund@scb.se"},{"name":"Byggande och bebyggelse","organization":"Statistics Sweden","phone":"-","mail":"byggande.bebyggelse@scb.se","raw":" Byggande och bebyggelse, Statistics Sweden# - -#byggande.bebyggelse@scb.se"}]},"value":[2140,2475,2545,2272,2079,2348,6984,7000,6998,6854,7232,6991,11980,14512,15941,14751,11299,14046,4043,3953,3871,3814,4175,3989]}
