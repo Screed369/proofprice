@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/package_search?q=english+prescribing&rows=10&fl=name,title,license_title,metadata_modified
+Fetched: 2026-10-14T15:45:44Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1518
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:45:44 GMT
+content-type: application/json;charset=utf-8
+content-length: 1518
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 10000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 286, "facets": {}, "results": [{"name": "english-prescribing-data-epd", "title": "RETIRED - English Prescribing Dataset (EPD)", "metadata_modified": "2026-08-18T13:41:18.318Z"}, {"name": "english-prescribing-dataset-epd-with-snomed-code", "title": "English Prescribing Dataset (EPD) with SNOMED Code", "metadata_modified": "2026-10-14T14:15:06.203Z"}, {"name": "english-community-pharmacy-covid-19-vaccination-fees-current", "title": "English Community Pharmacy COVID-19 vaccination fees - current", "metadata_modified": "2026-10-07T06:39:03.560Z"}, {"name": "english-community-pharmacy-covid-19-vaccination-service-fees-historic", "title": "English community pharmacy COVID-19 vaccination service fees - historic", "metadata_modified": "2026-08-18T13:18:44.063Z"}, {"name": "foi-02052", "title": "FOI-02052", "metadata_modified": "2026-03-23T10:24:16.048Z"}, {"name": "foi-02179", "title": "FOI-02179", "metadata_modified": "2025-01-17T14:03:15.410Z"}, {"name": "foi-02446", "title": "FOI-02446", "metadata_modified": "2025-04-02T11:08:53.360Z"}, {"name": "foi-04114", "title": "FOI-04114", "metadata_modified": "2026-10-06T12:26:25.849Z"}, {"name": "foi-02429", "title": "FOI-02429", "metadata_modified": "2024-12-30T12:48:51.790Z"}, {"name": "foi-03110", "title": "FOI-03110", "metadata_modified": "2025-09-12T09:38:20.777Z"}], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
