@@ -1,0 +1,20 @@
+URL: https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadMetadata/CCA14/JSON-stat/2.0/en
+Fetched: 2026-10-14T19:22:04Z from GitHub Actions
+Status, type, bytes: 200 application/json 2001
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 19:22:04 GMT
+content-type: application/json
+cache-control: no-cache
+vary: Origin
+server: n/a
+access-control-allow-origin: 
+access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept, subscription_key,MSAL
+access-control-allow-credentials: true
+www-authenticate: Anonymous
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"class":"dataset","dimension":{"STATISTIC":{"category":{"index":["CCA14"],"label":{"CCA14":"Average Weekly Expenditure on Paid Childcare"},"unit":{"CCA14":{"decimals":2,"label":"Euro","position":"end"}}},"label":"Statistic"},"C02196V02652":{"category":{"index":["-"],"label":{"-":"State"}},"label":"State"},"TLIST(A1)":{"category":{"index":["2007","2016"],"label":{"2007":"2007","2016":"2016"}},"label":"Year"}},"extension":{"matrix":"CCA14","language":{"code":"en","name":"English"},"elimination":{"C02196V02652":null},"contact":{"name":"Keith McSweeney","email":"health@cso.ie","phone":"(+353) 21 453 5423"},"subject":{"code":54,"value":"Social Modules"},"product":{"code":"QCHI","value":"QNHS Childcare"},"official":true,"copyright":{"name":"Central Statistics Office, Ireland","code":"CSO","href":"https://www.cso.ie/"},"exceptional":false,"reservation":false,"archive":false,"experimental":false,"analytical":false},"href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA14/JSON-stat/2.0/en","id":["STATISTIC","C02196V02652","TLIST(A1)"],"label":"Average Weekly Expenditure on Paid Childcare","link":{"alternate":[{"type":"text/csv","href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA14/CSV/1.0/en"},{"type":"application/json","href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA14/JSON-stat/1.0/en"},{"type":"application/octet-stream","href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA14/PX/2013/en"},{"type":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","href":"https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/CCA14/XLSX/2007/en"}]},"note":["","For more information, please go to the [url=https://www.cso.ie/en/statistics/surveys/qnhsmoduleonchildcare/]statistical release page[/url] on our website"],"role":{"metric":["STATISTIC"],"time":["TLIST(A1)"]},"size":[1,1,2],"updated":"2020-09-16T11:00:00.000Z","value":[],"version":"2.0"}
