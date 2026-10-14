@@ -1,0 +1,23 @@
+URL: https://www.data.qld.gov.au/api/3/action/datastore_search?resource_id=420319e2-6518-4243-83a6-3c7769bd7e6c&limit=3
+Fetched: 2026-10-14T13:20:05Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2293
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 2293
+date: Wed, 14 Oct 2026 13:20:05 GMT
+strict-transport-security: max-age=31536000
+server: nginx
+cache-control: public, max-age=1800, must-revalidate
+vary: Cookie
+x-cache: Miss from cloudfront
+via: 1.1 c41082806dacd015fa7aaa4b296b91e6.cloudfront.net (CloudFront)
+x-amz-cf-pop: ORD56-P4
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: D9stzbUGQG13GJ11aEWZ0P-dUvuBrszMRUxndfZubs_5oPl5gNXqBw==
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"help": "https://www.data.qld.gov.au/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "limit": 3, "records_format": "objects", "resource_id": "420319e2-6518-4243-83a6-3c7769bd7e6c", "total_estimation_threshold": null, "records": [{"_id":1,"SiteId":61290151,"Site_Name":"Liberty Surat","Site_Brand":"Liberty","Sites_Address_Line_1":"61 Burrowes Street","Site_Suburb":"Surat","Site_State":"QLD","Site_Post_Code":4417,"Site_Latitude":-27.1516870000,"Site_Longitude":149.0677420000,"Fuel_Type":"Diesel","Price":2499,"TransactionDateutc":"2026-08-04T22:54:00"},{"_id":2,"SiteId":61290151,"Site_Name":"Liberty Surat","Site_Brand":"Liberty","Sites_Address_Line_1":"61 Burrowes Street","Site_Suburb":"Surat","Site_State":"QLD","Site_Post_Code":4417,"Site_Latitude":-27.1516870000,"Site_Longitude":149.0677420000,"Fuel_Type":"Diesel","Price":2599,"TransactionDateutc":"2026-08-21T23:14:00"},{"_id":3,"SiteId":61290151,"Site_Name":"Liberty Surat","Site_Brand":"Liberty","Sites_Address_Line_1":"61 Burrowes Street","Site_Suburb":"Surat","Site_State":"QLD","Site_Post_Code":4417,"Site_Latitude":-27.1516870000,"Site_Longitude":149.0677420000,"Fuel_Type":"Diesel","Price":2499,"TransactionDateutc":"2026-08-28T04:39:00"}], "fields": [{"id": "_id", "type": "int"}, {"id": "SiteId", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "Site_Name", "type": "text"}, {"id": "Site_Brand", "type": "text"}, {"id": "Sites_Address_Line_1", "type": "text"}, {"id": "Site_Suburb", "type": "text"}, {"id": "Site_State", "type": "text"}, {"id": "Site_Post_Code", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "Site_Latitude", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "Site_Longitude", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "Fuel_Type", "type": "text"}, {"id": "Price", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "TransactionDateutc", "type": "timestamp", "info": {"type_override": "timestamp"}}], "_links": {"start": "/api/3/action/datastore_search?limit=3&resource_id=420319e2-6518-4243-83a6-3c7769bd7e6c", "next": "/api/3/action/datastore_search?limit=3&resource_id=420319e2-6518-4243-83a6-3c7769bd7e6c&offset=3"}, "total": 92244, "total_was_estimated": false}}
