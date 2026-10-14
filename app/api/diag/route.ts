@@ -1,5 +1,6 @@
 // THROWAWAY diagnostic (branch diag/childcare only, never merged): fetch an official file from Vercel's servers and show its shape.
 import { NextRequest } from "next/server";
+import { constants, inflateRawSync } from "node:zlib";
 import { readXlsx, unzipAll } from "../../../categories/rent/xlsx";
 import { openWorkbook, streamSheet } from "../../../sources/us-dol-childcare/xlsx-stream";
 
@@ -12,6 +13,16 @@ export async function GET(req: NextRequest) {
   if (!/^https:\/\/[a-z0-9.-]+\//i.test(url)) return Response.json({ error: "give https url" }, { status: 400 });
   const mode = q.get("mode") ?? "text";
   const res = await fetch(url, { headers: { "user-agent": UA } });
+  if (mode === "xmlhead") {
+    const buf1 = Buffer.from(await res.arrayBuffer());
+    const wb = openWorkbook(buf1, q.get("sheet") ?? undefined);
+    const e = wb.dir.get(wb.sheetPath)!;
+    const k = Number(q.get("k") ?? 200000);
+    const off = Number(q.get("offset") ?? 0);
+    const len = Number(q.get("len") ?? 6000);
+    const xml = inflateRawSync(buf1.subarray(e.start, e.start + Math.min(e.csize, k)), { finishFlush: constants.Z_SYNC_FLUSH }).toString("utf8");
+    return Response.json({ sheet: wb.sheetTitle, entry: e, inflated: xml.length, shared: wb.shared.length, text: xml.slice(off, off + len) });
+  }
   if (mode === "stream") {
     const t0 = Date.now();
     const buf0 = Buffer.from(await res.arrayBuffer());
