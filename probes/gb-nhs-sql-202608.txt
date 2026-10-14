@@ -1,0 +1,24 @@
+URL: https://opendata.nhsbsa.net/api/3/action/datastore_search_sql?resource_id=PCA_202608&sql=SELECT%20SUM%28ITEMS%29%20AS%20items%20FROM%20%60PCA_202608%60%20WHERE%20UPPER%28BNF_PRESENTATION_NAME%29%20LIKE%20%27ATORVASTATIN%25%27
+Fetched: 2026-10-14T15:49:00Z from GitHub Actions
+Status, type, bytes: 404 application/json;charset=utf-8 170
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 404 
+date: Wed, 14 Oct 2026 15:49:00 GMT
+content-type: application/json;charset=utf-8
+content-length: 170
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search_sql", "error": {"__type": "Not Found Error", "message": "Not found"}, "success": false}
