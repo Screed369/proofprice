@@ -1,0 +1,32 @@
+URL: https://data.cityofnewyork.us/resource/usep-8jbt.json?$select=sale_price%2Csale_date&$where=sale_date%20%3E%20'2025-08-31T00%3A00%3A00'%20AND%20sale_date%20%3C%20'2026-09-01T00%3A00%3A00'%20AND%20sale_price%20%3E%3D%2010000%20AND%20zip_code%20%3D%20'11201'%20AND%20(building_class_category%20like%20'09%20%25'%20OR%20building_class_category%20like%20'10%20%25'%20OR%20building_class_category%20like%20'17%20%25')&$order=sale_date%20DESC%2Csale_price%20DESC&$limit=5
+Fetched: 2026-10-14T14:32:37Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 318
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:32:37 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42NzE1N180XzY1cXMydlVLZmpfRlVMajlpUDd1OWx5emFzOW5v---gzipJ-rEIft2xCEPhQBeYacag3dccio--gzip--gzip"
+X-SODA2-Fields: ["sale_price","sale_date"]
+X-SODA2-Types: ["number","floating_timestamp"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+X-SODA2-Secondary-Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 222ebc5f5189faf6b029310d771a094e
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"sale_price":"1017232","sale_date":"2026-08-31T00:00:00.000"}
+,{"sale_price":"680000","sale_date":"2026-08-31T00:00:00.000"}
+,{"sale_price":"900000","sale_date":"2026-08-27T00:00:00.000"}
+,{"sale_price":"582000","sale_date":"2026-08-27T00:00:00.000"}
+,{"sale_price":"1965000","sale_date":"2026-08-25T00:00:00.000"}]
