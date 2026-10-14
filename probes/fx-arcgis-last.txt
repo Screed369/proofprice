@@ -1,0 +1,20 @@
+URL: https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer/12/query?where=1%3D1&outFields=NAME%2CSTUSAB&returnGeometry=false&orderByFields=OBJECTID&resultOffset=54&resultRecordCount=5&f=json
+Fetched: 2026-10-14T13:30:38Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 351
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: max-age=0,must-revalidate
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+Vary: Origin, Accept-Encoding
+ETag: "1784720347"
+Content-Type: application/json;charset=UTF-8
+Content-Length: 351
+Date: Wed, 14 Oct 2026 13:30:38 GMT
+Set-Cookie: TS01d8b8de=01283c52a49bd57a71a9fb6d7bd7ec9382dcf88f1e15b6575b907c68c07d73e7d4c74525e4a2607cf4ab1918143464da46fb9d5f2e; Path=/; Domain=.tigerweb.geo.census.gov; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+{"displayFieldName":"BASENAME","fieldAliases":{"NAME":"NAME","STUSAB":"STUSAB"},"fields":[{"name":"NAME","type":"esriFieldTypeString","alias":"NAME","length":100},{"name":"STUSAB","type":"esriFieldTypeString","alias":"STUSAB","length":2}],"features":[{"attributes":{"NAME":"Illinois","STUSAB":"IL"}},{"attributes":{"NAME":"Minnesota","STUSAB":"MN"}}]}
