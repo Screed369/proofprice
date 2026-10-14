@@ -37,7 +37,7 @@ test("eu-energy: covers EU27 + NO + IS, with Greece as GR", () => {
   assert.equal(codes.length, 29);
   for (const c of ["GR", "IE", "DE", "FR", "ES", "IT", "NO", "IS", "SE", "PL"]) assert.ok(codes.includes(c), c);
   for (const c of ["GB", "UK", "EL", "CH", "US"]) assert.ok(!codes.includes(c), c);
-  assert.deepEqual(countriesFor("energy"), codes);
+  for (const c of codes) assert.ok(countriesFor("energy").includes(c), c); // other sources (e.g. US EIA) may add countries
   const plugin = SOURCE_PLUGINS.find((s) => s.info.id === "eu-energy")!;
   assert.equal(plugin.category, "energy");
   assert.equal(plugin.status, "live");
@@ -274,7 +274,7 @@ test("energy category: tool, REST path, parameters and routing", async () => {
   assert.equal(cat.title, "Household electricity and gas prices");
   assert.deepEqual(cat.required, ["energy"]);
   const schemas = paramSchemas(cat);
-  assert.deepEqual(Object.keys(schemas), ["energy", "consumption_band", "taxes"]);
+  for (const k of ["energy", "consumption_band", "taxes"]) assert.ok(k in schemas, k); // sources may add extra params (e.g. US state)
   assert.match(schemas.consumption_band.description!, /Electricity: ALL = all consumption bands together; DA = under 1,000 kWh a year/);
   assert.match(schemas.consumption_band.description!, /D2 = 20 to 199 GJ a year/);
   assert.match(schemas.energy.description!, /CY, FI, IS, MT or NO/);
@@ -284,7 +284,7 @@ test("energy category: tool, REST path, parameters and routing", async () => {
   assert.throws(() => cat.prepare!({ energy: "kerosene" }), /energy must be/);
   assert.throws(() => cat.prepare!({ energy: "gas", taxes: "some" }), /taxes must be/);
   // routing errors are plain 400s
-  await assert.rejects(runCategory(cat, { country: "US", energy: "gas" }), /Household energy prices are available for EU27 \+ NO \+ IS so far\. Not yet: US\./);
+  await assert.rejects(runCategory(cat, { country: "JP", energy: "gas" }), /Not yet: JP/);
   await assert.rejects(runCategory(cat, { country: "UK", energy: "gas" }), /Not yet: UK/);
   await assert.rejects(runCategory(cat, { country: "IE", energy: "diesel" }), /energy must be/);
   await assert.rejects(runCategory(cat, { energy: "gas" }), /country is required/);
