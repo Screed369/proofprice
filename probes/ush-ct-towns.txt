@@ -1,0 +1,178 @@
+URL: https://data.ct.gov/resource/5mzw-sjtu.json?$select=town%2Ccount(*)%20as%20n&$where=daterecorded%20%3E%20'2024-10-01T00%3A00%3A00'&$group=town&$order=town%20ASC&$limit=300
+Fetched: 2026-10-14T14:15:28Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 4707
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:28 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Z29sZi4xNzM1NF83XzIxOHN5QjVQUFk2NkJhWjRuUXBSWlJuTGFPVFhGcw---gzipB-IB-lKdNpFXSaYSEaa_YmzGf7--gzip--gzip"
+X-SODA2-Fields: ["town","n"]
+X-SODA2-Types: ["text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 038dfd6daafaf5a5a65f030cad5b6a70
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+[{"town":"Andover","n":"40"}
+,{"town":"Ansonia","n":"202"}
+,{"town":"Ashford","n":"80"}
+,{"town":"Avon","n":"336"}
+,{"town":"Barkhamsted","n":"72"}
+,{"town":"Beacon Falls","n":"99"}
+,{"town":"Berlin","n":"280"}
+,{"town":"Bethany","n":"76"}
+,{"town":"Bethel","n":"293"}
+,{"town":"Bethlehem","n":"59"}
+,{"town":"Bloomfield","n":"291"}
+,{"town":"Bolton","n":"75"}
+,{"town":"Bozrah","n":"28"}
+,{"town":"Bridgeport","n":"1356"}
+,{"town":"Bridgewater","n":"44"}
+,{"town":"Bristol","n":"968"}
+,{"town":"Brookfield","n":"309"}
+,{"town":"Burlington","n":"130"}
+,{"town":"Canaan","n":"17"}
+,{"town":"Canterbury","n":"89"}
+,{"town":"Canton","n":"194"}
+,{"town":"Chaplin","n":"37"}
+,{"town":"Cheshire","n":"427"}
+,{"town":"Chester","n":"55"}
+,{"town":"Clinton","n":"229"}
+,{"town":"Colchester","n":"258"}
+,{"town":"Colebrook","n":"47"}
+,{"town":"Columbia","n":"82"}
+,{"town":"Cornwall","n":"30"}
+,{"town":"Cromwell","n":"256"}
+,{"town":"Danbury","n":"1041"}
+,{"town":"Darien","n":"304"}
+,{"town":"Deep River","n":"79"}
+,{"town":"Derby","n":"175"}
+,{"town":"Durham","n":"81"}
+,{"town":"Eastford","n":"38"}
+,{"town":"East Granby","n":"76"}
+,{"town":"East Haddam","n":"187"}
+,{"town":"East Hampton","n":"239"}
+,{"town":"East Hartford","n":"643"}
+,{"town":"East Haven","n":"478"}
+,{"town":"East Lyme","n":"341"}
+,{"town":"Easton","n":"129"}
+,{"town":"East Windsor","n":"207"}
+,{"town":"Ellington","n":"237"}
+,{"town":"Enfield","n":"699"}
+,{"town":"Essex","n":"135"}
+,{"town":"Fairfield","n":"855"}
+,{"town":"Farmington","n":"421"}
+,{"town":"Franklin","n":"42"}
+,{"town":"Glastonbury","n":"534"}
+,{"town":"Goshen","n":"72"}
+,{"town":"Granby","n":"177"}
+,{"town":"Greenwich","n":"881"}
+,{"town":"Griswold","n":"209"}
+,{"town":"Groton","n":"520"}
+,{"town":"Guilford","n":"414"}
+,{"town":"Haddam","n":"131"}
+,{"town":"Hamden","n":"886"}
+,{"town":"Hampton","n":"49"}
+,{"town":"Hartford","n":"978"}
+,{"town":"Hartland","n":"25"}
+,{"town":"Harwinton","n":"76"}
+,{"town":"Hebron","n":"138"}
+,{"town":"Kent","n":"50"}
+,{"town":"Killingly","n":"357"}
+,{"town":"Killingworth","n":"80"}
+,{"town":"Lebanon","n":"135"}
+,{"town":"Ledyard","n":"284"}
+,{"town":"Lisbon","n":"92"}
+,{"town":"Litchfield","n":"150"}
+,{"town":"Lyme","n":"43"}
+,{"town":"Madison","n":"318"}
+,{"town":"Manchester","n":"783"}
+,{"town":"Marlborough","n":"12"}
+,{"town":"Meriden","n":"805"}
+,{"town":"Middlebury","n":"152"}
+,{"town":"Middlefield","n":"66"}
+,{"town":"Middletown","n":"715"}
+,{"town":"Milford","n":"831"}
+,{"town":"Montville","n":"349"}
+,{"town":"Morris","n":"43"}
+,{"town":"Naugatuck","n":"510"}
+,{"town":"New Britain","n":"851"}
+,{"town":"New Canaan","n":"351"}
+,{"town":"New Hartford","n":"119"}
+,{"town":"New Haven","n":"1116"}
+,{"town":"Newington","n":"449"}
+,{"town":"New London","n":"319"}
+,{"town":"New Milford","n":"482"}
+,{"town":"Newtown","n":"434"}
+,{"town":"North Branford","n":"7"}
+,{"town":"North Canaan","n":"57"}
+,{"town":"North Haven","n":"269"}
+,{"town":"North Stonington","n":"99"}
+,{"town":"Norwalk","n":"1101"}
+,{"town":"Norwich","n":"829"}
+,{"town":"Old Saybrook","n":"215"}
+,{"town":"Orange","n":"159"}
+,{"town":"Plainfield","n":"281"}
+,{"town":"Plainville","n":"275"}
+,{"town":"Plymouth","n":"222"}
+,{"town":"Portland","n":"130"}
+,{"town":"Preston","n":"76"}
+,{"town":"Redding","n":"136"}
+,{"town":"Ridgefield","n":"352"}
+,{"town":"Rocky Hill","n":"249"}
+,{"town":"Roxbury","n":"63"}
+,{"town":"Salem","n":"72"}
+,{"town":"Salisbury","n":"98"}
+,{"town":"Scotland","n":"23"}
+,{"town":"Sharon","n":"62"}
+,{"town":"Shelton","n":"575"}
+,{"town":"Sherman","n":"66"}
+,{"town":"Simsbury","n":"384"}
+,{"town":"Somers","n":"132"}
+,{"town":"Southbury","n":"512"}
+,{"town":"Southington","n":"687"}
+,{"town":"South Windsor","n":"432"}
+,{"town":"Sprague","n":"44"}
+,{"town":"Stafford","n":"219"}
+,{"town":"Stamford","n":"1644"}
+,{"town":"Sterling","n":"64"}
+,{"town":"Stonington","n":"377"}
+,{"town":"Stratford","n":"777"}
+,{"town":"Suffield","n":"257"}
+,{"town":"Thomaston","n":"113"}
+,{"town":"Thompson","n":"14"}
+,{"town":"Torrington","n":"710"}
+,{"town":"Trumbull","n":"422"}
+,{"town":"Union","n":"16"}
+,{"town":"Vernon","n":"410"}
+,{"town":"Warren","n":"35"}
+,{"town":"Washington","n":"79"}
+,{"town":"Waterbury","n":"1454"}
+,{"town":"Waterford","n":"332"}
+,{"town":"Watertown","n":"324"}
+,{"town":"Westbrook","n":"115"}
+,{"town":"West Hartford","n":"856"}
+,{"town":"Weston","n":"161"}
+,{"town":"Westport","n":"468"}
+,{"town":"Wethersfield","n":"347"}
+,{"town":"Wilton","n":"297"}
+,{"town":"Winchester","n":"203"}
+,{"town":"Windham","n":"324"}
+,{"town":"Windsor","n":"439"}
+,{"town":"Windsor Locks","n":"250"}
+,{"town":"Wolcott","n":"248"}
+,{"town":"Woodbridge","n":"139"}
+,{"town":"Woodbury","n":"155"}
+,{"town":"Woodstock","n":"155"}]
