@@ -1,0 +1,749 @@
+URL: https://plvr.land.moi.gov.tw/DownloadSeason_ajax_list
+Fetched: 2026-10-14T17:29:53Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 35416
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: SAMEORIGIN
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE,OPTIONS
+Access-Control-Allow-Credentials: false
+Content-Security-Policy: default-src 'self';frame-ancestors 'self';font-src 'self' data: https: http:;img-src * data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google-analytics.com https://www.googletagmanager.com https://www.google-analytics.com ; style-src 'self' 'unsafe-inline' https:;connect-src *;object-src 'none' ; base-uri 'none';
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: origin
+Permissions-Policy: microphone=(),camera=()
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: JSESSIONID=D181E94E2908EB8F684FAFE05CCE0F62;Path=/;  HttpOnly; Secure; SameSite=strict
+Access-Control-Max-Age: 60
+Content-Type: text/html;charset=UTF-8
+Content-Language: zh-TW
+Transfer-Encoding: chunked
+Date: Wed, 14 Oct 2026 17:29:52 GMT
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF, LF line terminators
+=== FIRST 30000 BYTES
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" width="96%" id="table3" >
+	<tr>
+		<td colspan="3">
+
+		</td>
+	</tr>   
+</table>             
+<br/> 
+     	<table width="100%" border='0' cellpadding='0' cellspacing='0' id='table5' 
+               style='border-left: 1px solid #cecece; border-right: 1px solid #cecece; border-top: 1px  solid #dfdfdf;
+                border-bottom: 1px solid #cecece; text-align:left;' >
+			<tr>	  
+				<td class="form_gray" colspan="3"><font face='Arial' size='-1'>前季下載</font></td>
+			</tr>
+			<tr>	  
+				<td class="form_intro">&nbsp;</td> 
+				<td class="form_intro">&nbsp;發布日期 
+					<select name="season" id="historySeason_id" onchange="chgSesonDesc(this.value);">
+    <option value="115S3">115年第3季</option>
+    <option value="115S2">115年第2季</option>
+    <option value="115S1">115年第1季</option>
+    <option value="114S4">114年第4季</option>
+    <option value="114S3">114年第3季</option>
+    <option value="114S2">114年第2季</option>
+    <option value="114S1">114年第1季</option>
+    <option value="113S4">113年第4季</option>
+    <option value="113S3">113年第3季</option>
+    <option value="113S2">113年第2季</option>
+    <option value="113S1">113年第1季</option>
+    <option value="112S4">112年第4季</option>
+    <option value="112S3">112年第3季</option>
+    <option value="112S2">112年第2季</option>
+    <option value="112S1">112年第1季</option>
+    <option value="111S4">111年第4季</option>
+    <option value="111S3">111年第3季</option>
+    <option value="111S2">111年第2季</option>
+    <option value="111S1">111年第1季</option>
+    <option value="110S4">110年第4季</option>
+    <option value="110S3">110年第3季</option>
+    <option value="110S2">110年第2季</option>
+    <option value="110S1">110年第1季</option>
+    <option value="109S4">109年第4季</option>
+    <option value="109S3">109年第3季</option>
+    <option value="109S2">109年第2季</option>
+    <option value="109S1">109年第1季</option>
+    <option value="108S4">108年第4季</option>
+    <option value="108S3">108年第3季</option>
+    <option value="108S2">108年第2季</option>
+    <option value="108S1">108年第1季</option>
+    <option value="107S4">107年第4季</option>
+    <option value="107S3">107年第3季</option>
+    <option value="107S2">107年第2季</option>
+    <option value="107S1">107年第1季</option>
+    <option value="106S4">106年第4季</option>
+    <option value="106S3">106年第3季</option>
+    <option value="106S2">106年第2季</option>
+    <option value="106S1">106年第1季</option>
+    <option value="105S4">105年第4季</option>
+    <option value="105S3">105年第3季</option>
+    <option value="105S2">105年第2季</option>
+    <option value="105S1">105年第1季</option>
+    <option value="104S4">104年第4季</option>
+    <option value="104S3">104年第3季</option>
+    <option value="104S2">104年第2季</option>
+    <option value="104S1">104年第1季</option>
+    <option value="103S4">103年第4季</option>
+    <option value="103S3">103年第3季</option>
+    <option value="103S2">103年第2季</option>
+    <option value="103S1">103年第1季</option>
+    <option value="102S4">102年第4季</option>
+    <option value="102S3">102年第3季</option>
+    <option value="102S2">102年第2季</option>
+    <option value="102S1">102年第1季</option>
+    <option value="101S4">101年第4季</option>
+    <option value="101S3">101年第3季</option>
+    <option value="101S2">101年第2季</option>
+    <option value="101S1">101年第1季</option>
+
+
+</select>
+
+
+					<span class="i_season_desc">
+						<img src="/images/info.png" width="18" height="18"/>
+					</span>						
+				</td>
+				<td class="form_intro">
+<!-- 					<span class="i_download" style="cursor:pointer" onclick="javaScript:downloadSeason();"> -->
+<!-- 						<img src="images/download_b_o.gif" alt="下載"> -->
+<!-- 					</span>  -->
+				</td> 
+			</tr>
+		</table>
+      	 <table width="100%" border='0' cellpadding='0' cellspacing='0' id='table5' 
+               style='border-left: 1px solid #cecece; border-right: 1px solid #cecece; border-top: 1px  solid #dfdfdf;
+                border-bottom: 1px solid #cecece; text-align:left;' >
+			<tr>	  
+				<td class="form_gray"><font face='Arial' size='-1'>下載檔案格式(<a  href="./FreeDownload.action?fileName=%E7%A7%9F%E8%B3%83opendata%E4%BF%AE%E6%94%B9%E8%AA%AA%E6%98%8E.txt"  role="button" onclick="preDownload();">租賃opendata修改說明.txt</a>)</font></td>
+				<td class="form_gray" colspan="2" align="center"> 
+					<select name="fileFormat" id="fileFormatId">
+    <option value="xml">XML 格式</option>
+    <option value="txt">TXT 格式</option>
+    <option value="csv">CSV 格式</option>
+    <option value="xls">XLS 格式</option>
+
+
+</select>
+
+
+				</td> 
+				<td  class="form_gray" align="center">     
+					<a id="download-button" ></a>     
+					<input type="button" name="button9" id="downloadBtnId" value="下載" onclick="preDownload();"/>	
+				</td> 
+			</tr> 
+			<tr> 
+				<td colspan="4">&nbsp; </td> 
+			</tr>			
+			<tr> 
+				<td class="form_gray"><font face='Arial' size='-1'>下載方式</font></td> 
+				<td class="form_gray" colspan="3">
+					<font face='Arial' size='-1'>
+					
+						<input type="radio" name="downloadType" id="downloadTypeId1" checked="checked" value="1" onclick="chgDownloadType(this);"/><label for="downloadTypeId1">全國(含不動產買賣+預售屋買賣+不動產租賃)</label>
+<input type="radio" name="downloadType" id="downloadTypeId2" value="2" onclick="chgDownloadType(this);"/><label for="downloadTypeId2">進階下載(勾選欲下載 縣市/交易類別)</label>
+		   	 		
+					
+					
+					 </font>  
+				</td>
+			</tr>		 
+
+			<tr>
+				<td colspan="4">&nbsp; </td>
+			</tr>	 
+			<tr class="advDownloadClass">
+				<td class="form_gray"><font face='Arial' size='-1'>縣市\交易類別</font></td>
+				<td class="form_gray">
+						<font face='Arial' size='-1'>不動產買賣
+							&nbsp;&nbsp;<input type="checkbox" id="typeASelectAll"/>
+						</font></td>
+				<td class="form_gray"><font face='Arial' size='-1'>預售屋買賣
+							&nbsp;&nbsp;<input type="checkbox" id="typeBSelectAll"/>
+						</font></td>
+				<td class="form_gray"><font face='Arial' size='-1'>不動產租賃
+							&nbsp;&nbsp;<input type="checkbox" id="typeCSelectAll"/>
+						</font></td>
+			</tr> 
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>基隆市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="C_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="C_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="C_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>臺北市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="A_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="A_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="A_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>新北市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="F_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="F_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="F_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>桃園市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="H_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="H_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="H_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>新竹市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="O_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="O_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="O_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>新竹縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="J_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="J_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="J_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>苗栗縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="K_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="K_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="K_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>臺中市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="B_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="B_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="B_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>南投縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="M_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="M_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="M_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>彰化縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="N_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="N_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="N_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>雲林縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="P_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="P_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="P_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>嘉義市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="I_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="I_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="I_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>嘉義縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="Q_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="Q_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="Q_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>臺南市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="D_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="D_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="D_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>高雄市</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="E_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="E_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="E_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>屏東縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="T_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="T_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="T_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>宜蘭縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="G_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="G_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="G_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>花蓮縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="U_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="U_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="U_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>臺東縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="V_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="V_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="V_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>澎湖縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="X_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="X_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="X_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>金門縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="W_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="W_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="W_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+			<tr class="advDownloadClass">
+				<td class="form_intro">
+					<font face='Arial' size='-1'>連江縣</font>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="Z_lvr_land_A" class="checkBoxGrp landTypeA"/>
+				</td> 
+				<td class="form_intro">
+					<input type="checkbox" value="Z_lvr_land_B" class="checkBoxGrp landTypeB"/>
+				</td>
+				<td class="form_intro">
+					<input type="checkbox" value="Z_lvr_land_C" class="checkBoxGrp landTypeC"/>
+				</td>
+			</tr>	
+			
+ 
+			<tr>
+				<td colspan="4">&nbsp; </td>
+			</tr>
+          </table> 
+          <div id="mainMsg" class="results_text" style="display:none;"> 
+			    <div id="totalMsg"></div> 
+			    <div id="nowMsg"></div>  
+          </div>                  
+<br/>
+<br/>
+  
+	<script src="/js/zip.js"></script>
+	<script src="/js/zip-fs.js"></script>
+	<script src="/js/zip-ext.js"></script>  
+	<script src="/js/downloadManager.js"></script>  
+	
+<script type="text/javascript">
+var downLoadType = 1;
+var baseUrl ="https://plvr.land.moi.gov.tw/";  
+ 
+var m = new Map();
+	 
+$(".advDownloadClass").hide();
+function chgDownloadType(obj){
+	downLoadType = obj.value;
+	if (downLoadType == 2){
+		$(".advDownloadClass").show();
+	} else{ 
+		$(".advDownloadClass").hide();
+	}
+}
+
+function preDownload(){
+	if (downLoadType==2){ 
+		startOpenData();
+	}else{ 
+		var season = $("#historySeason_id option:selected").val();
+		var fileFormat = $("#fileFormatId").val();
+		var url = "/DownloadSeason?season="+season+"&type=zip&fileName=lvr_land"+fileFormat+".zip";
+		$("#download-button").attr("href",url);
+		var href = baseUrl + $('#download-button').attr('href');
+		$("#download-button").click();
+		window.location.href = href;   
+	}
+}
+
+function init(){
+	$("#totalMsg").html("");
+	$("#nowMsg").html("");
+	$("#mainMsg").attr("style","display:none;");
+}
+
+function startOpenData(){
+	init();
+	fs = new zip.fs.FS();
+	
+	var fileFormat = $("#fileFormatId").val();
+	var season = $("#historySeason_id option:selected").val();
+	var cnt = $(".checkBoxGrp" ).filter(':checked').length; 
+	if (cnt < 1){ 
+		alert("請選擇所要下載的區域及交易類別");
+		$("#div_body").unmask();
+		return false;
+	}else{
+
+		if (cnt > 3 ){ 
+			alert("您選擇了檔案數共:" + cnt + "個，已超過設定限制3個，可以選「全國資料」再自行篩選");
+			$("#div_body").unmask();
+			return false;
+		}
+		var fOpt = {
+				"msg" : "您選擇了檔案數共:" + cnt + "個 ，下載中，請稍候...",
+				"overlay" : true,
+				"zindex" : 99999
+		};
+		qt.util.showLoading(fOpt);
+//		$("#div_body").mask("您選擇了檔案數共:" + cnt + "個 ，下載中，請稍候...");
+	} 
+	fs.root.addHttpContent(season, 
+			baseUrl +"/DownloadSeason?season="+season);
+// 	fs.root.addHttpContent("readme", 
+// 			baseUrl +"/DownloadSeason?season="+season+"&fileName="+"readme");
+
+	fs.root.addHttpContent("schema-land.csv", 
+			baseUrl +"/DownloadSeason?season="+season+"&fileName="+"schema-land.csv");
+
+	fs.root.addHttpContent("schema-main.csv", 
+			baseUrl +"/DownloadSeason?season="+season+"&fileName="+"schema-main.csv");
+
+	fs.root.addHttpContent("schema-park.csv", 
+			baseUrl +"/DownloadSeason?season="+season+"&fileName="+"schema-park.csv");
+
+	fs.root.addHttpContent("schema-build.csv", 
+			baseUrl +"/DownloadSeason?season="+season+"&fileName="+"schema-build.csv");
+
+	fs.root.addHttpContent("manifest.csv", 
+			baseUrl +"/DownloadSeason?season="+season+"&fileName="+"manifest.csv");
+ 
+
+
+	var processCnt= 0; 
+	$( ".checkBoxGrp" ).each(function( index ) {
+		 var writeFileName = $(this).val()+"."+fileFormat;
+		 var write_parkFileName = $(this).val()+"_park."+fileFormat;
+		 var write_landFileName = $(this).val()+"_land."+fileFormat;
+		 var write_buildFileName = $(this).val()+"_build."+fileFormat;
+		 if($(this).is(':checked')){ 
+			processCnt++;
+			fs.root.addHttpContent(writeFileName,  
+					baseUrl +"/DownloadSeason?season="+season+"&fileName="+writeFileName);  
+			fs.root.addHttpContent(write_parkFileName,  
+					baseUrl +"/DownloadSeason?season="+season+"&fileName="+write_parkFileName);  
+			fs.root.addHttpContent(write_landFileName,  
+					baseUrl +"/DownloadSeason?season="+season+"&fileName="+write_landFileName);  
+			fs.root.addHttpContent(write_buildFileName,  
+					baseUrl +"/DownloadSeason?season="+season+"&fileName="+write_buildFileName);  
+// 			console.log(" fullurl:" + baseUrl +"/Download?fileName="+writeFileName);  
+		 }  
+	});   
+	startDownload();  
+}
+
+function chgSesonDesc(seasonVal){
+	var tip = m.get(seasonVal); 
+	$(".i_season_desc").poshytip('update', tip);
+}
+
+function initSeasonDesc(){
+	
+		m.set('101S1','資料內容：登記日期自 100年11月1 至 101年1月31日之買賣案件，申報日期自 100年11月1 至 101年1月31日之租賃、預售屋交易案件');
+	
+		m.set('101S2','資料內容：登記日期自 101年2月1 至 101年4月30日之買賣案件，申報日期自 101年2月1 至 101年4月30日之租賃、預售屋交易案件');
+	
+		m.set('101S3','資料內容：登記日期自 101年5月1 至 101年7月31日之買賣案件，申報日期自 101年5月1 至 101年7月31日之租賃、預售屋交易案件');
+	
+		m.set('101S4','資料內容：登記日期自 101年8月1 至 101年10月31日之買賣案件，申報日期自 101年8月1 至 101年10月31日之租賃、預售屋交易案件');
+	
+		m.set('102S1','資料內容：登記日期自 101年11月1 至 102年1月31日之買賣案件，申報日期自 101年11月1 至 102年1月31日之租賃、預售屋交易案件');
+	
+		m.set('102S2','資料內容：登記日期自 102年2月1 至 102年4月30日之買賣案件，申報日期自 102年2月1 至 102年4月30日之租賃、預售屋交易案件');
+	
+		m.set('102S3','資料內容：登記日期自 102年5月1 至 102年7月31日之買賣案件，申報日期自 102年5月1 至 102年7月31日之租賃、預售屋交易案件');
+	
+		m.set('102S4','資料內容：登記日期自 102年8月1 至 102年10月31日之買賣案件，申報日期自 102年8月1 至 102年10月31日之租賃、預售屋交易案件');
+	
+		m.set('103S1','資料內容：登記日期自 102年11月1 至 103年1月31日之買賣案件，申報日期自 102年11月1 至 103年1月31日之租賃、預售屋交易案件');
+	
+		m.set('103S2','資料內容：登記日期自 103年2月1 至 103年4月30日之買賣案件，申報日期自 103年2月1 至 103年4月30日之租賃、預售屋交易案件');
+	
+		m.set('103S3','資料內容：登記日期自 103年5月1 至 103年7月31日之買賣案件，申報日期自 103年5月1 至 103年7月31日之租賃、預售屋交易案件');
+	
+		m.set('103S4','資料內容：登記日期自 103年8月1 至 103年10月31日之買賣案件，申報日期自 103年8月1 至 103年10月31日之租賃、預售屋交易案件');
+	
+		m.set('104S1','資料內容：登記日期自 103年11月1 至 104年1月31日之買賣案件，申報日期自 103年11月1 至 104年1月31日之租賃、預售屋交易案件');
+	
+		m.set('104S2','資料內容：登記日期自 104年2月1 至 104年4月30日之買賣案件，申報日期自 104年2月1 至 104年4月30日之租賃、預售屋交易案件');
+	
+		m.set('104S3','資料內容：登記日期自 104年5月1 至 104年7月31日之買賣案件，申報日期自 104年5月1 至 104年7月31日之租賃、預售屋交易案件');
+	
+		m.set('104S4','資料內容：登記日期自 104年8月1 至 104年10月31日之買賣案件，申報日期自 104年8月1 至 104年10月31日之租賃、預售屋交易案件');
+	
+		m.set('105S1','資料內容：登記日期自 104年11月1 至 105年1月31日之買賣案件，申報日期自 104年11月1 至 105年1月31日之租賃、預售屋交易案件');
+	
+		m.set('105S2','資料內容：登記日期自 105年2月1 至 105年4月30日之買賣案件，申報日期自 105年2月1 至 105年4月30日之租賃、預售屋交易案件');
+	
+		m.set('105S3','資料內容：登記日期自 105年5月1 至 105年7月31日之買賣案件，申報日期自 105年5月1 至 105年7月31日之租賃、預售屋交易案件');
+	
+		m.set('105S4','資料內容：登記日期自 105年8月1 至 105年10月31日之買賣案件，申報日期自 105年8月1 至 105年10月31日之租賃、預售屋交易案件');
+	
+		m.set('106S1','資料內容：登記日期自 105年11月1 至 106年1月31日之買賣案件，申報日期自 105年11月1 至 106年1月31日之租賃、預售屋交易案件');
+	
+		m.set('106S2','資料內容：登記日期自 106年2月1 至 106年4月30日之買賣案件，申報日期自 106年2月1 至 106年4月30日之租賃、預售屋交易案件');
+	
+		m.set('106S3','資料內容：登記日期自 106年5月1 至 106年7月31日之買賣案件，申報日期自 106年5月1 至 106年7月31日之租賃、預售屋交易案件');
+	
+		m.set('106S4','資料內容：登記日期自 106年8月1 至 106年11月10日之買賣案件，申報日期自 106年8月1 至 106年11月10日之租賃、預售屋交易案件');
+	
+		m.set('107S1','資料內容：登記日期自 106年11月11 至 107年2月10日之買賣案件，申報日期自 106年11月11 至 107年2月10日之租賃案件，及交易日期自106年11月11 至 107年2月10日之預售屋案件');
+	
+		m.set('107S2','資料內容：登記日期自 107年2月11 至 107年5月10日之買賣案件，申報日期自 107年2月11 至 107年5月10日之租賃案件，及交易日期自107年2月11 至 107年5月10日之預售屋案件');
+	
+		m.set('107S3','資料內容：登記日期自 107年5月11 至 107年8月10日之買賣案件，申報日期自 107年5月11 至 107年8月10日之租賃案件，及交易日期自107年5月11 至 107年8月10日之預售屋案件');
+	
+		m.set('107S4','資料內容：登記日期自 107年8月11 至 107年11月10日之買賣案件，申報日期自 107年8月11 至 107年11月10日之租賃案件，及交易日期自107年8月11 至 107年11月10日之預售屋案件');
+	
+		m.set('108S1','資料內容：登記日期自 107年11月11 至 108年2月10日之買賣案件，申報日期自 107年11月11 至 108年2月10日之租賃案件，及交易日期自107年11月11 至 108年2月10日之預售屋案件');
+	
+		m.set('108S2','資料內容：登記日期自 108年2月11 至 108年5月10日之買賣案件，申報日期自 108年2月11 至 108年5月10日之租賃案件，及交易日期自108年2月11 至 108年5月10日之預售屋案件');
+	
+		m.set('108S3','資料內容：登記日期自 108年5月11 至 108年8月10日之買賣案件，申報日期自 108年5月11 至 108年8月10日之租賃案件，及交易日期自108年5月11 至 108年8月10日之預售屋案件');
+	
+		m.set('108S4','資料內容：登記日期自 108年8月11 至 108年11月10日之買賣案件，申報日期自 108年8月11 至 108年11月10日之租賃案件，及交易日期自108年8月11 至 108年11月10日之預售屋案件');
+	
+		m.set('109S1','資料內容：登記日期自 108年11月11 至 109年2月10日之買賣案件，申報日期自 108年11月11 至 109年2月10日之租賃案件，及交易日期自108年11月11 至 109年2月10日之預售屋案件');
+	
+		m.set('109S2','資料內容：登記日期自 109年2月11 至 109年5月10日之買賣案件，申報日期自 109年2月11 至 109年5月10日之租賃案件，及交易日期自109年2月11 至 109年5月10日之預售屋案件');
+	
+		m.set('109S3','資料內容：登記日期自 109年5月11 至 109年9月10日之買賣案件，申報日期自 109年5月11 至 109年8月10日之租賃案件，及交易日期自109年5月11 至 109年8月10日之預售屋案件');
+	
+		m.set('109S4','資料內容：登記日期自 109年9月11 至 109年12月10日之買賣案件，申報日期自 109年8月11 至 109年11月10日之租賃案件，及交易日期自109年8月11 至 109年11月10日之預售屋案件');
+	
+		m.set('110S1','資料內容：登記日期自 109年12月11 至 110年3月10日之買賣案件，申報日期自 109年11月11 至 110年2月10日之租賃案件，及交易日期自109年11月11 至 110年2月10日之預售屋案件');
+	
+		m.set('110S2','資料內容：登記日期自 110年3月11 至 110年6月10日之買賣案件，申報日期自 110年2月11 至 110年5月10日之租賃案件，及交易日期自110年2月11 至 110年5月10日之預售屋案件');
+	
+		m.set('110S3','資料內容：登記日期自 110年6月11 至 110年9月10日之買賣案件，申報日期自 110年5月11 至 110年8月10日之租賃案件，及交易日期自
