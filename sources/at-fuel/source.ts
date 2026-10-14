@@ -186,14 +186,14 @@ export function parseAtStations(json: any, fuelCode: string): AtStation[] {
   return dropAtOutliers(out);
 }
 
-/** A posted price more than 30% away from the median of its own list is a probable entry error (one Kärnten station listed
- *  diesel at 1.129 EUR beside 2.09 EUR for the rest): leave it out so it cannot distort the range. Needs 5+ stations. */
+/** A posted price more than 20% away from the median of its own list is a probable entry error (Kärnten stations listed
+ *  diesel at 1.129 and 1.529 EUR beside 2.09 EUR for the rest): leave it out so it cannot distort the range. Needs 5+ stations. */
 export function dropAtOutliers(stations: AtStation[]): AtStation[] {
   if (stations.length < 5) return stations;
   const sorted = stations.map((x) => x.price).sort((a, b) => a - b);
   const mid = sorted.length >> 1;
   const median = sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
-  return stations.filter((x) => x.price >= median * 0.7 && x.price <= median * 1.3);
+  return stations.filter((x) => x.price >= median * 0.8 && x.price <= median * 1.2);
 }
 
 function regionUrl(code: string, type: string, fuelCode: string): string {
@@ -248,7 +248,7 @@ export function atAnswer(
     method:
       "E-Control's Spritpreisrechner returns only the cheapest stations (here " + stations.length + ") for the region and fuel. " +
       "The median and the 10th–90th percentile are computed over those stations only, so they describe the cheap end of the market and sit below the average price across all stations in the region. " +
-      "Posted prices of the stations E-Control lists, whether open or closed at the moment of the query; a price more than 30% from the median of the list is treated as an entry error and left out.",
+      "Posted prices of the stations E-Control lists, whether open or closed at the moment of the query; a price more than 20% from the median of the list is treated as an entry error and left out.",
     describe: (x) =>
       `${FUEL_LABEL[q.fuel]} in ${q.where}: the ${stations.length} cheapest stations listed by E-Control charge a median of ${fmtMoney(x.median, "EUR")} ${unit}, ` +
       `range ${fmtMoney(x.min, "EUR")}–${fmtMoney(x.max, "EUR")}. This is the cheap end of the market, not every station, so the typical price across all stations is higher.`,

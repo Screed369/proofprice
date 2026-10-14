@@ -52,9 +52,11 @@ test("AT: stations parse; placeholder prices and stations without the fuel are d
   assert.throws(() => parseAtStations({ error: 1 }, "DIE"));
 });
 
-test("AT: a price far from the rest of its list is dropped as an entry error (seen live: 1.129 beside 2.09)", () => {
+test("AT: a price far from the rest of its list is dropped as an entry error (seen live: 1.129 and 1.529 beside 2.09)", () => {
   const odd = [...wien.slice(0, 6), st(99, "Typo Tankstelle", "Weg 1", "9020", "Klagenfurt", 1.129, true)];
   assert.equal(parseAtStations(odd, "DIE").length, 6);
+  const odd2 = [...wien.slice(0, 6), st(98, "Typo Tankstelle", "Weg 2", "9020", "Klagenfurt", 1.529, true)];
+  assert.equal(parseAtStations(odd2, "DIE").length, 6); // 27% under the median of 2.089
   assert.equal(dropAtOutliers(parseAtStations(wien.slice(0, 4), "DIE")).length, 4); // under 5 stations: nothing is judged
 });
 
