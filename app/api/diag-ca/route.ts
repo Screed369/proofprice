@@ -31,6 +31,33 @@ export async function GET(req: Request) {
   const pid = u.searchParams.get("pid") ?? "";
   const UA = { "user-agent": "ProofPrice/1.0 (hello@proofprice.com)" };
   try {
+    if (op === "fixtures") {
+      const post = async (path: string, body: unknown) => {
+        const r = await fetch(`https://www150.statcan.gc.ca/t1/wds/rest/${path}`, {
+          method: "POST", headers: { "content-type": "application/json", ...UA }, body: JSON.stringify(body),
+        });
+        return JSON.parse(await r.text());
+      };
+      const co = (...ids: number[]) => [...ids, ...Array(10 - ids.length).fill(0)].join(".");
+      const out: Record<string, unknown> = {};
+      out.metaFuel = await post("getCubeMetadata", [{ productId: 18100001 }]);
+      out.metaPrices = await post("getCubeMetadata", [{ productId: 18100245 }]);
+      out.metaRent = await post("getCubeMetadata", [{ productId: 34100133 }]);
+      const fuel: unknown[] = [];
+      for (const g of [16, 10, 20, 8]) for (const f of [2, 4, 6]) fuel.push({ productId: 18100001, coordinate: co(g, f), latestN: 13 });
+      out.dataFuel = await post("getDataFromCubePidCoordAndLatestNPeriods", fuel);
+      const groc: unknown[] = [];
+      for (const g of [11, 6, 12]) for (const p of [20, 14, 46, 109]) groc.push({ productId: 18100245, coordinate: co(g, p), latestN: 14 });
+      out.dataPrices = await post("getDataFromCubePidCoordAndLatestNPeriods", groc);
+      const rent: unknown[] = [];
+      for (const g of [125, 106, 1, 2]) for (const s of [1, 2, 3, 4]) for (const un of [1, 2, 3, 4]) rent.push({ productId: 34100133, coordinate: co(g, s, un), latestN: 3 });
+      out.dataRent = await post("getDataFromCubePidCoordAndLatestNPeriods", rent);
+      out.bogus = await fetch("https://www150.statcan.gc.ca/t1/wds/rest/getDataFromCubePidCoordAndLatestNPeriods", {
+        method: "POST", headers: { "content-type": "application/json", ...UA }, body: JSON.stringify([{ productId: 34100133, coordinate: "125.1.3", latestN: 3 }]),
+      }).then(async (r) => ({ status: r.status, body: await r.text() }));
+      out.bogusMember = await post("getDataFromCubePidCoordAndLatestNPeriods", [{ productId: 34100133, coordinate: co(999, 1, 1), latestN: 3 }]);
+      return new Response(JSON.stringify(out), { headers: { "content-type": "text/plain; charset=utf-8" } });
+    }
     if (op === "meta") {
       const r = await fetch("https://www150.statcan.gc.ca/t1/wds/rest/getCubeMetadata", {
         method: "POST", headers: { "content-type": "application/json", ...UA }, body: JSON.stringify([{ productId: Number(pid) }]),
