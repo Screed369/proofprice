@@ -5,7 +5,7 @@ export default function Method() {
     <main>
       <h1>Method (v0.3)</h1>
       <ul>
-        <li>Every answer is a range: the median and the 10th–90th percentile of recorded prices, with the sample size, period and a confidence label.</li>
+        <li>Most answers are a range: the median and the 10th–90th percentile of recorded prices, with the sample size, period and a confidence label. Official statistics (below) are the one exception.</li>
         <li>Confidence: high = 50+ records, medium = 15–49, low = 5–14. Below 5 records we do not publish a figure.</li>
         <li>Home sales: official transaction records only. Aggregates only: we never return individual addresses or personal data for home sales.</li>
         <li>Fuel: the latest pump price each public station reports, for the chosen fuel.</li>
@@ -17,6 +17,19 @@ export default function Method() {
           <li key={s.info.id}>{s.method}</li>
         ))}
         <li>Information, not a valuation or offer.</li>
+      </ul>
+      <h2>Official statistics</h2>
+      <ul>
+        <li>
+          Some answers are not built from individual records. They are an official average or median that a statistics office or regulator publishes
+          (for example Eurostat&apos;s household electricity and gas prices). We pass on the published figure, its reference period (for example the first
+          half of 2026) and its source, and we say whether it is an average or a median.
+        </li>
+        <li>
+          These answers are labelled <code>price_type: &quot;official_statistic&quot;</code>. The publisher gives one figure, not a range, so the range fields are empty,
+          and the sample size is empty when the publisher does not say how many records are behind it.
+        </li>
+        <li>An official statistic is never presented as an individual sale or as an offer from a supplier.</li>
       </ul>
       <h2>Sources and licences</h2>
       <ul>
