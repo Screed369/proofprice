@@ -1,0 +1,457 @@
+URL: https://datacatalog.cookcountyil.gov/api/views/wvhk-k5uv.json
+Fetched: 2026-10-14T17:37:10Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 34533
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 17:37:10 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 2333383cfe91f61cd4e43512716653dd
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{
+  "id" : "wvhk-k5uv",
+  "name" : "Assessor - Parcel Sales",
+  "assetType" : "dataset",
+  "attribution" : "Cook County Assessor's Office",
+  "averageRating" : 0,
+  "category" : "Property & Taxation",
+  "createdAt" : 1650289055,
+  "description" : "<b>Update 10/31/2023:</b> Sales are no longer filtered out of this data set based on deed type, sale price, or recency of sale for a given PIN with the same price. If users wish to recreate the former filtering schema they should set <i>sale_filter_same_sale_within_365</i>, <i>sale_filter_less_than_10k</i>, and <i>sale_filter_deed_type</i> to False.\n\nParcel sales for real property in Cook County, from 1999 to present. The Assessor's Office uses this data in its modeling to estimate the fair market value of unsold properties.\n\nWhen working with Parcel Index Numbers (PINs) make sure to zero-pad them to 14 digits. Some datasets may lose leading zeros for PINs when downloaded.\n\nSale document numbers correspond to those of the Cook County Clerk, and can be used on the <a href=\"https://ccrd.cookcountyclerkil.gov/i2/default.aspx\">Clerk's website</a> to find more information about each sale.\n\nNOTE: These sales <i>are</i> filtered, but likely include non-arms-length transactions - sales less than $10,000 along with quit claims, executor deeds, beneficial interests are excluded.  While the Data Department will upload what it has access to semi-monthly, sales are reported on a lag, with many records not populating until months after their official recording date.\n\nCurrent property class codes, their levels of assessment, and descriptions can be found <a href=\"https://prodassets.cookcountyassessor.com/s3fs-public/form_documents/classcode.pdf\">on the Assessor's website</a>. Note that class codes details can change across time.\n\nFor more information on the sourcing of attached data and the preparation of this dataset, see the <a href=\"https://github.com/ccao-data/wiki/blob/master/SOPs/Open-Data.md\">Assessor's Standard Operating Procedures for Open Data</a> on GitHub.\n\n<a href=\"https://datacatalog.cookcountyil.gov/stories/s/gzdr-q7c4\">Read about the Assessor's 2025 Open Data Refresh.</a>",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 95635,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 41141238,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1739485552,
+  "publicationGroup" : 18675076,
+  "publicationStage" : "published",
+  "rowIdentifierColumnId" : 605833770,
+  "rowsUpdatedAt" : 1790857503,
+  "rowsUpdatedBy" : "s6b5-uz7b",
+  "tableId" : 19783540,
+  "totalTimesRated" : 0,
+  "viewCount" : 51817,
+  "viewLastModified" : 1783621394,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1653314161,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 6747672,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1653314161,
+    "targetAudience" : "public",
+    "workflowId" : 2031,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1653314161,
+      "failureCount" : 0,
+      "startedAt" : 1653314161,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "s6b5-uz7b",
+      "displayName" : "Cook County Assessor's Office Data Department"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 605833771,
+    "name" : "pin",
+    "dataTypeName" : "text",
+    "description" : "Parcel Identification Number (PIN)",
+    "fieldName" : "pin",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141851744,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "33323020150000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "17032220150000",
+        "count" : "151"
+      }, {
+        "item" : "17103180800000",
+        "count" : "126"
+      }, {
+        "item" : "17032220180000",
+        "count" : "125"
+      }, {
+        "item" : "17032220200000",
+        "count" : "124"
+      }, {
+        "item" : "17102070340000",
+        "count" : "83"
+      }, {
+        "item" : "14062120060000",
+        "count" : "80"
+      }, {
+        "item" : "17102070380000",
+        "count" : "77"
+      }, {
+        "item" : "17102070360000",
+        "count" : "77"
+      }, {
+        "item" : "14062140170000",
+        "count" : "77"
+      }, {
+        "item" : "17102070370000",
+        "count" : "76"
+      }, {
+        "item" : "17032280050000",
+        "count" : "75"
+      }, {
+        "item" : "17032280040000",
+        "count" : "74"
+      }, {
+        "item" : "17032280160000",
+        "count" : "74"
+      }, {
+        "item" : "17032280370000",
+        "count" : "73"
+      }, {
+        "item" : "17102070350000",
+        "count" : "73"
+      }, {
+        "item" : "17102070390000",
+        "count" : "73"
+      }, {
+        "item" : "17104000110000",
+        "count" : "65"
+      }, {
+        "item" : "14062190130000",
+        "count" : "63"
+      }, {
+        "item" : "05272000010000",
+        "count" : "61"
+      }, {
+        "item" : "03101190010000",
+        "count" : "58"
+      } ],
+      "smallest" : "01011000020000",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833772,
+    "name" : "year",
+    "dataTypeName" : "number",
+    "description" : "Year",
+    "fieldName" : "year",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 141979911,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "2026.0",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2019",
+        "count" : "141100"
+      }, {
+        "item" : "2005",
+        "count" : "137198"
+      }, {
+        "item" : "2004",
+        "count" : "134192"
+      }, {
+        "item" : "2018",
+        "count" : "127839"
+      }, {
+        "item" : "2016",
+        "count" : "127660"
+      }, {
+        "item" : "2017.0",
+        "count" : "127399"
+      }, {
+        "item" : "2003",
+        "count" : "125121"
+      }, {
+        "item" : "2002",
+        "count" : "119391"
+      }, {
+        "item" : "2020",
+        "count" : "113844"
+      }, {
+        "item" : "2006",
+        "count" : "113356"
+      }, {
+        "item" : "2001",
+        "count" : "109468"
+      }, {
+        "item" : "2000",
+        "count" : "107117"
+      }, {
+        "item" : "2021.0",
+        "count" : "106960"
+      }, {
+        "item" : "2013.0",
+        "count" : "105644"
+      }, {
+        "item" : "2022.0",
+        "count" : "101398"
+      }, {
+        "item" : "2015.0",
+        "count" : "99265"
+      }, {
+        "item" : "2014",
+        "count" : "98349"
+      }, {
+        "item" : "2007",
+        "count" : "89507"
+      }, {
+        "item" : "2012",
+        "count" : "81494"
+      }, {
+        "item" : "2025",
+        "count" : "79257"
+      } ],
+      "smallest" : "1971",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 605833773,
+    "name" : "township_code",
+    "dataTypeName" : "text",
+    "description" : "Township code",
+    "fieldName" : "township_code",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141851726,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "77",
+      "null" : "0",
+      "top" : [ {
+        "item" : "72",
+        "count" : "259190"
+      }, {
+        "item" : "77",
+        "count" : "253193"
+      }, {
+        "item" : "71",
+        "count" : "222954"
+      }, {
+        "item" : "73",
+        "count" : "209050"
+      }, {
+        "item" : "70",
+        "count" : "153055"
+      }, {
+        "item" : "74",
+        "count" : "152002"
+      }, {
+        "item" : "76",
+        "count" : "105387"
+      }, {
+        "item" : "37",
+        "count" : "98101"
+      }, {
+        "item" : "39",
+        "count" : "81996"
+      }, {
+        "item" : "38",
+        "count" : "81928"
+      }, {
+        "item" : "31",
+        "count" : "73044"
+      }, {
+        "item" : "22",
+        "count" : "68506"
+      }, {
+        "item" : "13",
+        "count" : "65516"
+      }, {
+        "item" : "35",
+        "count" : "65471"
+      }, {
+        "item" : "29",
+        "count" : "61514"
+      }, {
+        "item" : "21",
+        "count" : "57261"
+      }, {
+        "item" : "24",
+        "count" : "56168"
+      }, {
+        "item" : "18",
+        "count" : "53426"
+      }, {
+        "item" : "28",
+        "count" : "51134"
+      }, {
+        "item" : "12",
+        "count" : "49973"
+      } ],
+      "smallest" : "10",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833774,
+    "name" : "neighborhood_code",
+    "dataTypeName" : "text",
+    "description" : "Assessor neighborhood code, first two digits are township, last three are neighborhood",
+    "fieldName" : "nbhd",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 146785097,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "77999",
+      "null" : "0",
+      "top" : [ {
+        "item" : "74030",
+        "count" : "59065"
+      }, {
+        "item" : "77131",
+        "count" : "47540"
+      }, {
+        "item" : "74022",
+        "count" : "44432"
+      }, {
+        "item" : "76010",
+        "count" : "35602"
+      }, {
+        "item" : "76011",
+        "count" : "27974"
+      }, {
+        "item" : "77120",
+        "count" : "26167"
+      }, {
+        "item" : "74012",
+        "count" : "25002"
+      }, {
+        "item" : "73031",
+        "count" : "24390"
+      }, {
+        "item" : "73060",
+        "count" : "23106"
+      }, {
+        "item" : "70010",
+        "count" : "21940"
+      }, {
+        "item" : "73084",
+        "count" : "21292"
+      }, {
+        "item" : "24031",
+        "count" : "20504"
+      }, {
+        "item" : "77030",
+        "count" : "20166"
+      }, {
+        "item" : "77102",
+        "count" : "18802"
+      }, {
+        "item" : "73062",
+        "count" : "18418"
+      }, {
+        "item" : "70080",
+        "count" : "18170"
+      }, {
+        "item" : "72030",
+        "count" : "16979"
+      }, {
+        "item" : "72380",
+        "count" : "16264"
+      }, {
+        "item" : "71070",
+        "count" : "14776"
+      }, {
+        "item" : "77170",
+        "count" : "14620"
+      } ],
+      "smallest" : "10011",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833775,
+    "name" : "class",
+    "dataTypeName" : "text",
+    "description" : "Property class",
+    "fieldName" : "class",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141851748,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "RR",
+      "null" : "0",
+      "top" : [ {
+        "item" : "299",
+        "count" : "846100"
+      }, {
+        "item" : "203",
+        "count" : "458849"
+      }, {
+        "item" : "211",
+        "count" : "244084"
+      }, {
+        "item" : "202",
+        "count" : "190129"
+      }, {
+        "item" : "234",
+        "count" : "115719"
+      }, {
+        "item" : "278",
+        "count" : "106947"
+      }, {
+        "item" : "295",
+        "count" : "99489"
+      }, {
+        "item" : "205",
+        "count" : "83218"
+      }, {
+        "item" : "100",
+        "count" : "80414"
+      }, {
+        "item" : "204",
+        "count" : "56562"
+      }, {
+        "item" : "207",
+        "count" : "51119"
+      }, {
+        "item" : "206",
+        "count" : "35479"
+      }, {
+        "item" : "517",
+        "count" : "31846"
+      }, {
+        "item" : "241",
+        "count" : "25283"
+      }, {
+        "item" : "593",
+        "count" : "23437"
+      }, {
+        "item" : 
