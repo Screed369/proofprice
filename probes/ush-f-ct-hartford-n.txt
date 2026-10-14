@@ -1,0 +1,28 @@
+URL: https://data.ct.gov/resource/5mzw-sjtu.json?$select=count(*)%20as%20n&$where=daterecorded%20%3E%20'2024-09-30T00%3A00%3A00'%20AND%20daterecorded%20%3C%20'2025-10-01T00%3A00%3A00'%20AND%20saleamount%20%3E%3D%2010000%20AND%20town%20%3D%20'Hartford'%20AND%20propertytype%20%3D%20'Residential'%20AND%20residentialtype%20in%20('Single%20Family'%2C'Two%20Family'%2C'Three%20Family'%2C'Four%20Family'%2C'Condo')%20AND%20nonusecode%20IS%20NULL
+Fetched: 2026-10-14T14:32:10Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 14
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:32:10 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Z29sZi4xNzM1NF83XzIxODRNZTM1ZXJ5dFBXNlZvVThvTF9PQTlBSTA5bw-T-D5cR_jsCAw4iH4gXV6TE6i5mQ--gzip--gzip"
+X-SODA2-Fields: ["n"]
+X-SODA2-Types: ["number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: ee161ec4ab69aac25034621620cf4832
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"n":"530"}]
