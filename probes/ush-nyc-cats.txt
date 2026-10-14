@@ -1,0 +1,71 @@
+URL: https://data.cityofnewyork.us/resource/usep-8jbt.json?$select=building_class_category%2Ccount(*)%20as%20n&$group=building_class_category&$order=building_class_category%20ASC&$limit=100
+Fetched: 2026-10-14T14:15:32Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2952
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:32 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42NzE1N180XzY1eEZZbldPNmp3elo3ZmFEcEJ0Yjl3TDJabGFj---gzipuqN98o_p536_jc03rjYXZig3L38--gzip--gzip"
+X-SODA2-Fields: ["building_class_category","n"]
+X-SODA2-Types: ["text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+X-SODA2-Secondary-Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+Last-Modified: Tue, 15 Sep 2026 15:56:41 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 9ed21b6dbc72d17179ee49f6d0a06f84
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"building_class_category":"01 ONE FAMILY DWELLINGS","n":"17304"}
+,{"building_class_category":"02 TWO FAMILY DWELLINGS","n":"14955"}
+,{"building_class_category":"03 THREE FAMILY DWELLINGS","n":"4242"}
+,{"building_class_category":"04 TAX CLASS 1 CONDOS","n":"1544"}
+,{"building_class_category":"05 TAX CLASS 1 VACANT LAND","n":"883"}
+,{"building_class_category":"06 TAX CLASS 1 - OTHER","n":"165"}
+,{"building_class_category":"07 RENTALS - WALKUP APARTMENTS","n":"2829"}
+,{"building_class_category":"08 RENTALS - ELEVATOR APARTMENTS","n":"525"}
+,{"building_class_category":"09 COOPS - WALKUP APARTMENTS","n":"2384"}
+,{"building_class_category":"10 COOPS - ELEVATOR APARTMENTS","n":"13279"}
+,{"building_class_category":"11 SPECIAL CONDO BILLING LOTS","n":"185"}
+,{"building_class_category":"12 CONDOS - WALKUP APARTMENTS","n":"918"}
+,{"building_class_category":"13 CONDOS - ELEVATOR APARTMENTS","n":"13536"}
+,{"building_class_category":"14 RENTALS - 4-10 UNIT","n":"608"}
+,{"building_class_category":"15 CONDOS - 2-10 UNIT RESIDENTIAL","n":"1555"}
+,{"building_class_category":"16 CONDOS - 2-10 UNIT WITH COMMERCIAL UNIT","n":"95"}
+,{"building_class_category":"17 CONDO COOPS","n":"1318"}
+,{"building_class_category":"21 OFFICE BUILDINGS","n":"349"}
+,{"building_class_category":"22 STORE BUILDINGS","n":"826"}
+,{"building_class_category":"25 LUXURY HOTELS","n":"16"}
+,{"building_class_category":"26 OTHER HOTELS","n":"43"}
+,{"building_class_category":"27 FACTORIES","n":"155"}
+,{"building_class_category":"28 COMMERCIAL CONDOS","n":"100"}
+,{"building_class_category":"29 COMMERCIAL GARAGES","n":"570"}
+,{"building_class_category":"30 WAREHOUSES","n":"263"}
+,{"building_class_category":"31 COMMERCIAL VACANT LAND","n":"321"}
+,{"building_class_category":"32 HOSPITAL AND HEALTH FACILITIES","n":"46"}
+,{"building_class_category":"33 EDUCATIONAL FACILITIES","n":"50"}
+,{"building_class_category":"34 THEATRES","n":"8"}
+,{"building_class_category":"35 INDOOR PUBLIC AND CULTURAL FACILITIES","n":"24"}
+,{"building_class_category":"36 OUTDOOR RECREATIONAL FACILITIES","n":"12"}
+,{"building_class_category":"37 RELIGIOUS FACILITIES","n":"91"}
+,{"building_class_category":"38 ASYLUMS AND HOMES","n":"15"}
+,{"building_class_category":"39 TRANSPORTATION FACILITIES","n":"1"}
+,{"building_class_category":"40 SELECTED GOVERNMENTAL FACILITIES","n":"4"}
+,{"building_class_category":"41 TAX CLASS 4 - OTHER","n":"111"}
+,{"building_class_category":"42 CONDO CULTURAL/MEDICAL/EDUCATIONAL/ETC","n":"29"}
+,{"building_class_category":"43 CONDO OFFICE BUILDINGS","n":"328"}
+,{"building_class_category":"44 CONDO PARKING","n":"1490"}
+,{"building_class_category":"45 CONDO HOTELS","n":"407"}
+,{"building_class_category":"46 CONDO STORE BUILDINGS","n":"307"}
+,{"building_class_category":"47 CONDO NON-BUSINESS STORAGE","n":"415"}
+,{"building_class_category":"48 CONDO TERRACES/GARDENS/CABANAS","n":"20"}
+,{"building_class_category":"49 CONDO WAREHOUSES/FACTORY/INDUS","n":"19"}]
