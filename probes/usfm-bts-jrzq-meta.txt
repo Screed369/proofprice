@@ -1,0 +1,217 @@
+URL: https://data.bts.gov/api/views/jrzq-3mec.json
+Fetched: 2026-10-14T15:53:41Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 6107
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:53:41 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 6c1887a7f4c85af4a49b0bcd56964411
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{
+  "id" : "jrzq-3mec",
+  "name" : "AFF - Average Air Fare by Carrier",
+  "assetType" : "chart",
+  "attribution" : "U.S. DOT/Bureau of Transportation Statistics",
+  "attributionLink" : "https://transtats.bts.gov/Fields.asp?gnoyr_VQ=FHK",
+  "averageRating" : 0,
+  "category" : "Aviation",
+  "createdAt" : 1729192989,
+  "description" : "Average domestic market air fare by carrier.",
+  "diciBackend" : false,
+  "displayType" : "visualization_canvas_chart",
+  "downloadCount" : 31,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "USGOV_WORKS",
+  "locked" : false,
+  "modifyingViewUid" : "gjp5-nh2u",
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 42420332,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1787954026,
+  "publicationGroup" : 19669422,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1787246266,
+  "rowsUpdatedBy" : "y96g-mvgi",
+  "tableId" : 20529732,
+  "totalTimesRated" : 0,
+  "viewCount" : 889,
+  "viewLastModified" : 1790681405,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1734112549,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 7651970,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1734023449,
+    "targetAudience" : "public",
+    "workflowId" : 2520,
+    "reviewer" : {
+      "id" : "y96g-mvgi",
+      "displayName" : "Robinson, Ramond (OST)"
+    },
+    "submissionDetails" : {
+      "permissionType" : "read"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1734112549,
+      "failureCount" : 0,
+      "startedAt" : 1734112549,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "f8pz-h9c6",
+      "displayName" : "Nicolas Hinze"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ ],
+  "displayFormat" : {
+    "visualizationCanvasMetadata" : {
+      "vifs" : [ {
+        "configuration" : {
+          "viewSourceDataLink" : true,
+          "showDimensionLabels" : true,
+          "xAxisScalingMode" : "pan",
+          "axisLabels" : {
+            "top" : "Average Market Air Fare (Current $)"
+          },
+          "showValueLabels" : false,
+          "dimensionLabelAreaSize" : 299
+        },
+        "series" : [ {
+          "color" : {
+            "secondary" : "#e55100",
+            "highlight" : "#cccccc",
+            "primary" : "#3f51b5"
+          },
+          "type" : "barChart",
+          "dataSource" : {
+            "measure" : {
+              "columnName" : "average_market_fare_real"
+            },
+            "orderBy" : {
+              "parameter" : "measure",
+              "sort" : "desc"
+            },
+            "filters" : [ {
+              "dataTypeName" : "date",
+              "columns" : [ {
+                "fieldName" : "year_quarter",
+                "datasetUid" : "gjp5-nh2u"
+              } ],
+              "function" : "timeRange",
+              "arguments" : {
+                "calendarDateFilterType" : "Range",
+                "start" : "2026-01-01",
+                "end" : "2026-01-01"
+              },
+              "isDrilldown" : false,
+              "reactKey" : "10",
+              "isHidden" : false
+            } ],
+            "type" : "socrata.soql",
+            "datasetUid" : "gjp5-nh2u",
+            "dimension" : {
+              "columnName" : "carrier_name"
+            }
+          }
+        } ],
+        "format" : {
+          "type" : "visualization_interchange_format",
+          "version" : 10
+        },
+        "description" : "",
+        "id" : "d17cc7e0-dd83-4e93-b45f-578170f6a643",
+        "title" : "Average Market (One Way) Air Fare by Carrier"
+      } ],
+      "filters" : [ {
+        "dataTypeName" : "date",
+        "columns" : [ {
+          "fieldName" : "year_quarter",
+          "datasetUid" : "gjp5-nh2u"
+        } ],
+        "function" : "timeRange",
+        "arguments" : {
+          "calendarDateFilterType" : "Range",
+          "start" : "2026-01-01",
+          "end" : "2026-01-01"
+        },
+        "isDrilldown" : false,
+        "reactKey" : "10",
+        "isHidden" : false
+      } ],
+      "version" : 1
+    }
+  },
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "Public Domain U.S. Government",
+    "termsLink" : "https://www.usa.gov/government-works"
+  },
+  "metadata" : {
+    "custom_fields" : {
+      "Common Core" : {
+        "Contact Email" : "BTSAviationFacts@dot.gov",
+        "Language" : "en-US",
+        "Contact Name" : "BTS Aviation Facts and Figures Program",
+        "License" : "http://www.usa.gov/publicdomain/label/1.0/",
+        "Program Code" : "021:053",
+        "Publisher" : "Bureau of Transportation Statistics",
+        "Is Quality Data" : "true",
+        "Bureau Code" : "021:00",
+        "Public Access Level" : "public"
+      },
+      "Common Core 3" : {
+        "Contact Email" : "BTSAviationFacts@dot.gov",
+        "Language" : "en-US",
+        "Contact Name" : "BTS Aviation Facts and Figures Program",
+        "Program Code" : "021:053",
+        "Publisher" : "Bureau of Transportation Statistics",
+        "Bureau Code" : "021:00",
+        "Public Access Level" : "public"
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "th5g-u2v6",
+    "displayName" : "BTS Aviation Facts and Figures Program",
+    "screenName" : "BTS Aviation Facts and Figures Program",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "th5g-u2v6",
+    "displayName" : "BTS Aviation Facts and Figures Program",
+    "screenName" : "BTS Aviation Facts and Figures Program",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+  },
+  "tags" : [ "aviation facts & figures", "aviation", "air carriers", "airfare" ],
+  "flags" : [ "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}
