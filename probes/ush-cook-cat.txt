@@ -1,0 +1,231 @@
+URL: https://api.us.socrata.com/api/catalog/v1?ids=wvhk-k5uv&domains=datacatalog.cookcountyil.gov
+Fetched: 2026-10-14T14:15:49Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 9387
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:49 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 15000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Assessor - Parcel Sales",
+            "id" : "wvhk-k5uv",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "<b>Update 10/31/2023:</b> Sales are no longer filtered out of this data set based on deed type, sale price, or recency of sale for a given PIN with the same price. If users wish to recreate the former filtering schema they should set <i>sale_filter_same_sale_within_365</i>, <i>sale_filter_less_than_10k</i>, and <i>sale_filter_deed_type</i> to False.\n\nParcel sales for real property in Cook County, from 1999 to present. The Assessor's Office uses this data in its modeling to estimate the fair market value of unsold properties.\n\nWhen working with Parcel Index Numbers (PINs) make sure to zero-pad them to 14 digits. Some datasets may lose leading zeros for PINs when downloaded.\n\nSale document numbers correspond to those of the Cook County Clerk, and can be used on the <a href=\"https://ccrd.cookcountyclerkil.gov/i2/default.aspx\">Clerk's website</a> to find more information about each sale.\n\nNOTE: These sales <i>are</i> filtered, but likely include non-arms-length transactions - sales less than $10,000 along with quit claims, executor deeds, beneficial interests are excluded.  While the Data Department will upload what it has access to semi-monthly, sales are reported on a lag, with many records not populating until months after their official recording date.\n\nCurrent property class codes, their levels of assessment, and descriptions can be found <a href=\"https://prodassets.cookcountyassessor.com/s3fs-public/form_documents/classcode.pdf\">on the Assessor's website</a>. Note that class codes details can change across time.\n\nFor more information on the sourcing of attached data and the preparation of this dataset, see the <a href=\"https://github.com/ccao-data/wiki/blob/master/SOPs/Open-Data.md\">Assessor's Standard Operating Procedures for Open Data</a> on GitHub.\n\n<a href=\"https://datacatalog.cookcountyil.gov/stories/s/gzdr-q7c4\">Read about the Assessor's 2025 Open Data Refresh.</a>",
+            "attribution" : "Cook County Assessor's Office",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-01T12:25:03.000Z",
+            "createdAt" : "2022-04-18T13:37:35.000Z",
+            "metadata_updated_at" : "2026-07-09T18:23:14.000Z",
+            "data_updated_at" : "2026-10-01T12:25:03.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 712,
+                "page_views_last_month" : 3028,
+                "page_views_total" : 51800,
+                "page_views_last_week_log" : 9.477758266443889,
+                "page_views_last_month_log" : 11.564625862795372,
+                "page_views_total_log" : 15.660692328448064
+              },
+            "columns_name" :
+              [
+                "class",
+                "sale_buyer_name",
+                "row_id",
+                "year",
+                "sale_date",
+                "sale_price",
+                "sale_filter_same_sale_within_365",
+                "sale_document_num",
+                "mydec_deed_type",
+                "sale_type",
+                "sale_filter_less_than_10k",
+                "num_parcels_sale",
+                "sale_seller_name",
+                "is_multisale",
+                "is_mydec_date",
+                "pin",
+                "township_code",
+                "sale_deed_type",
+                "sale_filter_deed_type",
+                "neighborhood_code"
+              ],
+            "columns_field_name" :
+              [
+                "class",
+                "buyer_name",
+                "row_id",
+                "year",
+                "sale_date",
+                "sale_price",
+                "sale_filter_same_sale_within_365",
+                "doc_no",
+                "mydec_deed_type",
+                "sale_type",
+                "sale_filter_less_than_10k",
+                "num_parcels_sale",
+                "seller_name",
+                "is_multisale",
+                "is_mydec_date",
+                "pin",
+                "township_code",
+                "deed_type",
+                "sale_filter_deed_type",
+                "nbhd"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Checkbox",
+                "Text",
+                "Text",
+                "Text",
+                "Checkbox",
+                "Number",
+                "Text",
+                "Checkbox",
+                "Checkbox",
+                "Text",
+                "Text",
+                "Text",
+                "Checkbox",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Property class",
+                "Sale buyer name",
+                "Unique row key for API",
+                "Year",
+                "Sale date (recorded, not executed)",
+                "Sale price",
+                "Remove sale with the same value (for the same PIN) within 365 days",
+                "Sale document number. Corresponds to Clerk's document number",
+                "Deed type from MyDec, more granular than CCAO deed type.",
+                "Sale type",
+                "Indicator for whether sale is less than $10K FMW",
+                "The number of parcels that were part of the sale",
+                "Sale seller name",
+                "Indicates whether a parcel was sold individually or as part of a larger group of PINs",
+                "Indicates whether the sale date has been overwritten with a more precise value from IDOR (Illinois Department of Revenue). In the past the Assessor's ingest process truncated sale dates to the first of the month. Not all sales can be updated with dates from IDOR.",
+                "Parcel Identification Number (PIN)",
+                "Township code",
+                "Sale deed type",
+                "Indicator for quit claim, executor, beneficiary and missing deed types",
+                "Assessor neighborhood code, first two digits are township, last three are neighborhood"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                { "noCommas" : "true" },
+                { "view" : "date_monthdy" },
+                { "precisionStyle" : "currency" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 95634,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2025-02-13T22:25:52.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Property & Taxation",
+            "domain_tags" : [ "property tax", "cook county assessor" ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Department_Publishing-Department",
+                  "value" : "Data Department"
+                },
+                {
+                  "key" : "Publishing-Details_Publishing-frequency",
+                  "value" : "Bi-weekly"
+                },
+                {
+                  "key" : "Publishing-Details_Data-change-frequency",
+                  "value" : "Bi-weekly"
+                },
+                {
+                  "key" : "Source-Details_Source-System",
+                  "value" : "iasWorld"
+                },
+                {
+                  "key" : "Detailed-Descriptive_Geographic-unit",
+                  "value" : "Parcel"
+                },
+                {
+                  "key" : "Detailed-Descriptive_Temporal-coverage",
+                  "value" : "1999-Present"
+                },
+                {
+                  "key" : "Detailed-Descriptive_Geographic-coverage",
+                  "value" : "Countywide"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "datacatalog.cookcountyil.gov" },
+        "permalink" : "https://datacatalog.cookcountyil.gov/d/wvhk-k5uv",
+        "link" : "https://datacatalog.cookcountyil.gov/Property-Taxation/Assessor-Parcel-Sales/wvhk-k5uv",
+        "owner" :
+          {
+            "id" : "s6b5-uz7b",
+            "user_type" : "interactive",
+            "display_name" : "Cook County Assessor's Office Data Department"
+          },
+        "creator" :
+          {
+            "id" : "s6b5-uz7b",
+            "user_type" : "interactive",
+            "display_name" : "Cook County Assessor's Office Data Department"
+          }
+      }
+    ],
+  "resultSetSize" : 1,
+  "timings" : { "serviceMillis" : 17, "searchMillis" : [ 2, 3 ] },
+  "warnings" : []
+}
