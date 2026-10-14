@@ -1,0 +1,123 @@
+URL: https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadCollection?language=en
+Fetched: 2026-10-14T19:10:12Z from GitHub Actions
+Status, type, bytes: 200 application/json 45677159
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 19:10:11 GMT
+content-type: application/json
+cache-control: no-cache
+vary: Origin
+server: n/a
+access-control-allow-origin: 
+access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept, subscription_key,MSAL
+access-control-allow-credentials: true
+www-authenticate: Anonymous
+
+=== FILE TYPE: Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 3000 BYTES
+{
+  "class": "collection",
+  "link": {
+    "item": [
+      {
+        "dimension": {
+          "STATISTIC": {
+            "category": {},
+            "label": "STATISTIC",
+            "id": "STATISTIC"
+          },
+          "TLIST(A1)": {
+            "category": {
+              "index": [
+                "2002"
+              ],
+              "label": {
+                "2002": "2002"
+              }
+            },
+            "label": "CensusYear"
+          },
+          "C02779V03348": {
+            "category": {},
+            "label": "Province County or City"
+          }
+        },
+        "extension": {
+          "copyright": {
+            "name": "Central Statistics Office, Ireland",
+            "code": "CSO",
+            "href": "https://www.cso.ie/"
+          },
+          "exceptional": false,
+          "language": {
+            "code": "en",
+            "name": "English"
+          },
+          "matrix": "B0101"
+        },
+        "href": "https://dev-ws2.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/B0101/JSON-stat/2.0/en",
+        "id": [
+          "TLIST(A1)",
+          "STATISTIC",
+          "C02779V03348"
+        ],
+        "label": "2002 Population and Percentage Change 1996 and 2002",
+        "link": {
+          "alternate": [
+            {
+              "type": "text/csv",
+              "href": "https://dev-ws2.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/B0101/CSV/1.0/en"
+            },
+            {
+              "type": "application/json",
+              "href": "https://dev-ws2.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/B0101/JSON-stat/1.0/en"
+            },
+            {
+              "type": "application/octet-stream",
+              "href": "https://dev-ws2.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/B0101/PX/2013/en"
+            },
+            {
+              "type": "application/base64",
+              "href": "https://dev-ws2.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/B0101/XLSX/2007/en"
+            }
+          ]
+        },
+        "role": {
+          "metric": [
+            "STATISTIC"
+          ],
+          "time": [
+            "TLIST(A1)"
+          ]
+        },
+        "updated": "2020-05-01T11:00:00Z"
+      },
+      {
+        "dimension": {
+          "STATISTIC": {
+            "category": {},
+            "label": "STATISTIC",
+            "id": "STATISTIC"
+          },
+          "TLIST(A1)": {
+            "category": {
+              "index": [
+                "1996"
+              ],
+              "label": {
+                "1996": "1996"
+              }
+            },
+            "label": "CensusYear"
+          },
+          "C02704V03272": {
+            "category": {},
+            "label": "Principal Economic Status"
+          },
+          "C02199V02655": {
+            "category": {},
+            "label": "Sex"
+          },
+          "C02325V02801":
