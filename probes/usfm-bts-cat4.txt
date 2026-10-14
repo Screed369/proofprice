@@ -1,0 +1,368 @@
+URL: https://data.bts.gov/api/catalog/v1?q=air%20fare%20airport&limit=12&only=datasets,charts
+Fetched: 2026-10-14T15:55:28Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 12777
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:55:28 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: aa1c8135e3dbbb1728944cb9ce6191e5
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Consumer Airfare Report: Table 7 - Fare Premiums for Select Cities with More Than 20 Passengers per Day",
+            "id" : "d6nc-s8v6",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Provides fare premiums for airports in the top 1,000 city pairs, and demonstrates the impact of low-fare service and hub domination on fare levels.  \r\nAll records are aggregated as directionless city pair markets.  Air traffic in each direction is combined.  https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "attribution" : "Department of Transportation Office of the Assistant Secretary for Aviation and International Affairs",
+            "attribution_link" : "https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "contact_email" : "Randall.Keizer@dot.gov",
+            "type" : "dataset",
+            "updatedAt" : "2026-09-03T17:58:42.000Z",
+            "createdAt" : "2017-05-01T20:07:04.000Z",
+            "metadata_updated_at" : "2026-09-03T17:58:41.000Z",
+            "data_updated_at" : "2026-09-03T17:58:42.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 6,
+                "page_views_last_month" : 30,
+                "page_views_total" : 21953,
+                "page_views_last_week_log" : 2.807354922057604,
+                "page_views_last_month_log" : 4.954196310386876,
+                "page_views_total_log" : 14.422196201060244
+              },
+            "columns_name" :
+              [
+                "Year",
+                "LHPax",
+                "LHMkts",
+                "SHAvgHubFare",
+                "SHPerLFMkts",
+                "TotalPerPrem",
+                "TotalAvgHubFare",
+                "TotalFaredPax",
+                "apt",
+                "airportid",
+                "cityname",
+                "citymarketid",
+                "SHMkts",
+                "quarter",
+                "tbl",
+                "LHPerPrem",
+                "SHPerPrem",
+                "SHPax",
+                "TotalPerLFMkts",
+                "TotalMkts",
+                "US States",
+                "tbl7pk",
+                "LHAvgHubFare",
+                "LHPerLFMkts"
+              ],
+            "columns_field_name" :
+              [
+                "year",
+                "lhpax",
+                "lhmkts",
+                "shavghubfare",
+                "shperlfmkts",
+                "totalperprem",
+                "totalavghubfare",
+                "totalfaredpax",
+                "apt",
+                "airportid",
+                "cityname",
+                "citymarketid",
+                "shmkts",
+                "quarter",
+                "tbl",
+                "lhperprem",
+                "shperprem",
+                "shpax",
+                "totalperlfmkts",
+                "totalmkts",
+                ":@computed_region_28hd_vqqn",
+                "tbl7pk",
+                "lhavghubfare",
+                "lhperlfmkts"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "Data Year",
+                "Passengers in long haul markets",
+                "Count of long haul markets",
+                "Market average fare in short haul markets",
+                "Percent of passengers in short haul markets with Low Cost Carrier service",
+                "Percent fare premium (discount) in in all markets",
+                "Market average fare in all markets",
+                "Passengers in all markets",
+                "Airport code",
+                "Airport ID is an identification number assigned by US DOT\nto identify a airport.",
+                "City used to consolidate airports serving the same city market",
+                "City market ID is an identification number assigned by US DOT to identify a city makret.  Use this field to consolidate airports serving the same city market",
+                "Count of short haul markets",
+                "Data Quarter",
+                "Name of the data table",
+                "Percent fare premium (discount) in long haul markets",
+                "Percent fare premium (discount) in short haul markets",
+                "Passengers in short haul markets ",
+                "Percent of passengers in markets with Low Cost Carrier service",
+                "Count of all markets",
+                "",
+                "Primary Key for Table 7;  Unique Record",
+                "Market average fare in long haul markets",
+                "Percent of passengers in long haul markets with Low Cost Carrier service"
+              ],
+            "columns_format" :
+              [
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precision" : "2",
+                  "align" : "center",
+                  "currencyStyle" : "USD",
+                  "humane" : "false",
+                  "precisionStyle" : "currency"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {
+                  "precision" : "2",
+                  "align" : "center",
+                  "currencyStyle" : "USD",
+                  "humane" : "false",
+                  "precisionStyle" : "currency"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "center"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {},
+                {},
+                {
+                  "noCommas" : "false",
+                  "precision" : "2",
+                  "align" : "center",
+                  "currencyStyle" : "USD",
+                  "precisionStyle" : "standard"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                }
+              ],
+            "download_count" : 36618,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2017-10-31T18:59:04.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Aviation",
+            "domain_tags" :
+              [
+                "city pair",
+                "table 7",
+                "consumer airfare report",
+                "fare levels",
+                "fare premium",
+                "aviation policy",
+                "aviation",
+                "fares",
+                "office of aviation analysis",
+                "airfares"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "Randall.Keizer@dot.gov"
+                },
+                {
+                  "key" : "Common-Core_License",
+                  "value" : "http://www.usa.gov/publicdomain/label/1.0/"
+                },
+                { "key" : "Common-Core_Program-Code", "value" : "021:000" },
+                {
+                  "key" : "Common-Core_Public-Access-Level",
+                  "value" : "public"
+                },
+                { "key" : "Common-Core_Is-Quality-Data", "value" : "true" },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "Office of the Secretary of Transportation"
+                },
+                { "key" : "Common-Core_Update-Frequency", "value" : "R/P3M" },
+                { "key" : "Common-Core_Bureau-Code", "value" : "021:04" },
+                {
+                  "key" : "Common-Core_Contact-Name",
+                  "value" : "Randall Keizer"
+                },
+                {
+                  "key" : "Common-Core-3_Contact-Email",
+                  "value" : "Randall.Keizer@dot.gov"
+                },
+                { "key" : "Common-Core-3_Rights", "value" : "public" },
+                { "key" : "Common-Core-3_Program-Code", "value" : "021:000" },
+                {
+                  "key" : "Common-Core-3_Publisher",
+                  "value" : "Office of the Secretary of Transportation"
+                },
+                { "key" : "Common-Core-3_Bureau-Code", "value" : "021:04" },
+                {
+                  "key" : "Common-Core-3_Contact-Name",
+                  "value" : "Randall Keizer"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "datahub.transportation.gov",
+            "license" : "Public Domain U.S. Government"
+          },
+        "permalink" : "https://datahub.transportation.gov/d/d6nc-s8v6",
+        "link" : "https://datahub.transportation.gov/Aviation/Consumer-Airfare-Report-Table-7-Fare-Premiums-for-/d6nc-s8v6",
+        "owner" :
+          {
+            "id" : "yucm-c89i",
+            "user_type" : "team",
+            "display_name" : "OSTX_X50 Data Team"
+          },
+        "creator" :
+          {
+            "id" : "yucm-c89i",
+            "user_type" : "team",
+            "display_name" : "OSTX_X50 Data Team"
+          }
+      }
+    ],
+  "resultSetSize" : 1,
+  "timings" : { "serviceMillis" : 34, "searchMillis" : [ 5, 11 ] },
+  "warnings" : []
+}
