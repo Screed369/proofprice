@@ -1,0 +1,20 @@
+URL: https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer/12/query?where=STATE%3D%2706%27&outFields=NAME,STATE,COUNTY,AREALAND&returnGeometry=false&orderByFields=COUNTY&resultRecordCount=3&f=json
+Fetched: 2026-10-14T13:17:11Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 84
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: max-age=0,must-revalidate
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+Vary: Origin, Accept-Encoding
+ETag: "9cd70d4d"
+Content-Type: application/json;charset=UTF-8
+Content-Length: 84
+Date: Wed, 14 Oct 2026 13:17:11 GMT
+Set-Cookie: TS01d8b8de=01283c52a457f523b27bb43cf90a71088f759052cfc5888d0a7edb722006628d0be1774994af44e2b5ad1a3fe197d0c06b88815f4d; Path=/; Domain=.tigerweb.geo.census.gov; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"error":{"code":400,"message":"Invalid or missing input parameters.","details":[]}}
