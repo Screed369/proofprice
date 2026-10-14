@@ -1,0 +1,59 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/83625NED/TypedDataSet?$filter=(RegioS%20eq%20'GM0363'%20or%20RegioS%20eq%20'NL01%20%20')%20and%20Perioden%20ge%20'2020JJ00'&$orderby=Perioden%20desc
+Fetched: 2026-10-14T15:53:06Z from GitHub Actions
+Status, type, bytes: 200 application/json 1322
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 14 Oct 2026 15:53:05 GMT
+Content-Length: 1322
+TXID: 0117e385
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=011d312e-a561-1acf-9678-0050569bed16_3361021468_0742468481_00000000008608277381; Path=/; Expires=Wed, 14-Oct-2026 15:53:20 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/83625NED/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":25,"RegioS":"NL01  ","Perioden":"2020JJ00","GemiddeldeVerkoopprijs_1":334488
+    },{
+      "ID":26,"RegioS":"NL01  ","Perioden":"2021JJ00","GemiddeldeVerkoopprijs_1":386714
+    },{
+      "ID":27,"RegioS":"NL01  ","Perioden":"2022JJ00","GemiddeldeVerkoopprijs_1":428591
+    },{
+      "ID":28,"RegioS":"NL01  ","Perioden":"2023JJ00","GemiddeldeVerkoopprijs_1":416153
+    },{
+      "ID":29,"RegioS":"NL01  ","Perioden":"2024JJ00","GemiddeldeVerkoopprijs_1":450985
+    },{
+      "ID":30,"RegioS":"NL01  ","Perioden":"2025JJ00","GemiddeldeVerkoopprijs_1":479527
+    },{
+      "ID":1358,"RegioS":"GM0363","Perioden":"2020JJ00","GemiddeldeVerkoopprijs_1":510919
+    },{
+      "ID":1359,"RegioS":"GM0363","Perioden":"2021JJ00","GemiddeldeVerkoopprijs_1":569890
+    },{
+      "ID":1360,"RegioS":"GM0363","Perioden":"2022JJ00","GemiddeldeVerkoopprijs_1":620954
+    },{
+      "ID":1361,"RegioS":"GM0363","Perioden":"2023JJ00","GemiddeldeVerkoopprijs_1":568161
+    },{
+      "ID":1362,"RegioS":"GM0363","Perioden":"2024JJ00","GemiddeldeVerkoopprijs_1":617647
+    },{
+      "ID":1363,"RegioS":"GM0363","Perioden":"2025JJ00","GemiddeldeVerkoopprijs_1":630621
+    }
+  ]
+}
