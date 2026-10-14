@@ -1,4 +1,18 @@
-STATUS: WAITING_FOR_TXT
-Run: 38621456554   Started: 2026-10-14T19:10:52Z
-Add this TXT record at the apex of proofprice.com (name empty / @):
+STATUS: PUBLISHED
+Run: 38621456554   Finished: 2026-10-14T19:12:49Z
+You can now delete the TXT record v=MCPv1; k=ed25519; p=55Lq+1lT7/xjxCqf9gdjaB3K6vdCeNi+1As0BUSRlJg=
+
+=== LOGIN
+Logging in with dns...
+Signing in process using key algorithm ed25519
+Expected proof record:
 v=MCPv1; k=ed25519; p=55Lq+1lT7/xjxCqf9gdjaB3K6vdCeNi+1As0BUSRlJg=
+✓ Successfully logged in
+
+=== PUBLISH
+Publishing to https://registry.modelcontextprotocol.io...
+✓ Successfully published
+✓ Server com.proofprice/pricepaid version 0.4.0
+
+=== REGISTRY SEARCH com.proofprice
+{"servers":[{"server":{"$schema":"https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json","name":"com.proofprice/pricepaid","description":"Real prices actually paid (not asking prices): home sales and fuel, with sample size and licence.","title":"ProofPrice","version":"0.3.0","websiteUrl":"https://proofprice.com","remotes":[{"type":"streamable-http","url":"https://proofprice.com/api/mcp"}]},"_meta":{"io.modelcontextprotocol.registry/official":{"status":"active","statusChangedAt":"2026-10-14T06:30:21.932544Z","publishedAt":"2026-10-14T06:30:21.932544Z","updatedAt":"2026-10-14T06:30:21.932544Z","isLatest":false}}},{"server":{"$schema":"https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json","name":"com.proofprice/pricepaid","description":"Prices people actually paid, from official open data: homes, rents, fuel, energy, food, medicines.","title":"ProofPrice","repository":{"url":"https://github.com/Screed369/proofprice-mcp","source":"github"},"version":"0.4.0","websiteUrl":"https://proofprice.com","remotes":[{"type":"streamable-http","url":"https://proofprice.com/api/mcp"}]},"_meta":{"io.modelcontextprotocol.registry/official":{"status":"active","statusChangedAt":"2026-10-14T19:12:31.634611Z","publishedAt":"2026-10-14T19:12:31.634611Z","updatedAt":"2026-10-14T19:12:31.634611Z","isLatest":true}}}],"metadata":{"count":2}}
