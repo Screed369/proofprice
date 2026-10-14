@@ -94,7 +94,8 @@ test("REST query parsing: numbers are coerced, aliases pass through", () => {
 
 test("routing: unknown countries and fuels get a clear 400 message", async () => {
   const fuel = categoryById("fuel")!;
-  await assert.rejects(runCategory(fuel, { country: "XX", fuel: "diesel" }), /Live fuel prices are available for ES, FR and IT so far\. Not yet: XX/);
+  // The list of covered countries grows with every fuel source: check that the known ones are present, not the exact list.
+  await assert.rejects(runCategory(fuel, { country: "XX", fuel: "diesel" }), /Live fuel prices are available for .*\bES\b.*\bFR\b.*\bIT\b.* so far\. Not yet: XX/);
   await assert.rejects(runCategory(fuel, { country: "ES", fuel: "kerosene" }), /fuel must be one of/);
   await assert.rejects(runCategory(fuel, {}), /country is required/);
   const hs = categoryById("home-sales")!;

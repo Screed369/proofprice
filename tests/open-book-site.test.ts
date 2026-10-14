@@ -336,7 +336,11 @@ test("library health: OK, late, error and no data are told apart", () => {
 test("the real library status covers every collected source", () => {
   const cards = sourceCards().filter((c) => c.collected);
   assert.ok(cards.length >= 4);
-  for (const c of cards) assert.ok(c.library, `${c.id} has library/${c.id}/meta.json`);
+  // A source added since the last harvest has no library/<id>/meta.json until the collector's first run on main
+  // (the collector runs `npm test` first, so main must be able to hold such a source). Status reports it as "no-data".
+  const held = cards.filter((c) => c.library);
+  assert.ok(held.length >= 4, "the library holds at least the first collected sources");
+  for (const c of cards.filter((c) => !c.library)) assert.equal(libraryHealth(c, new Date()).health, "no-data", `${c.id} is reported as awaiting its first harvest`);
 });
 
 test("home page examples are real requests from the registry's example list", () => {
