@@ -7,10 +7,10 @@
 
 import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { readLatestDay, readMeta } from "../../lib/library/store";
+import { libraryRoot, readLatestDay, readMeta } from "../../lib/library/store";
 import { MIN_PUBLISH, summarise } from "../../lib/stats";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
-import { anchorOf, cityFiles, decodeCsv, download, fetchReleases, listZip, parseTable, readZipEntry, rocToIso, selectReleases, windowStart, PORTAL_URL, type Table } from "../tw-home-sales/moi";
+import { anchorOf, cityFiles, decodeCsv, download, fetchReleases, isResidentialUse, listZip, parseTable, readZipEntry, rocToIso, selectReleases, windowStart, PORTAL_URL, type Table } from "../tw-home-sales/moi";
 import { districtKey, type City, type District } from "../tw-home-sales/places";
 import { INFO as SALES_INFO, NATIONAL_AREA, PING_M2, WINDOWS, newStats, resolveTown, snapshotFromRows, type ParseStats, type Snapshot } from "../tw-home-sales/source";
 
@@ -30,11 +30,10 @@ export const INFO: SourceInfo = {
   attribution: SALES_INFO.attribution,
   homepage: PORTAL_URL,
   limits:
-    "Aggregates by city or county, district (鄉鎮市區), kind of home and number of bedrooms; never addresses or serial numbers. Only residential lettings (main use 住家用) of a home, with or without a parking space: apartments (住宅大樓 high-rise with lift, 華廈 mid-rise with lift, 公寓 walk-up, 套房 studio building) and houses (透天厝). " +
-    "Rents are monthly, in New Taiwan dollars, as declared. 'any' covers whole homes and self-contained studios (獨立套房); rooms let separately in a shared home (分租套房, 分租雅房) are a separate kind, 'room', and are in no other figure. Studios and open-plan homes with no separate bedroom count as 0 bedrooms; 5 means five or more. " +
-    "The rent is the monthly total declared, which includes the rent of a parking space let with the home. " +
-    "Left out: lettings through the social-housing programmes (社會住宅包租轉租 and 社會住宅代管), whose rents are set below market; lettings between relatives, employees or other special relationships; commercial, office and industrial lettings; land-only and parking-only lettings; and rooms let to several tenants on one contract (多人共同承租). A tenancy registered twice (same record number, or same address, day, rent and area) counts once. " +
-    "These are the rents of tenancies declared in the window, new and renewed, not asking rents. Windows are whole calendar months (12 or 24) ending at the last month that is at least 30 days older than the newest contract in the register. A district, kind or bedroom count with fewer than 5 tenancies in the window gets no figure. The rent per m² is the Ministry's monthly unit rent, per m² of registered building area (parking excluded). 1 ping = 3.3058 m².",
+    "Aggregates by city or county, district (鄉鎮市區), kind of home and number of bedrooms; never addresses or serial numbers. Only residential lettings of a home (main use 住家用, also written 集合住宅, 住宅 or 公寓), with or without a parking space: apartments (住宅大樓 high-rise with lift, 華廈 mid-rise with lift, 公寓 walk-up, 套房 studio building) and houses (透天厝). " +
+    "Rents are monthly, in New Taiwan dollars, as declared, and include the rent of a parking space let with the home. 'any' covers whole homes and self-contained studios (獨立套房); rooms let separately in a shared home (分租套房, 分租雅房) are a separate kind, 'room', and are in no other figure. Studios and open-plan homes with no separate bedroom count as 0 bedrooms; 5 means five or more. " +
+    "Left out: lettings through the social-housing sublease and management programmes (社會住宅包租轉租 and 社會住宅代管), which are about seven in ten of the residential lettings in the register and whose registered rent is the assessed market rent less a programme discount, so the figures describe the rest of the market (private lettings and ordinary sublets and agent-managed lettings); lettings between relatives, employees or other special relationships; commercial, mixed-use, office and industrial lettings; land-only and parking-only lettings; and rooms let to several tenants on one contract (多人共同承租). A tenancy registered twice (same record number, or same address, day, rent and area) counts once. " +
+    "These are the rents of tenancies declared in the window, new and renewed, not asking rents. Windows are whole calendar months (12 or 24) ending at the last month that is at least 30 days older than the newest contract in the register. A district, kind or bedroom count with fewer than 5 tenancies in the window gets no figure. The rent per m² is the Ministry's monthly unit rent per m² of registered building area (parking excluded where the register itemises it). 1 ping = 3.3058 m².",
 };
 
 // ---------- the register (pure) ----------
@@ -102,7 +101,7 @@ export function parseRentals(t: Table, city: string, o: { seen?: Set<string>; st
     if (!RENT_OBJECTS.has(r[iObj] ?? "")) { drop(o.stats, "not a letting of a building"); continue; }
     const building = buildingOf(r[iType] ?? "");
     if (!building) { drop(o.stats, "not a home building type"); continue; }
-    if ((r[iUse] ?? "").trim() !== "住家用") { drop(o.stats, "main use not residential"); continue; }
+    if (!isResidentialUse(r[iUse])) { drop(o.stats, "main use not residential"); continue; }
     if (iService >= 0 && (r[iService] ?? "").includes("社會住宅")) { drop(o.stats, "social housing programme"); continue; }
     const note = r[iNote] ?? "";
     if (note.includes("特殊關係")) { drop(o.stats, "special relationship"); continue; }
@@ -263,7 +262,7 @@ export function loadSnapshot(): Snapshot | null {
   const meta = readMeta(INFO.id);
   const day = readLatestDay(INFO.id);
   if (!meta || !day) return null;
-  const key = `${day.date}:${day.rows.length}:${meta.last_ok_at ?? ""}`;
+  const key = `${libraryRoot()}:${day.date}:${day.rows.length}:${meta.last_ok_at ?? ""}`;
   if (cache?.key === key) return cache.snap;
   const snap = snapshotFromRows(day.date, day.rows);
   cache = { key, snap };

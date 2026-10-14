@@ -67,6 +67,19 @@ export function anchorOf(newest: string): string {
   return monthEnd(daysBefore(newest, 30));
 }
 
+// ---------- what counts as a home ----------
+
+/**
+ * Is the main use (主要用途) residential? The register writes 住家用 for most homes, but rentals also say 集合住宅 (multi-family
+ * housing, 30% of residential lettings), 住宅, 公寓, 國民住宅 or "住宅、停車空間". Anything that also names a shop, business, industry,
+ * office, factory or farm (住商用, 店舖、住宅, 住工用, 工業社區...) is mixed or commercial use and is not counted.
+ */
+export function isResidentialUse(use: string | undefined): boolean {
+  const u = (use ?? "").trim();
+  if (!u || /[店商工辦廠農]/.test(u)) return false;
+  return /住家|住宅|公寓/.test(u);
+}
+
 // ---------- CSV ----------
 
 /** UTF-8 (with or without BOM); falls back to Big5, which older MOI files used. */
@@ -274,7 +287,7 @@ export function selectReleases(all: Release[], kind: "sales" | "rents", needFrom
       const e = end(r);
       return e === null || e >= needFrom;
     })
-    .sort((a, b) => (b.salesTo ?? seasonEndFromId(b.id) ?? "").localeCompare(a.salesTo ?? seasonEndFromId(a.id) ?? ""));
+    .sort((a, b) => (end(b) ?? "").localeCompare(end(a) ?? ""));
 }
 
 // ---------- downloads ----------

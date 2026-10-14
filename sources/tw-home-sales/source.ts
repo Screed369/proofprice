@@ -7,12 +7,12 @@
 
 import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { readLatestDay, readMeta } from "../../lib/library/store";
+import { libraryRoot, readLatestDay, readMeta } from "../../lib/library/store";
 import type { LibraryRow } from "../../lib/library/store";
 import { MIN_PUBLISH, summarise } from "../../lib/stats";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import {
-  CITY_BY_CODE, PORTAL_URL, anchorOf, cityFiles, daysBefore, decodeCsv, download, fetchReleases, listZip, parseTable, readZipEntry, rocToIso,
+  CITY_BY_CODE, PORTAL_URL, anchorOf, cityFiles, decodeCsv, download, fetchReleases, isResidentialUse, listZip, parseTable, readZipEntry, rocToIso,
   selectReleases, windowStart, type Table,
 } from "./moi";
 import { districtList, districtKey, findPlace, indexWithLibrary, placeLabel, type City, type District, type Place } from "./places";
@@ -39,10 +39,11 @@ export const INFO: SourceInfo = {
     "Medians and ranges are calculated by ProofPrice from the registered prices; this is not an endorsement by the Ministry of the Interior.",
   homepage: PORTAL_URL,
   limits:
-    "Aggregates by city or county, district (鄉鎮市區) and building type; never addresses, parcel numbers or serial numbers. Only completed residential sales of land with building, with or without a parking space, whose main use is residential (住家用): 住宅大樓 high-rise with lift (11+ floors), 華廈 mid-rise with lift (10 floors or fewer), 公寓 walk-up without lift (5 floors or fewer), 透天厝 house (and 套房 studio, counted in 'apartment'). " +
-    "Land-only, parking-only, commercial, office, industrial and farm sales are left out. Also left out are records whose remark (備註) flags a relatives/employees/co-owners/special-relationship deal, a presale or a deal registered as separate land and building cases (預售屋、或土地及建物分件登記案件), a government purchase or tender, an urgent sale, a debt-related sale, an unfinished shell (毛胚屋), a defective property, leasehold-right housing (地上權), an odd lot, redevelopment value, an unclaimed-estate auction, or a customs-affected sale. " +
-    "Prices are those declared when the deal is registered. The price is the total price registered, which includes a parking space bought with the home (the register does not always itemise it). The price per m² is the Ministry's unit price, which excludes parking and counts the whole registered building area including shared areas, so it is lower than the indoor price per m² that developers quote. A deal registered twice (same record number, or same address, day, price and area) counts once. 1 ping = 3.3058 m²." +
-    "Windows are whole calendar months (12 or 24) ending at the last month that is at least 30 days older than the newest deal in the register, because the newest weeks are always thin. A district or type with fewer than 5 qualifying sales in the window gets no figure. Presale prices (預售屋) are published separately by the Ministry and are not used here.",
+    "Aggregates by city or county, district (鄉鎮市區) and building type; never addresses, parcel numbers or serial numbers. These are sales of completed homes (presales are not included, see below): residential sales of land with building, with or without a parking space, whose main use is residential (住家用, also written 住宅, 集合住宅 or 公寓): 住宅大樓 high-rise with lift (11+ floors), 華廈 mid-rise with lift (10 floors or fewer), 公寓 walk-up without lift (5 floors or fewer), 透天厝 house (and 套房 studio, counted in 'apartment'). " +
+    "New homes sold from plan and deals registered as separate land and building cases carry the remark 預售屋、或土地及建物分件登記案件 (about four in ten residential records in the register) and are left out: the Ministry publishes presale prices separately, at the contract date, and a presale registered at completion carries a contract date long before. " +
+    "Land-only, parking-only, commercial, mixed-use (住商用), office, industrial and farm sales are also left out, as are records whose remark (備註) flags a relatives/employees/co-owners/special-relationship deal, a government purchase or tender, an urgent sale, a debt-related sale, an unfinished shell (毛胚屋), a defective property, leasehold-right housing (地上權), an odd lot, redevelopment value, or an unclaimed-estate auction. " +
+    "Prices are those declared when the deal is registered. The price is the total price registered, which includes a parking space bought with the home (the register does not always itemise it). The price per m² is the Ministry's unit price, which excludes parking and counts the whole registered building area including shared areas, so it is lower than the indoor price per m² that developers quote. A deal registered twice (same record number, or same address, day, price and area) counts once. 1 ping = 3.3058 m². " +
+    "Windows are whole calendar months (12 or 24) ending at the last month that is at least 30 days older than the newest deal in the register, because the newest weeks are always thin. A district or type with fewer than 5 qualifying sales in the window gets no figure.",
 };
 
 // ---------- the register (pure) ----------
@@ -123,7 +124,7 @@ export function parseSales(t: Table, city: string, o: { seen?: Set<string>; stat
     if (!SALE_OBJECTS.has(r[iObj] ?? "")) { drop(o.stats, "not a land-and-building sale"); continue; }
     const type = buildingTypeOf(r[iType] ?? "");
     if (!type) { drop(o.stats, "not a home building type"); continue; }
-    if ((r[iUse] ?? "").trim() !== "住家用") { drop(o.stats, "main use not residential"); continue; }
+    if (!isResidentialUse(r[iUse])) { drop(o.stats, "main use not residential"); continue; }
     const note = r[iNote] ?? "";
     if (REMARK_RELATIVES.some((k) => note.includes(k))) { drop(o.stats, "special relationship"); continue; }
     if (REMARK_PRESALE.some((k) => note.includes(k))) { drop(o.stats, "presale or separate registration"); continue; }
@@ -292,7 +293,7 @@ export function loadSnapshot(): Snapshot | null {
   const meta = readMeta(INFO.id);
   const day = readLatestDay(INFO.id);
   if (!meta || !day) return null;
-  const key = `${day.date}:${day.rows.length}:${meta.last_ok_at ?? ""}`;
+  const key = `${libraryRoot()}:${day.date}:${day.rows.length}:${meta.last_ok_at ?? ""}`;
   if (cache?.key === key) return cache.snap;
   const snap = snapshotFromRows(day.date, day.rows);
   cache = { key, snap };
@@ -457,7 +458,7 @@ export function twAnswer(snap: Snapshot, q: TwQuery): PriceAnswer {
     baseUrl: q.baseUrl,
     extra,
     describe: (x) =>
-      `Residential market sales of ${typeWords} in ${where.label} over the last ${w} months had a median registered price of ${money(x.median)}; typical range ${money(x.low)}–${money(x.high)}.` +
+      `Residential market sales (presales excluded) of ${typeWords} in ${where.label} over the last ${w} months had a median registered price of ${money(x.median)}; typical range ${money(x.low)}–${money(x.high)}.` +
       (m2 ? ` Per square metre of building area: median ${money(m2.median)} (about ${money(ping(m2.median))} per ping), typical range ${money(m2.low)}–${money(m2.high)}.` : "") +
       (taiwanCmp ? ` The Taiwan median for the same period is ${money(taiwanCmp.median_total_price)}.` : ""),
   });
