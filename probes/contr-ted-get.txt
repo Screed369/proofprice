@@ -1,0 +1,33 @@
+URL: https://api.ted.europa.eu/v3/notices/search?query=buyer-country%3DFRA&fields=notice-identifier&limit=2
+Fetched: 2026-10-14T15:42:40Z from GitHub Actions
+Status, type, bytes: 405 application/json 64
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 405 
+content-type: application/json
+date: Wed, 14 Oct 2026 15:42:40 GMT
+content-security-policy: default-src 'self' ted.europa.eu tedweb.api.ted.europa.eu api.ted.europa.eu europa.eu webtools.europa.eu jackson.webtools.europa.eu gisco-services.ec.europa.eu analytics.webanalytics.op.europa.eu dashboard.tech.ec.europa.eu *.token.awswaf.com *.captcha.awswaf.com *.captcha-sdk.awswaf.com blob: data: 'unsafe-inline' 'unsafe-eval'
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers
+vary: Origin
+expires: 0
+x-frame-options: DENY
+allow: POST
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+strict-transport-security: max-age=31536000; includeSubDomains
+strict-transport-security: max-age=31536000; includeSubDomains
+via: 1.1 9e22aa602f92b4c393fe61eab9c2a540.cloudfront.net (CloudFront), 1.1 e63c26242daa88b3b7a3470c9adbf2a8.cloudfront.net (CloudFront)
+x-amz-cf-pop: DUB2-P1
+x-cache: Error from cloudfront
+x-amz-cf-pop: PHX50-P2
+x-amz-cf-id: RIx9YaKGkxv1AKuC-adqzz1malX3t3nWHeCwV99iJN9NyABH2APq0g==
+vary: Origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"message":"Request method 'GET' is not supported","error":null}
