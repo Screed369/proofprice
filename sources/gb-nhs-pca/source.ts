@@ -423,7 +423,7 @@ export function buildGbAnswer(opts: {
 // ---------- fetching ----------
 
 function isNotFound(err: unknown): boolean {
-  return err instanceof SourceError && /HTTP 404/.test(err.message);
+  return err instanceof SourceError && (err.status === 404 || /HTTP 404/.test(err.message));
 }
 
 export async function gbMedicine(input: { medicine?: string; baseUrl?: string }, deps: { fetcher?: Fetcher; today?: string } = {}): Promise<PriceAnswer> {
