@@ -1,0 +1,94 @@
+URL: https://data.transportation.gov/api/views/metadata/v1/yj5y-b2ir
+Fetched: 2026-10-14T15:57:06Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 3199
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:57:06 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: fd459b77fe1f0ed75950e63940c391b0
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{
+  "id" : "yj5y-b2ir",
+  "name" : "Consumer Airfare Report: Table 6 - Contiguous State City-Pair Markets That Average At Least 10 Passengers Per Day",
+  "attribution" : "Department of Transportation Office of the Assistant Secretary for Aviation and International Affairs",
+  "attributionLink" : "https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+  "category" : "Aviation",
+  "createdAt" : "2017-04-11T16:27:29+0000",
+  "dataUpdatedAt" : "2026-09-03T17:51:21+0000",
+  "dataUri" : "https://datahub.transportation.gov/resource/yj5y-b2ir",
+  "description" : "Available on the internet only, this table is an expanded version of Table 1 that lists all city-pair markets in the contiguous United States that average at least 10 passengers each day.  All records are aggregated as directionless city pair markets.  All traffic traveling in both directions is added together.\r\nhttps://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+  "domain" : "datahub.transportation.gov",
+  "externalId" : null,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "license" : "Public Domain U.S. Government",
+  "metadataUpdatedAt" : "2026-09-03T17:51:18+0000",
+  "provenance" : "OFFICIAL",
+  "updatedAt" : "2026-09-03T17:51:18+0000",
+  "webUri" : "https://datahub.transportation.gov/d/yj5y-b2ir",
+  "approvals" : [ {
+    "reviewedAt" : 1495714161,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 801087,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1495714161,
+    "targetAudience" : "public",
+    "workflowId" : 568,
+    "reviewer" : {
+      "id" : "9ni7-629e",
+      "displayName" : "Daniel Morgan"
+    },
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "9ni7-629e",
+      "displayName" : "Daniel Morgan"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 5258
+  } ],
+  "customFields" : {
+    "Common Core" : {
+      "Contact Email" : "Randall.Keizer@dot.gov",
+      "Contact Name" : "Randall Keizer",
+      "Update Frequency" : "R/P3M",
+      "License" : "http://www.usa.gov/publicdomain/label/1.0/",
+      "Last Update" : "4/25/2017",
+      "Program Code" : "021:058",
+      "Publisher" : "Office of the Secretary of Transportation",
+      "Is Quality Data" : "true",
+      "Bureau Code" : "021:04",
+      "Public Access Level" : "public"
+    },
+    "Common Core 3" : {
+      "Contact Email" : "Randall.Keizer@dot.gov",
+      "Rights" : "public",
+      "Contact Name" : "Randall Keizer",
+      "Program Code" : "021:058",
+      "Publisher" : "Office of the Secretary of Transportation",
+      "Bureau Code" : "021:04"
+    }
+  },
+  "tags" : [ "aviation", "office of aviation analysis", "consumer airfare report", "airfares", "fares", "fare levels", "aviation policy", "city pair", "table 6", "city pair markets" ]
+}
