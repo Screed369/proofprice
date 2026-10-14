@@ -1,0 +1,35 @@
+URL: https://data.transportation.gov/resource/tfrh-tu9e.json?$select=year,quarter,count(*)&$group=year,quarter&$order=year%20DESC,quarter%20DESC&$limit=8
+Fetched: 2026-10-14T15:54:03Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 369
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:54:03 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDg1NF81XzM1NmF4Y3hKWkRjMndnT2tnUkpIcDlTRUFfaDNlOA---gzihFTezkhaoDFV8t6p4pD1xUocc-d--gzip--gzip"
+X-SODA2-Fields: ["year","quarter","count"]
+X-SODA2-Types: ["number","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+Last-Modified: Thu, 03 Sep 2026 17:49:47 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 59a1f3f2295b66593cdb2d2e4f98bd0b
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+[{"year":"2026","quarter":"1","count":"2080"}
+,{"year":"2025","quarter":"4","count":"2096"}
+,{"year":"2025","quarter":"3","count":"2131"}
+,{"year":"2025","quarter":"2","count":"1974"}
+,{"year":"2025","quarter":"1","count":"1945"}
+,{"year":"2024","quarter":"4","count":"1977"}
+,{"year":"2024","quarter":"3","count":"1988"}
+,{"year":"2024","quarter":"2","count":"1941"}]
