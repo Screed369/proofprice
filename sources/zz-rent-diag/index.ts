@@ -69,6 +69,46 @@ async function ons(): Promise<Record<string, unknown>> {
   return out;
 }
 
+async function ons2(): Promise<Record<string, unknown>> {
+  const out: Record<string, unknown> = {};
+  const base = "https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics";
+  const listRaw = await getBuf(base + "/data");
+  out.listStatus = listRaw.status;
+  out.listRaw = listRaw.buf.toString("utf8").slice(0, 2500);
+  const list = JSON.parse(listRaw.buf.toString("utf8"));
+  const uri = list?.datasets?.[0]?.uri as string;
+  out.uri = uri;
+  out.uris = (list?.datasets ?? []).slice(0, 5).map((d: any) => d.uri);
+  const edRaw = await getBuf("https://www.ons.gov.uk" + uri + "/data");
+  out.edRaw = edRaw.buf.toString("utf8").slice(0, 3500);
+  const ed = JSON.parse(edRaw.buf.toString("utf8"));
+  const file = ed?.downloads?.[0]?.file as string;
+  const f = await getBuf("https://www.ons.gov.uk/file?uri=" + uri + "/" + file);
+  const sheets = readXlsx(f.buf);
+  out.sheetNames = sheets.map((s) => s.name);
+  const t = sheets.find((s) => s.name === "Table 1")!;
+  const hi = t.rows.findIndex((r) => r[0] === "Time period");
+  out.preHeader = t.rows.slice(0, hi + 1).map((r) => r.slice(0, 6));
+  const data = t.rows.slice(hi + 1);
+  const dates = [...new Set(data.map((r) => r[0]).filter((d): d is number => typeof d === "number"))].sort((a, b) => a - b);
+  const latest = dates[dates.length - 1];
+  const yearAgo = dates[dates.length - 13];
+  out.dates = { n: dates.length, first: dates[0], latest, yearAgo, prev: dates[dates.length - 2] };
+  const want = ["K02000001", "K03000001", "E92000001", "W92000004", "S92000003", "N92000002", "E12000007", "E12000002", "E08000003", "E09000033", "E06000023", "W06000015", "E07000187", "S12000033"];
+  out.rows = data.filter((r) => (r[0] === latest || r[0] === yearAgo) && want.includes(String(r[1])));
+  out.zRows = data.filter((r) => r[0] === latest && !/^[EWSNK]\d/.test(String(r[1]))).map((r) => r.slice(0, 8));
+  out.s33Names = data.filter((r) => r[0] === latest && String(r[1]).startsWith("S33")).map((r) => [r[1], r[2]]);
+  out.e07Sample = data.filter((r) => r[0] === latest && String(r[1]).startsWith("E07")).slice(0, 6).map((r) => [r[1], r[2], r[3]]);
+  out.e12 = data.filter((r) => r[0] === latest && String(r[1]).startsWith("E12")).map((r) => [r[1], r[2], r[3], r[7]]);
+  out.xCounts = Object.fromEntries([7, 11, 15, 19, 23, 27, 31, 35, 39].map((c) => [c, data.filter((r) => r[0] === latest && typeof r[c] !== "number").map((r) => String(r[2]) + "=" + String(r[c]))]));
+  const names = new Set<string>();
+  const dup = new Set<string>();
+  for (const r of data.filter((x) => x[0] === latest)) { const n = String(r[2]); if (names.has(n)) dup.add(n); names.add(n); }
+  out.dupNames = [...dup];
+  out.commaNames = [...names].filter((n) => /[,()]/.test(n));
+  return out;
+}
+
 async function census(): Promise<Record<string, unknown>> {
   const out: Record<string, unknown> = {};
   for (const [k, url] of Object.entries({
@@ -98,6 +138,7 @@ export default defineSource({
     try {
       if (what === "nsw") return wrap(await nsw());
       if (what === "ons") return wrap(await ons());
+      if (what === "ons2") return wrap(await ons2());
       if (what === "census") return wrap(await census());
       return wrap({ usage: "town=nsw|ons|census" });
     } catch (e: any) {
