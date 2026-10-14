@@ -1,0 +1,32 @@
+URL: https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.json?$select=deed_type%2Csale_filter_deed_type%2Ccount(*)%20as%20n&$where=sale_date%20%3E%20'2025-01-01T00%3A00%3A00'&$group=deed_type%2Csale_filter_deed_type&$order=n%20DESC&$limit=50
+Fetched: 2026-10-14T14:16:00Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 334
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:16:00 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuMzg2NF8xNV8xNDY2Vm9YcjJhYVpzWlJRQWQxSEZ0YW43Q3JYaGNN---gzipsmA0WILDcSS8ycs5QTjLVVqcDag--gzip--gzip"
+X-SODA2-Fields: ["deed_type","sale_filter_deed_type","n"]
+X-SODA2-Types: ["text","boolean","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 2ad711404242ef7c7533710cc99c6cdc
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"deed_type":"Warranty","sale_filter_deed_type":false,"n":"79500"}
+,{"deed_type":"Other","sale_filter_deed_type":false,"n":"15261"}
+,{"deed_type":"Trustee","sale_filter_deed_type":false,"n":"15158"}
+,{"deed_type":"Quit claim","sale_filter_deed_type":true,"n":"1563"}
+,{"deed_type":"Executor","sale_filter_deed_type":true,"n":"871"}]
