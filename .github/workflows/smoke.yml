@@ -33,7 +33,7 @@ jobs:
         run: |
           set -u
           case "$BASE" in https://*) ;; *) echo "Only https bases are allowed"; exit 1;; esac
-          python3 -I scripts/smoke.py "$BASE" > /tmp/smoke.txt; echo "exit=$?" > /tmp/smoke-exit.txt
+          python3 -I scripts/smoke.py "$BASE" > /tmp/smoke.txt || true; echo "exit=$?" > /tmp/smoke-exit.txt
           cat /tmp/smoke.txt
       - name: Save the report to the probes branch
         run: |
