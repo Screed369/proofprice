@@ -1,0 +1,37 @@
+URL: https://data.ct.gov/resource/5mzw-sjtu.json?$select=propertytype%2Cresidentialtype%2Ccount(*)%20as%20n&$where=daterecorded%20%3E%20'2024-10-01T00%3A00%3A00'&$group=propertytype%2Cresidentialtype&$order=n%20DESC&$limit=60
+Fetched: 2026-10-14T14:15:22Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 582
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:22 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Z29sZi4xNzM1NF83XzIxOE5NRXA5LUt5UnRwU1hGVVYyLWJuNXJvSnF6RQ---gzinccg559tAJjvQ8eJeipHyB7qgbU--gzip--gzip"
+X-SODA2-Fields: ["propertytype","residentialtype","n"]
+X-SODA2-Types: ["text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Last-Modified: Wed, 12 Aug 2026 16:56:15 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: ff343aef7fa72f5e14a12e5d8895efff
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"propertytype":"Residential","residentialtype":"Single Family","n":"29480"}
+,{"propertytype":"Residential","residentialtype":"Condo","n":"8963"}
+,{"propertytype":"Residential","residentialtype":"Two Family","n":"2403"}
+,{"propertytype":"Vacant Land","n":"2267"}
+,{"propertytype":"Commercial","n":"1827"}
+,{"propertytype":"Residential","residentialtype":"Three Family","n":"1104"}
+,{"propertytype":"Apartments","n":"350"}
+,{"propertytype":"Industrial","n":"238"}
+,{"propertytype":"Residential","residentialtype":"Four Family","n":"227"}
+,{"propertytype":"Public Utility","n":"4"}]
