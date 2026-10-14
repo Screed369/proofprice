@@ -1,0 +1,32 @@
+URL: https://datacatalog.cookcountyil.gov/resource/wvhk-k5uv.json?$select=sale_price%2Csale_date&$where=sale_date%20%3E%20'2025-08-12T00%3A00%3A00'%20AND%20sale_date%20%3C%20'2026-08-13T00%3A00%3A00'%20AND%20sale_price%20%3E%3D%2010000%20AND%20township_code%20in%20('17')%20AND%20class%20in%20('299')%20AND%20is_multisale%20%3D%20false%20AND%20sale_filter_same_sale_within_365%20%3D%20false%20AND%20sale_filter_less_than_10k%20%3D%20false%20AND%20sale_filter_deed_type%20%3D%20false&$order=sale_date%20DESC%2Csale_price%20DESC&$limit=5
+Fetched: 2026-10-14T14:32:33Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 326
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:32:33 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuMzg2NF8xNV8xNDY2ZzlFSlloNFpfcUh0Zi15bGJXYmZqX2lISlgw---gzipvvdCXMrSGZsGXkdez9CgiK_-NZM--gzip--gzip"
+X-SODA2-Fields: ["sale_price","sale_date"]
+X-SODA2-Types: ["number","floating_timestamp"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+Last-Modified: Thu, 01 Oct 2026 12:24:54 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: e14b5bae2083adc7b8e698e8c412c8a4
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"sale_price":"410000.0","sale_date":"2026-08-05T00:00:00.000"}
+,{"sale_price":"370000.0","sale_date":"2026-08-05T00:00:00.000"}
+,{"sale_price":"273000.0","sale_date":"2026-08-05T00:00:00.000"}
+,{"sale_price":"870000.0","sale_date":"2026-07-31T00:00:00.000"}
+,{"sale_price":"309000.0","sale_date":"2026-07-30T00:00:00.000"}]
