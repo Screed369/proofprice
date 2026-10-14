@@ -1,0 +1,29 @@
+URL: https://api.tech.ec.europa.eu/agrifood/api/pigmeat/prices?memberStateCodes=LU&beginDate=01/01/2026&endDate=14/10/2026
+Fetched: 2026-10-14T14:37:34Z from GitHub Actions
+Status, type, bytes: 404 application/json 245
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 404 
+Date: Wed, 14 Oct 2026 14:37:34 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+activityid: e1a1343e-b57f-4523-8d22-944f9e1b9a62
+Access-Control-Expose-Headers: 
+Access-Control-Allow-Origin: 
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Headers: authorization,Access-Control-Allow-Origin,Content-Type,SOAPAction,Authorization
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Server: Europa
+Connection: close
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "error" : "Not Found",
+  "status" : "404",
+  "message" : "No results found for the selected parameter(s).",
+  "technicalErrorMessage" : "No data available for these parameters",
+  "apiSubErrors" : [ ],
+  "timestamp" : "14/10/2026 16:37:34"
+}
