@@ -1,6 +1,7 @@
 // THROWAWAY diagnostic (branch diag/childcare only, never merged): fetch an official file from Vercel's servers and show its shape.
 import { NextRequest } from "next/server";
 import { readXlsx, unzipAll } from "../../../categories/rent/xlsx";
+import { openWorkbook, streamSheet } from "../../../sources/us-dol-childcare/xlsx-stream";
 
 export const maxDuration = 60;
 const UA = "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)";
@@ -11,6 +12,27 @@ export async function GET(req: NextRequest) {
   if (!/^https:\/\/[a-z0-9.-]+\//i.test(url)) return Response.json({ error: "give https url" }, { status: 400 });
   const mode = q.get("mode") ?? "text";
   const res = await fetch(url, { headers: { "user-agent": UA } });
+  if (mode === "stream") {
+    const t0 = Date.now();
+    const buf0 = Buffer.from(await res.arrayBuffer());
+    const wb = openWorkbook(buf0, q.get("sheet") ?? undefined);
+    const maxRows = Number(q.get("max") ?? 30);
+    const skip = Number(q.get("skip") ?? 0);
+    const grep0 = q.get("grep");
+    const re0 = grep0 ? new RegExp(grep0, "i") : null;
+    const out: { n: number; cells: unknown[] }[] = [];
+    let seenRows = 0;
+    let lastRow = 0;
+    const total = await streamSheet(buf0, wb.dir.get(wb.sheetPath)!, wb.shared, (cells, n) => {
+      seenRows++;
+      lastRow = n;
+      if (seenRows <= skip) return;
+      if (re0 && !re0.test(cells.map((c) => String(c ?? "")).join("|"))) return;
+      out.push({ n, cells });
+      if (out.length >= maxRows && q.get("count") !== "1") return false;
+    });
+    return Response.json({ sheet: wb.sheetTitle, bytes: buf0.length, entry: wb.dir.get(wb.sheetPath), seenRows, total, lastRow, ms: Date.now() - t0, rows: out });
+  }
   const meta = { status: res.status, type: res.headers.get("content-type"), len: res.headers.get("content-length"), final: res.url };
   const buf = Buffer.from(await res.arrayBuffer());
   const grep = q.get("grep");
