@@ -1,0 +1,223 @@
+URL: https://api.us.socrata.com/api/catalog/v1?ids=5mzw-sjtu&domains=data.ct.gov
+Fetched: 2026-10-14T14:15:55Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 9171
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:15:54 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 15000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Real Estate Sales 2001-2024 GL",
+            "id" : "5mzw-sjtu",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "The Office of Policy and Management maintains a listing of all real estate sales with a sales price of $2,000 or greater that occur between October 1 and September 30 of each year. For each sale record, the file includes: town, property address, date of sale, property type (residential, apartment, commercial, industrial or vacant land), sales price, and property assessment.\n\nData are collected in accordance with Connecticut General Statutes, section 10-261a and 10-261b: https://www.cga.ct.gov/current/pub/chap_172.htm#sec_10-261a and https://www.cga.ct.gov/current/pub/chap_172.htm#sec_10-261b. \nAnnual real estate sales are reported by grand list year (October 1 through September 30 each year). For instance, sales from 2018 GL are from 10/01/2018 through 9/30/2019.\n\nSome municipalities may not report data for certain years because when a municipality implements a revaluation, they are not required to submit sales data for the twelve months following implementation.\n\nFor questions about this data, please contact us at: OPMIGPP@ct.gov",
+            "attribution" : "Office of Policy and Management",
+            "attribution_link" : "https://portal.ct.gov/OPM/IGPP/IGPP-Home",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-08-12T16:56:15.000Z",
+            "createdAt" : "2018-07-05T20:05:18.000Z",
+            "metadata_updated_at" : "2026-08-12T16:56:15.000Z",
+            "data_updated_at" : "2026-08-12T16:50:24.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 284,
+                "page_views_last_month" : 1431,
+                "page_views_total" : 59613,
+                "page_views_last_week_log" : 8.154818109052105,
+                "page_views_last_month_log" : 10.483815777264256,
+                "page_views_total_log" : 15.863363558537678
+              },
+            "columns_name" :
+              [
+                "Town",
+                "Assessed Value",
+                "Sale Amount",
+                "Counties",
+                "Address",
+                "Location",
+                "OPM remarks",
+                "Assessor Remarks",
+                "Non Use Code",
+                "Zip Code",
+                "Town Index",
+                "Planning Regions",
+                "Residential Type",
+                "Serial Number",
+                "List Year",
+                "Date Recorded",
+                "Property Type",
+                "Sales Ratio"
+              ],
+            "columns_field_name" :
+              [
+                "town",
+                "assessedvalue",
+                "saleamount",
+                ":@computed_region_dam5_q64j",
+                "address",
+                "geo_coordinates",
+                "opm_remarks",
+                "remarks",
+                "nonusecode",
+                ":@computed_region_nhmp_cq6b",
+                ":@computed_region_m4y2_whse",
+                ":@computed_region_snd5_k6zv",
+                "residentialtype",
+                "serialnumber",
+                "listyear",
+                "daterecorded",
+                "propertytype",
+                "salesratio"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Point",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Town name",
+                "Value of the property used for local tax assesment",
+                "Amount the property was sold for",
+                "This column was automatically created in order to record in what polygon from the dataset 'Counties' (dam5-q64j) the point in column 'geo_coordinates' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+                "Address",
+                "Lat / lon coordinates",
+                "Remarks from OPM",
+                "Remarks from the assessor",
+                "Non usable sale code typically means the sale price is not reliable for use in the determination of a property value. See attachments in the dataset description page for a listing of codes",
+                "This column was automatically created in order to record in what polygon from the dataset 'Zip Code' (nhmp-cq6b) the point in column 'geo_coordinates' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+                "This column was automatically created in order to record in what polygon from the dataset 'Town Index' (m4y2-whse) the point in column 'geo_coordinates' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+                "This column was automatically created in order to record in what polygon from the dataset 'Planning Regions' (snd5-k6zv) the point in column 'geo_coordinates' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+                "Indicates whether property is single or multifamily residential",
+                "Serial number",
+                "Year the property was listed for sale",
+                "Date the sale was recorded locally",
+                "Type of property including: Residential, Commercial, Industrial, Apartments, Vacant, etc",
+                "Ratio of the sale price to the assessed value"
+              ],
+            "columns_format" :
+              [
+                { "align" : "left" },
+                {
+                  "precisionStyle" : "currency",
+                  "precision" : "2",
+                  "align" : "left"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "precision" : "2",
+                  "align" : "left"
+                },
+                {},
+                { "align" : "left" },
+                {},
+                {},
+                { "align" : "left" },
+                { "align" : "left" },
+                {},
+                {},
+                {},
+                { "align" : "left" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "left"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "left"
+                },
+                { "view" : "date", "align" : "left" },
+                { "align" : "left" },
+                { "align" : "left" }
+              ],
+            "download_count" : 235889,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-02-23T16:13:49.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Housing and Development",
+            "domain_tags" :
+              [ "ct", "housing", "sales", "real estate", "opm", "igp" ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Agency_Agency",
+                  "value" : "Office of Policy and Management"
+                },
+                {
+                  "key" : "Details_Geographic-Unit",
+                  "value" : "Street address"
+                },
+                { "key" : "Details_Update-Frequency", "value" : "Annually" },
+                {
+                  "key" : "Details_Temporal-Coverage",
+                  "value" : "2001-2024 Grand List Year"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.ct.gov", "license" : "Public Domain" },
+        "permalink" : "https://data.ct.gov/d/5mzw-sjtu",
+        "link" : "https://data.ct.gov/Housing-and-Development/Real-Estate-Sales-2001-2024-GL/5mzw-sjtu",
+        "owner" :
+          {
+            "id" : "k4px-3vyy",
+            "user_type" : "interactive",
+            "display_name" : "Intergovernmental Policy and Planning Division"
+          },
+        "creator" :
+          {
+            "id" : "k4px-3vyy",
+            "user_type" : "interactive",
+            "display_name" : "Intergovernmental Policy and Planning Division"
+          }
+      }
+    ],
+  "resultSetSize" : 1,
+  "timings" : { "serviceMillis" : 16, "searchMillis" : [ 3, 4 ] },
+  "warnings" : []
+}
