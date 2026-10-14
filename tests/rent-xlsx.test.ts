@@ -2,59 +2,8 @@
 // The workbook is built here from the part layout Excel writes (workbook.xml, relationships, shared strings, sheets).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { deflateRawSync } from "node:zlib";
+import { makeXlsx, makeZip } from "./helpers/make-zip";
 import { columnIndex, excelDate, parseSharedStrings, parseSheetXml, readXlsx, unzipAll, xmlText } from "../categories/rent/xlsx";
-
-function crc32(buf: Buffer): number {
-  let c = ~0;
-  for (const b of buf) {
-    c ^= b;
-    for (let k = 0; k < 8; k++) c = (c >>> 1) ^ (0xedb88320 & -(c & 1));
-  }
-  return ~c >>> 0;
-}
-
-/** A minimal zip writer (stored or deflated entries), for building test workbooks. */
-export function makeZip(files: Record<string, string>, deflate = false): Buffer {
-  const locals: Buffer[] = [];
-  const centrals: Buffer[] = [];
-  let offset = 0;
-  for (const [name, text] of Object.entries(files)) {
-    const raw = Buffer.from(text, "utf8");
-    const data = deflate ? deflateRawSync(raw) : raw;
-    const nameBuf = Buffer.from(name, "utf8");
-    const local = Buffer.alloc(30);
-    local.writeUInt32LE(0x04034b50, 0);
-    local.writeUInt16LE(20, 4);
-    local.writeUInt16LE(deflate ? 8 : 0, 8);
-    local.writeUInt32LE(crc32(raw), 14);
-    local.writeUInt32LE(data.length, 18);
-    local.writeUInt32LE(raw.length, 22);
-    local.writeUInt16LE(nameBuf.length, 26);
-    locals.push(local, nameBuf, data);
-    const central = Buffer.alloc(46);
-    central.writeUInt32LE(0x02014b50, 0);
-    central.writeUInt16LE(20, 4);
-    central.writeUInt16LE(20, 6);
-    central.writeUInt16LE(deflate ? 8 : 0, 10);
-    central.writeUInt32LE(crc32(raw), 16);
-    central.writeUInt32LE(data.length, 20);
-    central.writeUInt32LE(raw.length, 24);
-    central.writeUInt16LE(nameBuf.length, 28);
-    central.writeUInt32LE(offset, 42);
-    centrals.push(central, nameBuf);
-    offset += 30 + nameBuf.length + data.length;
-  }
-  const cd = Buffer.concat(centrals);
-  const end = Buffer.alloc(22);
-  end.writeUInt32LE(0x06054b50, 0);
-  end.writeUInt16LE(Object.keys(files).length, 8);
-  end.writeUInt16LE(Object.keys(files).length, 10);
-  end.writeUInt32LE(cd.length, 12);
-  end.writeUInt32LE(offset, 16);
-  return Buffer.concat([...locals, cd, end]);
-}
-
 const WORKBOOK = `<?xml version="1.0"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Legend" sheetId="1" r:id="rId1"/><sheet name="Data &amp; more" sheetId="2" r:id="rId2"/></sheets></workbook>`;
 const RELS = `<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="x" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="x" Target="/xl/worksheets/sheet2.xml"/><Relationship Id="rId3" Type="x" Target="sharedStrings.xml"/></Relationships>`;
 const SHARED = `<?xml version="1.0"?><sst count="4" uniqueCount="4"><si><t>Postcode</t></si><si><t xml:space="preserve">Weekly Rent</t></si><si><r><t>Rich </t></r><r><t>text &amp; more</t></r></si><si/></sst>`;
@@ -114,6 +63,13 @@ test("readXlsx: maxRows stops early, and a non-workbook zip is refused", () => {
 test("parseSheetXml keeps rows aligned when a row number is skipped", () => {
   const rows = parseSheetXml(`<sheetData><row r="1"><c r="A1"><v>1</v></c></row><row r="3"><c r="A3"><v>3</v></c></row></sheetData>`, []);
   assert.deepEqual(rows, [[1], [], [3]]);
+});
+
+test("makeXlsx round trip: strings stay strings, numbers stay numbers, several sheets", () => {
+  const sheets = readXlsx(makeXlsx({ Data: [["Title & more"], [], ["Postcode", "Rent"], [2000, "680"]], Definitions: [["a", 1]] }));
+  assert.deepEqual(sheets.map((s) => s.name), ["Data", "Definitions"]);
+  assert.deepEqual(sheets[0].rows, [["Title & more"], [], ["Postcode", "Rent"], [2000, "680"]]);
+  assert.deepEqual(sheets[1].rows, [["a", 1]]);
 });
 
 test("excelDate converts serial numbers and rejects other numbers", () => {

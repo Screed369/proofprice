@@ -14,6 +14,12 @@ const TYPE_ALIASES: Record<string, "any" | "apartment" | "house" | "room"> = {
   room: "room", rooms: "room", "room only": "room",
 };
 
+const HOUSE_ALIASES: Record<string, "detached" | "semi-detached" | "terraced"> = {
+  detached: "detached",
+  "semi-detached": "semi-detached", semi: "semi-detached", semidetached: "semi-detached",
+  terraced: "terraced", terrace: "terraced", terraced_house: "terraced",
+};
+
 export default defineCategory({
   id: "rent",
   tool: "pricepaid_rent_prices",
@@ -34,6 +40,7 @@ export default defineCategory({
     town: z.string().min(2).optional().describe("Town, city or local area."),
     postcode: z.string().optional().describe("Postcode, for a precise area."),
     property_type: z.enum(["any", "apartment", "flat", "house", "room"]).optional().describe("Kind of home: apartment (same as flat), house or room. Default 'any'."),
+    house_type: z.enum(["detached", "semi-detached", "terraced"]).optional().describe("Kind of house, for sources that publish houses by type (needed with property_type house there)."),
     bedrooms: z.number().int().min(0).max(10).optional().describe("Number of bedrooms (0 = studio). Leave out for all sizes."),
     months: z.number().int().min(1).max(36).optional().describe("How many recent months to include, for sources that hold individual rents. Ignored by sources that publish one figure per quarter or month."),
   },
@@ -44,6 +51,12 @@ export default defineCategory({
       const t = TYPE_ALIASES[raw.toLowerCase().replace(/[\s_-]+/g, " ")];
       if (!t) throw new InputError('property_type must be "apartment" (or "flat"), "house", "room" or "any".');
       out.property_type = t;
+    }
+    const house = str(p.house_type);
+    if (house !== undefined) {
+      const h = HOUSE_ALIASES[house.toLowerCase().replace(/[\s_]+/g, "-")];
+      if (!h) throw new InputError('house_type must be "detached", "semi-detached" or "terraced".');
+      out.house_type = h;
     }
     if (p.bedrooms !== undefined && p.bedrooms !== null && p.bedrooms !== "") {
       const b = Number(p.bedrooms);

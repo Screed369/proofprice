@@ -1,7 +1,6 @@
 // Manifest: Ireland rents (RTB Average Monthly Rent Report via the CSO). Logic lives in ./source.ts.
-import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { HOUSE_TYPE_NAMES, INFO, ieRent } from "./source";
+import { INFO, ieRent } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -16,9 +15,7 @@ export default defineSource({
     property_type: "IE: apartment (flat) or house; leave out for all homes. For house, also give house_type. Rooms are not published.",
     bedrooms: "IE: 1, 2, 3 or 4 (4 means four or more); leave out for all sizes. Studios are not published.",
     months: "IE: ignored; the figure is for the latest quarter published.",
-  },
-  extraParams: {
-    house_type: z.enum(HOUSE_TYPE_NAMES).optional().describe("IE only: detached, semi-detached or terraced house (needed when property_type is house)."),
+    house_type: "IE: detached, semi-detached or terraced; required with property_type house.",
   },
   examples: [
     { params: { country: "IE", town: "Dublin" } },
