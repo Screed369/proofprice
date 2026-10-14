@@ -1,0 +1,26 @@
+URL: https://api-production.data.gov.sg/v2/public/api/datasets/d_c9f57187485a850908655db0e8cfe651/metadata
+Fetched: 2026-10-14T15:58:29Z from GitHub Actions
+Status, type, bytes: 200 application/json 2018
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:58:29 GMT
+content-type: application/json
+content-length: 2018
+cf-ray: a4a7c92858b269b0-LAX
+cf-cache-status: DYNAMIC
+access-control-allow-origin: *
+server: cloudflare
+cf-placement: remote-SIN
+x-amz-apigw-id: FPb56FulSQ0Ea2A=
+x-amzn-requestid: 527ef093-4b7e-49e8-9647-728a6d619d7a
+x-amzn-trace-id: Root=1-6acfa6a5-7b40a5e028af0c4b0afda4d9
+x-dgs-request-id: a4a7c92858b269b0
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+vary: accept-encoding
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"code":0,"data":{"datasetId":"d_c9f57187485a850908655db0e8cfe651","createdAt":"2021-10-12T12:09:55+08:00","name":"Renting Out of Flats from Jan 2021","collectionIds":["166"],"description":"Explore HDB rental statistics and market rates from 2021–2025. Access detailed HDB rental data, indices, and flat prices. Rental data are indicative only (owner‑declared). HDB does not verify the accuracy of the data.","format":"CSV","lastUpdatedAt":"2026-10-02T10:06:14+08:00","managedBy":"Housing & Development Board","coverageStart":"2021-01-01T08:00:00+08:00","coverageEnd":"2026-09-01T08:00:00+08:00","contactEmails":["fiona_sy_gwee@hdb.gov.sg","jolyn_y_chia@hdb.gov.sg","Asuwati_AHMAD@hdb.gov.sg"],"datasetSize":10440420,"columnMetadata":{"order":["c_dr43vyl3h8afpdpo7myuhhhdd","c_b2pxtiju2f6u7vjlz0mqcaxfp","c_9267lfc595eo2r8uzyk1deh43","c_8l3hduhyftbu6dobgfj1nnpuo","c_9s7jlj6i7nefc6v6tjz1j84x2","c_efoo9lez9xkytajyvyusisd4k"],"map":{"c_dr43vyl3h8afpdpo7myuhhhdd":"rent_approval_date","c_b2pxtiju2f6u7vjlz0mqcaxfp":"town","c_9267lfc595eo2r8uzyk1deh43":"block","c_8l3hduhyftbu6dobgfj1nnpuo":"street_name","c_9s7jlj6i7nefc6v6tjz1j84x2":"flat_type","c_efoo9lez9xkytajyvyusisd4k":"monthly_rent"},"metaMapping":{"c_dr43vyl3h8afpdpo7myuhhhdd":{"name":"rent_approval_date","columnTitle":"Rent Approval Date","dataType":"Month (YYYY-MM)","index":"0","isCategorical":true},"c_b2pxtiju2f6u7vjlz0mqcaxfp":{"name":"town","columnTitle":"Town","dataType":"Text","index":"1","isCategorical":true},"c_9267lfc595eo2r8uzyk1deh43":{"name":"block","columnTitle":"Block","dataType":"Text","index":"2","isCategorical":true},"c_8l3hduhyftbu6dobgfj1nnpuo":{"name":"street_name","columnTitle":"Street Name","dataType":"Text","index":"3","isCategorical":true},"c_9s7jlj6i7nefc6v6tjz1j84x2":{"name":"flat_type","columnTitle":"Flat Type","dataType":"Text","index":"4","isCategorical":true},"c_efoo9lez9xkytajyvyusisd4k":{"name":"monthly_rent","columnTitle":"Monthly Rent","dataType":"Numeric","index":"5","isCategorical":true}}}},"errorMsg":""}
