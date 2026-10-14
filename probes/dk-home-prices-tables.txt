@@ -1,0 +1,23 @@
+URL: https://api.statbank.dk/v1/tables?lang=en&format=JSON&subjects=20088
+Fetched: 2026-10-14T15:46:16Z from GitHub Actions
+Status, type, bytes: 200 text/json; charset=utf-8 2735
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+cache-control: no-cache
+pragma: no-cache
+content-type: text/json; charset=utf-8
+expires: -1
+server: Microsoft-IIS/10.0
+statbankapi-request-id: 9b8b2306-d752-4d6d-afd3-32dd40836a40
+access-control-expose-headers: StatbankAPI-Request-Id
+x-aspnet-version: 4.0.30319
+x-powered-by: ASP.NET
+strict-transport-security: max-age=31536000
+date: Wed, 14 Oct 2026 15:46:16 GMT
+content-length: 2735
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+[{"id":"EJ5","text":"Price index for sales of property","unit":"Index","updated":"2026-09-29T08:00:00","firstPeriod":"1992Q1","latestPeriod":"2026Q2","active":true,"variables":["category of real property","unit","time"]},{"id":"EJ56","text":"Price index for sales of property","unit":"Index","updated":"2026-09-29T08:00:00","firstPeriod":"1992Q1","latestPeriod":"2026Q2","active":true,"variables":["region","category of real property","unit","time"]},{"id":"EJ121","text":"Seasonally adjusted sales of property","unit":"-","updated":"2026-09-29T08:00:00","firstPeriod":"2005Q1","latestPeriod":"2026Q2","active":true,"variables":["region","property category","unit","time"]},{"id":"EJ6","text":"Price index for sales property","unit":"Index","updated":"2026-09-29T08:00:00","firstPeriod":"1992","latestPeriod":"2025","active":true,"variables":["category of real property","unit","time"]},{"id":"EJ67","text":"Price index for sales property","unit":"Index","updated":"2026-09-29T08:00:00","firstPeriod":"1992","latestPeriod":"2025","active":true,"variables":["region","category of real property","unit","time"]},{"id":"EJ99","text":"Price index for housing cooperatives and owner-occupied housing","unit":"-","updated":"2026-09-29T08:00:00","firstPeriod":"2015Q1","latestPeriod":"2026Q2","active":true,"variables":["region","type of dwelling","unit","time"]},{"id":"EJ131","text":"Sales of real property","unit":"-","updated":"2026-09-29T08:00:00","firstPeriod":"2006M01","latestPeriod":"2025M07","active":true,"variables":["region","category of real property","key figures","time"]},{"id":"EJEN77","text":"Sales of real property","unit":"-","updated":"2026-09-29T08:00:00","firstPeriod":"1992Q1","latestPeriod":"2026Q2","active":true,"variables":["region","category of real property","key figures","type of transfer","time"]},{"id":"EJEN88","text":"Sales of real property","unit":"-","updated":"2026-09-29T08:00:00","firstPeriod":"1992","latestPeriod":"2025","active":true,"variables":["region","category of real property","key figures","type of transfer","time"]},{"id":"EJEN99","text":"Key figures for housing cooperatives","unit":"Per cent","updated":"2026-08-31T08:00:00","firstPeriod":"2015Q1","latestPeriod":"2026Q2","active":true,"variables":["region","valuation principle","time"]},{"id":"LABY22","text":"Sales of real property","unit":"-","updated":"2026-09-29T08:00:00","firstPeriod":"2012","latestPeriod":"2025","active":true,"variables":["municipality groups","category of real property","key figures","time"]},{"id":"EJENEU1","text":"House Price Index (HPI)","unit":"Index","updated":"2026-09-29T08:00:00","firstPeriod":"2002Q4","latestPeriod":"2026Q2","active":true,"variables":["urbanisation","type of expenses","time"]}]
