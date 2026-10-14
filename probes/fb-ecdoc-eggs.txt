@@ -1,0 +1,72 @@
+URL: https://agridata.ec.europa.eu/extensions/API_Documentation/eggspoultry.html
+Fetched: 2026-10-14T14:14:15Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=utf-8 2417
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 14:14:15 GMT
+content-type: text/html;charset=utf-8
+set-cookie: X-Qlik-Session-v2-HTTP=26cf31ee-e625-49c8-9309-4bd83930493d; Path=/; HttpOnly; SameSite=Strict; Secure
+cache-control: private, must-revalidate, max-age=0
+expires: Mon, 01 Jan 0001 00:00:00 GMT
+last-modified: Thu, 21 May 2026 12:40:44 GMT
+accept-ranges: bytes
+etag: 639149640447001043
+x-ua-compatible: IE=edge
+access-control-allow-origin: https://agridata.ec.europa.eu
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000;includeSubDomains;Preload
+server: -
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text
+=== FIRST 80000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eggs and Poultry</title>
+    <link id="bootstrapCSS" href="../CommonStyles/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../DataPortal/API_Documentation.css">
+</head>
+<body>
+
+<div class="sect1">
+    <div class="intro_section">
+        <div class="intro_desc">
+            <div>
+                <h2 id="resources-poultry-prices" class="section_heading">Eggs and Poultry</h2>
+                <div class="paragraph" style="line-height:1.5em">
+                    Times series of average poultry prices per Member State and for the European Union with data from 1991.
+                    Monthly volumes in case of poultry production.
+                    More information can be found on the Info tab of the portal’s <a href="https://agridata.ec.europa.eu/extensions/DashboardPoultry/PoultryPrices.html" style="color:#004494; text-decoration:none" target="_blank" ><strong>poultry prices app</strong></a>,
+                    <a href="https://agridata.ec.europa.eu/extensions/DashboardEggs/EggsPrice.html"  style="color:#004494; text-decoration:none" target="_blank"><strong>egg prices app</strong></a> and
+                    <a href="https://agridata.ec.europa.eu/extensions/DashboardPoultry/PoultryProduction.html"  style="color:#004494; text-decoration:none" target="_blank"><strong>poultry production app</strong></a>.
+                </div>
+                <br/>
+                <p class="paragraph">
+                    The base url for API endpoints is <b><em>https://api.tech.ec.europa.eu/agrifood</em></b>.
+                </p>
+            </div>
+            <img src="../CommonImages/eggs-poultry.png">
+        </div>
+    </div>
+    <div class="sectionbody">
+        <iframe
+                src="https://api.tech.ec.europa.eu/agrifood/swagger-ui/index.html?url=/agrifood/v3/api-docs/eggs_and_poultry&defaultModelsExpandDepth=-1&defaultModelExpandDepth=100&validatorUrl=none"
+                id="swagger-iframe"
+                title="Swagger UI"
+                class="swagger_ui_container"
+        >
+        </iframe>
+    </div>
+</div>
+<div style="height:30px"></div>
+
+<script src="./swagger_ui_height_script.js"></script>
+</body>
+</html>
