@@ -1,0 +1,20 @@
+URL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apri_lprc?format=JSON&lang=EN&geo=IE&lastTimePeriod=3
+Fetched: 2026-10-14T14:11:28Z from GitHub Actions
+Status, type, bytes: 200 application/json 2981
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Wed, 14 Oct 2026 14:11:28 GMT
+Content-Length: 2981
+Content-Type: application/json
+X-ORACLE-DMS-ECID: 682f7da8-56c9-408b-8f8b-5e077909eb44-00c00d96
+Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With
+Access-Control-Allow-Methods: GET
+X-ORACLE-DMS-RID: 0
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{"version":"2.0","class":"dataset","label":"Agricultural land prices by region","source":"ESTAT","updated":"2026-07-10T23:00:00+0200","value":{"0":38050,"1":35162,"2":50375,"9":19357,"10":21305,"11":22698,"12":38050,"13":35162,"14":50375,"21":19357,"22":21305,"23":22698},"status":{"2":"p","11":"p","14":"p","23":"p"},"id":["freq","unit","agriprod","geo","time"],"size":[1,2,4,1,3],"dimension":{"freq":{"label":"Time frequency","category":{"index":{"A":0},"label":{"A":"Annual"}}},"unit":{"label":"Unit of measure","category":{"index":{"EUR_HA":0,"NAC_HA":1},"label":{"EUR_HA":"Euro per hectare","NAC_HA":"National currency per hectare"}}},"agriprod":{"label":"Agricultural products","category":{"index":{"ARA":0,"ARAIB":1,"ARAXIB":2,"J0000":3},"label":{"ARA":"Arable land","ARAIB":"Irrigable arable land","ARAXIB":"Non-irrigable arable land","J0000":"Permanent grassland"}}},"geo":{"label":"Geopolitical entity (reporting)","category":{"index":{"IE":0},"label":{"IE":"Ireland"}}},"time":{"label":"Time","category":{"index":{"2022":0,"2023":1,"2024":2},"label":{"2022":"2022","2023":"2023","2024":"2024"}}}},"extension":{"lang":"EN","id":"APRI_LPRC","agencyId":"ESTAT","version":"1.0","datastructure":{"id":"APRI_LPRC","agencyId":"ESTAT","version":"55.0"},"annotation":[{"type":"CREATED","date":"2018-03-21T08:11:14+0100"},{"type":"DISSEMINATION_DOI_XML","title":"<adms:identifier xmlns:adms=\"http://www.w3.org/ns/adms#\" xmlns:skos=\"http://www.w3.org/2004/02/skos/core.html\" xmlns:dct=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"><adms:Identifier rdf:about=\"https://doi.org/10.2908/APRI_LPRC\"><skos:notation rdf:datatype=\"http://purl.org/spar/datacite/doi\">10.2908/APRI_LPRC</skos:notation><dct:creator rdf:resource=\"http://publications.europa.eu/resource/authority/corporate-body/ESTAT\"/><dct:issued rdf:datatype=\"http://www.w3.org/2001/XMLSchema#date\">2023-01-19</dct:issued></adms:Identifier></adms:identifier>"},{"type":"DISSEMINATION_OBJECT_TYPE","title":"DATASET"},{"type":"DISSEMINATION_TIMESTAMP_DATA","date":"2026-07-10T23:00:00+0200"},{"type":"DISSEMINATION_TIMESTAMP_GLOBAL","date":"2026-07-10T23:00:00+0200"},{"type":"DISSEMINATION_TIMESTAMP_PLANNED","date":"2026-07-10T23:00:00+0200"},{"type":"ESMS_HTML","title":"Explanatory texts (metadata)","href":"https://ec.europa.eu/eurostat/cache/metadata/en/apri_lpr_esms.htm"},{"type":"ESMS_SDMX","title":"Explanatory texts (metadata)","href":"https://ec.europa.eu/eurostat/api/dissemination/files?file=metadata/apri_lpr_esms.sdmx.zip"},{"type":"OBS_COUNT","title":"16918"},{"type":"OBS_PERIOD_OVERALL_LATEST","title":"2024"},{"type":"OBS_PERIOD_OVERALL_OLDEST","title":"2011"},{"type":"SOURCE_INSTITUTIONS","text":"Eurostat"},{"type":"UPDATE_DATA","date":"2026-07-10T23:00:00+0200"},{"type":"UPDATE_STRUCTURE","date":"2026-01-26T23:00:00+0100"}],"status":{"label":{"p":"provisional"}},"positions-with-no-data":{"freq":[],"unit":[],"agriprod":[1,2],"geo":[],"time":[]}}}
