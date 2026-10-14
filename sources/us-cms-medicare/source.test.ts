@@ -207,6 +207,7 @@ test("us-cms-medicare: knee replacement in Texas - the hospital stay, with the s
   const a = await medicalPrices({ service: "knee replacement", state: "TX" }, { fetcher: f.fetcher });
   assert.equal(a.status, "ok");
   assert.equal(a.source.id, "us-cms-inpatient");
+  assert.deepEqual(a.query, { country: "US", service: "knee replacement", state: "TX", setting: null }); // the request as written, not the DRGs behind it
   assert.equal(a.price!.value, 15157.440135);
   assert.equal(a.sample_size, 4151);
   assert.match(a.summary, /knee replacement \(MS-DRG 470/);

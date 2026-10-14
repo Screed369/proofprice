@@ -115,6 +115,10 @@ export interface InpatientContext {
   year: number | null;
   /** The plain name of the service when the request was in words, e.g. "knee replacement". Null for a raw DRG. */
   label?: string | null;
+  /** The service exactly as the caller wrote it, echoed in the answer's query. */
+  requested?: string;
+  /** True when the caller asked for setting=inpatient (otherwise the query shows no setting). */
+  settingAsked?: boolean;
   baseUrl?: string;
 }
 
@@ -130,7 +134,7 @@ const METHOD =
 /** The finished answer for a hospital-stay request. Pure. */
 export function inpatientAnswer(rows: InpatientRow[], ctx: InpatientContext): PriceAnswer {
   const first = ctx.drgs[0];
-  const query = { country: "US", service: ctx.drgs.map((d) => `DRG ${d}`).join(","), state: ctx.geo.code, setting: "inpatient" };
+  const query = { country: "US", service: ctx.requested ?? ctx.drgs.map((d) => `DRG ${d}`).join(","), state: ctx.geo.code, setting: ctx.settingAsked ? "inpatient" : null };
   const base = {
     source: INFO,
     query,

@@ -134,6 +134,8 @@ export interface PhysicianContext {
   year: number | null;
   /** The plain name of the service group when the request was in words, e.g. "established-patient office visit". */
   group?: string;
+  /** The service exactly as the caller wrote it, echoed in the answer's query. */
+  requested?: string;
   baseUrl?: string;
 }
 
@@ -149,7 +151,7 @@ const METHOD =
 /** The finished answer for a request in the physician file. Pure. */
 export function physicianAnswer(rows: PhysicianRow[], ctx: PhysicianContext): PriceAnswer {
   const first = ctx.codes[0];
-  const query = { country: "US", service: ctx.codes.join(","), state: ctx.geo.code, setting: ctx.explicit ? ctx.setting : null };
+  const query = { country: "US", service: ctx.requested ?? ctx.codes.join(","), state: ctx.geo.code, setting: ctx.explicit ? ctx.setting : null };
   const base = {
     source: INFO,
     query,

@@ -126,7 +126,10 @@ export async function medicalPrices(input: MedicalInput, o: CmsOptions = {}): Pr
   }
 
   if (kind === "inpatient") {
-    let answer = await medicareInpatient({ drgs: r.drgs, geo, label: r.entry?.label ?? null, baseUrl: input.baseUrl }, o);
+    let answer = await medicareInpatient(
+      { drgs: r.drgs, geo, label: r.entry?.label ?? null, requested: input.service?.trim(), settingAsked: wanted === "inpatient", baseUrl: input.baseUrl },
+      o,
+    );
     if (searched) {
       answer = addNote(answer, `Matched by searching the MS-DRG hospital-stay titles for '${searched}'; check that the group shown is the one you mean (the title is in extra.drg_title).`);
     }
@@ -142,7 +145,7 @@ export async function medicalPrices(input: MedicalInput, o: CmsOptions = {}): Pr
 
   const usual: PhysicianSetting | null = r.setting === "office" || r.setting === "facility" ? r.setting : null;
   let answer = await medicarePhysician(
-    { codes: r.codes, geo, setting: wanted === "office" || wanted === "facility" ? wanted : usual, explicit: wanted !== null, group: r.entry?.label, baseUrl: input.baseUrl },
+    { codes: r.codes, geo, setting: wanted === "office" || wanted === "facility" ? wanted : usual, explicit: wanted !== null, group: r.entry?.label, requested: input.service?.trim(), baseUrl: input.baseUrl },
     o,
   );
   if (answer.status === "ok" && r.drgs.length && wanted !== null) {
