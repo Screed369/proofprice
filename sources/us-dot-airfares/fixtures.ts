@@ -1,0 +1,27 @@
+// Real responses from data.transportation.gov (Socrata), captured 2026-10-14 through the GitHub Probe workflow. Numbers are strings, as Socrata sends them.
+
+// Table 1a, JFK-LAX, newest four quarters
+// https://data.transportation.gov/resource/tfrh-tu9e.json?$where=airport_1%20in(%27JFK%27,%27LAX%27)%20AND%20airport_2%20in(%27JFK%27,%27LAX%27)&$order=year%20DESC,quarter%20DESC&$limit=4
+export const JFK_LAX: Record<string, string>[] = [
+  {"tbl": "Table1a", "year": "2026", "quarter": "1", "citymarketid_1": "32575", "citymarketid_2": "31703", "city1": "Los Angeles, CA (Metropolitan Area)", "city2": "New York City, NY (Metropolitan Area)", "airportid_1": "12892", "airportid_2": "12478", "airport_1": "LAX", "airport_2": "JFK", "nsmiles": "2510", "passengers": "5780.111111", "fare": "508.3078641", "carrier_lg": "DL", "large_ms": "0.4315026624", "fare_lg": "609.068748", "carrier_low": "B6", "lf_ms": "0.3040637435", "fare_low": "357.6894239", "tbl1apk": "202611289212478LAXJFK"},
+  {"tbl": "Table1a", "year": "2025", "quarter": "4", "citymarketid_1": "32575", "citymarketid_2": "31703", "city1": "Los Angeles, CA (Metropolitan Area)", "city2": "New York City, NY (Metropolitan Area)", "airportid_1": "12892", "airportid_2": "12478", "airport_1": "LAX", "airport_2": "JFK", "nsmiles": "2510", "passengers": "6639.206522", "fare": "534.5426837", "carrier_lg": "DL", "large_ms": "0.4098103001", "fare_lg": "639.771424", "carrier_low": "B6", "lf_ms": "0.3263092925", "fare_low": "390.3548607", "tbl1apk": "202541289212478LAXJFK"},
+  {"tbl": "Table1a", "year": "2025", "quarter": "3", "citymarketid_1": "32575", "citymarketid_2": "31703", "city1": "Los Angeles, CA (Metropolitan Area)", "city2": "New York City, NY (Metropolitan Area)", "airportid_1": "12892", "airportid_2": "12478", "airport_1": "LAX", "airport_2": "JFK", "nsmiles": "2510", "passengers": "6129.956522", "fare": "476.1913997", "carrier_lg": "DL", "large_ms": "0.4358318734", "fare_lg": "559.0688637", "carrier_low": "B6", "lf_ms": "0.3289175042", "fare_low": "341.7063317", "tbl1apk": "202531289212478LAXJFK"},
+  {"tbl": "Table1a", "year": "2025", "quarter": "2", "citymarketid_1": "32575", "citymarketid_2": "31703", "city1": "Los Angeles, CA (Metropolitan Area)", "city2": "New York City, NY (Metropolitan Area)", "airportid_1": "12892", "airportid_2": "12478", "airport_1": "LAX", "airport_2": "JFK", "nsmiles": "2510", "passengers": "7069.340659", "fare": "498.5134539", "carrier_lg": "DL", "large_ms": "0.449814242", "fare_lg": "538.4473581", "carrier_low": "B6", "lf_ms": "0.3240583855", "fare_low": "390.4239843", "tbl1apk": "202521289212478LAXJFK"},
+];
+
+// Table 6, Chicago-Miami, newest three quarters
+// https://data.transportation.gov/resource/yj5y-b2ir.json?$where=city1%20like%20%27%25Chicago%25%27%20AND%20city2%20like%20%27%25Miami%25%27&$order=year%20DESC,quarter%20DESC&$limit=3
+export const CHICAGO_MIAMI: Record<string, string>[] = [
+  {"tbl": "Table 6", "year": "2026", "quarter": "1", "citymarketid_1": "30977", "citymarketid_2": "32467", "city1": "Chicago, IL", "city2": "Miami, FL (Metropolitan Area)", "nsmiles": "1197", "passengers": "5588.655556", "fare": "228.7810923", "carrier_lg": "UA", "large_ms": "0.3298925005", "fare_lg": "277.5140693", "carrier_low": "NK", "lf_ms": "0.1904890661", "fare_low": "109.8152423", "table_1_flag": "-1", "tbl6pk": "202613097732467"},
+  {"tbl": "Table 6", "year": "2025", "quarter": "4", "citymarketid_1": "30977", "citymarketid_2": "32467", "city1": "Chicago, IL", "city2": "Miami, FL (Metropolitan Area)", "nsmiles": "1197", "passengers": "4554.5", "fare": "218.5133313", "carrier_lg": "AA", "large_ms": "0.3446710611", "fare_lg": "252.1143108", "carrier_low": "NK", "lf_ms": "0.2051530498", "fare_low": "111.8422675", "table_1_flag": "-1", "tbl6pk": "202543097732467"},
+  {"tbl": "Table 6", "year": "2025", "quarter": "3", "citymarketid_1": "30977", "citymarketid_2": "32467", "city1": "Chicago, IL", "city2": "Miami, FL (Metropolitan Area)", "nsmiles": "1197", "passengers": "3894.26087", "fare": "187.4185172", "carrier_lg": "AA", "large_ms": "0.3579654564", "fare_lg": "214.0794314", "carrier_low": "NK", "lf_ms": "0.2318322392", "fare_low": "112.6550163", "table_1_flag": "-1", "tbl6pk": "202533097732467"},
+];
+
+// Table 2, first three rows of the city summary
+// https://data.transportation.gov/resource/wqw2-rjgd.json?$limit=3
+export const TABLE2_ROWS: Record<string, string>[] = [
+  {"tbl": "Table 2", "year": "2026", "quarter": "1", "citymarketid": "35412", "city": "Knoxville, TN", "markets": "11", "cur_passengers": "276827", "cur_fare": "224.1574449", "cur_yield": "29.44338691", "distance": "761.3167791", "ly_passengers": "261110", "ly_fare": "211.6507794", "ly_yield": "28.0275801", "ly_distance": "755.1518134", "unique_id": "2026135412"},
+  {"tbl": "Table 2", "year": "2026", "quarter": "1", "citymarketid": "35096", "city": "Syracuse, NY", "markets": "4", "cur_passengers": "142498", "cur_fare": "207.8699491", "cur_yield": "21.07661848", "distance": "986.258537", "ly_passengers": "145670", "ly_fare": "182.6710235", "ly_yield": "19.27319153", "ly_distance": "947.7985172", "unique_id": "2026135096"},
+  {"tbl": "Table 2", "year": "2026", "quarter": "1", "citymarketid": "34986", "city": "Sarasota/Bradenton, FL", "markets": "18", "cur_passengers": "706330", "cur_fare": "246.3407614", "cur_yield": "24.022522", "distance": "1025.457533", "ly_passengers": "686190", "ly_fare": "212.8500342", "ly_yield": "20.767341", "ly_distance": "1024.926755", "unique_id": "2026134986"},
+];
+
