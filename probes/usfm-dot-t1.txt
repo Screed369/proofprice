@@ -1,0 +1,30 @@
+URL: https://data.transportation.gov/resource/4f3n-jbg2.json?$limit=3
+Fetched: 2026-10-14T15:53:45Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1146
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:53:45 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDg1MV81XzMzOW0xVXEtM0pnLXpuZndLV2RhcXRKMmltN3RUWQ---gzijVHYr8IYaAM9hG8usaZLEIVLFn---gzip--gzip"
+X-SODA2-Fields: ["year","quarter","citymarketid_1","citymarketid_2","city1","city2","nsmiles","passengers","fare","carrier_lg","large_ms","fare_lg","carrier_low","lf_ms","fare_low","table_1_flag","location_1","location_1_address","location_1_city","location_1_state","location_1_zip","location_2","location_2_address","location_2_city","location_2_state","location_2_zip"]
+X-SODA2-Types: ["number","number","number","number","text","text","number","number","number","text","number","number","text","number","number","number","point","text","text","text","text","point","text","text","text","text"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 5858c4d9b4202ddf04f68c323ea6eb0b
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"year":"2026","quarter":"1","citymarketid_1":"32467","citymarketid_2":"31703","city1":"Miami, FL (Metropolitan Area)","city2":"New York City, NY (Metropolitan Area)","nsmiles":"1118","passengers":"18658.73333","fare":"238.0470307","carrier_lg":"DL","large_ms":"0.2559325809","fare_lg":"274.972207","carrier_low":"NK","lf_ms":"0.1185170364","fare_low":"123.1406514","table_1_flag":"-1"}
+,{"year":"2026","quarter":"1","citymarketid_1":"32575","citymarketid_2":"32457","city1":"Los Angeles, CA (Metropolitan Area)","city2":"San Francisco, CA (Metropolitan Area)","nsmiles":"379","passengers":"15082.71111","fare":"201.4843522","carrier_lg":"WN","large_ms":"0.5113396943","fare_lg":"207.5539745","carrier_low":"AS","lf_ms":"0.1035040856","fare_low":"173.1089601","table_1_flag":"-1"}
+,{"year":"2026","quarter":"1","citymarketid_1":"31703","citymarketid_2":"31454","city1":"New York City, NY (Metropolitan Area)","city2":"Orlando, FL","nsmiles":"989","passengers":"12092.1","fare":"189.5466829","carrier_lg":"B6","large_ms":"0.269552481","fare_lg":"180.514769","carrier_low":"NK","lf_ms":"0.101932483","fare_low":"114.5976544","table_1_flag":"-1"}]
