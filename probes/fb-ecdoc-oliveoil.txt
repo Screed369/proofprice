@@ -1,0 +1,70 @@
+URL: https://agridata.ec.europa.eu/extensions/API_Documentation/oliveoil.html
+Fetched: 2026-10-14T14:14:26Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=utf-8 2035
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 14:14:25 GMT
+content-type: text/html;charset=utf-8
+set-cookie: X-Qlik-Session-v2-HTTP=3b6f2955-8b60-440c-aed0-80d397d3a222; Path=/; HttpOnly; SameSite=Strict; Secure
+cache-control: private, must-revalidate, max-age=0
+expires: Mon, 01 Jan 0001 00:00:00 GMT
+last-modified: Tue, 02 Jun 2026 07:55:13 GMT
+accept-ranges: bytes
+etag: 639159837131120587
+x-ua-compatible: IE=edge
+access-control-allow-origin: https://agridata.ec.europa.eu
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000;includeSubDomains;Preload
+server: -
+
+=== FILE TYPE: HTML document, ASCII text
+=== FIRST 80000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Olive oil</title>
+	<link id="bootstrapCSS" href="../CommonStyles/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../DataPortal/API_Documentation.css">
+</head>
+<body>
+<div class="sect1">
+	<div class="intro_section">
+		<div class="intro_desc">
+			<div>
+				<h2 id="resources-oliveOil-prices" class="section_heading">Olive oil</h2>
+
+				<div class="paragraph" style="line-height:1.5em">
+					<p>Evolution of up to 7 different product categories in more than 20 different markets across the major oil-producing Member States,
+						with some of the data series going back as far as June 2010. Annual and monthly gross production and end-of-year stocks of olive oil per Member State.</p>
+					<p>More information can be found on the portal&#8217;s <a href="https://agridata.ec.europa.eu/extensions/DashboardOliveOil/OliveOilPrices.html" style="color:#004494; text-decoration:none" target="_blank"><strong>olive oil prices</strong></a> app and
+						<a href="https://agridata.ec.europa.eu/extensions/DashboardOliveOil/OliveOilProduction.html" style="color:#004494; text-decoration:none" target="_blank"><strong>olive oil production</strong></a> app.</p>
+				</div>
+				<p class="paragraph">
+					The base url for API endpoints is <b><em>https://api.tech.ec.europa.eu/agrifood</em></b>.
+				</p>
+			</div>
+			<img src="../CommonImages/olives.png">
+		</div>
+	</div>
+	<div class="sectionbody">
+		<iframe
+				src="https://api.tech.ec.europa.eu/agrifood/swagger-ui/index.html?url=/agrifood/v3/api-docs/olive_oil&defaultModelsExpandDepth=-1&defaultModelExpandDepth=100&validatorUrl=none"
+				id="swagger-iframe"
+				title="Swagger UI"
+				class="swagger_ui_container"
+		>
+		</iframe>
+	</div>
+</div>
+<div style="height:30px"></div>
+
+<script src="./swagger_ui_height_script.js"></script>
+</body>
+</html>
