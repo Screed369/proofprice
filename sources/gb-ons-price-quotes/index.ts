@@ -47,7 +47,7 @@ async function explore(item: string, arg: string) {
   }
   if (item === "find") {
     // arg = "<regex>|<sheet index list, comma>|<maxPerSheet>"
-    const [re, sheetList, maxStr] = arg.split("|");
+    const [re, sheetList, maxStr] = arg.split("~");
     const u = "https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/adhocs/3607consumerpricespriceleveldistributionsmicrodataaugust2026/consumerpricespriceleveldistributionsmicrodata202608.xlsx";
     const res = await fetch(u, { headers: UA });
     const buf = Buffer.from(await res.arrayBuffer());
@@ -69,13 +69,35 @@ async function explore(item: string, arg: string) {
   }
   if (item === "links") {
     // arg = "<url>|<regex>"
-    const [url, re] = arg.split("|");
+    const [url, re] = arg.split("~");
     const res = await fetch(url, { headers: UA });
     const html = await res.text();
     const rx = new RegExp(re || "adhocs", "i");
     const found = new Set<string>();
     for (const m of html.matchAll(/href="([^"]+)"/g)) if (rx.test(m[1])) found.add(m[1]);
     return { status: res.status, bytes: html.length, links: [...found].slice(0, 60) };
+  }
+  if (item === "bls") {
+    // arg = "<series id regex>~<last n lines per series>"
+    const [re, nStr] = arg.split("~");
+    const res = await fetch("https://download.bls.gov/pub/time.series/ap/ap.data.0.Current", { headers: { "user-agent": "ProofPrice/1.0 (hello@proofprice.com)" } });
+    const text = await res.text();
+    const rx = new RegExp(re);
+    const keep = Number(nStr || 4);
+    const bySeries = new Map<string, string[]>();
+    let lineCount = 0;
+    let head = "";
+    for (const line of text.split(/\r?\n/)) {
+      lineCount++;
+      if (lineCount === 1) head = line;
+      const id = line.split("\t")[0]?.trim() ?? "";
+      if (!rx.test(id)) continue;
+      const a = bySeries.get(id) ?? [];
+      a.push(line);
+      if (a.length > keep) a.shift();
+      bySeries.set(id, a);
+    }
+    return { status: res.status, bytes: text.length, lineCount, head, series: [...bySeries.entries()].slice(0, 40) };
   }
   return { hint: "item must be xlsx | sheet | quotes" };
 }
