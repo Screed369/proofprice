@@ -1,0 +1,832 @@
+URL: https://data.ct.gov/api/views/5mzw-sjtu.json
+Fetched: 2026-10-14T14:12:18Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 34169
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 14:12:18 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 38f7de0f6e4fdc82aa87deb4c6c44cae
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{
+  "id" : "5mzw-sjtu",
+  "name" : "Real Estate Sales 2001-2024 GL",
+  "assetType" : "dataset",
+  "attribution" : "Office of Policy and Management",
+  "attributionLink" : "https://portal.ct.gov/OPM/IGPP/IGPP-Home",
+  "averageRating" : 0,
+  "category" : "Housing and Development",
+  "createdAt" : 1530821118,
+  "description" : "The Office of Policy and Management maintains a listing of all real estate sales with a sales price of $2,000 or greater that occur between October 1 and September 30 of each year. For each sale record, the file includes: town, property address, date of sale, property type (residential, apartment, commercial, industrial or vacant land), sales price, and property assessment.\n\nData are collected in accordance with Connecticut General Statutes, section 10-261a and 10-261b: https://www.cga.ct.gov/current/pub/chap_172.htm#sec_10-261a and https://www.cga.ct.gov/current/pub/chap_172.htm#sec_10-261b. \nAnnual real estate sales are reported by grand list year (October 1 through September 30 each year). For instance, sales from 2018 GL are from 10/01/2018 through 9/30/2019.\n\nSome municipalities may not report data for certain years because when a municipality implements a revaluation, they are not required to submit sales data for the twelve months following implementation.\n\nFor questions about this data, please contact us at: OPMIGPP@ct.gov",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 235889,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "PUBLIC_DOMAIN",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 36526020,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1614096829,
+  "publicationGroup" : 15364366,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1786553424,
+  "rowsUpdatedBy" : "muqj-8hcz",
+  "tableId" : 18068176,
+  "totalTimesRated" : 0,
+  "viewCount" : 59613,
+  "viewLastModified" : 1786553775,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1531149363,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 3277003,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1531149363,
+    "targetAudience" : "public",
+    "workflowId" : 2184,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "cvy9-n6sb",
+      "displayName" : "Tyler Kleykamp"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 526195184,
+    "name" : "Serial Number",
+    "dataTypeName" : "number",
+    "description" : "Serial number",
+    "fieldName" : "serialnumber",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 66840360,
+    "width" : 197,
+    "cachedContents" : {
+      "non_null" : "1188997",
+      "largest" : "2000500023",
+      "null" : "0",
+      "top" : [ {
+        "item" : "10002",
+        "count" : "172"
+      }, {
+        "item" : "10010",
+        "count" : "172"
+      }, {
+        "item" : "10018",
+        "count" : "172"
+      }, {
+        "item" : "10015",
+        "count" : "171"
+      }, {
+        "item" : "10029",
+        "count" : "171"
+      }, {
+        "item" : "10030",
+        "count" : "171"
+      }, {
+        "item" : "10009",
+        "count" : "171"
+      }, {
+        "item" : "10001",
+        "count" : "171"
+      }, {
+        "item" : "10003",
+        "count" : "171"
+      }, {
+        "item" : "10028",
+        "count" : "171"
+      }, {
+        "item" : "10021",
+        "count" : "170"
+      }, {
+        "item" : "10031",
+        "count" : "170"
+      }, {
+        "item" : "10020",
+        "count" : "170"
+      }, {
+        "item" : "10012",
+        "count" : "170"
+      }, {
+        "item" : "10008",
+        "count" : "170"
+      }, {
+        "item" : "10027",
+        "count" : "170"
+      }, {
+        "item" : "10014",
+        "count" : "170"
+      }, {
+        "item" : "10011",
+        "count" : "170"
+      }, {
+        "item" : "10033",
+        "count" : "170"
+      }, {
+        "item" : "10041",
+        "count" : "169"
+      } ],
+      "smallest" : "0",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true",
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195185,
+    "name" : "List Year",
+    "dataTypeName" : "number",
+    "description" : "Year the property was listed for sale",
+    "fieldName" : "listyear",
+    "position" : 3,
+    "renderTypeName" : "number",
+    "tableColumnId" : 66840366,
+    "width" : 270,
+    "cachedContents" : {
+      "non_null" : "1188997",
+      "largest" : "2024",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2004",
+        "count" : "84056"
+      }, {
+        "item" : "2020",
+        "count" : "66592"
+      }, {
+        "item" : "2003",
+        "count" : "64239"
+      }, {
+        "item" : "2005",
+        "count" : "61602"
+      }, {
+        "item" : "2002",
+        "count" : "59682"
+      }, {
+        "item" : "2001",
+        "count" : "59584"
+      }, {
+        "item" : "2019",
+        "count" : "58954"
+      }, {
+        "item" : "2021",
+        "count" : "56946"
+      }, {
+        "item" : "2018",
+        "count" : "50709"
+      }, {
+        "item" : "2016",
+        "count" : "49773"
+      }, {
+        "item" : "2014",
+        "count" : "49563"
+      }, {
+        "item" : "2006",
+        "count" : "48785"
+      }, {
+        "item" : "2024",
+        "count" : "47275"
+      }, {
+        "item" : "2015",
+        "count" : "46651"
+      }, {
+        "item" : "2017",
+        "count" : "45691"
+      }, {
+        "item" : "2023",
+        "count" : "44093"
+      }, {
+        "item" : "2022",
+        "count" : "43470"
+      }, {
+        "item" : "2009",
+        "count" : "42508"
+      }, {
+        "item" : "2013",
+        "count" : "39943"
+      }, {
+        "item" : "2012",
+        "count" : "35973"
+      } ],
+      "smallest" : "2001",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true",
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195186,
+    "name" : "Date Recorded",
+    "dataTypeName" : "calendar_date",
+    "description" : "Date the sale was recorded locally",
+    "fieldName" : "daterecorded",
+    "position" : 4,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 66840362,
+    "width" : 248,
+    "cachedContents" : {
+      "non_null" : "1188995",
+      "largest" : "2025-09-30T00:00:00.000",
+      "null" : "2",
+      "top" : [ {
+        "item" : "2005-07-01T00:00:00.000",
+        "count" : "877"
+      }, {
+        "item" : "2005-08-01T00:00:00.000",
+        "count" : "859"
+      }, {
+        "item" : "2004-07-01T00:00:00.000",
+        "count" : "840"
+      }, {
+        "item" : "2005-06-30T00:00:00.000",
+        "count" : "828"
+      }, {
+        "item" : "2005-09-30T00:00:00.000",
+        "count" : "781"
+      }, {
+        "item" : "2002-07-01T00:00:00.000",
+        "count" : "779"
+      }, {
+        "item" : "2004-11-01T00:00:00.000",
+        "count" : "777"
+      }, {
+        "item" : "2004-10-01T00:00:00.000",
+        "count" : "777"
+      }, {
+        "item" : "2005-05-02T00:00:00.000",
+        "count" : "732"
+      }, {
+        "item" : "2004-08-02T00:00:00.000",
+        "count" : "727"
+      }, {
+        "item" : "2005-04-01T00:00:00.000",
+        "count" : "687"
+      }, {
+        "item" : "2005-07-29T00:00:00.000",
+        "count" : "675"
+      }, {
+        "item" : "2005-09-01T00:00:00.000",
+        "count" : "672"
+      }, {
+        "item" : "2005-06-01T00:00:00.000",
+        "count" : "666"
+      }, {
+        "item" : "2003-07-01T00:00:00.000",
+        "count" : "646"
+      }, {
+        "item" : "2004-05-03T00:00:00.000",
+        "count" : "638"
+      }, {
+        "item" : "2001-10-01T00:00:00.000",
+        "count" : "632"
+      }, {
+        "item" : "2004-06-30T00:00:00.000",
+        "count" : "631"
+      }, {
+        "item" : "2002-06-28T00:00:00.000",
+        "count" : "625"
+      }, {
+        "item" : "2004-12-01T00:00:00.000",
+        "count" : "623"
+      } ],
+      "smallest" : "0023-10-02T00:00:00.000",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "view" : "date",
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195187,
+    "name" : "Town",
+    "dataTypeName" : "text",
+    "description" : "Town name",
+    "fieldName" : "town",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 66840363,
+    "width" : 175,
+    "cachedContents" : {
+      "non_null" : "1188997",
+      "largest" : "Woodstock",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Bridgeport",
+        "count" : "41036"
+      }, {
+        "item" : "Stamford",
+        "count" : "39832"
+      }, {
+        "item" : "Waterbury",
+        "count" : "35648"
+      }, {
+        "item" : "Norwalk",
+        "count" : "29100"
+      }, {
+        "item" : "New Haven",
+        "count" : "25909"
+      }, {
+        "item" : "West Hartford",
+        "count" : "23897"
+      }, {
+        "item" : "Danbury",
+        "count" : "23877"
+      }, {
+        "item" : "Hartford",
+        "count" : "21798"
+      }, {
+        "item" : "Stratford",
+        "count" : "20388"
+      }, {
+        "item" : "Hamden",
+        "count" : "20323"
+      }, {
+        "item" : "Milford",
+        "count" : "20215"
+      }, {
+        "item" : "Bristol",
+        "count" : "20180"
+      }, {
+        "item" : "Greenwich",
+        "count" : "20159"
+      }, {
+        "item" : "Meriden",
+        "count" : "20115"
+      }, {
+        "item" : "Fairfield",
+        "count" : "19612"
+      }, {
+        "item" : "New Britain",
+        "count" : "19301"
+      }, {
+        "item" : "Manchester",
+        "count" : "18736"
+      }, {
+        "item" : "Torrington",
+        "count" : "16322"
+      }, {
+        "item" : "East Hartford",
+        "count" : "15595"
+      }, {
+        "item" : "Southington",
+        "count" : "14958"
+      } ],
+      "smallest" : "Andover",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195188,
+    "name" : "Address",
+    "dataTypeName" : "text",
+    "description" : "Address",
+    "fieldName" : "address",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 66840364,
+    "width" : 184,
+    "cachedContents" : {
+      "non_null" : "1188945",
+      "largest" : "ZYGMONT LANE 0016",
+      "null" : "52",
+      "top" : [ {
+        "item" : "MULTI ADDRESSES",
+        "count" : "620"
+      }, {
+        "item" : "8 SOUTH RD",
+        "count" : "556"
+      }, {
+        "item" : "51 OLD SPRINGFIELD RD",
+        "count" : "244"
+      }, {
+        "item" : "312 N BISHOP AVE",
+        "count" : "114"
+      }, {
+        "item" : "RIGGS ST",
+        "count" : "108"
+      }, {
+        "item" : "71 AIKEN ST",
+        "count" : "106"
+      }, {
+        "item" : "42 PIERCE RD",
+        "count" : "98"
+      }, {
+        "item" : "166 OLD BROOKFIELD RD",
+        "count" : "90"
+      }, {
+        "item" : "25 GRAND ST",
+        "count" : "78"
+      }, {
+        "item" : "97 RICHARDS AVE",
+        "count" : "73"
+      }, {
+        "item" : "50 AIKEN ST",
+        "count" : "72"
+      }, {
+        "item" : "RIVER RD",
+        "count" : "72"
+      }, {
+        "item" : "41 WOLFPIT AVE",
+        "count" : "70"
+      }, {
+        "item" : "4 DASKAMS LN",
+        "count" : "69"
+      }, {
+        "item" : "POCONO PT RD",
+        "count" : "67"
+      }, {
+        "item" : "MAIN ST",
+        "count" : "67"
+      }, {
+        "item" : "ELM ST",
+        "count" : "65"
+      }, {
+        "item" : "325 LAFAYETTE ST",
+        "count" : "65"
+      }, {
+        "item" : "100 RICHARDS AVE",
+        "count" : "61"
+      }, {
+        "item" : "33 NORTH WATER ST",
+        "count" : "54"
+      } ],
+      "smallest" : "??",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195189,
+    "name" : "Assessed Value",
+    "dataTypeName" : "number",
+    "description" : "Value of the property used for local tax assesment",
+    "fieldName" : "assessedvalue",
+    "position" : 7,
+    "renderTypeName" : "number",
+    "tableColumnId" : 66840365,
+    "width" : 192,
+    "cachedContents" : {
+      "non_null" : "1188997",
+      "largest" : "881510000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0",
+        "count" : "7477"
+      }, {
+        "item" : "17500",
+        "count" : "627"
+      }, {
+        "item" : "105000",
+        "count" : "595"
+      }, {
+        "item" : "35000",
+        "count" : "571"
+      }, {
+        "item" : "70000",
+        "count" : "497"
+      }, {
+        "item" : "63000",
+        "count" : "490"
+      }, {
+        "item" : "10500",
+        "count" : "469"
+      }, {
+        "item" : "84000",
+        "count" : "465"
+      }, {
+        "item" : "28000",
+        "count" : "459"
+      }, {
+        "item" : "112000",
+        "count" : "450"
+      }, {
+        "item" : "87500",
+        "count" : "444"
+      }, {
+        "item" : "126000",
+        "count" : "440"
+      }, {
+        "item" : "12600",
+        "count" : "434"
+      }, {
+        "item" : "91000",
+        "count" : "415"
+      }, {
+        "item" : "98000",
+        "count" : "415"
+      }, {
+        "item" : "140000",
+        "count" : "407"
+      }, {
+        "item" : "56000",
+        "count" : "399"
+      }, {
+        "item" : "42000",
+        "count" : "392"
+      }, {
+        "item" : "77000",
+        "count" : "385"
+      }, {
+        "item" : "108500",
+        "count" : "366"
+      } ],
+      "smallest" : "0",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "precisionStyle" : "currency",
+      "precision" : "2",
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195190,
+    "name" : "Sale Amount",
+    "dataTypeName" : "number",
+    "description" : "Amount the property was sold for",
+    "fieldName" : "saleamount",
+    "position" : 8,
+    "renderTypeName" : "number",
+    "tableColumnId" : 66840367,
+    "width" : 184,
+    "cachedContents" : {
+      "non_null" : "1188997",
+      "largest" : "5000000000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "250000",
+        "count" : "10952"
+      }, {
+        "item" : "200000",
+        "count" : "10810"
+      }, {
+        "item" : "150000",
+        "count" : "10684"
+      }, {
+        "item" : "300000",
+        "count" : "9689"
+      }, {
+        "item" : "225000",
+        "count" : "8817"
+      }, {
+        "item" : "175000",
+        "count" : "8597"
+      }, {
+        "item" : "180000",
+        "count" : "8381"
+      }, {
+        "item" : "350000",
+        "count" : "8097"
+      }, {
+        "item" : "160000",
+        "count" : "7966"
+      }, {
+        "item" : "220000",
+        "count" : "7810"
+      }, {
+        "item" : "165000",
+        "count" : "7588"
+      }, {
+        "item" : "210000",
+        "count" : "7575"
+      }, {
+        "item" : "230000",
+        "count" : "7526"
+      }, {
+        "item" : "240000",
+        "count" : "7479"
+      }, {
+        "item" : "275000",
+        "count" : "7461"
+      }, {
+        "item" : "190000",
+        "count" : "7459"
+      }, {
+        "item" : "170000",
+        "count" : "7445"
+      }, {
+        "item" : "125000",
+        "count" : "7427"
+      }, {
+        "item" : "100000",
+        "count" : "7391"
+      }, {
+        "item" : "185000",
+        "count" : "7093"
+      } ],
+      "smallest" : "0",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "precisionStyle" : "currency",
+      "precision" : "2",
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195191,
+    "name" : "Sales Ratio",
+    "dataTypeName" : "text",
+    "description" : "Ratio of the sale price to the assessed value",
+    "fieldName" : "salesratio",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 66840368,
+    "width" : 207,
+    "cachedContents" : {
+      "non_null" : "1188997",
+      "largest" : "99.99574287",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0",
+        "count" : "8736"
+      }, {
+        "item" : "0.7",
+        "count" : "1025"
+      }, {
+        "item" : "1",
+        "count" : "643"
+      }, {
+        "item" : "0.56",
+        "count" : "492"
+      }, {
+        "item" : "0.63",
+        "count" : "357"
+      }, {
+        "item" : "0.42",
+        "count" : "345"
+      }, {
+        "item" : "0.6",
+        "count" : "338"
+      }, {
+        "item" : "0.49",
+        "count" : "323"
+      }, {
+        "item" : "0.5",
+        "count" : "320"
+      }, {
+        "item" : "0.0000",
+        "count" : "281"
+      }, {
+        "item" : "0.525",
+        "count" : "272"
+      }, {
+        "item" : "0.504",
+        "count" : "263"
+      }, {
+        "item" : "0.35",
+        "count" : "252"
+      }, {
+        "item" : "0.616",
+        "count" : "249"
+      }, {
+        "item" : "0.84",
+        "count" : "240"
+      }, {
+        "item" : "0.588",
+        "count" : "238"
+      }, {
+        "item" : "0.448",
+        "count" : "236"
+      }, {
+        "item" : "0.62",
+        "count" : "233"
+      }, {
+        "item" : "0.48",
+        "count" : "231"
+      }, {
+        "item" : "0.574",
+        "count" : "226"
+      } ],
+      "smallest" : "0",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195192,
+    "name" : "Property Type",
+    "dataTypeName" : "text",
+    "description" : "Type of property including: Residential, Commercial, Industrial, Apartments, Vacant, etc",
+    "fieldName" : "propertytype",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 66840369,
+    "width" : 205,
+    "cachedContents" : {
+      "non_null" : "806551",
+      "largest" : "Vacant Land",
+      "null" : "382446",
+      "top" : [ {
+        "item" : "Single Family",
+        "count" : "401612"
+      }, {
+        "item" : "Residential",
+        "count" : "233189"
+      }, {
+        "item" : "Condo",
+        "count" : "105420"
+      }, {
+        "item" : "Two Family",
+        "count" : "26408"
+      }, {
+        "item" : "Three Family",
+        "count" : "12586"
+      }, {
+        "item" : "Vacant Land",
+        "count" : "12240"
+      }, {
+        "item" : "Commercial",
+        "count" : "9664"
+      }, {
+        "item" : "Four Family",
+        "count" : "2150"
+      }, {
+        "item" : "Apartments",
+        "count" : "1998"
+      }, {
+        "item" : "Industrial",
+        "count" : "1268"
+      }, {
+        "item" : "Public Utility",
+        "count" : "16"
+      } ],
+      "smallest" : "Apartments",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
+    "format" : {
+      "align" : "left"
+    }
+  }, {
+    "id" : 526195193,
+    "name" : "Residential Type",
+    "dataTypeName" : "text",
+    "description" : "Indicates whether property is single or multifamily residential",
+    "fieldName" : "residentialtype",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 66840370,
+    "width" : 160,
+    "cachedContents" : {
+      "non_null" : "781365",
+      "largest" : "Two Family",
+      "null" : "407632",
+      "top" : [ {
+        "item" : "Single Family",
+        "count" : "565134"
+      }, {
+        "item" : "Condo",
+        "count" : "154471"
+      }, {
+        "item" : "Two Family",
+        "count" : "39591"
+      }, {
+        "item" : "Three Family",
+        "count" : "18776"
+      }, {
+        "item" : "Four Family",
+        "count" : "3393"
+      } ],
+      "smallest" : "Condo",
+      "count" : "1188997",
+      "cardinality" : "1188997"
+    },
