@@ -1,0 +1,28 @@
+URL: https://data.transportation.gov/resource/yj5y-b2ir.json?$where=city2%20like%20%27%25Chicago%25%27%20AND%20city1%20like%20%27%25Miami%25%27&$order=year%20DESC,quarter%20DESC&$limit=3
+Fetched: 2026-10-14T15:55:38Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:55:38 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42MDg1MV81XzMzOXVLaWZ6S19tbXZmcWdMRjNQQVZ4NGRMcnl6WQ---gzijehodDtJK-cIIt7QObBFQebaxN8--gzip--gzip"
+X-SODA2-Fields: ["tbl","year","quarter","citymarketid_1","citymarketid_2","city1","city2","nsmiles","passengers","fare","carrier_lg","large_ms","fare_lg","carrier_low","lf_ms","fare_low","table_1_flag","location_1","location_1_address","location_1_city","location_1_state","location_1_zip","location_2","location_2_address","location_2_city","location_2_state","location_2_zip","tbl6pk"]
+X-SODA2-Types: ["text","number","number","number","number","text","text","number","number","number","text","number","number","text","number","number","number","point","text","text","text","text","point","text","text","text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+Last-Modified: Thu, 03 Sep 2026 17:51:21 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 5357ada08b83025519ff4d3359d2b260
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+[]
