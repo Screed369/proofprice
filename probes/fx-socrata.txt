@@ -1,0 +1,30 @@
+URL: https://data.cityofchicago.org/resource/4ijn-s7e5.json?%24select=inspection_id,dba_name,results&%24limit=3&%24order=inspection_id%20DESC
+Fetched: 2026-10-14T13:17:17Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 231
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 13:17:17 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC43MTE2XzE0NzRfMTY5MDkxMGZHYk42MGhwc2FEZGFTV3VfbU9OQ3l5Z253---gzipr8BGwASWiK_z0ASMF00-4PaIg9I--gzip--gzip"
+X-SODA2-Fields: ["inspection_id","dba_name","results"]
+X-SODA2-Types: ["number","text","text"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 14 Oct 2026 09:17:56 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 14 Oct 2026 09:17:56 GMT
+Last-Modified: Wed, 14 Oct 2026 09:17:56 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: b5473256ca6991b4b9202a29756d978e
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+[{"inspection_id":"2644103","dba_name":"JJ FISH","results":"Fail"}
+,{"inspection_id":"2644053","dba_name":"BEEHIVE CHILDCARE CENTER","results":"Pass"}
+,{"inspection_id":"2644052","dba_name":"Domino's store 2986","results":"Pass"}]
