@@ -123,7 +123,7 @@ test("us-nadac answers a strength-specific question from one product", async () 
   assert.match(a.statistic?.reference_period ?? "", /as of 2026-10-14 \(rates effective 2026-09-23\)/);
   assert.match(a.summary, /about \$0\.02792 per tablet to acquire ATORVASTATIN 20 MG TABLET/);
   assert.match(a.summary, /not the price a patient pays at the counter/);
-  assert.match(a.summary, /roughly \$0\.84 for 30 tablets/);
+  assert.match(a.summary, /30 tablets would cost the pharmacy roughly \$0\.84/);
   const extra = a.extra as any;
   assert.equal(extra.typical_pack.cost_for_30_units_usd, 0.8376);
   assert.equal(extra.products.length, 1);
@@ -154,6 +154,15 @@ test("us-nadac maps paracetamol to acetaminophen and keeps liquids out of a tabl
   assert.equal(a.price?.unit, "per unit (each)"); // GELCAP, TABLET and CAPLET mixed: no single word for them
   assert.equal((a.extra as any).pricing_unit, "EA");
   assert.equal((a.extra as any).other_pricing_units.length, 3); // the liquids are priced per mL and listed separately
+});
+
+test("us-nadac only says rows were cut off when the portal holds more than it sent", async () => {
+  const filtered = await nadacMedicine({ medicine: "acetaminophen 325 mg" }, { fetcher: portal({ rows: { "ACETAMINOPHEN%20%25": ACETAMINOPHEN_JSON } }), today: "2026-10-14" });
+  assert.equal(filtered.status, "ok");
+  assert.equal((filtered.extra as any).rows_truncated, undefined); // we filtered 10 fetched rows down to 3: nothing was cut off
+  const cut = await nadacMedicine({ medicine: "acetaminophen 325 mg" }, { fetcher: portal({ rows: { "ACETAMINOPHEN%20%25": { ...ACETAMINOPHEN_JSON, count: 5000 } } }), today: "2026-10-14" });
+  assert.equal((cut.extra as any).rows_truncated, true);
+  assert.equal((cut.extra as any).rows_in_portal, 5000);
 });
 
 test("us-nadac flags brand rates and tells apart generic and brand", async () => {
@@ -198,7 +207,8 @@ test("us-nadac falls back to last year's dataset in early January", async () => 
 test("us-nadac prints dollars with the precision NADAC publishes", () => {
   assert.equal(usd(0.02792), "$0.02792");
   assert.equal(usd(0.0374), "$0.0374");
-  assert.equal(usd(0.5), "$0.500");
+  assert.equal(usd(0.5), "$0.50");
+  assert.equal(usd(0.05), "$0.050");
   assert.equal(usd(19.07256), "$19.07");
   assert.equal(usd(1234.5), "$1,235");
 });

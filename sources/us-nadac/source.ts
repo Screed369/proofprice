@@ -362,7 +362,7 @@ export function usd(v: number): string {
   if (v >= 1) return "$" + v.toFixed(2);
   const t = v.toFixed(5).replace(/0+$/, "");
   const [i, f = ""] = t.split(".");
-  return `$${i}.${f.padEnd(3, "0")}`;
+  return `$${i}.${f.padEnd(v >= 0.1 ? 2 : 3, "0")}`;
 }
 
 /** Dollars and cents for a pack: $0.84, $23.30, $1,235. */
@@ -401,7 +401,7 @@ export function buildNadacAnswer(opts: {
   rows: NadacRow[];
   asOf: string;
   today: string;
-  total: number | null;
+  total: number | null; // set only when the portal held more matching rows than we fetched (the answer then covers the first rows only)
   baseUrl?: string;
   unmatched?: string[]; // descriptions that started with the name but failed the strength/form filter
 }): PriceAnswer {
@@ -460,8 +460,8 @@ export function buildNadacAnswer(opts: {
     describe: (v) =>
       `US retail pharmacies paid on average about ${usd(v)} per ${word} to acquire ${what}` +
       (single ? "" : `; across these products the published rates range from ${usd(Math.min(...rates))} to ${usd(Math.max(...rates))}`) +
-      (solid ? `, so roughly ${usdPack(v * 30)} for 30 ${word}s at that unit cost` : "") +
       `. This is the pharmacy's acquisition cost (NADAC), not the price a patient pays at the counter.` +
+      (solid ? ` At that unit cost, 30 ${word}s would cost the pharmacy roughly ${usdPack(v * 30)}.` : "") +
       (stale ? ` The newest NADAC file is ${ageDays} days old.` : ""),
     note: noteParts.join(" "),
     baseUrl: opts.baseUrl,
@@ -479,7 +479,7 @@ export function buildNadacAnswer(opts: {
       ...(stale ? { stale: true } : {}),
       products_matched: used.length,
       ndc_rows_used: ndcCount,
-      ...(opts.total !== null && opts.total > rows.length ? { rows_truncated: true, rows_in_portal: opts.total } : {}),
+      ...(opts.total !== null ? { rows_truncated: true, rows_in_portal: opts.total } : {}),
       ...(solid
         ? {
             typical_pack: {
@@ -541,5 +541,6 @@ export async function nadacMedicine(input: NadacInput, deps: NadacDeps = {}): Pr
   if (!rows.length && q.name.length >= 4) ({ rows, total } = parseRows(await fetcher(rowsUrl(datasetId, asOf, q.name, "contains"))));
   const kept = rows.filter((r) => matchesQuery(r.description, q));
   const unmatched = [...new Set(rows.map((r) => r.description))];
-  return buildNadacAnswer({ q, rows: kept, asOf, today, total, baseUrl: input.baseUrl, unmatched: kept.length ? undefined : unmatched });
+  const truncated = total !== null && total > rows.length ? total : null;
+  return buildNadacAnswer({ q, rows: kept, asOf, today, total: truncated, baseUrl: input.baseUrl, unmatched: kept.length ? undefined : unmatched });
 }

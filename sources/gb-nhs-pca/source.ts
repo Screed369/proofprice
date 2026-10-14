@@ -299,7 +299,7 @@ export function gbp(v: number): string {
   if (v >= 1) return "£" + v.toFixed(2);
   const t = v.toFixed(5).replace(/0+$/, "");
   const [i, f = ""] = t.split(".");
-  return `£${i}.${f.padEnd(3, "0")}`;
+  return `£${i}.${f.padEnd(v >= 0.1 ? 2 : 3, "0")}`;
 }
 
 /** Pounds and pence for a pack: £0.73, £23.30, £1,235. */
@@ -343,7 +343,11 @@ export function buildGbAnswer(opts: {
   const stale = ageDays > STALE_AFTER_DAYS;
   const solid = unit === "tablet" || unit === "capsule";
   const single = used.length === 1;
-  const what = single ? used[0].presentation : `${q.name} (${used.length} presentations, all strengths and forms measured per ${unit})`;
+  const label = used[0]?.presentation.split(" ")[0] ?? q.name;
+  const narrowed = Boolean(q.strength || q.form || q.extraWords.length);
+  const what = single
+    ? used[0].presentation
+    : `${label} (${used.length} ${narrowed ? "matching presentations" : "presentations, all strengths and forms"}, measured per ${unit})`;
   const perItem = enough ? nic / items : 0;
   const avgQty = enough ? quantity / items : 0;
   const hint = !all.length

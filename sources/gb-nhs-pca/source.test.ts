@@ -104,7 +104,7 @@ test("gb-nhs-pca averages every strength for a name query and keeps liquids out 
   assert.equal(extra.unit_of_measure, "tablet");
   assert.deepEqual(extra.other_units_of_measure, ["ml"]);
   assert.equal(extra.presentations[0].presentation, "Atorvastatin 20mg tablets");
-  assert.match(a.summary, /atorvastatin \(6 presentations, all strengths and forms measured per tablet\)/);
+  assert.match(a.summary, /Atorvastatin \(6 presentations, all strengths and forms, measured per tablet\)/);
 });
 
 test("gb-nhs-pca answers omeprazole per capsule and a brand per tablet", async () => {
@@ -155,7 +155,8 @@ test("gb-nhs-pca refuses to guess when nothing matches, and flags old data", asy
 
 test("gb-nhs-pca prints pounds with the precision it needs", () => {
   assert.equal(gbp(0.02604), "£0.02604");
-  assert.equal(gbp(0.5), "£0.500");
+  assert.equal(gbp(0.5), "£0.50");
+  assert.equal(gbp(0.88), "£0.88");
   assert.equal(gbp(2.684), "£2.68");
   assert.equal(gbp(1234.5), "£1,235");
 });
