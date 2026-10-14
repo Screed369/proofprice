@@ -1,0 +1,799 @@
+URL: https://data.bts.gov/api/catalog/v1?q=fare&limit=50
+Fetched: 2026-10-14T15:47:23Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 386692
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 14 Oct 2026 15:47:23 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: c3cfff112a8738243ef9fedd6efc93d9
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Air Fares",
+            "id" : "gsyp-spgc",
+            "resource_name" : null,
+            "parent_fxf" : [ "c2mq-ugy5", "jrzq-3mec" ],
+            "description" : "Aviation Facts and Figures - Average air fares by quarter, airport and air carrier.",
+            "attribution" : "Bureau of Transportation Statistics",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "story",
+            "updatedAt" : "2025-11-13T14:18:45.379Z",
+            "createdAt" : "2024-07-05T19:06:40.000Z",
+            "metadata_updated_at" : "2026-09-29T11:27:49.000Z",
+            "data_updated_at" : "2025-11-13T14:18:45.379Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 414,
+                "page_views_last_month" : 1730,
+                "page_views_total" : 14924,
+                "page_views_last_week_log" : 8.696967526234287,
+                "page_views_last_month_log" : 10.757390009366638,
+                "page_views_total_log" : 13.86544331103953
+              },
+            "columns_name" : [],
+            "columns_field_name" : [],
+            "columns_datatype" : [],
+            "columns_description" : [],
+            "columns_format" : [],
+            "download_count" : 0,
+            "provenance" : "official",
+            "lens_view_type" : "story",
+            "lens_display_type" : "story",
+            "locked" : false,
+            "backend" : "not_a_dataset",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2024-07-05T19:32:23.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Aviation",
+            "domain_tags" : [
+                              "aviation facts and figures",
+                              "aff",
+                              "aviation"
+                            ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Common-Core-3_Contact-Email",
+                  "value" : "BTSAviationFacts@dot.gov"
+                },
+                { "key" : "Common-Core-3_Program-Code", "value" : "021:053" },
+                {
+                  "key" : "Common-Core-3_Public-Access-Level",
+                  "value" : "public"
+                },
+                { "key" : "Common-Core-3_Language", "value" : "en-US" },
+                {
+                  "key" : "Common-Core-3_Publisher",
+                  "value" : "Bureau of Transportation Statistics"
+                },
+                { "key" : "Common-Core-3_Bureau-Code", "value" : "021:00" },
+                {
+                  "key" : "Common-Core-3_Contact-Name",
+                  "value" : "BTS Aviation Facts and Figures Program"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "data.bts.gov",
+            "license" : "Public Domain U.S. Government"
+          },
+        "permalink" : "https://data.bts.gov/stories/s/gsyp-spgc",
+        "link" : "https://data.bts.gov/stories/s/gsyp-spgc",
+        "owner" :
+          {
+            "id" : "th5g-u2v6",
+            "user_type" : "interactive",
+            "display_name" : "BTS Aviation Facts and Figures Program"
+          },
+        "creator" :
+          {
+            "id" : "th5g-u2v6",
+            "user_type" : "interactive",
+            "display_name" : "BTS Aviation Facts and Figures Program"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "ETS Fare History",
+            "id" : "4n2j-anrc",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Historical fare data for Edmonton Transit System (ETS).",
+            "attribution" : "Financial and Corporate Services",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-12T08:08:03.000Z",
+            "createdAt" : "2020-04-02T15:49:54.000Z",
+            "metadata_updated_at" : "2026-10-12T08:08:02.000Z",
+            "data_updated_at" : "2026-10-12T08:08:03.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 61,
+                "page_views_last_month" : 234,
+                "page_views_total" : 7267,
+                "page_views_last_week_log" : 5.954196310386876,
+                "page_views_last_month_log" : 7.876516946565,
+                "page_views_total_log" : 12.827342704234114
+              },
+            "columns_name" :
+              [
+                "Seniors Monthly Pass",
+                "ETS@Work",
+                "Day Pass",
+                "Senior Annual Pass",
+                "Youth/Senior Cash",
+                "DATS Monthly Pass",
+                "Effective Date",
+                "Airport Monthly Pass RTE 747 Only",
+                "Youth Monthly Pass",
+                "U-PASS (fall)",
+                "Adult Tickets (10)",
+                "Post Secondary Monthly Pass",
+                "U-PASS (summer)",
+                "Youth/Senior Tickets (10)",
+                "Adult Monthly Pass",
+                "Airport Tickets (adult only)",
+                "Current Row",
+                "Cash",
+                "Senior Low Income Annual Pass",
+                "Low-Income Pass",
+                "U-PASS (winter)",
+                "AISH Monthly Pass",
+                "Airport Cash",
+                "Adult Tickets (20)"
+              ],
+            "columns_field_name" :
+              [
+                "seniors_monthly_pass",
+                "ets_work",
+                "day_pass",
+                "senior_annual_pass",
+                "youth_senior_cash",
+                "dats_monthly_pass",
+                "effective_date",
+                "airport_monthly_pass_rte",
+                "youth_monthly_pass",
+                "u_pass_fall",
+                "adult_tickets_10",
+                "post_secondary_monthly_pass",
+                "u_pass_summer",
+                "youth_senior_tickets_10",
+                "adult_monthly_pass",
+                "airport_tickets_adult_only",
+                "current_effdt",
+                "cash",
+                "senior_low_income_annual",
+                "low_income_pass",
+                "u_pass_winter",
+                "aish_monthly_pass",
+                "airport_cash",
+                "adult_tickets_20"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Checkbox",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "Senior monthly pass (65+).",
+                "In partnership with Edmonton employers, the ETS@Work program provides employees with a monthly discount up to 24% off the cost of a regular adult monthly pass, plus further eligibility for a federal tax credit.",
+                "",
+                "Senior annual pass (65+).",
+                "Cash fare for youth (24 and under) and senior (65+).",
+                "",
+                "The date on which the fares became effective.",
+                "Monthly pass for route 747 only.",
+                "Youth monthly pass (24 and under).",
+                "U-Pass provides eligible students at participating institutions unlimited travel on ETS and participating regional providers.",
+                "Book of ten (10) adult tickets.",
+                "(transitioning to Youth Pass in September 2020)",
+                "U-Pass provides eligible students at participating institutions unlimited travel on ETS and participating regional providers.",
+                "Book of ten (10) youth/senior tickets.",
+                "Adult monthly pass (ages 25-64).",
+                "One-way ticket on route 747: Unused adult tickets.",
+                "If the Effective Date value is the greatest available value that is less than or equal to the date on which this dataset was last updated, then the value of this column will be TRUE. This enables easy filtering to just the currently effective fare information.",
+                "Adult cash fare (ages 25-64).",
+                "Senior annual pass (65+) for those with an income level within a specific range.",
+                "",
+                "U-Pass provides eligible students at participating institutions unlimited travel on ETS and participating regional providers.",
+                "",
+                "One-way ticket on route 747: Cash fare.",
+                "Book of twenty (20) adult tickets."
+              ],
+            "columns_format" :
+              [
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                { "view" : "date_ymd" },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {},
+                {},
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "CAD",
+                  "precision" : "2",
+                  "align" : "right"
+                }
+              ],
+            "download_count" : 705,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-04-01T19:54:49.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Transit",
+            "domain_tags" : [ "bus", "ets", "fare", "transit" ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Time-Frame_Date-Made-Public",
+                  "value" : "2020-04-02"
+                },
+                { "key" : "Time-Frame_Update-Frequency", "value" : "Weekly" },
+                {
+                  "key" : "Time-Frame_Automated-or-Manual",
+                  "value" : "Automated"
+                },
+                {
+                  "key" : "Quality-Indicators_Duplicates-Removed",
+                  "value" : "No"
+                },
+                {
+                  "key" : "Quality-Indicators_Verified-for-Accuracy",
+                  "value" : "No"
+                },
+                {
+                  "key" : "General-Information_Primary-Dataset-or-View",
+                  "value" : "Primary"
+                },
+                {
+                  "key" : "General-Information_Internal-or-External",
+                  "value" : "Internally Sourced Data "
+                }
+              ]
+          },
+        "metadata" :
+          { "domain" : "data.edmonton.ca", "license" : "See Terms of Use" },
+        "permalink" : "https://data.edmonton.ca/d/4n2j-anrc",
+        "link" : "https://data.edmonton.ca/Transit/ETS-Fare-History/4n2j-anrc",
+        "owner" :
+          {
+            "id" : "ikvd-2t7u",
+            "user_type" : "interactive",
+            "display_name" : "Chris"
+          },
+        "creator" :
+          {
+            "id" : "ikvd-2t7u",
+            "user_type" : "interactive",
+            "display_name" : "Chris"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Fair Fares Enrollees",
+            "id" : "3tw8-6si8",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Monthly statistics detailing total enrollment in the Fair Fares program, from the Department of Social Services Office of Performance Management & Data Analytics.",
+            "attribution" : "Human Resources Administration (HRA)",
+            "attribution_link" : "https://www.nyc.gov/site/fairfares/index.page",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-09T17:00:50.000Z",
+            "createdAt" : "2024-02-13T15:26:31.000Z",
+            "metadata_updated_at" : "2026-09-09T17:00:49.000Z",
+            "data_updated_at" : "2026-09-09T17:00:50.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 43,
+                "page_views_last_month" : 157,
+                "page_views_total" : 2586,
+                "page_views_last_week_log" : 5.459431618637297,
+                "page_views_last_month_log" : 7.303780748177103,
+                "page_views_total_log" : 11.337064338684742
+              },
+            "columns_name" : [ "Month", "Total Fair Fares Enrollees" ],
+            "columns_field_name" : [ "month", "total_fair_fares_enrollees" ],
+            "columns_datatype" : [ "Calendar date", "Number" ],
+            "columns_description" :
+              [
+                "Reporting month",
+                "Total Fair Fares enrollees as of a given month"
+              ],
+            "columns_format" :
+              [
+                { "view" : "date_monthy" },
+                { "decimalSeparator" : ".", "groupSeparator" : "," }
+              ],
+            "download_count" : 1288,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2024-02-13T15:30:02.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Social Services",
+            "domain_tags" : [ "mta", "metrocards", "fair fares" ],
+            "domain_metadata" :
+              [
+                { "key" : "Update_Automation", "value" : "No" },
+                { "key" : "Update_Date-Made-Public", "value" : "4/10/2024" },
+                { "key" : "Update_Update-Frequency", "value" : "Monthly" },
+                {
+                  "key" : "Update_Data-Change-Frequency",
+                  "value" : "Monthly"
+                },
+                {
+                  "key" : "Dataset-Information_Agency",
+                  "value" : "Human Resources Administration (HRA)"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.cityofnewyork.us" },
+        "permalink" : "https://data.cityofnewyork.us/d/3tw8-6si8",
+        "link" : "https://data.cityofnewyork.us/Social-Services/Fair-Fares-Enrollees/3tw8-6si8",
+        "owner" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          },
+        "creator" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "CTA - Map of Fare Media Sales Outlets (deprecated August 2014)",
+            "id" : "pa8e-mhbh",
+            "resource_name" : null,
+            "parent_fxf" : [ "ag7u-gr9m" ],
+            "description" : "Map shows physical locations where CTA fare media, such as Transit Cards, CTA Passes and Chicago Cards were sold through approximately July 2014, prior to the implementation of Ventra cards. The locations for Ventra card sales/reloading are more extensive and not yet available in this format.  Please see http://www.transitchicago.com/ventra for information on the Ventra program and https://www.ventrachicago.com/retailers/locations to find Ventra retail locations.",
+            "attribution" : null,
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "map",
+            "updatedAt" : "2025-02-20T15:36:11.000Z",
+            "createdAt" : "2025-02-11T20:12:03.000Z",
+            "metadata_updated_at" : "2025-02-20T15:36:11.000Z",
+            "data_updated_at" : "2013-10-14T16:34:14.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 21,
+                "page_views_last_month" : 86,
+                "page_views_total" : 194084,
+                "page_views_last_week_log" : 4.459431618637297,
+                "page_views_last_month_log" : 6.442943495848729,
+                "page_views_total_log" : 17.566329097064177
+              },
+            "columns_name" : [],
+            "columns_field_name" : [],
+            "columns_datatype" : [],
+            "columns_description" : [],
+            "columns_format" : [],
+            "download_count" : 2350,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "visualization_canvas_map",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2025-02-11T20:12:03.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Transportation",
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Metadata_Data-Owner",
+                  "value" : "Chicago Transit Authority"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.cityofchicago.org" },
+        "permalink" : "https://data.cityofchicago.org/d/pa8e-mhbh",
+        "link" : "https://data.cityofchicago.org/Transportation/CTA-Map-of-Fare-Media-Sales-Outlets-deprecated-Aug/pa8e-mhbh",
+        "owner" :
+          {
+            "id" : "6bsn-5494",
+            "user_type" : "interactive",
+            "display_name" : "CTA"
+          },
+        "creator" :
+          {
+            "id" : "6bsn-5494",
+            "user_type" : "interactive",
+            "display_name" : "CTA"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Consumer Airfare Report: Table 5 - Detailed Fare Information For Highest and Lowest Fare Markets Under 750 Miles",
+            "id" : "bkh6-tj42",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Provides detailed fare information for highest and lowest fare markets under 750 miles. For a more complete explanation, please read the introductory information at the beginning of Table 5 itself in the report (https://www.transportation.gov/office-policy/aviation-policy/domestic-airline-consumer-airfare-report-pdf).",
+            "attribution" : "Department of Transportation Office of the Assistant Secretary for Aviation and International Affairs",
+            "attribution_link" : "https://www.transportation.gov/policy/aviation-policy/competition-data-analysis/research-reports",
+            "contact_email" : "Randall.Keizer@dot.gov",
+            "type" : "dataset",
+            "updatedAt" : "2026-09-03T17:56:25.000Z",
+            "createdAt" : "2017-04-04T20:24:56.000Z",
+            "metadata_updated_at" : "2026-09-03T17:56:24.000Z",
+            "data_updated_at" : "2026-09-03T17:56:25.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 0,
+                "page_views_last_month" : 26,
+                "page_views_total" : 5624,
+                "page_views_last_week_log" : 0.0,
+                "page_views_last_month_log" : 4.754887502163469,
+                "page_views_total_log" : 12.45763738099176
+              },
+            "columns_name" :
+              [
+                "carairlineid",
+                "city2",
+                "carpax",
+                "carpaxshare",
+                "fareinc_min",
+                "fareinc_max",
+                "fare_inc_maxpaxsh",
+                "fare_inc_x3paxsh",
+                "Geocoded_City1 (city)",
+                "Geocoded_City2 (city)",
+                "citymarketid_2",
+                "citymarketid_1",
+                "mkt_fare",
+                "Year",
+                "Geocoded_City2",
+                "Geocoded_City1",
+                "caravgfare",
+                "Geocoded_City2 (state)",
+                "Geocoded_City2 (address)",
+                "Geocoded_City1 (address)",
+                "fareinc_minpaxsh",
+                "car",
+                "city1",
+                "quarter",
+                "tbl",
+                "Geocoded_City1 (zip)",
+                "Geocoded_City1 (state)",
+                "Geocoded_City2 (zip)",
+                "tbl5pk"
+              ],
+            "columns_field_name" :
+              [
+                "carairlineid",
+                "city2",
+                "carpax",
+                "carpaxshare",
+                "fareinc_min",
+                "fareinc_max",
+                "fare_inc_maxpaxsh",
+                "fare_inc_x3paxsh",
+                "cityname_location1_city",
+                "cityname_location2_city",
+                "citymarketid_2",
+                "citymarketid_1",
+                "mkt_fare",
+                "year",
+                "cityname_location2",
+                "cityname_location1",
+                "caravgfare",
+                "cityname_location2_state",
+                "cityname_location2_address",
+                "cityname_location1_address",
+                "fareinc_minpaxsh",
+                "car",
+                "city1",
+                "quarter",
+                "tbl",
+                "cityname_location1_zip",
+                "cityname_location1_state",
+                "cityname_location2_zip",
+                "tbl5pk"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Point",
+                "Point",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Carrier ID is an identification number assigned by US DOT to identify a carrier",
+                "City2 is used to consolidate airports serving the same city market",
+                "Passengers by carrier",
+                "Carrier's share in the market",
+                "Carrier's minimum fare increment",
+                "Carrier's maximum fare increment",
+                "Carrier's maximum passenger share",
+                "Percentage of passengers paying three times minimum fare",
+                "",
+                "",
+                "City market ID is an identification number assigned by US DOT to identify a city market.  Use this field to consolidate airports serving the same city market",
+                "City market ID is an identification number assigned by US DOT to identify a city market.  Use this field to consolidate airports serving the same city market",
+                "Total market fare",
+                "Year",
+                "Geocoded - City2 is used to consolidate airports serving the same city market with Latitude and Longitude",
+                "Geocoded - City1 is used to consolidate airports serving the same city market with Latitude and Longitude",
+                "Carrier's average fare",
+                "",
+                "",
+                "",
+                "Carrier's minimum passenger share",
+                "Carrier",
+                "City1 is used to consolidate airports serving the same city market",
+                "Quarter",
+                "Name of the data table",
+                "",
+                "",
+                "",
+                "Primary Key for Table 5;  Unique ID"
+              ],
+            "columns_format" :
+              [
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center",
+                  "mask" : "#####"
+                },
+                { "displayStyle" : "plain", "align" : "left" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "4",
+                  "align" : "center"
+                },
+                {},
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "no
