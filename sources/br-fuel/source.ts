@@ -27,7 +27,7 @@ export const INFO: SourceInfo = {
     "UNCONFIRMED: ANP's open-data page for the series (gov.br/anp, Série histórica de preços de combustíveis) states no licence. Brazil's federal open-data decree binds ANP: open data are released 'sob licença aberta que permita sua livre utilização, consumo ou cruzamento, limitando-se a creditar a autoria ou a fonte' and there is 'permissão irrestrita de reuso das bases de dados publicadas em formato aberto' (Decreto 8.777/2016, art. 2 III and 3 IV). But ANP's website terms say 'É autorizada a reprodução total ou parcial, sem fins lucrativos, do conteúdo, mediante a citação obrigatória da fonte' (https://www.gov.br/anp/pt-br/acesso-a-informacao/termos-de-uso-privacidade-e-seguranca-1). Whether that non-profit clause reaches the open datasets has not been confirmed with ANP (permission requested).",
   licence_url: "https://www2.camara.leg.br/legin/fed/decret/2016/decreto-8777-11-maio-2016-783082-normaatualizada-pe.pdf",
   attribution:
-    "Fonte: ANP – Agência Nacional do Petróleo, Gás Natural e Biocombustíveis, Levantamento de Preços de Combustíveis (dados abertos), CC BY. Medians and ranges are calculated by ProofPrice.",
+    "Fonte: ANP – Agência Nacional do Petróleo, Gás Natural e Biocombustíveis, Levantamento de Preços de Combustíveis (dados abertos), https://www.gov.br/anp. Medians and ranges are calculated by ProofPrice.",
   homepage: "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis",
   limits:
     "A weekly survey of a sample of stations, not every station: a place's figure rests on the stations ANP surveyed there, and a place with fewer than 5 surveyed stations in the week is not published. " +

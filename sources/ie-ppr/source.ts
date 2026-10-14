@@ -22,7 +22,8 @@ export const INFO: SourceInfo = {
   licence:
     "PSRA re-use terms (https://www.propertypriceregister.ie/website/npsra/ppr-copyright-en.html): the Authority encourages re-use of its information 'free of charge in any format', provided users 'Acknowledge the source and our copyright', reproduce it accurately and not in a misleading context, and do not use it for 'the principal purpose of advertising or promoting a particular product'. PSRA register data is also listed under Creative Commons Attribution 4.0 on data.gov.ie.",
   licence_url: "https://www.propertypriceregister.ie/website/npsra/ppr-copyright-en.html",
-  attribution: "Source: Property Services Regulatory Authority (PSRA), Residential Property Price Register. Licensed under CC BY 4.0.",
+  attribution:
+    "Source: Property Services Regulatory Authority (PSRA), Residential Property Price Register, © PSRA. Aggregates calculated by ProofPrice.",
   homepage: "https://www.propertypriceregister.ie/",
   limits:
     "Aggregates only, by county or Dublin postal district and rolling window; never individual addresses. Excludes sales flagged 'not full market price' (for example family transfers), prices under EUR 10,000 and records above EUR 10 million (bulk sales). Prices are per sale as declared for stamp duty, usually one home. New homes are usually recorded without 13.5% VAT: 'new' keeps them as recorded, 'any' leaves out prices recorded without VAT.",

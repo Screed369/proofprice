@@ -20,7 +20,8 @@ export const INFO: SourceInfo = {
   licence:
     "NOT CLEARED FOR REUSE (source offline since 2026-10-14). The live FuelWatch RSS feed carries only 'Copyright 2025 FuelWatch. All Rights Reserved.' and no licence. The CC BY 4.0 record on data.wa.gov.au ('FuelWatch Historic Fuel Prices', https://catalogue.data.wa.gov.au/dataset/fuelwatch-historic-fuel-prices) lists only the historic monthly files, not the RSS feed. The WA Government terms of use (https://www.wa.gov.au/terms-of-use) say: 'no part may be reproduced or re-used for any commercial purposes whatsoever without prior written permission of the State of Western Australia.'",
   licence_url: "https://www.wa.gov.au/terms-of-use",
-  attribution: "Source: FuelWatch, Government of Western Australia (Department of Energy, Mines, Industry Regulation and Safety), CC BY 4.0.",
+  attribution:
+    "Source: FuelWatch, Government of Western Australia (Department of Energy, Mines, Industry Regulation and Safety).",
   homepage: "https://www.fuelwatch.wa.gov.au/",
   limits:
     "Western Australia only (not the rest of Australia). Prices are posted standard cash prices in Australian dollars per litre, GST included: they exclude supermarket and shopper-docket discounts and card fees. " +
