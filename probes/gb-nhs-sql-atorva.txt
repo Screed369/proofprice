@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/datastore_search_sql?resource_id=PCA_202607&sql=SELECT%20BNF_PRESENTATION_NAME%2C%20UNIT_OF_MEASURE%2C%20PREP_CLASS%2C%20SUM%28ITEMS%29%20AS%20items%2C%20SUM%28TOTAL_QUANTITY%29%20AS%20quantity%2C%20SUM%28NIC%29%20AS%20nic%20FROM%20%60PCA_202607%60%20WHERE%20UPPER%28BNF_PRESENTATION_NAME%29%20LIKE%20%27ATORVASTATIN%25%27%20GROUP%20BY%201%2C%202%2C%203%20ORDER%20BY%20items%20DESC%20LIMIT%20300
+Fetched: 2026-10-14T15:48:58Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3281
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 14 Oct 2026 15:48:58 GMT
+content-type: application/json;charset=utf-8
+content-length: 3281
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search_sql", "success": true, "result": {"help": "https://demo.ckan.org/api/3/action/help_show?name=datastore_search_sql", "success": "true", "result": {"records": [{"BNF_PRESENTATION_NAME": "Atorvastatin 20mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "01", "items": 3625620, "quantity": 122664746, "nic": 3154242.52}, {"BNF_PRESENTATION_NAME": "Atorvastatin 40mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "01", "items": 1807057, "quantity": 56442700, "nic": 1693281}, {"BNF_PRESENTATION_NAME": "Atorvastatin 80mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "01", "items": 1119397, "quantity": 31151540, "nic": 1478966.1}, {"BNF_PRESENTATION_NAME": "Atorvastatin 10mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "01", "items": 502796, "quantity": 17016062, "nic": 383063.82}, {"BNF_PRESENTATION_NAME": "Atorvastatin 60mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "01", "items": 5861, "quantity": 183896, "nic": 32901.86}, {"BNF_PRESENTATION_NAME": "Atorvastatin 20mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "05", "items": 3790, "quantity": 108985, "nic": 42965.22}, {"BNF_PRESENTATION_NAME": "Atorvastatin 30mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "01", "items": 2585, "quantity": 86577, "nic": 8874.82}, {"BNF_PRESENTATION_NAME": "Atorvastatin 40mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "05", "items": 1783, "quantity": 50642, "nic": 16045.06}, {"BNF_PRESENTATION_NAME": "Atorvastatin 80mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "05", "items": 1141, "quantity": 31391, "nic": 8594.43}, {"BNF_PRESENTATION_NAME": "Atorvastatin 20mg/5ml oral suspension sugar free", "UNIT_OF_MEASURE": "ml", "PREP_CLASS": "01", "items": 749, "quantity": 192000, "nic": 310067.2}, {"BNF_PRESENTATION_NAME": "Atorvastatin 10mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "05", "items": 329, "quantity": 11109, "nic": 949.22}, {"BNF_PRESENTATION_NAME": "Atorvastatin 30mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "05", "items": 72, "quantity": 2100, "nic": 1336.1}, {"BNF_PRESENTATION_NAME": "Atorvastatin 20mg/5ml oral suspension", "UNIT_OF_MEASURE": "ml", "PREP_CLASS": "05", "items": 30, "quantity": 8140, "nic": 13585.88}, {"BNF_PRESENTATION_NAME": "Atorvastatin 60mg tablets", "UNIT_OF_MEASURE": "tablet", "PREP_CLASS": "05", "items": 20, "quantity": 560, "nic": 616.84}, {"BNF_PRESENTATION_NAME": "Atorvastatin 80mg/5ml oral suspension", "UNIT_OF_MEASURE": "ml", "PREP_CLASS": "05", "items": 14, "quantity": 1840, "nic": 7148.76}, {"BNF_PRESENTATION_NAME": "Atorvastatin 20mg/5ml oral suspension sugar free", "UNIT_OF_MEASURE": "ml", "PREP_CLASS": "05", "items": 10, "quantity": 4050, "nic": 6540.48}, {"BNF_PRESENTATION_NAME": "Atorvastatin 20mg/5ml oral solution", "UNIT_OF_MEASURE": "ml", "PREP_CLASS": "05", "items": 8, "quantity": 2690, "nic": 10226.62}, {"BNF_PRESENTATION_NAME": "Atorvastatin 10mg/5ml oral solution", "UNIT_OF_MEASURE": "ml", "PREP_CLASS": "05", "items": 5, "quantity": 1800, "nic": 4647.68}, {"BNF_PRESENTATION_NAME": "Atorvastatin 10mg/5ml oral suspension", "UNIT_OF_MEASURE": "ml", "PREP_CLASS": "05", "items": 2, "quantity": 350, "nic": 1209.3}], "fields": []}}}
