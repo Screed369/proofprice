@@ -1,0 +1,23 @@
+URL: https://dadosabertos.aneel.gov.br/api/3/action/datastore_search?resource_id=fcf2906c-7c32-4b9b-a637-054e7a5234f4&filters=%7B%22DscSubGrupo%22%3A%22B1%22%2C%22DscBaseTarifaria%22%3A%22Tarifa%20de%20Aplica%C3%A7%C3%A3o%22%2C%22DscModalidadeTarifaria%22%3A%22Convencional%22%2C%22DscSubClasse%22%3A%22Residencial%22%2C%22DscDetalhe%22%3A%22N%C3%A3o%20se%20aplica%22%7D&sort=DatInicioVigencia%20desc&limit=3
+Fetched: 2026-10-15T13:43:03Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3412
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Thu, 15 Oct 2026 13:43:03 GMT
+content-type: application/json;charset=utf-8
+content-length: 3412
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: geolocation=(), microphone=(), camera=()
+strict-transport-security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://dadosabertos.aneel.gov.br/api/3/action/help_show?name=datastore_search", "success": true, "result": {"filters": {"DscSubGrupo": "B1", "DscBaseTarifaria": "Tarifa de Aplica\u00e7\u00e3o", "DscModalidadeTarifaria": "Convencional", "DscSubClasse": "Residencial", "DscDetalhe": "N\u00e3o se aplica"}, "include_next_page": false, "include_total": true, "limit": 3, "records_format": "objects", "resource_id": "fcf2906c-7c32-4b9b-a637-054e7a5234f4", "sort": "DatInicioVigencia desc", "filterops": {"op": "$and", "field": null, "value": [{"op": "eq", "field": "DscSubGrupo", "value": "B1"}, {"op": "eq", "field": "DscBaseTarifaria", "value": "Tarifa de Aplica\u00e7\u00e3o"}, {"op": "eq", "field": "DscModalidadeTarifaria", "value": "Convencional"}, {"op": "eq", "field": "DscSubClasse", "value": "Residencial"}, {"op": "eq", "field": "DscDetalhe", "value": "N\u00e3o se aplica"}]}, "records": [{"_id":328540,"DatGeracaoConjuntoDados":"2026-10-15","DscREH":"RESOLUÇÃO HOMOLOGATÓRIA Nº 3.761, DE 30 DE SETEMBRO DE 2026","SigAgente":"CEGERO","NumCNPJDistribuidora":"86444163000189","DatInicioVigencia":"2026-09-30","DatFimVigencia":"2027-09-29","DscBaseTarifaria":"Tarifa de Aplicação","DscSubGrupo":"B1","DscModalidadeTarifaria":"Convencional","DscClasse":"Residencial","DscSubClasse":"Residencial","DscDetalhe":"Não se aplica","NomPostoTarifario":"Não se aplica","DscUnidadeTerciaria":"MWh","SigAgenteAcessante":"Não se aplica","VlrTUSD":"345,30","VlrTE":"240,75"},{"_id":328350,"DatGeracaoConjuntoDados":"2026-10-15","DscREH":"RESOLUÇÃO HOMOLOGATÓRIA Nº 3.760, DE 30 DE SETEMBRO DE 2026","SigAgente":"CEDRI","NumCNPJDistribuidora":"50105865000190","DatInicioVigencia":"2026-09-30","DatFimVigencia":"2027-09-29","DscBaseTarifaria":"Tarifa de Aplicação","DscSubGrupo":"B1","DscModalidadeTarifaria":"Convencional","DscClasse":"Residencial","DscSubClasse":"Residencial","DscDetalhe":"Não se aplica","NomPostoTarifario":"Não se aplica","DscUnidadeTerciaria":"MWh","SigAgenteAcessante":"Não se aplica","VlrTUSD":"644,57","VlrTE":"354,14"},{"_id":328730,"DatGeracaoConjuntoDados":"2026-10-15","DscREH":"RESOLUÇÃO HOMOLOGATÓRIA Nº 3.762, DE 30 DE SETEMBRO DE 2026","SigAgente":"CEJAMA","NumCNPJDistribuidora":"85665990000130","DatInicioVigencia":"2026-09-30","DatFimVigencia":"2027-09-29","DscBaseTarifaria":"Tarifa de Aplicação","DscSubGrupo":"B1","DscModalidadeTarifaria":"Convencional","DscClasse":"Residencial","DscSubClasse":"Residencial","DscDetalhe":"Não se aplica","NomPostoTarifario":"Não se aplica","DscUnidadeTerciaria":"MWh","SigAgenteAcessante":"Não se aplica","VlrTUSD":"558,70","VlrTE":"211,45"}], "fields": [{"id": "_id", "type": "int"}, {"id": "DatGeracaoConjuntoDados", "type": "text"}, {"id": "DscREH", "type": "text"}, {"id": "SigAgente", "type": "text"}, {"id": "NumCNPJDistribuidora", "type": "text"}, {"id": "DatInicioVigencia", "type": "text"}, {"id": "DatFimVigencia", "type": "text"}, {"id": "DscBaseTarifaria", "type": "text"}, {"id": "DscSubGrupo", "type": "text"}, {"id": "DscModalidadeTarifaria", "type": "text"}, {"id": "DscClasse", "type": "text"}, {"id": "DscSubClasse", "type": "text"}, {"id": "DscDetalhe", "type": "text"}, {"id": "NomPostoTarifario", "type": "text"}, {"id": "DscUnidadeTerciaria", "type": "text"}, {"id": "SigAgenteAcessante", "type": "text"}, {"id": "VlrTUSD", "type": "text"}, {"id": "VlrTE", "type": "text"}], "total": 2119}}
