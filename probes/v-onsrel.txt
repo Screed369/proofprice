@@ -1,0 +1,613 @@
+URL: https://www.ons.gov.uk/peoplepopulationandcommunity/housing/bulletins/privaterentalmarketsummarystatisticsinengland/latest/relateddata
+Fetched: 2026-10-15T06:51:30Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 43057
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 15 Oct 2026 06:51:30 GMT
+content-type: text/html; charset=UTF-8
+allow: DELETE, GET, HEAD, POST, PUT, OPTIONS, PATCH
+cache-control: public, s-maxage=900, max-age=900, stale-while-revalidate=10
+strict-transport-security: max-age=31536000; includeSubDomains
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+vary: accept-encoding
+last-modified: Thu, 15 Oct 2026 06:51:30 GMT
+cf-cache-status: MISS
+set-cookie: __cf_bm=WtCfvhbyDo9b1obf8t.aZHd4u8TQQYcKqxiJAhBArnA-1792047089.7775018-1.0.1.1-lk25lfK8aPhWfICEntrcmwL4SayL4jD2xya4U.p.mjw8AYbAl_OZFLy_VfI52c44bX1CVhqKiwlIU.tN2OkjiDCrAYib0cJNF0bVWIBj37jcD.WZMleQQF88Aof.zImG; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk; Expires=Thu, 15 Oct 2026 07:21:30 GMT
+set-cookie: _cfuvid=QWx6L52_kFUkT2FzdwfWrsZI9UXHEvKW1jn.jBYCMPc-1792047089.7775018-1.0.1.1-gPS9vAElqiCY_VfHG0t0IbPD4C6dbCkYC.b_ZqA0emI; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk
+server: cloudflare
+cf-ray: a4ace5471d2feb2c-SJC
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (947)
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+  <head>
+    <title>
+      
+        Data related to Private rental market summary statistics in England
+      - Office for National Statistics
+    </title>
+
+    
+      <meta name="description" content="Median monthly rental prices for the private rental market in England, calculated using data from the Valuation Office Agency.">
+    
+
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,user-scalable=1" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#58595B">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
+    
+    
+
+    <link rel="stylesheet" href="//cdn.ons.gov.uk/dis-design-system-go/v2.6.1/css/main.css">
+
+    
+
+    
+
+    <script>
+
+    
+    function htmlUnescape(str) {
+        return str.replace(/&#x3D;/g, "=");
+    }
+
+    dataLayer = [{
+        "gtm.whitelist": ["google", "hjtc", "lcl"],
+        "gtm.blacklist": ["customScripts", "sp", "adm", "awct", "k", "d", "j"],
+    
+        "contentTitle": htmlUnescape("Data related to Private rental market summary statistics in England"),
+    
+    
+    
+    
+    
+        "contentType": "related-data",
+    
+    
+    }];
+
+</script>
+
+    
+    
+
+    
+    
+    <script>
+      function loadGTM(){
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer'
+              ? '&l=' + l
+              : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MBCBVQS');
+      }
+
+      
+      function extractValue(key, extractionString) {
+        const extractionRegex = new RegExp(`'${key}':(.*?)[,}]`)
+        const match = extractionString.match(extractionRegex)
+        if (match) {
+            return match[1]
+        }
+        
+        return null
+      }
+
+      
+      
+      function isUsageCookieAllowed() {
+        var policyCookie = document.cookie.match('(?:^|; )ons_cookie_policy=({.*?})');
+        if (policyCookie) {
+            console.debug('ons_cookie_policy found');
+
+            var usageValue = extractValue("usage", policyCookie[1]);
+            console.debug('usage is', usageValue);
+
+            return (usageValue == "true") ? true : false;
+        }
+        console.debug('no cookie found - opting out');
+        return false;
+      }
+
+      if (isUsageCookieAllowed()) {
+        loadGTM();
+      }
+    </script>
+    
+  </head>
+
+  <body class="page-type--related-data">
+    <script>
+      document.body.className = (
+        (document.body.className)
+        ? document.body.className + ' js js-enabled'
+        : 'js js-enabled');
+    </script>
+
+    
+    <noscript>
+           
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MBCBVQS"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+      
+    </noscript>
+    
+
+    
+
+      <div class="ons-page">
+        <div class="ons-page__content">
+        
+          <section>
+    <form action="/cookies/accept-all" method="get" id="global-cookie-message" class="cookies-banner cookies-banner--hidden js-cookies-banner-form clearfix"
+                aria-label="cookie banner">
+        <div class="cookies-banner__wrapper wrapper js-cookies-banner-inform" role="region" aria-label="Cookies banner">
+            <div>
+                <div class="cookies-banner__message adjust-font-size--18">
+                    <h2 class="cookies-banner__heading font-size--h3">Cookies on ons.gov.uk</h2>
+                    <p class="cookies-banner__body">Cookies are small files stored on your device when you visit a website. We use some essential cookies to make this website work.</p>
+                    <p class="cookies-banner__body">We would like to set <a href="/cookies">additional cookies</a> to remember your settings and understand how you use the site. This helps us to improve our services.</p>
+                </div>
+                <div class="cookies-banner__buttons">
+                    <div class="nojs--hide cookies-banner__button cookies-banner__button--accept">
+                        <button class="btn btn--full-width btn--primary btn--focus margin-right--2 font-weight-700 font-size--17 text-wrap js-accept-cookies" data-gtm-accept-cookies="true" type="submit" data-action="accept" tabindex="0">Accept additional cookies</button>
+                    </div>
+                    <div class="nojs--hide cookies-banner__button cookies-banner__button--reject">
+                        <button class="btn btn--full-width btn--primary btn--focus margin-right--2 font-weight-700 font-size--17 text-wrap js-reject-cookies" data-gtm-accept-cookies="false" type="submit" data-action="reject" tabindex="0">Reject additional cookies</button>
+                    </div>
+                    <div class="cookies-banner__button">
+                        <a href="/cookies">Manage settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden js-cookies-banner-confirmation" tabindex="-1">
+            <div class="cookies-banner__wrapper wrapper">
+                <div class="col">
+                    <div class="cookies-banner__message adjust-font-size--18">
+                        <p class="cookies-banner__confirmation-message">
+                            <span class="hidden ons-js-accepted-text">You have accepted all additional cookies.</span>
+                            <span class="hidden ons-js-rejected-text">You have rejected all additional cookies.</span>
+                            <span>You can <a href="/cookies">change your cookie preferences</a> at any time.</span>
+                            <button type="button" class="cookies-banner__button--hide js-hide-cookies-banner">Hide</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+        
+        
+          <header>
+    <a class="skiplink" href="#main" tabindex="0">Skip to main content</a>
+    
+    
+    
+        <div class="ons-phase-banner">
+  <div class="ons-container">
+    <div class="ons-grid ons-grid--flex ons-grid--gutterless ons-grid--no-wrap">
+      <div class="ons-grid__col ons-col-auto ons-u-flex-no-grow ons-u-flex-no-shrink">
+        <strong class="ons-phase-banner__badge">Beta</strong>
+      </div>
+      
+        <div class="ons-col-auto ons-grid--flex ons-grid--no-wrap@l ons-grid--vertical-center">
+            <span class="ons-u-fs-s ons-u-m-no">This is a new service – your <a href="/feedback">feedback</a> will help us improve it.</span>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+    
+    <div id="pagePath" class="hide">/peoplepopulationandcommunity/housing/bulletins/privaterentalmarketsummarystatisticsinengland/latest/relateddata</div>
+    <div class="wrapper">
+        <div class="header col-wrap">
+            <div class="col col--lg-one-third col--md-one-third">
+                <a id="logo-link" href="/">
+                    <img class="logo" src="https://cdn.ons.gov.uk/assets/images/ons-logo/v2/ons-logo.svg" alt="Office for National Statistics logo - Homepage">
+                </a>
+            </div>
+            <div class="col col--lg-two-thirds col--md-two-thirds hide--sm print--hide language--js__container">
+                <div class="language">
+                    
+                        English (EN) |
+                        <a class="language__link icon--hide" lang="cy" href="https://cy.ons.gov.uk/peoplepopulationandcommunity/housing/bulletins/privaterentalmarketsummarystatisticsinengland/latest/relateddata">Cymraeg (CY)</a>
+                    
+                </div>
+            </div>
+            <div class="secondary-nav col col--lg-two-thirds col--md-two-thirds print--hide">
+                <ul id="nav-secondary" class="secondary-nav__list js-nav-clone__list">
+                    <li class="secondary-nav__item">
+                        <a class="secondary-nav__link  js-nav-clone__link" href="/releasecalendar">Release calendar</a>
+                    </li>
+                    <li class="secondary-nav__item">
+                        <a class="secondary-nav__link  js-nav-clone__link" href="/methodology">Methodology</a>
+                    </li>
+                    <li class="secondary-nav__item">
+                        <a class="secondary-nav__link  js-nav-clone__link" href="/news">Media</a>
+                    </li>
+                    <li class="secondary-nav__item">
+                        <a class="secondary-nav__link  js-nav-clone__link" href="/aboutus">About</a>
+                    </li>
+                    <li class="secondary-nav__item">
+                        <a
+                            class="secondary-nav__link icon--hide js-nav-clone__link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://blog.ons.gov.uk/">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="primary-nav print--hide">
+        
+            <nav aria-label="Site navigation">
+                <ul class="nav--controls">
+                    <li class="nav--controls__item">
+                        <a
+                            href="#nav-primary"
+                            id="menu-toggle"
+                            aria-controls="nav-primary"
+                            aria-expanded="false"
+                            class="nav--controls__menu ">
+                            <span class="nav--controls__text">Menu</span>
+                        </a>
+                    </li>
+                    
+                        <li class="nav--controls__item ">
+                            <a href="#nav-search" id="search-toggle" aria-controls="nav-search" aria-expanded="false" class="nav--controls__search" aria-label="Search">
+                                <span class="nav--controls__text">Search</span>
+                            </a>
+                        </li>
+                    
+                </ul>
+                <ul class="wrapper nav-main--hidden primary-nav__list" id="nav-primary" aria-expanded="false">
+                    <li class="primary-nav__item  js-nav hide--sm old-ie--display-block">
+                        <a class="primary-nav__link col col--md-7 col--lg-9" href="/">Home</a>
+                    </li>
+                    <li class="primary-nav__item js-nav js-expandable ">
+                        <a class="primary-nav__link col col--md-8 col--lg-10" href="/businessindustryandtrade" aria-expanded="false" aria-label="Business, industry and trade sub menu">
+                            <span aria-hidden="true" class="expansion-indicator"></span>
+                            <span class="submenu-title">
+                                Business, industry and trade
+                            </span>
+                        </a>
+                        <ul
+                            class="primary-nav__child-list col col--md-16 col--lg-20 js-expandable__content js-nav-hidden jsEnhance"
+                            aria-expanded="false"
+                            aria-label="submenu">
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/business">Business</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/changestobusiness">Changes to business</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/constructionindustry">Construction industry</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/itandinternetindustry">Digital economy</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/internationaltrade">International trade</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/manufacturingandproductionindustry">Manufacturing and production industry</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/retailindustry">Retail industry</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/tourismindustry">Tourism industry</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="primary-nav__item js-nav js-expandable ">
+                        <a class="primary-nav__link col col--md-8 col--lg-10" href="/economy" aria-expanded="false" aria-label="Economy sub menu toggle">
+                            <span aria-hidden="true" class="expansion-indicator"></span>
+                            <span class="submenu-title">
+                                Economy
+                            </span>
+                        </a>
+                        <ul
+                            class="primary-nav__child-list col col--md-16 col--lg-20 js-expandable__content js-nav-hidden jsEnhance"
+                            aria-expanded="false"
+                            aria-label="submenu">
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/economicoutputandproductivity">Economic output and productivity</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/environmentalaccounts">Environmental accounts</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/governmentpublicsectorandtaxes">Government, public sector and taxes</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/grossdomesticproductgdp">Gross Domestic Product (GDP)</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/grossvalueaddedgva">Gross Value Added (GVA)</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/inflationandpriceindices">Inflation and price indices</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/investmentspensionsandtrusts">Investments, pensions and trusts</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/nationalaccounts">National accounts</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/economy/regionalaccounts">Regional accounts</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="primary-nav__item js-nav js-expandable ">
+                        <a class="primary-nav__link col col--md-8 col--lg-10" href="/employmentandlabourmarket" aria-expanded="false" aria-label="Employment and labour market sub menu toggle">
+                            <span aria-hidden="true" class="expansion-indicator"></span>
+                            <span class="submenu-title">
+                                Employment and labour market
+                            </span>
+                        </a>
+                        <ul
+                            class="primary-nav__child-list col col--md-16 col--lg-20 js-expandable__content js-nav-hidden jsEnhance"
+                            aria-expanded="false"
+                            aria-label="submenu">
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/employmentandlabourmarket/peopleinwork">People in work</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/employmentandlabourmarket/peoplenotinwork">People not in work</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="primary-nav__item js-nav js-expandable ">
+                        <a class="primary-nav__link col col--md-8 col--lg-10" href="/peoplepopulationandcommunity" aria-expanded="false" aria-label="People, population and community sub menu toggle">
+                            <span aria-hidden="true" class="expansion-indicator"></span>
+                            <span class="submenu-title">
+                                People, population and community
+                            </span>
+                        </a>
+                        <ul
+                            class="primary-nav__child-list col col--md-16 col--lg-20 js-expandable__content js-nav-hidden jsEnhance"
+                            aria-expanded="false"
+                            aria-label="submenu">
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/armedforcescommunity">Armed forces community</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/birthsdeathsandmarriages">Births, deaths and marriages</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/crimeandjustice">Crime and justice</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/culturalidentity">Cultural identity</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/educationandchildcare">Education and childcare</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/elections">Elections</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/healthandsocialcare">Health and social care</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/householdcharacteristics">Household characteristics</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/housing">Housing</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/leisureandtourism">Leisure and tourism</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/wellbeing">Measuring progress, well-being and beyond GDP</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/personalandhouseholdfinances">Personal and household finances</a>
+                            </li>
+                            <li class="primary-nav__child-item  js-expandable__child">
+                                <a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/populationandmigration">Population and migration</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="primary-nav__item js-nav">
+                        <a class="primary-nav__link  col col--md-8 col--lg-10" href="/surveys">
+                            Taking part in a survey?
+                        </a>
+                    </li>
+                    <li class="hide--md primary-nav__language">
+                        
+                            English (EN) |
+                            <a class="language__link icon--hide" href="https://cy.ons.gov.uk/peoplepopulationandcommunity/housing/bulletins/privaterentalmarketsummarystatisticsinengland/latest/relateddata">Cymraeg (CY)</a>
+                        
+                    </li>
+                </ul>
+            </nav>
+        
+    </div>
+    
+        <div class="search nav-search--hidden print--hide" id="searchBar" role="search">
+            <div class="wrapper">
+                <form class="col-wrap search__form" action="/search">
+                    <label class="search__label col col--md-23 col--lg-24" for="nav-search">Search for a keyword(s) or time series ID</label>
+                    <input
+                        type="search"
+                        autocomplete="off"
+                        class="search__input col col--md-21 col--lg-32"
+                        id="nav-search"
+                        name="q"
+                        value="">
+                    <button type="submit" class="search__button col--md-3 col--lg-3" id="nav-search-submit" aria-label="Search">
+                        <span class="visuallyhidden">Search</span>
+                        <span><svg
+    class="ons-svg-icon ons-svg-icon--m"
+    viewbox="0 0 12 12"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    fill="currentColor">
+    <path d="M11.86 10.23 8.62 6.99a4.63 4.63 0 1 0-6.34 1.64 4.55 4.55 0 0 0 2.36.64 4.65 4.65 0 0 0 2.33-.65l3.24 3.23a.46.46 0 0
+    0 .65 0l1-1a.48.48 0 0 0 0-.62Zm-5-3.32a3.28 3.28 0 0 1-2.31.93 3.22 3.22 0 1 1 2.35-.93Z"/>
+</svg>
+</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    
+</header>
+
+          
+
+
+<div class="ons-page__container ons-container">
+    <nav
+        class="ons-breadcrumb print--hide"
+        aria-label="Breadcrumbs"
+    >
+        <ol class="ons-breadcrumb__items ons-u-fs-s">
+            
+            <li class="ons-breadcrumb__item ons-u-p-no">
+                
+                <a
+                    class="ons-breadcrumb__link"
+                    href="/"
+                >Home</a>
+                
+                <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false">
+    <path
+        d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+        transform="translate(-5.02 -1.59)"/>
+</svg>
+
+            </li>
+            
+            <li class="ons-breadcrumb__item ons-u-p-no">
+                
+                <a
+                    class="ons-breadcrumb__link"
+                    href="/peoplepopulationandcommunity"
+                >People, population and community</a>
+                
+                <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false">
+    <path
+        d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+        transform="translate(-5.02 -1.59)"/>
+</svg>
+
+            </li>
+            
+            <li class="ons-breadcrumb__item ons-u-p-no">
+                
+                <a
+                    class="ons-breadcrumb__link"
+                    href="/peoplepopulationandcommunity/housing"
+                >Housing</a>
+                
+                <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false">
+    <path
+        d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+        transform="translate(-5.02 -1.59)"/>
+</svg>
+
+            </li>
+            
+            <li class="ons-breadcrumb__item ons-u-p-no">
+                
+                <a
+                    class="ons-breadcrumb__link"
+                    href="/peoplepopulationandcommunity/housing/bulletins/privaterentalmarketsummarystatisticsinengland/october2022toseptember2023"
+                >Private rental market summary statistics in England</a>
+                
+                <svg class="ons-svg-icon" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg" focusable="false">
+    <path
+        d="M5.74,14.28l-.57-.56a.5.5,0,0,1,0-.71h0l5-5-5-5a.5.5,0,0,1,0-.71h0l.57-.56a.5.5,0,0,1,.71,0h0l5.93,5.93a.5.5,0,0,1,0,.7L6.45,14.28a.5.5,0,0,1-.71,0Z"
+        transform="translate(-5.02 -1.59)"/>
+</svg>
+
+            </li>
+            
+        </ol>
+    </nav>
+</div>
+
+
+        
+        <main id="main" role="main" tabindex="-1">
+          <div class="ons-container search__container">
+  <div class="ons-grid">
+    <div class="ons-grid__col ons-col-12@m">
+      
+        <section
+          class="search__summary"
+          role="contentinfo"
+        >
+          
+<div class="ons-u-fs-m ons-u-mt-s ons-u-pb-xxs release__document-type">
+    
+    
+        Related data
+    
+</div>
+          
+
+
+
+    <h1 class="ons-u-fs-xxxl">All data related to Private rental market summary statistics in England: October 2022 to September 2023</h1>
+
+
+          <p>Median monthly rental prices for the private rental market in England, calculated using data from the Valuation Office Agency.</p>
+        </section>
+
+        <section>
+          <div class="search__results">
+            
+
+
+
+
+
+
+<div id="results">
+    <div id="results-loading" class="ons-panel ons-panel--info ons-panel--no-title hide">
+        <span class="ons-u-vh">Important information: </span>
+        <div class="ons-panel__body">
+            <p data-error-message="The results failed to load, please refresh.">
+                Loading search results
+            </p>
+        </div>
+    </div>
+    
+        <ul class="ons-document-list">
+        
+            
+            <li class="ons-document-list__item">
+                <div class="ons-document-list__item-content">
+                    <div class="ons-document-list__item-header">
+                        <h2 class="ons-document-list__item-title ons-u-fs-m ons-u-mt-no ons-u-mb-xs">
+                            <a href="/peoplepopulationandcommunity/housing/datasets/privaterentalmarketsummarystatisticsinengland"
+                                data-gtm-search-result-title="Private rental market summary statistics in England"
+                                data-gtm-search-result-page="1"
+                                data-gtm-search-result-position="1"
+                                data-gtm-search-result-url="/peoplepopulationandcommunity/housing/datasets/privaterentalmarketsummarystatisticsinengland"
+                    
