@@ -1,0 +1,104 @@
+URL: https://data.humdata.org/dataset/31579af5-3895-4002-9ee3-c50857480785/resource/502190c6-0d3d-4b84-977e-ef062f053662/download/wfp_food_prices_global_2026.csv
+Fetched: 2026-10-15T09:43:14Z from GitHub Actions
+Status, type, bytes: 200 text/csv 36091330
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 302 
+date: Thu, 15 Oct 2026 09:43:13 GMT
+content-type: text/html; charset=utf-8
+content-length: 1523
+location: https://s3.us-east-1.amazonaws.com/hdx-production-filestore/resources/502190c6-0d3d-4b84-977e-ef062f053662/wfp_food_prices_global_2026.csv?AWSAccessKeyId=ASIAXYC32WNATFMHZAYT&Signature=QqVNWPVgdBRuE7xzTjz8f8VxDY0%3D&x-amz-security-token=FwoGZXIvYXdzEBIaDAdu9VAUWLEIWuP3ryLBARfL2Ef8daRtMjd06PzGYI%2B%2BdtnqRvW7MQuRXGi9wJ2bL8wASCfNuGDTysE2I8%2BqKzMUIdjjregB5my%2BOu6z2sV7cKHbelkCd%2FciQbw8Xzs4%2F%2FAW4cNgt%2BDVecxg1cao6l2qg3wbFfZEbAhqBs70oHeLJwt8Cb7wqDYfJRY2AblX4YwhlcmWuX4dAhuI6VosAesEfln7t%2Bki1b4K2%2FDXIUdRXBYjH5Kh3jK76dYlhSR3b%2Bipl0VvwKgddD3XpQUGjh0ouKjC1gYyLWQlWx6yI4R2F80P19IdKll%2FA%2BE%2FXQZeAITsRseDbs1WRixTyPaE7WuIgJRNPg%3D%3D&Expires=1792057573
+x-frame-options: SAMEORIGIN
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+access-control-allow-origin: https://data.humdata.org
+server: data.humdata.org
+strict-transport-security: max-age=31536000; includeSubDomains; preload; always;
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+x-robots-tag: index, follow
+x-nginx-cache: MISS
+x-nginx-backend: http://ckan:5000 (10.99.0.173:5000)
+
+HTTP/1.1 200 OK
+x-amz-id-2: hpolWTj2/E7j1+cbWuDEwkk4PFQSCIv+qFpaJAAmdnrRDkpf8FBftvfxxKp/goyuzX8Ic4JNqwo=
+x-amz-request-id: B48F2NQ0WC3AWT5C
+Server: AmazonS3
+Date: Thu, 15 Oct 2026 09:43:14 GMT
+Last-Modified: Mon, 12 Oct 2026 00:40:36 GMT
+ETag: "fa466541fe32f487454cce93858747bd"
+x-amz-server-side-encryption: AES256
+x-amz-version-id: wKv6kL7d_674SpG12vsuPJ.yhTdKqZU1
+Accept-Ranges: bytes
+Content-Type: text/csv
+Content-Length: 36091330
+
+=== FILE TYPE: CSV ASCII text
+=== FIRST 8000 BYTES
+countryiso3,date,admin1,admin2,market,market_id,latitude,longitude,category,commodity,commodity_id,unit,priceflag,pricetype,currency,price,usdprice
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,cereals and tubers,Bread,55,KG,actual,Retail,AFN,77,1.2
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,cereals and tubers,Rice (high quality),247,KG,actual,Retail,AFN,131,2.05
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,cereals and tubers,Rice (low quality),145,KG,actual,Retail,AFN,66,1.03
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,cereals and tubers,Wheat,84,KG,actual,Retail,AFN,27,0.42
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,cereals and tubers,Wheat flour (high quality),178,KG,actual,Retail,AFN,33,0.52
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,cereals and tubers,Wheat flour (low quality),800,KG,actual,Retail,AFN,30,0.47
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,miscellaneous food,Salt,185,KG,actual,Retail,AFN,25,0.39
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,miscellaneous food,Sugar,97,KG,actual,Retail,AFN,77.5,1.21
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,non-food,Exchange rate,305,USD/LCU,actual,Retail,AFN,63.75,1
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,non-food,Fuel (diesel),284,L,actual,Retail,AFN,67.75,1.06
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,non-food,"Wage (non-qualified labour, non-agricultural)",465,Day,actual,Retail,AFN,375,5.87
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,non-food,Wage (qualified labour),274,Day,actual,Retail,AFN,700,10.95
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,oil and fats,Oil (cooking),82,KG,actual,Retail,AFN,111,1.74
+AFG,2026-05-15,Badakhshan,Argo,Badakhshan,3690,37.04,70.46,pulses and nuts,Pulses,163,KG,actual,Retail,AFN,71,1.11
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,cereals and tubers,Bread,55,KG,actual,Retail,AFN,45,0.7
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,cereals and tubers,Rice (high quality),247,KG,actual,Retail,AFN,130,2.03
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,cereals and tubers,Rice (low quality),145,KG,actual,Retail,AFN,103.75,1.62
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,cereals and tubers,Wheat,84,KG,actual,Retail,AFN,25.25,0.4
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,cereals and tubers,Wheat flour (high quality),178,KG,actual,Retail,AFN,30,0.47
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,cereals and tubers,Wheat flour (low quality),800,KG,actual,Retail,AFN,28,0.44
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,miscellaneous food,Salt,185,KG,actual,Retail,AFN,10,0.16
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,miscellaneous food,Sugar,97,KG,actual,Retail,AFN,72.5,1.13
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,non-food,Exchange rate,305,USD/LCU,actual,Retail,AFN,64.25,1.01
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,non-food,Fuel (diesel),284,L,actual,Retail,AFN,63.5,0.99
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,non-food,"Wage (non-qualified labour, non-agricultural)",465,Day,actual,Retail,AFN,250,3.91
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,non-food,Wage (qualified labour),274,Day,actual,Retail,AFN,500,7.82
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,oil and fats,Oil (cooking),82,KG,actual,Retail,AFN,119.25,1.87
+AFG,2026-05-15,Badghis,Jawand,Badghis,3220,35.14,63.73,pulses and nuts,Pulses,163,KG,actual,Retail,AFN,84,1.31
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,cereals and tubers,Bread,55,KG,actual,Retail,AFN,63,0.99
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,cereals and tubers,Rice (high quality),247,KG,actual,Retail,AFN,160,2.5
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,cereals and tubers,Rice (low quality),145,KG,actual,Retail,AFN,60,0.94
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,cereals and tubers,Wheat,84,KG,actual,Retail,AFN,25.5,0.4
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,cereals and tubers,Wheat flour (high quality),178,KG,actual,Retail,AFN,28.5,0.45
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,cereals and tubers,Wheat flour (low quality),800,KG,actual,Retail,AFN,26.5,0.41
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,miscellaneous food,Salt,185,KG,actual,Retail,AFN,25,0.39
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,miscellaneous food,Sugar,97,KG,actual,Retail,AFN,75,1.17
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,non-food,Exchange rate,305,USD/LCU,actual,Retail,AFN,63.75,1
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,non-food,Fuel (diesel),284,L,actual,Retail,AFN,65,1.02
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,non-food,"Wage (non-qualified labour, non-agricultural)",465,Day,actual,Retail,AFN,375,5.87
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,non-food,Wage (qualified labour),274,Day,actual,Retail,AFN,600,9.39
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,oil and fats,Oil (cooking),82,KG,actual,Retail,AFN,110.5,1.73
+AFG,2026-05-15,Baghlan,Dushi,Baghlan,3221,35.8,68.91,pulses and nuts,Pulses,163,KG,actual,Retail,AFN,69,1.08
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,cereals and tubers,Bread,55,KG,actual,Retail,AFN,56,0.88
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,cereals and tubers,Rice (high quality),247,KG,actual,Retail,AFN,130,2.03
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,cereals and tubers,Rice (low quality),145,KG,actual,Retail,AFN,70,1.1
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,cereals and tubers,Wheat,84,KG,actual,Retail,AFN,26.5,0.41
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,cereals and tubers,Wheat flour (high quality),178,KG,actual,Retail,AFN,29,0.45
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,cereals and tubers,Wheat flour (low quality),800,KG,actual,Retail,AFN,28,0.44
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,miscellaneous food,Salt,185,KG,actual,Retail,AFN,25,0.39
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,miscellaneous food,Sugar,97,KG,actual,Retail,AFN,75,1.17
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,non-food,Exchange rate,305,USD/LCU,actual,Retail,AFN,64,1
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,non-food,Fuel (diesel),284,L,actual,Retail,AFN,65,1.02
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,non-food,"Wage (non-qualified labour, non-agricultural)",465,Day,actual,Retail,AFN,250,3.91
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,non-food,Wage (qualified labour),274,Day,actual,Retail,AFN,700,10.95
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,oil and fats,Oil (cooking),82,KG,actual,Retail,AFN,120,1.88
+AFG,2026-05-15,Balkh,Nahr-e- Shahi,Balkh,3691,36.67,67.08,pulses and nuts,Pulses,163,KG,actual,Retail,AFN,83,1.3
+AFG,2026-05-15,Bamyan,Bamyan,Bamyan,268,34.82,67.82,cereals and tubers,Bread,55,KG,actual,Retail,AFN,50,0.78
+AFG,2026-05-15,Bamyan,Bamyan,Bamyan,268,34.82,67.82,cereals and tubers,Rice (high quality),247,KG,actual,Retail,AFN,159.75,2.5
+AFG,2026-05-15,Bamyan,Bamyan,Bamyan,268,34.82,67.82,cereals and tubers,Rice (low quality),145,KG,actual,Retail,AFN,105.5,1.65
+AFG,2026-05-15,Bamyan,Bamyan,Bamyan,268,34.82,67.82,cereals and tubers,Wheat,84,KG,actual,Retail,AFN,27,0.42
+AFG,2026-05-15,Bamyan,Bamyan,Bamyan,268,34.82,67.82,cereals and tubers,Wheat flour (high quality),178,KG,actual,Retail,AFN,31.25,0.49
+AFG,2026-05-15,Bamyan,Bamyan,Bamyan,268,34.82,67.82,cereals and tubers,Wheat flour (low quality),800,KG,actual,Retail,AFN,28.75,0.45
+AFG,2026-05-15,Bamyan,Bamyan,Bamyan,268,34.82,67.82,miscellaneous food,Salt,185,KG,actual,Retail,AFN,20,0.31
+AFG,2026-05-15,Bamyan,Bamyan,Bamyan,268,34.82,67.82,miscellaneous food,Sugar,97,KG,
