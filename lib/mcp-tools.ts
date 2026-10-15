@@ -18,6 +18,7 @@ import { CHECK_TOOL, checkToolDescription, checkToolShape, runCheck } from "./ch
 import { withDeadline } from "./http";
 import { checkResultSchema, coverageToolSchema, historyAnswerSchema, priceAnswerSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
+import { gate, paymentHeaderFromMeta, premiumNote, readGateConfig, isAnswered, type PremiumKey } from "./payments";
 import { recordUsage, statusOfAnswer, statusOfError, usageEnabled, usageKey } from "./usage";
 
 /** The same four hints on every tool: they read official sources and never change anything. */
@@ -41,6 +42,8 @@ export interface ToolSpec {
     outputSchema: ZodTypeAny;
     annotations: { title: string } & typeof READ_ONLY;
   };
+  /** Set on the premium tools only (lib/payments/prices.ts). They are free until the payment gate is switched on. */
+  premium?: PremiumKey;
   /** The tool handler: never throws; failures come back as an isError result. */
   call(args: Record<string, unknown>): Promise<McpToolResult>;
 }
@@ -130,6 +133,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
     if (cat.history && deps.historyDays(cat) >= cat.history.minDays) {
       const h = cat.history;
       specs.push({
+        premium: "history",
         name: h.tool,
         config: {
           title: h.title,
@@ -147,6 +151,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
   }
   const checkTitle = "Check a price before you pay";
   specs.push({
+    premium: "check",
     name: CHECK_TOOL,
     config: {
       title: checkTitle,
@@ -190,9 +195,33 @@ function stringArg(v: unknown): string | undefined {
   return typeof v === "string" && v.trim() ? v : undefined;
 }
 
-/** Register the tools on an MCP server. The SDK validates each successful result's structuredContent against its outputSchema. */
-export function registerTools(server: { registerTool: (...a: any[]) => unknown }, specs: ToolSpec[]): void {
-  for (const spec of specs) server.registerTool(spec.name, spec.config, (args: Record<string, unknown>) => spec.call(args ?? {}));
+/** Register the tools on an MCP server. The SDK validates each successful result's structuredContent against its outputSchema.
+ *  Payment gate: premium tools are wrapped ONLY while the gate is active (lib/payments/config.ts). With it off, registration is
+ *  exactly as before: same descriptions, same handlers, same tools/list. */
+export function registerTools(server: { registerTool: (...a: any[]) => unknown }, specs: ToolSpec[], env: Record<string, string | undefined> = process.env): void {
+  const gateOn = readGateConfig(env) !== null;
+  for (const spec of specs) {
+    if (!gateOn || !spec.premium) {
+      server.registerTool(spec.name, spec.config, (args: Record<string, unknown>) => spec.call(args ?? {}));
+      continue;
+    }
+    const key = spec.premium;
+    const config = { ...spec.config, description: spec.config.description + premiumNote(key) };
+    server.registerTool(spec.name, config, async (args: Record<string, unknown>, ctx: any) => {
+      const req: Request | undefined = ctx?.http?.req;
+      const out = await gate(
+        key,
+        { headers: req?.headers, url: req?.url ?? `${SITE_URL}/api/mcp`, paymentHeader: paymentHeaderFromMeta(ctx?.mcpReq?._meta ?? ctx?._meta) },
+        () => spec.call(args ?? {}),
+        (r) => !r.isError && isAnswered(JSON.stringify(r.structuredContent ?? {})),
+        env,
+      );
+      if (!out) return spec.call(args ?? {});
+      if (out.kind === "denied") return { isError: true, content: [{ type: "text", text: JSON.stringify(out.body) }], structuredContent: out.body };
+      const settlement = out.headers["payment-response"];
+      return settlement ? { ...out.result, _meta: { "x402/payment-response": JSON.parse(Buffer.from(settlement, "base64").toString("utf8")) } } : out.result;
+    });
+  }
 }
 
 /** The web-standard request handler for /api/mcp (stateless Streamable HTTP).

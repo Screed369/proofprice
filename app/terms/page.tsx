@@ -22,7 +22,8 @@ export default function Terms() {
         <li>
           <strong>Free use.</strong> You may use the website, the REST API and the MCP server for free, including inside apps and AI tools,
           without a key. Please keep to fair use: a normal number of requests, no attacks, and no attempts to get around limits. We may slow
-          down or block abusive use.
+          down or block abusive use. Optional payments for a few premium calls (the itemised price check and long price history, after a daily
+          free allowance) are planned. Basic price look-ups will stay free.
         </li>
         <li>
           <strong>Cite the source.</strong> When you show a figure, show the source and the attribution line we return with it. The data

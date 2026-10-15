@@ -4,11 +4,17 @@
 import { CATEGORIES, paramsFromQuery, runCategory } from "../../../../lib/registry";
 import { CHECK_RESERVED, CHECK_TOOL, resolveCategory, runCheck } from "../../../../lib/check";
 import { recordUsage, statusOfAnswer, statusOfError, usageKey } from "../../../../lib/usage";
+import { gatedRest } from "../../../../lib/payments";
 import { json, errorResponse, baseUrl, corsPreflight, STALE_CACHE_SECONDS } from "../../../../lib/route-helpers";
 
 export const maxDuration = 60;
 
-export async function GET(req: Request) {
+// Premium call: with the payment gate off (the default) this is exactly the plain handler (lib/payments/).
+export function GET(req: Request) {
+  return gatedRest("check", req, () => handle(req));
+}
+
+async function handle(req: Request) {
   try {
     const q = new URL(req.url).searchParams;
     const cat = resolveCategory(CATEGORIES, q.get("category"));
