@@ -135,9 +135,10 @@ const UA = { "user-agent": "ProofPrice-collector/1.0 (+https://proofprice.com; h
 export async function itHarvest(): Promise<HarvestResult> {
   const res = await fetch(CSV_URL, { headers: UA });
   if (!res.ok) throw new SourceError(`AIFA transparency list returned HTTP ${res.status}`);
-  const list = parseList(decodeCsv(Buffer.from(await res.arrayBuffer())));
+  const buf = Buffer.from(await res.arrayBuffer());
+  const list = parseList(decodeCsv(buf));
   const rows = itDailyRows(list.packs);
-  if (!rows.length) throw new SourceError("AIFA transparency list held no usable priced packs");
+  if (!rows.length) throw new SourceError(`AIFA transparency list held no usable priced packs (${buf.length} bytes, ${list.packs.length} packs, type ${res.headers.get("content-type")}, starts ${JSON.stringify(buf.subarray(0, 60).toString("latin1"))})`);
   const date = new Date().toISOString().slice(0, 10);
   return { date, currency: "EUR", unit: "per pack", rows, note: `List dated ${list.asOf ?? "unknown"}, ${list.packs.length} priced packs, ${rows.length} names with 5+ packs.` };
 }
