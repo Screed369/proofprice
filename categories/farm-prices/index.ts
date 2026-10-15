@@ -20,7 +20,7 @@ export default defineCategory({
     "This is a published price (price_type official_statistic), not a range built from trades, so the range fields are null and there is no sample size. " +
     `How fresh: ${freshnessList(places)}. ` +
     "Always read the period in the answer: an old quote is flagged and given lower confidence. " +
-    "Do not use for supermarket or shop prices, for the price of a particular farm, field, animal or meal, for farmland (use the land prices tool), for fuel or energy, for futures or stock-market prices, or for other countries.",
+    "Do not use for supermarket or shop prices, for the price of a particular farm, field, animal or meal, for farmland, for fuel or energy, for futures or stock-market prices, or for other countries.",
   params: {
     product: z
       .string()

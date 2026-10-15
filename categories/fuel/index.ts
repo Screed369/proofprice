@@ -36,7 +36,7 @@ export default defineCategory({
     description:
       "Use this when a user asks how pump prices have changed over recent days or weeks in a place, or whether fuel is getting cheaper. " +
       "Returns the daily median and typical range of pump prices in the area, with the change over the period, from our daily snapshots of official data. " +
-      "Do not use for today's cheapest stations (use pricepaid_fuel_prices_now).",
+      "Do not use for today's cheapest stations.",
     minDays: 7,
     itemLabel: (item) => {
       const [fuel, served] = item.split("/");

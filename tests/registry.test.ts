@@ -81,6 +81,10 @@ test("every tool schema builds and describes every covered place", () => {
     assert.match(d, /^Use this when/);
     assert.match(d, /Do not use/);
     for (const s of sourcesFor(c.id)) assert.ok(d.includes(s.placeName), `${c.tool} description should mention ${s.placeName}`);
+    // Directory policy: descriptions say what this tool does and does not do, never instructions about other tools.
+    for (const text of [d, c.history?.description ?? ""]) {
+      assert.ok(!/\(use [^)]*\)|use pricepaid_|call pricepaid_/i.test(text), `${c.tool} description points to another tool: say only what this tool does not cover`);
+    }
     // Directory reviewers and agents read these: no clause may repeat (use freshnessList from lib/text for "How fresh").
     const clauses = d.split(/; |\. /).map((x) => x.trim()).filter((x) => x.length > 20);
     const seen = new Map<string, number>();

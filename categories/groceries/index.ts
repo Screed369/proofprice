@@ -23,7 +23,7 @@ export default defineCategory({
     "Each country defines its own standard items, so the item definition in the answer matters and related definitions are listed. " +
     `How fresh: ${freshnessList(places)}. ` +
     "This is a published national (or regional) average, not a range of individual transactions, so the range fields can be null. " +
-    "Do not use for the price at a particular supermarket or online shop, loyalty-card or special-offer prices, restaurant meals, petrol or diesel (use the fuel tool), or for other countries.",
+    "Do not use for the price at a particular supermarket or online shop, loyalty-card or special-offer prices, restaurant meals, petrol or diesel, or for other countries.",
   params: {
     item: z
       .string()

@@ -35,7 +35,7 @@ export default defineCategory({
     "where the source publishes an average or median (price_type official_statistic) the range fields are null and there is no sample size. " +
     "Every answer states its unit (rent per month or per week, in the local currency), the period covered, a confidence label, and the official source and licence. " +
     `How fresh: ${freshnessList(places)}. ` +
-    "Do not use for asking rents or listings, holiday lets, commercial rent, rent for a specific address, home prices (use the home sales tool), or other countries.",
+    "Do not use for asking rents or listings, holiday lets, commercial rent, rent for a specific address, home sale prices, or other countries.",
   params: {
     town: z.string().min(2).optional().describe("Town, city or local area."),
     postcode: z.string().optional().describe("Postcode, for a precise area."),
