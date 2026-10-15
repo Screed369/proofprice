@@ -60,5 +60,5 @@ test("openapi and llms.txt list the energy endpoint with its parameters and exam
   assert.match(params.find((p: any) => p.name === "consumption_band").description, /DC = 2,500 to 4,999 kWh a year/);
   const t = buildLlmsTxt("https://example.test");
   assert.ok(t.includes("pricepaid_energy_prices"));
-  assert.ok(t.includes("https://example.test/api/v1/energy?country=IE&energy=electricity"));
+  assert.ok(t.includes("https://example.test/api/v1/energy?country="));  // first example of the category (source ids sort alphabetically)
 });
