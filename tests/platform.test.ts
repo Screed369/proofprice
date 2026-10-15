@@ -21,7 +21,7 @@ import { buildLlmsFullTxt, buildServerJson, buildSitemap, SERVER_DESCRIPTION } f
 import {
   CATEGORIES, COMING_NEXT, SOURCE_PLUGINS, categoryById, countriesFor, coverage, exampleUrls, historySources, paramsFromQuery, runCategory, sourcesFor,
 } from "../lib/registry";
-import { coverageSchema, historyAnswerSchema, priceAnswerSchema } from "../lib/schemas";
+import { coverageToolSchema, historyAnswerSchema, priceAnswerSchema } from "../lib/schemas";
 import { SERVICE_VERSION } from "../lib/site/constants";
 import { groupByCategory, sourceCards } from "../lib/site/sources";
 import { STALE_MAX_DAYS, staleAnswer } from "../lib/stale";
@@ -269,9 +269,11 @@ test("the history and coverage tool handlers return structuredContent that match
   assert.ok(history.config.outputSchema.safeParse(empty.structuredContent).success);
 
   const cov = specs.find((s) => s.name === "pricepaid_coverage")!;
-  assert.equal(cov.config.outputSchema, coverageSchema);
+  assert.equal(cov.config.outputSchema, coverageToolSchema);
   const covResult = await cov.call({});
   assert.ok(cov.config.outputSchema.safeParse(covResult.structuredContent).success);
+  const slice = await cov.call({ category: "fuel", country: "ES" }); // a slice: full per-source detail
+  assert.ok(cov.config.outputSchema.safeParse(slice.structuredContent).success);
 });
 
 test("tool answers carry absolute method links (an agent cannot follow /method)", async () => {

@@ -255,8 +255,12 @@ Example: GET ${baseUrl}${checkExamplePath()}
 `);
 
   out.push(`### pricepaid_coverage  —  What price data is covered
-REST: GET ${baseUrl}/api/v1/coverage
-Description: Which countries, categories and official sources the price-paid tools cover, with each source's licence and update frequency. Takes no parameters. Call it first when unsure whether a place is covered.
+REST: GET ${baseUrl}/api/v1/coverage (every source in full, no parameters; about 140 KB)
+Description: Which countries, categories and official sources the price-paid tools cover. Call it first when unsure whether a place is covered.
+The MCP tool returns a short overview by default: for each tool its countries, the number of official sources behind it and how often they update. With the optional arguments below it returns the full detail (publisher, licence, attribution line, limits, example requests) of the matching sources instead.
+Parameters (MCP tool arguments, both optional):
+  - category: ${CATEGORIES.map((c) => c.id).join(", ")} (the REST path or the tool name also works)
+  - country: an ISO country code such as IE, GB or FR
 `);
 
   out.push(`## Answer format (every endpoint and tool)

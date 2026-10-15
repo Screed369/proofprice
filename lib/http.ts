@@ -23,9 +23,28 @@ export async function fetchJson(url: string, init: RequestInit = {}, timeoutMs =
   }
 }
 
+/** Answer with `work`, or fail with `onTimeout()` once `ms` milliseconds have passed, whichever comes first. A promise cannot be
+ *  cancelled: if the deadline wins, `work` keeps running in the background and its late result or failure is dropped quietly
+ *  (no unhandled rejection). The timer is cleared as soon as `work` settles, so a finished call never holds the process open. */
+export function withDeadline<T>(work: Promise<T>, ms: number, onTimeout: () => Error): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(onTimeout()), ms);
+    work.then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      },
+    );
+  });
+}
+
 export class SourceError extends Error {
   detail?: string;
-  /** HTTP status the official source answered with, when the failure was an HTTP error. */
+  /** HTTP status the official source answered with, when the failure was an HTTP error. 504 means we gave up waiting for it (runCategory's deadline). */
   status?: number;
   constructor(message: string, detail?: string, status?: number) {
     super(message);

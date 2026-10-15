@@ -7,7 +7,7 @@ import type { CategoryPlugin, HandleContext, Params, SourceInfo, SourcePlugin, T
 import { num } from "./plugin";
 import { PRICE_TYPE_LABEL } from "./price-types";
 import { normaliseCountry } from "./countries";
-import { InputError, isSourceOutage } from "./http";
+import { InputError, SourceError, isSourceOutage, withDeadline } from "./http";
 import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
 import { readDaily, readMeta } from "./library/store";
 import { staleAnswer } from "./stale";
@@ -149,14 +149,35 @@ export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePl
   return { src, prepared: cat.prepare ? cat.prepare(withCountry) : withCountry };
 }
 
+/** The longest one live answer may take, in milliseconds. Vercel stops a function after 60 s (maxDuration) with a bare "Task timed
+ *  out" and no answer at all, so we give up on a slow official source well before that: the caller then gets our library copy
+ *  (stale-if-error) or a plain error within this time. The REST routes, the MCP category tools and the price check all answer
+ *  through runCategory, so this one limit bounds all of them. */
+export const ANSWER_DEADLINE_MS = 40_000;
+
+export interface RunOptions {
+  /** Replaces ANSWER_DEADLINE_MS. Tests pass a few milliseconds. */
+  deadlineMs?: number;
+}
+
 /** Answer one request. Stale-if-error lives here, once, for every source: if the live official source times out, cannot be
  *  reached or answers with a server error, and the price library holds a recent snapshot for this source, area and item
  *  (a source with harvest() and historyKey()), the answer comes from that snapshot (lib/stale.ts) instead of a 502.
- *  Bad input, an unrecognised reply and sources without library data still fail as before. */
-export async function runCategory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}): Promise<PriceAnswer> {
+ *  Bad input, an unrecognised reply and sources without library data still fail as before.
+ *  A source that has not answered within the deadline counts as down: it fails with a SourceError (status 504) that takes the
+ *  same stale-if-error path, so a hung source never holds a request until the platform's own 60 s limit. */
+export async function runCategory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, opts: RunOptions = {}): Promise<PriceAnswer> {
   const { src, prepared } = pickSource(cat, params);
+  const deadlineMs = opts.deadlineMs ?? ANSWER_DEADLINE_MS;
   try {
-    return await src.handle(prepared, ctx);
+    return await withDeadline((async () => src.handle(prepared, ctx))(), deadlineMs, () => {
+      console.warn(`[deadline] ${src.info.id} did not answer within ${deadlineMs} ms`);
+      return new SourceError(
+        `The official source did not respond within ${Math.max(1, Math.round(deadlineMs / 1000))} seconds, so ProofPrice stopped waiting. Try again in a minute.`,
+        `source ${src.info.id}`,
+        504,
+      );
+    });
   } catch (err) {
     if (isSourceOutage(err)) {
       const stale = staleAnswer({ cat, src, params: prepared, query: knownParams(cat, prepared), error: err, baseUrl: ctx.baseUrl });
@@ -307,10 +328,22 @@ export const COMING_NEXT = [
   "Verified receipts",
 ];
 
+const COVERAGE_PURPOSE = "Real prices actually paid, from official records, in one place for AI agents.";
+
+const COVERAGE_RULES = [
+  "Every answer carries its period, confidence, source and licence. Most are a range (median, 10th–90th percentile) with the sample size.",
+  "Official statistics (price_type official_statistic, e.g. Eurostat household energy prices) are an average or median published by a statistics office or regulator, with its reference period: no range, and no sample size unless the publisher gives one.",
+  "No range is published from fewer than 5 records.",
+  "Aggregates only: no individual addresses or personal data are returned for home sales.",
+  "Information, not a valuation or offer.",
+];
+
+/** The complete coverage list, for GET /api/v1/coverage (the smoke test and the Monitor read its examples). Every source in full:
+ *  about 140 KB. AI agents get the short version below (coverageView) from the MCP tool. */
 export function coverage() {
   return {
     service: "ProofPrice",
-    purpose: "Real prices actually paid, from official records, in one place for AI agents.",
+    purpose: COVERAGE_PURPOSE,
     tools: CATEGORIES.map((c) => ({
       name: c.tool,
       rest: `/api/v1/${c.restPath}`,
@@ -318,13 +351,101 @@ export function coverage() {
     })),
     sources: SOURCE_PLUGINS.map((s) => s.info),
     examples: exampleUrls().map((e) => e.path),
-    rules: [
-      "Every answer carries its period, confidence, source and licence. Most are a range (median, 10th–90th percentile) with the sample size.",
-      "Official statistics (price_type official_statistic, e.g. Eurostat household energy prices) are an average or median published by a statistics office or regulator, with its reference period: no range, and no sample size unless the publisher gives one.",
-      "No range is published from fewer than 5 records.",
-      "Aggregates only: no individual addresses or personal data are returned for home sales.",
-      "Information, not a valuation or offer.",
-    ],
+    rules: COVERAGE_RULES,
+    coming_next: COMING_NEXT,
+  };
+}
+
+// ---------- coverage for AI agents: short unless a slice is asked for ----------
+
+/** The REST path of the complete coverage list. */
+export const COVERAGE_PATH = "/api/v1/coverage";
+
+/** How often a source is updated, as one short phrase: the first sentence of its freshness text. A sentence longer than `max`
+ *  characters is cut before its first parenthesis if that leaves a phrase, else at a word, and ends in "…". */
+export function updateFrequency(freshness: string, max = 100): string {
+  const first = freshness.replace(/\s+/g, " ").trim().split(/\.\s/)[0].replace(/\.$/, "");
+  if (first.length <= max) return first;
+  const aside = first.slice(0, max).indexOf(" (");
+  if (aside >= 12) return first.slice(0, aside) + "…";
+  let cut = first.slice(0, max);
+  if (!/\s/.test(first[max])) cut = cut.replace(/\s+\S*$/, ""); // do not end in the middle of a word
+  return cut.replace(/[\s,;:(]+$/, "") + "…";
+}
+
+/** A category by its id, REST path or tool name (any case; /api/v1/ in front is ignored). */
+export function lookupCategory(raw: unknown, categories: CategoryPlugin[] = CATEGORIES): CategoryPlugin | undefined {
+  const key = String(raw ?? "").trim().toLowerCase().replace(/^\/?(api\/v1\/)?/, "");
+  return key ? categories.find((c) => c.id.toLowerCase() === key || c.restPath.toLowerCase() === key || c.tool.toLowerCase() === key) : undefined;
+}
+
+export interface CoverageFilter {
+  /** A category id, REST path or tool name. */
+  category?: string;
+  /** An ISO country code (or a common country name). */
+  country?: string;
+}
+
+/** What the MCP tool pricepaid_coverage answers. By default a short overview of about 11 KB: per category the tool, the countries,
+ *  how many sources stand behind it and how often they update, plus where to read the complete list. The complete list is large
+ *  (about 140 KB: every source with its licence, attribution and limits), and a tool answer that size is slow to deliver and fills
+ *  an AI's context, so the full detail is given per slice instead: ask for a category and/or a country and you get the sources
+ *  that match, in full. GET /api/v1/coverage (coverage()) is unchanged and still lists everything. */
+export function coverageView(filter: CoverageFilter = {}, baseUrl = "") {
+  const wantCategory = (filter.category ?? "").trim();
+  const wantCountry = (filter.country ?? "").trim();
+  const category = wantCategory ? lookupCategory(wantCategory) : undefined;
+  if (wantCategory && !category) {
+    throw new InputError(`category must be one of: ${CATEGORIES.map((c) => c.id).join(", ")} (the REST path or the tool name also works).`);
+  }
+  const country = wantCountry ? normaliseCountry(wantCountry) : null;
+  if (wantCountry && !country) throw new InputError("country must be an ISO country code such as IE, GB or FR (a common country name also works).");
+
+  const matching = (c: CategoryPlugin) => sourcesFor(c.id).filter((s) => !country || s.countries.includes(country));
+  const tools = (category ? [category] : CATEGORIES)
+    .filter((c) => matching(c).length > 0)
+    .map((c) => {
+      const srcs = matching(c);
+      return {
+        name: c.tool,
+        category: c.id,
+        rest: `/api/v1/${c.restPath}`,
+        countries: [...new Set(srcs.flatMap((s) => s.countries))],
+        source_count: srcs.length,
+        update_frequency: [...new Set(srcs.map((s) => updateFrequency(s.info.freshness)))].join(" | "),
+      };
+    });
+  const shown = (category ? [category] : CATEGORIES).flatMap((c) => matching(c).map((s) => ({ c, s })));
+  const fullUrl = baseUrl + COVERAGE_PATH;
+  const scope = [category ? `category ${category.id}` : "", country ? `country ${country}` : ""].filter(Boolean).join(", ");
+  const covered = category ? countriesFor(category.id) : [...new Set(CATEGORIES.flatMap((c) => countriesFor(c.id)))];
+
+  const summary = !scope
+    ? `${shown.length} official sources stand behind ${tools.length} price tools. This is the short overview. ` +
+      `For the full detail of a slice (publisher, licence, attribution, limits, examples) call pricepaid_coverage with a category and/or a country; ` +
+      `${fullUrl} lists every source at once.`
+    : shown.length
+      ? `Full detail for ${shown.length} source${shown.length === 1 ? "" : "s"} (${scope}): publisher, licence, attribution, limits and example requests.`
+      : `No ProofPrice source covers ${scope}. Countries covered${category ? ` for ${category.id}` : ""}: ${covered.join(", ")}.`;
+
+  return {
+    service: "ProofPrice",
+    purpose: COVERAGE_PURPOSE,
+    detail: scope ? ("full" as const) : ("summary" as const),
+    summary,
+    full_coverage_url: fullUrl,
+    source_count: shown.length,
+    tools,
+    ...(scope
+      ? {
+          filter: { ...(category ? { category: category.id } : {}), ...(country ? { country } : {}) },
+          sources: shown.map(({ c, s }) => ({ ...s.info, tool: c.tool, countries: s.countries, status: s.status })),
+          examples: exampleUrls()
+            .filter((e) => shown.some(({ s }) => s.info.id === e.source))
+            .map((e) => e.path),
+        }
+      : {}),
+    rules: COVERAGE_RULES,
     coming_next: COMING_NEXT,
   };
 }

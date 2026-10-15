@@ -170,6 +170,37 @@ export const coverageSchema = z
   })
   .describe("Which tools, countries and official sources are covered, with each source's licence and update frequency.");
 
+/** What the MCP tool pricepaid_coverage returns: a short overview by default, the full per-source detail for a category and/or
+ *  country slice. (GET /api/v1/coverage keeps the complete list and coverageSchema above.) */
+export const coverageToolSchema = z
+  .looseObject({
+    service: z.string(),
+    purpose: z.string().optional(),
+    detail: z.enum(["summary", "full"]).describe("summary = the short overview (the default); full = every matching source in full, for the category and/or country asked for."),
+    summary: z.string().describe("One plain sentence an AI can quote, with how to get more detail."),
+    full_coverage_url: z.string().describe("Every source at once, as JSON (REST)."),
+    source_count: number.describe("How many sources the answer covers: all of them in the overview, the matching ones in a slice."),
+    tools: z.array(
+      z.looseObject({
+        name: z.string().describe("The MCP tool to call for this kind of price."),
+        category: z.string().describe("The category id, to pass as category for a slice."),
+        rest: z.string(),
+        countries: z.array(z.string()).describe("ISO country codes the tool answers for."),
+        source_count: number,
+        update_frequency: z.string().describe("How often the official sources behind this tool update; several sources are separated by ' | '."),
+      }),
+    ),
+    filter: z.looseObject({ category: z.string().optional(), country: z.string().optional() }).optional().describe("The slice asked for (detail full only)."),
+    sources: z
+      .array(z.looseObject({ id: z.string(), name: z.string(), publisher: z.string(), licence: z.string() }))
+      .optional()
+      .describe("Detail full only: each matching source with its publisher, licence, attribution line, update frequency and limits."),
+    examples: z.array(z.string()).optional().describe("Detail full only: working example requests (REST paths) for the matching sources."),
+    rules: z.array(z.string()).optional(),
+    coming_next: z.array(z.string()).optional(),
+  })
+  .describe("Which price tools, countries and official sources are covered: a short overview by default, or full per-source detail (licence, attribution, limits) for a category and/or country.");
+
 export const errorSchema = z
   .looseObject({ error: z.string().describe("What went wrong, in plain words."), detail: z.unknown().optional() })
   .describe("An error: a missing or invalid parameter (400) or an official source that could not be reached (502).");
