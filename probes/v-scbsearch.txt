@@ -1,0 +1,26 @@
+URL: https://api.scb.se/OV0104/v2beta/api/v2/tables?query=hyror&lang=en&pastDays=0&pageSize=20
+Fetched: 2026-10-15T06:41:48Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 265
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Length: 265
+Content-Type: application/json; charset=utf-8
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-15T06:41:58.3491249Z
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Thu, 15 Oct 2026 06:41:48 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Max-Age: 86400
+Allow: GET,HEAD,POST,OPTIONS
+Vary: Origin, Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: TS0187a64b=017dca055c6ece8c3dd491d6c5216813ebcf36d767b96227772de439e8377ed13531499018aa3a192c075109f618497a22d9fa7e7a; Path=/; Domain=.api.scb.se; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"language":"en","tables":[],"page":{"pageNumber":1,"pageSize":20,"totalElements":0,"totalPages":1,"links":[]},"links":[{"rel":"self","hreflang":"en","href":"https://api.scb.se/OV0104/v2beta/api/v2/tables/?lang=en&query=hyror&pagesize=20&pageNumber=1&pastDays=0"}]}
