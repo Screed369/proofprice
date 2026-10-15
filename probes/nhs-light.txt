@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/datastore_search_sql?resource_id=PCA_202607&sql=SELECT%20BNF_PRESENTATION_NAME%2C%20UNIT_OF_MEASURE%2C%20SUM%28ITEMS%29%20AS%20items%2C%20SUM%28TOTAL_QUANTITY%29%20AS%20quantity%2C%20SUM%28NIC%29%20AS%20nic%20FROM%20%60PCA_202607%60%20WHERE%20BNF_PRESENTATION_NAME%20LIKE%20%27Omeprazole%20%25%27%20GROUP%20BY%201%2C%202%20ORDER%20BY%20items%20DESC%20LIMIT%20100
+Fetched: 2026-10-15T17:27:33Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3723
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 15 Oct 2026 17:27:33 GMT
+content-type: application/json;charset=utf-8
+content-length: 3723
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search_sql", "success": true, "result": {"help": "https://demo.ckan.org/api/3/action/help_show?name=datastore_search_sql", "success": "true", "result": {"records": [{"BNF_PRESENTATION_NAME": "Omeprazole 20mg gastro-resistant capsules", "UNIT_OF_MEASURE": "capsule", "items": 2682795, "quantity": 99611932, "nic": 3085719.11}, {"BNF_PRESENTATION_NAME": "Omeprazole 10mg gastro-resistant capsules", "UNIT_OF_MEASURE": "capsule", "items": 160981, "quantity": 5910812, "nic": 173285.59}, {"BNF_PRESENTATION_NAME": "Omeprazole 40mg gastro-resistant capsules", "UNIT_OF_MEASURE": "capsule", "items": 117995, "quantity": 3853669, "nic": 358571.84}, {"BNF_PRESENTATION_NAME": "Omeprazole 20mg dispersible gastro-resistant tablets", "UNIT_OF_MEASURE": "tablet", "items": 24934, "quantity": 897918, "nic": 431650.69}, {"BNF_PRESENTATION_NAME": "Omeprazole 20mg gastro-resistant tablets", "UNIT_OF_MEASURE": "tablet", "items": 16768, "quantity": 605458, "nic": 140707.22}, {"BNF_PRESENTATION_NAME": "Omeprazole 10mg dispersible gastro-resistant tablets", "UNIT_OF_MEASURE": "tablet", "items": 7592, "quantity": 261392, "nic": 91113.76}, {"BNF_PRESENTATION_NAME": "Omeprazole 10mg/5ml oral suspension sugar free", "UNIT_OF_MEASURE": "ml", "items": 6446, "quantity": 988575, "nic": 1803028.99}, {"BNF_PRESENTATION_NAME": "Omeprazole 20mg/5ml oral suspension sugar free", "UNIT_OF_MEASURE": "ml", "items": 3535, "quantity": 556500, "nic": 1915324.6}, {"BNF_PRESENTATION_NAME": "Omeprazole 40mg dispersible gastro-resistant tablets", "UNIT_OF_MEASURE": "tablet", "items": 2769, "quantity": 88749, "nic": 93186.45}, {"BNF_PRESENTATION_NAME": "Omeprazole 1mg/ml oral suspension sugar free", "UNIT_OF_MEASURE": "ml", "items": 2690, "quantity": 301650, "nic": 492493.9}, {"BNF_PRESENTATION_NAME": "Omeprazole 40mg gastro-resistant tablets", "UNIT_OF_MEASURE": "tablet", "items": 2374, "quantity": 77543, "nic": 108227.88}, {"BNF_PRESENTATION_NAME": "Omeprazole 10mg gastro-resistant tablets", "UNIT_OF_MEASURE": "tablet", "items": 1559, "quantity": 54033, "nic": 19728.56}, {"BNF_PRESENTATION_NAME": "Omeprazole 40mg/5ml oral suspension", "UNIT_OF_MEASURE": "ml", "items": 104, "quantity": 15445, "nic": 42615.17}, {"BNF_PRESENTATION_NAME": "Omeprazole 5mg/5ml oral suspension", "UNIT_OF_MEASURE": "ml", "items": 95, "quantity": 16894, "nic": 27030.45}, {"BNF_PRESENTATION_NAME": "Omeprazole 20mg/5ml oral solution", "UNIT_OF_MEASURE": "ml", "items": 57, "quantity": 11487, "nic": 38416.88}, {"BNF_PRESENTATION_NAME": "Omeprazole 10mg/5ml oral suspension", "UNIT_OF_MEASURE": "ml", "items": 49, "quantity": 12541, "nic": 18163.63}, {"BNF_PRESENTATION_NAME": "Omeprazole 20mg/5ml oral suspension", "UNIT_OF_MEASURE": "ml", "items": 37, "quantity": 7225, "nic": 21374.27}, {"BNF_PRESENTATION_NAME": "Omeprazole 10mg/5ml oral solution", "UNIT_OF_MEASURE": "ml", "items": 28, "quantity": 4335, "nic": 12697.64}, {"BNF_PRESENTATION_NAME": "Omeprazole 10mg/15ml oral solution unit dose sugar free", "UNIT_OF_MEASURE": "unit dose", "items": 11, "quantity": 346, "nic": 2860.17}, {"BNF_PRESENTATION_NAME": "Omeprazole 40mg/5ml oral solution", "UNIT_OF_MEASURE": "ml", "items": 9, "quantity": 1130, "nic": 5145.5}, {"BNF_PRESENTATION_NAME": "Omeprazole 20mg/15ml oral solution unit dose sugar free", "UNIT_OF_MEASURE": "unit dose", "items": 8, "quantity": 182, "nic": 2839.2}, {"BNF_PRESENTATION_NAME": "Omeprazole 5mg/5ml oral solution", "UNIT_OF_MEASURE": "ml", "items": 3, "quantity": 168, "nic": 263.84}, {"BNF_PRESENTATION_NAME": "Omeprazole 40mg powder for solution for infusion vials", "UNIT_OF_MEASURE": "vial", "items": 1, "quantity": 5, "nic": 26}], "fields": []}}}
