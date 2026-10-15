@@ -1,0 +1,323 @@
+URL: https://www.donneesquebec.ca/recherche/dataset/d23b2e02-085d-43e5-9e6e-e1d558ebfdd5/resource/b7ac3d06-bdc0-492d-8801-c7f650eba2ce/download/mensuel_20260901_20260930.json
+Fetched: 2026-10-15T06:52:25Z from GitHub Actions
+Status, type, bytes: 200 application/json 68208314
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 15 Oct 2026 06:52:23 GMT
+content-type: application/json
+content-length: 68208314
+server: nginx
+vary: Accept-Encoding
+content-disposition: inline; filename=mensuel_20260901_20260930.json
+last-modified: Thu, 01 Oct 2026 10:40:48 GMT
+cache-control: no-cache, public, max-age=0, must-revalidate
+etag: "1790851248.4423025-68208314-1296766542"
+vary: Cookie
+strict-transport-security: max-age=31536000; includeSubdomains;
+access-control-allow-origin: *
+
+=== FILE TYPE: Unicode text, UTF-8 text
+=== FIRST 9000 BYTES
+{
+  "uri": "https://www.donneesquebec.ca/recherche/dataset/d23b2e02-085d-43e5-9e6e-e1d558ebfdd5/resource/b7ac3d06-bdc0-492d-8801-c7f650eba2ce/download/mensuel_20260901_20260930.json",
+  "version": "1.1",
+  "extensions": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/v1.1.5/extension.json"
+  ],
+  "publishedDate": "2026-10-01T03:47:56-04:00",
+  "publisher": {
+    "name": "Secrétariat du Conseil du trésor"
+  },
+  "license": "https://www.donneesquebec.ca/fr/licence/#cc-by",
+  "publicationPolicy": "https://www.donneesquebec.ca/recherche/dataset/systeme-electronique-dappel-doffres-seao#fiche_descriptive",
+  "releases": [
+    {
+      "ocid": "ocds-ec9k95-1822825",
+      "id": "20260930214050",
+      "date": "2026-09-30T17:40:49-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Ville de Forestville.",
+          "id": "OP-36393",
+          "address": {
+            "streetAddress": "1, 2e Avenue,",
+            "locality": "Forestville",
+            "region": "QC",
+            "postalCode": "G0T1E0",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "1"
+          }
+        },
+        {
+          "name": "FIDEMA GROUPE CONSEILS INC.",
+          "id": "FO-1142493551",
+          "address": {
+            "streetAddress": "5205 Grande-Allée,Suite 200",
+            "locality": "Brossard",
+            "region": "QC",
+            "postalCode": "J4Z3G5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1142493551"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Ville de Forestville.",
+        "id": "OP-36393"
+      },
+      "tender": {
+        "id": "FID-2021-16",
+        "title": "Regroupement Bas-Saint-Laurent/Gaspésie - Assurance des biens 2021-2026",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Ville de Forestville.",
+          "id": "OP-36393"
+        },
+        "items": [
+          {
+            "id": "S11",
+            "description": "S11 - Services financiers et autres services connexes",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "84000000",
+              "description": "Finances et assurances"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article30 - Contrat dont le montant est inférieur à 25 000$",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services professionnels"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-09-30T17:40:49-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1142493551",
+            "name": "FIDEMA GROUPE CONSEILS INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=da1aff85-ba48-456f-a4d4-3094bb1f7c0f"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20168806",
+          "status": "active",
+          "date": "2026-05-01T00:00:00-04:00",
+          "value": {
+            "amount": 1986.59,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "FIDEMA GROUPE CONSEILS INC.",
+              "id": "FO-1142493551"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20168806",
+          "awardID": "20168806",
+          "status": "active",
+          "value": {
+            "amount": 1986.59,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-05-01T00:00:00-04:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20002914",
+      "id": "20260930215004",
+      "date": "2026-09-30T17:50:03-04:00",
+      "tag": [
+        "tender"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Centre d'acquisitions gouvernementales",
+          "id": "OP-2189",
+          "address": {
+            "streetAddress": "1141, route de l’Église,local RC15",
+            "locality": "Québec",
+            "region": "QC",
+            "postalCode": "G1V3W5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Centre d'acquisitions gouvernementales",
+        "id": "OP-2189"
+      },
+      "tender": {
+        "id": "2026-8115-50",
+        "title": "Location de véhicules",
+        "status": "active",
+        "procuringEntity": {
+          "name": "Centre d'acquisitions gouvernementales",
+          "id": "OP-2189"
+        },
+        "items": [
+          {
+            "id": "G31",
+            "description": "G31 - Équipement de transport et pièces de rechange",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "78111808",
+              "description": "Location de véhicule"
+            },
+            "additionalClassifications": [
+              {
+                "scheme": "UNSPSC",
+                "id": "25101518",
+                "description": "Véhicules utilitaires sport électriques"
+              }
+            ]
+          }
+        ],
+        "procurementMethod": "open",
+        "procurementMethodDetails": "Avis d’appel d’offres",
+        "mainProcurementCategory": "goods",
+        "additionalProcurementCategories": [
+          "Approvisionnement (biens)"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-09-30T17:50:03-04:00",
+          "endDate": "2026-11-18T11:00:00-05:00",
+          "durationInDay": 48
+        },
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=96098eb8-5a64-4da5-93fc-736b3400c3e9"
+          }
+        ]
+      },
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20007385",
+      "id": "20260915192107",
+      "date": "2026-09-15T15:21:07-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Sûreté du Québec",
+          "id": "OP-81316",
+          "address": {
+            "streetAddress": "1703, Rue Parthenais,UO 3260 Bureau de la gestion contractuelle",
+            "locality": "Montréal",
+            "region": "QC",
+            "postalCode": "H2K0C7",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "FRANÇOIS GOUPIL DEVELOPPEMENT DE MARCHÉS INC.",
+          "id": "FO-1166326976",
+          "address": {
+            "streetAddress": "6292 rue des Mélias,  ,",
+            "locality": "Longueuil",
+            "region": "QC",
+            "postalCode": "J3Z1J5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1166326976"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Sûreté du Québec",
+        "id": "OP-81316"
+      },
+      "tender": {
+        "id": "AP-2026-2351-024-GG",
+        "title": "Éthylomètre DataMaster DMT-C",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Sûreté du Québec",
+          "id": "OP-81316"
+        },
+        "items": [
+          {
+            "id": "G14",
+            "description": "G14 - Équipement de lutte contre l’incendie, de sécurité et de protection",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "46171600",
+              "description": "Matériel de surveillance et de détection"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article13 - Paragraphe 2°: Un seul contractant est possible en raison d’une garantie, d’un droit de propriété, d’un droit exclusif, etc.;",
+        "mainProcurementCategory": "goods",
+        "additionalProcurementCategories": [
+          "Approvisionnement (biens)"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-09-15T15:21:07-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1166326976",
+            "name": "FRANÇOIS GOUPIL DEVELOPPEMENT DE MARCHÉS INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=d16b39e3-9269-409f-a896-16b97b4ede1b"
+          }
+        ]
+      },
+      "a
