@@ -78,7 +78,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         min: last.min,
         max: last.max,
       },
-      sample_size: last.n,
+      sample_size: src.nominalCounts ? null : last.n,
       period: { from: last.date, to: last.date },
       confidence: conf,
       price_type: src.info.price_type,
@@ -90,7 +90,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
       method_url: (o.baseUrl ?? "") + METHOD_URL,
       summary:
         `${itemLabel} in ${key.label}: median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), ` +
-        `based on ${last.n} records in our copy of ${src.info.name} (${src.info.publisher}) taken on ${last.date}. ${sentence} Confidence: ${conf}.`,
+        `based on ${src.nominalCounts ? "the published figure (no record count is published)" : `${last.n} records`} in our copy of ${src.info.name} (${src.info.publisher}) taken on ${last.date}. ${sentence} Confidence: ${conf}.`,
       notice: `${sentence} ${NOTICE}`,
       extra: {
         stale: true,

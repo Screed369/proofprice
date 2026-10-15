@@ -26,6 +26,7 @@ export default defineSource({
     "United Kingdom (groceries): the median shop price of about 200 grocery and drink product types (one pack size each) that the Office for National Statistics publishes every month from the prices behind its consumer price index " +
     "(price collectors in shops and online combined with retailer scanner data), with the lower and upper quartile, mean, lowest and highest. We copy the ONS file once a day and pass on the published figures and their month. " +
     "ONS advises against comparing months, so there is no change on a year earlier; these are shelf prices, not receipts.",
+  nominalCounts: true,
   harvest: gbHarvest,
   handle: (p, ctx) => gbOnsPriceLevels({ item: String(p.item ?? ""), region: str(p.region), baseUrl: ctx.baseUrl }),
 });

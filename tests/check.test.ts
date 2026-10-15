@@ -296,3 +296,44 @@ test("answer_id is stable for the same source, normalised query, period and meth
   });
   assert.equal(bumped.method_version, "2");
 });
+
+// ---------- reliability (D2) ----------
+
+import { periodEndDate, reliabilityOf, RELIABILITY_VALUES } from "../lib/answer";
+
+test("reliability, data_as_of, data_age_days and suggestions on every answer; old fields unchanged", () => {
+  const a = sales(30);
+  assert.equal(a.reliability, "record_level");
+  assert.equal(a.data_as_of, "2026-09-30");
+  assert.equal(typeof a.data_age_days, "number");
+  assert.ok(Array.isArray(a.suggestions));
+  assert.equal(a.confidence, "medium"); // unchanged
+  assert.equal(sales(8).reliability, "thin");
+  assert.equal(sales(3).reliability, "insufficient_data");
+  assert.ok(sales(3).suggestions!.length > 0);
+  const r = rent();
+  assert.equal(r.sample_size, null);
+  assert.equal(r.confidence, "high"); // unchanged for backwards compatibility
+  assert.equal(r.reliability, "official_median_no_count"); // but honest
+  assert.ok(r.suggestions!.some((s) => /itemised quote/.test(s)));
+  for (const x of [a, r, sales(8), sales(3)]) {
+    assert.ok(RELIABILITY_VALUES.includes(x.reliability as any));
+    assert.ok(priceAnswerSchema.safeParse(x).success);
+  }
+});
+
+test("an official statistic with a count is official_with_count; a stale copy is stale", () => {
+  assert.equal(reliabilityOf({ status: "ok", price: {} as any, sample_size: 420, price_type: "official_statistic" }), "official_with_count");
+  assert.equal(reliabilityOf({ status: "ok", price: {} as any, sample_size: 5, price_type: "transaction", extra: { stale: true } }), "stale");
+  assert.equal(reliabilityOf({ status: "no_matches", price: null, sample_size: 0, price_type: "transaction" }), "insufficient_data");
+});
+
+test("periodEndDate understands the period texts sources use", () => {
+  assert.equal(periodEndDate("2026-09-30"), "2026-09-30");
+  assert.equal(periodEndDate("2026-02"), "2026-02-28");
+  assert.equal(periodEndDate("2026-Q2"), "2026-06-30");
+  assert.equal(periodEndDate("2025-S2"), "2025-12-31");
+  assert.equal(periodEndDate("2025"), "2025-12-31");
+  assert.equal(periodEndDate("latest"), null);
+  assert.equal(periodEndDate(null), null);
+});

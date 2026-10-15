@@ -29,5 +29,6 @@ export default defineSource({
       hours: str(p.hours),
       baseUrl: ctx.baseUrl,
     }),
+  nominalCounts: true,
   harvest: usHarvest,
 });

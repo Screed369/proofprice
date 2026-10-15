@@ -60,6 +60,69 @@ export interface PriceAnswer {
   retrieved_at?: string;
   /** What kind of evidence the figure is, in words. */
   evidence?: AnswerEvidence;
+  // ----- reliability (additive, optional: added by withAudit, so every answer carries them) -----
+  /** How far the figure can be trusted as a distribution of real prices. Independent of `confidence`, which stays as it was for backwards compatibility. */
+  reliability?: Reliability;
+  /** ISO date (YYYY-MM-DD) of the newest data point behind the figure; null when the source does not say. */
+  data_as_of?: string | null;
+  /** Whole days between data_as_of and retrieved_at; null when data_as_of is null. */
+  data_age_days?: number | null;
+  /** Short, plain things to try next (widen the period or area, ask for an itemised quote). May be empty. */
+  suggestions?: string[];
+}
+
+export type Reliability = "official_with_count" | "official_median_no_count" | "record_level" | "thin" | "stale" | "insufficient_data";
+export const RELIABILITY_VALUES = ["official_with_count", "official_median_no_count", "record_level", "thin", "stale", "insufficient_data"] as const;
+
+/** The last day of the period a text names: 2025-09-30, 2025-09, 2025-Q3, 2025-S2, 2025 or null. */
+export function periodEndDate(text: string | null | undefined): string | null {
+  if (!text) return null;
+  const t = String(text).trim();
+  const full = t.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (full) return `${full[1]}-${full[2]}-${full[3]}`;
+  const lastDay = (y: number, m: number) => new Date(Date.UTC(y, m, 0)).getUTCDate();
+  const iso = (y: number, m: number, d: number) => `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+  const ym = t.match(/^(\d{4})-(\d{2})\b/);
+  if (ym && +ym[2] >= 1 && +ym[2] <= 12) return iso(+ym[1], +ym[2], lastDay(+ym[1], +ym[2]));
+  const q = t.match(/^(\d{4})[-\s]?Q([1-4])$/i);
+  if (q) return iso(+q[1], +q[2] * 3, lastDay(+q[1], +q[2] * 3));
+  const h = t.match(/^(\d{4})[-\s]?(?:S|H)([12])$/i);
+  if (h) return iso(+h[1], +h[2] * 6, lastDay(+h[1], +h[2] * 6));
+  const y = t.match(/^(\d{4})$/);
+  if (y) return iso(+y[1], 12, 31);
+  return null;
+}
+
+/** Reliability of an answer, from what it already says. Pure. */
+export function reliabilityOf(a: Pick<PriceAnswer, "status" | "price" | "sample_size" | "price_type" | "extra">): Reliability {
+  if (a.status !== "ok" || !a.price) return "insufficient_data";
+  if (a.extra && (a.extra as any).stale === true) return "stale";
+  if (a.price_type === "official_statistic") return typeof a.sample_size === "number" && a.sample_size > 0 ? "official_with_count" : "official_median_no_count";
+  return typeof a.sample_size === "number" && a.sample_size >= 15 ? "record_level" : "thin";
+}
+
+function suggestionsFor(a: PriceAnswer, rel: Reliability, ageDays: number | null): string[] {
+  const out: string[] = [];
+  const q = a.query ?? {};
+  const hasPlace = ["area", "postcode", "town", "region", "county", "city", "department", "province"].some((k) => String((q as any)[k] ?? "").trim() !== "");
+  if (rel === "insufficient_data") {
+    out.push(a.status === "no_matches" ? "Nothing matched: check the spelling or try a broader item." : "Fewer than 5 records matched: widen the area or the period.");
+    if (hasPlace) out.push("Try a larger area (a whole region or the country).");
+    out.push("Call the coverage tool to see which countries, items and sources are available.");
+  } else if (rel === "thin") {
+    out.push("Few records stand behind this range: widen the period or the area for a steadier figure.");
+    out.push("Treat it as a rough guide and ask for an itemised quote before deciding.");
+  } else if (rel === "official_median_no_count") {
+    out.push("This is one published average or median with no record count: use it as a reference point, not as a range of what individuals paid.");
+    out.push("For a decision on a specific job or purchase, ask for an itemised quote.");
+  } else if (rel === "official_with_count") {
+    out.push("This is one published figure for a group: for a specific job or purchase, ask for an itemised quote.");
+  } else if (rel === "stale") {
+    out.push("The official source did not respond and this is our copy: retry later for the live figure.");
+  }
+  if (rel !== "stale" && ageDays !== null && ageDays > 365) out.push("The newest data is over a year old: prices may have moved, so check for a more recent source.");
+  if (a.price_type === "posted_pump_price" || a.price_type === "posted_price") out.push("This is a posted price, not what each customer paid.");
+  return out;
 }
 
 export interface AnswerEvidence {
@@ -132,13 +195,18 @@ export function answerIdFor(sourceId: string, query: Record<string, unknown>, pe
  *  Only adds fields; nothing that was already in the answer changes. */
 export function withAudit<T extends PriceAnswer>(answer: T, src: SourceInfo, retrievedAt: string = new Date().toISOString()): T {
   const methodVersion = src.method_version ?? "1";
-  return {
+  const base = {
     ...answer,
     answer_id: answerIdFor(src.id, answer.query, answer.period, methodVersion),
     method_version: methodVersion,
     retrieved_at: retrievedAt,
     evidence: evidenceFor(src.price_type, answer.statistic?.measure),
   };
+  const reliability = reliabilityOf(base);
+  const dataAsOf = periodEndDate(answer.period?.to) ?? periodEndDate(answer.period?.from) ?? periodEndDate(answer.statistic?.reference_period);
+  const ageMs = dataAsOf ? new Date(retrievedAt).getTime() - new Date(dataAsOf + "T00:00:00Z").getTime() : NaN;
+  const dataAge = Number.isFinite(ageMs) ? Math.max(0, Math.floor(ageMs / 86400000)) : null;
+  return { ...base, reliability, data_as_of: dataAsOf, data_age_days: dataAge, suggestions: suggestionsFor(base, reliability, dataAge) };
 }
 
 export const NOTICE = "Information, not a valuation or offer. Ranges describe past recorded prices.";

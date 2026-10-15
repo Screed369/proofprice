@@ -200,6 +200,7 @@ export interface HistoryAnswer {
   series: { date: string; median: number; typical_low: number; typical_high: number; sample_size: number }[];
   period: { from: string | null; to: string | null };
   change: null | { from_median: number; to_median: number; absolute: number; percent: number };
+  sample_size_note?: string;
   price_type: string;
   source: PriceAnswer["source"];
   library: { first_date: string | null; last_date: string | null; days_collected: number; days_since_last_snapshot: number | null };
@@ -276,6 +277,7 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
     status,
     currency,
     unit,
+    ...(src.nominalCounts ? { sample_size_note: "The publisher gives one figure and no record count; sample_size in the series is a placeholder (5) kept so the day passes the 5-record rule. It is not a count of records." } : {}),
     series: rows.map((r) => ({ date: r.date, median: r.median, typical_low: r.low, typical_high: r.high, sample_size: r.n })),
     period: { from: first?.date ?? null, to: last?.date ?? null },
     change,

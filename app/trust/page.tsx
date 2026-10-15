@@ -51,6 +51,12 @@ export default function Trust() {
           stated period. That mark is not a count of records, and an official statistic comes without a range.
         </li>
         <li>
+          <strong>Reliability:</strong> a plainer label than confidence. It says whether the figure is an official figure with a record count, an
+          official average or median with no count, built from records (15 or more) or thin (5 to 14), our own copy because the official source
+          did not respond, or not enough data. Each answer also says the date of its newest data (<code>data_as_of</code>, <code>data_age_days</code>)
+          and what to try next (<code>suggestions</code>).
+        </li>
+        <li>
           <strong>Method:</strong> a plain description of how the median and the typical range (10th to 90th percentile) were worked out, or,
           for an official statistic, which figure the publisher published. See <a href="/method">/method</a>.
         </li>

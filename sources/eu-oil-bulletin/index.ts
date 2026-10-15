@@ -34,6 +34,7 @@ export default defineSource({
       postcode: str(p.postcode),
       baseUrl: ctx.baseUrl,
     }),
+  nominalCounts: true,
   harvest: wobHarvest,
   historyKey: (p) => wobHistoryKey({ country: String(p.country), fuel: String(p.fuel) }),
 });

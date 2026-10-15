@@ -23,6 +23,7 @@ export default defineSource({
   method:
     "United States (groceries): the average retail price of standard food and drink items that the Bureau of Labor Statistics calculates every month from the store prices its collectors record for the Consumer Price Index (series APU), " +
     "for the U.S. city average and four regions, with the change on a year earlier. We copy the BLS file once a day and pass on the published average and its month; no range is calculated, and these are shelf prices, not receipts.",
+  nominalCounts: true,
   harvest: usHarvest,
   handle: (p, ctx) => usBlsPrices({ item: String(p.item ?? ""), region: str(p.region), baseUrl: ctx.baseUrl }),
 });

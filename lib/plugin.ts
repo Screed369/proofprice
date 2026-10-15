@@ -101,6 +101,9 @@ export interface SourcePlugin {
   handle(params: Params, ctx: HandleContext): Promise<PriceAnswer>;
   /** Optional: called once a day by the collector (GitHub Actions) to add a day of aggregates to the library. */
   harvest?(): Promise<HarvestResult>;
+  /** Set true when harvest() writes a placeholder count (n: 5) because the publisher gives one figure and no record count.
+   *  Answers and history built from the library then report sample_size null instead of a count that is not real. */
+  nominalCounts?: boolean;
   /** Optional: map a request to the library keys used by harvest, so /history can answer. */
   historyKey?(params: Params): { area: string; item: string; label: string } | null;
 }

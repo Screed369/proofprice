@@ -71,6 +71,13 @@ export const priceAnswerSchema = z
       })
       .optional()
       .describe("Audit trail: what kind of evidence the figure is."),
+    reliability: z
+      .enum(["official_with_count", "official_median_no_count", "record_level", "thin", "stale", "insufficient_data"])
+      .optional()
+      .describe("How far to trust the figure as a distribution of real prices. official_with_count = a published official figure with a record count; official_median_no_count = a published average or median with no record count (confidence 'high' there means the publisher is official, not that a count was checked); record_level = 15+ records we hold; thin = 5–14 records; stale = our copy because the official source did not respond; insufficient_data = no figure published."),
+    data_as_of: z.string().nullable().optional().describe("ISO date (YYYY-MM-DD) of the newest data point behind the figure; null when unknown."),
+    data_age_days: nullableNumber.optional().describe("Whole days between data_as_of and retrieved_at; null when data_as_of is null."),
+    suggestions: z.array(z.string()).optional().describe("Short plain things to try next: widen the period or area, ask for an itemised quote. May be empty."),
   })
   .describe("A price answer: a range or an official statistic with sample size, period, confidence, source and licence.");
 
@@ -142,6 +149,7 @@ export const historyAnswerSchema = z
       .optional()
       .describe("Change over the period; null with fewer than two days."),
     price_type: z.string().optional(),
+    sample_size_note: z.string().optional().describe("Present when the publisher gives no record count: sample_size in the series is a placeholder, not a count."),
     source: sourceBlockSchema,
     library: z
       .looseObject({

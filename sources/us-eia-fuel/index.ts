@@ -38,6 +38,7 @@ export default defineSource({
   method:
     "United States fuel: the average retail price (taxes included) of regular, midgrade and premium gasoline and of on-highway diesel that the U.S. Energy Information Administration estimates every week, in US dollars per gallon, " +
     "for the nation, its PADD regions, nine states and ten cities (diesel: nation, regions and California), with the change on the week and on the year. We copy EIA's two history files once a day and pass on the published average; no range is calculated.",
+  nominalCounts: true,
   harvest: usFuelHarvest,
   historyKey: (p) => usFuelHistoryKey({ fuel: String(p.fuel), gasoline_grade: str(p.gasoline_grade), area: str(p.area), town: str(p.town) }),
   handle: (p, ctx) =>

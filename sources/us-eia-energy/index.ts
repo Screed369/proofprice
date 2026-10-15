@@ -32,6 +32,7 @@ export default defineSource({
   method:
     "United States energy: the average price of electricity and of natural gas sold to residential customers that the U.S. Energy Information Administration publishes every month for each state and the U.S. " +
     "(electricity in cents per kWh, natural gas in US dollars per thousand cubic feet), with the same month a year earlier. We copy EIA's two tables once a day and pass on the published average; no range is calculated.",
+  nominalCounts: true,
   harvest: usEnergyHarvest,
   handle: (p, ctx) =>
     usEnergy({

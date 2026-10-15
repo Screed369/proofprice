@@ -33,5 +33,6 @@ export default defineSource({
       bedrooms: num(p.bedrooms),
       baseUrl: ctx.baseUrl,
     }),
+  nominalCounts: true,
   harvest: gbHarvest,
 });

@@ -31,6 +31,7 @@ export default defineSource({
       postcode: str(p.postcode),
       baseUrl: ctx.baseUrl,
     }),
+  nominalCounts: true,
   harvest: desnzHarvest,
   historyKey: (p) => desnzHistoryKey({ fuel: String(p.fuel) }),
 });
