@@ -1,0 +1,1166 @@
+URL: https://opendata.rdw.nl/api/views/m9d7-ebf2.json
+Fetched: 2026-10-15T17:28:30Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 33081
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 15 Oct 2026 17:28:29 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+access-control-allow-origin: *
+vary: Accept-Encoding
+X-Socrata-Region: aws-eu-west-1-prod
+X-Socrata-RequestId: 5e2d5eaf7751b793ec8b3ca063e1c38f
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "id" : "m9d7-ebf2",
+  "name" : "Open Data RDW: Gekentekende_voertuigen",
+  "assetType" : "dataset",
+  "attribution" : "Team Open Data RDW",
+  "averageRating" : 0,
+  "category" : "Voertuigen",
+  "createdAt" : 1441748397,
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 132353292,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "PUBLIC_DOMAIN",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 3044283,
+  "provenance" : "official",
+  "publicationAppendEnabled" : true,
+  "publicationDate" : 1752682261,
+  "publicationGroup" : 24951,
+  "publicationStage" : "published",
+  "rowClass" : "",
+  "rowsUpdatedAt" : 1792063728,
+  "rowsUpdatedBy" : "h46f-th4h",
+  "tableId" : 2044548,
+  "totalTimesRated" : 0,
+  "viewCount" : 1708326,
+  "viewLastModified" : 1772094559,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1587710735,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 1514542,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1587710735,
+    "targetAudience" : "public",
+    "workflowId" : 170,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1587710765,
+      "failureCount" : 0,
+      "startedAt" : 1587710735,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "dtwm-nf4m",
+      "displayName" : "Team Open Data RDW"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 26854555,
+    "name" : "Kenteken",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "kenteken",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264764,
+    "width" : 196,
+    "format" : { }
+  }, {
+    "id" : 26854556,
+    "name" : "Voertuigsoort",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "voertuigsoort",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264765,
+    "width" : 256,
+    "format" : { }
+  }, {
+    "id" : 26854557,
+    "name" : "Merk",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "merk",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264766,
+    "width" : 148,
+    "format" : { }
+  }, {
+    "id" : 26854558,
+    "name" : "Handelsbenaming",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "handelsbenaming",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264767,
+    "width" : 280,
+    "format" : { }
+  }, {
+    "id" : 26854559,
+    "name" : "Vervaldatum APK",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "vervaldatum_apk",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14470917,
+    "format" : {
+      "decimalSeparator" : ".",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854560,
+    "name" : "Datum tenaamstelling",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "datum_tenaamstelling",
+    "position" : 7,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14470918,
+    "format" : {
+      "decimalSeparator" : ".",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854561,
+    "name" : "Bruto BPM",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "bruto_bpm",
+    "position" : 8,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264770,
+    "width" : 208,
+    "format" : { }
+  }, {
+    "id" : 26854562,
+    "name" : "Inrichting",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "inrichting",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264771,
+    "width" : 220,
+    "format" : { }
+  }, {
+    "id" : 26854563,
+    "name" : "Aantal zitplaatsen",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aantal_zitplaatsen",
+    "position" : 10,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264772,
+    "width" : 316,
+    "format" : { }
+  }, {
+    "id" : 26854564,
+    "name" : "Eerste kleur",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "eerste_kleur",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264773,
+    "width" : 244,
+    "format" : { }
+  }, {
+    "id" : 26854565,
+    "name" : "Tweede kleur",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "tweede_kleur",
+    "position" : 12,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264774,
+    "width" : 244,
+    "format" : { }
+  }, {
+    "id" : 26854566,
+    "name" : "Aantal cilinders",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aantal_cilinders",
+    "position" : 13,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264775,
+    "width" : 292,
+    "format" : { }
+  }, {
+    "id" : 26854567,
+    "name" : "Cilinderinhoud",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "cilinderinhoud",
+    "position" : 14,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264776,
+    "width" : 268,
+    "format" : { }
+  }, {
+    "id" : 26854568,
+    "name" : "Massa ledig voertuig",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "massa_ledig_voertuig",
+    "position" : 15,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264777,
+    "width" : 340,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854569,
+    "name" : "Toegestane maximum massa voertuig",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "toegestane_maximum_massa_voertuig",
+    "position" : 16,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264778,
+    "width" : 496,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854570,
+    "name" : "Massa rijklaar",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "massa_rijklaar",
+    "position" : 17,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264779,
+    "width" : 268,
+    "format" : { }
+  }, {
+    "id" : 26854571,
+    "name" : "Maximum massa trekken ongeremd",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "maximum_massa_trekken_ongeremd",
+    "position" : 18,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264780,
+    "width" : 460,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854572,
+    "name" : "Maximum trekken massa geremd",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "maximum_trekken_massa_geremd",
+    "position" : 19,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264781,
+    "width" : 436,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854573,
+    "name" : "Datum eerste toelating",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "datum_eerste_toelating",
+    "position" : 20,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14470920,
+    "format" : {
+      "decimalSeparator" : ".",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854574,
+    "name" : "Datum eerste tenaamstelling in Nederland",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "datum_eerste_tenaamstelling_in_nederland",
+    "position" : 21,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14470916,
+    "format" : {
+      "decimalSeparator" : ".",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854575,
+    "name" : "Wacht op keuren",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "wacht_op_keuren",
+    "position" : 22,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264786,
+    "width" : 280,
+    "format" : { }
+  }, {
+    "id" : 26854576,
+    "name" : "Catalogusprijs",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "catalogusprijs",
+    "position" : 23,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264787,
+    "width" : 268,
+    "format" : { }
+  }, {
+    "id" : 26854577,
+    "name" : "WAM verzekerd",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "wam_verzekerd",
+    "position" : 24,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264788,
+    "width" : 256,
+    "format" : { }
+  }, {
+    "id" : 26854578,
+    "name" : "Maximale constructiesnelheid",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "maximale_constructiesnelheid",
+    "position" : 25,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264789,
+    "width" : 628,
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854579,
+    "name" : "Laadvermogen",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "laadvermogen",
+    "position" : 26,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264790,
+    "width" : 244,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854580,
+    "name" : "Oplegger geremd",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "oplegger_geremd",
+    "position" : 27,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264791,
+    "width" : 280,
+    "format" : { }
+  }, {
+    "id" : 26854581,
+    "name" : "Aanhangwagen autonoom geremd",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aanhangwagen_autonoom_geremd",
+    "position" : 28,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264792,
+    "width" : 436,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854582,
+    "name" : "Aanhangwagen middenas geremd",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aanhangwagen_middenas_geremd",
+    "position" : 29,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264793,
+    "width" : 436,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854583,
+    "name" : "Aantal staanplaatsen",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aantal_staanplaatsen",
+    "position" : 30,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264795,
+    "width" : 340,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854584,
+    "name" : "Aantal deuren",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aantal_deuren",
+    "position" : 31,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264796,
+    "width" : 256,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854585,
+    "name" : "Aantal wielen",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aantal_wielen",
+    "position" : 32,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264797,
+    "width" : 256,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854586,
+    "name" : "Afstand hart koppeling tot achterzijde voertuig",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "afstand_hart_koppeling_tot_achterzijde_voertuig",
+    "position" : 33,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264798,
+    "width" : 664,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854587,
+    "name" : "Afstand voorzijde voertuig tot hart koppeling",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "afstand_voorzijde_voertuig_tot_hart_koppeling",
+    "position" : 34,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264799,
+    "width" : 640,
+    "format" : { }
+  }, {
+    "id" : 26854588,
+    "name" : "Afwijkende maximum snelheid",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "afwijkende_maximum_snelheid",
+    "position" : 35,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264800,
+    "width" : 424,
+    "format" : { }
+  }, {
+    "id" : 26854589,
+    "name" : "Lengte",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "lengte",
+    "position" : 36,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264801,
+    "width" : 172,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854590,
+    "name" : "Breedte",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "breedte",
+    "position" : 37,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264802,
+    "width" : 184,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854591,
+    "name" : "Europese voertuigcategorie",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "europese_voertuigcategorie",
+    "position" : 38,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264803,
+    "width" : 412,
+    "format" : { }
+  }, {
+    "id" : 26854592,
+    "name" : "Europese voertuigcategorie toevoeging",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "europese_voertuigcategorie_toevoeging",
+    "position" : 39,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264804,
+    "width" : 544,
+    "format" : { }
+  }, {
+    "id" : 26854593,
+    "name" : "Europese uitvoeringcategorie toevoeging",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "europese_uitvoeringcategorie_toevoeging",
+    "position" : 40,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264805,
+    "width" : 568,
+    "format" : { }
+  }, {
+    "id" : 26854594,
+    "name" : "Plaats chassisnummer",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "plaats_chassisnummer",
+    "position" : 41,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264806,
+    "width" : 340,
+    "format" : { }
+  }, {
+    "id" : 26854595,
+    "name" : "Technische max. massa voertuig",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "technische_max_massa_voertuig",
+    "position" : 42,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264807,
+    "width" : 460,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854596,
+    "name" : "Type",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "type",
+    "position" : 43,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264808,
+    "width" : 148,
+    "format" : { }
+  }, {
+    "id" : 26854597,
+    "name" : "Type gasinstallatie",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "type_gasinstallatie",
+    "position" : 44,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264809,
+    "width" : 328,
+    "format" : { }
+  }, {
+    "id" : 26854598,
+    "name" : "Typegoedkeuringsnummer",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "typegoedkeuringsnummer",
+    "position" : 45,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264810,
+    "width" : 364,
+    "format" : { }
+  }, {
+    "id" : 26854599,
+    "name" : "Variant",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "variant",
+    "position" : 46,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264811,
+    "width" : 184,
+    "format" : { }
+  }, {
+    "id" : 26854600,
+    "name" : "Uitvoering",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "uitvoering",
+    "position" : 47,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264812,
+    "width" : 220,
+    "format" : { }
+  }, {
+    "id" : 26854601,
+    "name" : "Volgnummer wijziging EU typegoedkeuring",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "volgnummer_wijziging_eu_typegoedkeuring",
+    "position" : 48,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264813,
+    "width" : 568,
+    "format" : { }
+  }, {
+    "id" : 26854602,
+    "name" : "Vermogen massarijklaar",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "vermogen_massarijklaar",
+    "position" : 49,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264814,
+    "width" : 364,
+    "format" : { }
+  }, {
+    "id" : 26854603,
+    "name" : "Wielbasis",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "wielbasis",
+    "position" : 50,
+    "renderTypeName" : "number",
+    "tableColumnId" : 264815,
+    "width" : 208,
+    "format" : { }
+  }, {
+    "id" : 26854604,
+    "name" : "Export indicator",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "export_indicator",
+    "position" : 51,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264816,
+    "width" : 292,
+    "format" : { }
+  }, {
+    "id" : 26854605,
+    "name" : "Openstaande terugroepactie indicator",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "openstaande_terugroepactie_indicator",
+    "position" : 52,
+    "renderTypeName" : "text",
+    "tableColumnId" : 264817,
+    "width" : 532,
+    "format" : { }
+  }, {
+    "id" : 26854606,
+    "name" : "Vervaldatum tachograaf",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "vervaldatum_tachograaf",
+    "position" : 53,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14470919,
+    "format" : {
+      "decimalSeparator" : ".",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854607,
+    "name" : "Taxi indicator",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "taxi_indicator",
+    "position" : 54,
+    "renderTypeName" : "text",
+    "tableColumnId" : 2404470,
+    "width" : 100,
+    "format" : { }
+  }, {
+    "id" : 26854608,
+    "name" : "Maximum massa samenstelling",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "maximum_massa_samenstelling",
+    "position" : 55,
+    "renderTypeName" : "number",
+    "tableColumnId" : 2404471,
+    "width" : 100,
+    "format" : { }
+  }, {
+    "id" : 26854609,
+    "name" : "Aantal rolstoelplaatsen",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aantal_rolstoelplaatsen",
+    "position" : 56,
+    "renderTypeName" : "number",
+    "tableColumnId" : 2404509,
+    "width" : 100,
+    "format" : { }
+  }, {
+    "id" : 26854610,
+    "name" : "Maximum ondersteunende snelheid",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "maximum_ondersteunende_snelheid",
+    "position" : 57,
+    "renderTypeName" : "number",
+    "tableColumnId" : 2404510,
+    "width" : 100,
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "precision" : "2",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854611,
+    "name" : "Jaar laatste registratie tellerstand",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "jaar_laatste_registratie_tellerstand",
+    "position" : 58,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462772,
+    "format" : { }
+  }, {
+    "id" : 26854612,
+    "name" : "Tellerstandoordeel",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "tellerstandoordeel",
+    "position" : 59,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14462771,
+    "format" : { }
+  }, {
+    "id" : 26854613,
+    "name" : "Code toelichting tellerstandoordeel",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "code_toelichting_tellerstandoordeel",
+    "position" : 60,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14462770,
+    "format" : { }
+  }, {
+    "id" : 26854614,
+    "name" : "Tenaamstellen mogelijk",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "tenaamstellen_mogelijk",
+    "position" : 61,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14462769,
+    "format" : { }
+  }, {
+    "id" : 26854615,
+    "name" : "Vervaldatum APK DT",
+    "dataTypeName" : "calendar_date",
+    "description" : "",
+    "fieldName" : "vervaldatum_apk_dt",
+    "position" : 62,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 14462768,
+    "format" : { }
+  }, {
+    "id" : 26854616,
+    "name" : "Datum tenaamstelling DT",
+    "dataTypeName" : "calendar_date",
+    "description" : "",
+    "fieldName" : "datum_tenaamstelling_dt",
+    "position" : 63,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 14462767,
+    "format" : { }
+  }, {
+    "id" : 26854617,
+    "name" : "Datum eerste toelating DT",
+    "dataTypeName" : "calendar_date",
+    "description" : "",
+    "fieldName" : "datum_eerste_toelating_dt",
+    "position" : 64,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 14462766,
+    "format" : { }
+  }, {
+    "id" : 26854618,
+    "name" : "Datum eerste tenaamstelling in Nederland DT",
+    "dataTypeName" : "calendar_date",
+    "description" : "",
+    "fieldName" : "datum_eerste_tenaamstelling_in_nederland_dt",
+    "position" : 65,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 14462765,
+    "format" : { }
+  }, {
+    "id" : 26854619,
+    "name" : "Vervaldatum tachograaf DT",
+    "dataTypeName" : "calendar_date",
+    "description" : "",
+    "fieldName" : "vervaldatum_tachograaf_dt",
+    "position" : 66,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 14462764,
+    "format" : { }
+  }, {
+    "id" : 26854620,
+    "name" : "Maximum last onder de vooras(sen) (tezamen)/koppeling",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "maximum_last_onder_de_vooras_sen_tezamen_koppeling",
+    "position" : 67,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462763,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854621,
+    "name" : "Type remsysteem voertuig code",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "type_remsysteem_voertuig_code",
+    "position" : 68,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14462762,
+    "format" : { }
+  }, {
+    "id" : 26854622,
+    "name" : "Rupsonderstelconfiguratiecode",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "rupsonderstelconfiguratiecode",
+    "position" : 69,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14462761,
+    "format" : { }
+  }, {
+    "id" : 26854623,
+    "name" : "Wielbasis voertuig minimum",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "wielbasis_voertuig_minimum",
+    "position" : 70,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462760,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854624,
+    "name" : "Wielbasis voertuig maximum",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "wielbasis_voertuig_maximum",
+    "position" : 71,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462759,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854625,
+    "name" : "Lengte voertuig minimum",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "lengte_voertuig_minimum",
+    "position" : 72,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462758,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854626,
+    "name" : "Lengte voertuig maximum",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "lengte_voertuig_maximum",
+    "position" : 73,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462757,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854627,
+    "name" : "Breedte voertuig minimum",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "breedte_voertuig_minimum",
+    "position" : 74,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462756,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854628,
+    "name" : "Breedte voertuig maximum",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "breedte_voertuig_maximum",
+    "position" : 75,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462755,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854629,
+    "name" : "Hoogte voertuig",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "hoogte_voertuig",
+    "position" : 76,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462754,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854630,
+    "name" : "Hoogte voertuig minimum",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "hoogte_voertuig_minimum",
+    "position" : 77,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462753,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854631,
+    "name" : "Hoogte voertuig maximum",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "hoogte_voertuig_maximum",
+    "position" : 78,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462752,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854632,
+    "name" : "Massa bedrijfsklaar minimaal",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "massa_bedrijfsklaar_minimaal",
+    "position" : 79,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462751,
+    "format" : {
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854633,
+    "name" : "Massa bedrijfsklaar maximaal",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "massa_bedrijfsklaar_maximaal",
+    "position" : 80,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462750,
+    "format" : {
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854634,
+    "name" : "Technisch toelaatbaar massa koppelpunt",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "technisch_toelaatbaar_massa_koppelpunt",
+    "position" : 81,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462749,
+    "format" : { }
+  }, {
+    "id" : 26854635,
+    "name" : "Maximum massa technisch maximaal",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "maximum_massa_technisch_maximaal",
+    "position" : 82,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462748,
+    "format" : { }
+  }, {
+    "id" : 26854636,
+    "name" : "Maximum massa technisch minimaal",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "maximum_massa_technisch_minimaal",
+    "position" : 83,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462747,
+    "format" : { }
+  }, {
+    "id" : 26854637,
+    "name" : "Subcategorie Nederland",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "subcategorie_nederland",
+    "position" : 84,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14462746,
+    "format" : { }
+  }, {
+    "id" : 26854638,
+    "name" : "Verticale belasting koppelpunt getrokken voertuig",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "verticale_belasting_koppelpunt_getrokken_voertuig",
+    "position" : 85,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462745,
+    "format" : { }
+  }, {
+    "id" : 26854639,
+    "name" : "Zuinigheidsclassificatie",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "zuinigheidsclassificatie",
+    "position" : 86,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14462744,
+    "format" : { }
+  }, {
+    "id" : 26854640,
+    "name" : "Registratie datum goedkeuring (afschrijvingsmoment BPM)",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "registratie_datum_goedkeuring_afschrijvingsmoment_bpm",
+    "position" : 87,
+    "renderTypeName" : "number",
+    "tableColumnId" : 14462743,
+    "format" : {
+      "decimalSeparator" : ".",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 26854641,
+    "name" : "Registratie datum goedkeuring (afschrijvingsmoment BPM) DT",
+    "dataTypeName" : "calendar_date",
+    "description" : "",
+    "fieldName" : "registratie_datum_goedkeuring_afschrijvingsmoment_bpm_dt",
+    "position" : 88,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 14462742,
+    "format" : { }
+  }, {
+    "id" : 26854642,
+    "name" : "Gemiddelde Lading Waarde",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "gem_lading_wrde",
+    "position" : 89,
+    "renderTypeName" : "number",
+    "tableColumnId" : 15032857,
+    "format" : { }
+  }, {
+    "id" : 26854643,
+    "name" : "Aerodynamische voorziening of uitrusting",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "aerodyn_voorz",
+    "position" : 90,
+    "renderTypeName" : "text",
+    "tableColumnId" : 15032856,
+    "format" : { }
+  }, {
+    "id" : 26854644,
+    "name" : "Additionele massa alternatieve aandrijving",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "massa_alt_aandr",
+    "position" : 91,
+    "renderTypeName" : "number",
+    "tableColumnId" : 15032855,
+    "format" : { }
+  }, {
+    "id" : 26854645,
+    "name" : "Verlengde cabine indicator",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "verl_cab_ind",
+    "position" : 92,
+    "renderTypeName" : "text",
+    "tableColumnId" : 15032854,
+    "format" : { }
+  }, {
+    "id" : 26854652,
+    "name" : "Aantal passagiers zitplaatsen wettelijk",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "aantal_passagiers_zitplaatsen_wettelijk",
+    "position" : 93,
+    "renderTypeName" : "number",
+    "tableColumnId" : 16280962,
+    "format" : { }
+  }, {
+    "id" : 26854651,
+    "name" : "Aanwijzingsnummer",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "aanwijzingsnummer",
+    "position" : 94,
+    "renderTypeName" : "text",
+    "tableColumnId" : 16280961,
+    "format" : { }
+  }, {
+    "id" : 26854646,
+    "name" : "API Gekentekende_voertuigen_assen",
+    "dataT
