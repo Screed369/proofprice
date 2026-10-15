@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 const ENERGY_ALIASES: Record<string, "electricity" | "gas"> = {
   electricity: "electricity", electric: "electricity", power: "electricity",
@@ -29,7 +29,7 @@ export default defineCategory({
     "Returns the official average price per kWh for a standard household consumption band, for the latest period published, " +
     "with the same band excluding VAT and excluding all taxes, every band, the previous period and the change, and the official source and licence. " +
     "This is a published average (price_type official_statistic), not a range built from sales, so the range fields are null and there is no sample size. " +
-    `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "Do not use for business or industrial tariffs, for a specific supplier's offer or a quote for a particular home, for petrol and diesel (use the fuel tool), or for other countries.",
   params: {
     energy: z.enum(["electricity", "gas"]).describe("electricity or gas (natural gas)."),

@@ -2,7 +2,7 @@
 // The tool name pricepaid_medical_prices is public: never rename it.
 import { z } from "zod";
 import { defineCategory } from "../../lib/plugin";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 export default defineCategory({
   id: "medical",
@@ -18,7 +18,7 @@ export default defineCategory({
     "with the number of services or discharges behind it, the share the insurer itself paid, the national average for comparison and the data year, plus the official source and licence. " +
     "These are public-insurance rates (price_type official_statistic): what the insurer allowed or paid, NOT private-insurance negotiated prices or cash prices, which are usually higher, and not a quote. " +
     "A published average, so the range fields are null. Facility figures are the doctor's fee only; the hospital's or surgery centre's fee is separate. " +
-    `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "Do not use for a quote or what a specific hospital or doctor charges, private-insurance or out-of-pocket costs, drug or prescription prices, dental or vision plans, or other countries.",
   params: {
     service: z

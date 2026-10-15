@@ -5,7 +5,7 @@
 import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 const TYPE_ALIASES: Record<string, "any" | "apartment" | "house" | "room"> = {
   any: "any", all: "any",
@@ -34,7 +34,7 @@ export default defineCategory({
     "Where the source holds individual rents the answer is a median with a typical range (10th–90th percentile) and the number of rents; " +
     "where the source publishes an average or median (price_type official_statistic) the range fields are null and there is no sample size. " +
     "Every answer states its unit (rent per month or per week, in the local currency), the period covered, a confidence label, and the official source and licence. " +
-    `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "Do not use for asking rents or listings, holiday lets, commercial rent, rent for a specific address, home prices (use the home sales tool), or other countries.",
   params: {
     town: z.string().min(2).optional().describe("Town, city or local area."),

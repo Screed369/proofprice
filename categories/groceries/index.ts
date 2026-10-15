@@ -5,7 +5,7 @@
 import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 export default defineCategory({
   id: "groceries",
@@ -21,7 +21,7 @@ export default defineCategory({
     "(shelf prices observed by price collectors, not receipts and not what one shopper paid; some offices also use retailers' scanner data), with the exact item definition (for example 'Full-fat milk, per 2 litres'), the unit, the reference month, " +
     "the change on a year earlier where the office publishes comparable figures (an answer carries none where the office advises against comparing months), the official source and licence. " +
     "Each country defines its own standard items, so the item definition in the answer matters and related definitions are listed. " +
-    `How fresh: ${[...new Set(places.map((p) => `${p.place}: ${p.freshness.charAt(0).toLowerCase()}${p.freshness.slice(1)}`))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "This is a published national (or regional) average, not a range of individual transactions, so the range fields can be null. " +
     "Do not use for the price at a particular supermarket or online shop, loyalty-card or special-offer prices, restaurant meals, petrol or diesel (use the fuel tool), or for other countries.",
   params: {

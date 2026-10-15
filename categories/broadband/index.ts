@@ -1,7 +1,7 @@
 // Tool: mobile and fixed broadband prices (posted offers, published as official statistics). Sources plug in by declaring category "broadband".
 import { z } from "zod";
 import { defineCategory } from "../../lib/plugin";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 export default defineCategory({
   id: "broadband",
@@ -15,7 +15,7 @@ export default defineCategory({
     `${joinOr(places.map((p) => p.place))}, or how that compares between countries. ` +
     "Returns the official figure for a standard offer in the latest year published, the previous year and the change, and the same country's other offers, with the official source and licence. " +
     "It is the cheapest posted offer of the largest operators, not what customers actually paid, and not a range built from sales: the range fields are null and there is no sample size. " +
-    `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "Do not use for a quote from one provider, for business lines, or for countries that are not listed.",
   params: {
     offer: z

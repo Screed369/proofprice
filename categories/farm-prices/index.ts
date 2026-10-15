@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 export default defineCategory({
   id: "farm-prices",
@@ -18,7 +18,7 @@ export default defineCategory({
     "Returns the latest official price for the country and product, per tonne or per 100 kg and per kg, for the week (milk: month) it applies to, the stage of the supply chain it is quoted at (farm gate, ex-silo, carcass, ex-packaging station), " +
     "the change from the previous period and from a year earlier, the last 12 months, the other series the portal holds, and the official source and licence. " +
     "This is a published price (price_type official_statistic), not a range built from trades, so the range fields are null and there is no sample size. " +
-    `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "Always read the period in the answer: an old quote is flagged and given lower confidence. " +
     "Do not use for supermarket or shop prices, for the price of a particular farm, field, animal or meal, for farmland (use the land prices tool), for fuel or energy, for futures or stock-market prices, or for other countries.",
   params: {

@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { defineCategory, num, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 export default defineCategory({
   id: "contracts",
@@ -19,7 +19,7 @@ export default defineCategory({
     "a typical range (10th–90th percentile), the number of awards, the period covered, a confidence label, and the official source and licence. " +
     "Important: the figures are TOTAL values per contract (lot), not unit prices, unless the answer states a unit price (only when the notices give a quantity and unit). " +
     "Nothing is returned for fewer than 5 awards, and individual suppliers are never named. " +
-    `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "Do not use for what consumers or private companies pay, for tenders that are still open (those carry estimates, not prices paid), " +
     "for the contracts of one named supplier, for asking prices, or for other countries.",
   params: {

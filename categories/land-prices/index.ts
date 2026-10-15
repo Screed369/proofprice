@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 const MEASURE_ALIASES: Record<string, "price" | "rent"> = {
   price: "price", prices: "price", sale: "price", "sale price": "price", purchase: "price", buy: "price", value: "price",
@@ -23,7 +23,7 @@ export default defineCategory({
     "Returns the official average price per hectare (or the average rent per hectare for one year) for the latest year published, in the currency the answer states (euro and national currency where the source gives both), " +
     "for the chosen land type (arable, permanent grassland and others), the previous year and change, the history, the other land types, the regions that exist, and the official source and licence. " +
     "This is a published average (price_type official_statistic), not a range built from sales, so the range fields are null and there is no sample size. " +
-    `How fresh: ${[...new Set(places.map((p) => p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "Always read the reference year in the answer: the data are about two years behind and some countries are much older. " +
     "Do not use for the value of a particular field or farm, for house or building land or commercial property, for listings or asking prices, or for other countries.",
   params: {

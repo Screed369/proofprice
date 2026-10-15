@@ -3,7 +3,7 @@ import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { FUELS, FUEL_LABEL, normaliseFuel, Fuel } from "../../lib/fuels";
 import { InputError } from "../../lib/http";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 export default defineCategory({
   id: "fuel",
@@ -15,7 +15,7 @@ export default defineCategory({
   description: (places) =>
     `Use this when a user asks the current price of petrol, diesel, E10, E85, LPG or CNG near a place in ${joinOr(places.map((p) => p.place))}, ` +
     "or where fuel is cheapest there. Returns the median and typical range of pump prices across stations in the area, the three cheapest stations, " +
-    `and the official source and licence. How fresh: ${places.map((p) => `${p.place}: ${p.freshness.toLowerCase()}`).join("; ")}. ` +
+    `and the official source and licence. How fresh: ${freshnessList(places)}. ` +
     "Do not use for other countries or for historical prices.",
   params: {
     fuel: z.enum(FUELS).describe("petrol95 = unleaded 95; methane = CNG (priced per kg)."),

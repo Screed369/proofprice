@@ -5,7 +5,7 @@
 import { z } from "zod";
 import { defineCategory, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { joinOr } from "../../lib/text";
+import { joinOr, freshnessList } from "../../lib/text";
 
 const AGE_ALIASES: Record<string, "infant" | "toddler" | "preschool" | "school-age"> = {
   infant: "infant", infants: "infant", baby: "infant", babies: "infant", "under 2": "infant", "under-2": "infant", "under2": "infant",
@@ -40,7 +40,7 @@ export default defineCategory({
     "These are official surveys and statistics of the fees providers charge parents (or what households report paying), not adverts or listings, and they are before public subsidies or funded hours unless the answer says otherwise. " +
     "Each answer is an official average or median (price_type official_statistic): the range fields are null, and there is a sample size only where the publisher gives one. " +
     "Every answer states its unit (for example US dollars per week, or pounds per hour), the year it describes, a confidence label, and the official source and licence. " +
-    `How fresh: ${[...new Set(places.map((p) => `${p.place}: ${p.freshness.charAt(0).toLowerCase() + p.freshness.slice(1)}`))].join("; ")}. ` +
+    `How fresh: ${freshnessList(places)}. ` +
     "Some of this data is several years old: always read the period in the answer. " +
     "Do not use for the cost of a specific nursery, advertised fees or waiting-list prices, the value of government subsidies, tuition for schools or universities, babysitting or nanny wages, or other countries.",
   params: {

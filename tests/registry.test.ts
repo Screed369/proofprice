@@ -81,7 +81,28 @@ test("every tool schema builds and describes every covered place", () => {
     assert.match(d, /^Use this when/);
     assert.match(d, /Do not use/);
     for (const s of sourcesFor(c.id)) assert.ok(d.includes(s.placeName), `${c.tool} description should mention ${s.placeName}`);
+    // Directory reviewers and agents read these: no clause may repeat (use freshnessList from lib/text for "How fresh").
+    const clauses = d.split(/; |\. /).map((x) => x.trim()).filter((x) => x.length > 20);
+    const seen = new Map<string, number>();
+    for (const x of clauses) {
+      seen.set(x, (seen.get(x) ?? 0) + 1);
+      assert.ok(seen.get(x)! < 3, `${c.tool} description repeats "${x.slice(0, 80)}": group places that share a freshness note`);
+    }
   }
+});
+
+test("freshnessList: one entry per distinct note, labelled only when notes differ", async () => {
+  const { freshnessList } = await import("../lib/text");
+  assert.equal(freshnessList([{ place: "A", freshness: "Weekly" }, { place: "B", freshness: "Weekly" }]), "weekly");
+  assert.equal(
+    freshnessList([
+      { place: "Spain", freshness: "Several times a day" },
+      { place: "the EU", freshness: "Weekly" },
+      { place: "the EU", freshness: "Weekly" },
+      { place: "the UK", freshness: "Weekly" },
+    ]),
+    "Spain: several times a day; the EU and the UK: weekly",
+  );
 });
 
 test("REST query parsing: numbers are coerced, aliases pass through", () => {
