@@ -1,0 +1,260 @@
+URL: https://www2.susep.gov.br/menuestatistica/Autoseg/principal.aspx
+Fetched: 2026-10-15T12:41:51Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 15412
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Expires: Thu, 15 Oct 2026 12:41:51 GMT
+Server: Microsoft-IIS/10.0
+Set-Cookie: ASP.NET_SessionId=eh40idqqxfzawckete4ebs2p; path=/; HttpOnly; SameSite=Lax
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Date: Thu, 15 Oct 2026 12:41:50 GMT
+Content-Length: 15412
+Set-Cookie: cookiesession1=6789C8E43049D53D6637BA20EB6AE9AD;Expires=Fri, 15 Oct 2027 12:41:51 GMT;Path=/;HttpOnly
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (448), with CRLF line terminators
+=== FIRST 30000 BYTES
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="ctl00_Head1"><link href="../portal.css" rel="stylesheet" type="text/css" /><link href="../acessibilidade.css" rel="stylesheet" type="text/css" />
+    <title>Autoseg</title>
+
+    
+    <script type="text/javascript" language="javascript">
+    <!--
+        function findPosX(obj) {
+            var curleft = 0;
+            if (obj.offsetParent)
+                while (1) {
+                curleft += obj.offsetLeft;
+                if (!obj.offsetParent)
+                    break;
+                obj = obj.offsetParent;
+            }
+            else if (obj.x)
+                curleft += obj.x;
+            return curleft;
+        }
+
+        function findPosY(obj) {
+            var curtop = 0;
+            if (obj.offsetParent)
+                while (1) {
+                curtop += obj.offsetTop;
+                if (!obj.offsetParent)
+                    break;
+                obj = obj.offsetParent;
+            }
+            else if (obj.y)
+                curtop += obj.y;
+            return curtop;
+        }
+
+        function pageHeight() {
+            return window.innerHeight != null ? window.innerHeight : document.documentElement && document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body != null ? document.body.clientHeight : null;
+        }
+
+        function reposiciona() {
+            //var altCol3 = document.getElementById('coluna3').offsetHeight;
+            //var altCol2 = document.getElementById('coluna2').offsetHeight;
+            var posicao = findPosY(document.getElementById('portal-footer'));
+
+            //alert(altCol2+"  "+altCol3+"   "+posicao);
+            //if (altCol2 > altCol3) {
+            //    if (navigator.appName.indexOf("Microsoft") != -1) { //IE
+            //        document.getElementById('rodapesusep').style.top = altCol2 + posicao - altCol3;
+            //        document.getElementById('fimpag').style.top = altCol2 + posicao - altCol3;
+            //    } else {
+            //        document.getElementById('rodapesusep').style.top = (altCol2 + posicao - altCol3) + "px";
+            //        document.getElementById('fimpag').style.top = (altCol2 + posicao - altCol3) + "px";
+            //    }
+            //}
+
+            posicao = findPosY(document.getElementById('portal-footer'));
+            var posfim;
+           
+            posfim = pageHeight() - 45;
+
+            if (posicao < posfim) {
+                if (navigator.appName.indexOf("Microsoft") != -1) { //IE
+                    //document.getElementById('portal-footer').style.top = posfim - posicao;
+                    document.getElementById('portal-columns').style.height = posfim - 123;
+                    //document.getElementById('fimpag').style.top = posfim - posicao;
+                } else {
+                    //document.getElementById('portal-footer').style.top = (posfim - posicao) + "px";
+                    document.getElementById('portal-columns').style.height = (posfim - 123) + "px";
+                    //document.getElementById('fimpag').style.top = (posfim - posicao) + "px";
+                }
+            }
+        }
+     //-->
+     </script>
+    
+<title>
+
+</title></head>
+<body onload="reposiciona()">
+    <div id="barra-brasil-v3"><span><div class="imagemGov"><a href="http://www.brasil.gov.br" target="_blank" class="brasilgov"></a></div></span></div>
+
+    <div id="visual-portal-wrapper">
+
+    <div id="portal-header">
+    <a id="portal-logo" accesskey="1"
+       href="http://www.susep.gov.br">
+        <img src="http://www.susep.gov.br/logo_susep.png"
+             alt="SUSEP Superitendência de Seguros Privados" /></a>
+    </div>
+
+    <div class="visualClear" id="clear-space-before-wrapper-table"><!-- --></div>
+
+    <div id="portal-columns">
+        <form name="aspnetForm" method="post" action="./principal.aspx" id="aspnetForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2NjU2NDY1OTkPZBYCZg9kFgICAQ9kFgICAQ9kFgICAQ8QDxYGHg1EYXRhVGV4dEZpZWxkBQlkZXNjcmljYW8eDkRhdGFWYWx1ZUZpZWxkBQJpZB4LXyFEYXRhQm91bmRnZBAVAyFTZWxlY2lvbmUgYSBjb25zdWx0YSBkZXNlamFkYSAuLi4yQ2F0ZWdvcmlhIFRhcmlmw6FyaWEvUmVnacOjby9Nb2RlbG8vQW5vL1NleG8vSWRhZGUmQ2F0ZWdvcmlhIFRhcmlmw6FyaWEvQ2lkYWRlL01vZGVsby9Bbm8VAwEwATEBMhQrAwNnZ2cWAWZkZLr+eEelrUatTSJwr1fZU434Pv5Eiy/XXYiBMHtGoC6K" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6C538D00" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAASx15XZhF1jP67IVKWe8lu+4i2kzYNmYI64R5e7pJL6lxXXXSXfMxE3+gd8DypKEyzDbJWW7euT9WwDWseJ79woI8/r2Emylco+3+SEuHlU3rl7NEVEVZmukBCKUekQsKQ=" />
+            
+    <div>
+        <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
+           <tr>
+               <td align="center">
+                 <table border="0" cellpadding="0" cellspacing="0" width="868px">
+                     <tr>
+                         <td valign="top" colspan="3">
+                             <h2>Autoseg - Sistema de Estatísticas de Automóveis da SUSEP</h2>
+                         </td>
+                     </tr>
+                 </table>
+                 <table border="0" cellpadding="3" cellspacing="10" width="868px">
+                     <tr>
+                         <td valign="top" align="right" colspan="3">
+                             <p><strong>vers&atilde;o 5.3</strong></p>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td align="left" colspan="3">
+                              <p>Para consultar o AUTOSEG selecione uma das op&ccedil;&otilde;es abaixo:</p>
+                              <select name="ctl00$ContentPlaceHolder1$edSel" id="ctl00_ContentPlaceHolder1_edSel">
+	<option selected="selected" value="0">Selecione a consulta desejada ...</option>
+	<option value="1">Categoria Tarif&#225;ria/Regi&#227;o/Modelo/Ano/Sexo/Idade</option>
+	<option value="2">Categoria Tarif&#225;ria/Cidade/Modelo/Ano</option>
+
+</select>
+                              <br />
+	                          <br />
+	                     </td>
+	                 </tr>
+	                 <tr>
+	                     <td align="left" colspan="3" valign="top"> 
+                                <p>Sobre o AUTOSEG:</p></td>
+                     </tr>
+                     <tr>
+                         <td width="45%" align="left" valign="top" style="text-align: justify">
+                                <p>O Sistema AUTOSEG, a partir da vers&atilde;o 5.0, permite  
+                                realizar consultas on-line referentes a dados estat&iacute;sticos do Seguro de  Autom&oacute;veis. 
+                                As informa&ccedil;&otilde;es apresentadas foram obtidas a partir dos arquivos enviados 
+                                semestralmente pelas companhias seguradoras, os quais incluem dados referentes a 
+                                ap&oacute;lices vigentes e  sinistros ocorridos no per&iacute;odo de an&aacute;lise.</p>
+                                
+                         </td>
+                         <td width="10%" rowspan="3" 
+                             style="background-image: url('../images/divisor.jpg'); background-position: center; background-repeat: repeat-y;">&nbsp;</td>
+                         <td width="45%" align="left" valign="top" style="text-align: justify">
+                                <p>Esta vers&atilde;o 5.3 cont&eacute;m valores para a cobertura de CASCO. 
+                                Na vers&atilde;o on-line &eacute; poss&iacute;vel realizar consultas abrangendo mais de um 
+                                semestre, estando dispon&iacute;veis os dados desde o 2&ordm; semestre de 2006. Os c&oacute;digos 
+                                de modelos, s&atilde;o os da codifica&ccedil;&atilde;o padronizada da tabela FIPE.</p>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td align="left" valign="top" style="text-align: justify">
+                                <p>At&eacute; a vers&atilde;o disponibilizada em junho/2005, o  sistema era fornecido em CD-ROM, 
+                                de forma que o usu&aacute;rio precisava instalar o  programa e a base de dados completa em seu 
+                                computador. Os procedimentos  necess&aacute;rios &agrave; instala&ccedil;&atilde;o se revelaram 
+                                demasiadamente complexos para o usu&aacute;rio  comum, o qual necessitava, eventualmente, consultar 
+                                algumas informa&ccedil;&otilde;es. Em  conseq&uuml;&ecirc;ncia, o p&uacute;blico-alvo do Sistema 
+                                AUTOSEG praticamente se restringia &agrave;s  companhias seguradoras, para subsidiar c&aacute;lculos 
+                                de tarifas. A implementa&ccedil;&atilde;o da  vers&atilde;o 5.0, em 2006, teve por objetivo popularizar e 
+                                ampliar o alcance do  Sistema, permitindo que as consultas sejam efetuadas diretamente pela Internet.</p>
+                             <p>
+                                 <a href="DEFINICOES_AUTOSEG.pdf" target="_blank">Definição de conceitos e variáveis do Sistema Autoseg</a>   
+                             </p>
+                         </td>
+                         <td align="left" valign="top" style="text-align: justify">
+                                <p>Al&eacute;m do sistema on-line, são disponibilizados tamb&eacute;m os bancos de dados referentes aos 
+                                envios das sociedades seguradoras atrav&eacute;s destes links:</p>
+                                <p>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2021A%2ezip">2º semestre de 2020</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2020B%2ezip">1º semestre de 2020</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2020A%2ezip">2º semestre de 2019</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2019B%2ezip">1º semestre de 2019</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2019A%2ezip">2º semestre de 2018</a></li>                                   
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2018B%2ezip">1º semestre de 2018</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2018A%2ezip">2º semestre de 2017</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2017B%2ezip">1º semestre de 2017</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2017A%2ezip">2º semestre de 2016</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2016B%2ezip">1º semestre de 2016</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2016A%2ezip">2º semestre de 2015</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2015B%2ezip">1º semestre de 2015</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2015A%2ezip">2º semestre de 2014</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2014B%2ezip">1º semestre de 2014</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2014A%2ezip">2º semestre de 2013</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2013B%2ezip">1º semestre de 2013</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2013A%2ezip">2º semestre de 2012</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2012B%2ezip">1º semestre de 2012</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2012A%2ezip">2º semestre de 2011</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2011B%2ezip">1º semestre de 2011</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2011A%2ezip">2º semestre de 2010</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2010B%2ezip">1º semestre de 2010</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2010A%2ezip">2º semestre de 2009</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2009B%2ezip">1º semestre de 2009</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2009A%2ezip">2º semestre de 2008</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2008B%2ezip">1º semestre de 2008</a></li>
+                                <li><a href="https://www2.susep.gov.br/redarq.asp?arq=Autoseg2008A%2ezip">2º semestre de 2007</a></li>
+                                </p>
+                               
+                         </td>
+                     </tr>
+                     <tr>
+                         <td align="left" valign="top" style="text-align: justify">
+                                <p>O Sistema fornece informa&ccedil;&otilde;es sobre n&uacute;mero de  ve&iacute;culos expostos, 
+                                pr&ecirc;mio m&eacute;dio, import&acirc;ncia segurada m&eacute;dia, n&uacute;mero de sinistros  e 
+                                valor de indeniza&ccedil;&otilde;es, classificadas de acordo com categoria, modelo e ano do  ve&iacute;culo, 
+                                regi&atilde;o, cidade ou CEP de circula&ccedil;&atilde;o, e perfil do segurado.</p>
+                         </td>
+                         <td align="left" valign="top" style="text-align: justify">&nbsp;
+                                
+                         </td>
+                     </tr>
+                 </table>
+               </td>
+           </tr>
+        </table>
+        
+    </div>
+
+        </form>
+    </div>
+
+    <div id="portal-footer">
+        <span class="susep-rss">
+
+            <a href="http://www.susep.gov.br/rss/RSS"> 
+            <img alt="Rss" src="http://www.susep.gov.br/icon_rss.png">
+            RSS
+            </a>
+        </span>
+        <p>
+        <span class="nome_destaque">SUSEP SEDE</span>, Av. Presidente Vargas, 730, Rio de Janeiro-RJ  <span class="space1">-</span> CEP:20071-900<span class="space2">&nbsp;</span> <span class="nome_destaque">Telefone:(21) 3233-4000</span>
+        </p>
+
+    </div>
+    </div>
+</body>
+</html>
