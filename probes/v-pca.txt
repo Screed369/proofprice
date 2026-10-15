@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/package_search?q=prescription%20cost%20analysis&rows=3&fl=name,title,metadata_modified
+Fetched: 2026-10-15T09:47:04Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 808
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 15 Oct 2026 09:47:04 GMT
+content-type: application/json;charset=utf-8
+content-length: 808
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 695, "facets": {}, "results": [{"name": "prescription-cost-analysis-pca-annual-statistics", "title": "Prescription Cost Analysis (PCA) Annual Statistics", "metadata_modified": "2026-09-14T08:29:33.247Z"}, {"name": "prescription-cost-analysis-pca-monthly-data", "title": "Prescription Cost Analysis (PCA) Monthly Administrative Data", "metadata_modified": "2026-09-18T15:57:03.003Z"}, {"name": "hormone-replacement-therapy-prescription-prepayment-certificate-hrt-ppc-volumes", "title": "Hormone Replacement Therapy Prescription Prepayment Certificate (HRT PPC) volumes", "metadata_modified": "2026-08-18T13:19:58.415Z"}], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
