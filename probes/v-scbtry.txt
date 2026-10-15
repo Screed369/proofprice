@@ -1,0 +1,26 @@
+URL: https://api.scb.se/OV0104/v2beta/api/v2/tables/TAB4600?lang=en
+Fetched: 2026-10-15T06:42:53Z from GitHub Actions
+Status, type, bytes: 404 application/json; charset=utf-8 68
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 404 Not Found
+Content-Length: 68
+Content-Type: application/json; charset=utf-8
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-15T06:43:03.7642341Z
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Thu, 15 Oct 2026 06:42:53 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Max-Age: 86400
+Allow: GET,HEAD,POST,OPTIONS
+Vary: Origin, Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: TS0187a64b=017dca055cd7dbfe9b342776c5ed2f920d666004c091add26399fed2e85de38bea69f95ec8a037a0f5f1aa4870efecc6cee2644d3e; Path=/; Domain=.api.scb.se; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"type":"Parameter error","title":"Non-existent table","status":404}
