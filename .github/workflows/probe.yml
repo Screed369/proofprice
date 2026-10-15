@@ -56,6 +56,19 @@ jobs:
             echo "=== FILE TYPE: $(file -b body.bin 2>/dev/null)"
             if file -b body.bin | grep -qi zip; then
               echo "=== ZIP CONTENTS"; unzip -l body.bin | head -60
+              if unzip -Z1 body.bin | grep -q '^xl/workbook.xml$'; then
+                echo "=== SPREADSHEET SHEETS (first 70 rows each, cells joined with |)"
+                pip install -q openpyxl >/dev/null 2>&1 || true
+                python3 - <<'PY' | head -c "$N" | iconv -f utf-8 -t utf-8 -c
+          import openpyxl
+          wb = openpyxl.load_workbook("body.bin", read_only=True, data_only=True)
+          for ws in wb.worksheets:
+              print("--- SHEET:", ws.title)
+              for i, row in enumerate(ws.iter_rows(values_only=True)):
+                  if i >= 70: break
+                  if any(c is not None for c in row): print("|".join("" if c is None else str(c) for c in row))
+          PY
+              fi
               FIRST=$(unzip -Z1 body.bin | grep -iE '\.(csv|txt|json|xml)$' | head -1)
               if [ -n "$FIRST" ]; then echo "=== FIRST $N BYTES OF $FIRST"; unzip -p body.bin "$FIRST" | head -c "$N" | iconv -f utf-8 -t utf-8 -c; fi
             elif file -b body.bin | grep -qi gzip; then
