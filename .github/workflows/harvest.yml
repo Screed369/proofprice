@@ -54,3 +54,9 @@ jobs:
             sleep 10
           done
           exit 1
+
+      # Tell search engines (IndexNow, no account needed) which pages changed. Must never fail the harvest.
+      - name: Ping IndexNow
+        if: always()
+        continue-on-error: true
+        run: npx tsx scripts/indexnow.ts || true

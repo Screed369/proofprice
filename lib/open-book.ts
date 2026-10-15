@@ -42,6 +42,8 @@ export const AI_CRAWLERS = [
   "Google-Extended",
   "Applebot-Extended",
   "CCBot",
+  "Googlebot",
+  "Bingbot",
 ];
 
 export function buildRobots(site = SITE_URL) {

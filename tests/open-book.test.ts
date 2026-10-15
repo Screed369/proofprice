@@ -20,10 +20,10 @@ const BASE = "https://example.test";
 test("robots.txt welcomes every AI crawler and points at the sitemap", () => {
   const r = buildRobots("https://proofprice.com");
   const agents = r.rules.map((x) => x.userAgent);
-  for (const bot of ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Claude-SearchBot", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot", "*"]) {
+  for (const bot of ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Claude-SearchBot", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot", "Googlebot", "Bingbot", "*"]) {
     assert.ok(agents.includes(bot), bot);
   }
-  assert.equal(AI_CRAWLERS.length, 11);
+  assert.equal(AI_CRAWLERS.length, 13);
   assert.ok(r.rules.every((x) => x.allow === "/" && !("disallow" in x)));
   assert.equal(r.sitemap, "https://proofprice.com/sitemap.xml");
 });
