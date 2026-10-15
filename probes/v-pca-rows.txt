@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/datastore_search?resource_id=PCA_202607&limit=2
+Fetched: 2026-10-15T09:48:00Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3662
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 15 Oct 2026 09:48:00 GMT
+content-type: application/json;charset=utf-8
+content-length: 3662
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "resource_id": "PCA_202607", "fields": [{"id": "YEAR_MONTH", "type": "NUMERIC"}, {"id": "REGION_NAME", "type": "STRING"}, {"id": "REGION_CODE", "type": "STRING"}, {"id": "ICB_NAME", "type": "STRING"}, {"id": "ICB_CODE", "type": "STRING"}, {"id": "DISPENSER_ACCOUNT_TYPE", "type": "STRING"}, {"id": "BNF_PRESENTATION_CODE", "type": "STRING"}, {"id": "BNF_PRESENTATION_NAME", "type": "STRING"}, {"id": "SNOMED_CODE", "type": "STRING"}, {"id": "SUPPLIER_NAME", "type": "STRING"}, {"id": "UNIT_OF_MEASURE", "type": "STRING"}, {"id": "GENERIC_BNF_EQUIVALENT_CODE", "type": "STRING"}, {"id": "GENERIC_BNF_EQUIVALENT_NAME", "type": "STRING"}, {"id": "BNF_CHEMICAL_SUBSTANCE_CODE", "type": "STRING"}, {"id": "BNF_CHEMICAL_SUBSTANCE", "type": "STRING"}, {"id": "BNF_PARAGRAPH_CODE", "type": "STRING"}, {"id": "BNF_PARAGRAPH", "type": "STRING"}, {"id": "BNF_SECTION_CODE", "type": "STRING"}, {"id": "BNF_SECTION", "type": "STRING"}, {"id": "BNF_CHAPTER_CODE", "type": "STRING"}, {"id": "BNF_CHAPTER", "type": "STRING"}, {"id": "PREP_CLASS", "type": "STRING"}, {"id": "PRESCRIBED_PREP_CLASS", "type": "STRING"}, {"id": "ITEMS", "type": "NUMERIC"}, {"id": "TOTAL_QUANTITY", "type": "NUMERIC"}, {"id": "NIC", "type": "NUMERIC"}, {"id": "PHARMACY_ADVANCED_SERVICE", "type": "STRING"}], "records_format": "objects", "records": [{"YEAR_MONTH": 202607, "REGION_NAME": "LONDON", "REGION_CODE": "Y56", "ICB_NAME": "NHS SOUTH EAST LONDON INTEGRATED CARE BOARD", "ICB_CODE": "QKK", "DISPENSER_ACCOUNT_TYPE": "English Pharmacy", "BNF_PRESENTATION_CODE": "0101010Q0AAAGAG", "BNF_PRESENTATION_NAME": "Magnesium hydroxide 7.45-8.35% oral suspension BP", "SNOMED_CODE": "34309111000001101", "SUPPLIER_NAME": "", "UNIT_OF_MEASURE": "ml", "GENERIC_BNF_EQUIVALENT_CODE": "0101010Q0AAAGAG", "GENERIC_BNF_EQUIVALENT_NAME": "Magnesium hydroxide 7.45-8.35% oral suspension BP", "BNF_CHEMICAL_SUBSTANCE_CODE": "0101010Q0", "BNF_CHEMICAL_SUBSTANCE": "Magnesium hydroxide", "BNF_PARAGRAPH_CODE": "010101", "BNF_PARAGRAPH": "Antacids and simeticone", "BNF_SECTION_CODE": "0101", "BNF_SECTION": "Dyspepsia and gastro-oesophageal reflux disease", "BNF_CHAPTER_CODE": "01", "BNF_CHAPTER": "Gastro-Intestinal System", "PREP_CLASS": "01", "PRESCRIBED_PREP_CLASS": "01", "ITEMS": 2, "TOTAL_QUANTITY": 1800, "NIC": 40.68, "PHARMACY_ADVANCED_SERVICE": "Not applicable"}, {"YEAR_MONTH": 202607, "REGION_NAME": "NORTH EAST AND YORKSHIRE", "REGION_CODE": "Y63", "ICB_NAME": "NHS SOUTH YORKSHIRE INTEGRATED CARE BOARD", "ICB_CODE": "QF7", "DISPENSER_ACCOUNT_TYPE": "English Pharmacy", "BNF_PRESENTATION_CODE": "0101010Q0AAAGAG", "BNF_PRESENTATION_NAME": "Magnesium hydroxide 7.45-8.35% oral suspension BP", "SNOMED_CODE": "34309111000001101", "SUPPLIER_NAME": "", "UNIT_OF_MEASURE": "ml", "GENERIC_BNF_EQUIVALENT_CODE": "0101010Q0AAAGAG", "GENERIC_BNF_EQUIVALENT_NAME": "Magnesium hydroxide 7.45-8.35% oral suspension BP", "BNF_CHEMICAL_SUBSTANCE_CODE": "0101010Q0", "BNF_CHEMICAL_SUBSTANCE": "Magnesium hydroxide", "BNF_PARAGRAPH_CODE": "010101", "BNF_PARAGRAPH": "Antacids and simeticone", "BNF_SECTION_CODE": "0101", "BNF_SECTION": "Dyspepsia and gastro-oesophageal reflux disease", "BNF_CHAPTER_CODE": "01", "BNF_CHAPTER": "Gastro-Intestinal System", "PREP_CLASS": "01", "PRESCRIBED_PREP_CLASS": "01", "ITEMS": 1, "TOTAL_QUANTITY": 600, "NIC": 13.56, "PHARMACY_ADVANCED_SERVICE": "Not applicable"}], "_links": {"start": "/api/3/action/datastore_search?resource_id=PCA_202607", "next": "/api/3/action/datastore_search?offset=100&resource_id=PCA_202607"}, "total": 533087}}
