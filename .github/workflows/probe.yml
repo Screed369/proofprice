@@ -54,7 +54,7 @@ jobs:
             echo "Errors: $(cat err.txt)"
             echo; echo "=== RESPONSE HEADERS"; cat headers.txt
             echo "=== FILE TYPE: $(file -b body.bin 2>/dev/null)"
-            if file -b body.bin | grep -qi zip; then
+            if file -b body.bin | grep -qiE 'zip|Excel 2007'; then
               echo "=== ZIP CONTENTS"; unzip -l body.bin | head -60
               if unzip -Z1 body.bin | grep -q '^xl/workbook.xml$'; then
                 echo "=== SPREADSHEET SHEETS (first 70 rows each, cells joined with |)"
