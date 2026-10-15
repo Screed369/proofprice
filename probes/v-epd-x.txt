@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/package_show?id=english-prescribing-dataset-epd-with-snomed-code&fields=none
+Fetched: 2026-10-15T09:45:35Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 703944
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 15 Oct 2026 09:45:34 GMT
+content-type: application/json;charset=utf-8
+content-length: 703944
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=package_show", "success": true, "result": {"author": "NHS Business Services Authority (NHSBSA)", "author_email": "DataServicesSupport@nhsbsa.nhs.uk", "creator_user_id": "0ff64ac9-3511-43bc-a05c-9089256a8864", "id": "906115a6-4155-44be-8b81-f8e83cebfb84", "isopen": true, "license_id": "OGL-UK-3.0", "license_title": "Open Government Licence 3.0 (United Kingdom)", "license_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/", "made_public": "2021-04-30", "maintainer": null, "maintainer_email": null, "metadata_created": "2021-04-30T09:11:51.096533", "metadata_modified": "2026-10-14T14:15:06.203600", "name": "english-prescribing-dataset-epd-with-snomed-code", "notes": "<h2>Dataset Description</h2>\r\n\r\n<p>The English Prescribing Dataset (EPD) is a comprehensive monthly dataset capturing all prescriptions issued by NHS primary care prescribers in England and dispensed in the community. This includes prescriptions from GPs, nurses, and other authorised primary care prescribers. The dataset is openly available via the NHS Business Services Authority&rsquo;s (NHSBSA) Open Data Portal, promoting transparency and enabling widespread analysis.</p>\r\n\r\n<p>With approximately 17 million rows of data added each month, the EPD provides one of the most detailed views of NHS prescribing activity of England. It is a crucial resource for analysing prescribing trends, costs, and behaviours at both national and local levels.</p>\r\n\r\n<p><strong>Key Features</strong></p>\r\n<p><ul style=\"margin-bottom: 0 !important;\">\r\n<li><strong>Practice-Level Information</strong>: Each record is linked to a specific NHS GP practice or primary care organisation, enabling local-level analysis.</li>\r\n<li><strong>BNF and SNOMED CT Codes</strong>: Prescriptions are classified using Systematized Nomenclature of Medicine Clinical Terms (SNOMED CT), British National Formulary (BNF) codes, and Dictionary of Medicines and Devices (dm+d), ensuring standardised identification and interoperability across NHS systems.</li>\r\n<li><strong>Prescription Costs</strong>: Captures the financial cost associated with each prescription, reflecting reimbursement claims.</li>\r\n<li><strong>Quantities Dispensed</strong>: Provides data on the volume of items prescribed and dispensed.</li>\r\n<li><strong>Data Granularity</strong>: The dataset offers detailed insights down to the individual prescription level, allowing in-depth analyses of prescribing patterns and trends.</li>\r\n</ul>\r\n<h2 style=\"margin: 0 0 5px 0;\">Dataset Details</h2>\r\n<p>\r\n<strong>Additional Dataset Guidance</strong>: Further details on this dataset can be found in the <strong><a href=\"https://github.com/NHSBSA-Open-Data/ODP/raw/a3a50d3efa5b9c1717d509d26b10018388ce806b/EPD_SNOMED_release_guidance_v004.odt\">English Prescribing Dataset Release Guidance</a></strong> (ODT: 237KB).\r\n\r\n<!---Expander 1-->\r\n</p><details class=\"nhsuk-details\">\r\n  <summary class=\"nhsuk-details__summary\">\r\n    <span class=\"nhsuk-details__summary-text nhsuk-u-font-size-24\"><strong>Use Cases and Benefits</strong></span>\r\n  </summary>\r\n  <div class=\"nhsuk-details__text\">\r\n    <p> The EPD supports a range of users, including healthcare professionals, policy-makers, and researchers. Key applications include:</p>\r\n<ul>\r\n<li><strong>Healthcare Research</strong>: Enables analysis of prescribing patterns, medication usage, and adherence to clinical guidelines across different regions and demographics.</li>\r\n<li><strong>Service Planning</strong>: Helps NHS organisations identify prescribing trends, evaluate costs, and assess policy impacts.</li>\r\n<li><strong>Public Health Monitoring</strong>: Tracks national health priorities, such as antibiotic usage, controlled drug prescriptions, and emerging treatments.</li>\r\n<li><strong>Optimising NHS Resources</strong>: Supports data-driven decision-making to improve p
