@@ -1,0 +1,24 @@
+URL: https://statistikdatabasen.scb.se/api/v2/tables/TAB6421/data?lang=en&outputFormat=json-stat2
+Fetched: 2026-10-15T15:44:17Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 2729
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Content-Type: application/json; charset=UTF-8
+Server: Microsoft-IIS/10.0
+Content-Disposition: inline; filename="TAB6421.json"
+Content-Disposition: inline; filename="TAB6421.json"
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-15T15:44:27.2079827Z
+X-Powered-By: ASP.NET
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Thu, 15 Oct 2026 15:44:16 GMT
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+{"version":"2.0","class":"dataset","label":"New building projects with newly constructed buildings (rented dwellings), project by number of rooms, year and region","source":"Statistics Sweden","updated":"2026-10-02T06:00:00Z","link":{"related":[{"extension":{"relation":"statistics-homepage","category":null,"metaid":"PRODUCTCODE:BO0404"},"href":"https://www.scb.se/BO0404-en","label":"Statistics page","type":"text/html"}]},"note":["In 2023, data for one- or two dwelling building was previously categorized by number of rooms. As of the publication dated 2025-09-17, this information is now reported under One- or two dwelling building regardless of number of rooms."],"role":{"time":["Tid"],"metric":["ContentsCode"]},"id":["AntalRum","ContentsCode","Tid","Region"],"size":[6,1,1,1],"dimension":{"AntalRum":{"label":"number of rooms","category":{"index":{"1":0,"2":1,"3":2,"4":3,"99":4,"00":5},"label":{"1":"Apartment 1 room","2":"Apartment 2 rooms","3":"Apartment 3 rooms","4":"Apartment 4+ rooms","99":"One- or two dwelling building regardless of number of rooms","00":"Total"}},"extension":{"elimination":true,"eliminationValueCode":"00","show":"value"}},"ContentsCode":{"label":"observations","category":{"index":{"000007NC":0},"label":{"000007NC":"new building projects with newly constructed buildings (rented dwellings)"},"unit":{"000007NC":{"base":"number","decimals":0}}},"extension":{"elimination":false,"refperiod":{"000007NC":"31 December of each year"},"show":"value","measuringType":{"000007NC":"Stock"},"priceType":{"000007NC":"NotApplicable"},"adjustment":{"000007NC":"None"},"alternativeText":{"000007NC":"New building projects with newly constructed buildings (rented dwellings), project"}}},"Tid":{"label":"year","category":{"index":{"2025":0},"label":{"2025":"2025"}},"extension":{"elimination":false,"show":"code"}},"Region":{"label":"region","category":{"index":{"00":0},"label":{"00":"Sweden"}},"extension":{"elimination":true,"eliminationValueCode":"00","show":"code_value"}}},"extension":{"noteMandatory":{"0":true},"px":{"infofile":"BO0404","tableid":"TAB6421","decimals":0,"official-statistics":true,"aggregallowed":true,"copyright":false,"language":"en","contents":"New building projects with newly constructed buildings (rented dwellings), project","descriptiondefault":false,"heading":["ContentsCode","Tid","Region"],"stub":["AntalRum"],"matrix":"TAB6421","subject-code":"BO","subject-area":"Housing, construction and building"},"discontinued":null,"contact":[{"name":"Byggande och bebyggelse","organization":"Statistics Sweden","phone":"-","mail":"byggande.bebyggelse@scb.se","raw":" Byggande och bebyggelse, Statistics Sweden# - -#byggande.bebyggelse@scb.se"}]},"value":[122,137,133,90,26,174]}
