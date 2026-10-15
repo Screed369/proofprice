@@ -112,7 +112,7 @@ test("server.json: the registry description is at most 100 characters and links 
   assert.equal(file.description, "Prices people actually paid, from official open data: homes, rents, fuel, energy, food, medicines.");
   assert.equal(SERVER_DESCRIPTION, file.description);
   assert.ok(file.description.length <= 100);
-  assert.deepEqual(file.repository, { url: "https://github.com/Screed369/proofprice-mcp", source: "github" });
+  assert.deepEqual(file.repository, { url: "https://github.com/Screed369/proofprice", source: "github" });
 });
 
 test("coming next lists the work in progress", () => {
