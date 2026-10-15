@@ -1,0 +1,24 @@
+URL: https://opendata.nhsbsa.net/api/3/action/datastore_search_sql?sql=SELECT%20BNF_DESCRIPTION,SUM(ACTUAL_COST)%20c,SUM(ITEMS)%20i%20FROM%20EPD_SNOMED_202607%20WHERE%20BNF_CODE=%270407010H0AAAMAM%27%20GROUP%20BY%20BNF_DESCRIPTION
+Fetched: 2026-10-15T09:45:30Z from GitHub Actions
+Status, type, bytes: 400 application/json;charset=utf-8 215
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+date: Thu, 15 Oct 2026 09:45:30 GMT
+content-type: application/json;charset=utf-8
+content-length: 215
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search_sql", "error": {"__type": "Search Query Error", "message": "Search Query is invalid: 'resource_id is mandatory'"}, "success": false}
