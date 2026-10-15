@@ -66,6 +66,10 @@ Branch `src/<id>`, push, preview-deploy, test the example live, merge to `main`.
   One plain GET, honest user agent; official open-data URLs only.
 
 ## Deploying and testing
+- **Debugging a collector: never push repeated failing commits or dispatch repeated failing workflow runs on `main`.** Every failed
+  run emails Simon. Run it locally (`npm run harvest -- <id>`, or through a Vercel preview where the shell cannot reach the site),
+  and only after a local pass use a branch and `workflow_dispatch` on that branch. The daily harvest and the smoke test already
+  retry flaky upstream calls and fail only on real, repeated failures.
 - Preferred: push to GitHub, then deploy with the Vercel connector `create_deployment` using
   `gitSource {type:"github", org:"Screed369", repo:"proofprice", ref:"<branch>"}` and `project` = the project id above
   (target `production` only from `main` after every check passes).

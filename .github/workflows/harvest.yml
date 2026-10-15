@@ -40,7 +40,20 @@ jobs:
       - name: Harvest
         env:
           SOURCES: ${{ github.event.inputs.sources }}
-        run: npm run harvest -- $SOURCES
+        # One source failing is recorded in its library status (/api/v1/library) and in the summary below, and must not email
+        # Simon. The run fails only if the collector crashes, no source produced data (both exit non-zero), or more than 3 sources errored.
+        run: |
+          set -o pipefail
+          rc=0
+          npm run harvest -- $SOURCES 2>&1 | tee harvest.log || rc=$?
+          failed=$(grep -c '^FAIL ' harvest.log || true)
+          {
+            echo "### Harvest: $(grep -c '^OK \|^HELD ' harvest.log || true) ok, $failed source(s) with errors"
+            echo '```'; grep '^FAIL \|^HELD ' harvest.log || echo "no source errors"; echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$rc" -ne 0 ]; then echo "::error::Collector crashed or no source produced data (exit $rc)"; exit "$rc"; fi
+          if [ "$failed" -gt 3 ]; then echo "::error::$failed sources errored (more than 3)"; exit 1; fi
+          if [ "$failed" -gt 0 ]; then echo "::warning::$failed source(s) errored; see summary and /api/v1/library"; fi
       - name: Commit the day's library (also when some sources failed, so their errors are recorded)
         if: always()
         run: |

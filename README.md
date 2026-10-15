@@ -79,6 +79,8 @@ npm ci && npm test && npm run typecheck && npm run build
 
 One folder per data source in `sources/<id>/`, one folder per category in `categories/<id>/`; the registry builds the tools, REST routes, coverage, OpenAPI and `llms.txt` from them. See `CLAUDE.md` and `sources/_template/README.md`.
 
+Ops note: GitHub's "Run failed" emails for Actions can be muted at github.com/settings/notifications (Actions section).
+
 ## Licence
 
 Code: [MIT](LICENSE). Data: each source's own licence, stated on every answer.

@@ -6,6 +6,9 @@ A "stale" answer (served from our library copy because the official source did n
 The MCP checks (POST /api/mcp, 20 seconds each, however slowly the server answers) are what an AI app does when it connects:
 initialize, tools/list, one small tools/call, and the 2026-protocol "subscriptions/listen" request, which must be answered
 and closed at once (an open stream is what ran into Vercel's 60 second limit on 15 Oct 2026).
+Retries, so one flaky upstream call does not fail the run (every failed run emails Simon): an example that fails (not ok,
+5xx, timeout) is asked again after 20 s, and once more after 60 s if the second answer was a 5xx too; the line says RETRY-OK
+when a retry passed. Only a failure that survives the retries is a FAIL. Each MCP check gets one retry after 20 s.
 Standard library only, so it runs anywhere.
 """
 
@@ -21,6 +24,8 @@ import urllib.request
 UA = "ProofPrice-smoke/1.1 (+https://proofprice.com; hello@proofprice.com)"
 MCP_BUDGET = 20  # seconds each MCP request may take, start to last byte
 MCP_CLIENT = {"name": "proofprice-smoke", "version": "1"}
+RETRY_WAIT_1 = 20  # seconds before the first retry of a failed example (or MCP check)
+RETRY_WAIT_2 = 60  # seconds before the second retry, only when the first retry was a 5xx too
 
 
 def get(url: str, timeout: int = 60):
@@ -34,6 +39,27 @@ def get(url: str, timeout: int = 60):
         return e.code, dict(e.headers or {}), e.read(), time.time() - start
     except Exception as e:  # network error or timeout
         return 0, {}, str(e).encode(), time.time() - start
+
+
+def example_ok(code: int, raw: bytes) -> bool:
+    try:
+        return code == 200 and json.loads(raw).get("status") == "ok"
+    except Exception:
+        return False
+
+
+def get_with_retries(url: str):
+    """GET one example. A failure (not ok, 5xx, timeout) is asked again after RETRY_WAIT_1 s, and once more after RETRY_WAIT_2 s
+    when that retry was a 5xx as well. Returns (code, headers, raw, secs, retried_ok)."""
+    code, headers, raw, secs = get(url)
+    if example_ok(code, raw):
+        return code, headers, raw, secs, False
+    time.sleep(RETRY_WAIT_1)
+    code, headers, raw, secs = get(url)
+    if not example_ok(code, raw) and code >= 500:
+        time.sleep(RETRY_WAIT_2)
+        code, headers, raw, secs = get(url)
+    return code, headers, raw, secs, example_ok(code, raw)
 
 
 def post_mcp(base: str, payload: dict, extra_headers: dict | None = None, budget: float = MCP_BUDGET):
@@ -118,12 +144,27 @@ def check_mcp(base: str):
             return f"no complete answer within {MCP_BUDGET} s (HTTP {status or 'none'}, {len(body)} bytes so far)"
         return f"HTTP {status}: {body[:160].decode('utf-8', 'replace')!r}"
 
+    def ask(payload: dict, judge, extra_headers: dict | None = None):
+        """POST, judge the answer with judge(status, body, timed_out); on a failure wait and ask once more."""
+        got = post_mcp(base, payload, extra_headers)
+        if not judge(got[0], got[1], got[3]):
+            time.sleep(RETRY_WAIT_1)
+            retry = post_mcp(base, payload, extra_headers)
+            if judge(retry[0], retry[1], retry[3]):
+                lines.append(f"RETRY-OK  MCP {payload['method']} passed on the second try")
+            got = retry
+        return got
+
     # 1. initialize (the handshake of the 2025 protocol, what most AI apps still send first)
     init = {
         "jsonrpc": "2.0", "id": 1, "method": "initialize",
         "params": {"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": MCP_CLIENT},
     }
-    status, body, secs, timed_out = post_mcp(base, init)
+    def init_ok(status, body, timed_out):
+        i = ((rpc_result(body).get("result") or {}).get("serverInfo")) or {}
+        return status == 200 and not timed_out and i.get("name") == "proofprice"
+
+    status, body, secs, timed_out = ask(init, init_ok)
     res = rpc_result(body).get("result") or {}
     info = res.get("serverInfo") or {}
     ok = status == 200 and not timed_out and info.get("name") == "proofprice"
@@ -135,7 +176,11 @@ def check_mcp(base: str):
     )
 
     # 2. tools/list
-    status, body, secs, timed_out = post_mcp(base, {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}})
+    def list_ok(status, body, timed_out):
+        n = {t.get("name") for t in ((rpc_result(body).get("result") or {}).get("tools")) or [] if isinstance(t, dict)}
+        return status == 200 and not timed_out and {"pricepaid_home_sales", "pricepaid_coverage"} <= n
+
+    status, body, secs, timed_out = ask({"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}}, list_ok)
     tools = ((rpc_result(body).get("result") or {}).get("tools")) or []
     names = {t.get("name") for t in tools if isinstance(t, dict)}
     ok = status == 200 and not timed_out and {"pricepaid_home_sales", "pricepaid_coverage"} <= names
@@ -146,7 +191,12 @@ def check_mcp(base: str):
         "jsonrpc": "2.0", "id": 3, "method": "tools/call",
         "params": {"name": "pricepaid_home_sales", "arguments": {"country": "IE", "county": "Cork"}},
     }
-    status, body, secs, timed_out = post_mcp(base, call)
+    def call_ok(status, body, timed_out):
+        r = rpc_result(body).get("result") or {}
+        a = r.get("structuredContent") or {}
+        return status == 200 and not timed_out and not r.get("isError") and a.get("status") == "ok"
+
+    status, body, secs, timed_out = ask(call, call_ok)
     result = rpc_result(body).get("result") or {}
     answer = result.get("structuredContent") or {}
     stale = bool((answer.get("extra") or {}).get("stale"))
@@ -169,8 +219,9 @@ def check_mcp(base: str):
         "jsonrpc": "2.0", "id": 4, "method": "subscriptions/listen",
         "params": {"notifications": {"toolsListChanged": True}, "_meta": meta},
     }
-    status, body, secs, timed_out = post_mcp(
-        base, listen, {"mcp-protocol-version": "2026-07-28", "mcp-method": "subscriptions/listen"}
+    status, body, secs, timed_out = ask(
+        listen, lambda st, b, to: 0 < st < 500 and not to,
+        {"mcp-protocol-version": "2026-07-28", "mcp-method": "subscriptions/listen"},
     )
     ok = 0 < status < 500 and not timed_out
     report(
@@ -193,10 +244,7 @@ def main() -> int:
 
     fails, stale = [], []
     for path in examples:
-        code, headers, raw, secs = get(base + path)
-        if code in (0, 502, 503, 504):  # one retry for momentary upstream trouble
-            time.sleep(3)
-            code, headers, raw, secs = get(base + path)
+        code, headers, raw, secs, retried_ok = get_with_retries(base + path)
         try:
             ans = json.loads(raw)
         except Exception:
@@ -212,6 +260,8 @@ def main() -> int:
         else:
             tag = "FAIL "
             fails.append(path)
+        if retried_ok:
+            print(f"RETRY-OK  {path} passed on a retry (a first call failed)")
         print(f"{tag} {code} {secs:5.1f}s {path}\n      {summary}")
 
     print(f"\nMCP server ({base}/api/mcp, {MCP_BUDGET} s for each request):")
