@@ -157,13 +157,16 @@ export function brElectricityAnswer(tariffs: Tariff[], q: BrEnergyQuery): PriceA
   const totals = current.map((t) => t.total).sort((a, b) => a - b);
   const median = perKwh(percentile(totals, 0.5));
   const starts = current.map((t) => t.from).sort();
+  const byTotal = [...current].sort((a, b) => a.total - b.total);
+  const lowest = byTotal[0];
+  const highest = byTotal[byTotal.length - 1];
   return buildStatisticAnswer({
     source: INFO, query, value: median, measure: "median", currency: "BRL", unit: "per kWh before taxes",
     period: { from: starts[0], to: today.toISOString().slice(0, 10) }, reference_period: `tariffs in force on ${today.toISOString().slice(0, 10)}`,
     sample_size: current.length, low: perKwh(percentile(totals, 0.1)), high: perKwh(percentile(totals, 0.9)), method, baseUrl: q.baseUrl,
     note: "Median of the regulated tariffs of the distributors (not weighted by customers); the sample is distributors, not bills.",
     describe: (v) => `Median residential tariff across ${current.length} Brazilian distributors is ${v.toFixed(4)} BRL per kWh before taxes (10th-90th percentile of distributors ${perKwh(percentile(totals, 0.1))} to ${perKwh(percentile(totals, 0.9))}).`,
-    extra: { distributors: current.length, lowest: { distributor: current[totals.indexOf(Math.min(...current.map((c) => c.total)))]?.distributor }, tax_level: "before taxes and flag surcharges" },
+    extra: { distributors: current.length, lowest: lowest.distributor, highest: highest.distributor, tax_level: "before taxes and flag surcharges" },
   });
 }
 

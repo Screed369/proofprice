@@ -70,6 +70,8 @@ test("national median with spread", () => {
   const a = brElectricityAnswer(parseTariffs(RECORDS), { energy: "electricity", today: TODAY });
   assert.equal(a.status, "ok");
   assert.equal(a.sample_size, 6);
+  assert.equal((a.extra as any).lowest, "CEGERO");
+  assert.equal((a.extra as any).highest, "CEDRI");
   assert.ok(a.price!.typical_low! <= a.price!.value && a.price!.value <= a.price!.typical_high!);
 });
 
