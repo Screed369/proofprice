@@ -197,7 +197,7 @@ export function busAnswer(q: BusQuarter, input: BusInput): PriceAnswer {
       const lq = q.items[`${tech}/lq`];
       const uq = q.items[`${tech}/uq`];
       const range = lq !== undefined && uq !== undefined ? ` (middle half of installations: ${fmtMoney(lq, "GBP")} to ${fmtMoney(uq, "GBP")})` : "";
-      return `Reported installed cost of a ${label} with a Boiler Upgrade Scheme grant in England and Wales: median ${fmtMoney(v, "GBP")}${range}, as declared by installers on the MCS certificate.`;
+      return `Reported installed cost of ${/^[aeiou]/i.test(label) ? "an" : "a"} ${label} with a Boiler Upgrade Scheme grant in England and Wales: median ${fmtMoney(v, "GBP")}${range}, as declared by installers on the MCS certificate.`;
     },
     note: "Reported installation cost at grant redemption (MCS certificate), as the installer declared it; not a quote.",
     baseUrl: input.baseUrl,
