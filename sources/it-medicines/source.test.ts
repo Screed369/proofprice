@@ -24,6 +24,8 @@ test("it-medicines parses the live layout", () => {
 });
 test("it-medicines helpers", () => {
   assert.equal(parseEuro("5,63 "), 5.63);
+  assert.equal(parseEuro("5,63 \u20ac"), 5.63); // live file: euro sign after the number
+  assert.equal(parseEuro("5,63\u00a0\u0080"), 5.63);
   assert.equal(parseEuro("1.234,50"), 1234.5);
   assert.equal(parseEuro("0,00 "), null);
   assert.equal(headerDate("Prezzo Pubblico 15 ottobre 2026"), "2026-10-15");
