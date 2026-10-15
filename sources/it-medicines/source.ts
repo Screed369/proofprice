@@ -44,7 +44,7 @@ export function decodeCsv(buf: Buffer): string {
 
 /** "5,63 " -> 5.63; "1.234,50" -> 1234.5; null when empty, zero or not a number. */
 export function parseEuro(v: string): number | null {
-  const s = v.replace(/[\s ]/g, "").replace(/\./g, "").replace(",", ".");
+  const s = v.replace(/[^\d.,]/g, "").replace(/\./g, "").replace(",", ".");
   if (!s) return null;
   const n = Number(s);
   return Number.isFinite(n) && n > 0 ? n : null;
