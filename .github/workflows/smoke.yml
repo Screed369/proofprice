@@ -1,8 +1,9 @@
-# Smoke test: ask production every example question listed in /api/v1/coverage, from GitHub's servers, and save a
-# one-line-per-example report. Runs twice a day for free and on demand.
+# Smoke test: ask production every example question listed in /api/v1/coverage, from GitHub's servers, then talk to its MCP
+# server the way an AI app does (initialize, tools/list, one small tools/call, subscriptions/listen; 20 s each), and save a
+# one-line-per-check report. A failed example or a failed MCP check fails the run. Runs twice a day for free and on demand.
 # Start:  gh workflow run smoke.yml -R Screed369/proofprice --ref main
 # Read:   git fetch origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/smoke.txt
-# Read-only: plain GETs to our own public API.
+# Read-only: GETs to our own public API, and POSTs of read-only questions to our own MCP server.
 name: Smoke test production
 
 on:
@@ -27,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Ask every example question
+      - name: Ask every example question and check the MCP server
         env:
           BASE: ${{ github.event.inputs.base || 'https://proofprice.com' }}
         run: |
