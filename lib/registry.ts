@@ -35,8 +35,12 @@ export function countriesFor(categoryId: string): string[] {
   return [...new Set(sourcesFor(categoryId).flatMap((s) => s.countries))];
 }
 
-export function findSource(categoryId: string, country: string): SourcePlugin | undefined {
-  return sourcesFor(categoryId).find((s) => s.countries.includes(country));
+/** The source that answers for a country. When several sources cover the same country (for example GB has one for solar costs and one
+ *  for heat pumps), the request decides: the first whose `serves(params)` says yes; without params, or when none says yes, the first. */
+export function findSource(categoryId: string, country: string, params?: Params): SourcePlugin | undefined {
+  const here = sourcesFor(categoryId).filter((s) => s.countries.includes(country));
+  if (params && here.length > 1) return here.find((s) => s.serves?.(params)) ?? here[0];
+  return here[0];
 }
 
 // ---------- parameter schemas (shared tool params + each source's notes, values and extra params) ----------
@@ -146,7 +150,8 @@ export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePl
     throw new InputError(`${cat.noun} are available for ${joinAnd(labels)} so far. Not yet: ${String(params.country)}.`);
   }
   const withCountry = { ...params, country };
-  return { src, prepared: cat.prepare ? cat.prepare(withCountry) : withCountry };
+  const prepared = cat.prepare ? cat.prepare(withCountry) : withCountry;
+  return { src: findSource(cat.id, country, prepared) ?? src, prepared };
 }
 
 /** The longest one live answer may take, in milliseconds. Vercel stops a function after 60 s (maxDuration) with a bare "Task timed

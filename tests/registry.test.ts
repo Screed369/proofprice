@@ -41,6 +41,7 @@ test("categories: ids match folders, tool names and REST paths are unique and we
 
 test("sources: manifests are complete and honest", () => {
   const seen = new Map<string, string>();
+  const servesKey = new Set<string>();
   SOURCE_PLUGINS.forEach((s, i) => {
     const where = `sources/${SOURCE_FOLDERS[i]}`;
     const info = s.info as unknown as Record<string, unknown>;
@@ -55,8 +56,10 @@ test("sources: manifests are complete and honest", () => {
     for (const c of s.countries) {
       assert.match(c, /^[A-Z]{2}$/, `${where}: country "${c}" must be an ISO 3166 alpha-2 code (GB, not UK)`);
       const key = `${s.category}/${c}`;
-      assert.ok(!seen.has(key), `${where}: ${key} is already answered by ${seen.get(key)}`);
+      // Two sources may answer for the same country only if each says which requests it serves (SourcePlugin.serves).
+      assert.ok(!seen.has(key) || (s.serves && servesKey.has(key)), `${where}: ${key} is already answered by ${seen.get(key)} (give both sources a serves() to share a country)`);
       seen.set(key, s.info.id);
+      if (s.serves) servesKey.add(key);
       assert.match(s.countryHelp, new RegExp(`\\b${c}\\b`), `${where}: countryHelp should mention ${c}`);
     }
     assert.ok(s.placeName.trim(), `${where}: placeName is missing`);
@@ -131,4 +134,12 @@ test("smoke tests: one per source, all on known endpoints", () => {
   const smoke = exampleUrls().filter((e) => e.smoke);
   assert.equal(new Set(smoke.map((e) => e.source)).size, SOURCE_PLUGINS.length);
   for (const e of smoke) assert.match(e.path, /^\/api\/v1\/[a-z0-9-]+\?country=[A-Z]{2}/);
+});
+
+test("home-upgrades: sources that share a country are routed by the request (serves)", async () => {
+  const { findSource } = await import("../lib/registry");
+  assert.equal(findSource("home-upgrades", "GB", { measure: "solar_pv" })?.info.id, "gb-desnz-solar-cost");
+  assert.equal(findSource("home-upgrades", "GB", { measure: "heat_pump" })?.info.id, "gb-bus-stats");
+  assert.ok(findSource("home-upgrades", "GB", { measure: "windows" })); // none serves it: the first answers, honestly
+  assert.equal(findSource("home-upgrades", "IE", { measure: "heat_pump" })?.info.id, "ie-revenue-hri");
 });

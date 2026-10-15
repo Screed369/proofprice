@@ -97,6 +97,9 @@ export interface SourcePlugin {
   pages?: PageSpec[];
   /** One plain sentence for the /method page. */
   method?: string;
+  /** Optional: when several sources of a category cover the same country, say whether this one answers the (prepared) request.
+   *  The first source that says yes is used; if none does, the first source for the country. Leave out when one source per country. */
+  serves?(params: Params): boolean;
   /** Answer one request. Throw SourceError for bad input or an unreachable source. */
   handle(params: Params, ctx: HandleContext): Promise<PriceAnswer>;
   /** Optional: called once a day by the collector (GitHub Actions) to add a day of aggregates to the library. */
