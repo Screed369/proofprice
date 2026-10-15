@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/datastore_search?resource_id=EPD_SNOMED_202607&limit=3
+Fetched: 2026-10-15T09:45:31Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 4024
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 15 Oct 2026 09:45:31 GMT
+content-type: application/json;charset=utf-8
+content-length: 4024
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "resource_id": "EPD_SNOMED_202607", "fields": [{"id": "YEAR_MONTH", "type": "STRING"}, {"id": "REGIONAL_OFFICE_NAME", "type": "STRING"}, {"id": "REGIONAL_OFFICE_CODE", "type": "STRING"}, {"id": "ICB_NAME", "type": "STRING"}, {"id": "ICB_CODE", "type": "STRING"}, {"id": "PCO_NAME", "type": "STRING"}, {"id": "PCO_CODE", "type": "STRING"}, {"id": "PRACTICE_NAME", "type": "STRING"}, {"id": "PRACTICE_CODE", "type": "STRING"}, {"id": "ADDRESS_1", "type": "STRING"}, {"id": "ADDRESS_2", "type": "STRING"}, {"id": "ADDRESS_3", "type": "STRING"}, {"id": "ADDRESS_4", "type": "STRING"}, {"id": "POSTCODE", "type": "STRING"}, {"id": "BNF_CHEMICAL_SUBSTANCE_CODE", "type": "STRING"}, {"id": "BNF_CHEMICAL_SUBSTANCE", "type": "STRING"}, {"id": "BNF_PRESENTATION_CODE", "type": "STRING"}, {"id": "BNF_PRESENTATION_NAME", "type": "STRING"}, {"id": "BNF_CHAPTER_PLUS_CODE", "type": "STRING"}, {"id": "QUANTITY", "type": "NUMERIC"}, {"id": "ITEMS", "type": "NUMERIC"}, {"id": "TOTAL_QUANTITY", "type": "NUMERIC"}, {"id": "ADQ_USAGE", "type": "NUMERIC"}, {"id": "NIC", "type": "NUMERIC"}, {"id": "ACTUAL_COST", "type": "NUMERIC"}, {"id": "UNIDENTIFIED", "type": "STRING"}, {"id": "SNOMED_CODE", "type": "STRING"}], "records_format": "objects", "records": [{"YEAR_MONTH": "2026-07", "REGIONAL_OFFICE_NAME": "SOUTH EAST", "REGIONAL_OFFICE_CODE": "Y59", "ICB_NAME": "NHS THAMES VALLEY INTEGRATED CARE BOARD", "ICB_CODE": "S0E4D", "PCO_NAME": "NHS THAMES VALLEY ICB - 15A", "PCO_CODE": "15A00", "PRACTICE_NAME": "UNIDENTIFIED DOCTORS", "PRACTICE_CODE": "15A998", "ADDRESS_1": "", "ADDRESS_2": "", "ADDRESS_3": "", "ADDRESS_4": "", "POSTCODE": "", "BNF_CHEMICAL_SUBSTANCE_CODE": "0601022B0", "BNF_CHEMICAL_SUBSTANCE": "Metformin hydrochloride", "BNF_PRESENTATION_CODE": "0601022B0AAAVAV", "BNF_PRESENTATION_NAME": "Metformin 1g modified-release tablets", "BNF_CHAPTER_PLUS_CODE": "06: Endocrine System", "QUANTITY": 56, "ITEMS": 1, "TOTAL_QUANTITY": 56, "ADQ_USAGE": 37.33333, "NIC": 2.07, "ACTUAL_COST": 1.83962, "UNIDENTIFIED": "Y", "SNOMED_CODE": "38893711000001104"}, {"YEAR_MONTH": "2026-07", "REGIONAL_OFFICE_NAME": "MIDLANDS", "REGIONAL_OFFICE_CODE": "Y60", "ICB_NAME": "NHS BIRMINGHAM AND SOLIHULL INTEGRATED CARE BOARD", "ICB_CODE": "QHL", "PCO_NAME": "NHS BIRMINGHAM AND SOLIHULL ICB - 15E", "PCO_CODE": "15E00", "PRACTICE_NAME": "UNIDENTIFIED DOCTORS", "PRACTICE_CODE": "15E998", "ADDRESS_1": "", "ADDRESS_2": "", "ADDRESS_3": "", "ADDRESS_4": "", "POSTCODE": "", "BNF_CHEMICAL_SUBSTANCE_CODE": "0501015P0", "BNF_CHEMICAL_SUBSTANCE": "Pivmecillinam hydrochloride", "BNF_PRESENTATION_CODE": "0501015P0AAABAB", "BNF_PRESENTATION_NAME": "Pivmecillinam 200mg tablets", "BNF_CHAPTER_PLUS_CODE": "05: Infections", "QUANTITY": 10, "ITEMS": 1, "TOTAL_QUANTITY": 10, "ADQ_USAGE": 0, "NIC": 5.4, "ACTUAL_COST": 5.14345, "UNIDENTIFIED": "Y", "SNOMED_CODE": "39702711000001106"}, {"YEAR_MONTH": "2026-07", "REGIONAL_OFFICE_NAME": "MIDLANDS", "REGIONAL_OFFICE_CODE": "Y60", "ICB_NAME": "NHS BIRMINGHAM AND SOLIHULL INTEGRATED CARE BOARD", "ICB_CODE": "QHL", "PCO_NAME": "NHS BIRMINGHAM AND SOLIHULL ICB - 15E", "PCO_CODE": "15E00", "PRACTICE_NAME": "UNIDENTIFIED DOCTORS", "PRACTICE_CODE": "15E998", "ADDRESS_1": "", "ADDRESS_2": "", "ADDRESS_3": "", "ADDRESS_4": "", "POSTCODE": "", "BNF_CHEMICAL_SUBSTANCE_CODE": "0407010F0", "BNF_CHEMICAL_SUBSTANCE": "Co-codamol (Codeine phosphate/paracetamol)", "BNF_PRESENTATION_CODE": "0407010F0AAAVAV", "BNF_PRESENTATION_NAME": "Co-codamol 15mg/500mg capsules", "BNF_CHAPTER_PLUS_CODE": "04: Central Nervous System", "QUANTITY": 100, "ITEMS": 1, "TOTAL_QUANTITY": 100, "ADQ_USAGE": 0, "NIC": 7.25, "ACTUAL_COST": 6.90131, "UNIDENTIFIED": "Y", "SNOMED_CODE": "19200211000001107"}], "_links": {"start": "/api/3/action/datastore_search?resource_id=EPD_SNOMED_202607", "next": "/api/3/action/datastore_search?offset=100&resource_id=EPD_SNOMED_20260
