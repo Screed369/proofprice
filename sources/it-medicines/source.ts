@@ -138,7 +138,7 @@ export async function itHarvest(): Promise<HarvestResult> {
   const buf = Buffer.from(await res.arrayBuffer());
   const list = parseList(decodeCsv(buf));
   const rows = itDailyRows(list.packs);
-  if (!rows.length) throw new SourceError(`AIFA transparency list held no usable priced packs (${buf.length} bytes, ${list.packs.length} packs, type ${res.headers.get("content-type")}, starts ${JSON.stringify(buf.subarray(0, 60).toString("latin1"))})`);
+  if (!rows.length) throw new SourceError(`AIFA transparency list held no usable priced packs (${buf.length} bytes, ${list.packs.length} packs, type ${res.headers.get("content-type")}, starts ${JSON.stringify(buf.subarray(0, 60).toString("latin1"))}; ${diagnose(decodeCsv(buf))})`);
   const date = new Date().toISOString().slice(0, 10);
   return { date, currency: "EUR", unit: "per pack", rows, note: `List dated ${list.asOf ?? "unknown"}, ${list.packs.length} priced packs, ${rows.length} names with 5+ packs.` };
 }
@@ -205,4 +205,12 @@ export async function itMedicines(input: { medicine?: string; baseUrl?: string }
     });
   }
   return itAnswerFromRow(row, { key: k.key, baseUrl: input.baseUrl });
+}
+
+/** Short description of how the file parsed, for the collector's error message. */
+export function diagnose(text: string): string {
+  const rows = parseCsv(text.replace(/^\uFEFF/, ""));
+  const widths = new Map<number, number>();
+  for (const r of rows) widths.set(r.length, (widths.get(r.length) ?? 0) + 1);
+  return `${rows.length} rows, widths ${JSON.stringify([...widths])}, row 1 ${JSON.stringify((rows[1] ?? []).slice(0, 10))}, row 2 ${JSON.stringify((rows[2] ?? []).slice(8, 10))}`;
 }
