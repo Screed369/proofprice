@@ -1,7 +1,7 @@
 // Manifest: Brazil regulated residential electricity tariffs per distributor (ANEEL). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, brElectricity } from "./source";
+import { INFO, aneelHarvest, aneelHistoryKey, brElectricity } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -29,4 +29,7 @@ export default defineSource({
     "Brazil energy: the regulated residential tariff (TE energy + TUSD network use) that ANEEL approved for each electricity distributor, in force today, in R$ per kWh before taxes and flag surcharges. " +
     "It is a posted tariff that applies to every customer of the distributor; without a distributor we give the median across distributors.",
   handle: (p, ctx) => brElectricity({ energy: String(p.energy), distributor: str(p.distributor), baseUrl: ctx.baseUrl }),
+  harvest: () => aneelHarvest(),
+  nominalCounts: true,
+  historyKey: (p) => aneelHistoryKey(p),
 });

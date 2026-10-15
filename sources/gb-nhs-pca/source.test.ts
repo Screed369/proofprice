@@ -2,9 +2,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { SourceError } from "../../lib/http";
 import {
-  buildGbAnswer, candidateTables, dominantUnit, gbMedicine, gbp, matchesQuery, mergePresentations, nameStrengths, parseMedicine, parseSql, sqlFor, sqlUrl, tableMonth,
+  buildGbAnswer, candidateTables, nameKey, nhsHarvest, nhsHistoryKey, pcaDailyRows, sqlAll, dominantUnit, gbMedicine, gbp, matchesQuery, mergePresentations, nameStrengths, parseMedicine, parseSql, sqlFor, sqlUrl, tableMonth,
 } from "./source";
-import { ATORVASTATIN_JSON, LIPITOR_JSON, NOT_FOUND_JSON, OMEPRAZOLE_JSON, PARACETAMOL_JSON } from "./fixtures";
+import { ALL_MONTH_JSON, ATORVASTATIN_JSON, OMEPRAZOLE_LIGHT_JSON, LIPITOR_JSON, NOT_FOUND_JSON, OMEPRAZOLE_JSON, PARACETAMOL_JSON } from "./fixtures";
 
 /** A fake portal that holds the tables named in `tables` and answers 404 (as the real one does) for any other month. */
 function portal(tables: Record<string, Record<string, unknown>>, log: string[] = []) {
@@ -61,7 +61,7 @@ test("gb-nhs-pca builds the SQL safely and exactly", () => {
   const sql = sqlFor("PCA_202607", "atorvastatin");
   assert.equal(
     sql,
-    "SELECT BNF_PRESENTATION_NAME, UNIT_OF_MEASURE, PREP_CLASS, SUM(ITEMS) AS items, SUM(TOTAL_QUANTITY) AS quantity, SUM(NIC) AS nic FROM `PCA_202607` WHERE UPPER(BNF_PRESENTATION_NAME) LIKE 'ATORVASTATIN %' GROUP BY 1, 2, 3 ORDER BY items DESC LIMIT 400",
+    "SELECT BNF_PRESENTATION_NAME, UNIT_OF_MEASURE, SUM(ITEMS) AS items, SUM(TOTAL_QUANTITY) AS quantity, SUM(NIC) AS nic FROM `PCA_202607` WHERE UPPER(BNF_PRESENTATION_NAME) LIKE 'ATORVASTATIN %' GROUP BY 1, 2 ORDER BY items DESC LIMIT 200",
   );
   assert.match(sqlFor("PCA_202607", "x'; DROP TABLE a; --"), /LIKE 'XDROPTABLEA- %'/); // quotes and semicolons never reach the SQL
   assert.throws(() => sqlFor("PCA_202607; DROP", "a"), /Unexpected table name/);
@@ -171,4 +171,74 @@ test("gb-nhs-pca prints pounds with the precision it needs", () => {
   assert.equal(gbp(0.88), "£0.88");
   assert.equal(gbp(2.684), "£2.68");
   assert.equal(gbp(1234.5), "£1,235");
+});
+
+test("gb-nhs-pca light query: five columns, no preparation class, and the live format still parses", async () => {
+  assert.doesNotMatch(sqlFor("PCA_202607", "omeprazole"), /PREP_CLASS/);
+  const a = await gbMedicine({ medicine: "omeprazole" }, { fetcher: portal({ PCA_202607: { OMEPRAZOLE: OMEPRAZOLE_LIGHT_JSON } }), today: "2026-10-14" });
+  assert.equal(a.status, "ok");
+  assert.equal((a.extra as any).unit_of_measure, "capsule");
+  assert.ok(a.price!.value > 0.005 && a.price!.value < 0.2);
+});
+
+test("gb-nhs-pca retries a timeout once, but never a 404 or a refusal", async () => {
+  let calls = 0;
+  const flaky = async (url: string) => {
+    if (/PCA_202608/.test(url)) throw new SourceError("Source returned HTTP 404", JSON.stringify(NOT_FOUND_JSON), 404);
+    if (++calls === 1) throw new SourceError("Source timed out", url);
+    return OMEPRAZOLE_LIGHT_JSON;
+  };
+  const a = await gbMedicine({ medicine: "omeprazole" }, { fetcher: flaky, today: "2026-10-20" });
+  assert.equal(a.status, "ok");
+  assert.equal(calls, 2);
+  let n = 0;
+  const down = async () => { n++; throw new SourceError("Source timed out", ""); };
+  await assert.rejects(gbMedicine({ medicine: "omeprazole" }, { fetcher: down, today: "2026-10-14" }), /timed out/);
+  assert.equal(n, 2);
+  let refused = 0;
+  await assert.rejects(gbMedicine({ medicine: "omeprazole" }, { fetcher: async () => { refused++; return { success: false }; }, today: "2026-10-14" }));
+  assert.equal(refused, 1);
+});
+
+test("gb-nhs-pca whole-month query and medicine keys", () => {
+  assert.match(sqlAll("PCA_202607"), /^SELECT BNF_PRESENTATION_NAME, UNIT_OF_MEASURE, SUM\(ITEMS\).* FROM `PCA_202607` GROUP BY 1, 2 ORDER BY items DESC LIMIT 5000$/);
+  assert.throws(() => sqlAll("x; DROP"), /Unexpected table name/);
+  assert.equal(nameKey("Omeprazole 20mg gastro-resistant capsules"), "omeprazole");
+  assert.equal(nameKey("Onewordpresentation"), null);
+  assert.equal(nameKey("1 tablet"), null);
+});
+
+test("gb-nhs-pca library rows: one per medicine name, same figure as the live answer, 5-item floor", () => {
+  const rows = pcaDailyRows(parseSql(ALL_MONTH_JSON));
+  const omep = rows.find((r) => r.item === "name:omeprazole")!;
+  assert.equal(omep.area, "ALL");
+  assert.ok(omep.n > 1000000);
+  assert.ok(omep.low <= omep.median && omep.median <= omep.high && omep.min <= omep.low && omep.high <= omep.max);
+  assert.ok(!rows.some((r) => r.item === "name:syntheticdrug")); // 3 items: under the floor
+  assert.ok(!rows.some((r) => /onewordpresentation/.test(r.item)));
+  const live = buildGbAnswer({ q: parseMedicine("omeprazole"), rows: parseSql(ALL_MONTH_JSON).filter((r) => /^Omeprazole /.test(r.presentation)), table: "PCA_202607", today: "2026-10-15" });
+  assert.equal(omep.median, live.price!.value);
+});
+
+test("gb-nhs-pca harvest writes today's date, GBP, and steps back over a missing month", async () => {
+  const log: string[] = [];
+  const fetcher = async (url: string): Promise<unknown> => {
+    log.push(url);
+    if (!/resource_id=PCA_202607/.test(url)) throw new SourceError("Source returned HTTP 404", JSON.stringify(NOT_FOUND_JSON), 404);
+    return ALL_MONTH_JSON;
+  };
+  const r = await nhsHarvest({ fetcher, today: "2026-10-15" });
+  assert.equal(r.date, "2026-10-15");
+  assert.equal(r.currency, "GBP");
+  assert.ok(r.rows.length > 10);
+  assert.match(log[0], /PCA_202608/); // 404 first, then the month that exists
+  assert.match(log[log.length - 1], /PCA_202607/);
+});
+
+test("gb-nhs-pca historyKey only for a plain medicine name", () => {
+  assert.deepEqual(nhsHistoryKey({ country: "GB", medicine: "Omeprazole" }), { area: "ALL", item: "name:omeprazole", label: "omeprazole, England" });
+  assert.equal(nhsHistoryKey({ country: "GB", medicine: "acetaminophen" })!.item, "name:paracetamol");
+  assert.equal(nhsHistoryKey({ country: "GB", medicine: "atorvastatin 20mg" }), null);
+  assert.equal(nhsHistoryKey({ country: "GB", medicine: "omeprazole capsules" }), null);
+  assert.equal(nhsHistoryKey({ country: "GB" }), null);
 });

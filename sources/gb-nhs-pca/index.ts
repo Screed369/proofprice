@@ -1,6 +1,6 @@
 // Manifest: England medicine prices (NHSBSA Prescription Cost Analysis, NHS reimbursement price). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, gbMedicine } from "./source";
+import { INFO, gbMedicine, nhsHarvest, nhsHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -22,4 +22,6 @@ export default defineSource({
   method:
     "England (medicines): NHSBSA's monthly Prescription Cost Analysis (open data portal) is queried live for the newest month: Net Ingredient Cost (the Drug Tariff basic price of what was dispensed) divided by the quantity, per tablet, capsule or ml. A reimbursement price for the drug, before discounts, fees and patient charges; not a shop price.",
   handle: (p, ctx) => gbMedicine({ medicine: str(p.medicine), baseUrl: ctx.baseUrl }),
+  harvest: () => nhsHarvest(),
+  historyKey: (p) => nhsHistoryKey(p),
 });

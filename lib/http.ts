@@ -42,6 +42,19 @@ export function withDeadline<T>(work: Promise<T>, ms: number, onTimeout: () => E
   });
 }
 
+/** Run `work`; if it fails because the official source timed out, could not be reached or answered 5xx/408/425/429 (isSourceOutage),
+ *  wait `backoffMs` and run it once more. Bad input, 404s and format errors are never retried. Keep both attempts inside the answer
+ *  budget by giving each a shorter timeout (two attempts of 9 s and a 0.5 s pause fit the 20 s budget). */
+export async function retryOnce<T>(work: (attempt: number) => Promise<T>, backoffMs = 500): Promise<T> {
+  try {
+    return await work(1);
+  } catch (err) {
+    if (!isSourceOutage(err)) throw err;
+    await new Promise((resolve) => setTimeout(resolve, backoffMs));
+    return await work(2);
+  }
+}
+
 export class SourceError extends Error {
   detail?: string;
   /** HTTP status the official source answered with, when the failure was an HTTP error. 504 means we gave up waiting for it (runCategory's deadline). */

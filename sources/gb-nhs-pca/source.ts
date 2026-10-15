@@ -18,10 +18,11 @@
 // (buildStatisticAnswer, measure "average"), price type "reimbursement_price".
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
-import { fetchJson, InputError, SourceError } from "../../lib/http";
+import { fetchJson, InputError, retryOnce, SourceError } from "../../lib/http";
 import { buildQuery } from "../../lib/adapters/common";
-import { MIN_PUBLISH } from "../../lib/stats";
-import type { SourceInfo } from "../../lib/plugin";
+import { MIN_PUBLISH, percentile } from "../../lib/stats";
+import { NATIONAL } from "../../lib/library/aggregate";
+import type { DailyRow, HarvestResult, Params, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "gb-nhs-pca",
@@ -56,7 +57,10 @@ const SITE = "https://opendata.nhsbsa.net/api/3/action";
 export const STALE_AFTER_DAYS = 150; // the newest month is normally 2-3 months old; older than this means the portal has stalled
 
 export type Fetcher = (url: string) => Promise<unknown>;
-const defaultFetcher: Fetcher = (url) => fetchJson(url, {}, 30000);
+// Two attempts of 10 s with a 0.5 s pause (retryOnce) stay inside the 20 s answer budget; one 30 s attempt used to hang on a slow portal.
+export const ATTEMPT_TIMEOUT_MS = 10000;
+const defaultFetcher: Fetcher = (url) => fetchJson(url, {}, ATTEMPT_TIMEOUT_MS);
+const harvestFetcher: Fetcher = (url) => fetchJson(url, {}, 90000);
 
 // ---------- what the user typed (pure) ----------
 
@@ -209,14 +213,15 @@ export function tableMonth(table: string): { from: string; to: string; label: st
   return { from: `${y}-${mm}-01`, to: `${y}-${mm}-${String(last).padStart(2, "0")}`, label: `${names[m - 1]} ${y}` };
 }
 
-/** The aggregate query: one row per presentation, unit and preparation class, whose name starts with the medicine name. */
-export function sqlFor(table: string, name: string, limit = 400): string {
+/** The aggregate query: one row per presentation and unit whose name starts with the medicine name. Light on purpose: only the five
+ *  columns the answer needs (no preparation class), a short row limit, one pass over the month table. */
+export function sqlFor(table: string, name: string, limit = 200): string {
   if (!/^PCA_\d{6}$/.test(table)) throw new Error(`Unexpected table name ${table}`);
   const safe = name.toUpperCase().replace(/[^A-Z0-9-]/g, "").replace(/-{2,}/g, "-");
   if (!safe) throw new InputError("medicine name has no usable letters");
   return (
-    "SELECT BNF_PRESENTATION_NAME, UNIT_OF_MEASURE, PREP_CLASS, SUM(ITEMS) AS items, SUM(TOTAL_QUANTITY) AS quantity, SUM(NIC) AS nic " +
-    `FROM \`${table}\` WHERE UPPER(BNF_PRESENTATION_NAME) LIKE '${safe} %' GROUP BY 1, 2, 3 ORDER BY items DESC LIMIT ${Math.max(1, Math.min(1000, Math.floor(limit)))}`
+    "SELECT BNF_PRESENTATION_NAME, UNIT_OF_MEASURE, SUM(ITEMS) AS items, SUM(TOTAL_QUANTITY) AS quantity, SUM(NIC) AS nic " +
+    `FROM \`${table}\` WHERE UPPER(BNF_PRESENTATION_NAME) LIKE '${safe} %' GROUP BY 1, 2 ORDER BY items DESC LIMIT ${Math.max(1, Math.min(1000, Math.floor(limit)))}`
   );
 }
 
@@ -450,7 +455,7 @@ export async function gbMedicine(input: { medicine?: string; baseUrl?: string },
   let table = "";
   for (const t of candidateTables(today)) {
     try {
-      rows = parseSql(await fetcher(sqlUrl(t, sqlFor(t, q.name))));
+      rows = parseSql(await retryOnce(() => fetcher(sqlUrl(t, sqlFor(t, q.name)))));
       table = t;
       break;
     } catch (err) {
@@ -461,4 +466,90 @@ export async function gbMedicine(input: { medicine?: string; baseUrl?: string },
   const kept = rows.filter((r) => matchesQuery(r.presentation, q));
   const unmatched = [...new Set(rows.map((r) => r.presentation))];
   return buildGbAnswer({ q, rows: kept, table, today, baseUrl: input.baseUrl, unmatched: kept.length ? undefined : unmatched });
+}
+
+// ---------- the price library (daily collector) and stale-if-error ----------
+
+export const HARVEST_UNIT = "per tablet, capsule or ml (the unit most dispensed for the medicine)";
+export const MAX_NAMES = 2000; // library size guard: the medicine names with the most prescription items
+
+/** The whole month in one pass: every presentation and unit, most dispensed first (about 740 KB for 5,000 rows). */
+export function sqlAll(table: string, limit = 5000): string {
+  if (!/^PCA_\d{6}$/.test(table)) throw new Error(`Unexpected table name ${table}`);
+  return (
+    "SELECT BNF_PRESENTATION_NAME, UNIT_OF_MEASURE, SUM(ITEMS) AS items, SUM(TOTAL_QUANTITY) AS quantity, SUM(NIC) AS nic " +
+    `FROM \`${table}\` GROUP BY 1, 2 ORDER BY items DESC LIMIT ${Math.max(1, Math.min(10000, Math.floor(limit)))}`
+  );
+}
+
+/** "Omeprazole 20mg capsules" -> "omeprazole" (the first word, the way parseMedicine reads a name); null when it is not a usable name. */
+export function nameKey(presentation: string): string | null {
+  const sp = presentation.indexOf(" ");
+  if (sp < 0) return null; // the live query matches "NAME %", so a one-word presentation never counts
+  const w = presentation.slice(0, sp).toLowerCase();
+  return w.length >= 3 && /^[a-z][a-z0-9-]*$/.test(w) ? w : null;
+}
+
+/** Pure: one library row per medicine name. median = Net Ingredient Cost / quantity over the unit with the most items (the same figure
+ *  the live answer gives); low/high = 10th/90th percentile and min/max of the presentations' unit costs; n = prescription items. */
+export function pcaDailyRows(rows: PcaRow[]): DailyRow[] {
+  const groups = new Map<string, PcaRow[]>();
+  for (const r of rows) {
+    const k = nameKey(r.presentation);
+    if (!k) continue;
+    const g = groups.get(k);
+    if (g) g.push(r);
+    else groups.set(k, [r]);
+  }
+  const out: DailyRow[] = [];
+  for (const [k, g] of groups) {
+    const all = mergePresentations(g);
+    const unit = dominantUnit(all);
+    const used = all.filter((p) => p.unit === unit);
+    const items = used.reduce((a, p) => a + p.items, 0);
+    const quantity = used.reduce((a, p) => a + p.quantity, 0);
+    const nic = used.reduce((a, p) => a + p.nic, 0);
+    if (!unit || items < MIN_PUBLISH || quantity <= 0 || nic <= 0) continue;
+    const costs = used.map((p) => p.nic / p.quantity).sort((a, b) => a - b);
+    out.push({
+      area: NATIONAL, item: `name:${k}`, n: items, median: r5(nic / quantity),
+      low: r5(percentile(costs, 0.1)), high: r5(percentile(costs, 0.9)), min: r5(costs[0]), max: r5(costs[costs.length - 1]),
+    });
+  }
+  return out.sort((a, b) => b.n - a.n).slice(0, MAX_NAMES).sort((a, b) => a.item.localeCompare(b.item));
+}
+
+/** The collector: the newest published month in one aggregate query. The row date is the collection day (stale-if-error looks for
+ *  a snapshot from the last 7 days); the month it describes is in the note. */
+export async function nhsHarvest(deps: { fetcher?: Fetcher; today?: string } = {}): Promise<HarvestResult> {
+  const fetcher = deps.fetcher ?? harvestFetcher;
+  const today = deps.today ?? new Date().toISOString().slice(0, 10);
+  for (const t of candidateTables(today)) {
+    let parsed: PcaRow[];
+    try {
+      parsed = parseSql(await retryOnce(() => fetcher(sqlUrl(t, sqlAll(t))), 5000));
+    } catch (err) {
+      if (isNotFound(err)) continue;
+      throw err;
+    }
+    const rows = pcaDailyRows(parsed);
+    if (!rows.length) throw new SourceError(`NHSBSA table ${t} held no medicine with ${MIN_PUBLISH}+ prescription items`);
+    return {
+      date: today, currency: "GBP", unit: HARVEST_UNIT, rows,
+      note: `Net Ingredient Cost per unit (Drug Tariff basic price, before fees and discounts), England, ${tableMonth(t).label}; ${rows.length} medicine names; n = prescription items.`,
+    };
+  }
+  throw new SourceError("Could not find a recent monthly Prescription Cost Analysis table on the NHSBSA open data portal");
+}
+
+/** Which library row answers this request. Only a plain medicine name: a strength, form or extra word asks a narrower question than the
+ *  library row (all strengths and forms of the name) answers, so it gets no stand-in. */
+export function nhsHistoryKey(p: Params) {
+  try {
+    const q = parseMedicine(typeof p.medicine === "string" ? p.medicine : undefined);
+    if (q.strength || q.form || q.extraWords.length) return null;
+    return { area: NATIONAL, item: `name:${q.name}`, label: `${q.name}, England` };
+  } catch {
+    return null;
+  }
 }

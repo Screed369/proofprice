@@ -3,8 +3,8 @@
 // field layout; their values are made up only to exercise old-tariff and filter logic (marked SYNTHETIC).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { InputError } from "../../lib/http";
-import { INFO, brElectricity, brElectricityAnswer, ckanFilters, currentTariffs, findDistributor, parseBrNumber, parseTariffs } from "./source";
+import { InputError, SourceError } from "../../lib/http";
+import { INFO, aneelDailyRows, aneelHarvest, aneelHistoryKey, brElectricity, brElectricityAnswer, ckanFilters, currentTariffs, findDistributor, parseBrNumber, parseTariffs } from "./source";
 
 const base = {
   DatGeracaoConjuntoDados: "2026-10-15", DscBaseTarifaria: "Tarifa de Aplicação", DscSubGrupo: "B1", DscModalidadeTarifaria: "Convencional",
@@ -95,4 +95,59 @@ test("fetch uses the right filters", async () => {
   assert.equal(sp.get("resource_id"), "fcf2906c-7c32-4b9b-a637-054e7a5234f4");
   assert.deepEqual(JSON.parse(sp.get("filters")!), ckanFilters());
   assert.ok(a.status === "ok" || a.status === "no_matches");
+});
+
+const OK = { success: true, result: { records: RECORDS, fields: [], total: 9 } };
+
+test("one retry: a 502 then a good answer succeeds", async () => {
+  let calls = 0;
+  const a = await brElectricity({ energy: "electricity", today: TODAY }, {
+    fetcher: async () => { if (++calls === 1) throw new SourceError("Source returned HTTP 502", "", 502); return OK; },
+  });
+  assert.equal(calls, 2);
+  assert.ok(a.status === "ok" || a.status === "no_matches");
+});
+
+test("two 502s in a row still fail as an outage (so stale-if-error can answer)", async () => {
+  let calls = 0;
+  await assert.rejects(
+    brElectricity({ energy: "electricity" }, { fetcher: async () => { calls++; throw new SourceError("Source returned HTTP 502", "", 502); } }),
+    (e: any) => e instanceof SourceError && e.status === 502,
+  );
+  assert.equal(calls, 2);
+});
+
+test("a format error or bad input is not retried", async () => {
+  let calls = 0;
+  await assert.rejects(brElectricity({ energy: "electricity" }, { fetcher: async () => { calls++; return { success: false }; } }));
+  assert.equal(calls, 1);
+  await assert.rejects(brElectricity({ energy: "gas" }, { fetcher: async () => { calls++; return OK; } }), InputError);
+  assert.equal(calls, 1);
+});
+
+test("library rows: national median plus one posted tariff per distributor", () => {
+  const rows = aneelDailyRows(parseTariffs(RECORDS), TODAY);
+  const all = rows.find((r) => r.area === "ALL")!;
+  assert.equal(all.item, "electricity");
+  assert.equal(all.n, 6);
+  assert.ok(all.low <= all.median && all.median <= all.high && all.min <= all.low && all.high <= all.max);
+  const cemig = rows.find((r) => r.area === "CEMIGD")!;
+  assert.equal(cemig.median, 0.7483);
+  assert.equal(cemig.n, 5);
+  assert.equal(rows.length, 7);
+  assert.deepEqual(aneelDailyRows([], TODAY), []);
+});
+
+test("harvest uses the API with the longer timeout and reports BRL per kWh", async () => {
+  const r = await aneelHarvest({ fetcher: async () => ({ success: true, result: { records: RECORDS.map((x) => ({ ...x, DatInicioVigencia: "2020-01-01", DatFimVigencia: "2099-12-31" })), fields: [], total: 9 } }) });
+  assert.equal(r.currency, "BRL");
+  assert.match(r.unit, /kWh/);
+  assert.ok(r.rows.some((x) => x.area === "ALL"));
+});
+
+test("historyKey: national by default, a distributor when named, nothing for gas", () => {
+  assert.deepEqual(aneelHistoryKey({ country: "BR", energy: "electricity" }), { area: "ALL", item: "electricity", label: "Brazil (median of distributors)" });
+  assert.equal(aneelHistoryKey({ country: "BR", energy: "electricity", distributor: "CEMIG-D" })!.area, "CEMIGD");
+  assert.equal(aneelHistoryKey({ country: "BR", energy: "electricity", distributor: "ENEL SP" })!.area, "ENELSP");
+  assert.equal(aneelHistoryKey({ country: "BR", energy: "gas" }), null);
 });

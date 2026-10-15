@@ -793,3 +793,628 @@ export const NOT_FOUND_JSON = {
  },
  "success": false
 };
+
+/** Copied from the live portal on 2026-10-15 via the GitHub probe: the lighter query (no PREP_CLASS) for omeprazole on PCA_202607. */
+export const OMEPRAZOLE_LIGHT_JSON = {
+  "help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search_sql",
+  "success": true,
+  "result": {
+    "help": "https://demo.ckan.org/api/3/action/help_show?name=datastore_search_sql",
+    "success": "true",
+    "result": {
+      "records": [
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 20mg gastro-resistant capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 2682795,
+          "quantity": 99611932,
+          "nic": 3085719.11
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 10mg gastro-resistant capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 160981,
+          "quantity": 5910812,
+          "nic": 173285.59
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 40mg gastro-resistant capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 117995,
+          "quantity": 3853669,
+          "nic": 358571.84
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 20mg dispersible gastro-resistant tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 24934,
+          "quantity": 897918,
+          "nic": 431650.69
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 20mg gastro-resistant tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 16768,
+          "quantity": 605458,
+          "nic": 140707.22
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 10mg dispersible gastro-resistant tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 7592,
+          "quantity": 261392,
+          "nic": 91113.76
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 10mg/5ml oral suspension sugar free",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 6446,
+          "quantity": 988575,
+          "nic": 1803028.99
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 20mg/5ml oral suspension sugar free",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 3535,
+          "quantity": 556500,
+          "nic": 1915324.6
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 40mg dispersible gastro-resistant tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 2769,
+          "quantity": 88749,
+          "nic": 93186.45
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 1mg/ml oral suspension sugar free",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 2690,
+          "quantity": 301650,
+          "nic": 492493.9
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 40mg gastro-resistant tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 2374,
+          "quantity": 77543,
+          "nic": 108227.88
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 10mg gastro-resistant tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1559,
+          "quantity": 54033,
+          "nic": 19728.56
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 40mg/5ml oral suspension",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 104,
+          "quantity": 15445,
+          "nic": 42615.17
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 5mg/5ml oral suspension",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 95,
+          "quantity": 16894,
+          "nic": 27030.45
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 20mg/5ml oral solution",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 57,
+          "quantity": 11487,
+          "nic": 38416.88
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 10mg/5ml oral suspension",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 49,
+          "quantity": 12541,
+          "nic": 18163.63
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 20mg/5ml oral suspension",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 37,
+          "quantity": 7225,
+          "nic": 21374.27
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 10mg/5ml oral solution",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 28,
+          "quantity": 4335,
+          "nic": 12697.64
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 10mg/15ml oral solution unit dose sugar free",
+          "UNIT_OF_MEASURE": "unit dose",
+          "items": 11,
+          "quantity": 346,
+          "nic": 2860.17
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 40mg/5ml oral solution",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 9,
+          "quantity": 1130,
+          "nic": 5145.5
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 20mg/15ml oral solution unit dose sugar free",
+          "UNIT_OF_MEASURE": "unit dose",
+          "items": 8,
+          "quantity": 182,
+          "nic": 2839.2
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 5mg/5ml oral solution",
+          "UNIT_OF_MEASURE": "ml",
+          "items": 3,
+          "quantity": 168,
+          "nic": 263.84
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 40mg powder for solution for infusion vials",
+          "UNIT_OF_MEASURE": "vial",
+          "items": 1,
+          "quantity": 5,
+          "nic": 26
+        }
+      ],
+      "fields": []
+    }
+  }
+};
+
+/** First rows of the live whole-month aggregate (sqlAll) on PCA_202607, probed 2026-10-15, plus two small made-up names (SYNTHETIC) to exercise the 5-item floor. */
+export const ALL_MONTH_JSON = {
+  "help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search_sql",
+  "success": true,
+  "result": {
+    "help": "https://demo.ckan.org/api/3/action/help_show?name=datastore_search_sql",
+    "success": "true",
+    "result": {
+      "records": [
+        {
+          "BNF_PRESENTATION_NAME": "Atorvastatin 20mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 3629410,
+          "quantity": 122773731,
+          "nic": 3197207.74
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Omeprazole 20mg gastro-resistant capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 2682795,
+          "quantity": 99611932,
+          "nic": 3085719.11
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Amlodipine 5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 2117980,
+          "quantity": 72801866,
+          "nic": 1670019.01
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Lansoprazole 30mg gastro-resistant capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 1905115,
+          "quantity": 58330399,
+          "nic": 2250236.29
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Atorvastatin 40mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1808840,
+          "quantity": 56493342,
+          "nic": 1709326.06
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Amlodipine 10mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1456271,
+          "quantity": 48548665,
+          "nic": 1254624.09
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Lansoprazole 15mg gastro-resistant capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 1340836,
+          "quantity": 43209333,
+          "nic": 1249747.89
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Aspirin 75mg dispersible tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1322014,
+          "quantity": 39581452,
+          "nic": 4171773.81
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Dapagliflozin 10mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1315605,
+          "quantity": 38566399,
+          "nic": 3486915.1
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Metformin 500mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1245246,
+          "quantity": 115872198,
+          "nic": 2607566.99
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Sertraline 50mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1204116,
+          "quantity": 38614252,
+          "nic": 1423591.41
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Paracetamol 500mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1192617,
+          "quantity": 159703006,
+          "nic": 3195830.28
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Atorvastatin 80mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1120538,
+          "quantity": 31182931,
+          "nic": 1487560.53
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Bisoprolol 2.5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1100289,
+          "quantity": 35424017,
+          "nic": 1534263.92
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Clopidogrel 75mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1094458,
+          "quantity": 30108637,
+          "nic": 1017334.86
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Levothyroxine sodium 100microgram tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1079287,
+          "quantity": 38470351,
+          "nic": 989207.61
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Sertraline 100mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1045734,
+          "quantity": 35470705,
+          "nic": 1452499.65
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Amitriptyline 10mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 1013079,
+          "quantity": 54415083,
+          "nic": 1147084.95
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Ramipril 10mg capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 959112,
+          "quantity": 32958141,
+          "nic": 3398595.71
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Levothyroxine sodium 50microgram tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 896708,
+          "quantity": 30751235,
+          "nic": 790714.92
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Tamsulosin 400microgram modified-release capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 880874,
+          "quantity": 28970969,
+          "nic": 948130.22
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Ramipril 2.5mg capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 876521,
+          "quantity": 29426480,
+          "nic": 2772221.72
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Levothyroxine sodium 25microgram tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 868115,
+          "quantity": 29865725,
+          "nic": 834411.05
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Ramipril 5mg capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 801908,
+          "quantity": 28767816,
+          "nic": 3028679.16
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Apixaban 5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 746711,
+          "quantity": 41751695,
+          "nic": 1201517.76
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Bisoprolol 1.25mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 744054,
+          "quantity": 23048756,
+          "nic": 2966594.78
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Ezetimibe 10mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 686542,
+          "quantity": 21022376,
+          "nic": 3549872.85
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Metformin 500mg modified-release tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 671352,
+          "quantity": 56679099,
+          "nic": 1468534.33
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Folic acid 5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 670648,
+          "quantity": 15860934,
+          "nic": 397463.88
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Citalopram 20mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 627411,
+          "quantity": 20982598,
+          "nic": 712673.58
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Furosemide 40mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 594630,
+          "quantity": 19293446,
+          "nic": 640780.47
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Co-codamol 30mg/500mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 585200,
+          "quantity": 64318510,
+          "nic": 5191217.4
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Bisoprolol 5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 564150,
+          "quantity": 18648799,
+          "nic": 615212.06
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Salamol 100micrograms/dose inhaler CFC free (Teva)",
+          "UNIT_OF_MEASURE": "dose",
+          "items": 539261,
+          "quantity": 614289,
+          "nic": 896861.94
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Fluoxetine 20mg capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 531884,
+          "quantity": 24116577,
+          "nic": 1004971.04
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Fexofenadine 180mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 527154,
+          "quantity": 22372378,
+          "nic": 2344713.97
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Atorvastatin 10mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 503125,
+          "quantity": 17027171,
+          "nic": 384013.04
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Mirtazapine 15mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 501780,
+          "quantity": 12882151,
+          "nic": 640255.52
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Losartan 100mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 464286,
+          "quantity": 15849741,
+          "nic": 470280.35
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Losartan 50mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 460881,
+          "quantity": 16355209,
+          "nic": 426744.72
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Allopurinol 100mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 443830,
+          "quantity": 20364947,
+          "nic": 472797.3
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Propranolol 40mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 431884,
+          "quantity": 26025491,
+          "nic": 1088170.1
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Alendronic acid 70mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 425398,
+          "quantity": 2060096,
+          "nic": 443041.2
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Senna 7.5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 423852,
+          "quantity": 18666213,
+          "nic": 370703.7
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Naproxen 500mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 420308,
+          "quantity": 19991941,
+          "nic": 929255.82
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Furosemide 20mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 406102,
+          "quantity": 11341925,
+          "nic": 251645.59
+        },
+        {
+          "BNF_PRESENTATION_NAME": "FreeStyle Libre 2 Plus Sensor",
+          "UNIT_OF_MEASURE": "kit",
+          "items": 405950,
+          "quantity": 897712,
+          "nic": 33664200
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Ferrous fumarate 210mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 402072,
+          "quantity": 16924114,
+          "nic": 511938.78
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Amoxicillin 500mg capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 395588,
+          "quantity": 7081887,
+          "nic": 439365.18
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Simvastatin 40mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 395308,
+          "quantity": 12650393,
+          "nic": 471880.75
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Finasteride 5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 395299,
+          "quantity": 11524693,
+          "nic": 406517.2
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Flucloxacillin 500mg capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 392476,
+          "quantity": 10554393,
+          "nic": 882501.31
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Montelukast 10mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 391273,
+          "quantity": 11284878,
+          "nic": 365405.27
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Indapamide 2.5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 374503,
+          "quantity": 12688504,
+          "nic": 2311449.29
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Bendroflumethiazide 2.5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 371637,
+          "quantity": 12975003,
+          "nic": 380273.8
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Ferrous sulfate 200mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 366586,
+          "quantity": 14796578,
+          "nic": 512509.66
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Gabapentin 300mg capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 363532,
+          "quantity": 38381844,
+          "nic": 873370.56
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Famotidine 20mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 363500,
+          "quantity": 12419237,
+          "nic": 526080.81
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Ramipril 1.25mg capsules",
+          "UNIT_OF_MEASURE": "capsule",
+          "items": 362016,
+          "quantity": 11049106,
+          "nic": 2358908.03
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Mirtazapine 30mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 360183,
+          "quantity": 8620499,
+          "nic": 354535
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Syntheticdrug 5mg tablets",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 3,
+          "quantity": 84,
+          "nic": 10.5
+        },
+        {
+          "BNF_PRESENTATION_NAME": "Onewordpresentation",
+          "UNIT_OF_MEASURE": "tablet",
+          "items": 900,
+          "quantity": 9000,
+          "nic": 90.0
+        }
+      ],
+      "fields": []
+    }
+  }
+};

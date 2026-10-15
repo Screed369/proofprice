@@ -4,11 +4,12 @@
 // These are posted, regulator-approved tariffs (TE energy + TUSD network use), BEFORE taxes (ICMS, PIS/COFINS) and flag surcharges.
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
-import { InputError } from "../../lib/http";
+import { InputError, retryOnce, SourceError } from "../../lib/http";
 import { ckanSearch } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
 import { percentile } from "../../lib/stats";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, Params, SourceInfo } from "../../lib/plugin";
+import { NATIONAL } from "../../lib/library/aggregate";
 
 export const SITE = "https://dadosabertos.aneel.gov.br";
 export const RESOURCE_ID = "fcf2906c-7c32-4b9b-a637-054e7a5234f4";
@@ -180,8 +181,71 @@ export function ckanFilters() {
   };
 }
 
+/** Two attempts of 9 s with a 0.5 s pause stay inside the 20 s budget (ANEEL's portal often answers 502 after about 8 s). */
+export const ATTEMPT_TIMEOUT_MS = 9000;
+
+async function fetchTariffs(o: FetchOptions, timeoutMs: number, backoffMs: number): Promise<Tariff[]> {
+  const res = await retryOnce(
+    () => ckanSearch(SITE, { resourceId: RESOURCE_ID, filters: ckanFilters(), sort: "DatInicioVigencia desc", limit: ROW_LIMIT, includeTotal: false }, { timeoutMs, ...o }),
+    backoffMs,
+  );
+  return parseTariffs(res.records);
+}
+
 export async function brElectricity(q: BrEnergyQuery, o: FetchOptions = {}): Promise<PriceAnswer> {
   normaliseEnergy(q.energy);
-  const res = await ckanSearch(SITE, { resourceId: RESOURCE_ID, filters: ckanFilters(), sort: "DatInicioVigencia desc", limit: ROW_LIMIT, includeTotal: false }, o);
-  return brElectricityAnswer(parseTariffs(res.records), q);
+  return brElectricityAnswer(await fetchTariffs(o, ATTEMPT_TIMEOUT_MS, 500), q);
+}
+
+// ---------- the price library (daily collector) and stale-if-error ----------
+
+export const HARVEST_UNIT = "per kWh before taxes";
+
+/** Library key of a distributor: "CEMIG-D" -> "CEMIGD", "ENEL SP" -> "ENELSP". */
+export const distributorKey = key;
+
+/** Pure: library rows for one day. "ALL" = the median across distributors (real count); one row per distributor holds its posted tariff
+ *  (the publisher gives one figure, not a sample, so n is the placeholder 5; the source sets nominalCounts so answers show no count). */
+export function aneelDailyRows(tariffs: Tariff[], today: Date): DailyRow[] {
+  const current = currentTariffs(tariffs, today);
+  if (!current.length) return [];
+  const totals = current.map((t) => t.total).sort((a, b) => a - b);
+  const rows: DailyRow[] = [
+    {
+      area: NATIONAL, item: "electricity", n: current.length, median: perKwh(percentile(totals, 0.5)),
+      low: perKwh(percentile(totals, 0.1)), high: perKwh(percentile(totals, 0.9)), min: perKwh(totals[0]), max: perKwh(totals[totals.length - 1]),
+    },
+  ];
+  for (const t of current) {
+    const v = perKwh(t.total);
+    rows.push({ area: distributorKey(t.distributor), item: "electricity", n: 5, median: v, low: v, high: v, min: v, max: v });
+  }
+  return rows;
+}
+
+export async function aneelHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  // The collector is not in a hurry: a longer timeout and a longer pause before the one retry.
+  const tariffs = await fetchTariffs(o, 60000, 5000);
+  const today = new Date();
+  const rows = aneelDailyRows(tariffs, today);
+  if (!rows.length) throw new SourceError("ANEEL returned no residential tariff in force today");
+  return {
+    date: today.toISOString().slice(0, 10), currency: "BRL", unit: HARVEST_UNIT, rows,
+    note: `Regulated residential tariff (TE + TUSD, before taxes) of ${rows.length - 1} distributors in force on the collection day; ALL = median across distributors.`,
+  };
+}
+
+/** Which library row answers this request: one distributor, or the national median. null when the request is not a valid one. */
+export function aneelHistoryKey(p: Params) {
+  try {
+    normaliseEnergy(typeof p.energy === "string" ? p.energy : undefined);
+  } catch {
+    return null;
+  }
+  const d = typeof p.distributor === "string" ? p.distributor.trim() : "";
+  if (d) {
+    const k = distributorKey(d);
+    return k ? { area: k, item: "electricity", label: `${d}, Brazil` } : null;
+  }
+  return { area: NATIONAL, item: "electricity", label: "Brazil (median of distributors)" };
 }
