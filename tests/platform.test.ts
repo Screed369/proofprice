@@ -182,7 +182,7 @@ test("openapi: the history operations are named and worded for REST, and never c
   const h = spec.paths["/api/v1/fuel/history"].get;
   assert.equal(h.operationId, "fuelPriceHistory");
   assert.ok(!/pricepaid_/.test(h.description + h.summary), "tool names are replaced by REST paths");
-  assert.match(h.description, /GET \/api\/v1\/fuel\b/);
+  assert.match(h.description, /today's cheapest stations/);
   assert.ok(!/October 2026/.test(h.summary), "no stale 'building up from October 2026' text");
   assert.ok(!("502" in h.responses), "history reads the library and never calls the source");
   assert.ok("400" in h.responses);
