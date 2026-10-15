@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata = pageMetadata({
   title: "How ProofPrice earns trust",
   description:
-    "Official sources only, a source and licence on every answer, aggregates only with at least 5 records, asking prices never shown as paid prices, and how each source is checked before and after it goes live.",
+    "Official sources only, a source and licence on every answer, aggregates only and no range worked out from fewer than 5 records, asking prices never shown as paid prices, and how each source is checked before and after it goes live.",
   path: "/trust",
 });
 
@@ -38,27 +38,34 @@ export default function Trust() {
           <strong>Source and licence:</strong> the publisher, a link to the licence and the attribution line to show when you reuse the figure.
         </li>
         <li>
-          <strong>Sample size:</strong> how many records the figure is built from.
+          <strong>Sample size:</strong> how many records the figure is built from. A published official average or median (the price type
+          &ldquo;official statistic&rdquo;, for example a household energy price from a statistics office) is the publisher&apos;s own figure,
+          passed on as published. It carries a sample size only where the publisher gives one; otherwise the sample size is empty.
         </li>
         <li>
-          <strong>Period:</strong> the dates the records cover.
+          <strong>Period:</strong> the dates the records cover. For an official statistic, also the reference period the publisher states.
         </li>
         <li>
-          <strong>Confidence:</strong> high is 50 or more records, medium is 15 to 49, low is {MIN_PUBLISH} to 14.
+          <strong>Confidence:</strong> for a figure we work out from records, high is 50 or more records, medium is 15 to 49, low is{" "}
+          {MIN_PUBLISH} to 14. A published official average or median is marked high because it is the publisher&apos;s own figure for its
+          stated period. That mark is not a count of records, and an official statistic comes without a range.
         </li>
         <li>
-          <strong>Method:</strong> a plain description of how the median and the typical range (10th to 90th percentile) were worked out. See{" "}
-          <a href="/method">/method</a>.
+          <strong>Method:</strong> a plain description of how the median and the typical range (10th to 90th percentile) were worked out, or,
+          for an official statistic, which figure the publisher published. See <a href="/method">/method</a>.
         </li>
         <li>
-          <strong>Price type:</strong> whether the figure is a recorded sale price or a posted price.
+          <strong>Price type:</strong> whether the figure is a recorded sale price, a posted price, a contract or reimbursement price, or a
+          published official average or median.
         </li>
       </ul>
 
       <h2>Aggregates only, and never a thin figure</h2>
       <p>
         We publish ranges, not individual records. For home sales we never return an address or any personal data. We never publish a figure
-        from fewer than {MIN_PUBLISH} records: below that, the answer says there is not enough data. See the <a href="/privacy">privacy notice</a>.
+        that we work out from fewer than {MIN_PUBLISH} records: below that, the answer says there is not enough data. A published official
+        average or median is different: it is the publisher&apos;s own figure, passed on as published with its reference period, and we do not
+        count records for it. See the <a href="/privacy">privacy notice</a>.
       </p>
 
       <h2>Asking prices are never shown as paid prices</h2>
