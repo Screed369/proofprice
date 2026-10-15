@@ -1,0 +1,26 @@
+URL: https://api.scb.se/OV0104/v2beta/api/v2/tables/TAB4618/data?lang=en&outputFormat=json-stat2&valueCodes%5BRegion%5D=0010,0020,0030,0040,0041,00&valueCodes%5BAntalRum%5D=1,2,3,4&valueCodes%5BAgarkategori%5D=PrivOovriga&valueCodes%5BHyresuppg%5D=Ah_lgh,Ah_kvm,Mh_lgh&valueCodes%5BContentsCode%5D=00000145
+Fetched: 2026-10-15T10:48:18Z from GitHub Actions
+Status, type, bytes: 400 application/json; charset=utf-8 91
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 Bad Request
+Content-Length: 91
+Content-Type: application/json; charset=utf-8
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-15T10:48:27.8450596Z
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Thu, 15 Oct 2026 10:48:18 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Max-Age: 86400
+Allow: GET,HEAD,POST,OPTIONS
+Vary: Origin, Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: TS0187a64b=017dca055cc9e3319b71151adcd00252d1eeb7c866c1dd1fa46e0bb8c0e3b456ef9627b46b9b2118de0616d7ef9be89e72cb771091; Path=/; Domain=.api.scb.se; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+{"type":"Parameter error","title":"Missing selection for mandantory variable","status":400}
