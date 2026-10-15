@@ -1,0 +1,27 @@
+URL: https://data.humdata.org/api/3/action/package_search?q=name:global-wfp-food-prices&fl=resources
+Fetched: 2026-10-15T09:43:02Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 296
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 15 Oct 2026 09:43:02 GMT
+content-type: application/json;charset=utf-8
+content-length: 296
+vary: Accept-Encoding
+x-frame-options: SAMEORIGIN
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+access-control-allow-origin: *
+server: data.humdata.org
+strict-transport-security: max-age=31536000; includeSubDomains; preload; always;
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+x-robots-tag: index, follow
+x-nginx-cache: MISS
+x-nginx-backend: http://ckan-api:5000 (10.99.0.172:5000)
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://data.humdata.org/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 1, "facets": {}, "expanded": {}, "results": [{}], "sort": "score desc, last_modified desc", "search_facets": {"pivot": {}, "queries": []}, "facet_pivot": {}, "facet_queries": {}}}
