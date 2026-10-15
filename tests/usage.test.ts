@@ -1,4 +1,4 @@
-// Anonymous usage counting (lib/usage.ts): off unless BLOB_READ_WRITE_TOKEN exists; counts only the documented fields; flushes in batches.
+// Anonymous usage counting (lib/usage.ts): off unless a Blob store is connected (BLOB_STORE_ID or BLOB_READ_WRITE_TOKEN); counts only the documented fields; flushes in batches.
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import { FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport } from "../lib/usage";
@@ -18,6 +18,8 @@ test("off by default: with no Blob token nothing is counted or sent", async () =
   setUsageSink(async () => void sent++);
   assert.equal(usageEnabled(OFF), false);
   assert.equal(usageEnabled({ BLOB_READ_WRITE_TOKEN: "  " }), false);
+  assert.equal(usageEnabled({ BLOB_STORE_ID: "store_test" }), true);
+  assert.equal(usageEnabled({ BLOB_STORE_ID: " " }), false);
   recordUsage({ tool: "pricepaid_rent_prices", country: "IE", key: "dublin", status: "ok" }, NOW, OFF);
   assert.equal(pendingUsage().length, 0);
   assert.equal(await flushUsage(NOW, OFF), 0);

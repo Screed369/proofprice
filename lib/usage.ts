@@ -1,5 +1,6 @@
-// Anonymous usage counting. BUILT BUT OFF: nothing is counted, stored or sent unless the environment variable
-// BLOB_READ_WRITE_TOKEN exists (it exists only after Simon creates a Vercel Blob store and approves counting).
+// Anonymous usage counting. OFF unless a Vercel Blob store is connected to the project: nothing is counted, stored or sent
+// unless BLOB_STORE_ID (a connected store, signed in with Vercel's OIDC token) or BLOB_READ_WRITE_TOKEN exists.
+// Simon approved counting on 15 Oct 2026; the private store "proofprice-usage" (Dublin) is connected.
 //
 // What is counted: one tally per day, tool (or REST category), country, a normalised place/item key (lower case, trimmed, at most
 // 60 characters; a postcode is cut to its first part), status (ok / insufficient_data / no_matches / unsupported / error) and, when the
@@ -50,9 +51,11 @@ export const BLOB_PREFIX = "usage/";
 
 type Env = Record<string, string | undefined>;
 
-/** Counting is on only when a Blob token exists. Checked on every call, so removing the variable (and redeploying) switches it off. */
+/** Counting is on only when a Blob store is connected (BLOB_STORE_ID, used with Vercel's OIDC sign-in) or a Blob read-write token
+ * exists. Checked on every call, so disconnecting the store (and redeploying) switches it off. */
 export function usageEnabled(env: Env = process.env): boolean {
-  return Boolean(env.BLOB_READ_WRITE_TOKEN && env.BLOB_READ_WRITE_TOKEN.trim());
+  const has = (v: string | undefined) => Boolean(v && v.trim());
+  return has(env.BLOB_STORE_ID) || has(env.BLOB_READ_WRITE_TOKEN);
 }
 
 // ---------- normalising what is counted ----------
