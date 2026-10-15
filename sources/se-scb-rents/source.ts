@@ -27,7 +27,7 @@ export const INFO: SourceInfo = {
 const BASE = "https://api.scb.se/OV0104/v2beta/api/v2/tables/TAB4618/data?lang=en&outputFormat=json-stat2";
 /** Regions, owners (private and other) and the contents we read; bracket filters are PxWebApi v2 syntax. */
 export const URL_ALL_REGIONS =
-  `${BASE}&valueCodes%5BRegion%5D=*&valueCodes%5BAntalRum%5D=1,2,3,4&valueCodes%5BAgarkategori%5D=PrivOovriga&valueCodes%5BHyresuppg%5D=Ah_lgh,Ah_kvm,Mh_lgh&valueCodes%5BContentsCode%5D=00000145`;
+  `${BASE}&valueCodes%5BRegion%5D=00,0010,0020,0030,0040,0041&valueCodes%5BAntalRum%5D=1,2,3,4&valueCodes%5BAgarkategori%5D=PrivOovriga&valueCodes%5BHyresuppg%5D=Ah_lgh,Ah_kvm,Mh_lgh&valueCodes%5BContentsCode%5D=00000145&valueCodes%5BTid%5D=top(1)`;
 /** Default selection: Sweden total, latest year. Used if SCB refuses the filter. */
 export const URL_DEFAULT = BASE;
 
@@ -65,8 +65,13 @@ export function parseTable(json: unknown): JsonStatTable {
 export function matchRegion(table: JsonStatTable, input: string | undefined): { code: string; label: string } {
   const q = norm(input ?? "sweden");
   const regionCodes = table.codes[D_REGION];
-  if (!regionCodes) return { code: "00", label: "Sweden" }; // default selection has no region dimension: Sweden total
   const code = REGION_ALIASES[q];
+  if (!regionCodes) {
+    // Default selection has no region dimension: it is the Sweden total only. Never answer a regional question with it.
+    if (code && code !== "00") throw new SourceError("Statistics Sweden did not return the regional table just now; try again later.");
+    if (!code) throw new InputError("'" + input + "' is not a region group in the Swedish rent survey. Use one of: Sweden (whole country), Greater Stockholm, Greater Gothenburg, Greater Malmo, large municipalities, small municipalities.");
+    return { code: "00", label: "Sweden" };
+  }
   if (!code || !regionCodes.includes(code)) {
     throw new InputError("'" + input + "' is not a region group in the Swedish rent survey. Use one of: Sweden (whole country), Greater Stockholm, Greater Gothenburg, Greater Malmo, large municipalities, small municipalities.");
   }
