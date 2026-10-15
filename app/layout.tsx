@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   // Setting icons here replaces Next's automatic links for app/icon.svg and app/apple-icon.png, so all of them are listed.
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/icon-64.png", sizes: "64x64", type: "image/png" },
       { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
