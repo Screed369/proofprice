@@ -1,0 +1,98 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0010100&lang=EN
+Fetched: 2026-10-16T09:42:55Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 45667
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 09:42:55 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=ckif0-w2XJpX8CwHkC7za0ohmhfxfCE5cg4OYn9V.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[ {
+  "IndicadorCod" : "0010100",
+  "IndicadorNome" : "Labour underutilization rate (%); Monthly - Statistics Portugal, Monthly employment and unemployment estimates based on the Labour Force Survey",
+  "Periodic" : "Monthly",
+  "PrimeiroPeriodo" : "February 2011",
+  "UltimoPeriodo" : "August 2026",
+  "UnidadeMedida" : "Percentage (%)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "1",
+  "Nota" : "The monthly estimates refer to centred moving quarters, where the reference month indicated corresponds to the central month of each quarter.",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-09-30",
+  "DataExtracao" : "2026-10-16T10:42:55.110+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Month)",
+      "versao" : "XXXXX",
+      "nota_dsg" : "The values from February 1998 to January 2011 were derived from calibration weights based on Monthly Resident Population Estimates, calculated specifically for the Labour Force Survey according to the 2011 Census final results.<br>The values from February 2011 onwards were derived from calibration weights based on Monthly Resident Population Estimates, calculated specifically for the Labour Force Survey according to the 2021 Census final results."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Place of residence (Portugal)",
+      "versao" : "05361"
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S3A201102" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A201102",
+        "categ_cod" : "S3A201102",
+        "categ_dsg" : "February 2011",
+        "categ_ord" : "20110201",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A201103" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A201103",
+        "categ_cod" : "S3A201103",
+        "categ_dsg" : "March 2011",
+        "categ_ord" : "20110301",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A201104" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A201104",
+        "categ_cod" : "S3A201104",
+        "categ_dsg" : "April 2011",
+        "categ_ord" : "20110401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A201105" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A201105",
+        "categ_cod" : "S3A201105",
+        "categ_dsg" : "May 2011",
+        "categ_ord" : "20110501",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A201106" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A201106",
+        "categ_cod" : "S3A201106",
+        "categ_dsg" : "June 2011",
+        "categ_ord" : "20110601",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A201107" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A201107",
+        "categ_cod" : "S3A201107",
+        "categ_dsg" : "July 2011",
+        "categ_ord" : "20110701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A201108" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A201108",
+        "categ_cod" : "S3A201108",
+        "categ_dsg" : "August 2011",
+        "categ_ord" : "20
