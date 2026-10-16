@@ -1,0 +1,756 @@
+URL: https://plvr.land.moi.gov.tw/Download_ajax_active
+Fetched: 2026-10-16T15:43:45Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 21747
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: SAMEORIGIN
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE,OPTIONS
+Access-Control-Allow-Credentials: false
+Content-Security-Policy: default-src 'self';frame-ancestors 'self';font-src 'self' data: https: http:;img-src * data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google-analytics.com https://www.googletagmanager.com https://www.google-analytics.com ; style-src 'self' 'unsafe-inline' https:;connect-src *;object-src 'none' ; base-uri 'none';
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: origin
+Permissions-Policy: microphone=(),camera=()
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: JSESSIONID=D3AED61DF98EA2ED70EAB9A5E3A3C895;Path=/;  HttpOnly; Secure; SameSite=strict
+Access-Control-Max-Age: 60
+Content-Type: text/html;charset=UTF-8
+Content-Language: zh-TW
+Transfer-Encoding: chunked
+Date: Fri, 16 Oct 2026 15:43:44 GMT
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF, LF line terminators
+=== FIRST 30000 BYTES
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+	<div class="form-row p-0 mx-0 my-0">
+		<div class="form-group col-sm-12">
+			<span class="text-info">【註:CSV格式編碼為UTF-8】</span><br>
+			<span class="text-danger">資料內容：登記日期 115年9月21日至 115年9月30日之買賣案件，及訂約日期 115年8月21日至 115年8月31日之租賃案件，及交易日期115年8月21日至 115年8月31日之預售屋案件</span>
+		</div>
+		<div class="form-group col-sm-6">
+			<label for="exampleFormControlSelect1"
+				class="font-weight-bold">下載檔案格式(<a  href="./FreeDownload.action?fileName=%E7%A7%9F%E8%B3%83opendata%E4%BF%AE%E6%94%B9%E8%AA%AA%E6%98%8E.txt"  role="button" >租賃opendata修改說明.txt</a>)</label>
+				<select name="fileFormat" id="fileFormatId" class="form-control">
+    <option value="xls">XLS 格式</option>
+    <option value="xml">XML 格式</option>
+    <option value="txt">TXT 格式</option>
+    <option value="csv">CSV 格式</option>
+
+
+</select>
+
+
+
+		</div>
+
+		<div class="form-group col-sm-5 d-flex align-items-end">
+			<a id="download-button" ></a>     
+			<a class="btn btn-secondary" href="javascript:void(0);"  role="button" onclick="preDownload();">下載</a>
+		</div>
+	</div>
+	<div class="bg-light p-2 rounded">
+		<div class="form-group">
+			<label class="font-weight-bold">下載方式</label>
+			
+				<div class="form-check">
+					<input class="form-check-input" type="radio"
+						name="downloadType" id="downloadTypeId1" value="1" onclick="chgDownloadType(this);"
+						checked> <label class="form-check-label "
+						for="downloadTypeId1"> <span class="font-weight-bold">全國</span><span
+						class="text-success"> (含不動產買賣+預售屋買賣+不動產租賃)</span>
+					</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio"
+						name="downloadType" id="downloadTypeId2" value="2" onclick="chgDownloadType(this);">
+					<label class="form-check-label" for="downloadTypeId2">
+						<span class="font-weight-bold">進階下載</span><span
+						class="text-success"> (勾選欲下載 縣市/交易類別)</span>
+					</label>
+				</div>
+			 
+			
+		</div>
+
+	<table width="100%" border='0' cellpadding='0' cellspacing='0'
+		id='table5'
+		style='border-left: 1px solid #cecece; border-right: 1px solid #cecece; border-top: 1px solid #dfdfdf; border-bottom: 1px solid #cecece; text-align: left;'>
+
+		
+
+			<tr class="advDownloadClass">
+				<td class="form_gray"><font face='Arial' size='-1'>縣市\交易類別</font></td>
+				<td class="form_gray"><font face='Arial' size='-1'>不動產買賣
+						<!-- &nbsp;&nbsp;<input type="checkbox" id="typeASelectAll" /> -->
+				</font></td>
+				<td class="form_gray"><font face='Arial' size='-1'>預售屋買賣
+						<!--&nbsp;&nbsp;<input type="checkbox" id="typeBSelectAll" /> -->
+				</font></td>
+				<td class="form_gray"><font face='Arial' size='-1'>不動產租賃
+						<!--&nbsp;&nbsp;<input type="checkbox" id="typeCSelectAll" /> -->
+				</font></td>
+			</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>基隆市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="C_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="CA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="C_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="CB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="C_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="CC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>臺北市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="A_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="AA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="A_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="AB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="A_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="AC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>新北市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="F_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="FA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="F_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="FB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="F_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="FC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>桃園市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="H_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="HA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="H_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="HB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="H_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="HC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>新竹市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="O_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="OA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="O_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="OB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="O_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="OC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>新竹縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="J_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="JA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="J_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="JB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="J_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="JC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>苗栗縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="K_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="KA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="K_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="KB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="K_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="KC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>臺中市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="B_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="BA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="B_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="BB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="B_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="BC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>南投縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="M_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="MA" />
+						</td>
+					<td class="form_intro">
+							無檔案
+						 </td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="M_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="MC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>彰化縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="N_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="NA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="N_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="NB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="N_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="NC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>雲林縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="P_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="PA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="P_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="PB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="P_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="PC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>嘉義市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="I_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="IA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="I_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="IB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="I_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="IC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>嘉義縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="Q_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="QA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="Q_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="QB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="Q_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="QC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>臺南市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="D_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="DA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="D_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="DB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="D_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="DC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>高雄市</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="E_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="EA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="E_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="EB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="E_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="EC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>屏東縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="T_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="TA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="T_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="TB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="T_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="TC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>宜蘭縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="G_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="GA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="G_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="GB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="G_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="GC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>花蓮縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="U_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="UA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="U_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="UB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="U_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="UC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>臺東縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="V_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="VA" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="V_lvr_land_B"
+								class="checkBoxGrp landTypeB"
+								code="VB" />
+						</td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="V_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="VC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>澎湖縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="X_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="XA" />
+						</td>
+					<td class="form_intro">
+							無檔案
+						 </td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="X_lvr_land_C"
+								class="checkBoxGrp landTypeC"
+								code="XC" />
+						</td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>金門縣</font></td>
+					<td class="form_intro"> 
+							<input type="checkbox"
+								value="W_lvr_land_A"
+								class="checkBoxGrp landTypeA"
+								code="WA" />
+						</td>
+					<td class="form_intro">
+							無檔案
+						 </td>
+					<td class="form_intro">
+							無檔案
+						 </td>
+				</tr>
+			
+				<tr class="advDownloadClass">
+					<td class="form_intro"><font face='Arial' size='-1'>連江縣</font></td>
+					<td class="form_intro">
+							無檔案
+						 </td>
+					<td class="form_intro">
+							無檔案
+						 </td>
+					<td class="form_intro">
+							無檔案
+						 </td>
+				</tr>
+			
+		
+	</table>
+
+	<div id="mainMsg" class="results_text" style="display: none;">
+		<div id="totalMsg"></div>
+		<div id="nowMsg"></div>
+	</div>
+	<!-- 
+	<br />
+	<br />
+	<table border="0" cellpadding="0" cellspacing="0" width="96%"
+		id="table3" style='display: none;'>
+		<tr>
+			<td rowspan="3" align="center" valign="top">
+				<table border="0" cellpadding="3" cellspacing="1" id="table3">
+				</table>
+			</td>
+			<td valign="top" class="intro_title"><img
+				src="/images/other_t.gif" alt="其它檔案下載" /></td>
+		</tr>
+	</table>
+	<table width="100%" border='0' cellpadding='0' cellspacing='0'
+		id='table5'
+		style='border-left: 1px solid #cecece; border-right: 1px solid #cecece; border-top: 1px solid #dfdfdf; border-bottom: 1px solid #cecece; text-align: left; display: none;'>
+		<tr>
+			<td class="form_gray"><font face='Arial' size='-1'>檔案名號</font></td>
+			<td class="form_seperator"><img
+				src="/images/form_line.gif" alt="│" width="3"
+				height="19" /></td>
+			<td class="form_gray"><font face='Arial' size='-1'>檔案名稱</font></td>
+			<td class="form_seperator"><img
+				src="/images/form_line.gif" alt="│" width="3"
+				height="19" /></td>
+			<td class="form_gray"><font face='Arial' size='-1'>檔案介紹</font></td>
+			<td class="form_seperator"><img
+				src="/images/form_line.gif" alt="│" width="3"
+				height="19" /></td>
+			<td class="form_gray"><font face='Arial' size='-1'>更新日期</font></td>
+			<td class="form_seperator"><img
+				src="/images/form_line.gif" alt="│" width="3"
+				height="19" /></td>
+			<td class="form_gray"><font face='Arial' size='-1'>下載</font></td>
+		</tr>
+		<tr>
+			<td class="form_intro"><font face='Arial' size='-1'>attachment_5_supply_form.doc</font></td>
+			<td>&nbsp;</td>
+			<td class="form_intro"><font face='Arial' size='-1'>申請書範本</font></td>
+			<td>&nbsp;</td>
+			<td class="form_intro"><font face='Arial' size='-1'>案件申請書範本</font></td>
+			<td>&nbsp;</td>
+			<td class="form_intro"><font face='Arial' size='-1'>2013.06.01<br />
+					(約36kB)
+			</font></td>
+			<td>&nbsp;</td>
+			<td align="center" class="form_intro">
+					
+				 <a href="/Download.action?fileName=attachment_5_supply_form.doc"><img src="/images/download_b_o.gif" alt="下載"
+						width="47" height="19" /></a></td>
+		</tr>
+	</table>
+	 -->
+	</div>
+                
+<script src="/js/zip.js"></script>
+<script src="/js/zip-fs.js"></script>
+<script src="/js/zip-ext.js"></script>  
+<script src="/js/downloadManager.js"></script>  
+<script type="text/javascript">
+var downLoadType = 1;
+var baseUrl ="https://plvr.land.moi.gov.tw/";  
+ 
+	 
+$(".advDownloadClass").hide();
+function chgDownloadType(obj){
+	downLoadType = obj.value;
+	if (downLoadType == 2){
+		$(".advDownloadClass").show();
+	} else{ 
+		$(".advDownloadClass").hide();
+	}
+}
+
+function preDownload(){
+	if (downLoadType==2){ 
+		startOpenData();
+	}else{ 
+		var fileFormat = $("#fileFormatId").val();
+		var url = "/Download?type=zip&fileName=lvr_land"+fileFormat+".zip";
+		$("#download-button").attr("href",url);
+		var href = baseUrl + $('#download-button').attr('href');
+		$("#download-button").click();
+		window.location.href = href;   
+	}
+}
+
+function init(){
+	$("#totalMsg").html("");
+	$("#nowMsg").html("");
+	$("#mainMsg").attr("style","display:none;");
+}
+
+function startOpenData(){
+	init();
+	fs = new zip.fs.FS();
+	
+	var fileFormat = $("#fileFormatId").val();
+	var cnt = $(".checkBoxGrp" ).filter(':checked').length; 
+	if (cnt < 1){ 
+		alert("請選擇所要下載的區域及交易類別");
+		$("#div_body").unmask();
+		return false;
+	}else{
+		if (cnt > 6 ){ 
+			alert("您選擇了檔案數共:" + cnt + "個，已超過設定限制6個，可以選「全國資料」再自行篩選");
+			$("#div_body").unmask();
+			return false;
+		}
+			var fOpt = {
+					"msg" : "您選擇了檔案數共:" + cnt + "個 ，下載中，請稍候...",
+					"overlay" : true,
+					"zindex" : 99999
+			};
+			qt.util.showLoading(fOpt);
+//		$("#div_body").mask("您選擇了檔案數共:" + cnt + "個 ，下載中，請稍候...");
+	} 
+	//fs.root.addHttpContent("readme",  baseUrl +"/Download?fileName="+"readme");
+	var processCnt= 0; 
+	var q = []; 
+	$( ".checkBoxGrp" ).each(function( index ) {
+		 var writeFileName = ($(this).val()+"."+fileFormat).toLowerCase();
+		 var code = $(this).attr("code").toLowerCase()  ;
+		 
+		 if($(this).is(':checked')){
+			 if (code !="" && code != undefined ){
+				q.push(code); 
+			 }
+			processCnt++;
+			fs.root.addHttpContent(writeFileName, baseUrl +"/Download?fileName="+writeFileName);  
+// 			console.log(" fullurl:" + baseUrl +"/Download?fileName="+writeFileName);  
+		 }  
+	});   
+
+	fs.root.addHttpContent("schema-land.csv", 
+			baseUrl +"/Download?fileName="+"schema-land.csv"+"&q="+q.join(",")+"&type="+fileFormat);
+
+	fs.root.addHttpContent("schema-main.csv", 
+			baseUrl +"/Download?fileName="+"schema-main.csv"+"&q="+q.join(",")+"&type="+fileFormat);
+
+	fs.root.addHttpContent("schema-park.csv", 
+			baseUrl +"/Download?fileName="+"schema-park.csv"+"&q="+q.join(",")+"&type="+fileFormat);
+
+	fs.root.addHttpContent("schema-build.csv", 
+			baseUrl +"/Download?fileName="+"schema-build.csv"+"&q="+q.join(",")+"&type="+fileFormat);
+
+	fs.root.addHttpContent("manifest.csv", 
+			baseUrl +"/Download?fileName="+"manifest.csv"+"&q="+q.join(",")+"&type="+fileFormat);
+ 
+	startDownload();  
+}
+</script>	
