@@ -1,0 +1,46 @@
+URL: https://api.data.gov.my/data-catalogue?id=fuelprice&limit=6&sort=-date
+Fetched: 2026-10-16T16:42:08Z from GitHub Actions
+Status, type, bytes: 200 application/json 1347
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+date: Fri, 16 Oct 2026 16:42:07 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+location: /data-catalogue/?id=fuelprice&limit=6&sort=-date
+vary: Origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-do-app-origin: 404fac77-61ff-48b1-8339-787252035e9b
+cache-control: private
+x-do-orig-status: 301
+set-cookie: __cf_bm=EeJH.pGUxH0upUdpla7OYfqF6YPhM1WC49x7eZ81dzQ-1792168926.8104978-1.0.1.1-fjYNLn7DEvN1itpPLAW0r.yw0skQ4jT5ofZd8t3RQ2OI7MT3iuUe2Cs8E5KFjFYIArnF_aruHdFkINoA0_tLiboou0yidfuh0bBV.Vq0pI4l6vdKY2JIvD_qliBzB2Cj; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.data.gov.my; Expires=Fri, 16 Oct 2026 17:12:07 GMT
+cf-cache-status: BYPASS
+cf-ray: a4b883d08f2bec94-SEA
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 200 
+date: Fri, 16 Oct 2026 16:42:08 GMT
+content-type: application/json
+content-length: 1347
+server: cloudflare
+allow: GET, HEAD, OPTIONS
+x-frame-options: DENY
+vary: Origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+accept-ranges: bytes
+x-do-app-origin: 404fac77-61ff-48b1-8339-787252035e9b
+cache-control: private
+x-do-orig-status: 200
+cf-cache-status: BYPASS
+set-cookie: __cf_bm=bEugx3Jg11afUILnLbkuRM8an8mxdSLksPqtVUk0a4s-1792168927.498382-1.0.1.1-3ZAjDOwH_yI5gqF0WhkdLSm1r0rAY2TCWqPs33nI..4JRDoX0HoyzheN0rqghOKUhbKZqVdLGFe.Ij6R6NOq1nVHUsKnQ5kOsdY7L0QYG6t_k7fIUR7aTcIvni.XC.Bi; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.data.gov.my; Expires=Fri, 16 Oct 2026 17:12:08 GMT
+cf-ray: a4b883d4db3bec94-SEA
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"date": "2026-10-15", "ron95": -0.04999999999999982, "ron97": -0.05000000000000071, "diesel": -0.09999999999999964, "ron95_skps": 0.0, "diesel_budi": 0.0, "diesel_skds": 0.0, "series_type": "change_weekly", "ron95_budi95": 0.0, "diesel_eastmsia": 0.0}, {"date": "2026-10-15", "ron95": 4.62, "ron97": 5.1, "diesel": 5.17, "ron95_skps": 2.05, "diesel_budi": 2.1, "diesel_skds": 2.15, "series_type": "level", "ron95_budi95": 1.99, "diesel_eastmsia": 2.15}, {"date": "2026-10-08", "ron95": 0.15000000000000036, "ron97": 0.15000000000000036, "diesel": 0.0, "ron95_skps": 0.0, "diesel_budi": 0.0, "diesel_skds": 0.0, "series_type": "change_weekly", "ron95_budi95": 0.0, "diesel_eastmsia": 0.0}, {"date": "2026-10-08", "ron95": 4.67, "ron97": 5.15, "diesel": 5.27, "ron95_skps": 2.05, "diesel_budi": 2.1, "diesel_skds": 2.15, "series_type": "level", "ron95_budi95": 1.99, "diesel_eastmsia": 2.15}, {"date": "2026-10-01", "ron95": 4.52, "ron97": 5.0, "diesel": 5.27, "ron95_skps": 2.05, "diesel_budi": 2.1, "diesel_skds": 2.15, "series_type": "level", "ron95_budi95": 1.99, "diesel_eastmsia": 2.15}, {"date": "2026-10-01", "ron95": -0.05000000000000071, "ron97": -0.04999999999999982, "diesel": -0.15000000000000036, "ron95_skps": 0.0, "diesel_budi": 0.0, "diesel_skds": 0.0, "series_type": "change_weekly", "ron95_budi95": 0.0, "diesel_eastmsia": 0.0}]
