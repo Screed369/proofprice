@@ -1,0 +1,26 @@
+URL: https://api-production.data.gov.sg/v2/public/api/datasets/d_acde1106003906a75c3fa052592f2fcb/metadata
+Fetched: 2026-10-16T15:46:00Z from GitHub Actions
+Status, type, bytes: 200 application/json 2076
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 16 Oct 2026 15:46:00 GMT
+content-type: application/json
+content-length: 2076
+cf-ray: a4b831a0790718e8-LAX
+cf-cache-status: DYNAMIC
+access-control-allow-origin: *
+server: cloudflare
+cf-placement: remote-SIN
+x-amz-apigw-id: FV_86EW_yQ0EWRw=
+x-amzn-requestid: 7647bee4-a967-484f-9ae4-c7b8bdfc16bf
+x-amzn-trace-id: Root=1-6ad246b8-239616ce50b05b486feb73c1
+x-dgs-request-id: a4b831a0790718e8
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+vary: accept-encoding
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"code":0,"data":{"datasetId":"d_acde1106003906a75c3fa052592f2fcb","createdAt":"2016-04-30T01:26:57+08:00","name":"Government Procurement via GeBIZ","collectionIds":["460"],"description":"This dataset lists all open tenders put out by government agencies since FY2021.","format":"CSV","lastUpdatedAt":"2026-04-26T21:48:27+08:00","managedBy":"Ministry of Finance","coverageStart":"2021-04-01T00:00:00+08:00","coverageEnd":"2026-03-31T23:59:59+08:00","contactEmails":["mof_qsm@mof.gov.sg"],"datasetSize":4413851,"columnMetadata":{"order":["c_8qr1l6khgvuer9h501bl1b2cl","c_ag60rkypjx8nkzr8ui86zfeh0","c_1x23pob48vqfqnqaz4r7paylc","c_1znyq948kblyfgv8f2ful3n1a","c_8ttqb4ogymmx97or7fhe1fkwh","c_5p8qk3gdgf670166garluqn9u","c_au8766zalkjhqox1xnuzlzo73"],"map":{"c_8qr1l6khgvuer9h501bl1b2cl":"tender_no","c_ag60rkypjx8nkzr8ui86zfeh0":"tender_description","c_1x23pob48vqfqnqaz4r7paylc":"agency","c_1znyq948kblyfgv8f2ful3n1a":"award_date","c_8ttqb4ogymmx97or7fhe1fkwh":"tender_detail_status","c_5p8qk3gdgf670166garluqn9u":"supplier_name","c_au8766zalkjhqox1xnuzlzo73":"awarded_amt"},"metaMapping":{"c_8qr1l6khgvuer9h501bl1b2cl":{"name":"tender_no","columnTitle":"Tender No","dataType":"Text","index":"0","isCategorical":false},"c_ag60rkypjx8nkzr8ui86zfeh0":{"name":"tender_description","columnTitle":"Tender Description","dataType":"Text","index":"1","isCategorical":false},"c_1x23pob48vqfqnqaz4r7paylc":{"name":"agency","columnTitle":"Agency","dataType":"Text","index":"2","isCategorical":true},"c_1znyq948kblyfgv8f2ful3n1a":{"name":"award_date","columnTitle":"Award Date","dataType":"Text","index":"3","isCategorical":true},"c_8ttqb4ogymmx97or7fhe1fkwh":{"name":"tender_detail_status","columnTitle":"Tender Detail Status","dataType":"Text","index":"4","isCategorical":true},"c_5p8qk3gdgf670166garluqn9u":{"name":"supplier_name","columnTitle":"Supplier Name","dataType":"Text","index":"5","isCategorical":false},"c_au8766zalkjhqox1xnuzlzo73":{"name":"awarded_amt","columnTitle":"Awarded Amt","dataType":"Numeric","description":"S$","index":"6","isCategorical":false}}}},"errorMsg":""}
