@@ -1,0 +1,57 @@
+URL: https://analisi.transparenciacatalunya.cat/resource/qww9-bvhh.json?$select=ambit_territorial,periode,any,count(*)%20as%20n&$group=ambit_territorial,periode,any&$order=any%20DESC&$limit=30
+Fetched: 2026-10-16T10:42:49Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2482
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 16 Oct 2026 10:42:49 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"YnJhdm8uMTQxNzZfM180Nm41SXp6QmozZmlVcGlmU1J3RGV2bm5SMlh1QQ---gzivELTfsA_GmeSJ3Wu97sR9XaB3Tn--gzip--gzip"
+X-SODA2-Fields: ["ambit_territorial","periode","any","n"]
+X-SODA2-Types: ["text","text","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 30 Jul 2026 11:10:17 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 30 Jul 2026 11:10:17 GMT
+Last-Modified: Thu, 30 Jul 2026 11:10:17 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-eu-west-1-prod
+X-Socrata-RequestId: 725bf0c45d6b8c43c18a032d3a488700
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"ambit_territorial":"Municipi","periode":"gener-març","any":"2026","n":"686"}
+,{"ambit_territorial":"Municipi","periode":"abril-juny","any":"2025","n":"656"}
+,{"ambit_territorial":"Municipi","periode":"gener-desembre","any":"2025","n":"844"}
+,{"ambit_territorial":"Municipi","periode":"gener-juny","any":"2025","n":"758"}
+,{"ambit_territorial":"Municipi","periode":"gener-març","any":"2025","n":"674"}
+,{"ambit_territorial":"Municipi","periode":"gener-setembre","any":"2025","n":"810"}
+,{"ambit_territorial":"Municipi","periode":"juliol-setembre","any":"2025","n":"677"}
+,{"ambit_territorial":"Municipi","periode":"octubre-desembre","any":"2025","n":"676"}
+,{"ambit_territorial":"Municipi","periode":"abril-juny","any":"2024","n":"702"}
+,{"ambit_territorial":"Municipi","periode":"gener-desembre","any":"2024","n":"854"}
+,{"ambit_territorial":"Municipi","periode":"gener-juny","any":"2024","n":"788"}
+,{"ambit_territorial":"Municipi","periode":"gener-març","any":"2024","n":"687"}
+,{"ambit_territorial":"Municipi","periode":"gener-setembre","any":"2024","n":"827"}
+,{"ambit_territorial":"Municipi","periode":"juliol-setembre","any":"2024","n":"663"}
+,{"ambit_territorial":"Municipi","periode":"octubre-desembre","any":"2024","n":"661"}
+,{"ambit_territorial":"Municipi","periode":"abril-juny","any":"2023","n":"692"}
+,{"ambit_territorial":"Municipi","periode":"gener-desembre","any":"2023","n":"846"}
+,{"ambit_territorial":"Municipi","periode":"gener-juny","any":"2023","n":"771"}
+,{"ambit_territorial":"Municipi","periode":"gener-març","any":"2023","n":"659"}
+,{"ambit_territorial":"Municipi","periode":"gener-setembre","any":"2023","n":"818"}
+,{"ambit_territorial":"Municipi","periode":"juliol-setembre","any":"2023","n":"672"}
+,{"ambit_territorial":"Municipi","periode":"octubre-desembre","any":"2023","n":"643"}
+,{"ambit_territorial":"Municipi","periode":"abril-juny","any":"2022","n":"667"}
+,{"ambit_territorial":"Municipi","periode":"gener-desembre","any":"2022","n":"849"}
+,{"ambit_territorial":"Municipi","periode":"gener-juny","any":"2022","n":"783"}
+,{"ambit_territorial":"Municipi","periode":"gener-març","any":"2022","n":"703"}
+,{"ambit_territorial":"Municipi","periode":"gener-setembre","any":"2022","n":"827"}
+,{"ambit_territorial":"Municipi","periode":"juliol-setembre","any":"2022","n":"662"}
+,{"ambit_territorial":"Municipi","periode":"octubre-desembre","any":"2022","n":"684"}
+,{"ambit_territorial":"Municipi","periode":"abril-juny","any":"2021","n":"682"}]
