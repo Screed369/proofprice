@@ -20,7 +20,7 @@ export default defineSource({
   },
   examples: [
     { params: { country: "IE" } },
-    { params: { country: "NL", cycle: "second", student_group: "international" }, smoke: false },
+    { params: { country: "DE", cycle: "second" }, smoke: false },
     { params: { country: "BE", community: "nl" }, smoke: false },
   ],
   method:

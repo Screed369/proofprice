@@ -333,7 +333,7 @@ export function tuitionAnswer(table: FeeTable, input: TuitionInput): PriceAnswer
     describe: (v) =>
       `In ${table.academicYear}, the most common annual tuition fee for ${label} in ${place} is ${fmt(v, currency)}` +
       `${currency !== "EUR" && euro(v) !== null ? ` (about ${fmt(euro(v)!, "EUR")})` : ""}` +
-      `${min !== null && max !== null ? `, within a range of ${fmt(min, currency)} to ${fmt(max, currency)}` : ""}.`,
+      `${min !== null && max !== null && min !== max ? `, within a range of ${fmt(min, currency)} to ${fmt(max, currency)}` : ""}.`,
     note: notes.join(" "),
     baseUrl: input.baseUrl,
     extra: {
