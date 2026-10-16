@@ -1,0 +1,44 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0012249&lang=EN
+Fetched: 2026-10-16T12:46:25Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 48380
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 12:46:24 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=1Gxgb2qhjjyFK7YTNuVlXlL0mwFUPCrGCmpxfBBf.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 900 BYTES
+[ {
+  "IndicadorCod" : "0012249",
+  "IndicadorNome" : "Median value of bank evaluation (Month-on-month growth rate - %) by Geographic localization (NUTS II - 2024) and Type of construction; Monthly - Statistics Portugal, Survey on bank evaluation on housing",
+  "Periodic" : "Monthly",
+  "PrimeiroPeriodo" : "February 2011",
+  "UltimoPeriodo" : "August 2026",
+  "UnidadeMedida" : "Percentage (%)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "1",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-09-24",
+  "DataExtracao" : "2026-10-16T13:46:24.727+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Month)",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (NUTS II - 2024)",
+      "versao" : "05257"
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Type of construction",
+      "versao
