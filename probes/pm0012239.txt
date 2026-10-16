@@ -1,0 +1,43 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0012239&lang=EN
+Fetched: 2026-10-16T12:44:47Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 30276
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 12:44:47 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=JJ2u0GYcjZpKHTriJqQ01bNzvfz_0ZffIbdZolI_.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 900 BYTES
+[ {
+  "IndicadorCod" : "0012239",
+  "IndicadorNome" : "Median value of family housing sales (Methodology 2022 - €/ m²) by Geographic location (NUTS - 2024) and Tax residence of the purchaser; Quarterly - Statistics on house prices at local level (Methodology 2022)",
+  "Periodic" : "Quarterly",
+  "PrimeiroPeriodo" : "1st Quarter 2019",
+  "UltimoPeriodo" : "1st Quarter 2026",
+  "UnidadeMedida" : "Euro/ Square metre (€/ m²)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-07-17",
+  "DataExtracao" : "2026-10-16T13:44:47.252+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Quarter)",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic location (NUTS - 2024)",
+      "versao" : "05432"
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Tax re
