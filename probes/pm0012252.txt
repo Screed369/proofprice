@@ -1,0 +1,44 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0012252&lang=EN
+Fetched: 2026-10-16T12:46:37Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 19749
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 12:46:37 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=95BzZYg79RJ1Dcq8X4opFtuCg_t9Yx5KZctlEH35.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 900 BYTES
+[ {
+  "IndicadorCod" : "0012252",
+  "IndicadorNome" : "Cinema spectators (2006 methodology - No.) by Geographic localization (NUTS - 2024 - NUTS III); Monthly - Institute of Cinema and Audiovisual",
+  "Periodic" : "Monthly",
+  "PrimeiroPeriodo" : "January 2023",
+  "UltimoPeriodo" : "August 2026",
+  "UnidadeMedida" : "Number (No.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-09-30",
+  "DataExtracao" : "2026-10-16T13:46:37.289+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Month)",
+      "versao" : "XXXXX",
+      "nota_dsg" : "2026 data are provisional. The data for April, May, and June 2026 were revised."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (NUTS - 2024)",
+      "versao" : "05257"
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num
