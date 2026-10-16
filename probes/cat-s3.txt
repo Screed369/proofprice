@@ -1,0 +1,216 @@
+URL: https://analisi.transparenciacatalunya.cat/api/catalog/v1?q=fian%C3%A7a&limit=10
+Fetched: 2026-10-16T09:42:53Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 14864
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 16 Oct 2026 09:42:53 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-eu-west-1-prod
+X-Socrata-RequestId: 697cfd6f4fe2909a18706b345af62ed6
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Preu mitjà del lloguer d’habitatges per municipi",
+            "id" : "qww9-bvhh",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Explotació estadística del registre de les fiances de lloguer d’habitatges dipositades a l’Incasòl. Podem considerar que aquesta estadística té un caràcter censal ja que es basa en el recompte de tots els contractes de lloguer que han dipositat la fiança a l’Incasòl en el període considerat.",
+            "attribution" : "Departament de Territori, Habitatge i Transició Ecològica",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-07-30T11:10:17.000Z",
+            "createdAt" : "2019-12-02T15:32:37.000Z",
+            "metadata_updated_at" : "2026-07-30T11:10:15.000Z",
+            "data_updated_at" : "2026-07-30T11:10:17.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 191,
+                "page_views_last_month" : 779,
+                "page_views_total" : 25831,
+                "page_views_last_week_log" : 7.584962500721156,
+                "page_views_last_month_log" : 9.60733031374961,
+                "page_views_total_log" : 14.65687172561398
+              },
+            "columns_name" :
+              [
+                "Codi territorial",
+                "Tram de preus",
+                "Període",
+                "Any",
+                "Renda",
+                "Àmbit territorial",
+                "Nom territori",
+                "Habitatges"
+              ],
+            "columns_field_name" :
+              [
+                "codi_territorial",
+                "tram_preus",
+                "periode",
+                "any",
+                "renda",
+                "ambit_territorial",
+                "nom_territori",
+                "habitatges"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "Municipi: Codi INE, camp de text de 5 dígits",
+                "Tram de preus",
+                "Abast temporal del període al qual fan referència les dades",
+                "Any de l’alta de la fiança de lloguer al Registre de fiances de l’INCASOL",
+                "Import del lloguer mensual mitjà. Dades anonimitzades per municipis amb menys de 6 habitatges registrats",
+                "Àmbit territorial: municipal",
+                "Nom del municipi",
+                "Nombre de contractes que s’han donat d’alta al Registre de fiances en el període considerat"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                { "noCommas" : "true" },
+                {
+                  "decimalSeparator" : ",",
+                  "precision" : "2",
+                  "groupSeparator" : "."
+                },
+                {},
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." }
+              ],
+            "download_count" : 4944,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-01-18T14:52:38.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Habitatge",
+            "domain_tags" :
+              [
+                "lloguer",
+                "habitatge",
+                "preu habitatge",
+                "mercat lloguer",
+                "municipi",
+                "ods11_ciutats i comunitats sostenibles",
+                "ods10_reducció de les desigualtats"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Enllaços-relacionats_Nom",
+                  "value" : "Accés a la pàgina d'estadística del mercat de lloguer al web d'Habitatge"
+                },
+                {
+                  "key" : "Enllaços-relacionats_URL",
+                  "value" : "https://habitatge.gencat.cat/ca/dades/indicadors_estadistiques/estadistiques_de_construccio_i_mercat_immobiliari/mercat_de_lloguer/"
+                },
+                {
+                  "key" : "Enllaços-relacionats_Nom_2",
+                  "value" : "Accés al visor de mapes d'Habitatge"
+                },
+                {
+                  "key" : "Enllaços-relacionats_URL_2",
+                  "value" : "http://sig.gencat.cat/visors/habitatge.html"
+                },
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Registration of housing rental bonds by municipality"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Registro de las fianzas de alquiler de viviendas por municipio"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Codi d'element"
+                },
+                {
+                  "key" : "Actors_Departament",
+                  "value" : "Territori, Habitatge i Transició Ecològica"
+                },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Trimestral"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/qww9-bvhh",
+        "link" : "https://analisi.transparenciacatalunya.cat/Habitatge/Preu-mitjà-del-lloguer-d-habitatges-per-municipi/qww9-bvhh",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Preu mitjà del lloguer d’habitatges per àmbits supramunicipals",
+            "id" : "hepw-33ik",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Explotació estadística del registre de les fiances de lloguer d’habitatges dipositades a l’Incasòl. Podem considerar que aquesta estadística té un caràcter censal ja que es basa en el recompte de tots els contractes de lloguer que han dipositat la fiança a l’Incasòl en el període considerat.",
+            "attribution" : "Departament de Territori, Habitatge i Transició Ecològica",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-ob
