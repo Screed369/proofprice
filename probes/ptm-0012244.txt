@@ -1,0 +1,43 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0012244&lang=EN
+Fetched: 2026-10-16T09:50:35Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 113942
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 09:50:35 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=6PgOMWANxLLDUmq45i6QDAxWNd9dlM6SwiEBTGWW.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 900 BYTES
+[ {
+  "IndicadorCod" : "0012244",
+  "IndicadorNome" : "Formation of legal persons and equivalent entities (No.) by Geographic location (NUTS - 2024) and Economic activity (CAE Rev. 3); Monthly - DGPJ - Directorate-General for Justice Policy, Formation and dissolution of legal persons and equivalent entities",
+  "Periodic" : "Monthly",
+  "PrimeiroPeriodo" : "January 2023",
+  "UltimoPeriodo" : "August 2026",
+  "UnidadeMedida" : "Number (No.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-09-30",
+  "DataExtracao" : "2026-10-16T10:50:34.901+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Month)",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic location (NUTS - 2024)",
+      "versao" : "05257"
+    }, {
+      "dim_num" : "3",
+      "abrv
