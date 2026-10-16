@@ -1,0 +1,38 @@
+URL: https://datos.profeco.gob.mx/datos_abiertos/file.php?t=2de3505b2d37e7db72557a09262d95c7
+Fetched: 2026-10-16T15:43:49Z from GitHub Actions
+Status, type, bytes: 200 application/csv 1484
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+cache-control: no-store
+content-type: application/csv
+server: Web
+x-powered-by: PHP/8.0.11
+content-transfer-encoding: Binary
+content-disposition: inline; filename=QQP_diccionario_dataset.csv
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+date: Fri, 16 Oct 2026 21:43:48 GMT
+content-length: 1484
+
+=== FILE TYPE: CSV Unicode text, UTF-8 (with BOM) text
+=== FIRST 8000 BYTES
+﻿Variable,Tipo de dato,Nombre corto,Descripción
+producto,Carácter (65),Producto,Nombre del producto.
+presentacion,Carácter (180),Presentación,Descripción de la presentación del producto.
+marca,Carácter (65),Marca,Descripción de la marca del producto.
+categoria,Carácter (65),Categoría,Nombre de la categoría a la cual pertenece el producto.
+catalogo,Carácter (65),Catálogo,Nombre del catálogo al que pertenece el producto.
+precio,"Número (18,2)",Precio,Precio del producto de venta al público.
+fecha_registro,Datetime (8),Fecha registro,"Día, mes y año en que fue capturado el precio del producto en el establecimiento."
+cadena_comercial,Carácter (65),Cadena comercial,Conjunto de establecimientos que son sucursales de una misma marca comercial.
+giro,Carácter (65),Giro,Descripción del giro comercial.
+nombre_comercial,Carácter (120),Nombre comercial,Nombre comercial asociado a la razón social del establecimiento.
+direccion,Carácter (255),Dirección,Dirección del establecimiento.
+estado,Carácter (120),Estado,Entidad federativa en la que se localiza el establecimiento.
+municipio,Carácter (120),Municipio,Nombre del municipio o demarcación territorial en el que se localiza el establecimiento.
+latitud,"Número (18,6)",Latitud,"Localización del establecimiento con respecto al ecuador, expresada en grados decimales."
+longitud,"Número (18,6)",Longitud,"Localización del establecimiento con respecto al meridiano 0, expresada en grados decimales."
