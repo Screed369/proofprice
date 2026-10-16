@@ -1,0 +1,63 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0012240&lang=EN
+Fetched: 2026-10-16T09:49:32Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 29923
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 09:49:31 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=InJOKyWJLlCbAJme7JItwudJE9-2ox--BkkOhYkK.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 1500 BYTES
+[ {
+  "IndicadorCod" : "0012240",
+  "IndicadorNome" : "Median value of family housing sales (Methodology 2022 - €/ m²) by Geographic location (NUTS - 2024) and Institutional sector of the purchaser; Quarterly - Statistics on house prices at local level (Methodology 2022)",
+  "Periodic" : "Quarterly",
+  "PrimeiroPeriodo" : "1st Quarter 2019",
+  "UltimoPeriodo" : "1st Quarter 2026",
+  "UnidadeMedida" : "Euro/ Square metre (€/ m²)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-07-17",
+  "DataExtracao" : "2026-10-16T10:49:30.802+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Quarter)",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic location (NUTS - 2024)",
+      "versao" : "05432"
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Institutional sector of the purchaser",
+      "versao" : "04914"
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S5A20191" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20191",
+        "categ_cod" : "S5A20191",
+        "categ_dsg" : "1st Quarter 2019",
+        "categ_ord" : "20190101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20192" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20192",
+        "categ_cod" : "S5A20192",
+        "categ_dsg" : "2nd Quarter 2019",
+        "categ_ord" : "20190401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20193"
