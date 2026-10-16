@@ -1,0 +1,504 @@
+URL: https://www.ehealth.fgov.be/ehealthplatform/fr/service-civics
+Fetched: 2026-10-16T06:44:52Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 34885
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+date: Fri, 16 Oct 2026 06:44:51 GMT
+server: Apache
+cache-control: max-age=0, must-revalidate, private, s-maxage=3600
+expires: Fri, 16 Oct 2026 06:44:51 GMT
+etag: "bc3dd6686c12b24c40022db5c9153468a971d6bc"
+vary: Accept-Encoding
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000; includeSubDomains
+content-security-policy: script-src 'self' 'unsafe-inline' https://cdn.gcloud.belgium.be https://matomo.bosa.be https://www.flexmail.eu https://openfed.github.io https://squizlabs.github.io; frame-ancestors 'self'
+referrer-policy: no-referrer-when-downgrade
+permissions-policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+transfer-encoding: chunked
+content-type: text/html; charset=UTF-8
+set-cookie: 24613edc644f9bc4974130ee5f907588=3a474f7c32249ebd5936ec5e0c1e40e5; path=/; HttpOnly
+Set-Cookie: BIGipServer~EHINFRA~EHINFRA~ehealth-12-router.paas.gcloud.belgium.be_80=!4O9uCHVEd+zSCApwests8gYLloPkGpDRSbHOSljNwTemBstE5SYbHzOxnhB4+AN7MgdJZzLsAvFDla2jwpSjk6CPdPOMjOYgAL8Hiwhk1jE=; path=/
+Set-Cookie: BIGipServer~EH~EH~ehealth-router.paas.gcloud.belgium.be_80=!K7SCcbktgNqjPuhwests8gYLloPkGgTKp7eMKLZBe5BppFYtdU7znc8lXCZzElX/yRv1AT9T3m44PIMTnhlg7sg6hqaLk8AovsxeVaI7GMA=; path=/; Secure
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (736), with CRLF, LF line terminators
+=== FIRST 30000 BYTES
+        
+    
+    
+            
+    
+    
+    <!doctype html>
+    <html lang="fr" data-trans-domain="live" data-base-url="/">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>CIVICS | Platform eHealth</title>
+            <meta name="description" content="">
+                        <link rel="icon" type="image/png" sizes="64x64" href="/ehealthplatform/bundles/bdd0d7521b435c6eceb9f26b3fd384abd693f0e2/img/head/favicon.ico">
+            <meta name="theme-color" content="#2e2e2e"/>
+                        <link rel="stylesheet" href="/ehealthplatform/bundles/bdd0d7521b435c6eceb9f26b3fd384abd693f0e2/css/index.css">            <style id="flx-styles">
+        body, .fm_body table {
+            background-color: transparent !important;
+        }
+
+        .fm_body table {
+            position: relative;
+            color: #434343;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .fm_body table + p {
+            display: none !important;
+        }
+
+        .fm_body table > tbody > tr {
+            display: block;
+        }
+
+        .fm_body table > tbody > tr > td {
+            display: block;
+            padding-bottom: 0;
+            font-size: 16px !important;
+            font-weight: normal !important;
+        }
+
+        .fm_body a {
+            color: #2C00AC;
+            text-decoration: none;
+        }
+
+        .fm_body a:hover {
+            color: #2C00AC;
+            text-decoration: underline;
+        }
+
+        .fm_body input, .fm_body button, .fm_body select, .fm_body textarea {
+            font-size: 16px !important;
+        }
+
+        .fm_body p.small {
+            color: #999999;
+            font-size: 10px;
+            margin: 0;
+            text-align: right;
+        }
+
+        /* custom code */
+
+        .fm_body #btn-send {
+            background-image: none !important;
+            display: inline-block;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid #087670;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 1.3125rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+            color: #fff;
+            background-color: #087670;
+
+            text-shadow: none;
+            box-shadow: none;
+        }
+
+        /*
+        * {
+            font-family: Verdana !important;
+        }
+        */
+
+        .fm_body input[name^="fields"] {
+            display: block !important;
+            width: 100% !important;
+            height: calc(1.5em + 1rem + 2px) !important;
+            padding: 0.5rem 1.5rem !important;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            line-height: 1.5 !important;
+            color: #495057 !important;
+            background-color: transparent !important;
+            background-clip: padding-box !important;
+            border: 1px solid #717676 !important;
+            border-radius: 1.3125rem !important;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !important;
+            box-sizing: border-box !important;
+        }
+
+        .preferences, #preferences, p.field, p.lists, p.button {
+            margin: 0;
+        }
+
+        #preferences + p {
+            margin: 0;
+        }
+    </style>
+    <script>
+        var fm=function(){return{load:function(){var e=document,t=e.getElementById("iframe_flxml_form"),n=e.getElementById("flx-styles"),r=n?n.innerHTML:"";t?t.contentWindow.postMessage(r,"https://www.flexmail.eu/"):alert("Flexmail: Frame not found!")}}}()
+    </script>
+        </head>
+        <body class=" "
+              data-translations="{&quot;target_blank&quot;:&quot;Nouvelle fen\u00eatre&quot;,&quot;file_selected&quot;:&quot;Fichier s\u00e9lectionn\u00e9&quot;,&quot;form_error&quot;:&quot;Formulaire en erreur&quot;,&quot;form_saved&quot;:&quot;Votre demande a \u00e9t\u00e9 enregistr\u00e9e&quot;,&quot;form_processed&quot;:&quot;Votre demande a bien \u00e9t\u00e9 trait\u00e9e&quot;,&quot;form_error_try_later&quot;:&quot;Le formulaire a rencontr\u00e9 une erreur, veuillez r\u00e9essayer plus tard&quot;,&quot;back_to_ems&quot;:&quot;Retour dans l&#039;admin&quot;}"
+             data-spy="scroll" data-target="#toc" data-offset="10">
+            <a class="skip-to-content" href="#content">Passer le menu principale</a>
+    
+<header class="border-bottom bg-white" id="header">
+    <div class="container-lg">
+        <nav class="navbar navbar-expand-lg navbar-light" data-active-message="(actif)">
+            <div class="navbar-first-row d-flex flex-grow-1 align-items-center">
+                                <a class="navbar-brand" href="/ehealthplatform/fr">
+                    <img src="/ehealthplatform/bundles/bdd0d7521b435c6eceb9f26b3fd384abd693f0e2/img/logos/ehealth.svg" height="44" alt="Platform eHealth">
+                </a>
+                <div class="search-button d-lg-none ml-auto mr-2">
+                    <button class="btn btn-white btn-round text-lg"><i class="fo fo-search"></i> <span class="sr-only">Ouvrir le formulaire de recherche</span></button>
+                    <button class="btn btn-white btn-round d-none"><i class="fo fo-close"></i> <span class="sr-only">Fermer le formulaire de recherche</span></button>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Basculer le menu de navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mr-4 font-family-secondary">
+                                                                                                                                        
+                                                    <li class="mb-2 mb-lg-0">
+                                <a class="nav-link text-dark d-inline-block" href="/ehealthplatform/fr">
+                                    Accueil
+                                </a>
+                            </li>
+                                                                                                                                                
+                                                    <li class="mb-2 mb-lg-0 active">
+                                <a class="nav-link text-dark d-inline-block" href="/ehealthplatform/fr/documentation-technique">
+                                    Documentation technique
+                                </a>
+                            </li>
+                                                                                                                                                
+                                                    <li class="mb-2 mb-lg-0">
+                                <a class="nav-link text-dark d-inline-block" href="/ehealthplatform/fr/a-propos">
+                                    À propos
+                                </a>
+                            </li>
+                                                                                                                                                
+                                                    <li class="">
+                                <a class="nav-link text-dark d-inline-block" href="/ehealthplatform/fr/support">
+                                    Support
+                                </a>
+                            </li>
+                                                                            </ul>
+
+                <div class="search-button d-none d-lg-block">
+                    <button class="btn btn-dark btn-round" id="open-search-form-button"><i class="fo fo-search"></i> <span class="sr-only">Ouvrir le formulaire de recherche</span></button>
+                    <button class="btn btn-dark btn-round d-none"><i class="fo fo-close"></i> <span class="sr-only">Fermer le formulaire de recherche</span></button>
+                </div>
+
+                                                                                                                                                                                    
+<ul class="navbar-nav">
+    <li class="nav-item dropdown languages d-none d-lg-block">
+                            <a class="nav-link dropdown-toggle text-body" href="#" id="dropdown-locales" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Français">
+                FR
+            </a>
+        
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-locales">
+                                                                    <a class="dropdown-item text-body" href="/ehealthplatform/nl/service-civics" lang="nl" title="Néerlandais">NL</a>
+                                    </div>
+            </li>
+</ul>
+<div class="d-lg-none mb-2">
+    <hr class="xs mx-n3">
+    <label for="mobile_switch_language" class="sr-only">Changer de langue</label>
+    <select class="custom-select | js-change-location w-25" id="mobile_switch_language">
+                                                    <option  value="/ehealthplatform/nl/service-civics">NL</option>
+                                                                <option selected value="/ehealthplatform/fr/service-civics">FR</option>
+                        </select>
+</div>
+
+            </div>
+        </nav>
+    </div>
+    <div class="search-bar bg-overflow-x py-4 d-none" id="search-top">
+        <div class="container">
+            <div class="row justify-content-center flex-grow-1">
+                <div class="col-lg-9">
+                    <form action="/ehealthplatform/fr/search" method="GET">
+                        <div class="input-group">
+                            <input type="text"
+                                   id="searchQueryInput"
+                                   name="q"
+                                   class="form-control form-control-dark rounded-0 border-right-0 border-bottom pl-0"
+                                   placeholder="Cherchez dans les pages et documents du site web"
+                                   aria-label="Cherchez dans les pages et documents du site web"
+                                   aria-describedby="button-addon-searchbar"
+                                   value=""
+                            >
+                            <div class="input-group-append">
+                                <button class="btn rounded-0 border-bottom text-white pr-0" type="submit" id="button-addon-searchbar" aria-label="Chercher">
+                                    <i class="fo fo-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+            
+
+
+    <main role="main" id="content" class="overflow-hidden pt-3 pt-lg-6">
+        <div class="container">
+                <div class="row">
+                <div class="col-lg-3 d-none d-lg-block mt-lg-7">
+            <div class="sticky">
+                <div class="text-sm text-uppercase mb-5 text-primary">Contenu de cette page</div>
+                <nav id="toc" class="js-toc c-toc"></nav>
+            </div>
+        </div>
+                <div class="col-lg-9">
+            
+        
+<a href="/ehealthplatform/fr/documentation-technique" class="text-gray mb-5 d-inline-block">
+    <i class="fas fa-chevron-left mr-2 text-smm align-middle"></i>
+    <span>Retour vers : Documentation technique</span>
+</a>
+
+            <div class="mb-5">
+                                <div class="section-title-icon section-title-icon-sm icon-top-left">
+                    <div class="section-title-icon-holder bg-light">
+                        <img src="../file/5d831feb4cd4f0d34a0e715f317456fec42d2158/653df6e0390ff6482ffa0ba27eb757e8d5195617/icon-sources-authentiques.svg" alt="" class="img-fluid" width="70" height="70">
+                    </div>
+                </div>
+                                <div>
+                                        <h1 class="font-weight-light mb-0" >
+                        CIVICS
+
+                                                    <a class="btn btn-sm rounded btn-outline-primary ml-2 text-xs" href="https://www.ehealth.fgov.be/ehealthplatform/fr/service-civics.xml">
+                                <i class="fas fa-rss" aria-hidden="true"></i> RSS
+                            </a>
+                                            </h1>
+                </div>
+            </div>
+
+            <div class="content-wysiwyg">
+                            <div class="mb-6">
+            <div class="d-flex align-items-lg-center flex-lg-row flex-column mb-4 | js-toc-parsing">
+                <h2 class="mb-2 mb-lg-0 mr-lg-auto">Informations générales</h2>
+                            </div>
+            <div>
+                <p>Actuellement, l&#39;application CIVICS n&#39;est accessible qu&#39;en acceptation. Elle sera disponible en production d&egrave;s que les tests r&eacute;alis&eacute;s par les utilisateurs seront concluants.</p>
+            </div>
+        </div>
+    
+
+
+                                            <div class="mb-6">
+                        <div class="mb-4 | js-toc-parsing">
+                <h2 class="mb-4">Document informatif</h2>
+            </div>
+            <div>
+                                                                                                                                                                                                                                                                                                                                            <div class="row">
+                        <div class="col-xl-3 col-md-4 mb-3 mb-md-0">
+                            <p class="mb-0" >
+                                SAM - Physical data dossier
+                            </p>
+                        </div>
+                        <div class="col-xl-9 col-md-8">
+                            <div><p>The database scheme SAM structure is divided in two parts which are interconnected: The Medical Products structures in detail the medicine sphere from the substances to the commercialized medicine packages at the pharmacist; The Reimbursement taking into account the Belgian system for sickness and invalidity insurance. In this first implementation phase, the emphasis is on the reimbursement agreements as specified in the Royal Decree of December 21st, 2001, more commonly known as &lsquo;Chapter IV&rsquo;.</p></div>                            <a href="../file/cc73d96153bbd5448a56f19d925d05b1379c7f21/d42450661b1dc17ba334c365bfd19f8d22c77aa8/sam2-physical-data-dossier-v2-3.pdf" target="_blank">
+                                <span class="sr-only">SAM - Physical data dossier</span> Version 2.3 (16/12/13) - 1.23 MB
+                            </a>
+
+                                                                                                                                                
+                            <br><span class="text-smm">Ce document est en anglais</span>                        </div>
+                    </div>
+                    <hr class="sm">                                                                                                                                                                                                                                                                                                                                            <div class="row">
+                        <div class="col-xl-3 col-md-4 mb-3 mb-md-0">
+                            <p class="mb-0" >
+                                SAM - Logical data dossier
+                            </p>
+                        </div>
+                        <div class="col-xl-9 col-md-8">
+                            <div><p>The structuring of the database SAM is divided into two parts: the Medicinal Product part that explains in detail the areas dedicated to substances, specialities, galenic forms, packages, etc. and the Reimbursement part that represents all information relative to the conditions, procedures, medical and social profiles, amounts, etc.</p></div>                            <a href="../file/cc73d96153bbd5448a56f19d925d05b1379c7f21/87d5d82491b214457ddfdd6b4a02d7714b19e767/sam2-logical-data-dossier-v2-3.pdf" target="_blank">
+                                <span class="sr-only">SAM - Logical data dossier</span> Version 2.3 (16/12/13) - 670.83 KB
+                            </a>
+
+                                                                                                                                                
+                            <br><span class="text-smm">Ce document est en anglais</span>                        </div>
+                    </div>
+                    <hr class="sm">                                                                                                                                                                                                                                                                                                                                            <div class="row">
+                        <div class="col-xl-3 col-md-4 mb-3 mb-md-0">
+                            <p class="mb-0" >
+                                SAM - Physical diagram
+                            </p>
+                        </div>
+                        <div class="col-xl-9 col-md-8">
+                            <div><p>SAM : Physical Diagram - Subview CURRENT</p></div>                            <a href="../file/cc73d96153bbd5448a56f19d925d05b1379c7f21/9d055f50a862235223687b3dd896a71844a7ca6c/sam2-rdm-v2-2.pdf" target="_blank">
+                                <span class="sr-only">SAM - Physical diagram</span> Version 2.2 (03/12/13) - 1020.74 KB
+                            </a>
+
+                                                                                                                                                
+                            <br><span class="text-smm">Ce document est en anglais</span>                        </div>
+                    </div>
+                    <hr class="sm">                                                                                                                                                                                                                                                                                                                                            <div class="row">
+                        <div class="col-xl-3 col-md-4 mb-3 mb-md-0">
+                            <p class="mb-0" >
+                                SAM - Conceptual data dossier
+                            </p>
+                        </div>
+                        <div class="col-xl-9 col-md-8">
+                            <div><p>This conceptual analysis is the first step towards the development of a useful and flexible structure of the authentic source of medicines for use by healthcare professionals in Belgium. This model will describe a national therapeutic arsenal with 6 basic concepts (3 universal and 3 with country and brand specification).</p>
+
+<p>The conceptual analysis gives a listing of the essential concepts, a thorough delineation of the concepts and a graphical representation of the logic relations between the different concepts.</p></div>                            <a href="../file/cc73d96153bbd5448a56f19d925d05b1379c7f21/3caf58432e843d70616e8029cb46802473f21853/sam2-conceptual-data-dossier-v2-1.pdf" target="_blank">
+                                <span class="sr-only">SAM - Conceptual data dossier</span> Version 2.1 (05/04/13) - 673.56 KB
+                            </a>
+
+                                                                                                                                                
+                            <br><span class="text-smm">Ce document est en anglais</span>                        </div>
+                    </div>
+                    <hr class="sm">                                                                                                                                                                                                                                                                                                                                            <div class="row">
+                        <div class="col-xl-3 col-md-4 mb-3 mb-md-0">
+                            <p class="mb-0" >
+                                Structuring Chapter IV
+                            </p>
+                        </div>
+                        <div class="col-xl-9 col-md-8">
+                            <div><p>Description of the structuring principles applied to ChIV legislation prior to integration in the database SAM.</p></div>                            <a href="../file/cc73d96153bbd5448a56f19d925d05b1379c7f21/9b67f40a8f5081905cba6971c69b8005e8363fa0/sam2-chapter-iv-structuring.pdf" target="_blank">
+                                <span class="sr-only">Structuring Chapter IV</span> Version 1.0 (05/04/11) - 556.57 KB
+                            </a>
+
+                                                                                                                                                
+                            <br><span class="text-smm">Ce document est en anglais</span>                        </div>
+                    </div>
+                    <hr class="sm">                                                                                                                                                                                                                                                                                                                                            <div class="row">
+                        <div class="col-xl-3 col-md-4 mb-3 mb-md-0">
+                            <p class="mb-0" >
+                                Chapter IV Information Consultation System : Webapplication Export
+                            </p>
+                        </div>
+                        <div class="col-xl-9 col-md-8">
+                            <div><p>Chapter IV describes the conditions for reimbursement of specialties which are refundable through a medical advisor&rsquo;s agreement. In order to obtain reimbursement of these specialties, specific criteria have to be met and filled in on application forms.</p></div>                            <a href="../file/cc73d96153bbd5448a56f19d925d05b1379c7f21/3d5be5665082034500164f667908f0084631a3ec/civics-export-db.pdf" target="_blank">
+                                <span class="sr-only">Chapter IV Information Consultation System : Webapplication Export</span> Version 3.0 (04/04/11) - 112.5 KB
+                            </a>
+
+                                                                                                                                                
+                            <br><span class="text-smm">Ce document est en anglais</span>                        </div>
+                    </div>
+                                                </div>
+        </div>
+                                    <div class="mb-6">
+                        <div class="mb-4 | js-toc-parsing">
+                <h2 class="mb-4">Cookbook</h2>
+            </div>
+            <div>
+                                                                                                                                                                                                                                                                                                                                            <div class="row">
+                        <div class="col-xl-3 col-md-4 mb-3 mb-md-0">
+                            <p class="mb-0" >
+                                Chapter IV Information Consultation System - Webservices
+                            </p>
+                        </div>
+                        <div class="col-xl-9 col-md-8">
+                            <div><p>Chapter IV describes the conditions for reimbursement of specialties which are refundable through a medical advisor&rsquo;s agreement. In order to obtain reimbursement of these specialties, specific criteria have to be met and filled in on application forms.</p></div>                            <a href="../file/cc73d96153bbd5448a56f19d925d05b1379c7f21/a9ef19cf0e3c8f34dd1fd23b5a233734622c9c9d/cookbook-samcivics-1-3.pdf" target="_blank">
+                                <span class="sr-only">Chapter IV Information Consultation System - Webservices</span> Version 1.3 (26/09/14) - 750.66 KB
+                            </a>
+
+                                                                                                                                                
+                            <br><span class="text-smm">Ce document est en anglais</span>                        </div>
+                    </div>
+                                                </div>
+        </div>
+            
+                
+                        
+    <div class="mb-6 | js-toc-parsing">
+        <h2 class="mb-4">Contact</h2>
+        <div>
+            <div class="bg-light rounded p-5">
+                <div id="ems-message-AYXOHbw_bi6r-ftNRMEg"></div>
+                <div id="ems-form-AYXOHbw_bi6r-ftNRMEg" class="mb-5 ems-form-custom">
+                    <p>Notre formulaire est en cours de chargement. Si ce message reste visible et qu’aucun formulaire n’apparait veuillez vérifier que le Javascript est bien activé sur votre navigateur, accepter les cookies correspondant et réessayer de charger cette page.</p>
+                </div>
+                                <iframe id="ems-form-iframe-AYXOHbw_bi6r-ftNRMEg"
+                        src="https://www.ehealth.fgov.be/ehealthplatform/iframe/AYXOHbw_bi6r-ftNRMEg/fr"
+                        style="display:none;"
+                        title="Iframe technique, merci de ne pas en tenir compte"
+                        data-form-id="ems-form-AYXOHbw_bi6r-ftNRMEg"
+                        data-category-id="661e2776ac199e3ff366a6caf51b70a146d55e83"
+                        data-sub-category-id="3b6cc96b632c224ae9d6d8515d76349941332edd"
+                        data-message-id="ems-message-AYXOHbw_bi6r-ftNRMEg">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+                    <div class="mb-6">
+        <div class="mb-4 | js-toc-parsing">
+            <h2 class="mb-0">API Catalog</h2>
+        </div>
+        <div>
+            <p>Le portail &quot;API Catalog&quot; est le catalogue des services web offerts par la plate-forme eHealth et ses partenaires via le API Gateway qui g&egrave;re notamment la consommation des appels aux services.</p>
+
+<p>Il s&rsquo;agit d&rsquo;informations :</p>
+
+<ul>
+	<li><strong>techniques : </strong>URL, version, contrat formel (WSDL+XSD pour les services SOAP ou Swagger pour les services REST)</li>
+	<li><strong>fonctionnelles : </strong>liens vers la documentation disponible, description des services en ligne</li>
+</ul>
+            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#modal-registry">
+                Accéder au API Catalog
+            </a>
+        </div>
+    </div>
+
+                
+            </div>
+                    
+        </div>
+    </div>            </div>        </main>            <footer class="py-7 border-top">
+        <div class="container">
+            <div class="row">
+                                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                            <ul class="list-unstyled">
+                                                            
+                    <li class="mb-3">
+                <a href="/ehealthplatform/fr/news" >Actualités</a>
+            </li>
+                                                                    
+                    <li class="mb-3">
+                <a href="/ehealthplatform/fr/contact" >Contact</a>
+            </li>
+                                                                    
+                    <li class="mb-3">
+                <a href="/ehealthplatform/fr/rss" >Flux RSS</a>
+            </li>
+                                                                    
+                    <li class="mb-3">
+                <a href="/ehealthplatform/fr/disclaimer" >Disclaimer</a>
+            </li>
+                                                                    
+                    <li class="mb-3">
+                <a href="/ehealthplatform/fr/privacy-notice" >Privacy Notice</a>
+            </li>
+                </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                            <ul class="list-unstyled">
+                                                            
+                    <li class="mb-3">
+                <a href="/ehealthplatform/fr/regulation" >Régulation</a>
+            </li>
+                                                                    
+                    <li class="mb-3">
+                <a href="/ehealthplatform/fr/politique-d-utilisation-des-cookies" >Politique d&#039;utilisation des cookies</a
