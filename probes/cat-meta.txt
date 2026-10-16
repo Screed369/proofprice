@@ -1,0 +1,251 @@
+URL: https://analisi.transparenciacatalunya.cat/api/views/qww9-bvhh.json
+Fetched: 2026-10-16T09:44:00Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 16496
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 16 Oct 2026 09:44:00 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-eu-west-1-prod
+X-Socrata-RequestId: 56e0de6358c5a4d7c0556dc876476685
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{
+  "id" : "qww9-bvhh",
+  "name" : "Preu mitjà del lloguer d’habitatges per municipi",
+  "assetType" : "dataset",
+  "attribution" : "Departament de Territori, Habitatge i Transició Ecològica",
+  "attributionLink" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+  "averageRating" : 0,
+  "category" : "Habitatge",
+  "createdAt" : 1575300757,
+  "description" : "Explotació estadística del registre de les fiances de lloguer d’habitatges dipositades a l’Incasòl. Podem considerar que aquesta estadística té un caràcter censal ja que es basa en el recompte de tots els contractes de lloguer que han dipositat la fiança a l’Incasòl en el període considerat.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 4944,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "SEE_TERMS_OF_USE",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 1960385,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1610981558,
+  "publicationGroup" : 1049021,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1785409817,
+  "rowsUpdatedBy" : "u9f7-pzaq",
+  "tableId" : 1327111,
+  "totalTimesRated" : 0,
+  "viewCount" : 25831,
+  "viewLastModified" : 1785409815,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1581937474,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 817364,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1581937474,
+    "targetAudience" : "public",
+    "workflowId" : 182,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1581937474,
+      "failureCount" : 0,
+      "startedAt" : 1581937474,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "a4b5-gx6v",
+      "displayName" : "Dades Obertes Catalunya"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 18097499,
+    "name" : "Àmbit territorial",
+    "dataTypeName" : "text",
+    "description" : "Àmbit territorial: municipal",
+    "fieldName" : "ambit_territorial",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8235406,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "Municipi",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Municipi",
+        "count" : "46105"
+      } ],
+      "smallest" : "Municipi",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : { }
+  }, {
+    "id" : 18097500,
+    "name" : "Codi territorial",
+    "dataTypeName" : "text",
+    "description" : "Municipi: Codi INE, camp de text de 5 dígits",
+    "fieldName" : "codi_territorial",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8235402,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "43907",
+      "null" : "0",
+      "top" : [ {
+        "item" : "08123",
+        "count" : "62"
+      }, {
+        "item" : "25137",
+        "count" : "62"
+      }, {
+        "item" : "08141",
+        "count" : "62"
+      }, {
+        "item" : "25149",
+        "count" : "62"
+      }, {
+        "item" : "08192",
+        "count" : "62"
+      }, {
+        "item" : "08164",
+        "count" : "62"
+      }, {
+        "item" : "17147",
+        "count" : "62"
+      }, {
+        "item" : "08291",
+        "count" : "62"
+      }, {
+        "item" : "43093",
+        "count" : "62"
+      }, {
+        "item" : "17163",
+        "count" : "62"
+      }, {
+        "item" : "25122",
+        "count" : "62"
+      }, {
+        "item" : "25058",
+        "count" : "62"
+      }, {
+        "item" : "17015",
+        "count" : "62"
+      }, {
+        "item" : "43156",
+        "count" : "62"
+      }, {
+        "item" : "17023",
+        "count" : "62"
+      }, {
+        "item" : "08270",
+        "count" : "62"
+      }, {
+        "item" : "08099",
+        "count" : "62"
+      }, {
+        "item" : "25072",
+        "count" : "62"
+      }, {
+        "item" : "43054",
+        "count" : "62"
+      }, {
+        "item" : "08269",
+        "count" : "62"
+      } ],
+      "smallest" : "08001",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : { }
+  }, {
+    "id" : 18097501,
+    "name" : "Nom territori",
+    "dataTypeName" : "text",
+    "description" : "Nom del municipi",
+    "fieldName" : "nom_territori",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8235405,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "Xerta",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Vidreres",
+        "count" : "62"
+      }, {
+        "item" : "Olost",
+        "count" : "62"
+      }, {
+        "item" : "Cassà de la Selva",
+        "count" : "62"
+      }, {
+        "item" : "Salt",
+        "count" : "62"
+      }, {
+        "item" : "Parets del Vallès",
+        "count" : "62"
+      }, {
+        "item" : "Llagostera",
+        "count" : "62"
+      }, {
+        "item" : "Esquirol, l'",
+        "count" : "62"
+      }, {
+        "item" : "Santa Susanna",
+        "count" : "62"
+      }, {
+        "item" : "Fornells de la Selva",
+        "count" : "62"
+      }, {
+        "item" : "Oliana",
+        "count" : "62"
+      }, {
+        "item" : "Artés",
+        "count" : "62"
+      }, {
+        "item" : "Gelida",
+        "count" : "62"
+      }, {
+        "item" : "Cardedeu",
+        "count" : "62"
+      }, {
+        "item" : "Premià de Dalt",
+        "count" : "62"
+      }, {
+        "item" : "Peralada",
+        "count" : "62"
+      }, {
+        "item" : "Cerdanyola del Vallès",
+        "count" : "62"
+      }, {
+        "item" : "Cervelló",
+        "count" : "62"
+      }, {
+        "item" : "Cornellà del Terri",
+        "count" : "62"
+      }, {
+        "item" : "Sant Vicenç de Castellet",
+   
