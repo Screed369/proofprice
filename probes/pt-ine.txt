@@ -1,0 +1,336 @@
+URL: https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012541&Dim1=T&lang=EN
+Fetched: 2026-10-16T09:41:36Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 24208541
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 09:41:31 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=j6FdAGBD4P1FP5dgxaHyTpy_wLfkYtZQX6IHUf2o.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indica.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: Unicode text, UTF-8 text
+=== FIRST 8000 BYTES
+[ {
+  "IndicadorCod" : "0012541",
+  "IndicadorDsg" : "Deaths under 1 year (No.) by Place of residence (NUTS - 2024), Sex and Age; Annual - Statistics Portugal, Deaths",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012541&lingua=EN",
+  "DataExtracao" : "2026-10-16T10:41:27.548+01:00",
+  "DataUltimoAtualizacao" : "2026-04-30",
+  "UltimoPref" : "2025",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "00",
+      "geodsg" : "Foreigner",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "000",
+      "geodsg" : "Foreigner",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0000000",
+      "geodsg" : "Foreigner",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1A",
+      "geodsg" : "Grande Lisboa",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "14",
+      "valor" : "14"
+    }, {
+      "geocod" : "11",
+      "geodsg" : "Norte",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "12",
+      "valor" : "12"
+    }, {
+      "geocod" : "15",
+      "geodsg" : "Algarve",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "111",
+      "geodsg" : "Alto Minho",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "11E",
+      "geodsg" : "Terras de Trás-os-Montes",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1910105",
+      "geodsg" : "Aveiro",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "1910108",
+      "geodsg" : "Estarreja",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1910110",
+      "geodsg" : "Ílhavo",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "1910112",
+      "geodsg" : "Murtosa",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1910114",
+      "geodsg" : "Oliveira do Bairro",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920111",
+      "geodsg" : "Mealhada",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920601",
+      "geodsg" : "Arganil",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920602",
+      "geodsg" : "Cantanhede",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920603",
+      "geodsg" : "Coimbra",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "1920604",
+      "geodsg" : "Condeixa-a-Nova",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920605",
+      "geodsg" : "Figueira da Foz",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "1920606",
+      "geodsg" : "Góis",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920607",
+      "geodsg" : "Lousã",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920608",
+      "geodsg" : "Mira",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920609",
+      "geodsg" : "Miranda do Corvo",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920610",
+      "geodsg" : "Montemor-o-Velho",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920611",
+      "geodsg" : "Oliveira do Hospital",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920612",
+      "geodsg" : "Pampilhosa da Serra",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920613",
+      "geodsg" : "Penacova",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920614",
+      "geodsg" : "Penela",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920615",
+      "geodsg" : "Soure",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920616",
+      "geodsg" : "Tábua",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1920617",
+      "geodsg" : "Vila Nova de Poiares",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1921808",
+      "geodsg" : "Mortágua",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1931002",
+      "geodsg" : "Alvaiázere",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1931003",
+      "geodsg" : "Ansião",
+      "dim_3" : "1",
+      "dim_3_t" : "M",
+      "dim_4" : "101",
+      "dim_4_t" : "Under 7 days of age",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "1931004",
+      "geodsg" : "Batalha",
