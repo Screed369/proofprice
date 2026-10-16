@@ -1,0 +1,664 @@
+URL: https://analisi.transparenciacatalunya.cat/api/views/qww9-bvhh.json
+Fetched: 2026-10-16T10:44:05Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 16496
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 16 Oct 2026 10:44:04 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-eu-west-1-prod
+X-Socrata-RequestId: 3c0bd41dcadf44eaf4d819db4c963b15
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "id" : "qww9-bvhh",
+  "name" : "Preu mitjà del lloguer d’habitatges per municipi",
+  "assetType" : "dataset",
+  "attribution" : "Departament de Territori, Habitatge i Transició Ecològica",
+  "attributionLink" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+  "averageRating" : 0,
+  "category" : "Habitatge",
+  "createdAt" : 1575300757,
+  "description" : "Explotació estadística del registre de les fiances de lloguer d’habitatges dipositades a l’Incasòl. Podem considerar que aquesta estadística té un caràcter censal ja que es basa en el recompte de tots els contractes de lloguer que han dipositat la fiança a l’Incasòl en el període considerat.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 4944,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "SEE_TERMS_OF_USE",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 1960385,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1610981558,
+  "publicationGroup" : 1049021,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1785409817,
+  "rowsUpdatedBy" : "u9f7-pzaq",
+  "tableId" : 1327111,
+  "totalTimesRated" : 0,
+  "viewCount" : 25832,
+  "viewLastModified" : 1785409815,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1581937474,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 817364,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1581937474,
+    "targetAudience" : "public",
+    "workflowId" : 182,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1581937474,
+      "failureCount" : 0,
+      "startedAt" : 1581937474,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "a4b5-gx6v",
+      "displayName" : "Dades Obertes Catalunya"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 18097499,
+    "name" : "Àmbit territorial",
+    "dataTypeName" : "text",
+    "description" : "Àmbit territorial: municipal",
+    "fieldName" : "ambit_territorial",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8235406,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "Municipi",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Municipi",
+        "count" : "46105"
+      } ],
+      "smallest" : "Municipi",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : { }
+  }, {
+    "id" : 18097500,
+    "name" : "Codi territorial",
+    "dataTypeName" : "text",
+    "description" : "Municipi: Codi INE, camp de text de 5 dígits",
+    "fieldName" : "codi_territorial",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8235402,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "43907",
+      "null" : "0",
+      "top" : [ {
+        "item" : "08123",
+        "count" : "62"
+      }, {
+        "item" : "25137",
+        "count" : "62"
+      }, {
+        "item" : "08141",
+        "count" : "62"
+      }, {
+        "item" : "25149",
+        "count" : "62"
+      }, {
+        "item" : "08192",
+        "count" : "62"
+      }, {
+        "item" : "08164",
+        "count" : "62"
+      }, {
+        "item" : "17147",
+        "count" : "62"
+      }, {
+        "item" : "08291",
+        "count" : "62"
+      }, {
+        "item" : "43093",
+        "count" : "62"
+      }, {
+        "item" : "17163",
+        "count" : "62"
+      }, {
+        "item" : "25122",
+        "count" : "62"
+      }, {
+        "item" : "25058",
+        "count" : "62"
+      }, {
+        "item" : "17015",
+        "count" : "62"
+      }, {
+        "item" : "43156",
+        "count" : "62"
+      }, {
+        "item" : "17023",
+        "count" : "62"
+      }, {
+        "item" : "08270",
+        "count" : "62"
+      }, {
+        "item" : "08099",
+        "count" : "62"
+      }, {
+        "item" : "25072",
+        "count" : "62"
+      }, {
+        "item" : "43054",
+        "count" : "62"
+      }, {
+        "item" : "08269",
+        "count" : "62"
+      } ],
+      "smallest" : "08001",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : { }
+  }, {
+    "id" : 18097501,
+    "name" : "Nom territori",
+    "dataTypeName" : "text",
+    "description" : "Nom del municipi",
+    "fieldName" : "nom_territori",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8235405,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "Xerta",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Vidreres",
+        "count" : "62"
+      }, {
+        "item" : "Olost",
+        "count" : "62"
+      }, {
+        "item" : "Cassà de la Selva",
+        "count" : "62"
+      }, {
+        "item" : "Salt",
+        "count" : "62"
+      }, {
+        "item" : "Parets del Vallès",
+        "count" : "62"
+      }, {
+        "item" : "Llagostera",
+        "count" : "62"
+      }, {
+        "item" : "Esquirol, l'",
+        "count" : "62"
+      }, {
+        "item" : "Santa Susanna",
+        "count" : "62"
+      }, {
+        "item" : "Fornells de la Selva",
+        "count" : "62"
+      }, {
+        "item" : "Oliana",
+        "count" : "62"
+      }, {
+        "item" : "Artés",
+        "count" : "62"
+      }, {
+        "item" : "Gelida",
+        "count" : "62"
+      }, {
+        "item" : "Cardedeu",
+        "count" : "62"
+      }, {
+        "item" : "Premià de Dalt",
+        "count" : "62"
+      }, {
+        "item" : "Peralada",
+        "count" : "62"
+      }, {
+        "item" : "Cerdanyola del Vallès",
+        "count" : "62"
+      }, {
+        "item" : "Cervelló",
+        "count" : "62"
+      }, {
+        "item" : "Cornellà del Terri",
+        "count" : "62"
+      }, {
+        "item" : "Sant Vicenç de Castellet",
+        "count" : "62"
+      }, {
+        "item" : "Lliçà de Vall",
+        "count" : "62"
+      } ],
+      "smallest" : "Abella de la Conca",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : { }
+  }, {
+    "id" : 18097502,
+    "name" : "Any",
+    "dataTypeName" : "number",
+    "description" : "Any de l’alta de la fiança de lloguer al Registre de fiances de l’INCASOL",
+    "fieldName" : "any",
+    "position" : 4,
+    "renderTypeName" : "number",
+    "tableColumnId" : 8235403,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "2026",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2021",
+        "count" : "5226"
+      }, {
+        "item" : "2019",
+        "count" : "5199"
+      }, {
+        "item" : "2024",
+        "count" : "5182"
+      }, {
+        "item" : "2022",
+        "count" : "5175"
+      }, {
+        "item" : "2020",
+        "count" : "5103"
+      }, {
+        "item" : "2023",
+        "count" : "5101"
+      }, {
+        "item" : "2025",
+        "count" : "5095"
+      }, {
+        "item" : "2017",
+        "count" : "839"
+      }, {
+        "item" : "2018",
+        "count" : "836"
+      }, {
+        "item" : "2015",
+        "count" : "818"
+      }, {
+        "item" : "2016",
+        "count" : "811"
+      }, {
+        "item" : "2013",
+        "count" : "803"
+      }, {
+        "item" : "2014",
+        "count" : "796"
+      }, {
+        "item" : "2012",
+        "count" : "790"
+      }, {
+        "item" : "2011",
+        "count" : "784"
+      }, {
+        "item" : "2010",
+        "count" : "775"
+      }, {
+        "item" : "2009",
+        "count" : "717"
+      }, {
+        "item" : "2008",
+        "count" : "707"
+      }, {
+        "item" : "2026",
+        "count" : "686"
+      }, {
+        "item" : "2007",
+        "count" : "662"
+      } ],
+      "smallest" : "2007",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 18097503,
+    "name" : "Període",
+    "dataTypeName" : "text",
+    "description" : "Abast temporal del període al qual fan referència les dades",
+    "fieldName" : "periode",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 8235404,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "octubre-desembre",
+      "null" : "0",
+      "top" : [ {
+        "item" : "gener-desembre",
+        "count" : "15297"
+      }, {
+        "item" : "gener-setembre",
+        "count" : "5757"
+      }, {
+        "item" : "gener-març",
+        "count" : "5458"
+      }, {
+        "item" : "gener-juny",
+        "count" : "5395"
+      }, {
+        "item" : "octubre-desembre",
+        "count" : "4745"
+      }, {
+        "item" : "juliol-setembre",
+        "count" : "4745"
+      }, {
+        "item" : "abril-juny",
+        "count" : "4708"
+      } ],
+      "smallest" : "abril-juny",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : { }
+  }, {
+    "id" : 18097504,
+    "name" : "Habitatges",
+    "dataTypeName" : "number",
+    "description" : "Nombre de contractes que s’han donat d’alta al Registre de fiances en el període considerat",
+    "fieldName" : "habitatges",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 8235400,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "57158",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1",
+        "count" : "7604"
+      }, {
+        "item" : "2",
+        "count" : "4732"
+      }, {
+        "item" : "3",
+        "count" : "3247"
+      }, {
+        "item" : "4",
+        "count" : "2500"
+      }, {
+        "item" : "5",
+        "count" : "1881"
+      }, {
+        "item" : "6",
+        "count" : "1524"
+      }, {
+        "item" : "7",
+        "count" : "1326"
+      }, {
+        "item" : "8",
+        "count" : "1064"
+      }, {
+        "item" : "9",
+        "count" : "958"
+      }, {
+        "item" : "10",
+        "count" : "815"
+      }, {
+        "item" : "11",
+        "count" : "751"
+      }, {
+        "item" : "12",
+        "count" : "699"
+      }, {
+        "item" : "13",
+        "count" : "601"
+      }, {
+        "item" : "14",
+        "count" : "571"
+      }, {
+        "item" : "15",
+        "count" : "508"
+      }, {
+        "item" : "17",
+        "count" : "471"
+      }, {
+        "item" : "16",
+        "count" : "461"
+      }, {
+        "item" : "18",
+        "count" : "415"
+      }, {
+        "item" : "19",
+        "count" : "377"
+      }, {
+        "item" : "20",
+        "count" : "369"
+      } ],
+      "smallest" : "1",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 18097505,
+    "name" : "Renda",
+    "dataTypeName" : "number",
+    "description" : "Import del lloguer mensual mitjà. Dades anonimitzades per municipis amb menys de 6 habitatges registrats",
+    "fieldName" : "renda",
+    "position" : 7,
+    "renderTypeName" : "number",
+    "tableColumnId" : 8235401,
+    "cachedContents" : {
+      "non_null" : "26141",
+      "largest" : "1988.75",
+      "null" : "19964",
+      "top" : [ {
+        "item" : "525.00",
+        "count" : "22"
+      }, {
+        "item" : "450.00",
+        "count" : "21"
+      }, {
+        "item" : "600.00",
+        "count" : "19"
+      }, {
+        "item" : "575.00",
+        "count" : "17"
+      }, {
+        "item" : "433.33",
+        "count" : "17"
+      }, {
+        "item" : "460.00",
+        "count" : "17"
+      }, {
+        "item" : "485.00",
+        "count" : "16"
+      }, {
+        "item" : "350.00",
+        "count" : "16"
+      }, {
+        "item" : "566.67",
+        "count" : "15"
+      }, {
+        "item" : "421.67",
+        "count" : "15"
+      }, {
+        "item" : "510.00",
+        "count" : "15"
+      }, {
+        "item" : "437.50",
+        "count" : "14"
+      }, {
+        "item" : "675.00",
+        "count" : "14"
+      }, {
+        "item" : "500.00",
+        "count" : "14"
+      }, {
+        "item" : "550.00",
+        "count" : "14"
+      }, {
+        "item" : "620.00",
+        "count" : "13"
+      }, {
+        "item" : "491.67",
+        "count" : "13"
+      }, {
+        "item" : "487.50",
+        "count" : "13"
+      }, {
+        "item" : "387.50",
+        "count" : "13"
+      }, {
+        "item" : "535.00",
+        "count" : "13"
+      } ],
+      "smallest" : "90.91",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : {
+      "decimalSeparator" : ",",
+      "precision" : "2",
+      "groupSeparator" : "."
+    }
+  }, {
+    "id" : 18097506,
+    "name" : "Tram de preus",
+    "dataTypeName" : "text",
+    "description" : "Tram de preus",
+    "fieldName" : "tram_preus",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 11895288,
+    "cachedContents" : {
+      "non_null" : "46105",
+      "largest" : "> 650 euros/mes",
+      "null" : "0",
+      "top" : [ {
+        "item" : "> 600 euros/mes",
+        "count" : "10701"
+      }, {
+        "item" : "> 450 i <= 600 euros/mes",
+        "count" : "7618"
+      }, {
+        "item" : "> 350 i <= 500 euros/mes",
+        "count" : "7372"
+      }, {
+        "item" : "<= 350 euros/mes",
+        "count" : "6855"
+      }, {
+        "item" : "> 500 i <= 650 euros/mes",
+        "count" : "4988"
+      }, {
+        "item" : "> 350 i <= 450 euros/mes",
+        "count" : "4947"
+      }, {
+        "item" : "> 650 euros/mes",
+        "count" : "3624"
+      } ],
+      "smallest" : "<= 350 euros/mes",
+      "count" : "46105",
+      "cardinality" : "46105"
+    },
+    "format" : { }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "See Terms of Use"
+  },
+  "metadata" : {
+    "jsonQuery" : {
+      "order" : [ {
+        "columnFieldName" : "any",
+        "ascending" : false
+      } ]
+    },
+    "custom_fields" : {
+      "Freqüència d'actualització" : {
+        "Freqüència d'actualització" : "Trimestral"
+      },
+      "Idioma" : {
+        "Idioma" : "Català",
+        "Dataset name (EN)" : "Registration of housing rental bonds by municipality",
+        "Nombre del conjunto de datos (ES)" : "Registro de las fianzas de alquiler de viviendas por municipio"
+      },
+      "Informació de gènere o sexe" : {
+        "Informació de gènere o sexe" : "No aplicable"
+      },
+      "Enllaços relacionats" : {
+        "Nom_2" : "Accés al visor de mapes d'Habitatge",
+        "URL_2" : "http://sig.gencat.cat/visors/habitatge.html",
+        "Nom" : "Accés a la pàgina d'estadística del mercat de lloguer al web d'Habitatge",
+        "URL" : "https://habitatge.gencat.cat/ca/dades/indicadors_estadistiques/estadistiques_de_construccio_i_mercat_immobiliari/mercat_de_lloguer/"
+      },
+      "Actors" : {
+        "Departament" : "Territori, Habitatge i Transició Ecològica",
+        "Tipus actor" : "Generalitat de Catalunya"
+      },
+      "Àmbit geogràfic" : {
+        "Informació geogràfica" : "Codi d'element",
+        "Àmbit geogràfic" : "Catalunya"
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : {
+    "orderBys" : [ {
+      "ascending" : false,
+      "expression" : {
+        "columnId" : 18097502,
+        "type" : "column"
+      }
+    } ]
+  },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "lloguer", "habitatge", "preu habitatge", "mercat lloguer", "municipi", "ods11_ciutats i comunitats sostenibles", "ods10_reducció de les desigualtats" ],
+  "flags" : [ "default", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}
