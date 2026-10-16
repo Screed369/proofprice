@@ -1,0 +1,17 @@
+URL: https://api.data.gov.sg/v1/public/api/datasets?limit=2
+Fetched: 2026-10-16T15:43:53Z from GitHub Actions
+Status, type, bytes: 403 application/json 42
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 403 
+date: Fri, 16 Oct 2026 15:43:53 GMT
+content-type: application/json
+content-length: 42
+x-amzn-requestid: fc6a3790-e44d-40bb-afff-f9e92449e998
+x-amzn-errortype: MissingAuthenticationTokenException
+x-amz-apigw-id: FV_pBGmnyQ0EKvw=
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"message":"Missing Authentication Token"}
