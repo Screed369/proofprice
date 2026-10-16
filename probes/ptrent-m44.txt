@@ -1,0 +1,115 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0012244&lang=EN
+Fetched: 2026-10-16T12:42:59Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 113942
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 16 Oct 2026 12:42:59 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=NuV_r72-qPxNbLLhGQyylijrm3NL7nzNiJxX_X-Z.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[ {
+  "IndicadorCod" : "0012244",
+  "IndicadorNome" : "Formation of legal persons and equivalent entities (No.) by Geographic location (NUTS - 2024) and Economic activity (CAE Rev. 3); Monthly - DGPJ - Directorate-General for Justice Policy, Formation and dissolution of legal persons and equivalent entities",
+  "Periodic" : "Monthly",
+  "PrimeiroPeriodo" : "January 2023",
+  "UltimoPeriodo" : "August 2026",
+  "UnidadeMedida" : "Number (No.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-09-30",
+  "DataExtracao" : "2026-10-16T13:42:58.842+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Month)",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic location (NUTS - 2024)",
+      "versao" : "05257"
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Economic activity (CAE Rev. 3)",
+      "versao" : "02752"
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S3A202301" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202301",
+        "categ_cod" : "S3A202301",
+        "categ_dsg" : "January 2023",
+        "categ_ord" : "20230101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A202302" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202302",
+        "categ_cod" : "S3A202302",
+        "categ_dsg" : "February 2023",
+        "categ_ord" : "20230201",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A202303" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202303",
+        "categ_cod" : "S3A202303",
+        "categ_dsg" : "March 2023",
+        "categ_ord" : "20230301",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A202304" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202304",
+        "categ_cod" : "S3A202304",
+        "categ_dsg" : "April 2023",
+        "categ_ord" : "20230401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A202305" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202305",
+        "categ_cod" : "S3A202305",
+        "categ_dsg" : "May 2023",
+        "categ_ord" : "20230501",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A202306" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202306",
+        "categ_cod" : "S3A202306",
+        "categ_dsg" : "June 2023",
+        "categ_ord" : "20230601",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A202307" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202307",
+        "categ_cod" : "S3A202307",
+        "categ_dsg" : "July 2023",
+        "categ_ord" : "20230701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A202308" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202308",
+        "categ_cod" : "S3A202308",
+        "categ_dsg" : "August 2023",
+        "categ_ord" : "20230801",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A202309" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A202309",
+        "categ_cod" : "S3A202309",
+   
