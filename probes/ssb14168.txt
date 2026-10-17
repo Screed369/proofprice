@@ -1,0 +1,35 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/14168/data?lang=en&outputFormat=json-stat2
+Fetched: 2026-10-17T12:42:58Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 4741
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 17 Oct 2026 12:42:58 GMT
+server: 
+content-type: application/json; charset=UTF-8
+content-disposition: inline; filename="14168.json"
+content-disposition: inline; filename="14168.json"
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 43390822
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=61392980.812; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"version":"2.0","class":"dataset","label":"14168: Revenue and utilisation of rooms at hotels, by region and month","source":"Statistics Norway","updated":"2026-10-01T06:00:00Z","note":["[See list over changes in regional classifications](https://www.ssb.no/offentlig-sektor/kommunekatalog/endringer-i-de-regionale-inndelingene) (in Norwegian).\n"],"role":{"time":["Tid"],"geo":["Region"],"metric":["ContentsCode"]},"id":["Region","Tid","ContentsCode"],"size":[16,1,6],"dimension":{"Region":{"label":"region","category":{"index":{"31":0,"32":1,"03":2,"34":3,"33":4,"39":5,"40":6,"42":7,"11":8,"46":9,"15":10,"50":11,"18":12,"55":13,"56":14,"21":15},"label":{"31":"Østfold","32":"Akershus","03":"Oslo - Oslove","34":"Innlandet","33":"Buskerud","39":"Vestfold","40":"Telemark","42":"Agder","11":"Rogaland","46":"Vestland","15":"Møre og Romsdal","50":"Trøndelag - Trööndelage","18":"Nordland - Nordlánnda","55":"Troms - Romsa - Tromssa","56":"Finnmark - Finnmárku - Finmarkku","21":"Svalbard"},"note":{"15":["1 January 2019, the municipality 1567 Rindal was moved from Møre og Romsdal to Trøndelag. 1 January 2020, the municipality 1571 Halsa was moved from Møre og Romsdal to Trøndelag. 1 January 2020, the municipality 1444 Hornindal was moved from Sogn og Fjordane to Møre og Romsdal."],"50":["1 January 2019, the municipality 1567 Rindal was moved from Møre og Romsdal to Trøndelag. 1 January 2020, the municipality 1571 Halsa was moved from Møre og Romsdal to Trøndelag."],"18":["1 January 2020, the municipality 1852 Tjeldsund was moved from Nordland to Troms og Finnmark."],"21":["Svalbard is not defined as a county in the legal sense, but in official statistics Svalbard is treated in the same way as the other counties in Norway."]}},"extension":{"elimination":false,"show":"code_value"},"link":{"describedby":[{"extension":{"Region":"urn:ssb:classification:klass:104"}}]}},"Tid":{"label":"month","category":{"index":{"2026M08":0},"label":{"2026M08":"2026M08"}},"extension":{"elimination":false,"show":"code"}},"ContentsCode":{"label":"contents","category":{"index":{"UtleigdeRom":0,"PrisRom":1,"KapasitetRom":2,"KapasitetSeng":3,"LosjiOms":4,"LosjiOmsRom":5},"label":{"UtleigdeRom":"Occupied rooms","PrisRom":"Price per room (NOK)","KapasitetRom":"Utilisation of rooms (per cent)","KapasitetSeng":"Utilisation of beds (per cent)","LosjiOms":"Revenue (NOK 1 000)","LosjiOmsRom":"Revenue per available room (NOK)"},"unit":{"UtleigdeRom":{"base":"establishments","decimals":0},"PrisRom":{"base":"NOK","decimals":0},"KapasitetRom":{"base":"per cent","decimals":0},"KapasitetSeng":{"base":"per cent","decimals":0},"LosjiOms":{"base":"NOK 1 000","decimals":0},"LosjiOmsRom":{"base":"NOK","decimals":0}}},"extension":{"elimination":false,"refperiod":{"UtleigdeRom":"End of month","PrisRom":"End of month","KapasitetRom":"End of month","KapasitetSeng":"End of month","LosjiOms":"End of month","LosjiOmsRom":"End of month"},"show":"value","measuringType":{"UtleigdeRom":"Stock","PrisRom":"Stock","KapasitetRom":"Stock","KapasitetSeng":"Stock","LosjiOms":"Stock","LosjiOmsRom":"Stock"},"priceType":{"UtleigdeRom":"NotApplicable","PrisRom":"NotApplicable","KapasitetRom":"NotApplicable","KapasitetSeng":"NotApplicable","LosjiOms":"NotApplicable","LosjiOmsRom":"NotApplicable"},"adjustment":{"UtleigdeRom":"None","PrisRom":"None","KapasitetRom":"None","KapasitetSeng":"None","LosjiOms":"None","LosjiOmsRom":"None"},"alternativeText":{"UtleigdeRom":"Occupied rooms","PrisRom":"Price per room (NOK)","KapasitetRom":"Utilisation of rooms (per cent)","KapasitetSeng":"Utilisation of beds (per cent)","LosjiOms":"Revenue (NOK 1 000)","LosjiOmsRom":"Revenue per available room (NOK)"}}}},"extension":{"px":{"infofile":"None","tableid":"14168","decimals":0,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"14168: Revenue and utilisation of rooms at hotels,","descriptiondefault":false,"heading":["Tid","ContentsCode"],"stub":["Region"],"matrix":"14168","subject-code":"tr","subject-area":"Transport and tourism"},"discontinued":null,"contact":[{"name":"Kristin Aasestad","organization":"Statistics Norway","phone":"40 90 23 44","mail":"kaa@ssb.no","raw":"Kristin Aasestad, Statistics Norway# +47 40 90 23 44#kaa@ssb.no"}]},"value":[37349,1572,67,51,58716,1050,187085,1226,67,53,229382,828,397720,1873,86,72,745005,1613,127497,1393,55,40,177606,764,86550,1350,57,41,116833,771,59847,1588,53,46,95064,840,42898,1497,59,42,64208,887,79844,1751,64,48,139780,1119,136229,1822,68,52,248230,1238,359447,2106,84,75,756983,1772,92154,2077,73,60,191380,1521,153070,1537,64,48,235250,987,136850,1583,69,54,216573,1087,79369,1254,62,47,99522,776,47077,1358,65,50,63942,889,11202,2715,73,60,30408,1986]}
