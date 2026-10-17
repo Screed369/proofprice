@@ -1,0 +1,53 @@
+URL: https://data.moa.gov.tw/api/v1/AgriProductsTransType/?Start_time=115.10.01&End_time=115.10.16&$top=1
+Fetched: 2026-10-17T12:47:41Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 343063
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+cache-control: private
+content-type: application/json; charset=utf-8
+server: Microsoft-IIS/10.0
+x-frame-options: SAMEORIGIN
+set-cookie: ASP.NET_SessionId=5xx052qqbiiz21tvlqpau4dy; path=/; secure; HttpOnly; SameSite=Lax
+access-control-allow-origin: *
+content-security-policy: script-src     'self'     'unsafe-inline'  https://connect.facebook.NET  https://accounts.google.com     https://www.googletagmanager.com;  connect-src     'self'  https://accounts.google.com  https://graph.facebook.com  https://www.facebook.com     https://www.google-analytics.com     https://analytics.google.com     https://www.google.com;  img-src     'self'     data:     https://www.google-analytics.com;
+date: Sat, 17 Oct 2026 12:47:40 GMT
+content-length: 343063
+
+=== FILE TYPE: JSON text data
+=== FIRST 800 BYTES
+{
+  "RS": "OK",
+  "Data": [
+    {
+      "TransDate": "115.10.16",
+      "TcType": "N05",
+      "CropCode": "11",
+      "CropName": "椰子",
+      "MarketCode": "104",
+      "MarketName": "台北二",
+      "Upper_Price": 22.4,
+      "Middle_Price": 14.6,
+      "Lower_Price": 11.4,
+      "Avg_Price": 15.6,
+      "Trans_Quantity": 1434.0
+    },
+    {
+      "TransDate": "115.10.16",
+      "TcType": "N05",
+      "CropCode": "129",
+      "CropName": "椰子-剝殼進口",
+      "MarketCode": "104",
+      "MarketName": "台北二",
+      "Upper_Price": 70.0,
+      "Middle_Price": 70.0,
+      "Lower_Price": 70.0,
+      "Avg_Price": 70.0,
+      "Trans_Quantity": 110.0
+    },
+    {
+      "TransDate": "115.10.16",
+      "TcType": "N05",
+      "CropCode": "31",
+     
