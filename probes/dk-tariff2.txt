@@ -1,0 +1,24 @@
+URL: https://api.energidataservice.dk/dataset/DatahubPricelist?limit=3&filter=%7B%22ChargeType%22:%5B%22D03%22%5D,%22Note%22:%5B%22Nettarif%20C%22%5D%7D
+Fetched: 2026-10-17T06:43:31Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2584
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 17 Oct 2026 06:43:31 GMT
+content-type: application/json; charset=utf-8
+cache-control: public, must-revalidate, max-age=60
+expires: Sat, 17 Oct 2026 06:44:31 GMT
+last-modified: Sat, 17 Oct 2026 06:43:31 GMT
+set-cookie: INGRESSCOOKIE=1792219412.739.23.50168|5c0ee527deb5851d7c49e79de25a81b3; Path=/; Secure; HttpOnly
+set-cookie: anon-id=4936dae4-e01e-4ca7-8b6d-550c7fb6323d; expires=Mon, 16 Nov 2026 06:43:31 GMT; path=/; secure; samesite=strict; httponly
+strict-transport-security: max-age=31536000; includeSubDomains
+access-control-allow-origin: *
+x-cache-status: MISS
+remainingcalls: 2
+totalcalls: 3
+request-context: appId=cid-v1:0f6e3fb1-0e79-49b7-8196-9df349716d4a
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"total":3,"filters":"{\"ChargeType\":[\"D03\"],\"Note\":[\"Nettarif C\"]}","limit":3,"dataset":"DatahubPricelist","records":[{"ChargeOwner":"TREFOR El-net A/S","GLN_Number":"5790000392261","ChargeType":"D03","ChargeTypeCode":"C","Note":"Nettarif C","Description":"Tarif, hvor aftagepunktet typisk er i 0,4 kV-nettet med en timeaflæst måler","ValidFrom":"2027-04-01T00:00:00","ValidTo":"2027-05-01T00:00:00","VATClass":"D02","Price1":0.066600,"Price2":0.066600,"Price3":0.066600,"Price4":0.066600,"Price5":0.066600,"Price6":0.066600,"Price7":0.099900,"Price8":0.099900,"Price9":0.099900,"Price10":0.099900,"Price11":0.099900,"Price12":0.099900,"Price13":0.099900,"Price14":0.099900,"Price15":0.099900,"Price16":0.099900,"Price17":0.099900,"Price18":0.259700,"Price19":0.259700,"Price20":0.259700,"Price21":0.259700,"Price22":0.099900,"Price23":0.099900,"Price24":0.099900,"TransparentInvoicing":0,"TaxIndicator":0,"ResolutionDuration":"PT1H"},{"ChargeOwner":"TREFOR El-net A/S","GLN_Number":"5790000392261","ChargeType":"D03","ChargeTypeCode":"C","Note":"Nettarif C","Description":"Tarif, hvor aftagepunktet typisk er i 0,4 kV-nettet med en timeaflæst måler","ValidFrom":"2027-01-01T00:00:00","ValidTo":"2027-04-01T00:00:00","VATClass":"D02","Price1":0.199800,"Price2":0.199800,"Price3":0.199800,"Price4":0.066600,"Price5":0.066600,"Price6":0.066600,"Price7":0.199800,"Price8":0.199800,"Price9":0.199800,"Price10":0.199800,"Price11":0.199800,"Price12":0.199800,"Price13":0.199800,"Price14":0.199800,"Price15":0.199800,"Price16":0.199800,"Price17":0.199800,"Price18":0.599400,"Price19":0.599400,"Price20":0.599400,"Price21":0.599400,"Price22":0.199800,"Price23":0.199800,"Price24":0.199800,"TransparentInvoicing":0,"TaxIndicator":0,"ResolutionDuration":"PT1H"},{"ChargeOwner":"TREFOR El-net A/S","GLN_Number":"5790000392261","ChargeType":"D03","ChargeTypeCode":"C","Note":"Nettarif C","Description":"Tarif, hvor aftagepunktet typisk er i 0,4 kV-nettet med en timeaflæst måler","ValidFrom":"2026-10-01T00:00:00","ValidTo":"2027-01-01T00:00:00","VATClass":"D02","Price1":0.042900,"Price2":0.042900,"Price3":0.042900,"Price4":0.042900,"Price5":0.042900,"Price6":0.042900,"Price7":0.128800,"Price8":0.128800,"Price9":0.128800,"Price10":0.128800,"Price11":0.128800,"Price12":0.128800,"Price13":0.128800,"Price14":0.128800,"Price15":0.128800,"Price16":0.128800,"Price17":0.128800,"Price18":0.386300,"Price19":0.386300,"Price20":0.386300,"Price21":0.386300,"Price22":0.128800,"Price23":0.128800,"Price24":0.128800,"TransparentInvoicing":0,"TaxIndicator":0,"ResolutionDuration":"PT1H"}]}
