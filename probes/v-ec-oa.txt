@@ -1,0 +1,20 @@
+URL: https://api.energy-charts.info/openapi.json
+Fetched: 2026-10-17T09:43:04Z from GitHub Actions
+Status, type, bytes: 200 application/json 83840
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 17 Oct 2026 09:43:03 GMT
+content-type: application/json
+content-length: 83840
+x-cache: HIT
+x-process-time-ms: 1.3
+server: Nginx
+content-security-policy: frame-ancestors 'self' *.ise.fraunhofer.de ;
+access-control-allow-origin: https://www.api.energy-charts.info
+strict-transport-security: max-age=16000000; includeSubDomains; preload;
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"openapi":"3.1.0","info":{"title":"Energy-Charts API","description":"\n       \n\n<h4>Timestamp Format Options</h4>\n        <p>When specifying timestamps, you can choose from the following three formats:</p>\n        <ol>\n            <li><strong>ISO 8601 Format</strong>:\n                <ul>\n                    <li>This format includes the full date and time, with an optional timezone indicator.</li>\n                    <li>Examples:\n                        <ul>\n                            <li><code>2026-01-01T17:00Z</code> (UTC time)</li>\n                            <li><code>2026-01-01T18:00+01:00</code> (Local time offset by +01:00)</li>\n                        </ul>\n                    </li>\n                </ul>\n            </li>\n            <li><strong>Daily Format</strong>:\n                <ul>\n                    <li>This format specifies only the date.</li>\n                    <li>The start time is assumed to be at 00:00 on the specified date in the local timezone of the specified country or bidding zone (bzn).</li>\n                    <li>The end timestamp is interpreted as the last minute of the specified day in the same local timezone.</li>\n                    <li>Example:\n                        <ul>\n                            <li><code>2026-01-01</code> (Starts at 00:00 and ends at 23:59 on January 1, 2026, local time)</li>\n                        </ul>\n                    </li>\n                </ul>\n            </li>\n            <li><strong>UNIX Timestamp</strong>:\n                <ul>\n                    <li>This format specifies the time as the number of seconds since the Unix Epoch (January 1st, 1970, at 00:00 UTC).</li>\n                    <li>Example:\n                        <ul>\n                            <li><code>1767222000</code></li>\n                        </ul>\n                    </li>\n                </ul>\n            </li>\n        </ol>\n        <h4>Default Behavior for Timestamps</h4>\n        <p>If an end timestamp is not explicitly provided, it is assumed to be the same as the start timestamp. For daily formats, this means that one full day will be returned. If also no start timestamp is provided, the current day in the local timezone is used.</p>\n        <h4>Timestamp Semantics in Responses</h4>\n        <p>All timestamps returned by the API mark the <b>beginning</b> of the period the value refers to. Single exception: <code>/installed_power</code> and <code>/v2/installed_power</code>, where the timestamp labels the reporting year or month and the value represents the installed power at the <b>end</b> of that period (or, with <code>installation_decommission=true</code>, the net change during the period).</p>\n        <h4>Rate Limiting</h4>\n        <p>Requests are limited per client IP <b>and</b> per endpoint (token bucket, so short bursts are allowed). The default is 2 requests per minute with a burst of 4; <code>/signal</code> allows 20 per minute (burst 40), <code>/price<
