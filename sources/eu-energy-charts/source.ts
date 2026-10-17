@@ -191,13 +191,24 @@ export function dayRow(area: string, pts: Point[]): DailyRow | null {
 }
 
 /** Yesterday's (UTC) hourly prices for each country's default zone: one aggregate row per country. A country that fails is skipped; all failing is an error. */
-export async function energyChartsHarvest(get: Getter = defaultGet, now: Date = new Date()): Promise<HarvestResult> {
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** Energy-Charts answers HTTP 429 to quick bursts (seen 2026-10-17: the 5th call in a row), so the collector waits between countries and retries a 429 once. */
+export async function energyChartsHarvest(get: Getter = defaultGet, now: Date = new Date(), pauseMs = 3000): Promise<HarvestResult> {
   const dayStart = Date.parse(isoDay(now.getTime() - DAY) + "T00:00:00Z");
   const rows: DailyRow[] = [];
   const problems: string[] = [];
   for (const [cc, c] of Object.entries(COUNTRIES)) {
     try {
-      const pts = await loadPoints(c.defaultZone, dayStart, dayStart + DAY, get);
+      if (rows.length + problems.length > 0) await sleep(pauseMs);
+      let pts: Point[];
+      try {
+        pts = await loadPoints(c.defaultZone, dayStart, dayStart + DAY, get);
+      } catch (e: any) {
+        if (!/429/.test(String(e?.message ?? e))) throw e;
+        await sleep(pauseMs * 4);
+        pts = await loadPoints(c.defaultZone, dayStart, dayStart + DAY, get);
+      }
       const row = dayRow(cc, pts);
       if (row) rows.push(row);
       else problems.push(`${cc}: ${pts.length} hours`);

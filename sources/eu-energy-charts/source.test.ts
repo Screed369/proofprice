@@ -81,14 +81,24 @@ test("eu-energy-charts: signed summary keeps negative prices", () => {
 });
 
 test("eu-energy-charts: harvest returns one aggregate row per country for yesterday", async () => {
-  const h = await energyChartsHarvest(get, NOW);
+  const h = await energyChartsHarvest(get, NOW, 0);
   assert.equal(h.date, "2026-10-16");
   assert.equal(h.rows.length, Object.keys(COUNTRIES).length);
   assert.ok(h.rows.every((r) => r.n === 24 && r.low <= r.median && r.median <= r.high && r.item === "day-ahead"));
   assert.equal(dayRow("FR", parseHourly(FR).slice(0, 10)), null);
-  await assert.rejects(() => energyChartsHarvest(async () => RESTRICTED, NOW), SourceError);
+  await assert.rejects(() => energyChartsHarvest(async () => RESTRICTED, NOW, 0), SourceError);
   assert.deepEqual(energyChartsHistoryKey("fr")!.area, "FR");
   assert.equal(energyChartsHistoryKey("ES"), null);
+});
+
+test("eu-energy-charts: harvest retries a 429 once", async () => {
+  let n = 0;
+  const flaky = async (url: string) => {
+    if (url.includes("bzn=AT") && n++ === 0) throw new SourceError("Source returned HTTP 429");
+    return FR;
+  };
+  const h = await energyChartsHarvest(flaky, NOW, 0);
+  assert.equal(h.rows.length, Object.keys(COUNTRIES).length);
 });
 
 test("eu-energy-charts: registry routes the wholesale-power countries to this source", () => {
