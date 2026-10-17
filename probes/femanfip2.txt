@@ -1,0 +1,18 @@
+URL: https://www.fema.gov/api/open/v3/NfipPolicies?$filter=propertyState%20eq%20%27TX%27%20and%20policyEffectiveDate%20ge%20%272026-01-01%27&$select=policyCost,totalInsurancePremiumOfThePolicy,occupancyType,policyCount&$top=3&$count=true
+Fetched: 2026-10-17T13:41:51Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 849
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+access-control-allow-origin: *
+x-response-time: 73.052ms
+cache-control: public, max-age=150
+date: Sat, 17 Oct 2026 13:41:51 GMT
+content-length: 849
+strict-transport-security: max-age=31536000 ; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"metadata": {"skip":0,"select":"policyCost, totalInsurancePremiumOfThePolicy, occupancyType, policyCount","rundate":"2026-10-17T13:41:51.856Z","top":3,"filter":"propertyState eq 'TX' and policyEffectiveDate ge '2026-01-01'","format":"json","metadata":true,"orderby":"","entityname":"NfipPolicies","version":"v3","url":"/api/open/v3/NfipPolicies?$filter=propertyState%20eq%20%27TX%27%20and%20policyEffectiveDate%20ge%20%272026-01-01%27&$select=policyCost,totalInsurancePremiumOfThePolicy,occupancyType,policyCount&$top=3&$count=true","count":413590}, "NfipPolicies": [{"policyCost":1044,"totalInsurancePremiumOfThePolicy":824,"occupancyType":11,"policyCount":1},{"policyCost":961,"totalInsurancePremiumOfThePolicy":753,"occupancyType":11,"policyCount":1},{"policyCost":642,"totalInsurancePremiumOfThePolicy":483,"occupancyType":11,"policyCount":1}]}
