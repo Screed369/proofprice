@@ -1,0 +1,29 @@
+URL: https://files.data.gouv.fr/geo-dvf/latest/csv/2025/communes/69/69123.csv
+Fetched: 2026-10-17T06:46:31Z from GitHub Actions
+Status, type, bytes: 404 application/xml 233
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 302 Moved Temporarily
+Server: nginx
+Date: Sat, 17 Oct 2026 06:46:31 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+location: https://geo-dvf.s3.sbg.io.cloud.ovh.net:443/latest/csv/2025/communes/69/69123.csv
+strict-transport-security: max-age=86400; includeSubDomains; preload;
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+
+HTTP/1.1 404 Not Found
+Content-Type: application/xml
+x-amz-id-2: txb6afcbbe09a0419981a59-006ad319c7
+x-amz-request-id: txb6afcbbe09a0419981a59-006ad319c7
+Date: Sat, 17 Oct 2026 06:46:31 GMT
+Transfer-Encoding: chunked
+
+=== FILE TYPE: XML 1.0 document, ASCII text
+=== FIRST 3500 BYTES
+<?xml version='1.0' encoding='UTF-8'?>
+<Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>txb6afcbbe09a0419981a59-006ad319c7</RequestId><Key>latest/csv/2025/communes/69/69123.csv</Key></Error>
