@@ -1,0 +1,41 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/85666NED/Perioden?$format=json&$top=3&$orderby=Key%20desc
+Fetched: 2026-10-17T09:44:13Z from GitHub Actions
+Status, type, bytes: 200 application/json 415
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Sat, 17 Oct 2026 09:44:13 GMT
+Content-Length: 415
+TXID: 012ba87a
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=013393ab-436d-1ad3-9678-0050569bed16_2105241222_3017234818_00000000000019638394; Path=/; Expires=Sat, 17-Oct-2026 09:44:28 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 1500 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/85666NED/$metadata#Cbs.OData.WebAPI.Perioden","value":[
+    {
+      "Key":"2009HJ01","Title":"2009 1e halfjaar","Description":"","Status":"Definitief"
+    },{
+      "Key":"2009HJ02","Title":"2009 2e halfjaar","Description":"","Status":"Definitief"
+    },{
+      "Key":"2009JJ00","Title":"2009","Description":"","Status":"Definitief"
+    }
+  ]
+}
