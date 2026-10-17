@@ -41,8 +41,8 @@ test("windowStart: twelve months back", () => {
   assert.equal(windowStart(new Date("2026-10-17T10:00:00Z")), "2025-10-17");
 });
 
-test("parsePolicies: drops multi-policy rows, multi-year terms and zero costs", () => {
-  const body = { NfipPolicies: [...BODY.NfipPolicies, REAL(5000, 4000, "2026-01-01", { policyCount: 3 }), REAL(900, 700, "2026-01-01", { policyTermIndicator: 3 }), REAL(0, 0, "2026-01-01")] };
+test("parsePolicies: drops multi-policy rows, multi-year terms, zero costs and renewals dated after the as-of date", () => {
+  const body = { NfipPolicies: [...BODY.NfipPolicies, REAL(5000, 4000, "2026-01-01", { policyCount: 3 }), REAL(900, 700, "2026-01-01", { policyTermIndicator: 3 }), REAL(0, 0, "2026-01-01"), REAL(800, 600, "2026-12-22")] };
   const p = parsePolicies(body);
   assert.equal(p.length, 6);
   assert.equal(p[0].cost, 992);

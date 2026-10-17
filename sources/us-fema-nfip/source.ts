@@ -81,7 +81,7 @@ export function buildUrl(area: Area, from: string, opts: { top?: number; skip?: 
 
 const day = (s: unknown): string | null => (typeof s === "string" && /^\d{4}-\d{2}-\d{2}/.test(s) ? s.slice(0, 10) : null);
 
-/** Annual, single-policy rows with a positive charge. Multi-policy rows (policyCount > 1) and multi-year terms would distort a per-year price, so they are dropped. */
+/** Annual, single-policy rows with a positive charge that started on or before the file's as-of date. Multi-policy rows (policyCount > 1) and multi-year terms would distort a per-year price, so they are dropped. */
 export function parsePolicies(body: any): Policy[] {
   const rows: any[] = Array.isArray(body?.NfipPolicies) ? body.NfipPolicies : [];
   const out: Policy[] = [];
@@ -91,6 +91,8 @@ export function parsePolicies(body: any): Policy[] {
     if (r.policyCount !== undefined && r.policyCount !== null && Number(r.policyCount) !== 1) continue;
     if (r.policyTermIndicator !== undefined && r.policyTermIndicator !== null && Number(r.policyTermIndicator) !== 1) continue;
     const prem = Number(r.totalInsurancePremiumOfThePolicy);
+    // The file also holds renewals dated after its own as-of date: a charge that has not started yet is not a price paid.
+    if (day(r.policyEffectiveDate) && day(r.asOfDate) && day(r.policyEffectiveDate)! > day(r.asOfDate)!) continue;
     out.push({ cost, premium: Number.isFinite(prem) && prem > 0 ? prem : null, effective: day(r.policyEffectiveDate), asOf: day(r.asOfDate) });
   }
   return out;
@@ -143,7 +145,7 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
     period: { from: s.from ?? from, to: s.to ?? null },
     method:
       "Flood insurance charges of National Flood Insurance Program policies (FEMA OpenFEMA, NFIP Redacted Policies v3) that took effect in the last 12 months in the chosen ZIP code or state. " +
-      "Only annual, single-policy records are used. The figure is policyCost: the premium plus the federal policy fee, surcharge and reserve fund assessment, i.e. the year's charge to the policyholder. " +
+      "Only annual, single-policy records that have started are used. The figure is policyCost: the premium plus the federal policy fee, surcharge and reserve fund assessment, i.e. the year's charge to the policyholder. " +
       "We publish the median and the 10th to 90th percentile, and never fewer than 5 policies. " +
       "NFIP rates follow federal rules, so these are real charges but not a free-market price, and private flood cover is not included.",
     describe: (x) =>
