@@ -1,0 +1,18 @@
+URL: https://www.fema.gov/api/open/v3/NfipPolicies?$filter=reportedZipCode%20eq%20%2732935%27%20and%20policyEffectiveDate%20ge%20%272025-10-01%27&$select=policyCost,totalInsurancePremiumOfThePolicy,policyEffectiveDate,totalBuildingInsuranceCoverage,occupancyType,reportedZipCode&$top=5&$count=true
+Fetched: 2026-10-17T12:45:32Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1648
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+access-control-allow-origin: *
+x-response-time: 9228.524ms
+cache-control: public, max-age=150
+date: Sat, 17 Oct 2026 12:45:32 GMT
+content-length: 1648
+strict-transport-security: max-age=31536000 ; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"metadata": {"skip":0,"select":"policyCost, totalInsurancePremiumOfThePolicy, policyEffectiveDate, totalBuildingInsuranceCoverage, occupancyType, reportedZipCode","rundate":"2026-10-17T12:45:32.229Z","top":5,"filter":"reportedZipCode eq '32935' and policyEffectiveDate ge '2025-10-01'","format":"json","metadata":true,"orderby":"","entityname":"NfipPolicies","version":"v3","url":"/api/open/v3/NfipPolicies?$filter=reportedZipCode%20eq%20%2732935%27%20and%20policyEffectiveDate%20ge%20%272025-10-01%27&$select=policyCost,totalInsurancePremiumOfThePolicy,policyEffectiveDate,totalBuildingInsuranceCoverage,occupancyType,reportedZipCode&$top=5&$count=true","count":908}, "NfipPolicies": [{"policyCost":992,"totalInsurancePremiumOfThePolicy":780,"policyEffectiveDate":"2025-10-19T00:00:00.000Z","totalBuildingInsuranceCoverage":250000,"occupancyType":11,"reportedZipCode":"32935"},{"policyCost":555,"totalInsurancePremiumOfThePolicy":409,"policyEffectiveDate":"2025-10-14T00:00:00.000Z","totalBuildingInsuranceCoverage":235000,"occupancyType":11,"reportedZipCode":"32935"},{"policyCost":969,"totalInsurancePremiumOfThePolicy":760,"policyEffectiveDate":"2025-10-05T00:00:00.000Z","totalBuildingInsuranceCoverage":250000,"occupancyType":11,"reportedZipCode":"32935"},{"policyCost":684,"totalInsurancePremiumOfThePolicy":519,"policyEffectiveDate":"2025-10-02T00:00:00.000Z","totalBuildingInsuranceCoverage":250000,"occupancyType":11,"reportedZipCode":"32935"},{"policyCost":620,"totalInsurancePremiumOfThePolicy":464,"policyEffectiveDate":"2025-10-17T00:00:00.000Z","totalBuildingInsuranceCoverage":250000,"occupancyType":11,"reportedZipCode":"32935"}]}
