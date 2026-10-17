@@ -1,0 +1,31 @@
+URL: https://opendata.cbs.nl/ODataCatalog/Tables?$filter=substringof('elektriciteit',Title)%20and%20substringof('prijzen',Title)&$select=Identifier,Title,Updated,Period&$format=json
+Fetched: 2026-10-17T09:43:05Z from GitHub Actions
+Status, type, bytes: 200 application/json;odata=minimalmetadata;streaming=true;charset=utf-8 474
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+Expires: Sun, 18 Oct 2026 09:43:05 GMT
+Vary: *
+X-Request-Origin: External
+X-Content-Type-Options: nosniff
+DataServiceVersion: 3.0;
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Sat, 17 Oct 2026 09:43:05 GMT
+Content-Length: 474
+TXID: 01410bea
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=01476e14-4329-1ad3-9678-0050569bed16_0883918459_1082640658_00000000004316007402; Path=/; Expires=Sat, 17-Oct-2026 09:43:20 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+{"odata.metadata":"https://opendata.cbs.nl/ODataCatalog/$metadata#Tables&$select=Identifier,Title,Updated,Period","value":[{"Updated":"2026-09-30T02:00:00","Identifier":"85666NED","Title":"Eindverbruikersprijzen aardgas en elektriciteit","Period":"2009-2026; januari 2009 - juni 2026"},{"Updated":"2023-10-10T02:00:00","Identifier":"81309NED","Title":"Aardgas en elektriciteit, gemiddelde prijzen eindverbruikers, 2007-2022","Period":"1e kwartaal 2007 - 4e kwartaal 2022"}]}
