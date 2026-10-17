@@ -1,0 +1,33 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables?query=kindergarten%20parental%20payment&lang=en
+Fetched: 2026-10-17T15:42:09Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 3192
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 17 Oct 2026 15:42:08 GMT
+server: 
+content-type: application/json; charset=utf-8
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 8282685
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=16437521.654; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{"language":"en","tables":[{"id":"12408","label":"12408: Private kindergartens income and expenses (NOK 1 000) (C) 2015-2024","description":"","sortCode":"0000000050","updated":"2025-12-23T07:00:00Z","firstPeriod":"2015","lastPeriod":"2024","category":"public","variableNames":["region","contents","year"],"source":"Statistics Norway","subjectCode":"ud","timeUnit":"Annual","paths":[[{"id":"sv","label":"Svalbard","sortCode":"0000093"},{"id":"sv01","label":"Labour market, earnings & education","sortCode":"0000094"},{"id":"barnregnp","label":"Accounts for private kindergartens","sortCode":"0000095"}],[{"id":"ud","label":"Education","sortCode":"0000108"},{"id":"ud01","label":"Kindergartens","sortCode":"0000109"},{"id":"barnregnp","label":"Accounts for private kindergartens","sortCode":"0000110"}]],"links":[{"rel":"self","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/12408?lang=en"},{"rel":"alternate","hreflang":"no","href":"https://data.ssb.no/api/pxwebapi/v2/tables/12408?lang=no"},{"rel":"metadata","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/12408/metadata?lang=en"},{"rel":"data","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/12408/data?lang=en&outputFormat=json-stat2"}]},{"id":"14668","label":"14668: General government revenue and expenditure, by sector and type (NOK million) 1995-2025","description":"","sortCode":"0000000210","updated":"2026-06-08T06:00:00Z","firstPeriod":"1995","lastPeriod":"2025","category":"public","variableNames":["type","sector","contents","year"],"source":"Statistics Norway","subjectCode":"os","timeUnit":"Annual","paths":[[{"id":"os","label":"Public sector","sortCode":"0000077"},{"id":"os02","label":"Local government finances","sortCode":"0000078"},{"id":"offinnut","label":"General government revenue and expenditure","sortCode":"0000079"},{"id":"SBMENU4642","label":"Annual figures","sortCode":"0000000200"}],[{"id":"os","label":"Public sector","sortCode":"0000077"},{"id":"os04","label":"General government","sortCode":"0000080"},{"id":"offinnut","label":"General government revenue and expenditure","sortCode":"0000081"},{"id":"SBMENU4642","label":"Annual figures","sortCode":"0000000200"}],[{"id":"os","label":"Public sector","sortCode":"0000077"},{"id":"os07","label":"Central government finances","sortCode":"0000082"},{"id":"offinnut","label":"General government revenue and expenditure","sortCode":"0000083"},{"id":"SBMENU4642","label":"Annual figures","sortCode":"0000000200"}]],"links":[{"rel":"self","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/14668?lang=en"},{"rel":"alternate","hreflang":"no","href":"https://data.ssb.no/api/pxwebapi/v2/tables/14668?lang=no"},{"rel":"metadata","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/14668/metadata?lang=en"},{"rel":"data","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/14668/data?lang=en&outputFormat=json-stat2"}]}],"page":{"pageNumber":1,"pageSize":20,"totalElements":2,"totalPages":1,"links":[]},"links":[{"rel":"self","hreflang":"en","href":"https://data.ssb.no/api/pxwebapi/v2/tables/?lang=en&query=kindergarten parental payment&pagesize=20&pageNumber=1"}]}
