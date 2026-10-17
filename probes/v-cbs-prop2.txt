@@ -1,0 +1,93 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/85666NED/DataProperties?$format=json&$select=Key,Title
+Fetched: 2026-10-17T09:45:15Z from GitHub Actions
+Status, type, bytes: 200 application/json 3086
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Sat, 17 Oct 2026 09:45:15 GMT
+Content-Length: 3086
+TXID: 012baa36
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=01378922-43aa-1ad3-9678-0050569bed16_2910170494_1534171770_00000000000019638838; Path=/; Expires=Sat, 17-Oct-2026 09:45:30 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/85666NED/$metadata#Cbs.OData.WebAPI.DataProperties&$select=Key,Title","value":[
+    {
+      "odata.type":"Cbs.OData.Dimension","Key":"Prijscomponenten","Title":"Prijscomponenten"
+    },{
+      "odata.type":"Cbs.OData.Dimension","Key":"Belastingen","Title":"Belastingen"
+    },{
+      "odata.type":"Cbs.OData.TimeDimension","Key":"Perioden","Title":"Perioden"
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Aardgasprijs"
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Verbruiksklassen huishoudens"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"MinderDan569M3_1","Title":"Minder dan 569 m3"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_569Tot5687M3_2","Title":"569 tot 5 687 m3"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_5687M3EnMeer_3","Title":"5 687 m3 en meer"
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Verbruiksklassen niet-huishoudens"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"MinderDan28433M3_4","Title":"Minder dan 28 433 m3"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_28433Tot284333M3_5","Title":"28 433 tot 284 333 m3"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_284333Tot2843332M3_6","Title":"284 333 tot 2 843 332 m3"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_2843332Tot28433324M3_7","Title":"2 843 332 tot 28 433 324 m3"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_28433324M3EnMeer_8","Title":"28 433 324 m3 en meer"
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Elektriciteitsprijs "
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Verbruiksklassen huishoudens"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"MinderDan1MWh_9","Title":"Minder dan 1 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_1Tot25MWh_10","Title":"1 tot 2,5 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_25Tot5MWh_11","Title":"2,5 tot 5 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_5Tot15MWh_12","Title":"5 tot 15 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_15MWhEnMeer_13","Title":"15 MWh en meer"
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Verbruiksklassen niet-huishoudens"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"MinderDan20MWh_14","Title":"Minder dan 20 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_20Tot500MWh_15","Title":"20 tot 500 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_500Tot2000MWh_16","Title":"500 tot 2 000 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_2000Tot20000MWh_17","Title":"2 000 tot 20 000 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_20000Tot70000MWh_18","Title":"20 000 tot 70 000 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_70000Tot150000MWh_19","Title":"70 000 tot 150 000 MWh"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_150000MWhEnMeer_20","Title":"150 000 MWh en meer"
+    }
+  ]
+}
