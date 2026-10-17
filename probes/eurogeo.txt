@@ -1,0 +1,20 @@
+URL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apri_ap_crpouta?lang=en&format=JSON&geo=IE&lastTimePeriod=1&currency=EUR&prod_veg=01110000
+Fetched: 2026-10-17T12:42:50Z from GitHub Actions
+Status, type, bytes: 200 application/json 3216
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sat, 17 Oct 2026 12:42:49 GMT
+Content-Length: 3216
+Content-Type: application/json
+X-ORACLE-DMS-ECID: b41a3ea0-9e26-42b4-89b5-6ea8ec59f236-01538055
+Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With
+Access-Control-Allow-Methods: GET
+X-ORACLE-DMS-RID: 0
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{"version":"2.0","class":"dataset","label":"Selling prices of crop products (absolute prices) - annual price (2000-2024)","source":"ESTAT","updated":"2025-05-15T11:00:00+0200","value":{"0":21.55},"id":["freq","currency","prod_veg","geo","time"],"size":[1,1,1,1,1],"dimension":{"freq":{"label":"Time frequency","category":{"index":{"A":0},"label":{"A":"Annual"}}},"currency":{"label":"Currency","category":{"index":{"EUR":0},"label":{"EUR":"Euro"}}},"prod_veg":{"label":"Vegetable product","category":{"index":{"01110000":0},"label":{"01110000":"Soft wheat - prices per 100 kg"}}},"geo":{"label":"Geopolitical entity (reporting)","category":{"index":{"IE":0},"label":{"IE":"Ireland"}}},"time":{"label":"Time","category":{"index":{"2024":0},"label":{"2024":"2024"}}}},"extension":{"lang":"EN","id":"APRI_AP_CRPOUTA","agencyId":"ESTAT","version":"1.0","datastructure":{"id":"APRI_AP_CRPOUTA","agencyId":"ESTAT","version":"17.0"},"annotation":[{"type":"CREATED","date":"2010-02-18T21:47:26+0100"},{"type":"DISSEMINATION_DOI_XML","title":"<adms:identifier xmlns:adms=\"http://www.w3.org/ns/adms#\" xmlns:skos=\"http://www.w3.org/2004/02/skos/core.html\" xmlns:dct=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"><adms:Identifier rdf:about=\"https://doi.org/10.2908/APRI_AP_CRPOUTA\"><skos:notation rdf:datatype=\"http://purl.org/spar/datacite/doi\">10.2908/APRI_AP_CRPOUTA</skos:notation><dct:creator rdf:resource=\"http://publications.europa.eu/resource/authority/corporate-body/ESTAT\"/><dct:issued rdf:datatype=\"http://www.w3.org/2001/XMLSchema#date\">2023-01-19</dct:issued></adms:Identifier></adms:identifier>"},{"type":"DISSEMINATION_EXPLANATORY_LINK","title":"text-category","href":"https://ec.europa.eu/eurostat/databrowser-backend/api/public/explanatory-notes/get/Info_note_APRI_AP_20260511.pdf","text":"Information note"},{"type":"DISSEMINATION_EXPLANATORY_LINK","title":"text-category","href":"https://ec.europa.eu/eurostat/databrowser-backend/api/public/explanatory-notes/get/Info_note_APRI_AP_20260511.pdf"},{"type":"DISSEMINATION_EXPLANATORY_LINK","title":"text-category","href":"https://ec.europa.eu/eurostat/databrowser-backend/api/public/explanatory-notes/get/Info_note_APRI_AP_20260511.pdf"},{"type":"DISSEMINATION_OBJECT_TYPE","title":"DATASET"},{"type":"DISSEMINATION_TIMESTAMP_DATA","date":"2025-05-15T11:00:00+0200"},{"type":"DISSEMINATION_TIMESTAMP_GLOBAL","date":"2026-06-16T23:00:00+0200"},{"type":"DISSEMINATION_TIMESTAMP_PLANNED","date":"2026-06-16T23:00:00+0200"},{"type":"ESMS_HTML","title":"Explanatory texts (metadata)","href":"https://ec.europa.eu/eurostat/cache/metadata/en/apri_ap_esms.htm"},{"type":"ESMS_SDMX","title":"Explanatory texts (metadata)","href":"https://ec.europa.eu/eurostat/api/dissemination/files?file=metadata/apri_ap_esms.sdmx.zip"},{"type":"OBS_COUNT","title":"52664"},{"type":"OBS_PERIOD_OVERALL_LATEST","title":"2024"},{"type":"OBS_PERIOD_OVERALL_OLDEST","title":"2000"},{"type":"SOURCE_INSTITUTIONS","text":"Eurostat"},{"type":"UPDATE_DATA","date":"2025-05-15T11:00:00+0200"},{"type":"UPDATE_STRUCTURE","date":"2025-05-14T23:00:00+0200"}],"positions-with-no-data":{"freq":[],"currency":[],"prod_veg":[],"geo":[],"time":[]}}}
