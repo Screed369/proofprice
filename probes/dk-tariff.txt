@@ -1,0 +1,24 @@
+URL: https://api.energidataservice.dk/dataset/DatahubPricelist?limit=3
+Fetched: 2026-10-17T06:42:09Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2271
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 17 Oct 2026 06:42:09 GMT
+content-type: application/json; charset=utf-8
+cache-control: public, must-revalidate, max-age=60
+expires: Sat, 17 Oct 2026 06:43:09 GMT
+last-modified: Sat, 17 Oct 2026 06:42:09 GMT
+set-cookie: INGRESSCOOKIE=1792219330.834.23.620725|5c0ee527deb5851d7c49e79de25a81b3; Path=/; Secure; HttpOnly
+set-cookie: anon-id=411ee808-e552-4ce4-acfe-6ef9435341dc; expires=Mon, 16 Nov 2026 06:42:09 GMT; path=/; secure; samesite=strict; httponly
+strict-transport-security: max-age=31536000; includeSubDomains
+access-control-allow-origin: *
+x-cache-status: MISS
+remainingcalls: 2
+totalcalls: 3
+request-context: appId=cid-v1:0f6e3fb1-0e79-49b7-8196-9df349716d4a
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"total":3,"filters":"","limit":3,"dataset":"DatahubPricelist","records":[{"ChargeOwner":"TREFOR El-net A/S","GLN_Number":"5790000392261","ChargeType":"D01","ChargeTypeCode":"E-40","Note":"Net egenproducentbidrag C","Description":"Egenproducentbidrag, hvor aftagepunktet typisk er i 0,4 kV-nettet","ValidFrom":"2027-01-01T00:00:00","ValidTo":"2027-05-01T00:00:00","VATClass":"D02","Price1":7.450000,"Price2":null,"Price3":null,"Price4":null,"Price5":null,"Price6":null,"Price7":null,"Price8":null,"Price9":null,"Price10":null,"Price11":null,"Price12":null,"Price13":null,"Price14":null,"Price15":null,"Price16":null,"Price17":null,"Price18":null,"Price19":null,"Price20":null,"Price21":null,"Price22":null,"Price23":null,"Price24":null,"TransparentInvoicing":0,"TaxIndicator":0,"ResolutionDuration":"P1M"},{"ChargeOwner":"TREFOR El-net A/S","GLN_Number":"5790000392261","ChargeType":"D01","ChargeTypeCode":"E-40","Note":"Net egenproducentbidrag C","Description":"Egenproducentbidrag, hvor aftagepunktet typisk er i 0,4 kV-nettet","ValidFrom":"2026-07-01T00:00:00","ValidTo":"2027-01-01T00:00:00","VATClass":"D02","Price1":4.314167,"Price2":null,"Price3":null,"Price4":null,"Price5":null,"Price6":null,"Price7":null,"Price8":null,"Price9":null,"Price10":null,"Price11":null,"Price12":null,"Price13":null,"Price14":null,"Price15":null,"Price16":null,"Price17":null,"Price18":null,"Price19":null,"Price20":null,"Price21":null,"Price22":null,"Price23":null,"Price24":null,"TransparentInvoicing":0,"TaxIndicator":0,"ResolutionDuration":"P1M"},{"ChargeOwner":"TREFOR El-net A/S","GLN_Number":"5790000392261","ChargeType":"D01","ChargeTypeCode":"E-40","Note":"Net egenproducentbidrag C","Description":"Egenproducentbidrag, hvor aftagepunktet typisk er i 0,4 kV-nettet","ValidFrom":"2026-01-01T00:00:00","ValidTo":"2026-07-01T00:00:00","VATClass":"D02","Price1":8.035833,"Price2":null,"Price3":null,"Price4":null,"Price5":null,"Price6":null,"Price7":null,"Price8":null,"Price9":null,"Price10":null,"Price11":null,"Price12":null,"Price13":null,"Price14":null,"Price15":null,"Price16":null,"Price17":null,"Price18":null,"Price19":null,"Price20":null,"Price21":null,"Price22":null,"Price23":null,"Price24":null,"TransparentInvoicing":0,"TaxIndicator":0,"ResolutionDuration":"P1M"}]}
