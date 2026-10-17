@@ -1,0 +1,18 @@
+URL: https://www.fema.gov/api/open/v2/FimaNfipPolicies?$top=3
+Fetched: 2026-10-17T12:41:31Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1208
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+access-control-allow-origin: *
+x-response-time: 10.762ms
+cache-control: public, max-age=150
+date: Sat, 17 Oct 2026 12:41:31 GMT
+content-length: 1208
+strict-transport-security: max-age=31536000 ; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"metadata": {"skip":0,"select":null,"rundate":"2026-10-17T12:41:31.626Z","DeprecationInformation":{"depDate":"2026-10-15T00:00:00.000Z","depApiMessage":"This dataset has been deprecated and will no longer be available by the date specified. It is recommended that the new endpoint be used. See the OpenFEMA documentation for additional information. NOTE: This dataset will not continue to be updated during the deprecation period. Data is frozen as of 06/01/2026.","depNewUrl":"https://www.fema.gov/openfema-data-page/nfip-redacted-policies-v3","depWebMessage":"A newer version of this OpenFEMA dataset has been released. This older dataset version will be removed by October 15, 2026. NOTE: This dataset will not continue to be updated during the deprecation period. Data is frozen as of 06/01/2026. Also note that the new version has a different name - the FIMA prefix was removed. The following page details the latest version of this dataset: https://www.fema.gov/openfema-data-page/nfip-redacted-policies-v3"},"top":3,"filter":"","format":"json","metadata":true,"orderby":"","entityname":"FimaNfipPolicies","version":"v2","url":"/api/open/v2/FimaNfipPolicies?$top=3","count":0}, "FimaNfipPolicies": []}
