@@ -1,0 +1,41 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/85666NED/Prijscomponenten?$format=json
+Fetched: 2026-10-17T09:45:11Z from GitHub Actions
+Status, type, bytes: 200 application/json 1202
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Sat, 17 Oct 2026 09:45:11 GMT
+Content-Length: 1202
+TXID: 01410fa5
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=01491214-43a7-1ad3-9678-0050569bed16_0530129062_3869054882_00000000004316008357; Path=/; Expires=Sat, 17-Oct-2026 09:45:26 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/85666NED/$metadata#Cbs.OData.WebAPI.Prijscomponenten","value":[
+    {
+      "Key":"A047656","Title":"Totaalprijs","Description":"De totaalprijs is samengesteld uit de componenten levering en netwerk.","CategoryGroupID":null
+    },{
+      "Key":"A047657","Title":"Leveringsprijs","Description":"De leveringsprijs is opgebouwd uit de componenten \r\nvaste kosten, variabele kosten, energiebelasting, ODE (Opslag Duurzame Energie), teruggave energiebelasting en BTW.","CategoryGroupID":null
+    },{
+      "Key":"A047658","Title":"Netwerkprijs","Description":"Netwerkprijs is een vergoeding voor het gebruik, onderhoud en aansluiting van het netwerk (leidingen waardoor het gas en elektriciteit bij de woning gebouw komen) vermeerderd met meetbedrag. Meetbedrag omvat  het installeren, beheren en onderhouden van elektriciteits-, gas- en warmtemeters inclusief de opname van de stand hiervan.\r\n\r\nDe netwerkprijs is opgebouwd uit de componenten\r\ntransportonafhankelijk tarief (vastrecht), transportafhankelijk tarief (capaciteitstarief), periodieke aansluitvergoeding, meterhuur en BTW.\r\n\r\n","CategoryGroupID":null
+    }
+  ]
+}
