@@ -1,0 +1,24 @@
+URL: https://api.energidataservice.dk/dataset/Elspotprices?limit=3&sort=HourUTC%20desc
+Fetched: 2026-10-17T06:42:07Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 494
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 17 Oct 2026 06:42:07 GMT
+content-type: application/json; charset=utf-8
+cache-control: public, must-revalidate, max-age=60
+expires: Sat, 17 Oct 2026 06:43:07 GMT
+last-modified: Sat, 17 Oct 2026 06:42:07 GMT
+set-cookie: INGRESSCOOKIE=1792219328.367.22.376750|5c0ee527deb5851d7c49e79de25a81b3; Path=/; Secure; HttpOnly
+set-cookie: anon-id=bd58e061-47e3-4423-8ae4-df44072ac0c0; expires=Mon, 16 Nov 2026 06:42:07 GMT; path=/; secure; samesite=strict; httponly
+strict-transport-security: max-age=31536000; includeSubDomains
+access-control-allow-origin: *
+x-cache-status: MISS
+remainingcalls: 0
+totalcalls: 1
+request-context: appId=cid-v1:0f6e3fb1-0e79-49b7-8196-9df349716d4a
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"total":3,"filters":"","sort":"HourUTC desc","limit":3,"dataset":"Elspotprices","records":[{"HourUTC":"2025-09-30T21:00:00","HourDK":"2025-09-30T23:00:00","PriceArea":"DE","SpotPriceDKK":690.789978,"SpotPriceEUR":92.540001},{"HourUTC":"2025-09-30T21:00:00","HourDK":"2025-09-30T23:00:00","PriceArea":"DK1","SpotPriceDKK":690.700059,"SpotPriceEUR":92.540001},{"HourUTC":"2025-09-30T21:00:00","HourDK":"2025-09-30T23:00:00","PriceArea":"DK2","SpotPriceDKK":690.252246,"SpotPriceEUR":92.480003}]}
