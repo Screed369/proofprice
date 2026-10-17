@@ -1,0 +1,41 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/85666NED/TypedDataSet?$format=json&$top=3&$orderby=Id%20desc
+Fetched: 2026-10-17T09:44:11Z from GitHub Actions
+Status, type, bytes: 200 application/json 2038
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Sat, 17 Oct 2026 09:44:10 GMT
+Content-Length: 2038
+TXID: 012ba866
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=013aafbe-436a-1ad3-9678-0050569bed16_3679295644_2011279256_00000000000019638374; Path=/; Expires=Sat, 17-Oct-2026 09:44:25 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 3500 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/85666NED/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":0,"Prijscomponenten":"A047656","Belastingen":"A047659","Perioden":"2009HJ01","MinderDan569M3_1":1.027,"k_569Tot5687M3_2":0.814,"k_5687M3EnMeer_3":0.711,"MinderDan28433M3_4":0.741,"k_28433Tot284333M3_5":0.67,"k_284333Tot2843332M3_6":0.455,"k_2843332Tot28433324M3_7":0.37,"k_28433324M3EnMeer_8":0.27,"MinderDan1MWh_9":-0.102,"k_1Tot25MWh_10":0.148,"k_25Tot5MWh_11":0.195,"k_5Tot15MWh_12":0.215,"k_15MWhEnMeer_13":0.215,"MinderDan20MWh_14":0.279,"k_20Tot500MWh_15":0.205,"k_500Tot2000MWh_16":0.138,"k_2000Tot20000MWh_17":0.121,"k_20000Tot70000MWh_18":0.104,"k_70000Tot150000MWh_19":0.102,"k_150000MWhEnMeer_20":0.071
+    },{
+      "ID":1,"Prijscomponenten":"A047656","Belastingen":"A047659","Perioden":"2009HJ02","MinderDan569M3_1":1.007,"k_569Tot5687M3_2":0.696,"k_5687M3EnMeer_3":0.559,"MinderDan28433M3_4":0.6,"k_28433Tot284333M3_5":0.605,"k_284333Tot2843332M3_6":0.399,"k_2843332Tot28433324M3_7":0.319,"k_28433324M3EnMeer_8":0.228,"MinderDan1MWh_9":-0.12,"k_1Tot25MWh_10":0.138,"k_25Tot5MWh_11":0.186,"k_5Tot15MWh_12":0.208,"k_15MWhEnMeer_13":0.162,"MinderDan20MWh_14":0.278,"k_20Tot500MWh_15":0.165,"k_500Tot2000MWh_16":0.133,"k_2000Tot20000MWh_17":0.119,"k_20000Tot70000MWh_18":0.095,"k_70000Tot150000MWh_19":0.092,"k_150000MWhEnMeer_20":0.063
+    },{
+      "ID":2,"Prijscomponenten":"A047656","Belastingen":"A047659","Perioden":"2009JJ00","MinderDan569M3_1":1.017,"k_569Tot5687M3_2":0.764,"k_5687M3EnMeer_3":0.645,"MinderDan28433M3_4":0.69,"k_28433Tot284333M3_5":0.646,"k_284333Tot2843332M3_6":0.429,"k_2843332Tot28433324M3_7":0.344,"k_28433324M3EnMeer_8":0.247,"MinderDan1MWh_9":-0.111,"k_1Tot25MWh_10":0.143,"k_25Tot5MWh_11":0.191,"k_5Tot15MWh_12":0.212,"k_15MWhEnMeer_13":0.189,"MinderDan20MWh_14":0.278,"k_20Tot500MWh_15":0.185,"k_500Tot2000MWh_16":0.135,"k_2000Tot20000MWh_17":0.12,"k_20000Tot70000MWh_18":0.1,"k_70000Tot150000MWh_19":0.096,"k_150000MWhEnMeer_20":0.067
+    }
+  ]
+}
