@@ -38,7 +38,7 @@ const CSV = [
   LCU("840", "United States of America", "1100", "Old crop", { 2019: [50, "A"] }),
   LCU("076", "Brazil", "236", "Soya beans", { 2024: [2400, "A"], 2025: [2200, "E"] }),
   USD("076", "Brazil", "236", "Soya beans", { 2024: [440, "A"], 2025: [400, "E"] }),
-  LCU("356", "India", "27", "Rice", { 2024: [24000, "A"] }),
+  LCU("392", "Japan", "27", "Rice", { 2024: [24000, "A"] }),
   // other element (the price index) must be ignored
   line("840", "United States of America", "15", "Wheat", "5539", "Producer Price Index (2014-2016 = 100)", "", { 2025: [99, "E"] }),
   ...FILLER,
@@ -57,7 +57,7 @@ test("parse: newest figure per enabled country and item, with the previous year,
   assert.equal(get("US", "Maize (corn)")!.prev, 190);
   assert.equal(get("BR", "Soya beans")!.estimated, true);
   assert.equal(get("BR", "Soya beans")!.usd, 400);
-  assert.equal(get("IN", "Rice")!.year, 2024, "India's newest figure is 2024: within two years of 2025, so kept");
+  assert.equal(get("JP", "Rice")!.year, 2024, "Japan's newest figure is 2024: within two years of 2025, so kept");
   assert.equal(get("US", "Old crop"), undefined, "a figure older than two years before the release is dropped");
   assert.equal(p.figures.some((f) => f.iso === "AF" || f.item.startsWith("Almonds")), false);
   assert.equal(get("US", 'Sheep "dolly", fresh')!.lcu, 4000);
@@ -118,7 +118,7 @@ test("answer: unknown product lists what is available; unknown country and missi
   assert.ok((none.extra!.products_available as string[]).includes("Wheat"));
   assert.throws(() => faoAnswer({ date: "2025-12-31", rows }, { country: "FR", product: "wheat" }), /country must be one of/);
   assert.throws(() => faoAnswer({ date: "2025-12-31", rows }, { country: "US" }), /product is required/);
-  const old = faoAnswer({ date: "2025-12-31", rows }, { country: "IN", product: "rice" }, 2030);
+  const old = faoAnswer({ date: "2025-12-31", rows }, { country: "JP", product: "rice" }, 2030);
   assert.match(old.statistic!.note ?? "", /Old data/);
 });
 
@@ -149,9 +149,9 @@ test("harvest: reads the zip, finds the CSV and returns the newest reference yea
   assert.equal(indexCountry(day.rows, "US").get("Wheat")!.prev, 250);
 });
 
-test("manifest: the eleven countries, a working example and the collector are declared", () => {
+test("manifest: the nine countries, a working example and the collector are declared", () => {
   assert.equal(manifest.category, "producer-prices");
-  assert.equal(manifest.countries.length, 11);
+  assert.equal(manifest.countries.length, 9);
   assert.deepEqual([...manifest.countries].sort(), Object.keys(COUNTRIES).sort());
   assert.equal(typeof manifest.harvest, "function");
   assert.equal(manifest.nominalCounts, true);

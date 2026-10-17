@@ -29,7 +29,7 @@ export const ELEMENT_USD = "5532";
 
 export const INFO: SourceInfo = {
   id: "un-fao-producer-prices",
-  country: "Australia, Brazil, Canada, India, Japan, Mexico, New Zealand, Singapore, South Korea, the United Arab Emirates and the United States",
+  country: "Australia, Brazil, Canada, Japan, Mexico, New Zealand, Singapore, South Korea and the United States",
   category: "producer-prices (annual farm-gate producer prices)",
   name: "FAOSTAT Producer Prices (annual)",
   publisher: "Food and Agriculture Organization of the United Nations (FAO), FAOSTAT",
@@ -51,10 +51,10 @@ export const INFO: SourceInfo = {
     "Annual farm-gate prices, not what shoppers pay and not a market quote of any day: FAO derives them from national statistics (often production value divided by quantity), so definitions differ between countries and the figures are not strictly comparable across borders. " +
     "Many figures are FAO estimates (flag E, I or X) rather than numbers reported by the country; the answer says when that is so. " +
     "There is no distribution and no count of records, so there is no range and no sample size. Figures in local currency are in current units, so a long gap in the series may reflect inflation, and US dollar figures use FAO's annual exchange rate. " +
-    "The newest year is often one to two years old. Only 11 countries are enabled here.",
+    "The newest year is often one to two years old. Only 9 countries are enabled here (India and the United Arab Emirates have no recent producer prices in the file; South Korea has only a few products).",
 };
 
-/** ISO 3166 code -> FAOSTAT M49 area code, the country name and its currency (what element 5530 is expressed in, today). Only the countries on the ProofPrice Atlas that this file covers. */
+/** ISO 3166 code -> FAOSTAT M49 area code, the country name and its currency (what element 5530 is expressed in, today). Only the ProofPrice Atlas countries for which the file holds a figure from the last three years (checked 2026-10-17: India and the United Arab Emirates have none, South Korea three products). */
 export const COUNTRIES: Record<string, { m49: string; name: string; currency: string }> = {
   US: { m49: "840", name: "the United States", currency: "USD" },
   CA: { m49: "124", name: "Canada", currency: "CAD" },
@@ -65,8 +65,6 @@ export const COUNTRIES: Record<string, { m49: string; name: string; currency: st
   SG: { m49: "702", name: "Singapore", currency: "SGD" },
   JP: { m49: "392", name: "Japan", currency: "JPY" },
   KR: { m49: "410", name: "South Korea", currency: "KRW" },
-  AE: { m49: "784", name: "the United Arab Emirates", currency: "AED" },
-  IN: { m49: "356", name: "India", currency: "INR" },
 };
 
 const ISO_BY_M49 = new Map(Object.entries(COUNTRIES).map(([iso, c]) => [c.m49, iso]));
