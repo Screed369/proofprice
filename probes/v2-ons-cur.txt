@@ -1,0 +1,104 @@
+URL: https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindicescpiandretailpricesindexrpiitemindicesandpricequotes/current/
+Fetched: 2026-10-18T16:43:55Z from GitHub Actions
+Status, type, bytes: 404 text/html 27061
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 404 
+date: Sun, 18 Oct 2026 16:43:55 GMT
+content-type: text/html
+allow: DELETE, GET, HEAD, POST, PUT, OPTIONS, PATCH
+cache-control: public, s-maxage=900, max-age=900, stale-while-revalidate=10
+strict-transport-security: max-age=31536000; includeSubDomains
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+vary: accept-encoding
+cf-cache-status: MISS
+set-cookie: __cf_bm=pQ4wu9k1P.j6XmNYiKpdGHSORZ1Zx1WPuFU0Pw_4IIw-1792341835.7446227-1.0.1.1-kiyx2KMW15bH.DV8OYujwqqeT_2u9BQRpDwN5DOlMHt7Qo7BxVbGkH_tc0_fl6UeuGIwEZb38uJ4UMJg70riJqefX2NGgVbAL6drcfW4eJQUnuM6vdGwp1DHL9CqkpSj; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk; Expires=Sun, 18 Oct 2026 17:13:55 GMT
+set-cookie: _cfuvid=PB78ahU5ZCAeD6IBe5uQL0qQkNf59o_E65P7RlHk.lU-1792341835.7446227-1.0.1.1-MQpuNGt6Tqa2.7IRqvbY5OFUGxBgpTvF7wJH7DKTZcM; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk
+server: cloudflare
+cf-ray: a4c901396ad78432-IAD
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (946)
+=== FIRST 2000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Page not found - Office for National Statistics</title>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1.0,user-scalable=1" name="viewport">
+        <meta name="theme-color" content="#58595B">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
+
+        
+
+        
+        <link rel="stylesheet" type="text/css" href="//cdn.ons.gov.uk/sixteens/ef5a1ca/css/main.css">
+		
+
+        <script>
+    // extractValue extracts the value from an undecodeable json cookie string
+    function extractValue(key, extractionString) {
+        const extractionRegex = new RegExp(`'${key}':(.*?)[,}]`)
+        const match = extractionString.match(extractionRegex)
+        if (match) {
+            return match[1]
+        }
+        
+        return null
+    }
+
+    // isUsageCookieAllowed reads the ons_cookie_policy to determine the user's usage preference. 
+    function isUsageCookieAllowed() {
+        // ons_cookie_policy handler
+        var policyCookie = document.cookie.match('(?:^|; )ons_cookie_policy=({.*?})');
+        if (policyCookie) {
+            console.debug('ons_cookie_policy found');
+
+            var usageValue = extractValue("usage", policyCookie[1]);
+            console.debug('usage is', usageValue);
+
+            return (usageValue == "true") ? true : false
+        }
+        console.debug('no cookie found - opting out');
+        return false
+    }
+
+    // unescape html entities
+    function htmlUnescape(str){
+        return str
+                .replace(/&#x3D;/g, "=");
+    }
+
+    
+    var dataLayer = [{
+        contentTitle: htmlUnescape("Page not found"),
+        "gtm.whitelist": ["google","hjtc","lcl"],
+        "gtm.blacklist": ["customScripts","sp","adm","awct","k","d","j"]
+    }];
+
+    
+
+    
+
+    
+    
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+</script>
+
+
+        <!-- Google Tag Manager -->
+        <script>
+			// The naming of this function is important
