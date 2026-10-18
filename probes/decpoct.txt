@@ -1,0 +1,249 @@
+URL: https://static.data.gouv.fr/resources/donnees-essentielles-de-la-commande-publique-fichiers-consolides/20261012-144236/decp-2026-10.json
+Fetched: 2026-10-18T12:50:15Z from GitHub Actions
+Status, type, bytes: 200 application/json 109245562
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Sun, 18 Oct 2026 12:50:10 GMT
+content-type: application/json
+content-length: 109245562
+vary: Accept-Encoding
+x-amz-version-id: 1791816156.301877
+last-modified: Mon, 12 Oct 2026 14:42:40 GMT
+accept-ranges: bytes
+etag: "a338f1bc07cc66236c2400d2eb822945-14"
+expires: Tue, 17 Nov 2026 12:50:10 GMT
+cache-control: max-age=2592000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+access-control-allow-origin: *
+access-control-allow-methods: GET, OPTIONS
+access-control-allow-headers: Origin,Authorization,Accept,DNT,User-Agent,If-Modified-Since,Cache-Control,Content-Type,Range,sentry-trace,baggage
+access-control-allow-credentials: true
+content-disposition: attachment
+pragma: public
+cache-control: public
+strict-transport-security: max-age=15768000; includeSubDomains; preload;
+
+=== FILE TYPE: Unicode text, UTF-8 text, with very long lines (577)
+=== FIRST 6000 BYTES
+{
+  "marches": {
+    "marche": [
+      {
+        "id": "20261113932L03",
+        "acheteur": {
+          "id": "99027557000010"
+        },
+        "nature": "Marché",
+        "objet": "Couverture",
+        "codeCPV": "45261000-4",
+        "procedure": "Procédure adaptée",
+        "ccag": "Travaux",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "03210",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 7,
+        "dateNotification": "2022-10-05",
+        "datePublicationDonnees": "2022-05-19",
+        "montant": 173062.54,
+        "formePrix": "Forfaitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "31896368300012"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.1,
+        "marcheInnovant": false,
+        "attributionAvance": true,
+        "sousTraitanceDeclaree": false
+      },
+      {
+        "id": "20261113932L02",
+        "acheteur": {
+          "id": "99027557000010"
+        },
+        "nature": "Marché",
+        "objet": "Charpente - Menuiserie",
+        "codeCPV": "44112410-5",
+        "procedure": "Procédure adaptée",
+        "ccag": "Travaux",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "03210",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 7,
+        "dateNotification": "2022-10-05",
+        "datePublicationDonnees": "2022-05-19",
+        "montant": 45313.94,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "83775606300066"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.1,
+        "marcheInnovant": false,
+        "attributionAvance": true,
+        "sousTraitanceDeclaree": false
+      },
+      {
+        "id": "20222022GARDS2",
+        "acheteur": {
+          "id": "41441642000027"
+        },
+        "nature": "Marché",
+        "objet": "GARDIENNAGE ET SECURISAT° PDC+ AUTRES EV INTERIEUR OU EXTERIEUR",
+        "codeCPV": "79713000-5",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Fournitures courantes et services",
+        "offresRecues": 2,
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "06600",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 48,
+        "dateNotification": "2022-10-10",
+        "datePublicationDonnees": "2022-08-08",
+        "montant": 930000.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "45250538100015"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Bons de commande"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif ferme"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0,
+        "idAccordCadre": "OTC EVT"
+      },
+      {
+        "id": "2022_0023 AC",
+        "acheteur": {
+          "id": "24770006500029"
+        },
+        "nature": "Marché",
+        "objet": "ETUDES GEOTECHNIQUES LIEES AU TRAVAUX D'EAU POTABLE ET D'ASSAINISSEMENT",
+        "codeCPV": "74233200-3",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Prestations intellectuelles",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "77440",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 48,
+        "dateNotification": "2023-04-12",
+        "datePublicationDonnees": "2022-12-18",
+        "montant": 130000.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "52088612800054"
+            }
+          }
+        ],
+        "considerationsSociales"
