@@ -1,0 +1,70 @@
+URL: https://www.data.gouv.fr/api/1/datasets/r/21543ae5-7d6e-4c49-8719-e7f725d441da
+Fetched: 2026-10-18T09:46:22Z from GitHub Actions
+Status, type, bytes: 200 text/csv 1435928
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 302 
+server: nginx
+date: Sun, 18 Oct 2026 09:46:20 GMT
+content-type: text/html; charset=utf-8
+content-length: 349
+location: https://www.observatoires-des-loyers.org/datagouv/2025/Base_OP_2025_Nationale.csv
+vary: Origin, Cookie
+pragma: public
+cache-control: public
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=15768000; includeSubDomains; preload;
+
+HTTP/2 200 
+strict-transport-security: max-age=31536000;
+x-content-type-options: nosniff
+content-security-policy: default-src http: https: data: 'self' blob: 'unsafe-inline' 'unsafe-eval'
+referrer-policy: strict-origin
+access-control-allow-origin: 
+last-modified: Thu, 15 Oct 2026 13:35:35 GMT
+accept-ranges: bytes
+content-length: 1435928
+cache-control: max-age=2592000
+expires: Tue, 17 Nov 2026 09:46:21 GMT
+x-ua-compatible: IE=edge
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'; script-src 'none'; style-src 'none'; object-src 'none';
+content-type: text/csv
+date: Sun, 18 Oct 2026 09:46:21 GMT
+server: Apache
+
+=== FILE TYPE: ISO-8859 text, with very long lines (455), with CRLF line terminators
+=== FIRST 5000 BYTES
+Observatory;Data_year;agglomeration;Zone_complementaire;Type_habitat;epoque_construction_homogene;anciennete_locataire_homogene;nombre_pieces_homogene;loyer_1_decile;loyer_1_quartile;loyer_median;loyer_3_quartile;loyer_9_decile;loyer_moyen;loyer_mensuel_1_decile;loyer_mensuel_1_quartile;loyer_mensuel_median;loyer_mensuel_3_quartile;loyer_mensuel_9_decile;moyenne_loyer_mensuel;surface_moyenne;nombre_observations;nombre_logements;methodologie_production
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;;9,2;11,1;13,3;16,1;19,3;12,9;480;580;700;879;1129;768;60;29710;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Maison 1-3P;9,0;11,3;13,6;16,4;19,3;13,3;550;625;775;900;1150;802;60;565;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Ensemble 4P+;8,0;9,5;11,1;13,3;15,3;11,4;680;803;1003;1254;1520;1093;96;3871;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Maison 4P+;8,1;10,0;12,2;14,2;16,7;12,2;800;965;1200;1500;1723;1278;105;721;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Appart 1P;12,7;15,0;17,8;21,6;25,5;17,7;366;420;480;550;620;492;28;4751;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Appart 2P;11,1;12,7;14,9;17,1;19,6;14,7;480;550;620;700;800;632;43;10980;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Appart 3P;8,9;10,6;12,1;14,1;15,7;12,2;590;670;763;890;1013;791;65;9543;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Appart 4P+;7,8;9,4;10,8;12,6;14,4;10,9;650;775;931;1150;1397;991;91;3150;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Ensemble 1P;12,6;15,0;17,8;21,6;25,5;17,6;370;420;481;550;628;496;28;4776;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Ensemble 2P;11,1;12,7;14,9;17,1;19,6;14,7;484;550;626;700;800;636;43;11103;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;;Ensemble 3P;8,8;10,6;12,2;14,2;16,0;12,3;589;673;780;900;1050;806;66;9960;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;1. Moins de 1 an;;10,6;12,2;14,6;17,6;21,6;14,2;490;600;720;900;1200;801;57;8059;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;1. Moins de 1 an;Ensemble 4P+;8,8;10,1;11,8;14,2;16,9;12,3;700;900;1150;1400;1850;1215;99;798;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;1. Moins de 1 an;Ensemble 1P;14,2;16,6;19,4;23,8;29,7;19,4;390;443;500;595;660;516;27;1528;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;1. Moins de 1 an;Ensemble 2P;12,0;13,6;15,7;18,1;20,9;15,7;507;590;660;740;850;674;43;3295;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;1. Moins de 1 an;Ensemble 3P;10,2;11,5;13,1;15,2;17,7;13,5;650;730;829;975;1190;870;65;2438;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;2. 1 an et plus;;8,9;10,8;12,9;15,5;18,4;12,5;472;573;700;866;1100;756;61;21651;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;2. 1 an et plus;Ensemble 4P+;7,9;9,3;11,0;12,9;15,0;11,2;675;800;986;1222;1500;1060;95;3073;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;2. 1 an et plus;Ensemble 1P;12,1;14,3;17,1;20,3;23,7;16,8;360;410;472;546;618;487;29;3248;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;2. 1 an et plus;Ensemble 2P;10,8;12,4;14,5;16,7;19,0;14,3;475;540;610;700;780;621;44;7808;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;;2. 1 an et plus;Ensemble 3P;8,6;10,2;11,8;13,8;15,6;11,9;570;658;758;887;1007;785;66;7522;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;1. Avant 1946;;;8,7;10,9;13,0;15,8;19,4;12,5;450;530;650;800;1030;706;57;9216;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;1. Avant 1946;;Ensemble 4P+;7,4;8,9;10,8;12,5;14,4;10,6;700;802;1000;1300;1550;1088;103;1011;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;1. Avant 1946;;Ensemble 1P;12,0;14,3;17,4;21,4;24,4;17,3;360;410;478;550;618;493;29;1878;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;1. Avant 1946;;Ensemble 2P;10,2;12,2;14,3;16,4;19,3;14,0;453;517;595;668;750;597;43;3801;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;1. Avant 1946;;Ensemble 3P;8,2;9,7;11,6;13,6;15,2;11,6;550;630;738;850;996;762;66;2526;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;1. Avant 1946;1. Moins de 1 an;;10,0;12,0;14,4;18,1;22,6;13,8;460;552;690;840;1150;752;55;2542;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;1. Avant 1946;1. Moins de 1 an;Maison 1-3P;9,9;11,2;12,4;15,4;23,8;12,9;550;625;700;810;1200;789;61;57;;Estimation directe
+B1300;2025;Agglomrations d'Aix-Marseille et Arles;;;1. Avant 1946;1. Moins de 1 an;Maison 4P+;;;;;;;;;;;;;;34;
