@@ -11,7 +11,7 @@ export default defineSource({
   countryHelp: "SG = Singapore HDB resale flats",
   placeName: "Singapore public housing",
   status: "live",
-  paramNotes: { town: "SG: required, e.g. 'Tampines'." },
+  paramNotes: { town: "SG: required, one of the 26 HDB towns, e.g. 'Tampines', 'Ang Mo Kio', 'Bukit Merah', 'Kallang/Whampoa', 'Central Area' (case, hyphens and ', Singapore' are forgiven; 'Kallang' and 'CBD' are understood)." },
   extraParams: {
     flat_type: z.enum(SG_FLAT_TYPES).optional().describe("SG only: HDB flat type."),
   },
@@ -20,7 +20,7 @@ export default defineSource({
     { params: { country: "SG", town: "Tampines", flat_type: "4 ROOM" }, smoke: false },
   ],
   handle: (p, ctx) => {
-    const town = str(p.town);
+    const town = str(p.town) ?? str(p.area);
     if (!town) throw new InputError("A town is required.");
     return sgHomeSales({ town, flat_type: str(p.flat_type), months: num(p.months), baseUrl: ctx.baseUrl });
   },

@@ -73,3 +73,34 @@ test("SG parse: empty or 'na' prices and bad months are dropped, never counted a
   ] } });
   assert.deepEqual(recs, [{ month: "2026-08", price: 600000, area: 92 }]);
 });
+
+test("G20261018-1: Tampines in any spelling, and other HDB town names, resolve to the dataset's town", async () => {
+  const { resolveSgTown, SG_TOWNS } = await import("./source");
+  for (const x of ["Tampines", "tampines", "TAMPINES", " Tampines, Singapore ", "Tampines Town", "Tampines Estate", "Tampinis"])
+    assert.equal(resolveSgTown(x), "TAMPINES", x);
+  assert.equal(resolveSgTown("Ang-Mo-Kio"), "ANG MO KIO");
+  assert.equal(resolveSgTown("AMK"), "ANG MO KIO");
+  assert.equal(resolveSgTown("Kallang"), "KALLANG/WHAMPOA");
+  assert.equal(resolveSgTown("Kallang/Whampoa"), "KALLANG/WHAMPOA");
+  assert.equal(resolveSgTown("CBD"), "CENTRAL AREA");
+  assert.equal(resolveSgTown("Jurong"), null); // East or West: do not guess
+  assert.equal(resolveSgTown("Orchard"), null);
+  assert.equal(SG_TOWNS.length, 26);
+});
+
+test("G20261018-1: a name that is not an HDB town gets the list of real towns, not a silent empty answer", async () => {
+  const { sgHomeSales } = await import("./source");
+  let called = 0;
+  const a = await sgHomeSales({ town: "Orchard" }, async () => { called++; return {}; });
+  assert.equal(called, 0);
+  assert.equal(a.status, "no_matches");
+  assert.match(a.summary, /not an HDB town/);
+  assert.ok(((a.extra as any).valid_towns as string[]).includes("TAMPINES"));
+});
+
+test("G20261018-1: the portal is asked for the resolved town name", async () => {
+  const { sgHomeSales } = await import("./source");
+  const urls: string[] = [];
+  await sgHomeSales({ town: "Tampines, Singapore" }, async (u: string) => { urls.push(u); return { success: true, result: { records: [] } }; });
+  assert.deepEqual(JSON.parse(new URL(urls[0]).searchParams.get("filters")!), { town: "TAMPINES" });
+});

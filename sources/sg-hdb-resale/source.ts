@@ -32,6 +32,47 @@ const ENDPOINT = "https://data.gov.sg/api/action/datastore_search";
 
 export const SG_FLAT_TYPES = ["1 ROOM", "2 ROOM", "3 ROOM", "4 ROOM", "5 ROOM", "EXECUTIVE", "MULTI-GENERATION"] as const;
 
+/** The HDB towns exactly as the dataset spells them. */
+export const SG_TOWNS = [
+  "ANG MO KIO", "BEDOK", "BISHAN", "BUKIT BATOK", "BUKIT MERAH", "BUKIT PANJANG", "BUKIT TIMAH", "CENTRAL AREA",
+  "CHOA CHU KANG", "CLEMENTI", "GEYLANG", "HOUGANG", "JURONG EAST", "JURONG WEST", "KALLANG/WHAMPOA", "MARINE PARADE",
+  "PASIR RIS", "PUNGGOL", "QUEENSTOWN", "SEMBAWANG", "SENGKANG", "SERANGOON", "TAMPINES", "TOA PAYOH", "WOODLANDS", "YISHUN",
+] as const;
+
+const SG_ALIASES: Record<string, string> = {
+  AMK: "ANG MO KIO", CCK: "CHOA CHU KANG", KALLANG: "KALLANG/WHAMPOA", WHAMPOA: "KALLANG/WHAMPOA", CENTRAL: "CENTRAL AREA",
+  CBD: "CENTRAL AREA", DOWNTOWN: "CENTRAL AREA", CITY: "CENTRAL AREA", TOAPAYOH: "TOA PAYOH", PAYAH: "TOA PAYOH",
+};
+
+const squash = (x: string) =>
+  x.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase()
+    .replace(/\b(SINGAPORE|HDB|TOWN|ESTATE|NEW|PLANNING|AREA|DISTRICT)\b/g, (m) => (m === "AREA" ? m : ""))
+    .replace(/[^A-Z0-9]/g, "");
+
+function editDistance(a: string, b: string): number {
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++)
+    for (let j = 1; j <= b.length; j++)
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+
+/** Map what an agent typed ("tampines", "Tampines, Singapore", "Ang-Mo-Kio", "Kallang", "AMK") to the dataset's town name; null if none. */
+export function resolveSgTown(raw: string): string | null {
+  const key = squash(raw.split(",")[0]) || squash(raw);
+  if (!key) return null;
+  const exact = SG_TOWNS.find((t) => squash(t) === key);
+  if (exact) return exact;
+  const alias = Object.entries(SG_ALIASES).find(([k]) => squash(k) === key);
+  if (alias) return alias[1];
+  if (key.length >= 6) {
+    const near = SG_TOWNS.filter((t) => editDistance(squash(t), key) <= (key.length >= 9 ? 2 : 1));
+    if (near.length === 1) return near[0];
+  }
+  return null;
+}
+
 export function buildSgUrl(town: string, flatType?: string, limit = 1000, offset = 0): string {
   const filters: Record<string, string> = { town: town.trim().toUpperCase() };
   if (flatType) filters.flat_type = flatType.trim().toUpperCase();
@@ -69,6 +110,23 @@ export async function sgHomeSales(
   now = new Date(),
 ): Promise<PriceAnswer> {
   const months = Math.max(1, Math.min(36, Math.round(input.months ?? 12)));
+  const resolved = resolveSgTown(input.town);
+  if (!resolved) {
+    // Not an HDB town: say so and list the real ones instead of asking the portal for nothing.
+    const none = buildAnswer({
+      source: INFO,
+      query: { country: "SG", town: input.town, flat_type: input.flat_type ?? null, months },
+      summary: summarise([]),
+      currency: "SGD",
+      unit: "per flat",
+      period: { from: null, to: null },
+      method: "HDB resale transactions are filed under 26 HDB towns; the town given is not one of them.",
+      describe: () => `"${input.town.trim()}" is not an HDB town. Use one of: ${SG_TOWNS.join(", ")}.`,
+      baseUrl: input.baseUrl,
+      extra: { valid_towns: [...SG_TOWNS] },
+    });
+    return { ...none, summary: `"${input.town.trim()}" is not an HDB town, so there are no HDB resales to report. Use one of: ${SG_TOWNS.join(", ")}.` };
+  }
   const cutoffMonth = sgCutoffMonth(months, now);
   const fetch = fetcher ?? resolveFetcher({ timeoutMs: 20000 });
   // Newest first; keep paging while a full page still reaches into the window. At most MAX_ROWS resales.
@@ -76,7 +134,7 @@ export async function sgHomeSales(
     maxRows: MAX_ROWS,
     pageSize: PAGE_SIZE,
     fetchPage: async (offset, limit) => {
-      const json = await fetch(buildSgUrl(input.town, input.flat_type, limit, offset));
+      const json = await fetch(buildSgUrl(resolved, input.flat_type, limit, offset));
       const raw = (json as any)?.result?.records;
       const rows = parseSgRecords(json);
       const oldest = Array.isArray(raw) && raw.length ? String(raw[raw.length - 1].month ?? "") : "";
@@ -93,7 +151,7 @@ export async function sgHomeSales(
   const months_ = rows.map((r) => r.month).sort();
   const s = summarise(rows.map((r) => r.price));
   const psm = summarise(rows.filter((r) => r.area > 0).map((r) => r.price / r.area));
-  const town = input.town.trim().toUpperCase();
+  const town = resolved;
   const label = `${input.flat_type ? input.flat_type.toUpperCase() + " " : ""}HDB resale flats in ${town}${input.flat_type ? "" : " (all flat types)"}`;
   return buildAnswer({
     source: INFO,
