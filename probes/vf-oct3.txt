@@ -1,0 +1,34 @@
+URL: https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-A/standing-charges/
+Fetched: 2026-10-18T09:43:44Z from GitHub Actions
+Status, type, bytes: 200 application/json 175
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+content-length: 175
+date: Sun, 18 Oct 2026 09:43:44 GMT
+content-language: en-gb
+set-cookie: AWSALB=ZM5+Ut6v6V0vjK0tQbesc4fiLinJDfOYDtAUqbeVT6/Pe/Q7v/r0Swe/x/GKBguVxr4yVGzZg3/Attyd5XM4dFiq+/8B7rL4nSUml+7IHQmpfOxPlFavPcuJH0cm; Expires=Sun, 25 Oct 2026 09:43:44 GMT; Path=/
+set-cookie: AWSALBCORS=ZM5+Ut6v6V0vjK0tQbesc4fiLinJDfOYDtAUqbeVT6/Pe/Q7v/r0Swe/x/GKBguVxr4yVGzZg3/Attyd5XM4dFiq+/8B7rL4nSUml+7IHQmpfOxPlFavPcuJH0cm; Expires=Sun, 25 Oct 2026 09:43:44 GMT; Path=/; SameSite=None; Secure
+server: nginx
+vary: Accept-Encoding
+vary: Authorization, Accept-Language, Cookie, origin
+allow: GET, HEAD, OPTIONS
+expires: Sun, 18 Oct 2026 10:01:16 GMT
+cache-control: max-age=1500
+x-kraken-correlation-id: 1-6ad494d0-5748550a544c5e1e0cfd2e7d
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-frame-options: SAMEORIGIN
+x-cache: Miss from cloudfront
+via: 1.1 4f9514c3ca494aed957651005d37255c.cloudfront.net (CloudFront)
+x-amz-cf-pop: PHX52-P1
+x-amz-cf-id: SCpsm8jL0pdWLuiusomk2JUZpei_Y96qF-UIRKTRC0QCcpZX-pnU1w==
+age: 448
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"count":1,"next":null,"previous":null,"results":[{"value_exc_vat":46.4649,"value_inc_vat":46.4649,"valid_from":"2024-09-30T23:00:00Z","valid_to":null,"payment_method":null}]}
