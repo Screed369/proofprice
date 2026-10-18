@@ -1,0 +1,33 @@
+URL: https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-A/standard-unit-rates/?page_size=3
+Fetched: 2026-10-18T09:43:44Z from GitHub Actions
+Status, type, bytes: 200 application/json 602
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+content-length: 602
+date: Sun, 18 Oct 2026 09:43:44 GMT
+content-language: en-gb
+set-cookie: AWSALB=GValdHnZ8HyW5TAV8uHhndpgISYulfZW/mv8jEtvm+6LW+ln5mOCT9YQ20CQEAO8YFAoQMJXhGZZMoug8GsSxAirKLH0PTCnWGVyznbjG9cqDUS0QXyJVQpxeFgA; Expires=Sun, 25 Oct 2026 09:43:44 GMT; Path=/
+set-cookie: AWSALBCORS=GValdHnZ8HyW5TAV8uHhndpgISYulfZW/mv8jEtvm+6LW+ln5mOCT9YQ20CQEAO8YFAoQMJXhGZZMoug8GsSxAirKLH0PTCnWGVyznbjG9cqDUS0QXyJVQpxeFgA; Expires=Sun, 25 Oct 2026 09:43:44 GMT; Path=/; SameSite=None; Secure
+server: nginx
+vary: Accept-Encoding
+vary: Authorization, Accept-Language, Cookie, origin
+allow: GET, HEAD, OPTIONS
+expires: Sun, 18 Oct 2026 09:48:44 GMT
+cache-control: max-age=300
+x-kraken-correlation-id: 1-6ad494d0-41f29a8049c1c1b709d70d0e
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-frame-options: SAMEORIGIN
+x-cache: Miss from cloudfront
+via: 1.1 4933e7d07c6eef02b92cebcb1b158426.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD55-P10
+x-amz-cf-id: uTTemomBEZVogMbQh88AHPyruIZXK0EDzug15PYEAaCjsAVwd95KWA==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"count":36622,"next":"https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-A/standard-unit-rates/?page=2&page_size=3","previous":null,"results":[{"value_exc_vat":30.14,"value_inc_vat":30.14,"valid_from":"2026-10-18T21:30:00Z","valid_to":"2026-10-18T22:00:00Z","payment_method":null},{"value_exc_vat":32.36,"value_inc_vat":32.36,"valid_from":"2026-10-18T21:00:00Z","valid_to":"2026-10-18T21:30:00Z","payment_method":null},{"value_exc_vat":30.26,"value_inc_vat":30.26,"valid_from":"2026-10-18T20:30:00Z","valid_to":"2026-10-18T21:00:00Z","payment_method":null}]}
