@@ -1,0 +1,160 @@
+URL: https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindicescpiandretailpricesindexrpiitemindicesandpricequotes/current/data
+Fetched: 2026-10-18T16:44:48Z from GitHub Actions
+Status, type, bytes: 404 text/html 27061
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 404 
+date: Sun, 18 Oct 2026 16:44:48 GMT
+content-type: text/html
+access-control-allow-methods: GET
+access-control-allow-origin: *
+allow: DELETE, GET, HEAD, POST, PUT, OPTIONS, PATCH
+cache-control: public, s-maxage=900, max-age=900, stale-while-revalidate=10
+strict-transport-security: max-age=31536000; includeSubDomains
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+vary: accept-encoding
+cf-cache-status: EXPIRED
+set-cookie: __cf_bm=ObtBjuo1LfTSiFsdG8Z8kA0PCrcuNmReWP5RNtFPbqw-1792341888.096088-1.0.1.1-ae5hnPmP5LUs5edbL4CPi67CUlF20dtEft_qCQQ3OijXRkTS0RyQAZmNkaku3LlMd3SBpCX47gaPicQypkUY7KSzb3tFmO8FdLJ0LQDLgFtPHB94zEEsMb7z7LJ9cGid; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk; Expires=Sun, 18 Oct 2026 17:14:48 GMT
+set-cookie: _cfuvid=Cdnam165q.OR8z250u56mOevhauwsqcLff04sjP9wvs-1792341888.096088-1.0.1.1-68zhBbsN6YmxVoJeDVKc_8FXang58aYBQklPmEWj_PY; HttpOnly; SameSite=None; Secure; Path=/; Domain=ons.gov.uk
+server: cloudflare
+cf-ray: a4c9028099f86c6f-DFW
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (946)
+=== FIRST 4000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Page not found - Office for National Statistics</title>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1.0,user-scalable=1" name="viewport">
+        <meta name="theme-color" content="#58595B">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
+
+        
+
+        
+        <link rel="stylesheet" type="text/css" href="//cdn.ons.gov.uk/sixteens/ef5a1ca/css/main.css">
+		
+
+        <script>
+    // extractValue extracts the value from an undecodeable json cookie string
+    function extractValue(key, extractionString) {
+        const extractionRegex = new RegExp(`'${key}':(.*?)[,}]`)
+        const match = extractionString.match(extractionRegex)
+        if (match) {
+            return match[1]
+        }
+        
+        return null
+    }
+
+    // isUsageCookieAllowed reads the ons_cookie_policy to determine the user's usage preference. 
+    function isUsageCookieAllowed() {
+        // ons_cookie_policy handler
+        var policyCookie = document.cookie.match('(?:^|; )ons_cookie_policy=({.*?})');
+        if (policyCookie) {
+            console.debug('ons_cookie_policy found');
+
+            var usageValue = extractValue("usage", policyCookie[1]);
+            console.debug('usage is', usageValue);
+
+            return (usageValue == "true") ? true : false
+        }
+        console.debug('no cookie found - opting out');
+        return false
+    }
+
+    // unescape html entities
+    function htmlUnescape(str){
+        return str
+                .replace(/&#x3D;/g, "=");
+    }
+
+    
+    var dataLayer = [{
+        contentTitle: htmlUnescape("Page not found"),
+        "gtm.whitelist": ["google","hjtc","lcl"],
+        "gtm.blacklist": ["customScripts","sp","adm","awct","k","d","j"]
+    }];
+
+    
+
+    
+
+    
+    
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+</script>
+
+
+        <!-- Google Tag Manager -->
+        <script>
+			// The naming of this function is important as it is called from sixteens as well as from other DOM code
+			function loadGTM(){
+				(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer'
+					? '&l=' + l
+					: '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+				})(window, document, 'script', 'dataLayer', 'GTM-MBCBVQS');
+      		}
+
+			if (isUsageCookieAllowed()) {
+				loadGTM();
+			}
+	  	</script>
+        <!-- End Google Tag Manager -->
+
+        
+
+		
+		
+			<style>
+				body {
+    				min-height: 100vh;
+   	 				display: flex;
+    				flex-direction: column;
+				}
+
+				footer {
+    				margin-top: auto;
+				}
+			</style>
+		
+
+	</head>
+	<body class="error">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js' : 'js');</script>
+    <form action="/cookies/accept-all" method="GET" id="global-cookie-message"
+      class="cookies-banner cookies-banner--hidden js-cookies-banner-form clearfix"
+      aria-label="cookie banner">
+    <div class="cookies-banner__wrapper wrapper js-cookies-banner-inform">
+        <div>
+            <div class="cookies-banner__message adjust-font-size--18">
+                <h3 class="cookies-banner__heading">Cookies on ons.gov.uk</h3>
+                <p class="cookies-banner__body">Cookies are small files stored on your device when you visit a website. We use some essential cookies to make this website work.</p>
+                <p class="cookies-banner__body">We would like to set <a href="/cookies">additional cookies</a> to remember your settings and understand how you use the site. This helps us to improve our services.</p>
+            </div>
+            <div class="cookies-banner__buttons">
+                <div class="nojs--hide cookies-banner__button cookies-banner__button--accept">
+                    <b
