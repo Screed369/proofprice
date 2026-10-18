@@ -1,0 +1,75 @@
+URL: https://www150.statcan.gc.ca/n1/tbl/csv/32100077-eng.zip
+Fetched: 2026-10-18T12:43:24Z from GitHub Actions
+Status, type, bytes: 200 application/zip 1512559
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx/1.24.0
+Date: Sun, 18 Oct 2026 12:43:24 GMT
+Content-Type: application/zip
+Content-Length: 1512559
+Connection: keep-alive
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Last-Modified: Fri, 09 Oct 2026 12:31:59 GMT
+ETag: "17146f-65d6788dd06ed"
+Cache-Control: max-age=120
+Pragma: no-cache
+Expires: Sun, 18 Oct 2026 12:45:24 GMT
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: default-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net *.everesttech.net blob:; style-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca https://fonts.googleapis.com blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.statcan.gc.ca *.statcan.ca *.googletagmanager.com *.adobedtm.com *.jsdelivr.net *.mathjax.org cdnjs.cloudflare.com blob:; connect-src 'self' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net https://api.mapbox.com/ https://events.mapbox.com/ https://energy-information.canada.ca; img-src 'self' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net *.everesttech.net *.jsdelivr.net data: blob:; font-src 'self' *.statcan.gc.ca *.statcan.ca https://fonts.gstatic.com; worker-src 'self' 'unsafe-inline' 'unsafe-eval' *.statcan.gc.ca *.statcan.ca blob:; frame-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca *.stc.ca https://dv-vd.shinyapps.io *.demdex.net blob:;
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Frame-Options: SAMEORIGIN
+X-Proxy-Cache: HIT
+Cache-Control: public
+Accept-Ranges: bytes
+
+=== FILE TYPE: Zip archive data, at least v2.0 to extract, compression method=deflate
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+ 18465538  2026-10-09 01:15   32100077.csv
+     7636  2026-10-09 01:15   32100077_MetaData.csv
+---------                     -------
+ 18473174                     2 files
+=== FIRST 6000 BYTES OF 32100077.csv
+﻿"REF_DATE","GEO","DGUID","Farm products","UOM","UOM_ID","SCALAR_FACTOR","SCALAR_ID","VECTOR","COORDINATE","VALUE","STATUS","SYMBOL","TERMINATED","DECIMALS"
+"1980-01","Manitoba","2016A000246","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212166","7.4","170.49","","","t","2"
+"1980-01","Manitoba","2016A000246","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212167","7.5","133.74","","","t","2"
+"1980-01","Manitoba","2016A000246","Canadian Wheat Board, durum including payments","Dollars per metric tonne","117","units","0","v31212168","7.6","178.79","","","t","2"
+"1980-01","Manitoba","2016A000246","Canadian Wheat Board, durum excluding payments","Dollars per metric tonne","117","units","0","v31212169","7.7","142.90","","","t","2"
+"1980-01","Saskatchewan","2016A000247","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212202","8.4","175.79","","","t","2"
+"1980-01","Saskatchewan","2016A000247","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212203","8.5","137.05","","","t","2"
+"1980-01","Saskatchewan","2016A000247","Canadian Wheat Board, durum including payments","Dollars per metric tonne","117","units","0","v31212204","8.6","187.00","","","t","2"
+"1980-01","Saskatchewan","2016A000247","Canadian Wheat Board, durum excluding payments","Dollars per metric tonne","117","units","0","v31212205","8.7","146.25","","","t","2"
+"1980-01","Alberta","2016A000248","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212238","9.4","175.51","","","t","2"
+"1980-01","Alberta","2016A000248","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212239","9.5","137.42","","","t","2"
+"1980-01","Alberta","2016A000248","Canadian Wheat Board, durum including payments","Dollars per metric tonne","117","units","0","v31212240","9.6","184.81","","","t","2"
+"1980-01","Alberta","2016A000248","Canadian Wheat Board, durum excluding payments","Dollars per metric tonne","117","units","0","v31212241","9.7","146.61","","","t","2"
+"1980-02","Manitoba","2016A000246","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212166","7.4","169.76","","","t","2"
+"1980-02","Manitoba","2016A000246","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212167","7.5","133.02","","","t","2"
+"1980-02","Manitoba","2016A000246","Canadian Wheat Board, durum including payments","Dollars per metric tonne","117","units","0","v31212168","7.6","178.05","","","t","2"
+"1980-02","Manitoba","2016A000246","Canadian Wheat Board, durum excluding payments","Dollars per metric tonne","117","units","0","v31212169","7.7","142.36","","","t","2"
+"1980-02","Saskatchewan","2016A000247","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212202","8.4","174.32","","","t","2"
+"1980-02","Saskatchewan","2016A000247","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212203","8.5","135.58","","","t","2"
+"1980-02","Saskatchewan","2016A000247","Canadian Wheat Board, durum including payments","Dollars per metric tonne","117","units","0","v31212204","8.6","185.49","","","t","2"
+"1980-02","Saskatchewan","2016A000247","Canadian Wheat Board, durum excluding payments","Dollars per metric tonne","117","units","0","v31212205","8.7","144.76","","","t","2"
+"1980-02","Alberta","2016A000248","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212238","9.4","174.78","","","t","2"
+"1980-02","Alberta","2016A000248","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212239","9.5","136.68","","","t","2"
+"1980-02","Alberta","2016A000248","Canadian Wheat Board, durum including payments","Dollars per metric tonne","117","units","0","v31212240","9.6","184.13","","","t","2"
+"1980-02","Alberta","2016A000248","Canadian Wheat Board, durum excluding payments","Dollars per metric tonne","117","units","0","v31212241","9.7","145.92","","","t","2"
+"1980-03","Manitoba","2016A000246","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212166","7.4","170.86","","","t","2"
+"1980-03","Manitoba","2016A000246","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212167","7.5","134.11","","","t","2"
+"1980-03","Manitoba","2016A000246","Canadian Wheat Board, durum including payments","Dollars per metric tonne","117","units","0","v31212168","7.6","179.13","","","t","2"
+"1980-03","Manitoba","2016A000246","Canadian Wheat Board, durum excluding payments","Dollars per metric tonne","117","units","0","v31212169","7.7","143.29","","","t","2"
+"1980-03","Saskatchewan","2016A000247","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212202","8.4","176.16","","","t","2"
+"1980-03","Saskatchewan","2016A000247","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212203","8.5","137.42","","","t","2"
+"1980-03","Saskatchewan","2016A000247","Canadian Wheat Board, durum including payments","Dollars per metric tonne","117","units","0","v31212204","8.6","187.35","","","t","2"
+"1980-03","Saskatchewan","2016A000247","Canadian Wheat Board, durum excluding payments","Dollars per metric tonne","117","units","0","v31212205","8.7","146.60","","","t","2"
+"1980-03","Alberta","2016A000248","Canadian Wheat Board, wheat including payments","Dollars per metric tonne","117","units","0","v31212238","9.4","169.27","","","t","2"
+"1980-03","Alberta","2016A000248","Canadian Wheat Board, wheat excluding payments","Dollars per metric tonne","117","units","0","v31212239","9.5","131.17","","","t","2"
+"1980-03","Alberta","20
