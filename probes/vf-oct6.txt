@@ -1,0 +1,212 @@
+URL: https://developer.octopus.energy/rest/
+Fetched: 2026-10-18T09:48:51Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 5025
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 18 Oct 2026 09:48:51 GMT
+content-type: text/html; charset=utf-8
+content-length: 5025
+x-frame-options: DENY
+vary: host, Accept-Language, Cookie
+content-language: en
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+cache-control: public
+set-cookie: kraken_v_uuid=892deea7-5202-4d66-ae25-419660f844ec:1xINVb:Dzxycf_LdzEUWAQhd7EOPSk8tlD07pQsIrglhLM5Gk4; expires=Sun, 17 Oct 2027 09:48:51 GMT; Max-Age=31449600; Path=/; SameSite=Lax
+set-cookie: sessionid=npa8wurrrfg93lxklbksmj6uwg2xeana; expires=Sun, 01 Nov 2026 09:48:51 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax
+
+=== FILE TYPE: HTML document, ASCII text
+=== FIRST 20000 BYTES
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome icons (pro version) -->
+    <script src="https://kit.fontawesome.com/467783b969.js" crossorigin="anonymous"></script>
+
+    <!-- Stylesheets -->
+    
+      <link rel="stylesheet" href="/static/vendor/css/bootstrap/bootstrap.35a7fd9f6ce5.css" />
+      <link rel="stylesheet" href="/static/css/main.fd1a596e1959.css" />
+
+      
+      
+        <!--Parent company statics-->
+        <link href="/static/groups/octopus/styling.b95bc2e446be.css" rel="stylesheet" type="text/css" />
+      
+
+      
+      
+        <!--Default styling-->
+        <link rel="stylesheet" href="/static/clients/kraken/styling.4b0dbde5b592.css" type="text/css" />
+      
+    
+
+    
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="/static/groups/octopus/favicon.c4d8787c2f25.ico" />
+      <link rel="shortcut icon" href="" />
+    
+    
+
+    <!-- Client-Side Syntax Highlighting -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet" />
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-1.13.8/fh-3.4.0/datatables.min.css" rel="stylesheet" />
+
+    <title>REST Documentation | API docs</title>
+  </head>
+  <body>
+    
+  <a
+    class="tako-button tako-button--primary"
+    href="#content"
+    id="skip-to-main-content"
+    aria-label="Skip to main content"
+  >
+    Skip to main content
+  </a>
+
+  
+
+<div id="alertPlaceholder"></div>
+
+<header class="documentation-header">
+  
+    
+    
+    <a
+      class="documentation-header__logo"
+      href="/"
+    >
+      <img
+        src="
+             
+               /static/groups/octopus/logo.abf73de4d514.svg
+             "
+        alt="Octopus Energy UK logo"
+        title="Octopus Energy UK homepage"
+      >
+    </a>
+  
+
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+  <label for="nav-toggle" class="nav-toggle-label"><i class="fas fa-bars"></i>Menu</label>
+
+  <nav class="documentation-navigation">
+    <ul>
+      
+        <li><a href="/graphql/">GraphQL</a></li>
+        <li><a href="/rest/">REST</a></li>
+        <li><a href="/announcements/">API Announcements</a></li>
+        <li><a href="/graphql/collections/">API Collections</a></li>
+      
+
+      
+        
+          <li><a href="/auth/login/">Log In</a></li>
+        
+      
+    </ul>
+  </nav>
+</header>
+
+
+  <main class="container">
+    
+
+    
+      <nav class="my-4 tako-breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          
+  <li><a href="/">Home</a></li>
+  <li class="active">REST</li>
+
+        </ol>
+      </nav>
+    
+
+    
+      <section id="content">
+        
+  
+  
+  <h1>REST Documentation</h1>
+
+
+
+
+  <div class="documentation-groups-container">
+
+    <div class="tako-card h-100">
+      <div class="tako-card__header"><h3><a href="/guides/rest/">Guides</a></h3></div>
+      <div class="tako-card__content">
+        <div class="documentation-group-details">
+          <p>
+            For more information on how to use our REST API please see the guides
+to help you get started.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tako-card h-100">
+      <div class="tako-card__header"><h3><a href="/rest/reference/">Reference</a></h3></div>
+      <div class="tako-card__content">
+        <div class="documentation-group-details">
+          <div class="documentation-group-details">
+            <p>
+              If you are familiar with REST and want to dive right in, you can
+use the reference documentation built from the OpenAPI spec where you can explore the available
+endpoints and their parameters.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tako-card h-100">
+      <div class="tako-card__header"><h3><a href="/rest/changelogs/services/">REST Changelogs</a></h3></div>
+      <div class="tako-card__content">
+        <div class="documentation-group-details">
+          <div class="documentation-group-details">
+            <p>
+              If you want to see what changes have been made to an API
+over time, you can view the available changelogs for the various REST API services here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      </section>
+    
+
+    
+    
+  </main>
+
+  
+  
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="/static/vendor/js/tako/tako.min.9a5e5cdf0fc5.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-1.13.8/fh-3.4.0/datatables.min.js"></script>
+    <script src="/static/vendor/js/htmx.min.d073ff63d1ed.js"></script>
+    <script>
+      window.Tako.initAllTakoComponents();
+    </script>
+    
+  </body>
+</html>
