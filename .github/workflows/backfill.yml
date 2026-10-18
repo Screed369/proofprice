@@ -1,0 +1,82 @@
+# The history loader ("go back in time"): started by hand with a source id and a date range. Runs the source's backfill(),
+# which returns aggregates for past periods (monthly beyond the last 90 days), and commits them to library/ like the daily
+# harvest. Start:  gh workflow run backfill.yml -R Screed369/proofprice --ref main -f source=fr-fuel -f from=2007-01-01 -f to=2026-10-12
+# It shares the "harvest" concurrency group, so it never overlaps the daily collector. It never changes a stored daily row.
+name: History backfill
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Source id, e.g. fr-fuel"
+        required: true
+      from:
+        description: "First day to load (YYYY-MM-DD)"
+        required: true
+      to:
+        description: "Last day to load (YYYY-MM-DD)"
+        required: true
+      dry_run:
+        description: "true = measure and report only, commit nothing"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    # Only ever on main: a run started on another branch must never push that branch to main.
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check the code first
+        run: npm test
+      - name: Backfill
+        env:
+          SOURCE: ${{ github.event.inputs.source }}
+          FROM: ${{ github.event.inputs.from }}
+          TO: ${{ github.event.inputs.to }}
+          DRY: ${{ github.event.inputs.dry_run }}
+        run: |
+          set -o pipefail
+          flag=""; [ "$DRY" = "true" ] && flag="--dry-run"
+          npm run backfill -- "$SOURCE" "$FROM" "$TO" $flag 2>&1 | tee backfill.log
+          { echo "### Backfill $SOURCE $FROM to $TO"; echo '```'; tail -n 25 backfill.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Commit the history (aggregate files only)
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "proofprice-historian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add library
+          if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
+          # Guards: only library files; nothing stored may be removed or rewritten except by adding history; meta.json untouched.
+          bad=$(git diff --cached --name-only | grep -v -E '^library/[a-z0-9-]+/(history/[0-9]{4}\.csv|history-meta\.json|daily/[0-9]{4}-[0-9]{2}\.csv)$' || true)
+          if [ -n "$bad" ]; then echo "::error::Unexpected files staged: $bad"; exit 1; fi
+          removed=$(git diff --cached --numstat -- 'library/*/daily/*.csv' | awk '$2>0{print $3}')
+          if [ -n "$removed" ]; then echo "::error::Backfill would remove stored daily rows: $removed"; exit 1; fi
+          size=$(git diff --cached --numstat | awk '{a+=$1} END{print a+0}')
+          echo "Added lines: $size"
+          git commit -m "Library: history backfill $SOURCE $FROM to $TO"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
+        env:
+          SOURCE: ${{ github.event.inputs.source }}
+          FROM: ${{ github.event.inputs.from }}
+          TO: ${{ github.event.inputs.to }}

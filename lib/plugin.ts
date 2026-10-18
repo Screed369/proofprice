@@ -53,6 +53,21 @@ export interface HarvestResult {
   note?: string;
 }
 
+/** One period of past aggregates. `period` is "YYYY-MM" (a month) or, for the last 90 days only, "YYYY-MM-DD" (a day). */
+export interface BackfillPeriod {
+  period: string;
+  rows: DailyRow[];
+}
+
+/** What a source's backfill(from, to) returns: aggregates per period, never single records. The platform
+ *  (lib/library/backfill.ts) applies the 5-record rule, the monthly-beyond-90-days rule and the size budget. */
+export interface BackfillResult {
+  currency: string;
+  unit: string;
+  periods: BackfillPeriod[];
+  note?: string;
+}
+
 export interface Example {
   params: Record<string, string>; // REST query parameters, including country
   smoke?: boolean; // default true for the first example: checked by the Monitor after every deploy
@@ -104,6 +119,9 @@ export interface SourcePlugin {
   handle(params: Params, ctx: HandleContext): Promise<PriceAnswer>;
   /** Optional: called once a day by the collector (GitHub Actions) to add a day of aggregates to the library. */
   harvest?(): Promise<HarvestResult>;
+  /** Optional: load past data (from, to are YYYY-MM-DD, inclusive) as aggregates. Run by hand through the backfill workflow
+   *  (.github/workflows/backfill.yml), never in the app. Stream big files; never keep raw rows. */
+  backfill?(from: string, to: string): Promise<BackfillResult>;
   /** Set true when harvest() writes a placeholder count (n: 5) because the publisher gives one figure and no record count.
    *  Answers and history built from the library then report sample_size null instead of a count that is not real. */
   nominalCounts?: boolean;
