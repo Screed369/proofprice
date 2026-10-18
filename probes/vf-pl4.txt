@@ -1,0 +1,23 @@
+URL: https://api.dane.gov.pl/1.4/institutions/search?q=Ministerstwo%20Zdrowia
+Fetched: 2026-10-18T09:45:08Z from GitHub Actions
+Status, type, bytes: 404 application/vnd.api+json 224
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Sun, 18 Oct 2026 09:43:15 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 224
+Connection: keep-alive
+x-api-version: 1.4
+content-language: pl
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS
+Access-Control-Allow-Headers: DNT,Authorization,User-Agent,X-Requested-With,Cookie,X-Mcod-Csrf-Token,X-Api-Version,If-Modified-Since,Cache-Control,Content-Type,Range,Expires,Pragma
+Access-Control-Expose-Headers: Content-Length,Content-Range
+Set-Cookie: BIGipServer~danePubliczne~POOL_danePubliczne=rd2o00000000000000000000ffffac19e9e0o80; path=/; Httponly; Secure
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+{"jsonapi": {"version": "1.4"}, "errors": [{"id": "bf4d23f0-e63b-4b0e-8a5d-d0fc63a5a0bf", "status": "404 Not Found", "code": "404_not_found", "title": "404 Not Found", "detail": "The requested resource could not be found"}]}
