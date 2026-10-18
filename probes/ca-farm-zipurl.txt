@@ -1,0 +1,34 @@
+URL: https://www150.statcan.gc.ca/t1/wds/rest/getFullTableDownloadCSV/32100077/en
+Fetched: 2026-10-18T17:13:24Z from GitHub Actions
+Status, type, bytes: 200 application/json 88
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Server: nginx/1.24.0
+Date: Sun, 18 Oct 2026 17:13:24 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+vary: accept-encoding
+Cache-Control: max-age=1800
+Pragma: no-cache
+Expires: Sun, 18 Oct 2026 17:43:24 GMT
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: default-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net *.everesttech.net blob:; style-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca https://fonts.googleapis.com blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.statcan.gc.ca *.statcan.ca *.googletagmanager.com *.adobedtm.com *.jsdelivr.net *.mathjax.org cdnjs.cloudflare.com blob:; connect-src 'self' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net https://api.mapbox.com/ https://events.mapbox.com/ https://energy-information.canada.ca; img-src 'self' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net *.everesttech.net *.jsdelivr.net data: blob:; font-src 'self' *.statcan.gc.ca *.statcan.ca https://fonts.gstatic.com; worker-src 'self' 'unsafe-inline' 'unsafe-eval' *.statcan.gc.ca *.statcan.ca blob:; frame-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca *.stc.ca https://dv-vd.shinyapps.io *.demdex.net blob:;
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Frame-Options: SAMEORIGIN
+X-Proxy-Cache: MISS
+Cache-Control: public
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: DNT,X-Custom-Header,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+Access-Control-Expose-Headers: DNT,X-Custom-Header,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+
+=== FILE TYPE: JSON text data
+=== FIRST 2000 BYTES
+{"status":"SUCCESS","object":"https://www150.statcan.gc.ca/n1/tbl/csv/32100077-eng.zip"}
