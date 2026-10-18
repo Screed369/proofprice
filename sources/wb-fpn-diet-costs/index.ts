@@ -9,7 +9,7 @@ export default defineSource({
   countryHelp:
     "Countries as ISO codes: " + Object.entries(COUNTRIES).map(([c, v]) => `${c} = ${v.name}`).join(", ") +
     ". World Bank estimate for the whole country, one figure per year (2017 onwards).",
-  placeName: "about 90 countries worldwide (World Bank estimates)",
+  placeName: "about 68 countries worldwide (World Bank estimates)",
   status: "live",
   paramNotes: {
     food_group: `World Bank: ${GROUP_HELP}. The figure is in the country's own currency per person per day, with international (PPP) dollars in the answer. Blank for some countries and years.`,

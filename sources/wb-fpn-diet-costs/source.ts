@@ -12,7 +12,7 @@ import type { SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "wb-fpn-diet-costs",
-  country: "About 90 countries worldwide",
+  country: "About 68 countries worldwide",
   category: "diet-costs (modelled cost of a healthy diet per person per day)",
   name: "Food Prices for Nutrition 5.0: cost of a healthy diet (World Bank)",
   publisher: "World Bank, Development Data Group, with Tufts University (Food Prices for Nutrition project)",
@@ -214,9 +214,9 @@ export async function wbDietCost(ask: Ask, fetcher: Fetcher = live): Promise<Pri
     method: wbMethod(group),
     note: "Modelled estimate of the least-cost healthy diet, not a shop price or a receipt.",
     describe: (v) =>
-      `The cheapest healthy diet in ${def.name} was modelled at about ${fmtMoney(v, def.currency)} per person per day in ${usable.year}` +
+      (group.key ? `The ${group.label} part of the cheapest healthy diet in ${def.name}` : `The cheapest healthy diet in ${def.name}`) +
+      ` was modelled at about ${fmtMoney(v, def.currency)} per person per day in ${usable.year}` +
       (usable.ppp !== null ? ` (${money(usable.ppp)} PPP dollars)` : "") +
-      (group.key ? `, of which ${group.label} cost this amount` : "") +
       (change !== null ? `; ${change >= 0 ? "up" : "down"} ${Math.abs(change)}% on ${usable.year - 1}` : "") + ".",
     baseUrl: ask.baseUrl,
     extra: {
