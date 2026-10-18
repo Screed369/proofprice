@@ -1,0 +1,35 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/11573/data?lang=en&outputFormat=json-stat2&valuecodes%5BTid%5D=top(2)&valuecodes%5BRegion%5D=0301,0,1103&valuecodes%5BContentsCode%5D=*
+Fetched: 2026-10-18T18:12:37Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 3837
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 18 Oct 2026 18:12:36 GMT
+server: 
+content-type: application/json; charset=UTF-8
+content-disposition: inline; filename="11573.json"
+content-disposition: inline; filename="11573.json"
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 18122149
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=85733081.627; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"version":"2.0","class":"dataset","label":"11573: Average kindergarten fees. January (NOK), by region and year","source":"Statistics Norway","updated":"2026-04-30T06:00:00Z","note":["[See list over changes in regional classifications](https://www.ssb.no/offentlig-sektor/kommunekatalog/endringer-i-de-regionale-inndelingene) (in Norwegian).\n"],"role":{"time":["Tid"],"geo":["Region"],"metric":["ContentsCode"]},"id":["Region","ContentsCode","Tid"],"size":[3,5,2],"dimension":{"Region":{"label":"region","category":{"index":{"0301":0,"0":1,"1103":2},"label":{"0301":"Oslo - Oslove","0":"The whole country","1103":"Stavanger"}},"extension":{"elimination":true,"eliminationValueCode":"0","show":"code_value"},"link":{"describedby":[{"extension":{"Region":"urn:ssb:classification:klass:131"}}]}},"ContentsCode":{"label":"contents","category":{"index":{"GjSnittMndKostpenger":0,"GjSnittMndTilleggsut":1,"GjSnittMndBarnehage":2,"GjSnittMndBetaling":3,"AarsbetalingAltInkl":4},"label":{"GjSnittMndKostpenger":"Average monthly fee for food","GjSnittMndTilleggsut":"Average monthly additional fees","GjSnittMndBarnehage":"Average monthly kindergarten price, including free places","GjSnittMndBetaling":"Average monthly kindergarten payment, including free places, food fees and additional fees","AarsbetalingAltInkl":"Yearly payment, including everything"},"unit":{"GjSnittMndKostpenger":{"base":"NOK","decimals":0},"GjSnittMndTilleggsut":{"base":"NOK","decimals":0},"GjSnittMndBarnehage":{"base":"NOK","decimals":0},"GjSnittMndBetaling":{"base":"NOK","decimals":0},"AarsbetalingAltInkl":{"base":"NOK","decimals":0}}},"extension":{"elimination":false,"refperiod":{"GjSnittMndKostpenger":"January","GjSnittMndTilleggsut":"January","GjSnittMndBarnehage":"January","GjSnittMndBetaling":"January","AarsbetalingAltInkl":"January"},"show":"value","measuringType":{"GjSnittMndKostpenger":"Flow","GjSnittMndTilleggsut":"Flow","GjSnittMndBarnehage":"Flow","GjSnittMndBetaling":"Flow","AarsbetalingAltInkl":"Flow"},"priceType":{"GjSnittMndKostpenger":"NotApplicable","GjSnittMndTilleggsut":"NotApplicable","GjSnittMndBarnehage":"NotApplicable","GjSnittMndBetaling":"NotApplicable","AarsbetalingAltInkl":"NotApplicable"},"adjustment":{"GjSnittMndKostpenger":"None","GjSnittMndTilleggsut":"None","GjSnittMndBarnehage":"None","GjSnittMndBetaling":"None","AarsbetalingAltInkl":"None"},"alternativeText":{"GjSnittMndKostpenger":"Average monthly fee for food","GjSnittMndTilleggsut":"Average monthly additional fees","GjSnittMndBarnehage":"Average monthly kindergarten price, including free places","GjSnittMndBetaling":"Average monthly kindergarten payment, including free places, food fees and additional fees","AarsbetalingAltInkl":"Yearly payment, including everything"}}},"Tid":{"label":"year","category":{"index":{"2025":0,"2026":1},"label":{"2025":"2025","2026":"2026"}},"extension":{"elimination":false,"show":"code"}}},"extension":{"px":{"infofile":"None","tableid":"11573","decimals":0,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"11573: Average kindergarten fees. January (NOK),","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["Region"],"matrix":"11573","subject-code":"ud","subject-area":"Education"},"discontinued":null,"contact":[{"name":"Konsumprisindeksen","organization":"Statistics Norway","phone":"62 88 56 34","mail":"konsumprisindeksen@ssb.no","raw":" Konsumprisindeksen, Statistics Norway# +47 62 88 56 34#konsumprisindeksen@ssb.no"},{"name":"Silje Skjolden Thorsnes","organization":"Statistics Norway","phone":"45 66 42 04","mail":"nth@ssb.no","raw":"Silje Skjolden Thorsnes, Statistics Norway# +47 45 66 42 04#nth@ssb.no"}]},"value":[382,397,5,4,1772,1078,2159,1479,23746,16265,407,426,2,2,1664,997,2073,1425,22803,15671,445,471,3,1,1559,945,2007,1417,22076,15587]}
