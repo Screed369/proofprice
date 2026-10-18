@@ -1,0 +1,31 @@
+URL: https://api.octopus.energy/v1/products/?brand=OCTOPUS_ENERGY&is_business=false&page_size=2
+Fetched: 2026-10-18T09:48:49Z from GitHub Actions
+Status, type, bytes: 200 application/json 18030
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+content-length: 18030
+date: Sun, 18 Oct 2026 09:48:49 GMT
+content-language: en-gb
+set-cookie: AWSALB=7Ph4d72fDJ0B0OXo/qTPUOOGFTz66/iwZa7I74dELSWNu6pkAHBT3v3oD6zBC/NtS/jpE1Xq3184g7wBz0RPM9trx2m1Is1bdUbX4mLFkDatLUr9xvtKVYnPcjYY; Expires=Sun, 25 Oct 2026 09:48:49 GMT; Path=/
+set-cookie: AWSALBCORS=7Ph4d72fDJ0B0OXo/qTPUOOGFTz66/iwZa7I74dELSWNu6pkAHBT3v3oD6zBC/NtS/jpE1Xq3184g7wBz0RPM9trx2m1Is1bdUbX4mLFkDatLUr9xvtKVYnPcjYY; Expires=Sun, 25 Oct 2026 09:48:49 GMT; Path=/; SameSite=None; Secure
+server: nginx
+vary: Accept-Encoding
+vary: Accept-Language, Cookie, origin
+allow: GET, HEAD, OPTIONS
+x-kraken-correlation-id: 1-6ad49601-249755ad7c15b9723802be97
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-frame-options: SAMEORIGIN
+x-cache: Miss from cloudfront
+via: 1.1 434e1d253124c6f9517c35a2c6014518.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD55-P10
+x-amz-cf-id: ABB3Q-6b1OU8iwMDAvEFczoNDXQvMNMDMSPyNthJp4Kbp2LizvxmFg==
+
+=== FILE TYPE: JSON text data
+=== FIRST 800 BYTES
+{"count":30,"next":null,"previous":null,"results":[{"code":"AGILE-24-10-01","direction":"IMPORT","full_name":"Agile Octopus October 2024 v1","display_name":"Agile Octopus","description":"With Agile Octopus, you get access to half-hourly energy prices, tied to wholesale prices and updated daily.  The unit rate is capped at 100p/kWh (including VAT).","is_variable":true,"is_green":true,"is_tracker":false,"is_prepay":false,"is_business":false,"is_restricted":false,"term":12,"available_from":"2024-10-01T00:00:00+01:00","available_to":null,"links":[{"href":"https://api.octopus.energy/v1/products/AGILE-24-10-01/","method":"GET","rel":"self"}],"brand":"OCTOPUS_ENERGY"},{"code":"AGILE-OUTGOING-19-05-13","direction":"EXPORT","full_name":"Agile Outgoing Octopus May 2019","display_name":"Agile Outgoin
