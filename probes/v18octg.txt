@@ -1,0 +1,33 @@
+URL: https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/gas-tariffs/G-1R-OE-FIX-12M-26-10-17-A/standard-unit-rates/?page_size=2
+Fetched: 2026-10-18T06:50:27Z from GitHub Actions
+Status, type, bytes: 200 application/json 174
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+content-length: 174
+date: Sun, 18 Oct 2026 06:50:27 GMT
+content-language: en-gb
+set-cookie: AWSALB=2ivCxd3A1Rii5VwVS0bt6bUhMGfn4BKd56jA09Go1UoomVJrRFHJ3HvUITa6ztiKg1WwckuLarKtnS0svJVO2GCM4nd4HzAaGYS7PsZQFqZ3VXCfvvFPF3SeYBR0; Expires=Sun, 25 Oct 2026 06:50:27 GMT; Path=/
+set-cookie: AWSALBCORS=2ivCxd3A1Rii5VwVS0bt6bUhMGfn4BKd56jA09Go1UoomVJrRFHJ3HvUITa6ztiKg1WwckuLarKtnS0svJVO2GCM4nd4HzAaGYS7PsZQFqZ3VXCfvvFPF3SeYBR0; Expires=Sun, 25 Oct 2026 06:50:27 GMT; Path=/; SameSite=None; Secure
+server: nginx
+vary: Accept-Encoding
+vary: Authorization, Accept-Language, Cookie, origin
+allow: GET, HEAD, OPTIONS
+expires: Sun, 18 Oct 2026 07:15:27 GMT
+cache-control: max-age=1500
+x-kraken-correlation-id: 1-6ad46c33-7d716b761741d74b2279b91e
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-frame-options: SAMEORIGIN
+x-cache: Miss from cloudfront
+via: 1.1 ad61503766f4a97e317fa98996305a7a.cloudfront.net (CloudFront)
+x-amz-cf-pop: PHX52-P1
+x-amz-cf-id: s6_jSPRYgLg_WqlP5RToSvjp2c2fev8PJj5npqWazY3BI3PAvYWfMw==
+
+=== FILE TYPE: JSON text data
+=== FIRST 1200 BYTES
+{"count":1,"next":null,"previous":null,"results":[{"value_exc_vat":8.6738,"value_inc_vat":9.10749,"valid_from":"2026-10-16T23:00:00Z","valid_to":null,"payment_method":null}]}
