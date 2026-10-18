@@ -1,0 +1,25 @@
+URL: https://api.tenders.gov.au/ocds/findById/CN4282219
+Fetched: 2026-10-18T20:50:08Z from GitHub Actions
+Status, type, bytes: 200 application/json 1962
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+content-length: 1962
+date: Sun, 18 Oct 2026 20:50:08 GMT
+access-control-allow-credentials: true
+x-amzn-requestid: 97addcac-ddd0-49f1-961f-9a9e2ffd46f4
+access-control-allow-origin: *
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-amz-apigw-id: FdSYNH5UywMEikw=
+cache-control: public, max-age=60
+x-amzn-trace-id: Root=1-6ad53100-68927bc863911ab77a5d2db8;Parent=289873a6f63c12d5;Sampled=0;Lineage=1:f6e09717:0
+x-cache: Miss from cloudfront
+via: 1.1 342c71b0b483f9db3a171f6f8a6ebd64.cloudfront.net (CloudFront)
+x-amz-cf-pop: PHX52-P3
+x-amz-cf-id: DRMM60ucJvamicPAfAjBdbQy7X9F_hIrrHdhTcARwt3JhHS_fze66Q==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"uri": "https://api.tenders.gov.au/ocds/findById/CN4282219", "publisher": {"name": "Department of Finance"}, "publishedDate": "2026-10-12T23:44:33Z", "version": "1.1", "releases": [{"ocid": "prod-310db32c513a40218872be982ad720c7", "id": "prod-310db32c513a40218872be982ad720c7-e4c3fcd1df4e3704bac9de55b310dff3", "date": "2026-10-12T23:44:33Z", "initiationType": "tender", "language": "EN", "parties": [{"id": "c6693d03c510b15a9ed6acc511144ccb", "name": "Datacom Systems (AU) Pty Ltd", "additionalIdentifiers": [{"id": "39135427075", "scheme": "AU-ABN"}], "address": {"locality": "BRADDON", "region": "ACT", "postalCode": "2612", "countryName": "AUSTRALIA"}, "contactPoint": {"name": "Procurement Enquiries", "email": "ProcurementEnquiries@acma.gov.au"}, "roles": ["supplier"]}, {"id": "77c8b1272b8740a596615cbc340407fb", "name": "Office of the eSafety Commissioner", "roles": ["procuringEntity"], "additionalIdentifiers": [{"id": "12212931598", "scheme": "AU-ABN"}], "address": {}, "contactPoint": {"email": "tenders@finance.gov.au"}}], "awards": [{"id": "CN4282219-41057c8178a74eca860337eb81e4099b", "suppliers": [{"id": "c6693d03c510b15a9ed6acc511144ccb", "name": "Datacom Systems (AU) Pty Ltd"}], "status": "active", "date": "2026-10-12T23:44:33Z"}], "contracts": [{"id": "CN4282219", "awardID": "CN4282219-41057c8178a74eca860337eb81e4099b", "dateSigned": "2026-10-12T23:44:33Z", "description": "27CeSC012 - Fortinet FortiGate", "title": "ECOM00000156", "items": [{"id": "43200000-41057c8178a74eca860337eb81e4099b", "classification": {"scheme": "UNSPSC", "id": "43200000"}}], "period": {"startDate": "2026-09-29T14:00:00Z", "endDate": "2027-09-29T14:00:00Z"}, "value": {"currency": "AUD", "amount": "66866.98"}, "status": "active"}], "tag": ["contract"], "tender": {"id": "prod-310db32c513a40218872be982ad720c7", "procurementMethod": "open", "procurementMethodDetails": "Open tender"}}], "extensions": ["http://cdn.tenders.gov.au/ocds/schema/extension.json"]}
