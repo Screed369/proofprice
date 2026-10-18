@@ -1,0 +1,18 @@
+URL: https://opendata.gov.je/api/3/action/datastore_search?resource_id=893960a4-6f41-4f98-a0f0-cf95c5049f14&limit=3
+Fetched: 2026-10-18T06:41:49Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1148
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx/1.14.0 (Ubuntu)
+Date: Sun, 18 Oct 2026 06:41:49 GMT
+Content-Type: application/json;charset=utf-8
+Content-Length: 1148
+Connection: keep-alive
+Cache-Control: private
+X-Frame-Options: SAMEORIGIN
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"help": "https://opendata.gov.je/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "resource_id": "893960a4-6f41-4f98-a0f0-cf95c5049f14", "fields": [{"type": "int", "id": "_id"}, {"info": {"notes": "", "type_override": "numeric", "label": ""}, "type": "numeric", "id": "Year"}, {"info": {"notes": "", "type_override": "", "label": ""}, "type": "text", "id": "Month"}, {"info": {"notes": "", "type_override": "", "label": ""}, "type": "text", "id": "RegistrationMark"}, {"info": {"notes": "", "type_override": "numeric", "label": ""}, "type": "numeric", "id": "HammerPrice"}], "records_format": "objects", "records": [{"_id":1,"Year":1998,"Month":"","RegistrationMark":"J1757","HammerPrice":560},{"_id":2,"Year":1998,"Month":"","RegistrationMark":"J5797","HammerPrice":320},{"_id":3,"Year":1998,"Month":"","RegistrationMark":"J13431","HammerPrice":80}], "limit": 3, "_links": {"start": "/api/3/action/datastore_search?limit=3&resource_id=893960a4-6f41-4f98-a0f0-cf95c5049f14", "next": "/api/3/action/datastore_search?offset=3&limit=3&resource_id=893960a4-6f41-4f98-a0f0-cf95c5049f14"}, "total": 885}}
