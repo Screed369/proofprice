@@ -29,6 +29,11 @@ test("an unknown parameter is rejected with the valid names", () => {
   assert.doesNotThrow(() => assertKnownParams(hs, paramsFromQuery(hs, q("country=IE&area=Dublin&months=12&department=x"))));
 });
 
+test("platform and tracking noise is ignored, not rejected", () => {
+  const p = paramsFromQuery(hs, q("country=IE&town=Dublin&_vercel_share=abc&utm_source=x&fbclid=1&ppcheck=1"));
+  assert.doesNotThrow(() => assertKnownParams(hs, p));
+});
+
 test("a category without a place says so", () => {
   const med = categoryById("medicines")!;
   assert.equal(locationParam(med), undefined);

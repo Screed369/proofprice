@@ -173,10 +173,16 @@ export function paramsFromQuery(cat: CategoryPlugin, q: URLSearchParams): Params
   return out;
 }
 
+/** Query-string noise added by browsers, proxies, platforms and trackers (Vercel's `_vercel_share`, utm_*, click ids, cache busters).
+ *  It says nothing about the question, so it is ignored, never an error. */
+export function isTransportNoise(name: string): boolean {
+  return /^(_|__|utm_|x-vercel|x-forwarded)/i.test(name) || ["ppcheck", "fbclid", "gclid", "msclkid", "cb", "nocache", "cachebust", "callback", "ref", "source"].includes(name.toLowerCase());
+}
+
 /** Names in a REST request that this category does not read. Empty when every name is valid. */
 export function unknownParams(cat: CategoryPlugin, params: Params): string[] {
   const known = new Set(acceptedParams(cat));
-  return Object.keys(params).filter((k) => !known.has(k));
+  return Object.keys(params).filter((k) => !known.has(k) && !isTransportNoise(k));
 }
 
 /** Throws InputError (HTTP 400) listing the valid names when a REST request carries a parameter nobody reads, so a wrong place or
