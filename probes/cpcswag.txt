@@ -1,0 +1,501 @@
+URL: https://vipmbr.cpc.com.tw/openData/swagger/v1/swagger.json
+Fetched: 2026-10-18T12:47:11Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 12460
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=utf-8
+X-Frame-Options: ALLOW-FROM https://www.cpc.com.tw
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Date: Sun, 18 Oct 2026 12:47:51 GMT
+Transfer-Encoding: chunked
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenData",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "/openData"
+    }
+  ],
+  "paths": {
+    "/MainProdListPrice": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得中油主產品牌價",
+        "description": "取得中油主產品牌價",
+        "operationId": "MainProdListPrice",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MainProdListPrice_English": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得中油主產品牌價_英文",
+        "description": "取得中油主產品牌價_英文",
+        "operationId": "MainProdListPrice_English",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LPGListPrice": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得液化石油氣牌價",
+        "description": "取得液化石油氣牌價",
+        "operationId": "LPGListPrice",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LPGListPrice_Historical": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得歷史液化石油氣牌價",
+        "description": "取得歷史液化石油氣牌價",
+        "operationId": "LPGListPrice_Historical",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/NaturalGasListPrice": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得中油天然氣牌價",
+        "description": "取得中油天然氣牌價",
+        "operationId": "NaturalGasListPrice",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AviationFuelListPrice": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得航空燃油牌價",
+        "description": "取得航空燃油牌價",
+        "operationId": "AviationFuelListPrice",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarineFuelListPrice": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得國內線海運燃油牌價",
+        "description": "取得國內線海運燃油牌價",
+        "operationId": "MarineFuelListPrice",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/FuelOilListPrice": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得中油燃料油牌價",
+        "description": "取得中油燃料油牌價",
+        "operationId": "FuelOilListPrice",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SixtypeOilListPrice": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得各項油品牌價",
+        "description": "取得各項油品牌價",
+        "operationId": "SixtypeOilListPrice",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MarineFuelListPrice_International": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得國際線海運燃油牌價",
+        "description": "取得國際線海運燃油牌價",
+        "operationId": "MarineFuelListPrice_International",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SelfServeGasolineStn": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得泵島汽油自助加油站",
+        "description": "取得泵島汽油自助加油站",
+        "operationId": "SelfServeGasolineStn",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SelfServeDieselStn": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得泵島柴油自助加油站",
+        "description": "取得泵島柴油自助加油站",
+        "operationId": "SelfServeDieselStn",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ElectricMotorcycleChargingStn": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得電動機車充電服務加油站",
+        "description": "取得電動機車充電服務加油站",
+        "operationId": "ElectricMotorcycleChargingStn",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ElectricMotorcycleBatterySwappingStn": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得電動機車換電服務加油站",
+        "description": "取得電動機車換電服務加油站",
+        "operationId": "ElectricMotorcycleBatterySwappingStn",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/VarietyShopStn": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得複合式商店服務加油站",
+        "description": "取得複合式商店服務加油站",
+        "operationId": "VarietyShopStn",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OilRecycleStn": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得廢潤滑油回收加油站",
+        "description": "取得廢潤滑油回收加油站",
+        "operationId": "OilRecycleStn",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SuctionMachineStn": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得真空吸油機加油站",
+        "description": "取得真空吸油機加油站",
+        "operationId": "SuctionMachineStn",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/5typeservicestn": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得5種服務加油站",
+        "description": "提供廢潤滑油回收、複合式商店服務、泵島柴油自助、真空吸油機、泵島汽油自助之加油站",
+        "operationId": "5typeservicestn",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getStationInfo": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "加油站服務資訊",
+        "description": "加油站服務資訊",
+        "operationId": "getStationInfo",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getSaleDepartment": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "直銷中心營業地點",
+        "description": "直銷中心營業地點",
+        "operationId": "getSaleDepartment",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getFishingBoatStation": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得全部中油直營漁船加油站",
+        "description": "取得全部中油直營漁船加油站",
+        "operationId": "getFishingBoatStation",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/KeroseneData": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得中油加油站煤油有庫存與否資料",
+        "description": "取得中油加油站煤油有庫存與否資料",
+        "operationId": "KeroseneData",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getLPGStation": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得全部中油加氣站",
+        "description": "取得全部中油加氣站",
+        "operationId": "getLPGStation",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/electricmotoData": {
+      "get": {
+        "tags": [
+          "OpenData"
+        ],
+        "summary": "取得電動機車服務加油站",
+        "description": "提供電動機車換電、電動機車充電之加油站",
+        "operationId": "electricmotoData",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "sche
