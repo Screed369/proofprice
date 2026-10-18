@@ -1,0 +1,26 @@
+URL: https://apidatos.ree.es/en/datos/mercados/precios-mercados-tiempo-real?start_date=2026-10-17T00:00&end_date=2026-10-17T23:59&time_trunc=day
+Fetched: 2026-10-18T20:43:07Z from GitHub Actions
+Status, type, bytes: 400 application/json 134
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+date: Sun, 18 Oct 2026 20:45:25 GMT
+access-control-allow-origin: *
+access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept
+cache-control: no-cache, private
+referrer-policy: no-referrer
+content-type: application/json
+strict-transport-security: max-age=31536000; includeSubDomains
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-forwarded-proto: https
+set-cookie: visid_incap_2001527=tEdMx9XwR1mzTWRoCxi3NVov1WoAAAAAQUIPAAAAAAB6C6YG0rVlEq/Mo99tidf7; expires=Mon, 18 Oct 2027 06:53:29 GMT; HttpOnly; path=/; Domain=.ree.es; Secure; SameSite=None
+set-cookie: incap_ses_361_2001527=2Q0QEePxzla/e/Qn+IcCBVsv1WoAAAAAXhMNbW8SjrT8MjjestuIlA==; path=/; Domain=.ree.es; Secure; SameSite=None
+x-cdn: Imperva
+x-iinfo: 47-6145686-6145693 NNNN CT(198 585 0) RT(1792356185990 23) q(0 0 8 13) r(10 10) U11
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"errors":[{"status":"400","title":"Internal error","detail":"The requested data is currently unavailable. Please try again later."}]}
