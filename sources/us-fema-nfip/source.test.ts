@@ -80,7 +80,7 @@ const fake = (count: number, rows: unknown[], urls: string[] = []) => async (u: 
   const d = decodeURIComponent(u);
   assert.ok(d.includes("policyEffectiveDate ge") && d.includes("policyEffectiveDate lt"), "both date bounds on every call");
   assert.ok(!d.includes("$skip"), "no deep $skip paging");
-  return u.includes("$top=1&") ? { metadata: { count }, NfipPolicies: rows.slice(0, 1) } : { metadata: { count }, NfipPolicies: rows };
+  return { metadata: { count }, NfipPolicies: rows };
 };
 
 test("femaNfip: fewer than 5 policies gives no figure", async () => {
@@ -92,7 +92,7 @@ test("femaNfip: fewer than 5 policies gives no figure", async () => {
 test("femaNfip: a ZIP is read in full from four quarterly slices, median and range from real rows, no row-level data in the answer", async () => {
   const urls: string[] = [];
   const a = await femaNfip({ area: "32935", now: new Date("2026-10-17T00:00:00Z"), fetcher: fake(227, BODY.NfipPolicies, urls) });
-  assert.equal(urls.length, 8); // 4 counts + 4 row reads
+  assert.equal(urls.length, 4); // one bounded request per quarter, each already complete
   assert.equal(a.status, "ok");
   assert.equal(a.price!.currency, "USD");
   assert.equal(a.price!.median, 652);
@@ -103,24 +103,10 @@ test("femaNfip: a ZIP is read in full from four quarterly slices, median and ran
   assert.ok(!JSON.stringify(a).includes("reportedZipCode"));
 });
 
-test("femaNfip: an empty quarter is not read", async () => {
-  const urls: string[] = [];
-  let n = 0;
-  const f = async (u: string) => {
-    urls.push(u);
-    const isCount = u.includes("$top=1&");
-    if (isCount) return { metadata: { count: n++ === 0 ? 0 : 300 }, NfipPolicies: [] };
-    return { metadata: { count: 300 }, NfipPolicies: BODY.NfipPolicies };
-  };
-  const a = await femaNfip({ area: "32935", now: new Date("2026-10-17T00:00:00Z"), fetcher: f });
-  assert.equal(urls.length, 7);
-  assert.equal((a.extra as any).policies_in_period, 900);
-});
-
 test("femaNfip: big area is sampled with narrow date slices, never deep $skip", async () => {
   const urls: string[] = [];
   const a = await femaNfip({ area: "TX", fetcher: fake(124000, BODY.NfipPolicies, urls) });
-  assert.equal(urls.length, 8);
+  assert.equal(urls.length, 8); // 4 quarter pages + 4 narrow slices
   assert.equal((a.extra as any).sampled, true);
   assert.equal((a.extra as any).policies_in_period, 496000);
   assert.equal(a.sample_size, 24);

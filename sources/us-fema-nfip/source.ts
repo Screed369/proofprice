@@ -145,19 +145,19 @@ export function summarisePolicies(policies: Policy[]) {
 export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Date; fetcher?: (url: string) => Promise<any> }): Promise<PriceAnswer> {
   const area = parseArea(opts.area);
   const from = windowStart(opts.now);
-  // FEMA sometimes stalls on a single call: two attempts of 9 s fit the answer budget (see lib/http retryOnce).
-  const get = opts.fetcher ?? ((u: string) => retryOnce(() => fetchJson(u, {}, 9000)));
+  // FEMA sometimes stalls on a single call: two attempts of 12 s fit the 40 s answer deadline for one round (see lib/http retryOnce).
+  const get = opts.fetcher ?? ((u: string) => retryOnce(() => fetchJson(u, {}, 12000)));
   const to = (opts.now ?? new Date()).toISOString().slice(0, 10);
   const quarters = quarterSlices(from, to);
-  // Round 1: how many policies in each quarter (one row is enough to get the count).
-  const counted = await Promise.all(quarters.map(async (sl) => ({ sl, body: await get(buildUrl(area, sl.from, { until: sl.until, top: 1, count: true })) })));
+  // Round 1: one bounded request per quarter, with the count. A quarter that fits one page (every ZIP, normally) is already complete.
+  const counted = await Promise.all(quarters.map(async (sl) => ({ sl, body: await get(buildUrl(area, sl.from, { until: sl.until, count: true })) })));
   const counts = counted.map((c) => totalCount(c.body));
   const total = counts.reduce((x, y) => x + y, 0);
   const sampled = counts.some((c) => c > PAGE);
-  // Round 2: read each quarter whole when it fits one page, otherwise one narrow slice of it.
+  // Round 2, big areas only: replace a quarter's first page (just the first rows FEMA returns) with one narrow slice from its middle.
   const pages = await Promise.all(
     counted.map((c, i) => {
-      if (counts[i] === 0) return Promise.resolve(null);
+      if (counts[i] <= PAGE) return Promise.resolve(c.body);
       const sl = narrowSlice(c.sl, counts[i]);
       return get(buildUrl(area, sl.from, { until: sl.until }));
     }),
