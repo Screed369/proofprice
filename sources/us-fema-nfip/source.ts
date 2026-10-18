@@ -67,8 +67,8 @@ export function windowStart(now: Date = new Date(), months = 12): string {
   return d.toISOString().slice(0, 10);
 }
 
-export function buildUrl(area: Area, from: string, opts: { top?: number; skip?: number; count?: boolean } = {}): string {
-  const filter = `${area.field} eq '${area.value}' and policyEffectiveDate ge '${from}'`;
+export function buildUrl(area: Area, from: string, opts: { top?: number; skip?: number; count?: boolean; until?: string } = {}): string {
+  const filter = `${area.field} eq '${area.value}' and policyEffectiveDate ge '${from}'` + (opts.until ? ` and policyEffectiveDate lt '${opts.until}'` : "");
   const q = [
     `$filter=${encodeURIComponent(filter)}`,
     `$select=${FIELDS.join(",")}`,
@@ -103,11 +103,27 @@ export function totalCount(body: any): number {
   return Number.isFinite(n) && n >= 0 ? n : 0;
 }
 
-/** Skips for the extra pages: evenly spread over the whole result so the sample is not just the first rows. */
+/** Skips for the extra pages: evenly spread over the whole result so the sample is not just the first rows.
+ *  No longer used for answers (FEMA's backend times out on deep $skip values, e.g. $skip=165801 in Texas); kept for reference and tests. */
 export function sampleSkips(count: number, pages = STATE_PAGES - 1): number[] {
   if (count <= PAGE) return [];
   const span = count - PAGE;
   return Array.from({ length: pages }, (_, i) => Math.floor(((i + 1) * span) / pages));
+}
+
+const addDays = (iso: string, n: number): string => new Date(Date.parse(iso + "T00:00:00Z") + n * 86400000).toISOString().slice(0, 10);
+
+/** Date slices [from, until) evenly spread over the window, each sized to hold about 800 policies. Reading a few narrow date slices
+ *  (no $skip) is fast on FEMA's backend, whereas deep $skip paging times out. Returns [] when one page already holds everything. */
+export function dateSlices(total: number, from: string, to: string, slices = STATE_PAGES): { from: string; until: string }[] {
+  if (total <= PAGE) return [];
+  const windowDays = Math.max(1, Math.round((Date.parse(to + "T00:00:00Z") - Date.parse(from + "T00:00:00Z")) / 86400000));
+  const width = Math.min(windowDays, Math.max(1, Math.floor((windowDays * 800) / total)));
+  const room = windowDays - width;
+  return Array.from({ length: slices }, (_, i) => {
+    const start = slices > 1 ? Math.floor((i * room) / (slices - 1)) : 0;
+    return { from: addDays(from, start), until: addDays(from, start + width) };
+  });
 }
 
 export function summarisePolicies(policies: Policy[]) {
@@ -126,10 +142,13 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
   const total = totalCount(first);
   let policies = parsePolicies(first);
   let sampled = false;
-  const skips = sampleSkips(total);
-  if (skips.length) {
+  const to = (opts.now ?? new Date()).toISOString().slice(0, 10);
+  const slices = dateSlices(total, from, to);
+  if (slices.length) {
+    // Big area: the first page is only the first rows FEMA returns, so replace it with evenly spread date slices (no deep $skip).
     sampled = true;
-    const more = await Promise.all(skips.map((skip) => get(buildUrl(area, from, { skip }))));
+    const more = await Promise.all(slices.map((sl) => get(buildUrl(area, sl.from, { until: sl.until }))));
+    policies = [];
     for (const b of more) policies = policies.concat(parsePolicies(b));
   }
   if (total > 0 && !Array.isArray(first?.NfipPolicies)) throw new SourceError("The source answered in an unexpected format", "NfipPolicies missing");

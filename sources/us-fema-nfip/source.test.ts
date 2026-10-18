@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError } from "../../lib/http";
-import { buildUrl, femaNfip, INFO, parseArea, parsePolicies, sampleSkips, totalCount, windowStart } from "./source";
+import { buildUrl, dateSlices, femaNfip, INFO, parseArea, parsePolicies, sampleSkips, totalCount, windowStart } from "./source";
 
 // Fixture: real rows from the OpenFEMA v3 NfipPolicies API, ZIP 32935 (FL), captured 2026-10-17 (count 908 policies since 2025-10-01).
 const REAL = (cost: number, prem: number, date: string, extra: Record<string, unknown> = {}) => ({
@@ -57,6 +57,17 @@ test("sampleSkips: none for small areas, spread for big ones", () => {
   assert.ok(s[0] > 0 && s[2] < 413590 - 1000 + 1);
 });
 
+test("dateSlices: none for small areas, narrow spread slices inside the window for big ones", () => {
+  assert.deepEqual(dateSlices(908, "2025-10-18", "2026-10-18"), []);
+  const s = dateSlices(413590, "2025-10-18", "2026-10-18");
+  assert.equal(s.length, 4);
+  assert.equal(s[0].from, "2025-10-18");
+  assert.ok(s.every((x) => x.from < x.until && x.from >= "2025-10-18" && x.until <= "2026-10-19"));
+  assert.ok(s[3].from > s[0].from);
+  const zip = dateSlices(3000, "2025-10-18", "2026-10-18"); // ~97-day slices for a mid-size ZIP
+  assert.ok(Date.parse(zip[0].until) - Date.parse(zip[0].from) > 60 * 86400000);
+});
+
 test("femaNfip: fewer than 5 policies gives no figure", async () => {
   const a = await femaNfip({ area: "32935", fetcher: async () => ({ metadata: { count: 3 }, NfipPolicies: BODY.NfipPolicies.slice(0, 3) }) });
   assert.equal(a.status, "insufficient_data");
@@ -78,7 +89,9 @@ test("femaNfip: median and range from real rows, no row-level data in the answer
 test("femaNfip: big area is sampled with spread pages", async () => {
   const urls: string[] = [];
   const a = await femaNfip({ area: "TX", fetcher: async (u) => { urls.push(u); return { metadata: { count: 413590 }, NfipPolicies: BODY.NfipPolicies }; } });
-  assert.equal(urls.length, 4);
+  assert.equal(urls.length, 5); // 1 count call + 4 date slices
+  assert.ok(urls.slice(1).every((u) => !u.includes("%24skip") && !u.includes("$skip")), "no deep $skip paging");
+  assert.ok(urls.slice(1).every((u) => decodeURIComponent(u).includes("policyEffectiveDate lt")));
   assert.equal((a.extra as any).sampled, true);
   assert.equal(a.sample_size, 24);
 });
