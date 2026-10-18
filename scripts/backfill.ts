@@ -16,7 +16,7 @@ async function main() {
   if (!src.backfill) throw new Error(`Source ${id} has no backfill()`);
   console.log(`History before: ${(totalHistoryBytes() / 1048576).toFixed(3)} MB`);
   const result = await src.backfill(from, to);
-  const rep = applyBackfill(id, result, { dryRun });
+  const rep = applyBackfill(id, result, { dryRun, from, to });
   console.log(JSON.stringify(rep, null, 2));
   console.log(`${dryRun ? "DRY RUN. " : ""}Added ${(rep.bytes_added / 1024).toFixed(1)} KB; ${id} history ${(rep.source_history_bytes / 1048576).toFixed(3)} MB of ${MAX_SOURCE_BYTES / 1048576} MB; all history ${(rep.total_history_bytes / 1048576).toFixed(3)} MB of ${MAX_TOTAL_BYTES / 1048576} MB`);
 }

@@ -40,11 +40,13 @@ test("backfill: days older than 90 days are refused, recent days only when not a
   const daily = path.join(dir, "es-fuel", "daily", "2026-10.csv");
   const before = readFileSync(daily, "utf8");
   const a = applyBackfill("es-fuel", res([
+    { period: "2026-09-31", rows: [row("28", "diesel", 60, 1.4)] }, // not a real day
     { period: "2026-01-05", rows: [row("28", "diesel", 60, 1.4)] }, // too detailed
     { period: "2026-10-14", rows: [row("28", "diesel", 60, 9.9)] }, // already held: never replaced
     { period: "2026-10-10", rows: [row("28", "diesel", 60, 1.49)] }, // new recent day: allowed
-    { period: "2027-01", rows: [row("28", "diesel", 60, 1.4)] }, // future month
+    { period: "2026-10", rows: [row("28", "diesel", 60, 1.4)] }, // month still running
   ]), { today });
+  assert.equal(a.dropped_invalid, 2);
   assert.equal(a.skipped_too_detailed, 1);
   assert.equal(a.skipped_held_days, 1);
   assert.equal(a.daily_rows, 1);
@@ -71,4 +73,14 @@ test("backfill: refuses to overwrite a history file with an unexpected header", 
   mkdirSync(path.join(dir, "de-smard", "history"), { recursive: true });
   writeFileSync(path.join(dir, "de-smard", "history", "2021.csv"), "something,else\n1,2\n");
   assert.throws(() => applyBackfill("de-smard", res([{ period: "2021-02", rows: [row("DE", "power", 700, 50)] }]), { today }), /unexpected header/);
+});
+
+test("backfill: address-like labels, unit mismatch and out-of-range periods are refused", () => {
+  const a = applyBackfill("gb-test", res([{ period: "2018-05", rows: [row("12 Rue de la Paix", "x", 9, 1), row("Dublin 6W", "all", 9, 1), row("Co. Cork", "all", 9, 1)] }, { period: "2005-05", rows: [row("A", "x", 9, 1)] }]), { today, from: "2010-01-01", to: "2020-01-01" });
+  assert.equal(a.monthly_rows, 2);
+  assert.equal(a.dropped_invalid, 2);
+  writeFileSync(path.join(dir, "gb-test", "meta.json"), JSON.stringify({ source: "gb-test", currency: "GBP", unit: "per litre" }));
+  assert.throws(() => applyBackfill("gb-test", res([{ period: "2018-06", rows: [row("A", "x", 9, 1)] }]), { today }), /mismatch/);
+  const m = readHistoryMeta("gb-test")!;
+  assert.equal(m.rows, 2);
 });

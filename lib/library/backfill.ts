@@ -13,13 +13,16 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSy
 import path from "node:path";
 import type { BackfillResult, DailyRow } from "../plugin";
 import { MIN_PUBLISH } from "../stats";
-import { DAILY_HEADER, csvToRows, libraryDates, libraryRoot, rowsToCsv, writeDaily } from "./store";
+import { DAILY_HEADER, csvToRows, libraryDates, libraryRoot, readMeta, rowsToCsv, writeDaily } from "./store";
 import type { LibraryRow } from "./store";
 
 export const DETAIL_DAYS = 90;
 export const MAX_SOURCE_BYTES = 5 * 1024 * 1024;
 export const MAX_TOTAL_BYTES = 25 * 1024 * 1024;
-const LABEL = /^[A-Za-z0-9][A-Za-z0-9 ._\-\/+()]{0,39}$/;
+// Short labels only (a county, a department code, "Dublin 6W", "diesel/served"): at most 3 words, 40 characters, and never a number
+// followed by a word (which is how a street address starts). Sources use the labels their harvest() already writes.
+const LABEL = /^[A-Za-z0-9][A-Za-z0-9._\-\/+()]{0,23}( [A-Za-z0-9._\-\/+()]{1,15}){0,2}$/;
+const ADDRESS_LIKE = /\d\s+[A-Za-z]{3,}/;
 
 export interface BackfillReport {
   source: string;
@@ -78,7 +81,7 @@ export function totalHistoryBytes(): number {
 }
 
 const isMonth = (p: string) => /^\d{4}-(0[1-9]|1[0-2])$/.test(p);
-const isDay = (p: string) => /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(p) && !Number.isNaN(Date.parse(p + "T00:00:00Z"));
+const isDay = (p: string) => /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(p) && new Date(p + "T00:00:00Z").toISOString().slice(0, 10) === p;
 
 /** The oldest day that may still be stored as a day (inclusive). */
 export function detailCutoff(today: Date): string {
@@ -90,7 +93,7 @@ function validRow(r: DailyRow): boolean {
   if (!nums.every((x) => typeof x === "number" && Number.isFinite(x))) return false;
   if (!(r.median > 0) || !Number.isInteger(r.n)) return false;
   if (!(r.min <= r.low && r.low <= r.median && r.median <= r.high && r.high <= r.max)) return false;
-  return typeof r.area === "string" && typeof r.item === "string" && LABEL.test(r.area) && LABEL.test(r.item);
+  return typeof r.area === "string" && typeof r.item === "string" && LABEL.test(r.area) && LABEL.test(r.item) && !ADDRESS_LIKE.test(r.area) && !ADDRESS_LIKE.test(r.item);
 }
 
 export function readHistoryMeta(id: string): HistoryMeta | null {
@@ -115,7 +118,7 @@ function loadYear(file: string): LibraryRow[] {
 }
 
 /** Apply a source's past aggregates to the library. `dryRun` measures and reports without writing. */
-export function applyBackfill(sourceId: string, result: BackfillResult, opts: { today?: Date; dryRun?: boolean } = {}): BackfillReport {
+export function applyBackfill(sourceId: string, result: BackfillResult, opts: { today?: Date; dryRun?: boolean; from?: string; to?: string } = {}): BackfillReport {
   const today = opts.today ?? new Date();
   const cutoff = detailCutoff(today);
   const todayStr = today.toISOString().slice(0, 10);
@@ -124,6 +127,11 @@ export function applyBackfill(sourceId: string, result: BackfillResult, opts: { 
     source: sourceId, monthly_rows: 0, daily_rows: 0, dropped_thin: 0, dropped_invalid: 0, skipped_held_days: 0,
     skipped_too_detailed: 0, bytes_added: 0, source_history_bytes: 0, total_history_bytes: 0, periods: { first: null, last: null, count: 0 },
   };
+  // same currency and unit as the collector's own figures: backfilled days share its files
+  const meta0 = readMeta(sourceId);
+  if (meta0 && ((meta0.currency && meta0.currency !== result.currency) || (meta0.unit && meta0.unit !== result.unit))) {
+    throw new Error(`Currency/unit mismatch for ${sourceId}: library has ${meta0.currency} ${meta0.unit}, backfill gave ${result.currency} ${result.unit}. Nothing written.`);
+  }
   const monthlyByYear = new Map<string, LibraryRow[]>();
   const dailyByDate = new Map<string, DailyRow[]>();
   const seen = new Set<string>();
@@ -133,6 +141,11 @@ export function applyBackfill(sourceId: string, result: BackfillResult, opts: { 
     const month = isMonth(p.period);
     const day = isDay(p.period);
     if (!month && !day) {
+      rep.dropped_invalid += p.rows.length;
+      continue;
+    }
+    // outside the requested range: ignored (a source must not load more than it was asked for)
+    if ((opts.from && p.period.slice(0, month ? 7 : 10) < opts.from.slice(0, month ? 7 : 10)) || (opts.to && p.period.slice(0, month ? 7 : 10) > opts.to.slice(0, month ? 7 : 10))) {
       rep.dropped_invalid += p.rows.length;
       continue;
     }
@@ -146,10 +159,12 @@ export function applyBackfill(sourceId: string, result: BackfillResult, opts: { 
     if (day) {
       if (p.period < cutoff || p.period > todayStr) { rep.skipped_too_detailed += clean.length; continue; } // old days must be monthly
       if (held.has(p.period)) { rep.skipped_held_days += clean.length; continue; } // the daily collector owns held days
-      dailyByDate.set(p.period, clean);
+      const have = dailyByDate.get(p.period) ?? [];
+      const byKey = new Map(have.concat(clean).map((r) => [`${r.area}\u0000${r.item}`, r] as const)); // one row per area and item
+      dailyByDate.set(p.period, [...byKey.values()]);
     } else {
-      // a month that still reaches into the last 90 days is fine as a month; a future month is not
-      if (p.period > todayStr.slice(0, 7)) { rep.dropped_invalid += clean.length; continue; }
+      // a month still running is incomplete, so only whole past months are stored
+      if (p.period >= todayStr.slice(0, 7)) { rep.dropped_invalid += clean.length; continue; }
       const year = p.period.slice(0, 4);
       const list = monthlyByYear.get(year) ?? [];
       for (const r of clean) list.push({ ...r, date: p.period });
@@ -171,8 +186,13 @@ export function applyBackfill(sourceId: string, result: BackfillResult, opts: { 
     addedBytes += Math.max(0, Buffer.byteLength(text) - (existsSync(file) ? statSync(file).size : 0));
     rep.monthly_rows += fresh.length;
   }
-  for (const rows of dailyByDate.values()) {
-    addedBytes += rows.length * 60; // upper-bound estimate of a daily row
+  for (const [date, rows] of dailyByDate) {
+    const f = path.join(srcDir(sourceId), "daily", `${date.slice(0, 7)}.csv`);
+    if (existsSync(f)) { // header check before any write, so a bad daily file stops the run with nothing written
+      const t = readFileSync(f, "utf8");
+      if (t.trim() && t.split(/\r?\n/)[0].trim() !== DAILY_HEADER) throw new Error(`${f} has an unexpected header; refusing to overwrite stored history`);
+    }
+    addedBytes += rows.length * 60; // upper-bound estimate of a daily row (counted against the history budget: errs on the cautious side)
     rep.daily_rows += rows.length;
   }
   const before = sourceHistoryBytes(sourceId);
@@ -192,11 +212,13 @@ export function applyBackfill(sourceId: string, result: BackfillResult, opts: { 
   const prev = readHistoryMeta(sourceId);
   const first = [prev?.first_period, rep.periods.first].filter(Boolean).sort()[0] ?? null;
   const last = [prev?.last_period, rep.periods.last].filter(Boolean).sort().reverse()[0] ?? null;
-  const rowCount = [...planned.keys()].reduce((n, f) => n + csvToRows(readFileSync(f, "utf8")).length, 0);
+  const all = readdirSync(dir).filter((f) => /^\d{4}\.csv$/.test(f)).flatMap((f) => csvToRows(readFileSync(path.join(dir, f), "utf8")));
+  const rowCount = all.length;
+  const periodCount = new Set(all.map((r) => r.date)).size;
   const meta: HistoryMeta = {
     source: sourceId, currency: result.currency, unit: result.unit, first_period: first, last_period: last,
-    periods: prev ? Math.max(prev.periods, rep.periods.count) : rep.periods.count,
-    rows: Math.max(prev?.rows ?? 0, rowCount), last_backfill_at: today.toISOString(), note: result.note ?? null,
+    periods: periodCount,
+    rows: rowCount, last_backfill_at: today.toISOString(), note: result.note ?? null,
   };
   writeFileSync(path.join(srcDir(sourceId), "history-meta.json"), JSON.stringify(meta, null, 2) + "\n");
   // the real size on disk after writing (what the workflow reports)

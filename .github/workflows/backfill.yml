@@ -1,7 +1,8 @@
 # The history loader ("go back in time"): started by hand with a source id and a date range. Runs the source's backfill(),
 # which returns aggregates for past periods (monthly beyond the last 90 days), and commits them to library/ like the daily
 # harvest. Start:  gh workflow run backfill.yml -R Screed369/proofprice --ref main -f source=fr-fuel -f from=2007-01-01 -f to=2026-10-12
-# It shares the "harvest" concurrency group, so it never overlaps the daily collector. It never changes a stored daily row.
+# It never overlaps the daily collector: it refuses to start from 02:45 to 04:30 UTC or while a harvest runs or waits (its own
+# concurrency group, so a queued harvest is never cancelled by it). It never changes a stored daily row.
 name: History backfill
 
 on:
@@ -17,15 +18,16 @@ on:
         description: "Last day to load (YYYY-MM-DD)"
         required: true
       dry_run:
-        description: "true = measure and report only, commit nothing"
+        description: "Measure and report only, commit nothing"
+        type: boolean
         required: false
-        default: "false"
+        default: false
 
 permissions:
   contents: write
 
 concurrency:
-  group: harvest
+  group: backfill
   cancel-in-progress: false
 
 jobs:
@@ -35,6 +37,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      - name: Stay clear of the daily harvest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          hm=$(date -u +%H%M)
+          if [ "$hm" -ge 0245 ] && [ "$hm" -le 0430 ]; then echo "::error::Too close to the 03:17 UTC harvest; start again after 04:30 UTC."; exit 1; fi
+          busy=$(gh run list --workflow harvest.yml -R "$GITHUB_REPOSITORY" --json status --jq '[.[] | select(.status=="in_progress" or .status=="queued" or .status=="waiting")] | length')
+          if [ "${busy:-0}" -gt 0 ]; then echo "::error::A harvest is running or waiting; start again later."; exit 1; fi
       - uses: actions/checkout@v4
         with:
           ref: main
@@ -57,7 +67,7 @@ jobs:
           npm run backfill -- "$SOURCE" "$FROM" "$TO" $flag 2>&1 | tee backfill.log
           { echo "### Backfill $SOURCE $FROM to $TO"; echo '```'; tail -n 25 backfill.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - name: Commit the history (aggregate files only)
-        if: ${{ github.event.inputs.dry_run != 'true' }}
+        if: ${{ github.event.inputs.dry_run != 'true' && github.event.inputs.dry_run != true }}
         run: |
           git config user.name "proofprice-historian"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
