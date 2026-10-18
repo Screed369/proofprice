@@ -204,7 +204,7 @@ export function hotelAnswer(r: HotelReading | null, q: { area?: string; stars?: 
     reference_period: ym(v.year, v.month),
     note: notes.join(" "),
     describe: (x) =>
-      `In ${label} hotels in ${where === "Spain" ? "Spain" : where} charged an average of ${eur(x)} per occupied room per night (INE average daily rate).` +
+      `In ${label} ${r.stars ? where : `hotels in ${where}`} charged an average of ${eur(x)} per occupied room per night (INE average daily rate).` +
       (change !== null ? (change === 0 ? " That is unchanged from a year earlier." : ` That is ${Math.abs(change)}% ${change > 0 ? "higher" : "lower"} than in ${MONTHS[v.month - 1]} ${v.year - 1}.`) : ""),
     extra: {
       area: r.area === "National" ? "Spain" : r.area,

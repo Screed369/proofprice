@@ -84,7 +84,7 @@ test("es-ine-hotels: a city, a region and the stars", async () => {
   assert.match(c.summary, /1\.33% lower/);
   const s = await esHotels({ stars: 5 }, o);
   assert.equal(s.price!.value, 357.83);
-  assert.match(s.summary, /5-star hotels in Spain/);
+  assert.match(s.summary, /In August 2026 5-star hotels in Spain charged/);
 });
 
 test("es-ine-hotels: bad input says what to do", async () => {
