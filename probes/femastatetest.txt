@@ -1,0 +1,18 @@
+URL: https://www.fema.gov/api/open/v3/NfipPolicies?$filter=propertyState%20eq%20'FL'%20and%20policyEffectiveDate%20ge%20'2026-03-01'%20and%20policyEffectiveDate%20lt%20'2026-03-02'&$select=policyCost,policyEffectiveDate&$top=3
+Fetched: 2026-10-18T07:55:49Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 759
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+access-control-allow-origin: *
+x-response-time: 52.329ms
+cache-control: public, max-age=149
+date: Sun, 18 Oct 2026 07:55:49 GMT
+content-length: 759
+strict-transport-security: max-age=31536000 ; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"metadata": {"skip":0,"select":"policyCost, policyEffectiveDate","rundate":"2026-10-18T07:55:48.616Z","top":3,"filter":"propertyState eq 'FL' and policyEffectiveDate ge '2026-03-01' and policyEffectiveDate lt '2026-03-02'","format":"json","metadata":true,"orderby":"","entityname":"NfipPolicies","version":"v3","url":"/api/open/v3/NfipPolicies?$filter=propertyState%20eq%20'FL'%20and%20policyEffectiveDate%20ge%20'2026-03-01'%20and%20policyEffectiveDate%20lt%20'2026-03-02'&$select=policyCost,policyEffectiveDate&$top=3","count":0}, "NfipPolicies": [{"policyCost":1030,"policyEffectiveDate":"2026-03-01T00:00:00.000Z"},{"policyCost":618,"policyEffectiveDate":"2026-03-01T00:00:00.000Z"},{"policyCost":16799,"policyEffectiveDate":"2026-03-01T00:00:00.000Z"}]}
