@@ -1,0 +1,34 @@
+URL: https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/
+Fetched: 2026-10-18T06:44:10Z from GitHub Actions
+Status, type, bytes: 200 application/json 41562
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+content-length: 41562
+date: Sun, 18 Oct 2026 06:44:10 GMT
+content-language: en-gb
+set-cookie: AWSALB=DOAwICWIcbYTCTmqKoCSM7s0y3zFIyN2VLNVyzjnjZ/OJDD8iugffXpR9XSh3ezazqthno5PJegcY6TH9JVNI1LgXz4vODiPKjSIo95nixad23vasB4Mp2uf/3nZ; Expires=Sun, 25 Oct 2026 06:44:10 GMT; Path=/
+set-cookie: AWSALBCORS=DOAwICWIcbYTCTmqKoCSM7s0y3zFIyN2VLNVyzjnjZ/OJDD8iugffXpR9XSh3ezazqthno5PJegcY6TH9JVNI1LgXz4vODiPKjSIo95nixad23vasB4Mp2uf/3nZ; Expires=Sun, 25 Oct 2026 06:44:10 GMT; Path=/; SameSite=None; Secure
+server: nginx
+vary: Accept-Encoding
+vary: Authorization, Accept-Language, Cookie, origin
+allow: GET, HEAD, OPTIONS
+expires: Sun, 18 Oct 2026 15:07:52 GMT
+cache-control: max-age=86400
+x-kraken-correlation-id: 1-6ad46aba-44561cda02e1deed5b4d82ea
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-frame-options: SAMEORIGIN
+x-cache: Miss from cloudfront
+via: 1.1 58796d5e419578eb7cf5eb2c51fddf6e.cloudfront.net (CloudFront)
+x-amz-cf-pop: ORD58-P15
+x-amz-cf-id: c8ZHH13I06ex5ktK8m6_QEd6oLXdOMxN9NHIor14oVyTyuRACKjl-w==
+age: 56178
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+{"code":"OE-FIX-12M-26-10-17","full_name":"Octopus 12M Fixed October 2026 v5","display_name":"Octopus 12M Fixed","description":"This fixed tariff locks in your unit rates and standing charges for 12 months.  This tariff has a £50 early exit fee per fuel.","is_variable":false,"is_green":false,"is_tracker":false,"is_prepay":false,"is_business":false,"is_restricted":false,"term":12,"available_from":"2026-10-17T00:00:00+01:00","available_to":null,"tariffs_active_at":"2026-10-17T15:07:50.437964Z","single_register_electricity_tariffs":{"_A":{"direct_debit_monthly":{"code":"E-1R-OE-FIX-12M-26-10-17-A","standing_charge_exc_vat":50.5464,"standing_charge_inc_vat":50.5464,"online_discount_exc_vat":0,"online_discount_inc_vat":0.0,"dual_fuel_discount_exc_vat":0,"dual_fuel_discount_inc_vat":0.0,"exit_fees_exc_vat":5000,"exit_fees_inc_vat":5000,"exit_fees_type":"FLAT","links":[{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-A/standing-charges/","method":"GET","rel":"standing_charges"},{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-A/standard-unit-rates/","method":"GET","rel":"standard_unit_rates"}],"standard_unit_rate_exc_vat":30.6468,"standard_unit_rate_inc_vat":30.6468}},"_B":{"direct_debit_monthly":{"code":"E-1R-OE-FIX-12M-26-10-17-B","standing_charge_exc_vat":50.2041,"standing_charge_inc_vat":50.2041,"online_discount_exc_vat":0,"online_discount_inc_vat":0.0,"dual_fuel_discount_exc_vat":0,"dual_fuel_discount_inc_vat":0.0,"exit_fees_exc_vat":5000,"exit_fees_inc_vat":5000,"exit_fees_type":"FLAT","links":[{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-B/standing-charges/","method":"GET","rel":"standing_charges"},{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-B/standard-unit-rates/","method":"GET","rel":"standard_unit_rates"}],"standard_unit_rate_exc_vat":29.3295,"standard_unit_rate_inc_vat":29.3295}},"_C":{"direct_debit_monthly":{"code":"E-1R-OE-FIX-12M-26-10-17-C","standing_charge_exc_vat":41.3869,"standing_charge_inc_vat":41.3869,"online_discount_exc_vat":0,"online_discount_inc_vat":0.0,"dual_fuel_discount_exc_vat":0,"dual_fuel_discount_inc_vat":0.0,"exit_fees_exc_vat":5000,"exit_fees_inc_vat":5000,"exit_fees_type":"FLAT","links":[{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-C/standing-charges/","method":"GET","rel":"standing_charges"},{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-C/standard-unit-rates/","method":"GET","rel":"standard_unit_rates"}],"standard_unit_rate_exc_vat":30.007,"standard_unit_rate_inc_vat":30.007}},"_D":{"direct_debit_monthly":{"code":"E-1R-OE-FIX-12M-26-10-17-D","standing_charge_exc_vat":67.2708,"standing_charge_inc_vat":67.2708,"online_discount_exc_vat":0,"online_discount_inc_vat":0.0,"dual_fuel_discount_exc_vat":0,"dual_fuel_discount_inc_vat":0.0,"exit_fees_exc_vat":5000,"exit_fees_inc_vat":5000,"exit_fees_type":"FLAT","links":[{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-D/standing-charges/","method":"GET","rel":"standing_charges"},{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-D/standard-unit-rates/","method":"GET","rel":"standard_unit_rates"}],"standard_unit_rate_exc_vat":32.3339,"standard_unit_rate_inc_vat":32.3339}},"_E":{"direct_debit_monthly":{"code":"E-1R-OE-FIX-12M-26-10-17-E","standing_charge_exc_vat":56.2712,"standing_charge_inc_vat":56.2712,"online_discount_exc_vat":0,"online_discount_inc_vat":0.0,"dual_fuel_discount_exc_vat":0,"dual_fuel_discount_inc_vat":0.0,"exit_fees_exc_vat":5000,"exit_fees_inc_vat":5000,"exit_fees_type":"FLAT","links":[{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-E/standing-charges/","method":"GET","rel":"standing_charges"},{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-E/standard-unit-rates/","method":"GET","rel":"standard_unit_rates"}],"standard_unit_rate_exc_vat":29.7174,"standard_unit_rate_inc_vat":29.7174}},"_F":{"direct_debit_monthly":{"code":"E-1R-OE-FIX-12M-26-10-17-F","standing_charge_exc_vat":60.8011,"standing_charge_inc_vat":60.8011,"online_discount_exc_vat":0,"online_discount_inc_vat":0.0,"dual_fuel_discount_exc_vat":0,"dual_fuel_discount_inc_vat":0.0,"exit_fees_exc_vat":5000,"exit_fees_inc_vat":5000,"exit_fees_type":"FLAT","links":[{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1R-OE-FIX-12M-26-10-17-F/standing-charges/","method":"GET","rel":"standing_charges"},{"href":"https://api.octopus.energy/v1/products/OE-FIX-12M-26-10-17/electricity-tariffs/E-1
