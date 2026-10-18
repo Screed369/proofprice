@@ -1,14 +1,14 @@
-// Manifest: WFP market food prices (staple foods in about 70 countries). Logic lives in ./source.ts.
+// Manifest: WFP market food prices (staple foods in about 50 countries). Logic lives in ./source.ts.
 // The daily collector (harvest) reads the two newest yearly WFP files from HDX; requests are answered from the price library.
 import { defineSource, str } from "../../lib/plugin";
-import { COUNTRIES, INFO, wfpFoodPrices, wfpHarvest, wfpHistoryKey } from "./source";
+import { COUNTRIES, INFO, LISTED, wfpFoodPrices, wfpHarvest, wfpHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
   category: "groceries",
-  countries: Object.keys(COUNTRIES),
+  countries: LISTED,
   countryHelp:
-    "Countries as ISO codes: " + Object.entries(COUNTRIES).map(([c, v]) => `${c} = ${v.name}`).join(", ") +
+    "Countries as ISO codes: " + LISTED.map((c) => `${c} = ${COUNTRIES[c].name}`).join(", ") +
     ". World Food Programme market surveys of staple foods; a country with no recent survey of 5 or more markets answers 'no matches'.",
   placeName: "countries WFP surveys (Africa, Asia, Middle East, Latin America)",
   status: "live",
@@ -23,7 +23,7 @@ export default defineSource({
     { params: { country: "IN", item: "rice" }, smoke: false },
   ],
   method:
-    "WFP countries (food): the World Food Programme Price Database on HDX (market surveys in about 70 countries) is collected once a day into our price library; an answer is the median and range across markets of each market's newest price for a food, in US dollars at WFP's conversion. " +
+    "WFP countries (food): the World Food Programme Price Database on HDX (market surveys in about 50 countries) is collected once a day into our price library; an answer is the median and range across markets of each market's newest price for a food, in US dollars at WFP's conversion. " +
     "Posted market-survey prices, not receipts; the newest survey in a country is often months old and the answer says when.",
   handle: (p, ctx) => wfpFoodPrices({ country: String(p.country), item: str(p.item), region: str(p.region), baseUrl: ctx.baseUrl }),
   harvest: wfpHarvest,

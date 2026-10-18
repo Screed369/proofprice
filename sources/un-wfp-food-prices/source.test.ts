@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { HDX_PACKAGE, WFP_2026_SAMPLE } from "./fixtures";
 import {
-  ASOF_ITEM, COUNTRIES, INFO, Newest, Obs, asOfDate, buildRows, defsFor, itemKey, matchItems, parseWfp, splitLine, wfpAnswerFromRows, yearlyFiles,
+  ASOF_ITEM, COUNTRIES, INFO, LISTED, Newest, Obs, asOfDate, buildRows, defsFor, itemKey, matchItems, parseWfp, splitLine, wfpAnswerFromRows, yearlyFiles,
 } from "./source";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
@@ -127,7 +127,8 @@ test("manifest: groceries tool, listed countries, harvest, a smoke example for A
   assert.equal(manifest.category, "groceries");
   assert.ok(manifest.harvest && manifest.historyKey);
   assert.ok(manifest.countries.includes("IN") && manifest.countries.includes("AF"));
-  assert.deepEqual(manifest.countries.sort(), Object.keys(COUNTRIES).sort());
+  assert.deepEqual([...manifest.countries].sort(), [...LISTED].sort());
+  assert.ok(LISTED.every((c) => COUNTRIES[c]), "every listed country has a mapping");
   assert.equal(manifest.examples[0].params.country, "AF");
   assert.ok(categoryById("groceries"));
   assert.ok(countriesFor("groceries").includes("AF"));

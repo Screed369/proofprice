@@ -13,7 +13,7 @@ import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "un-wfp-food-prices",
-  country: "About 70 countries (mostly Africa, Asia and the Middle East; see countries)",
+  country: "About 50 countries (mostly Africa, Asia and the Middle East; see countries)",
   category: "groceries (market-survey prices of staple foods)",
   name: "WFP Price Database via the Humanitarian Data Exchange (HDX)",
   publisher: "World Food Programme (WFP), published on HDX by OCHA",
@@ -61,6 +61,8 @@ export const COUNTRIES: Record<string, { iso3: string; name: string }> = {
   UA: { iso3: "UKR", name: "Ukraine" }, UG: { iso3: "UGA", name: "Uganda" }, YE: { iso3: "YEM", name: "Yemen" },
   ZM: { iso3: "ZMB", name: "Zambia" }, ZW: { iso3: "ZWE", name: "Zimbabwe" },
 };
+/** Countries with 5 or more recent markets in the first collection (18 Oct 2026); the others in COUNTRIES had no usable survey. Add a code here when the library shows one. */
+export const LISTED: string[] = "AF AM BD BF BI BJ BO CD CF CI CM DJ ET GM GN GW HT ID IN IQ JO KG LA LB LR LS ML MM MR MW MZ NE NG NP PH PK RW SD SL SN SO SS TD TG TL TZ UA UG YE ZW".split(" ");
 const BY_ISO3 = new Map(Object.entries(COUNTRIES).map(([c, v]) => [v.iso3, c]));
 
 export const ASOF_ITEM = "_asof"; // per-country row whose value is the date (YYYYMMDD) of the country's newest survey
