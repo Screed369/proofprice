@@ -1,0 +1,23 @@
+URL: https://bdl.stat.gov.pl/api/v1/variables/search?name=chleb&format=json&lang=pl&page-size=5
+Fetched: 2026-10-18T06:43:06Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1116
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public,max-age=1800
+Content-Length: 1116
+Content-Type: application/json; charset=utf-8
+ETag: d3vYWok531Wlwfnb3WnkEw
+Vary: Accept,Accept-Language
+X-Rate-Limit-Limit: 7d
+X-Rate-Limit-Remaining: 9999
+X-Rate-Limit-Reset: 2026-10-25T06:43:04.6036588Z
+Date: Sun, 18 Oct 2026 06:43:04 GMT
+Set-Cookie: cookie=85e497491d001d5aeeddc2fb7a6ad46a;max-age=1800;Path=/;HttpOnly
+Set-Cookie: cookiesession1=678B288A20E204161AD865977E4EFBE8;Expires=Mon, 18 Oct 2027 06:43:06 GMT;Path=/;HttpOnly
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"totalRecords":43,"page":0,"pageSize":5,"links":{"first":"https://bdl.stat.gov.pl/api/v1/variables/search?name=chleb&format=json&lang=pl&page-size=5&page=0","self":"https://bdl.stat.gov.pl/api/v1/variables/search?name=chleb&format=json&lang=pl&page-size=5&page=0","next":"https://bdl.stat.gov.pl/api/v1/variables/search?name=chleb&format=json&lang=pl&page-size=5&page=1","last":"https://bdl.stat.gov.pl/api/v1/variables/search?name=chleb&format=json&lang=pl&page-size=5&page=8"},"results":[{"id":4911,"subjectId":"P1461","n1":"chleb 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"},{"id":7186,"subjectId":"P1461","n1":"chleb mieszany zwykły (pszenno-żytni) - za 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"},{"id":4950,"subjectId":"P1466","n1":"chleb żytni razowy zwykły - za 0,5kg","level":3,"measureUnitId":4,"measureUnitName":"zł"},{"id":216974,"subjectId":"P1466","n1":"chleb żytni razowy zwykły - za 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"},{"id":1615991,"subjectId":"P1466","n1":"chleb żytni razowy - za 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"}]}
