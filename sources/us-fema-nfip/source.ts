@@ -7,7 +7,7 @@
 
 import { buildAnswer, PriceAnswer } from "../../lib/answer";
 import type { SourceInfo } from "../../lib/plugin";
-import { fetchJson, InputError, SourceError } from "../../lib/http";
+import { fetchJson, InputError, retryOnce, SourceError } from "../../lib/http";
 import { MIN_PUBLISH, summarise } from "../../lib/stats";
 
 export const INFO: SourceInfo = {
@@ -137,7 +137,8 @@ export function summarisePolicies(policies: Policy[]) {
 export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Date; fetcher?: (url: string) => Promise<any> }): Promise<PriceAnswer> {
   const area = parseArea(opts.area);
   const from = windowStart(opts.now);
-  const get = opts.fetcher ?? ((u: string) => fetchJson(u, {}, 25000));
+  // FEMA sometimes stalls on a single call: two attempts of 9 s fit the answer budget (see lib/http retryOnce).
+  const get = opts.fetcher ?? ((u: string) => retryOnce(() => fetchJson(u, {}, 9000)));
   const first = await get(buildUrl(area, from, { count: true }));
   const total = totalCount(first);
   let policies = parsePolicies(first);
