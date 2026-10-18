@@ -1,0 +1,24 @@
+URL: https://api.worldbank.org/v2/sources/88/country/all/series/CoHD_LCU/time/YR2025?format=json&per_page=3
+Fetched: 2026-10-18T18:48:15Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1056
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 18 Oct 2026 18:48:15 GMT
+content-type: application/json;charset=utf-8
+set-cookie: __cf_bm=mdkPKrWHaF30za8CiL_7k7upkI4glDAyUixwC7eC0oQ-1792349295.3296533-1.0.1.1-7hUBOeLAZ4K91ig6kqAOVnQnm.zTiVWCXrpdkaeuO_g9dgcnfizUc97klK927KMF_kO0E.utIDwWFxXurT7mOstb9Sj4Rdi_qm6rpR7X9A83X3f3POYS_Xtr94dIPfYN; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org; Expires=Sun, 18 Oct 2026 19:18:15 GMT
+set-cookie: _cfuvid=E8Y5CcJ9N7saEfDTohEr7x4wU2_jjSFu5LSYRV.8kDI-1792349295.3296533-1.0.1.1-VESHxoKMBNayMX5LXF5a4x_bhotB7320WAx2D6m1T28; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org
+cf-ray: a4c9b757ca32df26-SJC
+cf-cache-status: MISS
+cache-control: public, max-age=86400
+expires: Mon, 19 Oct 2026 18:48:15 GMT
+last-modified: Sun, 18 Oct 2026 18:48:15 GMT
+server: cloudflare
+vary: accept-encoding
+request-context: appId=cid-v1:da002513-bd8b-4441-9f30-737944134422
+x-powered-by: ASP.NET
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+{"page":1,"pages":64,"per_page":3,"total":192,"lastupdated":"2026-07-21","source":{"id":"88","name":"Food Prices for Nutrition","data":[{"variable":[{"concept":"Country","id":"ALB","value":"Albania"},{"concept":"Classification","id":"FPN 5.0","value":"Food Prices for Nutrition 5.0"},{"concept":"Series","id":"CoHD_LCU","value":"Cost of a healthy diet in local currency unit"},{"concept":"Time","id":"YR2025","value":"2025"}],"value":235.21},{"variable":[{"concept":"Country","id":"DZA","value":"Algeria"},{"concept":"Classification","id":"FPN 5.0","value":"Food Prices for Nutrition 5.0"},{"concept":"Series","id":"CoHD_LCU","value":"Cost of a healthy diet in local currency unit"},{"concept":"Time","id":"YR2025","value":"2025"}],"value":227.24},{"variable":[{"concept":"Country","id":"AGO","value":"Angola"},{"concept":"Classification","id":"FPN 5.0","value":"Food Prices for Nutrition 5.0"},{"concept":"Series","id":"CoHD_LCU","value":"Cost of a healthy diet in local currency unit"},{"concept":"Time","id":"YR2025","value":"2025"}],"value":1886.33}]}}
