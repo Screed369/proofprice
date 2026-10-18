@@ -6,6 +6,12 @@ export default defineSource({
   info: INFO, category: "farm-gate-prices", countries: ["CA"], countryHelp: "CA", placeName: "Canada", status: "live", paramNotes: {},
   examples: [{ params: { country: "CA", product: "wheat" } }], method: "debug",
   handle: async (p) => {
+    if (String(p.product) === "uom") {
+      const vecs = [31212140,31212143,31212144,31212146,31212148,31212152,31212161,31212164,31212165,87007873,87007867].map((v) => ({ vectorId: v }));
+      const info: any = await wdsPost("getSeriesInfoFromVector", vecs);
+      const cs: any = await (await fetch("https://www150.statcan.gc.ca/t1/wds/rest/getCodeSets")).json();
+      throw new SourceError(JSON.stringify({ info: info.map((x: any) => x.object), uom: cs.object?.uom, scalar: cs.object?.scalar }).slice(0, 9000));
+    }
     if (String(p.product) === "data") {
       const geos = [8, 6]; const prods = [3, 14, 15, 18, 27, 37, 40, 41, 23, 1];
       const body = geos.flatMap((g) => prods.map((q) => ({ productId: 32100077, coordinate: coordinate([g, q]), latestN: 3 })));
