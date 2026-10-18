@@ -1,7 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { deflateRawSync } from "node:zlib";
-import { parseIePpr, ieDailyRows, unzipFirstFile, normaliseCounty, ieAnswerFromRow, ieHistoryKey, dublinDistrict, snapMonths, ieKey } from "./source";
+import { parseIePpr, ieDailyRows, unzipFirstFile, normaliseCounty, ieAnswerFromRow, ieHistoryKey, dublinDistrict, snapMonths, ieKey, ieHomeSales } from "./source";
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
 
 // Header and first rows copied from the live file PPR-ALL.csv, probed 13 Oct 2026 (latin-1; euro sign lost in header).
 const header = 'Date of Sale (dd/mm/yyyy),Address,County,Eircode,Price (),Not Full Market Price,VAT Exclusive,Description of Property,Property Size Description';
@@ -109,4 +112,43 @@ test("IE: VAT basis is in the summary sentence itself (audit 2026-10-14)", () =>
 test("IE: an empty or unreadable price is skipped, never read as 0", () => {
   const s = parseIePpr(header + '\n"01/09/2026","1 Road","Cork","","","No","No","Second-Hand Dwelling house /Apartment",""\n"01/09/2026","2 Road","Cork","","n/a","No","No","Second-Hand Dwelling house /Apartment",""');
   assert.equal(s.length, 0);
+});
+
+test("IE: G20261018-2 Dublin 1 new homes (8 sales in 36 months, none in 12) says so clearly and offers a wider figure", async () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "ie-lib-"));
+  mkdirSync(path.join(dir, "ie-ppr", "daily"), { recursive: true });
+  writeFileSync(path.join(dir, "ie-ppr", "meta.json"), JSON.stringify({ last_date: "2026-10-02" }));
+  writeFileSync(path.join(dir, "ie-ppr", "daily", "2026-10.csv"), [
+    "date,area,item,n,median,low,high,min,max",
+    "2026-10-02,dublin-1,new:36m,8,575000,371800,2069020,341000,5555066",
+    "2026-10-02,dublin-1,any:12m,254,380000,259300,625700,40000,5114678",
+    "2026-10-02,dublin,new:12m,900,450000,350000,650000,100000,2000000",
+    "2026-10-02,dublin,new:36m,2500,430000,330000,640000,100000,2000000",
+  ].join("\n") + "\n");
+  const prev = process.env.PROOFPRICE_LIBRARY_DIR;
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
+  try {
+    // 12m has no row, 24m none, 36m has 8 sales: widen the window, same place and type.
+    const a = await ieHomeSales({ town: "Dublin 1", property_type: "new" });
+    assert.equal(a.status, "ok");
+    assert.equal(a.sample_size, 8);
+    assert.equal((a.extra as Record<string, unknown>).window_widened, true);
+    assert.match(a.summary, /last 36 months/);
+    // Second-hand/any for Dublin 1 is fine as before.
+    assert.equal((await ieHomeSales({ town: "Dublin 1" })).status, "ok");
+    // Under 5 in every window: not ok, clear reason, nearest wider area suggested but not passed off as Dublin 1.
+    writeFileSync(path.join(dir, "ie-ppr", "daily", "2026-10.csv"), [
+      "date,area,item,n,median,low,high,min,max",
+      "2026-10-02,dublin-1,new:36m,3,575000,371800,2069020,341000,5555066",
+      "2026-10-02,dublin,new:12m,900,450000,350000,650000,100000,2000000",
+    ].join("\n") + "\n");
+    const b = await ieHomeSales({ town: "Dublin 1", property_type: "new" });
+    assert.notEqual(b.status, "ok");
+    assert.equal(b.price, null);
+    assert.match(b.summary, /Fewer than 5 new homes sales/);
+    assert.match(b.summary, /Dublin/);
+    assert.ok(b.suggestions && /town=Dublin/.test(b.suggestions[0]));
+  } finally {
+    if (prev === undefined) delete process.env.PROOFPRICE_LIBRARY_DIR; else process.env.PROOFPRICE_LIBRARY_DIR = prev;
+  }
 });

@@ -245,25 +245,58 @@ export async function ieHomeSales(input: { town?: string; county?: string; prope
   if (!meta?.last_date) throw new SourceError("ProofPrice collects this register daily; data appears after the next collection.");
   const to = meta.last_date;
   const from = new Date(Date.parse(to + "T00:00:00Z") - 60 * 86400000).toISOString().slice(0, 10);
-  const rows = readDaily(INFO.id, { area: k.area, item: k.item, from, to });
-  const row = rows[rows.length - 1];
-  if (!row) {
-    return buildAnswer({
+  const latest = (area: string, months: number) => {
+    const rows = readDaily(INFO.id, { area, item: `${k.type}:${months}m`, from, to });
+    return rows[rows.length - 1];
+  };
+  const typeWord = k.type === "any" ? "homes" : k.type === "new" ? "new homes" : "second-hand homes";
+  let row = latest(k.area, k.months);
+  let usedMonths = k.months;
+  let widenedWindow = false;
+  // Too few sales in the window asked for: try longer windows for the SAME place and type (the period in the answer says which).
+  if (!row || row.n < MIN_PUBLISH) {
+    for (const m of IE_MONTHS) {
+      if (m <= k.months) continue;
+      const r = latest(k.area, m);
+      if (r && r.n >= MIN_PUBLISH) { row = r; usedMonths = m; widenedWindow = true; break; }
+    }
+  }
+  if (!row || row.n < MIN_PUBLISH) {
+    // A different place is never passed off as the one asked for: it is offered as a suggestion only.
+    const suggestions: string[] = [];
+    const wider = k.area.startsWith("dublin-") ? [["dublin", "Dublin"]] : [];
+    if (k.area !== NATIONAL) wider.push([NATIONAL, "Ireland"]);
+    for (const [area, label] of wider) {
+      for (const m of IE_MONTHS) {
+        if (m < k.months) continue;
+        const r = latest(area, m);
+        if (r && r.n >= MIN_PUBLISH) {
+          const param = area === NATIONAL ? "omit the town parameter" : `town=${label}`;
+          suggestions.push(`${cap(typeWord)} in ${label}, last ${m} months: median ${fmtMoney(r.median, "EUR")} from ${r.n} sales (${param}${k.months === m ? "" : `, months=${m}`}).`);
+          break;
+        }
+      }
+    }
+    const n = row?.n ?? 0;
+    const a = buildAnswer({
       source: INFO,
       query: { country: "IE", town: k.label, property_type: k.type, months: k.months },
-      summary: null, currency: "EUR", unit: "per home", period: { from: null, to: null },
+      summary: n ? summarise(Array(n).fill(row!.median)) : null, currency: "EUR", unit: "per home", period: { from: null, to: null },
       method: "Rolling windows of the Property Price Register.", describe: () => "", baseUrl: input.baseUrl,
+      extra: { reason: `Fewer than ${MIN_PUBLISH} ${typeWord} sales recorded in ${k.label} in any window up to 36 months`, windows_tried_months: IE_MONTHS.filter((m) => m >= k.months) },
     });
+    a.summary = `Fewer than ${MIN_PUBLISH} ${typeWord} sales are recorded in ${k.label} in the last ${IE_MONTHS[IE_MONTHS.length - 1]} months, so no price range is published (it would identify individual sales).` +
+      (suggestions.length ? ` Nearest wider figure: ${suggestions[0]}` : "");
+    if (suggestions.length) a.suggestions = suggestions;
+    return a;
   }
-  if (row.n < MIN_PUBLISH) {
-    return buildAnswer({
-      source: INFO,
-      query: { country: "IE", town: k.label, property_type: k.type, months: k.months },
-      summary: summarise(Array(row.n).fill(row.median)), currency: "EUR", unit: "per home", period: { from: null, to: null },
-      method: "Rolling windows of the Property Price Register.", describe: () => "", baseUrl: input.baseUrl,
-    });
+  const a = ieAnswerFromRow(row, { label: k.label, type: k.type, months: usedMonths, baseUrl: input.baseUrl });
+  if (widenedWindow) {
+    (a.query as Record<string, unknown>).months = k.months;
+    a.summary = `Fewer than ${MIN_PUBLISH} ${typeWord} sales in ${k.label} in the last ${k.months} months, so this uses the last ${usedMonths} months. ` + a.summary;
+    a.extra = { ...(a.extra ?? {}), requested_months: k.months, window_months: usedMonths, window_widened: true };
   }
-  return ieAnswerFromRow(row, { label: k.label, type: k.type, months: k.months, baseUrl: input.baseUrl });
+  return a;
 }
 
 function cap(s: string) {
