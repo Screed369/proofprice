@@ -1,0 +1,23 @@
+URL: https://bdl.stat.gov.pl/api/v1/variables?subject-id=P1461&format=json&lang=pl&page-size=30
+Fetched: 2026-10-18T06:50:25Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1027
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public,max-age=1800
+Content-Length: 1027
+Content-Type: application/json; charset=utf-8
+ETag: rX_qHMCafHeR5o7UZDuMlA
+Vary: Accept,Accept-Language
+X-Rate-Limit-Limit: 7d
+X-Rate-Limit-Remaining: 9999
+X-Rate-Limit-Reset: 2026-10-25T06:50:24.0842714Z
+Date: Sun, 18 Oct 2026 06:50:24 GMT
+Set-Cookie: cookie=85e497491d001d5aeeddc2fb316cd46a;max-age=1800;Path=/;HttpOnly
+Set-Cookie: cookiesession1=678B288ACDA569FEED8BEC70BF5A8433;Expires=Mon, 18 Oct 2027 06:50:25 GMT;Path=/;HttpOnly
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 4500 BYTES
+{"totalRecords":5,"page":0,"pageSize":30,"links":{"first":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P1461&format=json&lang=pl&page-size=30&page=0","self":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P1461&format=json&lang=pl&page-size=30&page=0","last":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P1461&format=json&lang=pl&page-size=30&page=0"},"results":[{"id":4911,"subjectId":"P1461","n1":"chleb 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"},{"id":7186,"subjectId":"P1461","n1":"chleb mieszany zwykły (pszenno-żytni) - za 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"},{"id":4912,"subjectId":"P1461","n1":"mąka pszenna \"Poznańska\", workowana - za 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"},{"id":4913,"subjectId":"P1461","n1":"kasza jęczmienna \"Mazurska\" - za 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"},{"id":4914,"subjectId":"P1461","n1":"kasza gryczana prażona cała - za 1kg","level":3,"measureUnitId":4,"measureUnitName":"zł"}]}
