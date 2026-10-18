@@ -1,0 +1,23 @@
+URL: https://tabular-api.data.gouv.fr/api/resources/21543ae5-7d6e-4c49-8719-e7f725d441da/data/?page_size=3
+Fetched: 2026-10-18T09:46:20Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2652
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx/1.31.4
+date: Sun, 18 Oct 2026 09:46:20 GMT
+content-type: application/json; charset=utf-8
+content-length: 2652
+vary: Accept-Encoding
+access-control-allow-origin: *
+access-control-allow-methods: GET, OPTIONS
+access-control-allow-headers: Content-Type, Authorization, X-Requested-With
+access-control-expose-headers: *
+cache-control: public
+x-cache-status: MISS
+strict-transport-security: max-age=86400; includeSubDomains; preload;
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"data": [{"__id": 1, "Observatory": "B1300", "Data_year": 2025, "agglomeration": "Agglom\u00e9rations d'Aix-Marseille et Arles", "Zone_complementaire": null, "Type_habitat": null, "epoque_construction_homogene": null, "anciennete_locataire_homogene": null, "nombre_pieces_homogene": null, "loyer_1_decile": 9.2, "loyer_1_quartile": 11.1, "loyer_median": 13.3, "loyer_3_quartile": 16.1, "loyer_9_decile": 19.3, "loyer_moyen": 12.9, "loyer_mensuel_1_decile": 480, "loyer_mensuel_1_quartile": 580, "loyer_mensuel_median": 700, "loyer_mensuel_3_quartile": 879, "loyer_mensuel_9_decile": 1129, "moyenne_loyer_mensuel": 768, "surface_moyenne": 60, "nombre_observations": 29710, "nombre_logements": null, "methodologie_production": "Estimation directe"}, {"__id": 2, "Observatory": "B1300", "Data_year": 2025, "agglomeration": "Agglom\u00e9rations d'Aix-Marseille et Arles", "Zone_complementaire": null, "Type_habitat": null, "epoque_construction_homogene": null, "anciennete_locataire_homogene": null, "nombre_pieces_homogene": "Maison 1-3P", "loyer_1_decile": 9, "loyer_1_quartile": 11.3, "loyer_median": 13.6, "loyer_3_quartile": 16.4, "loyer_9_decile": 19.3, "loyer_moyen": 13.3, "loyer_mensuel_1_decile": 550, "loyer_mensuel_1_quartile": 625, "loyer_mensuel_median": 775, "loyer_mensuel_3_quartile": 900, "loyer_mensuel_9_decile": 1150, "moyenne_loyer_mensuel": 802, "surface_moyenne": 60, "nombre_observations": 565, "nombre_logements": null, "methodologie_production": "Estimation directe"}, {"__id": 3, "Observatory": "B1300", "Data_year": 2025, "agglomeration": "Agglom\u00e9rations d'Aix-Marseille et Arles", "Zone_complementaire": null, "Type_habitat": null, "epoque_construction_homogene": null, "anciennete_locataire_homogene": null, "nombre_pieces_homogene": "Ensemble 4P+", "loyer_1_decile": 8, "loyer_1_quartile": 9.5, "loyer_median": 11.1, "loyer_3_quartile": 13.3, "loyer_9_decile": 15.3, "loyer_moyen": 11.4, "loyer_mensuel_1_decile": 680, "loyer_mensuel_1_quartile": 803, "loyer_mensuel_median": 1003, "loyer_mensuel_3_quartile": 1254, "loyer_mensuel_9_decile": 1520, "moyenne_loyer_mensuel": 1093, "surface_moyenne": 96, "nombre_observations": 3871, "nombre_logements": null, "methodologie_production": "Estimation directe"}], "links": {"profile": "https://tabular-api.data.gouv.fr/api/resources/21543ae5-7d6e-4c49-8719-e7f725d441da/profile/", "swagger": "https://tabular-api.data.gouv.fr/api/resources/21543ae5-7d6e-4c49-8719-e7f725d441da/swagger/", "next": "https://tabular-api.data.gouv.fr/api/resources/21543ae5-7d6e-4c49-8719-e7f725d441da/data/?page=2&page_size=3", "prev": null}, "meta": {"page": 1, "page_size": 3, "total": 9974}}
