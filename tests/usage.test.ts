@@ -1,7 +1,7 @@
 // Anonymous usage counting (lib/usage.ts): off unless a Blob store is connected (BLOB_STORE_ID or BLOB_READ_WRITE_TOKEN); counts only the documented fields; flushes in batches.
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import { FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport } from "../lib/usage";
+import { OWN_CLIENTS, isOwnClient, isOwnRequest, withoutOwnParam, runWithOwnFlag, FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport } from "../lib/usage";
 import type { UsageFile } from "../lib/usage";
 
 const ON = { BLOB_READ_WRITE_TOKEN: "test-token-not-real" };
@@ -97,4 +97,43 @@ test("the report: last 30 days, totals, answered share and the top unanswered qu
   });
   assert.equal(rep.enabled, true);
   assert.equal(rep.total_questions, 4 + 1 + 6 + 9);
+});
+
+test("our own checks are skipped, never recorded", () => {
+  assert.ok(OWN_CLIENTS.every((c) => isOwnClient(c)));
+  assert.equal(isOwnClient("cursor"), false);
+  recordUsage({ tool: "t", country: "IE", key: "x", status: "ok", own: true }, NOW, ON);
+  recordUsage({ tool: "mcp_initialize", status: "ok", client: "proofprice-smoke" }, NOW, ON);
+  recordUsage({ tool: "mcp_initialize", status: "ok", client: "ProofPrice-Check" }, NOW, ON);
+  assert.equal(pendingUsage().length, 0);
+  runWithOwnFlag((flag) => {
+    flag.own = true;
+    recordUsage({ tool: "t", country: "IE", key: "x", status: "ok" }, NOW, ON);
+  });
+  assert.equal(pendingUsage().length, 0);
+  runWithOwnFlag(() => recordUsage({ tool: "t", country: "IE", key: "x", status: "ok" }, NOW, ON));
+  assert.equal(pendingUsage().length, 1); // an outside call in the same code path is still counted
+});
+
+test("own requests: ppcheck=1 or the smoke user agent; the marker is stripped from the query", () => {
+  assert.equal(isOwnRequest(new Request("https://proofprice.com/api/v1/fuel?country=ES&ppcheck=1")), true);
+  assert.equal(isOwnRequest(new Request("https://proofprice.com/api/v1/fuel?country=ES&ppcheck=0")), false);
+  assert.equal(isOwnRequest(new Request("https://proofprice.com/api/v1/fuel", { headers: { "user-agent": "ProofPrice-smoke/1.1 (+https://proofprice.com)" } })), true);
+  assert.equal(isOwnRequest(new Request("https://proofprice.com/api/v1/fuel", { headers: { "user-agent": "Mozilla/5.0" } })), false);
+  assert.equal(withoutOwnParam(new URLSearchParams("country=ES&ppcheck=1&fuel=diesel")).toString(), "country=ES&fuel=diesel");
+});
+
+test("the report separates outside questions from our own named checks", () => {
+  const f: UsageFile = { version: 1, flushed_at: "x", rows: [
+    { day: "2026-10-14", tool: "mcp_initialize", country: "", key: "", status: "ok", client: "proofprice-smoke", count: 4 },
+    { day: "2026-10-14", tool: "pricepaid_rent_prices", country: "IE", key: "dublin", status: "ok", client: "", count: 6 },
+    { day: "2026-10-14", tool: "mcp_initialize", country: "", key: "", status: "ok", client: "cursor", count: 2 },
+  ] };
+  const r = summariseUsage([f], NOW);
+  assert.equal(r.total_questions, 12);
+  assert.equal(r.outside_questions, 8);
+  assert.equal(r.own_checks!.questions, 4);
+  assert.deepEqual(r.own_checks!.clients, ["proofprice-smoke"]);
+  assert.deepEqual(r.by_client!.map((c) => c.client), ["cursor"]);
+  assert.equal(r.by_day![0].outside_questions, 8);
 });

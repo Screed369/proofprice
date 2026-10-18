@@ -3,7 +3,7 @@
 // Takes the category's own parameters plus price (required), currency, unit and includes.
 import { CATEGORIES, paramsFromQuery, runCategory } from "../../../../lib/registry";
 import { CHECK_RESERVED, CHECK_TOOL, resolveCategory, runCheck } from "../../../../lib/check";
-import { recordUsage, statusOfAnswer, statusOfError, usageKey } from "../../../../lib/usage";
+import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, withoutOwnParam } from "../../../../lib/usage";
 import { gatedRest } from "../../../../lib/payments";
 import { json, errorResponse, baseUrl, corsPreflight, STALE_CACHE_SECONDS } from "../../../../lib/route-helpers";
 
@@ -16,7 +16,8 @@ export function GET(req: Request) {
 
 async function handle(req: Request) {
   try {
-    const q = new URL(req.url).searchParams;
+    const own = isOwnRequest(req); // our own checks are not counted
+    const q = withoutOwnParam(new URL(req.url).searchParams);
     const cat = resolveCategory(CATEGORIES, q.get("category"));
     const rest = new URLSearchParams();
     for (const [k, v] of q.entries()) if (!CHECK_RESERVED.includes(k)) rest.append(k, v);
@@ -29,10 +30,10 @@ async function handle(req: Request) {
     try {
       result = await runCheck(args, { categories: CATEGORIES, runCategory }, { baseUrl: baseUrl(req) });
     } catch (e) {
-      recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfError(e) });
+      recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfError(e), own });
       throw e;
     }
-    recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfAnswer(result.answer) });
+    recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfAnswer(result.answer), own });
     const stale = result.answer.extra?.stale === true;
     const cache = stale ? Math.min(cat.cacheSeconds ?? 600, STALE_CACHE_SECONDS) : cat.cacheSeconds ?? 600;
     return json(result, 200, cache, stale ? { "x-proofprice-stale": `snapshot=${String(result.answer.extra?.snapshot_date ?? "")}` } : {});

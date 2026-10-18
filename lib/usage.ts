@@ -11,6 +11,7 @@
 // counts can be a little low; they are never invented. GET /api/v1/usage reads the last 30 days back as totals.
 
 import { randomBytes } from "node:crypto";
+import { AsyncLocalStorage } from "node:async_hooks";
 
 export const USAGE_STATUSES = ["ok", "insufficient_data", "no_matches", "unsupported", "error"] as const;
 export type UsageStatus = (typeof USAGE_STATUSES)[number];
@@ -24,6 +25,49 @@ export interface UsageEvent {
   status: UsageStatus;
   /** MCP clientInfo.name, only if the client sent it. */
   client?: unknown;
+  /** True for our own checks (smoke test, monitors, builders): the call is not counted at all. */
+  own?: boolean;
+}
+
+// ---------- our own checks are not customers ----------
+
+/** MCP client names used by our own checks. A call from one of these is simply not counted. */
+export const OWN_CLIENTS = ["proofprice-smoke", "proofprice-check"] as const;
+/** The smoke test's user agent starts with this. It is only compared, never stored or counted. */
+export const OWN_UA_PREFIX = "proofprice-smoke/";
+/** REST: add ppcheck=1 to a request and it is not counted. */
+export const OWN_QUERY_PARAM = "ppcheck";
+
+export function isOwnClient(name: unknown): boolean {
+  const n = String(name ?? "").toLowerCase().trim();
+  return (OWN_CLIENTS as readonly string[]).includes(n);
+}
+
+const truthy = (v: unknown) => v === true || v === 1 || /^(1|true|yes)$/i.test(String(v ?? "").trim());
+
+/** True when a request says it is one of our own checks: ppcheck=1, or the smoke test's user agent. Nothing is kept: the answer is a
+ *  yes or no used only to skip the count. */
+export function isOwnRequest(req: Request): boolean {
+  try {
+    if (truthy(new URL(req.url).searchParams.get(OWN_QUERY_PARAM))) return true;
+    return (req.headers.get("user-agent") ?? "").toLowerCase().startsWith(OWN_UA_PREFIX);
+  } catch {
+    return false;
+  }
+}
+
+/** The query without ppcheck, so the marker never reaches a source or a cache key inside the answer. */
+export function withoutOwnParam(q: URLSearchParams): URLSearchParams {
+  const out = new URLSearchParams();
+  for (const [k, v] of q.entries()) if (k !== OWN_QUERY_PARAM) out.append(k, v);
+  return out;
+}
+
+/** Per-request flag for MCP calls: set when the request turns out to come from one of our own checks. */
+const ownStore = new AsyncLocalStorage<{ own: boolean }>();
+export function runWithOwnFlag<T>(fn: (flag: { own: boolean }) => T): T {
+  const flag = { own: false };
+  return ownStore.run(flag, () => fn(flag));
 }
 
 export interface UsageRow {
@@ -122,6 +166,7 @@ const dayOf = (d: Date) => d.toISOString().slice(0, 10);
 
 export function recordUsage(ev: UsageEvent, now: Date = new Date(), env: Env = process.env): void {
   if (!usageEnabled(env)) return; // OFF: do nothing at all
+  if (ev.own || isOwnClient(ev.client) || ownStore.getStore()?.own) return; // our own checks are skipped, not recorded
   try {
     const row: UsageRow = {
       day: dayOf(now),
@@ -188,8 +233,12 @@ export interface UsageReport {
   service: string;
   message?: string;
   period?: { from: string; to: string; days: number };
+  /** Everything recorded in the period, including older rows from our own checks that cannot be told apart (see own_checks). */
   total_questions?: number;
-  by_day?: { day: string; questions: number; answered: number }[];
+  /** Questions from outside: total_questions minus the rows from our own named checks. This is the number to watch. */
+  outside_questions?: number;
+  own_checks?: { questions: number; clients: string[]; note: string };
+  by_day?: { day: string; questions: number; outside_questions: number; answered: number }[];
   by_tool?: { tool: string; questions: number }[];
   by_country?: { country: string; questions: number }[];
   by_status?: Record<string, number>;
@@ -197,6 +246,9 @@ export interface UsageReport {
   top_unanswered?: { tool: string; country: string; key: string; status: string; questions: number }[];
   note: string;
 }
+
+export const OWN_CHECKS_NOTE =
+  "Our own smoke test and monitors are no longer counted. Rows from our own checks that were recorded before this change are shown here, not as outside questions. Older smoke-test tool calls carried no app name, so a few may still sit in the outside number.";
 
 export const USAGE_NOTE =
   "Anonymous aggregate counts only: no IP addresses, user agents or other identifiers are collected. Counts can fall a little short because tallies are batched in memory and written every few minutes.";
@@ -207,7 +259,9 @@ const top = <T extends { questions: number }>(a: T[], n: number) => a.sort((x, y
 export function summariseUsage(files: UsageFile[], now: Date = new Date(), days = 30, topN = 20): UsageReport {
   const to = dayOf(now);
   const from = dayOf(new Date(now.getTime() - (days - 1) * 86400000));
-  const byDay = new Map<string, { questions: number; answered: number }>();
+  const byDay = new Map<string, { questions: number; outside_questions: number; answered: number }>();
+  let ownTotal = 0;
+  const ownClients = new Set<string>();
   const byTool = new Map<string, number>();
   const byCountry = new Map<string, number>();
   const byStatus: Record<string, number> = {};
@@ -219,14 +273,20 @@ export function summariseUsage(files: UsageFile[], now: Date = new Date(), days 
     for (const r of f.rows ?? []) {
       if (!r || r.day < from || r.day > to || !Number.isFinite(r.count) || r.count <= 0) continue;
       total += r.count;
-      const d = byDay.get(r.day) ?? { questions: 0, answered: 0 };
+      const own = isOwnClient(r.client);
+      if (own) {
+        ownTotal += r.count;
+        ownClients.add(r.client);
+      }
+      const d = byDay.get(r.day) ?? { questions: 0, outside_questions: 0, answered: 0 };
       d.questions += r.count;
+      if (!own) d.outside_questions += r.count;
       if (r.status === "ok") d.answered += r.count;
       byDay.set(r.day, d);
       add(byTool, r.tool, r.count);
       if (r.country) add(byCountry, r.country, r.count);
       byStatus[r.status] = (byStatus[r.status] ?? 0) + r.count;
-      if (r.client) add(byClient, r.client, r.count);
+      if (r.client && !own) add(byClient, r.client, r.count);
       if (r.status !== "ok" && r.status !== "error" && r.tool !== "mcp_initialize") {
         const id = JSON.stringify([r.tool, r.country, r.key, r.status]);
         const u = unanswered.get(id) ?? { tool: r.tool, country: r.country, key: r.key, status: r.status, questions: 0 };
@@ -240,6 +300,8 @@ export function summariseUsage(files: UsageFile[], now: Date = new Date(), days 
     service: "ProofPrice usage",
     period: { from, to, days },
     total_questions: total,
+    outside_questions: total - ownTotal,
+    own_checks: { questions: ownTotal, clients: [...ownClients].sort(), note: OWN_CHECKS_NOTE },
     by_day: [...byDay.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([day, v]) => ({ day, ...v })),
     by_tool: top([...byTool].map(([tool, questions]) => ({ tool, questions })), 50),
     by_country: top([...byCountry].map(([country, questions]) => ({ country, questions })), 50),

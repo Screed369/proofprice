@@ -3,6 +3,17 @@ import { dateTimeUtc, longDate, plural } from "../../lib/site/format";
 import { pageMetadata } from "../../lib/site/meta";
 import { sourceCards } from "../../lib/site/sources";
 import { HEALTH_LABEL, LATE_AFTER_DAYS, libraryStatusRows } from "../../lib/site/status";
+import { usageReport } from "../../lib/usage";
+import type { UsageReport } from "../../lib/usage";
+
+// Usage counts are read with a short time limit; if they cannot be read (counting off, store slow) the section says so.
+async function readUsage(): Promise<UsageReport | null> {
+  try {
+    return await Promise.race([usageReport(), new Promise<null>((r) => setTimeout(() => r(null), 8000))]);
+  } catch {
+    return null;
+  }
+}
 
 // Built without any network access: it reads the price library that ships with the deployment (library/*/meta.json).
 export const dynamic = "force-static";
@@ -14,8 +25,9 @@ export const metadata = pageMetadata({
   path: "/status",
 });
 
-export default function Status() {
+export default async function Status() {
   const now = new Date();
+  const usage = await readUsage();
   const cards = sourceCards();
   const rows = libraryStatusRows(cards, now);
   const problems = rows.filter((r) => r.health !== "ok");
@@ -101,6 +113,24 @@ export default function Status() {
         Home sale registers publish with a delay, so &quot;newest figures&quot; can be older than the last collection. Machine-readable:{" "}
         <a href="/api/v1/library">/api/v1/library</a>.
       </p>
+
+      <h2>Questions asked</h2>
+      {usage && usage.enabled && usage.period ? (
+        <>
+          <p>
+            In the last {usage.period.days} days ProofPrice was asked <strong>{usage.outside_questions ?? 0}</strong> questions from outside.
+            Our own checks (the smoke test and the monitors) are not counted as customers
+            {usage.own_checks && usage.own_checks.questions > 0
+              ? `; ${usage.own_checks.questions} older rows from our own named checks are kept apart.`
+              : "."}
+          </p>
+          <p className="small muted">
+            Anonymous counts only: no IP addresses, user agents or other identifiers. Machine-readable: <a href="/api/v1/usage">/api/v1/usage</a>.
+          </p>
+        </>
+      ) : (
+        <p className="muted">Question counts are not available right now. They are anonymous, and our own checks are never counted. See <a href="/api/v1/usage">/api/v1/usage</a>.</p>
+      )}
 
       <h2>Live sources</h2>
       <p>

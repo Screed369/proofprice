@@ -19,7 +19,7 @@ import { withDeadline } from "./http";
 import { checkResultSchema, coverageToolSchema, historyAnswerSchema, priceAnswerSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { gate, paymentHeaderFromMeta, premiumNote, readGateConfig, isAnswered, type PremiumKey } from "./payments";
-import { recordUsage, statusOfAnswer, statusOfError, usageEnabled, usageKey } from "./usage";
+import { isOwnClient, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageEnabled, usageKey } from "./usage";
 
 /** The same four hints on every tool: they read official sources and never change anything. */
 export const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } as const;
@@ -273,18 +273,29 @@ const INITIALIZE_BODY_MAX = 64 * 1024;
  *  parse the copy just means nothing is counted. */
 export function withInitializeCount(next: McpHandler, env: Record<string, string | undefined> = process.env): McpHandler {
   return (req) => {
-    if (req.method === "POST" && usageEnabled(env)) countInitialize(req, env);
-    return next(req);
+    if (req.method !== "POST" || !usageEnabled(env)) return next(req);
+    // Our own checks (smoke user agent, ppcheck=1, client proofprice-smoke / proofprice-check) are not counted. The flag is set on
+    // the side and read when a tool call finishes, so it never holds a request up.
+    return runWithOwnFlag((flag) => {
+      if (isOwnRequest(req)) flag.own = true;
+      countInitialize(req, env, flag);
+      return next(req);
+    });
   };
 }
 
-function countInitialize(req: Request, env: Record<string, string | undefined>): void {
+function countInitialize(req: Request, env: Record<string, string | undefined>, flag: { own: boolean }): void {
   try {
     if (Number(req.headers.get("content-length") ?? 0) > INITIALIZE_BODY_MAX) return;
     void req
       .clone()
       .json()
       .then((body: any) => {
+        for (const m of Array.isArray(body) ? body : [body]) {
+          const meta = m?.params?._meta?.["io.modelcontextprotocol/clientInfo"];
+          const ppcheck = m?.params?.arguments?.ppcheck;
+          if (isOwnClient(m?.params?.clientInfo?.name) || isOwnClient(meta?.name) || ppcheck === 1 || ppcheck === "1" || ppcheck === true) flag.own = true;
+        }
         for (const m of Array.isArray(body) ? body : [body]) {
           if (m?.method === "initialize") recordUsage({ tool: "mcp_initialize", status: "ok", client: m?.params?.clientInfo?.name }, new Date(), env);
         }

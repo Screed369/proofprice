@@ -2,7 +2,7 @@
 // Examples: /api/v1/fuel?country=ES&area=28&fuel=diesel · /api/v1/home-sales?country=GB&town=Bristol
 import { categoryByRestPath, paramsFromQuery, runCategory } from "../../../../lib/registry";
 import { json, answerResponse, errorResponse, baseUrl, corsPreflight } from "../../../../lib/route-helpers";
-import { recordUsage, statusOfAnswer, statusOfError, usageKey } from "../../../../lib/usage";
+import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, withoutOwnParam } from "../../../../lib/usage";
 
 export const maxDuration = 60;
 
@@ -11,13 +11,14 @@ export async function GET(req: Request, ctx: { params: Promise<{ category: strin
   const cat = categoryByRestPath(category);
   if (!cat) return json({ error: `Unknown endpoint /api/v1/${category}. See /api/v1/coverage.` }, 404);
   try {
-    const params = paramsFromQuery(cat, new URL(req.url).searchParams);
+    const own = isOwnRequest(req); // our own checks are not counted (nothing is stored about them)
+    const params = paramsFromQuery(cat, withoutOwnParam(new URL(req.url).searchParams));
     try {
       const answer = await runCategory(cat, params, { baseUrl: baseUrl(req) });
-      recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfAnswer(answer) });
+      recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfAnswer(answer), own });
       return answerResponse(answer, cat.cacheSeconds ?? 600);
     } catch (e) {
-      recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfError(e) });
+      recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfError(e), own });
       throw e;
     }
   } catch (e) {
