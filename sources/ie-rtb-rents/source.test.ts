@@ -111,3 +111,22 @@ test("ieRent: a recent quarter carries no age warning in the summary", async () 
   const a = await ieRent({ town: "Dublin" }, fetcher, new Date("2026-03-01T00:00:00Z"));
   assert.doesNotMatch(a.summary, /quarter ended about/);
 });
+
+test("ieRent: G20261018-3 Dublin 8, 2 bedrooms (the district is empty in the table, its parts carry the figure)", async () => {
+  const D8 = read("riq02-rpc-dublin8.json");
+  const fetcher = async (url: string) => {
+    if (url.includes("ReadMetadata")) return META;
+    const q = JSON.parse(new URL(url).searchParams.get("data")!);
+    const locs: string[] = q.params.dimension["C03004V03625"].category.index;
+    return locs.length > 1 ? D8 : { ...D8, result: { ...D8.result, dimension: { ...D8.result.dimension, C03004V03625: { ...D8.result.dimension.C03004V03625, category: { index: ["129900"], label: { "129900": "Dublin 8" } } } }, size: [1, 5, 7, 1, 1], value: new Array(35).fill(null) } };
+  };
+  const two = await ieRent({ town: "Dublin 8", bedrooms: 2 }, fetcher, new Date("2026-10-18T00:00:00Z"));
+  assert.equal(two.status, "ok");
+  assert.equal(two.price?.value, 1912.06); // only Rialto has a two-bed figure in 2025Q4
+  assert.match(two.summary, /Rialto, Dublin 8/);
+  assert.match(String(two.statistic?.note), /only part of it with one is Rialto, Dublin 8/);
+  const all = await ieRent({ town: "Dublin 8" }, fetcher, new Date("2026-10-18T00:00:00Z"));
+  assert.equal(all.status, "ok");
+  assert.equal(all.price?.value, Math.round(((1797.64 + 1821.96) / 2) * 100) / 100); // plain mean of the two parts
+  assert.match(String(all.statistic?.note), /plain mean/);
+});

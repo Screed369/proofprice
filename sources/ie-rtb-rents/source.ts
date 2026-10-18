@@ -130,7 +130,7 @@ export function quarterLabel(code: string): string {
 }
 
 /** JSON-RPC GET URL asking for a set of quarters and one location, every bedroom size, one property type. */
-export function buildRpcUrl(quarters: string[], locationCode: string, typeCode: string): string {
+export function buildRpcUrl(quarters: string[], locationCode: string | string[], typeCode: string): string {
   const query = {
     jsonrpc: "2.0",
     method: "PxStat.Data.Cube_API.ReadDataset",
@@ -140,7 +140,7 @@ export function buildRpcUrl(quarters: string[], locationCode: string, typeCode: 
       dimension: {
         [D_TIME]: { category: { index: quarters } },
         [D_TYPE]: { category: { index: [typeCode] } },
-        [D_LOC]: { category: { index: [locationCode] } },
+        [D_LOC]: { category: { index: Array.isArray(locationCode) ? locationCode : [locationCode] } },
       },
       extension: { pivot: null, codes: false, language: { code: "en" }, format: { type: "JSON-stat", version: "2.0" }, matrix: TABLE },
       version: "2.0",
@@ -233,7 +233,28 @@ export async function ieRent(input: IeRentInput, fetcher?: (url: string) => Prom
 
   const wanted = meta.quarters.slice(-12);
   const table = parseRpc(await get(buildRpcUrl(wanted, loc.code, typeCode)));
-  const pick = pickLatest(table, { bed: bedCode, type: typeCode, loc: loc.code });
+  let pick = pickLatest(table, { bed: bedCode, type: typeCode, loc: loc.code });
+
+  // A postal district such as "Dublin 8" is often only a heading in the RTB table: the figures sit on its named parts
+  // ("Rialto, Dublin 8"). When the district itself has no figure, use those parts (G20261018-3).
+  let parts: { name: string; value: number }[] | null = null;
+  if (!pick) {
+    const kids = meta.locations.filter((l) => l.code !== loc.code && l.label.replace(/\s+,/, ",").endsWith(`, ${loc.label}`));
+    if (kids.length) {
+      const kidTable = parseRpc(await get(buildRpcUrl(wanted, kids.map((k) => k.code), typeCode)));
+      const found = kids
+        .map((k) => ({ k, p: pickLatest(kidTable, { bed: bedCode, type: typeCode, loc: k.code }) }))
+        .filter((x): x is { k: { code: string; label: string }; p: RentPick } => x.p !== null);
+      if (found.length) {
+        const newest = found.map((x) => x.p.code).sort().pop()!;
+        const atNewest = found.filter((x) => x.p.code === newest);
+        const vals = atNewest.map((x) => x.p.value);
+        const mean = Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 100) / 100;
+        parts = atNewest.map((x) => ({ name: x.k.label.replace(/\s+,/, ","), value: x.p.value }));
+        pick = { quarter: atNewest[0].p.quarter, code: newest, value: mean, previous: null, yearAgo: null };
+      }
+    }
+  }
 
   const queryEcho = {
     country: "IE",
@@ -249,6 +270,14 @@ export async function ieRent(input: IeRentInput, fetcher?: (url: string) => Prom
   ];
   if (ageMonths !== null && ageMonths > 6) {
     notes.push(`The latest quarter published for this place is ${pick!.quarter}, which ended about ${Math.round(ageMonths)} months ago, so rents today may differ.`);
+  }
+
+  if (parts) {
+    notes.push(
+      parts.length === 1
+        ? `${loc.label} itself has no published figure for this size; the only part of it with one is ${parts[0].name}, so the figure is for that part, not the whole district.`
+        : `${loc.label} itself has no published figure for this size; the figure is the plain mean of the averages for its parts (${parts.map((x) => x.name).join("; ")}). The RTB does not publish tenancy counts, so the parts are not weighted.`,
+    );
   }
 
   // Bedroom breakdown for the same place, type and latest quarter (all sizes the publisher gives).
@@ -273,7 +302,7 @@ export async function ieRent(input: IeRentInput, fetcher?: (url: string) => Prom
     method:
       "Ireland (RTB, via the CSO table RIQ02): the average monthly rent of tenancies registered with the Residential Tenancies Board in the quarter, for the chosen place, bedrooms and property type. We pass on the published average and its quarter; it is an average, not a range built from individual rents, and it is not standardised.",
     describe: (v) =>
-      `The average monthly rent of ${typeLabel} (${bedLabel}) registered with the RTB in ${loc.label} was ${fmtMoney(v, "EUR")} (one published average, not a range; not mix-adjusted).` +
+      `The average monthly rent of ${typeLabel} (${bedLabel}) registered with the RTB in ${parts ? (parts.length === 1 ? parts[0].name : `${loc.label} (mean of its parts)`) : loc.label} was ${fmtMoney(v, "EUR")} (one published average, not a range; not mix-adjusted).` +
       (ageMonths !== null && ageMonths > 6 ? ` That quarter ended about ${Math.round(ageMonths)} months ago, so rents today may differ.` : ""),
     note: notes.join(" "),
     baseUrl: input.baseUrl,
@@ -285,6 +314,7 @@ export async function ieRent(input: IeRentInput, fetcher?: (url: string) => Prom
           previous_quarter: pick.previous ? { quarter: pick.previous.quarter, value: pick.previous.value, change_percent: changePct(pick.value, pick.previous.value) } : null,
           same_quarter_last_year: pick.yearAgo ? { quarter: pick.yearAgo.quarter, value: pick.yearAgo.value, change_percent: changePct(pick.value, pick.yearAgo.value) } : null,
           by_bedrooms: breakdown,
+          ...(parts ? { district_has_no_figure: true, parts_used: parts } : {}),
           table_updated: meta.updated,
           rent_kind: "actual average of registered rents, not standardised",
         }
