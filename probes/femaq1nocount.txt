@@ -1,0 +1,18 @@
+URL: https://www.fema.gov/api/open/v3/NfipPolicies?$filter=reportedZipCode%20eq%20'32935'%20and%20policyEffectiveDate%20ge%20'2025-10-18'%20and%20policyEffectiveDate%20lt%20'2026-01-17'&$select=policyCost&$top=1
+Fetched: 2026-10-18T08:01:35Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 540
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+access-control-allow-origin: *
+x-response-time: 101.133ms
+cache-control: public, max-age=138
+date: Sun, 18 Oct 2026 08:01:35 GMT
+content-length: 540
+strict-transport-security: max-age=31536000 ; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"metadata": {"skip":0,"select":"policyCost","rundate":"2026-10-18T08:01:23.531Z","top":1,"filter":"reportedZipCode eq '32935' and policyEffectiveDate ge '2025-10-18' and policyEffectiveDate lt '2026-01-17'","format":"json","metadata":true,"orderby":"","entityname":"NfipPolicies","version":"v3","url":"/api/open/v3/NfipPolicies?$filter=reportedZipCode%20eq%20'32935'%20and%20policyEffectiveDate%20ge%20'2025-10-18'%20and%20policyEffectiveDate%20lt%20'2026-01-17'&$select=policyCost&$top=1","count":0}, "NfipPolicies": [{"policyCost":992}]}
