@@ -1,6 +1,6 @@
 // GET /api/v1/<tool>/history?country=..&..&days=30  Daily history from the ProofPrice price library.
 // Example: /api/v1/fuel/history?country=ES&area=28&fuel=diesel&days=30
-import { categoryByRestPath, paramsFromQuery, runHistory } from "../../../../../lib/registry";
+import { categoryByRestPath, assertKnownParams, paramsFromQuery, runHistory } from "../../../../../lib/registry";
 import { gatedRest } from "../../../../../lib/payments";
 import { json, errorResponse, baseUrl, corsPreflight } from "../../../../../lib/route-helpers";
 
@@ -16,6 +16,7 @@ async function handle(req: Request, ctx: { params: Promise<{ category: string }>
   if (!cat.history) return json({ error: `No daily history is kept for ${cat.restPath} yet.` }, 404);
   try {
     const params = paramsFromQuery(cat, new URL(req.url).searchParams);
+    assertKnownParams(cat, params);
     return json(runHistory(cat, params, { baseUrl: baseUrl(req) }), 200, 3600);
   } catch (e) {
     return errorResponse(e);

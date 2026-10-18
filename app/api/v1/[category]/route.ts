@@ -1,6 +1,6 @@
 // GET /api/v1/<tool>?country=..&..  One route for every category folder (fuel, home-sales, ...).
 // Examples: /api/v1/fuel?country=ES&area=28&fuel=diesel · /api/v1/home-sales?country=GB&town=Bristol
-import { categoryByRestPath, paramsFromQuery, runCategory } from "../../../../lib/registry";
+import { categoryByRestPath, assertKnownParams, paramsFromQuery, runCategory } from "../../../../lib/registry";
 import { json, answerResponse, errorResponse, baseUrl, corsPreflight } from "../../../../lib/route-helpers";
 import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, withoutOwnParam } from "../../../../lib/usage";
 
@@ -13,6 +13,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ category: strin
   try {
     const own = isOwnRequest(req); // our own checks are not counted (nothing is stored about them)
     const params = paramsFromQuery(cat, withoutOwnParam(new URL(req.url).searchParams));
+    assertKnownParams(cat, params);
     try {
       const answer = await runCategory(cat, params, { baseUrl: baseUrl(req) });
       recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfAnswer(answer), own });

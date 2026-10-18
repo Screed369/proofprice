@@ -125,15 +125,72 @@ export function toolDescription(cat: CategoryPlugin): string {
   return cat.description(toolPlaces(cat));
 }
 
-/** REST query string -> params. Every query parameter is passed through (aliases like `department` keep working). */
+/** Words callers use for "the place", in the order we prefer them as the category's own location parameter. */
+const LOCATION_WORDS = ["town", "area", "region"] as const;
+/** Spellings of a place that we accept for any category that has a location parameter. */
+const LOCATION_ALIASES = ["town", "city", "area", "place", "municipality", "region"] as const;
+/** Old spellings some sources still read themselves, so they stay valid even though no manifest lists them. */
+const LEGACY_PARAMS = ["department", "days"];
+
+/** The parameter a category uses for "where": town, else area, else region. Undefined when the category has no place (medicines, broadband ...). */
+export function locationParam(cat: CategoryPlugin): string | undefined {
+  const names = Object.keys(paramSchemas(cat));
+  return LOCATION_WORDS.find((w) => names.includes(w));
+}
+
+/** Every query parameter name a category accepts over REST: country, its parameters, anything a source adds or documents. */
+export function acceptedParams(cat: CategoryPlugin): string[] {
+  const srcs = sourcesFor(cat.id);
+  const names = new Set<string>(["country", ...Object.keys(paramSchemas(cat)), ...LEGACY_PARAMS]);
+  for (const s of srcs) {
+    for (const k of Object.keys(s.paramNotes ?? {})) names.add(k);
+    for (const k of Object.keys(s.paramValues ?? {})) names.add(k);
+  }
+  return [...names];
+}
+
+/** REST query string -> params. A place given as city, area, place or municipality (when the category calls it something else) is
+ *  moved to the category's own location parameter, so it is never silently ignored. Other parameters are passed through
+ *  (aliases like `department` keep working); the REST routes then reject names nobody reads with unknownParams(). */
 export function paramsFromQuery(cat: CategoryPlugin, q: URLSearchParams): Params {
   const schemas = paramSchemas(cat);
+  const known = new Set(acceptedParams(cat));
+  const target = locationParam(cat);
   const out: Params = {};
   for (const [k, v] of q.entries()) {
     if (v === "") continue;
     out[k] = schemas[k] && isNumberParam(schemas[k]) ? Number(v) : v;
   }
+  if (target && out[target] === undefined) {
+    for (const alias of LOCATION_ALIASES) {
+      if (alias !== target && !known.has(alias) && out[alias] !== undefined) {
+        out[target] = out[alias];
+        delete out[alias];
+        break;
+      }
+    }
+  }
   return out;
+}
+
+/** Names in a REST request that this category does not read. Empty when every name is valid. */
+export function unknownParams(cat: CategoryPlugin, params: Params): string[] {
+  const known = new Set(acceptedParams(cat));
+  return Object.keys(params).filter((k) => !known.has(k));
+}
+
+/** Throws InputError (HTTP 400) listing the valid names when a REST request carries a parameter nobody reads, so a wrong place or
+ *  filter can never come back as an ok answer for something else. */
+export function assertKnownParams(cat: CategoryPlugin, params: Params): void {
+  const bad = unknownParams(cat, params);
+  if (!bad.length) return;
+  const valid = acceptedParams(cat).filter((k) => !LEGACY_PARAMS.includes(k));
+  const place = locationParam(cat);
+  throw new InputError(
+    `Unknown parameter${bad.length > 1 ? "s" : ""} ${bad.map((b) => `"${b}"`).join(", ")} for /api/v1/${cat.restPath}. ` +
+      `Valid parameters: ${valid.join(", ")}.` +
+      (place ? ` Give the place as "${place}".` : " This tool has no place parameter."),
+  );
 }
 
 // ---------- answering ----------
