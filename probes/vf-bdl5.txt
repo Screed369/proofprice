@@ -1,0 +1,23 @@
+URL: https://bdl.stat.gov.pl/api/v1/data/by-variable/4876?format=json&unit-level=2&year=2025&year=2026&page-size=5
+Fetched: 2026-10-18T09:50:45Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1081
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public,max-age=1800
+Content-Length: 1081
+Content-Type: application/json; charset=utf-8
+ETag: roiofm62UyDsi-iNx6yJAA
+Vary: Accept,Accept-Language
+X-Rate-Limit-Limit: 7d
+X-Rate-Limit-Remaining: 9999
+X-Rate-Limit-Reset: 2026-10-25T09:50:44.7795578Z
+Date: Sun, 18 Oct 2026 09:50:44 GMT
+Set-Cookie: cookie=85e497491d001d5aeeddc2fb7596d46a;max-age=1800;Path=/;HttpOnly
+Set-Cookie: cookiesession1=678B288AB0A2B4764B100BBA8B510EC1;Expires=Mon, 18 Oct 2027 09:50:45 GMT;Path=/;HttpOnly
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"totalRecords":16,"links":{"first":"https://bdl.stat.gov.pl/api/v1/data/by-variable/4876?format=json&unit-level=2&year=2025&year=2026&page-size=5&page=0","self":"https://bdl.stat.gov.pl/api/v1/data/by-variable/4876?format=json&unit-level=2&year=2025&year=2026&page-size=5&page=0","next":"https://bdl.stat.gov.pl/api/v1/data/by-variable/4876?format=json&unit-level=2&year=2025&year=2026&page-size=5&page=1","last":"https://bdl.stat.gov.pl/api/v1/data/by-variable/4876?format=json&unit-level=2&year=2025&year=2026&page-size=5&page=3"},"variableId":4876,"measureUnitId":4,"aggregateId":1,"lastUpdate":null,"results":[{"id":"011200000000","name":"MAŁOPOLSKIE","values":[{"year":"2025","val":2.09,"attrId":1}]},{"id":"012400000000","name":"ŚLĄSKIE","values":[{"year":"2025","val":2.21,"attrId":1}]},{"id":"020800000000","name":"LUBUSKIE","values":[{"year":"2025","val":2.26,"attrId":1}]},{"id":"023000000000","name":"WIELKOPOLSKIE","values":[{"year":"2025","val":2.18,"attrId":1}]},{"id":"023200000000","name":"ZACHODNIOPOMORSKIE","values":[{"year":"2025","val":2.15,"attrId":1}]}]}
