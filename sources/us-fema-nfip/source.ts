@@ -113,17 +113,25 @@ export function sampleSkips(count: number, pages = STATE_PAGES - 1): number[] {
 
 const addDays = (iso: string, n: number): string => new Date(Date.parse(iso + "T00:00:00Z") + n * 86400000).toISOString().slice(0, 10);
 
-/** Date slices [from, until) evenly spread over the window, each sized to hold about 800 policies. Reading a few narrow date slices
- *  (no $skip) is fast on FEMA's backend, whereas deep $skip paging times out. Returns [] when one page already holds everything. */
-export function dateSlices(total: number, from: string, to: string, slices = STATE_PAGES): { from: string; until: string }[] {
-  if (total <= PAGE) return [];
-  const windowDays = Math.max(1, Math.round((Date.parse(to + "T00:00:00Z") - Date.parse(from + "T00:00:00Z")) / 86400000));
-  const width = Math.min(windowDays, Math.max(1, Math.floor((windowDays * 800) / total)));
-  const room = windowDays - width;
-  return Array.from({ length: slices }, (_, i) => {
-    const start = slices > 1 ? Math.floor((i * room) / (slices - 1)) : 0;
-    return { from: addDays(from, start), until: addDays(from, start + width) };
-  });
+/** The window [from, to] cut into `n` consecutive date slices [from, until). FEMA answers ZIP queries with a bounded date range but returns
+ *  503 or times out for an open-ended one (probed 18 Oct 2026), so every call here carries both bounds. */
+export function quarterSlices(from: string, to: string, n = 4): { from: string; until: string }[] {
+  const end = addDays(to, 1);
+  const days = Math.max(n, Math.round((Date.parse(end + "T00:00:00Z") - Date.parse(from + "T00:00:00Z")) / 86400000));
+  return Array.from({ length: n }, (_, i) => ({
+    from: addDays(from, Math.floor((i * days) / n)),
+    until: i === n - 1 ? end : addDays(from, Math.floor(((i + 1) * days) / n)),
+  }));
+}
+
+/** For a slice that holds more than one page of policies: a narrow sub-slice in its middle sized to hold about 800 policies, so a big
+ *  state is read from a few narrow slices (fast) and never with deep $skip paging (times out). Returns the slice itself when it fits one page. */
+export function narrowSlice(sl: { from: string; until: string }, count: number): { from: string; until: string } {
+  if (count <= PAGE) return sl;
+  const days = Math.max(1, Math.round((Date.parse(sl.until + "T00:00:00Z") - Date.parse(sl.from + "T00:00:00Z")) / 86400000));
+  const width = Math.min(days, Math.max(1, Math.floor((days * 800) / count)));
+  const start = Math.floor((days - width) / 2);
+  return { from: addDays(sl.from, start), until: addDays(sl.from, start + width) };
 }
 
 export function summarisePolicies(policies: Policy[]) {
@@ -139,20 +147,24 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
   const from = windowStart(opts.now);
   // FEMA sometimes stalls on a single call: two attempts of 9 s fit the answer budget (see lib/http retryOnce).
   const get = opts.fetcher ?? ((u: string) => retryOnce(() => fetchJson(u, {}, 9000)));
-  const first = await get(buildUrl(area, from, { count: true }));
-  const total = totalCount(first);
-  let policies = parsePolicies(first);
-  let sampled = false;
   const to = (opts.now ?? new Date()).toISOString().slice(0, 10);
-  const slices = dateSlices(total, from, to);
-  if (slices.length) {
-    // Big area: the first page is only the first rows FEMA returns, so replace it with evenly spread date slices (no deep $skip).
-    sampled = true;
-    const more = await Promise.all(slices.map((sl) => get(buildUrl(area, sl.from, { until: sl.until }))));
-    policies = [];
-    for (const b of more) policies = policies.concat(parsePolicies(b));
-  }
-  if (total > 0 && !Array.isArray(first?.NfipPolicies)) throw new SourceError("The source answered in an unexpected format", "NfipPolicies missing");
+  const quarters = quarterSlices(from, to);
+  // Round 1: how many policies in each quarter (one row is enough to get the count).
+  const counted = await Promise.all(quarters.map(async (sl) => ({ sl, body: await get(buildUrl(area, sl.from, { until: sl.until, top: 1, count: true })) })));
+  const counts = counted.map((c) => totalCount(c.body));
+  const total = counts.reduce((x, y) => x + y, 0);
+  const sampled = counts.some((c) => c > PAGE);
+  // Round 2: read each quarter whole when it fits one page, otherwise one narrow slice of it.
+  const pages = await Promise.all(
+    counted.map((c, i) => {
+      if (counts[i] === 0) return Promise.resolve(null);
+      const sl = narrowSlice(c.sl, counts[i]);
+      return get(buildUrl(area, sl.from, { until: sl.until }));
+    }),
+  );
+  let policies: Policy[] = [];
+  for (const b of pages) if (b) policies = policies.concat(parsePolicies(b));
+  if (total > 0 && pages.some((b) => b && !Array.isArray(b?.NfipPolicies))) throw new SourceError("The source answered in an unexpected format", "NfipPolicies missing");
   const s = summarisePolicies(policies);
   const label = area.kind === "zip" ? `ZIP code ${area.value}` : `${area.value} (state)`;
   const enough = s.cost && s.cost.count >= MIN_PUBLISH;

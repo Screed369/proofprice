@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError } from "../../lib/http";
-import { buildUrl, dateSlices, femaNfip, INFO, parseArea, parsePolicies, sampleSkips, totalCount, windowStart } from "./source";
+import { buildUrl, femaNfip, narrowSlice, quarterSlices, INFO, parseArea, parsePolicies, sampleSkips, totalCount, windowStart } from "./source";
 
 // Fixture: real rows from the OpenFEMA v3 NfipPolicies API, ZIP 32935 (FL), captured 2026-10-17 (count 908 policies since 2025-10-01).
 const REAL = (cost: number, prem: number, date: string, extra: Record<string, unknown> = {}) => ({
@@ -57,41 +57,71 @@ test("sampleSkips: none for small areas, spread for big ones", () => {
   assert.ok(s[0] > 0 && s[2] < 413590 - 1000 + 1);
 });
 
-test("dateSlices: none for small areas, narrow spread slices inside the window for big ones", () => {
-  assert.deepEqual(dateSlices(908, "2025-10-18", "2026-10-18"), []);
-  const s = dateSlices(413590, "2025-10-18", "2026-10-18");
-  assert.equal(s.length, 4);
-  assert.equal(s[0].from, "2025-10-18");
-  assert.ok(s.every((x) => x.from < x.until && x.from >= "2025-10-18" && x.until <= "2026-10-19"));
-  assert.ok(s[3].from > s[0].from);
-  const zip = dateSlices(3000, "2025-10-18", "2026-10-18"); // ~97-day slices for a mid-size ZIP
-  assert.ok(Date.parse(zip[0].until) - Date.parse(zip[0].from) > 60 * 86400000);
+test("quarterSlices: four consecutive bounded slices that cover the window", () => {
+  const q = quarterSlices("2025-10-18", "2026-10-18");
+  assert.equal(q.length, 4);
+  assert.equal(q[0].from, "2025-10-18");
+  assert.equal(q[3].until, "2026-10-19");
+  for (let i = 1; i < 4; i++) assert.equal(q[i].from, q[i - 1].until);
 });
 
+test("narrowSlice: whole slice when it fits a page, a narrow middle slice for big ones", () => {
+  const sl = { from: "2025-10-18", until: "2026-01-18" };
+  assert.deepEqual(narrowSlice(sl, 900), sl);
+  const n = narrowSlice(sl, 125000); // ~92 days, 125k policies -> 1 day
+  assert.ok(n.from >= sl.from && n.until <= sl.until && n.from < n.until);
+  const mid = narrowSlice(sl, 3000); // ~24 days
+  assert.ok(Date.parse(mid.until) - Date.parse(mid.from) > 10 * 86400000);
+});
+
+// Fake FEMA: a count request ($top=1) answers metadata only; a row request answers the given rows. Every call must carry both date bounds.
+const fake = (count: number, rows: unknown[], urls: string[] = []) => async (u: string) => {
+  urls.push(u);
+  const d = decodeURIComponent(u);
+  assert.ok(d.includes("policyEffectiveDate ge") && d.includes("policyEffectiveDate lt"), "both date bounds on every call");
+  assert.ok(!d.includes("$skip"), "no deep $skip paging");
+  return u.includes("$top=1&") ? { metadata: { count }, NfipPolicies: rows.slice(0, 1) } : { metadata: { count }, NfipPolicies: rows };
+};
+
 test("femaNfip: fewer than 5 policies gives no figure", async () => {
-  const a = await femaNfip({ area: "32935", fetcher: async () => ({ metadata: { count: 3 }, NfipPolicies: BODY.NfipPolicies.slice(0, 3) }) });
+  const a = await femaNfip({ area: "32935", fetcher: fake(1, BODY.NfipPolicies.slice(0, 1)) });
   assert.equal(a.status, "insufficient_data");
   assert.equal(a.price, null);
 });
 
-test("femaNfip: median and range from real rows, no row-level data in the answer", async () => {
-  const a = await femaNfip({ area: "32935", now: new Date("2026-10-17T00:00:00Z"), fetcher: async () => BODY });
+test("femaNfip: a ZIP is read in full from four quarterly slices, median and range from real rows, no row-level data in the answer", async () => {
+  const urls: string[] = [];
+  const a = await femaNfip({ area: "32935", now: new Date("2026-10-17T00:00:00Z"), fetcher: fake(227, BODY.NfipPolicies, urls) });
+  assert.equal(urls.length, 8); // 4 counts + 4 row reads
   assert.equal(a.status, "ok");
   assert.equal(a.price!.currency, "USD");
   assert.equal(a.price!.median, 652);
-  assert.equal(a.sample_size, 6);
-  assert.equal(a.period.from, "2025-10-02");
+  assert.equal(a.sample_size, 24);
+  assert.equal((a.extra as any).policies_in_period, 908);
   assert.equal((a.extra as any).sampled, false);
   assert.equal((a.extra as any).premium_only.median, 492);
   assert.ok(!JSON.stringify(a).includes("reportedZipCode"));
 });
 
-test("femaNfip: big area is sampled with spread pages", async () => {
+test("femaNfip: an empty quarter is not read", async () => {
   const urls: string[] = [];
-  const a = await femaNfip({ area: "TX", fetcher: async (u) => { urls.push(u); return { metadata: { count: 413590 }, NfipPolicies: BODY.NfipPolicies }; } });
-  assert.equal(urls.length, 5); // 1 count call + 4 date slices
-  assert.ok(urls.slice(1).every((u) => !u.includes("%24skip") && !u.includes("$skip")), "no deep $skip paging");
-  assert.ok(urls.slice(1).every((u) => decodeURIComponent(u).includes("policyEffectiveDate lt")));
+  let n = 0;
+  const f = async (u: string) => {
+    urls.push(u);
+    const isCount = u.includes("$top=1&");
+    if (isCount) return { metadata: { count: n++ === 0 ? 0 : 300 }, NfipPolicies: [] };
+    return { metadata: { count: 300 }, NfipPolicies: BODY.NfipPolicies };
+  };
+  const a = await femaNfip({ area: "32935", now: new Date("2026-10-17T00:00:00Z"), fetcher: f });
+  assert.equal(urls.length, 7);
+  assert.equal((a.extra as any).policies_in_period, 900);
+});
+
+test("femaNfip: big area is sampled with narrow date slices, never deep $skip", async () => {
+  const urls: string[] = [];
+  const a = await femaNfip({ area: "TX", fetcher: fake(124000, BODY.NfipPolicies, urls) });
+  assert.equal(urls.length, 8);
   assert.equal((a.extra as any).sampled, true);
+  assert.equal((a.extra as any).policies_in_period, 496000);
   assert.equal(a.sample_size, 24);
 });
