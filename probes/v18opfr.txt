@@ -1,0 +1,22 @@
+URL: https://prices.openfoodfacts.org/api/v1/prices?size=2&location__osm_address_country_code=FR&type=PRODUCT&price__gt=0&order_by=-date
+Fetched: 2026-10-18T06:44:06Z from GitHub Actions
+Status, type, bytes: 200 application/json 5783
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Sun, 18 Oct 2026 06:44:06 GMT
+content-type: application/json
+content-length: 5783
+vary: Accept-Encoding
+allow: GET, POST
+x-frame-options: DENY
+vary: origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 2500 BYTES
+{"items":[{"id":36312,"product_id":291738,"location_id":1105,"proof_id":9495,"product":{"id":291738,"code":"3257981176997","source":"off","source_last_synced":"2025-02-04T19:10:07.942866Z","product_name":"Tagliatelles","image_url":"https://images.openfoodfacts.org/images/products/325/798/117/6997/front_fr.14.400.jpg","product_quantity":null,"product_quantity_unit":null,"quantity":null,"categories_tags":["en:plant-based-foods-and-beverages","en:plant-based-foods","en:cereals-and-potatoes","en:cereals-and-their-products","en:pastas","en:tagliatelle"],"brands":"Cora","brands_tags":["cora"],"labels_tags":[],"nutriscore_grade":"b","ecoscore_grade":"unknown","nova_group":null,"creator":null,"unique_scans_n":2,"price_count":3,"price_currency_count":1,"location_count":1,"location_type_osm_country_count":1,"user_count":1,"proof_count":3,"created":"2024-01-11T06:07:20.501477Z","updated":"2025-02-04T19:10:07.945792Z"},"location":{"id":1105,"osm_brand_logo_url":"https://raw.githubusercontent.com/openfoodfacts/brand-images/refs/heads/main/xx/stores/cora.png","type":"OSM","osm_id":145131721,"osm_type":"WAY","osm_name":"Cora","osm_display_name":"Cora, Chemin de Vaujours, Poudrerie, Livry-Gargan, Le Raincy, Seine-Saint-Denis, Île-de-France, France métropolitaine, 93190, France","osm_tag_key":"shop","osm_tag_value":"supermarket","osm_tags":[],"osm_brand":"Cora","osm_address_postcode":"93190","osm_address_city":"Livry-Gargan","osm_address_country":"France","osm_address_country_code":"FR","osm_lat":48.9275145,"osm_lon":2.554537,"osm_version":7,"osm_version_date":"2024-02-24T13:53:07Z","website_url":null,"price_count":145,"user_count":1,"product_count":136,"proof_count":146,"source":null,"created":"2024-09-29T10:22:50.969377Z","updated":"2024-09-29T10:22:51.405174Z"},"proof":{"id":9495,"location_id":1105,"file_path":"0010/qEGdMMXIPr.jpg","mimetype":"image/jpeg","type":"PRICE_TAG","image_md5_hash":"ffd7cfdd070564feec5e73e20729d856","image_thumb_path":"0010/qEGdMMXIPr.400.jpg","location_osm_id":145131721,"location_osm_type":"WAY","date":null,"currency":null,"receipt_price_count":null,"receipt_price_total":null,"receipt_online_delivery_costs":null,"ready_for_price_tag_validation":false,"owner_consumption":null,"owner_comment":null,"draft":false,"price_count":1,"prediction_count":2,"owner":"laureote","source":"API","tags":[],"created":"2024-09-29T10:22:54.766358Z","updated":"2024-09-30T13:15:41.060652Z"},"type":"PRODUCT","product_code":"3257981176997","product_name":null,"categ
