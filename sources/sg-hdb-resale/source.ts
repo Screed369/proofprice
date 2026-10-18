@@ -46,7 +46,7 @@ const SG_ALIASES: Record<string, string> = {
 
 const squash = (x: string) =>
   x.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase()
-    .replace(/\b(SINGAPORE|HDB|TOWN|ESTATE|NEW|PLANNING|AREA|DISTRICT)\b/g, (m) => (m === "AREA" ? m : ""))
+    .replace(/\b(SINGAPORE|HDB|TOWNS?|TOWNSHIP|ESTATES?|NEW|PLANNING|AREA|DISTRICT)\b/g, (m) => (m === "AREA" ? m : ""))
     .replace(/[^A-Z0-9]/g, "");
 
 function editDistance(a: string, b: string): number {

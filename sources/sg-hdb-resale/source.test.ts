@@ -76,8 +76,9 @@ test("SG parse: empty or 'na' prices and bad months are dropped, never counted a
 
 test("G20261018-1: Tampines in any spelling, and other HDB town names, resolve to the dataset's town", async () => {
   const { resolveSgTown, SG_TOWNS } = await import("./source");
-  for (const x of ["Tampines", "tampines", "TAMPINES", " Tampines, Singapore ", "Tampines Town", "Tampines Estate", "Tampinis"])
+  for (const x of ["Tampines", "tampines", "TAMPINES", " Tampines, Singapore ", "Tampines Town", "Tampines Estate", "tampines estate", "Tampines Estates", "Tampines Township", "Tampines New Town", "Tampinis"])
     assert.equal(resolveSgTown(x), "TAMPINES", x);
+  assert.equal(resolveSgTown("Bishan estate"), "BISHAN");
   assert.equal(resolveSgTown("Ang-Mo-Kio"), "ANG MO KIO");
   assert.equal(resolveSgTown("AMK"), "ANG MO KIO");
   assert.equal(resolveSgTown("Kallang"), "KALLANG/WHAMPOA");
