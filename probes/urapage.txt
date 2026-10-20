@@ -1,0 +1,1546 @@
+URL: https://eservice.ura.gov.sg/maps/api/
+Fetched: 2026-10-20T16:42:28Z from GitHub Actions
+Status, type, bytes: 200 text/html 89055
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: 2.0.0
+Date: Tue, 20 Oct 2026 16:42:27 GMT
+Content-Type: text/html
+Content-Length: 89055
+Cache-Control: max-age=172800,public
+Allow: GET, POST
+Last-Modified: Wed, 14 Oct 2026 08:21:06 GMT
+Accept-Ranges: bytes
+ETag: "0561f5b45bdd1:0"
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Access-Control-Allow-Methods: GET, POST
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: no-referrer-when-downgrade
+Content-Security-Policy: default-src 'none'; script-src blob: https://*.ura.gov.sg https://*.google-analytics.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.wogaa.sg https://*.dcube.cloud https://fonts.googleapis.com https://va.ecitizen.gov.sg https://*.vica.gov.sg wss://*.vica.gov.sg https://*.google.com https://*.addthis.com https://*.addthisedge.com https://*.gstatic.com https://wogadobeanalytics.sc.omtrdc.net https://*.zdassets.com https://ifaqs.flexanswer.com https://flexanswer5593.zendesk.com wss://widget-mediator.zopim.com https://*.demdex.net https://*.arcgis.com https://*.onemap.sg https://*.onemap.gov.sg https://*.jquery.com https://*.cloudflare.com; connect-src 'self' https://*.ura.gov.sg https://*.google-analytics.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.wogaa.sg https://*.dcube.cloud https://fonts.googleapis.com https://*.vica.gov.sg wss://*.vica.gov.sg https://*.google.com https://*.gstatic.com https://va.ecitizen.gov.sg https://*.zdassets.com https://ifaqs.flexanswer.com https://flexanswer5593.zendesk.com wss://widget-mediator.zopim.com https://*.demdex.net https://*.arcgis.com https://*.onemap.sg https://*.onemap.gov.sg https://stats.g.doubleclick.net https://*.singpass.gov.sg https://*.addthis.com https://*.addthisedge.com; style-src 'self' https://*.ura.gov.sg https://va.ecitizen.gov.sg https://*.vica.gov.sg wss://*.vica.gov.sg https://fonts.googleapis.com https://*.addthis.com https://*.addthisedge.com https://*.wogaa.sg https://*.dcube.cloud https://*.arcgis.com https://*.bootstrapcdn.com; frame-src 'self' https://*.ura.gov.sg https://form.gov.sg https://*.demdex.net/ https://*.youtube.com https://*.youtube-nocookie.com https://*.vimeo.com https://www.google.com https://*.cloudpano.com/ https://*.addthis.com; img-src * data:; media-src *; object-src https://*.ura.gov.sg; frame-ancestors 'self' https://*.ura.gov.sg; font-src * data: fonts.gstatic.com; form-action 'self' https://*.ura.gov.sg http://*.ura.gov.sg https://*.enets.sg https://*.vica.gov.sg wss://*.vica.gov.sg;
+X-NXG: 106032029
+Age: 0
+Cache-stat: MISS
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (354), with CRLF line terminators
+=== FIRST 120000 BYTES
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link href="stylesheets/api.css" rel="stylesheet" />
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;curl&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="curl">curl</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-token" class="toc-h2 toc-link" data-title="Get Token">Get Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#car-park" class="toc-h1 toc-link" data-title="Car Park">Car Park</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#car-park-available-lots" class="toc-h2 toc-link" data-title="Car Park Available Lots">Car Park Available Lots</a>
+                  </li>
+                  <li>
+                    <a href="#car-park-list-and-rates" class="toc-h2 toc-link" data-title="Car Park List and Rates">Car Park List and Rates</a>
+                  </li>
+                  <li>
+                    <a href="#season-car-park-list-and-rates" class="toc-h2 toc-link" data-title="Season Car Park List and Rates">Season Car Park List and Rates</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#private-residential-property" class="toc-h1 toc-link" data-title="Private Residential Property">Private Residential Property</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#private-residential-property-transactions" class="toc-h2 toc-link" data-title="Private Residential Property Transactions">Private Residential Property Transactions</a>
+                  </li>
+                  <li>
+                    <a href="#private-non-landed-residential-properties-median-rentals-by-name" class="toc-h2 toc-link" data-title="Private Non-Landed Residential Properties Median Rentals by Name">Private Non-Landed Residential Properties Median Rentals by Name</a>
+                  </li>
+                  <li>
+                    <a href="#private-residential-properties-rental-contract" class="toc-h2 toc-link" data-title="Private Residential Properties Rental Contract">Private Residential Properties Rental Contract</a>
+                  </li>
+                  <li>
+                    <a href="#private-residential-property-units-sold-by-developers" class="toc-h2 toc-link" data-title="Private Residential Property Units Sold by Developers">Private Residential Property Units Sold by Developers</a>
+                  </li>
+                  <li>
+                    <a href="#private-residential-projects-in-the-pipeline" class="toc-h2 toc-link" data-title="Private Residential Projects in the Pipeline">Private Residential Projects in the Pipeline</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#planning-decisions" class="toc-h1 toc-link" data-title="Planning Decisions">Planning Decisions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#planning-decisions-2" class="toc-h2 toc-link" data-title="Planning Decisions">Planning Decisions</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#approved-use" class="toc-h1 toc-link" data-title="Approved Use">Approved Use</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#approved-residential-use" class="toc-h2 toc-link" data-title="Approved Residential Use">Approved Residential Use</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='reg.html'>Sign Up for an Access Key</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>URA publishes URA related data for public use and is available for download for the creation, development and testing of innovative applications by third party.</p>
+
+<p>You can register for an account <a href='reg.html'>here</a>. After activation of your account, you will receive an email with an access key from which you can generate a token for access to the API. </p>
+
+<p>Once the token is generated, users are allowed to access the URA data service using the following way.</p>
+<h1 id='authentication'>Authentication</h1><h2 id='get-token'>Get Token</h2>
+<blockquote>
+<p>To get a token, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/insertNewToken/v1"
+  -H "AccessKey: accesskey"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42-0xjxf--aYa3J@@bH4mq5aZga-MMd6Vc5XfK74d464Ayc4@AU8UP5h5TCCqt3ccV@0N+0874-j6d59dpC3bfscqPP3P252TYj"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return a token to be used for the day’s access to the API.</p>
+
+<p>Update Frequency: NA</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/insertNewToken/v1</code></p>
+<h3 id='http-request-header'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Result</td>
+<td>The token to be used for the day to access to the other data services.</td>
+</tr>
+</tbody></table>
+<h1 id='car-park'>Car Park</h1><h2 id='car-park-available-lots'>Car Park Available Lots</h2>
+<blockquote>
+<p>To get a list of available car park lots, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Availability"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"lotsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"carparkNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N0006"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28956.4609, 29088.2522"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lotsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"carparkNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S0108"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29930.895, 33440.7746"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return the list of URA car park available lots in JSON format.</p>
+
+<p>Update Frequency: Every 3 to 5 mins</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Availability</code></p>
+<h3 id='http-request-header-2'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-2'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>carparkNo</td>
+<td>5 digit car park code</td>
+</tr>
+<tr>
+<td>lotType</td>
+<td>The type of vehicle lots for the car park <p><ul><li>C - Car</li><li>M - Motorcycle</li><li>H - Heavy Vehicle</li></ul></p></td>
+</tr>
+<tr>
+<td>lotsAvailable</td>
+<td>Remaining free lots</td>
+</tr>
+<tr>
+<td>geometries</td>
+<td>An array of URA short term car park’s coordinates in SVY21 format.</td>
+</tr>
+<tr>
+<td>coordinates</td>
+<td>A set of URA short term car park coordinates Note: there may be more than 1 set of coordinates if the car park belongs to an on-street.</td>
+</tr>
+</tbody></table>
+<h2 id='car-park-list-and-rates'>Car Park List and Rates</h2>
+<blockquote>
+<p>To get a list of URA car park details and rates, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Details"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"weekdayMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ppName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALIWAL STREET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05.00 PM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weekdayRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08.30 AM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ppCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A0004"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sunPHRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"satdayMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sunPHMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parkingSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parkCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehCat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"satdayRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31045.6165, 31694.0055"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31126.0755, 31564.9876"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"weekdayMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ppName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALIWAL STREET "</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00 PM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weekdayRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05.00 PM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ppCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A0004"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sunPHRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"satdayMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sunPHMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parkingSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parkCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehCat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"satdayRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31045.6165, 31694.0055"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31126.0755, 31564.9876"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return the list of URA car park details and rates in the JSON format.</p>
+
+<p>Update Frequency: Daily</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Details</code></p>
+<h3 id='http-request-header-3'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-3'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ppCode</td>
+<td>5 digit car park code</td>
+</tr>
+<tr>
+<td>ppName</td>
+<td>Carpark name</td>
+</tr>
+<tr>
+<td>vehCat</td>
+<td>Vehicle Category <p><ul><li>C - Car</li><li>M - Motorcycle</li><li>H - Heavy Vehicle</li></ul></p></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>Effective start time of parking rate</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Effective end time of parking rate</td>
+</tr>
+<tr>
+<td>weekdayRate</td>
+<td>Parking rate on weekday. Note that prices are in dollars ($)</td>
+</tr>
+<tr>
+<td>weekdayMin</td>
+<td>The maximum duration of the rate. Note that is this for Weekday. Value 30 mins would imply e.g. $0.65 per 30 min</td>
+</tr>
+<tr>
+<td>satdayRate</td>
+<td>Parking rate on Saturday</td>
+</tr>
+<tr>
+<td>satdayMin</td>
+<td>The maximum duration of the rate. Note that is this for Saturday. Value 30 mins would imply e.g. $0.65 per 30 min.</td>
+</tr>
+<tr>
+<td>sunPHRate</td>
+<td>Parking rate on Sunday and public holiday</td>
+</tr>
+<tr>
+<td>sunPHMin</td>
+<td>The maximum duration of the rate. Note that is this for Sunday. Value 30 mins would imply e.g. $0.65 per 30 min.</td>
+</tr>
+<tr>
+<td>remarks</td>
+<td>Remarks for the car park</td>
+</tr>
+<tr>
+<td>parkingSystem</td>
+<td>The type of parking system the car park is in use <p><ul><li>C - Coupon Parking System</li><li>B - Electronic Parking System</li></ul></p></td>
+</tr>
+<tr>
+<td>parkCapacity</td>
+<td>Number of carpark lots</td>
+</tr>
+<tr>
+<td>geometries</td>
+<td>An array of URA short term car park’s coordinates in SVY21 format</td>
+</tr>
+<tr>
+<td>coordinates</td>
+<td>A set of URA short term car park coordinates Note: there may be more than 1 set of coordinates if the car park belongs to an on-street.</td>
+</tr>
+</tbody></table>
+<h2 id='season-car-park-list-and-rates'>Season Car Park List and Rates</h2>
+<blockquote>
+<p>To get a list of available car park lots, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Availability"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"lotsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"carparkNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N0006"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28956.4609, 29088.2522"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lotsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"carparkNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S0108"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29930.895, 33440.7746"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return the list of URA season car park details and rates available for application in JSON format.</p>
+
+<p>Update Frequency: Daily</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Season_Car_Park_Details</code></p>
+<h3 id='http-request-header-4'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-4'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ppCode</td>
+<td>5 digit car park code. Note: ppCode starting with ‘G’ represents group parking lots.</td>
+</tr>
+<tr>
+<td>ppName</td>
+<td>Carpark name</td>
+</tr>
+<tr>
+<td>vehCat</td>
+<td>Vehicle Category <p><ul><li>C - Car</li><li>M - Motorcycle</li><li>H - Heavy Vehicle</li></ul></p></td>
+</tr>
+<tr>
+<td>parkingHrs</td>
+<td>Season parking hours</td>
+</tr>
+<tr>
+<td>ticketType</td>
+<td>Type of season tickets</td>
+</tr>
+<tr>
+<td>monthlyRate</td>
+<td>Parking rate</td>
+</tr>
+<tr>
+<td>geometries</td>
+<td>An array of URA season car park’s coordinates in SVY21 format.</td>
+</tr>
+<tr>
+<td>coordinates</td>
+<td>A set of season car park coordinates Note: there may be more than 1 set of coordinates if the car park belongs to a group car park beginning with the prefix of ‘G’.</td>
+</tr>
+</tbody></table>
+<h1 id='private-residential-property'>Private Residential Property</h1><h2 id='private-residential-property-transactions'>Private Residential Property Transactions</h2>
+<blockquote>
+<p>To get a list of private property transactions for the past 5 years, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Transaction&amp;batch=1"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TURQUOISE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marketSegment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CCR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"contractDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0715"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"203"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2900000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"propertyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Condominium"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"typeOfArea"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Strata"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tenure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99 yrs lease commencing from 2007"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01-05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"typeOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"contractDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0116"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3014200"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"propertyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Condominium"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"typeOfArea"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Strata"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tenure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99 yrs lease commencing from 2007"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01-05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"typeOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COVE DRIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24997.821719180001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28392.530515570001"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return past 5 years of private residential property transaction records in JSON format. As transaction records &gt; 5 years ago could be modified/aborted, we would advise to refresh your database on a daily basis and just retain the latest 5 years record for better accuracy.</p>
+
+<p>Update Frequency: End of day of every Tuesday and Friday</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Transaction&amp;batch=1</code></p>
+<h3 id='http-request-header-5'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-url-parameters'>HTTP Request URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Batch</td>
+<td>Yes</td>
+<td>Data are available for download in 4 batches. <p><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></p> They are split by postal districts e.g. batch 1 is for postal district 01 to 07, batch 2 is for postal district 08 to 14 etc. To download for batch 1, pass in the value 1.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-5'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>project</td>
+<td>The name of the project</td>
+</tr>
+<tr>
+<td>street</td>
+<td>The street name that the project is on.</td>
+</tr>
+<tr>
+<td>marketSegment</td>
+<td>The market segment that the property falls in. <p><ul><li>CCR – Core Central Region</li><li>RCR – Rest of Central Region</li><li>OCR – Outside Central Region</li></ul></p></td>
+</tr>
+<tr>
+<td>x</td>
+<td>The x coordinates of the address of the property in SVY21 format. Important: This is the location of the property and does not represent the location of the transacted unit.</td>
+</tr>
+<tr>
+<td>y</td>
+<td>The y coordinates of the address of the property in SVY21 format. Important: This is the location of the property and does not represent the location of the transacted unit.</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td>An array of transactions for this property</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;propertyType</td>
+<td>The property type of the transacted property. Note that there are properties with a mixture of property types. <p><ul><li>Strata Detached</li><li>Strata Semidetached</li><li>Strata Terrace</li><li>Detached</li><li>Semi-detached</li><li>Terrace</li><li>Apartment</li><li>Condominium</li><li>Executive Condominium</li></ul></p></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;district</td>
+<td>The postal district that the transacted property falls in. Note that there are properties that fall across multiple postal district.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;tenure</td>
+<td>The tenure of the transacted property. Note that there are properties that have units with multiple tenures. <p><ul><li>Freehold</li><li>xx yrs lease commencing from yyyy</li></ul></p></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;typeOfSale</td>
+<td>The type of sale <p><ul><li>1 – New Sale</li><li>2 – Sub Sale</li><li>3 – Resale</li></ul></p></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;noOfUnits</td>
+<td>The number of units in this transaction. The value for New Sale will always be 1. The value for Resale or Sub Sale could be greater than 1 depending on the number of units lodged for the caveat.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;price</td>
+<td>The transacted price nettPrice</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;nettPrice</td>
+<td>The nett transacted price, excluding discounts if any. This field is only applicable for New Sale where discounts were given.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;area</td>
+<td>The land/floor area of the transacted unit in square metre.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;typeOfArea</td>
+<td>The type of area of the transacted unit. <p><ul><li>Strata</li><li>Land</li><li>Unknown</li></ul></p></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;floorRange</td>
+<td>The floor range that the transacted unit falls within. <p><ul><li>-</li><li>B1-B5</li><li>B6-B10</li><li>01-05</li><li>06-10</li><li>...</li></ul></p></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;contractDate</td>
+<td>The data of sale for New Sale records or option exercised date for Resale and Sub Sale records. Field is in format of mmyy e.g. 1215 represents Dec 2015.</td>
+</tr>
+</tbody></table>
+<h2 id='private-non-landed-residential-properties-median-rentals-by-name'>Private Non-Landed Residential Properties Median Rentals by Name</h2>
+<blockquote>
+<p>To get a list of median rentals of private non-landed residential properties for the past 3 years, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Rental_Median"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MERAWOODS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HILLVIEW AVENUE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rentalMedian"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="s2">"median"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf25"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.32</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf75"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.6</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014Q2"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"median"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.48</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf25"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.16</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf75"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.55</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014Q3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"median"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.45</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf25"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.29</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf75"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012Q1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37575.873911829997"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19822.860634660001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELLIOT AT THE EAST COAST"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELLIOT ROAD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rentalMedian"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="s2">"median"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.32</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf25"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf75"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.46</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012Q3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"median"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.92</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf25"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.63</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf75"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.45</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014Q2"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"median"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.19</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf25"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.79</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"psf75"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.46</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012Q2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32635.6331629"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38853.473729029998"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return past 3 years of median rentals of private non-landed residential properties with at least 10 rental contracts for the reference period in JSON format.</p>
+
+<p>Update Frequency: End of day of every 4th Friday of January, April, July and October. If it is a public holiday, the data will be updated on the following working day.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Rental_Median</code></p>
+<h3 id='http-request-header-6'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-6'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>project</td>
+<td>The name of the project</td>
+</tr>
+<tr>
+<td>street</td>
+<td>The street name that the project is on.</td>
+</tr>
+<tr>
+<td>x</td>
+<td>The x coordinates of the address of the property in SVY21 format. Important: This is the location of the property and does not represent the location of the rented unit.</td>
+</tr>
+<tr>
+<td>y</td>
+<td>The y coordinates of the address of the property in SVY21 format. Important: This is the location of the property and does not represent the location of the rented unit.</td>
+</tr>
+<tr>
+<td>rentalMedian</td>
+<td>An array of median rentals for this property</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;district</td>
+<td>The postal district that the transacted property falls in. <p><ul><li>01</li><li>02</li><li>03</li><li>04</li><li>...</li><li>28</li></ul></p></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;refPeriod</td>
+<td>The reference period for the rental information. Field is in format of YYYYQQ e.g. 2011Q3 represents 2011 3rd quarter.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;psf25</td>
+<td>The 25th percentile per square feet per month for the property for the reference period.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;median</td>
+<td>The median per square feet per month for the property for the reference period.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;psf75</td>
+<td>The 75th percentile per square feet per month for the property for the reference period.</td>
+</tr>
+</tbody></table>
+<h2 id='private-residential-properties-rental-contract'>Private Residential Properties Rental Contract</h2>
+<blockquote>
+<p>To get the rental contracts of private residential properties for the past 5 years, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Rental&amp;refPeriod=14q1"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THOMSON RISE ESTATE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JALAN BERJAYA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rental"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"leaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0314"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"propertyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Detached House"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"areaSqm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150-200"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"areaSqft"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1500-2000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rent"</span><span class="p">:</span><span class="w"> </span><span class="mi">4300</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37250.512899840002"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29360.426817729999"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THE ESPIRA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LORONG L TELOK KURAU"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rental"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="s2">"leaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0314"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"propertyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-landed Properties"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"areaSqm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100-110"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"areaSqft"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1100-1200"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rent"</span><span class="p">:</span><span class="w"> </span><span class="mi">3100</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"noOfBedRoom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"leaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0314"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"propertyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-landed Properties"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"areaSqm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50-60"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"areaSqft"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500-600"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rent"</span><span class="p">:</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"noOfBedRoom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32747.030532890001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37045.353209170002"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return past 5 years of private residential properties with rental contracts submitted to IRAS for Stamp Duty assessment in JSON format. As the rental records &gt; 5 years ago could be modified/aborted, we would advise to refresh your database on a monthly basis and just retain the latest 5 years record for better accuracy.</p>
+
+<p>Update Frequency: End of day of every 15th of the month. If it is a public holiday, the data will be updated on the following working day.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Rental&amp;refPeriod=14q1</code></p>
+<h3 id='http-request-header-7'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-url-parameters-2'>HTTP Request URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>refPeriod</td>
+<td>Yes</td>
+<td>Data are available for download by reference quarter. Field is in format of yyqq e.g. 14q1 represents 2014 1st quarter.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-7'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>project</td>
+<td>The name of the project</td>
+</tr>
+<tr>
+<td>street</td>
+<td>The street name that the project is on.</td>
+</tr>
+<tr>
+<td>x</td>
+<td>The x coordinates of the address of the property in SVY21 format. Important: This is the location of the property and does not represent the location of the transacted unit.</td>
+</tr>
+<tr>
+<td>y</td>
+<td>The y coordinates of the address of the property in SVY21 format. Important: This is the location of the property and does not represent the location of the transacted unit.</td>
+</tr>
+<tr>
+<td>rental</td>
+<td>An array of rental contracts for this property</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;propertyType</td>
+<td>The property type of the transacted property. Note that there are properties with a mixture of property types. <p><ul><li>Non-landed Properties</li><li>Detached House</li><li>Semi-Detached House</li><li>Terrace House</li><li>Executive Condominium</li></ul></p></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;district</td>
+<td>The postal district that the transacted property falls in. Note that there are properties that fall across multiple postal district. <p><ul><li>01</li><li>02</li><li>03</li><li>04</li><li>...</li><li>28</li></ul></p></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;noOfBedRoom</td>
+<td>The number of bed rooms. Information is only available for non-landed property. Empty value for non-landed properties means that the information was not provided for this property.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;rent</td>
+<td>The monthly rent.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;areaSqft</td>
+<td>The floor area range of the rented property in square feet.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;areaSqm</td>
+<td>The floor area range of the rented property in square metre.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;leaseDate</td>
+<td>The lease commencement date of the rental. Field is in format of mmyy e.g. 0314 represents March 2014.</td>
+</tr>
+</tbody></table>
+<h2 id='private-residential-property-units-sold-by-developers'>Private Residential Property Units Sold by Developers</h2>
+<blockquote>
+<p>To get a list of prices of completed and uncompleted private residential units and executive condominiums with pre-requisite for sale sold by develoeprs for the past 3 years, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Developer_Sales&amp;refPeriod=0913"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUXUS HILLS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marketSegment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"developer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Singapore United Estates Pte Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YIO CHU KANG ROAD/ANG MO KIO AVENUE 5/SELETAR ROAD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"developerSales"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"highestPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"soldToDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitsAvail"</span><span class="p">:</span><span class="w"> </span><span class="mi">236</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"medianPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"soldInMonth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"launchedToDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lowestPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"refPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0913"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"launchedInMonth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40264.704801180002"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32524.18989369"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BLOSSOM RESIDENCES"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marketSegment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OCR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"developer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grand Isle Holdings Pte Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEGAR ROAD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"developerSales"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"highestPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"soldToDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">601</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitsAvail"</span><span class="p">:</span><span class="w"> </span><span class="mi">602</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"medianPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"soldInMonth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"launchedToDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">602</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lowestPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"refPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0913"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"launchedInMonth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return past 3 years of prices of completed and uncompleted private residential units and executive condominiums with pre-requisite for sale sold by developers in JSON format. </p>
+
+<p>Update Frequency: End of day of every 15th of the month. If it is a public holiday, the data will be updated on the following working day.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Developer_Sales&amp;refPeriod=0913</code></p>
+<h3 id='http-request-header-8'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-url-parameters-3'>HTTP Request URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>refPeriod</td>
+<td>Yes</td>
+<td>Data are available for download by reference quarter. Field is in format of mmyy e.g. 0913 represents Sep 2013.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-8'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>project</td>
+<td>The name of the project</td>
+</tr>
+<tr>
+<td>propertyType</td>
+<td>The property type of the project. <p><ul><li>-</li><li>Landed/Non-Landed</li><li>Landed</li><li>Non-Landed</li><li>Exec Condo</li><li>Strata-Landed</li><li>Strata-Landed/Non-Landed</li></ul></p></td>
+</tr>
+<tr>
+<td>street</td>
+<td>The street name that the project is on.</td>
+</tr>
+<tr>
+<td>developer</td>
+<td>The name of the developer of the project.</td>
+</tr>
+<tr>
+<td>marketSegment</td>
+<td>The market segment that the property falls in. <p><ul><li>CCR – Core Central Region</li><li>RCR – Rest of Central Region</li><li>OCR – Outside Central Region</li></ul></p></td>
+</tr>
+<tr>
+<td>district</td>
+<td>The postal district that the transacted property falls in. <p><ul><li>01</li><li>02</li><li>03</li><li>04</li><li>...</li><li>28</li></ul></p></td>
+</tr>
+<tr>
+<td>x</td>
+<td>The x coordinates of the address of the property in SVY21 format. Important: This is the location of the property and does not represent the location of the transacted unit.</td>
+</tr>
+<tr>
+<td>y</td>
+<td>The y coordinates of the address of the property in SVY21 format. Important: This is the location of the property and does not represent the location of the transacted unit.</td>
+</tr>
+<tr>
+<td>developerSales</td>
+<td>An array of developer sales transaction for this property</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;refPeriod</td>
+<td>The reference period for the transaction based on the option to purchase issued by developers to purchasers. Field is in format of mmyy e.g. 0913 represents Sep 2013.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;medianPrice</td>
+<td>The median price per square feet of the transacted units for the reference period.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;lowestPrice</td>
+<td>The lowest transacted price per square feet of the transacted units for the reference period.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;highestPrice</td>
+<td>The highest transacted price per square feet of the transacted units for the reference period.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;unitsAvail</td>
+<td>The total number of units in this project.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;launchedToDate</td>
+<td>The number of units launched for sale to date.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;soldToDate</td>
+<td>The number of units sold to date.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;launchedInMonth</td>
+<td>The number of units launched for sale for the reference period.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;soldInMonth</td>
+<td>The number of units sold for the reference period.</td>
+</tr>
+</tbody></table>
+<h2 id='private-residential-projects-in-the-pipeline'>Private Residential Projects in the Pipeline</h2>
+<blockquote>
+<p>To get a list of project pipeline data for the latest quarter, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Pipeline"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"noOfApartment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ONE SURIN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noOfTerrace"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noOfCondo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noOfDetachedHouse"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SURIN AVENUE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"developerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Urban Lofts Pte Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noOfSemiDetached"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expectedTOPYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"na"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"noOfApartment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THE SKYWOODS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noOfTerrace"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noOfCondo"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noOfDetachedHouse"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY FARM HEIGHTS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"developerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bukit Timah Green Development Pte Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noOfSemiDetached"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expectedTOPYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"na"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return the latest quarter of project pipeline data in JSON format.</p>
+
+<p>Update Frequency: End of day of every 4th Friday of January, April, July and October. If it is a public holiday, the data will be updated on the following working day.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Pipeline</code></p>
+<h3 id='http-request-header-9'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-9'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>project</td>
+<td>The name of the project</td>
+</tr>
+<tr>
+<td>street</td>
+<td>The street name that the project is on.</td>
+</tr>
+<tr>
+<td>district</td>
+<td>The postal district that the project falls in. <p><ul><li>01</li><li>02</li><li>03</li><li>04</li><li>...</li><li>28</li></ul></p></td>
+</tr>
+<tr>
+<td>developer</td>
+<td>The name of the developer of the project.</td>
+</tr>
+<tr>
+<td>totalUnits</td>
+<td>The total number of units in this project.</td>
+</tr>
+<tr>
+<td>noOfDetachedHouse</td>
+<td>The number of detached units in this project.</td>
+</tr>
+<tr>
+<td>noOfSemiDetached</td>
+<td>The number of semi-detached units in this project.</td>
+</tr>
+<tr>
+<td>noOfTerrace</td>
+<td>The number of terrace units in this project.</td>
+</tr>
+<tr>
+<td>noOfApartment</td>
+<td>The number of apartment units in this project.</td>
+</tr>
+<tr>
+<td>noOfCondo</td>
+<td>The number of condominium units in this project.</td>
+</tr>
+<tr>
+<td>expectedTOPYear</td>
+<td>The expected year of TOP. Values with ‘na’ is because developers has not given consent for this information to be released.</td>
+</tr>
+</tbody></table>
+<h1 id='planning-decisions'>Planning Decisions</h1><h2 id='planning-decisions-2'>Planning Decisions</h2>
+<blockquote>
+<p>To get a list of information on Written Permission granted or rejected by URA, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Planning_Decision"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230 VICTORIA STREET, BUGIS JUNCTION SHOPPING CENTRE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"submission_desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPOSED CHANGE USE OF PART OF BASEMENT 1 FROM OFFICE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dr_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84089"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03/01/2011"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decision_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Written Permission"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appl_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Change of Use"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mkts_lotno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TS13 01015C PT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decision_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P291210-03B1-Z000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"submission_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"291210-03B1-Z000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"delete_ind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15 NASSIM ROAD,17 NASSIM ROAD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"submission_desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROPOSED AMALGAMATION AND SUBDIVISION OF LAND INTO 2 PLOTS AND STRATA SUBDIVISION OF THE EXISTING 4 BLOCKS OF FLATS INTO 100 SEPARATE STRATA RESIDENTIAL UNITS "</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dr_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84070"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decision_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03/01/2011"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decision_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Written Permission"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appl_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Subdivision"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mkts_lotno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TS25 01056M,TS25 01352L,TS25 01353C"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decision_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P061210-19E1-Z000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"submission_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"061210-19E1-Z000"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will provide the information on Written Permission granted or rejected by URA in JSON format. The request can be requested by the year or by the last downloaded date. </p>
+
+<p>Update Frequency: Daily</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Planning_Decision</code></p>
+<h3 id='http-request-header-10'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-url-parameters-4'>HTTP Request URL Parameters</h3>
+<p>The service accepts either one but not both of the below parameters.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>year</td>
+<td>Yes</td>
+<td>Data are available for download by year. Only records after year 2000 can be retrieved.</td>
+</tr>
+<tr>
+<td>last_dnload_date</td>
+<td>Yes</td>
+<td>Data created, modified or deleted from this date till present. Date is in dd/mm/yyyy format and it cannot be more than one year ago.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This is ok.
+<br><br>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Planning_Decision&<b>year=2015</b>
+</aside>
+
+<aside class="success">
+So is this.
+<br><br>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Planning_Decision&<b>last_dnload_date=15/06/2015</b>
+</aside>
+
+<aside class="warning">
+But this is not ok.
+<br><br>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Planning_Decision&<b>year=2015&last_dnload_date=15/06/2015</b>
+</aside>
+<h3 id='http-response-10'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dr_id</td>
+<td>Unique key to identify the record</td>
+</tr>
+<tr>
+<td>submission_no</td>
+<td>Submission number</td>
+</tr>
+<tr>
+<td>decision_no</td>
+<td>Decision number</td>
+</tr>
+<tr>
+<td>decision_date</td>
+<td>Decision date in dd/mm/yyyy format</td>
+</tr>
+<tr>
+<td>decision_type</td>
+<td>Decision type</td>
+</tr>
+<tr>
+<td>submission_desc</td>
+<td>Submission or proposal description</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Site address</td>
+</tr>
+<tr>
+<td>mkts_lotno</td>
+<td>MK/TS lot number</td>
+</tr>
+<tr>
+<td>delete_ind</td>
+<td>Indicate whether the record is deleted. This will be ‘Yes’ only when the input parameter is last_dnload_date. <p><ul><li>Yes</li><li>No</li></ul></p></td>
+</tr>
+</tbody></table>
+<h1 id='approved-use'>Approved Use</h1><h2 id='approved-residential-use'>Approved Residential Use</h2>
+<blockquote>
+<p>To check if an address is approved for residential use, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=EAU_Appr_Resi_Use"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isResiUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will provide the information on whether an address is approved for Residential use.</p>
+
+<p>Update Frequency: Quarterly</p>
+
+<p>The following should be noted for this data service:<ol><li>The data provided is only for private residential units. HDB developments and State Properties are not included.</li>
+<li>Residential units within Shophouse developments are not included.</li>
+<li>The data provided is updated quarterly based on completed developments that have obtained TOP. Developments that have not obtained TOP are not included in this service.</li>
+<li>Residential properties that have been converted to non-residential uses on temporary basis are not included.</li>
+</ol></p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=EAU_Appr_Resi_Use</code></p>
+<h3 id='http-request-header-11'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-request-url-parameters-5'>HTTP Request URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>blkHouseNo</td>
+<td>Yes</td>
+<td>The blk/house number of the address</td>
+</tr>
+<tr>
+<td>street</td>
+<td>Yes</td>
+<td>The street of the address</td>
+</tr>
+<tr>
+<td>storeyNo</td>
+<td>No</td>
+<td>The storey number of the address.</td>
+</tr>
+<tr>
+<td>unitNo</td>
+<td>No</td>
+<td>The unit number of the address.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-11'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>isResiUse</td>
+<td>Indicate whether the address is approved for Residential use. A response of ‘NA’ represents that either the record for the address is not available or the address is not approved for Residential use. <p><ul><li>Y</li><li>NA</li></ul></p></td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="curl">curl</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
