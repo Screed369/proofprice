@@ -1,23 +1,23 @@
-URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&limit=3
-Fetched: 2026-10-16T15:45:59Z from GitHub Actions
-Status, type, bytes: 200 application/json 1995
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&limit=40&q=laptop
+Fetched: 2026-10-20T22:16:22Z from GitHub Actions
+Status, type, bytes: 200 application/json 3230
 Errors: 
 
 === RESPONSE HEADERS
 HTTP/2 200 
-date: Fri, 16 Oct 2026 15:45:59 GMT
+date: Tue, 20 Oct 2026 22:16:22 GMT
 content-type: application/json
 x-content-type-options: nosniff
 vary: Accept-Encoding
-apigw-requestid: FV_8qjRXyQ0EPuQ=
+apigw-requestid: FkE4igg_SQ0EJjg=
 strict-transport-security: max-age=31536000; includeSubDomains
-last-modified: Fri, 16 Oct 2026 15:45:59 GMT
+last-modified: Tue, 20 Oct 2026 22:16:22 GMT
 cache-control: max-age=300
-cf-cache-status: EXPIRED
-set-cookie: _cfuvid=GZY3zGHLMj6bBUtQg5G7r1k08sVWnGqRd_XJe0Lo4dU-1792165558.4327524-1.0.1.1-Xh081YC4i2MdeVY7AwDaAY9E_5Hm42r8GuJ9twCb1Uo; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+cf-cache-status: MISS
+set-cookie: _cfuvid=vRd9mWhzwOlPfw8KLg0VCaE0e5.GB2RU7FacEtSSJpY-1792534581.6846995-1.0.1.1-UtUUkUdVSMSmdOipA0J9AqfTszbuLX2Wf7_umS5X_sU; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
 server: cloudflare
-cf-ray: a4b831942fea2f26-LAX
+cf-ray: a4db62ef8f9c8e7d-LAX
 
 === FILE TYPE: JSON text data
-=== FIRST 6000 BYTES
-{"success":true,"result":{"resource_id":"d_acde1106003906a75c3fa052592f2fcb","fields":[{"type":"text","id":"tender_no"},{"type":"text","id":"tender_description"},{"type":"text","id":"agency"},{"type":"text","id":"award_date"},{"type":"text","id":"tender_detail_status"},{"type":"text","id":"supplier_name"},{"type":"numeric","id":"awarded_amt"},{"type":"int4","id":"_id"}],"records":[{"_id":1,"tender_no":"ACR000ETT21000001","tender_description":"DESIGN, DEVELOPMENT, CUSTOMIZATION, DELIVERY, INSTALLATION, TESTING  AND COMMISSIONING A NEW FULLY OPERATIONAL UNIFIED DATA ANALYTICS PLATFORM (UDAP) SYSTEM WITH AN OPTION FOR MAINTENANCE AND ENHANCEMENT SERVICES FOR ACCOUNTING AND CORPORATE REGULARTORY AUTHORITY","agency":"Accounting And Corporate Regulatory Authority","award_date":"6/9/2021","tender_detail_status":"Awarded to Suppliers","supplier_name":"ALPHA ZETTA PTE. LTD.","awarded_amt":"2321600"},{"_id":2,"tender_no":"ACR000ETT21000003","tender_description":"SUPPLY, DELIVERY, INSTALLATION, TESTING, COMMISSIONING OF A FULLY OPERATIONAL BUSINESS REGISTRY & REGULATORY SYSTEM WITH AN OPTION FOR MAINTENANCE","agency":"Accounting And Corporate Regulatory Authority","award_date":"14/4/2022","tender_detail_status":"Awarded to Suppliers","supplier_name":"ACCENTURE SG SERVICES PTE. LTD.","awarded_amt":"108555723"},{"_id":3,"tender_no":"ACR000ETT21000004","tender_description":"INVITATION TO TENDER FOR THE APPLICATION SOFTWARE MAINTENANCE AND SUPPORT FOR BIZFINX SYSTEM HOSTED IN THE GOVERNMENT COMMERCIAL CLOUD FOR ACCOUNTING AND CORPORATE REGULARTORY AUTHORITY","agency":"Accounting And Corporate Regulatory Authority","award_date":"13/4/2022","tender_detail_status":"Awarded to Suppliers","supplier_name":"CRIMSONLOGIC PTE LTD","awarded_amt":"4503450"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&limit=3","next":"/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&offset=3&limit=3"},"total":18464,"limit":3}}
+=== FIRST 30000 BYTES
+{"success":true,"result":{"resource_id":"d_acde1106003906a75c3fa052592f2fcb","fields":[{"type":"text","id":"tender_no"},{"type":"text","id":"tender_description"},{"type":"text","id":"agency"},{"type":"text","id":"award_date"},{"type":"text","id":"tender_detail_status"},{"type":"text","id":"supplier_name"},{"type":"numeric","id":"awarded_amt"},{"type":"int4","id":"_id"},{"type":"int8","id":"_full_count"},{"type":"float4","id":"rank"}],"records":[{"_id":11931,"tender_no":"NLB000ETT23000006","tender_description":"INVITATION TO TENDER FOR TECHNOLOGY REFRESH FOR DESKTOP LAPTOP BACKUP SYSTEM FOR THE NATIONAL LIBRARY BOARD, SINGAPORE","agency":"National Library Board","award_date":"6/7/2023","tender_detail_status":"Awarded to Suppliers","supplier_name":"NCS PTE. LTD.","awarded_amt":"384336","rank":0.06079271,"_full_count":"5"},{"_id":12866,"tender_no":"NST000ETT21000045","tender_description":"a. A fast protein liquid chromatography (FPLC) system capable to perform pilot scale purification   b. Desktop Computer and monitor or laptop  c. Software to control the system and data analysis   d. Operator training and follow up  e. Comprehensive maintenance which includes initial commissioning, repair service and preventive maintenance.","agency":"Agency for Science, Technology and Research","award_date":"6/10/2021","tender_detail_status":"Awarded to Suppliers","supplier_name":"GLOBAL LIFE SCIENCES SOLUTIONS SINGAPORE PTE. LTD.","awarded_amt":"259134.86","rank":0.06079271,"_full_count":"5"},{"_id":13118,"tender_no":"NST000ETT22000079","tender_description":"Provision for One (1) Unit of Automated High Throughput Sample Extraction System for Biological and Clinical Samples, with Desktop and Monitor or Laptop, Software, Equipment Training and 1 Year Warranty","agency":"Agency for Science, Technology and Research","award_date":"8/11/2022","tender_detail_status":"Awarded to Suppliers","supplier_name":"GERSTEL LLP","awarded_amt":"149527.6","rank":0.06079271,"_full_count":"5"},{"_id":13165,"tender_no":"NST000ETT22000127","tender_description":"Provision of One (1) unit of Multi-Angle Light Scattering Detector (MALS) with Refractive Index Detector (RID) for High-Throughput Process Analysis with Desktop and Monitor or Laptop, Software, Equipment Training and 1 Year Warranty","agency":"Agency for Science, Technology and Research","award_date":"23/1/2023","tender_detail_status":"Awarded to Suppliers","supplier_name":"LMS TECHNOLOGIES PTE LTD","awarded_amt":"237000","rank":0.06079271,"_full_count":"5"},{"_id":13189,"tender_no":"NST000ETT22000152","tender_description":"Provision of One (1) unit of Low Temperature Vacuum Chamber  (LTVC ) with Laptop, Software, Equipment Training and One Year Warranty","agency":"Agency for Science, Technology and Research","award_date":"31/3/2023","tender_detail_status":"Awarded to Suppliers","supplier_name":"QUANTUM DESIGN SINGAPORE PRIVATE LIMITED","awarded_amt":"168000","rank":0.06079271,"_full_count":"5"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&limit=40&q=laptop","next":"/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&offset=40&limit=40&q=laptop"},"total":5,"limit":40,"q":"laptop"}}
