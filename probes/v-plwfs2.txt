@@ -1,0 +1,24 @@
+URL: https://mapy.geoportal.gov.pl/wss/service/rcn?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:lokale&count=3&outputFormat=application/json
+Fetched: 2026-10-20T18:46:08Z from GitHub Actions
+Status, type, bytes: 400 text/xml; charset=UTF-8 618
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 Bad request
+Date: Tue, 20 Oct 2026 18:46:08 GMT
+X-Cnection: close
+Content-Type: text/xml; charset=UTF-8
+Content-Length: 618
+Access-Control-Allow-Origin: *
+Set-Cookie: gahLaQu1eeYooCu=!7Jj7AmzV1Ib0xYrlQI0cK6yPNdD2Pk2O1RbEzFS9n7SgHue3ExGjbgSTdFW7slHkk376nqCNlucdU9Y=; path=/; Httponly; Secure
+Set-Cookie: TS017e0801=01e9e35b22c7c5089a3ea3080096e91cc04a541eb2e70393e0bb50903796ef86fc3514c27af96df7d2703617b162b893ecef63d5fbb2a0ad05c99f28e1cf1a10626a16a42f; Path=/; Domain=.mapy.geoportal.gov.pl
+Vary: Accept-Encoding
+
+=== FILE TYPE: XML 1.0 document, ASCII text
+=== FIRST 12000 BYTES
+<?xml version="1.0" encoding="UTF-8"?>
+<ows:ExceptionReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ows="http://www.opengis.net/ows/1.1" version="2.0.0" xml:lang="en-US" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd">
+  <ows:Exception exceptionCode="InvalidParameterValue" locator="outputformat">
+    <ows:ExceptionText>msWFSGetFeature(): WFS server error. 'application/json' is not a permitted output format for layer 'lokale', review wfs_getfeature_formatlist setting.</ows:ExceptionText>
+  </ows:Exception>
+</ows:ExceptionReport>
