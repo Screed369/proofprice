@@ -206,6 +206,7 @@ Contact: ${CONTACT}
 
 ## How to connect
 - MCP server (Streamable HTTP, no key, no sign-in): ${baseUrl}/api/mcp
+- MCP Server Card (draft discovery standard): ${baseUrl}/.well-known/mcp-server-card
 - REST (GET, JSON, CORS open): ${baseUrl}/api/v1/<category>
 - Add-to-client instructions for Claude, ChatGPT, Cursor, VS Code, Windsurf, Claude Code and agent frameworks: ${baseUrl}/connect
 
@@ -334,6 +335,27 @@ export function buildServerJson(version: string) {
     websiteUrl: SITE_URL,
     repository: { url: "https://github.com/Screed369/proofprice", source: "github" },
     remotes: [{ type: "streamable-http", url: MCP_URL }],
+  };
+}
+
+// ---------- MCP Server Card (draft SEP-2127, /.well-known/mcp-server-card) ----------
+
+export const MCP_SERVER_CARD_SCHEMA = "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json";
+/** Protocol revisions /api/mcp answers (checked by tests/mcp-spec.test.ts): the 2026-07-28 stateless one and the two before it. */
+export const MCP_PROTOCOL_VERSIONS = ["2026-07-28", "2025-11-25", "2025-06-18"];
+
+/** The Server Card served at /.well-known/mcp-server-card: the same identity as server.json, one remote, no key and no sign-in.
+ *  The card spec is still a draft; the fields used here are the ones its example uses. */
+export function buildServerCard(version: string) {
+  return {
+    $schema: MCP_SERVER_CARD_SCHEMA,
+    name: MCP_REGISTRY_NAME,
+    title: "ProofPrice",
+    description: SERVER_DESCRIPTION,
+    version,
+    websiteUrl: SITE_URL,
+    repository: { url: "https://github.com/Screed369/proofprice", source: "github" },
+    remotes: [{ type: "streamable-http", url: MCP_URL, supportedProtocolVersions: MCP_PROTOCOL_VERSIONS }],
   };
 }
 
