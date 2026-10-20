@@ -23,22 +23,5 @@ export default defineSource({
   method:
     "Price levels: the price level index of the OECD/Eurostat PPP programme (OECD = 100, or the USA or the EU-27), for household consumption and about 25 everyday spending groups, one figure per country and year. " +
     "We pass on the published index and the PPP rate and calculate the gap to the comparison average and the rank among surveyed countries; it is an index from a price survey, not a receipt or a range.",
-  handle: async (p, ctx) => {
-    if (p.spend === "__debug") {
-      const url = "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/IRL.A.PL.A0101.IX.OECD?lastNObservations=1&format=csvfilewithlabels";
-      const variants: Record<string, Record<string, string>> = {
-        curlish: { "user-agent": "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)", accept: "*/*" },
-        defaults: {},
-        lang: { "user-agent": "pricepaid-plug/0.1", "accept-language": "en" },
-        csvAccept: { "user-agent": "curl/8.5.0", accept: "application/vnd.sdmx.data+csv" },
-      };
-      const out: Record<string, string> = {};
-      for (const [k, h] of Object.entries(variants)) {
-        try { const r = await fetch(url, { headers: h }); out[k] = r.status + " " + (await r.text()).slice(0, 80).replace(/\s+/g, " "); } catch (e: any) { out[k] = "ERR " + (e?.cause?.code ?? e?.message); }
-      }
-      throw new Error("DEBUG " + JSON.stringify(out));
-    }
-    return handleReal(p, ctx);
-  },
+  handle: (p, ctx) => oecdPriceLevel({ country: String(p.country), spend: str(p.spend), compare_to: str(p.compare_to), baseUrl: ctx.baseUrl }),
 });
-const handleReal = (p: any, ctx: any) => oecdPriceLevel({ country: String(p.country), spend: str(p.spend), compare_to: str(p.compare_to), baseUrl: ctx.baseUrl });
