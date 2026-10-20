@@ -2,7 +2,8 @@
 // Format checked 2026-10-20 from GitHub's servers (probe): GET https://data.moa.gov.tw/api/v1/AgriProductsTransType/?Start_time=115.10.19&End_time=115.10.19&TcType=N04
 // returns {"RS":"OK","Data":[...]}. Dates are Minguo (115 = 2026). TcType N04 = vegetables, N05 = fruit, N06 = flowers (not used). Row fields: TransDate,
 // TcType, CropCode, CropName ("base-variety", e.g. "甘藍-初秋"), MarketCode, MarketName, Upper_Price, Middle_Price, Lower_Price, Avg_Price (TWD per kg), Trans_Quantity (kg).
-// A closed market is a row with CropName 休市 and all zeros. The TcType filter works and makes the answer small (fruit 13 KB, vegetables 50 KB for one day).
+// A closed market is a row with CropName 休市 and all zeros. The feed returns at most about 1000 rows per request (one trading day holds about 1500), checked 2026-10-20:
+// a multi-day request without a filter silently drops the older days. The CropName filter (matches anywhere in the name, percent-encoded Chinese) keeps each request small.
 
 import { InputError, SourceError, fetchJson } from "../../lib/http";
 import { buildAnswer, PriceAnswer } from "../../lib/answer";
@@ -185,7 +186,7 @@ export function parseRows(json: unknown): Row[] {
     if (!date || !crop || crop === "休市" || crop === "其他" || !(avg > 0) || !(qty > 0) || !TYPES.includes(type as any)) continue;
     out.push({ date, type, crop, marketCode: String(r.MarketCode ?? ""), market: String(r.MarketName ?? "").trim(), avg, qty });
   }
-  if (j.Data.length && !out.length && !j.Data.some((r: any) => r && r.CropName === "休市")) {
+  if (j.Data.length && !out.length && !j.Data.some((r: any) => r && typeof r === "object" && r.TransDate && r.CropName && r.Avg_Price !== undefined)) {
     throw new SourceError("The Council of Agriculture trading feed had no usable vegetable or fruit rows; this source needs updating.");
   }
   return out;
@@ -253,8 +254,11 @@ export function answerFromRows(all: Row[], input: Input): PriceAnswer {
   });
 }
 
-async function fetchRange(from: string, to: string, fetcher: (url: string) => Promise<unknown>): Promise<Row[]> {
-  const parts = await Promise.all(TYPES.map((t) => fetcher(`${API}?Start_time=${isoToMinguo(from)}&End_time=${isoToMinguo(to)}&TcType=${t}`)));
+/** The feed returns at most about 1000 rows per request and a trading day has about 1500, so we ask per product name (CropName matches anywhere in the name). */
+async function fetchTokens(tokens: string[], from: string, to: string, fetcher: (url: string) => Promise<unknown>): Promise<Row[]> {
+  const parts = await Promise.all(
+    tokens.map((t) => fetcher(`${API}?Start_time=${isoToMinguo(from)}&End_time=${isoToMinguo(to)}&CropName=${encodeURIComponent(t.replace(/^~/, ""))}`)),
+  );
   return parts.flatMap((p) => parseRows(p));
 }
 
@@ -265,7 +269,8 @@ export async function twWholesale(
 ): Promise<PriceAnswer> {
   if (!input.product) throw new InputError("product is required, for example 'cabbage', 'tomato', 'banana' or 'pineapple'.");
   if (!resolveProduct(input.product)) throw new InputError(unknownProduct(input.product)); // no network call for a product we cannot match
-  const rows = await fetchRange(taiwanDate(7, now), taiwanDate(0, now), fetcher);
+  const prod = resolveProduct(input.product)!;
+  const rows = await fetchTokens(prod.tokens, taiwanDate(7, now), taiwanDate(0, now), fetcher);
   return answerFromRows(rows, input);
 }
 
@@ -289,6 +294,13 @@ export function harvestFromRows(rows: Row[], date: string): HarvestResult {
   };
 }
 
+async function harvestDay(date: string, fetcher: (url: string) => Promise<unknown>): Promise<Row[]> {
+  const tokens = [...new Set(Object.values(PRODUCTS).flat())];
+  const rows: Row[] = [];
+  for (let i = 0; i < tokens.length; i += 6) rows.push(...(await fetchTokens(tokens.slice(i, i + 6), date, date, fetcher)));
+  return rows;
+}
+
 export async function twHarvest(
   fetcher: (url: string) => Promise<unknown> = (u) => fetchJson(u, {}, 25000),
   now: Date = new Date(),
@@ -296,7 +308,7 @@ export async function twHarvest(
   // newest day that has records: yesterday first, then back to three days earlier (market holidays)
   for (let back = 1; back <= 4; back++) {
     const date = taiwanDate(back, now);
-    const rows = await fetchRange(date, date, fetcher);
+    const rows = await harvestDay(date, fetcher);
     try {
       return harvestFromRows(rows, date);
     } catch (e) {

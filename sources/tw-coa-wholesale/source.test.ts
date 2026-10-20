@@ -98,14 +98,15 @@ test("tw-coa-wholesale: an unknown product is an input error before any network 
   await assert.rejects(twWholesale({}, async () => ({})), InputError);
 });
 
-test("tw-coa-wholesale: live handler asks for vegetables and fruit for the last 8 days", async () => {
+test("tw-coa-wholesale: live handler asks per product name for the last 8 days (the feed caps a request at about 1000 rows)", async () => {
   const urls: string[] = [];
   const now = new Date("2026-10-20T10:00:00Z");
-  const a = await twWholesale({ product: "banana" }, async (u) => { urls.push(u); return { RS: "OK", Data: [] }; }, now);
+  const a = await twWholesale({ product: "cucumber" }, async (u) => { urls.push(u); return { RS: "OK", Data: [] }; }, now);
   assert.equal(a.status, "no_matches");
-  assert.equal(urls.length, 2);
+  assert.equal(urls.length, 2); // 胡瓜 and 花胡瓜
   assert.ok(urls.every((u) => u.includes("Start_time=115.10.13") && u.includes("End_time=115.10.20")));
-  assert.deepEqual(urls.map((u) => /TcType=(\w+)/.exec(u)![1]).sort(), ["N04", "N05"]);
+  assert.deepEqual(urls.map((u) => decodeURIComponent(/CropName=([^&]+)/.exec(u)![1])).sort(), ["花胡瓜", "胡瓜"].sort());
+  assert.ok(!urls.some((u) => u.includes("TcType")));
 });
 
 test("tw-coa-wholesale: harvest gives national rows with 5+ records and no imports", () => {
@@ -124,7 +125,8 @@ test("tw-coa-wholesale: collector steps back over a market holiday", async () =>
   const h = await twHarvest(async (u) => {
     const d = /Start_time=([\d.]+)/.exec(u)![1];
     asked.push(d);
-    return d === "115.10.19" ? { RS: "OK", Data: [] } : day(d);
+    // only the cabbage name returns rows; the day before is a holiday
+    return d === "115.10.19" || decodeURIComponent(/CropName=([^&]+)/.exec(u)![1]) !== "甘藍" ? { RS: "OK", Data: [] } : day(d);
   }, new Date("2026-10-20T03:17:00Z"));
   assert.equal(h.date, "2026-10-18");
   assert.ok(asked.includes("115.10.19") && asked.includes("115.10.18"));
