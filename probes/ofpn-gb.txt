@@ -1,0 +1,22 @@
+URL: https://prices.openfoodfacts.org/api/v1/prices?size=2&location__osm_address_country_code=GB&type=PRODUCT&price__gt=0&date__gte=2026-04-20
+Fetched: 2026-10-20T21:17:57Z from GitHub Actions
+Status, type, bytes: 200 application/json 6690
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Tue, 20 Oct 2026 21:17:57 GMT
+content-type: application/json
+content-length: 6690
+vary: Accept-Encoding
+allow: GET, POST
+x-frame-options: DENY
+vary: origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 2500 BYTES
+{"items":[{"id":267512,"product_id":4432578,"location_id":1838,"proof_id":109201,"product":{"id":4432578,"code":"4335619201361","source":"off","source_last_synced":"2026-08-11T12:00:25.237460Z","product_name":"Almond no sugars plant based","image_url":"https://images.openfoodfacts.org/images/products/433/561/920/1361/front_en.9.400.jpg","product_quantity":1000,"product_quantity_unit":"ml","quantity":"1 l","categories_tags":["en:beverages-and-beverages-preparations","en:plant-based-foods-and-beverages","en:beverages","en:plant-based-foods","en:dairy-substitutes","en:milk-substitutes","en:nuts-and-their-products","en:plant-based-beverages","en:plant-based-milk-alternatives","en:nut-based-drinks","en:almond-based-drinks","en:Almond no sugars plant based"],"brands":"Vemondo","brands_tags":["vemondo"],"labels_tags":["en:vegetarian","en:vegan","en:fsc","en:fsc-mix"],"nutriscore_grade":"c","ecoscore_grade":"b","nova_group":4,"creator":"smoothie-app","unique_scans_n":0,"price_count":1,"price_currency_count":0,"location_count":0,"location_type_osm_country_count":0,"user_count":0,"proof_count":0,"created":"2026-04-20T05:36:39.602681Z","updated":"2026-08-11T12:00:25.240787Z"},"location":{"id":1838,"osm_brand_logo_url":"https://raw.githubusercontent.com/openfoodfacts/brand-images/refs/heads/main/xx/stores/lidl.png","type":"OSM","osm_id":1242240965,"osm_type":"WAY","osm_name":"Lidl","osm_display_name":"Lidl, 306, Burdett Road, Bromley-by-Bow, Limehouse, London Borough of Tower Hamlets, Greater London, England, E14 7DL, United Kingdom","osm_tag_key":"shop","osm_tag_value":"supermarket","osm_tags":[],"osm_brand":"Lidl","osm_address_postcode":"E14 7DL","osm_address_city":"Greater London","osm_address_country":"United Kingdom","osm_address_country_code":"GB","osm_lat":51.514321,"osm_lon":-0.0286518,"osm_version":2,"osm_version_date":"2024-02-09T19:03:54Z","website_url":null,"price_count":2,"user_count":2,"product_count":2,"proof_count":2,"source":null,"created":"2025-01-02T10:41:58.898660Z","updated":"2026-09-16T08:33:58.712916Z"},"proof":{"id":109201,"location_id":1838,"file_path":"0261/MA5s7SY3xR.jpg","mimetype":"image/jpeg","type":"RECEIPT","image_md5_hash":"65d96c68e004d8b0229d64b01c79ed8f","image_thumb_path":"0261/MA5s7SY3xR.400.jpg","location_osm_id":1242240965,"location_osm_type":"WAY","date":"2026-04-20","currency":"GBP","receipt_price_count":null,"receipt_price_total":null,"receipt_online_delivery_costs":null,"ready_for_price_tag_validation":false,"owner_consumpti
