@@ -5,13 +5,14 @@ import { CATEGORIES, paramsFromQuery, runCategory } from "../../../../lib/regist
 import { CHECK_RESERVED, CHECK_TOOL, resolveCategory, runCheck } from "../../../../lib/check";
 import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, withoutOwnParam } from "../../../../lib/usage";
 import { gatedRest } from "../../../../lib/payments";
+import { checkSourcesFromUrl } from "../../../../lib/premium-sources";
 import { json, errorResponse, baseUrl, corsPreflight, STALE_CACHE_SECONDS } from "../../../../lib/route-helpers";
 
 export const maxDuration = 60;
 
 // Premium call: with the payment gate off (the default) this is exactly the plain handler (lib/payments/).
 export function GET(req: Request) {
-  return gatedRest("check", req, () => handle(req));
+  return gatedRest("check", req, () => handle(req), () => checkSourcesFromUrl(req.url));
 }
 
 async function handle(req: Request) {

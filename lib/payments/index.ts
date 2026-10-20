@@ -2,6 +2,7 @@
 import { readGateConfig, type Env, type GateConfig } from "./config";
 import { httpFacilitator, type Facilitator } from "./facilitator";
 import { gateCall, type GateOutcome } from "./gate";
+import { allCleared, UNCLEARED_NOTE } from "./cleared";
 import { PREMIUM, type PremiumKey } from "./prices";
 import { json, CORS_HEADERS } from "../route-helpers";
 
@@ -42,10 +43,22 @@ export async function gate<T>(
   req: { headers: Headers | undefined | null; url: string; paymentHeader?: string | null },
   run: () => Promise<T>,
   chargeable: (r: T) => boolean,
+  /** Source ids behind this call, worked out before anything is charged. REQUIRED: null/unknown/uncleared means served free, never a 402. */
+  sources: () => readonly string[] | null | Promise<readonly string[] | null>,
   env: Env = process.env,
 ): Promise<GateOutcome<T> | null> {
   const cfg = readGateConfig(env);
   if (!cfg) return null;
+  // Licence guard (lib/payments/cleared.ts): fail closed. If we cannot tell, or any source is not cleared, nothing is gated or charged.
+  let ids: readonly string[] | null = null;
+  try {
+    ids = await sources();
+  } catch {
+    ids = null;
+  }
+  if (!allCleared(ids)) {
+    return { kind: "served", result: await run(), paid: false, headers: { "x-proofprice-charged": "no", "x-proofprice-note": UNCLEARED_NOTE } };
+  }
   return gateCall({
     cfg,
     facilitator: facilitatorFor(cfg),
@@ -63,6 +76,7 @@ export async function gatedRest(
   key: PremiumKey,
   req: Request,
   handler: () => Promise<Response>,
+  sources: () => readonly string[] | null | Promise<readonly string[] | null>,
   chargeable: (res: Response) => boolean | Promise<boolean> = (r) => r.status === 200,
 ): Promise<Response> {
   const cfg = readGateConfig();
@@ -77,6 +91,7 @@ export async function gatedRest(
       return { res, text };
     },
     ({ res, text }) => res.status === 200 && isAnswered(text),
+    sources,
   );
   if (!out) return handler();
   if (out.kind === "denied") return json(out.body, out.status, 0, out.headers);

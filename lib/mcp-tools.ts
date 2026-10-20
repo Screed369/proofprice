@@ -18,6 +18,7 @@ import { CHECK_TOOL, checkToolDescription, checkToolShape, runCheck } from "./ch
 import { withDeadline } from "./http";
 import { checkResultSchema, coverageToolSchema, historyAnswerSchema, priceAnswerSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
+import { historySources, checkSources } from "./premium-sources";
 import { gate, paymentHeaderFromMeta, premiumNote, readGateConfig, isAnswered, type PremiumKey } from "./payments";
 import { isOwnClient, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageEnabled, usageKey } from "./usage";
 
@@ -44,6 +45,8 @@ export interface ToolSpec {
   };
   /** Set on the premium tools only (lib/payments/prices.ts). They are free until the payment gate is switched on. */
   premium?: PremiumKey;
+  /** Premium tools only: the source ids behind a call, for the licence guard (lib/payments/cleared.ts). Missing or null = not cleared = free. */
+  sources?: (args: Record<string, unknown>) => string[] | null;
   /** The tool handler: never throws; failures come back as an isError result. */
   call(args: Record<string, unknown>): Promise<McpToolResult>;
 }
@@ -134,6 +137,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
       const h = cat.history;
       specs.push({
         premium: "history",
+        sources: (args) => historySources(cat, args),
         name: h.tool,
         config: {
           title: h.title,
@@ -152,6 +156,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
   const checkTitle = "Check a price before you pay";
   specs.push({
     premium: "check",
+    sources: (args) => checkSources(args, deps.categories),
     name: CHECK_TOOL,
     config: {
       title: checkTitle,
@@ -214,10 +219,13 @@ export function registerTools(server: { registerTool: (...a: any[]) => unknown }
         { headers: req?.headers, url: req?.url ?? `${SITE_URL}/api/mcp`, paymentHeader: paymentHeaderFromMeta(ctx?.mcpReq?._meta ?? ctx?._meta) },
         () => spec.call(args ?? {}),
         (r) => !r.isError && isAnswered(JSON.stringify(r.structuredContent ?? {})),
+        () => (spec.sources ? spec.sources(args ?? {}) : null),
         env,
       );
       if (!out) return spec.call(args ?? {});
       if (out.kind === "denied") return { isError: true, content: [{ type: "text", text: JSON.stringify(out.body) }], structuredContent: out.body };
+      const note = out.headers["x-proofprice-note"];
+      if (note) return { ...out.result, _meta: { "proofprice/note": note, "proofprice/charged": false } };
       const settlement = out.headers["payment-response"];
       return settlement ? { ...out.result, _meta: { "x402/payment-response": JSON.parse(Buffer.from(settlement, "base64").toString("utf8")) } } : out.result;
     });

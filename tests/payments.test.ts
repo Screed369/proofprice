@@ -16,6 +16,10 @@ import { registerTools } from "../lib/mcp-tools";
 import type { ToolSpec } from "../lib/mcp-tools";
 import { z } from "zod";
 
+import { allCleared, CLEARED_FOR_PAID } from "../lib/payments/cleared";
+import { checkSources, historySources } from "../lib/premium-sources";
+import { CATEGORIES } from "../lib/registry";
+const CLEARED = () => ["eu-energy"];
 const PAY_TO = "0x1111111111111111111111111111111111111111"; // public test address, not a real wallet
 const PAYER = "0x2222222222222222222222222222222222222222";
 const ON = { PROOFPRICE_X402_ENABLED: "true", PROOFPRICE_X402_PAY_TO: PAY_TO };
@@ -55,7 +59,7 @@ test("gate is OFF unless both variables are set (and valid)", () => {
 test("gate OFF: premium REST route is the plain handler, untouched", async () => {
   for (const k of ["PROOFPRICE_X402_ENABLED", "PROOFPRICE_X402_PAY_TO"]) delete process.env[k];
   const plain = new Response('{"status":"ok"}', { status: 200, headers: { "cache-control": "public, s-maxage=600", "x-test": "1" } });
-  const res = await gatedRest("check", new Request("https://proofprice.com/api/v1/check"), async () => plain);
+  const res = await gatedRest("check", new Request("https://proofprice.com/api/v1/check"), async () => plain, () => ["eu-energy"]);
   assert.equal(res, plain, "same Response object, nothing added");
 });
 
@@ -142,17 +146,17 @@ test("gate ON: REST wrapper returns 402 JSON after the quota, serves a paid call
     setFacilitatorForTests(f);
     const answer = () => new Response(JSON.stringify({ status: "ok", summary: "s" }), { status: 200, headers: { "content-type": "application/json" } });
     const mk = (h: Record<string, string> = {}) => new Request("https://proofprice.com/api/v1/fuel/history?country=ES", { headers: { "x-forwarded-for": "198.51.100.7", ...h } });
-    for (let i = 0; i < PREMIUM.history.freePerDay; i++) assert.equal((await gatedRest("history", mk(), async () => answer())).status, 200);
-    const denied = await gatedRest("history", mk(), async () => answer());
+    for (let i = 0; i < PREMIUM.history.freePerDay; i++) assert.equal((await gatedRest("history", mk(), async () => answer(), CLEARED)).status, 200);
+    const denied = await gatedRest("history", mk(), async () => answer(), CLEARED);
     assert.equal(denied.status, 402);
     assert.equal(denied.headers.get("access-control-allow-origin"), "*");
     assert.equal((await denied.json() as any).accepts[0].amount, "20000");
-    const paid = await gatedRest("history", mk({ "payment-signature": validPayment("history") }), async () => answer());
+    const paid = await gatedRest("history", mk({ "payment-signature": validPayment("history") }), async () => answer(), CLEARED);
     assert.equal(paid.status, 200);
     assert.equal(paid.headers.get("cache-control"), "no-store");
     assert.ok(paid.headers.get("payment-response"));
     // an upstream error is not charged
-    const err = await gatedRest("history", mk({ "payment-signature": validPayment("history") }), async () => new Response("{}", { status: 400 }));
+    const err = await gatedRest("history", mk({ "payment-signature": validPayment("history") }), async () => new Response("{}", { status: 400 }), CLEARED);
     assert.equal(err.status, 400);
     assert.equal(err.headers.get("payment-response"), null);
   } finally {
@@ -166,7 +170,7 @@ test("gate ON: the MCP tool returns an isError result with the requirements, and
   setFacilitatorForTests(f);
   try {
     const spec: ToolSpec = {
-      name: "pricepaid_check_price", premium: "check",
+      name: "pricepaid_check_price", premium: "check", sources: () => ["eu-energy"],
       config: { title: "T", description: "D.", inputSchema: z.object({}), outputSchema: z.any(), annotations: { title: "T", readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } },
       call: async () => ({ content: [{ type: "text", text: "answer" }], structuredContent: { verdict: "typical", answer: { status: "ok" } } }),
     };
@@ -202,4 +206,76 @@ test("CDP JWT: signs with an EC key and with an Ed25519 key (generated here, not
   assert.equal(h.alg, "ES256"); assert.equal(p.uris[0], "POST api.cdp.coinbase.com/platform/v2/x402/verify");
   const seed = Buffer.concat([Buffer.alloc(32, 7), Buffer.alloc(32, 9)]).toString("base64");
   assert.equal(JSON.parse(Buffer.from(cdpJwt("kid", seed, "POST", "h", "/p").split(".")[0], "base64url").toString()).alg, "EdDSA");
+});
+
+// ---------- licence guard (S1) ----------
+
+test("licence guard: the cleared list is exactly the sources whose Pipeline line says commercial: yes; default is not cleared", () => {
+  assert.deepEqual([...CLEARED_FOR_PAID].sort(), ["ca-cmhc-rents", "ca-farm-prices", "eu-energy", "no-childcare-fees", "wb-fpn-diet-costs"]);
+  assert.equal(allCleared(["eu-energy"]), true);
+  assert.equal(allCleared(["eu-energy", "ie-ppr"]), false, "one uncleared source is enough");
+  for (const bad of [null, undefined, [], ["new-source"], ["mx-fuel"], ["br-fuel"], ["us-home-sales"], ["un-wfp-food-prices"]]) assert.equal(allCleared(bad as any), false);
+});
+
+test("licence guard: REST premium call on an uncleared source is served free, never 402, never verified or settled, payment ignored", async () => {
+  Object.assign(process.env, ON);
+  try {
+    const m = mock();
+    setFacilitatorForTests(m.f);
+    const answer = () => new Response(JSON.stringify({ status: "ok" }), { status: 200 });
+    const mk = (h: Record<string, string> = {}) => new Request("https://proofprice.com/api/v1/check?country=MX", { headers: { "x-forwarded-for": "198.51.100.20", ...h } });
+    for (const unclear of [() => ["mx-fuel"], () => null, () => { throw new Error("boom"); }]) {
+      for (let i = 0; i < PREMIUM.check.freePerDay + 5; i++) {
+        const r = await gatedRest("check", mk(i % 2 ? { "payment-signature": validPayment() } : {}), async () => answer(), unclear as any);
+        assert.equal(r.status, 200, "never a 402");
+        assert.equal(r.headers.get("x-proofprice-charged"), "no");
+        assert.match(r.headers.get("x-proofprice-note") ?? "", /not yet cleared for paid use/);
+        assert.equal(r.headers.get("payment-response"), null);
+      }
+    }
+    assert.deepEqual(m.calls, [], "facilitator never touched");
+    // a cleared source still gates normally
+    for (let i = 0; i < PREMIUM.check.freePerDay; i++) await gatedRest("check", mk(), async () => answer(), CLEARED);
+    assert.equal((await gatedRest("check", mk(), async () => answer(), CLEARED)).status, 402);
+  } finally {
+    for (const k of Object.keys(ON)) delete process.env[k];
+    setFacilitatorForTests(null);
+  }
+});
+
+test("licence guard: MCP premium tool with an uncleared source (or no resolver) is served free with a note", async () => {
+  const m = mock();
+  setFacilitatorForTests(m.f);
+  try {
+    const mkSpec = (sources?: ToolSpec["sources"]): ToolSpec => ({
+      name: "pricepaid_check_price", premium: "check", ...(sources ? { sources } : {}),
+      config: { title: "T", description: "D.", inputSchema: z.object({}), outputSchema: z.any(), annotations: { title: "T", readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } },
+      call: async () => ({ content: [{ type: "text", text: "answer" }], structuredContent: { verdict: "x", answer: { status: "ok" } } }),
+    });
+    for (const spec of [mkSpec(() => ["mx-fuel"]), mkSpec()]) {
+      let handler: any;
+      registerTools({ registerTool: (_n: string, _c: unknown, h: unknown) => { handler = h; } }, [spec], ON);
+      const ctx = { http: { req: new Request("https://proofprice.com/api/mcp", { headers: { "x-forwarded-for": "198.51.100.30" } }) }, mcpReq: { _meta: { "x402/payment": JSON.parse(Buffer.from(validPayment(), "base64").toString()) } } };
+      for (let i = 0; i < PREMIUM.check.freePerDay + 3; i++) {
+        const r = await handler({}, ctx);
+        assert.equal(r.isError, undefined);
+        assert.equal(r._meta["proofprice/charged"], false);
+        assert.match(r._meta["proofprice/note"], /not yet cleared/);
+      }
+    }
+    assert.deepEqual(m.calls, []);
+  } finally {
+    setFacilitatorForTests(null);
+  }
+});
+
+test("licence guard: source resolvers return the real source id, and null (not cleared) on bad input", () => {
+  const rent = CATEGORIES.find((c) => c.id === "rent")!;
+  assert.deepEqual(checkSources({ category: "rent", country: "CA", price: 1800 }), ["ca-cmhc-rents"]);
+  assert.deepEqual(checkSources({ category: "fuel", country: "MX", area: "Ciudad de México", fuel: "petrol95", price: 1 }), ["mx-fuel"]);
+  assert.equal(checkSources({ category: "nonsense", country: "CA" }), null);
+  assert.equal(checkSources({ category: "rent" }), null, "no country");
+  assert.equal(historySources(rent, { country: "ZZ" }), null);
+  assert.equal(allCleared(checkSources({ category: "rent", country: "CA", price: 1 })), true);
+  assert.equal(allCleared(checkSources({ category: "fuel", country: "MX", area: "Ciudad de México", fuel: "petrol95", price: 1 })), false);
 });

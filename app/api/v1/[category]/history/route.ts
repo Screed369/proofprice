@@ -2,11 +2,12 @@
 // Example: /api/v1/fuel/history?country=ES&area=28&fuel=diesel&days=30
 import { categoryByRestPath, assertKnownParams, paramsFromQuery, runHistory } from "../../../../../lib/registry";
 import { gatedRest } from "../../../../../lib/payments";
+import { historySourcesFromUrl } from "../../../../../lib/premium-sources";
 import { json, errorResponse, baseUrl, corsPreflight } from "../../../../../lib/route-helpers";
 
 // Premium call: with the payment gate off (the default) this is exactly the plain handler (lib/payments/).
 export function GET(req: Request, ctx: { params: Promise<{ category: string }> }) {
-  return gatedRest("history", req, () => handle(req, ctx));
+  return gatedRest("history", req, () => handle(req, ctx), async () => historySourcesFromUrl(req.url, (await ctx.params).category));
 }
 
 async function handle(req: Request, ctx: { params: Promise<{ category: string }> }) {
