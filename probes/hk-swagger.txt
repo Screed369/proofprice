@@ -1,0 +1,328 @@
+URL: https://apidocs.hkma.gov.hk/wp-content/uploads/swagger/tender-invitations-swagger.json
+Fetched: 2026-10-20T23:41:41Z from GitHub Actions
+Status, type, bytes: 200 application/json 7297
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+x-frame-options: DENY
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000; includeSubDomains
+expires: Wed, 21 Oct 2026 00:11:41 GMT
+content-security-policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' use.fontawesome.com; font-src 'self' use.fontawesome.com; img-src 'self' www.w3.org i.ytimg.com s.ytimg.com data:; connect-src api.hkma.gov.hk; frame-src 'self' www.youtube.com; worker-src 'self'; form-action 'self';
+vary: User-Agent
+content-type: application/json
+set-cookie: SF_cookie_3=8jZ3GCzlcHQUVbXiy3amvEXkxhUda46mbqTUrSQZIPY=; path=/; Secure; HttpOnly
+last-modified: Thu, 28 Mar 2024 03:11:12 GMT
+cache-control: s-maxage=300
+content-length: 7297
+accept-ranges: bytes
+date: Tue, 20 Oct 2026 23:41:40 GMT
+eo-log-uuid: 4001591221838760144
+eo-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tender Invitation and Notice of Award of Contracts",
+    "description": "For more details, refer the link: https://apidocs.hkma.gov.hk/documentation/tender-invitations",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://api.hkma.gov.hk/public",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/tender-invitations": {
+      "get": {
+        "summary": "Retrieve data of Tender Invitation and Notice of Award of Contracts",
+        "parameters": [
+		      {
+            "name": "lang",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/Lang"
+            }
+          },
+          {
+            "name": "segment",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/Segment"
+            }
+          },
+          {
+            "name": "pagesize",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "column",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "choose",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortby",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortorder",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "$ref": "#/components/schemas/Sortorder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response to a valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexcpeted error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Header": {
+        "title": "Header",
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "err_code": {
+            "type": "string"
+          },
+          "err_msg": {
+            "type": "string"
+          }
+        }
+      },
+      "Response": {
+        "title": "response",
+        "type": "object",
+        "properties": {
+          "header": {
+            "$ref": "#/components/schemas/Header"
+          },
+          "result": {
+            "$ref": "#/components/schemas/Result"
+          }
+        }
+      },
+      "Result": {
+        "title": "Result",
+        "type": "object",
+        "properties": {
+          "datasize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+				"$ref": "#/components/schemas/Record"
+            },
+            "description": ""
+          }
+        }
+      },
+      "Record": {
+        "title": "Record",
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "title": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          }
+        }
+      },
+      "Sortorder": {
+        "title": "sortorder",
+        "enum": [
+          "asc",
+          "desc"
+        ],
+        "type": "string",
+        "example": "asc",
+        "x-enum-elements": [
+          {
+            "name": "asc",
+            "description": ""
+          },
+          {
+            "name": "desc",
+            "description": ""
+          }
+        ]
+      },
+	  "Lang": {
+        "title": "lang",
+        "enum": [
+          "en",
+          "tc"
+        ],
+        "type": "string",
+        "example": "en",
+        "x-enum-elements": [
+          {
+            "name": "en",
+            "description": ""
+          },
+          {
+            "name": "tc",
+            "description": ""
+          },
+          {
+            "name": "sc",
+            "description": ""
+          }
+        ]
+      },
+      "Segment": {
+        "title": "segment",
+        "enum": [
+          "tender", 
+          "notice"
+        ],
+        "type": "string",
+        "example": "tender",
+        "x-enum-elements": [
+          {
+            "name": "tender",
+            "description": ""
+          },
+          {
+            "name": "notice",
+            "description": ""
+          }
+        ]
+      },
+      "ErrorResponse": {
+        "title": "errorResponse",
+        "type": "object",
+        "properties": {
+          "header": {
+            "$ref": "#/components/schemas/Header"
+          }
+        }
+      }
+    }
+  }
+}
