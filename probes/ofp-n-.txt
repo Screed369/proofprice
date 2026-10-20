@@ -1,0 +1,22 @@
+URL: https://prices.openfoodfacts.org/api/v1/prices?size=1&location__osm_address_country_code=FR&type=PRODUCT&price__gt=0&date__gte=2026-07-20
+Fetched: 2026-10-20T21:15:10Z from GitHub Actions
+Status, type, bytes: 200 application/json 3488
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Tue, 20 Oct 2026 21:15:10 GMT
+content-type: application/json
+content-length: 3488
+vary: Accept-Encoding
+allow: GET, POST
+x-frame-options: DENY
+vary: origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 300 BYTES
+{"items":[{"id":295072,"product_id":2934744,"location_id":4785,"proof_id":120785,"product":{"id":2934744,"code":"3375610002346","source":"off","source_last_synced":"2026-04-04T05:37:49.016371Z","product_name":"Skyr soja nature","image_url":"https://images.openfoodfacts.org/images/products/337/561/00
