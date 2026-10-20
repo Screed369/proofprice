@@ -1,0 +1,50 @@
+# One-off LIVE testnet payment check of the ProofPrice gate (base-sepolia, test USDC only). Uses the throwaway test
+# key in the secret X402_TEST_WALLET_KEY. Writes its report to the probes branch: probes/x402-live.txt.
+# Start: gh workflow run x402-live.yml -R Screed369/proofprice --ref main   (also runs once when this file is pushed on branch test/x402-live)
+name: x402 live testnet check
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [test/x402-live]
+    paths: [".github/workflows/x402-live.yml", "scripts/x402-rehearsal/live.mjs"]
+
+permissions:
+  contents: write
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install client
+        working-directory: scripts/x402-rehearsal
+        run: npm ci
+      - name: Run live check (report only; never fails the run)
+        working-directory: scripts/x402-rehearsal
+        env:
+          X402_TEST_WALLET_KEY: ${{ secrets.X402_TEST_WALLET_KEY }}
+        run: node live.mjs > /tmp/x402-live.txt 2>&1 || true
+      - name: Save report
+        run: |
+          { echo "Run: $(date -u +%FT%TZ) ref ${GITHUB_REF_NAME} sha ${GITHUB_SHA}"; cat /tmp/x402-live.txt; } > /tmp/report.txt
+          cat /tmp/report.txt
+          git config user.name "proofprice-librarian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes; then git checkout -q -B probes origin/probes; else git checkout -q --orphan probes; fi
+          git rm -rq --cached . >/dev/null 2>&1 || true
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name probes -exec rm -rf {} +
+          mkdir -p probes && cp /tmp/report.txt probes/x402-live.txt
+          git add probes
+          git commit -qm "x402 live check" || exit 0
+          for i in 1 2 3 4 5; do
+            git push -q origin probes && exit 0
+            sleep $((i * 3))
+            git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git rebase -q origin/probes
+          done
