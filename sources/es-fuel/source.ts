@@ -250,18 +250,25 @@ async function fetchHist(day: string): Promise<any | null> {
   return null;
 }
 
-/** Monthly history: the posted prices of every public station on the 15th of each month (one request a month, a pause between). */
+/** Monthly history: the posted prices of every public station on the 15th of each month. Two requests at a time, a pause between. */
 export async function esBackfill(from: string, to: string): Promise<BackfillResult> {
-  const periods: BackfillResult["periods"] = [];
-  for (const month of esMonthsBetween(from.slice(0, 7), to.slice(0, 7))) {
-    const json = await fetchHist(`${month}-15`);
-    const rows = json ? esMonthRows(json) : null;
-    if (rows) {
-      periods.push({ period: month, rows });
-      console.log(`${month}: ${rows.length} rows`);
-    } else console.log(`${month}: no data`);
-    await new Promise((r) => setTimeout(r, 2000)); // be gentle with the publisher
-  }
+  const months = esMonthsBetween(from.slice(0, 7), to.slice(0, 7));
+  const byMonth = new Map<string, BackfillResult["periods"][number]["rows"]>();
+  let next = 0;
+  const worker = async (w: number) => {
+    await new Promise((r) => setTimeout(r, w * 1500));
+    while (next < months.length) {
+      const month = months[next++];
+      const t0 = Date.now();
+      const json = await fetchHist(`${month}-15`);
+      const rows = json ? esMonthRows(json) : null;
+      if (rows) byMonth.set(month, rows);
+      console.log(`${month}: ${rows ? rows.length + " rows" : "no data"} (${Math.round((Date.now() - t0) / 1000)}s)`);
+      await new Promise((r) => setTimeout(r, 2000)); // be gentle with the publisher
+    }
+  };
+  await Promise.all([worker(0), worker(1)]);
+  const periods: BackfillResult["periods"] = months.filter((m) => byMonth.has(m)).map((m) => ({ period: m, rows: byMonth.get(m)! }));
   return {
     currency: "EUR",
     unit: "per litre (CNG per kg)",
