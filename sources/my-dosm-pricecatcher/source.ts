@@ -269,9 +269,10 @@ export function parseKey(key: string): { name: string; unit: string } | null {
 function wordsOf(name: string): { malay: string[]; english: Set<string> } {
   const malay = norm(name).split(" ").filter(Boolean);
   const english = new Set<string>();
+  const melon = malay.includes("tembikai"); // "TEMBIKAI SUSU" is a kind of watermelon, not milk
   for (const w of malay) {
     english.add(stem(w));
-    const g = GLOSS[w];
+    const g = melon && w === "susu" ? undefined : GLOSS[w];
     if (g) for (const e of g.split(" ")) english.add(stem(e));
   }
   return { malay, english };

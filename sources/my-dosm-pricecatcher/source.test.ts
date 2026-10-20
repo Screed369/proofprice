@@ -101,6 +101,9 @@ test("matchItems answers English and Malay questions, generic names first", () =
   assert.equal(matchItems(defs, "price of eggs")[0].name.startsWith("TELUR AYAM"), true);
   assert.equal(matchItems(defs, "telur")[0].name.startsWith("TELUR AYAM"), true);
   assert.deepEqual(matchItems(defs, "diamonds"), []);
+  const mk = (name: string, n: number) => ({ key: name + "|1kg", name, unit: "1kg", n, row: { area: "ALL", item: name + "|1kg", n, median: 1, low: 1, high: 1, min: 1, max: 1 } });
+  assert.equal(matchItems([mk("TEMBIKAI SUSU", 251), mk("SUSU SEGAR KURMA FARM FRESH", 100)], "milk")[0].name, "SUSU SEGAR KURMA FARM FRESH", "milk-melon is a watermelon");
+  assert.equal(matchItems([mk("TEMBIKAI SUSU", 251)], "milk").length, 0);
 });
 
 test("resolveState: Kuala Lumpur and Penang style names", () => {
