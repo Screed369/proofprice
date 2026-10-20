@@ -1,0 +1,23 @@
+URL: https://www.data.gouv.fr/api/2/datasets/5369a33ca3a729239d206a01/resources/?page=1&page_size=50
+Fetched: 2026-10-20T06:43:50Z from GitHub Actions
+Status, type, bytes: 200 application/json 2774
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Tue, 20 Oct 2026 06:43:50 GMT
+content-type: application/json
+content-length: 2774
+vary: Accept-Encoding
+vary: Origin, Cookie
+pragma: public
+cache-control: public
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=15768000; includeSubDomains; preload;
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"data": [{"id": "bd0fe587-2f2d-4b9a-8df5-8c4385db7afd", "title": "Prix des terres et/ou Valeur V\u00e9nale des terres (VVT)", "description": "Des publications et des fichiers de donn\u00e9es associ\u00e9es ainsi que des tableaux interactifs&#x20;\n", "filetype": "remote", "type": "main", "format": "url", "url": "https://agreste.agriculture.gouv.fr/agreste-web/methodon/S-Prix%20des%20terres/methodon/", "latest": "https://www.data.gouv.fr/api/1/datasets/r/bd0fe587-2f2d-4b9a-8df5-8c4385db7afd", "checksum": null, "filesize": null, "mime": null, "created_at": "2025-09-23T13:33:55.811000+00:00", "last_modified": "2025-09-25T08:54:30.807000+00:00", "metrics": {"views": 602}, "harvest": null, "geopf": null, "extras": {"check:id": 33734582, "check:available": false, "check:timeout": false, "check:date": "2025-09-23T13:34:01.613000", "check:error": "Cannot connect to host agreste.agriculture.gouv.fr:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]"}, "preview_url": null, "schema": null, "internal": {"created_at_internal": "2025-09-23T13:33:55.811000+00:00", "last_modified_internal": "2025-09-25T08:54:30.807000+00:00"}}, {"id": "f91203c8-4477-460b-9867-96ee6d260953", "title": "Valeur v\u00e9nale des terres", "description": "Les donn\u00e9es sont disponibles sous forme de tableaux multidimensionnels personnalisables sur le site Agreste - Donn\u00e9es en ligne.", "filetype": "remote", "type": "main", "format": "url", "url": "https://agreste.agriculture.gouv.fr/agreste-web/disaron/venale/745fcc0d-4e89-4a99-b151-835d2a9be2df/search/", "latest": "https://www.data.gouv.fr/api/1/datasets/r/f91203c8-4477-460b-9867-96ee6d260953", "checksum": null, "filesize": null, "mime": null, "created_at": "2014-05-07T05:06:36.129000+00:00", "last_modified": "2025-09-25T08:51:58.995000+00:00", "metrics": {"nb_uniq_visitors": 0, "nb_visits": 0, "nb_hits": 0, "views": 943}, "harvest": null, "geopf": null, "extras": {"check:available": false, "check:count-availability": 46, "check:url": "https://stats.agriculture.gouv.fr/disar-web/disaron/!searchurl/searchUiid/search.disar", "check:date": "2023-06-02T04:07:06.065000", "check:headers:charset": "utf-8", "check:timeout": false, "check:error": "Cannot connect to host stats.agriculture.gouv.fr:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1123)')]"}, "preview_url": null, "schema": null, "internal": {"created_at_internal": "2014-05-07T05:06:36.129000+00:00", "last_modified_internal": "2025-09-25T08:51:58.995000+00:00"}}], "next_page": null, "previous_page": null, "page": 1, "page_size": 50, "total": 2}
