@@ -1,16 +1,17 @@
 // Tests for the OECD price level source. Fixtures are real replies captured on 2026-10-20 (see fixtures.ts).
-import { test } from "node:test";
+import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import { PPP_FOOD_ALL, PPP_IRL_CATS, PPP_IRL_FOOD } from "./fixtures";
-import { BASES, COUNTRIES, INFO, SPENDS, allCountriesUrl, byYear, countryUrl, matchBase, matchSpend, oecdPriceLevel, parseCsv, parseObs, rankTable } from "./source";
+import { BASES, COUNTRIES, INFO, SPENDS, allCountriesUrl, byYear, cached, clearCache, matchBase, matchSpend, oecdPriceLevel, parseCsv, parseObs, rankTable } from "./source";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
 
 const urls: string[] = [];
+// The one real reply holds every country: Ireland's three years (real capture) followed by the newest-year rows of all areas (real capture).
+const BOTH = PPP_IRL_FOOD.trimEnd() + "\n" + PPP_FOOD_ALL.split("\n").slice(1).join("\n");
 const fake = async (url: string): Promise<string> => {
   urls.push(url);
-  if (url.includes("/IRL.A.PL+PPP.A0101..OECD")) return PPP_IRL_FOOD;
-  if (url.includes("/.A.PL.A0101.IX.OECD")) return PPP_FOOD_ALL;
+  if (url.includes("/.A.PL+PPP.A0101..OECD")) return BOTH;
   throw new Error("unexpected url " + url);
 };
 
@@ -67,14 +68,26 @@ test("comparison area words", () => {
   assert.throws(() => matchBase("moon"), /compare_to must be/);
 });
 
-test("request URLs use the dataflow key form", () => {
+test("request URL uses the dataflow key form, one request for all countries", () => {
   assert.equal(
-    countryUrl("IRL", matchSpend("food"), BASES.OECD),
-    "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/IRL.A.PL+PPP.A0101..OECD?lastNObservations=5&format=csvfilewithlabels",
+    allCountriesUrl(matchSpend("food"), BASES.OECD),
+    "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/.A.PL+PPP.A0101..OECD?lastNObservations=5&format=csvfilewithlabels",
   );
-  assert.ok(allCountriesUrl(matchSpend("food"), BASES.EU).includes("/.A.PL.A0101.IX.EU27_2020?"));
+  assert.ok(allCountriesUrl(matchSpend("food"), BASES.EU).includes("/.A.PL+PPP.A0101..EU27_2020?"));
 });
 
+test("replies are kept for six hours, then fetched again", async () => {
+  clearCache();
+  let n = 0;
+  const f = async () => { n++; return "x"; };
+  await cached("u1", f, 1000); await cached("u1", f, 2000);
+  assert.equal(n, 1);
+  await cached("u1", f, 1000 + 6 * 3600 * 1000 + 1);
+  assert.equal(n, 2);
+  clearCache();
+});
+
+beforeEach(() => clearCache());
 test("Ireland food 2024: index 105, 5% above the OECD average, official statistic, confidence medium", async () => {
   const a = await oecdPriceLevel({ country: "IE", spend: "food" }, fake);
   assert.equal(a.status, "ok");
@@ -96,7 +109,7 @@ test("Ireland food 2024: index 105, 5% above the OECD average, official statisti
 });
 
 test("a country with no figure answers no_matches, not a wrong number", async () => {
-  const a = await oecdPriceLevel({ country: "ES", spend: "food" }, async () => PPP_IRL_FOOD.split("\n")[0] + "\n");
+  const a = await oecdPriceLevel({ country: "ES", spend: "food" }, async () => PPP_IRL_FOOD);
   assert.equal(a.status, "no_matches");
   assert.equal(a.price, null);
 });
@@ -105,10 +118,10 @@ test("an unknown country is a 400 with the list", async () => {
   await assert.rejects(() => oecdPriceLevel({ country: "ZZ" }, fake), /Not yet available/);
 });
 
-test("a failing rank request does not stop the answer", async () => {
-  const a = await oecdPriceLevel({ country: "IE", spend: "food" }, async (u) => { if (u.includes("/.A.PL.")) throw new Error("boom"); return PPP_IRL_FOOD; });
+test("if the file holds only the country (no other years for the rank), the answer still works with a rank of one", async () => {
+  const a = await oecdPriceLevel({ country: "IE", spend: "food" }, async () => PPP_IRL_FOOD);
   assert.equal(a.status, "ok");
-  assert.equal((a.extra as any).rank, null);
+  assert.equal((a.extra as any).rank?.of, 1);
 });
 
 test("manifest: category, licence, countries", () => {

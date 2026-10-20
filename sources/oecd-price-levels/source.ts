@@ -1,8 +1,10 @@
 // OECD / Eurostat purchasing power parity (PPP) programme: price level indices by country and spending group.
 // Dataflow OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1 "PPP detailed results, 2022 onwards" on the OECD SDMX API. Key-free plain GET, CSV with labels.
-// Formats checked live on 2026-10-20 through the GitHub probe (see fixtures.ts). Two small GETs per request:
-//   <base>/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/<ISO3>.A.PL+PPP.<CATEGORY>..<BASE>?lastNObservations=5&format=csvfilewithlabels   (one country, a few years)
-//   <base>/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/.A.PL.<CATEGORY>.IX.<BASE>?lastNObservations=1&format=csvfilewithlabels          (every country, newest year, for the rank)
+// Formats checked live on 2026-10-20 through the GitHub probe (see fixtures.ts). One GET per request:
+//   <base>/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/.A.PL+PPP.<CATEGORY>..<BASE>?lastNObservations=5&format=csvfilewithlabels
+//   One GET per spending group and comparison area returns every country (index + PPP rate, last years); we pick the country and rank it.
+//   The OECD API limits each IP address to about 20 queries an hour, so replies are kept in memory for 6 hours (see cached()).
+//   Do NOT send an Accept header: the OECD answered HTTP 500 to 'accept: text/csv' from Vercel; format=csvfilewithlabels in the URL is enough.
 // MEASURE PL = price level index (IX; comparison area = 100); MEASURE PPP = national currency per US dollar (XDC_USD) or per euro (XDC_EUR).
 // An index is an official statistic from a price survey, never a price people paid, so every answer is price_type "official_statistic"
 // (range fields null, sample_size null) with confidence "medium".
@@ -120,10 +122,8 @@ export function matchBase(raw?: string): BaseDef {
 
 const DATAFLOW = "OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1";
 export const OECD_BASE = "https://sdmx.oecd.org";
-export const countryUrl = (iso3: string, spend: SpendDef, base: BaseDef, host = OECD_BASE) =>
-  `${host}/public/rest/data/${DATAFLOW}/${iso3}.A.PL+PPP.${spend.code}..${base.code}?lastNObservations=5&format=csvfilewithlabels`;
 export const allCountriesUrl = (spend: SpendDef, base: BaseDef, host = OECD_BASE) =>
-  `${host}/public/rest/data/${DATAFLOW}/.A.PL.${spend.code}.IX.${base.code}?lastNObservations=1&format=csvfilewithlabels`;
+  `${host}/public/rest/data/${DATAFLOW}/.A.PL+PPP.${spend.code}..${base.code}?lastNObservations=5&format=csvfilewithlabels`;
 
 // ---------- parsing (pure) ----------
 
@@ -209,7 +209,7 @@ async function liveText(url: string): Promise<string> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 15000);
   try {
-    const res = await fetch(url, { signal: controller.signal, headers: { "user-agent": "pricepaid-plug/0.1 (+price-paid data for AI agents)", accept: "text/csv" } });
+    const res = await fetch(url, { signal: controller.signal, headers: { "user-agent": "pricepaid-plug/0.1 (+price-paid data for AI agents)" } });
     if (!res.ok) throw new SourceError(`Source returned HTTP ${res.status}`, (await res.text().catch(() => "")).slice(0, 300), res.status);
     return await res.text();
   } catch (err: any) {
@@ -221,6 +221,19 @@ async function liveText(url: string): Promise<string> {
   }
 }
 
+const CACHE = new Map<string, { at: number; text: string }>();
+const TTL_MS = 6 * 3600 * 1000;
+/** Keeps the (large, rarely changing) OECD reply for six hours so a busy instance asks the OECD only a few times an hour. */
+export async function cached(url: string, fetcher: Fetcher, now = Date.now()): Promise<string> {
+  const hit = CACHE.get(url);
+  if (hit && now - hit.at < TTL_MS) return hit.text;
+  const text = await fetcher(url);
+  if (CACHE.size > 60) CACHE.clear();
+  CACHE.set(url, { at: now, text });
+  return text;
+}
+export function clearCache(): void { CACHE.clear(); }
+
 export const oecdMethod = (spend: SpendDef, base: BaseDef) =>
   `OECD/Eurostat PPP programme: price level index for ${spend.label}, with ${base.label} = 100, from the international price survey; passed on as published, with the percentage gap and the rank among surveyed countries calculated by ProofPrice. An index, not a list of prices.`;
 
@@ -230,8 +243,8 @@ export async function oecdPriceLevel(ask: Ask, fetcher: Fetcher = liveText): Pro
   if (!def) throw new InputError(`Not yet available for ${cc}. Countries: ${Object.keys(COUNTRIES).join(", ")}.`);
   const spend = matchSpend(ask.spend);
   const base = matchBase(ask.compare_to);
-  const [own, all] = await Promise.all([fetcher(countryUrl(def.iso3, spend, base)), fetcher(allCountriesUrl(spend, base)).catch(() => "")]);
-  const rows = byYear(parseObs(own), def.iso3, spend, base).filter((r) => r.index !== null);
+  const obs = parseObs(await cached(allCountriesUrl(spend, base), fetcher));
+  const rows = byYear(obs, def.iso3, spend, base).filter((r) => r.index !== null);
   const query: Record<string, unknown> = { country: cc, ...(ask.spend ? { spend: spend.label } : {}), ...(ask.compare_to ? { compare_to: base.code } : {}) };
   const unit = `price level index (${base.label} = 100)`;
   const latest = rows[0];
@@ -242,7 +255,7 @@ export async function oecdPriceLevel(ask: Ask, fetcher: Fetcher = liveText): Pro
       extra: { reason: `The OECD holds no ${spend.label} price level for ${def.name} against ${base.label}.` },
     });
   }
-  const { year: rankYear, table } = all ? rankTable(parseObs(all)) : { year: null, table: [] };
+  const { year: rankYear, table } = rankTable(obs);
   const pos = rankYear === latest.year ? table.findIndex((t) => t.iso3 === def.iso3) : -1;
   const rank = pos >= 0 ? { place: pos + 1, of: table.length, dearest: table[0].name, cheapest: table[table.length - 1].name } : null;
   const gap = gapPct(latest.index as number);
