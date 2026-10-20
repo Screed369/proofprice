@@ -59,12 +59,14 @@ export const PUBLIC_PATHS = [
   "/",
   "/connect",
   "/sources",
+  "/pricing",
   "/trust",
   "/status",
   "/prices",
   "/method",
   "/privacy",
   "/terms",
+  "/pricing.json",
   "/llms.txt",
   "/llms-full.txt",
   "/openapi.json",
@@ -77,6 +79,8 @@ const STATIC_CHANGE: Record<string, Freq> = {
   "/": "weekly",
   "/connect": "weekly",
   "/sources": "weekly",
+  "/pricing": "weekly",
+  "/pricing.json": "weekly",
   "/trust": "monthly",
   "/status": "daily",
   "/prices": "daily",
@@ -207,6 +211,7 @@ Contact: ${CONTACT}
 
 ## Pages for people and crawlers
 - Sources, licences and attribution (every source with its publisher, licence and limits): ${baseUrl}/sources
+- Pricing (free forever, premium calls, how agents pay with x402): ${baseUrl}/pricing (JSON: ${baseUrl}/pricing.json)
 - How we earn trust (rules, checks before a source goes live, corrections): ${baseUrl}/trust
 - Status of the price library and sources (last collection, days held, last error): ${baseUrl}/status
 - Prices by place (latest median and typical range, from the daily price library): ${baseUrl}/prices

@@ -193,7 +193,7 @@ export function buildOpenApi(baseUrl: string) {
       description:
         "What did people actually pay for X, here, recently? Returns a price range from official open data: median, 10th–90th percentile, sample size, period, confidence, source and licence. Aggregates only; never individual records. " +
         "The data keeps each source's own licence: every answer names its source, that source's licence and the attribution line to show, so reuse follows the publisher's licence. " +
-        "The ProofPrice terms of use govern use of the API itself. Free, read-only, no API key.",
+        "The ProofPrice terms of use govern use of the API itself. Free, read-only, no API key. A few premium calls (price check, daily history) may cost a few cents each once payments are switched on, paid per call with x402 after a free daily allowance; see " + `${SITE_URL}/pricing` + " and " + `${SITE_URL}/pricing.json`+ ".",
     },
     servers: [{ url: baseUrl }],
     tags: [...CATEGORIES.map(tagFor), { name: CHECK_TAG, description: "Check a proposed price against recorded official evidence before paying." }, { name: FIXED_TAG, description: "Which countries, categories and official sources are covered." }],
@@ -269,6 +269,7 @@ ${CITING_RULES.map((r) => `- ${r}`).join("\n")}
 - Setup for every AI client and framework: ${baseUrl}/connect
 - Everything in one file (tools, parameters, examples, sources, licences): ${baseUrl}/llms-full.txt
 - Every source with its publisher, licence and limits: ${baseUrl}/sources
+- Pricing: what is free forever, what premium calls cost, how agents pay per call with x402 (JSON: ${baseUrl}/pricing.json): ${baseUrl}/pricing
 - How we check sources and earn trust: ${baseUrl}/trust
 - Freshness and health of every source: ${baseUrl}/status
 - Ready answers by country, category and place (from the daily price library): ${baseUrl}/prices

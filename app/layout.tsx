@@ -40,6 +40,7 @@ const NAV = [
   { href: "/connect", label: "Connect" },
   { href: "/sources", label: "Sources" },
   { href: "/prices", label: "Prices" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/trust", label: "Trust" },
   { href: "/status", label: "Status" },
   { href: "/method", label: "Method" },
@@ -72,7 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="wrap" id="content">
           {children}
           <footer className="site-footer">
-            <a href="/">ProofPrice</a> · <a href="/connect">Connect your AI</a> · <a href="/sources">Sources</a> · <a href="/trust">Trust</a> ·{" "}
+            <a href="/">ProofPrice</a> · <a href="/connect">Connect your AI</a> · <a href="/sources">Sources</a> · <a href="/trust">Trust</a> · <a href="/pricing">Pricing</a> ·{" "}
             <a href="/status">Status</a> · <a href="/prices">Prices</a> · <a href="/method">Method</a> · <a href="/privacy">Privacy</a> ·{" "}
             <a href="/terms">Terms</a> · <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
           </footer>
