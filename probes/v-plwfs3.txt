@@ -1,0 +1,81 @@
+URL: https://mapy.geoportal.gov.pl/wss/service/rcn?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:lokale&count=2
+Fetched: 2026-10-20T18:47:02Z from GitHub Actions
+Status, type, bytes: 200 text/xml; subtype="gml/3.2.1"; charset=UTF-8 3603
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Tue, 20 Oct 2026 18:47:02 GMT
+Content-Type: text/xml; subtype="gml/3.2.1"; charset=UTF-8
+Content-Length: 3603
+Access-Control-Allow-Origin: *
+Set-Cookie: gahLaQu1eeYooCu=!HLJLdy+BQuDZGrrlQI0cK6yPNdD2Pvcsk7xqeBSiapIracY0h7cLU+hPiLFJdBAruhOngv24l4vKxlg=; path=/; Httponly; Secure
+Set-Cookie: TS017e0801=01e9e35b2247f0b3a22fa34e816cd19a126e312d313fb428f325a534584ed11f41ed21f80b447a20a57c3675ba0db62e78cc8bc3d13218a68da18210b628942701b8eec627; Path=/; Domain=.mapy.geoportal.gov.pl
+Vary: Accept-Encoding
+
+=== FILE TYPE: XML 1.0 document, Unicode text, UTF-8 text, with very long lines (403)
+=== FIRST 12000 BYTES
+<?xml version='1.0' encoding="UTF-8" ?>
+<wfs:FeatureCollection
+   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"
+   xmlns:gml="http://www.opengis.net/gml/3.2"
+   xmlns:wfs="http://www.opengis.net/wfs/2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://mapserver.gis.umn.edu/mapserver https://mapy.geoportal.gov.pl/wss/service/rcn?SERVICE=WFS&amp;VERSION=2.0.0&amp;REQUEST=DescribeFeatureType&amp;TYPENAME=ms:lokale&amp;OUTPUTFORMAT=application%2Fgml%2Bxml%3B%20version%3D3.2 http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd http://www.opengis.net/gml/3.2 http://schemas.opengis.net/gml/3.2.1/gml.xsd"
+   timeStamp="2026-10-20T20:47:02" numberMatched="1" numberReturned="1">
+      <wfs:boundedBy>
+      	<gml:Envelope srsName="urn:ogc:def:crs:EPSG::2180">
+      		<gml:lowerCorner>636431.581496 316600.354835</gml:lowerCorner>
+      		<gml:upperCorner>636431.581496 316600.354835</gml:upperCorner>
+      	</gml:Envelope>
+      </wfs:boundedBy>
+    <wfs:member>
+      <ms:lokale gml:id="lokale.19481447">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="urn:ogc:def:crs:EPSG::2180">
+        		<gml:lowerCorner>636431.581496 316600.354835</gml:lowerCorner>
+        		<gml:upperCorner>636431.581496 316600.354835</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:GEOMETRIA>
+          <gml:Point gml:id="lokale.19481447.1" srsName="urn:ogc:def:crs:EPSG::2180">
+            <gml:pos>636431.581496 316600.354835</gml:pos>
+          </gml:Point>
+        </ms:GEOMETRIA>
+        <ms:gid>19481447</ms:gid>
+        <ms:SERWIS_RCN></ms:SERWIS_RCN>
+        <ms:TERYT>3203</ms:TERYT>
+        <ms:TRAN_PRZESTRZEN_NAZW>PL.PZGiK.9098.RCiWN</ms:TRAN_PRZESTRZEN_NAZW>
+        <ms:TRAN_LOKALNY_ID_IIP>2e78c86a-1183-4bf2-90a1-5698eb47f88c</ms:TRAN_LOKALNY_ID_IIP>
+        <ms:TRAN_WERSJA_ID gml:id="lokale.19481447.TRAN_WERSJA_ID"><gml:timePosition>2026-02-12T14:01:16Z</gml:timePosition></ms:TRAN_WERSJA_ID>
+        <ms:TRAN_OZNACZENIE_TRANS>100288</ms:TRAN_OZNACZENIE_TRANS>
+        <ms:TRAN_RODZAJ_TRANS>wolnyRynek</ms:TRAN_RODZAJ_TRANS>
+        <ms:TRAN_RODZAJ_RYNKU>rynekWtorny</ms:TRAN_RODZAJ_RYNKU>
+        <ms:TRAN_SPRZEDAJACY>osobaFizyczna</ms:TRAN_SPRZEDAJACY>
+        <ms:TRAN_KUPUJACY>osobaFizyczna</ms:TRAN_KUPUJACY>
+        <ms:TRAN_CENA_BRUTTO>128000</ms:TRAN_CENA_BRUTTO>
+        <ms:TRAN_VAT></ms:TRAN_VAT>
+        <ms:DOK_OZNACZENIE>Re.&quot;A&quot; 2145/2013 z 18.04.2013</ms:DOK_OZNACZENIE>
+        <ms:DOK_DATA gml:id="lokale.19481447.DOK_DATA"><gml:timePosition>2013-04-18</gml:timePosition></ms:DOK_DATA>
+        <ms:DOK_TWORCA>KANCELARIA NOTARIALNA NOTARIUSZ W.OŁOWSKI; UL. SIKORSKIEGO 1, ZŁOCIENIEC</ms:DOK_TWORCA>
+        <ms:NIER_RODZAJ>nieruchomoscLokalowa</ms:NIER_RODZAJ>
+        <ms:NIER_PRAWO>wlasnoscLokaluWrazZPrawemZwiazanym</ms:NIER_PRAWO>
+        <ms:NIER_UDZIAL>1/1</ms:NIER_UDZIAL>
+        <ms:NIER_POW_GRUNTU>46</ms:NIER_POW_GRUNTU>
+        <ms:NIER_OPIS></ms:NIER_OPIS>
+        <ms:NIER_CENA_BRUTTO>128000</ms:NIER_CENA_BRUTTO>
+        <ms:NIER_VAT></ms:NIER_VAT>
+        <ms:LOK_ID_LOKALU></ms:LOK_ID_LOKALU>
+        <ms:LOK_FUNKCJA>mieszkalna</ms:LOK_FUNKCJA>
+        <ms:LOK_LICZBA_IZB>3</ms:LOK_LICZBA_IZB>
+        <ms:LOK_NR_KOND>0</ms:LOK_NR_KOND>
+        <ms:LOK_POW_UZYT>44.6</ms:LOK_POW_UZYT>
+        <ms:LOK_POW_PRZYN>0</ms:LOK_POW_PRZYN>
+        <ms:LOK_CENA_BRUTTO>128000</ms:LOK_CENA_BRUTTO>
+        <ms:LOK_VAT></ms:LOK_VAT>
+        <ms:LOK_INFO></ms:LOK_INFO>
+        <ms:LOK_ADRES></ms:LOK_ADRES>
+      </ms:lokale>
+    </wfs:member>
+</wfs:FeatureCollection>
+
