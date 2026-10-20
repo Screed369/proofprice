@@ -1,0 +1,80 @@
+URL: https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/IRL+GBR+USA.A.PL+PPP.A0101+A01+A011+_T+A04..?lastNObservations=1&format=csvfilewithlabels
+Fetched: 2026-10-20T12:52:46Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.sdmx.data+csv; charset=utf-8; labels=name; version=2 13229
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 20 Oct 2026 12:52:46 GMT
+content-type: application/vnd.sdmx.data+csv; charset=utf-8; labels=name; version=2
+cache-control: public,max-age=7200
+content-language: en,en-US
+last-modified: 2023-10-13
+vary: X-Range, Accept, Accept-Language, Accept-Encoding, Accept-Charset,Accept,Accept-Encoding,Accept-Encoding
+strict-transport-security: max-age=2592000
+content-disposition: attachment; filename="OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1,filtered,2026-10-20 14-52-46.csv"
+api-supported-versions: 1
+x-server-node: Server 1
+set-cookie: __cf_bm=FniiBozVzZCNAwNT7ClZR0tsMw8zRcCC4tUJwf3AzR4-1792500765.571062-1.0.1.1-Q.0O56uhEXb.6K6BElxPwLVr10mMtDC32mNEcYZFETWxQ2Oon_zC5kHNX7j1Pmtn2H3kd35suYeMnGaxSGn2qBN.2DRJbc58YrK76lOoSgmliLI9nrmXvaugFaha67ym; HttpOnly; SameSite=None; Secure; Path=/; Domain=oecd.org; Expires=Tue, 20 Oct 2026 13:22:46 GMT
+cf-cache-status: MISS
+server: cloudflare
+cf-ray: a4d82958cd08eb56-ORD
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: CSV ASCII text
+=== FIRST 30000 BYTES
+STRUCTURE,STRUCTURE_ID,STRUCTURE_NAME,ACTION,REF_AREA,Reference area,FREQ,Frequency of observation,MEASURE,Measure,ANALYTICAL_CATEGORIES,Analytical categories,UNIT_MEASURE,Unit of measure,BASE_REF_AREA,Base reference area,TIME_PERIOD,Time period,OBS_VALUE,Observation value,OBS_STATUS,Observation status,UNIT_MULT,Unit multiplier
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,1.17,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,OECD,OECD,2024,,104,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,OECD,OECD,2024,,105,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,153,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,1.09,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,1.14,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,USA,United States,2024,,75.6,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,USA,United States,2024,,100,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_USD,National currency per US dollar,USA,United States,2024,,0.698,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_USD,National currency per US dollar,OECD,OECD,2024,,0.964,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_USD,National currency per US dollar,USA,United States,2024,,1,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,1.68,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_USD,National currency per US dollar,USA,United States,2024,,1,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,1.26,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,1.66,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,OECD,OECD,2024,,98.6,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,114,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,USA,United States,2024,,84.3,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,OECD,OECD,2024,,109,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_USD,National currency per US dollar,OECD,OECD,2024,,0.772,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,USA,United States,2024,,71.4,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,117,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_USD,National currency per US dollar,OECD,OECD,2024,,0.851,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_USD,National currency per US dollar,USA,United States,2024,,0.559,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_USD,National currency per US dollar,USA,United States,2024,,0.66,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,OECD,OECD,2024,,119,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_USD,National currency per US dollar,OECD,OECD,2024,,1.1,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,1.41,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_USD,National currency per US dollar,USA,United States,2024,,0.852,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,0.939,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_EUR,National currency per euro,EU27_2020,European Union (27 countries from 01/02/2020),2024,,0.84,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,USA,United States,2024,,0.666,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,USA,United States,2024,,85.1,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,OECD,OECD,2024,,0.715,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,155,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,99.2,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,USA,United States,2024,,92.2,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,USA,United States,2024,,100,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A01,Actual individual consumption,XDC_USD,National currency per US dollar,OECD,OECD,2024,,1.29,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A04,Actual collective consumption,XDC_USD,National currency per US dollar,OECD,OECD,2024,,1.38,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,OECD,OECD,2024,,1.07,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,OECD,OECD,2024,,129,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,OECD,OECD,2024,,107,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,141,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,USA,United States,2024,,100,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,OECD,OECD,2024,,138,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,117,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A01,Actual individual consumption,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,129,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,OECD,OECD,2024,,91.4,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,GBR,United Kingdom,A,Annual,PL,Price level,A04,Actual collective consumption,IX,Index,EU27_2020,European Union (27 countries from 01/02/2020),2024,,111,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,USA,United States,2024,,98.1,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,USA,United States,2024,,0.907,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,USA,United States,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,USA,United States,2024,,1,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,OECD,OECD,2024,,0.974,,,,0,Units
