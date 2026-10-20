@@ -1,7 +1,7 @@
 // Malaysia PriceCatcher (DOSM, open.dosm.gov.my): shelf prices of everyday goods recorded by DOSM field staff in shops and markets,
 // one row per premise, item and day. The monthly file is about 11 MB, so we never read it per request: the daily collector (harvest)
 // downloads the newest monthly file and the two small lookup files, keeps each shop's newest price per item over the last 7 days,
-// and stores one aggregate per state and item (the 60 items priced in most shops) in the price library. Requests are answered from there.
+// and stores one aggregate per state and item (the staples plus the items priced in most shops) in the price library. Requests are answered from there.
 // POSTED shelf prices (not receipts, not what one shopper paid), in Malaysian ringgit.
 
 import { InputError, SourceError } from "../../lib/http";
@@ -28,7 +28,7 @@ export const INFO: SourceInfo = {
   homepage: "https://open.dosm.gov.my/data-catalogue/pricecatcher",
   limits:
     "Posted shelf prices that DOSM staff recorded, not receipts and not what one shopper paid; DOSM warns the sample is not representative and is not the consumer price index. " +
-    "Item names are in Malay; ProofPrice matches common English words with a small word list. Only the 60 items priced in the most shops are kept, a state needs 5 or more shops for an item, " +
+    "Item names are in Malay; ProofPrice matches common English words with a small word list. Only the main staples (a few items per food category) and the other items priced in the most shops are kept, a state needs 5 or more shops for an item, " +
     "and prices more than 5 times above or below the item's national median are dropped as entry errors.",
 };
 
@@ -37,7 +37,13 @@ export const ITEM_URL = `${BASE}/lookup_item.csv`;
 export const PREMISE_URL = `${BASE}/lookup_premise.csv`;
 export const monthUrl = (ym: string) => `${BASE}/pricecatcher_${ym}.csv`;
 export const WINDOW_DAYS = 7; // a shop counts when its newest price for the item is within this many days of the file's newest day
-export const KEEP_ITEMS = 60; // items priced in the most shops that go into the library
+export const KEEP_OTHER = 40; // besides the staples, this many more items priced in the most shops go into the library
+/** Staple categories (DOSM item_category): the few items priced in most shops in each are always kept; the number is how many. */
+export const STAPLE_CATEGORIES: Record<string, number> = {
+  AYAM: 3, DAGING: 3, TELUR: 3, BERAS: 3, "MINYAK DAN LEMAK": 3, TEPUNG: 2, ROTI: 2, "BAHAN LAUT": 4, "IKAN DARAT": 2, "BUAH-BUAHAN": 5, "SAYUR-SAYURAN": 6,
+  BAWANG: 2, "UBI KENTANG": 2, "TERSEDIA MINUM": 3, "KRIMER DAN SUSU TEPUNG": 2, GULA: 2, GARAM: 1,
+};
+export const STAPLE_NAME = /^(GULA|GARAM|SUSU SEGAR)\b/;
 export const OUTLIER_FACTOR = 5;
 export const STALE_AFTER_DAYS = 7;
 const UA = { "user-agent": "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)" };
@@ -82,7 +88,7 @@ function header(text: string, required: string[], what: string): { idx: Record<s
   return { idx, body: text.slice(nl + 1) };
 }
 
-export interface ItemDef { code: number; name: string; unit: string }
+export interface ItemDef { code: number; name: string; unit: string; category: string }
 
 /** Item key stored in the library: "AYAM BERSIH - STANDARD|1kg". Commas become "/" and pipes are removed, so the key is one CSV cell. */
 export function itemKey(name: string, unit: string): string {
@@ -90,14 +96,14 @@ export function itemKey(name: string, unit: string): string {
 }
 
 export function parseItems(text: string): Map<number, ItemDef> {
-  const { idx, body } = header(text, ["item_code", "item", "unit"], "PriceCatcher item lookup");
+  const { idx, body } = header(text, ["item_code", "item", "unit", "item_category"], "PriceCatcher item lookup");
   const out = new Map<number, ItemDef>();
   eachLine(body, (line) => {
     const c = splitLine(line);
     const code = Number(c[idx.item_code]);
     const name = (c[idx.item] ?? "").trim(), unit = (c[idx.unit] ?? "").trim();
     if (!Number.isInteger(code) || code <= 0 || !name || !unit) return; // -1 is a placeholder row
-    out.set(code, { code, name, unit });
+    out.set(code, { code, name, unit, category: (c[idx.item_category] ?? "").trim().toUpperCase() });
   });
   return out;
 }
@@ -156,7 +162,7 @@ const isoOf = (n: number) => new Date(n * 86400000).toISOString().slice(0, 10);
 
 export interface Built { rows: DailyRow[]; date: string | null; items: number; states: string[]; dropped: { outliers: number; noState: number } }
 
-/** Library rows for the newest day: area = state (or ALL), item = "<name>|<unit>"; n = shops. Keeps the KEEP_ITEMS items priced in most shops. */
+/** Library rows for the newest day: area = state (or ALL), item = "<name>|<unit>"; n = shops. Keeps the staples (STAPLE_CATEGORIES, best-covered items first) plus the KEEP_OTHER other items priced in most shops. */
 export function buildRows(entries: ReturnType<Newest["entries"]>, items: Map<number, ItemDef>, premises: Map<number, string>, newestDate: string): Built {
   if (!newestDate) return { rows: [], date: null, items: 0, states: [], dropped: { outliers: 0, noState: 0 } };
   const cutoff = dayNumber(newestDate) - (WINDOW_DAYS - 1);
@@ -168,7 +174,18 @@ export function buildRows(entries: ReturnType<Newest["entries"]>, items: Map<num
     const a = perItem.get(e.item);
     if (a) a.push(e.price); else perItem.set(e.item, [e.price]);
   }
-  const top = [...perItem].filter(([, p]) => p.length >= MIN_PUBLISH).sort((a, b) => b[1].length - a[1].length || a[0] - b[0]).slice(0, KEEP_ITEMS);
+  const ranked = [...perItem].filter(([, p]) => p.length >= MIN_PUBLISH).sort((a, b) => b[1].length - a[1].length || a[0] - b[0]);
+  const used = new Map<string, number>();
+  const top: [number, number[]][] = [];
+  const rest: [number, number[]][] = [];
+  for (const e of ranked) {
+    const d = items.get(e[0])!;
+    const bucket = STAPLE_NAME.test(d.name) ? "NAME:" + d.name.split(" ")[0] : d.category;
+    const cap = STAPLE_NAME.test(d.name) ? 2 : STAPLE_CATEGORIES[d.category];
+    if (cap !== undefined && (used.get(bucket) ?? 0) < cap) { used.set(bucket, (used.get(bucket) ?? 0) + 1); top.push(e); }
+    else rest.push(e);
+  }
+  top.push(...rest.slice(0, KEEP_OTHER));
   const medians = new Map<number, number>();
   for (const [code, prices] of top) {
     const s = [...prices].sort((a, b) => a - b);

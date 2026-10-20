@@ -13,7 +13,7 @@ export default defineSource({
   paramNotes: {
     item:
       "MY: an everyday item in English or Malay ('chicken', 'eggs', 'rice', 'cooking oil', 'sugar', 'milk', 'onion', 'cabbage', 'ayam', 'telur'). DOSM names items in Malay with the pack size, " +
-      "so the answer names the exact item and lists related ones. Only the 60 items priced in the most shops are held.",
+      "so the answer names the exact item and lists related ones. Staples (chicken, eggs, rice, oil, flour, fish, fruit, vegetables, milk) and about 40 other well-covered items are held.",
     region: "MY: a state ('Selangor', 'Johor', 'Sabah', 'Penang', 'Kuala Lumpur'); leave out for the national figure. A state needs 5 or more shops pricing the item.",
   },
   examples: [

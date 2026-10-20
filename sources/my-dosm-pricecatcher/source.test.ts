@@ -155,3 +155,21 @@ test("manifest: groceries category, Malaysia, posted price, licence and attribut
   assert.equal(monthUrl("2026-10"), "https://storage.data.gov.my/pricecatcher/pricecatcher_2026-10.csv");
   assert.ok(manifest.harvest && manifest.historyKey);
 });
+
+test("buildRows keeps the best-covered few items of each staple category, plus other well-covered items", () => {
+  const csv = "item_code,item,unit,item_group,item_category\n" +
+    [1, 2, 3, 4, 5].map((i) => `${i},AYAM TEST ${i},1kg,BARANGAN SEGAR,AYAM`).join("\n") + "\n" +
+    Array.from({ length: 45 }, (_, k) => 6 + k).map((i) => `${i},GAJET ${i},1 biji,LAIN,LAIN-LAIN`).join("\n") + "\n";
+  const items = parseItems(csv);
+  const prem = new Map<number, string>();
+  const n = new Newest();
+  for (let s = 0; s < 6; s++) {
+    prem.set(100 + s, "Johor");
+    // item 1 is priced in 6 shops, item 2 in 6, item 3 in 6, item 4 and 5 in 5 shops each (fewer shops than 1-3 only by tie order)
+    for (const it of Array.from({ length: 51 }, (_, k) => 1 + k)) if (s < (it === 4 || it === 5 ? 5 : 6)) n.add(100 + s, it, "2026-10-16", 10 + it);
+  }
+  const b = buildRows(n.entries(), items, prem, n.newestDate);
+  const names = new Set(b.rows.map((r) => r.item.split("|")[0]));
+  assert.deepEqual([...names].filter((x) => x.startsWith("AYAM")).sort(), ["AYAM TEST 1", "AYAM TEST 2", "AYAM TEST 3"], "AYAM keeps 3; the 4th and 5th lose to 40 better-covered other items");
+  assert.equal([...names].filter((x) => x.startsWith("GAJET")).length, 40, "40 other items");
+});
