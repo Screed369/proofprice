@@ -24,7 +24,7 @@ export const INFO: SourceInfo = {
   what_is_recorded:
     "The shelf price of one everyday product and pack size (food, drinks, personal care, household goods, medicines, appliances) in one named shop on one day, recorded by Profeco inspectors, in Mexican pesos.",
   price_type: "posted_price",
-  freshness: "Profeco refreshes the file monthly (about 7 weeks behind); our copy is refreshed daily and each answer names the newest price date",
+  freshness: "Monthly, about 7 weeks behind",
   licence: "Libre Uso MX (open data terms of datos.gob.mx: free to copy and reuse, also commercially, with attribution)",
   licence_url: "https://datos.gob.mx/libreusomx",
   attribution:
