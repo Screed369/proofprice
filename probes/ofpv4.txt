@@ -1,0 +1,22 @@
+URL: https://prices.openfoodfacts.org/api/v1/prices?size=1&country=ZZ
+Fetched: 2026-10-20T21:22:25Z from GitHub Actions
+Status, type, bytes: 200 application/json 2650
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Tue, 20 Oct 2026 21:22:24 GMT
+content-type: application/json
+content-length: 2650
+vary: Accept-Encoding
+allow: GET, POST
+x-frame-options: DENY
+vary: origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 700 BYTES
+{"items":[{"id":1,"product_id":1,"location_id":1,"proof_id":9880,"product":{"id":1,"code":"1541513213246","source":null,"source_last_synced":null,"product_name":null,"image_url":null,"product_quantity":null,"product_quantity_unit":null,"quantity":null,"categories_tags":[],"brands":null,"brands_tags":[],"labels_tags":[],"nutriscore_grade":null,"ecoscore_grade":null,"nova_group":null,"creator":null,"unique_scans_n":0,"price_count":3,"price_currency_count":1,"location_count":1,"location_type_osm_country_count":1,"user_count":1,"proof_count":3,"created":"2023-11-27T11:37:14.015774Z","updated":null},"location":{"id":1,"osm_brand_logo_url":null,"type":"OSM","osm_id":1392117416,"osm_type":"NODE","o
