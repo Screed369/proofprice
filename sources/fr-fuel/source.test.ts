@@ -71,3 +71,27 @@ test("FR: live answer says posted (not paid), states tax and range definition, a
   assert.doesNotMatch(a.summary, /\b(costs?|paid|pays?|right now)\b/i);
   assert.doesNotMatch(a.source.attribution + " " + (await import("./source")).INFO.limits, /every customer pays/);
 });
+
+test("FR history: archive lines become monthly aggregates (last price per station and month, 5-record rule, no raw data kept)", async () => {
+  const { FrArchiveReader, frMonthlyRows } = await import("./source");
+  const r = new FrArchiveReader("2012-01", "2012-03");
+  for (let i = 0; i < 6; i++) {
+    r.line(`<pdv id="${1000 + i}" latitude="1" longitude="2" cp="69003" pop="R">`);
+    r.line(`  <adresse>1 RUE A</adresse>`);
+    r.line(`  <prix nom="Gazole" id="1" maj="2012-01-02 09:56:28.309051" valeur="1300"/>`);
+    r.line(`  <prix nom="Gazole" id="1" maj="2012-01-20 09:56:28.309051" valeur="${1400 + i}"/>`); // the later one counts
+    r.line(`  <prix nom="Gazole" id="1" maj="2012-02-02 09:56:28.309051" valeur="0"/>`); // placeholder: ignored
+    r.line(`  <prix nom="SP95" id="2" maj="2012-02-03 09:56:28.309051" valeur="1500"/>`);
+    r.line(`  <prix nom="Gazole" id="1" maj="2011-12-31 09:56:28.309051" valeur="1200"/>`); // outside the range
+    r.line(`</pdv>`);
+  }
+  r.line(`<pdv id="9" latitude="1" longitude="2" cp="97110" pop="R">`); // a single overseas station: thin, dropped
+  r.line(`  <prix nom="Gazole" id="1" maj="2012-01-05 09:56:28" valeur="1600"/>`);
+  r.line(`</pdv>`);
+  r.finish();
+  const p = frMonthlyRows(r.months);
+  assert.deepEqual(p.map((x) => x.period), ["2012-01", "2012-02"]);
+  const jan = p[0].rows.map((x) => `${x.area}/${x.item}/${x.n}/${x.median}`);
+  assert.deepEqual(jan, ["69/diesel/6/1.402", "ALL/diesel/6/1.402"]);
+  assert.deepEqual(p[1].rows.map((x) => `${x.area}/${x.item}/${x.n}`), ["69/petrol95/6", "ALL/petrol95/6"]);
+});

@@ -67,3 +67,16 @@ test("history: asks the same questions the live tool accepts", () => {
   assert.throws(() => runHistory(fuel, { country: "ES", area: "Madrid", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
   assert.throws(() => runHistory(fuel, { country: "IT", area: "Milano", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
 });
+
+test("history: months=N reads the monthly history loaded by the backfill (string from a URL works too)", async () => {
+  const { applyBackfill } = await import("../lib/library/backfill");
+  const periods = ["2024-01", "2024-02", "2024-03"].map((period, i) => ({ period, rows: [{ ...row("69", "diesel", 80, 1.7 + i * 0.1), area: "69", item: "diesel" }] }));
+  applyBackfill("fr-fuel", { currency: "EUR", unit: "per litre", periods, note: "Monthly test note." }, { today: new Date("2026-10-20T00:00:00Z") });
+  writeMeta("fr-fuel", { source: "fr-fuel", currency: "EUR", unit: "per litre", first_date: "2026-10-13", last_date: "2026-10-19", days: 7, last_harvest_at: null, last_rows: 1, last_ok_at: null, last_error: null });
+  const fuel = categoryById("fuel")!;
+  const h = runHistory(fuel, { country: "FR", department: "69", fuel: "diesel", months: "36" } as any, {}, new Date("2026-10-20T12:00:00Z"));
+  assert.equal(h.status, "ok");
+  assert.deepEqual(h.series.map((s) => s.date), ["2024-01", "2024-02", "2024-03"].filter((d) => d >= "2023-11"));
+  assert.match(h.method, /Monthly test note\..*whole month/);
+  assert.equal((h.query as any).months, 36);
+});

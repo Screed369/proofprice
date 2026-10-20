@@ -145,6 +145,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
           inputSchema: z.object({
             ...toolShape(cat),
             days: z.number().int().min(2).max(366).optional().describe("How many recent days to include. Default 30."),
+            months: z.number().int().min(2).max(360).optional().describe("Instead of days: how many whole months of monthly history to return, where a source has loaded long history."),
           }),
           outputSchema: historyAnswerSchema,
           annotations: { title: h.title, ...READ_ONLY },

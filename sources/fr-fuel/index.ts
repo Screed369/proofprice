@@ -2,7 +2,7 @@
 import { defineSource, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
 import { Fuel } from "../../lib/fuels";
-import { INFO, FR_NAME, frFuelNow, frHarvest, frHistoryKey } from "./source";
+import { INFO, FR_NAME, frFuelNow, frHarvest, frHistoryKey, frBackfill } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -22,5 +22,6 @@ export default defineSource({
     return frFuelNow({ postcode: str(p.postcode), department: str(p.department) ?? str(p.area), fuel: fr, baseUrl: ctx.baseUrl });
   },
   harvest: frHarvest,
+  backfill: frBackfill,
   historyKey: (p) => frHistoryKey({ postcode: str(p.postcode), department: str(p.department) ?? str(p.area), fuel: String(p.fuel) }),
 });

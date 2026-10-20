@@ -146,6 +146,7 @@ export function buildOpenApi(baseUrl: string) {
           parameters: [
             ...parameters(cat.id, [...new Set(historySources(cat).flatMap((s) => s.countries))]),
             { name: "days", in: "query", required: false, description: "How many recent days to include (2–366). Default 30.", schema: { type: "integer", minimum: 2, maximum: 366, default: 30 } },
+            { name: "months", in: "query", required: false, description: "Instead of days: how many whole months of monthly history to return (2–360), for sources with long history loaded.", schema: { type: "integer", minimum: 2, maximum: 360 } },
           ],
           responses: historyResponses,
         },
