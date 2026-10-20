@@ -81,17 +81,29 @@ function wardOf(setting: string, wardType: string): Ward | null {
 
 /** Rows of the "Med DRG Bill Data" sheet -> one record per DRG, setting and ward. Finds the header row by its first cell "DRG". */
 export function parseDrgRows(rows: Cell[][]): DrgRow[] {
-  const h = rows.findIndex((r) => String(r[0] ?? "").trim() === "DRG" && String(r[5] ?? "").includes("P50"));
-  if (h < 0) throw new SourceError("The MOH workbook layout has changed (no DRG header row found).");
+  // The table may start in column A or further right: find the header cell "DRG" followed by "DRG Description", and read relative to it.
+  let h = -1;
+  let o = 0;
+  for (let i = 0; i < rows.length && h < 0; i++) {
+    const c = rows[i].findIndex((v, j) => String(v ?? "").trim() === "DRG" && String(rows[i][j + 1] ?? "").trim().startsWith("DRG Desc"));
+    if (c >= 0) {
+      h = i;
+      o = c;
+    }
+  }
+  if (h < 0) {
+    const peek = rows.slice(0, 12).map((r) => r.slice(0, 4).map((v) => String(v ?? "").slice(0, 25)).join("|")).join(" // ");
+    throw new SourceError("The MOH workbook layout has changed (no DRG header row found).", `${rows.length} rows; start: ${peek}`);
+  }
   const out: DrgRow[] = [];
   for (const r of rows.slice(h + 1)) {
-    const drg = String(r[0] ?? "").trim();
+    const drg = String(r[o] ?? "").trim();
     if (!/^[A-Z]\d{2}[A-Z]$/.test(drg)) continue;
-    const setting = String(r[2] ?? "").trim();
-    const wardType = String(r[3] ?? "").trim();
+    const setting = String(r[o + 2] ?? "").trim();
+    const wardType = String(r[o + 3] ?? "").trim();
     const ward = wardOf(setting, wardType);
     if (!ward) continue;
-    out.push({ drg, description: String(r[1] ?? "").trim(), ward, setting, wardType, p25: num(r[4]), p50: num(r[5]), p75: num(r[6]) });
+    out.push({ drg, description: String(r[o + 1] ?? "").trim(), ward, setting, wardType, p25: num(r[o + 4]), p50: num(r[o + 5]), p75: num(r[o + 6]) });
   }
   return out;
 }

@@ -60,3 +60,8 @@ test("manifest: Singapore medical, first example is a smoke test", () => {
   assert.deepEqual(manifest.countries, ["SG"]);
   assert.ok(manifest.examples[0].smoke !== false);
 });
+
+test("the parser also works when the table starts in a later column", () => {
+  const shifted = [[null, ...["Info"]], ...cells.map((r) => [null, ...r])];
+  assert.equal(parseDrgRows(shifted as any).length, rows.length);
+});
