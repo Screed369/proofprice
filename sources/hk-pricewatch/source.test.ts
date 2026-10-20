@@ -82,6 +82,15 @@ test("answer: the exact question 'peanut butter' and a multi-word category", () 
   assert.match(a.query.item as string, /Peanut butter/);
 });
 
+test("answer: 'milk' picks the best-covered milk category, not a small one like soy milk", () => {
+  const hits = matchItems(defsFor(day.rows, "ALL"), "milk");
+  assert.ok(hits.length >= 1);
+  for (let i = 1; i < hits.length; i++) assert.ok(hits[i - 1].n >= hits[i].n || hits[i - 1].name.split(" ").length === 1);
+  const a = pricewatchAnswerFromRows(day, { item: "milk", today: "2026-10-20" });
+  assert.equal(a.status, "ok");
+  assert.equal(a.price!.unit, "per litre");
+});
+
 test("answer: unknown item gives an empty answer with a hint; unknown chain is an input error; thin data never answers", () => {
   const none = pricewatchAnswerFromRows(day, { item: "caviar", today: "2026-10-20" });
   assert.notEqual(none.status, "ok");

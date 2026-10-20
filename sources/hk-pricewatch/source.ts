@@ -173,7 +173,7 @@ export function defsFor(rows: DailyRow[], area: string): Def[] {
   return out;
 }
 
-/** Categories matching a question, best first: every query word must be a word of the category name. A shorter (more generic) name ranks higher, then the larger sample;
+/** Categories matching a question, best first: every query word must be a word of the category name; an exact category name first, then the larger sample;
  *  for one category the unit with most shelf prices wins. */
 export function matchItems(defs: Def[], query: string): Def[] {
   const words = norm(query).split(" ").filter((w) => w && !STOP.has(w)).map((w) => stem(QUERY_SYNONYMS[w] ?? w));
@@ -182,10 +182,9 @@ export function matchItems(defs: Def[], query: string): Def[] {
   for (const d of defs) {
     const nameWords = norm(d.name).split(" ").filter(Boolean).map(stem);
     if (!words.every((w) => nameWords.includes(w))) continue;
-    const exact = nameWords.length === words.length ? 20 : 0;
-    scored.push({ d, s: 100 + exact - 4 * Math.max(0, nameWords.length - words.length) });
+    scored.push({ d, s: nameWords.length === words.length ? 1 : 0 }); // an exact category name first, then the best-covered category
   }
-  const ranked = scored.sort((a, b) => b.s - a.s || b.d.n - a.d.n || a.d.key.localeCompare(b.d.key)).map((x) => x.d);
+  const ranked = scored.sort((a, b) => b.s - a.s || b.d.n - a.d.n || a.d.name.length - b.d.name.length || a.d.key.localeCompare(b.d.key)).map((x) => x.d);
   const seen = new Set<string>();
   return ranked.filter((d) => (seen.has(d.name) ? false : (seen.add(d.name), true)));
 }
