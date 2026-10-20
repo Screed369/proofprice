@@ -1,0 +1,1142 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0009182&lang=EN
+Fetched: 2026-10-20T16:16:40Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 49749
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Tue, 20 Oct 2026 16:16:39 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=IV3nnIEk88T1Bd-CXCc5VDw-IWXXFNKP8hVgLhjB.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[ {
+  "IndicadorCod" : "0009182",
+  "IndicadorNome" : "Nights (No.) in tourist accommodation establishments by Geographic localization (NUTS - 2013) and Place of residence (Country); Annual - Statistics Portugal, Guests stays and other data on hotel activity survey",
+  "Periodic" : "Annual",
+  "PrimeiroPeriodo" : "2015",
+  "UltimoPeriodo" : "2025",
+  "UnidadeMedida" : "Number (No.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Nota" : "Local accommodation with 10 or more beds; with no minimum capacity limit in Autonomous Region of Madeira until 2018.",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-07-09",
+  "DataExtracao" : "2026-10-20T17:16:39.278+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period",
+      "versao" : "XXXXX",
+      "nota_dsg" : "From 2014 to 2017, values for Portugal and for Autonomous Region of Açores do not include local accommodation in Autonomous Region of Açores given the different methodology applied."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (NUTS - 2013)",
+      "versao" : "03505",
+      "nota_dsg" : "From January 1st, 2015 came into force a new version of NUTS (NUTS 2013). At NUTS II level was just a name change in \"Lisboa\" which became known as \"Área Metropolitana de Lisboa\"."
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Place of residence (Country)",
+      "versao" : "03890"
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S7A2015" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2015",
+        "categ_cod" : "S7A2015",
+        "categ_dsg" : "2015",
+        "categ_ord" : "20150101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2016" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2016",
+        "categ_cod" : "S7A2016",
+        "categ_dsg" : "2016",
+        "categ_ord" : "20160101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2017" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2017",
+        "categ_cod" : "S7A2017",
+        "categ_dsg" : "2017",
+        "categ_ord" : "20170101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2018" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2018",
+        "categ_cod" : "S7A2018",
+        "categ_dsg" : "2018",
+        "categ_ord" : "20180101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2019" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2019",
+        "categ_cod" : "S7A2019",
+        "categ_dsg" : "2019",
+        "categ_ord" : "20190101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2020" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2020",
+        "categ_cod" : "S7A2020",
+        "categ_dsg" : "2020",
+        "categ_ord" : "20200101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2021" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2021",
+        "categ_cod" : "S7A2021",
+        "categ_dsg" : "2021",
+        "categ_ord" : "20210101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2022" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2022",
+        "categ_cod" : "S7A2022",
+        "categ_dsg" : "2022",
+        "categ_ord" : "20220101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2023" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2023",
+        "categ_cod" : "S7A2023",
+        "categ_dsg" : "2023",
+        "categ_ord" : "20230101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2024" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2024",
+        "categ_cod" : "S7A2024",
+        "categ_dsg" : "2024",
+        "categ_ord" : "20240101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2025" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2025",
+        "categ_cod" : "S7A2025",
+        "categ_dsg" : "2025",
+        "categ_ord" : "20250101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num2_PT" : [ {
+        "dim_num" : "2",
+        "cat_id" : "PT",
+        "categ_cod" : "PT",
+        "categ_dsg" : "Portugal",
+        "categ_ord" : "1",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num2_1" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1",
+        "categ_cod" : "1",
+        "categ_dsg" : "Continente",
+        "categ_ord" : "2",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_11" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11",
+        "categ_cod" : "11",
+        "categ_dsg" : "Norte",
+        "categ_ord" : "3",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_16" : [ {
+        "dim_num" : "2",
+        "cat_id" : "16",
+        "categ_cod" : "16",
+        "categ_dsg" : "Centro",
+        "categ_ord" : "1524",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_17" : [ {
+        "dim_num" : "2",
+        "cat_id" : "17",
+        "categ_cod" : "17",
+        "categ_dsg" : "Área Metropolitana de Lisboa",
+        "categ_ord" : "2605",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_18" : [ {
+        "dim_num" : "2",
+        "cat_id" : "18",
+        "categ_cod" : "18",
+        "categ_dsg" : "Alentejo",
+        "categ_ord" : "2743",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_15" : [ {
+        "dim_num" : "2",
+        "cat_id" : "15",
+        "categ_cod" : "15",
+        "categ_dsg" : "Algarve",
+        "categ_ord" : "3106",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_2" : [ {
+        "dim_num" : "2",
+        "cat_id" : "2",
+        "categ_cod" : "2",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "3191",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_20" : [ {
+        "dim_num" : "2",
+        "cat_id" : "20",
+        "categ_cod" : "20",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "3192",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_3" : [ {
+        "dim_num" : "2",
+        "cat_id" : "3",
+        "categ_cod" : "3",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "3369",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_30" : [ {
+        "dim_num" : "2",
+        "cat_id" : "30",
+        "categ_cod" : "30",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "3370",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_T" : [ {
+        "dim_num" : "3",
+        "cat_id" : "T",
+        "categ_cod" : "T",
+        "categ_dsg" : "Total",
+        "categ_ord" : "1",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num3_PT" : [ {
+        "dim_num" : "3",
+        "cat_id" : "PT",
+        "categ_cod" : "PT",
+        "categ_dsg" : "Portugal",
+        "categ_ord" : "2",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_E" : [ {
+        "dim_num" : "3",
+        "cat_id" : "E",
+        "categ_cod" : "E",
+        "categ_dsg" : "Foreign countries",
+        "categ_ord" : "3",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_AF" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AF",
+        "categ_cod" : "AF",
+        "categ_dsg" : "Afghanistan",
+        "categ_ord" : "4",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_ZA" : [ {
+        "dim_num" : "3",
+        "cat_id" : "ZA",
+        "categ_cod" : "ZA",
+        "categ_dsg" : "South Africa",
+        "categ_ord" : "5",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AL" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AL",
+        "categ_cod" : "AL",
+        "categ_dsg" : "Albania",
+        "categ_ord" : "6",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_DE" : [ {
+        "dim_num" : "3",
+        "cat_id" : "DE",
+        "categ_cod" : "DE",
+        "categ_dsg" : "Germany",
+        "categ_ord" : "7",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AD" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AD",
+        "categ_cod" : "AD",
+        "categ_dsg" : "Andorra",
+        "categ_ord" : "8",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AO" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AO",
+        "categ_cod" : "AO",
+        "categ_dsg" : "Angola",
+        "categ_ord" : "9",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AI" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AI",
+        "categ_cod" : "AI",
+        "categ_dsg" : "Anguilla",
+        "categ_ord" : "10",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AG" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AG",
+        "categ_cod" : "AG",
+        "categ_dsg" : "Antigua and Barbuda",
+        "categ_ord" : "11",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_SA" : [ {
+        "dim_num" : "3",
+        "cat_id" : "SA",
+        "categ_cod" : "SA",
+        "categ_dsg" : "Saudi Arabia",
+        "categ_ord" : "12",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_DZ" : [ {
+        "dim_num" : "3",
+        "cat_id" : "DZ",
+        "categ_cod" : "DZ",
+        "categ_dsg" : "Algeria",
+        "categ_ord" : "13",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AR",
+        "categ_cod" : "AR",
+        "categ_dsg" : "Argentina",
+        "categ_ord" : "14",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AM" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AM",
+        "categ_cod" : "AM",
+        "categ_dsg" : "Armenia",
+        "categ_ord" : "15",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AW" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AW",
+        "categ_cod" : "AW",
+        "categ_dsg" : "Aruba",
+        "categ_ord" : "16",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AU" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AU",
+        "categ_cod" : "AU",
+        "categ_dsg" : "Australia",
+        "categ_ord" : "17",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AT" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AT",
+        "categ_cod" : "AT",
+        "categ_dsg" : "Austria",
+        "categ_ord" : "18",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AZ" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AZ",
+        "categ_cod" : "AZ",
+        "categ_dsg" : "Azerbaijan",
+        "categ_ord" : "19",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BS" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BS",
+        "categ_cod" : "BS",
+        "categ_dsg" : "Bahamas (the)",
+        "categ_ord" : "20",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BD" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BD",
+        "categ_cod" : "BD",
+        "categ_dsg" : "Bangladesh",
+        "categ_ord" : "21",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BB" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BB",
+        "categ_cod" : "BB",
+        "categ_dsg" : "Barbados",
+        "categ_ord" : "22",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BH" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BH",
+        "categ_cod" : "BH",
+        "categ_dsg" : "Bahrain",
+        "categ_ord" : "23",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BE" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BE",
+        "categ_cod" : "BE",
+        "categ_dsg" : "Belgium",
+        "categ_ord" : "24",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BZ" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BZ",
+        "categ_cod" : "BZ",
+        "categ_dsg" : "Belize",
+        "categ_ord" : "25",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BJ" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BJ",
+        "categ_cod" : "BJ",
+        "categ_dsg" : "Benin",
+        "categ_ord" : "26",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BM" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BM",
+        "categ_cod" : "BM",
+        "categ_dsg" : "Bermuda",
+        "categ_ord" : "27",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BY" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BY",
+        "categ_cod" : "BY",
+        "categ_dsg" : "Belarus",
+        "categ_ord" : "28",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BO" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BO",
+        "categ_cod" : "BO",
+        "categ_dsg" : "Bolivia (Plurinational State of)",
+        "categ_ord" : "29",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BA" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BA",
+        "categ_cod" : "BA",
+        "categ_dsg" : "Bosnia and Herzegovina",
+        "categ_ord" : "30",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BW" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BW",
+        "categ_cod" : "BW",
+        "categ_dsg" : "Botswana",
+        "categ_ord" : "31",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BR",
+        "categ_cod" : "BR",
+        "categ_dsg" : "Brazil",
+        "categ_ord" : "32",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BN" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BN",
+        "categ_cod" : "BN",
+        "categ_dsg" : "Brunei Darussalam",
+        "categ_ord" : "33",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BG" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BG",
+        "categ_cod" : "BG",
+        "categ_dsg" : "Bulgaria",
+        "categ_ord" : "34",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_BF" : [ {
+        "dim_num" : "3",
+        "cat_id" : "BF",
+        "categ_cod" : "BF",
+        "categ_dsg" : "Burkina Faso",
+        "categ_ord" : "35",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CV" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CV",
+        "categ_cod" : "CV",
+        "categ_dsg" : "Cabo Verde",
+        "categ_ord" : "36",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CM" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CM",
+        "categ_cod" : "CM",
+        "categ_dsg" : "Cameroon",
+        "categ_ord" : "37",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_KH" : [ {
+        "dim_num" : "3",
+        "cat_id" : "KH",
+        "categ_cod" : "KH",
+        "categ_dsg" : "Cambodia",
+        "categ_ord" : "38",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CA" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CA",
+        "categ_cod" : "CA",
+        "categ_dsg" : "Canada",
+        "categ_ord" : "39",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_QA" : [ {
+        "dim_num" : "3",
+        "cat_id" : "QA",
+        "categ_cod" : "QA",
+        "categ_dsg" : "Qatar",
+        "categ_ord" : "40",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_KZ" : [ {
+        "dim_num" : "3",
+        "cat_id" : "KZ",
+        "categ_cod" : "KZ",
+        "categ_dsg" : "Kazakhstan",
+        "categ_ord" : "41",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_TD" : [ {
+        "dim_num" : "3",
+        "cat_id" : "TD",
+        "categ_cod" : "TD",
+        "categ_dsg" : "Chad",
+        "categ_ord" : "42",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CL" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CL",
+        "categ_cod" : "CL",
+        "categ_dsg" : "Chile",
+        "categ_ord" : "43",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CN" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CN",
+        "categ_cod" : "CN",
+        "categ_dsg" : "China",
+        "categ_ord" : "44",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CY" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CY",
+        "categ_cod" : "CY",
+        "categ_dsg" : "Cyprus",
+        "categ_ord" : "45",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CO" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CO",
+        "categ_cod" : "CO",
+        "categ_dsg" : "Colombia",
+        "categ_ord" : "46",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CG" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CG",
+        "categ_cod" : "CG",
+        "categ_dsg" : "Congo (the)",
+        "categ_ord" : "47",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CD" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CD",
+        "categ_cod" : "CD",
+        "categ_dsg" : "Congo (the Democratic Republic of the)",
+        "categ_ord" : "48",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_KR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "KR",
+        "categ_cod" : "KR",
+        "categ_dsg" : "Korea (the Republic of)",
+        "categ_ord" : "49",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_KP" : [ {
+        "dim_num" : "3",
+        "cat_id" : "KP",
+        "categ_cod" : "KP",
+        "categ_dsg" : "Korea (the Democratic People's Republic of)",
+        "categ_ord" : "50",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CI" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CI",
+        "categ_cod" : "CI",
+        "categ_dsg" : "Côte d'Ivoire",
+        "categ_ord" : "51",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CR",
+        "categ_cod" : "CR",
+        "categ_dsg" : "Costa Rica",
+        "categ_ord" : "52",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_HR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "HR",
+        "categ_cod" : "HR",
+        "categ_dsg" : "Croatia",
+        "categ_ord" : "53",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_CU" : [ {
+        "dim_num" : "3",
+        "cat_id" : "CU",
+        "categ_cod" : "CU",
+        "categ_dsg" : "Cuba",
+        "categ_ord" : "54",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_DK" : [ {
+        "dim_num" : "3",
+        "cat_id" : "DK",
+        "categ_cod" : "DK",
+        "categ_dsg" : "Denmark",
+        "categ_ord" : "55",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_DM" : [ {
+        "dim_num" : "3",
+        "cat_id" : "DM",
+        "categ_cod" : "DM",
+        "categ_dsg" : "Dominica",
+        "categ_ord" : "56",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_EG" : [ {
+        "dim_num" : "3",
+        "cat_id" : "EG",
+        "categ_cod" : "EG",
+        "categ_dsg" : "Egypt",
+        "categ_ord" : "57",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_SV" : [ {
+        "dim_num" : "3",
+        "cat_id" : "SV",
+        "categ_cod" : "SV",
+        "categ_dsg" : "El Salvador",
+        "categ_ord" : "58",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_AE" : [ {
+        "dim_num" : "3",
+        "cat_id" : "AE",
+        "categ_cod" : "AE",
+        "categ_dsg" : "United Arab Emirates (the)",
+        "categ_ord" : "59",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_EC" : [ {
+        "dim_num" : "3",
+        "cat_id" : "EC",
+        "categ_cod" : "EC",
+        "categ_dsg" : "Ecuador",
+        "categ_ord" : "60",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_ER" : [ {
+        "dim_num" : "3",
+        "cat_id" : "ER",
+        "categ_cod" : "ER",
+        "categ_dsg" : "Eritrea",
+        "categ_ord" : "61",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_SK" : [ {
+        "dim_num" : "3",
+        "cat_id" : "SK",
+        "categ_cod" : "SK",
+        "categ_dsg" : "Slovakia",
+        "categ_ord" : "62",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_SI" : [ {
+        "dim_num" : "3",
+        "cat_id" : "SI",
+        "categ_cod" : "SI",
+        "categ_dsg" : "Slovenia",
+        "categ_ord" : "63",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_ES" : [ {
+        "dim_num" : "3",
+        "cat_id" : "ES",
+        "categ_cod" : "ES",
+        "categ_dsg" : "Spain",
+        "categ_ord" : "64",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_US" : [ {
+        "dim_num" : "3",
+        "cat_id" : "US",
+        "categ_cod" : "US",
+        "categ_dsg" : "United States of America (the)",
+        "categ_ord" : "65",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_EE" : [ {
+        "dim_num" : "3",
+        "cat_id" : "EE",
+        "categ_cod" : "EE",
+        "categ_dsg" : "Estonia",
+        "categ_ord" : "66",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_ET" : [ {
+        "dim_num" : "3",
+        "cat_id" : "ET",
+        "categ_cod" : "ET",
+        "categ_dsg" : "Ethiopia",
+        "categ_ord" : "67",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_FJ" : [ {
+        "dim_num" : "3",
+        "cat_id" : "FJ",
+        "categ_cod" : "FJ",
+        "categ_dsg" : "Fiji",
+        "categ_ord" : "68",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_PH" : [ {
+        "dim_num" : "3",
+        "cat_id" : "PH",
+        "categ_cod" : "PH",
+        "categ_dsg" : "Philippines (the)",
+        "categ_ord" : "69",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_FI" : [ {
+        "dim_num" : "3",
+        "cat_id" : "FI",
+        "categ_cod" : "FI",
+        "categ_dsg" : "Finland",
+        "categ_ord" : "70",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_FR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "FR",
+        "categ_cod" : "FR",
+        "categ_dsg" : "France",
+        "categ_ord" : "71",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GA" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GA",
+        "categ_cod" : "GA",
+        "categ_dsg" : "Gabon",
+        "categ_ord" : "72",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GM" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GM",
+        "categ_cod" : "GM",
+        "categ_dsg" : "Gambia (the)",
+        "categ_ord" : "73",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GH" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GH",
+        "categ_cod" : "GH",
+        "categ_dsg" : "Ghana",
+        "categ_ord" : "74",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GE" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GE",
+        "categ_cod" : "GE",
+        "categ_dsg" : "Georgia",
+        "categ_ord" : "75",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GI" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GI",
+        "categ_cod" : "GI",
+        "categ_dsg" : "Gibraltar",
+        "categ_ord" : "76",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GD" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GD",
+        "categ_cod" : "GD",
+        "categ_dsg" : "Grenada",
+        "categ_ord" : "77",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GR",
+        "categ_cod" : "GR",
+        "categ_dsg" : "Greece",
+        "categ_ord" : "78",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GL" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GL",
+        "categ_cod" : "GL",
+        "categ_dsg" : "Greenland",
+        "categ_ord" : "79",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GP" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GP",
+        "categ_cod" : "GP",
+        "categ_dsg" : "Guadeloupe",
+        "categ_ord" : "80",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GT" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GT",
+        "categ_cod" : "GT",
+        "categ_dsg" : "Guatemala",
+        "categ_ord" : "81",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GY" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GY",
+        "categ_cod" : "GY",
+        "categ_dsg" : "Guyana",
+        "categ_ord" : "82",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GF" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GF",
+        "categ_cod" : "GF",
+        "categ_dsg" : "French Guiana",
+        "categ_ord" : "83",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GN" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GN",
+        "categ_cod" : "GN",
+        "categ_dsg" : "Guinea",
+        "categ_ord" : "84",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GQ" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GQ",
+        "categ_cod" : "GQ",
+        "categ_dsg" : "Equatorial Guinea",
+        "categ_ord" : "85",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_GW" : [ {
+        "dim_num" : "3",
+        "cat_id" : "GW",
+        "categ_cod" : "GW",
+        "categ_dsg" : "Guinea-Bissau",
+        "categ_ord" : "86",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_HT" : [ {
+        "dim_num" : "3",
+        "cat_id" : "HT",
+        "categ_cod" : "HT",
+        "categ_dsg" : "Haiti",
+        "categ_ord" : "87",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_HN" : [ {
+        "dim_num" : "3",
+        "cat_id" : "HN",
+        "categ_cod" : "HN",
+        "categ_dsg" : "Honduras",
+        "categ_ord" : "88",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_HK" : [ {
+        "dim_num" : "3",
+        "cat_id" : "HK",
+        "categ_cod" : "HK",
+        "categ_dsg" : "Hong Kong",
+        "categ_ord" : "89",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_HU" : [ {
+        "dim_num" : "3",
+        "cat_id" : "HU",
+        "categ_cod" : "HU",
+        "categ_dsg" : "Hungary",
+        "categ_ord" : "90",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_YE" : [ {
+        "dim_num" : "3",
+        "cat_id" : "YE",
+        "categ_cod" : "YE",
+        "categ_dsg" : "Yemen",
+        "categ_ord" : "91",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_IM" : [ {
+        "dim_num" : "3",
+        "cat_id" : "IM",
+        "categ_cod" : "IM",
+        "categ_dsg" : "Isle of Man",
+        "categ_ord" : "92",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_FO" : [ {
+        "dim_num" : "3",
+        "cat_id" : "FO",
+        "categ_cod" : "FO",
+        "categ_dsg" : "Faroe Islands (the)",
+        "categ_ord" : "93",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_TC" : [ {
+        "dim_num" : "3",
+        "cat_id" : "TC",
+        "categ_cod" : "TC",
+        "categ_dsg" : "Turks and Caicos Islands (the)",
+        "categ_ord" : "94",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_VG" : [ {
+        "dim_num" : "3",
+        "cat_id" : "VG",
+        "categ_cod" : "VG",
+        "categ_dsg" : "Virgin Islands (British)",
+        "categ_ord" : "95",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_IN" : [ {
+        "dim_num" : "3",
+        "cat_id" : "IN",
+        "categ_cod" : "IN",
+        "categ_dsg" : "India",
+        "categ_ord" : "96",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_ID" : [ {
+        "dim_num" : "3",
+        "cat_id" : "ID",
+        "categ_cod" : "ID",
+        "categ_dsg" : "Indonesia",
+        "categ_ord" : "97",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_IR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "IR",
+        "categ_cod" : "IR",
+        "categ_dsg" : "Iran (Islamic Republic of)",
+        "categ_ord" : "98",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_IQ" : [ {
+        "dim_num" : "3",
+        "cat_id" : "IQ",
+        "categ_cod" : "IQ",
+        "categ_dsg" : "Iraq",
+        "categ_ord" : "99",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_IE" : [ {
+        "dim_num" : "3",
+        "cat_id" : "IE",
+        "categ_cod" : "IE",
+        "categ_dsg" : "Ireland",
+        "categ_ord" : "100",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_IS" : [ {
+        "dim_num" : "3",
+        "cat_id" : "IS",
+        "categ_cod" : "IS",
+        "categ_dsg" : "Iceland",
+        "categ_ord" : "101",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_IL" : [ {
+        "dim_num" : "3",
+        "cat_id" : "IL",
+        "categ_cod" : "IL",
+        "categ_dsg" : "Israel",
+        "categ_ord" : "102",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_IT" : [ {
+        "dim_num" : "3",
+        "cat_id" : "IT",
+        "categ_cod" : "IT",
+        "categ_dsg" : "Italy",
+        "categ_ord" : "103",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_JM" : [ {
+        "dim_num" : "3",
+        "cat_id" : "JM",
+        "categ_cod" : "JM",
+        "categ_dsg" : "Jamaica",
+        "categ_ord" : "104",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_JP" : [ {
+        "dim_num" : "3",
+        "cat_id" : "JP",
+        "categ_cod" : "JP",
+        "categ_dsg" : "Japan",
+        "categ_ord" : "105",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_JE" : [ {
+        "dim_num" : "3",
+        "cat_id" : "JE",
+        "categ_cod" : "JE",
+        "categ_dsg" : "Jersey",
+        "categ_ord" : "106",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_JO" : [ {
+        "dim_num" : "3",
+        "cat_id" : "JO",
+        "categ_cod" : "JO",
+        "categ_dsg" : "Jordan",
+        "categ_ord" : "107",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_XK" : [ {
+        "dim_num" : "3",
+        "cat_id" : "XK",
+        "categ_cod" : "XK",
+        "categ_dsg" : "Kosovo",
+        "categ_ord" : "108",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_KW" : [ {
+        "dim_num" : "3",
+        "cat_id" : "KW",
+        "categ_cod" : "KW",
+        "categ_dsg" : "Kuwait",
+        "categ_ord" : "109",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_LV" : [ {
+        "dim_num" : "3",
+        "cat_id" : "LV",
+        "categ_cod" : "LV",
+        "categ_dsg" : "Latvia",
+        "categ_ord" : "110",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_LB" : [ {
+        "dim_num" : "3",
+        "cat_id" : "LB",
+        "categ_cod" : "LB",
+        "categ_dsg" : "Lebanon",
+        "categ_ord" : "111",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_LR" : [ {
+        "dim_num" : "3",
+        "cat_id" : "LR",
+        "categ_cod" : "LR",
+        "categ_dsg" : "Liberia",
+        "categ_ord" : "112",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_LY" : [ {
+        "dim_num" : "3",
+        "cat_id" : "LY",
+        "categ_cod" : "LY",
+        "categ_dsg" : "Libya",
+        "categ_ord" : "113",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_LI" : [ {
+        "dim_num" : "3",
+        "cat_id" : "LI",
+        "categ_cod" : "LI",
+        "categ_dsg" : "Liechtenstein",
+        "categ_ord" : "114",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_LT" : [ {
+        "dim_num" : "3",
+        "cat_id" : "LT",
+        "categ_cod" : "LT",
+        "categ_dsg" : 
