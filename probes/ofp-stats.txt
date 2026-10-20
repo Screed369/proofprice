@@ -1,0 +1,22 @@
+URL: https://prices.openfoodfacts.org/api/v1/stats
+Fetched: 2026-10-20T21:14:33Z from GitHub Actions
+Status, type, bytes: 200 application/json 1869
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Tue, 20 Oct 2026 21:14:33 GMT
+content-type: application/json
+content-length: 1869
+vary: Accept-Encoding
+allow: GET, HEAD, OPTIONS
+x-frame-options: DENY
+vary: origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"price_count":332328,"price_type_product_code_count":321838,"price_type_category_tag_count":10490,"price_with_discount_count":32363,"price_currency_count":94,"price_year_count":16,"price_location_country_count":126,"price_kind_community_count":283588,"price_kind_consumption_count":48740,"price_source_web_count":227780,"price_source_mobile_count":32444,"price_source_api_count":38108,"price_source_other_count":33996,"price_in_challenge_count":26352,"product_count":4583536,"product_source_off_count":4423557,"product_source_obf_count":77589,"product_source_opff_count":14660,"product_source_opf_count":46023,"product_with_price_count":144256,"product_source_off_with_price_count":120868,"product_source_obf_with_price_count":2527,"product_source_opff_with_price_count":408,"product_source_opf_with_price_count":2283,"location_count":7618,"location_with_price_count":7132,"location_type_osm_count":7478,"location_type_online_count":140,"location_type_osm_country_count":127,"proof_count":129333,"proof_with_price_count":121457,"proof_type_price_tag_count":117362,"proof_type_receipt_count":11950,"proof_type_gdpr_request_count":15,"proof_type_shop_import_count":6,"proof_kind_community_count":123179,"proof_kind_consumption_count":6154,"proof_source_web_count":95891,"proof_source_mobile_count":21833,"proof_source_api_count":2510,"proof_source_other_count":9099,"proof_currency_count":94,"proof_in_challenge_count":14125,"price_tag_count":303017,"price_tag_status_unknown_count":67255,"price_tag_status_linked_to_price_count":201252,"user_count":8309,"user_with_price_count":3751,"challenge_count":17,"badge_count":19,"badge_with_user_count":19,"product_created_count":252,"product_created_source_off_count":167,"product_created_source_obf_count":31,"product_created_source_opff_count":4,"product_created_source_opf_count":50,"updated":"2026-10-20T01:00:48.395454Z"}
