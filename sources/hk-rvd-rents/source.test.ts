@@ -22,9 +22,16 @@ test("real file parses: 332 months, 15 class x region columns, flags", () => {
 
 test("unreliable (Z) months are skipped for the headline", () => {
   const rows = parseRents(CSV);
-  const hit = newestUsable(rows, "E", "Kowloon")!;
-  assert.ok(hit.row.month < "2026-08");
-  assert.equal(hit.cell.unreliable, false);
+  const cut = rows.map((r, i) => (i === rows.length - 1 ? { ...r, cells: { ...r.cells, "A|Kowloon": { ...r.cells["A|Kowloon"], unreliable: true } } } : r));
+  assert.equal(newestUsable(cut, "A", "Kowloon")!.row.month, "2026-07");
+  assert.equal(newestUsable(rows, "A", "Kowloon")!.row.month, "2026-08");
+});
+
+test("a cell unreliable for the whole last year gives no figure instead of a 1999 one", () => {
+  const rows = parseRents(CSV);
+  assert.equal(newestUsable(rows, "E", "Kowloon"), null); // real data: Class E Kowloon is flagged Z in all of the last 12 months
+  const cut = rows.map((r, i) => (i >= rows.length - 12 ? { ...r, cells: { ...r.cells, "E|Kowloon": { value: 300, provisional: false, unreliable: true } } } : r));
+  assert.equal(newestUsable(cut, "E", "Kowloon"), null);
 });
 
 test("region and class spellings", () => {

@@ -124,9 +124,12 @@ function monthRange(m: string) {
 }
 const hkd = (v: number) => fmtMoney(v, "HKD");
 
-/** Newest month with a usable (present and not unreliable) figure for one class and region. */
+/** How many months back we look for a usable figure before saying there is none (a cell that is unreliable for a year is not current). */
+export const MAX_LOOKBACK = 12;
+
+/** Newest month within the last MAX_LOOKBACK months with a usable (present and not unreliable) figure for one class and region. */
 export function newestUsable(rows: MonthRow[], cls: FlatClass, region: Region): { index: number; row: MonthRow; cell: Cell } | null {
-  for (let i = rows.length - 1; i >= 0; i--) {
+  for (let i = rows.length - 1; i >= Math.max(0, rows.length - MAX_LOOKBACK); i--) {
     const cell = rows[i].cells[`${cls}|${region}`];
     if (cell && cell.value !== null && !cell.unreliable) return { index: i, row: rows[i], cell };
   }
