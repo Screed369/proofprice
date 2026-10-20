@@ -1,0 +1,107 @@
+URL: https://sdmx.oecd.org/public/rest/dataflow/OECD.SDD.TPS/DSD_PPP@DF_PPP/latest
+Fetched: 2026-10-20T12:42:14Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.sdmx.structure+xml; charset=utf-8; version=2.1 7011
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 20 Oct 2026 12:42:14 GMT
+content-type: application/vnd.sdmx.structure+xml; charset=utf-8; version=2.1
+cache-control: public,max-age=86400
+set-cookie: __cf_bm=81rpmbVRJcBOHTQHmABDNPMM7MuEWaheMMVaYp1SiVk-1792500133.8340592-1.0.1.1-MrLkxcDIEDgxXDw5KZ1fzEa6gGWmUf07DhkbrNFdU17tbLQZGddF2NyK.KGFWQQ5Wr8A5X5Xwjf_dXoIDeMveUbYqjrS2PouDt6oVS9qe52GZxtUqvhIC5Wu9TvlOD9.; HttpOnly; SameSite=None; Secure; Path=/; Domain=oecd.org; Expires=Tue, 20 Oct 2026 13:12:14 GMT
+last-modified: 2026-05-15
+vary: Accept, Accept-Language, Accept-Encoding, Accept-Charset,Accept,Accept-Encoding,Accept-Encoding
+strict-transport-security: max-age=2592000
+api-supported-versions: 1
+x-server-node: Server 1
+cf-cache-status: EXPIRED
+server: cloudflare
+cf-ray: a4d819ec7dcd45d7-ORD
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: XML 1.0 document, Unicode text, UTF-8 text, with very long lines (450), with CRLF line terminators
+=== FIRST 30000 BYTES
+<?xml version="1.0" encoding="utf-8"?>
+<!--NSI Web Service v10.11.8.0-->
+<message:Structure xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+  <message:Header>
+    <message:ID>IDREF10530</message:ID>
+    <message:Test>false</message:Test>
+    <message:Prepared>2026-10-20T14:42:14.2096993+02:00</message:Prepared>
+    <message:Sender id="Unknown" />
+    <message:Receiver id="Unknown" />
+  </message:Header>
+  <message:Structures>
+    <structure:Dataflows>
+      <structure:Dataflow id="DSD_PPP@DF_PPP" agencyID="OECD.SDD.TPS" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ANALYTICAL_CATEGORIES</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>MEASURE,UNIT_MEASURE,BASE_REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,TRANSFORMATION=_Z,UNIT_MEASURE=IX,BASE_REF_AREA=_Z,FREQ,REF_AREA=WXOECD</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>MEASURE=PPP,TIME_PERIOD_START=2022,TIME_PERIOD_END=2022,BASE_REF_AREA=OECD</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>BASE_REF_AREA:OECD.SDD.TPS:HCL_AREA_PPP(1.0).H_EN.H,UNIT_MEASURE:OECD.SDD.TPS:HCL_UNIT_MEASURE_PPP(1.0).H_EN.H,TRANSFORMATION:OECD.SDD.TPS:HCL_TRANSFORMATION_PPP(1.0).H_EN.H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>COMBINED_UNIT_MEASURE:UNIT_MEASURE,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">COMBINED_UNIT_MEASURE:Combined unit of measure</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">COMBINED_UNIT_MEASURE:Unité de mesure combinée</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>200000</common:AnnotationTitle>
+            <common:AnnotationType>MAX_TABLE_DATA</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">PPP detailed results, 2022 onwards</common:Name>
+        <common:Name xml:lang="fr">PPA résultats détaillés, depuis 2022</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;This dataset provides detailed Purchasing Power Parity (PPP) results broken down by analytical categories, following the &lt;b&gt;OECD PPP classification updated in 2025 to align with COICOP 2018&lt;/b&gt;.&lt;/p&gt; 
+
+&lt;p&gt;It presents detailed results of the joint Eurostat-OECD Purchasing Power Parities Programme for the 48 participating countries from 2022 onwards. The production of PPPs is a multilateral exercise involving the National Statistical Institutes of the participating countries, Eurostat and the OECD. Indicators with OECD as reference and with the European Union as reference are presented in this dataset.&lt;/p&gt; 
+
+&lt;p&gt; 2022 data is quasi-final, and 2023 and 2024 data is preliminary. The next updates will include:&lt;/p&gt; &lt;ul&gt; 
+&lt;li&gt;First estimate of 2025 PPP for GDP in March 2026,&lt;/li&gt; 
+&lt;li&gt;Update of 2025 PPP for GDP, and first estimate of the 2025 PPPs for AIC and HFC in June 2026,&lt;/li&gt; 
+&lt;li&gt;Update of all analytical categories, 2022-2025, in December 2026.&lt;/li&gt; &lt;/ul&gt;
+
+&lt;p&gt;Detailed PPP results for 2020 and 2021 are not available using the current OECD PPP classification aligned with COICOP 2018. However, results for these years, disaggregated according to the previous OECD PPP classification based on COICOP 1999, can be made available upon request.&lt;/p&gt;</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Ce jeu de données fournit des résultats détaillés en parités de pouvoir d’achat (PPA), ventilés par catégories analytiques, conformément à la &lt;b&gt;classification des PPA de l’OCDE mise à jour en 2025 afin de s’aligner sur la COICOP 2018&lt;/b&gt;.&lt;/p&gt; 
+
+&lt;p&gt;Il présente les résultats détaillés du programme conjoint Eurostat-OCDE sur les parités de pouvoir d’achat pour les 48 pays participants à partir de 2022. La production des PPA est un exercice multilatéral impliquant les instituts nationaux de statistique des pays participants, Eurostat et l’OCDE. Des indicateurs avec l’OCDE comme référence ainsi qu’avec l’Union européenne comme référence sont présentés dans ce jeu de données.&lt;/p&gt; 
+
+&lt;p&gt;Les données de 2022 sont quasi définitives, et celles de 2023 et 2024 sont provisoires. Les prochaines mises à jour comprendront :&lt;/p&gt; 
+&lt;ul&gt; 
+&lt;li&gt;La première estimation des PPA 2025 pour le PIB en mars 2026,&lt;/li&gt; 
+&lt;li&gt;La mise à jour des PPA 2025 pour le PIB, ainsi que la première estimation des PPA 2025 pour l’AIC et la HFC en juin 2026,&lt;/li&gt; 
+&lt;li&gt;La mise à jour de l’ensemble des catégories analytiques pour la période 2022-2025 en décembre 2026.&lt;/li&gt; 
+&lt;/ul&gt;
+
+&lt;p&gt;Les résultats détaillés des PPA pour 2020 et 2021 ne sont pas disponibles selon la classification actuelle des PPA de l’OCDE alignée sur la COICOP 2018. Toutefois, les résultats pour ces années, ventilés selon l’ancienne classification des PPA de l’OCDE fondée sur la COICOP 1999, peuvent être fournis sur demande.&lt;/p&gt;</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_PPP" version="1.1" agencyID="OECD.SDD.TPS" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+    </structure:Dataflows>
+  </message:Structures>
+</message:Structure>
