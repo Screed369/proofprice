@@ -246,7 +246,8 @@ export function answerFromRows(all: Row[], input: Input): PriceAnswer {
       volume_weighted_mean_ntd_per_kg: w === null ? null : r1(w),
       markets,
       trading_days: usedDates,
-      imports_included: usingImports,
+      imports_included: usingImports && rows.some((r) => r.crop.includes("進口")),
+      fetched_rows_by_day: Object.fromEntries([...new Set(all.map((r) => r.date))].sort().map((d) => [d, all.filter((r) => r.date === d).length])),
       record: "average price of one variety at one market on one day",
     },
   });
