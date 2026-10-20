@@ -1,0 +1,133 @@
+URL: https://donnees.roulez-eco.fr/opendata/annee/2024
+Fetched: 2026-10-20T06:57:50Z from GitHub Actions
+Status, type, bytes: 200 application/zip 27395110
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Tue, 20 Oct 2026 06:57:33 GMT
+content-type: application/zip
+content-length: 27395110
+cache-control: private, must-revalidate
+content-disposition: attachment;filename="PrixCarburants_annuel_2024.zip"
+last-modified: Mon, 06 Jan 2025 09:36:29 GMT
+referrer-policy: same-origin
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+allow: GET, POST, HEAD, OPTIONS
+x-xss-protection: 1;mode=block
+access-control-allow-methods: GET, POST, HEAD, OPTIONS
+access-control-allow-origin: *
+access-control-allow-headers: DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range
+access-control-expose-headers: Content-Length,Content-Range
+content-security-policy: form-action 'self'; base-uri 'none'; frame-ancestors 'none'; default-src https:; style-src https: 'self' 'unsafe-inline' ; script-src https: 'self' 'unsafe-inline'; object-src 'none' ; child-src https: ; img-src https: data: map.roulez-eco.fr; worker-src blob:;
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+upgrade-insecure-requests: 1
+permissions-policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), bluetooth=(), camera=(), encrypted-media=(), fullscreen=(self), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(self), usb=(), vr=()
+set-cookie: visid_incap_3031705=jMzuviHGQGudbC414CnKjtwQ12oAAAAAQUIPAAAAAAABWeZh78TmcOK8zvbi50Cz; expires=Wed, 20 Oct 2027 06:39:33 GMT; HttpOnly; path=/; Domain=.roulez-eco.fr; Secure; SameSite=None
+set-cookie: incap_ses_176_3031705=SOwvDFiZ2ScoNzaqYEdxAt0Q12oAAAAAXRsgo4MTu59HldotYBUBkw==; path=/; Domain=.roulez-eco.fr; Secure; SameSite=None
+x-cdn: Imperva
+x-iinfo: 53-272256921-272244867 2NNN RT(1792479452880 15) q(0 0 0 0) r(4 4) U3
+
+=== FILE TYPE: Zip archive data, at least v2.0 to extract, compression method=deflate
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+336962217  2025-01-06 10:36   PrixCarburants_annuel_2024.xml
+---------                     -------
+336962217                     1 file
+=== FIRST 6000 BYTES OF PrixCarburants_annuel_2024.xml
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?><pdv_liste>
+<pdv id="1000001" latitude="4620100" longitude="519800" cp="01000" pop="R">
+  <adresse>596 AVENUE DE TREVOUX</adresse>
+  <ville>SAINT-DENIS-L&#xE8;S-BOURG</ville>
+  <horaires automate-24-24="">
+    <jour id="1" nom="Lundi" ferme="1"/>
+    <jour id="2" nom="Mardi" ferme="1"/>
+    <jour id="3" nom="Mercredi" ferme="1"/>
+    <jour id="4" nom="Jeudi" ferme="1"/>
+    <jour id="5" nom="Vendredi" ferme="1"/>
+    <jour id="6" nom="Samedi" ferme="1"/>
+    <jour id="7" nom="Dimanche" ferme="1"/>
+  </horaires>
+  <services>
+    <service>Station de gonflage</service>
+    <service>Vente de gaz domestique (Butane, Propane)</service>
+    <service>DAB (Distributeur automatique de billets)</service>
+  </services>
+  <prix nom="Gazole" id="1" maj="2024-01-02T00:37:00" valeur="1.706"/>
+  <prix nom="Gazole" id="1" maj="2024-01-04T00:37:00" valeur="1.699"/>
+  <prix nom="Gazole" id="1" maj="2024-01-08T00:37:00" valeur="1.701"/>
+  <prix nom="Gazole" id="1" maj="2024-01-09T00:37:00" valeur="1.713"/>
+  <prix nom="Gazole" id="1" maj="2024-01-10T00:36:00" valeur="1.699"/>
+  <prix nom="Gazole" id="1" maj="2024-01-15T00:36:00" valeur="1.726"/>
+  <prix nom="Gazole" id="1" maj="2024-01-15T13:16:00" valeur="1.725"/>
+  <prix nom="Gazole" id="1" maj="2024-01-15T14:51:00" valeur="1.725"/>
+  <prix nom="Gazole" id="1" maj="2024-01-16T00:36:00" valeur="1.73"/>
+  <prix nom="Gazole" id="1" maj="2024-01-18T00:36:00" valeur="1.747"/>
+  <prix nom="Gazole" id="1" maj="2024-01-22T00:36:00" valeur="1.748"/>
+  <prix nom="Gazole" id="1" maj="2024-01-24T00:37:00" valeur="1.754"/>
+  <prix nom="Gazole" id="1" maj="2024-01-24T07:56:00" valeur="1.754"/>
+  <prix nom="Gazole" id="1" maj="2024-01-24T13:21:00" valeur="1.754"/>
+  <prix nom="Gazole" id="1" maj="2024-01-25T13:21:00" valeur="1.768"/>
+  <prix nom="Gazole" id="1" maj="2024-01-29T00:37:00" valeur="1.782"/>
+  <prix nom="Gazole" id="1" maj="2024-01-29T13:31:00" valeur="1.746"/>
+  <prix nom="Gazole" id="1" maj="2024-01-30T00:36:00" valeur="1.785"/>
+  <prix nom="Gazole" id="1" maj="2024-02-02T00:36:00" valeur="1.804"/>
+  <prix nom="Gazole" id="1" maj="2024-02-05T00:36:00" valeur="1.806"/>
+  <prix nom="Gazole" id="1" maj="2024-02-06T00:36:00" valeur="1.768"/>
+  <prix nom="Gazole" id="1" maj="2024-02-07T13:16:00" valeur="1.761"/>
+  <prix nom="Gazole" id="1" maj="2024-02-08T00:46:00" valeur="1.794"/>
+  <prix nom="Gazole" id="1" maj="2024-02-12T00:36:00" valeur="1.835"/>
+  <prix nom="Gazole" id="1" maj="2024-02-12T13:31:00" valeur="1.789"/>
+  <prix nom="Gazole" id="1" maj="2024-02-14T00:37:00" valeur="1.845"/>
+  <prix nom="Gazole" id="1" maj="2024-02-16T07:52:00" valeur="1.833"/>
+  <prix nom="Gazole" id="1" maj="2024-02-19T10:26:00" valeur="1.833"/>
+  <prix nom="Gazole" id="1" maj="2024-02-20T00:46:00" valeur="1.819"/>
+  <prix nom="Gazole" id="1" maj="2024-02-22T00:46:00" valeur="1.799"/>
+  <prix nom="Gazole" id="1" maj="2024-02-26T00:36:00" valeur="1.796"/>
+  <prix nom="Gazole" id="1" maj="2024-02-27T00:46:00" valeur="1.796"/>
+  <prix nom="Gazole" id="1" maj="2024-02-27T13:26:00" valeur="1.789"/>
+  <prix nom="Gazole" id="1" maj="2024-02-29T00:37:00" valeur="1.789"/>
+  <prix nom="Gazole" id="1" maj="2024-03-01T14:51:00" valeur="1.788"/>
+  <prix nom="Gazole" id="1" maj="2024-03-04T00:47:00" valeur="1.771"/>
+  <prix nom="Gazole" id="1" maj="2024-03-05T00:46:00" valeur="1.793"/>
+  <prix nom="Gazole" id="1" maj="2024-03-07T00:36:00" valeur="1.766"/>
+  <prix nom="Gazole" id="1" maj="2024-03-07T13:26:00" valeur="1.761"/>
+  <prix nom="Gazole" id="1" maj="2024-03-11T00:47:00" valeur="1.774"/>
+  <prix nom="Gazole" id="1" maj="2024-03-12T00:46:00" valeur="1.758"/>
+  <prix nom="Gazole" id="1" maj="2024-03-14T00:46:00" valeur="1.758"/>
+  <prix nom="Gazole" id="1" maj="2024-03-15T00:47:00" valeur="1.766"/>
+  <prix nom="Gazole" id="1" maj="2024-03-19T00:47:00" valeur="1.785"/>
+  <prix nom="Gazole" id="1" maj="2024-03-21T00:47:00" valeur="1.798"/>
+  <prix nom="Gazole" id="1" maj="2024-03-25T00:46:00" valeur="1.764"/>
+  <prix nom="Gazole" id="1" maj="2024-03-26T00:46:00" valeur="1.768"/>
+  <prix nom="Gazole" id="1" maj="2024-03-29T00:36:00" valeur="1.758"/>
+  <prix nom="Gazole" id="1" maj="2024-04-02T00:37:00" valeur="1.763"/>
+  <prix nom="Gazole" id="1" maj="2024-04-05T00:37:00" valeur="1.779"/>
+  <prix nom="Gazole" id="1" maj="2024-04-05T07:57:00" valeur="1.779"/>
+  <prix nom="Gazole" id="1" maj="2024-04-08T00:45:00" valeur="1.786"/>
+  <prix nom="Gazole" id="1" maj="2024-04-08T14:31:00" valeur="1.786"/>
+  <prix nom="Gazole" id="1" maj="2024-04-09T00:38:00" valeur="1.803"/>
+  <prix nom="Gazole" id="1" maj="2024-04-11T00:37:00" valeur="1.776"/>
+  <prix nom="Gazole" id="1" maj="2024-04-12T00:37:00" valeur="1.765"/>
+  <prix nom="Gazole" id="1" maj="2024-04-15T00:37:00" valeur="1.779"/>
+  <prix nom="Gazole" id="1" maj="2024-04-16T00:37:00" valeur="1.779"/>
+  <prix nom="Gazole" id="1" maj="2024-04-16T13:22:00" valeur="1.779"/>
+  <prix nom="Gazole" id="1" maj="2024-04-18T00:37:00" valeur="1.775"/>
+  <prix nom="Gazole" id="1" maj="2024-04-18T14:26:00" valeur="1.775"/>
+  <prix nom="Gazole" id="1" maj="2024-04-22T00:37:00" valeur="1.758"/>
+  <prix nom="Gazole" id="1" maj="2024-04-22T14:52:00" valeur="1.738"/>
+  <prix nom="Gazole" id="1" maj="2024-04-23T00:36:00" valeur="1.738"/>
+  <prix nom="Gazole" id="1" maj="2024-04-24T13:31:00" valeur="1.733"/>
+  <prix nom="Gazole" id="1" maj="2024-04-25T00:37:00" valeur="1.735"/>
+  <prix nom="Gazole" id="1" maj="2024-04-26T00:36:00" valeur="1.731"/>
+  <prix nom="Gazole" id="1" maj="2024-04-26T10:27:00" valeur="1.731"/>
+  <prix nom="Gazole" id="1" maj="2024-04-30T00:38:00" valeur="1.737"/>
+  <prix nom="Gazole" id="1" maj="2024-04-30T08:17:00" valeur="1.737"/>
+  <prix nom="Gazole" id="1" maj="2024-04-30T14:51:00" valeur="1.737"/>
+  <prix nom="Gazole" id="1" maj="2024-05-03T00:36:00" valeur="1.709"/>
+  <prix nom="Gazole" id="1" maj="2024-05-06T00:37:00" valeur="1.709"/>
+  <prix nom="Gazole" id="1" maj="2024-05-
