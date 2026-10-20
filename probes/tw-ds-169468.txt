@@ -1,0 +1,32 @@
+URL: https://data.gov.tw/api/v2/rest/dataset/169468
+Fetched: 2026-10-20T12:43:31Z from GitHub Actions
+Status, type, bytes: 200 application/json 2110
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 20 Oct 2026 12:43:31 GMT
+content-type: application/json
+content-length: 2110
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=pidcpo8ndkhc7odvght0v7i5nf; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=KMxZ3NTlDPvtOY711ZLqYdboGiqxKopECSy7iqy4UF4-1792500211.4337387-1.0.1.1-_RAWqLXixDhlP9K8lxdffddzxrNLFWhTtSaMaXVnDXobenAIMx4Dtq.Z1f3C0YaMvsUbUs_sK8s50hFKR5nY9HkrRT0ZV57lpu4RrCv4z8F5ITLRqwNo5IXmDQp_3RBq; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Tue, 20 Oct 2026 13:13:31 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4d81bd17a662bab-LAX
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"help":"","success":true,"result":{"categoryService":"B00","categoryDataset":"A","datasetId":169468,"identifier":"A21030000I-E40002","title":"規格代碼對照表","description":"提供全民健康保險規格代碼對照表","type":"api","license":"1","cost":"free","dataProvider":"grace10055","publisherOID":"2.16.886.101.20003.20065.20022","publisherContactName":"何先生","publisherContactPhone":"(02)2706-5866#1559","publisherContactEmail":"A110905@nhi.gov.tw","updateFrequency":{"regularupdate":"2"},"dataQuality":"G","coverageStartedDate":"2024-07-01","coverageEndedDate":"2910-12-31","publishedDate":"2024-07-10","modifiedDate":"2026-10-20 07:05:44","spatialCoverage":"臺灣","language":"zh","relatedUrl":"","notes":"（檔案更新時間：2026-10-20 07:01:10）","apiDocUrl":"","distribution":[{"resourceDescription":"規格量代碼對照表","resourceField":[{"name":"規格量代碼","description":""},{"name":"規格量","description":"","uri":"api\/BudgetAccountingandStatistics\/BudgetandAccounting\/GeneralFundBudgetandAccounting\/Quantity"}],"qcLevel":"","resourceFormat":"CSV","resourceCharacterEncoding":"UTF-8","resourceQualityCheckTime":"2026-09-01 14:20:22","resourceDownloadUrl":"https:\/\/info.nhi.gov.tw\/api\/iode0000s01\/Dataset?rId=A21030000I-E40002-001","resourceAmount":"","resourceNotes":"","resourceRequestMethod":"","resourceOasUrl":"","resourceRequestParameters":[],"resourcePathParameters":[]}],"keyword":["藥品","健保用藥"],"en":{"title":"Specification code comparison table","description":"Provide a list of universal health insurance standard codes.","publisherContactName":"何先生","publisherContactPhone":"(02)2706-5866#1559","publisherContactEmail":["A110905@nhi.gov.tw"],"updateFrequency":"Irregular updates","cost":"free","notes":"The file was last updated on July 10, 2024 at 11:46:21.","resources":[{"description":"Specification Quantity Code Comparison Table","fieldDesc":"Specification code、Standard amount","note":""},{"description":"Specification quantity code comparison table","fieldDesc":"Specification code、Standard amount","note":""}]}}}
