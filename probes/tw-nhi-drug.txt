@@ -1,0 +1,32 @@
+URL: https://data.gov.tw/api/v2/rest/dataset/6325
+Fetched: 2026-10-20T12:42:08Z from GitHub Actions
+Status, type, bytes: 200 application/json 2571
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 20 Oct 2026 12:42:08 GMT
+content-type: application/json
+content-length: 2571
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=6fbncb89iio326o8tgmel4b9qe; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=CsV7Ay.4lCstDeT8RJK1kbl6qhdCGDrjEpUuzT8qfI4-1792500128.1301723-1.0.1.1-Soz6gDuTO953m8H95byl80y32qV2W9mDtcEj79E0RWlUpkG7oUZlOaWGJeYfETTRZfddVTNaMDYj1YdwCwE.J1JqHSYCVmgFB1NK6EsFcSksZVtk0EVySW2aL7xdZ7NP; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Tue, 20 Oct 2026 13:12:08 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4d819c8c9952bbd-LAX
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help":"","success":true,"result":{"categoryService":"I00","categoryDataset":"A","datasetId":6325,"identifier":"A41000000G-000016","title":"0-1 都市及區域發展指標","description":"本項資料係每年定期蒐集各機關有關都市及區域發展指標之統計資料進行彙整，其用意為使讀者能在較短時間內獲得概括性之瞭解。","type":"rawData","license":"1","cost":"free","dataProvider":"carlossu","publisherOID":"2.16.886.101.20003.20069","publisherContactName":"李小姐","publisherContactPhone":"02-23165341","publisherContactEmail":"sharry@ndc.gov.tw","updateFrequency":{"regularupdate":"2"},"dataQuality":"無(白名單)","coverageStartedDate":"2017-12-31","coverageEndedDate":"","publishedDate":"2013-09-28","modifiedDate":"2026-10-13 21:00:43","spatialCoverage":"全國","language":"zh","relatedUrl":"https:\/\/ws.ndc.gov.tw\/Download.ashx?u=LzAwMS9hZG1pbmlzdHJhdG9yLzEwL3JlbGZpbGUvNTc4MS82Mzk2LzdhN2VlMzYyLTE1NTctNDBiNC1hNzc4LWNkNWVkYTcwMTE1OC5jc3Y%3d&n=MC0xIOW4uOeUqOaVuOWAvC5jc3Y%3d&icon=.csv&state=preview","notes":"授權說明網址: http:\/\/data.gov.tw\/license","apiDocUrl":"","distribution":[{"resourceDescription":"都市及區域發展統計彙編，原則以前一年底資料為主，如無前一年底資料則採用最新一期資料","resourceField":[{"name":"年","description":""},{"name":"地區","description":""},{"name":"土地面積","description":""},{"name":"年底人口數","description":""},{"name":"年底戶數","description":""},{"name":"戶量","description":""},{"name":"人口密度","description":""}],"qcLevel":"","resourceFormat":"CSV","resourceCharacterEncoding":"UTF-8","resourceQualityCheckTime":"2026-10-13 21:00:49","resourceDownloadUrl":"https:\/\/ws.ndc.gov.tw\/Download.ashx?u=LzAwMS9hZG1pbmlzdHJhdG9yLzEwL3JlbGZpbGUvNTc4MS82Mzk2LzdhN2VlMzYyLTE1NTctNDBiNC1hNzc4LWNkNWVkYTcwMTE1OC5jc3Y%3d&n=MC0xIOW4uOeUqOaVuOWAvC5jc3Y%3d&icon=.csv&state=preview","resourceAmount":29,"resourceNotes":"","resourceRequestMethod":"","resourceOasUrl":"","resourceRequestParameters":[],"resourcePathParameters":[]}],"keyword":["AI-Ready Data 詮釋資料框架指標","都市","區域","統計"],"en":{"title":"0-1 Urban and regional development indicators","description":"Urban and Regional Development Indicators","publisherContactName":"李小姐","publisherContactPhone":"02-23165341","publisherContactEmail":["sharry@ndc.gov.tw"],"updateFrequency":"Irregular updates","cost":"free","notes":"Authorization statement website: http:\/\/data.gov.tw\/license","keyword":["Urban","Area","Statistics"]}}}
