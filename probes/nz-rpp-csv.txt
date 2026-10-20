@@ -1,0 +1,106 @@
+URL: https://www.emi.ea.govt.nz/Retail/Datasets/RegionalPowerPrices/20260531_AveragePowerUseAndCosts.csv
+Fetched: 2026-10-20T10:51:38Z from GitHub Actions
+Status, type, bytes: 200 application/octet-stream 112469
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 302 Found
+Content-Length: 242
+Content-Type: text/html; charset=utf-8
+Date: Tue, 20 Oct 2026 10:51:36 GMT
+Access-Control-Expose-Headers: Request-Context
+Cache-Control: private
+Location: https://emidatasets.blob.core.windows.net/publicdata/Datasets/Retail/RegionalPowerPrices/20260531_AveragePowerUseAndCosts.csv
+Set-Cookie: ASP.NET_SessionId=odnghmamodsvavhyzfy5y45y; path=/; HttpOnly; SameSite=Lax
+Set-Cookie: _pfi=Akn_SFiyvdGie9evwRJvPd1s1W3fNEl0Znc6wulXZYTzg0LA2sN2Dk2L4iwzpeHZyI-d8DZUV4u3LqaAaa7R6rLD70N-EmtEDLgdK4jJUFt0Aywt0; expires=Sat, 20-Oct-2029 10:51:37 GMT; path=/
+Request-Context: appId=cid-v1:61a6dc5e-1b0c-42f7-a190-f36098ce5332
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Security-Policy: upgrade-insecure-requests;        default-src 'self' ;        connect-src 'self' www.google-analytics.com code.jquery.com cdnjs.cloudflare.com dc.services.visualstudio.com;                 style-src 'self' 'unsafe-inline' code.jquery.com cdnjs.cloudflare.com;                 script-src 'self' 'unsafe-inline' 'unsafe-eval' public.tableau.com forum.emi.ea.govt.nz test-forum.emi.ea.govt.nz az416426.vo.msecnd.net/scripts/a/ai.0.js cdnjs.cloudflare.com code.jquery.com www.google-analytics.com;                 object-src 'self' ;                 frame-src 'self' public.tableau.com;                img-src 'self' code.jquery.com cdnjs.cloudflare.com www.gravatar.com www.emi.ea.govt.nz emi.ea.govt.nz public.tableau.com forum.emi.ea.govt.nz test-forum.emi.ea.govt.nz
+
+HTTP/1.1 200 OK
+Content-Length: 112469
+Content-Type: application/octet-stream
+Content-MD5: FNxXaQmCtzJgs80zZS68Hg==
+Last-Modified: Thu, 03 Sep 2026 21:15:15 GMT
+ETag: 0x8DF0A007324C812
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: aaf9f43e-201e-002a-0180-600742000000
+x-ms-version: 2009-09-19
+x-ms-lease-status: unlocked
+x-ms-blob-type: BlockBlob
+Date: Tue, 20 Oct 2026 10:51:36 GMT
+
+=== FILE TYPE: CSV Unicode text, UTF-8 (with BOM) text
+=== FIRST 6000 BYTES
+﻿MonthEnd,NetworkReportingRegionCode,NetworkReportingRegion,LoadType,FixedDollarPerDayInclGST,VariableDollarPerkWhInclGST,MonthlyNetworkMeankWh,TotalMonthlyBillDollarsInclGST,NetworkMonthlyChargeDollarsInclGST
+2025-01-31,1,Bay of Islands (Top Energy),Low user,1.1660,0.4385,367,197.19,85.15
+2025-01-31,1,Bay of Islands (Top Energy),Standard user,2.7903,0.3683,567,295.58,138.72
+2025-01-31,2,Whangārei and Kaipara (Northpower),Low user,1.1234,0.3428,395,170.51,68.75
+2025-01-31,2,Whangārei and Kaipara (Northpower),Standard user,2.6647,0.2751,596,246.83,108.09
+2025-01-31,3,Waitemata (Vector),Low user,1.1726,0.2911,382,147.78,53.14
+2025-01-31,3,Waitemata (Vector),Standard user,2.5734,0.2266,692,236.69,74.91
+2025-01-31,4,Auckland (Vector),Low user,1.2206,0.2867,361,141.55,49.65
+2025-01-31,4,Auckland (Vector),Standard user,2.5971,0.2245,641,224.45,69.82
+2025-01-31,5,Counties (Counties Power),Low user,1.1799,0.3538,417,184.39,86.30
+2025-01-31,5,Counties (Counties Power),Standard user,2.6837,0.2933,725,295.96,138.83
+2025-01-31,6,Thames Valley (Powerco),Low user,1.0643,0.3361,380,160.82,66.06
+2025-01-31,6,Thames Valley (Powerco),Standard user,2.2184,0.2829,619,244.17,98.67
+2025-01-31,7,Waikato (WEL Networks),Low user,1.1024,0.3038,372,147.38,58.44
+2025-01-31,7,Waikato (WEL Networks),Standard user,2.6296,0.2339,675,239.49,92.13
+2025-01-31,8,Waipa (Waipa Networks),Low user,1.1719,0.3206,408,167.20,64.59
+2025-01-31,8,Waipa (Waipa Networks),Standard user,1.5850,0.3089,694,263.66,94.90
+2025-01-31,9,King Country (The Lines Company),Low user,1.1833,0.3555,389,175.02,82.86
+2025-01-31,9,King Country (The Lines Company),Standard user,2.7666,0.3164,475,236.31,128.08
+2025-01-31,10,Tauranga (Powerco),Low user,1.2290,0.3314,395,169.30,58.78
+2025-01-31,10,Tauranga (Powerco),Standard user,2.1295,0.2976,626,252.60,86.04
+2025-01-31,11,Rotorua (Unison Networks),Low user,1.1999,0.3220,395,164.61,57.66
+2025-01-31,11,Rotorua (Unison Networks),Standard user,2.5590,0.2646,625,244.80,85.10
+2025-01-31,12,Eastern Bay of Plenty (Horizon Energy),Low user,1.2831,0.3280,387,166.95,62.57
+2025-01-31,12,Eastern Bay of Plenty (Horizon Energy),Standard user,3.4032,0.2305,631,251.11,92.52
+2025-01-31,13,Taupō (Unison Networks),Low user,1.2126,0.3288,392,166.75,58.18
+2025-01-31,13,Taupō (Unison Networks),Standard user,2.6214,0.2730,578,239.29,85.94
+2025-01-31,14,Tairāwhiti and Wairoa (Firstlight Network),Low user,1.1890,0.3759,404,188.74,77.01
+2025-01-31,14,Tairāwhiti and Wairoa (Firstlight Network),Standard user,3.2451,0.2804,625,275.97,116.28
+2025-01-31,15,Hawke's Bay (Unison Networks),Low user,1.1299,0.3181,397,161.51,62.05
+2025-01-31,15,Hawke's Bay (Unison Networks),Standard user,2.4463,0.2625,692,257.52,96.51
+2025-01-31,16,Central Hawke's Bay (Centralines),Low user,1.1528,0.3961,400,194.29,95.83
+2025-01-31,16,Central Hawke's Bay (Centralines),Standard user,2.7635,0.3258,605,283.07,143.30
+2025-01-31,17,Southern Hawke's Bay (Scanpower),Low user,1.1756,0.3502,416,182.13,84.53
+2025-01-31,17,Southern Hawke's Bay (Scanpower),Standard user,1.4949,0.3355,625,256.19,115.64
+2025-01-31,18,Wairarapa (Powerco),Low user,1.1476,0.3520,384,170.78,75.67
+2025-01-31,18,Wairarapa (Powerco),Standard user,1.6526,0.3272,641,261.02,112.84
+2025-01-31,19,Taranaki (Powerco),Low user,1.1589,0.3279,363,155.06,63.93
+2025-01-31,19,Taranaki (Powerco),Standard user,1.6476,0.3005,591,228.87,91.36
+2025-01-31,20,Whanganui (Powerco),Low user,1.1474,0.3362,342,150.77,63.93
+2025-01-31,20,Whanganui (Powerco),Standard user,1.5788,0.3166,565,228.12,94.02
+2025-01-31,21,Manawatū (Powerco),Low user,1.1605,0.3186,364,152.15,62.71
+2025-01-31,21,Manawatū (Powerco),Standard user,1.6239,0.2934,603,227.45,89.67
+2025-01-31,22,Kāpiti and Horowhenua (Electra),Low user,1.1394,0.3385,364,158.85,71.01
+2025-01-31,22,Kāpiti and Horowhenua (Electra),Standard user,1.8267,0.3092,590,239.13,102.63
+2025-01-31,23,Wellington (Wellington Electricity),Low user,1.1127,0.2838,360,136.78,49.78
+2025-01-31,23,Wellington (Wellington Electricity),Standard user,2.4245,0.2220,623,213.64,72.08
+2025-01-31,25,Tasman (Network Tasman),Low user,1.2127,0.3114,385,157.61,50.35
+2025-01-31,25,Tasman (Network Tasman),Standard user,2.1691,0.2729,625,238.00,74.36
+2025-01-31,26,Marlborough (Marlborough Lines),Low user,1.2169,0.3664,368,172.67,75.62
+2025-01-31,26,Marlborough (Marlborough Lines),Standard user,3.4245,0.2842,591,274.30,126.49
+2025-01-31,27,Buller (Buller Electricity),Low user,1.2377,0.4229,335,180.10,75.00
+2025-01-31,27,Buller (Buller Electricity),Standard user,2.8469,0.3492,457,248.19,114.65
+2025-01-31,28,West Coast (Westpower),Low user,1.2593,0.3743,371,178.12,72.88
+2025-01-31,28,West Coast (Westpower),Standard user,1.8353,0.3599,497,235.85,103.58
+2025-01-31,29,North Canterbury (MainPower NZ),Low user,1.1926,0.3361,405,173.36,73.74
+2025-01-31,29,North Canterbury (MainPower NZ),Standard user,3.3836,0.2431,686,271.85,118.52
+2025-01-31,30,Central Canterbury (Orion New Zealand),Low user,1.1353,0.2620,402,140.77,50.59
+2025-01-31,30,Central Canterbury (Orion New Zealand),Standard user,1.4809,0.2499,620,201.01,68.15
+2025-01-31,31,Ashburton (Electricity Ashburton),Low user,1.2101,0.2719,434,155.64,48.63
+2025-01-31,31,Ashburton (Electricity Ashburton),Standard user,1.5805,0.2660,614,212.34,61.00
+2025-01-31,32,South Canterbury (Alpine Energy),Low user,1.2139,0.3110,393,160.01,65.08
+2025-01-31,32,South Canterbury (Alpine Energy),Standard user,2.9872,0.2490,622,247.63,108.56
+2025-01-31,33,Waitaki (Network Waitaki),Low user,1.1669,0.3113,383,155.42,69.83
+2025-01-31,33,Waitaki (Network Waitaki),Standard user,3.2531,0.2280,571,231.17,119.21
+2025-01-31,34,Queenstown (Aurora Energy),Low user,1.1845,0.3177,429,173.26,73.12
+2025-01-31,34,Queenstown (Aurora Energy),Standard user,1.6377,0.2975,655,245.82,98.07
+2025-01-31,35,Central Otago (Aurora Energy),Low user,1.1704,0.3776,389,183.41,94.41
+2025-01-31,35,Central Otago (Aurora Energy),Standard user,1.6071,0.3608,523,238.87,117.74
+2025-01-31,36,Otago (OtagoNet),Low u
