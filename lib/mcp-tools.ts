@@ -225,7 +225,7 @@ export function registerTools(server: { registerTool: (...a: any[]) => unknown }
       if (!out) return spec.call(args ?? {});
       if (out.kind === "denied") return { isError: true, content: [{ type: "text", text: JSON.stringify(out.body) }], structuredContent: out.body };
       const note = out.headers["x-proofprice-note"];
-      if (note) return { ...out.result, _meta: { "proofprice/note": note, "proofprice/charged": false } };
+      if (note) return { ...out.result, _meta: { ...((out.result as any)._meta ?? {}), "proofprice/note": note, "proofprice/charged": false } };
       const settlement = out.headers["payment-response"];
       return settlement ? { ...out.result, _meta: { "x402/payment-response": JSON.parse(Buffer.from(settlement, "base64").toString("utf8")) } } : out.result;
     });

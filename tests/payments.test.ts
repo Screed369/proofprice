@@ -17,7 +17,7 @@ import type { ToolSpec } from "../lib/mcp-tools";
 import { z } from "zod";
 
 import { allCleared, CLEARED_FOR_PAID } from "../lib/payments/cleared";
-import { checkSources, historySources } from "../lib/premium-sources";
+import { checkSources, checkSourcesFromUrl, historySources, historySourcesFromUrl } from "../lib/premium-sources";
 import { CATEGORIES } from "../lib/registry";
 const CLEARED = () => ["eu-energy"];
 const PAY_TO = "0x1111111111111111111111111111111111111111"; // public test address, not a real wallet
@@ -278,4 +278,12 @@ test("licence guard: source resolvers return the real source id, and null (not c
   assert.equal(historySources(rent, { country: "ZZ" }), null);
   assert.equal(allCleared(checkSources({ category: "rent", country: "CA", price: 1 })), true);
   assert.equal(allCleared(checkSources({ category: "fuel", country: "MX", area: "Ciudad de México", fuel: "petrol95", price: 1 })), false);
+});
+
+test("licence guard: real REST URLs map to the source the handler runs", () => {
+  assert.deepEqual(checkSourcesFromUrl("https://proofprice.com/api/v1/check?category=rent&country=CA&price=1800&ppcheck=1"), ["ca-cmhc-rents"]);
+  assert.deepEqual(checkSourcesFromUrl("https://proofprice.com/api/v1/check?category=fuel&country=MX&area=Ciudad%20de%20M%C3%A9xico&fuel=petrol95&price=1"), ["mx-fuel"]);
+  assert.equal(checkSourcesFromUrl("https://proofprice.com/api/v1/check?category=zzz"), null);
+  assert.deepEqual(historySourcesFromUrl("https://proofprice.com/api/v1/fuel/history?country=MX&area=Ciudad%20de%20M%C3%A9xico&fuel=petrol95", "fuel"), ["mx-fuel"]);
+  assert.equal(historySourcesFromUrl("https://proofprice.com/api/v1/zzz/history?country=MX", "zzz"), null);
 });

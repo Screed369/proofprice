@@ -98,7 +98,7 @@ export async function gatedRest(
   const { res, text } = out.result;
   const headers = new Headers(res.headers);
   for (const [k, v] of Object.entries(out.headers)) headers.set(k, v);
-  headers.set("access-control-expose-headers", `${CORS_HEADERS["access-control-expose-headers"]}, payment-required, payment-response, x-proofprice-charged`);
+  headers.set("access-control-expose-headers", `${CORS_HEADERS["access-control-expose-headers"]}, payment-required, payment-response, x-proofprice-charged, x-proofprice-note`);
   headers.set("cache-control", "no-store"); // premium answers are never shared from the CDN cache
   return new Response(text, { status: res.status, headers });
 }
