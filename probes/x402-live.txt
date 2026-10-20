@@ -1,0 +1,16 @@
+Run: 2026-10-20T16:43:19Z ref test/x402-live sha b6b5954091c4faa6e82f9871a94315421b25075a
+payer (public test address): 0x3c718D32cd76d6D27306cbEc072a44D54C3d61DE
+PASS  pricing.json payment_mode = testnet (expected testnet)
+PASS  REST: reached HTTP 402 after 22 free calls (last status 402; instances may differ, 20 expected)
+      accepts[0]: {"scheme":"exact","network":"eip155:84532","amount":"100000","payTo":"0xCe064bC907a6601D672D2c36B74155750592cC9D","asset":"0x036CbD53842c5426634e7929541eC2318f3dCF7e"}
+PASS  REST: 402 is x402 v2, exact, base-sepolia, 100000 (USD 0.10)
+      paid call: 200 charged: yes payment-response header: yes
+      settlement: {"success":true,"network":"eip155:84532","transaction":"0x<hash>"}
+PASS  REST: real facilitator verified AND settled the payment on base-sepolia
+PASS  payer address not echoed in the answer
+      answer summary: status ok
+PASS  MCP: payment request after 0 free calls (20 expected)
+      MCP settlement: {"success":true,"transaction":"0x<hash>","network":"eip155:84532"}
+PASS  MCP: paid call answered and settled on base-sepolia
+
+All live checks passed
