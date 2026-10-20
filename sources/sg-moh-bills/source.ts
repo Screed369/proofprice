@@ -214,7 +214,10 @@ export function billAnswer(rows: DrgRow[], input: BillInput): PriceAnswer {
       baseUrl: input.baseUrl,
     });
   }
-  const best = matches[0];
+  // Prefer the closest condition that has a published figure for the ward asked for (or any ward when none was asked for).
+  const has = (drg: string) => rows.some((r) => r.drg === drg && r.p50 !== null && r.p50 > 0 && (!ward || r.ward === ward));
+  const best = matches.find((m) => has(m.drg)) ?? matches[0];
+  matches.splice(0, matches.length, best, ...matches.filter((m) => m !== best));
   const group = rows.filter((r) => r.drg === best.drg);
   const byWard = new Map<Ward, DrgRow>();
   for (const r of group) if (r.p50 !== null && r.p50 > 0) byWard.set(r.ward, r);

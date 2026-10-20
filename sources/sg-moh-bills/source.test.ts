@@ -65,3 +65,9 @@ test("the parser also works when the table starts in a later column", () => {
   const shifted = [[null, ...["Info"]], ...cells.map((r) => [null, ...r])];
   assert.equal(parseDrgRows(shifted as any).length, rows.length);
 });
+
+test("a ward that the closest condition lacks moves to the closest condition that has it", () => {
+  const a = billAnswer(rows, { service: "delirium", ward: "private" });
+  assert.equal(a.status, "ok");
+  assert.equal((a.query as any).drg, "B64B");
+});
