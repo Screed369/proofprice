@@ -63,7 +63,7 @@ test("GeBIZ end to end: five awards give a median and range, window by award dat
     assert.equal((a.price as any).median, 260400); // median of 91080, 168000, 260400, 1200000, 5787623
     assert.match(a.summary, /Singapore/);
     const short = await sgContracts({ what: "cleaning", months: 12, now });
-    assert.equal(short.status, "insufficient_data"); // only CEA (Sep 2025) is inside 12 months
+    assert.equal(short.status, "no_matches"); // the newest award (Sep 2025) is older than 12 months
   });
 });
 
