@@ -1,0 +1,537 @@
+URL: https://www.emi.ea.govt.nz/Retail/Datasets/RegionalPowerPrices
+Fetched: 2026-10-20T10:50:02Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 18587
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Length: 18587
+Content-Type: text/html; charset=utf-8
+Date: Tue, 20 Oct 2026 10:50:02 GMT
+Access-Control-Expose-Headers: Request-Context
+Cache-Control: private
+Set-Cookie: ASP.NET_SessionId=51vz5gzg3zji3jt5gllzrwjp; path=/; HttpOnly; SameSite=Lax
+Set-Cookie: _pfi=GuByxbuXBK8VPmlgY4uCnPNw3EzqSIltoi2IawW1I7huJmvPArBH5SqjICRu-2aNxxDBX8w9agLp947grg3fk40XQEzPb-6guI8jqa4XB0ahkJ2j0; expires=Sat, 20-Oct-2029 10:50:02 GMT; path=/
+Request-Context: appId=cid-v1:61a6dc5e-1b0c-42f7-a190-f36098ce5332
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Security-Policy: upgrade-insecure-requests;        default-src 'self' ;        connect-src 'self' www.google-analytics.com code.jquery.com cdnjs.cloudflare.com dc.services.visualstudio.com;                 style-src 'self' 'unsafe-inline' code.jquery.com cdnjs.cloudflare.com;                 script-src 'self' 'unsafe-inline' 'unsafe-eval' public.tableau.com forum.emi.ea.govt.nz test-forum.emi.ea.govt.nz az416426.vo.msecnd.net/scripts/a/ai.0.js cdnjs.cloudflare.com code.jquery.com www.google-analytics.com;                 object-src 'self' ;                 frame-src 'self' public.tableau.com;                img-src 'self' code.jquery.com cdnjs.cloudflare.com www.gravatar.com www.emi.ea.govt.nz emi.ea.govt.nz public.tableau.com forum.emi.ea.govt.nz test-forum.emi.ea.govt.nz
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (802), with CRLF line terminators
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electricity Authority - EMI (market statistics and tools)</title>
+    <link rel="shortcut icon" href="https://www.emi.ea.govt.nz/favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+<script type="text/javascript">
+    var $baseUrl = 'https://www.emi.ea.govt.nz';
+    var $baseUrlForForum = 'https://forum.emi.ea.govt.nz';
+</script>
+    <link href="/Content/css?v=ZXclQ5HDzxAkmSl580tOypNLaKuVrF3jg8KSgXvfnNI1" rel="stylesheet"/>
+
+
+    
+
+    <script src="/bundles/jquery?v=OfSFdHnEBsq-cUHTT9suPx_9iIF1PUj41gXrEz7PdMw1"></script>
+
+    <script src="/bundles/common?v=xUcyy64KO8tgVO2XQim2BW3U6Zi4Xc-bW_9pAsjYmh01"></script>
+
+
+    <script>
+        
+        $.widget.bridge('uitooltip', $.ui.tooltip);
+        //$.widget.bridge('uimodal', $.ui.modal);
+
+    </script>
+    <script src="/bundles/bootstrap?v=NWU3RKhHUhf6IfKTI1anU_LhinG0jSJDcrUl01sYys81"></script>
+
+    <!--
+To collect end-user usage analytics about your application,
+insert the following script into each page you want to track.
+Place this code immediately before the closing </head> tag,
+and before any other scripts. Your first data will appear
+automatically in just a few seconds.
+-->
+<script type="text/javascript">
+    var appInsights = window.appInsights || function (config) {
+        function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js"; u.getElementsByTagName(o)[0].parentNode.appendChild(s); try { t.cookie = u.cookie } catch (h) { } for (t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t
+    }({
+        instrumentationKey: "8ed415fd-bc55-4426-87a5-7c56ab4e5cb9"
+    });
+
+    window.appInsights = appInsights;
+    appInsights.trackPageView();
+</script>
+           <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            //ga('create', 'UA-51204013-1', 'ea.govt.nz');   test.emi.ea.govt.nz 06/03/2014
+            ga('create', 'UA-51640237-1', 'ea.govt.nz');
+            ga('send', 'pageview');
+       </script>
+
+
+</head>
+<body>
+
+    <!--[if IE]><div style='clear: both; height: 112px; padding:0; position: relative;'><a href="http://www.theie8countdown.com/ie-users-info"><img src="http://www.theie8countdown.com/assets/badge_iecountdown.png" border="0" height="112" width="348" alt="" /></a></div><![endif]-->
+
+    <div id="skiptocontent">
+        <a href="#mainContent">Skip to main content</a>
+    </div>
+    <div class="emi-wrapContent-searchHeader js-fullscreen-mode searchWrap">
+        <div class="sky-form headerSearch js-fullscreen-mode">
+<form action="/Search" id="HeaderSearchForm" method="get" name="SearchForm">                    <label class="input">
+						<input name="q" id="searchfilter" type="text">
+                        <i id="icnheadersearch" class="icon-search"></i> 
+					</label>
+</form></div>
+
+
+
+        <header>
+            
+            <span class="emi-hide-sm">
+            
+            </span>
+            <div class="logo">
+                <a href="/" title="EMI">EMI</a>
+            </div>
+            
+    <nav class="navbar">
+        <span class="emi-hide-large right">
+        
+        </span>
+        <button class="left navbar-expand-md navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            MENU <span class="icon-burger"></span>
+        </button> 
+        <div class="clearfix"></div>
+            <div class="emi container-fluid collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="nav navbar-nav">
+                    <li><a href="/" class="">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle active-node" data-toggle="dropdown" href="#">Retail<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li><a href="/Retail/Reports">Reports</a></li>
+
+                                    <li><a href="https://www.ea.govt.nz/data-and-insights/datasets/retail" target="_blank">Datasets</a></li>
+                                                                                                
+
+
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle " data-toggle="dropdown" href="#">Wholesale<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li><a href="/Wholesale/Reports">Reports</a></li>
+
+                                                                    <li><a href="https://www.ea.govt.nz/data-and-insights/datasets/wholesale" target="_blank">Datasets</a></li>
+                                                                
+
+                                    <li><a href="https://www.ea.govt.nz/data-and-insights/tools-and-apis/" target="_blank">Tools</a></li>
+
+                                                <li class=" "><a href="/Wholesale/InformationDisclosure">Information disclosure</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle " data-toggle="dropdown" href="#">Forward markets<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li><a href="/Forward%20markets/Reports">Reports</a></li>
+
+                                                                                                                                    <li><a href="https://www.ea.govt.nz/data-and-insights/datasets/forward-markets" target="_blank">Datasets</a></li>
+
+
+
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle " data-toggle="dropdown" href="#">Environment<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li><a href="/Environment/Reports">Reports</a></li>
+
+                                                                                                    <li><a href="https://www.ea.govt.nz/data-and-insights/datasets/environment" target="_blank">Datasets</a></li>
+                                
+
+
+
+                            </ul>
+                        </li>
+
+                    <li class="dropdown"></li>
+                </ul>
+        </div>
+    </nav>
+
+        </header>
+    </div>
+
+    
+<!-- main section -->
+
+
+
+<div class="emi-wrapContent sectionHeader js-fullscreen-mode">
+    <style>
+.newSectionHeaderTitle {
+  padding: 20px 20px 30px 32px;
+  background-color: lightgray;
+  border-bottom: 3px solid orange
+}
+
+.newbreadcrumb {
+  font-size: 1.4em;
+}
+
+.newbreadcrumb a {
+  float: none;
+}
+
+.newbreadcrumb li {
+  float:left;
+  display:inline;
+  margin-right:4px;
+  margin-top:-3px
+}
+
+.newbreadcrumb ol {
+  padding: 0;
+  margin:0
+}
+.emi-sectionHeaderTitle {
+    padding: 12px 20px 0 15px;
+    border-bottom: 1px solid #ff8b05;
+    background-color: #f9f9f9;
+    min-height: 45px;
+}
+.emi-sectionHeaderTitle select{
+    margin-top:-12px;
+    height:auto;
+}
+.emi-breadcrumb {
+  font-size: 1.4em;
+  font-weight:bold;
+}
+    .emi-breadcrumb a {
+        color: #3397c8;
+        text-decoration: none;
+        font-weight:bold;
+    }
+.emi-breadcrumb a:hover {
+  color:#3397c8;
+}
+.emi-breadcrumb li {
+  display:inline-block;
+  margin-right:4px;
+  margin-bottom:10px;
+}
+.emi-breadcrumb ol {
+  padding: 0;
+  margin:0
+}
+.emi-breadcrumb .icon-tri {
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+    display:inline-block;
+    font-size: 6px;
+    padding: 2px 1px 2px 5px;
+}
+.emi-sectionHeaderTitle::-webkit-scrollbar {
+    width: 3px;
+    height:4px
+}
+
+.emi-sectionHeaderTitle::-webkit-scrollbar-thumb {
+  background-color: #545555;
+  outline: 1px solid slategrey;
+}
+    .wait {
+        cursor: progress;
+    }
+
+    .emi-breadcrumb .js-switchCategories-small {
+        width: 140px;
+    }
+</style>
+
+    <div class="emi-sectionHeaderTitle">
+        <div class="js-breadcrumbWrapper">
+            
+    <div class="emi-breadcrumb js-breadcrumb" data-switchurls="">
+                <ol>
+                                    <li>
+                                        <a class="js-breadcrumb-display js-breadcrumb-display-0" href="/Retail/Datasets">Retail category / Datasets</a>
+                                    </li>
+                                    <li>
+                                        <i class="icon-tri"></i>
+                                        <span>RegionalPowerPrices</span>
+                                    </li>
+
+                    
+
+                    <li class="js-switchCategoryListItem">
+                    </li>
+                        
+                   
+                </ol>
+
+        </div>
+
+
+    <script>
+        function switchCategories() {
+            $('body').addClass('wait');
+            var $control = $(this);
+            var category = $control.val();
+            var switchUrl = $('.js-breadcrumb').data('switchurls')[category];
+
+            document.location.href = switchUrl;
+        }
+
+
+        $(function () {
+            $('.js-breadcrumb').on('change', '.js-switchCategories', switchCategories);
+        });
+    </script>
+    </div>
+    </div>
+
+
+
+
+</div>
+
+<div class="emi-wrapContent emi-main">
+
+
+    <div class="emi-left-col">
+
+
+
+
+        <script src="/bundles/datasets?v=FbUAyJA5XDygCxEm4Hm1qp3YuEu1OkYlFizfFiQe-hk1"></script>
+
+
+        <div >
+            
+    <div class="actionRight">
+        
+
+
+
+
+
+
+    <a class="js-shortcode-button emi-btn permalink " data-context="Fixed" data-instance="0" data-permalinkid="js-permalinkFixed" data-short-code="https://www.emi.ea.govt.nz/Retail/Datasets/RegionalPowerPrices">
+        
+        <div class="js-permalinkAnchorFixed" data-instance="0"></div>
+
+        
+        <i class="icon-link"></i>
+        <span class="emi-permalink-fix">Permalink</span>
+    </a>
+<div class="js-permalinkFixed shortCodeContainer" data-instance="0" style="visibility:hidden;">
+    <p class="js-linkText">Link to this view:</p>
+    <p><a href="https://www.emi.ea.govt.nz/Retail/Datasets/RegionalPowerPrices"  class="js-shortCodeLink">www.emi.ea.govt.nz/Retail/Datasets/RegionalPowerPrices</a></p>
+</div>
+
+    </div>
+    <div class="emi-m-b-2x">
+            <p class="emi-m-b-1x">Retail datasets</p>
+                <h1 class="emi-m-t-1x emi-m-b-5x">RegionalPowerPrices</h1>
+        <div class="clearfix"></div>
+
+    </div>
+
+<table class="table table-striped table-condensed table-clean">
+    <thead>
+        <tr style="text-align:left;">
+                <th style="padding-left:10px;">
+                    <a href="/Retail/Datasets"><i class="icon-arrow emi-icon-flip"></i></a>
+                    Name
+                </th>
+            <th>Date modified</th>
+            <th>File size</th>
+        </tr>
+    </thead>
+
+            <tr>
+                    <td class="expand-column csv"><a href="/Retail/Datasets/RegionalPowerPrices/20260531_AveragePowerUseAndCosts.csv">20260531_AveragePowerUseAndCosts.csv</a></td>
+                    <td class="two"><a href="/Retail/Datasets/RegionalPowerPrices/20260531_AveragePowerUseAndCosts.csv">03 Sep 2026</a></td>
+                    <td>
+                        <a href="/Retail/Datasets/RegionalPowerPrices/20260531_AveragePowerUseAndCosts.csv">
+                                <span>109 KB</span>
+
+                        </a></td>
+
+            </tr>
+
+</table>
+
+
+
+        </div>
+
+    </div>
+
+
+    <div class="emi-right-col">
+            <div class="emi-right-col-grey">
+                <div class="emi-right-col-header">
+                    <span>What are datasets?</span>
+                </div>
+                <div class="emi-right-col-content emi-p-t-3x">
+                    <p>Datasets are collections of files that often contain large volumes of data and are available for immediate download. Dataset users are typically analysts familiar with the electricity industry and have a need to obtain a large set of data or specific data on a regular basis.</p>
+                </div>
+            </div>
+        
+                    <div class="emi-right-col-header">
+            
+                <i class="icon-datasets"></i>
+                <span>Trending retail datasets</span>
+                    <i class="icon-questionmark" data-toggle="tooltip" title="Click an item below and check out the most popular datasets."></i>
+
+            </div>
+            <div class="emi-right-col-content">
+                    <div class="emi-right-col-item">
+                    <h3>No datasets found</h3>
+                    </div>
+        </div>
+
+
+            <div class="emi-right-col-grey">
+                <div class="emi-right-col-header">
+                    <span>Check a term</span>
+                </div>
+                <div class="emi-right-col-content emi-p-t-3x">
+                        <p>Visit the <a class="emi-link-no-arrow" href="/Glossary" target="_blank">glossary</a> for a list of defined terms used on the website.</p>
+                </div>
+            </div>
+            <div class="emi-right-col-grey emi-m-t-4x">
+                <div class="emi-right-col-header">
+                    <span>Have a question?</span>
+                </div>
+                <div class="emi-right-col-content emi-p-t-3x">
+                    <p>
+                        Visit the <a class="emi-link-no-arrow" href="https://forum.emi.ea.govt.nz" target="_blank">forum</a> to see if the information you are looking for is already available or ask a question to see if some of our informed users or staff can help?
+                    </p>
+                </div>
+            </div>
+            <div class="emi-right-col-grey">
+                <div class="emi-right-col-header">
+                    <span>Alternative access to datasets</span>
+                </div>
+                <div class="emi-right-col-content emi-p-t-3x">
+                    <p>Alternative methods are supported to connect to EMI datasets. These methods better facilitate downloading many files or automating regular downloads. See  <a target="_blank" href="https://www.emi.ea.govt.nz/Forum/thread/new-access-arrangements-to-emi-datasets-retirement-of-anonymous-ftp/">here</a> for more information.</p>
+                </div>
+            </div>
+        
+    </div>
+
+  
+</div>
+
+
+
+<script>
+    var $Category = 'Retail';
+</script>
+
+
+    <div class="clearfix"></div>
+    <div class="js-fullscreen-mode">
+        <footer>
+            
+
+
+
+<div class="emi-footer">
+    
+    <div class="emi-footer-logos">
+        <a href="http://www.ea.govt.nz/">
+            <img src="/Content/images/ea-logo.png" alt="Electricity Authority - We're the regulator of the electricity market in New Zealand." />
+        </a>
+        <a class="govt-logo" href="https://www.govt.nz/"></a>
+    </div>
+    <p>
+        
+        <span>EMI email: <a href="mailto:info@ea.govt.nz?subject=EMI enquiry: ">info@ea.govt.nz</a></span>
+        <span><a href="https://www.ea.govt.nz/copyright-disclaimer-transparency/" target="_blank">Copyright, disclaimer and transparency statement</a></span>
+        
+    </p>
+    <p>© 2026  Copyright material on this site is protected by copyright owned by the Electricity Authority or its licensors.</p>
+    <p style="color:lightgrey;font-size:x-small;float:left">v5:3:1835:254 - 0BRM - 18/10/2026 09:07:05</p>
+</div>
+
+
+
+            <div id="mainContent">
+                <div class="emi-wrapContent"></div>
+            </div>
+
+        </footer>
+    </div>
+    
+<script type="text/javascript">
+    $(function () { //shorthand document.ready function
+        $("#icnheadersearch").click(function () {
+            var frm = $("#HeaderSearchForm");
+            $(frm).submit();
+        });
+
+        $('#HeaderSearchForm').on('submit', function (e) { //use on if jQuery 1.7+
+            $("#qparams").val("q=" + $("#searchfilter").val());
+
+        });
+    });
+</script>
+
+
+</body>
+</html>
+
+    <script>
+        var $baseReturnUrl = 'https://forum.emi.ea.govt.nz/members/logon?ReturnUrl=';
+        var $returnUrl = 'https://forum.emi.ea.govt.nz/members/logon?ReturnUrl=https://www.emi.ea.govt.nz/Retail/Datasets/RegionalPowerPrices';
+    </script>
+<script>
+    $(document).ready(function () {
+
+        //$('body').tooltip({
+        //    selector: '[data-toggle="tooltip"]',
+        //    container: 'body',
+        //    boundary: "window",
+        //    placement: 'bottom',
+        //    trigger: 'hover',
+        //});
+
+    $('[data-toggle=tooltip]').tooltip({ placement: 'bottom', animation: true, delay: { show: 800, hide: 100 } });
+    $('[data-toggle=tooltip]').on('mouseleave', function () {
+        $('[data-toggle=tooltip]').tooltip('hide');
+    });
+});
+
+var $defaultUserImage = '/Content/Forum/defaultGravatar.png?width=20&amp;crop=0,0,20,20';
+
+</script>
+
