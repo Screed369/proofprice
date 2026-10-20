@@ -152,7 +152,7 @@ export interface Match {
 /** DRG code ("B70A", or "B70" for every variant) or plain words matched against the MOH condition names (every word must appear). */
 export function findConditions(rows: DrgRow[], service: string): Match[] {
   const q = service.trim();
-  if (q.length < 2) throw new InputError("service is required: a condition in plain words ('stroke', 'pneumonia', 'dengue') or a DRG code such as B70A.");
+  if (q.length < 2) throw new InputError("service is required: a condition in plain words ('stroke', 'dementia', 'delirium') or a DRG code such as B70A.");
   const all = new Map<string, string>();
   for (const r of rows) if (!all.has(r.drg)) all.set(r.drg, r.description);
   const list = [...all].map(([drg, description]) => ({ drg, description }));
