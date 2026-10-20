@@ -1,0 +1,638 @@
+URL: https://schedule.pharmac.govt.nz/pub/schedule/archive/2026/2026-08-10/Schedule_2026-08-10.xml
+Fetched: 2026-10-20T08:45:12Z from GitHub Actions
+Status, type, bytes: 200 application/xml 2876983
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=2592000
+content-type: application/xml
+date: Tue, 20 Oct 2026 08:45:11 GMT
+etag: "2be637-658b8524925c2-gzip"
+last-modified: Mon, 10 Aug 2026 21:48:58 GMT
+server: Caddy
+server: Apache
+strict-transport-security: max-age=31536000; includeSubDomains
+vary: Accept-Encoding
+
+=== FILE TYPE: XML 1.0 document, Unicode text, UTF-8 text, with very long lines (471)
+=== FIRST 30000 BYTES
+<?xml version="1.0" encoding="utf-8"?>
+<Schedule xmlns:schedule="http://schedule.pharmac.govt.nz/2006/07/Schedule#" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://schedule.pharmac.govt.nz/2006/07/Schedule#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:nzmt="nzmt.org.nz" xsi:schemaLocation="http://schedule.pharmac.govt.nz/2006/07/Schedule# http://schedule.pharmac.govt.nz/2006/07/Schedule.xsd">
+  <Front>
+    <Title>Pharmaceutical Schedule</Title>
+    <Country>New Zealand</Country>
+    <Edition>August 2026</Edition>
+    <Volume>33</Volume>
+    <Number>2</Number>
+    <Published>2026-08-10</Published>
+  </Front>
+  <Section ID="B">
+    <Name>Community Pharmaceuticals</Name>
+    <ATC1 ID="A01">
+      <Name>Alimentary Tract and Metabolism</Name>
+      <ATC2 ID="A0101">
+        <Name>Antacids and Antiflatulents</Name>
+        <ATC3 ID="A010102">
+          <Name>Antacids and Reflux Barrier Agents</Name>
+          <Chemical ID="C0101021021">
+            <Name>Alginic acid</Name>
+            <Formulation ID="F010102102103" Rank="2" Units="sach" Weight="225">
+              <Name>Sodium alginate 225 mg and magnesium alginate 87.5 mg per sachet</Name>
+              <Brand ID="B01010210210301">
+                <Name>Gaviscon Infant</Name>
+                <Pack ID="P494275" Specified="true" nzmt:ctpp_id="50092391000117103">
+                  <Quantity>30</Quantity>
+                  <Subsidy>8.06</Subsidy>
+                  <Price>8.06</Price>
+                  <Alternate>8.06</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0101022125" Statim="Must">
+            <Name>Sodium alginate</Name>
+            <Formulation ID="F010102212525" Rank="3" Units="ml">
+              <Name>Oral liq 500 mg with sodium bicarbonate 267 mg and calcium carbonate 160 mg per 10 ml</Name>
+              <Brand ID="B01010221252525">
+                <Name>Acidex</Name>
+                <Pack ID="P2196786" Specified="true" nzmt:ctpp_id="50031441000117100">
+                  <Quantity>500</Quantity>
+                  <Subsidy>1.50</Subsidy>
+                  <Price>7.50</Price>
+                  <Alternate>1.50</Alternate>
+                  <Surcharge>0.01200</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010102212526" Rank="1" Units="tab">
+              <Name>Tab 500 mg with sodium bicarbonate 267 mg and calcium carbonate 160 mg - peppermint flavour</Name>
+              <Brand ID="B01010221252625" ToBeDelisted="2027-07-01">
+                <Name>Gaviscon Extra Strength</Name>
+                <Pack ID="P2215241" Specified="true" nzmt:ctpp_id="50305121000117107">
+                  <Quantity>60</Quantity>
+                  <Subsidy>1.80</Subsidy>
+                  <Price>19.05</Price>
+                  <Alternate>1.80</Alternate>
+                  <Surcharge>0.28750</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+        </ATC3>
+        <ATC3 ID="A010104">
+          <Name>Phosphate Binding Agents</Name>
+          <Chemical ID="C0101041038" Statim="Must">
+            <Name>Aluminium hydroxide</Name>
+            <Formulation ID="F010104103804" Rank="1" Units="tab" Weight="600">
+              <Name>Tab 600 mg</Name>
+              <Brand ID="B01010410380401">
+                <Name>Alu-Tab</Name>
+                <Pack ID="P200417" Specified="true" nzmt:ctpp_id="50000401000117102">
+                  <Quantity>100</Quantity>
+                  <Subsidy>12.56</Subsidy>
+                  <Price>12.56</Price>
+                  <Alternate>12.56</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0101041191">
+            <Name>Calcium carbonate</Name>
+            <Formulation ID="F010104119127" Rank="3" Units="ml" Weight="1250">
+              <Name>Oral liq 1,250 mg per 5 ml (500 mg elemental per 5 ml)</Name>
+              <Rule Type="SubRxF"/>
+              <div xmlns="http://www.w3.org/1999/xhtml" class="Note">
+                <p>Only when prescribed for patients unable to swallow calcium carbonate tablets or where calcium carbonate tablets are inappropriate and the prescription is endorsed accordingly.</p>
+              </div>
+              <Brand ID="B01010411912725">
+                <Name>Roxane</Name>
+                <Pack ID="P2428407" Specified="true" nzmt:ctpp_id="50148841000117103">
+                  <Quantity>500</Quantity>
+                  <Subsidy>39.00</Subsidy>
+                  <Price>39.00</Price>
+                  <Alternate>39.00</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+              <Brand ID="B01010411912726" S29="true">
+                <Name>Calcium carbonate PAI</Name>
+                <Rule Type="Wastage"/>
+                <Pack ID="P2652935" Specified="true" nzmt:ctpp_id="50310501000117102">
+                  <Quantity>473</Quantity>
+                  <Subsidy>47.30</Subsidy>
+                  <Price>47.30</Price>
+                  <Alternate>47.30</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+        </ATC3>
+      </ATC2>
+      <ATC2 ID="A0104">
+        <Name>Antidiarrhoeals</Name>
+        <ATC3 ID="A010401">
+          <Name>Agents Which Reduce Motility</Name>
+          <Chemical ID="C0104011728" Statim="Must">
+            <Name>Loperamide hydrochloride</Name>
+            <Rule Type="FormMax" Value="30" Attribute="PSO"/>
+            <Formulation ID="F010401172801" Rank="2" Units="cap" Weight="2">
+              <Name>Cap 2 mg</Name>
+              <Brand ID="B01040117280125" PSS="2028-06-30">
+                <Name>Diamide Relief</Name>
+                <Pack ID="P2365545" Specified="true" nzmt:ctpp_id="50119711000117109">
+                  <Quantity>400</Quantity>
+                  <Subsidy>12.00</Subsidy>
+                  <Price>12.00</Price>
+                  <Alternate>12.00</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010401172802" Rank="1" Units="tab" Weight="2">
+              <Name>Tab 2 mg</Name>
+              <Brand ID="B01040117280225">
+                <Name>Nodia</Name>
+                <Pack ID="P2184427" Specified="true" nzmt:ctpp_id="50030221000117103">
+                  <Quantity>400</Quantity>
+                  <Subsidy>10.75</Subsidy>
+                  <Price>10.75</Price>
+                  <Alternate>10.75</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+        </ATC3>
+        <ATC3 ID="A010404">
+          <Name>Rectal and Colonic Anti-inflammatories</Name>
+          <Chemical ID="C0104041168">
+            <Name>Budesonide</Name>
+            <Formulation ID="F010404116809" Rank="2" Units="cap" Weight="3">
+              <Name>Cap modified-release 3 mg</Name>
+              <Rule Attribute="Subsidy" Type="Special" xlink:href="SA2535"/>
+              <Request To="HealthPAC" For="Subsidy" Form="SA2535">
+                <Title>
+                  <range>Budesonide - Cap 3 mg Controlled Release</range>
+                </Title>
+                <Case When="Initial application" Category="Crohn's disease">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                      <and/>
+                      <ci type="logical" class="Indication">Mild to moderate ileal, ileocaecal or proximal Crohn's
+          disease</ci>
+                      <apply>
+                        <or/>
+                        <ci type="logical" class="Indication">Diabetes</ci>
+                        <ci type="logical" class="Indication">Cushingoid habitus</ci>
+                        <ci type="logical" class="Indication">Osteoporosis where there is significant risk of
+            fracture</ci>
+                        <ci type="logical" class="Indication">Severe acne following treatment with conventional
+            corticosteroid therapy</ci>
+                        <ci type="logical" class="Indication">History of severe psychiatric problems associated
+            with corticosteroid treatment</ci>
+                        <ci type="logical" class="Indication">History of major mental illness (such as bipolar
+            affective disorder) where the risk of conventional corticosteroid treatment causing
+            relapse is considered to be high</ci>
+                        <ci type="logical" class="Indication">Relapse during pregnancy (where conventional
+            corticosteroids are considered to be contraindicated)</ci>
+                      </apply>
+                    </apply>
+                  </math>
+                  <Applicant>any relevant practitioner</Applicant>
+                  <Term Measure="patient's lifetime"/>
+                </Case>
+                <Case When="Initial application" Category="collagenous and lymphocytic colitis (microscopic colitis)">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <ci type="logical" class="Indication">Patient has a diagnosis of microscopic colitis
+        (collagenous or lymphocytic colitis) by colonoscopy with biopsies</ci>
+                  </math>
+                  <Applicant>any relevant practitioner</Applicant>
+                  <Term Measure="patient's lifetime"/>
+                </Case>
+                <Case When="Initial application" Category="gut Graft versus Host disease">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <ci type="logical" class="Indication">Patient has a gut Graft versus Host disease following
+        allogenic bone marrow transplantation*</ci>
+                  </math>
+                  <Applicant>any relevant practitioner</Applicant>
+                  <Term Measure="month">6</Term>
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="Note">
+                    <p>Indication marked with * is an unapproved indication.</p>
+                  </div>
+                </Case>
+                <Case When="Initial application" Category="non-cirrhotic autoimmune hepatitis">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                      <and/>
+                      <ci type="logical" class="Indication">Patient has autoimmune hepatitis*</ci>
+                      <ci type="logical" class="Indication">Patient does not have cirrhosis</ci>
+                      <apply>
+                        <or/>
+                        <ci type="logical" class="Indication">Diabetes</ci>
+                        <ci type="logical" class="Indication">Cushingoid habitus</ci>
+                        <ci type="logical" class="Indication">Osteoporosis where there is significant risk of
+            fracture</ci>
+                        <ci type="logical" class="Indication">Severe acne following treatment with conventional
+            corticosteroid therapy</ci>
+                        <ci type="logical" class="Indication">History of severe psychiatric problems associated
+            with corticosteroid treatment</ci>
+                        <ci type="logical" class="Indication">History of major mental illness (such as bipolar
+            affective disorder) where the risk of conventional corticosteroid treatment causing
+            relapse is considered to be high</ci>
+                        <ci type="logical" class="Indication">Relapse during pregnancy (where conventional
+            corticosteroids are considered to be contraindicated)</ci>
+                        <ci type="logical" class="Indication">Adolescents with poor linear growth (where
+            conventional corticosteroid use may limit further growth) </ci>
+                      </apply>
+                    </apply>
+                  </math>
+                  <Applicant>any relevant practitioner</Applicant>
+                  <Term Measure="month">6</Term>
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="Note">
+                    <p>Indication marked with * is an unapproved indication.</p>
+                  </div>
+                </Case>
+                <Case When="Renewal" Category="gut Graft versus Host disease" Form="SA0459 SA0488 SA0512 SA0698 SA0913 SA1155 SA1886 SA2535">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <ci type="logical" class="Indication">The treatment remains appropriate and the patient is
+        benefiting from treatment</ci>
+                  </math>
+                  <Applicant>any relevant practitioner</Applicant>
+                  <Term Measure="month">6</Term>
+                </Case>
+                <Case When="Renewal" Category="non-cirrhotic autoimmune hepatitis" Form="SA0459 SA0488 SA0512 SA0698 SA0913 SA1155 SA1886 SA2535">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <ci type="logical" class="Indication">The treatment remains appropriate and the patient is
+        benefiting from treatment</ci>
+                  </math>
+                  <Applicant>any relevant practitioner</Applicant>
+                  <Term Measure="month">6</Term>
+                </Case>
+              </Request>
+              <Brand ID="B01040411680902" PSS="2028-06-30">
+                <Name>Budesonide Te Arai</Name>
+                <Pack ID="P2661454" Specified="true" nzmt:ctpp_id="50319351000117101">
+                  <Quantity>90</Quantity>
+                  <Subsidy>33.38</Subsidy>
+                  <Price>33.38</Price>
+                  <Alternate>33.38</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0104041606">
+            <Name>Hydrocortisone acetate</Name>
+            <Formulation ID="F010404160602" Rank="3" Units="g">
+              <Name>Rectal foam 10%, CFC-Free (14 applications)</Name>
+              <Brand ID="B01040416060201">
+                <Name>Colifoam</Name>
+                <Pack ID="P2611120" Specified="true" OP="true" nzmt:ctpp_id="50290921000117105">
+                  <Quantity>15</Quantity>
+                  <Subsidy>57.09</Subsidy>
+                  <Price>57.09</Price>
+                  <Alternate>57.09</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0104042144">
+            <Name>Sodium cromoglicate</Name>
+            <Formulation ID="F010404214406" Rank="2" Units="cap" Weight="100">
+              <Name>Cap 100 mg</Name>
+              <Brand ID="B01040421440601" S29="true">
+                <Name>Nalcrom</Name>
+                <Rule Type="Wastage"/>
+                <Pack ID="P2721023" Specified="true" nzmt:ctpp_id="50361191000117108">
+                  <Quantity>20</Quantity>
+                  <Subsidy>44.50</Subsidy>
+                  <Price>44.50</Price>
+                  <Alternate>44.50</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+              <Brand ID="B01040421440602">
+                <Name>Ralicrom</Name>
+                <Pack ID="P2628295" Specified="true" nzmt:ctpp_id="50294291000117106">
+                  <Quantity>100</Quantity>
+                  <Subsidy>113.35</Subsidy>
+                  <Price>113.35</Price>
+                  <Alternate>113.35</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+              <Brand ID="B01040421440603" S29="true">
+                <Name>Somex</Name>
+                <Rule Type="Wastage"/>
+                <Pack ID="P2719649" Specified="true" nzmt:ctpp_id="50360201000117103">
+                  <Quantity>100</Quantity>
+                  <Subsidy>365.00</Subsidy>
+                  <Price>365.00</Price>
+                  <Alternate>365.00</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+              <Brand ID="B01040421440604" S29="true">
+                <Name>Allergoval</Name>
+                <Rule Type="Wastage"/>
+                <Pack ID="P2721015" Specified="true" nzmt:ctpp_id="50361181000117105">
+                  <Quantity>100</Quantity>
+                  <Subsidy>125.70</Subsidy>
+                  <Price>125.70</Price>
+                  <Alternate>125.70</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0104042205">
+            <Name>Sulfasalazine</Name>
+            <Formulation ID="F010404220501" Rank="1" Units="tab" Weight="500" Statim="Must">
+              <Name>Tab 500 mg</Name>
+              <Brand ID="B01040422050101">
+                <Name>Salazopyrin</Name>
+                <Pack ID="P251615" Specified="true" nzmt:ctpp_id="50052851000117109">
+                  <Quantity>100</Quantity>
+                  <Subsidy>19.49</Subsidy>
+                  <Price>19.49</Price>
+                  <Alternate>19.49</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404220502" Rank="1" Units="tab" Weight="500" Statim="Must">
+              <Name>Tab EC 500 mg</Name>
+              <Brand ID="B01040422050201">
+                <Name>Salazopyrin EN</Name>
+                <Pack ID="P251585" Specified="true" nzmt:ctpp_id="50052831000117104">
+                  <Quantity>100</Quantity>
+                  <Subsidy>20.54</Subsidy>
+                  <Price>20.54</Price>
+                  <Alternate>20.54</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0104042384">
+            <Name>Olsalazine</Name>
+            <Formulation ID="F010404238401" Rank="2" Units="cap" Weight="250">
+              <Name>Cap 250 mg</Name>
+              <Brand ID="B01040423840101">
+                <Name>Dipentum</Name>
+                <Pack ID="P588679" Specified="true" nzmt:ctpp_id="50097641000117100">
+                  <Quantity>100</Quantity>
+                  <Subsidy>53.00</Subsidy>
+                  <Price>53.00</Price>
+                  <Alternate>53.00</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404238402" Rank="1" Units="tab" Weight="500">
+              <Name>Tab 500 mg</Name>
+              <Brand ID="B01040423840201">
+                <Name>Dipentum</Name>
+                <Pack ID="P426342" Specified="true" nzmt:ctpp_id="50084531000117104">
+                  <Quantity>100</Quantity>
+                  <Subsidy>93.37</Subsidy>
+                  <Price>93.37</Price>
+                  <Alternate>93.37</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+              <Brand ID="B01040423840202" S29="true">
+                <Name>Atnahs Olsalazine</Name>
+                <Rule Type="Wastage"/>
+                <Pack ID="P2641704" Specified="true" nzmt:ctpp_id="50303651000117108">
+                  <Quantity>60</Quantity>
+                  <Subsidy>56.02</Subsidy>
+                  <Price>56.02</Price>
+                  <Alternate>56.02</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0104042533">
+            <Name>Mesalazine</Name>
+            <Formulation ID="F010404253302" Rank="1" Units="tab" Weight="500">
+              <Name>Tab long-acting 500 mg</Name>
+              <Brand ID="B01040425330201">
+                <Name>Pentasa</Name>
+                <Pack ID="P768618" Specified="true" nzmt:ctpp_id="50111321000117101">
+                  <Quantity>100</Quantity>
+                  <Subsidy>56.10</Subsidy>
+                  <Price>56.10</Price>
+                  <Alternate>56.10</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404253303" Rank="5" Units="en">
+              <Name>Enema 1 g per 100 ml</Name>
+              <Brand ID="B01040425330301">
+                <Name>Pentasa</Name>
+                <Pack ID="P715867" Specified="true" nzmt:ctpp_id="50105001000117107">
+                  <Quantity>7</Quantity>
+                  <Subsidy>41.30</Subsidy>
+                  <Price>41.30</Price>
+                  <Alternate>41.30</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404253304" Rank="1" Units="tab" Weight="400">
+              <Name>Tab 400 mg</Name>
+              <Brand ID="B01040425330401">
+                <Name>Asacol</Name>
+                <Pack ID="P241113" nzmt:ctpp_id="50051561000117101">
+                  <Quantity>100</Quantity>
+                  <Subsidy>49.50</Subsidy>
+                  <Price>49.50</Price>
+                  <Alternate>49.50</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+                <Pack ID="P2536544" Specified="true" nzmt:ctpp_id="50051561000117101">
+                  <Quantity>100</Quantity>
+                  <Subsidy>49.50</Subsidy>
+                  <Price>49.50</Price>
+                  <Alternate>49.50</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+              <Brand ID="B01040425330402" S29="true">
+                <Name>Octasa</Name>
+                <Rule Type="Wastage"/>
+                <Pack ID="P2714523" Specified="true" nzmt:ctpp_id="50356821000117100">
+                  <Quantity>90</Quantity>
+                  <Subsidy>71.00</Subsidy>
+                  <Price>71.00</Price>
+                  <Alternate>71.00</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404253305" Rank="5" Units="supp" Weight="500">
+              <Name>Suppos 500 mg</Name>
+              <Brand ID="B01040425330501">
+                <Name>Asacol</Name>
+                <Pack ID="P462543" nzmt:ctpp_id="50087861000117101">
+                  <Quantity>20</Quantity>
+                  <Subsidy>22.80</Subsidy>
+                  <Price>22.80</Price>
+                  <Alternate>22.80</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+                <Pack ID="P2536560" Specified="true" nzmt:ctpp_id="50087861000117101">
+                  <Quantity>20</Quantity>
+                  <Subsidy>22.80</Subsidy>
+                  <Price>22.80</Price>
+                  <Alternate>22.80</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404253325" Rank="5" Units="supp" Weight="1000">
+              <Name>Suppos 1 g</Name>
+              <Brand ID="B01040425332525">
+                <Name>Pentasa</Name>
+                <Pack ID="P2111985" Specified="true" nzmt:ctpp_id="50019841000117108">
+                  <Quantity>28</Quantity>
+                  <Subsidy>50.96</Subsidy>
+                  <Price>50.96</Price>
+                  <Alternate>50.96</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404253327" Rank="2" Units="sach" Weight="1">
+              <Name>Modified release granules, 1 g </Name>
+              <Brand ID="B01040425332725">
+                <Name>Pentasa</Name>
+                <Pack ID="P2601354" Specified="true" OP="true" nzmt:ctpp_id="50129091000117106">
+                  <Quantity>100</Quantity>
+                  <Subsidy>118.10</Subsidy>
+                  <Price>118.10</Price>
+                  <Alternate>118.10</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404253328" Rank="1" Units="tab" Weight="800">
+              <Name>Tab 800 mg</Name>
+              <Brand ID="B01040425332825">
+                <Name>Asacol</Name>
+                <Pack ID="P2470616" nzmt:ctpp_id="50186641000117107">
+                  <Quantity>90</Quantity>
+                  <Subsidy>85.50</Subsidy>
+                  <Price>85.50</Price>
+                  <Alternate>85.50</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+                <Pack ID="P2536552" Specified="true" nzmt:ctpp_id="50186641000117107">
+                  <Quantity>90</Quantity>
+                  <Subsidy>85.50</Subsidy>
+                  <Price>85.50</Price>
+                  <Alternate>85.50</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+              <Brand ID="B01040425332826" S29="true">
+                <Name>Asacol S29</Name>
+                <Rule Type="Wastage"/>
+                <Pack ID="P2676982" Specified="true" nzmt:ctpp_id="50331031000117100">
+                  <Quantity>90</Quantity>
+                  <Subsidy>85.50</Subsidy>
+                  <Price>85.50</Price>
+                  <Alternate>85.50</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010404253329" Rank="1" Units="tab" Weight="1600">
+              <Name>Tab 1,600 mg</Name>
+              <Brand ID="B01040425332925" S29="true">
+                <Name>Asacol</Name>
+                <Rule Type="Wastage"/>
+                <Pack ID="P2709325" Specified="true" nzmt:ctpp_id="50352031000117107">
+                  <Quantity>60</Quantity>
+                  <Subsidy>85.50</Subsidy>
+                  <Price>85.50</Price>
+                  <Alternate>85.50</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0104044118">
+            <Name>Hydrocortisone acetate with pramoxine hydrochloride</Name>
+            <Formulation ID="F010404411825" Rank="3" Units="g" Weight="1">
+              <Name>Topical aerosol foam, 1% with pramoxine hydrochloride 1%</Name>
+              <Brand ID="B01040441182525" S29="true">
+                <Name>Proctofoam</Name>
+                <Pack ID="P2572176" Specified="true" OP="true" nzmt:ctpp_id="50266251000117106">
+                  <Quantity>10</Quantity>
+                  <Subsidy>26.55</Subsidy>
+                  <Price>26.55</Price>
+                  <Alternate>26.55</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+        </ATC3>
+      </ATC2>
+      <ATC2 ID="A0105">
+        <Name>Local preparations for Anal and Rectal Disorders</Name>
+        <ATC3 ID="A010501">
+          <Name>Antihaemorrhoidal Preparations</Name>
+          <Chemical ID="C0105011521">
+            <Name>Fluocortolone caproate with fluocortolone pivalate and cinchocaine</Name>
+            <Formulation ID="F010501152101" Rank="5" Units="supp" Weight="630">
+              <Name>Suppos 630 mcg, with fluocortolone pivalate 610 mcg, and cinchocaine hydrochloride 1 mg</Name>
+              <Brand ID="B01050115210101">
+                <Name>Ultraproct</Name>
+                <Pack ID="P257478" Specified="true" nzmt:ctpp_id="50055961000117108">
+                  <Quantity>12</Quantity>
+                  <Subsidy>8.61</Subsidy>
+                  <Price>8.61</Price>
+                  <Alternate>8.61</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+            <Formulation ID="F010501152102" Rank="3" Units="g">
+              <Name>Oint 950 mcg, with fluocortolone pivalate 920 mcg, and cinchocaine hydrochloride 5 mg per g</Name>
+              <Brand ID="B01050115210201">
+                <Name>Ultraproct</Name>
+                <Pack ID="P257451" Specified="true" OP="true" nzmt:ctpp_id="50055951000117106">
+                  <Quantity>30</Quantity>
+                  <Subsidy>13.05</Subsidy>
+                  <Price>13.05</Price>
+                  <Alternate>13.05</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
+            </Formulation>
+          </Chemical>
+          <Chemical ID="C0105011632">
+            <Name>Hydrocortisone with cinchocaine</Name>
+            <Formulation ID="F010501163201" Rank="3" Units="g">
+              <Name>Oint 5 mg with cinchocaine hydrochloride 5 mg per g</Name>
+              <Brand ID="B01050116320101">
+                <Name>Proctosedyl</Name>
+                <Pack ID="P208388" Specified="true" OP="true" nzmt:ctpp_id="50013821000117100">
+                  <Quantity>30</Quantity>
+                  <Subsidy>17.03</Subsidy>
+                  <Price>17.03</Price>
+                  <Alternate>17.03</Alternate>
+                  <Surcharge>0.00000</Surcharge>
+                </Pack>
+              </Brand>
