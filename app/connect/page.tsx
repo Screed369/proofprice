@@ -73,7 +73,7 @@ export default function Connect() {
       </p>
       <p>
         <a href="/">Home</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> ·{" "}
-        <a href="/openapi.json">openapi.json</a> · <a href="/method">Method</a> · Contact: <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
+        <a href="/openapi.json">openapi.json</a> · <a href="/method">Method</a> · <a href="/pricing">Pricing</a> · Contact: <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
       </p>
     </main>
   );

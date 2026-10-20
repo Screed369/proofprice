@@ -121,7 +121,7 @@ export default function Home() {
         <li>Aggregates only, and never a figure from fewer than 5 records. Asking prices are never shown as paid prices.</li>
       </ul>
       <p>
-        More on <a href="/trust">how we earn trust</a>, and the live <a href="/status">status of the price library</a>.
+        More on <a href="/trust">how we earn trust</a>, <a href="/pricing">pricing</a> (answers are free), and the live <a href="/status">status of the price library</a>.
       </p>
 
       <h2>For machines</h2>
