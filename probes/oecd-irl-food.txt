@@ -1,0 +1,32 @@
+URL: https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/IRL.A.PL+PPP.A0101..OECD?lastNObservations=5&format=csvfilewithlabels
+Fetched: 2026-10-20T12:54:55Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.sdmx.data+csv; charset=utf-8; labels=name; version=2 1656
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 20 Oct 2026 12:54:55 GMT
+content-type: application/vnd.sdmx.data+csv; charset=utf-8; labels=name; version=2
+cache-control: public,max-age=7200
+content-language: en,en-US
+last-modified: 2023-10-13
+vary: X-Range, Accept, Accept-Language, Accept-Encoding, Accept-Charset,Accept,Accept-Encoding,Accept-Encoding
+strict-transport-security: max-age=2592000
+content-disposition: attachment; filename="OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1,filtered,2026-10-20 14-54-55.csv"
+api-supported-versions: 1
+x-server-node: Server 1
+set-cookie: __cf_bm=ZCQOkaDHxCQWCCkFxEQ5.GbDLMxUmKpRBye4GppPuXs-1792500894.4965997-1.0.1.1-jrdT4YzegU.aq13n5yeFavvXpCXE21Kqo5SJ6u1SBw_ZMS4ugZl8lq498kR4owbhLiIG3NA2mib53yg0Bz5fomngIGgx4caJPo2MLAtSN2e8WRcz1bO0NDr2vjuhn3hP; HttpOnly; SameSite=None; Secure; Path=/; Domain=oecd.org; Expires=Tue, 20 Oct 2026 13:24:55 GMT
+cf-cache-status: MISS
+server: cloudflare
+cf-ray: a4d82c7e9c43f44f-LAX
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: CSV ASCII text
+=== FIRST 30000 BYTES
+STRUCTURE,STRUCTURE_ID,STRUCTURE_NAME,ACTION,REF_AREA,Reference area,FREQ,Frequency of observation,MEASURE,Measure,ANALYTICAL_CATEGORIES,Analytical categories,UNIT_MEASURE,Unit of measure,BASE_REF_AREA,Base reference area,TIME_PERIOD,Time period,OBS_VALUE,Observation value,OBS_STATUS,Observation status,UNIT_MULT,Unit multiplier
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,OECD,OECD,2024,,105,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,OECD,OECD,2023,,105,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PL,Price level,A0101,Food and non-alcoholic beverages,IX,Index,OECD,OECD,2022,,107,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,OECD,OECD,2024,,0.974,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,OECD,OECD,2023,,0.969,,,,0,Units
+DATAFLOW,OECD.SDD.TPS:DSD_PPP@DF_PPP(1.1),"PPP detailed results, 2022 onwards",I,IRL,Ireland,A,Annual,PPP,Purchasing power parities,A0101,Food and non-alcoholic beverages,XDC_USD,National currency per US dollar,OECD,OECD,2022,,1.02,,,,0,Units
