@@ -1,0 +1,29 @@
+URL: https://api.hkma.gov.hk/public/tender-invitations?lang=en&segment=tender&pagesize=5
+Fetched: 2026-10-20T23:41:38Z from GitHub Actions
+Status, type, bytes: 200 application/json 736
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Tue, 20 Oct 2026 23:41:38 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: acw_tc=2f3478b017925396980763053e321085e06ea62d45edf9ffdf32ff08a6e7cc;path=/;HttpOnly;Max-Age=1800
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+vary: Origin
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: X-Auth-Token
+X-Kong-Upstream-Latency: 14
+X-Kong-Proxy-Latency: 1
+Via: kong/2.5.1
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.aliyun.com;
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"header":{"success":true,"err_code":"0000","err_msg":"No error found"},"result":{"datasize":3,"records":[{"title":"Provision of Maintenance and Support Services for Firewall Systems","link":"https://egazette.gld.gov.hk/pdf?type=egn&year=2026&volume=30&gno=41&notice_no=6459&extra=0","date":"2026-10-09"},{"title":"Network Switches Upgrade","link":"https://egazette.gld.gov.hk/pdf?type=egn&year=2026&volume=30&gno=41&notice_no=6458&extra=0","date":"2026-10-09"},{"title":"Provision of a Next-Generation Supervisory CRM Platform and Application Migration of the Supervisory Records Enquiry and Maintenance System","link":"https://egazette.gld.gov.hk/pdf?type=egn&year=2026&volume=30&gno=40&notice_no=6275&extra=0","date":"2026-10-02"}]}}
