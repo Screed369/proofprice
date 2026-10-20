@@ -1,0 +1,35 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/14168/data?lang=en&outputFormat=json-stat2&valueCodes%5BTid%5D=top(3)&valueCodes%5BRegion%5D=03&valueCodes%5BContentsCode%5D=PrisRom
+Fetched: 2026-10-20T07:22:51Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 1926
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 20 Oct 2026 07:22:51 GMT
+server: 
+content-type: application/json; charset=UTF-8
+content-disposition: inline; filename="14168.json"
+content-disposition: inline; filename="14168.json"
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 102109769
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=46628573.359; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"version":"2.0","class":"dataset","label":"14168: Revenue and utilisation of rooms at hotels, by region and month","source":"Statistics Norway","updated":"2026-10-01T06:00:00Z","note":["[See list over changes in regional classifications](https://www.ssb.no/offentlig-sektor/kommunekatalog/endringer-i-de-regionale-inndelingene) (in Norwegian).\n"],"role":{"time":["Tid"],"geo":["Region"],"metric":["ContentsCode"]},"id":["Region","ContentsCode","Tid"],"size":[1,1,3],"dimension":{"Region":{"label":"region","category":{"index":{"03":0},"label":{"03":"Oslo - Oslove"}},"extension":{"elimination":false,"show":"code_value"},"link":{"describedby":[{"extension":{"Region":"urn:ssb:classification:klass:104"}}]}},"ContentsCode":{"label":"contents","category":{"index":{"PrisRom":0},"label":{"PrisRom":"Price per room (NOK)"},"unit":{"PrisRom":{"base":"NOK","decimals":0}}},"extension":{"elimination":false,"refperiod":{"PrisRom":"End of month"},"show":"value","measuringType":{"PrisRom":"Stock"},"priceType":{"PrisRom":"NotApplicable"},"adjustment":{"PrisRom":"None"},"alternativeText":{"PrisRom":"Price per room (NOK)"}}},"Tid":{"label":"month","category":{"index":{"2026M06":0,"2026M07":1,"2026M08":2},"label":{"2026M06":"2026M06","2026M07":"2026M07","2026M08":"2026M08"}},"extension":{"elimination":false,"show":"code"}}},"extension":{"px":{"infofile":"None","tableid":"14168","decimals":0,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"14168: Revenue and utilisation of rooms at hotels,","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["Region"],"matrix":"14168","subject-code":"tr","subject-area":"Transport and tourism"},"discontinued":null,"contact":[{"name":"Kristin Aasestad","organization":"Statistics Norway","phone":"40 90 23 44","mail":"kaa@ssb.no","raw":"Kristin Aasestad, Statistics Norway# +47 40 90 23 44#kaa@ssb.no"}]},"value":[2091,1644,1873]}
