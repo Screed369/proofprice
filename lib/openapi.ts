@@ -144,7 +144,8 @@ export function buildOpenApi(baseUrl: string) {
           summary: `${cat.history.title} (daily snapshots, ${joinAnd(historySources(cat).flatMap((s) => s.countries))})`,
           description: restWording(cat.history.description),
           parameters: [
-            ...parameters(cat.id, [...new Set(historySources(cat).flatMap((s) => s.countries))]),
+            // a category's own "months" (home sales: the rolling window) is replaced by the history length of the same name
+            ...parameters(cat.id, [...new Set(historySources(cat).flatMap((s) => s.countries))]).filter((x: { name: string }) => x.name !== "months"),
             { name: "days", in: "query", required: false, description: "How many recent days to include (2–366). Default 30.", schema: { type: "integer", minimum: 2, maximum: 366, default: 30 } },
             { name: "months", in: "query", required: false, description: "Instead of days: how many whole months of monthly history to return (2–360), for sources with long history loaded.", schema: { type: "integer", minimum: 2, maximum: 360 } },
           ],
