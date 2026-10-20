@@ -1,0 +1,20 @@
+URL: https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Property_and_Land_WebMercator/MapServer/57/query?where=SALEDATE%3E%3Ddate%272026-07-01%27&outFields=*&resultRecordCount=4&f=json&returnGeometry=false
+Fetched: 2026-10-20T18:53:17Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 72
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: must-revalidate,max-age=0,public
+Content-Length: 72
+Content-Type: application/json; charset=UTF-8
+ETag: "4fc6bde0"
+Vary: Origin
+X-Content-Type-Options: nosniff
+Date: Tue, 20 Oct 2026 18:53:17 GMT
+Set-Cookie: BIGipServerpool_maps2.dcgis.dc.gov_443_dc1=2165592586.47873.0000; path=/; Httponly; Secure
+Set-Cookie: TS01523410=01448d53dff8cd49ce938577edf909707530fa164b537e0fecb8ba50fd543f3c9b872e08c780d0d3114b6e9b63c325160f30beb6f7b15c9f9aa3eb81dd1e631ef2a8049182; Path=/
+
+=== FILE TYPE: JSON text data
+=== FIRST 9000 BYTES
+{"error":{"code":400,"message":"Failed to execute query.","details":[]}}
