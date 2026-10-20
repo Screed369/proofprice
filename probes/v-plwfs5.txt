@@ -1,0 +1,130 @@
+URL: https://mapy.geoportal.gov.pl/wss/service/rcn?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:lokale&count=2&filter=%3Cfes%3AFilter%20xmlns%3Afes%3D%22http%3A//www.opengis.net/fes/2.0%22%3E%3Cfes%3AAnd%3E%3Cfes%3APropertyIsGreaterThanOrEqualTo%3E%3Cfes%3AValueReference%3EDOK_DATA%3C/fes%3AValueReference%3E%3Cfes%3ALiteral%3E2026-07-01%3C/fes%3ALiteral%3E%3C/fes%3APropertyIsGreaterThanOrEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETERYT%3C/fes%3AValueReference%3E%3Cfes%3ALiteral%3E1465%3C/fes%3ALiteral%3E%3C/fes%3APropertyIsEqualTo%3E%3C/fes%3AAnd%3E%3C/fes%3AFilter%3E
+Fetched: 2026-10-20T18:48:23Z from GitHub Actions
+Status, type, bytes: 200 text/xml; subtype="gml/3.2.1"; charset=UTF-8 6830
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Tue, 20 Oct 2026 18:48:22 GMT
+Content-Type: text/xml; subtype="gml/3.2.1"; charset=UTF-8
+Content-Length: 6830
+Access-Control-Allow-Origin: *
+Set-Cookie: gahLaQu1eeYooCu=!KS9fBopcZtben/blQI0cK6yPNdD2PhYMBtQRYlEc0WWRi0fQb5hor3fY579VmqjYA364lGZWT8a9nM0=; path=/; Httponly; Secure
+Set-Cookie: TS017e0801=01e9e35b22c75514cbec6a41ef2f954d295145efbc344cb33fc562cbd08d498a0cc031329b2b8582a4908adb3961032f6ca9d80eb3c2b16c1fee2b04cce85cfbb8e986b744; Path=/; Domain=.mapy.geoportal.gov.pl
+Vary: Accept-Encoding
+
+=== FILE TYPE: XML 1.0 document, Unicode text, UTF-8 text, with very long lines (678)
+=== FIRST 9000 BYTES
+<?xml version='1.0' encoding="UTF-8" ?>
+<wfs:FeatureCollection
+   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"
+   xmlns:gml="http://www.opengis.net/gml/3.2"
+   xmlns:wfs="http://www.opengis.net/wfs/2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://mapserver.gis.umn.edu/mapserver https://mapy.geoportal.gov.pl/wss/service/rcn?SERVICE=WFS&amp;VERSION=2.0.0&amp;REQUEST=DescribeFeatureType&amp;TYPENAME=ms:lokale&amp;OUTPUTFORMAT=application%2Fgml%2Bxml%3B%20version%3D3.2 http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd http://www.opengis.net/gml/3.2 http://schemas.opengis.net/gml/3.2.1/gml.xsd"
+   timeStamp="2026-10-20T20:48:23" numberMatched="unknown" numberReturned="2"
+   next="https://mapy.geoportal.gov.pl/wss/service/rcn?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;typeNames=ms%3Alokale&amp;count=2&amp;filter=%3Cfes%3AFilter%20xmlns%3Afes%3D%22http%3A%2F%2Fwww.opengis.net%2Ffes%2F2.0%22%3E%3Cfes%3AAnd%3E%3Cfes%3APropertyIsGreaterThanOrEqualTo%3E%3Cfes%3AValueReference%3EDOK_DATA%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E2026-07-01%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsGreaterThanOrEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETERYT%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E1465%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3C%2Ffes%3AAnd%3E%3C%2Ffes%3AFilter%3E&amp;STARTINDEX=2">
+      <wfs:boundedBy>
+      	<gml:Envelope srsName="urn:ogc:def:crs:EPSG::2180">
+      		<gml:lowerCorner>487828.728447 638031.175524</gml:lowerCorner>
+      		<gml:upperCorner>491965.560753 642349.025110</gml:upperCorner>
+      	</gml:Envelope>
+      </wfs:boundedBy>
+    <wfs:member>
+      <ms:lokale gml:id="lokale.53964504">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="urn:ogc:def:crs:EPSG::2180">
+        		<gml:lowerCorner>491965.560753 642349.025110</gml:lowerCorner>
+        		<gml:upperCorner>491965.560753 642349.025110</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:GEOMETRIA>
+          <gml:Point gml:id="lokale.53964504.1" srsName="urn:ogc:def:crs:EPSG::2180">
+            <gml:pos>491965.560753 642349.025110</gml:pos>
+          </gml:Point>
+        </ms:GEOMETRIA>
+        <ms:gid>53964504</ms:gid>
+        <ms:SERWIS_RCN></ms:SERWIS_RCN>
+        <ms:TERYT>1465</ms:TERYT>
+        <ms:TRAN_PRZESTRZEN_NAZW>PL.PZGiK.5346.RCN</ms:TRAN_PRZESTRZEN_NAZW>
+        <ms:TRAN_LOKALNY_ID_IIP>aafdb693-a580-4b38-bac1-0d873e583695</ms:TRAN_LOKALNY_ID_IIP>
+        <ms:TRAN_WERSJA_ID gml:id="lokale.53964504.TRAN_WERSJA_ID"><gml:timePosition>2026-10-01T11:30:31Z</gml:timePosition></ms:TRAN_WERSJA_ID>
+        <ms:TRAN_OZNACZENIE_TRANS>637123</ms:TRAN_OZNACZENIE_TRANS>
+        <ms:TRAN_RODZAJ_TRANS>wolnyRynek</ms:TRAN_RODZAJ_TRANS>
+        <ms:TRAN_RODZAJ_RYNKU>rynekWtorny</ms:TRAN_RODZAJ_RYNKU>
+        <ms:TRAN_SPRZEDAJACY>osobaPrawna</ms:TRAN_SPRZEDAJACY>
+        <ms:TRAN_KUPUJACY>osobaFizyczna</ms:TRAN_KUPUJACY>
+        <ms:TRAN_CENA_BRUTTO>800000</ms:TRAN_CENA_BRUTTO>
+        <ms:TRAN_VAT>59259.26</ms:TRAN_VAT>
+        <ms:DOK_OZNACZENIE>11253/2026</ms:DOK_OZNACZENIE>
+        <ms:DOK_DATA gml:id="lokale.53964504.DOK_DATA"><gml:timePosition>2026-07-03</gml:timePosition></ms:DOK_DATA>
+        <ms:DOK_TWORCA>WOJCIECH ŻUŁAWA</ms:DOK_TWORCA>
+        <ms:NIER_RODZAJ>nieruchomoscLokalowa</ms:NIER_RODZAJ>
+        <ms:NIER_PRAWO>wlasnoscLokaluWrazZPrawemZwiazanym</ms:NIER_PRAWO>
+        <ms:NIER_UDZIAL>1/1</ms:NIER_UDZIAL>
+        <ms:NIER_POW_GRUNTU></ms:NIER_POW_GRUNTU>
+        <ms:NIER_OPIS></ms:NIER_OPIS>
+        <ms:NIER_CENA_BRUTTO>800000</ms:NIER_CENA_BRUTTO>
+        <ms:NIER_VAT>59259.26</ms:NIER_VAT>
+        <ms:LOK_ID_LOKALU>146511_8.1102.65_BUD.3_LOK</ms:LOK_ID_LOKALU>
+        <ms:LOK_FUNKCJA>mieszkalna</ms:LOK_FUNKCJA>
+        <ms:LOK_LICZBA_IZB>3</ms:LOK_LICZBA_IZB>
+        <ms:LOK_NR_KOND>1</ms:LOK_NR_KOND>
+        <ms:LOK_POW_UZYT>63.21</ms:LOK_POW_UZYT>
+        <ms:LOK_POW_PRZYN></ms:LOK_POW_PRZYN>
+        <ms:LOK_CENA_BRUTTO>800000</ms:LOK_CENA_BRUTTO>
+        <ms:LOK_VAT>59259.26</ms:LOK_VAT>
+        <ms:LOK_INFO></ms:LOK_INFO>
+        <ms:LOK_ADRES>MSC:Warszawa;UL:ulica Janowiecka;NR_PORZ:17</ms:LOK_ADRES>
+      </ms:lokale>
+    </wfs:member>
+    <wfs:member>
+      <ms:lokale gml:id="lokale.53967002">
+        <gml:boundedBy>
+        	<gml:Envelope srsName="urn:ogc:def:crs:EPSG::2180">
+        		<gml:lowerCorner>487828.728447 638031.175524</gml:lowerCorner>
+        		<gml:upperCorner>487828.728447 638031.175524</gml:upperCorner>
+        	</gml:Envelope>
+        </gml:boundedBy>
+        <ms:GEOMETRIA>
+          <gml:Point gml:id="lokale.53967002.1" srsName="urn:ogc:def:crs:EPSG::2180">
+            <gml:pos>487828.728447 638031.175524</gml:pos>
+          </gml:Point>
+        </ms:GEOMETRIA>
+        <ms:gid>53967002</ms:gid>
+        <ms:SERWIS_RCN></ms:SERWIS_RCN>
+        <ms:TERYT>1465</ms:TERYT>
+        <ms:TRAN_PRZESTRZEN_NAZW>PL.PZGiK.5346.RCN</ms:TRAN_PRZESTRZEN_NAZW>
+        <ms:TRAN_LOKALNY_ID_IIP>ee3a2ea6-b27b-4095-90bd-3b092a5fb85f</ms:TRAN_LOKALNY_ID_IIP>
+        <ms:TRAN_WERSJA_ID gml:id="lokale.53967002.TRAN_WERSJA_ID"><gml:timePosition>2026-08-18T14:53:33Z</gml:timePosition></ms:TRAN_WERSJA_ID>
+        <ms:TRAN_OZNACZENIE_TRANS>632403</ms:TRAN_OZNACZENIE_TRANS>
+        <ms:TRAN_RODZAJ_TRANS>wolnyRynek</ms:TRAN_RODZAJ_TRANS>
+        <ms:TRAN_RODZAJ_RYNKU>rynekPierwotny</ms:TRAN_RODZAJ_RYNKU>
+        <ms:TRAN_SPRZEDAJACY>osobaPrawna</ms:TRAN_SPRZEDAJACY>
+        <ms:TRAN_KUPUJACY>osobaFizyczna</ms:TRAN_KUPUJACY>
+        <ms:TRAN_CENA_BRUTTO>4400000</ms:TRAN_CENA_BRUTTO>
+        <ms:TRAN_VAT></ms:TRAN_VAT>
+        <ms:DOK_OZNACZENIE>5827/2026</ms:DOK_OZNACZENIE>
+        <ms:DOK_DATA gml:id="lokale.53967002.DOK_DATA"><gml:timePosition>2026-07-03</gml:timePosition></ms:DOK_DATA>
+        <ms:DOK_TWORCA>ZINE ABASS ALI</ms:DOK_TWORCA>
+        <ms:NIER_RODZAJ>nieruchomoscLokalowa</ms:NIER_RODZAJ>
+        <ms:NIER_PRAWO>wlasnoscLokaluWrazZPrawemZwiazanym</ms:NIER_PRAWO>
+        <ms:NIER_UDZIAL>1/1</ms:NIER_UDZIAL>
+        <ms:NIER_POW_GRUNTU></ms:NIER_POW_GRUNTU>
+        <ms:NIER_OPIS></ms:NIER_OPIS>
+        <ms:NIER_CENA_BRUTTO>4400000</ms:NIER_CENA_BRUTTO>
+        <ms:NIER_VAT></ms:NIER_VAT>
+        <ms:LOK_ID_LOKALU>146510_8.0405.118_BUD.6_LOK</ms:LOK_ID_LOKALU>
+        <ms:LOK_FUNKCJA>mieszkalna</ms:LOK_FUNKCJA>
+        <ms:LOK_LICZBA_IZB>2</ms:LOK_LICZBA_IZB>
+        <ms:LOK_NR_KOND>2</ms:LOK_NR_KOND>
+        <ms:LOK_POW_UZYT>74.47</ms:LOK_POW_UZYT>
+        <ms:LOK_POW_PRZYN></ms:LOK_POW_PRZYN>
+        <ms:LOK_CENA_BRUTTO>4400000</ms:LOK_CENA_BRUTTO>
+        <ms:LOK_VAT></ms:LOK_VAT>
+        <ms:LOK_INFO></ms:LOK_INFO>
+        <ms:LOK_ADRES>MSC:Warszawa;UL:ulica Dynasy;NR_PORZ:22</ms:LOK_ADRES>
+      </ms:lokale>
+    </wfs:member>
+</wfs:FeatureCollection>
+
