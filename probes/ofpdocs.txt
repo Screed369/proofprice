@@ -1,0 +1,128 @@
+URL: https://prices.openfoodfacts.org/api/docs
+Fetched: 2026-10-20T21:20:46Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 4668
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Tue, 20 Oct 2026 21:20:46 GMT
+content-type: text/html; charset=utf-8
+content-length: 4668
+vary: Accept-Encoding
+cross-origin-opener-policy: unsafe-none
+allow: GET, HEAD, OPTIONS
+x-frame-options: DENY
+vary: Cookie, origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+set-cookie: csrftoken=4rGtlHIfaaT4ZhNWVa69D4VVpFBAYaaA; expires=Tue, 19 Oct 2027 21:20:46 GMT; Max-Age=31449600; Path=/; SameSite=Lax
+
+=== FILE TYPE: HTML document, ASCII text
+=== FIRST 3000 BYTES
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <title>Open Food Facts open-prices REST API</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@latest/favicon-32x32.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@latest/swagger-ui.css">
+    <style>
+      html { box-sizing: border-box; overflow-y: scroll; }
+      *, *:after, *:before { box-sizing: inherit; }
+      body { background: #fafafa; margin: 0; }
+    </style>
+    
+  </head>
+  <body>
+    
+    <div id="swagger-ui"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@latest/swagger-ui-bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@latest/swagger-ui-standalone-preset.js"></script>
+    
+    <script>
+    "use strict";
+
+const swaggerSettings = {
+  "deepLinking": true
+};
+const schemaAuthNames = [];
+let schemaAuthFailed = false;
+const plugins = [];
+
+const reloadSchemaOnAuthChange = () => {
+  return {
+    statePlugins: {
+      auth: {
+        wrapActions: {
+          authorizeOauth2:(ori) => (...args) => {
+            schemaAuthFailed = false;
+            setTimeout(() => ui.specActions.download());
+            return ori(...args);
+          },
+          authorize: (ori) => (...args) => {
+            schemaAuthFailed = false;
+            setTimeout(() => ui.specActions.download());
+            return ori(...args);
+          },
+          logout: (ori) => (...args) => {
+            schemaAuthFailed = false;
+            setTimeout(() => ui.specActions.download());
+            return ori(...args);
+          },
+        },
+      },
+    },
+  };
+};
+
+if (schemaAuthNames.length > 0) {
+  plugins.push(reloadSchemaOnAuthChange);
+}
+
+const uiInitialized = () => {
+  try {
+    ui;
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const isSchemaUrl = (url) => {
+  if (!uiInitialized()) {
+    return false;
+  }
+  return url === new URL(ui.getConfigs().url, document.baseURI).href;
+};
+
+const responseInterceptor = (response, ...args) => {
+  if (!response.ok && isSchemaUrl(response.url)) {
+    console.warn("schema request received '" + response.status + "'. disabling credentials for schema till logout.");
+    if (!schemaAuthFailed) {
+      // only retry once to prevent endless loop.
+      schemaAuthFailed = true;
+      setTimeout(() => ui.specActions.download());
+    }
+  }
+  return response;
+};
+
+const injectAuthCredentials = (request) => {
+  let authorized;
+  if (uiInitialized()) {
+    const state = ui.getState().get("auth").get("authorized");
+    if (state !== undefined && Object.keys(state.toJS()).length !== 0) {
+      authorized = state.toJS();
+    }
+  } else if (![undefined, "{}"].includes(localStorage.authorized)) {
+    authorized = JSON.parse(localStorage.authorized);
+  }
+  if (authorized === undefined) {
+    return;
+  }
+  for (const authName of schemaAuthNames) {
+    const authDef = authorized[authName];
+  
