@@ -1,0 +1,376 @@
+URL: https://file.go.gov.sg/hospitalbillsizes.xlsx
+Fetched: 2026-10-20T13:18:11Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 1242569
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+content-length: 1242569
+accept-ranges: bytes
+date: Tue, 20 Oct 2026 13:18:10 GMT
+server: AmazonS3
+last-modified: Fri, 15 May 2026 07:31:58 GMT
+etag: "33e36df8f8bfbb79eed7edf1e8070f3b"
+x-amz-version-id: _reGJDBXb8N9oOuCkd97Asvereae3u.b
+cache-control: no-cache
+x-amz-server-side-encryption: AES256
+x-amz-storage-class: INTELLIGENT_TIERING
+x-cache: Miss from cloudfront
+via: 1.1 30c6d7b3beb0a918037485bea6e0158c.cloudfront.net (CloudFront)
+x-amz-cf-pop: ORD58-P13
+x-amz-cf-id: wreCaXrkGgBg5kED_7IinFz4x4yDrmaJDR_xUWP709LlTPRdsbqSIg==
+
+=== FILE TYPE: Microsoft Excel 2007+
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     1953  1980-01-01 00:00   [Content_Types].xml
+      735  1980-01-01 00:00   _rels/.rels
+     3080  1980-01-01 00:00   xl/workbook.xml
+     1262  1980-01-01 00:00   xl/_rels/workbook.xml.rels
+     5942  1980-01-01 00:00   xl/worksheets/sheet1.xml
+  2513688  1980-01-01 00:00   xl/worksheets/sheet2.xml
+  1845882  1980-01-01 00:00   xl/worksheets/sheet3.xml
+  1108370  1980-01-01 00:00   xl/worksheets/sheet4.xml
+  2103451  1980-01-01 00:00   xl/worksheets/sheet5.xml
+     8721  1980-01-01 00:00   xl/theme/theme1.xml
+    30585  1980-01-01 00:00   xl/styles.xml
+   114864  1980-01-01 00:00   xl/sharedStrings.xml
+      322  1980-01-01 00:00   xl/worksheets/_rels/sheet1.xml.rels
+      322  1980-01-01 00:00   xl/worksheets/_rels/sheet2.xml.rels
+      322  1980-01-01 00:00   xl/worksheets/_rels/sheet3.xml.rels
+    10392  1980-01-01 00:00   xl/printerSettings/printerSettings1.bin
+    10392  1980-01-01 00:00   xl/printerSettings/printerSettings2.bin
+    10392  1980-01-01 00:00   xl/printerSettings/printerSettings3.bin
+      628  1980-01-01 00:00   docProps/core.xml
+      982  1980-01-01 00:00   docProps/app.xml
+     1667  1980-01-01 00:00   docProps/custom.xml
+---------                     -------
+  7773952                     21 files
+=== SPREADSHEET SHEETS (first 70 rows each, cells joined with |)
+--- SHEET: Introduction
+|Introduction & Definitions
+|Inclusion Criteria
+|Data source: Mediclaim, Casemix & Subvention System (Public hospitals), Private Sector Casemix Platform (Private hospitals)
+|Data period: 1 January 2023 to 31 December 2023 based on discharge date
+|Singapore Citizens 
+|Single TOSP only (for surgical conditions) and selected DRGs (for medical cases)
+|Sheet name|Description
+|1. TOSP TOF & Bill data|Aggregate total bill sizes and breakdown by setting and ward type by procedure (TOSP)
+|2. TOSP - Hospital Level Data|Total bill sizes by hospital and ward type by procedure (TOSP)
+|3. Med DRG Bill Data|Aggregate total bill sizes by setting and ward type by condition (DRG)
+|4. MedDRG - Hospital Level Data|Total bill sizes by hospital and ward type by condition (DRG)
+|Component| Definitions
+|Bill|Total Hospital Bill associated with the episode of care.
+||Includes A&E charges if any.
+||Excludes other charges which are not associated to this episode of care eg. antenatal packages, outpatient treatments etc.
+|Operation Fee|Total charge associated with the TOSP procedure, i.e. a sum of any surgeon, anaesthetist, and facility fees.
+|Surgeon Fee|Professional fee of surgeon for performing the TOSP procedure.
+||Includes the total sum of surgeon fees (except anaesthetist), if more than one surgeon is involved.
+|Anaesthetist Fee|Professional fee of anaesthetist for the TOSP procedure.
+|Facility Fee|Non-professional charges for the use of the operating facility (eg. operating theatre, medical consumables used during the operation, assistant nurses provided by the hospital etc).
+|Implant Fee|Total charges for the implant(s) used in the TOSP procedure.
+|Other Fee|Remaining charges after accounting for Total Operation Fee and Total Implant Amount.
+|Room Fee|Total charges associated with ward fees, general nursing services during admission and non-medical amenities provided as part of the ward.
+|Drug Fee|Total charges for all medication and drug fees, including fees for the preparation and administration of medications and drugs.
+|Investigation Fee|Total charges for investigations of materials derived from the body for the purpose of diagnosis, prevention or treatment of disease (e.g. histology, biochemisty, cytology)
+|Doctors' Attendance Fee|Doctor attendance fee. Covers professional consultation and/or specialist attendance fee. Excludes any professional fee charged either under the Operations grouping or Room and Board grouping.
+--- SHEET: 1. TOSP TOF & Bill Data
+|Information on total bill amount by TOSP code and healthcare settings
+|Note:
+|1. '-' denotes data is not applicable
+|2. 'n/a' denotes data with less than 10 cases
+|3. * denotes TOSP codes that have been removed from the TOSP Booklet with effect from 1 Jan 2024
+|4. Figures shown on this page include GST and are based on the percentiles of actual transacted fees across the medical institutions for each bill component, from 1 January 2023 to 31 December 2023. They therefore provide an estimate of fees but do not necessarily sum up to the total bill amount.
+|TOSP Code|TOSP Description|TOSP Table Number|Setting|Ward Type|P25 Bill|P50 Bill|P75 Bill|P25 Operation Fee|P50 Operation Fee|P75 Operation Fee|P25 Surgeon Fee|P50 Surgeon Fee|P75 Surgeon Fee|P25 Anaesthetist Fee|P50 Anaesthetist Fee|P75 Anaesthetist Fee|P25 Facility Fee|P50 Facility Fee|P75 Facility Fee|P25 Implant Fee|P50 Implant Fee|P75 Implant Fee|P25 Other Fee|P50 Other Fee|P75 Other Fee
+|SA700T|Tendon Sheath and Subcutaneous Tissue, Ganglion/large Bursa, (>3cm) Excision Biopsy|2B|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|536|754|1028|323|511|686|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|152|228|376
+|SA701R|Radiotherapy, Interstitial brachytherapy (with/without open surgery)|4B|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1137|1294|1628|830|830|899|-|-|-|-|-|-|-|-|-|-|-|-|307|464|627
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|Private Hospitals/ Clinics|Clinics|1975|3263|5223|1296|2376|3888|1026|1620|2160|-|-|-|0|540|1423|-|-|-|530|785|1218
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|Private Hospitals/ Clinics|Day Surgery|4655|6258|7769|3441|4668|5704|1350|1983|3024|0|0|545|1751|2126|2800|-|-|-|1025|1394|2110
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|Private Hospitals/ Clinics|Inpatient|5543|9842|12992|3037|5454|7926|1512|2160|2808|0|600|864|1035|2548|4397|n/a|n/a|n/a|1396|3044|6383
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|384|591|851|227|358|525|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|116|191|307
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|Public Hospitals/ Centres (Subsidised)|Ward B2|680|1058|1646|225|378|541|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|406|662|1057
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|Public Hospitals/ Centres (Subsidised)|Ward C|963|1381|2332|210|301|407|-|-|-|-|-|-|-|-|-|-|-|-|641|913|2006
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|1507|1761|2138|994|1245|1356|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|347|527|756
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|Public Hospitals/ Centres (Unsubsidised)|Ward A|3359|4274|6124|1254|1404|1765|-|-|-|-|-|-|-|-|-|-|-|-|1693|2452|4449
+|SA702B|Breast, Ductal Lesions, Microdochectomy (unilateral)|2C|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|761|949|1687|366|470|756|-|-|-|-|-|-|-|-|-|-|-|-|367|467|830
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|Private Hospitals/ Clinics|Clinics|1125|2032|3596|756|1450|2560|540|1080|1517|-|-|-|0|108|1025|-|-|-|305|529|875
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|Private Hospitals/ Clinics|Day Surgery|3845|4443|5832|2829|3392|4554|1080|1517|1674|0|0|500|1295|1789|2584|-|-|-|934|1106|1374
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|Private Hospitals/ Clinics|Inpatient|3168|5362|8755|2256|3988|5978|1080|1620|1843|0|540|713|-|-|-|-|-|-|721|1915|3030
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|277|433|588|135|246|304|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|108|176|246
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|Public Hospitals/ Centres (Subsidised)|Ward B2|469|736|1051|93|121|261|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|367|584|850
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|Public Hospitals/ Centres (Subsidised)|Ward C|929|1816|4473|121|274|319|-|-|-|-|-|-|-|-|-|-|-|-|655|1379|4260
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|1082|1334|1802|676|737|1198|-|-|-|-|-|-|-|-|-|-|-|-|321|449|602
+|SA703R|Radiotherapy, Intracavitary Brachytherapy (Multi-channel): Cervix, Others|2C|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1126|1292|1710|300|326|600|-|-|-|-|-|-|-|-|-|-|-|-|816|973|1095
+|SA703R|Radiotherapy, Intracavitary Brachytherapy (Multi-channel): Cervix, Others|2C|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|2583|3362|3485|1859|1859|1859|-|-|-|-|-|-|-|-|-|-|-|-|724|1503|1626
+|SA704B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, Single lesion|2B|Private Hospitals/ Clinics|Clinics|6162|7310|8437|3672|4428|4941|1836|2349|2592|0|0|626|1658|1782|2376|-|-|-|2054|2932|3780
+|SA704B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, Single lesion|2B|Private Hospitals/ Clinics|Day Surgery|6958|8333|9557|4887|6313|7194|1485|2160|2376|0|0|250|2349|4181|5082|-|-|-|1352|1907|2559
+|SA704B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, Single lesion|2B|Private Hospitals/ Clinics|Inpatient|5693|8902|11199|4435|6068|8096|1341|2117|2538|n/a|n/a|n/a|n/a|n/a|n/a|-|-|-|1104|2133|3152
+|SA704B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, Single lesion|2B|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|800|1180|1472|410|593|931|-|-|-|-|-|-|-|-|-|0|0|0|218|443|731
+|SA704B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, Single lesion|2B|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|3117|3843|4357|2054|2214|2452|-|-|-|-|-|-|-|-|-|0|0|149|636|1367|1870
+|SA704R|Radiotherapy, Intracavitary Brachytherapy (Single channel): Endometrium, others|2A|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|493|612|803|184|276|460|-|-|-|-|-|-|-|-|-|-|-|-|309|338|419
+|SA704R|Radiotherapy, Intracavitary Brachytherapy (Single channel): Endometrium, others|2A|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|1438|1504|1942|1133|1218|1218|-|-|-|-|-|-|-|-|-|-|-|-|237|237|723
+|SA705B|Breast, Lump (removal) with parenchymal flap closure (unilateral/bilateral)|4A|Private Hospitals/ Clinics|Clinics|12846|15332|18244|8088|9880|12226|4968|6669|7020|1350|1620|1668|1383|1798|3350|-|-|-|4988|5657|6238
+|SA705B|Breast, Lump (removal) with parenchymal flap closure (unilateral/bilateral)|4A|Private Hospitals/ Clinics|Day Surgery|10720|11992|19804|8627|9838|13261|3654|4876|6669|913|1350|1582|3379|3804|4672|-|-|-|1209|2599|5583
+|SA705B|Breast, Lump (removal) with parenchymal flap closure (unilateral/bilateral)|4A|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1457|2047|2674|1014|1206|2128|-|-|-|-|-|-|-|-|-|-|-|-|400|547|911
+|SA706B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, > 1 lesions|2C|Private Hospitals/ Clinics|Clinics|9065|10601|12651|4833|6777|7803|2484|3483|3780|0|637|810|1728|2673|3834|-|-|-|2012|3800|5228
+|SA706B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, > 1 lesions|2C|Private Hospitals/ Clinics|Day Surgery|10401|12854|14773|6250|9797|11402|2085|2776|3780|0|540|810|2902|6124|7623|-|-|-|1920|2696|3874
+|SA706B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, > 1 lesions|2C|Private Hospitals/ Clinics|Inpatient|6554|11026|17278|4794|7604|10452|n/a|n/a|n/a|n/a|n/a|n/a|-|-|-|-|-|-|1520|2605|4767
+|SA706B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, > 1 lesions|2C|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1186|1662|2238|550|819|1260|-|-|-|-|-|-|-|-|-|0|0|134|250|633|1265
+|SA706B|Breast, Lumps, Imaging Guided Vacuum Assisted Biopsy, > 1 lesions|2C|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|4326|4955|6558|1734|2736|3085|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|1508|2768|3721
+|SA707B|Breast, Tumor (malignant), Wide Excision/ Lumpectomy/Segmental Mastectomy/ Partial Mastectomy, with Sentinel Node Biopsy/ Axiliary Node Sampling|4A|Private Hospitals/ Clinics|Clinics|22706|26146|28956|13490|14206|16638|7857|9720|10557|1728|1728|2052|2400|4225|4661|-|-|-|8369|10412|15465
+|SA707B|Breast, Tumor (malignant), Wide Excision/ Lumpectomy/Segmental Mastectomy/ Partial Mastectomy, with Sentinel Node Biopsy/ Axiliary Node Sampling|4A|Private Hospitals/ Clinics|Inpatient|27814|32378|37105|16496|18502|21188|6934|8775|10800|1712|1954|2052|n/a|n/a|n/a|n/a|n/a|n/a|10665|13572|17038
+|SA707B|Breast, Tumor (malignant), Wide Excision/ Lumpectomy/Segmental Mastectomy/ Partial Mastectomy, with Sentinel Node Biopsy/ Axiliary Node Sampling|4A|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1782|2726|4045|860|1299|2125|-|-|-|-|-|-|-|-|-|-|-|-|895|1370|2032
+|SA707B|Breast, Tumor (malignant), Wide Excision/ Lumpectomy/Segmental Mastectomy/ Partial Mastectomy, with Sentinel Node Biopsy/ Axiliary Node Sampling|4A|Public Hospitals/ Centres (Subsidised)|Ward B2|2139|3468|4903|1062|1436|2336|-|-|-|-|-|-|-|-|-|-|-|-|1026|1963|2790
+|SA707B|Breast, Tumor (malignant), Wide Excision/ Lumpectomy/Segmental Mastectomy/ Partial Mastectomy, with Sentinel Node Biopsy/ Axiliary Node Sampling|4A|Public Hospitals/ Centres (Subsidised)|Ward C|1994|3404|4136|903|1198|1715|-|-|-|-|-|-|-|-|-|-|-|-|1153|2085|2451
+|SA707B|Breast, Tumor (malignant), Wide Excision/ Lumpectomy/Segmental Mastectomy/ Partial Mastectomy, with Sentinel Node Biopsy/ Axiliary Node Sampling|4A|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|8950|10024|11201|5597|5686|5688|-|-|-|-|-|-|-|-|-|-|-|-|3633|4910|5604
+|SA707B|Breast, Tumor (malignant), Wide Excision/ Lumpectomy/Segmental Mastectomy/ Partial Mastectomy, with Sentinel Node Biopsy/ Axiliary Node Sampling|4A|Public Hospitals/ Centres (Unsubsidised)|Ward A|9166|11676|13476|5331|6127|6690|-|-|-|-|-|-|-|-|-|-|-|-|4359|5721|7311
+|SA707B|Breast, Tumor (malignant), Wide Excision/ Lumpectomy/Segmental Mastectomy/ Partial Mastectomy, with Sentinel Node Biopsy/ Axiliary Node Sampling|4A|Public Hospitals/ Centres (Unsubsidised)|Ward B1|10407|12014|13081|5522|5615|5764|-|-|-|-|-|-|-|-|-|-|-|-|4994|6437|7579
+|SA707S|Skin, Neuromas/Hemangiomas, Excision/Vaporisation by Laser and other ablative modalities, therapeutic|1C|Private Hospitals/ Clinics|Clinics|648|810|1352|559|671|810|540|671|810|-|-|-|-|-|-|-|-|-|25|255|538
+|SA707S|Skin, Neuromas/Hemangiomas, Excision/Vaporisation by Laser and other ablative modalities, therapeutic|1C|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|200|335|373|179|268|341|-|-|-|-|-|-|-|-|-|-|-|-|5|48|72
+|SA707S|Skin, Neuromas/Hemangiomas, Excision/Vaporisation by Laser and other ablative modalities, therapeutic|1C|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|248|732|881|240|704|831|-|-|-|-|-|-|-|-|-|-|-|-|0|8|69
+|SA709B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (multiple)|1C|Private Hospitals/ Clinics|Clinics|4542|6319|8473|2689|3764|4466|1512|1706|2376|0|0|270|216|1717|2576|-|-|-|1443|2512|3958
+|SA709B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (multiple)|1C|Private Hospitals/ Clinics|Day Surgery|4745|5898|8848|2160|3595|5233|846|1706|2160|n/a|n/a|n/a|0|2220|3551|-|-|-|1883|2249|3146
+|SA709B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (multiple)|1C|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|515|727|1027|164|274|370|-|-|-|-|-|-|-|-|-|0|0|0|271|444|643
+|SA709B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (multiple)|1C|Public Hospitals/ Centres (Subsidised)|Ward C|1913|2751|6458|150|218|343|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|1697|2381|6319
+|SA709B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (multiple)|1C|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|2101|2407|2847|831|920|1015|-|-|-|-|-|-|-|-|-|0|0|0|1232|1372|1992
+|SA710B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (single)|1B|Private Hospitals/ Clinics|Clinics|2431|3768|4855|1512|2372|2808|864|1080|1188|-|-|-|324|1080|1717|-|-|-|873|1250|2132
+|SA710B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (single)|1B|Private Hospitals/ Clinics|Day Surgery|2702|3295|5231|1080|2265|3562|794|1080|1080|0|0|0|0|1294|2744|-|-|-|1317|1616|1879
+|SA710B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (single)|1B|Private Hospitals/ Clinics|Inpatient|3176|5249|6484|1080|1944|3237|n/a|n/a|n/a|n/a|n/a|n/a|n/a|n/a|n/a|-|-|-|1601|2096|3885
+|SA710B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (single)|1B|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|317|470|665|128|205|282|-|-|-|-|-|-|-|-|-|0|0|0|145|255|399
+|SA710B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (single)|1B|Public Hospitals/ Centres (Subsidised)|Ward B2|877|1927|4100|125|141|207|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|616|1815|3893
+|SA710B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (single)|1B|Public Hospitals/ Centres (Subsidised)|Ward C|2063|3281|4450|118|125|169|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|1885|2975|4322
+|SA710B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (single)|1B|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|1242|1513|1933|671|738|781|-|-|-|-|-|-|-|-|-|0|0|0|536|714|1215
+|SA711B|Breast, Various Lesions, wire localisation, excision (multiple)|3B|Private Hospitals/ Clinics|Day Surgery|15931|17962|20942|10945|11871|13436|4860|5292|5508|1180|1273|1400|4796|5586|6259|-|-|-|3381|5495|8869
+|SA711B|Breast, Various Lesions, wire localisation, excision (multiple)|3B|Private Hospitals/ Clinics|Inpatient|15474|18812|22709|11721|13249|16130|n/a|n/a|n/a|n/a|n/a|n/a|n/a|n/a|n/a|-|-|-|2378|4517|7176
+|SA711B|Breast, Various Lesions, wire localisation, excision (multiple)|3B|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1528|2382|3349|618|1014|1319|-|-|-|-|-|-|-|-|-|n/a|n/a|n/a|905|1379|1693
+|SA712B|Breast, Various Lesions, wire localisation, excision (single)|3A|Private Hospitals/ Clinics|Clinics|5940|10307|12765|4292|6031|7458|3240|3618|4050|0|869|1053|0|1392|3212|-|-|-|1585|4139|5381
+|SA712B|Breast, Various Lesions, wire localisation, excision (single)|3A|Private Hospitals/ Clinics|Day Surgery|11608|13066|14560|7619|8590|9769|2793|3510|4050|770|918|1053|3522|4250|5064|-|-|-|2805|4017|5255
+--- SHEET: 2. TOSP - Hospital Level Data
+|Information on total bill amount by TOSP code and hospital
+|Note
+1. To ensure that there are adequate cases for meaningful comparisons, procedures with less than 10 cases will not be shown.
+2. * denotes TOSP codes that have been removed from the TOSP Booklet with effect from 1 Jan 2024
+3. Figures shown on this page include GST and are based on the percentiles of actual transacted fees across the medical institutions, from 1 January 2023 to 31 December 2023.
+4. Blue - typographical error corrected on 15 Apr 2025
+
+|TOSP code|TOSP Description|TOSP Table Number|Hospital|Setting|Ward Type|ALOS|P25 Bill|P50 Bill|P75 Bill
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|275.6400146484375|559.05999755859375|693.28997802734375
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|190.74000549316406|272.58999633789063|449.92999267578125
+|SA800S|Skin and Mucous Membrane, Various Lesions, Excision Biopsy|1A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|171.96000671386719|249.14999389648438|381.6099853515625
+|SA840S|Skin and Subcutaneous Tissue, Hematoma, Abscess/Cellulitis/Similar lesion&lt;3cm, Saucerisation/Incision & Drainage|1A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|174.08000183105469|300.64999389648438|426.10000610351563
+|SA841S|Skin and Subcutaneous Tissue, Hematoma /Carbuncle Cellulitis/Similar Lesion&gt;3cm, Saucerisation/Incision with Drainage|1B|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|275.510009765625|356.35498046875|496.14999389648438
+|SA852S*|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/ Scar, Excision/Punch/Shave biopsy, Lesion size up to and including 15mm in diameter|1A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|162.28999328613281|202.44000244140625|368.6400146484375
+|SB708H|Hand, Flexor Tendon, Trigger Finger (multiple), Release|3A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|580.79998779296875|830.90997314453125|1043.1600341796875
+|SB709H|Hand, Flexor Tendon, Trigger Finger (single), Release|2A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|229.48500061035156|300.39501953125|547.17999267578125
+|SB805T|Tendon Sheath (Upper Limb), De Quervain's (unilateral), Release|3A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|462.1199951171875|562.4150390625|963.9200439453125
+|SB817H|Hand, Soft Tissue Tumor, Excision &lt;1.5cm|2A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|255.05000305175781|498.5|618.71002197265625
+|SF701I|Intestine/Stomach, Upper GI endoscopy with / without biopsy|1B|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|458.1|687.46|1110.71
+|SF702C|Colon, Colonoscopy, fibreoptic with/without biopsy|2C|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|300.70001220703125|491.1300048828125|729.47998046875
+|SF704C|Colon, Colonoscopy, fibreoptic with removal of polyp (single or multiple less than 1cm)|3A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|581.239990234375|745.34002685546875|1257.6600341796875
+|SK717N|Nerve (Upper Limb), Carpal Tunnel Syndrome, Release (unilateral) (with Endoneurolysis)|3A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|434.98001098632813|530.82000732421875|936.91998291015625
+|SL803C|Conjunctiva, Pterygium, Removal with conjunctival graft|3A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|957.6099853515625|1060.5849609375|1424.68994140625
+|SL804R|Retina, Tears, Cryotherapy or Photocoagulation (laser) (Bilateral)|3C|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|409.95999145507813|900.989990234375|999.19000244140625
+|SL805R|Retina, Tears, Photocoagulation (laser) (Unilateral)|3B|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|368.8800048828125|457.6199951171875|901.30999755859375
+|SL808L_SL809L|Lens, Cataract, Extraction with Intra-ocular Lens Implant (Unilateral)|4A|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|873.83001708984375|1014.4600219726563|1801.1700439453125
+|SL815L|Lens, Various Lesions, Yag Laser Capsulotomy|1C|ADMC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|122.63999938964844|133.67999267578125|280.33999633789063
+|SA701S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, removal of 2 or more or recurrent or complicated (adherent), excision|2A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|394.92999267578125|655.68499755859375|901.989990234375
+|SA702S|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/Scar, Excision biopsy, Lesion size more than 15mm in diameter|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|357.73001098632813|556.8349609375|825.4549560546875
+|SA710B|Breast, Various Lesions, Trucut Biopsy, ultrasound guided or stereotactic (single)|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|290.60000610351563|411|531.54998779296875
+|SA715S|Soft Tissue (Lower Limb), Tumor/Tumor-like Lesions, Marginal Excision|2C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|441.1099853515625|642.15997314453125|790.57000732421875
+|SA840S|Skin and Subcutaneous Tissue, Hematoma, Abscess/Cellulitis/Similar lesion&lt;3cm, Saucerisation/Incision & Drainage|1A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|69.099998474121094|158.80999755859375|321.57998657226563
+|SA841S|Skin and Subcutaneous Tissue, Hematoma /Carbuncle Cellulitis/Similar Lesion&gt;3cm, Saucerisation/Incision with Drainage|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|259.57000732421875|366.10000610351563|622.28997802734375
+|SA852S*|Skin and Subcutaneous Tissue, Tumor/Cyst/Ulcer/ Scar, Excision/Punch/Shave biopsy, Lesion size up to and including 15mm in diameter|1A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|378.6099853515625|490.58999633789063|803.77001953125
+|SB701K|Knee, Ligaments/Meniscus/Cartilage/Bone combined, MIS ACL or PCL reconstruction|5C|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|1.1538461446762085|3778.820068359375|4858.47021484375|6271.64990234375
+|SB709H|Hand, Flexor Tendon, Trigger Finger (single), Release|2A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|275.57998657226563|480.7349853515625|608.6400146484375
+|SB710S|Shoulder, Shoulder soft tissue injury, MIS/open decompression with cuff repair|5B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|2921.590087890625|4086.93505859375|5443.89990234375
+|SB710S|Shoulder, Shoulder soft tissue injury, MIS/open decompression with cuff repair|5B|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|1.25|2505.89990234375|4000.830078125|5111.14501953125
+|SB716K|Knee, Various Lesions, Primary Total Joint Replacement (Unilateral) with augmentation, requiring extra implants or bone grafts, open/MIS/navigated|6B|AH|Public Hospitals/ Centres (Subsidised)|Ward C|4.2272725105285645|5901.52001953125|6133.365234375|8240.3603515625
+|SB723S|Spine (excluding Cervical Spine), Various Lesions, Posterior Decompression and/or Discectomy without Insertion of Interspinous Device (1 Segment) without Instrumented Fusion|6A|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|1|4604.47021484375|7272.990234375|9219.4599609375
+|SB810K|Knee, Various Lesions, Primary Total Joint Replacement (Unilateral), open/MIS/navigated|6A|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|4.904761791229248|7658.5400390625|10438.5595703125|11002.7197265625
+|SB810K|Knee, Various Lesions, Primary Total Joint Replacement (Unilateral), open/MIS/navigated|6A|AH|Public Hospitals/ Centres (Subsidised)|Ward C|4.2777776718139648|5883.3701171875|6535.7451171875|9787.9697265625
+|SB822H|Head-Face, Soft Tissue Tumors (small), Excision|3A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|573.4100341796875|717.5250244140625|1106.0899658203125
+|SB834T|Wedge resection of toe nail (single toe) medial and/or lateral, simple or complex|1C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|231.00999450683594|477.23001098632813|529.989990234375
+|SD713V|Vein, Varicose Veins, Imaging Guided Endovenous Laser Treatment, 1 leg|3B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|1141.050048828125|1188.5699462890625|1849.800048828125
+|SF700I|Intestine/Stomach, Upper GI endoscopy with polypectomy/ removal of foreign body/diathermy of bleeding lesions / injection of varices / removal of single polyp|2C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|584.66998291015625|909.3800048828125|1137.5699462890625
+|SF701I|Intestine/Stomach, Upper GI endoscopy with / without biopsy|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|258.10000610351563|382.60000610351563|580.3900146484375
+|SF701I|Intestine/Stomach, Upper GI endoscopy with / without biopsy|1B|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|9.9047622680664063|1207.8399658203125|1987.469970703125|2908.429931640625
+|SF701I|Intestine/Stomach, Upper GI endoscopy with / without biopsy|1B|AH|Public Hospitals/ Centres (Subsidised)|Ward C|13.199999809265137|1461.1199951171875|2334.080078125|3782.1298828125
+|SF702C|Colon, Colonoscopy, fibreoptic with/without biopsy|2C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|406.7449951171875|556.4599609375|886.6099853515625
+|SF704C|Colon, Colonoscopy, fibreoptic with removal of polyp (single or multiple less than 1cm)|3A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|599.3900146484375|844.05999755859375|1248.5699462890625
+|SF705C|Colon, Colonoscopy, fibreoptic with removal of polyps (multiple more than 1cm)|3B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|736.54998779296875|1022.5999755859375|1460.1099853515625
+|SF710C|Colon, Sigmoid, Sigmoidoscopy (flexible), Fibreoptic with/without biopsy|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|222.77000427246094|260.29998779296875|394
+|SF718B|Bowels, Endoscopic Ultrasound without Fine Needle Aspiration|2C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|416.989990234375|644.58001708984375|666.05999755859375
+|SF801G|Gall Bladder, Various Lesions, Cholecystectomy (open or lap)|4A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|983.33001708984375|1329.18994140625|1673.260009765625
+|SF819A|Abdominal Wall, Inguinal/Femoral Hernia, Unilateral Herniorrhaphy (MIS/open)|3B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|990.760009765625|1182.8699951171875|1746.81005859375
+|SF820A|Abdominal Wall, Inguinal/Femoral Hernia, Bilateral Herniorrhaphy (MIS/open)|4C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|1505.6800537109375|2306.69482421875|2931.030029296875
+|SF823A|Abdominal Wall, Ventral/Incisional/Recurrent Hernia, Repair (MIS/open)|4A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|1310.1199951171875|1451.10498046875|2034.8399658203125
+|SF836A|Anus, Hemorrhoids, Hemorrhoidectomy with or without sigmoidoscopy|2C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|542.6300048828125|835.9749755859375|1009.0399780273438
+|SG713B|Bladder, Cystoscopy, with or without biopsy|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|206.42001342773438|236.28500366210938|399.83502197265625
+|SH803V|Vas Deferens, Various Lesions, Vasectomy|1C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|561.30999755859375|788.33502197265625|930.4599609375
+|SH808P_(>6mth)|Penis, Paraphimosis/Phimosis/Reduction Prepuce, Circumcision|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|544.75|875.030029296875|1211.239990234375
+|SJ701T|Thyroid, Various Lesions, Imaging Guided Percutaneous Aspiration / Biopsy|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|259.60000610351563|326.70501708984375|489.70001220703125
+|SJ802T|Thyroid, Various Lesions, Hemithyroidectomy/Partial Thyroidectomy|4A|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|1.076923131942749|2630.489990234375|3476.010009765625|4291.3798828125
+|SK717N|Nerve (Upper Limb), Carpal Tunnel Syndrome, Release (unilateral) (with Endoneurolysis)|3A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|657.530029296875|664.7750244140625|1394.169921875
+|SK729N|Nerve Roots, Dorsal root ganglion, anaesthetic, more than two|3C|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|542.1300048828125|548.1199951171875|743.8499755859375
+|SK730N|Nerve Roots, Dorsal root ganglion, anaesthetic, one to two|2B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|398.1300048828125|406.76998901367188|831.1199951171875
+|SL700V|Vitreous, Intravitreal Injections|1A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|163.61000061035156|182.19000244140625|339.55999755859375
+|SL700V|Vitreous, Intravitreal Injections|1A|AH|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|1|811.67999267578125|1697.18994140625|1740.3900146484375
+|SL704R|Retina/Macula, Grid and focal laser photocoagulation|3A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|385.20001220703125|385.20001220703125|599.0999755859375
+|SL705R|Retina, Pan retinal photocoagulation|3B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|308.39999389648438|308.39999389648438|457.79998779296875
+|SL800A|Anterior Chamber Paracentesis, irrigation or reformation|1B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|228.55000305175781|268.27499389648438|370.27999877929688
+|SL801V|Vitreous, Various Lesions, Posterior Vitrectomy (pars plana/ sclerotomy/ lensectomy-extraction with Intra-ocular Lens Implant/ endolaser/ membrane peels)|6B|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|1930.989990234375|2088.18994140625|3026.2099609375
+|SL801V|Vitreous, Various Lesions, Posterior Vitrectomy (pars plana/ sclerotomy/ lensectomy-extraction with Intra-ocular Lens Implant/ endolaser/ membrane peels)|6B|AH|Public Hospitals/ Centres (Unsubsidised)|Day Surgery (Unsubsidised)|1|11634.814453125|12327.599609375|12845.685546875
+|SL803C|Conjunctiva, Pterygium, Removal with conjunctival graft|3A|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|685.67999267578125|1095.1300048828125|1211.5400390625
+--- SHEET: 3. Med DRG Bill Data
+|Information on total bill amount by Medical DRG and healthcare settings
+|Note:
+1. '-' denotes data is not applicable
+2. 'n/a' denotes data with less than 10 cases
+3. Figures shown on this page include GST and are based on the percentiles of actual transacted fees across the medical institutions, from 1 January 2023 to 31 December 2023. 
+
+|DRG|DRG Description|Setting|Ward Type|P25 Bill|P50 Bill|P75 Bill|P25 Room Fees|P50 Room Fees|P75 Room Fees|P25 Drug Fees|P50 Drug Fees|P75 Drug Fees|P25 Investigation Fees|P50 Investigation Fees|P75 Investigation Fees|P25 Doctors' Attendance Fees|P50 Doctors' Attendance Fees|P75 Doctors' Attendance Fees
+|B61A|Spinal Cord Conditions W or W/O OR Procedures W Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward B2|3404.800048828125|7448.02978515625|24017.130859375|588|1129.489990234375|2341|0|98.809997558593693|305.13000488281199|0|1184.5100069046021|2997.6700248718262|-|-|-
+|B61A|Spinal Cord Conditions W or W/O OR Procedures W Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward C|2539.2900390625|6511.5546875|15471.919921875|308|798|1877|0|129.375|373.05999755859301|0|1155.8699951171875|2307.6299743652344|-|-|-
+|B61A|Spinal Cord Conditions W or W/O OR Procedures W Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|16882.369140625|46361.2734375|97654.140625|3093.1201171875|6137.0400390625|22083.83984375|260.58999633789|762.36001586914006|2662.98999023437|4316.5700082778931|6203.5800809860229|17164.16040802002|-|-|-
+|B61B|Spinal Cord Conditions W or W/O OR Procedures W/O Catastrophic or Severe CC|Private Hospitals|Inpatient|27929.470703125|67216.0546875|87737.4921875|988|1580|2325.4150390625|295.23001098632801|2457.1298828125|4922.7900390625|1259.635009765625|5834.5400390625|10337.5400390625|810|1620|5292
+|B61B|Spinal Cord Conditions W or W/O OR Procedures W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward B2|2875.260009765625|5897.47021484375|12178.5|160|343.44000244140625|712.5|0|27.600000381469702|107.550003051757|0|522.37999248504639|1421.269983291626|-|-|-
+|B61B|Spinal Cord Conditions W or W/O OR Procedures W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward C|1993.81494140625|3527.5498046875|10371.14453125|157.25|302.5|493.38499450683594|0|44.204999923705998|151.28499603271399|0|599.45998764038086|1319.6299982070923|-|-|-
+|B61B|Spinal Cord Conditions W or W/O OR Procedures W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|23000.310546875|29288.130859375|37277.66015625|1080|1620|2710.719970703125|105.150001525878|139.49000549316401|245.33999633789|1350.0200004577637|2226.8299331665039|3926.0399780273438|-|-|-
+|B61B|Spinal Cord Conditions W or W/O OR Procedures W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|5310.60986328125|23795.259765625|34270.12109375|618.4000244140625|806.760009765625|1422.3599853515625|17.840000152587798|76.959999084472599|129.80000305175699|1458.3499755859375|2482.9200201034546|3615.0900840759277|-|-|-
+|B63Z|Dementia and Other Chronic Disturbances of Cerebral Function|Public Hospitals/ Centres (Subsidised)|Ward B2|1529.0400390625|2277.18505859375|3995.77001953125|315|559.69000244140625|1026|0|87.915000915527301|225.13999938964801|0|457.11499214172363|781.70999526977539|-|-|-
+|B63Z|Dementia and Other Chronic Disturbances of Cerebral Function|Public Hospitals/ Centres (Subsidised)|Ward C|1501.8199462890625|2664.510009765625|4804.83984375|301|666.5|1369|11.1000003814697|127.25|306.739990234375|118.24000358581543|418.19000244140625|799.9100227355957|-|-|-
+|B63Z|Dementia and Other Chronic Disturbances of Cerebral Function|Public Hospitals/ Centres (Unsubsidised)|Ward A|5546.89990234375|10366.4296875|12580.919921875|2279.989990234375|3737.989990234375|5829.990234375|16.040000915527301|224.72999572753901|614.52001953125|1025.8999824523926|1538.4299640655518|2171.6199951171875|-|-|-
+|B63Z|Dementia and Other Chronic Disturbances of Cerebral Function|Public Hospitals/ Centres (Unsubsidised)|Ward B1|3970.7451171875|8167.19482421875|12158.0947265625|780.25998687744141|2562.2799835205078|5088.39501953125|64.719999313354407|264.165000915527|510.864990234375|645.90500068664551|1541.2100238800049|2983.0349788665771|-|-|-
+|B64A|Delirium W Catastrophic CC|Public Hospitals/ Centres (Subsidised)|Ward B2|1849.969970703125|2885.550048828125|5024.2900390625|369|629.98999786376953|1197|0|98.480003356933494|248.669998168945|0|447.5|992.19000244140625|-|-|-
+|B64A|Delirium W Catastrophic CC|Public Hospitals/ Centres (Subsidised)|Ward C|1689.22998046875|2566.55517578125|4248.97998046875|284.69000244140625|495|910|0|149.06999969482399|335.70001220703102|0|500.24000549316406|876.31998825073242|-|-|-
+|B64A|Delirium W Catastrophic CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|5160.85986328125|12835.91015625|20047.740234375|2155.989990234375|4612.68017578125|8623.9296875|178.07000732421801|504.39001464843699|822.219970703125|1087.1300048828125|3798.9399299621582|5913.8400421142578|-|-|-
+|B64A|Delirium W Catastrophic CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|4338.2353515625|5441.5048828125|17846.90625|1127.8199462890625|1454.1450157165527|6785.684944152832|228.89499664306601|458.05499267578102|827.73501586914006|1252.0999965667725|2065.2100257873535|3040.5750102996826|-|-|-
+|B64B|Delirium W/O Catastrophic CC|Private Hospitals|Inpatient|4845.64990234375|8687.0302734375|33109.51171875|428|1032.510009765625|3151.9599609375|0|115.459999084472|1446.23999023437|0|3148.719970703125|7537.1396484375|432|864|4263
+|B64B|Delirium W/O Catastrophic CC|Public Hospitals/ Centres (Subsidised)|Ward B2|1366.3900146484375|1879.0999755859375|2847.489990234375|180|390.02000427246094|708.10000610351563|0|25.9300003051757|105.215000152587|0|352.83000707626343|734.1450080871582|-|-|-
+|B64B|Delirium W/O Catastrophic CC|Public Hospitals/ Centres (Subsidised)|Ward C|1104.6500244140625|1786.1099853515625|2734.550048828125|172|315|552.5|1|58.770000457763601|169.63999938964801|87.5|429.48001384735107|758.98997116088867|-|-|-
+|B64B|Delirium W/O Catastrophic CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|2617.110107421875|4706.4150390625|7196.7998046875|1010.8699913024902|1213.139965057373|2062.1999816894531|0|83.935001373291001|452.17999267578102|0|895.79501152038574|1587.9500503540039|-|-|-
+|B66A|Nervous System Neoplasm W Catastrophic or Severe CC|Private Hospitals|Inpatient|14219.150390625|22711.83984375|47683.6015625|1265|4092.47998046875|7632.08984375|n/a|n/a|n/a|n/a|n/a|n/a|n/a|n/a|n/a
+|B66A|Nervous System Neoplasm W Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward B2|2101.800048828125|3132.760009765625|5080.5498046875|285|456|926.25|0|35.599998474121001|150.08000183105401|0|395.9799976348877|1429|-|-|-
+|B66A|Nervous System Neoplasm W Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward C|1727.68505859375|2658.96484375|4386.64013671875|232.05000305175781|428.25|768.08499145507813|0|53.125|179.84500122070301|0|431.34000396728516|1368.2849631309509|-|-|-
+|B66A|Nervous System Neoplasm W Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|6397.7900390625|10171|20675.810546875|1409.800048828125|2700|4829.759765625|0|56.080001831054602|351.88000488281199|0|712.95002937316895|2617.9599475860596|-|-|-
+|B66A|Nervous System Neoplasm W Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|7250.22021484375|15413.0595703125|19617.650390625|1546.02001953125|2533.4599609375|3572.85009765625|0|284.83999633789|1661.98999023437|0|2627.3800659179688|6439.599983215332|-|-|-
+|B66B|Nervous System Neoplasm W/O Catastrophic or Severe CC|Private Hospitals|Inpatient|7421.35986328125|13123.8603515625|17070.66015625|788|969.5|2120.02001953125|0|368.329986572265|2210.7099609375|308.8800048828125|2074.8701171875|5013.18994140625|400|1188|2153.52001953125
+|B66B|Nervous System Neoplasm W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|234|406.1300048828125|666.530029296875|0|16.970000267028809|36.869998931884766|0|0|5.1199998855590803|0|48.209999084472656|147.82000732421875|-|-|-
+|B66B|Nervous System Neoplasm W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward B2|1260.52001953125|2169.06494140625|3390.169921875|86.69000244140625|219.65000152587891|482.82000732421875|0|9.4250001907348597|64.260002136230398|0|642.9849853515625|1308.1500225067139|-|-|-
+|B66B|Nervous System Neoplasm W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward C|1105.75|1580.989990234375|2343.010009765625|88|129.83000183105469|326.05999755859375|0|7.7699997425079301|58.180000305175703|63.410001754760742|796.25|1276.8150088787079|-|-|-
+|B67A|Degenerative Nervous System Disorders W Catastrophic or Severe CC|Private Hospitals|Inpatient|9465.2197265625|23300.2109375|51102.48046875|631.989990234375|1975.9100341796875|7470.08984375|0|887.40997314453102|6378.419921875|0|772.3699951171875|7529.759765625|0|756|4914
+|B66B|Nervous System Neoplasm W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|5063.6650390625|5789.25|8004.8251953125|1001.2699890136719|1207.43994140625|1684.800048828125|18.524999618530199|112.08999633789|224.959999084472|419.58500862121582|1564.635009765625|3258.7499799728394|-|-|-
+|B66B|Nervous System Neoplasm W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|3405.4951171875|4645.33984375|6616.46484375|372.49000549316406|559.44000244140625|1087.9849967956543|0|12.539999961853001|73.369998931884695|172.80000114440918|2767.549934387207|3848.544921875|-|-|-
+|B67B|Degenerative Nervous System Disorders W Moderate CC|Private Hospitals|Inpatient|5750.75|10774.1904296875|26545.1796875|712.79998779296875|1659.97998046875|6225.0498046875|95.580001831054602|414.07000732421801|3255.42993164062|735.46002197265625|3651.47998046875|5590.72998046875|810|1728|5124
+|B67A|Degenerative Nervous System Disorders W Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward B2|1573.3599853515625|2710.699951171875|4707.919921875|256|513|1026|0|73.589996337890597|261.85998535156199|0|514.22001647949219|1162.1799926757813|-|-|-
+|B67A|Degenerative Nervous System Disorders W Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward C|1568.06005859375|2627.919921875|4685.47998046875|220|438.54000091552734|880|0|98.314998626708899|296.89999389648398|0|543.29999446868896|1053.3000001907349|-|-|-
+|B67A|Degenerative Nervous System Disorders W Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|8220.7802734375|13854.5546875|18555.75|2484|3739.5550537109375|5299.990234375|54.970001220703097|256.95999908447197|581.36999511718705|289.18999862670898|2160.7499389648438|4043.9400177001953|-|-|-
+|B67A|Degenerative Nervous System Disorders W Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|5517.68017578125|9577.7802734375|13189.5595703125|1075.6800537109375|2054.989990234375|4539.02978515625|42.490001678466797|175.30999755859301|578.61999511718705|307.81000518798828|1372.6800289154053|4196.210075378418|-|-|-
+|B67C|Degenerative Nervous System Disorders W/O CC|Private Hospitals|Inpatient|6948.77978515625|11137.419921875|20451.9609375|506|830|1696.02001953125|73.040000915527301|1730.56994628906|8097.8701171875|0|1322.22998046875|4448.58984375|540|956.88000488281205|1805.76000976562
+|B67B|Degenerative Nervous System Disorders W Moderate CC|Public Hospitals/ Centres (Subsidised)|Ward B2|1105.93994140625|1702.8399658203125|3294.68994140625|98.349998474121094|225|399|0|38.25|115.290000915527|0|296.46000480651855|851.70999145507813|-|-|-
+|B67B|Degenerative Nervous System Disorders W Moderate CC|Public Hospitals/ Centres (Subsidised)|Ward C|1027.219970703125|1706.219970703125|3087.14990234375|117|227.74000549316406|415.42999267578125|9.6899995803833008|55.409999847412102|150.80000305175699|64.44000244140625|388.27998828887939|980.8599967956543|-|-|-
+|B67B|Degenerative Nervous System Disorders W Moderate CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|3286.93994140625|5930.634765625|8388.8203125|1080|1701.25|2650|62.5|190.07500457763601|417.45001220703102|920.92001342773438|1940.9150257110596|3362.7999267578125|-|-|-
+|B67B|Degenerative Nervous System Disorders W Moderate CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|3342.0849609375|6393.9599609375|8586.6953125|585.989990234375|1327.1499900817871|1626.4900207519531|0|70.545001983642507|225.68999481201101|0|359.61000537872314|2196.0749797821045|-|-|-
+|B68B|Multiple Sclerosis and Cerebellar Ataxia W/O CC|Private Hospitals|Inpatient|11628.8203125|16407.30078125|35521.98828125|428.01998901367188|790|1384.989990234375|40.7299995422363|4603.81982421875|12540.26953125|0|759.9000244140625|7316.60986328125|432|648|1566
+|B67C|Degenerative Nervous System Disorders W/O CC|Public Hospitals/ Centres (Subsidised)|Ward B2|478.2349853515625|1051.6400146484375|2891.35986328125|84.080001831054688|130.35000610351563|190|0|7.5000002980232197E-2|142.44499969482399|0|2.75|471.21000814437866|-|-|-
+|B67C|Degenerative Nervous System Disorders W/O CC|Public Hospitals/ Centres (Subsidised)|Ward C|621.34002685546875|1389.06494140625|2960.89990234375|93.44000244140625|148.02999877929688|232.3699951171875|0|38.769998550415004|224.61000061035099|0|90.39000129699707|425.54998779296875|-|-|-
+|B67C|Degenerative Nervous System Disorders W/O CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|796.07000732421875|2363.6201171875|6666.75|461.26998901367188|530|1242|0|0|196.55999755859301|0|4.320000171661377|889.22000122070313|-|-|-
+|B67C|Degenerative Nervous System Disorders W/O CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|1939.97998046875|12436.91015625|12544.73046875|252.72000122070313|271.07998657226563|581.03997802734375|0|95|1387.53002929687|0|0|736.02000427246094|-|-|-
+|B68A|Multiple Sclerosis and Cerebellar Ataxia W CC|Public Hospitals/ Centres (Subsidised)|Ward B2|921.699951171875|2624.6201171875|4930.53515625|83.784999847412109|168.5|468.29499816894531|0|209.07999420166001|335.73500061035099|39.369998931884766|544.70501744747162|1988.1899743080139|-|-|-
+|B68A|Multiple Sclerosis and Cerebellar Ataxia W CC|Public Hospitals/ Centres (Subsidised)|Ward C|1063.93994140625|3193.0048828125|6279.740234375|81.400001525878906|321|720|51.959999084472599|222.060005187988|640.67999267578102|55.159999847412109|832.94501113891602|2773.7600250244141|-|-|-
+|B68A|Multiple Sclerosis and Cerebellar Ataxia W CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|5889.64501953125|29204.1796875|53374.1015625|1060|7155.64990234375|14675.9951171875|17.030000686645501|1609.5799865722599|6401.455078125|8.6400003433227539|1405.554993391037|16216.685092926025|-|-|-
+|B69B|TIA and Precerebral Occlusion W/O Catastrophic or Severe CC|Private Hospitals|Inpatient|7369.4599609375|10396.5498046875|15738.8701171875|516|830|1556|74.889999389648395|412.64001464843699|1004.75|976.80999755859375|3356.820068359375|6006.72998046875|648|1350|1944
+|B68B|Multiple Sclerosis and Cerebellar Ataxia W/O CC|Public Hospitals/ Centres (Subsidised)|Ward B2|738.6500244140625|1434.260009765625|3138.9599609375|57|84.720001220703125|130.35000610351563|34.159999847412102|346.92999267578102|1113.84997558593|2.5|108.76999664306641|347.83999633789063|-|-|-
+|B68B|Multiple Sclerosis and Cerebellar Ataxia W/O CC|Public Hospitals/ Centres (Subsidised)|Ward C|574.22998046875|1279.679931640625|3493.050048828125|57|112.5|227.74000549316406|14.1599998474121|225.544998168945|462.23001098632801|49.860000610351563|136.00499868392944|1879.1699829101563|-|-|-
+|B68B|Multiple Sclerosis and Cerebellar Ataxia W/O CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|2054.389892578125|3757.39990234375|9246.740234375|461.26998901367188|530|540|220.42999267578099|880.42999267578102|3098.46997070312|4.320000171661377|414.36998796463013|605.65997314453125|-|-|-
+|B69A|TIA and Precerebral Occlusion W Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward B2|1417.0699462890625|1962.949951171875|2787.77001953125|171|309.10000610351563|477.17001342773438|0|59.330001831054602|140.14999389648401|0|675.38000011444092|1137.2300033569336|-|-|-
+|B69A|TIA and Precerebral Occlusion W Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward C|1314.760009765625|1977.75|2853.3798828125|117|237.52999877929688|450|0|58.569999694824197|164|0|675.55998229980469|1140.5899887084961|-|-|-
+|B69A|TIA and Precerebral Occlusion W Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|4993.14013671875|6497.08984375|8694.8896484375|1088|1671.47998046875|2484|110.300003051757|183.22000122070301|300.13000488281199|796.6999979019165|2840.9599533081055|4175.1299915313721|-|-|-
+|B69A|TIA and Precerebral Occlusion W Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|3870.919921875|5049.81982421875|5811.52978515625|568.34002685546875|813.239990234375|1422.989990234375|10.829999923706|145.11999511718699|283.67999267578102|893.12000274658203|2373.5100326538086|2939.1599731445313|-|-|-
+|B70A|Stroke and Other Cerebrovascular Disorders W Catastrophic CC|Private Hospitals|Inpatient|26730.189453125|50526.94140625|75661.5625|1284.010009765625|3949.989990234375|8292.33984375|2450.75|5688.97021484375|9759.8701171875|5817.9599609375|9067.1904296875|14197.2197265625|5567.39990234375|7067.52001953125|13678.2001953125
+|B69B|TIA and Precerebral Occlusion W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward B2|1105.27001953125|1595.75|2351.590087890625|114|192|356.25|0|29.799999237060501|72.519996643066406|0|685.6200008392334|1240.6299934387207|-|-|-
+|B69B|TIA and Precerebral Occlusion W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Subsidised)|Ward C|1127.06005859375|1554.0999755859375|2187.760009765625|94|180|333.67001342773438|0|36.369998931884702|73.239997863769503|74.149997711181641|688.3800048828125|1165.0999965667725|-|-|-
+|B69B|TIA and Precerebral Occlusion W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|3453.9248046875|4800.330078125|7627.4951171875|866.26998901367188|1144.0050048828125|2140|71.540000915527301|123.465000152587|208.38999938964801|1449.5000305175781|2330.9050407409668|3488.3099994659424|-|-|-
+|B69B|TIA and Precerebral Occlusion W/O Catastrophic or Severe CC|Public Hospitals/ Centres (Unsubsidised)|Ward B1|3490.169921875|4543.3251953125|5569.2802734375|519.69000244140625|716.2550048828125|1330.6900024414063|74.034999847412095|130.695003509521|194.544998168945|1536.1150102615356|2252.3900012969971|3422.7600555419922|-|-|-
+|B70B|Stroke and Other Cerebrovascular Disorders W Severe CC|Private Hospitals|Inpatient|14097.5|21046.640625|35029.66015625|1265|1696.02001953125|4224|262.72000122070301|1062.9599609375|3083.3798828125|486|6334.01025390625|9941.8603515625|1898.09997558593|2965|6588
+|B70A|Stroke and Other Cerebrovascular Disorders W Catastrophic CC|Public Hospitals/ Centres (Subsidised)|Ward B2|2815.9599609375|4408.919921875|8252.4404296875|519|968|2119.5|26.870000839233398|159.169998168945|412.67999267578102|394.08000898361206|1070.6600036621094|1669.0100021362305|-|-|-
+|B70A|Stroke and Other Cerebrovascular Disorders W Catastrophic CC|Public Hospitals/ Centres (Subsidised)|Ward C|2800.159912109375|4428.39013671875|7445.02978515625|470|894.20001220703125|1739|12.319999694824199|150.33000183105401|418.17001342773398|313.51000785827637|1046.1700048446655|1590.3399887084961|-|-|-
+|B70A|Stroke and Other Cerebrovascular Disorders W Catastrophic CC|Public Hospitals/ Centres (Unsubsidised)|Ward A|10868.2001953125|17051.640625|30104.7109375|3366.0499877929688|5821.9951171875|11949.544921875|135.625|341.85499572753901|705.5|1791.7199935913086|3934.5550289154053|6305.0550079345703|-|-|-
+--- SHEET: 4. Med DRG- Hospital Level Data
+|Information on total bill amount by Medical DRG and hospital
+|Note
+1. To ensure that there are adequate cases for meaningful comparisons, procedures with less than 10 cases will not be shown.
+2. Figures shown on this page include GST and are based on the percentiles of actual transacted fees across the medical institutions, from 1 January 2023 to 31 December 2023.
+
+|DRG|DRG Description|Hospital|Setting|Ward Type|ALOS|P25 Bill|P50 Bill|P75 Bill
+|B63Z|Dementia and Other Chronic Disturbances of Cerebral Function|AH|Public Hospitals/ Centres (Subsidised)|Ward C|12.94339656829834|1053.77001953125|1698.3299560546875|3791.18994140625
+|B64A|Delirium W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|7.5833334922790527|1333.800048828125|1756.8599853515625|2843.375
+|B64A|Delirium W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|8.9081630706787109|1201.1500244140625|1751.320068359375|2747.9599609375
+|B64B|Delirium W/O Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|4.6363635063171387|725.96002197265625|1058.0799560546875|1431.949951171875
+|B66B|Nervous System Neoplasm W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|453.60000610351563|576.1300048828125|1020.4099731445313
+|B67A|Degenerative Nervous System Disorders W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|13.357142448425293|1635.25|2155.73486328125|4819.0302734375
+|B70A|Stroke and Other Cerebrovascular Disorders W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|11.647058486938477|2372.8798828125|3167.93994140625|6152.10009765625
+|B70A|Stroke and Other Cerebrovascular Disorders W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|16.345455169677734|2364.580078125|3822.43994140625|5861.31982421875
+|B70B|Stroke and Other Cerebrovascular Disorders W Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|8.4166669845581055|2161.85986328125|2765.864990234375|4788.41015625
+|B71A|Cranial and Peripheral Nerve Disorders W CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|8.6666669845581055|1275.054931640625|2095.52490234375|3275.4501953125
+|B71A|Cranial and Peripheral Nerve Disorders W CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|8.65625|698.530029296875|1288.135009765625|2284.9501953125
+|B71B|Cranial and Peripheral Nerve Disorders W/O CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|2.7000000476837158|610.82000732421875|922.7750244140625|1178.0899658203125
+|B71B|Cranial and Peripheral Nerve Disorders W/O CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|3|506.6199951171875|967.04998779296875|1298.0999755859375
+|B76A|Seizure W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|6.7333331108093262|1433.4300537109375|2144.2099609375|2815.830078125
+|B77Z|Headache|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|3.25|1011.7049560546875|1349.155029296875|1981.840087890625
+|B77Z|Headache|AH|Public Hospitals/ Centres (Subsidised)|Ward C|3.4561402797698975|721.30999755859375|1151.739990234375|1450.6199951171875
+|B78A|Intracranial Injury W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|12.733333587646484|1568.3499755859375|2685.179931640625|4710.93994140625
+|B80Z|Other Head Injury|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|5.5344829559326172|1002.3499755859375|1538.31005859375|2376.550048828125
+|B80Z|Other Head Injury|AH|Public Hospitals/ Centres (Subsidised)|Ward C|6.5486383438110352|868.05999755859375|1306.1400146484375|2145.889892578125
+|B80Z|Other Head Injury|AH|Public Hospitals/ Centres (Unsubsidised)|Ward B1|6.8000001907348633|2107.0400390625|4056.1298828125|6133.52978515625
+|B81A|Other Disorders of the Nervous System W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|7.769230842590332|1541.18994140625|1621.22998046875|2156.6201171875
+|B81A|Other Disorders of the Nervous System W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|10.122641563415527|1040.9000244140625|1646.6099853515625|2820.719970703125
+|B81B|Other Disorders of the Nervous System W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|91|104.76999664306641|144.75
+|B81B|Other Disorders of the Nervous System W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|5.5454545021057129|659.989990234375|1563.6199951171875|2089.5
+|B81B|Other Disorders of the Nervous System W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|4.2413792610168457|542.19000244140625|1225.5|1729.699951171875
+|C62Z|Hyphema and Medically Managed Trauma to the Eye|AH|Public Hospitals/ Centres (Subsidised)|Ward C|8.3636360168457031|865.6500244140625|1649.02001953125|2665.8701171875
+|D61Z|Dysequilibrium|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|91|98.104995727539063|151.46499633789063
+|D61Z|Dysequilibrium|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|3.1683168411254883|659.03997802734375|1100.6800537109375|1571.6700439453125
+|D61Z|Dysequilibrium|AH|Public Hospitals/ Centres (Subsidised)|Ward C|3.8446602821350098|696.5999755859375|978.82501220703125|1780.760009765625
+|D61Z|Dysequilibrium|AH|Public Hospitals/ Centres (Unsubsidised)|Ward B1|3.2142856121063232|1142.2099609375|2084.389892578125|4530.4599609375
+|D67A|Oral and Dental Disorders Except Extractions and Restorations|AH|Public Hospitals/ Centres (Subsidised)|Ward C|4.4166665077209473|926.594970703125|1272.135009765625|2044.324951171875
+|D67B|Oral and Dental Disorders Except Extractions and Restorations, Sameday|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|91|104.76999664306641|171.6199951171875
+|E62A|Respiratory Infections/Inflammations W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|8.8780488967895508|1281.1400146484375|2228.9150390625|3117.840087890625
+|E62A|Respiratory Infections/Inflammations W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|7.9861688613891602|1123.68994140625|1627.780029296875|2630.169921875
+|E62A|Respiratory Infections/Inflammations W Catastrophic CC|AH|Public Hospitals/ Centres (Unsubsidised)|Ward B1|6.9411764144897461|3405.090087890625|4988.56005859375|6057.6201171875
+|E62B|Respiratory Infections/Inflammations W Severe or Moderate CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|4.4696969985961914|874.5|1204.625|1802.030029296875
+|E62B|Respiratory Infections/Inflammations W Severe or Moderate CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|4.5500001907348633|768.1099853515625|1169.389892578125|1835.070068359375
+|E62C|Respiratory Infections/Inflammations W/O CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|3.3333332538604736|660.05999755859375|940.79498291015625|1497.77001953125
+|E62C|Respiratory Infections/Inflammations W/O CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|3.4693877696990967|605.84002685546875|847.58001708984375|1281.8900146484375
+|E63Z|Sleep Apnoea|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|98.44000244140625|104.76999664306641|171.6199951171875
+|E65A|Chronic Obstructive Airways Disease W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|8.5909090042114258|1080.0400390625|1660.5699462890625|2474.10009765625
+|E65B|Chronic Obstructive Airways Disease W/O Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|4.3636364936828613|675.1300048828125|1126.260009765625|1475.739990234375
+|E65B|Chronic Obstructive Airways Disease W/O Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|4.8214287757873535|691.905029296875|1027.070068359375|1572.804931640625
+|E67A|Respiratory Signs and Symptoms W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|6.2380952835083008|580.82000732421875|1061.5999755859375|1590.4300537109375
+|E67B|Respiratory Signs and Symptoms W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Day Surgery (Subsidised)|1|104.76999664306641|144.75|171.6199951171875
+|E67B|Respiratory Signs and Symptoms W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|3.5714285373687744|483.45999145507813|727.02001953125|991.21002197265625
+|E69A|Bronchitis and Asthma W CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|4.3714284896850586|744.42999267578125|1158.125|1599.4599609375
+|E69A|Bronchitis and Asthma W CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|5.8000001907348633|756.21002197265625|1137.800048828125|1444.3900146484375
+|E69B|Bronchitis and Asthma W/O CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|2.576923131942749|659.82000732421875|936.18499755859375|1292.8299560546875
+|E69B|Bronchitis and Asthma W/O CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|2.7843136787414551|451.32998657226563|667.780029296875|1191.75
+|E71A|Respiratory Neoplasms W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|9.8333330154418945|885.1099853515625|1843.2249755859375|2989.989990234375
+|E75A|Other Respiratory System Diagnosis W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|4.4000000953674316|912.03997802734375|1337.6099853515625|2053.89990234375
+|E75A|Other Respiratory System Diagnosis W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|7.9615383148193359|983.54498291015625|1555.97509765625|2914.925048828125
+|E75B|Other Respiratory System Diagnosis W Severe or Moderate CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|2.7333333492279053|760.54998779296875|902.91998291015625|1409.300048828125
+|E75B|Other Respiratory System Diagnosis W Severe or Moderate CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|3.7317073345184326|659.34002685546875|928.1400146484375|1237.2099609375
+|E75C|Other Respiratory System Diagnosis W/O CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|2.7000000476837158|629.82000732421875|896.66998291015625|1089.5
+|E75C|Other Respiratory System Diagnosis W/O CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|3.0909090042114258|472.32000732421875|695.8900146484375|1849.4000244140625
+|F62A|Heart Failure and Shock W Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|10.149999618530273|1163.820068359375|1822.760009765625|3032.2451171875
+|F62B|Heart Failure and Shock W/O Catastrophic CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|4|692.55999755859375|806.0799560546875|1095.9000244140625
+|F65A|Peripheral Vascular Disorders W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|8.6666669845581055|1049.0400390625|1176.675048828125|2274.3798828125
+|F67B|Hypertension W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|2.7000000476837158|391.04498291015625|843.074951171875|1137.3599853515625
+|F73A|Syncope and Collapse W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|4.6875|865.699951171875|1024.0799560546875|2467.6298828125
+|F73A|Syncope and Collapse W Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|5.6875|951.5350341796875|1391.574951171875|2119.58984375
+|F73B|Syncope and Collapse W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|3.25|609.719970703125|1018.550048828125|2824.264892578125
+|F73B|Syncope and Collapse W/O Catastrophic or Severe CC|AH|Public Hospitals/ Centres (Subsidised)|Ward C|2.9347825050354004|682.47998046875|918.79498291015625|1188.1400146484375
+|F74Z|Chest Pain|AH|Public Hospitals/ Centres (Subsidised)|Ward B2|1.9166666269302368|433.67999267578125|608.489990234375|685.9849853515625
+|F74Z|Chest Pain|AH|Public Hospitals/ Centres (Subsidised)|Ward C|2.8787879943847656|368.510009765625|632.1300048828125|1108.9100341796875
+=== FIRST 200000 BYTES OF [Content_Types].xml
