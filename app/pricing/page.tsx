@@ -23,7 +23,7 @@ export default function Pricing() {
         are switched on.
       </p>
       <p>
-        <strong>Right now:</strong> {p.payments_note} The numbers below are a first draft and may change before payments go live. They are
+        <strong>Right now:</strong> {p.payments_note} The prices below are the approved prices. They are
         also available as <a href="/pricing.json">JSON</a>.
       </p>
 
