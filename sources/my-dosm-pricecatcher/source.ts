@@ -248,7 +248,7 @@ export const GLOSS: Record<string, string> = {
   masak: "cooking", jagung: "corn", sapi: "ghee", roti: "bread", kicap: "soy sauce", sos: "sauce", krimer: "creamer", teh: "tea", kopi: "coffee", jus: "juice",
   kordial: "cordial squash", ikan: "fish", bilis: "anchovies anchovy", sotong: "squid", ketam: "crab", udang: "prawn shrimp", bawal: "pomfret", kembung: "mackerel", tenggiri: "mackerel",
   cili: "chilli chili", halia: "ginger", kunyit: "turmeric", kacang: "beans nuts peanut", bendi: "okra ladies fingers", buncis: "green beans", panjang: "long", hijau: "green mung",
-  kelapa: "coconut", santan: "coconut milk", kubis: "cabbage", lobak: "carrot", merah: "red", terung: "eggplant aubergine brinjal", timun: "cucumber", tomato: "tomato",
+  kelapa: "coconut", santan: "coconut cream", kubis: "cabbage", lobak: "carrot", merah: "red", terung: "eggplant aubergine brinjal", timun: "cucumber", tomato: "tomato",
   bawang: "onion", besar: "big large", kecil: "small shallot", kentang: "potato", ubi: "potato tuber", betik: "papaya", pisang: "banana", tembikai: "watermelon",
   nenas: "pineapple", anggur: "grape grapes", jambu: "guava", oren: "orange", epal: "apple", lada: "pepper", hitam: "black", putih: "white", serbuk: "powder",
   rempah: "spice spices", mee: "noodles", mi: "noodles", bihun: "vermicelli noodles", marjerin: "margarine", mentega: "butter", sardin: "sardine sardines", coklat: "chocolate",
