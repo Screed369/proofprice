@@ -126,7 +126,7 @@ export interface SourcePlugin {
    *  Answers and history built from the library then report sample_size null instead of a count that is not real. */
   nominalCounts?: boolean;
   /** Optional: map a request to the library keys used by harvest, so /history can answer. */
-  historyKey?(params: Params): { area: string; item: string; label: string } | null;
+  historyKey?(params: Params, opts?: { monthly?: boolean }): { area: string; item: string; label: string } | null;
 }
 
 /** One country entry of a tool description, filled from the registry (the source's placeName, countries and info), never typed by hand in a category. */

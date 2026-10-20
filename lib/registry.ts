@@ -305,7 +305,8 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
   if (!src.harvest || !src.historyKey) {
     throw new InputError(`We do not keep daily history for ${src.info.country} ${cat.noun.toLowerCase()} yet.`);
   }
-  const key = src.historyKey(prepared);
+  const monthlyAsked = num(params.months) !== undefined;
+  const key = src.historyKey(prepared, { monthly: monthlyAsked });
   if (!key) throw new InputError("History is kept by area and fuel; give an area or postcode and a fuel this source publishes.");
   const days = Math.max(2, Math.min(366, Math.round(num(params.days) ?? 30)));
   const meta = readMeta(src.info.id);
