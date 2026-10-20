@@ -1,0 +1,30 @@
+URL: https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0014696&Dim1=S3A20262,S3A20261&Dim2=1111601,1500805,11A1312,3003103,PT&lang=EN
+Fetched: 2026-10-20T09:20:17Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 310
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Tue, 20 Oct 2026 09:20:16 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 310
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=sQjcL5tYOZEy8r6YlLgiXiXxlM2SWjsBrDn329pE.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indica.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+[ {
+  "Sucesso" : {
+    "Falso" : [ {
+      "IndicadorCod" : "0014696",
+      "Lingua" : "EN",
+      "DataExtracao" : "2026-10-20T10:20:16.897+01:00",
+      "Msg" : "(PT) Código(s) em Dim1 não válido(s) para o indicador / (EN) Code(s) in Dim1 not valid for the indicator.",
+      "Cod" : "4"
+    } ]
+  }
+} ]
