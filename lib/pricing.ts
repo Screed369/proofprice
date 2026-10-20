@@ -62,7 +62,7 @@ export function pricingFacts(baseUrl: string = SITE_URL) {
     sources_cleared_for_paid_use: CLEARED_FOR_PAID.size,
     daily_paid_call_cap_per_server_instance: DAILY_PAID_CAP,
     business_plans: `Email ${CONTACT}`,
-    status: "Prices approved by the owner on 20 Oct 2026. Payments are off until they are switched on.",
+    status: "Prices approved by the owner on 20 Oct 2026.",
     page: `${baseUrl}/pricing`,
   };
 }
