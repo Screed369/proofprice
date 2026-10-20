@@ -1,0 +1,76 @@
+URL: https://mapy.geoportal.gov.pl/wss/service/rcn?service=WFS&version=2.0.0&request=DescribeFeatureType&typeNames=ms:lokale
+Fetched: 2026-10-20T18:47:16Z from GitHub Actions
+Status, type, bytes: 200 application/gml+xml; version=3.2; charset=UTF-8 2936
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Tue, 20 Oct 2026 18:47:16 GMT
+Content-Type: application/gml+xml; version=3.2; charset=UTF-8
+Content-Length: 2936
+Access-Control-Allow-Origin: *
+Set-Cookie: gahLaQu1eeYooCu=!JzUlfXevWj1Sw2zlQI0cK6yPNdD2PkAbWs7rnTTtrnbsS/7JjODZmueTRP1wA+zvhzwd4KR6fne2bC4=; path=/; Httponly; Secure
+Set-Cookie: TS017e0801=01e9e35b2288c9a71b58a9a36b31373c3fdf0bed9578a5d52c2b19d7768434d229b354e5671007c401d6a36fa5b3b9ebaea5ce8a6e5d5df7db59d792d163e82f9e8fa5c05f; Path=/; Domain=.mapy.geoportal.gov.pl
+
+=== FILE TYPE: XML 1.0 document, ASCII text
+=== FIRST 8000 BYTES
+<?xml version='1.0' encoding="UTF-8" ?>
+<schema
+   targetNamespace="http://mapserver.gis.umn.edu/mapserver" 
+   xmlns:ms="http://mapserver.gis.umn.edu/mapserver" 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.w3.org/2001/XMLSchema"
+   xmlns:gml="http://www.opengis.net/gml/3.2"
+   elementFormDefault="qualified" version="0.1" >
+
+  <import namespace="http://www.opengis.net/gml/3.2"
+          schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" />
+
+  <element name="lokale" 
+           type="ms:lokaleType" 
+           substitutionGroup="gml:AbstractFeature" />
+
+  <complexType name="lokaleType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="GEOMETRIA" type="gml:PointPropertyType" minOccurs="0" maxOccurs="1"/>
+          <element name="gid" type="integer"/>
+          <element name="SERWIS_RCN" type="string"/>
+          <element name="TERYT" type="string"/>
+          <element name="TRAN_PRZESTRZEN_NAZW" type="string"/>
+          <element name="TRAN_LOKALNY_ID_IIP" type="string"/>
+          <element name="TRAN_WERSJA_ID" type="gml:TimeInstantType"/>
+          <element name="TRAN_OZNACZENIE_TRANS" type="string"/>
+          <element name="TRAN_RODZAJ_TRANS" type="string"/>
+          <element name="TRAN_RODZAJ_RYNKU" minOccurs="0" type="string"/>
+          <element name="TRAN_SPRZEDAJACY" type="string"/>
+          <element name="TRAN_KUPUJACY" type="string"/>
+          <element name="TRAN_CENA_BRUTTO" type="double"/>
+          <element name="TRAN_VAT" minOccurs="0" type="double"/>
+          <element name="DOK_OZNACZENIE" type="string"/>
+          <element name="DOK_DATA" type="gml:TimeInstantType"/>
+          <element name="DOK_TWORCA" type="string"/>
+          <element name="NIER_RODZAJ" type="string"/>
+          <element name="NIER_PRAWO" type="string"/>
+          <element name="NIER_UDZIAL" type="string"/>
+          <element name="NIER_POW_GRUNTU" minOccurs="0" type="double"/>
+          <element name="NIER_OPIS" minOccurs="0" type="string"/>
+          <element name="NIER_CENA_BRUTTO" minOccurs="0" type="double"/>
+          <element name="NIER_VAT" minOccurs="0" type="double"/>
+          <element name="LOK_ID_LOKALU" type="string"/>
+          <element name="LOK_FUNKCJA" type="string"/>
+          <element name="LOK_LICZBA_IZB" minOccurs="0" type="integer"/>
+          <element name="LOK_NR_KOND" minOccurs="0" type="integer"/>
+          <element name="LOK_POW_UZYT" type="double"/>
+          <element name="LOK_POW_PRZYN" minOccurs="0" type="double"/>
+          <element name="LOK_CENA_BRUTTO" minOccurs="0" type="double"/>
+          <element name="LOK_VAT" minOccurs="0" type="double"/>
+          <element name="LOK_INFO" minOccurs="0" type="string"/>
+          <element name="LOK_ADRES" minOccurs="0" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+</schema>
