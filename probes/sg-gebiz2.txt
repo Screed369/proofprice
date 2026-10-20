@@ -1,0 +1,23 @@
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&limit=6&q=cleaning
+Fetched: 2026-10-20T22:17:30Z from GitHub Actions
+Status, type, bytes: 200 application/json 3174
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 20 Oct 2026 22:17:30 GMT
+content-type: application/json
+vary: Accept-Encoding
+x-content-type-options: nosniff
+apigw-requestid: FkFDBhL3yQ0EJhQ=
+strict-transport-security: max-age=31536000; includeSubDomains
+last-modified: Tue, 20 Oct 2026 22:17:30 GMT
+cache-control: max-age=300
+cf-cache-status: MISS
+set-cookie: _cfuvid=twwutQd1csSIGIv968IX53HC6k5In6molhWAShRADeU-1792534648.7635531-1.0.1.1-Gb37HpItra87CT8m6LKuWeKZyL2KL3LzArA93iQ82fk; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+server: cloudflare
+cf-ray: a4db6492cdfe5901-LAX
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"success":true,"result":{"resource_id":"d_acde1106003906a75c3fa052592f2fcb","fields":[{"type":"text","id":"tender_no"},{"type":"text","id":"tender_description"},{"type":"text","id":"agency"},{"type":"text","id":"award_date"},{"type":"text","id":"tender_detail_status"},{"type":"text","id":"supplier_name"},{"type":"numeric","id":"awarded_amt"},{"type":"int4","id":"_id"},{"type":"int8","id":"_full_count"},{"type":"float4","id":"rank"}],"records":[{"_id":37,"tender_no":"AGC000ETT23000003","tender_description":"ITT for Integrated Facilities Management (IFM) and Cleaning Services for AGC","agency":"Attorney-General's Chambers","award_date":"3/7/2023","tender_detail_status":"Awarded to Suppliers","supplier_name":"SAVILLS PROPERTY MANAGEMENT PTE. LTD.","awarded_amt":"5787623","rank":0.06079271,"_full_count":"182"},{"_id":60,"tender_no":"AGO000ETT23000002","tender_description":"Tender for the Provision of Cleaning Services at Auditor-General's office HQ-Office for a period of three (3) years","agency":"Auditor-General's Office","award_date":"19/2/2024","tender_detail_status":"Awarded to Suppliers","supplier_name":"TSM GROUP PTE. LTD.","awarded_amt":"91080","rank":0.06079271,"_full_count":"182"},{"_id":418,"tender_no":"CCS000ETT23000001","tender_description":"Provision of General Office Cleaning Services","agency":"Competition and Consumer Commission of Singapore (CCCS)","award_date":"11/7/2023","tender_detail_status":"Awarded to Suppliers","supplier_name":"CLEANMAGE PTE. LTD.","awarded_amt":"168000","rank":0.06079271,"_full_count":"182"},{"_id":649,"tender_no":"CDVHQ0ETT21000032","tender_description":"Invitation to Tender for the Provision of Cleaning Services for MSF Headquarters.","agency":"Ministry of Social and Family Development - Ministry Headquarter","award_date":"22/12/2021","tender_detail_status":"Awarded to Suppliers","supplier_name":"ISS FACILITY SERVICES PRIVATE LIMITED","awarded_amt":"1200000","rank":0.06079271,"_full_count":"182"},{"_id":844,"tender_no":"CEA000ETT25000001","tender_description":"Invitation to Tender for the Provision of Cleaning Services to Council for Estate Agencies for a period of four (4) years with option to extend for another three (3) years","agency":"Council for Estate Agencies","award_date":"24/9/2025","tender_detail_status":"Awarded to Suppliers","supplier_name":"ECLAT SERVICES PTE. LTD.","awarded_amt":"260400","rank":0.06079271,"_full_count":"182"},{"_id":1102,"tender_no":"CRA000ETT21000004","tender_description":"PROVISION OF CLEANING SERVICES TO THE CASINO REGULATORY AUTHORITY OF SINGAPORE FOR A BASE PERIOD OF 2 YEARS, WITH OPTIONS TO EXTEND THE SERVICES FOR TWO SUBSEQUENT 1 YEAR PERIODS","agency":"Gambling Regulatory Authority of Singapore (GRA)","award_date":"20/12/2021","tender_detail_status":"Awarded to Suppliers","supplier_name":"CSP MAINTENANCE PTE LTD","awarded_amt":"433200","rank":0.06079271,"_full_count":"182"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&limit=6&q=cleaning","next":"/api/action/datastore_search?resource_id=d_acde1106003906a75c3fa052592f2fcb&offset=6&limit=6&q=cleaning"},"total":182,"limit":6,"q":"cleaning"}}
