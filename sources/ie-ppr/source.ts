@@ -26,11 +26,13 @@ export const INFO: SourceInfo = {
     "Source: Property Services Regulatory Authority (PSRA), Residential Property Price Register, © PSRA. Aggregates calculated by ProofPrice.",
   homepage: "https://www.propertypriceregister.ie/",
   limits:
-    "Aggregates only, by county or Dublin postal district and rolling window; never individual addresses. Excludes sales flagged 'not full market price' (for example family transfers), prices under EUR 10,000 and records above EUR 10 million (bulk sales). Prices are per sale as declared for stamp duty, usually one home. New homes are usually recorded without 13.5% VAT: 'new' keeps them as recorded, 'any' leaves out prices recorded without VAT.",
+    "Aggregates only, by county or Dublin postal district and rolling window; never individual addresses. Excludes sales flagged 'not full market price' (for example family transfers), prices under EUR 30,000 (typing slips, parking spaces, part-shares) and prices of EUR 5 million or more (bulk and portfolio sales). Prices are per sale as declared for stamp duty, usually one home. New homes are usually recorded without 13.5% VAT: 'new' keeps them as recorded, 'any' leaves out prices recorded without VAT.",
 };
 
 /** Single-home ceiling: bulk or portfolio sales (whole apartment blocks) sometimes lack the 'not full market price' flag. */
-export const MAX_SINGLE_HOME = 10_000_000;
+export const MAX_SINGLE_HOME = 5_000_000; // exclusive: a price of exactly this or more is dropped
+/** Single-home floor: below this a record is a typing slip, a parking space or a part-share, not a home. */
+export const MIN_SINGLE_HOME = 30_000;
 
 export const PPR_ZIP_URL =
   "https://www.propertypriceregister.ie/website/npsra/ppr/npsra-ppr.nsf/Downloads/PPR-ALL.zip/$FILE/PPR-ALL.zip";
@@ -95,7 +97,7 @@ export interface IeSale {
 /**
  * Parse the register CSV by column POSITION (the euro sign in the price header is encoding-fragile):
  * 0 date dd/mm/yyyy, 2 county, 4 price "343,000.00", 5 not-full-market-price, 6 VAT exclusive, 7 description.
- * Kept: full-market-price sales in a known county, price from 10,000 to MAX_SINGLE_HOME (10 million; larger records are bulk or portfolio sales). VAT-exclusive rows are kept but flagged.
+ * Kept: full-market-price sales in a known county, price from MIN_SINGLE_HOME (30,000) up to but not including MAX_SINGLE_HOME (5 million; larger records are bulk or portfolio sales). VAT-exclusive rows are kept but flagged.
  */
 export function parseIePpr(csv: string): IeSale[] {
   const out: IeSale[] = [];
@@ -111,7 +113,7 @@ export function parseIePpr(csv: string): IeSale[] {
     const county = normaliseCounty(c[2]);
     if (!county) continue;
     const price = Number(c[4].replace(/[^0-9.]/g, ""));
-    if (!Number.isFinite(price) || price < 10000 || price > MAX_SINGLE_HOME) continue;
+    if (!Number.isFinite(price) || price < MIN_SINGLE_HOME || price >= MAX_SINGLE_HOME) continue;
     const d = c[7].trim().toLowerCase();
     // English, plus the Irish-language descriptions ("... Nua" = new, "... Atháimhe" = second-hand), read as latin-1.
     const kind = d.startsWith("new") || /\bnua\b/.test(d) ? "new" : d.startsWith("second-hand") || /ath[aá]imhe/.test(d) ? "second-hand" : null;
@@ -220,7 +222,7 @@ export function ieAnswerFromRow(
     period: { from: monthsBack(row.date, q.months), to: row.date },
     method:
       "Median and 10th–90th percentile of full-market-price residential sales over the last 3, 6, 12, 24 or 36 months (your request is rounded to the nearest) ending at the latest sale in the register. " +
-      "Sales flagged 'not full market price' are excluded, as are records above €10 million (bulk or portfolio sales, not single homes). 'any' also leaves out prices recorded without VAT; 'new' keeps prices as recorded, and new homes are usually recorded without 13.5% VAT, so do not compare new with second-hand directly.",
+      "Sales flagged 'not full market price' are excluded, as are records under €30,000 (typing slips, parking spaces, part-shares) and records of €5 million or more (bulk or portfolio sales, not single homes). 'any' also leaves out prices recorded without VAT; 'new' keeps prices as recorded, and new homes are usually recorded without 13.5% VAT, so do not compare new with second-hand directly.",
     describe: (x) =>
       `${cap(typeLabel)} in ${q.label} sold for a median of ${fmtMoney(x.median, "EUR")} (full-market-price sales); typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")}.` +
       (q.type === "new"

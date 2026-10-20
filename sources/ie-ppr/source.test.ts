@@ -84,12 +84,13 @@ test("IE: answer from a library row", () => {
   assert.equal(ieHistoryKey({ town: "dublin 6", months: 24 })?.item, "any:24m");
 });
 
-test("IE: bulk or portfolio records above 10 million are dropped (14 Oct 2026: a Dublin max of 217,488,769 was seen live)", () => {
+test("IE: records of 5 million or more are dropped and so are records under 30,000 (14 Oct 2026: a Dublin max of 217,488,769 was seen live)", () => {
+  const row = (addr: string, price: string) => `"02/09/2026","${addr}, Dublin 4","Dublin","","${price}","No","No","Second-Hand Dwelling house /Apartment",""`;
   const s = parseIePpr(
-    header + '\n"01/09/2026","Block A, Dublin 2","Dublin","","217,488,769.00","No","No","New Dwelling house /Apartment",""\n"02/09/2026","1 Road, Dublin 4","Dublin","","10,000,000.00","No","No","Second-Hand Dwelling house /Apartment",""\n"02/09/2026","2 Road, Dublin 4","Dublin","","10,000,001.00","No","No","Second-Hand Dwelling house /Apartment",""',
+    header + '\n"01/09/2026","Block A, Dublin 2","Dublin","","217,488,769.00","No","No","New Dwelling house /Apartment",""\n' +
+      [row("1 Road", "10,000,000.00"), row("2 Road", "5,000,000.00"), row("3 Road", "4,999,999.00"), row("4 Road", "30,000.00"), row("5 Road", "29,999.00"), row("6 Road", "10,000.00")].join("\n"),
   );
-  assert.equal(s.length, 1);
-  assert.equal(s[0].price, 10000000);
+  assert.deepEqual(s.map((x) => x.price).sort((a, b) => a - b), [30000, 4999999]);
 });
 
 test("IE: the answer echoes the town parameter as 'town'", () => {
