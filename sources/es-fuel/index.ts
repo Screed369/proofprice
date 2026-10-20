@@ -1,7 +1,7 @@
 // Manifest: Spain live pump prices. Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import { Fuel } from "../../lib/fuels";
-import { INFO, esFuelNow, esHarvest, esHistoryKey } from "./source";
+import { INFO, esFuelNow, esHarvest, esHistoryKey, esBackfill } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -28,5 +28,6 @@ export default defineSource({
       baseUrl: ctx.baseUrl,
     }),
   harvest: esHarvest,
+  backfill: esBackfill,
   historyKey: (p) => esHistoryKey({ postcode: str(p.postcode), area: str(p.area) ?? str(p.department), fuel: String(p.fuel) }),
 });

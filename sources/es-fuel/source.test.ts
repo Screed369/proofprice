@@ -68,3 +68,15 @@ test("ES: live answer keeps its public shape (no library-only fields)", async ()
     globalThis.fetch = realFetch;
   }
 });
+
+test("history helpers: url, months, month rows", async () => {
+  const { esHistUrl, esMonthsBetween, esMonthRows } = await import("./source");
+  assert.match(esHistUrl("2015-01-15"), /EstacionesTerrestresHist\/15-01-2015$/);
+  assert.deepEqual(esMonthsBetween("2014-11", "2015-02"), ["2014-11", "2014-12", "2015-01", "2015-02"]);
+  assert.equal(esMonthRows({ ListaEESSPrecio: [] }), null);
+  const mk = (p: string) => ({ "C.P.": "28001", IDProvincia: "28", "Tipo Venta": "P", "Precio Gasoleo A": p });
+  const rows = esMonthRows({ Fecha: "15/01/2015 0:00:00", ListaEESSPrecio: ["1,01", "1,02", "1,03", "1,04", "1,05"].map(mk) });
+  const d = rows!.find((r) => r.area === "28" && r.item === "diesel")!;
+  assert.equal(d.n, 5);
+  assert.equal(d.median, 1.03);
+});

@@ -3,7 +3,7 @@ import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { Fuel, FUEL_LABEL, stripAccents } from "../../lib/fuels";
-import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import type { BackfillResult, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { aggregateDaily } from "../../lib/library/aggregate";
 
 export const INFO: SourceInfo = {
@@ -195,4 +195,77 @@ export function esHistoryKey(p: { postcode?: string; area?: string; fuel: string
     return Number(a) >= 1 && Number(a) <= 52 ? { area: a, item: p.fuel, label: `province ${a}` } : null;
   }
   return { area: "ALL", item: p.fuel, label: "mainland Spain and the Balearics" };
+}
+
+
+const HIST_URL = "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestresHist/";
+const ES_UA = "ProofPrice-Historian/1.0 (+https://proofprice.com; hello@proofprice.com)";
+
+/** The Ministry's past-date service takes dd-mm-yyyy. */
+export function esHistUrl(isoDay: string): string {
+  const [y, m, d] = isoDay.split("-");
+  return `${HIST_URL}${d}-${m}-${y}`;
+}
+
+/** Months "YYYY-MM" from `from` to `to` inclusive. */
+export function esMonthsBetween(from: string, to: string): string[] {
+  const out: string[] = [];
+  let y = Number(from.slice(0, 4));
+  let m = Number(from.slice(5, 7));
+  const ey = Number(to.slice(0, 4));
+  const em = Number(to.slice(5, 7));
+  while (y < ey || (y === ey && m <= em)) {
+    out.push(`${y}-${String(m).padStart(2, "0")}`);
+    if (++m > 12) {
+      m = 1;
+      y++;
+    }
+  }
+  return out;
+}
+
+/** One month of aggregates from a snapshot of all stations; null when the snapshot is empty. */
+export function esMonthRows(json: any): BackfillResult["periods"][number]["rows"] | null {
+  if (!Array.isArray(json?.ListaEESSPrecio) || json.ListaEESSPrecio.length === 0) return null;
+  const rows = esDailyRows(json).rows;
+  return rows.length ? rows : null;
+}
+
+async function fetchHist(day: string): Promise<any | null> {
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = await fetch(esHistUrl(day), { headers: { accept: "application/json", "user-agent": ES_UA }, signal: AbortSignal.timeout(120000) });
+      if (res.status === 404 || res.status === 204) return null;
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      return text.trim() ? JSON.parse(text) : null;
+    } catch (e) {
+      if (attempt === 3) {
+        console.log(`Spain ${day}: skipped (${String((e as Error).message)})`);
+        return null;
+      }
+      await new Promise((r) => setTimeout(r, 5000 * attempt));
+    }
+  }
+  return null;
+}
+
+/** Monthly history: the posted prices of every public station on the 15th of each month (one request a month, a pause between). */
+export async function esBackfill(from: string, to: string): Promise<BackfillResult> {
+  const periods: BackfillResult["periods"] = [];
+  for (const month of esMonthsBetween(from.slice(0, 7), to.slice(0, 7))) {
+    const json = await fetchHist(`${month}-15`);
+    const rows = json ? esMonthRows(json) : null;
+    if (rows) {
+      periods.push({ period: month, rows });
+      console.log(`${month}: ${rows.length} rows`);
+    } else console.log(`${month}: no data`);
+    await new Promise((r) => setTimeout(r, 2000)); // be gentle with the publisher
+  }
+  return {
+    currency: "EUR",
+    unit: "per litre (CNG per kg)",
+    periods,
+    note: "Monthly figures from the Ministry's past-date price service: the posted pump price of every public station on the 15th of the month, then the median and 10th-90th percentile across stations (posted prices, not receipts). Spain as a whole (ALL) is mainland Spain and the Balearics.",
+  };
 }
