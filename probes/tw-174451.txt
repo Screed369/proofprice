@@ -1,0 +1,32 @@
+URL: https://data.gov.tw/api/v2/rest/dataset/174451
+Fetched: 2026-10-20T10:50:24Z from GitHub Actions
+Status, type, bytes: 200 application/json 2389
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 20 Oct 2026 10:50:24 GMT
+content-type: application/json
+content-length: 2389
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=0p61ss8d84q15kt0t3s6lqs63b; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=2GS7o_gfbaVhOhbJIw9wL3bI54ZELgG88QB2n5uenzs-1792493424.0249856-1.0.1.1-1ugjTJaM9A5BBhnYNhWG2WFbggmFMbNQ155bSJl27b3jS4StEpDFcRxd1O9UVi8J9K7AErJ9W6GTSaUDTI5stslhhWx1ExuSY2p0Z8NUsBMumEcrjZhLAw1CGwbV1coL; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Tue, 20 Oct 2026 11:20:24 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4d7761c2c856bba-DFW
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{"help":"","success":true,"result":{"categoryService":"B00","categoryDataset":"A","datasetId":174451,"identifier":"A21030000I-D20020","title":"醫療服務給付項目及支付標準(txt檔)","description":"全民健康保險醫療服務給付項目及支付標準現行給付項目(txt檔)","type":"api","license":"1","cost":"free","dataProvider":"grace10055","publisherOID":"2.16.886.101.20003.20065.20022","publisherContactName":"林小姐","publisherContactPhone":"02-27065866#3620","publisherContactEmail":"A111434@nhi.gov.tw","updateFrequency":{"regularupdate":"1","Frequency":"1","unittime":"日"},"dataQuality":"B","coverageStartedDate":"2025-06-05","coverageEndedDate":"2910-12-31","publishedDate":"2025-08-11","modifiedDate":"2026-10-20 07:05:54","spatialCoverage":"臺灣","language":"zh","relatedUrl":"","notes":"（檔案更新時間：2026-10-20 07:01:20）","apiDocUrl":"","distribution":[{"resourceDescription":"醫療服務給付項目及支付標準(txt檔)","resourceField":[{"name":"診療項目代碼","description":""},{"name":"健保支付點數","description":""},{"name":"生效起日","description":""},{"name":"生效迄日","description":""},{"name":"英文項目名稱","description":""},{"name":"中文項目名稱","description":""},{"name":"備註","description":""}],"qcLevel":"","resourceFormat":"TXT","resourceCharacterEncoding":"UTF-8","resourceQualityCheckTime":"2026-08-04 11:31:44","resourceDownloadUrl":"https:\/\/info.nhi.gov.tw\/api\/iode0000s01\/Dataset?rId=A21030000I-D20020-002","resourceAmount":"","resourceNotes":"","resourceRequestMethod":"","resourceOasUrl":"","resourceRequestParameters":[],"resourcePathParameters":[]}],"keyword":[],"en":{"title":"Medical service items and payment standards (txt file)","description":"National Health Insurance medical service benefits and payment standards current benefit items (txt file)","publisherContactName":"林小姐","publisherContactPhone":"02-27065866#3620","publisherContactEmail":["A111434@nhi.gov.tw"],"updateFrequency":"Every 1 day","cost":"free","notes":"The file was updated at 2025-08-11 10:15:26.","resources":[{"description":"Medical service benefits and payment standards (txt file)","fieldDesc":"Medical service items code、Health insurance payment points、Effective date、Effective until [specified date]、English item name、The Chinese project name、Remarks","note":""}]}}}
