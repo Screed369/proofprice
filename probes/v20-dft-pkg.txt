@@ -1,0 +1,42 @@
+URL: https://www.data.gov.uk/api/3/action/package_show?id=vehicle_licensing_statistics
+Fetched: 2026-10-20T20:43:07Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 5592
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+content-type: text/html; charset=utf-8
+server: gunicorn
+location: https://ckan.publishing.service.gov.uk/api/3/action/package_show?id=vehicle_licensing_statistics
+content-security-policy: default-src 'self'; connect-src 'self' *.google-analytics.com *.googletagmanager.com *.analytics.google.com s3-eu-west-1.amazonaws.com ckan.publishing.service.gov.uk; font-src 'self'; frame-ancestors 'self'; form-action 'self'; img-src 'self' *.google-analytics.com *.googletagmanager.com; manifest-src 'self'; media-src 'self'; object-src 'self'; script-src 'self' 'unsafe-inline' *.google-analytics.com *.googletagmanager.com; style-src 'self'
+x-frame-options: DENY
+content-language: en-GB
+strict-transport-security: max-age=60; includeSubDomains; preload
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+fastly-backend-name: origin
+accept-ranges: bytes
+age: 0
+date: Tue, 20 Oct 2026 20:43:07 GMT
+via: 1.1 varnish
+x-served-by: cache-chi-kmdw8640092-CHI
+x-cache: MISS
+x-cache-hits: 0
+vary: Accept-Language
+content-length: 0
+
+HTTP/2 200 
+date: Tue, 20 Oct 2026 20:43:07 GMT
+content-type: application/json;charset=utf-8
+content-length: 5592
+server: nginx
+cache-control: public, max-age=0, must-revalidate
+set-cookie: ckan=62f9eda3d96a74b4467e7580ffd1f3f2aeba13c8gAJ9cQAoWAcAAABfZG9tYWlucQFOWAUAAABfcGF0aHECWAEAAAAvcQNYAwAAAF9pZHEEWCAAAABmNjE0ZTJkZGIyNzk0YWYyODEwYmY5NWU5OGZmNWQ2ZnEFWAYAAABfZnJlc2hxBolYDgAAAF9jcmVhdGlvbl90aW1lcQdHQdq19JbmYMtYDgAAAF9hY2Nlc3NlZF90aW1lcQhHQdq19JbmYM11Lg==; expires=Tue, 19-Jan-2038 03:14:07 GMT; HttpOnly; Path=/; SameSite=Lax
+strict-transport-security: max-age=31536000; preload
+permissions-policy: interest-cohort=()
+x-content-type-options: nosniff
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://ckan.publishing.service.gov.uk/api/3/action/help_show?name=package_show", "success": true, "result": {"creator_user_id": "ab19a913-1fd8-4ec6-9595-cb579a9fd0b2", "date_released": "2008-05-08", "date_updated": "2014-04-10", "geographic_coverage": "111000: Great Britain (England, Scotland, Wales)", "geographic_granularity": "Region", "id": "0af397d4-1ab3-4bcb-8544-e199f9fe3954", "isopen": true, "license_id": "uk-ogl", "license_title": "UK Open Government Licence (OGL)", "license_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/", "metadata_created": "2011-12-10T22:38:14.354055", "metadata_modified": "2016-01-26T12:03:12.519386", "name": "vehicle_licensing_statistics", "notes": "Annual report providing a range of key statistics relating to licensed vehicles and new vehicle registrations in Great Britain.\n\nSource agency: Transport\n\nDesignation: National Statistics\n\nLanguage: English\n\nAlternative title: Vehicle Licensing Statistics", "num_resources": 4, "num_tags": 0, "odi-certificate": {"status": "final", "source": "Automatically awarded by ODI", "certification_type": "automatically awarded", "level": "bronze", "title": "Vehicle Licensing Statistics", "created_at": "2014-10-29T17:06:23Z", "jurisdiction": "GB", "certificate_url": "https://certificates.theodi.org/en/datasets/11306/certificate", "badge_url": "https://certificates.theodi.org/en/datasets/11306/certificate/badge.png", "cert_title": "Bronze level certificate"}, "organization": {"id": "e4900b3b-a7f8-447a-bd5e-43735f8f1b4a", "name": "department-for-transport", "title": "Department for Transport", "type": "organization", "description": "We work with our agencies and partners to support the transport network that helps the UK\u2019s businesses and gets people and goods travelling around the country. We plan and invest in transport infrastructure to keep the UK on the move.\r\n\r\nDFT is a ministerial department, supported by 22 agencies and public bodies.\r\n\r\nhttps://www.gov.uk/government/organisations/department-for-transport\r\n", "image_url": "", "created": "2012-06-27T14:48:39.978928", "is_organization": true, "approval_status": "pending", "state": "active"}, "owner_org": "e4900b3b-a7f8-447a-bd5e-43735f8f1b4a", "precision": "", "private": false, "state": "active", "temporal_coverage-from": "", "temporal_coverage-to": "", "temporal_granularity": "", "theme-primary": "transport", "title": "Vehicle Licensing Statistics", "type": "dataset", "update_frequency": "annual", "url": null, "version": null, "extras": [{"key": "categories", "value": "Travel and Transport"}, {"key": "external_reference", "value": "ONSHUB"}, {"key": "geographical_granularity", "value": "Region"}, {"key": "import_source", "value": "ONS-ons_data_1_days_to_2014-04-10"}, {"key": "national_statistic", "value": "yes"}, {"key": "series", "value": "Vehicle Licensing Statistics"}], "resources": [{"cache_last_updated": null, "cache_url": null, "created": "2013-03-11T14:07:33.787301", "description": "2007 Results", "format": "HTML", "hub-id": "119-31846", "id": "51151bc1-dc98-4fd7-a2c5-f3a6bf5f8592", "last_modified": null, "metadata_modified": "2013-03-11T14:07:33.787301", "mimetype": null, "mimetype_inner": null, "name": null, "package_id": "0af397d4-1ab3-4bcb-8544-e199f9fe3954", "position": 0, "publish-date": "2008-05-08", "resource_type": "file", "size": null, "state": "active", "url": "http://webarchive.nationalarchives.gov.uk/20140109181807/https://www.gov.uk/government/policies?departments%5b%5d=department-for-transport", "url_type": null}, {"cache_last_updated": null, "cache_url": null, "created": "2013-03-11T16:20:08.304566", "description": "2008 Results", "format": "HTML", "hub-id": "119-36280", "id": "483f1e8f-5a65-42d2-8c3d-c5b543c16e93", "last_modified": null, "metadata_modified": "2013-03-11T16:20:08.304566", "mimetype": null, "mimetype_inner": null, "name": null, "package_id": "0af397d4-1ab3-4bcb-8544-e199f9fe3954", "position": 1, "publish-date": "2009-04-09", "resource_type": "file", "size": null, "state": "active", "url": "http://webarchive.nationalarchives.gov.uk/20140109181730/https://www.gov.uk/government/policies?departments%5b%5d=department-for-transport", "url_type": null}, {"cache_last_updated": null, "cache_url": null, "created": "2013-03-11T19:55:16.525859", "description": "2009", "format": "HTML", "hub-id": "119-39944", "id": "ef004583-7c17-4730-b4f4-78c6ba7da881", "last_modified": null, "metadata_modified": "2013-03-11T19:55:16.525859", "mimetype": null, "mimetype_inner": null, "name": null, "package_id": "0af397d4-1ab3-4bcb-8544-e199f9fe3954", "position": 2, "publish-date": "2010-04-29", "resource_type": "file", "size": null, "state": "active", "url": "http://webarchive.nationalarchives.gov.uk/20140109181646/https://www.gov.uk/government/policies?departments%5b%5d=department-for-transport", "url_type": null}, {"cache_last_updated": null, "cache_url": null, "created": "2013-10-01T01:35:40.122799", "description": "2011", "format": "HTML", "hub-id": "119-56283", "id": "92c797bc-032a-43b3-b274-33aff4749523", "last_modified": null, "metadata_modified": "2013-10-01T01:35:40.122799", "mimetype": null, "mimetype_inner": null, "name": null, "package_id": "0af397d4-1ab3-4bcb-8544-e199f9fe3954", "position": 3, "publish-date": "2012-04-12", "resource_type": "file", "size": null, "state": "active", "url": "https://www.gov.uk/government/organisations/department-for-transport/about/statistics", "url_type": null}], "tags": [], "groups": [], "relationships_as_subject": [], "relationships_as_object": []}}
