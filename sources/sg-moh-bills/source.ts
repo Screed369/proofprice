@@ -210,7 +210,7 @@ export function billAnswer(rows: DrgRow[], input: BillInput): PriceAnswer {
       reference_period: YEAR,
       method: METHOD,
       describe: () => "",
-      note: "No medical condition in MOH's benchmark list matches that word. MOH covers selected medical (non-surgical) conditions only, for example stroke, pneumonia, dengue, heart failure, diabetes complications. Try another word or a DRG code.",
+      note: "No medical condition in MOH's benchmark list matches that word. MOH covers selected medical (non-surgical) conditions only, for example stroke, dementia, delirium or spinal cord conditions. Try another word or a DRG code.",
       baseUrl: input.baseUrl,
     });
   }

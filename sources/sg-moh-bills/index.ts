@@ -10,13 +10,13 @@ export default defineSource({
   placeName: "Singapore (hospital bills for medical conditions)",
   status: "live",
   paramNotes: {
-    service: "Singapore: a medical condition in plain words ('stroke', 'pneumonia', 'dengue', 'heart failure', 'dementia') or an MOH DRG code ('B70A'). Surgery and doctor visits are not covered.",
+    service: "Singapore: a medical condition in plain words ('stroke', 'dementia', 'delirium', 'spinal cord conditions') or an MOH DRG code ('B70A'). Surgery and doctor visits are not covered.",
     state: "Singapore: the ward class, because Singapore has no states: c = public subsidised Ward C (default), b2 = public subsidised Ward B2, b1 = public unsubsidised Ward B1, a = public unsubsidised Ward A, private = private hospital.",
     setting: "Singapore: only inpatient (a hospital stay); leave out.",
   },
   examples: [
     { params: { country: "SG", service: "stroke" } },
-    { params: { country: "SG", service: "pneumonia", state: "private" }, smoke: false },
+    { params: { country: "SG", service: "delirium", state: "private" }, smoke: false },
     { params: { country: "SG", service: "B70A", state: "b2" }, smoke: false },
   ],
   method:
