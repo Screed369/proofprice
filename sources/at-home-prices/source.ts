@@ -472,6 +472,20 @@ export function atAnswer(data: AtData, q: AtQuery): PriceAnswer {
     const said = parts.length
       ? `In ${label}: ` + parts.map((x) => `${x.description}, median ${fmtMoney(x.median, "EUR")} per m² (${x.reference_period})`).join("; ") + "."
       : `STATISTIK AUSTRIA has no published house or flat price for ${label}.`;
+    if (parts.length) {
+      // No type asked: pass on both published medians. The headline is the owner-occupied flat figure (house if the place has no flat figure); both sit in extra.by_type.
+      const headKind: Kind = parts.some((x) => x.key === "apartment") ? "apartment" : "house";
+      const base = atAnswer(data, { ...q, property_type: headKind });
+      if (base.status !== "ok") return base;
+      return {
+        ...base,
+        query: { ...base.query, property_type: q.property_type },
+        summary:
+          `${said} STATISTIK AUSTRIA publishes houses and flats separately, with no figure for both together, so the headline price is for ${KIND_WORDS[headKind]}; ` +
+          `ask with property_type 'house' or 'apartment' to choose. These are official annual medians per m² of living area (not per home), with no sample size published.`,
+        extra: { ...(base.extra ?? {}), by_type: parts, headline_property_type: headKind },
+      };
+    }
     return noMatch(q, label, `STATISTIK AUSTRIA publishes houses and flats separately, with no figure for both together. ${said} Ask again with property_type 'house' or 'apartment' for the full answer.`, { by_type: parts });
   }
 

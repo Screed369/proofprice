@@ -405,15 +405,21 @@ test("at-home-prices: gaps in the series are reported, not filled: older latest 
   assert.match(rust.summary, /publishes no house or flat price for Bezirk Rust \(Stadt\)/);
 });
 
-test("at-home-prices: 'any' gives both medians but no single price; unsupported kinds say so", () => {
+test("at-home-prices: 'any' gives both medians with the flat figure as headline; unsupported kinds say so", () => {
+  // Gap G20261020-1: country AT with no area and no type used to answer no_matches
   const any = answer("Wien", "any");
-  assert.equal(any.status, "no_matches");
-  assert.equal(any.price, null);
+  assert.equal(any.status, "ok");
+  assert.equal(any.price!.value, 5212);
+  assert.equal(any.query.property_type, "any");
   assert.match(any.summary, /publishes houses and flats separately, with no figure for both together/);
   assert.match(any.summary, /€5,376/);
   assert.match(any.summary, /€5,212/);
   assert.deepEqual((any.extra as any).by_type.map((t: any) => t.key), ["house", "apartment"]);
-  assert.equal(answer(null, "any").status, "no_matches");
+  assert.equal((any.extra as any).headline_property_type, "apartment");
+  const at = answer(null, "any");
+  assert.equal(at.status, "ok");
+  assert.deepEqual((at.extra as any).by_type.map((t: any) => t.key), ["house", "apartment"]);
+  assert.match(at.summary, /Austria/);
   for (const t of ["villa", "detached", "semi-detached", "terraced"]) {
     const a = answer("Wien", t);
     assert.equal(a.status, "no_matches", t);
