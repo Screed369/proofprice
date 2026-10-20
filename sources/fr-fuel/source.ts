@@ -4,7 +4,15 @@
 import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import type { BackfillResult, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { spawn } from "node:child_process";
+import { createInterface } from "node:readline";
+import { createWriteStream, mkdtempSync, rmSync } from "node:fs";
+import { pipeline } from "node:stream/promises";
+import { Readable } from "node:stream";
+import os from "node:os";
+import path from "node:path";
+import { MIN_PUBLISH } from "../../lib/stats";
 import { aggregateDaily } from "../../lib/library/aggregate";
 import type { Fuel } from "../../lib/fuels";
 
@@ -216,4 +224,148 @@ export function frHistoryKey(p: { postcode?: string; department?: string; fuel: 
     return /^(\d{2,3}|2A|2B)$/.test(d) ? { area: d, item: p.fuel, label: `department ${d}` } : null;
   }
   return { area: "ALL", item: p.fuel, label: "metropolitan France" };
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// History (backfill): the Ministry's yearly archives (data.gouv.fr "Prix des carburants en France - annuel"), a zip of one XML
+// file per year listing every price change of every station. We stream the file and keep only monthly aggregates:
+// for each station and fuel, the LAST price it posted in the month; then median / 10th / 90th percentile per department and
+// for metropolitan France ("ALL"). Raw rows, station ids and addresses are never stored.
+// ---------------------------------------------------------------------------------------------------------------------
+
+const ARCHIVE_URL = (year: number) => `https://donnees.roulez-eco.fr/opendata/annee/${year}`;
+const ARCHIVE_FUEL: Record<string, Fuel> = { gazole: "diesel", sp95: "petrol95", sp98: "petrol98", e10: "e10", e85: "e85", gplc: "lpg" };
+
+/** Streaming reader for the yearly XML: feed it one line at a time. Pure and unit-tested; keeps no raw records. */
+export class FrArchiveReader {
+  readonly months = new Map<string, Map<string, number[]>>();
+  private dept: string | null = null;
+  private last = new Map<string, { maj: string; price: number }>(); // "fuel|month" -> latest price of the current station
+  constructor(private readonly fromMonth: string, private readonly toMonth: string) {}
+
+  line(raw: string): void {
+    const l = raw.trim();
+    if (l.startsWith("<pdv ")) {
+      this.flush();
+      const cp = /\scp="([^"]*)"/.exec(l)?.[1] ?? "";
+      this.dept = frDepartment({ cp });
+    } else if (l.startsWith("</pdv")) {
+      this.flush();
+    } else if (l.startsWith("<prix ") && this.dept) {
+      const nom = /\snom="([^"]*)"/.exec(l)?.[1]?.toLowerCase();
+      const maj = /\smaj="([^"]*)"/.exec(l)?.[1];
+      const val = /\svaleur="([^"]*)"/.exec(l)?.[1];
+      const item = nom ? ARCHIVE_FUEL[nom] : undefined;
+      if (!item || !maj || !/^\d{4}-\d{2}-\d{2}/.test(maj)) return;
+      const month = maj.slice(0, 7);
+      if (month < this.fromMonth || month > this.toMonth) return;
+      const price = normalisePrice(val);
+      if (!Number.isFinite(price)) return;
+      const k = `${item}|${month}`;
+      const prev = this.last.get(k);
+      if (!prev || maj >= prev.maj) this.last.set(k, { maj, price });
+    }
+  }
+
+  private flush(): void {
+    if (this.dept) {
+      const overseas = this.dept.startsWith("97") || this.dept.startsWith("98");
+      for (const [k, v] of this.last) {
+        const [item, month] = k.split("|");
+        let m = this.months.get(month);
+        if (!m) this.months.set(month, (m = new Map()));
+        for (const area of overseas ? [this.dept] : [this.dept, METRO]) {
+          const key = `${area}\u0000${item}`;
+          const arr = m.get(key);
+          if (arr) arr.push(v.price);
+          else m.set(key, [v.price]);
+        }
+      }
+    }
+    this.last.clear();
+    this.dept = null;
+  }
+
+  finish(): void {
+    this.flush();
+  }
+}
+
+/** Monthly rows (thin groups are dropped later by the platform; here only an empty group is skipped). */
+export function frMonthlyRows(months: Map<string, Map<string, number[]>>): BackfillResult["periods"] {
+  const out: BackfillResult["periods"] = [];
+  for (const month of [...months.keys()].sort()) {
+    const rows = [];
+    for (const [key, prices] of months.get(month)!) {
+      const [area, item] = key.split("\u0000");
+      if (prices.length < MIN_PUBLISH) continue;
+      const s = summarise(prices);
+      if (!s) continue;
+      rows.push({ area, item, n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max });
+    }
+    rows.sort((a, b) => a.area.localeCompare(b.area) || a.item.localeCompare(b.item));
+    out.push({ period: month, rows });
+  }
+  return out;
+}
+
+async function downloadArchive(year: number, dest: string): Promise<boolean> {
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = await fetch(ARCHIVE_URL(year), { headers: { "user-agent": "ProofPrice-Historian/1.0 (+https://proofprice.com; hello@proofprice.com)" } });
+      if (res.status === 404) return false;
+      if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
+      await pipeline(Readable.fromWeb(res.body as any), createWriteStream(dest));
+      return true;
+    } catch (e) {
+      if (attempt === 3) throw new SourceError(`France archive ${year} could not be downloaded: ${String((e as Error).message)}`);
+      await new Promise((r) => setTimeout(r, 5000 * attempt));
+    }
+  }
+  return false;
+}
+
+/** Stream one yearly zip through `unzip -p` line by line into the reader. */
+async function readArchive(zipPath: string, reader: FrArchiveReader): Promise<void> {
+  const child = spawn("unzip", ["-p", zipPath], { stdio: ["ignore", "pipe", "inherit"] });
+  const done = new Promise<void>((resolve, reject) => {
+    child.on("error", reject);
+    child.on("close", (code) => (code === 0 ? resolve() : reject(new SourceError(`unzip exited with ${code}`))));
+  });
+  const rl = createInterface({ input: child.stdout, crlfDelay: Infinity });
+  for await (const line of rl) reader.line(line);
+  await done;
+  reader.finish();
+}
+
+/** Monthly medians per department and fuel from the yearly archives. from / to are YYYY-MM-DD; only whole past months are kept. */
+export async function frBackfill(from: string, to: string): Promise<BackfillResult> {
+  const fromMonth = from.slice(0, 7);
+  const toMonth = to.slice(0, 7);
+  const dir = mkdtempSync(path.join(os.tmpdir(), "fr-archive-"));
+  const periods: BackfillResult["periods"] = [];
+  try {
+    for (let year = Number(fromMonth.slice(0, 4)); year <= Number(toMonth.slice(0, 4)); year++) {
+      const zip = path.join(dir, `${year}.zip`);
+      if (!(await downloadArchive(year, zip))) {
+        console.log(`No archive for ${year}; skipped.`);
+        continue;
+      }
+      const reader = new FrArchiveReader(fromMonth, toMonth);
+      await readArchive(zip, reader);
+      rmSync(zip, { force: true });
+      const p = frMonthlyRows(reader.months);
+      console.log(`${year}: ${p.length} months, ${p.reduce((n, x) => n + x.rows.length, 0)} rows`);
+      periods.push(...p);
+      await new Promise((r) => setTimeout(r, 3000)); // be gentle with the publisher
+    }
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+  return {
+    currency: "EUR",
+    unit: "per litre",
+    periods,
+    note: "Monthly figures from the Ministry's yearly price archives: for each station and fuel the last price posted in the month, then the median and 10th-90th percentile across stations (posted pump prices, not receipts). France as a whole (ALL) is metropolitan France only.",
+  };
 }

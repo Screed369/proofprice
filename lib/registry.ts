@@ -10,6 +10,7 @@ import { normaliseCountry } from "./countries";
 import { InputError, SourceError, isSourceOutage, withDeadline } from "./http";
 import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
 import { readDaily, readMeta } from "./library/store";
+import { readHistoryMeta, readMonthly } from "./library/backfill";
 import { staleAnswer } from "./stale";
 import { MIN_PUBLISH } from "./stats";
 import { joinAnd } from "./text";
@@ -130,7 +131,7 @@ const LOCATION_WORDS = ["town", "area", "region"] as const;
 /** Spellings of a place that we accept for any category that has a location parameter. */
 const LOCATION_ALIASES = ["town", "city", "area", "place", "municipality", "region"] as const;
 /** Old spellings some sources still read themselves, so they stay valid even though no manifest lists them. */
-const LEGACY_PARAMS = ["department", "days"];
+const LEGACY_PARAMS = ["department", "days", "months"];
 
 /** The parameter a category uses for "where": town, else area, else region. Undefined when the category has no place (medicines, broadband ...). */
 export function locationParam(cat: CategoryPlugin): string | undefined {
@@ -313,7 +314,16 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
   const to = meta?.last_date ?? todayIso;
   const end = new Date(to + "T00:00:00Z");
   const from = new Date(end.getTime() - (days - 1) * 86400000).toISOString().slice(0, 10);
-  const rows = readDaily(src.info.id, { area: key.area, item: key.item, from, to }).filter((r) => r.n >= MIN_PUBLISH);
+  // months=N asks for monthly history (loaded by the History backfill) instead of the recent daily snapshots
+  const monthsAsked = num(params.months);
+  const monthly = monthsAsked !== undefined;
+  const nMonths = Math.max(2, Math.min(360, Math.round(monthsAsked ?? 0)));
+  const monthTo = to.slice(0, 7);
+  const monthFrom = new Date(Date.UTC(Number(monthTo.slice(0, 4)), Number(monthTo.slice(5, 7)) - 1 - (nMonths - 1), 1)).toISOString().slice(0, 7);
+  const rows = (monthly
+    ? readMonthly(src.info.id, { area: key.area, item: key.item, from: monthFrom, to: monthTo })
+    : readDaily(src.info.id, { area: key.area, item: key.item, from, to })
+  ).filter((r) => r.n >= MIN_PUBLISH);
   const staleDays = meta?.last_date ? Math.max(0, Math.round((Date.parse(todayIso) - Date.parse(meta.last_date)) / 86400000)) : null;
   const unit = cat.history?.unit?.(key.item) ?? meta?.unit ?? null;
   const currency = meta?.currency ?? null;
@@ -335,13 +345,13 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
     status === "ok"
       ? `${itemLabel} in ${key.label}: median ${money(last.median)} ${unit ?? ""} on ${last.date}, ` +
         `${change!.percent === 0 ? "unchanged" : change!.percent > 0 ? `up ${change!.percent}%` : `down ${Math.abs(change!.percent)}%`} ` +
-        `since ${first.date} (${money(first.median)}). ${rows.length} daily snapshots of ${src.info.publisher}.`
+        `since ${first.date} (${money(first.median)}). ${rows.length} ${monthly ? "monthly figures" : "daily snapshots"} of ${src.info.publisher}.`
       : status === "insufficient_history"
         ? `Only one day of history so far for ${itemLabel} in ${key.label} (${last.date}: median ${money(last.median)}). History builds up daily.`
         : `No history yet for ${itemLabel} in ${key.label}. ProofPrice snapshots this source once a day; history builds up from the first collection.`;
   const src_ = src.info;
   return {
-    query: { ...knownParams(cat, prepared), days, area_key: key.area, item: key.item },
+    query: { ...knownParams(cat, prepared), ...(monthly ? { months: nMonths } : { days }), area_key: key.area, item: key.item },
     status,
     currency,
     unit,
@@ -365,12 +375,14 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
       days_collected: meta?.days ?? 0,
       days_since_last_snapshot: staleDays,
     },
-    method:
-      "Once a day ProofPrice takes a snapshot of the official source and stores, for each area and item, the median, 10th–90th percentile and count. " +
-      `Days with fewer than ${MIN_PUBLISH} records are not shown.`,
+    method: monthly
+      ? (readHistoryMeta(src.info.id)?.note ? readHistoryMeta(src.info.id)!.note + " " : "") +
+        `Each point is one whole month (median, 10th–90th percentile and count); months with fewer than ${MIN_PUBLISH} records are not shown.`
+      : "Once a day ProofPrice takes a snapshot of the official source and stores, for each area and item, the median, 10th–90th percentile and count. " +
+        `Days with fewer than ${MIN_PUBLISH} records are not shown.`,
     method_url: (ctx.baseUrl ?? "") + METHOD_URL,
     summary,
-    notice: "Information, not an offer. Each point is that day's snapshot of posted prices.",
+    notice: monthly ? "Information, not an offer. Each point is a monthly figure from the publisher's archive." : "Information, not an offer. Each point is that day's snapshot of posted prices.",
   };
 }
 
