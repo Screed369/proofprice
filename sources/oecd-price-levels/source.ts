@@ -4,7 +4,7 @@
 //   <base>/public/rest/data/OECD.SDD.TPS,DSD_PPP@DF_PPP,1.1/.A.PL+PPP.<CATEGORY>..<BASE>?lastNObservations=5&format=csvfilewithlabels
 //   One GET per spending group and comparison area returns every country (index + PPP rate, last years); we pick the country and rank it.
 //   The OECD API limits each IP address to about 20 queries an hour, so replies are kept in memory for 6 hours (see cached()).
-//   Do NOT send an Accept header: the OECD answered HTTP 500 to 'accept: text/csv' from Vercel; format=csvfilewithlabels in the URL is enough.
+//   MUST send "accept-language: en": Node's default "accept-language: *" makes the OECD answer HTTP 500 (found 2026-10-20 by trying four header sets from a Vercel preview; curl in the probe worked).
 // MEASURE PL = price level index (IX; comparison area = 100); MEASURE PPP = national currency per US dollar (XDC_USD) or per euro (XDC_EUR).
 // An index is an official statistic from a price survey, never a price people paid, so every answer is price_type "official_statistic"
 // (range fields null, sample_size null) with confidence "medium".
@@ -209,7 +209,7 @@ async function liveText(url: string): Promise<string> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 15000);
   try {
-    const res = await fetch(url, { signal: controller.signal, headers: { "user-agent": "pricepaid-plug/0.1 (+price-paid data for AI agents)" } });
+    const res = await fetch(url, { signal: controller.signal, headers: { "user-agent": "pricepaid-plug/0.1 (+price-paid data for AI agents)", "accept-language": "en" } });
     if (!res.ok) throw new SourceError(`Source returned HTTP ${res.status}`, (await res.text().catch(() => "")).slice(0, 300), res.status);
     return await res.text();
   } catch (err: any) {
