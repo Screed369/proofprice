@@ -173,10 +173,10 @@ export function tuitionAnswer(rows: FeeRow[], input: TuitionInput): PriceAnswer 
   const geos = [...new Set(rows.map((r) => r.geo))];
   const geo = resolveGeo(input.province, geos);
   const series = rows.filter((r) => r.geo === geo && r.level === level).sort((a, b) => a.year.localeCompare(b.year));
-  if (!series.length) throw new SourceError(`Statistics Canada has no ${level.toLowerCase()} series for ${geo}; the table layout may have changed.`);
+  if (!series.length) throw new SourceError(`Statistics Canada has no ${level} series for ${geo}; the table layout may have changed.`);
   const usable = series.filter((r) => r.value !== null);
   const newest = usable[usable.length - 1];
-  const label = `${level.toLowerCase()} students, full-time`;
+  const label = `${level.startsWith("Canadian") ? level : level.toLowerCase()} students, full-time`;
   const place = geo === "Canada" ? "Canada" : geo;
   if (!newest) {
     return buildStatisticAnswer({
