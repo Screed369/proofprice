@@ -301,6 +301,28 @@ test("an answer page's FAQ repeats exactly the questions and answers the page sh
   assert.equal(web.url, `${SITE_URL}${page.path}`);
   assert.equal(web.dateModified, page.asOf);
   assert.equal(web.breadcrumb.itemListElement[1].item, `${SITE_URL}/prices`);
+  const ds = g["@graph"].find((n: any) => n["@type"] === "Dataset");
+  assert.equal(ds["@id"], `${SITE_URL}${page.path}#dataset`);
+  assert.deepEqual(web.mainEntity, { "@id": ds["@id"] });
+  assert.equal(ds.license, page.source.licence_url);
+  assert.equal(ds.creator.name, page.source.publisher);
+  assert.equal(ds.isAccessibleForFree, true);
+  assert.equal(ds.spatialCoverage.address.addressCountry, "ES");
+  assert.match(ds.temporalCoverage, /^\d{4}-\d{2}-\d{2}(\/\d{4}-\d{2}-\d{2})?$/);
+  assert.ok(ds.description.length >= 50);
+});
+
+test("every answer page carries a valid-looking Dataset (licence, creator, place, period, no HTML in the JSON)", () => {
+  const crumbs = [{ name: "Home", path: "/" }];
+  for (const page of allAnswerPages()) {
+    const text = serializeJsonLd(answerPageGraph(page, crumbs));
+    assert.ok(!text.includes("<"));
+    const ds = JSON.parse(text)["@graph"].find((n: any) => n["@type"] === "Dataset");
+    assert.ok(ds, page.path);
+    assert.match(ds.license, /^https?:\/\//, page.path);
+    assert.ok(ds.creator.name && ds.name && ds.description, page.path);
+    assert.ok(ds.temporalCoverage, page.path);
+  }
 });
 
 // ---------- /sources, /status, home page ----------

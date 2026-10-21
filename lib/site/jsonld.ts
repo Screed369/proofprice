@@ -159,6 +159,95 @@ export function sourcesGraph(datasets: DatasetInput[]) {
   };
 }
 
+// ---------- /prices pages: one Dataset per page that shows a figure ----------
+
+interface PageDatasetInput {
+  url: string;
+  name: string;
+  description: string;
+  source: { id: string; publisher: string; homepage: string; licence_url: string; attribution: string };
+  countryCode: string;
+  countryName: string;
+  placeName: string | null; // a named place inside the country, when the page is about one
+  categoryLabel: string;
+  temporal: string | null; // ISO 8601 date or interval: "2025-10-02/2026-10-02"
+  dateModified: string | null;
+  restUrl: string | null; // the live answer, when the API can give one
+}
+
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+function pageDatasetLd(d: PageDatasetInput) {
+  return {
+    "@type": "Dataset",
+    "@id": `${d.url}#dataset`,
+    url: d.url,
+    identifier: d.source.id,
+    name: d.name,
+    description: d.description,
+    license: d.source.licence_url,
+    isAccessibleForFree: true,
+    creator: { "@type": "Organization", name: d.source.publisher, url: d.source.homepage },
+    publisher: { "@id": ORG_ID },
+    isBasedOn: d.source.homepage,
+    creditText: d.source.attribution,
+    keywords: ["price paid", "prices", "open data", d.categoryLabel, d.countryName, ...(d.placeName ? [d.placeName] : [])],
+    spatialCoverage: {
+      "@type": "Place",
+      name: d.placeName ? `${d.placeName}, ${d.countryName}` : d.countryName,
+      address: { "@type": "PostalAddress", addressCountry: d.countryCode },
+    },
+    variableMeasured: ["Median price", "10th percentile price", "90th percentile price", "Number of records"],
+    ...(d.temporal ? { temporalCoverage: d.temporal } : {}),
+    ...(d.dateModified && ISO_DAY.test(d.dateModified) ? { dateModified: d.dateModified } : {}),
+    ...(d.restUrl
+      ? { distribution: [{ "@type": "DataDownload", encodingFormat: "application/json", contentUrl: absolute(d.restUrl) }] }
+      : {}),
+  };
+}
+
+const interval = (from: string | undefined, to: string | undefined, fallback: string | null) =>
+  from && to && ISO_DAY.test(from) && ISO_DAY.test(to) ? `${from}/${to}` : fallback && ISO_DAY.test(fallback) ? fallback : null;
+
+/** The Dataset behind an answer page (a place of a library source). */
+export function answerPageDatasetLd(page: AnswerPage) {
+  const url = absolute(page.path);
+  return pageDatasetLd({
+    url,
+    name: page.h1,
+    description: page.description,
+    source: page.source,
+    countryCode: page.country,
+    countryName: page.countryName,
+    placeName: page.national ? null : page.area.label,
+    categoryLabel: page.categoryLabel,
+    temporal: interval(page.period?.from, page.period?.to, page.asOf),
+    dateModified: page.asOf,
+    restUrl: page.figures.find((f) => f.liveRestPath)?.liveRestPath ?? page.historyRestPath,
+  });
+}
+
+/** The Dataset behind an example page. Only when the page shows a figure: an "ask live" page states no data. */
+export function examplePageDatasetLd(page: ExamplePage) {
+  const f = page.figure;
+  if (!f) return null;
+  const period = f.periodText?.match(/^(\d{4}-\d{2}-\d{2}) to (\d{4}-\d{2}-\d{2})$/);
+  const refPeriod = f.referencePeriod && /^\d{4}(-\d{2}|-Q[1-4])?$/.test(f.referencePeriod) ? f.referencePeriod : null;
+  return pageDatasetLd({
+    url: absolute(page.path),
+    name: page.h1,
+    description: page.description,
+    source: page.source,
+    countryCode: page.country,
+    countryName: page.countryName,
+    placeName: null,
+    categoryLabel: page.categoryLabel,
+    temporal: period ? `${period[1]}/${period[2]}` : refPeriod ?? f.asOf,
+    dateModified: f.asOf,
+    restUrl: page.liveRestPath,
+  });
+}
+
 // ---------- breadcrumbs and answer pages ----------
 
 export function breadcrumbLd(items: { name: string; path: string }[]) {
@@ -195,6 +284,11 @@ export function examplePageGraph(page: ExamplePage, crumbs: { name: string; path
   ];
   if (page.figure) {
     const f = page.figure;
+    const ds = examplePageDatasetLd(page);
+    if (ds) {
+      (graph[0] as Record<string, unknown>).mainEntity = { "@id": `${url}#dataset` };
+      graph.push(ds);
+    }
     graph.push({
       "@type": "FAQPage",
       "@id": `${url}#faq`,
@@ -229,7 +323,9 @@ export function answerPageGraph(page: AnswerPage, crumbs: { name: string; path: 
         dateModified: page.asOf,
         isPartOf: { "@id": WEBSITE_ID },
         breadcrumb: breadcrumbLd(crumbs),
+        mainEntity: { "@id": `${url}#dataset` },
       },
+      answerPageDatasetLd(page),
       {
         "@type": "FAQPage",
         "@id": `${url}#faq`,

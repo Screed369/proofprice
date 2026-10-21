@@ -408,14 +408,24 @@ test("JSON-LD: a page with a figure has WebPage, BreadcrumbList and FAQPage; an 
   const crumbs = [{ name: "Prices", path: "/prices" }, { name: "Ireland", path: "/prices/ie" }];
   const withFigure = examplePageGraph(pageOf(f), crumbs);
   const types = (g: any) => g["@graph"].flatMap((n: any) => [n["@type"], n.breadcrumb?.["@type"]]).filter(Boolean);
-  assert.deepEqual(types(withFigure), ["WebPage", "BreadcrumbList", "FAQPage"]);
+  assert.deepEqual(types(withFigure), ["WebPage", "BreadcrumbList", "Dataset", "FAQPage"]);
   const faq = withFigure["@graph"].find((n: any) => n["@type"] === "FAQPage") as any;
   assert.equal(faq.mainEntity.length, 1);
   assert.match(faq.mainEntity[0].acceptedAnswer.text, /Source: Pub\. Licence: Open Government Licence\./);
   assert.equal((withFigure["@graph"][0] as any).dateModified, "2026-09-30");
 
+  const ds = withFigure["@graph"].find((n: any) => n["@type"] === "Dataset") as any;
+  assert.equal(ds.license, "https://example.test/l");
+  assert.equal(ds.creator.name, "Pub");
+  assert.equal(ds.isAccessibleForFree, true);
+  assert.equal(ds.dateModified, "2026-09-30");
+  assert.match(ds.spatialCoverage.address.addressCountry, /^[A-Z]{2}$/);
+  assert.ok(ds.temporalCoverage);
+  assert.ok(ds.distribution[0].contentUrl.startsWith("https://proofprice.com/api/v1/"));
+  assert.deepEqual((withFigure["@graph"][0] as any).mainEntity, { "@id": ds["@id"] });
+
   const askLive = examplePageGraph(pageOf(null), crumbs);
-  assert.deepEqual(types(askLive), ["WebPage", "BreadcrumbList"]);
+  assert.deepEqual(types(askLive), ["WebPage", "BreadcrumbList"]); // no data stated, so no Dataset
   assert.equal((askLive["@graph"][0] as any).dateModified, undefined);
 
   for (const g of [withFigure, askLive]) {

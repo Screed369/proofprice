@@ -156,13 +156,13 @@ test("privacy and terms are public, in the sitemap and linked for AIs", async ()
   assert.equal((buildOpenApi("https://x.test") as any).info.termsOfService, "https://proofprice.com/terms");
 });
 
-test("JSON-LD: Dataset markup only on the sources page; answer and example pages use WebPage, FAQPage and breadcrumbs", async () => {
+test("JSON-LD: Dataset markup on /sources and on pages that show a figure; home and breadcrumb-only pages carry none", async () => {
   const { answerPageGraph, examplePageGraph, sourcesGraph, homeGraph, breadcrumbGraph } = await import("../lib/site/jsonld");
   const source = { publisher: "A publisher", licence: "A licence" };
   const answerPage: any = { path: "/prices/ie/rent/dublin", h1: "Rent in Dublin", description: "d", asOf: "2026-10-14", source, figures: [{ question: "q?", answer: "a", caveat: "" }] };
   const examplePage: any = { path: "/prices/ie/rent/dublin", h1: "Rent in Dublin", description: "d", asOf: "2026-10-14", source, figure: { answer: "a", caveat: "" } };
   const crumbs = [{ name: "Home", path: "/" }];
-  for (const g of [answerPageGraph(answerPage, crumbs), examplePageGraph(examplePage, crumbs), homeGraph(), breadcrumbGraph(crumbs)]) {
+  for (const g of [homeGraph(), breadcrumbGraph(crumbs)]) {
     assert.ok(!JSON.stringify(g).includes('"Dataset"'));
   }
   const ds = sourcesGraph([
