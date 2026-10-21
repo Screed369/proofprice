@@ -1,6 +1,6 @@
 // Manifest: Germany/Luxembourg wholesale electricity (SMARD day-ahead prices, Bundesnetzagentur). Logic lives in ./source.ts.
 import { defineSource, num } from "../../lib/plugin";
-import { INFO, smardDayAhead, smardHarvest, smardHistoryKey } from "./source";
+import { INFO, smardDayAhead, smardBackfill, smardHarvest, smardHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -18,5 +18,6 @@ export default defineSource({
     "Germany wholesale power: the median and 10th-90th percentile of the hourly day-ahead auction prices (euro per MWh) for the Germany/Luxembourg bidding zone over the last days, from the Bundesnetzagentur's SMARD service. Exchange prices, not household bills.",
   handle: (p, ctx) => smardDayAhead({ days: num(p.lookback_days), baseUrl: ctx.baseUrl }),
   harvest: () => smardHarvest(),
+  backfill: (from, to) => smardBackfill(from, to),
   historyKey: () => smardHistoryKey(),
 });

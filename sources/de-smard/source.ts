@@ -8,7 +8,7 @@
 import { SourceError, fetchJson, retryOnce } from "../../lib/http";
 import { buildAnswer, PriceAnswer } from "../../lib/answer";
 import { percentile, PriceSummary } from "../../lib/stats";
-import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const BASE = "https://www.smard.de/app/chart_data/4169/DE";
 export const INDEX_URL = `${BASE}/index_hour.json`;
@@ -173,4 +173,67 @@ export async function smardHarvest(get: Getter = defaultGet, now: Date = new Dat
 
 export function smardHistoryKey(): { area: string; item: string; label: string } {
   return { area: HISTORY_AREA, item: HISTORY_ITEM, label: "Germany/Luxembourg day-ahead wholesale power" };
+}
+
+// ---------- history backfill (monthly) ----------
+// SMARD keeps the hourly Germany/Luxembourg series from 2018-10-01 (index_hour.json starts there, probed 2026-10-21), one 7-day file per week.
+// Each month becomes ONE row: median / 10th-90th percentile / min / max of its hourly prices, n = hours. A month needs 90% of its hours.
+
+export const MIN_MONTH_COVERAGE = 0.9;
+
+const monthHours = (m: string) => {
+  const [y, mo] = m.split("-").map(Number);
+  return (Date.UTC(y, mo, 1) - Date.UTC(y, mo - 1, 1)) / HOUR;
+};
+
+/** Monthly aggregate rows from hourly points (any order). Months outside [fromMonth, toMonth] or with thin coverage are left out. */
+export function monthlyPeriods(pts: Point[], fromMonth: string, toMonth: string): BackfillResult["periods"] {
+  const byMonth = new Map<string, Map<number, number>>();
+  for (const p of pts) {
+    const m = new Date(p.ts).toISOString().slice(0, 7);
+    if (m < fromMonth || m > toMonth) continue;
+    const h = byMonth.get(m) ?? new Map<number, number>();
+    h.set(p.ts, p.price); // de-duplicates by hour
+    byMonth.set(m, h);
+  }
+  const out: BackfillResult["periods"] = [];
+  for (const m of [...byMonth.keys()].sort()) {
+    const vals = [...byMonth.get(m)!.values()];
+    if (vals.length < MIN_MONTH_COVERAGE * monthHours(m)) continue;
+    const s = summariseSigned(vals);
+    if (!s) continue;
+    out.push({ period: m, rows: [{ area: HISTORY_AREA, item: HISTORY_ITEM, n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max }] });
+  }
+  return out;
+}
+
+export async function smardBackfill(from: string, to: string, get: Getter = defaultGet, pauseMs = 250): Promise<BackfillResult> {
+  const fromMs = Date.parse(from.slice(0, 7) + "-01T00:00:00Z");
+  const [ty, tm] = to.slice(0, 7).split("-").map(Number);
+  const toMs = Date.UTC(ty, tm, 1); // first instant after the last month
+  const starts = parseIndex(await get(INDEX_URL));
+  const weeks = weeksFor(starts, fromMs, toMs);
+  if (!weeks.length) throw new SourceError("SMARD lists no hourly week files for the requested range.");
+  const pts: Point[] = [];
+  let failed = 0;
+  for (const w of weeks) {
+    try {
+      pts.push(...parseSeries(await get(weekUrl(w))).filter((p) => p.ts >= fromMs && p.ts < toMs));
+    } catch (e) {
+      failed++;
+      console.log(`skipped week ${isoDay(w)}: ${(e as Error).message}`);
+      if (failed > 10) throw new SourceError("SMARD: more than 10 week files failed; stopping.");
+    }
+    if (pauseMs) await new Promise((r) => setTimeout(r, pauseMs));
+  }
+  const periods = monthlyPeriods(pts, from.slice(0, 7), to.slice(0, 7));
+  console.log(`week files: ${weeks.length} (failed ${failed}); hours: ${pts.length}; months: ${periods.length}`);
+  return {
+    currency: "EUR",
+    unit: "per MWh",
+    periods,
+    note:
+      "SMARD day-ahead hourly prices, Germany/Luxembourg bidding zone, monthly figures (UTC months): median and 10th-90th percentile of the hourly prices, n = hours (at least 90% of the month). " +
+      "The hourly archive starts in October 2018. Wholesale exchange prices, not retail. Bundesnetzagentur | SMARD.de, CC BY 4.0.",
+  };
 }

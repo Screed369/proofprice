@@ -93,3 +93,27 @@ test("de-smard: registry routes DE wholesale power to this source", () => {
   assert.deepEqual(p.countries, ["DE"]);
   assert.ok(typeof runCategory === "function");
 });
+
+test("de-smard: monthly periods aggregate hourly prices, keep negatives, drop thin months", async () => {
+  const { monthlyPeriods, smardBackfill } = await import("./source");
+  const H = 3600000;
+  const start = Date.UTC(2024, 0, 1);
+  const jan = Array.from({ length: 744 }, (_, i) => ({ ts: start + i * H, price: i % 10 === 0 ? -5 : 50 + (i % 7) }));
+  const feb = Array.from({ length: 100 }, (_, i) => ({ ts: Date.UTC(2024, 1, 1) + i * H, price: 60 }));
+  const p = monthlyPeriods([...jan, ...feb, ...jan.slice(0, 5)], "2024-01", "2024-02");
+  assert.equal(p.length, 1, "February has only 100 hours and is dropped");
+  assert.equal(p[0].period, "2024-01");
+  const r = p[0].rows[0];
+  assert.equal(r.n, 744);
+  assert.equal(r.area, "DE");
+  assert.equal(r.item, "day-ahead");
+  assert.equal(r.min, -5);
+  assert.ok(r.low <= r.median && r.median <= r.high);
+  assert.equal(monthlyPeriods(jan, "2024-02", "2024-03").length, 0);
+  // end to end with a fake getter: unknown weeks fail softly
+  const idx = { timestamps: [start] };
+  const wk = { series: jan.slice(0, 168).map((x) => [x.ts, x.price]) };
+  const res = await smardBackfill("2024-01-01", "2024-01-31", async (u) => (u.endsWith("index_hour.json") ? idx : wk), 0);
+  assert.equal(res.currency, "EUR");
+  assert.equal(res.periods.length, 0, "one week of hours is far below 90% of January");
+});
