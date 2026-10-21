@@ -1,0 +1,54 @@
+URL: https://www.opengeodata.nrw.de/produkte/infrastruktur_bauen_wohnen/boris/IRW/
+Fetched: 2026-10-21T23:42:04Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2022
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Wed, 21 Oct 2026 23:42:04 GMT
+Server: Apache
+Content-Location: index.json
+Vary: negotiate,accept,accept-charset
+TCN: choice
+Last-Modified: Wed, 21 Oct 2026 11:30:04 GMT
+ETag: "7e6-65e581186938b"
+Accept-Ranges: bytes
+Content-Length: 2022
+Strict-Transport-Security: max-age=15768000; includeSubDomains; preload;
+Access-Control-Allow-Origin: *
+Access-Control-Max-Age: 1728000
+X-Frame-Options: SAMEORIGIN
+X-Robots-Tag: noarchive
+Content-Type: application/json; charset=utf-8
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+	"metafiles": [
+		{"name":"IRW_Datenmodell.pdf", "size":"621282", "timestamp":"2022-06-10T09:35:00"}],
+
+	"datasets": [
+		{ "name":"IRW_aktuell",
+			"title":"Immobilienrichtwerte f\u00fcr NRW als Shape","files": [
+				{"name":"IRW_EPSG25832_Shape.zip", "size":"45851698", "timestamp":"2026-10-21T13:23:08.583227"}]
+		},
+		{ "name":"IRW_historisch",
+			"title":"Historische Immobilienrichtwerte f\u00fcr NRW als Shape","files": [
+				{"name":"IRW_2011_EPSG25832_Shape.zip", "size":"1602885", "timestamp":"2026-02-25T14:07:44.502070"},
+				{"name":"IRW_2012_EPSG25832_Shape.zip", "size":"2039470", "timestamp":"2026-02-25T15:50:05.780654"},
+				{"name":"IRW_2013_EPSG25832_Shape.zip", "size":"2098553", "timestamp":"2026-02-26T09:45:26.505353"},
+				{"name":"IRW_2014_EPSG25832_Shape.zip", "size":"2723518", "timestamp":"2026-02-26T09:59:13.793727"},
+				{"name":"IRW_2015_EPSG25832_Shape.zip", "size":"4476599", "timestamp":"2026-02-26T13:05:45.120679"},
+				{"name":"IRW_2016_EPSG25832_Shape.zip", "size":"5729981", "timestamp":"2026-02-26T13:19:15.485002"},
+				{"name":"IRW_2017_EPSG25832_Shape.zip", "size":"8270019", "timestamp":"2026-02-26T15:25:00.166530"},
+				{"name":"IRW_2018_EPSG25832_Shape.zip", "size":"17540743", "timestamp":"2026-02-27T06:34:30.045742"},
+				{"name":"IRW_2019_EPSG25832_Shape.zip", "size":"22846198", "timestamp":"2026-02-26T15:44:17.842103"},
+				{"name":"IRW_2020_EPSG25832_Shape.zip", "size":"28500030", "timestamp":"2026-04-29T16:00:20.606224"},
+				{"name":"IRW_2021_EPSG25832_Shape.zip", "size":"42421569", "timestamp":"2026-07-03T10:19:25.741875"},
+				{"name":"IRW_2022_EPSG25832_Shape.zip", "size":"56446486", "timestamp":"2026-09-16T14:56:57.544664"},
+				{"name":"IRW_2023_EPSG25832_Shape.zip", "size":"72980280", "timestamp":"2026-09-16T13:09:20.262013"},
+				{"name":"IRW_2024_EPSG25832_Shape.zip", "size":"85917763", "timestamp":"2026-09-17T06:38:07.695700"},
+				{"name":"IRW_2025_EPSG25832_Shape.zip", "size":"105886227", "timestamp":"2026-09-24T07:19:19.207102"}]
+		}
+	]
+}
