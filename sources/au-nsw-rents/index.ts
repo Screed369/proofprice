@@ -20,6 +20,13 @@ export default defineSource({
     { params: { country: "AU", postcode: "2000" } },
     { params: { country: "AU", postcode: "2150", property_type: "apartment", bedrooms: "2" }, smoke: false },
   ],
+  // Australia has two rent sources: this one (the default) and au-qld-rents, which takes Queensland postcodes (4xxx, 9xxx) or town "QLD".
+  serves: (p) => {
+    const t = (str(p.town) ?? "").trim();
+    const pc = (str(p.postcode) ?? "").trim() || (/^\d{4}$/.test(t) ? t : "");
+    if (/^\d{4}$/.test(pc)) return !/^[49]/.test(pc);
+    return !/^(qld|queensland)$/i.test(t);
+  },
   method:
     "New South Wales rents: the collector reads the monthly NSW Fair Trading rental bond lodgement files once a day into our price library; answers are the median and 10th–90th percentile of the weekly rent on bonds lodged in the latest 3 or 12 months, by postcode, dwelling type and bedrooms. These are rents of new tenancies as provided by the agent or landlord; rooms, garages and car spaces are left out.",
   handle: (p, ctx) =>
