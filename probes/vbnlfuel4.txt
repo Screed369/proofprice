@@ -1,0 +1,51 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/80416ENG/TypedDataSet?$filter=Periods%20ge%20'20261012'
+Fetched: 2026-10-21T23:45:33Z from GitHub Actions
+Status, type, bytes: 200 application/json 893
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 23:45:33 GMT
+Content-Length: 893
+TXID: 018035fd
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=018df43c-4e9c-1ad9-9678-0050569bed16_1368943484_2167701236_00000000004320146941; Path=/; Expires=Wed, 21-Oct-2026 23:45:48 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/80416ENG/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":7589,"Periods":"20261012","Euro95_1":2.462,"Diesel_2":2.482,"LPG_3":0.961
+    },{
+      "ID":7590,"Periods":"20261013","Euro95_1":2.458,"Diesel_2":2.472,"LPG_3":0.968
+    },{
+      "ID":7591,"Periods":"20261014","Euro95_1":2.449,"Diesel_2":2.458,"LPG_3":0.971
+    },{
+      "ID":7592,"Periods":"20261015","Euro95_1":2.435,"Diesel_2":2.466,"LPG_3":0.973
+    },{
+      "ID":7593,"Periods":"20261016","Euro95_1":2.414,"Diesel_2":2.462,"LPG_3":0.977
+    },{
+      "ID":7594,"Periods":"20261017","Euro95_1":2.39,"Diesel_2":2.451,"LPG_3":0.985
+    },{
+      "ID":7595,"Periods":"20261018","Euro95_1":2.391,"Diesel_2":2.451,"LPG_3":0.977
+    },{
+      "ID":7596,"Periods":"20261019","Euro95_1":2.391,"Diesel_2":2.456,"LPG_3":0.984
+    }
+  ]
+}
