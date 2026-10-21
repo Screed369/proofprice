@@ -7,6 +7,8 @@
 // transaction hash, in a header. Facilitator problems end in 503 for premium calls only; free tools never touch this file.
 import type { GateConfig } from "./config";
 import type { Facilitator } from "./facilitator";
+import { SITE_URL } from "../site/constants";
+import { bazaarExtension } from "./discovery";
 import { DAILY_PAID_CAP, PREMIUM, type PremiumKey } from "./prices";
 import { notePaid, paidCapReached, takeFree } from "./quota";
 
@@ -40,6 +42,7 @@ export function paymentRequiredBody(cfg: GateConfig, key: PremiumKey, resourceUr
     ...(reason ? { reason } : {}),
     resource: { url: resourceUrl, description: `ProofPrice ${p.label}`, mimeType: "application/json" },
     accepts: [buildRequirements(cfg, key)],
+    extensions: { bazaar: bazaarExtension(key, resourceUrl) },
     notice: `The free allowance of ${p.freePerDay} calls a day for this tool is used up. Basic price look-ups stay free and need no payment. Not charged when the answer is "not enough records" or an error.`,
   };
 }
@@ -75,8 +78,11 @@ function decodePayment(h: string): any | null {
 }
 
 function deny402(cfg: GateConfig, key: PremiumKey, url: string, error: string, reason?: string): GateOutcome<never> {
-  const body = paymentRequiredBody(cfg, key, url, error, reason);
-  return { kind: "denied", status: 402, body, headers: { "payment-required": b64(body), "cache-control": "no-store" } };
+  const body: any = paymentRequiredBody(cfg, key, url, error, reason);
+  // The header must stay small (HTTP header limits): it carries the same reply without the big answer schema, which stays in the body.
+  const { outputSchema: _omit, ...bazaarLean } = body.extensions.bazaar;
+  const lean = { ...body, extensions: { bazaar: { ...bazaarLean, outputSchemaUrl: `${SITE_URL}/openapi.json` } } };
+  return { kind: "denied", status: 402, body, headers: { "payment-required": b64(lean), "cache-control": "no-store" } };
 }
 
 export async function gateCall<T>(o: GateOptions<T>): Promise<GateOutcome<T>> {

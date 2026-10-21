@@ -207,6 +207,7 @@ Contact: ${CONTACT}
 ## How to connect
 - MCP server (Streamable HTTP, no key, no sign-in): ${baseUrl}/api/mcp
 - MCP Server Card (draft discovery standard): ${baseUrl}/.well-known/mcp-server-card
+- A2A Agent Card (agent discovery; points at the MCP and REST endpoints, ProofPrice does not run A2A messaging): ${baseUrl}/.well-known/agent-card.json
 - REST (GET, JSON, CORS open): ${baseUrl}/api/v1/<category>
 - Add-to-client instructions for Claude, ChatGPT, Cursor, VS Code, Windsurf, Claude Code and agent frameworks: ${baseUrl}/connect
 
