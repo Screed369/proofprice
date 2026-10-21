@@ -12,6 +12,7 @@ export default defineSource({
     "EU member states plus NO and IS, as ISO codes (GR for Greece): " + Object.entries(COUNTRIES).map(([c, n]) => `${c} = ${n}`).join(", "),
   placeName: "the EU, Norway and Iceland",
   status: "live",
+  serves: (p) => p.sector !== "business", // business requests go to eu-energy-business (same countries, other source)
   paramNotes: {
     energy: "EU/NO/IS: Eurostat currently has no recent household gas price for CY, FI, IS, MT or NO (status no_matches).",
     consumption_band:

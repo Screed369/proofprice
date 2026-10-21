@@ -285,7 +285,8 @@ test("energy category: tool, REST path, parameters and routing", async () => {
   assert.throws(() => cat.prepare!({ energy: "gas", taxes: "some" }), /taxes must be/);
   // routing errors are plain 400s
   await assert.rejects(runCategory(cat, { country: "JP", energy: "gas" }), /Not yet: JP/);
-  await assert.rejects(runCategory(cat, { country: "UK", energy: "gas" }), /Not yet: UK/);
+  // GB has business figures only (gb-desnz-energy-business): a household request says so in plain words
+  await assert.rejects(runCategory(cat, { country: "UK", energy: "gas" }), /Household energy prices are not available for GB/);
   await assert.rejects(runCategory(cat, { country: "IE", energy: "diesel" }), /energy must be/);
   await assert.rejects(runCategory(cat, { energy: "gas" }), /country is required/);
 });

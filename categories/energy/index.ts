@@ -40,12 +40,12 @@ export default defineCategory({
       `How fresh: ${freshnessList(household)}. ` +
       (business.length
         ? "BUSINESS prices: set sector=business to get what businesses (non-household consumers: shops, offices, factories) pay instead, " +
-          `for ${joinOr([...new Set(business.map((p) => p.place.replace(BUSINESS_PLACE, "").trim()))])}. ` +
+          `for ${joinOr(business.map((p) => p.place))}. ` +
           "The answer is the official average price paid by businesses in an annual-consumption band (consumption_band; the country notes list the bands), " +
           "excluding VAT unless taxes says otherwise, with the other bands, the previous period and the change. It is an official average, not a quote or a tariff, and " +
-          `sector=business needs a country that has business figures. Business freshness: ${freshnessList(business.map((p) => ({ ...p, place: p.place.replace(BUSINESS_PLACE, "").trim() })))}. `
+          `sector=business needs a country that has business figures. Business freshness: ${freshnessList(business)}. `
         : "") +
-      "Do not use for a specific supplier's offer or a quote for a particular home or company, for wholesale exchange prices (use pricepaid_wholesale_power_prices), for petrol and diesel, or for other countries."
+      "Do not use for a specific supplier's offer or a quote for a particular home or company, for wholesale exchange prices, for petrol and diesel, or for other countries."
     );
   },
   params: {

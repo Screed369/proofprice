@@ -11,7 +11,8 @@ export default defineSource({
   category: "energy",
   countries: Object.keys(COUNTRIES),
   countryHelp:
-    "With sector=business, official average prices paid by businesses (Eurostat) for the EU member states, NO, IS and the EU candidate countries (AL, BA, GE, MD, ME, MK, RS, TR, UA), as ISO codes (GR for Greece)",
+    "With sector=business, official average prices paid by businesses (Eurostat) for the EU member states, NO, IS and the EU candidate countries, as ISO codes (GR for Greece): " +
+    Object.keys(COUNTRIES).join(", "),
   placeName: "the EU, Norway, Iceland and EU candidate countries (business)",
   status: "live",
   serves: (p) => p.sector === "business",

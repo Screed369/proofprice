@@ -12,6 +12,7 @@ export default defineSource({
     "US = United States (U.S. Energy Information Administration: average residential electricity price in cents per kWh and residential natural gas price in US$ per thousand cubic feet, by state, monthly)",
   placeName: "the United States",
   status: "live",
+  serves: (p) => p.sector !== "business", // business requests go to us-eia-energy-business (same country, other source)
   paramNotes: {
     energy:
       "US: electricity = average residential price in US cents per kWh (Electric Power Monthly); gas = average residential natural gas price in US dollars per thousand cubic feet (Natural Gas Monthly). " +
