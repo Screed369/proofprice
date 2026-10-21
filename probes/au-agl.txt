@@ -1,0 +1,20 @@
+URL: https://cdr.energymadeeasy.gov.au/agl/cds-au/v1/energy/plans?page-size=2
+Fetched: 2026-10-21T10:44:56Z from GitHub Actions
+Status, type, bytes: 400 application/json 136
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+server: CloudFront
+date: Wed, 21 Oct 2026 10:44:56 GMT
+content-type: application/json
+content-length: 136
+x-fapi-interaction-id: 0318090d-5aca-4d6c-ae27-6bc0419062c2
+x-cache: LambdaGeneratedResponse from cloudfront
+via: 1.1 8332ab8bd32a6ba696984216199de564.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD55-P1
+x-amz-cf-id: mYEvEJLZ9qP9n02ROEh8r0KtN0MUjs5QYpbfrXux4MbIrgEXtI2wxA==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"errors":[{"code":"urn:au-cds:error:cds-all:Header/Missing","title":"Missing Required Header","detail":"Header x-v must be provided"}]}
