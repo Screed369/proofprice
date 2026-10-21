@@ -1,0 +1,38 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/85792ENG/Regions?$top=5&$filter=startswith(Key,%27GM%27)
+Fetched: 2026-10-21T14:51:09Z from GitHub Actions
+Status, type, bytes: 200 application/json 4049
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 14:51:08 GMT
+Content-Length: 4049
+TXID: 017c2707
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=0185e5f3-d15c-1ad8-9678-0050569bed16_2696645849_3501172601_00000000004319880967; Path=/; Expires=Wed, 21-Oct-2026 14:51:23 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/85792ENG/$metadata#Cbs.OData.WebAPI.Regions","value":[
+    {
+      "Key":"GM0363","Title":"Amsterdam","Description":"Border change on 01-01-2006, from:\r\n- Ouder-Amstel (GM0437),\r\n... 43 hectares with 9 inhabitants\r\nBorder change on 01-01-2006, to:\r\n- Ouder-Amstel (GM0437),\r\n... 7 hectares with 0 dwellings and 0 inhabitants\r\n.\r\nBorder change on 01-01-2000, from:\r\n- Diemen (GM0384),\r\n... 2 hectares with 0 dwellings and 0 inhabitants\r\nBorder change on 01-01-2000, to:\r\n- Diemen (GM0384),\r\n... 8 hectares with 0 dwellings and 0 inhabitants\r\n.\r\nBorder change on 01-01-1997, from:\r\n- Haarlemmerliede and Spaarnwoude (GM0393),\r\n... 630 hectares with 45 dwellings and 115 inhabitants\r\nBorder change on 01-01-1997, to:\r\n- Haarlemmerliede and Spaarnwoude (GM0393),\r\n... 8 hectares with 0 dwellings and 0 inhabitants\r\n.\r\nStarting date before 1830\r\n.\r\n","CategoryGroupID":null
+    },{
+      "Key":"GM0518","Title":"'s-Gravenhage (The Hague) (municipality)","Description":"Border change on 01-01-2009, to:\r\n- Rijswijk (GM0603),\r\n... 20 hectare with 0 dwellings and 0 inhabitants\r\n.\r\nBorder change on 01-01-2005, to:\r\n- Leidschendam-Voorburg (GM1916),\r\n... 2 hectares with 0 dwellings and 0 inhabitants\r\n.\r\nBorder change on 01-01-2002, from:\r\n- Leidschendam (GM0548),\r\n... 825 hectares with 2247 dwellings and 7317 inhabitants\r\n- Nootdorp (GM0577),\r\n... 231 hectares with 1018 dwellings and 2743 inhabitants\r\n- Pijnacker (GM0594),\r\n... 93 hectares with 26 dwellings and 76 inhabitants\r\n- Rijswijk (ZH.) (GM0603),\r\n... 363 hectares with 2166 dwellings and 5887 inhabitants\r\n- Voorburg (GM0624),\r\n... 1 hectare with 0 dwellings and 0 inhabitants\r\n.\r\nBorder change on 01-01-1996, from:\r\n- Wassenaar (GM0629),\r\n... 2 hectares with 0 dwellings and 0 inhabitants\r\nBorder change on 01-01-1996, to:\r\n- Wassenaar (GM0629),\r\n... 15 hectares with 3 dwellings and 0 inhabitants\r\n.\r\nStarting date before 1830\r\n.\r\n","CategoryGroupID":null
+    },{
+      "Key":"GM0599","Title":"Rotterdam","Description":"Border change on 18-03-2010, from:\r\n- Rozenburg (GM0600),\r\n... 452 hectares with 5716 dwellings and 12499 inhabitants\r\n.\r\nBorder change on 01-01-2001, from:\r\n- Capelle aan den IJssel (GM0502),\r\n... 1 hectare with 0 dwellings and 0 inhabitants\r\nBorder change on 01-01-2001, to:\r\n- Capelle aan den IJssel (GM0502),\r\n... 1 hectare with 0 dwellings and 0 inhabitants\r\n.\r\nBorder change on 01-01-1997, from:\r\n- Capelle aan den IJssel (GM0502),\r\n... 11 hectares with 0 dwellings and 0 inhabitants\r\n.\r\nBorder change on 01-01-1995, from:\r\n- Nieuwerkerk aan den IJssel (GM0567),\r\n... 69 hectares with 15 dwellings and 38 inhabitants\r\n- Zevenhuizen-Moerkapelle (GM1666),\r\n... 376 hectares with 94 dwellings and 251 inhabitants\r\nBorder change on 01-01-1995, to:\r\n- Ridderkerk (GM0597),\r\n... 1 hectare with 0 dwellings
