@@ -7,7 +7,7 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 import type { Fuel } from "../../lib/fuels";
 import {
   CubeMeta, DataSeries, Poster, changePercent, coordinate, dimension, latestPeriods, loadCubeMeta, memberByName, monthOf, monthRange,
@@ -222,3 +222,63 @@ export async function caFuelNow(input: CaFuelInput, post?: Poster, today = new D
   return caFuelAnswer(reading, { fuel: input.fuel, placeAsked: place, placeNote, tableTitle: meta.title, baseUrl: input.baseUrl, today });
 }
 
+
+// ---------- daily collector (stale-if-error copy) ----------
+// Once a day the collector stores the newest published month for every city and fuel: 19 places x 3 fuels, at most 57 small rows, dated
+// by the end of the reference month (rows are replaced in place until the next month is published, so the library grows by about
+// 57 rows a month). The figure is one published average, so n = 5 is a placeholder (nominalCounts in the manifest). It is only used
+// to answer when Statistics Canada does not respond; there is no /history for these monthly averages (noHistory in the manifest).
+
+/** Library area for a place: "ALL" for Canada, otherwise the table's member name. */
+export const fuelArea = (name: string) => (name === "Canada" ? NATIONAL_AREA : name);
+const NATIONAL_AREA = "ALL";
+
+/** Pure: one library row per place and fuel for the newest month any series has; series that lag behind are left out. */
+export function fuelHarvestRows(series: { place: string; fuel: Fuel; data: DataSeries | undefined }[]): HarvestResult {
+  const latest = series.map((s) => ({ ...s, point: newestUsable(s.data) })).filter((s) => s.point);
+  if (!latest.length) throw new SourceError("Statistics Canada table 18-10-0001-01 returned no usable average for any city");
+  const month = latest.map((s) => monthOf(s.point!.period)).sort().pop()!;
+  const rows = latest
+    .filter((s) => monthOf(s.point!.period) === month)
+    .map((s) => {
+      const v = roundTo(s.point!.value / 100, 3);
+      return { area: fuelArea(s.place), item: s.fuel, n: 5, median: v, low: v, high: v, min: v, max: v };
+    });
+  return {
+    date: monthRange(month).to,
+    currency: "CAD",
+    unit: "per litre",
+    rows,
+    note: `Statistics Canada table 18-10-0001-01: monthly average retail price per litre (self-service) for ${monthWords(month)}, by city. Published averages, not counts of records (n=5 is a placeholder).`,
+  };
+}
+
+export async function caFuelHarvest(post?: Poster): Promise<HarvestResult> {
+  const meta = await loadCubeMeta(PRODUCT_ID, post);
+  const geo = dimension(meta, 1, "Geography");
+  const fuels = dimension(meta, 2, "Type of fuel");
+  const wanted: { place: string; fuel: Fuel; coord: string }[] = [];
+  for (const f of FUEL_ORDER) {
+    const m = memberByName(fuels, FUEL_MEMBERS[f]!.name);
+    if (!m) throw new SourceError(`Statistics Canada changed table 18-10-0001-01 (no series "${FUEL_MEMBERS[f]!.name}"); this source needs updating.`);
+    for (const g of geo.members.filter((x) => !x.terminated)) wanted.push({ place: g.name, fuel: f, coord: coordinate([g.id, m.id]) });
+  }
+  const got: DataSeries[] = [];
+  for (let i = 0; i < wanted.length; i += 15) got.push(...(await latestPeriods(PRODUCT_ID, wanted.slice(i, i + 15).map((w) => w.coord), 2, post)));
+  return fuelHarvestRows(wanted.map((w, i) => ({ place: w.place, fuel: w.fuel, data: got[i] })));
+}
+
+/** Where a request lives in the library, without asking Statistics Canada: the places are the areas of our newest stored day. */
+export function caFuelHistoryKey(p: { fuel?: string; town?: string; area?: string }, areas: string[]): { area: string; item: string; label: string } | null {
+  if (!FUEL_MEMBERS[p.fuel as Fuel]) return null;
+  const asked = (p.town ?? p.area ?? "").trim();
+  if (!asked || NATIONAL_WORDS.has(asked.toLowerCase())) return { area: NATIONAL_AREA, item: p.fuel!, label: "Canada" };
+  const members = areas.filter((a) => a !== NATIONAL_AREA).map((name, i) => ({ id: i + 1, name, parent: null, terminated: false }));
+  if (!members.length) return null;
+  try {
+    const m = resolvePlace(members, asked, "a city").member;
+    return { area: m.name, item: p.fuel!, label: m.name };
+  } catch {
+    return null;
+  }
+}

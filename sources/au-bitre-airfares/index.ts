@@ -1,6 +1,6 @@
 // Manifest: Australia domestic airfares (BITRE cheapest advertised return fare by route, data.gov.au). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, auAirfares } from "./source";
+import { INFO, auAirfares, auAirfaresHarvest, auAirfaresHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -21,4 +21,9 @@ export default defineSource({
   method:
     "AU: the median and 10th-90th percentile of the monthly cheapest advertised return fares (AUD) for one domestic route over the last months, from the Bureau of Infrastructure and Transport Research Economics. Each month is one observation, collected from airline websites 3 weeks before departure. Advertised fares, not fares paid.",
   handle: (p, ctx) => auAirfares({ from: str(p.from), to: str(p.to), quarters: num(p.quarters), baseUrl: ctx.baseUrl }),
+  // A daily copy of the default 12-month range per route, so a data.gov.au outage is answered from it (stale-if-error).
+  // Rows are dated by the newest month they cover.
+  harvest: () => auAirfaresHarvest(),
+  historyKey: (p) => auAirfaresHistoryKey({ from: str(p.from), to: str(p.to), quarters: num(p.quarters) }),
+  referenceDates: true,
 });

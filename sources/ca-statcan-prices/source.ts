@@ -10,7 +10,7 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 import { exampleWords, ItemDef, matchItem } from "../../categories/groceries/items";
 import {
   CubeDimension, CubeMember, DataSeries, Poster, changePercent, coordinate, dimension, latestPeriods, loadCubeMeta, memberByName, monthOf, monthRange,
@@ -439,4 +439,59 @@ export async function caStatcanPrices(input: CaPricesQuery, post?: Poster): Prom
   const series = await latestPeriods(PRODUCT_ID, coords, 14, post);
   const reading = readPrices(series, regions, asked.member.id, meta.endDate);
   return caPricesAnswer(reading, m.primary, m.related, input, { regionAsked: asked.member, regionNote: asked.note, tableTitle: meta.title });
+}
+
+// ---------- daily collector (stale-if-error copy) ----------
+// Once a day the collector stores the newest published month for every product we map (ITEMS) in every region: about 110 x 13 rows,
+// dated by the end of the reference month and replaced in place until the next month is published (about 100 KB a month). Each row
+// is one published average, so n = 5 is a placeholder (nominalCounts). Used only when Statistics Canada does not respond.
+
+const NATIONAL_AREA = "ALL";
+export const priceArea = (name: string) => (name === "Canada" ? NATIONAL_AREA : name);
+
+/** Pure: one library row per product (its definition) and region for the newest month any series has; lagging series are left out. */
+export function pricesHarvestRows(series: { region: string; code: string; data: DataSeries | undefined }[]): HarvestResult {
+  const latest = series.map((s) => ({ ...s, point: newestUsable(s.data) })).filter((s) => s.point);
+  if (!latest.length) throw new SourceError("Statistics Canada table 18-10-0245-01 returned no usable average");
+  const month = latest.map((s) => monthOf(s.point!.period)).sort().pop()!;
+  const rows = latest
+    .filter((s) => monthOf(s.point!.period) === month)
+    .map((s) => ({ area: priceArea(s.region), item: s.code, n: 5, median: s.point!.value, low: s.point!.value, high: s.point!.value, min: s.point!.value, max: s.point!.value }));
+  return {
+    date: monthRange(month).to,
+    currency: "CAD",
+    unit: "per item (see the item's definition)",
+    rows,
+    note: `Statistics Canada table 18-10-0245-01: monthly average retail prices for ${monthWords(month)}, by product and region (the unit is in the product's definition). Published averages, not counts of records (n=5 is a placeholder).`,
+  };
+}
+
+export async function caPricesHarvest(post?: Poster): Promise<HarvestResult> {
+  const meta = await loadCubeMeta(PRODUCT_ID, post);
+  const geo = dimension(meta, 1, "Geography");
+  const products = dimension(meta, 2, "Products");
+  const regions = geo.members.filter((g) => !g.terminated);
+  // item key = the product's definition ("Milk, 2 litres"), so a copy reads plainly; the unit is in the definition.
+  const wanted: { region: string; code: string; coord: string }[] = [];
+  for (const def of ITEMS) {
+    const p = memberByName(products, def.label);
+    if (!p) continue; // a product the table no longer has: the live answer reports it
+    for (const g of regions) wanted.push({ region: g.name, code: def.label, coord: coordinate([g.id, p.id]) });
+  }
+  const got: DataSeries[] = [];
+  for (let i = 0; i < wanted.length; i += 26) got.push(...(await latestPeriods(PRODUCT_ID, wanted.slice(i, i + 26).map((w) => w.coord), 2, post)));
+  return pricesHarvestRows(wanted.map((w, i) => ({ region: w.region, code: w.code, data: got[i] })));
+}
+
+/** Where a request lives in the library, without asking Statistics Canada: regions come from the areas of our newest stored day. */
+export function caPricesHistoryKey(p: { item?: string; region?: string }, areas: string[]): { area: string; item: string; label: string } | null {
+  const def = matchItem(ITEMS, p.item ?? "").primary;
+  if (!def) return null;
+  const members: CubeMember[] = ["Canada", ...areas.filter((a) => a !== NATIONAL_AREA)].map((name, i) => ({ id: i + 1, name, parent: null, terminated: false }));
+  try {
+    const m = resolveRegion({ position: 1, name: "Geography", members }, p.region).member;
+    return { area: priceArea(m.name), item: def.label, label: m.name };
+  } catch {
+    return null;
+  }
 }

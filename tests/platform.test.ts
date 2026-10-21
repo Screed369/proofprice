@@ -547,3 +547,26 @@ test("every category and source reaches llms.txt, llms-full.txt, the coverage li
   const urls = buildSitemap("https://proofprice.com", new Date("2026-10-14T00:00:00Z"), { answerPages: [], indexPaths: [], newestDay: null }).map((e) => e.url);
   for (const p of ["/sources", "/openapi.json", "/llms.txt", "/llms-full.txt", "/api/v1/coverage", "/connect"]) assert.ok(urls.includes("https://proofprice.com" + p), p);
 });
+
+test("stale-if-error, reference-dated rows: the newest published month is served while the collector succeeded this week", () => {
+  const ca = SOURCE_PLUGINS.find((s) => s.info.id === "ca-statcan-fuel")!;
+  assert.ok(ca.referenceDates && ca.nominalCounts);
+  const area = "Vancouver, British Columbia";
+  writeDaily("ca-statcan-fuel", { date: "2026-08-31", currency: "CAD", unit: "per litre", rows: [{ area, item: "petrol95", n: 5, median: 1.789, low: 1.789, high: 1.789, min: 1.789, max: 1.789 }] });
+  const meta = { source: "ca-statcan-fuel", currency: "CAD", unit: "per litre", first_date: "2026-08-31", last_date: "2026-08-31", days: 1, last_harvest_at: null, last_rows: 1, last_error: null };
+  writeMeta("ca-statcan-fuel", { ...meta, last_ok_at: new Date(Date.now() - 86400000).toISOString() });
+  const params = { country: "CA", town: "Vancouver", fuel: "petrol95" };
+  const base = { cat: fuelCat, src: ca, params: prepared(params), query: params, error: new SourceError("Source timed out") };
+  const a = staleAnswer(base)!;
+  assert.ok(a, "served from the copy");
+  assert.equal(a.price!.value, 1.789);
+  assert.equal(a.price!.typical_low, null, "a single published figure has no range");
+  assert.equal(a.sample_size, null);
+  assert.deepEqual(a.period, { from: "2026-08-31", to: "2026-08-31" });
+  assert.match(a.notice, /our copy of the figure for 2026-08-31, collected on \d{4}-\d{2}-\d{2}\./);
+  assert.equal(a.extra!.stale, true);
+  assert.equal(a.reliability, "stale");
+  // a collector that last succeeded more than a week ago: no copy is recent enough
+  writeMeta("ca-statcan-fuel", { ...meta, last_ok_at: new Date(Date.now() - (STALE_MAX_DAYS + 2) * 86400000).toISOString() });
+  assert.equal(staleAnswer(base), null);
+});

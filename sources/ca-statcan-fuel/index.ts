@@ -1,7 +1,8 @@
 // Manifest: Canada fuel prices (Statistics Canada table 18-10-0001-01, monthly average retail prices by city). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import type { Fuel } from "../../lib/fuels";
-import { INFO, caFuelNow } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, caFuelHarvest, caFuelHistoryKey, caFuelNow } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -33,4 +34,11 @@ export default defineSource({
       service: str(p.service),
       baseUrl: ctx.baseUrl,
     }),
+  // A daily copy of the newest month, so a Statistics Canada outage is answered from it (stale-if-error). Rows are dated by the
+  // reference month, each row is one published average (n is a placeholder), and there is no /history of these monthly averages.
+  harvest: () => caFuelHarvest(),
+  historyKey: (p) => caFuelHistoryKey({ fuel: str(p.fuel), town: str(p.town), area: str(p.area) }, [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))]),
+  referenceDates: true,
+  nominalCounts: true,
+  noHistory: "Canada: Statistics Canada publishes one average per city and month; ProofPrice keeps no daily history of it. Ask pricepaid_fuel_prices_now (/api/v1/fuel) for the newest month, with the change on the previous month and a year earlier.",
 });

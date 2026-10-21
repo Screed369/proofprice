@@ -10,7 +10,7 @@
 import { fmtMoney, METHOD_URL, NOTICE, sourceBlock, withAudit } from "./answer";
 import type { PriceAnswer } from "./answer";
 import type { CategoryPlugin, Params, SourcePlugin } from "./plugin";
-import { readDaily, readMeta } from "./library/store";
+import { readDaily, readLatestDay, readMeta } from "./library/store";
 import { MIN_PUBLISH, confidenceLabel } from "./stats";
 
 /** A snapshot older than this many days is not recent enough to stand in for a live answer. */
@@ -36,6 +36,9 @@ const PLACE_PARAMS = ["postcode", "area", "town", "region", "county", "departmen
 
 /** The sentence agents and people see, word for word. */
 export const staleSentence = (date: string) => `The official source did not respond; this is our copy from ${date}.`;
+/** The same for a source whose library rows are dated by the period the figure is for (referenceDates). */
+export const staleReferenceSentence = (date: string, collected: string) =>
+  `The official source did not respond; this is our copy of the figure for ${date}, collected on ${collected}.`;
 
 /** An answer built from the newest recent library snapshot for this request, or null if there is none to stand in. */
 export function staleAnswer(o: StaleOptions): PriceAnswer | null {
@@ -49,12 +52,22 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
     if (key.area === "ALL" && PLACE_PARAMS.some((k) => String(o.params[k] ?? "").trim() !== "")) return null;
     const today = o.today ?? new Date();
     const from = iso(new Date(today.getTime() - STALE_MAX_DAYS * 86400000));
-    const rows = readDaily(src.info.id, { area: key.area, item: key.item, from, to: iso(today) }).filter(
-      (r) => r.n >= MIN_PUBLISH && Number.isFinite(r.median) && r.median > 0,
-    );
-    const last = rows[rows.length - 1];
-    if (!last) return null;
+    const usable = (r: { n: number; median: number }) => r.n >= MIN_PUBLISH && Number.isFinite(r.median) && r.median > 0;
     const meta = readMeta(src.info.id);
+    let last = readDaily(src.info.id, { area: key.area, item: key.item, from, to: iso(today) }).filter(usable).pop();
+    let collected: string | null = null;
+    if (!last && src.referenceDates) {
+      // Rows are dated by the month or quarter the figure is for. The newest day is still the newest published figure as long
+      // as the collector succeeded within the last STALE_MAX_DAYS days.
+      const okAt = meta?.last_ok_at ? meta.last_ok_at.slice(0, 10) : null;
+      const latest = okAt && okAt >= from && okAt <= iso(today) ? readLatestDay(src.info.id) : null;
+      const row = latest?.rows.find((r) => r.area === key.area && r.item === key.item && usable(r));
+      if (row) {
+        last = row;
+        collected = okAt;
+      }
+    }
+    if (!last) return null;
     const currency = meta?.currency;
     const unit = cat.history?.unit?.(key.item) ?? meta?.unit;
     if (!currency || !unit) return null; // never state a price without saying in what currency and per what
@@ -62,7 +75,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
     const itemLabel = cat.history?.itemLabel?.(key.item) ?? key.item;
     const money = (v: number) => fmtMoney(v, currency);
     const conf = confidenceLabel(last.n);
-    const sentence = staleSentence(last.date);
+    const sentence = collected ? staleReferenceSentence(last.date, collected) : staleSentence(last.date);
     const err: any = o.error;
     return withAudit({
       query: o.query,
@@ -73,10 +86,11 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         value: last.median,
         measure: "median",
         median: last.median,
-        typical_low: last.low,
-        typical_high: last.high,
-        min: last.min,
-        max: last.max,
+        // a published single figure (nominalCounts) has no range: the library repeats it in low/high/min/max
+        typical_low: src.nominalCounts ? null : last.low,
+        typical_high: src.nominalCounts ? null : last.high,
+        min: src.nominalCounts ? null : last.min,
+        max: src.nominalCounts ? null : last.max,
       },
       sample_size: src.nominalCounts ? null : last.n,
       period: { from: last.date, to: last.date },
@@ -89,8 +103,9 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         "It is shown because the live source did not respond. The copy covers the area named in the summary.",
       method_url: (o.baseUrl ?? "") + METHOD_URL,
       summary:
-        `${itemLabel} in ${key.label}: median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), ` +
-        `based on ${src.nominalCounts ? "the published figure (no record count is published)" : `${last.n} records`} in our copy of ${src.info.name} (${src.info.publisher}) taken on ${last.date}. ${sentence} Confidence: ${conf}.`,
+        `${itemLabel} in ${key.label}: ` +
+        (src.nominalCounts ? `${money(last.median)} ${unit}, ` : `median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), `) +
+        `based on ${src.nominalCounts ? "the published figure (no record count is published)" : `${last.n} records`} in our copy of ${src.info.name} (${src.info.publisher}) ${collected ? `for ${last.date}` : `taken on ${last.date}`}. ${sentence} Confidence: ${conf}.`,
       notice: `${sentence} ${NOTICE}`,
       extra: {
         stale: true,

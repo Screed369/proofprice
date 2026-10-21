@@ -143,6 +143,10 @@ export interface SourcePlugin {
   /** Optional: the source harvests (for its own answers or stale-if-error) but offers no /history; the text says why and is
    *  the error a history request gets. Such a source is left out of the history countries everywhere (tools, OpenAPI). */
   noHistory?: string;
+  /** Set true when harvest() dates its rows by the publication's reference period (a month or quarter the figure is for), not by
+   *  the day it was collected. A stale-if-error copy is then recent when the collector last succeeded within STALE_MAX_DAYS
+   *  (the newest figure is still the newest the publisher has), and the answer states the reference date it is for. */
+  referenceDates?: boolean;
 }
 
 /** One country entry of a tool description, filled from the registry (the source's placeName, countries and info), never typed by hand in a category. */
