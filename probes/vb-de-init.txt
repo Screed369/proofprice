@@ -1,0 +1,37 @@
+URL: https://oeffentlichevergabe.de/documentation/swagger-ui/opendata/swagger-initializer.js
+Fetched: 2026-10-21T05:44:36Z from GitHub Actions
+Status, type, bytes: 200 application/javascript 241
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Wed, 21 Oct 2026 05:44:36 GMT
+content-type: application/javascript
+content-length: 241
+last-modified: Tue, 09 Dec 2025 08:27:34 GMT
+vary: Accept-Encoding
+etag: "6937dd76-f1"
+strict-transport-security: max-age=31536000; includeSubDomains
+x-frame-options: DENY
+x-content-type-options: nosniff
+referrer-policy: no-referrer
+x-xss-protection: 0
+cache-control: no-cache, private, must-revalidate, no-store
+content-security-policy: default-src 'self'; script-src 'self' 'sha256-4IiDsMH+GkJlxivIDNfi6qk0O5HPtzyvNwVT3Wt8TIw='
+accept-ranges: bytes
+
+=== FILE TYPE: ASCII text
+=== FIRST 4000 BYTES
+
+window.onload = function () {
+  window.ui = SwaggerUIBundle({
+    url: "/documentation/api/opendata",
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    validatorUrl: null,
+    presets: [
+      SwaggerUIBundle.presets.apis
+    ]
+  });
+};
