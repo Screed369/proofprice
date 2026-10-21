@@ -290,6 +290,8 @@ export function buildAnswer(opts: {
   extra?: Record<string, unknown>;
   /** ISO date the source published the data; used for data_as_of when the period runs past today (a month in progress). */
   published?: string | null;
+  /** What kind of evidence the records are, when the price_type's general words do not fit (e.g. auction final bids). */
+  evidence?: { label: string; meaning: string };
 }): PriceAnswer {
   const src = opts.source;
   const n = opts.summary?.count ?? 0;
@@ -332,7 +334,7 @@ export function buildAnswer(opts: {
     summary: summaryText,
     notice: NOTICE,
     ...(opts.extra ? { extra: opts.extra } : {}),
-  }, src, retrievedAt, { published: opts.published });
+  }, src, retrievedAt, { published: opts.published, evidence: opts.evidence });
 }
 
 /** How the summary of a single published figure ends, by default: "Official average published by X for 2025." for an

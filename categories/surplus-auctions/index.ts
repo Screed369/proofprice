@@ -1,4 +1,4 @@
-// Tool: what surplus and seized goods actually sold for at public auction. Sources plug in by declaring category "auctions".
+// Tool: what surplus and seized goods actually sold for at public auction. Sources plug in by declaring category "surplus-auctions".
 // The tool name pricepaid_auction_prices is public once released: never rename it.
 import { z } from "zod";
 import { defineCategory, num, str } from "../../lib/plugin";
@@ -10,13 +10,13 @@ export default defineCategory({
   tool: "pricepaid_auction_prices",
   restPath: "auctions",
   cacheSeconds: 21600,
-  title: "Public auction prices (what surplus goods sold for)",
+  title: "Public auction prices (winning bids on surplus goods)",
   noun: "Public auction prices",
   description: (places) =>
     "Use this when a user asks what used, surplus or seized goods (vehicles, heavy equipment, electronics, office furniture, tools and similar) " +
-    `actually sold for at public auction in ${joinOr(places.map((p) => p.place))}. Returns the median final bid on sold lots, a typical range (10th–90th percentile), ` +
-    `the number of lots, the period, and the official source and licence. How fresh: ${freshnessList(places)}. ` +
-    "These are auction prices of used goods, not retail prices. Nothing is returned for fewer than 5 lots, and no seller or lot is named. " +
+    `went for at public auction in ${joinOr(places.map((p) => p.place))}. Returns the median final bid on sold lots, a typical range (10th–90th percentile), ` +
+    `the number of lots, the period, and the source and licence. How fresh: ${freshnessList(places)}. ` +
+    "These are winning bid levels on lots marked sold (before any buyer premium, not confirmed receipts) for used goods, not retail prices. Nothing is returned for fewer than 5 lots, and no seller or lot is named. " +
     "Do not use for new goods, shop prices or other countries.",
   params: {
     what: z

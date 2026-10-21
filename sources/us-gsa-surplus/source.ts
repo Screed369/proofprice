@@ -23,6 +23,13 @@ export const INFO: SourceInfo = {
     "Final bid on sold lots, a bid level that excludes the buyer premium, not a confirmed hammer price and not a retail price. About six months of history. Group labels in the file are noisy. Lots with no bid are left out.",
 };
 
+/** What the figure is: the last bid on lots marked sold, from a third-party compilation of GSA Auctions listings. */
+export const AUCTION_EVIDENCE = {
+  label: "Auction final bids (winning bid level)",
+  meaning:
+    "The last recorded bid on lots marked sold at public GSA auctions, compiled by GovAuctions from the auction listings: a winning bid level before the buyer premium, not a confirmed completed sale or receipt, and not a retail price.",
+};
+
 export interface Lot {
   category: string;
   title: string;
@@ -104,7 +111,7 @@ async function loadLots(): Promise<Lot[]> {
   } catch (err: any) {
     if (err instanceof SourceError) throw err;
     if (err?.name === "AbortError") throw new SourceError("Source timed out", CSV_URL);
-    throw new SourceError("Could not reach the official source", String(err?.cause?.code ?? err?.message ?? err));
+    throw new SourceError("Could not reach the GovAuctions dataset", String(err?.cause?.code ?? err?.message ?? err));
   } finally {
     clearTimeout(timer);
   }
@@ -129,7 +136,10 @@ export async function auctionPrices(input: { what: string; state?: string; month
     period: { from: oldest || from, to: newest },
     method:
       "Median and 10th–90th percentile of the final bid on sold federal surplus auction lots (GSA Auctions, via GovAuctions) that match the lot type, in the stated months. Lots with no bid are left out. The bid excludes the buyer premium. No range under 5 lots.",
-    describe: (x) => `Matching surplus lots sold for a median final bid of ${fmtMoney(x.median, "USD")} per lot (range ${fmtMoney(x.low, "USD")} to ${fmtMoney(x.high, "USD")}); used goods at auction, not retail prices.`,
+    describe: (x) =>
+      `Matching surplus lots marked sold had a median final (winning) bid of ${fmtMoney(x.median, "USD")} per lot (10th–90th percentile ${fmtMoney(x.low, "USD")} to ${fmtMoney(x.high, "USD")}); ` +
+      "a bid level before the buyer premium, not a confirmed sale price or receipt; used goods at auction, not retail prices.",
     baseUrl: input.baseUrl,
+    evidence: AUCTION_EVIDENCE,
   });
 }

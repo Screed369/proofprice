@@ -22,9 +22,14 @@ export const INFO: SourceInfo = {
     "One row per approved insurer tariff: insurer, canton, premium region, age class, accident cover, deductible, tariff model and the monthly premium in CHF.",
   price_type: "posted_price",
   freshness: "Once a year: premiums for the next year are approved and published in September",
-  licence: "opendata.swiss terms of use for open government data: commercial use is permitted (the source must be credited)",
-  licence_url: "https://opendata.swiss/en/terms-of-use",
-  attribution: "Source: Bundesamt für Gesundheit BAG, Krankenversicherungsprämien (opendata.swiss, ckan.opendata.swiss/en/dataset/health-insurance-premiums).",
+  // The resource Prämien_CH.csv carries the opendata.swiss "Open use" terms (rights https://opendata.swiss/terms-of-use#terms_open
+  // in the CKAN record, checked 2026-10-21); other files of the same dataset (Tarife, Prämien_EU) carry terms_by, but we read only Prämien_CH.csv.
+  licence:
+    'opendata.swiss terms of use, "Open use" (terms_open, as set for the file Prämien_CH.csv): "You may use this dataset for non-commercial purposes. ' +
+    'You may use this dataset for commercial purposes. You are recommended to provide the source (author, title and link to the dataset)."',
+  licence_url: "https://opendata.swiss/en/terms-of-use#terms_open",
+  attribution:
+    "Source: Bundesamt für Gesundheit BAG, Krankenversicherungsprämien, file Prämien_CH.csv (opendata.swiss, https://ckan.opendata.swiss/en/dataset/health-insurance-premiums).",
   homepage: "https://ckan.opendata.swiss/en/dataset/health-insurance-premiums",
   limits:
     "Posted list premiums approved by the BAG for compulsory basic insurance, not amounts paid by individuals and not a personal quote: the premium a person pays depends on the insurer they choose, their premium region and any premium reduction. " +
@@ -170,6 +175,8 @@ export function premiumAnswer(lib: { date: string; rows: { area: string; item: s
       `${age.replace("_", " ")} basic health insurance premium in ${where} for ${year}, deductible CHF ${franchise}, ${accident} accident cover, ${model} model: median ${fmtMoney(s.median, "CHF")} per month; ` +
       `10th to 90th percentile ${fmtMoney(s.low, "CHF")} to ${fmtMoney(s.high, "CHF")}. These are approved list premiums, not amounts paid.`,
     baseUrl: input.baseUrl,
+    // The premium year has not started yet when the premiums are published (September): the data date is the collection date.
+    published: lib.date,
     extra: {
       price_basis: "posted, regulator-approved list premium per month; not an amount paid by individuals",
       premium_year: year,

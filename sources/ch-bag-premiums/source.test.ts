@@ -96,7 +96,16 @@ test("answer: unknown deductible says which exist; unknown canton is the caller'
   assert.equal(CANTONS.length, 26);
 });
 
-test("licence and label are stated", () => {
-  assert.match(INFO.licence, /commercial use is permitted/);
+test("licence and label are stated: Prämien_CH.csv carries the opendata.swiss 'Open use' terms (terms_open)", () => {
+  assert.match(INFO.licence, /You may use this dataset for commercial purposes\. You are recommended to provide the source/);
+  assert.equal(INFO.licence_url, "https://opendata.swiss/en/terms-of-use#terms_open");
+  assert.match(INFO.attribution, /Prämien_CH\.csv/);
   assert.equal(INFO.price_type, "posted_price");
+});
+
+test("premium year 2027 comes from the file (Geschäftsjahr 2027, collected 2026); data_as_of is the collection date, not a future day", () => {
+  const a = premiumAnswer(LIB, { area: "zh" });
+  assert.equal((a.extra as any).premium_year, 2027);
+  assert.ok(a.data_as_of! <= new Date().toISOString().slice(0, 10));
+  assert.equal(a.data_as_of, LIB.date);
 });

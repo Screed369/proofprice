@@ -47,3 +47,17 @@ test("refuses a figure under 5 lots", async () => {
   assert.equal(a.status, "insufficient_data");
   assert.equal(a.price, null);
 });
+
+test("the figure is called a winning bid level, not a recorded sale; licence and attribution follow CC BY 4.0", async () => {
+  const { INFO } = await import("./source");
+  const a = await auctionPrices({ what: "vehicles", months: 12 }, parseLots(vehicles()));
+  assert.equal(a.evidence!.label, "Auction final bids (winning bid level)");
+  assert.match(a.evidence!.meaning, /not a confirmed completed sale/);
+  assert.doesNotMatch(a.evidence!.meaning, /official records/);
+  assert.match(a.summary, /final \(winning\) bid/);
+  assert.match(a.summary, /not a confirmed sale price/);
+  assert.equal(INFO.licence, "CC BY 4.0");
+  assert.equal(INFO.licence_url, "https://creativecommons.org/licenses/by/4.0/");
+  assert.match(INFO.attribution, /GovAuctions \(https:\/\/govauctions\.app\)/);
+  assert.match(INFO.attribution, /changed/);
+});
