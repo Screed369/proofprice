@@ -18,7 +18,7 @@ import { HISTORY_ROWS } from "./fixtures";
 import def from "./index";
 import {
   COUNTRIES, HISTORY_URL, INFO, NATIONAL_CURRENCY, findHistoryUrl, harvestOptions, parseHistory, pickPrevious, pickYearEarlier, previousWeek,
-  wobAnswer, wobFuelNow, wobHarvest, wobHistoryKey, wobResult, wobRows, yearEarlierWeek,
+  wobAnswer, wobFuelNow, wobHarvest, wobHistoryKey, wobMonthly, wobResult, wobRows, yearEarlierWeek,
 } from "./source";
 
 /** The fixture keeps 10 of the 23 countries, so the "far too few countries" guard is lowered for it. */
@@ -326,4 +326,28 @@ test("manifest and INFO: the countries, the examples, the licence quoted from th
   assert.match(INFO.licence, /Reproduction is authorised provided the source is acknowledged/);
   assert.equal(INFO.homepage, "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en");
   assert.match(INFO.limits, /national average/);
+});
+
+test("wobMonthly: monthly average of the weekly figures, min/max as the range, thin months left out", () => {
+  const ws = parseHistory(HISTORY_ROWS, Infinity, 5);
+  const months = [...new Set(ws.map((w) => w.date.slice(0, 7)))].sort();
+  const periods = wobMonthly(ws, months[0], months[months.length - 1]);
+  assert.ok(periods.length >= 1);
+  for (const p of periods) {
+    assert.match(p.period, /^\d{4}-\d{2}$/);
+    const inMonth = ws.filter((w) => w.date.startsWith(p.period));
+    assert.ok(inMonth.length >= 3);
+    for (const r of p.rows) {
+      assert.ok(r.n >= 5 && r.min <= r.low && r.low <= r.median && r.median <= r.high && r.high <= r.max);
+      assert.ok(["petrol95", "diesel", "lpg"].includes(r.item));
+      const vals = inMonth.map((w) => w.prices[r.area]?.[r.item as "diesel"]).filter((v): v is number => v !== undefined);
+      assert.equal(r.low, Math.min(...vals));
+      assert.equal(r.high, Math.max(...vals));
+    }
+  }
+  // a month with only two weeks gives no figure
+  const two = ws.filter((w) => w.date.slice(0, 7) === months[0]).slice(0, 2);
+  assert.deepEqual(wobMonthly(two, months[0], months[0]), []);
+  // the range is respected
+  assert.deepEqual(wobMonthly(ws, "1990-01", "1990-12"), []);
 });

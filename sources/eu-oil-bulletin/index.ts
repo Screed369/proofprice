@@ -1,7 +1,7 @@
 // Manifest: EU national average pump prices from the European Commission's Weekly Oil Bulletin. Logic lives in ./source.ts.
 // Answers come from the price library, filled by the collector from the bulletin's price-history workbook.
 import { defineSource, str } from "../../lib/plugin";
-import { COUNTRIES, INFO, wobFuelNow, wobHarvest, wobHistoryKey } from "./source";
+import { COUNTRIES, INFO, wobFuelNow, wobBackfill, wobHarvest, wobHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -36,5 +36,6 @@ export default defineSource({
     }),
   nominalCounts: true,
   harvest: wobHarvest,
+  backfill: wobBackfill,
   historyKey: (p) => wobHistoryKey({ country: String(p.country), fuel: String(p.fuel) }),
 });

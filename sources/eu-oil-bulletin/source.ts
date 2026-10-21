@@ -25,7 +25,7 @@
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { readLatestDay } from "../../lib/library/store";
 import { Cell, excelDate, readXlsx } from "../../categories/rent/xlsx";
 
@@ -262,6 +262,64 @@ export async function wobHarvest(minCountries = 15): Promise<HarvestResult> {
   const sheet = sheets.find((s) => s.rows.some((r) => r.some((c) => typeof c === "string" && /_price_with_tax_euro95$/.test(c.trim()))));
   if (!sheet) throw new SourceError("The Oil Bulletin workbook has no sheet with '<country>_price_with_tax_euro95' columns; this source needs updating.");
   return wobResult(parseHistory(sheet.rows, 60, minCountries));
+}
+
+// ---------- history backfill (monthly averages of the weekly bulletins) ----------
+
+/** A month needs at least this many weekly bulletins to get a figure (a partial month would mislead). */
+export const MIN_WEEKS_PER_MONTH = 3;
+
+/** Pure: monthly figures from weekly bulletins. median = the average of the weekly national figures in that month,
+ *  low/min = the cheapest week, high/max = the dearest week. n = 5 is the same placeholder the daily rows use
+ *  (a published figure, not a count of records). Only the askable fuels; months with fewer than MIN_WEEKS_PER_MONTH weeks are left out. */
+export function wobMonthly(weeks: Week[], fromMonth: string, toMonth: string): BackfillResult["periods"] {
+  const byMonth = new Map<string, Week[]>();
+  for (const w of weeks) {
+    const m = w.date.slice(0, 7);
+    if (m < fromMonth || m > toMonth) continue;
+    const list = byMonth.get(m) ?? [];
+    list.push(w);
+    byMonth.set(m, list);
+  }
+  const periods: BackfillResult["periods"] = [];
+  for (const m of [...byMonth.keys()].sort()) {
+    const ws = byMonth.get(m)!;
+    const rows: DailyRow[] = [];
+    const areas = new Set<string>();
+    for (const w of ws) for (const a of Object.keys(w.prices)) areas.add(a);
+    for (const area of [...areas].sort()) {
+      for (const item of ASKABLE) {
+        const vals = ws.map((w) => w.prices[area]?.[item]).filter((v): v is number => v !== undefined);
+        if (vals.length < MIN_WEEKS_PER_MONTH) continue;
+        const mean = r5(vals.reduce((a, b) => a + b, 0) / vals.length);
+        const lo = Math.min(...vals);
+        const hi = Math.max(...vals);
+        rows.push({ area, item, n: 5, median: mean, low: lo, high: hi, min: lo, max: hi });
+      }
+    }
+    if (rows.length) periods.push({ period: m, rows });
+  }
+  return periods;
+}
+
+/** The history workbook holds every week since 2005, so one download covers any range. */
+export async function wobBackfill(from: string, to: string): Promise<BackfillResult> {
+  const url = HISTORY_URL;
+  const buf: Buffer = await download(url, "binary", 3, 180000);
+  const sheets = readXlsx(buf);
+  const sheet = sheets.find((s) => s.rows.some((r) => r.some((c) => typeof c === "string" && /_price_with_tax_euro95$/.test(c.trim()))));
+  if (!sheet) throw new SourceError("The Oil Bulletin workbook has no sheet with '<country>_price_with_tax_euro95' columns; this source needs updating.");
+  const weeks = parseHistory(sheet.rows, Infinity);
+  const periods = wobMonthly(weeks, from.slice(0, 7), to.slice(0, 7));
+  console.log(`weeks in file: ${weeks.length} (${weeks[weeks.length - 1]?.date} to ${weeks[0]?.date}); months: ${periods.length}; rows: ${periods.reduce((a, p) => a + p.rows.length, 0)}`);
+  return {
+    currency: "EUR",
+    unit: "per litre",
+    periods,
+    note:
+      "European Commission Weekly Oil Bulletin: monthly figures from the weekly national averages (all duties and taxes included). median = average of the weekly figures in the month (at least 3 weeks); low/high = the cheapest and dearest week. " +
+      "Published figures, not counts of records (n=5 is a placeholder). Countries outside the euro are converted into euro by the Commission each week.",
+  };
 }
 
 // ---------- answering ----------
