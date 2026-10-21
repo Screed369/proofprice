@@ -455,6 +455,14 @@ export function updateFrequency(freshness: string, max = 100): string {
   return cut.replace(/[\s,;:(]+$/, "") + "…";
 }
 
+/** How often a tool's sources update. In the short overview (no category or country asked) each entry is cut shorter and at
+ *  most three are listed, so the overview stays small however many sources are added; the full detail per slice is unchanged. */
+export function frequencies(freshness: string[], brief: boolean): string {
+  const all = [...new Set(freshness.map((f) => updateFrequency(f, brief ? 60 : 100)))];
+  if (!brief || all.length <= 3) return all.join(" | ");
+  return all.slice(0, 3).join(" | ") + ` | and ${all.length - 3} more (ask with this category for each source)`;
+}
+
 /** A category by its id, REST path or tool name (any case; /api/v1/ in front is ignored). */
 export function lookupCategory(raw: unknown, categories: CategoryPlugin[] = CATEGORIES): CategoryPlugin | undefined {
   const key = String(raw ?? "").trim().toLowerCase().replace(/^\/?(api\/v1\/)?/, "");
@@ -494,7 +502,7 @@ export function coverageView(filter: CoverageFilter = {}, baseUrl = "") {
         rest: `/api/v1/${c.restPath}`,
         countries: [...new Set(srcs.flatMap((s) => s.countries))],
         source_count: srcs.length,
-        update_frequency: [...new Set(srcs.map((s) => updateFrequency(s.info.freshness)))].join(" | "),
+        update_frequency: frequencies(srcs.map((s) => s.info.freshness), !category && !country),
       };
     });
   const shown = (category ? [category] : CATEGORIES).flatMap((c) => matching(c).map((s) => ({ c, s })));
