@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { FARM_CODE_SETS, FARM_DATA, FARM_META, FARM_SERIES_INFO } from "./fixtures";
 import {
-  INFO, PRODUCTS, caFarmMethod, caFarmPrices, exampleProducts, matchProduct, parseSeriesUoms, parseUomNames, perSmallUnit, readFarm, unitFrom,
+  INFO, PRODUCTS, caFarmHarvest, caFarmMethod, caFarmPrices, exampleProducts, farmHarvestRows, farmHistoryKey, matchProduct, parseSeriesUoms, parseUomNames, perSmallUnit, readFarm, unitFrom,
 } from "./source";
 import type { Poster } from "../_ca-statcan/wds";
 import type { DataSeries } from "../_ca-statcan/wds";
@@ -161,4 +161,34 @@ test("manifest: farm-gate-prices tool, CA only, the wheat example is the smoke t
   assert.equal(INFO.price_type, "official_statistic");
   assert.deepEqual(countriesFor("farm-gate-prices"), ["CA"]);
   assert.equal(categoryById("farm-gate-prices")?.tool, "pricepaid_farm_gate_prices");
+});
+
+// ---------- daily copy (stale-if-error) ----------
+
+test("harvest: the newest month's averages by province and product with the unit in the item, the same figure as the live answer, no made-up count", async () => {
+  const h = await caFarmHarvest(post, get);
+  assert.ok(h.rows.length > 0);
+  assert.equal(h.currency, "CAD");
+  const live = await ask({ product: "wheat", region: "Saskatchewan" });
+  const row = h.rows.find((r) => r.area === "Saskatchewan" && r.item === "Wheat (except durum wheat) (per metric tonne)")!;
+  assert.ok(row, "Saskatchewan wheat row");
+  assert.equal(row.median, live.price?.value);
+  assert.ok(Number.isNaN(row.n), "official statistic: n is NO_COUNT");
+  assert.equal(row.low, row.high);
+  assert.equal(h.date, live.period.to);
+  assert.throws(() => farmHarvestRows([]), /no usable farm price/);
+});
+
+test("history key: the province and the product's unit come from the stored rows; a missing province or an unknown product gives null", async () => {
+  const h = await caFarmHarvest(post, get);
+  const k = farmHistoryKey({ product: "wheat", region: "Saskatchewan" }, h.rows)!;
+  assert.equal(k.area, "Saskatchewan");
+  assert.equal(k.item, "Wheat (except durum wheat) (per metric tonne)");
+  assert.equal(farmHistoryKey({ product: "wheat" }, h.rows), null); // no Canada total exists
+  assert.equal(farmHistoryKey({ product: "unobtainium", region: "Saskatchewan" }, h.rows), null);
+  assert.equal(farmHistoryKey({ product: "wheat", region: "Saskatchewan" }, []), null);
+});
+
+test("the manifest declares the daily copy for stale-if-error", () => {
+  assert.ok(manifest.harvest && manifest.historyKey && manifest.referenceDates && manifest.nominalCounts);
 });
