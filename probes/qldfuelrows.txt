@@ -1,0 +1,23 @@
+URL: https://www.data.qld.gov.au/api/3/action/datastore_search?resource_id=420319e2-6518-4243-83a6-3c7769bd7e6c&filters=%7B%22Site_Post_Code%22%3A4000%2C%22Fuel_Type%22%3A%22Diesel%22%7D&sort=TransactionDateutc%20desc&limit=8
+Fetched: 2026-10-21T15:36:01Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1615
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 1615
+date: Wed, 21 Oct 2026 15:36:01 GMT
+strict-transport-security: max-age=31536000
+server: nginx
+cache-control: public, max-age=1800, must-revalidate
+vary: Cookie
+x-cache: Miss from cloudfront
+via: 1.1 466f434f8a34e1a53b41f6789faaefa8.cloudfront.net (CloudFront)
+x-amz-cf-pop: PHX52-P3
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: Xhqbkef62UJ_Xixzp-kH-qPPNuvuWnMjBwQ8FjvsrnsDvBW_3CGVew==
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"help": "https://www.data.qld.gov.au/api/3/action/help_show?name=datastore_search", "success": true, "result": {"filters": {"Site_Post_Code": 4000, "Fuel_Type": "Diesel"}, "include_total": true, "limit": 8, "records_format": "objects", "resource_id": "420319e2-6518-4243-83a6-3c7769bd7e6c", "sort": "TransactionDateutc desc", "total_estimation_threshold": null, "records": [], "fields": [{"id": "_id", "type": "int"}, {"id": "SiteId", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "Site_Name", "type": "text"}, {"id": "Site_Brand", "type": "text"}, {"id": "Sites_Address_Line_1", "type": "text"}, {"id": "Site_Suburb", "type": "text"}, {"id": "Site_State", "type": "text"}, {"id": "Site_Post_Code", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "Site_Latitude", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "Site_Longitude", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "Fuel_Type", "type": "text"}, {"id": "Price", "type": "numeric", "info": {"type_override": "numeric"}}, {"id": "TransactionDateutc", "type": "timestamp", "info": {"type_override": "timestamp"}}], "_links": {"start": "/api/3/action/datastore_search?filters=%7B%22Site_Post_Code%22%3A4000%2C%22Fuel_Type%22%3A%22Diesel%22%7D&limit=8&resource_id=420319e2-6518-4243-83a6-3c7769bd7e6c&sort=TransactionDateutc+desc", "next": "/api/3/action/datastore_search?filters=%7B%22Site_Post_Code%22%3A4000%2C%22Fuel_Type%22%3A%22Diesel%22%7D&limit=8&resource_id=420319e2-6518-4243-83a6-3c7769bd7e6c&sort=TransactionDateutc+desc&offset=8"}, "total": 0, "total_was_estimated": false}}
