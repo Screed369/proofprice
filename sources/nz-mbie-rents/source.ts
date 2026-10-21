@@ -210,7 +210,9 @@ export function answerFromRows(rows: RentRow[], place: Place, input: NzRentInput
     extra: {
       month: latest.month,
       place_kind: place.kind,
-      range_basis: "lower and upper quartile (25th–75th percentile), as published",
+      range_basis: "lower and upper quartile (25th–75th percentile), as published; typical_low and typical_high are null because they mean 10th–90th",
+      p25: latest.lower,
+      p75: latest.upper,
       geometric_mean_rent: latest.geoMean,
       median_a_year_earlier: before ? { month: before.month, median: before.median, change_percent: yoy } : null,
       bond_counts_rounded_to: 3,
@@ -221,6 +223,9 @@ export function answerFromRows(rows: RentRow[], place: Place, input: NzRentInput
   if (a.price) {
     a.price.min = null;
     a.price.max = null;
+    // Quartiles are not 10th-90th percentiles: typical_low/high stay null, the quartiles live in extra.p25 / extra.p75.
+    a.price.typical_low = null;
+    a.price.typical_high = null;
   }
   if (ignored.length) {
     a.summary += ` Note: MBIE does not publish rents by bedrooms or dwelling type for a named place, so ${ignored.join(", ")} was not applied; the figure covers all new private tenancies.`;

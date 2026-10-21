@@ -4,7 +4,7 @@
 //   sheet "3. Med DRG Bill Data": header row |DRG|DRG Description|Setting|Ward Type|P25 Bill|P50 Bill|P75 Bill|P25 Room Fees|...
 //   one row per DRG, setting (Public subsidised / Public unsubsidised / Private) and ward type; amounts in SGD incl. GST, Singapore Citizens, discharges
 //   1 Jan - 31 Dec 2023, transacted bills before insurance and MediSave. 'n/a' = under 10 cases, '-' = not applicable. NO case counts are published.
-// The figures are percentiles MOH computed, so the answer is an official statistic (median = P50, typical range = P25..P75), sample size unknown.
+// The figures are percentiles MOH computed, so the answer is an official statistic (median = P50; P25 and P75 go in extra.p25 / extra.p75, never in typical_low / typical_high), sample size unknown.
 // The workbook is annual: fetched per request and cached in memory for 24 hours (only the DRG sheet is parsed).
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
@@ -187,7 +187,7 @@ export interface BillInput {
 
 const METHOD =
   "Singapore: the Ministry of Health publishes, for each medical condition group (DRG), setting and ward type, the 25th, 50th and 75th percentile of the total hospital bills actually transacted for Singapore Citizens in calendar year 2023 (GST included, before insurance and MediSave). " +
-  "We pass the median (P50) on as the figure and P25 to P75 as the typical range. It is a published statistic, not a record-level calculation, and the number of cases is not published.";
+  "We pass the median (P50) on as the figure and P25 and P75 (the quartiles) in extra.p25 and extra.p75; typical_low and typical_high stay empty because they mean 10th to 90th. It is a published statistic, not a record-level calculation, and the number of cases is not published.";
 
 export function billAnswer(rows: DrgRow[], input: BillInput): PriceAnswer {
   const setting = (input.setting ?? "").trim().toLowerCase();
@@ -261,15 +261,14 @@ export function billAnswer(rows: DrgRow[], input: BillInput): PriceAnswer {
     unit: "per hospital stay (total bill, GST included)",
     period: { from: `${YEAR}-01-01`, to: `${YEAR}-12-31` },
     reference_period: YEAR,
-    low: row.p25,
-    high: row.p75,
+    // MOH publishes quartiles (P25..P75), not 10th-90th percentiles: keep typical_low/high null and name them in extra.
     method: METHOD,
     describe: (v) =>
       `For ${best.description} (${best.drg}), the median total hospital bill in Singapore in ${YEAR} was ${sgd(v)} in a ${WARD_LABEL[row.ward]}` +
       `${row.p25 !== null && row.p75 !== null ? ` (middle half of bills ${sgd(row.p25)} to ${sgd(row.p75)})` : ""}.`,
     note: caveats.join(" "),
     baseUrl: input.baseUrl,
-    extra: { place: "Singapore", drg: best.drg, condition: best.description, setting: row.setting, ward: row.ward, ward_type: row.wardType, all_wards: allWards, other_matches: others },
+    extra: { place: "Singapore", p25: row.p25 === null ? null : Math.round(row.p25 * 100) / 100, p75: row.p75 === null ? null : Math.round(row.p75 * 100) / 100, range_basis: "lower and upper quartile (25th-75th percentile), as published; typical_low and typical_high are null because they mean 10th-90th", drg: best.drg, condition: best.description, setting: row.setting, ward: row.ward, ward_type: row.wardType, all_wards: allWards, other_matches: others },
   });
 }
 

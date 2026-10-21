@@ -31,8 +31,10 @@ test("answer: Ward C median and the middle half, as published", () => {
   assert.equal(a.status, "ok");
   assert.equal(a.price!.currency, "SGD");
   assert.equal(a.price!.median, 4428.39);
-  assert.equal(a.price!.typical_low, 2800.16);
-  assert.equal(a.price!.typical_high, 7445.03);
+  assert.equal(a.price!.typical_low, null);
+  assert.equal((a.extra as any).p25, 2800.16);
+  assert.equal(a.price!.typical_high, null);
+  assert.equal((a.extra as any).p75, 7445.03);
   assert.equal(a.sample_size, null);
   assert.equal(a.price_type, "official_statistic");
   assert.match(a.summary, /4,428 SGD/);
