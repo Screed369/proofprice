@@ -1,0 +1,45 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/80416ned/TypedDataSet?$top=5
+Fetched: 2026-10-21T01:41:55Z from GitHub Actions
+Status, type, bytes: 200 application/json 630
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 01:41:55 GMT
+Content-Length: 630
+TXID: 01583632
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=015d9a3f-1863-1ad8-9678-0050569bed16_1363055727_0649702621_00000000000022558258; Path=/; Expires=Wed, 21-Oct-2026 01:42:10 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/80416ned/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":0,"Perioden":"20060101","BenzineEuro95_1":1.325,"Diesel_2":1.003,"Lpg_3":0.543
+    },{
+      "ID":1,"Perioden":"20060102","BenzineEuro95_1":1.328,"Diesel_2":1.007,"Lpg_3":0.542
+    },{
+      "ID":2,"Perioden":"20060103","BenzineEuro95_1":1.332,"Diesel_2":1.007,"Lpg_3":0.54
+    },{
+      "ID":3,"Perioden":"20060104","BenzineEuro95_1":1.348,"Diesel_2":1.02,"Lpg_3":0.55
+    },{
+      "ID":4,"Perioden":"20060105","BenzineEuro95_1":1.347,"Diesel_2":1.021,"Lpg_3":0.55
+    }
+  ]
+}
