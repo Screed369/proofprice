@@ -1,0 +1,22 @@
+URL: https://api.scb.se/OV0104/v1/doris/en/ssd/START/EN/EN0301/EN0301A/SSDHalvarElHus
+Fetched: 2026-10-21T07:42:34Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1213
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date: Wed, 21 Oct 2026 07:42:34 GMT
+Content-Length: 1213
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Max-Age: 86400
+Allow: GET,HEAD,POST,OPTIONS
+Vary: Origin
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: TS0187a64b=017dca055caa5fb9e9fb1badd7f159bf80bd564dfc5f5448ed15c5f593c1e4fa4e3d5eaba76025c8832fba10c47a2e87c3592e3762; Path=/; Domain=.api.scb.se; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"title":"Electricity prices for households, csek/kWh by consumer category (annual electricity consumption kWh), observations and half-year","variables":[{"code":"Kategorikwh","text":"consumer category (annual electricity consumption kWh)","values":["DA","DB","DC","DD","DE"],"valueTexts":["less than 1 000 kWh","1 000–2 499 kWh","2 500–4 999 kWh","5 000–14 999 kWh","15 000 kWh or more"]},{"code":"ContentsCode","text":"observations","values":["000006WO","000006WP","0000070Q","000006WQ","000006WR","000006WS"],"valueTexts":["Price of electricity, csek/kWh","Price for use of electrical grid, csek/kWh","Electricity tax csek/kWh","Net price with tax, csek/kWh","VAT csek/kWh","Total price csek/kWh"]},{"code":"Tid","text":"half-year","values":["2014H2","2015H1","2015H2","2016H1","2016H2","2017H1","2017H2","2018H1","2018H2","2019H1","2019H2","2020H1","2020H2","2021H1","2021H2","2022H1","2022H2","2023H1","2023H2","2024H1","2024H2","2025H1","2025H2","2026H1"],"valueTexts":["2014H2","2015H1","2015H2","2016H1","2016H2","2017H1","2017H2","2018H1","2018H2","2019H1","2019H2","2020H1","2020H2","2021H1","2021H2","2022H1","2022H2","2023H1","2023H2","2024H1","2024H2","2025H1","2025H2","2026H1"],"time":true}]}
