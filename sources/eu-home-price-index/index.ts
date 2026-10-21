@@ -1,5 +1,5 @@
 // Manifest: official house price index (Eurostat prc_hpi_q) for EU countries that have no national home-sales source here. Logic lives in ./source.ts.
-import { defineSource } from "../../lib/plugin";
+import { defineSource, str } from "../../lib/plugin";
 import { COUNTRIES, INFO, euHomePriceIndex } from "./source";
 
 export default defineSource({
@@ -11,7 +11,7 @@ export default defineSource({
   placeName: "Bulgaria, Croatia, Cyprus, Czechia, Estonia, Germany, Hungary, Iceland, Italy, Latvia, Lithuania, Luxembourg, Malta, Poland, Romania, Slovakia, Slovenia and Spain (house price index only)",
   status: "live",
   paramNotes: {
-    town: "BG HR CY CZ DE EE ES HU IS IT LV LT LU MT PL RO SI SK: ignored; Eurostat publishes one national index per country. The answer is an index (2015 = 100), not a price in euros.",
+    town: "BG HR CY CZ DE EE ES HU IS IT LV LT LU MT PL RO SI SK: ignored; Eurostat publishes one national index per country (PL: a town is answered by the Polish price register instead). The answer is an index (2015 = 100), not a price in euros.",
     postcode: "BG HR CY CZ DE EE ES HU IS IT LV LT LU MT PL RO SI SK: not supported (national index only).",
     property_type: "BG HR CY CZ DE EE ES HU IS IT LV LT LU MT PL RO SI SK: ignored; the index covers all dwellings (new and existing) bought by households.",
     months: "BG HR CY CZ DE EE ES HU IS IT LV LT LU MT PL RO SI SK: ignored; the newest quarter with a figure is returned, with the change over the previous quarter and over a year.",
@@ -21,6 +21,8 @@ export default defineSource({
     { params: { country: "DE" }, smoke: false },
     { params: { country: "PL" }, smoke: false },
   ],
+  // Poland also has pl-rcn-home-sales (flat sales per city): a request naming a town goes there, without a town it gets this national index.
+  serves: (p) => !str(p.town),
   method:
     "Eurostat's quarterly house price index (2015 = 100) of the prices households paid for dwellings, built by each national statistics office from purchase transactions. We pass on the latest published index with its change over a quarter and a year; it is an official index, not a price in money and not a list of sales.",
   handle: (p, ctx) => euHomePriceIndex({ country: String(p.country), baseUrl: ctx.baseUrl }),

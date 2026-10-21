@@ -29,6 +29,8 @@ export default defineSource({
     { params: { country: "PL", town: "Poznan" }, label: "Poznan", question: "What do flats sell for in Poznan, Poland?" },
     { params: { country: "PL", town: "Lodz" }, label: "Lodz", question: "What do flats sell for in Lodz, Poland?" },
   ],
+  // Poland shares home-sales with eu-home-price-index (the national index): this source answers when a city is given as town.
+  serves: (p) => !!str(p.town),
   method:
     "Poland: notarised flat sales on the free market from the national Real Estate Price Register (GUGiK), read live from the official Geoportal WFS service in 30-day slices; median and 10th-90th percentile of the gross price per flat and per m2, implausible records dropped, and only the aggregate kept.",
   handle: (p, ctx) =>
