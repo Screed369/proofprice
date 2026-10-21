@@ -1,0 +1,20 @@
+URL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr?format=JSON&lang=en&geo=IE&geo=DE&sinceTimePeriod=2026-06&lastTimePeriod=3
+Fetched: 2026-10-21T06:43:48Z from GitHub Actions
+Status, type, bytes: 400 application/json 216
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 Bad Request
+Date: Wed, 21 Oct 2026 06:43:48 GMT
+Content-Length: 216
+Content-Type: application/json
+X-ORACLE-DMS-ECID: 682f7da8-56c9-408b-8f8b-5e077909eb44-01a66697
+Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With
+Access-Control-Allow-Methods: GET
+X-ORACLE-DMS-RID: 0
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{ "error": [{"status": 400,"id": 400,"label": "'TIME' parameter, 'TIME_PERIOD' parameter, 'lastTimePeriod' parameter and 'sinceTimePeriod' parameter cannot be set at the same time. Please choose one or the other."}]}
