@@ -1,0 +1,375 @@
+URL: https://data.gov.scot/dataset/house_sales
+Fetched: 2026-10-21T12:44:25Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 27033
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+date: Wed, 21 Oct 2026 12:44:25 GMT
+content-security-policy: default-src 'self';script-src 'self' https://www.googletagmanager.com;object-src 'none';style-src 'self';img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;font-src 'self';connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;base-uri 'self';form-action 'self';frame-ancestors 'self'
+x-frame-options: SAMEORIGIN
+cache-control: max-age=300, private
+expires: -1
+pragma: no-cache
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+x-xss-protection: 0
+vary: Accept-Encoding
+x-cache: Miss from cloudfront
+via: 1.1 fb9b6eb5c6b5a0132525f0c834eb3180.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD61-P13
+x-amz-cf-id: ce8zNcDrlL8DjF6uPYHnEqGklncvyuF6d0VEfjNgi0p2Vb-XuAnCTg==
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (1436)
+=== FIRST 60000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="KibC1m-4IGf8oct6r5Hw5NDQjkS6MDVHyrT0u9U3kbo">
+    <title>House Sales - Data about Scotland</title>
+    <link rel="preload" href="/static/font/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+        <meta name="description" content="Number of house sales">
+        <meta name="gtm-container-id" content="GTM-PVDXQKCL">
+    <link rel="stylesheet" href="/static/css/index.css?v=jV2JyFUJTbAKd1LE1H7S1ixY7H6dzOIldGMLsyu1r10">
+</head>
+<body>
+    <div class="ds_page">
+        <div class="ds_page__top">
+            <div id="cookie-notice" class="ds_notification  ds_notification--large  ds_notification--cookie  js-initial-cookie-content  fully-hidden" data-module="ds-cookie-notification">
+                <div class="ds_wrapper">
+                    <div class="ds_notification__content">
+                        <h2 class="visually-hidden">Information</h2>
+
+                        <div class="ds_notification__text">
+                            <p>We use <a href="/cookies">cookies</a> to collect anonymous data to help us improve your site browsing
+                                experience.</p>
+                            <p>Click 'Accept all cookies' to agree to all cookies that collect anonymous data.
+                                To only allow the cookies that make the site work, click 'Use essential cookies only.' Visit 'Set cookie preferences' to control specific cookies.</p>
+                        </div>
+
+                        <div class="ds_button-group">
+                            <button class="ds_button  ds_button--small  ds_button--secondary  js-accept-all-cookies">Accept all cookies</button>
+                            <button class="ds_button  ds_button--small  ds_button--secondary  js-accept-essential-cookies">Use essential cookies only</button>
+                            <a href="/cookies">Set cookie preferences</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="cookie-confirm" class="ds_notification  ds_notification--cookie-success  ds_reversed  js-confirm-cookie-content fully-hidden" data-module="ds-notification">
+                <div class="ds_wrapper">
+                    <div class="ds_notification__content">
+                        <div class="ds_notification__text">
+                            <h2 class="visually-hidden">Information</h2>
+
+                            <div class="ds_notification__text">
+                                <p>Your cookie preferences have been saved. You can <a href="/cookies/">change your cookie settings</a> at any time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <header class="ds_site-header  ds_site-header--gradient" role="banner">
+                <div class="ds_skip-links">
+                    <ul class="ds_skip-links__list">
+                        <li class="ds_skip-links__item">
+                            <a class="ds_skip-links__link" href="#main-content">Skip to main content</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ds_wrapper">
+                    <div class="ds_site-header__content">
+                        <div class="ds_site-branding">
+                            <a class="ds_site-branding__logo  ds_site-branding__link" href="/">
+                                <img class="ds_site-branding__logo-image" src="/static/img/scottish-government.svg" alt="Scottish Government">
+                            </a>
+                            <div class="ds_site-branding__title">Data about Scotland</div>
+                        </div>
+                        <div class="ds_site-header__controls">
+                            <label aria-controls="mobile-navigation" class="ds_site-header__control  js-toggle-menu" for="menu">
+                                <span class="ds_site-header__control-text">Menu</span>
+                                <svg class="ds_icon  ds_site-header__control-icon" aria-hidden="true" role="img"><use href="/static/img/icons/icons.stack.svg#menu" /></svg>
+                                <svg class="ds_icon  ds_site-header__control-icon  ds_site-header__control-icon--active-icon" aria-hidden="true" role="img"><use href="/static/img/icons/icons.stack.svg#close" /></svg>
+                            </label>
+                        </div>
+                        <input class="ds_site-navigation__toggle" id="menu" type="checkbox" />
+                        <nav id="mobile-navigation" class="ds_site-navigation ds_site-navigation--mobile" data-module="ds-mobile-navigation-menu" aria-label="Main">
+                            <ul class="ds_site-navigation__list">
+                                <li class="ds_site-navigation__item">
+                                    <a href="/data" class="ds_site-navigation__link">Data</a>
+                                </li>
+                                <li class="ds_site-navigation__item">
+                                    <a href="/organisations" class="ds_site-navigation__link">Organisations</a>
+                                </li>
+                                <li class="ds_site-navigation__item">
+                                    <a href="/themes" class="ds_site-navigation__link">Themes</a>
+                                </li>
+                                <li class="ds_site-navigation__item">
+                                    <a href="/about" class="ds_site-navigation__link">About</a>
+                                </li>
+                                <li class="ds_site-navigation__item">
+                                    <a href="/help" class="ds_site-navigation__link">Help</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="ds_site-header__navigation">
+                    <div class="ds_wrapper">
+                        <nav class="ds_site-navigation" aria-label="Main">
+                            <ul class="ds_site-navigation__list">
+                                <li class="ds_site-navigation__item">
+                                    <a href="/data" class="ds_site-navigation__link">Data</a>
+                                </li>
+                                <li class="ds_site-navigation__item">
+                                    <a href="/organisations" class="ds_site-navigation__link">Organisations</a>
+                                </li>
+                                <li class="ds_site-navigation__item">
+                                    <a href="/themes" class="ds_site-navigation__link">Themes</a>
+                                </li>
+                                <li class="ds_site-navigation__item">
+                                    <a href="/about" class="ds_site-navigation__link">About</a>
+                                </li>
+                                <li class="ds_site-navigation__item">
+                                    <a href="/help" class="ds_site-navigation__link">Help</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                    <div id="beta-banner" class="ds_phase-banner">
+        <div class="ds_wrapper">
+            <p class="ds_phase-banner__content">
+                <strong class="ds_tag  ds_phase-banner__tag">Beta</strong>
+                <span class="ds_phase-banner__text">This is a new service. Your <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=R3T3DoMQ7E24nyfHZQdoQKcMAJa1TqVPkljiVFtjvOxURDMxTFNaS0lLN0Q2U1VDVkNORUkyUE5FQS4u" target="_blank" title="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=R3T3DoMQ7E24nyfHZQdoQKcMAJa1TqVPkljiVFtjvOxURDMxTFNaS0lLN0Q2U1VDVkNORUkyUE5FQS4u" type="external">feedback</a> will help us to improve it.</span>
+            </p>
+        </div>
+    </div>
+
+            </header>
+        </div>
+        <div class="ds_page__middle">
+            <main class="main" id="main-content">
+                
+<script type="application/ld&#x2B;json">{"@context":"https://schema.org","@type":"Dataset","name":"House Sales","description":"Residential property transactions are recorded by Registers of Scotland.  Historical analysis for the years prior to 2003 includes additional coding by the Land Valuation Information Unit at the University of Paisley and Scottish Government. Figures for the years following 2003 are based on Scottish Government analysis of sales data supplied by Registers of Scotland.<br/><br/>The number of sales, median price and lower quartile price are based on second hand and new build sales that are recorded/registered in the given time period whether they are cash purchases or funded by mortgages. It can take a period of time for sales to be submitted and recorded after the transaction is completed.<br/><br/>Areas with less than 5 sales have the number and value of sales suppressed to help minimise the risk of data disclosure and to ensure that any averages presented are based on at least 5 records.","identifier":"house_sales","license":"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/","dateModified":"2026-09-09","datePublished":"2026-08-20","creator":{"@type":"Organization","name":"Scottish Government"},"distribution":[{"@type":"DataDownload","encodingFormat":"CSV","contentUrl":"https://admin.data.gov.scot/resource/5f7c528a-2491-40cd-80cb-49da558cb597/download"}]}</script>
+<div class="bg--light">
+    <div class="ds_wrapper">
+            <nav aria-label="Breadcrumb">
+        <ol class="ds_breadcrumbs">
+                <li class="ds_breadcrumbs__item">
+                        <a class="ds_breadcrumbs__link" href="/">Home</a>
+                </li>
+                <li class="ds_breadcrumbs__item">
+                        <a class="ds_breadcrumbs__link" href="/data">Data</a>
+                </li>
+                <li class="ds_breadcrumbs__item">
+                        <span class="ds_breadcrumbs__current" aria-current="page">House Sales</span>
+                </li>
+        </ol>
+    </nav>
+
+        <div class="ds_layout">
+            <div class="ds_layout__header layout__header">
+                <header class="ds_page-header page-header">
+                    <h1 id="ds_page-header" class="page-header">House Sales</h1>
+                    <div class="ds_leader leader">
+                            <p>Number of house sales</p>
+                    </div>
+                    <dl class="ds_metadata metadata-grid metadata-grid--set">
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Contact</dt>
+                                <dd class="ds_metadata__value"><a href="mailto:housingstatistics@gov.scot">housingstatistics@gov.scot</a></dd>
+                            </div>
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Reference period</dt>
+                                <dd class="ds_metadata__value">1993 to 2018</dd>
+                            </div>
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Last updated</dt>
+                                <dd class="ds_metadata__value">9 Sept 2026</dd>
+                            </div>
+                    </dl>
+                </header>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ds_wrapper">
+    <div class="grid push-top">
+        <div class="xs-12 md-3">
+            <nav class="ds_side-navigation side-navigation" aria-label="Sections" data-module="ds-side-navigation">
+                <input type="checkbox" class="fully-hidden  js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root"/>
+                <label class="ds_side-navigation__expand  ds_link" for="show-side-navigation">
+                    <span class="visually-hidden">Show all</span> Sections on this page <span class="ds_side-navigation__expand-indicator"></span>
+                </label>
+                <ul class="ds_side-navigation__list" id="side-navigation-root">
+                    <li class="ds_side-navigation__item"><a href="#data" class="ds_side-navigation__link js-scroll-spy">Data</a></li>
+                    <li class="ds_side-navigation__item"><a href="#description" class="ds_side-navigation__link js-scroll-spy">Description</a></li>
+                    <li class="ds_side-navigation__item"><a href="#metadata" class="ds_side-navigation__link js-scroll-spy">Metadata</a></li>
+                    <li class="ds_side-navigation__item"><a href="#data-quality" class="ds_side-navigation__link js-scroll-spy">Data quality</a></li>
+                    <li class="ds_side-navigation__item"><a href="#additional-details" class="ds_side-navigation__link js-scroll-spy">Additional details</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="xs-12 md-9">
+            <section id="data" aria-labelledby="data-heading">
+                <h2 class="ds_h2" id="data-heading">Data</h2>
+                        <div class="ds_file-download file-download">
+                            <div class="ds_file-download__content">
+                                <h3 class="ds_file-download__title">House Sales</h3>
+                                <div id="file-download-0" class="ds_file-download__details">
+                                    <dl class="ds_metadata ds_metadata--inline">
+                                            <div class="ds_metadata__item">
+                                                <dt class="ds_metadata__key visually-hidden">File type</dt>
+                                                <dd class="ds_metadata__value">
+                                                    <span class="tag-list__item">CSV</span>
+                                                </dd>
+                                            </div>
+                                            <div class="ds_metadata__item">
+                                                <dt class="ds_metadata__key visually-hidden">Filesize</dt>
+                                                <dd class="ds_metadata__value">11.2MB</dd>
+                                            </div>
+                                            <div class="ds_metadata__item">
+                                                <dt class="ds_metadata__key  visually-hidden">Date updated</dt>
+                                                <dd class="ds_metadata__value">9 Sept 2026</dd>
+                                            </div>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="ds_button-group file-download__actions">
+                                    <a href="/dataset/house_sales/resource/5f7c528a-2491-40cd-80cb-49da558cb597" class="ds_button ds_button--secondary">Explore</a>
+                                <a class="ds_button ds_button--primary" href="/dataset/house_sales/resource/5f7c528a-2491-40cd-80cb-49da558cb597/download" data-button="button-download-csv">Download</a>
+                            </div>
+                        </div>
+            </section>
+            <hr class="hr">
+            <section id="description" aria-labelledby="description-heading">
+                <h2 class="ds_h2" id="description-heading">Description</h2>
+                    <div class="show-more" data-module="show-more">
+                        <input type="checkbox" class="show-more__toggle  visually-hidden" id="show-full-description" aria-controls="dataset-description">
+                        <div class="show-more__content" id="dataset-description">
+                            <p>Residential property transactions are recorded by Registers of Scotland.  Historical analysis for the years prior to 2003 includes additional coding by the Land Valuation Information Unit at the University of Paisley and Scottish Government. Figures for the years following 2003 are based on Scottish Government analysis of sales data supplied by Registers of Scotland.<br><br>The number of sales, median price and lower quartile price are based on second hand and new build sales that are recorded/registered in the given time period whether they are cash purchases or funded by mortgages. It can take a period of time for sales to be submitted and recorded after the transaction is completed.<br><br>Areas with less than 5 sales have the number and value of sales suppressed to help minimise the risk of data disclosure and to ensure that any averages presented are based on at least 5 records.</p>
+
+                        </div>
+                        <label class="show-more__btn" for="show-full-description">
+                            <span class="show-more__label  show-more__label--more">Show more<span class="visually-hidden"> of this description</span></span>
+                            <span class="show-more__label  show-more__label--less">Show less<span class="visually-hidden"> of this description</span></span>
+                        </label>
+                    </div>
+            </section>
+            <hr class="hr">
+            <section id="metadata" aria-labelledby="metadata-heading">
+                <h2 class="ds_h2" id="metadata-heading">Metadata</h2>
+                <table class="ds_table table" aria-labelledby="metadata-heading">
+                    <tbody>
+                            <tr>
+                                <th scope="row">Theme</th>
+                                <td>
+                                        <a href="/data?theme=housing">Housing</a>
+                                </td>
+                            </tr>
+                            <tr><th scope="row">Organisation</th><td><a href="/data?org=scottish-government">Scottish Government</a></td></tr>
+                            <tr>
+                                <th scope="row">License</th>
+                                <td>
+                                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">UK Open Government Licence (OGL)</a>
+                                </td>
+                            </tr>
+                            <tr><th scope="row">Published</th><td><time datetime="2026-08-20">20 Aug 2026</time></td></tr>
+                            <tr><th scope="row">Last updated</th><td><time datetime="2026-09-09">9 Sept 2026</time></td></tr>
+                            <tr><th scope="row">Update frequency</th><td>annual</td></tr>
+                            <tr><th scope="row">Reference period</th><td>1993 to 2018</td></tr>
+                            <tr><th scope="row">Geographic coverage</th><td>Data Zones, Intermediate Zones, Community Health Partnerships, Health Board Areas, Council Areas, Electoral Wards, Scottish Parliamentary Constituencies, Country</td></tr>
+                            <tr><th scope="row">Contact</th><td><a href="mailto:housingstatistics@gov.scot">housingstatistics@gov.scot</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <hr class="hr">
+            <section id="data-quality" aria-labelledby="data-quality-heading">
+                <h2 class="ds_h2" id="data-quality-heading">Data quality</h2>
+                        <h3 class="ds_h3">Completeness</h3>
+                            <div class="wrap-long-words"><p>The figures presented provide information on counts and average values of residential property transactions across various geographical areas. Further more detailed analyses of sales at a Scotland and local authority level is available from <a href="https://www.ros.gov.uk/data-and-statistics/house-price-statistics">Registers of Scotland's statistical reports</a>.</p>
+</div>
+                        <h3 class="ds_h3">Uniqueness</h3>
+                            <div class="wrap-long-words"><p>Not assessed</p>
+</div>
+                        <h3 class="ds_h3">Consistency</h3>
+                            <div class="wrap-long-words"><p>The figures presented provide information on counts and average values of residential property transactions across various geographical areas, and have not been adjusted or controlled by type or size of dwelling, or any other attribute. Therefore differences seen across time may be partly due to differences in the underlying composition of dwellings being sold across each period. Differences seen between areas may be partly due to underlying differences in the average sizes of properties, or other property attributes, between each area.<br><br>Changes in average house prices over time for Scotland and Scottish local authority areas are separately reported on as part of the <a href="https://www.gov.uk/government/collections/uk-house-price-index-reports">UK House Price Index</a>. The UK HPI is mix-adjusted to allow an assessment of the changes in average prices of properties over time irrespective of any underlying differences between homes sold in different periods, for example the type or size of property.<br><br>Registers of Scotland publish a range of monthly, quarterly and annual statistics on house sales and house prices, which include figures at a Scotland and local authority level, and which are available on the <a href="https://www.ros.gov.uk/data-and-statistics/house-price-statistics">Registers of Scotland website</a>.</p>
+</div>
+                        <h3 class="ds_h3">Timeliness</h3>
+                            <div class="wrap-long-words"><p>Figures are typically released a few months following the end of the calendar year that the figures relate to, depending on timeliness of data provision and analysis.</p>
+</div>
+                        <h3 class="ds_h3">Validity</h3>
+                            <div class="wrap-long-words"><p>Figures on house sales and house prices are a key part of assessing the health and performance of the housing market in Scotland, and can be used in conjunction with separate data such as average household income to help assess how housing affordability varies between different areas of Scotland.</p>
+</div>
+                        <h3 class="ds_h3">Accuracy</h3>
+                            <div class="wrap-long-words"><p>Areas with less than 5 sales have had the number and value of sales suppressed to help minimise the risk of data disclosure and to ensure that any averages presented are based on at least 5 records. This should be taken into account if Data Zone level estimates are aggregated to produce estimates for higher geographies.<br><br>Average (mean) sales values in some areas may potentially be affected by outlier values, for example particularly large individual house sales values.<br><br>Transactions recorded without a fully complete and correct postcode are excluded.</p>
+</div>
+                        <h3 class="ds_h3">Quality management</h3>
+                            <div class="wrap-long-words"><p>Figures from the Scottish Government analysis of sales data supplied by Registers of Scotland are cross-checked to published Registers of Scotland figures to check high level trends in numbers of sales and average prices.</p>
+</div>
+            </section>
+            <hr class="hr">
+            <section id="additional-details" aria-labelledby="additional-details-heading">
+                <h2 class="ds_h2" id="additional-details-heading">Additional details</h2>
+                        <h3 class="ds_h3">Revisions</h3>
+                        <div class="wrap-long-words"><p>Revisions are dealt with in accordance with the <a href="https://www2.gov.scot/Resource/0045/00457524.pdf">Scottish Government Statistics Revisions Policy</a>.</p>
+</div>
+                        <h3 class="ds_h3">Confidentiality policy</h3>
+                        <div class="wrap-long-words"><p>This dataset does not contain any directly identifiable personal information.  In addition, areas with less than 5 sales have the number and value of sales suppressed to help minimise the risk of data disclosure.</p>
+</div>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+            </main>
+        </div>
+        <div class="ds_page__bottom">
+            <footer class="ds_site-footer">
+                <div class="ds_wrapper">
+                    <div class="ds_site-footer__content">
+                        <ul class="ds_site-footer__site-items">
+                            <li class="ds_site-items__item">
+                                <a href="/privacy-policy">Privacy</a>
+                            </li>
+                            <li class="ds_site-items__item">
+                                <a href="/accessibility">Accessibility statement</a>
+                            </li>
+                            <li class="ds_site-items__item">
+                                <a href="/cookies">Cookies</a>
+                            </li>
+                            <li class="ds_site-items__item">
+                                <a href="/contact">Contact</a>
+                            </li>
+                            <li class="ds_site-items__item">
+                                <a href="/help">How to use this site</a>
+                            </li>
+                        </ul>
+                        <div class="ds_site-footer__copyright">
+                            <span class="ds_site-footer__copyright-logo">
+                                <img src="/static/img/ogl.svg" alt="Open Government License" width="41" height="17">
+                            </span>
+                            <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>, except for graphic assets and where otherwise stated</p>
+                            <p>© Crown Copyright</p>
+                        </div>
+                        <div class="ds_site-footer__org">
+                            <a class="ds_site-footer__org-link" title="The Scottish Government" href="https://www.gov.scot/">
+                                <img class="ds_site-footer__org-logo" src="/static/img/scottish-government--min.svg" alt="gov.scot" loading="lazy" width="300" height="55">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="/static/js/index.js?v=JoDPC_x0mOyLUDg9hOM81cRxDYgav8c08Mpc4mXZgT0"></script>
+    
+</body>
+</html>
