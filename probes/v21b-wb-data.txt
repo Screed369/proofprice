@@ -1,0 +1,27 @@
+URL: https://api.worldbank.org/v2/country/all/indicator/1101110?source=90&format=json&per_page=400&date=2021
+Fetched: 2026-10-21T12:44:23Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 128
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 21 Oct 2026 12:44:23 GMT
+content-type: application/json;charset=utf-8
+set-cookie: __cf_bm=NRRsF1PPgRpM15806xBIG2dPeHmT9wR6bL_sEKMA22E-1792586663.4256315-1.0.1.1-mgm3br.U4moGSpDLepgfyv.t_J3EFf8S4wPo_52_Ve5XPYR3TemJ7jvCXOnNTG8ZJqtzrqgZFDo5z_mLEKnonX88mkDUZzLsH1tM3en5LLR8DX7yZqseBHvoWUTcDs_p; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org; Expires=Wed, 21 Oct 2026 13:14:23 GMT
+set-cookie: _cfuvid=VAmfTXy6yJvL5XvcDEitW9NBiVDS6sNmhD6kgsLe9gc-1792586663.4256315-1.0.1.1-0bnuUKnm2NTOBO8IkiIxBlC.fRJCB14RoA2bd2MHiq4; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org
+cf-ray: a4e05a766a23d133-MSP
+cf-cache-status: MISS
+access-control-allow-origin: *
+cache-control: public, max-age=86400
+expires: Thu, 22 Oct 2026 12:44:23 GMT
+last-modified: Wed, 21 Oct 2026 12:44:23 GMT
+server: cloudflare
+vary: accept-encoding
+access-control-allow-headers: X-Requested-With
+access-control-allow-methods: GET
+request-context: appId=cid-v1:da002513-bd8b-4441-9f30-737944134422
+x-powered-by: ASP.NET
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+[{"message":[{"id":"175","key":"Invalid format","value":"The indicator was not found. It may have been deleted or archived."}]}]
