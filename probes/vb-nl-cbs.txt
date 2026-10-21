@@ -1,0 +1,37 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/80416ned/TableInfos
+Fetched: 2026-10-21T01:41:41Z from GitHub Actions
+Status, type, bytes: 200 application/json 5828
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 01:41:40 GMT
+Content-Length: 5828
+TXID: 016b8b42
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=016b9735-1855-1ad8-9678-0050569bed16_3210972898_1582806608_00000000008613759810; Path=/; Expires=Wed, 21-Oct-2026 01:41:55 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/80416ned/$metadata#Cbs.OData.WebAPI.TableInfos","value":[
+    {
+      "ID":0,"Title":"Pompprijzen motorbrandstoffen; brandstofsoort, per dag","ShortTitle":"Pompprijzen brandstoffen; per dag","Identifier":"80416ned","Summary":"Gemiddelde prijzen motorbrandstoffen: Benzine Euro95, Diesel en Lpg\nPompprijzen per dag","Modified":"2026-10-15T02:00:00","ReasonDelivery":"Actualisering","ExplanatoryText":"","Language":"nl","Catalog":"CBS","Frequency":"Perweek","Period":"1 januari 2006 - 12 oktober 2026","ShortDescription":"\nDeze tabel bevat pompprijzen van motorbrandstoffen. Er worden gewogen gemiddelde dagprijzen gepubliceerd van benzine Euro95, dieselolie en lpg inclusief btw en accijns. Deze dagprijzen worden eens per week gepubliceerd. \n\nGegevens beschikbaar vanaf:\n1 januari 2006\n\nStatus van de cijfers:\nDe gepubliceerde prijzen zijn direct definitief.\n\nWijzigingen tov de vorige periode: \nEr zijn nieuwe cijfers toegevoegd.\n\nWanneer komen er nieuwe cijfers?\nDagprijzen tot en met maandag verschijnen de daaropvolgende donderdag. Indien er vanwege omstandigheden, zoals feestdagen, niet op donderdag gepubliceerd kan worden, wordt er op de eerst volgende werkdag gepubliceerd.\n","Description":"INHOUDSOPGAVE\r\n\r\n1. Toelichting\r\n2. Definities en verklaring van symbolen\r\n3. Koppelingen naar relevante tabellen en artikelen\r\n4. Bronnen en methoden\r\n5. Meer informatie\r\n\r\n1. TOELICHTING\r\n\r\nDeze tabel bevat pompprijzen van motorbrandstoffen. Er worden gewogen gemiddelde dagprijzen gepubliceerd van benzine Euro95, dieselolie en lpg inclusief btw en accijns. Deze dagprijzen worden eens per week gepubliceerd. \r\n\r\nGegevens beschikbaar vanaf:\r\n1 januari 2006\r\n\r\nStatus van de cijfers:\r\nDe gepubliceerde prijzen zijn direct definitief.\r\n\r\nWijzigingen tov de vorige periode: \r\nEr zijn nieuwe cijfers toegevoegd.\r\n\r\nWanneer komen er nieuwe cijfers?\r\nDagprijzen tot en met maandag verschijnen de daaropvolgende donderdag. Indien er vanwege omstandigheden, zoals feestdagen, niet op donderdag gepubliceerd kan worden, wordt er op de eerst volgende werkdag gepubliceerd.\r\n\r\n2. DEFINITIES EN VERKLARING VAN SYMBOLEN\r\n\r\nVerklaring van symbolen:\r\n\r\nniets (blanco)\t: het cijfer kan op logische gronden niet voorkomen\r\n. \t\t: het cijfer is onbekend, onvoldoende betrouwbaar of geheim\r\n*\t\t: voorlopige cijfers\r\n**\t\t: nader voorlopige cijfers\r\n\r\n3. KOPPELINGEN NAAR RELEVANTE TABELLEN EN ARTIKELEN\r\n\r\nRelevante tabellen:\r\n\r\nPompprijzen naar locatie van het tankstation, per maand, vindt u in de tabel: <a href=\"https://opendata.cbs.nl/statline/#/CBS/nl/dataset/81567ned\">Pompprijzen motorbrandstoffen; locatie tankstation, brandstofsoort</a>.\r\n\r\nDe consumentenprijsindex vindt u in de tabel: \r\n<a href=\"https://opendata.cbs.nl/#/CBS/nl/dataset/86141NED\">Consumentenprijzen; prijsindex 2025=100</a>.\r\n\r\nGemiddelde prijzen van consumentenartikelen vanaf 2000 tot en met 2018 vindt u in de tabel: \r\n<a href=\"https://opendata.cbs.nl/statline/#/CBS/nl/dataset/80346NED\">Consumentenprijzen; gemiddelde prijzen consumentenartikelen, 2000 - 2018</a>.\r\n\r\nAdviesprijzen van motorbrandstoffen vanaf 1913 tot en met 2009 vindt u in de tabel: \r\n<a href=\"https://opendata.cbs.nl/statline/#/CBS/nl/dataset/7521\">Motorbrandstoffen; adviesprijzen</a>.\r\n\r\n4. BRONNEN- EN METHODEN\r\n\r\nDe beschrijving van het onderzoek is te vinden bij:\r\n<a href=\"https://www.cbs.nl/nl-nl/onze-diensten/methoden/onderzoeksomschrijvingen/korte-onderzoeksbeschrijvingen/consumentenprijzen-motorbrandstoffen\"> Consumentenprijzen; motorbrandstoffen</a>.\r\n\r\nDe geleverde data zijn afkomstig van vrijwel alle tankstations (bemand en onbemand, langs de snelweg of lokaal) in Nederland. De brondata worden aan het CBS geleverd door Travelcard BV, een leverancier van tankpassen voor de zakelijke rijder. \r\n\r\nMeer informatie over Travelcard BV vindt u op de website: \r\n<a href=\"http://www.travelcard.nl/\">Travelcard BV </a>.\r\n\r\nOm de gemiddelde prijzen te bepalen worden de tankstations per brandstoftype ingedeeld naar merk en locatie. Iedere groep uit deze indeling krijgt een vast gewicht, dat gebaseerd is op verschillende bronnen. De gewichten van de groepen worden jaarlijks per 1 januari aangepast.\r\n\r\n5. MEER INFORMATIE\r\n\r\n<a href='https://www.cbs.nl/nl-nl/over-ons/contact/infoservice'>Infoservice</a>\r\n\r\nCopyright \u00a9 Centraal Bureau voor de Statistiek , Den Haag/Heerlen\r\nVerveelvoudiging is toegestaan, mits CBS/Travelcard als bron wordt vermeld.\r\n","DefaultPresentation":"ts=1791874541562&graphtype=Table&r=Perioden&k=Topics","DefaultSelection":"$filter=((Perioden eq '20260910') or (Perioden eq '20260911') or (Perioden eq '20260912') or (Perioden eq '20260913') or (Perioden eq '20260914') or (Perioden eq '20260915') or (Perioden eq '20260916') or (Perioden eq '20260917') or (Perioden eq '20260918') or (Perioden eq '20260919') or (Perioden eq '20260920') or (Perioden eq '20260921') or (Perioden eq '20260922') or (Perioden eq '20260923') or (Perioden eq '20260924') or (Perioden eq '20260925') or (Perioden eq '20260926') or (Perioden eq '20260927') or (Perioden eq '20260928') or (Perioden eq '20260929') or (Perioden eq '20260930') or (Perioden eq '20261001') or (Perioden eq '20261002') or (Perioden eq '20261003') or (Perioden eq '20261004') or (Perioden eq '20261005') or (Perioden eq '20261006') or (Perioden eq '20261007') or (Perioden eq '20261008') or (Perioden eq '20261009') or (Perioden eq '20261010') or (Perioden eq '20261011') or (Perioden eq '20261012'))","GraphTypes":"Table,Bar,Line","OutputStatus":"Regulier","Source":"CBS, Travelcard BV ","MetaDataModified":"2026-10-15T02:00:00","SearchPriority":"3"
+    }
+  ]
+}
