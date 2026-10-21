@@ -19,6 +19,7 @@ for sh in wb.find("m:sheets", NS):
     path = "xl/" + rels[rid].lstrip("/").replace("xl/", "")
     print("--- SHEET:", sh.get("name"))
     shown = 0
+    lines = []
     for row in ET.fromstring(z.read(path)).iter("{%s}row" % NS["m"]):
         cells = {}
         for c in row.findall("m:c", NS):
@@ -29,5 +30,5 @@ for sh in wb.find("m:sheets", NS):
             else: val = v.text
             cells[col(c.get("r"))] = val
         if cells:
-            print("|".join(cells.get(i, "") for i in range(max(cells) + 1))); shown += 1
-        if shown >= limit: break
+            lines.append("|".join(cells.get(i, "") for i in range(max(cells) + 1)))
+    for l in (lines if len(lines) <= 60 else lines[:12] + ["... (%d rows) ..." % len(lines)] + lines[-35:]): print(l[:900])
