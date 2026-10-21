@@ -1,0 +1,25 @@
+URL: https://apis.datos.gob.ar/series/api/series/?ids=444.1_CANASTA_batotCuyo_0_0_26_47&last=3&format=json
+Fetched: 2026-10-21T08:43:42Z from GitHub Actions
+Status, type, bytes: 200 application/json 1188
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 21 Oct 2026 08:43:42 GMT
+content-type: application/json
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+x-frame-options: SAMEORIGIN
+vary: Origin
+vary: accept-encoding
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=kah9CMaovqbHyR48p%2FB7TtS09csZPeAq8AHSjyMkZXEDXR8tBIvWgR16caaEEWRcOVRM%2Bk%2FoFcaPxemMW4jjZuztM8KqzWk7lYPhX%2BcJRUXZv0uVjIDBJjXwL7iOv8qH6MkG8A%3D%3D"}]}
+access-control-allow-origin: *
+x-kong-upstream-latency: 465
+x-kong-proxy-latency: 0
+cf-cache-status: DYNAMIC
+cf-ray: a4def9e1da286162-ORD
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"data": [["2025-10-01", 375175.68], ["2025-11-01", 387851.69], ["2025-12-01", 399607.68]], "count": 117, "meta": [{"frequency": "month", "start_date": "2025-10-01", "end_date": "2025-12-01"}, {"catalog": {"title": "Datos Programaci\u00f3n Macroecon\u00f3mica"}, "dataset": {"title": "Canasta b\u00e1sica total. Regiones del pa\u00eds", "description": "Valores de la Canasta B\u00e1sica Total para el adulto equivalente. Regiones del pa\u00eds. En pesos corrientes desde abril de 2016", "issued": "2018-09-13", "source": "Instituto Nacional de Estad\u00edstica y Censos (INDEC)"}, "distribution": {"title": "Canasta b\u00e1sica total .Regiones del pa\u00eds.", "downloadURL": "https://infra.datos.gob.ar/catalog/sspm/dataset/446/distribution/446.1/download/canasta-basica-total-regiones-del-pais.csv"}, "field": {"description": "Canasta B\u00e1sica Total. Cuyo", "id": "444.1_CANASTA_batotCuyo_0_0_26_47", "units": "pesos", "representation_mode": "value", "representation_mode_units": "pesos"}}], "params": {"ids": "444.1_CANASTA_batotCuyo_0_0_26_47", "last": "3", "format": "json", "identifiers": [{"id": "444.1_CANASTA_batotCuyo_0_0_26_47", "distribution": "446.1", "dataset": "446"}]}}
