@@ -1,0 +1,37 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/80416ENG/TableInfos
+Fetched: 2026-10-21T23:41:53Z from GitHub Actions
+Status, type, bytes: 200 application/json 5434
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 23:41:52 GMT
+Content-Length: 5434
+TXID: 0179bd33
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=017b1344-4dc1-1ad9-9678-0050569bed16_3401723256_2666165018_00000000008614690099; Path=/; Expires=Wed, 21-Oct-2026 23:42:07 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/80416ENG/$metadata#Cbs.OData.WebAPI.TableInfos","value":[
+    {
+      "ID":0,"Title":"Pump prices motor fuels; per type, per day","ShortTitle":"Pump prices motor fuels; per day","Identifier":"80416ENG","Summary":"Average prices motorfuels; Euro95, Diesel and LPG\nPump prices per day","Modified":"2026-10-22T02:00:00","ReasonDelivery":"Update","ExplanatoryText":"","Language":"en","Catalog":"CBS","Frequency":"Weekly","Period":"1 January 2006 - 19 October 2026","ShortDescription":"\nThis table contains pump prices for motor fuels at petrol stations. Weighted average daily prices are published of petrol Euro95, diesel oil and lpg including VAT and excise duties. These daily prices are published once a week.\n\nData available from: January 2006\n\nStatus of the figures:\nThe figures in this table are final figures.\n\nChanges since the previous period:\nNew figures have been added\n\nWhen will new figures be published?\nThe figures appear on Thursday of each week. If circumstances, such as public holidays, prevent publishing on Thursday, figures will be published on the next working day.\n\n","Description":"CONTENTS\r\n\r\n1. General information\r\n2. Definitions and explanation of symbols\r\n3. Links to relevant tables and articles\r\n4. Sources and methods\r\n5. More information\r\n\r\n\r\n1. GENERAL INFORMATION\r\n\r\nThis table contains pump prices for motor fuels at petrol stations. Weighted average daily prices are published of petrol Euro95, diesel oil and lpg including VAT and excise duties. These daily prices are published once a week.\r\n\r\nData available from: January 2006\r\n\r\nStatus of the figures:\r\nThe figures in this table are final figures.\r\n\r\nChanges since the previous period:\r\nNew figures have been added\r\n\r\nWhen will new figures be published?\r\nThe figures appear on Thursday of each week. If circumstances, such as public holidays, prevent publishing on Thursday, figures will be published on the next working day.\r\n\r\n\r\n2. DEFINITIONS AND EXPLANATION OF SYMBOLS\r\n\r\nExplanation of symbols:\r\n\r\nEmpty cell \t: figure is not applicable\r\n. \t\t: the figure is unknown, insufficiently reliable or confidential\r\n*\t\t: provisional figures\r\n**\t\t: revised provisional figures\r\n\r\n\r\n3. LINKS TO RELEVANT TABLES AND ARTICLES\r\n\r\nRelevant tables:\r\n\r\nPrices of motor fuels at petrol stations, broken down by the location of the filling station and fuel type per month, can be found in the table:\r\n<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/81567eng'>Pumpprices motor fuels; location petrol station, type fuel</a>\r\n\r\nThe consumer price index can be found in the table:\r\n<a href='https://opendata.cbs.nl/#/CBS/nl/dataset/86141ENG'>Consumer prices; price index 2025 = 100</a>\r\n\r\nAverage prices of consumer goods from 2000 up to and including 2018 can be found in the table:\r\n<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/80346eng'>Consumer prices; average prices of consumer goods, 2000 - 2018</a>\r\n\r\n\r\n4. SOURCES AND METHODS\r\n\r\nThe survey method for this table can be found in the survey description \r\n<a href='https://www.cbs.nl/en-gb/our-services/methods/surveys/korte-onderzoeksbeschrijvingen/fuel-prices-at-petrol-stations'>Fuel prices at petrol stations</a>\r\n\r\nThe delivered data were obtained from almost all petrol stations in the Netherlands (manned and unmanned, on-highway and off-highway). The source data are supplied to Statistics Netherlands by Travelcard B.V., a supplier of fuel cards for commercial vehicle drivers.\r\n\r\nMore information about Travelcard B.V. can be found on the website:\r\n<a href='https://travelcard.nl/'>Travelcard BV</a>\r\n\r\nTo determine the average prices, the petrol stations are classified according to brand and location. Each segment in this classification is weighted, based on different sources. The weights of the groups are adjusted annually on 1 January.\r\n\r\n\r\n5. MORE INFORMATION\r\n\r\n<a href='https://www.cbs.nl/en-gb/about-us/contact/infoservice'>Infoservice</a>\r\n\r\nCopyright (c) Statistics Netherlands, The Hague/Heerlen\r\nReproduction is permitted, provided Statistics Netherlands is quoted as the source.\r\n","DefaultPresentation":"ts=1792488887309&graphtype=Table&r=Periods&k=Topics","DefaultSelection":"$filter=((Periods eq '20260917') or (Periods eq '20260918') or (Periods eq '20260919') or (Periods eq '20260920') or (Periods eq '20260921') or (Periods eq '20260922') or (Periods eq '20260923') or (Periods eq '20260924') or (Periods eq '20260925') or (Periods eq '20260926') or (Periods eq '20260927') or (Periods eq '20260928') or (Periods eq '20260929') or (Periods eq '20260930') or (Periods eq '20261001') or (Periods eq '20261002') or (Periods eq '20261003') or (Periods eq '20261004') or (Periods eq '20261005') or (Periods eq '20261006') or (Periods eq '20261007') or (Periods eq '20261008') or (Periods eq '20261009') or (Periods eq '20261010') or (Periods eq '20261011') or (Periods eq '20261012') or (Periods eq '20261013') or (Periods eq '20261014') or (Periods eq '20261015') or (Periods eq '20261016') or (Periods eq '20261017') or (Periods eq '20261018') or (Periods eq '20261019'))","GraphTypes":"Table,Bar","OutputStatus":"Regular","Source":"CBS, Travelcard BV","MetaDataModified":"2026-10-22T02:00:00","SearchPriority":"2"
+    }
+  ]
+}
