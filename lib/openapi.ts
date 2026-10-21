@@ -273,6 +273,7 @@ ${CITING_RULES.map((r) => `- ${r}`).join("\n")}
 - Pricing: what is free forever, what premium calls cost, how agents pay per call with x402 (JSON: ${baseUrl}/pricing.json): ${baseUrl}/pricing
 - How we check sources and earn trust: ${baseUrl}/trust
 - Press: a plain description of ProofPrice, live facts, logo files and contact: ${baseUrl}/press
+- What people paid this week: the biggest week-on-week moves in fuel, energy and homes, from the price library: ${baseUrl}/this-week
 - Freshness and health of every source: ${baseUrl}/status
 - Ready answers by country, category and place (from the daily price library): ${baseUrl}/prices
 - Privacy notice: ${baseUrl}/privacy

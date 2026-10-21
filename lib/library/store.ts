@@ -166,6 +166,21 @@ export function readLatestDay(sourceId: string): { date: string; rows: LibraryRo
   return null;
 }
 
+/** Every row of the given days (any area, any item). Reads only the month files those days fall in. Used by /this-week. */
+export function readRowsOnDates(sourceId: string, dates: string[]): LibraryRow[] {
+  const dir = path.join(sourceDir(sourceId), "daily");
+  if (!existsSync(dir) || !dates.length) return [];
+  const want = new Set(dates);
+  const months = new Set(dates.map((d) => d.slice(0, 7)));
+  const out: LibraryRow[] = [];
+  for (const month of months) {
+    const file = path.join(dir, `${month}.csv`);
+    if (!existsSync(file)) continue;
+    for (const r of csvToRows(readFileSync(file, "utf8"))) if (want.has(r.date)) out.push(r);
+  }
+  return out;
+}
+
 export function readMeta(sourceId: string): SourceMeta | null {
   const file = path.join(sourceDir(sourceId), "meta.json");
   if (!existsSync(file)) return null;
