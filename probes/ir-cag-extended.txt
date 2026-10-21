@@ -1,0 +1,203 @@
+URL: https://www.bankofcanada.ca/valet/observations/group/A4_RATES_EXTENDED/json?recent=2
+Fetched: 2026-10-21T21:53:50Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 5749
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Disposition: attachment; filename=A4_RATES_EXTENDED.json
+Content-Type: application/json; charset=utf-8
+X-Dc: v
+X-Generated: 2026-10-21 17:53:50
+X-Valet-Mode: l10
+Cache-Control: max-age=30
+Expires: Wed, 21 Oct 2026 21:54:20 GMT
+Date: Wed, 21 Oct 2026 21:53:50 GMT
+Content-Length: 5749
+Connection: keep-alive
+Server: BoC
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+{
+    "terms": {
+        "url": "https://www.bankofcanada.ca/terms/"
+    },
+    "groupDetail": {
+        "label": "Interest rates charged for new and existing lending by chartered banks - Credit extended to corporate sector",
+        "description": "Month-end, rates in percentage",
+        "link": "https://www.bankofcanada.ca/?p=197471",
+        "metadata": {}
+    },
+    "seriesDetail": {
+        "V122667816": {
+            "label": "Business loans, Total",
+            "description": "Credit extended to corporate sector for mortgage loans - Funds advanced",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667817": {
+            "label": "To regulated non-bank financial institutions",
+            "description": "Credit extended to corporate sector - Funds advanced - Business loans, Total - non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667818": {
+            "label": "Lease receivables",
+            "description": "Credit extended to corporate sector - Funds advanced - Business loans, Total - non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667819": {
+            "label": "Loans to individuals and others for business purposes",
+            "description": "Credit extended to corporate sector - Funds advanced - Business loans, Total - non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667820": {
+            "label": "Non-residential mortgages",
+            "description": "Credit extended to corporate sector - Funds advanced - Business loans, Total - mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667821": {
+            "label": "Business loans, Total",
+            "description": "Credit extended to corporate sector - Outstanding balances",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667822": {
+            "label": "To regulated non-bank financial institutions",
+            "description": "Credit extended to corporate sector - Outstanding balances - Business loans, Total - non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667823": {
+            "label": "Lease receivables",
+            "description": "Credit extended to corporate sector - Outstanding balances - Business loans, Total - non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667824": {
+            "label": "Loans to individuals and others for business purposes",
+            "description": "Credit extended to corporate sector - Outstanding balances - Business loans, Total - non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667825": {
+            "label": "Non-residential mortgages",
+            "description": "Credit extended to corporate sector - Outstanding balances - Business loans, Total - mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        }
+    },
+    "observations": [
+        {
+            "d": "2026-07-01",
+            "V122667825": {
+                "v": "4.68"
+            },
+            "V122667816": {
+                "v": "4.40"
+            },
+            "V122667817": {
+                "v": "4.16"
+            },
+            "V122667818": {
+                "v": "6.03"
+            },
+            "V122667819": {
+                "v": "4.39"
+            },
+            "V122667820": {
+                "v": "4.93"
+            },
+            "V122667821": {
+                "v": "4.64"
+            },
+            "V122667822": {
+                "v": "4.27"
+            },
+            "V122667823": {
+                "v": "6.03"
+            },
+            "V122667824": {
+                "v": "4.71"
+            }
+        },
+        {
+            "d": "2026-06-01",
+            "V122667825": {
+                "v": "4.65"
+            },
+            "V122667816": {
+                "v": "4.34"
+            },
+            "V122667817": {
+                "v": "4.16"
+            },
+            "V122667818": {
+                "v": "5.65"
+            },
+            "V122667819": {
+                "v": "4.33"
+            },
+            "V122667820": {
+                "v": "5.06"
+            },
+            "V122667821": {
+                "v": "4.66"
+            },
+            "V122667822": {
+                "v": "4.30"
+            },
+            "V122667823": {
+                "v": "6.10"
+            },
+            "V122667824": {
+                "v": "4.74"
+            }
+        }
+    ]
+}
