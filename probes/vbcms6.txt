@@ -1,0 +1,152 @@
+URL: https://www.cms.gov/medicare-coverage-database/license/cpt-license.aspx
+Fetched: 2026-10-21T21:45:42Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 158949
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+content-type: text/html
+content-length: 162
+location: /medicare-coverage-database/search.aspx?error=Please use the new MCD Search to find your document.
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+expires: Wed, 21 Oct 2026 21:45:42 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Wed, 21 Oct 2026 21:45:42 GMT
+set-cookie: _ga=GA1.2.28297264.1792619142; expires=Fri, 20-Oct-2028 21:45:42 GMT; path=/; domain=.cms.gov; secure
+set-cookie: cms_fpid=0e5e2c1d-00d3-addb-baef-28e2ecc6d6ec; expires=Fri, 20-Oct-2028 21:45:42 GMT; path=/; domain=.cms.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.6755c817.1792619142.650ea89
+
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+content-security-policy: frame-ancestors 'self' https://www.google.com;default-src 'none';script-src 'self' 'nonce-UAUDdiyg8Hn3ZndtpdmRTw==' https://ds-aksb-a.akamaihd.net https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net https://tealium-tags.cms.gov https://tags.tiqcdn.com/ https://cdn1.adoberesources.net https://dap.digitalgov.gov https://www.googletagmanager.com;font-src 'self';connect-src 'self' https://ds-aksb-a.akamaihd.net https://www.google.com https://adobedc.demdex.net https://adobe-ep.cms.gov https://dap.digitalgov.gov https://www.google-analytics.com;img-src 'self' data: https://ds-aksb-a.akamaihd.net https://www.cms.gov;style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;frame-src 'self' https://www.google.com;
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+expires: Wed, 21 Oct 2026 21:45:42 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Wed, 21 Oct 2026 21:45:42 GMT
+set-cookie: sawSearchModal=true; expires=Thu, 21 Oct 2027 20:06:45 GMT; path=/; secure; samesite=lax; httponly
+set-cookie: mcdSearchTourFinished=true; expires=Thu, 21 Oct 2027 20:06:45 GMT; path=/; secure; samesite=lax; httponly
+set-cookie: mcdReportTourFinished=true; expires=Thu, 21 Oct 2027 20:06:45 GMT; path=/; secure; samesite=lax; httponly
+set-cookie: .AspNetCore.Antiforgery.91ugCgDjLVs=CfDJ8JTtCw4Pd1FFu2WDYugYDBNV2Y77IvYQG2v6EC8Q0HbfPXbPaAA3A8h7uAghmY3nlGLkeBmkzS8v76TZpyuiFNae1wYtGgBd6yDHBf9gpk2AxITT1a5EWGhJWw6WXd50iwm93KzpD_5sUQLMyGMmqLc; path=/medicare-coverage-database; secure; samesite=strict; httponly
+set-cookie: mcdSearchTourFinished=true; expires=Thu, 21 Oct 2027 20:06:45 GMT; path=/; secure; samesite=lax; httponly
+set-cookie: mcdReportTourFinished=true; expires=Thu, 21 Oct 2027 20:06:45 GMT; path=/; secure; samesite=lax; httponly
+set-cookie: .AspNetCore.Session.Mcd=CfDJ8JTtCw4Pd1FFu2WDYugYDBPxkqBXijQC7R5bE3Nv3gf12N0n5LDvcCx1Gj%2BUv%2FRGnEUVDHCfu6%2FWlBmc2zvGE0vcVsYexlsr2%2Bt4FLuoQtoZelvRSH439o%2B1rcNXbqqCFc5r6yU8vbdkkHtJA6SuYti8Ycpo1BdKxm0KpSSCs3Ha; path=/medicare-coverage-database; secure; samesite=lax; httponly
+set-cookie: _ga=GA1.2.1651740911.1792619142; expires=Fri, 20-Oct-2028 21:45:42 GMT; path=/; domain=.cms.gov; secure
+set-cookie: cms_fpid=4b74eb87-e046-e2ff-0f4a-c692bf8d7f71; expires=Fri, 20-Oct-2028 21:45:42 GMT; path=/; domain=.cms.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.6755c817.1792619142.650eb7d
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text, with very long lines (825)
+=== FIRST 5000 BYTES
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
+
+	<title>MCD Search</title>
+
+	<link rel="stylesheet" href="/medicare-coverage-database/_content/Mcim.SharedPages/css/cms-newsroom.css?v=ZJvIIyKI5MAha-3pk4I9UOdFfzgoSJa_r2opzwGw1u0" media="all" />
+
+	<!-- Bootstrap is used with permission under the MIT license: https://github.com/twbs/bootstrap/blob/master/LICENSE -->
+	<!-- jQuery is used with permission under the MIT license: https://jquery.org/license/ -->
+	
+	
+		<link rel="stylesheet" href="/medicare-coverage-database/_content/Mcim.SharedPages/lib/bootstrap/dist/css/bootstrap.min.css?v=YvdLHPgkqJ8DVUxjjnGVlMMJtNimJ6dYkowFFvp4kKs" media="all" />
+
+		<script src="/medicare-coverage-database/_content/Mcim.SharedPages/lib/jquery/dist/js/jquery.min.js?v=SUQpQe3MDvxu00e9i8KdSY0iiaS4uPhu4klDi5yGDvU" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+	
+
+	
+
+	<script type="text/javascript" nonce="UAUDdiyg8Hn3ZndtpdmRTw==">
+	
+		$(document).ready(function () {
+			localStorage.setItem("mcdSearchTour_end", "yes");
+
+			localStorage.setItem("mcdReportTour_end", "yes");
+		});
+	</script>
+
+
+	<link rel="shortcut icon" href="/medicare-coverage-database/favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="stylesheet" href="/medicare-coverage-database/_content/Mcim.SharedPages/css/mcd.css?v=uGI6D8lycOQ3yMrt7oWOIU0upIa0iM1MAe2glXdsNsI" />
+	<script src="/medicare-coverage-database/js/basket-shared-functions.js?v=aOetTnA4jVP1iLho5C3yvWnIPh2jjq39POcRMofIAJM" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+	<script src="/medicare-coverage-database/js/mcd-template.js?v=Te-Wm4qEPsqsViU3zSTWZuS6RJwRvQof9GxNyem4l0A" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+
+	
+<script type="text/javascript" nonce="UAUDdiyg8Hn3ZndtpdmRTw==">
+	let articleLink = '/medicare-coverage-database/view/article.aspx?articleid=';
+	let lcdLink = '/medicare-coverage-database/view/lcd.aspx?lcdid=';
+	let ncdLink = '/medicare-coverage-database/view/ncd.aspx?ncdid=';
+	let ncaLink = '/medicare-coverage-database/view/nca.aspx?ncaid=';
+	let calLink = '/medicare-coverage-database/view/cal.aspx?calid=';
+	let medCacLink = '/medicare-coverage-database/view/medcac-meeting.aspx?medcacid=';
+	let taLink = '/medicare-coverage-database/view/technology-assessments.aspx?taid=';
+	let mcDocLink = '/medicare-coverage-database/view/medicare-coverage-document.aspx?mcdid=';
+	let ncaCalPublicCommentLink = '/medicare-coverage-database/view/national-submit-public-comment.aspx?DocID=';
+	let mcDoclPublicCommentLink = '/medicare-coverage-database/view/national-submit-public-comment.aspx?DocID=';
+
+	let queryLcdLatestUpdate = '20261015083002';
+	let queryArticleLatestUpdate = '20261015083002';
+	let queryNcdLatestUpdate = '20261008112348';
+	let queryNcaCalLatestUpdate = '20260924074406';
+	let queryMedCacLatestUpdate = '20260924085030';
+	let queryTaLatestUpdate = '20260924140855';
+	let queryMcDocLatestUpdate = '20260924135037';
+	let queryCptHcpcsLatestUpdate = '20260910000000';
+	let queryIcd10LatestUpdate = '20260806000000';
+</script>
+
+
+	
+	<meta name="description" content="The Redesigned MCD Search Page lets you search on a keyword, code, or document ID" />
+
+	<script src="/medicare-coverage-database/js/cpt-license.js?v=dNSq_cMotvfUEblFv3HjJ5oFEK7EB8LLh8dTv3Wg-_4" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+
+	
+	
+		<script src="/medicare-coverage-database/js/jszip-utils.min.js" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+		<script src="/medicare-coverage-database/js/jszip.min.js" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+	
+
+	<script src="/medicare-coverage-database/js/mcd-json-data.js?v=wjKwoggnwPaUXM50pw7xygi9zt6SzFJclW_aEaGr-U8" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+	<script src="/medicare-coverage-database/js/smart-search.js?v=IgHP2NJt1eK8Vsa1tRfrnk1mmGE45IT0jnMyRFnNVNI" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+	<script src="/medicare-coverage-database/js/mcd-search.js?v=L6EO4_G4AmeWgiudsI5YThBf57euLRLdQxhdPW6tTvo" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+	<script src="/medicare-coverage-database/js/hint-box.js?v=AKrKZWi8oZ-uBUkc4VLbU7n73E1UkyhL3kuxHGysSkI" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+	<script src="/medicare-coverage-database/js/mcd-tour.js?v=S95OLtbl8BvU6mqkBFFpcb1VMbp2Xt67qWUoJbHG69Q" nonce="UAUDdiyg8Hn3ZndtpdmRTw=="></script>
+
+	<script type="text/javascript" nonce="UAUDdiyg8Hn3ZndtpdmRTw==">
+
+
+		$(document).ready(function () {
+		});
+
+		function DoSubmitSearch() {
+			var theForm = document.getElementById('frmMainForm');
+			var theAction = theForm.action.substring(0, theForm.action.indexOf("&handler="));
+
+			if (theAction == "") {
+				theAction = "https://www.cms.gov/medicare-coverage-database/search.aspx?error=Please+use+the+new+MCD+Search+to+find+your+document.";
+			}
+
+			theAction += theAction.indexOf("?") > 0 ? "&handler=SubmitSearch" : "?handler=SubmitSearch";
+
+			theForm.action = theAction;
+
+			document.getElementByI
