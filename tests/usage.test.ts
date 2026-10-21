@@ -1,7 +1,7 @@
 // Anonymous usage counting (lib/usage.ts): off unless a Blob store is connected (BLOB_STORE_ID or BLOB_READ_WRITE_TOKEN); counts only the documented fields; flushes in batches.
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import { OWN_CLIENTS, isOwnClient, isOwnRequest, withoutOwnParam, runWithOwnFlag, FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport } from "../lib/usage";
+import { OWN_CLIENTS, MAX_FILES_READ, isProbeClient, isOwnClient, isOwnRequest, withoutOwnParam, runWithOwnFlag, FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport } from "../lib/usage";
 import type { UsageFile } from "../lib/usage";
 
 const ON = { BLOB_READ_WRITE_TOKEN: "test-token-not-real" };
@@ -82,10 +82,10 @@ test("the report: last 30 days, totals, answered share and the top unanswered qu
     f("2026-08-01", [{ count: 100 }]), // older than 30 days
   ];
   const r = summariseUsage(files, NOW);
-  assert.equal(r.total_questions, 5 + 3 + 2 + 4 + 1 + 6 + 9);
+  assert.equal(r.total_questions, 5 + 3 + 2 + 4 + 1 + 9); // the 6 handshakes (mcp_initialize) are not questions
   assert.deepEqual(r.top_unanswered![0], { tool: "pricepaid_rent_prices", country: "IE", key: "galway", status: "no_matches", questions: 7 });
   assert.ok(!r.top_unanswered!.some((u) => u.tool === "mcp_initialize" || u.status === "error"));
-  assert.equal(r.by_client![0].client, "cursor");
+  assert.ok(!r.by_client!.some((c) => c.client === "cursor")); // only a handshake: not a question
   assert.equal(r.by_day![0].day, "2026-10-13");
   assert.equal(r.by_day![0].answered, 5);
   assert.deepEqual(r.period, { from: "2026-09-15", to: "2026-10-14", days: 30 });
@@ -96,7 +96,7 @@ test("the report: last 30 days, totals, answered share and the top unanswered qu
     read: async (p) => (p.endsWith("a.json") ? files[1] : files[2]),
   });
   assert.equal(rep.enabled, true);
-  assert.equal(rep.total_questions, 4 + 1 + 6 + 9);
+  assert.equal(rep.total_questions, 4 + 1 + 9);
 });
 
 test("our own checks are skipped, never recorded", () => {
@@ -125,15 +125,40 @@ test("own requests: ppcheck=1 or the smoke user agent; the marker is stripped fr
 
 test("the report separates outside questions from our own named checks", () => {
   const f: UsageFile = { version: 1, flushed_at: "x", rows: [
-    { day: "2026-10-14", tool: "mcp_initialize", country: "", key: "", status: "ok", client: "proofprice-smoke", count: 4 },
+    { day: "2026-10-14", tool: "pricepaid_rent_prices", country: "IE", key: "dublin", status: "ok", client: "proofprice-smoke", count: 4 },
     { day: "2026-10-14", tool: "pricepaid_rent_prices", country: "IE", key: "dublin", status: "ok", client: "", count: 6 },
-    { day: "2026-10-14", tool: "mcp_initialize", country: "", key: "", status: "ok", client: "cursor", count: 2 },
+    { day: "2026-10-14", tool: "pricepaid_rent_prices", country: "IE", key: "cork", status: "ok", client: "cursor", count: 2 },
+    { day: "2026-10-14", tool: "mcp_initialize", country: "", key: "", status: "ok", client: "cursor", count: 50 },
   ] };
   const r = summariseUsage([f], NOW);
-  assert.equal(r.total_questions, 12);
+  assert.equal(r.total_questions, 12); // handshakes are left out
   assert.equal(r.outside_questions, 8);
   assert.equal(r.own_checks!.questions, 4);
   assert.deepEqual(r.own_checks!.clients, ["proofprice-smoke"]);
   assert.deepEqual(r.by_client!.map((c) => c.client), ["cursor"]);
   assert.equal(r.by_day![0].outside_questions, 8);
+});
+
+test("directory crawlers and health checkers get their own group; the country field says it is the country asked about", () => {
+  const row = (client: string, count: number) => ({ day: "2026-10-14", tool: "pricepaid_rent_prices", country: "IE", key: "dublin", status: "ok", client, count });
+  const f: UsageFile = { version: 1, flushed_at: "x", rows: [row("smithery-scanner", 3), row("uptime-check", 2), row("cursor", 5)] as any };
+  const r = summariseUsage([f], NOW);
+  assert.equal(r.outside_questions, 10);
+  assert.deepEqual(r.directory_probes, { questions: 5, clients: ["smithery-scanner", "uptime-check"] });
+  assert.equal(r.outside_questions_excluding_probes, 5);
+  assert.equal(r.country_asked_about![0].country, "IE");
+  assert.equal((r as any).by_country, undefined);
+  assert.equal(isProbeClient("cursor"), false);
+});
+
+test("the report says when it could not read every file", async () => {
+  const names = Array.from({ length: MAX_FILES_READ + 5 }, (_, i) => `usage/2026-10-14/${String(i).padStart(6, "0")}.json`);
+  const file: UsageFile = { version: 1, flushed_at: "x", rows: [{ day: "2026-10-14", tool: "t", country: "IE", key: "x", status: "ok", client: "", count: 1 }] as any };
+  const rep = await usageReport(NOW, ON, { list: async () => names, read: async () => file });
+  assert.equal(rep.coverage!.files_found, MAX_FILES_READ + 5);
+  assert.equal(rep.coverage!.files_read, MAX_FILES_READ);
+  assert.equal(rep.coverage!.complete, false);
+  const small = await usageReport(NOW, ON, { list: async () => names.slice(0, 3), read: async () => file });
+  assert.equal(small.coverage!.complete, true);
+  assert.equal(small.coverage!.oldest_day_read, "2026-10-14");
 });
