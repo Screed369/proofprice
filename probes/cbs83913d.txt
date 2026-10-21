@@ -1,0 +1,41 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/83913ENG/TypedDataSet?$top=3
+Fetched: 2026-10-21T14:42:13Z from GitHub Actions
+Status, type, bytes: 200 application/json 1217
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 14:42:13 GMT
+Content-Length: 1217
+TXID: 01758c8c
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=018445a7-cf44-1ad8-9678-0050569bed16_1404571590_2232703634_00000000008614415500; Path=/; Expires=Wed, 21-Oct-2026 14:42:28 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/83913ENG/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":0,"Regions":"NL01  ","Periods":"1995KW01","PriceIndexPurchasePrices_1":41.4,"ChangesComparedToOnePeriodEarlier_2":null,"ChangesComparedToOneYearEarlier_3":null,"NumberOfDwellingsSold_4":30734,"ChangesComparedToOnePeriodEarlier_5":null,"ChangesComparedToOneYearEarlier_6":null,"AveragePurchasePrice_7":89792,"TotalValuePurchasePrices_8":2760
+    },{
+      "ID":1,"Regions":"NL01  ","Periods":"1995KW02","PriceIndexPurchasePrices_1":41.9,"ChangesComparedToOnePeriodEarlier_2":1.2,"ChangesComparedToOneYearEarlier_3":null,"NumberOfDwellingsSold_4":37054,"ChangesComparedToOnePeriodEarlier_5":20.6,"ChangesComparedToOneYearEarlier_6":null,"AveragePurchasePrice_7":92094,"TotalValuePurchasePrices_8":3412
+    },{
+      "ID":2,"Regions":"NL01  ","Periods":"1995KW03","PriceIndexPurchasePrices_1":43.1,"ChangesComparedToOnePeriodEarlier_2":2.8,"ChangesComparedToOneYearEarlier_3":null,"NumberOfDwellingsSold_4":40498,"ChangesComparedToOnePeriodEarlier_5":9.3,"ChangesComparedToOneYearEarlier_6":null,"AveragePurchasePrice_7":95819,"TotalValuePurchasePrices_8":3880
+    }
+  ]
+}
