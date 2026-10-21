@@ -52,6 +52,9 @@ Owner: Simon (non-technical founder). Live at **https://proofprice.com** (public
   `scripts/harvest.ts`, run every day at 03:17 UTC by `.github/workflows/harvest.yml` (GitHub Actions, free),
   committed to `main`, and shipped with each deployment. Aggregates only. To move to a database later, replace
   `lib/library/store.ts` only.
+- `lib/usage.ts` + `/api/v1/usage` — anonymous usage meter (on only while a Blob store is connected). Counts questions apart from
+  handshakes, the country ASKED ABOUT, directory checks apart from other apps, and distinct daily sessions via a daily-salted hash
+  that is deleted with its salt when the day closes. Never store raw IP addresses or user agents. Keep `app/privacy` in step.
 - `lib/openapi.ts` — openapi.json and llms.txt, generated from the registry. `lib/receipts/*` — DKIM receipt verifier.
 - `tests/registry.test.ts` — the gate every manifest must pass; its messages say what to fix.
 

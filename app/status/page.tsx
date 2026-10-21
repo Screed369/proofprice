@@ -9,7 +9,7 @@ import type { UsageReport } from "../../lib/usage";
 // Usage counts are read with a short time limit; if they cannot be read (counting off, store slow) the section says so.
 async function readUsage(): Promise<UsageReport | null> {
   try {
-    return await Promise.race([usageReport(), new Promise<null>((r) => setTimeout(() => r(null), 8000))]);
+    return await Promise.race([usageReport(undefined, undefined, undefined, { compactBudgetMs: 3000 }), new Promise<null>((r) => setTimeout(() => r(null), 8000))]);
   } catch {
     return null;
   }
@@ -118,14 +118,19 @@ export default async function Status() {
       {usage && usage.enabled && usage.period ? (
         <>
           <p>
-            In the last {usage.period.days} days ProofPrice was asked <strong>{usage.outside_questions ?? 0}</strong> questions from outside.
+            In the last {usage.period.days} days ProofPrice was asked <strong>{usage.real_questions ?? 0}</strong> questions from outside, and apps
+            connected {usage.handshakes ?? 0} times (handshakes, not questions).
+            {usage.sessions && usage.sessions.days_with_data > 0
+              ? ` Distinct visitors per day, added up over ${usage.sessions.days_with_data} day${usage.sessions.days_with_data === 1 ? "" : "s"}: ${usage.sessions.real_apps} from apps and ${usage.sessions.directory_checks} from directory checks and health checkers.`
+              : ""}{" "}
             Our own checks (the smoke test and the monitors) are not counted as customers
             {usage.own_checks && usage.own_checks.questions > 0
               ? `; ${usage.own_checks.questions} older rows from our own named checks are kept apart.`
               : "."}
           </p>
           <p className="small muted">
-            Anonymous counts only: no IP addresses, user agents or other identifiers. Machine-readable: <a href="/api/v1/usage">/api/v1/usage</a>.
+            Anonymous counts only: no IP addresses, user agents or other identifiers are stored; visitors are told apart with a one-way hash that
+            changes every day and is deleted shortly after the day ends. Machine-readable: <a href="/api/v1/usage">/api/v1/usage</a>.
           </p>
         </>
       ) : (

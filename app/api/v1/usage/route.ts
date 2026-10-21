@@ -1,5 +1,6 @@
-// GET /api/v1/usage  Aggregate counts of questions over the last 30 days (by day, tool, country, status, app name) and the top
-// questions we could not answer. Anonymous counts only. When counting is off (no Blob store connected) it says so.
+// GET /api/v1/usage  Aggregate counts over the last 30 days: real questions apart from handshakes, by day, tool, country asked
+// about, status and app (directory checks apart from other apps), distinct anonymous sessions per day, and the top questions we
+// could not answer. Closes finished days first (lib/usage.ts). Anonymous counts only. When counting is off it says so.
 import { usageReport } from "../../../../lib/usage";
 import { errorResponse, json, corsPreflight } from "../../../../lib/route-helpers";
 
