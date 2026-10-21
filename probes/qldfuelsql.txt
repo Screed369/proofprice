@@ -1,0 +1,23 @@
+URL: https://www.data.qld.gov.au/api/3/action/datastore_search_sql?sql=SELECT%20DISTINCT%20ON%20%28%22SiteId%22%29%20%22SiteId%22%2C%22Site_Name%22%2C%22Site_Brand%22%2C%22Sites_Address_Line_1%22%2C%22Site_Suburb%22%2C%22Site_Post_Code%22%2C%22Price%22%2C%22TransactionDateutc%22%20FROM%20%22420319e2-6518-4243-83a6-3c7769bd7e6c%22%20WHERE%20%22Fuel_Type%22%3D%27Diesel%27%20AND%20%22Site_Post_Code%22%3D4122%20ORDER%20BY%20%22SiteId%22%2C%22TransactionDateutc%22%20DESC
+Fetched: 2026-10-21T15:38:10Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1833
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 1833
+date: Wed, 21 Oct 2026 15:38:10 GMT
+strict-transport-security: max-age=31536000
+server: nginx
+cache-control: public, max-age=1800, must-revalidate
+vary: Cookie
+x-cache: Miss from cloudfront
+via: 1.1 38a66a6beb5518e3130d47aeef1684ba.cloudfront.net (CloudFront)
+x-amz-cf-pop: ORD56-P4
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: plJev-ur3ocyCBGa2RqweV73YB0wkJfUCvZYONBZUI4_N94kHGMtig==
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"help": "https://www.data.qld.gov.au/api/3/action/help_show?name=datastore_search_sql", "success": true, "result": {"sql": "SELECT DISTINCT ON (\"SiteId\") \"SiteId\",\"Site_Name\",\"Site_Brand\",\"Sites_Address_Line_1\",\"Site_Suburb\",\"Site_Post_Code\",\"Price\",\"TransactionDateutc\" FROM \"420319e2-6518-4243-83a6-3c7769bd7e6c\" WHERE \"Fuel_Type\"='Diesel' AND \"Site_Post_Code\"=4122 ORDER BY \"SiteId\",\"TransactionDateutc\" DESC", "records": [{"SiteId": 61401212, "Site_Name": "Shell Reddy Express Logan Rd", "Site_Brand": "Reddy Express", "Sites_Address_Line_1": "1201 Logan Road", "Site_Suburb": "Mount Gravatt", "Site_Post_Code": 4122, "Price": 2559, "TransactionDateutc": "2026-08-31T01:05:00"}, {"SiteId": 61401398, "Site_Name": "Shell Reddy Express Mount Gravatt", "Site_Brand": "Reddy Express", "Sites_Address_Line_1": "1582 Logan Rd", "Site_Suburb": "Mount Gravatt", "Site_Post_Code": 4122, "Price": 2559, "TransactionDateutc": "2026-08-23T22:05:00"}, {"SiteId": 61401448, "Site_Name": "Shell Reddy Express Kessels Rd", "Site_Brand": "Reddy Express", "Sites_Address_Line_1": "651 Kessels Road", "Site_Suburb": "Mount Gravatt", "Site_Post_Code": 4122, "Price": 2569, "TransactionDateutc": "2026-08-22T23:15:00"}, {"SiteId": 61401545, "Site_Name": "Freedom Fuels Mt Gravatt", "Site_Brand": "Freedom Fuels", "Sites_Address_Line_1": "154 Creek Road", "Site_Suburb": "Mount Gravatt East", "Site_Post_Code": 4122, "Price": 2555, "TransactionDateutc": "2026-08-24T21:51:00"}], "fields": [{"id": "SiteId", "type": "numeric"}, {"id": "Site_Name", "type": "text"}, {"id": "Site_Brand", "type": "text"}, {"id": "Sites_Address_Line_1", "type": "text"}, {"id": "Site_Suburb", "type": "text"}, {"id": "Site_Post_Code", "type": "numeric"}, {"id": "Price", "type": "numeric"}, {"id": "TransactionDateutc", "type": "timestamp"}]}}
