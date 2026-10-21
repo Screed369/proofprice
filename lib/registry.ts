@@ -191,7 +191,8 @@ export function unknownParams(cat: CategoryPlugin, params: Params): string[] {
 export function assertKnownParams(cat: CategoryPlugin, params: Params): void {
   const bad = unknownParams(cat, params);
   if (!bad.length) return;
-  const valid = acceptedParams(cat).filter((k) => !LEGACY_PARAMS.includes(k));
+  const own = paramSchemas(cat);
+  const valid = acceptedParams(cat).filter((k) => !LEGACY_PARAMS.includes(k) || k in own);
   const place = locationParam(cat);
   throw new InputError(
     `Unknown parameter${bad.length > 1 ? "s" : ""} ${bad.map((b) => `"${b}"`).join(", ")} for /api/v1/${cat.restPath}. ` +

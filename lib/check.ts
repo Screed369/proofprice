@@ -59,14 +59,21 @@ export const CHECK_RESERVED = ["category", "price", "currency", "unit", "include
 
 // ---------- resolving the category ----------
 
+/** The categories a price check can judge: those that do not refuse it (CategoryPlugin.noPriceCheck). */
+export function checkable(categories: CategoryPlugin[]): CategoryPlugin[] {
+  return categories.filter((c) => !c.noPriceCheck);
+}
+
 export function resolveCategory(categories: CategoryPlugin[], raw: unknown): CategoryPlugin {
   const key = String(raw ?? "").trim().toLowerCase().replace(/^\/?(api\/v1\/)?/, "");
   const cat = key ? categories.find((c) => c.id.toLowerCase() === key || c.restPath.toLowerCase() === key || c.tool.toLowerCase() === key) : undefined;
   if (!cat) {
     throw new InputError(
-      `category is required: one of ${categories.map((c) => c.id).join(", ")} (the REST path or the tool name also works). See /api/v1/coverage.`,
+      `category is required: one of ${checkable(categories).map((c) => c.id).join(", ")} (the REST path or the tool name also works). See /api/v1/coverage.`,
     );
   }
+  // A category that must not be judged says why, in plain words, instead of a verdict.
+  if (cat.noPriceCheck) throw new InputError(cat.noPriceCheck);
   return cat;
 }
 
@@ -409,7 +416,8 @@ export function checkExamplePath(): string {
 
 /** One tool covers every category, so its input is the union of the categories' parameters (all optional here; the category's own
  *  validation runs inside runCheck). Descriptions say which category each parameter belongs to. Built from the registry. */
-export function checkToolShape(categories: CategoryPlugin[]): Record<string, z.ZodTypeAny> {
+export function checkToolShape(all: CategoryPlugin[]): Record<string, z.ZodTypeAny> {
+  const categories = checkable(all);
   const byName = new Map<string, string[]>();
   for (const cat of categories) {
     for (const [name, schema] of Object.entries(paramSchemas(cat))) {
@@ -432,7 +440,8 @@ export function checkToolShape(categories: CategoryPlugin[]): Record<string, z.Z
   return shape;
 }
 
-export function checkToolDescription(categories: CategoryPlugin[]): string {
+export function checkToolDescription(all: CategoryPlugin[]): string {
+  const categories = checkable(all);
   return (
     "Use this before paying: when a user or agent has a proposed price for something (a rent, a home, a litre of fuel, a medicine, a contract) and wants to know whether it is typical against recorded official evidence. " +
     `Give the category (${joinAnd(categories.map((c) => c.id))}), the country, the same parameters that category's own tool takes, and the price. ` +

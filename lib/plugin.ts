@@ -143,6 +143,9 @@ export interface SourcePlugin {
   /** Optional: the source harvests (for its own answers or stale-if-error) but offers no /history; the text says why and is
    *  the error a history request gets. Such a source is left out of the history countries everywhere (tools, OpenAPI). */
   noHistory?: string;
+  /** Set for a source whose figure is one published average or median (an official statistic): the stale-if-error copy then says "average"
+   *  (or "median") and carries the statistic block, instead of the median of a range built from records. */
+  statisticMeasure?: "average" | "median";
   /** Set true when harvest() dates its rows by the publication's reference period (a month or quarter the figure is for), not by
    *  the day it was collected. A stale-if-error copy is then recent when the collector last succeeded within STALE_MAX_DAYS
    *  (the newest figure is still the newest the publisher has), and the answer states the reference date it is for. */
@@ -185,6 +188,9 @@ export interface CategoryPlugin {
   prepare?(params: Params): Params;
   /** How long the CDN may reuse an answer (seconds). Fuel: 600. Home sales: 86400. Default 600. */
   cacheSeconds?: number;
+  /** Set to a plain explanation when the price-check verdict tool (pricepaid_check_price) must refuse this category, for example because
+   *  a verdict on a rate would read as financial advice. The tool then says this text instead of judging, and leaves the category out of its lists. */
+  noPriceCheck?: string;
   /** Optional history tool built from the price library. Shown to agents once enough days are collected. */
   history?: {
     tool: string;

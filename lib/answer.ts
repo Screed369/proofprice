@@ -208,8 +208,29 @@ export const INDEX_EVIDENCE = {
 /** The one spelling of the currency of an index value. */
 export const INDEX_CURRENCY = "INDEX";
 
+/** The one spelling of the "currency" of an interest rate: a percentage, not money. Like INDEX it marks a figure that is not a price:
+ *  the answer keeps the same fields (value, measure "average", official statistic, reference period, sample_size null, no invented range),
+ *  the unit is RATE_UNIT, and the published figure is never rounded or otherwise changed. */
+export const RATE_CURRENCY = "PERCENT";
+/** The unit of an interest rate (Simon approved this wording on 21 Oct 2026). */
+export const RATE_UNIT = "% a year";
+/** Evidence for an interest rate (currency "PERCENT"): an official average rate on new business, not a price and not an offer. */
+export const RATE_EVIDENCE = {
+  label: "Official average rate on new business",
+  meaning:
+    "An average interest rate that a central bank or statistics office publishes for loans or deposits agreed in a month: it describes a whole group of contracts, not any one lender's offer, quote or price.",
+};
+/** The notice every interest-rate answer carries, word for word. */
+export const RATE_NOTICE = "Official statistics, for information only. Not advice, an offer or a quote. ProofPrice is not a lender, broker or insurer.";
+
+export const isRateCurrency = (currency: string | null | undefined): boolean => !!currency && currency.toUpperCase() === RATE_CURRENCY;
+
+/** The notice for an answer in this currency. */
+export const noticeFor = (currency: string | null | undefined): string => (isRateCurrency(currency) ? RATE_NOTICE : NOTICE);
+
 export function evidenceFor(priceType: string, measure?: string, currency?: string): AnswerEvidence {
   if (currency && currency.toUpperCase() === INDEX_CURRENCY) return { type: priceType, ...INDEX_EVIDENCE };
+  if (isRateCurrency(currency)) return { type: priceType, ...RATE_EVIDENCE };
   const k = EVIDENCE_KINDS[priceType] ?? {
     label: "Published price",
     meaning: "A price published by the official source: check price_type and the method before relying on it.",
@@ -342,7 +363,7 @@ export function buildAnswer(opts: {
  *  posted, listed or reimbursement price (which is not an official average). */
 export function statisticEnding(src: SourceInfo, measure: "median" | "average", currency: string, referencePeriod: string): string {
   const what =
-    currency.toUpperCase() === INDEX_CURRENCY ? "Official index value published" : src.price_type === "official_statistic" ? `Official ${measure} published` : "Published";
+    currency.toUpperCase() === INDEX_CURRENCY ? "Official index value published" : isRateCurrency(currency) ? `Official ${measure} rate published` : src.price_type === "official_statistic" ? `Official ${measure} published` : "Published";
   return `${what} by ${src.publisher} for ${referencePeriod}.`;
 }
 
@@ -383,8 +404,10 @@ export function buildStatisticAnswer(opts: {
   published?: string | null;
 }): PriceAnswer {
   const src = opts.source;
-  const ok = typeof opts.value === "number" && Number.isFinite(opts.value) && opts.value > 0;
-  const value = ok ? roundFigure(opts.value as number) : null;
+  const rate = isRateCurrency(opts.currency);
+  // A rate may be 0.00 (a published figure); every other figure must be above zero. A published rate is passed on exactly as published.
+  const ok = typeof opts.value === "number" && Number.isFinite(opts.value) && (rate ? opts.value >= 0 : opts.value > 0);
+  const value = ok ? (rate ? (opts.value as number) : roundFigure(opts.value as number)) : null;
   const retrievedAt = new Date().toISOString();
   const statistic: NonNullable<PriceAnswer["statistic"]> = { measure: opts.measure, reference_period: opts.reference_period };
   if (opts.note) statistic.note = opts.note;
@@ -418,12 +441,13 @@ export function buildStatisticAnswer(opts: {
       value !== null
         ? `${opts.describe(value)} ${opts.ending ?? statisticEnding(src, opts.measure, opts.currency, opts.reference_period)}`
         : `No matching official statistic found in ${src.name} (${src.publisher}) for this query.`,
-    notice: NOTICE,
+    notice: noticeFor(opts.currency),
     ...(opts.extra ? { extra: opts.extra } : {}),
   }, src, retrievedAt, { evidence: opts.evidence, published: opts.published });
 }
 
 export function fmtMoney(v: number, currency: string): string {
+  if (isRateCurrency(currency)) return `${v}%`; // a rate is shown as published: 3.45%
   try {
     return new Intl.NumberFormat("en-GB", {
       style: "currency",

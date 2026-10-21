@@ -16,6 +16,7 @@ const NAMES: Record<string, string> = {
   "AUSTRALIA": "AU", "NEW ZEALAND": "NZ", "JAPAN": "JP", "SOUTH KOREA": "KR", "KOREA": "KR", "TAIWAN": "TW",
   "HONG KONG": "HK", "SINGAPORE": "SG", "MALAYSIA": "MY", "THAILAND": "TH", "INDONESIA": "ID", "PHILIPPINES": "PH",
   "VIETNAM": "VN", "INDIA": "IN", "CHINA": "CN", "UNITED ARAB EMIRATES": "AE", "UAE": "AE", "DUBAI": "AE",
+  "EURO AREA": "EA", "EUROZONE": "EA", "EURO ZONE": "EA", "EUROAREA": "EA",
   "SAUDI ARABIA": "SA", "ISRAEL": "IL", "SOUTH AFRICA": "ZA", "NIGERIA": "NG", "KENYA": "KE", "EGYPT": "EG",
 };
 

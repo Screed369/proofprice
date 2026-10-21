@@ -8,6 +8,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import type { DailyRow, HarvestResult } from "../plugin";
+import { isRateCurrency } from "../answer";
 import { MIN_PUBLISH } from "../stats";
 import { csvToRows, libraryRoot } from "./store";
 import type { LibraryRow, SourceMeta } from "./store";
@@ -67,9 +68,12 @@ export function dataCheck(opts: { result: HarvestResult; prevMeta: SourceMeta | 
 
   const kept: DailyRow[] = [];
   const held: HeldKey[] = [];
+  // An interest rate can legitimately move by a large factor from a very small base (an overnight deposit rate of 0.05 to 0.2),
+  // and a published rate is passed on exactly as published, so the 3x rule does not apply to rates. The currency/unit check above still does.
+  const ratio3x = !isRateCurrency(result.currency);
   for (const r of result.rows) {
     const prev = previous.get(keyOf(r.area, r.item));
-    if (r.n >= MIN_PUBLISH && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0) {
+    if (ratio3x && r.n >= MIN_PUBLISH && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0) {
       const ratio = r.median / prev.median;
       if (ratio > MAX_RATIO || ratio < 1 / MAX_RATIO) {
         held.push({

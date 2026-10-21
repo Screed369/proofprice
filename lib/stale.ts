@@ -7,7 +7,7 @@
 // summary say plainly that the official source did not respond and this is our copy. extra.stale is true so a Monitor or an
 // agent can tell it apart from a live answer. A snapshot older than STALE_MAX_DAYS is not "recent" and is never served.
 
-import { fmtMoney, METHOD_URL, NOTICE, sourceBlock, withAudit } from "./answer";
+import { fmtMoney, isRateCurrency, METHOD_URL, noticeFor, sourceBlock, withAudit } from "./answer";
 import type { PriceAnswer } from "./answer";
 import type { CategoryPlugin, Params, SourcePlugin } from "./plugin";
 import { readDaily, readLatestDay, readMeta } from "./library/store";
@@ -77,6 +77,9 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
     const conf = confidenceLabel(last.n);
     const sentence = collected ? staleReferenceSentence(last.date, collected) : staleSentence(last.date);
     const err: any = o.error;
+    const rate = isRateCurrency(currency);
+    const measure = src.statisticMeasure ?? "median";
+    const refMonth = last.date.slice(0, 7);
     return withAudit({
       query: o.query,
       status: "ok",
@@ -84,8 +87,8 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         currency,
         unit,
         value: last.median,
-        measure: "median",
-        median: last.median,
+        measure,
+        median: measure === "median" ? last.median : null,
         // a published single figure (nominalCounts) has no range: the library repeats it in low/high/min/max
         typical_low: src.nominalCounts ? null : last.low,
         typical_high: src.nominalCounts ? null : last.high,
@@ -96,17 +99,19 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
       period: { from: last.date, to: last.date },
       confidence: conf,
       price_type: src.info.price_type,
+      ...(src.statisticMeasure ? { statistic: { measure, reference_period: refMonth } } : {}),
       as_of: last.date,
       source: sourceBlock(src.info),
       method:
         "Our copy of the official source: once a day ProofPrice stores, for each area and item, the median, 10th–90th percentile and count. " +
         "It is shown because the live source did not respond. The copy covers the area named in the summary.",
       method_url: (o.baseUrl ?? "") + METHOD_URL,
-      summary:
-        `${itemLabel} in ${key.label}: ` +
-        (src.nominalCounts ? `${money(last.median)} ${unit}, ` : `median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), `) +
-        `based on ${src.nominalCounts ? "the published figure (no record count is published)" : `${last.n} records`} in our copy of ${src.info.name} (${src.info.publisher}) ${collected ? `for ${last.date}` : `taken on ${last.date}`}. ${sentence} Confidence: ${conf}.`,
-      notice: `${sentence} ${NOTICE}`,
+      summary: rate
+        ? `${itemLabel} in ${key.label}: official average rate ${last.median} ${unit} for ${refMonth}, from our copy of ${src.info.name} (${src.info.publisher}). ${sentence}`
+        : `${itemLabel} in ${key.label}: ` +
+          (src.nominalCounts ? `${money(last.median)} ${unit}, ` : `median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), `) +
+          `based on ${src.nominalCounts ? "the published figure (no record count is published)" : `${last.n} records`} in our copy of ${src.info.name} (${src.info.publisher}) ${collected ? `for ${last.date}` : `taken on ${last.date}`}. ${sentence} Confidence: ${conf}.`,
+      notice: `${sentence} ${noticeFor(currency)}`,
       extra: {
         stale: true,
         snapshot_date: last.date,
