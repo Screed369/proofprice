@@ -1,0 +1,251 @@
+URL: https://www.bankofcanada.ca/valet/observations/group/A4_RATES_CONSUMER/json?recent=2
+Fetched: 2026-10-21T21:53:51Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 7067
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Disposition: attachment; filename=A4_RATES_CONSUMER.json
+Content-Type: application/json; charset=utf-8
+X-Dc: a
+X-Generated: 2026-10-21 17:53:51
+X-Valet-Mode: l10
+Cache-Control: max-age=30
+Expires: Wed, 21 Oct 2026 21:54:21 GMT
+Date: Wed, 21 Oct 2026 21:53:51 GMT
+Content-Length: 7067
+Connection: keep-alive
+Server: BoC
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+{
+    "terms": {
+        "url": "https://www.bankofcanada.ca/terms/"
+    },
+    "groupDetail": {
+        "label": "Interest rates charged for new and existing lending by chartered banks - Consumer credit",
+        "description": "Month-end, rates in percentage",
+        "link": "https://www.bankofcanada.ca/?p=197471",
+        "metadata": {}
+    },
+    "seriesDetail": {
+        "V122667803": {
+            "label": "Consumer credit, Total",
+            "description": "Consumer credit - Funds advanced for non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667804": {
+            "label": "Personal loan plans",
+            "description": "Consumer credit - Funds advanced for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667805": {
+            "label": "Of which: Auto loans",
+            "description": "Consumer credit - Funds advanced for non-mortgage loans - Consumer credit, Total - Personal loan plans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667806": {
+            "label": "Personal lines of credit, secured",
+            "description": "Consumer credit - Funds advanced for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667807": {
+            "label": "Personal lines of credit, unsecured",
+            "description": "Consumer credit - Funds advanced for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667808": {
+            "label": "Other personal",
+            "description": "Consumer credit - Funds advanced for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667809": {
+            "label": "Consumer credit, Total",
+            "description": "Consumer credit - Outstanding balances for non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667810": {
+            "label": "Personal loan plans",
+            "description": "Consumer credit - Outstanding balances for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667811": {
+            "label": "Of which: Auto loans",
+            "description": "Consumer credit - Outstanding balances for non-mortgage loans - Consumer credit, Total - Personal loan plans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667812": {
+            "label": "Credit card loans",
+            "description": "Consumer credit - Outstanding balances for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667813": {
+            "label": "Personal lines of credit, secured",
+            "description": "Consumer credit - Outstanding balances for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667814": {
+            "label": "Personal lines of credit, unsecured",
+            "description": "Consumer credit - Outstanding balances for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667815": {
+            "label": "Other personal",
+            "description": "Consumer credit - Outstanding balances for non-mortgage loans - Consumer credit, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        }
+    },
+    "observations": [
+        {
+            "d": "2026-07-01",
+            "V122667815": {
+                "v": "11.28"
+            },
+            "V122667803": {
+                "v": "5.82"
+            },
+            "V122667804": {
+                "v": "7.97"
+            },
+            "V122667805": {
+                "v": "6.66"
+            },
+            "V122667806": {
+                "v": "3.99"
+            },
+            "V122667807": {
+                "v": "7.75"
+            },
+            "V122667808": {
+                "v": "12.87"
+            },
+            "V122667809": {
+                "v": "7.92"
+            },
+            "V122667810": {
+                "v": "7.53"
+            },
+            "V122667811": {
+                "v": "6.83"
+            },
+            "V122667812": {
+                "v": "21.28"
+            },
+            "V122667813": {
+                "v": "3.92"
+            },
+            "V122667814": {
+                "v": "8.36"
+            }
+        },
+        {
+            "d": "2026-06-01",
+            "V122667815": {
+                "v": "11.29"
+            },
+            "V122667803": {
+                "v": "5.78"
+            },
+            "V122667804": {
+                "v": "7.80"
+            },
+            "V122667805": {
+                "v": "6.55"
+            },
+            "V122667806": {
+                "v": "4.05"
+            },
+            "V122667807": {
+                "v": "7.69"
+            },
+            "V122667808": {
+                "v": "12.90"
+            },
+            "V122667809": {
+                "v": "7.98"
+            },
+            "V122667810": {
+                "v": "7.53"
+            },
+            "V122667811": {
+                "v": "6.83"
+            },
+            "V122667812": {
+                "v": "21.34"
+            },
+            "V122667813": {
+                "v": "3.94"
+            },
+            "V122667814": {
+                "v": "8.38"
+            }
+        }
+    ]
+}
