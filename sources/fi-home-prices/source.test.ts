@@ -6,7 +6,7 @@ import { categoryById, paramSchemas, runCategory, SOURCE_PLUGINS } from "../../l
 import { confidenceLabel } from "../../lib/stats";
 import {
   ageNote, buildQuery, changeSentence, classifyPostcodeTypes, finlandAnswer, finlandHomePrices, findVariable, fold, INFO, isoPeriod, normalisePostcode, normaliseType,
-  periodWords, PLACES, readMeta, readPostcode, readQuarterly, readYearly, resolvePlace, roomsPhrase, STATFIN_API, unavailableAnswer, yearEarlier,
+  periodWords, PLACES, readMeta, readPostcode, readQuarterly, readYearly, resolvePlace, roomsPhrase, STATFIN_API, STATFIN_API_LEGACY, unavailableAnswer, yearEarlier,
 } from "./source";
 import { FI_MUNICIPALITIES, FI_QUARTERLY_REGIONS } from "./places";
 import { META_13MT, META_13MX, META_15IS } from "./fixtures";
@@ -439,6 +439,27 @@ test("fi-home-prices: routed by country through the shared home-sales tool (netw
     assert.equal(a.source.id, "fi-home-prices");
     assert.equal(a.price!.value, 4916);
     assert.deepEqual(seen, [`GET ${U15}`, `POST ${U15}`]);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test("fi-home-prices: when pxdata.stat.fi cannot be reached, the same tables are asked from the legacy host", async () => {
+  const realFetch = globalThis.fetch;
+  const seen: string[] = [];
+  globalThis.fetch = (async (input: any, init?: any) => {
+    const url = String(input);
+    seen.push(url);
+    if (url.startsWith("https://pxdata.stat.fi")) throw Object.assign(new TypeError("fetch failed"), { cause: { code: "UND_ERR_CONNECT_TIMEOUT" } });
+    const body = init?.method === "POST" ? QUARTERLY_CITIES : META_15IS;
+    return new Response(JSON.stringify(body), { status: 200, headers: { "content-type": "application/json" } });
+  }) as typeof fetch;
+  try {
+    const a = await finlandHomePrices({ town: "Helsinki" }, { now: NOW });
+    assert.ok(a.status === "ok", a.summary);
+    assert.deepEqual(seen, [
+      `${STATFIN_API}/15is.px`, `${STATFIN_API_LEGACY}/15is.px`, `${STATFIN_API}/15is.px`, `${STATFIN_API_LEGACY}/15is.px`,
+    ]);
   } finally {
     globalThis.fetch = realFetch;
   }

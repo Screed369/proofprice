@@ -12,7 +12,7 @@
 // annual) of the same table; the postal-code and yearly answers carry no change figure.
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { fetchJson, InputError, SourceError } from "../../lib/http";
+import { fetchJson, InputError, isSourceOutage, SourceError } from "../../lib/http";
 import { parseJsonStat, periodRange, previousPeriod, resolveFetcher } from "../../lib/adapters";
 import type { FetchOptions, JsonStatTable } from "../../lib/adapters";
 import type { SourceInfo } from "../../lib/plugin";
@@ -50,6 +50,9 @@ export const INFO: SourceInfo = {
 };
 
 export const STATFIN_API = "https://pxdata.stat.fi/PxWeb/api/v1/en/StatFin/ashi";
+/** Statistics Finland's older PxWeb host, same tables. Tried once when the main host cannot be reached (21 Oct: connect timeouts from Vercel). */
+export const STATFIN_API_LEGACY = "https://statfin.stat.fi/PXWeb/api/v1/en/StatFin/ashi";
+const withLegacyHost = (url: string) => url.replace(STATFIN_API, STATFIN_API_LEGACY);
 export const QUARTERLY = "15is";
 export const POSTCODE = "13mt";
 export const YEARLY = "13mx";
@@ -692,7 +695,33 @@ export interface FinlandOptions extends FetchOptions {
 }
 
 function poster(o: FinlandOptions): (url: string, body: unknown) => Promise<unknown> {
-  return o.poster ?? ((url, body) => fetchJson(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }, o.timeoutMs ?? 20000));
+  if (o.poster) return o.poster;
+  const one = (url: string, body: unknown, ms: number) => fetchJson(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }, ms);
+  const ms = o.timeoutMs ?? 20000;
+  return async (url, body) => {
+    if (!url.startsWith(STATFIN_API)) return one(url, body, ms);
+    try {
+      return await one(url, body, Math.min(ms, 8000));
+    } catch (err) {
+      if (!isSourceOutage(err)) throw err;
+      return one(withLegacyHost(url), body, Math.min(ms, 8000));
+    }
+  };
+}
+
+function getter(o: FinlandOptions): (url: string) => Promise<unknown> {
+  if (o.fetcher) return o.fetcher;
+  const base = resolveFetcher(o);
+  const short = resolveFetcher({ ...o, timeoutMs: Math.min(o.timeoutMs ?? 20000, 8000) });
+  return async (url) => {
+    if (!url.startsWith(STATFIN_API)) return base(url);
+    try {
+      return await short(url);
+    } catch (err) {
+      if (!isSourceOutage(err)) throw err;
+      return short(withLegacyHost(url));
+    }
+  };
 }
 
 function buildingCodes(v: PxVariable): Record<Building, string> {
@@ -715,7 +744,7 @@ export async function finlandHomePrices(input: FinlandInput, o: FinlandOptions =
   const building: Building = type === "flat" ? "flat" : type === "terraced" ? "terraced" : "any";
   const notes: string[] = [];
   if (postcode && input.town) notes.push(`The town "${input.town}" was ignored: the postcode ${postcode} is more precise.`);
-  const get = resolveFetcher(o);
+  const get = getter(o);
   const post = poster(o);
   const common = { type, baseUrl: input.baseUrl, now: o.now, notes };
 
