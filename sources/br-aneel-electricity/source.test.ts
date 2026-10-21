@@ -133,7 +133,7 @@ test("library rows: national median plus one posted tariff per distributor", () 
   assert.ok(all.low <= all.median && all.median <= all.high && all.min <= all.low && all.high <= all.max);
   const cemig = rows.find((r) => r.area === "CEMIGD")!;
   assert.equal(cemig.median, 0.7483);
-  assert.equal(cemig.n, 5);
+  assert.ok(Number.isNaN(cemig.n), "a posted tariff has no record count");
   assert.equal(rows.length, 7);
   assert.deepEqual(aneelDailyRows([], TODAY), []);
 });

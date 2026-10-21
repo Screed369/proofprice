@@ -18,7 +18,7 @@ import { readLatestDay, readMeta, type LibraryRow, type SourceMeta } from "../li
 import { MAX_PAGES_PER_SOURCE, type CategoryPlugin, type PageSpec, type SourceInfo, type SourcePlugin } from "../plugin";
 import { PRICE_TYPE_BASIS } from "../price-types";
 import { SOURCE_PLUGINS, categoryById, findSource, paramsFromQuery, pickSource } from "../registry";
-import { MIN_PUBLISH, confidenceLabel } from "../stats";
+import { MIN_PUBLISH, confidenceLabel, hasCount } from "../stats";
 import { CATEGORY_LABEL, PAGE_SOURCES, noFullStop, pageSourceOf, shortPublisher, type PageSource } from "./answer-pages";
 import { countryName } from "./areas";
 import { SITE_URL } from "./constants";
@@ -208,7 +208,8 @@ export function figureFromLibrary(o: {
 }): ExampleFigure | null {
   const { src, cat, day, meta } = o;
   if (!src.harvest || !src.historyKey || !day) return null;
-  if (src.info.price_type === "official_statistic") return null; // the library n of a published figure is a placeholder, not a count
+  // a published single figure has no record count and no distribution: only its live answer (figureFromAnswer) can show it, never a "median of n records" from the library
+  if (src.info.price_type === "official_statistic" || src.nominalCounts) return null;
   let key: { area: string; item: string; label: string } | null = null;
   try {
     key = src.historyKey(o.prepared);
@@ -220,7 +221,7 @@ export function figureFromLibrary(o: {
   const placeGiven = ["postcode", "area", "town", "region", "county", "department", "province", "city"].some((k) => String(o.prepared[k] ?? "").trim() !== "");
   if (key.area === "ALL" && placeGiven) return null;
   const row = day.rows.find((r) => r.area === key!.area && r.item === key!.item);
-  if (!row || row.n < MIN_PUBLISH || ![row.median, row.low, row.high].every(finite) || row.median <= 0) return null;
+  if (!row || !hasCount(row.n) || row.n < MIN_PUBLISH || ![row.median, row.low, row.high].every(finite) || row.median <= 0) return null;
   const currency = meta?.currency;
   const unit = cat.history?.unit?.(key.item) ?? meta?.unit;
   if (!currency || !unit) return null; // never state a price without its currency and unit

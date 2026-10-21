@@ -12,7 +12,7 @@ import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
 import { readDaily, readMeta } from "./library/store";
 import { readHistoryMeta, readMonthly } from "./library/backfill";
 import { asFallback, staleAnswer } from "./stale";
-import { MIN_PUBLISH } from "./stats";
+import { MIN_PUBLISH, hasCount, passesGate } from "./stats";
 import { joinAnd } from "./text";
 
 export const CATEGORIES: CategoryPlugin[] = CATEGORY_MODULES;
@@ -336,7 +336,7 @@ export interface HistoryAnswer {
   status: "ok" | "insufficient_history" | "no_history_yet";
   currency: string | null;
   unit: string | null;
-  series: { date: string; median: number; typical_low: number; typical_high: number; sample_size: number }[];
+  series: { date: string; median: number; typical_low: number; typical_high: number; sample_size: number | null }[];
   period: { from: string | null; to: string | null };
   change: null | { from_median: number; to_median: number; absolute: number; percent: number };
   sample_size_note?: string;
@@ -395,7 +395,7 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
   const rows = (monthly
     ? readMonthly(src.info.id, { area: key.area, item: key.item, from: monthFrom, to: monthTo })
     : readDaily(src.info.id, { area: key.area, item: key.item, from, to })
-  ).filter((r) => r.n >= MIN_PUBLISH);
+  ).filter((r) => passesGate(r.n));
   const staleDays = meta?.last_date ? Math.max(0, Math.round((Date.parse(todayIso) - Date.parse(meta.last_date)) / 86400000)) : null;
   const unit = cat.history?.unit?.(key.item) ?? meta?.unit ?? null;
   const currency = meta?.currency ?? null;
@@ -427,8 +427,9 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
     status,
     currency,
     unit,
-    ...(src.nominalCounts ? { sample_size_note: "The publisher gives one figure and no record count; sample_size in the series is a placeholder (5) kept so the day passes the 5-record rule. It is not a count of records." } : {}),
-    series: rows.map((r) => ({ date: r.date, median: r.median, typical_low: r.low, typical_high: r.high, sample_size: r.n })),
+    ...(src.nominalCounts ? { sample_size_note: "The publisher gives one figure and no record count, so sample_size is null in the series." } : {}),
+    // An official statistic has no record count: null, also for older stored rows that still carry the former placeholder (5 or 10).
+    series: rows.map((r) => ({ date: r.date, median: r.median, typical_low: r.low, typical_high: r.high, sample_size: src.nominalCounts || !hasCount(r.n) ? null : r.n })),
     period: { from: first?.date ?? null, to: last?.date ?? null },
     change,
     price_type: src_.price_type,

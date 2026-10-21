@@ -26,7 +26,7 @@ export default defineSource({
     "We pass on the published average and its month, with the change on the previous month and a year earlier that we calculate from two published averages; it is a monthly average, not a live or single-shop price, and no range is calculated.",
   handle: (p, ctx) => caStatcanPrices({ item: String(p.item ?? ""), region: str(p.region), baseUrl: ctx.baseUrl }),
   // A daily copy of the newest month, so a Statistics Canada outage is answered from it (stale-if-error). Rows are dated by the
-  // reference month and each is one published average (n is a placeholder).
+  // reference month and each is one published average (n is NO_COUNT, no record count).
   harvest: () => caPricesHarvest(),
   historyKey: (p) => caPricesHistoryKey({ item: str(p.item), region: str(p.region) }, [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))]),
   referenceDates: true,

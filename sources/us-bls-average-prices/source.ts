@@ -13,7 +13,7 @@ import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
 import { periodRange } from "../../lib/adapters";
 import { readDaily, readMeta } from "../../lib/library/store";
-import { MIN_PUBLISH } from "../../lib/stats";
+import { NO_COUNT } from "../../lib/stats";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { exampleWords, ItemDef, matchItem } from "../../categories/groceries/items";
 
@@ -47,8 +47,6 @@ export const AP_DATA_URL = "https://download.bls.gov/pub/time.series/ap/ap.data.
 /** BLS asks every download to carry a User-Agent with contact details. */
 export const BLS_USER_AGENT = "ProofPrice/1.0 (hello@proofprice.com)";
 
-/** What the library's `n` column holds for a BLS average: the library keeps no row below MIN_PUBLISH records, and BLS does not publish a count, so every row carries this placeholder. Answers report sample_size null. */
-export const LIBRARY_N_PLACEHOLDER = MIN_PUBLISH;
 
 // ---------- areas ----------
 
@@ -190,13 +188,13 @@ const Y1 = "@y1"; // library item suffix: the same series a year before the libr
 const M1 = "@m1"; // library item suffix: the month before the library date
 
 function libraryRow(area: string, item: string, v: number): DailyRow {
-  return { area, item, n: LIBRARY_N_PLACEHOLDER, median: v, low: v, high: v, min: v, max: v };
+  return { area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
 }
 
 /**
  * Library rows for the newest month any series has. For every series priced in that month: the average (item = code), the same series
  * twelve months earlier (code@y1) and the month before (code@m1), when BLS has them. low, high, min and max repeat the one published
- * average (BLS gives no distribution) and n is a placeholder (BLS gives no count): see LIBRARY_N_PLACEHOLDER.
+ * average (BLS gives no distribution) and n is NO_COUNT (BLS gives no count).
  */
 export function usDailyRows(series: SeriesMap): { month: string; rows: DailyRow[] } | null {
   let month = "";
@@ -231,7 +229,7 @@ export async function usHarvest(): Promise<HarvestResult> {
     rows: day.rows,
     note:
       `BLS CPI average prices for ${day.month}: ${current} series (items x U.S. city average and four regions), plus the same series a year earlier (item@y1) and a month earlier (item@m1). ` +
-      `BLS publishes one average per series and month, so low/high/min/max repeat it and n is the library minimum (${LIBRARY_N_PLACEHOLDER}), not a count of quotes.`,
+      `BLS publishes one average per series and month, so low/high/min/max repeat it and no record count is stored (n is empty).`,
   };
 }
 

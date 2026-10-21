@@ -39,6 +39,15 @@ function round(v: number): number {
 // Confidence label from sample size. Below MIN_PUBLISH we refuse to give a figure.
 export const MIN_PUBLISH = 5;
 
+/** The `n` of a library row whose publisher gives one figure and no record count (an official statistic). It is NaN, never a made-up
+ *  number: the library stores it as an empty cell, history and answers return sample_size null, and `n >= x` is false for it, so
+ *  record-level code can never mistake it for a count. Use `hasCount(n)` to tell. */
+export const NO_COUNT = Number.NaN;
+export const hasCount = (n: number): boolean => Number.isFinite(n);
+/** The library gate for one row: a real record count must reach MIN_PUBLISH; NO_COUNT (an official statistic) passes because there is
+ *  no sample to be thin. Only sources that publish a single figure write NO_COUNT. */
+export const passesGate = (n: number): boolean => Number.isNaN(n) || n >= MIN_PUBLISH;
+
 export function confidenceLabel(n: number): "high" | "medium" | "low" | "insufficient" {
   if (n >= 50) return "high";
   if (n >= 15) return "medium";

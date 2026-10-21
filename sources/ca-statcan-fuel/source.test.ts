@@ -145,14 +145,14 @@ test("manifest: fuel tool, CA, first example is the smoke test, licence is quote
 
 import { caFuelHarvest, caFuelHistoryKey, fuelHarvestRows } from "./source";
 
-test("harvest: one row per city and fuel for the newest month, dated by the month's end, in dollars per litre, n a placeholder", async () => {
+test("harvest: one row per city and fuel for the newest month, dated by the month's end, in dollars per litre, no record count", async () => {
   const calls: { path: string; body: unknown }[] = [];
   const h = await caFuelHarvest(fakeWds({ meta: FUEL_META, data: FUEL_DATA, calls }));
   assert.equal(h.currency, "CAD");
   assert.equal(h.unit, "per litre");
   assert.match(h.date, /^\d{4}-\d{2}-\d{2}$/);
   assert.ok(h.rows.length > 0 && h.rows.length <= 57);
-  assert.ok(h.rows.every((r) => r.n === 5 && r.low === r.median && r.max === r.median && r.median > 0.5 && r.median < 5));
+  assert.ok(h.rows.every((r) => Number.isNaN(r.n) && r.low === r.median && r.max === r.median && r.median > 0.5 && r.median < 5));
   const van = h.rows.find((r) => r.area === "Vancouver, British Columbia" && r.item === "petrol95");
   const live = await caFuelNow({ fuel: "petrol95", town: "Vancouver" }, fakeWds({ meta: FUEL_META, data: FUEL_DATA }), TODAY);
   assert.equal(van?.median, live.price!.value, "the copy holds the same figure as the live answer");

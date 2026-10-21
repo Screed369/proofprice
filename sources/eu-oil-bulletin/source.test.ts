@@ -83,7 +83,7 @@ test("previous week and the same week a year earlier", () => {
 
 test("library rows: published figures, dated earlier prices, exchange rates only for countries with their own currency", () => {
   const rows = wobRows(weeks());
-  assert.ok(rows.every((r) => r.n === 5 && r.median === r.low && r.low === r.high && r.high === r.min && r.min === r.max), "published values, n=5 placeholder");
+  assert.ok(rows.every((r) => Number.isNaN(r.n) && r.median === r.low && r.low === r.high && r.high === r.min && r.min === r.max), "published values, no record count");
   const get = (area: string, item: string) => rows.find((r) => r.area === area && r.item === item)?.median;
   assert.equal(get("IE", "diesel"), 2.1637);
   assert.equal(get("IE", "diesel@2026-10-05"), 2.1637);
@@ -361,7 +361,7 @@ test("wobMonthly: monthly average of the weekly figures, min/max as the range, t
     const inMonth = ws.filter((w) => w.date.startsWith(p.period));
     assert.ok(inMonth.length >= 3);
     for (const r of p.rows) {
-      assert.ok(r.n >= 5 && r.min <= r.low && r.low <= r.median && r.median <= r.high && r.high <= r.max);
+      assert.ok(Number.isNaN(r.n) && r.min <= r.low && r.low <= r.median && r.median <= r.high && r.high <= r.max);
       assert.ok(["petrol95", "diesel", "lpg"].includes(r.item));
       const vals = inMonth.map((w) => w.prices[r.area]?.[r.item as "diesel"]).filter((v): v is number => v !== undefined);
       assert.equal(r.low, Math.min(...vals));

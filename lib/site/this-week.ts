@@ -9,7 +9,7 @@ import { readMeta, readRowsOnDates, libraryDates, type LibraryRow } from "../lib
 import type { SourceInfo } from "../plugin";
 import { PRICE_TYPE_SHORT } from "../price-types";
 import { SOURCE_PLUGINS } from "../registry";
-import { MIN_PUBLISH } from "../stats";
+import { hasCount, passesGate } from "../stats";
 import { countryName } from "./areas";
 import { daysBetween } from "./format";
 import { FUEL_PHRASE } from "./page-wording";
@@ -93,7 +93,7 @@ export interface Move {
   licenceUrl: string;
   attribution: string;
   kind: string;
-  /** False for official statistics: the sample size of a published average is not a count of records we hold. */
+  /** False for official statistics and for sources that publish a single figure: that is not a count of records we hold. */
   countsRecords: boolean;
   /** Licence name in a few words (the full text is on /sources); the link is licenceUrl. */
   licenceShort: string;
@@ -121,9 +121,11 @@ export interface MoveInput {
   latestDate: string;
   baseRows: LibraryRow[];
   latestRows: LibraryRow[];
+  /** The source publishes one figure and no record count: whatever count the library holds (also an older placeholder) is never shown. */
+  nominalCounts?: boolean;
 }
 
-/** Pure: the moves of one source between two days. Thin rows (under MIN_PUBLISH records) and unknown items are skipped. */
+/** Pure: the moves of one source between two days. Thin rows (a count under MIN_PUBLISH records) and unknown items are skipped. */
 export function movesOf(i: MoveInput): Move[] {
   const base = new Map<string, LibraryRow>();
   for (const r of i.baseRows) if (r.date === i.baseDate && isNational(r.area)) base.set(r.item, r);
@@ -133,7 +135,7 @@ export function movesOf(i: MoveInput): Move[] {
     const name = itemLabel(i.group, r.item);
     const b = base.get(r.item);
     if (!name || !b) continue;
-    if (!(r.n >= MIN_PUBLISH) || !(b.n >= MIN_PUBLISH)) continue;
+    if (!passesGate(r.n) || !passesGate(b.n)) continue;
     if (!(b.median > 0) || !(r.median > 0)) continue;
     const pct = Math.round(((r.median - b.median) / b.median) * 1000) / 10;
     if (pct === 0) continue;
@@ -146,7 +148,7 @@ export function movesOf(i: MoveInput): Move[] {
       licenceUrl: i.info.licence_url,
       attribution: i.info.attribution,
       kind: kindLabel(i.info.price_type),
-      countsRecords: i.info.price_type !== "official_statistic",
+      countsRecords: i.info.price_type !== "official_statistic" && !i.nominalCounts && hasCount(b.n) && hasCount(r.n),
       licenceShort: shortLicence(i.info.licence),
       placeName: countryName(i.country),
       itemName: name,
@@ -219,6 +221,7 @@ export function loadThisWeek(): ThisWeek {
       latestDate,
       baseRows: rows.filter((r) => r.date === baseDate),
       latestRows: rows.filter((r) => r.date === latestDate),
+      nominalCounts: c.plugin.nominalCounts,
     });
     compared[c.group] += 1;
     moves[c.group].push(...found);

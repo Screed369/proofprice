@@ -18,6 +18,7 @@ import {
 } from "../_ca-statcan/wds";
 import { OPEN_LICENCE_TEXT, OPEN_LICENCE_URL, openLicenceAttribution, openLicenceNotice } from "../_ca-statcan/licence";
 import { plain, provinceFor } from "../_ca-statcan/geo";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PRODUCT_ID = 18100245;
 export const TABLE_NAME = "Table 18-10-0245-01 Monthly average retail prices for selected products";
@@ -444,7 +445,7 @@ export async function caStatcanPrices(input: CaPricesQuery, post?: Poster): Prom
 // ---------- daily collector (stale-if-error copy) ----------
 // Once a day the collector stores the newest published month for every product we map (ITEMS) in every region: about 110 x 13 rows,
 // dated by the end of the reference month and replaced in place until the next month is published (about 100 KB a month). Each row
-// is one published average, so n = 5 is a placeholder (nominalCounts). Used only when Statistics Canada does not respond.
+// is one published average, so n is NO_COUNT (nominalCounts). Used only when Statistics Canada does not respond.
 
 const NATIONAL_AREA = "ALL";
 export const priceArea = (name: string) => (name === "Canada" ? NATIONAL_AREA : name);
@@ -456,13 +457,13 @@ export function pricesHarvestRows(series: { region: string; code: string; data: 
   const month = latest.map((s) => monthOf(s.point!.period)).sort().pop()!;
   const rows = latest
     .filter((s) => monthOf(s.point!.period) === month)
-    .map((s) => ({ area: priceArea(s.region), item: s.code, n: 5, median: s.point!.value, low: s.point!.value, high: s.point!.value, min: s.point!.value, max: s.point!.value }));
+    .map((s) => ({ area: priceArea(s.region), item: s.code, n: NO_COUNT, median: s.point!.value, low: s.point!.value, high: s.point!.value, min: s.point!.value, max: s.point!.value }));
   return {
     date: monthRange(month).to,
     currency: "CAD",
     unit: "per item (see the item's definition)",
     rows,
-    note: `Statistics Canada table 18-10-0245-01: monthly average retail prices for ${monthWords(month)}, by product and region (the unit is in the product's definition). Published averages, not counts of records (n=5 is a placeholder).`,
+    note: `Statistics Canada table 18-10-0245-01: monthly average retail prices for ${monthWords(month)}, by product and region (the unit is in the product's definition). Published averages, not counts of records (no record count is published).`,
   };
 }
 

@@ -10,10 +10,11 @@ import type { LibraryRow } from "../../lib/library/store";
 import type { HarvestResult } from "../../lib/plugin";
 import { ONS_SEARCH_JSON, PLD_EGGS_REGIONS, PLD_NATIONAL, PLD_PRODUCTS, PLD_WITHHELD, pldSheets } from "./fixtures";
 import {
-  CURATED, HarvestIo, INFO, MIN_OBSERVATIONS, REGIONS, contentUrlFromPage, defsFor, fileUrl, gbHarvest, gbOnsPriceLevels, indexDay, monthWords, monthsBehind, parsePriceLevels,
+  CURATED, HarvestIo, INFO, REGIONS, contentUrlFromPage, defsFor, fileUrl, gbHarvest, gbOnsPriceLevels, indexDay, monthWords, monthsBehind, parsePriceLevels,
   prettyName, releasesFromSearch, resolveRegion, sizeWords, unitFor,
 } from "./source";
 import manifest from "./index";
+import { NO_COUNT } from "../../lib/stats";
 
 // The price library is read at call time from this folder, so the tests never touch the real library/.
 process.env.PROOFPRICE_LIBRARY_DIR = mkdtempSync(path.join(tmpdir(), "pp-gb-ons-"));
@@ -49,7 +50,7 @@ test("parsePriceLevels: medians with quartiles and extremes, the mean as a secon
   assert.equal(p.withheld, 5, "3 eggs areas plus 2 bread rows are [x]");
   assert.equal(p.rows.length, 17 * 2 + 9 * 2, "17 national products and 9 published egg regions, each as median and mean");
   const get = (area: string, item: string) => p.rows.find((r) => r.area === area && r.item === item);
-  assert.deepEqual(get("ALL", "EGGS - FREE-RANGE|12 pack"), { area: "ALL", item: "EGGS - FREE-RANGE|12 pack", n: MIN_OBSERVATIONS, median: 3.4, low: 2.98, high: 4.2, min: 2.49, max: 7.3 });
+  assert.deepEqual(get("ALL", "EGGS - FREE-RANGE|12 pack"), { area: "ALL", item: "EGGS - FREE-RANGE|12 pack", n: NO_COUNT, median: 3.4, low: 2.98, high: 4.2, min: 2.49, max: 7.3 });
   assert.equal(get("ALL", "EGGS - FREE-RANGE|12 pack@mean")!.median, 3.5331);
   assert.equal(get("E12000007", "EGGS - FREE-RANGE|12 pack")!.median, 3.38);
   assert.equal(get("S99999999", "EGGS - FREE-RANGE|12 pack")!.max, 6);
@@ -57,7 +58,7 @@ test("parsePriceLevels: medians with quartiles and extremes, the mean as a secon
   assert.equal(get("E12000001", "EGGS - FREE-RANGE|12 pack"), undefined, "North East is [x]");
   assert.equal(get("E12000007", "BREAD - GLUTEN-FREE OR PREMIUM (E.G. SOURDOUGH)|400 g"), undefined);
   assert.equal(get("ALL", "MILK - COW'S (WHOLE, FRESH)|2272 ml")!.median, 1.75);
-  assert.ok(p.rows.every((r) => r.n >= 5), "rows must clear the library minimum or writeDaily drops them");
+  assert.ok(p.rows.every((r) => Number.isNaN(r.n)), "ONS publishes no count: no n is stored");
   assert.ok(p.rows.every((r) => r.low <= r.median + 1e-9 || r.item.endsWith("@mean")));
 });
 

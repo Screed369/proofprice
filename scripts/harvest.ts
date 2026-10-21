@@ -10,7 +10,7 @@
 import { SOURCE_PLUGINS } from "../lib/registry";
 import { dataCheck, previousByKey } from "../lib/library/check";
 import { libraryDates, readMeta, writeDaily, writeMeta, SourceMeta } from "../lib/library/store";
-import { MIN_PUBLISH } from "../lib/stats";
+import { passesGate } from "../lib/stats";
 
 const TIMEOUT_MS = 10 * 60 * 1000;
 
@@ -44,7 +44,7 @@ async function main() {
       // the data checker: a first harvest has no previous values, so it passes untouched
       const check = acceptChanges ? null : dataCheck({ result, prevMeta: prev, previous: previousByKey(id, result.date) });
       if (check?.unitChange) throw new Error(check.unitChange);
-      if (check && !check.rows.some((r) => r.n >= MIN_PUBLISH)) throw new Error(check.message ?? "every row had fewer than 5 records");
+      if (check && !check.rows.some((r) => passesGate(r.n))) throw new Error(check.message ?? "every row had fewer than 5 records");
       const { rows } = writeDaily(id, check ? { ...result, rows: check.rows } : result);
       if (!rows) throw new Error("every row had fewer than 5 records");
       const dates = libraryDates(id);

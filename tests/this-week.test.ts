@@ -57,7 +57,7 @@ test("the real page data only holds honest moves", () => {
   assert.equal(t.groups.length, MOVE_GROUPS.length);
   for (const g of t.groups) {
     for (const m of g.moves) {
-      assert.ok(m.baseN >= 5 && m.latestN >= 5, `${m.sourceId} thin row`);
+      assert.ok(!m.countsRecords || (m.baseN >= 5 && m.latestN >= 5), `${m.sourceId} thin row`);
       assert.ok(m.licence && m.licenceUrl && m.publisher && m.kind, `${m.sourceId} missing source details`);
       assert.ok(m.latestDate > m.baseDate);
       assert.notEqual(m.pct, 0);
@@ -83,4 +83,15 @@ test("official statistics do not claim a count of records", () => {
   const m = movesOf({ ...input([row("2026-10-13", "ALL", "diesel", 5, 1.5)], [row("2026-10-20", "ALL", "diesel", 5, 1.65)]), info: { ...info, price_type: "official_statistic" } as SourceInfo });
   assert.equal(m[0].countsRecords, false);
   assert.equal(m[0].kind, "Official statistic");
+});
+
+test("a source that publishes one figure never shows a count, whatever the library holds (G20261021-PLACEHOLDER-N)", () => {
+  // older stored rows carry the former placeholder (5); newer rows carry no count (NaN): neither is shown as "records"
+  const old = movesOf({ ...input([row("2026-10-13", "ALL", "diesel", 5, 1.5)], [row("2026-10-20", "ALL", "diesel", 5, 1.65)]), nominalCounts: true });
+  assert.equal(old[0].countsRecords, false);
+  const fresh = movesOf({ ...input([row("2026-10-13", "ALL", "diesel", NaN, 1.5)], [row("2026-10-20", "ALL", "diesel", NaN, 1.65)]), nominalCounts: true });
+  assert.equal(fresh.length, 1, "a row with no count is not thin");
+  assert.equal(fresh[0].countsRecords, false);
+  // a record-based source with a real count under 5 is still skipped
+  assert.equal(movesOf(input([row("2026-10-13", "ALL", "diesel", 4, 1.5)], [row("2026-10-20", "ALL", "diesel", 4, 1.65)])).length, 0);
 });

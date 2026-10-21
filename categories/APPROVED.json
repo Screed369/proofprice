@@ -1,0 +1,179 @@
+{
+  "_readme": "The allow-list of public tool names. Every folder in categories/ is a public MCP tool and a public REST path, and public names are permanent. A new category may be built on a branch but may only reach main with an entry here, added after a \"Simon is needed\" decision says yes (tests/registry.test.ts enforces this). Prefer adding an option to an existing tool.",
+  "approved": [
+    {
+      "id": "broadband",
+      "tool": "pricepaid_broadband_prices",
+      "rest_path": "broadband",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "cars",
+      "tool": "pricepaid_car_prices",
+      "rest_path": "cars",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "childcare",
+      "tool": "pricepaid_childcare_prices",
+      "rest_path": "childcare",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "commercial-property",
+      "tool": "pricepaid_commercial_property",
+      "rest_path": "commercial-property",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "construction",
+      "tool": "pricepaid_construction_costs",
+      "rest_path": "construction",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "contracts",
+      "tool": "pricepaid_contract_prices",
+      "rest_path": "contracts",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "diet-costs",
+      "tool": "pricepaid_diet_costs",
+      "rest_path": "diet-costs",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "energy",
+      "tool": "pricepaid_energy_prices",
+      "rest_path": "energy",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "farm-gate-prices",
+      "tool": "pricepaid_farm_gate_prices",
+      "rest_path": "farm-gate-prices",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "farm-prices",
+      "tool": "pricepaid_farm_prices",
+      "rest_path": "farm-prices",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "flights",
+      "tool": "pricepaid_airfare_prices",
+      "rest_path": "airfares",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "fuel",
+      "tool": "pricepaid_fuel_prices_now",
+      "rest_path": "fuel",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "groceries",
+      "tool": "pricepaid_grocery_prices",
+      "rest_path": "groceries",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "health-insurance",
+      "tool": "pricepaid_health_insurance_premiums",
+      "rest_path": "health-insurance",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "home-sales",
+      "tool": "pricepaid_home_sales",
+      "rest_path": "home-sales",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "home-upgrades",
+      "tool": "pricepaid_home_upgrade_prices",
+      "rest_path": "home-upgrades",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "hotels",
+      "tool": "pricepaid_hotel_prices",
+      "rest_path": "hotels",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "insurance",
+      "tool": "pricepaid_insurance_prices",
+      "rest_path": "insurance",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "land-prices",
+      "tool": "pricepaid_land_prices",
+      "rest_path": "land-prices",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "medical",
+      "tool": "pricepaid_medical_prices",
+      "rest_path": "medical",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "medicines",
+      "tool": "pricepaid_medicine_prices",
+      "rest_path": "medicines",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "price-levels",
+      "tool": "pricepaid_price_levels",
+      "rest_path": "price-levels",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "producer-prices",
+      "tool": "pricepaid_producer_prices",
+      "rest_path": "producer-prices",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "rent",
+      "tool": "pricepaid_rent_prices",
+      "rest_path": "rent",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "surplus-auctions",
+      "tool": "pricepaid_auction_prices",
+      "rest_path": "auctions",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "tuition",
+      "tool": "pricepaid_tuition_fees",
+      "rest_path": "tuition",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "wholesale-fresh-food",
+      "tool": "pricepaid_wholesale_fresh_food_prices",
+      "rest_path": "wholesale-fresh-food",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "wholesale-markets",
+      "tool": "pricepaid_wholesale_market_prices",
+      "rest_path": "wholesale-markets",
+      "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "wholesale-power",
+      "tool": "pricepaid_wholesale_power_prices",
+      "rest_path": "wholesale-power",
+      "comment": "existing before 21 Oct 2026"
+    }
+  ]
+}

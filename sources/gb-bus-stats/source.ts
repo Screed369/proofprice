@@ -18,6 +18,7 @@ import { GOVUK, govukContent, downloadFile, monthlySlugs, xlsxAttachments } from
 import { readLatestDay } from "../../lib/library/store";
 import { Cell, readXlsx, Sheet } from "../../categories/rent/xlsx";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const COLLECTION = "https://www.gov.uk/government/collections/boiler-upgrade-scheme-statistics";
 export const SLUG_PREFIX = "boiler-upgrade-scheme-statistics";
@@ -132,8 +133,8 @@ export async function loadBus(now = new Date()): Promise<BusQuarter> {
 }
 
 export function busRows(q: BusQuarter): DailyRow[] {
-  // The publisher gives one figure and no record count: n is a placeholder (5) so the row passes the library's 5-record rule (nominalCounts).
-  return Object.entries(q.items).map(([item, v]) => ({ area: "EW", item, n: 5, median: v, low: v, high: v, min: v, max: v }));
+  // The publisher gives one figure and no record count: n is NO_COUNT (nominalCounts).
+  return Object.entries(q.items).map(([item, v]) => ({ area: "EW", item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v }));
 }
 
 export async function busHarvest(): Promise<HarvestResult> {
@@ -143,7 +144,7 @@ export async function busHarvest(): Promise<HarvestResult> {
     currency: "GBP",
     unit: "per installation",
     rows: busRows(q),
-    note: `DESNZ Boiler Upgrade Scheme statistics, ${q.quarter}: reported installation cost per technology (median and quartiles). Figures are published values, not counts of records (n=5 is a placeholder).`,
+    note: `DESNZ Boiler Upgrade Scheme statistics, ${q.quarter}: reported installation cost per technology (median and quartiles). Figures are published values, not counts of records (no record count is published).`,
   };
 }
 

@@ -22,7 +22,7 @@
 //   item "petrol95" | "diesel" | "lpg" | "heating_oil"  the price in EUR per litre (published EUR per 1000 litres divided by 1000)
 //   item "<fuel>@YYYY-MM-DD"                             the price in the bulletin of that earlier date (previous week, a year earlier)
 //   item "fx" and "fx@YYYY-MM-DD"                        EUR per unit of national currency (only for countries with their own currency)
-// A published figure does not come from counting records, so it is stored with median = low = high = min = max = the figure and n = 5.
+// A published figure does not come from counting records, so it is stored with median = low = high = min = max = the figure and n = NO_COUNT (stored empty; the answers carry sample_size null).
 // That n is a placeholder to pass the library's "at least 5" gate, NOT a count of records (the answers carry sample_size null).
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
@@ -30,6 +30,7 @@ import { InputError, SourceError } from "../../lib/http";
 import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { readLatestDay } from "../../lib/library/store";
 import { Cell, excelDate, readXlsx } from "../../categories/rent/xlsx";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL = "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en";
 /** "Price developments 2005 onwards". The document id is stable; the harvest also looks the link up on the page. */
@@ -62,7 +63,7 @@ export const INFO: SourceInfo = {
     "The Commission states that the prices are \"the prices most frequently charged, based on a weighted average\" and that \"comparisons between prices and price trends in different countries shall be carefully made\" because of differences in product quality, marketing practices and market structures. " +
     "Only Euro-super 95 (petrol95), automotive gas oil (diesel) and LPG (lpg) can be asked for, plus heating gas oil in the extra fields; premium petrol, E10, E85 and natural gas are not published. " +
     "Some Member States report no LPG or heating gas oil price. Prices are those in force on the Monday of the bulletin week. For Czechia, Denmark, Hungary, Poland, Romania and Sweden the euro price moves with the exchange rate the Commission used, so changes in euro can differ from changes in the national currency. " +
-    "ES, FR, IT and AT are answered by their own national sources; when the Spanish, French or Italian source cannot be reached and ProofPrice holds no recent copy of it, this bulletin's national figure for that country is given instead and the answer says so. In the history tool, sample_size is a placeholder (5), not a count of stations.",
+    "ES, FR, IT and AT are answered by their own national sources; when the Spanish, French or Italian source cannot be reached and ProofPrice holds no recent copy of it, this bulletin's national figure for that country is given instead and the answer says so. In the history tool, sample_size is null (the bulletin gives no count of stations).",
 };
 
 // ---------- countries and fuels ----------
@@ -196,7 +197,7 @@ export function wobRows(weeks: Week[]): DailyRow[] {
   if (!w0) return [];
   const earlier = [previousWeek(weeks), yearEarlierWeek(weeks)].filter((w): w is Week => !!w);
   const rows: DailyRow[] = [];
-  const put = (area: string, item: string, v: number) => rows.push({ area, item, n: 5, median: v, low: v, high: v, min: v, max: v });
+  const put = (area: string, item: string, v: number) => rows.push({ area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
   for (const area of Object.keys(w0.prices).sort()) {
     for (const item of ITEMS) {
       const v = w0.prices[area][item];
@@ -253,7 +254,7 @@ export function wobResult(weeks: Week[]): HarvestResult {
     note:
       `European Commission Weekly Oil Bulletin, prices in force on ${w0.date}: published national averages (all duties and taxes included), euro per litre. ` +
       `Items petrol95, diesel, lpg, heating_oil; "<item>@<date>" = the price in the bulletin of that earlier date (${prev ? `previous week ${prev.date}` : "no previous week"}, ${year ? `year earlier ${year.date}` : "no year-earlier week"}); ` +
-      "fx = euro per unit of national currency. Published values, not counts of records (n=5 is a placeholder).",
+      "fx = euro per unit of national currency. Published values, not counts of records (no record count is published).",
   };
 }
 
@@ -279,7 +280,7 @@ export async function wobHarvest(minCountries = 15): Promise<HarvestResult> {
 export const MIN_WEEKS_PER_MONTH = 3;
 
 /** Pure: monthly figures from weekly bulletins. median = the average of the weekly national figures in that month,
- *  low/min = the cheapest week, high/max = the dearest week. n = 5 is the same placeholder the daily rows use
+ *  low/min = the cheapest week, high/max = the dearest week. n is NO_COUNT, as in the daily rows
  *  (a published figure, not a count of records). Only the askable fuels; months with fewer than MIN_WEEKS_PER_MONTH weeks are left out. */
 export function wobMonthly(weeks: Week[], fromMonth: string, toMonth: string): BackfillResult["periods"] {
   const byMonth = new Map<string, Week[]>();
@@ -303,7 +304,7 @@ export function wobMonthly(weeks: Week[], fromMonth: string, toMonth: string): B
         const mean = r5(vals.reduce((a, b) => a + b, 0) / vals.length);
         const lo = Math.min(...vals);
         const hi = Math.max(...vals);
-        rows.push({ area, item, n: 5, median: mean, low: lo, high: hi, min: lo, max: hi });
+        rows.push({ area, item, n: NO_COUNT, median: mean, low: lo, high: hi, min: lo, max: hi });
       }
     }
     if (rows.length) periods.push({ period: m, rows });
@@ -327,7 +328,7 @@ export async function wobBackfill(from: string, to: string): Promise<BackfillRes
     periods,
     note:
       "European Commission Weekly Oil Bulletin: monthly figures from the weekly national averages (all duties and taxes included). median = average of the weekly figures in the month (at least 3 weeks); low/high = the cheapest and dearest week. " +
-      "Published figures, not counts of records (n=5 is a placeholder). Countries outside the euro are converted into euro by the Commission each week.",
+      "Published figures, not counts of records (no record count is published). Countries outside the euro are converted into euro by the Commission each week.",
   };
 }
 

@@ -37,6 +37,7 @@ export interface HandleContext {
 export interface DailyRow {
   area: string; // e.g. province "28", department "69", "ALL" for the whole country
   item: string; // e.g. "diesel", "diesel/served"
+  /** Number of records behind the row, or NO_COUNT (lib/stats) when the publisher gives one figure and no record count (official statistics). Never a made-up number. */
   n: number;
   median: number;
   low: number; // 10th percentile
@@ -122,8 +123,9 @@ export interface SourcePlugin {
   /** Optional: load past data (from, to are YYYY-MM-DD, inclusive) as aggregates. Run by hand through the backfill workflow
    *  (.github/workflows/backfill.yml), never in the app. Stream big files; never keep raw rows. */
   backfill?(from: string, to: string): Promise<BackfillResult>;
-  /** Set true when harvest() writes a placeholder count (n: 5) because the publisher gives one figure and no record count.
-   *  Answers and history built from the library then report sample_size null instead of a count that is not real. */
+  /** Set true when harvest() writes rows with n: NO_COUNT because the publisher gives one figure and no record count.
+   *  Answers and history built from the library report sample_size null, also for older stored rows that still carry the former
+   *  placeholder count (5 or 10), which is never shown. */
   nominalCounts?: boolean;
   /** Optional: map a request to the library keys used by harvest, so /history can answer. */
   historyKey?(params: Params, opts?: { monthly?: boolean }): { area: string; item: string; label: string } | null;

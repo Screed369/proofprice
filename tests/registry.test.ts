@@ -2,7 +2,7 @@
 // it says exactly which manifest field is wrong.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readdirSync, existsSync } from "node:fs";
+import { readdirSync, existsSync, readFileSync } from "node:fs";
 import { z } from "zod";
 import {
   CATEGORIES, SOURCE_PLUGINS, categoryById, exampleUrls, fallbackProblems, paramSchemas, paramsFromQuery, runCategory, sourcesFor, toolDescription, toolShape,
@@ -20,6 +20,30 @@ test("every folder in sources/ and categories/ is registered", () => {
       .sort();
   assert.deepEqual(SOURCE_FOLDERS, onDisk("sources"));
   assert.deepEqual(CATEGORY_FOLDERS, onDisk("categories"));
+});
+
+// Public tool names are permanent (a tool or REST path that has been published can never be renamed or removed), so a new category
+// (= a new public MCP tool + REST path) needs Simon's OK. The OK is a line in categories/APPROVED.json, added only after a
+// "Simon is needed" decision says yes. Builders may build a new category on a branch; it cannot merge to main without the entry.
+test("categories: every public tool name is on categories/APPROVED.json", () => {
+  const list = JSON.parse(readFileSync("categories/APPROVED.json", "utf8")) as { approved: { id: string; tool: string; rest_path: string; comment: string }[] };
+  assert.ok(Array.isArray(list.approved), "categories/APPROVED.json must have an 'approved' list");
+  const approved = new Map(list.approved.map((a) => [a.id, a]));
+  assert.equal(approved.size, list.approved.length, "categories/APPROVED.json lists a category id twice");
+  for (const a of list.approved) {
+    assert.ok(typeof a.comment === "string" && a.comment.trim().length >= 3, `categories/APPROVED.json: '${a.id}' needs a comment such as "approved by Simon <date>"`);
+  }
+  for (const c of CATEGORIES) {
+    const a = approved.get(c.id);
+    assert.ok(
+      a,
+      `New public tool name '${c.id}' needs Simon's approval: add it to categories/APPROVED.json only after a 'Simon is needed' decision says yes. ` +
+        `(A category is a new public MCP tool '${c.tool}' and REST path '/api/v1/${c.restPath}', and public names are permanent. Prefer adding an option to an existing tool.)`
+    );
+    // an approved name never changes: renaming a published tool breaks every agent that uses it
+    assert.equal(a.tool, c.tool, `categories/${c.id}: the public tool name was approved as '${a.tool}' and must never be renamed (now '${c.tool}')`);
+    assert.equal(a.rest_path, c.restPath, `categories/${c.id}: the public REST path was approved as '${a.rest_path}' and must never be renamed (now '${c.restPath}')`);
+  }
 });
 
 test("categories: ids match folders, tool names and REST paths are unique and well formed", () => {

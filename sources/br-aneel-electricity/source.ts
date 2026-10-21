@@ -7,7 +7,7 @@ import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, retryOnce, SourceError } from "../../lib/http";
 import { ckanSearch } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
-import { percentile } from "../../lib/stats";
+import { percentile, NO_COUNT } from "../../lib/stats";
 import type { DailyRow, HarvestResult, Params, SourceInfo } from "../../lib/plugin";
 import { NATIONAL } from "../../lib/library/aggregate";
 
@@ -211,7 +211,7 @@ export const HARVEST_UNIT = "per kWh before taxes";
 export const distributorKey = key;
 
 /** Pure: library rows for one day. "ALL" = the median across distributors (real count); one row per distributor holds its posted tariff
- *  (the publisher gives one figure, not a sample, so n is the placeholder 5; the source sets nominalCounts so answers show no count). */
+ *  (the publisher gives one figure, not a sample, so n is NO_COUNT (stored empty, answers show no count)). */
 export function aneelDailyRows(tariffs: Tariff[], today: Date): DailyRow[] {
   const current = currentTariffs(tariffs, today);
   if (!current.length) return [];
@@ -224,7 +224,7 @@ export function aneelDailyRows(tariffs: Tariff[], today: Date): DailyRow[] {
   ];
   for (const t of current) {
     const v = perKwh(t.total);
-    rows.push({ area: distributorKey(t.distributor), item: "electricity", n: 5, median: v, low: v, high: v, min: v, max: v });
+    rows.push({ area: distributorKey(t.distributor), item: "electricity", n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
   }
   return rows;
 }

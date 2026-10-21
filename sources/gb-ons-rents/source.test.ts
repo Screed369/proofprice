@@ -105,7 +105,7 @@ test("a missing value ([x]) gives no row; library rows are the published figures
   assert.deepEqual(c.values.all, { rent: 1500, change: 2.5 });
   assert.deepEqual(c.values.bed1, { rent: null, change: 2.5 });
   const lib = piprRows(p);
-  assert.ok(lib.every((r) => r.n === 5 && r.median === r.low && r.low === r.high && r.high === r.min && r.min === r.max));
+  assert.ok(lib.every((r) => Number.isNaN(r.n) && r.median === r.low && r.low === r.high && r.high === r.min && r.min === r.max));
   assert.ok(!lib.some((r) => r.area.startsWith("E07000008") && r.item === "bed1"));
   assert.ok(lib.some((r) => r.area === "E07000008 Cambridge" && r.item === "all" && r.median === 1500));
   assert.equal(lib.filter((r) => r.area === "E08000003 Manchester").length, 18);

@@ -86,9 +86,9 @@ test("a suppressed or unknown technology is no_matches or an InputError, never a
   assert.equal(busTech(undefined), "air_to_water");
 });
 
-test("library rows use the placeholder count (the source sets nominalCounts) and one national area", () => {
+test("library rows carry no record count (the source sets nominalCounts) and one national area", () => {
   const rows = busRows(parseBus(SHEETS));
-  assert.ok(rows.every((r) => r.n === 5 && r.area === "EW" && r.median === r.low));
+  assert.ok(rows.every((r) => Number.isNaN(r.n) && r.area === "EW" && r.median === r.low));
   assert.ok(rows.some((r) => r.item === "air_to_water/median" && r.median === 12908));
 });
 

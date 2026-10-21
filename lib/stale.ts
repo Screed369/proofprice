@@ -11,7 +11,7 @@ import { fmtMoney, METHOD_URL, NOTICE, sourceBlock, withAudit } from "./answer";
 import type { PriceAnswer } from "./answer";
 import type { CategoryPlugin, Params, SourcePlugin } from "./plugin";
 import { readDaily, readLatestDay, readMeta } from "./library/store";
-import { MIN_PUBLISH, confidenceLabel } from "./stats";
+import { confidenceLabel, hasCount, passesGate, MIN_PUBLISH } from "./stats";
 
 /** A snapshot older than this many days is not recent enough to stand in for a live answer. */
 export const STALE_MAX_DAYS = 7;
@@ -52,7 +52,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
     if (key.area === "ALL" && PLACE_PARAMS.some((k) => String(o.params[k] ?? "").trim() !== "")) return null;
     const today = o.today ?? new Date();
     const from = iso(new Date(today.getTime() - STALE_MAX_DAYS * 86400000));
-    const usable = (r: { n: number; median: number }) => r.n >= MIN_PUBLISH && Number.isFinite(r.median) && r.median > 0;
+    const usable = (r: { n: number; median: number }) => passesGate(r.n) && Number.isFinite(r.median) && r.median > 0;
     const meta = readMeta(src.info.id);
     let last = readDaily(src.info.id, { area: key.area, item: key.item, from, to: iso(today) }).filter(usable).pop();
     let collected: string | null = null;
@@ -74,7 +74,8 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
 
     const itemLabel = cat.history?.itemLabel?.(key.item) ?? key.item;
     const money = (v: number) => fmtMoney(v, currency);
-    const conf = confidenceLabel(last.n);
+    // A published single figure has no count: its confidence is the lowest usable label, not one derived from a made-up number.
+    const conf = confidenceLabel(src.nominalCounts || !hasCount(last.n) ? MIN_PUBLISH : last.n);
     const sentence = collected ? staleReferenceSentence(last.date, collected) : staleSentence(last.date);
     const err: any = o.error;
     return withAudit({
@@ -92,7 +93,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         min: src.nominalCounts ? null : last.min,
         max: src.nominalCounts ? null : last.max,
       },
-      sample_size: src.nominalCounts ? null : last.n,
+      sample_size: src.nominalCounts || !hasCount(last.n) ? null : last.n, // null for an official statistic, also from older rows that stored the former placeholder
       period: { from: last.date, to: last.date },
       confidence: conf,
       price_type: src.info.price_type,
@@ -105,7 +106,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
       summary:
         `${itemLabel} in ${key.label}: ` +
         (src.nominalCounts ? `${money(last.median)} ${unit}, ` : `median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), `) +
-        `based on ${src.nominalCounts ? "the published figure (no record count is published)" : `${last.n} records`} in our copy of ${src.info.name} (${src.info.publisher}) ${collected ? `for ${last.date}` : `taken on ${last.date}`}. ${sentence} Confidence: ${conf}.`,
+        `based on ${src.nominalCounts ? "the published figure (no record count is published)" : hasCount(last.n) ? `${last.n} records` : "the published figure"} in our copy of ${src.info.name} (${src.info.publisher}) ${collected ? `for ${last.date}` : `taken on ${last.date}`}. ${sentence} Confidence: ${conf}.`,
       notice: `${sentence} ${NOTICE}`,
       extra: {
         stale: true,

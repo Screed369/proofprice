@@ -24,6 +24,7 @@ import type { LibraryRow } from "../../lib/library/store";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { ItemDef, exampleWords, matchItem } from "../../categories/groceries/items";
 import { Cell, Sheet, readWorkbook } from "./xlsx";
+import { NO_COUNT } from "../../lib/stats";
 
 export const INFO: SourceInfo = {
   id: "gb-ons-price-levels",
@@ -59,7 +60,7 @@ export const SITE_ROOT = "https://www.ons.gov.uk";
 export const FILE_ROOT = "https://www.ons.gov.uk/file?uri=";
 export const ONS_USER_AGENT = "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)";
 
-/** ONS shows "[x]" where a row has fewer than 10 observations, so every published figure rests on at least this many. The library `n` column holds it (the true count is not published). Answers report sample_size null. */
+/** ONS shows "[x]" where a row has fewer than 10 observations, so every published figure rests on at least this many. It is not stored as a count: the library `n` is empty and answers report sample_size null. */
 export const MIN_OBSERVATIONS = 10;
 /** Months behind today after which an answer says "Old data". ONS normally lags by one to two months. */
 export const OLD_AFTER_MONTHS = 5;
@@ -233,8 +234,8 @@ export function parsePriceLevels(sheets: Sheet[]): ParsedLevels {
   const products = new Set<string>();
   for (const f of found) {
     if (f.month !== month) continue;
-    rows.push(libraryRow(f.area, f.item, MIN_OBSERVATIONS, f.median, f.q1, f.q3, f.min, f.max));
-    if (f.mean !== null && f.mean > 0) rows.push(libraryRow(f.area, `${f.item}@mean`, MIN_OBSERVATIONS, f.mean, f.mean, f.mean, f.mean, f.mean));
+    rows.push(libraryRow(f.area, f.item, NO_COUNT, f.median, f.q1, f.q3, f.min, f.max));
+    if (f.mean !== null && f.mean > 0) rows.push(libraryRow(f.area, `${f.item}@mean`, NO_COUNT, f.mean, f.mean, f.mean, f.mean, f.mean));
     products.add(f.item);
   }
   rows.sort((a, b) => a.area.localeCompare(b.area) || a.item.localeCompare(b.item));
@@ -297,7 +298,7 @@ export async function gbHarvest(io: HarvestIo = defaultIo): Promise<HarvestResul
       rows: parsed.rows,
       note:
         `ONS price level distributions for ${parsed.month}: ${parsed.products} product types, medians with lower and upper quartile (low/high), lowest and highest (min/max); the mean is held as item@mean. ` +
-        `${parsed.withheld} product-area rows were withheld by ONS ([x]). ONS publishes no count of observations: n is the library placeholder ${MIN_OBSERVATIONS}, the smallest number behind any published figure.`,
+        `${parsed.withheld} product-area rows were withheld by ONS ([x]). ONS publishes no count of observations: the library stores no count.`,
     };
   }
   throw new SourceError(`Could not read an ONS price level distributions workbook (${problems.join("; ")})`);

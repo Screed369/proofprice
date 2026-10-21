@@ -15,6 +15,7 @@ import {
 } from "../_ca-statcan/wds";
 import { OPEN_LICENCE_TEXT, OPEN_LICENCE_URL, openLicenceAttribution, openLicenceNotice } from "../_ca-statcan/licence";
 import { resolvePlace } from "../_ca-statcan/geo";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PRODUCT_ID = 18100001;
 export const TABLE_NAME = "Table 18-10-0001-01 Monthly average retail prices for gasoline and fuel oil, by geography";
@@ -226,7 +227,7 @@ export async function caFuelNow(input: CaFuelInput, post?: Poster, today = new D
 // ---------- daily collector (stale-if-error copy) ----------
 // Once a day the collector stores the newest published month for every city and fuel: 19 places x 3 fuels, at most 57 small rows, dated
 // by the end of the reference month (rows are replaced in place until the next month is published, so the library grows by about
-// 57 rows a month). The figure is one published average, so n = 5 is a placeholder (nominalCounts in the manifest). It is only used
+// 57 rows a month). The figure is one published average, so n is NO_COUNT (nominalCounts in the manifest). It is only used
 // to answer when Statistics Canada does not respond; there is no /history for these monthly averages (noHistory in the manifest).
 
 /** Library area for a place: "ALL" for Canada, otherwise the table's member name. */
@@ -242,14 +243,14 @@ export function fuelHarvestRows(series: { place: string; fuel: Fuel; data: DataS
     .filter((s) => monthOf(s.point!.period) === month)
     .map((s) => {
       const v = roundTo(s.point!.value / 100, 3);
-      return { area: fuelArea(s.place), item: s.fuel, n: 5, median: v, low: v, high: v, min: v, max: v };
+      return { area: fuelArea(s.place), item: s.fuel, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
     });
   return {
     date: monthRange(month).to,
     currency: "CAD",
     unit: "per litre",
     rows,
-    note: `Statistics Canada table 18-10-0001-01: monthly average retail price per litre (self-service) for ${monthWords(month)}, by city. Published averages, not counts of records (n=5 is a placeholder).`,
+    note: `Statistics Canada table 18-10-0001-01: monthly average retail price per litre (self-service) for ${monthWords(month)}, by city. Published averages, not counts of records (no record count is published).`,
   };
 }
 

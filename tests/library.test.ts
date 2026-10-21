@@ -6,6 +6,7 @@ import path from "node:path";
 import { aggregateDaily } from "../lib/library/aggregate";
 import { csvToRows, libraryDates, readDaily, rowsToCsv, writeDaily, writeMeta, libraryStatus } from "../lib/library/store";
 import { categoryById, runHistory } from "../lib/registry";
+import { NO_COUNT, passesGate } from "../lib/stats";
 
 const dir = mkdtempSync(path.join(tmpdir(), "pp-lib-"));
 process.env.PROOFPRICE_LIBRARY_DIR = dir;
@@ -88,4 +89,25 @@ test("/api/v1/library lists only registered sources: an offline source's old fol
   const body: any = await (await GET()).json();
   assert.ok(!body.sources.some((m: any) => m.source === "at-fuel" || m.source === "au-wa-fuel"));
   assert.ok(body.sources.some((m: any) => m.source === "es-fuel"));
+});
+
+test("honesty: an official statistic stores no record count, and history never shows a made-up one (G20261021-PLACEHOLDER-N)", () => {
+  const official = (n: number) => ({ area: "ALL", item: "diesel", n, median: 1.45, low: 1.45, high: 1.45, min: 1.45, max: 1.45 });
+  // the gate: a real count must reach 5; "no count" passes, because there is no sample to be thin
+  assert.equal(passesGate(NO_COUNT), true);
+  assert.equal(passesGate(5), true);
+  assert.equal(passesGate(4), false);
+  // storage: an empty cell, read back as NO_COUNT; a thin real count is still dropped
+  writeDaily("gb-desnz-fuel", { date: "2026-10-12", currency: "GBP", unit: "per litre", rows: [official(NO_COUNT), { ...official(3), item: "petrol" }] });
+  const file = readFileSync(path.join(dir, "gb-desnz-fuel", "daily", "2026-10.csv"), "utf8").trim().split("\n");
+  assert.equal(file.length, 2, "the 3-record row is dropped, the no-count row is kept");
+  assert.equal(file[1], "2026-10-12,ALL,diesel,,1.45,1.45,1.45,1.45,1.45", "n is an empty cell, never a number");
+  assert.ok(Number.isNaN(readDaily("gb-desnz-fuel", { area: "ALL", item: "diesel", from: "2026-10-01", to: "2026-10-31" })[0].n));
+  // an older row that still carries the former placeholder (5) is also returned as null
+  writeDaily("gb-desnz-fuel", { date: "2026-10-05", currency: "GBP", unit: "per litre", rows: [official(5)] });
+  writeMeta("gb-desnz-fuel", { source: "gb-desnz-fuel", currency: "GBP", unit: "per litre", first_date: "2026-10-05", last_date: "2026-10-12", days: 2, last_harvest_at: null, last_rows: 1, last_ok_at: null, last_error: null });
+  const h = runHistory(categoryById("fuel")!, { country: "GB", fuel: "diesel", days: 30 }, {}, new Date("2026-10-13T12:00:00Z"));
+  assert.equal(h.series.length, 2);
+  assert.ok(h.series.every((r) => r.sample_size === null), "history sample_size is null for old and new rows alike");
+  assert.match(String(h.sample_size_note), /null/);
 });

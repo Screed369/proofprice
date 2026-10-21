@@ -94,7 +94,7 @@ test("harvest: one row per mapped product and region for the newest month, the s
   assert.equal(h.currency, "CAD");
   assert.match(h.date, /^\d{4}-\d{2}-\d{2}$/);
   assert.ok(h.rows.length > 0);
-  assert.ok(h.rows.every((r) => r.n === 5 && r.low === r.median && r.median > 0));
+  assert.ok(h.rows.every((r) => Number.isNaN(r.n) && r.low === r.median && r.median > 0));
   const milk = ITEMS.find((d) => d.label === "Milk, 2 litres")!;
   const row = h.rows.find((r) => r.area === "ALL" && r.item === milk.label);
   const live = await caStatcanPrices({ item: "milk" }, fakeWds({ meta: PRICES_META, data: PRICES_DATA }));

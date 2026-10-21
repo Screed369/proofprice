@@ -35,7 +35,7 @@ export default defineSource({
       baseUrl: ctx.baseUrl,
     }),
   // A daily copy of the newest month, so a Statistics Canada outage is answered from it (stale-if-error). Rows are dated by the
-  // reference month, each row is one published average (n is a placeholder), and there is no /history of these monthly averages.
+  // reference month, each row is one published average (n is NO_COUNT, no record count), and there is no /history of these monthly averages.
   harvest: () => caFuelHarvest(),
   historyKey: (p) => caFuelHistoryKey({ fuel: str(p.fuel), town: str(p.town), area: str(p.area) }, [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))]),
   referenceDates: true,

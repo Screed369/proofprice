@@ -12,7 +12,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import type { BackfillResult, DailyRow } from "../plugin";
-import { MIN_PUBLISH } from "../stats";
+import { passesGate } from "../stats";
 import { DAILY_HEADER, csvToRows, libraryDates, libraryRoot, readMeta, rowsToCsv, writeDaily } from "./store";
 import type { LibraryRow } from "./store";
 
@@ -89,9 +89,9 @@ export function detailCutoff(today: Date): string {
 }
 
 function validRow(r: DailyRow): boolean {
-  const nums = [r.n, r.median, r.low, r.high, r.min, r.max];
+  const nums = [r.median, r.low, r.high, r.min, r.max];
   if (!nums.every((x) => typeof x === "number" && Number.isFinite(x))) return false;
-  if (!(r.median > 0) || !Number.isInteger(r.n)) return false;
+  if (!(r.median > 0) || !(Number.isInteger(r.n) || Number.isNaN(r.n))) return false; // NaN (NO_COUNT) = the publisher gives no record count
   if (!(r.min <= r.low && r.low <= r.median && r.median <= r.high && r.high <= r.max)) return false;
   return typeof r.area === "string" && typeof r.item === "string" && LABEL.test(r.area) && LABEL.test(r.item) && !ADDRESS_LIKE.test(r.area) && !ADDRESS_LIKE.test(r.item);
 }
@@ -152,7 +152,7 @@ export function applyBackfill(sourceId: string, result: BackfillResult, opts: { 
     const clean: DailyRow[] = [];
     for (const r of p.rows) {
       if (!validRow(r)) rep.dropped_invalid++;
-      else if (r.n < MIN_PUBLISH) rep.dropped_thin++;
+      else if (!passesGate(r.n)) rep.dropped_thin++;
       else clean.push(r);
     }
     if (!clean.length) continue;

@@ -139,7 +139,7 @@ export const historyAnswerSchema = z
         median: number,
         typical_low: number,
         typical_high: number,
-        sample_size: number,
+        sample_size: nullableNumber,
       }),
     ),
     period: z.looseObject({ from: z.string().nullable(), to: z.string().nullable() }).optional(),
@@ -149,7 +149,7 @@ export const historyAnswerSchema = z
       .optional()
       .describe("Change over the period; null with fewer than two days."),
     price_type: z.string().optional(),
-    sample_size_note: z.string().optional().describe("Present when the publisher gives no record count: sample_size in the series is a placeholder, not a count."),
+    sample_size_note: z.string().optional().describe("Present when the publisher gives no record count: sample_size in the series is null."),
     source: sourceBlockSchema,
     library: z
       .looseObject({

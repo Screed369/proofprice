@@ -8,7 +8,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import type { DailyRow, HarvestResult } from "../plugin";
-import { MIN_PUBLISH } from "../stats";
+import { passesGate } from "../stats";
 import { csvToRows, libraryRoot } from "./store";
 import type { LibraryRow, SourceMeta } from "./store";
 
@@ -56,7 +56,7 @@ const round2 = (x: number) => Math.round(x * 100) / 100;
 
 export function dataCheck(opts: { result: HarvestResult; prevMeta: SourceMeta | null; previous: Map<string, LibraryRow> }): DataCheckResult {
   const { result, prevMeta, previous } = opts;
-  const thick = result.rows.filter((r) => r.n >= MIN_PUBLISH);
+  const thick = result.rows.filter((r) => passesGate(r.n));
 
   // a change of currency or unit: the whole day's figures mean something else, so none are published
   const was = prevMeta && previous.size > 0 ? { currency: prevMeta.currency, unit: prevMeta.unit } : null;
@@ -69,7 +69,7 @@ export function dataCheck(opts: { result: HarvestResult; prevMeta: SourceMeta | 
   const held: HeldKey[] = [];
   for (const r of result.rows) {
     const prev = previous.get(keyOf(r.area, r.item));
-    if (r.n >= MIN_PUBLISH && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0) {
+    if (passesGate(r.n) && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0) {
       const ratio = r.median / prev.median;
       if (ratio > MAX_RATIO || ratio < 1 / MAX_RATIO) {
         held.push({
