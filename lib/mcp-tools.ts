@@ -77,8 +77,15 @@ export interface ToolDeps {
 
 export const LIVE_DEPS: ToolDeps = { categories: CATEGORIES, runCategory, runHistory, coverageView, historyDays };
 
+/** Indented JSON for the text part of an answer, with arrays of plain values (country codes, numbers) kept on one line: the same
+ *  data, far fewer characters and tokens for an AI to read than one value per line. */
+export function readableJson(obj: unknown): string {
+  return JSON.stringify(obj, null, 2).replace(/\[\s*\n((?:\s*(?:"(?:[^"\\\n]|\\.)*"|-?\d[\d.eE+-]*|true|false|null),?\n)+)\s*\]/g, (_m, body: string) =>
+    "[" + body.split("\n").map((l) => l.trim()).filter(Boolean).join(" ").replace(/,$/, "") + "]");
+}
+
 export function asResult(obj: any): McpToolResult {
-  const text = typeof obj?.summary === "string" && obj.summary ? `${obj.summary}\n\n${JSON.stringify(obj, null, 2)}` : JSON.stringify(obj, null, 2);
+  const text = typeof obj?.summary === "string" && obj.summary ? `${obj.summary}\n\n${readableJson(obj)}` : readableJson(obj);
   return { content: [{ type: "text", text }], structuredContent: obj };
 }
 
