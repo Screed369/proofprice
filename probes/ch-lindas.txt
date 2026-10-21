@@ -1,0 +1,35 @@
+URL: https://lindas.admin.ch/query?query=PREFIX%20schema%3A%20%3Chttp%3A//schema.org/%3E%20SELECT%20%2A%20FROM%20%3Chttps%3A//lindas.admin.ch/elcom/electricityprice%3E%20WHERE%20%7B%20%3Fs%20%3Fp%20%3Fo%20%7D%20LIMIT%2015
+Fetched: 2026-10-21T02:44:16Z from GitHub Actions
+Status, type, bytes: 200 text/csv;charset=UTF-8 2097
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Wed, 21 Oct 2026 02:44:16 GMT
+content-type: text/csv;charset=UTF-8
+vary: Origin
+access-control-allow-credentials: true
+server-timing: sparql-proxy;dur=6.484145000576973;desc="Querying the endpoint"
+xkey: default
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-robots-tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+
+=== FILE TYPE: CSV ASCII text
+=== FIRST 20000 BYTES
+s,p,o
+https://energy.ld.admin.ch/elcom/electricityprice,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://rdfs.org/ns/void#Dataset
+https://energy.ld.admin.ch/elcom/electricityprice,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/ns/dcat#Dataset
+https://energy.ld.admin.ch/elcom/electricityprice,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://schema.org/Dataset
+https://energy.ld.admin.ch/elcom/electricityprice,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,https://cube.link/Cube
+https://energy.ld.admin.ch/elcom/electricityprice-canton,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://rdfs.org/ns/void#Dataset
+https://energy.ld.admin.ch/elcom/electricityprice-canton,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/ns/dcat#Dataset
+https://energy.ld.admin.ch/elcom/electricityprice-canton,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://schema.org/Dataset
+https://energy.ld.admin.ch/elcom/electricityprice-canton,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,https://cube.link/Cube
+https://energy.ld.admin.ch/elcom/electricityprice-swiss,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://rdfs.org/ns/void#Dataset
+https://energy.ld.admin.ch/elcom/electricityprice-swiss,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/ns/dcat#Dataset
+https://energy.ld.admin.ch/elcom/electricityprice-swiss,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://schema.org/Dataset
+https://energy.ld.admin.ch/elcom/electricityprice-swiss,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,https://cube.link/Cube
+https://energy.ld.admin.ch/elcom/electricityprice/shape/shape-municipality-canton-hierarchy,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/ns/shacl#NodeShape
+https://energy.ld.admin.ch/elcom/electricityprice/category/C5,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2004/02/skos/core#Concept
+https://energy.ld.admin.ch/elcom/electricityprice/category/conceptscheme,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2004/02/skos/core#ConceptScheme
