@@ -1,0 +1,107 @@
+URL: https://www.bankofcanada.ca/valet/observations/group/A4_RATES_VARIABLE/json?recent=2
+Fetched: 2026-10-21T21:53:53Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2597
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Disposition: attachment; filename=A4_RATES_VARIABLE.json
+Content-Type: application/json; charset=utf-8
+X-Dc: v
+X-Generated: 2026-10-21 17:53:53
+X-Valet-Mode: l10
+Cache-Control: max-age=30
+Expires: Wed, 21 Oct 2026 21:54:23 GMT
+Date: Wed, 21 Oct 2026 21:53:53 GMT
+Content-Length: 2597
+Connection: keep-alive
+Server: BoC
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+{
+    "terms": {
+        "url": "https://www.bankofcanada.ca/terms/"
+    },
+    "groupDetail": {
+        "label": "Interest rates charged for new and existing lending by chartered banks - Residential variable rate mortgages",
+        "description": "Month-end, rates in percentage",
+        "link": "https://www.bankofcanada.ca/?p=197471",
+        "metadata": {}
+    },
+    "seriesDetail": {
+        "V122667799": {
+            "label": "Total variable rate mortgages, Total",
+            "description": "Residential variable rate mortgages - Funds advanced",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667800": {
+            "label": "Closed non-convertible variable rate mortgages",
+            "description": "Residential variable rate mortgages - Funds advanced - Total variable rate mortgages, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667801": {
+            "label": "Closed convertible variable rate mortgages",
+            "description": "Residential variable rate mortgages - Funds advanced - Total variable rate mortgages, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667802": {
+            "label": "Open variable rate mortgages",
+            "description": "Residential variable rate mortgages - Funds advanced - Total variable rate mortgages, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        }
+    },
+    "observations": [
+        {
+            "d": "2026-07-01",
+            "V122667802": {
+                "v": "7.02"
+            },
+            "V122667799": {
+                "v": "3.86"
+            },
+            "V122667800": {
+                "v": "3.76"
+            },
+            "V122667801": {
+                "v": "3.74"
+            }
+        },
+        {
+            "d": "2026-06-01",
+            "V122667802": {
+                "v": "7.05"
+            },
+            "V122667799": {
+                "v": "3.90"
+            },
+            "V122667800": {
+                "v": "3.79"
+            },
+            "V122667801": {
+                "v": "3.76"
+            }
+        }
+    ]
+}
