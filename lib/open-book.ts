@@ -61,6 +61,7 @@ export const PUBLIC_PATHS = [
   "/sources",
   "/pricing",
   "/trust",
+  "/press",
   "/status",
   "/prices",
   "/method",
@@ -82,6 +83,7 @@ const STATIC_CHANGE: Record<string, Freq> = {
   "/pricing": "weekly",
   "/pricing.json": "weekly",
   "/trust": "monthly",
+  "/press": "monthly",
   "/status": "daily",
   "/prices": "daily",
   "/method": "monthly",
@@ -215,6 +217,7 @@ Contact: ${CONTACT}
 - Sources, licences and attribution (every source with its publisher, licence and limits): ${baseUrl}/sources
 - Pricing (free forever, premium calls, how agents pay with x402): ${baseUrl}/pricing (JSON: ${baseUrl}/pricing.json)
 - How we earn trust (rules, checks before a source goes live, corrections): ${baseUrl}/trust
+- Press (plain description, live facts, logo files, contact): ${baseUrl}/press
 - Status of the price library and sources (last collection, days held, last error): ${baseUrl}/status
 - Prices by place (latest median and typical range, from the daily price library): ${baseUrl}/prices
 ${pricePageLines(baseUrl).join("\n")}
