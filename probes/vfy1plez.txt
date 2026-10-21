@@ -1,0 +1,20 @@
+URL: https://ezamowienia.gov.pl/mo-board/api/v1/notice?NoticeType=TenderResultNotice&PageSize=3
+Fetched: 2026-10-21T16:42:56Z from GitHub Actions
+Status, type, bytes: 400 application/problem+json; charset=utf-8 352
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 Bad Request
+Date: Wed, 21 Oct 2026 16:42:56 GMT
+Content-Type: application/problem+json; charset=utf-8
+Content-Length: 352
+Connection: keep-alive
+X-CorrelationId: 969e8698-2e4d-46b7-a71b-024ca35b0bbb
+Strict-Transport-Security: max-age=63072000
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"errors":{"PublicationDateTo":["Pole 'Publication Date To' nie może być puste."],"PublicationDateFrom":["Pole 'Publication Date From' nie może być puste."]},"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-9569c147f48c6e364737eeb41930c49c-c7080fb292c5a216-00"}
