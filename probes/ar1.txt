@@ -1,0 +1,25 @@
+URL: https://apis.datos.gob.ar/series/api/search/?q=canasta+basica+total&limit=5
+Fetched: 2026-10-21T08:42:24Z from GitHub Actions
+Status, type, bytes: 200 application/json 2676
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 21 Oct 2026 08:42:24 GMT
+content-type: application/json
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+x-frame-options: SAMEORIGIN
+vary: Origin
+vary: accept-encoding
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2FroO4Htvft%2Fhqs908slUeyACCDHk%2FQ3IiuS5qPyoKz4Fsi%2FWs9gcbmhqQkaPo5u8InNTeWyHYZKDfu%2BxV3J1M4S6eSY43GDuV%2FM1VGF55n%2Bt1LSDMHiMkDjYs6cuD2zo5uHAOQ%3D%3D"}]}
+access-control-allow-origin: *
+x-kong-upstream-latency: 14
+x-kong-proxy-latency: 0
+cf-cache-status: DYNAMIC
+cf-ray: a4def800ccd124d4-LAX
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"data": [{"field": {"id": "444.1_CANASTA_batotCuyo_0_0_26_47", "description": "Canasta B\u00e1sica Total. Cuyo", "title": "cuyo", "frequency": "R/P1M", "time_index_start": "2016-04-01", "time_index_end": "2025-12-01", "units": "pesos", "hits_90_days": "0"}, "dataset": {"title": "Canasta b\u00e1sica total. Regiones del pa\u00eds", "publisher": {"name": "Subsecretar\u00eda de Programaci\u00f3n Macroecon\u00f3mica"}, "source": "Instituto Nacional de Estad\u00edstica y Censos (INDEC)", "theme": "Empleo e Ingresos"}}, {"field": {"id": "444.1_CANASTA_batotNoreste_0_0_26_47", "description": "Canasta B\u00e1sica Total. Noreste", "title": "noreste", "frequency": "R/P1M", "time_index_start": "2016-04-01", "time_index_end": "2025-12-01", "units": "pesos", "hits_90_days": "0"}, "dataset": {"title": "Canasta b\u00e1sica total. Regiones del pa\u00eds", "publisher": {"name": "Subsecretar\u00eda de Programaci\u00f3n Macroecon\u00f3mica"}, "source": "Instituto Nacional de Estad\u00edstica y Censos (INDEC)", "theme": "Empleo e Ingresos"}}, {"field": {"id": "444.1_CANASTA_batotNoroeste_0_0_26_47", "description": "Canasta B\u00e1sica Total. Noroeste", "title": "noroeste", "frequency": "R/P1M", "time_index_start": "2016-04-01", "time_index_end": "2025-12-01", "units": "pesos", "hits_90_days": "0"}, "dataset": {"title": "Canasta b\u00e1sica total. Regiones del pa\u00eds", "publisher": {"name": "Subsecretar\u00eda de Programaci\u00f3n Macroecon\u00f3mica"}, "source": "Instituto Nacional de Estad\u00edstica y Censos (INDEC)", "theme": "Empleo e Ingresos"}}, {"field": {"id": "444.1_CANASTA_batotPatagonia_0_0_26_47", "description": "Canasta B\u00e1sica Total. Patagonia", "title": "patagonia", "frequency": "R/P1M", "time_index_start": "2016-04-01", "time_index_end": "2025-12-01", "units": "pesos", "hits_90_days": "0"}, "dataset": {"title": "Canasta b\u00e1sica total. Regiones del pa\u00eds", "publisher": {"name": "Subsecretar\u00eda de Programaci\u00f3n Macroecon\u00f3mica"}, "source": "Instituto Nacional de Estad\u00edstica y Censos (INDEC)", "theme": "Empleo e Ingresos"}}, {"field": {"id": "444.1_CANASTA_BATAL_0_0_20_94", "description": "Canasta B\u00e1sica Total", "title": "canasta_basica_total", "frequency": "R/P1M", "time_index_start": "2013-01-01", "time_index_end": "2025-02-01", "units": "pesos", "hits_90_days": "0"}, "dataset": {"title": "Canasta b\u00e1sica alimentaria y total. Ciudad de Buenos Aires", "publisher": {"name": "Subsecretar\u00eda de Programaci\u00f3n Macroecon\u00f3mica"}, "source": "Instituto de Estad\u00edstica y Censos - Ciudad Aut\u00f3noma de Buenos Aires", "theme": "Empleo e Ingresos"}}], "count": 189, "limit": 5, "start": 0}
