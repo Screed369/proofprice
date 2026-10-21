@@ -89,3 +89,18 @@ test("/api/v1/library lists only registered sources: an offline source's old fol
   assert.ok(!body.sources.some((m: any) => m.source === "at-fuel" || m.source === "au-wa-fuel"));
   assert.ok(body.sources.some((m: any) => m.source === "es-fuel"));
 });
+
+test("history: a source that publishes one figure (nominalCounts) never shows the library's internal 5 as a sample size (G20261021-PLACEHOLDER-N)", () => {
+  const nominal = (median: number) => ({ area: "AT", item: "diesel", n: 5, median, low: median, high: median, min: median, max: median });
+  writeDaily("eu-oil-bulletin", { date: "2026-10-12", currency: "EUR", unit: "per litre", rows: [nominal(2.1)] });
+  writeDaily("eu-oil-bulletin", { date: "2026-10-19", currency: "EUR", unit: "per litre", rows: [nominal(2.132)] });
+  writeMeta("eu-oil-bulletin", { source: "eu-oil-bulletin", currency: "EUR", unit: "per litre", first_date: "2026-10-12", last_date: "2026-10-19", days: 2, last_harvest_at: null, last_rows: 1, last_ok_at: null, last_error: null });
+  const h = runHistory(categoryById("fuel")!, { country: "AT", fuel: "diesel", days: 30 }, {}, new Date("2026-10-20T12:00:00Z"));
+  assert.equal(h.status, "ok");
+  assert.equal(h.series.length, 2);
+  assert.ok(h.series.every((p) => p.sample_size === null), "no made-up record count");
+  assert.match(h.sample_size_note ?? "", /sample_size is null/);
+  // a source with real record counts keeps them
+  const es = runHistory(categoryById("fuel")!, { country: "ES", postcode: "28001", fuel: "gasoleo", days: 60 }, {}, new Date("2026-11-02T12:00:00Z"));
+  assert.ok(es.series.every((p) => typeof p.sample_size === "number"));
+});
