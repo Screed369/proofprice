@@ -1,0 +1,23 @@
+URL: https://ckan.opendata.swiss/api/3/action/package_search?q=Spezialit%C3%A4tenliste&rows=5&fl=name,title,license_id,resources
+Fetched: 2026-10-21T12:48:41Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 219
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 21 Oct 2026 12:48:41 GMT
+content-type: application/json;charset=utf-8
+content-length: 219
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-robots-tag: noindex, nofollow
+strict-transport-security: max-age=15724800; includeSubDomains
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET, PUT, POST, DELETE, PATCH, OPTIONS
+access-control-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+access-control-max-age: 1728000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://ckan.opendata.swiss/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 0, "facets": {}, "results": [], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
