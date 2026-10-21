@@ -1,0 +1,79 @@
+URL: https://ergebnisse.zensus2022.de/datenbank/online
+Fetched: 2026-10-21T17:45:29Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 1728
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 302 Found
+Date: Wed, 21 Oct 2026 17:45:29 GMT
+Server: Apache
+Content-Length: 0
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Location: https://ergebnisse.zensus2022.de/datenbank/online/
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Vary: User-Agent
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: same-origin
+
+HTTP/1.1 200 OK
+Date: Wed, 21 Oct 2026 17:45:29 GMT
+Server: Apache
+Content-Length: 1728
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Last-Modified: Fri, 17 Apr 2026 13:32:26 GMT
+Accept-Ranges: bytes
+Vary: Accept-Encoding,User-Agent
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: same-origin
+Content-Type: text/html; charset=UTF-8
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text
+=== FIRST 30000 BYTES
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="In der Zensusdatenbank finden Sie die Ergebnisse des Zensus. Alle Tabellen können kostenfrei abgerufen und heruntergeladen werden."
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+      default-src 'none';
+    base-uri 'none';
+    object-src 'none';
+    font-src 'self';
+    script-src 'self';
+    style-src 'self' 'sha256-IO+Y1yEBEpZphZrJXe5us6Rbf6kFWpmO1AwABrsU7rA=' 'sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=' 'sha256-Wf2IXC+1tgtYyuSvWSyGCu4D64tRKX57RX56zilOEpw=' 'sha256-ubo7t4G1yJJ81/x16kAaxUzcF+oxgO7nwidfS9HuxUs=';
+    media-src 'self' blob:;;
+    img-src 'self' data:;;
+    connect-src *"
+    />
+    <meta name="referrer" content="origin" />
+    <link rel="stylesheet" href="/datenbank/online/custom.css" />
+    <link rel="icon" href="/datenbank/online/favicon.ico" />
+    <meta name="google-site-verification" content="ACMNW3vSrXRCN4uSM_Ys6NrkmE5LSj_Og6hWbiZH2nU" />
+    <style>
+      body {
+        overflow: hidden;
+        display: none;
+      }
+    </style>
+    <title>Zensusdatenbank: Ergebnisse des Zensus</title>
+    <script type="module" crossorigin src="/datenbank/online/assets/index-CH7AgF_H.js"></script>
+    <link rel="stylesheet" crossorigin href="/datenbank/online/assets/index-DoX3q9sg.css">
+  </head>
+
+  <body class="zor-webapp">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <div id="searchInputRoot"></div>
+    <div id="modalsRoot"></div>
+  </body>
+</html>
