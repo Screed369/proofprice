@@ -1,0 +1,24 @@
+URL: https://api.worldbank.org/v2/sources/90/country/all/series/1101110/time/all?format=json&per_page=5
+Fetched: 2026-10-21T12:46:00Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1610
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 21 Oct 2026 12:46:00 GMT
+content-type: application/json;charset=utf-8
+set-cookie: __cf_bm=XvzX73g7DrPoUPbzJMoXogPfF5eXCFwILNntmseNlBs-1792586752.3840048-1.0.1.1-NZ8Jq3awdE6R8C_a7G6Aw6u3OKhPvfTEK0SUe1INIi4fDmjn7I8KhWL5QbxGGU8BQgWY2IAn_Y4NLGIPJqy9DrwPsZOKGJv5_6pWsJLaVFQETIf4rlym4s2hFvXGP00A; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org; Expires=Wed, 21 Oct 2026 13:16:00 GMT
+set-cookie: _cfuvid=WYdRJfIH3B7uyDAciN0.QqENjkgcbfN4uaGi9gW0iSs-1792586752.3840048-1.0.1.1-FwoY.QDhHz3UoSMirkpNq3LlpA_mpah1E5sM8QW4Ofw; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org
+cf-ray: a4e05ca258541121-ORD
+cf-cache-status: MISS
+cache-control: public, max-age=86400
+expires: Thu, 22 Oct 2026 12:46:00 GMT
+last-modified: Wed, 21 Oct 2026 12:46:00 GMT
+server: cloudflare
+vary: accept-encoding
+request-context: appId=cid-v1:da002513-bd8b-4441-9f30-737944134422
+x-powered-by: ASP.NET
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"page":1,"pages":4927,"per_page":5,"total":24633,"lastupdated":"2024-08-04","source":{"id":"90","name":"ICP 2021","data":[{"variable":[{"concept":"Country","id":"AFG","value":"Afghanistan"},{"concept":"Classification","id":"CN","value":"Expenditure (local currency units, billions)"},{"concept":"Series","id":"1101110","value":"1101110:Bread and cereals"},{"concept":"Time","id":"YR2023","value":"2023"}],"value":null},{"variable":[{"concept":"Country","id":"AFG","value":"Afghanistan"},{"concept":"Classification","id":"CN","value":"Expenditure (local currency units, billions)"},{"concept":"Series","id":"1101110","value":"1101110:Bread and cereals"},{"concept":"Time","id":"YR2022","value":"2022"}],"value":null},{"variable":[{"concept":"Country","id":"AFG","value":"Afghanistan"},{"concept":"Classification","id":"CN","value":"Expenditure (local currency units, billions)"},{"concept":"Series","id":"1101110","value":"1101110:Bread and cereals"},{"concept":"Time","id":"YR2021","value":"2021"}],"value":null},{"variable":[{"concept":"Country","id":"AFG","value":"Afghanistan"},{"concept":"Classification","id":"CN","value":"Expenditure (local currency units, billions)"},{"concept":"Series","id":"1101110","value":"1101110:Bread and cereals"},{"concept":"Time","id":"YR2020","value":"2020"}],"value":null},{"variable":[{"concept":"Country","id":"AFG","value":"Afghanistan"},{"concept":"Classification","id":"CN","value":"Expenditure (local currency units, billions)"},{"concept":"Series","id":"1101110","value":"1101110:Bread and cereals"},{"concept":"Time","id":"YR2019","value":"2019"}],"value":null}]}}
