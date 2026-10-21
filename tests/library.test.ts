@@ -80,3 +80,12 @@ test("history: months=N reads the monthly history loaded by the backfill (string
   assert.match(h.method, /Monthly test note\..*whole month/);
   assert.equal((h.query as any).months, 36);
 });
+
+test("/api/v1/library lists only registered sources: an offline source's old folder (at-fuel, au-wa-fuel) is left out", async () => {
+  writeMeta("at-fuel", { source: "at-fuel", currency: "EUR", unit: "per litre", first_date: "2026-10-01", last_date: "2026-10-10", days: 10, last_harvest_at: null, last_rows: 0, last_error: "offline" } as any);
+  assert.ok(libraryStatus().some((m) => m.source === "at-fuel"));
+  const { GET } = await import("../app/api/v1/library/route");
+  const body: any = await (await GET()).json();
+  assert.ok(!body.sources.some((m: any) => m.source === "at-fuel" || m.source === "au-wa-fuel"));
+  assert.ok(body.sources.some((m: any) => m.source === "es-fuel"));
+});

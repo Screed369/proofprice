@@ -18,7 +18,7 @@ export default defineSource({
     months: "NZ: ignored; the figure is for the latest month MBIE has published (about two months behind).",
   },
   examples: [
-    { params: { country: "NZ", town: "Wellington", bedrooms: "2" } },
+    { params: { country: "NZ", town: "Wellington" } },
     { params: { country: "NZ", town: "Auckland" }, smoke: false },
     { params: { country: "NZ", town: "New Zealand" }, smoke: false },
   ],

@@ -1,6 +1,5 @@
 // Manifest: Belgium home prices (Statbel open data, official median sale prices by property type and municipality). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { InputError } from "../../lib/http";
 import { INFO, beHarvest, beHomePrices } from "./source";
 
 export default defineSource({
@@ -35,7 +34,5 @@ export default defineSource({
     }),
   harvest: beHarvest,
   // Statbel publishes one median per quarter, half-year and year (no rolling figure), so daily snapshots would only repeat it: no history.
-  historyKey: () => {
-    throw new InputError("Belgium: Statbel publishes one median per quarter, half-year and year, and ProofPrice keeps no history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure.");
-  },
+  noHistory: "Belgium: Statbel publishes one median per quarter, half-year and year, and ProofPrice keeps no history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure.",
 });

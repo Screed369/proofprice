@@ -140,6 +140,9 @@ export interface SourcePlugin {
     /** Short name for the notice sentence, e.g. "the European Commission Weekly Oil Bulletin". Default: info.name. */
     label?: string;
   };
+  /** Optional: the source harvests (for its own answers or stale-if-error) but offers no /history; the text says why and is
+   *  the error a history request gets. Such a source is left out of the history countries everywhere (tools, OpenAPI). */
+  noHistory?: string;
 }
 
 /** One country entry of a tool description, filled from the registry (the source's placeName, countries and info), never typed by hand in a category. */

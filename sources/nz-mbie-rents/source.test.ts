@@ -97,3 +97,8 @@ test("nz-mbie-rents: registered for NZ in the rent category", () => {
   assert.deepEqual(p.countries, ["NZ"]);
   assert.equal(p.examples[0].params.town, "Wellington");
 });
+
+test("nz-mbie-rents: the examples only pass parameters the source applies (no bedrooms)", async () => {
+  const { default: plugin } = await import("./index");
+  for (const ex of plugin.examples) assert.ok(!("bedrooms" in ex.params), JSON.stringify(ex.params));
+});

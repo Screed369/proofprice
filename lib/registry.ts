@@ -350,7 +350,7 @@ export interface HistoryAnswer {
 }
 
 export function historySources(cat: CategoryPlugin): SourcePlugin[] {
-  return sourcesFor(cat.id).filter((s) => s.harvest && s.historyKey);
+  return sourcesFor(cat.id).filter((s) => s.harvest && s.historyKey && !s.noHistory);
 }
 
 const daysCache = new Map<string, number>();
@@ -372,6 +372,7 @@ function knownParams(cat: CategoryPlugin, p: Params): Params {
 
 export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, today = new Date()): HistoryAnswer {
   const { src, prepared } = pickSource(cat, params);
+  if (src.noHistory) throw new InputError(src.noHistory);
   if (!src.harvest || !src.historyKey) {
     throw new InputError(`We do not keep daily history for ${src.info.country} ${cat.noun.toLowerCase()} yet.`);
   }

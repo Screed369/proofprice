@@ -416,3 +416,14 @@ test("be-home-prices: beHomePrices validates input and reports an empty library 
   const amb = snapshotFromRows("2026-06-30", dup.map((d) => ({ area: d.key, item: "apartment/2026Q2", n: 50, median: 200000, low: 150000, high: 250000 })));
   await assert.rejects(() => beHomePrices({ town: "Hamme", property_type: "apartment" }, { snapshot: amb }), /names several places/);
 });
+
+test("Belgium keeps no history: it is not among the home-sales history countries, and a history request says why", async () => {
+  const { categoryById, historySources, runHistory } = await import("../../lib/registry");
+  const { buildOpenApi } = await import("../../lib/openapi");
+  const cat = categoryById("home-sales")!;
+  assert.ok(!historySources(cat).some((s) => s.countries.includes("BE")));
+  const spec: any = buildOpenApi("https://proofprice.com");
+  const hist = spec.paths["/api/v1/home-sales/history"];
+  if (hist) assert.doesNotMatch(hist.get.summary, /\bBE\b/);
+  assert.throws(() => runHistory(cat, { country: "BE", town: "Gent" }), /Statbel publishes one median/);
+});
