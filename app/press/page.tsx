@@ -34,7 +34,7 @@ export default function Press() {
           <strong>{f.sources} official sources</strong>, each listed with its publisher, licence and limits on <a href="/sources">/sources</a>.
         </li>
         <li>
-          <strong>{f.countries} countries</strong> with at least one source: {f.countryNames.join(", ")}.
+          <strong>{f.countries} countries and regions</strong> with at least one source; the country of each source is on <a href="/sources">/sources</a>.
         </li>
         <li>
           <strong>{f.categories.length} categories</strong>: {f.categories.map((c) => c.title).join(", ")}.
