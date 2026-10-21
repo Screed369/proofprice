@@ -1,0 +1,293 @@
+URL: https://www.bankofcanada.ca/valet/observations/group/a4_rates_graph/json?recent=3
+Fetched: 2026-10-21T21:52:02Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 7717
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Disposition: attachment; filename=a4_rates_graph.json
+Content-Type: application/json; charset=utf-8
+X-Dc: t
+X-Generated: 2026-10-21 17:52:02
+X-Valet-Mode: l10
+Cache-Control: max-age=30
+Expires: Wed, 21 Oct 2026 21:52:32 GMT
+Date: Wed, 21 Oct 2026 21:52:02 GMT
+Content-Length: 7717
+Connection: keep-alive
+Server: BoC
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+{
+    "terms": {
+        "url": "https://www.bankofcanada.ca/terms/"
+    },
+    "groupDetail": {
+        "label": "Interest rates charged for new and existing lending by chartered banks",
+        "description": "Month-end, rates in percentage",
+        "link": "https://www.bankofcanada.ca/?p=197471",
+        "metadata": {}
+    },
+    "seriesDetail": {
+        "V122667775": {
+            "label": "Residential mortgages, insured, Total",
+            "description": "Mortgages - Funds advanced",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667780": {
+            "label": "Fixed rate, 5 years and over",
+            "description": "Mortgages - Funds advanced - Residential mortgages, insured, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667781": {
+            "label": "Residential mortgages, uninsured, Total",
+            "description": "Mortgages - Funds advanced",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667786": {
+            "label": "Fixed rate, 5 years and over",
+            "description": "Mortgages - Funds advanced - Residential mortgages, uninsured, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667787": {
+            "label": "Residential mortgages, insured, Total",
+            "description": "Mortgages - Outstanding balances",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667792": {
+            "label": "Fixed rate, 5 years and over",
+            "description": "Mortgages - Outstanding balances - Residential mortgages, insured, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667793": {
+            "label": "Residential mortgages, uninsured, Total",
+            "description": "Mortgages - Outstanding balances",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667798": {
+            "label": "Fixed rate, 5 years and over",
+            "description": "Mortgages - Outstanding balances - Residential mortgages, uninsured, Total",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667799": {
+            "label": "Total variable rate mortgages, Total",
+            "description": "Residential variable rate mortgages - Funds advanced",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667803": {
+            "label": "Consumer credit, Total",
+            "description": "Consumer credit - Funds advanced for non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667809": {
+            "label": "Consumer credit, Total",
+            "description": "Consumer credit - Outstanding balances for non-mortgage loans",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667816": {
+            "label": "Business loans, Total",
+            "description": "Credit extended to corporate sector for mortgage loans - Funds advanced",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        },
+        "V122667821": {
+            "label": "Business loans, Total",
+            "description": "Credit extended to corporate sector - Outstanding balances",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "monthly",
+            "metadata": {}
+        }
+    },
+    "observations": [
+        {
+            "d": "2026-07-01",
+            "V122667821": {
+                "v": "4.64"
+            },
+            "V122667775": {
+                "v": "4.16"
+            },
+            "V122667780": {
+                "v": "4.05"
+            },
+            "V122667781": {
+                "v": "4.29"
+            },
+            "V122667786": {
+                "v": "4.49"
+            },
+            "V122667787": {
+                "v": "3.98"
+            },
+            "V122667792": {
+                "v": "4.02"
+            },
+            "V122667793": {
+                "v": "4.21"
+            },
+            "V122667798": {
+                "v": "4.27"
+            },
+            "V122667799": {
+                "v": "3.86"
+            },
+            "V122667803": {
+                "v": "5.82"
+            },
+            "V122667809": {
+                "v": "7.92"
+            },
+            "V122667816": {
+                "v": "4.40"
+            }
+        },
+        {
+            "d": "2026-06-01",
+            "V122667821": {
+                "v": "4.66"
+            },
+            "V122667775": {
+                "v": "4.22"
+            },
+            "V122667780": {
+                "v": "4.01"
+            },
+            "V122667781": {
+                "v": "4.32"
+            },
+            "V122667786": {
+                "v": "4.35"
+            },
+            "V122667787": {
+                "v": "3.96"
+            },
+            "V122667792": {
+                "v": "3.97"
+            },
+            "V122667793": {
+                "v": "4.21"
+            },
+            "V122667798": {
+                "v": "4.21"
+            },
+            "V122667799": {
+                "v": "3.90"
+            },
+            "V122667803": {
+                "v": "5.78"
+            },
+            "V122667809": {
+                "v": "7.98"
+            },
+            "V122667816": {
+                "v": "4.34"
+            }
+        },
+        {
+            "d": "2026-05-01",
+            "V122667821": {
+                "v": "4.67"
+            },
+            "V122667775": {
+                "v": "4.19"
+            },
+            "V122667780": {
+                "v": "3.96"
+            },
+            "V122667781": {
+                "v": "4.27"
+            },
+            "V122667786": {
+                "v": "4.30"
+            },
+            "V122667787": {
+                "v": "3.94"
+            },
+            "V122667792": {
+                "v": "3.92"
+            },
+            "V122667793": {
+                "v": "4.21"
+            },
+            "V122667798": {
+                "v": "4.13"
+            },
+            "V122667799": {
+                "v": "3.90"
+            },
+            "V122667803": {
+                "v": "5.97"
+            },
+            "V122667809": {
+                "v": "7.99"
+            },
+            "V122667816": {
+                "v": "4.66"
+            }
+        }
+    ]
+}
