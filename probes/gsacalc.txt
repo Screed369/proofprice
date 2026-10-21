@@ -1,0 +1,617 @@
+URL: https://open.gsa.gov/api/dx-calc-api/
+Fetched: 2026-10-21T14:42:15Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 42589
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+date: Wed, 21 Oct 2026 14:42:15 GMT
+x-vcap-request-id: 78efdc4d-b050-4936-5dae-aa41196a24c4
+x-frame-options: SAMEORIGIN
+access-control-allow-methods: GET, HEAD
+cache-control: max-age=60
+last-modified: Thu, 06 Feb 2025 14:06:00 GMT
+strict-transport-security: max-age=31536000; preload
+x-amz-server-side-encryption: AES256
+x-content-type-options: nosniff
+x-robots-tag: all
+x-server: Cloud.gov Pages
+etag: W/"b4fb2fd38c12d21e6ce53eda1cbec5b3"
+vary: Accept-Encoding,Accept-Encoding
+x-cache: Miss from cloudfront
+via: 1.1 7351ee5d4ab750ddb9c643ff1640a5ce.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD61-P15
+x-amz-cf-id: iyqwLRLS1qWezICfHyvPBrksIGvQSXgdVxWrmSsycKE-diJa7DhirA==
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (606)
+=== FIRST 30000 BYTES
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Digital Experience (DX) CALC+ Quick Rate API | GSA Open Technology</title>
+  <meta name="description" content="">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Digital Experience (DX) CALC+ Quick Rate API | GSA Open Technology" />
+  <meta name="twitter:title" content="Digital Experience (DX) CALC+ Quick Rate API | GSA Open Technology">
+  <meta property="og:url" content="https://open.gsa.gov/api/dx-calc-api/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://open.gsa.gov/assets/img/feature-background.jpg">
+  <meta name="twitter:image" content="https://open.gsa.gov/assets/img/feature-background.jpg">
+  <meta property="og:description" content="">
+  <meta name="twitter:description" content="">
+  <meta name="google-site-verification" content="1mdRfaEaI19uCixYkGGmRsv2iA_si1n44fNtk4jzixQ" />
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+
+  <link rel="canonical" href="https://open.gsa.gov/api/dx-calc-api/">
+
+  <script>
+    if (/^www\./.test(window.location.hostname)) {
+      window.location = window.location.href.replace('www.', '');
+    }
+  </script>
+</head>
+
+
+<body>
+    <div id="wrapper">
+        <div id="header"><div class="skip-nav">
+    <a href="#content" class="skips">Skip to main content</a>
+</div>
+
+<header class="usa-header usa-header-extended" role="banner">
+  <!-- Gov banner BEGIN -->
+<div class="usa-banner">
+<div class="usa-accordion">
+  <header class="usa-banner-header">
+    <div class="usa-grid usa-banner-inner">
+    <img src="/assets/uswds/img/favicons/favicon-57.png" alt="U.S. flag">
+    <p>An official website of the United States government</p>
+    <button class="usa-accordion-button usa-banner-button"
+      aria-expanded="false" aria-controls="gov-banner">
+      <span class="usa-banner-button-text">Here's how you know</span>
+    </button>
+    </div>
+  </header>
+  <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+    <div class="usa-banner-guidance-gov usa-width-one-half">
+      <img class="usa-banner-icon usa-media_block-img" src="/assets/uswds/img/icon-dot-gov.svg" alt="Dot gov">
+      <div class="usa-media_block-body">
+        <p>
+          <strong>The .gov means it’s official.</strong>
+          <br>
+          Federal government websites always use a .gov or .mil domain. Before sharing sensitive information online, make sure you’re on a .gov or .mil site by inspecting your browser’s address (or “location”) bar.
+        </p>
+      </div>
+    </div>
+    <div class="usa-banner-guidance-ssl usa-width-one-half">
+      <img class="usa-banner-icon usa-media_block-img" src="/assets/uswds/img/icon-https.svg" alt="SSL">
+      <div class="usa-media_block-body">
+        <p>This site is also protected by an SSL (Secure Sockets Layer) certificate that’s been signed by the U.S. government. The <strong>https://</strong> means all transmitted data is encrypted  — in other words, any information or browsing history that you provide is transmitted securely.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Gov banner END -->
+  <nav class="usa-site-navbar" aria-label="primary navigation">
+    <div class="usa-grid top-nav">
+      <div id="logo">
+        <a href="/" accesskey="1" title="Home" aria-label="Home">
+          <img class="header-logo" src="/assets/img/gsa_logo.svg" alt="GSA Open Technology">
+          <span class="header-title">U.S. General Services Administration</span>
+        </a>
+      </div>
+      <ul class="usa-nav-list usa-unstyled-list">
+        <li class="usa-menu-item"><a href="/search.html"> <i class="fa fa-search"></i> Search</a></li>
+        <li class="usa-menu-item"><a href="/data">Data</a></li>
+        <li class="usa-menu-item"><a href="/api">APIs</a></li>
+        <li class="usa-menu-item"><a href="/code">Code</a></li>
+      </ul>
+    </div>
+    <br/>
+  </nav>
+</header>
+</div>
+        <div id="content">
+  <section class="usa-section usa-section-dark banner-header">
+    <div class="usa-grid">
+        <div class="usa-width-one-whole usa-end-row">
+            <h2>Digital Experience (DX) CALC+ Quick Rate API</h2>  
+        </div>
+    </div>
+</section>
+
+
+
+<main class="usa-grid" id="main" tabindex="-1">
+  <section>
+    <aside class="usa-width-one-fourth sidebar-sticky" style="word-wrap: break-word;">
+  <ul id="toc" class="usa-sidenav-list">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#entrypoint">Entrypoint</a></li>
+<li class="toc-entry toc-h2"><a href="#json-response">JSON Response</a></li>
+<li class="toc-entry toc-h2"><a href="#valid-fields">Valid Fields</a></li>
+<li class="toc-entry toc-h2"><a href="#api-examples">API Examples</a></li>
+<li class="toc-entry toc-h2"><a href="#suggestions">Suggestions</a>
+<ul class="usa-sidenav-sub_list">
+<li class="toc-entry toc-h3"><a href="#suggest-legacy">Suggest (Legacy)</a></li>
+<li class="toc-entry toc-h3"><a href="#multiple-suggestions">Multiple Suggestions</a></li>
+<li class="toc-entry toc-h3"><a href="#suggest-contains-recommended">Suggest-Contains (Recommended)</a>
+<ul class="usa-sidenav-sub_list">
+<li class="toc-entry toc-h4"><a href="#labor-category">Labor Category</a></li>
+<li class="toc-entry toc-h4"><a href="#vendor-name">Vendor Name</a></li>
+<li class="toc-entry toc-h4"><a href="#contract-numbers">Contract Numbers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#exact-match-search">Exact Match Search</a>
+<ul class="usa-sidenav-sub_list">
+<li class="toc-entry toc-h4"><a href="#labor-category-1">Labor Category</a></li>
+<li class="toc-entry toc-h4"><a href="#vendor-name-1">Vendor Name</a></li>
+<li class="toc-entry toc-h4"><a href="#contract-numbers-1">Contract Numbers</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#keyword-search">Keyword Search</a></li>
+<li class="toc-entry toc-h2"><a href="#filtering">Filtering</a>
+<ul class="usa-sidenav-sub_list">
+<li class="toc-entry toc-h3"><a href="#single-filter">Single filter</a></li>
+<li class="toc-entry toc-h3"><a href="#many-filters">Many filters</a></li>
+<li class="toc-entry toc-h3"><a href="#education_level">education_level</a></li>
+<li class="toc-entry toc-h3"><a href="#experience_range">experience_range</a></li>
+<li class="toc-entry toc-h3"><a href="#min_years_experience">min_years_experience</a></li>
+<li class="toc-entry toc-h3"><a href="#price_range">price_range</a></li>
+<li class="toc-entry toc-h3"><a href="#current_price">current_price</a></li>
+<li class="toc-entry toc-h3"><a href="#worksite">worksite</a></li>
+<li class="toc-entry toc-h3"><a href="#business_size">business_size</a></li>
+<li class="toc-entry toc-h3"><a href="#security_clearance">security_clearance</a></li>
+<li class="toc-entry toc-h3"><a href="#sin">sin</a></li>
+<li class="toc-entry toc-h3"><a href="#category">category</a></li>
+<li class="toc-entry toc-h3"><a href="#subcategory">subcategory</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#searching-and-filtering">Searching and Filtering</a>
+<ul class="usa-sidenav-sub_list">
+<li class="toc-entry toc-h4"><a href="#search--filters">Search + Filters</a></li>
+<li class="toc-entry toc-h4"><a href="#keyword--filters">Keyword + Filters</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#ordering">Ordering</a>
+<ul class="usa-sidenav-sub_list">
+<li class="toc-entry toc-h3"><a href="#ordering-with-multiple-fields">Ordering with Multiple Fields</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#excluding">Excluding</a></li>
+<li class="toc-entry toc-h2"><a href="#exporting">Exporting</a></li>
+<li class="toc-entry toc-h2"><a href="#pagination">Pagination</a></li>
+<li class="toc-entry toc-h2"><a href="#aggregations">Aggregations</a></li>
+<li class="toc-entry toc-h2"><a href="#http-response-codes">HTTP Response Codes</a></li>
+<li class="toc-entry toc-h2"><a href="#contact-us">Contact Us</a></li>
+</ul>
+</aside>
+
+<div class="usa-width-three-fourths">
+  <!--link rel="stylesheet" type="text/css" href="../../assets/swaggerui-dist/swagger-ui.css" -->
+<!--link rel="stylesheet" type="text/css" href="../../assets/swaggerui-dist/custom.css" -->
+
+<!-- Alpha status alert -->
+<div class="usa-alert usa-alert-warning" id="site-wide-alert" role="alert">
+   <div class="usa-alert-body">
+     <strong>
+       This project is in BETA
+     </strong>
+     <p class="usa-alert-text">
+        This project is providing Digital Experience (DX) CALC+ Quick Rate API. 
+        Have feedback or questions? <a href="mailto: fasdigitalsupport@gsa.gov">Please let us know</a>!
+     </p>
+   </div>
+ </div>
+<!-- end Alpha status alert -->
+
+<div class="usa-alert usa-alert-error" id="site-wide-alert" role="alert">
+   <div class="usa-alert-body">
+     <p>
+       <strong>LEGACY RATES API DECOMMISSION</strong>
+     </p>
+     <p>
+        <strong>DECOMMISSION DATE: February 2025</strong>
+    </p>
+    <p>
+        The legacy Rates API has been retired.
+    </p>
+    <p>
+        The legacy CALC Rates API has been replaced by a modernized version powered by AWS OpenSearch with a broad range of feature enhancements, optimizations, and data quality improvements.
+     </p>
+     <p>
+        The new CALC+ application (and APIs) can be experienced at the following URL:
+        <a href="https://buy.gsa.gov/pricing/">https://buy.gsa.gov/pricing/</a>
+     </p>     
+     <p>    
+        The new Ceiling-Rates API documentation can be found below.
+     </p>
+   </div>
+ </div>
+
+<h2 id="overview">Overview</h2>
+
+<p>The CALC+ Labor Ceiling Rates tool is a pricing research tool located on buy.gsa.gov to support
+government acquisition professionals in services pricing business intelligence. Acquisition staff
+can use Labor Ceiling Rates data to help conduct market research with price analysis, develop
+Independent Government Cost Estimates (IGCEs), and aid in benchmarking competitive pricing.</p>
+
+<p>Access to the CALC+ Prices Paid tool begins with Pricing Central, <a href="https://buy.gsa.gov/pricing/">https://buy.gsa.gov/pricing/</a>. 
+Access to this tool does not require user credentials or authentication.</p>
+
+<p>The CALC+ Labor Ceiling Rates tool is powered by the CEILINGRATES API.</p>
+
+<p>The CEILINGRATES API data is refreshed everyday overnight.</p>
+
+<h2 id="entrypoint">Entrypoint</h2>
+
+<p>The legacy URL is being retired and you should not use it.
+Please see decommissioning message above.
+https://api.gsa.gov/acquisition/calc/v2/api/rates/</p>
+
+<p><strong>The URL for the CALC+ Quick Rate API is</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/</code></p>
+
+<p>The default API URL used within our application is</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?
+page=1
+&amp;page_size=20
+&amp;ordering=current_price
+&amp;sort=asc
+&amp;filter=experience_range:0,45
+&amp;filter=price_range:15,500
+</code></pre></div></div>
+<p>We use this to provide a sensible default experience for all users when first loading the application.</p>
+
+<h2 id="json-response">JSON Response</h2>
+
+<p>A CEILINGRATES API JSON response will consist of an array of objects nested within a <code class="language-plaintext highlighter-rouge">hits</code> object.
+Here is an example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"hits": {
+    "total": {
+        "value": 10000,
+        "relation": "gte"
+    },
+    "max_score": null,
+    "hits": [
+        {
+            "_index": "ceilingrates",
+            "_type": "_doc",
+            "_id": "6340611",
+            "_score": null,
+            "_source": {
+                "contract_end": "2028-12-17",
+                "security_clearance": "No",
+                "next_year_price": 17.52,
+                "second_year_price": 17.52,
+                "vendor_name": "ALCAZAR TRADES, INC.",
+                "idv_piid": "GS21F026BA",
+                "business_size": "S",
+                "contract_start": "2013-12-18",
+                "labor_category": "Special Event Set-Up",
+                "schedule": "MAS Consolidated MOD Refresh 15+",
+                "cont_end_dtg": "20281217",
+                "min_years_experience": 1,
+                "sin": "561210FAC",
+                "worksite": "Customer Facility",
+                "education_level": "HS",
+                "id": 6340611,
+                "current_price": 17.52,
+                "dt_termg": null,
+                "category": "Facilities",
+                "subcategory": "Facilities Maintenance and Repair",
+                "_timestamp": "2024-05-02T10:00:24Z",
+                "cont_beg_dtg": "20131218"
+            },
+            "sort": [
+                17.52
+            ]
+        },
+        ...etc
+    ]
+}
+</code></pre></div></div>
+
+<h2 id="valid-fields">Valid Fields</h2>
+
+<p><strong>Note</strong></p>
+<ul>
+  <li>These are important to remember as the API will only respond to properly formed requests against valid fields.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Suggestion/Search/Keyword Fields</th>
+      <th>Filter Fields</th>
+      <th>Ordering Fields</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>labor_category</td>
+      <td>education_level</td>
+      <td>labor_category</td>
+    </tr>
+    <tr>
+      <td>vendor_name</td>
+      <td>experience_range</td>
+      <td>current_price</td>
+    </tr>
+    <tr>
+      <td>idv_piid</td>
+      <td>min_years_experience</td>
+      <td>education_level</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>price_range</td>
+      <td>keywords</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>current_price</td>
+      <td>certifications</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>worksite</td>
+      <td>min_years_experience</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>business_size</td>
+      <td>vendor_name</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>security_clearance</td>
+      <td>schedule</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>sin</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>category</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>subcategory</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="api-examples">API Examples</h2>
+
+<h2 id="suggestions">Suggestions</h2>
+
+<ul>
+  <li>Suggestions are useful for retrieving actual values contained within the CEILINGRATES data set.</li>
+  <li>It’s useful to pair these suggestions within your <code class="language-plaintext highlighter-rouge">search=</code> API calls.</li>
+</ul>
+
+<h3 id="suggest-legacy">Suggest (Legacy)</h3>
+
+<p><strong>Note</strong></p>
+<ul>
+  <li>Think, begins with…</li>
+</ul>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest=labor_category:co">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest=labor_category:co</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest=vendor_name:te">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest=vendor_name:te</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest=idv_piid:47q">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest=idv_piid:47q</a></p>
+
+<h3 id="multiple-suggestions">Multiple Suggestions</h3>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest=labor_category:co&amp;suggest=vendor_name:te&amp;suggest=idv_piid:47q">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest=labor_category:co&amp;suggest=vendor_name:te&amp;suggest=idv_piid:47q</a></p>
+
+<h3 id="suggest-contains-recommended">Suggest-Contains (Recommended)</h3>
+
+<p><strong>Note</strong></p>
+<ul>
+  <li>Think, should contain…</li>
+  <li>Does not support submission of multiple suggesters at once.</li>
+  <li>Two character minimum</li>
+</ul>
+
+<h4 id="labor-category">Labor Category</h4>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=labor_category:chief">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=labor_category:chief</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=labor_category:sys">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=labor_category:sys</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=labor_category:pr">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=labor_category:pr</a></p>
+
+<h4 id="vendor-name">Vendor Name</h4>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=vendor_name:adv">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=vendor_name:adv</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=vendor_name:group,">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=vendor_name:group,</a></p>
+
+<h4 id="contract-numbers">Contract Numbers</h4>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=idv_piid:012">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=idv_piid:012</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=idv_piid:f02">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=idv_piid:f02</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=idv_piid:20">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?suggest-contains=idv_piid:20</a></p>
+
+<h2 id="exact-match-search">Exact Match Search</h2>
+
+<p><strong>Note</strong></p>
+<ul>
+  <li>Think, exact match</li>
+</ul>
+
+<h4 id="labor-category-1">Labor Category</h4>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=labor_category:Engineer+II&amp;page=1&amp;page_size=100">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=labor_category:Engineer+II&amp;page=1&amp;page_size=100</a></p>
+
+<h4 id="vendor-name-1">Vendor Name</h4>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=vendor_name:Management+Consulting,+Inc.&amp;page=1&amp;page_size=100">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=vendor_name:Management+Consulting,+Inc.&amp;page=1&amp;page_size=100</a></p>
+
+<h4 id="contract-numbers-1">Contract Numbers</h4>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=idv_piid:GS10F0303V&amp;page=1&amp;page_size=100">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=idv_piid:GS10F0303V&amp;page=1&amp;page_size=100</a></p>
+
+<h2 id="keyword-search">Keyword Search</h2>
+
+<p><strong>Note</strong></p>
+<ul>
+  <li>Think, wildcard</li>
+  <li>Keyword search for partial strings (two character minimum)</li>
+  <li>Keyword searching looks at the following fields:
+    <ul>
+      <li>labor_category</li>
+      <li>vendor_name</li>
+      <li>idv_piid</li>
+    </ul>
+  </li>
+</ul>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;keyword=soft">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;keyword=soft</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;keyword=king">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;keyword=king</a>
+<a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;keyword=f00">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;keyword=f00</a></p>
+
+<h2 id="filtering">Filtering</h2>
+
+<p><strong>Note</strong></p>
+<ul>
+  <li>You can submit one or many filters at once</li>
+  <li>You can combine filters with search or keyword API calls</li>
+</ul>
+
+<h3 id="single-filter">Single filter</h3>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=education_level:BA">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=education_level:BA</a></p>
+
+<h3 id="many-filters">Many filters</h3>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=200&amp;filter=education_level:BA|HS&amp;filter=price_range:10,30&amp;filter=experience_range:3,40">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=200&amp;filter=education_level:BA|HS&amp;filter=price_range:10,30&amp;filter=experience_range:3,40</a></p>
+
+<h3 id="education_level">education_level</h3>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=education_level:MA">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=education_level:MA</a></p>
+
+<h3 id="experience_range">experience_range</h3>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=experience_range:25,40">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=experience_range:25,40</a></p>
+
+<h3 id="min_years_experience">min_years_experience</h3>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=min_years_experience:12">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=min_years_experience:12</a></p>
+
+<h3 id="price_range">price_range</h3>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=price_range:10,80">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=price_range:10,80</a></p>
+
+<h3 id="current_price">current_price</h3>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=current_price:29.62">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=current_price:29.62</a></p>
+
+<h3 id="worksite">worksite</h3>
+
+<p>possible values: contractor, customer, both</p>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=worksite:Contractor">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=worksite:Contractor</a></p>
+
+<h3 id="business_size">business_size</h3>
+
+<dl>
+  <dt>possible values: S, O</dt>
+  <dd>S=Small Business</dd>
+  <dd>O=Other than Small Business</dd>
+</dl>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=business_size:S">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=business_size:S</a></p>
+
+<h3 id="security_clearance">security_clearance</h3>
+
+<dl>
+  <dt>possible values: yes, no</dt>
+  <dd>yes, will pull all variations of ‘yes’</dd>
+  <dd>no, will pull all variations of ‘no’</dd>
+</dl>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=security_clearance:yes">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=security_clearance:yes</a></p>
+
+<h3 id="sin">sin</h3>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=sin:541330ENG">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=sin:541330ENG</a></p>
+
+<h3 id="category">category</h3>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=category:Transportation%20and%20Logistics%20Services">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=category:Transportation%20and%20Logistics%20Services</a></p>
+
+<h3 id="subcategory">subcategory</h3>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=subcategory:Testing%20and%20Analysis">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?page=1&amp;page_size=100&amp;filter=subcategory:Testing%20and%20Analysis</a></p>
+
+<h2 id="searching-and-filtering">Searching and Filtering</h2>
+
+<h4 id="search--filters">Search + Filters</h4>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=labor_category:Project+Manager+II&amp;page=1&amp;page_size=100&amp;filter=education_level:BA|HS|MA&amp;filter=price_range:60,130&amp;filter=experience_range:3,40&amp;filter=business_size:S&amp;filter=site:customer">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=labor_category:Project+Manager+II&amp;page=1&amp;page_size=100&amp;filter=education_level:BA|HS|MA&amp;filter=price_range:60,130&amp;filter=experience_range:3,40&amp;filter=business_size:S&amp;filter=site:customer</a></p>
+
+<h4 id="keyword--filters">Keyword + Filters</h4>
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=Project&amp;page=1&amp;page_size=100&amp;filter=education_level:BA&amp;filter=price_range:60,130&amp;filter=experience_range:3,40&amp;filter=business_size:S&amp;filter=site:customer&amp;filter=security_clearance:no&amp;filter=sin:541620.0">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=Project&amp;page=1&amp;page_size=100&amp;filter=education_level:BA&amp;filter=price_range:60,130&amp;filter=experience_range:3,40&amp;filter=business_size:S&amp;filter=site:customer&amp;filter=security_clearance:no</a></p>
+
+<h2 id="ordering">Ordering</h2>
+
+<p><strong>Note</strong></p>
+<ul>
+  <li>Default order is ascending on current_price</li>
+  <li>You can sort by multiple fields</li>
+  <li>Parameters should be passed in pairs with <strong>ordering</strong> first, then <strong>sort</strong> second</li>
+</ul>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=labor_category&amp;sort=asc">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=labor_category&amp;sort=asc</a></p>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=vendor_name&amp;sort=asc">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=vendor_name&amp;sort=asc</a></p>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=education_level&amp;sort=desc">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=education_level&amp;sort=desc</a></p>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=min_years_experience&amp;sort=desc">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=min_years_experience&amp;sort=desc</a></p>
+
+<h3 id="ordering-with-multiple-fields">Ordering with Multiple Fields</h3>
+
+<p>The API will process field and sort(asc/desc) based on the order the parameters are sent</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">1</th>
+      <th style="text-align: center">2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">&amp;<strong>ordering</strong>=performance_state&amp;<strong>sort</strong>=desc</td>
+      <td style="text-align: center">&amp;<strong>ordering</strong>=performance_city&amp;<strong>sort</strong>=asc</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">&amp;ordering=performance_state&amp;sort=desc&amp;ordering=performance_city&amp;sort=asc</code></p>
+
+<p><strong>Examples</strong></p>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=labor_category:Engineer+II&amp;page=1&amp;page_size=100&amp;ordering=education_level&amp;sort=asc&amp;ordering=current_price&amp;sort=desc">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=labor_category:Engineer+II&amp;page=1&amp;page_size=100&amp;ordering=education_level&amp;sort=asc&amp;ordering=current_price&amp;sort=desc</a></p>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=min_years_experience&amp;sort=desc&amp;ordering=vendor_name&amp;sort=desc">https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=project&amp;page=1&amp;page_size=300&amp;ordering=min_years_experience&amp;sort=desc&amp;ordering=vendor_name&amp;sort=desc</a></p>
+
+<h2 id="excluding">Excluding</h2>
+
+<p><strong>Note</strong></p>
+<ul>
+  <li>Pass in records to exclude by separating them with a pipe <code class="language-plaintext highlighter-rouge">|</code></li>
+  <li>Use the <code class="language-plaintext highlighter-rouge">_id</code> field from a specific record ` “_id”: “6340611”,` to exclude it from results</li>
+  <li>The excluded row is simply omitted from the result set, it is not deleted.</li>
+  <li>Since the excluded rows are not part of the result set returned, they are also not a part of any calculations or aggregations.</li>
+  <li>Since the excluded rows are not part of the result set returned, they will not be included in any exported file.</li>
+</ul>
+
+<p><a href="https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?search=idv_piid:GS10F0303V&amp;page=1&amp;page_size=100&amp;exclude=6275099|6275111|6275123">https://api.g
