@@ -1,0 +1,18 @@
+URL: https://catalogue.data.gov.bc.ca/api/3/action/package_search?q=property+transfer+tax+data&rows=10&fl=name,metadata_modified
+Fetched: 2026-10-21T18:43:43Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1163
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+content-type: application/json;charset=utf-8
+content-length: 1163
+cache-control: public, max-age=0, must-revalidate
+server: Werkzeug/1.0.0 Python/3.8.10
+date: Wed, 21 Oct 2026 18:43:43 GMT
+x-kong-upstream-latency: 13
+x-kong-proxy-latency: 0
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"help": "https://catalogue.data.gov.bc.ca/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 14, "facets": {}, "results": [{"name": "property-transfer-tax-data-2019", "metadata_modified": "2021-06-09T18:01:36.902Z"}, {"name": "property-transfer-tax-data-2020", "metadata_modified": "2021-06-09T17:59:01.300Z"}, {"name": "property-transfer-tax-data-2026", "metadata_modified": "2026-09-14T15:10:11.366Z"}, {"name": "property-transfer-tax-data-2018", "metadata_modified": "2021-06-09T18:03:02.041Z"}, {"name": "property-transfer-tax-data-2025", "metadata_modified": "2026-01-19T15:28:14.392Z"}, {"name": "property-transfer-tax-data-2024", "metadata_modified": "2025-01-20T23:35:12.588Z"}, {"name": "property-transfer-tax-data-2023", "metadata_modified": "2024-01-08T17:20:50.286Z"}, {"name": "property-transfer-tax-data-2022", "metadata_modified": "2023-01-23T19:57:57.044Z"}, {"name": "property-transfer-tax-data-2021", "metadata_modified": "2022-01-31T20:22:40.407Z"}, {"name": "property-transfer-tax-data-2017", "metadata_modified": "2018-11-27T19:11:11.637Z"}], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
