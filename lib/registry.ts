@@ -11,7 +11,7 @@ import { InputError, SourceError, isSourceOutage, withDeadline } from "./http";
 import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
 import { readDaily, readMeta } from "./library/store";
 import { readHistoryMeta, readMonthly } from "./library/backfill";
-import { staleAnswer } from "./stale";
+import { asFallback, staleAnswer } from "./stale";
 import { MIN_PUBLISH } from "./stats";
 import { joinAnd } from "./text";
 
@@ -224,9 +224,68 @@ export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePl
  *  through runCategory, so this one limit bounds all of them. */
 export const ANSWER_DEADLINE_MS = 40_000;
 
+/** The longest a fallback source may take once the primary has failed. With ANSWER_DEADLINE_MS this stays inside Vercel's 60 s. */
+export const FALLBACK_DEADLINE_MS = 15_000;
+
 export interface RunOptions {
   /** Replaces ANSWER_DEADLINE_MS. Tests pass a few milliseconds. */
   deadlineMs?: number;
+  /** Replaces the source list (tests pass fake sources to check the fallback order). Default: SOURCE_PLUGINS. */
+  sources?: SourcePlugin[];
+}
+
+/** Sources that declare they can stand in for `primary` in `country` (SourcePlugin.fallbackFor), in registry order. */
+export function fallbackSources(primary: SourcePlugin, country: string, all: SourcePlugin[] = SOURCE_PLUGINS): SourcePlugin[] {
+  return all.filter(
+    (s) =>
+      s !== primary &&
+      s.category === primary.category &&
+      primary.countries.includes(country) &&
+      !!s.fallbackFor?.sources.includes(primary.info.id) &&
+      s.fallbackFor.countries.includes(country),
+  );
+}
+
+/** What is wrong with the sources' fallbackFor declarations, one plain sentence each (empty when all is well). The registry gate
+ *  (tests/registry.test.ts) fails on any: every listed source must exist in the same category, and every listed country must be one
+ *  of theirs and not one the fallback already answers for itself. */
+export function fallbackProblems(all: SourcePlugin[] = SOURCE_PLUGINS): string[] {
+  const out: string[] = [];
+  const byId = new Map(all.map((s) => [s.info.id, s]));
+  for (const s of all) {
+    const fb = s.fallbackFor;
+    if (!fb) continue;
+    const where = `sources/${s.info.id}: fallbackFor`;
+    if (!fb.sources.length) out.push(`${where}.sources is empty`);
+    if (!fb.countries.length) out.push(`${where}.countries is empty`);
+    const targets: SourcePlugin[] = [];
+    for (const id of fb.sources) {
+      const t = byId.get(id);
+      if (!t) out.push(`${where} names "${id}", which is not a registered source (check the id, or whether that source is offline)`);
+      else if (t === s) out.push(`${where} names the source itself`);
+      else if (t.category !== s.category) out.push(`${where} names "${id}", which answers ${t.category}, not ${s.category}`);
+      else targets.push(t);
+    }
+    for (const c of fb.countries) {
+      if (!/^[A-Z]{2}$/.test(c)) out.push(`${where}: country "${c}" must be an ISO 3166 alpha-2 code`);
+      else if (s.countries.includes(c)) out.push(`${where}: ${c} is already one of this source's own countries`);
+      else if (!targets.some((t) => t.countries.includes(c))) out.push(`${where}: ${c} is not a country of any of ${fb.sources.join(", ")}`);
+    }
+    if (fb.label !== undefined && !fb.label.trim()) out.push(`${where}.label is empty`);
+  }
+  return out;
+}
+
+/** Run one source's handle() within a deadline; a source that does not answer in time fails with a SourceError (504), an outage. */
+function handleWithin(src: SourcePlugin, params: Params, ctx: HandleContext, deadlineMs: number): Promise<PriceAnswer> {
+  return withDeadline((async () => src.handle(params, ctx))(), deadlineMs, () => {
+    console.warn(`[deadline] ${src.info.id} did not answer within ${deadlineMs} ms`);
+    return new SourceError(
+      `The official source did not respond within ${Math.max(1, Math.round(deadlineMs / 1000))} seconds, so ProofPrice stopped waiting. Try again in a minute.`,
+      `source ${src.info.id}`,
+      504,
+    );
+  });
 }
 
 /** Answer one request. Stale-if-error lives here, once, for every source: if the live official source times out, cannot be
@@ -234,25 +293,36 @@ export interface RunOptions {
  *  (a source with harvest() and historyKey()), the answer comes from that snapshot (lib/stale.ts) instead of a 502.
  *  Bad input, an unrecognised reply and sources without library data still fail as before.
  *  A source that has not answered within the deadline counts as down: it fails with a SourceError (status 504) that takes the
- *  same stale-if-error path, so a hung source never holds a request until the platform's own 60 s limit. */
+ *  same stale-if-error path, so a hung source never holds a request until the platform's own 60 s limit.
+ *
+ *  Fallback sources: when there is no recent copy either, a source that declares fallbackFor this source and country answers
+ *  instead, saying so (lib/stale.ts asFallback). The order is: live primary -> primary's copy (<= 7 days) -> fallback source live
+ *  -> fallback source's own copy (<= 7 days) -> the primary's error (502). A fallback is used only when it answers with status ok;
+ *  anything else from it (bad input for that source, no figure, its own outage without a copy) ends in the primary's error. */
 export async function runCategory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, opts: RunOptions = {}): Promise<PriceAnswer> {
   const { src, prepared } = pickSource(cat, params);
   const deadlineMs = opts.deadlineMs ?? ANSWER_DEADLINE_MS;
   try {
-    return await withDeadline((async () => src.handle(prepared, ctx))(), deadlineMs, () => {
-      console.warn(`[deadline] ${src.info.id} did not answer within ${deadlineMs} ms`);
-      return new SourceError(
-        `The official source did not respond within ${Math.max(1, Math.round(deadlineMs / 1000))} seconds, so ProofPrice stopped waiting. Try again in a minute.`,
-        `source ${src.info.id}`,
-        504,
-      );
-    });
+    return await handleWithin(src, prepared, ctx, deadlineMs);
   } catch (err) {
-    if (isSourceOutage(err)) {
-      const stale = staleAnswer({ cat, src, params: prepared, query: knownParams(cat, prepared), error: err, baseUrl: ctx.baseUrl });
-      if (stale) {
-        console.warn(`[stale-if-error] ${src.info.id}: ${(err as Error).message}; answered from the library copy of ${stale.as_of}`);
-        return stale;
+    if (!isSourceOutage(err)) throw err;
+    const query = knownParams(cat, prepared);
+    const stale = staleAnswer({ cat, src, params: prepared, query, error: err, baseUrl: ctx.baseUrl });
+    if (stale) {
+      console.warn(`[stale-if-error] ${src.info.id}: ${(err as Error).message}; answered from the library copy of ${stale.as_of}`);
+      return stale;
+    }
+    for (const fb of fallbackSources(src, String(prepared.country), opts.sources)) {
+      let answer: PriceAnswer | null = null;
+      try {
+        answer = await handleWithin(fb, prepared, ctx, Math.min(deadlineMs, FALLBACK_DEADLINE_MS));
+      } catch (fbErr) {
+        if (isSourceOutage(fbErr)) answer = staleAnswer({ cat, src: fb, params: prepared, query, error: fbErr, baseUrl: ctx.baseUrl });
+        if (!answer) console.warn(`[fallback] ${fb.info.id} could not stand in for ${src.info.id}: ${(fbErr as Error)?.message ?? fbErr}`);
+      }
+      if (answer && answer.status === "ok") {
+        console.warn(`[fallback] ${src.info.id}: ${(err as Error).message}; answered by ${fb.info.id}`);
+        return asFallback(answer, src, fb, err);
       }
     }
     throw err;

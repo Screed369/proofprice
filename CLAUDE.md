@@ -40,6 +40,9 @@ Owner: Simon (non-technical founder). Live at **https://proofprice.com** (public
   returns 5xx and the library holds a snapshot of the same source/area/item from the last 7 days (source has `harvest` +
   `historyKey`), the answer is that copy (status ok, `extra.stale` true, snapshot date in `period`/`as_of`, notice says so).
   A smoke test that passes with `extra.stale: true` (or an `X-ProofPrice-Stale` header on REST) means the live source is down.
+  Fallback sources: a manifest may declare `fallbackFor: { sources, countries, label }` to stand in for a blocked national source.
+  Order: live primary → primary's copy (≤7 days) → fallback live → fallback's copy → 502. The answer stays the fallback's own
+  (source, licence, price_type) with `extra.fallback_for` + `extra.primary_error` and a notice saying so. The gate checks the ids.
 - `app/api/v1/[category]/route.ts` and `[category]/history/route.ts` — REST for every category. Also `coverage`,
   `library` (library status for the Monitor), `receipts/verify`, `receipts/sender-check`.
 - `lib/answer.ts` + `lib/stats.ts` — the one answer format and the statistics. Do not change the answer shape without a Decision.

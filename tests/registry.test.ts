@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { readdirSync, existsSync } from "node:fs";
 import { z } from "zod";
 import {
-  CATEGORIES, SOURCE_PLUGINS, categoryById, exampleUrls, paramSchemas, paramsFromQuery, runCategory, sourcesFor, toolDescription, toolShape,
+  CATEGORIES, SOURCE_PLUGINS, categoryById, exampleUrls, fallbackProblems, paramSchemas, paramsFromQuery, runCategory, sourcesFor, toolDescription, toolShape,
 } from "../lib/registry";
 import { SOURCE_FOLDERS, CATEGORY_FOLDERS } from "../lib/registry.generated";
 import { normaliseCountry } from "../lib/countries";
@@ -74,6 +74,22 @@ test("sources: manifests are complete and honest", () => {
     for (const k of Object.keys(s.paramValues ?? {})) assert.ok(k in cat.params, `${where}: paramValues.${k} is not a parameter of ${cat.id}`);
     if (s.harvest && cat.history) assert.ok(s.historyKey, `${where}: has harvest() but no historyKey()`);
   });
+});
+
+test("fallbackFor: every stand-in names registered sources of the same category and countries they cover", () => {
+  assert.deepEqual(fallbackProblems(), []);
+  // the checker itself catches each kind of mistake
+  const it = SOURCE_PLUGINS.find((s) => s.info.id === "it-fuel")!;
+  const wob = SOURCE_PLUGINS.find((s) => s.info.id === "eu-oil-bulletin")!;
+  const fi = SOURCE_PLUGINS.find((s) => s.info.id === "fi-home-prices")!;
+  const bad = (fallbackFor: any) => fallbackProblems([it, fi, { ...wob, fallbackFor }]).join(" | ");
+  assert.match(bad({ sources: ["xx-nothing"], countries: ["IT"] }), /"xx-nothing", which is not a registered source/);
+  assert.match(bad({ sources: ["fi-home-prices"], countries: ["FI"] }), /answers home-sales, not fuel/);
+  assert.match(bad({ sources: ["it-fuel"], countries: ["FR"] }), /FR is not a country of any of it-fuel/);
+  assert.match(bad({ sources: ["it-fuel"], countries: ["IE"] }), /IE is already one of this source's own countries/);
+  assert.match(bad({ sources: ["it-fuel"], countries: ["italy"] }), /must be an ISO 3166 alpha-2 code/);
+  assert.match(bad({ sources: [], countries: [] }), /sources is empty.*countries is empty/);
+  assert.deepEqual(fallbackProblems([it, { ...wob, fallbackFor: { sources: ["it-fuel"], countries: ["IT"] } }]), []);
 });
 
 test("every tool schema builds and describes every covered place", () => {

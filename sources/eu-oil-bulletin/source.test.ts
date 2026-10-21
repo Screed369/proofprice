@@ -17,7 +17,7 @@ import { InputError, SourceError } from "../../lib/http";
 import { HISTORY_ROWS } from "./fixtures";
 import def from "./index";
 import {
-  COUNTRIES, HISTORY_URL, INFO, NATIONAL_CURRENCY, findHistoryUrl, harvestOptions, parseHistory, pickPrevious, pickYearEarlier, previousWeek,
+  COUNTRIES, HISTORY_URL, INFO, NATIONAL_CURRENCY, STAND_IN, findHistoryUrl, harvestOptions, parseHistory, pickPrevious, pickYearEarlier, previousWeek,
   wobAnswer, wobFuelNow, wobHarvest, wobHistoryKey, wobMonthly, wobResult, wobRows, yearEarlierWeek,
 } from "./source";
 
@@ -34,7 +34,7 @@ function libraryWithFixture(): string {
   return dir;
 }
 
-test("parseHistory: newest week first, euro per litre, only the countries this source answers for", () => {
+test("parseHistory: newest week first, euro per litre, only the countries this source answers or stands in for", () => {
   const w = weeks();
   assert.equal(w.length, 6);
   assert.deepEqual(w.map((x) => x.date), ["2026-10-12", "2026-10-05", "2026-09-28", "2025-10-20", "2025-10-13", "2025-10-06"]);
@@ -44,7 +44,10 @@ test("parseHistory: newest week first, euro per litre, only the countries this s
   assert.equal(w[0].prices.PL.lpg, 0.77337);
   assert.equal(w[0].prices.DE.lpg, 1.133);
   assert.equal(w[0].prices.EU.petrol95, 2.00976); // the EU27 weighted average
-  assert.ok(!("FR" in w[0].prices), "France is answered by its own source");
+  // France is answered by its own source; the bulletin's figure is kept so it can stand in when that source is down
+  assert.ok(w[0].prices.FR.diesel! > 1 && w[0].prices.FR.diesel! < 3, "France's diesel in euro per litre");
+  assert.ok(w[0].prices.FR.petrol95! > 1 && w[0].prices.FR.petrol95! < 3);
+  assert.ok(!("AT" in w[0].prices), "Austria has no national source to stand in for");
   assert.ok(!("EUR" in w[0].prices), "the euro-area column is not kept");
   assert.equal(w[0].fx.PL, 0.2280501710);
   assert.equal(w[0].fx.BG, 1);
@@ -93,7 +96,9 @@ test("library rows: published figures, dated earlier prices, exchange rates only
   assert.equal(get("PL", "fx@2025-10-13"), 0.2346591576);
   assert.equal(get("BG", "fx"), undefined);
   assert.equal(get("DE", "fx"), undefined);
-  assert.ok(!rows.some((r) => ["ES", "FR", "IT", "AT", "EUR"].includes(r.area)));
+  assert.ok(!rows.some((r) => ["AT", "EUR"].includes(r.area)));
+  assert.ok(rows.some((r) => r.area === "FR" && r.item === "diesel"), "stand-in rows are kept for France");
+  assert.ok(!rows.some((r) => r.area === "FR" && r.item === "fx"), "France is in the euro");
   assert.ok(rows.some((r) => r.area === "MT" && r.item === "heating_oil" && r.median === 1));
   assert.ok(!rows.some((r) => r.item.includes("@") && !/@\d{4}-\d{2}-\d{2}$/.test(r.item)));
   assert.deepEqual(Object.keys(NATIONAL_CURRENCY).sort(), ["CZ", "DK", "HU", "PL", "RO", "SE"]);
@@ -283,9 +288,26 @@ test("input errors are InputErrors with a way forward", async () => {
     for (const fuel of ["petrol98", "e10", "e85", "methane"]) {
       await assert.rejects(wobFuelNow({ country: "IE", fuel }, NOW), (e: any) => e instanceof InputError && /petrol95 \(Euro-super 95\), diesel or lpg/.test(e.message));
     }
-    for (const country of ["ES", "FR", "IT", "AT", "GB", "XX"]) {
+    for (const country of ["AT", "GB", "XX"]) {
       await assert.rejects(wobFuelNow({ country, fuel: "diesel" }, NOW), (e: any) => e instanceof InputError && /answers for IE, DE/.test(e.message));
     }
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
+});
+
+test("standing in for a national source: France's national figure, and a place is answered nationally without claiming coverage", async () => {
+  libraryWithFixture();
+  try {
+    const a = await wobFuelNow({ country: "FR", fuel: "diesel", postcode: "75015" }, NOW);
+    assert.equal(a.status, "ok");
+    assert.equal(a.source.id, "eu-oil-bulletin");
+    assert.equal(a.price_type, "official_statistic");
+    assert.equal(a.sample_size, null);
+    assert.match(a.summary, /^This is the national average for France, not a figure for postcode 75015\. In France the average pump price of diesel/);
+    assert.ok(!/covered by national averages only/.test(a.summary));
+    assert.equal((a.extra as any).answered_as, "national average");
+    assert.deepEqual(STAND_IN, { ES: "Spain", FR: "France", IT: "Italy" });
   } finally {
     delete process.env.PROOFPRICE_LIBRARY_DIR;
   }
@@ -317,6 +339,8 @@ test("manifest and INFO: the countries, the examples, the licence quoted from th
   assert.deepEqual([...def.countries].sort(), "IE DE NL BE PT PL DK SE FI LU GR CZ SK SI HR HU RO BG EE LV LT CY MT".split(" ").sort());
   assert.deepEqual(def.countries, Object.keys(COUNTRIES));
   for (const c of ["ES", "FR", "IT", "AT"]) assert.ok(!def.countries.includes(c), `${c} has its own source`);
+  assert.deepEqual(def.fallbackFor, { sources: ["it-fuel", "fr-fuel", "es-fuel"], countries: ["IT", "FR", "ES"], label: "the European Commission Weekly Oil Bulletin" });
+  assert.match(INFO.limits, /this bulletin's national figure for that country is given instead and the answer says so/);
   assert.equal(def.category, "fuel");
   assert.deepEqual(def.examples[0].params, { country: "IE", fuel: "diesel" });
   assert.deepEqual(def.examples.map((e) => e.params.country), ["IE", "DE", "PL"]);

@@ -104,3 +104,35 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
     return null; // any trouble reading the library: fall back to the honest 502
   }
 }
+
+// ---------- fallback sources ----------
+// When a national source cannot be reached and we hold no recent copy of it, another source that declares fallbackFor (for
+// example the European Commission's Weekly Oil Bulletin for Italian, French and Spanish pump prices) may answer instead. The
+// answer stays that source's own answer: its source block, licence, attribution, price_type and evidence are untouched. Only the
+// notice and summary say plainly that it stands in, and extra carries fallback_for and primary_error so an agent or the Monitor
+// can tell it apart from the primary source's answer.
+
+/** The sentence agents and people see, word for word. */
+export const fallbackSentence = (primaryName: string, fallbackName: string) =>
+  `The national source (${primaryName}) could not be reached; this is ${fallbackName}'s national figure instead.`;
+
+/** A short, URL-free reason the primary source failed. */
+export function shortError(err: unknown): string {
+  const e: any = err;
+  return String(e?.message ?? e ?? "unknown").replace(/https?:\/\/\S+/g, "(link)").slice(0, 200);
+}
+
+/** Mark an answer from a fallback source as standing in for `primary`. */
+export function asFallback(answer: PriceAnswer, primary: SourcePlugin, fallback: SourcePlugin, error: unknown): PriceAnswer {
+  const sentence = fallbackSentence(primary.info.publisher, fallback.fallbackFor?.label ?? fallback.info.name);
+  return {
+    ...answer,
+    summary: `${sentence} ${answer.summary}`,
+    notice: `${sentence} ${answer.notice}`,
+    extra: {
+      ...(answer.extra ?? {}),
+      fallback_for: primary.info.id,
+      primary_error: shortError(error),
+    },
+  };
+}

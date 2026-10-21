@@ -127,6 +127,19 @@ export interface SourcePlugin {
   nominalCounts?: boolean;
   /** Optional: map a request to the library keys used by harvest, so /history can answer. */
   historyKey?(params: Params, opts?: { monthly?: boolean }): { area: string; item: string; label: string } | null;
+  /** Optional: this source can stand in for other sources of the same category, in the given countries, when they cannot be
+   *  reached. runCategory (lib/registry.ts) tries it only after the primary source failed with an outage (timeout, network error,
+   *  5xx) AND no library copy of the primary from the last 7 days exists. The answer stays this source's own answer (its source,
+   *  licence, attribution, price_type, evidence); the notice and extra.fallback_for say it stands in. The registry gate checks that
+   *  every listed source exists in the same category and that every listed country is one of theirs. */
+  fallbackFor?: {
+    /** Ids of the sources this one can stand in for, e.g. ["it-fuel", "fr-fuel"]. */
+    sources: string[];
+    /** ISO codes it can answer for when standing in, e.g. ["IT", "FR"]. Each must be a country of one of `sources`. */
+    countries: string[];
+    /** Short name for the notice sentence, e.g. "the European Commission Weekly Oil Bulletin". Default: info.name. */
+    label?: string;
+  };
 }
 
 /** One country entry of a tool description, filled from the registry (the source's placeName, countries and info), never typed by hand in a category. */
