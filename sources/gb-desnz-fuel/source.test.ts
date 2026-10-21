@@ -15,7 +15,7 @@ import { InputError, SourceError } from "../../lib/http";
 import { CONTENT_ATTACHMENTS, CSV_TEXT } from "./fixtures";
 import def from "./index";
 import {
-  CONTENT_API, INFO, csvCandidates, desnzAnswer, desnzFuelNow, desnzHarvest, desnzHistoryKey, desnzResult, desnzRows, harvestOptions, parseDesnzCsv,
+  CONTENT_API, INFO, csvCandidates, desnzAnswer, desnzFuelNow, desnzHarvest, desnzHistoryKey, desnzMonthly, desnzBackfill, desnzResult, desnzRows, harvestOptions, parseDesnzCsv,
   previousOf, yearEarlierOf,
 } from "./source";
 
@@ -233,4 +233,45 @@ test("manifest and INFO: GB only, the examples, the licence quoted from gov.uk",
   assert.match(INFO.licence, /All content is available under the Open Government Licence v3\.0, except where otherwise stated/);
   assert.equal(INFO.homepage, "https://www.gov.uk/government/statistics/weekly-road-fuel-prices");
   assert.match(INFO.limits, /whole United Kingdom/);
+});
+
+test("backfill: monthly mean, cheapest and dearest week; thin months and duplicate weeks handled", () => {
+  const wk = (date: string, ulsp: number, ulsd: number) => ({ date, ulsp, ulsd, ulspDuty: null, ulsdDuty: null, ulspVat: null, ulsdVat: null });
+  const weeks = [
+    wk("2003-06-09", 74.5, 76.5), wk("2003-06-16", 74.5, 76.5), wk("2003-06-16", 74.5, 76.5), wk("2003-06-23", 75.5, 77.5), wk("2003-06-30", 75.5, 77.5),
+    wk("2003-07-07", 74, 76), wk("2003-07-14", 74, 76), // only 2 weeks: left out
+  ];
+  const p = desnzMonthly(weeks, "2003-01", "2003-12");
+  assert.equal(p.length, 1);
+  assert.equal(p[0].period, "2003-06");
+  const petrol = p[0].rows.find((r) => r.item === "petrol95")!;
+  assert.equal(petrol.median, 0.75);
+  assert.equal(petrol.low, 0.745);
+  assert.equal(petrol.high, 0.755);
+  assert.equal(petrol.n, 5);
+  assert.equal(petrol.area, "ALL");
+  assert.equal(desnzMonthly(weeks, "2004-01", "2004-12").length, 0);
+});
+
+test("backfill: merges the old and new CSV through the Content API", async () => {
+  const old = "Date,ULSP (Ultra low sulphur unleaded petrol) Pump price in pence/litre,ULSD (Ultra low sulphur diesel) Pump price in pence/litre\n" +
+    Array.from({ length: 60 }, (_, i) => `${String(1 + ((i * 7) % 28)).padStart(2, "0")}/${String(1 + Math.floor(i / 4) % 12).padStart(2, "0")}/${2003 + Math.floor(i / 48)},70.${i % 10},72.${i % 10}`).join("\n");
+  const real = globalThis.fetch;
+  harvestOptions.retryDelayMs = 0;
+  globalThis.fetch = (async (url: any) => {
+    const u = String(url);
+    if (u.startsWith(CONTENT_API)) return new Response(JSON.stringify({ details: { attachments: [
+      { title: "Weekly road fuel prices (CSV) 2018 to 2026", url: "https://x.test/new.csv" },
+      { title: "Weekly road fuel prices (CSV) 2003 to 2017", url: "https://x.test/old.csv" } ] } }), { headers: { "content-type": "application/json" } });
+    return new Response(u.endsWith("new.csv") ? CSV_TEXT : old);
+  }) as typeof fetch;
+  try {
+    const r = await desnzBackfill("2003-01-01", "2026-09-30");
+    assert.equal(r.currency, "GBP");
+    assert.equal(r.unit, "per litre");
+    assert.ok(r.periods.length > 3);
+    for (const per of r.periods) for (const row of per.rows) assert.ok(row.median > 0.3 && row.median < 3);
+  } finally {
+    globalThis.fetch = real;
+  }
 });

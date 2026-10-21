@@ -19,7 +19,7 @@
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError, fetchJson } from "../../lib/http";
-import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { NATIONAL } from "../../lib/library/aggregate";
 import { readLatestDay } from "../../lib/library/store";
 
@@ -268,6 +268,72 @@ export async function desnzHarvest(): Promise<HarvestResult> {
     }
   }
   throw lastError instanceof Error ? lastError : new SourceError("No usable DESNZ road fuel CSV found");
+}
+
+// ---------- history backfill (monthly averages of the weekly figures) ----------
+
+/** A month needs at least this many weekly figures to get a value (a partial month would mislead). */
+export const MIN_WEEKS_PER_MONTH = 3;
+const r5 = (v: number) => Math.round(v * 100000) / 100000;
+
+/** Pure: monthly figures from weekly national figures (GBP per litre). median = the average of the weeks in that month,
+ *  low/min = the cheapest week, high/max = the dearest week. n = 5 is the placeholder the daily rows use (a published
+ *  figure, not a count of records). Months with fewer than MIN_WEEKS_PER_MONTH weeks are left out. Duplicate dates collapse. */
+export function desnzMonthly(weeks: DesnzWeek[], fromMonth: string, toMonth: string): BackfillResult["periods"] {
+  const seen = new Map<string, DesnzWeek>();
+  for (const w of weeks) seen.set(w.date, w);
+  const byMonth = new Map<string, DesnzWeek[]>();
+  for (const w of seen.values()) {
+    const m = w.date.slice(0, 7);
+    if (m < fromMonth || m > toMonth) continue;
+    const list = byMonth.get(m) ?? [];
+    list.push(w);
+    byMonth.set(m, list);
+  }
+  const periods: BackfillResult["periods"] = [];
+  for (const m of [...byMonth.keys()].sort()) {
+    const ws = byMonth.get(m)!;
+    if (ws.length < MIN_WEEKS_PER_MONTH) continue;
+    const rows: DailyRow[] = [];
+    for (const [item, pick] of [["petrol95", (w: DesnzWeek) => w.ulsp], ["diesel", (w: DesnzWeek) => w.ulsd]] as const) {
+      const vals = ws.map((w) => gbp(pick(w)));
+      const lo = Math.min(...vals);
+      const hi = Math.max(...vals);
+      rows.push({ area: NATIONAL, item, n: 5, median: r5(vals.reduce((a, b) => a + b, 0) / vals.length), low: lo, high: hi, min: lo, max: hi });
+    }
+    periods.push({ period: m, rows });
+  }
+  return periods;
+}
+
+/** gov.uk keeps two CSVs (2003 to 2017 and 2018 to now); both are read and merged, so one run covers any range. */
+export async function desnzBackfill(from: string, to: string): Promise<BackfillResult> {
+  const content = await fetchJson(CONTENT_API, { headers: { "user-agent": UA } }, 30000);
+  const urls = csvCandidates(content);
+  if (!urls.length) throw new SourceError("The gov.uk page for the weekly road fuel prices lists no CSV file; it may have changed and this source needs updating.");
+  const weeks: DesnzWeek[] = [];
+  let parsed = 0;
+  for (const url of urls) {
+    try {
+      weeks.push(...parseDesnzCsv(await downloadText(url)));
+      parsed++;
+    } catch (e) {
+      console.log(`skipped ${url}: ${(e as Error).message}`);
+    }
+    await new Promise((r) => setTimeout(r, harvestOptions.retryDelayMs));
+  }
+  if (!parsed) throw new SourceError("No usable DESNZ road fuel CSV found");
+  weeks.sort((a, b) => a.date.localeCompare(b.date));
+  const periods = desnzMonthly(weeks, from.slice(0, 7), to.slice(0, 7));
+  console.log(`files read: ${parsed}; weeks: ${weeks.length} (${weeks[0]?.date} to ${weeks[weeks.length - 1]?.date}); months: ${periods.length}; rows: ${periods.reduce((a, p) => a + p.rows.length, 0)}`);
+  return {
+    currency: "GBP",
+    unit: "per litre",
+    periods,
+    note:
+      "DESNZ Weekly road fuel prices: monthly figures from the weekly UK national averages of ULSP (petrol95) and ULSD (diesel), pounds per litre. median = average of the weekly figures in the month (at least 3 weeks); low/high = the cheapest and dearest week. " +
+      "Published figures, not counts of records (n=5 is a placeholder).",
+  };
 }
 
 // ---------- answering ----------

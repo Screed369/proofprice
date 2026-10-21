@@ -1,7 +1,7 @@
 // Manifest: United Kingdom national average pump prices (DESNZ weekly road fuel prices). Logic lives in ./source.ts.
 // Answers come from the price library, filled by the collector from the weekly CSV on gov.uk.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, desnzFuelNow, desnzHarvest, desnzHistoryKey } from "./source";
+import { INFO, desnzBackfill, desnzFuelNow, desnzHarvest, desnzHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -33,5 +33,6 @@ export default defineSource({
     }),
   nominalCounts: true,
   harvest: desnzHarvest,
+  backfill: desnzBackfill,
   historyKey: (p) => desnzHistoryKey({ fuel: String(p.fuel) }),
 });
