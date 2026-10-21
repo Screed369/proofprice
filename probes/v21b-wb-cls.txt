@@ -1,0 +1,24 @@
+URL: https://api.worldbank.org/v2/sources/90/classification?format=json
+Fetched: 2026-10-21T12:46:59Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1449
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 21 Oct 2026 12:46:59 GMT
+content-type: application/json;charset=utf-8
+set-cookie: __cf_bm=uhc2Ho0iMY9Sn.Z7ZCGc5XEYnAzYmYanyrhBPhIV6aA-1792586818.5763752-1.0.1.1-iObtDOYcdiZiRRMmeX5_9D6abLyumbro.p0K0LA1cwTCElgdVZiFoeeXQxybXMXwAk6G7Yf6Jqw7KmMy1iaY.Lzd8wTwOT2VXHPeQ0BWzTF5J1xf8frS1t075PLU1KTa; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org; Expires=Wed, 21 Oct 2026 13:16:59 GMT
+set-cookie: _cfuvid=5IMriNy5xoGevQ3H2GscKuv4701HH2b6vnjbUaWXBzo-1792586818.5763752-1.0.1.1-Fj5m1ucdbeOnKoUney5_e1pzJj1FBzp9RTZltiG.jF0; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org
+cf-ray: a4e05e4018653a69-LAX
+cf-cache-status: EXPIRED
+cache-control: public, max-age=86400
+expires: Thu, 22 Oct 2026 12:46:59 GMT
+last-modified: Wed, 21 Oct 2026 12:46:59 GMT
+server: cloudflare
+vary: accept-encoding
+request-context: appId=cid-v1:da002513-bd8b-4441-9f30-737944134422
+x-powered-by: ASP.NET
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"page":1,"pages":1,"per_page":50,"total":17,"source":[{"id":"90","name":"ICP 2021","concept":[{"id":"classification","name":"classification","variable":[{"id":"AICZS","value":"Expenditure component share of AIC (AIC = 100%)"},{"id":"CD","value":"Expenditure, market exchange rate-based (US$, billions)"},{"id":"CD.ZS","value":"Share of global expenditure, market exchange rate-based (World = 100%)"},{"id":"CN","value":"Expenditure (local currency units, billions)"},{"id":"EXR","value":"Market exchange rate (US$ = 1)"},{"id":"PCAP.CD","value":"Expenditure per capita, market exchange rate-based (US$)"},{"id":"PCAP.CD.IX.US","value":"Expenditure per capita index, market exchange rate-based (United States= 100)"},{"id":"PCAP.CD.IX.WL","value":"Expenditure per capita index, market exchange rate-based (World = 100)"},{"id":"PCAP.PP","value":"Expenditure per capita, PPP-based (US$)"},{"id":"PCAP.PP.IX.US","value":"Expenditure per capita index, PPP-based (United States = 100)"},{"id":"PCAP.PP.IX.WL","value":"Expenditure per capita index, PPP-based (World = 100)"},{"id":"POP","value":"Population"},{"id":"PP.CD","value":"Expenditure, PPP-based (US$, billions)"},{"id":"PP.CD.ZS","value":"Share of global expenditure, PPP-based (World = 100%)"},{"id":"PPPGlob","value":"Purchasing power parity (PPP) (US$ = 1)"},{"id":"PX.WL","value":"Price level index (World = 100)"},{"id":"ZS","value":"Expenditure component share of GDP (GDP = 100%)"}]}]}]}
