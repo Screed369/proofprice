@@ -1,0 +1,41 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/80416ned/Perioden?$top=3
+Fetched: 2026-10-21T01:42:10Z from GitHub Actions
+Status, type, bytes: 200 application/json 444
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 01:42:09 GMT
+Content-Length: 444
+TXID: 015836c7
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=01650054-1871-1ad8-9678-0050569bed16_3900806926_0079802300_00000000000022558407; Path=/; Expires=Wed, 21-Oct-2026 01:42:24 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/80416ned/$metadata#Cbs.OData.WebAPI.Perioden","value":[
+    {
+      "Key":"20060101","Title":"2006 zondag 1 januari","Description":"","Status":"Definitief"
+    },{
+      "Key":"20060102","Title":"2006 maandag 2 januari","Description":"","Status":"Definitief"
+    },{
+      "Key":"20060103","Title":"2006 dinsdag 3 januari","Description":"","Status":"Definitief"
+    }
+  ]
+}
