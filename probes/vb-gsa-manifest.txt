@@ -1,0 +1,67 @@
+URL: https://raw.githubusercontent.com/benswork-space/us-government-surplus-dataset/main/manifest.json
+Fetched: 2026-10-21T11:44:16Z from GitHub Actions
+Status, type, bytes: 200 text/plain; charset=utf-8 713
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+cache-control: max-age=300
+content-security-policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+content-type: text/plain; charset=utf-8
+etag: "e76982b9cfaf70ab2679031a9ba30476139e7e4fbd0c3897616f08be0a315e2b"
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-frame-options: deny
+x-xss-protection: 1; mode=block
+x-github-request-id: 8516:AD2E1:106DD9:12E6C4:6AD8A58C
+x-github-edge-region: iad
+accept-ranges: bytes
+date: Wed, 21 Oct 2026 11:44:16 GMT
+via: 1.1 varnish
+x-served-by: cache-dfw-kdfw8210034-DFW
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1792583056.014852,VS0,VE119
+vary: Authorization,Accept-Encoding
+access-control-allow-origin: *
+cross-origin-resource-policy: cross-origin
+x-fastly-request-id: 43897ff9bb476b296f147e81b9f2359118d130b8
+expires: Wed, 21 Oct 2026 11:49:16 GMT
+source-age: 0
+content-length: 713
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "name": "U.S. Government (GSA) Surplus Auction Dataset",
+  "publisher": "GovAuctions (https://govauctions.app)",
+  "sourcePage": "https://govauctions.app/research/state-of-government-surplus",
+  "license": "CC-BY-4.0",
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-10-01",
+  "rowCount": 13837,
+  "columns": [
+    "id",
+    "title",
+    "category",
+    "condition",
+    "seller_type",
+    "state",
+    "city",
+    "zip",
+    "currency",
+    "starting_bid",
+    "current_or_final_bid",
+    "bid_count",
+    "buyer_premium_pct",
+    "sold",
+    "ended_at",
+    "source_url"
+  ],
+  "coverage": {
+    "source": "gsa",
+    "country": "US",
+    "earliestEnded": "2026-05-06",
+    "latestEnded": "2026-10-08"
+  }
+}
