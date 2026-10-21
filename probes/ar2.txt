@@ -1,0 +1,25 @@
+URL: https://apis.datos.gob.ar/series/api/series/?ids=150.1_CSCB_DICIEMBRE_0_0_31&limit=3&format=json
+Fetched: 2026-10-21T08:42:24Z from GitHub Actions
+Status, type, bytes: 400 application/json 123
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+date: Wed, 21 Oct 2026 08:42:24 GMT
+content-type: application/json
+content-length: 123
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+x-frame-options: SAMEORIGIN
+vary: Origin
+access-control-allow-origin: *
+x-kong-upstream-latency: 174
+x-kong-proxy-latency: 0
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=kRjP3Q3gVNWJOhy0bwQ%2FEn7flVPlKDhhPzUhlYQc1fnYduQkgqJgCo6wbEHq6UIwQ6a%2BRMNSkuHR%2FN6AGoeZxePMbz5Kv3RKsHo4kd05mXjvZ8WNcWOfdvvQTH8jF3KExqe3Zg%3D%3D"}]}
+cf-ray: a4def7f7aa87ef68-IAD
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"errors": [{"error": "Serie inexistente: 150.1_CSCB_DICIEMBRE_0_0_31"}], "failed_series": ["150.1_CSCB_DICIEMBRE_0_0_31"]}
