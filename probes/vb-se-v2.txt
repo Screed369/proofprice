@@ -1,0 +1,26 @@
+URL: https://api.scb.se/OV0104/v2beta/api/v2/tables?query=SSDHalvarElHus&lang=en
+Fetched: 2026-10-21T07:44:23Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1408
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Length: 1408
+Content-Type: application/json; charset=utf-8
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-21T07:44:33.7812869Z
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Wed, 21 Oct 2026 07:44:23 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Max-Age: 86400
+Allow: GET,HEAD,POST,OPTIONS
+Vary: Origin, Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: TS0187a64b=017dca055c76f1d2e882fe34bbcaa118f0ef073cf30647e461a627b6d4ae8bc625d61af048e79d83245060b82d12fa7671c9e15295; Path=/; Domain=.api.scb.se; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"language":"en","tables":[{"id":"TAB4310","label":"Electricity prices for households by consumer category. Half-year 2014H2-2026H1","description":"","sortCode":"06","updated":"2026-09-28T06:00:00Z","firstPeriod":"2014H2","lastPeriod":"2026H1","category":"public","variableNames":["consumer category (annual electricity consumption kWh)","observations","half-year"],"source":"Statistics Sweden","subjectCode":"EN","timeUnit":"Other","paths":[[{"id":"EN","label":"Energy","sortCode":"Energy"},{"id":"EN0301","label":"Electricity prices and electricity contracts","sortCode":"Electricity prices and electricity contracts"},{"id":"EN0301A","label":"Electricity prices and electricity contracts","sortCode":"01"}]],"links":[{"rel":"self","hreflang":"en","href":"https://api.scb.se/OV0104/v2beta/api/v2/tables/TAB4310?lang=en"},{"rel":"alternate","hreflang":"sv","href":"https://api.scb.se/OV0104/v2beta/api/v2/tables/TAB4310?lang=sv"},{"rel":"metadata","hreflang":"en","href":"https://api.scb.se/OV0104/v2beta/api/v2/tables/TAB4310/metadata?lang=en"},{"rel":"data","hreflang":"en","href":"https://api.scb.se/OV0104/v2beta/api/v2/tables/TAB4310/data?lang=en&outputFormat=px"}]}],"page":{"pageNumber":1,"pageSize":20,"totalElements":1,"totalPages":1,"links":[]},"links":[{"rel":"self","hreflang":"en","href":"https://api.scb.se/OV0104/v2beta/api/v2/tables/?lang=en&query=SSDHalvarElHus&pagesize=20&pageNumber=1"}]}
