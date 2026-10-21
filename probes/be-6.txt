@@ -1,0 +1,807 @@
+URL: https://www.eia.gov/dnav/ng/ng_pri_sum_a_EPG0_PCS_DMcf_m.htm
+Fetched: 2026-10-21T21:40:24Z from GitHub Actions
+Status, type, bytes: 200 text/html 43120
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Mon, 28 Sep 2026 13:25:26 GMT
+Accept-Ranges: bytes
+ETag: "0e793d24c4fdd1:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Strict-Transport-Security: max-age=31536000
+Content-Length: 43120
+Expires: Wed, 21 Oct 2026 21:40:24 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Pragma: no-cache
+Date: Wed, 21 Oct 2026 21:40:24 GMT
+Connection: keep-alive
+Alt-Svc: h3=":443"; ma=93600
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (990), with CRLF, CR line terminators
+=== FIRST 30000 BYTES
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Average Commercial Price </title>
+	<meta name="robots" content="index, follow">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<link rel="StyleSheet" href="Styles/ng_wrapper3.css" TYPE="text/css">
+		<link rel="StyleSheet" href="Styles/ng_data4.css" TYPE="text/css">
+		<link rel="StyleSheet" href="Styles/Nav_Print.css" TYPE="text/css" media="print">
+	    <link rel="stylesheet" href="/styles/Eia_sitewideF.css" type="text/css" />				
+		
+ <NOSCRIPT>
+	  <H3>This page uses JavaScipt</H3>
+	  <ul>
+	  <li>Please use Internet Explorer 3+ or Netscape Navigator 3+
+	  <li>Make sure that JavaScript is enabled in your browser
+	  </ul>
+  </NOSCRIPT>
+  
+  <!-- Header Script -->
+    <script language="JavaScript" src="/styles/eia_header.js" type="text/javascript"></script>
+  <!--/ Header Script -->
+  <script src="/global/includes/dnavs/leaf_handler.cfm" type="text/javascript"></script>
+  <!-- Footer Script -->
+    <script src="/styles/eia_footer.js" type="text/javascript"></script>
+  <!--/ Footer Script -->  
+   	
+</head>
+
+<body>
+
+ 
+ <script language="JavaScript" type="text/javascript">InsertEIAHeaderCode();</script>
+ 
+<!-- Start of Title Line/Section Header -->
+<table width="760" border="0" cellspacing="0" cellpadding="0">
+<tr>
+  <td width="760" align="left" valign="top">
+    <table width="760" border="0" cellspacing="0" cellpadding="0" align="left" class="TopicBar">
+    <tr>
+	  <td height="8" colspan="2"></td>
+	</tr>    
+	<tr>
+	  <td width="12"></td>
+      <td width="748" class="TopLabel2">
+	    Natural Gas Prices
+	  </td>
+    </tr>
+	<tr>
+	  <td></td>
+      <td class="TitleUnit">(Dollars per Thousand Cubic Feet, except where noted)</td>
+    </tr>
+    <tr>
+	  <td height="3" colspan="2"></td>
+	</tr> 		
+	</table>
+  </td>
+</tr>
+<tr>
+  <td>	
+      <!-- Start of 1 Dropdown case -->
+  <table border="0" cellspacing="0" cellpadding="0" align="left" class="UserBar">
+            <tr>
+              <td colspan="11" height="8"></td>
+            </tr>
+		    <tr>
+              <td width="20"></td>
+		      <td align="right" class="LabelA">Data Series:</td>
+			  <td width="5"><img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0"></td>
+		      <td>
+			    <select class="B" name="Drop1" width="402" style="width: 402;"
+					ONCHANGE="window.open(this.options[this.selectedIndex].value,'_top')">
+					<option value="ng_pri_sum_a_EPG0_FWA_DMcf_m.htm"> Wellhead Price
+<option value="ng_pri_sum_a_EPG0_PM0_DMcf_m.htm"> Imports Price
+<option value="ng_pri_sum_a_EPG0_PRP_DMcf_m.htm"> &nbsp;&nbsp;&nbsp;Price of Imports by Pipeline
+<option value="ng_pri_sum_a_EPG0_PML_DMcf_m.htm"> &nbsp;&nbsp;&nbsp;Price of LNG Imports
+<option value="ng_pri_sum_a_EPG0_pex_DMcf_m.htm"> Exports Price
+<option value="ng_pri_sum_a_EPG0_PNP_DMcf_m.htm"> &nbsp;&nbsp;&nbsp;Price of Exports by Pipeline
+<option value="ng_pri_sum_a_EPG0_PNG_DMcf_m.htm"> &nbsp;&nbsp;&nbsp;Price of LNG Exports
+<option value="ng_pri_sum_a_EPG0_PG1_DMcf_m.htm"> City Gate Price
+<option value="ng_pri_sum_a_EPG0_PRS_DMcf_m.htm"> Residential Price
+<option value="ng_pri_sum_a_EPG0_VRX_pct_m.htm"> &nbsp;&nbsp;&nbsp;Percentage of Total Residential Deliveries included in Prices
+<option value="ng_pri_sum_a_EPG0_PCS_DMcf_m.htm" SELECTED> Commercial Price
+<option value="ng_pri_sum_a_EPG0_VFC_pct_m.htm"> &nbsp;&nbsp;&nbsp;Percentage of Total Commercial Deliveries included in Prices
+<option value="ng_pri_sum_a_EPG0_PIN_DMcf_m.htm"> Industrial Price
+<option value="ng_pri_sum_a_EPG0_VFA_pct_m.htm"> &nbsp;&nbsp;&nbsp;Percentage of Total Industrial Deliveries included in Prices
+<option value="ng_pri_sum_a_EPG0_PEU_DMcf_m.htm"> Electric Power Price
+
+				</select>
+			  </td>
+              <td width="25"></td>			  
+                		      <td align="right" class="LabelA">Period:</td>
+			  <td width="5"><img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0"></td>
+		      <td>
+	            <select name="DropF" class="C" style="width: 120;" width="120"
+				 ONCHANGE="window.open(this.options[this.selectedIndex].value,'_top')">
+				  <option value="ng_pri_sum_a_EPG0_PCS_DMcf_m.htm" SELECTED> Monthly
+<option value="ng_pri_sum_a_EPG0_PCS_DMcf_a.htm"> Annual
+
+	            </select>	 
+			  </td>
+              <td width="5"></td>
+		      <td align="right" class="LabelA"></td>
+			  <td width="5"><img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0"></td>
+		      <td>
+					    
+			  </td>		
+			<tr>
+			  <td height="12" colspan="11"></td>
+			</tr>
+
+		  </table>
+         <!-- End of Drop-downs --> 
+  </td>
+</tr> 
+
+</table>
+
+   <!-- End of Title Line/Section Header -->	
+  
+	    <!--Start of Inner Data Table -->
+		  <table width="760" border="0" class="data1">
+		  <tr>
+		    <th colspan="11" align="left">
+			  <div id="tlinks" name="tlinks"> 		
+		        <table border="0" cellspacing="1" cellpadding="0" class="data2">
+		        <tr>
+				  <td width="15"></td>
+		          <td align="center">
+			      <a href="./xls/NG_PRI_SUM_A_EPG0_PCS_DMCF_M.xls" class="reg">
+                    <img src="img/Excel_Hist3.jpg" width="21" height="19" alt="Download Series History" border="0"></a></td>
+		          <td width="2"></td>         
+				  <td align="left" valign="middle" class="Info">
+		          <a class="crumb" href="./xls/NG_PRI_SUM_A_EPG0_PCS_DMCF_M.xls">Download Series History</a></td>  		  
+				  <td width="20"></td>        
+				  <td width="21" align="center"><a href="TblDefs/ng_pri_sum_tbldef2.asp">
+                    <img src="img/Notes_Icon1.jpg" alt="Definitions, Sources & Notes" width="21" height="19" border="0"></a></td>
+		          <td width="1"></td>
+				  <td align="left" valign="middle" class="Info">
+		          <a class="crumb" href="TblDefs/ng_pri_sum_tbldef2.asp">Definitions, Sources & Notes</a></td>
+		        </tr>
+		        </table>			
+		  </div>			
+			</th>
+		  </tr>
+		
+          <tr>
+  	        <th class="Series">
+
+			               <table border="0" cellspacing="0" cellpadding="0" align="left" class="data2">
+	          <tr>
+		        <td colspan="8" class="ViewLabel">&nbsp;Show Data By:</td>
+		      </tr>
+	          <tr>
+		        <td height="3" colspan="8"></td>
+		      </tr>			          
+			  <tr align="left">	
+                <td width="10"><img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0"></td>
+                <td align="left">
+		   	      <a href="ng_pri_sum_dcu_nus_m.htm"><img src="img/Radio_I9.jpg" alt="" width="13" height="13" border="0"></a></td>
+                <td width="5"><img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0"></td>
+                <td class="LabelB"><a href="ng_pri_sum_dcu_nus_m.htm" class="NavChunkA">Data Series</a></td>
+                <td width="15"><img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0"></td>
+                <td align="left">
+		          <a href="ng_pri_sum_a_EPG0_FWA_DMcf_a.htm"><img src="img/Radio_A9.jpg" alt="" width="13" height="13" border="0"></a></td>
+                <td width="5"><img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0"></td>
+                <td class="LabelB">
+				  <a href="ng_pri_sum_a_EPG0_FWA_DMcf_a.htm" class="NavChunkA">Area</a></td>
+	            <td width="20"><img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0"></td>	
+              </tr>
+		      <tr>
+		        <td height="2" colspan="8"></td>
+		      </tr>
+              </table>	
+	         <img src="img/spacer_transp.gif" alt="" width="1" height="1" border="0">
+	         </th> 	
+			 		 
+			     <th class="Series5">Feb-26</th>
+    <th class="Series5">Mar-26</th>
+    <th class="Series5">Apr-26</th>
+    <th class="Series5">May-26</th>
+    <th class="Series5">Jun-26</th>
+    <th class="Series5">Jul-26</th>
+    <th class="Cross">View<br>History</th>  
+</tr>
+			 		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="3"></td>
+						<td class="DataStub1"><B>U.S.<B></td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">12.34</td>
+			<td width="76" class="DataB">12.26</td>
+			<td width="76" class="DataB">12.21</td>
+			<td width="76" class="DataB">12.17</td>
+			<td width="76" class="DataB">12.71</td>
+			<td width="76" class="Current2">13.03</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020us3m.htm" class="Hist">1973-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Alabama</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">13.36</td>
+			<td width="76" class="DataB">13.86</td>
+			<td width="76" class="DataB">14.31</td>
+			<td width="76" class="DataB">14.15</td>
+			<td width="76" class="DataB">14.52</td>
+			<td width="76" class="Current2">14.25</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020al3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Alaska</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">12.09</td>
+			<td width="76" class="DataB">12.15</td>
+			<td width="76" class="DataB">12.43</td>
+			<td width="76" class="DataB">12.75</td>
+			<td width="76" class="DataB">14.09</td>
+			<td width="76" class="Current2">14.30</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ak3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Arizona</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">9.59</td>
+			<td width="76" class="DataB">9.69</td>
+			<td width="76" class="DataB">9.04</td>
+			<td width="76" class="DataB">9.08</td>
+			<td width="76" class="DataB">9.15</td>
+			<td width="76" class="Current2">8.91</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020az3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Arkansas</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">8.82</td>
+			<td width="76" class="DataB">12.46</td>
+			<td width="76" class="DataB">15.05</td>
+			<td width="76" class="DataB">11.32</td>
+			<td width="76" class="DataB">10.24</td>
+			<td width="76" class="Current2">10.15</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ar3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">California</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">17.80</td>
+			<td width="76" class="DataB">16.29</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">14.00</td>
+			<td width="76" class="Current2">15.20</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ca3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Colorado</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">9.42</td>
+			<td width="76" class="DataB">9.72</td>
+			<td width="76" class="DataB">8.18</td>
+			<td width="76" class="DataB">8.81</td>
+			<td width="76" class="DataB">9.79</td>
+			<td width="76" class="Current2">11.33</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020co3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Connecticut</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">11.39</td>
+			<td width="76" class="DataB">12.69</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">14.76</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="Current2">NA</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ct3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Delaware</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">13.23</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">14.73</td>
+			<td width="76" class="DataB">20.41</td>
+			<td width="76" class="DataB">18.82</td>
+			<td width="76" class="Current2">19.32</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020de3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">District of Columbia</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">14.98</td>
+			<td width="76" class="DataB">16.26</td>
+			<td width="76" class="DataB">17.54</td>
+			<td width="76" class="DataB">15.78</td>
+			<td width="76" class="DataB">16.96</td>
+			<td width="76" class="Current2">18.31</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020dc3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Florida</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="Current2">NA</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020fl3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Georgia</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">12.21</td>
+			<td width="76" class="DataB">11.85</td>
+			<td width="76" class="DataB">10.57</td>
+			<td width="76" class="DataB">10.13</td>
+			<td width="76" class="DataB">10.28</td>
+			<td width="76" class="Current2">10.78</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ga3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Hawaii</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">44.89</td>
+			<td width="76" class="DataB">55.98</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">52.96</td>
+			<td width="76" class="Current2">50.11</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020hi3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Idaho</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">6.25</td>
+			<td width="76" class="DataB">6.43</td>
+			<td width="76" class="DataB">6.96</td>
+			<td width="76" class="DataB">7.53</td>
+			<td width="76" class="DataB">7.47</td>
+			<td width="76" class="Current2">7.98</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020id3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Illinois</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">9.72</td>
+			<td width="76" class="DataB">10.52</td>
+			<td width="76" class="DataB">12.57</td>
+			<td width="76" class="DataB">14.33</td>
+			<td width="76" class="DataB">17.67</td>
+			<td width="76" class="Current2">18.94</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020il3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Indiana</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">9.05</td>
+			<td width="76" class="DataB">9.33</td>
+			<td width="76" class="DataB">9.94</td>
+			<td width="76" class="DataB">9.10</td>
+			<td width="76" class="DataB">12.33</td>
+			<td width="76" class="Current2">11.70</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020in3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Iowa</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">11.60</td>
+			<td width="76" class="DataB">10.08</td>
+			<td width="76" class="DataB">10.68</td>
+			<td width="76" class="DataB">10.66</td>
+			<td width="76" class="DataB">12.14</td>
+			<td width="76" class="Current2">11.81</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ia3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Kansas</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">11.82</td>
+			<td width="76" class="DataB">12.32</td>
+			<td width="76" class="DataB">13.78</td>
+			<td width="76" class="DataB">15.74</td>
+			<td width="76" class="DataB">17.34</td>
+			<td width="76" class="Current2">17.19</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ks3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Kentucky</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">11.36</td>
+			<td width="76" class="DataB">13.85</td>
+			<td width="76" class="DataB">19.08</td>
+			<td width="76" class="DataB">17.43</td>
+			<td width="76" class="DataB">19.20</td>
+			<td width="76" class="Current2">19.39</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ky3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Louisiana</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="Current2">NA</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020la3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Maine</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="DataB">17.08</td>
+			<td width="76" class="DataB">15.96</td>
+			<td width="76" class="DataB">19.03</td>
+			<td width="76" class="Current2">20.81</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020me3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Maryland</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">14.34</td>
+			<td width="76" class="DataB">14.77</td>
+			<td width="76" class="DataB">14.99</td>
+			<td width="76" class="DataB">15.29</td>
+			<td width="76" class="DataB">15.45</td>
+			<td width="76" class="Current2">NA</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020md3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Massachusetts</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">20.49</td>
+			<td width="76" class="DataB">21.87</td>
+			<td width="76" class="DataB">24.37</td>
+			<td width="76" class="DataB">22.01</td>
+			<td width="76" class="DataB">16.34</td>
+			<td width="76" class="Current2">16.63</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ma3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Michigan</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">9.95</td>
+			<td width="76" class="DataB">9.73</td>
+			<td width="76" class="DataB">10.33</td>
+			<td width="76" class="DataB">10.96</td>
+			<td width="76" class="DataB">13.72</td>
+			<td width="76" class="Current2">13.37</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020mi3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Minnesota</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">11.83</td>
+			<td width="76" class="DataB">11.26</td>
+			<td width="76" class="DataB">9.11</td>
+			<td width="76" class="DataB">9.34</td>
+			<td width="76" class="DataB">10.29</td>
+			<td width="76" class="Current2">11.23</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020mn3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Mississippi</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">12.90</td>
+			<td width="76" class="DataB">13.82</td>
+			<td width="76" class="DataB">14.33</td>
+			<td width="76" class="DataB">13.45</td>
+			<td width="76" class="DataB">13.32</td>
+			<td width="76" class="Current2">13.53</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ms3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Missouri</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">10.36</td>
+			<td width="76" class="DataB">10.72</td>
+			<td width="76" class="DataB">11.76</td>
+			<td width="76" class="DataB">13.24</td>
+			<td width="76" class="DataB">14.56</td>
+			<td width="76" class="Current2">15.28</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020mo3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Montana</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">8.02</td>
+			<td width="76" class="DataB">7.85</td>
+			<td width="76" class="DataB">8.00</td>
+			<td width="76" class="DataB">8.19</td>
+			<td width="76" class="DataB">9.68</td>
+			<td width="76" class="Current2">13.30</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020mt3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Nebraska</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">9.68</td>
+			<td width="76" class="DataB">10.16</td>
+			<td width="76" class="DataB">7.83</td>
+			<td width="76" class="DataB">8.57</td>
+			<td width="76" class="DataB">8.99</td>
+			<td width="76" class="Current2">10.32</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ne3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">Nevada</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">4.83</td>
+			<td width="76" class="DataB">5.01</td>
+			<td width="76" class="DataB">5.31</td>
+			<td width="76" class="DataB">5.28</td>
+			<td width="76" class="DataB">5.56</td>
+			<td width="76" class="Current2">5.75</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020nv3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">New Hampshire</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">14.32</td>
+			<td width="76" class="DataB">16.69</td>
+			<td width="76" class="DataB">21.29</td>
+			<td width="76" class="DataB">20.76</td>
+			<td width="76" class="DataB">15.30</td>
+			<td width="76" class="Current2">NA</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020nh3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">New Jersey</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">17.42</td>
+			<td width="76" class="DataB">16.02</td>
+			<td width="76" class="DataB">12.69</td>
+			<td width="76" class="DataB">12.59</td>
+			<td width="76" class="DataB">NA</td>
+			<td width="76" class="Current2">15.47</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020nj3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">New Mexico</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">5.63</td>
+			<td width="76" class="DataB">7.19</td>
+			<td width="76" class="DataB">5.22</td>
+			<td width="76" class="DataB">3.53</td>
+			<td width="76" class="DataB">3.24</td>
+			<td width="76" class="Current2">3.95</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020nm3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">New York</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">14.00</td>
+			<td width="76" class="DataB">13.12</td>
+			<td width="76" class="DataB">12.84</td>
+			<td width="76" class="DataB">12.37</td>
+			<td width="76" class="DataB">11.41</td>
+			<td width="76" class="Current2">11.21</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020ny3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" class="DataStub">
+				<table border="0" cellspacing="0" cellpadding="0" class="data2">
+					<tr>
+						<td width="23"></td>
+						<td class="DataStub1">North Carolina</td>
+					</tr>
+				</table>
+			</td>
+			<td width="76" class="DataB">13.44</td>
+			<td width="76" class="DataB">15.50</td>
+			<td width="76" class="DataB">16.21</td>
+			<td width="76" class="DataB">14.32</td>
+			<td width="76" class="DataB">14.72</td>
+			<td width="76" class="Current2">15.46</td>
+			<td width="76" class="DataHist"><a href="./hist/n3020nc3m.htm" class="Hist">1989-2026</a></td>				
+		</tr>
+		<tr class="DataRow">
+			<td width="228" cl
