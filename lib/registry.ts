@@ -336,7 +336,7 @@ export interface HistoryAnswer {
   status: "ok" | "insufficient_history" | "no_history_yet";
   currency: string | null;
   unit: string | null;
-  series: { date: string; median: number; typical_low: number; typical_high: number; sample_size: number }[];
+  series: { date: string; median: number; typical_low: number; typical_high: number; sample_size: number | null }[];
   period: { from: string | null; to: string | null };
   change: null | { from_median: number; to_median: number; absolute: number; percent: number };
   sample_size_note?: string;
@@ -427,8 +427,15 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
     status,
     currency,
     unit,
-    ...(src.nominalCounts ? { sample_size_note: "The publisher gives one figure and no record count; sample_size in the series is a placeholder (5) kept so the day passes the 5-record rule. It is not a count of records." } : {}),
-    series: rows.map((r) => ({ date: r.date, median: r.median, typical_low: r.low, typical_high: r.high, sample_size: r.n })),
+    ...(src.nominalCounts ? { sample_size_note: "The publisher gives one figure and no record count, so sample_size is null in the series. The library keeps an internal count of 5 only so the day passes its 5-record rule; it is never shown as a count of records." } : {}),
+    series: rows.map((r) => ({
+      date: r.date,
+      median: r.median,
+      typical_low: r.low,
+      typical_high: r.high,
+      // a published figure (nominalCounts) has no record count: never show the library's internal 5
+      sample_size: src.nominalCounts ? null : r.n,
+    })),
     period: { from: first?.date ?? null, to: last?.date ?? null },
     change,
     price_type: src_.price_type,
