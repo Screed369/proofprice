@@ -109,8 +109,10 @@ test("questions are kept apart from handshakes; the country is the country asked
 
 test("the directory-check list: named probes, *-probe, *uptime*, health checkers; real apps are not caught", () => {
   for (const n of DIRECTORY_CHECK_NAMES) assert.ok(isDirectoryCheck(n), n);
-  for (const n of ["some-new-probe", "ToolVetProbe", "status uptime bot", "MCP Health Checker", "healthcheck", "wellknown-prober", "UptimeRobot/2.0"]) assert.ok(isDirectoryCheck(n), n);
-  for (const n of ["claude-ai", "cursor", "openai-mcp", "vscode", "windsurf-client", "", undefined]) assert.equal(isDirectoryCheck(n), false, String(n));
+  for (const n of ["some-new-probe", "ToolVetProbe", "status uptime bot", "MCP Health Checker", "healthcheck", "wellknown-prober", "UptimeRobot/2.0", "golemreach-trust",
+    "mcpstation-check", "annalist-checks", "catalog-health", "mcpwatch", "agentindexbot", "x402-observatory", "endpointaudit", "mcphub-snapshot",
+    "mcp-inventory", "taifoon-harvester", "agent-collector", "mcp-rugpull-research", "mcpbeat", "stackduke-mcp-scanner"]) assert.ok(isDirectoryCheck(n), n);
+  for (const n of ["claude-ai", "claude-code", "cursor", "openai-mcp", "vscode", "windsurf-client", "anthropic", "rmcp", "mcp", "tacuri-ai", "", undefined]) assert.equal(isDirectoryCheck(n), false, String(n));
 });
 
 // ---------- 3. anonymous sessions ----------

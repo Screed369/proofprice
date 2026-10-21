@@ -112,10 +112,16 @@ export const DIRECTORY_CHECK_NAMES = [
   "proofbench-probe",
   "factanker-probe",
   "mcp.market-uptime",
+  "mcpbeat",
+  "reliability-bureau-spike",
 ] as const;
 /** Any app name (or user agent) matching one of these is also a directory check: *probe*, *prober*, *uptime*, health checkers,
- *  monitors, scanners and crawlers. */
-export const DIRECTORY_CHECK_PATTERNS: readonly RegExp[] = [/probe/, /uptime/, /health[ ._-]?check/, /monitor/, /scanner/, /crawler/, /mcpindex/];
+ *  monitors, watchers, scanners, crawlers, bots, observatories, audits, snapshots, inventories, harvesters, collectors, research
+ *  scans, "*-trust" scorers and "*-check(s)" checkers. Reviewed against the app names seen on 15-21 Oct 2026. */
+export const DIRECTORY_CHECK_PATTERNS: readonly RegExp[] = [
+  /probe/, /uptime/, /health/, /monitor/, /watch/, /scanner/, /crawler/, /mcpindex/, /bot$/, /observatory/, /audit/, /snapshot/,
+  /inventory/, /harvester/, /collector/, /research/, /[-_ ]trust$/, /[-_ ]checks?$/,
+];
 
 export function isDirectoryCheck(name: unknown): boolean {
   const n = String(name ?? "").toLowerCase().trim();
