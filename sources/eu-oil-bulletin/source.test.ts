@@ -47,8 +47,7 @@ test("parseHistory: newest week first, euro per litre, only the countries this s
   // France is answered by its own source; the bulletin's figure is kept so it can stand in when that source is down
   assert.ok(w[0].prices.FR.diesel! > 1 && w[0].prices.FR.diesel! < 3, "France's diesel in euro per litre");
   assert.ok(w[0].prices.FR.petrol95! > 1 && w[0].prices.FR.petrol95! < 3);
-  assert.ok(!("AT" in w[0].prices), "Austria has no national source to stand in for");
-  assert.ok(!("EUR" in w[0].prices), "the euro-area column is not kept");
+    assert.ok(!("EUR" in w[0].prices), "the euro-area column is not kept");
   assert.equal(w[0].fx.PL, 0.2280501710);
   assert.equal(w[0].fx.BG, 1);
   assert.equal(w[4].fx.BG, 0.5112997239); // a year earlier Bulgaria still had the lev
@@ -96,7 +95,7 @@ test("library rows: published figures, dated earlier prices, exchange rates only
   assert.equal(get("PL", "fx@2025-10-13"), 0.2346591576);
   assert.equal(get("BG", "fx"), undefined);
   assert.equal(get("DE", "fx"), undefined);
-  assert.ok(!rows.some((r) => ["AT", "EUR"].includes(r.area)));
+  assert.ok(!rows.some((r) => ["EUR"].includes(r.area)));
   assert.ok(rows.some((r) => r.area === "FR" && r.item === "diesel"), "stand-in rows are kept for France");
   assert.ok(!rows.some((r) => r.area === "FR" && r.item === "fx"), "France is in the euro");
   assert.ok(rows.some((r) => r.area === "MT" && r.item === "heating_oil" && r.median === 1));
@@ -288,8 +287,8 @@ test("input errors are InputErrors with a way forward", async () => {
     for (const fuel of ["petrol98", "e10", "e85", "methane"]) {
       await assert.rejects(wobFuelNow({ country: "IE", fuel }, NOW), (e: any) => e instanceof InputError && /petrol95 \(Euro-super 95\), diesel or lpg/.test(e.message));
     }
-    for (const country of ["AT", "GB", "XX"]) {
-      await assert.rejects(wobFuelNow({ country, fuel: "diesel" }, NOW), (e: any) => e instanceof InputError && /answers for IE, DE/.test(e.message));
+    for (const country of ["US", "GB", "XX"]) {
+      await assert.rejects(wobFuelNow({ country, fuel: "diesel" }, NOW), (e: any) => e instanceof InputError && /answers for IE, AT, DE/.test(e.message));
     }
   } finally {
     delete process.env.PROOFPRICE_LIBRARY_DIR;
@@ -336,9 +335,9 @@ test("history key: country and fuel, national", () => {
 });
 
 test("manifest and INFO: the countries, the examples, the licence quoted from the Commission", () => {
-  assert.deepEqual([...def.countries].sort(), "IE DE NL BE PT PL DK SE FI LU GR CZ SK SI HR HU RO BG EE LV LT CY MT".split(" ").sort());
+  assert.deepEqual([...def.countries].sort(), "IE AT DE NL BE PT PL DK SE FI LU GR CZ SK SI HR HU RO BG EE LV LT CY MT".split(" ").sort());
   assert.deepEqual(def.countries, Object.keys(COUNTRIES));
-  for (const c of ["ES", "FR", "IT", "AT"]) assert.ok(!def.countries.includes(c), `${c} has its own source`);
+  for (const c of ["ES", "FR", "IT"]) assert.ok(!def.countries.includes(c), `${c} has its own source`);
   assert.deepEqual(def.fallbackFor, { sources: ["it-fuel", "fr-fuel", "es-fuel"], countries: ["IT", "FR", "ES"], label: "the European Commission Weekly Oil Bulletin" });
   assert.match(INFO.limits, /this bulletin's national figure for that country is given instead and the answer says so/);
   assert.equal(def.category, "fuel");
@@ -374,4 +373,33 @@ test("wobMonthly: monthly average of the weekly figures, min/max as the range, t
   assert.deepEqual(wobMonthly(two, months[0], months[0]), []);
   // the range is respected
   assert.deepEqual(wobMonthly(ws, "1990-01", "1990-12"), []);
+});
+
+test("Austria (G20261021-AT-FUEL): the national weekly average, labelled as an official statistic with no sample size", async () => {
+  // The fixture is the real sheet with the Austrian columns appended in the same layout as every other country
+  // (AT_price_with_tax_euro95 / diesel / heating_oil / LPG, euro per 1000 l). The figures are illustrative round numbers, not a bulletin quote.
+  const rows = HISTORY_ROWS.map((r) => r.slice());
+  const at = ["AT_price_with_tax_euro95", "AT_price_with_tax_diesel", "AT_price_with_tax_heating_oil", "AT_price_with_tax_fuel_oil_1", "AT_price_with_tax_fuel_oil_2", "AT_price_with_tax_LPG"];
+  rows[0].push("CTR", ...at);
+  rows[1].push(null, ...at.map(() => "x"));
+  rows[2].push(null, "1000 l", "1000 l", "1000 l", "t", "t", "1000 l");
+  rows.slice(3).forEach((r, i) => r.push("AT_", 1700 - i, 1800 - i, 1300, null, null, null));
+  const w = parseHistory(rows, 60, 5);
+  assert.equal(w[0].prices.AT.diesel, 1.8);
+  assert.equal(w[0].prices.AT.petrol95, 1.7);
+  const dir = mkdtempSync(path.join(tmpdir(), "wob-at-"));
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
+  try {
+    writeDaily(INFO.id, wobResult(w));
+    const a = await wobFuelNow({ country: "AT", fuel: "diesel" }, NOW);
+    assert.equal(a.status, "ok");
+    assert.equal(a.source.id, "eu-oil-bulletin");
+    assert.equal(a.price_type, "official_statistic");
+    assert.equal(a.sample_size, null);
+    assert.match(a.summary, /Austria/);
+    assert.deepEqual(wobHistoryKey({ country: "AT", fuel: "diesel" }), { area: "AT", item: "diesel", label: "Austria (national average)" });
+    assert.ok(def.countries.includes("AT"));
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
 });

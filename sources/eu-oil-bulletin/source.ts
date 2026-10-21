@@ -1,5 +1,5 @@
 // European Commission Weekly Oil Bulletin: official national average pump prices for the EU Member States that have no
-// station-level fuel source of their own (ES, FR, IT and AT are answered by their national sources, so they are not in COUNTRIES).
+// station-level fuel source of their own (ES, FR and IT are answered by their national sources, so they are not in COUNTRIES; AT was added on 21 Oct 2026 because its own source is switched off).
 // The collector also keeps the rows for ES, FR and IT (STAND_IN): when one of those national sources cannot be reached and we hold
 // no recent copy of it, this source stands in with the national figure (manifest fallbackFor; runCategory in lib/registry.ts).
 // Formats checked live on 2026-10-14 (bulletin dated Monday 12 October 2026, page showing "15 October 2026").
@@ -69,13 +69,13 @@ export const INFO: SourceInfo = {
 
 /** ISO code -> name, for every country this source answers for (EU Member States except ES, FR, IT and AT). */
 export const COUNTRIES: Record<string, string> = {
-  IE: "Ireland", DE: "Germany", NL: "the Netherlands", BE: "Belgium", PT: "Portugal", PL: "Poland", DK: "Denmark", SE: "Sweden",
+  IE: "Ireland", AT: "Austria", DE: "Germany", NL: "the Netherlands", BE: "Belgium", PT: "Portugal", PL: "Poland", DK: "Denmark", SE: "Sweden",
   FI: "Finland", LU: "Luxembourg", GR: "Greece", CZ: "Czechia", SK: "Slovakia", SI: "Slovenia", HR: "Croatia", HU: "Hungary",
   RO: "Romania", BG: "Bulgaria", EE: "Estonia", LV: "Latvia", LT: "Lithuania", CY: "Cyprus", MT: "Malta",
 };
 
 /** ES, FR and IT: answered by their national station-level sources. The bulletin's figure for them is kept in the library and
- *  given only when that national source cannot be reached (manifest fallbackFor). AT has no national source in the registry. */
+ *  given only when that national source cannot be reached (manifest fallbackFor). */
 export const STAND_IN: Record<string, string> = { ES: "Spain", FR: "France", IT: "Italy" };
 
 /** Name of any country this source can give a figure for (its own and the stand-in ones). */
