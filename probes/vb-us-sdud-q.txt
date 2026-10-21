@@ -1,0 +1,36 @@
+URL: https://data.medicaid.gov/api/1/datastore/query/eec7fbe6-c4c4-5915-b3d0-be5828ef4e9d/0?limit=3
+Fetched: 2026-10-21T07:44:14Z from GitHub Actions
+Status, type, bytes: 200 application/json 3134
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+x-drupal-dynamic-cache: MISS
+content-language: en
+x-content-type-options: nosniff
+x-generator: Drupal 11 (https://www.drupal.org)
+x-drupal-cache: MISS
+last-modified: Wed, 21 Oct 2026 07:44:13 GMT
+etag: "1792568653-gzip"
+x-request-id: v-3593d780-cd23-11f1-a3e7-ffed7aac5a8c
+x-ah-environment: prod
+x-age: 0
+expires: Wed, 21 Oct 2026 07:44:14 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Wed, 21 Oct 2026 07:44:14 GMT
+content-length: 3134
+set-cookie: cms_fpid=00825c21-cedd-a106-7f1f-e786b6f48519; expires=Fri, 20-Oct-2028 07:44:14 GMT; path=/; domain=.medicaid.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.19192117.1792568653.31fb5c30
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"results":[{"utilization_type":"FFSU","state":"AK","ndc":"00002143380","labeler_code":"00002","product_code":"1433","package_size":"80","year":"2021","quarter":"4","suppression_used":"false","product_name":"TRULICITY ","units_reimbursed":"544.000","number_of_prescriptions":"222","total_amount_reimbursed":"220042.29","medicaid_amount_reimbursed":"215557.09","non_medicaid_amount_reimbursed":"4485.20"},{"utilization_type":"FFSU","state":"AK","ndc":"00002143480","labeler_code":"00002","product_code":"1434","package_size":"80","year":"2021","quarter":"4","suppression_used":"false","product_name":"TRULICITY ","units_reimbursed":"706.000","number_of_prescriptions":"275","total_amount_reimbursed":"286542.68","medicaid_amount_reimbursed":"281194.56","non_medicaid_amount_reimbursed":"5348.12"},{"utilization_type":"FFSU","state":"AK","ndc":"00002143611","labeler_code":"00002","product_code":"1436","package_size":"11","year":"2021","quarter":"4","suppression_used":"false","product_name":"EMGALITY P","units_reimbursed":"27.000","number_of_prescriptions":"27","total_amount_reimbursed":"16648.52","medicaid_amount_reimbursed":"16648.52","non_medicaid_amount_reimbursed":"0.00"}],"count":5058485,"schema":{"99089534-5317-54ee-85a8-b11558e4c907":{"fields":{"utilization_type":{"type":"text","mysql_type":"text","description":"Utilization Type"},"state":{"type":"text","mysql_type":"text","description":"State"},"ndc":{"type":"text","mysql_type":"text","description":"NDC"},"labeler_code":{"type":"text","mysql_type":"text","description":"Labeler Code"},"product_code":{"type":"text","mysql_type":"text","description":"Product Code"},"package_size":{"type":"text","mysql_type":"text","description":"Package Size"},"year":{"type":"int","mysql_type":"int","description":"Year"},"quarter":{"type":"int","mysql_type":"int","description":"Quarter"},"suppression_used":{"type":"text","mysql_type":"text","description":"Suppression Used"},"product_name":{"type":"text","mysql_type":"text","description":"Product Name"},"units_reimbursed":{"type":"numeric","precision":"14","scale":"3","mysql_type":"decimal","description":"Units Reimbursed"},"number_of_prescriptions":{"type":"int","mysql_type":"int","description":"Number of Prescriptions"},"total_amount_reimbursed":{"type":"numeric","precision":"14","scale":"2","mysql_type":"decimal","description":"Total Amount Reimbursed"},"medicaid_amount_reimbursed":{"type":"numeric","precision":"12","scale":"2","mysql_type":"decimal","description":"Medicaid Amount Reimbursed"},"non_medicaid_amount_reimbursed":{"type":"numeric","precision":"12","scale":"2","mysql_type":"decimal","description":"Non Medicaid Amount Reimbursed"}}}},"query":{"limit":3,"resources":[{"id":"99089534-5317-54ee-85a8-b11558e4c907","alias":"t"}],"offset":0,"count":true,"results":true,"schema":true,"keys":true,"format":"json","rowIds":false,"properties":["utilization_type","state","ndc","labeler_code","product_code","package_size","year","quarter","suppression_used","product_name","units_reimbursed","number_of_prescriptions","total_amount_reimbursed","medicaid_amount_reimbursed","non_medicaid_amount_reimbursed"]}}
