@@ -16,7 +16,7 @@ import {
 } from "./moi";
 import { TAIWAN_CITIES, districtKey, findPlace } from "./places";
 import {
-  INFO, LOGIC_VERSION, NATIONAL_AREA, TW_TYPES, buildingTypeOf, itemKey, itemTypesOf, newStats, normaliseType, parseSales, salesRows, snapshotFromRows, twHomeSales, twHomeSalesHarvest,
+  INFO, LOGIC_VERSION, NATIONAL_AREA, TW_TYPES, buildingTypeOf, itemKey, itemTypesOf, newStats, normaliseType, parseSales, salesRows, snapshotFromRows, twHistoryKey, twHomeSales, twHomeSalesHarvest,
   type HarvestDeps, type Sale,
 } from "./source";
 
@@ -555,4 +555,15 @@ test("licence: the Open Government Data License v1.0 is quoted with its URL and 
   assert.match(INFO.attribution, /https:\/\/data\.gov\.tw\/license/);
   assert.equal(INFO.price_type, "transaction");
   assert.equal(INFO.id, "tw-home-sales");
+});
+
+test("history key: the 12-month total-price row the collector stores for the place and type; monthly history is refused", async () => {
+  const snap = await snapshot();
+  const k = twHistoryKey({ town: "Da'an, Taipei" }, {}, { snapshot: snap })!;
+  assert.equal(k.item, itemKey("any", "total", 12));
+  assert.ok(snap.rows.has(`${k.area}\u0000${k.item}`), "the key must match a stored row");
+  assert.equal(twHistoryKey({}, {}, { snapshot: snap })!.area, NATIONAL_AREA);
+  assert.equal(twHistoryKey({ town: "Taipei", property_type: "apartment" }, {}, { snapshot: snap })!.item, itemKey("apartment", "total", 12));
+  assert.throws(() => twHistoryKey({ town: "Taipei" }, { monthly: true }, { snapshot: snap }), /monthly history is not loaded/);
+  assert.equal(twHistoryKey({ town: "Taipei" }, {}, { snapshot: null }), null);
 });

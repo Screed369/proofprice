@@ -1,6 +1,6 @@
 // Manifest: Taiwan home sales (Ministry of the Interior, actual price registration). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, twHomeSales, twHomeSalesHarvest } from "./source";
+import { INFO, twHistoryKey, twHomeSales, twHomeSalesHarvest } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -44,4 +44,5 @@ export default defineSource({
       baseUrl: ctx.baseUrl,
     }),
   harvest: twHomeSalesHarvest,
+  historyKey: (p, o) => twHistoryKey({ town: str(p.town), property_type: str(p.property_type) }, o),
 });

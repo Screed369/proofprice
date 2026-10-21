@@ -30,9 +30,16 @@ export default defineCategory({
       "where a source has loaded long history, otherwise recent daily snapshots (pass days). Aggregates of official sale records only. " +
       "Do not use for the current price, rents or asking prices.",
     minDays: 7,
+    // items: "<type>:<N>m" (rolling N months), "<type>/month" (monthly), or "<type>:total:<N>m" (Taiwan: total price, rolling N months)
     itemLabel: (item) => {
-      const [type, win] = item.split(/[:/]/);
-      const kind = type === "new" ? "New homes" : type === "second-hand" ? "Second-hand homes" : "Homes";
+      const parts = item.split(/[:/]/);
+      const type = parts[0];
+      const win = parts[parts.length - 1];
+      const KINDS: Record<string, string> = {
+        new: "New homes", "second-hand": "Second-hand homes", apartment: "Apartments", house: "Houses",
+        "high-rise": "High-rise flats", "mid-rise": "Mid-rise flats", "walk-up": "Walk-up flats",
+      };
+      const kind = KINDS[type] ?? "Homes";
       return win === "month" ? `${kind}, monthly` : `${kind}, rolling ${win?.replace("m", "") ?? ""} months`;
     },
   },

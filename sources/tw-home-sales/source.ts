@@ -473,6 +473,20 @@ export function twAnswer(snap: Snapshot, q: TwQuery): PriceAnswer {
   return ans;
 }
 
+/** Library keys for /history: the 12-month rolling window (all sales, total price) of one place and type, as the collector stores it each day.
+ *  Monthly history (months=N) is not loaded for Taiwan. */
+export function twHistoryKey(
+  input: { town?: string; property_type?: string },
+  opts?: { monthly?: boolean },
+  o: { snapshot?: Snapshot | null } = {},
+): { area: string; item: string; label: string } | null {
+  if (opts?.monthly) throw new InputError("Taiwan: monthly history is not loaded; ask for days instead (daily snapshots of the rolling 12 months).");
+  const snap = o.snapshot !== undefined ? o.snapshot : loadSnapshot();
+  if (!snap) return null;
+  const where = resolveTown(input.town, snap);
+  return { area: where.area, item: itemKey(normaliseType(input.property_type), "total", 12), label: where.label };
+}
+
 export async function twHomeSales(
   input: { town?: string; postcode?: string; property_type?: string; months?: number; baseUrl?: string },
   o: { snapshot?: Snapshot | null; now?: Date } = {},
