@@ -1,0 +1,49 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/80416ned/TypedDataSet?$filter=Perioden%20gt%20'20261005'
+Fetched: 2026-10-21T01:47:20Z from GitHub Actions
+Status, type, bytes: 200 application/json 853
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 01:47:20 GMT
+Content-Length: 853
+TXID: 0171942a
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=0174fbaf-19a8-1ad8-9678-0050569bed16_3578393609_0738444939_00000000004319188010; Path=/; Expires=Wed, 21-Oct-2026 01:47:35 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/80416ned/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":7583,"Perioden":"20261006","BenzineEuro95_1":2.432,"Diesel_2":2.496,"Lpg_3":0.958
+    },{
+      "ID":7584,"Perioden":"20261007","BenzineEuro95_1":2.434,"Diesel_2":2.472,"Lpg_3":0.958
+    },{
+      "ID":7585,"Perioden":"20261008","BenzineEuro95_1":2.45,"Diesel_2":2.476,"Lpg_3":0.959
+    },{
+      "ID":7586,"Perioden":"20261009","BenzineEuro95_1":2.455,"Diesel_2":2.482,"Lpg_3":0.952
+    },{
+      "ID":7587,"Perioden":"20261010","BenzineEuro95_1":2.457,"Diesel_2":2.477,"Lpg_3":0.97
+    },{
+      "ID":7588,"Perioden":"20261011","BenzineEuro95_1":2.457,"Diesel_2":2.477,"Lpg_3":0.964
+    },{
+      "ID":7589,"Perioden":"20261012","BenzineEuro95_1":2.462,"Diesel_2":2.482,"Lpg_3":0.961
+    }
+  ]
+}
