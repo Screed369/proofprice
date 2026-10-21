@@ -1,0 +1,24 @@
+URL: https://api.worldbank.org/v2/sources/90/series?format=json&per_page=3
+Fetched: 2026-10-21T12:46:13Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 309
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Wed, 21 Oct 2026 12:46:13 GMT
+content-type: application/json;charset=utf-8
+set-cookie: __cf_bm=YTpxH5cuyRLu_Tcg8X_Ev1W_Xx6ZZJo8DKW9uN6rb_g-1792586754.5026684-1.0.1.1-YKa4RB2Ze0.UOlNpUJjPHda..G8M_XYJxngJXdJcbhaKC4s6kAZH.eVKaUkN7OdRKnAV0hQ2jMMFAY8NtzER1WKUcviypLA3Q7qX_NW63PN126_aq37blbG6PjrTGKB6; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org; Expires=Wed, 21 Oct 2026 13:16:13 GMT
+set-cookie: _cfuvid=3VEUfe_IN19FrhnCm._OQGSiPCSXixMa43eGMc2eHeo-1792586754.5026684-1.0.1.1-In8AiftaJa513c7QjL1Rmz6PUSg_6zmpnigsATO0.8k; HttpOnly; SameSite=None; Secure; Path=/; Domain=worldbank.org
+cf-ray: a4e05caf9d245107-MSP
+cf-cache-status: MISS
+cache-control: public, max-age=86400
+expires: Thu, 22 Oct 2026 12:46:13 GMT
+last-modified: Wed, 21 Oct 2026 12:46:13 GMT
+server: cloudflare
+vary: accept-encoding
+request-context: appId=cid-v1:da002513-bd8b-4441-9f30-737944134422
+x-powered-by: ASP.NET
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"page":1,"pages":16,"per_page":3,"total":48,"source":[{"id":"90","name":"ICP 2021","concept":[{"id":"series","name":"series","variable":[{"id":"1000000","value":"1000000:GROSS DOMESTIC PRODUCT"},{"id":"1101000","value":"1101000:FOOD AND NON-ALCOHOLIC BEVERAGES"},{"id":"1101100","value":"1101100:FOOD"}]}]}]}
