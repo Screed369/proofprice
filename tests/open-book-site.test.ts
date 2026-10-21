@@ -405,3 +405,10 @@ test("readLatestDay returns only the newest day of the newest month", () => {
     else process.env.PROOFPRICE_LIBRARY_DIR = before;
   }
 });
+
+test("us-gsa-surplus is described as a winning auction bid, not a completed sale (G20261021-GSA-WORDING)", () => {
+  const c = sourceCards().find((x) => x.id === "us-gsa-surplus");
+  assert.ok(c);
+  assert.equal(c.priceTypeLabel, "Winning auction bid (before buyer premium)");
+  assert.doesNotMatch(c.priceTypeShort, /completed sale/i);
+});

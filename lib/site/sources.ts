@@ -12,6 +12,11 @@ import { pricesPathFor, pricesPathsFor } from "./prices";
 
 export { PRICE_TYPE_LABEL, PRICE_TYPE_SHORT };
 
+/** Sources-page wording for sources whose figure is not a receipt-level completed sale (G20261021-GSA-WORDING). */
+const PRICE_WORDING_OVERRIDE: Record<string, { label: string; short: string }> = {
+  "us-gsa-surplus": { label: "Winning auction bid (before buyer premium)", short: "Winning auction bid" },
+};
+
 /** Short headings for the category groups; falls back to the registry title for a new category. */
 const CATEGORY_HEADING: Record<string, string> = {
   "home-sales": "Home sale prices",
@@ -69,8 +74,8 @@ export function sourceCards(): SourceCard[] {
       homepage: info.homepage,
       whatIsRecorded: info.what_is_recorded,
       priceType: info.price_type,
-      priceTypeLabel: PRICE_TYPE_LABEL[info.price_type] ?? info.price_type,
-      priceTypeShort: PRICE_TYPE_SHORT[info.price_type] ?? info.price_type,
+      priceTypeLabel: PRICE_WORDING_OVERRIDE[info.id]?.label ?? PRICE_TYPE_LABEL[info.price_type] ?? info.price_type,
+      priceTypeShort: PRICE_WORDING_OVERRIDE[info.id]?.short ?? PRICE_TYPE_SHORT[info.price_type] ?? info.price_type,
       freshness: info.freshness,
       licence: info.licence,
       licenceUrl: info.licence_url,
