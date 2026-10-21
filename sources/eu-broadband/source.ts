@@ -180,6 +180,12 @@ export function broadbandAnswer(reading: BroadbandReading | null, q: { country: 
     period: periodRange(r.reference_period) ?? { from: null, to: null },
     reference_period: r.reference_period,
     note: notes.join(" "),
+    ending: `Cheapest posted offer of the largest operators, as published by ${INFO.publisher} for ${r.reference_period}.`,
+    evidence: {
+      label: "Cheapest posted offer (official survey)",
+      meaning:
+        "The least expensive offer the largest operators post for a standard package, as collected and published by the statistics office: an asking price for the cheapest deal, not an average bill and not what customers paid.",
+    },
     describe: (v) =>
       `In ${r.countryName} the cheapest posted offer of the largest operators for "${r.offerLabel}" was ${ppp(v)} per month in ${r.reference_period}.` +
       (r.previous ? plainChange(r.previous.change_percent, r.previous.reference_period) : ""),

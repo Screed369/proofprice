@@ -191,7 +191,7 @@ test("us-cms-medicare: service=99213 nationally - the office average from the ph
   const f = fakeCms();
   const a = await medicalPrices({ service: "99213" }, { fetcher: f.fetcher });
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 85.366781205);
+  assert.equal(a.price!.value, 85.3668);
   assert.equal(a.sample_size, 64778139);
   assert.equal(a.source.id, "us-cms-physician");
   assert.match(a.summary, /established-patient office visit, level 3 \(low complexity\) \(code 99213\) in the United States/);
@@ -208,7 +208,7 @@ test("us-cms-medicare: knee replacement in Texas - the hospital stay, with the s
   assert.equal(a.status, "ok");
   assert.equal(a.source.id, "us-cms-inpatient");
   assert.deepEqual(a.query, { country: "US", service: "knee replacement", state: "TX", setting: null }); // the request as written, not the DRGs behind it
-  assert.equal(a.price!.value, 15157.440135);
+  assert.equal(a.price!.value, 15157.44);
   assert.equal(a.sample_size, 4151);
   assert.match(a.summary, /knee replacement \(MS-DRG 470/);
   assert.match(a.summary, /\$15,157 per Medicare stay in 2024/);
@@ -259,7 +259,7 @@ test("us-cms-medicare: a hospital-stay code is answered from the inpatient file"
   const f = fakeCms();
   const a = await medicalPrices({ service: "DRG 470" }, { fetcher: f.fetcher });
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 17364.016424);
+  assert.equal(a.price!.value, 17364.02);
   assert.match(a.summary, /^For MS-DRG 470 \(major hip and knee joint replacement/);
   assert.equal((a.extra as any).surgeons_fee_billed_separately, undefined);
 });
@@ -272,7 +272,7 @@ test("us-cms-medicare: words the table does not know are looked up in the DRG ti
   clearYearCache();
   const a = await medicalPrices({ service: "pleurisy" }, { fetcher: fakeCms({ titles: INP_PNEUMONIA_TITLES }).fetcher });
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 12049.620107);
+  assert.equal(a.price!.value, 12049.62);
   assert.equal((a.extra as any).other_severity_levels.length, 2);
   assert.match(a.statistic!.note!, /Matched by searching the MS-DRG hospital-stay titles for 'pleurisy'/);
   // nothing found: the original help text, not a guess

@@ -64,7 +64,7 @@ test("Singapore, all household consumption: index 119.8, official statistic, con
   const a = await icpPriceLevel({ country: "SG" }, fake);
   assert.equal(a.status, "ok");
   assert.equal(a.price?.currency, "INDEX");
-  assert.equal(a.price?.value, 119.77443207286);
+  assert.equal(a.price?.value, 119.77);
   assert.equal(a.price?.median, null);
   assert.equal(a.price?.typical_low, null);
   assert.equal(a.sample_size, null);

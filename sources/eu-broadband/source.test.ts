@@ -91,3 +91,12 @@ test("eu-broadband: the broadband tool lists the offer parameter", () => {
   assert.ok(cat);
   assert.ok("offer" in paramSchemas(cat));
 });
+
+test("the answer says it is the cheapest posted offer, not an official average", () => {
+  const q = { country: "IE", offer: "FI_MBPS100-200" };
+  const a = broadbandAnswer(readBroadband(table(), q), q);
+  assert.doesNotMatch(a.summary, /Official average/);
+  assert.match(a.summary, /Cheapest posted offer of the largest operators, as published by Eurostat/);
+  assert.equal(a.evidence!.label, "Cheapest posted offer (official survey)");
+  assert.equal(a.reliability, "official_median_no_count");
+});

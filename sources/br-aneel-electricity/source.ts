@@ -166,6 +166,12 @@ export function brElectricityAnswer(tariffs: Tariff[], q: BrEnergyQuery): PriceA
     period: { from: starts[0], to: today.toISOString().slice(0, 10) }, reference_period: `tariffs in force on ${today.toISOString().slice(0, 10)}`,
     sample_size: current.length, low: perKwh(percentile(totals, 0.1)), high: perKwh(percentile(totals, 0.9)), method, baseUrl: q.baseUrl,
     note: "Median of the regulated tariffs of the distributors (not weighted by customers); the sample is distributors, not bills.",
+    ending: `Median calculated by ProofPrice across the tariffs ${INFO.publisher} approved, in force on ${today.toISOString().slice(0, 10)}.`,
+    evidence: {
+      label: "Median of posted tariffs, calculated by ProofPrice",
+      meaning:
+        "The middle of the regulated tariffs the regulator approved for each distributor, calculated by ProofPrice: one tariff per distributor, not weighted by customers, and not what any household paid on a bill.",
+    },
     describe: (v) => `Median residential tariff across ${current.length} Brazilian distributors is ${v.toFixed(4)} BRL per kWh before taxes (10th-90th percentile of distributors ${perKwh(percentile(totals, 0.1))} to ${perKwh(percentile(totals, 0.9))}).`,
     extra: { distributors: current.length, lowest: lowest.distributor, highest: highest.distributor, tax_level: "before taxes and flag surcharges" },
   });

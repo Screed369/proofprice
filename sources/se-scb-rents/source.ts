@@ -128,6 +128,8 @@ export async function seRent(input: SeRentInput, fetcher?: (url: string) => Prom
     describe: (v) => `The median monthly rent of a rented flat (${roomLabel.toLowerCase()}) in ${region.label} was ${fmtMoney(v, "SEK")} in ${pick!.year}.`,
     note: "Survey median, mostly negotiated and regulated rents (below open-market rents for new tenants).",
     baseUrl: input.baseUrl,
+    // The reference period is a calendar year that may not be over yet: the data date is then the day SCB updated the table.
+    published: table.updated ?? null,
     extra: pick
       ? {
           region: { name: region.label, scb_code: region.code },

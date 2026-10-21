@@ -145,7 +145,7 @@ test("us-dot-airfares: an airport pair answer states the quarter, one-way fare, 
   const a = pairAnswer(rows, { table: "airport", from, to, quarters: 4, today: TODAY });
   assert.equal(a.status, "ok");
   assert.equal(a.price_type, "official_statistic");
-  assert.equal(a.price!.value, 508.3078641);
+  assert.equal(a.price!.value, 508.31);
   assert.equal(a.price!.measure, "average");
   assert.equal(a.price!.currency, "USD");
   assert.equal(a.price!.unit, "per passenger, each way");
@@ -189,7 +189,7 @@ test("us-dot-airfares: a city pair answer (Table 6) reads the same way", () => {
   const rows = parsePairRows(CHICAGO_MIAMI);
   const a = pairAnswer(rows, { table: "city", from: resolvePlace("Chicago"), to: resolvePlace("Miami", "to"), quarters: 4, today: TODAY });
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 228.7810923);
+  assert.equal(a.price!.value, 228.78);
   assert.match(a.summary, /Chicago, IL and Miami, FL/);
   assert.equal((a.extra as any).market.type, "city_pair");
   assert.equal((a.extra as any).passengers_per_day, 5588.7);
@@ -220,7 +220,7 @@ test("us-dot-airfares: Table 2 rows give a city answer with the year-ago compari
   assert.equal(knox[0].markets, 11);
   const a = cityAnswer(knox, { from: resolvePlace("Knoxville, TN"), quarters: 4, today: TODAY });
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 224.1574449);
+  assert.equal(a.price!.value, 224.16);
   assert.equal(a.statistic!.reference_period, "2026-Q1");
   assert.match(a.summary, /Knoxville, TN/);
   assert.match(a.summary, /5\.9% higher than a year earlier/);
@@ -235,7 +235,7 @@ test("us-dot-airfares: JFK to LAX asks the airport-pair table once and answers f
   assert.ok(f.urls[0].startsWith("https://data.transportation.gov/resource/tfrh-tu9e.json?"));
   assert.ok(decodeURIComponent(f.urls[0]).includes("airport_1 in ('JFK','LAX') AND airport_2 in ('JFK','LAX')"));
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 508.3078641);
+  assert.equal(a.price!.value, 508.31);
   assert.equal((a.query as any).from, "JFK");
 });
 
@@ -245,7 +245,7 @@ test("us-dot-airfares: two cities use the city-pair table", async () => {
   assert.equal(f.urls.length, 1);
   assert.ok(f.urls[0].includes("/resource/yj5y-b2ir.json"));
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 228.7810923);
+  assert.equal(a.price!.value, 228.78);
 });
 
 test("us-dot-airfares: an airport pair with no row falls back to the city pair and says so", async () => {
@@ -269,7 +269,7 @@ test("us-dot-airfares: from alone uses the city summary", async () => {
   assert.equal(f.urls.length, 1);
   assert.ok(f.urls[0].includes("/resource/wqw2-rjgd.json"));
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 224.1574449);
+  assert.equal(a.price!.value, 224.16);
   const g = fake({ [TABLES.summary.id]: [TABLE2_ROWS[0]] });
   const b = await usAirfares({ from: "TYS" }, { fetcher: g.fetcher, today: TODAY });
   assert.match(b.statistic!.note as string, /TYS is part of the DOT city market Knoxville, TN/);

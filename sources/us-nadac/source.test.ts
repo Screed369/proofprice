@@ -177,7 +177,7 @@ test("us-nadac only says rows were cut off when the portal holds more than it se
 
 test("us-nadac flags brand rates and tells apart generic and brand", async () => {
   const a = await nadacMedicine({ medicine: "Lipitor 20mg" }, { fetcher: portal({ rows: { "LIPITOR%20%25": LIPITOR_JSON } }), today: "2026-10-14" });
-  assert.equal(a.price?.value, 19.07256);
+  assert.equal(a.price?.value, 19.0726);
   assert.equal((a.extra as any).products[0].rate, "brand");
 });
 

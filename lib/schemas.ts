@@ -66,7 +66,7 @@ export const priceAnswerSchema = z
     evidence: z
       .looseObject({
         type: z.string().describe("Same as price_type."),
-        label: z.string().describe("Short name of the kind of evidence, e.g. 'Recorded sale prices', 'Official published average', 'Posted shelf or pump price', 'Contract award value', 'Regulated reimbursement price'."),
+        label: z.string().describe("Short name of the kind of evidence, e.g. 'Recorded sale prices', 'Official published average', 'Official published index', 'Posted shelf or pump price', 'Posted or listed price', 'Contract award value', 'Regulated reimbursement price'."),
         meaning: z.string().describe("One sentence on what this kind of evidence does and does not establish."),
       })
       .optional()

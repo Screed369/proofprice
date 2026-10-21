@@ -59,3 +59,9 @@ test("ieChildcare loads the table through the supplied loader", async () => {
   assert.equal(a.price?.value, 125);
   await assert.rejects(ieChildcare({ area: "Dublin" }, NOW, async () => "x"), SourceError);
 });
+
+test("2016 data is more than five years old, so confidence is low", () => {
+  const a = ieAnswer(parseCca12(CSV), { area: "Dublin" }, NOW);
+  assert.equal(a.status, "ok");
+  assert.equal(a.confidence, "low");
+});

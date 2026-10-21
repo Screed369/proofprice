@@ -75,3 +75,13 @@ test("licence and attribution are filled in", () => {
   assert.match(INFO.attribution, /Open Government Licence v3.0/);
   assert.match(INFO.licence_url, /open-government-licence/);
 });
+
+test("several varieties: the cheapest and dearest are min and max, not the 10th-90th percentile; one figure is not a thin range", () => {
+  const a = gbWholesaleFromRows(rows, { product: "apples" });
+  assert.equal(a.price!.typical_low, null);
+  assert.equal(a.price!.typical_high, null);
+  assert.ok(a.price!.min! > 0 && a.price!.max! >= a.price!.min!);
+  assert.equal(a.reliability, "official_median_no_count");
+  assert.doesNotMatch(a.summary, /Official average/);
+  assert.equal(a.evidence!.label, "Posted or listed price");
+});

@@ -66,8 +66,8 @@ test("Hungary converts to euro with the sheet's rate", () => {
   assert.equal(a.status, "ok");
   assert.equal(a.price!.currency, "HUF");
   assert.equal(a.price!.value, 750000);
-  assert.equal(a.price!.typical_low, 300000);
-  assert.equal(a.price!.typical_high, 6442000);
+  assert.equal(a.price!.min, 300000);
+  assert.equal(a.price!.max, 6442000);
   assert.equal((a.extra as any).euro_equivalent.most_common, Math.round((750000 / 381.85) * 100) / 100);
 });
 
@@ -81,8 +81,8 @@ test("a most-common fee of zero is a real answer (free tuition), not 'no match'"
 test("a range without a most-common figure still answers", () => {
   const a = tuitionAnswer(table(), { country: "BG" });
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.typical_low, 400);
-  assert.equal(a.price!.typical_high, 3752);
+  assert.equal(a.price!.min, 400);
+  assert.equal(a.price!.max, 3752);
   assert.match(a.summary, /no single most-common fee/);
 });
 
@@ -154,4 +154,12 @@ test("readWorkbook reads sheets, shared strings, inline strings and blank cells"
   assert.deepEqual(wb.get("Fees_sub-topic 5")![1], []);
   assert.deepEqual(wb.get("Fees_sub-topic 5")![2], ["x & y", "", ":"]);
   assert.deepEqual(wb.get("Eurostat & data")![0], ["", "SE", "11.4788"]);
+});
+
+test("minimum and maximum fees are min and max (not percentiles), and a published fee is not a thin range", () => {
+  const a = tuitionAnswer(table(), { country: "IE" });
+  assert.equal(a.price!.typical_low, null);
+  assert.equal(a.price!.typical_high, null);
+  assert.notEqual(a.reliability, "thin");
+  assert.doesNotMatch(a.summary, /Official average/);
 });

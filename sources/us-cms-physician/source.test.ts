@@ -78,7 +78,7 @@ test("us-cms-physician: 99213 in Texas - the Medicare-allowed average, with serv
   const a = physicianAnswer(both(), { codes: ["99213"], geo: TEXAS, setting: null, explicit: false, year: 2024 });
   assert.equal(a.status, "ok");
   assert.equal(a.price_type, "official_statistic");
-  assert.equal(a.price!.value, 83.754834965);
+  assert.equal(a.price!.value, 83.7548);
   assert.equal(a.price!.measure, "average");
   assert.equal(a.price!.currency, "USD");
   assert.equal(a.price!.unit, "per service (Medicare-allowed amount)");
@@ -134,7 +134,7 @@ test("us-cms-physician: the AMA's code descriptions are never passed on for CPT 
 test("us-cms-physician: a facility figure says it is the doctor's fee only", () => {
   const a = physicianAnswer(both(), { codes: ["99213"], geo: TEXAS, setting: "facility", explicit: true, year: 2024 });
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.value, 60.407738943);
+  assert.equal(a.price!.value, 60.4077);
   assert.equal(a.sample_size, 237389);
   assert.match(a.summary, /facility setting/);
   assert.match(a.summary, /the doctor's fee only/);
@@ -144,7 +144,7 @@ test("us-cms-physician: a facility figure says it is the doctor's fee only", () 
 
 test("us-cms-physician: a national request has no national comparison and no state in the query", () => {
   const a = physicianAnswer(parsePhysicianRows(PHYS_NATIONAL_99213), { codes: ["99213"], geo: NATIONAL, setting: null, explicit: false, year: 2024 });
-  assert.equal(a.price!.value, 85.366781205);
+  assert.equal(a.price!.value, 85.3668);
   assert.match(a.summary, /in the United States/);
   assert.equal((a.extra as any).national, null);
   assert.equal((a.query as any).state, null);
@@ -153,7 +153,7 @@ test("us-cms-physician: a national request has no national comparison and no sta
 test("us-cms-physician: related codes of a group are listed, and the next code is used when the first has no data", () => {
   const rows = parsePhysicianRows([PHYS_TX_99213[1], { ...PHYS_TX_99213[1], HCPCS_Cd: "99214", Avg_Mdcr_Alowd_Amt: "123.4", Tot_Srvcs: "1000" }]);
   const a = physicianAnswer(rows, { codes: ["99213", "99214"], geo: TEXAS, setting: "office", explicit: false, year: 2024 });
-  assert.equal(a.price!.value, 83.754834965);
+  assert.equal(a.price!.value, 83.7548);
   assert.deepEqual((a.extra as any).related_codes, [{ code: "99214", service: labelFor("99214"), average_medicare_allowed_amount: 123.4, services: 1000 }]);
   const second = physicianAnswer(rows.slice(1), { codes: ["99213", "99214"], geo: TEXAS, setting: "office", explicit: false, year: 2024 });
   assert.equal(second.price!.value, 123.4);

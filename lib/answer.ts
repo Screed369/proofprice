@@ -93,13 +93,50 @@ export function periodEndDate(text: string | null | undefined): string | null {
   return null;
 }
 
-/** Reliability of an answer, from what it already says. Pure. */
-export function reliabilityOf(a: Pick<PriceAnswer, "status" | "price" | "sample_size" | "price_type" | "extra">): Reliability {
+/** Reliability of an answer, from what it already says. Pure.
+ *  A single published figure (an official statistic, or any answer built by buildStatisticAnswer: a list price, a tariff, a
+ *  quoted wholesale price, an index) is never "thin": "thin" means a range built from few records. */
+export function reliabilityOf(a: Pick<PriceAnswer, "status" | "price" | "sample_size" | "price_type" | "extra"> & { statistic?: PriceAnswer["statistic"] }): Reliability {
   if (a.status !== "ok" || !a.price) return "insufficient_data";
   if (a.extra && (a.extra as any).stale === true) return "stale";
-  if (a.price_type === "official_statistic") return typeof a.sample_size === "number" && a.sample_size > 0 ? "official_with_count" : "official_median_no_count";
+  if (a.price_type === "official_statistic" || a.statistic) return typeof a.sample_size === "number" && a.sample_size > 0 ? "official_with_count" : "official_median_no_count";
   return typeof a.sample_size === "number" && a.sample_size >= 15 ? "record_level" : "thin";
 }
+
+/** The newest data date an answer can honestly claim: the end of its period, but never later than the day it is produced.
+ *  A period that runs into the future (a calendar year not yet over, a month in progress, a tariff valid until next year, a
+ *  weekly price announced for the coming week) gives the publication date when the source passes one, otherwise today. */
+export function dataAsOfFor(
+  a: { period?: PriceAnswer["period"]; statistic?: PriceAnswer["statistic"] },
+  retrievedAt: string = new Date().toISOString(),
+  published?: string | null,
+): string | null {
+  const end = periodEndDate(a.period?.to) ?? periodEndDate(a.period?.from) ?? periodEndDate(a.statistic?.reference_period);
+  if (!end) return null;
+  const today = retrievedAt.slice(0, 10);
+  if (end <= today) return end;
+  const pub = periodEndDate(published ?? null);
+  return pub && pub <= today ? pub : today;
+}
+
+/** Data older than this many years cannot be "high" or "medium" confidence, whatever the sample size. */
+export const OLD_DATA_YEARS = 5;
+
+/** Confidence lowered for old data: a figure whose newest data is more than OLD_DATA_YEARS old is at most "low". */
+export function ageAdjustedConfidence(conf: PriceAnswer["confidence"], dataAsOf: string | null, now: string = new Date().toISOString()): PriceAnswer["confidence"] {
+  if (conf === "insufficient" || conf === "low" || !dataAsOf) return conf;
+  const ageDays = (new Date(now).getTime() - new Date(dataAsOf + "T00:00:00Z").getTime()) / 86400000;
+  return ageDays > OLD_DATA_YEARS * 365.25 ? "low" : conf;
+}
+
+/** Money and other published figures without floating-point leftovers: 2 decimals from 100 up (2503.06005859375 -> 2503.06),
+ *  6 significant digits below (per-litre, per-kWh and per-tablet prices are published with 3 to 5 decimals: 1.79469, 0.02792). */
+export function roundFigure(v: number): number {
+  if (!Number.isFinite(v)) return v;
+  return Math.abs(v) >= 100 ? Math.round(v * 100) / 100 : Number(v.toPrecision(6));
+}
+
+const roundOrNull = (v: number | null | undefined): number | null => (typeof v === "number" ? roundFigure(v) : null);
 
 function suggestionsFor(a: PriceAnswer, rel: Reliability, ageDays: number | null): string[] {
   const out: string[] = [];
@@ -113,7 +150,7 @@ function suggestionsFor(a: PriceAnswer, rel: Reliability, ageDays: number | null
     out.push("Few records stand behind this range: widen the period or the area for a steadier figure.");
     out.push("Treat it as a rough guide and ask for an itemised quote before deciding.");
   } else if (rel === "official_median_no_count") {
-    out.push("This is one published average or median with no record count: use it as a reference point, not as a range of what individuals paid.");
+    out.push("This is one published figure (an average, median, index or listed price) with no record count: use it as a reference point, not as a range of what individuals paid.");
     out.push("For a decision on a specific job or purchase, ask for an itemised quote.");
   } else if (rel === "official_with_count") {
     out.push("This is one published figure for a group: for a specific job or purchase, ask for an itemised quote.");
@@ -149,8 +186,8 @@ export const EVIDENCE_KINDS: Record<string, { label: string; meaning: string }> 
     meaning: "The price a seller displays (for example at a pump or on a shelf): it is what is asked at the time, not a record of what each customer paid.",
   },
   posted_price: {
-    label: "Posted shelf or pump price",
-    meaning: "The price a seller displays (for example at a pump or on a shelf): it is what is asked at the time, not a record of what each customer paid.",
+    label: "Posted or listed price",
+    meaning: "A price a seller, market or authority publishes in advance (a shelf price, tariff, fee schedule or quoted wholesale price): it is what is asked, not a record of what each customer paid.",
   },
   contract_price: {
     label: "Contract award value",
@@ -162,7 +199,17 @@ export const EVIDENCE_KINDS: Record<string, { label: string; meaning: string }> 
   },
 };
 
-export function evidenceFor(priceType: string, measure?: string): AnswerEvidence {
+/** Evidence for an index (currency "INDEX"): whatever the price_type, an index value is not a price. */
+export const INDEX_EVIDENCE = {
+  label: "Official published index",
+  meaning: "An index value a statistics office publishes to show how prices move over time or compare between places (against a base of 100): it is not a price anyone paid.",
+};
+
+/** The one spelling of the currency of an index value. */
+export const INDEX_CURRENCY = "INDEX";
+
+export function evidenceFor(priceType: string, measure?: string, currency?: string): AnswerEvidence {
+  if (currency && currency.toUpperCase() === INDEX_CURRENCY) return { type: priceType, ...INDEX_EVIDENCE };
   const k = EVIDENCE_KINDS[priceType] ?? {
     label: "Published price",
     meaning: "A price published by the official source: check price_type and the method before relying on it.",
@@ -191,19 +238,26 @@ export function answerIdFor(sourceId: string, query: Record<string, unknown>, pe
   return "ans_" + createHash("sha256").update(basis).digest("hex").slice(0, 20);
 }
 
+export interface AuditOptions {
+  /** What the figure really is, when the price_type's general words do not fit (a cheapest posted offer, a median ProofPrice computed). */
+  evidence?: { label: string; meaning: string };
+  /** ISO date the source published the figure; used for data_as_of when the period runs past today. */
+  published?: string | null;
+}
+
 /** Add the audit-trail fields to an answer. Central: every builder, and the stale-if-error copy, goes through here.
  *  Only adds fields; nothing that was already in the answer changes. */
-export function withAudit<T extends PriceAnswer>(answer: T, src: SourceInfo, retrievedAt: string = new Date().toISOString()): T {
+export function withAudit<T extends PriceAnswer>(answer: T, src: SourceInfo, retrievedAt: string = new Date().toISOString(), opts: AuditOptions = {}): T {
   const methodVersion = src.method_version ?? "1";
   const base = {
     ...answer,
     answer_id: answerIdFor(src.id, answer.query, answer.period, methodVersion),
     method_version: methodVersion,
     retrieved_at: retrievedAt,
-    evidence: evidenceFor(src.price_type, answer.statistic?.measure),
+    evidence: opts.evidence ? { type: src.price_type, ...opts.evidence } : evidenceFor(src.price_type, answer.statistic?.measure, answer.price?.currency),
   };
   const reliability = reliabilityOf(base);
-  const dataAsOf = periodEndDate(answer.period?.to) ?? periodEndDate(answer.period?.from) ?? periodEndDate(answer.statistic?.reference_period);
+  const dataAsOf = dataAsOfFor(answer, retrievedAt, opts.published);
   const ageMs = dataAsOf ? new Date(retrievedAt).getTime() - new Date(dataAsOf + "T00:00:00Z").getTime() : NaN;
   const dataAge = Number.isFinite(ageMs) ? Math.max(0, Math.floor(ageMs / 86400000)) : null;
   return { ...base, reliability, data_as_of: dataAsOf, data_age_days: dataAge, suggestions: suggestionsFor(base, reliability, dataAge) };
@@ -234,10 +288,13 @@ export function buildAnswer(opts: {
   describe: (s: PriceSummary) => string; // plain sentence for a good answer
   baseUrl?: string;
   extra?: Record<string, unknown>;
+  /** ISO date the source published the data; used for data_as_of when the period runs past today (a month in progress). */
+  published?: string | null;
 }): PriceAnswer {
   const src = opts.source;
   const n = opts.summary?.count ?? 0;
-  const conf = confidenceLabel(n);
+  const retrievedAt = new Date().toISOString();
+  const conf = ageAdjustedConfidence(confidenceLabel(n), dataAsOfFor({ period: opts.period }, retrievedAt, opts.published), retrievedAt);
   const enough = opts.summary && n >= MIN_PUBLISH;
   const status: PriceAnswer["status"] = n === 0 ? "no_matches" : enough ? "ok" : "insufficient_data";
   const summaryText = enough
@@ -255,13 +312,13 @@ export function buildAnswer(opts: {
       ? {
           currency: opts.currency,
           unit: opts.unit,
-          value: opts.summary!.median,
+          value: roundFigure(opts.summary!.median),
           measure: "median" as const,
-          median: opts.summary!.median,
-          typical_low: opts.summary!.low,
-          typical_high: opts.summary!.high,
-          min: opts.summary!.min,
-          max: opts.summary!.max,
+          median: roundFigure(opts.summary!.median),
+          typical_low: roundFigure(opts.summary!.low),
+          typical_high: roundFigure(opts.summary!.high),
+          min: roundFigure(opts.summary!.min),
+          max: roundFigure(opts.summary!.max),
         }
       : null,
     sample_size: n,
@@ -275,7 +332,16 @@ export function buildAnswer(opts: {
     summary: summaryText,
     notice: NOTICE,
     ...(opts.extra ? { extra: opts.extra } : {}),
-  }, src);
+  }, src, retrievedAt, { published: opts.published });
+}
+
+/** How the summary of a single published figure ends, by default: "Official average published by X for 2025." for an
+ *  official statistic, "Official index value published by ..." for an index, and a neutral "Published by X for ..." for a
+ *  posted, listed or reimbursement price (which is not an official average). */
+export function statisticEnding(src: SourceInfo, measure: "median" | "average", currency: string, referencePeriod: string): string {
+  const what =
+    currency.toUpperCase() === INDEX_CURRENCY ? "Official index value published" : src.price_type === "official_statistic" ? `Official ${measure} published` : "Published";
+  return `${what} by ${src.publisher} for ${referencePeriod}.`;
 }
 
 /**
@@ -295,17 +361,29 @@ export function buildStatisticAnswer(opts: {
   period: { from: string | null; to: string | null };
   reference_period: string; // the period the publisher states the figure for, e.g. "2025-S2"
   sample_size?: number | null;
+  /** 10th and 90th percentile when the publisher gives them (never a minimum and maximum: use min / max for those). */
   low?: number | null;
   high?: number | null;
+  /** Lowest and highest published figure behind the headline (for example the cheapest and dearest variety). */
+  min?: number | null;
+  max?: number | null;
   method: string;
   describe: (value: number) => string; // plain sentence for a good answer
   note?: string; // optional caveat, e.g. "Provisional figure."
   baseUrl?: string;
   extra?: Record<string, unknown>;
+  /** The closing sentence of the summary, when the default (see statisticEnding) does not say what the figure is,
+   *  e.g. "Median calculated by ProofPrice from the tariffs ANEEL publishes." */
+  ending?: string;
+  /** What kind of evidence the figure is, when the price_type's general words do not fit. */
+  evidence?: { label: string; meaning: string };
+  /** ISO date the source published the figure; used for data_as_of when the period runs past today. */
+  published?: string | null;
 }): PriceAnswer {
   const src = opts.source;
   const ok = typeof opts.value === "number" && Number.isFinite(opts.value) && opts.value > 0;
-  const value = ok ? (opts.value as number) : null;
+  const value = ok ? roundFigure(opts.value as number) : null;
+  const retrievedAt = new Date().toISOString();
   const statistic: NonNullable<PriceAnswer["statistic"]> = { measure: opts.measure, reference_period: opts.reference_period };
   if (opts.note) statistic.note = opts.note;
   return withAudit({
@@ -319,15 +397,15 @@ export function buildStatisticAnswer(opts: {
             value,
             measure: opts.measure,
             median: opts.measure === "median" ? value : null,
-            typical_low: opts.low ?? null,
-            typical_high: opts.high ?? null,
-            min: null,
-            max: null,
+            typical_low: roundOrNull(opts.low),
+            typical_high: roundOrNull(opts.high),
+            min: roundOrNull(opts.min),
+            max: roundOrNull(opts.max),
           }
         : null,
     sample_size: opts.sample_size ?? null,
     period: opts.period,
-    confidence: ok ? "high" : "insufficient",
+    confidence: ok ? ageAdjustedConfidence("high", dataAsOfFor({ period: opts.period, statistic }, retrievedAt, opts.published), retrievedAt) : "insufficient",
     price_type: src.price_type,
     statistic,
     as_of: new Date().toISOString(),
@@ -336,11 +414,11 @@ export function buildStatisticAnswer(opts: {
     method_url: (opts.baseUrl ?? "") + METHOD_URL,
     summary:
       value !== null
-        ? `${opts.describe(value)} Official ${opts.measure} published by ${src.publisher} for ${opts.reference_period}.`
+        ? `${opts.describe(value)} ${opts.ending ?? statisticEnding(src, opts.measure, opts.currency, opts.reference_period)}`
         : `No matching official statistic found in ${src.name} (${src.publisher}) for this query.`,
     notice: NOTICE,
     ...(opts.extra ? { extra: opts.extra } : {}),
-  }, src);
+  }, src, retrievedAt, { evidence: opts.evidence, published: opts.published });
 }
 
 export function fmtMoney(v: number, currency: string): string {

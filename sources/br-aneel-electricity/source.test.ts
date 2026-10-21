@@ -151,3 +151,12 @@ test("historyKey: national by default, a distributor when named, nothing for gas
   assert.equal(aneelHistoryKey({ country: "BR", energy: "electricity", distributor: "ENEL SP" })!.area, "ENELSP");
   assert.equal(aneelHistoryKey({ country: "BR", energy: "gas" }), null);
 });
+
+test("the national figure says ProofPrice calculated the median; a distributor's data date is not in the future", () => {
+  const a = brElectricityAnswer(parseTariffs(RECORDS), { energy: "electricity", today: TODAY });
+  assert.doesNotMatch(a.summary, /Official (median|average) published/);
+  assert.match(a.summary, /Median calculated by ProofPrice across the tariffs ANEEL/);
+  assert.match(a.evidence!.label, /calculated by ProofPrice/);
+  const d = brElectricityAnswer(parseTariffs(RECORDS), { energy: "electricity", distributor: "cemig", today: TODAY });
+  assert.ok(d.data_as_of! <= new Date().toISOString().slice(0, 10));
+});

@@ -61,7 +61,7 @@ test("us-cms-inpatient: DRG 470 in Texas - the average total payment per stay, w
   const a = inpatientAnswer(both(), { drgs: ["470", "469"], geo: TEXAS, year: 2024, label: "knee replacement" });
   assert.equal(a.status, "ok");
   assert.equal(a.price_type, "official_statistic");
-  assert.equal(a.price!.value, 15157.440135);
+  assert.equal(a.price!.value, 15157.44);
   assert.equal(a.price!.measure, "average");
   assert.equal(a.price!.currency, "USD");
   assert.match(a.price!.unit, /per hospital stay/);
@@ -105,14 +105,14 @@ test("us-cms-inpatient: the other severity levels are listed with their own paym
   assert.match(levels[0].title, /with MCC or tota/);
   // when the headline DRG has no row, the next one is used and the note says so
   const second = inpatientAnswer(rows.filter((r) => r.drg !== "470"), { drgs: ["470", "469"], geo: TEXAS, year: 2024, label: null });
-  assert.equal(second.price!.value, 29663.081193);
+  assert.equal(second.price!.value, 29663.08);
   assert.match(second.statistic!.note!, /no average for MS-DRG 470 in Texas, so the next group \(469\) is shown/);
   assert.match(second.summary, /^For MS-DRG 469 \(/);
 });
 
 test("us-cms-inpatient: a national request, a missing state, too few discharges, unknown year and old data", () => {
   const nat = inpatientAnswer(both(), { drgs: ["470"], geo: NATIONAL, year: 2024 });
-  assert.equal(nat.price!.value, 17364.016424);
+  assert.equal(nat.price!.value, 17364.02);
   assert.equal((nat.extra as any).national, null);
   assert.equal((nat.query as any).state, null);
   const none = inpatientAnswer(parseInpatientRows(INP_NATIONAL_470), { drgs: ["470"], geo: TEXAS, year: 2024 });

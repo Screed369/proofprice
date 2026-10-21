@@ -102,6 +102,7 @@ export function answerFromProducts(products: TwProduct[], input: TwFuelInput): P
     reference_period: `list price effective ${hit.effective}`,
     method: METHOD,
     note: note.trim(),
+    ending: `List price published by ${INFO.publisher}, effective ${hit.effective}.`,
     describe: (v) => `The posted CPC list price of ${series.label} in Taiwan is ${ntd(v)} per litre, effective ${hit.effective} (VAT and excise included).`,
     baseUrl: input.baseUrl,
     extra: {
