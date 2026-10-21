@@ -1,0 +1,41 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/85792ENG/TypedDataSet?$filter=Periods%20eq%20%272025KW04%27&$top=3
+Fetched: 2026-10-21T14:50:05Z from GitHub Actions
+Status, type, bytes: 200 application/json 1224
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Wed, 21 Oct 2026 14:50:05 GMT
+Content-Length: 1224
+TXID: 0161e0c5
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=016a6cbb-d11d-1ad8-9678-0050569bed16_0215983761_2949377634_00000000000023191749; Path=/; Expires=Wed, 21-Oct-2026 14:50:20 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/85792ENG/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":153,"Regions":"NL01  ","Periods":"2025KW04","PriceIndexPurchasePrices_1":152.2,"ChangesComparedToOnePeriodEarlier_2":0.5,"ChangesComparedToOneYearEarlier_3":6.2,"NumberOfDwellingsSold_4":67227,"ChangesComparedToOnePeriodEarlier_5":7.4,"ChangesComparedToOneYearEarlier_6":12.2,"AveragePurchasePrice_7":485525,"TotalValuePurchasePrices_8":32640
+    },{
+      "ID":310,"Regions":"LD01  ","Periods":"2025KW04","PriceIndexPurchasePrices_1":162.4,"ChangesComparedToOnePeriodEarlier_2":1.4,"ChangesComparedToOneYearEarlier_3":7.9,"NumberOfDwellingsSold_4":6627,"ChangesComparedToOnePeriodEarlier_5":12.4,"ChangesComparedToOneYearEarlier_6":13.9,"AveragePurchasePrice_7":390455,"TotalValuePurchasePrices_8":2588
+    },{
+      "ID":467,"Regions":"LD02  ","Periods":"2025KW04","PriceIndexPurchasePrices_1":159.7,"ChangesComparedToOnePeriodEarlier_2":0.8,"ChangesComparedToOneYearEarlier_3":7.4,"NumberOfDwellingsSold_4":13361,"ChangesComparedToOnePeriodEarlier_5":6.4,"ChangesComparedToOneYearEarlier_6":13.2,"AveragePurchasePrice_7":464294,"TotalValuePurchasePrices_8":6203
+    }
+  ]
+}
