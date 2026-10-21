@@ -10,7 +10,7 @@ import { joinOr, freshnessList } from "../../lib/text";
 
 export const PRODUCT_HELP =
   "What the rate is for: mortgage (default; a loan for house purchase), consumer_loan, business_loan (any size), business_loan_small, business_loan_large, " +
-  "deposit (household term deposit), deposit_overnight, deposit_notice, or mortgage_insured / mortgage_uninsured (Canada). Each country lists what it has.";
+  "deposit (household term deposit), deposit_overnight, deposit_notice, or mortgage_insured / mortgage_uninsured where a country splits mortgages that way. Each country lists what it has.";
 export const TERM_HELP =
   "The term of the series where it has one: for loans the initial rate-fixation period (total = all periods together, the default; floating; fixed; up-to-3m; 3m-1y; 1-3y; 3-5y; 1-5y; 5y; 5-10y; over-5y; over-10y; over-1y), " +
   "for deposits the agreed maturity (up-to-1y; 1-2y; over-2y) or the notice period (up-to-3m; over-3m). A country answers only the terms it publishes and the error lists them.";
@@ -27,7 +27,7 @@ export default defineCategory({
     "The interest-rates tool gives the official average rate for information only.",
   description: (places) =>
     "Use this when a user asks what interest rate banks actually agreed on new mortgages, consumer loans or business loans, or paid on new deposits, in a country or region, " +
-    "for example 'what is the average new mortgage rate in Spain', 'what do banks charge small businesses in Ireland' or 'what do banks pay on savings deposits in the UK', in " +
+    "for example 'what is the average new mortgage rate', 'what do banks charge small businesses' or 'what do banks pay on savings deposits', in " +
     `${joinOr(places.map((p) => `${p.place} (country ${p.code})`))}. ` +
     "Returns the official average agreed rate on new loans (or the rate paid on new deposits) in % a year for the latest month published, with the reference month, up to 24 earlier months, the exact series, the source and the licence. " +
     "It is an official statistic from central bank data, passed on exactly as published: not a lender's offer, a quote or a range, so the range fields are null and there is no sample size. " +
