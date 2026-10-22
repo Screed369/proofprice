@@ -1,0 +1,819 @@
+URL: https://api.us.socrata.com/api/catalog/v1?domains=data.cityofnewyork.us&q=taxi%20trip&limit=8
+Fetched: 2026-10-22T01:43:16Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 60919
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 01:43:16 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "2018 Yellow Taxi Trip Data",
+            "id" : "t29m-gskq",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "These records are generated from the trip record submissions made by yellow taxi Technology Service Providers (TSPs). Each row represents a single trip in a yellow taxi. The trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off taxi zone locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.",
+            "attribution" : "Taxi and Limousine Commission (TLC)",
+            "attribution_link" : "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2023-12-14T20:46:24.000Z",
+            "createdAt" : "2018-09-24T17:14:48.000Z",
+            "metadata_updated_at" : "2023-12-14T20:46:24.000Z",
+            "data_updated_at" : "2019-04-05T15:42:41.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 111,
+                "page_views_last_month" : 573,
+                "page_views_total" : 93486,
+                "page_views_last_week_log" : 6.807354922057604,
+                "page_views_last_month_log" : 9.16490692667569,
+                "page_views_total_log" : 16.512478141988456
+              },
+            "columns_name" :
+              [
+                "trip_distance",
+                "payment_type",
+                "tolls_amount",
+                "passenger_count",
+                "extra",
+                "VendorID",
+                "total_amount",
+                "PULocationID",
+                "tpep_pickup_datetime",
+                "mta_tax",
+                "improvement_surcharge",
+                "store_and_fwd_flag",
+                "DOLocationID",
+                "fare_amount",
+                "tpep_dropoff_datetime",
+                "RatecodeID",
+                "tip_amount"
+              ],
+            "columns_field_name" :
+              [
+                "trip_distance",
+                "payment_type",
+                "tolls_amount",
+                "passenger_count",
+                "extra",
+                "vendorid",
+                "total_amount",
+                "pulocationid",
+                "tpep_pickup_datetime",
+                "mta_tax",
+                "improvement_surcharge",
+                "store_and_fwd_flag",
+                "dolocationid",
+                "fare_amount",
+                "tpep_dropoff_datetime",
+                "ratecodeid",
+                "tip_amount"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+            "columns_format" :
+              [
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "view" : "default_date_time" },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                {},
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "view" : "default_date_time" },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," }
+              ],
+            "download_count" : 22519,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2019-04-05T16:28:21.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Transportation",
+            "domain_tags" :
+              [
+                "lyft",
+                "trip",
+                "trip data",
+                "uber",
+                "via",
+                "yellow taxi",
+                "base",
+                "fhv",
+                "high volume"
+              ],
+            "domain_metadata" :
+              [
+                { "key" : "Update_Automation", "value" : "No" },
+                {
+                  "key" : "Update_Data-Change-Frequency",
+                  "value" : "As needed"
+                },
+                {
+                  "key" : "Update_Update-Frequency-Details",
+                  "value" : "As this is historical data, the dataset is only published once. The data will only be changed rarely if there are corrections needed."
+                },
+                { "key" : "Update_Date-Made-Public", "value" : "10/19/2018" },
+                {
+                  "key" : "Update_Update-Frequency",
+                  "value" : "Historical data"
+                },
+                {
+                  "key" : "Data-Collection_Data-Collection",
+                  "value" : "TLC Trip Data"
+                },
+                {
+                  "key" : "Dataset-Information_Agency",
+                  "value" : "Taxi and Limousine Commission (TLC)"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.cityofnewyork.us" },
+        "permalink" : "https://data.cityofnewyork.us/d/t29m-gskq",
+        "link" : "https://data.cityofnewyork.us/Transportation/2018-Yellow-Taxi-Trip-Data/t29m-gskq",
+        "owner" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          },
+        "creator" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "2017 Yellow Taxi Trip Data",
+            "id" : "biws-g3hs",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "These records are generated from the trip record submissions made by yellow taxi Technology Service Providers (TSPs). Each row represents a single trip in a yellow taxi. The trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off taxi zone locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.",
+            "attribution" : "Taxi and Limousine Commission (TLC)",
+            "attribution_link" : "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2023-12-14T20:45:49.000Z",
+            "createdAt" : "2018-03-23T14:51:48.000Z",
+            "metadata_updated_at" : "2023-12-14T20:45:49.000Z",
+            "data_updated_at" : "2018-03-28T20:35:03.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 65,
+                "page_views_last_month" : 329,
+                "page_views_total" : 46787,
+                "page_views_last_week_log" : 6.044394119358453,
+                "page_views_last_month_log" : 8.366322214245816,
+                "page_views_total_log" : 15.513850940118793
+              },
+            "columns_name" :
+              [
+                "VendorID",
+                "store_and_fwd_flag",
+                "trip_distance",
+                "total_amount",
+                "improvement_surcharge",
+                "tolls_amount",
+                "mta_tax",
+                "extra",
+                "fare_amount",
+                "payment_type",
+                "DOLocationID",
+                "tpep_pickup_datetime",
+                "PULocationID",
+                "tpep_dropoff_datetime",
+                "tip_amount",
+                "RatecodeID",
+                "passenger_count"
+              ],
+            "columns_field_name" :
+              [
+                "vendorid",
+                "store_and_fwd_flag",
+                "trip_distance",
+                "total_amount",
+                "improvement_surcharge",
+                "tolls_amount",
+                "mta_tax",
+                "extra",
+                "fare_amount",
+                "payment_type",
+                "dolocationid",
+                "tpep_pickup_datetime",
+                "pulocationid",
+                "tpep_dropoff_datetime",
+                "tip_amount",
+                "ratecodeid",
+                "passenger_count"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+            "columns_format" :
+              [
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                {},
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "view" : "default_date_time" },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "view" : "default_date_time" },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," }
+              ],
+            "download_count" : 13241,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2018-03-29T14:10:07.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Transportation",
+            "domain_tags" :
+              [
+                "high volume",
+                "base",
+                "fhv",
+                "yellow taxi",
+                "via",
+                "uber",
+                "trip data",
+                "trip",
+                "lyft"
+              ],
+            "domain_metadata" :
+              [
+                { "key" : "Update_Automation", "value" : "No" },
+                {
+                  "key" : "Update_Data-Change-Frequency",
+                  "value" : "As needed"
+                },
+                {
+                  "key" : "Update_Update-Frequency-Details",
+                  "value" : "As this is historical data, the dataset is only published once. The data will only be changed rarely if there are corrections needed."
+                },
+                { "key" : "Update_Date-Made-Public", "value" : "04/09/2018" },
+                {
+                  "key" : "Update_Update-Frequency",
+                  "value" : "Historical data"
+                },
+                {
+                  "key" : "Data-Collection_Data-Collection",
+                  "value" : "TLC Trip Data"
+                },
+                {
+                  "key" : "Dataset-Information_Agency",
+                  "value" : "Taxi and Limousine Commission (TLC)"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.cityofnewyork.us" },
+        "permalink" : "https://data.cityofnewyork.us/d/biws-g3hs",
+        "link" : "https://data.cityofnewyork.us/Transportation/2017-Yellow-Taxi-Trip-Data/biws-g3hs",
+        "owner" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          },
+        "creator" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "2016 Green Taxi Trip Data",
+            "id" : "hvrh-b6nb",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "These records are generated from the trip record submissions made by green taxi Technology Service Providers (TSPs). Each row represents a single trip in a green taxi. The trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off taxi zone locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.",
+            "attribution" : "Taxi and Limousine  Commission (TLC)",
+            "attribution_link" : "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2023-12-14T21:20:59.000Z",
+            "createdAt" : "2016-11-30T16:35:06.000Z",
+            "metadata_updated_at" : "2023-12-14T21:20:59.000Z",
+            "data_updated_at" : "2017-03-15T13:51:00.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 63,
+                "page_views_last_month" : 295,
+                "page_views_total" : 27871,
+                "page_views_last_week_log" : 6.0,
+                "page_views_last_month_log" : 8.20945336562895,
+                "page_views_total_log" : 14.766528908598866
+              },
+            "columns_name" :
+              [
+                "improvement_surcharge",
+                "RateCodeID",
+                "Payment_type",
+                "Tip_amount",
+                "VendorID",
+                "Store_and_fwd_flag",
+                "Trip_distance",
+                "Lpep_dropoff_datetime",
+                "Tolls_amount",
+                "Trip_type ",
+                "Pickup_longitude",
+                "Dropoff_latitude",
+                "lpep_pickup_datetime",
+                "Extra",
+                "Passenger_count",
+                "Pickup_latitude",
+                "Dropoff_longitude",
+                "PULocationID",
+                "Fare_amount",
+                "DOLocationID",
+                "Ehail_fee",
+                "MTA_tax",
+                "Total_amount"
+              ],
+            "columns_field_name" :
+              [
+                "improvement_surcharge",
+                "ratecodeid",
+                "payment_type",
+                "tip_amount",
+                "vendorid",
+                "store_and_fwd_flag",
+                "trip_distance",
+                "lpep_dropoff_datetime",
+                "tolls_amount",
+                "trip_type",
+                "pickup_longitude",
+                "dropoff_latitude",
+                "lpep_pickup_datetime",
+                "extra",
+                "passenger_count",
+                "pickup_latitude",
+                "dropoff_longitude",
+                "pulocationid",
+                "fare_amount",
+                "dolocationid",
+                "ehail_fee",
+                "mta_tax",
+                "total_amount"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 7614,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2017-03-15T13:57:48.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Transportation",
+            "domain_tags" :
+              [
+                "fhv",
+                "base",
+                "trip",
+                "lyft",
+                "via",
+                "uber",
+                "trip data",
+                "high volume",
+                "green taxi"
+              ],
+            "domain_metadata" :
+              [
+                { "key" : "Update_Automation", "value" : "No" },
+                {
+                  "key" : "Update_Data-Change-Frequency",
+                  "value" : "As Needed"
+                },
+                {
+                  "key" : "Update_Update-Frequency-Details",
+                  "value" : "As this is historical data, the dataset is only published once. The data will only be changed rarely if there are corrections needed."
+                },
+                { "key" : "Update_Date-Made-Public", "value" : "12/5/2016" },
+                {
+                  "key" : "Update_Update-Frequency",
+                  "value" : "Historical data"
+                },
+                {
+                  "key" : "Data-Collection_Data-Collection",
+                  "value" : "TLC Trip Data"
+                },
+                {
+                  "key" : "Dataset-Information_Agency",
+                  "value" : "Taxi and Limousine Commission (TLC)"
+                },
+                {
+                  "key" : "Legislative-Compliance_Geo-coding-Attached?",
+                  "value" : ""
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.cityofnewyork.us" },
+        "permalink" : "https://data.cityofnewyork.us/d/hvrh-b6nb",
+        "link" : "https://data.cityofnewyork.us/Transportation/2016-Green-Taxi-Trip-Data/hvrh-b6nb",
+        "owner" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          },
+        "creator" :
+          {
+            "id" : "5fuc-pqz2",
+            "user_type" : "interactive",
+            "display_name" : "NYC OpenData"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "2023 Yellow Taxi Trip Data",
+            "id" : "4b4i-vvec",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "These records are generated from the trip record submissions made by yellow taxi Technology Service Providers (TSPs). Each row represents a single trip in a yellow taxi. The trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off taxi zone locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.",
+            "attribution" : "Taxi and Limousine Commission (TLC)",
+            "attribution_link" : "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2024-07-16T18:35:01.000Z",
+            "createdAt" : "2024-07-01T15:53:40.000Z",
+            "metadata_updated_at" : "2024-07-16T18:35:01.000Z",
+            "data_updated_at" : "2024-07-01T20:32:33.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 257,
+                "page_views_last_month" : 1081,
+                "page_views_total" : 43561,
+                "page_views_last_week_log" : 8.011227255423254,
+                "page_views_last_month_log" : 10.079484783826816,
+                "page_views_total_log" : 15.410782571525397
+              },
+            "columns_name" :
+              [
+                "store_and_fwd_flag",
+                "fare_amount",
+                "airport_fee",
+                "tpep_dropoff_datetime",
+                "passenger_count",
+                "payment_type",
+                "congestion_surcharge",
+                "tpep_pickup_datetime",
+                "DOLocationID",
+                "trip_distance",
+                "RatecodeID",
+                "extra",
+                "mta_tax",
+                "PULocationID",
+                "improvement_surcharge",
+                "tolls_amount",
+                "total_amount",
+                "VendorID",
+                "tip_amount"
+              ],
+            "columns_field_name" :
+              [
+                "store_and_fwd_flag",
+                "fare_amount",
+                "airport_fee",
+                "tpep_dropoff_datetime",
+                "passenger_count",
+                "payment_type",
+                "congestion_surcharge",
+                "tpep_pickup_datetime",
+                "dolocationid",
+                "trip_distance",
+                "ratecodeid",
+                "extra",
+                "mta_tax",
+                "pulocationid",
+                "improvement_surcharge",
+                "tolls_amount",
+                "total_amount",
+                "vendorid",
+                "tip_amount"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "This flag indicates whether the trip record was held in vehicle memory before sending to the vendor, aka “store and forward,” because the vehicle did not have a connection to the server.",
+                "The time-and-distance fare calculated by the meter. For additional information on the following columns, see https://www.nyc.gov/site/tlc/passengers/taxi-fare.page",
+                "For pick up only at LaGuardia and John F. Kennedy Airports.",
+                "The date and time when the meter was disengaged. ",
+                "The number of passengers in the vehicle. ",
+                "A numeric code signifying how the passenger paid for the trip.",
+                "Total amount collected in trip for NYS congestion surcharge.",
+                "The date and time when the meter was engaged.",
+                "TLC Taxi Zone in which the taximeter was disengaged",
+                "The elapsed trip distance in miles reported by the taximeter.",
+                "The final rate code in effect at the end of the trip.",
+                "Miscellaneous extras and surcharges.",
+                "Tax that is automatically triggered based on the metered rate in use.",
+                "TLC Taxi Zone in which the taximeter was engaged",
+                "Improvement surcharge assessed trips at the flag drop. The improvement surcharge began being levied in 2015.",
+                "Total amount of all tolls paid in trip.",
+                "The total amount charged to passengers. Does not include cash tips.",
+                "A code indicating the TPEP provider that provided the record. ",
+                "Tip amount – This field is automatically populated for credit card tips. Cash tips are not included."
+              ],
+            "columns_format" :
+              [
+                {},
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "view" : "date_time" },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "view" : "date_time" },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," }
+              ],
+            "download_count" : 19915,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2024-07-01T16:07:15.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Transportation",
+            "domain_tags" :
+              [
+                "high volume",
+                "trip data",
+                "uber",
+                "via",
+                "yellow taxi",
+                "fhv",
+                "base",
+                "trip",
+                "lyft"
+              ],
+            "domain_metadata" :
+              [
+                { "key" : "Update_Automation", "value" : "No" },
+                {
+                  "key" : "Update_Data-Change-Frequency",
+                  "value" : "As Needed"
+                },
+                {
+                  "key" : "Update_Update-Frequency-Details",
+                  "value" : "As this is historical data, the dataset is only published once. The data will only be changed rarely if there are corrections needed."
+                },
+                { "key" : "Update_Date-Made-Public", "value" : "7/16/2024" },
+                {
+                  "key" : "Update_Update-Frequency",
+                  "value" : "Historical data"
+                },
+                {
+                  "key" : "Data-Collection_Data-Collection",
+                  "va
