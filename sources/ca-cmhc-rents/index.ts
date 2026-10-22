@@ -1,6 +1,7 @@
 // Manifest: Canada rents (CMHC Rental Market Survey via Statistics Canada table 34-10-0133-01). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, caRent } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, caRent, caRentHarvest, rentHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -33,4 +34,14 @@ export default defineSource({
       bedrooms: num(p.bedrooms),
       baseUrl: ctx.baseUrl,
     }),
+  // A daily copy of the newest October survey, so a Statistics Canada outage is answered from it (stale-if-error). Each row is one
+  // published average (n is NO_COUNT), dated by the survey month.
+  harvest: () => caRentHarvest(),
+  historyKey: (p) =>
+    rentHistoryKey(
+      { town: str(p.town), property_type: str(p.property_type), bedrooms: num(p.bedrooms) },
+      [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))],
+    ),
+  referenceDates: true,
+  nominalCounts: true,
 });

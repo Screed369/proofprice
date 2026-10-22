@@ -54,3 +54,9 @@ test("answer for Greater Stockholm, 2 rooms", async () => {
 test("rooms required", async () => {
   await assert.rejects(() => seRent({}, async () => FIX), /bedrooms=1/);
 });
+
+test("data_as_of is never after today: a year not yet over gives the table's update date", async () => {
+  const a = await seRent({ town: "Greater Stockholm", rooms: 2 }, async () => FIX);
+  const today = new Date().toISOString().slice(0, 10);
+  assert.ok(a.data_as_of! <= today, a.data_as_of!);
+});

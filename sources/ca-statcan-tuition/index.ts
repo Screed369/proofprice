@@ -1,7 +1,8 @@
 // Manifest: Canada university tuition fees (Statistics Canada table 37-10-0045-01). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, caTuition } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, caTuition, caTuitionHarvest, tuitionHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -34,4 +35,14 @@ export default defineSource({
       province: str(p.province),
       baseUrl: ctx.baseUrl,
     }),
+  // A daily copy of the newest academic year, so a Statistics Canada outage is answered from it (stale-if-error). Each row is one
+  // published average (n is NO_COUNT), dated by the academic year it is for.
+  harvest: () => caTuitionHarvest(),
+  historyKey: (p) =>
+    tuitionHistoryKey(
+      { cycle: str(p.cycle), student_group: str(p.student_group), province: str(p.province) },
+      [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))],
+    ),
+  referenceDates: true,
+  nominalCounts: true,
 });

@@ -66,3 +66,10 @@ test("tw-fuel: registered in the fuel category for TW", () => {
   assert.ok(categoryById("fuel"));
   assert.ok(SOURCE_PLUGINS.some((s) => s.info.id === "tw-fuel" && s.countries.includes("TW")));
 });
+
+test("a CPC list price is called a list price, and one published price is not a thin range", () => {
+  const a = answerFromProducts(parseProducts(JSON_ROWS), { fuel: "petrol95" });
+  assert.doesNotMatch(a.summary, /Official average/);
+  assert.match(a.summary, /List price published by CPC Corporation/);
+  assert.equal(a.reliability, "official_median_no_count");
+});

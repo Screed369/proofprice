@@ -22,6 +22,7 @@ import { InputError, SourceError, fetchJson } from "../../lib/http";
 import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { NATIONAL } from "../../lib/library/aggregate";
 import { readLatestDay } from "../../lib/library/store";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL = "https://www.gov.uk/government/statistics/weekly-road-fuel-prices";
 export const CONTENT_API = "https://www.gov.uk/api/content/government/statistics/weekly-road-fuel-prices";
@@ -48,7 +49,7 @@ export const INFO: SourceInfo = {
   limits:
     "One average for the whole United Kingdom per week, not the price at a station, town or postcode: an area or postcode in a request is answered with the national figure and says so. " +
     "Only unleaded petrol (ULSP, asked for as petrol95) and diesel (ULSD, diesel) are published; premium petrol, E10 as a separate grade, LPG and electric charging are not. " +
-    "DESNZ gives no range and no number of stations. In the history tool, sample_size is a placeholder (5), not a count of stations.",
+    "DESNZ gives no range and no number of stations. In the history tool, sample_size is null (DESNZ gives no count of stations).",
 };
 
 // ---------- fuels ----------
@@ -203,7 +204,7 @@ export function desnzRows(weeks: DesnzWeek[]): DailyRow[] {
   const last = weeks[weeks.length - 1];
   if (!last) return [];
   const rows: DailyRow[] = [];
-  const put = (item: string, v: number) => rows.push({ area: NATIONAL, item, n: 5, median: v, low: v, high: v, min: v, max: v });
+  const put = (item: string, v: number) => rows.push({ area: NATIONAL, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
   const earlier = [previousOf(weeks), yearEarlierOf(weeks)].filter((w): w is DesnzWeek => !!w);
   const fuels: { item: GbFuel; price: (w: DesnzWeek) => number; duty: number | null; vat: number | null }[] = [
     { item: "petrol95", price: (w) => w.ulsp, duty: last.ulspDuty, vat: last.ulspVat },
@@ -230,7 +231,7 @@ export function desnzResult(weeks: DesnzWeek[]): HarvestResult {
     note:
       `DESNZ Weekly road fuel prices, week dated ${last.date}: UK average pump prices of ULSP (petrol95) and ULSD (diesel), pounds per litre (pence/100), area ALL. ` +
       `"<item>@<date>" = the price in the week of that earlier date (${prev ? `previous week ${prev.date}` : "no previous week"}, ${year ? `year earlier ${year.date}` : "no year-earlier week"}); ` +
-      "<item>:duty = duty rate in pounds per litre; <item>:vat = VAT percent. Published values, not counts of records (n=5 is a placeholder).",
+      "<item>:duty = duty rate in pounds per litre; <item>:vat = VAT percent. Published values, not counts of records (no record count is published).",
   };
 }
 
@@ -277,7 +278,7 @@ export const MIN_WEEKS_PER_MONTH = 3;
 const r5 = (v: number) => Math.round(v * 100000) / 100000;
 
 /** Pure: monthly figures from weekly national figures (GBP per litre). median = the average of the weeks in that month,
- *  low/min = the cheapest week, high/max = the dearest week. n = 5 is the placeholder the daily rows use (a published
+ *  low/min = the cheapest week, high/max = the dearest week. n is NO_COUNT, as in the daily rows (a published
  *  figure, not a count of records). Months with fewer than MIN_WEEKS_PER_MONTH weeks are left out. Duplicate dates collapse. */
 export function desnzMonthly(weeks: DesnzWeek[], fromMonth: string, toMonth: string): BackfillResult["periods"] {
   const seen = new Map<string, DesnzWeek>();
@@ -299,7 +300,7 @@ export function desnzMonthly(weeks: DesnzWeek[], fromMonth: string, toMonth: str
       const vals = ws.map((w) => gbp(pick(w)));
       const lo = Math.min(...vals);
       const hi = Math.max(...vals);
-      rows.push({ area: NATIONAL, item, n: 5, median: r5(vals.reduce((a, b) => a + b, 0) / vals.length), low: lo, high: hi, min: lo, max: hi });
+      rows.push({ area: NATIONAL, item, n: NO_COUNT, median: r5(vals.reduce((a, b) => a + b, 0) / vals.length), low: lo, high: hi, min: lo, max: hi });
     }
     periods.push({ period: m, rows });
   }
@@ -332,7 +333,7 @@ export async function desnzBackfill(from: string, to: string): Promise<BackfillR
     periods,
     note:
       "DESNZ Weekly road fuel prices: monthly figures from the weekly UK national averages of ULSP (petrol95) and ULSD (diesel), pounds per litre. median = average of the weekly figures in the month (at least 3 weeks); low/high = the cheapest and dearest week. " +
-      "Published figures, not counts of records (n=5 is a placeholder).",
+      "Published figures, not counts of records (no record count is published).",
   };
 }
 

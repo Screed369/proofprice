@@ -7,7 +7,7 @@ import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, retryOnce, SourceError } from "../../lib/http";
 import { ckanSearch } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
-import { percentile } from "../../lib/stats";
+import { percentile, NO_COUNT } from "../../lib/stats";
 import type { DailyRow, HarvestResult, Params, SourceInfo } from "../../lib/plugin";
 import { NATIONAL } from "../../lib/library/aggregate";
 
@@ -166,6 +166,12 @@ export function brElectricityAnswer(tariffs: Tariff[], q: BrEnergyQuery): PriceA
     period: { from: starts[0], to: today.toISOString().slice(0, 10) }, reference_period: `tariffs in force on ${today.toISOString().slice(0, 10)}`,
     sample_size: current.length, low: perKwh(percentile(totals, 0.1)), high: perKwh(percentile(totals, 0.9)), method, baseUrl: q.baseUrl,
     note: "Median of the regulated tariffs of the distributors (not weighted by customers); the sample is distributors, not bills.",
+    ending: `Median calculated by ProofPrice across the tariffs ${INFO.publisher} approved, in force on ${today.toISOString().slice(0, 10)}.`,
+    evidence: {
+      label: "Median of posted tariffs, calculated by ProofPrice",
+      meaning:
+        "The middle of the regulated tariffs the regulator approved for each distributor, calculated by ProofPrice: one tariff per distributor, not weighted by customers, and not what any household paid on a bill.",
+    },
     describe: (v) => `Median residential tariff across ${current.length} Brazilian distributors is ${v.toFixed(4)} BRL per kWh before taxes (10th-90th percentile of distributors ${perKwh(percentile(totals, 0.1))} to ${perKwh(percentile(totals, 0.9))}).`,
     extra: { distributors: current.length, lowest: lowest.distributor, highest: highest.distributor, tax_level: "before taxes and flag surcharges" },
   });
@@ -205,7 +211,7 @@ export const HARVEST_UNIT = "per kWh before taxes";
 export const distributorKey = key;
 
 /** Pure: library rows for one day. "ALL" = the median across distributors (real count); one row per distributor holds its posted tariff
- *  (the publisher gives one figure, not a sample, so n is the placeholder 5; the source sets nominalCounts so answers show no count). */
+ *  (the publisher gives one figure, not a sample, so n is NO_COUNT (stored empty, answers show no count)). */
 export function aneelDailyRows(tariffs: Tariff[], today: Date): DailyRow[] {
   const current = currentTariffs(tariffs, today);
   if (!current.length) return [];
@@ -218,7 +224,7 @@ export function aneelDailyRows(tariffs: Tariff[], today: Date): DailyRow[] {
   ];
   for (const t of current) {
     const v = perKwh(t.total);
-    rows.push({ area: distributorKey(t.distributor), item: "electricity", n: 5, median: v, low: v, high: v, min: v, max: v });
+    rows.push({ area: distributorKey(t.distributor), item: "electricity", n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
   }
   return rows;
 }

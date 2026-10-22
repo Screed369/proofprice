@@ -6,10 +6,11 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import {
   CubeMember, DataPoint, DataSeries, Poster, changePercent, coordinate, dimension, latestPeriods, loadCubeMeta, memberByName, monthOf,
-  monthRange, monthWords, monthsBehind, newestUsable, roundTo, usable,
+  monthRange, monthWords, monthsBehind, newestUsable, roundTo, usable, wdsPost,
 } from "../_ca-statcan/wds";
 import { resolvePlace } from "../_ca-statcan/geo";
 
@@ -229,4 +230,84 @@ export async function caRent(input: CaRentInput, post?: Poster, today = new Date
     place: place.member, placeNote: place.note, structure, head, sizeAsked, sizeNote, others: cells, tableEnd: meta.endDate,
     releaseTime: meta.releaseTime, tableTitle: meta.title, baseUrl: input.baseUrl, today,
   });
+}
+
+// ---------- daily copy (stale-if-error) ----------
+
+const NATIONAL_STRUCTURES = ["any", "apartment"] as const;
+/** The library item for one structure type and unit size: plain words, so a stored copy reads on its own. */
+export const rentItem = (structure: keyof typeof STRUCTURES, bedrooms: number) =>
+  `${STRUCTURES[structure].label}, ${UNIT_NAMES.find((u) => u.bedrooms === bedrooms)!.label}`;
+
+export interface RentSeriesRef {
+  place: string;
+  structure: keyof typeof STRUCTURES;
+  bedrooms: number;
+  data: DataSeries | undefined;
+}
+
+/** Pure: one library row per area, structure type and unit size for the newest CMHC survey any series has; series that lag behind it are left out.
+ *  Each row is one published average: n is NO_COUNT (no unit count is published) and the range fields repeat the figure. */
+export function rentHarvestRows(series: RentSeriesRef[]): HarvestResult {
+  const latest = series.map((s) => ({ ...s, point: newestUsable(s.data) })).filter((s) => s.point);
+  if (!latest.length) throw new SourceError("Statistics Canada table 34-10-0133-01 returned no usable average rent");
+  const month = latest.map((s) => monthOf(s.point!.survey)).sort().pop()!;
+  const rows = latest
+    .filter((s) => monthOf(s.point!.survey) === month)
+    .map((s) => ({
+      area: s.place,
+      item: rentItem(s.structure, s.bedrooms),
+      n: NO_COUNT,
+      median: s.point!.value,
+      low: s.point!.value,
+      high: s.point!.value,
+      min: s.point!.value,
+      max: s.point!.value,
+    }));
+  return {
+    date: monthRange(month).to,
+    currency: "CAD",
+    unit: "per month",
+    rows,
+    note: `CMHC Rental Market Survey of ${monthWords(month)} (Statistics Canada table 34-10-0133-01): average monthly rent of purpose-built rental units by area, structure type and unit size. Published averages, not counts of units (no count is published).`,
+  };
+}
+
+export async function caRentHarvest(post: Poster = wdsPost): Promise<HarvestResult> {
+  const meta = await loadCubeMeta(PRODUCT_ID, post);
+  const geo = dimension(meta, 1, "Geography");
+  const structs = dimension(meta, 2, "Type of structure");
+  const units = dimension(meta, 3, "Type of unit");
+  const wanted: { place: string; structure: keyof typeof STRUCTURES; bedrooms: number; coord: string }[] = [];
+  for (const structure of NATIONAL_STRUCTURES) {
+    const sid = memberByName(structs, STRUCTURES[structure].name)?.id;
+    if (!sid) throw new SourceError(`Statistics Canada changed table 34-10-0133-01 (no structure type "${STRUCTURES[structure].name}"); this source needs updating.`);
+    for (const u of UNIT_NAMES) {
+      const uid = memberByName(units, u.name)?.id;
+      if (!uid) throw new SourceError(`Statistics Canada changed table 34-10-0133-01 (no unit type "${u.name}"); this source needs updating.`);
+      for (const g of geo.members.filter((m) => !m.terminated)) wanted.push({ place: g.name, structure, bedrooms: u.bedrooms, coord: coordinate([g.id, sid, uid]) });
+    }
+  }
+  const got: DataSeries[] = [];
+  for (let i = 0; i < wanted.length; i += 50) got.push(...(await latestPeriods(PRODUCT_ID, wanted.slice(i, i + 50).map((w) => w.coord), 2, post)));
+  return rentHarvestRows(wanted.map((w, i) => ({ place: w.place, structure: w.structure, bedrooms: w.bedrooms, data: got[i] })));
+}
+
+/** Where a request lives in the library, without asking Statistics Canada: places come from the areas of our newest stored day. */
+export function rentHistoryKey(
+  p: { town?: string; property_type?: string; bedrooms?: number },
+  areas: string[],
+): { area: string; item: string; label: string } | null {
+  if (!p.town || !areas.length) return null;
+  if (p.property_type === "house" || p.property_type === "room") return null;
+  if (p.bedrooms !== undefined && (!Number.isInteger(p.bedrooms) || p.bedrooms < 0)) return null;
+  const members: CubeMember[] = areas.map((name, i) => ({ id: i + 1, name, parent: null, terminated: false }));
+  try {
+    const place = resolvePlace(members, p.town, "a town or city of 10,000 people or more").member;
+    const structure: keyof typeof STRUCTURES = p.property_type === "apartment" ? "apartment" : "any";
+    const bedrooms = p.bedrooms !== undefined ? Math.min(p.bedrooms, 3) : DEFAULT_BEDROOMS;
+    return { area: place.name, item: rentItem(structure, bedrooms), label: place.name };
+  } catch {
+    return null;
+  }
 }

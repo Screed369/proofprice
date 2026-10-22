@@ -21,7 +21,7 @@ import { periodRange } from "../../lib/adapters";
 import { excelDate, readXlsx } from "../../categories/rent/xlsx";
 import type { Cell, Sheet } from "../../categories/rent/xlsx";
 import { readLatestDay } from "../../lib/library/store";
-import { MIN_PUBLISH } from "../../lib/stats";
+import { NO_COUNT } from "../../lib/stats";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { STATES, plain } from "../us-eia-fuel/areas";
 import { readXls } from "../us-eia-fuel/xls";
@@ -60,8 +60,6 @@ export const INFO: SourceInfo = {
     "Electricity is in cents per kilowatthour, gas in US dollars per thousand cubic feet (Mcf), so the two cannot be compared directly. Each table lags the market by about two months.",
 };
 
-/** What the library's `n` column holds for an EIA average: the library keeps no row below MIN_PUBLISH records, and EIA publishes no count, so every row carries this placeholder. Answers report sample_size null. */
-export const LIBRARY_N_PLACEHOLDER = MIN_PUBLISH;
 
 export type Energy = "electricity" | "gas";
 
@@ -186,7 +184,7 @@ export function findGasSheet(sheets: Sheet[]): Sheet {
 }
 
 function libraryRow(area: string, item: string, v: number): DailyRow {
-  return { area, item, n: LIBRARY_N_PLACEHOLDER, median: v, low: v, high: v, min: v, max: v };
+  return { area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
 }
 
 /** How far back a state's newest published gas month may be before we say EIA has no price for it. */
@@ -258,7 +256,7 @@ export async function usEnergyHarvest(): Promise<HarvestResult> {
     note:
       `EIA residential prices: electricity ${monthWords(day.electricityMonth)} (and a year earlier), natural gas ${monthWords(day.gasMonth)} (and a year earlier), ` +
       "for every state, DC and the U.S.; the month is in the item (electricity/YYYY-MM, gas/YYYY-MM). " +
-      `EIA publishes one average per state and month, so low/high/min/max repeat it and n is the library minimum (${LIBRARY_N_PLACEHOLDER}), not a count of customers.`,
+      `EIA publishes one average per state and month, so low/high/min/max repeat it and no record count is stored (n is empty).`,
   };
 }
 

@@ -30,9 +30,11 @@ test("answer: Ward C median and the middle half, as published", () => {
   const a = billAnswer(rows, { service: "B70A" });
   assert.equal(a.status, "ok");
   assert.equal(a.price!.currency, "SGD");
-  assert.equal(a.price!.median, 4428.39013671875);
-  assert.equal(a.price!.typical_low, 2800.159912109375);
-  assert.equal(a.price!.typical_high, 7445.02978515625);
+  assert.equal(a.price!.median, 4428.39);
+  assert.equal(a.price!.typical_low, null);
+  assert.equal((a.extra as any).p25, 2800.16);
+  assert.equal(a.price!.typical_high, null);
+  assert.equal((a.extra as any).p75, 7445.03);
   assert.equal(a.sample_size, null);
   assert.equal(a.price_type, "official_statistic");
   assert.match(a.summary, /4,428 SGD/);
@@ -41,7 +43,7 @@ test("answer: Ward C median and the middle half, as published", () => {
 
 test("answer: ward choice, fallback and honest empty answers", () => {
   const priv = billAnswer(rows, { service: "B66A", ward: "private" });
-  assert.equal(priv.price!.median, 22711.83984375);
+  assert.equal(priv.price!.median, 22711.84);
   const fallback = billAnswer(rows, { service: "B61B" }); // Ward C exists; B66A has Ward B2 first
   assert.equal(fallback.status, "ok");
   const none = billAnswer(rows, { service: "B64B", ward: "a" });

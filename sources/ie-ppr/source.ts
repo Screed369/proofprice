@@ -8,7 +8,7 @@ import { summarise, MIN_PUBLISH } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { aggregateDaily, NATIONAL } from "../../lib/library/aggregate";
 import { readDaily, readMeta } from "../../lib/library/store";
-import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "ie-ppr",
@@ -184,6 +184,51 @@ export async function ieHarvest(): Promise<HarvestResult> {
   return { date, currency: "EUR", unit: "per home", rows, note: `Windows of 3/6/12/24/36 months ending ${date}; full-market-price sales.` };
 }
 
+/** Library item of the monthly history: one calendar month of sales (no rolling window). */
+export const monthlyItem = (t: IeType) => `${t}/month`;
+
+/**
+ * Monthly history: for every whole calendar month from fromMonth to toMonth (YYYY-MM, inclusive) the median and
+ * 10th-90th percentile of full-market-price sales per county, Dublin postal district and Ireland (ALL).
+ * Groups of fewer than 5 sales are dropped here and again by the platform. Same price rules as the daily windows
+ * ("any" leaves out VAT-exclusive prices). Never carries an address.
+ */
+export function ieMonthlyPeriods(sales: IeSale[], fromMonth: string, toMonth: string): BackfillResult["periods"] {
+  const byMonth = new Map<string, { area: string; item: string; price: number }[]>();
+  for (const s of sales) {
+    const m = s.date.slice(0, 7);
+    if (m < fromMonth || m > toMonth) continue;
+    let recs = byMonth.get(m);
+    if (!recs) byMonth.set(m, (recs = []));
+    const areas = [NATIONAL, slug(s.county), ...(s.district ? [s.district] : [])];
+    for (const area of areas) {
+      recs.push({ area, item: monthlyItem(s.kind), price: s.price });
+      if (!s.vatExcl) recs.push({ area, item: monthlyItem("any"), price: s.price });
+    }
+  }
+  return [...byMonth.keys()].sort().map((period) => ({ period, rows: aggregateDaily(byMonth.get(period)!, false).filter((r) => r.n >= MIN_PUBLISH) }));
+}
+
+/** Backfill: read the whole register once (it holds every sale since 2010) and return monthly aggregates. from/to are YYYY-MM-DD. */
+export async function ieBackfill(from: string, to: string): Promise<BackfillResult> {
+  const res = await fetch(PPR_ZIP_URL, { headers: { "user-agent": "ProofPrice-Historian/1.0 (+https://proofprice.com; hello@proofprice.com)" } });
+  if (!res.ok) throw new SourceError(`Property Price Register returned HTTP ${res.status}`);
+  const sales = parseIePpr(unzipFirstFile(Buffer.from(await res.arrayBuffer())).toString("latin1"));
+  if (!sales.length) throw new SourceError("Property Price Register file held no usable sales");
+  const last = sales.reduce((a, s) => (s.date > a ? s.date : a), "0000-00-00");
+  // Sales are filed weeks late, so the month of the latest sale (and anything after) is incomplete: only months before it are loaded.
+  const lastWhole = new Date(Date.UTC(Number(last.slice(0, 4)), Number(last.slice(5, 7)) - 2, 1)).toISOString().slice(0, 7);
+  const toMonth = to.slice(0, 7) < lastWhole ? to.slice(0, 7) : lastWhole;
+  const periods = ieMonthlyPeriods(sales, from.slice(0, 7), toMonth);
+  console.log(`Register: ${sales.length} usable sales, latest ${last}; ${periods.length} months ${periods[0]?.period}..${periods[periods.length - 1]?.period}, ${periods.reduce((n, p) => n + p.rows.length, 0)} rows`);
+  return {
+    currency: "EUR",
+    unit: "per home",
+    periods,
+    note: "Monthly figures from the Property Price Register: median and 10th-90th percentile of full-market-price residential sales declared in the calendar month (sale date), by county or Dublin postal district. Same exclusions as the rolling windows. Sales are filed weeks late, so the newest months can be thinner.",
+  };
+}
+
 /** Where a request lives in the library. town may be a county or a Dublin postal district. */
 export function ieKey(p: { town?: string; county?: string; property_type?: string; months?: number }) {
   const place = p.county ?? p.town;
@@ -202,9 +247,10 @@ export function ieKey(p: { town?: string; county?: string; property_type?: strin
   return { area, item: `${t}:${months}m`, label, type: t as IeType, months };
 }
 
-export function ieHistoryKey(p: { town?: string; county?: string; property_type?: string; months?: number }) {
+export function ieHistoryKey(p: { town?: string; county?: string; property_type?: string; months?: number }, opts?: { monthly?: boolean }) {
   const k = ieKey(p);
-  return k ? { area: k.area, item: k.item, label: `${k.label}, Ireland` } : null;
+  // Monthly history (months=N on /history) is calendar-month medians, not the rolling windows of the daily snapshots.
+  return k ? { area: k.area, item: opts?.monthly ? monthlyItem(k.type) : k.item, label: `${k.label}, Ireland` } : null;
 }
 
 /** Pure: turn the latest library row into an answer. */

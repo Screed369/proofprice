@@ -13,17 +13,17 @@
 // year, dated YYYY-12-31): area = ISO country code; item = FAO item name = price in the country's own currency per tonne;
 // "<item>@usd" = the same in US dollars (when FAO gives it); "<item>@prev" = the year before; "<item>@year" = the year the figure is for
 // (stored as a number); "<item>@est" = 1 when FAO marks the figure as not officially reported (flag other than A).
-// FAO publishes one figure per country, product and year and no count of records, so n is the library placeholder 5 (nominalCounts).
+// FAO publishes one figure per country, product and year and no count of records, so n is NO_COUNT (nominalCounts).
 
 import { inflateRawSync } from "node:zlib";
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
 import { readLatestDay } from "../../lib/library/store";
+import { NO_COUNT } from "../../lib/stats";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const FILE_URL = "https://bulks-faostat.fao.org/production/Prices_E_All_Data.zip";
 export const CSV_NAME = "Prices_E_All_Data.csv";
-export const NOMINAL_N = 5;
 export const ELEMENT_LCU = "5530";
 export const ELEMENT_USD = "5532";
 
@@ -244,7 +244,7 @@ export function parseProducerPrices(text: string): Parsed {
   return { figures, year, rowsRead };
 }
 
-const row = (area: string, item: string, v: number): DailyRow => ({ area, item, n: NOMINAL_N, median: v, low: v, high: v, min: v, max: v });
+const row = (area: string, item: string, v: number): DailyRow => ({ area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
 
 /** The library rows for a parsed release (see the layout in the header comment). */
 export function toLibraryRows(figures: Figure[]): DailyRow[] {
@@ -273,7 +273,7 @@ export async function faoHarvest(load: () => Promise<Buffer> = () => fetchBinary
     rows: toLibraryRows(parsed.figures),
     note:
       `FAOSTAT producer prices, reference year ${parsed.year}: ${parsed.figures.length} country-product figures for ${countries.size} countries from ${parsed.rowsRead} file rows. ` +
-      `Each country-product holds its newest year within two years of ${parsed.year} (item@year says which). FAO publishes no count of records: n is the library placeholder ${NOMINAL_N}.`,
+      `Each country-product holds its newest year within two years of ${parsed.year} (item@year says which). FAO publishes no count of records: the library stores no count.`,
   };
 }
 

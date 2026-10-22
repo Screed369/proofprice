@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { INFO, IE_TYPES, ieHarvest, ieHistoryKey, ieHomeSales } from "./source";
+import { INFO, IE_TYPES, ieBackfill, ieHarvest, ieHistoryKey, ieHomeSales } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -33,5 +33,6 @@ export default defineSource({
     return ieHomeSales({ county: str(p.county), town: str(p.town), property_type: str(p.property_type), months: num(p.months), baseUrl: ctx.baseUrl });
   },
   harvest: ieHarvest,
-  historyKey: (p) => ieHistoryKey({ county: str(p.county), town: str(p.town), property_type: str(p.property_type), months: num(p.months) }),
+  backfill: ieBackfill,
+  historyKey: (p, o) => ieHistoryKey({ county: str(p.county), town: str(p.town), property_type: str(p.property_type), months: num(p.months) }, o),
 });

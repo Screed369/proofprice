@@ -5,7 +5,7 @@
 // answered from there. Posted market-survey prices in US dollars (WFP's own conversion), not receipts and not what one person paid.
 
 import { InputError, SourceError, fetchJson } from "../../lib/http";
-import { MIN_PUBLISH } from "../../lib/stats";
+import { MIN_PUBLISH, NO_COUNT } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { aggregateDaily } from "../../lib/library/aggregate";
 import { readLatestDay, readMeta } from "../../lib/library/store";
@@ -178,7 +178,7 @@ export function buildRows(obs: Obs[]): Built {
   const countries = [...new Set(rows.map((r) => r.area))].sort();
   for (const iso3 of countries) {
     const v = Number(newestByCountry.get(iso3)!.replace(/-/g, ""));
-    rows.push({ area: iso3, item: ASOF_ITEM, n: MIN_PUBLISH, median: v, low: v, high: v, min: v, max: v });
+    rows.push({ area: iso3, item: ASOF_ITEM, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
   }
   rows.sort((a, b) => a.area.localeCompare(b.area) || a.item.localeCompare(b.item));
   return { rows, countries, fileNewest, dropped: { unmapped, tooOld: tooOld.sort() } };

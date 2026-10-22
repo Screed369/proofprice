@@ -20,7 +20,7 @@ import { InputError, SourceError } from "../../lib/http";
 import { excelDate } from "../../categories/rent/xlsx";
 import type { Sheet } from "../../categories/rent/xlsx";
 import { readLatestDay } from "../../lib/library/store";
-import { MIN_PUBLISH } from "../../lib/stats";
+import { NO_COUNT } from "../../lib/stats";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { Area, NATIONAL_AREA, Place, areaByEia, areaByKey, isPublished, resolvePlace } from "./areas";
 import { readXls } from "./xls";
@@ -68,8 +68,6 @@ export const toLitre = (perGallon: number) => Math.round((perGallon / GALLON_LIT
 export const toGallon = (perLitre: number) => Math.round(perLitre * GALLON_LITRES * 1000) / 1000;
 const roundTo = (v: number, digits: number) => Math.round(v * 10 ** digits) / 10 ** digits;
 
-/** What the library's `n` column holds for an EIA average: the library keeps no row below MIN_PUBLISH records, and EIA publishes no count, so every row carries this placeholder. Answers report sample_size null. */
-export const LIBRARY_N_PLACEHOLDER = MIN_PUBLISH;
 
 // ---------- products ----------
 
@@ -188,7 +186,7 @@ export function nearPoint(series: Map<string, number>, target: string, tolerance
 
 function libraryRow(area: string, item: string, perGallon: number): DailyRow {
   const v = toLitre(perGallon);
-  return { area, item, n: LIBRARY_N_PLACEHOLDER, median: v, low: v, high: v, min: v, max: v };
+  return { area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
 }
 
 /**
@@ -252,7 +250,7 @@ export async function usFuelHarvest(): Promise<HarvestResult> {
     rows,
     note:
       `EIA weekly retail prices for the week of ${date}: ${current} series (regular, midgrade, premium gasoline and on-highway diesel x the areas EIA publishes), plus the week before (item@w1) and the same week a year earlier (item@y1). ` +
-      `Stored in US dollars per litre (published US dollars per gallon / ${GALLON_LITRES}). EIA publishes one average per series and week, so low/high/min/max repeat it and n is the library minimum (${LIBRARY_N_PLACEHOLDER}), not a count of stations.`,
+      `Stored in US dollars per litre (published US dollars per gallon / ${GALLON_LITRES}). EIA publishes one average per series and week, so low/high/min/max repeat it and no record count is stored (n is empty).`,
   };
 }
 

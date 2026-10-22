@@ -153,3 +153,29 @@ test("IE: G20261018-2 Dublin 1 new homes (8 sales in 36 months, none in 12) says
     if (prev === undefined) delete process.env.PROOFPRICE_LIBRARY_DIR; else process.env.PROOFPRICE_LIBRARY_DIR = prev;
   }
 });
+
+test("IE monthly history: whole months, medians per county and district, thin groups dropped, 'any' leaves out ex-VAT", async () => {
+  const { ieMonthlyPeriods, ieHistoryKey } = await import("./source");
+  const mk = (date: string, price: number, county = "Dublin", district: string | null = "dublin-6", kind: "new" | "second-hand" = "second-hand", vatExcl = false) =>
+    ({ date, county, price, kind, district, vatExcl });
+  const sales = [
+    ...[300, 310, 320, 330, 340].map((k) => mk("2020-03-10", k * 1000)),
+    mk("2020-03-11", 500000, "Dublin", null, "new", true), // ex-VAT new home: in 'new', not in 'any'
+    ...[100, 110, 120, 130].map((k) => mk("2020-04-10", k * 1000, "Cork", null)), // only 4: dropped
+    mk("2019-12-01", 1, "Cork", null), // outside range
+  ];
+  const p = ieMonthlyPeriods(sales, "2020-01", "2020-04");
+  assert.deepEqual(p.map((x) => x.period), ["2020-03", "2020-04"]);
+  const mar = p[0].rows;
+  const get = (a: string, i: string) => mar.find((r) => r.area === a && r.item === i);
+  assert.equal(get("dublin-6", "any/month")!.n, 5);
+  assert.equal(get("dublin-6", "any/month")!.median, 320000);
+  assert.equal(get("ALL", "any/month")!.n, 5);
+  assert.equal(get("dublin", "second-hand/month")!.n, 5);
+  assert.equal(get("ALL", "new/month"), undefined); // one sale only
+  assert.equal(p[1].rows.length, 0);
+  // no row carries anything but short area/item labels
+  for (const r of mar) assert.match(r.area + r.item, /^[A-Za-z0-9\-\/]+$/);
+  assert.equal(ieHistoryKey({ town: "Dublin 6", property_type: "new", months: 240 }, { monthly: true })!.item, "new/month");
+  assert.equal(ieHistoryKey({ town: "Dublin 6", property_type: "new" })!.item, "new:12m");
+});

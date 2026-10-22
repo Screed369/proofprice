@@ -13,7 +13,7 @@
 
 import { inflateRawSync } from "node:zlib";
 import { InputError, SourceError } from "../../lib/http";
-import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
+import { buildStatisticAnswer, PriceAnswer, withAudit } from "../../lib/answer";
 import type { SourceInfo } from "../../lib/plugin";
 import { fetchBinary } from "./fetch";
 
@@ -326,8 +326,9 @@ export function tuitionAnswer(table: FeeTable, input: TuitionInput): PriceAnswer
     unit: "per academic year",
     period,
     reference_period: `${table.academicYear.replace("/", "-")} academic year`,
-    low: min,
-    high: max,
+    // Eurydice's minimum and maximum fee are a minimum and a maximum, not the 10th and 90th percentile.
+    min,
+    max,
     method:
       "Europe tuition fees (Eurydice open data, sheet Fees_sub-topic 5): the most common annual tuition fee, with the minimum and the maximum (standard length of study), that public higher-education institutions charge the chosen student category in national currency for the academic year shown. We pass on the published figures; they are posted fee levels, not payments by sampled students, and a euro equivalent is added with the 2023 Eurostat average exchange rate.",
     describe: (v) =>
@@ -359,16 +360,18 @@ export function tuitionAnswer(table: FeeTable, input: TuitionInput): PriceAnswer
       value: common ?? 0,
       measure: "average",
       median: null,
-      typical_low: min,
-      typical_high: max,
-      min: null,
-      max: null,
+      typical_low: null,
+      typical_high: null,
+      min,
+      max,
     };
     answer.summary =
       common === 0
-        ? `In ${table.academicYear}, the most common annual tuition fee for ${label} in ${place} is 0 ${currency}: no tuition fee is charged${max ? ` in the typical case (the maximum posted is ${fmt(max, currency)})` : ""}. Official figure published by ${INFO.publisher} for the ${table.academicYear} academic year.`
-        : `In ${table.academicYear}, annual tuition fees for ${label} in ${place} range from ${fmt(min ?? 0, currency)} to ${fmt(max ?? min ?? 0, currency)}; Eurydice gives no single most-common fee. Official figures published by ${INFO.publisher} for the ${table.academicYear} academic year.`;
+        ? `In ${table.academicYear}, the most common annual tuition fee for ${label} in ${place} is 0 ${currency}: no tuition fee is charged${max ? ` in the typical case (the maximum posted is ${fmt(max, currency)})` : ""}. Posted fee published by ${INFO.publisher} for the ${table.academicYear} academic year.`
+        : `In ${table.academicYear}, annual tuition fees for ${label} in ${place} range from ${fmt(min ?? 0, currency)} to ${fmt(max ?? min ?? 0, currency)}; Eurydice gives no single most-common fee. Posted fees published by ${INFO.publisher} for the ${table.academicYear} academic year.`;
     if (common === null) answer.price.value = max ?? min ?? 0;
+    // The answer changed after it was built: work out reliability, data date and suggestions again.
+    return withAudit(answer, INFO);
   }
   return answer;
 }

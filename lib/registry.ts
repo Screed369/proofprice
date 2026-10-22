@@ -11,8 +11,8 @@ import { InputError, SourceError, isSourceOutage, withDeadline } from "./http";
 import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
 import { readDaily, readMeta } from "./library/store";
 import { readHistoryMeta, readMonthly } from "./library/backfill";
-import { staleAnswer } from "./stale";
-import { MIN_PUBLISH } from "./stats";
+import { asFallback, staleAnswer } from "./stale";
+import { MIN_PUBLISH, hasCount, passesGate } from "./stats";
 import { joinAnd } from "./text";
 
 export const CATEGORIES: CategoryPlugin[] = CATEGORY_MODULES;
@@ -224,9 +224,68 @@ export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePl
  *  through runCategory, so this one limit bounds all of them. */
 export const ANSWER_DEADLINE_MS = 40_000;
 
+/** The longest a fallback source may take once the primary has failed. With ANSWER_DEADLINE_MS this stays inside Vercel's 60 s. */
+export const FALLBACK_DEADLINE_MS = 15_000;
+
 export interface RunOptions {
   /** Replaces ANSWER_DEADLINE_MS. Tests pass a few milliseconds. */
   deadlineMs?: number;
+  /** Replaces the source list (tests pass fake sources to check the fallback order). Default: SOURCE_PLUGINS. */
+  sources?: SourcePlugin[];
+}
+
+/** Sources that declare they can stand in for `primary` in `country` (SourcePlugin.fallbackFor), in registry order. */
+export function fallbackSources(primary: SourcePlugin, country: string, all: SourcePlugin[] = SOURCE_PLUGINS): SourcePlugin[] {
+  return all.filter(
+    (s) =>
+      s !== primary &&
+      s.category === primary.category &&
+      primary.countries.includes(country) &&
+      !!s.fallbackFor?.sources.includes(primary.info.id) &&
+      s.fallbackFor.countries.includes(country),
+  );
+}
+
+/** What is wrong with the sources' fallbackFor declarations, one plain sentence each (empty when all is well). The registry gate
+ *  (tests/registry.test.ts) fails on any: every listed source must exist in the same category, and every listed country must be one
+ *  of theirs and not one the fallback already answers for itself. */
+export function fallbackProblems(all: SourcePlugin[] = SOURCE_PLUGINS): string[] {
+  const out: string[] = [];
+  const byId = new Map(all.map((s) => [s.info.id, s]));
+  for (const s of all) {
+    const fb = s.fallbackFor;
+    if (!fb) continue;
+    const where = `sources/${s.info.id}: fallbackFor`;
+    if (!fb.sources.length) out.push(`${where}.sources is empty`);
+    if (!fb.countries.length) out.push(`${where}.countries is empty`);
+    const targets: SourcePlugin[] = [];
+    for (const id of fb.sources) {
+      const t = byId.get(id);
+      if (!t) out.push(`${where} names "${id}", which is not a registered source (check the id, or whether that source is offline)`);
+      else if (t === s) out.push(`${where} names the source itself`);
+      else if (t.category !== s.category) out.push(`${where} names "${id}", which answers ${t.category}, not ${s.category}`);
+      else targets.push(t);
+    }
+    for (const c of fb.countries) {
+      if (!/^[A-Z]{2}$/.test(c)) out.push(`${where}: country "${c}" must be an ISO 3166 alpha-2 code`);
+      else if (s.countries.includes(c)) out.push(`${where}: ${c} is already one of this source's own countries`);
+      else if (!targets.some((t) => t.countries.includes(c))) out.push(`${where}: ${c} is not a country of any of ${fb.sources.join(", ")}`);
+    }
+    if (fb.label !== undefined && !fb.label.trim()) out.push(`${where}.label is empty`);
+  }
+  return out;
+}
+
+/** Run one source's handle() within a deadline; a source that does not answer in time fails with a SourceError (504), an outage. */
+function handleWithin(src: SourcePlugin, params: Params, ctx: HandleContext, deadlineMs: number): Promise<PriceAnswer> {
+  return withDeadline((async () => src.handle(params, ctx))(), deadlineMs, () => {
+    console.warn(`[deadline] ${src.info.id} did not answer within ${deadlineMs} ms`);
+    return new SourceError(
+      `The official source did not respond within ${Math.max(1, Math.round(deadlineMs / 1000))} seconds, so ProofPrice stopped waiting. Try again in a minute.`,
+      `source ${src.info.id}`,
+      504,
+    );
+  });
 }
 
 /** Answer one request. Stale-if-error lives here, once, for every source: if the live official source times out, cannot be
@@ -234,25 +293,36 @@ export interface RunOptions {
  *  (a source with harvest() and historyKey()), the answer comes from that snapshot (lib/stale.ts) instead of a 502.
  *  Bad input, an unrecognised reply and sources without library data still fail as before.
  *  A source that has not answered within the deadline counts as down: it fails with a SourceError (status 504) that takes the
- *  same stale-if-error path, so a hung source never holds a request until the platform's own 60 s limit. */
+ *  same stale-if-error path, so a hung source never holds a request until the platform's own 60 s limit.
+ *
+ *  Fallback sources: when there is no recent copy either, a source that declares fallbackFor this source and country answers
+ *  instead, saying so (lib/stale.ts asFallback). The order is: live primary -> primary's copy (<= 7 days) -> fallback source live
+ *  -> fallback source's own copy (<= 7 days) -> the primary's error (502). A fallback is used only when it answers with status ok;
+ *  anything else from it (bad input for that source, no figure, its own outage without a copy) ends in the primary's error. */
 export async function runCategory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, opts: RunOptions = {}): Promise<PriceAnswer> {
   const { src, prepared } = pickSource(cat, params);
   const deadlineMs = opts.deadlineMs ?? ANSWER_DEADLINE_MS;
   try {
-    return await withDeadline((async () => src.handle(prepared, ctx))(), deadlineMs, () => {
-      console.warn(`[deadline] ${src.info.id} did not answer within ${deadlineMs} ms`);
-      return new SourceError(
-        `The official source did not respond within ${Math.max(1, Math.round(deadlineMs / 1000))} seconds, so ProofPrice stopped waiting. Try again in a minute.`,
-        `source ${src.info.id}`,
-        504,
-      );
-    });
+    return await handleWithin(src, prepared, ctx, deadlineMs);
   } catch (err) {
-    if (isSourceOutage(err)) {
-      const stale = staleAnswer({ cat, src, params: prepared, query: knownParams(cat, prepared), error: err, baseUrl: ctx.baseUrl });
-      if (stale) {
-        console.warn(`[stale-if-error] ${src.info.id}: ${(err as Error).message}; answered from the library copy of ${stale.as_of}`);
-        return stale;
+    if (!isSourceOutage(err)) throw err;
+    const query = knownParams(cat, prepared);
+    const stale = staleAnswer({ cat, src, params: prepared, query, error: err, baseUrl: ctx.baseUrl });
+    if (stale) {
+      console.warn(`[stale-if-error] ${src.info.id}: ${(err as Error).message}; answered from the library copy of ${stale.as_of}`);
+      return stale;
+    }
+    for (const fb of fallbackSources(src, String(prepared.country), opts.sources)) {
+      let answer: PriceAnswer | null = null;
+      try {
+        answer = await handleWithin(fb, prepared, ctx, Math.min(deadlineMs, FALLBACK_DEADLINE_MS));
+      } catch (fbErr) {
+        if (isSourceOutage(fbErr)) answer = staleAnswer({ cat, src: fb, params: prepared, query, error: fbErr, baseUrl: ctx.baseUrl });
+        if (!answer) console.warn(`[fallback] ${fb.info.id} could not stand in for ${src.info.id}: ${(fbErr as Error)?.message ?? fbErr}`);
+      }
+      if (answer && answer.status === "ok") {
+        console.warn(`[fallback] ${src.info.id}: ${(err as Error).message}; answered by ${fb.info.id}`);
+        return asFallback(answer, src, fb, err);
       }
     }
     throw err;
@@ -266,7 +336,7 @@ export interface HistoryAnswer {
   status: "ok" | "insufficient_history" | "no_history_yet";
   currency: string | null;
   unit: string | null;
-  series: { date: string; median: number; typical_low: number; typical_high: number; sample_size: number }[];
+  series: { date: string; median: number; typical_low: number; typical_high: number; sample_size: number | null }[];
   period: { from: string | null; to: string | null };
   change: null | { from_median: number; to_median: number; absolute: number; percent: number };
   sample_size_note?: string;
@@ -280,7 +350,7 @@ export interface HistoryAnswer {
 }
 
 export function historySources(cat: CategoryPlugin): SourcePlugin[] {
-  return sourcesFor(cat.id).filter((s) => s.harvest && s.historyKey);
+  return sourcesFor(cat.id).filter((s) => s.harvest && s.historyKey && !s.noHistory);
 }
 
 const daysCache = new Map<string, number>();
@@ -302,10 +372,12 @@ function knownParams(cat: CategoryPlugin, p: Params): Params {
 
 export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, today = new Date()): HistoryAnswer {
   const { src, prepared } = pickSource(cat, params);
+  if (src.noHistory) throw new InputError(src.noHistory);
   if (!src.harvest || !src.historyKey) {
     throw new InputError(`We do not keep daily history for ${src.info.country} ${cat.noun.toLowerCase()} yet.`);
   }
-  const key = src.historyKey(prepared);
+  const monthlyAsked = num(params.months) !== undefined;
+  const key = src.historyKey(prepared, { monthly: monthlyAsked });
   if (!key) throw new InputError("History is kept by area and fuel; give an area or postcode and a fuel this source publishes.");
   const days = Math.max(2, Math.min(366, Math.round(num(params.days) ?? 30)));
   const meta = readMeta(src.info.id);
@@ -323,7 +395,7 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
   const rows = (monthly
     ? readMonthly(src.info.id, { area: key.area, item: key.item, from: monthFrom, to: monthTo })
     : readDaily(src.info.id, { area: key.area, item: key.item, from, to })
-  ).filter((r) => r.n >= MIN_PUBLISH);
+  ).filter((r) => passesGate(r.n));
   const staleDays = meta?.last_date ? Math.max(0, Math.round((Date.parse(todayIso) - Date.parse(meta.last_date)) / 86400000)) : null;
   const unit = cat.history?.unit?.(key.item) ?? meta?.unit ?? null;
   const currency = meta?.currency ?? null;
@@ -355,8 +427,9 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
     status,
     currency,
     unit,
-    ...(src.nominalCounts ? { sample_size_note: "The publisher gives one figure and no record count; sample_size in the series is a placeholder (5) kept so the day passes the 5-record rule. It is not a count of records." } : {}),
-    series: rows.map((r) => ({ date: r.date, median: r.median, typical_low: r.low, typical_high: r.high, sample_size: r.n })),
+    ...(src.nominalCounts ? { sample_size_note: "The publisher gives one figure and no record count, so sample_size is null in the series." } : {}),
+    // An official statistic has no record count: null, also for older stored rows that still carry the former placeholder (5 or 10).
+    series: rows.map((r) => ({ date: r.date, median: r.median, typical_low: r.low, typical_high: r.high, sample_size: src.nominalCounts || !hasCount(r.n) ? null : r.n })),
     period: { from: first?.date ?? null, to: last?.date ?? null },
     change,
     price_type: src_.price_type,
@@ -455,6 +528,14 @@ export function updateFrequency(freshness: string, max = 100): string {
   return cut.replace(/[\s,;:(]+$/, "") + "…";
 }
 
+/** How often a tool's sources update. In the short overview (no category or country asked) each entry is cut shorter and at
+ *  most three are listed, so the overview stays small however many sources are added; the full detail per slice is unchanged. */
+export function frequencies(freshness: string[], brief: boolean): string {
+  const all = [...new Set(freshness.map((f) => updateFrequency(f, brief ? 60 : 100)))];
+  if (!brief || all.length <= 3) return all.join(" | ");
+  return all.slice(0, 3).join(" | ") + ` | and ${all.length - 3} more (ask with this category for each source)`;
+}
+
 /** A category by its id, REST path or tool name (any case; /api/v1/ in front is ignored). */
 export function lookupCategory(raw: unknown, categories: CategoryPlugin[] = CATEGORIES): CategoryPlugin | undefined {
   const key = String(raw ?? "").trim().toLowerCase().replace(/^\/?(api\/v1\/)?/, "");
@@ -494,7 +575,7 @@ export function coverageView(filter: CoverageFilter = {}, baseUrl = "") {
         rest: `/api/v1/${c.restPath}`,
         countries: [...new Set(srcs.flatMap((s) => s.countries))],
         source_count: srcs.length,
-        update_frequency: [...new Set(srcs.map((s) => updateFrequency(s.info.freshness)))].join(" | "),
+        update_frequency: frequencies(srcs.map((s) => s.info.freshness), !category && !country),
       };
     });
   const shown = (category ? [category] : CATEGORIES).flatMap((c) => matching(c).map((s) => ({ c, s })));

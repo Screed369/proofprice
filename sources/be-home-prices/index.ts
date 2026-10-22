@@ -33,4 +33,8 @@ export default defineSource({
       baseUrl: ctx.baseUrl,
     }),
   harvest: beHarvest,
+  // Statbel publishes one median per quarter, half-year and year (no rolling figure), so daily snapshots would only repeat it: no history.
+  // The registry gate asks every collecting source for a key; Belgium has none to give (noHistory below is what a caller sees).
+  historyKey: () => null,
+  noHistory: "Belgium: Statbel publishes one median per quarter, half-year and year, and ProofPrice keeps no history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure.",
 });

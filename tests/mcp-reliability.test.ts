@@ -366,7 +366,7 @@ test("pricepaid_coverage: the default answer is a short overview (under 20,000 c
   const text = out.content[0].text;
   const sc: any = out.structuredContent;
   assert.ok(text.length < 20_000, `text is ${text.length} characters`);
-  assert.ok(JSON.stringify(sc, null, 2).length < 20_000);
+  assert.ok(JSON.stringify(sc).length < 20_000, "structuredContent travels as compact JSON");
   assert.ok(spec.config.outputSchema.safeParse(sc).success, JSON.stringify((spec.config.outputSchema.safeParse(sc) as any).error?.issues));
   assert.equal(spec.config.outputSchema, coverageToolSchema);
   assert.equal(sc.detail, "summary");

@@ -12,6 +12,7 @@ import { makeXlsx } from "../../tests/helpers/make-zip";
 import { writeDaily } from "../../lib/library/store";
 import { InputError, SourceError } from "../../lib/http";
 import { INFO, areaKey, headerIndex, harvestOptions, matchCounty, ndcpRows, parseLibArea, pickFileUrl, projectRow, readNdcp, usAnswer, usChildcare, usHarvest } from "./source";
+import { NO_COUNT } from "../../lib/stats";
 
 const HEADER = [
   "STATE_NAME", "STATE_ABBREVIATION", "COUNTY_NAME", "COUNTY_FIPS_CODE", "STUDYYEAR",
@@ -77,7 +78,7 @@ test("streaming read: the latest year of every county is kept; counties without 
   assert.equal(cook.values["infant:centre"].median, 278.33);
   const rows = ndcpRows(r.counties);
   const row = (area: string, item: string) => rows.find((x) => x.area === area && x.item === item);
-  assert.deepEqual(row("17031 Cook County, IL", "infant:centre"), { area: "17031 Cook County, IL", item: "infant:centre", n: 5, median: 278.33, low: 278.33, high: 278.33, min: 1, max: 307.75 });
+  assert.deepEqual(row("17031 Cook County, IL", "infant:centre"), { area: "17031 Cook County, IL", item: "infant:centre", n: NO_COUNT, median: 278.33, low: 278.33, high: 278.33, min: 1, max: 307.75 });
   assert.equal(row("17031 Cook County, IL", "school-age:centre")!.min, 0);
   assert.equal(row("17189 Washington County, IL", "nodata")!.median, 1);
   assert.equal(rows.filter((x) => x.area === "29189 St. Louis County, MO").length, 1);

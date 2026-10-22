@@ -66,7 +66,7 @@ export const priceAnswerSchema = z
     evidence: z
       .looseObject({
         type: z.string().describe("Same as price_type."),
-        label: z.string().describe("Short name of the kind of evidence, e.g. 'Recorded sale prices', 'Official published average', 'Posted shelf or pump price', 'Contract award value', 'Regulated reimbursement price'."),
+        label: z.string().describe("Short name of the kind of evidence, e.g. 'Recorded sale prices', 'Official published average', 'Official published index', 'Posted shelf or pump price', 'Posted or listed price', 'Contract award value', 'Regulated reimbursement price'."),
         meaning: z.string().describe("One sentence on what this kind of evidence does and does not establish."),
       })
       .optional()
@@ -139,7 +139,7 @@ export const historyAnswerSchema = z
         median: number,
         typical_low: number,
         typical_high: number,
-        sample_size: number,
+        sample_size: nullableNumber,
       }),
     ),
     period: z.looseObject({ from: z.string().nullable(), to: z.string().nullable() }).optional(),
@@ -149,7 +149,7 @@ export const historyAnswerSchema = z
       .optional()
       .describe("Change over the period; null with fewer than two days."),
     price_type: z.string().optional(),
-    sample_size_note: z.string().optional().describe("Present when the publisher gives no record count: sample_size in the series is a placeholder, not a count."),
+    sample_size_note: z.string().optional().describe("Present when the publisher gives no record count: sample_size in the series is null."),
     source: sourceBlockSchema,
     library: z
       .looseObject({

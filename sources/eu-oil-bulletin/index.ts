@@ -34,6 +34,9 @@ export default defineSource({
       postcode: str(p.postcode),
       baseUrl: ctx.baseUrl,
     }),
+  // Stands in for the Italian, French and Spanish station-level sources when they cannot be reached and no recent copy is held
+  // (MIMIT refuses connections from cloud servers): the answer is this bulletin's national figure and says so.
+  fallbackFor: { sources: ["it-fuel", "fr-fuel", "es-fuel"], countries: ["IT", "FR", "ES"], label: "the European Commission Weekly Oil Bulletin" },
   nominalCounts: true,
   harvest: wobHarvest,
   backfill: wobBackfill,

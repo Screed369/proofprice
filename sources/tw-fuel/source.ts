@@ -8,6 +8,7 @@
 import { InputError, SourceError, fetchJson } from "../../lib/http";
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const API_URL = "https://vipmbr.cpc.com.tw/openData/MainProdListPrice_English";
 export const PAGE_URL = "https://vipmbr.cpc.com.tw/openData/swagger/index.html";
@@ -102,6 +103,7 @@ export function answerFromProducts(products: TwProduct[], input: TwFuelInput): P
     reference_period: `list price effective ${hit.effective}`,
     method: METHOD,
     note: note.trim(),
+    ending: `List price published by ${INFO.publisher}, effective ${hit.effective}.`,
     describe: (v) => `The posted CPC list price of ${series.label} in Taiwan is ${ntd(v)} per litre, effective ${hit.effective} (VAT and excise included).`,
     baseUrl: input.baseUrl,
     extra: {
@@ -118,11 +120,11 @@ export async function twFuel(input: TwFuelInput, fetcher: (url: string) => Promi
 
 // ---------- daily collector ----------
 
-/** One library row per fuel: the published list price (n = 5 is a placeholder, see nominalCounts in the manifest). */
+/** One library row per fuel: the published list price (n is NO_COUNT, see nominalCounts in the manifest). */
 export function harvestFromProducts(products: TwProduct[]): HarvestResult {
   const rows = Object.entries(SERIES).flatMap(([item, s]) => {
     const p = products.find((x) => x.name.toLowerCase() === s.cpc.toLowerCase());
-    return p ? [{ area: "ALL", item, n: 5, median: p.ntdPerLitre, low: p.ntdPerLitre, high: p.ntdPerLitre, min: p.ntdPerLitre, max: p.ntdPerLitre }] : [];
+    return p ? [{ area: "ALL", item, n: NO_COUNT, median: p.ntdPerLitre, low: p.ntdPerLitre, high: p.ntdPerLitre, min: p.ntdPerLitre, max: p.ntdPerLitre }] : [];
   });
   if (!rows.length) throw new SourceError("CPC pump price feed had none of the expected fuels; this source needs updating.");
   const date = products.find((p) => p.name === SERIES.petrol95.cpc)?.effective ?? products[0].effective;
@@ -131,7 +133,7 @@ export function harvestFromProducts(products: TwProduct[]): HarvestResult {
     currency: "TWD",
     unit: "per litre",
     rows,
-    note: `CPC Corporation posted island-wide list prices, NT$ per litre, effective ${date}, VAT and excise included. Published values, not counts of records (n=5 is a placeholder).`,
+    note: `CPC Corporation posted island-wide list prices, NT$ per litre, effective ${date}, VAT and excise included. Published values, not counts of records (no record count is published).`,
   };
 }
 

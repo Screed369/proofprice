@@ -8,7 +8,7 @@ import { exampleWords, matchItem } from "../../categories/groceries/items";
 import { writeDaily, writeMeta } from "../../lib/library/store";
 import { AP_DATA_SAMPLE, AP_ITEM_NAMES, AP_LIVE_NATIONAL, AP_LIVE_REGIONS } from "./fixtures";
 import {
-  AREAS, BLS_USER_AGENT, INFO, ITEMS, LIBRARY_N_PLACEHOLDER, monthWords, parseApData, readUsReading, resolveArea, shiftMonth, usAnswer, usBlsPrices, usDailyRows, usHarvest,
+  AREAS, BLS_USER_AGENT, INFO, ITEMS, monthWords, parseApData, readUsReading, resolveArea, shiftMonth, usAnswer, usBlsPrices, usDailyRows, usHarvest,
 } from "./source";
 import manifest from "./index";
 
@@ -75,8 +75,7 @@ test("usDailyRows: newest month only, with the same month a year before and the 
   assert.equal(get("0100", "708111"), undefined, "the Northeast egg series has no September 2026 price");
   assert.equal(get("0200", "717311"), undefined);
   for (const r of d.rows) {
-    assert.equal(r.n, LIBRARY_N_PLACEHOLDER);
-    assert.ok(r.n >= 5, "rows must clear the library minimum or writeDaily drops them");
+    assert.ok(Number.isNaN(r.n), "BLS publishes no count: no n is stored");
     assert.equal(r.low, r.median);
     assert.equal(r.high, r.median);
   }

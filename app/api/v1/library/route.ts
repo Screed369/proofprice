@@ -5,7 +5,10 @@ import { SOURCE_PLUGINS } from "../../../../lib/registry";
 import { json } from "../../../../lib/route-helpers";
 
 export async function GET() {
-  const status = libraryStatus();
+  // Only sources that are registered now: a source taken offline (manifest.offline.ts) keeps its old library folder until the
+  // collector tidies it, but it is no longer collected, so its last error or age must not show up in the Monitor.
+  const registered = new Set(SOURCE_PLUGINS.map((s) => s.info.id));
+  const status = libraryStatus().filter((m) => registered.has(m.source));
   const collected = SOURCE_PLUGINS.filter((s) => s.harvest).map((s) => s.info.id);
   return json({
     service: "ProofPrice price library",

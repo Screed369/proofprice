@@ -45,7 +45,7 @@ test("eu-home-price-index: every listed country has a figure (Eurostat holds non
 test("eu-home-price-index: answer is an index, labelled as such, with no range or sample size", () => {
   const a = hpiAnswer(readHpi(table(), "DE"), { country: "DE" });
   assert.equal(a.status, "ok");
-  assert.equal(a.price!.currency, "index");
+  assert.equal(a.price!.currency, "INDEX");
   assert.equal(a.price!.median, null);
   assert.equal(a.price!.typical_low, null);
   assert.equal(a.sample_size, null);

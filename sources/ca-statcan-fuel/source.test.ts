@@ -140,3 +140,32 @@ test("manifest: fuel tool, CA, first example is the smoke test, licence is quote
   assert.match(caFuelMethod(), /monthly average, not today's pump price/);
   assert.match(AKI_NOTE, /87 AKI/);
 });
+
+// ---------- daily collector and stale-if-error ----------
+
+import { caFuelHarvest, caFuelHistoryKey, fuelHarvestRows } from "./source";
+
+test("harvest: one row per city and fuel for the newest month, dated by the month's end, in dollars per litre, no record count", async () => {
+  const calls: { path: string; body: unknown }[] = [];
+  const h = await caFuelHarvest(fakeWds({ meta: FUEL_META, data: FUEL_DATA, calls }));
+  assert.equal(h.currency, "CAD");
+  assert.equal(h.unit, "per litre");
+  assert.match(h.date, /^\d{4}-\d{2}-\d{2}$/);
+  assert.ok(h.rows.length > 0 && h.rows.length <= 57);
+  assert.ok(h.rows.every((r) => Number.isNaN(r.n) && r.low === r.median && r.max === r.median && r.median > 0.5 && r.median < 5));
+  const van = h.rows.find((r) => r.area === "Vancouver, British Columbia" && r.item === "petrol95");
+  const live = await caFuelNow({ fuel: "petrol95", town: "Vancouver" }, fakeWds({ meta: FUEL_META, data: FUEL_DATA }), TODAY);
+  assert.equal(van?.median, live.price!.value, "the copy holds the same figure as the live answer");
+  assert.ok(calls.filter((c) => c.path === "getDataFromCubePidCoordAndLatestNPeriods").every((c) => (c.body as unknown[]).length <= 15));
+  assert.throws(() => fuelHarvestRows([]), /no usable average/);
+});
+
+test("history key: cities resolve from the stored areas without asking Statistics Canada; no history is offered", () => {
+  const areas = ["ALL", "Vancouver, British Columbia", "Toronto, Ontario"];
+  assert.deepEqual(caFuelHistoryKey({ fuel: "petrol95", town: "vancouver" }, areas), { area: "Vancouver, British Columbia", item: "petrol95", label: "Vancouver, British Columbia" });
+  assert.equal(caFuelHistoryKey({ fuel: "petrol95" }, areas)!.area, "ALL");
+  assert.equal(caFuelHistoryKey({ fuel: "lpg", town: "Toronto" }, areas), null);
+  assert.equal(caFuelHistoryKey({ fuel: "diesel", town: "Atlantis" }, areas), null);
+  assert.ok(manifest.harvest && manifest.historyKey && manifest.referenceDates && manifest.nominalCounts);
+  assert.match(manifest.noHistory!, /no daily history/);
+});

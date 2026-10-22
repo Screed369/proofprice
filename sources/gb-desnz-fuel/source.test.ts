@@ -77,7 +77,7 @@ test("previous week and the same week a year earlier", () => {
 
 test("library rows: pounds per litre, dated earlier weeks, duty and VAT", () => {
   const rows = desnzRows(parseDesnzCsv(CSV_TEXT));
-  assert.ok(rows.every((r) => r.area === "ALL" && r.n === 5 && r.median === r.low && r.low === r.high && r.high === r.min && r.min === r.max));
+  assert.ok(rows.every((r) => r.area === "ALL" && Number.isNaN(r.n) && r.median === r.low && r.low === r.high && r.high === r.min && r.min === r.max));
   const get = (item: string) => rows.find((r) => r.item === item)?.median;
   assert.equal(get("petrol95"), 1.7528);
   assert.equal(get("diesel"), 2.0004);
@@ -248,7 +248,7 @@ test("backfill: monthly mean, cheapest and dearest week; thin months and duplica
   assert.equal(petrol.median, 0.75);
   assert.equal(petrol.low, 0.745);
   assert.equal(petrol.high, 0.755);
-  assert.equal(petrol.n, 5);
+  assert.ok(Number.isNaN(petrol.n));
   assert.equal(petrol.area, "ALL");
   assert.equal(desnzMonthly(weeks, "2004-01", "2004-12").length, 0);
 });

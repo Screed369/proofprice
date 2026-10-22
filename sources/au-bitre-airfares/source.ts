@@ -6,12 +6,12 @@
 // websites 3 weeks before a departure on the last Thursday of the month, returning 2 weeks later. One observation per route per month: a posted
 // price, not a price paid. The only honest range is across months, so the answer is the median/10th-90th percentile of the last N months of one route.
 
-import { ckanSearch } from "../../lib/adapters/ckan";
+import { ckanAll, ckanSearch } from "../../lib/adapters/ckan";
 import type { FetchOptions } from "../../lib/adapters/common";
 import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, PriceAnswer } from "../../lib/answer";
 import { summarise } from "../../lib/stats";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const SITE = "https://data.gov.au/data";
 export const RESOURCE_ID = "b1e7267d-2884-4416-b3d6-6a669fc4e423";
@@ -156,4 +156,63 @@ export async function auAirfares(input: { from?: string; to?: string; quarters?:
     });
   }
   return answerFromFares(rows, { from: a, to: b, months, baseUrl: input.baseUrl });
+}
+
+// ---------- daily collector (stale-if-error copy) ----------
+// Once a day the collector stores, for every route, the same 12-month range the default answer gives (4 quarters): one row per
+// route (about 70), dated by the end of the newest month and replaced in place until BITRE publishes the next month. n is the
+// number of monthly observations. Used only when data.gov.au does not respond.
+
+export const HARVEST_ITEM = "return fare, last 12 months";
+const shiftYm = (ym: string, delta: number) => {
+  const d = new Date(Date.UTC(Number(ym.slice(0, 4)), Number(ym.slice(4, 6)) - 1 + delta, 1));
+  return `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
+};
+
+/** One key for a route in either direction: the two port names in alphabetical order. */
+export function routeKey(a: string, b: string): string {
+  return [a.trim(), b.trim()].sort((x, y) => x.localeCompare(y)).join(" - ");
+}
+
+/** Pure: datastore records (any routes, newest first) -> one library row per route for the 12 months up to the newest month. */
+export function fareHarvestRows(records: Record<string, any>[]): HarvestResult {
+  const byRoute = new Map<string, Record<string, any>[]>();
+  for (const r of records) {
+    const parts = String(r.Route ?? "").split(" - ");
+    if (parts.length !== 2) continue;
+    const k = routeKey(parts[0], parts[1]);
+    byRoute.set(k, [...(byRoute.get(k) ?? []), r]);
+  }
+  const fares = [...byRoute.entries()].map(([k, recs]) => ({ k, rows: parseFares(recs) }));
+  const newest = fares.flatMap((f) => f.rows.map((r) => r.yearMonth)).sort().pop();
+  if (!newest) throw new SourceError("BITRE domestic airfares returned no usable fares");
+  const first = shiftYm(newest, -11);
+  const rows = fares.flatMap(({ k, rows }) => {
+    const s = summarise(rows.filter((r) => r.yearMonth >= first && r.yearMonth <= newest).map((r) => r.nominal));
+    return s && s.count >= 5 ? [{ area: k, item: HARVEST_ITEM, n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max }] : [];
+  });
+  const end = new Date(Date.UTC(Number(newest.slice(0, 4)), Number(newest.slice(4, 6)), 0)).toISOString().slice(0, 10);
+  return {
+    date: end,
+    currency: "AUD",
+    unit: "per return trip",
+    rows,
+    note: `BITRE cheapest advertised discount return fares, ${monthLabel(first)} to ${monthLabel(newest)}: median and 10th-90th percentile over the months of each route (n = months). Advertised, not paid.`,
+  };
+}
+
+export async function auAirfaresHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  const got = await ckanAll(SITE, { resourceId: RESOURCE_ID, sort: "YearMonth desc", includeTotal: false }, { ...o, maxRows: 1500, pageSize: 1000 });
+  return fareHarvestRows(got.rows);
+}
+
+/** Where a request lives in the library: only the default 12-month window (4 quarters) is stored. */
+export function auAirfaresHistoryKey(p: { from?: string; to?: string; quarters?: number }): { area: string; item: string; label: string } | null {
+  if (!p.from || !p.to || (p.quarters !== undefined && Math.round(p.quarters) !== 4)) return null;
+  try {
+    const k = routeKey(portName(p.from), portName(p.to));
+    return { area: k, item: HARVEST_ITEM, label: k };
+  } catch {
+    return null;
+  }
 }

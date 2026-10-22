@@ -51,8 +51,10 @@ test("nz-mbie-rents: Wellington answer is a transaction range from the published
   assert.equal(a.price!.currency, "NZD");
   assert.equal(a.price!.unit, "per week");
   assert.equal(a.price!.median, 595);
-  assert.equal(a.price!.typical_low, 450);
-  assert.equal(a.price!.typical_high, 725);
+  assert.equal(a.price!.typical_low, null);
+  assert.equal((a.extra as any).p25, 450);
+  assert.equal(a.price!.typical_high, null);
+  assert.equal((a.extra as any).p75, 725);
   assert.equal(a.price!.min, null);
   assert.equal(a.sample_size, 636);
   assert.deepEqual(a.period, { from: "2026-08-01", to: "2026-08-31" });
@@ -96,4 +98,9 @@ test("nz-mbie-rents: registered for NZ in the rent category", () => {
   assert.equal(p.category, "rent");
   assert.deepEqual(p.countries, ["NZ"]);
   assert.equal(p.examples[0].params.town, "Wellington");
+});
+
+test("nz-mbie-rents: the examples only pass parameters the source applies (no bedrooms)", async () => {
+  const { default: plugin } = await import("./index");
+  for (const ex of plugin.examples) assert.ok(!("bedrooms" in ex.params), JSON.stringify(ex.params));
 });

@@ -18,6 +18,7 @@ import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { readLatestDay } from "../../lib/library/store";
 import { Cell, excelDate, readXlsx } from "../../categories/rent/xlsx";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const DATASET_URL = "https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics";
 const ONS = "https://www.ons.gov.uk";
@@ -150,7 +151,7 @@ export function monthEnd(month: string): string {
 /** Library rows for the latest month. See the note at the top of this file about n. */
 export function piprRows(p: Pipr): DailyRow[] {
   const rows: DailyRow[] = [];
-  const put = (area: string, item: string, v: number) => rows.push({ area, item, n: 5, median: v, low: v, high: v, min: v, max: v });
+  const put = (area: string, item: string, v: number) => rows.push({ area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
   for (const a of p.areas) {
     const area = `${a.code} ${a.name}`;
     for (const m of MEASURES) {
@@ -195,7 +196,7 @@ export async function gbHarvest(): Promise<HarvestResult> {
     currency: "GBP",
     unit: "per month",
     rows: piprRows(p),
-    note: `ONS Price Index of Private Rents, ${p.month} (edition ${uri.split("/").pop()}): published average monthly rent per area and its annual change. Figures are published values, not counts of records (n=5 is a placeholder).`,
+    note: `ONS Price Index of Private Rents, ${p.month} (edition ${uri.split("/").pop()}): published average monthly rent per area and its annual change. Figures are published values, not counts of records (no record count is published).`,
   };
 }
 

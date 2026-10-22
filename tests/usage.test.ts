@@ -1,7 +1,7 @@
 // Anonymous usage counting (lib/usage.ts): off unless a Blob store is connected (BLOB_STORE_ID or BLOB_READ_WRITE_TOKEN); counts only the documented fields; flushes in batches.
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import { OWN_CLIENTS, isOwnClient, isOwnRequest, withoutOwnParam, runWithOwnFlag, FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport } from "../lib/usage";
+import { OWN_CLIENTS, isOwnClient, isOwnRequest, withoutOwnParam, runWithOwnFlag, FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport, memoryStore } from "../lib/usage";
 import type { UsageFile } from "../lib/usage";
 
 const ON = { BLOB_READ_WRITE_TOKEN: "test-token-not-real" };
@@ -24,7 +24,7 @@ test("off by default: with no Blob token nothing is counted or sent", async () =
   assert.equal(pendingUsage().length, 0);
   assert.equal(await flushUsage(NOW, OFF), 0);
   assert.equal(sent, 0);
-  const r = await usageReport(NOW, OFF, { list: async () => { throw new Error("must not read"); }, read: async () => null });
+  const r = await usageReport(NOW, OFF, { list: async () => { throw new Error("must not read"); }, read: async () => null, write: async () => { throw new Error("must not write"); }, del: async () => { throw new Error("must not delete"); } });
   assert.equal(r.enabled, false);
   assert.match(r.message!, /switched off/);
 });
@@ -88,15 +88,19 @@ test("the report: last 30 days, totals, answered share and the top unanswered qu
   assert.equal(r.by_client![0].client, "cursor");
   assert.equal(r.by_day![0].day, "2026-10-13");
   assert.equal(r.by_day![0].answered, 5);
+  assert.equal(r.by_day![1].answered, 0); // a handshake is not an answered question
   assert.deepEqual(r.period, { from: "2026-09-15", to: "2026-10-14", days: 30 });
   assert.ok(!JSON.stringify(r).match(/ip|user.?agent/i) || /no IP addresses, user agents/.test(r.note));
 
-  const rep = await usageReport(NOW, ON, {
-    list: async () => ["usage/2026-10-14/a.json", "usage/2026-08-01/old.json", "other/x.json"],
-    read: async (p) => (p.endsWith("a.json") ? files[1] : files[2]),
-  });
+  const mem = memoryStore();
+  mem.files.set("usage/2026-10-14/a.json", JSON.stringify(files[1]));
+  mem.files.set("usage/2026-08-01/old.json", JSON.stringify(files[2]));
+  mem.files.set("other/x.json", JSON.stringify(files[0]));
+  const rep = await usageReport(NOW, ON, mem);
   assert.equal(rep.enabled, true);
   assert.equal(rep.total_questions, 4 + 1 + 6 + 9);
+  assert.equal(rep.real_questions, 4 + 1 + 9);
+  assert.equal(rep.handshakes, 6);
 });
 
 test("our own checks are skipped, never recorded", () => {

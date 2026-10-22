@@ -7,7 +7,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import type { DailyRow, HarvestResult } from "../plugin";
-import { MIN_PUBLISH } from "../stats";
+import { NO_COUNT, passesGate } from "../stats";
 
 export const DAILY_HEADER = "date,area,item,n,median,low,high,min,max";
 
@@ -39,6 +39,7 @@ function sourceDir(sourceId: string): string {
 }
 
 function csvCell(v: string | number): string {
+  if (typeof v === "number" && Number.isNaN(v)) return ""; // an empty cell is a missing record count (n only)
   const s = String(v);
   return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }
@@ -75,7 +76,7 @@ export function csvToRows(text: string): LibraryRow[] {
   if (!lines.length || lines[0].trim() !== DAILY_HEADER) return [];
   return lines.slice(1).map((l) => {
     const [date, area, item, n, median, low, high, min, max] = splitCsvLine(l);
-    return { date, area, item, n: Number(n), median: Number(median), low: Number(low), high: Number(high), min: Number(min), max: Number(max) };
+    return { date, area, item, n: n === undefined || n.trim() === "" ? NO_COUNT : Number(n), median: Number(median), low: Number(low), high: Number(high), min: Number(min), max: Number(max) };
   });
 }
 
@@ -89,7 +90,7 @@ export function writeDaily(sourceId: string, result: HarvestResult): { file: str
   const dir = path.join(sourceDir(sourceId), "daily");
   mkdirSync(dir, { recursive: true });
   const file = path.join(dir, `${result.date.slice(0, 7)}.csv`);
-  const fresh = result.rows.filter((r) => r.n >= MIN_PUBLISH).map((r) => ({ ...r, date: result.date }));
+  const fresh = result.rows.filter((r) => passesGate(r.n)).map((r) => ({ ...r, date: result.date }));
   if (!fresh.length) return { file, rows: 0 }; // never replace a good day with nothing
   let existing: LibraryRow[] = [];
   if (existsSync(file)) {
@@ -164,6 +165,21 @@ export function readLatestDay(sourceId: string): { date: string; rows: LibraryRo
     return { date, rows: rows.filter((r) => r.date === date) };
   }
   return null;
+}
+
+/** Every row of the given days (any area, any item). Reads only the month files those days fall in. Used by /this-week. */
+export function readRowsOnDates(sourceId: string, dates: string[]): LibraryRow[] {
+  const dir = path.join(sourceDir(sourceId), "daily");
+  if (!existsSync(dir) || !dates.length) return [];
+  const want = new Set(dates);
+  const months = new Set(dates.map((d) => d.slice(0, 7)));
+  const out: LibraryRow[] = [];
+  for (const month of months) {
+    const file = path.join(dir, `${month}.csv`);
+    if (!existsSync(file)) continue;
+    for (const r of csvToRows(readFileSync(file, "utf8"))) if (want.has(r.date)) out.push(r);
+  }
+  return out;
 }
 
 export function readMeta(sourceId: string): SourceMeta | null {

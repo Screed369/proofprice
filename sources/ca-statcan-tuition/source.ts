@@ -7,12 +7,14 @@
 //   header: "REF_DATE","GEO","DGUID","Level of study","UOM","UOM_ID","SCALAR_FACTOR","SCALAR_ID","VECTOR","COORDINATE","VALUE","STATUS","SYMBOL","TERMINATED","DECIMALS"
 //   "2026/2027","Canada","2021A000011124","Canadian undergraduate","Current dollars","75","units","0","v...","1.1","8021","","","","0"
 //   A missing figure has VALUE "" and STATUS "..". The newest year is at the END of the file. GEO = Canada + the ten provinces + Yukon (Yukon mostly empty).
-// The file is small and annual: it is fetched per request (cached in memory for six hours), no harvest needed.
+// The file is small and annual: it is fetched per request (cached in memory for six hours). A daily copy of the newest year (harvest) lets a
+// Statistics Canada outage be answered from our copy for seven days (stale-if-error).
 
 import { inflateRawSync } from "node:zlib";
 import { InputError, SourceError } from "../../lib/http";
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import { OPEN_LICENCE_TEXT, OPEN_LICENCE_URL, openLicenceAttribution, openLicenceNotice } from "../_ca-statcan/licence";
 import { PROVINCES, provinceFor } from "../_ca-statcan/geo";
 
@@ -283,4 +285,62 @@ export function clearCache(): void {
 
 export async function caTuition(input: TuitionInput, load?: () => Promise<Buffer>): Promise<PriceAnswer> {
   return tuitionAnswer(await loadRows(load), input);
+}
+
+// ---------- daily copy (stale-if-error) ----------
+
+const NATIONAL_AREA = "ALL";
+const areaOf = (geo: string) => (geo === "Canada" ? NATIONAL_AREA : geo);
+
+/** Pure: one library row per province (and Canada = "ALL") and level of study for the newest academic year with a figure.
+ *  Each row is one published average: n is NO_COUNT (no record count is published) and the range fields repeat the figure. Dated 1 September of the academic year. */
+export function tuitionHarvestRows(rows: FeeRow[]): HarvestResult {
+  const usable = rows.filter((r) => r.value !== null);
+  if (!usable.length) throw new SourceError("Statistics Canada table 37-10-0045-01 holds no usable tuition average");
+  const year = usable.map((r) => r.year).sort().pop()!;
+  const newest = new Map<string, FeeRow>();
+  for (const r of usable) {
+    if (r.year !== year) continue;
+    newest.set(`${r.geo}\u0000${r.level}`, r);
+  }
+  const out = [...newest.values()].map((r) => ({
+    area: areaOf(r.geo),
+    item: r.level,
+    n: NO_COUNT,
+    median: r.value as number,
+    low: r.value as number,
+    high: r.value as number,
+    min: r.value as number,
+    max: r.value as number,
+  }));
+  out.sort((a, b) => a.area.localeCompare(b.area) || a.item.localeCompare(b.item));
+  return {
+    date: `${year.slice(0, 4)}-09-01`,
+    currency: "CAD",
+    unit: "per academic year",
+    rows: out,
+    note: `Statistics Canada table 37-10-0045-01: weighted average posted tuition fees for the ${year} academic year, by province and level of study. Published averages, not counts of records (no record count is published).`,
+  };
+}
+
+export async function caTuitionHarvest(load: () => Promise<Buffer> = () => downloadZip()): Promise<HarvestResult> {
+  return tuitionHarvestRows(parseFeeCsv(unzipCsv(await load())));
+}
+
+/** Where a request lives in the library, without asking Statistics Canada: provinces come from the areas of our newest stored day. */
+export function tuitionHistoryKey(
+  p: { cycle?: string; student_group?: string; province?: string },
+  areas: string[],
+): { area: string; item: string; label: string } | null {
+  const group = p.student_group ?? "home";
+  const cycle = p.cycle ?? "first";
+  const level = LEVEL[group]?.[cycle];
+  if (!level) return null;
+  const geos = ["Canada", ...areas.filter((a) => a !== NATIONAL_AREA)];
+  try {
+    const geo = resolveGeo(p.province, geos);
+    return { area: areaOf(geo), item: level, label: `${geo}, ${level.toLowerCase()} students` };
+  } catch {
+    return null;
+  }
 }

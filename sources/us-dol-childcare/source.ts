@@ -22,6 +22,7 @@ import { readLatestDay } from "../../lib/library/store";
 import type { Cell } from "../../categories/rent/xlsx";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { openWorkbook, streamSheet } from "./xlsx-stream";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL = "https://www.dol.gov/agencies/wb/topics/featured-childcare";
 export const FALLBACK_FILE_URL = "https://www.dol.gov/sites/dolgov/files/WB/NDCP2022.xlsx";
@@ -119,9 +120,9 @@ export function ndcpRows(counties: CountyPrices[]): DailyRow[] {
   const rows: DailyRow[] = [];
   for (const c of counties) {
     // A county the file lists for the year but without any price (DOL leaves some blank) gets one marker row, so we can say so.
-    if (!Object.keys(c.values).length) rows.push({ area: areaKey(c), item: "nodata", n: 5, median: 1, low: 1, high: 1, min: 0, max: 0 });
+    if (!Object.keys(c.values).length) rows.push({ area: areaKey(c), item: "nodata", n: NO_COUNT, median: 1, low: 1, high: 1, min: 0, max: 0 });
     for (const [item, v] of Object.entries(c.values)) {
-      rows.push({ area: areaKey(c), item, n: 5, median: v.median, low: v.median, high: v.median, min: v.flag, max: v.p75 });
+      rows.push({ area: areaKey(c), item, n: NO_COUNT, median: v.median, low: v.median, high: v.median, min: v.flag, max: v.p75 });
     }
   }
   return rows;
@@ -199,7 +200,7 @@ export async function usHarvest(): Promise<HarvestResult> {
     currency: "USD",
     unit: "per week",
     rows: ndcpRows(counties),
-    note: `Department of Labor National Database of Childcare Prices (${url.split("/").pop()}), year ${year}, ${counties.length} counties (${rowsRead} county-year rows read): published median weekly price of full-time care. Figures are published values, not counts of records (n=5 is a placeholder; min holds DOL's quality flag, max the 75th percentile price).`,
+    note: `Department of Labor National Database of Childcare Prices (${url.split("/").pop()}), year ${year}, ${counties.length} counties (${rowsRead} county-year rows read): published median weekly price of full-time care. Figures are published values, not counts of records (no record count is published; min holds DOL's quality flag, max the 75th percentile price).`,
   };
 }
 

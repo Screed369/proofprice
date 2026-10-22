@@ -43,7 +43,7 @@ test("buildRows: one aggregate per food across markets, 5-market rule, and an as
   assert.equal(wheat.median, 0.42);
   assert.equal(wheat.min, 0.34);
   assert.equal(wheat.max, 0.54);
-  assert.ok(b.rows.every((r) => r.n >= 5));
+  assert.ok(b.rows.every((r) => (r.item === ASOF_ITEM ? Number.isNaN(r.n) : r.n >= 5)), "food rows rest on 5+ markets; the as-of marker row carries no count");
   assert.equal(asOfDate(b.rows, "AFG"), "2026-05-15");
   assert.ok(b.rows.some((r) => r.item === ASOF_ITEM));
 });

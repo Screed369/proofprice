@@ -68,11 +68,11 @@ test("parse: a changed layout gives a diagnosis, not a silent empty answer", () 
   assert.throws(() => parseProducerPrices(HEADER + "\n"), /No usable FAOSTAT/);
 });
 
-test("library rows: price, year, dollars, previous year and the estimate marker; all with the placeholder count", () => {
+test("library rows: price, year, dollars, previous year and the estimate marker; none with a record count", () => {
   const rows = toLibraryRows(parseProducerPrices(CSV).figures);
   const br = rows.filter((r) => r.area === "BR");
   assert.deepEqual(br.map((r) => r.item).sort(), ["Soya beans", "Soya beans@est", "Soya beans@prev", "Soya beans@usd", "Soya beans@year"]);
-  assert.ok(rows.every((r) => r.n >= 5 && r.median > 0));
+  assert.ok(rows.every((r) => Number.isNaN(r.n) && r.median > 0));
   assert.equal(rows.find((r) => r.area === "BR" && r.item === "Soya beans@year")!.median, 2025);
 });
 

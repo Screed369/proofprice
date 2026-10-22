@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseItStations, parseItPrices, selectItPrices, extractionDate } from "./source";
+import { parseItStations, parseItPrices, selectItPrices, extractionDate, fetchText } from "./source";
+import { isSourceOutage, SourceError } from "../../lib/http";
 
 // Shape copied from the live MIMIT files on 13 Oct 2026.
 const itStationsCsv = [
@@ -75,6 +76,24 @@ test("IT: live answer says posted (not paid), names the 08:00 extraction day, ta
     assert.match(a.summary, /Diesel \(self-service\) in province MI: posted pump prices in force at 08:00 on 2026-10-12 \(taxes included\) have a median of/);
     assert.match(a.summary, /typical range \(10th–90th percentile\)/);
     assert.doesNotMatch(a.summary, /\b(costs?|paid|pays?)\b/i);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test("IT: an unreachable MIMIT host is reported with its network cause and still counts as an outage (stale copy can answer)", async () => {
+  const realFetch = globalThis.fetch;
+  // What undici throws when the TCP connection times out (seen from GitHub Actions and Vercel iad1 since 17 Oct 2026).
+  globalThis.fetch = (async () => {
+    throw Object.assign(new TypeError("fetch failed"), { cause: { code: "UND_ERR_CONNECT_TIMEOUT" } });
+  }) as typeof fetch;
+  try {
+    await assert.rejects(fetchText("https://www.mimit.gov.it/images/exportCSV/prezzo_alle_8.csv"), (err: unknown) => {
+      assert.ok(err instanceof SourceError);
+      assert.equal((err as Error).message, "Could not reach MIMIT (UND_ERR_CONNECT_TIMEOUT)");
+      assert.ok(isSourceOutage(err));
+      return true;
+    });
   } finally {
     globalThis.fetch = realFetch;
   }

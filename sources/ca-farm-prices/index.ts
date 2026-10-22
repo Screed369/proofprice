@@ -1,6 +1,7 @@
 // Manifest: Canada farm-gate prices (Statistics Canada table 32-10-0077-01, monthly prices received by farmers, by province). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, caFarmPrices, exampleProducts } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, caFarmHarvest, caFarmPrices, exampleProducts, farmHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -23,4 +24,10 @@ export default defineSource({
     "Canada (farm-gate prices): Statistics Canada's monthly average price received by farmers for crops and livestock in each province (table 32-10-0077-01), from its farm product price survey and administrative data. " +
     "We pass on the published average and its month, with the change on the previous month and a year earlier that we calculate from two published averages; it is a monthly average, not a sale or a live price, and no range is calculated.",
   handle: (p, ctx) => caFarmPrices({ product: String(p.product ?? ""), region: str(p.region), baseUrl: ctx.baseUrl }),
+  // A daily copy of the newest month, so a Statistics Canada outage is answered from it (stale-if-error). Each row is one published
+  // average (n is NO_COUNT), dated by the reference month; the unit is part of the item name.
+  harvest: () => caFarmHarvest(),
+  historyKey: (p) => farmHistoryKey({ product: str(p.product), region: str(p.region) }, readLatestDay(INFO.id)?.rows ?? []),
+  referenceDates: true,
+  nominalCounts: true,
 });

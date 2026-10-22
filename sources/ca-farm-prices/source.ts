@@ -9,7 +9,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError, fetchJson } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import {
   CubeDimension, CubeMember, DataSeries, Poster, WDS_BASE, WDS_USER_AGENT, changePercent, coordinate, dimension, latestPeriods, loadCubeMeta, memberByName,
   monthOf, monthRange, monthWords, monthsBehind, newestUsable, roundTo, shiftMonth, usable, wdsPost,
@@ -421,4 +422,88 @@ export async function caFarmPrices(input: CaFarmQuery, post: Poster = wdsPost, g
   const unit = headVector ? units.get(headVector) ?? null : null;
   if (reading && !unit) throw new SourceError("Statistics Canada returned a price without a unit this source understands; it needs updating.");
   return caFarmAnswer(reading, m.primary, m.related, unit, input, { regionAsked: asked.member, regionNote: asked.note, tableTitle: meta.title });
+}
+
+// ---------- daily copy (stale-if-error) ----------
+
+/** The library item for one product: its table name and the unit Statistics Canada states for it, so a stored copy reads on its own ("Durum wheat (per metric tonne)"). */
+export const farmItem = (label: string, unit: string) => `${label} (${unit})`;
+
+export interface FarmSeriesRef {
+  region: string;
+  product: string;
+  unit: string | null;
+  data: DataSeries | undefined;
+}
+
+/** Pure: one library row per product and province for the newest month any series has; series that lag behind it, or have no known unit, are left out.
+ *  Each row is one published average: n is NO_COUNT (no count of sales is published) and the range fields repeat the figure. */
+export function farmHarvestRows(series: FarmSeriesRef[]): HarvestResult {
+  const latest = series.filter((s) => s.unit).map((s) => ({ ...s, point: newestUsable(s.data) })).filter((s) => s.point);
+  if (!latest.length) throw new SourceError("Statistics Canada table 32-10-0077-01 returned no usable farm price");
+  const month = latest.map((s) => monthOf(s.point!.period)).sort().pop()!;
+  const rows = latest
+    .filter((s) => monthOf(s.point!.period) === month)
+    .map((s) => ({
+      area: s.region,
+      item: farmItem(s.product, s.unit!),
+      n: NO_COUNT,
+      median: s.point!.value,
+      low: s.point!.value,
+      high: s.point!.value,
+      min: s.point!.value,
+      max: s.point!.value,
+    }));
+  return {
+    date: monthRange(month).to,
+    currency: "CAD",
+    unit: "per unit named in the product (per metric tonne, per hundredweight, per kilolitre, per dozen)",
+    rows,
+    note: `Statistics Canada table 32-10-0077-01: average prices received by farmers for ${monthWords(month)}, by product and province (the unit is in the product's name). Published averages, not counts of sales (no count is published).`,
+  };
+}
+
+export async function caFarmHarvest(post: Poster = wdsPost, get: Getter = wdsGet): Promise<HarvestResult> {
+  const meta = await loadCubeMeta(PRODUCT_ID, post);
+  const geo = dimension(meta, 1, "Geography");
+  const products = dimension(meta, 2, "Farm products");
+  const regions = geo.members.filter((g) => !g.terminated);
+  const wanted: { region: string; product: string; coord: string }[] = [];
+  for (const def of PRODUCTS) {
+    const member = memberByName(products, def.label);
+    if (!member || member.terminated) continue; // a product the table no longer has: the live answer reports it
+    for (const g of regions) wanted.push({ region: g.name, product: def.label, coord: coordinate([g.id, member.id]) });
+  }
+  const got: DataSeries[] = [];
+  for (let i = 0; i < wanted.length; i += 50) got.push(...(await latestPeriods(PRODUCT_ID, wanted.slice(i, i + 50).map((w) => w.coord), 2, post)));
+  const vectors = got.filter((s) => s.ok && s.vectorId && s.points.length).map((s) => ({ vectorId: s.vectorId as number }));
+  const uomByVector = new Map<number, number>();
+  for (let i = 0; i < vectors.length; i += 100) for (const [v, c] of parseSeriesUoms(await post("getSeriesInfoFromVector", vectors.slice(i, i + 100)))) uomByVector.set(v, c);
+  const names = parseUomNames(await get("getCodeSets"));
+  return farmHarvestRows(
+    wanted.map((w, i) => {
+      const vec = got[i]?.vectorId;
+      const code = vec ? uomByVector.get(vec) : undefined;
+      return { region: w.region, product: w.product, unit: unitFrom(code, names)?.unit ?? null, data: got[i] };
+    }),
+  );
+}
+
+/** Where a request lives in the library, without asking Statistics Canada: provinces and units come from the rows of our newest stored day. */
+export function farmHistoryKey(
+  p: { product?: string; region?: string },
+  rows: { area: string; item: string }[],
+): { area: string; item: string; label: string } | null {
+  const def = matchProduct(p.product ?? "").primary;
+  if (!def || !(p.region ?? "").trim() || !rows.length) return null;
+  const areas = [...new Set(rows.map((r) => r.area))];
+  const members: CubeMember[] = areas.map((name, i) => ({ id: i + 1, name, parent: null, terminated: false }));
+  try {
+    const region = resolveProvince({ position: 1, name: "Geography", members }, p.region!).member;
+    const item = rows.find((r) => r.area === region.name && r.item.startsWith(`${def.label} (per `))?.item;
+    if (!item) return null;
+    return { area: region.name, item, label: `${region.name} (${def.label})` };
+  } catch {
+    return null;
+  }
 }

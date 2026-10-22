@@ -372,6 +372,9 @@ export function buildGbAnswer(opts: {
     reference_period: `${month.label} (PCA monthly data, England)`,
     sample_size: enough ? items : null,
     method: methodText(),
+    // NHSBSA publishes totals (NIC, quantity, items), not this average, and calls the series management information, not an
+    // official statistic: say who calculated the figure.
+    ending: `Average calculated by ProofPrice (Net Ingredient Cost divided by quantity) from the totals ${INFO.publisher} publishes for ${month.label} (management information, not an official statistic).`,
     describe: (v) =>
       `The NHS in England reimbursed on average about ${gbp(v)} per ${unit} in ingredient cost (Net Ingredient Cost: the Drug Tariff basic price, before dispenser discounts and fees) for ${what}, ` +
       `dispensed in the community in ${month.label}` +
@@ -424,14 +427,6 @@ export function buildGbAnswer(opts: {
         : {}),
     },
   });
-  // NHSBSA publishes totals (NIC, quantity, items), not this average, and calls the series management information, not an
-  // official statistic: say who calculated the figure instead of the generic "Official average published by ..." ending.
-  const generic = ` Official average published by ${INFO.publisher} for `;
-  if (answer.status === "ok" && answer.summary.includes(generic)) {
-    answer.summary =
-      answer.summary.slice(0, answer.summary.indexOf(generic)) +
-      ` Average calculated by ProofPrice (Net Ingredient Cost divided by quantity) from the totals ${INFO.publisher} publishes for ${month.label} (management information, not an official statistic).`;
-  }
   if (!enough && used.length > 0) {
     // Data exists but rests on fewer than MIN_PUBLISH prescription items: say so instead of "no matching statistic".
     answer.status = "insufficient_data";

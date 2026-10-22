@@ -83,3 +83,32 @@ test("manifest: groceries tool, CA, milk then eggs are the smoke tests, Open Lic
   assert.match(exampleItems(5), /milk/);
   assert.match(caPricesMethod(), /No range is calculated/);
 });
+
+// ---------- daily collector and stale-if-error ----------
+
+import { caPricesHarvest, caPricesHistoryKey, pricesHarvestRows } from "./source";
+
+test("harvest: one row per mapped product and region for the newest month, the same figure as the live answer", async () => {
+  const calls: { path: string; body: unknown }[] = [];
+  const h = await caPricesHarvest(fakeWds({ meta: PRICES_META, data: PRICES_DATA, calls }));
+  assert.equal(h.currency, "CAD");
+  assert.match(h.date, /^\d{4}-\d{2}-\d{2}$/);
+  assert.ok(h.rows.length > 0);
+  assert.ok(h.rows.every((r) => Number.isNaN(r.n) && r.low === r.median && r.median > 0));
+  const milk = ITEMS.find((d) => d.label === "Milk, 2 litres")!;
+  const row = h.rows.find((r) => r.area === "ALL" && r.item === milk.label);
+  const live = await caStatcanPrices({ item: "milk" }, fakeWds({ meta: PRICES_META, data: PRICES_DATA }));
+  assert.equal(row?.median, live.price!.value);
+  assert.ok(calls.filter((c) => c.path === "getDataFromCubePidCoordAndLatestNPeriods").every((c) => (c.body as unknown[]).length <= 26));
+  assert.throws(() => pricesHarvestRows([]), /no usable average/);
+});
+
+test("history key: item words and regions resolve offline; unknown items give no key", () => {
+  const milk = ITEMS.find((d) => d.label === "Milk, 2 litres")!;
+  const areas = ["ALL", "Ontario", "Yukon"];
+  assert.equal(caPricesHistoryKey({ item: "milk" }, areas)!.area, "ALL");
+  assert.equal(caPricesHistoryKey({ item: "milk" }, areas)!.item, milk.label);
+  assert.equal(caPricesHistoryKey({ item: "milk", region: "Ontario" }, areas)!.area, "Ontario");
+  assert.equal(caPricesHistoryKey({ item: "unobtainium" }, areas), null);
+  assert.ok(manifest.harvest && manifest.historyKey && manifest.referenceDates && manifest.nominalCounts);
+});

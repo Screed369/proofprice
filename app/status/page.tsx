@@ -2,14 +2,16 @@ import { Breadcrumbs } from "../_components/Breadcrumbs";
 import { dateTimeUtc, longDate, plural } from "../../lib/site/format";
 import { pageMetadata } from "../../lib/site/meta";
 import { sourceCards } from "../../lib/site/sources";
-import { HEALTH_LABEL, LATE_AFTER_DAYS, libraryStatusRows } from "../../lib/site/status";
+import { HEALTH_LABEL, LATE_AFTER_DAYS, PAYMENT_MODE_TEXT, libraryStatusRows, paidUseSummary } from "../../lib/site/status";
+import { CLEARED_FOR_PAID } from "../../lib/payments/cleared";
+import { paymentMode } from "../../lib/pricing";
 import { usageReport } from "../../lib/usage";
 import type { UsageReport } from "../../lib/usage";
 
 // Usage counts are read with a short time limit; if they cannot be read (counting off, store slow) the section says so.
 async function readUsage(): Promise<UsageReport | null> {
   try {
-    return await Promise.race([usageReport(), new Promise<null>((r) => setTimeout(() => r(null), 8000))]);
+    return await Promise.race([usageReport(undefined, undefined, undefined, { compactBudgetMs: 3000 }), new Promise<null>((r) => setTimeout(() => r(null), 8000))]);
   } catch {
     return null;
   }
@@ -30,6 +32,8 @@ export default async function Status() {
   const usage = await readUsage();
   const cards = sourceCards();
   const rows = libraryStatusRows(cards, now);
+  const mode = paymentMode();
+  const paid = paidUseSummary(cards, CLEARED_FOR_PAID);
   const problems = rows.filter((r) => r.health !== "ok");
   return (
     <main>
@@ -114,18 +118,42 @@ export default async function Status() {
         <a href="/api/v1/library">/api/v1/library</a>.
       </p>
 
+      <h2>Payments</h2>
+      <p>
+        Payment mode: <strong>{PAYMENT_MODE_TEXT[mode]}</strong> Every category tool, REST path and public page is free in every mode. Only the
+        price check and daily history calls can ever cost anything, and only after the free calls of the day. See <a href="/pricing">/pricing</a>.
+      </p>
+      <p>
+        <strong>{paid.cleared.length}</strong> of {cards.length} sources are cleared for paid use; the other {paid.freeOnlyCount} are always
+        served free, with a note, and are never charged. A source is cleared only after its licence page says commercial use is allowed.
+      </p>
+      {paid.cleared.length > 0 && (
+        <ul className="small">
+          {paid.cleared.map((c) => (
+            <li key={c.id}>
+              <a href={`/sources#${c.id}`}>{c.id}</a> <span className="muted">({c.countryNames.join(", ")}; licence on <a href={`/sources#${c.id}`}>/sources</a>)</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
       <h2>Questions asked</h2>
       {usage && usage.enabled && usage.period ? (
         <>
           <p>
-            In the last {usage.period.days} days ProofPrice was asked <strong>{usage.outside_questions ?? 0}</strong> questions from outside.
+            In the last {usage.period.days} days ProofPrice was asked <strong>{usage.real_questions ?? 0}</strong> questions from outside, and apps
+            connected {usage.handshakes ?? 0} times (handshakes, not questions).
+            {usage.sessions && usage.sessions.days_with_data > 0
+              ? ` Distinct visitors per day, added up over ${usage.sessions.days_with_data} day${usage.sessions.days_with_data === 1 ? "" : "s"}: ${usage.sessions.real_apps} from apps and ${usage.sessions.directory_checks} from directory checks and health checkers.`
+              : ""}{" "}
             Our own checks (the smoke test and the monitors) are not counted as customers
             {usage.own_checks && usage.own_checks.questions > 0
               ? `; ${usage.own_checks.questions} older rows from our own named checks are kept apart.`
               : "."}
           </p>
           <p className="small muted">
-            Anonymous counts only: no IP addresses, user agents or other identifiers. Machine-readable: <a href="/api/v1/usage">/api/v1/usage</a>.
+            Anonymous counts only: no IP addresses, user agents or other identifiers are stored; visitors are told apart with a one-way hash that
+            changes every day and is deleted shortly after the day ends. Machine-readable: <a href="/api/v1/usage">/api/v1/usage</a>.
           </p>
         </>
       ) : (

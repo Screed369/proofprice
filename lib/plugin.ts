@@ -37,6 +37,7 @@ export interface HandleContext {
 export interface DailyRow {
   area: string; // e.g. province "28", department "69", "ALL" for the whole country
   item: string; // e.g. "diesel", "diesel/served"
+  /** Number of records behind the row, or NO_COUNT (lib/stats) when the publisher gives one figure and no record count (official statistics). Never a made-up number. */
   n: number;
   median: number;
   low: number; // 10th percentile
@@ -122,11 +123,32 @@ export interface SourcePlugin {
   /** Optional: load past data (from, to are YYYY-MM-DD, inclusive) as aggregates. Run by hand through the backfill workflow
    *  (.github/workflows/backfill.yml), never in the app. Stream big files; never keep raw rows. */
   backfill?(from: string, to: string): Promise<BackfillResult>;
-  /** Set true when harvest() writes a placeholder count (n: 5) because the publisher gives one figure and no record count.
-   *  Answers and history built from the library then report sample_size null instead of a count that is not real. */
+  /** Set true when harvest() writes rows with n: NO_COUNT because the publisher gives one figure and no record count.
+   *  Answers and history built from the library report sample_size null, also for older stored rows that still carry the former
+   *  placeholder count (5 or 10), which is never shown. */
   nominalCounts?: boolean;
   /** Optional: map a request to the library keys used by harvest, so /history can answer. */
-  historyKey?(params: Params): { area: string; item: string; label: string } | null;
+  historyKey?(params: Params, opts?: { monthly?: boolean }): { area: string; item: string; label: string } | null;
+  /** Optional: this source can stand in for other sources of the same category, in the given countries, when they cannot be
+   *  reached. runCategory (lib/registry.ts) tries it only after the primary source failed with an outage (timeout, network error,
+   *  5xx) AND no library copy of the primary from the last 7 days exists. The answer stays this source's own answer (its source,
+   *  licence, attribution, price_type, evidence); the notice and extra.fallback_for say it stands in. The registry gate checks that
+   *  every listed source exists in the same category and that every listed country is one of theirs. */
+  fallbackFor?: {
+    /** Ids of the sources this one can stand in for, e.g. ["it-fuel", "fr-fuel"]. */
+    sources: string[];
+    /** ISO codes it can answer for when standing in, e.g. ["IT", "FR"]. Each must be a country of one of `sources`. */
+    countries: string[];
+    /** Short name for the notice sentence, e.g. "the European Commission Weekly Oil Bulletin". Default: info.name. */
+    label?: string;
+  };
+  /** Optional: the source harvests (for its own answers or stale-if-error) but offers no /history; the text says why and is
+   *  the error a history request gets. Such a source is left out of the history countries everywhere (tools, OpenAPI). */
+  noHistory?: string;
+  /** Set true when harvest() dates its rows by the publication's reference period (a month or quarter the figure is for), not by
+   *  the day it was collected. A stale-if-error copy is then recent when the collector last succeeded within STALE_MAX_DAYS
+   *  (the newest figure is still the newest the publisher has), and the answer states the reference date it is for. */
+  referenceDates?: boolean;
 }
 
 /** One country entry of a tool description, filled from the registry (the source's placeName, countries and info), never typed by hand in a category. */

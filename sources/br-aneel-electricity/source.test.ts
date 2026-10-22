@@ -133,7 +133,7 @@ test("library rows: national median plus one posted tariff per distributor", () 
   assert.ok(all.low <= all.median && all.median <= all.high && all.min <= all.low && all.high <= all.max);
   const cemig = rows.find((r) => r.area === "CEMIGD")!;
   assert.equal(cemig.median, 0.7483);
-  assert.equal(cemig.n, 5);
+  assert.ok(Number.isNaN(cemig.n), "a posted tariff has no record count");
   assert.equal(rows.length, 7);
   assert.deepEqual(aneelDailyRows([], TODAY), []);
 });
@@ -150,4 +150,13 @@ test("historyKey: national by default, a distributor when named, nothing for gas
   assert.equal(aneelHistoryKey({ country: "BR", energy: "electricity", distributor: "CEMIG-D" })!.area, "CEMIGD");
   assert.equal(aneelHistoryKey({ country: "BR", energy: "electricity", distributor: "ENEL SP" })!.area, "ENELSP");
   assert.equal(aneelHistoryKey({ country: "BR", energy: "gas" }), null);
+});
+
+test("the national figure says ProofPrice calculated the median; a distributor's data date is not in the future", () => {
+  const a = brElectricityAnswer(parseTariffs(RECORDS), { energy: "electricity", today: TODAY });
+  assert.doesNotMatch(a.summary, /Official (median|average) published/);
+  assert.match(a.summary, /Median calculated by ProofPrice across the tariffs ANEEL/);
+  assert.match(a.evidence!.label, /calculated by ProofPrice/);
+  const d = brElectricityAnswer(parseTariffs(RECORDS), { energy: "electricity", distributor: "cemig", today: TODAY });
+  assert.ok(d.data_as_of! <= new Date().toISOString().slice(0, 10));
 });

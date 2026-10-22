@@ -118,7 +118,7 @@ export function hpiAnswer(reading: HpiReading | null, q: { country: string; base
     "Eurostat publishes every quarter the house price index (2015 = 100) of the prices households paid for dwellings, built by each country's statistics office from purchase transactions (dataset prc_hpi_q). " +
     "ProofPrice returns the published index for the latest quarter Eurostat holds for the country, unchanged, with the change from the previous quarter and from the same quarter a year earlier. " +
     "It is an index, not a price in money: no range is calculated and Eurostat does not say how many sales are behind it.";
-  const base = { source: INFO, query: { country: q.country }, measure: "average" as const, currency: "index", unit: "index points (2015 = 100)", method, baseUrl: q.baseUrl };
+  const base = { source: INFO, query: { country: q.country }, measure: "average" as const, currency: "INDEX", unit: "index points (2015 = 100)", method, baseUrl: q.baseUrl };
 
   if (!reading) {
     const none = buildStatisticAnswer({ ...base, value: null, period: { from: null, to: null }, reference_period: "", describe: () => "" });

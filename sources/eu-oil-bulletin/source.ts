@@ -1,5 +1,7 @@
 // European Commission Weekly Oil Bulletin: official national average pump prices for the EU Member States that have no
-// station-level fuel source of their own (ES, FR, IT and AT are answered by their national sources, so they are left out).
+// station-level fuel source of their own (ES, FR and IT are answered by their national sources, so they are not in COUNTRIES; AT was added on 21 Oct 2026 because its own source is switched off).
+// The collector also keeps the rows for ES, FR and IT (STAND_IN): when one of those national sources cannot be reached and we hold
+// no recent copy of it, this source stands in with the national figure (manifest fallbackFor; runCategory in lib/registry.ts).
 // Formats checked live on 2026-10-14 (bulletin dated Monday 12 October 2026, page showing "15 October 2026").
 //
 // What is published: every week the Commission publishes, for each Member State, the consumer price of Euro-super 95, automotive
@@ -20,7 +22,7 @@
 //   item "petrol95" | "diesel" | "lpg" | "heating_oil"  the price in EUR per litre (published EUR per 1000 litres divided by 1000)
 //   item "<fuel>@YYYY-MM-DD"                             the price in the bulletin of that earlier date (previous week, a year earlier)
 //   item "fx" and "fx@YYYY-MM-DD"                        EUR per unit of national currency (only for countries with their own currency)
-// A published figure does not come from counting records, so it is stored with median = low = high = min = max = the figure and n = 5.
+// A published figure does not come from counting records, so it is stored with median = low = high = min = max = the figure and n = NO_COUNT (stored empty; the answers carry sample_size null).
 // That n is a placeholder to pass the library's "at least 5" gate, NOT a count of records (the answers carry sample_size null).
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
@@ -28,6 +30,7 @@ import { InputError, SourceError } from "../../lib/http";
 import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { readLatestDay } from "../../lib/library/store";
 import { Cell, excelDate, readXlsx } from "../../categories/rent/xlsx";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL = "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en";
 /** "Price developments 2005 onwards". The document id is stable; the harvest also looks the link up on the page. */
@@ -60,17 +63,24 @@ export const INFO: SourceInfo = {
     "The Commission states that the prices are \"the prices most frequently charged, based on a weighted average\" and that \"comparisons between prices and price trends in different countries shall be carefully made\" because of differences in product quality, marketing practices and market structures. " +
     "Only Euro-super 95 (petrol95), automotive gas oil (diesel) and LPG (lpg) can be asked for, plus heating gas oil in the extra fields; premium petrol, E10, E85 and natural gas are not published. " +
     "Some Member States report no LPG or heating gas oil price. Prices are those in force on the Monday of the bulletin week. For Czechia, Denmark, Hungary, Poland, Romania and Sweden the euro price moves with the exchange rate the Commission used, so changes in euro can differ from changes in the national currency. " +
-    "ES, FR, IT and AT are answered by their own national sources. In the history tool, sample_size is a placeholder (5), not a count of stations.",
+    "ES, FR, IT and AT are answered by their own national sources; when the Spanish, French or Italian source cannot be reached and ProofPrice holds no recent copy of it, this bulletin's national figure for that country is given instead and the answer says so. In the history tool, sample_size is null (the bulletin gives no count of stations).",
 };
 
 // ---------- countries and fuels ----------
 
 /** ISO code -> name, for every country this source answers for (EU Member States except ES, FR, IT and AT). */
 export const COUNTRIES: Record<string, string> = {
-  IE: "Ireland", DE: "Germany", NL: "the Netherlands", BE: "Belgium", PT: "Portugal", PL: "Poland", DK: "Denmark", SE: "Sweden",
+  IE: "Ireland", AT: "Austria", DE: "Germany", NL: "the Netherlands", BE: "Belgium", PT: "Portugal", PL: "Poland", DK: "Denmark", SE: "Sweden",
   FI: "Finland", LU: "Luxembourg", GR: "Greece", CZ: "Czechia", SK: "Slovakia", SI: "Slovenia", HR: "Croatia", HU: "Hungary",
   RO: "Romania", BG: "Bulgaria", EE: "Estonia", LV: "Latvia", LT: "Lithuania", CY: "Cyprus", MT: "Malta",
 };
+
+/** ES, FR and IT: answered by their national station-level sources. The bulletin's figure for them is kept in the library and
+ *  given only when that national source cannot be reached (manifest fallbackFor). */
+export const STAND_IN: Record<string, string> = { ES: "Spain", FR: "France", IT: "Italy" };
+
+/** Name of any country this source can give a figure for (its own and the stand-in ones). */
+export const nameOf = (code: string): string | undefined => COUNTRIES[code] ?? STAND_IN[code];
 
 /** Countries that still have their own currency: the workbook carries an exchange rate for them. */
 export const NATIONAL_CURRENCY: Record<string, string> = { CZ: "CZK", DK: "DKK", HU: "HUF", PL: "PLN", RO: "RON", SE: "SEK" };
@@ -125,7 +135,7 @@ export function parseHistory(rows: Cell[][], keepWeeks = 60, minCountries = 15):
     const m = /^([A-Z]{2,3})_(?:(exchange_rate)|price_with_tax_(euro95|diesel|heating_oil|LPG))$/.exec(h.trim());
     if (!m) return;
     const area = m[1];
-    if (area !== EU_AREA && !COUNTRIES[area]) return;
+    if (area !== EU_AREA && !nameOf(area)) return;
     if (m[2]) cols.push({ area, kind: "fx", col });
     else cols.push({ area, kind: byColumn.get(m[3])!, col });
   });
@@ -156,7 +166,7 @@ export function parseHistory(rows: Cell[][], keepWeeks = 60, minCountries = 15):
   }
   weeks.sort((a, b) => b.serial - a.serial);
   const newest = weeks[0];
-  const withPetrol = newest ? Object.keys(newest.prices).filter((a) => a !== EU_AREA && newest.prices[a].petrol95 !== undefined).length : 0;
+  const withPetrol = newest ? Object.keys(newest.prices).filter((a) => COUNTRIES[a] && newest.prices[a].petrol95 !== undefined).length : 0;
   // The real file has about 23 of our countries with a Euro-super 95 price in a week; far fewer means the layout changed.
   if (!newest || withPetrol < minCountries) throw new SourceError(`The newest Oil Bulletin week has Euro-super 95 prices for only ${withPetrol} countries; the file may have changed.`);
   return weeks.slice(0, keepWeeks);
@@ -187,7 +197,7 @@ export function wobRows(weeks: Week[]): DailyRow[] {
   if (!w0) return [];
   const earlier = [previousWeek(weeks), yearEarlierWeek(weeks)].filter((w): w is Week => !!w);
   const rows: DailyRow[] = [];
-  const put = (area: string, item: string, v: number) => rows.push({ area, item, n: 5, median: v, low: v, high: v, min: v, max: v });
+  const put = (area: string, item: string, v: number) => rows.push({ area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
   for (const area of Object.keys(w0.prices).sort()) {
     for (const item of ITEMS) {
       const v = w0.prices[area][item];
@@ -244,7 +254,7 @@ export function wobResult(weeks: Week[]): HarvestResult {
     note:
       `European Commission Weekly Oil Bulletin, prices in force on ${w0.date}: published national averages (all duties and taxes included), euro per litre. ` +
       `Items petrol95, diesel, lpg, heating_oil; "<item>@<date>" = the price in the bulletin of that earlier date (${prev ? `previous week ${prev.date}` : "no previous week"}, ${year ? `year earlier ${year.date}` : "no year-earlier week"}); ` +
-      "fx = euro per unit of national currency. Published values, not counts of records (n=5 is a placeholder).",
+      "fx = euro per unit of national currency. Published values, not counts of records (no record count is published).",
   };
 }
 
@@ -270,7 +280,7 @@ export async function wobHarvest(minCountries = 15): Promise<HarvestResult> {
 export const MIN_WEEKS_PER_MONTH = 3;
 
 /** Pure: monthly figures from weekly bulletins. median = the average of the weekly national figures in that month,
- *  low/min = the cheapest week, high/max = the dearest week. n = 5 is the same placeholder the daily rows use
+ *  low/min = the cheapest week, high/max = the dearest week. n is NO_COUNT, as in the daily rows
  *  (a published figure, not a count of records). Only the askable fuels; months with fewer than MIN_WEEKS_PER_MONTH weeks are left out. */
 export function wobMonthly(weeks: Week[], fromMonth: string, toMonth: string): BackfillResult["periods"] {
   const byMonth = new Map<string, Week[]>();
@@ -294,7 +304,7 @@ export function wobMonthly(weeks: Week[], fromMonth: string, toMonth: string): B
         const mean = r5(vals.reduce((a, b) => a + b, 0) / vals.length);
         const lo = Math.min(...vals);
         const hi = Math.max(...vals);
-        rows.push({ area, item, n: 5, median: mean, low: lo, high: hi, min: lo, max: hi });
+        rows.push({ area, item, n: NO_COUNT, median: mean, low: lo, high: hi, min: lo, max: hi });
       }
     }
     if (rows.length) periods.push({ period: m, rows });
@@ -318,7 +328,7 @@ export async function wobBackfill(from: string, to: string): Promise<BackfillRes
     periods,
     note:
       "European Commission Weekly Oil Bulletin: monthly figures from the weekly national averages (all duties and taxes included). median = average of the weekly figures in the month (at least 3 weeks); low/high = the cheapest and dearest week. " +
-      "Published figures, not counts of records (n=5 is a placeholder). Countries outside the euro are converted into euro by the Commission each week.",
+      "Published figures, not counts of records (no record count is published). Countries outside the euro are converted into euro by the Commission each week.",
   };
 }
 
@@ -376,8 +386,9 @@ function changeSentence(pct: number, label: string): string {
 /** Pure: the answer for one country and fuel from the library's newest week. */
 export function wobAnswer(lib: LibLike, input: WobInput, now = new Date()): PriceAnswer {
   const country = input.country.trim().toUpperCase();
-  const name = COUNTRIES[country];
+  const name = nameOf(country);
   if (!name) throw new InputError(`The Weekly Oil Bulletin source answers for ${Object.keys(COUNTRIES).join(", ")}. Not yet: ${input.country}.`);
+  const standIn = !COUNTRIES[country];
   const fuel = input.fuel as BulletinFuel;
   if (!ASKABLE.includes(fuel)) {
     throw new InputError("fuel must be petrol95 (Euro-super 95), diesel or lpg for the EU Weekly Oil Bulletin; premium petrol, E10, E85 and natural gas are not published.");
@@ -466,7 +477,11 @@ export function wobAnswer(lib: LibLike, input: WobInput, now = new Date()): Pric
     reference_period: lib.date,
     note: notes.length ? notes.join(" ") : undefined,
     describe: (v) =>
-      (asked.length ? `${name} is covered by national averages only (you asked about ${asked.join(", ")}). ` : "") +
+      (asked.length
+        ? standIn
+          ? `This is the national average for ${name}, not a figure for ${asked.join(", ")}. `
+          : `${name} is covered by national averages only (you asked about ${asked.join(", ")}). `
+        : "") +
       `In ${name} the average pump price of ${info.label} was ${eur(v)} per litre (all duties and taxes included${nationalPrice !== null ? `; about ${nationalPrice} ${currency} per litre` : ""}) ` +
       `in the Weekly Oil Bulletin for prices in force on ${longDate(lib.date)}` +
       (phrases.length ? `, ${phrases.join(" and ")}` : "") +

@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { deflateRawSync } from "node:zlib";
 import { InputError, SourceError } from "../../lib/http";
 import { TUITION_CSV } from "./fixtures";
-import { INFO, caTuition, clearCache, csvFields, parseFeeCsv, resolveGeo, tuitionAnswer, unzipCsv } from "./source";
+import { INFO, caTuition, caTuitionHarvest, clearCache, csvFields, parseFeeCsv, resolveGeo, tuitionAnswer, tuitionHarvestRows, tuitionHistoryKey, unzipCsv } from "./source";
 import manifest from "./index";
 
 const rows = parseFeeCsv(TUITION_CSV);
@@ -112,4 +112,39 @@ test("the manifest: Canada only, in the tuition category, with a province parame
   assert.ok(manifest.extraParams && "province" in manifest.extraParams);
   assert.ok(manifest.examples.length >= 1);
   assert.match(INFO.attribution, /Statistics Canada/);
+});
+
+// ---------- daily copy (stale-if-error) ----------
+
+test("harvest: one row per province and level for the newest year, the same figure as the live answer, no made-up count", async () => {
+  const h = tuitionHarvestRows(rows);
+  assert.equal(h.date, "2026-09-01");
+  assert.equal(h.currency, "CAD");
+  assert.equal(h.unit, "per academic year");
+  const canada = h.rows.find((r) => r.area === "ALL" && r.item === "Canadian undergraduate")!;
+  assert.equal(canada.median, tuitionAnswer(rows, {}).price?.value);
+  assert.ok(Number.isNaN(canada.n), "official statistic: n is NO_COUNT");
+  assert.equal(canada.low, canada.high);
+  // Yukon has no usable 2026/2027 figure for most levels: only published figures become rows
+  assert.ok(h.rows.every((r) => r.median > 0));
+  assert.ok(h.rows.some((r) => r.area === "Ontario"));
+  assert.throws(() => tuitionHarvestRows([]), /no usable tuition/);
+});
+
+test("harvest reads the zip the same way the live answer does", async () => {
+  const h = await caTuitionHarvest(async () => zipOf("37100045.csv", TUITION_CSV));
+  assert.ok(h.rows.length > 5);
+});
+
+test("history key: Canada is ALL, a province keeps its name, student group and level pick the item, a bad province gives null", () => {
+  const areas = ["ALL", "Ontario", "Quebec"];
+  assert.deepEqual(tuitionHistoryKey({}, areas), { area: "ALL", item: "Canadian undergraduate", label: "Canada, canadian undergraduate students" });
+  assert.equal(tuitionHistoryKey({ province: "ON", student_group: "international", cycle: "second" }, areas)!.item, "International graduate");
+  assert.equal(tuitionHistoryKey({ province: "ON" }, areas)!.area, "Ontario");
+  assert.equal(tuitionHistoryKey({ province: "Atlantis" }, areas), null);
+  assert.equal(tuitionHistoryKey({ cycle: "third" }, areas), null);
+});
+
+test("the manifest declares the daily copy for stale-if-error", () => {
+  assert.ok(manifest.harvest && manifest.historyKey && manifest.referenceDates && manifest.nominalCounts);
 });

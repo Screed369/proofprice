@@ -17,7 +17,7 @@ export default function Privacy() {
     <main>
       <h1>Privacy notice</h1>
       <p>
-        <em>Version 1.0, 14 October 2026.</em>
+        <em>Version 1.1, 21 October 2026.</em>
       </p>
 
       <h2>Who we are</h2>
@@ -42,14 +42,22 @@ export default function Privacy() {
         <>
           <h2>Anonymous usage counts</h2>
           <p>
-            To see which questions ProofPrice cannot answer yet, we count questions anonymously. For each question we add one to a daily counter
-            kept for: the day, the tool or endpoint used, the country, the place and item asked about (in lower case, at most 60 characters, with
-            a postcode cut to its first part), whether the question was answered (answered, too few records, no matches, not supported or an error)
-            and, if your AI app sends it when it connects, the name of the app. We do not store IP addresses, the name of your browser or
-            software, the price you ask us to check, any free text you send, or anything else that identifies you, and a counter cannot be traced
-            back to one person or one question. The counters are kept in our Vercel Blob storage, and their totals over the last 30 days are public at{" "}
-            <a href="/api/v1/usage">/api/v1/usage</a>. Our legal basis is our legitimate interest in finding out which prices people need, so we can
-            cover them. Because the counters hold no personal data, the rights described below do not apply to them.
+            To see which questions ProofPrice cannot answer yet, and how many apps and visitors use it, we keep aggregate counts. For each
+            question we add one to a daily counter for: the day, the tool or endpoint used, the country asked about, the place and item asked
+            about (in lower case, at most 60 characters, with a postcode cut to its first part), whether it was answered and, if your AI app
+            sends it when it connects, the name of the app.
+          </p>
+          <p>
+            To count how many different visitors we had each day, we turn your IP address and the name of your software (user agent) into a
+            one-way hash, mixed with a random value that is created each day. The hash is used only to count distinct visitors that day.
+            Shortly after the day ends (UTC) we keep only the totals and delete the hashes and that day&apos;s random value, so the hash cannot be traced back
+            to you or linked to another day.
+          </p>
+          <p>
+            We do not store IP addresses, user agents, the price you ask us to check, free text or anything else that identifies you. The counts are
+            kept in our private Vercel Blob storage, and their totals over the last 30 days are public at <a href="/api/v1/usage">/api/v1/usage</a>.
+            Our legal basis is our legitimate interest in measuring how the service is used, so we can improve it and cover the prices people
+            need.
           </p>
         </>
       )}
@@ -85,7 +93,7 @@ export default function Privacy() {
       <h2>How long</h2>
       <p>
         {counting
-          ? "We keep no record of individual questions ourselves, only the anonymous daily counters described above. "
+          ? "We keep no record of individual questions ourselves, only the anonymous daily counts described above. The daily visitor hashes are deleted shortly after the day ends. "
           : "We keep nothing about your questions ourselves. "}
         Our host&apos;s logs are kept for the short period our host sets.
       </p>

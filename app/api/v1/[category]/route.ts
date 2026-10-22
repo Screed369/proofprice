@@ -2,7 +2,7 @@
 // Examples: /api/v1/fuel?country=ES&area=28&fuel=diesel · /api/v1/home-sales?country=GB&town=Bristol
 import { categoryByRestPath, assertKnownParams, paramsFromQuery, runCategory } from "../../../../lib/registry";
 import { json, answerResponse, errorResponse, baseUrl, corsPreflight } from "../../../../lib/route-helpers";
-import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, withoutOwnParam } from "../../../../lib/usage";
+import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, visitorOf, withoutOwnParam } from "../../../../lib/usage";
 
 export const maxDuration = 60;
 
@@ -16,10 +16,10 @@ export async function GET(req: Request, ctx: { params: Promise<{ category: strin
     assertKnownParams(cat, params);
     try {
       const answer = await runCategory(cat, params, { baseUrl: baseUrl(req) });
-      recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfAnswer(answer), own });
+      recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfAnswer(answer), own, visitor: own ? null : visitorOf(req) });
       return answerResponse(answer, cat.cacheSeconds ?? 600);
     } catch (e) {
-      recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfError(e), own });
+      recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfError(e), own, visitor: own ? null : visitorOf(req) });
       throw e;
     }
   } catch (e) {

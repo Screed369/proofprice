@@ -100,7 +100,12 @@ export function parseItPrices(text: string): ItPrice[] {
 
 let cache: { at: number; stations: Map<string, ItStation>; prices: ItPrice[]; extracted: string | null } | null = null;
 
-async function fetchText(url: string): Promise<string> {
+/** The low-level reason a fetch failed: undici puts the code on err.cause (UND_ERR_CONNECT_TIMEOUT, ECONNRESET, ...). */
+export function netCause(e: any): string {
+  return String(e?.cause?.code ?? e?.code ?? e?.cause?.message ?? e?.message ?? "network error");
+}
+
+export async function fetchText(url: string): Promise<string> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 25000);
   try {
@@ -109,7 +114,9 @@ async function fetchText(url: string): Promise<string> {
     return await res.text();
   } catch (e: any) {
     if (e?.name === "AbortError") throw new SourceError("MIMIT timed out");
-    throw e;
+    if (e instanceof SourceError) throw e;
+    // Keep the network cause (e.g. UND_ERR_CONNECT_TIMEOUT) so the library status says why, not just "fetch failed".
+    throw new SourceError(`Could not reach MIMIT (${netCause(e)})`, url);
   } finally {
     clearTimeout(timer);
   }

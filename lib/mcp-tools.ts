@@ -20,7 +20,8 @@ import { checkResultSchema, coverageToolSchema, historyAnswerSchema, priceAnswer
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { historySources, checkSources } from "./premium-sources";
 import { gate, paymentHeaderFromMeta, premiumNote, readGateConfig, isAnswered, type PremiumKey } from "./payments";
-import { isOwnClient, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageEnabled, usageKey } from "./usage";
+import { isOwnClient, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageClient, usageEnabled, usageKey, visitorOf } from "./usage";
+import type { UsageContext } from "./usage";
 
 /** The same four hints on every tool: they read official sources and never change anything. */
 export const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } as const;
@@ -77,8 +78,15 @@ export interface ToolDeps {
 
 export const LIVE_DEPS: ToolDeps = { categories: CATEGORIES, runCategory, runHistory, coverageView, historyDays };
 
+/** Indented JSON for the text part of an answer, with arrays of plain values (country codes, numbers) kept on one line: the same
+ *  data, far fewer characters and tokens for an AI to read than one value per line. */
+export function readableJson(obj: unknown): string {
+  return JSON.stringify(obj, null, 2).replace(/\[\s*\n((?:\s*(?:"(?:[^"\\\n]|\\.)*"|-?\d[\d.eE+-]*|true|false|null),?\n)+)\s*\]/g, (_m, body: string) =>
+    "[" + body.split("\n").map((l) => l.trim()).filter(Boolean).join(" ").replace(/,$/, "") + "]");
+}
+
 export function asResult(obj: any): McpToolResult {
-  const text = typeof obj?.summary === "string" && obj.summary ? `${obj.summary}\n\n${JSON.stringify(obj, null, 2)}` : JSON.stringify(obj, null, 2);
+  const text = typeof obj?.summary === "string" && obj.summary ? `${obj.summary}\n\n${readableJson(obj)}` : readableJson(obj);
   return { content: [{ type: "text", text }], structuredContent: obj };
 }
 
@@ -150,7 +158,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
           outputSchema: historyAnswerSchema,
           annotations: { title: h.title, ...READ_ONLY },
         },
-        call: (args) => guarded(h.tool, limits, () => deps.runHistory(cat, args, { baseUrl: SITE_URL })),
+        call: (args) => guarded(h.tool, limits, () => deps.runHistory(cat, args, { baseUrl: SITE_URL }), { tool: h.tool, args }),
       });
     }
   }
@@ -192,7 +200,10 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
       annotations: { title: coverageTitle, ...READ_ONLY },
     },
     call: (args) =>
-      guarded(COVERAGE_TOOL, limits, () => deps.coverageView({ category: stringArg(args.category), country: stringArg(args.country) }, SITE_URL)),
+      guarded(COVERAGE_TOOL, limits, () => deps.coverageView({ category: stringArg(args.category), country: stringArg(args.country) }, SITE_URL), {
+        tool: COVERAGE_TOOL,
+        args,
+      }),
   });
   return specs;
 }
@@ -273,9 +284,12 @@ export type McpHandler = (req: Request) => Promise<Response>;
 /** An initialize message is a few hundred bytes. A request body bigger than this is not looked at for counting. */
 const INITIALIZE_BODY_MAX = 64 * 1024;
 
-/** Wrap the MCP handler with the one usage count that has to look at the request: when a client connects (initialize) and says what
- *  app it is (clientInfo.name), that name is tallied (lib/usage.ts, off unless switched on). Nothing else in the request is read
- *  or kept.
+/** Wrap the MCP handler with the usage counting that has to look at the request (lib/usage.ts, off unless switched on):
+ *  - when a client connects (initialize) and says what app it is (clientInfo.name), that handshake is tallied with the name;
+ *  - the request's anonymous visitor digest (visitorOf: a one-way hash of IP address and user agent, held in memory only and salted
+ *    with the day's random salt before anything is written) is put in the request context, so a tool call made in this request
+ *    counts towards that day's distinct sessions; the app name, if the request carries one, marks the session's client group.
+ *  Nothing else in the request is read or kept.
  *
  *  Counting never delays a request. The body is copied (a Request body can be read only once) and the copy is read on the side,
  *  never awaited: `next` is called at once, and a slow, huge or unfinished body costs the handler nothing. A failure to read or
@@ -287,13 +301,14 @@ export function withInitializeCount(next: McpHandler, env: Record<string, string
     // the side and read when a tool call finishes, so it never holds a request up.
     return runWithOwnFlag((flag) => {
       if (isOwnRequest(req)) flag.own = true;
+      else flag.visitor = visitorOf(req);
       countInitialize(req, env, flag);
       return next(req);
     });
   };
 }
 
-function countInitialize(req: Request, env: Record<string, string | undefined>, flag: { own: boolean }): void {
+function countInitialize(req: Request, env: Record<string, string | undefined>, flag: UsageContext): void {
   try {
     if (Number(req.headers.get("content-length") ?? 0) > INITIALIZE_BODY_MAX) return;
     void req
@@ -304,9 +319,11 @@ function countInitialize(req: Request, env: Record<string, string | undefined>, 
           const meta = m?.params?._meta?.["io.modelcontextprotocol/clientInfo"];
           const ppcheck = m?.params?.arguments?.ppcheck;
           if (isOwnClient(m?.params?.clientInfo?.name) || isOwnClient(meta?.name) || ppcheck === 1 || ppcheck === "1" || ppcheck === true) flag.own = true;
+          const name = usageClient(m?.params?.clientInfo?.name) || usageClient(meta?.name);
+          if (name && !flag.client) flag.client = name;
         }
         for (const m of Array.isArray(body) ? body : [body]) {
-          if (m?.method === "initialize") recordUsage({ tool: "mcp_initialize", status: "ok", client: m?.params?.clientInfo?.name }, new Date(), env);
+          if (m?.method === "initialize") recordUsage({ tool: "mcp_initialize", status: "ok", client: m?.params?.clientInfo?.name, visitor: flag.visitor ?? null }, new Date(), env);
         }
       })
       .catch(() => {

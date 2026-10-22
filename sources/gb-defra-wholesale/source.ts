@@ -161,8 +161,9 @@ export function gbWholesaleFromRows(rows: Row[], input: { product?: string; base
     value,
     measure: "average",
     unit,
-    low: group.length > 1 ? Math.min(...prices) : null,
-    high: group.length > 1 ? Math.max(...prices) : null,
+    // The cheapest and dearest variety are a minimum and a maximum, not the 10th and 90th percentile.
+    min: group.length > 1 ? Math.min(...prices) : null,
+    max: group.length > 1 ? Math.max(...prices) : null,
     period: { from: newest, to: newest },
     reference_period: newest,
     describe: (x) =>
