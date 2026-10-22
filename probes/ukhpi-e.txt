@@ -1,0 +1,1647 @@
+URL: https://landregistry.data.gov.uk/landregistry/query?output=json&query=PREFIX%20ukhpi%3A%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fukhpi%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fr%20%3Fl%20WHERE%20%7B%20%3Fobs%20ukhpi%3ArefRegion%20%3Fr%20%3B%20ukhpi%3ArefMonth%20%3Fm%20.%20%3Fr%20rdfs%3Alabel%20%3Fl%20.%20FILTER%28STR%28%3Fm%29%3D%222026-07%22%20%26%26%20LANG%28%3Fl%29%3D%22en%22%29%20%7D
+Fetched: 2026-10-22T11:16:24Z from GitHub Actions
+Status, type, bytes: 200 application/sparql-results+json; charset=utf-8 80740
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: must-revalidate,no-cache,no-store
+Content-Type: application/sparql-results+json; charset=utf-8
+Date: Thu, 22 Oct 2026 11:16:24 GMT
+Fuseki-Request-Id: 2933382
+Pragma: no-cache
+Server: nginx/1.31.5
+Vary: Accept,Accept-Encoding,Accept-Charset,Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+transfer-encoding: chunked
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+{ "head": {
+    "vars": [ "r" , "l" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-east" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South East" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/surrey" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Surrey" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bracknell-forest" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bracknell Forest" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/southampton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Southampton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/slough" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Slough" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/milton-keynes" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Milton Keynes" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/buckinghamshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Buckinghamshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wokingham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wokingham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/portsmouth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Portsmouth" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/medway" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Medway" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hampshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hampshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Sussex" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/reading" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Reading" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Oxfordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/kent" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Kent" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/isle-of-wight" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Isle of Wight" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Sussex" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/brighton-and-hove" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Brighton and Hove" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/windsor-and-maidenhead" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Windsor and Maidenhead" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-berkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Berkshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/england-and-wales" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "England and Wales" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/england" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "England" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/woking" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Woking" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/surrey-heath" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Surrey Heath" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/spelthorne" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Spelthorne" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tandridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tandridge" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mole-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mole Valley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/reigate-and-banstead" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Reigate and Banstead" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/elmbridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Elmbridge" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/waverley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Waverley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/runnymede" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Runnymede" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/guildford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Guildford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/epsom-and-ewell" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Epsom and Ewell" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/havant" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Havant" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/winchester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Winchester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/fareham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Fareham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gosport" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gosport" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rushmoor" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rushmoor" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/basingstoke-and-deane" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Basingstoke and Deane" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/test-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Test Valley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/eastleigh" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Eastleigh" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/new-forest" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "New Forest" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hart" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hart" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-hampshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Hampshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/horsham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Horsham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/adur" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Adur" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/crawley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Crawley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/chichester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Chichester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/arun" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Arun" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mid-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mid Sussex" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/worthing" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Worthing" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Oxfordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/vale-of-white-horse" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Vale of White Horse" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Oxfordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oxford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Oxford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cherwell" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cherwell" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/maidstone" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Maidstone" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tunbridge-wells" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tunbridge Wells" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/swale" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Swale" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/canterbury" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Canterbury" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dover" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dover" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/shepway" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Folkestone and Hythe" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ashford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ashford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dartford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dartford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tonbridge-and-malling" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tonbridge and Malling" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sevenoaks" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sevenoaks" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gravesham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gravesham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/thanet" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Thanet" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rother" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rother" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lewes" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lewes" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/eastbourne" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Eastbourne" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hastings" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hastings" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wealden" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wealden" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-midlands-region" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Midlands Region" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-west" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North West" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-west" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South West" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-east" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North East" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wales" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wales" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-midlands" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Midlands" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/london" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "London" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/great-britain" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Great Britain" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/yorkshire-and-the-humber" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Yorkshire and The Humber" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-of-england" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East of England" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/warwickshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Warwickshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-midlands" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Midlands" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/shropshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Shropshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stoke-on-trent" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stoke-on-Trent" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Staffordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/herefordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Herefordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/worcestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Worcestershire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/telford-and-wrekin" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Telford and Wrekin" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-riding-of-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Riding of Yorkshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Yorkshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Yorkshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Lincolnshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-east-lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North East Lincolnshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/york" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "York" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Yorkshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-kingston-upon-hull" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Kingston upon Hull" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/greater-manchester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Greater Manchester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/merseyside" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Merseyside" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cheshire-east" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cheshire East" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/halton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Halton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cheshire-west-and-chester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cheshire West and Chester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lancashire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lancashire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/blackpool" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Blackpool" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/warrington" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Warrington" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/blackburn-with-darwen" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Blackburn with Darwen" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cumberland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cumberland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/westmorland-and-furness" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Westmorland and Furness" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cornwall" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cornwall" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gloucestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gloucestershire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/torbay" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Torbay" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wiltshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wiltshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Somerset" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-plymouth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Plymouth" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bath-and-north-east-somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bath and North East Somerset" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-bristol" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Bristol" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dorset" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dorset" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/devon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Devon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Somerset" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/swindon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Swindon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-gloucestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Gloucestershire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bournemouth-christchurch-and-poole" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bournemouth Christchurch and Poole" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hertfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hertfordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/thurrock" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Thurrock" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/luton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Luton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/essex" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Essex" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/suffolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Suffolk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cambridgeshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cambridgeshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/central-bedfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Central Bedfordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bedford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bedford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/norfolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Norfolk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-peterborough" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Peterborough" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/southend-on-sea" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Southend-on-Sea" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tyne-and-wear" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tyne and Wear" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/darlington" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Darlington" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/northumberland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Northumberland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stockton-on-tees" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stockton-on-Tees" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/redcar-and-cleveland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Redcar and Cleveland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hartlepool" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hartlepool" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/middlesbrough" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Middlesbrough" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/county-durham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "County Durham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/monmouthshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Monmouthshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/conwy" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Conwy" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newport" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Newport" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bridgend" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bridgend" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/blaenau-gwent" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Blaenau Gwent" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/flintshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Flintshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gwynedd" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gwynedd" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wrexham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wrexham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/merthyr-tydfil" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Merthyr Tydfil" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cardiff" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cardiff" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/pembrokeshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Pembrokeshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/caerphilly" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Caerphilly" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/carmarthenshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Carmarthenshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/denbighshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Denbighshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/isle-of-anglesey" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Isle of Anglesey" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/torfaen" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Torfaen" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ceredigion" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ceredigion" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/swansea" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Swansea" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/neath-port-talbot" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Neath Port Talbot" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/powys" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Powys" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/vale-of-glamorgan" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Vale of Glamorgan" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rhondda-cynon-taf" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rhondda Cynon Taf" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-derby" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Derby" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-nottingham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Nottingham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/derbyshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Derbyshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/nottinghamshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Nottinghamshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lincolnshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leicester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Leicester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leicestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Leicestershire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rutland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rutland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-northamptonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Northamptonshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-northamptonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Northamptonshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/inner-london" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Inner London" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/outer-london" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Outer London" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/scotland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Scotland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/united-kingdom" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "United Kingdom" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-warwickshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Warwickshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/warwick" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Warwick" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stratford-on-avon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stratford-on-Avon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rugby" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rugby" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/nuneaton-and-bedworth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Nuneaton and Bedworth" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sandwell" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sandwell" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dudley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dudley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/birmingham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Birmingham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/solihull" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Solihull" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/walsall" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Walsall" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/coventry" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Coventry" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wolverhampton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wolverhampton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cannock-chase" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cannock Chase" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stafford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stafford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Staffordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lichfield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lichfield" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newcastle-under-lyme" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Newcastle-Under-Lyme" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tamworth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tamworth" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Staffordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/staffordshire-moorlands" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Staffordshire Moorlands" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wychavon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wychavon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bromsgrove" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bromsgrove" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/redditch" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Redditch" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/malvern-hills" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Malvern Hills" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wyre-forest" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wyre Forest" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/worcester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Worcester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leeds" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Leeds" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/calderdale" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Calderdale" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/kirklees" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Kirklees" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bradford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bradford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wakefield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wakefield" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rotherham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rotherham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sheffield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sheffield" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/doncaster" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Doncaster" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/barnsley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Barnsley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rochdale" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rochdale" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bury" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bury" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wigan" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wigan" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tameside" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tameside" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/trafford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Trafford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/salford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Salford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/manchester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Manchester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oldham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Oldham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stockport" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stockport" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bolton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bolton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/st-helens" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "St Helens" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/knowsley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Knowsley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/liverpool" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Liverpool" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sefton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sefton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wirral" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wirral" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-ribble" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Ribble" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/burnley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Burnley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hyndburn" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hyndburn" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/preston" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Preston" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/chorley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Chorley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rossendale" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rossendale" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lancaster" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lancaster" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ribble-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ribble Valley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-lancashire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Lancashire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/pendle" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Pendle" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/fylde" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Fylde" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wyre" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wyre" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stroud" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stroud" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gloucester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gloucester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tewkesbury" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tewkesbury" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/forest-of-dean" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Forest of Dean" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cotswold" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cotswold" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cheltenham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cheltenham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/torridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Torridge" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-devon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Devon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-devon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Devon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/teignbridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Teignbridge" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mid-devon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mid Devon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-hams" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Hams" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/exeter" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Exeter" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-devon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Devon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-hertfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Hertfordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/welwyn-hatfield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Welwyn Hatfield" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/three-rivers" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Three Rivers" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dacorum" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dacorum" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hertsmere" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hertsmere" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/st-albans" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "St Albans" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/watford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Watford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stevenage" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stevenage" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-hertfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Hertfordshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/broxbourne" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Broxbourne" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/uttlesford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Uttlesford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/basildon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Basildon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/epping-forest" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Epping Forest" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rochford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rochford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/harlow" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Harlow" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/colchester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Colchester" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/braintree" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Braintree" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tendring" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tendring" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/castle-point" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Castle Point" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/brentwood" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Brentwood" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/chelmsford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Chelmsford" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/maldon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Maldon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ipswich" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ipswich" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/babergh" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Babergh" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mid-suffolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mid Suffolk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-suffolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Suffolk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-suffolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Suffolk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cambridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cambridge" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/huntingdonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Huntingdonshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-cambridgeshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Cambridgeshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-cambridgeshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Cambridgeshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/fenland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Fenland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/broadland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Broadland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/breckland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Breckland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/king's-lynn-and-west-norfolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "King's Lynn and West Norfolk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/norwich" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Norwich" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-norfolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Norfolk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/great-yarmouth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Great Yarmouth" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-norfolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Norfolk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newcastle-upon-tyne" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Newcastle upon Tyne" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gateshead" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gateshead" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sunderland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sunderland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-tyneside" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Tyneside" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-tyneside" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Tyneside" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/amber-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Amber Valley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/high-peak" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "High Peak" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/chesterfield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Chesterfield" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bolsover" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bolsover" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/derbyshire-dales" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Derbyshire Dales" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/erewash" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Erewash" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-derbyshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Derbyshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-east-derbyshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North East Derbyshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/broxtowe" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Broxtowe" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gedling" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gedling" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rushcliffe" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rushcliffe" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ashfield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ashfield" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mansfield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mansfield" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bassetlaw" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bassetlaw" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newark-and-sherwood" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Newark and Sherwood" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-holland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Holland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-kesteven" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Kesteven" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-kesteven" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Kesteven" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-lindsey" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Lindsey" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-lindsey" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Lindsey" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lincoln" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lincoln" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/boston" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Boston" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/melton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Melton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/charnwood" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Charnwood" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oadby-and-wigston" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Oadby and Wigston" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hinckley-and-bosworth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hinckley and Bosworth" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/harborough" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Harborough" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/blaby" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Blaby" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-west-leicestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North West Leicestershire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tower-hamlets" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tower Hamlets" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/croydon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Croydon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/richmond-upon-thames" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Richmond upon Thames" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-westminster" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Westminster" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/camden" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Camden" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/greenwich" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Greenwich" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bexley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bexley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hammersmith-and-fulham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hammersmith and Fulham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/islington" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Islington" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/southwark" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Southwark" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/brent" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Brent" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hounslow" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hounslow" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hackney" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hackney" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/waltham-forest" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Waltham Forest" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/kensington-and-chelsea" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Kensington and Chelsea" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wandsworth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wandsworth" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/havering" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Havering" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/redbridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Redbridge" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hillingdon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hillingdon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sutton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sutton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/barking-and-dagenham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Barking and Dagenham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/enfield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Enfield" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/harrow" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Harrow" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/barnet" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Barnet" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ealing" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ealing" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lambeth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lambeth" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/kingston-upon-thames" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Kingston upon Thames" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lewisham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lewisham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Newham" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/merton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Merton" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bromley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bromley" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/haringey" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Haringey" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-london" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of London" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stirling" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stirling" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/clackmannanshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Clackmannanshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/aberdeenshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Aberdeenshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-ayrshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Ayrshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/shetland-islands" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Shetland Islands" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-glasgow" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Glasgow" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/renfrewshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Renfrewshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-lothian" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Lothian" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/midlothian" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Midlothian" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/orkney-islands" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Orkney Islands" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dumfries-and-galloway" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dumfries and Galloway" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-dunbartonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Dunbartonshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/argyll-and-bute" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Argyll and Bute" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/falkirk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Falkirk" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/scottish-borders" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Scottish Borders" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/angus" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Angus" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-lanarkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Lanarkshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/perth-and-kinross" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Perth and Kinross" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-ayrshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Ayrshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-dundee" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Dundee" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-renfrewshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Renfrewshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-ayrshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Ayrshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-lothian" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Lothian" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/na-h-eileanan-siar" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Na h-Eileanan siar" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/fife" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Fife" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-dunbartonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Dunbartonshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/inverclyde" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Inverclyde" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-aberdeen" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Aberdeen" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-lanarkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Lanarkshire" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-edinburgh" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Edinburgh" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/highland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Highland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/moray" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Moray" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/northern-ireland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Northern Ireland" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/belfast" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Belfast" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/fermanagh-and-omagh" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Fermanagh and Omagh" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-down-and-ards" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ards and North Down" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/armagh-banbridge-and-craigavon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Armagh City Banbridge and Craigavon" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/derry-and-strabane" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Derry City and Strabane" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newry-mourne-and-down" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Newry Mourne and Down" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lisburn-and-castlereagh" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lisburn and Castlereagh" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/antrim-and-newtownabbey" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Antrim and Newtownabbey" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mid-and-east-antrim" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mid and East Antrim" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/causeway-coast-and-glens" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Causeway Coast and Glens" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mid-ulster" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mid Ulster" }
+      }
+    ]
+  }
+}
