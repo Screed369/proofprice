@@ -18,7 +18,7 @@ import { HISTORY_ROWS } from "./fixtures";
 import def from "./index";
 import {
   COUNTRIES, HISTORY_URL, INFO, NATIONAL_CURRENCY, STAND_IN, findHistoryUrl, harvestOptions, parseHistory, pickPrevious, pickYearEarlier, previousWeek,
-  wobAnswer, wobFuelNow, wobHarvest, wobHistoryKey, wobMonthly, wobResult, wobRows, yearEarlierWeek,
+  attachNet, parseNetSheet, wobAnswer, wobFuelNow, wobHarvest, wobHistoryKey, wobMonthly, wobResult, wobRows, yearEarlierWeek,
 } from "./source";
 
 /** The fixture keeps 10 of the 23 countries, so the "far too few countries" guard is lowered for it. */
@@ -342,7 +342,7 @@ test("manifest and INFO: the countries, the examples, the licence quoted from th
   assert.match(INFO.limits, /this bulletin's national figure for that country is given instead and the answer says so/);
   assert.equal(def.category, "fuel");
   assert.deepEqual(def.examples[0].params, { country: "IE", fuel: "diesel" });
-  assert.deepEqual(def.examples.map((e) => e.params.country), ["IE", "DE", "PL"]);
+  assert.deepEqual(def.examples.map((e) => e.params.country), ["IE", "IE", "DE", "PL"]);
   assert.ok(def.harvest && def.historyKey);
   assert.equal(INFO.price_type, "official_statistic");
   assert.match(INFO.licence, /reuse is allowed, provided appropriate credit is given and changes are indicated/);
@@ -401,5 +401,105 @@ test("Austria (G20261021-AT-FUEL): the national weekly average, labelled as an o
     assert.ok(def.countries.includes("AT"));
   } finally {
     delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
+});
+
+// ---------- without taxes (option tax=without) ----------
+// Invented-but-shaped like the real "Prices wo taxes" sheet (same layout as "Prices with taxes": codes, product names, units, one row per week).
+// Net figures are below the with-tax figures of the fixture, as in the real file.
+const NET_ROWS: (string | number | null)[][] = [
+  ["Consumer prices of petroleum products net of duties and taxes", "CTR", "EU_price_wo_tax_euro95", "EU_price_wo_tax_diesel", "CTR", "IE_price_wo_tax_euro95", "IE_price_wo_tax_diesel", "IE_price_wo_tax_heating_oil", "CTR", "PL_price_wo_tax_diesel"],
+  [null, null, "Euro-super 95  (I)", "Gas oil", null, "Euro-super 95  (I)", "Gas oil", "Heating", null, "Gas oil"],
+  ["Date", null, "1000 l", "1000 l", null, "1000 l", "1000 l", "1000 l", null, "1000 l"],
+  [46307, "EU_", 1112.6, 1250.5, "IE_", 1010.1, 1210.2, 1100.3, "PL_", 1050.4],
+  [46300, "EU_", 1100.0, 1260.0, "IE_", 1000.0, 1200.0, 1090.0, "PL_", 1040.0],
+  [46293, "EU_", 1150.0, 1300.0, "IE_", 1005.0, 1190.0, 1085.0, "PL_", 1060.0],
+  [45943, "EU_", 900.0, 800.0, "IE_", 800.0, 1900.0, 600.0, "PL_", 700.0],
+];
+const withNet = () => attachNet(weeks(), parseNetSheet(NET_ROWS));
+
+test("net sheet: parsed per week, kept only below the with-tax figure, euro per litre", () => {
+  const w = withNet();
+  assert.equal(w[0].net.IE.diesel, 1.2102);
+  assert.equal(w[0].net.IE.petrol95, 1.0101);
+  assert.equal(w[0].net.IE.heating_oil, 1.1003);
+  assert.equal(w[0].net.EU.diesel, 1.2505);
+  assert.equal(w[0].net.PL.diesel, 1.0504);
+  assert.ok(w[0].net.IE.diesel! < w[0].prices.IE.diesel!);
+  // week 45943 (a year earlier): Ireland's diesel "net" 1.9 is above the with-tax 1.666, so it is dropped; the others are kept
+  const old = w.find((x) => x.serial === 45943)!;
+  assert.equal(old.net.IE.diesel, undefined, "a net figure not below the with-tax one is dropped");
+  assert.equal(old.net.IE.petrol95, 0.8);
+  // layout problems never throw
+  assert.equal(parseNetSheet([["a"], ["b"]]).size, 0);
+  assert.equal(parseNetSheet(NET_ROWS.filter((r, i) => i !== 2)).size, 0);
+  const wrongUnit = NET_ROWS.map((r, i) => (i === 2 ? r.map((c) => (c === "1000 l" ? "t" : c)) : r));
+  assert.equal([...parseNetSheet(wrongUnit).values()].every((n) => Object.keys(n).length === 0), true);
+});
+
+test("library rows carry <fuel>_notax and dated earlier values", () => {
+  const rows = wobRows(withNet());
+  const get = (area: string, item: string) => rows.find((r) => r.area === area && r.item === item)?.median;
+  assert.equal(get("IE", "diesel_notax"), 1.2102);
+  assert.equal(get("IE", "diesel_notax@2026-10-05"), 1.2);
+  assert.equal(get("IE", "diesel"), 2.1637); // the with-tax row is untouched
+  assert.equal(get("PL", "lpg_notax"), undefined);
+  // without the net sheet nothing changes
+  assert.ok(!wobRows(weeks()).some((r) => r.item.includes("_notax")));
+});
+
+test("answer: default is with tax and says so; tax=without gives the net figure, says so, and keeps the with-tax figure beside it", () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "wob-lib-"));
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
+  writeDaily(INFO.id, wobResult(withNet()));
+  const lib = { date: "2026-10-12", rows: wobRows(withNet()).map((r) => ({ area: r.area, item: r.item, median: r.median })) };
+  const gross = wobAnswer(lib, { country: "IE", fuel: "diesel" }, NOW);
+  assert.equal(gross.price?.value, 2.1637);
+  assert.match(String((gross.extra as any).taxes), /all duties and taxes included/);
+  assert.equal((gross.extra as any).tax_basis, "with");
+  const net = wobAnswer(lib, { country: "IE", fuel: "diesel", tax: "without" }, NOW);
+  assert.equal(net.price?.value, 1.2102);
+  assert.match(net.summary, /excluding all duties and taxes/);
+  assert.match(String((net.extra as any).taxes), /WITHOUT duties and taxes/);
+  assert.equal((net.extra as any).tax_basis, "without");
+  assert.equal((net.extra as any).with_tax_price_eur_per_litre, 2.1637);
+  assert.equal((net.extra as any).change_on_previous_week.price_eur_per_litre, 1.2);
+  assert.match(net.method ?? "", /WITHOUT duties and taxes/);
+  assert.equal((net.extra as any).eu27_weighted_average_eur_per_litre, 1.2505);
+  for (const alias of ["excl_tax", "net", "none", "WITHOUT"]) assert.equal(wobAnswer(lib, { country: "IE", fuel: "diesel", tax: alias }, NOW).price?.value, 1.2102);
+  assert.equal(wobAnswer(lib, { country: "IE", fuel: "diesel", tax: "with" }, NOW).price?.value, 2.1637);
+  assert.throws(() => wobAnswer(lib, { country: "IE", fuel: "diesel", tax: "maybe" }, NOW), InputError);
+});
+
+test("answer: a country or fuel with no net figure says so instead of returning the taxed price", () => {
+  const lib = { date: "2026-10-12", rows: wobRows(withNet()).map((r) => ({ area: r.area, item: r.item, median: r.median })) };
+  const a = wobAnswer(lib, { country: "DE", fuel: "diesel", tax: "without" }, NOW);
+  assert.equal(a.price?.value ?? null, null);
+  assert.match(a.summary, /excluding taxes/);
+  assert.match(a.summary, /not yet in our library|does not report/);
+  // library written before the net sheet existed: same plain answer
+  const old = { date: "2026-10-12", rows: wobRows(weeks()).map((r) => ({ area: r.area, item: r.item, median: r.median })) };
+  assert.equal(wobAnswer(old, { country: "IE", fuel: "diesel", tax: "without" }, NOW).price?.value ?? null, null);
+});
+
+test("history key and manifest: tax=without uses the _notax items; default unchanged", () => {
+  assert.deepEqual(wobHistoryKey({ country: "IE", fuel: "diesel" }), { area: "IE", item: "diesel", label: "Ireland (national average)" });
+  assert.equal(wobHistoryKey({ country: "IE", fuel: "diesel", tax: "without" })?.item, "diesel_notax");
+  assert.ok(def.extraParams && "tax" in def.extraParams);
+  assert.equal(def.historyKey!({ country: "IE", fuel: "diesel", tax: "without" })?.item, "diesel_notax");
+});
+
+test("harvest reads the 'Prices wo taxes' sheet when present and still works when it is missing", async () => {
+  const fake = fakeSite();
+  const orig = harvestOptions.retryDelayMs;
+  harvestOptions.retryDelayMs = 0;
+  try {
+    const h = await wobHarvest(5);
+    // the test workbook's net sheet holds only the EU petrol column, which is not below... it is below the with-tax figure
+    assert.ok(h.rows.some((r) => r.area === "EU" && r.item === "petrol95_notax"));
+    assert.ok(h.rows.some((r) => r.area === "IE" && r.item === "diesel"));
+  } finally {
+    harvestOptions.retryDelayMs = orig;
+    fake.restore();
   }
 });
