@@ -1,0 +1,35 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/09654/data?lang=en&outputFormat=json-stat2&valueCodes%5BPetroleumProd%5D=031,035&valueCodes%5BContentsCode%5D=Priser&valueCodes%5BTid%5D=top(3)
+Fetched: 2026-10-22T18:22:32Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 1962
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 18:22:32 GMT
+server: 
+content-type: application/json; charset=UTF-8
+content-disposition: inline; filename="09654.json"
+content-disposition: inline; filename="09654.json"
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 15719705
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=72946743.833; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 10000 BYTES
+{"version":"2.0","class":"dataset","label":"09654: Prices on engine fuel (NOK per litres), by petroleum products and month","source":"Statistics Norway","updated":"2026-10-21T06:00:00Z","role":{"time":["Tid"],"metric":["ContentsCode"]},"id":["PetroleumProd","ContentsCode","Tid"],"size":[2,1,3],"dimension":{"PetroleumProd":{"label":"petroleum products","category":{"index":{"031":0,"035":1},"label":{"031":"Motor gasoline, leadfree 95 octan","035":"Dutiable diesel"}},"extension":{"elimination":false,"show":"value"}},"ContentsCode":{"label":"contents","category":{"index":{"Priser":0},"label":{"Priser":"Prices (NOK per litres)"},"unit":{"Priser":{"base":"NOK per litres","decimals":2}}},"extension":{"elimination":false,"refperiod":{"Priser":"01.01.-31.12."},"show":"value","measuringType":{"Priser":"Average"},"priceType":{"Priser":"NotApplicable"},"adjustment":{"Priser":"None"},"alternativeText":{"Priser":"Prices (NOK per litres)"}}},"Tid":{"label":"month","category":{"index":{"2026M07":0,"2026M08":1,"2026M09":2},"label":{"2026M07":"2026M07","2026M08":"2026M08","2026M09":"2026M09"}},"extension":{"elimination":false,"show":"code"}}},"extension":{"px":{"infofile":"None","tableid":"09654","decimals":2,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"09654: Prices on engine fuel (NOK per litres),","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["PetroleumProd"],"matrix":"09654","subject-code":"ei","subject-area":"Energy and manufacturing"},"discontinued":null,"contact":[{"name":"Malin Bjelvert","organization":"Statistics Norway","phone":"40 81 15 02","mail":"pma@ssb.no","raw":"Malin Bjelvert, Statistics Norway# +47 40 81 15 02#pma@ssb.no"},{"name":"Ingunn Marie Verne Ruud","organization":"Statistics Norway","phone":"48 99 65 63","mail":"iev@ssb.no","raw":"Ingunn Marie Verne Ruud, Statistics Norway# +47 48 99 65 63#iev@ssb.no"}]},"value":[19.59,19.42,26.18,20.25,21.48,27.52]}
