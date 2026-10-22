@@ -95,3 +95,79 @@ test("FR history: archive lines become monthly aggregates (last price per statio
   assert.deepEqual(jan, ["69/diesel/6/1.402", "ALL/diesel/6/1.402"]);
   assert.deepEqual(p[1].rows.map((x) => `${x.area}/${x.item}/${x.n}`), ["69/petrol95/6", "ALL/petrol95/6"]);
 });
+
+// ---------- inside count guard (outside-check pilot, 22 Oct 2026) ----------
+// Real library values, library/fr-fuel at commit 905a043 of main: the national ("ALL") station counts on 19 and 20 Oct 2026.
+const L = (date: string, item: string, n: number) => ({ date, area: "ALL", item, n, median: 2.3, low: 2.2, high: 2.4, min: 2.0, max: 2.6 });
+const PREV_19_OCT = new Map([
+  ["ALL\u0000diesel", L("2026-10-19", "diesel", 7127)],
+  ["ALL\u0000e10", L("2026-10-19", "e10", 5616)],
+  ["ALL\u0000petrol95", L("2026-10-19", "petrol95", 1692)],
+  ["75\u0000diesel", { ...L("2026-10-19", "diesel", 90), area: "75" }], // departments are not judged: only the national row is
+]);
+const day = (date: string, counts: Record<string, number>) => ({
+  date, currency: "EUR", unit: "per litre",
+  rows: Object.entries(counts).map(([item, n]) => ({ area: "ALL", item, n, median: 2.3, low: 2.2, high: 2.4, min: 2.0, max: 2.6 })),
+});
+
+test("FR count guard: the half-empty 20 Oct feed (diesel 2,850 against 7,127) is refused with a clear message and no made-up count", async () => {
+  const { frCountGuard } = await import("./source");
+  const msg = frCountGuard(day("2026-10-20", { diesel: 2850, e10: 2314, petrol95: 703 }), PREV_19_OCT);
+  assert.ok(msg);
+  assert.match(msg!, /^Count guard, 2026-10-20 NOT written \(previous day kept\)/);
+  assert.match(msg!, /diesel: 2850 stations against 7127 on 2026-10-19 \(40%\)/);
+  assert.match(msg!, /petrol95: 703 stations against 1692/);
+  assert.ok(msg!.length <= 420);
+  assert.ok(msg!.slice(0, 300).includes("diesel: 2850")); // survives the 300-character cut in scripts/harvest.ts
+});
+
+test("FR count guard: a normal day, and a mild dip (above 70%), pass; just under 70% does not; a vanished fuel does not", async () => {
+  const { frCountGuard } = await import("./source");
+  assert.equal(frCountGuard(day("2026-10-20", { diesel: 7127, e10: 5616, petrol95: 1692 }), PREV_19_OCT), null);
+  assert.equal(frCountGuard(day("2026-10-20", { diesel: 7587, e10: 6237, petrol95: 1792 }), PREV_19_OCT), null);
+  assert.equal(frCountGuard(day("2026-10-20", { diesel: Math.ceil(0.7 * 7127), e10: 5616, petrol95: 1692 }), PREV_19_OCT), null);
+  assert.match(frCountGuard(day("2026-10-20", { diesel: Math.ceil(0.7 * 7127) - 1, e10: 5616, petrol95: 1692 }), PREV_19_OCT)!, /diesel/);
+  assert.match(frCountGuard(day("2026-10-20", { diesel: 7127, e10: 5616 }), PREV_19_OCT)!, /petrol95: 0 stations/);
+});
+
+test("FR count guard: no previous day (first harvest) and tiny fuels are never judged", async () => {
+  const { frCountGuard } = await import("./source");
+  assert.equal(frCountGuard(day("2026-10-20", { diesel: 10 }), new Map()), null);
+  assert.equal(frCountGuard(day("2026-10-20", { lpg: 1 }), new Map([["ALL\u0000lpg", L("2026-10-19", "lpg", 40)]])), null);
+});
+
+test("FR count guard: the real 20 Oct day (frDailyRows of a thin feed) is caught end to end", async () => {
+  const { frDailyRows, frCountGuard } = await import("./source");
+  const thin = Array.from({ length: 300 }, (_, i) => ({ id: i, cp: "75015", gazole_prix: 2.3, gazole_maj: "2026-10-20T08:00:00+00:00" }));
+  assert.match(frCountGuard(frDailyRows(thin, "2026-10-20"), PREV_19_OCT)!, /diesel: 300 stations against 7127/);
+});
+
+test("FR count guard: frHarvest itself refuses a thin feed against a stored library day, and accepts a full one", async () => {
+  const { frHarvest } = await import("./source");
+  const fs = await import("node:fs");
+  const os = await import("node:os");
+  const path = await import("node:path");
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "fr-lib-"));
+  fs.mkdirSync(path.join(dir, "fr-fuel", "daily"), { recursive: true });
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  fs.writeFileSync(
+    path.join(dir, "fr-fuel", "daily", `${yesterday.slice(0, 7)}.csv`),
+    `date,area,item,n,median,low,high,min,max\n${yesterday},ALL,diesel,400,2.369,2.2,2.5,2.0,2.7\n`,
+  );
+  const records = (n: number) => Array.from({ length: n }, (_, i) => ({ id: i, cp: "75015", gazole_prix: 2.3, gazole_maj: new Date().toISOString() }));
+  const realFetch = globalThis.fetch;
+  const before = process.env.PROOFPRICE_LIBRARY_DIR;
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
+  try {
+    globalThis.fetch = (async () => new Response(JSON.stringify(records(120)), { status: 200, headers: { "content-type": "application/json" } })) as any;
+    await assert.rejects(frHarvest(), /Count guard.*diesel: 120 stations against 400/);
+    globalThis.fetch = (async () => new Response(JSON.stringify(records(390)), { status: 200, headers: { "content-type": "application/json" } })) as any;
+    const ok = await frHarvest();
+    assert.equal(ok.rows.find((r) => r.area === "ALL" && r.item === "diesel")!.n, 390);
+  } finally {
+    globalThis.fetch = realFetch;
+    if (before === undefined) delete process.env.PROOFPRICE_LIBRARY_DIR;
+    else process.env.PROOFPRICE_LIBRARY_DIR = before;
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});

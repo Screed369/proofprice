@@ -14,6 +14,8 @@ import os from "node:os";
 import path from "node:path";
 import { MIN_PUBLISH } from "../../lib/stats";
 import { aggregateDaily } from "../../lib/library/aggregate";
+import { previousByKey } from "../../lib/library/check";
+import type { LibraryRow } from "../../lib/library/store";
 import type { Fuel } from "../../lib/fuels";
 
 export const INFO: SourceInfo = {
@@ -201,6 +203,31 @@ export function frDailyRows(records: any[], today: string): HarvestResult {
   return { date: today, currency: "EUR", unit: "per litre", rows: aggregateDaily(rows, false) };
 }
 
+/** A day whose station count for any fuel falls below this share of the previous library day's count is not written. */
+export const FR_MIN_COUNT_SHARE = 0.7;
+/** Fuels with fewer stations than this the day before are too small to judge by share. */
+const FR_GUARD_MIN_PREVIOUS = 50;
+
+/** Inside count guard (outside-check pilot, 22 Oct 2026): a half-empty feed barely moves the average price, so a price check passes it.
+ *  Returns a plain-English message when, for any fuel, the number of metropolitan stations (the national "ALL" row's n) is below
+ *  FR_MIN_COUNT_SHARE of the previous library day's; null when the day is fine. Pure: `previous` is previousByKey("fr-fuel", date). */
+export function frCountGuard(day: HarvestResult, previous: Map<string, LibraryRow>): string | null {
+  const today = new Map<string, number>();
+  for (const r of day.rows) if (r.area === METRO) today.set(r.item, Number.isFinite(r.n) ? r.n : 0);
+  const problems: string[] = [];
+  for (const [key, prev] of previous) {
+    const [area, item] = key.split("\u0000");
+    if (area !== METRO || !Number.isFinite(prev.n) || prev.n < FR_GUARD_MIN_PREVIOUS) continue;
+    const now = today.get(item) ?? 0;
+    if (now < FR_MIN_COUNT_SHARE * prev.n) {
+      problems.push(`${item}: ${now} stations against ${prev.n} on ${prev.date} (${Math.round((100 * now) / prev.n)}%)`);
+    }
+  }
+  if (!problems.length) return null;
+  // scripts/harvest.ts keeps the first 300 characters of a failure, so the message is short and puts the figures first.
+  return `Count guard, ${day.date} NOT written (previous day kept): ${problems.join("; ")}; below ${Math.round(FR_MIN_COUNT_SHARE * 100)}% of the previous day. Feed incomplete? Re-run later, or --accept-changes if real.`;
+}
+
 export async function frHarvest(): Promise<HarvestResult> {
   const fields = ["id", "cp", "code_departement", ...FR_FUELS.flatMap((f) => [`${f}_prix`, `${f}_maj`])].join(",");
   let records: any;
@@ -210,7 +237,11 @@ export async function frHarvest(): Promise<HarvestResult> {
     records = await fetchJson(EXPORT_URL, {}, 180000); // field list changed: take everything
   }
   if (!Array.isArray(records)) throw new SourceError("Unexpected export format from data.economie.gouv.fr");
-  return frDailyRows(records, new Date().toISOString().slice(0, 10));
+  const day = frDailyRows(records, new Date().toISOString().slice(0, 10));
+  // Throwing here makes scripts/harvest.ts write nothing for the day and record the message as last_error (shown by /api/v1/library).
+  const problem = process.argv.includes("--accept-changes") ? null : frCountGuard(day, previousByKey("fr-fuel", day.date));
+  if (problem) throw new SourceError(problem);
+  return day;
 }
 
 export function frHistoryKey(p: { postcode?: string; department?: string; fuel: string }): { area: string; item: string; label: string } | null {
