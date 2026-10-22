@@ -1,0 +1,110 @@
+URL: https://lindas.admin.ch/query?query=PREFIX%20d%3A%20%3Chttps%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice%2Fdimension%2F%3E%0APREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0ASELECT%20%3Fperiod%20%3Fcategory%20%3Fproduct%20%3Ftotal%20%3Fenergy%20%3Fgridusage%20%3Fcharge%20%3Faidfee%20FROM%20%3Chttps%3A%2F%2Flindas.admin.ch%2Felcom%2Felectricityprice%3E%20WHERE%20%7B%0A%20%20%3Fobs%20a%20%3Chttps%3A%2F%2Fcube.link%2FObservation%3E%20%3B%20d%3Aperiod%20%3Fperiod%20%3B%20d%3Acategory%20%3Fcategory%20%3B%20d%3Aproduct%20%3Fproduct%20%3B%20d%3Atotal%20%3Ftotal%20%3B%0A%20%20%20%20%20%20%20d%3Aenergy%20%3Fenergy%20%3B%20d%3Agridusage%20%3Fgridusage%20%3B%20d%3Acharge%20%3Fcharge%20%3B%20d%3Aaidfee%20%3Faidfee%20.%0A%20%20FILTER(STRSTARTS(STR(%3Fobs)%2C%20%22https%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss%2Fobservation%2F%22))%0A%20%20FILTER(xsd%3Ainteger(STR(%3Fperiod))%20%3E%3D%202025)%0A%7D
+Fetched: 2026-10-22T17:37:23Z from GitHub Actions
+Status, type, bytes: 200 text/csv;charset=UTF-8 14736
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Thu, 22 Oct 2026 17:37:23 GMT
+content-type: text/csv;charset=UTF-8
+vary: Origin
+access-control-allow-credentials: true
+server-timing: sparql-proxy;dur=5340.523396000266;desc="Querying the endpoint"
+xkey: default
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-robots-tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+
+=== FILE TYPE: CSV ASCII text
+=== FIRST 30000 BYTES
+period,category,product,total,energy,gridusage,charge,aidfee
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H8,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,26.24,10.347,11.709,1.14,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C3,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,26.017,11.041,11.006,0.9,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H7,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.334,11.002,10.364,0.9,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C2,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,26.057,11.36,11.26,1.0,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C1,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,26.513,11.227,12.305,1.1,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H2,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,30.32,11.95,14.089,1.21,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H1,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,32.589,11.957,15.59,1.35,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C7,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,19.917,9.996,6.043,0.524,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H6,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,22.906,9.963,8.354,0.9,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C5,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,21.401,10.713,7.24,0.34,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C6,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,21.343,10.36,7.067,0.593,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H4,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,27.6,11.58,12.207,1.1,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C4,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.342,10.724,10.143,0.854,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H5,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,26.132,11.042,10.73,1.1,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H3,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,27.6,11.064,11.73,1.1,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H3,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,28.6,13.594,11.605,1.0,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C3,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,26.8635,13.246,10.589,0.8,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C1,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,28.611,13.71,12.17,0.93,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C7,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,20.844,12.5,5.459,0.524,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H7,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,26.633,13.35,10.315,0.88,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H4,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,29.0,13.7,12.175,1.0,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C4,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,25.67,13.044,9.802,0.784,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H2,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,31.32,13.874,13.94,1.028,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C2,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,27.6315,13.7,11.26,0.923,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C6,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,22.005,12.768,6.175,0.593,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H6,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,25.321,12.486,8.712,0.84,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/C5,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,22.838,13.796,6.728,0.235,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H1,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,34.066,14.1035,16.107,1.1,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H8,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,28.1205,13.7,11.709,0.94,2.3
+2025,https://energy.ld.admin.ch/elcom/electricityprice/category/H5,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,27.153,13.4,10.656,0.94,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H7,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,22.892,10.457,9.381,1.0,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H8,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.793,10.713,10.4,1.5,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H4,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,26.696,10.712,11.162,1.5,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H6,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,22.5305,9.337,7.994,0.95,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H5,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.593,10.376,10.363,1.1,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H3,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,26.667,10.339,10.6,1.5,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H2,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,30.5,10.94,11.72,1.5,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H1,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,34.88,11.458,12.93,1.5,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C6,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,20.411,9.927,6.907,0.62,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C5,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,20.394,10.639,7.37,0.644,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C7,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,18.769,9.952,5.924,0.63,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C4,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,23.437,10.65,9.845,0.805,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C2,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.446,10.5,9.825,1.0,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C3,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.727,10.989,10.8,0.848,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C1,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,25.6475,10.75,10.32,1.5,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H4,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,27.696,12.112,10.735,1.0,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H6,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,23.471,11.953,8.508,0.85,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H7,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,24.869,12.095,9.54,0.85,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C6,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,20.605,11.151,6.01,0.597,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C7,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,19.6245,11.15,5.404,0.574,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C3,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,25.0,11.375,10.255,0.8,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H2,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,30.758,12.63,11.548,1.069,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H8,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,26.299,11.9,10.4,0.923,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H5,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,25.793,11.696,9.74,0.91,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H3,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,27.575,12.007,10.284,1.01,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/H1,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,34.393,12.895,12.53,1.069,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C5,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,20.877,11.283,6.424,0.3,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C4,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,23.655,11.283,9.729,0.755,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C2,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,25.108,11.97,9.9345,0.9,2.3
+2026,https://energy.ld.admin.ch/elcom/electricityprice/category/C1,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,26.28,12.0,10.5875,0.93,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H8,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,23.624,9.571,11.06,1.27,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H6,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,21.954,9.3,8.524,0.9,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H7,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,22.096,9.346,9.857,0.92,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H5,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,22.89,9.374,10.11,1.1,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H3,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.591,9.475,10.89,1.3,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H4,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.991,9.75,11.195,1.3,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H2,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,28.52,9.75,12.259,1.3,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H1,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,33.193,9.805,13.09,1.3,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C5,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,19.04,9.612,7.19,0.412,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C6,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,19.474,9.6,6.727,0.62,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C3,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,23.102,9.639,11.307,0.85,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C4,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,22.281,9.612,10.208,0.809,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C7,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,17.65,9.305,5.744,0.6,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C2,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,23.566,9.75,10.1,1.0,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C1,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest,24.48,9.75,10.98,1.27,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H2,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,29.52,11.5,11.367,1.001,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H5,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,24.606,11.1,9.695,0.99,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C2,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,24.346,11.23,10.1,0.9,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H8,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,25.427,11.4,10.524,0.99,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H7,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,23.719,11.24,9.495,0.9,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H6,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,22.798,11.0,8.524,0.85,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H4,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,26.557,11.4,10.95,1.0,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H3,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,26.041,11.1765,10.104,1.0,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/H1,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,33.422,11.5,12.465,1.05,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C7,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,18.154,10.55,5.036,0.517,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C6,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,19.371,10.69,5.631,0.605,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C5,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,19.469,11.003,6.173,0.31,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C4,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,22.773,10.9,9.525,0.8,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C3,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,23.971,10.952,10.19,0.8,2.3
+2027,https://energy.ld.admin.ch/elcom/electricityprice/category/C1,https://energy.ld.admin.ch/elcom/electricityprice/product/standard,25.893,11.403,10.794,0.98,2.3
