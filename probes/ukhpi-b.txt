@@ -1,0 +1,1928 @@
+URL: https://landregistry.data.gov.uk/landregistry/query?output=json&query=PREFIX%20ukhpi%3A%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fukhpi%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0ASELECT%20%3Fr%20%3Fl%20%3Fa%20WHERE%20%7B%20%3Fobs%20ukhpi%3ArefRegion%20%3Fr%20%3B%20ukhpi%3ArefMonth%20%3Fm%20%3B%20ukhpi%3AaveragePrice%20%3Fa%20.%20OPTIONAL%7B%3Fr%20rdfs%3Alabel%20%3Fl%7D%20FILTER%28STR%28%3Fm%29%3D%222026-07%22%29%20%7D
+Fetched: 2026-10-22T11:13:50Z from GitHub Actions
+Status, type, bytes: 200 application/sparql-results+json; charset=utf-8 192435
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: must-revalidate,no-cache,no-store
+Content-Type: application/sparql-results+json; charset=utf-8
+Date: Thu, 22 Oct 2026 11:13:50 GMT
+Fuseki-Request-Id: 2930637
+Pragma: no-cache
+Server: nginx/1.31.5
+Vary: Accept,Accept-Encoding,Accept-Charset,Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+transfer-encoding: chunked
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 120000 BYTES
+{ "head": {
+    "vars": [ "r" , "l" , "a" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-east" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "De Ddwyrain Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "380878" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-east" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South East" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "380878" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/surrey" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Surrey" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "522523" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bracknell-forest" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bracknell Forest" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "395413" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/southampton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Southampton" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "235977" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/slough" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Slough" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "335759" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/milton-keynes" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Milton Keynes" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "330419" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/buckinghamshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Buckinghamshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "479736" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/buckinghamshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Buckingham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "479736" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wokingham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wokingham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "496537" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/portsmouth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Portsmouth" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "251220" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/medway" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Medway" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "298547" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hampshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hampshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "364336" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Sussex" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "373740" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Sussex" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "373740" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/reading" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Reading" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "349550" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Rydychen" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "420093" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Oxfordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "420093" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/kent" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Kent" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "346904" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/kent" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caint" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "346904" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/isle-of-wight" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Ynys Wyth" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "245900" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/isle-of-wight" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Isle of Wight" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "245900" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dwyrain Sussex" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "316959" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Sussex" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "316959" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/brighton-and-hove" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Brighton A Hove" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "408948" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/brighton-and-hove" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Brighton and Hove" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "408948" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/windsor-and-maidenhead" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Windsor A Maidenhead" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "575036" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/windsor-and-maidenhead" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Windsor and Maidenhead" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "575036" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-berkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Berkshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "403682" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-berkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Berkshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "403682" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/england-and-wales" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Cymru A Lloegr Cyfan" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "288279" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/england-and-wales" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "England and Wales" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "288279" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/england-and-wales" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Cymru A Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "288279" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/england" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "England" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "293479" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/england" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "293479" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/woking" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Woking" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "439916" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/surrey-heath" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Surrey Heath" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "457988" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/spelthorne" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Spelthorne" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "439609" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tandridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tandridge" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "482599" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mole-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mole Valley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "555858" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mole-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dyffryn Mole" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "555858" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/reigate-and-banstead" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Reigate and Banstead" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "480824" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/reigate-and-banstead" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Reigate A Banstead" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "480824" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/elmbridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Elmbridge" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "748080" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/waverley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Waverley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "553429" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/runnymede" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Runnymede" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "477182" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/guildford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Guildford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "532917" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/epsom-and-ewell" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Epsom and Ewell" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "568214" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/epsom-and-ewell" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Epsom Ac Ewell" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "568214" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/havant" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Havant" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "315820" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/winchester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Winchester" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "463025" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/fareham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Fareham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "333599" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gosport" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gosport" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "240696" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rushmoor" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rushmoor" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "326771" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/basingstoke-and-deane" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Basingstoke and Deane" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "370223" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/basingstoke-and-deane" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Basingstoke A Deane" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "370223" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/test-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Test Valley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "368131" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/test-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dyffryn Test" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "368131" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/eastleigh" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Eastleigh" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "310283" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/new-forest" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "New Forest" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "384977" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hart" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hart" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "481051" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-hampshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Hampshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "440541" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-hampshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dwyrain Hampshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "440541" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/horsham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Horsham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "441654" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/adur" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Adur" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "380120" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/crawley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Crawley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "332384" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/chichester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Chichester" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "432078" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/arun" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Arun" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "321460" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mid-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Mid Sussex" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "430777" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/mid-sussex" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Canolbarth Sussex" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "430777" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/worthing" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Worthing" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "297200" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Oxfordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "476026" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "De Swydd Rydychen" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "476026" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/vale-of-white-horse" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Vale of White Horse" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "413773" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Oxfordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "418586" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-oxfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Swydd Rydychen" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "418586" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oxford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Oxford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "471667" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oxford" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Rhydychen" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "471667" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cherwell" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cherwell" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "356935" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/maidstone" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Maidstone" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "352722" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tunbridge-wells" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tunbridge Wells" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "456227" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/swale" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Swale" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "298985" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/canterbury" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Canterbury" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "337454" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/canterbury" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caergaint" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "337454" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dover" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dover" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "277750" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/shepway" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Folkestone and Hythe" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "303296" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/shepway" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Folkestone A Hythe" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "303296" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ashford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ashford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "347562" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dartford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dartford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "347773" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tonbridge-and-malling" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tonbridge and Malling" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "407880" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tonbridge-and-malling" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Tonbridge A Malling" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "407880" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sevenoaks" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sevenoaks" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "538714" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gravesham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gravesham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "344923" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/thanet" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Thanet" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "269708" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rother" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rother" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "337816" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lewes" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lewes" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "368408" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/eastbourne" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Eastbourne" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "254636" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hastings" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hastings" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "238757" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wealden" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wealden" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "391211" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-midlands-region" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Canolbarth Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "250880" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-midlands-region" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Midlands Region" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "250880" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-west" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gogledd Orllewin Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "221445" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-west" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North West" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "221445" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-west" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South West" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "302298" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-west" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "De Orllewin Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "302298" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-east" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gogledd Ddwyrain Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "166943" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-east" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North East" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "166943" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wales" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wales" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "215037" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wales" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Cymru" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "215037" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-midlands" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dwyrain Canolbarth Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "242274" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-midlands" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Midlands" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "242274" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/london" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "London" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "550037" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/london" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Llundain" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "550037" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/great-britain" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Great Britain" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "274801" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/great-britain" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Prydain Fawr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "274801" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/yorkshire-and-the-humber" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Gaerefrog A'r Humber" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "209116" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/yorkshire-and-the-humber" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Yorkshire and The Humber" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "209116" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-of-england" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dwyrain Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "337518" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-of-england" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East of England" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "337518" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/warwickshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Warwickshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "307489" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/warwickshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Warwig" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "307489" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/warwickshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Warwick" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "307489" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-midlands" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Canolbarth Lloegr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "236098" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-midlands" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Midlands" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "236098" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/shropshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Amwythig" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "275232" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/shropshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Shropshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "275232" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stoke-on-trent" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stoke-on-Trent" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "147377" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stoke-on-trent" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Stoke-on-Trent" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "147377" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Staffordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "250633" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Stafford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "250633" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/herefordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Herefordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "289607" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/herefordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Henffordd" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "289607" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/worcestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Gaerwrangon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "287268" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/worcestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Worcestershire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "287268" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/telford-and-wrekin" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Telford and Wrekin" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "226893" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/telford-and-wrekin" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Telford A Wrekin" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "226893" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-riding-of-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Riding of Yorkshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "220408" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-riding-of-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Traean Dwyreiniol Swydd Gaerefrog" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "220408" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Yorkshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "210790" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Swydd Gaerefrog" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "210790" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Swydd Efrog" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "210790" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "De Swydd Gaerefrog" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "192257" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Yorkshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "192257" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Lincolnshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "179954" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gogledd Swydd Lincoln" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "179954" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-east-lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North East Lincolnshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "147727" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-east-lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gogledd Ddwyrain Swydd Lincoln" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "147727" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/york" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "York" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "310781" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/york" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerefrog" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "310781" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gogledd Swydd Gaerefrog" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "270463" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-yorkshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Yorkshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "270463" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-kingston-upon-hull" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dinas Kingston upon Hull" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "135511" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-kingston-upon-hull" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Kingston upon Hull" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "135511" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/greater-manchester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Greater Manchester" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "240808" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/greater-manchester" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Manceinion Fwyaf" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "240808" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/merseyside" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Glannau Mersi" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "203192" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/merseyside" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Merseyside" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "203192" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cheshire-east" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cheshire East" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "309121" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cheshire-east" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dwyrain Swydd Gaer" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "309121" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/halton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Halton" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "194727" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cheshire-west-and-chester" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Swydd Gaer A Chaer" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "270104" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cheshire-west-and-chester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cheshire West and Chester" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "270104" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lancashire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lancashire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "193674" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lancashire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Gaerhirfryn" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "193674" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/blackpool" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Blackpool" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "137386" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/warrington" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Warrington" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "260040" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/blackburn-with-darwen" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Blackburn Gyda Darwen" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "165131" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/blackburn-with-darwen" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Blackburn with Darwen" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "165131" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cumberland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cumberland" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "170966" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/westmorland-and-furness" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Westmorland and Furness" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "230449" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cornwall" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cornwall" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "275642" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cornwall" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Cernyw" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "275642" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gloucestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Gaerloyw" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "316822" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gloucestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gloucestershire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "316822" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/torbay" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Torbay" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "222118" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wiltshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wiltshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "328746" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gogledd Gwlad Yr Haf" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "313638" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Somerset" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "313638" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-plymouth" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dinas Plymouth" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "223161" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-plymouth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Plymouth" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "223161" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bath-and-north-east-somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerfaddon A Gdd Gwlad Yr Haf" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "409045" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bath-and-north-east-somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bath and North East Somerset" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "409045" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bath-and-north-east-somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerfaddon A Gogledd Ddwyrain Gwlad Yr Haf" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "409045" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-bristol" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Bristol" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "352262" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-bristol" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dinas Bryste" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "352262" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dorset" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dorset" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "325154" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/devon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Devon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "303491" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/devon" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dyfnaint" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "303491" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gwlad Yr Haf" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "282062" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/somerset" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Somerset" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "282062" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/swindon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Swindon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "263611" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-gloucestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "De Swydd Gaerloyw" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "341833" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-gloucestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Gloucestershire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "341833" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bournemouth-christchurch-and-poole" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bournemouth Christchurch and Poole" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "310094" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bournemouth-christchurch-and-poole" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Bournemouth Christchurch A Poole" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "310094" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hertfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Hertford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "469474" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hertfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hertfordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "469474" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/thurrock" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Thurrock" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "321941" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/luton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Luton" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "284946" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/essex" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Essex" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "359978" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/suffolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Suffolk" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "280742" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cambridgeshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Gaergrawnt" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "339095" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cambridgeshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cambridgeshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "339095" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/central-bedfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Bedford Ganolog" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "356758" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/central-bedfordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Central Bedfordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "356758" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bedford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bedford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "333824" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/norfolk" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Norfolk" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "269185" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-peterborough" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Peterborough" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "234690" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-peterborough" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dinas Peterborough" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "234690" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/southend-on-sea" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Southend-on-Sea" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "328383" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/southend-on-sea" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Southend-on-Sea" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "328383" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tyne-and-wear" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tyne and Wear" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "174815" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tyne-and-wear" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Tyne A Wear" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "174815" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/darlington" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Darlington" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "159988" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/northumberland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Northumberland" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "212563" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stockton-on-tees" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Stockton-on-Tees" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "170029" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stockton-on-tees" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stockton-on-Tees" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "170029" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/redcar-and-cleveland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Redcar and Cleveland" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "151341" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/redcar-and-cleveland" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Redcar A Cleveland" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "151341" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hartlepool" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hartlepool" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "136894" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/middlesbrough" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Middlesborough" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "140909" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/middlesbrough" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Middlesbrough" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "140909" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/county-durham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "County Durham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "140447" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/county-durham" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Durham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "140447" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/monmouthshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Monmouthshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "335093" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/monmouthshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Sir Fynwy" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "335093" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/conwy" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Conwy" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "217829" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newport" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Casnewydd" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "229200" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newport" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Newport" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "229200" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bridgend" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bridgend" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "209569" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bridgend" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Pen-Y-Bont ar ogwr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "209569" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/blaenau-gwent" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Blaenau Gwent" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "144294" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/flintshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Flintshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "215892" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/flintshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Sir Y Fflint" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "215892" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gwynedd" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gwynedd" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "204974" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wrexham" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Wrecsam" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "212778" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wrexham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wrexham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "212778" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/merthyr-tydfil" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Merthyr Tydfil" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "156721" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/merthyr-tydfil" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Merthyr Tudful" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "156721" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cardiff" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cardiff" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "272252" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cardiff" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerdydd" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "272252" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/pembrokeshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Sir Benfro" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "208615" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/pembrokeshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Pembrokeshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "208615" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/caerphilly" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerffili" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "197542" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/caerphilly" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Caerphilly" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "197542" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/carmarthenshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Sir Gaerfyrddin" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "199025" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/carmarthenshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Carmarthenshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "199025" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/denbighshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Sir Ddinbych" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "201452" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/denbighshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Denbighshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "201452" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/isle-of-anglesey" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Isle of Anglesey" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "231943" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/isle-of-anglesey" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Ynys Mon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "231943" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/isle-of-anglesey" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Ynys Môn" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "231943" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/torfaen" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Tor-Faen" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "199184" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/torfaen" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Torfaen" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "199184" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ceredigion" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ceredigion" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "235160" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/swansea" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Swansea" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "205383" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/swansea" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Abertawe" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "205383" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/neath-port-talbot" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Neath Port Talbot" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "168082" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/neath-port-talbot" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Castell-Nedd port talbot" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "168082" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/powys" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Powys" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "237762" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/vale-of-glamorgan" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Bro Morgannwg" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "303112" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/vale-of-glamorgan" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Vale of Glamorgan" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "303112" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rhondda-cynon-taf" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rhondda Cynon Taf" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "164192" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-derby" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dinas Derby" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "207250" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-derby" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Derby" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "207250" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-nottingham" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dinas Nottingham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "190200" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/city-of-nottingham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "City of Nottingham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "190200" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/derbyshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Derbyshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "238228" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/derbyshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Derby" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "238228" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/nottinghamshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Nottinghamshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "230105" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/nottinghamshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Nottingham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "230105" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lincolnshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "218821" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lincolnshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Lincoln" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "218821" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leicester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Leicester" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "227322" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leicester" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerl R" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "227322" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leicester" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerlŷr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "227322" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leicestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Gaerl R" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "283205" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leicestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Leicestershire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "283205" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leicestershire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Swydd Gaerlŷr" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "283205" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rutland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rutland" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "298916" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-northamptonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Northamptonshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "291929" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-northamptonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Swydd Northampton" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "291929" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-northamptonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Northamptonshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "257807" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-northamptonshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gogledd Swydd Northampton" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "257807" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/inner-london" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Llundain Fewnol" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "624529" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/inner-london" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Inner London" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "624529" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/outer-london" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Outer London" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "507169" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/outer-london" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Llundain Allanol" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "507169" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/scotland" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Yr Alban" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "196349" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/scotland" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Scotland" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "196349" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/united-kingdom" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "United Kingdom" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "272611" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/united-kingdom" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Y Deyrnas Unedig" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "272611" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-warwickshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "North Warwickshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "273776" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/north-warwickshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gogledd Swydd Warwick" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "273776" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/warwick" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Warwick" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "369220" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stratford-on-avon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stratford-on-Avon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "396753" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rugby" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rugby" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "272696" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/nuneaton-and-bedworth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Nuneaton and Bedworth" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "228142" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/nuneaton-and-bedworth" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Nuneaton A Bedworth" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "228142" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sandwell" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sandwell" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "205830" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/dudley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Dudley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "232196" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/birmingham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Birmingham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "234257" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/solihull" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Solihull" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "337112" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/walsall" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Walsall" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "215329" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/coventry" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Coventry" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "227679" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wolverhampton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wolverhampton" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "220559" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cannock-chase" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cannock Chase" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "236743" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stafford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stafford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "258024" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Staffordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "227135" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dwyrain Swydd Stafford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "227135" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lichfield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lichfield" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "335799" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newcastle-under-lyme" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Newcastle-Under-Lyme" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "209112" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/newcastle-under-lyme" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Newcastle-Under-Lyme" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "209112" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tamworth" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tamworth" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "229251" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Staffordshire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "310862" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-staffordshire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "De Swydd Stafford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "310862" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/staffordshire-moorlands" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Staffordshire Moorlands" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "224415" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wychavon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wychavon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "322623" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bromsgrove" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bromsgrove" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "335607" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/redditch" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Redditch" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "245573" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/malvern-hills" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Malvern Hills" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "350772" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wyre-forest" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wyre Forest" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "230984" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/worcester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Worcester" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "251221" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/worcester" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerwrangon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "251221" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/leeds" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Leeds" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "247695" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/calderdale" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Calderdale" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "191385" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/kirklees" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Kirklees" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "208987" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bradford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bradford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "182766" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wakefield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wakefield" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "199347" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rotherham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rotherham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "191496" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sheffield" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sheffield" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "219713" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/doncaster" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Doncaster" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "172305" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/barnsley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Barnsley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "175537" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rochdale" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rochdale" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "209389" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bury" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bury" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "242437" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wigan" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wigan" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "194551" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tameside" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tameside" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "209723" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/trafford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Trafford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "400688" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/salford" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Salford" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "229462" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/manchester" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Manceinion" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "252309" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/manchester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Manchester" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "252309" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/oldham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Oldham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "217171" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stockport" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stockport" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "317913" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/bolton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Bolton" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "204379" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/st-helens" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "St Helens" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "185154" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/knowsley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Knowsley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "188527" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/liverpool" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Liverpool" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "189036" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/liverpool" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Lerpwl" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "189036" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/sefton" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Sefton" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "224289" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wirral" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wirral" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "221849" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wirral" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Cilgwri" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "221849" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-ribble" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "South Ribble" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "213267" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/south-ribble" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "De Ribble" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "213267" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/burnley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Burnley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "135012" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/hyndburn" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Hyndburn" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "141430" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/preston" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Preston" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "188629" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/chorley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Chorley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "213246" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/rossendale" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Rossendale" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "199759" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lancaster" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Lancaster" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "202966" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/lancaster" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerhirfryn" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "202966" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ribble-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Ribble Valley" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "285610" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/ribble-valley" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dyffryn Ribble" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "285610" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-lancashire" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Lancashire" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "236194" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-lancashire" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Swydd Gaerhirfryn" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "236194" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/pendle" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Pendle" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "152798" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/fylde" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Fylde" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "235793" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/wyre" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Wyre" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "193650" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/stroud" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Stroud" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "351736" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gloucester" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Gloucester" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "240718" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/gloucester" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Caerloyw" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "240718" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/tewkesbury" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Tewkesbury" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "325898" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/forest-of-dean" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Forest of Dean" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "286888" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/forest-of-dean" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Fforest Y Ddena" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "286888" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cotswold" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cotswold" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "421125" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/cheltenham" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Cheltenham" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "322758" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/torridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Torridge" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "263378" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-devon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "East Devon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "339683" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/east-devon" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Dwyrain Dyfnaint" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "339683" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-devon" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "West Devon" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "285834" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/west-devon" } ,
+        "l": { "type": "literal" , "xml:lang": "cy" , "value": "Gorllewin Dyfnaint" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "285834" }
+      } ,
+      { 
+        "r": { "type": "uri" , "value": "http://landregistry.data.gov.uk/id/region/teignbridge" } ,
+        "l": { "type": "literal" , "xml:lang": "en" , "value": "Teignbridge" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integ
