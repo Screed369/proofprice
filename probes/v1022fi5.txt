@@ -1,0 +1,25 @@
+URL: https://statfin.stat.fi/PXWeb/api/v1/en/StatFin/asvu/15fc.px
+Fetched: 2026-10-22T18:46:31Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1711
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private,no-cache, must-revalidate Pragma: no-cache Expires: 0
+Content-Type: application/json; charset=utf-8
+Server: 
+Access-Control-Allow-Origin: *
+Set-Cookie: rxid=2db0ddc1-16b9-41d1-854e-d75f4deaf3e4; path=/
+X-Powered-By: ASP.NET
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.matomo.cloud https://stat.matomo.cloud 
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: same-origin
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Date: Thu, 22 Oct 2026 18:46:30 GMT
+Content-Length: 1711
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"title":"Distributions of total rents for non-subsidised rental dwellings in large cities by Area, Number of rooms, Quarter and Information","variables":[{"code":"alue_44_20260101","text":"Area","values":["091","091_1","091_2","091_3","091_4","049","049_1","049_2","049_3","092","092_1","092_2","092_3","853","853_1","853_2","853_3","609","609_1","609_2","109","109_1","109_2","837","837_1","837_2","837_3","398","398_1","398_2","286","405","405_1","405_2","297","297_1","297_2","167","167_1","167_2","179","179_1","179_2","905","905_1","905_2","564","564_1","564_2"],"valueTexts":["Helsinki","Helsinki 1","Helsinki 2","Helsinki 3","Helsinki 4","Espoo-Kauniainen","Espoo-Kauniainen 1","Espoo-Kauniainen 2","Espoo-Kauniainen 3","Vantaa","Vantaa 1","Vantaa 2","Vantaa 3","Turku","Turku 1","Turku 2","Turku 3","Pori","Pori 1","Pori 2","Hämeenlinna","Hämeenlinna 1","Hämeenlinna 2","Tampere","Tampere 1","Tampere 2","Tampere 3","Lahti","Lahti 1","Lahti 2","Kouvola","Lappeenranta","Lappeenranta 1","Lappeenranta 2","Kuopio","Kuopio 1","Kuopio 2","Joensuu","Joensuu 1","Joensuu 2","Jyväskylä","Jyväskylä 1","Jyväskylä 2","Vaasa","Vaasa 1","Vaasa 2","Oulu","Oulu 1","Oulu 2"]},{"code":"huoneluku_5_20260101","text":"Number of rooms","values":["1","2","3"],"valueTexts":["One-room flat","Two-room flat","Three-room flat+"]},{"code":"timeperiod_q","text":"Quarter","values":["2025Q1","2025Q2","2025Q3","2025Q4","2026Q1","2026Q2","2026Q3"],"valueTexts":["2025Q1","2025Q2","2025Q3","2025Q4","2026Q1","2026Q2","2026Q3"],"time":true},{"code":"contentscode","text":"Information","values":["asvu_q1","asvu_mediaani","asvu_q3","asvu_jakauma_lkm"],"valueTexts":["Lower quartile","Median","Upper quartile","Number"]}]}
