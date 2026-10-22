@@ -1,0 +1,60 @@
+URL: https://lindas.admin.ch/query?query=SELECT%20%3Fobs%20%3Fp%20%3Fo%20FROM%20%3Chttps%3A%2F%2Flindas.admin.ch%2Felcom%2Felectricityprice%3E%20WHERE%20%7B%20%3Fobs%20a%20%3Chttps%3A%2F%2Fcube.link%2FObservation%3E%20.%20%3Fobs%20%3Chttps%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice%2Fdimension%2Fcanton%3E%20%3Chttps%3A%2F%2Fld.admin.ch%2Fcanton%2F1%3E%20.%20%3Fobs%20%3Fp%20%3Fo%20%7D%20LIMIT%2040
+Fetched: 2026-10-22T17:34:20Z from GitHub Actions
+Status, type, bytes: 200 text/csv;charset=UTF-8 7027
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Thu, 22 Oct 2026 17:34:20 GMT
+content-type: text/csv;charset=UTF-8
+vary: Origin
+access-control-allow-credentials: true
+server-timing: sparql-proxy;dur=17.03217799961567;desc="Querying the endpoint"
+xkey: default
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-robots-tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+
+=== FILE TYPE: CSV ASCII text
+=== FIRST 20000 BYTES
+obs,p,o
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,https://cube.link/Observation
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://cube.link/observedBy,https://register.ld.admin.ch/staatskalender/organization/20030954
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/period,2018
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/category,https://energy.ld.admin.ch/elcom/electricityprice/category/H1
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/total,22.693
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/charge,0.32
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/aidfee,2.3
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/energy,5.907
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/gridusage,13.957
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/product,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/canton,https://ld.admin.ch/canton/1
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/meteringrate,
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H1-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/annualmeteringcost,
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,https://cube.link/Observation
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://cube.link/observedBy,https://register.ld.admin.ch/staatskalender/organization/20030954
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/period,2018
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/category,https://energy.ld.admin.ch/elcom/electricityprice/category/H2
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/total,20.068
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/charge,0.32
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/aidfee,2.3
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/energy,5.879
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/gridusage,12.135
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/product,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/canton,https://ld.admin.ch/canton/1
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/meteringrate,
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H2-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/annualmeteringcost,
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,https://cube.link/Observation
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://cube.link/observedBy,https://register.ld.admin.ch/staatskalender/organization/20030954
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/period,2018
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/category,https://energy.ld.admin.ch/elcom/electricityprice/category/H3
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/total,16.891
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/charge,0.32
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/aidfee,2.3
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/energy,5.542
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/gridusage,9.201
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/product,https://energy.ld.admin.ch/elcom/electricityprice/product/cheapest
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/canton,https://ld.admin.ch/canton/1
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/meteringrate,
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H3-cheapest-2018,https://energy.ld.admin.ch/elcom/electricityprice/dimension/annualmeteringcost,
+https://energy.ld.admin.ch/elcom/electricityprice-canton/observation/1-H4-cheapest-2018,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,https://cube.link/Observation
