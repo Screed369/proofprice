@@ -1,0 +1,28 @@
+URL: https://api.scb.se/OV0104/v2beta/api/v2/tables/TAB6421/data?lang=en&outputFormat=json-stat2&valueCodes%5BRegion%5D=00,0010,0020,0030,0040,0041&valueCodes%5BByggherre%5D=4&valueCodes%5BAntalRum%5D=1,2,3,4,99,00&valueCodes%5BContentsCode%5D=000007ND,000007NF,000007NH&valueCodes%5BTid%5D=top(1)
+Fetched: 2026-10-22T22:12:34Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 4222
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Content-Disposition: inline; filename="TAB6421.json"
+Content-Disposition: inline; filename="TAB6421.json"
+X-Rate-Limit-Limit: 10s
+X-Rate-Limit-Remaining: 29
+X-Rate-Limit-Reset: 2026-10-22T22:12:42.8971138Z
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Date: Thu, 22 Oct 2026 22:12:34 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Max-Age: 86400
+Allow: GET,HEAD,POST,OPTIONS
+Vary: Origin, Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: TS0187a64b=017dca055c6a85607c0f1c184b134eac1c8b5fae9c839744257207711c9c188712221ba510ce15a7ec7688851b2dc51d1352bf9fad; Path=/; Domain=.api.scb.se; Secure; HttpOnly
+Transfer-Encoding: chunked
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"version":"2.0","class":"dataset","label":"Rents in newly constructed buildings (rented dwellings) by region, investor, number of rooms and year","source":"Statistics Sweden","updated":"2026-10-02T06:00:00Z","note":["In 2023, data for one- or two dwelling building was previously categorized by number of rooms. As of the publication dated 2025-09-17, this information is now reported under One- or two dwelling building regardless of number of rooms.",".. = Means that information is not available, too uncertain to be presented or removed for reasons of confidentiality."],"role":{"time":["Tid"],"metric":["ContentsCode"]},"id":["Region","Byggherre","AntalRum","ContentsCode","Tid"],"size":[6,1,6,3,1],"dimension":{"Region":{"label":"region","category":{"index":{"00":0,"0010":1,"0020":2,"0030":3,"0040":4,"0041":5},"label":{"00":"Sweden","0010":"Greater Stockholm","0020":"Greater Göteborg","0030":"Greater Malmö","0040":"Municipalities with  >75000 inhabitants (excluding metropolitan areas)","0041":"Municipalities with  <75000 inhabitants (excluding metropolitan areas)"}},"extension":{"elimination":true,"eliminationValueCode":"00","show":"code_value"}},"Byggherre":{"label":"investor","category":{"index":{"4":0},"label":{"4":"Total"}},"extension":{"elimination":true,"eliminationValueCode":"4","show":"value"}},"AntalRum":{"label":"number of rooms","category":{"index":{"1":0,"2":1,"3":2,"4":3,"99":4,"00":5},"label":{"1":"Apartment 1 room","2":"Apartment 2 rooms","3":"Apartment 3 rooms","4":"Apartment 4+ rooms","99":"One- or two dwelling building regardless of number of rooms","00":"Total"}},"extension":{"elimination":true,"eliminationValueCode":"00","show":"value"}},"ContentsCode":{"label":"observations","category":{"index":{"000007ND":0,"000007NF":1,"000007NH":2},"label":{"000007ND":"dwellings","000007NF":"annual rent per square metre, SEK","000007NH":"monthly rent (annual rent/12) per dwelling, SEK"},"unit":{"000007ND":{"base":"number","decimals":0},"000007NF":{"base":"SEK","decimals":0},"000007NH":{"base":"SEK","decimals":0}}},"extension":{"elimination":false,"refperiod":{"000007ND":"31 December of each year","000007NF":"31 December of each year","000007NH":"31 December of each year"},"show":"value","measuringType":{"000007ND":"Stock","000007NF":"Stock","000007NH":"Stock"},"priceType":{"000007ND":"NotApplicable","000007NF":"Current","000007NH":"Current"},"adjustment":{"000007ND":"None","000007NF":"None","000007NH":"None"},"alternativeText":{"000007ND":"Dwellings in newly constructed buildings (rented dwellings)","000007NF":"Annual rent per square metre in newly constructed buildings (rented dwellings), SEK","000007NH":"Monthly rent (annual rent/12) per dwelling in newly constructed buildings (rented dwellings), SEK"}}},"Tid":{"label":"year","category":{"index":{"2025":0},"label":{"2025":"2025"}},"extension":{"elimination":false,"show":"code"}}},"extension":{"noteMandatory":{"0":true},"px":{"infofile":"BO0404","tableid":"TAB6421","decimals":0,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"Rents in newly constructed buildings (rented dwellings)","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["Region","Byggherre","AntalRum"],"matrix":"TAB6421","subject-code":"BO","subject-area":"Housing, construction and building"},"discontinued":null,"contact":[{"name":"Byggande och bebyggelse","organization":"Statistics Sweden","phone":"-","mail":"byggande.bebyggelse@scb.se","raw":" Byggande och bebyggelse, Statistics Sweden# - -#byggande.bebyggelse@scb.se"}]},"value":[3147,3050,8062,4457,2700,11140,2511,2353,13571,1081,2289,17143,208,1829,11394,11441,2565,11363,1177,3455,9375,1783,3162,12392,810,2786,15537,471,2543,19749,null,null,null,4282,2977,12859,664,3075,8603,704,2582,11660,334,2364,14338,130,2226,16960,null,null,null,1840,2596,11405,218,3016,6776,279,2591,10722,142,2280,14056,63,2103,16436,null,null,null,702,2490,10684,783,2552,6399,1073,2331,9682,695,2112,12197,182,2053,15081,16,1674,10840,2749,2256,9747,305,2629,7001,618,2283,9654,530,2044,11755,235,2007,13810,180,1839,11561,1868,2132,10524],"status":{"30":"..","31":"..","32":"..","48":"..","49":"..","50":"..","66":"..","67":"..","68":".."}}
