@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { auContracts, cleanUnspsc, dayWindows, dedupe, INFO, isMatch, MIN_VALUE, parsePage, wordsOf } from "./source";
+import { auContracts, cleanUnspsc, dayWindows, dedupe, INFO, isEmptyDay, isMatch, MIN_VALUE, parsePage, wordsOf } from "./source";
 import { SourceError, InputError } from "../../lib/http";
 import { AU_PAGE } from "./fixtures";
 
@@ -79,4 +79,32 @@ test("AusTender: the answer is a contract-value range in AUD, with the licence a
     globalThis.fetch = orig;
   }
   assert.equal(INFO.price_type, "contract_price");
+});
+
+test("AusTender: HTTP 400 'No Records found for Date Range' is an empty day, other errors are not", () => {
+  assert.equal(isEmptyDay(new SourceError("Source returned HTTP 400", '{"message":"No Records found for Date Range"}', 400)), true);
+  assert.equal(isEmptyDay(new SourceError("Source returned HTTP 400", "bad date", 400)), false);
+  assert.equal(isEmptyDay(new SourceError("Source returned HTTP 503", "No Records", 503)), false);
+  assert.equal(isEmptyDay(new Error("x")), false);
+});
+
+test("AusTender: weekend days that answer 400 'No Records' do not turn the whole answer into a 502", async () => {
+  const orig = globalThis.fetch;
+  const page = { ...AU_PAGE, links: { self: "x" } };
+  globalThis.fetch = (async (url: string) =>
+    /2026-10-1[0-9]T|2026-10-20T/.test(String(url)) && /T00:00:00Z\/2026-10-(11|18)/.test(String(url)) === false && /(2026-10-(10|17)T)/.test(String(url))
+      ? new Response('{"message":"No Records found for Date Range"}', { status: 400 })
+      : new Response(JSON.stringify(page), { status: 200, headers: { "content-type": "application/json" } })) as any;
+  try {
+    const a = await auContracts({ what: "equipment", months: 1 }, new Date("2026-10-21T05:00:00Z"));
+    assert.equal(a.status, "ok");
+  } finally {
+    globalThis.fetch = orig;
+  }
+  globalThis.fetch = (async () => new Response("boom", { status: 400 })) as any;
+  try {
+    await assert.rejects(() => auContracts({ what: "equipment", months: 1 }, new Date("2026-10-21T05:00:00Z")), SourceError);
+  } finally {
+    globalThis.fetch = orig;
+  }
 });
