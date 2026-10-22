@@ -1,0 +1,299 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0009176&lang=EN
+Fetched: 2026-10-22T05:35:47Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 8176
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Thu, 22 Oct 2026 05:35:46 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 8176
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=DgsMUOjoFdpX9ynMXWJvQaChWHogGQPyizXjreBw.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+[ {
+  "IndicadorCod" : "0009176",
+  "IndicadorNome" : "Cinema sessions (2006 methodology - No.) by Geographic localization (NUTS - 2013); Quarterly - Institute of Cinema and Audiovisual",
+  "Periodic" : "Quarterly",
+  "PrimeiroPeriodo" : "1st Quarter 2015",
+  "UltimoPeriodo" : "4th Quarter 2019",
+  "UnidadeMedida" : "Number (No.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2020-04-29",
+  "DataExtracao" : "2026-10-22T06:35:46.522+01:00",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Quarter)",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (NUTS - 2013)",
+      "versao" : "03505",
+      "nota_dsg" : "From January 1st, 2015 came into force a new version of NUTS (NUTS 2013). At NUTS II level was just a name change in \"Lisboa\" which became known as \"Área Metropolitana de Lisboa\"."
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S5A20151" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20151",
+        "categ_cod" : "S5A20151",
+        "categ_dsg" : "1st Quarter 2015",
+        "categ_ord" : "20150101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20152" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20152",
+        "categ_cod" : "S5A20152",
+        "categ_dsg" : "2nd Quarter 2015",
+        "categ_ord" : "20150401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20153" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20153",
+        "categ_cod" : "S5A20153",
+        "categ_dsg" : "3rd Quarter 2015",
+        "categ_ord" : "20150701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20154" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20154",
+        "categ_cod" : "S5A20154",
+        "categ_dsg" : "4th Quarter 2015",
+        "categ_ord" : "20151001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20161" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20161",
+        "categ_cod" : "S5A20161",
+        "categ_dsg" : "1st Quarter 2016",
+        "categ_ord" : "20160101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20162" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20162",
+        "categ_cod" : "S5A20162",
+        "categ_dsg" : "2nd Quarter 2016",
+        "categ_ord" : "20160401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20163" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20163",
+        "categ_cod" : "S5A20163",
+        "categ_dsg" : "3rd Quarter 2016",
+        "categ_ord" : "20160701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20164" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20164",
+        "categ_cod" : "S5A20164",
+        "categ_dsg" : "4th Quarter 2016",
+        "categ_ord" : "20161001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20171" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20171",
+        "categ_cod" : "S5A20171",
+        "categ_dsg" : "1st Quarter 2017",
+        "categ_ord" : "20170101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20172" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20172",
+        "categ_cod" : "S5A20172",
+        "categ_dsg" : "2nd Quarter 2017",
+        "categ_ord" : "20170401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20173" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20173",
+        "categ_cod" : "S5A20173",
+        "categ_dsg" : "3rd Quarter 2017",
+        "categ_ord" : "20170701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20174" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20174",
+        "categ_cod" : "S5A20174",
+        "categ_dsg" : "4th Quarter 2017",
+        "categ_ord" : "20171001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20181" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20181",
+        "categ_cod" : "S5A20181",
+        "categ_dsg" : "1st Quarter 2018",
+        "categ_ord" : "20180101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20182" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20182",
+        "categ_cod" : "S5A20182",
+        "categ_dsg" : "2nd Quarter 2018",
+        "categ_ord" : "20180401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20183" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20183",
+        "categ_cod" : "S5A20183",
+        "categ_dsg" : "3rd Quarter 2018",
+        "categ_ord" : "20180701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20184" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20184",
+        "categ_cod" : "S5A20184",
+        "categ_dsg" : "4th Quarter 2018",
+        "categ_ord" : "20181001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20191" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20191",
+        "categ_cod" : "S5A20191",
+        "categ_dsg" : "1st Quarter 2019",
+        "categ_ord" : "20190101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20192" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20192",
+        "categ_cod" : "S5A20192",
+        "categ_dsg" : "2nd Quarter 2019",
+        "categ_ord" : "20190401",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20193" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20193",
+        "categ_cod" : "S5A20193",
+        "categ_dsg" : "3rd Quarter 2019",
+        "categ_ord" : "20190701",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S5A20194" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S5A20194",
+        "categ_cod" : "S5A20194",
+        "categ_dsg" : "4th Quarter 2019",
+        "categ_ord" : "20191001",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num2_PT" : [ {
+        "dim_num" : "2",
+        "cat_id" : "PT",
+        "categ_cod" : "PT",
+        "categ_dsg" : "Portugal",
+        "categ_ord" : "1",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num2_1" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1",
+        "categ_cod" : "1",
+        "categ_dsg" : "Continente",
+        "categ_ord" : "2",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_11" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11",
+        "categ_cod" : "11",
+        "categ_dsg" : "Norte",
+        "categ_ord" : "3",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_16" : [ {
+        "dim_num" : "2",
+        "cat_id" : "16",
+        "categ_cod" : "16",
+        "categ_dsg" : "Centro",
+        "categ_ord" : "1524",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_17" : [ {
+        "dim_num" : "2",
+        "cat_id" : "17",
+        "categ_cod" : "17",
+        "categ_dsg" : "Área Metropolitana de Lisboa",
+        "categ_ord" : "2605",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_18" : [ {
+        "dim_num" : "2",
+        "cat_id" : "18",
+        "categ_cod" : "18",
+        "categ_dsg" : "Alentejo",
+        "categ_ord" : "2743",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_15" : [ {
+        "dim_num" : "2",
+        "cat_id" : "15",
+        "categ_cod" : "15",
+        "categ_dsg" : "Algarve",
+        "categ_ord" : "3106",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_2" : [ {
+        "dim_num" : "2",
+        "cat_id" : "2",
+        "categ_cod" : "2",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "3191",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_20" : [ {
+        "dim_num" : "2",
+        "cat_id" : "20",
+        "categ_cod" : "20",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "3192",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_3" : [ {
+        "dim_num" : "2",
+        "cat_id" : "3",
+        "categ_cod" : "3",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "3369",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_30" : [ {
+        "dim_num" : "2",
+        "cat_id" : "30",
+        "categ_cod" : "30",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "3370",
+        "categ_nivel" : "3"
+      } ]
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
