@@ -1,0 +1,224 @@
+URL: https://dam-api.bfs.admin.ch/hub/api/dam/assets/1740325
+Fetched: 2026-10-22T07:44:01Z from GitHub Actions
+Status, type, bytes: 200 application/json 6470
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Thu, 22 Oct 2026 07:44:01 GMT
+Server: Apache
+X-Ticket-Id: -372737454925548742
+Vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+Content-Type: application/json
+Set-Cookie: cookiesession1=678B777D447C0677441AB76356DB07F6;Expires=Fri, 22 Oct 2027 07:44:01 GMT;Path=/;Secure;HttpOnly
+Strict-Transport-Security: max-age=15552000
+X-XSS-Protection: 1
+content-length: 6470
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "ids" : {
+    "uuid" : "22a37e52-c09f-48d6-b787-1922d218fabf",
+    "damId" : 1740325,
+    "contentId" : 270144,
+    "languageCopyId" : 1740316,
+    "gnp" : "2017-0002"
+  },
+  "bfs" : {
+    "embargo" : "2017-01-05T08:15:00Z",
+    "lifecycle" : {
+      "id" : 900400,
+      "level" : 0,
+      "code" : "OLD",
+      "name" : "Diffundiert/alt  Letzt jüngere Instanz des Assets"
+    },
+    "lifecycleGroup" : "NON_CURRENT",
+    "provisional" : false,
+    "articleModel" : {
+      "id" : 900030,
+      "level" : 1,
+      "code" : "TABL",
+      "name" : "TM10 Tabelle Datei"
+    },
+    "articleModelGroup" : {
+      "id" : 900029,
+      "level" : 0,
+      "code" : "AMG_TABLE",
+      "name" : "Daten - Tabelle"
+    }
+  },
+  "description" : {
+    "titles" : {
+      "main" : "LIK, Durchschnittspreise ausgewählter Produkte, Monatswerte."
+    },
+    "categorization" : {
+      "collection" : [ {
+        "id" : 900001,
+        "level" : 0,
+        "code" : "STAT_GEN",
+        "name" : "Allgemeine Statistik"
+      }, {
+        "id" : 900015,
+        "level" : 0,
+        "code" : "TAB_CC",
+        "name" : "Tab CC"
+      } ],
+      "prodima" : [ {
+        "id" : 900084,
+        "level" : 0,
+        "code" : "05",
+        "name" : "Preise"
+      }, {
+        "id" : 900086,
+        "level" : 1,
+        "code" : "05.02",
+        "name" : "Landesindex der Konsumentenpreise"
+      } ],
+      "inquiry" : [ {
+        "id" : 900002,
+        "level" : 0,
+        "name" : "Stichprobenerhebung"
+      }, {
+        "id" : 8,
+        "level" : 1,
+        "code" : "LIK",
+        "abbrev" : "LIK",
+        "name" : "Landesindex der Konsumentenpreise"
+      } ],
+      "spatialdivision" : [ {
+        "id" : 900091,
+        "level" : 0,
+        "code" : "p_suis",
+        "name" : "Schweiz"
+      }, {
+        "id" : 900001,
+        "level" : 1,
+        "code" : "suis",
+        "name" : "Schweiz"
+      } ],
+      "classification" : [ ],
+      "institution" : [ {
+        "id" : 900001,
+        "level" : 0,
+        "name" : "Bundesamt für Statistik"
+      }, {
+        "id" : 900065,
+        "level" : 1,
+        "code" : "BFS",
+        "abbrev" : "BFS",
+        "name" : "Bundesamt für Statistik"
+      } ],
+      "publisher" : [ ],
+      "tags" : [ ],
+      "dataSource" : [ ],
+      "copyrights" : [ ],
+      "termsOfUse" : [ {
+        "id" : 900004,
+        "level" : 0,
+        "code" : "OPEN-BY",
+        "abbrev" : "Freie Nutzung - Quellenangabe ist Pflicht",
+        "name" : "Open use - Must provide the source"
+      } ],
+      "serie" : [ ],
+      "periodicity" : [ ]
+    },
+    "bibliography" : {
+      "period" : "1.12.2016-31.12.2016"
+    },
+    "language" : "DE",
+    "highlight" : false,
+    "discontinued" : false,
+    "downloadable" : true
+  },
+  "shop" : {
+    "orderNr" : "cc-d-05.02.44",
+    "stock" : false
+  },
+  "seo" : {
+    "metaKeywords" : [ ]
+  },
+  "links" : [ {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1740325",
+    "rel" : "self"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1740325/bibtex",
+    "rel" : "bibtex"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1740325/ris",
+    "rel" : "ris"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1740325/thumbnail",
+    "rel" : "thumbnail"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1740325/master",
+    "rel" : "master",
+    "format" : "xls",
+    "size" : 98816
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1740329",
+    "rel" : "alternate",
+    "hreflang" : "fr",
+    "text" : "FR"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/1740322",
+    "rel" : "alternate",
+    "hreflang" : "it",
+    "text" : "IT"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36878055",
+    "rel" : "last",
+    "text" : "LIK, Durchschnittspreise ausgewählter Produkte, Monatswerte."
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/packages/2017-0002",
+    "rel" : "related-gnp",
+    "text" : "Landesindex der Konsumentenpreise im Dezember 2016"
+  }, {
+    "href" : "/bfs/de/home/statistiken/preise/erhebungen/lik.html",
+    "rel" : "related-factsheet-inquiry",
+    "text" : "Landesindex der Konsumentenpreise"
+  }, {
+    "href" : "/bfs/de/home/statistiken/preise.html",
+    "rel" : "related-theme-entrypage",
+    "text" : "Preise"
+  } ],
+  "_embedded" : {
+    "labels" : {
+      "asset.bfs.embargo" : "Veröffentlicht am",
+      "asset.bfs.lastupdated" : "Letzte Aktualisierung",
+      "asset.bfs.model.name" : "Typ",
+      "asset.bfs.originalembargo" : "Ursprüngliches Publikationsdatum",
+      "asset.bfs.provisional" : "Datenstand",
+      "asset.bfs.status" : "Status",
+      "asset.content.format" : "Format",
+      "asset.content.href" : "Anhang",
+      "asset.description.abstractShort" : "Zusammenfassung",
+      "asset.description.bibliography.author" : "Autor(en)",
+      "asset.description.bibliography.copyright" : "Copyright",
+      "asset.description.bibliography.doi" : "Persistenter Link",
+      "asset.description.bibliography.info" : "Bibliographische Angaben",
+      "asset.description.bibliography.pages" : "Seiten",
+      "asset.description.bibliography.period" : "Dargestellter Zeitraum",
+      "asset.description.bibliography.source" : "Quelle(n)",
+      "asset.description.bibliography.termsofuse" : "Nutzungsbedingungen",
+      "asset.description.categorization.classification" : "Nomenklatur(en)",
+      "asset.description.categorization.geography" : "Raumgliederung",
+      "asset.description.categorization.inquiry" : "Erhebung, Statistik",
+      "asset.description.categorization.institution" : "Herausgeber",
+      "asset.description.categorization.keyword" : "Schlagworte",
+      "asset.description.categorization.periodicity" : "Periodizität",
+      "asset.description.categorization.prodima" : "Thema",
+      "asset.description.categorization.publisher" : "Verlag",
+      "asset.description.categorization.serie" : "Reihe",
+      "asset.description.categorization.tags" : "Tags",
+      "asset.description.language" : "Sprache",
+      "asset.descriptions.title.main" : "Titel",
+      "asset.shop.ordernr" : "BFS-Nummer",
+      "asset.shop.price" : "Preis",
+      "link.rel.appendix" : "Zusätzliche Daten",
+      "links.rel.mostrecentissue" : "Aktuellste Ausgabe",
+      "links.rel.otherlanguages" : "Weitere Sprachen",
+      "links.rel.relateddocuments" : "Verwandte Dokumente"
+    }
+  }
+}
