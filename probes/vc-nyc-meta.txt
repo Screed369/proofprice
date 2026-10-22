@@ -1,0 +1,84 @@
+URL: https://data.cityofnewyork.us/api/views/metadata/v1/4b4i-vvec
+Fetched: 2026-10-22T02:46:40Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2512
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 02:46:40 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: a843f0fb6255fb0997560516fb8e1e48
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{
+  "id" : "4b4i-vvec",
+  "name" : "2023 Yellow Taxi Trip Data",
+  "attribution" : "Taxi and Limousine Commission (TLC)",
+  "attributionLink" : "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+  "category" : "Transportation",
+  "createdAt" : "2024-07-01T15:53:40+0000",
+  "dataUpdatedAt" : "2024-07-01T20:32:33+0000",
+  "dataUri" : "https://data.cityofnewyork.us/resource/4b4i-vvec",
+  "description" : "These records are generated from the trip record submissions made by yellow taxi Technology Service Providers (TSPs). Each row represents a single trip in a yellow taxi. The trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off taxi zone locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.",
+  "domain" : "data.cityofnewyork.us",
+  "externalId" : null,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "license" : null,
+  "metadataUpdatedAt" : "2024-07-16T18:35:01+0000",
+  "provenance" : "OFFICIAL",
+  "updatedAt" : "2024-07-16T18:37:53+0000",
+  "webUri" : "https://data.cityofnewyork.us/d/4b4i-vvec",
+  "approvals" : [ {
+    "reviewedAt" : 1721155073,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 6412442,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1721154916,
+    "targetAudience" : "public",
+    "workflowId" : 2285,
+    "reviewer" : {
+      "id" : "d5dp-fses",
+      "displayName" : "afinkel"
+    },
+    "submissionDetails" : {
+      "permissionType" : "read"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1721155073,
+      "failureCount" : 0,
+      "startedAt" : 1721155073,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "d5dp-fses",
+      "displayName" : "afinkel"
+    }
+  } ],
+  "customFields" : {
+    "Data Collection" : {
+      "Data Collection" : "TLC Trip Data"
+    },
+    "Update" : {
+      "Automation" : "No",
+      "Update Frequency Details" : "As this is historical data, the dataset is only published once. The data will only be changed rarely if there are corrections needed.",
+      "Date Made Public" : "7/16/2024",
+      "Update Frequency" : "Historical data",
+      "Data Change Frequency" : "As Needed"
+    },
+    "Dataset Information" : {
+      "Agency" : "Taxi and Limousine Commission (TLC)"
+    }
+  },
+  "tags" : [ "yellow taxi", "trip data", "fhv", "trip", "base", "high volume", "uber", "lyft", "via" ]
+}
