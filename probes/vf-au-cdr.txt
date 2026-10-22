@@ -1,0 +1,26 @@
+URL: https://api.cdr.gov.au/cdr-register/v1/energy/data-holders/brands/summary
+Fetched: 2026-10-22T10:42:48Z from GitHub Actions
+Status, type, bytes: 400 application/json 220
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+date: Thu, 22 Oct 2026 10:42:48 GMT
+content-type: application/json
+strict-transport-security: max-age=2592000
+request-context: appId=cid-v1:c080b871-a052-403c-96bd-d92e03ce2176
+x-azure-ref: 20261022T104247Z-178dbddcf86jcbq5hC1IADc0v00000001t2000000000m6em
+x-cache: CONFIG_NOCACHE
+access-control-allow-origin: *
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "errors": [
+    {
+      "code": "urn:au-cds:error:cds-all:Header/Missing",
+      "title": "Missing Required Header",
+      "detail": "An API version x-v header is required, but was not specified."
+    }
+  ]
+}
