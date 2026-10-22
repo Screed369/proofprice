@@ -1,0 +1,24 @@
+URL: https://open-data.ble.de/api/3/action/datastore_search?resource_id=d92b81a6-af6a-482f-b1bc-0a7138bf11d1&limit=6&sort=_id%20desc
+Fetched: 2026-10-22T01:44:28Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2216
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Thu, 22 Oct 2026 01:44:27 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubdomains;
+Referrer-Policy: same-origin
+Referrer-Policy: same-origin
+Referrer-Policy: same-origin
+Content-Length: 2216
+Cache-Control: public, max-age=0, must-revalidate
+Vary: Cookie
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: sameorigin
+X-Content-Type-Options: nosniff
+Content-Type: application/json;charset=utf-8
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{"help": "https://open-data.ble.de/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "limit": 6, "records_format": "objects", "resource_id": "d92b81a6-af6a-482f-b1bc-0a7138bf11d1", "sort": "_id desc", "total_estimation_threshold": null, "records": [{"_id":252596,"Nummerierung":"38","Woche (KW)":"20265","Herkunftsland":"Italien","Produktgruppe":"Kiwi Gold","Produkt":"/","Grosse":"30/33","Verkaufsgebiet":"Hamburg","Einheit":"€ /100 kg","Wert":"762"},{"_id":252595,"Nummerierung":"38","Woche (KW)":"20265","Herkunftsland":"Italien","Produktgruppe":"Kiwi Gold","Produkt":"/","Grosse":"30/33","Verkaufsgebiet":"Deutschland","Einheit":"€ /100 kg","Wert":"773"},{"_id":252594,"Nummerierung":"38","Woche (KW)":"20265","Herkunftsland":"Italien","Produktgruppe":"Kiwi Gold","Produkt":"/","Grosse":"30/33","Verkaufsgebiet":"Berlin","Einheit":"€ /100 kg","Wert":"800"},{"_id":252593,"Nummerierung":"38","Woche (KW)":"20265","Herkunftsland":"Italien","Produktgruppe":"Kiwi Gold","Produkt":"/","Grosse":"25/27","Verkaufsgebiet":"München","Einheit":"€ /100 kg","Wert":"1.200"},{"_id":252592,"Nummerierung":"38","Woche (KW)":"20265","Herkunftsland":"Italien","Produktgruppe":"Kiwi Gold","Produkt":"/","Grosse":"25/27","Verkaufsgebiet":"Hamburg","Einheit":"€ /100 kg","Wert":"1.092"},{"_id":252591,"Nummerierung":"38","Woche (KW)":"20265","Herkunftsland":"Italien","Produktgruppe":"Kiwi gold","Produkt":"/","Grosse":"25/27","Verkaufsgebiet":"Frankfurt","Einheit":"€ /100 kg","Wert":"1.196"}], "fields": [{"id": "_id", "type": "int"}, {"id": "Nummerierung", "type": "text"}, {"id": "Woche (KW)", "type": "text"}, {"id": "Herkunftsland", "type": "text"}, {"id": "Produktgruppe", "type": "text"}, {"id": "Produkt", "type": "text"}, {"id": "Grosse", "type": "text"}, {"id": "Verkaufsgebiet", "type": "text"}, {"id": "Einheit", "type": "text"}, {"id": "Wert", "type": "text"}], "_links": {"start": "/api/3/action/datastore_search?resource_id=d92b81a6-af6a-482f-b1bc-0a7138bf11d1&limit=6&sort=_id+desc", "next": "/api/3/action/datastore_search?resource_id=d92b81a6-af6a-482f-b1bc-0a7138bf11d1&limit=6&sort=_id+desc&offset=6"}, "total": 252596, "total_was_estimated": false}}
