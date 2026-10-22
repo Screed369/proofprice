@@ -1,0 +1,1121 @@
+URL: https://data.cityofchicago.org/api/views/ajtu-isnz.json
+Fetched: 2026-10-22T08:42:25Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 56717
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 08:42:25 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 2714983f03cd3ec878eb24e18ac60dfd
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "id" : "ajtu-isnz",
+  "name" : "Taxi Trips (2024-)",
+  "assetType" : "dataset",
+  "attribution" : "City of Chicago",
+  "attributionLink" : "https://www.chicago.gov",
+  "averageRating" : 0,
+  "category" : "Transportation",
+  "createdAt" : 1707320683,
+  "description" : "Taxi trips, starting January 2024, reported to the City of Chicago in its role as a regulatory agency.  To protect privacy but allow for aggregate analyses, the Taxi ID is consistent for any given taxi medallion number but does not show the number, Census Tracts are suppressed in some cases, and times are rounded to the nearest 15 minutes. <b> For earlier trips, see the link in the Featured Content section below.</b>\r\n\r\nDue to the data reporting process, not all trips are reported but the City believes that most are.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 10002,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "SEE_TERMS_OF_USE",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 40412494,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1707320688,
+  "publicationGroup" : 19451196,
+  "publicationStage" : "published",
+  "rowClass" : "",
+  "rowIdentifierColumnId" : 589263396,
+  "rowsUpdatedAt" : 1791494399,
+  "rowsUpdatedBy" : "vewm-vupz",
+  "tableId" : 19451196,
+  "totalTimesRated" : 0,
+  "viewCount" : 21045,
+  "viewLastModified" : 1774468360,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1707343071,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 6145139,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1707343057,
+    "targetAudience" : "public",
+    "workflowId" : 2226,
+    "reviewer" : {
+      "id" : "vewm-vupz",
+      "displayName" : "Jonathan Levy"
+    },
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1707343071,
+      "failureCount" : 0,
+      "startedAt" : 1707343071,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "vewm-vupz",
+      "displayName" : "Jonathan Levy"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 589263396,
+    "name" : "Trip ID",
+    "dataTypeName" : "text",
+    "description" : "A unique identifier for the trip.",
+    "fieldName" : "trip_id",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 151294725,
+    "width" : 115,
+    "cachedContents" : {
+      "non_null" : "18658792",
+      "largest" : "ffffffdda8f2f9f98cf474cce05b7e5e34dc25e4",
+      "null" : "0",
+      "top" : [ {
+        "item" : "000001dd3888f74eaf131b0627d367e8c5b73cc4",
+        "count" : "1"
+      }, {
+        "item" : "00000308e5f05857d15d7de20feaa496c222aa64",
+        "count" : "1"
+      }, {
+        "item" : "000004b810d038e96060908454a29dbcc343b565",
+        "count" : "1"
+      }, {
+        "item" : "00000557849abe842321a551b03b0e8cd11f922f",
+        "count" : "1"
+      }, {
+        "item" : "000005a9ebc299d9b0aa12285e5302143a4eb308",
+        "count" : "1"
+      }, {
+        "item" : "0000089a1473d1d59f4cbddf53f02e7ef65c0a25",
+        "count" : "1"
+      }, {
+        "item" : "000009a2240dbb381ed9acdf121aaf8c161a95ca",
+        "count" : "1"
+      }, {
+        "item" : "000009b8f9fadf81106ea35456132d957b1ff60b",
+        "count" : "1"
+      }, {
+        "item" : "00000a06edba3f969fbbaf432dc5e615073e9667",
+        "count" : "1"
+      }, {
+        "item" : "00000a980db3a3a9295d53b26bbd72200a9ce92b",
+        "count" : "1"
+      }, {
+        "item" : "00000aa02ffcee281b18855d604480632a903eff",
+        "count" : "1"
+      }, {
+        "item" : "00000b8e46ed51df7417f02e776c57fbf2ccc1e6",
+        "count" : "1"
+      }, {
+        "item" : "00000bb433c979c0679e123e987b60c796445b51",
+        "count" : "1"
+      }, {
+        "item" : "00000de76404c91fe0d8a3b895e6e0beb77e0097",
+        "count" : "1"
+      }, {
+        "item" : "00000e07f250a1b9a260291a47fe9f4e29c83862",
+        "count" : "1"
+      }, {
+        "item" : "00000e72cf586149b2a6f5cc33f52e42c92ba627",
+        "count" : "1"
+      }, {
+        "item" : "00000ed5dc9cc1775638d048f8054fbce30108d3",
+        "count" : "1"
+      }, {
+        "item" : "000013e567ccae2e08219d582bbc312f71c6a67e",
+        "count" : "1"
+      }, {
+        "item" : "000014cca5dbb4cbb34a82b155404e7923898aff",
+        "count" : "1"
+      }, {
+        "item" : "0000006aa752d456d05c6eeb43b057adb1ffa540",
+        "count" : "1"
+      } ],
+      "smallest" : "0000006aa752d456d05c6eeb43b057adb1ffa540",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "displayStyle" : "plain",
+      "align" : "left",
+      "aggregate" : "count"
+    }
+  }, {
+    "id" : 589263397,
+    "name" : "Taxi ID",
+    "dataTypeName" : "text",
+    "description" : "A unique identifier for the taxi.",
+    "fieldName" : "taxi_id",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 151294726,
+    "width" : 116,
+    "cachedContents" : {
+      "non_null" : "18658792",
+      "largest" : "NA",
+      "null" : "0",
+      "top" : [ {
+        "item" : "d40dae7ea46d61abca67eb53b157fe9cf0b485cca6dce122604588a69aa6c4b6b78e0e5c5fd11f9702babd94016122df1d328a459c8b7de2cb37a1bad947b1fe",
+        "count" : "27410"
+      }, {
+        "item" : "2780ead18beaa862cc67315ddabd9d1acaadcd6da82eba38b064d7d6f4acc260b68ef1ae3ce06dad845178107940b3493fa99640f0f70c25d15cf57336ab7b8f",
+        "count" : "23737"
+      }, {
+        "item" : "8da9e1d18757022c6a6a614fc2d38483e38aae441feff500095a83ebc68006cf88329f2c28e35ba92ead14037739f9971a8a2852f946ebc59d0160c4f1104ec8",
+        "count" : "22428"
+      }, {
+        "item" : "4c4264f53bc23de0a1bc1150f1a490d89aaab4a8137304e175f34c486ed6e9b579d15761d9099dfb46648248c210dc3b04086478d26e151138f93be0d168f429",
+        "count" : "20811"
+      }, {
+        "item" : "0595030a8e9fc3b8b9c252163d280bfbe7234a294d24b16a7922a5d18b64beaabf9a529682feea1a1b5f097cb2a291903811fb3c77b8676a2fd0a7b6dcabf82f",
+        "count" : "20177"
+      }, {
+        "item" : "37073e8c9e454886fe4a916f80a9a3478570e7dd3e663f40c5b81eae90f8f611027c67455f43b426f4c34dcb7fdb6697c82a3c6d00237f11a4a6cf5b1d1ce0c7",
+        "count" : "19481"
+      }, {
+        "item" : "ea98fbfaa8f59a4ae8a4cff71e3ce1482c929ad59a6f4c8cff4c8c4befce4235679a0f37f47553c9536de7f284f78dc38e18787c442313fc874577679e0fb6a4",
+        "count" : "19289"
+      }, {
+        "item" : "008dda45db57cb6daa679a86ce8c8149ddc05446d545b19f3b6e201071e93b3a0d30a0a46204415c1d145a47e256bab70c8b0aebeb37ffefc985fdfc288d38d6",
+        "count" : "19284"
+      }, {
+        "item" : "a79d72d3d49bed13558577cc0608caf7e8da5b9cee67b608b53567d1be89e0ad257654a59e271e1a0239e5ef4a926668d7edb9e1a798a7b1e6726b64113518c6",
+        "count" : "19129"
+      }, {
+        "item" : "e12d7334916f68b0a80dadea0c0ed141260197404a9a15f695e498456fcfc2250f36e891548ef1e3a5dc58eb387788f54fe3f52f53b877d7a2b355a5ff83273b",
+        "count" : "18820"
+      }, {
+        "item" : "507c504a8f5161affb83686119ddfc4961456b000700b843cafabd7201b067504fd11c73a5cbb1a4a6d386e76efd233ece3ec6743da7762635b402d3bb4f1b32",
+        "count" : "18667"
+      }, {
+        "item" : "dd38b7cebd5414ae2b17595c68048ff8745c5147487c6c21819daf489517055192acf8e79b37a52b929601021940f63b5fcae96aa07346acff8bc4298fdc9be6",
+        "count" : "18665"
+      }, {
+        "item" : "949b2b62a50681d3d1b5b44d94ee42384a57fd625d30d05e3e42493991598f758c7800cb232fed81cb5f9e21fe3cdd569dd886bc8c75c0df492b681e9cb0d1b3",
+        "count" : "18543"
+      }, {
+        "item" : "0881b7b36b4aad06e5ee59472465b15a6620637f694aae59e671eae69d6813cbce85e8da46949f71f5bd94b08f1db3323debbd8333302d97d22584ef366b2e10",
+        "count" : "18508"
+      }, {
+        "item" : "14685d7c19b1bcf05466194de4a62ee39d4144f97867505373401607acec327e9b715f57d5ae38f00020eb0a6325c0923967d4cdfbefb2ed0930d80a9fcdae42",
+        "count" : "18189"
+      }, {
+        "item" : "5cdde36a39ded2651da1686c7813baf589dac6eb873894c8d09897a60426f797790a9733c26060fcfb78ab34d938474c558db546687b5fed582732b2e120567d",
+        "count" : "17933"
+      }, {
+        "item" : "e14b72f6ec0a3804a1a989e2e818a2b82e73ef8b3d462c437c160e0c159cd07d178ff03762cfefdc0825a77bd63ee3212358e2db10c8e5cd93c372d1edd02d65",
+        "count" : "17900"
+      }, {
+        "item" : "c15639e59b9c42b72797d27ffb4371ff531cc7c5efe0828003c7f88d3a709835b81490b2481a6d0887447a1d90f8f0f3a860e5f87053dea3f5ddec0c490496b8",
+        "count" : "17896"
+      }, {
+        "item" : "ad3406bedb9f10f12fbb5e1f1f7236e883379fd7b58c64c41fbefce5326dc357532f077507a751d62f5121698539f7f7afcafac1256233b917dfaf0baa78cd8f",
+        "count" : "17885"
+      }, {
+        "item" : "018adeb3e0e0f1b8c78f37c4b99735005ea7acfe800ab82b00817f4411b6ca9f6dffee907b694af870546e5e5027c6a5340769f84e94ff7cb016c98368560dfd",
+        "count" : "17776"
+      } ],
+      "smallest" : "000daaa11a2d961100513e232a1ce05391c5d797d2dc5687dedf8d061758071464a4712b6b7e1cb5bfa8a7d046a32efdea99d40582007dfa455182ed7ec426d7",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "displayStyle" : "plain",
+      "align" : "left"
+    }
+  }, {
+    "id" : 589263398,
+    "name" : "Trip Start Timestamp",
+    "dataTypeName" : "calendar_date",
+    "description" : "When the trip started, rounded to the nearest 15 minutes.",
+    "fieldName" : "trip_start_timestamp",
+    "position" : 3,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 151294727,
+    "width" : 188,
+    "cachedContents" : {
+      "non_null" : "18658792",
+      "largest" : "2026-10-01T00:00:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2025-09-18T17:15:00.000",
+        "count" : "543"
+      }, {
+        "item" : "2026-06-11T13:15:00.000",
+        "count" : "537"
+      }, {
+        "item" : "2025-06-12T13:45:00.000",
+        "count" : "534"
+      }, {
+        "item" : "2025-05-15T15:15:00.000",
+        "count" : "532"
+      }, {
+        "item" : "2025-05-30T18:15:00.000",
+        "count" : "529"
+      }, {
+        "item" : "2026-06-04T13:45:00.000",
+        "count" : "524"
+      }, {
+        "item" : "2024-12-12T18:15:00.000",
+        "count" : "523"
+      }, {
+        "item" : "2026-09-17T17:15:00.000",
+        "count" : "521"
+      }, {
+        "item" : "2026-06-17T11:45:00.000",
+        "count" : "518"
+      }, {
+        "item" : "2026-06-17T12:00:00.000",
+        "count" : "518"
+      }, {
+        "item" : "2026-06-09T08:45:00.000",
+        "count" : "514"
+      }, {
+        "item" : "2026-05-15T17:15:00.000",
+        "count" : "513"
+      }, {
+        "item" : "2026-05-15T17:00:00.000",
+        "count" : "512"
+      }, {
+        "item" : "2026-06-11T12:45:00.000",
+        "count" : "511"
+      }, {
+        "item" : "2025-08-18T18:15:00.000",
+        "count" : "511"
+      }, {
+        "item" : "2026-05-15T18:00:00.000",
+        "count" : "510"
+      }, {
+        "item" : "2025-05-30T17:30:00.000",
+        "count" : "509"
+      }, {
+        "item" : "2025-05-16T17:15:00.000",
+        "count" : "508"
+      }, {
+        "item" : "2025-05-15T15:00:00.000",
+        "count" : "508"
+      }, {
+        "item" : "2025-05-16T18:45:00.000",
+        "count" : "508"
+      } ],
+      "smallest" : "2024-01-01T00:00:00.000",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "view" : "date_time",
+      "align" : "left"
+    }
+  }, {
+    "id" : 589263399,
+    "name" : "Trip End Timestamp",
+    "dataTypeName" : "calendar_date",
+    "description" : "When the trip ended, rounded to the nearest 15 minutes.",
+    "fieldName" : "trip_end_timestamp",
+    "position" : 4,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 151294728,
+    "width" : 173,
+    "cachedContents" : {
+      "non_null" : "18658312",
+      "largest" : "2026-10-02T12:30:00.000",
+      "null" : "480",
+      "top" : [ {
+        "item" : "2025-09-18T18:30:00.000",
+        "count" : "545"
+      }, {
+        "item" : "2026-04-30T18:30:00.000",
+        "count" : "544"
+      }, {
+        "item" : "2025-05-16T19:00:00.000",
+        "count" : "543"
+      }, {
+        "item" : "2026-05-15T18:30:00.000",
+        "count" : "537"
+      }, {
+        "item" : "2025-05-30T17:45:00.000",
+        "count" : "535"
+      }, {
+        "item" : "2025-05-30T18:15:00.000",
+        "count" : "535"
+      }, {
+        "item" : "2026-04-23T18:30:00.000",
+        "count" : "533"
+      }, {
+        "item" : "2025-05-16T19:15:00.000",
+        "count" : "533"
+      }, {
+        "item" : "2025-05-30T18:30:00.000",
+        "count" : "527"
+      }, {
+        "item" : "2026-09-17T18:15:00.000",
+        "count" : "526"
+      }, {
+        "item" : "2025-05-16T18:45:00.000",
+        "count" : "526"
+      }, {
+        "item" : "2025-08-18T18:15:00.000",
+        "count" : "521"
+      }, {
+        "item" : "2024-10-17T18:30:00.000",
+        "count" : "520"
+      }, {
+        "item" : "2025-06-11T18:00:00.000",
+        "count" : "520"
+      }, {
+        "item" : "2026-05-15T18:15:00.000",
+        "count" : "519"
+      }, {
+        "item" : "2025-05-15T18:30:00.000",
+        "count" : "517"
+      }, {
+        "item" : "2026-05-15T18:45:00.000",
+        "count" : "517"
+      }, {
+        "item" : "2025-09-18T18:15:00.000",
+        "count" : "516"
+      }, {
+        "item" : "2025-05-30T18:45:00.000",
+        "count" : "516"
+      }, {
+        "item" : "2025-05-16T18:30:00.000",
+        "count" : "515"
+      } ],
+      "smallest" : "2024-01-01T00:00:00.000",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "view" : "date_time",
+      "align" : "left"
+    }
+  }, {
+    "id" : 589263400,
+    "name" : "Trip Seconds",
+    "dataTypeName" : "number",
+    "description" : "Time of the trip in seconds.",
+    "fieldName" : "trip_seconds",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 151294729,
+    "width" : 132,
+    "cachedContents" : {
+      "non_null" : "18655356",
+      "largest" : "86400",
+      "null" : "3436",
+      "top" : [ {
+        "item" : "0",
+        "count" : "245570"
+      }, {
+        "item" : "420",
+        "count" : "153354"
+      }, {
+        "item" : "480",
+        "count" : "151886"
+      }, {
+        "item" : "540",
+        "count" : "146933"
+      }, {
+        "item" : "360",
+        "count" : "145011"
+      }, {
+        "item" : "600",
+        "count" : "137928"
+      }, {
+        "item" : "300",
+        "count" : "128670"
+      }, {
+        "item" : "660",
+        "count" : "128210"
+      }, {
+        "item" : "720",
+        "count" : "117735"
+      }, {
+        "item" : "780",
+        "count" : "107609"
+      }, {
+        "item" : "240",
+        "count" : "101909"
+      }, {
+        "item" : "840",
+        "count" : "98640"
+      }, {
+        "item" : "4",
+        "count" : "93204"
+      }, {
+        "item" : "900",
+        "count" : "91280"
+      }, {
+        "item" : "960",
+        "count" : "85297"
+      }, {
+        "item" : "60",
+        "count" : "82493"
+      }, {
+        "item" : "5",
+        "count" : "80639"
+      }, {
+        "item" : "1020",
+        "count" : "80472"
+      }, {
+        "item" : "1080",
+        "count" : "77765"
+      }, {
+        "item" : "1140",
+        "count" : "76428"
+      } ],
+      "smallest" : "0",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "right",
+      "aggregate" : "sum"
+    }
+  }, {
+    "id" : 589263401,
+    "name" : "Trip Miles",
+    "dataTypeName" : "number",
+    "description" : "Distance of the trip in miles.",
+    "fieldName" : "trip_miles",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 151294730,
+    "width" : 124,
+    "cachedContents" : {
+      "non_null" : "18658509",
+      "largest" : "3397.8",
+      "null" : "283",
+      "top" : [ {
+        "item" : "0",
+        "count" : "1562683"
+      }, {
+        "item" : "1",
+        "count" : "125315"
+      }, {
+        "item" : "0.9",
+        "count" : "119284"
+      }, {
+        "item" : "0.8",
+        "count" : "118076"
+      }, {
+        "item" : "1.1",
+        "count" : "115951"
+      }, {
+        "item" : "0.7",
+        "count" : "110214"
+      }, {
+        "item" : "1.2",
+        "count" : "105866"
+      }, {
+        "item" : "0.6",
+        "count" : "99444"
+      }, {
+        "item" : "1.3",
+        "count" : "97300"
+      }, {
+        "item" : "1.4",
+        "count" : "89444"
+      }, {
+        "item" : "1.5",
+        "count" : "84472"
+      }, {
+        "item" : "1.6",
+        "count" : "82432"
+      }, {
+        "item" : "1.7",
+        "count" : "80945"
+      }, {
+        "item" : "0.5",
+        "count" : "77557"
+      }, {
+        "item" : "1.8",
+        "count" : "73534"
+      }, {
+        "item" : "1.9",
+        "count" : "65339"
+      }, {
+        "item" : "2",
+        "count" : "59406"
+      }, {
+        "item" : "0.4",
+        "count" : "53466"
+      }, {
+        "item" : "2.1",
+        "count" : "52196"
+      }, {
+        "item" : "0.01",
+        "count" : "50668"
+      } ],
+      "smallest" : "0",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "right",
+      "aggregate" : "sum"
+    }
+  }, {
+    "id" : 589263402,
+    "name" : "Pickup Census Tract",
+    "dataTypeName" : "text",
+    "description" : "The Census Tract where the trip began.  For privacy, this Census Tract is not shown for some trips. This column often will be blank for locations outside Chicago.",
+    "fieldName" : "pickup_census_tract",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 151294731,
+    "width" : 182,
+    "cachedContents" : {
+      "non_null" : "8417202",
+      "largest" : "17031980100",
+      "null" : "10241590",
+      "top" : [ {
+        "item" : "17031980000",
+        "count" : "1822873"
+      }, {
+        "item" : "17031839100",
+        "count" : "875472"
+      }, {
+        "item" : "17031320100",
+        "count" : "869778"
+      }, {
+        "item" : "17031281900",
+        "count" : "677304"
+      }, {
+        "item" : "17031081500",
+        "count" : "482233"
+      }, {
+        "item" : "17031081401",
+        "count" : "354301"
+      }, {
+        "item" : "17031330100",
+        "count" : "334536"
+      }, {
+        "item" : "17031081403",
+        "count" : "291336"
+      }, {
+        "item" : "17031280100",
+        "count" : "277995"
+      }, {
+        "item" : "17031980100",
+        "count" : "249150"
+      }, {
+        "item" : "17031081201",
+        "count" : "224064"
+      }, {
+        "item" : "17031081300",
+        "count" : "218501"
+      }, {
+        "item" : "17031320400",
+        "count" : "198059"
+      }, {
+        "item" : "17031320600",
+        "count" : "173414"
+      }, {
+        "item" : "17031081800",
+        "count" : "156243"
+      }, {
+        "item" : "17031081700",
+        "count" : "153385"
+      }, {
+        "item" : "17031081402",
+        "count" : "123472"
+      }, {
+        "item" : "17031841000",
+        "count" : "104719"
+      }, {
+        "item" : "17031833000",
+        "count" : "95321"
+      }, {
+        "item" : "17031080100",
+        "count" : "86454"
+      } ],
+      "smallest" : "17031010100",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "displayStyle" : "plain",
+      "align" : "left"
+    }
+  }, {
+    "id" : 589263403,
+    "name" : "Dropoff Census Tract",
+    "dataTypeName" : "text",
+    "description" : "The Census Tract where the trip ended.  For privacy, this Census Tract is not shown for some trips. This column often will be blank for locations outside Chicago.",
+    "fieldName" : "dropoff_census_tract",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 151294732,
+    "width" : 182,
+    "cachedContents" : {
+      "non_null" : "8175086",
+      "largest" : "17031980100",
+      "null" : "10483706",
+      "top" : [ {
+        "item" : "17031839100",
+        "count" : "1102861"
+      }, {
+        "item" : "17031320100",
+        "count" : "862077"
+      }, {
+        "item" : "17031980000",
+        "count" : "560788"
+      }, {
+        "item" : "17031081500",
+        "count" : "484021"
+      }, {
+        "item" : "17031281900",
+        "count" : "441396"
+      }, {
+        "item" : "17031081403",
+        "count" : "391418"
+      }, {
+        "item" : "17031330100",
+        "count" : "380578"
+      }, {
+        "item" : "17031081401",
+        "count" : "341977"
+      }, {
+        "item" : "17031081700",
+        "count" : "306610"
+      }, {
+        "item" : "17031833000",
+        "count" : "296154"
+      }, {
+        "item" : "17031081800",
+        "count" : "275419"
+      }, {
+        "item" : "17031081201",
+        "count" : "261924"
+      }, {
+        "item" : "17031320400",
+        "count" : "255606"
+      }, {
+        "item" : "17031280100",
+        "count" : "240560"
+      }, {
+        "item" : "17031081300",
+        "count" : "217930"
+      }, {
+        "item" : "17031320600",
+        "count" : "171514"
+      }, {
+        "item" : "17031081402",
+        "count" : "144810"
+      }, {
+        "item" : "17031081600",
+        "count" : "123703"
+      }, {
+        "item" : "17031841000",
+        "count" : "113241"
+      }, {
+        "item" : "17031980100",
+        "count" : "104341"
+      } ],
+      "smallest" : "17031010100",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "displayStyle" : "plain",
+      "align" : "left"
+    }
+  }, {
+    "id" : 589263404,
+    "name" : "Pickup Community Area",
+    "dataTypeName" : "number",
+    "description" : "The Community Area where the trip began. This column will be blank for locations outside Chicago.",
+    "fieldName" : "pickup_community_area",
+    "position" : 9,
+    "renderTypeName" : "number",
+    "tableColumnId" : 151294733,
+    "width" : 200,
+    "cachedContents" : {
+      "non_null" : "18154467",
+      "largest" : "77",
+      "null" : "504325",
+      "top" : [ {
+        "item" : "8",
+        "count" : "4188161"
+      }, {
+        "item" : "76",
+        "count" : "3656514"
+      }, {
+        "item" : "32",
+        "count" : "3000925"
+      }, {
+        "item" : "28",
+        "count" : "1881482"
+      }, {
+        "item" : "33",
+        "count" : "674750"
+      }, {
+        "item" : "6",
+        "count" : "668028"
+      }, {
+        "item" : "56",
+        "count" : "519611"
+      }, {
+        "item" : "7",
+        "count" : "444714"
+      }, {
+        "item" : "3",
+        "count" : "328595"
+      }, {
+        "item" : "24",
+        "count" : "221372"
+      }, {
+        "item" : "77",
+        "count" : "212342"
+      }, {
+        "item" : "41",
+        "count" : "155711"
+      }, {
+        "item" : "35",
+        "count" : "128736"
+      }, {
+        "item" : "2",
+        "count" : "119548"
+      }, {
+        "item" : "38",
+        "count" : "104395"
+      }, {
+        "item" : "43",
+        "count" : "99807"
+      }, {
+        "item" : "1",
+        "count" : "94815"
+      }, {
+        "item" : "44",
+        "count" : "90249"
+      }, {
+        "item" : "22",
+        "count" : "86343"
+      }, {
+        "item" : "39",
+        "count" : "85087"
+      } ],
+      "smallest" : "1",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true",
+      "precision" : "0",
+      "align" : "right"
+    }
+  }, {
+    "id" : 589263405,
+    "name" : "Dropoff Community Area",
+    "dataTypeName" : "number",
+    "description" : "The Community Area where the trip ended. This column will be blank for locations outside Chicago.",
+    "fieldName" : "dropoff_community_area",
+    "position" : 10,
+    "renderTypeName" : "number",
+    "tableColumnId" : 151294734,
+    "width" : 194,
+    "cachedContents" : {
+      "non_null" : "17050144",
+      "largest" : "77",
+      "null" : "1608648",
+      "top" : [ {
+        "item" : "8",
+        "count" : "4494244"
+      }, {
+        "item" : "32",
+        "count" : "3112509"
+      }, {
+        "item" : "28",
+        "count" : "1855479"
+      }, {
+        "item" : "76",
+        "count" : "873268"
+      }, {
+        "item" : "6",
+        "count" : "834380"
+      }, {
+        "item" : "7",
+        "count" : "753526"
+      }, {
+        "item" : "33",
+        "count" : "734049"
+      }, {
+        "item" : "24",
+        "count" : "452046"
+      }, {
+        "item" : "3",
+        "count" : "343863"
+      }, {
+        "item" : "77",
+        "count" : "264204"
+      }, {
+        "item" : "56",
+        "count" : "218553"
+      }, {
+        "item" : "22",
+        "count" : "195388"
+      }, {
+        "item" : "41",
+        "count" : "185844"
+      }, {
+        "item" : "35",
+        "count" : "141648"
+      }, {
+        "item" : "2",
+        "count" : "137892"
+      }, {
+        "item" : "5",
+        "count" : "136122"
+      }, {
+        "item" : "4",
+        "count" : "125817"
+      }, {
+        "item" : "1",
+        "count" : "119891"
+      }, {
+        "item" : "38",
+        "count" : "115615"
+      }, {
+        "item" : "43",
+        "count" : "110562"
+      } ],
+      "smallest" : "1",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true",
+      "precision" : "0",
+      "align" : "right"
+    }
+  }, {
+    "id" : 589263406,
+    "name" : "Fare",
+    "dataTypeName" : "number",
+    "description" : "The fare for the trip.",
+    "fieldName" : "fare",
+    "position" : 11,
+    "renderTypeName" : "number",
+    "tableColumnId" : 151294735,
+    "width" : 116,
+    "cachedContents" : {
+      "non_null" : "18622763",
+      "largest" : "9999.75",
+      "null" : "36029",
+      "top" : [ {
+        "item" : "8.5",
+        "count" : "468360"
+      }, {
+        "item" : "3.25",
+        "count" : "462993"
+      }, {
+        "item" : "9",
+        "count" : "370000"
+      }, {
+        "item" : "9.5",
+        "count" : "317385"
+      }, {
+        "item" : "10",
+        "count" : "251146"
+      }, {
+        "item" : "6",
+        "count" : "223370"
+      }, {
+        "item" : "6.25",
+        "count" : "213739"
+      }, {
+        "item" : "6.5",
+        "count" : "212511"
+      }, {
+        "item" : "7",
+        "count" : "209909"
+      }, {
+        "item" : "5.75",
+        "count" : "203930"
+      }, {
+        "item" : "6.75",
+        "count" : "203221"
+      }, {
+        "item" : "5.5",
+        "count" : "199592"
+      }, {
+        "item" : "7.25",
+        "count" : "189247"
+      }, {
+        "item" : "7.5",
+        "count" : "182354"
+      }, {
+        "item" : "5.25",
+        "count" : "178007"
+      }, {
+        "item" : "5",
+        "count" : "174042"
+      }, {
+        "item" : "8",
+        "count" : "172565"
+      }, {
+        "item" : "7.75",
+        "count" : "169199"
+      }, {
+        "item" : "30",
+        "count" : "166155"
+      }, {
+        "item" : "8.25",
+        "count" : "153904"
+      } ],
+      "smallest" : "0",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "precisionStyle" : "currency",
+      "humane" : "false",
+      "currencyStyle" : "USD",
+      "precision" : "2",
+      "align" : "right",
+      "aggregate" : "sum"
+    }
+  }, {
+    "id" : 589263407,
+    "name" : "Tips",
+    "dataTypeName" : "number",
+    "description" : "The tip for the trip. Cash tips generally will not be recorded.",
+    "fieldName" : "tips",
+    "position" : 12,
+    "renderTypeName" : "number",
+    "tableColumnId" : 151294736,
+    "width" : 116,
+    "cachedContents" : {
+      "non_null" : "18622763",
+      "largest" : "750.75",
+      "null" : "36029",
+      "top" : [ {
+        "item" : "0",
+        "count" : "10027722"
+      }, {
+        "item" : "2",
+        "count" : "975112"
+      }, {
+        "item" : "3",
+        "count" : "638911"
+      }, {
+        "item" : "5",
+        "count" : "335849"
+      }, {
+        "item" : "4",
+        "count" : "319653"
+      }, {
+        "item" : "10",
+        "count" : "196556"
+      }, {
+        "item" : "1",
+        "count" : "192785"
+      }, {
+        "item" : "2.3",
+        "count" : "100797"
+      }, {
+        "item" : "8",
+        "count" : "75686"
+      }, {
+        "item" : "2.4",
+        "count" : "66573"
+      }, {
+        "item" : "6",
+        "count" : "63649"
+      }, {
+        "item" : "7",
+        "count" : "56429"
+      }, {
+        "item" : "2.8",
+        "count" : "49924"
+      }, {
+        "item" : "2.9",
+        "count" : "36783"
+      }, {
+        "item" : "10.1",
+        "count" : "36690"
+      }, {
+        "item" : "1.5",
+        "count" : "35096"
+      }, {
+        "item" : "2.5",
+        "count" : "34885"
+      }, {
+        "item" : "9.75",
+        "count" : "34251"
+      }, {
+        "item" : "15",
+        "count" : "33830"
+      }, {
+        "item" : "3.1",
+        "count" : "32276"
+      } ],
+      "smallest" : "0",
+      "count" : "18658792",
+      "cardinality" : "18658792"
+    },
+    "format" : {
+      "precisionStyle" : "currency",
+      "humane" : "false",
+      "currencyStyle" : "USD",
+      "precision" : "2",
+      "align" : "right",
+      "aggregate" : "sum"
+    }
+  }, {
+    "id" : 589263408,
+    "name" : "Tolls",
+    "dataTypeName" : "number",
+    "description" : "The tolls for the trip.",
+    "fieldName" : "tolls",
+    "position" : 13,
+    "renderTypeName" : "number",
+    "tableColumnId" : 151294737,
+    "width" : 115,
+    "cachedContents" : {
+      "non_null" : "18622763",
+      "largest" : "5550",
+      "null" : "36029",
+      "top" : [ {
+        "item" : "0",
+        "count" : "18465650"
+      }, {
+        "item" : "2",
+        "count" : "47465"
+      }, {
+        "item" : "4"
