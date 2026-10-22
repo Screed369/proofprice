@@ -312,6 +312,7 @@ export async function readCountries(io: Io = liveIo): Promise<Country[]> {
 
 // ---------- the answer ----------
 
+const lc = (t: string) => t.charAt(0).toLowerCase() + t.slice(1);
 const money = (v: number) => (v >= 100 ? Math.round(v) : Math.round(v * 100) / 100);
 const GBP_KG = (v: number) => `£${money(v).toLocaleString("en-GB")}`;
 
@@ -359,11 +360,11 @@ export async function hmrcBorderPrice(req: Request, io: Io = liveIo, now = new D
     low: s ? s.low : null,
     high: s ? s.high : null,
     method:
-      `HM Revenue and Customs publishes, for each month, commodity code, partner country and port, the value declared to customs and the net weight. We add up the value and the net weight for ${product.label.toLowerCase()} ` +
+      `HM Revenue and Customs publishes, for each month, commodity code, partner country and port, the value declared to customs and the net weight. We add up the value and the net weight for ${lc(product.label)} ` +
       `${flowWord}${where} over ${span} (${s ? s.lines : lines.length} customs lines with a recorded weight) and divide: the figure is a value-weighted average customs value per kilogram. ` +
       "The range is the 10th to 90th percentile of the unit values of the individual lines, each weighted by its kilograms (so it describes where 80% of the weight was priced). It is a customs value, not a shelf price.",
     describe: (v) =>
-      `The UK ${flowWord} ${product.label.toLowerCase()}${where} at an average customs value of ${GBP_KG(v)} per kg over ${span}` +
+      `The UK ${flowWord} ${lc(product.label)}${where} at an average customs value of ${GBP_KG(v)} per kg over ${span}` +
       (s ? ` (middle 80% of the weight between ${GBP_KG(s.low)} and ${GBP_KG(s.high)} per kg; ${Math.round(s.kg / 1000).toLocaleString("en-GB")} tonnes, £${Math.round(s.value / 1e6).toLocaleString("en-GB")} million).` : "."),
     note: "Customs value per kilogram at the border, not a shelf price.",
     baseUrl: req.baseUrl,
@@ -386,8 +387,8 @@ export async function hmrcBorderPrice(req: Request, io: Io = liveIo, now = new D
   if (!s) {
     answer.summary =
       lines.length === 0
-        ? `HMRC records no ${flowWord} trade with a weight in ${product.label.toLowerCase()}${where} for ${span}.`
-        : `Only ${lines.length} customs lines with a weight exist for ${product.label.toLowerCase()}${where} in ${span}; ProofPrice gives no figure from fewer than ${MIN_LINES}. Try more months, a shorter goods code or all partners.`;
+        ? `HMRC records no ${flowWord} trade with a weight in ${lc(product.label)}${where} for ${span}.`
+        : `Only ${lines.length} customs lines with a weight exist for ${lc(product.label)}${where} in ${span}; ProofPrice gives no figure from fewer than ${MIN_LINES}. Try more months, a shorter goods code or all partners.`;
   }
   return answer;
 }
