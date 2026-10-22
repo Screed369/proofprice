@@ -9,13 +9,13 @@ import {
   periodWords, PLACES, readMeta, readPostcode, readQuarterly, readYearly, resolvePlace, roomsPhrase, STATFIN_API, unavailableAnswer, yearEarlier,
 } from "./source";
 import { FI_MUNICIPALITIES, FI_QUARTERLY_REGIONS } from "./places";
-import { META_13MT, META_13MX, META_15IS } from "./fixtures";
-import { POSTCODE_00100, POSTCODE_99990, QUARTERLY_CITIES, YEARLY_AKAA } from "./fixtures-data";
+import { META_13MU, META_13MX, META_15IS } from "./fixtures";
+import { POSTCODE_00100, POSTCODE_00100_YEARLY, POSTCODE_99990, QUARTERLY_CITIES, YEARLY_AKAA } from "./fixtures-data";
 
 // Fixtures: real Statistics Finland PxWeb answers captured 2026-10-14 (see fixtures.ts and fixtures-data.ts).
 const NOW = new Date("2026-10-14T12:00:00Z");
 const U15 = `${STATFIN_API}/15is.px`;
-const U13MT = `${STATFIN_API}/13mt.px`;
+const U13MU = `${STATFIN_API}/13mu.px`;
 const U13MX = `${STATFIN_API}/13mx.px`;
 
 const QV = { region: "alue_43_20260625", type: "talotyyppi_5_20111209", rooms: "huoneluku_1_20111212", time: "timeperiod_q", contents: "contentscode" };
@@ -27,7 +27,7 @@ const YV = { time: "timeperiod_y", municipality: "kunta_1_20150101", type: "talo
 
 function rig(posts: Record<string, unknown>) {
   const log: Array<{ method: "GET" | "POST"; url: string; body?: any }> = [];
-  const metas: Record<string, unknown> = { [U15]: META_15IS, [U13MT]: META_13MT, [U13MX]: META_13MX };
+  const metas: Record<string, unknown> = { [U15]: META_15IS, [U13MU]: META_13MU, [U13MX]: META_13MX };
   return {
     log,
     fetcher: async (url: string) => {
@@ -50,7 +50,7 @@ test("fi-home-prices: licence, attribution and type are Statistics Finland's", (
   assert.match(INFO.licence, /open data materials and public content of the web service are covered by the Creative Commons Attribution 4\.0 International licence/);
   assert.match(INFO.licence, /use the data for commercial purposes as well/);
   assert.equal(INFO.licence_url, "https://stat.fi/en/about-us/get-to-know-statistics-finland/legislation/terms-of-use");
-  for (const k of ["Statistics Finland", "15is", "13mt", "13mx", "CC BY 4.0"]) assert.ok(INFO.attribution.includes(k), k);
+  for (const k of ["Statistics Finland", "15is", "13mu", "13mx", "CC BY 4.0"]) assert.ok(INFO.attribution.includes(k), k);
   assert.match(INFO.limits, /should not be used to calculate price change/);
 });
 
@@ -85,7 +85,7 @@ test("fi-home-prices: variable codes are found by their stem in the real metadat
   assert.equal(findVariable(m15, /^timeperiod_/, "time").code, "timeperiod_q");
   const contents = findVariable(m15, /^contentscode$/, "information").values;
   for (const c of Object.values(QC)) assert.ok(contents.includes(c), c);
-  const m13 = readMeta(META_13MT);
+  const m13 = readMeta(META_13MU);
   assert.equal(findVariable(m13, /^postinumeroalue_/, "postal code").code, "postinumeroalue_4_20220101");
   assert.equal(findVariable(m13, /^postinumeroalue_/, "postal code").values.length, 1724);
   assert.deepEqual(classifyPostcodeTypes(m13), { flats: ["1", "2", "3"], terraced: ["5"] });
@@ -365,19 +365,19 @@ test("fi-home-prices: end to end, Helsinki: one metadata GET, one POST built fro
   assert.deepEqual(r.log[r.log.length - 1].body.query[0].selection.values, ["SSS"]);
 });
 
-test("fi-home-prices: end to end, a postcode uses table 13mt and the metadata to check the postcode and the codes", async () => {
-  const r = rig({ [U13MT]: POSTCODE_00100 });
+test("fi-home-prices: end to end, a postcode uses table 13mu and the metadata to check the postcode and the codes", async () => {
+  const r = rig({ [U13MU]: POSTCODE_00100_YEARLY });
   const a = await finlandHomePrices({ postcode: "00100", property_type: "flat" }, { fetcher: r.fetcher, poster: r.poster, now: NOW });
-  assert.deepEqual(r.log.map((l) => [l.method, l.url]), [["GET", U13MT], ["POST", U13MT]]);
+  assert.deepEqual(r.log.map((l) => [l.method, l.url]), [["GET", U13MU], ["POST", U13MU]]);
   const q = r.log[1].body.query as Array<{ code: string; selection: { values: string[] } }>;
-  assert.deepEqual(q.map((x) => x.code), ["timeperiod_q", "postinumeroalue_4_20220101", "talotyyppi_6_20131021", "contentscode"]);
-  assert.deepEqual(q[0].selection.values, ["2025Q1", "2025Q2", "2025Q3", "2025Q4", "2026Q1"]);
+  assert.deepEqual(q.map((x) => x.code), ["timeperiod_y", "postinumeroalue_4_20220101", "talotyyppi_6_20131021", "contentscode"]);
+  assert.deepEqual(q[0].selection.values, ["2021", "2022", "2023", "2024", "2025"]);
   assert.deepEqual(q[1].selection.values, ["00100"]);
   assert.deepEqual(q[2].selection.values, ["1", "2", "3"]);
   assert.deepEqual(q[3].selection.values, ["keskihinta_aritm_nw", "lkm_julk20"]);
-  assert.equal(a.price!.value, 7167);
+  assert.equal(a.price!.value, 6949); // newest year of the yearly fixture
   // an unknown postcode is answered from the metadata alone
-  const known = new Set(findVariable(readMeta(META_13MT), /^postinumeroalue_/, "postal code").values);
+  const known = new Set(findVariable(readMeta(META_13MU), /^postinumeroalue_/, "postal code").values);
   const unknown = Array.from({ length: 99999 }, (_, i) => String(i).padStart(5, "0")).find((p) => !known.has(p))!;
   const r2 = rig({});
   const u = await finlandHomePrices({ postcode: unknown }, { fetcher: r2.fetcher, poster: r2.poster, now: NOW });
@@ -385,7 +385,7 @@ test("fi-home-prices: end to end, a postcode uses table 13mt and the metadata to
   assert.equal(u.status, "no_matches");
   assert.match(u.summary, new RegExp(`no area with the postcode ${unknown}`));
   // a town given with a postcode is ignored and said so
-  const r3 = rig({ [U13MT]: POSTCODE_00100 });
+  const r3 = rig({ [U13MU]: POSTCODE_00100_YEARLY });
   const t = await finlandHomePrices({ town: "Tampere", postcode: "00100" }, { fetcher: r3.fetcher, poster: r3.poster, now: NOW });
   assert.match(t.statistic!.note!, /The town "Tampere" was ignored: the postcode 00100 is more precise\./);
 });

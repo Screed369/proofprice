@@ -1,7 +1,7 @@
 // Finland home prices from Statistics Finland (Tilastokeskus), "Prices of dwellings in housing companies" (ashi), three PxWeb tables:
 //   15is  quarterly, whole country / regions / larger cities, by building type: average price per m², number of transactions and the
 //         official price-index changes (newest quarter provisional, marked *)
-//   13mt  quarterly, by postal code area: flats in blocks by number of rooms, and terraced houses
+//   13mu  yearly, by postal code area (replaced 13mt, archived by Statistics Finland on 20 Oct 2026): flats in blocks by number of rooms, and terraced houses
 //   13mx  yearly, by municipality (all 301): average price per m² and number of transactions, by building type
 // Format checked live on 2026-10-14: the table metadata is a GET (Probe workflow); the data needs a POST of an item selection (PxWeb v1)
 // and answers JSON-stat 2.0 with format "json-stat2". Variable codes carry a date (alue_43_20260625, postinumeroalue_4_20220101 ...)
@@ -23,23 +23,23 @@ export const INFO: SourceInfo = {
   id: "fi-home-prices",
   country: "FI (Finland)",
   category: "home sales (official price per m² of old dwellings in housing companies)",
-  name: "Prices of dwellings in housing companies: price per square metre and number of transactions (Statistics Finland tables 15is, 13mt, 13mx)",
+  name: "Prices of dwellings in housing companies: price per square metre and number of transactions (Statistics Finland tables 15is, 13mu, 13mx)",
   publisher: "Statistics Finland (Tilastokeskus)",
   what_is_recorded:
     "For old (second-hand) dwellings in housing companies, i.e. flats in blocks of flats and terraced houses: the average price per square metre and the number of transactions " +
     "from the asset transfer tax data of the Tax Administration, by quarter for the whole country, regions and larger cities (with the official price-index changes), " +
-    "by quarter for postal code areas, and by year for every municipality, as published by Statistics Finland. One published figure per cell; never individual sales or addresses.",
+    "by year for postal code areas and for every municipality, as published by Statistics Finland. One published figure per cell; never individual sales or addresses.",
   price_type: "official_statistic",
   freshness:
     "Whole country, regions and larger cities: quarterly, the newest quarter provisional (marked * by Statistics Finland) and published about four weeks after it ends. " +
-    "Postal code areas: quarterly, updated less often (the newest quarter is one behind the city table). Municipalities: yearly, final in May. Each answer states its period and whether it is provisional",
+    "Postal code areas and municipalities: yearly, final in May. Each answer states its period and whether it is provisional",
   licence:
     "Statistics Finland: \"Statistics Finland's open data materials and public content of the web service are covered by the Creative Commons Attribution 4.0 International licence. " +
     "According to the licence, you can copy, edit and share these data either in original or edited format. You can also combine the data with other data and use the data for commercial purposes as well.\" " +
     "\"When you use these data or share them, give at least Statistics Finland as the source (Source: Statistics Finland).\"",
   licence_url: "https://stat.fi/en/about-us/get-to-know-statistics-finland/legislation/terms-of-use",
   attribution:
-    "Source: Statistics Finland, prices of dwellings in housing companies (tables 15is, 13mt and 13mx; https://stat.fi/en/statistics/ashi), licensed CC BY 4.0 " +
+    "Source: Statistics Finland, prices of dwellings in housing companies (tables 15is, 13mu and 13mx; https://stat.fi/en/statistics/ashi), licensed CC BY 4.0 " +
     "(https://creativecommons.org/licenses/by/4.0/). Prices and price-index changes are passed on as published.",
   homepage: "https://stat.fi/en/statistics/ashi",
   limits:
@@ -51,7 +51,7 @@ export const INFO: SourceInfo = {
 
 export const STATFIN_API = "https://pxdata.stat.fi/PxWeb/api/v1/en/StatFin/ashi";
 export const QUARTERLY = "15is";
-export const POSTCODE = "13mt";
+export const POSTCODE = "13mu";
 export const YEARLY = "13mx";
 
 /** Fold a name for matching: lower case, no diacritics (å ä ö é...), punctuation as single spaces. */
@@ -394,7 +394,7 @@ export interface PostcodeCodes {
   price: string;
   count: string;
 }
-/** Which building-type codes of table 13mt are flats (by number of rooms) and which are terraced houses, read from their texts. */
+/** Which building-type codes of table 13mu are flats (by number of rooms) and which are terraced houses, read from their texts. */
 export function classifyPostcodeTypes(meta: PxMeta): { flats: string[]; terraced: string[] } {
   const v = findVariable(meta, /^talotyyppi_/, "building type");
   const flats: string[] = [];
@@ -408,7 +408,7 @@ export function classifyPostcodeTypes(meta: PxMeta): { flats: string[]; terraced
 }
 
 /**
- * Table 13mt for one postal code area: the newest quarter in which a group of the asked kind has a price from at least MIN_PUBLISH
+ * Table 13mu (or the archived quarterly 13mt, same layout) for one postal code area: the newest quarter in which a group of the asked kind has a price from at least MIN_PUBLISH
  * transactions. The headline is the group with most transactions (flats come by number of rooms, there is no total); the others are listed.
  * Returns {insufficient} when there are prices but every group has fewer transactions than that, and null when everything is withheld.
  */
@@ -514,7 +514,7 @@ export function changeSentence(ic: IndexChange | null): string {
 
 export const METHOD =
   "Statistics Finland publishes, from the Tax Administration's asset transfer tax data, the average price per square metre and the number of transactions of old dwellings in housing companies " +
-  `(flats in blocks and terraced houses): quarterly for the whole country, regions and larger cities (table ${QUARTERLY}, with the official price-index changes), quarterly by postal code area (table ${POSTCODE}) ` +
+  `(flats in blocks and terraced houses): quarterly for the whole country, regions and larger cities (table ${QUARTERLY}, with the official price-index changes), yearly by postal code area (table ${POSTCODE}) ` +
   `and yearly for every municipality (table ${YEARLY}). ProofPrice returns the published average for the newest period that has a price, unchanged. ` +
   "Statistics Finland says average prices per square metre describe regional differences in price levels and should not be used to calculate price change, so no change is calculated: " +
   "the quarterly answer carries the published price-index changes, and the other tables carry none. For a postal code, flats are published by number of rooms with no total, so the answer is the room size with most transactions and the others are listed. " +
@@ -719,7 +719,7 @@ export async function finlandHomePrices(input: FinlandInput, o: FinlandOptions =
   const post = poster(o);
   const common = { type, baseUrl: input.baseUrl, now: o.now, notes };
 
-  // ---- postal code: table 13mt ----
+  // ---- postal code: table 13mu (yearly) ----
   if (postcode) {
     const url = tableUrl(POSTCODE, o.apiBase);
     const meta = readMeta(await get(url));
