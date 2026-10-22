@@ -1,0 +1,53 @@
+URL: https://data.gov.tw/api/v2/rest/dataset?keyword=NHI
+Fetched: 2026-10-22T05:43:06Z from GitHub Actions
+Status, type, bytes: 405 text/html;charset=UTF-8 556
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 405 
+date: Thu, 22 Oct 2026 05:43:06 GMT
+content-type: text/html;charset=UTF-8
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=nt59ga8dtfl293r009h1uegoo7; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=P4LlVN_5fGZADmV_ORA.vjfm7JyHUzeFM70B.7tGXyM-1792647785.7649221-1.0.1.1-sDgFZhuyHs89uqTeZJomwT6_2lHZA6SAwannJ95c1WdDHqXyXa8q6b2pQ7.rWdW3z5CRSl8M_Tq8x1VE.hH9x.6R5Gx6A_NhN1dPj21LkXRSZ1E44r9UsaYR4YVOUROW; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Thu, 22 Oct 2026 06:13:06 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+allow: POST
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4e62eb50cf98e18-IAD
+
+=== FILE TYPE: HTML document, ASCII text
+=== FIRST 30000 BYTES
+<html>
+    <head>
+        <title>Method not allowed</title>
+        <style>
+            body{
+                margin:0;
+                padding:30px;
+                font:12px/1.5 Helvetica,Arial,Verdana,sans-serif;
+            }
+            h1{
+                margin:0;
+                font-size:48px;
+                font-weight:normal;
+                line-height:48px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Method not allowed</h1>
+        <p>Method not allowed. Must be one of: <strong>POST</strong></p>
+    </body>
+</html>
