@@ -1,0 +1,32 @@
+URL: https://api.uktradeinfo.com/OTS?$filter=MonthId%20eq%20202605%20and%20FlowTypeId%20eq%203%20and%20CommodityId%20eq%208081050&$top=4
+Fetched: 2026-10-22T17:47:15Z from GitHub Actions
+Status, type, bytes: 200 application/json; odata.metadata=minimal 73
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 17:47:15 GMT
+content-type: application/json; odata.metadata=minimal
+content-length: 73
+access-control-expose-headers: Request-Context
+cache-control: no-cache,no-store
+expires: -1
+pragma: no-cache
+set-cookie: ARRAffinity=a8cfaa6ef722c66f8453054cf3c2522d91e9b1dc92e077838df6bf2117a2b165;Path=/;HttpOnly;Secure;Domain=webapp-api-hmrcukti-prod.azurewebsites.net
+set-cookie: ARRAffinitySameSite=a8cfaa6ef722c66f8453054cf3c2522d91e9b1dc92e077838df6bf2117a2b165;Path=/;HttpOnly;SameSite=None;Secure;Domain=webapp-api-hmrcukti-prod.azurewebsites.net
+strict-transport-security: max-age=31536000; includeSubDomains
+odata-version: 4.0
+request-context: appId=cid-v1:59e7e043-1220-455e-98c1-fd590dd50699
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy: script-src 'self' *.cloudflare.com *.uktradeinfo.com www.gravatar.com player.vimeo.com *.vimeocdn.com our.umbraco.com 'unsafe-inline' 'unsafe-eval' *.powerbi.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.vo.msecnd.net *.services.visualstudio.com;            style-src 'self' 'unsafe-inline' *.mailjet.com;             img-src 'self' *;               font-src 'self';
+x-azure-ref: 20261022T174715Z-17f9b458c795x9jqhC1PHXw5us00000000zg00000000eshh
+x-fd-int-roxy-purgeid: 88491805
+x-cache: PRIVATE_NOSTORE
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"@odata.context":"https://api.uktradeinfo.com/$metadata#OTS","value":[]}
