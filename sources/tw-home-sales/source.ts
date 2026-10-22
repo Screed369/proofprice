@@ -10,10 +10,10 @@ import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { libraryRoot, readLatestDay, readMeta } from "../../lib/library/store";
 import type { LibraryRow } from "../../lib/library/store";
 import { MIN_PUBLISH, summarise } from "../../lib/stats";
-import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import {
   CITY_BY_CODE, PORTAL_URL, anchorOf, cityFiles, decodeCsv, download, fetchReleases, isResidentialUse, listZip, parseTable, readZipEntry, rocToIso,
-  selectReleases, windowStart, type Table,
+  selectReleases, seasonEndFromId, windowStart, type Table,
 } from "./moi";
 import { districtList, districtKey, findPlace, indexWithLibrary, placeLabel, type City, type District, type Place } from "./places";
 
@@ -473,18 +473,129 @@ export function twAnswer(snap: Snapshot, q: TwQuery): PriceAnswer {
   return ans;
 }
 
-/** Library keys for /history: the 12-month rolling window (all sales, total price) of one place and type, as the collector stores it each day.
- *  Monthly history (months=N) is not loaded for Taiwan. */
+/** Library item of the monthly history: total price of the homes sold in one calendar month. Only these three types are loaded. */
+export const TW_MONTHLY_TYPES = ["any", "apartment", "house"] as const;
+export const monthlyItem = (t: string) => `${t}/month`;
+
+/**
+ * Monthly history: for every whole calendar month from fromMonth to toMonth (YYYY-MM, inclusive) the median and 10th-90th
+ * percentile of the registered total price of residential market sales (same filters as the daily windows), per city or county
+ * and for Taiwan (ALL), by deal date. Districts are not loaded for monthly history (size budget). Groups under 5 sales are dropped.
+ * `acc` collects prices only (no addresses, no records), month -> "area|item" -> prices, so a backfill can add one release at a time.
+ */
+export type MonthlyAcc = Map<string, Map<string, number[]>>;
+export function addMonthly(acc: MonthlyAcc, sales: Sale[]): void {
+  for (const s of sales) {
+    const m = s.date.slice(0, 7);
+    let g = acc.get(m);
+    if (!g) acc.set(m, (g = new Map()));
+    for (const t of itemTypesOf(s.type)) {
+      if (!(TW_MONTHLY_TYPES as readonly string[]).includes(t)) continue;
+      for (const area of [s.city, NATIONAL_AREA]) {
+        const k = `${area}|${monthlyItem(t)}`;
+        const v = g.get(k);
+        if (v) v.push(s.total);
+        else g.set(k, [s.total]);
+      }
+    }
+  }
+}
+
+export function twMonthlyPeriods(acc: MonthlyAcc, fromMonth: string, toMonth: string): BackfillResult["periods"] {
+  const out: BackfillResult["periods"] = [];
+  for (const m of [...acc.keys()].sort()) {
+    if (m < fromMonth || m > toMonth) continue;
+    const rows: DailyRow[] = [];
+    for (const [k, vals] of acc.get(m)!) {
+      if (vals.length < MIN_PUBLISH) continue;
+      const [area, item] = k.split("|");
+      const x = summarise(vals);
+      if (x) rows.push({ area, item, n: x.count, median: x.median, low: x.low, high: x.high, min: x.min, max: x.max });
+    }
+    rows.sort((a, b) => a.area.localeCompare(b.area) || a.item.localeCompare(b.item));
+    if (rows.length) out.push({ period: m, rows });
+  }
+  return out;
+}
+
+export interface BackfillDeps {
+  fetchReleases: typeof fetchReleases;
+  download: (url: string) => Promise<Buffer>;
+  now: () => Date;
+  log: (m: string) => void;
+}
+const realBackfillDeps: BackfillDeps = { fetchReleases, download, now: () => new Date(), log: (m) => console.log(m) };
+
+/**
+ * Backfill: read the quarterly ("season") files of the register from the first one that can hold deals of `from`, then the 10-day
+ * releases that come after the last season, one release at a time (each zip is released before the next is read), and return
+ * monthly aggregates. Months within 30 days of the newest registration are left out (they are always thin). from/to are YYYY-MM-DD.
+ */
+export async function twBackfill(from: string, to: string, deps: BackfillDeps = realBackfillDeps): Promise<BackfillResult> {
+  const today = deps.now().toISOString().slice(0, 10);
+  const all = await deps.fetchReleases();
+  const seasons = selectReleases(all.filter((r) => r.kind === "season"), "sales", from);
+  if (!seasons.length) throw new SourceError("The MOI portal lists no quarterly files for that range; the download page may have changed.");
+  const seasonEnd = (r: { id: string; salesTo: string | null }) => r.salesTo ?? seasonEndFromId(r.id) ?? "0000-00-00";
+  const lastSeasonEnd = seasons.map(seasonEnd).sort().pop()!;
+  const tail = all.filter((r) => r.kind !== "season" && (r.salesTo ?? "9999") > lastSeasonEnd);
+  const chosen = [...seasons].sort((a, b) => seasonEnd(a).localeCompare(seasonEnd(b))).concat(tail.sort((a, b) => (a.salesTo ?? "").localeCompare(b.salesTo ?? "")));
+  const acc: MonthlyAcc = new Map();
+  const seen = new Set<string>();
+  const stats = newStats();
+  let newest = "0000-00-00";
+  let skipped = 0;
+  for (const rel of chosen) {
+    let buf: Buffer;
+    try {
+      buf = await deps.download(rel.url);
+    } catch (e: any) {
+      if (rel.kind === "season") throw e; // a missing quarter would leave a hole
+      deps.log(`skip ${rel.id}: ${String(e?.message ?? e).slice(0, 120)}`);
+      skipped++;
+      continue;
+    }
+    const files = cityFiles(listZip(buf), "a");
+    if (!files.length) throw new SourceError(`MOI release ${rel.id} holds no sales files; the download format may have changed.`);
+    let n = 0;
+    for (const f of files) {
+      const sales = parseSales(parseTable(decodeCsv(readZipEntry(buf, f.entry))), f.code, { seen, stats, today });
+      for (const x of sales) if (x.date > newest) newest = x.date;
+      addMonthly(acc, sales);
+      n += sales.length;
+    }
+    deps.log(`${rel.id}: ${files.length} city files, ${n} sales kept`);
+  }
+  if (newest === "0000-00-00") throw new SourceError("The MOI releases held no residential sales.");
+  const lastWhole = anchorOf(newest).slice(0, 7);
+  const toMonth = to.slice(0, 7) < lastWhole ? to.slice(0, 7) : lastWhole;
+  const periods = twMonthlyPeriods(acc, from.slice(0, 7), toMonth);
+  deps.log(`newest deal ${newest}; months ${periods[0]?.period}..${periods[periods.length - 1]?.period}; ${periods.reduce((n, p) => n + p.rows.length, 0)} rows; ${skipped} releases skipped`);
+  return {
+    currency: "TWD",
+    unit: "per home",
+    periods,
+    note: "Monthly figures from the Ministry of the Interior's actual price registration: median and 10th-90th percentile of the registered total price of residential market sales dated in the calendar month (deal date), per city or county and for Taiwan. Same exclusions as the rolling windows. Deals are registered weeks late, so months close to the newest data are left out; early months of the register (2012) can be thinner.",
+  };
+}
+
+/** Library keys for /history: the 12-month rolling window (all sales, total price) of one place and type, as the collector stores it
+ *  each day; with monthly history (months=N) the calendar-month medians of a city or county (or Taiwan) loaded by the backfill. */
 export function twHistoryKey(
   input: { town?: string; property_type?: string },
   opts?: { monthly?: boolean },
   o: { snapshot?: Snapshot | null } = {},
 ): { area: string; item: string; label: string } | null {
-  if (opts?.monthly) throw new InputError("Taiwan: monthly history is not loaded; ask for days instead (daily snapshots of the rolling 12 months).");
   const snap = o.snapshot !== undefined ? o.snapshot : loadSnapshot();
   if (!snap) return null;
   const where = resolveTown(input.town, snap);
-  return { area: where.area, item: itemKey(normaliseType(input.property_type), "total", 12), label: where.label };
+  const type = normaliseType(input.property_type);
+  if (opts?.monthly) {
+    if (where.area.includes("|")) throw new InputError("Taiwan: monthly history is kept for cities, counties and all of Taiwan, not districts; give the city or county as town, or ask for days.");
+    if (!(TW_MONTHLY_TYPES as readonly string[]).includes(type)) throw new InputError("Taiwan: monthly history is kept for property_type any, apartment or house.");
+    return { area: where.area, item: monthlyItem(type), label: `${where.label}, Taiwan` };
+  }
+  return { area: where.area, item: itemKey(type, "total", 12), label: where.label };
 }
 
 export async function twHomeSales(
