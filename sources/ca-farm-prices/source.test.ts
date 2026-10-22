@@ -151,7 +151,7 @@ test("pure helpers: product words, unit names, conversions", () => {
   assert.match(caFarmMethod(), /no range is calculated/);
 });
 
-test("manifest: farm-gate-prices tool, CA only, the wheat example is the smoke test, Open Licence quoted with its URL", () => {
+test("manifest: farm-gate-prices tool, CA only for this source, the wheat example is the smoke test, Open Licence quoted with its URL", () => {
   assert.equal(manifest.category, "farm-gate-prices");
   assert.deepEqual(manifest.countries, ["CA"]);
   assert.equal(manifest.examples[0].params.product, "wheat");
@@ -159,7 +159,7 @@ test("manifest: farm-gate-prices tool, CA only, the wheat example is the smoke t
   assert.equal(INFO.licence_url, "https://www.statcan.gc.ca/en/terms-conditions/open-licence");
   assert.match(INFO.licence, /use, reproduce, publish, freely distribute, or sell the Information/);
   assert.equal(INFO.price_type, "official_statistic");
-  assert.deepEqual(countriesFor("farm-gate-prices"), ["CA"]);
+  assert.ok(countriesFor("farm-gate-prices").includes("CA"), "CA stays covered by farm-gate-prices (other countries may share the tool)");
   assert.equal(categoryById("farm-gate-prices")?.tool, "pricepaid_farm_gate_prices");
 });
 
