@@ -289,7 +289,7 @@ export async function ukHomeSales(input: {
 }): Promise<PriceAnswer> {
   const months = clamp(input.months ?? 12, 1, 36);
   const district = normaliseDistrict(input.district);
-  if (!input.town?.trim() && !district) throw new InputError("A town or a district is required.");
+  if (!input.town?.trim() && !district) throw new InputError("A town is required (or give a district, e.g. district=Camden).");
   // "London" as a whole is about 2,400 standard sales a month: far too much to fetch within the answer time limit. Say so, plainly.
   if (!district && !input.postcode_district && input.town?.trim().toUpperCase() === "LONDON") {
     throw new InputError(
