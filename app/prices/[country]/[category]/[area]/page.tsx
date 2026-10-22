@@ -89,7 +89,7 @@ export default async function AnswerPageView({ params }: Props) {
             {f.liveRestPath && (
               <>
                 {" "}
-                Live answer: <a href={f.liveRestPath}>{f.liveRestPath}</a>
+                Live answer: <a href={f.liveRestPath} rel="nofollow">{f.liveRestPath}</a>
               </>
             )}
           </p>
@@ -135,7 +135,7 @@ export default async function AnswerPageView({ params }: Props) {
         </li>
         {headline.liveRestPath ? (
           <li>
-            REST (live answer): <a href={headline.liveRestPath}>{headline.liveRestPath}</a>
+            REST (live answer): <a href={headline.liveRestPath} rel="nofollow">{headline.liveRestPath}</a>
           </li>
         ) : (
           <li className="muted">
@@ -145,7 +145,7 @@ export default async function AnswerPageView({ params }: Props) {
         )}
         {page.historyRestPath && (
           <li>
-            REST (daily snapshots, last 30 days): <a href={page.historyRestPath}>{page.historyRestPath}</a>
+            REST (daily snapshots, last 30 days): <a href={page.historyRestPath} rel="nofollow">{page.historyRestPath}</a>
           </li>
         )}
         <li>

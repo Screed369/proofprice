@@ -86,7 +86,7 @@ export function ExampleAnswerPage({ page, siblings }: { page: ExamplePage; sibli
           {f.caveat && <p className="caveat">{f.caveat}</p>}
           <p className="cite">
             Source: {shortPublisher(s.publisher)}. Licence: <a href={s.licence_url}>{shortLicence(s.licence)}</a>. Live answer:{" "}
-            <a href={page.liveRestPath}>{page.liveRestPath}</a>
+            <a href={page.liveRestPath} rel="nofollow">{page.liveRestPath}</a>
           </p>
         </section>
       ) : (
@@ -96,7 +96,7 @@ export function ExampleAnswerPage({ page, siblings }: { page: ExamplePage; sibli
             its licence; a range built from records is given only when at least 5 records sit behind it.
           </p>
           <p className="cite">
-            Ask for it: <a href={page.liveRestPath}>{page.liveRestPath}</a>
+            Ask for it: <a href={page.liveRestPath} rel="nofollow">{page.liveRestPath}</a>
           </p>
         </section>
       )}
@@ -146,7 +146,7 @@ export function ExampleAnswerPage({ page, siblings }: { page: ExamplePage; sibli
           MCP tool: <code>{page.mcpTool}</code> with <code>{JSON.stringify(page.mcpArgs)}</code>
         </li>
         <li>
-          REST (live answer): <a href={page.liveRestPath}>{page.liveRestPath}</a>
+          REST (live answer): <a href={page.liveRestPath} rel="nofollow">{page.liveRestPath}</a>
         </li>
         <li>
           All parameters: <a href="/openapi.json">openapi.json</a>

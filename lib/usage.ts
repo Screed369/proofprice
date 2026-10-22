@@ -17,8 +17,12 @@
 //       32 hex characters. Only that salted hash goes to the private store, inside the day's small files (usage/<day>/...).
 //    c. The app name is not part of the hash (a stateless MCP server only hears it on initialize, so it would split one visitor in
 //       two). Instead each hashed session carries only its client group: "directory_checks" (a known directory probe or health
-//       checker, by app name or user agent; see DIRECTORY_CHECK_NAMES / DIRECTORY_CHECK_PATTERNS), "named_apps" (any other app that
-//       sent a name) or "unnamed". Plus its question count, handshake count and tools used.
+//       checker, by app name or user agent; see DIRECTORY_CHECK_NAMES / DIRECTORY_CHECK_PATTERNS), "crawlers" (a search-engine, AI-
+//       training or SEO crawler, or a generic bot, by user agent; see isCrawlerUA), "named_apps" (any other app that sent a name) or
+//       "unnamed". Plus its question count, handshake count and tools used. Crawlers are web robots that follow links on our public
+//       pages: their hits are not questions, so they are tallied apart (client "web-crawler", reported as crawler_questions) and are
+//       not part of real_questions. AI fetchers started by a person ("-User" agents such as ChatGPT-User or Claude-User) are real
+//       demand and are not crawlers. As with directory checks, only the yes/no class is kept, never the user agent.
 //    d. When a day is closed (at the first flush or report at least CLOSE_GRACE_MS after midnight UTC), its small files are reduced
 //       to one summary (usage-daily/<day>.json) holding counts only: distinct sessions; sessions per tool; per client group the
 //       sessions, questions, handshakes and top tools; and how many sessions asked 0, 1, 2-5, 6-20 or 21+ questions. The small files
@@ -47,6 +51,8 @@ export interface Visitor {
   pre: string;
   /** True when the user agent looks like a directory probe or health checker. Only this yes/no is kept, never the user agent. */
   probe: boolean;
+  /** True when the user agent is a search/AI/SEO crawler or generic bot (isCrawlerUA). Only this yes/no is kept, never the user agent. */
+  crawler?: boolean;
 }
 
 export interface UsageEvent {
@@ -129,6 +135,36 @@ export function isDirectoryCheck(name: unknown): boolean {
   return (DIRECTORY_CHECK_NAMES as readonly string[]).includes(n) || DIRECTORY_CHECK_PATTERNS.some((p) => p.test(n));
 }
 
+// ---------- web crawlers (robots that follow links, as opposed to people and apps that ask) ----------
+
+/** Reserved app name written on question rows made by crawlers. Those rows are reported as crawler_questions, not real_questions. */
+export const CRAWLER_CLIENT = "web-crawler";
+export function isCrawlerClient(name: unknown): boolean {
+  return String(name ?? "").toLowerCase().trim() === CRAWLER_CLIENT;
+}
+
+/** Known search, AI-training, SEO and social-preview crawlers by name. */
+export const CRAWLER_NAMES = [
+  "googlebot", "google-extended", "googleother", "adsbot-google", "mediapartners-google", "bingbot", "bingpreview", "msnbot", "gptbot",
+  "oai-searchbot", "claudebot", "claude-searchbot", "anthropic-ai", "perplexitybot", "ccbot", "bytespider", "amazonbot", "applebot",
+  "ahrefsbot", "semrushbot", "mj12bot", "dotbot", "yandexbot", "baiduspider", "duckduckbot", "petalbot", "facebookexternalhit",
+  "facebot", "meta-externalagent", "twitterbot", "linkedinbot", "slackbot", "discordbot", "telegrambot", "ia_archiver",
+  "cohere-ai", "diffbot", "youbot", "sogou", "seznambot", "screaming frog", "dataforseobot", "barkrowler", "serpstatbot",
+] as const;
+/** Generic robot words in a user agent. */
+export const CRAWLER_PATTERN = /bot|crawler|spider|slurp/i;
+/** AI fetchers that run because a person asked (ChatGPT-User, Claude-User, Perplexity-User, MistralAI-User, DuckAssistBot, ...). They
+ *  are real demand, so they are never crawlers even when a generic pattern would match. */
+export const USER_INITIATED_PATTERN = /[-_ ]user\b|duckassistbot|meta-externalfetcher|gemini-deep-research|google-agent/i;
+
+/** True when a user agent is a known search/AI/SEO crawler or a generic bot. Used only for a yes/no; the user agent is never kept. */
+export function isCrawlerUA(ua: unknown): boolean {
+  const u = String(ua ?? "").toLowerCase().trim();
+  if (!u) return false;
+  if (USER_INITIATED_PATTERN.test(u)) return false;
+  return (CRAWLER_NAMES as readonly string[]).some((n) => u.includes(n)) || CRAWLER_PATTERN.test(u);
+}
+
 /** Rows for these tools are connection handshakes, not questions. */
 export const HANDSHAKE_TOOLS = ["mcp_initialize"] as const;
 export function isHandshake(tool: string): boolean {
@@ -152,7 +188,9 @@ export function visitorOf(req: Request): Visitor | null {
     const ua = (req.headers.get("user-agent") ?? "").trim();
     if (!ip && !ua) return null;
     const pre = createHash("sha256").update(`proofprice-visitor\n${ip}\n${ua}`).digest("hex");
-    return { pre, probe: isDirectoryCheck(ua) };
+    // a health checker or monitor (UptimeRobot, ...) stays a directory check; any other crawler or bot is a crawler
+    const crawler = isCrawlerUA(ua) && !/uptime|health|monitor|probe/i.test(ua);
+    return { pre, probe: !crawler && isDirectoryCheck(ua), crawler };
   } catch {
     return null;
   }
@@ -183,7 +221,7 @@ export interface UsageRow {
   count: number;
 }
 
-export const CLIENT_GROUPS = ["directory_checks", "named_apps", "unnamed"] as const;
+export const CLIENT_GROUPS = ["directory_checks", "crawlers", "named_apps", "unnamed"] as const;
 export type ClientGroup = (typeof CLIENT_GROUPS)[number];
 
 /** One hashed session in a small file of an open day. `h` is HMAC-SHA256(day salt, digest), 32 hex characters. */
@@ -310,9 +348,10 @@ export function sessionBucket(questions: number): SessionBucket {
   return "21+";
 }
 
-const GROUP_RANK: Record<ClientGroup, number> = { directory_checks: 2, named_apps: 1, unnamed: 0 };
+const GROUP_RANK: Record<ClientGroup, number> = { crawlers: 3, directory_checks: 2, named_apps: 1, unnamed: 0 };
 const strongerGroup = (a: ClientGroup, b: ClientGroup): ClientGroup => (GROUP_RANK[a] >= GROUP_RANK[b] ? a : b);
-function groupOf(client: string, probe: boolean): ClientGroup {
+function groupOf(client: string, probe: boolean, crawler = false): ClientGroup {
+  if (crawler || isCrawlerClient(client)) return "crawlers";
   if (probe || isDirectoryCheck(client)) return "directory_checks";
   return client ? "named_apps" : "unnamed";
 }
@@ -407,6 +446,7 @@ export function setUsageSink(s: UsageSink | null): void {
 
 interface PendingSession {
   probe: boolean;
+  crawler: boolean;
   client: string;
   q: number;
   hs: number;
@@ -433,13 +473,15 @@ export function recordUsage(ev: UsageEvent, now: Date = new Date(), env: Env = p
   const ctx = ownStore.getStore();
   if (ev.own || isOwnClient(ev.client) || ctx?.own) return; // our own checks are skipped, not recorded
   try {
+    const visitor = ev.visitor !== undefined ? ev.visitor : ctx?.visitor;
     const row: UsageRow = {
       day: dayOf(now),
       tool: clean(ev.tool).slice(0, 60),
       country: usageCountry(ev.country),
       key: clean(ev.key).slice(0, KEY_MAX),
       status: ev.status,
-      client: usageClient(ev.client),
+      // a crawler's hits are tallied apart under a reserved name: they are not questions (see crawler_questions)
+      client: visitor?.crawler ? CRAWLER_CLIENT : usageClient(ev.client),
       count: 1,
     };
     const id = JSON.stringify([row.day, row.tool, row.country, row.key, row.status, row.client]);
@@ -447,17 +489,17 @@ export function recordUsage(ev: UsageEvent, now: Date = new Date(), env: Env = p
     if (have) have.count++;
     else if (pending.size < MAX_PENDING) pending.set(id, row);
 
-    const visitor = ev.visitor !== undefined ? ev.visitor : ctx?.visitor;
     if (visitor && visitor.pre) {
       let day = pendingSessions.get(row.day);
       if (!day) pendingSessions.set(row.day, (day = new Map()));
       let s = day.get(visitor.pre);
       if (!s && pendingSessionCount < MAX_PENDING_SESSIONS) {
-        day.set(visitor.pre, (s = { probe: false, client: "", q: 0, hs: 0, tools: {} }));
+        day.set(visitor.pre, (s = { probe: false, crawler: false, client: "", q: 0, hs: 0, tools: {} }));
         pendingSessionCount++;
       }
       if (s) {
         s.probe ||= visitor.probe;
+        s.crawler ||= visitor.crawler === true;
         const name = row.client || usageClient(ctx?.client);
         if (name) {
           if (isDirectoryCheck(name)) s.probe = true;
@@ -483,7 +525,7 @@ export function pendingUsage(): UsageRow[] {
 /** Pending session tallies, without their digests (tests and diagnostics). */
 export function pendingSessionsSummary(): { day: string; group: ClientGroup; q: number; hs: number }[] {
   const out: { day: string; group: ClientGroup; q: number; hs: number }[] = [];
-  for (const [day, m] of pendingSessions) for (const s of m.values()) out.push({ day, group: groupOf(s.client, s.probe), q: s.q, hs: s.hs });
+  for (const [day, m] of pendingSessions) for (const s of m.values()) out.push({ day, group: groupOf(s.client, s.probe, s.crawler), q: s.q, hs: s.hs });
   return out;
 }
 
@@ -557,7 +599,7 @@ export async function flushUsage(now: Date = new Date(), env: Env = process.env)
         if (sess && sess.size) {
           const salt = await saltFor(day, now, !isClosed(day, now));
           if (salt) {
-            sessions = [...sess].map(([pre, s]) => ({ h: saltedHash(salt, pre), g: groupOf(s.client, s.probe), q: s.q, hs: s.hs, tools: s.tools }));
+            sessions = [...sess].map(([pre, s]) => ({ h: saltedHash(salt, pre), g: groupOf(s.client, s.probe, s.crawler), q: s.q, hs: s.hs, tools: s.tools }));
           }
         }
         if (!rows.length && !sessions?.length) continue;
@@ -596,6 +638,7 @@ function restoreSessions(day: string, sess: Map<string, PendingSession>): void {
       continue;
     }
     cur.probe ||= s.probe;
+    cur.crawler ||= s.crawler;
     cur.client ||= s.client;
     cur.q += s.q;
     cur.hs += s.hs;
@@ -635,7 +678,7 @@ export function reduceSessions(records: SessionRecord[]): DaySessions {
   }
   const out: DaySessions = {
     total: 0,
-    by_group: { directory_checks: emptyGroup(), named_apps: emptyGroup(), unnamed: emptyGroup() },
+    by_group: { directory_checks: emptyGroup(), crawlers: emptyGroup(), named_apps: emptyGroup(), unnamed: emptyGroup() },
     questions_per_session: { "0": 0, "1": 0, "2-5": 0, "6-20": 0, "21+": 0 },
     by_tool: {},
   };
@@ -757,7 +800,9 @@ type Named = { client: string; handshakes: number; questions: number };
 export interface SessionTotals {
   total: number;
   directory_checks: number;
-  /** named_apps + unnamed: everything that is not a directory check */
+  /** search/AI/SEO crawlers and generic bots (not part of real_apps). Added 22 Oct 2026. */
+  crawlers: number;
+  /** named_apps + unnamed: everything that is not a directory check or a crawler */
   real_apps: number;
   named_apps: number;
   unnamed: number;
@@ -770,6 +815,8 @@ export interface UsageReport {
   period?: { from: string; to: string; days: number };
   /** Real questions (tool calls) from outside, excluding handshakes and our own checks. The number to watch. */
   real_questions?: number;
+  /** Hits on our API from search/AI/SEO crawlers and generic bots following links on public pages. Not questions: kept out of real_questions. */
+  crawler_questions?: number;
   /** Connection handshakes (mcp_initialize) from outside. Not questions. */
   handshakes?: number;
   /** Legacy: every recorded row in the period, handshakes and older rows from our own checks included. */
@@ -783,6 +830,8 @@ export interface UsageReport {
     outside_questions: number;
     answered: number;
     real_questions: number;
+    /** crawler hits that day (not in real_questions) */
+    crawler_questions: number;
     handshakes: number;
     sessions: SessionTotals | null;
   }[];
@@ -819,12 +868,13 @@ export const USAGE_NOTE =
   "Anonymous aggregate counts only: no IP addresses, user agents or other identifiers are stored. Distinct visitors are counted per day with a one-way hash salted with a random value that changes every day and is deleted, together with the hashes, shortly after the day ends (UTC). Counts can fall a little short because tallies are batched in memory and written every few minutes.";
 
 export const SESSIONS_NOTE =
-  "A session is one visitor (IP address plus user agent, hashed with a salt that changes every UTC day) on one day. The same visitor on several days counts once per day, so totals over the period are visitor-days. Directory checks are known directory probes and health checkers; real apps are everything else.";
+  "A session is one visitor (IP address plus user agent, hashed with a salt that changes every UTC day) on one day. The same visitor on several days counts once per day, so totals over the period are visitor-days. Directory checks are known directory probes and health checkers; crawlers are search, AI-training and SEO robots; real apps are everything else.";
 
 export const CLIENTS_NOTE = "Directory checks are known directory probes and health checkers (a list kept in lib/usage.ts); other apps are every other app name sent when connecting.";
 
 export const FIELD_NOTES: Record<string, string> = {
-  real_questions: "Tool calls from outside: the questions actually asked.",
+  real_questions: "Tool calls from outside: the questions actually asked. Search/AI/SEO crawlers and bots are not included (see crawler_questions); AI fetchers started by a person are.",
+  crawler_questions: "Hits from known web crawlers and bots that follow links on our public pages. Not questions, so not in real_questions.",
   handshakes: "Connection handshakes (mcp_initialize). An app connecting, not a question.",
   by_country_asked_about: "The country each question was about (its country parameter). Not the caller's location, which is never recorded.",
   by_country: "Old name for by_country_asked_about, kept for compatibility.",
@@ -838,6 +888,7 @@ const top = <T extends { questions: number }>(a: T[], n: number) => a.sort((x, y
 const totalsOf = (s: DaySessions): SessionTotals => ({
   total: s.total,
   directory_checks: s.by_group.directory_checks.sessions,
+  crawlers: s.by_group.crawlers?.sessions ?? 0,
   real_apps: s.by_group.named_apps.sessions + s.by_group.unnamed.sessions,
   named_apps: s.by_group.named_apps.sessions,
   unnamed: s.by_group.unnamed.sessions,
@@ -853,9 +904,10 @@ export function summariseUsage(
 ): UsageReport {
   const to = dayOf(now);
   const from = dayOf(new Date(now.getTime() - (days - 1) * 86400000));
-  const byDay = new Map<string, { questions: number; outside_questions: number; answered: number; real_questions: number; handshakes: number }>();
+  const byDay = new Map<string, { questions: number; outside_questions: number; answered: number; real_questions: number; crawler_questions: number; handshakes: number }>();
   let ownTotal = 0;
   let real = 0;
+  let crawlerQ = 0;
   let handshakes = 0;
   const ownClients = new Set<string>();
   const byTool = new Map<string, number>();
@@ -873,37 +925,42 @@ export function summariseUsage(
       total += r.count;
       const own = isOwnClient(r.client);
       const hs = isHandshake(r.tool);
+      const crawl = !own && isCrawlerClient(r.client);
       if (own) {
         ownTotal += r.count;
         ownClients.add(r.client);
       }
-      const d = byDay.get(r.day) ?? { questions: 0, outside_questions: 0, answered: 0, real_questions: 0, handshakes: 0 };
+      const d = byDay.get(r.day) ?? { questions: 0, outside_questions: 0, answered: 0, real_questions: 0, crawler_questions: 0, handshakes: 0 };
       d.questions += r.count;
       if (!own) {
         d.outside_questions += r.count;
-        if (hs) d.handshakes += r.count;
+        if (crawl) {
+          if (!hs) d.crawler_questions += r.count; // a crawler's connection handshake is neither a question nor a handshake
+        } else if (hs) d.handshakes += r.count;
         else d.real_questions += r.count;
       }
-      if (r.status === "ok" && !hs) d.answered += r.count;
+      if (r.status === "ok" && !hs && !crawl) d.answered += r.count;
       byDay.set(r.day, d);
       add(byTool, r.tool, r.count);
       if (!own) {
-        if (hs) handshakes += r.count;
+        if (crawl) {
+          if (!hs) crawlerQ += r.count;
+        } else if (hs) handshakes += r.count;
         else {
           real += r.count;
           add(questionsByTool, r.tool, r.count);
         }
       }
-      if (r.country) add(byCountry, r.country, r.count);
+      if (r.country && !crawl) add(byCountry, r.country, r.count);
       byStatus[r.status] = (byStatus[r.status] ?? 0) + r.count;
-      if (r.client && !own) {
+      if (r.client && !own && !crawl) {
         add(byClient, r.client, r.count);
         const c = named.get(r.client) ?? { client: r.client, handshakes: 0, questions: 0 };
         if (hs) c.handshakes += r.count;
         else c.questions += r.count;
         named.set(r.client, c);
       }
-      if (r.status !== "ok" && r.status !== "error" && !hs) {
+      if (r.status !== "ok" && r.status !== "error" && !hs && !crawl) {
         const id = JSON.stringify([r.tool, r.country, r.key, r.status]);
         const u = unanswered.get(id) ?? { tool: r.tool, country: r.country, key: r.key, status: r.status, questions: 0 };
         u.questions += r.count;
@@ -934,7 +991,7 @@ export function summariseUsage(
   }
   const sessionsByDay = new Map(sess);
   const dayList = [...new Set([...byDay.keys(), ...sessionsByDay.keys()])].sort();
-  const emptyDay = { questions: 0, outside_questions: 0, answered: 0, real_questions: 0, handshakes: 0 };
+  const emptyDay = { questions: 0, outside_questions: 0, answered: 0, real_questions: 0, crawler_questions: 0, handshakes: 0 };
   const countries = top([...byCountry].map(([country, questions]) => ({ country, questions })), 50);
   const clientList = [...named.values()].sort((a, b) => b.questions + b.handshakes - (a.questions + a.handshakes));
   return {
@@ -942,6 +999,7 @@ export function summariseUsage(
     service: "ProofPrice usage",
     period: { from, to, days },
     real_questions: real,
+    crawler_questions: crawlerQ,
     handshakes,
     total_questions: total,
     outside_questions: total - ownTotal,

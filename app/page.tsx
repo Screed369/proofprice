@@ -32,7 +32,7 @@ export default function Home() {
           reasoning. Currencies and units are never converted, and a comparison that cannot be made honestly says so.
         </p>
         <p className="muted">
-          Try it: <a href="/api/v1/check?category=rent&country=IE&town=Dublin&price=2400&unit=per%20month"><code>/api/v1/check?category=rent&amp;country=IE&amp;town=Dublin&amp;price=2400</code></a>{" "}
+          Try it: <a href="/api/v1/check?category=rent&country=IE&town=Dublin&price=2400&unit=per%20month" rel="nofollow"><code>/api/v1/check?category=rent&amp;country=IE&amp;town=Dublin&amp;price=2400</code></a>{" "}
           · MCP tool <code>pricepaid_check_price</code> · <a href="/connect#check-a-price">how it works</a>
         </p>
         <h2>What people actually paid, for AI agents</h2>
@@ -127,7 +127,7 @@ export default function Home() {
       <h2>For machines</h2>
       <p>
         <a href="/llms.txt">llms.txt</a> (short menu) · <a href="/llms-full.txt">llms-full.txt</a> (everything in one file) ·{" "}
-        <a href="/openapi.json">openapi.json</a> · <a href="/api/v1/coverage">coverage (JSON)</a> · <a href="/sitemap.xml">sitemap.xml</a>
+        <a href="/openapi.json">openapi.json</a> · <a href="/api/v1/coverage" rel="nofollow">coverage (JSON)</a> · <a href="/sitemap.xml">sitemap.xml</a>
       </p>
       <p className="muted small">
         Questions or a wrong figure to report: <a href={`mailto:${CONTACT}`}>{CONTACT}</a>

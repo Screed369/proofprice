@@ -223,10 +223,10 @@ test("sessions per day: distinct visitors across instances, client groups, quest
   assert.deepEqual(s.by_group.named_apps, { sessions: 1, questions: 3, handshakes: 1 });
   assert.deepEqual(s.top_tools_by_group.named_apps.map((t) => [t.tool, t.sessions, t.questions]), [["pricepaid_rent_prices", 1, 2], ["pricepaid_fuel_prices_now", 1, 1]]);
   assert.equal(s.by_tool.find((t) => t.tool === "pricepaid_fuel_prices_now")!.sessions, 2);
-  assert.deepEqual(r.by_day![0].sessions, { total: 4, directory_checks: 2, real_apps: 2, named_apps: 1, unnamed: 1 });
+  assert.deepEqual(r.by_day![0].sessions, { total: 4, directory_checks: 2, crawlers: 0, real_apps: 2, named_apps: 1, unnamed: 1 });
   // the same numbers once the day is closed and only counts remain
   const later = await usageReport(new Date("2026-10-16T12:00:00Z"), ON, mem);
-  assert.deepEqual(later.by_day!.find((d) => d.day === "2026-10-14")!.sessions, { total: 4, directory_checks: 2, real_apps: 2, named_apps: 1, unnamed: 1 });
+  assert.deepEqual(later.by_day!.find((d) => d.day === "2026-10-14")!.sessions, { total: 4, directory_checks: 2, crawlers: 0, real_apps: 2, named_apps: 1, unnamed: 1 });
   assert.equal(later.sessions!.days_with_data, 1);
 });
 

@@ -145,7 +145,8 @@ export default async function Status() {
             connected {usage.handshakes ?? 0} times (handshakes, not questions).
             {usage.sessions && usage.sessions.days_with_data > 0
               ? ` Distinct visitors per day, added up over ${usage.sessions.days_with_data} day${usage.sessions.days_with_data === 1 ? "" : "s"}: ${usage.sessions.real_apps} from apps and ${usage.sessions.directory_checks} from directory checks and health checkers.`
-              : ""}{" "}
+              : ""}
+            {usage.crawler_questions ? ` Web crawlers that followed links on our pages made ${usage.crawler_questions} more requests; they are not counted as questions.` : ""}{" "}
             Our own checks (the smoke test and the monitors) are not counted as customers
             {usage.own_checks && usage.own_checks.questions > 0
               ? `; ${usage.own_checks.questions} older rows from our own named checks are kept apart.`
