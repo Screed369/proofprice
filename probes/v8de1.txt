@@ -1,0 +1,33 @@
+URL: https://www-genesis.destatis.de/genesisWS/rest/2020/helloworld/whoami
+Fetched: 2026-10-22T08:43:48Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 88
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 307 Temporary Redirect
+Date: Thu, 22 Oct 2026 08:43:47 GMT
+Server: Apache
+Location: https://genesis.destatis.de/genesisWS/rest/2020/helloworld/whoami
+Content-Length: 315
+Content-Type: text/html; charset=iso-8859-1
+
+HTTP/1.1 200 OK
+Date: Thu, 22 Oct 2026 08:43:48 GMT
+Server: Generic Web Server
+Cross-Origin-Opener-Policy: same-origin-allow-popups
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: no-referrer
+Cross-Origin-Resource-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Content-Type-Options: nosniff
+Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), vr=(), fullscreen=(self), autoplay=(self)
+Content-Type: application/json;charset=UTF-8
+Content-Length: 88
+Cache-Control: no-store, no-cache
+Pragma: no-cache
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+{"User-Agent":"ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)"}
