@@ -1,5 +1,6 @@
 // Manifest: EU national average pump prices from the European Commission's Weekly Oil Bulletin. Logic lives in ./source.ts.
 // Answers come from the price library, filled by the collector from the bulletin's price-history workbook.
+import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
 import { COUNTRIES, INFO, wobFuelNow, wobBackfill, wobHarvest, wobHistoryKey } from "./source";
 
@@ -20,8 +21,17 @@ export default defineSource({
     town: "EU Weekly Oil Bulletin countries: not used (national average only).",
     service: "EU Weekly Oil Bulletin countries: not used.",
   },
+  extraParams: {
+    tax: z
+      .enum(["with", "without"])
+      .optional()
+      .describe(
+        "EU Weekly Oil Bulletin countries only: 'with' (default) = the pump price with all duties and taxes; 'without' = the Commission's price net of duties and taxes (VAT and excise removed), the basis many fuel-surcharge indices use. The answer states which. Other countries ignore it and answer with their own pump price.",
+      ),
+  },
   examples: [
     { params: { country: "IE", fuel: "diesel" } },
+    { params: { country: "IE", fuel: "diesel", tax: "without" }, smoke: false },
     { params: { country: "DE", fuel: "petrol95" }, smoke: false },
     { params: { country: "PL", fuel: "diesel" }, smoke: false },
   ],
@@ -34,6 +44,7 @@ export default defineSource({
       area: str(p.area) ?? str(p.department),
       town: str(p.town),
       postcode: str(p.postcode),
+      tax: str(p.tax),
       baseUrl: ctx.baseUrl,
     }),
   // Stands in for the Italian, French and Spanish station-level sources when they cannot be reached and no recent copy is held
@@ -42,5 +53,5 @@ export default defineSource({
   nominalCounts: true,
   harvest: wobHarvest,
   backfill: wobBackfill,
-  historyKey: (p) => wobHistoryKey({ country: String(p.country), fuel: String(p.fuel) }),
+  historyKey: (p) => wobHistoryKey({ country: String(p.country), fuel: String(p.fuel), tax: str(p.tax) }),
 });

@@ -22,6 +22,10 @@
 //   item "petrol95" | "diesel" | "lpg" | "heating_oil"  the price in EUR per litre (published EUR per 1000 litres divided by 1000)
 //   item "<fuel>@YYYY-MM-DD"                             the price in the bulletin of that earlier date (previous week, a year earlier)
 //   item "fx" and "fx@YYYY-MM-DD"                        EUR per unit of national currency (only for countries with their own currency)
+// Without taxes (added 22 Oct 2026): the same workbook has a sheet "Prices wo taxes" (title "Consumer prices of petroleum products net of duties and
+// taxes", columns "<CC>_price_wo_tax_euro95|diesel|heating_oil|LPG", same units and layout). The collector keeps those as items "<fuel>_notax" (and
+// "<fuel>_notax@YYYY-MM-DD"). A net figure is kept only if it is below the with-tax figure of the same week; if the sheet is missing or changed, the
+// with-tax rows are still written and the without-tax answer says it is not available. The tool option is `tax: with|without` (default with).
 // A published figure does not come from counting records, so it is stored with median = low = high = min = max = the figure and n = NO_COUNT (stored empty; the answers carry sample_size null).
 // That n is a placeholder to pass the library's "at least 5" gate, NOT a count of records (the answers carry sample_size null).
 
@@ -111,6 +115,8 @@ export interface Week {
   prices: Record<string, Partial<Record<BulletinFuel, number>>>;
   /** EUR per unit of national currency, by area. */
   fx: Record<string, number>;
+  /** EUR per litre WITHOUT duties and taxes (sheet "Prices wo taxes"), by area. Empty when that sheet was not read. */
+  net: Record<string, Partial<Record<BulletinFuel, number>>>;
 }
 
 const r5 = (v: number) => Math.round(v * 1e5) / 1e5;
@@ -155,7 +161,7 @@ export function parseHistory(rows: Cell[][], keepWeeks = 60, minCountries = 15):
     const date = excelDate(serial);
     if (!date) continue;
     seen.add(serial);
-    const w: Week = { serial, date, prices: {}, fx: {} };
+    const w: Week = { serial, date, prices: {}, fx: {}, net: {} };
     for (const c of cols) {
       const v = r[c.col];
       if (!isNum(v) || v <= 0) continue;
@@ -170,6 +176,55 @@ export function parseHistory(rows: Cell[][], keepWeeks = 60, minCountries = 15):
   // The real file has about 23 of our countries with a Euro-super 95 price in a week; far fewer means the layout changed.
   if (!newest || withPetrol < minCountries) throw new SourceError(`The newest Oil Bulletin week has Euro-super 95 prices for only ${withPetrol} countries; the file may have changed.`);
   return weeks.slice(0, keepWeeks);
+}
+
+const NET_COLUMN = new Map<string, BulletinFuel>([["euro95", "petrol95"], ["diesel", "diesel"], ["heating_oil", "heating_oil"], ["LPG", "lpg"]]);
+
+/** Parse the "Prices wo taxes" sheet: Excel serial -> area -> fuel -> EUR per litre. Never throws: a missing or changed sheet gives an empty map
+ *  (the with-tax rows are still collected; the without-tax answer then says it is not available). */
+export function parseNetSheet(rows: Cell[][]): Map<number, Week["net"]> {
+  const out = new Map<number, Week["net"]>();
+  const hi = rows.findIndex((r) => r.some((c) => typeof c === "string" && /_price_wo_tax_euro95$/.test(c.trim())));
+  if (hi < 0) return out;
+  const unitRow = rows.slice(hi + 1, hi + 6).find((r) => String(r[0] ?? "").trim() === "Date");
+  if (!unitRow) return out;
+  const cols: { area: string; fuel: BulletinFuel; col: number }[] = [];
+  rows[hi].forEach((h, col) => {
+    if (typeof h !== "string") return;
+    const m = /^([A-Z]{2,3})_price_wo_tax_(euro95|diesel|heating_oil|LPG)$/.exec(h.trim());
+    if (!m || (m[1] !== EU_AREA && !nameOf(m[1]))) return;
+    const unit = String(unitRow[col] ?? "").replace(/\s+/g, "").toLowerCase();
+    if (unit !== "1000l") return; // a changed unit: leave the column out rather than guess
+    cols.push({ area: m[1], fuel: NET_COLUMN.get(m[2])!, col });
+  });
+  for (const r of rows.slice(hi + 1)) {
+    const serial = r[0];
+    if (!isNum(serial) || out.has(serial)) continue;
+    const net: Week["net"] = {};
+    for (const c of cols) {
+      const v = r[c.col];
+      if (isNum(v) && v > 0) (net[c.area] ??= {})[c.fuel] = r5(v / 1000);
+    }
+    out.set(serial, net);
+  }
+  return out;
+}
+
+/** Put the without-tax figures on the weeks. A figure is kept only if it is below the with-tax figure of the same week and area
+ *  (a wrong sheet or shifted columns would break that). Returns the weeks (changed in place). */
+export function attachNet(weeks: Week[], net: Map<number, Week["net"]>): Week[] {
+  for (const w of weeks) {
+    const n = net.get(w.serial);
+    if (!n) continue;
+    for (const [area, fuels] of Object.entries(n)) {
+      for (const [fuel, v] of Object.entries(fuels) as [BulletinFuel, number][]) {
+        const gross = w.prices[area]?.[fuel];
+        if (gross === undefined || !(v < gross)) continue;
+        (w.net[area] ??= {})[fuel] = v;
+      }
+    }
+  }
+  return weeks;
 }
 
 /** The week one week before the newest (or the closest earlier one within 14 days, if a week was skipped). */
@@ -206,6 +261,15 @@ export function wobRows(weeks: Week[]): DailyRow[] {
       for (const w of earlier) {
         const then = w.prices[area]?.[item];
         if (then !== undefined) put(area, `${item}@${w.date}`, then);
+      }
+    }
+    for (const item of ITEMS) {
+      const v = w0.net[area]?.[item];
+      if (v === undefined) continue;
+      put(area, `${item}_notax`, v);
+      for (const w of earlier) {
+        const then = w.net[area]?.[item];
+        if (then !== undefined) put(area, `${item}_notax@${w.date}`, then);
       }
     }
     if (NATIONAL_CURRENCY[area] && w0.fx[area] !== undefined) {
@@ -254,6 +318,7 @@ export function wobResult(weeks: Week[]): HarvestResult {
     note:
       `European Commission Weekly Oil Bulletin, prices in force on ${w0.date}: published national averages (all duties and taxes included), euro per litre. ` +
       `Items petrol95, diesel, lpg, heating_oil; "<item>@<date>" = the price in the bulletin of that earlier date (${prev ? `previous week ${prev.date}` : "no previous week"}, ${year ? `year earlier ${year.date}` : "no year-earlier week"}); ` +
+      `"<item>_notax" = the same product net of duties and taxes (sheet "Prices wo taxes"${weeks.some((w) => Object.keys(w.net).length) ? "" : ", not read in this run"}). ` +
       "fx = euro per unit of national currency. Published values, not counts of records (no record count is published).",
   };
 }
@@ -271,7 +336,14 @@ export async function wobHarvest(minCountries = 15): Promise<HarvestResult> {
   const sheets = readXlsx(buf, { maxRows: 90 });
   const sheet = sheets.find((s) => s.rows.some((r) => r.some((c) => typeof c === "string" && /_price_with_tax_euro95$/.test(c.trim()))));
   if (!sheet) throw new SourceError("The Oil Bulletin workbook has no sheet with '<country>_price_with_tax_euro95' columns; this source needs updating.");
-  return wobResult(parseHistory(sheet.rows, 60, minCountries));
+  const weeks = parseHistory(sheet.rows, 60, minCountries);
+  try {
+    const netSheet = sheets.find((s) => s.rows.some((r) => r.some((c) => typeof c === "string" && /_price_wo_tax_euro95$/.test(c.trim()))));
+    if (netSheet) attachNet(weeks, parseNetSheet(netSheet.rows));
+  } catch {
+    // the without-tax sheet is an extra: never let it stop the with-tax collection
+  }
+  return wobResult(weeks);
 }
 
 // ---------- history backfill (monthly averages of the weekly bulletins) ----------
@@ -340,7 +412,22 @@ export interface WobInput {
   area?: string;
   town?: string;
   postcode?: string;
+  /** "with" (default) = all duties and taxes included; "without" = net of duties and taxes. */
+  tax?: string;
   baseUrl?: string;
+}
+
+export type TaxBasis = "with" | "without";
+const TAX_ALIASES: Record<string, TaxBasis> = {
+  with: "with", with_tax: "with", with_taxes: "with", incl: "with", all: "with", gross: "with",
+  without: "without", without_tax: "without", without_taxes: "without", wo_tax: "without", excl: "without", excl_tax: "without",
+  excl_taxes: "without", no_tax: "without", none: "without", net: "without", ex_tax: "without",
+};
+export function parseTax(raw: unknown): TaxBasis {
+  if (raw === undefined || raw === null || String(raw).trim() === "") return "with";
+  const t = TAX_ALIASES[String(raw).trim().toLowerCase().replace(/[\s-]+/g, "_")];
+  if (!t) throw new InputError('tax must be "with" (all duties and taxes included, the default) or "without" (net of duties and taxes).');
+  return t;
 }
 
 interface LibLike {
@@ -389,41 +476,50 @@ export function wobAnswer(lib: LibLike, input: WobInput, now = new Date()): Pric
   const name = nameOf(country);
   if (!name) throw new InputError(`The Weekly Oil Bulletin source answers for ${Object.keys(COUNTRIES).join(", ")}. Not yet: ${input.country}.`);
   const standIn = !COUNTRIES[country];
+  const basis = parseTax(input.tax);
+  const net = basis === "without";
   const fuel = input.fuel as BulletinFuel;
+  const key = net ? `${fuel}_notax` : fuel; // library item for the chosen tax basis
+  const taxWords = net ? "excluding all duties and taxes" : "all duties and taxes included";
   if (!ASKABLE.includes(fuel)) {
     throw new InputError("fuel must be petrol95 (Euro-super 95), diesel or lpg for the EU Weekly Oil Bulletin; premium petrol, E10, E85 and natural gas are not published.");
   }
   const get = (area: string, item: string): number | null => lib.rows.find((r) => r.area === area && r.item === item)?.median ?? null;
+  const sfx = net ? "_notax" : "";
   const dated = (area: string, item: string) =>
     lib.rows.filter((r) => r.area === area && r.item.startsWith(`${item}@`)).map((r) => ({ date: r.item.slice(item.length + 1), value: r.median }));
 
   const asked = [input.postcode && `postcode ${input.postcode}`, input.town && input.town, input.area && input.area].filter(Boolean) as string[];
   const info = FUEL_INFO[fuel];
-  const query: Record<string, unknown> = { country, fuel, ...(input.area ? { area: input.area } : {}), ...(input.town ? { town: input.town } : {}), ...(input.postcode ? { postcode: input.postcode } : {}) };
+  const query: Record<string, unknown> = { country, fuel, ...(net ? { tax: "without" } : {}), ...(input.area ? { area: input.area } : {}), ...(input.town ? { town: input.town } : {}), ...(input.postcode ? { postcode: input.postcode } : {}) };
   const method =
     "The European Commission's Weekly Oil Bulletin publishes every week, for each Member State, the consumer price of Euro-super 95, automotive gas oil (diesel), heating gas oil and LPG motor fuel with all duties and taxes included, " +
     "as reported by the national authorities (\"the prices most frequently charged, based on a weighted average\"). ProofPrice returns the published national figure for the newest bulletin it holds, converted from euro per 1000 litres to euro per litre, " +
-    "with the change on the previous week and on a year earlier calculated from the bulletin's own price history. No range is calculated and the Commission gives no number of stations.";
+    "with the change on the previous week and on a year earlier calculated from the bulletin's own price history. No range is calculated and the Commission gives no number of stations." +
+    (net
+      ? " This answer is the figure WITHOUT duties and taxes: the Commission's separate table of consumer prices \"net of duties and taxes\" (VAT and excise duty removed), the basis many fuel-surcharge indices use. Ask without the tax option for the pump price with all taxes."
+      : " This answer is the figure WITH all duties and taxes (the pump price a consumer pays); ask with tax=without for the Commission's figure net of duties and taxes.");
   const base = { source: INFO, query, measure: "average" as const, currency: "EUR", unit: "per litre", method, baseUrl: input.baseUrl };
 
-  const value = get(country, fuel);
+  const value = get(country, key);
   const ageDays = Math.round((now.getTime() - Date.parse(lib.date + "T00:00:00Z")) / dayMs);
   const old = ageDays > OLD_AFTER_DAYS;
 
   if (value === null) {
-    const available = ITEMS.filter((i) => get(country, i) !== null).map((i) => FUEL_INFO[i].label);
+    const available = ITEMS.filter((i) => get(country, i + sfx) !== null).map((i) => FUEL_INFO[i].label);
     const none = buildStatisticAnswer({ ...base, value: null, period: { from: null, to: null }, reference_period: "", describe: () => "" });
     return {
       ...none,
       summary:
-        `The Weekly Oil Bulletin of ${longDate(lib.date)} carries no ${info.label} price for ${name} (the Member State does not report one). ` +
+        `The Weekly Oil Bulletin of ${longDate(lib.date)} carries no ${info.label} price ${net ? "excluding taxes " : ""}for ${name} (` +
+        (net ? "the Member State does not report one, or the net-of-taxes table is not yet in our library" : "the Member State does not report one") + "). " +
         (available.length ? `It does carry: ${available.join(", ")}.` : ""),
-      extra: { country_name: name, bulletin_date: lib.date, published_fuels: available },
+      extra: { country_name: name, bulletin_date: lib.date, tax_basis: basis, published_fuels: available },
     };
   }
 
-  const prev = pickPrevious(dated(country, fuel), lib.date);
-  const year = pickYearEarlier(dated(country, fuel), lib.date);
+  const prev = pickPrevious(dated(country, key), lib.date);
+  const year = pickYearEarlier(dated(country, key), lib.date);
   const chg = (then: { date: string; value: number } | null) =>
     then ? { date: then.date, price_eur_per_litre: then.value, change_percent: round1(((value - then.value) / then.value) * 100), change_eur_per_litre: round4(value - then.value) } : null;
   const prevChange = chg(prev);
@@ -464,11 +560,11 @@ export function wobAnswer(lib: LibLike, input: WobInput, now = new Date()): Pric
 
   const published: Record<string, number> = {};
   for (const i of ITEMS) {
-    const v = get(country, i);
+    const v = get(country, i + sfx);
     if (v !== null) published[i === "heating_oil" ? "heating_gas_oil" : i] = v;
   }
-  const euAverage = get(EU_AREA, fuel);
-  const heating = get(country, "heating_oil");
+  const euAverage = get(EU_AREA, key);
+  const heating = get(country, "heating_oil" + sfx);
 
   return buildStatisticAnswer({
     ...base,
@@ -482,7 +578,7 @@ export function wobAnswer(lib: LibLike, input: WobInput, now = new Date()): Pric
           ? `This is the national average for ${name}, not a figure for ${asked.join(", ")}. `
           : `${name} is covered by national averages only (you asked about ${asked.join(", ")}). `
         : "") +
-      `In ${name} the average pump price of ${info.label} was ${eur(v)} per litre (all duties and taxes included${nationalPrice !== null ? `; about ${nationalPrice} ${currency} per litre` : ""}) ` +
+      `In ${name} the average ${net ? "price" : "pump price"} of ${info.label} was ${eur(v)} per litre (${taxWords}${nationalPrice !== null ? `; about ${nationalPrice} ${currency} per litre` : ""}) ` +
       `in the Weekly Oil Bulletin for prices in force on ${longDate(lib.date)}` +
       (phrases.length ? `, ${phrases.join(" and ")}` : "") +
       "." +
@@ -492,7 +588,10 @@ export function wobAnswer(lib: LibLike, input: WobInput, now = new Date()): Pric
       fuel,
       product_in_bulletin: info.product,
       scope: "national average (one figure per Member State; no area, town or postcode figures)",
-      taxes: "all duties and taxes included (VAT and excise)",
+      tax_basis: basis,
+      taxes: net
+        ? "WITHOUT duties and taxes (the Commission's table of consumer prices net of duties and taxes: VAT and excise duty removed); not the price at the pump"
+        : "all duties and taxes included (VAT and excise)",
       bulletin_date: lib.date,
       price_eur_per_1000_litres: Math.round(value * 1000 * 100) / 100,
       price_eur_per_litre: value,
@@ -501,13 +600,14 @@ export function wobAnswer(lib: LibLike, input: WobInput, now = new Date()): Pric
       ...(national ? { national_currency: national } : {}),
       ...(euAverage !== null ? { eu27_weighted_average_eur_per_litre: euAverage } : {}),
       ...(heating !== null ? { heating_gas_oil_eur_per_litre: heating } : {}),
+      ...(net ? { with_tax_price_eur_per_litre: get(country, fuel) } : {}),
       published_prices_eur_per_litre: published,
       data_age_days: ageDays,
       ...(old ? { stale_warning: `The newest Weekly Oil Bulletin we hold is for ${lib.date}, ${ageDays} days ago.` } : {}),
       ...(asked.length ? { asked_place: asked.join(", "), answered_as: "national average" } : {}),
       bulletin_note:
         "The prices communicated by the Member States are the prices most frequently charged, based on a weighted average. Comparisons between prices and price trends in different countries shall be carefully made.",
-      source_file: "Weekly Oil Bulletin, price developments 2005 onwards (xlsx), sheet \"Prices with taxes\"",
+      source_file: `Weekly Oil Bulletin, price developments 2005 onwards (xlsx), sheet "${net ? "Prices wo taxes" : "Prices with taxes"}"`,
     },
   });
 }
@@ -518,8 +618,9 @@ export async function wobFuelNow(input: WobInput, now = new Date()): Promise<Pri
   return wobAnswer(lib, input, now);
 }
 
-export function wobHistoryKey(p: { country: string; fuel: string }): { area: string; item: string; label: string } | null {
+export function wobHistoryKey(p: { country: string; fuel: string; tax?: string }): { area: string; item: string; label: string } | null {
   const country = p.country.trim().toUpperCase();
   if (!COUNTRIES[country] || !ASKABLE.includes(p.fuel as BulletinFuel)) return null;
+  if (parseTax(p.tax) === "without") return { area: country, item: `${p.fuel}_notax`, label: `${COUNTRIES[country]} (national average, excluding taxes)` };
   return { area: country, item: p.fuel, label: `${COUNTRIES[country]} (national average)` };
 }
