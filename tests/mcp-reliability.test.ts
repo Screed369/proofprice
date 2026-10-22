@@ -447,14 +447,14 @@ test("pricepaid_coverage: a country or category nothing covers is an answer, not
   const sc: any = none.structuredContent;
   assert.deepEqual(sc.sources, []);
   assert.deepEqual(sc.tools, []);
-  assert.match(sc.summary, /^No ProofPrice source covers country ZZ\. Countries covered: AT,/);
+  assert.match(sc.summary, /^No ProofPrice source covers country ZZ\. Countries covered: (?:GB, )?AT,/);
   assert.ok(coverageSpec().config.outputSchema.safeParse(sc).success);
   const noFuel: any = (await coverageSpec().call({ category: "cars", country: "IE" })).structuredContent;
   assert.match(noFuel.summary, /^No ProofPrice source covers category cars, country IE\. Countries covered for cars: SG\.$/);
 
   const badCat = await coverageSpec().call({ category: "spaceships" });
   assert.equal(badCat.isError, true);
-  assert.match(badCat.content[0].text, /^Could not answer: category must be one of: broadband, cars,/);
+  assert.match(badCat.content[0].text, /^Could not answer: category must be one of: (?:border-prices, )?broadband, cars,/);
   const badCountry = await coverageSpec().call({ country: "Atlantis" });
   assert.equal(badCountry.isError, true);
   assert.match(badCountry.content[0].text, /country must be an ISO country code/);
