@@ -1,0 +1,218 @@
+URL: https://admin.taiwan.net.tw/
+Fetched: 2026-10-22T19:42:03Z from GitHub Actions
+Status, type, bytes: 200 text/html 5762
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Length: 5762
+Content-Type: text/html
+Last-Modified: Mon, 31 Aug 2026 08:00:29 GMT
+Accept-Ranges: bytes
+ETag: "1dd391ec9e4da02"
+Strict-Transport-Security: max-age=62208000; includeSubDomains; preload
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Date: Thu, 22 Oct 2026 19:42:03 GMT
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 (with BOM) text, with CRLF line terminators
+=== FIRST 30000 BYTES
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>交通部觀光署行政資訊網</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/manifest.json">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f4f7f6;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 0;
+    }
+
+    /* 左上角 Logo 樣式 */
+    .site-logo {
+      display: block;
+      max-width: 400px;
+      /* 可依實際需求調整 Logo 寬度 */
+      height: auto;
+      margin: 45px auto 40px auto;
+    }
+
+    @media (max-width: 600px) {
+      .site-logo {
+        margin: 20px auto 40px;
+      }
+    }
+
+    /* 按鈕容器：置中排列 */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 45px;
+      margin: auto;
+      padding-top: 10px;
+      padding-bottom: 50px;
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+      .button-container {
+        gap: 20px;
+      }
+    }
+
+    /* 單一按鈕樣式 */
+    .btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.875rem;
+      font-weight: bold;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .btn {
+        padding: 24px 16px;
+      }
+    }
+
+    .btn .text-en {
+      font-size: 1.5rem;
+    }
+
+    .btn span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn>span:first-child {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #FFFFFF;
+    }
+
+    /* 國旅補助按鈕 (綠色系) */
+    .btn-subsidy {
+      background: linear-gradient(135deg, #00b09b, #96c93d);
+    }
+
+    /* 觀光資訊按鈕 (橘紅色系) */
+    .btn-info {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    }
+
+    /* 滑鼠懸停效果 */
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+    }
+
+    /* 滑鼠點擊效果 */
+    .btn:active {
+      transform: translateY(-2px);
+    }
+
+    .btn-subtext {
+      font-size: 1.25rem;
+      font-weight: normal;
+      margin-top: 8px;
+      opacity: 0.9;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>
+    <img src="/fapi/ArtPic?id=12653&w=0&h=0" alt="logo" class="site-logo">
+    交通部觀光署行政資訊網
+  </h1>
+
+  <div class="button-container">
+    <a href="https://taiwantravel.tad.gov.tw/web_page/" rel="noopener noreferrer" class="btn btn-subsidy">
+      <span>
+        國旅補助
+        <span class="btn-subtext">點擊前往交通部觀光署補助專區</span>
+      </span>
+      <span class="text-en">
+        Domestic Travel Subsidy
+        <span class="btn-subtext">Visit the Tourism Administration Subsidy Section</span>
+      </span>
+    </a>
+
+    <a href="https://admin.taiwan.net.tw/main" rel="noopener noreferrer" class="btn btn-info">
+      <span>
+        行政資訊
+        <span class="btn-subtext">點擊前往交通部觀光署行政資訊網</span>
+      </span>
+      <span class="text-en">
+        Administrative Information
+        <span class="btn-subtext">Visit the Taiwan Tourism Administration Information Website</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <p>Copyright © 2026 中華民國交通部觀光署 版權所有</p>
+  </div>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FQMGBMMQ6H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FQMGBMMQ6H');
+  </script>
+</body>
+
+</html>
