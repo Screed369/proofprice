@@ -624,3 +624,26 @@ test("backfill: a quarter that cannot be downloaded stops the run instead of lea
     /HTTP 500/,
   );
 });
+
+test("backfill: the portal's placeholder zips for the earliest quarters (manifest only, 367 bytes on 22 Oct 2026) are skipped; a big zip with no sales files still stops the run", async () => {
+  const stub = makeZip({ "manifest.csv": "name,schema,description\n", "build.ttt": "x".repeat(118) }, true);
+  assert.ok(stub.length < 2000);
+  const rel = (id: string, f: string, t: string): Release => ({ id, kind: "season", url: `https://example.test/${id}.zip`, salesFrom: f, salesTo: t, ...ZERO });
+  const rows: Fake[] = Array.from({ length: 6 }, (_, i) => ({ district: "大安區", date: "1010815", total: 20_000_000 + i * 1_000_000, serial: `s-${i}` }));
+  rows.push({ district: "大安區", date: "1011215", total: 25_000_000, serial: "late" }); // a later deal so that August is not a "too recent" month
+  const good = makeZip({ "a_lvr_land_a.csv": csvOf(rows) }, true);
+  const logs: string[] = [];
+  const zips: Record<string, Buffer> = { "101S1": stub, "101S3": good };
+  const deps = {
+    fetchReleases: async () => [rel("101S1", "2011-11-01", "2012-01-31"), rel("101S3", "2012-06-11", "2012-09-10")],
+    download: async (u: string) => zips[u.split("/").pop()!.replace(".zip", "")],
+    now: () => new Date("2026-10-22T00:00:00Z"),
+    log: (m: string) => logs.push(m),
+  };
+  const r = await twBackfill("2012-01-01", "2012-12-31", deps);
+  assert.deepEqual(r.periods.map((p) => p.period), ["2012-08"]);
+  assert.ok(logs.some((l) => l.startsWith("skip 101S1: placeholder")));
+  const bigNoSales = makeZip({ "manifest.csv": "x".repeat(5000) }, false);
+  assert.ok(bigNoSales.length >= 2000);
+  await assert.rejects(twBackfill("2012-01-01", "2012-12-31", { ...deps, download: async () => bigNoSales }), /holds no sales files/);
+});

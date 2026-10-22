@@ -556,6 +556,12 @@ export async function twBackfill(from: string, to: string, deps: BackfillDeps = 
       continue;
     }
     const files = cityFiles(listZip(buf), "a");
+    if (!files.length && buf.length < 2000) {
+      // The portal lists the earliest quarters but serves a tiny placeholder zip (manifest only, no data): nothing to read.
+      deps.log(`skip ${rel.id}: placeholder zip without data (${buf.length} bytes)`);
+      skipped++;
+      continue;
+    }
     if (!files.length) throw new SourceError(`MOI release ${rel.id} holds no sales files; the download format may have changed.`);
     let n = 0;
     for (const f of files) {
