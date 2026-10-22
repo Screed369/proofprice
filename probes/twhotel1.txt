@@ -1,0 +1,32 @@
+URL: https://data.gov.tw/api/v2/rest/dataset/54817
+Fetched: 2026-10-22T20:41:50Z from GitHub Actions
+Status, type, bytes: 200 application/json 3415
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 20:41:50 GMT
+content-type: application/json
+content-length: 3415
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=td4kqsb7vio2r248asem19ksdk; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=Qjwi6.iADAErEnV33h4PGdqO2TRjY2QZDFg0jySImyY-1792701710.2553885-1.0.1.1-P5EN5oW.oz2Hkn9PCusQqU4LpMZLcMlnVzZUCLZ3uAUjJMNP6vT8hd_tu5VzbZa5HtoM6YqR9SEiLe9ouFGceVJK4K415AmRvVT0cr2qOv_kD9Kl7z5mLuEzSu97TveR; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Thu, 22 Oct 2026 21:11:50 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4eb53391ffc9810-LAX
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help":"","success":true,"result":{"categoryService":"900","categoryDataset":"A","datasetId":54817,"identifier":"A15010000H-000100","title":"觀光旅館業統計資料集","description":"提供歷年觀光旅館業營運統計表","type":"api","license":"1","cost":"free","dataProvider":"chl33","publisherOID":"2.16.886.101.20003.20008.20080","publisherContactName":"邱 小姐","publisherContactPhone":"02-23491500#8764","publisherContactEmail":"chl@tad.gov.tw","updateFrequency":{"regularupdate":"1","Frequency":"1","unittime":"年"},"dataQuality":"G","coverageStartedDate":"","coverageEndedDate":"","publishedDate":"2017-09-26","modifiedDate":"2026-09-15 14:40:38","spatialCoverage":"","language":"zh","relatedUrl":"","notes":"","apiDocUrl":"","distribution":[{"resourceDescription":"觀光旅館業營運統計表","resourceField":[{"name":"觀光旅館：地區","description":""},{"name":"觀光旅館名稱","description":""},{"name":"客房住用數","description":""},{"name":"住用率","description":"","uri":"api\/BudgetAccountingandStatistics\/BudgetandAccounting\/SpecialFundBudgetandAccounting\/Percentage"},{"name":"平均房價","description":""},{"name":"客房收入","description":"","uri":"api\/BudgetAccountingandStatistics\/BudgetandAccounting\/GeneralFundBudgetandAccounting\/Amountsunitdollars"},{"name":"餐飲收入","description":"","uri":"api\/BudgetAccountingandStatistics\/BudgetandAccounting\/GeneralFundBudgetandAccounting\/Amountsunitdollars"},{"name":"總營業收入","description":"","uri":"api\/BudgetAccountingandStatistics\/BudgetandAccounting\/GeneralFundBudgetandAccounting\/Amountsunitdollars"},{"name":"各部門職工概況(客房部","description":""},{"name":"餐飲部","description":""},{"name":"管理部","description":""},{"name":"其他部門","description":""},{"name":"合計)等","description":""}],"qcLevel":"","resourceFormat":"壓縮檔","resourceCharacterEncoding":"UTF-8","resourceQualityCheckTime":"2026-03-01 18:25:57","resourceDownloadUrl":"https:\/\/media.taiwan.net.tw\/od\/03_HLD\/觀光旅館營運報表.zip","resourceAmount":0,"resourceNotes":"","resourceRequestMethod":"","resourceOasUrl":"","resourceRequestParameters":[],"resourcePathParameters":[]}],"keyword":["觀光旅館業營運統計表"],"en":{"title":"Tourist Accommodation Industry Statistics Dataset","description":"Provide annual statistics on the operation of the hotel industry","publisherContactName":"邱 小姐","publisherContactPhone":"02-23491500#8764","publisherContactEmail":["chl@tad.gov.tw"],"updateFrequency":"Every 1 year","cost":"free","keyword":["Hotel Industry Operations Statistics Form"],"resources":[{"description":"Hotel Industry Operating Statistics Form","fieldDesc":"Tourist Hotel: Area、The name of the tourist hotel、Room Occupancy Number、Occupancy rate、Average house price、Room revenue、Food and beverage revenue、Total revenue、Please directly translate the following text into English. Ensure that the translation is exclusively in English, with no additional explanations, interpretations, or formatted phrases such as 'xxx translates to...'. Do not retain any part of the original text in non-English languages. I need only the plain English translation, without any explanatory text or comments. \"各部門職工概況(客房部\"、Food and Beverage department、Management Department、Other departments、Total (sum)","note":""}]}}}
