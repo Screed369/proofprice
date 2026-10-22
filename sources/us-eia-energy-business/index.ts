@@ -3,6 +3,7 @@
 import { defineSource, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
 import { INFO, usBusinessEnergy } from "./source";
+import { CROSS_CHECK } from "./crosscheck";
 
 export default defineSource({
   info: INFO,
@@ -11,6 +12,8 @@ export default defineSource({
   countryHelp: "With sector=business, US = United States (EIA: average commercial-sector electricity price in cents per kWh and commercial natural gas price in US$ per thousand cubic feet, by state, monthly)",
   placeName: "the United States (business)",
   status: "live",
+  // Outside check against the publisher's headline figure (internal, never shown): ./crosscheck.ts
+  crossCheck: CROSS_CHECK,
   serves: (p) => p.sector === "business",
   paramNotes: {
     sector: "US: sector=business gives the EIA commercial-sector average (shops, offices, hospitals, schools and other service businesses); household prices are the default.",

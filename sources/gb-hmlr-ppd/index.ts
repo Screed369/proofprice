@@ -4,6 +4,7 @@ import { defineSource, num, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
 import { findPlace } from "../gb-ukhpi/source";
 import { INFO, ukHomeSales, UK_PROPERTY_TYPES, UkPropertyType } from "./source";
+import { CROSS_CHECK } from "./crosscheck";
 
 export default defineSource({
   info: INFO,
@@ -12,6 +13,8 @@ export default defineSource({
   countryHelp: "GB = England & Wales (HM Land Registry)",
   placeName: "England & Wales",
   status: "live",
+  // Outside check against the publisher's headline figure (internal, never shown): ./crosscheck.ts
+  crossCheck: CROSS_CHECK,
   // Scottish and Northern Irish places are answered by gb-ukhpi (England & Wales stay here).
   serves: (p) => findPlace(str(p.town)) === null,
   paramNotes: {

@@ -1,6 +1,7 @@
 // Manifest: Netherlands daily national average pump prices (Statistics Netherlands, CBS table 80416NED). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import { INFO, nlFuelHarvest, nlFuelHistoryKey, nlFuelNow } from "./source";
+import { CROSS_CHECK } from "./crosscheck";
 
 export default defineSource({
   info: INFO,
@@ -9,6 +10,8 @@ export default defineSource({
   countryHelp: "NL = Netherlands (CBS: daily national average pump price, official statistic, a few days behind)",
   placeName: "the Netherlands",
   status: "live",
+  // Outside check against the publisher's headline figure (internal, never shown): ./crosscheck.ts
+  crossCheck: CROSS_CHECK,
   // Shares NL with eu-oil-bulletin (weekly): this source answers every NL request; the bulletin keeps NL only for history.
   serves: (p) => String(p.country ?? "").toUpperCase() === "NL",
   paramNotes: {

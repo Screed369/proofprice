@@ -3,6 +3,7 @@ import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
 import { INFO, IE_TYPES, ieBackfill, ieHarvest, ieHistoryKey, ieHomeSales } from "./source";
+import { CROSS_CHECK } from "./crosscheck";
 
 export default defineSource({
   info: INFO,
@@ -11,6 +12,8 @@ export default defineSource({
   countryHelp: "IE = Ireland (Property Price Register)",
   placeName: "Ireland",
   status: "live",
+  // Outside check against the publisher's headline figure (internal, never shown): ./crosscheck.ts
+  crossCheck: CROSS_CHECK,
   paramNotes: {
     town: "IE: a county ('Cork') or Dublin postal district ('Dublin 6'). Omit for all of Ireland.",
     property_type: "IE: any, new or second-hand (new homes are usually recorded without VAT).",

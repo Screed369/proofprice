@@ -3,6 +3,7 @@ import { defineSource, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
 import { Fuel } from "../../lib/fuels";
 import { INFO, FR_NAME, frFuelNow, frHarvest, frHistoryKey, frBackfill } from "./source";
+import { CROSS_CHECK } from "./crosscheck";
 
 export default defineSource({
   info: INFO,
@@ -11,6 +12,8 @@ export default defineSource({
   countryHelp: "FR = France",
   placeName: "France",
   status: "live",
+  // Outside check against the publisher's headline figure (internal, never shown): ./crosscheck.ts
+  crossCheck: CROSS_CHECK,
   paramNotes: {
     postcode: "FR: 5-digit postcode, e.g. '75015'.",
     area: "FR: department ('69', '2A').",

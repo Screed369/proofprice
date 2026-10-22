@@ -183,3 +183,32 @@ test("home-upgrades: sources that share a country are routed by the request (ser
   assert.ok(findSource("home-upgrades", "GB", { measure: "windows" })); // none serves it: the first answers, honestly
   assert.equal(findSource("home-upgrades", "IE", { measure: "heat_pump" })?.info.id, "ie-revenue-hri");
 });
+
+// The outside check (crossCheck, lib/crosscheck.ts): optional, internal, and checked here so a malformed one says what to fix.
+test("crossCheck: every outside check names an official series, a tolerance, known differences and like-for-like places", async () => {
+  const { crossCheckProblems } = await import("../lib/crosscheck");
+  const known = (s: (typeof SOURCE_PLUGINS)[number]) => new Set(["country", ...Object.keys(paramSchemas(categoryById(s.category)!))]);
+  assert.deepEqual(crossCheckProblems(SOURCE_PLUGINS, known), []);
+  assert.ok(SOURCE_PLUGINS.filter((s) => s.crossCheck).length >= 1, "at least one source has a crossCheck");
+  // the checker itself catches each kind of mistake
+  const es = SOURCE_PLUGINS.find((s) => s.info.id === "es-fuel")!;
+  const us = SOURCE_PLUGINS.find((s) => s.info.id === "us-eia-energy")!;
+  const bad = (s: (typeof SOURCE_PLUGINS)[number], patch: Record<string, unknown>) => crossCheckProblems([{ ...s, crossCheck: { ...s.crossCheck!, ...patch } as any }], known).join(" | ");
+  assert.match(bad(es, { headlineUrl: "http://energy.ec.europa.eu/x" }), /headlineUrl must be the publisher's official https link/);
+  assert.match(bad(es, { releasePage: "https://proofprice.com/prices" }), /points at proofprice.com/);
+  assert.match(bad(es, { series: "Oil Bulletin" }), /series must name the EXACT official series/);
+  assert.match(bad(es, { statistic: "typical" }), /statistic must be one of/);
+  assert.match(bad(es, { tolerancePct: 0 }), /tolerancePct must be a number above 0/);
+  assert.match(bad(es, { expectedBiasPct: [1.7, 0.2] }), /expectedBiasPct must be a number or a \[low, high\] band/);
+  assert.match(bad(es, { knownDifferences: [] }), /knownDifferences must list/);
+  assert.match(bad(es, { areas: [] }), /areas must list 1 to 6/);
+  assert.match(bad(es, { areas: [{ label: "Spain", theirs: "ES/diesel", ours: {} }] }), /ours must be \{ item/);
+  assert.match(bad(es, { areas: [{ label: "A", theirs: "ES/diesel", ours: { item: "diesel" } }, { label: "B", theirs: "ES/diesel", ours: { item: "lpg" } }] }), /"ES\/diesel" is listed twice/);
+  assert.match(bad(es, { compareVolumes: { tolerancePct: 0 } }), /compareVolumes.tolerancePct/);
+  assert.match(bad(es, { fetch: undefined }), /fetch\(ctx\) is missing/);
+  assert.match(bad(us, { ours: "library", areas: us.crossCheck!.areas }), /ours must be \{ item/);
+  assert.match(bad({ ...us, harvest: undefined }, { ours: "library" }), /no harvest\(\)/);
+  assert.match(bad(us, { areas: [{ label: "TX", theirs: "TX", ours: { country: "GB", energy: "electricity" } }] }), /ours.country must be one of this source's countries \(US\)/);
+  assert.match(bad(us, { areas: [{ label: "TX", theirs: "TX", ours: { country: "US", colour: "TX" } }] }), /uses "colour", which is not a parameter/);
+  assert.match(bad(us, { areas: [{ label: "TX", theirs: "TX", ours: { country: "US", sector: "business", energy: "electricity" } }] }), /answered by another source/);
+});

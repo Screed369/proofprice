@@ -208,3 +208,100 @@ export function libraryStatus(): SourceMeta[] {
     .filter((m): m is SourceMeta => !!m)
     .sort((a, b) => a.source.localeCompare(b.source));
 }
+
+// ---------- outside check results (library/_crosscheck/, written only by scripts/crosscheck.ts on GitHub Actions) ----------
+// One CSV per source: our figure next to the publisher's headline figure, one row per area and release, and a meta.json with the
+// state of every source's last run. The folder name starts with "_" so it is never mistaken for a source (libraryStatus skips it).
+
+export const CROSSCHECK_HEADER = "checked_at,area,their_key,their_period,their_value,our_period,our_value,gap_pct,our_n,their_n,verdict,reason";
+
+export interface CrossCheckRow {
+  checked_at: string; // YYYY-MM-DD
+  area: string; // the area label
+  their_key: string;
+  their_period: string;
+  their_value: number;
+  our_period: string;
+  our_value: number;
+  gap_pct: number; // (ours - theirs) / theirs * 100, rounded to 0.01
+  our_n: number | null;
+  their_n: number | null;
+  verdict: "AGREES" | "EXPLAINED" | "SUSPECT";
+  reason: string;
+}
+
+export interface CrossCheckMeta {
+  source: string;
+  last_run_at: string | null;
+  last_ok_at: string | null;
+  /** Why the last run could not compare (link moved, download failed, periods differ...). Null when it compared. */
+  last_error: string | null;
+  /** Runs in a row in which the publisher's file could not be read. The workflow fails (one email) when this reaches 3. */
+  consecutive_failures: number;
+  last_rows_written: number;
+  notes: string[];
+}
+
+export function crossCheckDir(): string {
+  return path.join(libraryRoot(), "_crosscheck");
+}
+
+function crossCheckFile(sourceId: string): string {
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(sourceId)) throw new Error(`Bad source id: ${sourceId}`);
+  return path.join(crossCheckDir(), `${sourceId}.csv`);
+}
+
+const numOrNull = (v: string | undefined): number | null => (v === undefined || v.trim() === "" ? null : Number(v));
+
+export function crossCheckRowsToCsv(rows: CrossCheckRow[]): string {
+  const body = rows.map((r) =>
+    [r.checked_at, r.area, r.their_key, r.their_period, r.their_value, r.our_period, r.our_value, r.gap_pct, r.our_n ?? "", r.their_n ?? "", r.verdict, r.reason]
+      .map((v) => csvCell(v as string | number))
+      .join(","),
+  );
+  return [CROSSCHECK_HEADER, ...body].join("\n") + "\n";
+}
+
+export function csvToCrossCheckRows(text: string): CrossCheckRow[] {
+  const lines = text.split(/\r?\n/).filter((l) => l.trim());
+  if (!lines.length || lines[0].trim() !== CROSSCHECK_HEADER) return [];
+  return lines.slice(1).map((l) => {
+    const c = splitCsvLine(l);
+    return {
+      checked_at: c[0], area: c[1], their_key: c[2], their_period: c[3], their_value: Number(c[4]), our_period: c[5], our_value: Number(c[6]),
+      gap_pct: Number(c[7]), our_n: numOrNull(c[8]), their_n: numOrNull(c[9]), verdict: c[10] as CrossCheckRow["verdict"], reason: c[11] ?? "",
+    };
+  });
+}
+
+export function readCrossCheck(sourceId: string): CrossCheckRow[] {
+  const file = crossCheckFile(sourceId);
+  return existsSync(file) ? csvToCrossCheckRows(readFileSync(file, "utf8")) : [];
+}
+
+/** Add rows, keeping one row per area and release (their_key + their_period): a re-run never duplicates a comparison. */
+export function appendCrossCheck(sourceId: string, rows: CrossCheckRow[]): number {
+  const existing = readCrossCheck(sourceId);
+  const seen = new Set(existing.map((r) => `${r.their_key}|${r.their_period}`));
+  const fresh = rows.filter((r) => !seen.has(`${r.their_key}|${r.their_period}`));
+  if (!fresh.length) return 0;
+  mkdirSync(crossCheckDir(), { recursive: true });
+  writeFileSync(crossCheckFile(sourceId), crossCheckRowsToCsv([...existing, ...fresh]));
+  return fresh.length;
+}
+
+export function readCrossCheckMeta(): Record<string, CrossCheckMeta> {
+  const file = path.join(crossCheckDir(), "meta.json");
+  if (!existsSync(file)) return {};
+  try {
+    return JSON.parse(readFileSync(file, "utf8"));
+  } catch {
+    return {};
+  }
+}
+
+export function writeCrossCheckMeta(meta: Record<string, CrossCheckMeta>): void {
+  mkdirSync(crossCheckDir(), { recursive: true });
+  const sorted = Object.fromEntries(Object.entries(meta).sort(([a], [b]) => a.localeCompare(b)));
+  writeFileSync(path.join(crossCheckDir(), "meta.json"), JSON.stringify(sorted, null, 2) + "\n");
+}

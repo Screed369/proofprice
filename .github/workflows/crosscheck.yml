@@ -1,0 +1,87 @@
+# The outside check: once a week, put our figures next to each publisher's own headline figure (sources with a crossCheck in their
+# manifest) and record AGREES / EXPLAINED / SUSPECT in library/_crosscheck/<source>.csv. A tripwire, not a judge (see lib/crosscheck.ts).
+# No AI, no keys, no cost. Our live answers are asked with ppcheck=1, so they are never counted as customers.
+#   - On main (schedule or dispatch): writes library/_crosscheck/ and commits it to main. Only this job ever writes that folder.
+#   - On any other branch (dispatch): a dry run; nothing is written to the library or pushed to the branch.
+#   - Both save the report to the probes branch as probes/crosscheck.txt (read it with:
+#     git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/crosscheck.txt)
+# The run fails only if the runner crashes or a publisher's file has failed 3 runs in a row (one email per broken link).
+# SUSPECT verdicts never fail the run: the Quality Auditor reads them.
+name: Outside check (crossCheck)
+
+on:
+  schedule:
+    - cron: "47 5 * * 5" # Fridays 05:47 UTC: the Oil Bulletin of Monday is out (published Thursdays)
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: "Only these source ids (space-separated). Empty = every source with a crossCheck."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crosscheck-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  crosscheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check the outside-check code first
+        run: node --import tsx --test tests/crosscheck.test.ts tests/registry.test.ts sources/_crosscheck/*.test.ts
+      - name: Compare with the publishers
+        env:
+          SOURCES: ${{ github.event.inputs.sources }}
+          DRY: ${{ github.ref != 'refs/heads/main' && '--dry-run' || '' }}
+        run: |
+          set -o pipefail
+          rc=0
+          npm run --silent crosscheck -- $DRY $SOURCES 2>&1 | tee crosscheck.log || rc=$?
+          {
+            echo "### Outside check ($([ -n "$DRY" ] && echo 'dry run on ${{ github.ref_name }}' || echo main)): $(grep -c '^AGREES' crosscheck.log || true) agree, $(grep -c '^EXPLAINED' crosscheck.log || true) explained, $(grep -c '^SUSPECT' crosscheck.log || true) suspect, $(grep -c '^ERROR' crosscheck.log || true) error(s)"
+            echo '```'; cat crosscheck.log; echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$rc"
+      - name: Commit the results (main only)
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "proofprice-librarian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add library/_crosscheck
+          if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
+          git commit -m "Library: outside check $(date -u +%F)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
+      - name: Save the report to the probes branch
+        if: always()
+        continue-on-error: true
+        run: |
+          [ -f crosscheck.log ] || exit 0
+          { echo "Outside check, ref ${{ github.ref_name }}, run ${{ github.run_id }}, $(date -u +%FT%TZ)"; echo; cat crosscheck.log; } > /tmp/crosscheck.txt
+          git config user.name "proofprice-librarian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git stash -u -q || true
+          if git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes; then git checkout -q -B probes origin/probes; else git checkout -q --orphan probes; fi
+          git rm -rq --cached . >/dev/null 2>&1 || true
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name probes -exec rm -rf {} +
+          mkdir -p probes && cp /tmp/crosscheck.txt probes/crosscheck.txt
+          git add probes
+          git commit -qm "Outside check report" || exit 0
+          for i in 1 2 3 4 5; do
+            git push -q origin probes && exit 0
+            sleep $((i * 3))
+            git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git rebase -q origin/probes
+          done

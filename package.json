@@ -14,7 +14,8 @@
     "test": "node --import tsx --test tests/*.test.ts sources/*/*.test.ts",
     "typecheck": "node scripts/gen-registry.mjs && tsc --noEmit",
     "harvest": "node scripts/gen-registry.mjs && tsx scripts/harvest.ts",
-    "backfill": "node scripts/gen-registry.mjs && tsx scripts/backfill.ts"
+    "backfill": "node scripts/gen-registry.mjs && tsx scripts/backfill.ts",
+    "crosscheck": "node scripts/gen-registry.mjs && tsx scripts/crosscheck.ts"
   },
   "keywords": [],
   "author": "",

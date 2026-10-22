@@ -149,6 +149,93 @@ export interface SourcePlugin {
    *  the day it was collected. A stale-if-error copy is then recent when the collector last succeeded within STALE_MAX_DAYS
    *  (the newest figure is still the newest the publisher has), and the answer states the reference date it is for. */
   referenceDates?: boolean;
+  /** Optional: the outside check (see CrossCheck). Internal only: never shown in answers, tools, REST, coverage or pages. */
+  crossCheck?: CrossCheck;
+}
+
+// ---------- outside check (crossCheck): our figure next to the publisher's own headline figure ----------
+// A tripwire, not a judge (Simon, 22 Oct 2026). Run only by scripts/crosscheck.ts on GitHub Actions; results go to
+// library/_crosscheck/<source>.csv. Nothing here reaches an answer, a tool, a REST path or a web page.
+// Design note: Notion "crossCheck design" under ProofPrice HQ. The registry gate (crossCheckProblems in lib/crosscheck.ts) checks every field.
+
+/** One figure the publisher states for a place (and item), read from its official file. */
+export interface CrossCheckHeadline {
+  /** Matches CrossCheckArea.theirs, e.g. "E08000035" (UK HPI area code) or "ES/diesel". */
+  key: string;
+  value: number;
+  /** The period the publisher states the figure for: "YYYY-MM" or "YYYY-MM-DD". */
+  period: string;
+  /** Their count where they publish one (e.g. sales per month), in the same unit as our figure's n. Used only by compareVolumes. */
+  n?: number | null;
+}
+
+/** Our figure for one place, as compared. */
+export interface CrossCheckOurs {
+  value: number;
+  /** "YYYY-MM" or "YYYY-MM-DD", or a span "YYYY-MM-DD..YYYY-MM-DD". */
+  period: string;
+  /** Records behind it (or per month, if the source says so in ourFigure). Null when the publisher gives no count. */
+  n?: number | null;
+}
+
+export interface CrossCheckContext {
+  /** One plain GET with the honest ProofPrice user agent. Retried on network errors, 429 and 5xx; memoised for the run, so a file
+   *  several sources compare with (the Oil Bulletin) is downloaded once. With optional: true a 404 gives null instead of an error. */
+  get(url: string, kind: "text", opts?: { optional?: boolean }): Promise<string | null>;
+  get(url: string, kind: "binary", opts?: { optional?: boolean }): Promise<Buffer | null>;
+  now: Date;
+}
+
+/** One place to compare: our request and the publisher's key for the same place. */
+export interface CrossCheckArea {
+  /** Plain name for the report, e.g. "Leeds" or "Spain, diesel". */
+  label: string;
+  /** The publisher's key for this place (CrossCheckHeadline.key). */
+  theirs: string;
+  /** ours "api": the REST query (country included) asked of proofprice.com with ppcheck=1. ours "library": { item } (the
+   *  national roll-up of that item on the publisher's date, from library/<source>/). */
+  ours: Record<string, string>;
+}
+
+export interface CrossCheck {
+  /** The official file or API we read their figure from (the raw release, never news). https only, one plain GET. */
+  headlineUrl: string;
+  /** The human page of the release, for the report. */
+  releasePage: string;
+  publisher: string;
+  /** What THEY publish. */
+  statistic: "mean" | "median" | "weighted mean" | "average";
+  /** What we compare it with. */
+  ourMeasure: "median" | "mean" | "n-weighted mean of area medians" | "published average";
+  /** The EXACT official series, e.g. "CSO HPM07, moving 12-month median, Existing dwellings, Filings, all buyer types". */
+  series: string;
+  /** How often the publisher releases (the runner writes one row per area per release). */
+  cadence: "weekly" | "monthly";
+  /** Where our figure comes from: the live API (with ppcheck=1, never counted as a customer) or our own library roll-up. */
+  ours: "api" | "library";
+  /** 1 to 6 places, each a like-for-like match. */
+  areas: CrossCheckArea[];
+  /** How far (in percent) the gap may sit outside the expected bias before it is SUSPECT; within this of zero it AGREES. */
+  tolerancePct: number;
+  /** The gap we expect from known differences in method (percent, ours above theirs = positive): one number or a [low, high] band.
+   *  A gap inside the band but beyond tolerancePct is EXPLAINED (silent). Default 0. */
+  expectedBiasPct?: number | [number, number];
+  /** The real alarm: SUSPECT when the gap moves by more than this many percentage points from its usual level (median of the
+   *  last 4 releases). Default 1.5. */
+  jumpPoints?: number;
+  /** Plain-words differences between their figure and ours, shown with any flag. At least one. */
+  knownDifferences: string[];
+  /** Also compare our n with their count (caught the Bristol boundary in the pilot). Ratio ours/theirs; SUSPECT when it falls
+   *  outside expectedRatio (default [1, 1]) by more than tolerancePct. */
+  compareVolumes?: { tolerancePct: number; expectedRatio?: [number, number] };
+  /** Only compare when our period and theirs are the same month or day (copies of one table: EIA, CBS). */
+  samePeriod?: boolean;
+  /** ours "library": the inside count check. SUSPECT when the day's records are below this share of the 7-day median. Default 0.8. */
+  minCountShare?: number;
+  /** Read the publisher's figures for every area (pure parser behind it, tested with a fixture copied from the live format). */
+  fetch(ctx: CrossCheckContext): Promise<CrossCheckHeadline[]>;
+  /** ours "api": turn our answer into the figure to compare. Default: price.value, sample_size, statistic.reference_period or period. */
+  ourFigure?(answer: PriceAnswer): CrossCheckOurs | null;
 }
 
 /** One country entry of a tool description, filled from the registry (the source's placeName, countries and info), never typed by hand in a category. */

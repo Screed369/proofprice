@@ -55,6 +55,9 @@ Owner: Simon (non-technical founder). Live at **https://proofprice.com** (public
 - `lib/usage.ts` + `/api/v1/usage` — anonymous usage meter (on only while a Blob store is connected). Counts questions apart from
   handshakes, the country ASKED ABOUT, directory checks apart from other apps, and distinct daily sessions via a daily-salted hash
   that is deleted with its salt when the day closes. Never store raw IP addresses or user agents. Keep `app/privacy` in step.
+- `lib/crosscheck.ts` + `scripts/crosscheck.ts` + `.github/workflows/crosscheck.yml` — the outside check (internal, Simon 22 Oct 2026): an optional
+  `crossCheck` in a manifest compares our figure with the publisher's own headline figure weekly and writes AGREES / EXPLAINED / SUSPECT to
+  `library/_crosscheck/<source>.csv` (written only by that workflow). Publisher readers: `sources/_crosscheck/feeds.ts`. Never shown to agents.
 - `lib/openapi.ts` — openapi.json and llms.txt, generated from the registry. `lib/receipts/*` — DKIM receipt verifier.
 - `tests/registry.test.ts` — the gate every manifest must pass; its messages say what to fix.
 

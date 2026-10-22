@@ -2,6 +2,7 @@
 import { defineSource, str } from "../../lib/plugin";
 import { Fuel } from "../../lib/fuels";
 import { INFO, esFuelNow, esHarvest, esHistoryKey, esBackfill } from "./source";
+import { CROSS_CHECK } from "./crosscheck";
 
 export default defineSource({
   info: INFO,
@@ -10,6 +11,8 @@ export default defineSource({
   countryHelp: "ES = Spain",
   placeName: "Spain",
   status: "live",
+  // Outside check against the publisher's headline figure (internal, never shown): ./crosscheck.ts
+  crossCheck: CROSS_CHECK,
   paramNotes: {
     postcode: "ES: 5-digit postcode, e.g. '28001'.",
     area: "ES: province code ('28' = Madrid).",

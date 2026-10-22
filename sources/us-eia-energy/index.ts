@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
 import { INFO, usEnergy, usEnergyHarvest } from "./source";
+import { CROSS_CHECK } from "./crosscheck";
 
 export default defineSource({
   info: INFO,
@@ -12,6 +13,8 @@ export default defineSource({
     "US = United States (U.S. Energy Information Administration: average residential electricity price in cents per kWh and residential natural gas price in US$ per thousand cubic feet, by state, monthly)",
   placeName: "the United States",
   status: "live",
+  // Outside check against the publisher's headline figure (internal, never shown): ./crosscheck.ts
+  crossCheck: CROSS_CHECK,
   serves: (p) => p.sector !== "business", // business requests go to us-eia-energy-business (same country, other source)
   paramNotes: {
     energy:

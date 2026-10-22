@@ -67,3 +67,12 @@ Rules:
   `buildStatisticAnswer` from `lib/answer.ts` and `price_type: "official_statistic"`. See `sources/eu-energy/` for a complete example.
 - Facts first still applies: probe the real response (see the **Probe** recipe in CLAUDE.md), copy it into your test as a fixture,
   and write the date you checked it.
+
+## Optional: an outside check (`crossCheck`)
+
+If the publisher (or another official body) states a headline figure for the same place and period, add `crossCheck` to the
+manifest from a `crosscheck.ts` in your folder (copy `sources/ie-ppr/crosscheck.ts` or `sources/es-fuel/crosscheck.ts`). Name the
+EXACT official series, 1 to 6 like-for-like places, a tolerance, the bias you expect (the alarm is a jump in the gap, not the gap),
+and the known differences in plain words. Publisher readers live in `sources/_crosscheck/feeds.ts` with a fixture test. Probe the
+official file once before you add it. It is internal: the weekly `crosscheck.yml` writes `library/_crosscheck/<id>.csv`; nothing is
+shown to agents. `tests/registry.test.ts` says what to fix if it is malformed.
