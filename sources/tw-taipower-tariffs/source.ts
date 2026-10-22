@@ -148,14 +148,13 @@ export function answerFromTable(table: Table, input: TwInput): PriceAnswer {
     measure: "average",
     currency: "TWD",
     unit: `per kWh (average over ${kwh} kWh used in a month, residential tiered tariff, ${season === "summer" ? "summer" : "non-summer"} rates, before any tax or surcharge)`,
-    period: { from: table.effective, to: null },
+    period: { from: table.effective, to: new Date().toISOString().slice(0, 10) }, // the table is in force on the day we read it
     reference_period: `tariff in force from ${table.effective}`,
     method: METHOD,
     describe: (v) =>
       `Under Taipower's published residential tariff (in force from ${table.effective}), a household using ${kwh} kWh in a month at ${season === "summer" ? "summer" : "non-summer"} rates pays about TWD ${v.toFixed(2)} per kWh on average (a bill of TWD ${r2(bill)}).`,
     note: "Published tariff schedule, not a paid bill. Calculated by ProofPrice from the tier rates; no tax, surcharge or fixed fee added.",
     baseUrl: input.baseUrl,
-    published: table.effective,
     extra: {
       monthly_use_kwh: kwh,
       season,

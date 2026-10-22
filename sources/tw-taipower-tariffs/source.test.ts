@@ -58,7 +58,9 @@ test("default answer: standard use, non-summer, posted tariff with no sample siz
   assert.equal(a.price!.value, 2.0855); // 688.2 / 330
   assert.equal(a.sample_size, null);
   assert.equal(a.price_type, "posted_price");
-  assert.deepEqual(a.period, { from: "2025-10-01", to: null });
+  assert.equal(a.period!.from, "2025-10-01");
+  assert.equal(a.period!.to, new Date().toISOString().slice(0, 10));
+  assert.equal(a.data_as_of, a.period!.to);
   assert.equal((a.extra as any).monthly_bill_twd, 688.2);
   assert.equal((a.extra as any).tiers.length, 6);
   assert.equal(a.source.id, "tw-taipower-tariffs");
