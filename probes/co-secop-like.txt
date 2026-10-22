@@ -1,0 +1,47 @@
+URL: https://www.datos.gov.co/resource/jbjy-vk9h.json?$select=valor_del_contrato&$where=fecha_de_firma%3E%272024-10-01T00:00:00%27%20AND%20upper(descripcion_del_proceso)%20like%20%27%25PORT%C3%81TIL%25%27%20AND%20estado_contrato%20!%3D%20%27cancelado%27&$limit=20
+Fetched: 2026-10-22T09:35:00Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 707
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 09:35:00 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC44NzA0Nl8zNF8yNDY5UzBUZ3FsV1ViMnFsWE5NcmNnNzhBZl9yT2t3---gzipvMM2g3VW9cs-yBP3nLMUcZ8utMc--gzip--gzip"
+X-SODA2-Fields: ["valor_del_contrato"]
+X-SODA2-Types: ["number"]
+X-SODA2-Data-Out-Of-Date: true
+X-SODA2-Truth-Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 5d6d04acbb3d640dd0ef887e046c38bb
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[{"valor_del_contrato":"75000000"}
+,{"valor_del_contrato":"70400000"}
+,{"valor_del_contrato":"19635000"}
+,{"valor_del_contrato":"4624935"}
+,{"valor_del_contrato":"22456076"}
+,{"valor_del_contrato":"10800141"}
+,{"valor_del_contrato":"6667000"}
+,{"valor_del_contrato":"19620958"}
+,{"valor_del_contrato":"1487500"}
+,{"valor_del_contrato":"30000000"}
+,{"valor_del_contrato":"340919000"}
+,{"valor_del_contrato":"1279880000"}
+,{"valor_del_contrato":"12000000"}
+,{"valor_del_contrato":"87048500"}
+,{"valor_del_contrato":"1316696626.2"}
+,{"valor_del_contrato":"260297001"}
+,{"valor_del_contrato":"13700015"}
+,{"valor_del_contrato":"90000000"}
+,{"valor_del_contrato":"21000000"}
+,{"valor_del_contrato":"144346113"}]
