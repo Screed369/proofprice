@@ -12,6 +12,8 @@ export default defineSource({
     ". Award notices above the EU procurement thresholds from TED.",
   placeName: "EU and EEA states (TED)",
   status: "live",
+  // FR is answered by fr-decp-contracts (French DECP, Licence Ouverte 2.0); declared serves() change.
+  serves: (p) => String(p.country ?? "").toUpperCase() !== "FR",
   paramNotes: {
     what:
       "EU and EEA: common purchases are matched to CPV product codes (laptops, desktop computers, school meals, road resurfacing, office cleaning, electricity, natural gas, ambulances, waste collection and about 30 more, in English and the main EU languages); " +
@@ -21,7 +23,7 @@ export default defineSource({
     months: "EU and EEA: up to 60; only the newest 1,000 matching notices are read, so a very common purchase covers a shorter period than asked (the answer says so).",
   },
   examples: [
-    { params: { country: "FR", what: "laptops" } },
+    { params: { country: "DE", what: "laptops" } },
     { params: { country: "DE", what: "school meals" }, smoke: false },
     { params: { country: "ES", what: "road resurfacing" }, smoke: false },
     { params: { country: "IE", what: "office cleaning" }, smoke: false },
