@@ -1,0 +1,436 @@
+URL: https://data.stat.gov.lv/pxweb/en/OSP_PUB/
+Fetched: 2026-10-22T02:13:13Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 30720
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+cache-control: private,no-cache, must-revalidate Pragma: no-cache Expires: 0
+content-type: text/html; charset=utf-8
+set-cookie: ASP.NET_SessionId=rtavwjm2h0vlt11kcg14g3ma; path=/; HttpOnly; SameSite=Lax
+set-cookie: ASP.NET_SessionId=rtavwjm2h0vlt11kcg14g3ma; path=/; HttpOnly; SameSite=Lax
+set-cookie: rxid=b6404286-200d-4fb7-a8be-087783606e47; path=/
+x-powered-by: ASP.NET
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy: script-src 'self' 'unsafe-inline' 'unsafe-eval'
+x-frame-options: SAMEORIGIN
+referrer-policy: same-origin
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+date: Thu, 22 Oct 2026 02:13:13 GMT
+content-length: 30720
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text, with very long lines (7580), with CRLF, LF line terminators
+=== FIRST 60000 BYTES
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head><meta name="viewport" content="width=device-width,&#32;initial-scale=1" /><title>
+	PxWeb - Select table
+</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/Resources/Images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Resources/Images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href=""/Resources/Images/favicon-16x16.png">
+    <link href="/Resources/Styles/reset.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/Styles/footer.css?v=25.1.0.23735.7" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/Styles/main-common.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/Styles/main-pxweb.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/Styles/jQuery/redmond/jquery-ui.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/Styles/jQuery/tablesorter/style.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/Styles/main-custom.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/Styles/icons.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/Styles/CustomStyles.css?v=325.1.0.23735.8" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/dk/dist/dk.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/Resources/fontello/css/fontello.css?v=25.1.0.23735" rel="stylesheet" type="text/css" media="screen"/>
+    
+    <script src="/Resources/Scripts/jquery-3.5.1.min.js?v=25.1.0.23735"></script>
+    <script src="/Resources/Scripts/jquery-ui-1.12.1.min.js?v=25.1.0.23735"></script>
+    <script src="/Resources/Scripts/pcaxis.web.client.js?v=25.1.0.23735"></script>
+    <script src="/Resources/Scripts/pcaxis.web.controls.js?v=25.1.0.23735"></script>
+    <script src="/Resources/Scripts/jquery.tablesorter.min.js?v=25.1.0.23735"></script>
+    <script src="/Resources/Scripts/jquery.metadata.js?v=25.1.0.23735"></script>
+    <script src="/Resources/Scripts/format.20110630-1100.min.js?v=25.1.0.23735"></script>
+    <script src="/Resources/Scripts/footer.js?v=25.1.0.23735.99"></script>
+    <script src="/Resources/Scripts/search-helper.js?v=25.1.0.23735"></script>
+    <script src="/Resources/dk/dist/dk.js?v=25.1.0.23735"></script>
+
+    
+</head>
+<body>
+    <div id="pxwebcontent">
+    <form method="post" action="./" id="aspnetForm">
+<input type="hidden" name="ctl00_ContentPlaceHolderMain_TableOfContent1_TableOfContent1_MenuNavigationTree__VIEWSTATE" id="ctl00_ContentPlaceHolderMain_TableOfContent1_TableOfContent1_MenuNavigationTree__VIEWSTATE" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTMyMTQ1MzkzMA9kFgJmD2QWBGYPZBYCAgEPZBYCZg8WAh4EVGV4dAUUUHhXZWIgLSBTZWxlY3QgdGFibGVkAgEPZBYQZg9kFgICAQ8WAh8ABQpUbyB0aGUgVG9wZAIBDw8WAh8ABRRKdW1wIHRvIG1haW4gY29udGVudBYEHgphcmlhLWxhYmVsBSpQcmVzcyBlbnRlciB0byBnbyBkaXJlY3RseSB0byBtYWluIGNvbnRlbnQeBGhyZWYFCiNweGNvbnRlbnRkAgMPDxYCHgtOYXZpZ2F0ZVVybAUKL3B4d2ViL2VuL2RkAgYPZBYCZg9kFgJmD2QWCAIBDw8WAh8ABQVMb2dpbmRkAgUPZBYCAgEPZBYEAgEPDxYCHwAFCFVzZXJuYW1lZGQCBQ8PFgIfAAUIUGFzc3dvcmRkZAIHDxYCHgdWaXNpYmxlaGQCCQ8PFgIfAAUUWW91IHdoZXJlIGxvZ2dlZCBvdXRkZAIHD2QWAmYPZBYIAgEPDxYCHwMFCi9weHdlYi9lbi9kFgJmDw8WBh4ISW1hZ2VVcmwFvwEvV2ViUmVzb3VyY2UuYXhkP2Q9M2p5XzROUDE2VHlubHFpU054ZFZsazFzMTdzVjdrMG54bGgwcWZtU18zLW5RUG4ya0hzZjBldzJ6d2NNS3R3b3VUMmJnYnp4XzA5VUFsSHVibXBKNTk0b1B6dTY0WTlyNUtwd1BqNU8wbFJQclYyS0lTZjBFc0J5SnpVMG1LRFI1YnYxSVdfWXNVa2hOdmJBcFA5NkR3MiZ0PTYzODkzMTQwNTEwMTM2MjUwMh4NQWx0ZXJuYXRlVGV4dAUWSWNvbiByZXByZXNlbnRpbmcgaG9tZR4HVG9vbFRpcAUESG9tZWRkAgMPDxYCHwRnZGQCBQ8PFgYeCENzc0NsYXNzBRZicmVhZGNydW1iX3RleHRfbm9saW5rHwAFFFN0YXRpc3RpY2FsIGRhdGFiYXNlHgRfIVNCAgJkZAIdDw8WAh8ABQIuIGRkAggPDxYCHwAFFFN0YXRpc3RpY2FsIGRhdGFiYXNlZGQCCQ8PFgIfBGdkFgJmD2QWDGYPDxYCHwAFYFRoZSAzIHN0ZXBzIGFyZSBDaG9vc2UgdGFibGUsIENob29zZSB2YXJpYWJsZSBhbmQgU2hvdyByZXN1bHQuIFlvdSBhcmUgY3VycmVudGx5IGF0IENob29zZSB0YWJsZRYCHgVjbGFzcwURc2NyZWVucmVhZGVyLW9ubHlkAgEPDxYEHwgFS2ZsZXgtY29sdW1uIGp1c3RpZnktc3BhY2UtYmV0d2VlbiBhbGlnbi1jZW50ZXIgbmF2aWdhdGlvbi1saW5rIGZpcnN0IGFjdGl2ZR8JAgIWBB4LYXJpYS1oaWRkZW4FBHRydWUfAQUUQmFjayB0byBDaG9vc2UgdGFibGUWBGYPDxYCHwUFNn4vUmVzb3VyY2VzL0ltYWdlcy9zdmcvTmF2aWdhdGlvbkZsb3cvU3RlcDFfYWN0aXZlLnN2Z2RkAgEPDxYGHwgFJ3B4d2ViLWxpbmsgaGVhZGVyIG5hdi1zdGVwIGZpcnN0IGFjdGl2ZR8ABQxDaG9vc2UgdGFibGUfCQICZGQCAg8WAh8ABS88aHIgYXJpYS1oaWRkZW49InRydWUiIGNsYXNzPSJuYXYtaHItbGVmdCBlbiIvPmQCAw8PFgQfCAVFZmxleC1jb2x1bW4ganVzdGlmeS1zcGFjZS1iZXR3ZWVuIGFsaWduLWNlbnRlciBuYXZpZ2F0aW9uLWxpbmsgZnV0dXJlHwkCAhYEHwsFBHRydWUfAQUXQmFjayB0byBDaG9vc2UgdmFyaWFibGUWBGYPDxYCHwUFNn4vUmVzb3VyY2VzL0ltYWdlcy9zdmcvTmF2aWdhdGlvbkZsb3cvU3RlcDJfZnV0dXJlLnN2Z2RkAgEPDxYGHwgFKHB4d2ViLWxpbmsgaGVhZGVyIG5hdi1zdGVwIHNlY29uZCBmdXR1cmUfAAUPQ2hvb3NlIHZhcmlhYmxlHwkCAmRkAgQPFgIfAAUwPGhyIGFyaWEtaGlkZGVuPSJ0cnVlIiBjbGFzcz0ibmF2LWhyLXJpZ2h0IGVuIi8+ZAIFDw8WBB8IBUtmbGV4LWNvbHVtbiBqdXN0aWZ5LXNwYWNlLWJldHdlZW4gYWxpZ24tY2VudGVyIHRoaXJkIG5hdmlnYXRpb24tbGluayBmdXR1cmUfCQICFgIfCwUEdHJ1ZRYEZg8PFgIfBQU2fi9SZXNvdXJjZXMvSW1hZ2VzL3N2Zy9OYXZpZ2F0aW9uRmxvdy9TdGVwM19mdXR1cmUuc3ZnZGQCAQ8PFgYfCAUVbmF2LXN0ZXAgdGhpcmQgZnV0dXJlHwAFC1Nob3cgcmVzdWx0HwkCAmRkAgsPZBYIAgEPDxYCHwRoZBYCAgEPZBYIAgEPDxYCHwAFH1NlYXJjaCBpbiBTdGF0aXN0aWNhbCBkYXRhYmFzZTpkZAIFDw8WAh8ABQZTZWFyY2hkZAIHDw8WAh8AZWRkAgkPFgIeBVZhbHVlBQRUcnVlZAIDDxYCHwAF+gE8c2VjdGlvbiBhcmlhLWxhYmVsPSJVc2VyIG1hbnVhbCBmb3IgdGhpcyBwYWdlIj48c3BhbiBjbGFzcz0ic2NyZWVucmVhZGVyLW9ubHkiPllvdSBhcmUgbm93IGluIHRoZSBmaXJzdCBtYWluIHBhZ2Ugb2YgUHhXZWIsIHdoZXJlIHRoZSBnb2FsIGlzIHRvIHNlbGVjdCBhIHRhYmxlLiBZb3UgbWF5IGZpbmQgeW91ciB0YWJsZSBieSBzZWFjaCBvciBieSBkcmlsbGluZyBkb3duIGluIHRoZSBtZW51IHRocmVlLjwvc3Bhbj48L3NlY3Rpb24+ZAIFD2QWAmYPZBYCZg9kFgQCAQ8PFgIfAAU0SmF2YXNjcmlwdCBpcyBkaXNhYmxlZCwgY2xpY2sgdG8gbG9hZCB0aGUgd2hvbGUgdHJlZWRkAgMPZBYCAgEQPCsACQIADxYEHgtFeHBhbmREZXB0aGYeDU5ldmVyRXhwYW5kZWRkZAgUKwAMBSwwOjAsMDoxLDA6MiwwOjMsMDo0LDA6NSwwOjYsMDo3LDA6OCwwOjksMDoxMBQrAAIWCB8ABQpQb3B1bGF0aW9uHwwFClNUQVJUX19QT1AeEFBvcHVsYXRlT25EZW1hbmRnHgxTZWxlY3RBY3Rpb24LKi5TeXN0ZW0uV2ViLlVJLldlYkNvbnRyb2xzLlRyZWVOb2RlU2VsZWN0QWN0aW9uAWQUKwACFggfAAUNTGFib3VyIG1hcmtldB8MBQpTVEFSVF9fRU1QHw9nHxALKwQBZBQrAAIWCB8ABRpTb2NpYWwgc2VjdXJpdHkgYW5kIGhlYWx0aB8MBQpTVEFSVF9fVkVTHw9nHxALKwQBZBQrAAIWCB8ABR5FZHVjYXRpb24sIGN1bHR1cmUgYW5kIHNjaWVuY2UfDAUKU1RBUlRfX0laRx8PZx8QCysEAWQUKwACFggfAAUHRWNvbm9teR8MBQpTVEFSVF9fVkVLHw9nHxALKwQBZBQrAAIWCB8ABRJUcmFkZSBhbmQgc2VydmljZXMfDAUKU1RBUlRfX1RJUh8PZx8QCysEAWQUKwACFggfAAUIQnVzaW5lc3MfDAUKU1RBUlRfX0VOVB8PZx8QCysEAWQUKwACFggfAAUYSW5mb3JtYXRpb24gdGVjaG5vbG9naWVzHwwFClNUQVJUX19JS1QfD2cfEAsrBAFkFCsAAhYIHwAFEEJ1c2luZXNzIHNlY3RvcnMfDAUKU1RBUlRfX05PWh8PZx8QCysEAWQUKwACFggfAAULRW52aXJvbm1lbnQfDAUKU1RBUlRfX0VOVh8PZx8QCysEAWQUKwACFggfAAUlSW5kaWNhdG9ycyBvZiB3ZWxsLWJlaW5nIGFuZCBlcXVhbGl0eR8MBQpTVEFSVF9fRklOHw9nHxALKwQBZAVmY3RsMDBfQ29udGVudFBsYWNlSG9sZGVyTWFpbl9UYWJsZU9mQ29udGVudDFfVGFibGVPZkNvbnRlbnQxX01lbnVOYXZpZ2F0aW9uVHJlZV9fVklFV1NUQVRFfG5ubm5ubm5ubm5uZAILDw8WAh8EaGQWAmYPDxYCHwAFnQEoQyk9Y291bnR5LCAoTSk9bXVuaWNpcGFsaXR5LCAoQlUpPUJhc2ljIHN0YXRpc3RpY2FsIHVuaXQsIChVRCk9dXJiYW4gZGlzdHJpY3QsIChVUyk9dXJiYW4gc2V0dGxlbWVudC4gQ2hhcmFjdGVyIGluIGJyYWNrZXRzIHNob3dzIHRoZSBsb3dlc3QgcmVnaW9uYWwgbGV2ZWwuZGQYBQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFT2N0bDAwJENvbnRlbnRQbGFjZUhvbGRlck1haW4kVGFibGVPZkNvbnRlbnQxJFRhYmxlT2ZDb250ZW50MSRNZW51TmF2aWdhdGlvblRyZWUFMmN0bDAwJENvbnRlbnRQbGFjZUhvbGRlck1haW4kVGFibGVMaXN0MSRUYWJsZUxpc3QxDzLdAgABAAAA/////wEAAAAAAAAABAEAAAB/U3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tTeXN0ZW0uT2JqZWN0LCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldXQMAAAAGX2l0ZW1zBV9zaXplCF92ZXJzaW9uBQAACAgJAgAAAAIAAAACAAAAEAIAAAAEAAAACQMAAAANAwwEAAAARlBDQXhpcy5XZWIuQ29yZSwgVmVyc2lvbj0xLjEuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwFAwAAACJQQ0F4aXMuV2ViLkNvcmUuRW51bXMuRGF0YWJhc2VUeXBlAQAAAAd2YWx1ZV9fAAgEAAAAAQAAAAtkBTxjdGwwMCRDb250ZW50UGxhY2VIb2xkZXJNYWluJFRhYmxlT2ZDb250ZW50MSRUYWJsZU9mQ29udGVudDEPMpsFAAEAAAD/////AQAAAAAAAAAEAQAAAH9TeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1N5c3RlbS5PYmplY3QsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24FAAAICAkCAAAAFwAAABcAAAAQAgAAACAAAAAJAwAAAAYEAAAADERlZmF1bHQuYXNweAYFAAAACU1lbnUuYXNweAYGAAAADlNlbGVjdGlvbi5hc3B4BgcAAAAQZmlsZU1vZGlmaWVkLmdpZgYIAAAAD2ZpbGVVcGRhdGVkLmdpZgYJAAAAC3JlZnJlc2gucG5nBgoAAAAMZmlsZVNpemUuZ2lmCAEACAEACAEACAEACAEBCAEACAEACAEBCAEBCAEACAEACAEACAEBCQsAAAANCgwMAAAASlBDQXhpcy5XZWIuQ29udHJvbHMsIFZlcnNpb249MS4xLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQMAAAAjUENBeGlzLldlYi5Db250cm9scy5VcmxMaW5rTW9kZVR5cGUBAAAAB3ZhbHVlX18ACAwAAAAAAAAADA0AAABGUENBeGlzLldlYi5Db3JlLCBWZXJzaW9uPTEuMS4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAULAAAAIlBDQXhpcy5XZWIuQ29yZS5FbnVtcy5EYXRhYmFzZVR5cGUBAAAAB3ZhbHVlX18ACA0AAAABAAAAC2QFMWN0bDAwJG5hdmlnYXRpb25GbG93Q29udHJvbCRuYXZpZ2F0aW9uRmxvd0NvbnRyb2wPMsUDAAEAAAD/////AQAAAAAAAAAEAQAAAH9TeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1N5c3RlbS5PYmplY3QsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24FAAAICAkCAAAACwAAAAsAAAAQAgAAABAAAAAIAQAGAwAAAAdPU1BfUFVCBgQAAAAUU3RhdGlzdGljYWwgZGF0YWJhc2UNAgYFAAAACU1lbnUuYXNweAYGAAAADlNlbGVjdGlvbi5hc3B4BgcAAAAHcHhfcGF0aAYIAAAABmxheW91dAkJAAAADQYMCgAAAEZQQ0F4aXMuV2ViLkNvcmUsIFZlcnNpb249MS4xLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQkAAAAiUENBeGlzLldlYi5Db3JlLkVudW1zLkRhdGFiYXNlVHlwZQEAAAAHdmFsdWVfXwAICgAAAAAAAAALZAUdY3RsMDAkYnJlYWRjcnVtYjEkYnJlYWRjcnVtYjEPMukDAAEAAAD/////AQAAAAAAAAAEAQAAAH9TeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1N5c3RlbS5PYmplY3QsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24FAAAICAkCAAAADwAAAA8AAAAQAgAAABAAAAAGAwAAAAdPU1BfUFVCBgQAAAAUU3RhdGlzdGljYWwgZGF0YWJhc2UNAgYFAAAADn4vRGVmYXVsdC5hc3B4CAEABgYAAAAESG9tZQgBAQYHAAAACU1lbnUuYXNweAYIAAAADlNlbGVjdGlvbi5hc3B4BgkAAAAHcHhfcGF0aAYKAAAABmxheW91dAkLAAAACAEBDQIMDAAAAEZQQ0F4aXMuV2ViLkNvcmUsIFZlcnNpb249MS4xLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQsAAAAiUENBeGlzLldlYi5Db3JlLkVudW1zLkRhdGFiYXNlVHlwZQEAAAAHdmFsdWVfXwAIDAAAAAAAAAALZCrKOny2jOy1Iaq6/nJRfy86ub/4Tnjpbj7q77cCQYTG" />
+
+
+<script src="/WebResource.axd?d=9Z2e78u7zqgtPQTZuBhS6y06MlgWF0XCfY8SRcZViV1LcEF8PpHuQBvRR1kayB8Kob-M1Jj7Su3jGhQiBa_hpdvLoTsRbo0kqJLqmi1e0CSH7D2X-XD5drvdKMwIhGiCRd1FkCsB5c8K9R0QDb1zyQ2&amp;t=638931405087175810" type="text/javascript"></script>
+<script src="/WebResource.axd?d=EE2D5wzeeu64KJZEeX1RXTg9iSyCgO_myAXl0R8TlO6_XhmzJOwf-QGE14cv9oI_t1nzUJl3zHpa9FLFm2bV6C7YAuPb0qD3XKV8nVPqiz2HkUDKy1JKmT1tf_pJiIMaZNwzYfQm3w65-u2SpA1mqg2&amp;t=638931405087175810" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="8A99A23D" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAA5HyX6WJ5chwxmhvWukQoyNbyRaBr53VB+931b/QR7uAdhAo/Fmrs+CoAAuvHBGYy8Enl68Bitj2NixNZYh9tEmfNknP1OnQ0moCZxpoFpVDIEFLy9/mie6YVKDj4qvXkWVE/0gIQKD5OHm3vrWGtkfI7zBm2q2sXvSr4mr7OgCdWfMEcfB+0p83X99qaTyJI4LLRX4N8AfcryC+B3fH5Gd/0GxkCBebPxxHiZdXYmL1fJe1DPLhSJB8pOiDUDMkkYeNkF8CIrv8bLjfcC47YbGzv7Xe1f7znXBQ7fo0PpgWp1+XjMvAHafRGYWXIWceCJ3dqaec1ytnQIWiUVmgVAa" />
+        <a id="ctl00_ToTheTopButton" class="top-link&#32;pxweb-btn&#32;negative&#32;hide" href="javascript:__doPostBack(&#39;ctl00$ToTheTopButton&#39;,&#39;&#39;)">
+            <svg class="icon-top-link-button" viewBox="0 0 24 24" width="40" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" >
+                <circle cx="12" cy="12" r="10"></circle><polyline points="16 12 12 8 8 12"></polyline><line x1="12" y1="16" x2="12" y2="8"></line>
+            </svg>To the Top</a>
+        <div id="content-wrapper">
+            <header id="header" class="header flex-row flex-wrap justify-space-between">
+                <div class="innerHeader">
+                    <a id="ctl00_SkipToMain" class="screenreader-only&#32;pxweb-link" aria-label="Press&#32;enter&#32;to&#32;go&#32;directly&#32;to&#32;main&#32;content" href="#pxcontent">Jump to main content</a>
+                    <a href="https://stat.gov.lv/">
+                        <div class="headerleft" role="banner">
+                            <img src="../../../Resources/Images/gerbonis.svg" id="ctl00_imgSiteLogo" alt="PxWeb&#32;Logotype" class="imgSiteLogo" />
+                            <span class="siteLogoSeperator"></span>
+                            <div class="siteName">
+                                <span class="siteLogoText">Oficiālās statistikas portāls</span>
+                                <span id="subheading">DATUBĀZE</span>
+                            </div>
+                            <div class="siteName-mobile">
+                                <span class="siteLogoText">OSP</span>
+                                <span id="subheading">DATUBĀZE</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a id="ctl00_LogoLink" href="/pxweb/en/"></a>
+                    <div class="headerright">
+                        <div class="languageWrapper">
+                            <select aria-label="Valodas izvēlne" id="languageSelector">
+                                <option value="lv">Latviešu</option>
+                                <option value="en">English</option>
+                            </select>
+                            <div style="display: none" class="px-change-lang-div flex-column">
+                                  <div class="pxweb-link"> <a class="px-change-lang" href="/pxweb/lv/OSP_PUB/"> <span lang="lv" class="link-text px-change-lang">English</span></a> </div> 
+                                  <span style="color: #fff";>PxWeb 2025 v1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div id="wrap">
+                <div id="ctl00_breadcrumb1">
+	
+
+<nav id="breadcrumb" aria-label="breadcrumb">
+    <a id="ctl00_breadcrumb1_breadcrumb1_lnkHome" href="/pxweb/en/"><img id="ctl00_breadcrumb1_breadcrumb1_imgHome" title="Home" class="breadcrumb_homebutton" src="/WebResource.axd?d=3jy_4NP16TynlqiSNxdVlk1s17sV7k0nxlh0qfmS_3-nQPn2kHsf0ew2zwcMKtwouT2bgbzx_09UAlHubmpJ594oPzu64Y9r5KpwPj5O0lRPrV2KISf0EsByJzU0mKDR5bv1IW_YsUkhNvbApP96Dw2&amp;t=638931405101362502" alt="Icon&#32;representing&#32;home" /></a>
+    <span id="ctl00_breadcrumb1_breadcrumb1_lblSep1" class="breadcrumb_sep">/</span>
+    <a id="ctl00_breadcrumb1_breadcrumb1_lnkDb" class="breadcrumb_text_nolink">Statistical database</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+      
+</nav>
+
+
+
+
+</div>
+                <div class="bg-color2">
+                    <h1 id="ctl00_lblH1Title" class="h1title">
+	Statistical database
+</h1>
+                     
+                    <div id="ctl00_navigationFlowControl">
+	
+ <section aria-label="Overview of the three steps in the process to get the data.">
+   <span id="ctl00_navigationFlowControl_navigationFlowControl_ExplainAriaLabel" class="screenreader-only">The 3 steps are Choose table, Choose variable and Show result. You are currently at Choose table</span>
+  
+   <div id="navigationFlow"> 
+    <div class="navigationFlowArea flex-row justify-center align-flex-start">
+      <a id="ctl00_navigationFlowControl_navigationFlowControl_firstStepLink" class="flex-column&#32;justify-space-between&#32;align-center&#32;navigation-link&#32;first&#32;active" aria-hidden="true" aria-label="Back&#32;to&#32;Choose&#32;table"><img id="ctl00_navigationFlowControl_navigationFlowControl_firstStepImage" class="nav-pic" aria-hidden="true" alt="" src="../../../Resources/Images/svg/NavigationFlow/Step1_active.svg" /><span id="ctl00_navigationFlowControl_navigationFlowControl_firstStepLabel" class="pxweb-link&#32;header&#32;nav-step&#32;first&#32;active">Choose table</span></a> 
+   
+      <hr aria-hidden="true" class="nav-hr-left en"/>
+
+      <a id="ctl00_navigationFlowControl_navigationFlowControl_secondStepLink" class="flex-column&#32;justify-space-between&#32;align-center&#32;navigation-link&#32;future" aria-hidden="true" aria-label="Back&#32;to&#32;Choose&#32;variable"><img id="ctl00_navigationFlowControl_navigationFlowControl_secondStepImage" class="nav-pic" aria-hidden="true" alt="" src="../../../Resources/Images/svg/NavigationFlow/Step2_future.svg" /><span id="ctl00_navigationFlowControl_navigationFlowControl_secondStepLabel" class="pxweb-link&#32;header&#32;nav-step&#32;second&#32;future">Choose variable</span></a>
+  
+      <hr aria-hidden="true" class="nav-hr-right en"/>
+
+      <a id="ctl00_navigationFlowControl_navigationFlowControl_thirdStepLink" class="flex-column&#32;justify-space-between&#32;align-center&#32;third&#32;navigation-link&#32;future" aria-hidden="true"><img id="ctl00_navigationFlowControl_navigationFlowControl_thirdStepImage" class="nav-pic" aria-hidden="true" alt="" src="../../../Resources/Images/svg/NavigationFlow/Step3_future.svg" /><span id="ctl00_navigationFlowControl_navigationFlowControl_thirdStepLabel" class="nav-step&#32;third&#32;future">Show result</span></a>
+    </div>
+   </div>      
+ </section>
+
+</div> 
+                    <div id="table-title">
+                        <div id="place-holder-title">
+                            
+                            
+                        </div>
+                    </div>
+                   
+                    <main id="place-holder">
+                        
+    <div class="menuTopLeftContent">
+        
+    </div>
+    <div class="menuTopRightContent">
+    </div>
+    <div class="break"></div>
+    <div id="pxcontent"> 
+        <section aria-label="User manual for this page"><span class="screenreader-only">You are now in the first main page of PxWeb, where the goal is to select a table. You may find your table by seach or by drilling down in the menu three.</span></section>
+    </div>    
+    <div id="ctl00_ContentPlaceHolderMain_TableOfContent1">
+	<div id="ctl00_ContentPlaceHolderMain_TableOfContent1_TableOfContent1_TableOfContentPanel">
+		
+    <div id="TableOfContent">
+        <input type="submit" name="ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$ActionButton" value="Javascript&#32;is&#32;disabled,&#32;click&#32;to&#32;load&#32;the&#32;whole&#32;tree" id="ctl00_ContentPlaceHolderMain_TableOfContent1_TableOfContent1_ActionButton" class="tableofcontent_action" />
+        <div id="ctl00_ContentPlaceHolderMain_TableOfContent1_TableOfContent1_MenuTreeviewPanel">
+			
+            
+			<div class="AspNet-TreeView" id="ctl00_ContentPlaceHolderMain_TableOfContent1_TableOfContent1_MenuNavigationTree">
+					<ul id="ctl00_ContentPlaceHolderMain_TableOfContent1_TableOfContent1_MenuNavigationTree_UL">
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__POP')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__POP')">
+								Population</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__EMP')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__EMP')">
+								Labour market</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__VES')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__VES')">
+								Social security and health</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__IZG')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__IZG')">
+								Education, culture and science</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__VEK')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__VEK')">
+								Economy</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__TIR')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__TIR')">
+								Trade and services</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__ENT')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__ENT')">
+								Business</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__IKT')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__IKT')">
+								Information technologies</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__NOZ')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__NOZ')">
+								Business sectors</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__ENV')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__ENV')">
+								Environment</a>
+						</li>
+						<li class="AspNet-TreeView-Root">
+							<span class="AspNet-TreeView-Expand" aria-expanded="false" onclick="__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__FIN')" tabindex="0">&nbsp;</span>
+							<a href="javascript:__doPostBack('ctl00$ContentPlaceHolderMain$TableOfContent1$TableOfContent1$MenuNavigationTree','pSTART__FIN')">
+								Indicators of well-being and equality</a>
+						</li>
+					</ul>
+
+			</div>
+        
+		</div>
+
+        <div id="ctl00_ContentPlaceHolderMain_TableOfContent1_TableOfContent1_MenulistPanel">
+			
+            
+            
+            
+        
+		</div>
+    </div>
+
+	</div>
+
+<script>
+
+    jQuery(document).ready(function () {
+        jQuery('a[rel="_blank"]').each(function () {
+            jQuery(this).attr('target', '_blank');
+        });
+    });
+
+</script>
+
+</div>
+    <div id="ctl00_ContentPlaceHolderMain_TableList1">
+
+</div>
+
+    
+
+    <div>
+        
+    </div>
+
+                    </main>
+                </div>
+            </div>
+            <footer>
+                <div style="clear: both;"> </div>  
+                <div id="footer">
+                    <div class="footerleft">
+                        <div class="link__container" id="footer-skeleton" style="display: none">
+                            <h3 class="link__container--title">Oficiālā statistika</h3>
+                            <ul></ul>
+                        </div>
+                        <span id="ctl00_lblFooterText"></span>
+                    </div>
+                    <div class="footerright">
+                        <div class="footerright--inner">
+                            <ul>
+                                <li>
+                                    <a id="stat-system-text" target="_blank" href="https://stat.gov.lv/lv/pieklustamibas-pazinojums">
+                                        Piekļūstamības paziņojums
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="askUsButton" href="https://stat.gov.lv">
+                                        Pajautā mums
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+  
+                    </div>
+                    <div style="clear: both;"> </div>               
+                </div>      
+            </footer>
+        </div> 
+    
+
+<script type="text/javascript">
+//<![CDATA[
+PCAxis_HideElement(".tableofcontent_action");//]]>
+</script>
+</form>
+    <div style="display: none;" id="ask-us-modal">
+        <div class="ui-widget-overlay ui-front"></div>
+        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-draggable" tabindex="-1" role="dialog" aria-describedby="ctl00_ctl00_ContentPlaceHolderMain_CommandBar1_CommandBar1_commandbarDownloadFileDialog" style="height: auto; width: 240px; top: 50px; left: 0px; display: block;">
+           <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title">Pajautā mums</span><button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span></button></div>
+           <div class="commandbar_download_file_dialog ui-dialog-content ui-widget-content" style="width: auto; height: 400px;">
+              <div class="commandbar_download_file_container ask-us-iframe-container">
+              </div>
+           </div>
+        </div>
+    </div>
+</div>
+ <script type="text/javascript">
+
+jQuery('#languageSelector option').each(function (i) {
+    if (jQuery(this).prop('value') === getCurrentLanguage()) {
+        jQuery(this).attr('selected', true);
+        console.log(jQuery(this).prop('value'));
+    }
+});
+
+ jQuery(document).ready(function(){
+    jQuery('#askUsButton').click(function(e){
+        e.preventDefault();
+
+        var frameUrl = '/lv/pajauta-mums';
+        if (jQuery('#dk0-ctl00_cboSelectLanguages .dk-option-selected').text().toLowerCase() == 'english') {
+            frameUrl = '/en/ask-us';
+        }
+
+        var refferer = window.location.href;
+        var iframeHTML = '<iframe id="ask-us-iframe" src="https://stat.gov.lv'+ frameUrl +'?refferer='+ refferer +'" style="width: 100%; height: 400px;"">';
+        jQuery('#ask-us-modal .ask-us-iframe-container').html(iframeHTML);
+        jQuery('#ask-us-modal').show();
+    });
+
+    jQuery('#ask-us-modal .ui-dialog-titlebar-close').click(function() {
+        jQuery('#ask-us-modal').hide();
+    });
+
+    setTimeout(function() {
+        new Dropkick(document.getElementById('languageSelector'));
+    }, 250);
+
+    jQuery('#languageSelector').change(function (e) {
+        if (jQuery('#languageSelector').val() !== getCurrentLanguage()) {
+            const path = window.location.pathname.split('/');
+            path[2] = jQuery('#languageSelector').val();
+            window.location.href = path.join('/');
+        }
+    });
+
+    const secondStep = jQuery('#ctl00_navigationFlowControl_navigationFlowControl_secondStepLink.future');
+    if (secondStep) {
+        secondStep.parent().find('hr').first().css({'border-color': '#CECECE'});
+    }
+
+    const thirdStep = jQuery('#ctl00_ctl00_navigationFlowControl_navigationFlowControl_thirdStepLink.active');
+    if (thirdStep) {
+        thirdStep.parent().find('hr').last().css({'border-color': '#a26635'});
+    }
+
+    const CSVButton = jQuery('.FileTypeCsvWithHeadingAndSemiColon');
+    if (CSVButton) {
+        CSVButton.val('CSV');
+    }
+
+    const ExcelButton = jQuery('.FileTypeExcelX');
+    if (ExcelButton) {
+        ExcelButton.val('XLS');
+    }
+ });
+</script>
+    <script>
+        "use strict";
+        // Set a variable for our button element.
+        var scrollToTopButton = document.getElementById('ctl00_ToTheTopButton');
+        var lastScrollYPos = 0;
+
+        scrollToTopButton.className = "top-link pxweb-btn negative hidden";
+
+        // Let's set up a function that shows our scroll-to-top button if we scroll beyond the height of the initial window.
+        var scrollFunc = function scrollFunc(lastScrollYPos) {
+            // Get the current scroll value
+            var y = window.pageYOffset; // If the scroll value is greater than the window height, let's add a class to the scroll-to-top button to show it!
+
+            if (y > 300 && y < lastScrollYPos) {
+                scrollToTopButton.className = "top-link pxweb-btn negative show";
+            } else {
+                scrollToTopButton.className = "top-link pxweb-btn negative hidden";
+                scrollToTopButton.blur();
+            }
+        };
+
+        window.addEventListener('scroll', function (e) {
+            scrollFunc(lastScrollYPos);
+            lastScrollYPos = window.scrollY;
+        });
+
+        scrollToTopButton.onclick = function (e) {
+            e.preventDefault();
+            document.documentElement.scrollTop = 0;
+        };
+</script>
+</body>
+</html>
+
+
