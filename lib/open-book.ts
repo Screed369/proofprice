@@ -18,6 +18,7 @@ import {
 } from "./registry";
 import { CATEGORY_LABEL, PAGE_SOURCES } from "./site/answer-pages";
 import { countryName } from "./site/areas";
+import { clausePaths } from "./site/fuel-clause";
 import { CONTACT, MCP_URL, SITE_URL } from "./site/constants";
 import { examplePlans } from "./site/example-pages";
 import { countryGroups, newestLibraryDay, pageRefs } from "./site/prices";
@@ -115,6 +116,8 @@ export interface SitemapLibrary {
   /** One entry per answer page. asOf is the newest data day behind it when known (null: the page is dated by the build). */
   answerPages: { path: string; category: string; asOf: string | null; priority?: number }[];
   indexPaths: string[]; // /prices/<country> and /prices/<country>/<category>
+  /** /fuel-clause and one page per country that has a weekly diesel record. Optional so older callers and tests need not pass it. */
+  clausePaths?: string[];
   newestDay: string | null;
 }
 
@@ -126,6 +129,7 @@ export function libraryForSitemap(): SitemapLibrary {
   return {
     answerPages: pageRefs().map((p) => ({ path: p.path, category: p.category, asOf: p.asOf, priority: p.mode === "bulk" ? BULK_PRIORITY : EXAMPLE_PRIORITY })),
     indexPaths: countryGroups().flatMap((g) => [g.path, ...g.categories.map((c) => c.path)]),
+    clausePaths: clausePaths(),
     newestDay: newestLibraryDay(),
   };
 }
@@ -161,7 +165,13 @@ export function buildSitemap(site = SITE_URL, now = new Date(), library: Sitemap
     changeFrequency: pageFreq(p.category),
     priority: p.priority ?? BULK_PRIORITY,
   }));
-  return [...fixed, ...indexes, ...answers];
+  const clauses: SitemapEntry[] = (library.clausePaths ?? []).map((p) => ({
+    url: at(p),
+    lastModified: dayOrNow(library.newestDay, now),
+    changeFrequency: "weekly",
+    priority: p === "/fuel-clause" ? 0.6 : 0.5,
+  }));
+  return [...fixed, ...indexes, ...answers, ...clauses];
 }
 
 // ---------- llms-full.txt ----------

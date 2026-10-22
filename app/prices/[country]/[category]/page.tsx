@@ -5,6 +5,7 @@ import { noFullStop, shortLicence, type AnswerPage, type Figure } from "../../..
 import { examplePagesIn } from "../../../../lib/site/example-pages";
 import { breadcrumbGraph } from "../../../../lib/site/jsonld";
 import { int, longDate, plural } from "../../../../lib/site/format";
+import { clausePath, clauseSlugs } from "../../../../lib/site/fuel-clause";
 import { pageMetadata } from "../../../../lib/site/meta";
 import { allAnswerPages, countryGroups, findCategoryGroup } from "../../../../lib/site/prices";
 
@@ -99,6 +100,11 @@ export default async function CategoryIndex({ params }: Props) {
             source is answered live. See <a href="/sources">/sources</a> and <a href="/method">/method</a>.
           </p>
         )}
+        {category === "fuel" && clauseSlugs().includes(country) ? (
+          <p className="muted small">
+            Need a diesel price to cite in a contract? See the <a href={clausePath(country)}>weekly diesel record for {c.name}</a>.
+          </p>
+        ) : null}
       </main>
     );
   }
@@ -183,6 +189,11 @@ export default async function CategoryIndex({ params }: Props) {
         Figures of {longDate(group.asOf ?? "")}; rebuilt when the daily price library is deployed. Only places with at least 5 records are listed. See{" "}
         <a href="/sources">/sources</a> and <a href="/method">/method</a>.
       </p>
+      {category === "fuel" && clauseSlugs().includes(country) ? (
+        <p className="muted small">
+          Need a diesel price to cite in a contract? See the <a href={clausePath(country)}>weekly diesel record for {c.name}</a>.
+        </p>
+      ) : null}
     </main>
   );
 }
