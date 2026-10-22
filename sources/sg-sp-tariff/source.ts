@@ -10,7 +10,7 @@ import { InputError, SourceError } from "../../lib/http";
 import type { SourceInfo } from "../../lib/plugin";
 
 export const RESOURCE_ID = "d_d610f8ed1864daa6c7e790318bbc3323";
-export const SITE = "data.gov.sg";
+export const SITE = "https://data.gov.sg/api/action";
 export const DOMESTIC_ROW = "Low Tension Supplies - Domestic";
 
 export const INFO: SourceInfo = {

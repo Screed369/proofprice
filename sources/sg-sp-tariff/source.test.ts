@@ -4,9 +4,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { InputError, SourceError } from "../../lib/http";
-import { parseDatastoreSearch } from "../../lib/adapters";
+import { datastoreSearchUrl, parseDatastoreSearch } from "../../lib/adapters";
 import { SOURCE_PLUGINS } from "../../lib/registry";
-import { INFO, answerFromSeries, normaliseBand, parseDomestic, sgElectricity } from "./source";
+import { RESOURCE_ID, SITE, INFO, answerFromSeries, normaliseBand, parseDomestic, sgElectricity } from "./source";
 
 const RECORDS = parseDatastoreSearch(JSON.parse(readFileSync(new URL("./fixtures/tariff.json", import.meta.url), "utf8"))).records;
 
@@ -53,4 +53,11 @@ test("registered for SG energy", () => {
   const p = SOURCE_PLUGINS.find((x) => x.info.id === "sg-sp-tariff");
   assert.ok(p);
   assert.deepEqual(p!.countries, ["SG"]);
+});
+
+test("the live request URL is the plain datastore_search call we probed", () => {
+  assert.equal(
+    datastoreSearchUrl(SITE, { resourceId: RESOURCE_ID, limit: 50 }),
+    "https://data.gov.sg/api/action/datastore_search?resource_id=d_d610f8ed1864daa6c7e790318bbc3323&limit=50",
+  );
 });
