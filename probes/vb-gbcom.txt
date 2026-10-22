@@ -1,0 +1,33 @@
+URL: https://api.uktradeinfo.com/Commodity?$top=3&$filter=startswith(Hs6Code,'080810')
+Fetched: 2026-10-22T17:43:42Z from GitHub Actions
+Status, type, bytes: 200 application/json; odata.metadata=minimal 1115
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 17:43:42 GMT
+content-type: application/json; odata.metadata=minimal
+content-length: 1115
+vary: Accept-Encoding
+access-control-expose-headers: Request-Context
+cache-control: no-cache,no-store
+expires: -1
+pragma: no-cache
+set-cookie: ARRAffinity=0af362708565aeeb4e994cb07281ea3f7d1a6d7829cc4fd4134a3ef552a59913;Path=/;HttpOnly;Secure;Domain=webapp-api-hmrcukti-prod.azurewebsites.net
+set-cookie: ARRAffinitySameSite=0af362708565aeeb4e994cb07281ea3f7d1a6d7829cc4fd4134a3ef552a59913;Path=/;HttpOnly;SameSite=None;Secure;Domain=webapp-api-hmrcukti-prod.azurewebsites.net
+strict-transport-security: max-age=31536000; includeSubDomains
+odata-version: 4.0
+request-context: appId=cid-v1:59e7e043-1220-455e-98c1-fd590dd50699
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy: script-src 'self' *.cloudflare.com *.uktradeinfo.com www.gravatar.com player.vimeo.com *.vimeocdn.com our.umbraco.com 'unsafe-inline' 'unsafe-eval' *.powerbi.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.vo.msecnd.net *.services.visualstudio.com;            style-src 'self' 'unsafe-inline' *.mailjet.com;             img-src 'self' *;               font-src 'self';
+x-azure-ref: 20261022T174342Z-17f9b458c79swkgghC1PHXxwsg000000010000000000uabc
+x-fd-int-roxy-purgeid: 88491805
+x-cache: PRIVATE_NOSTORE
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"@odata.context":"https://api.uktradeinfo.com/$metadata#Commodity","value":[{"CommodityId":8081010,"Cn8Code":"08081010","Hs2Code":"08","Hs4Code":"0808","Hs6Code":"080810","Hs2Description":"Edible fruit and nuts; peel of citrus fruits or melons","Hs4Description":"Apples, pears and quinces, fresh","Hs6Description":"Fresh apples","SitcCommodityCode":"05740","Cn8LongDescription":"Fresh cider apples, in bulk, from 16 September to 15 December"},{"CommodityId":8081020,"Cn8Code":"08081020","Hs2Code":"08","Hs4Code":"0808","Hs6Code":"080810","Hs2Description":"Edible fruit and nuts; peel of citrus fruits or melons","Hs4Description":"Apples, pears and quinces, fresh","Hs6Description":"Fresh apples","SitcCommodityCode":"05740","Cn8LongDescription":"Fresh apples - golden delicious"},{"CommodityId":8081050,"Cn8Code":"08081050","Hs2Code":"08","Hs4Code":"0808","Hs6Code":"080810","Hs2Description":"Edible fruit and nuts; peel of citrus fruits or melons","Hs4Description":"Apples, pears and quinces, fresh","Hs6Description":"Fresh apples","SitcCommodityCode":"05740","Cn8LongDescription":"Fresh apples - granny smith"}]}
