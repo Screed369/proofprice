@@ -1,0 +1,21 @@
+URL: https://data.gov.il/api/3/action/package_search?q=nadlan&rows=5
+Fetched: 2026-10-22T14:42:36Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 199
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 199
+date: Thu, 22 Oct 2026 14:42:35 GMT
+set-cookie: ckan=94d61458158e3f3efe2e03233b7b74a5acf59825gAJ9cQAoWAcAAABfZG9tYWlucQFOWAUAAABfcGF0aHECWAEAAAAvcQNYAwAAAF9pZHEEWCAAAAAwYTZhMWYxMmFmMDI0ZWZmYWVhNjI4YWM5NWMxMjg4MXEFWAYAAABfZnJlc2hxBolYDgAAAF9jcmVhdGlvbl90aW1lcQdHQdq2iDb5FUhYDgAAAF9hY2Nlc3NlZF90aW1lcQhHQdq2iDb5FUp1Lg==; expires=Tue, 19-Jan-2038 03:14:07 GMT; HttpOnly; Path=/; SameSite=Lax
+set-cookie: TS012a021d=011618f29a0dd1b9ef9627d36af680a9eeaebd81bb5f5aa6ee85d43d9d5ca2dbae1672d6bc9337c9d2176e1962f52da35f4c0074507f39fb591906a31aca96483da1b81c2f; Path=/; Domain=.data.gov.il
+cache-control: public, max-age=0, must-revalidate
+x-cache: Miss from cloudfront
+via: 1.1 9379576d617e2da3f6aa7e3140f9c4f0.cloudfront.net (CloudFront)
+x-amz-cf-pop: PHX52-P1
+x-amz-cf-id: D222acpRvvv55Z5t5cy2ryikovwz19jY75o94L3i71rpyWwa95SPlA==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://data.gov.il/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 0, "facets": {}, "results": [], "sort": "metadata_modified desc", "search_facets": {}}}
