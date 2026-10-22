@@ -11,6 +11,8 @@ export default defineSource({
     "EU Weekly Oil Bulletin, national average pump prices: " + Object.entries(COUNTRIES).map(([c, n]) => `${c} = ${n}`).join(", "),
   placeName: "the EU (national averages)",
   status: "live",
+  // NL is answered by the daily CBS source (nl-cbs-fuel); the bulletin keeps NL for its weekly history.
+  serves: (p) => String(p.country ?? "").toUpperCase() !== "NL",
   paramNotes: {
     fuel: "EU Weekly Oil Bulletin countries: petrol95 (Euro-super 95), diesel (automotive gas oil) or lpg, as a national average per litre in euro with all taxes; heating gas oil is in the extra fields. Other fuels are not published.",
     postcode: "EU Weekly Oil Bulletin countries: not used; the bulletin publishes one national average per country, so the national figure is returned and says so.",
