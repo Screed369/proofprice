@@ -1,0 +1,23 @@
+URL: https://ckan.opendata.swiss/api/3/action/package_search?q=Durchschnittspreise+Landesindex+Konsumentenpreise&rows=10&fl=name,title
+Fetched: 2026-10-22T10:43:56Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2802
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 10:43:56 GMT
+content-type: application/json;charset=utf-8
+content-length: 2802
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-robots-tag: noindex, nofollow
+strict-transport-security: max-age=15724800; includeSubDomains
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET, PUT, POST, DELETE, PATCH, OPTIONS
+access-control-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+access-control-max-age: 1728000
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"help": "https://ckan.opendata.swiss/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 43, "facets": {}, "results": [{"name": "landesindex-der-konsumentenpreise", "title": "{\"de\": \"Landesindex der Konsumentenpreise\", \"en\": \"\", \"fr\": \"\", \"it\": \"\"}"}, {"name": "landesindex-der-konsumentenpreise-gewichtung-2020", "title": "{\"fr\": \"Indice suisse des prix \u00e0 la consommation - Pond\u00e9ration 2020\", \"de\": \"Landesindex der Konsumentenpreise - Gewichtung 2020\", \"it\": \"Indice nazionale dei prezzi al consumo - Ponderazione 2020\", \"en\": \"\"}"}, {"name": "landesindex-der-konsumentenpreise-lik-2026", "title": "{\"it\": \"Indice nazionale dei prezzi al consumo (IPC) - 2026\", \"de\": \"Landesindex der Konsumentenpreise (LIK) - 2026\", \"fr\": \"L'indice suisse des prix \u00e0 la consommation (IPC) - 2026\", \"en\": \"\"}"}, {"name": "landesindex-der-konsumentenpreise-lik-2020", "title": "{\"fr\": \"L'indice suisse des prix \u00e0 la consommation (IPC) - 2020\", \"it\": \"Indice nazionale dei prezzi al consumo (IPC) - 2020\", \"de\": \"Landesindex der Konsumentenpreise (LIK) - 2020\", \"en\": \"\"}"}, {"name": "landesindex-der-konsumentenpreise-lik-2021", "title": "{\"de\": \"Landesindex der Konsumentenpreise (LIK) - 2021\", \"fr\": \"L'indice suisse des prix \u00e0 la consommation (IPC) - 2021\", \"it\": \"Indice nazionale dei prezzi al consumo (IPC) - 2021\", \"en\": \"\"}"}, {"name": "landesindex-der-konsumentenpreise-lik-2022", "title": "{\"it\": \"Indice nazionale dei prezzi al consumo (IPC) - 2022\", \"fr\": \"L'indice suisse des prix \u00e0 la consommation (IPC) - 2022\", \"de\": \"Landesindex der Konsumentenpreise (LIK) - 2022\", \"en\": \"\"}"}, {"name": "landesindex-der-konsumentenpreise-lik-2023", "title": "{\"de\": \"Landesindex der Konsumentenpreise (LIK) - 2023\", \"it\": \"Indice nazionale dei prezzi al consumo (IPC) - 2023\", \"fr\": \"L'indice suisse des prix \u00e0 la consommation (IPC) - 2023\", \"en\": \"\"}"}, {"name": "landesindex-der-konsumentenpreise-lik-2024", "title": "{\"de\": \"Landesindex der Konsumentenpreise (LIK) - 2024\", \"it\": \"Indice nazionale dei prezzi al consumo (IPC) - 2024\", \"fr\": \"L'indice suisse des prix \u00e0 la consommation (IPC) - 2024\", \"en\": \"\"}"}, {"name": "landesindex-der-konsumentenpreise-lik-2025", "title": "{\"fr\": \"L'indice suisse des prix \u00e0 la consommation (IPC) - 2025\", \"it\": \"Indice nazionale dei prezzi al consumo (IPC) - 2025\", \"de\": \"Landesindex der Konsumentenpreise (LIK) - 2025\", \"en\": \"\"}"}, {"name": "basler-index-der-konsumentenpreise", "title": "{\"de\": \"Basler Index der Konsumentenpreise\", \"en\": \"\", \"fr\": \"\", \"it\": \"\"}"}], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
