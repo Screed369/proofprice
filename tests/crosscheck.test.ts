@@ -85,7 +85,7 @@ test("runner, fuel: Spain and France on 19 Oct 2026 against the Oil Bulletin (pr
 const answer = (value: number, n: number | null, from: string, to: string, extra: Record<string, unknown> = {}): PriceAnswer =>
   ({ status: "ok", price: { value }, sample_size: n, period: { from, to }, as_of: to, extra } as unknown as PriceAnswer);
 
-test("runner, homes: Ireland like for like AGREES; Bristol's postal town is caught by the count", async () => {
+test("runner, homes: Ireland like for like AGREES; a wider area (Bristol's postal town) is caught by the count", async () => {
   const ie = await runSourceCheck(
     withFetch(src("ie-ppr"), async () => [
       { key: "40", value: 493000, period: "2026-08" },
@@ -108,7 +108,8 @@ test("runner, homes: Ireland like for like AGREES; Bristol's postal town is caug
     ]),
     {
       ctx, library: realLibrary, previous: [], today: "2026-10-23",
-      askApi: async (_s, q) => (q.town === "Leeds" ? answer(245000, 4400, "2026-03-01", "2026-08-26") : answer(365000, 4200, "2026-03-01", "2026-08-28")),
+      // Leeds by district (2,149 sales, 22 Oct 2026); "Bristol" as if asked by postal town (about 700 a month, pilot)
+      askApi: async (_s, q) => (q.district === "Leeds" ? answer(249000, 2149, "2026-04-22", "2026-08-26") : answer(365000, 4200, "2026-03-01", "2026-08-28")),
     },
   );
   const [leeds, bristol] = gb.rows;
@@ -116,6 +117,7 @@ test("runner, homes: Ireland like for like AGREES; Bristol's postal town is caug
   assert.equal(bristol.verdict, "SUSPECT");
   assert.equal(bristol.our_n, Math.round(4200 / spanMonths("2026-03-01", "2026-08-28")));
   assert.match(bristol.reason, /our count is .*x theirs.*Known differences: .*postal town/);
+  assert.equal(leeds.our_n, 515);
 });
 
 test("runner, EIA: a parsing check compares only the same month, and reads business cents from the answer", async () => {
