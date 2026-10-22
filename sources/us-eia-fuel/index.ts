@@ -12,6 +12,8 @@ export default defineSource({
     "US = United States (U.S. Energy Information Administration: weekly average retail gasoline and diesel prices in US$ per gallon for the nation, PADD regions, 9 states and 10 cities)",
   placeName: "the United States",
   status: "live",
+  // Heating oil and propane are answered by us-eia-heating (declared serves() change, Gap fix G20261022-PLATFORM-SERVES part 3).
+  serves: (p) => !["heating_oil", "propane"].includes(String(p.fuel ?? "")),
   paramNotes: {
     fuel:
       "US: petrol95 = regular gasoline, petrol98 = premium gasoline, diesel = on-highway diesel (all types). For midgrade gasoline use petrol95 with gasoline_grade=midgrade. " +

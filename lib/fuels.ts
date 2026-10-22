@@ -1,5 +1,5 @@
 // One fuel vocabulary for every country, so an agent can ask the same question everywhere.
-export const FUELS = ["diesel", "petrol95", "petrol98", "e10", "e85", "lpg", "methane"] as const;
+export const FUELS = ["diesel", "petrol95", "petrol98", "e10", "e85", "lpg", "methane", "heating_oil", "propane"] as const;
 export type Fuel = (typeof FUELS)[number];
 
 export const FUEL_LABEL: Record<Fuel, string> = {
@@ -10,6 +10,8 @@ export const FUEL_LABEL: Record<Fuel, string> = {
   e85: "E85 bioethanol",
   lpg: "LPG (autogas)",
   methane: "Compressed natural gas (CNG)",
+  heating_oil: "Home heating oil (residential)",
+  propane: "Propane (residential)",
 };
 
 // Older French names still accepted.
@@ -31,6 +33,9 @@ const ALIASES: Record<string, Fuel> = {
   cng: "methane",
   metano: "methane",
   gnc: "methane",
+  heatingoil: "heating_oil",
+  homeheatingoil: "heating_oil",
+  heatingfuel: "heating_oil",
 };
 
 export function normaliseFuel(raw: string): Fuel | null {
