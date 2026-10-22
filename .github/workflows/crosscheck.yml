@@ -12,6 +12,9 @@ name: Outside check (crossCheck)
 on:
   schedule:
     - cron: "47 5 * * 5" # Fridays 05:47 UTC: the Oil Bulletin of Monday is out (published Thursdays)
+  # TEMPORARY (remove before merging to main): a branch-only trigger, because GitHub cannot dispatch a workflow that is not yet on main.
+  push:
+    branches: ["crosscheck/wave1"]
   workflow_dispatch:
     inputs:
       sources:
