@@ -5,6 +5,7 @@ import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { Fuel, FUEL_LABEL, stripAccents } from "../../lib/fuels";
 import type { BackfillResult, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { aggregateDaily } from "../../lib/library/aggregate";
+import { nationalRow, widenSentence } from "../../lib/widen";
 
 export const INFO: SourceInfo = {
   id: "es-fuel",
@@ -139,6 +140,11 @@ export async function esFuelNow(input: {
 
   const s = summarise(picked.map((x) => x.price));
   const day = fechaToIso(fecha);
+  // Niche fuels (LPG, methane) are sold at few stations: a thin province gets the labelled national figure, never a bare refusal.
+  if ((!s || s.count < 5) && !cp && !input.town && ES_NICHE.has(input.fuel)) {
+    const wide = esWidenToNational(input.fuel, `province ${province}`, input.baseUrl);
+    if (wide) return wide;
+  }
   const cheapest = [...picked].sort((a, b) => a.price - b.price).slice(0, 3).map(({ province, ...s }) => s);
   const unit = input.fuel === "methane" ? "per kg" : "per litre";
   return buildAnswer({
@@ -155,6 +161,31 @@ export async function esFuelNow(input: {
     baseUrl: input.baseUrl,
     extra: { cheapest_stations: cheapest, stations_counted: picked.length, ...(note ? { note } : {}) },
   });
+}
+
+const ES_NICHE = new Set<Fuel>(["lpg", "methane"]);
+
+/** The national (mainland + Balearics) library row for this fuel as a labelled answer; null when the library has none. */
+export function esWidenToNational(fuel: Fuel, area: string, baseUrl?: string, today?: Date): PriceAnswer | null {
+  const row = nationalRow("es-fuel", fuel, today);
+  if (!row) return null;
+  const unit = fuel === "methane" ? "per kg" : "per litre";
+  const sentence = widenSentence(FUEL_LABEL[fuel], area, "mainland Spain and the Balearics", row.summary.count);
+  const a = buildAnswer({
+    source: INFO,
+    query: { country: "ES", postcode: null, area: area.replace(/\D/g, "") || null, town: null, fuel },
+    summary: row.summary,
+    currency: "EUR",
+    unit,
+    period: { from: row.date, to: row.date },
+    method:
+      `Median and 10th–90th percentile of the current pump price reported by each public filling station in mainland Spain and the Balearics for the selected fuel (our daily copy of ${row.date}). Restricted-sale stations are excluded.`,
+    describe: (x) =>
+      `${FUEL_LABEL[fuel]} in mainland Spain and the Balearics: current posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+    baseUrl,
+    extra: { widened: true, widened_from: area, widened_to: "mainland Spain and the Balearics", stations_counted: row.summary.count },
+  });
+  return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}` };
 }
 
 const ES_OUTSIDE_NATIONAL = new Set(["35", "38", "51", "52"]);

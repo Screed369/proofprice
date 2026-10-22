@@ -17,6 +17,7 @@ import { aggregateDaily } from "../../lib/library/aggregate";
 import { previousByKey } from "../../lib/library/check";
 import type { LibraryRow } from "../../lib/library/store";
 import type { Fuel } from "../../lib/fuels";
+import { nationalRow, widenSentence } from "../../lib/widen";
 
 export const INFO: SourceInfo = {
   id: "fr-fuel",
@@ -154,7 +155,41 @@ export async function frFuelNow(input: {
     reported.push(...page);
     if (!Array.isArray(json?.results) || json.results.length < 100) break;
   }
-  return frAnswer(reported, { fuel: input.fuel, area, query: input, today: input.today, baseUrl: input.baseUrl });
+  const local = frAnswer(reported, { fuel: input.fuel, area, query: input, today: input.today, baseUrl: input.baseUrl });
+  // Niche fuels (LPG, E85) are sold at few stations: a thin department gets the labelled national figure, never a bare refusal.
+  if (local.status !== "ok" && input.department && !input.postcode) {
+    const wide = frWidenToNational(input, area, local.extra?.stations_counted as number | undefined);
+    if (wide) return wide;
+  }
+  return local;
+}
+
+/** The national (metropolitan France) library row for this fuel, as a labelled answer; null when the library has none. */
+export function frWidenToNational(
+  input: { department?: string; fuel: FrFuel; today?: string; baseUrl?: string },
+  area: string,
+  _local?: number,
+): PriceAnswer | null {
+  const common = (Object.entries(FR_NAME) as [Fuel, FrFuel][]).find(([, v]) => v === input.fuel)?.[0];
+  if (!common || common === "diesel" || common === "petrol95" || common === "petrol98" || common === "e10") return null;
+  const row = nationalRow("fr-fuel", common, input.today ? new Date(input.today + "T12:00:00Z") : undefined);
+  if (!row) return null;
+  const sentence = widenSentence(FUEL_LABEL[input.fuel], area, "metropolitan France", row.summary.count);
+  const a = buildAnswer({
+    source: INFO,
+    query: { country: "FR", postcode: null, department: input.department ?? null, fuel: input.fuel },
+    summary: row.summary,
+    currency: "EUR",
+    unit: "per litre",
+    period: { from: row.date, to: row.date },
+    method:
+      `Median and 10th–90th percentile of the latest pump price per litre reported by each station in metropolitan France for the selected fuel (our daily copy of ${row.date}). Prices not updated in the last ${STALE_DAYS} days are left out.`,
+    describe: (x) =>
+      `${FUEL_LABEL[input.fuel]} in metropolitan France: the latest posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} per litre; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+    baseUrl: input.baseUrl,
+    extra: { widened: true, widened_from: area, widened_to: "metropolitan France", stations_counted: row.summary.count },
+  });
+  return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}` };
 }
 
 export function frAnswer(
