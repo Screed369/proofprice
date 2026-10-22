@@ -121,7 +121,7 @@ test("fishHarvest streams the current year through an injected opener and return
   const early: number[] = [];
   await fishHarvest(new Date("2027-01-05T03:17:00Z"), async (year) => { early.push(year); return chunks(zip(lines.join("\n").replace(/2026/g, year === 2026 ? "2026" : "2027")), 4096); }).catch(() => undefined);
   assert.deepEqual(early, [2026, 2027]);
-  await assert.rejects(fishHarvest(new Date("2026-10-22T03:17:00Z"), async () => chunks(zip(HEADER), 100)), /no recent landings/);
+  await assert.rejects(fishHarvest(new Date("2026-10-22T03:17:00Z"), async () => chunks(zip(HEADER), 100)), /no landings with enough sales.*read 0 lines/);
 });
 
 const day = () => {
@@ -179,4 +179,14 @@ test("manifest: Norway only, licence and attribution stated, wholesale fresh foo
   assert.match(INFO.licence, /NLOD/);
   assert.match(INFO.attribution, /Fiskeridirektoratet/);
   assert.ok(countriesFor("wholesale-fresh-food").includes("NO"));
+});
+
+test("a file that lags behind today still gives its own newest week", async () => {
+  const lines = [HEADER];
+  for (let i = 0; i < 25; i++) lines.push(row({ doc: `a${i}`, date: "10.07.2026", species: "Torsk", price: "30" }));
+  for (let i = 0; i < 25; i++) lines.push(row({ doc: `b${i}`, date: "01.03.2026", species: "Torsk", price: "50" }));
+  const h = await fishHarvest(new Date("2026-10-22T03:17:00Z"), async () => chunks(zip(lines.join("\n")), 4096));
+  assert.equal(h.date, "2026-07-10");
+  assert.equal(h.rows.find((r) => r.area === "ALL")!.median, 30);
+  assert.match(h.note!, /newest landing date in the file 2026-07-10/);
 });

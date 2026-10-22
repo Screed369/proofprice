@@ -206,8 +206,25 @@ export interface Sale {
 }
 
 /** Pure: one data row into a sale, or null when it is not usable (landed abroad, no price or weight, bad date). Reads no vessel, fisher or buyer field. */
-export function parseSale(line: string, c: Columns): Sale | null {
+export interface Diag {
+  lines: number;
+  usable: number;
+  newestDate: string;
+  nations: Map<string, number>;
+}
+export const newDiag = (): Diag => ({ lines: 0, usable: 0, newestDate: "", nations: new Map() });
+export const diagText = (d: Diag) =>
+  `read ${d.lines} lines, ${d.usable} usable Norwegian sales; newest landing date in the file ${d.newestDate || "none"}; landing nations ${[...d.nations].sort((a, b) => b[1] - a[1]).slice(0, 4).map(([k, v]) => `${k || "(empty)"}=${v}`).join(", ") || "none"}`;
+
+export function parseSale(line: string, c: Columns, diag?: Diag): Sale | null {
   const f = splitSemi(line);
+  if (diag) {
+    diag.lines++;
+    const nat = (f[c.nation] ?? "").trim().toUpperCase();
+    diag.nations.set(nat, (diag.nations.get(nat) ?? 0) + 1);
+    const d = isoFromNo(f[c.date]);
+    if (d && d > diag.newestDate) diag.newestDate = d;
+  }
   if (f.length <= c.price) return null;
   if ((f[c.nation] ?? "").trim().toUpperCase() !== "NOR") return null;
   const date = isoFromNo(f[c.date]);
@@ -215,6 +232,7 @@ export function parseSale(line: string, c: Columns): Sale | null {
   const weight = num(f[c.weight]);
   const species = (f[c.species] ?? "").trim();
   if (!date || !species || !Number.isFinite(price) || price <= 0 || !Number.isFinite(weight) || weight <= 0) return null;
+  if (diag) diag.usable++;
   return { doc: (f[c.doc] ?? "").trim(), date, county: (f[c.county] ?? "").trim(), species, form: (f[c.form] ?? "").trim() || "unspecified", price };
 }
 
@@ -273,38 +291,51 @@ export const openYear: Opener = async (year) => {
   return Readable.fromWeb(res.body as any);
 };
 
-export async function readYear(open: Opener, year: number, keepFrom: string): Promise<Sale[]> {
-  const sales: Sale[] = [];
+/** Reads one year's file and keeps only the sales within LOOKBACK_DAYS of the newest landing date seen so far (so the file's own newest day
+ *  decides, not today's date: a file that lags behind still gives its newest week). Memory stays small whatever the file size. */
+export async function readYear(open: Opener, year: number, diag: Diag = newDiag(), today: string = new Date().toISOString().slice(0, 10)): Promise<Sale[]> {
+  let sales: Sale[] = [];
   let cols: Columns | null = null;
+  let newest = "";
+  let sincePrune = 0;
+  const prune = () => {
+    const from = isoOf(dayNumber(newest) - LOOKBACK_DAYS);
+    sales = sales.filter((x) => x.date >= from);
+    sincePrune = 0;
+  };
   await forEachZipLine(await open(year), (line) => {
     if (!line) return;
     if (!cols) {
       cols = readHeader(line);
       return;
     }
-    const s = parseSale(line, cols);
-    if (s && s.date >= keepFrom) sales.push(s);
+    const s = parseSale(line, cols, diag);
+    if (!s) return;
+    if (s.date > newest && s.date <= today) newest = s.date;
+    sales.push(s);
+    if (++sincePrune >= 100000 && newest) prune();
   });
   if (!cols) throw new SourceError("The Fiskeridirektoratet file was empty");
+  if (newest) prune();
   return sales;
 }
 
 export async function fishHarvest(now: Date = new Date(), open: Opener = openYear): Promise<HarvestResult> {
   const today = now.toISOString().slice(0, 10);
-  const keepFrom = isoOf(dayNumber(today) - LOOKBACK_DAYS);
   const year = Number(today.slice(0, 4));
   const years = [year];
-  if (keepFrom.slice(0, 4) !== String(year)) years.unshift(year - 1); // early January: last year's file still holds the last landings
+  if (dayNumber(today) - dayNumber(`${year}-01-01`) < LOOKBACK_DAYS) years.unshift(year - 1); // early January: last year's file still holds the last landings
+  const diag = newDiag();
   const sales: Sale[] = [];
-  for (const y of years) sales.push(...(await readYear(open, y, keepFrom)));
+  for (const y of years) sales.push(...(await readYear(open, y, diag, today)));
   const agg = aggregateSales(sales, today);
-  if (!agg || !agg.rows.length) throw new SourceError("Fiskeridirektoratet's file holds no recent landings with enough sales to publish");
+  if (!agg || !agg.rows.length) throw new SourceError(`Fiskeridirektoratet's file holds no landings with enough sales to publish (${diagText(diag)})`);
   return {
     date: agg.date,
     currency: "NOK",
     unit: "per kg product weight",
     rows: agg.rows,
-    note: `Fiskeridirektoratet sales notes for fish landed in Norway, landings ${isoOf(dayNumber(agg.date) - (WINDOW_DAYS - 1))} to ${agg.date}: price paid to fishers per kg of the named product form; n is the number of different sales notes (5 or more needed); county rows use the landing county.`,
+    note: `Fiskeridirektoratet sales notes for fish landed in Norway, landings ${isoOf(dayNumber(agg.date) - (WINDOW_DAYS - 1))} to ${agg.date}: price paid to fishers per kg of the named product form; n is the number of different sales notes (5 or more needed); county rows use the landing county. ${diagText(diag)}.`,
   };
 }
 
@@ -425,7 +456,7 @@ export function fishAnswerFromRows(day: LibraryDay, input: { product?: string; r
       `Fishers landing in ${place} were paid a median of ${fmtMoney(x.median, "NOK")} per kg for ${best.species.toLowerCase()} (${best.form.toLowerCase()}); ` +
       `10th–90th percentile ${fmtMoney(x.low, "NOK")}–${fmtMoney(x.high, "NOK")}, landings ${from} to ${to}. ` +
       `This is the first-hand price paid to the fisher, not a wholesale, shop or restaurant price.` +
-      (stale ? ` Our copy was collected ${age} days ago.` : ""),
+      (stale ? ` The newest landings in the Directorate's file are ${age} days old.` : ""),
     evidence: { label: "First-hand sales notes", meaning: "Prices from official fish sales notes (what the buyer paid the fisher at first sale); the sample size is the number of different sales notes." },
     extra: {
       sales_notes: r.n,
