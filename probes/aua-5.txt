@@ -1,0 +1,28 @@
+URL: https://data.gov.au/data/api/3/action/datastore_search?resource_id=b1e7267d-2884-4416-b3d6-6a669fc4e423&limit=2
+Fetched: 2026-10-22T00:14:05Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1179
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 1179
+date: Thu, 22 Oct 2026 00:14:05 GMT
+set-cookie: ckan=; Domain=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/
+server: nginx
+cache-control: public, max-age=900, must-revalidate
+vary: Cookie,Origin
+x-cache: Miss from cloudfront
+via: 1.1 7b7ed180a68f72f1dd6bcc5c75fd0210.cloudfront.net (CloudFront)
+x-amz-cf-pop: PHX50-P2
+x-amz-cf-id: c-suyIDdrcGNlOP6nYbyhFXdVoIhmNKyJMfn8RrCmTqIyioEucRB9Q==
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000
+vary: Origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://data.gov.au/data/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "limit": 2, "records_format": "objects", "resource_id": "b1e7267d-2884-4416-b3d6-6a669fc4e423", "total_estimation_threshold": null, "records": [{"_id":1,"Year":"2010","Month":"1","YearMonth":"201001","Port1":"Adelaide","Port2":"Brisbane","Route":"Adelaide - Brisbane","$Value":"208","$Real":"326.2189958"},{"_id":2,"Year":"2010","Month":"1","YearMonth":"201001","Port1":"Adelaide","Port2":"Canberra","Route":"Adelaide - Canberra","$Value":"258","$Real":"404.6370236"}], "fields": [{"id": "_id", "type": "int"}, {"id": "Year", "type": "text"}, {"id": "Month", "type": "text"}, {"id": "YearMonth", "type": "text"}, {"id": "Port1", "type": "text"}, {"id": "Port2", "type": "text"}, {"id": "Route", "type": "text"}, {"id": "$Value", "type": "text"}, {"id": "$Real", "type": "text"}], "_links": {"start": "/api/3/action/datastore_search?resource_id=b1e7267d-2884-4416-b3d6-6a669fc4e423&limit=2", "next": "/api/3/action/datastore_search?resource_id=b1e7267d-2884-4416-b3d6-6a669fc4e423&limit=2&offset=2"}, "total": 13958, "total_was_estimated": false}}
