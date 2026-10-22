@@ -1,0 +1,36 @@
+URL: https://www.academyinfo.go.kr/
+Fetched: 2026-10-22T03:42:51Z from GitHub Actions
+Status, type, bytes: 200 text/html 458
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Thu, 22 Oct 2026 03:16:13 GMT
+ETag: "0-1ca-64162529"
+Last-Modified: Sat, 18 Mar 2023 20:55:05 GMT
+Accept-Ranges: bytes
+Content-Length: 458
+Content-Type: text/html
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>대학알리미</title>
+    
+    <script>
+		// 정규표현식으로 비교
+		var mobile = (/iphone|ipad|ipod|macintosh|android/i.test(navigator.userAgent.toLowerCase()));
+		
+		if(mobile) {
+			var rdDomain = "https://m.academyinfo.go.kr";		
+	    	window.location.href = rdDomain+"/index.do";
+		}else{
+			window.location.href = "./index.do";
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>
