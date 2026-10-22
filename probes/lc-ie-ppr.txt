@@ -1,24 +1,24 @@
-URL: https://www.propertypriceregister.ie/website/npsra/pprweb.nsf/PPRDownloads?OpenForm
-Fetched: 2026-10-22T00:57:37Z from GitHub Actions
-Status, type, bytes: 200 text/html; charset=UTF-8 15103
+URL: https://www.propertypriceregister.ie/website/npsra/ppr-copyright-en.html
+Fetched: 2026-10-22T06:56:36Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=US-ASCII 17418
 Errors: 
 
 === RESPONSE HEADERS
 HTTP/1.1 200 OK
 Server: Lotus-Domino
-Date: Thu, 22 Oct 2026 00:57:39 GMT
-Last-Modified: Thu, 22 Oct 2026 00:57:37 GMT
+Date: Thu, 22 Oct 2026 06:56:38 GMT
+Last-Modified: Thu, 22 Oct 2026 06:56:36 GMT
 Expires: Tue, 01 Jan 1980 06:00:00 GMT
-Content-Type: text/html; charset=UTF-8
-Content-Length: 15103
+Content-Type: text/html; charset=US-ASCII
+Content-Length: 17418
 X-Content-Type-Option: nosniff
 Cache-control: no-cache
 Strict-Transport-Security: max-age=16070400; includeSubDomains
 X-Frame-Options: sameorigin
 X-XSS-Protection: 1
 X-Content-Type-Options: nosniff
-Set-Cookie: o9Oogep44ML3DH3hVMkRFSG0QgD7avqhMCQRD4zUj2dv4WPTga=!VNkDpLz2hRq9hg8mzCoLUHOdo3GJZqF2P7XARTT8cUi/CAr3VEcjqCi3D1Dx3ouBpOWpOiYU04D0aI0=; path=/; Httponly; Secure
-Set-Cookie: f5avraaaaaaaaaaaaaaaa_session_=BBOPAPCIIACCHHGBJOLDBOJCGEMKDNAMFDMGBDBKGEJPLKNKPBHCIPNJHCLMFAGPJJHDKDMCGPNALLFBFJFAEPALDFIAADPPOICPLDJBIDADNOKMGKMOJJIBLEOBEEPH; HttpOnly; secure
+Set-Cookie: o9Oogep44ML3DH3hVMkRFSG0QgD7avqhMCQRD4zUj2dv4WPTga=!EAmfT2aKmLgE67YmzCoLUHOdo3GJZmiK3Kat59wKEUKnjAVQhO5a5ulY4aBK1aVJgx8rRr+9nUq9mpo=; path=/; Httponly; Secure
+Set-Cookie: f5avraaaaaaaaaaaaaaaa_session_=AAENLNHDBEADELLNPBEINENAAHDFAGBEPFJNMHIKJNEOBKDAPBNPCNEAMDAGKPLMLBCDEHFFJDBKBAEKFNDAOGCOFLOIBOPKJGNFOGPHDEFFOJLFGALJNAJKEKBOJMOK; HttpOnly; secure
 Set-Cookie: f5_cspm=1234;
 
 === FILE TYPE: HTML document, ASCII text, with very long lines (1114), with CR, LF line terminators
@@ -26,7 +26,17 @@ Set-Cookie: f5_cspm=1234;
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>Residential Property Price Register</title><!-- MetaTags (Dublic Core Metadata Initiative) --><meta name="DC.title" content=""><meta name="DC.subject" content=""><meta name="DC.description" content=""><meta name="DC.creator" content="National Property Services Regulatory Authority"><meta name="DC.publisher" content="National Property Services Regulatory Authority"><meta name="DC.source" content="National Property Services Regulatory Authority"><meta name="DC.rightsHolder" content="National Property Services Regulatory Authority"><meta name="DC.identifier" content="/website/npsra/pprweb.nsf/page/"><meta name="DC.language" content="en"><meta name="DC.type" content="text"><meta name="DC.format" content="text/html"><meta name="DC.date.created" content="2026-10-22"><meta name="DC.date.modified" content="2026-10-22"><!-- MetaTags (Dublic Core Metadata Initiative) --><!-- CSS Global Compulsory -->
+
+<title>Residential Property Price Register - Copyright</title>
+
+<!-- MetaTags -->
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="title" content="Residential Property Price Register - Copyright">
+<meta name="description" content="Copyright">
+<meta name="keywords" content="Residential Property Price Register, Copyright">
+<meta name="author" content="Property Services Regulatory Authority">
+<meta name="robots" content="all">
+<!-- MetaTags --><!-- MetaTags (Dublic Core Metadata Initiative) --><meta name="DC.title" content="residential property price register - copyright"><meta name="DC.subject" content="Copyright"><meta name="DC.description" content="residential property price register - copyright"><meta name="DC.creator" content="National Property Services Regulatory Authority"><meta name="DC.publisher" content="National Property Services Regulatory Authority"><meta name="DC.source" content="National Property Services Regulatory Authority"><meta name="DC.rightsHolder" content="National Property Services Regulatory Authority"><meta name="DC.identifier" content="/website/npsra/pprweb.nsf/page/ppr-copyright"><meta name="DC.language" content="en"><meta name="DC.type" content="text"><meta name="DC.format" content="text/html"><meta name="DC.date.created" content="2012-09-18"><meta name="DC.date.modified" content="2012-09-18"><!-- MetaTags (Dublic Core Metadata Initiative) --><!-- CSS Global Compulsory -->
 
 <link rel="stylesheet" href="/unify-v1.9.1-J3B3/html/assets/plugins/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/unify-v1.9.1-J3B3/html/assets/css/style.css">
@@ -96,41 +106,31 @@ Set-Cookie: f5_cspm=1234;
 </script>
 
 
+<script language="JavaScript" type="text/javascript" src="/website/npsra/pprweb.nsf/xmlTools.js?OpenJavascriptLibrary">
+</script>
+
 <script language="JavaScript" type="text/javascript">
 <!-- 
 document._domino_target = "_self";
-function _doClick(v, o, t, h) {
-  var form = document._PPRDownloads;
-  if (form.onsubmit) {
-     var retVal = form.onsubmit();
-     if (typeof retVal == "boolean" && retVal == false)
-       return false;
-  }
-  var target = document._domino_target;
+function _doClick(v, o, t) {
+  var returnValue = false;
+  var url="/website/npsra/pprweb.nsf/page/ppr-copyright-en?OpenDocument&Click=" + v;
   if (o.href != null) {
-    if (o.target != null)
-       target = o.target;
+    o.href = url;
+    returnValue = true;
   } else {
-    if (t != null)
-      target = t;
+    if (t == null)
+      t = document._domino_target;
+    window.open(url, t);
   }
-  form.target = target;
-  form.__Click.value = v;
-  if (h != null)
-    form.action += h;
-  form.submit();
-  return false;
+  return returnValue;
 }
 // -->
-</script>
-
-<script language="JavaScript" type="text/javascript" src="/website/npsra/pprweb.nsf/showQuickNews.js?OpenJavascriptLibrary">
 </script>
 </head>
 <body text="#000000" bgcolor="#FFFFFF">
 
-<form method="post" action="/website/npsra/pprweb.nsf/PPRDownloads?OpenForm&amp;Seq=1" name="_PPRDownloads">
-<input type="hidden" name="__Click" value="0"><div style="display:none">
+<form action=""><div style="display:none">
 	<input type="hidden" id="browser" name="browser" value="xx99" >
 	<input type="hidden" id="webServerName" name="webServerName" value="https://www.propertypriceregister.ie" >
 	<input type="hidden" id="webDBName" name="webDBName" value="/website/npsra/pprweb.nsf" >
@@ -193,113 +193,102 @@ function _doClick(v, o, t, h) {
 <!--/navbar-collapse-->
 
 </div>
-<style>.resultsDiv{height: 230px; overflow: auto;}</style>
-<div id="maincontent" role="main" class="container content height-500">
-<div id="userContent">
-	<table class="searchTable table table-responsive">
-		<caption>Download Criteria</caption>
-		<colgroup><col class="col1"><col class="col2"><col class="col2"></colgroup>
-		<tbody>
-			<tr>
-				<td nowrap="nowrap"><label for="County">County <strong title="Required" class="required">*</strong></label> :</td><td>
-<input name="%%Surrogate_County" type="hidden" value="1">
-<select name="County" onkeypress="if (window.event.keyCode == 13){	document.forms[0].submit();}else{	return true;}" id="County" tabindex="1">
-<option value="" selected>&lt;-- Select County --&gt;
-<option value="ALL">--- All Counties ---
-<option>Carlow
-<option>Cavan
-<option>Clare
-<option>Cork
-<option>Donegal
-<option>Dublin
-<option>Galway
-<option>Kerry
-<option>Kildare
-<option>Kilkenny
-<option>Laois
-<option>Leitrim
-<option>Limerick
-<option>Longford
-<option>Louth
-<option>Mayo
-<option>Meath
-<option>Monaghan
-<option>Offaly
-<option>Roscommon
-<option>Sligo
-<option>Tipperary
-<option>Waterford
-<option>Westmeath
-<option>Wexford
-<option>Wicklow</select>
-</td>
-				<td nowrap="nowrap" rowspan="3" align="middle">
-					<p><b>Register Last Updated: </b><br><span id="LastUpdated">21/10/2026 17:49:27</span></p>
-				</td>
-			</tr>
-			<tr>
-				<td nowrap="nowrap"><label for="Year">Year <strong title="Required" class="required">*</strong></label> :</td><td>
-<input name="%%Surrogate_Year" type="hidden" value="1">
-<select name="Year" onkeypress="if (window.event.keyCode == 13){	document.forms[0].submit();}else{	return true;}" id="Year" tabindex="3">
-<option value="" selected>&lt;-- Select Year --&gt;
-<option>2010
-<option>2011
-<option>2012
-<option>2013
-<option>2014
-<option>2015
-<option>2016
-<option>2017
-<option>2018
-<option>2019
-<option>2020
-<option>2021
-<option>2022
-<option>2023
-<option>2024
-<option>2025
-<option>2026</select>
-</td>
-			</tr>
-			<tr>
-				<td nowrap="nowrap"><label for="Month">Month <strong title="Required" class="required">*</strong> :</label></td><td>
-<input name="%%Surrogate_Month" type="hidden" value="1">
-<select name="Month" onkeypress="if (window.event.keyCode == 13){	document.forms[0].submit();}else{	return true;}" id="StartMonth" tabindex="4">
-<option value="" selected>&lt;-- Select Month --&gt;
-<option value="ALL">--- All Months ---
-<option value="01">01 - January
-<option value="02">02 - February
-<option value="03">03 - March
-<option value="04">04 - April
-<option value="05">05 - May
-<option value="06">06 - June
-<option value="07">07 - July
-<option value="08">08 - August
-<option value="09">09 - September
-<option value="10">10 - October
-<option value="11">11 - November
-<option value="12">12 - December</select>
-</td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2">NOTE:  Fields marked <strong title="Required" class="required">*</strong> are required to perform a download.</td>
-				<td style="text-align: right"><input type="submit" class="boldbuttons btn" tabindex="6" value="Perform Download"></td>
-			</tr>
-		</tfoot>
-	</table>
-	<div class="resultsCaption">
-		<div id="rcColLf">Download Results</div>
+<div id="content">
+
+<div id="leftnav"><div><img src="/website/npsra/pprweb.nsf/graphics/leftnav_top.gif" alt="" width="170" height="8"></div>
+<div id="nav01">
+<ul>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/index-en">HOME</a></li>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/aboutus-en">ABOUT US </a></li>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/whatwedo-en">WHAT WE DO </a></li>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/publicregister-en">REGISTERS </a>
+       <div id="nav01drop">
+            <ul>
+                <li>
+                    <a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/publicregister-reg-of-propserv-prov-en">REGISTER OF PROPERTY SERVICE PROVIDERS </a>
+                    <a href="/website/npsra/pprweb.nsf/page/ppr-home-en">RESIDENTIAL PROPERTY PRICE REGISTER </a>
+<a href="http://www.propertypriceregister.ie/website/npsra/pprweb-com.nsf/page/ppr-home-en">COMMERCIAL LEASE REGISTER </a>
+                </li>
+            </ul>
+       </div>
+</li>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/news-en">NEWS</a></li>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/publications-en">PUBLICATIONS </a></li>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/copyright-en">RE-USE OF INFORMATION </a></li>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/links-en">USEFUL LINKS </a></li>
+</ul>
 </div>
-	<div class="resultsDiv">
-		<div class="welcomeTxt">
-			<b>Welcome to the Residential Property Price Register</b><br>
-			Please select from the fields above and then click the "Perform Download" button.
-		</div>
-	</div>
+
+<div id="nav02">
+<ul>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/sitemap-en">Sitemap</a></li>
+<li><a href="http://www.psr.ie/website/npsra/npsraweb.nsf/page/accessibility-en">Accessibility</a></li>
+</ul>
 </div>
-	</div>
+<br><br><br><br><br><br><br>
+<img src="/website/npsra/pprweb.nsf/graphics/leftnav_end.gif" alt="National Property Services Regulatory Authority" width="170" height="14"></div>
+
+
+<div id="mid_column">
+<div class="print"><img id="imgPrint" src="/website/npsra/pprweb.nsf/graphics/icon_print.gif" alt="Print this page" width="100" height="21" align="right"  onclick="togglePrint('screenStyle', 'imgPrint')"></div><div id="userContent"><h2>Copyright</h2><br>
+The Property Services Regulatory Authority complies with the <a href="http://www.psi.gov.ie/" title="Open the Regulations on the Re-use of Public Sector Information website in a new window." target="_blank" >Regulations on the Re-use of Public Sector Informatio</a>n (S.I. No. 279 of 2005) and we encourage the re-use of the information that we produce.<br/><br>
+<br>
+All of the information featured on our website is the copyright of the Property Services Regulatory Authority unless otherwise indicated. <br>
+<br>
+You may re-use the information on this website free of charge in any format.  <br>
+<br>
+Re-use includes copying, issuing copies to the public, publishing, broadcasting and translating into other languages. It also covers non-commercial research and study.<br>
+<br>
+Re-use is subject to the following conditions. You must:<br>
+
+<ul type="disc">
+<li>Acknowledge the source and our copyright in cases where you supply the information to others; 
+<li>Reproduce the information accurately; 
+<li>Not use the information in a misleading way; 
+<li>Not use the information for the principal purpose of advertising or promoting a particular product or service; 
+<li>Not use the information for or in support of illegal, immoral, fraudulent or dishonest purposes. </ul>
+Authorisation to reproduce any material on the website which may be the copyright of a third party must be obtained from the copyright holder concerned.<br>
+<br>
+The Property Services Regulatory Authority is not liable for any loss or liability associated with the re-use of information and does not certify that the information is up-to-date or error free. The Property Services Regulatory Authority does not authorise any user to have exclusive rights to re-use of its information.</div>
+<br>
+<div class="col-lg-4 col-md-4 col-s-12 col-xs-12">
+<div class="well">
+<h4>REGISTER LAST UPDATED - 21/10/2026 17:49:27</h4>
+</div>
+
+<div class="well">
+<h3>SEARCH</h3>
+
+<p><span>I have read and understand the clarifications given the Information Note with respect to the data contained in the Register. To search the database click SEARCH.</span></p>
+
+<p style="text-align: center;"><a class="btn btn-success" href="/website/npsra/pprweb.nsf/PPR?OpenForm" target="_blank" text="undefined"><span class="glyphicon glyphicon-search">&nbsp;</span> SEARCH</a></p>
+</div>
+
+<div class="well">
+<h3>SPECIFIC DOWNLOADS</h3>
+
+<p><span>I have read and understand the clarifications given in the Information Note with respect to the data contained in the Register. To search the database click DOWNLOAD SPECIFIC.</span></p>
+
+<p style="text-align: center;"><a class="btn btn-success" href="/website/npsra/pprweb.nsf/PPRDownloads?OpenForm" target="_blank" text="undefined"><span class="glyphicon glyphicon-download-alt">&nbsp;</span>DOWNLOAD SPECIFIC</a></p>
+</div>
+
+<div class="well">
+<h3>DOWNLOAD ALL RECORDS</h3>
+
+<p><span>I have read and understand the clarifications given in the Information Note with respect to the data contained in the Register. To search the database click DOWNLOAD ALL.</span></p>
+
+<p style="text-align: center;"><a class="btn btn-success" href="/website/npsra/ppr/npsra-ppr.nsf/Downloads/PPR-ALL.zip/$FILE/PPR-ALL.zip" target="_blank" text="undefined"><span class="glyphicon glyphicon-download-alt">&nbsp;</span>DOWNLOAD ALL</a></p>
+</div>
+
+</div>
+
+</div>
+<!-- ROW -->
+</div>
+
+</div>
+
+
 <!--=== Footer ===-->
 
 
@@ -439,11 +428,17 @@ Email: <a href="mailto:info@psr.ie">info@psr.ie</a><br>
 
 
 <!-- END WRAPPER --> 
+
+
+<br>
+
 <!--Start Cookie Script-->
-<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/e974911c39929aadaa5cbb83f9931765.js"></script><!--End Cookie Script--> </form>
+<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/e974911c39929aadaa5cbb83f9931765.js"></script><!--End Cookie Script--> 
+<p><br>
+</form>
 </body>
 </html>
-<script id="f5_cspm">(function(){var f5_cspm={f5_p:'MDMEDBCLPBCDPPDBJFCGHLJCMEPEPLAMPLOGLDAKHEJPLKNKPBHCLHNJHCLNFAGPJJHBKDMCAAEKGLMLFJFAEPALAAFGKFCJGAFJBIKAIDADNONCFFOJHCMBLEOBEEEL',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,40,(latency>>8));str=f5_cspm.set_byte(str,41,(latency&0xff));str=f5_cspm.set_byte(str,35,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avr0564404201aaaaaaaaaaaaaaaa_cspm_='+encodeURIComponent(cookie_val)+';path=/';}
+<script id="f5_cspm">(function(){var f5_cspm={f5_p:'MEOCDDHDFHACMDANBEBNLBNAGHALMNDEFBKNJHJKINEOBKDAPMNPKFEAMDAHKPLMLBCBEHFFAAIABENAFNDAOGCOAADOMFCMPAKOKCMGDEFFOJKEBDMACONKEKBOJMCA',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,40,(latency>>8));str=f5_cspm.set_byte(str,41,(latency&0xff));str=f5_cspm.set_byte(str,35,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avr0564404201aaaaaaaaaaaaaaaa_cspm_='+encodeURIComponent(cookie_val)+';path=/';}
 return;}}
 catch(err){return;}
 setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
