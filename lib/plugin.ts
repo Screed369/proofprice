@@ -272,6 +272,9 @@ export interface CategoryPlugin {
   required?: string[];
   /** Normalise parameters once for every source (e.g. fuel name aliases). Throw SourceError if invalid. */
   prepare?(params: Params): Params;
+  /** Optional: refuse a request the chosen source would only pretend to answer (an option that source ignores). Runs after the source is
+   *  picked; `sourceFor(country)` names the source id that answers a country for the same request; `countries` lists the category's countries. Throw InputError (HTTP 400). */
+  guard?(src: SourcePlugin, prepared: Params, sourceFor: (country: string) => string | undefined, countries: string[]): void;
   /** How long the CDN may reuse an answer (seconds). Fuel: 600. Home sales: 86400. Default 600. */
   cacheSeconds?: number;
   /** Optional history tool built from the price library. Shown to agents once enough days are collected. */

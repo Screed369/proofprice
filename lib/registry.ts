@@ -215,7 +215,9 @@ export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePl
   }
   const withCountry = { ...params, country };
   const prepared = cat.prepare ? cat.prepare(withCountry) : withCountry;
-  return { src: findSource(cat.id, country, prepared) ?? src, prepared };
+  const chosen = findSource(cat.id, country, prepared) ?? src;
+  cat.guard?.(chosen, prepared, (c) => findSource(cat.id, c, { ...prepared, country: c })?.info.id, covered);
+  return { src: chosen, prepared };
 }
 
 /** The longest one live answer may take, in milliseconds. Vercel stops a function after 60 s (maxDuration) with a bare "Task timed

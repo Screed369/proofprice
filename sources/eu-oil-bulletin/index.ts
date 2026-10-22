@@ -26,7 +26,7 @@ export default defineSource({
       .enum(["with", "without"])
       .optional()
       .describe(
-        "EU Weekly Oil Bulletin countries only: 'with' (default) = the pump price with all duties and taxes; 'without' = the Commission's price net of duties and taxes (VAT and excise removed), the basis many fuel-surcharge indices use. The answer states which. Other countries ignore it and answer with their own pump price.",
+        "EU Weekly Oil Bulletin countries only: 'with' (default) = the pump price with all duties and taxes; 'without' = the Commission's price net of duties and taxes (VAT and excise removed), the basis many fuel-surcharge indices use. The answer states which. Other countries refuse it with a 400 (they publish pump prices with taxes only).",
       ),
   },
   examples: [

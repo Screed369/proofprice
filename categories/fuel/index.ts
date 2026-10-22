@@ -30,6 +30,16 @@ export default defineCategory({
     if (!fuel) throw new InputError(`fuel must be one of: ${FUELS.join(", ")}`);
     return { ...p, fuel };
   },
+  // tax=without (price net of duties and taxes) exists only in the EU Weekly Oil Bulletin. Any other source would ignore it and answer with
+  // the pump price WITH taxes, which is a different number: say so instead (REST 400 / MCP tool error).
+  guard: (src, p, sourceFor, countries) => {
+    if (str(p.tax) !== "without" || src.info.id === "eu-oil-bulletin") return;
+    const ok = countries.filter((c) => sourceFor(c) === "eu-oil-bulletin");
+    throw new InputError(
+      `tax=without (the price net of duties and taxes) is only available where the EU Weekly Oil Bulletin answers: ${ok.join(", ")}. ` +
+        `${String(p.country)} is answered by ${src.info.id}, which publishes pump prices with taxes only. Leave tax out to get that price.`,
+    );
+  },
   history: {
     tool: "pricepaid_fuel_price_history",
     title: "Fuel price history",

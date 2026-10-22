@@ -1,7 +1,8 @@
 // REST honesty: a place given under another name is used, and a name nobody reads is a 400, never an ok answer for something else.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { categoryById, exampleUrls, paramsFromQuery, assertKnownParams, locationParam } from "../lib/registry";
+import { categoryById, exampleUrls, paramsFromQuery, assertKnownParams, locationParam, pickSource } from "../lib/registry";
+import { InputError } from "../lib/http";
 import { GET } from "../app/api/v1/[category]/route";
 
 const hs = categoryById("home-sales")!;
@@ -52,4 +53,20 @@ test("REST route: the Dublin URL asks for Dublin, an unknown name is a 400", asy
   const bad = await GET(new Request("https://x.test/api/v1/home-sales?country=IE&suburb=Dublin"), { params: Promise.resolve({ category: "home-sales" }) });
   assert.equal(bad.status, 400);
   assert.match(((await bad.json()) as any).error, /Unknown parameter "suburb"/);
+});
+
+test("fuel tax=without is refused where the source would ignore it (never a with-tax price under a net-of-tax request)", () => {
+  const fuel = categoryById("fuel")!;
+  // Ireland is answered by the EU Weekly Oil Bulletin: allowed
+  assert.doesNotThrow(() => pickSource(fuel, { country: "IE", fuel: "diesel", tax: "without" }));
+  // the same request without the option is untouched everywhere
+  assert.doesNotThrow(() => pickSource(fuel, { country: "AU", fuel: "diesel" }));
+  // Australia (QLD) and the Netherlands (CBS) publish with-tax pump prices only
+  for (const country of ["AU", "NL"]) {
+    assert.throws(
+      () => pickSource(fuel, { country, fuel: "diesel", tax: "without" }),
+      (e: any) => e instanceof InputError && /tax=without/.test(e.message) && /\bIE\b/.test(e.message) && new RegExp(country).test(e.message),
+    );
+  }
+  assert.doesNotThrow(() => pickSource(fuel, { country: "AU", fuel: "diesel", tax: "with" }));
 });
