@@ -1,0 +1,970 @@
+URL: https://app.nlrsreports.mla.com.au/static/openapi.yaml
+Fetched: 2026-10-22T16:44:31Z from GitHub Actions
+Status, type, bytes: 200 application/octet-stream 30839
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Thu, 22 Oct 2026 16:44:25 GMT
+content-type: application/octet-stream
+content-length: 30839
+content-disposition: inline; filename=openapi.yaml
+last-modified: Thu, 01 Oct 2026 01:03:04 GMT
+cache-control: no-cache
+etag: "1790816584.0-30839-1872628004"
+
+=== FILE TYPE: ASCII text, with very long lines (384)
+=== FIRST 30000 BYTES
+openapi: 3.0.3
+info:
+  title: MLA Statistics - API
+  description: |-
+    This is a swagger interface to interact with the Meat and Livestock Australia Statistics API
+  termsOfService: https://www.mla.com.au/general/Terms-and-conditions/
+  contact:
+    email: insights@mla.com.au
+  version: "1"
+servers:
+  - url: https://api-mlastatistics.mla.com.au
+tags:
+  - name: Reference Tables
+    description: Tables with attributes to explain the data within the reports
+  - name: Reports
+    description: Australian and global livestock data reports
+paths:
+  /report:
+    get:
+      tags:
+        - Reference Tables
+      summary: Provides a list of available endpoints
+      description: Returns a set of endpoints with the coresponding parameters and requirements that can be used with the endpoint
+      operationId: getReports
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report"
+  /saleyard:
+    get:
+      tags:
+        - Reference Tables
+      summary: Provides a list of saleyards
+      description: Returns a list of saleyards with coresponding saleyard ID's that can be used with NLRS indicators and pricing data.
+      operationId: getSaleyards
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Saleyard"
+
+  /indicator:
+    get:
+      tags:
+        - Reference Tables
+      summary: Provides a list of indicators and there respective ID's
+      description: Returns a list of Indicators with corresponding Indicator ID's that can be used as parameters in the NLRS report endpoints.
+      operationId: getIndicators
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Indicator"
+
+  /report/1:
+    get:
+      tags:
+        - Reports
+      summary: Australian Red Meat Exports
+      description: This endpoint returns Australian Red Meat Exports data containing quantities of red meat products exported from Australia. Data is supplied by Department of Agriculture, Fisheries and Forestry on a monthly basis and curated by Meat and Livestock Australia.
+      operationId: getReport1
+      parameters:
+        - name: fromDate
+          in: query
+          required: true
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: true
+          description: The ending date of items to return (default is todays date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report1"
+
+  /report/2:
+    get:
+      tags:
+        - Reports
+      summary: Australian Herd and Flock Figures
+      description: This endpoint returns Australian Herd and Flock figures on a State and animal Category level. The data is supplied by Australian Bureau of Statistics each finacial year.
+      operationId: getReport2
+      parameters:
+        - name: year
+          in: query
+          required: true
+          description: The year of the data to be returned (Defaults to current year)
+          schema:
+            type: integer
+            format: "int64"
+        - name: stateID
+          in: query
+          required: true
+          description: The stateID of the records to be returned in the response
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - NSW
+                - SA
+                - VIC
+                - QLD
+                - WA
+                - TAS
+        - name: category
+          in: query
+          required: false
+          description: The Category of the animal to be returned in the response
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - Cattle
+                - Sheep and lambs - Lambs under 1 year
+                - Sheep and lambs - Breeding ewes 1 year or over
+                - Dairy cattle
+                - Sheep and lambs - Marked lambs under 1 year
+                - Meat cattle
+                - Sheep and lambs
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report2"
+  /report/3:
+    get:
+      tags:
+        - Reports
+      summary: Australian Slaughter and Production
+      description: This endpoint returns Australian Slaughter and Production figures on a animal Category level. The data is supplied by Australian Bureau of Statistics on a Quarterly basis.
+      operationId: getReport3
+      parameters:
+        - name: fromDate
+          in: query
+          required: true
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: true
+          description: The ending date of items to return (default is todays date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: category
+          in: query
+          required: false
+          description: The Category of the animal to be returned in the response
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - Total Red Meat
+                - Calves
+                - Cattle (Excl. Calves)
+                - Cows And Heifers
+                - Bulls, Bullocks And Steers
+                - Sheep
+                - Lambs
+                - Chickens
+                - Pigs
+
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report3"
+  /report/4:
+    get:
+      tags:
+        - Reports
+      summary: Australian Saleyard Yardings
+      description: This endpoint returns Australian saleyard yardings on a Saleyard and Category level. Data is collected the National Livestock Reporting Service on a daily basis and updated once per day (12am AEST)
+      operationId: getReport4
+      parameters:
+        - name: fromDate
+          in: query
+          required: false
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: false
+          description: The ending date of items to return (default is todays date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: saleyardID
+          in: query
+          required: false
+          description: The SaleyardID of the Saleyard to be returned in the response
+          schema:
+            type: string
+            items:
+              type: string
+        - name: category
+          in: query
+          required: true
+          description: The Category of the animal to be returned in the response
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - Cattle
+                - Lamb
+                - Sheep
+
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report4"
+  /report/5:
+    get:
+      tags:
+        - Reports
+      summary: Australian Livestock Indicators (By Indicator)
+      description: This endpoint returns Australian National Livestock Reporting Service (NLRS) Livestock Indicators on an Indicator level basis. Data is collected the National Livestock Reporting Service on a daily basis and updated once per day (12am AEST)
+      operationId: getReport5
+      parameters:
+        - name: fromDate
+          in: query
+          required: false
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: false
+          description: The ending date of items to return (default is yesterday's date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: indicatorID
+          in: query
+          required: true
+          description: The indicatorID of the Indicator to be returned in the response
+          schema:
+            type: string
+            items:
+              type: string
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report5"
+  /report/6:
+    get:
+      tags:
+        - Reports
+      summary: Australian Livestock Indicators (By Saleyard)
+      description: This endpoint returns Australian National Livestock Reporting Service (NLRS) Livestock Indicators on an Saleyard level basis. Data is collected the National Livestock Reporting Service on a daily basis and updated once per day (12am AEST)
+      operationId: getReport6
+      parameters:
+        - name: fromDate
+          in: query
+          required: false
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: false
+          description: The ending date of items to return (default is yesterday's date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: indicatorID
+          in: query
+          required: true
+          description: The indicatorID of the Indicator to be returned in the response
+          schema:
+            type: string
+            items:
+              type: string
+        - name: saleyardID
+          in: query
+          required: false
+          description: The saleyardID of the Saleyard to be returned in the response
+          schema:
+            type: string
+            items:
+              type: string
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report6"
+  /report/7:
+    get:
+      tags:
+        - Reports
+      summary: Global Cattle Prices
+      description: This endpoint returns Global livestock indicators currently sourced from the Australian National Livestock Reporting Service (NLRS) and US Steiner Consulting. NLRS indicators are updated once per day (12am AEST) while US Stiener Consulting Indicators are updated weekly (Tuesday)
+      operationId: getReport7
+      parameters:
+        - name: fromDate
+          in: query
+          required: false
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: false
+          description: The ending date of items to return (default is todays date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: countryID
+          in: query
+          required: true
+          description: The countryID of the records to be returned in the response
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - AUS
+                - USA
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report7"
+  /report/8:
+    get:
+      tags:
+        - Reports
+      summary: US Domestic Cattle Prices
+      description: This endpoint returns US Domestic Cattle Prices sourced from the US Steiner Consulting. Data is updated weekly (Tuesday)
+      operationId: getReport8
+      parameters:
+        - name: fromDate
+          in: query
+          required: false
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: false
+          description: The ending date of items to return (default is todays date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report8"
+
+  /report/9:
+    get:
+      tags:
+        - Reports
+      summary: US Imported Meat Prices
+      description: This endpoint returns US Imported Meat Prices sourced from the US Steiner Consulting. Data is updated weekly (Tuesday)
+      operationId: getReport9
+      parameters:
+        - name: fromDate
+          in: query
+          required: false
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: false
+          description: The ending date of items to return (default is todays date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report9"
+  /report/10:
+    get:
+      tags:
+        - Reports
+      summary: Australian National Livestock Reporting Service (NLRS) Slaughter
+      description: This endpoint returns Australian Slaughter data collected via Voluntry survey conducted by the Australian National Livestock Reporting Service. Reported on a state and animal category level the data provides the most timely slaughter figures for Australia. The survey conducted weekly and released on Friday
+      operationId: getReport10
+      parameters:
+        - name: fromDate
+          in: query
+          required: false
+          description: The start date of items to return (default is prior year start date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          required: false
+          description: The ending date of items to return (default is todays date) (yyyy-mm-dd)
+          schema:
+            type: string
+            format: date
+        - name: stateID
+          in: query
+          required: true
+          description: The stateID of the records to be returned in the response
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - NSW
+                - SA
+                - VIC
+                - QLD
+                - WA
+                - TAS
+        - name: species
+          in: query
+          required: true
+          description: The species of the records to be returned in the response
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - Cattle
+                - Calves
+                - Sheep
+                - Lambs
+                - Goat
+        - name: page
+          in: query
+          required: false
+          description: The page number of the response used for pagination when response length is greater than 100 rows (default = 1)
+          schema:
+            type: integer
+            format: "int64"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Report10"
+components:
+  schemas:
+    Disclaimer:
+      type: string
+      example: All use of MLA publications, reports and information is subject to MLA's Market Report and Information Terms of Use. Please read our Terms of Use (https://www.mla.com.au/globalassets/mla-corporate/prices--markets/documents/minlrs-information-brochures-etc/mla-market-reports-data-and-information-terms-of-use.pdf) carefully and ensure you are familiar with its content.
+    Report:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: Australian Saleyard Yardings
+              endpoint:
+                type: string
+                example: /report/4
+              source:
+                type: string
+                example: National Livestock Reporting Service
+              parameter:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    species:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          format:
+                            type: string
+                            example: String
+                          required:
+                            type: string
+                            example: "true"
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Saleyard:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 107
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              saleyard_id:
+                type: string
+                example: ADP
+              saleyard_desc:
+                type: string
+                example: SA Livestock Exchange
+              state_id:
+                type: string
+                example: SA
+              nrmr_desc:
+                type: string
+                example: Adelaide and Mount Lofty Ranges
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Indicator:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              indicator_id:
+                type: string
+                example: 0
+              indicator_desc:
+                type: string
+                example: Eastern Young Cattle Indicator
+              species_id:
+                type: string
+                example: Cattle
+              indicator_units:
+                type: string
+                example: c/kg cwt
+
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+    Report1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              result_date:
+                type: string
+                example: 2023-02-01
+              country_desc:
+                type: string
+                example: South Korea
+              meat_type_group_desc:
+                type: string
+                example: Beef And Veal
+              weight_amt:
+                type: string
+                example: "520855.4989"
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Report2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              financial_year:
+                type: string
+                example: 2018-19
+              region_desc:
+                type: string
+                example: NSW
+              subcategory_desc:
+                type: string
+                example: Dairy cattle
+              metric_desc:
+                type: string
+                example: Cows in milk and dry (no.)
+              estimate_value:
+                type: string
+                example: "148550.0000"
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Report3:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              report_date:
+                type: string
+                example: 2022-12-01
+              report_type:
+                type: string
+                example: Production
+              category:
+                type: string
+                example: Lambs
+              location_id:
+                type: string
+                example: Australia
+              unit_of_measure:
+                type: string
+                example: Tonnes
+              value_amt:
+                type: string
+                example: "132888.0000"
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Report4:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              report_date:
+                type: string
+                example: 2022-12-01
+              category_desc:
+                type: string
+                example: Cattle
+              state_id:
+                type: string
+                example: QLD
+              saleyard_id:
+                type: string
+                example: GME
+              tranx_type_id:
+                type: string
+                example: Prime
+              head_count:
+                type: integer
+                example: 2335.0
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Report5:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              calendar_date:
+                type: string
+                example: 2023-11-01
+              species_id:
+                type: string
+                example: Cattle
+              indicator_id:
+                type: integer
+                example: 0
+              indicator_desc:
+                type: string
+                example: Eastern Young Cattle Indicator
+              indicator_units:
+                type: string
+                example: c/kg cwt
+              head_count:
+                type: string
+                example: "12388"
+              indicator_value:
+                type: string
+                example: "367.0289"
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Report6:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              calendar_date:
+                type: string
+                example: 2022-01-06
+              species_id:
+                type: string
+                example: Cattle
+              saleyard_id:
+                type: string
+                example: MTB
+              indicator_id:
+                type: integer
+                example: 1
+              indicator_desc:
+                type: string
+                example: Western Young Cattle Indicator
+              indicator_units:
+                type: string
+                example: c/kg cwt
+              head_count:
+                type: integer
+                example: 1513.0
+              indicator_value:
+                type: string
+                example: "367.0289"
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Report7:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              indicator_date:
+                type: string
+                example: 2022-01-04
+              species_id:
+                type: string
+                example: Cattle
+              country_code:
+                type: string
+                example: AUS
+              indicator_desc:
+                type: string
+                example: National Feeder Steer Indicator
+              indicator_units:
+                type: string
+                example: c/kg lwt
+              indicator_value:
+                type: string
+                example: "550.32800000000000"
+              currency_code:
+                type: string
+                example: "AUD"
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Report8:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              indicator_name:
+                type: string
+                example: CME Feeder Cattle Index
+              indicator_date:
+                type: string
+                example: 2022-01-06
+              indicator_units:
+                type: string
+                example: US c/lb lwt
+              indicator_value:
+                type: string
+                example: 161.79
+        disclaimer:
+          $ref: "#/components/schemas/Disclaimer"
+
+    Report9:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Data returned
+        total number rows:
+          type: integer
+          example: 300
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              indicator_name:
+                type: string
+                example: 90CL Boneless Beef, NZ/Australia
+              indicator_date:
+                type: string
+                example: 2022-01-07
+              indicator_units:
+                type: string
+                example: US c/lb
+              indicator_value:
+                type: strin
