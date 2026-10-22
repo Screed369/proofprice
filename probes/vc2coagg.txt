@@ -1,0 +1,8 @@
+URL: https://www.datos.gov.co/resource/jbjy-vk9h.json?$select=ciudad,tipo_de_contrato,count(*) as n,avg(valor_del_contrato) as avgv&$where=fecha_de_firma>'2026-09-01T00:00:00' AND ciudad='Bogotá D.C.'&$group=ciudad,tipo_de_contrato&$limit=5
+Fetched: 2026-10-22T06:43:38Z from GitHub Actions
+Status, type, bytes: 000  0
+Errors: curl: (3) URL rejected: Malformed input to a URL function
+
+=== RESPONSE HEADERS
+=== FILE TYPE: cannot open `body.bin' (No such file or directory)
+=== FIRST 5000 BYTES
