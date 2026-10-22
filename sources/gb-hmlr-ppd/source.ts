@@ -2,7 +2,7 @@
 // We fetch recent standard-price sales for a town (optionally a postcode district and property type)
 // and return aggregates only. Addresses are never returned.
 
-import { fetchJson, SourceError } from "../../lib/http";
+import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import type { SourceInfo } from "../../lib/plugin";
@@ -32,15 +32,57 @@ const ENDPOINT = "https://landregistry.data.gov.uk/landregistry/query";
 export const UK_PROPERTY_TYPES = ["detached", "semi-detached", "terraced", "flat-maisonette", "any"] as const;
 export type UkPropertyType = (typeof UK_PROPERTY_TYPES)[number];
 
+/** The 33 London local authorities as the register spells them in its `district` field (only CAMDEN has been proven live; the rest
+ *  are the standard council names). Every London sale is filed under the postal town LONDON, so these are how a borough is asked for. */
+export const UK_LONDON_BOROUGHS = [
+  "BARKING AND DAGENHAM", "BARNET", "BEXLEY", "BRENT", "BROMLEY", "CAMDEN", "CITY OF LONDON", "CROYDON", "EALING", "ENFIELD",
+  "GREENWICH", "HACKNEY", "HAMMERSMITH AND FULHAM", "HARINGEY", "HARROW", "HAVERING", "HILLINGDON", "HOUNSLOW", "ISLINGTON",
+  "KENSINGTON AND CHELSEA", "KINGSTON UPON THAMES", "LAMBETH", "LEWISHAM", "MERTON", "NEWHAM", "REDBRIDGE", "RICHMOND UPON THAMES",
+  "SOUTHWARK", "SUTTON", "TOWER HAMLETS", "WALTHAM FOREST", "WANDSWORTH", "CITY OF WESTMINSTER",
+] as const;
+
+/** Spellings people use for a council that the register writes differently. */
+const DISTRICT_ALIASES: Record<string, string> = { WESTMINSTER: "CITY OF WESTMINSTER", BRISTOL: "CITY OF BRISTOL", "LONDON BOROUGH OF CAMDEN": "CAMDEN" };
+
+/** A council name in the register's form: upper case, "and" for "&", no quotes, single spaces, common aliases resolved. */
+export function normaliseDistrict(raw: string | undefined | null): string | undefined {
+  const t = String(raw ?? "")
+    .toUpperCase()
+    .replace(/&/g, " AND ")
+    .replace(/["'\\]/g, "")
+    .replace(/^(THE )?(ROYAL )?(LONDON )?BOROUGH OF /, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!t) return undefined;
+  return DISTRICT_ALIASES[t] ?? t;
+}
+
+/** A register council name for people: CITY OF WESTMINSTER -> City of Westminster. */
+export function boroughLabel(b: string): string {
+  return b.toLowerCase().replace(/(^|\s)([a-z])/g, (_m, sp, c) => sp + c.toUpperCase()).replace(/\b(Of|And|Upon)\b/g, (w) => w.toLowerCase());
+}
+
+/** The London borough a name means (as the register spells it), or null. "Westminster" and "Kensington & Chelsea" count. */
+export function londonBoroughFor(name: string | undefined | null): string | null {
+  const d = normaliseDistrict(name);
+  return d && (UK_LONDON_BOROUGHS as readonly string[]).includes(d) ? d : null;
+}
+
 export function buildUkQuery(params: {
-  town: string;
+  town?: string;
+  /** Local authority as the register spells it (see normaliseDistrict), e.g. "CAMDEN" or "CITY OF BRISTOL". */
+  district?: string;
   postcodeDistrict?: string;
   propertyType: UkPropertyType;
   fromDate: string; // YYYY-MM-DD, inclusive
   toDate?: string; // YYYY-MM-DD, exclusive; omitted = no upper bound
   limit: number;
 }): string {
-  const town = params.town.trim().toUpperCase().replace(/"/g, "");
+  const town = (params.town ?? "").trim().toUpperCase().replace(/"/g, "");
+  // FILTER(?d = "...") is the form proven live for council names (the VALUES form was refused by the endpoint's front door for "CITY OF BRISTOL").
+  const authority = normaliseDistrict(params.district);
+  const authorityClause = authority ? `?addr lrcommon:district ?authority . FILTER(?authority = "${authority}")` : "";
+  const townClause = town ? `VALUES ?town { "${town}"^^xsd:string }\n  ?addr lrcommon:town ?town .` : "";
   const typeClause =
     params.propertyType === "any" ? "" : `?transx lrppi:propertyType lrcommon:${params.propertyType} .`;
   const district = params.postcodeDistrict?.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
@@ -52,8 +94,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX lrppi: <http://landregistry.data.gov.uk/def/ppi/>
 PREFIX lrcommon: <http://landregistry.data.gov.uk/def/common/>
 SELECT ?amount ?date WHERE {
-  VALUES ?town { "${town}"^^xsd:string }
-  ?addr lrcommon:town ?town .
+  ${townClause}
+  ${authorityClause}
   ${districtClause}
   ?transx lrppi:propertyAddress ?addr ;
           lrppi:pricePaid ?amount ;
@@ -234,7 +276,9 @@ export function coverageNotice(cov: ReturnType<typeof describeCoverage>): string
 }
 
 export async function ukHomeSales(input: {
-  town: string;
+  town?: string;
+  /** Local authority (council area or London borough), as the register spells it. */
+  district?: string;
   postcode_district?: string;
   property_type?: UkPropertyType;
   months?: number;
@@ -244,6 +288,16 @@ export async function ukHomeSales(input: {
   fetchWindow?: (w: DateWindow) => Promise<UkRow[]>;
 }): Promise<PriceAnswer> {
   const months = clamp(input.months ?? 12, 1, 36);
+  const district = normaliseDistrict(input.district);
+  if (!input.town?.trim() && !district) throw new InputError("A town or a district is required.");
+  // "London" as a whole is about 2,400 standard sales a month: far too much to fetch within the answer time limit. Say so, plainly.
+  if (!district && !input.postcode_district && input.town?.trim().toUpperCase() === "LONDON") {
+    throw new InputError(
+      "town=London is too large to answer in one go (about 30,000 sales a year). Ask for a London borough with district, e.g. district=Camden (valid: " +
+        UK_LONDON_BOROUGHS.map(boroughLabel).join(", ") +
+        "), or narrow with postcode_district, e.g. postcode_district=SW1.",
+    );
+  }
   const today = input.today ?? new Date().toISOString().slice(0, 10);
   const from = new Date(today + "T00:00:00Z");
   from.setUTCMonth(from.getUTCMonth() - months);
@@ -254,6 +308,7 @@ export async function ukHomeSales(input: {
     (async (w: DateWindow) => {
       const query = buildUkQuery({
         town: input.town,
+        district,
         postcodeDistrict: input.postcode_district,
         propertyType,
         fromDate: w.from,
@@ -272,11 +327,11 @@ export async function ukHomeSales(input: {
   const rows = got.rows;
   const cov = describeCoverage(got, { months, from: fromDate, to: today });
   const s = summarise(rows.map((r) => r.amount));
-  const where = [input.postcode_district?.toUpperCase(), input.town.toUpperCase()].filter(Boolean).join(", ");
+  const where = [input.postcode_district?.toUpperCase(), input.town?.toUpperCase(), district && !input.town ? district : district ? `district ${district}` : undefined].filter(Boolean).join(", ");
   const typeLabel = propertyType === "any" ? "homes" : propertyType.replace("-", " ") + " homes";
   const answer = buildAnswer({
     source: INFO,
-    query: { country: "GB", town: input.town, postcode_district: input.postcode_district ?? null, property_type: propertyType, months },
+    query: { country: "GB", town: input.town ?? null, district: district ?? null, postcode_district: input.postcode_district ?? null, property_type: propertyType, months },
     summary: s,
     currency: "GBP",
     unit: "per home",
@@ -289,7 +344,21 @@ export async function ukHomeSales(input: {
     extra: { coverage: cov, sub_queries: got.queries },
   });
   const note = coverageNotice(cov);
-  return note ? { ...answer, notice: `${note} ${answer.notice}`, summary: `${answer.summary} ${note}` } : answer;
+  const withNote = note ? { ...answer, notice: `${note} ${answer.notice}`, summary: `${answer.summary} ${note}` } : answer;
+  return withHint(withNote, { town: input.town, district });
+}
+
+/** When nothing matched, say why in terms an agent can act on: a London borough asked as a town, or a council name that is not in the register. Pure. */
+export function withHint(a: PriceAnswer, q: { town?: string; district?: string }): PriceAnswer {
+  if (a.status !== "no_matches") return a;
+  const borough = !q.district ? londonBoroughFor(q.town) : null;
+  const hint = borough
+    ? `'${q.town}' is a London borough, and the Land Registry files every London sale under the postal town LONDON, so a town search finds nothing. Ask again with district=${borough} (the borough) instead of town.`
+    : q.district
+      ? `No sales under district '${q.district}'. The register spells councils in capitals, e.g. CAMDEN, CITY OF BRISTOL, SOUTH GLOUCESTERSHIRE, LEEDS; check the spelling.`
+      : null;
+  if (!hint) return a;
+  return { ...a, summary: `${a.summary} ${hint}`, suggestions: [hint, ...(a.suggestions ?? [])], extra: { ...(a.extra ?? {}), hint } };
 }
 
 function clamp(v: number, lo: number, hi: number) {

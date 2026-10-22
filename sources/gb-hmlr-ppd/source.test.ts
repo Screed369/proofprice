@@ -122,3 +122,91 @@ test("UK window: a spent time budget leaves pieces missing and reported, not sil
   assert.equal(got.queries + got.missing.length, 6);
   assert.deepEqual(mergeWindows([{ from: "a", to: "b" }, { from: "b", to: "c" }]), [{ from: "a", to: "c" }]);
 });
+
+// ---------- district and London (pilot findings 2 and 3, 22 Oct 2026) ----------
+import { normaliseDistrict, londonBoroughFor, boroughLabel } from "./source";
+import { InputError } from "../../lib/http";
+
+// Real response of the live endpoint for a Camden query, 22 Oct 2026 (probe hm1): extra variables ?d ?t come back beside amount and date.
+const CAMDEN_LIVE = {
+  head: { vars: ["amount", "date", "d", "t"] },
+  results: { bindings: [
+    { amount: { type: "literal", datatype: "http://www.w3.org/2001/XMLSchema#integer", value: "260000" }, date: { type: "literal", datatype: "http://www.w3.org/2001/XMLSchema#date", value: "2026-07-01" }, d: { type: "literal", value: "CAMDEN" }, t: { type: "literal", value: "LONDON" } },
+    { amount: { type: "literal", datatype: "http://www.w3.org/2001/XMLSchema#integer", value: "400000" }, date: { type: "literal", datatype: "http://www.w3.org/2001/XMLSchema#date", value: "2026-07-21" }, d: { type: "literal", value: "CAMDEN" }, t: { type: "literal", value: "LONDON" } },
+  ] },
+};
+
+test("UK district: the live Camden response parses, and a district query filters on the council, not the town", () => {
+  assert.deepEqual(parseUkBindings(CAMDEN_LIVE), [{ amount: 260000, date: "2026-07-01" }, { amount: 400000, date: "2026-07-21" }]);
+  const q = buildQ({ district: "camden", propertyType: "any", fromDate: "2026-01-01", toDate: "2026-02-01", limit: 10 });
+  assert.match(q, /lrcommon:district \?authority \. FILTER\(\?authority = "CAMDEN"\)/);
+  assert.doesNotMatch(q, /lrcommon:town/); // no town given: nothing restricts the postal town
+  const both = buildQ({ town: "Bristol", district: "City of Bristol", propertyType: "terraced", fromDate: "2026-01-01", limit: 10 });
+  assert.match(both, /"BRISTOL"\^\^xsd:string/);
+  assert.match(both, /FILTER\(\?authority = "CITY OF BRISTOL"\)/);
+});
+
+test("UK district: council names are normalised and cannot break out of the query", () => {
+  assert.equal(normaliseDistrict("Kensington & Chelsea"), "KENSINGTON AND CHELSEA");
+  assert.equal(normaliseDistrict("  london  borough of Camden "), "CAMDEN");
+  assert.equal(normaliseDistrict("Westminster"), "CITY OF WESTMINSTER");
+  assert.equal(normaliseDistrict("Bristol"), "CITY OF BRISTOL");
+  assert.equal(normaliseDistrict("   "), undefined);
+  const q = buildQ({ district: 'Camden") } ; DROP "', propertyType: "any", fromDate: "2026-01-01", limit: 1 });
+  assert.doesNotMatch(q, /authority = "[^"]*"\)[^\n]*DROP/);
+  assert.equal((q.match(/"/g) ?? []).length % 2, 0);
+  assert.equal(londonBoroughFor("Camden"), "CAMDEN");
+  assert.equal(londonBoroughFor("Bristol"), null);
+  assert.equal(boroughLabel("CITY OF WESTMINSTER"), "City of Westminster");
+});
+
+test("UK district: district=Camden is answered from district sales, with the district in the query and the summary", async () => {
+  const ep = fakeEndpoint(() => 3);
+  const a = await ukHomeSales({ district: "Camden", months: 2, today: "2026-08-28", fetchWindow: ep.fetchWindow });
+  assert.equal(a.status, "ok");
+  assert.equal((a.query as any).district, "CAMDEN");
+  assert.equal((a.query as any).town, null);
+  assert.match(a.summary, /in district CAMDEN|in CAMDEN/);
+});
+
+test("UK London: a London borough asked as a town gets a hint pointing to district, not a bare no_matches", async () => {
+  const ep = fakeEndpoint(() => 0); // the register has no town called Camden
+  const a = await ukHomeSales({ town: "Camden", months: 3, today: "2026-08-28", fetchWindow: ep.fetchWindow });
+  assert.equal(a.status, "no_matches");
+  assert.match(a.summary, /London borough/);
+  assert.match(a.summary, /district=CAMDEN/);
+  assert.match(a.suggestions![0], /district=CAMDEN/);
+  assert.match((a.extra as any).hint, /postal town LONDON/);
+  // an ordinary town with no sales gets no London hint
+  const b = await ukHomeSales({ town: "Nowhereville", months: 3, today: "2026-08-28", fetchWindow: ep.fetchWindow });
+  assert.equal(b.status, "no_matches");
+  assert.equal((b.extra as any).hint, undefined);
+  // a district that matches nothing says how the register spells councils
+  const c = await ukHomeSales({ district: "Camdn", months: 3, today: "2026-08-28", fetchWindow: ep.fetchWindow });
+  assert.match((c.extra as any).hint, /check the spelling/);
+});
+
+test("UK London: town=London does not run a 30,000-sale query; it answers at once with the boroughs to ask for", async () => {
+  let called = 0;
+  const fetchWindow = async () => { called++; return []; };
+  await assert.rejects(
+    ukHomeSales({ town: "London", fetchWindow }),
+    (e: any) => e instanceof InputError && /district=Camden/.test(e.message) && /Tower Hamlets/.test(e.message) && /postcode_district=SW1/.test(e.message),
+  );
+  assert.equal(called, 0);
+  // London narrowed by postcode district, or by borough, is allowed
+  const ep = fakeEndpoint(() => 4);
+  assert.equal((await ukHomeSales({ town: "London", postcode_district: "SW1", months: 1, today: "2026-08-28", fetchWindow: ep.fetchWindow })).status, "ok");
+  assert.equal((await ukHomeSales({ town: "London", district: "Camden", months: 1, today: "2026-08-28", fetchWindow: ep.fetchWindow })).status, "ok");
+  await assert.rejects(ukHomeSales({ fetchWindow }), /town or a district/);
+});
+
+test("UK manifest: district is an extra on home-sales (no new tool), town no longer required alone, and the postal-town meaning is documented", async () => {
+  const m = (await import("./index")).default as any;
+  assert.equal(m.category, "home-sales");
+  assert.ok(m.extraParams.district);
+  assert.match(m.paramNotes.town, /Royal Mail POSTAL TOWN/);
+  assert.match(m.paramNotes.town, /Bradley Stoke/);
+  assert.match(m.paramNotes.town, /every London sale is filed under 'London'/);
+  assert.match(m.paramNotes.town, /use district/);
+});

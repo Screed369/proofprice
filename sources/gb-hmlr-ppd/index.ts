@@ -15,24 +15,33 @@ export default defineSource({
   // Scottish and Northern Irish places are answered by gb-ukhpi (England & Wales stay here).
   serves: (p) => findPlace(str(p.town)) === null,
   paramNotes: {
-    town: "GB: required, e.g. 'Bristol'.",
+    town:
+      "GB: the Royal Mail POSTAL TOWN as the Land Registry files it, e.g. 'Bristol'. It can be wider than the council area: 'Bristol' also takes in Bradley Stoke and Filton (South Gloucestershire), and every London sale is filed under 'London', so a London borough such as 'Camden' is not a town. For a council area or London borough use district. Give town or district.",
     property_type: "GB: detached, semi-detached, terraced or flat-maisonette.",
   },
   paramValues: { property_type: ["detached", "semi-detached", "terraced", "flat-maisonette"] },
   extraParams: {
     postcode_district: z.string().optional().describe("GB only: postcode district such as 'BS8' to narrow the area."),
+    district: z
+      .string()
+      .optional()
+      .describe(
+        "GB only: local authority (council area or London borough) as the Land Registry records it, e.g. 'Camden', 'City of Bristol', 'South Gloucestershire'. Use it instead of town for a London borough or when the postal town is wider than the place you mean.",
+      ),
   },
   examples: [{ params: { country: "GB", town: "Bristol", property_type: "terraced" } }],
   method: "England & Wales: standard-price sales (category A) only; repossessions and transfers to companies are excluded.",
   handle: (p, ctx) => {
     const town = str(p.town);
-    if (!town) throw new InputError("A town is required.");
+    const district = str(p.district);
+    if (!town && !district) throw new InputError("A town or a district is required.");
     const pt = (str(p.property_type) ?? "any").toLowerCase();
     if (!UK_PROPERTY_TYPES.includes(pt as UkPropertyType)) {
       throw new InputError(`property_type must be one of: ${UK_PROPERTY_TYPES.join(", ")}`);
     }
     return ukHomeSales({
       town,
+      district,
       postcode_district: str(p.postcode_district),
       property_type: pt as UkPropertyType,
       months: num(p.months),
