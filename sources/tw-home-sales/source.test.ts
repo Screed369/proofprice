@@ -16,7 +16,7 @@ import {
 } from "./moi";
 import { TAIWAN_CITIES, districtKey, findPlace } from "./places";
 import {
-  INFO, LOGIC_VERSION, NATIONAL_AREA, TW_TYPES, buildingTypeOf, itemKey, itemTypesOf, newStats, normaliseType, parseSales, salesRows, snapshotFromRows, twHistoryKey, twHomeSales, twHomeSalesHarvest,
+  INFO, LOGIC_VERSION, NATIONAL_AREA, TW_TYPES, buildingTypeOf, itemKey, itemTypesOf, newStats, normaliseType, parseSales, salesRows, snapshotFromRows, twBackfill, twHistoryKey, twHomeSales, twHomeSalesHarvest,
   type HarvestDeps, type Sale,
 } from "./source";
 
@@ -564,6 +564,63 @@ test("history key: the 12-month total-price row the collector stores for the pla
   assert.ok(snap.rows.has(`${k.area}\u0000${k.item}`), "the key must match a stored row");
   assert.equal(twHistoryKey({}, {}, { snapshot: snap })!.area, NATIONAL_AREA);
   assert.equal(twHistoryKey({ town: "Taipei", property_type: "apartment" }, {}, { snapshot: snap })!.item, itemKey("apartment", "total", 12));
-  assert.throws(() => twHistoryKey({ town: "Taipei" }, { monthly: true }, { snapshot: snap }), /monthly history is not loaded/);
+  // monthly history: city / county / Taiwan and three types only, not districts
+  const m = twHistoryKey({ town: "Taipei", property_type: "apartment" }, { monthly: true }, { snapshot: snap })!;
+  assert.deepEqual([m.area, m.item], ["A", "apartment/month"]);
+  assert.equal(twHistoryKey({}, { monthly: true }, { snapshot: snap })!.area, NATIONAL_AREA);
+  assert.throws(() => twHistoryKey({ town: "Da'an, Taipei" }, { monthly: true }, { snapshot: snap }), /not districts/);
+  assert.throws(() => twHistoryKey({ town: "Taipei", property_type: "high-rise" }, { monthly: true }, { snapshot: snap }), /any, apartment or house/);
   assert.equal(twHistoryKey({ town: "Taipei" }, {}, { snapshot: null }), null);
+});
+
+// ---------- backfill (monthly history) ----------
+
+test("backfill (fake portal): seasons then the newer 10-day file, deals counted once, monthly city and Taiwan rows, thin groups dropped, newest month left out", async () => {
+  const mkRows = (n: number, date: string, tag: string, o: Partial<Fake> = {}): Fake[] =>
+    Array.from({ length: n }, (_, i) => ({ district: "大安區", date, total: 20_000_000 + i * 1_000_000, serial: `${tag}-${i}`, ...o }));
+  const zipOf = (rows: Fake[]) => makeZip({ "a_lvr_land_a.csv": csvOf(rows), "a_lvr_land_a_build.csv": "must not be read" }, true);
+  const zips: Record<string, Buffer> = {
+    "101S3": zipOf([...mkRows(7, "1010815", "a"), ...mkRows(4, "1010820", "b")]), // Aug 2012: 7 sales; Aug 2012 second group has the same dates -> 11 total
+    "115S3": zipOf([...mkRows(6, "1150615", "c"), ...mkRows(6, "1150715", "d", { district: "中山區", type: "華廈(10層含以下有電梯)" }), mkRows(1, "1150615", "c")[0]]), // duplicate of c-0
+    "20260921": zipOf(mkRows(5, "1150915", "e")),
+  };
+  const calls: string[] = [];
+  const logs: string[] = [];
+  const rel = (id: string, kind: Release["kind"], f: string, t: string): Release => ({ id, kind, url: `https://example.test/${id}.zip`, salesFrom: f, salesTo: t, ...ZERO });
+  const deps = {
+    fetchReleases: async () => [rel("20260921", "ten-day", "2026-09-11", "2026-09-20"), rel("115S3", "season", "2026-06-11", "2026-09-10"), rel("101S3", "season", "2012-06-11", "2012-09-10"), rel("20260801", "ten-day", "2026-07-21", "2026-07-31")],
+    download: async (url: string) => {
+      calls.push(url);
+      return zips[url.split("/").pop()!.replace(".zip", "")];
+    },
+    now: () => new Date("2026-10-22T10:00:00Z"),
+    log: (m: string) => logs.push(m),
+  };
+  const r = await twBackfill("2012-01-01", "2026-12-31", deps);
+  assert.deepEqual(calls.map((c) => c.split("/").pop()), ["101S3.zip", "115S3.zip", "20260921.zip"], "seasons oldest first, only the 10-day file after the last season");
+  assert.equal(r.currency, "TWD");
+  assert.equal(r.unit, "per home");
+  const months = r.periods.map((p) => p.period);
+  assert.deepEqual(months, ["2012-08", "2026-06", "2026-07"], "2026-09 is within 30 days of the newest deal, and 5 sales in a month is fine but the month is too recent");
+  const aug = r.periods[0].rows.find((x) => x.area === "ALL" && x.item === "any/month")!;
+  assert.equal(aug.n, 11);
+  const jun = r.periods[1].rows;
+  assert.equal(jun.find((x) => x.area === "A" && x.item === "any/month")!.n, 6, "the duplicate record counts once");
+  assert.ok(jun.every((x) => x.n >= 5));
+  const jul = r.periods[2].rows;
+  assert.ok(jul.find((x) => x.area === "A" && x.item === "apartment/month"), "mid-rise counts as apartment");
+  assert.ok(!jul.find((x) => x.item === "house/month"));
+  // aggregates only: no row carries anything but a short area code and a short item
+  for (const p of r.periods) for (const x of p.rows) assert.match(`${x.area} ${x.item}`, /^([A-Z]|ALL) (any|apartment|house)\/month$/);
+  // range respected
+  const narrow = await twBackfill("2026-06-01", "2026-06-30", { ...deps, download: async (u: string) => zips[u.split("/").pop()!.replace(".zip", "")] });
+  assert.deepEqual(narrow.periods.map((p) => p.period), ["2026-06"]);
+});
+
+test("backfill: a quarter that cannot be downloaded stops the run instead of leaving a hole", async () => {
+  const rel = (id: string): Release => ({ id, kind: "season", url: `https://example.test/${id}.zip`, salesFrom: "2012-06-11", salesTo: "2012-09-10", ...ZERO });
+  await assert.rejects(
+    twBackfill("2012-01-01", "2012-12-31", { fetchReleases: async () => [rel("101S3")], download: async () => { throw new Error("HTTP 500"); }, now: () => new Date("2026-10-22T00:00:00Z"), log: () => {} }),
+    /HTTP 500/,
+  );
 });

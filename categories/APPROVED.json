@@ -2,6 +2,12 @@
   "_readme": "The allow-list of public tool names. Every folder in categories/ is a public MCP tool and a public REST path, and public names are permanent. A new category may be built on a branch but may only reach main with an entry here, added after a \"Simon is needed\" decision says yes (tests/registry.test.ts enforces this). Prefer adding an option to an existing tool.",
   "approved": [
     {
+      "id": "border-prices",
+      "tool": "pricepaid_border_prices",
+      "rest_path": "border-prices",
+      "comment": "approved by Simon 22 Oct 2026 (Notion 'Simon is needed': New price tool: border prices (customs unit values)?, answer yes, option A, small and tested first)"
+    },
+    {
       "id": "broadband",
       "tool": "pricepaid_broadband_prices",
       "rest_path": "broadband",
