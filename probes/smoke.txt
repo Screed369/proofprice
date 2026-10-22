@@ -1,303 +1,303 @@
-Smoke test of https://proofprice.com at 2026-10-22T12:24:24Z
+Smoke test of https://proofprice.com at 2026-10-22T21:55:39Z
 29 tools, 118 sources, 281 examples
 
-OK    200   0.2s /api/v1/home-sales?country=AT&town=Wien&property_type=apartment
+OK    200   2.3s /api/v1/home-sales?country=AT&town=Wien&property_type=apartment
       In Wien the median price paid for owner-occupied flats (Eigentumswohnungen) was €5,212 per m² of living area (not per home) for 2025, a model figure f
-OK    200   0.2s /api/v1/home-sales?country=AT&town=Graz&property_type=house
+OK    200   2.5s /api/v1/home-sales?country=AT&town=Graz&property_type=house
       In Graz the median price paid for houses (Wohnhäuser) was €4,034 per m² of living area (not per home) for 2025, a model figure from purchase contracts
-OK    200   0.3s /api/v1/home-sales?country=AT&postcode=1020&property_type=apartment
+OK    200   2.2s /api/v1/home-sales?country=AT&postcode=1020&property_type=apartment
       In Wien 2 (Leopoldstadt) the median price paid for owner-occupied flats (Eigentumswohnungen) was €5,878 per m² of living area (not per home) for 2025,
-OK    200   0.2s /api/v1/airfares?country=AU&from=Sydney&to=Melbourne
+OK    200   0.6s /api/v1/airfares?country=AU&from=Sydney&to=Melbourne
       Cheapest advertised return fare Melbourne - Sydney: median 208 AUD, typical months between 190 and 252 AUD over the last 12 months. Advertised discoun
-OK    200   2.4s /api/v1/airfares?country=AU&from=BNE&to=PER&quarters=8
+OK    200   1.6s /api/v1/airfares?country=AU&from=BNE&to=PER&quarters=8
       Cheapest advertised return fare Brisbane - Perth: median 561 AUD, typical months between 465 and 673 AUD over the last 24 months. Advertised discount 
-OK    200   9.5s /api/v1/contracts?country=AU&what=equipment
+OK    200   9.7s /api/v1/contracts?country=AU&what=equipment
       Public buyers in Australia (federal agencies) awarded equipment contracts with a median total value of A$24,641 per contract (typical range A$11,656 t
-OK    200   0.3s /api/v1/contracts?country=AU&what=catering&buyer_area=Defence
+OK    200   9.5s /api/v1/contracts?country=AU&what=catering&buyer_area=Defence
       Public buyers in Australia (federal agencies matching "Defence") awarded catering services contracts with a median total value of A$24,401 per contrac
-OK    200   0.2s /api/v1/home-sales?country=AU&town=Victoria
+OK    200   0.4s /api/v1/home-sales?country=AU&town=Victoria
       In Victoria the mean price of a residential dwelling was A$918,400 in the second quarter of 2026 (preliminary) (the ABS estimate of the value of all d
-OK    200   0.6s /api/v1/home-sales?country=AU&town=Parramatta
+OK    200   1.6s /api/v1/home-sales?country=AU&town=Parramatta
       In Parramatta (the ABS publishes by state, so this is the figure for New South Wales) the mean price of a residential dwelling was A$1,304,900 in the 
-OK    200   0.5s /api/v1/home-sales?country=AU&postcode=4000
+OK    200   0.4s /api/v1/home-sales?country=AU&postcode=4000
       In postcode 4000 (the ABS publishes by state, so this is the figure for Queensland) the mean price of a residential dwelling was A$1,130,600 in the se
-OK    200   0.2s /api/v1/home-sales?country=AU
+OK    200   0.4s /api/v1/home-sales?country=AU
       In Australia the mean price of a residential dwelling was A$1,100,400 in the second quarter of 2026 (preliminary) (the ABS estimate of the value of al
-OK    200   0.3s /api/v1/rent?country=AU&postcode=2000
+OK    200   0.2s /api/v1/rent?country=AU&postcode=2000
       Rental bonds lodged for new tenancies of homes in postcode 2000, NSW show a median agreed weekly rent of A$1,100 (about A$4,767 a month); typical rang
-OK    200   0.8s /api/v1/rent?country=AU&postcode=2150&property_type=apartment&bedrooms=2
+OK    200   0.2s /api/v1/rent?country=AU&postcode=2150&property_type=apartment&bedrooms=2
       Rental bonds lodged for new tenancies of 2-bedroom flats and units in postcode 2150, NSW show a median agreed weekly rent of A$730 (about A$3,163 a mo
-OK    200   0.3s /api/v1/fuel?country=AU&area=Brisbane&fuel=diesel
+OK    200   1.4s /api/v1/fuel?country=AU&area=Brisbane&fuel=diesel
       Diesel in Greater Brisbane (postcodes 4000 to 4179): posted pump prices reported by stations in August 2026 (latest reported price per station, GST in
-OK    200   0.1s /api/v1/fuel?country=AU&area=QLD&fuel=petrol95
+OK    200   1.7s /api/v1/fuel?country=AU&area=QLD&fuel=petrol95
       Unleaded petrol (91 RON) in Queensland: posted pump prices reported by stations in August 2026 (latest reported price per station, GST included) have 
 OK    200   0.1s /api/v1/rent?country=AU&postcode=4000&property_type=apartment&bedrooms=2
       The median weekly rent of new tenancies of 2-bedroom flats in postcode 4000, Queensland, was A$830 (about A$3,597 a month) in the quarter ending 2026-
-OK    200   0.2s /api/v1/rent?country=AU&postcode=4870
+OK    200   0.1s /api/v1/rent?country=AU&postcode=4870
       The median weekly rent of new tenancies of 2-bedroom flats in postcode 4870, Queensland, was A$525 (about A$2,275 a month) in the quarter ending 2026-
-OK    200   1.1s /api/v1/home-sales?country=BE&town=Antwerpen&property_type=apartment
+OK    200   0.2s /api/v1/home-sales?country=BE&town=Antwerpen&property_type=apartment
       In Antwerpen / Anvers the median sale price of apartments (per home, not per m²) was €255,000 in the second quarter of 2026 (April to June) (provision
 OK    200   0.2s /api/v1/home-sales?country=BE&town=Gent&property_type=house
       In Gent / Gand the median sale price of houses (all types, not apartments) (per home, not per m²) was €412,064 in the second quarter of 2026 (April to
 OK    200   0.2s /api/v1/home-sales?country=BE&town=Brussels&property_type=apartment
       In Brussel / Bruxelles the median sale price of apartments (per home, not per m²) was €270,000 in the second quarter of 2026 (April to June) (provisio
-OK    200   0.1s /api/v1/energy?country=BR&energy=electricity
-      Median residential tariff across 95 Brazilian distributors is 0.7964 BRL per kWh before taxes (10th-90th percentile of distributors 0.6574 to 1.0338).
-OK    200   0.1s /api/v1/energy?country=BR&energy=electricity&distributor=CEMIG-D
+OK    200   7.4s /api/v1/energy?country=BR&energy=electricity
+      Median residential tariff across 95 Brazilian distributors is 0.7989 BRL per kWh before taxes (10th-90th percentile of distributors 0.6804 to 1.0338).
+OK    200   7.9s /api/v1/energy?country=BR&energy=electricity&distributor=CEMIG-D
       CEMIG-D residential tariff is 0.9033 BRL per kWh before taxes (energy 0.3102 + network 0.5931), valid 2026-05-28 to 2027-05-27. Published by ANEEL (Ag
-OK    200   0.2s /api/v1/fuel?country=BR&town=S%C3%A3o+Paulo&fuel=petrol95
+OK    200   0.1s /api/v1/fuel?country=BR&town=S%C3%A3o+Paulo&fuel=petrol95
       Regular petrol (gasolina comum) in São Paulo, SP: median R$6.29 per litre in ANP's survey of the week ending 2026-09-30; typical range (10th–90th perc
 OK    200   0.1s /api/v1/fuel?country=BR&area=MG&fuel=diesel
       Diesel S10 in Minas Gerais (state): median R$6.99 per litre in ANP's survey of the week ending 2026-09-30; typical range (10th–90th percentile) R$6.79
 OK    200   0.4s /api/v1/construction?country=BR
       The average cost of building one square metre in Brazil was R$2,000 in September 2026. Official average published by IBGE (Instituto Brasileiro de Geo
-OK    200   0.4s /api/v1/construction?country=BR&area=SP&component=labour
+OK    200   0.3s /api/v1/construction?country=BR&area=SP&component=labour
       The labour part of the cost of building one square metre in São Paulo was R$985 in September 2026. Official average published by IBGE (Instituto Brasi
 OK    200   0.1s /api/v1/wholesale-fresh-food?country=CA&product=apples
       Wholesalers quoted apples at a median of C$3.78 per kg (about C$1.71 per lb) in Canada's western wholesale centres (Calgary, Edmonton, Vancouver and W
-FAIL  400   0.1s /api/v1/wholesale-fresh-food?country=CA&product=carrots&market=Vancouver
+FAIL  400   0.2s /api/v1/wholesale-fresh-food?country=CA&product=carrots&market=Vancouver
       market must be one of the AAFC wholesale centres: Calgary, Winnipeg; leave it out for all centres together. Not recognised: Vancouver.
-OK    200   0.2s /api/v1/home-sales?country=CA&town=Kelowna
+OK    200   0.1s /api/v1/home-sales?country=CA&town=Kelowna
       Homes transferred in City of Kelowna had an average declared fair market value of CA$960,510 over May 2026 to July 2026 (3 months), from 1120 resident
-OK    200   0.2s /api/v1/home-sales?country=CA
+OK    200   0.1s /api/v1/home-sales?country=CA
       Homes transferred in British Columbia had an average declared fair market value of CA$916,192 over May 2026 to July 2026 (3 months), from 27849 reside
-OK    200   0.2s /api/v1/contracts?country=CA&what=translation+services
+OK    200   0.1s /api/v1/contracts?country=CA&what=translation+services
       Canadian federal buyers awarded translation services contracts with a median total value of CA$82,782 per contract (typical range CA$22,995 to CA$517,
 OK    200   0.1s /api/v1/contracts?country=CA&what=office+furniture
       Canadian federal buyers awarded office furniture contracts with a median total value of CA$14,717 per contract (typical range CA$6,704 to CA$249,539, 
-FAIL  502   0.3s /api/v1/rent?country=CA&town=Toronto&bedrooms=2
-      Could not reach the official source
-FAIL  502   0.3s /api/v1/rent?country=CA&town=Vancouver&property_type=apartment&bedrooms=1
-      Could not reach the official source
-FAIL  502   0.3s /api/v1/farm-gate-prices?country=CA&product=wheat&region=Saskatchewan
-      Could not reach the official source
-FAIL  502   0.2s /api/v1/farm-gate-prices?country=CA&product=milk&region=Ontario
-      Could not reach the official source
-FAIL  502   0.4s /api/v1/farm-gate-prices?country=CA&product=hogs&region=Quebec
-      Could not reach the official source
-OK    200   0.2s /api/v1/auctions?country=CA&what=vehicles
+OK    200   0.6s /api/v1/rent?country=CA&town=Toronto&bedrooms=2
+      The average rent of two-bedroom units in rows and apartments of three or more units in Toronto, Ontario was CA$2,045 a month at CMHC's October 2025 su
+OK    200   0.5s /api/v1/rent?country=CA&town=Vancouver&property_type=apartment&bedrooms=1
+      The average rent of one-bedroom units in apartment buildings of three or more units in Vancouver, British Columbia was CA$1,806 a month at CMHC's Octo
+OK    200   2.0s /api/v1/farm-gate-prices?country=CA&product=wheat&region=Saskatchewan
+      In Saskatchewan farmers received on average CA$302.26 per metric tonne for wheat (except durum wheat) in August 2026 (CA$0.302 per kilogram), as publi
+OK    200   1.3s /api/v1/farm-gate-prices?country=CA&product=milk&region=Ontario
+      In Ontario farmers received on average CA$918.20 per kilolitre for unprocessed milk from bovine in August 2026 (CA$0.918 per litre), as published by S
+OK    200   1.8s /api/v1/farm-gate-prices?country=CA&product=hogs&region=Quebec
+      In Quebec farmers received on average CA$109.28 per hundredweight for hogs in August 2026, as published by Statistics Canada (a monthly average, not a
+OK    200   0.1s /api/v1/auctions?country=CA&what=vehicles
       Government of Canada surplus lots in the vehicles group (Canada) sold for a median of CA$7,500 per lot (10th–90th percentile CA$300 to CA$20,900); use
-OK    200   0.2s /api/v1/auctions?country=CA&what=heavy+equipment&state=ON&months=24
+OK    200   0.1s /api/v1/auctions?country=CA&what=heavy+equipment&state=ON&months=24
       Government of Canada surplus lots in the heavy equipment group (Ontario) sold for a median of CA$620 per lot (10th–90th percentile CA$70.10 to CA$8,38
-FAIL  502   0.3s /api/v1/fuel?country=CA&town=Vancouver&fuel=petrol95
-      Could not reach the official source
-FAIL  502   0.4s /api/v1/fuel?country=CA&town=Toronto&fuel=diesel
-      Could not reach the official source
-FAIL  502   0.3s /api/v1/groceries?country=CA&item=milk
-      Could not reach the official source
-FAIL  502   0.2s /api/v1/groceries?country=CA&item=eggs
-      Could not reach the official source
-FAIL  502   0.3s /api/v1/groceries?country=CA&item=bread&region=Ontario
-      Could not reach the official source
-FAIL  502   1.1s /api/v1/tuition?country=CA
-      Statistics Canada did not return a zip file (it may be showing a 'site unavailable' page); try again shortly.
-FAIL  502   0.9s /api/v1/tuition?country=CA&province=Ontario&student_group=international
-      Statistics Canada did not return a zip file (it may be showing a 'site unavailable' page); try again shortly.
-FAIL  502   1.0s /api/v1/tuition?country=CA&cycle=second&province=Quebec
-      Statistics Canada did not return a zip file (it may be showing a 'site unavailable' page); try again shortly.
-OK    200   0.2s /api/v1/health-insurance?country=CH&area=ZH
+OK    200   0.6s /api/v1/fuel?country=CA&town=Vancouver&fuel=petrol95
+      The average retail price of regular unleaded gasoline at self-service stations in Vancouver, British Columbia was CA$2.095 per litre (209.5 cents) in 
+OK    200   0.5s /api/v1/fuel?country=CA&town=Toronto&fuel=diesel
+      The average retail price of diesel at self-service stations in Toronto, Ontario was CA$2.494 per litre (249.4 cents) in September 2026. That is 82.3% 
+OK    200   0.7s /api/v1/groceries?country=CA&item=milk
+      In Canada the average retail price of "Milk, 2 litres" was CA$5.49 in August 2026, as published by Statistics Canada from grocery retailers' transacti
+OK    200   0.5s /api/v1/groceries?country=CA&item=eggs
+      In Canada the average retail price of "Eggs, 1 dozen" was CA$4.83 in August 2026, as published by Statistics Canada from grocery retailers' transactio
+OK    200   0.4s /api/v1/groceries?country=CA&item=bread&region=Ontario
+      In Ontario the average retail price of "White bread, 675 grams" was CA$3.27 in August 2026, as published by Statistics Canada from grocery retailers' 
+OK    200   0.1s /api/v1/tuition?country=CA
+      In the 2026/2027 academic year, the average tuition fee for Canadian undergraduate students, full-time in Canada is 8,021 CAD per year (up 3.2% on 202
+OK    200   0.1s /api/v1/tuition?country=CA&province=Ontario&student_group=international
+      In the 2026/2027 academic year, the average tuition fee for international undergraduate students, full-time in Ontario is 50,088 CAD per year (up 3.1%
+OK    200   0.2s /api/v1/tuition?country=CA&cycle=second&province=Quebec
+      In the 2026/2027 academic year, the average tuition fee for Canadian graduate students, full-time in Quebec is 4,395 CAD per year (up 2.9% on 2025/202
+OK    200   0.1s /api/v1/health-insurance?country=CH&area=ZH
       adult basic health insurance premium in canton ZH for 2027, deductible CHF 300, without accident cover, standard model: median CHF 577 per month; 10th
-OK    200   0.2s /api/v1/health-insurance?country=CH&area=GE&age_group=adult&franchise=2500
+OK    200   0.1s /api/v1/health-insurance?country=CH&area=GE&age_group=adult&franchise=2500
       adult basic health insurance premium in canton GE for 2027, deductible CHF 2500, without accident cover, standard model: median CHF 601 per month; 10t
-OK    200   0.2s /api/v1/health-insurance?country=CH&area=BE&age_group=child
+OK    200   0.1s /api/v1/health-insurance?country=CH&area=BE&age_group=child
       child basic health insurance premium in canton BE for 2027, deductible CHF 0, with accident cover, standard model: median CHF 139 per month; 10th to 9
-OK    200   1.1s /api/v1/wholesale-power?country=DE
-      Wholesale day-ahead electricity in Germany/Luxembourg: median 187.85 EUR/MWh (18.79 cents/kWh), typical hours between 142.18 and 250.29 EUR/MWh over t
+OK    200   1.0s /api/v1/wholesale-power?country=DE
+      Wholesale day-ahead electricity in Germany/Luxembourg: median 187.85 EUR/MWh (18.79 cents/kWh), typical hours between 142.18 and 250.99 EUR/MWh over t
 OK    200   0.7s /api/v1/wholesale-power?country=DE&lookback_days=3
-      Wholesale day-ahead electricity in Germany/Luxembourg: median 188.63 EUR/MWh (18.86 cents/kWh), typical hours between 102.99 and 251.54 EUR/MWh over t
-OK    200  13.7s /api/v1/home-sales?country=DK&town=K%C3%B8benhavn
+      Wholesale day-ahead electricity in Germany/Luxembourg: median 185.95 EUR/MWh (18.6 cents/kWh), typical hours between 102.99 and 251.14 EUR/MWh over th
+OK    200   6.9s /api/v1/home-sales?country=DK&town=K%C3%B8benhavn
       In Copenhagen (province Byen København) the average price of an owner-occupied flat (ordinary free-trade sales) was DKK 6,168,000 in the second quarte
-OK    200  15.7s /api/v1/home-sales?country=DK&town=Aarhus&property_type=flat
+OK    200   6.9s /api/v1/home-sales?country=DK&town=Aarhus&property_type=flat
       In Aarhus (province Østjylland) the average price of an owner-occupied flat (ordinary free-trade sales) was DKK 3,010,000 in the second quarter of 202
-OK    200  20.0s /api/v1/home-sales?country=DK&town=Fyn&property_type=house
+OK    200   6.9s /api/v1/home-sales?country=DK&town=Fyn&property_type=house
       In Fyn the average price of a one-family house (ordinary free-trade sales) was DKK 2,268,000 in the second quarter of 2026 (preliminary; Statistics De
-OK    200   1.8s /api/v1/rent?country=ES&town=Barcelona
+OK    200   0.7s /api/v1/rent?country=ES&town=Barcelona
       The average rent of 8156 new home leases in Barcelona (Catalonia) was €1,137 a month in 2026-Q1. Official average published by Institut Català del Sòl
-OK    200   0.4s /api/v1/rent?country=ES&town=Sabadell
+OK    200   0.5s /api/v1/rent?country=ES&town=Sabadell
       The average rent of 708 new home leases in Sabadell (Catalonia) was €869 a month in 2026-Q1. Official average published by Institut Català del Sòl (IN
-OK    200   0.9s /api/v1/fuel?country=ES&area=42&fuel=diesel
-      Diesel in province 42: current posted pump prices (taxes included) have a median of €1.915 per litre; typical range (10th–90th percentile) €1.779–€1.9
-OK    200   1.8s /api/v1/fuel?country=ES&postcode=28001&fuel=petrol95
+OK    200   1.0s /api/v1/fuel?country=ES&area=42&fuel=diesel
+      Diesel in province 42: current posted pump prices (taxes included) have a median of €1.915 per litre; typical range (10th–90th percentile) €1.787–€1.9
+OK    200   2.4s /api/v1/fuel?country=ES&postcode=28001&fuel=petrol95
       Unleaded 95 in province 28 (around postcode 28001): current posted pump prices (taxes included) have a median of €1.789 per litre; typical range (10th
-OK    200   0.9s /api/v1/hotels?country=ES
+OK    200   0.8s /api/v1/hotels?country=ES
       In August 2026 hotels in Spain charged an average of 166.90 euro per occupied room per night (INE average daily rate). That is 7.32% higher than in Au
 OK    200   0.9s /api/v1/hotels?country=ES&area=Benidorm
       In August 2026 hotels in Benidorm charged an average of 175.18 euro per occupied room per night (INE average daily rate). That is 6.02% higher than in
-OK    200   0.6s /api/v1/hotels?country=ES&stars=4
+OK    200   0.2s /api/v1/hotels?country=ES&stars=4
       In August 2026 4-star hotels in Spain charged an average of 176.70 euro per occupied room per night (INE average daily rate). That is 7.83% higher tha
-OK    200   0.2s /api/v1/medicines?country=ES&medicine=paracetamol
+OK    200   0.1s /api/v1/medicines?country=ES&medicine=paracetamol
       Packs of "paracetamol" on sale in Spain have a legally fixed public price (per pack, incl. VAT) of a median €2.34; 10th–90th percentile €0.86–€5.92 ac
-OK    200   0.2s /api/v1/medicines?country=ES&medicine=omeprazol
+OK    200   0.1s /api/v1/medicines?country=ES&medicine=omeprazol
       Packs of "omeprazol" on sale in Spain have a legally fixed public price (per pack, incl. VAT) of a median €2.50; 10th–90th percentile €2.19–€4.15 acro
 OK    200   0.8s /api/v1/wholesale-power?country=ES
-      Wholesale day-ahead electricity in Spain: median 176.97 EUR/MWh (17.7 cents/kWh), typical hours between 1.77 and 254.36 EUR/MWh over the last 7 day(s)
-OK    200   0.5s /api/v1/wholesale-power?country=PT&lookback_days=3
-      Wholesale day-ahead electricity in Portugal: median 213.73 EUR/MWh (21.37 cents/kWh), typical hours between 2.13 and 258.95 EUR/MWh over the last 3 da
-OK    200   0.4s /api/v1/broadband?country=IE&offer=fixed_100_200
+      Wholesale day-ahead electricity in Spain: median 174.76 EUR/MWh (17.48 cents/kWh), typical hours between 1.07 and 253.98 EUR/MWh over the last 7 day(s
+OK    200   0.6s /api/v1/wholesale-power?country=PT&lookback_days=3
+      Wholesale day-ahead electricity in Portugal: median 207.64 EUR/MWh (20.76 cents/kWh), typical hours between 1.03 and 254.19 EUR/MWh over the last 3 da
+OK    200   0.5s /api/v1/broadband?country=IE&offer=fixed_100_200
       In Ireland the cheapest posted offer of the largest operators for "Fixed internet 100-200 Mbps" was 28.43 PPP euro per month in 2024. That is 3.4% low
-OK    200   0.5s /api/v1/broadband?country=DE&offer=mobile_10gb
+OK    200   0.4s /api/v1/broadband?country=DE&offer=mobile_10gb
       In Germany the cheapest posted offer of the largest operators for "Mobile internet - mobile data 10 GB with no calls" was 8.67 PPP euro per month in 2
-OK    200   0.3s /api/v1/energy?country=IE&energy=electricity
+OK    200   0.2s /api/v1/energy?country=IE&energy=electricity
       In Ireland the average household price of electricity was €0.3871 per kWh in the first half of 2026 (all taxes and levies included; annual consumption
-OK    200   0.4s /api/v1/energy?country=DE&energy=gas
+OK    200   0.2s /api/v1/energy?country=DE&energy=gas
       In Germany the average household price of natural gas was €0.1156 per kWh in the first half of 2026 (all taxes and levies included; annual consumption
-OK    200   0.3s /api/v1/energy?country=IE&sector=business&energy=electricity
+OK    200   0.2s /api/v1/energy?country=IE&sector=business&energy=electricity
       In Ireland the official average price paid by businesses (non-household consumers) for electricity in annual consumption band IC (500 to 1,999 MWh a y
-OK    200   0.3s /api/v1/energy?country=DE&sector=business&energy=gas
+OK    200   0.2s /api/v1/energy?country=DE&sector=business&energy=gas
       In Germany the official average price paid by businesses (non-household consumers) for natural gas in annual consumption band I3 (10,000 to 99,999 GJ 
-OK    200   0.6s /api/v1/wholesale-power?country=FR
-      Wholesale day-ahead electricity in France: median 191.88 EUR/MWh (19.19 cents/kWh), typical hours between 97.9 and 252.86 EUR/MWh over the last 7 day(
+OK    200   0.5s /api/v1/wholesale-power?country=FR
+      Wholesale day-ahead electricity in France: median 191.53 EUR/MWh (19.15 cents/kWh), typical hours between 101.84 and 252.86 EUR/MWh over the last 7 da
 OK    200   0.5s /api/v1/wholesale-power?country=DK&zone=DK2&lookback_days=3
-      Wholesale day-ahead electricity in East Denmark (DK2): median 185.74 EUR/MWh (18.57 cents/kWh), typical hours between 104.14 and 248.66 EUR/MWh over t
-OK    200   0.7s /api/v1/wholesale-power?country=NL
-      Wholesale day-ahead electricity in the Netherlands: median 189.02 EUR/MWh (18.9 cents/kWh), typical hours between 120.4 and 248.49 EUR/MWh over the la
+      Wholesale day-ahead electricity in East Denmark (DK2): median 182.67 EUR/MWh (18.27 cents/kWh), typical hours between 104.14 and 248.08 EUR/MWh over t
+OK    200   0.2s /api/v1/wholesale-power?country=NL
+      Wholesale day-ahead electricity in the Netherlands: median 189.02 EUR/MWh (18.9 cents/kWh), typical hours between 122.91 and 250.38 EUR/MWh over the l
 OK    200   0.5s /api/v1/farm-prices?country=IE&product=pig
       In Ireland the latest published price for pig carcasses (class E) was €167.37 per 100 kg carcass weight (€1.67 per kg carcass weight) for the week 12 
-OK    200   0.5s /api/v1/farm-prices?country=FR&product=wheat
+OK    200   0.4s /api/v1/farm-prices?country=FR&product=wheat
       In France the latest published price for milling (bread-making) wheat (delivered to port, simple average of 2 markets) was €251.79 per tonne (€0.252 p
 OK    200   0.5s /api/v1/farm-prices?country=ES&product=olive+oil
       In Spain the latest published price for extra virgin olive oil (national average) was €326.35 per 100 kg (€3.26 per kg) for the week 12 Oct 2026 to 18
 OK    200   0.4s /api/v1/farm-prices?country=IE&product=milk
       In Ireland the latest published price for raw cow's milk was €43.70 per 100 kg (€0.437 per kg) for September 2026. That is unchanged from the previous
-OK    200   0.6s /api/v1/farm-prices?country=PL&product=apples
+OK    200   0.5s /api/v1/farm-prices?country=PL&product=apples
       In Poland the latest published price for apples (ex-packaging station, national average) was €73.82 per 100 kg (€0.738 per kg) for the week 28 Sep 202
-OK    200   0.5s /api/v1/farm-prices?country=DE&product=butter
+OK    200   0.4s /api/v1/farm-prices?country=DE&product=butter
       In Germany the latest published price for butter was €424.00 per 100 kg (€4.24 per kg) for the week 12 Oct 2026 to 18 Oct 2026. That is 0.2% higher th
-OK    200   0.3s /api/v1/home-sales?country=ES
+OK    200   0.2s /api/v1/home-sales?country=ES
       The official house price index for Spain was 200.6 in the second quarter of 2026 (2015 = 100; an index of what households paid for homes, not a price 
-OK    200   0.3s /api/v1/home-sales?country=DE
+OK    200   0.4s /api/v1/home-sales?country=DE
       The official house price index for Germany was 153.5 in the second quarter of 2026 (2015 = 100; an index of what households paid for homes, not a pric
-OK    200   0.4s /api/v1/home-sales?country=PL
+OK    200   0.2s /api/v1/home-sales?country=PL
       The official house price index for Poland was 229.2 in the second quarter of 2026 (2015 = 100; an index of what households paid for homes, not a price
 OK    200   0.4s /api/v1/land-prices?country=IE&measure=price
       In Ireland the average price of arable land was €50,375 per hectare in 2024 (provisional). That is 43.3% higher than in 2023. Eurostat publishes land 
 OK    200   0.4s /api/v1/land-prices?country=ES&measure=price&region=ES51
       In Cataluña (ES51), Spain the average price of arable land was €15,278 per hectare in 2024. That is 3.6% higher than in 2023. Eurostat publishes land 
-OK    200   0.3s /api/v1/land-prices?country=FR&measure=rent
+OK    200   0.4s /api/v1/land-prices?country=FR&measure=rent
       In France the average rent for arable land and/or permanent grassland was €171 per hectare per year in 2024. That is 4.9% higher than in 2023. Eurosta
-OK    200   0.3s /api/v1/land-prices?country=PL&measure=price&land_type=permanent+grassland
+OK    200   0.2s /api/v1/land-prices?country=PL&measure=price&land_type=permanent+grassland
       In Poland the average price of permanent grassland was €10,710 per hectare in 2024 (estimated). That is 23.3% higher than in 2023. Eurostat publishes 
-OK    200   0.2s /api/v1/fuel?country=IE&fuel=diesel
+OK    200   0.1s /api/v1/fuel?country=IE&fuel=diesel
       In Ireland the average pump price of diesel (automotive gas oil) was €2.1367 per litre (all duties and taxes included) in the Weekly Oil Bulletin for 
-OK    200   0.2s /api/v1/fuel?country=DE&fuel=petrol95
+OK    200   0.1s /api/v1/fuel?country=DE&fuel=petrol95
       In Germany the average pump price of unleaded petrol (Euro-super 95) was €2.1790 per litre (all duties and taxes included) in the Weekly Oil Bulletin 
-OK    200   0.2s /api/v1/fuel?country=PL&fuel=diesel
+OK    200   0.1s /api/v1/fuel?country=PL&fuel=diesel
       In Poland the average pump price of diesel (automotive gas oil) was €1.7905 per litre (all duties and taxes included; about 7.827 PLN per litre) in th
-OK    200   1.6s /api/v1/contracts?country=FR&what=laptops
+OK    200   0.6s /api/v1/contracts?country=FR&what=laptops
       Public buyers in France awarded laptops contracts with a median total value of €3,208,275 per contract (typical range €102,201 to €24,781,000, 10th to
-OK    200   6.5s /api/v1/contracts?country=DE&what=school+meals
+OK    200   3.4s /api/v1/contracts?country=DE&what=school+meals
       Public buyers in Germany awarded school meals contracts with a median total value of €566,055 per contract (typical range €88,483 to €2,478,972, 10th 
-OK    200   2.8s /api/v1/contracts?country=ES&what=road+resurfacing
+OK    200   1.0s /api/v1/contracts?country=ES&what=road+resurfacing
       Public buyers in Spain awarded road resurfacing and repair contracts with a median total value of €2,268,000 per contract (typical range €450,467 to €
-OK    200   1.0s /api/v1/contracts?country=IE&what=office+cleaning
+OK    200   0.5s /api/v1/contracts?country=IE&what=office+cleaning
       Public buyers in Ireland awarded office cleaning contracts with a median total value of €395,000 per contract (typical range €128,184 to €1,992,221, 1
-OK    200   0.6s /api/v1/tuition?country=IE
+OK    200   1.1s /api/v1/tuition?country=IE
       In 2023/2024, the most common annual tuition fee for bachelor's (first cycle), home students, full-time in Ireland is 3,000 EUR. Published by Eurydice
-OK    200   0.2s /api/v1/tuition?country=DE&cycle=second
+OK    200   0.9s /api/v1/tuition?country=DE&cycle=second
       In 2023/2024, the most common annual tuition fee for master's (second cycle), home students, full-time in Germany is 100 EUR, within a range of 0 EUR 
-OK    200   0.2s /api/v1/tuition?country=BE&community=nl
+OK    200   0.8s /api/v1/tuition?country=BE&community=nl
       In 2023/2024, the most common annual tuition fee for bachelor's (first cycle), home students, full-time in Belgium (Flemish Community) is 1,116 EUR. P
-OK    200   1.0s /api/v1/home-sales?country=FI&town=Helsinki
+OK    200   1.3s /api/v1/home-sales?country=FI&town=Helsinki
       In Helsinki the average price per m² of old dwellings in housing companies (all building types) was €4,916 in the second quarter of 2026 (provisional)
-FAIL  502   0.6s /api/v1/home-sales?country=FI&postcode=00100&property_type=flat
+FAIL  502   0.7s /api/v1/home-sales?country=FI&postcode=00100&property_type=flat
       Source returned HTTP 400
 OK    200   0.8s /api/v1/home-sales?country=FI&town=Tampere&property_type=terraced
       In Tampere the average price per m² of old dwellings in housing companies (terraced houses) was €2,763 in the second quarter of 2026 (provisional), wi
-OK    200   1.3s /api/v1/rent?country=FR&town=Toulouse&property_type=apartment&bedrooms=1
+OK    200  12.1s /api/v1/rent?country=FR&town=Toulouse&property_type=apartment&bedrooms=1
       The median monthly rent observed in Agglomération de Toulouse (2 rooms (1 bedroom), all leases) was €545 in 2025, from 16004 observed leases. Official
-OK    200   0.9s /api/v1/rent?country=FR&town=Paris
+OK    200  13.7s /api/v1/rent?country=FR&town=Paris
       The median monthly rent observed in Paris intra-muros (all sizes, all leases) was €1,108 in 2025, from 3879 observed leases. Official median published
-OK    200   8.0s /api/v1/auctions?country=FR&what=cars
+OK    200   5.6s /api/v1/auctions?country=FR&what=cars
       Matching lots sold at French state auctions in 2024 had a median hammer price of €3,250 per lot (10th–90th percentile €730 to €9,400); a winning bid l
-OK    200  10.1s /api/v1/auctions?country=FR&what=renault+clio&state=Lyon
+OK    200   8.0s /api/v1/auctions?country=FR&what=renault+clio&state=Lyon
       Matching lots sold at French state auctions in 2024 had a median hammer price of €3,700 per lot (10th–90th percentile €1,765 to €6,400); a winning bid
-OK    200  11.4s /api/v1/home-sales?country=FR&postcode=69003&property_type=apartment
+OK    200   2.8s /api/v1/home-sales?country=FR&postcode=69003&property_type=apartment
       Apartments in postcode 69003 sold for a median of €250,000 per home (single-home sales only); typical range (10th–90th percentile) €127,000–€466,085. 
-OK    200  10.1s /api/v1/commercial-property?country=FR&postcode=33000&property_type=commercial
+OK    200   1.9s /api/v1/commercial-property?country=FR&postcode=33000&property_type=commercial
       Commercial premises (shops, offices, workshops) in postcode 33000 sold for a median of €3,169 per m²; typical range (10th–90th percentile) €1,188–€6,1
-OK    200   3.6s /api/v1/commercial-property?country=FR&town=Toulouse&property_type=land
+OK    200   6.0s /api/v1/commercial-property?country=FR&town=Toulouse&property_type=land
       Building plots and other non-farm land in Toulouse sold for a median of €486 per m²; typical range (10th–90th percentile) €116–€2,714 per m². DVF is p
-OK    200   0.5s /api/v1/fuel?country=FR&postcode=75015&fuel=diesel
+OK    200   0.6s /api/v1/fuel?country=FR&postcode=75015&fuel=diesel
       Diesel (Gazole) in postcode 75015: the latest posted pump prices (taxes included) have a median of €2.549 per litre; typical range (10th–90th percenti
-OK    200   0.2s /api/v1/medicines?country=FR&medicine=doliprane
+OK    200   0.1s /api/v1/medicines?country=FR&medicine=doliprane
       Reimbursable packs of "doliprane" in France have a legally fixed public price (per box, incl. VAT and the dispensing fee; also the base Assurance Mala
-OK    200   0.2s /api/v1/medicines?country=FR&medicine=paracetamol
+OK    200   0.1s /api/v1/medicines?country=FR&medicine=paracetamol
       Reimbursable packs of "paracetamol" in France have a legally fixed public price (per box, incl. VAT and the dispensing fee; also the base Assurance Ma
-OK    200   0.6s /api/v1/wholesale-fresh-food?country=FR&product=carrot
+OK    200   0.7s /api/v1/wholesale-fresh-food?country=FR&product=carrot
       Wholesale carrot in France: median quoted price EUR 1.015 per kg excluding VAT across 44 market quotes (2026-10-15 to 2026-10-22). Posted market quote
-OK    200   0.7s /api/v1/wholesale-fresh-food?country=FR&product=apple
-      Wholesale apple in France: median quoted price EUR 1.65 per kg excluding VAT across 197 market quotes (2026-10-15 to 2026-10-22). Posted market quotes
-OK    200   0.2s /api/v1/home-upgrades?country=GB&measure=heat_pump
+OK    200   0.4s /api/v1/wholesale-fresh-food?country=FR&product=apple
+      Wholesale apple in France: median quoted price EUR 1.65 per kg excluding VAT across 198 market quotes (2026-10-15 to 2026-10-22). Posted market quotes
+OK    200   0.1s /api/v1/home-upgrades?country=GB&measure=heat_pump
       Reported installed cost of an air-to-water heat pump with a Boiler Upgrade Scheme grant in England and Wales: median £12,908 (middle half of installat
-OK    200   0.3s /api/v1/home-upgrades?country=GB&measure=heat_pump&technology=ground_source
+OK    200   0.1s /api/v1/home-upgrades?country=GB&measure=heat_pump&technology=ground_source
       Reported installed cost of a ground source heat pump with a Boiler Upgrade Scheme grant in England and Wales: median £27,232 (middle half of installat
-OK    200   0.2s /api/v1/childcare?country=GB&area=London
+OK    200   0.1s /api/v1/childcare?country=GB&area=London
       The median hourly fee that providers in London charge parents for 3 and 4 year olds was £8.00 an hour in 2025 (mean £8.60). Official median published 
-OK    200   0.2s /api/v1/childcare?country=GB&area=Manchester&age_group=toddler
+OK    200   0.4s /api/v1/childcare?country=GB&area=Manchester&age_group=toddler
       The median hourly fee that providers in Manchester charge parents for 2 year olds was £7.00 an hour in 2025 (mean £7.46). Official median published by
 OK    200   0.2s /api/v1/childcare?country=GB&age_group=infant&care_type=home-based
       The median hourly fee that childminders in England charge parents for children under 2 was £6.00 an hour in 2025 (mean £6.36). Official median publish
-OK    200   2.0s /api/v1/contracts?country=GB&what=road+resurfacing
+OK    200   2.7s /api/v1/contracts?country=GB&what=road+resurfacing
       Public buyers in the UK awarded road resurfacing and repair contracts with a median total value of £141,932 per contract (typical range £31,592 to £1,
-OK    200   1.8s /api/v1/contracts?country=GB&what=laptops&buyer_area=London
+OK    200   1.6s /api/v1/contracts?country=GB&what=laptops&buyer_area=London
       Public buyers in the UK (London) awarded laptops contracts with a median total value of £130,192 per contract (typical range £30,095 to £2,022,090, 10
 OK    200   1.4s /api/v1/wholesale-fresh-food?country=GB&product=apples
       Wholesale apples in England and Wales: £1.36 per kg (unweighted mean of 6 varieties, from £0.98 to £1.8, for 2026-10-12). Published by Department for 
-OK    200   1.0s /api/v1/wholesale-fresh-food?country=GB&product=cauliflower
+OK    200   1.2s /api/v1/wholesale-fresh-food?country=GB&product=cauliflower
       Wholesale cauliflower (all) in England and Wales: £1.33 per head (average of the usual prices charged by wholesalers, for 2026-10-12). Published by De
-OK    200   0.2s /api/v1/wholesale-fresh-food?country=GB&product=strawberries
+OK    200   0.4s /api/v1/wholesale-fresh-food?country=GB&product=strawberries
       Wholesale strawberries in England and Wales: £3.24 per kg (average of the usual prices charged by wholesalers, for 2026-10-12). Published by Departmen
-OK    200   1.1s /api/v1/energy?country=GB&sector=business&energy=electricity
+OK    200   0.5s /api/v1/energy?country=GB&sector=business&energy=electricity
       In the United Kingdom the official average price paid by businesses (non-domestic consumers) for electricity in size band Small/Medium (Eurostat band 
-OK    200   0.9s /api/v1/energy?country=GB&sector=business&energy=gas
+OK    200   0.2s /api/v1/energy?country=GB&sector=business&energy=gas
       In the United Kingdom the official average price paid by businesses (non-domestic consumers) for gas in size band Medium (Eurostat band I3), 2,778 to 
 OK    200   0.2s /api/v1/fuel?country=GB&fuel=diesel
       The average UK pump price of diesel (ULSD) was 199.33 pence per litre (£1.9933) in DESNZ's weekly road fuel prices for the week dated 19 October 2026,
-OK    200   0.1s /api/v1/fuel?country=GB&fuel=petrol95
+OK    200   0.3s /api/v1/fuel?country=GB&fuel=petrol95
       The average UK pump price of unleaded petrol (ULSP) was 174.57 pence per litre (£1.7457) in DESNZ's weekly road fuel prices for the week dated 19 Octo
-OK    200   0.2s /api/v1/home-upgrades?country=GB&measure=solar_pv
+OK    200   0.1s /api/v1/home-upgrades?country=GB&measure=solar_pv
       Declared installed cost of all small installations (domestic and non-domestic) (0-4 kW systems) in Great Britain: £1,780 per kW, so roughly £7,121 for
-OK    200   0.2s /api/v1/home-upgrades?country=GB&measure=solar_pv&dwelling_type=domestic&size_kw=6
+OK    200   0.1s /api/v1/home-upgrades?country=GB&measure=solar_pv&dwelling_type=domestic&size_kw=6
       Declared installed cost of domestic installations (4-10 kW systems) in Great Britain: £1,785 per kW, so roughly £10,711 for a 6 kW system, based on 64
-OK    200   7.2s /api/v1/home-sales?country=GB&town=Bristol&property_type=terraced
+OK    200   5.5s /api/v1/home-sales?country=GB&town=Bristol&property_type=terraced
       Terraced homes in BRISTOL sold for a median of £343,500 (standard-price sales); typical range (10th–90th percentile) £255,000–£550,000. Based on 3032 
-OK    200   1.4s /api/v1/medicines?country=GB&medicine=omeprazole
+OK    200   1.5s /api/v1/medicines?country=GB&medicine=omeprazole
       The NHS in England reimbursed on average about £0.03296 per capsule in ingredient cost (Net Ingredient Cost: the Drug Tariff basic price, before dispe
-OK    200   1.3s /api/v1/medicines?country=GB&medicine=atorvastatin
+OK    200   1.6s /api/v1/medicines?country=GB&medicine=atorvastatin
       The NHS in England reimbursed on average about £0.02985 per tablet in ingredient cost (Net Ingredient Cost: the Drug Tariff basic price, before dispen
 OK    200   1.3s /api/v1/medicines?country=GB&medicine=atorvastatin+20mg
       The NHS in England reimbursed on average about £0.02583 per tablet in ingredient cost (Net Ingredient Cost: the Drug Tariff basic price, before dispen
-OK    200   0.2s /api/v1/groceries?country=GB&item=eggs
+OK    200   0.1s /api/v1/groceries?country=GB&item=eggs
       In the United Kingdom the median shop price of "Free-range eggs, pack of 12" was £3.40 in August 2026 (half of the prices ran from £2.98 to £4.20; mea
 OK    200   0.2s /api/v1/groceries?country=GB&item=milk
       In the United Kingdom the median shop price of "Whole milk, fresh, 2272 ml (4 pints)" was £1.75 in August 2026 (half of the prices ran from £1.65 to £
-OK    200   0.2s /api/v1/rent?country=GB&town=Manchester
+OK    200   0.1s /api/v1/rent?country=GB&town=Manchester
       The average monthly private rent for all homes in Manchester was £1,380, up 4.6% on a year earlier. It averages new and existing private tenancies, so
-OK    200   0.2s /api/v1/rent?country=GB&town=Westminster&bedrooms=2
+OK    200   0.1s /api/v1/rent?country=GB&town=Westminster&bedrooms=2
       The average monthly private rent for two-bedroom homes in Westminster was £3,320, down 0.1% on a year earlier. It averages new and existing private te
 OK    200   0.1s /api/v1/rent?country=GB&town=Cardiff&property_type=house&house_type=terraced
       The average monthly private rent for terraced houses in Cardiff was £1,178, up 3.4% on a year earlier. It averages new and existing private tenancies,
 OK    200   0.4s /api/v1/wholesale-fresh-food?country=HK&product=live+pig
       Wholesale live pig in Hong Kong: HK$16.67 per kg (average reference price for 2026-10-14). Published by Agriculture, Fisheries and Conservation Depart
-OK    200   1.5s /api/v1/wholesale-fresh-food?country=HK&product=eggs
+OK    200   1.7s /api/v1/wholesale-fresh-food?country=HK&product=eggs
       Wholesale brown-shelled egg (medium) mainland in Hong Kong: HK$0.89 per egg (average reference price for 2026-10-14). Published by Agriculture, Fisher
-OK    200   1.5s /api/v1/wholesale-fresh-food?country=HK&product=tomato
+OK    200   1.6s /api/v1/wholesale-fresh-food?country=HK&product=tomato
       Wholesale tomato in Hong Kong: HK$6.12 per kg (average reference price for 2026-10-14). Published by Agriculture, Fisheries and Conservation Departmen
 OK    200   0.1s /api/v1/groceries?country=HK&item=honey
       Consumer Council Online Price Watch shelf prices at Hong Kong supermarkets put Honey per kg at a median of HK$188; 10th–90th percentile HK$100–HK$284 
-OK    200   0.2s /api/v1/groceries?country=HK&item=milk&region=Wellcome
+OK    200   0.1s /api/v1/groceries?country=HK&item=milk&region=Wellcome
       Consumer Council Online Price Watch shelf prices at Wellcome put Milk / Milk drinks per litre at a median of HK$31.333; 10th–90th percentile HK$21.67–
-OK    200   0.8s /api/v1/rent?country=HK&town=Kowloon&flat_class=B
+OK    200   1.0s /api/v1/rent?country=HK&town=Kowloon&flat_class=B
       The average rent of Class B (40 to 69.9 m²) private flats in Kowloon was HK$418 per square metre of saleable area per month in August 2026 (provisiona
-OK    200   0.2s /api/v1/rent?country=HK&town=Hong+Kong&flat_class=A
+OK    200   0.9s /api/v1/rent?country=HK&town=Hong+Kong&flat_class=A
       The average rent of Class A (saleable area under 40 m²) private flats in Hong Kong Island was HK$568 per square metre of saleable area per month in Au
-OK    200   3.8s /api/v1/hotels?country=HK
+OK    200   2.4s /api/v1/hotels?country=HK
       The average achieved hotel room rate in Hong Kong was HK$1,205 per room per night in July 2026. That is 5.9% higher than a year earlier (HK$1,138). Th
 OK    200   0.5s /api/v1/childcare?country=IE&area=Dublin
       In 2016, 10 years ago, households in the Dublin region using paid childcare for children aged 0 to 12 spent an average of €125 a week (about 21 hours 
-OK    200   0.6s /api/v1/childcare?country=IE&area=County+Cork&age_group=school-age
+OK    200   0.5s /api/v1/childcare?country=IE&area=County+Cork&age_group=school-age
       In 2016, 10 years ago, households in the South-West region using paid childcare for primary school children spent an average of €75.00 a week (about 1
-OK    200   0.6s /api/v1/groceries?country=IE&item=milk
+OK    200   0.5s /api/v1/groceries?country=IE&item=milk
       In Ireland the national average shop price of "Full-fat milk, per 2 litres" was €2.37 in September 2026 (Consumer Price Index price collection, not re
 OK    200   0.4s /api/v1/groceries?country=IE&item=white+bread
       In Ireland the national average shop price of "White sliced pan bread, large (800 g)" was €1.67 in September 2026 (Consumer Price Index price collecti
@@ -309,149 +309,148 @@ OK    200   0.1s /api/v1/home-upgrades?country=IE&measure=renovation
       Average value of work declared per property under Ireland's Home Renovation Incentive in Ireland: €24,469 (all qualifying repair, renovation and impro
 OK    200   0.1s /api/v1/home-upgrades?country=IE&measure=renovation&area=Kerry
       Average value of work declared per property under Ireland's Home Renovation Incentive in Kerry: €20,532 (all qualifying repair, renovation and improve
-OK    200   0.6s /api/v1/rent?country=IE&town=Dublin
+OK    200   0.5s /api/v1/rent?country=IE&town=Dublin
       The average monthly rent of homes (all sizes) registered with the RTB in Dublin was €2,165 (one published average, not a range; not mix-adjusted). Tha
-OK    200   0.6s /api/v1/rent?country=IE&town=Swords%2C+Dublin&property_type=apartment&bedrooms=2
+OK    200   0.5s /api/v1/rent?country=IE&town=Swords%2C+Dublin&property_type=apartment&bedrooms=2
       The average monthly rent of apartments (2 bedrooms) registered with the RTB in Swords, Dublin was €1,847 (one published average, not a range; not mix-
 STALE 200  10.6s /api/v1/fuel?country=IT&area=MI&fuel=diesel
       Diesel in province MI: median €2.249 per litre (typical range €2.19 to €2.299), based on 644 records in our copy of Carburanti – Prezzi praticati e an
 OK    200   0.1s /api/v1/medicines?country=IT&medicine=paracetamolo
       Reimbursable off-patent packs of "paracetamolo" in Italy have a public shelf price (per pack, incl. VAT) of a median €3.16; 10th–90th percentile €3.16
-OK    200   0.2s /api/v1/medicines?country=IT&medicine=amoxicillina
+OK    200   0.1s /api/v1/medicines?country=IT&medicine=amoxicillina
       Reimbursable off-patent packs of "amoxicillina" in Italy have a public shelf price (per pack, incl. VAT) of a median €7.90; 10th–90th percentile €3.27
-OK    200   0.2s /api/v1/medicines?country=JP&medicine=amlodipine
+OK    200   0.1s /api/v1/medicines?country=JP&medicine=amlodipine
       Products containing "アムロジピン" on Japan's National Health Insurance list have an official price per tablet of a median JP¥12.8; 10th–90th percentile JP¥
-OK    200   0.2s /api/v1/medicines?country=JP&medicine=%E3%82%A2%E3%82%BB%E3%83%88%E3%82%A2%E3%83%9F%E3%83%8E%E3%83%95%E3%82%A7%E3%83%B3
+OK    200   0.1s /api/v1/medicines?country=JP&medicine=%E3%82%A2%E3%82%BB%E3%83%88%E3%82%A2%E3%83%9F%E3%83%8E%E3%83%95%E3%82%A7%E3%83%B3
       Products containing "アセトアミノフェン" on Japan's National Health Insurance list have an official price per unit (vial, ampoule, patch, kit...) of a median J
 OK    200   0.1s /api/v1/fuel?country=MX&area=Ciudad+de+M%C3%A9xico&fuel=petrol95
       Regular petrol (gasolina regular, Magna) in Ciudad de México: median MX$23.99 per litre on 2026-10-22; typical range (10th–90th percentile) MX$23.01–M
 OK    200   0.1s /api/v1/fuel?country=MX&area=Jalisco&fuel=diesel
       Diesel in Jalisco: median MX$27.00 per litre on 2026-10-22; typical range (10th–90th percentile) MX$26.98–MX$27.50 across stations (posted pump prices
-FAIL  502   0.2s /api/v1/groceries?country=MX&item=milk
+FAIL  502   0.1s /api/v1/groceries?country=MX&item=milk
       ProofPrice collects the Profeco price file daily; data appears after the next collection.
 FAIL  502   0.1s /api/v1/groceries?country=MX&item=eggs&region=Jalisco
       ProofPrice collects the Profeco price file daily; data appears after the next collection.
 OK    200   0.1s /api/v1/groceries?country=MY&item=eggs
       DOSM PriceCatcher shelf prices in Malaysia put TELUR AYAM GRED B (per 30 biji) at a median of MYR 15.10; 10th–90th percentile MYR 14.20–MYR 16.20 acro
-OK    200   0.2s /api/v1/groceries?country=MY&item=chicken&region=Selangor
+OK    200   0.1s /api/v1/groceries?country=MY&item=chicken&region=Selangor
       DOSM PriceCatcher shelf prices in Selangor put AYAM BERSIH - STANDARD (per 1kg) at a median of MYR 8.80; 10th–90th percentile MYR 7.89–MYR 10.50 acros
-OK    200   2.7s /api/v1/fuel?country=MY&fuel=diesel
+OK    200   3.9s /api/v1/fuel?country=MY&fuel=diesel
       The set national retail price of diesel (Peninsular Malaysia) in Malaysia was RM5.07 per litre in the week of 2026-10-22, down 1.9% on the week before
-OK    200   1.2s /api/v1/fuel?country=MY&fuel=petrol95
+OK    200   2.6s /api/v1/fuel?country=MY&fuel=petrol95
       The set national retail price of RON95 petrol in Malaysia was RM4.32 per litre in the week of 2026-10-22, down 6.5% on the week before (RM4.62 on 2026
-OK    200   0.8s /api/v1/home-sales?country=NL&town=Amsterdam
+OK    200   0.7s /api/v1/home-sales?country=NL&town=Amsterdam
       In Amsterdam the average sale price of existing owner-occupied homes was €630,621 in 2025. That is 2.1% higher than in 2024 (€617,647). The national a
 OK    200   0.4s /api/v1/home-sales?country=NL&town=Den+Haag
       In 's-Gravenhage the average sale price of existing owner-occupied homes was €465,418 in 2025. That is 4% higher than in 2024 (€447,417). The national
-OK    200   0.3s /api/v1/home-sales?country=NL
+OK    200   0.2s /api/v1/home-sales?country=NL
       In the Netherlands the average sale price of existing owner-occupied homes was €479,527 in 2025. That is 6.3% higher than in 2024 (€450,985). Official
-OK    200   1.5s /api/v1/childcare?country=NO&area=Oslo
+OK    200   1.3s /api/v1/childcare?country=NO&area=Oslo
       In January 2026, parents in Oslo - Oslove paid on average NOK 1,479 per month per kindergarten place (all fees included, free places counted as zero).
-OK    200   0.6s /api/v1/childcare?country=NO
+OK    200   1.2s /api/v1/childcare?country=NO
       In January 2026, parents in Norway paid on average NOK 1,425 per month per kindergarten place (all fees included, free places counted as zero). Offici
-OK    200   1.5s /api/v1/home-sales?country=NO&town=Oslo
+OK    200   1.3s /api/v1/home-sales?country=NO&town=Oslo
       In Oslo the average price paid per m² for all dwellings (existing dwellings) was NOK 98,802 in the third quarter of 2026, from 5,066 sales. That is 0.
 OK    200   1.2s /api/v1/home-sales?country=NO&town=Bergen&property_type=flat
       In Bergen the average price paid per m² for multi-dwelling buildings (flats) (existing dwellings) was NOK 73,406 in the third quarter of 2026, from 1,
 OK    200   1.1s /api/v1/home-sales?country=NO&town=Tromso&property_type=detached
       In Tromsø the average price paid per m² for detached houses (existing dwellings) was NOK 43,591 in the third quarter of 2026, from 83 sales. That is 2
-OK    200   0.9s /api/v1/hotels?country=NO
+OK    200   0.7s /api/v1/hotels?country=NO
       In August 2026 hotels in Norway (whole country) charged an average of 1,705 NOK per occupied room (Statistics Norway). That is 6.2% higher than in Aug
-OK    200   0.5s /api/v1/hotels?country=NO&area=Oslo
+OK    200   0.4s /api/v1/hotels?country=NO&area=Oslo
       In August 2026 hotels in Oslo charged an average of 1,873 NOK per occupied room (Statistics Norway). That is 1.3% higher than in August 2025. Official
-OK    200   0.5s /api/v1/hotels?country=NO&area=Vestland
+OK    200   0.4s /api/v1/hotels?country=NO&area=Vestland
       In August 2026 hotels in Vestland charged an average of 2,106 NOK per occupied room (Statistics Norway). That is 9.9% higher than in August 2025. Offi
-OK    200   1.5s /api/v1/rent?country=NO&town=Oslo&rooms=2
+OK    200   1.4s /api/v1/rent?country=NO&town=Oslo&rooms=2
       The average monthly rent of rented homes with 2 rooms in Oslo and Bærum municipality was NOK 15,260 in 2025. Official average published by Statistics 
 OK    200   1.1s /api/v1/rent?country=NO&town=Norway&rooms=3
       The average monthly rent of rented homes with 3 rooms in The whole country was NOK 13,910 in 2025. Official average published by Statistics Norway (SS
-RETRY-OK  /api/v1/energy?country=NZ&energy=electricity&region=Auckland passed on a retry (a first call failed)
-OK    200   3.5s /api/v1/energy?country=NZ&energy=electricity&region=Auckland
+OK    200   3.9s /api/v1/energy?country=NZ&energy=electricity&region=Auckland
       The Electricity Authority's modelled average for a standard user household in Auckland (Vector) in 2026-05 is about NZD 0.394 per kWh including GST an
-OK    200   4.3s /api/v1/energy?country=NZ&energy=electricity
+OK    200   3.6s /api/v1/energy?country=NZ&energy=electricity
       Across 39 New Zealand network regions the median modelled household electricity price in 2026-05 is about NZD 0.446 per kWh including GST (regions are
-OK    200   0.2s /api/v1/contracts?country=NZ&what=all
+OK    200   0.1s /api/v1/contracts?country=NZ&what=all
       Public buyers in New Zealand awarded all purchases contracts with a median total value of NZ$436,181 per contract (typical range NZ$109,988 to NZ$5,05
-FAIL  200   0.1s /api/v1/contracts?country=NZ&what=consultancy
+FAIL  200   0.0s /api/v1/contracts?country=NZ&what=consultancy
       No matching records found in GETS contract award notices (Ministry of Business, Innovation and Employment (MBIE), New Zealand Government Procurement) 
-OK    200   1.3s /api/v1/fuel?country=NZ&fuel=diesel
+OK    200   1.4s /api/v1/fuel?country=NZ&fuel=diesel
       The national average retail price of diesel in New Zealand was $3.217 NZD per litre in the week of 2026-10-16 (provisional), up 0.2% on the week befor
 OK    200   0.9s /api/v1/fuel?country=NZ&fuel=petrol95
       The national average retail price of Premium petrol 95R in New Zealand was $3.737 NZD per litre in the week of 2026-10-16 (provisional), up 2.1% on th
-OK    200   2.5s /api/v1/rent?country=NZ&town=Wellington
+OK    200   2.3s /api/v1/rent?country=NZ&town=Wellington
       The median weekly rent on new private tenancies in Wellington City was NZ$595 in August 2026, with the middle half of rents between NZ$450 (lower quar
-OK    200   6.9s /api/v1/rent?country=NZ&town=Auckland
+OK    200   2.4s /api/v1/rent?country=NZ&town=Auckland
       The median weekly rent on new private tenancies in Auckland was NZ$650 in August 2026, with the middle half of rents between NZ$550 (lower quartile) a
-OK    200   5.8s /api/v1/rent?country=NZ&town=New+Zealand
+OK    200   3.3s /api/v1/rent?country=NZ&town=New+Zealand
       The median weekly rent on new private tenancies in New Zealand was NZ$595 in August 2026, with the middle half of rents between NZ$500 (lower quartile
-OK    200   0.2s /api/v1/medicines?country=NZ&medicine=paracetamol
+OK    200   0.8s /api/v1/medicines?country=NZ&medicine=paracetamol
       Subsidised packs of "paracetamol" in New Zealand have a list price (per pack) of a median NZ$6.20; 10th–90th percentile NZ$3.18–NZ$20.79 across the pa
 OK    200   0.1s /api/v1/medicines?country=NZ&medicine=amoxicillin
       Subsidised packs of "amoxicillin" in New Zealand have a list price (per pack) of a median NZ$8.50; 10th–90th percentile NZ$1.66–NZ$41.00 across the pa
-OK    200   0.5s /api/v1/price-levels?country=IE&spend=food
+OK    200   0.7s /api/v1/price-levels?country=IE&spend=food
       Prices for food and non-alcoholic beverages in Ireland were at an index of 105 in 2024 (the OECD average = 100), 5% above the OECD average; number 14 
 OK    200   0.5s /api/v1/price-levels?country=CH
       Prices for all household consumption in Switzerland were at an index of 153 in 2024 (the OECD average = 100), 53% above the OECD average; the dearest 
-OK    200   0.5s /api/v1/price-levels?country=ES&spend=housing&compare_to=EU
+OK    200   0.4s /api/v1/price-levels?country=ES&spend=housing&compare_to=EU
       Prices for housing, water, electricity, gas and other fuels in Spain were at an index of 98.4 in 2024 (the EU-27 average = 100), 1.6% below the EU-27 
-OK    200   2.3s /api/v1/home-sales?country=PL&town=Warszawa
+OK    200   1.2s /api/v1/home-sales?country=PL&town=Warszawa
       Flats in Warsaw sold for a median of PLN 1,360,209 (typical range PLN 862,242 to PLN 6,196,012), a median of PLN 33,176 per m2. Based on 37 records fr
-OK    200   1.6s /api/v1/home-sales?country=PL&town=Krakow&months=2
+OK    200   1.4s /api/v1/home-sales?country=PL&town=Krakow&months=2
       Flats in Krakow sold for a median of PLN 657,000 (typical range PLN 430,396 to PLN 1,091,200), a median of PLN 14,651 per m2. Based on 157 records fro
-OK    200   3.5s /api/v1/home-sales?country=PT&town=Lisboa
-      In Lisboa the median sale price of dwellings sold in the 12 months to March 2026 was €5,082 per m². That is 15.2% higher than a year earlier (2025-Q1:
-OK    200   3.4s /api/v1/home-sales?country=PT&town=Porto
+FAIL  502  10.7s /api/v1/home-sales?country=PT&town=Lisboa
+      Could not reach the official source
+OK    200   4.0s /api/v1/home-sales?country=PT&town=Porto
       In Porto the median sale price of dwellings sold in the 12 months to March 2026 was €3,510 per m². That is 16.7% higher than a year earlier (2025-Q1: 
-OK    200   3.7s /api/v1/home-sales?country=PT
+OK    200   3.9s /api/v1/home-sales?country=PT
       In Portugal the median sale price of dwellings sold in the 12 months to March 2026 was €2,168 per m². That is 17.5% higher than a year earlier (2025-Q
-OK    200   2.9s /api/v1/rent?country=PT&town=Lisboa
+OK    200   2.4s /api/v1/rent?country=PT&town=Lisboa
       In Lisboa the median rent of new leases registered in the 12 months to June 2026 was €17.43 per m² per month. That is 4.6% higher than a year earlier 
-OK    200   2.4s /api/v1/rent?country=PT&town=Porto
+OK    200   3.5s /api/v1/rent?country=PT&town=Porto
       In Porto the median rent of new leases registered in the 12 months to June 2026 was €14.48 per m² per month. That is 5.4% higher than a year earlier (
-OK    200   2.7s /api/v1/rent?country=PT
+OK    200   2.2s /api/v1/rent?country=PT
       In Portugal the median rent of new leases registered in the 12 months to June 2026 was €9.76 per m² per month. That is 9.4% higher than a year earlier
-OK    200   1.7s /api/v1/home-sales?country=SE&town=Stockholm
+OK    200   3.9s /api/v1/home-sales?country=SE&town=Stockholm
       In Stockholm the average purchase price of a house (one- or two-dwelling building) was SEK 8,850,000 in 2025, from 1,380 sales. That is 2.9% higher th
-OK    200   1.7s /api/v1/home-sales?country=SE&town=Goteborg&property_type=flat
+OK    200   1.6s /api/v1/home-sales?country=SE&town=Goteborg&property_type=flat
       In Göteborg the median purchase price of a tenant-owned flat in Greater Gothenburg was SEK 2,750,000 in 2025, from 10,957 sales. This is the price pai
-OK    200   0.8s /api/v1/home-sales?country=SE&town=Sk%C3%A5ne&property_type=house
+OK    200   1.8s /api/v1/home-sales?country=SE&town=Sk%C3%A5ne&property_type=house
       In Skåne county the average purchase price of a house (one- or two-dwelling building) was SEK 4,090,000 in the second quarter of 2026, from 2,059 sale
-OK    200   2.1s /api/v1/rent?country=SE&town=Greater+Stockholm&bedrooms=2
+OK    200   2.3s /api/v1/rent?country=SE&town=Greater+Stockholm&bedrooms=2
       The median monthly rent of a rented flat (apartment 2 rooms) in Greater Stockholm was SEK 9,197 in 2026. Official median published by Statistics Swede
-OK    200   2.2s /api/v1/rent?country=SE&bedrooms=3
+OK    200   1.9s /api/v1/rent?country=SE&bedrooms=3
       The median monthly rent of a rented flat (apartment 3 rooms) in Sweden was SEK 9,785 in 2026. Official median published by Statistics Sweden (SCB) for
 OK    200   1.5s /api/v1/cars?country=SG&product=coe&vehicle_class=A
       COE Category A (Cars up to 1600cc) in Singapore: the latest bidding round (2026-10 round 2) cleared at SGD 132,004, the premium every successful bidde
 OK    200   1.5s /api/v1/cars?country=SG&product=coe&vehicle_class=D&months=24
       COE Category D (Motorcycles) in Singapore: the latest bidding round (2026-10 round 2) cleared at SGD 10,778, the premium every successful bidder in th
-OK    200   3.2s /api/v1/contracts?country=SG&what=cleaning&months=60
+OK    200   3.1s /api/v1/contracts?country=SG&what=cleaning&months=60
       Public buyers in Singapore awarded building cleaning contracts with a median total value of SGD 986,560 per contract (typical range SGD 36,774 to SGD 
-OK    200   3.0s /api/v1/contracts?country=SG&what=cleaning&buyer_area=Library&months=60
+OK    200   2.8s /api/v1/contracts?country=SG&what=cleaning&buyer_area=Library&months=60
       Public buyers in Singapore (agencies matching "Library") awarded building cleaning contracts with a median total value of SGD 238,000 per contract (ty
 OK    200   1.9s /api/v1/rent?country=SG&town=Tampines&flat_type=4+ROOM
       4-ROOM HDB flats in TAMPINES were approved for rent at a median of SGD 3,400 a month; 10th–90th percentile range SGD 2,800–SGD 3,800. These are the mo
-RETRY-OK  /api/v1/rent?country=SG&town=Bedok passed on a retry (a first call failed)
-OK    200   3.6s /api/v1/rent?country=SG&town=Bedok
+OK    200   5.1s /api/v1/rent?country=SG&town=Bedok
       HDB flats in BEDOK were approved for rent at a median of SGD 3,000 a month; 10th–90th percentile range SGD 2,400–SGD 3,800. These are the monthly rent
-OK    200   8.0s /api/v1/home-sales?country=SG&town=Tampines
-      HDB resale flats in TAMPINES (all flat types) sold for a median of SGD 720,000; 10th–90th percentile range SGD 492,922–SGD 949,400. Based on 2064 reco
-OK    200   2.2s /api/v1/home-sales?country=SG&town=Tampines&flat_type=4+ROOM
-      4 ROOM HDB resale flats in TAMPINES sold for a median of SGD 665,500; 10th–90th percentile range SGD 585,000–SGD 805,000. Based on 906 records from Ho
-OK    200   2.1s /api/v1/medical?country=SG&service=stroke
+RETRY-OK  /api/v1/home-sales?country=SG&town=Tampines passed on a retry (a first call failed)
+OK    200   5.4s /api/v1/home-sales?country=SG&town=Tampines
+      HDB resale flats in TAMPINES (all flat types) sold for a median of SGD 720,000; 10th–90th percentile range SGD 492,944–SGD 950,000. Based on 2076 reco
+OK    200   2.7s /api/v1/home-sales?country=SG&town=Tampines&flat_type=4+ROOM
+      4 ROOM HDB resale flats in TAMPINES sold for a median of SGD 668,000; 10th–90th percentile range SGD 585,000–SGD 805,000. Based on 910 records from Ho
+OK    200   2.2s /api/v1/medical?country=SG&service=stroke
       For Stroke and Other Cerebrovascular Disorders W Severe CC (B70B), the median total hospital bill in Singapore in 2023 was 2,503 SGD in a public hospi
-OK    200   2.1s /api/v1/medical?country=SG&service=delirium&state=private
+OK    200   0.1s /api/v1/medical?country=SG&service=delirium&state=private
       For Delirium W/O Catastrophic CC (B64B), the median total hospital bill in Singapore in 2023 was 8,687 SGD in a private hospital, inpatient (middle ha
-OK    200   2.0s /api/v1/medical?country=SG&service=B70A&state=b2
+OK    200   2.1s /api/v1/medical?country=SG&service=B70A&state=b2
       For Stroke and Other Cerebrovascular Disorders W Catastrophic CC (B70A), the median total hospital bill in Singapore in 2023 was 4,409 SGD in a public
 STALE 200  10.6s /api/v1/wholesale-markets?country=TW&product=cabbage
       cabbage in Taiwan wholesale cabbage: median NT$31.50 per kg (typical range NT$16.58 to NT$49.38), based on 49 records in our copy of Council of Agricu
-STALE 200  10.4s /api/v1/wholesale-markets?country=TW&product=banana
+STALE 200  10.2s /api/v1/wholesale-markets?country=TW&product=banana
       banana in Taiwan wholesale banana: median NT$30.00 per kg (typical range NT$15.74 to NT$45.36), based on 33 records in our copy of Council of Agricult
-STALE 200  10.2s /api/v1/wholesale-markets?country=TW&product=tomato&market=Taipei
+STALE 200  10.5s /api/v1/wholesale-markets?country=TW&product=tomato&market=Taipei
       tomato in Taiwan wholesale tomato: median NT$136 per kg (typical range NT$60.10 to NT$169), based on 16 records in our copy of Council of Agriculture,
 OK    200   1.8s /api/v1/fuel?country=TW&fuel=diesel
       The posted CPC list price of premium diesel in Taiwan is NT$29.9 per litre, effective 2026-10-19 (VAT and excise included). List price published by CP
-OK    200   1.1s /api/v1/fuel?country=TW&fuel=petrol95
+OK    200   0.9s /api/v1/fuel?country=TW&fuel=petrol95
       The posted CPC list price of 95 unleaded petrol in Taiwan is NT$32.7 per litre, effective 2026-10-19 (VAT and excise included). List price published b
 OK    200   0.2s /api/v1/home-sales?country=TW&town=Taipei
       Residential market sales (presales excluded) of homes (apartments and houses) in Taipei City (臺北市) over the last 12 months had a median registered pri
@@ -459,33 +458,33 @@ OK    200   0.2s /api/v1/home-sales?country=TW&town=Da%27an%2C+Taipei
       Residential market sales (presales excluded) of homes (apartments and houses) in Da'an District, Taipei City (大安區, 臺北市) over the last 12 months had a 
 OK    200   0.2s /api/v1/home-sales?country=TW&town=New+Taipei&property_type=apartment
       Residential market sales (presales excluded) of apartments (high-rise, mid-rise and walk-up) in New Taipei City (新北市) over the last 12 months had a me
-OK    200   0.2s /api/v1/commercial-property?country=TW&town=Taipei&property_type=commercial
+OK    200   0.1s /api/v1/commercial-property?country=TW&town=Taipei&property_type=commercial
       Market sales of commercial premises (shops, offices, factories and workshops) in Taipei City (臺北市) over the last 12 months had a median of NT$244,969 
 OK    200   0.1s /api/v1/commercial-property?country=TW&town=Taipei&property_type=land
       Market sales of building land (plots without a building) in Taipei City (臺北市) over the last 12 months had a median of NT$135,897 per m²; typical range
-OK    200   0.2s /api/v1/rent?country=TW&town=Taipei
+OK    200   0.1s /api/v1/rent?country=TW&town=Taipei
       Tenancies of homes (whole apartments, houses and self-contained studios) declared in Taipei City (臺北市) over the last 12 months had a median monthly re
 OK    200   0.2s /api/v1/rent?country=TW&town=Da%27an%2C+Taipei&bedrooms=1
       Tenancies of 1-bedroom homes (whole apartments, houses and self-contained studios) declared in Da'an District, Taipei City (大安區, 臺北市) over the last 12
-OK    200   0.3s /api/v1/rent?country=TW&town=Kaohsiung&property_type=apartment
+OK    200   0.1s /api/v1/rent?country=TW&town=Kaohsiung&property_type=apartment
       Tenancies of apartments (including studios in apartment buildings) declared in Kaohsiung City (高雄市) over the last 12 months had a median monthly rent 
-OK    200   1.7s /api/v1/energy?country=TW&energy=electricity
+OK    200   3.9s /api/v1/energy?country=TW&energy=electricity
       Under Taipower's published residential tariff (in force from 2025-10-01), a household using 330 kWh in a month at non-summer rates pays about TWD 2.09
-OK    200   1.5s /api/v1/energy?country=TW&energy=electricity&consumption_band=700&season=summer
+OK    200   6.0s /api/v1/energy?country=TW&energy=electricity&consumption_band=700&season=summer
       Under Taipower's published residential tariff (in force from 2025-10-01), a household using 700 kWh in a month at summer rates pays about TWD 3.46 per
-OK    200   2.3s /api/v1/tuition?country=TW
+OK    200   1.9s /api/v1/tuition?country=TW
       For the 2025/26 academic year, the posted tuition and miscellaneous fee standard for humanities and law bachelor's degrees at Taiwan institutions has 
-OK    200   1.7s /api/v1/tuition?country=TW&faculty=engineering&ownership=private
+OK    200   0.1s /api/v1/tuition?country=TW&faculty=engineering&ownership=private
       For the 2025/26 academic year, the posted tuition and miscellaneous fee standard for engineering bachelor's degrees at private Taiwan institutions has
-OK    200   2.2s /api/v1/tuition?country=TW&faculty=medicine&school_type=university
+OK    200   2.3s /api/v1/tuition?country=TW&faculty=medicine&school_type=university
       For the 2025/26 academic year, the posted tuition and miscellaneous fee standard for medicine bachelor's degrees at general-university Taiwan institut
-OK    200   0.2s /api/v1/producer-prices?country=US&product=wheat
+OK    200   0.1s /api/v1/producer-prices?country=US&product=wheat
       Farmers in the United States received about 203 USD per tonne (0.2 USD per kg) for Wheat in 2025; up 0.5% on 2024. Official average published by Food 
-OK    200   0.2s /api/v1/producer-prices?country=BR&product=soybeans
+OK    200   0.1s /api/v1/producer-prices?country=BR&product=soybeans
       Farmers in Brazil received about 2,050 BRL per tonne (2.05 BRL per kg) for Soya beans in 2025; up 13.8% on 2024. Official average published by Food an
-OK    200   0.1s /api/v1/producer-prices?country=JP&product=rice
+OK    200   0.2s /api/v1/producer-prices?country=JP&product=rice
       Farmers in Japan received about 335,833 JPY per tonne (336 JPY per kg) for Rice in 2024, roughly 1,694 USD per tonne; up 60.6% on 2023. Official avera
-OK    200   0.2s /api/v1/groceries?country=AF&item=wheat
+OK    200   0.1s /api/v1/groceries?country=AF&item=wheat
       WFP market surveys in Afghanistan put Wheat (retail, per KG) at a median of US$0.43; 10th–90th percentile US$0.39–US$0.48 across the markets surveyed,
 OK    200   0.2s /api/v1/groceries?country=IN&item=rice
       WFP market surveys in India put Rice (retail, per KG) at a median of US$0.43; 10th–90th percentile US$0.42–US$0.528 across the markets surveyed, in US
@@ -493,108 +492,96 @@ OK    200   0.2s /api/v1/groceries?country=US&item=eggs
       In the United States (U.S. city average) the average retail price of "Eggs, grade A, large, per dozen" was $2.27 in September 2026 (Consumer Price Ind
 OK    200   0.2s /api/v1/groceries?country=US&item=coffee
       In the United States (U.S. city average) the average retail price of "Coffee, 100% ground roast, all sizes, per lb (453.6 g)" was $9.33 in September 2
-OK    200   0.4s /api/v1/medical?country=US&service=99213
+OK    200   0.3s /api/v1/medical?country=US&service=99213
       For established-patient office visit, level 3 (low complexity) (code 99213) in the United States, Medicare allowed an average of $85.37 per service in
 OK    200   0.5s /api/v1/medical?country=US&service=knee+replacement&state=TX
       For knee replacement (MS-DRG 470: major hip and knee joint replacement or reattachment of lower extremity without MCC) in Texas, hospitals were paid a
 OK    200   0.2s /api/v1/medical?country=US&service=MRI+lower+back&state=CA
       For MRI of the lower (lumbar) spine without contrast (code 72148) in California, Medicare allowed an average of $169.20 per service in 2024 in an offi
-OK    200   0.2s /api/v1/medical?country=US&service=pneumonia
+OK    200   0.3s /api/v1/medical?country=US&service=pneumonia
       For pneumonia hospital stay (MS-DRG 193: simple pneumonia and pleurisy with MCC) in the United States, hospitals were paid an average of $12,050 per M
-OK    200   0.3s /api/v1/childcare?country=US&area=Cook+County%2C+IL&age_group=infant
+OK    200   0.2s /api/v1/childcare?country=US&area=Cook+County%2C+IL&age_group=infant
       The median price charged for full-time infant care (under 2 years old) in child care centres in Cook County, IL was US$278 a week in 2022. Official me
-OK    200   0.3s /api/v1/childcare?country=US&area=Harris+County%2C+TX&age_group=preschool&care_type=home-based
+OK    200   0.5s /api/v1/childcare?country=US&area=Harris+County%2C+TX&age_group=preschool&care_type=home-based
       The median price charged for full-time preschool care (3 years old to school age) in home-based family childcare in Harris County, TX was US$153 a wee
-OK    200   0.4s /api/v1/airfares?country=US&from=JFK&to=LAX
+OK    200   0.6s /api/v1/airfares?country=US&from=JFK&to=LAX
       People paid an average of US$508 each way between JFK (New York City, NY) and LAX (Los Angeles, CA) in the first quarter of 2026, with about 5,780 pas
-OK    200   0.6s /api/v1/airfares?country=US&from=Chicago&to=Miami
+OK    200   0.3s /api/v1/airfares?country=US&from=Chicago&to=Miami
       People paid an average of US$229 each way between Chicago, IL and Miami, FL in the first quarter of 2026, with about 5,589 passengers a day in both di
-OK    200   0.4s /api/v1/airfares?country=US&from=Boston
+OK    200   0.3s /api/v1/airfares?country=US&from=Boston
       Across its busiest routes, passengers travelling to or from Boston, MA paid an average of US$257 each way in the first quarter of 2026 (49 city-pair m
-OK    200   0.2s /api/v1/energy?country=US&energy=electricity&state=TX
+OK    200   0.1s /api/v1/energy?country=US&energy=electricity&state=TX
       In Texas the average residential electricity price was 15.88 cents per kilowatthour (kWh) in July 2026 (about $0.1588 per kWh). That is 3.4% higher th
-OK    200   0.2s /api/v1/energy?country=US&energy=gas&state=NY
+OK    200   0.1s /api/v1/energy?country=US&energy=gas&state=NY
       In New York the average residential natural gas price was $30.86 per thousand cubic feet in July 2026. That is 7% higher than a year earlier ($28.83 i
-OK    200   0.5s /api/v1/energy?country=US&sector=business&energy=electricity&state=TX
+OK    200   0.3s /api/v1/energy?country=US&sector=business&energy=electricity&state=TX
       In Texas the official average price paid by businesses (commercial-sector customers) for electricity was 8.47 cents per kilowatthour (about $0.0847 pe
-OK    200   0.2s /api/v1/energy?country=US&sector=business&energy=gas&state=NY
+OK    200   0.3s /api/v1/energy?country=US&sector=business&energy=gas&state=NY
       In New York the official average price paid by businesses (commercial consumers) for natural gas was $11.21 per thousand cubic feet in July 2026. EIA 
-OK    200   0.2s /api/v1/fuel?country=US&fuel=petrol95
+OK    200   0.1s /api/v1/fuel?country=US&fuel=petrol95
       In the United States (national average) the average retail price of regular gasoline was $4.284 a gallon (about $1.132 a litre), taxes included, in th
 OK    200   0.1s /api/v1/fuel?country=US&fuel=diesel&area=California
       In California the average retail price of on-highway diesel (all types) was $8.242 a gallon (about $2.177 a litre), taxes included, in the week of 19 
 OK    200   0.1s /api/v1/fuel?country=US&fuel=petrol95&gasoline_grade=midgrade&area=TX
       In Texas the average retail price of midgrade gasoline was $4.219 a gallon (about $1.115 a litre), taxes included, in the week of 19 October 2026. Tha
-OK    200   2.8s /api/v1/insurance?country=US&area=32935
+OK    200   1.0s /api/v1/insurance?country=US&area=32935
       Typical NFIP flood insurance charge in ZIP code 32935: median 690 USD a year (10th to 90th percentile 465 to 1265 USD). Based on 760 records from Fede
-OK    200  29.0s /api/v1/insurance?country=US&area=TX
+OK    200   1.5s /api/v1/insurance?country=US&area=TX
       Typical NFIP flood insurance charge in TX (state): median 1088 USD a year (10th to 90th percentile 625 to 1941 USD). Based on 3879 records from Federa
-OK    200   0.5s /api/v1/auctions?country=US&what=vehicles
+OK    200   0.6s /api/v1/auctions?country=US&what=vehicles
       Matching surplus lots marked sold had a median final (winning) bid of US$3,500 per lot (10th–90th percentile US$272 to US$14,058); a bid level before 
-OK    200   0.7s /api/v1/auctions?country=US&what=office+furniture&state=TX
+OK    200   0.8s /api/v1/auctions?country=US&what=office+furniture&state=TX
       Matching surplus lots marked sold had a median final (winning) bid of US$25.00 per lot (10th–90th percentile US$10.00 to US$116); a bid level before t
-OK    200   1.1s /api/v1/home-sales?country=US&town=Hartford
+OK    200   3.6s /api/v1/home-sales?country=US&town=Hartford
       Homes in Hartford, CT sold for a median of US$290,000; 10th–90th percentile range US$85,900–US$450,200. Connecticut publishes these sales once a year:
-OK    200   0.8s /api/v1/home-sales?country=US&town=Brooklyn
+OK    200   3.5s /api/v1/home-sales?country=US&town=Brooklyn
       Homes (houses, condos and co-ops) in Brooklyn, New York City sold for a median of US$999,500; 10th–90th percentile range US$385,000–US$2,750,000. Base
-OK    200   4.4s /api/v1/home-sales?country=US&town=Chicago
+OK    200   1.5s /api/v1/home-sales?country=US&town=Chicago
       Homes (houses, condos and small apartment buildings) in Chicago, IL sold for a median of US$350,000; 10th–90th percentile range US$126,000–US$925,000.
 OK    200   0.3s /api/v1/medicines?country=US&medicine=atorvastatin
       US retail pharmacies paid on average about $0.02858 per tablet to acquire ATORVASTATIN 20 MG TABLET (one of 4 matching strengths and forms of ATORVAST
-OK    200   0.3s /api/v1/medicines?country=US&medicine=metformin
+OK    200   0.2s /api/v1/medicines?country=US&medicine=metformin
       US retail pharmacies paid on average about $0.0244 per tablet to acquire METFORMIN HCL 850 MG TABLET (one of 11 matching strengths and forms of METFOR
-OK    200   0.2s /api/v1/medicines?country=US&medicine=atorvastatin+20mg
+OK    200   0.3s /api/v1/medicines?country=US&medicine=atorvastatin+20mg
       US retail pharmacies paid on average about $0.02858 per tablet to acquire ATORVASTATIN 20 MG TABLET. This is the pharmacy's acquisition cost (NADAC), 
-OK    200   0.6s /api/v1/contracts?country=US&what=laptops
+OK    200   1.2s /api/v1/contracts?country=US&what=laptops
       Public buyers in the United States (federal agencies) awarded laptops contracts with a median total value of US$37,802 per contract (typical range US$
-OK    200   0.9s /api/v1/contracts?country=US&what=road+resurfacing&buyer_area=Virginia
+OK    200   0.8s /api/v1/contracts?country=US&what=road+resurfacing&buyer_area=Virginia
       Public buyers in the United States (federal agencies, work in Virginia) awarded road resurfacing and repair contracts with a median total value of US$
-OK    200   0.3s /api/v1/diet-costs?country=IE
+OK    200   0.2s /api/v1/diet-costs?country=IE
       The cheapest healthy diet in Ireland was modelled at about €2.75 per person per day in 2025 (3.14 PPP dollars); up 3.8% on 2024. Official average publ
-OK    200   0.3s /api/v1/diet-costs?country=US&food_group=fruit
+OK    200   0.1s /api/v1/diet-costs?country=US&food_group=fruit
       The fruit part of the cheapest healthy diet in United States was modelled at about US$0.53 per person per day in 2021 (0.53 PPP dollars). Official ave
-OK    200   0.4s /api/v1/diet-costs?country=SG&year=2023
+OK    200   0.2s /api/v1/diet-costs?country=SG&year=2023
       The cheapest healthy diet in Singapore was modelled at about SGD 3.62 per person per day in 2023 (3.46 PPP dollars); up 5.2% on 2022. Official average
-OK    200   0.2s /api/v1/price-levels?country=IN&spend=food
+OK    200   0.3s /api/v1/price-levels?country=IN&spend=food
       Prices for food in India were at an index of 58.2 in 2021 (world average = 100), 50.5% below the United States. Official index value published by Worl
 OK    200   0.3s /api/v1/price-levels?country=SG&spend=housing
       Prices for housing, water, electricity, gas and other fuels in Singapore were at an index of 135 in 2021 (world average = 100), 37.1% below the United
-OK    200   0.2s /api/v1/price-levels?country=AE
+OK    200   0.4s /api/v1/price-levels?country=AE
       Prices for all household consumption in United Arab Emirates were at an index of 112.9 in 2021 (world average = 100), 25.7% below the United States. O
-OK    200   0.2s /api/v1/contracts?country=ZA&what=catering
+OK    200   0.1s /api/v1/contracts?country=ZA&what=catering
       South African public buyers signed catering services contracts with a median total value of ZAR 7,800,000 per contract (typical range ZAR 2,473,644 to
-OK    200   0.2s /api/v1/contracts?country=ZA&what=laptops
+OK    200   0.1s /api/v1/contracts?country=ZA&what=laptops
       South African public buyers signed laptops contracts with a median total value of ZAR 768,091 per contract (typical range ZAR 360,026 to ZAR 2,253,500
 
 MCP server (https://proofprice.com/api/mcp, 20 s for each request):
-OK    200   0.2s MCP initialize
+OK    200   0.3s MCP initialize
       server proofprice 0.4.0, protocol 2025-06-18, tools.listChanged=False
-OK    200   0.4s MCP tools/list
+OK    200   0.3s MCP tools/list
       32 tools
 OK    200   0.2s MCP tools/call pricepaid_home_sales IE Cork
       Homes in Cork sold for a median of €350,000 (full-market-price sales); typical range (10th–90th percentile) €180,000–€609,800. Prices recorded without
 OK    200   0.2s MCP subscriptions/listen closes at once
       closed after 0.2s, 387 bytes
 
-SUMMARY: 259 ok, 4 stale, 18 failed; mcp: 4 ok, 0 failed; library: 12 collector error(s): ca-aafc-wholesale, ca-cmhc-rents, ca-farm-prices, ca-statcan-fuel, ca-statcan-prices, ca-statcan-tuition, fr-medicines, gb-nhs-pca, gb-ons-rents, it-fuel, mx-profeco-groceries, tw-coa-wholesale
+SUMMARY: 271 ok, 4 stale, 6 failed; mcp: 4 ok, 0 failed; library: 12 collector error(s): ca-aafc-wholesale, ca-cmhc-rents, ca-farm-prices, ca-statcan-fuel, ca-statcan-prices, ca-statcan-tuition, fr-medicines, gb-nhs-pca, gb-ons-rents, it-fuel, mx-profeco-groceries, tw-coa-wholesale
   FAILED /api/v1/wholesale-fresh-food?country=CA&product=carrots&market=Vancouver
-  FAILED /api/v1/rent?country=CA&town=Toronto&bedrooms=2
-  FAILED /api/v1/rent?country=CA&town=Vancouver&property_type=apartment&bedrooms=1
-  FAILED /api/v1/farm-gate-prices?country=CA&product=wheat&region=Saskatchewan
-  FAILED /api/v1/farm-gate-prices?country=CA&product=milk&region=Ontario
-  FAILED /api/v1/farm-gate-prices?country=CA&product=hogs&region=Quebec
-  FAILED /api/v1/fuel?country=CA&town=Vancouver&fuel=petrol95
-  FAILED /api/v1/fuel?country=CA&town=Toronto&fuel=diesel
-  FAILED /api/v1/groceries?country=CA&item=milk
-  FAILED /api/v1/groceries?country=CA&item=eggs
-  FAILED /api/v1/groceries?country=CA&item=bread&region=Ontario
-  FAILED /api/v1/tuition?country=CA
-  FAILED /api/v1/tuition?country=CA&province=Ontario&student_group=international
-  FAILED /api/v1/tuition?country=CA&cycle=second&province=Quebec
   FAILED /api/v1/home-sales?country=FI&postcode=00100&property_type=flat
   FAILED /api/v1/groceries?country=MX&item=milk
   FAILED /api/v1/groceries?country=MX&item=eggs&region=Jalisco
   FAILED /api/v1/contracts?country=NZ&what=consultancy
+  FAILED /api/v1/home-sales?country=PT&town=Lisboa
   STALE  /api/v1/fuel?country=IT&area=MI&fuel=diesel
   STALE  /api/v1/wholesale-markets?country=TW&product=cabbage
   STALE  /api/v1/wholesale-markets?country=TW&product=banana
