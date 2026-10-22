@@ -1,0 +1,1367 @@
+URL: https://quickstats.nass.usda.gov/api
+Fetched: 2026-10-22T18:42:57Z from GitHub Actions
+Status, type, bytes: 200 text/html 101670
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 18:42:57 GMT
+content-type: text/html
+server: Kestrel
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-author: NICE HYPE (RJ)
+x-proxyversion: 0.8.5
+x-cache: Hit
+x-handler-apgw-05-12: APPGW-Public
+x-content-type-options: nosniff
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (849), with CRLF, LF line terminators
+=== FIRST 30000 BYTES
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html >
+ <head>
+
+  <title>USDA/NASS QuickStats Ad-hoc Query Tool</title>
+  <META http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <style type="text/css">
+
+/*Load and needed .css files here */
+		
+@import "/dojo/dojo/resources/dojo.css";
+@import "/dojo/dijit/themes/tundra/tundra.css";
+@import "/dojo/dojox/grid/resources/tundraGrid.css";
+@import "/dojo/dojox/grid/resources/Grid.css";
+/*
+@import "/dojo/dijit/tests/css/dijitTests.css";
+@import "/dojo/dojox/grid/_grid/Grid.css";
+@import "/dojo/dojox/grid/_grid/tundraGrid.css";
+*/
+
+
+.tundra .dojoxGridRowOdd {
+background-color:#EEEEEE;
+}
+
+#mainbody {
+  background-color : #ffffff;
+}
+
+#contentbody {
+  background-color : #ffffff;
+  position: absolute;
+    top: 0px;
+    right:22px;
+    left: 22px;
+   bottom: 40px;
+
+}
+
+
+#printbody {
+  background-color : #ffffff;
+  height: 100%;
+
+}
+
+
+#indexbody {
+  background-color : #ffffff;
+  /*height:650px;*/
+
+  position: fixed;
+  /*nice solution but creates horzontal scrholl always.*/ 
+  
+  overflow: auto;
+  top: 87px;
+  right:22px;
+  left: 22px;
+  bottom: 97px;
+}
+
+.report{
+position:relative;
+display:block;
+}
+
+.reportChart{
+display:block;
+float:right;
+position:static;
+margin-right:20px;
+margin-top:60px;
+border: 0px solid #808292;
+}
+.reportTitle{
+padding: 20px;
+text-align : center;
+font-weight : bold;
+color : #646464;
+font-size : 22px;
+text-decoration:underline;
+}
+.reportBody{
+padding: 10px;
+text-align : center;
+font-size : 14px;
+}
+
+#login_signin{
+display:inline;
+position:absolute;
+right:20px;
+top:20px;
+border: 1px solid #808292;
+text-align:right;width:30%;
+}
+
+#header_signin{
+padding:5px; 
+text-align: center;
+color:white;
+background-color: #808292; 
+border: 1px solid #808292;
+font-size : 17px;
+font-weight : bold;
+}
+
+#controls {
+padding : 6px 0;
+}
+#controls button {
+margin-left : 10px;
+}
+
+#header {
+background-color : #ffffff;
+}
+
+#bodyheader {
+  height: 35px;
+  background-color: #336699;
+  margin-top: 0px;
+  margin-left: 10px;
+  
+/*background-image : url('/static/images/header.gif');
+background-repeat : no-repeat;
+
+background-position : bottom left;*/
+
+}
+
+#bodytitle11 { 
+  font-size:25px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight:lighter;
+  #position: fixed;
+  position: absolute;
+  vertical-align: middle;
+  margin-left: 10px;
+  height: 35px;
+  color: #fff;
+  
+}
+
+#bodytitle { 
+  font-size:24px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight:lighter;
+  #position: fixed;	
+  position: absolute;
+  display:inline;
+  margin-left: 10px;
+  line-height: 27px;
+  padding-top:4px;
+  color: #fff;
+}
+
+
+#leftheaderimg {
+float : left;
+width : 100px;
+}
+#menu {
+background-color : #777b88;
+text-transform : capitalize;
+height : 23px;
+border-bottom : 1px solid transparent;
+border-top : 1px solid transparent;
+}
+#menu div.inactive {
+border-bottom : 1px solid transparent;
+border-top : 1px solid transparent;
+color : #efefef;
+margin-left : 1px;
+margin-right : 1px;
+text-align : center;
+float : left;
+width : 180px;
+}
+#menu div.inactive:hover {
+color : #000;
+}
+#menu ul {
+text-align : center;
+}
+#menu li.inactive {
+border-bottom : 1px solid transparent;
+border-top : 1px solid transparent;
+color : #efefef;
+margin : 0;
+text-align : center;
+width : 200px;
+float : left;
+}
+#menu li.inactive:hover {
+color : #101010;
+}
+.menuLink {
+background : transparent;
+border : medium none;
+color : #f0f0f0;
+font-weight : bolder;
+text-align : center;
+text-decoration : none;
+text-transform : capitalize;
+width : 100%;
+margin-right : 25px;
+margin-left : 25px;
+min-width : 128px;
+}
+.menuLink:hover {
+background-color : #e0e6ff;
+border : 0 solid #101010;
+color : #0f0f0f;
+}
+.textBox {
+color : black;
+background-color : #ffffff;
+border : 1px black;
+font-weight : bolder;
+margin : 0;
+padding : 0 3px;
+padding-top : 2px;
+text-align : left;
+text-decoration : none;
+width : 100%;
+}
+.menuSeparator {
+float : left;
+border-bottom : 1px solid transparent;
+border-top : 1px solid transparent;
+background-color : #777b88;
+color : #f0f0f0;
+font-weight : bolder;
+text-align : center;
+text-decoration : none;
+width : 2px;
+margin-left : 1px;
+margin-right : 1px;
+}
+
+.selectTable {
+background-color : #ffffff;
+padding : 18px;
+padding-right : 0;
+padding-top:0;
+}
+
+.selectHeader {
+clear : left;
+margin:0;
+padding:0;
+}
+
+.selectGroup {
+padding-left : 0px;
+min-width : 120px;
+display : block;
+float : left;
+text-align : left;
+margin-left : 10px;
+margin-right : 5px;
+font-size : 12px;
+}
+
+.selectLabel {
+position : relative;
+font-weight : bold;
+padding : 1px;
+font-size : 12px;
+}
+
+.contextHelp {
+  font-weight : normal;
+border:2px solid #336699;
+z-index: 1;
+position:relative;
+width:750px;
+height:350px;
+padding:5px;
+overflow:auto;
+background:#FFF;
+display:none;
+}
+.selectLabelMenu {
+display : inline;
+position : absolute;
+right : 0;
+font-weight : normal;
+padding : 5px;
+font-size : 9px;
+}
+
+.selectOption {
+font-size : 11px;
+/*font-weight: bold;*/
+}
+
+p.download {
+  margin:0px;
+  margin-top:10px;
+  border: 0px solid #000;
+  display:inline;
+  text-align:center;
+  position : absolute;
+  right : 0px;
+  height:20px;
+  font-weight : normal;
+  padding-top : 4px;
+  padding-right : 10px;
+  font-size : 12px;
+}
+
+a.download{
+   text-decoration:none;
+   color:#336699;
+}
+
+.search{
+float:right;
+display:inline-block;
+border: 0px #A00 solid;
+padding:5px;
+
+}
+
+#footer {
+background-color : #ffffff;
+color : #46494c;
+text-align : center;
+border-top : 1px solid #46494c;
+width : 95%;
+padding : 4px 0;
+margin : 0;
+}
+h2.title {
+background-color : #ffffff;
+color : #46494c;
+text-align : center;
+border-top : 1px solid #46494c;
+border-bottom : 1px solid #46494c;
+padding : 4px 0;
+width : 95%;
+margin : 0;
+}
+.message {
+  color : #cc4444;
+  padding : 3px;
+  font-weight : normal;
+  font-size : 12px;
+  position: fixed;
+  left: 240px;
+  top: 95px;
+  right: 321px;
+}
+.error {
+color : #cc4444;
+}
+div.formdiv {
+height : 25px;
+float : right;
+} 
+.subheading {
+  /*width:100%;*/
+  height:23px;
+  border-style:none none solid none ;
+  border-width:0px 0px 1px 0px;
+  /*border-color:#666666*/;
+  border-color:#999;
+  margin-top:10px;
+  margin-left:0px;
+  line-height:23px;
+  font-size:15px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  margin-bottom:10px;
+  width : 440px;
+  display:inline;
+  float : left;
+  z-index : 1;
+ }
+ 
+.chkbox {
+  height:auto;
+  border-style:none none solid none ;
+  border-width:0px 0px 1px 0px;
+  border-color:#666666;
+  margin-left:10px;
+  line-height:23px;
+  font-size:10px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  margin-bottom:10px;
+  width : auto;
+  display:inline;
+  float : left;
+  z-index : 1;
+ }
+
+.lessersubheading {
+  width:100%;
+  height:23px;
+  border-style:none none solid none ;
+  border-width:0px 0px 1px 0px;
+  #border-color:#666666;
+  border-color:#ccc;
+  margin-top:10px;
+  margin-left:30px;
+  line-height:23px;
+  font-size:12px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  margin-bottom:10px;
+  width : 410px;
+  display:inline;
+  float : left;
+  z-index : 1;
+ }
+
+
+.subheading-left {
+left : -10px;
+padding-top : 8px;
+padding-right : 8px;
+display : block;
+position : relative;
+z-index : 1;
+border : 1px solid #000;
+height : 28px;
+text-align : right;
+font-weight : normal;
+color : #646464;
+font-size : 12px;
+text-decoration : none;
+}
+.subheading-left a {
+font-weight : normal;
+color : #646464;
+font-size : 12px;
+text-decoration : none;
+}
+.subheading-left a:hover {
+font-weight : bold;
+color : #000;
+font-size : 14px;
+text-decoration : none;
+}
+.chart {
+position : relative;
+display : inline;
+margin : 0;
+}
+#getChart {
+margin-bottom : 28px;
+}
+#ChartDiv {
+float : left;
+width : 595px;
+height:300px;
+margin : 0;
+left : 0;
+font-size : 13px;
+padding : 0;
+}
+#ChartSubLeft {
+font-weight : bold;
+color : #336699;
+float : left;
+width : 300px;
+text-align : left;
+}
+#ChartSubRight {
+font-weight : normal;
+color : #808080;
+font-size : 10px;
+float : left;
+width : 100px;
+text-align : right;
+}
+#ChartSubRight a {
+font-weight : normal;
+padding-top:10px;
+color : #336699;
+font-size : 10px;
+text-decoration : none;
+}
+#ChartSubRight a:hover {
+font-weight : bold;
+color : #000;
+font-size : 10px;
+text-decoration : none;
+}
+
+#NavHistoryContainer {
+margin-left:12px;
+margin-top:10px;
+font-size : 10px;
+float : left;
+display : inline;
+color : #336699;
+}
+
+#NavHistoryDiv {
+font-weight : normal;
+margin-top:10px;
+color : #808080;
+font-size : 10px;
+float : left;
+display : inline;
+/*margin : 0px;*/
+
+}
+
+#NavHistoryDiv a {
+font-weight : normal;
+color : #336699;
+font-size : 11px;
+font-weight : normal;
+text-decoration : none;
+vertical-align:center;
+}
+
+#NavHistoryDiv a:hover {
+font-weight : normal;
+color : #000;
+font-size : 11px;
+text-decoration : none;
+}
+
+
+#status {
+font-weight : normal;
+color : #FFFFFF;
+font-weight:bolder;
+font-size : 12px;
+float : right;
+position:static;
+padding-left: 20px;
+#padding-left: 0px;
+padding-top: 0px;
+margin-top:5px;
+border : solid 1px;
+border-color: #666666;
+background-color: #666666;
+width:220px;
+margin-right:5px;
+
+}
+
+
+#status_go {
+font-weight : normal;
+color : #green;
+font-size : 12px;
+display : inline;
+float:right;
+
+width:150px;
+padding-left: 10px;
+#padding-left: 10px;
+background-color: #FFFFFF;
+
+}
+
+
+#rCounts {
+font-weight : normal;
+color : #000000;
+font-size : 12px;
+float : right;
+display : inline;
+border-top : solid 1px;
+border-color: #336699;
+width:220px;
+#width:200px;
+padding-left: 15px;
+padding-right: 5px;
+padding-bottom: 8px;
+#padding-bottom: 8px;
+padding-top: 8px;
+#padding-top: 8px;
+background-color: #FFFFFF;
+}
+
+#notice {
+font-weight : normal;
+color : #FFFFFF;
+font-weight:bolder;
+font-size : 12px;
+top:120px;
+right: 0px;
+position:absolute;
+padding-left: 20px;
+#padding-left: 0px;
+padding-top: 0px;
+margin-top:5px;
+border : solid 1px;
+border-color: #666666;
+background-color: #666666;
+width:500px;
+margin-right:5px;
+
+}
+#notice_go {
+font-weight : normal;
+color : #green;
+font-size : 12px;
+display : inline;
+float:right;
+
+width:430px;
+padding-left: 10px;
+#padding-left: 10px;
+background-color: #FFFFFF;
+
+}
+
+#rNotice {
+font-weight : normal;
+color : #000000;
+font-size : 12px;
+float : right;
+display : inline;
+border-top : solid 1px;
+border-color: #336699;
+width:500px;
+#width:480px;
+padding-left: 15px;
+padding-right: 5px;
+padding-bottom: 8px;
+#padding-bottom: 8px;
+padding-top: 8px;
+#padding-top: 8px;
+background-color: #FFFFFF;
+}
+
+#searchHints {
+padding-left:10px;
+color : #336699;
+text-decoration:underline;
+display:inline;
+cursor:pointer;
+}
+
+#closeSearchHints {
+padding-right:10px;
+color : #336699;
+text-decoration:underline;
+display:inline;
+float:right;
+cursor:pointer;
+}
+
+#hintsDiv {
+border:2px solid #336699;
+z-index: 1;
+position:absolute;
+top:72px;
+width:300px;
+height:350px;
+padding:5px;
+overflow:auto;
+background:#FFF;
+display:none;
+}  
+  
+#searchDiv {
+font-weight : normal;
+color : #000000;
+font-size : 12px;
+float : right;
+display : inline;
+padding-right:20px;
+border-color: #336699;
+padding-left: 15px;
+#padding-left: 0px;
+padding-right: 15px;
+padding-bottom: 5px;
+padding-top: 20px;
+background-color: #FFFFFF;
+margin-right:20px;
+margin-top:5px;
+}
+
+#onScreenHelp {
+font-weight : normal;
+margin-top:0px;
+color : #000000;
+font-size : 12px;
+float : right;
+display : inline;
+border: solid 0px;
+margin-left:10px;
+padding: 5px;
+border : solid 0px;
+border-color: #336699;
+
+}
+
+#saveUuid {
+  border:2px solid #336699;
+  z-index: 10;
+  position:absolute;
+  top:150px;
+  right:50px;
+  width:350px;
+  height:200px;
+  padding:15px;
+  overflow:auto;
+  background:#FFF;
+  display:none;
+}  
+  
+
+.nav {
+display : inline;
+}
+
+.map {
+position : relative;
+display : inline;
+margin : 5px;
+}
+
+#getMap {
+position : relative;
+margin-bottom : 28px;
+z-index : -1;
+}
+
+#MapDiv {
+float : left;
+width : 545px;
+bottom : -28px;
+z-index : 1;
+}
+
+#MapSubLeft {
+font-weight : bold;
+color : #808080;
+float : left;
+width : 200px;
+text-align : left;
+}
+
+#MapSubRight {
+font-weight : normal;
+color : #808080;
+font-size : 10px;
+float : left;
+width : 75px;
+text-align : right;
+}
+
+#MapSubRight a {
+font-weight : normal;
+color : #808080;
+font-weight : bold;
+font-size : 10px;
+text-decoration : none;
+}
+
+#MapSubRight a:hover {
+font-weight : bold;
+color : #000;
+font-size : 10px;
+text-decoration : none;
+}
+
+#DataContainer {
+margin : 28px;
+}
+
+.spinner {
+position : absolute;
+z-index : 10;
+padding : 20px;
+}
+
+#menuOuter {
+border : 0 solid #aaa;
+display : block;
+width : 100%;
+background-color : #fff;
+font-weight : bold;
+}
+
+#menu2 {
+border : 0 solid #000;
+position : absolute;
+right : 20px;
+display : inline;
+}
+
+.menu2-button-far-left {
+display : inline;
+float : left;
+}
+
+.menu2-button-far-left:hover {
+display : inline;
+float : left;
+padding-left : 3px;
+}
+
+.menu2-button-left {
+display : inline;
+float : left;
+padding-left : 3px;
+}
+
+.menu2-button-left:hover {
+display : inline;
+float : left;
+padding-left : 3px;
+}
+
+.menu2-button-far-right {
+display : inline;
+float : left;
+}
+
+.menu2-button-far-right:hover {
+float : left;
+}
+.menu2-button-right {
+display : inline;
+float : left;
+}
+
+.menu2-button-right:hover {
+display : inline;
+float : left;
+}
+
+input.menu2Link { 
+  border : 1px solid #fff;
+}
+
+.menu2Link {
+background-color : transparent;
+height : 25px;
+border : 0 solid #a00;
+color : #FFFFFF;
+font-weight : bold;
+text-align : center;
+text-decoration : none;
+text-transform : capitalize;
+padding-right : 5px;
+padding-left : 5px;
+padding-bottom: 0px;
+margin-top:11px;
+#margin-top:12px;
+margin-right:5px;
+bottom:0px;
+}
+.menu2Link:hover {
+background-color : #FFF;
+border : 0 solid #101010;
+color : #336699;
+}
+
+.clearRight { /* generic container (i.e. div) for floating buttons */
+	overflow: hidden;
+	width: 100%;
+    float : right;
+
+}
+
+
+.clear { /* generic container (i.e. div) for floating buttons */
+  padding: 13px; 
+  position: fixed;
+  border-top: 2px solid #336699;
+  margin-left: 10px;
+  right:22px;
+  /*left:22px;*/
+  left:12px; 
+  bottom: 40px;
+  background-color:#FFFFFF;
+}
+
+
+
+ol li {
+list-style-image : none;
+list-style-position : outside;
+list-style-type : none;
+}
+.sm li {
+margin : 0;
+}
+.gl, #bsf a, .nobr, #brs a {
+white-space : nowrap;
+}
+#mbEnd .med {
+white-space : normal;
+}
+.sl, .r {
+display : inline;
+font-weight : normal;
+margin : 0;
+}
+.r {
+font-size : medium;
+}
+h4.r {
+font-size : small;
+}
+.g {
+margin : 1em 0;
+}
+em {
+font-style : normal;
+font-weight : bold;
+}
+em, b {
+text-decoration : inherit;
+}
+.a, cite, .cite, .cite:link {
+color : green;
+font-style : normal;
+}
+
+  </style>
+
+
+ <script type="text/javascript" src="/dojo/dojo/dojo.js" djConfig="parseOnLoad: true, usePlainJson: true,  isDebug:false, popup:false ">
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-15666388-2");
+        pageTracker._trackPageview();
+    } catch(err) {}
+</script>
+
+
+
+
+
+<!--script type="text/javascript" src="/dojo/dijit/tests/_testCommon.js"></script-->
+<script type="text/javascript">
+dojo.require("dojox.grid.DataGrid");
+dojo.require("dojox.data.QueryReadStore");
+dojo.require("dijit.layout.ContentPane");
+dojo.require("dijit.form.MultiSelect");
+dojo.require("dijit.form.ComboBox");
+dojo.require("dijit.form.Form");
+dojo.require("dojo.data.ItemFileReadStore");
+ dojo.require("dijit.ProgressBar");
+dojo.require("dijit.layout.BorderContainer");
+dojo.require("dijit._Widget");
+dojo.require("dijit.Tree");
+dojo.require("dijit.form.TextBox");
+dojo.require("dijit.form.ValidationTextBox");
+dojo.require("dojox.validate.web");
+dojo.require("dojo.fx");
+dojo.require("dijit.Editor");
+dojo.require("dijit._editor.plugins.AlwaysShowToolbar");
+dojo.require("dijit._editor.plugins.EnterKeyHandling");
+dojo.require("dijit._editor.plugins.FontChoice");  // 'fontName','fontSize','formatBlock'
+dojo.require("dijit._editor.plugins.TextColor");
+dojo.require("dijit._editor.plugins.LinkDialog");
+dojo.require("dojo.dnd.Container");
+dojo.require("dojo.dnd.Manager");
+dojo.require("dojo.dnd.Source");
+dojo.require("dijit.Menu");
+dojo.require("dojox.widget.PlaceholderMenuItem");
+//dojo.require("dojox.form.CheckedMultiSelect");
+
+
+dojo.require("dijit.layout.TabContainer");
+
+
+dojo.require("dijit.dijit"); // optimize: load dijit layer
+                dojo.require("dijit.layout.SplitContainer");
+                dojo.require("dijit.layout.BorderContainer");
+                dojo.require("dijit.Tooltip");
+                dojo.require("dijit.layout.LinkPane");
+                dojo.require("dijit.form.Button");
+
+
+
+dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+</script>
+ 
+
+
+  /* The following is used for dendancies in build
+"dojox.grid.DataGrid",
+"dijit.layout.ContentPane",
+"dijit.form.MultiSelect",
+"dijit.form.ComboBox",
+"dijit.form.Form",
+"dojo.data.ItemFileReadStore",
+"dijit.ProgressBar",
+"dijit.layout.BorderContainer",
+"dijit._Widget",
+"dijit.Tree",
+"dijit.form.TextBox",
+"dijit.form.ValidationTextBox",
+"dojox.validate.web",
+"dojo.fx",
+"dijit.Editor",
+"dijit._editor.plugins.AlwaysShowToolbar",
+"dijit._editor.plugins.EnterKeyHandling",
+"dijit._editor.plugins.FontChoice",  // 'fontName','fontSize','formatBlock'
+"dijit._editor.plugins.TextColor",
+"dijit._editor.plugins.LinkDialog",
+"dojo.dnd.Container",
+"dojo.dnd.Manager",
+"dojo.dnd.Source",
+"dijit.Menu",
+"dojox.widget.PlaceholderMenuItem",
+"dojo.parser"
+  */
+
+
+
+
+
+</head>
+
+ <body   class="tundra"  style="background-image:none; padding: 0px 20px 20px 20px; background-color: #3F3E3E;">
+  <div id="mainbody">
+<div id="contentbody">
+  <!-- BEGIN site/header -->
+
+<!--div id="header" -->
+<div id="header" style='background-image: url("/static/images/Header.jpg");height:54px'>
+    <div id="leftheaderimg" align="left" >
+        <img width="388" hspace="0" height="53" alt="National Agricultural Statistics Service" src="/static/images/masthead_left1.gif" usemap="#HEADERMAP" style="opacity:0.8; filter:alpha(opacity=80);">
+        <MAP NAME="HEADERMAP" id="HEADERMAP">
+           <area shape="rect" coords="0,0,58,53" alt="www.USDA.gov" href="https://www.usda.gov" />
+           <area shape="rect" coords="60,0,506,53" alt="www.NASS.USDA.GOV" href="https://www.nass.usda.gov/" />
+        </map>
+    </div>
+    <!--div id="rightheaderimg" align="right">
+        <img width="233" hspace="0" height="53" alt="National Agricultural Statistics Service" src="/static/images/masthead_right.gif" style="opacity:0.4; filter:alpha(opacity=40);">
+    </div-->
+</div>
+
+<!-- <h2 class="title">USDA/NASS QuickStats Ad-hoc Query Tool</h2> -->
+
+<!-- END site/header -->
+
+
+  <div id="bodyheader">
+  <span id="bodytitle" >Quick Stats</span>
+  <div id="menuOuter">
+	
+    <div id="menu2" >
+	
+	<div class="menu2-button-far-left">
+         <div class="menu2-button-right">
+
+           <form id="home" method="Post" action="https://quickstats.nass.usda.gov/" dojoType="dijit.form.Form">
+
+	  <input type="submit" tabindex="0"  value="Home" name="index" onclick="" class="menu2Link">
+            </form>
+	  </div>
+        </div>
+	
+     
+	<div class="menu2-button-far-left">
+         <div class="menu2-button-right">
+
+           <form id="recent_stats" method="Post" action="https://quickstats.nass.usda.gov/recent_stats" dojoType="dijit.form.Form">
+
+	  <input type="submit" tabindex="1"  value="Recent Statistics" name="recent_stats" onclick="" class="menu2Link">
+            </form>
+	  </div>
+        </div>
+	
+     
+	<div class="menu2-button-far-left">
+         <div class="menu2-button-right">
+
+           <form id="developers" method="Post" action="https://quickstats.nass.usda.gov/api" dojoType="dijit.form.Form">
+
+	  <input type="submit" tabindex="2"  value="developers" name="developers" onclick="" class="menu2Link">
+            </form>
+	  </div>
+        </div>
+	
+     
+	<div class="menu2-button-far-left">
+         <div class="menu2-button-right">
+
+           <form id="help" method="Post" action="https://quickstats.nass.usda.gov/tutorials" dojoType="dijit.form.Form">
+
+	  <input type="submit" tabindex="3"  value="Help" name="help" onclick="" class="menu2Link">
+            </form>
+	  </div>
+        </div>
+	
+     
+
+
+  </div>
+    
+  </div>
+  </div>
+  <br clear="all">
+    
+
+<style>
+<!--
+.api-parameters
+{
+  border-top:0px solid black; 
+  border-bottom:1px solid #ccc;
+}
+.api-keys
+{
+  display:block;
+  float:left;
+  width:220px;
+  color:#333;
+  font-weight:bold; 
+  border:0px solid green;
+}
+.api-definition
+{
+  margin-top:0;
+  margin-left:220px;
+  border:0px solid green;
+  font-size:10pt;
+}
+p.api-example
+{
+  margin-left:220px;
+}
+.nav
+{
+  border:1px #ddd solid;
+  margin-left:10px;
+  margin-top:5px;
+  width:15%;
+  float:left;
+  box-shadow:0px 8px 16px rgba(50, 50, 50, 0.79);
+  -moz-box-shadow:0px 8px 16px rgba(50, 50, 50, 0.79);
+  -webkit-box-shadow:0px 8px 16px rgba(50, 50, 50, 0.79);
+}	
+div.api-content
+{
+  border-left:0px #ddd solid;
+  margin-left:20px; 
+  margin-top:5px; 
+  width:75%; 
+  float:left; 
+  position:relative;
+  font-size:10pt;
+}
+.menu
+{
+  color:#336699; 
+  font-size:10pt;
+  font-weight:bold;
+  /*text-decoration:underline; */
+  display:inline; 
+  cursor:pointer;
+  /*padding:5px;*/
+  /*padding-right:5px;*/ 
+  /*padding-left:5px;*/
+  margin:5px;
+}	
+
+a:link {color:#336699;text-decoration:none;font-weight:bold;}
+a:visited {color:#336699;text-decoration:none;font-weight:bold;}
+a:hover {color:#336699;}
+a:active {color:#336699;}
+
+-->
+</style>
+
+
+<div id="indexbody" style="bottom:85px;">
+
+<div style="border-bottom:0px #ddd solid;margin-left:10px;margin-top:10px;"><h1 style="margin-left:30px"> QuickStats API </h1> </div>
+<div style="border-bottom:1px #ddd solid;margin:0 0 10px 10px;width:450px"></div>
+
+<div class="nav">
+<!--div style="margin:15px 10px 15px 20px;border:1px solid green;"-->
+<div style="margin:15px 15px 15px 15px;border:0px solid #ddd;">
+
+    <div class="menu" id="list"  onclick="openDiv('intro', 'block');">
+    Introduction 
+    <br clear="all">
+    <br clear="all">
+    </div>
+    <div class="menu" id="list"  onclick="openDiv('disclaim', 'block');">
+    Terms of Service
+    <br clear="all">
+    <br clear="all">
+    </div>
+    <div class="menu" id="list"  onclick="openDiv('using', 'block');">
+    Usage
+    <br clear="all">
+    <br clear="all">
+    </div>
+    <div class="menu" id="list"  onclick="openDiv('register', 'block');">
+    Request API Key
+    <br clear="all">
+    </div>
+
+</div>
+</div>
+
+<div class="api-content">
+<div style="border:0px #ddd solid;margin:0px 10px;">
+
+<!--div id='using' style="display:none"-->
+<div id="intro" style="display:visibility">
+    <style>
+<!--
+p{
+  margin:0px;
+}
+
+li{
+  margin-left:20px; 
+  margin-bottom:10px;
+}
+-->
+</style>
+<div>
+<p>
+The National Agricultural Statistics Service (NASS) offers Quick Stats, an on-line database containing official published aggregate estimates related to U.S. agricultural production. NASS develops these estimates from data collected through:
+<ol style="margin:5px;list-style-type:none; padding-left:15px;">
+<li>
+  1) hundreds of sample surveys conducted each year covering virtually every aspect of U.S. agriculture    
+</li>
+<li>
+  2) the Census of Agriculture conducted every five years providing state- and county-level aggregates
+</li>
+</ol>
+</p>
+
+<p>
+The Quick Stats application programming interface (API) provides direct access to the statistical information in the Quick Stats database.  We invite developers to use this API and to give us feedback so we can continue to improve it.
+</p>
+<h4>About the Quick Stats API </h4>
+<p>
+To use the Quick Stats API, you must first agree to the <span class="menu" id="list" onclick="openDiv('disclaim', 'block');">NASS Terms of Service</span > and <span class="menu" id="list" onclick="openDiv('register', 'block');" >obtain an API key</span> In registering for the key, you must provide a valid email address. You will have the option to request future email updates about the Quick Stats API.
+</p>
+<p>
+Once you request the API key, we will email it and you can proceed immediately. Use the key in all future data requests as well.<br>
+To call the Quick Stats API, you may use either of the following:
+<ul>
+    <li>
+       any language that supports HTTP GET request such as PHP, PERL, etc...
+    </li>
+    <li>
+       JSON with padding or JSONP
+    </li>
+</ul>
+</p>
+
+<p>
+Your request will return a maximum of 50,000 data records. You can determine the returned record account before you execute the Quick Stats API call using the GET /api/get_counts function. If your request will return more than the maximum limit of 50,000 data records, you can do either of the following:
+<ul>
+    <li>
+       Change the filtering criteria (the API input parameters and their values) to generate a smaller number of responses
+    </li>
+    <li>
+       Download <a href="https://www.nass.usda.gov/datasets/">the files</a> containing larger amounts of data extracted from the Quick Stats database.  
+    </li>
+</ul>
+
+</p>
+
+</div>
+
+    <br>
+</div>
+
+<!--div id='using' style="display:visibility"-->
+<div id='using' style="display:none">
+<p>    
+    <b> Using QuickStats API</b>
+    <br>
+    QuickStats API requests utilize input parameters based on the concept of What, Where and When.
+    <ul>
+    <li>
+    What parameters refer to a commodity, data item or subject area.
+    </li>
+    <li>
+    Where parameters refer to a location or geographic level such as the entire United States, state, county, district, or ZIP code.
+    </li>
+    <li>
+    When parameters refer to a time such as year and frequency such as monthly.
+    </li>
+    </ul>
+</p>
+
+<p>
+<b>QuickStats API Input</b>
+<br>
+The QuickStats API has three resources you can use to retrieve NASS published estimate data and properties, in combination with the "WHAT" and/or "WHERE" and/or "WHEN" parameters you specify. See <a href="#param_define">Parameter Definitions and Operators</a> for definitions and types.  If you have not already 
+<span class="menu" id="list" onclick="openDiv('register', 'block');"> obtained an API key,</span> do so now before proceeding. 
+<br>
+Here are the resources, their URIs and examples:
+
+<ol style="margin-left:10px;list-style-type:none; padding:0px;">
+<li>1) GET &nbsp;/api/api_GET: accepts a combination of "WHAT" and/or "WHERE and/or "WHEN" parameters and return maximum of 50K records
+<br>
+<code></code>https://quickstats.nass.usda.gov/api/api_GET/?key=api key&amp;{parameter ... parameter}&format={json | csv | xml}&callback={function name}<code></code>
+<br><b><i>&nbsp;&nbsp;&nbsp;&nbsp;Note:</b> callback parameter needs only for using JSONP</i>
+<br>
+
+<div style="margin-left:10px; margin-top:0px;border:0px #ddd dashed;">
+
+<p style="margin-top:0px;">
+ <span id="list" style="color:#336699; text-decoration:underline; display:inline; cursor:pointer;padding-right:5px; padding-left:5px;" onclick="setVisibility('format', 'block');">
+Example </span> of /api/api_GET request and its output.
+<div id="format" style="width:750px; opacity:0.9; filter:alpha(opacity=90);border:1px solid #336699;padding:5px;overflow:auto;background:#FFF;display:none; overflow-y:hidden; overflow-x:hidden; "> 
+<div id="close" style="color:#336699; text-decoration:underline; display:inline; cursor:pointer; padding-left:20px;float:right;" onclick="setVisibility('format', 'none');">
+Close(X)</div>
+
+<div style="border-bottom:1px solid black;margin-top:10px;margin-bottom:10px;"><strong>Example of GET request corn of VA since 2012 </strong><br><br></div>
+
+<div class="api-parameters" id="">
+<span class="api-keys" style="width:80px;">GET</span>
+<p class="api-definition" style="margin-left:80px;"><code>
+https://quickstats.nass.usda.gov/api/api_GET/?key=api key&amp;commodity_desc=CORN&year__GE=2012&state_alpha=VA&format=JSON <br>
+https://quickstats.nass.usda.gov/api/api_GET/?key=api key&amp;commodity_desc=CORN&year__GE=2012&state_alpha=VA&format=XML  <br>
+https://quickstats.nass.usda.gov/api/api_GET/?key=api key&amp;commodity_desc=CORN&year__GE=2012&state_alpha=VA&format=CSV  <!--br-->
+</code>
+</p>
+
+<div style="border-bottom:1px solid black;margin-top:10px;margin-bottom:10px;"><strong>Example Output: </strong><br><br></div>
+
+<div class="api-parameters" id="" style="overflow-x:auto;overflow-y:hidden;"> 
+<span class="api-keys" style="width:80px;">JSON</span>
+<p class="api-definition" style="margin-left:80px;">
+{data:[{"week_ending":"","state_name":"VIRGINIA","country_code":"9000","begin_code":"00", "sector_desc":"CROPS","zip_5":"","county_ansi":"","state_alpha":"VA","util_practice_desc":"ALL UTILIZATION PRACTICES","domain_desc":"TOTAL","asd_desc":"","freq_desc":"ANNUAL","prodn_practice_desc":"ALL PRODUCTION PRACTICES","end_code":"00","short_desc":"CORN - ACRES PLANTED","country_name":"UNITED STATES","Value":"510,000","reference_period_desc":"YEAR","source_desc":"SURVEY","group_desc":"FIELD CROPS","asd_code":"","agg_level_desc":"STATE","Class_desc":"ALL CLASSES","county_name":"","region_desc":"","watershed_desc":"","state_ansi":"51","congr_district_code":"","domaincat_desc":"NOT SPECIFIED","watershed_code":"00000000","commodity_desc":"CORN","unit_desc":"ACRES","load_time":"2012-10-11 11:26:13","statisticcat_desc":"AREA PLANTED","year":"2012"}]}
+</p>
+</div>
+
+<div class="api-parameters" id="" style="overflow-x:auto;overflow-y:hidden;">
+<span class="api-keys" style="width:80px;">CSV</span>
+<p class="api-definition" style="margin-left:80px;">
+"source_desc","sector_desc","group_desc","commodity_desc","class_desc","util_practice_desc","prodn_practice_desc","statisticcat_desc","unit_desc","short_desc","domain_desc","domaincat_desc","agg_level_desc","state_ansi","state_alpha","state_name","asd_code","asd_desc","county_ansi","county_name","region_desc","zip_5","watershed_code","watershed_desc","congr_district_code","country_code","country_name","year","freq_desc","begin_code","end_code","reference_period_desc","week_ending","load_time","Value"
+"SURVEY","CROPS","FIELD CROPS","CORN","ALL CLASSES","ALL UTILIZATION PRACTICES","ALL PRODUCTION PRACTICES","AREA PLANTED","ACRES","CORN - ACRES PLANTED","TOTAL","NOT SPECIFIED","STATE","51","VA","VIRGINIA","","","","","","","00000000","","","9000","UNITED STATES","2012","ANNUAL","00","00","YEAR","","2012-10-11 11:26:13","510,000"
+"SURVEY
