@@ -1,0 +1,20 @@
+URL: https://data.elexon.co.uk/bmrs/api/v1/balancing/pricing/market-index?from=2026-10-20T00:00Z&to=2026-10-20T03:00Z&format=json
+Fetched: 2026-10-22T14:44:00Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2058
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Thu, 22 Oct 2026 14:44:00 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-Control: no-store, must-revalidate, no-cache
+Pragma: no-cache
+Expires: Thu, 22 Oct 2026 14:44:00 GMT
+Request-Context: appId=cid-v1:56a240eb-4f9f-4e6e-88ae-973185a49356
+Strict-Transport-Security: max-age=31536000
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"metadata":{"datasets":["MID"]},"data":[{"startTime":"2026-10-20T03:00:00Z","dataProvider":"APXMIDP","settlementDate":"2026-10-20","settlementPeriod":9,"price":144.17,"volume":2896.000},{"startTime":"2026-10-20T03:00:00Z","dataProvider":"N2EXMIDP","settlementDate":"2026-10-20","settlementPeriod":9,"price":0.00,"volume":0.000},{"startTime":"2026-10-20T02:30:00Z","dataProvider":"APXMIDP","settlementDate":"2026-10-20","settlementPeriod":8,"price":150.48,"volume":3062.900},{"startTime":"2026-10-20T02:30:00Z","dataProvider":"N2EXMIDP","settlementDate":"2026-10-20","settlementPeriod":8,"price":0.00,"volume":0.000},{"startTime":"2026-10-20T02:00:00Z","dataProvider":"APXMIDP","settlementDate":"2026-10-20","settlementPeriod":7,"price":144.11,"volume":2951.100},{"startTime":"2026-10-20T02:00:00Z","dataProvider":"N2EXMIDP","settlementDate":"2026-10-20","settlementPeriod":7,"price":0.00,"volume":0.000},{"startTime":"2026-10-20T01:30:00Z","dataProvider":"APXMIDP","settlementDate":"2026-10-20","settlementPeriod":6,"price":151.20,"volume":2999.950},{"startTime":"2026-10-20T01:30:00Z","dataProvider":"N2EXMIDP","settlementDate":"2026-10-20","settlementPeriod":6,"price":0.00,"volume":0.000},{"startTime":"2026-10-20T01:00:00Z","dataProvider":"APXMIDP","settlementDate":"2026-10-20","settlementPeriod":5,"price":142.44,"volume":2544.700},{"startTime":"2026-10-20T01:00:00Z","dataProvider":"N2EXMIDP","settlementDate":"2026-10-20","settlementPeriod":5,"price":0.00,"volume":0.000},{"startTime":"2026-10-20T00:30:00Z","dataProvider":"APXMIDP","settlementDate":"2026-10-20","settlementPeriod":4,"price":139.03,"volume":2157.100},{"startTime":"2026-10-20T00:30:00Z","dataProvider":"N2EXMIDP","settlementDate":"2026-10-20","settlementPeriod":4,"price":0.00,"volume":0.000},{"startTime":"2026-10-20T00:00:00Z","dataProvider":"APXMIDP","settlementDate":"2026-10-20","settlementPeriod":3,"price":138.18,"volume":2308.950},{"startTime":"2026-10-20T00:00:00Z","dataProvider":"N2EXMIDP","settlementDate":"2026-10-20","settlementPeriod":3,"price":0.00,"volume":0.000}]}
