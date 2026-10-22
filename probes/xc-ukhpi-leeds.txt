@@ -1,0 +1,22 @@
+URL: https://landregistry.data.gov.uk/landregistry/query?output=json&query=PREFIX%20ukhpi%3A%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fukhpi%2F%3E%0ASELECT%20%3Fm%20%3Fa%20%3Fad%20%3Fas%20%3Fat%20%3Faf%20%3Fi%20%3Fy%20%3Fv%20WHERE%20%7B%20%3Fobs%20ukhpi%3ArefRegion%20%3Fr%20%3B%20ukhpi%3ArefMonth%20%3Fm%20%3B%20ukhpi%3AaveragePrice%20%3Fa%20.%0AOPTIONAL%7B%3Fobs%20ukhpi%3AaveragePriceDetached%20%3Fad%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3AaveragePriceSemiDetached%20%3Fas%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3AaveragePriceTerraced%20%3Fat%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3AaveragePriceFlatMaisonette%20%3Faf%7D%0AOPTIONAL%7B%3Fobs%20ukhpi%3AhousePriceIndex%20%3Fi%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3ApercentageAnnualChange%20%3Fy%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3AsalesVolume%20%3Fv%7D%0AFILTER(%3Fr%20%3D%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fleeds%3E)%20%7D%20ORDER%20BY%20DESC(%3Fm)%20LIMIT%2014
+Fetched: 2026-10-22T13:58:03Z from GitHub Actions
+Status, type, bytes: 403 text/html 153
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 403 Forbidden
+Content-Type: text/html
+Date: Thu, 22 Oct 2026 13:58:03 GMT
+Server: nginx/1.31.5
+Content-Length: 153
+Connection: keep-alive
+
+=== FILE TYPE: HTML document, ASCII text, with CRLF line terminators
+=== FIRST 30000 BYTES
+<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.31.5</center>
+</body>
+</html>
