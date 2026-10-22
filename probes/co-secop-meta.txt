@@ -1,0 +1,306 @@
+URL: https://www.datos.gov.co/api/views/jbjy-vk9h.json
+Fetched: 2026-10-22T09:33:53Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 36323
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 09:33:53 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 49beec8004302e04f04d5b8d8df8b32d
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 9000 BYTES
+{
+  "id" : "jbjy-vk9h",
+  "name" : "SECOP II - Contratos Electrónicos",
+  "assetType" : "dataset",
+  "attribution" : "Agencia Nacional de Contratación Pública - Colombia Compra Eficiente, Bogotá D.C.",
+  "attributionLink" : "https://colombiacompra.gov.co",
+  "averageRating" : 0,
+  "category" : "Estadísticas Nacionales",
+  "createdAt" : 1569904933,
+  "description" : "Información de los contratos registrados en SECOP II desde su lanzamiento",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 244755,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "CC_40_BY_SA",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 15,
+  "oid" : 42609282,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1790495311,
+  "publicationGroup" : 16601047,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1792660105,
+  "rowsUpdatedBy" : "mb3d-8f4b",
+  "tableId" : 20639065,
+  "totalTimesRated" : 0,
+  "viewCount" : 2855344,
+  "viewLastModified" : 1790495311,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1606510701,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 7763059,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1606510665,
+    "targetAudience" : "public",
+    "workflowId" : 2188,
+    "reviewer" : {
+      "id" : "r4qn-dwdd",
+      "displayName" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+    },
+    "submissionDetails" : {
+      "permissionType" : "read"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1606510705,
+      "failureCount" : 0,
+      "startedAt" : 1606510701,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "r4qn-dwdd",
+      "displayName" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 647288680,
+    "name" : "Nombre Entidad",
+    "dataTypeName" : "text",
+    "description" : "Nombre de la entidad del estado que publica el contrato",
+    "fieldName" : "nombre_entidad",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481440,
+    "format" : { }
+  }, {
+    "id" : 647288681,
+    "name" : "Nit Entidad",
+    "dataTypeName" : "number",
+    "description" : "NIT de la entidad del estado que publica el contrato",
+    "fieldName" : "nit_entidad",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 88481405,
+    "format" : { }
+  }, {
+    "id" : 647288682,
+    "name" : "Departamento",
+    "dataTypeName" : "text",
+    "description" : "Departamento en el cual se registró la entidad del estado que publica el contrato",
+    "fieldName" : "departamento",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481427,
+    "format" : { }
+  }, {
+    "id" : 647288683,
+    "name" : "Ciudad",
+    "dataTypeName" : "text",
+    "description" : "Ciudad en el cual se registró la entidad del estado que publica el contrato",
+    "fieldName" : "ciudad",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481433,
+    "format" : { }
+  }, {
+    "id" : 647288684,
+    "name" : "Localización",
+    "dataTypeName" : "text",
+    "description" : "Ubicación completa de la entidad del estado que publica el contrato",
+    "fieldName" : "localizaci_n",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481403,
+    "format" : { }
+  }, {
+    "id" : 647288685,
+    "name" : "Orden",
+    "dataTypeName" : "text",
+    "description" : "Orden entidad del estado que publica el contrato",
+    "fieldName" : "orden",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481399,
+    "format" : { }
+  }, {
+    "id" : 647288686,
+    "name" : "Sector",
+    "dataTypeName" : "text",
+    "description" : "Sector entidad del estado que publica el contrato",
+    "fieldName" : "sector",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481408,
+    "format" : { }
+  }, {
+    "id" : 647288687,
+    "name" : "Rama",
+    "dataTypeName" : "text",
+    "description" : "Rama del estado de la entidad que publica el contrato",
+    "fieldName" : "rama",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481428,
+    "format" : { }
+  }, {
+    "id" : 647288688,
+    "name" : "Entidad Centralizada",
+    "dataTypeName" : "text",
+    "description" : "Define si la entidad es descentralizada o centralizada",
+    "fieldName" : "entidad_centralizada",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481409,
+    "format" : { }
+  }, {
+    "id" : 647288689,
+    "name" : "Proceso de Compra",
+    "dataTypeName" : "text",
+    "description" : "Identificador del proceso de compra publicado",
+    "fieldName" : "proceso_de_compra",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481447,
+    "format" : { }
+  }, {
+    "id" : 647288690,
+    "name" : "ID Contrato",
+    "dataTypeName" : "text",
+    "description" : "Identificador del contrato firmado, generado por la plataforma",
+    "fieldName" : "id_contrato",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481400,
+    "format" : { }
+  }, {
+    "id" : 647288691,
+    "name" : "Referencia del Contrato",
+    "dataTypeName" : "text",
+    "description" : "Identificador del contrato firmado, generado por la entidad del estado",
+    "fieldName" : "referencia_del_contrato",
+    "position" : 12,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481438,
+    "format" : { }
+  }, {
+    "id" : 647288692,
+    "name" : "Estado Contrato",
+    "dataTypeName" : "text",
+    "description" : "Estado del contrato, frente a su ejecución, firma o liquidación",
+    "fieldName" : "estado_contrato",
+    "position" : 13,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481415,
+    "format" : { }
+  }, {
+    "id" : 647288693,
+    "name" : "Codigo de Categoria Principal",
+    "dataTypeName" : "text",
+    "description" : "Codigo UNSPSC de la categoría principal para el contrato",
+    "fieldName" : "codigo_de_categoria_principal",
+    "position" : 14,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481426,
+    "format" : { }
+  }, {
+    "id" : 647288694,
+    "name" : "Descripcion del Proceso",
+    "dataTypeName" : "text",
+    "description" : "Descripción del objeto del proceso de compra",
+    "fieldName" : "descripcion_del_proceso",
+    "position" : 15,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481404,
+    "format" : { }
+  }, {
+    "id" : 647288695,
+    "name" : "Tipo de Contrato",
+    "dataTypeName" : "text",
+    "description" : "Tipo de contrato de acuerdo a su marco jurídico",
+    "fieldName" : "tipo_de_contrato",
+    "position" : 16,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481446,
+    "format" : { }
+  }, {
+    "id" : 647288696,
+    "name" : "Modalidad de Contratacion",
+    "dataTypeName" : "text",
+    "description" : "Modalidad de contratación de acuerdo al modelo de selección",
+    "fieldName" : "modalidad_de_contratacion",
+    "position" : 17,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481410,
+    "format" : { }
+  }, {
+    "id" : 647288697,
+    "name" : "Justificacion Modalidad de Contratacion",
+    "dataTypeName" : "text",
+    "description" : "Justificación de la modalidad, el escenario bajo el cual se toma la decisión de definir una u otra modalidad de contratación",
+    "fieldName" : "justificacion_modalidad_de",
+    "position" : 18,
+    "renderTypeName" : "text",
+    "tableColumnId" : 88481435,
+    "format" : { }
+  }, {
+    "id" : 647288698,
+    "name" : "Fecha de Firma",
+    "dataTypeName" : "calendar_date",
+    "description" : "Fecha de firma del contrato electronico",
+    "fieldName" : "fecha_de_firma",
+    "position" : 19,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 88481443,
+    "format" : {
+      "view" : "date"
+    }
+  }, {
+    "id" : 647288699,
+    "name" : "Fecha de Inicio del Contrato",
+    "dataTypeName" : "calendar_date",
+    "description" : "Fecha de inicio de las responsabilidades contractuales",
+    "fieldName" : "fecha_de_inicio_del_contrato",
+    "position" : 20,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 88481422,
+    "format" : {
+      "view" : "date",
+      "align" : "left"
+    }
+  }, {
+    "id" : 647288700,
+    "name" : "Fecha de Fin del Contrato",
+    "dataTypeName" : "calendar_date",
+    "description" : "Fecha de fin de las responsabilidades contractuales",
+    "fieldName" : "fecha_de_fin_del_contrato",
+    "position" : 21,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 88481420,
+    "format" : {
+      "view" : "date"
+    }
+  }, {
+    "id" : 647288701,
+    "name" : "Condiciones de Entrega",
+    "dataTypeName" : "text",
+    "description"
