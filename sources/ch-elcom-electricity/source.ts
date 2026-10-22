@@ -163,7 +163,7 @@ export function parseObservations(csv: string): Obs[] {
 /** Rappen per kWh -> CHF per kWh, 4 decimals. */
 const chf = (rp: number) => Math.round(rp * 100) / 10000;
 
-export interface ChQuery { energy?: string; canton?: string; consumption_band?: string; taxes?: string; baseUrl?: string }
+export interface ChQuery { energy?: string; canton?: string; consumption_band?: string; taxes?: string; baseUrl?: string; today?: Date }
 
 /** Pure: build the answer from parsed observations. */
 export function chElectricityAnswer(obs: Obs[], q: ChQuery): PriceAnswer {
@@ -181,7 +181,7 @@ export function chElectricityAnswer(obs: Obs[], q: ChQuery): PriceAnswer {
   const query = { country: "CH", energy: "electricity", consumption_band: profile, ...(canton ? { canton: canton.code } : {}) };
   const place = canton ? `canton ${canton.name}` : "Switzerland";
   const method =
-    `Switzerland electricity: the household tariff ElCom publishes for profile ${profile}, standard product, for ${place}, newest tariff year, converted from Rappen to CHF per kWh. ` +
+    `Switzerland electricity: the household tariff ElCom publishes for profile ${profile}, standard product, for ${place}, tariff year in force, converted from Rappen to CHF per kWh. ` +
     "A published tariff figure (energy + grid use + charges + federal aid fee), not a count of paid bills.";
   const mine = obs.filter((o) => o.category === profile && o.product === "standard");
   if (mine.length === 0) {
@@ -190,9 +190,19 @@ export function chElectricityAnswer(obs: Obs[], q: ChQuery): PriceAnswer {
       period: { from: null, to: null }, reference_period: "", method, describe: () => "", baseUrl: q.baseUrl,
     });
   }
-  const year = Math.max(...mine.map((o) => o.period));
-  const head = mine.find((o) => o.period === year)!;
-  const prev = mine.filter((o) => o.period < year).sort((a, b) => b.period - a.period)[0];
+  // ElCom publishes next year's tariffs in autumn: the headline is the tariff year in force now, the announced next year goes in extra.
+  const thisYear = (q.today ?? new Date()).getUTCFullYear();
+  const inForce = mine.filter((o) => o.period <= thisYear);
+  const next = mine.filter((o) => o.period > thisYear).sort((a, b) => a.period - b.period)[0];
+  if (inForce.length === 0) {
+    return buildStatisticAnswer({
+      source: INFO, query, value: null, measure: canton ? "average" : "median", currency: "CHF", unit: "per kWh",
+      period: { from: null, to: null }, reference_period: "", method, describe: () => "", baseUrl: q.baseUrl,
+    });
+  }
+  const year = Math.max(...inForce.map((o) => o.period));
+  const head = inForce.find((o) => o.period === year)!;
+  const prev = inForce.filter((o) => o.period < year).sort((a, b) => b.period - a.period)[0];
   const cheapest = obs.find((o) => o.category === profile && o.product === "cheapest" && o.period === year);
   const profiles: Record<string, number> = {};
   for (const o of obs) if (o.product === "standard" && o.period === year) profiles[o.category] = chf(o.total);
@@ -206,6 +216,7 @@ export function chElectricityAnswer(obs: Obs[], q: ChQuery): PriceAnswer {
       profile, tariff_year: year, place: canton ? canton.name : "Switzerland",
       components_chf_per_kwh: { energy: chf(head.energy), grid_use: chf(head.gridusage), charges: chf(head.charge), federal_aid_fee: chf(head.aidfee) },
       ...(cheapest ? { cheapest_product_chf_per_kwh: chf(cheapest.total) } : {}),
+      ...(next ? { announced_next_year: next.period, announced_next_year_chf_per_kwh: chf(next.total) } : {}),
       ...(prev ? { previous_year: prev.period, previous_year_chf_per_kwh: chf(prev.total) } : {}),
       other_profiles_standard_chf_per_kwh: profiles,
       tax_level: "as published by ElCom (VAT treatment not stated in the open-data record)",
@@ -240,5 +251,5 @@ export async function chElectricity(q: ChQuery, today: Date = new Date()): Promi
     if (!canton) throw new InputError(`canton "${q.canton}" not found. Use the two-letter code, for example ZH, BE, GE, VD, TI. Leave it out for Switzerland as a whole.`);
   }
   const csv = await retryOnce(() => fetchCsv(queryUrl(canton, today.getUTCFullYear() - 2), ATTEMPT_MS));
-  return chElectricityAnswer(parseObservations(csv), q);
+  return chElectricityAnswer(parseObservations(csv), { ...q, today });
 }

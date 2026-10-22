@@ -8,6 +8,7 @@ import { INFO, buildQuery, chElectricityAnswer, findCanton, normaliseProfile, pa
 
 const C = "https://energy.ld.admin.ch/elcom/electricityprice/category/";
 const P = "https://energy.ld.admin.ch/elcom/electricityprice/product/";
+const TODAY = new Date("2026-10-22T12:00:00Z");
 const HEAD = "period,category,product,total,energy,gridusage,charge,aidfee";
 const SWISS_CSV = [
   HEAD,
@@ -49,7 +50,7 @@ test("a changed layout is reported, not guessed", () => {
 });
 
 test("national answer: newest year, H4 default, CHF per kWh", () => {
-  const a = chElectricityAnswer(parseObservations(SWISS_CSV), { energy: "electricity" });
+  const a = chElectricityAnswer(parseObservations(SWISS_CSV), { energy: "electricity", today: TODAY });
   assert.equal(a.status, "ok");
   assert.equal(a.price?.median, 0.277);
   assert.equal(a.price?.currency, "CHF");
@@ -65,16 +66,27 @@ test("national answer: newest year, H4 default, CHF per kWh", () => {
   assert.equal(a.price_type, "posted_price");
 });
 
+test("a tariff year that has not started is announced, not the headline", () => {
+  const csv = SWISS_CSV + `\r\n2027,${C}H4,${P}standard,26.56,11.4,10.95,1.0,2.3\r\n`; // 2027 value as seen on the live preview
+  const a = chElectricityAnswer(parseObservations(csv), { energy: "electricity", today: TODAY });
+  assert.equal(a.price?.median, 0.277);
+  assert.equal((a.extra as any).tariff_year, 2026);
+  assert.equal((a.extra as any).announced_next_year, 2027);
+  assert.equal((a.extra as any).announced_next_year_chf_per_kwh, 0.2656);
+  const jan = chElectricityAnswer(parseObservations(csv), { energy: "electricity", today: new Date("2027-01-02T00:00:00Z") });
+  assert.equal(jan.price?.median, 0.2656);
+});
+
 test("other profile and the same wording of the profile", () => {
   const obs = parseObservations(SWISS_CSV);
-  assert.equal(chElectricityAnswer(obs, { energy: "electricity", consumption_band: "h7" }).price?.median, 0.2487);
+  assert.equal(chElectricityAnswer(obs, { energy: "electricity", consumption_band: "h7", today: TODAY }).price?.median, 0.2487);
   assert.equal(normaliseProfile("4"), "H4");
   assert.equal(normaliseProfile(" h 8 "), "H8");
   assert.throws(() => normaliseProfile("H9"), InputError);
 });
 
 test("canton answer", () => {
-  const a = chElectricityAnswer(parseObservations(ZH_CSV), { energy: "electricity", canton: "Zürich" });
+  const a = chElectricityAnswer(parseObservations(ZH_CSV), { energy: "electricity", canton: "Zürich", today: TODAY });
   assert.equal(a.status, "ok");
   assert.equal((a.extra as any).place, "Zürich");
   assert.equal(a.price?.value, 0.255);
