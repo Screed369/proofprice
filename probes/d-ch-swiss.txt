@@ -1,0 +1,28 @@
+URL: https://lindas.admin.ch/query?query=SELECT%20DISTINCT%20%3Fobs%20FROM%20%3Chttps%3A%2F%2Flindas.admin.ch%2Felcom%2Felectricityprice%3E%20WHERE%20%7B%20%3Fobs%20a%20%3Chttps%3A%2F%2Fcube.link%2FObservation%3E%20.%20FILTER%28STRSTARTS%28STR%28%3Fobs%29%2C%22https%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss%2F%22%29%29%20%7D%20LIMIT%208
+Fetched: 2026-10-22T17:34:27Z from GitHub Actions
+Status, type, bytes: 200 text/csv;charset=UTF-8 693
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Thu, 22 Oct 2026 17:34:26 GMT
+content-type: text/csv;charset=UTF-8
+vary: Origin
+access-control-allow-credentials: true
+server-timing: sparql-proxy;dur=4750.329848999158;desc="Querying the endpoint"
+xkey: default
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-robots-tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+
+=== FILE TYPE: ASCII text, with CRLF line terminators
+=== FIRST 20000 BYTES
+obs
+https://energy.ld.admin.ch/elcom/electricityprice-swiss/observation/H1-cheapest-2018
+https://energy.ld.admin.ch/elcom/electricityprice-swiss/observation/H2-cheapest-2018
+https://energy.ld.admin.ch/elcom/electricityprice-swiss/observation/H3-cheapest-2018
+https://energy.ld.admin.ch/elcom/electricityprice-swiss/observation/H4-cheapest-2018
+https://energy.ld.admin.ch/elcom/electricityprice-swiss/observation/H5-cheapest-2018
+https://energy.ld.admin.ch/elcom/electricityprice-swiss/observation/H6-cheapest-2018
+https://energy.ld.admin.ch/elcom/electricityprice-swiss/observation/H7-cheapest-2018
+https://energy.ld.admin.ch/elcom/electricityprice-swiss/observation/H8-cheapest-2018
