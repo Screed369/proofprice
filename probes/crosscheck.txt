@@ -1,4 +1,4 @@
-Outside check, ref crosscheck/wave1, run 39794454806, 2026-10-22T14:18:30Z
+Outside check, ref crosscheck/wave1, run 39794970913, 2026-10-22T14:22:02Z
 
 gen-registry: skipping sources/at-fuel (no index.ts)
 gen-registry: skipping sources/au-wa-fuel (no index.ts)
@@ -7,18 +7,6 @@ gen-registry: skipping sources/us-cms-physician (no index.ts)
 gen-registry: 29 categories, 121 sources
 EXPLAINED es-fuel | Spain, diesel | ours 1.9161 (2026-10-19, n 11214) | theirs 1.88922 (2026-10-19) | gap 1.42% | gap 1.42% is inside the declared bias +0.2% to +1.7%
 AGREES    es-fuel | Spain, petrol 95 | ours 1.7877 (2026-10-19, n 10874) | theirs 1.78047 (2026-10-19) | gap 0.41%
-EXPLAINED fr-fuel | France, diesel | ours 2.3698 (2026-10-19, n 7127) | theirs 2.34584 (2026-10-19) | gap 1.02% | gap 1.02% is inside the declared bias +0.2% to +1.7%
-AGREES    fr-fuel | France, petrol 95 | ours 2.2335 (2026-10-19, n 1678) | theirs 2.22888 (2026-10-19) | gap 0.21%
-SUSPECT   gb-hmlr-ppd | Leeds | ours 245000 (2026-04-22..2026-08-26, n 422) | theirs 246385 (2026-08, n 616) | gap -0.56% | our count is 0.69x theirs (expected 1x within 30%): the area or the filter may differ. Known differences: The UK HPI average price is a model figure (an index applied to a base average) and is revised for recent months; ours is the median of standard-price (category A) sales. Our town is the Royal Mail postal town (BRISTOL includes BS34 in South Gloucestershire); theirs is the local authority, so the counts can differ even when prices agree. Our window is the last 6 months of registered sales and at most 5,000 sales; their figure is one month, about two months back.
-SUSPECT   gb-hmlr-ppd | Bristol | ours 357000 (2026-04-22..2026-08-28, n 663) | theirs 353596 (2026-08, n 378) | gap 0.96% | our count is 1.75x theirs (expected 1x within 30%): the area or the filter may differ. Known differences: The UK HPI average price is a model figure (an index applied to a base average) and is revised for recent months; ours is the median of standard-price (category A) sales. Our town is the Royal Mail postal town (BRISTOL includes BS34 in South Gloucestershire); theirs is the local authority, so the counts can differ even when prices agree. Our window is the last 6 months of registered sales and at most 5,000 sales; their figure is one month, about two months back.
 AGREES    ie-ppr | Dublin | ours 491000 (2025-10-16..2026-10-16, n 14100) | theirs 493000 (2026-08) | gap -0.41%
 AGREES    ie-ppr | Kildare | ours 430000 (2025-10-16..2026-10-16, n 1965) | theirs 428000 (2026-08) | gap 0.47%
 AGREES    ie-ppr | Longford | ours 200000 (2025-10-16..2026-10-16, n 367) | theirs 200000 (2026-08) | gap 0%
-AGREES    nl-cbs-fuel | Netherlands, diesel | ours 2.456 (2026-10-19) | theirs 2.45626 (2026-10-19) | gap -0.01%
-AGREES    nl-cbs-fuel | Netherlands, Euro95 petrol | ours 2.391 (2026-10-19) | theirs 2.39074 (2026-10-19) | gap 0.01%
-AGREES    us-eia-energy | TX | ours 15.88 (2026-07) | theirs 15.88 (2026-07) | gap 0%
-AGREES    us-eia-energy | CA | ours 33.61 (2026-07) | theirs 33.61 (2026-07) | gap 0%
-AGREES    us-eia-energy | NY | ours 29.9 (2026-07) | theirs 29.9 (2026-07) | gap 0%
-AGREES    us-eia-energy-business | TX business | ours 8.47 (2026-07) | theirs 8.47 (2026-07) | gap 0%
-AGREES    us-eia-energy-business | CA business | ours 30.56 (2026-07) | theirs 30.56 (2026-07) | gap 0%
-AGREES    us-eia-energy-business | NY business | ours 24.18 (2026-07) | theirs 24.18 (2026-07) | gap 0%
