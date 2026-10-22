@@ -80,3 +80,16 @@ test("history helpers: url, months, month rows", async () => {
   assert.equal(d.n, 5);
   assert.equal(d.median, 1.03);
 });
+
+test("ES: a thin province (LPG in 42) gets the labelled national figure; no library day means no widening", async () => {
+  const { esWidenToNational } = await import("./source");
+  const a = esWidenToNational("lpg", "province 42", undefined, new Date("2026-10-22T12:00:00Z"));
+  assert.ok(a);
+  assert.equal(a!.status, "ok");
+  assert.equal((a!.extra as any).widened_to, "mainland Spain and the Balearics");
+  assert.match(a!.summary, /Fewer than 5 stations sell .* in province 42, so no local range is published/);
+  assert.equal(a!.price!.unit, "per litre");
+  const m = esWidenToNational("methane", "province 17", undefined, new Date("2026-10-22T12:00:00Z"));
+  assert.equal(m!.price!.unit, "per kg");
+  assert.equal(esWidenToNational("lpg", "province 42", undefined, new Date("2026-01-01T12:00:00Z")), null);
+});
