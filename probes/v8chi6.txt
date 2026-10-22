@@ -1,0 +1,30 @@
+URL: https://data.cityofchicago.org/resource/ajtu-isnz.json?$select=pickup_community_area,count(*),avg(fare)&$where=trip_start_timestamp>'2026-09-01T00:00:00'&$group=pickup_community_area&$limit=3
+Fetched: 2026-10-22T08:47:11Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 239
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 08:47:11 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC4xNjYyMl8xXzY0aEdxWF9qdkJpNlVBbnV2MjB3bWRPamxJOUNN---gzipGzNsjCuX1fXcdQBbp3-UFVzyYq0--gzip--gzip"
+X-SODA2-Fields: ["pickup_community_area","count","avg_fare"]
+X-SODA2-Types: ["number","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: a6933385fee974fd50bfc591bfdf0058
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[{"pickup_community_area":"1","count":"2399","avg_fare":"24.6561676396997498"}
+,{"pickup_community_area":"2","count":"2595","avg_fare":"22.9176416184971098"}
+,{"pickup_community_area":"3","count":"13750","avg_fare":"18.9716903150694899"}]
