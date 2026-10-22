@@ -1,0 +1,32 @@
+URL: https://www.datos.gov.co/resource/jbjy-vk9h.json?$select=tipo_de_contrato,count(*)%20as%20n,avg(valor_del_contrato)%20as%20avgv&$where=fecha_de_firma%3E%272026-09-01T00:00:00%27&$group=tipo_de_contrato&$limit=5
+Fetched: 2026-10-22T06:44:48Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 424
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 06:44:48 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC44NzA0Nl8zNF8yNDY5V0oyY1BOTEdPUHJ4bjdocXQ3eVRqVEhla2NB---gzipM24UIB66WLNoq24HbqFnR9pHHZI--gzip--gzip"
+X-SODA2-Fields: ["tipo_de_contrato","n","avgv"]
+X-SODA2-Types: ["text","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 45b285b8efa1fef403600a592a495dd5
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+[{"tipo_de_contrato":"Arrendamiento de inmuebles","n":"572","avgv":"69601817.949877622378"}
+,{"tipo_de_contrato":"Arrendamiento de muebles","n":"50","avgv":"53801645.680000000000"}
+,{"tipo_de_contrato":"Asociación Público Privada","n":"6","avgv":"1047894748.00000000"}
+,{"tipo_de_contrato":"Comodato","n":"234","avgv":"29626275.948846153846"}
+,{"tipo_de_contrato":"Compraventa","n":"1970","avgv":"255894964064.98286294"}]
