@@ -1,0 +1,1179 @@
+URL: https://datacatalog.cookcountyil.gov/api/views/wvhk-k5uv.json
+Fetched: 2026-10-22T00:56:27Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 34345
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 00:56:27 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 8f0a79c6be1714a7b8c572fb84af47d8
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "id" : "wvhk-k5uv",
+  "name" : "Assessor - Parcel Sales",
+  "assetType" : "dataset",
+  "attribution" : "Cook County Assessor's Office",
+  "averageRating" : 0,
+  "category" : "Property & Taxation",
+  "createdAt" : 1650289055,
+  "description" : "Parcel sales for real property in Cook County, from 1999 to present. The Assessor's Office uses this data in its modeling to estimate the fair market value of unsold properties.\n\nWhen working with Parcel Index Numbers (PINs) make sure to zero-pad them to 14 digits. Some datasets may lose leading zeros for PINs when downloaded.\n\nSale document numbers correspond to those of the Cook County Clerk, and can be used on the <a href=\"https://ccrd.cookcountyclerkil.gov/i2/default.aspx\">Clerk's website</a> to find more information about each sale.\n\nNOTE: These sales <i>are</i> filtered, but likely include non-arms-length transactions - sales less than $10,000 along with quit claims, executor deeds, beneficial interests are excluded.  While the Data Department will upload what it has access to semi-monthly, sales are reported on a lag, with many records not populating until months after their official recording date.\n\nCurrent property class codes, their levels of assessment, and descriptions can be found <a href=\"https://prodassets.cookcountyassessoril.gov/s3fs-public/form_documents/classcode.pdf\">on the Assessor's website (pdf)</a> and <a href=\"https://github.com/ccao-data/data-architecture/blob/master/dbt/seeds/ccao/ccao.class_dict.csv\">in this class code dictionary (csv)</a>. Note that class codes details can change across time.\n\nFor more information on the sourcing of attached data and the preparation of this dataset, see the <a href=\"https://github.com/ccao-data/wiki/blob/master/SOPs/Open-Data.md\">Assessor's Standard Operating Procedures for Open Data</a> on GitHub.\n\nSee additional datasets in the <a href=\"https://datacatalog.cookcountyil.gov/stories/s/gzdr-q7c4\">Assessor's Open Data Catalog.</a>",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 96083,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 41141238,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1739485552,
+  "publicationGroup" : 18675076,
+  "publicationStage" : "published",
+  "rowIdentifierColumnId" : 605833770,
+  "rowsUpdatedAt" : 1792065409,
+  "rowsUpdatedBy" : "s6b5-uz7b",
+  "tableId" : 19783540,
+  "totalTimesRated" : 0,
+  "viewCount" : 52574,
+  "viewLastModified" : 1792515218,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1653314161,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 6747672,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1653314161,
+    "targetAudience" : "public",
+    "workflowId" : 2031,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1653314161,
+      "failureCount" : 0,
+      "startedAt" : 1653314161,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "s6b5-uz7b",
+      "displayName" : "Cook County Assessor's Office Data Department"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 605833771,
+    "name" : "pin",
+    "dataTypeName" : "text",
+    "description" : "Parcel Identification Number (PIN)",
+    "fieldName" : "pin",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141851744,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "33323020150000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "17032220150000",
+        "count" : "151"
+      }, {
+        "item" : "17103180800000",
+        "count" : "126"
+      }, {
+        "item" : "17032220180000",
+        "count" : "125"
+      }, {
+        "item" : "17032220200000",
+        "count" : "124"
+      }, {
+        "item" : "17102070340000",
+        "count" : "83"
+      }, {
+        "item" : "14062120060000",
+        "count" : "80"
+      }, {
+        "item" : "17102070380000",
+        "count" : "77"
+      }, {
+        "item" : "17102070360000",
+        "count" : "77"
+      }, {
+        "item" : "14062140170000",
+        "count" : "77"
+      }, {
+        "item" : "17102070370000",
+        "count" : "76"
+      }, {
+        "item" : "17032280050000",
+        "count" : "75"
+      }, {
+        "item" : "17032280040000",
+        "count" : "74"
+      }, {
+        "item" : "17032280160000",
+        "count" : "74"
+      }, {
+        "item" : "17032280370000",
+        "count" : "73"
+      }, {
+        "item" : "17102070350000",
+        "count" : "73"
+      }, {
+        "item" : "17102070390000",
+        "count" : "73"
+      }, {
+        "item" : "17104000110000",
+        "count" : "65"
+      }, {
+        "item" : "14062190130000",
+        "count" : "63"
+      }, {
+        "item" : "05272000010000",
+        "count" : "61"
+      }, {
+        "item" : "03101190010000",
+        "count" : "58"
+      } ],
+      "smallest" : "01011000020000",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833772,
+    "name" : "year",
+    "dataTypeName" : "number",
+    "description" : "Year",
+    "fieldName" : "year",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 141979911,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "2026.0",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2019",
+        "count" : "141100"
+      }, {
+        "item" : "2005",
+        "count" : "137198"
+      }, {
+        "item" : "2004",
+        "count" : "134192"
+      }, {
+        "item" : "2018",
+        "count" : "127839"
+      }, {
+        "item" : "2016",
+        "count" : "127660"
+      }, {
+        "item" : "2017.0",
+        "count" : "127399"
+      }, {
+        "item" : "2003",
+        "count" : "125121"
+      }, {
+        "item" : "2002",
+        "count" : "119391"
+      }, {
+        "item" : "2020",
+        "count" : "113844"
+      }, {
+        "item" : "2006",
+        "count" : "113356"
+      }, {
+        "item" : "2001",
+        "count" : "109468"
+      }, {
+        "item" : "2000",
+        "count" : "107117"
+      }, {
+        "item" : "2021.0",
+        "count" : "106960"
+      }, {
+        "item" : "2013.0",
+        "count" : "105644"
+      }, {
+        "item" : "2022.0",
+        "count" : "101398"
+      }, {
+        "item" : "2015.0",
+        "count" : "99265"
+      }, {
+        "item" : "2014",
+        "count" : "98349"
+      }, {
+        "item" : "2007",
+        "count" : "89507"
+      }, {
+        "item" : "2012",
+        "count" : "81494"
+      }, {
+        "item" : "2025",
+        "count" : "79257"
+      } ],
+      "smallest" : "1971",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 605833773,
+    "name" : "township_code",
+    "dataTypeName" : "text",
+    "description" : "Township code",
+    "fieldName" : "township_code",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141851726,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "77",
+      "null" : "0",
+      "top" : [ {
+        "item" : "72",
+        "count" : "259190"
+      }, {
+        "item" : "77",
+        "count" : "253193"
+      }, {
+        "item" : "71",
+        "count" : "222954"
+      }, {
+        "item" : "73",
+        "count" : "209050"
+      }, {
+        "item" : "70",
+        "count" : "153055"
+      }, {
+        "item" : "74",
+        "count" : "152002"
+      }, {
+        "item" : "76",
+        "count" : "105387"
+      }, {
+        "item" : "37",
+        "count" : "98101"
+      }, {
+        "item" : "39",
+        "count" : "81996"
+      }, {
+        "item" : "38",
+        "count" : "81928"
+      }, {
+        "item" : "31",
+        "count" : "73044"
+      }, {
+        "item" : "22",
+        "count" : "68506"
+      }, {
+        "item" : "13",
+        "count" : "65516"
+      }, {
+        "item" : "35",
+        "count" : "65471"
+      }, {
+        "item" : "29",
+        "count" : "61514"
+      }, {
+        "item" : "21",
+        "count" : "57261"
+      }, {
+        "item" : "24",
+        "count" : "56168"
+      }, {
+        "item" : "18",
+        "count" : "53426"
+      }, {
+        "item" : "28",
+        "count" : "51134"
+      }, {
+        "item" : "12",
+        "count" : "49973"
+      } ],
+      "smallest" : "10",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833774,
+    "name" : "neighborhood_code",
+    "dataTypeName" : "text",
+    "description" : "Assessor neighborhood code, first two digits are township, last three are neighborhood",
+    "fieldName" : "nbhd",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 146785097,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "77999",
+      "null" : "0",
+      "top" : [ {
+        "item" : "74030",
+        "count" : "59065"
+      }, {
+        "item" : "77131",
+        "count" : "47540"
+      }, {
+        "item" : "74022",
+        "count" : "44432"
+      }, {
+        "item" : "76010",
+        "count" : "35602"
+      }, {
+        "item" : "76011",
+        "count" : "27974"
+      }, {
+        "item" : "77120",
+        "count" : "26167"
+      }, {
+        "item" : "74012",
+        "count" : "25002"
+      }, {
+        "item" : "73031",
+        "count" : "24390"
+      }, {
+        "item" : "73060",
+        "count" : "23106"
+      }, {
+        "item" : "70010",
+        "count" : "21940"
+      }, {
+        "item" : "73084",
+        "count" : "21292"
+      }, {
+        "item" : "24031",
+        "count" : "20504"
+      }, {
+        "item" : "77030",
+        "count" : "20166"
+      }, {
+        "item" : "77102",
+        "count" : "18802"
+      }, {
+        "item" : "73062",
+        "count" : "18418"
+      }, {
+        "item" : "70080",
+        "count" : "18170"
+      }, {
+        "item" : "72030",
+        "count" : "16979"
+      }, {
+        "item" : "72380",
+        "count" : "16264"
+      }, {
+        "item" : "71070",
+        "count" : "14776"
+      }, {
+        "item" : "77170",
+        "count" : "14620"
+      } ],
+      "smallest" : "10011",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833775,
+    "name" : "class",
+    "dataTypeName" : "text",
+    "description" : "Property class",
+    "fieldName" : "class",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141851748,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "RR",
+      "null" : "0",
+      "top" : [ {
+        "item" : "299",
+        "count" : "846102"
+      }, {
+        "item" : "203",
+        "count" : "458847"
+      }, {
+        "item" : "211",
+        "count" : "244078"
+      }, {
+        "item" : "202",
+        "count" : "190127"
+      }, {
+        "item" : "234",
+        "count" : "115719"
+      }, {
+        "item" : "278",
+        "count" : "106962"
+      }, {
+        "item" : "295",
+        "count" : "99489"
+      }, {
+        "item" : "205",
+        "count" : "83218"
+      }, {
+        "item" : "100",
+        "count" : "80413"
+      }, {
+        "item" : "204",
+        "count" : "56567"
+      }, {
+        "item" : "207",
+        "count" : "51119"
+      }, {
+        "item" : "206",
+        "count" : "35479"
+      }, {
+        "item" : "517",
+        "count" : "31846"
+      }, {
+        "item" : "241",
+        "count" : "25284"
+      }, {
+        "item" : "593",
+        "count" : "23438"
+      }, {
+        "item" : "212",
+        "count" : "22318"
+      }, {
+        "item" : "590",
+        "count" : "22168"
+      }, {
+        "item" : "EX",
+        "count" : "22010"
+      }, {
+        "item" : "315",
+        "count" : "15903"
+      }, {
+        "item" : "208",
+        "count" : "13882"
+      } ],
+      "smallest" : "100",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833776,
+    "name" : "sale_date",
+    "dataTypeName" : "calendar_date",
+    "description" : "Sale date (recorded, not executed)",
+    "fieldName" : "sale_date",
+    "position" : 6,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 141846133,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "2026-08-12T00:00:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2005-06-01T00:00:00.000",
+        "count" : "14332"
+      }, {
+        "item" : "2004-06-01T00:00:00.000",
+        "count" : "14232"
+      }, {
+        "item" : "2005-08-01T00:00:00.000",
+        "count" : "13731"
+      }, {
+        "item" : "2004-07-01T00:00:00.000",
+        "count" : "13323"
+      }, {
+        "item" : "2005-05-01T00:00:00.000",
+        "count" : "13188"
+      }, {
+        "item" : "2004-08-01T00:00:00.000",
+        "count" : "12951"
+      }, {
+        "item" : "2005-07-01T00:00:00.000",
+        "count" : "12690"
+      }, {
+        "item" : "2004-04-01T00:00:00.000",
+        "count" : "12472"
+      }, {
+        "item" : "2003-06-01T00:00:00.000",
+        "count" : "12210"
+      }, {
+        "item" : "2003-08-01T00:00:00.000",
+        "count" : "12161"
+      }, {
+        "item" : "2006-06-01T00:00:00.000",
+        "count" : "12070"
+      }, {
+        "item" : "2005-09-01T00:00:00.000",
+        "count" : "12070"
+      }, {
+        "item" : "2003-07-01T00:00:00.000",
+        "count" : "11951"
+      }, {
+        "item" : "2004-05-01T00:00:00.000",
+        "count" : "11861"
+      }, {
+        "item" : "2003-09-01T00:00:00.000",
+        "count" : "11801"
+      }, {
+        "item" : "2006-05-01T00:00:00.000",
+        "count" : "11794"
+      }, {
+        "item" : "2005-04-01T00:00:00.000",
+        "count" : "11761"
+      }, {
+        "item" : "2001-06-01T00:00:00.000",
+        "count" : "11748"
+      }, {
+        "item" : "2004-09-01T00:00:00.000",
+        "count" : "11622"
+      }, {
+        "item" : "2002-06-01T00:00:00.000",
+        "count" : "11589"
+      } ],
+      "smallest" : "1971-09-15T00:00:00.000",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : {
+      "view" : "date_monthdy"
+    }
+  }, {
+    "id" : 605833777,
+    "name" : "is_mydec_date",
+    "dataTypeName" : "checkbox",
+    "description" : "Indicates whether the sale date has been overwritten with a more precise value from IDOR (Illinois Department of Revenue). In the past the Assessor's ingest process truncated sale dates to the first of the month. Not all sales can be updated with dates from IDOR.",
+    "fieldName" : "is_mydec_date",
+    "position" : 7,
+    "renderTypeName" : "checkbox",
+    "tableColumnId" : 142375549,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "null" : "0",
+      "top" : [ {
+        "item" : false,
+        "count" : "1521744"
+      }, {
+        "item" : true,
+        "count" : "1167067"
+      } ],
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833778,
+    "name" : "sale_price",
+    "dataTypeName" : "number",
+    "description" : "Sale price",
+    "fieldName" : "sale_price",
+    "position" : 8,
+    "renderTypeName" : "number",
+    "tableColumnId" : 141846144,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "930000117",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1",
+        "count" : "166209"
+      }, {
+        "item" : "250000",
+        "count" : "19482"
+      }, {
+        "item" : "150000",
+        "count" : "18648"
+      }, {
+        "item" : "200000",
+        "count" : "18401"
+      }, {
+        "item" : "0",
+        "count" : "17549"
+      }, {
+        "item" : "300000.0",
+        "count" : "16911"
+      }, {
+        "item" : "225000",
+        "count" : "15833"
+      }, {
+        "item" : "175000",
+        "count" : "15529"
+      }, {
+        "item" : "160000",
+        "count" : "15342"
+      }, {
+        "item" : "180000",
+        "count" : "15149"
+      }, {
+        "item" : "220000",
+        "count" : "14820"
+      }, {
+        "item" : "350000",
+        "count" : "14781"
+      }, {
+        "item" : "165000",
+        "count" : "14649"
+      }, {
+        "item" : "125000",
+        "count" : "14506"
+      }, {
+        "item" : "230000",
+        "count" : "14092"
+      }, {
+        "item" : "240000.0",
+        "count" : "13980"
+      }, {
+        "item" : "170000",
+        "count" : "13953"
+      }, {
+        "item" : "275000",
+        "count" : "13877"
+      }, {
+        "item" : "130000",
+        "count" : "13825"
+      }, {
+        "item" : "140000",
+        "count" : "13812"
+      } ],
+      "smallest" : "0",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : {
+      "precisionStyle" : "currency"
+    }
+  }, {
+    "id" : 605833780,
+    "name" : "sale_document_num",
+    "dataTypeName" : "text",
+    "description" : "Sale document number. Corresponds to Clerk's document number",
+    "fieldName" : "doc_no",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141851739,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "99999999",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1613718010",
+        "count" : "563"
+      }, {
+        "item" : "1408639079",
+        "count" : "529"
+      }, {
+        "item" : "1607419158",
+        "count" : "527"
+      }, {
+        "item" : "1607741074",
+        "count" : "443"
+      }, {
+        "item" : "1016818076",
+        "count" : "435"
+      }, {
+        "item" : "1120131059",
+        "count" : "420"
+      }, {
+        "item" : "1933940023",
+        "count" : "401"
+      }, {
+        "item" : "1401634057",
+        "count" : "341"
+      }, {
+        "item" : "2534627022",
+        "count" : "327"
+      }, {
+        "item" : "1716534070",
+        "count" : "324"
+      }, {
+        "item" : "1910045029",
+        "count" : "319"
+      }, {
+        "item" : "1721418087",
+        "count" : "316"
+      }, {
+        "item" : "2214522024",
+        "count" : "264"
+      }, {
+        "item" : "1435216102",
+        "count" : "246"
+      }, {
+        "item" : "2606427006",
+        "count" : "240"
+      }, {
+        "item" : "935810017",
+        "count" : "217"
+      }, {
+        "item" : "1622516092",
+        "count" : "208"
+      }, {
+        "item" : "1113926085",
+        "count" : "208"
+      }, {
+        "item" : "1123518042",
+        "count" : "190"
+      }, {
+        "item" : "910433031",
+        "count" : "190"
+      } ],
+      "smallest" : "0",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833781,
+    "name" : "sale_deed_type",
+    "dataTypeName" : "text",
+    "description" : "Sale deed type",
+    "fieldName" : "deed_type",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141851728,
+    "cachedContents" : {
+      "non_null" : "2687652",
+      "largest" : "Warranty",
+      "null" : "1159",
+      "top" : [ {
+        "item" : "Warranty",
+        "count" : "1821966"
+      }, {
+        "item" : "Other",
+        "count" : "428225"
+      }, {
+        "item" : "Trustee",
+        "count" : "316107"
+      }, {
+        "item" : "Quit claim",
+        "count" : "96541"
+      }, {
+        "item" : "Executor",
+        "count" : "24813"
+      } ],
+      "smallest" : "Executor",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833782,
+    "name" : "mydec_deed_type",
+    "dataTypeName" : "text",
+    "description" : "Deed type from MyDec, more granular than CCAO deed type.",
+    "fieldName" : "mydec_deed_type",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 149894704,
+    "cachedContents" : {
+      "non_null" : "931334",
+      "largest" : "Warranty Deed",
+      "null" : "1757477",
+      "top" : [ {
+        "item" : "Warranty Deed",
+        "count" : "649721"
+      }, {
+        "item" : "Trustee Deed",
+        "count" : "119942"
+      }, {
+        "item" : "Special Warranty Deed",
+        "count" : "107230"
+      }, {
+        "item" : "Quit Claim Deed",
+        "count" : "15189"
+      }, {
+        "item" : "Judicial Sale",
+        "count" : "12238"
+      }, {
+        "item" : "Executor Deed",
+        "count" : "8546"
+      }, {
+        "item" : "Administrator's Deed",
+        "count" : "6309"
+      }, {
+        "item" : "Deed in Trust",
+        "count" : "4760"
+      }, {
+        "item" : "Other",
+        "count" : "3551"
+      }, {
+        "item" : "Guardian's Deed",
+        "count" : "954"
+      }, {
+        "item" : "Limited Warranty Deed",
+        "count" : "764"
+      }, {
+        "item" : "Beneficial interest",
+        "count" : "462"
+      }, {
+        "item" : "Judge's Deed",
+        "count" : "435"
+      }, {
+        "item" : "Sheriff's Deed",
+        "count" : "369"
+      }, {
+        "item" : "Selling Officer's Deed",
+        "count" : "338"
+      }, {
+        "item" : "Deed in lieu of Foreclosure",
+        "count" : "263"
+      }, {
+        "item" : "Special Commissioner's Deed",
+        "count" : "118"
+      }, {
+        "item" : "Tax Deed",
+        "count" : "105"
+      }, {
+        "item" : "Court Officer's Deed",
+        "count" : "11"
+      }, {
+        "item" : "Corrective Deed",
+        "count" : "7"
+      } ],
+      "smallest" : "Administrator's Deed",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833783,
+    "name" : "sale_seller_name",
+    "dataTypeName" : "text",
+    "description" : "Sale seller name",
+    "fieldName" : "seller_name",
+    "position" : 12,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141846143,
+    "cachedContents" : {
+      "non_null" : "2504995",
+      "largest" : "Μ14 LAND INVESTMENTS LLC, AN ILLINOIS LIMITED LIABILITY COMPANY",
+      "null" : "183816",
+      "top" : [ {
+        "item" : "UNKNOWN",
+        "count" : "47858"
+      }, {
+        "item" : "CHICAGO TITLE LAND TRUST",
+        "count" : "15275"
+      }, {
+        "item" : "CHICAGO TITLE LAND TRUST CO TR 0000",
+        "count" : "13253"
+      }, {
+        "item" : "FANNIE MAE",
+        "count" : "11220"
+      }, {
+        "item" : "THE JUDICIAL SALES CORPOR",
+        "count" : "8322"
+      }, {
+        "item" : "DEUTSCHE BK NATL TRUST CO",
+        "count" : "8144"
+      }, {
+        "item" : "JUDICIAL SALES CORP",
+        "count" : "7266"
+      }, {
+        "item" : "FEDERAL HOME LOAN MTG CORP",
+        "count" : "6910"
+      }, {
+        "item" : "Federal Home Loan Mortgage Corporat",
+        "count" : "4542"
+      }, {
+        "item" : "US BK",
+        "count" : "4440"
+      }, {
+        "item" : "WELLS FARGO BK",
+        "count" : "4165"
+      }, {
+        "item" : "INTERCOUNTY JUDICIAL SALE",
+        "count" : "3961"
+      }, {
+        "item" : "HOUSING & URBAN DEVELOPMENT",
+        "count" : "3906"
+      }, {
+        "item" : "THE JUDICIAL SALES CORPORATION",
+        "count" : "3718"
+      }, {
+        "item" : "U S BK",
+        "count" : "3671"
+      }, {
+        "item" : "INTERCOUNTY JUDICIAL SALES CORP",
+        "count" : "3450"
+      }, {
+        "item" : "Federal National Mortgage Associati",
+        "count" : "3176"
+      }, {
+        "item" : "Fannie Mae a/k/a Federal National M",
+        "count" : "3064"
+      }, {
+        "item" : "FEDERAL NATL MTG ASSN",
+        "count" : "2915"
+      }, {
+        "item" : "HSBC BK USA",
+        "count" : "2897"
+      } ],
+      "smallest" : "`",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833784,
+    "name" : "is_multisale",
+    "dataTypeName" : "checkbox",
+    "description" : "Indicates whether a parcel was sold individually or as part of a larger group of PINs",
+    "fieldName" : "is_multisale",
+    "position" : 13,
+    "renderTypeName" : "checkbox",
+    "tableColumnId" : 141935867,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "null" : "0",
+      "top" : [ {
+        "item" : false,
+        "count" : "2122775"
+      }, {
+        "item" : true,
+        "count" : "566036"
+      } ],
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833785,
+    "name" : "num_parcels_sale",
+    "dataTypeName" : "number",
+    "description" : "The number of parcels that were part of the sale",
+    "fieldName" : "num_parcels_sale",
+    "position" : 14,
+    "renderTypeName" : "number",
+    "tableColumnId" : 141846128,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "largest" : "564.0",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1",
+        "count" : "2122775"
+      }, {
+        "item" : "2",
+        "count" : "350116"
+      }, {
+        "item" : "3",
+        "count" : "75372"
+      }, {
+        "item" : "4",
+        "count" : "30767"
+      }, {
+        "item" : "5",
+        "count" : "16016"
+      }, {
+        "item" : "6",
+        "count" : "13634"
+      }, {
+        "item" : "7",
+        "count" : "9472"
+      }, {
+        "item" : "10",
+        "count" : "7608"
+      }, {
+        "item" : "8",
+        "count" : "7492"
+      }, {
+        "item" : "9",
+        "count" : "5806"
+      }, {
+        "item" : "12",
+        "count" : "3395"
+      }, {
+        "item" : "11.0",
+        "count" : "3194"
+      }, {
+        "item" : "13",
+        "count" : "2213"
+      }, {
+        "item" : "15",
+        "count" : "1996"
+      }, {
+        "item" : "14",
+        "count" : "1887"
+      }, {
+        "item" : "17",
+        "count" : "1648"
+      }, {
+        "item" : "16",
+        "count" : "1522"
+      }, {
+        "item" : "20",
+        "count" : "1447"
+      }, {
+        "item" : "19",
+        "count" : "1260"
+      }, {
+        "item" : "24",
+        "count" : "1184"
+      } ],
+      "smallest" : "1.0",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833786,
+    "name" : "sale_buyer_name",
+    "dataTypeName" : "text",
+    "description" : "Sale buyer name",
+    "fieldName" : "buyer_name",
+    "position" : 15,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141846119,
+    "cachedContents" : {
+      "non_null" : "2522394",
+      "largest" : "Z & Z REAL ESTATE , LLC",
+      "null" : "166417",
+      "top" : [ {
+        "item" : "UNKNOWN",
+        "count" : "26586"
+      }, {
+        "item" : "CHICAGO TITLE LAND TRUST",
+        "count" : "8396"
+      }, {
+        "item" : "CHICAGO TITLE LAND TRUST CO TR 0008",
+        "count" : "2769"
+      }, {
+        "item" : "FEDERAL NATIONAL MORTGAGE",
+        "count" : "2166"
+      }, {
+        "item" : "CHICAGO TITLE LAND TRUST CO TR 0000",
+        "count" : "1098"
+      }, {
+        "item" : "CHICAGO TITLE LAND TRUST COMPANY",
+        "count" : "1042"
+      }, {
+        "item" : "U.S. BANK NATIONAL ASSOCI",
+        "count" : "973"
+      }, {
+        "item" : "COUNTY OF COOK, D/B/A COO",
+        "count" : "971"
+      }, {
+        "item" : "CHICAGO TITLE",
+        "count" : "892"
+      }, {
+        "item" : "FEDERAL HOME LOAN MORTGAG",
+        "count" : "852"
+      }, {
+        "item" : "SCANNELL PROPERTIES #425,",
+        "count" : "791"
+      }, {
+        "item" : "CSC PALATINE APARTMENTS L",
+        "count" : "728"
+      }, {
+        "item" : "GRANDVIEW CAPITAL, LLC",
+        "count" : "690"
+      }, {
+        "item" : "COUNTY OF COOK",
+        "count" : "675"
+      }, {
+        "item" : "THE SECRETARY OF HOUSING",
+        "count" : "607"
+      }, {
+        "item" : "CITY OF CHICAGO",
+        "count" : "530"
+      }, {
+        "item" : "2 W DELAWARE RESIDENCES LLC",
+        "count" : "529"
+      }, {
+        "item" : "AGJ 2WD OWNER 1 LLC",
+        "count" : "527"
+      }, {
+        "item" : "FEDERAL NATIONAL MORTGAGE ASSOCIATION",
+        "count" : "500"
+      }, {
+        "item" : "DEUTSCHE BANK NATIONAL TR",
+        "count" : "483"
+      } ],
+      "smallest" : "`",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833787,
+    "name" : "sale_type",
+    "dataTypeName" : "text",
+    "description" : "Sale type",
+    "fieldName" : "sale_type",
+    "position" : 16,
+    "renderTypeName" : "text",
+    "tableColumnId" : 141846110,
+    "cachedContents" : {
+      "non_null" : "2174150",
+      "largest" : "LAND AND BUILDING",
+      "null" : "514661",
+      "top" : [ {
+        "item" : "LAND AND BUILDING",
+        "count" : "2109737"
+      }, {
+        "item" : "LAND",
+        "count" : "64413"
+      } ],
+      "smallest" : "LAND",
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833788,
+    "name" : "sale_filter_same_sale_within_365",
+    "dataTypeName" : "checkbox",
+    "description" : "Remove sale with the same value (for the same PIN) within 365 days",
+    "fieldName" : "sale_filter_same_sale_within_365",
+    "position" : 17,
+    "renderTypeName" : "checkbox",
+    "tableColumnId" : 149499117,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "null" : "0",
+      "top" : [ {
+        "item" : false,
+        "count" : "2675426"
+      }, {
+        "item" : true,
+        "count" : "13385"
+      } ],
+      "count" : "2688811",
+      "cardinality" : "2688811"
+    },
+    "format" : { }
+  }, {
+    "id" : 605833789,
+    "name" : "sale_filter_less_than_10k",
+    "dataTypeName" : "checkbox",
+    "description" : "Indicator for whether sale is less than $10K FMW",
+    "fieldName" : "sale_filter_less_than_10k",
+    "position" : 18,
+    "renderTypeName" : "checkbox",
+    "tableColumnId" : 149499116,
+    "cachedContents" : {
+      "non_null" : "2688811",
+      "null" : "0",
+      "top" : [ {
+        "item" : false,
+        "count" : "2473102"
+      }, {
+        "item" : true,
+        "c
