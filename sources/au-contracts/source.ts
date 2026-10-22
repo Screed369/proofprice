@@ -136,13 +136,25 @@ export function dayWindows(days: number, now: Date = new Date()): { from: string
   return out;
 }
 
+/** AusTender answers HTTP 400 "No Records found for Date Range" for a day with no notices (weekends, holidays). That is an empty day, not an outage. */
+export function isEmptyDay(err: unknown): boolean {
+  return err instanceof SourceError && err.status === 400 && /no records/i.test(err.detail ?? "");
+}
+
 async function dayContracts(day: { from: string; to: string }): Promise<{ contracts: AuContract[]; full: boolean }> {
   let url: string | null = `${BASE}/${day.from}T00:00:00Z/${day.to}T00:00:00Z`;
   const contracts: AuContract[] = [];
   let pages = 0;
   let more = false;
   while (url && pages < PAGES_PER_DAY) {
-    const page = parsePage(await fetchJson(url, { headers: { accept: "application/json" } }, 20000));
+    let raw: any;
+    try {
+      raw = await fetchJson(url, { headers: { accept: "application/json" } }, 20000);
+    } catch (err) {
+      if (isEmptyDay(err)) break;
+      throw err;
+    }
+    const page = parsePage(raw);
     contracts.push(...page.contracts);
     pages++;
     url = page.next;
