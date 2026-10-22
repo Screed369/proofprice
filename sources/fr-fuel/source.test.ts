@@ -182,3 +182,19 @@ test("FR count guard: frHarvest itself refuses a thin feed against a stored libr
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test("FR: a thin department (LPG in 08) gets the labelled national figure; common fuels are never widened", async () => {
+  const { frWidenToNational } = await import("./source");
+  const today = "2026-10-22"; // library holds ALL/lpg for this day (fr-fuel daily file)
+  const a = frWidenToNational({ department: "08", fuel: "gplc", today }, "department 08");
+  assert.ok(a, "national LPG row exists in the library");
+  assert.equal(a!.status, "ok");
+  assert.equal((a!.extra as any).widened, true);
+  assert.equal((a!.extra as any).widened_from, "department 08");
+  assert.match(a!.summary, /Fewer than 5 stations sell LPG \(GPLc\) in department 08, so no local range is published\. This is the figure for metropolitan France instead/);
+  assert.match(a!.notice, /Fewer than 5 stations/);
+  assert.ok(a!.sample_size! >= 5);
+  assert.equal(a!.price!.currency, "EUR");
+  assert.equal(frWidenToNational({ department: "08", fuel: "gazole", today }, "department 08"), null);
+  assert.equal(frWidenToNational({ department: "08", fuel: "gplc", today: "2026-01-01" }, "department 08"), null); // no recent library day
+});
