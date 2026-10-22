@@ -68,6 +68,13 @@ Rules:
 - Facts first still applies: probe the real response (see the **Probe** recipe in CLAUDE.md), copy it into your test as a fixture,
   and write the date you checked it.
 
+## Kits: a whole source from a short config (`lib/adapters/kits/`)
+
+For a table a statistics office publishes (one official figure per item, place and period: PxWeb, PxStat/JSON-stat, Eurostat,
+SDMX CSV, OData, CKAN datastore), do not hand-write fetch/parse/answer/harvest code: write a config for `defineStatsTableSource`
+(about 60 lines) and a fixture test that calls `checkKitFixture`. Recipe and rules: `lib/adapters/kits/README.md`. The kit folder
+belongs to the Adapter Steward; ask for kit changes on the Notion Gap fixes page ("Kit request").
+
 ## Optional: an outside check (`crossCheck`)
 
 If the publisher (or another official body) states a headline figure for the same place and period, add `crossCheck` to the
