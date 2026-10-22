@@ -1,0 +1,28 @@
+URL: https://data.cityofchicago.org/resource/ajtu-isnz.json?$select=count(*)&$where=trip_start_timestamp>'2026-09-01'
+Fetched: 2026-10-22T08:45:04Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 21
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 08:45:04 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC4xNjYyMl8xXzY0QVNXaGFOLTJ0OXhNQ2ZKeG5pWDkzNGF0S2xz-IozSWvC_tViK53RLTYzulXJNY9--gzip--gzip"
+X-SODA2-Fields: ["count"]
+X-SODA2-Types: ["number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 0810adaf24c867873e1ce14bbfef867b
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[{"count":"597205"}]
