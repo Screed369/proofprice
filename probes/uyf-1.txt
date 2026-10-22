@@ -1,0 +1,315 @@
+URL: https://catalogodatos.gub.uy/api/3/action/datastore_search?resource_id=c486544e-0fca-4f6f-8403-3ee379a868f4&limit=40&sort=%C3%81%C3%B1o%20desc,Mes%20desc
+Fetched: 2026-10-22T23:32:55Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 12679
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/html; charset=utf-8
+Pragma: no-cache
+Content-Length: 12679
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (5949), with CRLF line terminators
+=== FIRST 30000 BYTES
+<!doctype html>
+<html class="no-js" lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Error de seguridad - Sitio oficial de la República Oriental del Uruguay</title>
+
+  <link rel="shortcut icon" type="image/ico" href="../recursos/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" href="../recursos/assets/favicons/favicon-512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../recursos/assets/favicons/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../recursos/assets/favicons/favicon-180.png">
+
+  <style>
+		
+		:root {
+			--main-blue: #25418e;
+		}
+
+		* {
+			margin:0; 
+			padding:0;
+		}
+
+		*, 
+		:after, 
+		:before {
+			box-sizing: inherit;
+		}
+
+		html {
+			box-sizing: border-box;
+			min-height: 100%;
+			-webkit-tap-highlight-color: transparent;
+			-webkit-font-smoothing: antialiased;
+			font-family: sans-serif;
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+			background-color: var(--main-blue);
+		}
+
+		body {
+			background-color: #f9f9f9;
+			color: #000;
+			font-family: Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, sans-serif;
+			font-size: 1em;
+			font-weight: 400;
+			line-height: 1.5;
+		}
+
+		body:after {
+			opacity: 0;
+			content: "";
+			-webkit-transition: opacity .5s ease-in-out;
+			transition: opacity .5s ease-in-out;
+		}
+
+		a {
+			color: var(--main-blue);
+			text-decoration: none;
+		}
+		
+		a:focus, 
+		a:hover {
+				text-decoration: underline;
+		}
+		
+		.u-textSmall {
+			font-size: .95em!important;
+		}
+		.u-textUnderline {
+			text-decoration: underline!important;
+		}
+		.Container {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 1328px;
+			padding-left: 1.5rem;
+			padding-right: 1.5rem;
+		}
+		.Container:after, 
+		.Container:before {
+			display: table;
+			content: "";
+		}
+		.Container:after {
+			clear: both;
+		}
+
+		.errorPage {
+			margin: 6rem 0 8rem;
+		}
+
+		.errorPage > *:last-child {
+			margin-bottom: 0;
+		}
+
+		.errorPage-nombre {
+			margin-bottom: .6rem;
+			line-height: 1;
+			color: #ba3a25;
+			font-weight: 700;
+			font-size: 2.05em;
+		}
+		.errorPage-mensaje {
+			margin-bottom: .9rem;
+			line-height: 1.2;
+			font-weight: 700;
+			font-size: 3.2em;
+			text-wrap: balance;
+		}
+		.errorPage-texto {
+			margin-bottom: 2.5rem;
+			font-size: 1.8em;
+		}
+
+		.errorPage-acciones {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}	
+
+		.Button {
+			display: inline-block;
+			background-color: #eee;
+			border: 0 solid currentcolor;
+			border-radius: 3px;
+			box-shadow: 1px 1px 2px rgba(0,0,0,.15);
+			box-sizing: border-box;
+			color: inherit;
+			font: inherit;
+			font-weight: 600;
+			margin: 0;
+			padding: .5em 1.5em;
+			position: relative;
+			text-align: center;
+			text-decoration: none;
+			-webkit-transition: box-shadow .35s,background-color .35s;
+			transition: box-shadow .35s,background-color .35s;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+
+		.Button--inverse {
+			border: 1px solid var(--main-blue);
+			background-color: #fff;
+			color: var(--main-blue);
+		}
+
+		.Button--inverse:hover {
+			color: #fff;
+			background-color: var(--main-blue);
+		}
+
+		.Button--errorPage {
+			padding: .4em 1em .5em;
+			font-size: 1.625em !important;
+		}
+
+		.Feedback {
+			height:57px;
+			background-color: #fff;
+			border-top: 1px solid #eee;
+		}
+
+		.Footer {
+			background-color: var(--main-blue);
+			color: #fff;
+			margin-top: 0;
+			height: 100px;
+		}
+
+		.Header--slim {
+			box-shadow: 0 0 6px rgba(0, 0, 0, .08);
+		}	
+
+		.Header--slim .Container {
+			align-items: stretch;
+			display: flex;
+			justify-content: flex-start;
+			max-width: 1600px;
+			padding-inline: 1.5rem;
+		}
+
+		.Header-top {
+			background-color: var(--main-blue);
+			border-bottom: 1px solid #5167a5;
+		}
+
+		.Header-top .Header-site .Parent {
+			display: block;
+			color: #fff;
+			font-size: .875rem;
+			font-weight: 400;
+			padding-block: .5rem;
+			padding-bottom: .5rem;
+			padding-top: .5rem;
+		}
+
+		.Header-body {
+			height: 86px;
+			background-color: var(--main-blue);
+		}
+
+		.Header-body .Container {
+			height: 100%;
+		}
+
+		.Header-logo {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			align-items: center;
+		}
+
+		.Header-logo svg {
+			height: 40px;
+			width: auto;
+		}	
+
+		@media screen and (max-width: 992px) {
+			.Header--slim .Container,
+			.Container {
+				padding-left: .75rem;
+				padding-right: .75rem;
+			}
+			.Header-top .Header-site {
+				height: 38px;
+				display: flex;
+				align-items: center;
+			}
+			.Header-top .Header-site .Parent {
+					font-size: .825rem;
+					line-height: 1.25;
+			}
+			.Header-body {
+				height: 78px;
+			}
+			.Header-logo svg {
+				height: 38px;
+			}
+
+			.errorPage {
+				margin: 4rem 0 5rem;
+			}
+			.errorPage-acciones {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+		}
+	</style>
+	
+</head>
+
+<body>
+	<div class="Header--slim">
+		<div class="Header-top">
+				<div class="Container">
+						<div class="Header-site">
+							<span class="Parent">Sitio oficial de la República Oriental del Uruguay</span>
+						</div>
+				</div>
+		</div>
+		<div class="Header-body">
+			<div class="Container">
+				<div class="Header-logo">
+					<a href="#">
+						<svg width="102" height="34" viewBox="0 0 102 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7.13379 33.207C4.84863 33.207 3.10059 32.8066 1.88965 32.0059C0.688477 31.2148 0.0878906 30.1016 0.0878906 28.666C0.0878906 27.6797 0.395508 26.8545 1.01074 26.1904C1.62598 25.5264 2.5293 25.0527 3.7207 24.7695C3.26172 24.5742 2.86133 24.2568 2.51953 23.8174C2.17773 23.3682 2.00684 22.8945 2.00684 22.3965C2.00684 21.7715 2.1875 21.2539 2.54883 20.8438C2.91016 20.4238 3.43262 20.0137 4.11621 19.6133C3.25684 19.2422 2.57324 18.6465 2.06543 17.8262C1.56738 17.0059 1.31836 16.0391 1.31836 14.9258C1.31836 13.7344 1.57715 12.7236 2.09473 11.8936C2.62207 11.0537 3.38379 10.4141 4.37988 9.97461C5.38574 9.53516 6.60645 9.31543 8.04199 9.31543C8.34473 9.31543 8.69629 9.33496 9.09668 9.37402C9.49707 9.41309 9.86328 9.45703 10.1953 9.50586C10.5371 9.55469 10.7666 9.59375 10.8838 9.62305H16.5967V11.8936L14.0332 12.5527C14.2676 12.9141 14.4434 13.2998 14.5605 13.71C14.6777 14.1201 14.7363 14.5547 14.7363 15.0137C14.7363 16.7715 14.1211 18.1436 12.8906 19.1299C11.6699 20.1064 9.9707 20.5947 7.79297 20.5947C7.27539 20.5654 6.78711 20.5264 6.32812 20.4775C6.10352 20.6533 5.93262 20.8389 5.81543 21.0342C5.69824 21.2295 5.63965 21.4346 5.63965 21.6494C5.63965 21.8643 5.72754 22.0449 5.90332 22.1914C6.08887 22.3281 6.3623 22.4355 6.72363 22.5137C7.09473 22.582 7.55371 22.6162 8.10059 22.6162H10.8838C12.6807 22.6162 14.0479 23.002 14.9854 23.7734C15.9326 24.5449 16.4062 25.6777 16.4062 27.1719C16.4062 29.0859 15.6055 30.5703 14.0039 31.625C12.4121 32.6797 10.1221 33.207 7.13379 33.207ZM7.32422 30.292C8.38867 30.292 9.30176 30.1895 10.0635 29.9844C10.835 29.7891 11.4258 29.5059 11.8359 29.1348C12.2461 28.7734 12.4512 28.3389 12.4512 27.8311C12.4512 27.4209 12.3291 27.0938 12.085 26.8496C11.8506 26.6152 11.4893 26.4492 11.001 26.3516C10.5225 26.2539 9.90723 26.2051 9.15527 26.2051H6.84082C6.29395 26.2051 5.80078 26.293 5.36133 26.4688C4.93164 26.6445 4.58984 26.8887 4.33594 27.2012C4.08203 27.5234 3.95508 27.8945 3.95508 28.3145C3.95508 28.9297 4.24805 29.4131 4.83398 29.7646C5.42969 30.1162 6.25977 30.292 7.32422 30.292ZM8.04199 17.8701C8.88184 17.8701 9.49707 17.6113 9.8877 17.0938C10.2783 16.5762 10.4736 15.873 10.4736 14.9844C10.4736 13.998 10.2686 13.2607 9.8584 12.7725C9.45801 12.2744 8.85254 12.0254 8.04199 12.0254C7.22168 12.0254 6.60645 12.2744 6.19629 12.7725C5.78613 13.2607 5.58105 13.998 5.58105 14.9844C5.58105 15.873 5.78125 16.5762 6.18164 17.0938C6.5918 17.6113 7.21191 17.8701 8.04199 17.8701ZM34.3359 9.62305V26H30.9082L30.3076 23.9053H30.0732C29.7217 24.4619 29.2822 24.916 28.7549 25.2676C28.2275 25.6191 27.6465 25.8779 27.0117 26.0439C26.377 26.21 25.7178 26.293 25.0342 26.293C23.8623 26.293 22.8418 26.0879 21.9727 25.6777C21.1035 25.2578 20.4248 24.6084 19.9365 23.7295C19.458 22.8506 19.2188 21.708 19.2188 20.3018V9.62305H23.6865V19.1885C23.6865 20.3604 23.8965 21.2441 24.3164 21.8398C24.7363 22.4355 25.4053 22.7334 26.3232 22.7334C27.2314 22.7334 27.9443 22.5283 28.4619 22.1182C28.9795 21.6982 29.3408 21.0879 29.5459 20.2871C29.7607 19.4766 29.8682 18.4902 29.8682 17.3281V9.62305H34.3359ZM43.4912 3.20703V8.50977C43.4912 9.125 43.4717 9.73535 43.4326 10.3408C43.4033 10.9463 43.3643 11.415 43.3154 11.7471H43.4912C43.9209 11.0732 44.5068 10.502 45.249 10.0332C45.9912 9.55469 46.9531 9.31543 48.1348 9.31543C49.9707 9.31543 51.46 10.0332 52.6025 11.4688C53.7451 12.9043 54.3164 15.0088 54.3164 17.7822C54.3164 19.6475 54.0527 21.2148 53.5254 22.4844C52.998 23.7441 52.2607 24.6963 51.3135 25.3408C50.3662 25.9756 49.2676 26.293 48.0176 26.293C46.8164 26.293 45.8691 26.0781 45.1758 25.6484C44.4824 25.2188 43.9209 24.7354 43.4912 24.1982H43.1836L42.4365 26H39.0234V3.20703H43.4912ZM46.6992 12.8896C45.918 12.8896 45.2979 13.0508 44.8389 13.373C44.3799 13.6953 44.043 14.1787 43.8281 14.8232C43.623 15.4678 43.5107 16.2832 43.4912 17.2695V17.7529C43.4912 19.3447 43.7256 20.5654 44.1943 21.415C44.6631 22.2549 45.5176 22.6748 46.7578 22.6748C47.6758 22.6748 48.4033 22.25 48.9404 21.4004C49.4873 20.5508 49.7607 19.3252 49.7607 17.7236C49.7607 16.1221 49.4873 14.916 48.9404 14.1055C48.3936 13.2949 47.6465 12.8896 46.6992 12.8896ZM57.3779 23.9053C57.3779 22.9873 57.627 22.3428 58.125 21.9717C58.6328 21.6006 59.2432 21.415 59.9561 21.415C60.6494 21.415 61.2451 21.6006 61.7432 21.9717C62.251 22.3428 62.5049 22.9873 62.5049 23.9053C62.5049 24.7842 62.251 25.4189 61.7432 25.8096C61.2451 26.2002 60.6494 26.3955 59.9561 26.3955C59.2432 26.3955 58.6328 26.2002 58.125 25.8096C57.627 25.4189 57.3779 24.7842 57.3779 23.9053ZM81.5918 9.62305V26H78.1641L77.5635 23.9053H77.3291C76.9775 24.4619 76.5381 24.916 76.0107 25.2676C75.4834 25.6191 74.9023 25.8779 74.2676 26.0439C73.6328 26.21 72.9736 26.293 72.29 26.293C71.1182 26.293 70.0977 26.0879 69.2285 25.6777C68.3594 25.2578 67.6807 24.6084 67.1924 23.7295C66.7139 22.8506 66.4746 21.708 66.4746 20.3018V9.62305H70.9424V19.1885C70.9424 20.3604 71.1523 21.2441 71.5723 21.8398C71.9922 22.4355 72.6611 22.7334 73.5791 22.7334C74.4873 22.7334 75.2002 22.5283 75.7178 22.1182C76.2354 21.6982 76.5967 21.0879 76.8018 20.2871C77.0166 19.4766 77.124 18.4902 77.124 17.3281V9.62305H81.5918ZM83.9355 9.62305H88.8281L91.9189 18.8369C92.0166 19.1299 92.0996 19.4277 92.168 19.7305C92.2363 20.0332 92.2949 20.3457 92.3438 20.668C92.3926 20.9902 92.4316 21.3271 92.4609 21.6787H92.5488C92.6074 21.1514 92.6855 20.6582 92.7832 20.1992C92.8906 19.7402 93.0225 19.2861 93.1787 18.8369L96.2109 9.62305H101.001L94.0723 28.0947C93.6523 29.2275 93.1055 30.1699 92.4316 30.9219C91.7578 31.6836 90.9814 32.2549 90.1025 32.6357C89.2334 33.0166 88.2764 33.207 87.2314 33.207C86.7236 33.207 86.2842 33.1777 85.9131 33.1191C85.542 33.0703 85.2246 33.0166 84.9609 32.958V29.4131C85.166 29.4619 85.4248 29.5059 85.7373 29.5449C86.0498 29.584 86.377 29.6035 86.7188 29.6035C87.3438 29.6035 87.8809 29.4717 88.3301 29.208C88.7793 28.9443 89.1553 28.5879 89.458 28.1387C89.7607 27.6992 90 27.2158 90.1758 26.6885L90.4395 25.8828L83.9355 9.62305Z" fill="white"/>
+		</svg>
+					</a>
+				</div>	
+			</div>
+		</div>
+	</div>
+	
+	<div class="Container">
+	  <div class="Section errorPage">
+			<div class="errorPage-nombre">Error de seguridad</div>
+			<div class="errorPage-mensaje">Su solicitud fue bloqueada por prevención</div>
+			<p class="errorPage-texto">Puede recargar la página o intentar nuevamente en unos minutos.</p>
+			
+			<!-- Con botón de acción-->
+			<div class="errorPage-acciones">
+				<!--<a href="./" class="Button Button--primary Button--inverse Button--errorPage">Ir a la página principal</a>-->
+				<p>Si el problema persiste, contáctanos a <a href="mailto:bloqueos-ckan-f5@agesic.gub.uy?Subject=[Reporte]%20Falso%20Positivo%20ID:%20[3392342015188614530]">bloqueos-ckan-f5@agesic.gub.uy</a> con el ID: <strong>3392342015188614530</strong></p>
+			</div>
+			
+	  </div>
+	</div>
+	<div class="Feedback"></div>
+	<div class="Footer"></div>
+
+  </body>
+</html>
