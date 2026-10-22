@@ -1,0 +1,23 @@
+URL: https://api.dane.gov.pl/1.4/datasets/619
+Fetched: 2026-10-22T01:43:22Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.api+json 3175
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 01:41:27 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 3175
+Connection: keep-alive
+x-api-version: 1.4
+content-language: pl
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS
+Access-Control-Allow-Headers: DNT,Authorization,User-Agent,X-Requested-With,Cookie,X-Mcod-Csrf-Token,X-Api-Version,If-Modified-Since,Cache-Control,Content-Type,Range,Expires,Pragma
+Access-Control-Expose-Headers: Content-Length,Content-Range
+Set-Cookie: BIGipServer~danePubliczne~POOL_danePubliczne=rd2o00000000000000000000ffffac19e9e0o80; path=/; Httponly; Secure
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"meta": {"params": {}, "server_time": "2026-10-22T01:41:25Z", "language": "pl", "relative_uri": "/1.4/datasets/619", "path": "/1.4/datasets/619"}, "data": {"id": "619", "links": {"self": "https://api.dane.gov.pl/1.4/datasets/619,zintegrowany-system-rolniczej-informacji-rynkowej-biuletyny-informacyjne-rynek-chmielu"}, "relationships": {"institution": {"data": {"id": "31", "type": "institution"}, "links": {"related": "https://api.dane.gov.pl/1.4/institutions/31,ministerstwo-rolnictwa-i-rozwoju-wsi"}}, "showcases": {"meta": {"count": 0}, "links": {"related": "https://api.dane.gov.pl/1.4/datasets/619,zintegrowany-system-rolniczej-informacji-rynkowej-biuletyny-informacyjne-rynek-chmielu/showcases"}}, "resources": {"meta": {"count": 36}, "links": {"related": "https://api.dane.gov.pl/1.4/datasets/619,zintegrowany-system-rolniczej-informacji-rynkowej-biuletyny-informacyjne-rynek-chmielu/resources"}}}, "attributes": {"notes": "<p>Dane o poziomie cen artyku\u0142\u00f3w rolno-spo\u017cywczych zbierane s\u0105 przez pracownik\u00f3w: Ministerstwa Rolnictwa i Rozwoju Wsi, o\u015brodk\u00f3w doradztwa rolniczego, izb rolniczych, rynk\u00f3w hurtowych i gie\u0142d.\nWyniki bada\u0144 zamieszczane s\u0105 w biuletynach informacyjnych ZSRIR przygotowywanych przez Ministerstwo Rolnictwa i Rozwoju Wsi. </p>\n", "supplements": [], "downloads_count": 3022, "has_dynamic_data": null, "url": "Ministerstwo Rolnictwa i Rozwoju Wsi", "verified": "2026-03-27T10:59:41Z", "types": ["file"], "visualization_types": [], "archived_resources_files_url": "https://api.dane.gov.pl/datasets/619,zintegrowany-system-rolniczej-informacji-rynkowej-biuletyny-informacyjne-rynek-chmielu/resources/files/download", "has_research_data": null, "categories": [{"id": "139", "code": "AGRI", "title": "Rolnictwo, rybo\u0142\u00f3wstwo, le\u015bnictwo i \u017cywno\u015b\u0107"}], "license_condition_db_or_copyrighted": "", "regions": [{"name": "Polska", "is_additional": false, "hierarchy_label": "Polska", "region_id": "85633723"}], "keywords": ["rolnictwo", "biuletyn", "cena", "skup", "\u017cywno\u015b\u0107", "sprzeda\u017c", "chmiel"], "has_high_value_data_from_ec_list": null, "openness_scores": [1, 2], "has_high_value_data": null, "category": {"id": "6", "code": "", "title": "Rolnictwo"}, "license_condition_default_cc40": true, "created": "2015-05-18T13:22:10Z", "is_promoted": false, "views_count": 10702, "formats": ["pdf", "xls", "xlsx"], "modified": "2024-03-19T19:15:40Z", "license_chosen": null, "image_url": "", "license_condition_custom_description": null, "license_condition_original": null, "slug": "zintegrowany-system-rolniczej-informacji-rynkowej-biuletyny-informacyjne-rynek-chmielu", "license_condition_personal_data": null, "license_name": "CC BY 4.0", "current_condition_descriptions": {}, "license_condition_timestamp": null, "source": null, "title": "Zintegrowany System Rolniczej Informacji Rynkowej - biuletyny informacyjne: rynek chmielu", "license_description": "Other (Public Domain)", "image_alt": "", "update_frequency": "Co p\u00f3\u0142 roku"}, "type": "dataset"}, "links": {"self": "http://api.dane.gov.pl/1.4/datasets/619"}, "jsonapi": {"version": "1.4"}}
