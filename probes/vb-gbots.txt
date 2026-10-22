@@ -1,0 +1,32 @@
+URL: https://api.uktradeinfo.com/OTS?$top=4
+Fetched: 2026-10-22T17:42:32Z from GitHub Actions
+Status, type, bytes: 200 application/json; odata.metadata=minimal 768
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 17:42:32 GMT
+content-type: application/json; odata.metadata=minimal
+content-length: 768
+access-control-expose-headers: Request-Context
+cache-control: no-cache,no-store
+expires: -1
+pragma: no-cache
+set-cookie: ARRAffinity=36da0e643e19b219e9cc242244bbb17606f2f9cdc98871c377756b22cded58cb;Path=/;HttpOnly;Secure;Domain=webapp-api-hmrcukti-prod.azurewebsites.net
+set-cookie: ARRAffinitySameSite=36da0e643e19b219e9cc242244bbb17606f2f9cdc98871c377756b22cded58cb;Path=/;HttpOnly;SameSite=None;Secure;Domain=webapp-api-hmrcukti-prod.azurewebsites.net
+strict-transport-security: max-age=31536000; includeSubDomains
+odata-version: 4.0
+request-context: appId=cid-v1:59e7e043-1220-455e-98c1-fd590dd50699
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy: script-src 'self' *.cloudflare.com *.uktradeinfo.com www.gravatar.com player.vimeo.com *.vimeocdn.com our.umbraco.com 'unsafe-inline' 'unsafe-eval' *.powerbi.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.vo.msecnd.net *.services.visualstudio.com;            style-src 'self' 'unsafe-inline' *.mailjet.com;             img-src 'self' *;               font-src 'self';
+x-azure-ref: 20261022T174228Z-1866db445f4cqwshhC1BN1q1z000000004e000000000dw00
+x-fd-int-roxy-purgeid: 88491805
+x-cache: PRIVATE_NOSTORE
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"@odata.context":"https://api.uktradeinfo.com/$metadata#OTS","value":[{"MonthId":200001,"FlowTypeId":1,"SuppressionIndex":0,"CommodityId":-990,"CommoditySitcId":-1,"CountryId":959,"PortId":-1,"Value":148391144.0,"NetMass":null,"SuppUnit":null},{"MonthId":200002,"FlowTypeId":1,"SuppressionIndex":0,"CommodityId":-990,"CommoditySitcId":-1,"CountryId":959,"PortId":-1,"Value":146706318.0,"NetMass":null,"SuppUnit":null},{"MonthId":200003,"FlowTypeId":1,"SuppressionIndex":0,"CommodityId":-990,"CommoditySitcId":-1,"CountryId":959,"PortId":-1,"Value":125756606.0,"NetMass":null,"SuppUnit":null},{"MonthId":200004,"FlowTypeId":1,"SuppressionIndex":0,"CommodityId":-990,"CommoditySitcId":-1,"CountryId":959,"PortId":-1,"Value":124177498.0,"NetMass":null,"SuppUnit":null}]}
