@@ -1,0 +1,790 @@
+URL: https://mcp-px.stat.gov.lv/
+Fetched: 2026-10-22T18:19:37Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 33694
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Thu, 22 Oct 2026 18:19:36 GMT
+content-type: text/html; charset=UTF-8
+strict-transport-security: max-age=31536000; includeSubDomains
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (332)
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latvia PX-Web Statistics MCP Server | 1,000+ Statistical Tables for AI</title>
+<meta name="description" content="Model Context Protocol server for official Latvian statistics. Access 1,000+ tables: population, economy, wages, education, environment. Data from 1920. Free, no API key.">
+<meta name="google-site-verification" content="bWZv2po_Ckf2CqsppKhZVlPTCsCgr45d9TIlGlftVHA" />
+<link rel="canonical" href="https://mcp-px.stat.gov.lv/?lang=en">
+<link rel="alternate" hreflang="en" href="https://mcp-px.stat.gov.lv/?lang=en">
+<link rel="alternate" hreflang="lv" href="https://mcp-px.stat.gov.lv/?lang=lv">
+<link rel="alternate" hreflang="x-default" href="https://mcp-px.stat.gov.lv/?lang=en">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Latvia PX-Web Statistics MCP Server | 1,000+ Statistical Tables for AI">
+<meta property="og:description" content="Model Context Protocol server for official Latvian statistics. Access 1,000+ tables: population, economy, wages, education, environment. Data from 1920. Free, no API key.">
+<meta property="og:url" content="https://mcp-px.stat.gov.lv/?lang=en">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="lv_LV">
+<meta property="og:site_name" content="CSP MCP Servers">
+<meta property="og:image" content="https://mcp.stat.gov.lv/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- IBM Plex Sans (Carbon typeface) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- JSON-LD: WebAPI -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebAPI",
+  "name": "Latvia PX-Web General Statistics MCP Server",
+  "description": "Access 1,000+ official Latvian statistical tables through AI assistants. Population, economy, wages, education, environment — data from 1920 to present.",
+  "url": "https://mcp-px.stat.gov.lv/mcp",
+  "documentation": "https://mcp.stat.gov.lv/px",
+  "isAccessibleForFree": true,
+  "provider": {
+    "@type": "GovernmentOrganization",
+    "name": "Central Statistical Bureau of Latvia",
+    "alternateName": "Centr\u0101l\u0101 statistikas p\u0101rvalde",
+    "url": "https://stat.gov.lv"
+  }
+}
+</script>
+
+<!-- JSON-LD: Dataset -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Latvia PX-Web General Statistics MCP Server",
+  "description": "Access 1,000+ official Latvian statistical tables through AI assistants. Population, economy, wages, education, environment — data from 1920 to present.",
+  "url": "https://data.stat.gov.lv",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "@type": "GovernmentOrganization",
+    "name": "Central Statistical Bureau of Latvia",
+    "url": "https://stat.gov.lv"
+  },
+  "distribution": {
+    "@type": "DataDownload",
+    "contentUrl": "https://mcp-px.stat.gov.lv/mcp",
+    "encodingFormat": "application/json"
+  }
+}
+</script>
+
+<style>
+/* Carbon Design Tokens */
+:root {
+    --app-header-h: 60px;
+    --cds-background: #F4F4F4;
+    --cds-background-hover: rgba(141, 141, 141, 0.12);
+    --cds-layer-01: #FFFFFF;
+    --cds-layer-02: #F4F4F4;
+    --cds-layer-hover-01: #E8E8E8;
+    --cds-text-primary: #161616;
+    --cds-text-secondary: #525252;
+    --cds-text-on-color: #FFFFFF;
+    --cds-link-primary: #0F62FE;
+    --cds-link-primary-hover: #0043CE;
+    --cds-border-subtle: #E0E0E0;
+    --cds-border-strong: #8D8D8D;
+    --cds-interactive: #0F62FE;
+    --cds-support-info: #0043CE;
+    --cds-tag-background-blue: #d0e2ff;
+    --cds-tag-color-blue: #0043ce;
+    --cds-top-menu: #0043CE;
+    --cds-top-menu-dark-1: #002D9C;
+    --cds-footer-light: #E0E0E0;
+    --cds-footer-dark: #3f3f3f;
+    --cds-spacing-02: 0.25rem;
+    --cds-spacing-03: 0.5rem;
+    --cds-spacing-04: 0.75rem;
+    --cds-spacing-05: 1rem;
+    --cds-spacing-06: 1.5rem;
+    --cds-spacing-07: 2rem;
+    --cds-spacing-09: 3rem;
+    --cds-spacing-10: 4rem;
+}
+
+/* Reset & base */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.43;
+    color: var(--cds-text-primary);
+    background: var(--cds-background);
+    -webkit-font-smoothing: antialiased;
+}
+a { color: var(--cds-link-primary); text-decoration: none; }
+a:hover { color: var(--cds-link-primary-hover); text-decoration: underline; }
+body.panel-open { overflow: hidden; }
+code, pre {
+    font-family: 'IBM Plex Mono', 'Menlo', monospace;
+    font-size: 0.8125rem;
+}
+
+/* Grid */
+.csp-grid {
+    max-width: 84rem;
+    margin: 0 auto;
+    padding: 0 var(--cds-spacing-05);
+}
+
+/* ===== HEADER ===== */
+.csp-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--app-header-h);
+    background: var(--cds-top-menu);
+    color: var(--cds-text-on-color);
+    display: flex;
+    align-items: center;
+    z-index: 8000;
+}
+.csp-header__name {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--cds-spacing-05);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--cds-text-on-color);
+    text-decoration: none;
+    height: 100%;
+    white-space: nowrap;
+    background: transparent;
+    transition: background 0.15s;
+}
+.csp-header__name:hover { background: rgba(255,255,255,0.1); text-decoration: none; color: #fff; }
+.csp-header__nav {
+    display: flex;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: var(--cds-spacing-07);
+}
+.csp-header__nav li { height: 100%; }
+.csp-header__nav a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 var(--cds-spacing-05);
+    color: var(--cds-text-on-color);
+    font-size: 0.875rem;
+    text-decoration: none;
+    background: transparent;
+    transition: background 0.15s;
+}
+.csp-header__nav a:hover { background: rgba(255,255,255,0.1); text-decoration: none; color: #fff; }
+
+/* Language switcher */
+.csp-header__lang {
+    display: flex;
+    height: 100%;
+    margin-left: auto;
+}
+.csp-header__lang-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--app-header-h);
+    height: var(--app-header-h);
+    color: var(--cds-text-on-color);
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: inherit;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.csp-header__lang-btn:hover { background: rgba(255,255,255,0.1); text-decoration: none; color: #fff; }
+.csp-header__lang-btn.active { background: rgba(0,0,0,0.15); pointer-events: none; cursor: default; }
+.csp-header__lang-btn:focus { outline: 1px solid #4589FF; outline-offset: -2px; }
+
+/* Hamburger menu button — left side */
+.csp-header__menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: rgba(0,0,0,0.15);
+    border: none;
+    color: var(--cds-text-on-color);
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background 0.15s;
+}
+.csp-header__menu-btn:hover { background: rgba(0,0,0,0.30); }
+.csp-header__menu-btn:focus { outline: 1px solid #4589FF; outline-offset: -2px; }
+.csp-header__menu-btn svg { fill: currentColor; }
+
+/* ===== SLIDE-IN PANEL (mobile nav) ===== */
+.csp-panel { display: none; }
+.csp-panel.open { display: block; }
+.csp-panel__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 8100;
+    animation: cspFadeIn 400ms cubic-bezier(0.2, 0, 0.38, 0.9) both;
+}
+.csp-panel__drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(320px, 85vw);
+    height: 100dvh;
+    background: var(--cds-layer-01);
+    z-index: 8200;
+    display: flex;
+    flex-direction: column;
+    animation: cspSlideIn 400ms cubic-bezier(0.2, 0, 0.38, 0.9) both;
+}
+.csp-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--app-header-h);
+    padding: 0 var(--cds-spacing-05);
+    background: linear-gradient(163deg, #002D9C 10%, #0043CE 90%);
+    color: var(--cds-text-on-color);
+    flex-shrink: 0;
+}
+.csp-panel__header-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.csp-panel__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: var(--cds-text-on-color);
+    cursor: pointer;
+    flex-shrink: 0;
+    border-radius: 0;
+    transition: background 0.15s;
+}
+.csp-panel__close:hover { background: rgba(255,255,255,0.1); }
+.csp-panel__close:focus { outline: 1px solid #4589FF; outline-offset: -2px; }
+.csp-panel__close svg { fill: currentColor; }
+.csp-panel__nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--cds-spacing-03) 0;
+}
+.csp-panel__link {
+    display: flex;
+    align-items: center;
+    gap: var(--cds-spacing-04);
+    padding: var(--cds-spacing-04) var(--cds-spacing-05);
+    color: var(--cds-text-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: background 0.15s;
+}
+.csp-panel__link:hover { background: var(--cds-background-hover); text-decoration: none; color: var(--cds-text-primary); }
+.csp-panel__link:focus { outline: 1px solid #4589FF; outline-offset: -2px; }
+.csp-panel__link svg { fill: var(--cds-text-secondary); width: 20px; height: 20px; flex-shrink: 0; }
+.csp-panel__link-chevron { margin-left: auto; }
+.csp-panel__footer {
+    padding: var(--cds-spacing-05);
+    border-top: 1px solid var(--cds-border-subtle);
+    flex-shrink: 0;
+}
+.csp-panel__footer-text {
+    font-size: 0.75rem;
+    color: var(--cds-text-secondary);
+    margin: 0;
+}
+@keyframes cspFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cspSlideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+
+/* Content area */
+.csp-content {
+    margin-top: var(--app-header-h);
+    padding-top: var(--cds-spacing-09);
+    padding-bottom: var(--cds-spacing-10);
+}
+
+/* Hero / page header */
+.csp-page-header {
+    background: var(--cds-layer-01);
+    padding: var(--cds-spacing-09) 0;
+    margin-top: calc(-1 * var(--cds-spacing-09));
+    margin-bottom: var(--cds-spacing-09);
+    border-bottom: 1px solid var(--cds-border-subtle);
+}
+.csp-page-header h1 {
+    font-size: 2.625rem;
+    font-weight: 300;
+    line-height: 1.19;
+    margin: 0 0 var(--cds-spacing-05) 0;
+    letter-spacing: 0;
+}
+.csp-page-header p {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: var(--cds-text-secondary);
+    margin: 0;
+    max-width: 42rem;
+}
+
+/* Section */
+.csp-section {
+    margin-bottom: var(--cds-spacing-09);
+}
+.csp-section h2 {
+    font-size: 1.75rem;
+    font-weight: 300;
+    margin: 0 0 var(--cds-spacing-05) 0;
+    padding-bottom: var(--cds-spacing-03);
+    border-bottom: 1px solid var(--cds-border-subtle);
+}
+
+/* Data table */
+.csp-table { width: 100%; border-collapse: collapse; margin-bottom: var(--cds-spacing-06); }
+.csp-table thead th {
+    text-align: left;
+    padding: var(--cds-spacing-03) var(--cds-spacing-05);
+    background: #e0e0e0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.32px;
+    color: var(--cds-text-primary);
+    border-bottom: 1px solid var(--cds-border-strong);
+}
+.csp-table tbody td {
+    padding: var(--cds-spacing-03) var(--cds-spacing-05);
+    border-bottom: 1px solid var(--cds-border-subtle);
+    font-size: 0.875rem;
+    vertical-align: top;
+}
+.csp-table tbody tr:hover { background: var(--cds-layer-01); }
+
+/* Code snippet */
+.csp-code {
+    background: var(--cds-layer-01);
+    border: 1px solid var(--cds-border-subtle);
+    padding: var(--cds-spacing-05);
+    overflow-x: auto;
+    margin-bottom: var(--cds-spacing-05);
+}
+.csp-code pre { margin: 0; white-space: pre-wrap; word-break: break-all; }
+.csp-code code { font-size: 0.8125rem; }
+
+/* Tag */
+.csp-tag {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin: 0 0.25rem 0.25rem 0;
+    background: var(--cds-tag-background-blue);
+    color: var(--cds-tag-color-blue);
+}
+
+/* Example list */
+.csp-examples {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.csp-examples li {
+    padding: var(--cds-spacing-03) var(--cds-spacing-05);
+    border-bottom: 1px solid var(--cds-border-subtle);
+    font-size: 0.875rem;
+}
+.csp-examples li:last-child { border-bottom: none; }
+.csp-examples li::before {
+    content: "\2192";
+    margin-right: var(--cds-spacing-03);
+    color: var(--cds-support-info);
+    font-weight: 600;
+}
+
+/* ===== FOOTER ===== */
+.csp-footer {
+    background: var(--cds-footer-light);
+    padding: var(--cds-spacing-06) 0;
+    font-size: 0.875rem;
+}
+.csp-footer__grid {
+    max-width: 84rem;
+    margin: 0 auto;
+    padding: 0 var(--cds-spacing-05);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--cds-spacing-05);
+}
+.csp-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cds-spacing-05);
+    padding: 0 var(--cds-spacing-05);
+}
+.csp-footer__col + .csp-footer__col {
+    border-left: 2px solid #c6c6c6;
+}
+.csp-footer__heading {
+    display: inline-flex;
+    padding-bottom: var(--cds-spacing-02);
+    border-bottom: 3px solid var(--cds-support-info);
+    width: fit-content;
+}
+.csp-footer__heading span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cds-text-primary);
+    white-space: nowrap;
+}
+.csp-footer__text {
+    color: var(--cds-text-primary);
+    margin: 0;
+    line-height: 1.5;
+}
+.csp-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cds-spacing-03);
+}
+.csp-footer__link {
+    display: flex;
+    align-items: center;
+    gap: var(--cds-spacing-03);
+    color: var(--cds-text-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+.csp-footer__link:hover { text-decoration: underline; color: var(--cds-text-primary); }
+.csp-footer__link svg {
+    flex-shrink: 0;
+    fill: var(--cds-text-primary);
+    width: 20px;
+    height: 20px;
+}
+
+/* Sub-bar */
+.csp-subbar {
+    background: var(--cds-footer-dark);
+    padding: var(--cds-spacing-06) 0;
+}
+.csp-subbar__content {
+    max-width: 84rem;
+    margin: 0 auto;
+    padding: 0 var(--cds-spacing-05);
+    display: flex;
+    align-items: center;
+    gap: var(--cds-spacing-06);
+}
+.csp-subbar__divider {
+    width: 1px;
+    align-self: stretch;
+    background: var(--cds-border-strong);
+}
+.csp-subbar__text {
+    color: #c6c6c6;
+    font-size: 0.75rem;
+    margin: 0;
+}
+.csp-subbar__text a { color: #78a9ff; }
+.csp-subbar__text a:hover { color: #a6c8ff; }
+
+/* Responsive */
+@media (max-width: 672px) {
+    .csp-header__nav { display: none; }
+    .csp-header__menu-btn { display: flex; }
+    .csp-page-header h1 { font-size: 1.75rem; }
+    .csp-footer__grid { grid-template-columns: 1fr; }
+    .csp-footer__col + .csp-footer__col { border-left: none; border-top: 1px solid #c6c6c6; padding-top: var(--cds-spacing-05); }
+    .csp-subbar__content { flex-direction: column; align-items: flex-start; }
+    .csp-subbar__divider { width: 100%; height: 1px; }
+}
+</style>
+</head>
+<body>
+
+<header class="csp-header">
+    <button class="csp-header__menu-btn" onclick="cspPanelOpen()" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32"><path d="M4 6h24v2H4zm0 9h24v2H4zm0 9h24v2H4z"/></svg>
+    </button>
+    <a href="/?lang=en" class="csp-header__name">PX-Web Statistics MCP</a>
+    <ul class="csp-header__nav">
+        <li><a href="https://mcp.stat.gov.lv/?lang=en">All Servers</a></li>
+        <li><a href="https://mcp.stat.gov.lv/px?lang=en">Documentation</a></li>
+    </ul>
+    <div class="csp-header__lang">
+        <a href="?lang=lv" class="csp-header__lang-btn">LV</a>
+        <a href="?lang=en" class="csp-header__lang-btn active">EN</a>
+    </div>
+</header>
+
+<!-- Slide-in navigation panel (mobile) -->
+<div class="csp-panel" id="cspPanel">
+    <div class="csp-panel__backdrop" onclick="cspPanelClose()"></div>
+    <div class="csp-panel__drawer">
+        <div class="csp-panel__header">
+            <span class="csp-panel__header-title">PX-Web Statistics MCP</span>
+            <button class="csp-panel__close" onclick="cspPanelClose()" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M14.65 4.35a.5.5 0 0 0-.7 0L10 8.29 6.05 4.35a.5.5 0 0 0-.7.7L9.29 9l-3.94 3.95a.5.5 0 0 0 .7.7L10 9.71l3.95 3.94a.5.5 0 0 0 .7-.7L10.71 9l3.94-3.95a.5.5 0 0 0 0-.7z"/></svg>
+            </button>
+        </div>
+        <nav class="csp-panel__nav">
+            <a href="/?lang=en" class="csp-panel__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 1.6L1 8.5V18h6v-6h6v6h6V8.5z"/></svg>
+                <span>PX-Web Statistics MCP</span>
+                <svg class="csp-panel__link-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.3 4.3a.5.5 0 0 1 .7 0l5.5 5.5a.5.5 0 0 1 0 .7l-5.5 5.2a.5.5 0 0 1-.7-.7L12.1 10 7.3 5a.5.5 0 0 1 0-.7z"/></svg>
+            </a>
+            <a href="https://mcp.stat.gov.lv/?lang=en" class="csp-panel__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11.8 2.8L10.8 3.8 16.2 9.3H1v1.4h15.2l-5.4 5.5 1 1L18.6 10z"/></svg>
+                <span>All Servers</span>
+                <svg class="csp-panel__link-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.3 4.3a.5.5 0 0 1 .7 0l5.5 5.5a.5.5 0 0 1 0 .7l-5.5 5.2a.5.5 0 0 1-.7-.7L12.1 10 7.3 5a.5.5 0 0 1 0-.7z"/></svg>
+            </a>
+            <a href="https://mcp.stat.gov.lv/px?lang=en" class="csp-panel__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm1 12H9V9h2zm0-7H9V5h2z"/></svg>
+                <span>Documentation</span>
+                <svg class="csp-panel__link-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.3 4.3a.5.5 0 0 1 .7 0l5.5 5.5a.5.5 0 0 1 0 .7l-5.5 5.2a.5.5 0 0 1-.7-.7L12.1 10 7.3 5a.5.5 0 0 1 0-.7z"/></svg>
+            </a>
+        </nav>
+        <div class="csp-panel__footer">
+            <p class="csp-panel__footer-text">stat.gov.lv</p>
+        </div>
+    </div>
+</div>
+
+<main class="csp-content">
+
+<!-- Hero -->
+<div class="csp-page-header">
+    <div class="csp-grid">
+        <h1>Latvia PX-Web General Statistics MCP Server</h1>
+        <p>Access 1,000+ official Latvian statistical tables through AI assistants. Population, economy, wages, education, environment — data from 1920 to present.</p>
+    </div>
+</div>
+
+<div class="csp-grid">
+
+    <!-- Quick Connect -->
+    <div class="csp-section">
+        <h2>Quick Connect</h2>
+        <p>Add to your AI client — no API key required:</p>
+        <div class="csp-code"><pre><code>{
+  "mcpServers": {
+    "latvia-statistics": {
+      "url": "https://mcp-px.stat.gov.lv/mcp"
+    }
+  }
+}</code></pre></div>
+        <p>
+            <span class="csp-tag">Streamable HTTP</span>
+            <span class="csp-tag">Free</span>
+            <span class="csp-tag">No auth</span>
+        </p>
+    </div>
+
+    <!-- Available Tools -->
+    <div class="csp-section">
+        <h2>Available Tools</h2>
+        <table class="csp-table">
+            <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+            <tbody>
+                <tr><td><code>getContext</code></td><td>Get server documentation, workflow patterns, API structure</td></tr>
+                <tr><td><code>choose_lang</code></td><td>Set language (English or Latvian)</td></tr>
+                <tr><td><code>get_topics</code></td><td>Browse statistical domains (Population, Economy, etc.)</td></tr>
+                <tr><td><code>get_topic_content</code></td><td>Get sub-categories within a domain</td></tr>
+                <tr><td><code>get_titles</code></td><td>List data tables in a category</td></tr>
+                <tr><td><code>get_tables_by_keyword</code></td><td>Search tables by keyword</td></tr>
+                <tr><td><code>filter_by_code</code></td><td>Filter tables by code pattern</td></tr>
+                <tr><td><code>get_query_values</code></td><td>Get dimensions, filter values, and subtable info for a report</td></tr>
+                <tr><td><code>get_csp_data</code></td><td>Retrieve statistical data with filters and subtable selection</td></tr>
+                <tr><td><code>construct_csp_link</code></td><td>Generate URL to view report on data.stat.gov.lv</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Statistical Domains -->
+    <div class="csp-section">
+        <h2>Statistical Domains</h2>
+        <table class="csp-table">
+            <thead><tr><th>Code</th><th>Domain</th><th>Topics</th></tr></thead>
+            <tbody>
+                <tr><td>POP</td><td>Population</td><td>Demographics, births, deaths, migration</td></tr>
+                <tr><td>EMP</td><td>Labour market</td><td>Employment, unemployment, wages</td></tr>
+                <tr><td>VEK</td><td>Economy</td><td>GDP, production, consumption</td></tr>
+                <tr><td>TIR</td><td>Trade &amp; services</td><td>Retail, services, tourism</td></tr>
+                <tr><td>ENT</td><td>Business</td><td>Enterprises, entrepreneurship</td></tr>
+                <tr><td>IZG</td><td>Education &amp; culture</td><td>Education, research, culture</td></tr>
+                <tr><td>VES</td><td>Social security &amp; health</td><td>Healthcare, social protection</td></tr>
+                <tr><td>NOZ</td><td>Industry sectors</td><td>Agriculture, manufacturing</td></tr>
+                <tr><td>ENV</td><td>Environment</td><td>Climate, natural resources</td></tr>
+                <tr><td>IKT</td><td>IT</td><td>Digital economy, telecom</td></tr>
+                <tr><td>FIN</td><td>Well-being</td><td>Quality of life, equality</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Example Questions -->
+    <div class="csp-section">
+        <h2>Example Questions</h2>
+        <ul class="csp-examples">
+            <li>What is Latvia’s population in 2025?</li>
+            <li>Show average wages by economic sector for 2024</li>
+            <li>Compare unemployment rates between men and women</li>
+            <li>What is Latvia’s GDP growth over the last 10 years?</li>
+            <li>How many students are in higher education?</li>
+            <li>Show consumer price index monthly changes</li>
+            <li>What environmental data is available about emissions?</li>
+            <li>Compare birth rates across regions</li>
+        </ul>
+    </div>
+
+    <!-- Data Source -->
+    <div class="csp-section">
+        <h2>Data Source</h2>
+        <p>All data from the <a href="https://data.stat.gov.lv">Official Statistics Portal</a> of Latvia (PX-Web). Published by the <strong>Central Statistical Bureau of Latvia</strong>. Free under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+    </div>
+
+    <!-- Data Freshness -->
+    <div class="csp-section">
+        <h2>Data Freshness</h2>
+        <p>This server mirrors <a href="https://data.stat.gov.lv">data.stat.gov.lv</a> in real-time. Data is updated as published by the Central Statistical Bureau of Latvia.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="csp-section">
+        <h2>Frequently Asked Questions</h2>
+        <details style="border-bottom:1px solid var(--cds-border-subtle);padding:var(--cds-spacing-04) 0">
+            <summary style="cursor:pointer;font-weight:600;font-size:0.875rem">How do I connect to this server?</summary>
+            <p style="margin:var(--cds-spacing-03) 0 0;color:var(--cds-text-secondary)">Add <code>{"mcpServers":{"latvia-statistics":{"url":"https://mcp-px.stat.gov.lv/mcp"}}}</code> to your MCP client config (Claude Desktop, Cursor, etc.). No API key required.</p>
+        </details>
+        <details style="border-bottom:1px solid var(--cds-border-subtle);padding:var(--cds-spacing-04) 0">
+            <summary style="cursor:pointer;font-weight:600;font-size:0.875rem">Is it free to use?</summary>
+            <p style="margin:var(--cds-spacing-03) 0 0;color:var(--cds-text-secondary)">Yes. The server is free and open, with no authentication required. Data is published under CC BY 4.0 license.</p>
+        </details>
+        <details style="border-bottom:1px solid var(--cds-border-subtle);padding:var(--cds-spacing-04) 0">
+            <summary style="cursor:pointer;font-weight:600;font-size:0.875rem">What are the rate limits?</summary>
+            <p style="margin:var(--cds-spacing-03) 0 0;color:var(--cds-text-secondary)">There is a limit of 100 requests per 15-minute window per IP address. Sessions expire after 30 minutes of inactivity.</p>
+        </details>
+        <details style="border-bottom:1px solid var(--cds-border-subtle);padding:var(--cds-spacing-04) 0">
+            <summary style="cursor:pointer;font-weight:600;font-size:0.875rem">What data is available?</summary>
+            <p style="margin:var(--cds-spacing-03) 0 0;color:var(--cds-text-secondary)">Over 1,000 statistical tables covering population, economy, wages, education, health, environment, ICT, and more. Data from 1920 to present.</p>
+        </details>
+        <details style="border-bottom:1px solid var(--cds-border-subtle);padding:var(--cds-spacing-04) 0">
+            <summary style="cursor:pointer;font-weight:600;font-size:0.875rem">How fresh is the data?</summary>
+            <p style="margin:var(--cds-spacing-03) 0 0;color:var(--cds-text-secondary)">Data mirrors the Official Statistics Portal (data.stat.gov.lv) and is updated as soon as the CSP publishes new figures — typically monthly or quarterly depending on the indicator.</p>
+        </details>
+    </div>
+
+</div>
+</main>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I connect to this server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add {\"mcpServers\":{\"latvia-statistics\":{\"url\":\"https:\/\/mcp-px.stat.gov.lv\/mcp\"}}} to your MCP client config (Claude Desktop, Cursor, etc.). No API key required."      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The server is free and open, with no authentication required. Data is published under CC BY 4.0 license."      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the rate limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is a limit of 100 requests per 15-minute window per IP address. Sessions expire after 30 minutes of inactivity."      }
+    },
+    {
+      "@type": "Question",
+      "name": "What data is available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Over 1,000 statistical tables covering population, economy, wages, education, health, environment, ICT, and more. Data from 1920 to present."      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fresh is the data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Data mirrors the Official Statistics Portal (data.stat.gov.lv) and is updated as soon as the CSP publishes new figures \u2014 typically monthly or quarterly depending on the indicator."      }
+    }
+  ]
+}
+</script>
+
+<!-- SVG icon symbols -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-link" viewBox="0 0 20 20"><path d="M11.8 2.8L10.8 3.8 16.2 9.3H1v1.4h15.2l-5.4 5.5 1 1L18.6 10z"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 20 20"><path d="M15.6 13.1l-2.7-1.6a1 1 0 0 0-1.2.2l-.9 1.1a.5.5 0 0 1-.6.1 8.4 8.4 0 0 1-3.1-3.1.5.5 0 0 1 .1-.6l1.1-.9a1 1 0 0 0 .2-1.2L6.9 4.4A1 1 0 0 0 5.8 4l-1.5.5A1.5 1.5 0 0 0 3.5 6c.4 3 1.9 5.7 4.2 7.7a13.1 13.1 0 0 0 7.7 2.8 1.5 1.5 0 0 0 1.5-.8l.5-1.5a1 1 0 0 0-.4-1.1z"/></symbol>
+    <symbol id="icon-email" viewBox="0 0 20 20"><path d="M17 3H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1.4 2L10 9.4 4.4 5zM3 15V5.7l6.5 5.1a.8.8 0 0 0 1 0L17 5.7V15z"/></symbol>
+</svg>
+
+<footer class="csp-footer">
+    <div class="csp-footer__grid">
+
+        <!-- About -->
+        <div class="csp-footer__col">
+            <div class="csp-footer__heading">
+                <span>About this project</span>
+            </div>
+            <p class="csp-footer__text">MCP server providing AI assistants with direct access to 1,000+ official Latvian statistical tables published by the Central Statistical Bureau of Latvia.</p>
+        </div>
+
+        <!-- Additional info -->
+        <div class="csp-footer__col">
+            <div class="csp-footer__heading">
+                <span>Additional information</span>
+            </div>
+            <div class="csp-footer__links">
+                <a href="https://mcp.stat.gov.lv/?lang=en" class="csp-footer__link">
+                    <svg><use href="#icon-link"/></svg>
+                    <span>All MCP Servers</span>
+                </a>
+                <a href="https://mcp.stat.gov.lv/px?lang=en" class="csp-footer__link">
+                    <svg><use href="#icon-link"/></svg>
+                    <span>Full Documentation</span>
+                </a>
+                <a href="https://mcp.
