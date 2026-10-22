@@ -1,0 +1,13 @@
+name: depfi
+on: workflow_dispatch
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          U=https://pxdata.stat.fi/PxWeb/api/v1/en/StatFin/ashi/13mu.px
+          q() { echo "== $1"; curl -sS -m 40 -w "\nHTTP %{http_code}\n" -H 'content-type: application/json' -d "$2" $U | head -c 600; }
+          q full '{"query":[{"code":"timeperiod_y","selection":{"filter":"item","values":["2021","2022","2023","2024","2025"]}},{"code":"postinumeroalue_4_20220101","selection":{"filter":"item","values":["00100"]}},{"code":"talotyyppi_6_20131021","selection":{"filter":"item","values":["1","2","3"]}},{"code":"contentscode","selection":{"filter":"item","values":["keskihinta_aritm_nw","lkm_julk20"]}}],"response":{"format":"json-stat2"}}'
+          q oneyear '{"query":[{"code":"timeperiod_y","selection":{"filter":"item","values":["2025"]}},{"code":"postinumeroalue_4_20220101","selection":{"filter":"item","values":["00100"]}},{"code":"talotyyppi_6_20131021","selection":{"filter":"item","values":["1","2","3"]}},{"code":"contentscode","selection":{"filter":"item","values":["keskihinta_aritm_nw","lkm_julk20"]}}],"response":{"format":"json-stat2"}}'
+          q priceonly '{"query":[{"code":"timeperiod_y","selection":{"filter":"item","values":["2025"]}},{"code":"postinumeroalue_4_20220101","selection":{"filter":"item","values":["00100"]}},{"code":"talotyyppi_6_20131021","selection":{"filter":"item","values":["1","2","3"]}},{"code":"contentscode","selection":{"filter":"item","values":["keskihinta_aritm_nw"]}}],"response":{"format":"json-stat2"}}'
+          curl -sS -m 40 https://pxdata.stat.fi/PxWeb/api/v1/en/StatFin/ashi/13mu.px | python3 -c "import sys,json;j=json.load(sys.stdin);print([ (v['code'],v.get('elimination')) for v in j['variables']]); print(j['variables'][3])"
