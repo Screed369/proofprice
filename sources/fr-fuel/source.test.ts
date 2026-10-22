@@ -2,6 +2,17 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseFrRecords, normalisePrice, buildFrUrl } from "./source";
 
+test("FR manifest: the fuel note says petrol95 is SP95 only and points to e10, which is an available item (pilot finding 5)", async () => {
+  const m = (await import("./index")).default as any;
+  assert.match(m.paramNotes.fuel, /petrol95 means SP95 only/);
+  assert.match(m.paramNotes.fuel, /E10 instead, which is a separate item and already available: ask for fuel=e10/);
+  const { FR_NAME } = await import("./source");
+  assert.equal(FR_NAME.e10, "e10"); // e10 really is an item of this source
+  assert.equal(FR_NAME.petrol95, "sp95");
+  // notes only: no new tool, no change to the answer or to the source's own labels
+  assert.equal(m.category, "fuel");
+});
+
 test("FR fuel records parse and prices normalise", () => {
   assert.equal(normalisePrice(1.789), 1.789);
   assert.equal(normalisePrice(1789), 1.789);
