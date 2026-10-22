@@ -1,0 +1,30 @@
+URL: https://landregistry.data.gov.uk/landregistry/query?output=json&query=PREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%20PREFIX%20lrppi%3A%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fppi%2F%3E%20PREFIX%20lrcommon%3A%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fcommon%2F%3E%20SELECT%20%28COUNT%28%3Ftransx%29%20AS%20%3Fn%29%20WHERE%20%7B%20VALUES%20%3Ft%20%7B%20%22BRISTOL%22%5E%5Exsd%3Astring%20%7D%20%3Faddr%20lrcommon%3Atown%20%3Ft%20.%20%3Ftransx%20lrppi%3ApropertyAddress%20%3Faddr%20%3B%20lrppi%3AtransactionDate%20%3Fdate%20%3B%20lrppi%3AtransactionCategory%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fppi%2FstandardPricePaidTransaction%3E%20.%20FILTER%20%28%3Fdate%20%3E%3D%20%222026-06-01%22%5E%5Exsd%3Adate%20%26%26%20%3Fdate%20%3C%20%222026-07-01%22%5E%5Exsd%3Adate%29%20%7D
+Fetched: 2026-10-22T13:55:29Z from GitHub Actions
+Status, type, bytes: 200 application/sparql-results+json; charset=utf-8 209
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: must-revalidate,no-cache,no-store
+Content-Type: application/sparql-results+json; charset=utf-8
+Date: Thu, 22 Oct 2026 13:55:29 GMT
+Fuseki-Request-Id: 3177740
+Pragma: no-cache
+Server: nginx/1.31.5
+Vary: Accept,Accept-Encoding,Accept-Charset,Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+Content-Length: 209
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{ "head": {
+    "vars": [ "n" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "n": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "739" }
+      }
+    ]
+  }
+}
