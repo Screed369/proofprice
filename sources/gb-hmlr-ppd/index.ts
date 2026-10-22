@@ -2,6 +2,7 @@
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
+import { findPlace } from "../gb-ukhpi/source";
 import { INFO, ukHomeSales, UK_PROPERTY_TYPES, UkPropertyType } from "./source";
 
 export default defineSource({
@@ -11,6 +12,8 @@ export default defineSource({
   countryHelp: "GB = England & Wales (HM Land Registry)",
   placeName: "England & Wales",
   status: "live",
+  // Scottish and Northern Irish places are answered by gb-ukhpi (England & Wales stay here).
+  serves: (p) => findPlace(str(p.town)) === null,
   paramNotes: {
     town: "GB: required, e.g. 'Bristol'.",
     property_type: "GB: detached, semi-detached, terraced or flat-maisonette.",
