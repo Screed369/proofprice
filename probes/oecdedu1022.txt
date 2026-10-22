@@ -1,0 +1,999 @@
+URL: https://sdmx.oecd.org/public/rest/dataflow/OECD.EDU.IMEP/all/latest
+Fetched: 2026-10-22T12:42:53Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.sdmx.structure+xml; charset=utf-8; version=2.1 616425
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 12:42:53 GMT
+content-type: application/vnd.sdmx.structure+xml; charset=utf-8; version=2.1
+cache-control: public,max-age=86400
+set-cookie: __cf_bm=5LrddMsbe9n9d1OTwHhAO6iImxfns4pkOvAcIYS30rc-1792672973.399426-1.0.1.1-4tbGFnAkP5TnxGu2w4Kmkix8PEwdtG6_VHPjmEHqB2lybX_lsLc_PgKceC9snqcYCN5ySdus3wbu6HlDYRPTyEf8Ojnw60qiVrJiUD2weoVQwCneDOMqAOCU21Ut.S6j; HttpOnly; SameSite=None; Secure; Path=/; Domain=oecd.org; Expires=Thu, 22 Oct 2026 13:12:53 GMT
+last-modified: 2026-08-14
+age: 1750
+vary: Accept, Accept-Language, Accept-Encoding, Accept-Charset,Accept,Accept-Encoding,Accept-Encoding
+strict-transport-security: max-age=2592000
+x-server-node: Server 2
+cf-cache-status: EXPIRED
+server: cloudflare
+cf-ray: a4e895a3bf9ad6a1-IAD
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: XML 1.0 document, Unicode text, UTF-8 text, with very long lines (1738), with CRLF line terminators
+=== FIRST 120000 BYTES
+<?xml version="1.0" encoding="utf-8"?>
+<!--NSI Web Service v10.11.8.0-->
+<message:Structure xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+  <message:Header>
+    <message:ID>IDREF9679</message:ID>
+    <message:Test>false</message:Test>
+    <message:Prepared>2026-10-22T14:13:43.2123135+02:00</message:Prepared>
+    <message:Sender id="Unknown" />
+    <message:Receiver id="Unknown" />
+  </message:Header>
+  <message:Structures>
+    <structure:Dataflows>
+      <structure:Dataflow id="DSD_EAG_IT@DF_EAG_IT_AGE" agencyID="OECD.EDU.IMEP" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>SUBJ_TYPE,AGE</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_PERIOD=2025,OBS_STATUS=A,STATISTICAL_OPERATION,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV=ISCED11_1+ISCED11_24+ISCED11_34</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>UNIT_MEASURE:UNIT_MEASURE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">UNIT_MEASURE:Unit of measure</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">UNIT_MEASURE:Unité de mesure</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>0.999999997</common:AnnotationTitle>
+            <common:AnnotationType>SEARCH_WEIGHT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Instruction time in compulsory general education by age</common:Name>
+        <common:Name xml:lang="fr">Temps d'instruction dans l'enseignement général obligatoire par âge</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;This dataset presents the number of hours of statutory instruction time in full-time compulsory education by age. It covers all ages in primary, lower secondary general education and compulsory upper secondary general education, but excludes pre-primary education, even if compulsory. Data refers to the reference year 2025 (school year 2024/25 or 2025), unless stated otherwise.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;. Further detail as to the methodology used, the references to the sources and the specific notes for each country are available in &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Education at a Glance 2025 Sources, Methodologies and Technical Notes&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Cet ensemble de données présente le nombre d'heures d'instruction statutaires dans l'enseignement obligatoire à temps plein, par âge. Il couvre l'enseignement primaire, le premier cycle de l'enseignement secondaire général et le deuxième cycle de l'enseignement secondaire général obligatoire, mais exclut l'enseignement préprimaire, même s'il est obligatoire. Les données se réfèrent à l'année de référence 2025 (année scolaire 2024/25 ou 2025), sauf indication contraire.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation 2018&lt;/i&gt;&lt;/a&gt;. Plus de détails sur les définitions, méthodologies, sources de données et notes spécifiques pour chaque pays sont disponibles dans &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Regard sur l'éducation 2025 Sources, méthodologies et notes techniques&lt;/i&gt; (en anglais)&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_IT" version="1.1" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_IT@DF_EAG_IT_ALL" agencyID="OECD.EDU.IMEP" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_PERIOD=2025,OBS_STATUS=A,STATISTICAL_OPERATION,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA=OECD,EDUCATION_LEV=ISCED11_1+ISCED11_24+ISCED11_34</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>0.999999997</common:AnnotationTitle>
+            <common:AnnotationType>SEARCH_WEIGHT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Student instruction time - full dataset</common:Name>
+        <common:Name xml:lang="fr">Temps d'instruction - ensemble de données complet</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;The purpose of this dataset is for download in CSV format. It contains the full raw data on the students' instruction time in compulsory general education.&lt;/p&gt;&lt;p&gt;It covers primary education, lower secondary general education and compulsory upper secondary general education, but excludes pre-primary education, even if compulsory. Data refers to the reference year 2025 (school year 2024/25 or 2025), unless stated otherwise.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;. Further detail as to the methodology used, the references to the sources and the specific notes for each country are available in &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Education at a Glance 2025 Sources, Methodologies and Technical Notes&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Cet ensemble de données a pour objectif le téléchargement au format CSV. Il contient les données brutes complètes sur le temps d'instruction des l'élèves. Il n'y a pas de filtre ni de vue par défaut pour cet ensemble de données, la navigation dans les données peut donc être lente.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation 2018&lt;/i&gt;&lt;/a&gt;. Plus de détails sur les définitions, méthodologies, sources de données et notes spécifiques pour chaque pays sont disponibles dans &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Regard sur l'éducation 2025 Sources, méthodologies et notes techniques&lt;/i&gt; (en anglais)&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_IT" version="1.1" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_IT@DF_EAG_IT_ISCED" agencyID="OECD.EDU.IMEP" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV,UNIT_MEASURE,SUBJ_TYPE</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_PERIOD=2025,OBS_STATUS=A,STATISTICAL_OPERATION,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV=ISCED11_1+ISCED11_24+ISCED11_34</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>SUBJ_TYPE:SUBJ_TYPE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">SUBJ_TYPE:Subject</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">SUBJ_TYPE:Matière</common:AnnotationText>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Instruction time in compulsory general education</common:Name>
+        <common:Name xml:lang="fr">Temps d'instruction dans l'enseignement général obligatoire</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;This dataset presents the number of hours of statutory instruction time in full-time compulsory education. It covers primary education, lower secondary general education and compulsory upper secondary general education, but excludes pre-primary education, even if compulsory. Data refers to the reference year 2025 (school year 2024/25 or 2025), unless stated otherwise.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;. Further detail as to the methodology used, the references to the sources and the specific notes for each country are available in &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Education at a Glance 2025 Sources, Methodologies and Technical Notes&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Cet ensemble de données présente le nombre d'heures d'instruction statutaires dans l'enseignement obligatoire à temps plein. Il couvre l'enseignement primaire, le premier cycle de l'enseignement secondaire général et le deuxième cycle de l'enseignement secondaire général obligatoire, mais exclut l'enseignement préprimaire, même s'il est obligatoire. Les données se réfèrent à l'année de référence 2025 (année scolaire 2024/25 ou 2025), sauf indication contraire.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation 2018&lt;/i&gt;&lt;/a&gt;. Plus de détails sur les définitions, méthodologies, sources de données et notes spécifiques pour chaque pays sont disponibles dans &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Regard sur l'éducation 2025 Sources, méthodologies et notes techniques&lt;/i&gt; (en anglais)&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_IT" version="1.1" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_IT@DF_EAG_IT_ISCED_REG" agencyID="OECD.EDU.IMEP" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV,UNIT_MEASURE,SUBJ_TYPE</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_PERIOD=2025,OBS_STATUS=A,STATISTICAL_OPERATION,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA=BEL+BFL+BFR+CAN+CA10+CA11+CA12+CA13+CA24+CA35+CA46+CA47+CA48+CA59+CA60+CA61+CA62+GBR+UKB+UKL+UKM+UKN+USA+US01+US02+US04+US05+US06+US08+US09+US10+US11+US12+US13+US15+US16+US17+US18+US19+US20+US21+US22+US23+US24+US25+US26+US27+US28+US29+US30+US31+US32+US33+US34+US35+US36+US37+US38+US39+US40+US41+US42+US44+US45+US46+US47+US48+US49+US50+US51+US53+US54+US55+US56,EDUCATION_LEV=ISCED11_1+ISCED11_24+ISCED11_34</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>SUBJ_TYPE:SUBJ_TYPE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">SUBJ_TYPE:Subject</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">SUBJ_TYPE:Matière</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>0.999999997</common:AnnotationTitle>
+            <common:AnnotationType>SEARCH_WEIGHT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Instruction time in compulsory general education - Subnational entities</common:Name>
+        <common:Name xml:lang="fr">Temps d'instruction dans l'enseignement général obligatoire (données infranationales)</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;This dataset presents the number of hours of statutory instruction time in full-time compulsory education for some subnational entities. It covers primary education, lower secondary general education and compulsory upper secondary general education, but excludes pre-primary education, even if compulsory. Data refers to the reference year 2025 (school year 2024/25 or 2025), unless stated otherwise.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;. Further detail as to the methodology used, the references to the sources and the specific notes for each country are available in &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Education at a Glance 2025 Sources, Methodologies and Technical Notes&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Cet ensemble de données présente le nombre d'heures d'instruction statutaires dans l'enseignement obligatoire à temps plein pour certaines entités infranationales. Il couvre l'enseignement primaire, le premier cycle de l'enseignement secondaire général et le deuxième cycle de l'enseignement secondaire général obligatoire, mais exclut l'enseignement préprimaire, même s'il est obligatoire. Les données se réfèrent à l'année de référence 2025 (année scolaire 2024/25 ou 2025), sauf indication contraire.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation 2018&lt;/i&gt;&lt;/a&gt;. Plus de détails sur les définitions, méthodologies, sources de données et notes spécifiques pour chaque pays sont disponibles dans &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Regard sur l'éducation 2025 Sources, méthodologies et notes techniques&lt;/i&gt; (en anglais)&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_IT" version="1.1" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_IT@DF_EAG_IT_ORG" agencyID="OECD.EDU.IMEP" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV,MEASURE,UNIT_MEASURE</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_PERIOD=2025,OBS_STATUS=A,STATISTICAL_OPERATION=OBS,UNIT_MEASURE=GRDS,AGE,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV=ISCED11_1+ISCED11_24+ISCED11_34</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>COMBINED_UNIT_MEASURE:MEASURE,UNIT_MEASURE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">COMBINED_UNIT_MEASURE:Combined unit of measure</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">COMBINED_UNIT_MEASURE:Unité de mesure combinée</common:AnnotationText>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Organisation of compulsory general education</common:Name>
+        <common:Name xml:lang="fr">Organisation de la filière générale de l’enseignement obligatoire</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;This dataset presents how full-time compulsory education is organised, such as number of grades. It covers primary education, lower secondary general education and compulsory upper secondary general education, but excludes pre-primary education, even if compulsory. Data refers to the reference year 2025 (school year 2024/25 or 2025), unless stated otherwise.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;. Further detail as to the methodology used, the references to the sources and the specific notes for each country are available in &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Education at a Glance 2025 Sources, Methodologies and Technical Notes&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Cet ensemble de données présente la manière dont l'enseignement obligatoire à temps plein est organisé, par exemple le nombre d’années d’études. Il couvre l'enseignement primaire, le premier cycle de l'enseignement secondaire général et le deuxième cycle de l'enseignement secondaire général obligatoire, mais exclut l'enseignement préprimaire, même s'il est obligatoire. Les données se réfèrent à l'année de référence 2025 (année scolaire 2024/25 ou 2025), sauf indication contraire.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation 2018&lt;/i&gt;&lt;/a&gt;. Plus de détails sur les définitions, méthodologies, sources de données et notes spécifiques pour chaque pays sont disponibles dans &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Regard sur l'éducation 2025 Sources, méthodologies et notes techniques&lt;/i&gt; (en anglais)&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_IT" version="1.1" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_IT@DF_EAG_IT_ORG_REG" agencyID="OECD.EDU.IMEP" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV,MEASURE,UNIT_MEASURE</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_PERIOD=2025,OBS_STATUS=A,STATISTICAL_OPERATION=OBS,UNIT_MEASURE=GRDS,AGE,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA=BEL+BFL+BFR+CAN+CA10+CA11+CA12+CA13+CA24+CA35+CA46+CA47+CA48+CA59+CA60+CA61+CA62+GBR+UKB+UKL+UKM+UKN+USA+US01+US02+US04+US05+US06+US08+US09+US10+US11+US12+US13+US15+US16+US17+US18+US19+US20+US21+US22+US23+US24+US25+US26+US27+US28+US29+US30+US31+US32+US33+US34+US35+US36+US37+US38+US39+US40+US41+US42+US44+US45+US46+US47+US48+US49+US50+US51+US53+US54+US55+US56,EDUCATION_LEV=ISCED11_1+ISCED11_24+ISCED11_34</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>COMBINED_UNIT_MEASURE:MEASURE,UNIT_MEASURE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">COMBINED_UNIT_MEASURE:Combined unit of measure</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">COMBINED_UNIT_MEASURE:Unité de mesure combinée</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>0.999999997</common:AnnotationTitle>
+            <common:AnnotationType>SEARCH_WEIGHT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Organisation of compulsory general education - Subnational entities</common:Name>
+        <common:Name xml:lang="fr">Organisation de la filière générale de l’enseignement obligatoire (données infranationales)</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;This dataset presents how full-time compulsory education is organised, such as number of grades, for some subnational entities. It covers primary education, lower secondary general education and compulsory upper secondary general education, but excludes pre-primary education, even if compulsory. Data refers to the reference year 2025 (school year 2024/25 or 2025), unless stated otherwise.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;. Further detail as to the methodology used, the references to the sources and the specific notes for each country are available in &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Education at a Glance 2025 Sources, Methodologies and Technical Notes&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Cet ensemble de données présente la manière dont l'enseignement obligatoire à temps plein est organisé, par exemple le nombre d’années d’études, pour certaines entités infranationales. Il couvre l'enseignement primaire, le premier cycle de l'enseignement secondaire général et le deuxième cycle de l'enseignement secondaire général obligatoire, mais exclut l'enseignement préprimaire, même s'il est obligatoire. Les données se réfèrent à l'année de référence 2025 (année scolaire 2024/25 ou 2025), sauf indication contraire.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation 2018&lt;/i&gt;&lt;/a&gt;. Plus de détails sur les définitions, méthodologies, sources de données et notes spécifiques pour chaque pays sont disponibles dans &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Regard sur l'éducation 2025 Sources, méthodologies et notes techniques&lt;/i&gt; (en anglais)&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_IT" version="1.1" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_IT@DF_EAG_IT_SUBJ_AGE" agencyID="OECD.EDU.IMEP" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>SUBJ_TYPE</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_PERIOD=2025,OBS_STATUS=A,STATISTICAL_OPERATION,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y10</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>UNIT_MEASURE:UNIT_MEASURE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">UNIT_MEASURE:Unit of measure</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">UNIT_MEASURE:Unité de mesure</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>0.999999997</common:AnnotationTitle>
+            <common:AnnotationType>SEARCH_WEIGHT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Instruction time per subject by age</common:Name>
+        <common:Name xml:lang="fr">Temps d'instruction par matière et par âge</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;This dataset presents the percentage of total compulsory instruction time spent on different subjects by age. It covers primary education, lower secondary general education and compulsory upper secondary general education, but excludes pre-primary education, even if compulsory. Data refers to the reference year 2025 (school year 2024/25 or 2025), unless stated otherwise.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;. Further detail as to the methodology used, the references to the sources and the specific notes for each country are available in &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Education at a Glance 2025 Sources, Methodologies and Technical Notes&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Cet ensemble de données présente le pourcentage du temps total d'enseignement obligatoire consacré à différentes matières par âge. Il couvre l'enseignement primaire, le premier cycle de l'enseignement secondaire général et le deuxième cycle de l'enseignement secondaire général obligatoire, mais exclut l'enseignement préprimaire, même s'il est obligatoire. Les données se réfèrent à l'année de référence 2025 (année scolaire 2024/25 ou 2025), sauf indication contraire.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation 2018&lt;/i&gt;&lt;/a&gt;. Plus de détails sur les définitions, méthodologies, sources de données et notes spécifiques pour chaque pays sont disponibles dans &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Regard sur l'éducation 2025 Sources, méthodologies et notes techniques&lt;/i&gt; (en anglais)&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_IT" version="1.1" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_IT@DF_EAG_IT_SUBJ_ISCED" agencyID="OECD.EDU.IMEP" version="1.1" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>SUBJ_TYPE</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_PERIOD=2025,OBS_STATUS=A,STATISTICAL_OPERATION,UNIT_MULT</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_LEV=ISCED11_1+ISCED11_24+ISCED11_34</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>UNIT_MEASURE:UNIT_MEASURE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">UNIT_MEASURE:Unit of measure</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">UNIT_MEASURE:Unité de mesure</common:AnnotationText>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Instruction time per subject by level of education</common:Name>
+        <common:Name xml:lang="fr">Temps d'instruction par matière et par niveau d'enseignement</common:Name>
+        <common:Description xml:lang="en">&lt;p&gt;This dataset presents the percentage of total compulsory instruction time spent on different subjects by level of education. It covers primary education, lower secondary general education and compulsory upper secondary general education, but excludes pre-primary education, even if compulsory. Data refers to the reference year 2025 (school year 2024/25 or 2025), unless stated otherwise.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;. Further detail as to the methodology used, the references to the sources and the specific notes for each country are available in &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Education at a Glance 2025 Sources, Methodologies and Technical Notes&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">&lt;p&gt;Cet ensemble de données présente le pourcentage du temps total d'enseignement obligatoire consacré à différentes matières par niveau d'enseignement. Il couvre l'enseignement primaire, le premier cycle de l'enseignement secondaire général et le deuxième cycle de l'enseignement secondaire général obligatoire, mais exclut l'enseignement préprimaire, même s'il est obligatoire. Les données se réfèrent à l'année de référence 2025 (année scolaire 2024/25 ou 2025), sauf indication contraire.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation 2018&lt;/i&gt;&lt;/a&gt;. Plus de détails sur les définitions, méthodologies, sources de données et notes spécifiques pour chaque pays sont disponibles dans &lt;a href="https://doi.org/10.1787/fcfaf2d1-en"&gt;&lt;i&gt;Regard sur l'éducation 2025 Sources, méthodologies et notes techniques&lt;/i&gt; (en anglais)&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_IT" version="1.1" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_EARN_ALL" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV,AGE,INCOME</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,SEX=_T,LABOUR_FORCE_STATUS=EMP,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2018,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Education and earnings (EARNINGS) (full dataset)</common:Name>
+        <common:Name xml:lang="fr">Éducation et revenus (EARNINGS) (ensemble de données complet)</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the relative earnings of workers, by age group, gender, educational attainment level and work time arrangement. This dataset includes the distribution of workers based on the level of their earnings with respect to the median earnings as well  as indicators of relative earnings based on the following baselines: the earnings of workers with below upper secondary attainment, of those with upper secondary attainment, of tertary-educated workers, of male workers, of 25-34 year-old workers, and of native-born workers. This dataset combines data disseminated with the all the dataflows that present indicators from the Education and Earnings data collection: default tables are optimised in the specific dataflows. Filter the Unit of measure and the other available dimensions to visualise specific indicators and use the time period filter to visualise historical data.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur les revenus relatifs des travailleurs, ventilées par tranche d'âge, sexe, niveau d'instruction et modalités du temps de travail. Il présente la répartition des travailleurs selon leur niveau de revenu par rapport au revenu médian, ainsi que des indicateurs de revenu relatif fondés sur les références suivantes : les revenus des travailleurs ayant un niveau d'instruction inférieur au deuxième cycle du secondaire, ceux ayant atteint ce niveau, ceux ayant fait des études supérieures, les hommes, les travailleurs âgés de 25 à 34 ans et les travailleurs nés dans le pays. Cet ensemble de données regroupe les informations diffusées dans le cadre de tous les flux de données présentant des indicateurs issus de la collecte « Éducation et revenus » ; les tableaux par défaut sont optimisés dans chaque flux spécifique. Filtrez l'Unité de mesure et les autres dimensions disponibles pour visualiser des indicateurs spécifiques et utilisez le filtre temporel pour afficher les données historiques.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_EARN_DISTR_MEDIAN" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV,INCOME</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,SEX=_T,LABOUR_FORCE_STATUS=EMP,STATISTICAL_OPERATION=OBS,INCOME=MILE_50+MIGT_50_LE100+MIGT_100_LE150+MIGT_150_LE200+MIGT_200,TIME_PERIOD_START=2018,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Earners distribution based on their level of earnings relative to the overall median, by age group, gender and educational attainment level</common:Name>
+        <common:Name xml:lang="fr">Répartition des actifs en fonction de leur niveau de revenus par rapport à la médiane globale, par groupe d'âge, sexe et niveau d'études</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the distribution of workers based on their level of earnings relative to the overall median, by educational attainment level, gender and age group. The default table displays 2024 data (or the latest available year) on the distribution of 25-64 year-old workers, for a given level of the three aggregated levels of educational attainment. The selection can be changed to display data by gender and by age group. Overall median refers the median earnings from work for 25-64 year-olds with income from employment (full- and part-time workers) for all levels of educational attainment. Data refer to gross earnings except for Argentina and Türkiye. Filter the time period to visualise historical data. &lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur la répartition des travailleurs en fonction de leur niveau de revenu par rapport à la médiane générale, par niveau d'études, sexe et tranche d'âge. Le tableau par défaut affiche les données de 2023 (ou de la dernière année disponible) sur la répartition des travailleurs âgés de 25 à 64 ans, pour un niveau donné parmi les trois niveaux d'études agrégés. La sélection peut être modifiée pour afficher les données par sexe et par tranche d'âge. La médiane générale correspond au revenu médian du travail des 25-64 ans ayant un revenu d'emploi (travailleurs à temps plein et à temps partiel), tous niveaux d'études confondus. Les données se réfèrent aux revenus bruts, sauf pour l'Argentine et la Turquie. Filtrez la période pour visualiser les données historiques. &lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_EARN_FIELD" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_FIELD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T34,WORK_TIME_ARNGMNT=FT,SEX=_T,ATTAINMENT_LEV=ISCED11A_5T8,EDUCATION_FIELD=F01+F02+F03+F04+F05+F06+F07+F08+F09+F10,LABOUR_FORCE_STATUS=EMP,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2018,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Earnings differences by field of study among tertiary-educated workers, by age group, gender and level of tertiary educational attainment</common:Name>
+        <common:Name xml:lang="fr">Différences de revenus par domaine d'études parmi les actifs diplômés de l'enseignement supérieur, par groupe d'âge, sexe et niveau de diplôme de l'enseignement supérieur</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the differrences in earnings from employment by field of study, age group, educational attainment level and work time arrangement. The baseline is the earnings of tertiary-educated  full-time workers from all fields of study. The default table displays 2023 data (or the latest available year). The selection can be changed to display data by more detailed educational attainment level, age group, gender and by work time arrangement (e.g. full- or part-time employment). &lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur les différences de revenus d'emploi selon le domaine d'études, la tranche d'âge, le niveau de formation et l'aménagement du temps de travail. La base de référence est constituée des revenus des travailleurs à temps plein diplômés de l'enseignement supérieur, tous domaines d'études confondus. Le tableau par défaut affiche les données de 2023 (ou de la dernière année disponible). La sélection peut être modifiée pour afficher les données par niveau de formation plus détaillé, tranche d'âge, sexe et aménagement du temps de travail (par exemple, temps plein ou partiel). &lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_EARN_REL_BEL" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T34,WORK_TIME_ARNGMNT=FT,SEX=_T,ATTAINMENT_LEV=ISCED11A_34_44+ISCED11A_35_45+ISCED11A_6,LABOUR_FORCE_STATUS=EMP,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2018,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Earnings of workers relative to the earnings of workers with below upper secondary educational attainment, by age group, gender and educational attainment level</common:Name>
+        <common:Name xml:lang="fr">Revenus des actifs occupés par rapport aux revenus des actifs occupés ayant un niveau d'études inférieur au deuxième cycle de l'enseignement secondaire, par groupe d'âge, sexe et niveau d'études</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the relative earnings of workers, by age group, gender, educational attainment level and work time arrangement. The baseline is the earnings of workers with below upper secondary attainment, and it is primarily served to analyse the earnings difference by programme orientation. The default table displays 2024 data (or the latest available year) on the earnings of 25-34 year-old full-time workers with general or vocational upper secondary or post-secondary non-tertiary attainment, or bachelor's or equivalent degree as a percentage of the earnings of their peers with below upper secondary attainment. The selection can be changed to display data by gender, by level of educational attainment, by age group and by work time arrangement (e.g. full- or part-time employment). Data refer to gross earnings except for Argentina and Türkiye. Data on full-time workers are recommended because of better comparability. Filter the time period to visualise historical data. &lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur les revenus relatifs des travailleurs, par groupe d'âge, sexe, niveau d'études et aménagement du temps de travail. La base de référence est constituée des revenus des travailleurs n'ayant pas terminé le deuxième cycle du secondaire, et il sert principalement à analyser les différences de revenus selon la filière d'études. Le tableau par défaut affiche les données de 2023 (ou de la dernière année disponible) sur les revenus des travailleurs à temps plein âgés de 25 à 34 ans titulaires d'un diplôme d'enseignement secondaire supérieur général ou professionnel ou d'un diplôme postsecondaire non tertiaire, ou d'une licence ou d'un diplôme équivalent, en pourcentage des revenus de leurs pairs ayant un niveau inférieur au deuxième cycle du secondaire. La sélection peut être modifiée pour afficher les données par sexe, par niveau d'études, par tranche d'âge et par aménagement du temps de travail (par exemple, emploi à temps plein ou partiel). Les données se réfèrent aux revenus bruts, sauf pour l'Argentine et la Turquie. Il est recommandé de fournir des données sur les travailleurs à temps plein pour une meilleure comparabilité. Filtrez la période pour visualiser les données historiques. &lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_EARN_REL_MALE" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,WORK_TIME_ARNGMNT=FT,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,LABOUR_FORCE_STATUS=EMP,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2018,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Earnings differences by gender, by age group and educational attainment level</common:Name>
+        <common:Name xml:lang="fr">Différences de revenus par sexe, par groupe d'âge et par niveau d'études</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the gender differrences in earnings from employment, by age group, educational attainment level and work time arrangement. The baseline is men's earnings. The default table displays 2024 data (or the latest available year) on the earnings of 25-64 year-old full-time female workers as a percentage of the earnings of their male counterparts, by the three aggregated levels of educational attainment. The selection can be changed to display data by educational attainment, by age group and by work time arrangement (e.g. full- or part-time employment).&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur les différences de revenus du travail entre les sexes, par groupe d'âge, niveau de formation et aménagement du temps de travail. La base de référence est le revenu des hommes. Le tableau par défaut affiche les données de 2023 (ou de la dernière année disponible) sur les revenus des femmes de 25 à 64 ans travaillant à temps plein en pourcentage de ceux de leurs homologues masculins, selon les trois niveaux de formation agrégés. La sélection peut être modifiée pour afficher les données par niveau d'éducation, par groupe d'âge et par aménagement du temps de travail (par exemple, emploi à temps plein ou à temps partiel). &lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_EARN_REL_NATIVE" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,WORK_TIME_ARNGMNT=FT,SEX=_T,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,LABOUR_FORCE_STATUS=EMP,MIGRATION_AGE=_T,BIRTH_PLACE=FB,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2018,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Earnings differences by country of birth and age at migration, by age group, gender and educational attainment level</common:Name>
+        <common:Name xml:lang="fr">Différences de revenus selon le pays de naissance et l'âge au moment de la migration, par groupe d'âge, sexe et niveau d'études</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the differrences in earnings from employment between native- and foreign-born adults, by age group, gender, educational attainment level and work time arrangement. The baseline is the earnings of native-born workers. The default table displays 2022 data (or the latest available year) on the earnings of 25-64 year-old native-born full-time workers as a percentage of the earnings of their foreign-born counterparts, by the three aggregated levels of educational attainment. The selection can be changed to display data by educational attainment level, age group, gender, age at migration and by work time arrangement (e.g. full- or part-time employment). &lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur les différences de revenus d'emploi entre les adultes nés dans le pays et ceux nés à l'étranger, par groupe d'âge, sexe, niveau d'études et aménagement du temps de travail. La base de référence est constituée par les revenus des travailleurs nés dans le pays. Le tableau par défaut affiche les données de 2022 (ou de la dernière année disponible) sur les revenus des travailleurs à temps plein âgés de 25 à 64 ans nés dans le pays, exprimés en pourcentage des revenus de leurs homologues nés à l'étranger, selon les trois niveaux de formation agrégés. La sélection peut être modifiée pour afficher les données par niveau de formation, tranche d'âge, sexe, âge à la migration et aménagement du temps de travail (par exemple, temps plein ou partiel).  &lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_EARN_REL_UPPER" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,WORK_TIME_ARNGMNT=FT,SEX=_T,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_5+ISCED11A_6+ISCED11A_7_8+ISCED11A_5T8,LABOUR_FORCE_STATUS=EMP,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2018,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Earnings of workers relative to the earnings of workers with upper secondary educational attainment, by age group, gender and educational attainment level</common:Name>
+        <common:Name xml:lang="fr">Revenus des actifs occupés par rapport aux revenus des actifs occupés ayant un niveau d'éducation secondaire supérieur, par groupe d'âge, sexe et niveau d'éducation</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the relative earnings of workers, by age group, gender, educational attainment level and work time arrangement. The baseline is the earnings of workers with upper secondary attainment. The default table displays 2024 data (or the latest available year) on the earnings of 25-64 year-old full-time workers with below upper secondary attainment or teritary attainment as a percentage of the earnings of their peers with upper secondary attainment. The selection can be changed to display data by gender, educational attainment level, age group and work time arrangement (e.g. full- or part-time employment). Note that the baseline is the earnings of workers with upper secondary or post-secondary non-tertiary attainment for Colombia, France, Italy, Peru and Swizterland. Data refer to gross earnings except for Argentina and Türkiye. Data on full-time workers are recommended because of better comparability. Filter the time period to visualise historical data. &lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur les revenus relatifs des travailleurs, par groupe d'âge, sexe, niveau d'études et aménagement du temps de travail. La base de référence est constituée des revenus des travailleurs titulaires d'un diplôme du deuxième cycle de l'enseignement secondaire. Le tableau par défaut affiche les données de 2023 (ou de la dernière année disponible) sur les revenus des travailleurs à temps plein âgés de 25 à 64 ans n'ayant pas terminé le deuxième cycle du secondaire ou l'enseignement supérieur, exprimés en pourcentage des revenus de leurs pairs ayant terminé le deuxième cycle du secondaire. La sélection peut être modifiée pour afficher les données par sexe, niveau d'études, tranche d'âge et aménagement du temps de travail (par exemple, emploi à temps plein ou partiel). Veuillez noter que la base de référence correspond aux revenus des travailleurs ayant terminé le deuxième cycle du secondaire ou l'enseignement postsecondaire non tertiaire pour la Colombie, la France, l'Italie, le Pérou et la Suisse. Les données se réfèrent aux revenus bruts, sauf pour l'Argentine et la Turquie. Il est recommandé d'utiliser les données sur les travailleurs à temps plein pour une meilleure comparabilité. Filtrez la période pour visualiser les données historiques.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_EARN_REL_YAD" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV,AGE</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y35T44+Y45T54+Y55T64,WORK_TIME_ARNGMNT=FT,SEX=_T,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,LABOUR_FORCE_STATUS=EMP,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2018,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Earnings of workers relative to the earnings of 25-34 year-olds, by age group, gender and educational attainment level</common:Name>
+        <common:Name xml:lang="fr">Revenus des actifs occupés par rapport aux revenus des 25-34 ans, par groupe d'âge, sexe et niveau d'études</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the relative earnings of workers, by age group, gender, educational attainment level and work time arrangement. The baseline is the earnings of 25-34 year-old workers. The default table displays 2024 data (or the latest available year) on the earnings of 35-44, 45-54 and 55-64 year-old full-time workers as a percentage of the earnings of their 25-34 year-old peers, by the three aggregated levels of educational attainment. The selection can be changed to display data by gender, by educational attainment level, by age group and by work time arrangement (e.g. full- or part-time employment). &lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur les revenus relatifs des travailleurs, par tranche d'âge, sexe, niveau de scolarité et aménagement du temps de travail. La base de référence est constituée des revenus des travailleurs âgés de 25 à 34 ans. Le tableau par défaut affiche les données de 2023 (ou de la dernière année disponible) sur les revenus des travailleurs à temps plein âgés de 35 à 44 ans, 45 à 54 ans et 55 à 64 ans, exprimés en pourcentage des revenus de leurs homologues âgés de 25 à 34 ans, selon les trois niveaux de scolarité agrégés. La sélection peut être modifiée pour afficher les données par sexe, niveau de scolarité, tranche d'âge et aménagement du temps de travail (par exemple, temps plein ou partiel). &lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_NEAC_ALL" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2020,TIME_PERIOD_END=2025,SEX=_T,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>COMBINED_MIGR_STATUS:BIRTH_PLACE,MIGRATION_AGE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">COMBINED_MIGR_STATUS:Migration status</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">COMBINED_MIGR_STATUS:Statut migratoire</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">National Educational Attainment Classification (NEAC) and labour market status (full dataset)</common:Name>
+        <common:Name xml:lang="fr">Classification nationale des niveaux d'études (NEAC) et situation sur le marché du travail (ensemble de données complet)</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the distribution of adults with a given age group and gender by educational attainment level, their employment rate, their unemployment rate, the share of adults who are unemployed and outside the labour force, their distribution by gender, field of study, migration status, and duration of unemployment . This dataset combines data disseminated with the all the dataflows that present indicators from the National Educational Attainment Classification (NEAC) data collection: default tables are optimised in the specific dataflows. Filter Measure, Unit of measure and the other available dimensions to visualise specific indicators and use the time period filter to visualise historical data.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur la répartition des adultes d'une tranche d'âge et d'un sexe donnés selon le niveau d'instruction, ainsi que sur leur taux d'emploi, leur taux de chômage, la part des adultes au chômage ou inactifs, et leur répartition selon le sexe, le domaine d'études, le statut migratoire et la durée du chomage. Il regroupe les données diffusées via l'ensemble des flux de données présentant des indicateurs issus de la collecte relative à la Classification nationale du niveau d'instruction (NEAC) ; les tableaux par défaut sont optimisés pour chaque flux spécifique. Filtrez les indicateurs (mesure), l'unité de mesure et les autres dimensions disponibles pour afficher des données précises, et utilisez le filtre temporel pour visualiser les données historiques.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_NEAC_DISTR_DURUNEMP" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV,MEASURE,DURATION_UNEMP</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,DURATION_UNEMP=_T+M_LT3+M3T11+M_GE12,STATISTICAL_OPERATION=OBS,TIME_PERIOD_END=2025,TIME_PERIOD_START=2017,SEX=_T,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Duration of unemployment distribution among unemployed adults, by educational attainment, age group and gender</common:Name>
+        <common:Name xml:lang="fr">Répartition de la durée du chômage chez les adultes au chômage, par niveau d'études, groupe d'âge et sexe</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the duration of unemployment distribution among unemployed adults, by educational attainment, age group and gender. The default table displays 2024 data (or the latest available year) on the distribution of unemployed 25-64 year-olds by duration of unemployment. The selection can be changed to display data by more detailed educational attainment level, by by gender and by age group. Filter the time period to display historical data.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur la répartition de la durée du chômage chez les adultes au chômage, par niveau d'études, tranche d'âge et sexe. Le tableau par défaut affiche les données de 2024 (ou de la dernière année disponible) sur la répartition des chômeurs de 25 à 64 ans selon la durée du chômage. La sélection peut être modifiée pour afficher les données par niveau d'études plus détaillé, par sexe et par tranche d'âge. Filtrez la période pour afficher les données historiques.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_NEAC_DISTR_EA" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2020,TIME_PERIOD_END=2025,SEX=_T,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Adults' educational attainment distribution, by age group and gender</common:Name>
+        <common:Name xml:lang="fr">Répartition du niveau d'études des adultes, par groupe d'âge et par sexe</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the distribution of adults with a given age group and gender by educational attainment level. The default table displays 2025 data (or the latest available year) on the distribution of 25-64 year-olds by educational attainment. The selection can be changed to display data by programme orientation, by gender and by age group. Filter the time period to display historical data.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur la répartition des adultes d'une tranche d'âge et d'un sexe donnés, par niveau d'études. Le tableau par défaut affiche les données de 2024 (ou de la dernière année disponible) sur la répartition des 25-64 ans par niveau d'études. La sélection peut être modifiée pour afficher les données par orientation de programme, par sexe et par tranche d'âge. Filtrez la période pour afficher les données historiques.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_NEAC_DISTR_EA_FIELD" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>EDUCATION_FIELD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_5T8,SEX=_T,EDUCATION_FIELD=F01+F02+F03+F04+F05+F06+F07+F08+F09+F10,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2017,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Field of study distribution of tertiary-educated adults, by level of tertiary educational attainment, age group and gender</common:Name>
+        <common:Name xml:lang="fr">Répartition des domaines d'études des adultes diplômés de l'enseignement supérieur, par niveau d'études, groupe d'âge et sexe</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the distribution of tertiary-educated adults with a given age group and gender by field of study. The default table displays 2024 data (or the latest available year) on the distribution of tertiary-educated 25-64 year-olds by field of study. The selection can be changed to display data by more detailed educational attainment level, by gender and by age group. Filter the time period to display historical data. &lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur la répartition des adultes diplômés de l'enseignement supérieur, par tranche d'âge et par sexe, par domaine d'études. Le tableau par défaut affiche les données de 2024 (ou de la dernière année disponible) sur la répartition des 25-64 ans diplômés de l'enseignement supérieur par domaine d'études. Vous pouvez modifier la sélection pour afficher les données par niveau d'études plus détaillé, par sexe et par tranche d'âge. Filtrez la période pour afficher les données historiques. &lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_NEAC_DISTR_EA_MIGR" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>COMBINED_MIGR_STATUS,ATTAINMENT_LEV</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,SEX=_T,BIRTH_PLACE=FB+NB,MIGRATION_AGE=_Z+_T,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2020,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>COMBINED_MIGR_STATUS:BIRTH_PLACE,MIGRATION_AGE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">COMBINED_MIGR_STATUS:Migration status</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">COMBINED_MIGR_STATUS:Statut migratoire</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Adults' educational attainment distribution, by country of birth, age group and gender</common:Name>
+        <common:Name xml:lang="fr">Répartition du niveau d'études des adultes, par pays de naissance, groupe d'âge et sexe</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the distribution of native- and foreign-born adults with a given age group and gender by educational attainment level. The default table displays 2023 data (or the latest available year) on the distribution of native- and foreign-born 25-64 year-olds by educational attainment. The selection can be changed to display data by age at migration, by gender and by age group. Filter the time period to display historical data. &lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur la répartition des adultes nés au pays et à l'étranger, par tranche d'âge et par sexe, selon le niveau d'études. Le tableau par défaut affiche les données de 2023 (ou de la dernière année disponible) sur la répartition des 25-64 ans nés au pays et à l'étranger, selon le niveau d'études. La sélection peut être modifiée pour afficher les données par âge à la migration, par sexe et par tranche d'âge. Filtrez la période pour afficher les données historiques.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_NEAC_DISTR_GENDER" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV,SEX</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,SEX=F+M,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2017,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Adults' gender distribution, by educational attainment level and age group</common:Name>
+        <common:Name xml:lang="fr">Répartition des adultes par sexe, par niveau de formation et par groupe d'âge</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the gender distribution of adults with a given age group and educational attainment level. The default table displays 2025 data (or the latest available year) on the gender distribution of 25-64 year-olds with below upper secondary, upper secondary or post-secondary non-tertiary, or tertiary attainment. The selection can be changed to display data by educational attainment, by programme orientation and by age group. Filter the time period to visualise historical data.&lt;/p&gt;&lt;p&gt;For more information, please consult the &lt;a href=https://www.oecd.org/en/publications/education-at-a-glance_19991487.html&gt;&lt;i&gt;Education at a Glance&lt;/i&gt;&lt;/a&gt; web page and the &lt;a href=https://doi.org/10.1787/9789264304444-en&gt;&lt;i&gt;OECD Handbook for Internationally Comparative Education Statistics: Concepts, Standards, Definitions and Classifications&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <common:Description xml:lang="fr">Cet ensemble de données contient des informations sur la répartition par sexe des adultes d'une tranche d'âge et d'un niveau d'éducation donnés. Le tableau par défaut affiche les données de 2024 (ou de la dernière année disponible) sur la répartition par sexe des 25-64 ans ayant un niveau d'études inférieur au deuxième cycle du secondaire, du deuxième cycle du secondaire ou de l'enseignement post-secondaire non tertiaire, ou de l'enseignement tertiaire. La sélection peut être modifiée pour afficher les données par niveau d'études, par orientation et par tranche d'âge. Filtrez la période pour visualiser les données historiques.&lt;/p&gt;&lt;p&gt;Pour plus d'informations, veuillez consulter la page web &lt;a href=https://www.oecd.org/fr/publications/regards-sur-l-education_19991495.html&gt;&lt;i&gt;Regard sur l'éducation&lt;/i&gt;&lt;/a&gt; et le &lt;a href=https://doi.org/10.1787/9789264305380-fr&gt;&lt;i&gt;Guide de l'OCDE pour l'établissement de statistiques internationalement comparables dans le domaine de l'éducation&lt;/i&gt;&lt;/a&gt;.</common:Description>
+        <structure:Structure>
+          <Ref id="DSD_EAG_LSO_EA" version="1.0" agencyID="OECD.EDU.IMEP" package="datastructure" class="DataStructure" />
+        </structure:Structure>
+      </structure:Dataflow>
+      <structure:Dataflow id="DSD_EAG_LSO_EA@DF_LSO_NEAC_DISTR_MIGR" agencyID="OECD.EDU.IMEP" version="1.0" isFinal="true">
+        <common:Annotations>
+          <common:Annotation>
+            <common:AnnotationType>NonProductionDataflow</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">true</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>REF_AREA</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV,COMBINED_MIGR_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_COLUMN</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>TIME_PERIOD</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_ROW_SECTION</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>LAYOUT_TIME_PERIOD_DESC</common:AnnotationTitle>
+            <common:AnnotationType>LAYOUT_TIME_PERIOD_DESC</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>UNIT_MULT=0,OBS_STATUS=A,QUESTIONNAIRE,EDU_STATUS,LABOUR_FORCE_STATUS</common:AnnotationTitle>
+            <common:AnnotationType>NOT_DISPLAYED</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>AGE=Y25T64,ATTAINMENT_LEV=ISCED11A_0T2+ISCED11A_3_4+ISCED11A_5T8,SEX=_T,BIRTH_PLACE=FB+NB,MIGRATION_AGE=_Z+_T,STATISTICAL_OPERATION=OBS,TIME_PERIOD_START=2017,TIME_PERIOD_END=2025,LASTNOBSERVATIONS=1,REF_AREA=AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+OECD+ARG+BRA+BGR+HRV+IND+IDN+PER+ROU+SAU+ZAF</common:AnnotationTitle>
+            <common:AnnotationType>DEFAULT</common:AnnotationType>
+          </common:Annotation>
+          <common:Annotation>
+            <common:AnnotationTitle>COMBINED_MIGR_STATUS:BIRTH_PLACE,MIGRATION_AGE</common:AnnotationTitle>
+            <common:AnnotationType>COMBINED_CONCEPTS</common:AnnotationType>
+            <common:AnnotationText xml:lang="en">COMBINED_MIGR_STATUS:Migration status</common:AnnotationText>
+            <common:AnnotationText xml:lang="fr">COMBINED_MIGR_STATUS:Statut migratoire</common:AnnotationText>
+          </common:Annotation>
+          <common:Annotation id="@SDMX">
+            <common:AnnotationTitle>ATTAINMENT_LEV:OECD.EDU.IMEP:HCL_ISCED11A(1.0).H</common:AnnotationTitle>
+            <common:AnnotationType>HIER_CONTEXT</common:AnnotationType>
+          </common:Annotation>
+        </common:Annotations>
+        <common:Name xml:lang="en">Adults' migration status distribution, by educational attainment level, age group and gender</common:Name>
+        <common:Name xml:lang="fr">Répartition du statut migratoire des adultes, par niveau d'éducation, par groupe d'âge et par sexe</common:Name>
+        <common:Description xml:lang="en">This dataset contains data on the distribution of adults with a given age group, gender, educational attainment level and migration status. The default table displays 2023 data (or the latest available year) on the share of native- and foreign-born 25-64 year-olds with a given level of educational attainment. The selection can be changed to display data by age at migration, by gender and by age group. Filter the time period to display historical data. &lt;/p&gt;&lt;p&gt;For more information, please cons
