@@ -1,4 +1,9 @@
 // Manifest: Norway first-hand fish sales (Fiskeridirektoratet sales notes). Logic lives in ./source.ts.
+// SWITCHED OFF (manifest.offline.ts, 22 Oct 2026, Builder D): the collector read the live fangstdata_2026.csv.zip (767,886 lines, 747,717 Norwegian
+// landings, newest landing 2026-10-21) and found NOT ONE line with a price: "Enhetspris for fisker", "Beloep for fisker" and "Fangstverdi" are empty in
+// the 2026 file (first rows checked through the probe: Norges Sildesalgslag herring and mackerel, Oppdateringstidspunkt 22.10.2026). Prices appear to be
+// added only when a year is finalised. To switch on: prove that a recent file (try fangstdata_2025.csv.zip, or the 2026 file once it carries prices) has
+// priced rows, then rename this file to index.ts, set the year in fishHarvest(), run npm test and harvest once on main.
 // The daily collector streams the current year's file; requests are answered from the price library.
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";

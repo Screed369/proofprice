@@ -8,8 +8,7 @@ import {
   INFO, aggregateSales, fishAnswerFromRows, fishHarvest, forEachZipLine, isoFromNo, matchDefs, defsFor, num, parseSale, readHeader, resolveCounty, skipLocalHeader, splitSemi, wanted,
 } from "./source";
 import type { Sale } from "./source";
-import manifest from "./index";
-import { countriesFor } from "../../lib/registry";
+import manifest from "./manifest.offline";
 
 const COLS = HEADER.split(";");
 const col = (name: string) => COLS.indexOf(name);
@@ -178,7 +177,6 @@ test("manifest: Norway only, licence and attribution stated, wholesale fresh foo
   assert.equal(manifest.category, "wholesale-fresh-food");
   assert.match(INFO.licence, /NLOD/);
   assert.match(INFO.attribution, /Fiskeridirektoratet/);
-  assert.ok(countriesFor("wholesale-fresh-food").includes("NO"));
 });
 
 test("a file that lags behind today still gives its own newest week", async () => {
