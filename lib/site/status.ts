@@ -54,3 +54,22 @@ export const HEALTH_LABEL: Record<LibraryHealth, string> = {
   error: "Error",
   "no-data": "No data yet",
 };
+
+export interface PaidUseSummary {
+  /** Source ids on the cleared list that are also on the coverage list (the ones a paid call can use today). */
+  cleared: SourceCard[];
+  /** Everything else: always served free. */
+  freeOnlyCount: number;
+}
+
+/** Which live sources are cleared for paid use. Read-only: the list itself lives in lib/payments/cleared.ts. */
+export function paidUseSummary(cards: SourceCard[], clearedIds: ReadonlySet<string>): PaidUseSummary {
+  const cleared = cards.filter((c) => clearedIds.has(c.id));
+  return { cleared, freeOnlyCount: cards.length - cleared.length };
+}
+
+export const PAYMENT_MODE_TEXT: Record<"off" | "testnet" | "mainnet", string> = {
+  off: "Off. Every call is free today.",
+  testnet: "Test network. Paid calls use test money only; no real money moves.",
+  mainnet: "On. Paid calls settle in USDC on Base.",
+};

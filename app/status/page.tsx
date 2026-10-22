@@ -2,7 +2,9 @@ import { Breadcrumbs } from "../_components/Breadcrumbs";
 import { dateTimeUtc, longDate, plural } from "../../lib/site/format";
 import { pageMetadata } from "../../lib/site/meta";
 import { sourceCards } from "../../lib/site/sources";
-import { HEALTH_LABEL, LATE_AFTER_DAYS, libraryStatusRows } from "../../lib/site/status";
+import { HEALTH_LABEL, LATE_AFTER_DAYS, PAYMENT_MODE_TEXT, libraryStatusRows, paidUseSummary } from "../../lib/site/status";
+import { CLEARED_FOR_PAID } from "../../lib/payments/cleared";
+import { paymentMode } from "../../lib/pricing";
 import { usageReport } from "../../lib/usage";
 import type { UsageReport } from "../../lib/usage";
 
@@ -30,6 +32,8 @@ export default async function Status() {
   const usage = await readUsage();
   const cards = sourceCards();
   const rows = libraryStatusRows(cards, now);
+  const mode = paymentMode();
+  const paid = paidUseSummary(cards, CLEARED_FOR_PAID);
   const problems = rows.filter((r) => r.health !== "ok");
   return (
     <main>
@@ -113,6 +117,25 @@ export default async function Status() {
         Home sale registers publish with a delay, so &quot;newest figures&quot; can be older than the last collection. Machine-readable:{" "}
         <a href="/api/v1/library">/api/v1/library</a>.
       </p>
+
+      <h2>Payments</h2>
+      <p>
+        Payment mode: <strong>{PAYMENT_MODE_TEXT[mode]}</strong> Every category tool, REST path and public page is free in every mode. Only the
+        price check and daily history calls can ever cost anything, and only after the free calls of the day. See <a href="/pricing">/pricing</a>.
+      </p>
+      <p>
+        <strong>{paid.cleared.length}</strong> of {cards.length} sources are cleared for paid use; the other {paid.freeOnlyCount} are always
+        served free, with a note, and are never charged. A source is cleared only after its licence page says commercial use is allowed.
+      </p>
+      {paid.cleared.length > 0 && (
+        <ul className="small">
+          {paid.cleared.map((c) => (
+            <li key={c.id}>
+              <a href={`/sources#${c.id}`}>{c.id}</a> <span className="muted">({c.countryNames.join(", ")}; {c.licence})</span>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <h2>Questions asked</h2>
       {usage && usage.enabled && usage.period ? (
