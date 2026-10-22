@@ -1,5 +1,7 @@
 name: depfi
-on: workflow_dispatch
+on:
+  push:
+    branches: [depth/fi-postcode]
 jobs:
   t:
     runs-on: ubuntu-latest
