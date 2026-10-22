@@ -1,0 +1,39 @@
+URL: https://data.cityofchicago.org/api/views/ajtu-isnz/rows.csv?accessType=DOWNLOAD&$limit=2
+Fetched: 2026-10-22T08:46:58Z from GitHub Actions
+Status, type, bytes: 200 text/csv; charset=utf-8 429958808
+Errors: curl: (28) Operation timed out after 120000 milliseconds with 429958808 bytes received
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 08:44:59 GMT
+Content-Type: text/csv; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Deprecation: @1791331200
+Sunset: Tue, 22 Dec 2026 00:00:00 GMT
+Link: <https://support.socrata.com/hc/en-us/articles/43491231777047>; rel="deprecation"; type="text/html"
+Link: <https://support.socrata.com/hc/en-us/articles/43491231777047>; rel="sunset"; type="text/html"
+Content-disposition: attachment; filename=Taxi_Trips__2024-_.csv
+Cache-Control: public, must-revalidate, max-age=21600
+ETag: W/"anVsaWV0dC4xNjYyMl8xXzY0MlU2NlhZZEVpdkJJdHdoYWppbzhXVS1XcW1n---gzipSY6dbq2hl74V9Ia78on35yCSkjw--gzip--gzip"
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 84818149498b238a3769670ef54cb411
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: CSV ASCII text
+=== FIRST 3000 BYTES
+Trip ID,Taxi ID,Trip Start Timestamp,Trip End Timestamp,Trip Seconds,Trip Miles,Pickup Census Tract,Dropoff Census Tract,Pickup Community Area,Dropoff Community Area,Fare,Tips,Tolls,Extras,Trip Total,Payment Type,Company,Pickup Centroid Latitude,Pickup Centroid Longitude,Pickup Centroid Location,Dropoff Centroid Latitude,Dropoff Centroid Longitude,Dropoff Centroid  Location
+0000184e7cd53cee95af32eba49c44e4d20adcd8,f538e6b729d1aaad4230e9dcd9dc2fd9a168826ddadbd67c2f79331875dc586863d73aa3169fb266dc5e5ed6cdc8687537de8071a51556146f5251d4d8e8237f,01/19/2024 05:00:00 PM,01/19/2024 06:00:00 PM,4051,17.12,17031980000,17031320100,76,32,45.50,10.00,0.00,4.00,60.00,Credit Card,Flash Cab,41.97907082,-87.903039661,POINT (-87.9030396611 41.9790708201),41.884987192,-87.620992913,POINT (-87.6209929134 41.8849871918)
+000072ee076c9038868e239ca54185eb43959db0,e51e2c30caec952b40b8329a68b498e18ce8a1f40fa75c71e425e9426db562ac617b0a28e1c69f5c579048f75a43a2dc066c17448ab65f5016acca10558df3ed,01/28/2024 02:30:00 PM,01/28/2024 03:00:00 PM,1749,12.7,,,6,,33.75,0.00,0.00,0.00,33.75,Cash,Flash Cab,41.944226601,-87.655998182,POINT (-87.6559981815 41.9442266014),,,
+000074019d598c2b1d6e77fbae79e40b0461a2fc,aeb280ef3be3e27e081eb6e76027615b0d40925b84d3eb1301a01293a34c41ec45fe1ff1ceeb0e769565af1573d216d5a6c8bbc260b9f8a8db9be4ef74d31c78,01/05/2024 09:00:00 AM,01/05/2024 09:00:00 AM,517,3.39,,,6,8,10.91,2.78,0.00,1.00,14.69,Mobile,Taxicab Insurance Agency Llc,41.944226601,-87.655998182,POINT (-87.6559981815 41.9442266014),41.899602111,-87.633308037,POINT (-87.6333080367 41.899602111)
+00007572c5f92e2ff067e6f838a5ad74e83665d3,7d21c2ca227db8f27dda96612bfe5520ab408fa9a462c8ca4c73a22c362b8022ac8e0f5538c9b820dc3a6be61e06f215654909a3b02770ddf84631e948479436,01/22/2024 08:45:00 AM,01/22/2024 09:30:00 AM,2050,15.06,,,76,,39.25,11.31,0.00,5.50,56.56,Credit Card,Globe Taxi,41.980264315,-87.913624596,POINT (-87.913624596 41.9802643146),,,
+00007c3e7546e2c7d15168586943a9c22c3856cf,8ef1056519939d511d24008e394f83e925d2539d668a002c97c441c1d24ab86e29b31a6d8544356006c1eee49dda811760c872d4ddcbaffd55a681b17864a014,01/18/2024 07:15:00 PM,01/18/2024 07:30:00 PM,1004,1.18,17031839100,17031839100,32,32,15.94,3.72,0.00,0.00,19.66,Mobile,5 Star Taxi,41.880994471,-87.632746489,POINT (-87.6327464887 41.8809944707),41.880994471,-87.632746489,POINT (-87.6327464887 41.8809944707)
+0000bab44d0d673a222e7f1a0a6026563519aa25,833e49f9757b594a8a6765b93d1f7d8ad483e61c3a89d1a808ef40a33940ccaac349d4aec1e6415a079b1bc3a13f186b5af03683e52ed789153e97a3d59557a8,01/09/2024 05:00:00 PM,01/09/2024 05:00:00 PM,12,0.18,,,3,6,3.50,0.00,0.00,0.00,3.50,Cash,Taxicab Insurance Agency Llc,41.96581197,-87.655878786,POINT (-87.6558787862 41.96581197),41.944226601,-87.655998182,POINT (-87.6559981815 41.9442266014)
+0000cf293ada965f89a98c8ccfae7b0ce3a03e41,37073e8c9e454886fe4a916f80a9a3478570e7dd3e663f40c5b81eae90f8f611027c67455f43b426f4c34dcb7fdb6697c82a3c6d00237f11a4a6cf5b1d1ce0c7,01/04/2024 07:15:00 AM,01/04/2024 07:30:00 AM,484,1.59,170312819
