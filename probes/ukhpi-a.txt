@@ -1,0 +1,22 @@
+URL: https://landregistry.data.gov.uk/landregistry/query?output=json&query=PREFIX%20ukhpi%3A%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fukhpi%2F%3E%0ASELECT%20%3Fp%20%3Fo%20WHERE%20%7B%20%3Fobs%20ukhpi%3ArefRegion%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fscotland%3E%20%3B%20ukhpi%3ArefMonth%20%3Fm%20%3B%20%3Fp%20%3Fo%20.%20FILTER%28STR%28%3Fm%29%3D%222026-07%22%29%20%7D
+Fetched: 2026-10-22T11:13:47Z from GitHub Actions
+Status, type, bytes: 403 text/html 153
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 403 Forbidden
+Content-Type: text/html
+Date: Thu, 22 Oct 2026 11:13:47 GMT
+Server: nginx/1.31.5
+Content-Length: 153
+Connection: keep-alive
+
+=== FILE TYPE: HTML document, ASCII text, with CRLF line terminators
+=== FIRST 30000 BYTES
+<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.31.5</center>
+</body>
+</html>
