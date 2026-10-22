@@ -9,7 +9,7 @@ and closed at once (an open stream is what ran into Vercel's 60 second limit on 
 Retries, so one flaky upstream call does not fail the run (every failed run emails Simon): an example that fails (not ok,
 5xx, timeout) is asked again after 20 s, and once more after 60 s if the second answer was a 5xx too; the line says RETRY-OK
 when a retry passed. Only a failure that survives the retries is a FAIL. Each MCP check gets one retry after 20 s.
-Standard library only, so it runs anywhere.
+Examples are asked WORKERS at a time and reported in coverage order. Standard library only, so it runs anywhere.
 """
 
 import http.client
@@ -20,12 +20,14 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 
 UA = "ProofPrice-smoke/1.1 (+https://proofprice.com; hello@proofprice.com)"
 MCP_BUDGET = 20  # seconds each MCP request may take, start to last byte
 MCP_CLIENT = {"name": "proofprice-smoke", "version": "1"}
 RETRY_WAIT_1 = 20  # seconds before the first retry of a failed example (or MCP check)
 RETRY_WAIT_2 = 60  # seconds before the second retry, only when the first retry was a 5xx too
+WORKERS = 6  # examples asked at the same time (one after another took over 20 minutes once there were 228 examples)
 
 
 def get(url: str, timeout: int = 60):
@@ -243,8 +245,10 @@ def main() -> int:
     print(f"{len(cov.get('tools', []))} tools, {len(cov.get('sources', []))} sources, {len(examples)} examples\n")
 
     fails, stale = [], []
-    for path in examples:
-        code, headers, raw, secs, retried_ok = get_with_retries(base + path)
+    # Ask several examples at once (each waits on a different official server), then print in the coverage order.
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        results = list(pool.map(lambda p: get_with_retries(base + p), examples))
+    for path, (code, headers, raw, secs, retried_ok) in zip(examples, results):
         try:
             ans = json.loads(raw)
         except Exception:

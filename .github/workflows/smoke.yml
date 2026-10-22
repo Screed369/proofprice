@@ -23,7 +23,7 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,8 +34,11 @@ jobs:
         run: |
           set -u
           case "$BASE" in https://*) ;; *) echo "Only https bases are allowed"; exit 1;; esac
-          # GitHub runs steps with bash -e: catch the exit code so the report is always saved.
-          if python3 -I scripts/smoke.py "$BASE" > /tmp/smoke.txt 2>&1; then echo "exit=0" > /tmp/smoke-exit.txt; else echo "exit=1" > /tmp/smoke-exit.txt; fi
+          # GitHub runs steps with bash -e: catch the exit code so the report is always saved. The 28-minute cap leaves time to
+          # save a partial report (python -u writes each line at once) before the job limit, instead of losing it to a cancel.
+          rc=0; timeout 28m python3 -u -I scripts/smoke.py "$BASE" > /tmp/smoke.txt 2>&1 || rc=$?
+          if [ "$rc" = 124 ]; then echo "TIMEOUT: the smoke test was stopped after 28 minutes; this report is incomplete (a FAILURE, not a pass)" >> /tmp/smoke.txt; fi
+          if [ "$rc" = 0 ]; then echo "exit=0" > /tmp/smoke-exit.txt; else echo "exit=1" > /tmp/smoke-exit.txt; fi
           cat /tmp/smoke.txt
       - name: Save the report to the probes branch
         run: |
