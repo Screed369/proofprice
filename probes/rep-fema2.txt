@@ -1,0 +1,18 @@
+URL: https://www.fema.gov/api/open/v3/NfipPolicies?$top=1&$count=true
+Fetched: 2026-10-22T00:50:55Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2838
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+access-control-allow-origin: *
+x-response-time: 24.418ms
+cache-control: public, max-age=150
+date: Thu, 22 Oct 2026 00:50:55 GMT
+content-length: 2838
+strict-transport-security: max-age=31536000 ; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"metadata": {"skip":0,"select":null,"rundate":"2026-10-22T00:50:55.128Z","top":1,"filter":"","format":"json","metadata":true,"orderby":"","entityname":"NfipPolicies","version":"v3","url":"/api/open/v3/NfipPolicies?$top=1&$count=true","count":74739464}, "NfipPolicies": [{"agricultureStructureIndicator":false,"asOfDate":"2026-09-08T00:00:00.000Z","baseFloodElevation":13.9,"basementEnclosureCrawlspaceType":0,"cancellationDateOfFloodPolicy":null,"condominiumCoverageTypeCode":"N","construction":false,"crsClassCode":6,"buildingDeductibleCode":"F","contentsDeductibleCode":"0","elevatedBuildingIndicator":true,"elevationCertificateIndicator":null,"elevationDifference":1,"federalPolicyFee":50,"ratedFloodZone":"AE","hfiaaSurcharge":250,"houseOfWorshipIndicator":false,"locationOfContents":null,"lowestAdjacentGrade":11.8,"lowestFloorElevation":15.1,"nonProfitIndicator":false,"numberOfFloorsInInsuredBuilding":2,"obstructionType":15,"occupancyType":6,"originalConstructionDate":"2000-02-23T00:00:00.000Z","originalNBDate":"2000-10-12T00:00:00.000Z","policyCost":1587,"policyCount":1,"policyEffectiveDate":"2017-10-12T00:00:00.000Z","policyTerminationDate":"2018-10-12T00:00:00.000Z","policyTermIndicator":1,"postFIRMConstructionIndicator":true,"primaryResidenceIndicator":false,"rateMethod":"1","regularEmergencyProgramIndicator":"R","smallBusinessIndicatorBuilding":false,"totalBuildingInsuranceCoverage":500000,"totalContentsInsuranceCoverage":0,"totalInsurancePremiumOfThePolicy":1119,"cancellationVoidanceReasonCode":null,"subsidizedRateType":"N","iccPremium":4,"reserveFundAssessment":168,"communityProbationSurcharge":0,"premiumPaymentIndicator":1,"buildingReplacementCost":407000,"basicBuildingRate":0.59,"additionalBuildingRate":0.09,"basicContentsRate":0,"additionalContentsRate":0,"enclosureTypeCode":"N","buildingDescriptionCode":1,"insuranceToValueCode":null,"postFirmVzoneIndicator":false,"floodproofedIndicator":false,"waitingPeriodType":"N","rolloverTransferCode":"R","endorsementEffectiveDate":"2017-10-12T00:00:00.000Z","propertyPurchaseDate":"2000-10-12T00:00:00.000Z","rentalPropertyIndicator":false,"tenantIndicator":false,"stateOwnedIndicator":false,"disasterAssistanceCoverageRequiredCode":null,"mandatoryPurchaseFlag":false,"grandfatheringTypeCode":3,"nfipRatedCommunityNumber":"375359","nfipCommunityNumberCurrent":"375359","nfipCommunityName":"SUNSET BEACH, TOWN OF","programTypeIndicator":false,"mapPanelNumber":"0002","mapPanelSuffix":"D","floodZoneCurrent":"AE","femaRegion":4,"propertyState":"NC","reportedCity":"NA","reportedZipCode":"28468","censusGeoid":"370190205121","latitude":33.9,"longitude":-78.5,"buildingOnFederalLand":false,"buildingPurpose":"N","seasonallyOccupied":false,"fullRiskPremium":1420,"buildingOverWaterType":1,"foundationType":"3","preFIRMConstructionIndicator":false,"id":188046553}]}
