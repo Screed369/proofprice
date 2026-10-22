@@ -131,7 +131,7 @@ export default async function Status() {
         <ul className="small">
           {paid.cleared.map((c) => (
             <li key={c.id}>
-              <a href={`/sources#${c.id}`}>{c.id}</a> <span className="muted">({c.countryNames.join(", ")}; {c.licence})</span>
+              <a href={`/sources#${c.id}`}>{c.id}</a> <span className="muted">({c.countryNames.join(", ")}; licence on <a href={`/sources#${c.id}`}>/sources</a>)</span>
             </li>
           ))}
         </ul>
