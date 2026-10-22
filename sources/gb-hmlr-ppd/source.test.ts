@@ -198,7 +198,7 @@ test("UK London: town=London does not run a 30,000-sale query; it answers at onc
   const ep = fakeEndpoint(() => 4);
   assert.equal((await ukHomeSales({ town: "London", postcode_district: "SW1", months: 1, today: "2026-08-28", fetchWindow: ep.fetchWindow })).status, "ok");
   assert.equal((await ukHomeSales({ town: "London", district: "Camden", months: 1, today: "2026-08-28", fetchWindow: ep.fetchWindow })).status, "ok");
-  await assert.rejects(ukHomeSales({ fetchWindow }), /town or a district/);
+  await assert.rejects(ukHomeSales({ fetchWindow }), /A town is required/);
 });
 
 test("UK manifest: district is an extra on home-sales (no new tool), town no longer required alone, and the postal-town meaning is documented", async () => {

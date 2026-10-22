@@ -34,7 +34,7 @@ export default defineSource({
   handle: (p, ctx) => {
     const town = str(p.town);
     const district = str(p.district);
-    if (!town && !district) throw new InputError("A town or a district is required.");
+    if (!town && !district) throw new InputError("A town is required (or give a district, e.g. district=Camden).");
     const pt = (str(p.property_type) ?? "any").toLowerCase();
     if (!UK_PROPERTY_TYPES.includes(pt as UkPropertyType)) {
       throw new InputError(`property_type must be one of: ${UK_PROPERTY_TYPES.join(", ")}`);
