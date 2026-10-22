@@ -17,7 +17,7 @@ export default defineSource({
   },
   examples: [
     { params: { country: "CA", what: "translation services" } },
-    { params: { country: "CA", what: "legal services" }, smoke: false },
+    { params: { country: "CA", what: "office furniture" }, smoke: false },
   ],
   method:
     "Canadian federal contract award notices from CanadaBuys (Open Government Licence - Canada), newest 24 months, recognised by words in the English title. Median and 10th–90th percentile of the awarded contract amount in CAD, from the daily copy in our price library. Totals per contract, not unit prices; suppliers are never named.",
