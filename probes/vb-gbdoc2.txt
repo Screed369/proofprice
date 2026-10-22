@@ -1,0 +1,1495 @@
+URL: https://www.uktradeinfo.com/api-documentation/
+Fetched: 2026-10-22T17:46:16Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 97524
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 17:46:16 GMT
+content-type: text/html; charset=utf-8
+cache-control: private,max-age=10
+set-cookie: .AspNetCore.Mvc.CookieTempDataProvider=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; samesite=lax; httponly
+set-cookie: ARRAffinity=2a21eb11dc02c649de5443a2d52f1b190b57687d537f3e29a60770db66f997d5;Path=/;HttpOnly;Secure;Domain=www.uktradeinfo.com
+set-cookie: ARRAffinitySameSite=2a21eb11dc02c649de5443a2d52f1b190b57687d537f3e29a60770db66f997d5;Path=/;HttpOnly;SameSite=None;Secure;Domain=www.uktradeinfo.com
+strict-transport-security: max-age=31536000; includeSubDomains
+request-context: appId=cid-v1:59e7e043-1220-455e-98c1-fd590dd50699
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy: script-src 'self' cdn.jsdelivr.net *.cloudflare.com *.uktradeinfo.com www.gravatar.com player.vimeo.com *.vimeocdn.com our.umbraco.com 'unsafe-inline' 'unsafe-eval' *.powerbi.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.vo.msecnd.net *.services.visualstudio.com;        style-src 'self' 'unsafe-inline' *.mailjet.com;       img-src 'self' data: *;       font-src 'self';
+x-azure-ref: 20261022T174616Z-16c6746c5bbgxh8xhC1IADadxn00000001kg00000001htp8
+referrer-policy: strict-origin-when-cross-origin
+x-cache: CONFIG_NOCACHE
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (685), with CRLF, LF line terminators
+=== FIRST 200000 BYTES
+
+<!DOCTYPE html>
+<html lang="en" class="govuk-template app-html-class">
+
+<head>
+    <title></title>
+    <meta name="description" content="The HMRC UK Trade Info API provides access to data for Overseas Trade Statistics (OTS), Regional Trade Statistics (RTS), imports, exports, traders, commodities." />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="canonical" href="https://https/api-documentation" />
+    
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="120x120" href="/favicon-120x120.png">
+    <link rel="mask-icon" color="#008670" href="/safari-pinned-tab.svg">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+
+    <link type="text/css" rel="stylesheet" href="/css/site.css" />
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174026813-1"></script>
+    <script src="/App_Plugins/UmbracoForms/Assets/promise-polyfill/dist/polyfill.min.js?v=13.9.0" type="application/javascript"></script><script src="/App_Plugins/UmbracoForms/Assets/aspnet-client-validation/dist/aspnet-validation.min.js?v=13.9.0" type="application/javascript"></script>
+</head>
+
+
+<body class="govuk-template__body app-body-class " data-test="My value" data-other="report:details">
+    <script>
+        document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
+
+    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+
+        <div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
+        <div class="gem-c-cookie-banner__wrapper govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                    <div class="gem-c-cookie-banner__message">
+                        <h2 class="govuk-heading-m">Tell us whether you accept cookies</h2>
+                        <p class="govuk-body">
+                            We use <a class="govuk-link" href="/cookie-details/">cookies to collect information</a> about how you use UK Trade Info.
+                            We use this information to make the website work as well as possible and improve our digital services.
+                        </p>
+                    </div>
+
+                    <div class="gem-c-cookie-banner__buttons">
+                        <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-accept govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
+                            <button class="gem-c-button govuk-button gem-c-button--inline" type="submit" data-module="track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted">Accept all cookies</button>
+                        </div>
+                        <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
+                            <a class="gem-c-button govuk-button gem-c-button--inline" role="button" href="/cookie-details/cookie-settings/" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked">Set cookie preferences</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1" role="alert">
+            <p class="gem-c-cookie-banner__confirmation-message">
+                You've accepted all cookies.
+                You can <a class="govuk-link" href="/cookie-details/cookie-settings/" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.
+            </p>
+            <button class="gem-c-cookie-banner__hide-button" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide<span class="govuk-visually-hidden"> this confirmation message</span></button>
+        </div>
+    </div>
+
+
+    <header class="gem-c-layout-super-navigation-header" role="banner" data-module="govuk-header">
+        <div class="govuk-header__container">
+            <div class="govuk-width-container">
+                <div class="nav-flex-container">
+                    <div class="govuk-header__logo">
+                        <a href="/" class="govuk-header__link govuk-header__link--homepage">
+                            <span class="govuk-header__logotype">
+                                <span class="govuk-header__logotype-text">
+                                    UK Trade Info
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="govuk-header__content">
+                        <!--<button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>-->
+                        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">
+                            <span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">Menu</span>
+                        </button>
+                        <nav aria-labelledby="super-navigation-menu-heading"
+                             class="gem-c-layout-super-navigation-header__content js-module-initialised"
+                             data-module="super-navigation-mega-menu"
+                             data-super-navigation-mega-menu-module-started="true">
+
+                            <!--<nav role="navigation" aria-label="Top Level Navigation" class="top-level-nav">-->
+                            <h2 id="super-navigation-menu-heading" class="govuk-visually-hidden"> Navigation menu </h2>
+                            <div id="navigation" class="govuk-header__navigation">
+                                        <div class="gem-c-layout-super-navigation-header__navigation-item no-mobile">
+
+                                                <a class="gem-c-layout-super-navigation-header__navigation-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/find-uk-traders/" data-track-dimension="Menu" data-track-dimension-index="29" href="/find-uk-traders/">
+                                                    <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
+                                                        Find UK traders
+                                                    </span>
+                                                </a>
+                                            <button aria-controls="super-navigation-menu-286d9ac8-eff0-4464-aa87-896ab7224da0" aria-expanded="false" aria-label="Show navigation menu"
+                                                    class="gem-c-layout-super-navigation-header__navigation-top-toggle-button" data-text-for-hide="Hide navigation menu"
+                                                    data-text-for-show="Show navigation menu"
+                                                    data-toggle-desktop-group="top"
+                                                    data-toggle-mobile-group="top" data-tracking-key="menu"
+                                                    data-ga4-event='{"event_name":"select_content","type":"header menu bar","text":"Menu","index":1,"index_total":2,"section":"Menu"}' hidden="hidden"
+                                                    id="super-navigation-menu-286d9ac8-eff0-4464-aa87-896ab7224da0-toggle" type="button">
+                                                <span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">Traders</span>
+                                            </button> 
+                                        </div>
+                                        <div class="gem-c-layout-super-navigation-header__navigation-item no-mobile">
+
+                                                <a class="gem-c-layout-super-navigation-header__navigation-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/trade-data/" data-track-dimension="Menu" data-track-dimension-index="29" href="/trade-data/">
+                                                    <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
+                                                        Trade data
+                                                    </span>
+                                                </a>
+                                            <button aria-controls="super-navigation-menu-6cb9dab5-706a-4263-97ad-efd0338cec5b" aria-expanded="false" aria-label="Show navigation menu"
+                                                    class="gem-c-layout-super-navigation-header__navigation-top-toggle-button" data-text-for-hide="Hide navigation menu"
+                                                    data-text-for-show="Show navigation menu"
+                                                    data-toggle-desktop-group="top"
+                                                    data-toggle-mobile-group="top" data-tracking-key="menu"
+                                                    data-ga4-event='{"event_name":"select_content","type":"header menu bar","text":"Menu","index":2,"index_total":2,"section":"Menu"}' hidden="hidden"
+                                                    id="super-navigation-menu-6cb9dab5-706a-4263-97ad-efd0338cec5b-toggle" type="button">
+                                                <span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">Trade data</span>
+                                            </button> 
+                                        </div>
+                                        <div class="gem-c-layout-super-navigation-header__navigation-item no-mobile">
+
+                                                <a class="gem-c-layout-super-navigation-header__navigation-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/find-commodity-data/" data-track-dimension="Menu" data-track-dimension-index="29" href="/find-commodity-data/">
+                                                    <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
+                                                        Find commodity data
+                                                    </span>
+                                                </a>
+                                            <button aria-controls="super-navigation-menu-d13dbe08-5ff1-4913-a5c7-e6f1e6ba52fc" aria-expanded="false" aria-label="Show navigation menu"
+                                                    class="gem-c-layout-super-navigation-header__navigation-top-toggle-button" data-text-for-hide="Hide navigation menu"
+                                                    data-text-for-show="Show navigation menu"
+                                                    data-toggle-desktop-group="top"
+                                                    data-toggle-mobile-group="top" data-tracking-key="menu"
+                                                    data-ga4-event='{"event_name":"select_content","type":"header menu bar","text":"Menu","index":3,"index_total":2,"section":"Menu"}' hidden="hidden"
+                                                    id="super-navigation-menu-d13dbe08-5ff1-4913-a5c7-e6f1e6ba52fc-toggle" type="button">
+                                                <span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">Commodities</span>
+                                            </button> 
+                                        </div>
+                                        <div class="gem-c-layout-super-navigation-header__navigation-item no-mobile">
+
+                                                <a class="gem-c-layout-super-navigation-header__navigation-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/help-and-support/" data-track-dimension="Menu" data-track-dimension-index="29" href="/help-and-support/">
+                                                    <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
+                                                        Help and support
+                                                    </span>
+                                                </a>
+                                            <button aria-controls="super-navigation-menu-1fce78b4-5d2b-43b0-b642-9bbd74c53a79" aria-expanded="false" aria-label="Show navigation menu"
+                                                    class="gem-c-layout-super-navigation-header__navigation-top-toggle-button" data-text-for-hide="Hide navigation menu"
+                                                    data-text-for-show="Show navigation menu"
+                                                    data-toggle-desktop-group="top"
+                                                    data-toggle-mobile-group="top" data-tracking-key="menu"
+                                                    data-ga4-event='{"event_name":"select_content","type":"header menu bar","text":"Menu","index":4,"index_total":2,"section":"Menu"}' hidden="hidden"
+                                                    id="super-navigation-menu-1fce78b4-5d2b-43b0-b642-9bbd74c53a79-toggle" type="button">
+                                                <span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">Help</span>
+                                            </button> 
+                                        </div>
+                                    <ul id="navigation-mobile" class="govuk-header__navigation-list mobile-only">
+                                            <li class="govuk-header__navigation-item">
+                                                <a class="govuk-header__link" href="/find-uk-traders/">
+                                                    Find UK traders
+                                                </a>
+                                            </li>
+                                            <li class="govuk-header__navigation-item">
+                                                <a class="govuk-header__link" href="/trade-data/">
+                                                    Trade data
+                                                </a>
+                                            </li>
+                                            <li class="govuk-header__navigation-item">
+                                                <a class="govuk-header__link" href="/find-commodity-data/">
+                                                    Find commodity data
+                                                </a>
+                                            </li>
+                                            <li class="govuk-header__navigation-item">
+                                                <a class="govuk-header__link" href="/help-and-support/">
+                                                    Help and support
+                                                </a>
+                                            </li>
+                                    </ul>
+                            </div>
+                            <button aria-controls="super-search-menu"
+        data-toggle="super-search-menu"
+        aria-expanded="false" aria-label="Show search menu"
+        class="gem-c-layout-super-navigation-header__search-toggle-button"
+        data-text-for-hide="Hide search menu"
+        data-text-for-show="Show search menu"
+        data-toggle-mobile-group="top" data-toggle-desktop-group="top"
+        data-tracking-key="search" id="super-search-menu-toggle"
+        type="button" data-ga4-event="{&quot;event_name&quot;:&quot;select_content&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;text&quot;:&quot;Search&quot;,&quot;index&quot;:2,&quot;index_total&quot;:2,&quot;section&quot;:&quot;Search&quot;}">
+    <span class="govuk-visually-hidden">
+        Search UK Info
+    </span>
+    <svg id="sitewide_search_open_icon" class="gem-c-layout-super-navigation-header__search-toggle-button-link-icon"
+         width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg"
+         aria-hidden="false" focusable="false">
+        <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>
+        <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
+    </svg>
+    <span id="sitewide_search_close_icon" class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
+          aria-hidden="true" focusable="false">
+        &#215;
+    </span>
+</button>
+<a class="gem-c-layout-super-navigation-header__search-item-link" href="/search">
+    <span class="govuk-visually-hidden">
+        Search GOV.UK
+    </span>
+    <svg class="gem-c-layout-super-navigation-header__search-item-link-icon" width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>
+        <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
+    </svg>
+</a>
+
+<div class="umb-block-list">
+    <div id="super-search-menu" hidden class="gem-c-layout-super-navigation-header__search-items">
+        <h3 class="govuk-visually-hidden">
+            Search this site
+        </h3>
+        <div class="govuk-width-container gem-c-layout-super-navigation-header__search">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                        <h3 class="govuk-label govuk-label--m">Search this site</h3>
+                        <div class="govuk-hint">
+                            Use our new site-wide tool for general searches. You can still search for traders by specific filters with our &#x27;Find UK traders&#x27; link. For commodity codes and descriptions use the &#x2018;Find commodity data&#x2019; link.
+                        </div>
+                    <form class="gem-c-layout-super-navigation-header__search-form" id="search" action="/search/pages/" method="get" role="search" aria-label="Site-wide">
+                        <div class="gem-c-search govuk-!-display-none-print  gem-c-search--large gem-c-search--on-white gem-c-search--separate-label" data-module="gem-toggle-input-class-on-focus" data-gem-toggle-input-class-on-focus-module-started="true">
+                            <label for="search-sitewide" class="govuk-label">
+                                Enter search term
+                            </label>
+                            <div class="gem-c-search__item-wrapper">
+                                <input enterkeyhint="search" class="gem-c-search__item gem-c-search__input js-class-toggle" id="search-sitewide" name="q" title="Search" type="search" value="">
+                                <div class="gem-c-search__item gem-c-search__submit-wrapper">
+                                    <button class="gem-c-search__submit" type="submit" data-track-category="headerClicked" data-track-action="searchSubmitted" data-track-label="/search/all" data-track-dimension="Search on UK Trade Info content" data-track-dimension-index="29" data-module="gem-track-click" enterkeyhint="search" data-gem-track-click-module-started="true">
+                                        Search
+                                        <svg class="gem-c-search__icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                            <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>
+                                            <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                        <ul class="govuk-list">
+                                <li>
+                                    <a href="/find-uk-traders/" class="govuk-link">Find UK traders</a>
+                                </li>
+                                <li>
+                                    <a href="/find-commodity-data/" class="govuk-link">Find commodity data</a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+                                    <div id="super-navigation-menu-286d9ac8-eff0-4464-aa87-896ab7224da0" hidden class="gem-c-layout-super-navigation-header__navigation-dropdown-menu no-mobile">
+                                        <div class="govuk-width-container">
+                                            <div class="govuk-grid-row gem-c-layout-super-navigation-header__navigation-items">
+                                                <div class="gem-c-layout-super-navigation-header__column--topics">
+                                                    <ul class="gem-c-layout-super-navigation-header__navigation-second-items">
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/find-uk-traders/">Find UK traders</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/find-uk-traders/how-to-use-our-tool-to-find-uk-traders/">Help finding UK traders</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="super-navigation-menu-6cb9dab5-706a-4263-97ad-efd0338cec5b" hidden class="gem-c-layout-super-navigation-header__navigation-dropdown-menu no-mobile">
+                                        <div class="govuk-width-container">
+                                            <div class="govuk-grid-row gem-c-layout-super-navigation-header__navigation-items">
+                                                <div class="gem-c-layout-super-navigation-header__column--topics">
+                                                    <ul class="gem-c-layout-super-navigation-header__navigation-second-items">
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/">Get trade data</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/ots-custom-table/">Overseas custom table</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/help-with-using-our-data/">Help with using our data</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/latest-bulk-data-sets/">Latest bulk datasets</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/release-calendar/">Release calendar</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/rts-custom-table/">Regional custom table</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/help-with-data-tables/">How to create custom tables</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/regional/regional-trade-statistics-data-sets/">Regional statistics datasets</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/request-customs-declaration-service-data-on-imports-and-exports/">Customs Declaration Service</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="super-navigation-menu-d13dbe08-5ff1-4913-a5c7-e6f1e6ba52fc" hidden class="gem-c-layout-super-navigation-header__navigation-dropdown-menu no-mobile">
+                                        <div class="govuk-width-container">
+                                            <div class="govuk-grid-row gem-c-layout-super-navigation-header__navigation-items">
+                                                <div class="gem-c-layout-super-navigation-header__column--topics">
+                                                    <ul class="gem-c-layout-super-navigation-header__navigation-second-items">
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/find-commodity-data/">Find commodity data</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/find-commodity-data/help-with-classifying-goods/">Help with classifying goods</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/media/mrtb0j2w/cn2026.ods">Combined Nomenclature 2026 (ODS, 422 KB)</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="super-navigation-menu-1fce78b4-5d2b-43b0-b642-9bbd74c53a79" hidden class="gem-c-layout-super-navigation-header__navigation-dropdown-menu no-mobile">
+                                        <div class="govuk-width-container">
+                                            <div class="govuk-grid-row gem-c-layout-super-navigation-header__navigation-items">
+                                                <div class="gem-c-layout-super-navigation-header__column--topics">
+                                                    <ul class="gem-c-layout-super-navigation-header__navigation-second-items">
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/help-and-support/">Help and support</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/trade-data/latest-bulk-data-sets/bulk-data-sets-guidance-and-technical-specifications/">Bulk datasets: guidance</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/intrastat/notice-60-intrastat-general-guide/">Notice 60: guidance</a>
+                                                            </li>
+                                                                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                                                                <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link"
+                                                                   
+                                                                   href="/help-and-support/forms/">Forms</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="govuk-width-container">
+
+        <div class="hmrc-logo">
+            <img class="hmrc-logo__image" src="/css/assets/images/hmrc-web-logo-small.png" alt="HM Revenue and Customs"/>
+        </div>
+
+                    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+                        <ol class="govuk-breadcrumbs__list">
+
+                                <li class="govuk-breadcrumbs__list-item">
+                                    <a class="govuk-breadcrumbs__link" href="/">Home</a>
+                                </li>
+                            <li class="govuk-breadcrumbs__list-item">
+                                <span>API documentation</span>
+                            </li>
+                        </ol>
+                    </nav>
+
+        <main class="govuk-main-wrapper" id="main-content" role="main">
+            
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        
+
+    
+
+<header class="hmrc-page-heading">
+        <h1 class="govuk-heading-xl">HM Revenue and Customs UK Trade Info API</h1>
+</header>
+        <div class="app-heading-lead-paragraphs">
+            <p>Learn how to use the UK Trade Info API service.</p>
+        </div>
+
+    </div>
+</div>
+
+
+            <div id='contents'>
+                
+            <h2 class="govuk-heading-l">Contents</h2>
+        <div class="app-rte-content">
+            <ul>
+<li><a href="#overview" data-anchor="#overview">Overview</a></li>
+<li><a href="#making-api-requests" data-anchor="#making-api-requests">Making API requests</a></li>
+<li><a href="#versioning" data-anchor="#versioning">Versioning</a></li>
+<li><a href="#errors" data-anchor="#errors">Errors</a></li>
+<li><a href="#content-types" data-anchor="#content-types">Content types</a></li>
+<li><a href="#api-limits" data-anchor="#api-limits">API limits</a></li>
+<li><a href="#endpoints" data-anchor="#endpoints">Endpoints</a></li>
+<li><a href="#sample-api-queries" data-anchor="#sample-api-queries">Sample API queries</a></li>
+</ul>
+        </div>
+
+            </div>
+            <div id='overview'>
+                
+            <h2 class="govuk-heading-l">Overview</h2>
+        <div class="app-rte-content">
+            <p>The UK Trade Info API is based on REST principles with endpoints that return data in JavaScript Object Notification (JSON) format and it uses standard HTTP error response codes. </p>
+<p>Use the API to get access to data about:</p>
+<ul>
+<li>Overseas Trade Statistics (OTS)</li>
+<li>Regional Trade Statistics (RTS)</li>
+<li>imports, exports, traders, commodities, and various other feeds</li>
+</ul>
+<p>All endpoints are:</p>
+<ul>
+<li><a rel="noopener" href="https://developer.service.hmrc.gov.uk/api-documentation/docs/authorisation/open-access-endpoints" target="_blank" title="Open access endpoints">open access</a></li>
+<li>can be queried</li>
+</ul>
+<p>They do not need an Authorisation HTTP header.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+        </div>
+
+            </div>
+            <div >
+                
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </div>
+            <div id='making-api-requests'>
+                
+            <h2 class="govuk-heading-l">Making API requests</h2>
+        <div class="app-rte-content">
+            <div class="app-rte-content">
+<p>To query the HMRC UK Trade Info API, you will need:</p>
+<ul>
+<li>
+<p>a way to make HTTP requests, such as curl, Postman or your programming language's library of choice</p>
+</li>
+<li>
+<p>a specific query</p>
+</li>
+</ul>
+<p>With the query to find all traders that exported ‘Live horses (excl. pure-bred for breeding)’ from the ‘CB8’ post code in 2019, you can follow these steps to find your answer.</p>
+<ol>
+<li>
+<p>Create a new GET request.</p>
+</li>
+<li>
+<p>Point it towards the API’s base endpoint: <code>https://api.uktradeinfo.com</code></p>
+</li>
+<li>
+<p>Append this <code>/Commodity</code> to the query: we are searching for ‘Live horses (excl. pure-bred for breeding)’, which is a Harmonised System (HS) level 6 commodity.</p>
+</li>
+<li>
+<p>Add two query parameters:</p>
+<ul>
+<li>
+<p><code>$filter=Hs6Code eq '010129'</code><br />010129 is the HS6 code for ‘Live horses (excl. pure-bred for breeding)‘. Alternatively, use <code>Hs6Description eq 'Live horses (excl. pure-bred for breeding)'</code></p>
+</li>
+<li>
+<p><code>$expand=Exports($filter=MonthId
+ ge 201901 and MonthId le 201912 and startswith(Trader/PostCode, 'CB8'); $expand=Trader)</code></p>
+</li>
+</ul>
+</li>
+<li>The full query URL is (follow the link to open the result in a new browser tab): <a rel="noopener" href="https://api.uktradeinfo.com/Commodity?$filter=Hs6Code eq '010129'&amp;$expand=Exports($filter=MonthId ge 201901 and MonthId le 201912 and startswith(Trader/PostCode, 'CB8'); $expand=Trader)" target="_blank" title="Getting started example: find all traders that exported 'Live horses (excl. pure-bred for breeding)' from the 'CB8' post code in 2019." data-anchor="?$filter=Hs6Code eq '010129'&amp;$expand=Exports($filter=MonthId ge 201901 and MonthId le 201912 and startswith(Trader/PostCode, 'CB8'); $expand=Trader)"><code>https://api.uktradeinfo.com/Commodity?$filter=Hs6Code
+ eq '010129'&amp;$expand=Exports($filter=MonthId ge 201901 and MonthId 
+le 201912 and startswith(Trader/PostCode, 'CB8'); 
+$expand=Trader)</code></a></li>
+<li>
+<p>Make the request.</p>
+</li>
+</ol>
+<p>The API will return a JSON response containing two commodities:</p>
+<ul>
+<li>one with id <code>1012910</code> and an empty list of exports</li>
+<li>one with id <code>1012990</code> and a list of exports</li>
+</ul>
+<p>Each export’s trader is also expanded, showing you their company name and address. Only exports for traders with a post code beginning with ‘CB8’ have been returned.</p>
+<p>To learn more about using the API, refer to <a href="https://www.odata.org/getting-started/basic-tutorial/" title="OData Basic Tutorial">Open Data Protocol(OData) querying tutorials</a>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+        </div>
+
+            </div>
+            <div >
+                
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </div>
+            <div id='versioning'>
+                
+            <h2 class="govuk-heading-l">Versioning</h2>
+        <div class="app-rte-content">
+            <p>When an API changes in a way that is backwards-incompatible, we increase the version number of the API. See our <a rel="noopener" href="https://developer.service.hmrc.gov.uk/api-documentation/docs/reference-guide#versioning" target="_blank" title="reference guide" data-anchor="#versioning">reference guide</a> for more on versioning.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+        </div>
+
+            </div>
+            <div >
+                
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </div>
+            <div id='errors'>
+                
+            <h2 class="govuk-heading-l">Errors</h2>
+        <div class="app-rte-content">
+            <p>We use standard HTTP status codes to show whether an API request succeeded or not. They are usually in the range:</p>
+<ul>
+<li>
+<p>200 if request has been processed and feedback has been provided</p>
+</li>
+<li>
+<p>400 to 499 if it failed because of a client error by your application</p>
+</li>
+<li>
+<p>500 to 599 if it failed because of an error on our server</p>
+</li>
+</ul>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+        </div>
+
+            </div>
+            <div >
+                
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </div>
+            <div id='content-types'>
+                
+            <h2 class="govuk-heading-l">Content types</h2>
+        <div class="app-rte-content">
+            <div class="app-rte-content">
+<p>Recognised <code>Accept</code> HTTP headers:</p>
+<ul>
+<li><code>application/json</code> (default)</li>
+<li><code>text/comma separated value (CSV) file </code> - some limitations</li>
+</ul>
+<p>Requesting the CSV content type can also be done with the query parameter: <code>$format=csv</code> added to the URL.</p>
+<p>Responses for some complex queries may not be available in CSV format, and will result in a 500 Internal Server Error.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+        </div>
+
+            </div>
+            <div >
+                
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </div>
+            <div id='api-limits'>
+                
+            <h2 class="govuk-heading-l">API limits</h2>
+        <div class="app-rte-content">
+            <h3>Response count limit and pagination</h3>
+<p>There is a 40,000 item limit in the response. These include:</p>
+<ul>
+<li>imports, exports, trades, traders</li>
+<li>overseas and regional trade statistics</li>
+</ul>
+<p>Queries to these entities will paginate if more items than the limit allows are returned. This is set to make sure that the API is not overloaded by too many large requests - and that it does not timeout.</p>
+<p>When the API paginates the results, this new field <code>@odata.nextLink</code>, will be included in the response. This field includes the URL that can be used to fetch the next page of results. All of the required query parameters are pre-populated.</p>
+<p>Or, you can do this by setting the query parameter <code>$skip=40000</code> in the URL (and then 80000, 120000, and so on.). Custom pagination can be achieved for page sizes smaller than the limit. Use a combination of the <code>$skip</code> and <code>$top</code> query parameters for this.</p>
+<p>The limit only applies to the final response: aggregations and filtering are still made across the whole dataset before the limit is applied.</p>
+<h3>Query rate limit</h3>
+<p>Users of the API are rate-limited to 60 requests per minute. If too many requests are made within that timespan, responses will:</p>
+<ul>
+<li>fail </li>
+<li>state that the limit has been reached</li>
+</ul>
+<p>Upon reaching the limit, a user must wait up to a minute before making any more requests.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+        </div>
+
+            </div>
+            <div >
+                
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </div>
+            <div id='endpoints'>
+                
+            <h2 class="govuk-heading-l">Endpoints</h2>
+        <div class="app-rte-content">
+            <p>The following list of endpoints are all <a href="https://www.odata.org" title="OData Basic Tutorial">OData</a> queryable endpoints that support:</p>
+<ul>
+<li><code>$select</code>, <code>$expand</code>, <code>$filter</code></li>
+<li><code>$top</code>, <code>$apply</code>, <code>$count</code> and <code>$format</code></li>
+</ul>
+<p>Use these keywords in any combination of complex queries and aggregation. To learn more about using the API, refer to <a href="https://www.odata.org/getting-started/basic-tutorial/" title="OData Basic Tutorial">OData querying tutorials</a>.</p>
+<p>Many Microsoft suite tools, such as Microsoft Excel, have built-in OData endpoint connectors for more visual work.</p>
+<p>Refer to the API’s <a href="https://swagger.io/" title="Swagger homepage">Swagger 2</a> documentation (<a href="https://api.uktradeinfo.com/swagger/ui/index" title="Swagger UI"><code>/swagger/ui/index</code></a>) for details about each entity’s fields.</p>
+<p>The Swagger UI contains examples of:</p>
+<ul>
+<li>response entities</li>
+<li>JSON specifications</li>
+</ul>
+<p>It can also be used for trying out simple queries, by setting query parameters and making the query. The data queried in this way is live data.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+        </div>
+
+            </div>
+            <div id='/commodity'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Commodity
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Commodity</code></p>
+<div>
+<p>Get a list of all Combined Nomenclature (CN) and Harmonised System (HS) commodities. The results can have OData queries applied.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/commodity({commodity-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Commodity({CommodityId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Commodity(<strong>{CommodityId}</strong>)</code></p>
+<div>
+<p>Get a single commodity for the given commodity identifier. If no commodity is found, use 404 Not Found.</p>
+<p>The commodity identifier is either of these:</p>
+<ul>
+<li>that commodity's CN8</li>
+<li>that commodity's HS 2, 4 or 6 code</li>
+</ul>
+<p>It will be whichever is most specific, as an integer (with leading zeroes cut off).</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/country'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Country
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Country</code></p>
+<div>
+<p>Get a list of all countries. The results can have OData queries applied.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/country({country-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Country({CountryId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Country(<strong>{CountryId}</strong>)</code></p>
+<div>
+<p>Get a single country for the given country identifier. If no country is found, use 404 Not Found.</p>
+<p>The country identifier is an integer.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/date'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Date
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Date</code></p>
+<div>
+<p>Get a list of all months. The results can have OData queries applied.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/date({month-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Date({MonthId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Date(<strong>{MonthId}</strong>)</code></p>
+<div>
+<p>Get a single month for the given month identifier. If no date is found, use 404 Not Found.</p>
+<p>The month identifier is an integer. It is made from appending the two-digit month number (01 for January) to the four-digit year.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/export'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Export
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Export</code></p>
+<div>
+<p>Get a list of all exports. The results can have OData queries applied.</p>
+<p>Paginates at 40,000 results. When paginating, the response contains an <code>@odata.nextLink</code> field with the full URL to the next page of results.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/export(commodity-id={commodity-id},month-id={month-id},trader-id={trader-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Export(CommodityId={CommodityId},MonthId={MonthId},TraderId={TraderId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Export(CommodityId=<strong>{CommodityId}</strong>,MonthId=<strong>{MonthId}</strong>,TraderId=<strong>{TraderId}</strong>)</code></p>
+<div>
+<p>Get a single export for the given:</p>
+<ul>
+<li>commodity identifier</li>
+<li>month identifier</li>
+<li>trader identifier</li>
+</ul>
+<p>If no export is found, use 404 Not Found. </p>
+<p>Refer to the following endpoint details for information about their respective identifiers:</p>
+<ul>
+<li>commodity</li>
+<li>date</li>
+<li>trader</li>
+</ul>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/flow-type'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /FlowType
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /FlowType</code></p>
+<p>Get a list of the four flow types. The results can have OData queries applied.</p>
+<p>The flow type is used to differentiate between imports and exports from within and outside the EU.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+            </div>
+        </details>
+
+            </div>
+            <div id='/flow-type({flow-type-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /FlowType({FlowTypeId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /FlowType(<strong>{FlowTypeId}</strong>)</code></p>
+<p>Get a single flow type for the given flow type identifier. If no flow type is found use 404 Not Found.</p>
+<p>The flow type identifier is an integer:</p>
+<ol>
+<li>EU Imports</li>
+<li>EU Exports</li>
+<li>Non-EU imports</li>
+<li>Non-EU Exports</li>
+</ol>
+<p>The flow type identifier is an integer for RTS data:</p>
+<ol>
+<li>All Imports</li>
+<li>All Exports</li>
+</ol>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+            </div>
+        </details>
+
+            </div>
+            <div id='/import'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Import
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Import</code></p>
+<div>
+<p>Get a list of all imports. The results can have OData queries applied.</p>
+<p>Paginates at 40,000 results. When paginating, the response contains an <code>@odata.nextLink</code> field with the full URL to the next page of results.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/import(commodity-id={commodity-id},month-id={month-id},trader-id={trader-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Import(CommodityId={CommodityId},MonthId={MonthId},TraderId={TraderId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Import(CommodityId=<strong>{CommodityId}</strong>,MonthId=<strong>{MonthId}</strong>,TraderId=<strong>{TraderId}</strong>)</code></p>
+<div>
+<p>Get a single import for the given:</p>
+<ul>
+<li>commodity identifier</li>
+<li>month identifier</li>
+<li>trader identifier</li>
+</ul>
+<p>If no import is found, use 404 Not Found.</p>
+<p>Refer to these endpoint details for information about their respective identifiers:</p>
+<ul>
+<li>commodity</li>
+<li>date</li>
+<li>trader</li>
+</ul>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/ots'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /OTS
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /OTS</code></p>
+<div>
+<p>Get a list of all Overseas Trade Statistics (OTS). The results can have OData queries applied.</p>
+<p>Paginates at 40,000 results. When paginating, the response contains an <code>@odata.nextLink</code> field with the full URL to the next page of results.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/ots(commodity-id={commodity-id},commodity-sitc-id={commodity-sitc-id},country-id={country-id},flow-type-id={flow-type-id},month-id={month-id},port-id={port-id},suppression-index={suppression-index})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /OTS(CommodityId={CommodityId},CommoditySitcId={CommoditySitcId},CountryId={CountryId},FlowTypeId={FlowTypeId},MonthId={MonthId},PortId={PortId},SuppressionIndex={SuppressionIndex})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /OTS(CommodityId=<strong>{CommodityId}</strong>,CommoditySitcId=<strong>{CommoditySitcId}</strong>,CountryId=<strong>{CountryId}</strong>,FlowTypeId=<strong>{FlowTypeId}</strong>,MonthId=<strong>{MonthId}</strong>,PortId=<strong>{PortId}</strong>,SuppressionIndex=<strong>{SuppressionIndex}</strong>)</code></p>
+<div>
+<p>Get a single Overseas Trade Statistics (OTS) entry for these given identifiers:</p>
+<ul>
+<li>commodity</li>
+<li>commodity Standard International Trade Classification (SITC)</li>
+<li>country </li>
+<li>flow type</li>
+<li>month</li>
+<li>port</li>
+<li>suppression index</li>
+</ul>
+<p>User 404 Not Found if no OTS entry is found for the given identifiers.</p>
+<p>Refer to these endpoint details for information about their respective identifiers:</p>
+<ul>
+<li>commodity</li>
+<li>SITC</li>
+<li>country</li>
+<li>flow type</li>
+<li>date</li>
+<li>port</li>
+</ul>
+<p>The suppression index is an integer with one of five values:</p>
+<ol>
+<li>Complete suppression, where no information gets published.</li>
+<li>Suppression of countries and ports. Only the overall total value (£ sterling) and quantity (kg) get published.</li>
+<li>Suppression of countries, ports and total trade quantity. Only the overall total value gets published.</li>
+<li>Suppression of quantity for countries and ports. Only the overall total value and quantity get published, but the country and port breakdown is only available for value.</li>
+<li>Suppression of quantity for countries, ports and total trade. No information on quantity gets published, but a full breakdown of value is available.</li>
+</ol>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/port'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Port
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Port</code></p>
+<div>
+<p>Get a list of all ports. The results can have OData queries applied.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/port({port-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Port({PortId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Port(<strong>{PortId}</strong>)</code></p>
+<div>
+<p>Get a single port for the given port identifier. If no port is found, use 404 Not Found.</p>
+<p>The port identifier is an integer.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/region'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Region
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Region</code></p>
+<div>
+<p>Get a list of all regions. The results can have OData queries applied.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/region({region-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Region({RegionId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Region(<strong>{RegionId}</strong>)</code></p>
+<div>
+<p>Get a single region for the given region identifier. If no region is found, use 404 Not Found.</p>
+<p>The region identifier is an integer.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/rts'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /RTS
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /RTS</code></p>
+<div>
+<p>Get a list of all Regional Trade Statistics (RTS). The results can have OData queries applied.</p>
+<p>Paginates at 40,000 results. When paginating, the response contains an <code>@odata.nextLink</code> field with the full URL to the next page of results.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/rts(commodity-sitc2-id={commodity-sitc2-id},country-id={country-id},flow-type-id={flow-type-id},gov-region-id={gov-region-id},month-id={month-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /RTS(CommoditySitc2Id={CommoditySitc2Id},CountryId={CountryId},FlowTypeId={FlowTypeId},GovRegionId={GovRegionId},MonthId={MonthId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /RTS(CommoditySitc2Id=<strong>{CommoditySitc2Id}</strong>,CountryId=<strong>{CountryId}</strong>,FlowTypeId=<strong>{FlowTypeId}</strong>,GovRegionId=<strong>{GovRegionId}</strong>,MonthId=<strong>{MonthId}</strong>)</code></p>
+<div>
+<p>Get a single Regional Trade Statistics (RTS) entry for these given identifiers:</p>
+<ul>
+<li>commodity Standard International Trade Classification (SITC) division level</li>
+<li>country</li>
+<li>flow type</li>
+<li>region</li>
+<li>month</li>
+</ul>
+<p>Use 404 Not Found if no RTS entry is found for the given identifiers.</p>
+<p>Refer to these endpoint details for information about their respective identifiers:</p>
+<ul>
+<li>SITC</li>
+<li>country</li>
+<li>flow type</li>
+<li>region</li>
+<li>date</li>
+</ul>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/sitc'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /SITC
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /SITC</code></p>
+<div>
+<p>Get a list of all Standard International Trade Classification (SITC) commodities. The results can have OData queries applied.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/sitc({commodity-sitc-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /SITC({CommoditySitcId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /SITC(<strong>{CommoditySitcId}</strong>)</code></p>
+<div>
+<p>Get a single Standard International Trade Classification (SITC) commodity for the given SITC identifier. If no SITC commodity is found use 404 Not Found. </p>
+<p>The SITC identifier is that commodity's most specific identifier (2, 3 or 4 digits), as an integer (with leading zeroes cut off).</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/trade'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Trade
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Trade</code></p>
+<div>
+<p>Get a list of all trades. The results can have OData queries applied.</p>
+<p>Trades are a combination of imports (trade type 1) and exports (trade type 2).</p>
+<p>Paginates at 40,000 results. When paginating, the response contains an <code>@odata.nextLink</code> field with the full URL to the next page of results.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/trade(commodity-id={commodity-id},month-id={month-id},trader-id={trader-id},trade-type-id={trade-type-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Trade(CommodityId={CommodityId},MonthId={MonthId},TraderId={TraderId},TradeTypeId={TradeTypeId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Trade(CommodityId=<strong>{CommodityId}</strong>,MonthId=<strong>{MonthId}</strong>,TraderId=<strong>{TraderId}</strong>,TradeTypeId=<strong>{TradeTypeId}</strong>)</code></p>
+<div>
+<p>Get a single trade for these given identifiers:</p>
+<ul>
+<li>commodity</li>
+<li>month</li>
+<li>trader</li>
+<li>trade type </li>
+</ul>
+<p>Use 404 Not Found if no trade is found for the given identifiers.</p>
+<p>Trades are a combination of imports (trade type 1) and exports (trade type 2).</p>
+<p>Refer to these endpoint details for information about their respective identifiers:</p>
+<ul>
+<li>commodity</li>
+<li>date</li>
+<li>trader </li>
+</ul>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/trader'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Trader
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Trader</code></p>
+<div>
+<p>Get a list of all traders. The results can have OData queries applied.</p>
+<p>This paginates at 40,000 results. When paginating, the response contains an <code>@odata.nextLink</code> field with the full URL to the next page of results.</p>
+<p><strong>Accept</strong> request header: a<code>pplication/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/trader({trader-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /Trader({TraderId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /Trader(<strong>{TraderId}</strong>)</code></p>
+<div>
+<p>Get a single trader for the given trader identifier. If no trader is found, use 404 Not Found.</p>
+<p>The trader identifier is an integer that uniquely identifies the trader.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/trade-type'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /TradeType
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /TradeType</code></p>
+<div>
+<p>Get a list of both trade types. The results can have OData queries applied.</p>
+<p>The trade type is used to differentiate between imports (trade type 1) and exports (trade type 2).</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default) or <code>text/csv</code>.</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div id='/trade-type({trade-type-id})'>
+                
+        <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        /TradeType({TradeTypeId})
+                    </span>
+                </summary>
+            <div class="govuk-details__text app-rte-content">
+                <p><code>GET /TradeType(<strong>{TradeTypeId}</strong>)</code></p>
+<div>
+<p>Get a single trade type for the given trade type identifier. If no trade type is found use 404 Not Found.</p>
+<p>The trade type identifier is an integer: 1 for imports and 2 for exports.</p>
+<p><strong>Accept</strong> request header: <code>application/json</code> (default).</p>
+<p><a href="#contents" data-anchor="#contents">Back to contents</a></p>
+</div>
+            </div>
+        </details>
+
+            </div>
+            <div >
+                
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </div>
+            <div id='sample-api-queries'>
+                
+            <h2 class="govuk-heading-l">Sample API queries</h2>
+        <div class="app-rte-content">
+            <p>Follow the links below to open the result in a new browser tab. These links are representative of common queries received by our Customer Services team.</p>
+<h3>Display the country and value of EU Imports for the month of November 2022</h3>
+<p><a rel="noopener" href="https://api.uktradeinfo.com/OTS?$filter=Monthid eq 202211 &amp;$select=CountryId, Value" target="_blank" title="The country and value of EU Imports for November 2022" data-anchor="?$filter=Monthid eq 202211 &amp;$select=CountryId, Value"><code>https://api.uktradeinfo.com/OTS?$filter=Monthid eq 202211 &amp;$select=CountryId, Value</code></a></p>
+<h3>Display the information for countries which had Non-EU OTS Exports between October and November 2022</h3>
+<p><a rel="noopener" href="https://api.uktradeinfo.com/OTS?%20$expand=Country%20&amp;%20$filter=Monthid%20ge%20202210%20and%20MonthId%20le%20202211%20&amp;$select=Value" target="_blank" title="Information for countries which had Non-EU OTS Exports between October and November 2022" data-anchor="?%20$expand=Country%20&amp;%20$filter=Monthid%20ge%20202210%20and%20MonthId%20le%20202211%20&amp;$select=Value"><code>https://api.uktradeinfo.com/OTS? $expand=Country &amp; $filter=Monthid ge 202210 and MonthId le 202211 &amp;$select=Value</code></a></p>
+<h3>Display all the countries with trade in the Region 017</h3>
+<p><a rel="noopener" href="https://api.uktradeinfo.com/OTS?$apply=filter(Country/RegionId%20eq '017')/groupby((Country/CountryName))" target="_blank" title="All the countries with trade in the Region 017" data-anchor="?$apply=filter(Country/RegionId%20eq '017')/groupby((Country/CountryName))"><code>https://api.uktradeinfo.com/OTS?$apply=filter(Country/RegionId eq '017')/groupby((Country/CountryName))</code></a></p>
+<h3>Display the RTS data for France in the months June 2022 onwards</h3>
+<p><a rel="noopener" href="https://api.uktradeinfo.com/Country?$filter=CountryName%20eq%20%27France%27&amp;$expand=RTS($filter=Monthid%20ge%20202206)" target="_blank" title="RTS data for France from June 2022 onwards" data-anchor="?$filter=CountryName%20eq%20%27France%27&amp;$expand=RTS($filter=Monthid%20ge%20202206)"><code>https://api.uktradeinfo.com/Country?$filter=CountryName%20eq%20%27France%27&amp;$expand=RTS($filter=Monthid%20ge%20202206)</code></a></p>
+<h3>Display the Net Mass from RTS Non-EU Imports for SITCID 1, CountryId 1, Government Region 1 for the month 202203 (Q3 2022)</h3>
+<p><a rel="noopener" href="https://api.uktradeinfo.com/RTS(CommoditySitc2Id=1,CountryId=1,FlowTypeId=3,GovRegionId=1,MonthId=202203)?$select=flowtypeid%2C%20netmass" target="_blank" title="Net Mass from RTS Non-EU Imports for SITCID 1, CountryId 1, Government Region 1 for 202203 (Q3 2022)" data-anchor="?$select=flowtypeid%2C%20netmass"><code>https://api.uktradeinfo.com/RTS(CommoditySitc2Id=1,CountryId=1,FlowTypeId=3,GovRegionId=1,MonthId=202203)?$select=flowtypeid%2C%20netmass</code></a></p>
+<h3>Display the total RTS value for each country</h3>
+<p><a rel="noopener" href="https://api.uktradeinfo.com/RTS?$apply=groupby((Country/CountryName),%20aggregate(Value%20with%20sum%20as%20TotalValue))" target="_blank" title="Total RTS value for each country" data-anchor="?$apply=groupby((Country/CountryName),%20aggregate(Value%20with%20sum%20as%20TotalValue))"><code>https://api.uktradeinfo.com/RTS?$apply=groupby((Country/CountryName),%20aggregate(Value%20with%20sum%20as%20TotalValue))</code></a></p>
+<h3>Display the total RTS value for each SITC Description</h3>
+<p><code><a rel="noopener" href="https://api.uktradeinfo.com/RTS?$apply=groupby((SITC/sITC2dESC),%20aggregate(Value%20with%20sum%20as%20TotalValue))" target="_blank" title="Total RTS value for each SITC Description" data-anchor="?$apply=groupby((SITC/sITC2dESC),%20aggregate(Value%20with%20sum%20as%20TotalValue))">https://api.uktradeinfo.com/RTS?$apply=groupby((SITC/sITC2dESC),%20aggregate(Value%20with%20sum%20as%20TotalValue))</a></code></p>
+<p><a style="font-size: 1.1875rem;" href="#contents" data-anchor="#contents">Back to contents</a></p>
+        </div>
+
+            </div>
+
+        </main>
+        <div class="govuk-grid-row"></div>
+    </div>
+
+    <footer class="govuk-footer govuk-footer" role="contentinfo">
+        <div class="govuk-width-container ">
+                <div class="govuk-footer__navigation">
+                        <div class="govuk-footer__section govuk-footer__section--text-column">
+                            <div class="app-rte-content">
+                                <div class="govuk-width-container">
+<div class="govuk-footer__navigation">
+<div class="govuk-grid-column-one-third govuk-!-display-none-print">
+<h2 class="govuk-footer__heading govuk-heading-m knm_style" style="font-size: 25px;">Topics</h2>
+<ul class="govuk-footer__list govuk-footer__list--columns-1" style="list-style: none; margin-left: -1em;">
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a href="/" title="Home" class="govuk-footer__link">Featured news</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a href="/news/" title="News" class="govuk-footer__link">Archive news</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a href="/help-and-support/forms/" title="Forms" class="govuk-footer__link">Forms</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="/trade-data/release-calendar/" title="Release calendar" class="govuk-footer__link">Release calendar</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="/trade-data/ots-custom-table/" title="OTS custom table" class="govuk-footer__link">Overseas trade custom table</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="/trade-data/rts-custom-table/" title="RTS custom table" class="govuk-footer__link">Regional trade custom table</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a href="/help-and-support/freedom-of-information-foi-request-for-import-and-export-trade-data-guidance/" title="Freedom of Information (FOI) request for import and export trade data guidance" data-anchor="#">Freedom of Information (FOI) requests</a></li>
+</ul>
+</div>
+<div class="govuk-grid-column-two-thirds govuk-!-display-none-print">
+<h2 class="govuk-footer__heading govuk-heading-m" style="font-size: 25px;">HMRC statistics on GOV.UK</h2>
+<ul class="govuk-footer__list govuk-footer__list--columns-2" style="list-style: none; margin-left: -1em;">
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="https://www.gov.uk/government/collections/uk-overseas-trade-statistics-and-regional-trade-statistics" target="_blank" title="UK Trade in goods" class="govuk-footer__link">UK trade in goods</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="https://www.gov.uk/government/collections/uk-trade-asymmetries" target="_blank" title="UK Trade asymmetries" class="govuk-footer__link">UK trade asymmetries</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="https://www.gov.uk/government/collections/uk-trade-in-goods-statistics-by-business-characteristics" target="_blank" title="UK Trade in goods by business characteristics" class="govuk-footer__link">​UK trade in goods by business characteristics</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="https://www.gov.uk/government/collections/customs-importer-and-exporter-population" target="_blank" title="Customs importer &amp; exporter population" class="govuk-footer__link">Customs importer and exporter population</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="https://www.gov.uk/government/collections/hmrc-survey-compliance-costs" target="_blank" title="Survey compliance costs" class="govuk-footer__link">Survey compliance costs</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="https://www.gov.uk/government/collections/currency-of-invoice" target="_blank" title="Currency of invoice for UK trade with countries outside the EU" class="govuk-footer__link">Currency of invoice for UK trade with countries outside the EU</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="https://www.gov.uk/government/collections/uk-trade-in-goods-statistics-by-business-characteristics#current-release" target="_blank" title="Local sites linked to businesses involved in international trade in goods" class="govuk-footer__link">Local sites linked to businesses involved in international trade in goods</a></li>
+<li class="govuk-footer__list-item" style="margin: 0 0 10px 0;"><a rel="noopener" href="https://www.gov.uk/government/collections/uk-regional-trade-in-goods-statistics-disaggregated-by-smaller-geographical-areas" target="_blank" title="UK regional trade in goods disaggregated by smaller geographical areas" class="govuk-footer__link">UK regional trade in goods disaggregated by smaller geographical areas</a></li>
+</ul>
+</div>
+</div>
+</div>
+                            </div>
+                        </div>
+                </div>
+                <hr class="govuk-footer__section-break">
+
+            <div class="govuk-footer__meta">
+                <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                        <nav aria-labelledby="footer-navigation-header">
+                            <h2 id="footer-navigation-header" class="govuk-visually-hidden">Support links</h2>
+                            <ul class="govuk-footer__inline-list">
+                                    <li class="govuk-footer__inline-list-item">
+                                        <a class="govuk-footer__link" href="/about-us/">
+                                            About us
+                                        </a>
+                                    </li>
+                                    <li class="govuk-footer__inline-list-item">
+                                        <a class="govuk-footer__link" href="/privacy/">
+                                            Privacy
+                                        </a>
+                                    </li>
+                                    <li class="govuk-footer__inline-list-item">
+                                        <a class="govuk-footer__link" href="/cookie-details/cookie-settings/">
+                                            Cookies
+                                        </a>
+                                    </li>
+                                    <li class="govuk-footer__inline-list-item">
+                                        <a class="govuk-footer__link" href="/contact-us/">
+                                            Contact
+                                        </a>
+                                    </li>
+                                    <li class="govuk-footer__inline-list-item">
+                                        <a class="govuk-footer__link" href="https://www.tax.service.gov.uk/accessibility-statement/uk-trade-info#">
+                                            Accessibility statement
+                                        </a>
+                                    </li>
+                                    <li class="govuk-footer__inline-list-item">
+                                        <a class="govuk-footer__link" href="/terms-and-conditions/">
+                                            Terms and conditions
+                                        </a>
+                                    </li>
+                                    <li class="govuk-footer__inline-list-item">
+                                        <a class="govuk-footer__link" href="/api-documentation/">
+                                            API documentation
+                                        </a>
+                                    </li>
+                                    <li class="govuk-footer__inline-list-item">
+                                        <a class="govuk-footer__link" href="/feedback/">
+                                            Feedback
+                                        </a>
+                                    </li>
+                            </ul>
+                        </nav>
+                    <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 483.2 195.7" height="17" width="41">
+                        <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145" />
+                    </svg>
+                    <span class="govuk-footer__licence-description">
+                        All content is available under the
+                        <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+                    </span>
+                </div>
+                <div class="govuk-footer__meta-item">
+                    <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+                </div>
+                <div>
+                    <center><small style="font-size: 8px;">r2.01</small></center>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="/scripts/main.js"></script>
+
+    
+
+        <script>
+            function initialiseGoogleAnalytics() {
+                // Only start Google Analytics if the user consents to usage cookies
+                var consentCookie = GOVUK.getConsentCookie();
+
+                    window['ga-disable-UA-174026813-1'] = (consentCookie && !consentCookie['usage']);
+                                    window.dataLayer = window.dataLayer || [];
+                window.gtag = function() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+
+                    gtag('config', 'UA-174026813-1');
+                                }
+            initialiseGoogleAnalytics();
+            window.GOVUK.registerCookieCallback(initialiseGoogleAnalytics);
+        </script>
+        <script>
+            var consentCookie = GOVUK.getConsentCookie();
+            !function (T, l, y) { var S = T.location, u = "script", k = "instrumentationKey", D = "ingestionendpoint", C = "disableExceptionTracking", E = "ai.device.", I = "toLowerCase", b = "crossOrigin", w = "POST", e = "appInsightsSDK", t = y.name || "appInsights"; (y.name || T[e]) && (T[e] = t); var n = T[t] || function (d) { var g = !1, f = !1, m = { initialize: !0, queue: [], sv: "4", version: 2, config: d }; function v(e, t) { var n = {}, a = "Browser"; return n[E + "id"] = a[I](), n[E + "type"] = a, n["ai.operation.name"] = S && S.pathname || "_unknown_", n["ai.internal.sdkVersion"] = "javascript:snippet_" + (m.sv || m.version), { time: function () { var e = new Date; function t(e) { var t = "" + e; return 1 === t.length && (t = "0" + t), t } return e.getUTCFullYear() + "-" + t(1 + e.getUTCMonth()) + "-" + t(e.getUTCDate()) + "T" + t(e.getUTCHours()) + ":" + t(e.getUTCMinutes()) + ":" + t(e.getUTCSeconds()) + "." + ((e.getUTCMilliseconds() / 1e3).toFixed(3) + "").slice(2, 5) + "Z" }(), iKey: e, name: "Microsoft.ApplicationInsights." + e.replace(/-/g, "") + "." + t, sampleRate: 100, tags: n, data: { baseData: { ver: 2 } } } } var h = d.url || y.src; if (h) { function a(e) { var t, n, a, i, r, o, s, c, p, l, u; g = !0, m.queue = [], f || (f = !0, t = h, s = function () { var e = {}, t = d.connectionString; if (t) for (var n = t.split(";"), a = 0; a < n.length; a++) { var i = n[a].split("="); 2 === i.length && (e[i[0][I]()] = i[1]) } if (!e[D]) { var r = e.endpointsuffix, o = r ? e.location : null; e[D] = "https://" + (o ? o + "." : "") + "dc." + (r || "services.visualstudio.com") } return e }(), c = s[k] || d[k] || "", p = s[D], l = p ? p + "/v2/track" : config.endpointUrl, (u = []).push((n = "SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)", a = t, i = l, (o = (r = v(c, "Exception")).data).baseType = "ExceptionData", o.baseData.exceptions = [{ typeName: "SDKLoadFailed", message: n.replace(/\./g, "-"), hasFullStack: !1, stack: n + "\nSnippet failed to load [" + a + "] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: " + (S && S.pathname || "_unknown_") + "\nEndpoint: " + i, parsedStack: [] }], r)), u.push(function (e, t, n, a) { var i = v(c, "Message"), r = i.data; r.baseType = "MessageData"; var o = r.baseData; return o.message = 'AI (Internal): 99 message:"' + ("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) (" + n + ")").replace(/\"/g, "") + '"', o.properties = { endpoint: a }, i }(0, 0, t, l)), function (e, t) { if (JSON) { var n = T.fetch; if (n && !y.useXhr) n(t, { method: w, body: JSON.stringify(e), mode: "cors" }); else if (XMLHttpRequest) { var a = new XMLHttpRequest; a.open(w, t), a.setRequestHeader("Content-type", "application/json"), a.send(JSON.stringify(e)) } } }(u, l)) } function i(e, t) { f || setTimeout(function () { !t && m.core || a() }, 500) } var e = function () { var n = l.createElement(u); n.src = h; var e = y[b]; return !e && "" !== e || "undefined" == n[b] || (n[b] = e), n.onload = i, n.onerror = a, n.onreadystatechange = function (e, t) { "loaded" !== n.readyState && "complete" !== n.readyState || i(0, t) }, n }(); y.ld < 0 ? l.getElementsByTagName("head")[0].appendChild(e) : setTimeout(function () { l.getElementsByTagName(u)[0].parentNode.appendChild(e) }, y.ld || 0) } try { m.cookie = l.cookie } catch (p) { } function t(e) { for (; e.length;)!function (t) { m[t] = function () { var e = arguments; g || m.queue.push(function () { m[t].apply(m, e) }) } }(e.pop()) } var n = "track", r = "TrackPage", o = "TrackEvent"; t([n + "Event", n + "PageView", n + "Exception", n + "Trace", n + "DependencyData", n + "Metric", n + "PageViewPerformance", "start" + r, "stop" + r, "start" + o, "stop" + o, "addTelemetryInitializer", "setAuthenticatedUserContext", "clearAuthenticatedUserContext", "flush"]), m.SeverityLevel = { Verbose: 0, Information: 1, Warning: 2, Error: 3, Critical: 4 }; var s = (d.extensionConfig || {}).ApplicationInsightsAnalytics || {}; if (!0 !== d[C] && !0 !== s[C]) { method = "onerror", t(["_" + method]); var c = T[method]; T[method] = function (e, t, n, a, i) { var r = c && c(e, t, n, a, i); return !0 !== r && m["_" + method]({ message: e, url: t, lineNumber: n, columnNumber: a, error: i }), r }, d.autoExceptionInstrumented = !0 } return m }(y.cfg); (T[t] = n).queue && 0 === n.queue.length && n.trackPageView({}) }(window, document, {
+                src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",
+                cfg: {
+                    instrumentationKey: 'fca3a200-ead0-4b23-b255-437cfdef6caa',
+                    isCookieUseDisabled: (consentCookie && !consentCookie['usage'])
+                }
+            });
+        </script>
+</body>
+</html>
