@@ -1,0 +1,173 @@
+URL: https://api.census.gov/data/timeseries/intltrade/imports/hs?get=I_COMMODITY,CTY_NAME,GEN_VAL_MO,GEN_QY1_MO,UNIT_QY1&time=2026-06&COMM_LVL=HS6&I_COMMODITY=080810&CTY_CODE=4120
+Fetched: 2026-10-22T17:42:31Z from GitHub Actions
+Status, type, bytes: 200 text/html 8531
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 302 
+Set-Cookie: originalReferer=http%3A%2F%2Fapi.census.gov%2Fdata%2Ftimeseries%2Fintltrade%2Fimports%2Fhs%3Fget%3DI_COMMODITY%2CCTY_NAME%2CGEN_VAL_MO%2CGEN_QY1_MO%2CUNIT_QY1%26time%3D2026-06%26COMM_LVL%3DHS6%26I_COMMODITY%3D080810%26CTY_CODE%3D4120; Path=/; Secure
+X-DataWebAPI-KeyError: 1
+Location: https://api.census.gov/data/missing_key.html
+Content-Length: 0
+Date: Thu, 22 Oct 2026 17:42:31 GMT
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS010383f0=01283c52a438184e05a1ba2b577a42af218e6098a4cf78ef93751eae2c885607c62c445c91c949dcc52112b4c070ac76fb9ed72f33; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+
+HTTP/1.1 200 
+Cache-Control: private
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,OPTIONS
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Referrer-Policy: same-origin
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content
+X-Content-Type-Options: nosniff
+Accept-Ranges: bytes
+ETag: W/"8531-1785258964369"
+Last-Modified: Tue, 28 Jul 2026 17:16:04 GMT
+Content-Type: text/html
+Content-Length: 8531
+Date: Thu, 22 Oct 2026 17:42:30 GMT
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS010383f0=01283c52a4ef33583821bd0a0b2c8cfcfe999abeb5678254d28edac44b74742b5d5ed2d165a5c05e187013b421abdccf2e7fd08d2c; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text
+=== FIRST 30000 BYTES
+<html style="font-size: 14px;">
+
+<head>
+    <title>Missing Key</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <script type="text/javascript" src="assets/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
+
+            // Get the referrer from the cookie
+            document.getElementById('text-field').value = decodeURIComponent(getCookie('originalReferer'));
+            
+            $(".menu-activator").click(function () {
+                $(".gov-menu").toggle()
+                $(".chevron").toggleClass('rotate')
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <div data-v-8adc6fed="" data-v-2f72e816="" class="gov-banner noprint">
+            <div data-v-8adc6fed="" class="aqua-layout horizontal align-start justify-start banner-header">
+                <img data-v-8adc6fed=""
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII="
+                    alt="U.S flag" class="usflag" role="img" aria-hidden="true">
+                <span data-v-8adc6fed="">
+                    <div data-v-8adc6fed="" class="aqua-layout horizontal" tabindex="0">
+                        <div data-v-8adc6fed="" tabindex="0"
+                            aria-label="An official website of the United States government">
+                            An official website of the United States government
+                        </div>
+                        <div data-v-8adc6fed="" class="menu-activator"
+                            aria-label="Here's how you know. Press enter for more information." tabindex="0">
+                            <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start"> Here&rsquo;s how you
+                                know <div data-v-8adc6fed="" class="chevron"><img data-v-8adc6fed="" class="aqua-icon"
+                                        src="assets/images/chevron-down.svg"
+                                        style="width: 0.75rem; height: 0.75rem; max-height: 0.75rem; transition: all 500ms ease 0s; filter: invert(30%) sepia(8%) saturate(3837%) hue-rotate(171deg) brightness(99%) contrast(89%);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start gov-menu" style="display: none;">
+                <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start menu-paragraph"><img
+                        data-v-8adc6fed="" class="menu-svg" src="assets/images/icon-gov-building.svg" role="img"
+                        alt="government building image" aria-hidden="true">
+                    <div data-v-8adc6fed="" tabindex="0" aria-label="Official websites use .gov. A .gov website belongs to an official government
+                organization in the United States."><strong data-v-8adc6fed=""> Official websites use .gov </strong>
+                        <br data-v-8adc6fed=""> A <strong data-v-8adc6fed="">.gov</strong> website belongs to an
+                        official government organization in the United States.
+                    </div>
+                </div>
+                <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start menu-paragraph"><img
+                        data-v-8adc6fed="" class="menu-svg" src="assets/images/icon-lock.svg" role="img"
+                        alt="lock image" aria-hidden="true">
+                    <div data-v-8adc6fed="" tabindex="0" aria-label="Secure .gov websites use HTTPS. A lock or https:// means you’ve safely connected to the
+                .gov website. Share sensitive information only on official, secure
+                websites."><strong data-v-8adc6fed=""> Secure .gov websites use HTTPS </strong>
+                        <br data-v-8adc6fed=""> A <strong data-v-8adc6fed="">lock</strong> ( <img data-v-8adc6fed=""
+                            class="menu-lock" src="assets/images/lock.svg" role="img" alt="lock image"
+                            aria-hidden="true"> ) or <strong data-v-8adc6fed="">https://</strong> means you&lsquo;ve
+                        safely connected to the .gov website. Share sensitive information only on official, secure
+                        websites.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-v-beed8774="" data-v-2f72e816="" role="banner" class="AppHeader noprint" aqua-relative="">
+            <div data-v-beed8774="" class="aqua-layout horizontal align-center justify-center"><!---->
+                <div data-v-beed8774="" class="aqua-flex" style="flex: 0 0 auto;">
+                    <div data-v-beed8774="" class="aqua-layout vertical">
+                        <div data-v-beed8774="" class="logoArea">
+                            <a data-v-fb9b02c5="" data-v-beed8774="" href="/" class="" id="census-home-link">
+                                <div data-v-fb9b02c5="" style="display: none;"></div>
+                                <img data-v-beed8774="" class="header-logo" src="assets/images/census-logo-gray.svg"
+                                    alt="United States Census Bureau - Census Data Homepage">
+                            </a>
+                        </div>
+                    </div>
+                </div><!----><!---->
+                <div data-v-beed8774="" class="aqua-layout vertical"></div>
+            </div>
+        </div>
+        </div>
+    </header>
+    <div class="flex-container content">
+        <div class="content-wrap center">
+            <h1>Missing Key</h1>
+            <p>
+                A valid <em>key</em> must be included with each data API request.
+                If you don't have one, <a href="key_signup.html" target="_blank">request an API Key here</a>.
+                For more information, <a href="https://www.census.gov/library/video/2026/adrm/requesting-a-census-data-api-key.html" target="_blank">watch video</a>.
+            </p>
+            <p>
+                If you have questions, please reach out to census.data@census.gov.
+            </p>
+            <div class="aqua-layout vertical align-start justify-start">
+                <div class="input-title">Your link</div>
+                <input type="text" id="text-field" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div data-v-56f1d3f7="" class="aqua-flex" style="flex: 0 0 auto;">
+        <footer data-v-db923c0a="" data-v-56f1d3f7="" class="PageFooter">
+            <div data-v-db923c0a="" class="aqua-layout align-center justify-center links aqua-text-caption">
+                <a data-v-db923c0a="" target="_blank"
+                    href="https://www.census.gov/about/policies/section-508.html">Accessibility</a>
+                <span data-v-db923c0a="" aria-hidden="true">&nbsp;|&nbsp;</span>
+                <a data-v-db923c0a="" target="_blank" href="https://www.census.gov/quality/">Information Quality</a>
+                <span data-v-db923c0a="" aria-hidden="true">&nbsp;|&nbsp;</span>
+                <a data-v-db923c0a="" target="_blank" href="https://www.census.gov/foia/">FOIA</a>
+                <span data-v-db923c0a="" aria-hidden="true">&nbsp;|&nbsp;</span>
+                <a data-v-db923c0a="" target="_blank" href="https://www.census.gov/privacy/">Data Protection and Privacy
+                    Policy</a>
+                <span data-v-db923c0a="" aria-hidden="true">&nbsp;|&nbsp;</span>
+                <a data-v-db923c0a="" target="_blank" href="https://www.commerce.gov/">U.S. Department of Commerce</a>
+                <span data-v-db923c0a="" aria-hidden="true">&nbsp;|&nbsp;</span>
+                <a data-v-db923c0a="" target="_blank"
+                    href="https://www2.census.gov/data/api-documentation/data-census-gov-release-notes.pdf?#">Release
+                    Notes</a>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+
+</html>
