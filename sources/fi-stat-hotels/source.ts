@@ -39,14 +39,16 @@ export const NATIONAL = "SSS";
 export const MONTHS_ASKED = 14;
 
 export interface PxQuery {
-  query: { code: string; selection: { filter: "item" | "top"; values: string[] } }[];
+  query: { code: string; selection: { filter: "item" | "top" | "all"; values: string[] } }[];
   response: { format: "json-stat2" };
 }
 
-/** The POST body: hotels only, the average room price, every region, the newest 14 months. */
+/** The POST body: every region, hotels only, the average room price, the newest 14 months. */
 export function buildQuery(): PxQuery {
   return {
     query: [
+      // Region has "elimination": true, so it is left out of the answer unless asked for: take every region.
+      { code: D_REGION, selection: { filter: "all", values: ["*"] } },
       { code: D_TYPE, selection: { filter: "item", values: [HOTELS] } },
       { code: D_CONTENTS, selection: { filter: "item", values: [MEASURE] } },
       { code: D_TIME, selection: { filter: "top", values: [String(MONTHS_ASKED)] } },

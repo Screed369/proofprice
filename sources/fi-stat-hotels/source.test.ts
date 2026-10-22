@@ -13,10 +13,12 @@ const poster = async () => FIX;
 test("the POST asks for hotels, the average room price and the newest 14 months", () => {
   const q = buildQuery();
   assert.equal(q.response.format, "json-stat2");
-  assert.deepEqual(q.query.map((x) => x.code), ["majoitus_3_20181130", "contentscode", "timeperiod_m"]);
-  assert.deepEqual(q.query[0].selection.values, ["02"]);
-  assert.deepEqual(q.query[1].selection.values, ["matk-keskihinta"]);
-  assert.deepEqual(q.query[2].selection, { filter: "top", values: ["14"] });
+  assert.deepEqual(q.query.map((x) => x.code), ["maakunta_26_20190101", "majoitus_3_20181130", "contentscode", "timeperiod_m"]);
+  // region is an eliminable variable: without an explicit selection the answer has no region dimension (live preview 22 Oct)
+  assert.deepEqual(q.query[0].selection, { filter: "all", values: ["*"] });
+  assert.deepEqual(q.query[1].selection.values, ["02"]);
+  assert.deepEqual(q.query[2].selection.values, ["matk-keskihinta"]);
+  assert.deepEqual(q.query[3].selection, { filter: "top", values: ["14"] });
   assert.match(API, /^https:\/\/pxdata\.stat\.fi\/PxWeb\/api\/v1\/en\/StatFin\/matk\/11ix\.px$/);
 });
 
