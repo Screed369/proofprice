@@ -1,0 +1,1119 @@
+URL: https://www.data.gouv.fr/api/1/datasets/r/9cd07cc6-736a-423f-aeea-0f2c0726f65d
+Fetched: 2026-10-22T20:14:36Z from GitHub Actions
+Status, type, bytes: 200 application/json 135731554
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 302 
+server: nginx
+date: Thu, 22 Oct 2026 20:14:24 GMT
+content-type: text/html; charset=utf-8
+content-length: 459
+location: https://static.data.gouv.fr/resources/donnees-essentielles-de-la-commande-publique-fichiers-consolides/20261021-105413/decp-2026-10.json
+vary: Origin, Cookie
+pragma: public
+cache-control: public
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=15768000; includeSubDomains; preload;
+
+HTTP/2 200 
+server: nginx
+date: Thu, 22 Oct 2026 20:14:25 GMT
+content-type: application/json
+content-length: 135731554
+vary: Accept-Encoding
+x-amz-version-id: 1792580053.970820
+last-modified: Wed, 21 Oct 2026 10:54:19 GMT
+accept-ranges: bytes
+etag: "570563e10f91f6d59093c7b8d3d65978-17"
+expires: Sat, 21 Nov 2026 20:14:25 GMT
+cache-control: max-age=2592000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+access-control-allow-origin: *
+access-control-allow-methods: GET, OPTIONS
+access-control-allow-headers: Origin,Authorization,Accept,DNT,User-Agent,If-Modified-Since,Cache-Control,Content-Type,Range,sentry-trace,baggage
+access-control-allow-credentials: true
+content-disposition: attachment
+pragma: public
+cache-control: public
+strict-transport-security: max-age=15768000; includeSubDomains; preload;
+
+=== FILE TYPE: Unicode text, UTF-8 text
+=== FIRST 30000 BYTES
+{
+  "marches": {
+    "marche": [
+      {
+        "id": "20252025-11",
+        "acheteur": {
+          "id": "20006853400011"
+        },
+        "nature": "Marché",
+        "objet": "Revision de la DUP et de l autorisation de prelever du forage (volet technique)   realisation de l etude Bac de Martigny (volet hydrogeologique)",
+        "codeCPV": "71300000-1",
+        "procedure": "Procédure adaptée",
+        "ccag": "Prestations intellectuelles",
+        "offresRecues": 1,
+        "typeGroupementOperateurs": "Solidaire",
+        "lieuExecution": {
+          "code": "76880",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 14,
+        "dateNotification": "2025-04-11",
+        "datePublicationDonnees": "2020-01-06",
+        "montant": 69050.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "34346062200057"
+            }
+          },
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "51086422600020"
+            }
+          },
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "82370204800013"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif actualisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 1.0,
+        "origineFrance": 1.0,
+        "tauxAvance": 0.0,
+        "marcheInnovant": false,
+        "attributionAvance": false,
+        "sousTraitanceDeclaree": false
+      },
+      {
+        "id": "2021U219698001",
+        "acheteur": {
+          "id": "13000222300027"
+        },
+        "nature": "Marché",
+        "objet": "Fourniture d'équipements d'électrochirurgie LOT 1 : Plateforme d'électrochirurgie multiénergies",
+        "codeCPV": "33141411-4",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Fournitures courantes et services",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Solidaire",
+        "lieuExecution": {
+          "code": "FR",
+          "typeCode": "Code pays"
+        },
+        "dureeMois": 132,
+        "dateNotification": "2021-10-11",
+        "datePublicationDonnees": "2020-10-10",
+        "montant": 808339.33,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "31497580600063"
+            }
+          },
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "31590844200041"
+            }
+          },
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "52129397700059"
+            }
+          },
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "71980740600967"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0
+      },
+      {
+        "id": "2026V1470G",
+        "acheteur": {
+          "id": "21600056200019"
+        },
+        "nature": "Marché",
+        "objet": "ACCORD CADRE DE FOURNITURE DE MATERIELS SPORTIFS LOT 1 : ACHAT DE FILET",
+        "codeCPV": "37400000-2",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Fournitures courantes et services",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "60057",
+          "typeCode": "Code commune"
+        },
+        "dureeMois": 48,
+        "dateNotification": "2026-10-08",
+        "datePublicationDonnees": "2021-03-09",
+        "montant": 103200.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "33187442000028"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Bons de commande"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0,
+        "marcheInnovant": false,
+        "attributionAvance": false,
+        "sousTraitanceDeclaree": false,
+        "idAccordCadre": "2026V1470G"
+      },
+      {
+        "id": "2026V1473G",
+        "acheteur": {
+          "id": "21600056200019"
+        },
+        "nature": "Marché",
+        "objet": "ACCORD CADRE DE FOURNITURE DE MATERIELS SPORTIFS LOT 4 : ACHAT DE MATERIELS DIVERS",
+        "codeCPV": "37400000-2",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Fournitures courantes et services",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "60057",
+          "typeCode": "Code commune"
+        },
+        "dureeMois": 48,
+        "dateNotification": "2026-10-08",
+        "datePublicationDonnees": "2021-03-09",
+        "montant": 186000.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "50056940503239"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Bons de commande"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0,
+        "marcheInnovant": false,
+        "attributionAvance": false,
+        "sousTraitanceDeclaree": false,
+        "idAccordCadre": "2026V1473G"
+      },
+      {
+        "id": "2026A1267G",
+        "acheteur": {
+          "id": "20006799900017"
+        },
+        "nature": "Marché",
+        "objet": "ACCORD CADRE DE FOURNITURE DE MATERIELS SPORTIFS LOT 3 : ACHAT DE MATERIELS AQUATIQUE",
+        "codeCPV": "37400000-2",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Fournitures courantes et services",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "60057",
+          "typeCode": "Code commune"
+        },
+        "dureeMois": 48,
+        "dateNotification": "2026-10-08",
+        "datePublicationDonnees": "2021-03-09",
+        "montant": 104500.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "51326807800013"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Bons de commande"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0,
+        "marcheInnovant": false,
+        "attributionAvance": false,
+        "sousTraitanceDeclaree": false,
+        "idAccordCadre": "2026A1267G"
+      },
+      {
+        "id": "2026V1471G",
+        "acheteur": {
+          "id": "21600056200019"
+        },
+        "nature": "Marché",
+        "objet": "ACCORD CADRE DE FOURNITURE DE MATERIELS SPORTIFS LOT 2 : ACHAT DE BUTS ET ACCESSOIRES",
+        "codeCPV": "37400000-2",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Fournitures courantes et services",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "60057",
+          "typeCode": "Code commune"
+        },
+        "dureeMois": 48,
+        "dateNotification": "2026-10-08",
+        "datePublicationDonnees": "2021-03-09",
+        "montant": 292000.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "69648045800020"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Bons de commande"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0,
+        "marcheInnovant": false,
+        "attributionAvance": false,
+        "sousTraitanceDeclaree": false,
+        "idAccordCadre": "2026V1471G"
+      },
+      {
+        "id": "2026A1266G",
+        "acheteur": {
+          "id": "20006799900017"
+        },
+        "nature": "Marché",
+        "objet": "ACCORD CADRE DE FOURNITURE DE MATERIELS SPORTIFS LOT 2 : ACHAT DE BUTS ET ACCESSOIRES",
+        "codeCPV": "37400000-2",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Fournitures courantes et services",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "60057",
+          "typeCode": "Code commune"
+        },
+        "dureeMois": 48,
+        "dateNotification": "2026-10-08",
+        "datePublicationDonnees": "2021-03-09",
+        "montant": 42400.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "69648045800020"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Bons de commande"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0,
+        "marcheInnovant": false,
+        "attributionAvance": false,
+        "sousTraitanceDeclaree": false,
+        "idAccordCadre": "2026A1266G"
+      },
+      {
+        "id": "2026A1268G",
+        "acheteur": {
+          "id": "20006799900017"
+        },
+        "nature": "Marché",
+        "objet": "ACCORD CADRE DE FOURNITURE DE MATERIELS SPORTIFS LOT 4 : ACHAT DE MATERIELS DIVERS",
+        "codeCPV": "37400000-2",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Fournitures courantes et services",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "60057",
+          "typeCode": "Code commune"
+        },
+        "dureeMois": 48,
+        "dateNotification": "2026-10-08",
+        "datePublicationDonnees": "2021-03-09",
+        "montant": 64800.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "50056940503239"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Bons de commande"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0,
+        "marcheInnovant": false,
+        "attributionAvance": false,
+        "sousTraitanceDeclaree": false,
+        "idAccordCadre": "2026A1268G"
+      },
+      {
+        "id": "2026RIEZTL01",
+        "acheteur": {
+          "id": "21590258600019"
+        },
+        "nature": "Marché",
+        "objet": "Refection des abords de chaussee rues du Riez et de la Croix",
+        "codeCPV": "45233140-2",
+        "procedure": "Appel d'offres ouvert",
+        "ccag": "Travaux",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "59242",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 60,
+        "dateNotification": "2022-06-09",
+        "datePublicationDonnees": "2022-02-27",
+        "montant": 206444.48,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "41790848000011"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Bons de commande"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Accord-cadre"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif ferme"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0,
+        "marcheInnovant": false,
+        "attributionAvance": false,
+        "sousTraitanceDeclaree": false
+      },
+      {
+        "id": "20222022L12_G6",
+        "acheteur": {
+          "id": "21330243300015"
+        },
+        "nature": "Marché",
+        "objet": "Poste G6: Solution innovantes connectées",
+        "codeCPV": "45316110-9",
+        "procedure": "Dialogue compétitif",
+        "ccag": "Travaux",
+        "offresRecues": 6,
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "33500",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 120,
+        "dateNotification": "2022-12-07",
+        "datePublicationDonnees": "2022-04-03",
+        "montant": 1500000.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "46420207600129"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Critère social"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0
+      },
+      {
+        "id": "20222022L12_G3",
+        "acheteur": {
+          "id": "21330243300015"
+        },
+        "nature": "Marché",
+        "objet": "Poste G3: Gestion sinistres_accidents_actes vendalismes_grosses réparations",
+        "codeCPV": "45316110-9",
+        "procedure": "Dialogue compétitif",
+        "ccag": "Travaux",
+        "offresRecues": 6,
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "33500",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 120,
+        "dateNotification": "2022-12-07",
+        "datePublicationDonnees": "2022-04-03",
+        "montant": 570000.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "46420207600129"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Critère social"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0
+      },
+      {
+        "id": "20222022L12_G4",
+        "acheteur": {
+          "id": "21330243300015"
+        },
+        "nature": "Marché",
+        "objet": "Poste G4:(Re)construction des installation eclairage public_sportif_signalisation_géoréférencement réseaux souterrains",
+        "codeCPV": "45316110-9",
+        "procedure": "Dialogue compétitif",
+        "ccag": "Travaux",
+        "offresRecues": 5,
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "33500",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 120,
+        "dateNotification": "2022-12-07",
+        "datePublicationDonnees": "2022-04-03",
+        "montant": 2606280.0,
+        "formePrix": "Forfaitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "63201751303551"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Clause sociale",
+            "Critère social"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Clause environnementale",
+            "Critère environnemental"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif ferme"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0
+      },
+      {
+        "id": "20222022L12_G5",
+        "acheteur": {
+          "id": "21330243300015"
+        },
+        "nature": "Marché",
+        "objet": "Poste G5: Mise en place_dépose_entretien_illuminations festives",
+        "codeCPV": "45316110-9",
+        "procedure": "Dialogue compétitif",
+        "ccag": "Travaux",
+        "offresRecues": 6,
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "33500",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 120,
+        "dateNotification": "2022-12-07",
+        "datePublicationDonnees": "2022-04-03",
+        "montant": 2000000.0,
+        "formePrix": "Unitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "46420207600129"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Critère social"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0
+      },
+      {
+        "id": "20222022L12_G2",
+        "acheteur": {
+          "id": "21330243300015"
+        },
+        "nature": "Marché",
+        "objet": "Poste G2: Gestion exploitation_maintennace installation_ eclairage public_sportif_ signalisation_ DT_DICT",
+        "codeCPV": "45316110-9",
+        "procedure": "Dialogue compétitif",
+        "ccag": "Travaux",
+        "offresRecues": 6,
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "33500",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 120,
+        "dateNotification": "2022-12-07",
+        "datePublicationDonnees": "2022-04-03",
+        "montant": 1315845.0,
+        "formePrix": "Forfaitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "46420207600129"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Critère social"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0
+      },
+      {
+        "id": "20222022L12_G1",
+        "acheteur": {
+          "id": "21330243300015"
+        },
+        "nature": "Marché",
+        "objet": "Poste G1: Gestion Energétique installations éclairage public et illuminations festives et signalisation lumineuse tricolore",
+        "codeCPV": "45316110-9",
+        "procedure": "Dialogue compétitif",
+        "ccag": "Travaux",
+        "offresRecues": 6,
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "33500",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 120,
+        "dateNotification": "2022-12-07",
+        "datePublicationDonnees": "2022-04-03",
+        "montant": 100611.0,
+        "formePrix": "Forfaitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "46420207600129"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Clause sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif révisable"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0
+      },
+      {
+        "id": "2023BRU01EGL",
+        "acheteur": {
+          "id": "21020123200019"
+        },
+        "nature": "Marché",
+        "objet": "RENOVATION SANITAIRE MISE EN ACC ET MISE E VALEUR EGLISE ST MARTIN DE BURELLES",
+        "codeCPV": "71000000-8",
+        "procedure": "Procédure adaptée",
+        "ccag": "Pas de CCAG",
+        "offresRecues": 2,
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "02140",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 7,
+        "dateNotification": "2022-05-17",
+        "datePublicationDonnees": "2022-05-17",
+        "montant": 61440.0,
+        "formePrix": "Mixte",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "32406049000020"
+            }
+          },
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "38046511200056"
+            }
+          },
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "50916963700030"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            "Définitif ferme"
+          ]
+        },
+        "source": "data.gouv.fr_pes",
+        "origineUE": 0.0,
+        "origineFrance": 0.0,
+        "tauxAvance": 0.0
+      },
+      {
+        "id": "20261113932L03",
+        "acheteur": {
+          "id": "99027557000010"
+        },
+        "nature": "Marché",
+        "objet": "Couverture",
+        "codeCPV": "45261000-4",
+        "procedure": "Procédure adaptée",
+        "ccag": "Travaux",
+        "offresRecues": "NC",
+        "typeGroupementOperateurs": "Pas de groupement",
+        "lieuExecution": {
+          "code": "03210",
+          "typeCode": "Code postal"
+        },
+        "dureeMois": 7,
+        "dateNotification": "2022-10-05",
+        "datePublicationDonnees": "2022-05-19",
+        "montant": 173062.54,
+        "formePrix": "Forfaitaire",
+        "titulaires": [
+          {
+            "titulaire": {
+              "typeIdentifiant": "SIRET",
+              "id": "31896368300012"
+            }
+          }
+        ],
+        "considerationsSociales": {
+          "considerationSociale": [
+            "Pas de considération sociale"
+          ]
+        },
+        "considerationsEnvironnementales": {
+          "considerationEnvironnementale": [
+            "Pas de considération environnementale"
+          ]
+        },
+        "modalitesExecution": {
+          "modaliteExecution": [
+            "Sans objet"
+          ]
+        },
+        "techniques": {
+          "technique": [
+            "Sans objet"
+          ]
+        },
+        "typesPrix": {
+          "typePrix": [
+            
