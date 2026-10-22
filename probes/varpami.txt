@@ -1,0 +1,25 @@
+URL: https://datos.gob.ar/api/3/action/package_show?id=pami-listado-precios-medicamentos-para-afiliados
+Fetched: 2026-10-22T04:42:02Z from GitHub Actions
+Status, type, bytes: 404 application/json;charset=utf-8 159
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 404 
+date: Thu, 22 Oct 2026 04:42:02 GMT
+content-type: application/json;charset=utf-8
+content-length: 159
+server: cloudflare
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+cf-cache-status: DYNAMIC
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tWX4CE4nxd3hYdHt7DYeshpywYJ9tZ6HvWvWivhp%2BUKTKKPr2lFbxCsbge%2Ft2d%2BpfOgsLWUbFc9gPEIz9ea32Llb3ysg6bQwt9kWrQExqV5%2B99%2BF2AlReAi9XwEQpkY%3D"}]}
+cf-ray: a4e5d53f89d8a60a-PDX
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://datos.gob.ar/api/3/action/help_show?name=package_show", "error": {"__type": "Not Found Error", "message": "No encontrado"}, "success": false}
