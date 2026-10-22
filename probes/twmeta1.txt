@@ -1,0 +1,32 @@
+URL: https://data.gov.tw/api/v2/rest/dataset/17060
+Fetched: 2026-10-22T03:26:58Z from GitHub Actions
+Status, type, bytes: 200 application/json 2001
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 03:26:58 GMT
+content-type: application/json
+content-length: 2001
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=ti1ntvu5gllpr0e48nta6du443; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=MrnBEECPc4GkRpydHK.PMuSXjcd24sYVFOu7EJt4Slk-1792639618.480629-1.0.1.1-HtFcpNE5RxwQMrAfftrPfyQjpAWVl5Z1pZ0ekUGkeEVLrR_myjB0EnRhTltE80r3JtRCbdfLuo2qJJy8SYDs6YsUTmlNG3wLqm.LSxeH7fsXXgNjMsrSG1yQAY280FCy; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Thu, 22 Oct 2026 03:56:58 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4e5674f7a8a4ca6-MSP
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help":"","success":true,"result":{"categoryService":"I00","categoryDataset":"A","datasetId":17060,"identifier":"313310000K-000031","title":"台灣電力公司各類電價表及計算範例","description":"提供各類電價表及計算範例。","type":"rawData","license":"1","cost":"free","dataProvider":"marsduck","publisherOID":"2.16.886.101.20003.20007.20127","publisherContactName":"王先生","publisherContactPhone":"02-23666674","publisherContactEmail":"u436663@taipower.com.tw","updateFrequency":{"regularupdate":"2"},"dataQuality":"G","coverageStartedDate":"","coverageEndedDate":"","publishedDate":"2015-07-30","modifiedDate":"2025-05-28 14:05:30","spatialCoverage":"","language":"zh","relatedUrl":"","notes":"更新頻率說明：有異動時。","apiDocUrl":"","distribution":[{"resourceDescription":"","resourceField":[{"name":"檔案名稱","description":""},{"name":"檔案格式","description":""},{"name":"下載網址","description":"","uri":"api\/Commonality\/Event\/EventAttributes\/DomainName"}],"qcLevel":"","resourceFormat":"CSV","resourceCharacterEncoding":"UTF-8","resourceQualityCheckTime":"2026-06-01 15:18:55","resourceDownloadUrl":"https:\/\/service.taipower.com.tw\/data\/opendata\/apply\/file\/d007008\/001.csv","resourceAmount":3,"resourceNotes":"","resourceRequestMethod":"","resourceOasUrl":"","resourceRequestParameters":[],"resourcePathParameters":[]}],"keyword":["AI-Ready Data 詮釋資料框架指標","電價表"],"en":{"title":"Taiwan Power Company_All types of electricity price tables and calculation examples","description":"Provide various electricity price lists and calculation examples","publisherContactName":"王先生","publisherContactPhone":"02-23666674","publisherContactEmail":["u436663@taipower.com.tw"],"updateFrequency":"Irregular updates","cost":"free","notes":"Original data set type: OtherUpdate frequency description: When there are changesLicense description URL: http:\/\/data.gov.tw\/license","keyword":["Electricity price list"]}}}
