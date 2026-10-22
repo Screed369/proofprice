@@ -1,0 +1,22 @@
+URL: https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query?sort=-auction_date&page%5Bsize%5D=2&filter=high_price:gt:0&fields=auction_date,cusip,security_type,security_term,high_price,avg_med_price,high_yield,avg_med_yield,bid_to_cover_ratio,total_accepted,offering_amt
+Fetched: 2026-10-22T17:43:43Z from GitHub Actions
+Status, type, bytes: 200 application/json 1753
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Thu, 22 Oct 2026 17:43:43 GMT
+Content-Type: application/json
+Content-Length: 1753
+Connection: keep-alive
+Server: nginx
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Set-Cookie: cookiesession1=678A3E0F98FDBFC0BFFCB513C3E1DFD2;Expires=Fri, 22 Oct 2027 17:43:43 GMT;Path=/;HttpOnly
+Set-Cookie: BIGipServer~api.fiscaldata.treasury.gov~main~myPool=!ugJGR+A6gDKQp7OqlXfilVl8VU3xwsFbnFcyVTvjtTqQcCnor9864Ad/D+lBB0i1s2T6cKj2XIfNWg==; path=/; Httponly; Secure
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"data":[{"auction_date":"2026-10-15","cusip":"912797WF0","security_type":"Bill","security_term":"8-Week","high_price":"99.370000","avg_med_price":"null","high_yield":"null","avg_med_yield":"null","bid_to_cover_ratio":"2.260000","total_accepted":"112075623300","offering_amt":"105000000000"},{"auction_date":"2026-10-15","cusip":"912797VX2","security_type":"Bill","security_term":"4-Week","high_price":"99.688889","avg_med_price":"null","high_yield":"null","avg_med_yield":"null","bid_to_cover_ratio":"2.560000","total_accepted":"117413204400","offering_amt":"110000000000"}],"meta":{"count":2,"labels":{"auction_date":"Auction Date","cusip":"CUSIP","security_type":"Security Type","security_term":"Security Term","high_price":"Price","avg_med_price":"Average/Median Price","high_yield":"High Yield","avg_med_yield":"Average/Median Yield","bid_to_cover_ratio":"Bid To Cover Ratio","total_accepted":"Total Accepted","offering_amt":"Offering Amount"},"dataTypes":{"auction_date":"DATE","cusip":"STRING","security_type":"STRING","security_term":"STRING","high_price":"NUMBER","avg_med_price":"STRING","high_yield":"NUMBER","avg_med_yield":"NUMBER","bid_to_cover_ratio":"NUMBER","total_accepted":"NUMBER","offering_amt":"CURRENCY"},"dataFormats":{"auction_date":"YYYY-MM-DD","cusip":"String","security_type":"String","security_term":"String","high_price":"10.2","avg_med_price":"String","high_yield":"10.2","avg_med_yield":"10.2","bid_to_cover_ratio":"10.2","total_accepted":"10.2","offering_amt":"$10.20"},"total-count":11148,"total-pages":5574},"links":{"self":"&page%5Bnumber%5D=1&page%5Bsize%5D=2","first":"&page%5Bnumber%5D=1&page%5Bsize%5D=2","prev":null,"next":"&page%5Bnumber%5D=2&page%5Bsize%5D=2","last":"&page%5Bnumber%5D=5574&page%5Bsize%5D=2"}}
