@@ -1,0 +1,30 @@
+URL: https://data.cityofchicago.org/resource/ajtu-isnz.json?$limit=3
+Fetched: 2026-10-22T08:42:52Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2642
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 08:42:52 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC4xNjYyMl8xXzY0R0pyeVJldHpBOXhNNWxvVl96V3pKUzhPUTRV---gzip95cLg9OH20--NA3iKGdkHVF1jZw--gzip--gzip"
+X-SODA2-Fields: ["trip_id","taxi_id","trip_start_timestamp","trip_end_timestamp","trip_seconds","trip_miles","pickup_census_tract","dropoff_census_tract","pickup_community_area","dropoff_community_area","fare","tips","tolls","extras","trip_total","payment_type","company","pickup_centroid_latitude","pickup_centroid_longitude","pickup_centroid_location","dropoff_centroid_latitude","dropoff_centroid_longitude","dropoff_centroid_location"]
+X-SODA2-Types: ["text","text","floating_timestamp","floating_timestamp","number","number","text","text","number","number","number","number","number","number","number","text","text","number","number","point","number","number","point"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+Last-Modified: Thu, 08 Oct 2026 21:19:08 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 1f147a95d10a448bbd1948ec3a882b9d
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"trip_id":"02f5cb6d8e2d12fb2921c13b0ce4db99d0107963","taxi_id":"b25b4270acfce8db67cf2fd8f4baddb102e3c389c0588184a6edc14261bcb6c7207c7ad30310da5a01073d0912e361c5ba4cf17dc061766c31aae3b2f65f0b4d","trip_start_timestamp":"2026-10-01T00:00:00.000","trip_end_timestamp":"2026-10-01T00:15:00.000","trip_seconds":"1396","trip_miles":"17.28","pickup_community_area":"76","dropoff_community_area":"8","fare":"51.92","tips":"14.86","tolls":"0","extras":"7","trip_total":"74.28","payment_type":"Credit Card","company":"Taxicab Insurance Agency Llc","pickup_centroid_latitude":"41.980264315","pickup_centroid_longitude":"-87.913624596","pickup_centroid_location":{"type":"Point","coordinates":[-87.913624596,41.9802643146]},"dropoff_centroid_latitude":"41.899602111","dropoff_centroid_longitude":"-87.633308037","dropoff_centroid_location":{"type":"Point","coordinates":[-87.6333080367,41.899602111]}}
+,{"trip_id":"0bf783124b00038ec32509e6570bcf8f0eaf76cb","taxi_id":"291328f378f142203a6ffe5ac99c68d0e06c220b134093aa841dbf684207252b50a4ab24eb98ea3fe111e37c2288c09196bed631ac1de638d7be8a5f3121baf3","trip_start_timestamp":"2026-10-01T00:00:00.000","trip_end_timestamp":"2026-10-01T00:00:00.000","trip_seconds":"677","trip_miles":"1.77","pickup_community_area":"8","dropoff_community_area":"33","fare":"10.39","tips":"0","tolls":"0","extras":"0","trip_total":"10.89","payment_type":"Mobile","company":"Taxicab Insurance Agency Llc","pickup_centroid_latitude":"41.899602111","pickup_centroid_longitude":"-87.633308037","pickup_centroid_location":{"type":"Point","coordinates":[-87.6333080367,41.899602111]},"dropoff_centroid_latitude":"41.857183858","dropoff_centroid_longitude":"-87.620334624","dropoff_centroid_location":{"type":"Point","coordinates":[-87.6203346241,41.8571838585]}}
+,{"trip_id":"0ce5f2e28d479b4e12e3964c8d32372e7bf4d3c6","taxi_id":"1e3a48e9cf98c6228b3016d217e7b600aae23da58ba4e14a098944bdd5f6ecdf314f02c51a583be206812c63e29052ac9d15aca4d46260fd47ea3d5719cfe350","trip_start_timestamp":"2026-10-01T00:00:00.000","trip_end_timestamp":"2026-10-01T00:00:00.000","trip_seconds":"311","trip_miles":"0.98","pickup_community_area":"8","dropoff_community_area":"8","fare":"5.38","tips":"0","tolls":"0","extras":"0","trip_total":"5.88","payment_type":"Mobile","company":"Chicago Independents","pickup_centroid_latitude":"41.899602111","pickup_centroid_longitude":"-87.633308037","pickup_centroid_location":{"type":"Point","coordinates":[-87.6333080367,41.899602111]},"dropoff_centroid_latitude":"41.899602111","dropoff_centroid_longitude":"-87.633308037","dropoff_centroid_location":{"type":"Point","coordinates":[-87.6333080367,41.899602111]}}]
