@@ -1,0 +1,25 @@
+URL: https://open-data.ble.de/api/3/action/datastore_search_sql?sql=SELECT%20%22Woche%20(KW)%22%20AS%20w%2C%20count(*)%20AS%20n%2C%20max(_id)%20AS%20mx%20FROM%20%22d92b81a6-af6a-482f-b1bc-0a7138bf11d1%22%20GROUP%20BY%201%20ORDER%20BY%20mx%20DESC%20LIMIT%2015
+Fetched: 2026-10-22T18:14:34Z from GitHub Actions
+Status, type, bytes: 400 application/json;charset=utf-8 67
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 BAD REQUEST
+Date: Thu, 22 Oct 2026 18:14:34 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000; includeSubdomains;
+Referrer-Policy: same-origin
+Referrer-Policy: same-origin
+Referrer-Policy: same-origin
+Content-Length: 67
+Cache-Control: public, max-age=0, must-revalidate
+Vary: Cookie
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: sameorigin
+X-Content-Type-Options: nosniff
+Content-Type: application/json;charset=utf-8
+Connection: close
+
+=== FILE TYPE: ASCII text, with no line terminators
+=== FIRST 6000 BYTES
+"Fehlerhafte Anfrage - Action name not known: datastore_search_sql"
