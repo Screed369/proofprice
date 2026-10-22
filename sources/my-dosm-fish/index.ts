@@ -7,7 +7,7 @@ import { INFO, fishHarvest, fishHistoryKey, myFish } from "./source";
 
 export default defineSource({
   info: INFO,
-  category: "farm-gate-prices",
+  category: "wholesale-fresh-food",
   countries: ["MY"],
   countryHelp: "MY = Malaysia (Department of Statistics Malaysia: monthly average fish and seafood prices per kg at landing, wholesale and retail, official statistic, not a live price)",
   placeName: "Malaysia",
@@ -15,7 +15,7 @@ export default defineSource({
   paramNotes: {
     product:
       "Malaysia: a fish or seafood in English or Malay, e.g. mackerel, kembong, tenggiri, pomfret, bawal_putih, prawn, udang_harimau, squid, sotong_katak, crab, siakap, kerapu, bilis. About 150 kinds are published; a word that fits several (mackerel, prawn) returns the list to choose from. Prices are in ringgit per kg.",
-    region: "Malaysia: ignored; the fish prices are national.",
+    
   },
   extraParams: {
     level: z.string().optional().describe("Malaysia fish only: ex_vessel (the price fishers get at first sale at landing; default), wholesale or retail."),

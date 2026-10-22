@@ -98,9 +98,9 @@ test("history key points at level:species in the library", () => {
   assert.equal(fishHistoryKey({ product: "kembong", level: "xx" }, rows), null);
 });
 
-test("manifest: Malaysia in farm-gate-prices with a harvest", () => {
-  assert.equal(manifest.category, "farm-gate-prices");
+test("manifest: Malaysia in wholesale-fresh-food with a harvest", () => {
+  assert.equal(manifest.category, "wholesale-fresh-food");
   assert.deepEqual(manifest.countries, ["MY"]);
   assert.ok(manifest.harvest && manifest.historyKey && manifest.nominalCounts && manifest.referenceDates);
-  assert.ok(countriesFor("farm-gate-prices").includes("MY"));
+  assert.ok(countriesFor("wholesale-fresh-food").includes("MY"));
 });
