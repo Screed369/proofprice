@@ -1,0 +1,858 @@
+URL: https://aresep.go.cr/datos-abiertos/tarifas-de-combustibles/
+Fetched: 2026-10-22T08:43:44Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 105417
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 08:43:43 GMT
+content-type: text/html; charset=UTF-8
+server: cloudflare
+access-control-allow-origin: https://app.powerbi.com
+access-control-allow-methods: GET, OPTIONS
+access-control-allow-headers: Origin, Content-Type, Accept, Access-Control-Request-Private-Network
+access-control-allow-credentials: true
+access-control-allow-private-network: true
+strict-transport-security: max-age=31536000
+last-modified: Thu, 22 Oct 2026 07:42:37 GMT
+cache-control: max-age=0
+expires: Thu, 22 Oct 2026 08:43:43 GMT
+vary: Accept-Encoding
+cf-cache-status: DYNAMIC
+content-security-policy: img-src 'self' https://aresep.go.cr https://app.powerbi.com https://shield.sitelock.com https://seal.atlas.globalsign.com https://secure.gravatar.com https://www.google.co.cr https://www.google.com https://www.googletagmanager.com https://*.gstatic.com https://*.ytimg.com data:; frame-ancestors 'self' https://web.aresep.go.cr/ https://www.youtube.com/ https://www.facebook.com/ https://facebook.com/ https://static.xx.fbcdn.net/ https://connect.facebook.net/ https://aresep-my.sharepoint.com/ https://app.powerbi.com/ https://aresep.maps.arcgis.com/ https://mapas.aresep.go.cr/;
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+cf-ray: a4e7374e7bfdc936-IAD
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (15082)
+=== FIRST 200000 BYTES
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html class="ie ie9" dir="ltr" lang="es" prefix="og: https://ogp.me/ns#">
+<![endif]-->
+<html dir="ltr" lang="es" prefix="og: https://ogp.me/ns#" class="no-js">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.5",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),this},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||!t.src||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e=window){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();
+</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=5">
+	
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="shortcut icon" type="image/x-icon" href="https://aresep.go.cr/wp-content/uploads/2024/04/logo.png"/>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	
+
+		
+	<title>Tarifas de combustibles - ARESEP Autoridad Reguladora</title>
+<link data-rocket-prefetch href="https://app.powerbi.com" rel="dns-prefetch">
+<link data-rocket-preload as="style" data-wpr-hosted-gf-parameters="family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" href="https://aresep.go.cr/wp-content/cache/fonts/1/google-fonts/css/7/4/f/93f089003db5656d5fefc94bf599b.css" rel="preload">
+<link crossorigin data-rocket-preload as="font" href="https://aresep.go.cr/wp-content/cache/fonts/1/google-fonts/fonts/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2" rel="preload">
+<link crossorigin data-rocket-preload as="font" href="https://aresep.go.cr/wp-content/themes/aresep_theme/fonts/fontawesome/webfonts/fa-regular-400.woff2" rel="preload">
+<link crossorigin data-rocket-preload as="font" href="https://aresep.go.cr/wp-content/themes/aresep_theme/fonts/fontawesome/webfonts/fa-brands-400.woff2" rel="preload">
+<link data-wpr-hosted-gf-parameters="family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" href="https://aresep.go.cr/wp-content/cache/fonts/1/google-fonts/css/7/4/f/93f089003db5656d5fefc94bf599b.css" media="print" onload="this.media=&#039;all&#039;" rel="stylesheet">
+<noscript data-wpr-hosted-gf-parameters=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&#038;display=swap"></noscript><link rel="preload" data-rocket-preload as="image" href="https://aresep.go.cr/wp-content/themes/aresep_theme/images/logo.png" fetchpriority="high">
+
+		<!-- All in One SEO 5.0.2 - aioseo.com -->
+	<meta name="description" content="El precio de los combustibles se ajusta por variables externas (precio internacional ) e internas (tipo de cambio, margen de Recope, Estaciones y transporte)." />
+	<meta name="robots" content="max-image-preview:large" />
+	<link rel="canonical" href="https://aresep.go.cr/datos-abiertos/tarifas-de-combustibles/" />
+	<meta name="generator" content="All in One SEO (AIOSEO) 5.0.2" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:site_name" content="ARESEP - ARESEP es una institución reguladora, cuyo eje es el bienestar de la ciudadanía, para que dispongan de servicios públicos y mejoren su calidad de vida." />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Tarifas de combustibles - ARESEP Autoridad Reguladora" />
+		<meta property="og:description" content="El precio de los combustibles se ajusta por variables externas (precio internacional ) e internas (tipo de cambio, margen de Recope, Estaciones y transporte)." />
+		<meta property="og:url" content="https://aresep.go.cr/datos-abiertos/tarifas-de-combustibles/" />
+		<meta property="og:image" content="https://aresep.go.cr/wp-content/uploads/2023/05/aresep-servicios-publicos.jpg" />
+		<meta property="og:image:secure_url" content="https://aresep.go.cr/wp-content/uploads/2023/05/aresep-servicios-publicos.jpg" />
+		<meta property="og:image:width" content="851" />
+		<meta property="og:image:height" content="315" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Tarifas de combustibles - ARESEP Autoridad Reguladora" />
+		<meta name="twitter:description" content="El precio de los combustibles se ajusta por variables externas (precio internacional ) e internas (tipo de cambio, margen de Recope, Estaciones y transporte)." />
+		<meta name="twitter:image" content="https://aresep.go.cr/wp-content/uploads/2023/05/aresep-servicios-publicos.jpg" />
+		<script type="application/ld+json" class="aioseo-schema">
+			{"@context":"https:\/\/schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/#breadcrumblist","itemListElement":[{"@type":"ListItem","@id":"https:\/\/aresep.go.cr\/#listItem","position":1,"name":"Inicio","item":"https:\/\/aresep.go.cr\/","nextItem":{"@type":"ListItem","@id":"https:\/\/aresep.go.cr\/datos-abiertos\/#listItem","name":"Datos abiertos"}},{"@type":"ListItem","@id":"https:\/\/aresep.go.cr\/datos-abiertos\/#listItem","position":2,"name":"Datos abiertos","item":"https:\/\/aresep.go.cr\/datos-abiertos\/","nextItem":{"@type":"ListItem","@id":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/#listItem","name":"Tarifas de combustibles"},"previousItem":{"@type":"ListItem","@id":"https:\/\/aresep.go.cr\/#listItem","name":"Inicio"}},{"@type":"ListItem","@id":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/#listItem","position":3,"name":"Tarifas de combustibles","previousItem":{"@type":"ListItem","@id":"https:\/\/aresep.go.cr\/datos-abiertos\/#listItem","name":"Datos abiertos"}}]},{"@type":"Organization","@id":"https:\/\/aresep.go.cr\/#organization","name":"Autoridad Reguladora de los Servicios P\u00fablicos (ARESEP)","description":"ARESEP es una instituci\u00f3n reguladora, cuyo eje es el bienestar de la ciudadan\u00eda, para que dispongan de servicios p\u00fablicos y mejoren su calidad de vida.","url":"https:\/\/aresep.go.cr\/","telephone":"+50625063200","logo":{"@type":"ImageObject","url":"https:\/\/aresep.go.cr\/wp-content\/uploads\/2023\/03\/logo.png","@id":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/#organizationLogo","width":412,"height":90,"caption":"Logo de ARESEP, la estrella donde interact\u00faan: operadores, usuarios y la ARESEP es el tri\u00e1ngulo superior que orienta el camino hacia el futuro"},"image":{"@id":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/#organizationLogo"},"sameAs":["https:\/\/www.instagram.com\/aresepcr\/","https:\/\/www.youtube.com\/@AutoridadReguladoraARESEP","https:\/\/www.linkedin.com\/company\/autoridad-reguladora-aresep\/"]},{"@type":"WebPage","@id":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/#webpage","url":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/","name":"Tarifas de combustibles - ARESEP Autoridad Reguladora","description":"El precio de los combustibles se ajusta por variables externas (precio internacional ) e internas (tipo de cambio, margen de Recope, Estaciones y transporte).","inLanguage":"es-ES","isPartOf":{"@id":"https:\/\/aresep.go.cr\/#website"},"breadcrumb":{"@id":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/#breadcrumblist"},"datePublished":"2022-11-04T19:54:47-06:00","dateModified":"2026-02-06T13:45:17-06:00"},{"@type":"WebSite","@id":"https:\/\/aresep.go.cr\/#website","url":"https:\/\/aresep.go.cr\/","name":"Autoridad Reguladora de los Servicios P\u00fablicos (ARESEP)","alternateName":"ARESEP","description":"ARESEP es una instituci\u00f3n reguladora, cuyo eje es el bienestar de la ciudadan\u00eda, para que dispongan de servicios p\u00fablicos y mejoren su calidad de vida.","inLanguage":"es-ES","publisher":{"@id":"https:\/\/aresep.go.cr\/#organization"}}]}
+		</script>
+		<!-- All in One SEO -->
+
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://aresep.go.cr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Faresep.go.cr%2Fdatos-abiertos%2Ftarifas-de-combustibles%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://aresep.go.cr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Faresep.go.cr%2Fdatos-abiertos%2Ftarifas-de-combustibles%2F&#038;format=xml" />
+		
+							<script type="text/rocketlazyloadscript" data-rocket-src="//www.googletagmanager.com/gtag/js?id=G-CVF2PFR4RE"  data-cfasync="false" data-wpfc-render="false" data-rocket-type="text/javascript" async></script>
+			<script type="text/rocketlazyloadscript" data-cfasync="false" data-wpfc-render="false" data-rocket-type="text/javascript">
+				var mi_version = '11.3.0';
+				var mi_track_user = true;
+				var mi_no_track_reason = '';
+								var MonsterInsightsDefaultLocations = {"page_location":"https:\/\/aresep.go.cr\/datos-abiertos\/tarifas-de-combustibles\/"};
+								if ( typeof MonsterInsightsPrivacyGuardFilter === 'function' ) {
+					var MonsterInsightsLocations = (typeof MonsterInsightsExcludeQuery === 'object') ? MonsterInsightsPrivacyGuardFilter( MonsterInsightsExcludeQuery ) : MonsterInsightsPrivacyGuardFilter( MonsterInsightsDefaultLocations );
+				} else {
+					var MonsterInsightsLocations = (typeof MonsterInsightsExcludeQuery === 'object') ? MonsterInsightsExcludeQuery : MonsterInsightsDefaultLocations;
+				}
+
+								var disableStrs = [
+										'ga-disable-G-CVF2PFR4RE',
+									];
+
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					for (var index = 0; index < disableStrs.length; index++) {
+						if (document.cookie.indexOf(disableStrs[index] + '=true') > -1) {
+							return true;
+						}
+					}
+
+					return false;
+				}
+
+				/* Disable tracking if the opt-out cookie exists. */
+				if (__gtagTrackerIsOptedOut()) {
+					for (var index = 0; index < disableStrs.length; index++) {
+						window[disableStrs[index]] = true;
+					}
+				}
+
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					for (var index = 0; index < disableStrs.length; index++) {
+						document.cookie = disableStrs[index] + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+						window[disableStrs[index]] = true;
+					}
+				}
+
+				if ('undefined' === typeof gaOptout) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+
+				window.MonsterInsightsDualTracker = {
+					helpers: {},
+					trackers: {},
+				};
+				if (mi_track_user) {
+					function __gtagDataLayer() {
+						dataLayer.push(arguments);
+					}
+
+					function __gtagTracker(type, name, parameters) {
+						if (!parameters) {
+							parameters = {};
+						}
+
+						if (parameters.send_to) {
+							__gtagDataLayer.apply(null, arguments);
+							return;
+						}
+
+						if (type === 'event') {
+														parameters.send_to = monsterinsights_frontend.v4_id;
+							var hookName = name;
+							if (typeof parameters['event_category'] !== 'undefined') {
+								hookName = parameters['event_category'] + ':' + name;
+							}
+
+							if (typeof MonsterInsightsDualTracker.trackers[hookName] !== 'undefined') {
+								MonsterInsightsDualTracker.trackers[hookName](parameters);
+							} else {
+								__gtagDataLayer('event', name, parameters);
+							}
+							
+						} else {
+							__gtagDataLayer.apply(null, arguments);
+						}
+					}
+
+					__gtagTracker('js', new Date());
+					__gtagTracker('set', {
+						'developer_id.dZGIzZG': true,
+											});
+					if ( MonsterInsightsLocations.page_location ) {
+						__gtagTracker('set', MonsterInsightsLocations);
+					}
+										__gtagTracker('config', 'G-CVF2PFR4RE', {"forceSSL":"true","link_attribution":"true"} );
+										window.gtag = __gtagTracker;										(function () {
+						/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+						/* ga and __gaTracker compatibility shim. */
+						var noopfn = function () {
+							return null;
+						};
+						var newtracker = function () {
+							return new Tracker();
+						};
+						var Tracker = function () {
+							return null;
+						};
+						var p = Tracker.prototype;
+						p.get = noopfn;
+						p.set = noopfn;
+						p.send = function () {
+							var args = Array.prototype.slice.call(arguments);
+							args.unshift('send');
+							__gaTracker.apply(null, args);
+						};
+						var __gaTracker = function () {
+							var len = arguments.length;
+							if (len === 0) {
+								return;
+							}
+							var f = arguments[len - 1];
+							if (typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function') {
+								if ('send' === arguments[0]) {
+									var hitConverted, hitObject = false, action;
+									if ('event' === arguments[1]) {
+										if ('undefined' !== typeof arguments[3]) {
+											hitObject = {
+												'eventAction': arguments[3],
+												'eventCategory': arguments[2],
+												'eventLabel': arguments[4],
+												'value': arguments[5] ? arguments[5] : 1,
+											}
+										}
+									}
+									if ('pageview' === arguments[1]) {
+										if ('undefined' !== typeof arguments[2]) {
+											hitObject = {
+												'eventAction': 'page_view',
+												'page_path': arguments[2],
+											}
+										}
+									}
+									if (typeof arguments[2] === 'object') {
+										hitObject = arguments[2];
+									}
+									if (typeof arguments[5] === 'object') {
+										Object.assign(hitObject, arguments[5]);
+									}
+									if ('undefined' !== typeof arguments[1].hitType) {
+										hitObject = arguments[1];
+										if ('pageview' === hitObject.hitType) {
+											hitObject.eventAction = 'page_view';
+										}
+									}
+									if (hitObject) {
+										action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+										hitConverted = mapArgs(hitObject);
+										__gtagTracker('event', action, hitConverted);
+									}
+								}
+								return;
+							}
+
+							function mapArgs(args) {
+								var arg, hit = {};
+								var gaMap = {
+									'eventCategory': 'event_category',
+									'eventAction': 'event_action',
+									'eventLabel': 'event_label',
+									'eventValue': 'event_value',
+									'nonInteraction': 'non_interaction',
+									'timingCategory': 'event_category',
+									'timingVar': 'name',
+									'timingValue': 'value',
+									'timingLabel': 'event_label',
+									'page': 'page_path',
+									'location': 'page_location',
+									'title': 'page_title',
+									'referrer' : 'page_referrer',
+								};
+								for (arg in args) {
+																		if (!(!args.hasOwnProperty(arg) || !gaMap.hasOwnProperty(arg))) {
+										hit[gaMap[arg]] = args[arg];
+									} else {
+										hit[arg] = args[arg];
+									}
+								}
+								return hit;
+							}
+
+							try {
+								f.hitCallback();
+							} catch (ex) {
+							}
+						};
+						__gaTracker.create = newtracker;
+						__gaTracker.getByName = newtracker;
+						__gaTracker.getAll = function () {
+							return [];
+						};
+						__gaTracker.remove = noopfn;
+						__gaTracker.loaded = true;
+						window['__gaTracker'] = __gaTracker;
+					})();
+									} else {
+										console.log("");
+					(function () {
+						function __gtagTracker() {
+							return null;
+						}
+
+						window['__gtagTracker'] = __gtagTracker;
+						window['gtag'] = __gtagTracker;
+					})();
+									}
+			</script>
+							
+		<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='wplp-bakery-style-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/wp-latest-posts/css/vc_style.css?ver=1750451154' media='all' />
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link data-minify="1" rel='stylesheet' id='ub-extension-style-css-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/ultimate-blocks/src/extensions/style.css?ver=1782163385' media='all' />
+<link data-minify="1" rel='stylesheet' id='widgetopts-styles-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/widget-options/assets/css/widget-options.css?ver=1750451154' media='all' />
+<link data-minify="1" rel='stylesheet' id='font-awesome-5-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/themes/aresep_theme/fonts/fontawesome/css/all.min.css?ver=1750451154' media='all' />
+<link rel='stylesheet' id='aresep-theme-style-css' href='https://aresep.go.cr/wp-content/themes/aresep_theme/style.css' media='all' />
+<link rel='stylesheet' id='bootstrap-css-css' href='https://aresep.go.cr/wp-content/themes/aresep_theme/css/bootstrap-grid.min.css' media='all' />
+<link data-minify="1" rel='stylesheet' id='flick-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/mailchimp/assets/css/flick/flick.css?ver=1750451154' media='all' />
+<link data-minify="1" rel='stylesheet' id='mailchimp_sf_main_css-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/mailchimp/assets/css/frontend.css?ver=1750451154' media='all' />
+<link data-minify="1" rel='stylesheet' id='js_composer_front-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=1750451185' media='all' />
+<style id="rocket-lazyload-inline-css">
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://aresep.go.cr/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+/*# sourceURL=rocket-lazyload-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='myStyleSheets-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/wp-latest-posts/css/wplp_front.css?ver=1750451154' media='all' />
+<link data-minify="1" rel='stylesheet' id='wplpStyleDefault-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/wp-latest-posts/themes/default/style.css?ver=1750451154' media='all' />
+<style id="wplpStyleDefault-inline-css">
+#wplp_widget_4481.wplp_container.default:hover .flex-next,#wplp_widget_4481.wplp_container .flex-direction-nav .flex-prev{color : rgb(51, 51, 51) !important}#wplp_widget_4481 .swiper-button-next,#wplp_widget_4481 .swiper-button-prev{color : rgb(51, 51, 51)!important; background-image: none!important}#wplp_widget_4481.wplp_container.default:hover .flex-next:hover,#wplp_widget_4481.wplp_container.default:hover .flex-prev:hover{color :rgb(54, 54, 54) !important}#wplp_widget_4481 .swiper-button-next:hover,#wplp_widget_4481 .swiper-button-prev:hover{color :rgb(54, 54, 54)!important}#wplp_widget_4481 .swiper-pagination-bullet-active{background: rgb(54, 54, 54)!important}#wplp_widget_4481.wplp_container .read-more{float:right;background-color : transparent}#wplp_widget_4481.wplp_container .read-more{border :1px solid transparent;border-radius: 0px;}#wplp_widget_4481.wplp_container .read-more{color : #0c0c0c}#wplp_widget_4481.wplp_container .read-more{padding: 3px 7px}#wplp_widget_4481.wplp_container.default .author,#wplp_widget_4481.wplp_container.default .text,#wplp_widget_4481.wplp_container.default .date,#wplp_widget_4481.wplp_container.default .category,#wplp_widget_4481.wplp_container.default .title {text-align:center!important}#wplp_widget_4481 .wplp_listposts .swiper-slide .insideframe:hover .img_cropper:before,#wplp_widget_4481 .wplp_listposts .swiper-slide .insideframe:hover .img_cropper:after {opacity:0.7}#wplp_widget_4481 .wplp_listposts .swiper-slide .img_cropper:after {background:ffffff;-webkit-box-shadow: inset 0 0 10px 2px ffffff;box-shadow: inset 0 0 10px 2px ffffff;}#wplp_widget_4481 .wplp_listposts .swiper-slide .img_cropper:before{content:'\f109';}#wplp_widget_4481 .wplp_listposts .swiper-slide .img_cropper:before{color:#ffffff}#wplp_widget_4481 .wplp_listposts .swiper-slide .img_cropper:before{background:#444444}@media screen and (max-width: 767px) {#wplp_widget_4481 .wplp_listposts.swiper-slide-mb {display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: repeat(1, 1fr);
+                    gap: 0px;
+                    grid-auto-flow: column;}}
+/*# sourceURL=wplpStyleDefault-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='dashicons-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-includes/css/dashicons.min.css?ver=1750451154' media='all' />
+<script type="text/rocketlazyloadscript" id="jquery-core-js" data-rocket-src="https://aresep.go.cr/wp-includes/js/jquery/jquery.min.js"></script>
+<script type="text/rocketlazyloadscript" id="jquery-migrate-js" data-rocket-src="https://aresep.go.cr/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script type="text/rocketlazyloadscript" async data-wp-strategy="async" id="monsterinsights-frontend-script-js" data-rocket-src="https://aresep.go.cr/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend-gtag.min.js"></script>
+<script data-cfasync="false" data-wpfc-render="false" type="text/javascript" id='monsterinsights-frontend-script-js-extra'>/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/aresep.go.cr","hash_tracking":"false","v4_id":"G-CVF2PFR4RE"};/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript"></script><link rel="https://api.w.org/" href="https://aresep.go.cr/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://aresep.go.cr/wp-json/wp/v2/pages/4773" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://aresep.go.cr/xmlrpc.php?rsd" />
+
+<link rel='shortlink' href='https://aresep.go.cr/?p=4773' />
+			<link rel="shortcut icon" href="https://aresep.go.cr/wp-content/themes/aresep_theme/images/favicon.ico" > 
+		<style type="text/css"></style><noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<link data-minify="1" rel='stylesheet' id='wplp-swiper-style-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/wp-latest-posts/css/swiper-bundle.min.css?ver=1750451154' media='all' />
+<link data-minify="1" rel='stylesheet' id='kendo-css-css' href='https://aresep.go.cr/wp-content/cache/min/1/wp-content/themes/aresep_theme/css/kendo.all.min.css?ver=1750451185' media='all' />
+<link rel='stylesheet' id='bootstrap-complete-css-css' href='https://aresep.go.cr/wp-content/themes/aresep_theme/css/bootstrap.min.css' media='all' />
+<link rel='stylesheet' id='datosabiertos-css-css' href='https://aresep.go.cr/wp-content/themes/aresep_theme/css/datosabiertos.css' media='all' />
+<link rel='stylesheet' id='select2-css-css' href='https://aresep.go.cr/wp-content/themes/aresep_theme/css/select2.min.css' media='all' />
+
+</head>
+<body class="wp-singular page-template-default page page-id-4773 page-child parent-pageid-1165 wp-theme-aresep_theme gecko internal group-blog no-sidebar wpb-js-composer js-comp-ver-9.0.1 vc_responsive">
+	<div  id="skip"><a href="#main">Ir al contenido principal</a></div>
+		<div  id="page" class="site">
+		<header  id="masthead" class="site-header" aria-label="Encabezado página">
+			<div  class="site-header-top"> 
+				<div  class="center-page">
+										<div class="site-header-left left">
+												<aside class="widget_text aresep-direccion widget" aria-label="Dirección">
+								<span class="fas fa-map-marker-alt"></span> <a title="Selecione para abrir la direcicón de ARESEP en Google Map" href="https://www.google.es/maps/dir//Autoridad+Reguladora+de+los+Servicios+P%C3%BAblicos,+310,+San+Rafael+de+Escazu/@9.948799,-84.163465,1154m/data=!3m1!1e3!4m13!1m4!3m3!1s0x8fa0fb8cdf7f657d:0x966847a1893142d9!2sAutoridad+Reguladora+de+los+Servicios+P%C3%BAblicos!3b1!4m7!1m0!1m5!1m1!1s0x8fa0fb8cdf7f657d:0x966847a1893142d9!2m2!1d-84.163465!2d9.948799" target="_blank" rel="noopener">100 m Norte de Construplaza, complejo Multipark, Escazú, San José.</a>						</aside>
+																		<aside class="widget_text aresep-horario widget" aria-label="Horario">
+							<span class="far fa-clock"></span> Lunes a Viernes de 8:00 a.m. a 4:00 p.m.						</aside>
+											</div>
+															<div class="site-header-right right">
+						<div class="widget" aria-label="Región de búsqueda"><form role="search" method="get" class="search-form" action="https://aresep.go.cr/" role="search">
+	<label for="campo-buscar" class="screen-reader-text">Buscar:</label>
+	<input type="search" class="search-field" placeholder="Buscar &hellip;" value="" name="s" id="campo-buscar"  aria-label="Buscar por palabra clave" />
+	<button type="submit" class="search-submit"><span class="screen-reader-text">Buscar</span></button>
+</form></div>
+						<a class="aresep-tel widget" href="tel:8000273737">8000 ARESEP (8000 273737) </a>						<nav class="aresep-social widget widget-sidebar widget_text" aria-label="Redes Sociales">
+							<ul>
+								<li><a class="fab fa-youtube-square" aria-label="Visite nuestro perfil en Youtube" title="Visite nuestro perfil en Youtube" href="https://www.youtube.com/channel/UCv9DUxgL7j-iZe08ikdUICw/videos" target="_blank" rel="noopener">Youtube</a></li> 								<li><a class="fab fa-facebook-square" aria-label="Visite nuestro perfil en Facebook" title="Visite nuestro perfil en Facebook" href="https://es-es.facebook.com/pages/Aresep/310345779008496" target="_blank" rel="noopener">Facebook</a></li> 																																<li><a class="fab fa-linkedin" aria-label="Visite nuestro perfil en LinkedIn" title="Visite nuestro perfil en LinkedIn" href="https://cr.linkedin.com/company/autoridad-reguladora-aresep" target="_blank" rel="noopener">LinkedIn</a></li> 							</ul>
+						</nav>
+													
+					</div>
+									</div>
+			</div>	
+						<div  id="site-header-menu" class="main-menu">
+				<div  class="center-page">
+					<nav class="site-logo left">
+						
+						<a href="https://aresep.go.cr/" 
+							title="Ir al inicio">
+															<img fetchpriority="high" height="90" width="412" 
+									src="https://aresep.go.cr/wp-content/themes/aresep_theme/images/logo.png" 
+									alt="Ir al inicio">
+													</a>
+					</nav>
+					<div class="aresep-menu">
+						<nav class="main-navigation" aria-label="Menú principal"><ul id="menu-menu-principal" class="primary-menu"><li id="menu-item-4383" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-4383"><a href="https://aresep.go.cr/">Inicio</a></li>
+<li id="menu-item-4391" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4391"><a href="https://aresep.go.cr/somos-aresep/">Somos ARESEP</a>
+<ul class="sub-menu">
+	<li id="menu-item-4393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4393"><a href="https://aresep.go.cr/somos-aresep/antecedentes-historia/">Antecedentes e Historia</a></li>
+	<li id="menu-item-4392" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4392"><a href="https://aresep.go.cr/somos-aresep/descripcion-institucional/">Misión, visión y valores</a></li>
+	<li id="menu-item-4394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4394"><a href="https://aresep.go.cr/somos-aresep/estructura-organizativa/">Organización interna</a></li>
+	<li id="menu-item-17804" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17804"><a href="https://aresep.go.cr/somos-aresep/informacion-de-jerarcas/">Información de jerarcas</a></li>
+	<li id="menu-item-4395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4395"><a href="https://aresep.go.cr/somos-aresep/junta-directiva/">Junta Directiva</a></li>
+	<li id="menu-item-4396" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4396"><a href="https://aresep.go.cr/categoria/publicaciones/politicas/">Políticas</a></li>
+	<li id="menu-item-18160" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-18160"><a href="https://aresep.go.cr/categoria/congreso-regulatorio/">Congreso Regulatorio</a></li>
+	<li id="menu-item-4397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4397"><a href="https://aresep.go.cr/empleo/">Empleo</a></li>
+	<li id="menu-item-5067" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5067"><a href="https://aresep.go.cr/somos-aresep/publicaciones/">Publicaciones</a></li>
+	<li id="menu-item-4399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4399"><a href="https://aresep.go.cr/actas-junta-directiva/">Actas de Junta Directiva</a></li>
+	<li id="menu-item-4400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4400"><a href="https://aresep.go.cr/agendas-junta-directiva/">Agendas de Junta Directiva</a></li>
+	<li id="menu-item-4401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4401"><a href="https://aresep.go.cr/somos-aresep/videoteca/">Videoteca</a></li>
+	<li id="menu-item-4402" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4402"><a href="https://aresep.go.cr/somos-aresep/mejora-regulatoria/">Mejora Regulatoria</a></li>
+</ul>
+</li>
+<li id="menu-item-4403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4403"><a href="https://aresep.go.cr/transparencia/" title="Transparencia Institucional">Transparencia</a>
+<ul class="sub-menu">
+	<li id="menu-item-17832" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17832"><a href="https://aresep.go.cr/transparencia/informacion-institucional/">Información institucional</a></li>
+	<li id="menu-item-4405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4405"><a href="https://aresep.go.cr/transparencia/rendicion-cuentas/">Rendición Cuentas</a></li>
+	<li id="menu-item-4406" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4406"><a href="https://aresep.go.cr/participacion/" title="Participación ciudadana">Participación y solicitudes de información</a></li>
+	<li id="menu-item-18445" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18445"><a href="https://aresep.go.cr/transparencia/presupuestos-puestos-contratacion/">Presupuestos, puestos y contratación pública</a></li>
+	<li id="menu-item-4407" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-4407"><a href="https://aresep.go.cr/datos-abiertos/">Datos abiertos</a></li>
+	<li id="menu-item-4408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4408"><a href="https://aresep.go.cr/transparencia/accesibilidad/">Accesibilidad</a></li>
+	<li id="menu-item-4409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4409"><a href="https://aresep.go.cr/transparencia/informacion-geografica/">Información Geográfica</a></li>
+	<li id="menu-item-4411" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4411"><a href="https://aresep.go.cr/transparencia/denuncias/" title="Denuncias contra funcionarios">Denuncias contra personas funcionarias</a></li>
+</ul>
+</li>
+<li id="menu-item-4412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4412"><a href="https://aresep.go.cr/servicios-regulados/">Servicios Regulados</a>
+<ul class="sub-menu">
+	<li id="menu-item-4413" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4413"><a href="https://aresep.go.cr/aeropuertos/">Aeropuertos</a></li>
+	<li id="menu-item-4414" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4414"><a href="https://aresep.go.cr/agua-potable/">Agua Potable</a></li>
+	<li id="menu-item-4416" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4416"><a href="https://aresep.go.cr/autobus/">Autobús</a></li>
+	<li id="menu-item-4417" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4417"><a href="https://aresep.go.cr/cabotaje/" title="Cabotaje">Ferries y lanchas (Cabotaje)</a></li>
+	<li id="menu-item-4418" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4418"><a href="https://aresep.go.cr/combustible/">Combustible</a></li>
+	<li id="menu-item-4419" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4419"><a href="https://aresep.go.cr/correo-postal/">Correo Postal</a></li>
+	<li id="menu-item-4420" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4420"><a href="https://aresep.go.cr/electricidad/">Electricidad</a></li>
+	<li id="menu-item-4421" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4421"><a href="https://aresep.go.cr/gas/">Gas</a></li>
+	<li id="menu-item-4422" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4422"><a href="https://aresep.go.cr/hidrantes/">Hidrantes</a></li>
+	<li id="menu-item-4427" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4427"><a href="https://aresep.go.cr/inspeccion-tecnica-vehicular/">Inspección técnica vehicular</a></li>
+	<li id="menu-item-4423" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4423"><a href="https://aresep.go.cr/peajes/">Peajes</a></li>
+	<li id="menu-item-4424" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4424"><a href="https://aresep.go.cr/puertos/">Puertos</a></li>
+	<li id="menu-item-4425" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4425"><a href="https://aresep.go.cr/recurso-hidrico/">Recurso hídrico</a></li>
+	<li id="menu-item-4426" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4426"><a href="https://aresep.go.cr/riego-avenamiento/">Riego y avenamiento</a></li>
+	<li id="menu-item-4415" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4415"><a href="https://aresep.go.cr/saneamiento/">Saneamiento</a></li>
+	<li id="menu-item-4428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4428"><a href="https://aresep.go.cr/taxi/">Taxi</a></li>
+	<li id="menu-item-10726" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10726"><a href="https://aresep.go.cr/transporte-estudiantes/">Transporte Estudiantes</a></li>
+	<li id="menu-item-4429" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4429"><a href="https://aresep.go.cr/tren/">Tren</a></li>
+</ul>
+</li>
+<li id="menu-item-9932" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9932"><a href="https://aresep.go.cr/gestion-usuarios/" title="Gestión usuarios">Gestión de usuarios</a>
+<ul class="sub-menu">
+	<li id="menu-item-4996" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4996"><a href="https://aresep.go.cr/gestion-usuarios/audiencias/">Audiencias y Consultas Públicas</a></li>
+	<li id="menu-item-4435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4435"><a href="https://aresep.go.cr/gestion-usuarios/consejeria/">Consejería del Usuario</a></li>
+	<li id="menu-item-4442" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4442"><a href="https://aresep.go.cr/gestion-usuarios/quejas-denuncias/">Quejas y denuncias</a></li>
+	<li id="menu-item-4437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4437"><a href="https://aresep.go.cr/gestion-usuarios/derechos-usuarios/">Derechos de los usuarios</a></li>
+	<li id="menu-item-4443" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4443"><a href="https://aresep.go.cr/gestion-usuarios/red-comunicacion/">Red de Comunicación</a></li>
+	<li id="menu-item-18988" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18988"><a href="https://aresep.go.cr/ventanilla/">Ventanilla única</a></li>
+	<li id="menu-item-4447" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4447"><a href="https://aresep.go.cr/gestion-usuarios/claves-consultar-expedientes/">Clave para consultar expedientes</a></li>
+	<li id="menu-item-4448" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4448"><a href="https://aresep.go.cr/gestion-usuarios/derecho-peticion/">Derecho de petición</a></li>
+	<li id="menu-item-6213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6213"><a href="https://capacitacion.aresep.go.cr/mod/h5pactivity/view.php?id=2353">Tutorial de la aplicación “Aresep Contigo”</a></li>
+	<li id="menu-item-11713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11713"><a href="https://aresep.go.cr/gestion-usuarios/contacte-operador/">Contacte al operador</a></li>
+</ul>
+</li>
+<li id="menu-item-4449" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4449"><a href="https://aresep.go.cr/sir/" title="Sistema de Información Regulatoria (SIR)">SIR</a>
+<ul class="sub-menu">
+	<li id="menu-item-4450" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4450"><a href="https://aresep.go.cr/requisitos-tarifarios/">Requisitos Tarifarios</a></li>
+	<li id="menu-item-4451" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4451"><a href="https://aresep.go.cr/obligaciones/">Obligaciones</a></li>
+	<li id="menu-item-4452" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4452"><a href="https://aresep.go.cr/sir/tramites-operadores/">Trámites de operadores</a></li>
+	<li id="menu-item-4453" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4453"><a href="https://aresep.go.cr/informacion-operadores-agua/">Información para operadores de Agua</a></li>
+	<li id="menu-item-4454" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4454"><a href="https://aresep.go.cr/informacion-operadores-energia/">Información para operadores de Energía</a></li>
+	<li id="menu-item-4455" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4455"><a href="https://aresep.go.cr/informacion-operadores-transporte/">Información para operadores de Transporte</a></li>
+	<li id="menu-item-4456" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4456"><a href="https://aresep.go.cr/resoluciones/">Resoluciones</a></li>
+</ul>
+</li>
+</ul></nav>					</div>
+				</div>
+			</div>
+					
+
+		</header><!-- .site-header -->
+			
+
+		
+<div  id="primary" class="content-area site-content template-default">
+	<div  class="center-page">
+	
+		<main id="main" class="site-main article-container" tabindex="-1">
+			
+<article id="post-4773" class="post-4773 page type-page status-publish hentry">
+	<div class="entry-content">
+		<h1>Tarifas de combustibles</h1>
+		
+		<div class="wpb-content-wrapper" id="wpb-content-root"><div class="vc_row wpb_row vc_row-fluid  " ><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner  " ><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper" >
+			<p><span class="ui-provider eo bhs bdt bmr bms bmt bmu bmv bmw bmx bmy bmz bna bnb bnc bnd bne bnf bng bnh bni bnj bnk bnl bnm bnn bno bnp bnq bnr bns bnt bnu bnv bnw" dir="ltr">El precio de los <a href="https://aresep.go.cr/combustible/">combustibles</a> se ajusta por las variaciones que se registren en el mercado internacional (alza o baja, según el producto). También se consideran variables internas como el tipo de cambio (compra en dólares), impuesto único, subsidios, margen de comercialización de Recope, Estaciones de Servicio y transporte.</span></p>
+<p><span class="ui-provider eo bhs bdt bmr bms bmt bmu bmv bmw bmx bmy bmz bna bnb bnc bnd bne bnf bng bnh bni bnj bnk bnl bnm bnn bno bnp bnq bnr bns bnt bnu bnv bnw" dir="ltr">En este apartado se desglosa el costo de los combustibles que se venden en las Estaciones de Servicio.</span></p>
+
+		</div>
+	</div>
+</div></div></div></div><div class="vc_row wpb_row vc_row-fluid  " ><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner  " ><div class="wpb_wrapper"><div class="grid_datos_abiertos grid_datos_abiertos_3zY2iqK1ab" id="grid_datos_abiertos_3zY2iqK1ab"><section class="grid_datos_abiertos_chart" aria-label="Power BI">
+            <div class="botones" role="tablist" aria-label="Seleccione una opción">
+              <button role="tab" id="visualizacion" class="btn-datos active" href="#">Visualización</button><button role="tab" id="tabla" class="btn-datos">Tabla de datos</button><button role="tab" id="metadatos" class="btn-datos">Metadatos</button></div><div class="aresep_container_tab" id="aresep_container_tab_grid_datos_abiertos_3zY2iqK1ab"><div class="aresep_bar_tab" role="tablist" aria-label="Seleccione una opción de análisis de datos"><button role="tab" class="aresep_bar_tab_single" id="tab_chart_grid_datos_abiertos_3zY2iqK1ab_1_0" data-id="aresep_content_tab_single_grid_datos_abiertos_3zY2iqK1ab_1_0" aria-controls="aresep_content_tab_single_grid_datos_abiertos_3zY2iqK1ab_1_0">Tarifas Vigentes</button><button role="tab" class="aresep_bar_tab_single" id="tab_chart_grid_datos_abiertos_3zY2iqK1ab_1_1" data-id="aresep_content_tab_single_grid_datos_abiertos_3zY2iqK1ab_1_1" aria-controls="aresep_content_tab_single_grid_datos_abiertos_3zY2iqK1ab_1_1">Evolución de tarifas</button></div><div class="aresep_content_tab"><div class="aresep_content_tab_single" aria-labelledby="tab_chart_grid_datos_abiertos_3zY2iqK1ab_1_0" id="aresep_content_tab_single_grid_datos_abiertos_3zY2iqK1ab_1_0" data-content="https://app.powerbi.com/view?r=eyJrIjoiNWFiOGRiMWMtNzI2OC00ZmE2LTk1MGUtMmNmNDUwYmIzMjIzIiwidCI6IjBkNzIzOGY4LWI3ODQtNDk2MC1iZGUyLTZlMzM1MWQyNDcwZCIsImMiOjR9"><iframe loading="lazy" title="Gráfico Tarifas Vigentes" src="about:blank" width="800" height="700" data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://app.powerbi.com/view?r=eyJrIjoiNWFiOGRiMWMtNzI2OC00ZmE2LTk1MGUtMmNmNDUwYmIzMjIzIiwidCI6IjBkNzIzOGY4LWI3ODQtNDk2MC1iZGUyLTZlMzM1MWQyNDcwZCIsImMiOjR9"></iframe><noscript><iframe loading="lazy" title="Gráfico Tarifas Vigentes" src="https://app.powerbi.com/view?r=eyJrIjoiNWFiOGRiMWMtNzI2OC00ZmE2LTk1MGUtMmNmNDUwYmIzMjIzIiwidCI6IjBkNzIzOGY4LWI3ODQtNDk2MC1iZGUyLTZlMzM1MWQyNDcwZCIsImMiOjR9" width="800" height="700"></iframe></noscript></div><div class="aresep_content_tab_single" aria-labelledby="tab_chart_grid_datos_abiertos_3zY2iqK1ab_1_1" id="aresep_content_tab_single_grid_datos_abiertos_3zY2iqK1ab_1_1" data-content="https://app.powerbi.com/view?r=eyJrIjoiNDZlMTg1ZDYtNDUzMi00NDAwLTk4YWItZDgyYTk5ZjVhYjFiIiwidCI6IjBkNzIzOGY4LWI3ODQtNDk2MC1iZGUyLTZlMzM1MWQyNDcwZCIsImMiOjR9&pageName=ReportSectionf60220e47be4d8c4ec83"></div></div></div></section><section class="grid_datos_abiertos_datos_articles " id="grid_datos_abiertos_3zY2iqK1ab_articles"><article class="grid_datos_abiertos_datos_article grid_datos_abiertos_3zY2iqK1ab_article_0" id="grid_datos_abiertos_3zY2iqK1ab_article_0" data-status="0">
+                <form action="#" class="grid_datos_abiertos_datos_form">
+                  <input type="hidden" class="id_grid_datos_abiertos" name="id_grid_datos_abiertos" value="grid_datos_abiertos_3zY2iqK1ab_article_0">
+                  <input type="hidden" class="datos_abiertos_url" name="datos_abiertos_url" value="https://datos.aresep.go.cr/ws.datosabiertos/Services/IE/TarifaCombustible.svc/ObtenerHistoricoTarifasHidrocarburos">
+                  <input type="hidden" class="datos_abiertos_pagesize" name="datos_abiertos_pagesize" value="">
+                  
+
+                  <input type="hidden" class="datos_abiertos_is_post" name="datos_abiertos_is_post" value="get">
+                  <input type="hidden" class="datos_abiertos_filter" name="datos_abiertos_filter" value="row">
+                  <input type="hidden" class="datos_abiertos_is_informacion_geografica" name="datos_abiertos_is_informacion_geografica" value="no">
+                  <input type="hidden" class="datos_abiertos_url_wfs" name="datos_abiertos_url_wfs" value="">
+
+                  <input type="hidden" class="datos_abiertos_type_date" name="datos_abiertos_type_date" value="">
+                  <input type="hidden" class="datos_abiertos_label_date" name="datos_abiertos_label_date" value="">
+                  <input type="hidden" class="datos_abiertos_url_date" name="datos_abiertos_url_date" value="">
+                  <input type="hidden" class="datos_abiertos_format_date" name="datos_abiertos_format_date" value="">
+                  <input type="hidden" class="datos_abiertos_dropdown_inicial" name="datos_abiertos_dropdown_inicial" value="">
+                  <input type="hidden" class="datos_abiertos_dropdown_default" name="datos_abiertos_dropdown_default" value="">
+                  <input type="hidden" class="datos_abiertos_show_metadatos" name="datos_abiertos_show_metadatos" value="si">
+
+                  <input type="hidden" class="da_dataset_distributions_description" name="da_dataset_distributions_description" value="Se muestra información histórica de los precios de los combustibles en Costa Rica, según cadena de valor y tipo de producto.">
+                  <input type="hidden" class="da_dataset_description_issued" name="da_dataset_description_issued" value="2019-11-12">
+                  <input type="hidden" class="da_dataset_description_title" name="da_dataset_description_title" value="Tarifas de combustibles de Costa Rica">
+
+                </form>
+                <div class="dataset_structural_metadata d-none"></div>
+                <div class="grid_datos_abiertos_table d-none">
+                  <div class="grid_datos_abiertos_header">
+                      <div class="grid_datos_abiertos_touch">
+                          <img decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Toque la tabla para poder ver los datos" title="Toque la tabla para poder ver los datos" data-lazy-src="https://aresep.go.cr/wp-content/themes/aresep_theme/images/ARESEP-hand-touch-table.png" /><noscript><img decoding="async" src="https://aresep.go.cr/wp-content/themes/aresep_theme/images/ARESEP-hand-touch-table.png" alt="Toque la tabla para poder ver los datos" title="Toque la tabla para poder ver los datos" /></noscript>
+                      </div>
+                      <div class="grid_datos_abiertos_header_top">
+                        <div class="left"><form class="grid_datos_abiertos_search"><input class="da_name_document da_name_document_grid_datos_abiertos_3zY2iqK1ab" name="da_name_document" type="hidden" value="Tarifas_de_combustibles_de_Costa_Rica"/><input class="da_filtro da_filtro_grid_datos_abiertos_3zY2iqK1ab" name="da_filtro"  type="hidden" value="row"/>  
+                        <input class="da_is_informacion_geografica da_is_informacion_geografica_grid_datos_abiertos_3zY2iqK1ab" name="da_is_informacion_geografica" type="hidden" value="no"/>  
+                        <input class="da_url_wfs da_url_wfs_grid_datos_abiertos_3zY2iqK1ab" id="da_url_wfs_grid_datos_abiertos_3zY2iqK1ab" name="da_url_wfs" type="hidden" value=""/></form></div>
+                      </div>
+                      <div id="grid_datos_abiertos_header_bottom" class="grid_datos_abiertos_header_bottom">
+                        <span>Por favor espere, se esta procesando su solicitud.</span>
+                      </div>
+                  </div>
+                  <div class="grid_datos_abiertos_body" ></div>
+                  <div class="grid_datos_abiertos_footer"></div>
+                </div><div class="grid_datos_abiertos_dataset" typeof="dcat:Dataset">
+                    <div class="dataset-description">
+                      <h2>Conjunto de datos</h2>
+                      <br>
+                      <h5>Descripción</h5>
+                      <table summary="Esta tabla tiene la descripción del conjunto de datos. La primera columna tiene las palabras clave y la segunda tiene los valores." role="presentation">
+                        <caption>Esta tabla tiene la descripción del conjunto de datos. La primera columna tiene las palabras clave y la segunda tiene los valores.</caption><tr>
+                            <td>Título</td>
+                            <td property="dct:title">Tarifas de combustibles de Costa Rica</td>
+                        </tr><tr class="dataset-description-url">
+                            <td>URL</td>
+                            <td><a href="https://datos.aresep.go.cr/ws.datosabiertos/Services/IE/TarifaCombustible.svc/ObtenerHistoricoTarifasHidrocarburos" target="_blank">https://datos.aresep.go.cr/ws.datosabiertos/Services/IE/TarifaCombustible.svc/ObtenerHistoricoTarifasHidrocarburos</a></td>
+                        </tr><tr>
+                            <td>Palabras claves</td>
+                            <td><span property="dcat:keyword">Combustibles</span>, <span property="dcat:keyword">Gasolina</span>, <span property="dcat:keyword">Diésel</span>, <span property="dcat:keyword">Hidrocarburos</span>, <span property="dcat:keyword">Gas</span></td>
+                        </tr><tr>
+                            <td>Fecha publicación</td>
+                            <td><span property="dct:issued" content="2019-11-12" datatype="xsd:date">2019-11-12</span></td>
+                        </tr><tr>
+                              <td id="publisher">Publicado</td>
+                              <td property="dct:publisher" resource="#publisher" typeof="foaf:Organization prov:Agent"><span property="foaf:name">Autoridad Reguladora de los Servicios Públicos</span></td>
+                            </tr><tr>
+                              <td>Creador</td>
+                              <td property="dct:creator" typeof="foaf:Person">
+                                <span property="foaf:name">Intendencia de Energía / Información y Mercados</span> &lt;<a href="/cdn-cgi/l/email-protection#68010d060d1a0f010928091a0d1b0d18460f07460b1a" property="foaf:mail"><span class="__cf_email__" data-cfemail="83eae6ede6f1e4eae2c3e2f1e6f0e6f3ade4ecade0f1">[email&#160;protected]</span></a>&gt;<span property="prov:onBehalfOf" resource="#publisher"></span>
+                            </td>
+                        </tr><tr>
+                            <td>Período de cobertura del conjunto de datos</td>
+                            <td property="dct:temporal">Tarifa Combustibles desde 2008</td>
+                          </tr><tr>
+                        <td>Cobertura espacial</td>
+                        <td><a property="dct:spatial" href="https://www.geonames.org/3624060" target="_blank">Costa Rica</a></td>
+                    </tr><tr>
+                            <td>Frecuencia de actualización</td>
+                            <td><a property="dct:accrualPeriodicity" href="http://purl.org/linked-data/sdmx/2009/code#freq-A" target="_blank">Mensual</a></td>
+                            </tr><tr>
+                            <td>Tema</td>
+                            <td>Precios</td>
+                        </tr><tr id="locale-parameters">
+                        <td>Idioma</td>
+                        <td property="dct:language">Español</td>
+                    </tr>
+                    <tr>
+                        <td>Formatos de día y hora</td>
+                        <td>ISO 8601</td>
+                    </tr><tr>
+                              <td>Versión actual</td>
+                              <td>1.0</td>
+                            </tr></table></div><div class="dataset_distributions"></div></div><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="x/kendo-template" class="page-template-script">
+                      <div class="page-template">
+                        <div class="watermark">ARESEP</div>
+                      </div>
+                    </script>
+                  </article></section>
+        </div>
+        <style type="text/css">
+        .page-template {
+          font-family: "DejaVu Sans", "Arial", sans-serif;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        }
+        .page-template .header {
+          position: absolute;
+          top: 30px;
+          left: 30px;
+          right: 30px;
+          border-bottom: 1px solid #888;
+          color: #888;
+        }
+        .page-template .footer {
+          position: absolute;
+          bottom: 30px;
+          left: 30px;
+          right: 30px;
+          border-top: 1px solid #888;
+          text-align: center;
+          color: #888;
+        }
+        .page-template .watermark {
+          font-weight: bold;
+          font-size: 400%;
+          text-align: center;
+          margin-top: 30%;
+          color: #aaaaaa;
+          opacity: 0.1;
+          transform: rotate(-35deg) scale(1.7, 1.5);
+        }
+
+        .customer-photo {
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-size: 32px 35px;
+          background-position: center center;
+          vertical-align: middle;
+          line-height: 32px;
+          box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+          margin-left: 5px;
+        }
+        kendo-pdf-document .customer-photo {
+          border: 1px solid #dedede;
+        }
+        .customer-name {
+          display: inline-block;
+          vertical-align: middle;
+          line-height: 32px;
+          padding-left: 3px;
+        }
+    </style>
+        </div></div></div></div>
+</div>			</div><!-- .entry-content -->
+	
+</article><!-- #post-## -->
+
+		</main><!-- .site-main -->
+	</div>
+</div><!-- .content-area -->
+
+		<footer  class="site-footer" id="site-footer" aria-label="Pie página" tabindex="-1">
+
+						<div  class="site-footer-top">
+				<div class="center-page"> 
+					<div class="row">
+													<div class="site-footer-top-left footer-one col-12 col-md-12 col-lg-6" role="complementary" aria-label="Contáctenos"><div id="text-7" class="footer-contactenos widget widget-sidebar widget_text"><h2 class="widget-title">Contáctenos</h2>			<div class="textwidget"><p><a href="tel:8000273737">8000 ARESEP (8000 273737)</a></p>
+<p>Oficinas centrales: <a href="tel:4002-9595">4002-9595</a></p>
+<p>Fax: <a href="tel:4002-9579"><strong>4002-9579</strong></a></p>
+<p>Correo electrónico: <a title="Correo electrónico ARESEP" href="/cdn-cgi/l/email-protection#3a4c5f544e5b545356565b4f5453595b7a5b485f495f4a145d55145948"><span class="__cf_email__" data-cfemail="fd8b9893899c939491919c8893949e9cbd9c8f988e988dd39a92d39e8f">[email&#160;protected]</span></a></p>
+</div>
+		</div><div id="text-6" class="footer-localizacion widget widget-sidebar widget_text">			<div class="textwidget"><p><a title="Dirección ARESEP. Click para ir a Google Map" href="https://www.google.es/maps/dir//Autoridad+Reguladora+de+los+Servicios+P%C3%BAblicos,+310,+San+Rafael+de+Escazu/@9.948799,-84.163465,1154m/data=!3m1!1e3!4m13!1m4!3m3!1s0x8fa0fb8cdf7f657d:0x966847a1893142d9!2sAutoridad+Reguladora+de+los+Servicios+P%C3%BAblicos!3b1!4m7!1m0!1m5!1m1!1s0x8fa0fb8cdf7f657d:0x966847a1893142d9!2m2!1d-84.163465!2d9.948799" target="_blank" rel="noopener">100 m Norte de Construplaza, complejo Multipark, Escazú, San José.</a></p>
+<p>Lunes a Viernes de<br />
+8 a.m. a 4 p.m.</p>
+</div>
+		</div></div>
+							<div class="site-footer-top-right footer-two col-12 col-md-12 col-lg-6">
+								<div class="menu-menu-footer-container"><nav class="footer-menu-nav" aria-labelledby="footer-menu-title"><h2 id="footer-menu-title" class="widget-title">Enlaces rápidos</h2><ul id="menu-menu-footer" class="footer-menu"><li id="menu-item-19127" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19127"><a href="https://aresep.go.cr/transparencia/accesibilidad/">Accesibilidad</a></li>
+<li id="menu-item-4384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4384"><a href="https://aresep.go.cr/contactenos/">Consultas o sugerencias</a></li>
+<li id="menu-item-4387" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4387"><a href="https://aresep.go.cr/diccionario/">Diccionario</a></li>
+<li id="menu-item-13575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13575"><a href="https://aresep.go.cr/encuesta-satisfaccion/">Encuesta de satisfacción</a></li>
+<li id="menu-item-17819" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17819"><a href="https://aresep.go.cr/mapa-de-sitio/">Mapa de sitio</a></li>
+<li id="menu-item-4389" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4389"><a href="https://aresep.go.cr/politica-privacidad/">Política de privacidad</a></li>
+<li id="menu-item-4390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4390"><a href="https://aresep.go.cr/terminos-y-condiciones-de-uso/">Términos y condiciones de uso</a></li>
+<li id="menu-item-21659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21659"><a href="https://aresep.go.cr/ventanilla/">Ventanilla única</a></li>
+</ul></nav></div>								<div id="text-8" class="aresep-social widget widget-sidebar widget_text"><h2 class="widget-title">Redes Sociales</h2>			<div class="textwidget"><p><a class="fab fa-youtube-square" title="Visite nuestro perfil en Youtube" href="https://www.youtube.com/channel/UCv9DUxgL7j-iZe08ikdUICw/videos" target="_blank" rel="noopener" aria-label="Visite nuestro perfil en Youtube">Youtube</a> <a class="fab fa-facebook-square" title="Visite nuestro perfil en Facebook" href="https://es-es.facebook.com/pages/Aresep/310345779008496" target="_blank" rel="noopener" aria-label="Visite nuestro perfil en Facebook">Facebook</a> <a class="fab fa-whatsapp-square" title="Visite nuestro perfil en Whatsapp" href="https://wa.me/50687827467" target="_blank" rel="noopener" aria-label="Visite nuestro perfil en Whatsapp">Whatsapp</a> <a class="fab fa-linkedin" title="Visite nuestro perfil en LinkedIn" href="https://cr.linkedin.com/company/autoridad-reguladora-aresep" target="_blank" rel="noopener" aria-label="Visite nuestro perfil en LinkedIn">LinkedIn</a></p>
+</div>
+		</div>							
+							</div>
+												
+					</div>
+				</div>
+			</div>
+			
+							<div  class="site-footer-bottom">
+					<div class="center-page">
+						<div class="row">
+							<div class="site-footer-bottom-left col-12 col-md-12 col-lg-5">
+								<p>Última actualización: 21 de octubre del 2026</p>
+													
+							</div>
+							<div class="site-footer-bottom-right col-12 col-md-12 col-lg-7">
+								<div class="left" role="complementary" aria-label="Sitelock">
+									<a href="https://www.sitelock.com/verify.php?site=www.aresep.go.cr" onclick="window.open('https://www.sitelock.com/verify.php?site=www.aresep.go.cr','SiteLock','width=600,height=600,left=160,top=170'); return false;" class="secure_sitelock" title="HAGA CLIC PARA VERIFICAR: Este sitio en SiteLock"><img class="img-responsive" alt="HAGA CLIC PARA VERIFICAR: Este sitio en SiteLock" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20120%2068'%3E%3C/svg%3E" width="120" height="68" data-lazy-src="https://shield.sitelock.com/shield/www.aresep.go.cr"><noscript><img class="img-responsive" alt="HAGA CLIC PARA VERIFICAR: Este sitio en SiteLock" src="https://shield.sitelock.com/shield/www.aresep.go.cr" width="120" height="68"></noscript></a>
+									<div id="secure_sitelock"></div>
+								</div>
+								<div class="left" role="complementary" aria-label="Transparencia y SICOP">
+									<div id="text-9" class="widget widget-sidebar widget_text">			<div class="textwidget"><p><a aria-label="Visita nuestro página de la Red Interinstitucional de Transparencia" title="Visita nuestro página de la Red Interinstitucional de Transparencia" href="https://aresep.go.cr/transparencia/"><img decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20171%2079'%3E%3C/svg%3E" alt="aresep transparencia institucional" width="171" height="79" data-lazy-src="https://aresep.go.cr/wp-content/uploads/2023/03/logo-red-transparencia.jpg" /><noscript><img decoding="async" src="https://aresep.go.cr/wp-content/uploads/2023/03/logo-red-transparencia.jpg" alt="aresep transparencia institucional" width="171" height="79" /></noscript></a> <a aria-label="Visita nuestro perfil en SICOP" title="Visita nuestro perfil en SICOP" href="https://www.sicop.go.cr/moduloPcont/expedientesElectronicos.jsp?code=95ac362ba18484e2e65c008254a476252421437945f552f8d658b830e8d897e5d4545447d02d6fd3938b8089c4bff5277baf8d1dc0fbc4bd1f4bc1e955ce70669eeeeb819ee788177bd7e0305fd705fb2602b2233f87e61ba1ff04ee50c8fbee1718612c7e4f49c026cb380395bf0e642dea824a290cbab3569a36a1ea4966ea"><img decoding="async" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20179%2048'%3E%3C/svg%3E" alt="logo SICOP" width="179" height="48" data-lazy-src="https://aresep.go.cr/wp-content/uploads/2023/03/logosicop.gif" /><noscript><img decoding="async" src="https://aresep.go.cr/wp-content/uploads/2023/03/logosicop.gif" alt="logo SICOP" width="179" height="48" /></noscript></a></p>
+</div>
+		</div>	
+								</div>					
+							</div>
+						</div>
+					</div>
+				</div>
+			
+		</footer><!-- .site-footer -->
+
+	</div><!-- .site -->
+	<div  id="back-top"><a href="#aresep-back-top" title="Selecione esta opción para que lo lleve a la parte superior del sitio"><span>Subir</span></a><div  id="aresep-back-top"></div></div>
+		<div  id="aresep-chat" aria-label="Sección del chatbot">
+		<button class="aresep-chat-btn" data-url="https://copilotstudio.preview.microsoft.com/environments/ba8c1c67-55bd-e91a-927b-8f0db754950d/bots/copilots_header_8ef28/webchat?__version__=2">
+			<img height="50" width="50" 
+									src="https://aresep.go.cr/wp-content/themes/aresep_theme/images/icono-chat-clara.png" 
+									alt="Chatbot ARESEP">
+			<span>Soy Clara</span>
+		</button>
+		<div  class="aresep-chat-html">
+			<button class="aresep-chat-cerrar-btn"><i class="far fa-window-close" aria-hidden="true"></i></button>
+			<div  class="aresep-chat-content"></div>
+			
+		</div>
+	</div>
+	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/aresep_theme/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/html" id="wpb-modifications"> window.wpbCustomElement = 1; </script><script type="text/rocketlazyloadscript" id="wplp_addon_imagesloaded-js" data-rocket-src="https://aresep.go.cr/wp-content/plugins/wp-latest-posts/js/imagesloaded.pkgd.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="aresep_theme-script-file-js" data-rocket-src="https://aresep.go.cr/wp-content/themes/aresep_theme/js/script.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="jquery-ui-core-js-before">
+jQuery.uiBackCompat = true;
+//# sourceURL=jquery-ui-core-js-before
+</script>
+<script type="text/rocketlazyloadscript" id="jquery-ui-core-js" data-rocket-src="https://aresep.go.cr/wp-includes/js/jquery/ui/core.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="jquery-form-js" data-rocket-src="https://aresep.go.cr/wp-includes/js/jquery/jquery.form.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="jquery-ui-datepicker-js" data-rocket-src="https://aresep.go.cr/wp-includes/js/jquery/ui/datepicker.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="jquery-ui-datepicker-js-after">
+jQuery(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Cerrar","currentText":"Hoy","monthNames":["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],"monthNamesShort":["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],"nextText":"Siguiente","prevText":"Anterior","dayNames":["domingo","lunes","martes","mi\u00e9rcoles","jueves","viernes","s\u00e1bado"],"dayNamesShort":["Dom","Lun","Mar","Mi\u00e9","Jue","Vie","S\u00e1b"],"dayNamesMin":["D","L","M","X","J","V","S"],"dateFormat":"d \\dd\\e MM \\dd\\e yy","firstDay":1,"isRTL":false});});
+//# sourceURL=jquery-ui-datepicker-js-after
+</script>
+<script id="mailchimp_sf_main_js-js-extra">
+var mailchimpSF = {"ajax_url":"https://aresep.go.cr/","phone_validation_error":"Please enter a valid phone number.","analytics_ajax_url":"https://aresep.go.cr/wp-admin/admin-ajax.php","analytics_nonce":"4b3f67fb8a"};
+//# sourceURL=mailchimp_sf_main_js-js-extra
+</script>
+<script type="text/rocketlazyloadscript" data-minify="1" id="mailchimp_sf_main_js-js" data-rocket-src="https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/mailchimp/assets/js/mailchimp.js?ver=1750451155" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="google-recaptcha-js" data-rocket-src="https://www.google.com/recaptcha/api.js?render=6LcL6kwsAAAAABIowXNrNyJrF6Y5V7hLRJ4BLm0m"></script>
+<script type="text/rocketlazyloadscript" id="wp-polyfill-js" data-rocket-src="https://aresep.go.cr/wp-includes/js/dist/vendor/wp-polyfill.min.js"></script>
+<script type="text/rocketlazyloadscript" id="wpcf7-recaptcha-js-before">
+var wpcf7_recaptcha = {
+    "sitekey": "6LcL6kwsAAAAABIowXNrNyJrF6Y5V7hLRJ4BLm0m",
+    "actions": {
+        "homepage": "homepage",
+        "contactform": "contactform"
+    }
+};
+//# sourceURL=wpcf7-recaptcha-js-before
+</script>
+<script type="text/rocketlazyloadscript" data-minify="1" id="wpcf7-recaptcha-js" data-rocket-src="https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/contact-form-7/modules/recaptcha/index.js?ver=1750451156" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="wplp-swiper-js" data-rocket-src="https://aresep.go.cr/wp-content/plugins/wp-latest-posts/js/swiper-bundle.min.js" data-rocket-defer defer></script>
+<script id="scriptdefault-wplp-js-extra">
+var WPLP_4481 = {"id":"4481","nbcol":"2","nbrow":"1","pagination":"0","autoanimate":"0","autoanimatetrans":"1","animationloop":"1","slideshowspeed":"7000","slidespeed":"600","pausehover":"1","pauseaction":"1","slidedirection":"0","touch":"1","theme":"default","layzyload_img":"1","space_between":"15","addon_enable":"0"};
+//# sourceURL=scriptdefault-wplp-js-extra
+</script>
+<script type="text/rocketlazyloadscript" data-minify="1" id="scriptdefault-wplp-js" data-rocket-src="https://aresep.go.cr/wp-content/cache/min/1/wp-content/plugins/wp-latest-posts/js/wplp_front.js?ver=1750451156" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="wpb_composer_front_js-js" data-rocket-src="https://aresep.go.cr/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-minify="1" id="dateformat-js-js" data-rocket-src="https://aresep.go.cr/wp-content/cache/min/1/wp-content/themes/aresep_theme/js/date.format.js?ver=1750451185" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="filesaver-js-js" data-rocket-src="https://aresep.go.cr/wp-content/themes/aresep_theme/js/FileSaver.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="jszip-js-js" data-rocket-src="https://aresep.go.cr/wp-content/themes/aresep_theme/js/jszip.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="kendo-js-js" data-rocket-src="https://aresep.go.cr/wp-content/themes/aresep_theme/js/kendo.all.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-minify="1" id="kendo-culture-cr-js-js" data-rocket-src="https://aresep.go.cr/wp-content/cache/min/1/wp-content/themes/aresep_theme/js/cultures/kendo.culture.es-CR.js?ver=1750451185" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-minify="1" id="kendo-culture-es-js-js" data-rocket-src="https://aresep.go.cr/wp-content/cache/min/1/wp-content/themes/aresep_theme/js/cultures/kendo.culture.es-ES.js?ver=1750451185" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-minify="1" id="kendo-messages-cr-js-js" data-rocket-src="https://aresep.go.cr/wp-content/cache/min/1/wp-content/themes/aresep_theme/js/messages/kendo.messages.es-CR.js?ver=1750451185" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-minify="1" id="kendo-messages-es-js-js" data-rocket-src="https://aresep.go.cr/wp-content/cache/min/1/wp-content/themes/aresep_theme/js/messages/kendo.messages.es-ES.js?ver=1750451185" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="bootstrap-bundle-js-js" data-rocket-src="https://aresep.go.cr/wp-content/themes/aresep_theme/js/bootstrap.bundle.min.js" data-rocket-defer defer></script>
+<script id="datosabiertos-js-js-extra">
+var datosabiertos_ajax = {"ajaxurl":"https://aresep.go.cr/wp-admin/admin-ajax.php"};
+//# sourceURL=datosabiertos-js-js-extra
+</script>
+<script type="text/rocketlazyloadscript" id="datosabiertos-js-js" data-rocket-src="https://aresep.go.cr/wp-content/themes/aresep_theme/js/datosabiertos.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" id="select2-js-js" data-rocket-src="https://aresep.go.cr/wp-content/themes/aresep_theme/js/select2.min.js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript"></script><script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://aresep.go.cr/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script><script>function lazyLoadThumb(e,alt,l){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="Reproducir video de YouTube"></button>';if(l){t=t.replace('data-lazy-','');t=t.replace('loading="lazy"','');t=t.replace(/<noscript>.*?<\/noscript>/g,'');}t=t.replace('alt=""','alt="'+alt+'"');return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?"":"&"+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow","accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var exclusions=[];var e,t,p,u,l,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)(e=document.createElement("div")),(u='https://i.ytimg.com/vi/ID/hqdefault.jpg'),(u=u.replace('ID',a[t].dataset.id)),(l=exclusions.some(exclusion=>u.includes(exclusion))),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query",a[t].dataset.query),e.setAttribute("data-src",a[t].dataset.src),(e.innerHTML=lazyLoadThumb(a[t].dataset.id,a[t].dataset.alt,l)),a[t].appendChild(e),(p=e.querySelector(".play")),(p.onclick=lazyLoadYoutubeIframe)});</script>
+  <script type="text/rocketlazyloadscript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-62453063-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/rocketlazyloadscript">
+    /**
+    * Function that tracks a click on an outbound link in Google Analytics.
+    * This function takes a valid URL string as an argument, and uses that URL string
+    * as the event label.
+    */
+    function trackOutboundLink(url) {
+       ga('send', 'event', 'outbound', 'click', url);
+    }
+    function trackOutboundChatLink(url) {
+       ga('send', 'event', 'chat', 'click', url);
+    }
+    function trackOutboundInteresLink(url) {
+       ga('send', 'event', 'enlacesInteres', 'click', url);
+    }
+    function trackOutboundGoogleLink(url) {
+       ga('send', 'event', 'googlemap', 'click', url);
+    }
+    function trackOutboundRedesLink(url) {
+       ga('send', 'event', 'redes', 'click', url);
+    }
+    function trackOutboundNotiFacebookLink(url) {
+       ga('send', 'event', 'noticiasFacebook', 'click', url);
+    }
+    function trackOutboundEmpleoLink(url) {
+       ga('send', 'event', 'empleo', 'click', url);
+    }
+        var aresep_url = "https://aresep.go.cr";
+  </script>
+
+</body>
+</html>
+
+<!-- Cached for great performance - Debug: cached@1792654957 -->
