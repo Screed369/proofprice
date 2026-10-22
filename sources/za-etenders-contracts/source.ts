@@ -200,7 +200,7 @@ export interface ZaInput {
   baseUrl?: string;
 }
 
-export const SUPPORTED_EXAMPLES = ["catering", "office cleaning", "consultancy", "IT services", "legal services", "software", "photocopiers", "printers", "uniforms", "security guard services"];
+export const SUPPORTED_EXAMPLES = ["catering", "security guard services", "building cleaning", "laptops", "office furniture", "photocopiers"];
 
 export async function zaContracts(input: ZaInput): Promise<PriceAnswer> {
   if (input.cpv) throw new InputError("South Africa: cpv is not used (eTenders does not carry CPV codes). Leave it out and say what was bought in words.");
