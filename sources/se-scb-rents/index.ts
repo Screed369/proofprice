@@ -22,5 +22,8 @@ export default defineSource({
   ],
   method:
     "Sweden rents: the median annual rent of rented flats (private and other owners) divided by 12, from Statistics Sweden's annual rent survey (table BO0406), by region group and number of rooms. It is a published median with its year, not a list of rents.",
+  // Declared serves() change (Repairer, platform task G-SE-RENT-NEWBUILD): a second SE rent source (SCB newly built rented flats, TAB6421)
+  // will answer requests with its own parameter new_build=true; this source answers every other SE rent request, as before.
+  serves: (p) => !(p.new_build === true || String(p.new_build ?? "").toLowerCase() === "true"),
   handle: (p, ctx) => seRent({ town: str(p.town), rooms: num(p.bedrooms), baseUrl: ctx.baseUrl }),
 });

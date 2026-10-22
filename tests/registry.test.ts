@@ -212,3 +212,13 @@ test("crossCheck: every outside check names an official series, a tolerance, kno
   assert.match(bad(us, { areas: [{ label: "TX", theirs: "TX", ours: { country: "US", colour: "TX" } }] }), /uses "colour", which is not a parameter/);
   assert.match(bad(us, { areas: [{ label: "TX", theirs: "TX", ours: { country: "US", sector: "business", energy: "electricity" } }] }), /answered by another source/);
 });
+
+test("rent SE: the existing source keeps answering ordinary requests and steps aside for new_build=true (shared-country routing)", async () => {
+  const { findSource } = await import("../lib/registry");
+  assert.equal(findSource("rent", "SE", { bedrooms: 2 })?.info.id, "se-scb-rents");
+  assert.equal(findSource("rent", "SE")?.info.id, "se-scb-rents");
+  const s = SOURCE_PLUGINS.find((x) => x.info.id === "se-scb-rents")!;
+  assert.equal(s.serves!({ country: "SE", new_build: true }), false);
+  assert.equal(s.serves!({ country: "SE", new_build: "true" }), false);
+  assert.equal(s.serves!({ country: "SE", new_build: false }), true);
+});
