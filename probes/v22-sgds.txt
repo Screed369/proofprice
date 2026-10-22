@@ -1,0 +1,26 @@
+URL: https://api-production.data.gov.sg/v2/public/api/datasets/d_d610f8ed1864daa6c7e790318bbc3323/metadata
+Fetched: 2026-10-22T22:43:47Z from GitHub Actions
+Status, type, bytes: 200 application/json 4213
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 22 Oct 2026 22:43:47 GMT
+content-type: application/json
+content-length: 4213
+cf-ray: a4ec05d92e684184-DFW
+cf-cache-status: DYNAMIC
+access-control-allow-origin: *
+server: cloudflare
+cf-placement: remote-SIN
+x-amz-apigw-id: FquxhFhKyQ0EA5g=
+x-amzn-requestid: c4fcfdd7-e2e1-41f6-b6a1-c1dd72af1004
+x-amzn-trace-id: Root=1-6ada91a2-615373fa70b3112f50fcd8b9
+x-dgs-request-id: a4ec05d92e684184
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+vary: accept-encoding
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"code":0,"data":{"datasetId":"d_d610f8ed1864daa6c7e790318bbc3323","createdAt":"2024-10-24T16:22:17+08:00","name":"Electricity Tariff, Annual","collectionIds":[],"description":"Source: SP GROUP\r\n\r\nFootnotes: Electricity Tariff is the price at which consumers buy electricity from SP Group.  Data exclude Goods and Services Tax.\r\n\r\nAdapted from: https://tablebuilder.singstat.gov.sg/table/TS/M891001","format":"CSV","lastUpdatedAt":"2025-10-10T00:00:00+08:00","managedBy":"Singapore Department of Statistics","coverageStart":"2012-01-01T08:00:00+08:00","coverageEnd":"2025-12-31T08:00:00+08:00","contactEmails":["feedback@data.gov.sg"],"datasetSize":2914,"columnMetadata":{"order":["c_7i541dx6yzekgaat9nhoox96w","c_jd7tk3ky7fhrb52476rco483","c_5l29mh2i272gofdjmeqs2l7q6","c_6q5jgggvlzxpifc8jabopx8hl","c_cte351u50kie0iew0yeftwx4j","c_27s8f18995c7jhl9qmxtfb0g6","c_31blrt5975niw0hfj9etv26k6","c_cprariz6uvkvz1nubpl55lqwg","c_2wlxrucg2tnr10l9197or5prf","c_9esk8ju0km2tp9r22wvx3a629","c_6nxqdjeih29vyh38utu865j3e","c_66bcwluhyzidunzxujt6b9tq4","c_8lhcbtktnz5rcf5xvpe2ot7pk","c_995ukwkx1p8o4lgkrmkhcshci","c_33m3q9r1ebk5i5me4mo21p2gw"],"map":{"c_7i541dx6yzekgaat9nhoox96w":"DataSeries","c_jd7tk3ky7fhrb52476rco483":"2025","c_5l29mh2i272gofdjmeqs2l7q6":"2024","c_6q5jgggvlzxpifc8jabopx8hl":"2023","c_cte351u50kie0iew0yeftwx4j":"2022","c_27s8f18995c7jhl9qmxtfb0g6":"2021","c_31blrt5975niw0hfj9etv26k6":"2020","c_cprariz6uvkvz1nubpl55lqwg":"2019","c_2wlxrucg2tnr10l9197or5prf":"2018","c_9esk8ju0km2tp9r22wvx3a629":"2017","c_6nxqdjeih29vyh38utu865j3e":"2016","c_66bcwluhyzidunzxujt6b9tq4":"2015","c_8lhcbtktnz5rcf5xvpe2ot7pk":"2014","c_995ukwkx1p8o4lgkrmkhcshci":"2013","c_33m3q9r1ebk5i5me4mo21p2gw":"2012"},"metaMapping":{"c_7i541dx6yzekgaat9nhoox96w":{"name":"DataSeries","columnTitle":"Data Series","dataType":"Text","unitOfMeasure":"Cents Per Kilowatt Hour","index":"0","isCategorical":false},"c_jd7tk3ky7fhrb52476rco483":{"name":"2025","columnTitle":"2025","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"1","isCategorical":false},"c_5l29mh2i272gofdjmeqs2l7q6":{"name":"2024","columnTitle":"2024","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"2","isCategorical":false},"c_6q5jgggvlzxpifc8jabopx8hl":{"name":"2023","columnTitle":"2023","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"3","isCategorical":false},"c_cte351u50kie0iew0yeftwx4j":{"name":"2022","columnTitle":"2022","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"4","isCategorical":false},"c_27s8f18995c7jhl9qmxtfb0g6":{"name":"2021","columnTitle":"2021","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"5","isCategorical":false},"c_31blrt5975niw0hfj9etv26k6":{"name":"2020","columnTitle":"2020","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"6","isCategorical":false},"c_cprariz6uvkvz1nubpl55lqwg":{"name":"2019","columnTitle":"2019","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"7","isCategorical":false},"c_2wlxrucg2tnr10l9197or5prf":{"name":"2018","columnTitle":"2018","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"8","isCategorical":false},"c_9esk8ju0km2tp9r22wvx3a629":{"name":"2017","columnTitle":"2017","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"9","isCategorical":false},"c_6nxqdjeih29vyh38utu865j3e":{"name":"2016","columnTitle":"2016","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"10","isCategorical":false},"c_66bcwluhyzidunzxujt6b9tq4":{"name":"2015","columnTitle":"2015","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"11","isCategorical":false},"c_8lhcbtktnz5rcf5xvpe2ot7pk":{"name":"2014","columnTitle":"2014","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"12","isCategorical":false},"c_995ukwkx1p8o4lgkrmkhcshci":{"name":"2013","columnTitle":"2013","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"13","isCategorical":false},"c_33m3q9r1ebk5i5me4mo21p2gw":{"name":"2012","columnTitle":"2012","dataType":"Numeric","unitOfMeasure":"Cents Per Kilowatt Hour","index":"14","isCategorical":false}}}},"errorMsg":""}
