@@ -39,15 +39,17 @@ test("cattle: newest trading day, head count as sample size, attribution, kg pri
   const a = await auLivestock({ product: "cattle", today: TODAY }, get);
   assert.equal(a.status, "ok");
   assert.equal(a.price?.currency, "AUD");
-  assert.equal(a.price?.value, 987.9);
+  assert.equal(a.price?.value, 9.879, "AUD per kg, not cents");
   assert.equal(a.price?.measure, "average");
   assert.equal(a.sample_size, 2140);
   assert.equal(a.price_type, "transaction");
   assert.deepEqual(a.period, { from: "2026-10-21", to: "2026-10-21" });
-  assert.match(a.summary, /987\.9 cents per kg carcase weight at Australian saleyards on 21 October 2026 \(2,140 animals sold\)/);
+  assert.match(a.summary, /A\$9\.879 \(987\.9 cents\) per kg carcase weight at Australian saleyards on 21 October 2026 \(2,140 animals sold\)/);
   assert.match(a.source.attribution, /Reproduced courtesy of Meat & Livestock Australia Limited - www\.mla\.com\.au/);
   const x = a.extra as any;
   assert.equal(x.aud_per_kg, 9.88);
+  assert.equal(Math.round(x.published_value * 10) / 10, 987.9, "MLA cents kept in extra");
+  assert.ok(x.last_trading_days.every((d: any) => d.value < 100), "history list in AUD too");
   assert.equal(x.indicator.id, 0);
   assert.equal(x.last_trading_days.length, 5);
 });
@@ -73,14 +75,15 @@ test("harvest keeps only indicators with the newest day; n is the head count", a
   ]);
   assert.equal(h.date, "2026-10-21");
   assert.equal(h.rows.length, 1);
-  assert.equal(h.rows[0].item, "Eastern Young Cattle Indicator (c/kg cwt)");
+  assert.equal(h.rows[0].item, "Eastern Young Cattle Indicator (AUD per kg carcase weight)");
+  assert.equal(h.rows[0].median, 9.879, "library rows in AUD, not cents");
   assert.equal(h.rows[0].n, 2140);
   const full = await livestockHarvest(TODAY, get);
   assert.equal(full.rows.length, 19 > 0 ? full.rows.length : 0);
 });
 
 test("history key matches the harvest item", () => {
-  assert.deepEqual(livestockHistoryKey({ product: "cattle" }), { area: "Australia", item: "Eastern Young Cattle Indicator (c/kg cwt)", label: "Eastern Young Cattle" });
+  assert.deepEqual(livestockHistoryKey({ product: "cattle" }), { area: "Australia", item: "Eastern Young Cattle Indicator (AUD per kg carcase weight)", label: "Eastern Young Cattle" });
   assert.equal(livestockHistoryKey({ product: "zzz" }), null);
 });
 

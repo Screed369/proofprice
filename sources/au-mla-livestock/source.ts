@@ -134,9 +134,12 @@ export async function readIndicator(ind: Indicator, today: Date, days: number, g
 }
 
 const cents = (v: number) => Math.round(v * 10) / 10;
+/** MLA publishes cattle and sheep indicators in Australian CENTS per kg; answers and the library carry Australian DOLLARS so a figure
+ *  labelled AUD is never 100 times too big (audit 22 Oct 2026: the lamb page showed "A$1,151" for 1,151 cents per kg). */
+export const toAud = (v: number, units: string) => (units === "$/head" ? v : Math.round(v * 100) / 10000);
 export const unitWords = (u: string) =>
   u === "c/kg cwt" ? "cents per kg carcase weight" : u === "c/kg lwt" ? "cents per kg live weight" : u === "$/head" ? "dollars per head" : u;
-export const unitShort = (u: string) => (u === "c/kg cwt" ? "per kg carcase weight (cents)" : u === "c/kg lwt" ? "per kg live weight (cents)" : u === "$/head" ? "per head" : u);
+export const unitShort = (u: string) => (u === "c/kg cwt" ? "per kg carcase weight" : u === "c/kg lwt" ? "per kg live weight" : u === "$/head" ? "per head" : u);
 
 const monthDay = (iso: string) => {
   const d = new Date(`${iso}T00:00:00Z`);
@@ -147,9 +150,10 @@ export function buildLivestockAnswer(ind: Indicator, readings: Reading[], q: { p
   const query = { country: "AU", product: q.product, ...(q.region ? { region: q.region } : {}) };
   const latest = readings[readings.length - 1];
   const dollars = ind.units === "$/head";
-  const money = (v: number) => (dollars ? fmtMoney(v, "AUD") : `${cents(v)} cents`);
+  const aud = (v: number) => toAud(v, ind.units);
+  const money = (v: number) => fmtMoney(aud(v), "AUD") + (dollars ? "" : ` (${cents(v)} cents)`);
   const monthAgo = latest ? [...readings].reverse().find((r) => r.date <= isoDay(daysBefore(new Date(`${latest.date}T00:00:00Z`), 28))) : undefined;
-  const change = latest && monthAgo ? { reference_date: monthAgo.date, value: monthAgo.value, change_percent: Math.round(((latest.value - monthAgo.value) / monthAgo.value) * 1000) / 10 } : null;
+  const change = latest && monthAgo ? { reference_date: monthAgo.date, value: aud(monthAgo.value), change_percent: Math.round(((latest.value - monthAgo.value) / monthAgo.value) * 1000) / 10 } : null;
   const age = latest ? Math.round((today.getTime() - new Date(`${latest.date}T00:00:00Z`).getTime()) / 86400000) : 0;
   const notes = [
     "MLA's weighted average of prices paid at saleyard auctions on one trading day; not one animal, not a futures price and not a retail meat price.",
@@ -159,7 +163,7 @@ export function buildLivestockAnswer(ind: Indicator, readings: Reading[], q: { p
   return buildStatisticAnswer({
     source: INFO,
     query,
-    value: latest ? latest.value : null,
+    value: latest ? aud(latest.value) : null,
     measure: "average",
     currency: "AUD",
     unit: unitShort(ind.units),
@@ -168,23 +172,24 @@ export function buildLivestockAnswer(ind: Indicator, readings: Reading[], q: { p
     sample_size: latest ? latest.head : null,
     method:
       "Meat & Livestock Australia's National Livestock Reporting Service indicator: the weighted average price paid for the animals sold at Australian saleyard auctions on the trading day, with the number of animals sold. " +
-      "We pass on the newest trading day (weekend repeats of Friday's figure are skipped); the sample size is animals sold, not sales records. No range is calculated.",
+      "We pass on the newest trading day (weekend repeats of Friday's figure are skipped), converted from MLA's cents per kg to Australian dollars per kg; the sample size is animals sold, not sales records. No range is calculated.",
     note: notes.join(" "),
     baseUrl,
     ending: `${ATTRIBUTION_LINE}.`,
     evidence: { label: "Published market indicator", meaning: "A weighted average of prices paid at saleyard auctions, calculated and published by Meat & Livestock Australia; the sample size is the number of animals sold." },
-    describe: (v) =>
-      `The ${ind.desc.replace(/ Indicator$/, "").toLowerCase()} averaged ${money(v)} ${dollars ? "per head" : `per kg ${ind.units.endsWith("cwt") ? "carcase weight" : "live weight"}`} at Australian saleyards on ${monthDay(latest.date)}` +
+    describe: () =>
+      `The ${ind.desc.replace(/ Indicator$/, "").toLowerCase()} averaged ${money(latest.value)} ${dollars ? "per head" : `per kg ${ind.units.endsWith("cwt") ? "carcase weight" : "live weight"}`} at Australian saleyards on ${monthDay(latest.date)}` +
       ` (${latest.head.toLocaleString("en-AU")} animals sold), as published by Meat & Livestock Australia.` +
       (change ? ` That is ${change.change_percent === 0 ? "unchanged" : `${Math.abs(change.change_percent)}% ${change.change_percent > 0 ? "higher" : "lower"}`} than on ${monthDay(change.reference_date)}.` : ""),
     extra: {
       country_name: "Australia",
       indicator: { id: ind.id, name: ind.desc, species: ind.species, published_units: ind.units, asked_for: q.product },
+      published_value: latest?.value ?? null,
       ...(dollars ? {} : { aud_per_kg: Math.round(latest.value) / 100 }),
       animals_sold: latest?.head ?? null,
       trading_day: latest?.date ?? null,
       change_on_about_4_weeks_earlier: change,
-      last_trading_days: readings.slice(-10).reverse().map((r) => ({ date: r.date, value: r.value, animals_sold: r.head })),
+      last_trading_days: readings.slice(-10).reverse().map((r) => ({ date: r.date, value: aud(r.value), animals_sold: r.head })),
       other_indicators_same_species: matchIndicator(q.product).related.map((r) => ({ product: r.words[0], indicator: r.desc })),
       what_this_is: "Daily weighted average of prices paid at Australian saleyard auctions, published by Meat & Livestock Australia. Not one animal, not a futures price and not a retail price.",
       attribution_notice: ATTRIBUTION_LINE,
@@ -206,7 +211,8 @@ export async function auLivestock(input: { product: string; region?: string; tod
 
 // ---------- daily copy (stale-if-error and history) ----------
 
-export const livestockItem = (i: Indicator) => `${i.desc} (${i.units})`;
+// Item names carry "AUD" since 22 Oct 2026, when the library switched from MLA's cents to dollars, so no series mixes the two units.
+export const livestockItem = (i: Indicator) => `${i.desc} (AUD ${unitShort(i.units)})`;
 
 /** Pure: one library row per indicator for the newest trading day any indicator has; indicators that lag behind it are left out. Each row's n is the head count. */
 export function livestockHarvestRows(all: { ind: Indicator; readings: Reading[] }[]): HarvestResult {
@@ -216,11 +222,14 @@ export function livestockHarvestRows(all: { ind: Indicator; readings: Reading[] 
   return {
     date,
     currency: "AUD",
-    unit: "per unit named in the indicator (cents per kg carcase or live weight; dollars per head)",
+    unit: "per kg (carcase or live weight) or per head",
     rows: latest
       .filter((l) => l.r.date === date)
-      .map((l) => ({ area: "Australia", item: livestockItem(l.ind), n: l.r.head, median: l.r.value, low: l.r.value, high: l.r.value, min: l.r.value, max: l.r.value })),
-    note: "Meat & Livestock Australia NLRS saleyard indicators: weighted average auction prices for the trading day; n is the number of animals sold.",
+      .map((l) => {
+        const v = toAud(l.r.value, l.ind.units);
+        return { area: "Australia", item: livestockItem(l.ind), n: l.r.head, median: v, low: v, high: v, min: v, max: v };
+      }),
+    note: "Meat & Livestock Australia NLRS saleyard indicators: weighted average auction prices for the trading day, in Australian dollars (converted from MLA's cents per kg); n is the number of animals sold.",
   };
 }
 
