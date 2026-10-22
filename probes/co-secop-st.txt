@@ -1,0 +1,34 @@
+URL: https://www.datos.gov.co/resource/jbjy-vk9h.json?$select=estado_contrato,count(*)%20as%20n&$where=fecha_de_firma%3E%272025-10-01T00:00:00%27&$group=estado_contrato
+Fetched: 2026-10-22T09:34:58Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 316
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 Oct 2026 09:34:58 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC44NzA0Nl8zNF8yNDY5MnY5MUktTFF4OU5PZ3F4QnJIVk1vVkxWZjlj---gziphh30zXwiQpenqzZ_QXGKSmzyb_A--gzip--gzip"
+X-SODA2-Fields: ["estado_contrato","n"]
+X-SODA2-Types: ["text","number"]
+X-SODA2-Data-Out-Of-Date: true
+X-SODA2-Truth-Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+Last-Modified: Wed, 21 Oct 2026 08:00:59 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: f65ec6bbae5b2775ad559c58cd49e1be
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[{"estado_contrato":"Aprobado","n":"35725"}
+,{"estado_contrato":"cedido","n":"8927"}
+,{"estado_contrato":"Cerrado","n":"53625"}
+,{"estado_contrato":"En ejecución","n":"658540"}
+,{"estado_contrato":"Modificado","n":"293155"}
+,{"estado_contrato":"Suspendido","n":"3019"}
+,{"estado_contrato":"terminado","n":"61447"}]
