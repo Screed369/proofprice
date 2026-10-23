@@ -4,6 +4,15 @@ import type { Fuel } from "../../lib/fuels";
 import { readLatestDay } from "../../lib/library/store";
 import { INFO, caFuelHarvest, caFuelHistoryKey, caFuelNow } from "./source";
 
+// Names only ca-on-fuel answers (kept in step by a test in sources/ca-on-fuel).
+const ONTARIO_ONLY = new Set([
+  "windsor", "london", "london ontario", "peterborough", "st catharines", "st catharine", "saint catharines", "st catharines niagara", "sudbury", "greater sudbury",
+  "sault ste marie", "sault saint marie", "sault st marie", "ssm", "north bay", "timmins", "kenora", "parry sound",
+  "toronto west", "west toronto", "toronto ouest", "toronto east", "east toronto", "toronto est",
+  "ontario", "ontario average", "province of ontario", "provincial average", "moyenne provinciale",
+  "southern ontario", "south ontario", "southern average", "southern", "northern ontario", "north ontario", "northern average", "northern",
+]);
+
 export default defineSource({
   info: INFO,
   category: "fuel",
@@ -11,6 +20,9 @@ export default defineSource({
   countryHelp: "CA = Canada (Statistics Canada: monthly average retail price by city, official statistic, not a live pump price)",
   placeName: "Canada",
   status: "live",
+  // Shares CA with ca-on-fuel (Ontario Ministry of Energy weekly survey): that source answers the Ontario-only markets and the Ontario averages,
+  // this one everything else (declared serves() in both). Toronto as a city, Ottawa and Thunder Bay stay here.
+  serves: (p) => !ONTARIO_ONLY.has(String(p.town ?? p.area ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").replace(/\s+(ontario|on|canada|ca)(\s+(canada|ca))?$/, "").trim()),
   paramNotes: {
     fuel: "Canada: petrol95 = regular unleaded gasoline (87 AKI, about 91 RON), petrol98 = premium unleaded, diesel; self-service stations. E10, E85, LPG and CNG are not published.",
     town: "Canada: one of the 18 cities Statistics Canada tracks (St. John's, Charlottetown and Summerside, Halifax, Saint John, Québec, Montréal, Ottawa-Gatineau, Toronto, Thunder Bay, Winnipeg, Regina, Saskatoon, Edmonton, Calgary, Vancouver, Victoria, Whitehorse, Yellowknife), or 'Canada' for the national average (regular unleaded only). Leave town and area out for the national average.",
