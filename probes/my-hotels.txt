@@ -1,0 +1,498 @@
+URL: https://data.tourism.gov.my/
+Fetched: 2026-10-23T11:41:53Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 27889
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 11:41:53 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+cache-control: no-cache, private
+set-cookie: XSRF-TOKEN=eyJpdiI6Inpud2puNnlmRkZXREpuVTB6NHJkcHc9PSIsInZhbHVlIjoibVR3Umg0QnZpVlp1WUllT3JJN1pLKzNOczNyMnB4MndtSnhYdFVhaUVic1FubGEvNkl0RldaRGtBZlJZR3hrSURLem5BOWNhN3ZCSGJhSFpSd1JiQUtPNWlETmx2cnNYemRiSU00SmszS2kxWjFTdDdnTEh4WXVObWxYUlFKOXIiLCJtYWMiOiI4YjQ2YTYwMTkwZGY1YTQ0ZmRhYWEwMzA2Y2YyYzQ0OWRkMDFkNTdiZjAyZTJhZDU3Y2U3ZjE3Njg0ODJjMTBlIiwidGFnIjoiIn0%3D; expires=Fri, 23 Oct 2026 13:41:53 GMT; Max-Age=7200; path=/; secure; samesite=lax
+set-cookie: malaysia_tourism_statistics_session=eyJpdiI6ImYxQXl5UFVzelN4cmRvZG9ySnNnN1E9PSIsInZhbHVlIjoiVndNdkluS3Fza1o2dFZvTFJnc05GdHlVOWV6Z2pTYnBIbnE4ajZIMGtIVkZ6M0R3b0piNGI5ZUtSUzJzbE5lcWtES1RoN1hBbjVhRnFBMm40RFBPQmRZS2NLanRSUFVSeHkwdGV0bnFqTEl2aWxkem1vQ1FleUkwRjdRV2FuN1YiLCJtYWMiOiJiNTMzYjg5MDkzNzQwOTU5NTFjMGMyNzRjZDU4ZmJmZGYxZmRhNDQ5ZDY4NzAzZTNhY2MyYmQ0MzA0OTA5NjJjIiwidGFnIjoiIn0%3D; expires=Fri, 23 Oct 2026 13:41:53 GMT; Max-Age=7200; path=/; secure; httponly; samesite=lax
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+referrer-policy: same-origin
+permissions-policy: geolocation=(), microphone=(), camera=()
+x-xss-protection: 1; mode=block
+content-security-policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.bunny.net https://unpkg.com https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.bunny.net https://unpkg.com https://fonts.gstatic.com https://cdn.jsdelivr.net data:; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.google.com https://*.google-analytics.com https://challenges.cloudflare.com https://cloudflareinsights.com; frame-src 'self' https://app.powerbi.com https://*.powerbi.com https://challenges.cloudflare.com; child-src 'self' https://app.powerbi.com https://*.powerbi.com https://challenges.cloudflare.com
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+cf-cache-status: DYNAMIC
+speculation-rules: "/cdn-cgi/speculation"
+expect-ct: max-age=86400, enforce
+cf-ray: a4f079a4492d5c80-IAD
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (945)
+=== FIRST 30000 BYTES
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <!-- title -->
+    <title>Malaysia Tourism Statistics</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+    <meta name="author" content="Malaysia Tourism Statistics">
+    <!-- description -->
+    <meta name="description" content="Malaysia Tourism Statistics">
+    <!-- keywords -->
+    <meta name="keywords" content="malaysia tourism statistics, tourism malaysia, statistic malaysia, malaysia travel, malaysia tourism">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="themes/frontend/images/favicon.png">
+    <link rel="apple-touch-icon" href="themes/frontend/images/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="themes/frontend/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="themes/frontend/images/apple-touch-icon-114x114.png">
+    <!-- animation -->
+    <link rel="stylesheet" href="frontend/css/animate.css" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="frontend/css/bootstrap.min.css" />
+    <!-- et line icon -->
+    <link rel="stylesheet" href="frontend/css/et-line-icons.css" />
+    <!-- font-awesome icon -->
+    <link rel="stylesheet" href="frontend/css/font-awesome.min.css" />
+    <!-- themify icon -->
+    <link rel="stylesheet" href="frontend/css/themify-icons.css">
+    <!-- swiper carousel -->
+    <link rel="stylesheet" href="frontend/css/swiper.min.css">
+    <!-- justified gallery  -->
+    <link rel="stylesheet" href="frontend/css/justified-gallery.min.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="frontend/css/magnific-popup.css" />
+    <!-- revolution slider -->
+    <link rel="stylesheet" type="text/css" href="frontend/revolution/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="frontend/revolution/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="frontend/revolution/css/navigation.css">
+    <!-- bootsnav -->
+    <link rel="stylesheet" href="frontend/css/bootsnav.css">
+    <!-- style -->
+    <link rel="stylesheet" href="frontend/css/style.css" />
+    <!-- responsive css -->
+    <link rel="stylesheet" href="frontend/css/responsive.css" />
+    <!--[if IE]>
+    <script src="frontend/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<style>
+    header a.logo img {max-height:60px;}
+
+    .footer-logo {
+        max-height: 58px;
+    }
+
+    .text-turqoise {
+        color: #008B8B;
+    }
+
+    .btn.btn-turqoise {background:#008B8B; border-color: #008B8B; color: #ffffff}
+
+    /*.btn-turqoise {*/
+    /*    background: #008B8B; border-color: #008B8B;*/
+    /*}*/
+
+    .btn.btn-turqoise:hover, .btn.btn-turqoise:focus {background: #ffffff; color: #008B8B}
+
+    .bg-turqoise {
+        background-color: #008B8B;
+    }
+
+</style>
+<body>
+<!-- start header -->
+<header class="header-light">
+    <!-- start navigation -->
+    <nav class="navbar navbar-default bootsnav background-transparent white-link header-light navbar-top navbar-expand-lg nav-box-width">
+        <div class="container nav-header-container">
+            <!-- start logo -->
+            <div class="col-auto pl-lg-0 margin-5px-top">
+                <a href="https://www.tourism.gov.my/" title="Tourism Malaysia" class="logo_tm margin-10px-right"><img src="/frontend/images/logo_tm_outline.png" width="150" class="logo-dark default" alt="Tourism Malaysia"></a>
+                <a href="https://www.malaysia.travel/page/visit-malaysia-2026/" title="Visit Malaysia 2026" class="logo_vmy"><img src="/frontend/images/newlogo_vmy_2026_outline.png" width="200" class="logo-dark default" alt="VM 2026"></a>
+            </div>
+            <!-- end logo -->
+            <div class="col accordion-menu pr-0 pr-md-3">
+                <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar-collapse-toggle-1">
+                    <span class="sr-only">toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-collapse collapse justify-content-end" id="navbar-collapse-toggle-1">
+                    <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
+                        <!-- start menu item -->
+                        <li class="dropdown megamenu-fw">
+                            <a href="https://data.tourism.gov.my/login" class="text-white text-black-hover">Public Login</a><i class="fas fa-arrow-circle-right dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                        </li>
+                        
+                        <li class="dropdown simple-dropdown"><a href="javascript:void(0);" class="text-white text-black-hover">Staff Login</a><i class="fas fa-arrow-circle-right dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+                            <!-- start sub menu -->
+                            <ul class="dropdown-menu" role="menu" style="margin-top: -50px;">
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://data.tourism.gov.my/azure/login">TOURISM MALAYSIA ID <i class="fa fa-angle-right"></i></a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://data.tourism.gov.my/google/motac/auth/redirect">MOTAC <i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-auto pr-lg-0">&nbsp;</div>
+        </div>
+    </nav>
+    <!-- end navigation -->
+</header>
+<!-- end header -->
+<!-- start page title section -->
+<section class="wow fadeIn parallax one-third-screen" data-stellar-background-ratio="0.5" style="background-image:url(frontend/images/banner/Kuala-Lumpur-data.png);">
+    <div class="opacity-medium bg-black-opacity-light"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 extra-small-screen margin-50px-top sm-margin-30px-top d-flex flex-column justify-content-center text-center">
+                <!-- start page title -->
+                <h1 class="alt-font text-white-2 font-weight-700 letter-spacing-minus-3 sm-letter-spacing-0">MALAYSIA TOURISM STATISTICS</h1>
+                <span class="separator-line-horrizontal-medium-light2 sm-no-margin-top margin-10px-top margin-30px-bottom sm-margin-30px-bottom xs-5px-margin-tb bg-turqoise d-table mx-auto width-200px"></span>
+                <!-- start sub title -->
+                <div class="text-white-2 text-extra-large alt-font margin-70px-bottom md-no-margin-bottom">
+                    Tourism Malaysia receives and collates tourism related data from multiple sources. These have been formulated, configured and analysed to provide concise and useful information such as facts and figures on the performance of Malaysia tourism sector.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title section -->
+<section class="wow fadeIn padding-30px-top padding-30px-bottom parallax tm-section-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-8 col-md-6 text-center">
+                <h5 class="alt-font text-extra-dark-gray text-turqoise text-uppercase font-weight-600 mb-0">Interactive arrivals dashboard</h5>
+                <span class="separator-line-horrizontal-medium-light2 margin-30px-top bg-turqoise d-table mx-auto width-200px"></span>
+                <div class="alt-font text-dark-gray margin-5px-bottom margin-30px-top text-medium">Statistics dashboard for international visitor arrivals sourced from the Strategic Planning Division of Tourism Malaysia.</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end call to action section -->
+<!-- start power bi section -->
+<section class="wow fadeIn padding-30px-top padding-30px-bottom parallax tm-section-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 position-relative text-center">
+                <iframe title="portal" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiZmExMzY4ODItOGY0Ny00OTU2LWFhMWUtNGRiMGVhYTBlNGMwIiwidCI6IjYyMjNlMWFmLWExNDYtNDI0Ny1hYmNjLWYwNGFkMjlmYTc4NSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end power bi section -->
+<section class="wow fadeIn padding-30px-top padding-30px-bottom parallax tm-section-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-8 col-md-6 text-center">
+                <h5 class="alt-font text-extra-dark-gray text-turqoise text-uppercase font-weight-600 mb-0">Infographics</h5>
+                <span class="separator-line-horrizontal-medium-light2 margin-30px-top bg-turqoise d-table mx-auto width-200px"></span>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- start tabs section -->
+<section class="wow fadeIn padding-30px-top padding-30px-bottom parallax tm-section-bg">
+    <div class="container tab-style2">
+        <div class="row">
+            <div class="col-12">
+                <!-- tab navigation -->
+                <ul class="nav nav-tabs alt-font text-uppercase text-small text-center font-weight-600 justify-content-center">
+                    <li class="nav-item"><a href="#tab_sec1" class="nav-link" data-toggle="tab">Malaysia Outbound & Domestic Travel Behavior</a></li>
+                    <li class="nav-item"><a href="#tab_sec2" class="nav-link active" data-toggle="tab">Paid Accommodation Survey</a></li>
+                    <li class="nav-item"><a href="#tab_sec3" class="nav-link" data-toggle="tab">Malaysia Tourism Highlight</a></li>
+
+
+
+                </ul>
+                <!-- tab end navigation -->
+            </div>
+        </div>
+        <div class="tab-content">
+            <!-- start tab content -->
+            <div class="tab-pane fade in" id="tab_sec1">
+                <div class="row align-items-center">
+                    <div class="col-12 sm-margin-30px-bottom text-center">
+                        <img src="frontend/images/statistic/Malaysian Domestic  Outbound Travel Behavior 2025-1.png" width="90%" alt=""/><br>
+                        <img src="frontend/images/statistic/Malaysian Domestic  Outbound Travel Behavior 2025-2.png" width="90%" alt=""/>
+                    </div>
+                </div>
+                <div class="row justify-content-center sm-margin-30px-top">
+                    <div class="col-12 position-relative text-center">
+                        <a href="frontend/pdf/Malaysian Domestic & Outbound Travel Behavior 2025.pdf" target="_blank" class="btn btn-turqoise btn-medium align-top margin-30px-top sm-no-margin-right btn-rounded">Download</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end tab content -->
+            <!-- start tab content -->
+            <div class="tab-pane fade show active" id="tab_sec2">
+                <div class="row align-items-center">
+                    <div class="col-12 sm-margin-30px-bottom text-center">
+                        <img src="frontend/images/statistic/paid_accommodation_q2_2026_1(new).png" width="90%" alt=""/>
+                        <img src="frontend/images/statistic/paid_accommodation_q2_2026_2(new).png" width="90%" alt=""/>
+                        <img src="frontend/images/statistic/paid_accommodation_q2_2026_3(new).png" width="90%" alt=""/>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 position-relative text-center">
+                        <a href="frontend/pdf/2026/hotel_survey/paid_accommodation/infografik_hotel_q2_2026(new).pdf" target="_blank" class="btn btn-turqoise btn-medium align-top margin-30px-top sm-no-margin-right btn-rounded">Download</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end tab content -->
+            <!-- start tab content -->
+            <div class="tab-pane med-text fade in" id="tab_sec3">
+                <div class="row align-items-center">
+                    <div class="col-12 sm-margin-30px-bottom text-center">
+                        <img src="frontend/images/statistic/Infographic_Visitor_Arrival_Performance_Jan_Jun_2026_1.png" width="90%" alt=""/>
+                        <img src="frontend/images/statistic/Infographic_Visitor_Arrival_Performance_Jan_Jun_2026_2.png" width="90%" alt=""/>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 position-relative text-center">
+                        <a href="frontend/pdf/2026/infographics/Infographic_Visitor_Arrival_Performance_Jan_Jun_2026_Full.pdf" target="_blank" class="btn btn-turqoise btn-medium align-top margin-30px-top sm-no-margin-right btn-rounded">Download</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end tab content -->
+            <!-- start tab content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- end tab content -->
+            <!-- start tab content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- end tab content -->
+        </div>
+    </div>
+</section>
+<!-- end tabs section -->
+<!-- start blog section -->
+<section class="border-top border-color-extra-light-gray wow fadeIn padding-30px-top padding-30px-bottom parallax tm-section-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10 col-md-6 text-center">
+                <h5 class="alt-font text-extra-dark-gray text-turqoise text-uppercase font-weight-600 mb-0">Featured Publications</h5>
+                <span class="separator-line-horrizontal-medium-light2 margin-30px-top bg-turqoise d-table mx-auto width-200px"></span>
+                <div class="alt-font text-dark-gray margin-30px-bottom margin-30px-top text-medium">View on our latest publications related to the tourism industry in Malaysia and of Tourism Malaysia business.</div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- start blog post item -->
+            <div class="col-12 col-lg-3 col-md-6 md-margin-50px-bottom sm-margin-30px-bottom last-paragraph-no-margin text-center text-md-left wow fadeInUp">
+                <div class="blog-post blog-post-style1">
+                    <div class="blog-post-images overflow-hidden margin-25px-bottom md-margin-20px-bottom">
+                        <img src="frontend/images/outbound.png" alt="">
+                    </div>
+                    <div class="post-details">
+                        <span class="post-author text-extra-small text-medium-gray text-uppercase d-block margin-10px-bottom">2024 | by Tourism Malaysia</span>
+                        <a href="frontend/pdf/New_Final_Malaysia Tourism Statistics in Brief 2024.pdf" target="_blank" class="post-title text-medium text-extra-dark-gray width-90 sm-width-100 d-block">Malaysia Tourism Statistic In Brief 2024</a>
+
+                        <div class="separator-line-horrizontal-full bg-medium-light-gray margin-15px-tb"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end blog post item -->
+            <!-- start blog post item -->
+            <div class="col-12 col-lg-3 col-md-6 md-margin-50px-bottom sm-margin-30px-bottom last-paragraph-no-margin text-center text-md-left wow fadeInUp" data-wow-delay="0.2s">
+                <div class="blog-post blog-post-style1">
+                    <div class="blog-post-images overflow-hidden margin-25px-bottom md-margin-20px-bottom">
+                        <img src="frontend/images/kpi.png" alt="">
+                    </div>
+                    <div class="post-details">
+                        <span class="post-author text-extra-small text-medium-gray text-uppercase d-block margin-10px-bottom">SEPTEMBER 2026 | by Tourism Malaysia</span>
+                        <a href="frontend/pdf/2025/publications/kpi/kpi_2025_new.pdf" target="_blank" class="post-title text-medium text-extra-dark-gray width-90 sm-width-100 d-block">KPI 2025</a>
+
+                        <div class="separator-line-horrizontal-full bg-medium-light-gray margin-15px-tb"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end blog post item -->
+            <!-- start blog post item -->
+            <div class="col-12 col-lg-3 col-md-6 sm-margin-30px-bottom last-paragraph-no-margin text-center text-md-left sm-clear-both wow fadeInUp" data-wow-delay="0.4s">
+                <div class="blog-post blog-post-style1">
+                    <div class="blog-post-images overflow-hidden margin-25px-bottom md-margin-20px-bottom">
+                        <img src="frontend/images/malaysia_hotel_supply.png" alt="">
+                    </div>
+                    <div class="post-details">
+                        <span class="post-author text-extra-small text-medium-gray text-uppercase d-block margin-10px-bottom">2024 | by Tourism Malaysia</span>
+                        <a href="frontend/pdf/Malaysia-Hotel-2023-Supply-Statistics.pdf" target="_blank" class="post-title text-medium text-extra-dark-gray width-90 sm-width-100 d-block">Malaysia Hotel Supply 2023</a>
+
+                        <div class="separator-line-horrizontal-full bg-medium-light-gray margin-15px-tb"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end blog post item -->
+            <!-- start blog post item -->
+            <div class="col-12 col-lg-3 col-md-6 last-paragraph-no-margin text-center text-md-left wow fadeInUp" data-wow-delay="0.6s">
+                <div class="blog-post blog-post-style1">
+                    <div class="blog-post-images overflow-hidden margin-25px-bottom md-margin-20px-bottom">
+                        <img src="frontend/images/startegic_plan.png" alt="">
+                    </div>
+                    <div class="post-details">
+                        <span class="post-author text-extra-small text-medium-gray text-uppercase d-block margin-10px-bottom">2026 | by Tourism Malaysia</span>
+                        <a href="frontend/pdf/Malaysia_Tourist_Profile_2024 v2.pdf" target="_blank" class="post-title text-medium text-extra-dark-gray width-90 sm-width-100 d-block">Malaysia Tourists Profile 2024 By Selected Markets</a>
+
+                        <div class="separator-line-horrizontal-full bg-medium-light-gray margin-20px-tb sm-margin-15px-tb"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end blog post item -->
+        </div>
+    </div>
+</section>
+<!-- end blog section -->
+<!-- start call to action section -->
+<section class="wow fadeIn padding-60px-tb md-padding-40px-tb bg-turqoise">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 position-relative text-center">
+                <span class="text-extra-large text-white-2 alt-font d-inline-block margin-5px-top margin-30px-right sm-no-margin-right sm-no-margin-top sm-margin-15px-bottom sm-width-100">The above data is just a glimpse of Malaysia’s tourism statistics and data. To find more, please register.</span>
+                <a href="https://data.tourism.gov.my/register" class="btn btn-white btn-medium margin-20px-top align-top sm-no-margin-right btn-rounded">Register</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end call to action section -->
+<!-- start footer -->
+<footer class="footer-modern-dark bg-extra-dark-gray padding-five-tb sm-padding-30px-tb">
+    <div class="footer-widget-area padding-40px-bottom sm-padding-30px-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- start slogan -->
+                <div class="col-lg-3 text-center text-md-left md-margin-three-bottom sm-margin-20px-bottom">
+                    <h6 class="text-dark-gray width-70 lg-width-100 no-margin-bottom"><span class="h5">TOURISM INFO LINE</span><br><span class="h4 text-white">1300 88 5050</span><br><span class="h6">Working days from 9.00am to 5.00pm</span>
+                    </h6>
+                </div>
+                <!-- end slogan -->
+                <!-- start contact information -->
+                <div class="col-lg-5 col-md-6 text-center text-md-left sm-margin-20px-bottom">
+                    <span class="display-block">MALAYSIA TOURISM PROMOTION BOARD (MTPB) HEAD OFFICE<br>9th Floor, No. 2, Tower 1,<br>Jalan P5/6, Presint 5, 62200, Putrajaya, Malaysia</span>
+                    Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="22474c53574b504b475162564d57504b514f0c454d540c4f5b">[email&#160;protected]</a>   |   Phone: +603-8891 8000
+                </div>
+                <!-- end contact information -->
+                <!-- start social media -->
+                <div class="col-lg-4 col-md-6 text-center text-md-left">
+                    <a href="https://www.tourism.gov.my/" title="Tourism Malaysia" class="logo"><img class="footer-logo" src="frontend/images/logo-full-white.png" width="150" data-rjs="frontend/images/logo-full-white@2x.png" alt="Tourism Malaysia"></a>
+                    <a href="https://www.malaysia.travel/page/visit-malaysia-2026/" title="Visit Malaysia 2026" class="logo_vmy"><img class="footer-logo_vmy" src="frontend/images/logo_vmy_2026-2027_white.png" width="180" alt="Tourism Malaysia"></a>
+                </div>
+                <!-- end social media -->
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- start copyright -->
+        <div class="footer-bottom border-top border-color-medium-dark-gray padding-40px-top sm-padding-30px-top">
+            <div class="row align-items-center">
+                <div class="col-md-12 text-center text-small">Copyright © 2026 Malaysia Tourism Promotion Board (MTPB). All Rights Reserved. View Our <a href="https://data.tourism.gov.my/terms-of-use" class="font-weight-bold text-white text-deep-pink-hover"  target="_blank" ><strong>Terms of Use</strong></a></div>
+
+</div>
+        </div>
+        <!-- end copyright -->
+    </div>
+</footer>
+<!-- end footer -->
+<!-- start scroll to top -->
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="ti-arrow-up"></i></a>
+<!-- end scroll to top  -->
+<!-- javascript libraries -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="frontend/js/jquery.js"></script>
+<script type="text/javascript" src="frontend/js/modernizr.js"></script>
+<script type="text/javascript" src="frontend/js/bootstrap.bundle.js"></script>
+<script type="text/javascript" src="frontend/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="frontend/js/skrollr.min.js"></script>
+<script type="text/javascript" src="frontend/js/smooth-scroll.js"></script>
+<script type="text/javascript" src="frontend/js/jquery.appear.js"></script>
+<!-- menu navigation -->
+<script type="text/javascript" src="frontend/js/bootsnav.js"></script>
+<script type="text/javascript" src="frontend/js/jquery.nav.js"></script>
+<!-- animation -->
+<script type="text/javascript" src="frontend/js/wow.min.js"></script>
+<!-- page scroll -->
+<script type="text/javascript" src="frontend/js/page-scroll.js"></script>
+<!-- swiper carousel -->
+<script type="text/javascript" src="frontend/js/swiper.min.js"></script>
+<!-- counter -->
+<script type="text/javascript" src="frontend/js/jquery.count-to.js"></script>
+<!-- parallax -->
+<script type="text/javascript" src="frontend/js/jquery.stellar.js"></script>
+<!-- magnific popup -->
+<script type="text/javascript" src="frontend/js/jquery.magnific-popup.min.js"></script>
+<!-- portfolio with shorting tab -->
+<script type="text/javascript" src="frontend/js/isotope.pkgd.min.js"></script>
+<!-- images loaded -->
+<script type="text/javascript" src="frontend/js/imagesloaded.pkgd.min.js"></script>
+<!-- pull menu -->
+<script type="text/javascript" src="frontend/js/classie.js"></script>
+<script type="text/javascript" src="frontend/js/hamburger-menu.js"></script>
+<!-- counter  -->
+<script type="text/javascript" src="frontend/js/counter.js"></script>
+<!-- fit video  -->
+<script type="text/javascript" src="frontend/js/jquery.fitvids.js"></script>
+<!-- skill bars  -->
+<script type="text/javascript" src="frontend/js/skill.bars.jquery.js"></script>
+<!-- justified gallery  -->
+<script type="text/javascript" src="frontend/js/justified-gallery.min.js"></script>
+<!--pie chart-->
+<script type="text/javascript" src="frontend/js/jquery.easypiechart.min.js"></script>
+<!-- instagram -->
+<script type="text/javascript" src="frontend/js/instafeed.min.js"></script>
+<!-- retina -->
+<script type="text/javascript" src="frontend/js/retina.min.js"></script>
+<!-- revolution -->
+<script type="text/javascript" src="frontend/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<!-- revolution slider extensions (load below extensions JS files only on local file systems to make the slider work! The following part can be removed on server for on demand loading) -->
+<!--<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="frontend/revolution/js/extensions/revolution.extension.video.min.js"></script>-->
+<!-- setting -->
+<script type="text/javascript" src="frontend/js/main.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4f079a4492d5c80',t:'MTc5Mjc1NTcxMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
