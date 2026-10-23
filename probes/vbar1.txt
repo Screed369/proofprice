@@ -1,0 +1,27 @@
+URL: https://datos.gob.ar/api/3/action/package_search?q=cuadros%20tarifarios&rows=5
+Fetched: 2026-10-23T07:42:21Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 212
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 07:42:21 GMT
+content-type: application/json;charset=utf-8
+content-length: 212
+server: cloudflare
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-frame-options: SAMEORIGIN
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+cf-cache-status: DYNAMIC
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Q2m0QwdkVdKoq4I5ROkW9RJ%2FQONJ%2F0f%2F%2Bw56Fc3dKZYuLbdN4BLnkp7ACQvLZEorlZ3L0FeER7oDDZZ8xkqbjQPKbFlO4a3wHfeQuNb4XlCYJ3A9zq%2FD3ySnvFGqCSw%3D"}]}
+cf-ray: a4ef1ac49a3a1ccd-MSP
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://datos.gob.ar/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 0, "facets": {}, "results": [], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
