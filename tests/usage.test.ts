@@ -1,7 +1,8 @@
 // Anonymous usage counting (lib/usage.ts): off unless a Blob store is connected (BLOB_STORE_ID or BLOB_READ_WRITE_TOKEN); counts only the documented fields; flushes in batches.
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import { OWN_CLIENTS, isOwnClient, isOwnRequest, withoutOwnParam, runWithOwnFlag, FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport, memoryStore } from "../lib/usage";
+import { InputError } from "../lib/http";
+import { USAGE_STATUSES, OWN_CLIENTS, isOwnClient, isOwnRequest, withoutOwnParam, runWithOwnFlag, FLUSH_MS, KEY_MAX, flushUsage, pendingUsage, recordUsage, resetUsage, setUsageSink, statusOfAnswer, statusOfError, summariseUsage, usageClient, usageEnabled, usageKey, usageReport, memoryStore } from "../lib/usage";
 import type { UsageFile } from "../lib/usage";
 
 const ON = { BLOB_READ_WRITE_TOKEN: "test-token-not-real" };
@@ -51,6 +52,15 @@ test("the key is lower case, trimmed, at most 60 characters, and has no free tex
   assert.equal(statusOfAnswer({}), "ok");
   assert.equal(statusOfError(new Error("Rents paid are available for IE and GB so far. Not yet: ZZ.")), "unsupported");
   assert.equal(statusOfError(new Error("boom")), "error");
+  // a missing or invalid parameter is the caller's mistake: bad_request, not our error and not no_matches
+  assert.equal(statusOfError(new InputError("item is required: an everyday item in plain words such as 'milk'.")), "bad_request");
+  // an InputError about a country we do not cover is still unsupported
+  assert.equal(statusOfError(new InputError("Rents paid are available for IE and GB so far. Not yet: ZZ.")), "unsupported");
+});
+
+test("bad_request is a usage status of its own", async () => {
+  assert.ok((USAGE_STATUSES as readonly string[]).includes("bad_request"));
+  assert.equal(statusOfAnswer({ status: "bad_request" }), "bad_request");
 });
 
 test("flush writes one aggregate file when the interval has passed, and keeps tallies if the write fails", async () => {

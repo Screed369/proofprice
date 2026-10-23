@@ -5,7 +5,7 @@
 //
 // 1. QUESTION COUNTS. One tally per day, tool (or REST category), country asked about, a normalised place/item key (lower case,
 //    trimmed, at most 60 characters; a postcode is cut to its first part), status (ok / insufficient_data / no_matches /
-//    unsupported / error) and, when the AI app sent it, the MCP clientInfo.name. "mcp_initialize" rows are connection handshakes,
+//    unsupported / bad_request / error) and, when the AI app sent it, the MCP clientInfo.name. "mcp_initialize" rows are connection handshakes,
 //    not questions: the report keeps them apart. The country is the country ASKED ABOUT, never where the caller is.
 //
 // 2. ANONYMOUS SESSIONS (privacy-first, in the style of cookieless analytics such as Plausible). A session is one visitor on one
@@ -42,8 +42,9 @@
 
 import { createHash, createHmac, randomBytes } from "node:crypto";
 import { AsyncLocalStorage } from "node:async_hooks";
+import { InputError } from "./http";
 
-export const USAGE_STATUSES = ["ok", "insufficient_data", "no_matches", "unsupported", "error"] as const;
+export const USAGE_STATUSES = ["ok", "insufficient_data", "no_matches", "unsupported", "bad_request", "error"] as const;
 export type UsageStatus = (typeof USAGE_STATUSES)[number];
 
 /** Opaque visitor digest for one request. `pre` lives in memory only and is salted before anything is written. */
@@ -334,10 +335,14 @@ export function statusOfAnswer(answer: { status?: unknown } | null | undefined):
   return (USAGE_STATUSES as readonly string[]).includes(s) ? (s as UsageStatus) : "ok";
 }
 
-/** A request for a country or category we do not cover is "unsupported"; any other failure is "error". */
+/**
+ * A request for a country or category we do not cover is "unsupported"; a request the caller got wrong (a missing or invalid parameter,
+ * an InputError) is "bad_request", so it is not counted as our error and not mistaken for "no_matches"; any other failure is "error".
+ */
 export function statusOfError(e: unknown): UsageStatus {
   const msg = String((e as any)?.message ?? e ?? "");
-  return /\bNot yet:|are available for|category is required|Unknown endpoint/i.test(msg) ? "unsupported" : "error";
+  if (/\bNot yet:|are available for|category is required|Unknown endpoint/i.test(msg)) return "unsupported";
+  return e instanceof InputError ? "bad_request" : "error";
 }
 
 export function sessionBucket(questions: number): SessionBucket {
@@ -960,7 +965,7 @@ export function summariseUsage(
         else c.questions += r.count;
         named.set(r.client, c);
       }
-      if (r.status !== "ok" && r.status !== "error" && !hs && !crawl) {
+      if (r.status !== "ok" && r.status !== "error" && r.status !== "bad_request" && !hs && !crawl) {
         const id = JSON.stringify([r.tool, r.country, r.key, r.status]);
         const u = unanswered.get(id) ?? { tool: r.tool, country: r.country, key: r.key, status: r.status, questions: 0 };
         u.questions += r.count;
