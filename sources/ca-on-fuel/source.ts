@@ -287,7 +287,7 @@ export function answerFromRows(rows: Row[], input: OnFuelInput): PriceAnswer {
     method: METHOD,
     note: notes.join(" ") || undefined,
     describe: (v) =>
-      `The average pump price of ${FUEL_LABEL[fuel]} in ${market.label}, Ontario was ${cad(v)} CAD per litre in the survey week of ${latest.date}, ` +
+      `The average pump price of ${FUEL_LABEL[fuel]} in ${/Ontario/.test(market.label) ? market.label : `${market.label}, Ontario`} was ${cad(v)} CAD per litre in the survey week of ${latest.date}, ` +
       `${move(week, "the week before")} and ${move(year, "a year earlier")}.`,
     baseUrl: input.baseUrl,
     extra: {

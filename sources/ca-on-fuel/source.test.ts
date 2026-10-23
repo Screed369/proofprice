@@ -93,6 +93,7 @@ test("ca-on-fuel: diesel in Windsor is a weekly average in CAD per litre with we
   assert.match(a.source.licence, /Open Government Licence – Ontario/);
   assert.match(a.source.attribution, /Contains information licensed under the Open Government Licence – Ontario/);
   assert.match(a.summary, /Windsor, Ontario/);
+  assert.doesNotMatch(answerFromRows(parseSurvey(CONSTRUCTED), { fuel: "diesel" }).summary, /Ontario, Ontario/);
 });
 
 test("ca-on-fuel: no place means the Ontario average; premium, propane and CNG map to their rows", () => {
