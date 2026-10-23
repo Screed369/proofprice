@@ -9,22 +9,28 @@ jobs:
       - run: |
           mkdir w && cd w
           curl -sS -m 300 -A "ProofPrice/0.3 (hello@proofprice.com)" -o irw.zip https://www.opengeodata.nrw.de/produkte/infrastruktur_bauen_wohnen/boris/IRW/IRW_EPSG25832_Shape.zip
-          ls -l; unzip -l irw.zip | head -30
+          curl -sS -m 60 -A "ProofPrice/0.3 (hello@proofprice.com)" -o dm.pdf https://www.opengeodata.nrw.de/produkte/infrastruktur_bauen_wohnen/boris/IRW/IRW_Datenmodell.pdf
+          ls -l dm.pdf; (pdftotext -layout dm.pdf dm.txt || python3 -m pip install -q pypdf && python3 -c "import pypdf;print('\n'.join(p.extract_text() for p in pypdf.PdfReader('dm.pdf').pages))" > dm.txt); grep -n -i -E "OBJGR|IRWTYP|IRKE|IMRW|WHNFL|GSTAND|BEZUG|STAG|MTYP|WNUM|WHNLA|TEILMA|IRKE|BRECHV" dm.txt | head -80
           unzip -o -q irw.zip
-          cat info.txt | head -40
           python3 - <<'P'
-          import glob,struct
-          for f in glob.glob('*.dbf'):
-              b=open(f,'rb').read()
-              n=struct.unpack('<I',b[4:8])[0]; hl=struct.unpack('<H',b[8:10])[0]; rl=struct.unpack('<H',b[10:12])[0]
-              print(f,n,hl,rl)
-              i=32; fs=[]
-              while b[i]!=0x0D:
-                  name=b[i:i+11].split(b'\0')[0].decode(); t=chr(b[i+11]); l=b[i+16]; fs.append((name,t,l)); i+=32
-              print(fs)
-              for r in range(3):
-                  rec=b[hl+r*rl:hl+(r+1)*rl]; o=1; out={}
-                  for name,t,l in fs:
-                      out[name]=rec[o:o+l].decode('latin1').strip(); o+=l
-                  print(out)
+          import struct,collections
+          b=open('IRW_2026_Polygon.dbf','rb').read()
+          n=struct.unpack('<I',b[4:8])[0]; hl=struct.unpack('<H',b[8:10])[0]; rl=struct.unpack('<H',b[10:12])[0]
+          i=32; fs=[]
+          while b[i]!=0x0D:
+              fs.append((b[i:i+11].split(b'\0')[0].decode(),b[i+16])); i+=32
+          recs=[]
+          for r in range(n):
+              rec=b[hl+r*rl:hl+(r+1)*rl]; o=1; d={}
+              for name,l in fs: d[name]=rec[o:o+l].decode('utf-8','replace').strip(); o+=l
+              recs.append(d)
+          for k in ['OBJGR','IRWTYP','IRKE','IRKE','BRWTYP','STAG','WHNLA','MTYP','TEILMA','GSTAND','BRECHV','MIETS','GART','EGART','IMMIS','WART','FARBE','UDOK']:
+              print(k,collections.Counter(r[k] for r in recs).most_common(8))
+          print('GENA',len(set(r['GENA'] for r in recs)),collections.Counter(r['GENA'] for r in recs).most_common(6))
+          print('GESL pref', collections.Counter(r['GESL'][:2] for r in recs).most_common(3))
+          print('IMRW empty', sum(1 for r in recs if not r['IMRW']), 'IMRW sample',[r['IMRW'] for r in recs[5000:5010]], [ (r['OBJGR'],r['IRWTYP'],r['IMRW'],r['WHNFL'],r['BJ'],r['GENA'],r['ORTST'],r['PLZ'],r['NUMZ'],r['GART']) for r in recs[9000:9012]])
+          for t in ['1','2','3','4']:
+              v=sorted(int(r['IMRW']) for r in recs if r['OBJGR']==t and r['IMRW'].isdigit() and r['IRWTYP']=='1')
+              print('objgr',t,len(v), v[len(v)//2] if v else None, v[:3], v[-3:])
+          print([ (r['OBJGR'],r['IRWTYP'],r['IMRW'],r['GENA'],r['ORTST'],r['BEM'][:60],r['IRKE'],r['WART']) for r in recs if r['OBJGR']=='1'][:3])
           P
