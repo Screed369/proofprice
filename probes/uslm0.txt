@@ -1,0 +1,577 @@
+URL: https://mpr.datamart.ams.usda.gov/services/v1.1/reports/
+Fetched: 2026-10-23T22:14:01Z from GitHub Actions
+Status, type, bytes: 200 application/json 67405
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+content-type: application/json
+expires: Fri, 23 Oct 2026 22:14:01 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Fri, 23 Oct 2026 22:14:01 GMT
+set-cookie: BIGipServer8gbpXmDQm+y/5f/hHNro+Q=!8HZynebg0xopfudDbD3FKdNodbmEeXOOTFvzl9tHJR2WQ0zZP9gYkUHYz0bjred1+umejnhFZjpPXQU=; expires=Fri, 23-Oct-2026 22:44:01 GMT; path=/; Httponly; Secure
+server-timing: cdn-cache; desc=MISS
+server-timing: edge; dur=34
+server-timing: origin; dur=1275
+alt-svc: h3=":443"; ma=93600
+strict-transport-security: max-age=31536000 ; includeSubDomains
+akamai-grn: 0.d20c0317.1792793639.c1c647a1
+server-timing: ak_p; desc="1792793639746_386075858_3250997153_130728_7474_2_7_15";dur=1
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[ {
+  "slug_id" : 2451,
+  "slug_name" : "AMS_2451",
+  "report_title" : "National/Regional Daily Boneless Processing Beef/ Beef Trimmings - PM (PDF) (LM_XB401)",
+  "published_date" : "10/23/2026 14:48:03",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Central", "National" ]
+}, {
+  "slug_id" : 2453,
+  "slug_name" : "AMS_2453",
+  "report_title" : "National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403)",
+  "published_date" : "10/23/2026 14:46:42",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Cutout Values", "Change From Prior Day", "Composite Primal Values", "Current Volume", "Choice Cuts", "Select Cuts", "Choice and Select Cuts", "Ground Beef", "Blended Ground Beef", "Beef Trimmings" ]
+}, {
+  "slug_id" : 2455,
+  "slug_name" : "AMS_2455",
+  "report_title" : "National 5-day Rolling Cutter Cow Cutout and Boxed Cow Beef Cuts - PM (PDF) (LM_XB405)",
+  "published_date" : "10/23/2026 14:41:32",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Cutout Value/Change", "Items", "Current Volume", "BONER/BREAKER", "CUTTER/CANNER", "100% LEAN", "B/B and C/C", "FROZEN BONER/BREAKER", "FROZEN CUTTER/CANNER", "FROZEN B/B and C/C" ]
+}, {
+  "slug_id" : 2456,
+  "slug_name" : "AMS_2456",
+  "report_title" : "National Weekly Formulated Boneless Cow Beef & Beef Trimmings - Formulated Sales (PDF) (LM_XB450)",
+  "published_date" : "10/23/2026 14:57:38",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Central", "National", "East Coast", "West Coast" ]
+}, {
+  "slug_id" : 2457,
+  "slug_name" : "AMS_2457",
+  "report_title" : "National Weekly Boxed Beef Cuts for Branded Product - Negotiated Sales (PDF) (LM_XB452)",
+  "published_date" : "10/19/2026 09:04:55",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Upper 2-3 Choice Items", "Lower 1-3 Choice Items", "Branded Select" ]
+}, {
+  "slug_id" : 2458,
+  "slug_name" : "AMS_2458",
+  "report_title" : "National Weekly Boxed Beef Cuts - Formulated Sales (PDF) (LM_XB454)",
+  "published_date" : "10/19/2026 09:09:28",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Choice Cuts", "Select Cuts", "Choice and Select Cuts", "Ground Beef", "Blended Ground Beef", "Beef Trimmings" ]
+}, {
+  "slug_id" : 2459,
+  "slug_name" : "AMS_2459",
+  "report_title" : "National Weekly Boxed Beef Cuts-Negotiated Sales, 22-90 delivery period (PDF) (LM_XB455)",
+  "published_date" : "10/19/2026 09:13:26",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Choice Cuts", "Select Cuts", "Choice and Select Cuts", "Ground Beef", "Blended Ground Beef", "Beef Trimmings" ]
+}, {
+  "slug_id" : 2460,
+  "slug_name" : "AMS_2460",
+  "report_title" : "National Weekly Boxed Beef Cuts for Prime Product - Negotiated Sales (PDF) (LM_XB456)",
+  "published_date" : "10/19/2026 09:34:59",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Prime Cuts" ]
+}, {
+  "slug_id" : 2461,
+  "slug_name" : "AMS_2461",
+  "report_title" : "National Weekly Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales (PDF) (LM_XB459)",
+  "published_date" : "10/23/2026 14:54:16",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Weekly Composite Primal Values", "Weekly Summary Cutout Values", "Weekly Average Cutout Values", "Change From Prior Week", "Current Volume", "Choice Cuts", "Select Cuts", "Choice and Select Cuts", "Ground Beef", "Blended Ground Beef", "Beef Trimmings" ]
+}, {
+  "slug_id" : 2462,
+  "slug_name" : "AMS_2462",
+  "report_title" : "National/Regional Weekly Boneless Processing Beef and Beef Trimmings (PDF) (LM_XB460)",
+  "published_date" : "10/23/2026 15:02:35",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Central", "National", "East Coast", "West Coast" ]
+}, {
+  "slug_id" : 2463,
+  "slug_name" : "AMS_2463",
+  "report_title" : "National Weekly Cutter Cow Cutout and Boxed Cow Beef Cuts (PDF) (LM_XB461)",
+  "published_date" : "10/23/2026 15:05:01",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Cutout Value/Change", "Items", "Current Volume", "BONER/BREAKER", "CUTTER/CANNER", "100% LEAN", "B/B and C/C", "FROZEN BONER/BREAKER", "FROZEN CUTTER/CANNER", "FROZEN B/B and C/C" ]
+}, {
+  "slug_id" : 2464,
+  "slug_name" : "AMS_2464",
+  "report_title" : "National Weekly Boxed Beef Cuts for Ungraded Product - Negotiated Sales (PDF) (LM_XB462)",
+  "published_date" : "10/19/2026 09:08:21",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Ungraded Cuts" ]
+}, {
+  "slug_id" : 2465,
+  "slug_name" : "AMS_2465",
+  "report_title" : "National Comprehensive Boxed Beef Cutout - all Fed Steer/Heifer Sales (PDF) (LM_XB463)",
+  "published_date" : "10/19/2026 14:26:04",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Beef" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Subset Quality", "Cuts", "Trim" ]
+}, {
+  "slug_id" : 2466,
+  "slug_name" : "AMS_2466",
+  "report_title" : "5 Area Daily Weighted Average Direct Slaughter Cattle - Negotiated (PDF) (LM_CT100)",
+  "published_date" : "10/23/2026 11:12:24",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "History" ]
+}, {
+  "slug_id" : 2467,
+  "slug_name" : "AMS_2467",
+  "report_title" : "Daily Direct Cow and Bull Negotiated Report - Summary (PDF) (LM_CT103)",
+  "published_date" : "10/23/2026 14:53:06",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "National", "Regional" ]
+}, {
+  "slug_id" : 2468,
+  "slug_name" : "AMS_2468",
+  "report_title" : "Direct Slaughter Cow and Bull Report - Plant Delivered Bids (PDF) (LM_CT138)",
+  "published_date" : "10/23/2026 10:54:40",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail" ]
+}, {
+  "slug_id" : 2469,
+  "slug_name" : "AMS_2469",
+  "report_title" : "TX-OK-NM Weekly Direct Slaughter Cattle - Formula, Grid and Contract Purchases (PDF) (LM_CT139)",
+  "published_date" : "10/19/2026 11:31:11",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Comprehensive PD Application", "Comprehensive PD Application Volume" ]
+}, {
+  "slug_id" : 2470,
+  "slug_name" : "AMS_2470",
+  "report_title" : "Kansas Weekly Directly Slaughter Cattle - Formula, Grid and Contract Purchases (PDF) (LM_CT140)",
+  "published_date" : "10/19/2026 11:31:44",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Comprehensive PD Application", "Comprehensive PD Application Volume" ]
+}, {
+  "slug_id" : 2471,
+  "slug_name" : "AMS_2471",
+  "report_title" : "Nebraska Weekly Directly Slaughter Cattle-Formula, Grid and Contract Purchases (PDF) (LM_CT141)",
+  "published_date" : "10/19/2026 11:32:41",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Comprehensive PD Application", "Comprehensive PD Application Volume" ]
+}, {
+  "slug_id" : 2472,
+  "slug_name" : "AMS_2472",
+  "report_title" : "Weekly Direct Slaughter Cattle - Committed and Delivered Cattle (PDF) (LM_CT142)",
+  "published_date" : "10/19/2026 11:27:04",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Packer Summary", "Volume", "NUMBER SHIPPED OUT OF REGION OF ORIGIN" ]
+}, {
+  "slug_id" : 2474,
+  "slug_name" : "AMS_2474",
+  "report_title" : "5 Area Weekly Direct Slaughter Cattle - Formulated, Forward Contract, and Negotiated Grid Purchases (PDF) (LM_CT145)",
+  "published_date" : "10/19/2026 11:33:17",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Comprehensive PD Application", "Comprehensive PD Application Volume" ]
+}, {
+  "slug_id" : 2475,
+  "slug_name" : "AMS_2475",
+  "report_title" : "CO Weekly Direct Slaughter Cattle - Formula, Grid, and Contract Purchases (PDF) (LM_CT146)",
+  "published_date" : "10/19/2026 11:33:55",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Comprehensive PD Application", "Comprehensive PD Application Volume" ]
+}, {
+  "slug_id" : 2476,
+  "slug_name" : "AMS_2476",
+  "report_title" : "IA-MN Weekly Direct Slaughter Cattle - Formula, Grid, and Contract Purchases (PDF) (LM_CT147)",
+  "published_date" : "10/19/2026 11:34:25",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Comprehensive PD Application", "Comprehensive PD Application Volume" ]
+}, {
+  "slug_id" : 2477,
+  "slug_name" : "AMS_2477",
+  "report_title" : "5 Area Weekly Weighted Average Direct Slaughter Cattle (PDF) (LM_CT150)",
+  "published_date" : "10/19/2026 11:27:38",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Price Distribution", "History" ]
+}, {
+  "slug_id" : 2478,
+  "slug_name" : "AMS_2478",
+  "report_title" : "National Weekly Direct Slaughter Cattle Report - Formulated and Forward Contract (PDF) (LM_CT151)",
+  "published_date" : "10/19/2026 11:28:35",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Regional", "Comprehensive PD Application", "Comprehensive PD Application Volume" ]
+}, {
+  "slug_id" : 2479,
+  "slug_name" : "AMS_2479",
+  "report_title" : "National Weekly Direct Slaughter Cattle Report - Formulated and Forward Contract - Imported (PDF) (LM_CT152)",
+  "published_date" : "10/19/2026 11:30:33",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail" ]
+}, {
+  "slug_id" : 2480,
+  "slug_name" : "AMS_2480",
+  "report_title" : "National Weekly Direct Slaughter Cattle - Prior Week Slaughter and Contract Purchases (PDF) (LM_CT153)",
+  "published_date" : "10/19/2026 11:36:24",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "A. Packer Owned Slaughter", "B. Prior Week Formula & Contract Slaughter", "C. Forward Contract Purchases", "C. Forward Contract Purchases Breakdown", "D. Basis Distribution" ]
+}, {
+  "slug_id" : 2481,
+  "slug_name" : "AMS_2481",
+  "report_title" : "National Weekly Direct Slaughter Cattle - Negotiated Purchases (PDF) (LM_CT154)",
+  "published_date" : "10/19/2026 11:28:21",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Regional" ]
+}, {
+  "slug_id" : 2482,
+  "slug_name" : "AMS_2482",
+  "report_title" : "National Weekly Direct Slaughter Cattle - Premiums and Discounts (PDF) (LM_CT155)",
+  "published_date" : "10/19/2026 09:45:13",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail" ]
+}, {
+  "slug_id" : 2483,
+  "slug_name" : "AMS_2483",
+  "report_title" : "Texas-Oklahoma  Weekly Direct Slaughter Cattle - Negotiated Purchases (PDF) (LM_CT156)",
+  "published_date" : "10/19/2026 11:29:13",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "History", "Price Distribution" ]
+}, {
+  "slug_id" : 2484,
+  "slug_name" : "AMS_2484",
+  "report_title" : "Kansas  Weekly Direct Slaughter Cattle - Negotiated Purchases (PDF) (LM_CT157)",
+  "published_date" : "10/19/2026 11:29:37",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "History", "Price Distribution" ]
+}, {
+  "slug_id" : 2485,
+  "slug_name" : "AMS_2485",
+  "report_title" : "Nebraska Weekly Direct Slaughter Cattle - Negotiated Purchases (PDF) (LM_CT158)",
+  "published_date" : "10/19/2026 11:30:05",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "History", "Price Distribution" ]
+}, {
+  "slug_id" : 2486,
+  "slug_name" : "AMS_2486",
+  "report_title" : "Colorado Weekly Weighted Average Cattle Report - Negotiated Purchases (PDF) (LM_CT166)",
+  "published_date" : "12/04/2023 10:00:15",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "History", "Price Distribution" ]
+}, {
+  "slug_id" : 2487,
+  "slug_name" : "AMS_2487",
+  "report_title" : "Iowa/Minnesota Weekly Weighted Average Cattle Report - Negotiated Purchases (PDF) (LM_CT167)",
+  "published_date" : "10/19/2026 11:30:46",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "History", "Price Distribution" ]
+}, {
+  "slug_id" : 2488,
+  "slug_name" : "AMS_2488",
+  "report_title" : "National Weekly Direct Cow and Bull Report - Negotiated Price (PDF) (LM_CT168)",
+  "published_date" : "10/23/2026 14:53:30",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail", "Net Cattle Movement" ]
+}, {
+  "slug_id" : 2489,
+  "slug_name" : "AMS_2489",
+  "report_title" : "5 Area Weekly Weighted Average Direct Slaughter Cattle Premium and Discounts (PDF) (LM_CT169)",
+  "published_date" : "10/19/2026 09:46:03",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Cattle" ],
+  "offices" : [ "St Joseph, MO" ],
+  "sectionNames" : [ "Summary", "Detail" ]
+}, {
+  "slug_id" : 2498,
+  "slug_name" : "AMS_2498",
+  "report_title" : "National Daily Pork FOB Plant - Negotiated Sales - Afternoon (PDF) (LM_PK602)",
+  "published_date" : "10/23/2026 14:53:51",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Cutout and Primal Values", "Change From Prior Day", "Cutout and Primal History", "5-Day Average Cutout and Primal Values", "Current Volume", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts" ]
+}, {
+  "slug_id" : 2499,
+  "slug_name" : "AMS_2499",
+  "report_title" : "National Daily Pork FOB Omaha - Negotiated Sales - Afternoon (PDF) (LM_PK603)",
+  "published_date" : "10/23/2026 14:54:00",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Cutout and Primal Values", "Change From Prior Day", "Cutout and Primal History", "5-Day Average Cutout and Primal Values", "Current Volume", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts" ]
+}, {
+  "slug_id" : 2500,
+  "slug_name" : "AMS_2500",
+  "report_title" : "National Weekly Pork FOB Plant - Negotiated Sales (PDF) (LM_PK610)",
+  "published_date" : "10/23/2026 15:16:37",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Weekly Average Cutout and Primal Values", "Change in Weekly Cutout Values", "Current Volume", "Primal Volumes", "Primal Loads", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts" ]
+}, {
+  "slug_id" : 2501,
+  "slug_name" : "AMS_2501",
+  "report_title" : "National Weekly Pork FOB Omaha - Negotiated Sales (PDF) (LM_PK611)",
+  "published_date" : "10/23/2026 15:16:48",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Weekly Average Cutout and Primal Values", "Change in Weekly Cutout Values", "Current Volume", "Primal Volumes", "Primal Loads", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts" ]
+}, {
+  "slug_id" : 2504,
+  "slug_name" : "AMS_2504",
+  "report_title" : "National Weekly Pork FOB Plant - Formula Sales (PDF) (LM_PK620)",
+  "published_date" : "10/19/2026 09:57:00",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Primal Volumes", "Primal Loads", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts" ]
+}, {
+  "slug_id" : 2505,
+  "slug_name" : "AMS_2505",
+  "report_title" : "National Weekly Pork FOB Omaha - Formula Sales (PDF) (LM_PK621)",
+  "published_date" : "10/19/2026 09:57:11",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Primal Volumes", "Primal Loads", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts" ]
+}, {
+  "slug_id" : 2506,
+  "slug_name" : "AMS_2506",
+  "report_title" : "National Weekly Pork FOB Plant - Forward Sales (PDF) (LM_PK630)",
+  "published_date" : "10/19/2026 09:25:37",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Primal Volumes", "Primal Loads", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts", "Export Break, 4/5 rib", "Carcass" ]
+}, {
+  "slug_id" : 2507,
+  "slug_name" : "AMS_2507",
+  "report_title" : "National Weekly Pork FOB Omaha - Forward Sales (PDF) (LM_PK631)",
+  "published_date" : "10/19/2026 09:25:39",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Primal Volumes", "Primal Loads", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts", "Export Break, 4/5 rib", "Carcass" ]
+}, {
+  "slug_id" : 2508,
+  "slug_name" : "AMS_2508",
+  "report_title" : "Weekly Export Pork FOB Plant (PDF) (LM_PK640)",
+  "published_date" : "10/19/2026 09:54:22",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Primal Volumes", "Primal Loads", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts", "Export Break, 4/5 rib", "Carcass" ]
+}, {
+  "slug_id" : 2509,
+  "slug_name" : "AMS_2509",
+  "report_title" : "Weekly Export Pork FOB Omaha (PDF) (LM_PK641)",
+  "published_date" : "10/19/2026 09:54:24",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Pork" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume", "Primal Volumes", "Primal Loads", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts", "Export Break, 4/5 rib", "Carcass" ]
+}, {
+  "slug_id" : 2510,
+  "slug_name" : "AMS_2510",
+  "report_title" : "National Daily Direct Prior Purchased Swine (PDF) (LM_HG200)",
+  "published_date" : "12/31/2020 07:25:24",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2511,
+  "slug_name" : "AMS_2511",
+  "report_title" : "National Daily Direct Prior Day Slaughtered Swine (PDF) (LM_HG201)",
+  "published_date" : "10/23/2026 10:05:26",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Barrows/Gilts", "Carcass Measurements", "14-Day Scheduled Swine", "Barrows/Gilts Negotiated" ]
+}, {
+  "slug_id" : 2512,
+  "slug_name" : "AMS_2512",
+  "report_title" : "National Daily Direct Hogs Morning (PDF) (LM_HG202)",
+  "published_date" : "12/31/2020 10:26:46",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2513,
+  "slug_name" : "AMS_2513",
+  "report_title" : "National Daily Direct Hogs Afternoon (PDF) (LM_HG203)",
+  "published_date" : "12/31/2020 14:39:33",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2514,
+  "slug_name" : "AMS_2514",
+  "report_title" : "Iowa/Minnesota Daily Direct Prior Day Purchased Swine (PDF) (LM_HG204)",
+  "published_date" : "12/31/2020 07:25:20",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "State of Origin" ]
+}, {
+  "slug_id" : 2515,
+  "slug_name" : "AMS_2515",
+  "report_title" : "Iowa/Minnesota Daily Direct Hogs Morning (PDF) (LM_HG205)",
+  "published_date" : "12/31/2020 10:27:00",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2516,
+  "slug_name" : "AMS_2516",
+  "report_title" : "Iowa/Minnesota Daily Direct Hogs Afternoon (PDF) (LM_HG206)",
+  "published_date" : "12/31/2020 14:46:28",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2517,
+  "slug_name" : "AMS_2517",
+  "report_title" : "Eastern Cornbelt Daily Direct Prior Day Purchased Swine (PDF) (LM_HG207)",
+  "published_date" : "12/31/2020 07:25:31",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2518,
+  "slug_name" : "AMS_2518",
+  "report_title" : "Western Cornbelt Daily Direct Prior Day Purchased Swine (PDF) (LM_HG208)",
+  "published_date" : "12/31/2020 07:25:37",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "State of Origin" ]
+}, {
+  "slug_id" : 2519,
+  "slug_name" : "AMS_2519",
+  "report_title" : "Eastern Cornbelt Daily Direct Hogs Morning (PDF) (LM_HG209)",
+  "published_date" : "12/31/2020 10:27:07",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2520,
+  "slug_name" : "AMS_2520",
+  "report_title" : "Eastern Cornbelt Daily Direct Hogs Afternoon (PDF) (LM_HG210)",
+  "published_date" : "12/31/2020 14:46:36",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2521,
+  "slug_name" : "AMS_2521",
+  "report_title" : "Western Cornbelt Daily Direct Hogs Morning (PDF) (LM_HG211)",
+  "published_date" : "12/31/2020 10:27:15",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2522,
+  "slug_name" : "AMS_2522",
+  "report_title" : "Western Cornbelt Daily Direct Hogs Afternoon (PDF) (LM_HG212)",
+  "published_date" : "12/31/2020 14:46:45",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Current Volume by Purchase Type", "Barrows/Gilts (producer/packer sold)", "Matrix, 185 lb Carcass Basis", "Carcass Weight Differentials", "5-Day Rolling Average Market Hog based on Slaughter Data Submitted", "Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2523,
+  "slug_name" : "AMS_2523",
+  "report_title" : "National Daily Base Lean Hog Carcass Slaughter Cost (PDF) (LM_HG213)",
+  "published_date" : "05/09/2025 09:47:58",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Detail" ]
+}, {
+  "slug_id" : 2524,
+  "slug_name" : "AMS_2524",
+  "report_title" : "Weekly National Direct Swine Report (Mon) (PDF) (LM_HG214)",
+  "published_date" : "10/19/2026 09:54:32",
+  "markets" : [ "LMR" ],
+  "market_types" : [ "Direct Livestock - LMR Swine" ],
+  "offices" : [ "Des Moines, IA" ],
+  "sectionNames" : [ "Summary", "Weekly Volume of Barrows/Gilts by Purchase Type", "Weekly Volume and Weighted Average Price of Barrows/Gilts by Purchase Type", "Weekly Volume and Weighted Average Price of Negotiated Sows", "State of Origin" ]
+}, {
+  "slug_id" : 2648,
+  "
