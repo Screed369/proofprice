@@ -502,7 +502,7 @@ export function wobAnswer(lib: LibLike, input: WobInput, now = new Date()): Pric
   const base = { source: INFO, query, measure: "average" as const, currency: "EUR", unit: "per litre", method, baseUrl: input.baseUrl };
 
   const value = get(country, key);
-  const ageDays = Math.round((now.getTime() - Date.parse(lib.date + "T00:00:00Z")) / dayMs);
+  const ageDays = Math.floor((now.getTime() - Date.parse(lib.date + "T00:00:00Z")) / dayMs);
   const old = ageDays > OLD_AFTER_DAYS;
 
   if (value === null) {

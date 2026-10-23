@@ -268,6 +268,17 @@ test("old data is flagged plainly", async () => {
   }
 });
 
+test("extra.data_age_days counts whole days, the same as the top-level data_age_days", async () => {
+  libraryWithFixture();
+  try {
+    // 12 Oct bulletin asked on 16 Oct at 18:19 UTC: 4.76 days have passed, so both fields must say 4 (not 5).
+    const a = await wobFuelNow({ country: "IE", fuel: "diesel" }, new Date("2026-10-16T18:19:00Z"));
+    assert.equal((a.extra as any).data_age_days, 4);
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
+});
+
 test("a fuel the country does not report is no_matches, not a made-up number", async () => {
   libraryWithFixture();
   try {
