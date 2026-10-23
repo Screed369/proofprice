@@ -1,0 +1,32 @@
+URL: https://transparencia.sns.gov.pt/api/explore/v2.1/catalog/datasets/preco-medio-por-embalagem/records?limit=5
+Fetched: 2026-10-23T05:41:57Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1655
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: openresty
+date: Fri, 23 Oct 2026 05:41:57 GMT
+content-type: application/json; charset=utf-8
+content-length: 1655
+x-ratelimit-remaining: 4999
+x-ratelimit-limit: 5000
+x-ratelimit-reset: 2026-10-24 00:00:00+00:00
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+vary: Accept-Language, Cookie, Host
+content-language: en-us
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS
+access-control-max-age: 1000
+access-control-allow-headers: Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type, ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+access-control-expose-headers: ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit, X-RateLimit-dataset-Reset
+strict-transport-security: max-age=31536000;includeSubdomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: upgrade-insecure-requests; 
+x-ua-compatible: IE=edge
+permissions-policy: midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"total_count": 935, "results": [{"tempo": "2011-01", "regiao": "Alentejo", "valor_pvp_ambulatorio": 8407221.91, "n_o_de_embalagens_ambulatorio": 560492, "preco_medio_por_embalagem_ambulatorio": 14.999717944234709, "valor_pvp_genericos": 2187532.16, "n_o_de_embalagens_genericos": 168551, "preco_medio_por_embalagem_genericos": 12.97845850810734}, {"tempo": "2011-01", "regiao": "Norte", "valor_pvp_ambulatorio": 50668495.559999995, "n_o_de_embalagens_ambulatorio": 3542922, "preco_medio_por_embalagem_ambulatorio": 14.30132968210985, "valor_pvp_genericos": 12370861.959999999, "n_o_de_embalagens_genericos": 1030463, "preco_medio_por_embalagem_genericos": 12.005149102878995}, {"tempo": "2011-02", "regiao": "Lisboa", "valor_pvp_ambulatorio": 57880404.069999985, "n_o_de_embalagens_ambulatorio": 3821754, "preco_medio_por_embalagem_ambulatorio": 15.144984232370787, "valor_pvp_genericos": 13217098.75, "n_o_de_embalagens_genericos": 1090006, "preco_medio_por_embalagem_genericos": 12.125711922686664}, {"tempo": "2011-04", "regiao": "Lisboa", "valor_pvp_ambulatorio": 58350075.61000001, "n_o_de_embalagens_ambulatorio": 3809054, "preco_medio_por_embalagem_ambulatorio": 15.318784036666324, "valor_pvp_genericos": 13115124.7, "n_o_de_embalagens_genericos": 1105372, "preco_medio_por_embalagem_genericos": 11.864896794925146}, {"tempo": "2011-05", "regiao": "Algarve", "valor_pvp_ambulatorio": 7286886.119999999, "n_o_de_embalagens_ambulatorio": 427434, "preco_medio_por_embalagem_ambulatorio": 17.04797961790592, "valor_pvp_genericos": 1623785.6200000006, "n_o_de_embalagens_genericos": 115600, "preco_medio_por_embalagem_genericos": 14.046588408304503}]}
