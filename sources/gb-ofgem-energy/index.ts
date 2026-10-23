@@ -1,7 +1,7 @@
 // Manifest: Great Britain household energy price cap by region and payment method (Ofgem). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
-import { AVERAGE, INFO, REGIONS, gbEnergy, gbMethod } from "./source";
+import { AVERAGE, INFO, REGIONS, gbEnergy, gbHistoryKey, gbMethod, gbOfgemHarvest } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -34,5 +34,10 @@ export default defineSource({
     { params: { country: "GB", energy: "gas", gb_region: "London", payment_method: "direct_debit" }, smoke: false },
   ],
   method: gbMethod(),
+  // Daily copy of the current quarter's unit rates, so an Ofgem or everviz outage is answered from our copy for 7 days.
+  harvest: () => gbOfgemHarvest(),
+  referenceDates: true,
+  nominalCounts: true,
+  historyKey: (p) => gbHistoryKey({ energy: str(p.energy), gb_region: str(p.gb_region), payment_method: str(p.payment_method) }),
   handle: (p, ctx) => gbEnergy({ energy: str(p.energy), region: str(p.gb_region), payment_method: str(p.payment_method), baseUrl: ctx.baseUrl }),
 });

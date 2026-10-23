@@ -9,7 +9,8 @@
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL = "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges";
 export const EMBED_URL = (id: string, v: string) => `https://app.everviz.com/inject/${id}/?v=${v}`;
@@ -294,4 +295,53 @@ export async function gbEnergy(input: { energy?: string; region?: string; paymen
   const payment = normalisePayment(input.payment_method);
   const region = resolveRegion(input.region);
   return capAnswer(await loadTables(fetcher), { energy, payment, region, baseUrl: input.baseUrl });
+}
+
+// ---------- daily collector copy (harvest) and history keys ----------
+// The collector stores the unit rate of the CURRENT quarter (GBP per kWh, a regulated cap with no record count: n is NO_COUNT) for
+// every region, energy and payment method, dated by the first day of the quarter the cap is for (referenceDates). If Ofgem or everviz
+// does not answer, runCategory answers from this copy for up to 7 days after the last good collection and says so. The standing charge
+// is not stored: a stale answer carries the unit rate only. Aggregates only; nothing here is about a household.
+
+export const ALL_AREA = "ALL";
+export const itemKey = (energy: Energy, payment: Payment) => `${energy}/${payment}`;
+const areaOf = (region: string) => (region === AVERAGE ? ALL_AREA : region);
+
+/** Pure: the library rows from parsed tables (single-rate tables only). */
+export function harvestFromTables(tables: CapTable[]): HarvestResult {
+  const single = tables.filter((t) => !t.multi);
+  if (!single.length) throw new SourceError("Ofgem's price cap tables hold no single-rate table; this source needs updating.");
+  const quarters = [...new Set(single.map((t) => t.quarter))];
+  if (quarters.length !== 1) throw new SourceError(`Ofgem's price cap tables are for different quarters (${quarters.join("; ")}); this source needs updating.`);
+  const rows: DailyRow[] = [];
+  for (const t of single) {
+    for (const r of t.rows) {
+      const v = r4(r.unit / 100);
+      rows.push({ area: areaOf(r.region), item: itemKey(t.energy, t.payment), n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+    }
+  }
+  rows.sort((a, b) => a.area.localeCompare(b.area) || a.item.localeCompare(b.item));
+  return {
+    date: quarterRange(quarters[0]).from,
+    currency: "GBP",
+    unit: "per kWh",
+    rows,
+    note: `Ofgem energy price cap for ${quarters[0]}: maximum unit rate on default tariffs (single-rate electricity and gas) by region and payment method. A regulated cap, not a price paid; no record count is published.`,
+  };
+}
+
+export async function gbOfgemHarvest(fetcher?: TextFetcher): Promise<HarvestResult> {
+  return harvestFromTables(await loadTables(fetcher));
+}
+
+/** Where a request lives in the library, without asking Ofgem. */
+export function gbHistoryKey(p: { energy?: string; gb_region?: string; payment_method?: string }): { area: string; item: string; label: string } | null {
+  try {
+    const energy = normaliseEnergy(p.energy);
+    const payment = normalisePayment(p.payment_method);
+    const region = resolveRegion(p.gb_region);
+    return { area: areaOf(region), item: itemKey(energy, payment), label: `${region}, ${PAYMENTS[payment].label}` };
+  } catch {
+    return null;
+  }
 }

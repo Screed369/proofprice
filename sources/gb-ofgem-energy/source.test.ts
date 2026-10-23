@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { PAGE_HTML, SCRIPTS } from "./fixtures";
-import { INFO, capAnswer, embedsFromPage, EMBED_URL, gbEnergy, loadTables, normalisePayment, parseScript, resolveRegion, PAGE_URL } from "./source";
+import { INFO, capAnswer, gbHistoryKey, harvestFromTables, embedsFromPage, EMBED_URL, gbEnergy, loadTables, normalisePayment, parseScript, resolveRegion, PAGE_URL } from "./source";
 import manifest from "./index";
 import { InputError, SourceError } from "../../lib/http";
 import { findSource } from "../../lib/registry";
@@ -107,4 +107,32 @@ test("registry: GB household energy routes to this source, business to the DESNZ
   assert.equal(manifest.info.id, "gb-ofgem-energy");
   assert.equal(findSource("energy", "GB", { energy: "electricity" } as any)?.info.id, "gb-ofgem-energy");
   assert.equal(findSource("energy", "GB", { energy: "electricity", sector: "business" } as any)?.info.id, "gb-desnz-energy-business");
+});
+
+test("harvest stores the current quarter's unit rate per region, energy and payment method, with no invented count", async () => {
+  const h = harvestFromTables(await loadTables(fetcher));
+  assert.equal(h.date, "2026-10-01");
+  assert.equal(h.currency, "GBP");
+  assert.equal(h.unit, "per kWh");
+  assert.equal(h.rows.length, 15 * 3 * 2);
+  const avg = h.rows.find((r) => r.area === "ALL" && r.item === "electricity/direct_debit")!;
+  assert.equal(avg.median, 0.2632);
+  assert.ok(Number.isNaN(avg.n), "n is NO_COUNT, never a made-up number");
+});
+
+test("the harvested figure equals the live answer", async () => {
+  const h = harvestFromTables(await loadTables(fetcher));
+  for (const [region, area] of [["London", "London"], ["Great Britain average", "ALL"]] as const) {
+    for (const energy of ["electricity", "gas"] as const) {
+      const live = await gbEnergy({ energy, region, payment_method: "prepayment" }, fetcher);
+      const row = h.rows.find((r) => r.area === area && r.item === `${energy}/prepayment`)!;
+      assert.equal(row.median, live.price?.value);
+    }
+  }
+});
+
+test("history key maps a request to the library row", () => {
+  assert.deepEqual(gbHistoryKey({ energy: "gas" }), { area: "ALL", item: "gas/direct_debit", label: "Great Britain average, Direct Debit" });
+  assert.equal(gbHistoryKey({ energy: "electricity", gb_region: "Glasgow", payment_method: "prepay" })?.area, "Southern Scotland");
+  assert.equal(gbHistoryKey({ energy: "oil" }), null);
 });
