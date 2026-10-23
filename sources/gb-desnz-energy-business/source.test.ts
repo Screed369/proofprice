@@ -141,10 +141,10 @@ test("gb-desnz-energy-business: bad input is refused before the workbook is read
   await assert.rejects(gbBusinessEnergy({ energy: "gas" }, async () => { throw new SourceError("The publisher answered 503 for assets.publishing.service.gov.uk."); }), /503/);
 });
 
-test("energy category: GB is business only; household GB is a plain error", async () => {
+test("energy category: GB business goes to DESNZ, GB household to Ofgem (gb-ofgem-energy)", async () => {
   const cat = categoryById("energy")!;
   assert.equal(pickSource(cat, { country: "GB", energy: "gas", sector: "business" }).src.info.id, "gb-desnz-energy-business");
   assert.equal(findSource("energy", "GB")!.info.id, "gb-desnz-energy-business");
-  await assert.rejects(runCategory(cat, { country: "GB", energy: "gas" }), /Household energy prices are not available for GB/);
+  assert.equal(pickSource(cat, { country: "GB", energy: "gas" }).src.info.id, "gb-ofgem-energy");
   assert.deepEqual(cat.prepare!({ country: "GB", sector: "business", energy: "gas" }), { country: "GB", sector: "business", energy: "gas", taxes: "excl_vat" });
 });

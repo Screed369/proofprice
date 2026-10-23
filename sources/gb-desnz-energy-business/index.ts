@@ -10,12 +10,12 @@ export default defineSource({
   info: INFO,
   category: "energy",
   countries: ["GB"],
-  countryHelp: "With sector=business, GB = United Kingdom (DESNZ: official average prices paid by non-domestic consumers, pence per kWh by size band, quarterly; business only, no household figures)",
+  countryHelp: "With sector=business, GB = United Kingdom (DESNZ: official average prices paid by non-domestic consumers, pence per kWh by size band, quarterly; household GB comes from Ofgem)",
   placeName: "the United Kingdom (business)",
   status: "live",
   serves: (p) => p.sector === "business",
   paramNotes: {
-    sector: "GB: only sector=business is available (DESNZ non-domestic prices); household prices for GB are not in this tool.",
+    sector: "GB: sector=business gives the DESNZ non-domestic prices; leave sector out for household (Ofgem price cap).",
     energy: "Business GB: electricity or gas, pence per kWh converted to pounds per kWh.",
     consumption_band:
       `Business GB, annual consumption of the business, by DESNZ size band name or by the matching Eurostat letter. Electricity: ${bandHelp("electricity")}. Gas: ${bandHelp("gas")} (no band above Very Large, so Eurostat I6 has no UK figure). ` +

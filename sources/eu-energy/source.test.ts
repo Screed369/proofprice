@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseJsonStat } from "../../lib/adapters";
 import { InputError, SourceError } from "../../lib/http";
-import { categoryById, countriesFor, paramSchemas, runCategory, SOURCE_PLUGINS } from "../../lib/registry";
+import { categoryById, countriesFor, paramSchemas, pickSource, runCategory, SOURCE_PLUGINS } from "../../lib/registry";
 import {
   COUNTRIES, DATASETS, energyAnswer, energyFilters, euEnergy, INFO, nationalCurrency, normaliseBand, normaliseEnergy, normaliseTaxes, periodWords, readEnergy,
 } from "./source";
@@ -285,8 +285,8 @@ test("energy category: tool, REST path, parameters and routing", async () => {
   assert.throws(() => cat.prepare!({ energy: "gas", taxes: "some" }), /taxes must be/);
   // routing errors are plain 400s
   await assert.rejects(runCategory(cat, { country: "JP", energy: "gas" }), /Not yet: JP/);
-  // GB has business figures only (gb-desnz-energy-business): a household request says so in plain words
-  await assert.rejects(runCategory(cat, { country: "UK", energy: "gas" }), /Household energy prices are not available for GB/);
+  // GB household requests go to gb-ofgem-energy (Ofgem price cap, declared serves() pair with gb-desnz-energy-business, 23 Oct 2026)
+  assert.equal(pickSource(cat, { country: "UK", energy: "gas" }).src.info.id, "gb-ofgem-energy");
   await assert.rejects(runCategory(cat, { country: "IE", energy: "diesel" }), /energy must be/);
   await assert.rejects(runCategory(cat, { energy: "gas" }), /country is required/);
 });
