@@ -1,7 +1,7 @@
 // Tests for Australia saleyard livestock indicators (MLA NLRS). Fixture: real /report/5?indicatorID=0 reply captured via the GitHub probe on 2026-10-22.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { INDICATORS, INFO, auLivestock, livestockHarvest, livestockHarvestRows, livestockHistoryKey, matchIndicator, parseReport, readIndicator } from "./source";
+import { INDICATORS, INFO, auLivestock, lastServedDay, livestockHarvest, livestockHarvestRows, livestockHistoryKey, matchIndicator, parseReport, readIndicator } from "./source";
 import manifest from "./index";
 
 const row = (d: string, id: number, desc: string, units: string, head: number, v: number) => ({ calendar_date: d, species_id: "Cattle", indicator_id: id, indicator_desc: desc, indicator_units: units, head_count: head, indicator_value: v });
@@ -92,4 +92,14 @@ test("manifest is for AU in wholesale-fresh-food with a smoke example", () => {
   assert.deepEqual(manifest.countries, ["AU"]);
   assert.equal(INFO.id, "au-mla-livestock");
   assert.equal(typeof readIndicator, "function");
+});
+
+test("MLA date range ends yesterday in Australia (MLA refuses toDate = today: 'Please provide date range before today!')", async () => {
+  // 12:06 UTC on 23 Oct is 22:06 on 23 Oct in AEST: the last day MLA serves is 22 Oct (the UTC date would be refused).
+  assert.equal(lastServedDay(new Date("2026-10-23T12:06:00Z")), "2026-10-22");
+  // 16:00 UTC on 23 Oct is 02:00 on 24 Oct in AEST: 23 Oct is already served.
+  assert.equal(lastServedDay(new Date("2026-10-23T16:00:00Z")), "2026-10-23");
+  let asked = "";
+  await readIndicator(INDICATORS[0], new Date("2026-10-23T08:30:00Z"), 10, async (url) => { asked = url; return { data: [] }; });
+  assert.match(asked, /fromDate=2026-10-13&toDate=2026-10-22$/);
 });

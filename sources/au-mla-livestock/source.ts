@@ -128,8 +128,13 @@ export const daysBefore = (d: Date, n: number) => new Date(d.getTime() - n * 864
 export type Getter = (url: string) => Promise<any>;
 const get: Getter = (url) => fetchJson(url, {}, 20000);
 
+/** The last day MLA will serve: it answers HTTP 500 "Please provide date range before today!" when toDate is today in Australia,
+ *  so toDate is yesterday in AEST (UTC+10, no daylight saving in Queensland, where the NLRS day closes). Audit 23 Oct 2026: every
+ *  request from 00:00 to 14:00 UTC failed (toDate = the UTC date = today in AEST), so the daily harvest and the smoke test failed. */
+export const lastServedDay = (now: Date) => isoDay(daysBefore(new Date(now.getTime() + 10 * 3600000), 1));
+
 export async function readIndicator(ind: Indicator, today: Date, days: number, getter: Getter = get): Promise<Reading[]> {
-  const url = `${API}/report/5?indicatorID=${ind.id}&fromDate=${isoDay(daysBefore(today, days))}&toDate=${isoDay(today)}`;
+  const url = `${API}/report/5?indicatorID=${ind.id}&fromDate=${isoDay(daysBefore(today, days))}&toDate=${lastServedDay(today)}`;
   return parseReport(await getter(url));
 }
 
