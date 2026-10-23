@@ -1,0 +1,18 @@
+URL: https://public-api.prozorro.gov.ua/api/2.5/contracts?limit=3&descending=1&opt_fields=dateSigned%2Cvalue%2Cstatus%2Citems
+Fetched: 2026-10-23T18:45:00Z from GitHub Actions
+Status, type, bytes: 200 application/json 1060
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 18:45:00 GMT
+content-type: application/json
+content-length: 1060
+set-cookie: SESSION=eyJvcGVyYXRpb25fdGltZSI6IHsiJHRpbWVzdGFtcCI6IHsidCI6IDE3OTI3ODExMDAsICJpIjogM319LCAiY2x1c3Rlcl90aW1lIjogeyJjbHVzdGVyVGltZSI6IHsiJHRpbWVzdGFtcCI6IHsidCI6IDE3OTI3ODExMDAsICJpIjogM319LCAic2lnbmF0dXJlIjogeyJoYXNoIjogeyIkYmluYXJ5IjogeyJiYXNlNjQiOiAiUE1MSkVwbDNWU2tvdy9TSU1SWEZ3TWFQR1l3PSIsICJzdWJUeXBlIjogIjAwIn19LCAia2V5SWQiOiA3NjU3MjMwNzU4MDM3MTU5OTQ0fX19; Path=/
+x-content-type-options: nosniff
+x-request-id: req-919ee169-e1f1-4a37-b66e-9edff0fdbeda
+server: Prozorro
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"data": [{"dateModified": "2026-10-23T21:44:48.384274+03:00", "status": "pending", "id": "939743abf41c4381bffb855b3756541f"}, {"dateModified": "2026-10-23T21:44:32.666660+03:00", "status": "active", "id": "aed417efa17a4411be2e14ce831d2e92"}, {"dateModified": "2026-10-23T21:42:55.119421+03:00", "status": "pending", "id": "b4390ba8d2464fdb9c2d4df24fc37a77"}], "next_page": {"offset": "1792780975.152.1.e046ad2dd9b7dc34bdea555ae9d5264c", "path": "/api/2.5/contracts?limit=3&descending=1&opt_fields=status&offset=1792780975.152.1.e046ad2dd9b7dc34bdea555ae9d5264c", "uri": "https://public-api.prozorro.gov.ua/api/2.5/contracts?limit=3&descending=1&opt_fields=status&offset=1792780975.152.1.e046ad2dd9b7dc34bdea555ae9d5264c"}, "prev_page": {"offset": "1792781088.406.1.4c30ebfadb49807310948d85d32928e8", "path": "/api/2.5/contracts?limit=3&opt_fields=status&offset=1792781088.406.1.4c30ebfadb49807310948d85d32928e8", "uri": "https://public-api.prozorro.gov.ua/api/2.5/contracts?limit=3&opt_fields=status&offset=1792781088.406.1.4c30ebfadb49807310948d85d32928e8"}}
