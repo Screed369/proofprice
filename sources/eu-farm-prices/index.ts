@@ -1,7 +1,17 @@
 // Manifest: farm and wholesale food prices for EU member states (European Commission Agri-food data portal API). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { productHelp } from "./products";
+import { productHelp, resolveProduct } from "./products";
 import { COUNTRIES, euFarmPrices, INFO } from "./source";
+
+/** Product keys for which Luke (fi-luke-farm-prices) answers FI. A test in that folder checks both lists agree. */
+const LUKE_FI_PRODUCTS = ["pig", "beef", "young bull", "heifer", "cow", "calf", "lamb", "chicken", "eggs", "barn eggs", "free range eggs", "organic eggs", "cage eggs", "milk"];
+function productKey(raw: unknown): string {
+  try {
+    return resolveProduct(typeof raw === "string" ? raw : String(raw ?? "")).key;
+  } catch {
+    return "";
+  }
+}
 
 export default defineSource({
   info: INFO,
@@ -13,6 +23,9 @@ export default defineSource({
     "Not every country reports every product (olive oil: ES, IT, PT, GR and HR only; dairy products about 16 countries); the answer says when a product is missing.",
   placeName: "EU member states",
   status: "live",
+  // FI meat, milk and egg producer prices that Luke publishes go to fi-luke-farm-prices (declared serves() change, Gap fix
+  // G20261023-PLATFORM-SERVES-FI-FARM-US-DC part 1, same commit as that source); everything else for FI stays here.
+  serves: (p) => !(String(p.country ?? "").toUpperCase() === "FI" && LUKE_FI_PRODUCTS.includes(productKey(p.product))),
   paramNotes: {
     product:
       "EU: required. The product, by name; aliases such as 'pork', 'corn', 'tomato' are understood. Prices are weekly (raw milk monthly), per tonne for cereals and per 100 kg otherwise (piglets per head), " +
