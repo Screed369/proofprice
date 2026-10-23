@@ -1,6 +1,6 @@
 // Manifest: Finland home prices (official price per m² of old dwellings in housing companies, Statistics Finland). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { finlandHomePrices, INFO } from "./source";
+import { fiHarvest, fiHistoryKey, finlandHomePrices, INFO } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -36,4 +36,10 @@ export default defineSource({
       property_type: str(p.property_type),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector stores Statistics Finland's newest quarterly average for the country, regions and larger cities once a day
+  // (rows dated by the quarter's end, real transaction counts). Postcodes and smaller municipalities are not collected.
+  harvest: () => fiHarvest(),
+  historyKey: (p) => fiHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type) }),
+  referenceDates: true,
+  noHistory: "Finland: Statistics Finland publishes one average per quarter and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure, which carries the official change on the previous quarter and the year earlier.",
 });

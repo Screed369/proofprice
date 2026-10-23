@@ -17,6 +17,7 @@ import { parseJsonStat, periodRange, previousPeriod, resolveFetcher } from "../.
 import type { FetchOptions, JsonStatTable } from "../../lib/adapters";
 import type { SourceInfo } from "../../lib/plugin";
 import { confidenceLabel, MIN_PUBLISH } from "../../lib/stats";
+import type { DailyRow, HarvestResult } from "../../lib/plugin";
 import { FI_MUNICIPALITIES, FI_QUARTERLY_REGIONS } from "./places";
 
 export const INFO: SourceInfo = {
@@ -808,4 +809,93 @@ export async function finlandHomePrices(input: FinlandInput, o: FinlandOptions =
   const table = parseJsonStat(await post(url, query));
   const figure = readYearly(table, { time: time.code, municipality: muni.code, type: typeVar.code, contents: contents.code }, { price, count }, { municipality, building, buildingCodes: bc });
   return finlandAnswer(figure, { place, apis: { metadata_url: url, data_url: url, method: "POST", query }, ...common });
+}
+
+// ---------- daily collector (stale-if-error copy) ----------
+// pxdata.stat.fi sometimes times out from Vercel. Once a day the collector (GitHub Actions) stores, in ONE request to the quarterly table 15is,
+// the newest quarter's average price per m² and transaction count for the country, the regions, Greater Helsinki and every larger city, for
+// all building types, blocks of flats and terraced houses. Rows are dated by the last day of that quarter (referenceDates) and carry the real
+// count of transactions; a group with fewer than MIN_PUBLISH transactions is not stored. Postcodes and the smaller municipalities (yearly
+// tables) are not collected: those requests still fail honestly when Statistics Finland is down.
+
+const BUILDING_ITEMS: Building[] = ["any", "flat", "terraced"];
+
+/** Quarter code "2026Q2" -> its last day, "2026-06-30". */
+export function quarterEndDate(code: string): string {
+  const m = /^(\d{4})Q([1-4])\*?$/.exec(code);
+  if (!m) throw new SourceError(`Statistics Finland quarter not recognised: ${code}`);
+  return `${m[1]}-${["03-31", "06-30", "09-30", "12-31"][Number(m[2]) - 1]}`;
+}
+
+/** The quarterly regions the collector asks for: every place the answer code can route to table 15is, plus the country. */
+export function harvestRegions(available: string[]): string[] {
+  const have = new Set(available);
+  return Array.from(new Set(["SSS", ...PLACES.map((p) => p.quarterly).filter((c): c is string => !!c)])).filter((c) => have.has(c));
+}
+
+/** One row per region and building type that has a price and at least MIN_PUBLISH transactions in the newest quarter that has a country price. */
+export function harvestRows(table: JsonStatTable, v: QuarterlyVars, c: { price: string; count: string }, bc: Record<Building, string>): HarvestResult {
+  const cell = cubeOf(table);
+  const rooms = table.codes[v.rooms]?.[0] ?? "00";
+  const ts = times(table, v.time);
+  const get = (region: string, type: string, t: string, content: string) => cell({ [v.region]: region, [v.type]: type, [v.rooms]: rooms, [v.time]: t, [v.contents]: content });
+  const latest = [...ts].reverse().find((t) => positive(get("SSS", bc.any, t, c.price)) !== null);
+  if (!latest) throw new SourceError("Statistics Finland returned no national price per square metre to collect");
+  const rows: DailyRow[] = [];
+  for (const region of table.codes[v.region] ?? []) {
+    for (const b of BUILDING_ITEMS) {
+      const price = positive(get(region, bc[b], latest, c.price));
+      const n = get(region, bc[b], latest, c.count);
+      if (price === null || n === null || n < MIN_PUBLISH) continue;
+      rows.push({ area: region, item: b, n, median: price, low: price, high: price, min: price, max: price });
+    }
+  }
+  if (!rows.some((r) => r.area === "SSS" && r.item === "any")) throw new SourceError("Statistics Finland returned no national figure with enough transactions to collect");
+  const ref = isoPeriod(latest);
+  return {
+    date: quarterEndDate(latest),
+    currency: "EUR",
+    unit: "per m²",
+    rows,
+    note: `Statistics Finland table ${QUARTERLY}: average price per m² of old dwellings in housing companies, ${periodWords(ref)}, ${rows.length} region and building-type figures with at least ${MIN_PUBLISH} transactions each (the average itself, not single sales).`,
+  };
+}
+
+export async function fiHarvest(o: FinlandOptions = {}): Promise<HarvestResult> {
+  const get = resolveFetcher(o);
+  const post = poster(o);
+  const url = tableUrl(QUARTERLY, o.apiBase);
+  const meta = readMeta(await get(url));
+  const region = findVariable(meta, /^alue_/, "region");
+  const typeVar = findVariable(meta, /^talotyyppi_/, "building type");
+  const rooms = findVariable(meta, /^huoneluku_/, "number of rooms");
+  const time = findVariable(meta, /^timeperiod_/, "time");
+  const contents = findVariable(meta, /^contentscode$/, "information");
+  const bc = buildingCodes(typeVar);
+  const price = pick(contents.values, /keskineliohinta$/, "price per square metre");
+  const count = pick(contents.values, /kauppamaara_vvero$/, "number of transactions");
+  const roomTotal = rooms.values.find((x, i) => /total/i.test(rooms.valueTexts[i] ?? "")) ?? rooms.values[0];
+  const query = buildQuery([
+    [region.code, harvestRegions(region.values)],
+    [typeVar.code, [bc.any, bc.terraced, bc.flat]],
+    [rooms.code, [roomTotal]],
+    [time.code, lastOf(time.values, 3)],
+    [contents.code, [price, count]],
+  ]);
+  const table = parseJsonStat(await post(url, query));
+  return harvestRows(table, { region: region.code, type: typeVar.code, rooms: rooms.code, time: time.code, contents: contents.code }, { price, count }, bc);
+}
+
+/** Library key for a request: the table-15is region code and building type. Null when the copy cannot answer it (postcode, a municipality outside the quarterly table, houses). */
+export function fiHistoryKey(p: { town?: string; postcode?: string; property_type?: string }): { area: string; item: string; label: string } | null {
+  if (p.postcode && String(p.postcode).trim() !== "") return null;
+  try {
+    const type = normaliseType(p.property_type);
+    if (type === "house" || type === "detached") return null;
+    const place = resolvePlace(p.town);
+    if (!place.quarterly) return null;
+    return { area: place.quarterly, item: type, label: place.short };
+  } catch {
+    return null;
+  }
 }

@@ -5,6 +5,7 @@ import { InputError, SourceError } from "../../lib/http";
 import { categoryById, paramSchemas, runCategory, SOURCE_PLUGINS } from "../../lib/registry";
 import { confidenceLabel } from "../../lib/stats";
 import {
+  fiHarvest, fiHistoryKey, harvestRegions, harvestRows, quarterEndDate,
   ageNote, buildQuery, changeSentence, classifyPostcodeTypes, finlandAnswer, finlandHomePrices, findVariable, fold, INFO, isoPeriod, normalisePostcode, normaliseType,
   periodWords, PLACES, readMeta, readPostcode, readQuarterly, readYearly, resolvePlace, roomsPhrase, STATFIN_API, unavailableAnswer, yearEarlier,
 } from "./source";
@@ -442,4 +443,59 @@ test("fi-home-prices: routed by country through the shared home-sales tool (netw
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+// ---------- daily collector (stale-if-error copy) ----------
+
+test("fi-home-prices: harvest rows from the real 15is answer (newest quarter, real counts, five-record floor)", () => {
+  const meta = readMeta(META_15IS);
+  const bc = { any: "0", terraced: "1", flat: "3" } as any;
+  const v = { region: "alue_43_20260625", type: "talotyyppi_5_20111209", rooms: "huoneluku_1_20111212", time: "timeperiod_q", contents: "contentscode" };
+  const res = harvestRows(parseJsonStat(QUARTERLY_CITIES), v, { price: "ashivq_keskineliohinta", count: "ashivq_kauppamaara_vvero" }, bc);
+  assert.equal(res.date, "2026-06-30");
+  assert.equal(res.currency, "EUR");
+  assert.equal(res.unit, "per m²");
+  const country = res.rows.find((r) => r.area === "SSS" && r.item === "any")!;
+  assert.equal(country.median, 2465);
+  assert.ok(country.n >= 5 && Number.isInteger(country.n));
+  for (const r of res.rows) assert.ok(r.n >= 5 && r.median > 0 && r.low === r.median && r.high === r.median, JSON.stringify(r));
+  assert.ok(meta.variables.length === 5);
+});
+
+test("fi-home-prices: quarterEndDate and the regions the collector asks for", () => {
+  assert.equal(quarterEndDate("2026Q2"), "2026-06-30");
+  assert.equal(quarterEndDate("2025Q4*"), "2025-12-31");
+  assert.equal(quarterEndDate("2026Q1"), "2026-03-31");
+  assert.throws(() => quarterEndDate("2026"), SourceError);
+  const regs = harvestRegions(findVariable(readMeta(META_15IS), /^alue_/, "region").values);
+  assert.ok(regs.includes("SSS") && regs.includes("091") && regs.includes("MK06"));
+  assert.ok(!regs.includes("091-1"), "city sub-areas are not collected");
+});
+
+test("fi-home-prices: fiHarvest makes one metadata GET and one POST to 15is", async () => {
+  const r = rig({ [U15]: QUARTERLY_CITIES });
+  const res = await fiHarvest({ fetcher: r.fetcher, poster: r.poster });
+  assert.deepEqual(r.log.map((l) => [l.method, l.url]), [["GET", U15], ["POST", U15]]);
+  const q = r.log[1].body.query as Array<{ code: string; selection: { values: string[] } }>;
+  assert.deepEqual(q.map((x) => x.code), ["alue_43_20260625", "talotyyppi_5_20111209", "huoneluku_1_20111212", "timeperiod_q", "contentscode"]);
+  assert.ok(q[0].selection.values.includes("SSS"));
+  assert.deepEqual(q[4].selection.values, ["ashivq_keskineliohinta", "ashivq_kauppamaara_vvero"]);
+  assert.ok(res.rows.length > 0);
+});
+
+test("fi-home-prices: historyKey maps a request to the quarterly region and building type, null where the copy cannot answer", () => {
+  assert.deepEqual(fiHistoryKey({}), { area: "SSS", item: "any", label: "Finland" });
+  assert.deepEqual(fiHistoryKey({ town: "Helsinki", property_type: "flat" }), { area: "091", item: "flat", label: "Helsinki" });
+  assert.deepEqual(fiHistoryKey({ town: "Pirkanmaa", property_type: "terraced" })?.item, "terraced");
+  assert.equal(fiHistoryKey({ postcode: "00100" }), null);
+  assert.equal(fiHistoryKey({ town: "Helsinki", property_type: "house" }), null);
+  assert.equal(fiHistoryKey({ town: "Akaa" }), null); // yearly table only
+  assert.equal(fiHistoryKey({ town: "Nowhereville" }), null);
+});
+
+test("fi-home-prices: the manifest declares the collector and a library copy stands in when Statistics Finland is down", () => {
+  const plugin = SOURCE_PLUGINS.find((s) => s.info.id === "fi-home-prices")!;
+  assert.equal(typeof plugin.harvest, "function");
+  assert.equal(typeof plugin.historyKey, "function");
+  assert.equal(plugin.referenceDates, true);
 });
