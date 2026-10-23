@@ -68,16 +68,21 @@ test("product words map to indicators", () => {
   assert.equal(new Set(INDICATORS.map((i) => i.id)).size, 19);
 });
 
-test("harvest keeps only indicators with the newest day; n is the head count", async () => {
+test("harvest keeps indicators up to 2 days behind the newest day, drops older ones; n is the head count", async () => {
   const h = livestockHarvestRows([
-    { ind: INDICATORS[0], readings: parseReport(REPORT0) },
-    { ind: INDICATORS[16], readings: [{ date: "2026-10-20", value: 150, head: 40, desc: "Online Lamb Indicator", units: "$/head" }] },
+    { ind: INDICATORS[7], readings: [{ date: "2026-10-22", value: 1151.2, head: 1436, desc: "National Trade Lamb Indicator", units: "c/kg cwt" }] },
+    { ind: INDICATORS[0], readings: parseReport(REPORT0) }, // EYCI: newest day 2026-10-21, one day late
+    { ind: INDICATORS[16], readings: [{ date: "2026-10-18", value: 150, head: 40, desc: "Online Lamb Indicator", units: "$/head" }] }, // 4 days late: left out
   ]);
-  assert.equal(h.date, "2026-10-21");
-  assert.equal(h.rows.length, 1);
-  assert.equal(h.rows[0].item, "Eastern Young Cattle Indicator (AUD per kg carcase weight)");
-  assert.equal(h.rows[0].median, 9.879, "library rows in AUD, not cents");
-  assert.equal(h.rows[0].n, 2140);
+  assert.equal(h.date, "2026-10-22");
+  assert.deepEqual(h.rows.map((r) => r.item).sort(), ["Eastern Young Cattle Indicator (AUD per kg carcase weight)", "National Trade Lamb Indicator (AUD per kg carcase weight)"]);
+  const eyci = h.rows.find((r) => r.item.startsWith("Eastern"))!;
+  assert.equal(eyci.median, 9.879, "library rows in AUD, not cents");
+  assert.equal(eyci.n, 2140);
+  assert.match(h.note ?? "", /Eastern Young Cattle \(2026-10-21\)/, "the note says which indicators are a day late");
+  // the default "cattle" answer therefore has a library row to fall back on
+  const key = livestockHistoryKey({ product: "cattle" })!;
+  assert.ok(h.rows.some((r) => r.area === key.area && r.item === key.item));
   const full = await livestockHarvest(TODAY, get);
   assert.equal(full.rows.length, 19 > 0 ? full.rows.length : 0);
 });

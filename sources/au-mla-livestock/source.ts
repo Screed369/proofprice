@@ -219,22 +219,32 @@ export async function auLivestock(input: { product: string; region?: string; tod
 // Item names carry "AUD" since 22 Oct 2026, when the library switched from MLA's cents to dollars, so no series mixes the two units.
 export const livestockItem = (i: Indicator) => `${i.desc} (AUD ${unitShort(i.units)})`;
 
-/** Pure: one library row per indicator for the newest trading day any indicator has; indicators that lag behind it are left out. Each row's n is the head count. */
+/** Longest lag (days) behind the newest trading day for which an indicator still goes into the copy. MLA publishes the Eastern and Western
+ *  Young Cattle indicators and the dairy cow indicator a day or two after the others, so with a strict same-day rule the default
+ *  "cattle" answer never had a copy to fall back on (smoke 23 Oct 2026: cattle 502 while lamb was served from the library). */
+export const MAX_LAG_DAYS = 2;
+const dayNumber = (d: string) => Math.round(Date.parse(`${d}T00:00:00Z`) / 86400000);
+
+/** Pure: one library row per indicator, dated by the newest trading day any indicator has. An indicator whose own newest day is up to
+ *  MAX_LAG_DAYS earlier is kept (its value is its own newest, the note says which days) rather than dropped; older ones are left out.
+ *  Each row's n is the head count. */
 export function livestockHarvestRows(all: { ind: Indicator; readings: Reading[] }[]): HarvestResult {
   const latest = all.filter((a) => a.readings.length).map((a) => ({ ind: a.ind, r: a.readings[a.readings.length - 1] }));
   if (!latest.length) throw new SourceError("MLA returned no usable saleyard indicator");
   const date = latest.map((l) => l.r.date).sort().pop()!;
+  const kept = latest.filter((l) => dayNumber(date) - dayNumber(l.r.date) <= MAX_LAG_DAYS);
+  const lagging = kept.filter((l) => l.r.date !== date).map((l) => `${l.ind.desc.replace(/ Indicator$/, "")} (${l.r.date})`);
   return {
     date,
     currency: "AUD",
     unit: "per kg (carcase or live weight) or per head",
-    rows: latest
-      .filter((l) => l.r.date === date)
-      .map((l) => {
-        const v = toAud(l.r.value, l.ind.units);
-        return { area: "Australia", item: livestockItem(l.ind), n: l.r.head, median: v, low: v, high: v, min: v, max: v };
-      }),
-    note: "Meat & Livestock Australia NLRS saleyard indicators: weighted average auction prices for the trading day, in Australian dollars (converted from MLA's cents per kg); n is the number of animals sold.",
+    rows: kept.map((l) => {
+      const v = toAud(l.r.value, l.ind.units);
+      return { area: "Australia", item: livestockItem(l.ind), n: l.r.head, median: v, low: v, high: v, min: v, max: v };
+    }),
+    note:
+      "Meat & Livestock Australia NLRS saleyard indicators: weighted average auction prices for the trading day, in Australian dollars (converted from MLA's cents per kg); n is the number of animals sold." +
+      (lagging.length ? ` MLA publishes some indicators a day or two late; their newest trading day is kept: ${lagging.join(", ")}.` : ""),
   };
 }
 
