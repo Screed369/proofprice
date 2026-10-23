@@ -141,8 +141,17 @@ export async function esFuelNow(input: {
   const s = summarise(picked.map((x) => x.price));
   const day = fechaToIso(fecha);
   // Niche fuels (LPG, methane) are sold at few stations: a thin province gets the labelled national figure, never a bare refusal.
-  if ((!s || s.count < 5) && !cp && !input.town && ES_NICHE.has(input.fuel)) {
-    const wide = esWidenToNational(input.fuel, `province ${province}`, input.baseUrl);
+  if ((!s || s.count < 5) && ES_NICHE.has(input.fuel)) {
+    // A thin town: its whole province when that has 5 or more stations; otherwise (and for a thin province) the national figure.
+    if (input.town && !cp) {
+      const prov = summarise(all.map((x) => x.price));
+      if (prov && prov.count >= 5) {
+        const sentence = `Fewer than 5 stations sell ${FUEL_LABEL[input.fuel]} in ${input.town}, so no local range is published; this is the figure for province ${province} instead.`;
+        const a = await esFuelNow({ area: province, fuel: input.fuel, baseUrl: input.baseUrl });
+        return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}`, extra: { ...a.extra, widened: true, widened_from: input.town, widened_to: `province ${province}` } };
+      }
+    }
+    const wide = esWidenToNational(input.fuel, cp ? `postcode ${cp}` : input.town ?? `province ${province}`, input.baseUrl);
     if (wide) return wide;
   }
   const cheapest = [...picked].sort((a, b) => a.price - b.price).slice(0, 3).map(({ province, ...s }) => s);

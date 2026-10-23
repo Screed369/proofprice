@@ -93,3 +93,20 @@ test("ES: a thin province (LPG in 42) gets the labelled national figure; no libr
   assert.equal(m!.price!.unit, "per kg");
   assert.equal(esWidenToNational("lpg", "province 42", undefined, new Date("2026-01-01T12:00:00Z")), null);
 });
+
+test("ES: a thin town (LPG) is widened to its province when that has 5+ stations, labelled", async () => {
+  const { esFuelNow } = await import("./source");
+  const st = (town: string, p: string) => ({ "C.P.": "44001", Localidad: town, IDProvincia: "44", "Tipo Venta": "P", "Precio Gases licuados del petróleo": p, "Dirección": "x", "Rótulo": "y", IDEESS: "1" });
+  const list = [st("TERUEL", "0,80"), st("ALCAÑIZ", "0,81"), st("ALCAÑIZ", "0,82"), st("CALAMOCHA", "0,83"), st("MONREAL", "0,84"), st("UTRILLAS", "0,85")];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async () => new Response(JSON.stringify({ Fecha: "22/10/2026 8:00:00", ListaEESSPrecio: list }), { status: 200, headers: { "content-type": "application/json" } })) as any;
+  try {
+    const a = await esFuelNow({ area: "44", town: "Teruel", fuel: "lpg" });
+    assert.equal(a.status, "ok");
+    assert.equal((a.extra as any).widened_from, "Teruel");
+    assert.equal((a.extra as any).widened_to, "province 44");
+    assert.match(a.summary, /Fewer than 5 stations sell .* in Teruel.*province 44 instead/);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

@@ -198,3 +198,28 @@ test("FR: a thin department (LPG in 08) gets the labelled national figure; commo
   assert.equal(frWidenToNational({ department: "08", fuel: "gazole", today }, "department 08"), null);
   assert.equal(frWidenToNational({ department: "08", fuel: "gplc", today: "2026-01-01" }, "department 08"), null); // no recent library day
 });
+
+test("FR: a thin postcode (LPG) is widened to its department when that has 5+ stations, labelled", async () => {
+  const { frFuelNow } = await import("./source");
+  const rec = (i: number, cp: string) => ({ id: String(i), adresse: "x", ville: "Charleville", cp, code_departement: "08", gplc_prix: 0.9 + i / 100, gplc_maj: "2026-10-21T10:00:00+00:00" });
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async (url: any) => {
+    const u = decodeURIComponent(String(url));
+    const results = /cp="08000"/.test(u) ? [rec(1, "08000"), rec(2, "08000")] : [1, 2, 3, 4, 5, 6].map((i) => rec(i, "0810" + i));
+    return new Response(JSON.stringify({ results }), { status: 200, headers: { "content-type": "application/json" } });
+  }) as any;
+  try {
+    const a = await frFuelNow({ postcode: "08000", fuel: "gplc", today: "2026-10-22" });
+    assert.equal(a.status, "ok");
+    assert.equal((a.extra as any).widened, true);
+    assert.equal((a.extra as any).widened_from, "postcode 08000");
+    assert.equal((a.extra as any).widened_to, "department 08");
+    assert.match(a.summary, /Fewer than 5 stations sell LPG \(GPLc\) in postcode 08000.*department 08 instead/);
+    assert.ok(a.sample_size! >= 5);
+    // diesel is never widened
+    const d = await frFuelNow({ postcode: "08000", fuel: "gazole", today: "2026-10-22" });
+    assert.notEqual((d.extra as any)?.widened, true);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

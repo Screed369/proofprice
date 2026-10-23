@@ -161,8 +161,26 @@ export async function frFuelNow(input: {
     const wide = frWidenToNational(input, area, local.extra?.stations_counted as number | undefined);
     if (wide) return wide;
   }
+  // A thin postcode (few LPG/E85 stations): first its whole department when that has 5 or more, then the national figure.
+  if (local.status !== "ok" && input.postcode && frIsNiche(input.fuel)) {
+    const cp = input.postcode.replace(/[^0-9]/g, "").slice(0, 5);
+    const dep = frDepartment({ cp });
+    if (dep) {
+      const deptAnswer = await frFuelNow({ department: dep, fuel: input.fuel, today: input.today, baseUrl: input.baseUrl });
+      const sentence = `Fewer than 5 stations sell ${FUEL_LABEL[input.fuel]} in postcode ${cp}, so no postcode range is published; this is the figure for department ${dep} instead.`;
+      if (deptAnswer.status === "ok" && !(deptAnswer.extra as any)?.widened) {
+        return { ...deptAnswer, summary: `${sentence} ${deptAnswer.summary}`, notice: `${sentence} ${deptAnswer.notice}`, extra: { ...deptAnswer.extra, widened: true, widened_from: `postcode ${cp}`, widened_to: `department ${dep}` } };
+      }
+      if (deptAnswer.status === "ok" && (deptAnswer.extra as any)?.widened) {
+        return { ...deptAnswer, extra: { ...deptAnswer.extra, widened_from: `postcode ${cp}` } };
+      }
+    }
+  }
   return local;
 }
+
+/** LPG and E85 are sold at few stations, so a thin local area may be widened (diesel and petrol never are). */
+export const frIsNiche = (fuel: FrFuel) => fuel === "gplc" || fuel === "e85";
 
 /** The national (metropolitan France) library row for this fuel, as a labelled answer; null when the library has none. */
 export function frWidenToNational(
