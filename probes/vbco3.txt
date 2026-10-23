@@ -1,0 +1,797 @@
+URL: https://www.datos.gov.co/api/views/ytme-6qnu.json
+Fetched: 2026-10-23T07:43:44Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 26085
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 23 Oct 2026 07:43:44 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 4a33ba13804ee60ba764094d5d357931
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{
+  "id" : "ytme-6qnu",
+  "name" : "Tarifas y Costos de Energía Eléctrica para el Mercado Regulado",
+  "assetType" : "dataset",
+  "attribution" : "E.S.P. Empresas Públicas de Medellín - EPM, Antioquia",
+  "attributionLink" : "https://www.epm.com.co/clientesyusuarios/energia/tarifas-energia/",
+  "averageRating" : 0,
+  "category" : "Minas y Energía",
+  "createdAt" : 1733343019,
+  "description" : "En cumplimiento de las Leyes 142 de 1994 y 1955 de 2019, y las Resoluciones CREG (Comisión de Regulación de Energía y Gas) 058 de 2000, 119 de 2007, 105 de 2009, 156 de 2009, 173 de 2011, 152 de 2018 y 101028 de 2023, este conjunto de datos proporciona información detallada sobre las tarifas y costos de energía eléctrica en el mercado regulado.\n\nLos datos incluyen información sobre las tarifas de energía, el costo de compra de energía, los cargos de transporte en los sistemas de transmisión y distribución, los márgenes de comercialización, costos relacionados con generación y pérdidas, así como otros factores operativos que influyen en el precio final que los usuarios deben pagar. Además, se desglosan por tipo de propiedad (Operador de Red, Propiedad Compartida, Propiedad Cliente) y se dividen en diferentes niveles de tensión eléctrica.\n\nEste conjunto de datos está diseñado para facilitar el análisis de las tarifas y costos eléctricos en distintas regiones y periodos, proporcionando una visión clara de los componentes que afectan el precio de la energía para los usuarios del mercado regulado.\n\nLos datos abarcan el periodo de enero de 2024 a mayo de 2026.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 777,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "CC_40_BY_SA",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 40992987,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1733345308,
+  "publicationGroup" : 19706037,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1784125629,
+  "rowsUpdatedBy" : "2hkq-c8bw",
+  "tableId" : 19706037,
+  "totalTimesRated" : 0,
+  "viewCount" : 15027,
+  "viewLastModified" : 1784125629,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1738077878,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 6697757,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1737999031,
+    "targetAudience" : "public",
+    "workflowId" : 2188,
+    "reviewer" : {
+      "id" : "r4qn-dwdd",
+      "displayName" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+    },
+    "submissionDetails" : {
+      "permissionType" : "read"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1738077878,
+      "failureCount" : 0,
+      "startedAt" : 1738077878,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "2hkq-c8bw",
+      "displayName" : "EPM"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 602485178,
+    "name" : "Año",
+    "dataTypeName" : "number",
+    "description" : "El año en el que se registran los datos sobre tarifas y costos de energía eléctrica. Ejemplo: 2024",
+    "fieldName" : "a_o",
+    "position" : 1,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155745822,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "2025",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2024",
+        "count" : "240"
+      }, {
+        "item" : "2025",
+        "count" : "175"
+      } ],
+      "smallest" : "2024",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 602485177,
+    "name" : "Periodo",
+    "dataTypeName" : "text",
+    "description" : "El mes o período específico dentro del año al que corresponde la tarifa o costo de energía.",
+    "fieldName" : "periodo",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 155745821,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "Septiembre",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Agosto",
+        "count" : "40"
+      }, {
+        "item" : "Julio",
+        "count" : "40"
+      }, {
+        "item" : "Febrero",
+        "count" : "40"
+      }, {
+        "item" : "Marzo",
+        "count" : "40"
+      }, {
+        "item" : "Mayo",
+        "count" : "40"
+      }, {
+        "item" : "Junio",
+        "count" : "40"
+      }, {
+        "item" : "Enero",
+        "count" : "40"
+      }, {
+        "item" : "Abril",
+        "count" : "40"
+      }, {
+        "item" : "Septiembre",
+        "count" : "35"
+      }, {
+        "item" : "Noviembre",
+        "count" : "20"
+      }, {
+        "item" : "Octubre",
+        "count" : "20"
+      }, {
+        "item" : "Diciembre",
+        "count" : "20"
+      } ],
+      "smallest" : "Abril",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : { }
+  }, {
+    "id" : 602485176,
+    "name" : "Operador de red",
+    "dataTypeName" : "text",
+    "description" : "La empresa responsable de la distribución de energía eléctrica en una zona específica.",
+    "fieldName" : "operador_de_red",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 155745820,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "ENEL Bogotá - Cundinamarca",
+      "null" : "0",
+      "top" : [ {
+        "item" : "ENEL Bogotá - Cundinamarca",
+        "count" : "105"
+      }, {
+        "item" : "EMCALI - Cali",
+        "count" : "105"
+      }, {
+        "item" : "CELSIA - Tolima",
+        "count" : "60"
+      }, {
+        "item" : "CELSIA - Valle del Cauca",
+        "count" : "60"
+      }, {
+        "item" : "CELSIA Colombia - Valle del Cauca",
+        "count" : "45"
+      }, {
+        "item" : "CELSIA Colombia - Tolima",
+        "count" : "40"
+      } ],
+      "smallest" : "CELSIA Colombia - Tolima",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : { }
+  }, {
+    "id" : 602485175,
+    "name" : "Nivel",
+    "dataTypeName" : "text",
+    "description" : "La categoría del servicio eléctrico, que puede incluir diferentes tipos de tensión como Baja Tensión (B.T.), Media Tensión (M.T.) o Alta Tensión (A.T.).",
+    "fieldName" : "nivel",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 155745819,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "NIVEL III",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Nivel 1 (Propiedad Compartida)",
+        "count" : "83"
+      }, {
+        "item" : "NIVEL II",
+        "count" : "83"
+      }, {
+        "item" : "NIVEL III",
+        "count" : "83"
+      }, {
+        "item" : "Nivel 1 ( Propiedad OR )",
+        "count" : "48"
+      }, {
+        "item" : "Nivel 1  (Propiedad Cliente)",
+        "count" : "48"
+      }, {
+        "item" : "Nivel 1 (Propiedad OR)",
+        "count" : "35"
+      }, {
+        "item" : "Nivel 1 (Propiedad Cliente)",
+        "count" : "35"
+      } ],
+      "smallest" : "Nivel 1  (Propiedad Cliente)",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : { }
+  }, {
+    "id" : 602485174,
+    "name" : "CU Total",
+    "dataTypeName" : "number",
+    "description" : "El costo total por kilovatio hora (kWh) que los usuarios deben pagar por la electricidad, incluyendo todos los cargos.",
+    "fieldName" : "cu_total",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155745818,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "1020.65",
+      "null" : "0",
+      "top" : [ {
+        "item" : "762.11",
+        "count" : "2"
+      }, {
+        "item" : "743.41",
+        "count" : "2"
+      }, {
+        "item" : "720.65",
+        "count" : "2"
+      }, {
+        "item" : "577.78",
+        "count" : "1"
+      }, {
+        "item" : "754.74",
+        "count" : "1"
+      }, {
+        "item" : "598.57",
+        "count" : "1"
+      }, {
+        "item" : "730.59",
+        "count" : "1"
+      }, {
+        "item" : "832.08",
+        "count" : "1"
+      }, {
+        "item" : "552.9",
+        "count" : "1"
+      }, {
+        "item" : "750.9",
+        "count" : "1"
+      }, {
+        "item" : "618.77",
+        "count" : "1"
+      }, {
+        "item" : "776.81",
+        "count" : "1"
+      }, {
+        "item" : "588.13",
+        "count" : "1"
+      }, {
+        "item" : "581.22",
+        "count" : "1"
+      }, {
+        "item" : "698.07",
+        "count" : "1"
+      }, {
+        "item" : "578.58",
+        "count" : "1"
+      }, {
+        "item" : "835.29",
+        "count" : "1"
+      }, {
+        "item" : "810.46",
+        "count" : "1"
+      }, {
+        "item" : "845.46",
+        "count" : "1"
+      }, {
+        "item" : "588.54",
+        "count" : "1"
+      } ],
+      "smallest" : "497.89",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 602485173,
+    "name" : "Costo Compra (Gm,i)",
+    "dataTypeName" : "number",
+    "description" : "El precio que paga el operador de red por la electricidad comprada a los generadores.",
+    "fieldName" : "costo_compra_gm_i",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155745817,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "394.58",
+      "null" : "0",
+      "top" : [ {
+        "item" : "289.09",
+        "count" : "20"
+      }, {
+        "item" : "293.46",
+        "count" : "20"
+      }, {
+        "item" : "295.82",
+        "count" : "20"
+      }, {
+        "item" : "300.4",
+        "count" : "10"
+      }, {
+        "item" : "291.69",
+        "count" : "5"
+      }, {
+        "item" : "269.3",
+        "count" : "5"
+      }, {
+        "item" : "354.35",
+        "count" : "5"
+      }, {
+        "item" : "296.78",
+        "count" : "5"
+      }, {
+        "item" : "306.81",
+        "count" : "5"
+      }, {
+        "item" : "347.38",
+        "count" : "5"
+      }, {
+        "item" : "372.78",
+        "count" : "5"
+      }, {
+        "item" : "322.71",
+        "count" : "5"
+      }, {
+        "item" : "355.18",
+        "count" : "5"
+      }, {
+        "item" : "310.57",
+        "count" : "5"
+      }, {
+        "item" : "306.03",
+        "count" : "5"
+      }, {
+        "item" : "299.77",
+        "count" : "5"
+      }, {
+        "item" : "306.54",
+        "count" : "5"
+      }, {
+        "item" : "305.8",
+        "count" : "5"
+      }, {
+        "item" : "367.28",
+        "count" : "5"
+      }, {
+        "item" : "299.1",
+        "count" : "5"
+      } ],
+      "smallest" : "265.06",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 602485172,
+    "name" : "Cargo Transporte STN (Tm)",
+    "dataTypeName" : "number",
+    "description" : "El costo asociado al transporte de electricidad a través del Sistema de Transmisión Nacional (STN), que es la red de alta tensión que lleva la electricidad de los generadores a las subestaciones.",
+    "fieldName" : "cargo_transporte_stn_tm",
+    "position" : 7,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155745816,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "62.2",
+      "null" : "0",
+      "top" : [ {
+        "item" : "52.84",
+        "count" : "20"
+      }, {
+        "item" : "56.93",
+        "count" : "20"
+      }, {
+        "item" : "53.84",
+        "count" : "20"
+      }, {
+        "item" : "57.14",
+        "count" : "20"
+      }, {
+        "item" : "48.55",
+        "count" : "20"
+      }, {
+        "item" : "52.27",
+        "count" : "20"
+      }, {
+        "item" : "49.85",
+        "count" : "20"
+      }, {
+        "item" : "55.93",
+        "count" : "20"
+      }, {
+        "item" : "54.69",
+        "count" : "20"
+      }, {
+        "item" : "56.76",
+        "count" : "20"
+      }, {
+        "item" : "54.32",
+        "count" : "20"
+      }, {
+        "item" : "58.19",
+        "count" : "20"
+      }, {
+        "item" : "49.2",
+        "count" : "20"
+      }, {
+        "item" : "55.37",
+        "count" : "20"
+      }, {
+        "item" : "47.96",
+        "count" : "20"
+      }, {
+        "item" : "62.2",
+        "count" : "20"
+      }, {
+        "item" : "56.03",
+        "count" : "20"
+      }, {
+        "item" : "56.28",
+        "count" : "20"
+      }, {
+        "item" : "54.27",
+        "count" : "20"
+      }, {
+        "item" : "57.43",
+        "count" : "20"
+      } ],
+      "smallest" : "47.96",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 602485171,
+    "name" : "Cargo Transporte SDL (Dn,m)",
+    "dataTypeName" : "number",
+    "description" : "El costo asociado al transporte de electricidad en el Sistema de Distribución Local (SDL), que distribuye la electricidad desde las subestaciones hasta los usuarios finales.",
+    "fieldName" : "cargo_transporte_sdl_dn_m",
+    "position" : 8,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155745815,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "305.19",
+      "null" : "0",
+      "top" : [ {
+        "item" : "156.92",
+        "count" : "2"
+      }, {
+        "item" : "157.28",
+        "count" : "2"
+      }, {
+        "item" : "159.98",
+        "count" : "2"
+      }, {
+        "item" : "153.8",
+        "count" : "2"
+      }, {
+        "item" : "254.7",
+        "count" : "2"
+      }, {
+        "item" : "263.15",
+        "count" : "2"
+      }, {
+        "item" : "170.73",
+        "count" : "2"
+      }, {
+        "item" : "264.36",
+        "count" : "2"
+      }, {
+        "item" : "97.6",
+        "count" : "2"
+      }, {
+        "item" : "94.37",
+        "count" : "2"
+      }, {
+        "item" : "153.46",
+        "count" : "2"
+      }, {
+        "item" : "261.35",
+        "count" : "2"
+      }, {
+        "item" : "187.57",
+        "count" : "2"
+      }, {
+        "item" : "257.12",
+        "count" : "2"
+      }, {
+        "item" : "276.93",
+        "count" : "2"
+      }, {
+        "item" : "188.35",
+        "count" : "2"
+      }, {
+        "item" : "113.66",
+        "count" : "2"
+      }, {
+        "item" : "265.73",
+        "count" : "2"
+      }, {
+        "item" : "162.58",
+        "count" : "2"
+      }, {
+        "item" : "95.15",
+        "count" : "2"
+      } ],
+      "smallest" : "87.79",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 602485170,
+    "name" : "Margen Comercialización (CVm,i,j)",
+    "dataTypeName" : "number",
+    "description" : "El costo adicional que cubre la comercialización de la electricidad, incluyendo los gastos de operación y transacción del operador de red.",
+    "fieldName" : "margen_comercializaci_n_cvm",
+    "position" : 9,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155745814,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "217.19",
+      "null" : "0",
+      "top" : [ {
+        "item" : "21.01",
+        "count" : "10"
+      }, {
+        "item" : "22.79",
+        "count" : "10"
+      }, {
+        "item" : "99.7",
+        "count" : "6"
+      }, {
+        "item" : "190",
+        "count" : "6"
+      }, {
+        "item" : "84.36",
+        "count" : "6"
+      }, {
+        "item" : "23.73",
+        "count" : "5"
+      }, {
+        "item" : "23.97",
+        "count" : "5"
+      }, {
+        "item" : "70.27",
+        "count" : "5"
+      }, {
+        "item" : "29.03",
+        "count" : "5"
+      }, {
+        "item" : "25.48",
+        "count" : "5"
+      }, {
+        "item" : "24.76",
+        "count" : "5"
+      }, {
+        "item" : "22.97",
+        "count" : "5"
+      }, {
+        "item" : "23.88",
+        "count" : "5"
+      }, {
+        "item" : "25.96",
+        "count" : "5"
+      }, {
+        "item" : "68.14",
+        "count" : "5"
+      }, {
+        "item" : "112.06",
+        "count" : "5"
+      }, {
+        "item" : "22.22",
+        "count" : "5"
+      }, {
+        "item" : "23.31",
+        "count" : "5"
+      }, {
+        "item" : "66.18",
+        "count" : "5"
+      }, {
+        "item" : "67.93",
+        "count" : "5"
+      } ],
+      "smallest" : "21.01",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 602485169,
+    "name" : "Costo G, T, Pérdidas (PRn,m)",
+    "dataTypeName" : "number",
+    "description" : "Los costos asociados a la generación, transmisión y pérdidas de energía durante su transporte por la red, debido a la resistencia y otros factores.",
+    "fieldName" : "costo_g_t_p_rdidas_prn_m",
+    "position" : 10,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155745813,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "87.34",
+      "null" : "0",
+      "top" : [ {
+        "item" : "59.71",
+        "count" : "6"
+      }, {
+        "item" : "84.72",
+        "count" : "3"
+      }, {
+        "item" : "66.09",
+        "count" : "3"
+      }, {
+        "item" : "45.73",
+        "count" : "3"
+      }, {
+        "item" : "58.26",
+        "count" : "3"
+      }, {
+        "item" : "70.63",
+        "count" : "3"
+      }, {
+        "item" : "85.13",
+        "count" : "3"
+      }, {
+        "item" : "70.5",
+        "count" : "3"
+      }, {
+        "item" : "49.78",
+        "count" : "3"
+      }, {
+        "item" : "61.83",
+        "count" : "3"
+      }, {
+        "item" : "70.76",
+        "count" : "3"
+      }, {
+        "item" : "68.1",
+        "count" : "3"
+      }, {
+        "item" : "60.3",
+        "count" : "3"
+      }, {
+        "item" : "84.8",
+        "count" : "3"
+      }, {
+        "item" : "70.13",
+        "count" : "3"
+      }, {
+        "item" : "66.53",
+        "count" : "3"
+      }, {
+        "item" : "56.8",
+        "count" : "3"
+      }, {
+        "item" : "45.28",
+        "count" : "3"
+      }, {
+        "item" : "67.72",
+        "count" : "3"
+      }, {
+        "item" : "55.87",
+        "count" : "3"
+      } ],
+      "smallest" : "18.33",
+      "count" : "415",
+      "cardinality" : "415"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 602485168,
+    "name" : "Restricciones (Rm)",
+    "dataTypeName" : "number",
+    "description" : "Costos adicionales que surgen debido a las restricciones técnicas o de operación en la red eléctrica.",
+    "fieldName" : "restricciones_rm",
+    "position" : 11,
+    "renderTypeName" : "number",
+    "tableColumnId" : 155745812,
+    "cachedContents" : {
+      "non_null" : "415",
+      "largest" : "75.11",
+      "null" : "0",
+      "top" : [ {
+        "item" : "46.81",
+        "count" : "15"
+      }, {
+        "item" : "4.96",
+        "count" : "15"
+      }, {
+        "item" : "26.57",
+        "count" : "15"
+      }, {
+        "item" : "22.85",
+        "count" : "15"
+      }, {
+        "item" : "8.31",
+        "count" : "15"
+      }, {
+        "item" : "4.44",
+        "count" : "15"
+      }, {
+        "item" : "38.01",
+        "count" : "15"
+      }, {
+        "item" : "39.5",
+        "count" : "15"
+      }, {
+        "item" : "22.46",
+        "count" : "15"
+      }, {
+        "item" : "3.71",
+        "count" : "15"
+      }, {
+        "item" : "28.88",
+        "count" : "15"
+      }, {
+        "item" : "43.2",
+        "count" : "15"
+      }, {
+        "item" : "30.46",
+        "count" : "15"
+      }, {
+        "item" : "37.14",
+        "count" : "15"
+      }, {
+        "item" : "49.18",
+        "count" : "15"
+      }, {
+        "item" : "1.56",
+        "co
