@@ -1,0 +1,26 @@
+URL: https://api-production.data.gov.sg/v2/public/api/datasets/d_44cfe12f2858ae503a093dfc075a28be/list-rows?limit=6
+Fetched: 2026-10-23T13:43:56Z from GitHub Actions
+Status, type, bytes: 200 application/json 1921
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 13:43:56 GMT
+content-type: application/json
+content-length: 1921
+cf-ray: a4f12c6dcc837803-SJC
+cf-cache-status: DYNAMIC
+access-control-allow-origin: *
+server: cloudflare
+cf-placement: remote-SIN
+x-amz-apigw-id: FsyocGPTyQ0EWBA=
+x-amzn-requestid: 0d65a4ca-17e7-4240-aefc-0df255fbda73
+x-amzn-trace-id: Root=1-6adb649b-2bd9957a082ad22408bb5bf7
+x-dgs-request-id: a4f12c6dcc837803
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+vary: accept-encoding
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"code":0,"data":{"rows":[{"vault_id":"1","centre_code":"EB0001","centre_name":"E-BRIDGE PRE-SCHOOL PTE. LTD.","class_of_licence":"Class B (Child Care)","type_of_service":"Full Day","levels_offered":"Kindergarten 1 (5 yrs old)","fees":"1125","type_of_citizenship":"Others","last_updated":"2026-07-17","remarks":"na"},{"vault_id":"2","centre_code":"EB0001","centre_name":"E-BRIDGE PRE-SCHOOL PTE. LTD.","class_of_licence":"Class B (Child Care)","type_of_service":"Full Day","levels_offered":"Kindergarten 1 (5 yrs old)","fees":"610","type_of_citizenship":"SC","last_updated":"2026-07-17","remarks":"na"},{"vault_id":"3","centre_code":"EB0001","centre_name":"E-BRIDGE PRE-SCHOOL PTE. LTD.","class_of_licence":"Class B (Child Care)","type_of_service":"Full Day","levels_offered":"Kindergarten 1 (5 yrs old)","fees":"835","type_of_citizenship":"SPR","last_updated":"2026-07-17","remarks":"na"},{"vault_id":"4","centre_code":"EB0001","centre_name":"E-BRIDGE PRE-SCHOOL PTE. LTD.","class_of_licence":"Class B (Child Care)","type_of_service":"Full Day","levels_offered":"Kindergarten 2 (6 yrs old)","fees":"1125","type_of_citizenship":"Others","last_updated":"2026-07-17","remarks":"na"},{"vault_id":"5","centre_code":"EB0001","centre_name":"E-BRIDGE PRE-SCHOOL PTE. LTD.","class_of_licence":"Class B (Child Care)","type_of_service":"Full Day","levels_offered":"Kindergarten 2 (6 yrs old)","fees":"610","type_of_citizenship":"SC","last_updated":"2026-07-17","remarks":"na"},{"vault_id":"6","centre_code":"EB0001","centre_name":"E-BRIDGE PRE-SCHOOL PTE. LTD.","class_of_licence":"Class B (Child Care)","type_of_service":"Full Day","levels_offered":"Kindergarten 2 (6 yrs old)","fees":"835","type_of_citizenship":"SPR","last_updated":"2026-07-17","remarks":"na"}],"datasetId":"d_44cfe12f2858ae503a093dfc075a28be","datasetName":"Listing of Centre Services","limit":6,"links":{"next":"idCursor%5Bvalue%5D=6&limit=6"}},"errorMsg":""}
