@@ -1,0 +1,33 @@
+URL: https://www.datos.gov.co/resource/ytme-6qnu.json?$order=a_o%20DESC,periodo%20DESC&$limit=6&$where=nivel%20like%20%27Nivel%201%25%27
+Fetched: 2026-10-23T07:43:42Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2228
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 23 Oct 2026 07:43:42 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuNjMzMjFfMV8yMndid0h3Qm9Iei1YOEI5WHN0RkxmdlNJZU5yVQ---gzisAUUPiWk5FLkZ6HB9sUqeuvqMSj--gzip--gzip"
+X-SODA2-Fields: ["a_o","periodo","operador_de_red","nivel","cu_total","costo_compra_gm_i","cargo_transporte_stn_tm","cargo_transporte_sdl_dn_m","margen_comercializaci_n_cvm","costo_g_t_p_rdidas_prn_m","restricciones_rm","cot","cfm_j_fact"]
+X-SODA2-Types: ["number","text","text","text","number","number","number","number","number","number","number","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 2bff5c4f47bf6ef44faa59f2b0602fa9
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+[{"a_o":"2025","periodo":"Septiembre","operador_de_red":"EMCALI - Cali","nivel":"Nivel 1 (Propiedad OR)","cu_total":"725.89","costo_compra_gm_i":"306.98","cargo_transporte_stn_tm":"51.66","cargo_transporte_sdl_dn_m":"261.97","margen_comercializaci_n_cvm":"23.73","costo_g_t_p_rdidas_prn_m":"51.08","restricciones_rm":"30.46","cot":"0","cfm_j_fact":"9.721"}
+,{"a_o":"2025","periodo":"Septiembre","operador_de_red":"CELSIA Colombia - Valle del Cauca","nivel":"Nivel 1 (Propiedad Cliente)","cu_total":"668.33","costo_compra_gm_i":"305.8","cargo_transporte_stn_tm":"51.66","cargo_transporte_sdl_dn_m":"191.09","margen_comercializaci_n_cvm":"29.03","costo_g_t_p_rdidas_prn_m":"60.29","restricciones_rm":"30.46","cot":"0","cfm_j_fact":"16.841"}
+,{"a_o":"2025","periodo":"Septiembre","operador_de_red":"CELSIA Colombia - Valle del Cauca","nivel":"Nivel 1 (Propiedad Compartida)","cu_total":"703.77","costo_compra_gm_i":"305.8","cargo_transporte_stn_tm":"51.66","cargo_transporte_sdl_dn_m":"226.53","margen_comercializaci_n_cvm":"29.03","costo_g_t_p_rdidas_prn_m":"60.29","restricciones_rm":"30.46","cot":"0","cfm_j_fact":"16.841"}
+,{"a_o":"2025","periodo":"Septiembre","operador_de_red":"CELSIA Colombia - Valle del Cauca","nivel":"Nivel 1 (Propiedad OR)","cu_total":"739.21","costo_compra_gm_i":"305.8","cargo_transporte_stn_tm":"51.66","cargo_transporte_sdl_dn_m":"261.97","margen_comercializaci_n_cvm":"29.03","costo_g_t_p_rdidas_prn_m":"60.29","restricciones_rm":"30.46","cot":"0","cfm_j_fact":"16.841"}
+,{"a_o":"2025","periodo":"Septiembre","operador_de_red":"EMCALI - Cali","nivel":"Nivel 1 (Propiedad Cliente)","cu_total":"697.2","costo_compra_gm_i":"306.98","cargo_transporte_stn_tm":"51.66","cargo_transporte_sdl_dn_m":"233.28","margen_comercializaci_n_cvm":"23.73","costo_g_t_p_rdidas_prn_m":"51.08","restricciones_rm":"30.46","cot":"0","cfm_j_fact":"9.721"}
+,{"a_o":"2025","periodo":"Septiembre","operador_de_red":"EMCALI - Cali","nivel":"Nivel 1 (Propiedad Compartida)","cu_total":"711.54","costo_compra_gm_i":"306.98","cargo_transporte_stn_tm":"51.66","cargo_transporte_sdl_dn_m":"247.63","margen_comercializaci_n_cvm":"23.73","costo_g_t_p_rdidas_prn_m":"51.08","restricciones_rm":"30.46","cot":"0","cfm_j_fact":"9.721"}]
