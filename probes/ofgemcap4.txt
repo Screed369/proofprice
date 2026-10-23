@@ -1,0 +1,166 @@
+URL: https://app.everviz.com/inject/NCvaUoTBE/?v=40
+Fetched: 2026-10-23T05:40:11Z from GitHub Actions
+Status, type, bytes: 200 text/javascript 7096
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 05:40:11 GMT
+content-type: text/javascript
+content-length: 7096
+cf-ray: a4ee67cfca20ca79-LAX
+cf-cache-status: DYNAMIC
+etag: "31335eb00e0ad1c2f1df4fb0a96d84c0"
+last-modified: Wed, 26 Aug 2026 06:37:42 GMT
+server: cloudflare
+x-amz-id-2: to8tQ+T51XwZHkY/zjBpB8jtFi9llXFpVEGVDsxdsAmeMdU4SnPwUyyt/B1g655BXa0XHRUMlspTYzcN9+m0ajeudvQnPmdw
+x-amz-request-id: DJYJ7QYF8QA24S1Z
+x-amz-version-id: vblXwE9TDz2xFG_jcvWhh5corpcwlmg4
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FG6fzVx6PLTV17MwtjToKdp2okb10qJvesvsB4eZnfYd87vQXRxIrNCRAcYZu3hnkOYAbmE35TWmXnmuMmcvw2C3VUy7X7lJatuukU754uga%2Bb4grPZLWCPf3S1x5dtzg24%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JavaScript source, ASCII text, with very long lines (3477)
+=== FIRST 120000 BYTES
+(function () {
+  //Inject tables code v1.0
+
+  var highcharts = document.createElement('script');
+
+  var cdn = 'https://app.everviz.com/resources/highcharts/11.4.8/';
+  var loaded = 0;  
+  var encodedUrl = encodeURI('https:///show/NCvaUoTBE');
+  var chartCreated = false;
+  var scripts = [
+    "highcharts.js"
+  ];
+
+  var externalCSS = [
+    "https://app.everviz.com/static/fonts/radio-grotesk/style.css",
+    "https://app.everviz.com/static/fonts/gordita/style.css"
+  ];
+
+  var extraScripts = [
+    "https://app.everviz.com/resources/tables/1.0/js/table.js"
+  ];
+
+  var options = {"template":[],"data":{"csv":"Category;A;B;C\n0;4;6;3\n1;3;2;4\n2;5;4;3\n3;6;4;1\n4;2;4;6\n5;3;2;4","seriesMapping":[{"x":0,"y":1},{"x":0,"y":2},{"x":0,"y":3}],"itemDelimiter":"","matchingKey":null,"dateFormat":"","value":[["Region","Daily standing charge July to September 2026","Daily standing charge October to December 2026","Unit rate July to September 2026","Unit rate  October to December 2026"],["North Western England","29.17 pence per day","29.81 pence per day","7.24 pence per kWh","7.86 pence per kWh"],["North Eastern England","29.15 pence per day","29.79 pence per day","7.28 pence per kWh","7.92 pence per kWh"],["Yorkshire","29.12 pence per day","29.77 pence per day","7.27 pence per kWh","7.90 pence per kWh"],["Northern Scotland","29.22 pence per day","29.87 pence per day","7.23 pence per kWh","7.87 pence per kWh"],["Southern England","28.53 pence per day","29.16 pence per day","7.53 pence per kWh","8.17 pence per kWh"],["Southern Scotland","29.24 pence per day","29.89 pence per day","7.23 pence per kWh","7.87 pence per kWh"],["Merseyside and Northern Wales","29.42 pence per day","30.08 pence per day","7.28 pence per kWh","7.91 pence per kWh"],["London","29.52 pence per day","30.20 pence per day","7.50 pence per kWh","8.15 pence per kWh"],["South Eastern England","28.63 pence per day","29.26 pence per day","7.39 pence per kWh","8.05 pence per kWh"],["Eastern England","28.70 pence per day","29.34 pence per day","7.26 pence per kWh","7.91 pence per kWh"],["East Midlands","28.78 pence per day","29.41 pence per day","7.19 pence per kWh","7.82 pence per kWh"],["West Midlands","29.06 pence per day","29.71 pence per day","7.27 pence per kWh","7.90 pence per kWh"],["South Western England","28.68 pence per day","29.31 pence per day","7.48 pence per kWh","8.12 pence per kWh"],["Southern Wales","29.30 pence per day","29.96 pence per day","7.42 pence per kWh","8.09 pence per kWh"],["Great Britain average","29.04 pence per day","29.68 pence per day","7.33 pence per kWh","7.97 pence per kWh"]]},"options":{"title":{"text":"<h3>Gas standing charges and unit rates paid by Direct Debit</h3><h3></h3>","align":"left","style":{"fontSize":"22px","fontWeight":"bold","color":"#000000","fontFamily":"Gordita Bold"},"enabled":true},"subtitle":{"text":"Download data from the table in different formats by selecting the menu.","align":"left","style":{"fontSize":"16px","color":"#000000","fontFamily":"Gordita"}},"caption":{"style":{"color":"#000000","fontSize":"12px","fontStyle":"italic"}},"legend":{"itemStyle":{"color":"#000000"}},"credits":{"style":{"color":"#000000"}},"table":{"pagination":{"text":{"style":{"color":"#000000"}},"enabled":false},"style":{"fontFamily":"Gordita","backgroundColor":"#ffffff","fontSize":"16px","color":"#000000"},"searchable":{"enabled":true,"style":{"borderColor":"#172b4c","color":"#000000"},"labelText":"Search in table","noDataText":"No data","placeholderText":"Search in table"},"extra":{"style":{"backgroundColor":"#ffffff"}},"cards":true},"exporting":{"style":{"color":"#000000"},"enabled":true,"sourceWidth":null,"sourceHeight":null},"rows":{"stripes":true,"style":{},"stripesColor":"#ffffff","textColor":"#000000"},"header":{"style":{"backgroundColor":"#ffffff","fontSize":"16px","fontFamily":"Gordita Bold","color":"#000000"}},"columns":[{"type":"data","visible":true},{"type":"data","visible":true},{"type":"data","visible":true},{"type":"data","visible":true},{"type":"data","visible":true}]}};
+  
+  function isScriptAlreadyIncluded(src){
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      if (scripts[i].hasAttribute('src')) {
+        const scriptTag = scripts[i].getAttribute('src') || '';
+        if ((scriptTag.indexOf(src) >= 0) || 
+            (scriptTag.indexOf('highcharts.src.js') > -1 && src === 'highcharts.js') ||
+            ((scriptTag.indexOf('stock/highstock.js') > -1) && src === 'modules/highstock.js')) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  function loadCSS() {
+    var cssLength = externalCSS.length;
+    for(var i=0; i < cssLength; i++) {
+      var css = document.createElement('link');
+      css.rel  = 'stylesheet';
+      css.type = "text/css";
+      css.href = externalCSS[i];
+      document.body.appendChild(css);
+    }
+  }
+
+  function createLayout() {
+    if(chartCreated) return;
+
+    if (!window['EvervizLayoutModule']) window['EvervizLayoutModule'] = {};
+    if (!window['EvervizLayoutModule'].projects) window['EvervizLayoutModule'].projects = [];
+    
+    chartCreated = true;
+    window.EvervizLayoutModule.hasLoaded = true;
+    var evervizTable = new EvervizTable('everviz-table-NCvaUoTBE', options);
+    window['EvervizLayoutModule'].projects.push(evervizTable);
+  }
+
+  function check(scripts, cb) {
+    if (loaded === scripts.length) {
+      if (cb) {
+        cb();
+      } else {
+        for (var i = 0; i < window.EvervizLayoutModule.ondone.length; i++) {
+          try {
+            window.EvervizLayoutModule.ondone[i]();
+          } catch(e) {
+            console.error(e);
+          }
+        }
+      }
+    }
+  }
+
+  function loadScript(s, scripts, cb) {
+    if (!s) next();
+    
+    function next() {
+      ++loaded;
+      if (loaded < scripts.length) {
+        loadScript(scripts[loaded], scripts, cb);
+      }
+      check(scripts, cb);
+    }
+
+    if (isScriptAlreadyIncluded(s)) {
+      return next();
+    }
+
+    var n = document.createElement('script');
+
+    n.onload = function () {
+      next();
+    };
+    if (s.indexOf('https') >= 0) {
+      n.src = s;
+    } else {
+      n.src = cdn + s;
+    }
+    document.body.appendChild(n);
+  }
+
+  function loadExtraScripts(){
+    if (extraScripts.length > 0) {
+      loaded = 0;
+      loadScript(extraScripts[0], extraScripts);
+    } else {
+      check(scripts);
+    }
+  }
+
+  function loadExtraScriptsAndMakeChart(){
+    loaded = 0;
+    loadCSS();
+    if (extraScripts.length > 0) {
+      loadScript(extraScripts[0], extraScripts, createLayout);
+    } else {
+      check(extraScripts, createLayout);
+    }
+  }
+
+  if (typeof window['EvervizLayoutModule'] === 'undefined') {
+    window.EvervizLayoutModule = {
+      ondone: [createLayout],
+      hasWrapped: false,
+      hasLoaded: false,
+      projects: []
+    };
+
+    loadScript(scripts[0], scripts, loadExtraScripts);
+    loadCSS();
+
+  } else {
+    if (!window.EvervizLayoutModule.hasLoaded) window.EvervizLayoutModule.ondone.push(loadExtraScriptsAndMakeChart);
+    else loadExtraScriptsAndMakeChart();
+  }
+
+}());
