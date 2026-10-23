@@ -22,3 +22,12 @@ export function pageMetadata(o: { title: string; description: string; path: stri
     twitter: { card: "summary_large_image", title: full, description: o.description, images: [OG_IMAGE.url] },
   };
 }
+
+/** The 404 page: exactly one title (the layout template adds the site name), no canonical, and kept out of search indexes. */
+export function notFoundMetadata(): Metadata {
+  return {
+    title: "Page not found",
+    description: "This page does not exist. Try the price pages, the connect guide or the list of sources.",
+    robots: { index: false, follow: true },
+  };
+}

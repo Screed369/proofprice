@@ -412,3 +412,11 @@ test("us-gsa-surplus is described as a winning auction bid, not a completed sale
   assert.equal(c.priceTypeLabel, "Winning auction bid (before buyer premium)");
   assert.doesNotMatch(c.priceTypeShort, /completed sale/i);
 });
+
+test("404 page metadata: one plain title, no canonical, not indexed", async () => {
+  const { notFoundMetadata } = await import("../lib/site/meta");
+  const m = notFoundMetadata();
+  assert.equal(m.title, "Page not found");
+  assert.equal(m.alternates, undefined);
+  assert.deepEqual(m.robots, { index: false, follow: true });
+});
