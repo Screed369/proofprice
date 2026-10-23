@@ -1,0 +1,117 @@
+URL: https://assets.vlaamsenutsregulator.be/2026-10/202610-v-test-data-exclbtw%20v2_0.xlsx
+Fetched: 2026-10-23T06:43:30Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4032297
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+content-length: 4032297
+accept-ranges: bytes
+date: Thu, 22 Oct 2026 15:52:54 GMT
+server: AmazonS3
+last-modified: Thu, 15 Oct 2026 07:33:00 GMT
+etag: "d648ed218d6885703abd74a93460fc3e"
+x-amz-version-id: ufWqr3DPEaKhTD0JCL1DMWDmRaM7q1PZ
+x-amz-server-side-encryption: AES256
+x-cache: Hit from cloudfront
+via: 1.1 b8fa286a637a91a7f38c0cbf622153e6.cloudfront.net (CloudFront)
+x-amz-cf-pop: SFO53-P4
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: tZJZHgzJoGPUhxXpLjHibhMcIAUZnEOmco4oYSjFOTP-zPiWq6lXzg==
+age: 53436
+
+=== FILE TYPE: Microsoft Excel 2007+
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     2326  1980-01-01 00:00   [Content_Types].xml
+      588  1980-01-01 00:00   _rels/.rels
+     3157  1980-01-01 00:00   xl/workbook.xml
+     1262  1980-01-01 00:00   xl/_rels/workbook.xml.rels
+     8024  1980-01-01 00:00   xl/worksheets/sheet1.xml
+ 12271184  1980-01-01 00:00   xl/worksheets/sheet2.xml
+ 17959213  1980-01-01 00:00   xl/worksheets/sheet3.xml
+  1964120  1980-01-01 00:00   xl/worksheets/sheet4.xml
+  1929728  1980-01-01 00:00   xl/worksheets/sheet5.xml
+     8450  1980-01-01 00:00   xl/theme/theme1.xml
+     3919  1980-01-01 00:00   xl/styles.xml
+    33726  1980-01-01 00:00   xl/sharedStrings.xml
+      429  1980-01-01 00:00   xl/worksheets/_rels/sheet1.xml.rels
+      475  1980-01-01 00:00   xl/worksheets/_rels/sheet2.xml.rels
+      475  1980-01-01 00:00   xl/worksheets/_rels/sheet3.xml.rels
+      910  1980-01-01 00:00   xl/tables/table1.xml
+      920  1980-01-01 00:00   xl/tables/table2.xml
+     4840  1980-01-01 00:00   xl/printerSettings/printerSettings1.bin
+      481  1980-01-01 00:00   xl/namedSheetViews/namedSheetView1.xml
+     4840  1980-01-01 00:00   xl/printerSettings/printerSettings2.bin
+      481  1980-01-01 00:00   xl/namedSheetViews/namedSheetView2.xml
+      824  1980-01-01 00:00   docProps/core.xml
+     1045  1980-01-01 00:00   docProps/app.xml
+---------                     -------
+ 34201417                     23 files
+=== SPREADSHEET SHEETS (first 70 rows each, cells joined with |)
+--- SHEET: Info
+In dit bestand vindt u de open data van alle producten die in de V-test® hebben gestaan per maand. De nettarieven en heffingen zijn niet opgenomen in dit bestand. Alle prijzen zijn exclusief btw.
+Hieronder vindt u meer uitleg over de verschillende gegevens in de andere tabbladen. Het tweede tabblad bevat alle variabele en dynamische producten. Het derde tabblad bevat alle vaste producten. Deze dataset werd laatst geüpdatet op 15 oktober 2026. Voor vragen kan u terecht bij datamanagement@vlaamsenutsregulator.be. In februari 2026 voegden we een aantal nieuwe kolommen toe om producten toe te laten die gebruikmaken van 4 indexatieparemeters. Hiervoor zijn er 2 nieuwe tabbladen toegevoegd met voor deze nieuwe structuur (2026).
+Gegevens|Uitleg
+Jaar|Jaar waarin het product in de V-test® stond
+Maand|Maand waarin het product in de V-test® stond
+Segment|Woning of onderneming
+Energietype|Elektriciteit of gas
+Contracttype|Afname of injectie
+Handelsnaam|Handelsnaam van de leverancier van het product
+Productnaam|Naam van het product
+Vast/variabel/dynamisch|Vaste, variabele of dynamische energiekost
+Prijsonderdeel|Prijsonderdeel van het product waarvoor de prijs gegeven wordt
+Indexatieparameter A (a.A + b.B + c.C + d.D + z)|Naam van de indexatieparameter indien een variabel of dynamisch product
+Beschrijving A|Beschrijving van de bron en berekeningswijze van de indexatieparameter
+Waarde A (€/MWh) - VNR waarde|Voorspelling van de indexatieparameter X voor de komende 12 maanden (methode V-test®). Meer info: https://www.vlaamsenutsregulator.be
+Waarde A (€/MWh) - laatst gekende waarde|Laatst gekende waarde van de indexatieparameter op het moment van publicatie in de V-test® (methode CREG).
+Indexatieparameter B (a.A + b.B + c.C + d.D + z)|Naam van de indexatieparameter indien een variabel of dynamisch product
+Beschrijving B|Beschrijving van de bron en berekeningswijze van de indexatieparameter
+Waarde B (€/MWh) - VNR waarde|Voorspelling van de indexatieparameter X voor de komende 12 maanden (methode V-test®). Meer info: https://www.vlaamsenutsregulator.be
+Waarde B (€/MWh) - laatst gekende waarde|Laatst gekende waarde van de indexatieparameter Y op het moment van publicatie in de V-test® (methode CREG).
+Indexatieparameter C (a.A + b.B + c.C + d.D + z)|Naam van de indexatieparameter indien een variabel of dynamisch product
+Beschrijving C|Beschrijving van de bron en berekeningswijze van de indexatieparameter
+Waarde C (€/MWh) - VNR waarde|Voorspelling van de indexatieparameter voor de komende 12 maanden (methode V-test®). Meer info: https://www.vlaamsenutsregulator.be
+Waarde C (€/MWh) - laatst gekende waarde|Laatst gekende waarde van de indexatieparameter op het moment van publicatie in de V-test® (methode CREG).
+Indexatieparameter D  (a.A + b.B + c.C + d.D + z)|Naam van de indexatieparameter indien een variabel of dynamisch product
+Beschrijving D|Beschrijving van de bron en berekeningswijze van de indexatieparameter
+Waarde D (€/MWh) - VNR waarde|Voorspelling van de indexatieparameter voor de komende 12 maanden (methode V-test®). Meer info: https://www.vlaamsenutsregulator.be
+Waarde D (€/MWh) - laatst gekende waarde|Laatst gekende waarde van de indexatieparameter op het moment van publicatie in de V-test® (methode CREG).
+a|Factor in de indexatieformule voor variabele of dynamische contracten (a.A + b.B + c.C + d.D + z)
+b|Factor in de indexatieformule voor variabele of dynamische contracten (a.A + b.B + c.C + d.D + z)
+c|Factor in de indexatieformule voor variabele of dynamische contracten (a.A + b.B + c.C + d.D + z)
+d|Factor in de indexatieformule voor variabele of dynamische contracten (a.A + b.B + c.C + d.D + z)
+z|Factor in de indexatieformule voor variabele of dynamische contracten (a.A + b.B + c.C + d.D + z)
+Prijs|Prijs van de energiekost per eenheid zoals vermeld in de naam van het prijsonderdeel. De variabele prijzen worden berekend met parameterwaarde 'Waarde A/B/C/D (€/MWh) - VNR waarde'.
+Enkelvoudige meter dagtarief (c€/kWh)|Informatie over de energiekost voor een enkelvoudige meter in eurocent per kilowattuur
+Tweevoudige meter dagtarief (c€/kWh)|Informatie over de energiekost voor een tweevoudige meter dag in eurocent per kilowattuur
+Tweevoudige meter nachttarief (c€/kWh)|Informatie over de energiekost voor een tweevoudige meter nacht in eurocent per kilowattuur
+Uitsluitend nachtmeter (c€/kWh)|Informatie over de energiekost voor een uitsluitend nacht meter in eurocent per kilowattuur
+Enkelvoudige/tweevoudige dag- en (exclusief) nachtmeter (c€/kWh)|Informatie over de energiekost voor enkelvoudige meter dagtarief, tweevoudige meter dag- en nachttarief en uitsluitend nachttarief in eurocent per kilowattuur
+Kosten groene stroom  (c€/kWh)|Informatie over de kosten voor steuncertificaten groene stroom in eurocent per kilowattuur
+Kosten WKK (c€/kWh)|Informatie over de kosten voor steuncertificaten WKK in eurocent per kilowattuur
+Vaste vergoeding (€)|Informatie over de vaste vergoeding voor alle metertypes in euro
+Vaste vergoeding enkelvoudig (€)|Informatie over de vaste vergoeding voor een enkelvoudige meter in euro
+Vaste vergoeding tweevoudig (€)|Informatie over de vaste vergoeding voor een tweevoudige meter in euro
+Vaste vergoeding uitsluitend nachtmeter (€)|Informatie over de vaste vergoeding voor een uitsluitend nacht meter in euro
+Hieronder staan enkele voorbeelden van prijsonderdelen die voorkomen in de V-test®, bij sommige producten kunnen deze afwijken, raadpleeg de V-test® voor meer info.
+Prijsonderdeel|Uitleg
+Enkelvoudige meter dagtarief (c€/kWh)|Informatie over de energiekost voor een enkelvoudige meter in eurocent per kilowattuur
+Tweevoudige meter dagtarief (c€/kWh)|Informatie over de energiekost voor een tweevoudige meter dag in eurocent per kilowattuur
+Tweevoudige meter nachttarief (c€/kWh)|Informatie over de energiekost voor een tweevoudige meter nacht in eurocent per kilowattuur
+Uitsluitend nachtmeter (c€/kWh)|Informatie over de energiekost voor een uitsluitend nacht meter in eurocent per kilowattuur
+Enkelvoudige/tweevoudige dag- en (exclusief) nachtmeter (c€/kWh)|Informatie over de energiekost voor enkelvoudige meter dagtarief, tweevoudige meter dag- en nachttarief en uitsluitend nachttarief in eurocent per kilowattuur
+Kosten groene stroom  (c€/kWh)|Informatie over de kosten voor steuncertificaten groene stroom in eurocent per kilowattuur
+Kosten WKK (c€/kWh)|Informatie over de kosten voor steuncertificaten WKK in eurocent per kilowattuur
+Vaste vergoeding (€)|Informatie over de vaste vergoeding voor alle metertypes in euro
+Vaste vergoeding enkelvoudig (€)|Informatie over de vaste vergoeding voor een enkelvoudige meter in euro
+Vaste vergoeding tweevoudig (€)|Informatie over de vaste vergoeding voor een tweevoudige meter in euro
+Vaste vergoeding uitsluitend nachtmeter (€)|Informatie over de vaste vergoeding voor een uitsluitend nacht meter in euro
+--- SHEET: Producten var-dyn (excl. btw)
+Jaar|Maand|Segment|Energietype|Contracttype|Handelsnaam|Productnaam|Vast/variabel/dynamisch|Prijsonderdeel|Indexatieparameter X (a.X + b.Y + c.Z + d)|Beschrijving X|Waarde X (€/MWh) - VREG waarde|Waarde X (€/MWh) - laatst gekende waarde|Indexatieparameter Y (a.X + b.Y + c.Z + d)|Beschrijving Y|Waarde Y (€/MWh) - VREG waarde|Waarde Y (€/MWh) - laatst gekende waarde|Indexatieparameter Z (a.X + b.Y + c.Z + d)|Beschrijving Z|Waarde Z (€/MWh) - VREG waarde|Waarde Z (€/MWh) - laatst gekende waarde|a|b|c|d|Prijs
+2025|jan|Onderneming|Elektriciteit|Afname|Belvus Energie|Flex Online Pro|Variabel|Enkelvoudige meter dagtarief (c€/kWh)|M EPEX Spot Belgium/Belpex RLP_BE|Gewogen gemiddelde van de uurnoteringen BE day ahead per maand. Weging o.b.v. het gemiddelde van RLP0N profielen van alle Belgische netgebieden. Bron: EPEX Spot/Belpex|94.134879999999995|108.77134|||||||||0.129|||0.40699999999999997
+2025|jan|Onderneming|Elektriciteit|Afname|Belvus Energie|Flex Online Pro|Variabel|Koste=== FIRST 8000 BYTES OF [Content_Types].xml
