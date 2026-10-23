@@ -1,0 +1,28 @@
+name: nrwprobe
+on: workflow_dispatch
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir w && cd w
+          curl -sS -m 300 -A "ProofPrice/0.3 (hello@proofprice.com)" -o irw.zip https://www.opengeodata.nrw.de/produkte/infrastruktur_bauen_wohnen/boris/IRW/IRW_EPSG25832_Shape.zip
+          ls -l; unzip -l irw.zip | head -30
+          unzip -o -q irw.zip
+          cat info.txt | head -40
+          python3 - <<'P'
+          import glob,struct
+          for f in glob.glob('*.dbf'):
+              b=open(f,'rb').read()
+              n=struct.unpack('<I',b[4:8])[0]; hl=struct.unpack('<H',b[8:10])[0]; rl=struct.unpack('<H',b[10:12])[0]
+              print(f,n,hl,rl)
+              i=32; fs=[]
+              while b[i]!=0x0D:
+                  name=b[i:i+11].split(b'\0')[0].decode(); t=chr(b[i+11]); l=b[i+16]; fs.append((name,t,l)); i+=32
+              print(fs)
+              for r in range(3):
+                  rec=b[hl+r*rl:hl+(r+1)*rl]; o=1; out={}
+                  for name,t,l in fs:
+                      out[name]=rec[o:o+l].decode('latin1').strip(); o+=l
+                  print(out)
+          P
