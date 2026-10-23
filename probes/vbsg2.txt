@@ -1,0 +1,26 @@
+URL: https://api-production.data.gov.sg/v2/public/api/datasets/d_44cfe12f2858ae503a093dfc075a28be/metadata
+Fetched: 2026-10-23T13:42:30Z from GitHub Actions
+Status, type, bytes: 200 application/json 2530
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 13:42:30 GMT
+content-type: application/json
+content-length: 2530
+cf-ray: a4f12a5829ec5062-DFW
+cf-cache-status: DYNAMIC
+access-control-allow-origin: *
+server: cloudflare
+cf-placement: remote-SIN
+x-amz-apigw-id: FsybGH23SQ0EOvA=
+x-amzn-requestid: d4eaf357-41f9-4cd1-bb58-4e22c060b8df
+x-amzn-trace-id: Root=1-6adb6446-2221bbe253adff924251da8a
+x-dgs-request-id: a4f12a5829ec5062
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+vary: accept-encoding
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"code":0,"data":{"datasetId":"d_44cfe12f2858ae503a093dfc075a28be","createdAt":"2020-09-04T11:58:25+08:00","name":"Listing of Centre Services","collectionIds":["57"],"description":"Listing of centres’ offering of programme level and services as well as the corresponding fees","format":"CSV","lastUpdatedAt":"2026-10-23T02:22:05+08:00","managedBy":"Early Childhood Development Agency","coverageStart":"2018-11-20T08:00:00+08:00","coverageEnd":"2026-02-28T23:59:59+08:00","contactEmails":["BAY_Lian_Heng@ecda.gov.sg","ecda-systems_development@ecda.gov.sg"],"datasetSize":12769574,"columnMetadata":{"order":["c_dzomibd05xg5lxh4n0d25wr0m","c_6lh934jr67qgstiwxbbztma34","c_2wz77ommxecvihedr2006104","c_1wlcdz631qlll90w7vxaqs1jz","c_19orkd4nsrykw4fvsdswtect0","c_dcxo2w5q4qiqdf12wjvshpr55","c_c579kwri363xsz55tr5y6ty8p","c_90rh6qk3whtjc7trat3ee3rrv","c_1jktoywvffckz2q23svltd09m"],"map":{"c_dzomibd05xg5lxh4n0d25wr0m":"centre_code","c_6lh934jr67qgstiwxbbztma34":"centre_name","c_2wz77ommxecvihedr2006104":"class_of_licence","c_1wlcdz631qlll90w7vxaqs1jz":"type_of_service","c_19orkd4nsrykw4fvsdswtect0":"levels_offered","c_dcxo2w5q4qiqdf12wjvshpr55":"fees","c_c579kwri363xsz55tr5y6ty8p":"type_of_citizenship","c_90rh6qk3whtjc7trat3ee3rrv":"last_updated","c_1jktoywvffckz2q23svltd09m":"remarks"},"metaMapping":{"c_dzomibd05xg5lxh4n0d25wr0m":{"name":"centre_code","columnTitle":"Centre Code","dataType":"Text","index":"0","isCategorical":true},"c_6lh934jr67qgstiwxbbztma34":{"name":"centre_name","columnTitle":"Centre Name","dataType":"Text","index":"1","isCategorical":true},"c_2wz77ommxecvihedr2006104":{"name":"class_of_licence","columnTitle":"Class Of Licence","dataType":"Text","index":"2","isCategorical":true},"c_1wlcdz631qlll90w7vxaqs1jz":{"name":"type_of_service","columnTitle":"Type Of Service","dataType":"Text","index":"3","isCategorical":true},"c_19orkd4nsrykw4fvsdswtect0":{"name":"levels_offered","columnTitle":"Levels Offered","dataType":"Text","index":"4","isCategorical":true},"c_dcxo2w5q4qiqdf12wjvshpr55":{"name":"fees","columnTitle":"Fees","dataType":"Text","index":"5","isCategorical":true},"c_c579kwri363xsz55tr5y6ty8p":{"name":"type_of_citizenship","columnTitle":"Type Of Citizenship","dataType":"Text","index":"6","isCategorical":true},"c_90rh6qk3whtjc7trat3ee3rrv":{"name":"last_updated","columnTitle":"Last Updated","dataType":"Text","index":"7","isCategorical":true},"c_1jktoywvffckz2q23svltd09m":{"name":"remarks","columnTitle":"Remarks","dataType":"Text","index":"8","isCategorical":true}}}},"errorMsg":""}
