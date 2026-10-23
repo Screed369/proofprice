@@ -1,5 +1,7 @@
 name: nrwprobe
-on: workflow_dispatch
+on:
+  push:
+    branches: [src/de-nrw-boris]
 jobs:
   p:
     runs-on: ubuntu-latest
