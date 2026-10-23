@@ -8,7 +8,7 @@ import { buildLlmsFullTxt, buildSitemap, libraryForSitemap } from "../lib/open-b
 import { readLatestDay, rowsToCsv } from "../lib/library/store";
 import { PAGE_SOURCES, buildSourcePages, noFullStop, shortLicence, shortPublisher, type DayRow } from "../lib/site/answer-pages";
 import { areaFor, dublinDistrictName, knownAreaCodes, slugify } from "../lib/site/areas";
-import { SITE_URL } from "../lib/site/constants";
+import { HOME_TITLE, SITE_URL } from "../lib/site/constants";
 import { homeExamples } from "../lib/site/examples";
 import { answerPageGraph, datasetLd, homeGraph, serializeJsonLd, sourcesGraph } from "../lib/site/jsonld";
 import { int, longDate, monthsBefore } from "../lib/site/format";
@@ -428,4 +428,11 @@ test("country price pages have a descriptive title with the main categories", as
   const title = String(m.title);
   assert.match(title, new RegExp(`^What people actually pay in ${g.name.replace(/[()]/g, "\\$&")}: `));
   assert.ok(title.toLowerCase().includes(g.categories[0].label.toLowerCase()));
+});
+
+test("home title names the product, the data and the audience, and fits a search result", () => {
+  assert.ok(HOME_TITLE.length <= 70, `title is ${HOME_TITLE.length} characters`);
+  for (const word of ["ProofPrice", "prices paid", "MCP", "API", "AI agents"]) {
+    assert.ok(HOME_TITLE.toLowerCase().includes(word.toLowerCase()) || (word === "prices paid" && /prices paid/i.test(HOME_TITLE)), `missing ${word}`);
+  }
 });

@@ -8,6 +8,8 @@ export const SITE_NAME = "ProofPrice";
 /** The service version: OpenAPI info.version, MCP serverInfo.version and server.json all read it from here. */
 export const SERVICE_VERSION = "0.4.0";
 export const TAGLINE = "What people actually paid. Official data, for AI agents.";
+/** Home page <title> (SEO plan A2, 23 Oct 2026): says what it is and who it is for; kept under 70 characters so search results do not cut it. */
+export const HOME_TITLE = "ProofPrice: real prices paid, MCP server and API for AI agents";
 /** Meta description for the home page and the site default: plain, about 160 characters. */
 export const SITE_DESCRIPTION =
   "What people actually paid for homes, fuel and more, from official open data. A free MCP server and REST API for AI agents, with source and licence on every answer.";

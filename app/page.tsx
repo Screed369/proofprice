@@ -1,5 +1,5 @@
 import { JsonLd } from "./_components/JsonLd";
-import { CONTACT, MCP_URL, SITE_DESCRIPTION } from "../lib/site/constants";
+import { CONTACT, HOME_TITLE, MCP_URL, SITE_DESCRIPTION } from "../lib/site/constants";
 import { homeExamples } from "../lib/site/examples";
 import { homeGraph } from "../lib/site/jsonld";
 import { pageMetadata } from "../lib/site/meta";
@@ -9,7 +9,7 @@ import { joinAnd } from "../lib/text";
 import { shortPublisher } from "../lib/site/answer-pages";
 
 export const metadata = pageMetadata({
-  title: "ProofPrice: what people actually paid, for AI agents",
+  title: HOME_TITLE,
   absoluteTitle: true,
   description: SITE_DESCRIPTION,
   path: "/",
