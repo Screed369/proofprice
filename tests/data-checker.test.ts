@@ -100,3 +100,11 @@ test("previousByKey takes the newest earlier day for each key, across months, an
   assert.equal(previousByKey("fr-fuel", "2026-10-01").get(keyOf("69", "diesel"))!.median, 1.7);
   assert.equal(previousByKey("nothing-here", "2026-10-05").size, 0);
 });
+
+test("a published annual-change rate (item ending :yoy) is never ratio-checked", () => {
+  writeDaily("gb-rate", day("2026-10-01", [row("E1", "flat:yoy", 0.3)], "GBP", "per month"));
+  const prev = previousByKey("gb-rate", "2026-10-02");
+  const r = dataCheck({ result: day("2026-10-02", [row("E1", "flat:yoy", 1.4), row("E1", "flat", 900)], "GBP", "per month"), prevMeta: { ...meta("GBP", "per month"), source: "gb-rate" }, previous: prev });
+  assert.equal(r.held.length, 0);
+  assert.equal(r.rows.length, 2);
+});

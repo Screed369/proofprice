@@ -33,6 +33,9 @@ export interface DataCheckResult {
   message: string | null;
 }
 
+/** Items that are a published rate of change (e.g. "flat:yoy", a few percent, often near zero): a ratio test means nothing for them. */
+export const isRateItem = (item: string) => item.endsWith(":yoy");
+
 export const keyOf = (area: string, item: string) => `${area}\u0000${item}`;
 
 /** The newest stored row per area and item that is older than `before`. Reads month files newest first, so it is meant for the collector. */
@@ -69,7 +72,7 @@ export function dataCheck(opts: { result: HarvestResult; prevMeta: SourceMeta | 
   const held: HeldKey[] = [];
   for (const r of result.rows) {
     const prev = previous.get(keyOf(r.area, r.item));
-    if (passesGate(r.n) && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0) {
+    if (!isRateItem(r.item) && passesGate(r.n) && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0) {
       const ratio = r.median / prev.median;
       if (ratio > MAX_RATIO || ratio < 1 / MAX_RATIO) {
         held.push({
