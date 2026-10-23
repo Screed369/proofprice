@@ -1,0 +1,26 @@
+URL: https://api-production.data.gov.sg/v2/public/api/datasets/d_8da6783d5f7628ae6ada1c240015b7d7/list-rows?limit=5
+Fetched: 2026-10-23T13:43:41Z from GitHub Actions
+Status, type, bytes: 200 application/json 690
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 13:43:41 GMT
+content-type: application/json
+content-length: 690
+cf-ray: a4f12c10687efa75-IAD
+cf-cache-status: DYNAMIC
+access-control-allow-origin: *
+server: cloudflare
+cf-placement: remote-SIN
+x-amz-apigw-id: FsymHGNSyQ0EX-w=
+x-amzn-requestid: 84fa593a-00cd-4cab-b477-40b9e4c374a0
+x-amzn-trace-id: Root=1-6adb648d-03a1c0495e9462c05f610009
+x-dgs-request-id: a4f12c10687efa75
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+vary: accept-encoding
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"code":0,"data":{"rows":[{"vault_id":"1","period":"2013-01","tier":"ECONOMY","aor":"83.4","arr":"100.4","revpar":"83.7"},{"vault_id":"2","period":"2013-01","tier":"LUXURY","aor":"85.1","arr":"424.2","revpar":"361.2"},{"vault_id":"3","period":"2013-01","tier":"MID-TIER","aor":"84.3","arr":"188.2","revpar":"158.6"},{"vault_id":"4","period":"2013-01","tier":"UPSCALE","aor":"84.4","arr":"268.7","revpar":"226.7"},{"vault_id":"5","period":"2013-02","tier":"ECONOMY","aor":"81.2","arr":"98.9","revpar":"80.3"}],"datasetId":"d_8da6783d5f7628ae6ada1c240015b7d7","datasetName":"Monthly Gazetted Hotel Statistics by Tier","limit":5,"links":{"next":"idCursor%5Bvalue%5D=5&limit=5"}},"errorMsg":""}
