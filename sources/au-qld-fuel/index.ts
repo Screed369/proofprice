@@ -1,7 +1,7 @@
 // Manifest: Queensland pump prices (Fuel Price Reporting, monthly). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import { Fuel } from "../../lib/fuels";
-import { INFO, qldFuelNow } from "./source";
+import { INFO, qldFuelNow, qldHarvest, qldHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -30,4 +30,8 @@ export default defineSource({
       fuel: p.fuel as Fuel,
       baseUrl: ctx.baseUrl,
     }),
+  // A daily copy of the newest month (rows dated by the data month): a data.qld.gov.au outage is answered from it, and /history has a point per month.
+  harvest: () => qldHarvest(),
+  historyKey: (p) => qldHistoryKey({ fuel: str(p.fuel), area: str(p.area), town: str(p.town), postcode: str(p.postcode) }),
+  referenceDates: true,
 });

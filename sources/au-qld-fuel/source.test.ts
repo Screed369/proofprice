@@ -132,3 +132,31 @@ test("in January the new year's dataset may be missing: last year's newest month
   const n = await findMonthly(new Date("2027-01-05T00:00:00Z"), { fetcher });
   assert.equal(monthLabel(n.month), "August 2026");
 });
+
+import { qldDailyRows, qldHistoryKey, monthEndDate } from "./source";
+
+const mk = (id: number, tenths: number, postcode: number, suburb: string) => ({
+  siteId: id, name: "", brand: "", address: "", suburb, postcode, tenths, date: "2026-08-10",
+});
+
+test("daily rows: state, Greater Brisbane, postcode and suburb; areas with fewer than 5 stations are not stored", () => {
+  const sites = [
+    ...[2500, 2510, 2520, 2530, 2540].map((t, i) => mk(i, t, 4122, "Mount Gravatt")),
+    ...[2600, 2610].map((t, i) => mk(10 + i, t, 4870, "Cairns")),
+  ];
+  const rows = qldDailyRows({ diesel: parseSites(sites.map((x) => ({ SiteId: x.siteId, Site_Suburb: x.suburb, Site_Post_Code: x.postcode, Price: x.tenths, TransactionDateutc: "2026-08-10T00:00:00" }))) });
+  const areas = rows.map((r) => r.area);
+  assert.deepEqual(areas, ["4122", "BRISBANE", "MOUNT GRAVATT", "QLD"]);
+  assert.equal(rows.find((r) => r.area === "QLD")!.n, 7);
+  assert.equal(rows.find((r) => r.area === "4122")!.median, 2.52);
+});
+
+test("history keys follow the live place rules; month end date", () => {
+  assert.deepEqual(qldHistoryKey({ fuel: "diesel", area: "QLD" }), { area: "QLD", item: "diesel", label: "Queensland" });
+  assert.equal(qldHistoryKey({ fuel: "diesel", area: "Brisbane" })?.area, "BRISBANE");
+  assert.equal(qldHistoryKey({ fuel: "petrol95", postcode: "4122" })?.area, "4122");
+  assert.equal(qldHistoryKey({ fuel: "lpg", town: "Mount  Gravatt" })?.area, "MOUNT GRAVATT");
+  assert.equal(qldHistoryKey({ fuel: "petrol95", postcode: "2000" }), null);
+  assert.equal(qldHistoryKey({ fuel: "hydrogen", area: "QLD" }), null);
+  assert.equal(monthEndDate(2026 * 12 + 7), "2026-08-31");
+});

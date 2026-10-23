@@ -6,7 +6,8 @@ import { InputError, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { Fuel, stripAccents } from "../../lib/fuels";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { MIN_PUBLISH } from "../../lib/stats";
 import { ckanPackage, ckanSql, sqlIdent, sqlLiteral, type CkanResource } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
 
@@ -224,4 +225,79 @@ export function qldAnswer(
       freshness_warning: "Queensland publishes this dataset monthly, so the figure is for " + month + " and does not show today's pump prices.",
     },
   });
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Daily collector (stale-if-error and history). Queensland publishes one file per month, so the library rows are dated by the last
+// day of the data month (referenceDates): a Queensland portal outage is then answered from our copy, and /history shows one point
+// per month. Area keys: "QLD" (whole state), "BRISBANE" (postcodes 4000 to 4179), a 4-digit postcode, or the upper-case suburb.
+// Each station counts once per fuel (its latest reported price in the month); an area with fewer than 5 stations is not stored.
+// ---------------------------------------------------------------------------------------------------------------------
+
+export const QLD_STATE = "QLD";
+export const QLD_BRISBANE = "BRISBANE";
+
+/** Last day (YYYY-MM-DD) of the month with index year*12+month0. */
+export function monthEndDate(index: number): string {
+  const y = Math.floor(index / 12);
+  const m = index % 12;
+  return new Date(Date.UTC(y, m + 1, 0)).toISOString().slice(0, 10);
+}
+
+/** Library rows from per-fuel station lists: state, Greater Brisbane, every postcode and every suburb with at least MIN_PUBLISH stations. */
+export function qldDailyRows(byFuel: Partial<Record<Fuel, QldSite[]>>): DailyRow[] {
+  const rows: DailyRow[] = [];
+  for (const [fuel, sites] of Object.entries(byFuel) as [Fuel, QldSite[]][]) {
+    const groups = new Map<string, number[]>();
+    const add = (area: string, dollars: number) => {
+      const g = groups.get(area);
+      if (g) g.push(dollars);
+      else groups.set(area, [dollars]);
+    };
+    for (const x of sites) {
+      const dollars = Math.round(x.tenths) / 1000;
+      add(QLD_STATE, dollars);
+      if (x.postcode !== null) {
+        add(String(x.postcode), dollars);
+        if (x.postcode >= 4000 && x.postcode <= 4179) add(QLD_BRISBANE, dollars);
+      }
+      const suburb = stripAccents(x.suburb).replace(/\s+/g, " ");
+      if (suburb) add(suburb, dollars);
+    }
+    for (const [area, prices] of groups) {
+      if (prices.length < MIN_PUBLISH) continue;
+      const s = summarise(prices);
+      if (s) rows.push({ area, item: fuel, n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max });
+    }
+  }
+  return rows.sort((a, b) => a.area.localeCompare(b.area) || a.item.localeCompare(b.item));
+}
+
+export async function qldHarvest(o: FetchOptions & { now?: Date } = {}): Promise<HarvestResult> {
+  const { resource, month } = await findMonthly(o.now, o);
+  const byFuel: Partial<Record<Fuel, QldSite[]>> = {};
+  for (const fuel of Object.keys(QLD_FUEL_TYPE) as Fuel[]) {
+    const { records } = await ckanSql(SITE, buildSql(resource.id, QLD_FUEL_TYPE[fuel]!, { kind: "state", label: "Queensland" }), { ...o, timeoutMs: o.timeoutMs ?? 60000 });
+    byFuel[fuel] = parseSites(records);
+  }
+  const rows = qldDailyRows(byFuel);
+  const state = rows.filter((r) => r.area === QLD_STATE && r.item === "diesel");
+  if (!state.length) throw new SourceError("Queensland fuel file held no usable diesel prices; nothing written.");
+  return { date: monthEndDate(month), currency: "AUD", unit: "per litre", rows, note: `Queensland Fuel Price Reporting, ${monthLabel(month)}` };
+}
+
+/** Where a request lives in the library; the same place rules as the live answer. */
+export function qldHistoryKey(p: { fuel?: string; area?: string; town?: string; postcode?: string }): { area: string; item: string; label: string } | null {
+  if (!p.fuel || !QLD_FUEL_TYPE[p.fuel as Fuel]) return null;
+  let scope: QldScope;
+  try {
+    scope = resolveQldScope(p);
+  } catch {
+    return null;
+  }
+  const item = p.fuel;
+  if (scope.kind === "state") return { area: QLD_STATE, item, label: "Queensland" };
+  if (scope.kind === "brisbane") return { area: QLD_BRISBANE, item, label: scope.label };
+  if (scope.kind === "postcode") return { area: String(scope.postcode), item, label: scope.label };
+  return { area: scope.name.replace(/\s+/g, " "), item, label: scope.label };
 }
