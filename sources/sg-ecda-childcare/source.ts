@@ -36,7 +36,7 @@ export const INFO: SourceInfo = {
 export const DATASET = "d_44cfe12f2858ae503a093dfc075a28be";
 export const ROWS_URL = `https://api-production.data.gov.sg/v2/public/api/datasets/${DATASET}/list-rows`;
 export const PAGE_SIZE = 10000;
-export const MAX_PAGES = 15;
+export const MAX_PAGES = 40;
 export const MAX_FEE = 10000; // S$ a month; a listed fee above this is an entry error
 export const STALE_AFTER_DAYS = 180;
 const UA = { "user-agent": "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)" };
@@ -83,12 +83,10 @@ export interface RawRow {
   last_updated?: string;
 }
 
-/** Rows and the cursor for the next page from one list-rows response; fails loudly if the layout changed. */
-export function parsePage(json: any): { rows: RawRow[]; next: string | null } {
+export function parsePage(json: any): RawRow[] {
   const rows = json?.data?.rows;
   if (!Array.isArray(rows)) throw new SourceError("data.gov.sg list-rows answered in an unexpected layout (no data.rows)");
-  const next = json?.data?.links?.next;
-  return { rows, next: typeof next === "string" && next ? next : null };
+  return rows;
 }
 
 /** One centre's newest fee for a level and citizenship. */
@@ -150,16 +148,16 @@ async function getPage(url: string): Promise<any> {
 
 export async function ecdaHarvest(): Promise<HarvestResult> {
   const fees = new Fees();
-  let url = `${ROWS_URL}?limit=${PAGE_SIZE}`;
   let pages = 0;
-  for (; pages < MAX_PAGES; ) {
-    const { rows, next } = parsePage(await getPage(url));
+  let finished = false;
+  // The portal ignores its own "next" cursor, so we page with offset and stop at a short page.
+  while (pages < MAX_PAGES) {
+    const rows = parsePage(await getPage(`${ROWS_URL}?limit=${PAGE_SIZE}&offset=${pages * PAGE_SIZE}`));
     pages++;
     for (const r of rows) fees.add(r);
-    if (!next || !rows.length) break;
-    url = `${ROWS_URL}?${next}`;
+    if (rows.length < PAGE_SIZE) { finished = true; break; }
   }
-  if (pages >= MAX_PAGES) throw new SourceError(`ECDA centre listing did not end after ${MAX_PAGES} pages (layout changed?)`);
+  if (!finished) throw new SourceError(`ECDA centre listing did not end after ${MAX_PAGES} pages (layout changed?)`);
   const built = buildRows(fees.entries());
   if (!built.rows.length || !built.date) throw new SourceError(`ECDA centre listing held no usable fees (${fees.read} rows read)`);
   const d = fees.dropped;

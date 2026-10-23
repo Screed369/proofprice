@@ -1,7 +1,7 @@
 // Tests for the Singapore ECDA childcare source. Row layout copied from the live list-rows response (probe 2026-10-23):
 // {"vault_id":"1","centre_code":"EB0001","centre_name":"...","class_of_licence":"Class B (Child Care)","type_of_service":"Full Day",
 //  "levels_offered":"Kindergarten 1 (5 yrs old)","fees":"1125","type_of_citizenship":"Others","last_updated":"2026-07-17","remarks":"na"}
-// Paging: data.links.next = "idCursor%5Bvalue%5D=400&limit=400". The extra centres below are generated in that layout.
+// Paging: the portal ignores data.links.next (idCursor); offset=N&limit=10000 works (probes 2026-10-23). Other service types exist (e.g. "Flexi Care 1", "FEP AM"). The extra centres below are generated in that layout.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { INFO, Fees, buildRows, citizenshipOf, ecdaAnswerFromRows, ecdaHistoryKey, levelOf, parsePage, resolveItem } from "./source";
@@ -43,11 +43,9 @@ test("helpers: levels and citizenship groups are read from the live strings", ()
   assert.equal(citizenshipOf("martian"), null);
 });
 
-test("parsePage: rows and next cursor; a new layout fails loudly", () => {
-  const p = parsePage({ code: 0, data: { rows: rows(1).slice(0, 2), links: { next: "idCursor%5Bvalue%5D=400&limit=400" } } });
-  assert.equal(p.rows.length, 2);
-  assert.equal(p.next, "idCursor%5Bvalue%5D=400&limit=400");
-  assert.equal(parsePage({ data: { rows: [], links: {} } }).next, null);
+test("parsePage: rows; a new layout fails loudly", () => {
+  assert.equal(parsePage({ code: 0, data: { rows: rows(1).slice(0, 2), links: { next: "idCursor%5Bvalue%5D=400&limit=400" } } }).length, 2);
+  assert.equal(parsePage({ data: { rows: [], links: {} } }).length, 0);
   assert.throws(() => parsePage({ data: { items: [] } }), /unexpected layout/);
 });
 
