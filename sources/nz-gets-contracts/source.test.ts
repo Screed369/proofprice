@@ -121,3 +121,12 @@ test("history key and licence", () => {
   assert.equal(itemFor("zzz"), null);
   assert.match(INFO.licence, /CC BY 4.0/);
 });
+
+test("every example asks for a purchase the library can hold (Monitor 23 Oct: consultancy had under 5 awards)", async () => {
+  const { default: manifest } = await import("./index");
+  for (const ex of manifest.examples ?? []) {
+    const what = String((ex.params as Record<string, unknown>).what);
+    assert.ok(what === "all" || itemFor(what) !== null, `example what=${what} is not a known purchase`);
+    assert.notEqual(what, "consultancy");
+  }
+});
