@@ -1,0 +1,17 @@
+name: nz probe tmp
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: |
+          curl -sS -L --max-time 120 -A "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)" -o f.csv "https://www.stats.govt.nz/assets/Uploads/Selected-price-indexes/Selected-price-indexes-September-2026/Download-data/selected-price-indexes-september-2026.csv"
+          wc -l f.csv
+          echo "=== distinct UNITS"; cut -d, -f5 f.csv | sort | uniq -c
+          echo "=== distinct Group"; awk -F'","' '{print $7}' f.csv | sort | uniq -c
+          echo "=== non-index sample"; grep -v '"Index"' f.csv | awk -F, '{print $1","$5","$7","$8","$9","$10}' | sort -u | head -80
+          echo "=== last rows of a dollar series"; grep -v '"Index"' f.csv | grep -m1 -o '^"[A-Z0-9.]*"' | tr -d '"' | xargs -I{} sh -c 'grep "^\"{}\"" f.csv | tail -4'
