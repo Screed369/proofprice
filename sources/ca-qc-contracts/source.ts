@@ -28,7 +28,7 @@ export const INFO: SourceInfo = {
     "Source: Secrétariat du Conseil du trésor (Québec), Système électronique d'appel d'offres (SEAO), Données Québec, CC BY 4.0. Figures are ProofPrice aggregates of the published notices (changes made: grouped, deduplicated, medians and ranges calculated).",
   homepage: "https://www.donneesquebec.ca/recherche/dataset/systeme-electronique-dappel-doffres-seao",
   limits:
-    "Quebec only (not other provinces, not federal contracts). The amount is the awarded value, often over the whole contract period and it may include options; it is not a unit price and not an amount paid yet. " +
+    "Quebec only (not other provinces, not federal contracts). Only contracts above the publication thresholds are listed (municipalities from CA$25,000), so small purchases are missing and the low end of every range sits near that floor. The amount is the awarded value, often over the whole contract period and it may include options; it is not a unit price and not an amount paid yet. " +
     "Purchases are recognised from words in the (French) notice title and, for laptops, desktops and tablets, the UNSPSC code; a notice with an unusual title is missed. Placeholder amounts under 100 dollars are left out. " +
     "Aggregates only; buyers' suppliers and officials are never named or read.",
   method_version: "1",
