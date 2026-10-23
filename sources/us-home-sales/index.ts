@@ -2,6 +2,7 @@
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
 import { INFO, usHomeSales } from "./source";
+import { isDcRequest } from "../us-dc-home-sales/source";
 
 export default defineSource({
   info: INFO,
@@ -10,6 +11,9 @@ export default defineSource({
   countryHelp: "US = United States, partial: Connecticut, New York City and Cook County IL (Chicago area) only; not nationwide",
   placeName: "the United States (Connecticut, New York City and Cook County IL only)",
   status: "live",
+  // Washington, DC is answered by us-dc-home-sales (DC Office of the Chief Financial Officer, CC BY 4.0); declared serves() change.
+  // A bare "Washington" stays here (the town of Washington, CT). The rule is isDcRequest() in ../us-dc-home-sales/source.ts.
+  serves: (p) => !isDcRequest(p),
   paramNotes: {
     town:
       "US: a Connecticut town ('Hartford'), a New York City borough or neighborhood ('Brooklyn', 'Williamsburg'), 'Chicago', 'Cook County' or a Cook County assessment township ('Evanston', 'Oak Park'). " +
@@ -20,7 +24,7 @@ export default defineSource({
   },
   paramValues: { property_type: ["house", "condo", "coop"] },
   extraParams: {
-    state: z.string().optional().describe("US only: 'CT' (Connecticut), 'NY' (New York City) or 'IL' (Cook County). Usually inferred from the place; set it when a name exists in two of them."),
+    state: z.string().optional().describe("US only: 'CT' (Connecticut), 'NY' (New York City), 'IL' (Cook County) or 'DC' (Washington, DC). Usually inferred from the place; set it when a name exists in two of them."),
   },
   examples: [
     { params: { country: "US", town: "Hartford" } },
