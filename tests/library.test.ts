@@ -46,7 +46,8 @@ test("history: a series with the change over the period, honest when empty", () 
   assert.equal(none.status, "no_history_yet");
   assert.equal(none.series.length, 0);
   assert.equal(libraryStatus()[0].source, "es-fuel");
-  assert.throws(() => runHistory(categoryById("home-sales")!, { country: "GB", town: "Bristol" }), /daily history/);
+  // GB now has monthly history only (backfill, no daily collector): a daily request says so and how to ask
+  assert.throws(() => runHistory(categoryById("home-sales")!, { country: "GB", town: "Bristol" }), /monthly figures.*months/);
 });
 
 test("store: never wipes history (bad header refused, empty day ignored)", () => {
