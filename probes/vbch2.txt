@@ -1,0 +1,279 @@
+URL: https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398542
+Fetched: 2026-10-23T07:43:52Z from GitHub Actions
+Status, type, bytes: 200 application/json 7803
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Fri, 23 Oct 2026 07:43:52 GMT
+Server: Apache
+X-Ticket-Id: 6899152244856259427
+Vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+Content-Type: application/json
+Set-Cookie: cookiesession1=678B777D64E4F150E816BE7745D97A99;Expires=Sat, 23 Oct 2027 07:43:52 GMT;Path=/;Secure;HttpOnly
+Strict-Transport-Security: max-age=15552000
+X-XSS-Protection: 1
+content-length: 7803
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{
+  "ids" : {
+    "uuid" : "f8148e9b-27f1-4144-85ed-1a75d83e58b9",
+    "damId" : 36398542,
+    "contentId" : 24129241,
+    "languageCopyId" : 36398533,
+    "gnp" : "2026-0597"
+  },
+  "bfs" : {
+    "embargo" : "2026-03-05T07:30:00Z",
+    "lifecycle" : {
+      "id" : 900300,
+      "level" : 0,
+      "code" : "CURRENT",
+      "name" : "Diffundiert/aktuell"
+    },
+    "lifecycleGroup" : "CURRENT",
+    "provisional" : false,
+    "articleModel" : {
+      "id" : 900030,
+      "level" : 1,
+      "code" : "TABL",
+      "name" : "TM10 Tabelle Datei"
+    },
+    "articleModelGroup" : {
+      "id" : 900029,
+      "level" : 0,
+      "code" : "AMG_TABLE",
+      "name" : "Daten - Tabelle"
+    }
+  },
+  "description" : {
+    "titles" : {
+      "main" : "Durchschnittlicher Mietpreis nach Bezugsdauer der Wohnung und Kanton"
+    },
+    "categorization" : {
+      "collection" : [ {
+        "id" : 900001,
+        "level" : 0,
+        "code" : "STAT_GEN",
+        "name" : "Allgemeine Statistik"
+      }, {
+        "id" : 900014,
+        "level" : 0,
+        "code" : "TAB_JE",
+        "name" : "Tab JE"
+      }, {
+        "id" : 900011,
+        "level" : 0,
+        "code" : "OGD",
+        "name" : "OGD"
+      } ],
+      "prodima" : [ {
+        "id" : 900140,
+        "level" : 0,
+        "code" : "09",
+        "name" : "Bau- und Wohnungswesen"
+      }, {
+        "id" : 901356,
+        "level" : 1,
+        "code" : "09.03",
+        "name" : "Wohnungen"
+      }, {
+        "id" : 901363,
+        "level" : 2,
+        "code" : "09.03.03",
+        "name" : "Mietwohnungen"
+      } ],
+      "inquiry" : [ {
+        "id" : 900002,
+        "level" : 0,
+        "name" : "Stichprobenerhebung"
+      }, {
+        "id" : 312,
+        "level" : 1,
+        "code" : "SE",
+        "abbrev" : "SE",
+        "name" : "Strukturerhebung"
+      }, {
+        "id" : 900008,
+        "level" : 0,
+        "name" : "Register- und Stichprobenerhebung"
+      }, {
+        "id" : 290,
+        "level" : 1,
+        "code" : "GWS",
+        "abbrev" : "GWS",
+        "name" : "Gebäude- und Wohnungsstatistik (seit 2009)"
+      } ],
+      "spatialdivision" : [ {
+        "id" : 900091,
+        "level" : 0,
+        "code" : "p_suis",
+        "name" : "Schweiz"
+      }, {
+        "id" : 900001,
+        "level" : 1,
+        "code" : "suis",
+        "name" : "Schweiz"
+      }, {
+        "id" : 900008,
+        "level" : 0,
+        "code" : "p_sorg",
+        "name" : "Sonstige Raumgliederungen"
+      }, {
+        "id" : 900022,
+        "level" : 1,
+        "code" : "greg",
+        "name" : "Grossregionen"
+      } ],
+      "classification" : [ ],
+      "institution" : [ {
+        "id" : 900001,
+        "level" : 0,
+        "name" : "Bundesamt für Statistik"
+      }, {
+        "id" : 900065,
+        "level" : 1,
+        "code" : "BFS",
+        "abbrev" : "BFS",
+        "name" : "Bundesamt für Statistik"
+      } ],
+      "publisher" : [ ],
+      "tags" : [ ],
+      "dataSource" : [ {
+        "id" : 900001,
+        "level" : 0,
+        "name" : "Bundesamt für Statistik"
+      }, {
+        "id" : 900065,
+        "level" : 1,
+        "code" : "BFS",
+        "abbrev" : "BFS",
+        "name" : "Bundesamt für Statistik"
+      } ],
+      "copyrights" : [ {
+        "id" : 900001,
+        "level" : 0,
+        "name" : "Bundesamt für Statistik"
+      }, {
+        "id" : 900065,
+        "level" : 1,
+        "code" : "BFS",
+        "abbrev" : "BFS",
+        "name" : "Bundesamt für Statistik"
+      } ],
+      "termsOfUse" : [ {
+        "id" : 900004,
+        "level" : 0,
+        "code" : "OPEN-BY",
+        "abbrev" : "Freie Nutzung - Quellenangabe ist Pflicht",
+        "name" : "Open use - Must provide the source"
+      } ],
+      "serie" : [ ],
+      "periodicity" : [ {
+        "id" : 910000,
+        "level" : 0,
+        "code" : "ANNUAL",
+        "name" : "Jährlich"
+      } ]
+    },
+    "bibliography" : {
+      "period" : "2020-2024"
+    },
+    "language" : "DE",
+    "highlight" : false,
+    "discontinued" : false,
+    "downloadable" : true
+  },
+  "shop" : {
+    "orderNr" : "je-d-09.03.03.64",
+    "stock" : false
+  },
+  "seo" : {
+    "metaKeywords" : [ ]
+  },
+  "links" : [ {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398542",
+    "rel" : "self"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398542/bibtex",
+    "rel" : "bibtex"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398542/ris",
+    "rel" : "ris"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398542/thumbnail",
+    "rel" : "thumbnail"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398542/master",
+    "rel" : "master",
+    "format" : "xlsx",
+    "size" : 39657
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398538",
+    "rel" : "alternate",
+    "hreflang" : "fr",
+    "text" : "FR"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398535",
+    "rel" : "alternate",
+    "hreflang" : "it",
+    "text" : "IT"
+  }, {
+    "href" : "https://dam-api.bfs.admin.ch/hub/api/dam/packages/2026-0597",
+    "rel" : "related-gnp",
+    "text" : "Mietpreise, Eigentümerquote und Eigentümertyp der Mietwohnungen"
+  }, {
+    "href" : "/bfs/de/home/statistiken/bevoelkerung/erhebungen/se.html",
+    "rel" : "related-factsheet-inquiry",
+    "text" : "Strukturerhebung"
+  }, {
+    "href" : "/bfs/de/home/statistiken/bau-wohnungswesen/erhebungen/gws2009.html",
+    "rel" : "related-factsheet-inquiry",
+    "text" : "Gebäude- und Wohnungsstatistik (seit 2009)"
+  }, {
+    "href" : "/bfs/de/home/statistiken/bau-wohnungswesen.html",
+    "rel" : "related-theme-entrypage",
+    "text" : "Bau- und Wohnungswesen"
+  } ],
+  "_embedded" : {
+    "labels" : {
+      "asset.bfs.embargo" : "Veröffentlicht am",
+      "asset.bfs.lastupdated" : "Letzte Aktualisierung",
+      "asset.bfs.model.name" : "Typ",
+      "asset.bfs.originalembargo" : "Ursprüngliches Publikationsdatum",
+      "asset.bfs.provisional" : "Datenstand",
+      "asset.bfs.status" : "Status",
+      "asset.content.format" : "Format",
+      "asset.content.href" : "Anhang",
+      "asset.description.abstractShort" : "Zusammenfassung",
+      "asset.description.bibliography.author" : "Autor(en)",
+      "asset.description.bibliography.copyright" : "Copyright",
+      "asset.description.bibliography.doi" : "Persistenter Link",
+      "asset.description.bibliography.info" : "Bibliographische Angaben",
+      "asset.description.bibliography.pages" : "Seiten",
+      "asset.description.bibliography.period" : "Dargestellter Zeitraum",
+      "asset.description.bibliography.source" : "Quelle(n)",
+      "asset.description.bibliography.termsofuse" : "Nutzungsbedingungen",
+      "asset.description.categorization.classification" : "Nomenklatur(en)",
+      "asset.description.categorization.geography" : "Raumgliederung",
+      "asset.description.categorization.inquiry" : "Erhebung, Statistik",
+      "asset.description.categorization.institution" : "Herausgeber",
+      "asset.description.categorization.keyword" : "Schlagworte",
+      "asset.description.categorization.periodicity" : "Periodizität",
+      "asset.description.categorization.prodima" : "Thema",
+      "asset.description.categorization.publisher" : "Verlag",
+      "asset.description.categorization.serie" : "Reihe",
+      "asset.description.categorization.tags" : "Tags",
+      "asset.description.language" : "Sprache",
+      "asset.descriptions.title.main" : "Titel",
+      "asset.shop.ordernr" : "BFS-Nummer",
+      "asset.shop.price" : "Preis",
+      "link.rel.appendix" : "Zusätzliche Daten",
+      "links.rel.mostrecentissue" : "Aktuellste Ausgabe",
+      "links.rel.otherlanguages" : "Weitere Sprachen",
+      "links.rel.relateddocuments" : "Verwandte Dokumente"
+    }
+  }
+}
