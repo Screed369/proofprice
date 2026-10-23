@@ -352,7 +352,7 @@ export interface HistoryAnswer {
 }
 
 export function historySources(cat: CategoryPlugin): SourcePlugin[] {
-  return sourcesFor(cat.id).filter((s) => s.harvest && s.historyKey && !s.noHistory);
+  return sourcesFor(cat.id).filter((s) => (s.harvest || s.backfill) && s.historyKey && !s.noHistory);
 }
 
 const daysCache = new Map<string, number>();
@@ -375,7 +375,7 @@ function knownParams(cat: CategoryPlugin, p: Params): Params {
 export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, today = new Date()): HistoryAnswer {
   const { src, prepared } = pickSource(cat, params);
   if (src.noHistory) throw new InputError(src.noHistory);
-  if (!src.harvest || !src.historyKey) {
+  if ((!src.harvest && !src.backfill) || !src.historyKey) {
     throw new InputError(`We do not keep daily history for ${src.info.country} ${cat.noun.toLowerCase()} yet.`);
   }
   const monthlyAsked = num(params.months) !== undefined;
@@ -385,7 +385,9 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
   const meta = readMeta(src.info.id);
   // The window ends on the last day the library holds (normally today), so a late deploy never hides the data.
   const todayIso = today.toISOString().slice(0, 10);
-  const to = meta?.last_date ?? todayIso;
+  // A source with only a backfill (no daily collector) has no meta.json: its monthly window ends at its newest loaded month.
+  const histLast = readHistoryMeta(src.info.id)?.last_period;
+  const to = meta?.last_date ?? (num(params.months) !== undefined && histLast ? `${histLast}-28` : todayIso);
   const end = new Date(to + "T00:00:00Z");
   const from = new Date(end.getTime() - (days - 1) * 86400000).toISOString().slice(0, 10);
   // months=N asks for monthly history (loaded by the History backfill) instead of the recent daily snapshots
