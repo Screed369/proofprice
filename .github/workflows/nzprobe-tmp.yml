@@ -1,6 +1,7 @@
 name: nz probe tmp
 on:
-  workflow_dispatch:
+  push:
+    branches: [src/nz-stats-groceries]
 permissions:
   contents: read
 jobs:
