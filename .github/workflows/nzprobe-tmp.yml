@@ -9,17 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - run: |
+      - name: probe
+        continue-on-error: true
+        run: |
           UA="ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)"
-          curl -sS -L --max-time 60 -A "$UA" -o df.json "https://api.data.stats.govt.nz/rest/dataflow/all/all/latest?detail=allstubs" -w "%{http_code} %{size_download}\n"
-          echo "=== dataflow ids with price/food/CPI"; python3 - <<'PY'
-          import json,re
-          d=json.load(open('df.json'))
-          fl=d.get('data',{}).get('dataflows') or d.get('dataflows') or []
-          print(len(fl))
-          for f in fl:
-              n=f.get('name') or ''
-              if isinstance(n,dict): n=n.get('en') or str(n)
-              if re.search(r'price|food|cpi',n+f.get('id',''),re.I): print(f.get('id'),'|',n)
-          PY
-          echo "=== copyright"; curl -sS -L --max-time 60 -A "$UA" "https://www.stats.govt.nz/about-us/copyright" -w "\n%{http_code} %{size_download}\n" | sed 's/<[^>]*>/ /g' | tr -s ' \n' | grep -i -m12 "creative commons\|licen\|copyright\|attribution"
+          curl -sS -L --max-time 60 -A "$UA" -o df.json "https://api.data.stats.govt.nz/rest/dataflow/all/all/latest?detail=allstubs" -w "%{http_code} %{size_download}\n" || true
+          python3 -c "import json,re;d=json.load(open('df.json'));fl=d.get('data',{}).get('dataflows') or d.get('dataflows') or [];print(len(fl));[print(f.get('id'),'|',(f.get('name') if isinstance(f.get('name'),str) else str(f.get('names') or f.get('name')))) for f in fl if re.search(r'price|food|cpi',str(f),re.I)]" || head -c 600 df.json
+          echo "=== copyright"
+          curl -sS -L --max-time 60 -A "$UA" "https://www.stats.govt.nz/about-us/copyright" -w "\n%{http_code} %{size_download}\n" | sed 's/<[^>]*>/ /g' | tr -s ' ' | grep -i -m12 "creative commons\|licen\|attribution" || true
