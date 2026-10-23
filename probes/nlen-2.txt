@@ -1,0 +1,93 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/85666NED/DataProperties?$format=json&$select=Key,Title,Description
+Fetched: 2026-10-23T03:34:21Z from GitHub Actions
+Status, type, bytes: 200 application/json 5475
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Fri, 23 Oct 2026 03:34:21 GMT
+Content-Length: 5475
+TXID: 0190f803
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=01933102-d5bd-1ada-9678-0050569bed16_1891625361_2685643174_00000000004321245187; Path=/; Expires=Fri, 23-Oct-2026 03:34:36 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/85666NED/$metadata#Cbs.OData.WebAPI.DataProperties&$select=Key,Title,Description","value":[
+    {
+      "odata.type":"Cbs.OData.Dimension","Key":"Prijscomponenten","Title":"Prijscomponenten","Description":""
+    },{
+      "odata.type":"Cbs.OData.Dimension","Key":"Belastingen","Title":"Belastingen","Description":""
+    },{
+      "odata.type":"Cbs.OData.TimeDimension","Key":"Perioden","Title":"Perioden","Description":""
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Aardgasprijs","Description":"Aardgas wordt geleverd per kubieke meter. De omrekening naar joule is gedaan op basis van de calorische bovenwaarde van aardgas uit Slochteren. 1 m3 = 35,17 MJ (Megajoule). De terugrekening naar kubieke meter: 1 TJ (Terajoule) = 1000 GJ \r\n(Gigajoule) = 28433 m3.\r\nDe verbruiksklassen zijn gebaseerd op het jaarverbruik."
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Verbruiksklassen huishoudens","Description":"Particulier huishouden.\r\nE\u00e9n of meer personen die samen een woonruimte bewonen en zichzelf daar niet-bedrijfsmatig voorzien in de dagelijkse levensbehoeften."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"MinderDan569M3_1","Title":"Minder dan 569 m3","Description":"Uigedrukt in GJ  komt dit overeen met minder dan 20 GJ."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_569Tot5687M3_2","Title":"569 tot 5 687 m3","Description":"Uitgedrukt in GJ komt dit overeen met 20 - < 200 GJ.\r\nIn deze verbruiksklasse zitten de meeste huishoudens.\r\n"
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_5687M3EnMeer_3","Title":"5 687 m3 en meer","Description":"Uitgedrukt in GJ komt dit overeen met \u2265 200 GJ"
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Verbruiksklassen niet-huishoudens","Description":"Deze klassen bevat zowel kleinzakelijke als grootzakelijke afnemers."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"MinderDan28433M3_4","Title":"Minder dan 28 433 m3","Description":"Uigedrukt in GJ  komt dit overeen met minder dan 1000 GJ."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_28433Tot284333M3_5","Title":"28 433 tot 284 333 m3","Description":"Uitgedrukt in GJ komt dit overeen met 1.000 - < 10.000 GJ."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_284333Tot2843332M3_6","Title":"284 333 tot 2 843 332 m3","Description":"Uitgedrukt in GJ komt dit overeen met 10.000 - < 100.000 GJ."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_2843332Tot28433324M3_7","Title":"2 843 332 tot 28 433 324 m3","Description":"Uitgedrukt in GJ komt dit overeen met 100.000 - < 1.000.000 GJ."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_28433324M3EnMeer_8","Title":"28 433 324 m3 en meer","Description":"Uitgedrukt in GJ komt dit overeen met \u2265 1.000.000 GJ"
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Elektriciteitsprijs ","Description":"1 MWh (Megawattuur) = 1000 kWh (Kilowattuur) = 3,6 GJ (Gigajoule).\r\nDe verbruiksklassen zijn gebaseerd op het jaarverbruik."
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Verbruiksklassen huishoudens","Description":"Particulier huishouden.\r\nE\u00e9n of meer personen die samen een woonruimte bewonen en zichzelf daar niet-bedrijfsmatig voorzien in de dagelijkse levensbehoeften."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"MinderDan1MWh_9","Title":"Minder dan 1 MWh","Description":"De verbruiksklasse \"minder dan 1 MWh\" omvat de kleinverbruikers van elektriciteit onder de huishoudens. De gemiddelde leveringsprijs (inclusief belastingen) van deze groep is negatief. Deze groep heeft een dusdanig klein verbruik van elektriciteit dat de teruggave van energiebelasting (heffingskorting) groter is dan de optelsom van de andere prijscomponenten van de leveringsprijs."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_1Tot25MWh_10","Title":"1 tot 2,5 MWh","Description":null
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_25Tot5MWh_11","Title":"2,5 tot 5 MWh","Description":"In deze verbruiksklasse zitten de meeste huishoudens."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_5Tot15MWh_12","Title":"5 tot 15 MWh","Description":null
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_15MWhEnMeer_13","Title":"15 MWh en meer","Description":null
+    },{
+      "odata.type":"Cbs.OData.TopicGroup","Key":"","Title":"Verbruiksklassen niet-huishoudens","Description":"Deze klassen bevat zowel kleinzakelijke als grootzakelijke afnemers."
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"MinderDan20MWh_14","Title":"Minder dan 20 MWh","Description":null
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_20Tot500MWh_15","Title":"20 tot 500 MWh","Description":null
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_500Tot2000MWh_16","Title":"500 tot 2 000 MWh","Description":null
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_2000Tot20000MWh_17","Title":"2 000 tot 20 000 MWh","Description":null
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_20000Tot70000MWh_18","Title":"20 000 tot 70 000 MWh","Description":null
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_70000Tot150000MWh_19","Title":"70 000 tot 150 000 MWh","Description":null
+    },{
+      "odata.type":"Cbs.OData.Topic","Key":"k_150000MWhEnMeer_20","Title":"150 000 MWh en meer","Description":null
+    }
+  ]
+}
