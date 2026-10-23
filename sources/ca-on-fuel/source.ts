@@ -1,6 +1,7 @@
 // Ontario fuel prices: the Ontario Ministry of Energy "Fuels Price Survey". One CSV ("fueltypesall.csv", wide format, one row per week and fuel type,
 // every week since 3 January 1990) with the average retail price in cents per litre in 14 Ontario markets plus the provincial, southern and northern averages.
-// The file is 1.4 MB, so it is read once per request (the CDN caches answers for 10 minutes) and the newest week is taken; no library history is kept.
+// The file is 1.4 MB, so it is read once per request (the CDN caches answers for 10 minutes) and the newest week is taken. A daily collector (harvest) stores the
+// newest survey week (one row per market and fuel, dated by the survey Monday) so an outage is answered from our copy of the last 7 days and /history builds a weekly series.
 // Format checked on 2026-10-23 from GitHub's servers (probe onfuelc1): ontario.ca/v1/files/fuel-prices/fueltypesall.csv answers 301 -> 302 -> an S3 file
 // (200 text/csv, 1,415,508 bytes). The probe sees only the first 200 KB (Regular Unleaded Gasoline 1990 to 2017), so the other fuel-type names are matched by
 // words (diesel, premium, propane, natural gas) and a request for a fuel that is not found lists the names the file really holds.
@@ -8,7 +9,8 @@
 
 import { InputError, SourceError } from "../../lib/http";
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL = "https://data.ontario.ca/dataset/fuels-price-survey-information";
 export const CSV_URL = "https://ontario.ca/v1/files/fuel-prices/fueltypesall.csv";
@@ -319,4 +321,45 @@ async function fetchText(url: string, timeoutMs = 25000): Promise<string> {
 
 export async function onFuelNow(input: OnFuelInput, fetcher: (url: string) => Promise<string> = fetchText): Promise<PriceAnswer> {
   return answerFromRows(parseSurvey(await fetcher(CSV_URL)), input);
+}
+
+// ---------- library copy (harvest) and its key ----------
+
+const FUEL_ORDER: FuelKey[] = ["petrol95", "petrol98", "diesel", "propane", "methane"];
+
+/** Pure: one library row per market and fuel for the newest survey week that holds any price. Each row is a published average (n is NO_COUNT). */
+export function harvestFromRows(rows: Row[]): HarvestResult {
+  const usable = rows.filter((r) => r.fuel !== null && Object.keys(r.cents).length > 0);
+  if (!usable.length) throw new SourceError("The Ontario fuels price survey file holds no usable prices; this source needs updating.");
+  const date = usable[usable.length - 1].date;
+  const out: HarvestResult["rows"] = [];
+  for (const r of usable.filter((x) => x.date === date)) {
+    for (const m of MARKETS) {
+      if (m.statcan) continue; // Ottawa and Thunder Bay are answered by Statistics Canada
+      const c = r.cents[m.column];
+      if (typeof c !== "number") continue;
+      const v = dollars(c);
+      out.push({ area: m.label, item: r.fuel!, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+    }
+  }
+  return {
+    date,
+    currency: "CAD",
+    unit: "per litre",
+    rows: out,
+    note: `Ontario Ministry of Energy Fuels Price Survey, week of ${date}: average retail price per litre in each Ontario market. Published averages, not counts of records (no record count is published).`,
+  };
+}
+
+export async function onFuelHarvest(fetcher: (url: string) => Promise<string> = fetchText): Promise<HarvestResult> {
+  return harvestFromRows(parseSurvey(await fetcher(CSV_URL)));
+}
+
+/** Where a request lives in the library: the market's label and the fuel. Null for an unknown fuel or market. */
+export function onFuelHistoryKey(p: { fuel?: string; town?: string; area?: string }): { area: string; item: string; label: string } | null {
+  if (!FUEL_ORDER.includes(p.fuel as FuelKey)) return null;
+  const asked = (p.town ?? p.area ?? "").trim();
+  const m = asked ? findMarket(asked) : MARKETS.find((x) => x.column === "Ontario Average");
+  if (!m) return null;
+  return { area: m.label, item: p.fuel!, label: /Ontario/.test(m.label) ? m.label : `${m.label}, Ontario` };
 }

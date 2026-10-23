@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { InputError, SourceError } from "../../lib/http";
 import { categoryById, runCategory, SOURCE_PLUGINS } from "../../lib/registry";
-import { INFO, answerFromRows, changeFrom, classifyFuel, findMarket, isOntarioOnlyPlace, onFuelNow, parseSurvey, CSV_URL } from "./source";
+import { INFO, answerFromRows, changeFrom, classifyFuel, findMarket, isOntarioOnlyPlace, onFuelNow, parseSurvey, CSV_URL, harvestFromRows, onFuelHarvest, onFuelHistoryKey } from "./source";
 
 const REAL = readFileSync(new URL("./fixtures/fueltypesall-sample.csv", import.meta.url), "utf8");
 const HEAD = REAL.split("\n")[0];
@@ -159,4 +159,31 @@ test("ca-on-fuel: a Windsor question reaches this source through the category", 
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+test("ca-on-fuel: harvest stores the newest survey week, one published average per market and fuel (constructed rows)", async () => {
+  const h = await onFuelHarvest(async () => CONSTRUCTED);
+  assert.equal(h.date, "2026-10-19");
+  assert.equal(h.currency, "CAD");
+  assert.equal(h.unit, "per litre");
+  const win = h.rows.find((r) => r.area === "Windsor" && r.item === "diesel")!;
+  assert.equal(win.median, 1.705);
+  assert.equal(win.low, 1.705);
+  assert.ok(Number.isNaN(win.n), "NO_COUNT, never a made-up count");
+  assert.ok(h.rows.some((r) => r.area === "Ontario" && r.item === "propane"));
+  assert.ok(!h.rows.some((r) => r.area === "Kenora"), "a market with 0 (not surveyed) is left out");
+  assert.ok(!h.rows.some((r) => r.area === "Ottawa" || r.area === "Thunder Bay"), "Statistics Canada cities are not stored here");
+  assert.ok(!h.rows.some((r) => r.item === "diesel" && r.median === 1.6), "older weeks are not stored");
+});
+
+test("ca-on-fuel: harvest of a file with no prices is a SourceError", () => {
+  assert.throws(() => harvestFromRows([]), SourceError);
+});
+
+test("ca-on-fuel: historyKey names the market and fuel the library holds", () => {
+  assert.deepEqual(onFuelHistoryKey({ fuel: "diesel", town: "Windsor" }), { area: "Windsor", item: "diesel", label: "Windsor, Ontario" });
+  assert.deepEqual(onFuelHistoryKey({ fuel: "petrol95" }), { area: "Ontario", item: "petrol95", label: "Ontario" });
+  assert.deepEqual(onFuelHistoryKey({ fuel: "propane", area: "Southern Ontario" }), { area: "Southern Ontario", item: "propane", label: "Southern Ontario" });
+  assert.equal(onFuelHistoryKey({ fuel: "e85", town: "Windsor" }), null);
+  assert.equal(onFuelHistoryKey({ fuel: "diesel", town: "Narnia" }), null);
 });

@@ -1,7 +1,7 @@
 // Manifest: Ontario fuel prices (Ontario Ministry of Energy, Fuels Price Survey, weekly). Logic lives in ./source.ts.
 // Shares CA with ca-statcan-fuel: this source answers the Ontario-only markets (and the Ontario averages), that one everything else (declared serves() in both).
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, isOntarioOnlyPlace, onFuelNow } from "./source";
+import { INFO, isOntarioOnlyPlace, onFuelHarvest, onFuelHistoryKey, onFuelNow } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -27,4 +27,10 @@ export default defineSource({
     "A posted pump price average, not what each driver paid; we pass it on as published and calculate no range.",
   handle: (p, ctx) =>
     onFuelNow({ fuel: str(p.fuel), town: str(p.town), area: str(p.area), postcode: str(p.postcode), service: str(p.service), baseUrl: ctx.baseUrl }),
+  // A daily copy of the newest survey week, so a Ministry outage is answered from it (stale-if-error) and /history builds a weekly series.
+  // Rows are dated by the survey Monday; each row is one published average (n is NO_COUNT, no record count).
+  harvest: () => onFuelHarvest(),
+  historyKey: (p) => onFuelHistoryKey({ fuel: str(p.fuel), town: str(p.town), area: str(p.area) }),
+  referenceDates: true,
+  nominalCounts: true,
 });
