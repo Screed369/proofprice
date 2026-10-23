@@ -17,7 +17,7 @@ export default defineSource({
   },
   examples: [{ params: { country: "UA", what: "laptops" } }],
   method:
-    "Ukrainian public contracts signed in the newest 90 days from Prozorro (Ministry of Economy of Ukraine, data.gov.ua, CC BY 4.0), recognised by product code. Median and 10th–90th percentile of the contract value in UAH including VAT, from the daily copy in our price library (a sample of the newest contracts). Totals per contract, not unit prices; suppliers are never named.",
+    "Ukrainian public contracts signed in the newest 90 days from Prozorro (Ministry of Economy of Ukraine, data.gov.ua, CC BY 4.0), recognised by product code. Median and 10th–90th percentile of the contract value in UAH as signed (VAT included where charged), from the daily copy in our price library (a sample of the newest contracts). Totals per contract, not unit prices; suppliers are never named.",
   serves: (p) => String(p.country ?? "").toUpperCase() === "UA",
   handle: (p, ctx) => uaContracts({ what: String(p.what), cpv: str(p.cpv), buyer_area: str(p.buyer_area), baseUrl: ctx.baseUrl }),
   harvest: () => uaContractsHarvest(),

@@ -50,7 +50,7 @@ test("listPage: ids and the next offset; an empty page stops", () => {
   assert.deepEqual(listPage(null), { ids: [], next: null });
 });
 
-test("contractOf: keeps signed UAH contracts; drops pending, placeholders, entry errors, no-VAT, other currency, mixed baskets, out of window", () => {
+test("contractOf: keeps signed UAH contracts; drops pending, placeholders, entry errors, other currency, mixed baskets, out of window", () => {
   const f = "2026-07-25";
   const t = "2026-10-23";
   assert.deepEqual(contractOf(detail(5).data, f, t), { id: "id5", date: "2026-10-14", value: 105000, cpv: "30213100" });
@@ -58,7 +58,8 @@ test("contractOf: keeps signed UAH contracts; drops pending, placeholders, entry
   assert.equal(contractOf(detail(5, { value: { amount: 1, currency: "UAH", valueAddedTaxIncluded: true } }).data, f, t), null);
   assert.equal(contractOf(detail(5, { value: { amount: 5e10, currency: "UAH", valueAddedTaxIncluded: true } }).data, f, t), null);
   assert.equal(contractOf(detail(5, { value: { amount: 5e5, currency: "EUR", valueAddedTaxIncluded: true } }).data, f, t), null);
-  assert.equal(contractOf(detail(5, { value: { amount: 5e5, currency: "UAH", valueAddedTaxIncluded: false } }).data, f, t), null);
+  // a supplier that is not a VAT payer (seen live 2026-10-23): amount == amountNet, still a real contract value
+  assert.equal(contractOf(detail(5, { value: { amount: 88400, currency: "UAH", valueAddedTaxIncluded: false, amountNet: 88400 } }).data, f, t)?.value, 88400);
   assert.equal(contractOf(detail(5, { dateSigned: "2025-01-01T00:00:00+02:00" }).data, f, t), null);
   assert.equal(contractOf(detail(5, { dateSigned: undefined }).data, f, t), null);
   assert.equal(contractOf(detail(5, { items: [] }).data, f, t), null);

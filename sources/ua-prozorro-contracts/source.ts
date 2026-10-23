@@ -5,7 +5,7 @@
 //   list   GET https://public-api.prozorro.gov.ua/api/2.5/contracts?limit=100&descending=1 -> {data:[{id,dateModified,status}], next_page:{offset,uri}}
 //          (opt_fields other than status is ignored by the list, so the amounts need one detail call per contract)
 //   detail GET .../contracts/<id> -> {data:{contractID, status:"active", dateSigned:"2026-10-14T00:00:00+03:00",
-//          value:{amount:773760.0, currency:"UAH", valueAddedTaxIncluded:true, amountNet:644800.0},
+//          value:{amount:773760.0, currency:"UAH", valueAddedTaxIncluded:true, amountNet:644800.0}  (a supplier that is not a VAT payer has false and amount == amountNet; checked 2026-10-23 on contract aed417ef...),
 //          items:[{classification:{scheme:"ДК021", id:"45510000-5"}, quantity, unit}], suppliers, procuringEntity, ...}}
 // Suppliers and buyers are never read into the library. The feed is far too big to walk per request: harvest() reads the newest contracts
 // once a day with polite concurrency and keeps aggregates only.
@@ -23,7 +23,7 @@ export const INFO: SourceInfo = {
   name: "Prozorro: Ukrainian public procurement contracts",
   publisher: "Ministry of Economy of Ukraine (Prozorro), published on data.gov.ua",
   what_is_recorded:
-    "Contracts that Ukrainian public buyers signed with the winner of a Prozorro tender: what was bought (official product code, DK 021 based on the CPV), the date signed and the contract value in hryvnia including VAT.",
+    "Contracts that Ukrainian public buyers signed with the winner of a Prozorro tender: what was bought (official product code, DK 021 based on the CPV), the date signed and the contract value in hryvnia (amount as signed: VAT included where the supplier charges VAT).",
   price_type: "contract_price",
   freshness: "Daily: Prozorro updates continuously; our copy is collected once a day from the newest contracts",
   licence: "Creative Commons Attribution 4.0 (CC BY 4.0)",
@@ -32,7 +32,7 @@ export const INFO: SourceInfo = {
     "Source: Prozorro public procurement data, Ministry of Economy of Ukraine, data.gov.ua (CC BY 4.0), https://data.gov.ua/en/dataset/f9c0acdb-23c5-4a2d-b549-9868df8ca927. Figures are ProofPrice aggregates of the published contracts.",
   homepage: "https://prozorro.gov.ua/en",
   limits:
-    "Contract values as signed, in hryvnia including VAT, over the whole contract (often a year or more); they are not unit prices and not amounts paid yet. " +
+    "Contract values in hryvnia as signed (VAT included where the supplier charges it), over the whole contract (often a year or more); they are not unit prices and not amounts paid yet. " +
     "The daily collector reads the most recently updated contracts (a sample of the whole feed, up to " + "3,000 per day" + "), not every contract, and only contracts signed in the last 90 days that are active or finished. " +
     "Values under 1,000 UAH (placeholders) or over 10 billion UAH (entry errors) are left out, a contract is counted once, and contracts that mix purchases from different product divisions are left out. " +
     "Purchases are recognised from the contract's first product code, so a contract filed under another code is missed. Aggregates only; suppliers and buyers are never read or kept.",
@@ -45,7 +45,7 @@ export const MIN_VALUE = 1_000;
 export const MAX_VALUE = 10_000_000_000;
 export const MAX_CONTRACTS = 3000;
 export const CONCURRENCY = 6;
-export const UNIT = "per contract, total contract value incl. VAT";
+export const UNIT = "per contract, total contract value as signed (incl. VAT where charged)";
 export const TIME_BUDGET_MS = 7 * 60 * 1000;
 const UA_HEADER = "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)";
 
@@ -67,7 +67,7 @@ export function contractOf(d: any, from: string, to: string): UaContract | null 
   const status = String(d.status ?? "");
   if (status !== "active" && status !== "terminated") return null;
   const v = d.value;
-  if (!v || String(v.currency ?? "") !== "UAH" || v.valueAddedTaxIncluded === false) return null;
+  if (!v || String(v.currency ?? "") !== "UAH") return null;
   const value = Number(v.amount);
   if (!Number.isFinite(value) || value < MIN_VALUE || value > MAX_VALUE) return null;
   const date = String(d.dateSigned ?? "").slice(0, 10);
@@ -228,12 +228,12 @@ export async function uaContracts(input: UaInput): Promise<PriceAnswer> {
     unit: UNIT,
     period: { from, to: day.date },
     method:
-      `Prozorro contracts signed ${from} to ${day.date} (a sample of the newest contracts), recognised by their product code (${label}). Median and 10th–90th percentile of the contract value in UAH including VAT. ` +
+      `Prozorro contracts signed ${from} to ${day.date} (a sample of the newest contracts), recognised by their product code (${label}). Median and 10th–90th percentile of the contract value in UAH as signed (VAT included where charged). ` +
       "Totals per contract, not unit prices; contract values as signed, not confirmed payments; suppliers are never named.",
     describe: (s) =>
       `Ukrainian public buyers signed ${label} with a median total value of ${fmtMoney(s.median, "UAH")} per contract ` +
-      `(typical range ${fmtMoney(s.low, "UAH")} to ${fmtMoney(s.high, "UAH")}, 10th to 90th percentile). These are contract values as signed (VAT included), not unit prices.`,
+      `(typical range ${fmtMoney(s.low, "UAH")} to ${fmtMoney(s.high, "UAH")}, 10th to 90th percentile). These are contract values as signed (VAT included where charged), not unit prices.`,
     baseUrl: input.baseUrl,
-    extra: { value_basis: "total signed contract value incl. VAT, not a unit price", ...matched, newest_collection: day.date },
+    extra: { value_basis: "total signed contract value as signed (incl. VAT where charged), not a unit price", ...matched, newest_collection: day.date },
   });
 }
