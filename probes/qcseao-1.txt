@@ -1,0 +1,20 @@
+URL: https://www.donneesquebec.ca/recherche/api/3/action/resource_search?query=name:hebdo_202610&limit=3
+Fetched: 2026-10-23T23:12:32Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2482
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 23:12:32 GMT
+content-type: application/json;charset=utf-8
+content-length: 2482
+server: nginx
+vary: Accept-Encoding
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+access-control-allow-origin: *
+access-control-allow-headers: *
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"help": "https://www.donneesquebec.ca/recherche/api/3/action/help_show?name=resource_search", "success": true, "result": {"count": 2, "results": [{"id": "7c3b4d4b-e548-40d3-87e3-1a71d2c9f9f6", "package_id": "d23b2e02-085d-43e5-9e6e-e1d558ebfdd5", "url": "https://www.donneesquebec.ca/recherche/dataset/d23b2e02-085d-43e5-9e6e-e1d558ebfdd5/resource/7c3b4d4b-e548-40d3-87e3-1a71d2c9f9f6/download/hebdo_20261012_20261018.json", "format": "JSON", "description": "", "hash": "", "position": 0, "name": "hebdo_20261012_20261018.json", "resource_type": "donnees", "mimetype": "application/json", "mimetype_inner": null, "size": 16854444, "created": "2026-10-19T06:02:15.101930", "last_modified": "2026-10-19T06:02:28.402673", "metadata_modified": "2026-10-19T06:02:29.522728", "cache_url": null, "cache_last_updated": null, "url_type": "upload", "state": "active", "datastore_active": false, "datastore_contains_all_records_of_source_file": false, "relidi_condon_boolee": "n/a", "relidi_condon_datheu": "oui", "relidi_condon_nombre": "oui", "relidi_condon_valinc": "oui", "relidi_confic_epsg": "n/a", "relidi_confic_pascom": "n/a", "relidi_confic_separateur_virgule": "n/a", "relidi_confic_utf8": "oui", "relidi_description_champs": "relidi.descha.foudoc", "relidi_ressource_complementaire": "[]", "taille_entier": 16}, {"id": "868890cd-7846-4ee5-a8ed-933294f8d346", "package_id": "d23b2e02-085d-43e5-9e6e-e1d558ebfdd5", "url": "https://www.donneesquebec.ca/recherche/dataset/d23b2e02-085d-43e5-9e6e-e1d558ebfdd5/resource/868890cd-7846-4ee5-a8ed-933294f8d346/download/hebdo_20261005_20261011.json", "format": "JSON", "description": "", "hash": "", "position": 1, "name": "hebdo_20261005_20261011.json", "resource_type": "donnees", "mimetype": "application/json", "mimetype_inner": null, "size": 19423914, "created": "2026-10-12T06:09:14.176862", "last_modified": "2026-10-12T06:09:28.155687", "metadata_modified": "2026-10-12T06:09:29.198090", "cache_url": null, "cache_last_updated": null, "url_type": "upload", "state": "active", "datastore_active": false, "datastore_contains_all_records_of_source_file": false, "relidi_condon_boolee": "n/a", "relidi_condon_datheu": "oui", "relidi_condon_nombre": "oui", "relidi_condon_valinc": "oui", "relidi_confic_epsg": "n/a", "relidi_confic_pascom": "n/a", "relidi_confic_separateur_virgule": "n/a", "relidi_confic_utf8": "oui", "relidi_description_champs": "relidi.descha.foudoc", "relidi_ressource_complementaire": "[]", "taille_entier": 18}]}}
