@@ -1,0 +1,53 @@
+URL: https://mpr.datamart.ams.usda.gov/services/v1.1/reports/2498?q=report_date=10/22/2026
+Fetched: 2026-10-23T22:16:20Z from GitHub Actions
+Status, type, bytes: 200 application/json 1163
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+content-type: application/json
+content-length: 1163
+expires: Fri, 23 Oct 2026 22:16:20 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Fri, 23 Oct 2026 22:16:20 GMT
+set-cookie: BIGipServer8gbpXmDQm+y/5f/hHNro+Q=!an6Ah81U8LE6yKhDbD3FKdNodbmEedcboZbkWY1XBcP728JqNPsB6x0ivMysx8hVGgHubdQE+GG6b24=; expires=Fri, 23-Oct-2026 22:46:20 GMT; path=/; Httponly; Secure
+server-timing: cdn-cache; desc=MISS
+server-timing: edge; dur=20
+server-timing: origin; dur=31
+alt-svc: h3=":443"; ma=93600
+strict-transport-security: max-age=31536000 ; includeSubDomains
+akamai-grn: 0.d20c0317.1792793780.c1cf5be1
+server-timing: ak_p; desc="1792793780696_386075858_3251592161_5131_8110_2_7_15";dur=1
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "reportSection" : "Summary",
+  "reportSections" : [ "Summary", "Cutout and Primal Values", "Change From Prior Day", "Cutout and Primal History", "5-Day Average Cutout and Primal Values", "Current Volume", "Loin Cuts", "Butt Cuts", "Picnic Cuts", "Ham Cuts", "Belly Cuts", "Sparerib Cuts", "Jowl Cuts", "Trim Cuts", "Variety Cuts", "Added Ingredients Cuts" ],
+  "stats" : {
+    "totalRows:" : 1,
+    "returnedRows:" : 1,
+    "userAllowedRows:" : 99999
+  },
+  "results" : [ {
+    "report_date" : "10/22/2026",
+    "is_correction" : null,
+    "narrative" : null,
+    "report_title" : "National Daily Pork FOB Plant - Negotiated Sales - Afternoon (PDF) (LM_PK602)",
+    "slug_name" : "AMS_2498",
+    "slug_id" : "2498",
+    "office_name" : "Des Moines, IA",
+    "office_code" : "LS-NW",
+    "office_city" : "Des Moines",
+    "office_state" : "IA",
+    "market_location_name" : "Des Moines, IA",
+    "market_location_city" : "Des Moines",
+    "market_location_state" : "IA",
+    "market_type" : "Direct Livestock - LMR Pork",
+    "market_type_category" : "Direct Livestock - LMR Pork",
+    "published_date" : "10/22/2026 14:56:00"
+  } ]
+}
