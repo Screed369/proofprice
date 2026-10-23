@@ -86,6 +86,8 @@ test("GB history: backfill loads whole months only, holds back the newest two, a
   assert.equal(h.status, "ok");
   assert.deepEqual(h.series.map((x) => x.date), ["2023-11", "2023-12", "2024-01"]);
   assert.equal(h.source.id, "gb-hmlr-ppd");
+  assert.equal(h.currency, "GBP");
+  assert.equal(h.unit, "per home");
   assert.throws(() => runHistory(categoryById("home-sales")!, { country: "GB", district: "Leeds" }, {}, new Date()), /months/);
 });
 

@@ -401,8 +401,9 @@ export function runHistory(cat: CategoryPlugin, params: Params, ctx: HandleConte
     : readDaily(src.info.id, { area: key.area, item: key.item, from, to })
   ).filter((r) => passesGate(r.n));
   const staleDays = meta?.last_date ? Math.max(0, Math.round((Date.parse(todayIso) - Date.parse(meta.last_date)) / 86400000)) : null;
-  const unit = cat.history?.unit?.(key.item) ?? meta?.unit ?? null;
-  const currency = meta?.currency ?? null;
+  const hmeta = readHistoryMeta(src.info.id); // a source with only a backfill has no daily meta.json
+  const unit = cat.history?.unit?.(key.item) ?? meta?.unit ?? hmeta?.unit ?? null;
+  const currency = meta?.currency ?? hmeta?.currency ?? null;
   const itemLabel = cat.history?.itemLabel?.(key.item) ?? key.item;
   const first = rows[0];
   const last = rows[rows.length - 1];
