@@ -14,6 +14,7 @@ const REAL = [
   row("10/19/2026", "STEER", "LIVE FOB", "Over 80% Choice", "34,701", "224.37", "207.00", "228.50", "1,592"),
   row("10/19/2026", "STEER", "LIVE FOB", "65 - 80% Choice", "3,237", "227.79", "226.00", "228.00", "1,464"),
   row("10/19/2026", "STEER", "LIVE FOB", "35 - 65% Choice", "646", "228.19", "228.00", "228.50", "1,522"),
+  row("10/19/2026", "STEER", "LIVE FOB", "Total all grades", "38,584", "224.72", "207.00", "228.50", "1,580"), // real published total row: must not be counted again
   row("10/19/2026", "HEIFER", "LIVE FOB", "Over 80% Choice", "9,961", "224.79", "220.00", "228.00", "1,403"),
   row("10/19/2026", "HEIFER", "LIVE FOB", "65 - 80% Choice", "2,558", "227.60", "226.00", "228.00", "1,324"),
   row("10/19/2026", "HEIFER", "LIVE FOB", "35 - 65% Choice", null, null),
@@ -34,6 +35,7 @@ test("parseDetail combines grades as a head-weighted mean and skips rows with no
   assert.equal(last.head, 34701 + 3237 + 646);
   assert.equal(last.value, 224.72); // (34701*224.37+3237*227.79+646*228.19)/38584
   assert.equal(last.grades.length, 3);
+  assert.equal(last.head, 38584, "equals USDA's own 'Total all grades' head count");
   const h = parseDetail(REPLY, heifer);
   assert.equal(h.length, 1);
   assert.equal(h[0].grades.length, 2, "null grade row skipped");

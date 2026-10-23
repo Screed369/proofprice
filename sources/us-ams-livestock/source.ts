@@ -90,6 +90,8 @@ export function parseDetail(json: any, product: Product): Week[] {
     if (String(r.selling_basis_description ?? "").toUpperCase() !== product.basis) continue;
     if (String(r.purchase_type_code ?? "").toUpperCase() !== "NEGOTIATED CASH") continue;
     if (String(r.source_description ?? "").toUpperCase() !== "DOMESTIC") continue;
+    // The real reply carries a "Total all grades" row per class and basis (preview 2026-10-23): counting it would double the head.
+    if (/^total/i.test(String(r.grade_description ?? "").trim())) continue;
     const date = isoFromUs(String(r.report_date ?? ""));
     const head = num(r.head_count);
     const value = num(r.weighted_avg_price);
@@ -136,7 +138,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export function buildCattleAnswer(product: Product, weeks: Week[], q: { product: string; region?: string }, today: Date, baseUrl?: string): PriceAnswer {
   const latest = weeks[weeks.length - 1];
-  if (!latest) throw new SourceError(`USDA AMS holds no negotiated ${product.desc.toLowerCase()} report for the last two weeks.`);
+  if (!latest) throw new SourceError(`USDA AMS holds no negotiated ${product.desc.split(",")[0].toLowerCase()} report for the last two weeks.`);
   const prev = weeks.length > 1 ? weeks[weeks.length - 2] : null;
   const change = prev ? { reference_date: prev.date, value: prev.value, change_percent: r1(((latest.value - prev.value) / prev.value) * 100) } : null;
   const age = Math.round((today.getTime() - new Date(`${latest.date}T00:00:00Z`).getTime()) / 86400000);
@@ -158,7 +160,7 @@ export function buildCattleAnswer(product: Product, weeks: Week[], q: { product:
     sample_size: latest.head,
     method:
       "USDA AMS Livestock Mandatory Price Reporting, report LM_CT154: packers report the cattle they bought on negotiated cash terms in the week; USDA publishes the head count and weighted average price by quality grade. " +
-      `We pass on the newest weekly report for ${product.desc.toLowerCase()} (${basisWords}), combining the grades as a head-weighted mean, Domestic cattle only. The sample size is head of cattle bought, not sales records. No range is calculated.`,
+      `We pass on the newest weekly report for ${product.desc.split(",")[0].toLowerCase()} (${basisWords}), combining the grades as a head-weighted mean, Domestic cattle only. The sample size is head of cattle bought, not sales records. No range is calculated.`,
     note: notes.join(" "),
     baseUrl,
     ending: `${ATTRIBUTION_LINE}.`,
