@@ -1,5 +1,6 @@
 // Manifest: United States medicine prices (NADAC, pharmacy acquisition cost). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
+import { isPartBAspRequest } from "../us-cms-asp/source";
 import { isMedicareSpendRequest } from "../us-cms-partd/source";
 import { isMedicaidRequest } from "../us-medicaid-sdud/source";
 import { INFO, nadacMedicine } from "./source";
@@ -13,7 +14,8 @@ export default defineSource({
   status: "live",
   // basis=medicare_spend (what Medicare Part D spent per dosage unit) is answered by us-cms-partd; declared serves() change, Gap fix G20261023-PLATFORM-SERVES-MEDICINES-DK.
   // basis=medicaid (what State Medicaid programmes reimbursed per unit) is answered by us-medicaid-sdud; declared serves() change, same Gap fix.
-  serves: (p) => !isMedicareSpendRequest(p) && !isMedicaidRequest(p),
+  // basis=part_b_asp (Medicare Part B payment limits for doctor-administered drugs) is answered by us-cms-asp; declared serves() change, same Gap fix.
+  serves: (p) => !isMedicareSpendRequest(p) && !isMedicaidRequest(p) && !isPartBAspRequest(p),
   paramNotes: {
     medicine:
       "US: generic or brand name, optionally with strength and form ('atorvastatin', 'atorvastatin 20mg', 'metformin 500 mg tablet', 'Lipitor'). " +
