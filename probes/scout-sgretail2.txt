@@ -1,0 +1,23 @@
+URL: https://tablebuilder.singstat.gov.sg/api/table/resourceid?keyword=retail&SearchOption=1
+Fetched: 2026-10-23T08:45:56Z from GitHub Actions
+Status, type, bytes: 400 application/problem+json; charset=utf-8 297
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+date: Fri, 23 Oct 2026 08:45:56 GMT
+content-type: application/problem+json; charset=utf-8
+content-length: 297
+set-cookie: ApplicationGatewayAffinityCORS=15db9b0d139f408cafa425c45412d80d; Path=/; SameSite=None; Secure
+set-cookie: ApplicationGatewayAffinity=15db9b0d139f408cafa425c45412d80d; Path=/
+content-security-policy: default-src 'self' https://*.wogaa.sg https://*.demdex.net/ https://cm.everesttech.net/ https://wogadobeanalytics.sc.omtrdc.net/; frame-src 'self' https://wogaa.demdex.net *.google.com *.gstatic.com *.demdex.net www.youtube.com https://*.vica.gov.sg; script-src 'self' blob: *.googletagmanager.com *.google.com *.gstatic.com *.sg.va.sabio.cloud *.dcube.cloud *.adobedtm.com *.google-analytics.com https://*.wogaa.sg https://assets.adobedtm.com/ va.ecitizen.gov.sg https://*.vica.gov.sg; img-src 'self' data: blob: wogadobeanalytics.sc.omtrdc.net *.everesttech.net *.demdex.net *.google-analytics.com *.sg.va.sabio.cloud *.google.com *.gstatic.com *.googletagmanager.com https://wogadobeanalytics.sc.omtrdc.net/ https://cm.everesttech.net/ https://dpm.demdex.net/ va.ecitizen.gov.sg https://www.singstat.gov.sg https://*.vica.gov.sg; connect-src 'self' data: *.sg.va.sabio.cloud *.dcube.cloud *.demdex.net *.google-analytics.com wogadobeanalytics.sc.omtrdc.net https://*.wogaa.sg https://dpm.demdex.net/ va.ecitizen.gov.sg wss://chat.vica.gov.sg https://*.vica.gov.sg; style-src 'self' 'unsafe-inline' *.dcube.cloud *.sg.va.sabio.cloud https://assets.wogaa.sg/fonts/ va.ecitizen.gov.sg https://fonts.googleapis.com https://*.vica.gov.sg; font-src 'self' data: *.dcube.cloud *.sg.va.sabio.cloud *.amazonaws.com https://assets.wogaa.sg/fonts/ va.ecitizen.gov.sg https://fonts.gstatic.com; form-action 'self' va.ecitizen.gov.sg *.demdex.net ;
+x-content-type-options: nosniff,nosniff
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-powered-by: 
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"Data":{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"SearchOption":["Invalid searchOption."]},"traceId":"00-4ef1f7edf2dabbfbc39ef19babb551b2-bc129974db015506-00"},"DataCount":1,"StatusCode":400,"Message":""}
