@@ -1,0 +1,53 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/85666NED/TypedDataSet?$format=json&$filter=Perioden%20eq%20'2026HJ01'
+Fetched: 2026-10-23T03:34:21Z from GitHub Actions
+Status, type, bytes: 200 application/json 5870
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Fri, 23 Oct 2026 03:34:19 GMT
+Content-Length: 5870
+TXID: 0175a1fc
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=017a57a6-d5bc-1ada-9678-0050569bed16_2508708979_0260283460_00000000000024486396; Path=/; Expires=Fri, 23-Oct-2026 03:34:34 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/85666NED/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":51,"Prijscomponenten":"A047656","Belastingen":"A047659","Perioden":"2026HJ01","MinderDan569M3_1":1.993,"k_569Tot5687M3_2":1.585,"k_5687M3EnMeer_3":1.344,"MinderDan28433M3_4":1.483,"k_28433Tot284333M3_5":1.355,"k_284333Tot2843332M3_6":0.992,"k_2843332Tot28433324M3_7":0.786,"k_28433324M3EnMeer_8":0.6,"MinderDan1MWh_9":0.08,"k_1Tot25MWh_10":0.225,"k_25Tot5MWh_11":0.244,"k_5Tot15MWh_12":0.253,"k_15MWhEnMeer_13":0.273,"MinderDan20MWh_14":0.498,"k_20Tot500MWh_15":0.326,"k_500Tot2000MWh_16":0.245,"k_2000Tot20000MWh_17":0.221,"k_20000Tot70000MWh_18":0.168,"k_70000Tot150000MWh_19":0.151,"k_150000MWhEnMeer_20":0.128
+    },{
+      "ID":103,"Prijscomponenten":"A047656","Belastingen":"A047660","Perioden":"2026HJ01","MinderDan569M3_1":1.647,"k_569Tot5687M3_2":1.31,"k_5687M3EnMeer_3":1.111,"MinderDan28433M3_4":1.225,"k_28433Tot284333M3_5":1.12,"k_284333Tot2843332M3_6":0.82,"k_2843332Tot28433324M3_7":0.649,"k_28433324M3EnMeer_8":0.496,"MinderDan1MWh_9":0.066,"k_1Tot25MWh_10":0.186,"k_25Tot5MWh_11":0.202,"k_5Tot15MWh_12":0.209,"k_15MWhEnMeer_13":0.226,"MinderDan20MWh_14":0.411,"k_20Tot500MWh_15":0.269,"k_500Tot2000MWh_16":0.203,"k_2000Tot20000MWh_17":0.182,"k_20000Tot70000MWh_18":0.139,"k_70000Tot150000MWh_19":0.125,"k_150000MWhEnMeer_20":0.106
+    },{
+      "ID":155,"Prijscomponenten":"A047656","Belastingen":"A047661","Perioden":"2026HJ01","MinderDan569M3_1":1.047,"k_569Tot5687M3_2":0.709,"k_5687M3EnMeer_3":0.51,"MinderDan28433M3_4":0.625,"k_28433Tot284333M3_5":0.519,"k_284333Tot2843332M3_6":0.407,"k_2843332Tot28433324M3_7":0.385,"k_28433324M3EnMeer_8":0.397,"MinderDan1MWh_9":0.806,"k_1Tot25MWh_10":0.407,"k_25Tot5MWh_11":0.268,"k_5Tot15MWh_12":0.192,"k_15MWhEnMeer_13":0.161,"MinderDan20MWh_14":0.399,"k_20Tot500MWh_15":0.211,"k_500Tot2000MWh_16":0.163,"k_2000Tot20000MWh_17":0.145,"k_20000Tot70000MWh_18":0.117,"k_70000Tot150000MWh_19":0.115,"k_150000MWhEnMeer_20":0.101
+    },{
+      "ID":207,"Prijscomponenten":"A047657","Belastingen":"A047659","Perioden":"2026HJ01","MinderDan569M3_1":1.525,"k_569Tot5687M3_2":1.387,"k_5687M3EnMeer_3":1.294,"MinderDan28433M3_4":1.388,"k_28433Tot284333M3_5":1.253,"k_284333Tot2843332M3_6":0.97,"k_2843332Tot28433324M3_7":0.774,"k_28433324M3EnMeer_8":0.593,"MinderDan1MWh_9":-0.584,"k_1Tot25MWh_10":-0.051,"k_25Tot5MWh_11":0.104,"k_5Tot15MWh_12":0.187,"k_15MWhEnMeer_13":0.229,"MinderDan20MWh_14":0.211,"k_20Tot500MWh_15":0.212,"k_500Tot2000MWh_16":0.173,"k_2000Tot20000MWh_17":0.165,"k_20000Tot70000MWh_18":0.142,"k_70000Tot150000MWh_19":0.124,"k_150000MWhEnMeer_20":0.109
+    },{
+      "ID":259,"Prijscomponenten":"A047657","Belastingen":"A047660","Perioden":"2026HJ01","MinderDan569M3_1":1.261,"k_569Tot5687M3_2":1.147,"k_5687M3EnMeer_3":1.07,"MinderDan28433M3_4":1.147,"k_28433Tot284333M3_5":1.036,"k_284333Tot2843332M3_6":0.801,"k_2843332Tot28433324M3_7":0.639,"k_28433324M3EnMeer_8":0.49,"MinderDan1MWh_9":-0.483,"k_1Tot25MWh_10":-0.042,"k_25Tot5MWh_11":0.086,"k_5Tot15MWh_12":0.155,"k_15MWhEnMeer_13":0.189,"MinderDan20MWh_14":0.174,"k_20Tot500MWh_15":0.175,"k_500Tot2000MWh_16":0.143,"k_2000Tot20000MWh_17":0.136,"k_20000Tot70000MWh_18":0.118,"k_70000Tot150000MWh_19":0.103,"k_150000MWhEnMeer_20":0.09
+    },{
+      "ID":311,"Prijscomponenten":"A047657","Belastingen":"A047661","Perioden":"2026HJ01","MinderDan569M3_1":0.66,"k_569Tot5687M3_2":0.546,"k_5687M3EnMeer_3":0.469,"MinderDan28433M3_4":0.546,"k_28433Tot284333M3_5":0.435,"k_284333Tot2843332M3_6":0.388,"k_2843332Tot28433324M3_7":0.375,"k_28433324M3EnMeer_8":0.391,"MinderDan1MWh_9":0.257,"k_1Tot25MWh_10":0.178,"k_25Tot5MWh_11":0.152,"k_5Tot15MWh_12":0.137,"k_15MWhEnMeer_13":0.124,"MinderDan20MWh_14":0.163,"k_20Tot500MWh_15":0.117,"k_500Tot2000MWh_16":0.103,"k_2000Tot20000MWh_17":0.098,"k_20000Tot70000MWh_18":0.095,"k_70000Tot150000MWh_19":0.092,"k_150000MWhEnMeer_20":0.085
+    },{
+      "ID":363,"Prijscomponenten":"A047658","Belastingen":"A047659","Perioden":"2026HJ01","MinderDan569M3_1":0.468,"k_569Tot5687M3_2":0.197,"k_5687M3EnMeer_3":0.05,"MinderDan28433M3_4":0.095,"k_28433Tot284333M3_5":0.102,"k_284333Tot2843332M3_6":0.022,"k_2843332Tot28433324M3_7":0.012,"k_28433324M3EnMeer_8":0.007,"MinderDan1MWh_9":0.664,"k_1Tot25MWh_10":0.276,"k_25Tot5MWh_11":0.14,"k_5Tot15MWh_12":0.066,"k_15MWhEnMeer_13":0.044,"MinderDan20MWh_14":0.287,"k_20Tot500MWh_15":0.114,"k_500Tot2000MWh_16":0.072,"k_2000Tot20000MWh_17":0.056,"k_20000Tot70000MWh_18":0.026,"k_70000Tot150000MWh_19":0.027,"k_150000MWhEnMeer_20":0.019
+    },{
+      "ID":415,"Prijscomponenten":"A047658","Belastingen":"A047660","Perioden":"2026HJ01","MinderDan569M3_1":0.387,"k_569Tot5687M3_2":0.163,"k_5687M3EnMeer_3":0.041,"MinderDan28433M3_4":0.079,"k_28433Tot284333M3_5":0.084,"k_284333Tot2843332M3_6":0.018,"k_2843332Tot28433324M3_7":0.01,"k_28433324M3EnMeer_8":0.006,"MinderDan1MWh_9":0.548,"k_1Tot25MWh_10":0.228,"k_25Tot5MWh_11":0.116,"k_5Tot15MWh_12":0.055,"k_15MWhEnMeer_13":0.037,"MinderDan20MWh_14":0.237,"k_20Tot500MWh_15":0.094,"k_500Tot2000MWh_16":0.06,"k_2000Tot20000MWh_17":0.046,"k_20000Tot70000MWh_18":0.021,"k_70000Tot150000MWh_19":0.023,"k_150000MWhEnMeer_20":0.016
+    },{
+      "ID":467,"Prijscomponenten":"A047658","Belastingen":"A047661","Perioden":"2026HJ01","MinderDan569M3_1":0.387,"k_569Tot5687M3_2":0.163,"k_5687M3EnMeer_3":0.041,"MinderDan28433M3_4":0.079,"k_28433Tot284333M3_5":0.084,"k_284333Tot2843332M3_6":0.018,"k_2843332Tot28433324M3_7":0.01,"k_28433324M3EnMeer_8":0.006,"MinderDan1MWh_9":0.548,"k_1Tot25MWh_10":0.228,"k_25Tot5MWh_11":0.116,"k_5Tot15MWh_12":0.055,"k_15MWhEnMeer_13":0.037,"MinderDan20MWh_14":0.237,"k_20Tot500MWh_15":0.094,"k_500Tot2000MWh_16":0.06,"k_2000Tot20000MWh_17":0.046,"k_20000Tot70000MWh_18":0.021,"k_70000Tot150000MWh_19":0.023,"k_150000MWhEnMeer_20":0.016
+    }
+  ]
+}
