@@ -1,0 +1,855 @@
+URL: https://data.cityofnewyork.us/api/views/usc3-8zwd.json
+Fetched: 2026-10-23T18:42:58Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 394379
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 23 Oct 2026 18:42:57 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: a2224d256ace2216b048c8afa17bcfa7
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{
+  "id" : "usc3-8zwd",
+  "name" : "Energy and Water Data Disclosure for Local Law 84 2021 (Data for Calendar Year 2020)",
+  "assetType" : "dataset",
+  "attribution" : "Department of Buildings (DOB)",
+  "averageRating" : 0,
+  "category" : "Environment",
+  "createdAt" : 1632342791,
+  "description" : "Data and metrics on water and energy consumption in privately owned buildings over 25,000 ft2 and in City-owned buildings over 10,000 ft2.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 8682,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "locale" : "en_US",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 37697451,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1632405859,
+  "publicationGroup" : 18453727,
+  "publicationStage" : "published",
+  "rowClass" : "",
+  "rowsUpdatedAt" : 1632405832,
+  "tableId" : 18455041,
+  "totalTimesRated" : 0,
+  "viewCount" : 23159,
+  "viewLastModified" : 1727811265,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1632406240,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 4032594,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1632406240,
+    "targetAudience" : "public",
+    "workflowId" : 2285,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1632406241,
+      "failureCount" : 0,
+      "startedAt" : 1632406240,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "d5dp-fses",
+      "displayName" : "afinkel"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 548656209,
+    "name" : "Property Id",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "property_id",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563494,
+    "width" : 232,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "9991615",
+      "null" : "0",
+      "top" : [ {
+        "item" : "7106208",
+        "count" : "3"
+      }, {
+        "item" : "5780490",
+        "count" : "3"
+      }, {
+        "item" : "6283136",
+        "count" : "2"
+      }, {
+        "item" : "6684880",
+        "count" : "2"
+      }, {
+        "item" : "15530364",
+        "count" : "2"
+      }, {
+        "item" : "2787422",
+        "count" : "2"
+      }, {
+        "item" : "2664580",
+        "count" : "2"
+      }, {
+        "item" : "2597674",
+        "count" : "2"
+      }, {
+        "item" : "7407863",
+        "count" : "2"
+      }, {
+        "item" : "4950993",
+        "count" : "2"
+      }, {
+        "item" : "6670939",
+        "count" : "2"
+      }, {
+        "item" : "5834470",
+        "count" : "2"
+      }, {
+        "item" : "2689501",
+        "count" : "2"
+      }, {
+        "item" : "6314346",
+        "count" : "2"
+      }, {
+        "item" : "15583884",
+        "count" : "2"
+      }, {
+        "item" : "15530370",
+        "count" : "2"
+      }, {
+        "item" : "2637884",
+        "count" : "2"
+      }, {
+        "item" : "4404998",
+        "count" : "2"
+      }, {
+        "item" : "6410220",
+        "count" : "2"
+      }, {
+        "item" : "15583886",
+        "count" : "2"
+      } ],
+      "smallest" : "10000582",
+      "count" : "28067",
+      "cardinality" : "27837"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656210,
+    "name" : "Property Name",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "property_name",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563495,
+    "width" : 256,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "zzSegbro Companies - 50-01 Rockaway Beach blvd",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Sample Facility",
+        "count" : "4"
+      }, {
+        "item" : "1877 East 12th Street",
+        "count" : "3"
+      }, {
+        "item" : "311 West 43rd Street",
+        "count" : "3"
+      }, {
+        "item" : "Astoria",
+        "count" : "3"
+      }, {
+        "item" : "Alumni Hall",
+        "count" : "3"
+      }, {
+        "item" : "Hiren Bronx LLC",
+        "count" : "3"
+      }, {
+        "item" : "111 Broadway",
+        "count" : "3"
+      }, {
+        "item" : "University Center",
+        "count" : "3"
+      }, {
+        "item" : "UNIMAC Developer LLC",
+        "count" : "3"
+      }, {
+        "item" : "122 West 26th Street",
+        "count" : "2"
+      }, {
+        "item" : "Tafner Field House",
+        "count" : "2"
+      }, {
+        "item" : "1781 Riverside Drive",
+        "count" : "2"
+      }, {
+        "item" : "St. Thomas Moore Church",
+        "count" : "2"
+      }, {
+        "item" : "2353-55 Beaumont Avenue",
+        "count" : "2"
+      }, {
+        "item" : "Metropolitan Jewish Healthcare System - Menorah Center",
+        "count" : "2"
+      }, {
+        "item" : "Clinton - 155-175 Friendship Lane",
+        "count" : "2"
+      }, {
+        "item" : "1990 Ellis Avenue",
+        "count" : "2"
+      }, {
+        "item" : "Lycee Francais LL84",
+        "count" : "2"
+      }, {
+        "item" : "600 Madison Avenue",
+        "count" : "2"
+      }, {
+        "item" : "Town Houses",
+        "count" : "2"
+      } ],
+      "smallest" : "0004 - ChurchofCorpusChristi",
+      "count" : "28067",
+      "cardinality" : "27720"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656211,
+    "name" : "Parent Property Id",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "parent_property_id",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563496,
+    "width" : 316,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "Not Applicable: Standalone Property",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Not Applicable: Standalone Property",
+        "count" : "25766"
+      }, {
+        "item" : "7728389",
+        "count" : "75"
+      }, {
+        "item" : "12423723",
+        "count" : "61"
+      }, {
+        "item" : "15530348",
+        "count" : "58"
+      }, {
+        "item" : "3616399",
+        "count" : "43"
+      }, {
+        "item" : "2636736",
+        "count" : "32"
+      }, {
+        "item" : "11533308",
+        "count" : "26"
+      }, {
+        "item" : "4985858",
+        "count" : "24"
+      }, {
+        "item" : "12066732",
+        "count" : "22"
+      }, {
+        "item" : "15583884",
+        "count" : "22"
+      }, {
+        "item" : "14237386",
+        "count" : "20"
+      }, {
+        "item" : "6118341",
+        "count" : "19"
+      }, {
+        "item" : "10543153",
+        "count" : "17"
+      }, {
+        "item" : "15150435",
+        "count" : "17"
+      }, {
+        "item" : "6305159",
+        "count" : "16"
+      }, {
+        "item" : "6722918",
+        "count" : "15"
+      }, {
+        "item" : "3616164",
+        "count" : "15"
+      }, {
+        "item" : "16090043",
+        "count" : "14"
+      }, {
+        "item" : "6723201",
+        "count" : "14"
+      }, {
+        "item" : "6821814",
+        "count" : "13"
+      } ],
+      "smallest" : "10005862",
+      "count" : "28067",
+      "cardinality" : "497"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656212,
+    "name" : "Parent Property Name",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "parent_property_name",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563497,
+    "width" : 340,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "Zysman Gottesman",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Not Applicable: Standalone Property",
+        "count" : "25766"
+      }, {
+        "item" : "Spring Creek Towers",
+        "count" : "75"
+      }, {
+        "item" : "Columbia University Main Campus",
+        "count" : "61"
+      }, {
+        "item" : "St. John's University, Queens Campus",
+        "count" : "58"
+      }, {
+        "item" : "NYU: Washington Square CoGen Campus",
+        "count" : "43"
+      }, {
+        "item" : "Fordham. Rose Hill MAIN",
+        "count" : "32"
+      }, {
+        "item" : "Carolina Gardens",
+        "count" : "26"
+      }, {
+        "item" : "Original Campus",
+        "count" : "24"
+      }, {
+        "item" : "St. John's University, Staten Island Campus",
+        "count" : "22"
+      }, {
+        "item" : "Rockefeller University LL84",
+        "count" : "22"
+      }, {
+        "item" : "Wilson Ross Complex",
+        "count" : "20"
+      }, {
+        "item" : "Riverdale Country School",
+        "count" : "19"
+      }, {
+        "item" : "Fanwood Estates",
+        "count" : "17"
+      }, {
+        "item" : "Armstrong I Bldgs 5-7",
+        "count" : "17"
+      }, {
+        "item" : "Clearview Gardens - 2021 Submission",
+        "count" : "17"
+      }, {
+        "item" : "Parkchester North Campus (BBL 2039447501)",
+        "count" : "16"
+      }, {
+        "item" : "Grymes Hill Apartments",
+        "count" : "15"
+      }, {
+        "item" : "Penn South",
+        "count" : "15"
+      }, {
+        "item" : "Betances I",
+        "count" : "14"
+      }, {
+        "item" : "Beach Haven Apartments",
+        "count" : "14"
+      } ],
+      "smallest" : "007 - Guardian Angel Church & School",
+      "count" : "28067",
+      "cardinality" : "495"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656213,
+    "name" : "Year Ending",
+    "dataTypeName" : "calendar_date",
+    "description" : "",
+    "fieldName" : "year_ending",
+    "position" : 5,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 139563498,
+    "width" : 232,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "2020-12-31T00:00:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2020-12-31T00:00:00.000",
+        "count" : "28067"
+      } ],
+      "smallest" : "2020-12-31T00:00:00.000",
+      "count" : "28067",
+      "cardinality" : "1"
+    },
+    "format" : {
+      "view" : "date"
+    }
+  }, {
+    "id" : 548656214,
+    "name" : "NYC Borough, Block and Lot (BBL)",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "nyc_borough_block_and_lot_bbl",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563499,
+    "width" : 484,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "X151-2024430190, X156-2024430079",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Not Available",
+        "count" : "76"
+      }, {
+        "item" : "4-07021-0001",
+        "count" : "52"
+      }, {
+        "item" : "2-03273-0001",
+        "count" : "32"
+      }, {
+        "item" : "1019730001",
+        "count" : "25"
+      }, {
+        "item" : "1014800010",
+        "count" : "20"
+      }, {
+        "item" : "9038140001",
+        "count" : "20"
+      }, {
+        "item" : "3021810025",
+        "count" : "20"
+      }, {
+        "item" : "2039447501",
+        "count" : "16"
+      }, {
+        "item" : "2-02269-0100",
+        "count" : "15"
+      }, {
+        "item" : "2058363127",
+        "count" : "15"
+      }, {
+        "item" : "3-04452-0085",
+        "count" : "14"
+      }, {
+        "item" : "4-06792-0600",
+        "count" : "13"
+      }, {
+        "item" : "2-04905-0360",
+        "count" : "13"
+      }, {
+        "item" : "2-05803-0801",
+        "count" : "13"
+      }, {
+        "item" : "4-06790-0001",
+        "count" : "13"
+      }, {
+        "item" : "5-00593-0500",
+        "count" : "12"
+      }, {
+        "item" : "3-04452-0020",
+        "count" : "12"
+      }, {
+        "item" : "3-04452-0200",
+        "count" : "12"
+      }, {
+        "item" : "5-04001-0001",
+        "count" : "12"
+      }, {
+        "item" : "1010560001",
+        "count" : "11"
+      } ],
+      "smallest" : "1-00001-0010",
+      "count" : "28067",
+      "cardinality" : "26557"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656215,
+    "name" : "NYC Building Identification Number (BIN)",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "nyc_building_identification_number_bin",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563500,
+    "width" : 580,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "X445-2094706, X440-2095215",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Not Available",
+        "count" : "112"
+      }, {
+        "item" : "0000000",
+        "count" : "26"
+      }, {
+        "item" : "2026596",
+        "count" : "23"
+      }, {
+        "item" : "1081667",
+        "count" : "10"
+      }, {
+        "item" : "3246887",
+        "count" : "6"
+      }, {
+        "item" : "4542595",
+        "count" : "6"
+      }, {
+        "item" : "3000000",
+        "count" : "5"
+      }, {
+        "item" : "4307987",
+        "count" : "4"
+      }, {
+        "item" : "4595648",
+        "count" : "4"
+      }, {
+        "item" : "4595651",
+        "count" : "4"
+      }, {
+        "item" : "2003821",
+        "count" : "4"
+      }, {
+        "item" : "1063193",
+        "count" : "4"
+      }, {
+        "item" : "4865195",
+        "count" : "3"
+      }, {
+        "item" : "3197677",
+        "count" : "3"
+      }, {
+        "item" : "2003659",
+        "count" : "3"
+      }, {
+        "item" : "1000863",
+        "count" : "3"
+      }, {
+        "item" : "1024965",
+        "count" : "3"
+      }, {
+        "item" : "3319862",
+        "count" : "3"
+      }, {
+        "item" : "4010866",
+        "count" : "3"
+      }, {
+        "item" : "1000824",
+        "count" : "3"
+      } ],
+      "smallest" : "0000000",
+      "count" : "28067",
+      "cardinality" : "26723"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656216,
+    "name" : "Address 1",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "address_1",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563501,
+    "width" : 208,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "Yellowstone Blvd",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Classified",
+        "count" : "68"
+      }, {
+        "item" : "8000 Utopia Parkway",
+        "count" : "58"
+      }, {
+        "item" : "441 E Fordham Road",
+        "count" : "29"
+      }, {
+        "item" : "300 Howard Avenue",
+        "count" : "22"
+      }, {
+        "item" : "95 Ross Street",
+        "count" : "20"
+      }, {
+        "item" : "5260 Fieldston Road Bronx",
+        "count" : "17"
+      }, {
+        "item" : "1266 Olmstead Avenue",
+        "count" : "15"
+      }, {
+        "item" : "662 10th Avenue",
+        "count" : "11"
+      }, {
+        "item" : "5829 64th Street",
+        "count" : "9"
+      }, {
+        "item" : "3009 Broadway",
+        "count" : "8"
+      }, {
+        "item" : "508-536 Roosevelt Landings",
+        "count" : "7"
+      }, {
+        "item" : "4513 Manhattan College Parkway",
+        "count" : "7"
+      }, {
+        "item" : "148 2nd Ave; 303-307 E. 9th St",
+        "count" : "6"
+      }, {
+        "item" : "321 Rider Ave",
+        "count" : "6"
+      }, {
+        "item" : "417-423 Hicks Street",
+        "count" : "6"
+      }, {
+        "item" : "1516 Oriental Blvd.",
+        "count" : "6"
+      }, {
+        "item" : "78-09 Springfield Blvd",
+        "count" : "5"
+      }, {
+        "item" : "505 E. 75th St",
+        "count" : "5"
+      }, {
+        "item" : "401 1ST AVE; 400 2ND AVE;319 E. 24th St; 311 E. 23RD ST; 333 E. 23RD ST",
+        "count" : "5"
+      }, {
+        "item" : "3310 Avenue H",
+        "count" : "5"
+      } ],
+      "smallest" : "100-00 Beach Channel Drive",
+      "count" : "28067",
+      "cardinality" : "26944"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656217,
+    "name" : "City",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "city",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563502,
+    "width" : 148,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "Yonkers",
+      "null" : "0",
+      "top" : [ {
+        "item" : "New York",
+        "count" : "9268"
+      }, {
+        "item" : "Brooklyn",
+        "count" : "6329"
+      }, {
+        "item" : "Bronx",
+        "count" : "4884"
+      }, {
+        "item" : "Queens",
+        "count" : "2685"
+      }, {
+        "item" : "Manhattan",
+        "count" : "826"
+      }, {
+        "item" : "Staten Island",
+        "count" : "513"
+      }, {
+        "item" : "BROOKLYN",
+        "count" : "413"
+      }, {
+        "item" : "Flushing",
+        "count" : "389"
+      }, {
+        "item" : "NEW YORK",
+        "count" : "261"
+      }, {
+        "item" : "Jamaica",
+        "count" : "259"
+      }, {
+        "item" : "Long Island City",
+        "count" : "209"
+      }, {
+        "item" : "BRONX",
+        "count" : "199"
+      }, {
+        "item" : "New York City",
+        "count" : "136"
+      }, {
+        "item" : "QUEENS",
+        "count" : "127"
+      }, {
+        "item" : "Astoria",
+        "count" : "117"
+      }, {
+        "item" : "brooklyn",
+        "count" : "84"
+      }, {
+        "item" : "The Bronx",
+        "count" : "70"
+      }, {
+        "item" : "Forest Hills",
+        "count" : "66"
+      }, {
+        "item" : "NY",
+        "count" : "65"
+      }, {
+        "item" : "Maspeth",
+        "count" : "65"
+      } ],
+      "smallest" : "100-01 92nd Avenue",
+      "count" : "28067",
+      "cardinality" : "215"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656218,
+    "name" : "Postcode",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "postcode",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563503,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "64132",
+      "null" : "0",
+      "top" : [ {
+        "item" : "10025",
+        "count" : "498"
+      }, {
+        "item" : "11226",
+        "count" : "496"
+      }, {
+        "item" : "10011",
+        "count" : "470"
+      }, {
+        "item" : "11101",
+        "count" : "459"
+      }, {
+        "item" : "10452",
+        "count" : "455"
+      }, {
+        "item" : "10001",
+        "count" : "449"
+      }, {
+        "item" : "10016",
+        "count" : "432"
+      }, {
+        "item" : "10467",
+        "count" : "432"
+      }, {
+        "item" : "10003",
+        "count" : "420"
+      }, {
+        "item" : "10013",
+        "count" : "407"
+      }, {
+        "item" : "10468",
+        "count" : "405"
+      }, {
+        "item" : "10022",
+        "count" : "402"
+      }, {
+        "item" : "10019",
+        "count" : "400"
+      }, {
+        "item" : "10458",
+        "count" : "400"
+      }, {
+        "item" : "11201",
+        "count" : "393"
+      }, {
+        "item" : "10453",
+        "count" : "389"
+      }, {
+        "item" : "10027",
+        "count" : "377"
+      }, {
+        "item" : "10457",
+        "count" : "367"
+      }, {
+        "item" : "10024",
+        "count" : "362"
+      }, {
+        "item" : "11230",
+        "count" : "359"
+      } ],
+      "smallest" : "01261",
+      "count" : "28067",
+      "cardinality" : "342"
+    },
+    "format" : { }
+  }, {
+    "id" : 548656219,
+    "name" : "Primary Property Type - Self Selected",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "primary_property_type_self_selected",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 139563504,
+    "width" : 544,
+    "cachedContents" : {
+      "non_null" : "28067",
+      "largest" : "Zoo",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Multifamily Housing",
+        "count" : "18733"
+      }, {
+        "item" : "Office",
+        "count" : "2347"
+      }, {
+        "item" : "K-12 School",
+        "count" : "1614"
+      }, {
+        "item" : "Hotel",
+        "count" : "553"
+      }, {
+        "item" : "Non-Refrigerated Warehouse",
+        "count" : "454"
+      }, {
+        "item" : "Manufacturing/Industrial Plant
