@@ -26,6 +26,10 @@ export default function Pricing() {
         <strong>Right now:</strong> {p.payments_note} The prices below are the approved prices. They are
         also available as <a href="/pricing.json">JSON</a>.
       </p>
+      <p>
+        Payments are live now in crypto (USDC) on the Base network, through Coinbase and the x402 standard. More cryptocurrencies, and card and bank
+        (fiat) payments, are coming in the next few weeks.
+      </p>
 
       <h2>Free, always</h2>
       <ul>
