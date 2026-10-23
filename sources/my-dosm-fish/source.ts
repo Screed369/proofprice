@@ -183,6 +183,12 @@ export const speciesLabel = (slug: string): string => {
   return en ? `${words} (${en})` : words;
 };
 
+/** English words that name a whole family in the file (several Malay kinds): the kind we answer with when nothing more specific is asked. The other kinds are always listed in other_matches. */
+export const DEFAULT_KIND: Record<string, string> = {
+  squid: "sotong_katak",
+  cuttlefish: "sotong_katak",
+};
+
 export interface Resolved {
   primary: string | null;
   candidates: string[];
@@ -199,6 +205,8 @@ export function resolveSpecies(query: string, slugs: string[]): Resolved {
   else cands = slugs.filter((s) => s.startsWith(`${q}_`) || s.endsWith(`_${q}`) || s.includes(`_${q}_`));
   if (!cands.length && prefixes === null && q.length >= 4) cands = slugs.filter((s) => s.includes(q));
   const bare = cands.filter((c) => prefixes?.includes(c));
+  const dflt = DEFAULT_KIND[q];
+  if (dflt && cands.includes(dflt)) return { primary: dflt, candidates: cands };
   if (cands.length === 1) return { primary: cands[0], candidates: cands };
   if (bare.length === 1 && prefixes?.length === 1) return { primary: bare[0], candidates: cands };
   return { primary: null, candidates: cands };
@@ -280,6 +288,8 @@ export function fishAnswer(lib: LibLike, q: FishQuery, now = new Date()): PriceA
     `A monthly average price per kilogram for ${monthWords(month)} at the ${LEVEL_LABEL[level]} level: not a sale and not a live price.`,
   ];
   if (level !== "ex_vessel") notes.push(`This is the ${LEVEL_LABEL[level]} price, not what fishers receive; the ex-vessel price is in by_level.`);
+  if (candidates.length > 1 && DEFAULT_KIND[norm(q.product)] === primary)
+    notes.push(`"${q.product}" covers several kinds in the file; this is ${name}. The other kinds are in other_matches: ask for one by name.`);
   if (behind >= 4) notes.push(`Old data: the newest month in the file is ${monthWords(month)}, ${behind} months ago.`);
   return buildStatisticAnswer({
     ...base,

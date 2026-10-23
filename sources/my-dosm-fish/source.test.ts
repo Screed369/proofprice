@@ -73,8 +73,9 @@ test("species resolution: exact, English alias, group, unknown", () => {
   const slugs = [...parseFishCsv(DEC09).keys()].map((k) => k.split(":")[1]);
   assert.equal(resolveSpecies("Tenggiri", slugs).primary, "tenggiri");
   assert.equal(resolveSpecies("ikan kembong", slugs).primary, "kembong");
-  assert.equal(resolveSpecies("squid", slugs).primary, null);
-  assert.ok(resolveSpecies("squid", slugs).candidates.includes("sotong_katak"));
+  assert.equal(resolveSpecies("squid", slugs).primary, "sotong_katak");
+  assert.ok(resolveSpecies("squid", slugs).candidates.includes("sotong_kereta"));
+  assert.equal(resolveSpecies("mackerel", slugs).primary, null);
   assert.equal(resolveSpecies("bawal putih", slugs).primary, "bawal_putih");
   assert.equal(resolveSpecies("tiger prawn", slugs).primary, null);
   assert.equal(resolveSpecies("selar", slugs).primary, "selar");
@@ -94,7 +95,7 @@ test("history key points at level:species in the library", () => {
   const rows = lib09().rows;
   assert.deepEqual(fishHistoryKey({ product: "kembong" }, rows)?.item, "ex_vessel:kembong");
   assert.deepEqual(fishHistoryKey({ product: "kembong", level: "retail" }, rows)?.item, "retail:kembong");
-  assert.equal(fishHistoryKey({ product: "squid" }, rows), null);
+  assert.equal(fishHistoryKey({ product: "squid" }, rows)?.item, "ex_vessel:sotong_katak");
   assert.equal(fishHistoryKey({ product: "kembong", level: "xx" }, rows), null);
 });
 
@@ -103,4 +104,15 @@ test("manifest: Malaysia in wholesale-fresh-food with a harvest", () => {
   assert.deepEqual(manifest.countries, ["MY"]);
   assert.ok(manifest.harvest && manifest.historyKey && manifest.nominalCounts && manifest.referenceDates);
   assert.ok(countriesFor("wholesale-fresh-food").includes("MY"));
+});
+
+test("gap G20261023-1: product=squid (English, no level) answers with a named figure and lists the other kinds", () => {
+  const a = fishAnswer(lib09(), { product: "squid" }, NOW);
+  assert.equal(a.status, "ok");
+  assert.equal(a.price?.value, 4.78);
+  assert.match(a.summary, /Sotong Katak/);
+  assert.match(a.statistic?.note ?? "", /several kinds/);
+  const others = (a.extra as any).other_matches.map((m: any) => m.product);
+  assert.ok(others.includes("sotong_kereta") && !others.includes("sotong_katak"));
+  assert.equal(fishAnswer(lib09(), { product: "cuttlefish" }, NOW).status, "ok");
 });
