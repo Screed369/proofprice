@@ -115,7 +115,8 @@ export interface Group { product: string; units: number; rx: number; amount: num
 /** One group per product name: reimbursement per unit = total amount / total units, over all packages. */
 export function groupRows(rows: SdudRow[]): Group[] {
   const m = new Map<string, { units: number; rx: number; amount: number; ndcs: Set<string> }>();
-  for (const r of rows) {
+  for (const r0 of rows) {
+    const r = { ...r0, product: r0.product.toUpperCase() }; // CMS spells a name in two cases (ATORVASTAT / Atorvastat): one drug
     const g = m.get(r.product) ?? { units: 0, rx: 0, amount: 0, ndcs: new Set<string>() };
     g.units += r.units; g.rx += r.rx; g.amount += r.amount; g.ndcs.add(r.ndc);
     m.set(r.product, g);

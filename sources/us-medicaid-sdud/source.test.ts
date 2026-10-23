@@ -14,6 +14,7 @@ const ATORVASTAT = [
   r("00093505705", "ATORVASTAT", "586334.000", "10209", "163424.96"),
   r("99999000001", "AMLODIPINE-ATORVASTAT", "1000", "20", "1500"),
   r("99999000002", "ATORVASTAT", "", "", "", "true"),
+  r("00093505610", "Atorvastat", "1000", "10", "200"),
 ];
 const latest = { results: [{ quarter: "4", year: "2025" }], count: 320609 };
 const fake = (...bodies: unknown[]) => {
@@ -58,13 +59,13 @@ test("urls ask for national rows of one quarter with a LIKE on the product name"
 
 test("parse skips suppressed and empty rows; groups weight by units", () => {
   const rows = parseRows({ results: ATORVASTAT });
-  assert.equal(rows.length, 7);
+  assert.equal(rows.length, 8);
   const g = groupRows(rows);
   const head = pickHeadline(g, "ATORVASTAT")!;
   assert.equal(head.product, "ATORVASTAT");
-  assert.equal(head.rx, 3848 + 8516 + 15799 + 20853 + 4586 + 10209);
+  assert.equal(head.rx, 3848 + 8516 + 15799 + 20853 + 4586 + 10209 + 10); // the 'Atorvastat' spelling is merged
   assert.equal(head.ndcs, 3);
-  assert.ok(Math.abs(head.perUnit - (43869.92 + 77917.86 + 185458.35 + 188286.89 + 60013.62 + 163424.96) / (148243 + 456965.5 + 967534 + 1276237 + 169920 + 586334)) < 1e-12);
+  assert.ok(Math.abs(head.perUnit - (43869.92 + 77917.86 + 185458.35 + 188286.89 + 60013.62 + 163424.96 + 200) / (148243 + 456965.5 + 967534 + 1276237 + 169920 + 586334 + 1000)) < 1e-12);
   assert.equal(parseRows("x").length, 0);
 });
 
@@ -76,7 +77,7 @@ test("atorvastatin with basis=medicaid: reimbursement per tablet in the newest q
   assert.equal(a.price!.measure, "average");
   assert.ok(a.price!.value > 0.1 && a.price!.value < 0.2);
   assert.equal(a.price_type, "reimbursement_price");
-  assert.equal(a.sample_size, 63811);
+  assert.equal(a.sample_size, 63821);
   assert.equal(a.statistic!.reference_period, "2025 Q4");
   assert.deepEqual(a.period, { from: "2025-10-01", to: "2025-12-31" });
   assert.equal(a.source.id, "us-medicaid-sdud");
