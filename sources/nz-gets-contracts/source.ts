@@ -213,6 +213,8 @@ export interface NzInput {
   cpv?: string;
   buyer_area?: string;
   months?: number;
+  /** No 'what' was given: the category treated it as all awards, and the answer says so. */
+  whatDefaulted?: boolean;
   baseUrl?: string;
 }
 
@@ -258,6 +260,7 @@ export function nzAnswer(lib: { date: string; rows: { area: string; item: string
     `Award values as posted on GETS (total awarded per contract, often over several years; GST treatment not stated), not invoices. Found by words in the notice title, so notices titled in other words are missed.`,
     `Newest award in the file: ${lib.date}; the file is updated quarterly.`,
   ];
+  if (input.whatDefaulted) notes.unshift(`No purchase was named (what), so this covers all awards in New Zealand; add what=buses, laptops or another common purchase to narrow it.`);
   if (input.months !== undefined && input.months !== WINDOW_MONTHS) notes.push(`months was ignored: New Zealand figures always cover the newest ${WINDOW_MONTHS} months of awards.`);
   if (agencies.length > 1) notes.push(`${agencies.length} agencies matched "${input.buyer_area}"; the one with the most awards for this purchase is shown.`);
   if (!row) {

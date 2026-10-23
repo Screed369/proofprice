@@ -10,7 +10,7 @@ export default defineSource({
   placeName: "New Zealand (GETS)",
   status: "live",
   paramNotes: {
-    what: "NZ: a common purchase in plain words ('buses', 'laptops', 'cleaning', 'road resurfacing'; a purchase with fewer than 5 awards in 24 months gets no figure) or 'all'; read from the price library, not searched live.",
+    what: "NZ: optional (left out = all awards); a common purchase in plain words ('buses', 'laptops', 'cleaning', 'road resurfacing'; a purchase with fewer than 5 awards in 24 months gets no figure) or 'all'; read from the price library, not searched live.",
     cpv: "NZ: not used (New Zealand notices carry no CPV codes).",
     buyer_area: "NZ: part of the posting agency's name ('Auckland Council', 'Waka Kotahi', 'Health'); needs at least 5 awards.",
     months: "NZ: not used; the newest 24 months of awards are always shown.",
@@ -22,7 +22,7 @@ export default defineSource({
   method:
     "New Zealand GETS contract award notices (MBIE open data, quarterly file) read each day into our price library: median and 10th–90th percentile of the awarded amount in NZD over the newest 24 months, for all purchases, a common purchase found by words in the notice title, or one posting agency. Totals per contract, not unit prices; suppliers are never named.",
   handle: (p, ctx) =>
-    nzContracts({ what: String(p.what), cpv: str(p.cpv), buyer_area: str(p.buyer_area), months: num(p.months), baseUrl: ctx.baseUrl }),
+    nzContracts({ what: String(p.what), cpv: str(p.cpv), buyer_area: str(p.buyer_area), months: num(p.months), whatDefaulted: p.what_defaulted === true, baseUrl: ctx.baseUrl }),
   harvest: nzHarvest,
   historyKey: (p) => nzHistoryKey(p),
 });

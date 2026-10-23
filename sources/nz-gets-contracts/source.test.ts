@@ -130,3 +130,20 @@ test("every example asks for a purchase the library can hold (Monitor 23 Oct: co
     assert.notEqual(what, "consultancy");
   }
 });
+
+test("gap G20261023-NZ-CONTRACTS-WHAT: /api/v1/contracts?country=NZ with no 'what' answers with all awards and says so", async () => {
+  const contracts = (await import("../../categories/contracts/index")).default;
+  const prepared = contracts.prepare!({ country: "NZ" } as any) as any;
+  assert.equal(prepared.what, "all");
+  assert.equal(prepared.what_defaulted, true);
+  const a = nzAnswer(LIB, { what: prepared.what, whatDefaulted: prepared.what_defaulted === true });
+  assert.equal(a.status, "ok");
+  assert.equal(a.price?.median, 120000);
+  assert.match(a.summary, /No purchase was named/);
+  // an explicit purchase is untouched, and other countries still need a purchase
+  const named = contracts.prepare!({ country: "NZ", what: "buses" } as any) as any;
+  assert.equal(named.what, "buses");
+  assert.equal(named.what_defaulted, undefined);
+  assert.throws(() => contracts.prepare!({ country: "FR" } as any), InputError);
+  assert.throws(() => contracts.prepare!({ country: "NZ", cpv: "30213100" } as any), InputError);
+});
