@@ -68,10 +68,11 @@ test("readSeries: monthly points per series, missing cells left out, either colu
   assert.equal(meat.get("LSIAT")!.length, 15);
   assert.equal(meat.get("EMAK")!.length, 14); // one ".." month
   assert.equal(meat.get("LSIAT")!.at(-1)!.month, "2026M08");
-  const milk = readSeries(DATA_MILK, null);
+  const milk = readSeries(DATA_MILK, null, "TUOHIN_KESKIM_CL");
   assert.equal(milk.get("TUOHIN_KESKIM_CL")!.at(-1)!.value, 48.8);
   assert.equal(readSeries(DATA_EGGS, "LLUOKK_TUOTT").get("AB_KESKIM")!.at(-1)!.month, "2026M07");
   assert.throws(() => readSeries({}, "LJ"), SourceError);
+  assert.throws(() => readSeries(DATA_MILK, null), SourceError); // milk needs the code it asked for
 });
 
 test("months: ranges, words, shifts", () => {

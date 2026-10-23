@@ -133,13 +133,14 @@ export interface Point { month: string; value: number }
 
 /** PxWeb native "json" format: columns (dimensions first, then the content column "c") and data rows { key: [one value per dimension column], values: [...] }.
  *  Returns, per series code, its monthly points (oldest first); missing cells ("." ".." "-") are left out. */
-export function readSeries(json: unknown, seriesVar: LukeProduct["seriesVar"], timeVar = "M"): Map<string, Point[]> {
+export function readSeries(json: unknown, seriesVar: LukeProduct["seriesVar"], fixedCode?: string, timeVar = "M"): Map<string, Point[]> {
   const j = json as any;
   if (!j || !Array.isArray(j.columns) || !Array.isArray(j.data)) throw new SourceError("Unexpected response from Luke (no data)");
   const dims: string[] = j.columns.filter((c: any) => c.type !== "c").map((c: any) => String(c.code));
   const iTime = dims.indexOf(timeVar);
+  // Milk: INFO is the table's content variable and the series itself. PxWeb then leaves it out of the keys (one selected value per row), so the series is the code we asked for.
   const iSeries = dims.indexOf(seriesVar ?? "INFO");
-  if (iTime < 0 || iSeries < 0) throw new SourceError("Luke changed the layout of its producer price tables; this source needs updating.");
+  if (iTime < 0 || (iSeries < 0 && (seriesVar !== null || !fixedCode))) throw new SourceError("Luke changed the layout of its producer price tables; this source needs updating.");
   const out = new Map<string, Point[]>();
   for (const row of j.data) {
     const key: string[] = Array.isArray(row.key) ? row.key.map(String) : [];
@@ -147,7 +148,7 @@ export function readSeries(json: unknown, seriesVar: LukeProduct["seriesVar"], t
     if (!/^-?\d/.test(raw)) continue;
     const value = Number(raw.replace(",", "."));
     if (!Number.isFinite(value) || value <= 0) continue;
-    const code = key[iSeries];
+    const code = iSeries >= 0 ? key[iSeries] : fixedCode!;
     if (!out.has(code)) out.set(code, []);
     out.get(code)!.push({ month: key[iTime], value });
   }
@@ -256,7 +257,7 @@ export async function lukeFarmPrices(input: { product?: string; baseUrl?: string
   const get = resolveFetcher(o);
   const url = tableUrl(pr.table, o.apiBase);
   const meta = readMeta(await get(url));
-  const series = readSeries(await poster(o)(url, requestFor(meta, [pr], 14)), pr.seriesVar);
+  const series = readSeries(await poster(o)(url, requestFor(meta, [pr], 14)), pr.seriesVar, pr.code);
   return answerFor(pr, series.get(pr.code) ?? [], { product: String(input.product ?? ""), baseUrl: input.baseUrl }, o.now);
 }
 
@@ -290,7 +291,7 @@ export async function lukeHarvest(o: LukeOptions = {}): Promise<HarvestResult> {
     const prods = PRODUCTS.filter((x) => x.table === table);
     const url = tableUrl(table, o.apiBase);
     const meta = readMeta(await get(url));
-    const got = readSeries(await post(url, requestFor(meta, prods, 3)), prods[0].seriesVar);
+    const got = readSeries(await post(url, requestFor(meta, prods, 3)), prods[0].seriesVar, prods[0].code);
     for (const pr of prods) series.push({ pr, points: got.get(pr.code) ?? [] });
   }
   return harvestRows(series);

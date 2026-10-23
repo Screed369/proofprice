@@ -30,15 +30,14 @@ export const DATA_MEAT: unknown = {
   ],
 };
 
-/** Milk: average producer price in cents per litre. */
+/** Milk: average producer price in cents per litre. INFO is the content variable of this table, so the keys hold the month only (the layout the live server answered with on 23 Oct 2026). */
 export const DATA_MILK: unknown = {
   columns: [
     { code: "M", text: "Month", type: "t" },
-    { code: "INFO", text: "Information", type: "d" },
-    { code: "Value", text: "Value", type: "c" },
+    { code: "INFO", text: "Information", type: "c" },
   ],
   comments: [],
-  data: months.map((m, i) => ({ key: [m, "TUOHIN_KESKIM_CL"], values: [String((46 + i * 0.2).toFixed(2))] })),
+  data: months.map((m, i) => ({ key: [m], values: [String((46 + i * 0.2).toFixed(2))] })),
 };
 
 /** Eggs: the newest month is not yet published ("."). */
