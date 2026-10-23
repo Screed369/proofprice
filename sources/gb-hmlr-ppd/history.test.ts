@@ -41,7 +41,8 @@ test("GB history: monthly medians per district and E&W, groups under 5 dropped, 
   assert.equal(leedsAny.median, 125000);
   assert.ok(march.find((r) => r.area === "ALL" && r.item === "any/month" && r.n === 10));
   assert.ok(!march.some((r) => r.area === "camden")); // 4 sales
-  assert.ok(!march.some((r) => r.area === "leeds" && r.item === "terraced/month")); // 3 sales
+  assert.ok(!march.some((r) => r.area === "leeds" && r.item !== "any/month")); // councils: all homes only
+  assert.ok(march.find((r) => r.area === "ALL" && r.item === "terraced/month" && r.n === 3 + 0) === undefined); // 3 terraced -> under 5
   assert.ok(!p.has("2024-04")); // 1 sale
 });
 
@@ -53,7 +54,10 @@ test("GB history: labels are short, two councils never share one, long names sho
   const a = new GbYearAccumulator();
   for (let i = 0; i < 5; i++) a.addLine(row(150000, "2024-01-02", "D", "KINGSTON UPON HULL, CITY OF"));
   for (let i = 0; i < 5; i++) a.addLine(row(150000, "2024-01-02", "D", "KINGSTON HULL CITY"));
+  for (let i = 0; i < 6; i++) { a.addLine(row(150000, "2024-01-02", "D", "BRISTOL")); a.addLine(row(150000, "2024-01-02", "D", "CITY OF BRISTOL")); }
   assert.ok(a.collisions.has("kingston-hull-city"));
+  assert.ok(!a.collisions.has("city-of-bristol")); // same council under two spellings
+  assert.equal(a.periods().get("2024-01")!.find((r) => r.area === "city-of-bristol")!.n, 12);
   assert.ok(![...a.periods().get("2024-01")!].some((r) => r.area === "kingston-hull-city"));
 });
 
@@ -78,7 +82,7 @@ test("GB history: backfill loads whole months only, holds back the newest two, a
   assert.ok(!/STREET|AB1/.test(csv));
   assert.equal(GB_MIN_PRICE, 10000);
   // and the history answer reads it (a source with a backfill but no daily collector)
-  const h = runHistory(categoryById("home-sales")!, { country: "GB", district: "Leeds", property_type: "terraced", months: 36 }, {}, new Date("2026-10-23T00:00:00Z"));
+  const h = runHistory(categoryById("home-sales")!, { country: "GB", district: "Leeds", months: 36 }, {}, new Date("2026-10-23T00:00:00Z"));
   assert.equal(h.status, "ok");
   assert.deepEqual(h.series.map((x) => x.date), ["2023-11", "2023-12", "2024-01"]);
   assert.equal(h.source.id, "gb-hmlr-ppd");
@@ -86,8 +90,10 @@ test("GB history: backfill loads whole months only, holds back the newest two, a
 });
 
 test("GB history: keys", () => {
-  assert.deepEqual(gbHistoryKey({ district: "Camden", property_type: "terraced" }, { monthly: true }), { area: "camden", item: "terraced/month", label: "Camden (local authority), England & Wales" });
+  assert.deepEqual(gbHistoryKey({ district: "Camden" }, { monthly: true }), { area: "camden", item: "any/month", label: "Camden (local authority), England & Wales" });
   assert.deepEqual(gbHistoryKey({}, { monthly: true }), { area: "ALL", item: "any/month", label: "England & Wales" });
-  assert.equal(gbHistoryKey({ district: "Camden", property_type: "castle" }, { monthly: true }), null);
+  assert.equal(gbHistoryKey({ property_type: "castle" }, { monthly: true }), null);
+  assert.throws(() => gbHistoryKey({ district: "Camden", property_type: "terraced" }, { monthly: true }), /whole of England/);
+  assert.deepEqual(gbHistoryKey({ property_type: "terraced" }, { monthly: true }), { area: "ALL", item: "terraced/month", label: "England & Wales" });
   assert.throws(() => gbHistoryKey({ district: "Camden" }, { monthly: false }), /months/);
 });

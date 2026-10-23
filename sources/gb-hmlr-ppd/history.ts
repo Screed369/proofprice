@@ -16,6 +16,10 @@ export const GB_MAX_PRICE = 25_000_000;
 /** Registration is late: the newest months are incomplete, so the newest two whole months before the latest sale are not loaded. */
 export const GB_HOLD_BACK_MONTHS = 2;
 
+/** Size budget (5 MB for this source): the first dry run (all types for every council since 1995) came to 45 MB, so councils are kept for all
+ *  homes only, from this month on; England & Wales (ALL) keeps every type for the whole range. */
+export const GB_DISTRICT_FROM = "2009-01";
+
 export const GB_MONTHLY_TYPES = ["any", "detached", "semi-detached", "terraced", "flat-maisonette"] as const;
 export type GbMonthlyType = (typeof GB_MONTHLY_TYPES)[number];
 const TYPE_CODE: Record<string, Exclude<GbMonthlyType, "any">> = { D: "detached", S: "semi-detached", T: "terraced", F: "flat-maisonette" };
@@ -60,19 +64,17 @@ export class GbYearAccumulator {
     if (!(price >= GB_MIN_PRICE && price <= GB_MAX_PRICE) || !/^\d{4}-\d{2}-\d{2}$/.test(date)) { this.rejected++; return; }
     const slug = districtSlug(f[12]);
     if (!slug) { this.rejected++; return; }
+    const norm = normaliseDistrict(f[12])!; // "BRISTOL" and "CITY OF BRISTOL" are one council
     const known = this.names.get(slug);
-    if (known === undefined) this.names.set(slug, f[12]);
-    else if (known !== f[12]) { this.collisions.add(slug); return; }
+    if (known === undefined) this.names.set(slug, norm);
+    else if (known !== norm) { this.collisions.add(slug); return; }
     this.kept++;
     if (date > this.newest) this.newest = date;
     const month = date.slice(0, 7);
     const type = TYPE_CODE[f[4]];
-    this.push(month, slug, "any", price);
+    if (month >= GB_DISTRICT_FROM) this.push(month, slug, "any", price);
     this.push(month, NATIONAL, "any", price);
-    if (type) {
-      this.push(month, slug, type, price);
-      this.push(month, NATIONAL, type, price);
-    }
+    if (type) this.push(month, NATIONAL, type, price);
   }
 
   private push(month: string, area: string, type: string, price: number) {
@@ -180,7 +182,7 @@ export async function gbBackfill(from: string, to: string, deps: GbBackfillDeps 
     currency: "GBP",
     unit: "per home",
     periods,
-    note: `Monthly figures from HM Land Registry Price Paid Data: median and 10th-90th percentile of standard-price residential sales (category A) by completion month, per local authority (council area or London borough) and for England & Wales, for all homes and by type. Sales under £${GB_MIN_PRICE.toLocaleString("en-GB")} and over £${(GB_MAX_PRICE / 1e6).toFixed(0)} million are left out. Sales reach the register weeks to months late, so the newest ${GB_HOLD_BACK_MONTHS} months are not loaded.`,
+    note: `Monthly figures from HM Land Registry Price Paid Data: median and 10th-90th percentile of standard-price residential sales (category A) by completion month, for England & Wales (all homes and by type, from 1995) and per local authority (council area or London borough, all homes, from ${GB_DISTRICT_FROM}). Sales under £${GB_MIN_PRICE.toLocaleString("en-GB")} and over £${(GB_MAX_PRICE / 1e6).toFixed(0)} million are left out. Sales reach the register weeks to months late, so the newest ${GB_HOLD_BACK_MONTHS} months are not loaded.`,
   };
 }
 
@@ -194,6 +196,7 @@ export function gbHistoryKey(
   if (!(GB_MONTHLY_TYPES as readonly string[]).includes(t)) return null;
   const place = input.district ?? input.town;
   if (!place) return { area: NATIONAL, item: gbMonthlyItem(t), label: "England & Wales" };
+  if (t !== "any") throw new InputError("England & Wales: monthly history by property type is kept for the whole of England & Wales; for a council area or London borough it is kept for all homes (leave property_type out).");
   const slug = districtSlug(place);
   if (!slug) return null;
   const nice = normaliseDistrict(place)!.toLowerCase().replace(/(^|\s)([a-z])/g, (_m, sp, c) => sp + c.toUpperCase());
