@@ -1,0 +1,36 @@
+URL: https://data.medicaid.gov/api/1/datastore/query/158a1baa-5506-400a-8ec3-97756f0b0536/0?limit=1&properties%5B0%5D=quarter&properties%5B1%5D=year&sorts%5B0%5D%5Bproperty%5D=quarter&sorts%5B0%5D%5Border%5D=desc&conditions%5B0%5D%5Bproperty%5D=state&conditions%5B0%5D%5Bvalue%5D=XX
+Fetched: 2026-10-23T21:15:35Z from GitHub Actions
+Status, type, bytes: 200 application/json 1846
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+x-drupal-dynamic-cache: MISS
+content-language: en
+x-content-type-options: nosniff
+x-generator: Drupal 11 (https://www.drupal.org)
+x-drupal-cache: MISS
+last-modified: Fri, 23 Oct 2026 21:15:24 GMT
+etag: "1792790124-gzip"
+x-request-id: v-dcf6555c-cf26-11f1-8f35-1365f8e72a6f
+x-ah-environment: prod
+x-age: 0
+expires: Fri, 23 Oct 2026 21:15:35 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Fri, 23 Oct 2026 21:15:35 GMT
+content-length: 1846
+set-cookie: cms_fpid=2562585f-8357-63da-bc4a-e1f1a97d725d; expires=Sun, 22-Oct-2028 21:15:35 GMT; path=/; domain=.medicaid.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.eda5dc17.1792790124.bbf9aeb0
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"results":[{"quarter":"4","year":"2025"}],"count":320609,"schema":{"a613f4ae-0615-572c-812a-a381379914cd":{"fields":{"utilization_type":{"type":"text","mysql_type":"text","description":"Utilization Type"},"state":{"type":"text","mysql_type":"text","description":"State"},"ndc":{"type":"text","mysql_type":"text","description":"NDC"},"labeler_code":{"type":"text","mysql_type":"text","description":"Labeler Code"},"product_code":{"type":"text","mysql_type":"text","description":"Product Code"},"package_size":{"type":"text","mysql_type":"text","description":"Package Size"},"year":{"type":"int","mysql_type":"int","description":"Year"},"quarter":{"type":"int","mysql_type":"int","description":"Quarter"},"suppression_used":{"type":"text","mysql_type":"text","description":"Suppression Used"},"product_name":{"type":"text","mysql_type":"text","description":"Product Name"},"units_reimbursed":{"type":"numeric","precision":"14","scale":"3","mysql_type":"decimal","description":"Units Reimbursed"},"number_of_prescriptions":{"type":"int","mysql_type":"int","description":"Number of Prescriptions"},"total_amount_reimbursed":{"type":"numeric","precision":"14","scale":"2","mysql_type":"decimal","description":"Total Amount Reimbursed"},"medicaid_amount_reimbursed":{"type":"numeric","precision":"12","scale":"2","mysql_type":"decimal","description":"Medicaid Amount Reimbursed"},"non_medicaid_amount_reimbursed":{"type":"numeric","precision":"12","scale":"2","mysql_type":"decimal","description":"Non Medicaid Amount Reimbursed"}}}},"query":{"limit":1,"properties":["quarter","year"],"sorts":[{"property":"quarter","order":"desc"}],"conditions":[{"property":"state","value":"XX"}],"resources":[{"id":"a613f4ae-0615-572c-812a-a381379914cd","alias":"t"}],"offset":0,"count":true,"results":true,"schema":true,"keys":true,"format":"json","rowIds":false}}
