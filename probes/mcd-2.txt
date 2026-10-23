@@ -1,0 +1,36 @@
+URL: https://data.medicaid.gov/api/1/datastore/query/158a1baa-5506-400a-8ec3-97756f0b0536/0?limit=8&conditions%5B0%5D%5Bproperty%5D=state&conditions%5B0%5D%5Bvalue%5D=XX&conditions%5B1%5D%5Bproperty%5D=product_name&conditions%5B1%5D%5Bvalue%5D=%25ATORVAS%25&conditions%5B1%5D%5Boperator%5D=LIKE
+Fetched: 2026-10-23T21:14:04Z from GitHub Actions
+Status, type, bytes: 200 application/json 5244
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+x-drupal-dynamic-cache: MISS
+content-language: en
+x-content-type-options: nosniff
+x-generator: Drupal 11 (https://www.drupal.org)
+x-drupal-cache: MISS
+last-modified: Fri, 23 Oct 2026 21:13:55 GMT
+etag: "1792790035-gzip"
+x-request-id: v-a7898f6a-cf26-11f1-b774-bb402ff8617e
+x-ah-environment: prod
+x-age: 0
+expires: Fri, 23 Oct 2026 21:14:04 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Fri, 23 Oct 2026 21:14:04 GMT
+content-length: 5244
+set-cookie: cms_fpid=b4cfad44-3b25-c5d1-7874-762c0b4a6838; expires=Sun, 22-Oct-2028 21:14:04 GMT; path=/; domain=.medicaid.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.6a55c817.1792790035.917defad
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"results":[{"utilization_type":"FFSU","state":"XX","ndc":"00093505610","labeler_code":"00093","product_code":"5056","package_size":"10","year":"2025","quarter":"4","suppression_used":"false","product_name":"ATORVASTAT","units_reimbursed":"148243.000","number_of_prescriptions":"3848","total_amount_reimbursed":"43869.92","medicaid_amount_reimbursed":"43130.77","non_medicaid_amount_reimbursed":"739.15"},{"utilization_type":"MCOU","state":"XX","ndc":"00093505610","labeler_code":"00093","product_code":"5056","package_size":"10","year":"2025","quarter":"4","suppression_used":"false","product_name":"ATORVASTAT","units_reimbursed":"456965.500","number_of_prescriptions":"8516","total_amount_reimbursed":"77917.86","medicaid_amount_reimbursed":"77170.97","non_medicaid_amount_reimbursed":"746.89"},{"utilization_type":"FFSU","state":"XX","ndc":"00093505698","labeler_code":"00093","product_code":"5056","package_size":"98","year":"2025","quarter":"4","suppression_used":"false","product_name":"ATORVASTAT","units_reimbursed":"967534.000","number_of_prescriptions":"15799","total_amount_reimbursed":"185458.35","medicaid_amount_reimbursed":"181739.95","non_medicaid_amount_reimbursed":"3718.40"},{"utilization_type":"MCOU","state":"XX","ndc":"00093505698","labeler_code":"00093","product_code":"5056","package_size":"98","year":"2025","quarter":"4","suppression_used":"false","product_name":"ATORVASTAT","units_reimbursed":"1276237.000","number_of_prescriptions":"20853","total_amount_reimbursed":"188286.89","medicaid_amount_reimbursed":"185268.60","non_medicaid_amount_reimbursed":"3018.29"},{"utilization_type":"FFSU","state":"XX","ndc":"00093505705","labeler_code":"00093","product_code":"5057","package_size":"05","year":"2025","quarter":"4","suppression_used":"false","product_name":"ATORVASTAT","units_reimbursed":"169920.000","number_of_prescriptions":"4586","total_amount_reimbursed":"60013.62","medicaid_amount_reimbursed":"58939.55","non_medicaid_amount_reimbursed":"1074.07"},{"utilization_type":"MCOU","state":"XX","ndc":"00093505705","labeler_code":"00093","product_code":"5057","package_size":"05","year":"2025","quarter":"4","suppression_used":"false","product_name":"ATORVASTAT","units_reimbursed":"586334.000","number_of_prescriptions":"10209","total_amount_reimbursed":"163424.96","medicaid_amount_reimbursed":"162251.47","non_medicaid_amount_reimbursed":"1173.49"},{"utilization_type":"FFSU","state":"XX","ndc":"00093505798","labeler_code":"00093","product_code":"5057","package_size":"98","year":"2025","quarter":"4","suppression_used":"false","product_name":"ATORVASTAT","units_reimbursed":"762669.000","number_of_prescriptions":"13480","total_amount_reimbursed":"191057.73","medicaid_amount_reimbursed":"187330.36","non_medicaid_amount_reimbursed":"3727.37"},{"utilization_type":"MCOU","state":"XX","ndc":"00093505798","labeler_code":"00093","product_code":"5057","package_size":"98","year":"2025","quarter":"4","suppression_used":"false","product_name":"ATORVASTAT","units_reimbursed":"1079533.000","number_of_prescriptions":"17279","total_amount_reimbursed":"244246.49","medicaid_amount_reimbursed":"241045.79","non_medicaid_amount_reimbursed":"3200.70"}],"count":2084,"schema":{"a613f4ae-0615-572c-812a-a381379914cd":{"fields":{"utilization_type":{"type":"text","mysql_type":"text","description":"Utilization Type"},"state":{"type":"text","mysql_type":"text","description":"State"},"ndc":{"type":"text","mysql_type":"text","description":"NDC"},"labeler_code":{"type":"text","mysql_type":"text","description":"Labeler Code"},"product_code":{"type":"text","mysql_type":"text","description":"Product Code"},"package_size":{"type":"text","mysql_type":"text","description":"Package Size"},"year":{"type":"int","mysql_type":"int","description":"Year"},"quarter":{"type":"int","mysql_type":"int","description":"Quarter"},"suppression_used":{"type":"text","mysql_type":"text","description":"Suppression Used"},"product_name":{"type":"text","mysql_type":"text","description":"Product Name"},"units_reimbursed":{"type":"numeric","precision":"14","scale":"3","mysql_type":"decimal","description":"Units Reimbursed"},"number_of_prescriptions":{"type":"int","mysql_type":"int","description":"Number of Prescriptions"},"total_amount_reimbursed":{"type":"numeric","precision":"14","scale":"2","mysql_type":"decimal","description":"Total Amount Reimbursed"},"medicaid_amount_reimbursed":{"type":"numeric","precision":"12","scale":"2","mysql_type":"decimal","description":"Medicaid Amount Reimbursed"},"non_medicaid_amount_reimbursed":{"type":"numeric","precision":"12","scale":"2","mysql_type":"decimal","description":"Non Medicaid Amount Reimbursed"}}}},"query":{"limit":8,"conditions":[{"property":"state","value":"XX"},{"property":"product_name","value":"%ATORVAS%","operator":"LIKE"}],"resources":[{"id":"a613f4ae-0615-572c-812a-a381379914cd","alias":"t"}],"offset":0,"count":true,"results":true,"schema":true,"keys":true,"format":"json","rowIds":false,"properties":["utilization_type","state","ndc","labeler_code","product_code","package_size","year","quarter","suppression_used","product_name","units_reimbursed","number_of_prescriptions","total_amount_reimbursed","medicaid_amount_reimbursed","non_medicaid_amount_reimbursed"]}}
