@@ -36,7 +36,7 @@ export const INFO: SourceInfo = {
   limits:
     "A modelled national average for households by consumption class (tariff sheets times consumption), not a supplier's offer, a quote or a bill, and not split by region. " +
     "Published twice a year, so it lags the market; the last two half-years are provisional. CBS does not say how many households or contracts stand behind a figure. " +
-    "Gas is in euro per m3 (one m3 is 35.17 MJ, about 9.77 kWh, on CBS's own conversion); electricity in euro per kWh. In the smallest electricity class the supply price can be negative because of the energy-tax refund.",
+    "Gas is in euro per m3 (one m3 is 35.17 MJ, about 9.77 kWh, on CBS's own conversion); electricity in euro per kWh. Electricity includes the Dutch energy-tax refund (heffingskorting), so in the smaller classes the price without taxes can be higher than the price with taxes, and the supply price in the smallest class can be negative.",
 };
 
 export type Energy = "electricity" | "gas";
