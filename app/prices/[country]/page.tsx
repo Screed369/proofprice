@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props) {
   const g = countryGroups().find((x) => x.slug === country);
   if (!g) return {};
   return pageMetadata({
-    title: `Prices in ${g.name}`,
+    title: `What people actually pay in ${g.name}: ${joinAnd(g.categories.slice(0, 3).map((c) => c.label.toLowerCase()))}`,
     description: `Latest official figures for ${g.name}: ${joinAnd(g.categories.map((c) => c.label.toLowerCase()))}, with the source and licence of every figure.`,
     path: g.path,
   });

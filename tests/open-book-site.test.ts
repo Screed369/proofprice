@@ -420,3 +420,12 @@ test("404 page metadata: one plain title, no canonical, not indexed", async () =
   assert.equal(m.alternates, undefined);
   assert.deepEqual(m.robots, { index: false, follow: true });
 });
+
+test("country price pages have a descriptive title with the main categories", async () => {
+  const { generateMetadata } = await import("../app/prices/[country]/page");
+  const g = (await import("../lib/site/prices")).countryGroups()[0];
+  const m = await generateMetadata({ params: Promise.resolve({ country: g.slug }) });
+  const title = String(m.title);
+  assert.match(title, new RegExp(`^What people actually pay in ${g.name.replace(/[()]/g, "\\$&")}: `));
+  assert.ok(title.toLowerCase().includes(g.categories[0].label.toLowerCase()));
+});
