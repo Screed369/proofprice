@@ -222,3 +222,12 @@ test("rent SE: the existing source keeps answering ordinary requests and steps a
   assert.equal(s.serves!({ country: "SE", new_build: "true" }), false);
   assert.equal(s.serves!({ country: "SE", new_build: false }), true);
 });
+
+test("coverage lists smoke:false examples apart so the smoke test can report them as INFO", async () => {
+  const { coverage, exampleUrls } = await import("../lib/registry");
+  const c = coverage() as { examples: string[]; non_smoke_examples: string[] };
+  const expected = exampleUrls().filter((e) => !e.smoke).map((e) => e.path);
+  assert.deepEqual(c.non_smoke_examples, expected);
+  assert.ok(expected.length > 0);
+  for (const p of expected) assert.ok(c.examples.includes(p), `${p} stays in examples`);
+});

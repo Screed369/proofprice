@@ -511,6 +511,9 @@ export function coverage() {
     })),
     sources: SOURCE_PLUGINS.map((s) => s.info),
     examples: exampleUrls().map((e) => e.path),
+    // Examples a manifest marks smoke:false on purpose (e.g. an ambiguous word that answers with a list to choose from).
+    // They stay in `examples`; the smoke test reads this list to report a 200 with a non-ok status as INFO, not FAIL.
+    non_smoke_examples: exampleUrls().filter((e) => !e.smoke).map((e) => e.path),
     rules: COVERAGE_RULES,
     coming_next: COMING_NEXT,
   };

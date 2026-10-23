@@ -244,7 +244,8 @@ def main() -> int:
     print(f"Smoke test of {base} at {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}")
     print(f"{len(cov.get('tools', []))} tools, {len(cov.get('sources', []))} sources, {len(examples)} examples\n")
 
-    fails, stale = [], []
+    non_smoke = set(cov.get("non_smoke_examples", []))
+    fails, stale, info = [], [], []
     # Ask several examples at once (each waits on a different official server), then print in the coverage order.
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         results = list(pool.map(lambda p: get_with_retries(base + p), examples))
@@ -261,6 +262,10 @@ def main() -> int:
         elif code == 200 and st == "ok":
             tag = "STALE"
             stale.append(path)
+        elif path in non_smoke and code == 200:
+            # smoke:false in the manifest: answers 200 with a non-ok status on purpose (e.g. a list of kinds to choose from)
+            tag = "INFO "
+            info.append(path)
         else:
             tag = "FAIL "
             fails.append(path)
@@ -289,7 +294,7 @@ def main() -> int:
         lib_note = f"library: HTTP {lib_code}"
 
     print(
-        f"\nSUMMARY: {len(examples) - len(fails) - len(stale)} ok, {len(stale)} stale, {len(fails)} failed; "
+        f"\nSUMMARY: {len(examples) - len(fails) - len(stale) - len(info)} ok, {len(stale)} stale, {len(fails)} failed{f', {len(info)} info (smoke:false examples)' if info else ''}; "
         f"mcp: {mcp_ok} ok, {len(mcp_fails)} failed; {lib_note}"
     )
     for p in fails:
@@ -298,6 +303,8 @@ def main() -> int:
         print(f"  FAILED {name}")
     for p in stale:
         print(f"  STALE  {p}")
+    for p in info:
+        print(f"  INFO   {p}")
     return 1 if fails or mcp_fails else 0
 
 

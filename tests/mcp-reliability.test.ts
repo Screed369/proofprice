@@ -463,7 +463,7 @@ test("pricepaid_coverage: a country or category nothing covers is an answer, not
 
 test("GET /api/v1/coverage is unchanged: every source in full and the example list the smoke test reads", () => {
   const rest = coverage();
-  assert.deepEqual(Object.keys(rest), ["service", "purpose", "tools", "sources", "examples", "rules", "coming_next"]);
+  assert.deepEqual(Object.keys(rest), ["service", "purpose", "tools", "sources", "examples", "non_smoke_examples", "rules", "coming_next"]);
   assert.equal(rest.sources.length, SOURCE_PLUGINS.length);
   assert.deepEqual(rest.sources, SOURCE_PLUGINS.map((s) => s.info));
   assert.deepEqual(rest.examples, exampleUrls().map((e) => e.path));
