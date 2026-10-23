@@ -6,7 +6,8 @@
 
 import { InputError, SourceError } from "../../lib/http";
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL =
   "https://www.mbie.govt.nz/building-and-energy/energy-and-natural-resources/energy-statistics-and-modelling/energy-statistics/weekly-fuel-price-monitoring";
@@ -211,4 +212,39 @@ export const METHOD =
 
 export async function nzFuel(input: NzFuelInput, fetcher: (url: string) => Promise<string> = fetchText): Promise<PriceAnswer> {
   return answerFromPoints(parseWeekly(await fetcher(CSV_URL)), input);
+}
+
+// ---------- daily collector (stale-if-error copy and history) ----------
+// Once a day the collector stores MBIE's newest published week: one row per fuel the tool can be asked for (diesel, petrol95), with
+// n NO_COUNT because MBIE gives one national estimate and no record count. Rows are dated by the Friday the week is for
+// (referenceDates), so a copy keeps standing in for a week or so when mbie.govt.nz is down. petrol98 is answered with the 95R series.
+
+export function harvestRows(points: FuelPoint[]): HarvestResult {
+  const rows = [];
+  let date = "";
+  for (const item of ["diesel", "petrol95"] as const) {
+    const mine = points.filter((p) => p.fuel === SERIES[item].mbie);
+    const latest = mine[mine.length - 1];
+    if (!latest) continue;
+    const v = dollars(latest.centsPerLitre);
+    if (latest.date > date) date = latest.date;
+    rows.push({ area: "NZ", item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+  }
+  if (!rows.length) throw new SourceError("MBIE weekly fuel price table holds no diesel or Premium Petrol 95R price");
+  return {
+    date,
+    currency: "NZD",
+    unit: "per litre",
+    rows,
+    note: "MBIE weekly fuel price monitoring: national 'Adjusted retail price' per litre in NZ dollars for diesel and Premium Petrol 95R for the newest week (the newest weeks are provisional and revised). Published estimates, not counts of records.",
+  };
+}
+
+export async function nzFuelHarvest(fetcher: (url: string) => Promise<string> = fetchText): Promise<HarvestResult> {
+  return harvestRows(parseWeekly(await fetcher(CSV_URL)));
+}
+
+export function nzFuelHistoryKey(p: { fuel?: string }): { area: string; item: string; label: string } | null {
+  const item = p.fuel === "petrol98" ? "petrol95" : p.fuel;
+  return item === "diesel" || item === "petrol95" ? { area: "NZ", item, label: "New Zealand (national average)" } : null;
 }

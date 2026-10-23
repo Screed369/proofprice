@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { InputError, SourceError } from "../../lib/http";
 import { categoryById, runCategory, SOURCE_PLUGINS } from "../../lib/registry";
-import { INFO, answerFromPoints, changeFrom, nzFuel, parseWeekly, CSV_URL } from "./source";
+import { INFO, harvestRows, nzFuelHistoryKey, answerFromPoints, changeFrom, nzFuel, parseWeekly, CSV_URL } from "./source";
 
 const CSV = readFileSync(new URL("./fixtures/weekly-table-sample.csv", import.meta.url), "utf8");
 
@@ -67,4 +67,22 @@ test("nz-mbie-fuel: fetch is injected and the registry routes NZ to it", async (
   assert.deepEqual(plugin.countries, ["NZ"]);
   assert.ok(categoryById("fuel"));
   assert.equal(typeof runCategory, "function");
+});
+
+test("nz-mbie-fuel: harvest keeps one row per fuel for the newest week with no record count", () => {
+  const h = harvestRows(parseWeekly(CSV));
+  assert.equal(h.date, "2026-10-09");
+  assert.equal(h.currency, "NZD");
+  assert.equal(h.unit, "per litre");
+  assert.deepEqual(h.rows.map((r) => r.item).sort(), ["diesel", "petrol95"]);
+  const d = h.rows.find((r) => r.item === "diesel")!;
+  assert.equal(d.median, 3.209);
+  assert.equal(d.area, "NZ");
+  assert.throws(() => harvestRows([]), /no diesel/);
+});
+
+test("nz-mbie-fuel: historyKey maps petrol98 to the 95R series and refuses other fuels", () => {
+  assert.equal(nzFuelHistoryKey({ fuel: "petrol98" })!.item, "petrol95");
+  assert.equal(nzFuelHistoryKey({ fuel: "diesel" })!.area, "NZ");
+  assert.equal(nzFuelHistoryKey({ fuel: "lpg" }), null);
 });

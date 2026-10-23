@@ -1,6 +1,6 @@
 // Manifest: New Zealand fuel (MBIE weekly fuel price monitoring). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, nzFuel } from "./source";
+import { INFO, nzFuel, nzFuelHarvest, nzFuelHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -23,4 +23,9 @@ export default defineSource({
   method:
     "New Zealand fuel: MBIE's weekly national 'Adjusted retail price' of diesel and premium petrol 95R (and regular 91 in the extras) for the newest week, with the change on the week and the year. A national official statistic, not a station price.",
   handle: (p, ctx) => nzFuel({ fuel: str(p.fuel), town: str(p.town), area: str(p.area), postcode: str(p.postcode), baseUrl: ctx.baseUrl }),
+  harvest: () => nzFuelHarvest(),
+  historyKey: (p) => nzFuelHistoryKey({ fuel: str(p.fuel) }),
+  referenceDates: true,
+  nominalCounts: true,
+  noHistory: "New Zealand: ProofPrice keeps no separate weekly history of the MBIE series; ask pricepaid_fuel_prices_now (/api/v1/fuel) for the newest week, with the change on the week before and a year earlier.",
 });
