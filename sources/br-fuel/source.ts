@@ -52,7 +52,7 @@ export const BR_STATES: Record<string, string> = {
 };
 
 /** Normalised form used in library keys and for matching what a caller types: no accents, upper case, single spaces. */
-export const brKey = (s: string) => stripAccents(s).replace(/\s+/g, " ").trim();
+export const brKey = (s: string) => stripAccents(s).replace(/[+_]/g, " ").replace(/\s+/g, " ").trim();
 
 const STATE_BY_NAME = new Map(Object.entries(BR_STATES).map(([code, name]) => [brKey(name), code]));
 
@@ -94,7 +94,7 @@ export function resolveBrPlace(
 ): BrPlace | null {
   if (p.postcode) throw new InputError("Brazil: postcodes (CEP) are not used. Give a state as area (e.g. 'SP') and/or a municipality as town (e.g. 'São Paulo').");
   const area = p.area?.trim();
-  const town = p.town?.trim();
+  const town = p.town?.replace(/\+/g, " ").trim();
   let uf: string | null = null;
   if (area && !/^(ALL|BRAZIL|BRASIL)$/i.test(area)) {
     uf = brState(area);

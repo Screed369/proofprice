@@ -135,6 +135,8 @@ test("BR: states and municipalities resolve (names, codes, accents; state needed
   assert.deepEqual(resolveBrPlace({}, index), { area: "ALL", label: "Brazil" });
   assert.deepEqual(resolveBrPlace({ area: "SP" }, index), { area: "SP", label: "São Paulo (state)" });
   assert.deepEqual(resolveBrPlace({ town: "São Paulo" }, index), { area: "SP:SAO PAULO", label: "São Paulo, SP" });
+  // Gap G20261023-BR-SAO-PAULO: a plus sign that reaches us undecoded (town=são+paulo, or %2B) means a space.
+  assert.deepEqual(resolveBrPlace({ town: "são+paulo" }, index), { area: "SP:SAO PAULO", label: "são paulo, SP" });
   assert.deepEqual(resolveBrPlace({ town: "Santa Cruz", area: "RN" }, index), { area: "RN:SANTA CRUZ", label: "Santa Cruz, RN" });
   assert.equal(resolveBrPlace({ town: "Atlantis" }, index), null);
   assert.throws(() => resolveBrPlace({ town: "Santa Cruz" }, index), /several states \(RN, RS\)/);
