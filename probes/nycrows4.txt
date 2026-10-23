@@ -1,0 +1,31 @@
+URL: https://data.cityofnewyork.us/resource/usep-8jbt.json?$limit=4&$order=sale_date%20DESC&$where=tax_class_at_time_of_sale=4%20AND%20sale_price>0
+Fetched: 2026-10-23T18:46:08Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1820
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 23 Oct 2026 18:46:08 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42NzE1N180XzY2N3diNjBiWnNSOUZ5Y3VhZlF1YXltZWhvTVNr---gzipdDJ5xL3gfgScqLY1nBNl7neFo8s--gzip--gzip"
+X-SODA2-Fields: ["borough","neighborhood","building_class_category","tax_class_at_present","block","lot","ease_ment","building_class_at_present","address","apartment_number","zip_code","residential_units","commercial_units","total_units","land_square_feet","gross_square_feet","year_built","tax_class_at_time_of_sale","building_class_at_time_of","sale_price","sale_date"]
+X-SODA2-Types: ["text","text","text","text","text","number","text","text","text","text","text","number","number","number","text","number","text","number","text","number","floating_timestamp"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 76fd4d66dc3d037f530c79eb168ba526
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+[{"borough":"1","neighborhood":"MIDTOWN WEST","building_class_category":"28 COMMERCIAL CONDOS","tax_class_at_present":"4","block":"1028","lot":"1106","building_class_at_present":"R5","address":"224 WEST 57 STREET, ROOF","apartment_number":"ROOF","zip_code":"10019","commercial_units":"1","total_units":"1","year_built":"1909","tax_class_at_time_of_sale":"4","building_class_at_time_of":"R5","sale_price":"20000","sale_date":"2026-09-30T00:00:00.000"}
+,{"borough":"1","neighborhood":"MIDTOWN WEST","building_class_category":"43 CONDO OFFICE BUILDINGS","tax_class_at_present":"4","block":"1028","lot":"1101","building_class_at_present":"RB","address":"224 WEST 57 STREET, OFF","apartment_number":"OFF","zip_code":"10019","commercial_units":"1","total_units":"1","year_built":"1909","tax_class_at_time_of_sale":"4","building_class_at_time_of":"RB","sale_price":"20000","sale_date":"2026-09-30T00:00:00.000"}
+,{"borough":"1","neighborhood":"MIDTOWN WEST","building_class_category":"46 CONDO STORE BUILDINGS","tax_class_at_present":"4","block":"1028","lot":"1103","building_class_at_present":"RK","address":"224 WEST 57 STREET, RET-A","apartment_number":"RET-A","zip_code":"10019","commercial_units":"1","total_units":"1","year_built":"1909","tax_class_at_time_of_sale":"4","building_class_at_time_of":"RK","sale_price":"20000","sale_date":"2026-09-30T00:00:00.000"}
+,{"borough":"1","neighborhood":"MIDTOWN WEST","building_class_category":"46 CONDO STORE BUILDINGS","tax_class_at_present":"4","block":"1028","lot":"1104","building_class_at_present":"RK","address":"224 WEST 57 STREET, RET-B","apartment_number":"RET-B","zip_code":"10019","commercial_units":"1","total_units":"1","year_built":"1909","tax_class_at_time_of_sale":"4","building_class_at_time_of":"RK","sale_price":"20000","sale_date":"2026-09-30T00:00:00.000"}]
