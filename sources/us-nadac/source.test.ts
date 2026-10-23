@@ -222,3 +222,14 @@ test("us-nadac prints dollars with the precision NADAC publishes", () => {
   assert.equal(usd(19.07256), "$19.07");
   assert.equal(usd(1234.5), "$1,235");
 });
+
+test("routing: basis=medicare_spend goes to us-cms-partd, every other US medicine request stays with NADAC", async () => {
+  const { default: nadac } = await import("./index");
+  const { default: partd } = await import("../us-cms-partd/index");
+  const plain = { country: "US", medicine: "atorvastatin" };
+  const spend = { ...plain, basis: "medicare_spend" };
+  assert.equal(nadac.serves!(plain), true);
+  assert.equal(partd.serves!(plain), false);
+  assert.equal(nadac.serves!(spend), false);
+  assert.equal(partd.serves!(spend), true);
+});

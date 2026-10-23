@@ -1,5 +1,6 @@
 // Manifest: United States medicine prices (NADAC, pharmacy acquisition cost). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
+import { isMedicareSpendRequest } from "../us-cms-partd/source";
 import { INFO, nadacMedicine } from "./source";
 
 export default defineSource({
@@ -9,6 +10,8 @@ export default defineSource({
   countryHelp: "US = United States (NADAC: the average price retail pharmacies pay to acquire a drug, weekly, per tablet/capsule/mL/gram; not the patient's counter price)",
   placeName: "the United States",
   status: "live",
+  // basis=medicare_spend (what Medicare Part D spent per dosage unit) is answered by us-cms-partd; declared serves() change, Gap fix G20261023-PLATFORM-SERVES-MEDICINES-DK.
+  serves: (p) => !isMedicareSpendRequest(p),
   paramNotes: {
     medicine:
       "US: generic or brand name, optionally with strength and form ('atorvastatin', 'atorvastatin 20mg', 'metformin 500 mg tablet', 'Lipitor'). " +
