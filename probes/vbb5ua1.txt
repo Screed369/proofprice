@@ -1,0 +1,20 @@
+URL: https://public.api.ea.openprocurement.org/api/2/auctions?limit=3
+Fetched: 2026-10-23T05:41:57Z from GitHub Actions
+Status, type, bytes: 200 application/json 569
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Fri, 23 Oct 2026 05:41:57 GMT
+Server: nginx/1.12.1
+Set-Cookie: SERVER_ID=c757346f52e90bff72679196e847622e3bd5f6ec93543439b695f3b580e63640a35b60576301abc64a43668ff8fab0ea031a1f2b719d66c1eb9748d5e8c20a72; Path=/
+Set-Cookie: AWSELB=3F7F01E710FCE660460D96C67092DB3BD317CA71FA89D2C3E6330EFE41DDF227A7A3E6C92C188B7482FDC29CA05E96347933DF6C858850E16FF6AEE23853774909107E13F9B9633F9177DE0CB369880292241BA429;PATH=/
+X-Content-Type-Options: nosniff
+X-Request-ID: req-9ccec0c6-52b1-4ffd-83c9-451743e07161
+Content-Length: 569
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"next_page": {"path": "/api/2.4/auctions?limit=3&offset=2016-11-02T17%3A55%3A37.272670%2B02%3A00", "uri": "https://public.api.ea.openprocurement.org/api/2.4/auctions?limit=3&offset=2016-11-02T17%3A55%3A37.272670%2B02%3A00", "offset": "2016-11-02T17:55:37.272670+02:00"}, "data": [{"id": "8076e2654e2b4865a1b1fd7839e120b4", "dateModified": "2016-11-02T13:28:56.806326+02:00"}, {"id": "8c8b3b56ca1b4afcbd7d4c68c7815f01", "dateModified": "2016-11-02T17:48:43.255985+02:00"}, {"id": "0c064314a0c04c789a1438091c914403", "dateModified": "2016-11-02T17:55:37.272670+02:00"}]}
