@@ -203,7 +203,8 @@ export function answerFor(pr: LukeProduct, pts: Point[], ask: Ask, now: Date = n
   const [ly, lm] = latest.month.split("M").map(Number);
   const behind = nowIdx - (ly * 12 + (lm - 1));
   const notes = [`A monthly average price paid to Finnish producers for ${monthWords(latest.month)}, in the unit Luke states: not a sale, not a retail price and not a live price.`];
-  if (pr.unit === "100kg") notes.push("Luke's table does not say whether the meat price is per kilogram of carcass or whether VAT is included.");
+  if (pr.table === "0200") notes.push("Luke's table does not say whether the meat price is per kilogram of carcass or whether VAT is included.");
+  else notes.push("Luke's table does not say whether VAT is included.");
   if (behind >= 5) notes.push(`Old data: the newest month Luke holds is ${monthWords(latest.month)}, ${behind} months ago.`);
   const fmt = (v: number) => fmtMoney(v, "EUR");
   return buildStatisticAnswer({
