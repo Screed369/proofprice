@@ -1,0 +1,32 @@
+URL: https://data.gov.tw/api/v2/rest/dataset/86103
+Fetched: 2026-10-23T08:42:06Z from GitHub Actions
+Status, type, bytes: 200 application/json 2185
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 08:42:06 GMT
+content-type: application/json
+content-length: 2185
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=fsce36raqrc6c5g5h5lbbrk97j; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=o6JPJ_UGKL5017gJDu0yCO80d7caG.4k26GdtOlq3Ew-1792744926.5403936-1.0.1.1-9SbTMESCz_R_i8Bi4ES7lByLwVOrmRPe5jb4S.Dlus76n7F13ibiQ0bjp_eRKA5qu19eDFFfuzslgxKVxKxwUEi9fuiVw2oitqueWBbCGPyQuMH8CGw30xZalHVk4ubk; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Fri, 23 Oct 2026 09:12:06 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4ef724edbe5c500-IAD
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help":"","success":true,"result":{"categoryService":"I00","categoryDataset":"A","datasetId":86103,"identifier":"","title":"台灣自來水公司近年水價資料表","description":"提供本公司近年水價資料及給水投資報酬率","type":"rawData","license":"1","cost":"free","dataProvider":"water9292","publisherOID":"2.16.886.101.20003.20007.20126","publisherContactName":"林先生","publisherContactPhone":"0422244191#586;577;0422244191#602;610","publisherContactEmail":"ljc9292@mail.water.gov.tw","updateFrequency":{"regularupdate":"1","Frequency":"1","unittime":"年"},"dataQuality":"G","coverageStartedDate":"2018-06-19","coverageEndedDate":"2018-06-19","publishedDate":"2018-06-19","modifiedDate":"2023-05-31 21:20:20","spatialCoverage":"","language":"zh","relatedUrl":"","notes":"","apiDocUrl":"","distribution":[{"resourceDescription":"","resourceField":[{"name":"年度別","description":"","uri":"api\/Commonality\/Time\/TimeAttributes\/YYYROC"},{"name":"平均水價(元)","description":""},{"name":"單位銷售成本(元)","description":""},{"name":"單位銷售盈虧(元)","description":""},{"name":"給水投資報酬率(%)","description":""}],"qcLevel":"","resourceFormat":"CSV","resourceCharacterEncoding":"UTF-8","resourceQualityCheckTime":"2026-06-02 18:07:21","resourceDownloadUrl":"https:\/\/www.water.gov.tw\/opendata\/prop8.csv","resourceAmount":5,"resourceNotes":"","resourceRequestMethod":"","resourceOasUrl":"","resourceRequestParameters":[],"resourcePathParameters":[]}],"keyword":["AI-Ready Data 詮釋資料框架指標","政府統計"],"en":{"title":"Taiwan Water Corporation's recent water price data table","description":"Provide the company's recent water price data and water supply return on investment.","publisherContactName":"林先生","publisherContactPhone":"0422244191#586;577;0422244191#602;610","publisherContactEmail":["ljc9292@mail.water.gov.tw"],"updateFrequency":"Every 1 year","cost":"free","keyword":["Government statistics"],"resources":[{"description":"","fieldDesc":"Annual basis、Average water price (yuan)、Unit sales cost (RMB)、Unit sales profit\/loss (in yuan)、Return on water investment (%)","note":""}]}}}
