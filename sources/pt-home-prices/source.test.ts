@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS, countriesFor, categoryById, paramSchemas } from "../../lib/registry";
-import { INFO, apiUrl, coverageText, findPlace, foldName, parseIne, ptAnswer, ptHomePrices, readPt, windowOf } from "./source";
+import { HARVEST_ITEM, INFO, apiUrl, coverageText, findPlace, foldName, harvestRows, harvestUrl, parseIne, ptAnswer, ptHarvest, ptHistoryKey, ptHomePrices, readPt, windowOf } from "./source";
 import type { IneReply } from "./source";
 import { PT_PLACES } from "./places";
 import * as F from "./fixtures";
@@ -278,4 +278,63 @@ test("pt-home-prices: a home type INE does not publish gets no_matches, not the 
 
 test("pt-home-prices: a postcode alone is refused with the reason", async () => {
   await assert.rejects(ptHomePrices({ postcode: "1000-001" }, { fetcher: fake([]).fetcher }), (e: any) => e instanceof InputError && /not by postcode/.test(e.message));
+});
+
+// ---------- stale-if-error copy (harvest) ----------
+
+test("pt-home-prices: harvest url asks for every place in ONE request (INE rejects Dim2=T)", () => {
+  const u = harvestUrl();
+  assert.ok(u.includes("Dim3=T") && !u.includes("Dim2=T&"));
+  for (const p of PT_PLACES) assert.ok(u.includes(p.code), p.code);
+  assert.equal(u.split("pindica.jsp").length, 2);
+});
+
+test("pt-home-prices: harvestRows keeps the newest quarter of the real INE reply, dated by the quarter's end, with no made-up count", () => {
+  const reply = lisboaReply();
+  const out = harvestRows(reply);
+  const newest = reply.rows.filter((r) => r.typology === "T").reduce((a, r) => (r.year * 4 + r.quarter > a ? r.year * 4 + r.quarter : a), 0);
+  const q = ((newest - 1) % 4) + 1;
+  const y = Math.floor((newest - 1) / 4);
+  assert.equal(out.date, windowOf({ year: y, quarter: q }).to);
+  assert.equal(out.currency, "EUR");
+  assert.equal(out.unit, "per m²");
+  const lis = out.rows.find((r) => r.area === LISBOA.code);
+  const pt = out.rows.find((r) => r.area === "PT");
+  assert.ok(lis && pt);
+  assert.equal(lis.item, HARVEST_ITEM);
+  assert.ok(Number.isNaN(lis.n), "n must be NO_COUNT, never a made-up number");
+  assert.equal(lis.median, lis.low);
+  const want = reply.rows.find((r) => r.geo === LISBOA.code && r.typology === "T" && r.year === y && r.quarter === q)!;
+  assert.equal(lis.median, Math.round(want.value));
+  assert.equal(new Set(out.rows.map((r) => r.area)).size, out.rows.length, "one row per place");
+});
+
+test("pt-home-prices: harvestRows refuses a reply with no national figure", () => {
+  const reply = lisboaReply();
+  assert.throws(() => harvestRows({ ...reply, rows: reply.rows.filter((r) => r.geo !== "PT") }), SourceError);
+  assert.throws(() => harvestRows({ ...reply, rows: [] }), SourceError);
+});
+
+test("pt-home-prices: ptHarvest uses the one-request URL", async () => {
+  const f = fake([F.LISBOA_PT_THREE_QUARTERS]);
+  const out = await ptHarvest({ fetcher: f.fetcher });
+  assert.equal(f.urls.length, 1);
+  assert.equal(f.urls[0], harvestUrl());
+  assert.ok(out.rows.length >= 1);
+});
+
+test("pt-home-prices: historyKey maps the request to INE's place code; a type split or postcode-only request has no copy", () => {
+  assert.deepEqual(ptHistoryKey({ town: "Lisbon" }), { area: LISBOA.code, item: HARVEST_ITEM, label: "Lisboa" });
+  assert.deepEqual(ptHistoryKey({}), { area: "PT", item: HARVEST_ITEM, label: "Portugal" });
+  assert.equal(ptHistoryKey({ town: "Lisboa", property_type: "apartment" }), null);
+  assert.equal(ptHistoryKey({ postcode: "1000-001" }), null);
+  assert.equal(ptHistoryKey({ town: "Nowhereville" }), null);
+});
+
+test("pt-home-prices: manifest collects daily with reference dates and no record count", () => {
+  const s = SOURCE_PLUGINS.find((x) => x.info.id === "pt-home-prices")!;
+  assert.equal(typeof s.harvest, "function");
+  assert.equal(s.referenceDates, true);
+  assert.equal(s.nominalCounts, true);
+  assert.deepEqual(s.historyKey!({ town: "Porto" }), { area: place("Porto").code, item: HARVEST_ITEM, label: "Porto" });
 });

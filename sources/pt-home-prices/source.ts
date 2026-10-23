@@ -10,6 +10,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { fetchJson, InputError, SourceError } from "../../lib/http";
+import type { DailyRow, HarvestResult } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import type { SourceInfo } from "../../lib/plugin";
 import { PT_PLACES, PtLevel, PtPlace } from "./places";
 
@@ -415,4 +417,56 @@ export async function ptHomePrices(
   const url = apiUrl(place);
   const reading = readPt(parseIne(await fetcher(url)), place);
   return ptAnswer(reading, { place: input.town ?? null, property_type: type, baseUrl: input.baseUrl, apiUrl: url, now });
+}
+
+// ---------- daily collector (stale-if-error copy) ----------
+// INE's server is slow and often times out from Vercel. Once a day the collector (GitHub Actions) stores, in ONE request, the newest
+// quarter's median for every place INE publishes (country, regions, sub-regions, 58 municipalities). The row is dated by the last day of
+// that quarter (referenceDates) and n is NO_COUNT (INE gives one figure and no record count), so the copy keeps standing in for a live
+// answer for 7 days after the last successful collection. Only the all-dwellings total is stored (no bedroom split).
+
+export const HARVEST_ITEM = "all:12m";
+/** One request for every place: INE rejects Dim2=T but accepts a comma list of geography codes. */
+export function harvestUrl(): string {
+  return `${API_BASE}?op=2&varcd=${INDICATOR}&Dim1=T&Dim2=${PT_PLACES.map((p) => p.code).join(",")}&Dim3=T&lang=EN`;
+}
+
+/** The newest quarter in the reply and one row per place that has a total median for it. */
+export function harvestRows(reply: IneReply): HarvestResult {
+  const totals = reply.rows.filter((r) => r.typology === "T");
+  if (!totals.length) throw new SourceError("INE Portugal returned no dwelling-sales medians to collect");
+  const newest = Math.max(...totals.map(qIndex));
+  const known = new Set(PT_PLACES.map((p) => p.code));
+  const rows: DailyRow[] = [];
+  const seen = new Set<string>();
+  let head: PtRow | null = null;
+  for (const r of totals) {
+    if (qIndex(r) !== newest || !known.has(r.geo) || seen.has(r.geo)) continue;
+    seen.add(r.geo);
+    head = r;
+    const v = roundTo(r.value, 0);
+    rows.push({ area: r.geo, item: HARVEST_ITEM, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+  }
+  if (!head || !seen.has("PT")) throw new SourceError("INE Portugal returned no national median for the newest quarter");
+  return {
+    date: iso(quarterEnd(head)),
+    currency: "EUR",
+    unit: "per m²",
+    rows,
+    note: `INE indicator ${INDICATOR}: median sale price per m² of dwellings sold in the 12 months to the end of ${endLabel(head)}, ${rows.length} places (country, regions, sub-regions, municipalities). Published medians, not counts of records (INE publishes no record count).`,
+  };
+}
+
+export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  const fetcher = o.fetcher ?? ((url: string) => fetchJson(url, {}, 60000));
+  return harvestRows(parseIne(await fetcher(harvestUrl())));
+}
+
+/** Library key for a request: the place's INE code. Null when the request cannot be answered from the copy (a bedroom/type split, an unknown place). */
+export function ptHistoryKey(p: { town?: string; postcode?: string; property_type?: string }): { area: string; item: string; label: string } | null {
+  const type = (p.property_type ?? "any").trim().toLowerCase() || "any";
+  if (type !== "any") return null;
+  if (!p.town) return p.postcode ? null : { area: "PT", item: HARVEST_ITEM, label: "Portugal" };
+  const found = findPlace(p.town);
+  return found.kind === "found" ? { area: found.place.code, item: HARVEST_ITEM, label: found.place.name } : null;
 }

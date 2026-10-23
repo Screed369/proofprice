@@ -1,6 +1,6 @@
 // Manifest: Portugal home prices (INE, official median sale price per m² by region and municipality). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, ptHomePrices } from "./source";
+import { INFO, ptHarvest, ptHistoryKey, ptHomePrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -30,4 +30,10 @@ export default defineSource({
       property_type: str(p.property_type),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector stores INE's newest quarterly median for every place once a day (rows dated by the quarter's end).
+  harvest: () => ptHarvest(),
+  historyKey: (p) => ptHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type) }),
+  referenceDates: true,
+  nominalCounts: true,
+  noHistory: "Portugal: INE publishes one rolling-12-month median per quarter and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure, which carries the previous quarter and the year earlier.",
 });
