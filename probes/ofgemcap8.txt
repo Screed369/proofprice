@@ -1,0 +1,166 @@
+URL: https://app.everviz.com/inject/rtmtZo3eD/?v=41
+Fetched: 2026-10-23T05:41:43Z from GitHub Actions
+Status, type, bytes: 200 text/javascript 7768
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 05:41:43 GMT
+content-type: text/javascript
+content-length: 7768
+cf-ray: a4ee6a0bf853710a-LAX
+cf-cache-status: DYNAMIC
+etag: "b54161093b65114eaa8bc419a99aa3d9"
+last-modified: Wed, 26 Aug 2026 06:32:38 GMT
+server: cloudflare
+x-amz-id-2: F9FSFg0PNGOTcr6novAmcn71Jhwtesp/feV+wfuy9Ly498SveIdSxWfsMXI7sJhCwRvpNVq3+C9QHGWls0OvnXALtShv5+jk
+x-amz-request-id: ZS12C82C075B82Y3
+x-amz-version-id: M7u_r5IeBC1RSj3fMH9L4QMYUNZWRjQR
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=NPA5tGrPsB2HchgpysRMWYeiXFJ0tOgFJccWjCiKhO4EAHBLySgPsh7ryqjipmmodSbePsmeV16Jh1uhAJ%2FkPU7ZaDXgmO3TC%2FMM%2FVexM20Zf4JfVPv%2F%2F52ZuIEHGeS6QxE%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text, with very long lines (4145)
+=== FIRST 120000 BYTES
+(function () {
+  //Inject tables code v1.0
+
+  var highcharts = document.createElement('script');
+
+  var cdn = 'https://app.everviz.com/resources/highcharts/11.4.8/';
+  var loaded = 0;  
+  var encodedUrl = encodeURI('https:///show/rtmtZo3eD');
+  var chartCreated = false;
+  var scripts = [
+    "highcharts.js"
+  ];
+
+  var externalCSS = [
+    "https://app.everviz.com/static/fonts/radio-grotesk/style.css",
+    "https://app.everviz.com/static/fonts/gordita/style.css"
+  ];
+
+  var extraScripts = [
+    "https://app.everviz.com/resources/tables/1.0/js/table.js"
+  ];
+
+  var options = {"template":[],"data":{"csv":"Category;A;B;C\n0;4;6;3\n1;3;2;4\n2;5;4;3\n3;6;4;1\n4;2;4;6\n5;3;2;4","seriesMapping":[{"x":0,"y":1},{"x":0,"y":2},{"x":0,"y":3}],"itemDelimiter":"","matchingKey":null,"dateFormat":"","value":[["Region","Daily standing charge July to September 2026","Daily standing charge October to December 2026","Unit rate July to September 2026","Unit rate  October to December 2026"],["North Western England","47.61 pence per day","45.68 pence per day","25.34 pence per kWh","25.68 pence per kWh"],["North Eastern England","64.29 pence per day","61.58 pence per day","24.46 pence per kWh","24.68 pence per kWh"],["Yorkshire","64.38 pence per day","61.67 pence per day","24.54 pence per kWh","24.82 pence per kWh"],["Northern Scotland","57.55 pence per day","55.14 pence per day","25.62 pence per kWh","25.54 pence per kWh"],["Southern England","49.70 pence per day","47.81 pence per day","25.62 pence per kWh","25.66 pence per kWh"],["Southern Scotland","64.17 pence per day","61.41 pence per day","25.07 pence per kWh","25.31 pence per kWh"],["Merseyside and Northern Wales","70.76 pence per day","67.66 pence per day","26.82 pence per kWh","27.01 pence per kWh"],["London","44.78 pence per day","42.92 pence per day","25.55 pence per kWh","25.78 pence per kWh"],["South Eastern England","54.45 pence per day","52.32 pence per day","25.86 pence per kWh","26.06 pence per kWh"],["Eastern England","53.94 pence per day","51.84 pence per day","25.58 pence per kWh","25.80 pence per kWh"],["East Midlands","53.60 pence per day","51.45 pence per day","24.34 pence per kWh","24.58 pence per kWh"],["West Midlands","59.71 pence per day","57.23 pence per day","24.57 pence per kWh","24.82 pence per kWh"],["South Western England","57.89 pence per day","55.58 pence per day","25.59 pence per kWh","25.77 pence per kWh"],["Southern Wales","57.84 pence per day","55.41 pence per day","25.54 pence per kWh","25.74 pence per kWh"],["Great Britain average","57.19 pence per day","54.83 pence per day","25.32 pence per kWh","25.52 pence per kWh"]]},"options":{"title":{"text":"<h3>Electricity standing charges and unit rates paid by prepayment meter, single rate</h3>","align":"left","style":{"fontSize":"22px","fontWeight":"bold","color":"#000000","fontFamily":"Gordita Bold"},"enabled":true},"subtitle":{"text":"<p style=\"box-sizing: border-box; border-color: initial; border-image: initial; margin-bottom: 1.25rem; color: rgb(29, 43, 57); font-family: proxima-nova, arial, sans-serif; font-size: 18px; font-style: normal;\">People who pay the same price for the electricity they use at any time of day, called a ‘single rate’.</p><p style=\"box-sizing: border-box; border-color: initial; border-image: initial; margin-bottom: 1.25rem; color: rgb(29, 43, 57); font-family: proxima-nova, arial, sans-serif; font-size: 18px; font-style: normal;\"><span style=\"color: rgb(29, 43, 57); font-size: 18px; font-style: normal;\">Download data from the table in different formats by selecting the menu.</span></p>","align":"left","style":{"fontSize":"16px","color":"#000000","fontFamily":"Gordita"}},"caption":{"style":{"color":"#000000","fontSize":"12px","fontStyle":"italic"}},"legend":{"itemStyle":{"color":"#000000"}},"credits":{"style":{"color":"#000000"}},"table":{"pagination":{"text":{"style":{"color":"#000000"}},"enabled":false},"style":{"fontFamily":"Gordita","backgroundColor":"#ffffff","fontSize":"16px","color":"#000000"},"searchable":{"enabled":true,"style":{"borderColor":"#172b4c","color":"#000000"},"labelText":"Search in table","noDataText":"No data","placeholderText":"Search in table"},"extra":{"style":{"backgroundColor":"#ffffff"}},"cards":true},"exporting":{"style":{"color":"#000000"},"enabled":true,"sourceWidth":null,"sourceHeight":null},"rows":{"stripes":true,"style":{},"stripesColor":"#ffffff","textColor":"#000000"},"header":{"style":{"backgroundColor":"#ffffff","fontSize":"16px","fontFamily":"Gordita Bold","color":"#000000"}},"columns":[{"type":"data","visible":true},{"type":"data","visible":true},{"type":"data","visible":true},{"type":"data","visible":true},{"type":"data","visible":true}]}};
+  
+  function isScriptAlreadyIncluded(src){
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      if (scripts[i].hasAttribute('src')) {
+        const scriptTag = scripts[i].getAttribute('src') || '';
+        if ((scriptTag.indexOf(src) >= 0) || 
+            (scriptTag.indexOf('highcharts.src.js') > -1 && src === 'highcharts.js') ||
+            ((scriptTag.indexOf('stock/highstock.js') > -1) && src === 'modules/highstock.js')) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  function loadCSS() {
+    var cssLength = externalCSS.length;
+    for(var i=0; i < cssLength; i++) {
+      var css = document.createElement('link');
+      css.rel  = 'stylesheet';
+      css.type = "text/css";
+      css.href = externalCSS[i];
+      document.body.appendChild(css);
+    }
+  }
+
+  function createLayout() {
+    if(chartCreated) return;
+
+    if (!window['EvervizLayoutModule']) window['EvervizLayoutModule'] = {};
+    if (!window['EvervizLayoutModule'].projects) window['EvervizLayoutModule'].projects = [];
+    
+    chartCreated = true;
+    window.EvervizLayoutModule.hasLoaded = true;
+    var evervizTable = new EvervizTable('everviz-table-rtmtZo3eD', options);
+    window['EvervizLayoutModule'].projects.push(evervizTable);
+  }
+
+  function check(scripts, cb) {
+    if (loaded === scripts.length) {
+      if (cb) {
+        cb();
+      } else {
+        for (var i = 0; i < window.EvervizLayoutModule.ondone.length; i++) {
+          try {
+            window.EvervizLayoutModule.ondone[i]();
+          } catch(e) {
+            console.error(e);
+          }
+        }
+      }
+    }
+  }
+
+  function loadScript(s, scripts, cb) {
+    if (!s) next();
+    
+    function next() {
+      ++loaded;
+      if (loaded < scripts.length) {
+        loadScript(scripts[loaded], scripts, cb);
+      }
+      check(scripts, cb);
+    }
+
+    if (isScriptAlreadyIncluded(s)) {
+      return next();
+    }
+
+    var n = document.createElement('script');
+
+    n.onload = function () {
+      next();
+    };
+    if (s.indexOf('https') >= 0) {
+      n.src = s;
+    } else {
+      n.src = cdn + s;
+    }
+    document.body.appendChild(n);
+  }
+
+  function loadExtraScripts(){
+    if (extraScripts.length > 0) {
+      loaded = 0;
+      loadScript(extraScripts[0], extraScripts);
+    } else {
+      check(scripts);
+    }
+  }
+
+  function loadExtraScriptsAndMakeChart(){
+    loaded = 0;
+    loadCSS();
+    if (extraScripts.length > 0) {
+      loadScript(extraScripts[0], extraScripts, createLayout);
+    } else {
+      check(extraScripts, createLayout);
+    }
+  }
+
+  if (typeof window['EvervizLayoutModule'] === 'undefined') {
+    window.EvervizLayoutModule = {
+      ondone: [createLayout],
+      hasWrapped: false,
+      hasLoaded: false,
+      projects: []
+    };
+
+    loadScript(scripts[0], scripts, loadExtraScripts);
+    loadCSS();
+
+  } else {
+    if (!window.EvervizLayoutModule.hasLoaded) window.EvervizLayoutModule.ondone.push(loadExtraScriptsAndMakeChart);
+    else loadExtraScriptsAndMakeChart();
+  }
+
+}());
