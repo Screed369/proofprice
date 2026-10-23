@@ -71,6 +71,7 @@ export default async function AnswerPageView({ params }: Props) {
         ) : (
           <>Pump prices in {page.area.label} on {longDate(page.asOf)}, from the official feed.</>
         )}
+        {headline ? <> {headline.answer}</> : null}
       </p>
       <p className="muted">{page.basis}</p>
       {page.area.note && <p className="notice">{page.area.note}</p>}

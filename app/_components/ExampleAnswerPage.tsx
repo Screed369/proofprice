@@ -30,7 +30,7 @@ export function ExampleAnswerPage({ page, siblings }: { page: ExamplePage; sibli
       {f ? (
         <p className="lede">
           {page.categoryLabel} {inCountry(page.countryName)}, from {shortPublisher(s.publisher)}. {f.statistic ? "An official figure" : "Figures"} as of{" "}
-          {longDate(f.asOf)}.
+          {longDate(f.asOf)}. {f.answer}
         </p>
       ) : (
         <p className="lede">
