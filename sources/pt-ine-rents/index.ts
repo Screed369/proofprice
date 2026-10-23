@@ -1,6 +1,6 @@
 // Manifest: Portugal rents (INE, official median rent per m² of new lease contracts by region and municipality). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, ptRents } from "./source";
+import { INFO, ptHarvest, ptHistoryKey, ptRents } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -25,4 +25,10 @@ export default defineSource({
   method:
     "Portugal: the official median monthly rent per square metre of the new lease contracts of dwellings registered in the previous 12 months that Statistics Portugal (INE) publishes every quarter for the country, regions and every municipality (indicator 0014696). We pass on the published figure for the latest quarter, with the year earlier and the national median; it is a rent per m² per month for new leases only, not a rent per home, and not split by house or apartment.",
   handle: (p, ctx) => ptRents({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), bedrooms: num(p.bedrooms), baseUrl: ctx.baseUrl }),
+  // Stale-if-error copy: the collector stores INE's newest quarterly median for every place once a day (rows dated by the quarter's end).
+  harvest: () => ptHarvest(),
+  historyKey: (p) => ptHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), bedrooms: num(p.bedrooms) }),
+  referenceDates: true,
+  nominalCounts: true,
+  noHistory: "Portugal: INE publishes one rolling-12-month median rent per quarter and ProofPrice keeps no separate history of it yet. Ask pricepaid_rent_prices (/api/v1/rent) for the newest figure, which carries the previous quarter and the year earlier.",
 });

@@ -9,7 +9,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { fetchJson, InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import { PT_PLACES, PtLevel, PtPlace } from "./places";
 
 export const INDICATOR = "0014696";
@@ -396,4 +397,96 @@ export async function ptRents(
   const url = apiUrl(place);
   const reading = readPt(parseIne(await fetcher(url)), place);
   return ptAnswer(reading, { place: input.town ?? null, property_type: type, baseUrl: input.baseUrl, apiUrl: url, now });
+}
+
+// ---------- daily collector (stale-if-error copy) ----------
+// INE's server is slow and often times out from Vercel (PT rent for Porto answered 502 in the 23 Oct smoke test). Once a day the collector
+// (GitHub Actions) stores, in ONE request, the newest quarter's median rent for every place INE publishes. The row is dated by the last day
+// of that quarter and n is NO_COUNT (INE gives one figure and no record count), so the copy stands in for a live answer for 7 days after the
+// last successful collection.
+
+export const HARVEST_ITEM = "all:12m";
+/** INE's code for one quarter of the period dimension: S5A + year + quarter ("S5A20262" = 2nd Quarter 2026; seen in the 0014696 metadata). */
+export const periodCode = (year: number, quarter: number) => `S5A${year}${quarter}`;
+/** Candidate quarters, newest first: INE rejects the WHOLE call when a code does not exist yet, so the collector asks for one at a time. */
+export function periodCandidates(now: Date, count = 4): { year: number; quarter: number; code: string }[] {
+  let year = now.getUTCFullYear();
+  let quarter = Math.floor(now.getUTCMonth() / 3) + 1;
+  const out: { year: number; quarter: number; code: string }[] = [];
+  for (let i = 0; i < count; i++) {
+    out.push({ year, quarter, code: periodCode(year, quarter) });
+    quarter -= 1;
+    if (quarter === 0) { quarter = 4; year -= 1; }
+  }
+  return out;
+}
+/** Geography codes in groups INE accepts. Probed on 23 Oct 2026 with Dim1=S5A20262: 45 codes answer, 120 codes (and all 347) fail with "character string buffer too small". */
+export function chunkCodes(codes: string[], maxCodes = 40): string[][] {
+  const groups: string[][] = [];
+  for (let i = 0; i < codes.length; i += maxCodes) groups.push(codes.slice(i, i + maxCodes));
+  return groups;
+}
+export function harvestUrl(period: string, codes: string[]): string {
+  return `${API_BASE}?op=2&varcd=${INDICATOR}&Dim1=${period}&Dim2=${codes.join(",")}&lang=EN`;
+}
+
+/** The newest quarter in the reply and one row per known place that has a median for it. */
+export function harvestRows(reply: IneReply): HarvestResult {
+  if (!reply.rows.length) throw new SourceError("INE Portugal returned no rent medians to collect");
+  const newest = Math.max(...reply.rows.map(qIndex));
+  const known = new Set(PT_PLACES.map((p) => p.code));
+  const rows: DailyRow[] = [];
+  const seen = new Set<string>();
+  let head: PtRow | null = null;
+  for (const r of reply.rows) {
+    if (qIndex(r) !== newest || !known.has(r.geo) || seen.has(r.geo)) continue;
+    seen.add(r.geo);
+    head = r;
+    const v = roundTo(r.value, 2);
+    rows.push({ area: r.geo, item: HARVEST_ITEM, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+  }
+  if (!head || !seen.has("PT")) throw new SourceError("INE Portugal returned no national median for the newest quarter");
+  return {
+    date: iso(quarterEnd(head)),
+    currency: "EUR",
+    unit: "per m² per month",
+    rows,
+    note: `INE indicator ${INDICATOR}: median rent per m² per month of new leases registered in the 12 months to the end of ${endLabel(head)}, ${rows.length} places (country, regions, sub-regions, municipalities). Published medians, not counts of records (INE publishes no record count).`,
+  };
+}
+
+export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  const fetcher = o.fetcher ?? ((url: string) => fetchJson(url, {}, 60000));
+  const now = o.now ?? new Date();
+  // 1) newest quarter INE already publishes: a tiny national request per candidate, newest first
+  let found: { code: string } | null = null;
+  for (const c of periodCandidates(now)) {
+    try {
+      const probe = parseIne(await fetcher(harvestUrl(c.code, ["PT"])));
+      if (probe.rows.length) { found = c; break; }
+    } catch (e) {
+      if (!(e instanceof SourceError)) throw e; // a network failure is a failure; "code not valid" just means that quarter is not out
+    }
+  }
+  if (!found) throw new SourceError("INE Portugal has no rent medians for the last four quarters");
+  // 2) every place for that quarter, in groups INE accepts
+  const rows: PtRow[] = [];
+  let updated: string | null = null;
+  let latestLabel: string | null = null;
+  for (const group of chunkCodes(PT_PLACES.map((p) => p.code))) {
+    const reply = parseIne(await fetcher(harvestUrl(found.code, group)));
+    rows.push(...reply.rows);
+    updated = reply.updated ?? updated;
+    latestLabel = reply.latestLabel ?? latestLabel;
+  }
+  return harvestRows({ rows, latestLabel, updated });
+}
+
+/** Library key for a request: the place's INE code. Null when the request cannot be answered from the copy (a type/bedroom split, an unknown place, postcode only). */
+export function ptHistoryKey(p: { town?: string; postcode?: string; property_type?: string; bedrooms?: number }): { area: string; item: string; label: string } | null {
+  const type = (p.property_type ?? "any").trim().toLowerCase() || "any";
+  if (type !== "any" || (p.bedrooms !== undefined && p.bedrooms !== null)) return null;
+  if (!p.town) return p.postcode ? null : { area: "PT", item: HARVEST_ITEM, label: "Portugal" };
+  const found = findPlace(p.town);
+  return found.kind === "found" ? { area: found.place.code, item: HARVEST_ITEM, label: found.place.name } : null;
 }

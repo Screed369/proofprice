@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS, countriesFor, categoryById } from "../../lib/registry";
-import { INFO, apiUrl, coverageText, findPlace, parseIne, ptAnswer, ptRents, readPt, windowOf } from "./source";
+import { HARVEST_ITEM, INFO, apiUrl, coverageText, findPlace, chunkCodes, harvestRows, harvestUrl, parseIne, periodCandidates, ptAnswer, ptHarvest, ptHistoryKey, ptRents, readPt, windowOf } from "./source";
 import { PT_PLACES } from "./places";
 import * as F from "./fixtures";
 
@@ -121,4 +121,75 @@ test("ptAnswer: five-places fixture parses and a small municipality has a figure
   assert.equal(reading.value, 5.29);
   const a = ptAnswer(reading, { place: "Arcos de Valdevez", property_type: "any", now: NOW });
   assert.equal(a.price!.value, 5.29);
+});
+
+// ---------- stale-if-error copy (harvest) ----------
+
+test("pt-ine-rents: harvest asks INE in groups it accepts (all 347 codes in one request fail with a buffer error)", () => {
+  const groups = chunkCodes(PT_PLACES.map((p) => p.code));
+  assert.ok(groups.length > 1);
+  assert.equal(groups.flat().length, PT_PLACES.length);
+  for (const g of groups) assert.ok(g.length <= 40, "INE answered 45 codes and failed on 120");
+  assert.equal(harvestUrl("S5A20262", ["PT"]), "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0014696&Dim1=S5A20262&Dim2=PT&lang=EN");
+});
+
+test("pt-ine-rents: candidate quarters run newest first across a year end", () => {
+  assert.deepEqual(periodCandidates(new Date("2026-10-23T00:00:00Z"), 3).map((c) => c.code), ["S5A20264", "S5A20263", "S5A20262"]);
+  assert.deepEqual(periodCandidates(new Date("2026-01-05T00:00:00Z"), 3).map((c) => c.code), ["S5A20261", "S5A20254", "S5A20253"]);
+});
+
+test("pt-ine-rents: harvestRows keeps the newest quarter of the real INE reply, dated by the quarter's end, with no made-up count", () => {
+  const out = harvestRows(parseIne(F.FIVE_PLACES));
+  assert.equal(out.date, windowOf({ year: 2026, quarter: 2 }).to);
+  assert.equal(out.currency, "EUR");
+  assert.equal(out.unit, "per m² per month");
+  const pt = out.rows.find((r) => r.area === "PT");
+  assert.ok(pt);
+  assert.equal(pt.item, HARVEST_ITEM);
+  assert.ok(Number.isNaN(pt.n), "n must be NO_COUNT, never a made-up number");
+  assert.equal(pt.median, pt.low);
+  assert.equal(new Set(out.rows.map((r) => r.area)).size, out.rows.length, "one row per place");
+  assert.ok(out.rows.length >= 2);
+});
+
+test("pt-ine-rents: harvestRows refuses a reply with no national figure or no rows", () => {
+  const reply = parseIne(F.FIVE_PLACES);
+  assert.throws(() => harvestRows({ ...reply, rows: reply.rows.filter((r) => r.geo !== "PT") }), SourceError);
+  assert.throws(() => harvestRows({ ...reply, rows: [] }), SourceError);
+});
+
+const INE_BAD_CODE = [{ Sucesso: { Falso: [{ IndicadorCod: "0014696", Msg: "(EN) Code(s) in Dim1 not valid for the indicator.", Cod: "4" }] } }];
+
+test("pt-ine-rents: ptHarvest skips quarters INE does not hold yet, then reads every group for the newest one", async () => {
+  const urls: string[] = [];
+  const fetcher = async (url: string) => {
+    urls.push(url);
+    return url.includes("Dim1=S5A20262") ? F.FIVE_PLACES : INE_BAD_CODE;
+  };
+  const out = await ptHarvest({ fetcher, now: new Date("2026-10-23T00:00:00Z") });
+  assert.ok(urls[0].includes("Dim1=S5A20264") && urls[1].includes("Dim1=S5A20263") && urls[2].includes("Dim1=S5A20262"));
+  assert.equal(urls.length, 3 + chunkCodes(PT_PLACES.map((p) => p.code)).length);
+  assert.equal(out.date, windowOf({ year: 2026, quarter: 2 }).to);
+  assert.ok(out.rows.some((r) => r.area === "PT"));
+});
+
+test("pt-ine-rents: ptHarvest fails loudly when INE holds none of the last four quarters, and on a network error", async () => {
+  await assert.rejects(ptHarvest({ fetcher: async () => INE_BAD_CODE, now: new Date("2026-10-23T00:00:00Z") }), SourceError);
+  await assert.rejects(ptHarvest({ fetcher: async () => { throw new Error("socket hang up"); }, now: new Date("2026-10-23T00:00:00Z") }), /socket hang up/);
+});
+
+test("pt-ine-rents: historyKey maps the request to INE's place code; a type/bedroom split or postcode-only request has no copy", () => {
+  assert.deepEqual(ptHistoryKey({ town: "Porto" }), { area: place("Porto").code, item: HARVEST_ITEM, label: "Porto" });
+  assert.deepEqual(ptHistoryKey({}), { area: "PT", item: HARVEST_ITEM, label: "Portugal" });
+  assert.equal(ptHistoryKey({ town: "Porto", property_type: "apartment" }), null);
+  assert.equal(ptHistoryKey({ town: "Porto", bedrooms: 2 }), null);
+  assert.equal(ptHistoryKey({ postcode: "1000-001" }), null);
+  assert.equal(ptHistoryKey({ town: "Nowhereville" }), null);
+});
+
+test("pt-ine-rents: manifest collects daily with reference dates and no record count", () => {
+  const s = SOURCE_PLUGINS.find((x) => x.info.id === "pt-ine-rents")!;
+  assert.equal(typeof s.harvest, "function");
+  assert.equal(s.referenceDates, true);
+  assert.equal(s.nominalCounts, true);
 });
