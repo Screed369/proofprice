@@ -1,0 +1,2150 @@
+URL: https://www.donneesquebec.ca/recherche/dataset/d23b2e02-085d-43e5-9e6e-e1d558ebfdd5/resource/7c3b4d4b-e548-40d3-87e3-1a71d2c9f9f6/download/hebdo_20261012_20261018.json
+Fetched: 2026-10-23T23:13:29Z from GitHub Actions
+Status, type, bytes: 200 application/json 16854444
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 23:13:29 GMT
+content-type: application/json
+content-length: 16854444
+server: nginx
+vary: Accept-Encoding
+content-disposition: inline; filename=hebdo_20261012_20261018.json
+last-modified: Mon, 19 Oct 2026 06:02:33 GMT
+cache-control: no-cache, public, max-age=0, must-revalidate
+etag: "1792389753.166333-16854444-1153635798"
+vary: Cookie
+strict-transport-security: max-age=31536000; includeSubdomains;
+access-control-allow-origin: *
+
+=== FILE TYPE: Unicode text, UTF-8 text, with very long lines (319)
+=== FIRST 60000 BYTES
+{
+  "uri": "https://www.donneesquebec.ca/recherche/dataset/d23b2e02-085d-43e5-9e6e-e1d558ebfdd5/resource/7c3b4d4b-e548-40d3-87e3-1a71d2c9f9f6/download/hebdo_20261012_20261018.json",
+  "version": "1.1",
+  "extensions": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/v1.1.5/extension.json"
+  ],
+  "publishedDate": "2026-10-19T01:17:50-04:00",
+  "publisher": {
+    "name": "Secrétariat du Conseil du trésor"
+  },
+  "license": "https://www.donneesquebec.ca/fr/licence/#cc-by",
+  "publicationPolicy": "https://www.donneesquebec.ca/recherche/dataset/systeme-electronique-dappel-doffres-seao#fiche_descriptive",
+  "releases": [
+    {
+      "ocid": "ocds-ec9k95-1817783",
+      "id": "20261015192242",
+      "date": "2026-10-15T15:22:05-04:00",
+      "tag": [
+        "contractTermination"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Centre de services scolaire Marguerite-Bourgeoys",
+          "id": "OP-47576",
+          "address": {
+            "streetAddress": "1100, bd de la Côte-Vertu,",
+            "locality": "Montréal",
+            "region": "QC",
+            "postalCode": "H4L4V1",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "CONSTELLIO INC.",
+          "id": "FO-1176885268",
+          "address": {
+            "streetAddress": "6937 1re avenue,",
+            "locality": "Montréal",
+            "region": "QC",
+            "postalCode": "H1Y3B3",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1176885268"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Centre de services scolaire Marguerite-Bourgeoys",
+        "id": "OP-47576"
+      },
+      "tender": {
+        "id": "23-181",
+        "title": "Système de gestion documentaire Constellio",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Centre de services scolaire Marguerite-Bourgeoys",
+          "id": "OP-47576"
+        },
+        "items": [
+          {
+            "id": "G8",
+            "description": "G8 - Matériel informatique et logiciel",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "43230000",
+              "description": "Logiciel"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article14 - Contrat dont le montant est inférieur au seuil d’appel d’offres public.",
+        "mainProcurementCategory": "goods",
+        "additionalProcurementCategories": [
+          "Approvisionnement (biens)"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-15T15:22:05-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1176885268",
+            "name": "CONSTELLIO INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=e68b9604-263f-456d-a293-0a5cc653eff6"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20171539",
+          "status": "active",
+          "date": "2024-07-01T00:00:00-04:00",
+          "value": {
+            "amount": 90000.00,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "CONSTELLIO INC.",
+              "id": "FO-1176885268"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20171539",
+          "awardID": "20171539",
+          "status": "terminated",
+          "period": {
+            "endDate": "2026-06-30T00:00:00-04:00"
+          },
+          "value": {
+            "amount": 90000.00,
+            "currency": "CAD"
+          },
+          "dateSigned": "2024-07-01T00:00:00-04:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20073052",
+      "id": "20261013194201",
+      "date": "2026-10-13T15:42:01-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Municipalité de Saint-Nérée-de-Bellechasse",
+          "id": "OP-36456",
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "1"
+          }
+        },
+        {
+          "name": "Entreprise Godbout et fils",
+          "id": "FO-3362569470",
+          "address": {
+            "streetAddress": "1102, 8e Rang,",
+            "locality": "Saint-Nérée",
+            "region": "QC",
+            "postalCode": "G0R3V0",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "3362569470"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Municipalité de Saint-Nérée-de-Bellechasse",
+        "id": "OP-36456"
+      },
+      "tender": {
+        "id": "2025-30",
+        "title": "Débroussaillage des bords de chemins",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Municipalité de Saint-Nérée-de-Bellechasse",
+          "id": "OP-36456"
+        },
+        "items": [
+          {
+            "id": "S14",
+            "description": "S14 - Services publics",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "83000000",
+              "description": "Services publics et services liés au secteur public"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services de nature technique"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T15:42:01-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-3362569470",
+            "name": "Entreprise Godbout et fils"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=f6bdcc72-023e-4657-8a89-efd2e5652c91"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20070068",
+          "status": "active",
+          "date": "2025-02-03T00:00:00-05:00",
+          "value": {
+            "amount": 34487.16,
+            "currency": "CAD",
+            "totalAmount": 30000
+          },
+          "suppliers": [
+            {
+              "name": "Entreprise Godbout et fils",
+              "id": "FO-3362569470"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20070068",
+          "awardID": "20070068",
+          "status": "active",
+          "value": {
+            "amount": 34487.16,
+            "currency": "CAD"
+          },
+          "dateSigned": "2025-02-03T00:00:00-05:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20124182",
+      "id": "20261016191733",
+      "date": "2026-10-16T15:05:53-04:00",
+      "tag": [
+        "contractTermination"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Cegep du Vieux-Montréal",
+          "id": "OP-13561",
+          "address": {
+            "streetAddress": "255 Ontario Est,",
+            "locality": "Montréal",
+            "region": "QC",
+            "postalCode": "H2X1X6",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "LUCILLE DOIRON CONSULTANTE",
+          "id": "FO-2281305153",
+          "address": {
+            "streetAddress": "105-10850 RUE BASILE-ROUTHIER,",
+            "locality": "Montréal",
+            "region": "QC",
+            "postalCode": "H2C0A9",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "2281305153"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Cegep du Vieux-Montréal",
+        "id": "OP-13561"
+      },
+      "tender": {
+        "id": "BON252600704",
+        "title": "Contrat pour services ",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Cegep du Vieux-Montréal",
+          "id": "OP-13561"
+        },
+        "items": [
+          {
+            "id": "S16",
+            "description": "S16 - Services pédagogiques et formation",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "86000000",
+              "description": "Enseignement et formation"
+            },
+            "additionalClassifications": [
+              {
+                "scheme": "UNSPSC",
+                "id": "86140000",
+                "description": "Services d’éducation"
+              }
+            ]
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article52.2 - Contrat conclu à moins de 25000$, mais dont le montant total payé est égal ou supérieur à 25000$.",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services professionnels"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-16T15:05:53-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-2281305153",
+            "name": "LUCILLE DOIRON CONSULTANTE"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=de42f126-3203-485b-98d8-c3ccf6ba8c2c"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20120951",
+          "status": "active",
+          "date": "2025-10-27T00:00:00-04:00",
+          "value": {
+            "amount": 17850.00,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "LUCILLE DOIRON CONSULTANTE",
+              "id": "FO-2281305153"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20120951",
+          "awardID": "20120951",
+          "status": "terminated",
+          "period": {
+            "endDate": "2026-10-16T00:00:00-04:00"
+          },
+          "value": {
+            "amount": 87084.61,
+            "currency": "CAD"
+          },
+          "dateSigned": "2025-10-27T00:00:00-04:00",
+          "amendments": [
+            {
+              "id": "20023938",
+              "rationale": "Prolongation",
+              "date": "2026-01-30T00:00:00-05:00"
+            },
+            {
+              "id": "20023939",
+              "rationale": "AVENANT 2",
+              "date": "2026-03-04T00:00:00-05:00"
+            }
+          ]
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20127500",
+      "id": "20261013203210",
+      "date": "2026-10-13T16:32:09-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Ville de Saint-Pascal",
+          "id": "OP-36634",
+          "address": {
+            "streetAddress": "465, rue Taché,",
+            "locality": "Saint-Pascal",
+            "region": "QC",
+            "postalCode": "G0L3Y0",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "1"
+          }
+        },
+        {
+          "name": "CIMCO RÉFRIGÉRATION",
+          "id": "FO-1144694263",
+          "address": {
+            "streetAddress": "5130 rue Rideau, suite 150,",
+            "locality": "Québec",
+            "region": "QC",
+            "postalCode": "G2E5S4",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1144694263"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Ville de Saint-Pascal",
+        "id": "OP-36634"
+      },
+      "tender": {
+        "id": "2026-01-31",
+        "title": "Contrat pour le remplacement des soupapes de sûreté sur le système de réfrigération du Centre sportif",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Ville de Saint-Pascal",
+          "id": "OP-36634"
+        },
+        "items": [
+          {
+            "id": "S9",
+            "description": "S9 - Entretien, réparation, modification, réfection et installation de biens et d’équipement",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "73152112",
+              "description": "Essai, maintenance ou réparation de soupapes ou de pièces de soupape"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services de nature technique"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T16:32:09-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1144694263",
+            "name": "CIMCO RÉFRIGÉRATION"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=565c7fa1-a3f6-4454-8b11-43119fd33d69"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20123571",
+          "status": "active",
+          "date": "2026-01-12T00:00:00-05:00",
+          "value": {
+            "amount": 25086.21,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "CIMCO RÉFRIGÉRATION",
+              "id": "FO-1144694263"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20123571",
+          "awardID": "20123571",
+          "status": "active",
+          "value": {
+            "amount": 25086.21,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-01-12T00:00:00-05:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20130095",
+      "id": "20261013204638",
+      "date": "2026-10-13T16:46:38-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Ville de Saint-Pascal",
+          "id": "OP-36634",
+          "address": {
+            "streetAddress": "465, rue Taché,",
+            "locality": "Saint-Pascal",
+            "region": "QC",
+            "postalCode": "G0L3Y0",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "1"
+          }
+        },
+        {
+          "name": "BFL CANADA SERVICES DE RISQUES ET ASSURANCES INC.",
+          "id": "FO-1142254748",
+          "address": {
+            "streetAddress": "2001 Av. McGill College,2200",
+            "locality": "Montréal",
+            "region": "QC",
+            "postalCode": "H3A1G1",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1142254748"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Ville de Saint-Pascal",
+        "id": "OP-36634"
+      },
+      "tender": {
+        "id": "2026-01-27",
+        "title": "Couverture d'assurance automobile et d'assurances en responsabilité civile 2026",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Ville de Saint-Pascal",
+          "id": "OP-36634"
+        },
+        "items": [
+          {
+            "id": "S11",
+            "description": "S11 - Services financiers et autres services connexes",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "84000000",
+              "description": "Finances et assurances"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services professionnels"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T16:46:38-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1142254748",
+            "name": "BFL CANADA SERVICES DE RISQUES ET ASSURANCES INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=ca35331d-5a7d-41ba-877d-0c38950ad651"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20125656",
+          "status": "active",
+          "date": "2026-01-12T00:00:00-05:00",
+          "value": {
+            "amount": 67042.51,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "BFL CANADA SERVICES DE RISQUES ET ASSURANCES INC.",
+              "id": "FO-1142254748"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20125656",
+          "awardID": "20125656",
+          "status": "active",
+          "value": {
+            "amount": 67042.51,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-01-12T00:00:00-05:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20130117",
+      "id": "20261013205009",
+      "date": "2026-10-13T16:50:09-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Ville de Saint-Pascal",
+          "id": "OP-36634",
+          "address": {
+            "streetAddress": "465, rue Taché,",
+            "locality": "Saint-Pascal",
+            "region": "QC",
+            "postalCode": "G0L3Y0",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "1"
+          }
+        },
+        {
+          "name": "Société d'assurance Beneva inc.",
+          "id": "FO-1143038215",
+          "address": {
+            "streetAddress": "\t625 rue Jacques-Parizeau ,",
+            "locality": "Québec",
+            "region": "QC",
+            "postalCode": "G1R2G5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1143038215"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Ville de Saint-Pascal",
+        "id": "OP-36634"
+      },
+      "tender": {
+        "id": "2026-01-28",
+        "title": "Assurances générales (biens) 2026",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Ville de Saint-Pascal",
+          "id": "OP-36634"
+        },
+        "items": [
+          {
+            "id": "S11",
+            "description": "S11 - Services financiers et autres services connexes",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "84000000",
+              "description": "Finances et assurances"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services professionnels"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T16:50:09-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1143038215",
+            "name": "Société d'assurance Beneva inc."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=889fe762-af7e-4d0f-a1ef-3025412b6fd9"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20125674",
+          "status": "active",
+          "date": "2026-01-12T00:00:00-05:00",
+          "value": {
+            "amount": 95560.30,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "Société d'assurance Beneva inc.",
+              "id": "FO-1143038215"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20125674",
+          "awardID": "20125674",
+          "status": "active",
+          "value": {
+            "amount": 95560.30,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-01-12T00:00:00-05:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20134165",
+      "id": "20261014182546",
+      "date": "2026-10-14T14:25:46-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Santé Québec Capitale-Nationale – Universitaire",
+          "id": "OP-13640",
+          "address": {
+            "streetAddress": "2915, avenue du Bourg-Royal,",
+            "locality": "Québec",
+            "region": "QC",
+            "postalCode": "G1C3S2",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "GFL ENVIRONMENTAL INC.",
+          "id": "FO-1175311910",
+          "address": {
+            "streetAddress": "4 Chemin du Tremblay,",
+            "locality": "Boucherville",
+            "region": "QC",
+            "postalCode": "J4B6Z5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1175311910"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Santé Québec Capitale-Nationale – Universitaire",
+        "id": "OP-13640"
+      },
+      "tender": {
+        "id": "26-7731",
+        "title": "Cueillette recyclage IUSMQ",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Santé Québec Capitale-Nationale – Universitaire",
+          "id": "OP-13640"
+        },
+        "items": [
+          {
+            "id": "S14",
+            "description": "S14 - Services publics",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "76121505",
+              "description": "Collecte et élimination des déchets inorganiques"
+            },
+            "additionalClassifications": [
+              {
+                "scheme": "UNSPSC",
+                "id": "76122300",
+                "description": "Recyclage"
+              }
+            ]
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article14 - Contrat dont le montant est inférieur au seuil d’appel d’offres public.",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services de nature technique"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-14T14:25:46-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1175311910",
+            "name": "GFL ENVIRONMENTAL INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=521bc2d5-d4ef-4b69-9202-f6fc03bd79f5"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20130524",
+          "status": "active",
+          "date": "2026-10-01T00:00:00-04:00",
+          "value": {
+            "amount": 61000.00,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "GFL ENVIRONMENTAL INC.",
+              "id": "FO-1175311910"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20130524",
+          "awardID": "20130524",
+          "status": "active",
+          "value": {
+            "amount": 61000.00,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-10-01T00:00:00-04:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20134492",
+      "id": "20261013173815",
+      "date": "2026-10-13T13:38:14-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Santé Québec - Centre universitaire de santé McGill",
+          "id": "OP-36261",
+          "address": {
+            "streetAddress": "5100 boul. De Maisonneuve Ouest,3e étage",
+            "locality": "Montréal",
+            "region": "QC",
+            "postalCode": "H4A3T2",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "BECTON DICKINSON CANADA INC.",
+          "id": "FO-1173028409",
+          "address": {
+            "streetAddress": "2100 Derry Road West,Suite 100",
+            "region": "ON",
+            "postalCode": "L5N0B3",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1173028409"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Santé Québec - Centre universitaire de santé McGill",
+        "id": "OP-36261"
+      },
+      "tender": {
+        "id": "CUSM26-084",
+        "title": "Contrat de service pour l'équipements BACTEC,PHOENIX et EPICENTER de BD",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Santé Québec - Centre universitaire de santé McGill",
+          "id": "OP-36261"
+        },
+        "items": [
+          {
+            "id": "S9",
+            "description": "S9 - Entretien, réparation, modification, réfection et installation de biens et d’équipement",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "85161500",
+              "description": "Réparation de matériel médical ou chirurgical"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article13 - Paragraphe 2°: Un seul contractant est possible en raison d’une garantie, d’un droit de propriété, d’un droit exclusif, etc.;",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services de nature technique"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T13:38:14-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1173028409",
+            "name": "BECTON DICKINSON CANADA INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=74cdb245-9adc-499f-ad40-81edb9e52f96"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20131775",
+          "status": "active",
+          "date": "2026-04-01T00:00:00-04:00",
+          "value": {
+            "amount": 206142.00,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "BECTON DICKINSON CANADA INC.",
+              "id": "FO-1173028409"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20131775",
+          "awardID": "20131775",
+          "status": "active",
+          "value": {
+            "amount": 206142.00,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-04-01T00:00:00-04:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20136591",
+      "id": "20261013125707",
+      "date": "2026-10-13T08:52:04-04:00",
+      "tag": [
+        "contractTermination"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Ville de Montréal-Est",
+          "id": "OP-47902",
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "1"
+          }
+        },
+        {
+          "name": "Amrize Canada Inc.",
+          "id": "FO-1163922660",
+          "address": {
+            "streetAddress": "3055 Boul. St-Martin Ouest, Suite 400,",
+            "locality": "Laval",
+            "region": "QC",
+            "postalCode": "H7T0J3",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1163922660"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Ville de Montréal-Est",
+        "id": "OP-47902"
+      },
+      "tender": {
+        "id": "TP 2022-2023",
+        "title": "Protocole d'entente élimination des neiges usées 2022-2023",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Ville de Montréal-Est",
+          "id": "OP-47902"
+        },
+        "items": [
+          {
+            "id": "S14",
+            "description": "S14 - Services publics",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "72103301",
+              "description": "Déneigement d'infrastructures routières"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services de nature technique"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T08:52:04-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1163922660",
+            "name": "Amrize Canada Inc."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=8372bb89-d260-4373-8d87-033167b0ffa0"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20170691",
+          "status": "active",
+          "date": "2022-10-19T00:00:00-04:00",
+          "value": {
+            "amount": 209829.36,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "Amrize Canada Inc.",
+              "id": "FO-1163922660"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20170691",
+          "awardID": "20170691",
+          "status": "terminated",
+          "period": {
+            "endDate": "2023-04-04T00:00:00-04:00"
+          },
+          "value": {
+            "amount": 208247.17,
+            "currency": "CAD"
+          },
+          "dateSigned": "2022-10-19T00:00:00-04:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20146846",
+      "id": "20261013143024",
+      "date": "2026-10-13T10:20:27-04:00",
+      "tag": [
+        "contractTermination"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Centre de services scolaire de la Rivière-du-Nord",
+          "id": "OP-81367",
+          "address": {
+            "streetAddress": "795 rue Melançon,",
+            "locality": "Saint-Jérôme",
+            "region": "QC",
+            "postalCode": "J7Z4L1",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "SUNBELT RENTALS ®",
+          "id": "FO-1173417776",
+          "address": {
+            "streetAddress": "195 Bd Bellerose O,",
+            "locality": "Laval",
+            "region": "QC",
+            "postalCode": "H7K3H8",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1173417776"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Centre de services scolaire de la Rivière-du-Nord",
+        "id": "OP-81367"
+      },
+      "tender": {
+        "id": "DA-421",
+        "title": "Location d'une génératrice et d'appareils de chauffage temporaire à Val-des-Monts",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Centre de services scolaire de la Rivière-du-Nord",
+          "id": "OP-81367"
+        },
+        "items": [
+          {
+            "id": "G2",
+            "description": "G2 - Matériel de climatisation et de réfrigération",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "40000000",
+              "description": "Équipement de chauffage, de ventilation, de circulation d’air et de distribution de fluides ou de gaz"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article52.2 - Contrat conclu à moins de 25000$, mais dont le montant total payé est égal ou supérieur à 25000$.",
+        "mainProcurementCategory": "goods",
+        "additionalProcurementCategories": [
+          "Approvisionnement (biens)"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T10:20:27-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1173417776",
+            "name": "SUNBELT RENTALS ®"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=2444ff80-f961-40c4-9119-885d28d1a403"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20170764",
+          "status": "active",
+          "date": "2025-11-17T00:00:00-05:00",
+          "value": {
+            "amount": 21044.70,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "SUNBELT RENTALS ®",
+              "id": "FO-1173417776"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20170764",
+          "awardID": "20170764",
+          "status": "terminated",
+          "period": {
+            "endDate": "2026-06-02T00:00:00-04:00"
+          },
+          "value": {
+            "amount": 48007.90,
+            "currency": "CAD"
+          },
+          "dateSigned": "2025-11-17T00:00:00-05:00",
+          "amendments": [
+            {
+              "id": "20023774",
+              "rationale": "ODC01: Ajout de frais supplémentaires pour l'entretien périodique de la génératrice et appels de service - Ajout de frais supplémentaires pour l'entretien périodique de la génératrice et appels de service - Ajout de 3 périodes de location de 4 semaines supplémentaires pour les aérothermes",
+              "date": "2026-01-05T00:00:00-05:00"
+            }
+          ]
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20148570",
+      "id": "20261013144521",
+      "date": "2026-10-13T10:45:21-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Centre d'acquisitions gouvernementales",
+          "id": "OP-2189",
+          "address": {
+            "streetAddress": "1400 rue Marie-Victorin ,Bureau 204",
+            "locality": "Saint-Bruno-de-Montarville",
+            "region": "QC",
+            "postalCode": "J3V6B9",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "AngioDynamics Canada Inc.",
+          "id": "FO-20284777",
+          "address": {
+            "streetAddress": "2275 Upper Middle East Road #101,",
+            "region": "ON",
+            "postalCode": "L6H0C3",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ]
+        },
+        {
+          "name": "CORDIS MEDICAL CANADA",
+          "id": "FO-20284780",
+          "address": {
+            "streetAddress": "401 West Georgia St., Suite 700,",
+            "region": "BC",
+            "postalCode": "V6B5A1",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ]
+        },
+        {
+          "name": "Inari Medical, Inc.",
+          "id": "FO-20020833",
+          "address": {
+            "streetAddress": "6001 Oak Canyon, Suite 100,",
+            "postalCode": "92630",
+            "countryName": "USA"
+          },
+          "roles": [
+            "supplier"
+          ]
+        },
+        {
+          "name": "Penumbra Inc",
+          "id": "FO-20284785",
+          "address": {
+            "streetAddress": "6001 Oak Canyon, Suite 100,",
+            "postalCode": "94502",
+            "countryName": "USA"
+          },
+          "roles": [
+            "supplier"
+          ]
+        }
+      ],
+      "buyer": {
+        "name": "Centre d'acquisitions gouvernementales",
+        "id": "OP-2189"
+      },
+      "tender": {
+        "id": "2026-8075-80-80",
+        "title": "FOURNITURES D'ANGIO-RADIOLOGIE",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Centre d'acquisitions gouvernementales",
+          "id": "OP-2189"
+        },
+        "items": [
+          {
+            "id": "G21",
+            "description": "G21 - Fourniture et équipement médicaux et produits pharmaceutiques",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "42203400",
+              "description": "Matériel de laboratoire pour imagerie vasculaire, cardiologie d’intervention et cathétérisme cardiaque"
+            },
+            "additionalClassifications": [
+              {
+                "scheme": "UNSPSC",
+                "id": "42142513",
+                "description": "Aiguilles pour radiologie interventionnelle"
+              },
+              {
+                "scheme": "UNSPSC",
+                "id": "42203404",
+                "description": "Broches-guides, serre-nœuds ou accessoires pour imagerie vasculaire"
+              },
+              {
+                "scheme": "UNSPSC",
+                "id": "42203433",
+                "description": "Cathéters d'angiographie"
+              },
+              {
+                "scheme": "UNSPSC",
+                "id": "42221503",
+                "description": "Cathéters veineux centraux"
+              },
+              {
+                "scheme": "UNSPSC",
+                "id": "42231601",
+                "description": "Sondes de gastrostomie pour usage général"
+              },
+              {
+                "scheme": "UNSPSC",
+                "id": "42231608",
+                "description": "Ensembles de cathéter et d'aiguille de jéjunostomie"
+              },
+              {
+                "scheme": "UNSPSC",
+                "id": "42295453",
+                "description": "Drains, trousse ou accessoires chirurgicaux"
+              }
+            ]
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article13 - Paragraphe 4°: Possibilité de démontrer qu’un appel d’offres public ne servirait pas l’intérêt public;",
+        "mainProcurementCategory": "goods",
+        "additionalProcurementCategories": [
+          "Approvisionnement (biens)"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T10:45:21-04:00"
+        },
+        "numberOfTenderers": 4,
+        "tenderers": [
+          {
+            "id": "FO-20170761",
+            "name": "AngioDynamics Canada Inc."
+          },
+          {
+            "id": "FO-20170765",
+            "name": "CORDIS MEDICAL CANADA"
+          },
+          {
+            "id": "FO-20020833",
+            "name": "Inari Medical, Inc."
+          },
+          {
+            "id": "FO-20170770",
+            "name": "Penumbra Inc"
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=e7a215df-4592-4496-866e-b0e59940ca02"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20170761",
+          "status": "active",
+          "date": "2026-09-14T00:00:00-04:00",
+          "value": {
+            "amount": 1466310.00,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "AngioDynamics Canada Inc.",
+              "id": "FO-20284777"
+            }
+          ]
+        },
+        {
+          "id": "20170765",
+          "status": "active",
+          "date": "2026-09-14T00:00:00-04:00",
+          "value": {
+            "amount": 2460641.00,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "CORDIS MEDICAL CANADA",
+              "id": "FO-20284780"
+            }
+          ]
+        },
+        {
+          "id": "20170768",
+          "status": "active",
+          "date": "2026-09-14T00:00:00-04:00",
+          "value": {
+            "amount": 4328000.00,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "Inari Medical, Inc.",
+              "id": "FO-20020833"
+            }
+          ]
+        },
+        {
+          "id": "20170770",
+          "status": "active",
+          "date": "2026-09-14T00:00:00-04:00",
+          "value": {
+            "amount": 3046560.00,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "Penumbra Inc",
+              "id": "FO-20284785"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20170761",
+          "awardID": "20170761",
+          "status": "active",
+          "value": {
+            "amount": 1466310.00,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-09-14T00:00:00-04:00"
+        },
+        {
+          "id": "20170765",
+          "awardID": "20170765",
+          "status": "active",
+          "value": {
+            "amount": 2460641.00,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-09-14T00:00:00-04:00"
+        },
+        {
+          "id": "20170768",
+          "awardID": "20170768",
+          "status": "active",
+          "value": {
+            "amount": 4328000.00,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-09-14T00:00:00-04:00"
+        },
+        {
+          "id": "20170770",
+          "awardID": "20170770",
+          "status": "active",
+          "value": {
+            "amount": 3046560.00,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-09-14T00:00:00-04:00"
+        }
+      ],
+      "language": "fr",
+      "relatedProcesses": [
+        {
+          "id": "20140221",
+          "relationship": [
+            "prior"
+          ],
+          "title": "Fournitures d'Angio-radiologie _ Inari Medical Inc.",
+          "scheme": "preProcurement",
+          "identifier": "20140221-INT2026-8075-80-80_14752"
+        }
+      ]
+    },
+    {
+      "ocid": "ocds-ec9k95-20150793",
+      "id": "20261013150114",
+      "date": "2026-10-13T11:01:14-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Ville de Mirabel",
+          "id": "OP-25264",
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "1"
+          }
+        },
+        {
+          "name": "CLIMAT-CONTROL SB INC.",
+          "id": "FO-1143598978",
+          "address": {
+            "streetAddress": "1061,Marie-Victorin",
+            "locality": "Saint-Bruno",
+            "region": "QC",
+            "postalCode": "J3V0M7",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1143598978"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Ville de Mirabel",
+        "id": "OP-25264"
+      },
+      "tender": {
+        "id": "G7 115 N7835 commune",
+        "title": "Succion commune",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Ville de Mirabel",
+          "id": "OP-25264"
+        },
+        "items": [
+          {
+            "id": "S9",
+            "description": "S9 - Entretien, réparation, modification, réfection et installation de biens et d’équipement",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "72101507",
+              "description": "Entretien des bâtiments"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article9 - Contrat dont le montant est supérieur à 25 000$, mais inférieur au seuil d’appel d’offres public, en vertu de règles particulières prévues au RGC",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services de nature technique"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T11:01:14-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1143598978",
+            "name": "CLIMAT-CONTROL SB INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=9ff784b9-fc89-4a5b-afed-9ab6fc2a1e86"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20170803",
+          "status": "active",
+          "date": "2026-06-23T00:00:00-04:00",
+          "value": {
+            "amount": 56912.63,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "CLIMAT-CONTROL SB INC.",
+              "id": "FO-1143598978"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20170803",
+          "awardID": "20170803",
+          "status": "active",
+          "value": {
+            "amount": 56912.63,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-06-23T00:00:00-04:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20152529",
+      "id": "20261013144236",
+      "date": "2026-10-13T10:42:36-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Ville de Mirabel",
+          "id": "OP-25264",
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "1"
+          }
+        },
+        {
+          "name": "9152-4629 QUÉBEC INC.",
+          "id": "FO-1162801865",
+          "address": {
+            "streetAddress": "275, rue Benjamin-Hudon,",
+            "locality": "Montréal",
+            "region": "QC",
+            "postalCode": "H4N1J1",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "tenderer"
+          ],
+          "details": {
+            "neq": "1162801865"
+          }
+        },
+        {
+          "name": "SOLMATECH INC.",
+          "id": "FO-1145544798",
+          "address": {
+            "streetAddress": "97, rue de la Couronne,",
+            "locality": "Repentigny",
+            "region": "QC",
+            "postalCode": "J5Z0B3",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "tenderer"
+          ],
+          "details": {
+            "neq": "1145544798"
+          }
+        },
+        {
+          "name": "GROUPE ABS INC.",
+          "id": "FO-1180554967",
+          "address": {
+            "streetAddress": "110, 20, rue Émilien-Marcoux,",
+            "locality": "Blainville",
+            "region": "QC",
+            "postalCode": "J7C0B5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1180554967"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Ville de Mirabel",
+        "id": "OP-25264"
+      },
+      "tender": {
+        "id": "X3 511 102 N11153 - Lab",
+        "title": "Études géotechnique et de caractérisation environnementale des sols - Nouvelle station d'eau potable, St-Hermas",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Ville de Mirabel",
+          "id": "OP-25264"
+        },
+        "items": [
+          {
+            "id": "S3",
+            "description": "S3 - Services d’architecture et d’ingénierie",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "81100000",
+              "description": "Services d’ingénierie"
+            }
+          }
+        ],
+        "procurementMethod": "limited",
+        "procurementMethodDetails": "Contrat à la suite d'un appel d’offres sur invitation",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services professionnels"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T10:42:36-04:00"
+        },
+        "numberOfTenderers": 3,
+        "tenderers": [
+          {
+            "id": "FO-1162801865",
+            "name": "9152-4629 QUÉBEC INC."
+          },
+          {
+            "id": "FO-1145544798",
+            "name": "SOLMATECH INC."
+          },
+          {
+            "id": "FO-1180554967",
+            "name": "GROUPE ABS INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=2c318a2c-501d-49f5-9746-bf8988c06d52"
+          }
+        ]
+      },
+      "bids": [
+        {
+          "id": "FO-1162801865",
+          "value": 90971.67,
+          "valueUnit": "1"
+        },
+        {
+          "id": "FO-1145544798",
+          "value": 73039.08,
+          "valueUnit": "1"
+        },
+        {
+          "id": "FO-1180554967",
+          "value": 67683.48,
+          "valueUnit": "1"
+        }
+      ],
+      "awards": [
+        {
+          "id": "20170781",
+          "status": "active",
+          "date": "2026-06-18T00:00:00-04:00",
+          "value": {
+            "amount": 67683.48,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "GROUPE ABS INC.",
+              "id": "FO-1180554967"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20170781",
+          "awardID": "20170781",
+          "status": "active",
+          "value": {
+            "amount": 67683.48,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-06-18T00:00:00-04:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20154875",
+      "id": "20261015193941",
+      "date": "2026-10-15T15:39:41-04:00",
+      "tag": [
+        "tender"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Centre d'acquisitions gouvernementales",
+          "id": "OP-2189",
+          "address": {
+            "streetAddress": "1141, Route de l’Église,2e étage",
+            "locality": "Québec",
+            "region": "QC",
+            "postalCode": "G1V3W5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Centre d'acquisitions gouvernementales",
+        "id": "OP-2189"
+      },
+      "tender": {
+        "id": "2026-8225-20-01",
+        "title": "Agent de contraste",
+        "status": "active",
+        "procuringEntity": {
+          "name": "Centre d'acquisitions gouvernementales",
+          "id": "OP-2189"
+        },
+        "items": [
+          {
+            "id": "G21",
+            "description": "G21 - Fourniture et équipement médicaux et produits pharmaceutiques",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "51441500",
+              "description": "Produits de contraste pour imagerie médicale"
+            },
+            "additionalClassifications": [
+              {
+                "scheme": "UNSPSC",
+                "id": "42000000",
+                "description": "Matériel médical, fournitures et accessoires"
+              },
+              {
+                "scheme": "UNSPSC",
+                "id": "42200000",
+                "description": "Matériel d’imagerie diagnostique et de médecine nucléaire"
+              },
+              {
+                "scheme": "UNSPSC",
+                "id": "42201862",
+                "description": "Accessoires d'injecteurs de produits de contraste pour l'imagerie médicale"
+              }
+            ]
+          }
+        ],
+        "procurementMethod": "open",
+        "procurementMethodDetails": "Avis d’appel d’offres",
+        "mainProcurementCategory": "goods",
+        "additionalProcurementCategories": [
+          "Approvisionnement (biens)"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-15T15:39:41-04:00",
+          "endDate": "2026-11-20T14:00:00-05:00",
+          "durationInDay": 35
+        },
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=bc7dcead-a020-4047-89aa-6ea548a36fc5"
+          }
+        ]
+      },
+      "language": "fr",
+      "relatedProcesses": [
+        {
+          "id": "20058983",
+          "relationship": [
+            "prior"
+          ],
+          "title": "Agent de contraste",
+          "scheme": "preProcurement",
+          "identifier": "20058983-AI_2027-8225-50"
+        }
+      ]
+    },
+    {
+      "ocid": "ocds-ec9k95-20155778",
+      "id": "20261014174748",
+      "date": "2026-10-14T13:47:48-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Santé Québec Montérégie-Est",
+          "id": "OP-58943",
+          "address": {
+            "streetAddress": "1601 boulevard Roland Therrien ,",
+            "locality": "Longueuil",
+            "region": "QC",
+            "postalCode": "J4J5C5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "LA CROISÉE DE LONGUEUIL INC.",
+          "id": "FO-1142829978",
+          "address": {
+            "streetAddress": "1230 rue Green,",
+            "locality": "Longueuil",
+            "region": "QC",
+            "postalCode": "J4K4Z5",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "1142829978"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Santé Québec Montérégie-Est",
+        "id": "OP-58943"
+      },
+      "tender": {
+        "id": "OG-260419-ME",
+        "title": "Entente de services pour l’exécution des services offerts dans le cadre du programme d’intervention en négligence",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Santé Québec Montérégie-Est",
+          "id": "OP-58943"
+        },
+        "items": [
+          {
+            "id": "S7",
+            "description": "S7 - Services de santé et services sociaux",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "93140000",
+              "description": "Services sociaux et communautaires"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article14 - Contrat dont le montant est inférieur au seuil d’appel d’offres public.",
+        "mainProcurementCategory": "services",
+        "additionalProcurementCategories": [
+          "Services professionnels"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-14T13:47:48-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-1142829978",
+            "name": "LA CROISÉE DE LONGUEUIL INC."
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gouv.qc.ca/avis-resultat-recherche/consulter?ItemId=17e0cd84-9f0e-4df3-b3d5-49c6bcf73c17"
+          }
+        ]
+      },
+      "awards": [
+        {
+          "id": "20150683",
+          "status": "active",
+          "date": "2026-04-01T00:00:00-04:00",
+          "value": {
+            "amount": 32462.45,
+            "currency": "CAD"
+          },
+          "suppliers": [
+            {
+              "name": "LA CROISÉE DE LONGUEUIL INC.",
+              "id": "FO-1142829978"
+            }
+          ]
+        }
+      ],
+      "contracts": [
+        {
+          "id": "20150683",
+          "awardID": "20150683",
+          "status": "active",
+          "value": {
+            "amount": 32462.45,
+            "currency": "CAD"
+          },
+          "dateSigned": "2026-04-01T00:00:00-04:00"
+        }
+      ],
+      "language": "fr"
+    },
+    {
+      "ocid": "ocds-ec9k95-20156286",
+      "id": "20261013164211",
+      "date": "2026-10-13T12:42:11-04:00",
+      "tag": [
+        "contract"
+      ],
+      "initiationType": "tender",
+      "parties": [
+        {
+          "name": "Cégep de Granby",
+          "id": "OP-81385",
+          "address": {
+            "streetAddress": "235 RUE ST-JACQUES,",
+            "locality": "Granby",
+            "region": "QC",
+            "postalCode": "J2G3N1",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "buyer"
+          ],
+          "details": {
+            "municipal": "0"
+          }
+        },
+        {
+          "name": "SOFTCHOICE LP ",
+          "id": "FO-3369689461",
+          "address": {
+            "streetAddress": "173, DUFFERIN ST,SUITE 200",
+            "region": "ON",
+            "postalCode": "M6K3H7",
+            "countryName": "CAN"
+          },
+          "roles": [
+            "supplier"
+          ],
+          "details": {
+            "neq": "3369689461"
+          }
+        }
+      ],
+      "buyer": {
+        "name": "Cégep de Granby",
+        "id": "OP-81385"
+      },
+      "tender": {
+        "id": "BON252601302",
+        "title": "cTIC_SER_Solarwinds_Entente de 3 ans",
+        "status": "complete",
+        "procuringEntity": {
+          "name": "Cégep de Granby",
+          "id": "OP-81385"
+        },
+        "items": [
+          {
+            "id": "G8",
+            "description": "G8 - Matériel informatique et logiciel",
+            "classification": {
+              "scheme": "UNSPSC",
+              "id": "43232801",
+              "description": "Logiciel de surveillance du réseau"
+            }
+          }
+        ],
+        "procurementMethod": "direct",
+        "procurementMethodDetails": "Contrat de gré à gré",
+        "procurementMethodRationale": "Article14 - Contrat dont le montant est inférieur au seuil d’appel d’offres public.",
+        "mainProcurementCategory": "goods",
+        "additionalProcurementCategories": [
+          "Approvisionnement (biens)"
+        ],
+        "tenderPeriod": {
+          "startDate": "2026-10-13T12:42:11-04:00"
+        },
+        "numberOfTenderers": 1,
+        "tenderers": [
+          {
+            "id": "FO-3369689461",
+            "name": "SOFTCHOICE LP "
+          }
+        ],
+        "documents": [
+          {
+            "url": "https://seao.gou
