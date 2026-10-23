@@ -1,0 +1,26 @@
+URL: https://api-production.data.gov.sg/v2/public/api/datasets/d_1db0bd2ffd95ac09c66db600e60d3400/metadata
+Fetched: 2026-10-23T13:43:57Z from GitHub Actions
+Status, type, bytes: 200 application/json 3022
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 23 Oct 2026 13:43:57 GMT
+content-type: application/json
+content-length: 3022
+cf-ray: a4f12c75eba0ec17-SEA
+cf-cache-status: DYNAMIC
+access-control-allow-origin: *
+server: cloudflare
+cf-placement: remote-SIN
+x-amz-apigw-id: FsyoqHYJyQ0Ea5g=
+x-amzn-requestid: 7ad298e3-a975-4bcb-93b5-40135ba3e77a
+x-amzn-trace-id: Root=1-6adb649d-6f540adc16b3d6ad7f637b08
+x-dgs-request-id: a4f12c75eba0ec17
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+vary: accept-encoding
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"code":0,"data":{"datasetId":"d_1db0bd2ffd95ac09c66db600e60d3400","createdAt":"2016-07-08T19:09:51+08:00","name":"Monthly Gazetted Hotels Statistics","collectionIds":["1607"],"format":"CSV","lastUpdatedAt":"2024-06-06T14:26:07+08:00","managedBy":"Singapore Tourism Board","coverageStart":"2013-01-01T08:00:00+08:00","coverageEnd":"2015-12-31T08:00:00+08:00","datasetSize":2293,"columnMetadata":{"order":["c_4r7cncx67lg81jierypkrc0s3","c_9w19vryz9gu9gd0bqwkl59ay1","c_d48zmadvluq93x57q411tpey6","c_285qfnufb7g01pomqry8nevva","c_8d6b0s9fpf5ttl145xnp30vyl","c_f32rq9ie8yr4jz0e0uvo5usum","c_6gt4thzgm6twap2e0dnwiddum","c_ern39oe7anofno9prdslsvclp","c_b1q8is414r320gmhc6t7a2p0o"],"map":{"c_4r7cncx67lg81jierypkrc0s3":"period","c_9w19vryz9gu9gd0bqwkl59ay1":"max","c_d48zmadvluq93x57q411tpey6":"paid","c_285qfnufb7g01pomqry8nevva":"available","c_8d6b0s9fpf5ttl145xnp30vyl":"occupied","c_f32rq9ie8yr4jz0e0uvo5usum":"aor","c_6gt4thzgm6twap2e0dnwiddum":"rm_revenue","c_ern39oe7anofno9prdslsvclp":"arr","c_b1q8is414r320gmhc6t7a2p0o":"revpar"},"metaMapping":{"c_4r7cncx67lg81jierypkrc0s3":{"name":"period","columnTitle":"Year-Month","dataType":"Month (YYYY-MM)","index":"0","isCategorical":false},"c_9w19vryz9gu9gd0bqwkl59ay1":{"name":"max","columnTitle":"Maximum Room Nights","dataType":"Numeric","unitOfMeasure":"Room-Nights","index":"1","isCategorical":false},"c_d48zmadvluq93x57q411tpey6":{"name":"paid","columnTitle":"Paid Lettings","dataType":"Numeric","unitOfMeasure":"Room-Nights","description":"Room lettings paid for by hotel guests","index":"2","isCategorical":false},"c_285qfnufb7g01pomqry8nevva":{"name":"available","columnTitle":"Available Room Nights","dataType":"Numeric","unitOfMeasure":"Room-Nights","description":"Available room nights = Maximum rooms - Rooms under renovation, for staff use, others","index":"3","isCategorical":false},"c_8d6b0s9fpf5ttl145xnp30vyl":{"name":"occupied","columnTitle":"Gross lettings (Room Nights)","dataType":"Numeric","unitOfMeasure":"Room-Nights","description":"Gross lettings (Room Nights) = Adjusted Paid lettings + Complimentary lettings","index":"4","isCategorical":false},"c_f32rq9ie8yr4jz0e0uvo5usum":{"name":"aor","columnTitle":"Standard Average Occupancy Rate (AOR)","dataType":"Numeric","unitOfMeasure":"%","description":"Standard AOR = [Gross lettings (Room Nights) / Available room nights] x 100","index":"5","isCategorical":false},"c_6gt4thzgm6twap2e0dnwiddum":{"name":"rm_revenue","columnTitle":"Total Room Revenue","dataType":"Numeric","unitOfMeasure":"S$ million","index":"6","isCategorical":false},"c_ern39oe7anofno9prdslsvclp":{"name":"arr","columnTitle":"Standard Average Room Rate (ARR)","dataType":"Numeric","unitOfMeasure":"S$","description":"Standard ARR = Total room revenue / Gross lettings","index":"7","isCategorical":false},"c_b1q8is414r320gmhc6t7a2p0o":{"name":"revpar","columnTitle":"Revenue Per Available Room (RevPAR)","dataType":"Numeric","unitOfMeasure":"S$","description":" RevPAR = AOR x ARR","index":"8","isCategorical":false}}}},"errorMsg":""}
