@@ -22,7 +22,7 @@ export default defineSource({
   },
   examples: [
     { params: { country: "MY", product: "kembong" } },
-    { params: { country: "MY", product: "squid", level: "retail" }, smoke: false },
+    { params: { country: "MY", product: "sotong_biasa", level: "retail" } },
   ],
   method:
     "Malaysia fish prices: the Department of Statistics Malaysia's monthly average price per kilogram for about 150 kinds of fish and seafood at three levels (ex-vessel, wholesale, retail), collected daily from the OpenDOSM catalogue into our price library. " +
