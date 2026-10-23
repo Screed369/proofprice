@@ -1,0 +1,19 @@
+URL: https://data.cityofnewyork.us/resource/usep-8jbt.json?$limit=4&$order=sale_date%20DESC&$where=starts_with(tax_class_at_time_of_sale,'4')
+Fetched: 2026-10-23T18:45:07Z from GitHub Actions
+Status, type, bytes: 400 application/json;charset=utf-8 2085
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 Bad Request
+Server: nginx
+Date: Fri, 23 Oct 2026 18:45:07 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+X-Socrata-RequestId: 7a72d779682ee99e7adcd0c1503aad96
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{"message":"Query coordinator error: query.soql.type-mismatch; Type mismatch for starts_with, is number; position: Map(row -> 1, column -> 400, line -> \"SELECT `borough`, `neighborhood`, `building_class_category`, `tax_class_at_present`, `block`, `lot`, `ease_ment`, `building_class_at_present`, `address`, `apartment_number`, `zip_code`, `residential_units`, `commercial_units`, `total_units`, `land_square_feet`, `gross_square_feet`, `year_built`, `tax_class_at_time_of_sale`, `building_class_at_time_of`, `sale_price`, `sale_date` WHERE starts_with(`tax_class_at_time_of_sale`, \\\"4\\\") ORDER BY `sale_date` DESC NULL FIRST LIMIT 4\\n                                                                                                                                                                                                                                                                                                                                                                                                               ^\")","errorCode":"query.soql.type-mismatch","data":{"function":"starts_with","type":"number","dataset":"foxtrot.67157","position":{"row":1,"column":400,"line":"SELECT `borough`, `neighborhood`, `building_class_category`, `tax_class_at_present`, `block`, `lot`, `ease_ment`, `building_class_at_present`, `address`, `apartment_number`, `zip_code`, `residential_units`, `commercial_units`, `total_units`, `land_square_feet`, `gross_square_feet`, `year_built`, `tax_class_at_time_of_sale`, `building_class_at_time_of`, `sale_price`, `sale_date` WHERE starts_with(`tax_class_at_time_of_sale`, \"4\") ORDER BY `sale_date` DESC NULL FIRST LIMIT 4\n                                                                                                                                                                                                                                                                                                                                                                                                               ^"}}}
