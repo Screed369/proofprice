@@ -1,0 +1,35 @@
+URL: https://www.datos.gov.co/resource/he3q-86dn.json?$select=anio_precio,mes_precio,count(*)&$group=anio_precio,mes_precio&$order=anio_precio%20DESC,mes_precio%20DESC&$limit=8
+Fetched: 2026-10-24T17:45:55Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 441
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 17:45:55 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC44NjUxXzFfOTk3M3B3d1NvZ0hyekszUmxzRmVwb2M1U2l5UF9F---gzipzs2e9c736nfC6LhCyt3sjMIrV9g--gzip--gzip"
+X-SODA2-Fields: ["anio_precio","mes_precio","count"]
+X-SODA2-Types: ["text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+X-SODA2-Secondary-Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 6c2cfa3bdbf30efac5e0656486f3ccb2
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 4000 BYTES
+[{"anio_precio":"2026","mes_precio":"9","count":"171"}
+,{"anio_precio":"2026","mes_precio":"8","count":"151"}
+,{"anio_precio":"2026","mes_precio":"7","count":"167"}
+,{"anio_precio":"2026","mes_precio":"6","count":"149"}
+,{"anio_precio":"2026","mes_precio":"5","count":"167"}
+,{"anio_precio":"2026","mes_precio":"4","count":"150"}
+,{"anio_precio":"2026","mes_precio":"3","count":"178"}
+,{"anio_precio":"2026","mes_precio":"2","count":"192"}]
