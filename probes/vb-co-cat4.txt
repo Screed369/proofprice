@@ -1,0 +1,718 @@
+URL: https://www.datos.gov.co/api/catalog/v1?q=gasolina%20corriente%20precio%20galon%20estaci%C3%B3n&limit=10
+Fetched: 2026-10-24T17:45:58Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 28420
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 17:45:58 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 12212b04830ddcf4207385358004bf1f
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Precios Combustibles (2017-1)",
+            "id" : "x6id-4v3g",
+            "resource_name" : null,
+            "parent_fxf" : [ "exxm-uyfs" ],
+            "description" : "En este conjunto de Datos se tiene los precios de venta del combustible reportados por las Estaciones de Servicio (EDS) acorde al precio regulado o de mercado.",
+            "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "filter",
+            "updatedAt" : "2025-12-19T23:16:46.000Z",
+            "createdAt" : "2020-05-26T20:17:32.000Z",
+            "metadata_updated_at" : "2025-12-19T23:16:46.000Z",
+            "data_updated_at" : "2018-05-15T20:01:03.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 57,
+                "page_views_last_month" : 246,
+                "page_views_total" : 8838,
+                "page_views_last_week_log" : 5.857980995127572,
+                "page_views_last_month_log" : 7.948367231584678,
+                "page_views_total_log" : 13.109667444250805
+              },
+            "columns_name" :
+              [
+                "precio",
+                "direccion",
+                "producto",
+                "estado",
+                "departamentocodigo",
+                "departamentonombre",
+                "municipiocodigo",
+                "municipionombre",
+                "fecharegistro",
+                "agente",
+                "bandera"
+              ],
+            "columns_field_name" :
+              [
+                "precio",
+                "direccion",
+                "producto",
+                "estado",
+                "departamentocodigo",
+                "departamentonombre",
+                "municipiocodigo",
+                "municipionombre",
+                "fecharegistro",
+                "agente",
+                "bandera"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "",
+                "",
+                "",
+                "",
+                "codigo del departamento",
+                "nombre del departamento",
+                "código del municipio",
+                "nombre del municipio",
+                "",
+                "",
+                ""
+              ],
+            "columns_format" : [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 13194,
+            "provenance" : "community",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-06-25T05:17:21.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Economía y Finanzas",
+            "domain_tags" :
+              [
+                "gasolina",
+                "ministerio",
+                "combustible",
+                "precio",
+                "minas",
+                "energía",
+                "minminas"
+              ],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-Datos_Frecuencia-de-Actualización",
+                  "value" : "Mensual"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Sector",
+                  "value" : "Minas y Energía"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Área-o-dependencia",
+                  "value" : "MINISTERIO DE MINAS Y ENERGÍA"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Nombre-de-la-Entidad",
+                  "value" : "Ministerio de Minas y Energía"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Orden",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Municipio",
+                  "value" : "Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Departamento",
+                  "value" : "Bogotá D.C."
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "license" : "Creative Commons Attribution | Share Alike 4.0 International"
+          },
+        "permalink" : "https://www.datos.gov.co/d/x6id-4v3g",
+        "link" : "https://www.datos.gov.co/Economía-y-Finanzas/Precios-Combustibles-2017-1-/x6id-4v3g",
+        "owner" :
+          {
+            "id" : "yapu-ri6g",
+            "user_type" : "interactive",
+            "display_name" : "Santiago Merchán"
+          },
+        "creator" :
+          {
+            "id" : "yapu-ri6g",
+            "user_type" : "interactive",
+            "display_name" : "Santiago Merchán"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Distribuidores Mayoristas:Despacho de combustibles líquidos a nivel nacional (AUTOMATIZADO)",
+            "id" : "339g-zjac",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Este conjunto de datos presenta los volúmenes despachados por los Distribuidores mayoristas para Colombia.",
+            "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+            "attribution_link" : "https://sicom.gov.co/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-24T08:31:03.000Z",
+            "createdAt" : "2022-10-18T19:24:51.000Z",
+            "metadata_updated_at" : "2026-05-18T17:52:02.000Z",
+            "data_updated_at" : "2026-10-24T08:31:03.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 188,
+                "page_views_last_month" : 804,
+                "page_views_total" : 22495,
+                "page_views_last_week_log" : 7.562242424221073,
+                "page_views_last_month_log" : 9.65284497300198,
+                "page_views_total_log" : 14.457380879072534
+              },
+            "columns_name" :
+              [
+                "ANIO_DESPACHO",
+                "DEPARTAMENTO_PROVEEDOR",
+                "PRODUCTO",
+                "TIPO_COMPRADOR",
+                "LONGITUD",
+                "SUBTIPO_COMPRADOR",
+                "DIA_DESPACHO",
+                "VOLUMEN_DESPACHADO",
+                "TIPO_PROVEEDOR",
+                "LATITUD",
+                "MUNICIPIO",
+                "CODIGO_MUNICIPIO_DANE_DESTINO",
+                "DEPARTAMENTO",
+                "FECHA_DESPACHO",
+                "CODIGO_MUNICIPIO_DANE_PROVEEDOR",
+                "MES_DESPACHO",
+                "MUNICIPIO_PROVEEDOR"
+              ],
+            "columns_field_name" :
+              [
+                "anio_despacho",
+                "departamento_proveedor",
+                "producto",
+                "tipo_comprador",
+                "longitud",
+                "subtipo_comprador",
+                "dia_despacho",
+                "volumen_despachado",
+                "tipo_proveedor",
+                "latitud",
+                "municipio",
+                "codigo_municipio_dane_destino",
+                "departamento",
+                "fecha_despacho",
+                "codigo_municipio_dane",
+                "mes_despacho",
+                "municipio_proveedor"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Año del despacho en formato: AAAA",
+                "Nombre del departamento desde el cual se realiza el despacho",
+                "\"AVIGAS DIESEL DIESEL MARINO EXTRA FUEL OIL - COMBUSTOLEO GASOLINA MOTOR JP- 1A\"",
+                "\"DISTRIBUIDOR MAYORISTA DE QUEMADORES INDUSTRIALES GRAN CONSUMIDOR DISTRIBUIDOR MINORISTA\"",
+                "Coordenadas de georeferenciación",
+                "\"COMERCIALIZADOR INDUSTRIAL CON INSTALACIÓN FIJA ESTACIÓN DE SERVICIO AUTOMOTRIZ ESTACIÓN DE SERVICIO DE AVICION ESTACIÓN DE SERVICIO FLUVIAL ESTACIÓN DE SERVICIO MARÍTIMA GRAN CONSUMIDOR CON INSTALACION FIJA - VOLUMEN MENOR A 20000 GLS TEMPORAL CON INSTALACIÓN\"",
+                "Día del despacho en formato: DD",
+                "Volumen en galones",
+                "Literal: DISTRIBUIDOR MAYORISTA",
+                "Coordenadas de georeferenciación",
+                "Nombre del municipio donde se recibe el despacho",
+                "Código DANE del municipio donde se recibe el despacho",
+                "Nombre del departamento donde se recibe el despacho",
+                "Fecha del despacho",
+                "Código DANE del municipio desde el cual se realiza el despacho",
+                "Mes del despacho en formato: MM",
+                "Nombre del municipio desde el cual se realiza el despacho"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 4791,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-07-12T06:45:08.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Minas y Energía",
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-Datos_Frecuencia-de-Actualización",
+                  "value" : "Diaria"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Sector",
+                  "value" : "Minas y Energía"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Nombre-de-la-Entidad",
+                  "value" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Orden",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Municipio",
+                  "value" : "Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_DIVIPOLA-Municipio",
+                  "value" : "11001"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Departamento",
+                  "value" : "Bogotá D.C."
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "license" : "Creative Commons Attribution | Share Alike 4.0 International"
+          },
+        "permalink" : "https://www.datos.gov.co/d/339g-zjac",
+        "link" : "https://www.datos.gov.co/Minas-y-Energía/Distribuidores-Mayoristas-Despacho-de-combustibles/339g-zjac",
+        "owner" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          },
+        "creator" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Estaciones de Gas Natural Vehicular y Carga Eléctrica – EPM",
+            "id" : "qqm3-dw2u",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Las EDS son estaciones de servicio de Gas Natural Vehicular – GNV marca propia EPM, en las que los usuarios de este combustible pueden ir a tanquear sus vehículos. \n\nEn estas estaciones el suministro de gasolina no es de EPM, solo incluye la parte de la estación que vende exclusivamente GNV.\n\nEPM publica información acerca de las estaciones de movilidad eléctrica que tiene en el país. Datos con vigencia del año 2025.",
+            "attribution" : "E.S.P. Empresas Públicas de Medellín - EPM, Antioquia",
+            "attribution_link" : "https://www.datos.gov.co/d/qqm3-dw2u",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-06-19T05:38:57.000Z",
+            "createdAt" : "2021-11-12T19:47:10.000Z",
+            "metadata_updated_at" : "2026-06-19T05:38:57.000Z",
+            "data_updated_at" : "2025-07-29T15:16:14.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 78,
+                "page_views_last_month" : 385,
+                "page_views_total" : 6665,
+                "page_views_last_week_log" : 6.303780748177103,
+                "page_views_last_month_log" : 8.592457037268082,
+                "page_views_total_log" : 12.70260560211025
+              },
+            "columns_name" :
+              [
+                "Ubicación o sitio web",
+                "Tipo de carga",
+                "Tipo de estacion",
+                "Estándar Cargador",
+                "Estación",
+                "Horario",
+                "Ciudad",
+                "Latitud",
+                "Dirección",
+                "Longitud",
+                "Coordenadas"
+              ],
+            "columns_field_name" :
+              [
+                "ubicaci_n_o_sitio_web",
+                "tipo",
+                "tipo_de_estacion",
+                "est_ndar_cargador",
+                "estaci_n",
+                "horario",
+                "ciudad",
+                "latitud",
+                "direcci_n",
+                "longitud",
+                "coordenadas"
+              ],
+            "columns_datatype" :
+              [
+                "URL",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Enlace a un sitio web con más información sobre la estación o una referencia de ubicación adicional.",
+                "Especifica la velocidad de carga disponible en cada estación de carga eléctrica de EPM. Puede clasificarse como \"Rápida\" o \"Semi Rápida\", dependiendo del tiempo necesario para cargar un vehículo eléctrico. En el caso de las estaciones de radio, el valor se indica como \"N/A\", ya que no aplica.",
+                "Indica la categoría de la infraestructura operada por EPM, diferenciando entre estaciones de carga para vehículos eléctricos y estaciones emisoras de la radio Aló EPM.",
+                "Los cargadores disponibles incluyen conexiones J1772 (7,4 kW, AC) y Mennekes (22 kW, AC) para carga en corriente alterna, así como CHAdeMO y CCS (Combo 1 y Combo 2) para carga rápida en corriente continua. Mientras que J1772 es común en América, Mennekes se usa en Europa, y CHAdeMO y CCS permiten una carga más veloz en estaciones compatibles. Algunos puntos cuentan con carga en AC Tipo 2, y en ciertas ubicaciones no se especifica el estándar de carga.",
+                "Identifica el nombre específico de cada punto de servicio incluido en el conjunto de datos, abarcando tanto estaciones de carga para vehículos eléctricos como estaciones de radio de EPM.",
+                "Indica la disponibilidad de cada estación de carga eléctrica. La mayoría de las estaciones operan en horarios amplios, algunas 24 horas, mientras que otras tienen horarios más restringidos. ",
+                "Indica la localidad donde se encuentra ubicada cada estación de carga eléctrica o emisora de radio de EPM, proporcionando información sobre su ubicación geográfica dentro de Colombia.",
+                "Indica la posición geográfica de un punto en dirección norte-sur, medida en grados con referencia al ecuador (0°). Los valores positivos corresponden al hemisferio norte y los negativos al hemisferio sur.",
+                "Muestra la ubicación de cada estación de carga eléctrica. La mayoría se encuentran en Medellín y municipios del Área Metropolitana del Valle de Aburrá, como Bello, Envigado y Sabaneta. También hay estaciones en Rionegro, Manizales, Bucaramanga, Floridablanca, Armenia, Pereira, Quindío y La Pintada. Algunas direcciones no están especificadas (N/A).",
+                "Representa la posición geográfica de un punto en dirección este-oeste, medida en grados desde el meridiano de Greenwich (0°). Los valores positivos indican ubicaciones al este y los negativos al oeste de este meridiano.",
+                "Esta columna contiene las coordenadas geográficas (latitud y longitud) de los puntos de ubicación registrados en el conjunto de datos. Cada valor representa una posición específica en el mapa, expresada en el sistema de referencia WGS 84, que permite su visualización y análisis en herramientas de geolocalización."
+              ],
+            "columns_format" : [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 720,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2025-07-29T15:16:25.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Minas y Energía",
+            "domain_tags" :
+              [
+                "vehículos eléctricos",
+                "radio",
+                "epm.",
+                "vehiculos",
+                "estaciones",
+                "gas"
+              ],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Municipal"
+                },
+                {
+                  "key" : "Información-de-Datos_Frecuencia-de-Actualización",
+                  "value" : "Anual"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Sector",
+                  "value" : "Educación"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Área-o-dependencia",
+                  "value" : "Movilidad eléctrica EPM – Soluciones de carga para tu vehículo"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Nombre-de-la-Entidad",
+                  "value" : "E.S.P. Empresas Públicas de Medellín - EPM, Antioquia"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Orden",
+                  "value" : "Territorial"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Municipio",
+                  "value" : "Medellín"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_DIVIPOLA-Municipio",
+                  "value" : "5001"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Departamento",
+                  "value" : "Antioquia"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "license" : "Creative Commons Attribution | Share Alike 4.0 International"
+          },
+        "permalink" : "https://www.datos.gov.co/d/qqm3-dw2u",
+        "link" : "https://www.datos.gov.co/Minas-y-Energía/Estaciones-de-Gas-Natural-Vehicular-y-Carga-Eléctr/qqm3-dw2u",
+        "owner" :
+          {
+            "id" : "2hkq-c8bw",
+            "user_type" : "interactive",
+            "display_name" : "EPM"
+          },
+        "creator" :
+          {
+            "id" : "2hkq-c8bw",
+            "user_type" : "interactive",
+            "display_name" : "EPM"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Beneficio de estaciones de servicio en zona de frontera: Asignación de combustibles líquidos en zona de frontera (AUTOMATIZADO)",
+            "id" : "shbt-hqy9",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Conjunto de datos con los registros de asignación o beneficio máximo a despachar de combustibles desde un mayorista a una estación de servicio en zona de frontera.\n\nConjunto de datos  consumo de combustibles con beneficios sobre el precio de venta al consumidor final para los 171 municipios ubicados en 12 departamentos del país, los cuales son considerados como zona de frontera de acuerdo con la Ley 191 de 1995.",
+            "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+            "attribution_link" : "https://sicom.gov.co/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-24T08:03:06.000Z",
+            "createdAt" : "2022-10-18T19:04:16.000Z",
+            "metadata_updated_at" : "2026-05-18T18:26:57.000Z",
+            "data_updated_at" : "2026-10-24T08:03:06.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 118,
+                "page_views_last_month" : 556,
+                "page_views_total" : 11577,
+                "page_views_last_week_log" : 6.894817763307944,
+                "page_views_last_month_log" : 9.121533517340032,
+                "page_views_total_log" : 13.49909844122888
+              },
+            "columns_name" :
+              [
+                "MES_BENEFICIO",
+                "ANIO_BENEFICIO",
+                "TIPO_AGENTE",
+                "BENEFICIO",
+                "LATITUD",
+                "CODIGO_MUNICIPIO_DANE_DESTINO",
+                "MUNICIPIO",
+                "DIA_BENEFICIO",
+                "LONGITUD",
+                "DEPARTAMENTO",
+                "FECHA_BENEFICIO",
+                "TIPO_BENEFICIO"
+              ],
+            "columns_field_name" :
+              [
+                "mes_beneficio",
+                "anio_beneficio",
+                "tipo_agente",
+                "beneficio",
+                "latitud",
+                "codigo_municipio_dane_destino",
+                "municipio",
+                "dia_beneficio",
+                "longitud",
+                "departamento",
+                "fecha_beneficio",
+                "tipo_beneficio"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Mes de cupo",
+                "Año del cupo en formato AAAA",
+                "\"Agente que recibe el cupo. Literal: DISTRIBUIDOR MINORISTA\"",
+                "Volumen del cupo en galones",
+                "Coordenadas de georeferenciación",
+                "Código DANE del municipio donde se recibe el cupo",
+                "Nombre del municipio donde se recibe el cupo",
+                "dia de cupo",
+                "Coordenadas de georeferenciación",
+                "Nombre del departamento donde se recibe el cupo",
+                "Fecha en formato AAAA-MM-DD",
+                "Literal: CUPO UPME"
+              ],
+            "columns_format" :
+              [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 887,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-07-18T16:17:58.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Minas y Energía",
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-Datos_Frecuencia-de-Actualización",
+                  "value" : "Diaria"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Sector",
+                  "value" : "Minas y Energía"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Nombre-de-la-Entidad",
+                  "value" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Orden",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Municipio",
+                  "value" : "Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_DIVIPOLA-Municipio",
+                  "value" : "11001"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Departamento",
+                  "value" : "Bogotá D.C."
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "license" : "Creative Commons Attribution | Share Alike 4.0 International"
+          },
+        "permalink" : "https://www.datos.gov.co/d/shbt-hqy9",
+        "link" : "https://www.datos.gov.co/Minas-y-Energía/Beneficio-de-estaciones-de-servicio-en-zona-de-fro/shbt-hqy9",
+        "owner" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          },
+        "creator" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          }
+      }
+    ],
+  "resultSetSize" : 4,
+  "timings" : { "serviceMillis" : 103, "searchMillis" : [ 72, 11 ] },
+  "warnings" : []
+}
