@@ -1,0 +1,24 @@
+name: sa-peek
+on:
+  push:
+    branches: ["dbg/sa-rent-peek"]
+permissions:
+  contents: read
+jobs:
+  peek:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: |
+          curl -sS -m 60 -A "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)" -o sa.xlsx "https://data.sa.gov.au/data/dataset/8eb97a72-9919-448b-8de6-fc1530b3f7ec/resource/b4aa86f1-7efa-4690-9793-bd36df97ad29/download/private-rental-report-2026-06.xlsx"
+          ls -l sa.xlsx
+          pip install openpyxl -q
+          python3 - <<'P'
+          import openpyxl
+          wb=openpyxl.load_workbook("sa.xlsx",data_only=True)
+          for ws in wb.worksheets:
+              print("=== SHEET",repr(ws.title),ws.max_row,ws.max_column)
+              for i,row in enumerate(ws.iter_rows(values_only=True)):
+                  if i<12 or (i%400==0): print(i+1,row[:14])
+                  if i>2000: break
+          P
