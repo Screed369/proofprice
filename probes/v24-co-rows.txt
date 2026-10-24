@@ -1,0 +1,25 @@
+URL: https://www.datos.gov.co/resource/ymnp-apvk.json?$limit=5&$order=:id
+Fetched: 2026-10-24T00:43:09Z from GitHub Actions
+Status, type, bytes: 403 application/json; charset=utf-8 84
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 403 Forbidden
+Server: nginx
+Date: Sat, 24 Oct 2026 00:43:09 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: "4ea478ad7611b46246fed60c2917014a"
+Last-Modified: Wed, 21 Oct 2026 19:15:42 +00:00
+X-Error-Message: no row or column access to non-tabular tables
+X-Socrata-RequestId: d02d27957d8b0c6620c5a03e7f6e7100
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{
+  "error" : true,
+  "message" : "no row or column access to non-tabular tables"
+}
