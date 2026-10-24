@@ -86,3 +86,9 @@ test("hr-halmed answer says posted wholesale ceiling, never paid", () => {
   assert.match(a.source.attribution, /HALMED/);
   assert.match(hrAnswerFromRow({ date: "2026-10-01", area: "ALL", item: "x", n: 6, median: 1, low: 1, high: 2, min: 1, max: 2 }, { key: "x", today: "2026-10-24" }).summary, /days old/);
 });
+test("hr-halmed reports the hidden reason of a failed fetch", async () => {
+  const { whyFailed } = await import("./source");
+  const err = Object.assign(new TypeError("fetch failed"), { cause: { code: "ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED", message: "unsafe legacy renegotiation disabled" } });
+  assert.equal(whyFailed(err), "fetch failed: ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED: unsafe legacy renegotiation disabled");
+  assert.equal(whyFailed("x"), "");
+});

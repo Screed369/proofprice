@@ -12,6 +12,7 @@
 // The listing page links every year's file; the current one has a changing number in its name ("-7356-svi"), so it is read from the page each run.
 // A posted ceiling for wholesale, not what a patient or pharmacy paid. The collector reads the file once a day; requests are answered from the library.
 
+import { execFile } from "node:child_process";
 import { InputError, SourceError } from "../../lib/http";
 import { MIN_PUBLISH } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
@@ -194,16 +195,46 @@ export function fileUrl(path: string): string {
   return path.startsWith("http") ? path : `${SITE}${path.replace(/^\/en\//, "/")}`;
 }
 
+/** Why a fetch failed: Node hides the real reason (TLS, reset, DNS) in err.cause. */
+export function whyFailed(err: unknown): string {
+  const e = err as { message?: string; cause?: { code?: string; message?: string } };
+  return [e?.message, e?.cause?.code, e?.cause?.message].filter(Boolean).join(": ");
+}
+
+function curlBytes(url: string): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    execFile("curl", ["-sS", "-L", "--fail", "--max-time", "120", "-A", UA["user-agent"], url], { encoding: "buffer", maxBuffer: 120 * 1024 * 1024 }, (err, stdout, stderr) => {
+      if (err) reject(new Error(`curl: ${String(stderr || err.message).trim().slice(0, 200)}`));
+      else resolve(stdout as Buffer);
+    });
+  });
+}
+
+/** GET a URL as bytes: Node fetch first; if the connection itself fails (HALMED's server can refuse Node's TLS), the collector's curl. */
+export async function getBytes(url: string): Promise<Buffer> {
+  let first: string;
+  try {
+    const res = await fetch(url, { headers: UA, signal: AbortSignal.timeout(120000) });
+    if (!res.ok) throw new SourceError(`HALMED ${url} returned HTTP ${res.status}`);
+    return Buffer.from(await res.arrayBuffer());
+  } catch (err) {
+    if (err instanceof SourceError) throw err;
+    first = whyFailed(err);
+  }
+  try {
+    return await curlBytes(url);
+  } catch (err2) {
+    throw new SourceError(`HALMED ${url} could not be fetched (fetch: ${first}; ${whyFailed(err2)})`);
+  }
+}
+
 export async function hrHarvest(): Promise<HarvestResult> {
   let path = FALLBACK_FILE;
   try {
-    const r = await fetch(LISTING_URL, { headers: UA });
-    if (r.ok) path = latestFile(Buffer.from(await r.arrayBuffer()).toString("utf8")) ?? FALLBACK_FILE;
+    path = latestFile((await getBytes(LISTING_URL)).toString("utf8")) ?? FALLBACK_FILE;
   } catch { /* fall back to the file seen by hand */ }
   const url = fileUrl(path);
-  const res = await fetch(url, { headers: UA });
-  if (!res.ok) throw new SourceError(`HALMED price list ${url} returned HTTP ${res.status}`);
-  const sheets = readXlsx(Buffer.from(await res.arrayBuffer()));
+  const sheets = readXlsx(await getBytes(url));
   const sheet = sheets.find((s) => s.rows.slice(0, 30).some((r) => r.some((c) => plain(c).startsWith("djelatna tvar")))) ?? sheets[0];
   if (!sheet) throw new SourceError(`HALMED price list ${url} holds no sheet`);
   const date = new Date().toISOString().slice(0, 10);
