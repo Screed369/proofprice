@@ -1,0 +1,1050 @@
+URL: https://www.datos.gov.co/api/views/7y2j-43cv.json
+Fetched: 2026-10-24T02:41:38Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 49665
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 02:41:38 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 47cfd7a42e5fee79d50fedcec032dc65
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "id" : "7y2j-43cv",
+  "name" : "Registro de transacciones inmobiliarias en Colombia IGAC",
+  "assetType" : "dataset",
+  "attribution" : "Instituto Geográfico Agustín Codazzi (IGAC)",
+  "attributionLink" : "https://www.igac.gov.co/",
+  "averageRating" : 0,
+  "category" : "Vivienda, Ciudad y Territorio",
+  "createdAt" : 1743695012,
+  "description" : "El dataset corresponde a los 30'905.678 registros de las transacciones inmobiliarias únicas dentro del periodo 2015-2023 para 1.105 municipios de Colombia, construidas a partir de la matricula inmobiliaria, código de DIVIPOLA, el código de la oficina de registro - ORIP, el número del folio y de la anotación, el código del acto de la naturaleza jurídica y el año de radicación. Permite reconocer las transacciones que se refieren a folios nuevos, identificar los registros con indicios de dinámica inmobiliaria, las transacciones que tienen valor y el valor de las transacciones.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 1725,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "CC_40_BY_SA",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 41242894,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1743733430,
+  "publicationGroup" : 19841173,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1743789524,
+  "tableId" : 19841173,
+  "totalTimesRated" : 0,
+  "viewCount" : 12317,
+  "viewLastModified" : 1792170269,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1744041238,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 6831010,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1744041204,
+    "targetAudience" : "public",
+    "workflowId" : 2188,
+    "reviewer" : {
+      "id" : "r4qn-dwdd",
+      "displayName" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+    },
+    "submissionDetails" : {
+      "permissionType" : "read"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1744041238,
+      "failureCount" : 0,
+      "startedAt" : 1744041238,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "r4qn-dwdd",
+      "displayName" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 608269778,
+    "name" : "PK",
+    "dataTypeName" : "text",
+    "description" : "Es el número único de cada transacción, que permite distinguir una transacción de otra.",
+    "fieldName" : "pk",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754717,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "99773-540-013896-00003-00311-2023",
+      "null" : "0",
+      "top" : [ {
+        "item" : "05001-001-000014-00015-00313-2018",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000023-00007-00109-2020",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000065-00013-00317-2015",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000067-00014-00109-2016",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000067-00018-00317-2019",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000088-00015-00842-2017",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000107-00010-00125-2015",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000107-00011-00125-2016",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000121-00025-00125-2021",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000121-00026-00843-2021",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000121-00027-00125-2023",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000128-00020-00843-2017",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000128-00021-00125-2017",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000128-00022-00125-2020",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000128-00023-00203-2020",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000143-00016-00205-2015",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000152-00013-00317-2020",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000152-00014-00843-2022",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000180-00024-00317-2015",
+        "count" : "1"
+      }, {
+        "item" : "05001-001-000013-00014-00313-2018",
+        "count" : "1"
+      } ],
+      "smallest" : "05001-001-000013-00014-00313-2018",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269779,
+    "name" : "MATRICULA",
+    "dataTypeName" : "text",
+    "description" : "Corresponde con el número de folio de la matrícula inmobiliaria creado por la oficina de registro de instrumentos públicos - ORIP. Se compone de dos partes: los 3 primeros dígitos coinciden con el código de la ORIP y el resto es el número de cada folio.",
+    "fieldName" : "matricula",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754718,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "999-9878",
+      "null" : "0",
+      "top" : [ {
+        "item" : "120-19552",
+        "count" : "3243"
+      }, {
+        "item" : "041-13903",
+        "count" : "1887"
+      }, {
+        "item" : "184-12957",
+        "count" : "1624"
+      }, {
+        "item" : "041-91692",
+        "count" : "1488"
+      }, {
+        "item" : "140-91806",
+        "count" : "1292"
+      }, {
+        "item" : "210-30942",
+        "count" : "1209"
+      }, {
+        "item" : "300-150482",
+        "count" : "1197"
+      }, {
+        "item" : "225-17797",
+        "count" : "1153"
+      }, {
+        "item" : "180-88",
+        "count" : "1145"
+      }, {
+        "item" : "015-66000",
+        "count" : "1065"
+      }, {
+        "item" : "041-75922",
+        "count" : "1034"
+      }, {
+        "item" : "040-22144",
+        "count" : "1034"
+      }, {
+        "item" : "370-78425",
+        "count" : "998"
+      }, {
+        "item" : "303-1940",
+        "count" : "997"
+      }, {
+        "item" : "370-78430",
+        "count" : "995"
+      }, {
+        "item" : "045-71085",
+        "count" : "898"
+      }, {
+        "item" : "214-33807",
+        "count" : "896"
+      }, {
+        "item" : "140-129679",
+        "count" : "867"
+      }, {
+        "item" : "50S-40358252",
+        "count" : "838"
+      }, {
+        "item" : "206-13386",
+        "count" : "780"
+      } ],
+      "smallest" : "001-1000000",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269799,
+    "name" : "FECHA_RADICA_TEXTO",
+    "dataTypeName" : "text",
+    "description" : "Corresponde con la fecha de radicación del trámite que deriva en una nueva anotación en el folio de matrícula correspondiente.",
+    "fieldName" : "fecha_radica_texto",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754738,
+    "cachedContents" : {
+      "non_null" : "30903247",
+      "largest" : "NUMERO 11/05/22",
+      "null" : "1",
+      "top" : [ {
+        "item" : "2016-05-03 00:00:00",
+        "count" : "71131"
+      }, {
+        "item" : "2016-04-22 00:00:00",
+        "count" : "48944"
+      }, {
+        "item" : "2023-12-26 00:00:00",
+        "count" : "36208"
+      }, {
+        "item" : "2021-02-03 00:00:00",
+        "count" : "36005"
+      }, {
+        "item" : "2023-12-28 00:00:00",
+        "count" : "34052"
+      }, {
+        "item" : "2023-12-27 00:00:00",
+        "count" : "32518"
+      }, {
+        "item" : "2019-09-11 00:00:00",
+        "count" : "29816"
+      }, {
+        "item" : "2015-09-18 00:00:00",
+        "count" : "28061"
+      }, {
+        "item" : "2015-11-06 00:00:00",
+        "count" : "25741"
+      }, {
+        "item" : "2022-12-29 00:00:00",
+        "count" : "25143"
+      }, {
+        "item" : "2016-04-01 00:00:00",
+        "count" : "25055"
+      }, {
+        "item" : "2023-12-20 00:00:00",
+        "count" : "24796"
+      }, {
+        "item" : "2022-09-29 00:00:00",
+        "count" : "24077"
+      }, {
+        "item" : "2023-12-13 00:00:00",
+        "count" : "23964"
+      }, {
+        "item" : "2023-12-18 00:00:00",
+        "count" : "23565"
+      }, {
+        "item" : "2023-08-23 00:00:00",
+        "count" : "23459"
+      }, {
+        "item" : "2023-03-24 00:00:00",
+        "count" : "22413"
+      }, {
+        "item" : "2023-04-28 00:00:00",
+        "count" : "22369"
+      }, {
+        "item" : "2023-09-06 00:00:00",
+        "count" : "22283"
+      }, {
+        "item" : "2023-12-12 00:00:00",
+        "count" : "21980"
+      } ],
+      "smallest" : "01/01/2016",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269797,
+    "name" : "FECHA_APERTURA_TEXTO",
+    "dataTypeName" : "text",
+    "description" : "Corresponde con la fecha de creación del folio. Aunque en términos generales la fecha de apertura debe ser inferior a la fecha de radicación no siempre es así, dado que hay trámites que se radican a finales de año y se materializan en el año siguiente, otra explicación puede ser lo relacionado con el tema de sentencias judiciales o correcciones que otorguen firmeza posterior a la fecha de radicación.",
+    "fieldName" : "fecha_apertura_texto",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754736,
+    "cachedContents" : {
+      "non_null" : "16534521",
+      "largest" : "31-08-0098",
+      "null" : "14368727",
+      "top" : [ {
+        "item" : "2021-03-24 00:00:00",
+        "count" : "20805"
+      }, {
+        "item" : "2018-10-03 00:00:00",
+        "count" : "17861"
+      }, {
+        "item" : "2015-09-28 00:00:00",
+        "count" : "15745"
+      }, {
+        "item" : "2015-12-03 00:00:00",
+        "count" : "15646"
+      }, {
+        "item" : "2019-12-09 00:00:00",
+        "count" : "14955"
+      }, {
+        "item" : "2021-06-29 00:00:00",
+        "count" : "14653"
+      }, {
+        "item" : "2020-09-28 00:00:00",
+        "count" : "14414"
+      }, {
+        "item" : "2017-12-20 00:00:00",
+        "count" : "14334"
+      }, {
+        "item" : "2022-11-03 00:00:00",
+        "count" : "14283"
+      }, {
+        "item" : "2020-09-29 00:00:00",
+        "count" : "14090"
+      }, {
+        "item" : "2022-12-02 00:00:00",
+        "count" : "14018"
+      }, {
+        "item" : "2016-05-02 00:00:00",
+        "count" : "13647"
+      }, {
+        "item" : "2022-03-18 00:00:00",
+        "count" : "13630"
+      }, {
+        "item" : "2020-12-09 00:00:00",
+        "count" : "13300"
+      }, {
+        "item" : "2020-03-11 00:00:00",
+        "count" : "13213"
+      }, {
+        "item" : "2021-08-23 00:00:00",
+        "count" : "13205"
+      }, {
+        "item" : "2019-12-04 00:00:00",
+        "count" : "13189"
+      }, {
+        "item" : "2017-10-17 00:00:00",
+        "count" : "12995"
+      }, {
+        "item" : "2016-06-10 00:00:00",
+        "count" : "12735"
+      }, {
+        "item" : "2020-08-26 00:00:00",
+        "count" : "12699"
+      } ],
+      "smallest" : "01-01-0001",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269798,
+    "name" : "YEAR_RADICA",
+    "dataTypeName" : "text",
+    "description" : "Año en el que se contabiliza la transacción.",
+    "fieldName" : "year_radica",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754737,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "2023",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2022",
+        "count" : "4223565"
+      }, {
+        "item" : "2023",
+        "count" : "3971033"
+      }, {
+        "item" : "2021",
+        "count" : "3850368"
+      }, {
+        "item" : "2016",
+        "count" : "3656455"
+      }, {
+        "item" : "2019",
+        "count" : "3186849"
+      }, {
+        "item" : "2017",
+        "count" : "3184604"
+      }, {
+        "item" : "2015",
+        "count" : "3138029"
+      }, {
+        "item" : "2018",
+        "count" : "3020947"
+      }, {
+        "item" : "2020",
+        "count" : "2671398"
+      } ],
+      "smallest" : "2015",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 608269801,
+    "name" : "ORIP",
+    "dataTypeName" : "text",
+    "description" : "Código de la oficina de registro de instrumentos públicos. Colombia tiene 198 oficinas de registro, cada una tiene una jurisdicción específica sobre algunos municipios, en términos generales es estable, pero en algunos casos por temas de facilitar el acceso a los usuarios se modifica, por lo cual, si encuentra variaciones a lo largo del tiempo, no se trata de errores.",
+    "fieldName" : "orip",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754740,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "999",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1",
+        "count" : "2243316"
+      }, {
+        "item" : "50N",
+        "count" : "1620392"
+      }, {
+        "item" : "50C",
+        "count" : "1612147"
+      }, {
+        "item" : "370",
+        "count" : "1549988"
+      }, {
+        "item" : "50S",
+        "count" : "1194386"
+      }, {
+        "item" : "300",
+        "count" : "934975"
+      }, {
+        "item" : "40",
+        "count" : "840140"
+      }, {
+        "item" : "01N",
+        "count" : "838774"
+      }, {
+        "item" : "260",
+        "count" : "812902"
+      }, {
+        "item" : "51",
+        "count" : "731063"
+      }, {
+        "item" : "350",
+        "count" : "729277"
+      }, {
+        "item" : "60",
+        "count" : "698667"
+      }, {
+        "item" : "176",
+        "count" : "620933"
+      }, {
+        "item" : "378",
+        "count" : "586779"
+      }, {
+        "item" : "290",
+        "count" : "571587"
+      }, {
+        "item" : "280",
+        "count" : "533060"
+      }, {
+        "item" : "230",
+        "count" : "526530"
+      }, {
+        "item" : "100",
+        "count" : "524407"
+      }, {
+        "item" : "200",
+        "count" : "519274"
+      }, {
+        "item" : "240",
+        "count" : "464612"
+      } ],
+      "smallest" : "01N",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 608269803,
+    "name" : "DIVIPOLA",
+    "dataTypeName" : "text",
+    "description" : "Es la codificación geográfica que permite identificar las divisiones político-administrativas de Colombia de manera única. Se compone de dos (2) dígitos que identifican cada departamento, iniciando con el 05 para el departamento de Antioquia; tres (3) dígitos que identifican cada municipio, a partir del 001 para la capital del departamento.",
+    "fieldName" : "divipola",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754742,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "99773",
+      "null" : "0",
+      "top" : [ {
+        "item" : "11001",
+        "count" : "4065812"
+      }, {
+        "item" : "5001",
+        "count" : "1544313"
+      }, {
+        "item" : "76001",
+        "count" : "1066299"
+      }, {
+        "item" : "25754",
+        "count" : "716312"
+      }, {
+        "item" : "73001",
+        "count" : "704365"
+      }, {
+        "item" : "8001",
+        "count" : "692648"
+      }, {
+        "item" : "66001",
+        "count" : "552153"
+      }, {
+        "item" : "54001",
+        "count" : "530315"
+      }, {
+        "item" : "13001",
+        "count" : "528573"
+      }, {
+        "item" : "68001",
+        "count" : "507510"
+      }, {
+        "item" : "63001",
+        "count" : "437341"
+      }, {
+        "item" : "50001",
+        "count" : "425408"
+      }, {
+        "item" : "5088",
+        "count" : "420656"
+      }, {
+        "item" : "17001",
+        "count" : "414160"
+      }, {
+        "item" : "52001",
+        "count" : "393452"
+      }, {
+        "item" : "47001",
+        "count" : "377617"
+      }, {
+        "item" : "5266",
+        "count" : "369926"
+      }, {
+        "item" : "8758",
+        "count" : "368380"
+      }, {
+        "item" : "76364",
+        "count" : "354418"
+      }, {
+        "item" : "41001",
+        "count" : "341591"
+      } ],
+      "smallest" : "11001",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 608269780,
+    "name" : "DEPARTAMENTO",
+    "dataTypeName" : "text",
+    "description" : "\t Nombre del departamento en el que se ubica el predio objeto de la transacción",
+    "fieldName" : "departamento",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754719,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "VICHADA",
+      "null" : "0",
+      "top" : [ {
+        "item" : "ANTIOQUIA",
+        "count" : "4991765"
+      }, {
+        "item" : "BOGOTÁ D.C.",
+        "count" : "4065812"
+      }, {
+        "item" : "CUNDINAMARCA",
+        "count" : "2943154"
+      }, {
+        "item" : "VALLE DEL CAUCA",
+        "count" : "2710992"
+      }, {
+        "item" : "SANTANDER",
+        "count" : "1703694"
+      }, {
+        "item" : "ATLÁNTICO",
+        "count" : "1374087"
+      }, {
+        "item" : "TOLIMA",
+        "count" : "1318989"
+      }, {
+        "item" : "BOYACÁ",
+        "count" : "1122276"
+      }, {
+        "item" : "NORTE DE SANTANDER",
+        "count" : "1050784"
+      }, {
+        "item" : "RISARALDA",
+        "count" : "1016398"
+      }, {
+        "item" : "BOLÍVAR",
+        "count" : "883150"
+      }, {
+        "item" : "META",
+        "count" : "848026"
+      }, {
+        "item" : "HUILA",
+        "count" : "788690"
+      }, {
+        "item" : "CALDAS",
+        "count" : "744040"
+      }, {
+        "item" : "NARIÑO",
+        "count" : "718640"
+      }, {
+        "item" : "CÓRDOBA",
+        "count" : "689624"
+      }, {
+        "item" : "CESAR",
+        "count" : "630864"
+      }, {
+        "item" : "MAGDALENA",
+        "count" : "627976"
+      }, {
+        "item" : "CAUCA",
+        "count" : "604946"
+      }, {
+        "item" : "QUINDÍO",
+        "count" : "598511"
+      } ],
+      "smallest" : "AMAZONAS",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269781,
+    "name" : "MUNICIPIO",
+    "dataTypeName" : "text",
+    "description" : "Nombre del municipio en el que se ubica el predio objeto de la transacción",
+    "fieldName" : "municipio",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754720,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "ZONA BANANERA",
+      "null" : "0",
+      "top" : [ {
+        "item" : "BOGOTÁ D.C.",
+        "count" : "4065812"
+      }, {
+        "item" : "MEDELLÍN",
+        "count" : "1544313"
+      }, {
+        "item" : "SANTIAGO DE CALI",
+        "count" : "1066299"
+      }, {
+        "item" : "SOACHA",
+        "count" : "716312"
+      }, {
+        "item" : "IBAGUÉ",
+        "count" : "704365"
+      }, {
+        "item" : "BARRANQUILLA",
+        "count" : "692648"
+      }, {
+        "item" : "PEREIRA",
+        "count" : "552153"
+      }, {
+        "item" : "SAN JOSÉ DE CÚCUTA",
+        "count" : "530315"
+      }, {
+        "item" : "CARTAGENA DE INDIAS",
+        "count" : "528573"
+      }, {
+        "item" : "BUCARAMANGA",
+        "count" : "507510"
+      }, {
+        "item" : "ARMENIA",
+        "count" : "439513"
+      }, {
+        "item" : "VILLAVICENCIO",
+        "count" : "425408"
+      }, {
+        "item" : "BELLO",
+        "count" : "420656"
+      }, {
+        "item" : "MANIZALES",
+        "count" : "414160"
+      }, {
+        "item" : "PASTO",
+        "count" : "393452"
+      }, {
+        "item" : "SANTA MARTA",
+        "count" : "377617"
+      }, {
+        "item" : "ENVIGADO",
+        "count" : "369926"
+      }, {
+        "item" : "SOLEDAD",
+        "count" : "368380"
+      }, {
+        "item" : "JAMUNDÍ",
+        "count" : "354418"
+      }, {
+        "item" : "NEIVA",
+        "count" : "341591"
+      } ],
+      "smallest" : "ABEJORRAL",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269782,
+    "name" : "TIPO_PREDIO_ZONA",
+    "dataTypeName" : "text",
+    "description" : "Corresponde a la zona en la que se ubica el predio objeto de la transacción. Es el resultado de un proceso de depuración, que se enriquece a partir de la DIRECCION del predio. Puede ser URBANO, en el caso en que el predio se encuentra en el área comprendida dentro del perímetro urbano y demás agrupaciones de predios con características urbanas denominadas corregimientos, debidamente aprobado por la autoridad, RURAL en caso en que se identifique que el predio objeto de transacción se encuentre ubicado fuera de alguno de los perímetros urbanos ya sea de la cabecera municipal, o de los corregimientos. Son Terrenos no aptos para el uso urbano por razones de oportunidad o por su destinación a usos agrícolas, ganaderos, forestales, de explotación de recursos naturales y actividades análogas. SIN INFRORMACIÓN, en caso en que, no sea posible reconocer el predio como URBANO o RURAL. El carácter de este campo NO es normativo y por ende en algunos casos puede NO corresponder con los instrumentos de ordenamiento territorial, se recomienda cotejar este dato con el contenido en el número predial en caso de estar disponible, sin decir con esto que uno reemplace al otro o que uno sea más verídico que el otro.",
+    "fieldName" : "tipo_predio_zona",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754721,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "URBANO",
+      "null" : "0",
+      "top" : [ {
+        "item" : "URBANO",
+        "count" : "23672128"
+      }, {
+        "item" : "RURAL",
+        "count" : "6851108"
+      }, {
+        "item" : "SIN INFORMACION",
+        "count" : "380012"
+      } ],
+      "smallest" : "RURAL",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269800,
+    "name" : "CATEGORIA_RURALIDAD",
+    "dataTypeName" : "text",
+    "description" : "\t Se refiere a la clasificación de municipio que realiza el Departamento Nacional de Planeación - DNP, que busca identificar algunas diferencias de las zonas rurales en el país, con el fin de ofrecer un marco para el establecimiento de políticas públicas y reconocer a los pobladores que habitan estas zonas. Última fecha de actualización del dominio 7 de junio de 2024, suministradas por la dirección de desarrollo urbano del DNP.",
+    "fieldName" : "categoria_ruralidad_2024",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754739,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "Rural disperso",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Ciudades y aglomeraciones",
+        "count" : "22609918"
+      }, {
+        "item" : "Intermedio",
+        "count" : "5090370"
+      }, {
+        "item" : "Rural",
+        "count" : "2325694"
+      }, {
+        "item" : "Rural disperso",
+        "count" : "877266"
+      } ],
+      "smallest" : "Ciudades y aglomeraciones",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269783,
+    "name" : "NUM_ANOTACION",
+    "dataTypeName" : "number",
+    "description" : "Corresponde con el número consecutivo que surgió como resultado del registro de la transacción",
+    "fieldName" : "num_anotacion",
+    "position" : 12,
+    "renderTypeName" : "number",
+    "tableColumnId" : 157754722,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "30088",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2",
+        "count" : "3381204"
+      }, {
+        "item" : "3",
+        "count" : "3249371"
+      }, {
+        "item" : "4",
+        "count" : "3048598"
+      }, {
+        "item" : "1",
+        "count" : "2908061"
+      }, {
+        "item" : "5",
+        "count" : "2800051"
+      }, {
+        "item" : "6",
+        "count" : "2501512"
+      }, {
+        "item" : "7",
+        "count" : "2182810"
+      }, {
+        "item" : "8",
+        "count" : "1799574"
+      }, {
+        "item" : "9",
+        "count" : "1473724"
+      }, {
+        "item" : "10",
+        "count" : "1192681"
+      }, {
+        "item" : "11",
+        "count" : "979161"
+      }, {
+        "item" : "12",
+        "count" : "811199"
+      }, {
+        "item" : "13",
+        "count" : "675402"
+      }, {
+        "item" : "14",
+        "count" : "568165"
+      }, {
+        "item" : "15",
+        "count" : "484424"
+      }, {
+        "item" : "16",
+        "count" : "411237"
+      }, {
+        "item" : "17",
+        "count" : "349365"
+      }, {
+        "item" : "18",
+        "count" : "297133"
+      }, {
+        "item" : "19",
+        "count" : "251623"
+      }, {
+        "item" : "20",
+        "count" : "212269"
+      } ],
+      "smallest" : "1",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 608269784,
+    "name" : "ESTADO_FOLIO",
+    "dataTypeName" : "text",
+    "description" : "Los posibles estados del folio son activo: significa que el folio puede seguir recibiendo anotaciones, cerrado: implica que el folio ya no puede continuar recibiendo anotaciones o en custodia: se asigna a otra jurisdicción por razones de seguridad.",
+    "fieldName" : "estado_folio",
+    "position" : 13,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754723,
+    "cachedContents" : {
+      "non_null" : "17323309",
+      "largest" : "CUSTODIA",
+      "null" : "13579939",
+      "top" : [ {
+        "item" : "ACTIVO",
+        "count" : "16867436"
+      }, {
+        "item" : "CERRADO",
+        "count" : "455853"
+      }, {
+        "item" : "CUSTODIA",
+        "count" : "20"
+      } ],
+      "smallest" : "ACTIVO",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269802,
+    "name" : "FOLIOS_DERIVADOS",
+    "dataTypeName" : "text",
+    "description" : "\t Si la inscripción del acto jurídico genera folios derivados como en el caso de una compraventa parcial, desenglobe, reloteo, etc. estos nuevos folios se almacenan en un diccionario entre paréntesis []",
+    "fieldName" : "folios_derivados",
+    "position" : 14,
+    "renderTypeName" : "text",
+    "tableColumnId" : 157754741,
+    "cachedContents" : {
+      "non_null" : "301690",
+      "largest" : "540-9989;540-10001;540-9991;540-9993;540-9999;540-9992;540-9998;540-10000;540-9997;540-9995;540-9990;540-9994;540-9988;540-9996;540-9987",
+      "null" : "30601558",
+      "top" : [ {
+        "item" : "440-71888",
+        "count" : "336"
+      }, {
+        "item" : "190-158137",
+        "count" : "274"
+      }, {
+        "item" : "200-262458",
+        "count" : "270"
+      }, {
+        "item" : "103-29363",
+        "count" : "260"
+      }, {
+        "item" : "196-61786",
+        "count" : "232"
+      }, {
+        "item" : "357-67299",
+        "count" : "223"
+      }, {
+        "item" : "340-140094",
+        "count" : "206"
+      }, {
+        "item" : "008-63893",
+        "count" : "204"
+      }, {
+        "item" : "196-61804",
+        "count" : "167"
+      }, {
+        "item" : "307-86066",
+        "count" : "158"
+      }, {
+        "item" : "230-205803",
+        "count" : "137"
+      }, {
+        "item" : "352-23272",
+        "count" : "135"
+      }, {
+        "item" : "190-191189",
+        "count" : "131"
+      }, {
+        "item" : "230-194206",
+        "count" : "129"
+      }, {
+        "item" : "214-33801",
+        "count" : "103"
+      }, {
+        "item" : "342-43668",
+        "count" : "100"
+      }, {
+        "item" : "214-33589",
+        "count" : "96"
+      }, {
+        "item" : "008-63061",
+        "count" : "96"
+      }, {
+        "item" : "080-139152",
+        "count" : "95"
+      }, {
+        "item" : "340-128328",
+        "count" : "92"
+      } ],
+      "smallest" : "002-12624",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : { }
+  }, {
+    "id" : 608269785,
+    "name" : "Dinámica_Inmobiliaria",
+    "dataTypeName" : "number",
+    "description" : "Corresponde con la clasificación de actos jurídicos registrables realizada por el observatorio inmobiliario catastral del IGAC en 2024. 1: significa que corresponde con alguno de los165 actos que están relacionados con cambios del mercado inmobiliario, por ejemplo, compraventas, loteos, adjudicación de baldíos, hipotecas, etc. y 0: para el resto. Este campo busca facilitar los análisis de las dinámicas del mercado inmobiliario.",
+    "fieldName" : "dinamica_2024",
+    "position" : 15,
+    "renderTypeName" : "number",
+    "tableColumnId" : 157754724,
+    "cachedContents" : {
+      "non_null" : "30903248",
+      "largest" : "1",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1",
+        "count" : "17400845"
+      }, {
+        "item" : "0",
+        "count" : "13502403"
+      } ],
+      "smallest" : "0",
+      "count" : "30903248",
+      "cardinality" : "30903248"
+    },
+    "format" : {
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  }, {
+    "id" : 608269786,
+    "name" : "COD_NATUJUR",
+    "dataTy
