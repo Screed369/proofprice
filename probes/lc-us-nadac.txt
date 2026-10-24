@@ -1,0 +1,36 @@
+URL: https://data.medicaid.gov/api/1/metastore/schemas/dataset/items/fbb83258-11c7-47f5-8b18-5f8e79f7e704
+Fetched: 2026-10-24T00:59:37Z from GitHub Actions
+Status, type, bytes: 200 application/json 1033
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json
+x-drupal-dynamic-cache: MISS
+content-language: en
+x-content-type-options: nosniff
+x-generator: Drupal 11 (https://www.drupal.org)
+x-drupal-cache: MISS
+last-modified: Fri, 23 Oct 2026 13:00:03 GMT
+etag: "1792760403-gzip"
+x-request-id: v-a9b96fca-cee1-11f1-b410-afb82f9a20a9
+x-ah-environment: prod
+x-cache-hits: 65
+x-age: 34503
+cache-control: public, max-age=300
+expires: Sat, 24 Oct 2026 01:04:37 GMT
+date: Sat, 24 Oct 2026 00:59:37 GMT
+content-length: 1033
+set-cookie: cms_fpid=6df5a64e-41ee-501f-5426-6f51a83671ca; expires=Mon, 23-Oct-2028 00:59:37 GMT; path=/; domain=.medicaid.gov; secure; SameSite=Lax
+strict-transport-security: max-age=31536000 ; includeSubDomains
+access-control-allow-methods: *
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-permitted-cross-domain-policies: master-only
+akamai-grn: 0.e6a5dc17.1792803577.1cae191e
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"@type":"dcat:Dataset","title":"NADAC (National Average Drug Acquisition Cost) 2026","identifier":"fbb83258-11c7-47f5-8b18-5f8e79f7e704","description":"National Average Drug Acquisition Cost (NADAC) weekly reference data for the calendar year.","accessLevel":"public","modified":"2026-10-20T12:01:01+00:00","license":"https:\/\/www.usa.gov\/publicdomain\/label\/1.0\/","publisher":{"@type":"org:Organization","name":"data.medicaid.gov"},"contactPoint":{"fn":"Medicaid.gov","hasEmail":"mailto:Medicaid.gov@cms.hhs.gov"},"theme":["Drug Pricing and Payment"],"keyword":["National Average Drug Acquisition Cost (NADAC)"],"distribution":[{"@type":"dcat:Distribution","format":"csv","downloadURL":"https:\/\/download.medicaid.gov\/data\/nadac-national-average-drug-acquisition-cost-10-21-2026.csv","describedBy":"https:\/\/data.medicaid.gov\/api\/1\/metastore\/schemas\/data-dictionary\/items\/de58d5ec-4515-494e-ae3f-620200f72989","describedByType":"application\/vnd.tableschema+json"}],"bureauCode":["009:38"],"programCode":["009:076"]}
