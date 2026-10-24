@@ -1,0 +1,52 @@
+URL: https://data.cityofnewyork.us/resource/usep-8jbt.json?$select=borough,block,sale_price,sale_date,gross_square_feet,land_square_feet,neighborhood,building_class_category,zip_code&$where=tax_class_at_time_of_sale=4%20AND%20sale_price>=100000%20AND%20borough=%271%27&$order=sale_date%20DESC&$limit=25
+Fetched: 2026-10-24T01:33:32Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 5371
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 01:33:32 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42NzE1N180XzY2Yy1QdkJCbnlZYVpFUEVZUmhCdU1QVFBNXzRj---gzipgzhI_tcjas2wqFSs4wmzz7evZ-Q--gzip--gzip"
+X-SODA2-Fields: ["borough","block","sale_price","sale_date","gross_square_feet","land_square_feet","neighborhood","building_class_category","zip_code"]
+X-SODA2-Types: ["text","text","number","floating_timestamp","number","text","text","text","text"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: ad6d08be942053a6b2f56861dfc1daba
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"borough":"1","block":"1138","sale_price":"253500","sale_date":"2026-09-30T00:00:00.000","neighborhood":"UPPER WEST SIDE (59-79)","building_class_category":"45 CONDO HOTELS","zip_code":"10023"}
+,{"borough":"1","block":"1138","sale_price":"239000","sale_date":"2026-09-30T00:00:00.000","neighborhood":"UPPER WEST SIDE (59-79)","building_class_category":"45 CONDO HOTELS","zip_code":"10023"}
+,{"borough":"1","block":"1323","sale_price":"3500000","sale_date":"2026-09-29T00:00:00.000","gross_square_feet":"6901","land_square_feet":"1,443","neighborhood":"MIDTOWN EAST","building_class_category":"21 OFFICE BUILDINGS","zip_code":"10017"}
+,{"borough":"1","block":"618","sale_price":"14000000","sale_date":"2026-09-25T00:00:00.000","gross_square_feet":"18720","land_square_feet":"3,267","neighborhood":"GREENWICH VILLAGE-WEST","building_class_category":"33 EDUCATIONAL FACILITIES","zip_code":"10011"}
+,{"borough":"1","block":"943","sale_price":"952750","sale_date":"2026-09-25T00:00:00.000","neighborhood":"KIPS BAY","building_class_category":"43 CONDO OFFICE BUILDINGS","zip_code":"10016"}
+,{"borough":"1","block":"1548","sale_price":"6300000","sale_date":"2026-09-25T00:00:00.000","neighborhood":"UPPER EAST SIDE (79-96)","building_class_category":"46 CONDO STORE BUILDINGS","zip_code":"10028"}
+,{"borough":"1","block":"1548","sale_price":"6300000","sale_date":"2026-09-25T00:00:00.000","neighborhood":"UPPER EAST SIDE (79-96)","building_class_category":"46 CONDO STORE BUILDINGS","zip_code":"10028"}
+,{"borough":"1","block":"1548","sale_price":"6300000","sale_date":"2026-09-25T00:00:00.000","neighborhood":"UPPER EAST SIDE (79-96)","building_class_category":"46 CONDO STORE BUILDINGS","zip_code":"10028"}
+,{"borough":"1","block":"1042","sale_price":"2200000","sale_date":"2026-09-23T00:00:00.000","neighborhood":"MIDTOWN WEST","building_class_category":"47 CONDO NON-BUSINESS STORAGE","zip_code":"10019"}
+,{"borough":"1","block":"1228","sale_price":"3750000","sale_date":"2026-09-23T00:00:00.000","gross_square_feet":"6900","land_square_feet":"2,554","neighborhood":"UPPER WEST SIDE (79-96)","building_class_category":"22 STORE BUILDINGS","zip_code":"10024"}
+,{"borough":"1","block":"903","sale_price":"500000","sale_date":"2026-09-22T00:00:00.000","neighborhood":"GRAMERCY","building_class_category":"43 CONDO OFFICE BUILDINGS","zip_code":"10010"}
+,{"borough":"1","block":"426","sale_price":"1800000","sale_date":"2026-09-22T00:00:00.000","neighborhood":"LOWER EAST SIDE","building_class_category":"28 COMMERCIAL CONDOS","zip_code":"10002"}
+,{"borough":"1","block":"895","sale_price":"245000000","sale_date":"2026-09-18T00:00:00.000","gross_square_feet":"493860","land_square_feet":"24,673","neighborhood":"MURRAY HILL","building_class_category":"21 OFFICE BUILDINGS","zip_code":"10016"}
+,{"borough":"1","block":"838","sale_price":"250000","sale_date":"2026-09-17T00:00:00.000","gross_square_feet":"83278","land_square_feet":"9,965","neighborhood":"FASHION","building_class_category":"21 OFFICE BUILDINGS","zip_code":"10018"}
+,{"borough":"1","block":"1504","sale_price":"1750000","sale_date":"2026-09-17T00:00:00.000","neighborhood":"UPPER EAST SIDE (79-96)","building_class_category":"28 COMMERCIAL CONDOS","zip_code":"10128"}
+,{"borough":"1","block":"1063","sale_price":"182500","sale_date":"2026-09-15T00:00:00.000","neighborhood":"CLINTON","building_class_category":"44 CONDO PARKING","zip_code":"10019"}
+,{"borough":"1","block":"520","sale_price":"4115000","sale_date":"2026-09-15T00:00:00.000","gross_square_feet":"4875","land_square_feet":"1,625","neighborhood":"SOHO","building_class_category":"22 STORE BUILDINGS","zip_code":"10014"}
+,{"borough":"1","block":"1497","sale_price":"2525000","sale_date":"2026-09-11T00:00:00.000","neighborhood":"UPPER EAST SIDE (79-96)","building_class_category":"47 CONDO NON-BUSINESS STORAGE","zip_code":"10028"}
+,{"borough":"1","block":"803","sale_price":"2509500","sale_date":"2026-09-10T00:00:00.000","neighborhood":"CHELSEA","building_class_category":"43 CONDO OFFICE BUILDINGS","zip_code":"10001"}
+,{"borough":"1","block":"803","sale_price":"2509500","sale_date":"2026-09-10T00:00:00.000","neighborhood":"CHELSEA","building_class_category":"43 CONDO OFFICE BUILDINGS","zip_code":"10001"}
+,{"borough":"1","block":"616","sale_price":"1200000","sale_date":"2026-09-10T00:00:00.000","neighborhood":"GREENWICH VILLAGE-WEST","building_class_category":"46 CONDO STORE BUILDINGS","zip_code":"10014"}
+,{"borough":"1","block":"1745","sale_price":"7500000","sale_date":"2026-09-10T00:00:00.000","gross_square_feet":"0","land_square_feet":"17,642","neighborhood":"HARLEM-CENTRAL","building_class_category":"29 COMMERCIAL GARAGES","zip_code":"10035"}
+,{"borough":"1","block":"1351","sale_price":"9072581","sale_date":"2026-09-10T00:00:00.000","gross_square_feet":"34500","land_square_feet":"4,184","neighborhood":"MIDTOWN EAST","building_class_category":"21 OFFICE BUILDINGS","zip_code":"10022"}
+,{"borough":"1","block":"1042","sale_price":"2310000","sale_date":"2026-09-10T00:00:00.000","neighborhood":"MIDTOWN WEST","building_class_category":"47 CONDO NON-BUSINESS STORAGE","zip_code":"10019"}
+,{"borough":"1","block":"1064","sale_price":"8200000","sale_date":"2026-09-09T00:00:00.000","gross_square_feet":"12379","land_square_feet":"4,393","neighborhood":"CLINTON","building_class_category":"21 OFFICE BUILDINGS","zip_code":"10019"}]
