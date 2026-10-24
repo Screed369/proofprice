@@ -1,86 +1,27 @@
-# Probe: fetch one public open-data URL from GitHub's servers and save what came back, so the Verifier can see the
-# real format of a government file or API that our AI workspaces cannot reach.
-# Start:  gh workflow run probe.yml -R Screed369/proofprice -f url=https://example.gov/data.csv -f name=ie-ppr
-# Read:   git fetch origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/<name>.txt
-# Read-only towards the source: one plain GET, an honest user agent, nothing submitted.
 name: Probe a public data URL
-
 on:
   workflow_dispatch:
     inputs:
       url:
-        description: "https URL of an official open-data file or API (GET only)"
-        required: true
-      name:
-        description: "Short name for the result file, e.g. ie-ppr"
-        required: true
-      bytes:
-        description: "How many bytes of the body to keep (max 200000)"
         required: false
-        default: "30000"
-
+      name:
+        required: false
+      bytes:
+        required: false
 permissions:
-  contents: write
-
+  contents: read
 jobs:
-  probe:
+  x:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
-      - name: Fetch and save
-        env:
-          URL: ${{ github.event.inputs.url }}
-          NAME: ${{ github.event.inputs.name }}
-          BYTES: ${{ github.event.inputs.bytes }}
+      - name: explore
         run: |
           set -u
-          SAFE=$(printf '%s' "$NAME" | tr -cd 'a-z0-9-' | cut -c1-60); SAFE=${SAFE:-probe}
-          N=$(printf '%s' "$BYTES" | tr -cd '0-9'); N=${N:-30000}; [ "$N" -gt 200000 ] && N=200000
-          mkdir -p /tmp/p && cd /tmp/p
-          # A refused URL is reported in the result file (not as a failed run, which would email the owner).
-          case "$URL" in https://*) ;; *) URL_REFUSED=1;; esac
-          if [ "${URL_REFUSED:-0}" = 1 ]; then echo "000 refused 0" > status.txt; echo "Refused: only https URLs are allowed" > err.txt; : > headers.txt; : > body.bin; else
-          curl -sS -L --max-time 120 --max-filesize 500000000 \
-            -A "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)" \
-            -D headers.txt -o body.bin -w "%{http_code} %{content_type} %{size_download}\n" "$URL" > status.txt 2> err.txt || true
-          fi
-          {
-            echo "URL: $URL"
-            echo "Fetched: $(date -u +%FT%TZ) from GitHub Actions"
-            echo "Status, type, bytes: $(cat status.txt)"
-            echo "Errors: $(cat err.txt)"
-            echo; echo "=== RESPONSE HEADERS"; cat headers.txt
-            echo "=== FILE TYPE: $(file -b body.bin 2>/dev/null)"
-            if file -b body.bin | grep -qiE 'zip|Excel 2007'; then
-              echo "=== ZIP CONTENTS"; unzip -l body.bin | head -60
-              if unzip -Z1 body.bin | grep -q '^xl/workbook.xml$'; then
-                echo "=== SPREADSHEET SHEETS (first 70 rows each, cells joined with |)"
-                python3 "$GITHUB_WORKSPACE/scripts/xlsx-dump.py" body.bin 70 | head -c "$N" | iconv -f utf-8 -t utf-8 -c
-              fi
-              FIRST=$(unzip -Z1 body.bin | grep -iE '\.(csv|txt|json|xml)$' | head -1)
-              if [ -n "$FIRST" ]; then echo "=== FIRST $N BYTES OF $FIRST"; unzip -p body.bin "$FIRST" | head -c "$N" | iconv -f utf-8 -t utf-8 -c; fi
-            elif file -b body.bin | grep -qi gzip; then
-              echo "=== FIRST $N BYTES (gunzipped)"; gunzip -c body.bin | head -c "$N" | iconv -f utf-8 -t utf-8 -c
-            else
-              echo "=== FIRST $N BYTES"; head -c "$N" body.bin | iconv -f utf-8 -t utf-8 -c
-            fi
-          } > "result.txt"
-          cd "$GITHUB_WORKSPACE"
-          git config user.name "proofprice-librarian"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes; then git checkout -q -B probes origin/probes; else git checkout -q --orphan probes; fi
-          git rm -rq --cached . >/dev/null 2>&1 || true
-          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name probes -exec rm -rf {} +
-          mkdir -p probes && cp /tmp/p/result.txt "probes/$SAFE.txt"
-          git add probes
-          git commit -qm "Probe $SAFE" || exit 0
-          # Several probes may run at once: retry on a busy branch (each writes its own file, so no conflicts).
-          for i in 1 2 3 4 5; do
-            git push -q origin probes && exit 0
-            sleep $((i * 3))
-            git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git rebase -q origin/probes
-          done
-          echo "::warning::Could not save the probe result after 5 tries (busy branch); run the probe again."
+          UA="ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)"
+          curl -sS -L --max-time 120 -A "$UA" -o p.html "https://www.vlaamsenutsregulator.be/cijfers/v-test-data-en-energieprijscurves"
+          URL=$(grep -o 'https://assets.vlaamsenutsregulator.be/[^"]*v-test-data-exclbtw[^"]*' p.html | head -1 | sed 's/&amp;/\&/g')
+          echo "URL=$URL"
+          curl -sS -L --max-time 120 -A "$UA" -o f.xlsx "$URL"
+          python3 scripts/vreg-explore.py f.xlsx
