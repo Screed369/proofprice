@@ -1,0 +1,23 @@
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_8b84c4ee58e3cfc0ece0d773c8ca6abc&sort=month%20desc,_id%20desc&limit=5
+Fetched: 2026-10-24T21:15:48Z from GitHub Actions
+Status, type, bytes: 200 application/json 2265
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 21:15:48 GMT
+content-type: application/json
+x-content-type-options: nosniff
+vary: Accept-Encoding
+apigw-requestid: FxHwwg--yQ0ENQQ=
+strict-transport-security: max-age=31536000; includeSubDomains
+last-modified: Sat, 24 Oct 2026 21:15:48 GMT
+cache-control: max-age=300
+cf-cache-status: MISS
+set-cookie: _cfuvid=8_.KBFigIcoRnGLXt5OkwESvzASu.R8U7gX2gJAStM4-1792876547.695171-1.0.1.1-EavnQI7qJOWsNpKiybkl92LpYlcXnxYD6OPROUtC1NE; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+server: cloudflare
+cf-ray: a4fbffb71ae5a21f-MSP
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"success":true,"result":{"resource_id":"d_8b84c4ee58e3cfc0ece0d773c8ca6abc","fields":[{"type":"text","id":"month"},{"type":"text","id":"town"},{"type":"text","id":"flat_type"},{"type":"text","id":"block"},{"type":"text","id":"street_name"},{"type":"text","id":"storey_range"},{"type":"text","id":"floor_area_sqm"},{"type":"text","id":"flat_model"},{"type":"text","id":"lease_commence_date"},{"type":"text","id":"remaining_lease"},{"type":"numeric","id":"resale_price"},{"type":"int4","id":"_id"}],"records":[{"_id":243500,"month":"2026-10","town":"YISHUN","flat_type":"MULTI-GENERATION","block":"633","street_name":"YISHUN ST 61","storey_range":"10 TO 12","floor_area_sqm":"171.00","flat_model":"Multi Generation","lease_commence_date":"1987","remaining_lease":"60 years 03 months","resale_price":"1178000"},{"_id":243441,"month":"2026-10","town":"YISHUN","flat_type":"5 ROOM","block":"832","street_name":"YISHUN ST 81","storey_range":"01 TO 03","floor_area_sqm":"122.00","flat_model":"Improved","lease_commence_date":"1988","remaining_lease":"60 years 07 months","resale_price":"740000"},{"_id":243440,"month":"2026-10","town":"YISHUN","flat_type":"5 ROOM","block":"866","street_name":"YISHUN ST 81","storey_range":"04 TO 06","floor_area_sqm":"127.00","flat_model":"Improved","lease_commence_date":"1988","remaining_lease":"60 years 05 months","resale_price":"735000"},{"_id":243435,"month":"2026-10","town":"YISHUN","flat_type":"5 ROOM","block":"755","street_name":"YISHUN ST 72","storey_range":"01 TO 03","floor_area_sqm":"122.00","flat_model":"Improved","lease_commence_date":"1986","remaining_lease":"59 years 02 months","resale_price":"620000"},{"_id":243415,"month":"2026-10","town":"YISHUN","flat_type":"5 ROOM","block":"505D","street_name":"YISHUN ST 51","storey_range":"04 TO 06","floor_area_sqm":"112.00","flat_model":"Improved","lease_commence_date":"2016","remaining_lease":"88 years 06 months","resale_price":"692500"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_8b84c4ee58e3cfc0ece0d773c8ca6abc&limit=5&sort=month%20desc%2C_id%20desc","next":"/api/action/datastore_search?resource_id=d_8b84c4ee58e3cfc0ece0d773c8ca6abc&offset=5&limit=5&sort=month%20desc%2C_id%20desc"},"total":243500,"limit":5,"sort":"month%20desc%2C_id%20desc"}}
