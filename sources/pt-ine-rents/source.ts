@@ -8,7 +8,7 @@
 // count. So the answer is an official statistic: value + measure "median", range fields null, sample_size null. These are agreed (contract) rents.
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { fetchJson, InputError, SourceError } from "../../lib/http";
+import { fetchJson, InputError, retryOnce, SourceError } from "../../lib/http";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { NO_COUNT } from "../../lib/stats";
 import { PT_PLACES, PtLevel, PtPlace } from "./places";
@@ -52,7 +52,8 @@ export interface FetchOptions {
   now?: Date;
 }
 // INE's servers can be slow, and a request with a period code they do not know hangs: we only ever ask for "all periods" (Dim1=T).
-const defaultFetcher: Fetcher = (url) => fetchJson(url, {}, 25000);
+// INE is slow and drops connections from Vercel: two attempts of 15 s (0.5 s apart) stay inside the 40 s answer deadline; a copy from the library follows if both fail.
+const defaultFetcher: Fetcher = (url) => retryOnce(() => fetchJson(url, {}, 15000));
 
 // ---------- place names (pure) ----------
 

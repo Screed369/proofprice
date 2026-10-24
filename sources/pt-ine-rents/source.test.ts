@@ -193,3 +193,35 @@ test("pt-ine-rents: manifest collects daily with reference dates and no record c
   assert.equal(s.referenceDates, true);
   assert.equal(s.nominalCounts, true);
 });
+
+test("pt-ine-rents: the live request is tried twice when INE drops the first connection", async () => {
+  const real = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls++;
+    if (calls === 1) throw Object.assign(new TypeError("fetch failed"), { cause: { code: "UND_ERR_CONNECT_TIMEOUT" } });
+    return new Response(JSON.stringify(F.LISBOA_PT_HISTORY), { status: 200, headers: { "content-type": "application/json" } });
+  }) as typeof fetch;
+  try {
+    const a = await ptRents({ town: "Lisboa" }, { now: NOW });
+    assert.equal(calls, 2);
+    assert.equal(a.status, "ok");
+  } finally {
+    globalThis.fetch = real;
+  }
+});
+
+test("pt-ine-rents: a source that fails twice still ends in the source error (the library copy takes over in runCategory)", async () => {
+  const real = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls++;
+    throw new TypeError("fetch failed");
+  }) as typeof fetch;
+  try {
+    await assert.rejects(() => ptRents({ town: "Porto" }, { now: NOW }), SourceError);
+    assert.equal(calls, 2);
+  } finally {
+    globalThis.fetch = real;
+  }
+});
