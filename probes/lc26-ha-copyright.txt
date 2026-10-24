@@ -1,0 +1,762 @@
+URL: https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10044&Lang=ENG
+Fetched: 2026-10-24T21:04:48Z from GitHub Actions
+Status, type, bytes: 200 text/html; Charset=utf-8 276216
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html; Charset=utf-8
+Set-Cookie: ASPSESSIONIDAGCRDBCS=LFJBKPNBMDBGGELHOPNKAONE; secure; path=/; HttpOnly
+X-Frame-Options: SAMEORIGIN
+Content-Security-Policy: frame-ancestors 'self'
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: None
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+SERVER: 
+X-POWERED-BY: 
+X-ASPNET-VERSION: 
+Date: Sat, 24 Oct 2026 21:04:47 GMT
+Content-Length: 276216
+Set-Cookie: MY_cookie=!sTSoAq2If/f/C20uIvSt/DIjHib/aV1pbiCNzJyb/z2CsFQuM15BJPOytsmLjJY041LCHPcF6z9Yg+s=; path=/; Httponly; Secure
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 30000 BYTES
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--use Edge ASL@20151023-->
+
+<link rel="stylesheet" href="v3/css/ha_framework-en.css" type="text/css"/>
+<link rel="stylesheet" href="v3/css/header-en.css?t=200907" type="text/css"/>
+<link rel="stylesheet" href="v3/css/footer-en.css" type="text/css"/>
+<link rel="stylesheet" href="v3/css/menu_dropdown.css" type="text/css"/>
+<link rel="stylesheet" href="v3/css/horizontal_menu_dropdown.css" type="text/css"/>
+<link rel="stylesheet" href="v3/css/vertical_menu_dropdown.css" type="text/css"/>
+<script language="JavaScript" type="text/javascript">
+
+browser_version= parseInt(navigator.appVersion);
+browser_type = navigator.appName;
+if (browser_type == "Microsoft Internet Explorer" ) {
+document.write("<link REL='stylesheet' HREF='v3/css/menu-IE-en.css' TYPE='text/css'>");
+}
+
+else {
+document.write("<link REL='stylesheet' HREF='v3/css/menu-FF-en.css' TYPE='text/css'>");
+}
+
+</script>
+<link rel="stylesheet" href="v3/css/accordion-en.css" type="text/css"/>
+
+<script language="javascript" type="text/javascript" src="v3/common/js/jquery-min.js"></script>
+<script language="javascript" type="text/javascript" src="v3/common/js/jquery-fix.js"></script>
+<script language="javascript" type="text/javascript" src="v3/common/js/jquery.msAccordion.js"></script>
+
+
+<script type="text/javascript" src="v3/common/js/jquery.metadata.js"></script>
+
+<script type="text/javascript" src="v3/common/js/styleswitch.js"></script>
+<script type="text/javascript" src="v3/common/js/jquery.hoverIntent.js"></script>
+<!--added ASL@20151023-->
+
+
+<!--[if lt IE 7.]>
+<script defer type="text/javascript" src="pngfix.js"></script>
+<![endif]-->
+
+	<script type="text/javascript">
+
+
+
+	</script>
+    
+    <script type="text/javascript">
+
+        function loadAccordions() {
+            var bottomAccordion = new accordion('vertical_container');
+
+
+        }
+		
+	</script>
+    
+<script type="text/javascript">
+
+function resizeFrame(f) {
+	if (f.contentWindow.document.body.scrollHeight<50)
+		f.style.height = "1000px";
+	else
+		f.style.height = f.contentWindow.document.body.scrollHeight+30+"px"; 
+		/*More spacing ASL@20151120*/
+}
+
+
+function CheckIsIE() { 
+	if (navigator.appName.toUpperCase() == 'MICROSOFT INTERNET EXPLORER') { return true;} 
+	else { return false; } 
+} 
+function PrintThisPage() { 
+	if (CheckIsIE() == true) { 
+		document.childframe.focus(); 
+		document.childframe.print(); 
+	} else { 
+		window.frames['childframe'].focus(); 
+		window.frames['childframe'].print(); 
+	}
+}
+</script>
+<script type="text/javascript">
+function RemoveBadCharJS(strinput) {
+    var badcha = new Array(">", "<", ";", "%", "(", ")", "'");
+    for (var i = 0; i < badcha.length; i++) {
+        strinput = strinput.replace(badcha, "");
+    }
+
+    return strinput;
+}
+
+function printIframeContent(){
+
+	if (CheckIsIE() == true){ 
+		encodeiframecontent = RemoveBadCharJS(document.childframe.location.pathname.substr(1) + document.childframe.location.search);
+	}else{  
+		encodeiframecontent = RemoveBadCharJS(window.frames['childframe'].location.pathname.substr(1) + window.frames['childframe'].location.search);
+	}
+    
+	if (encodeiframecontent.indexOf("advancedsearch_result.asp")>-1)
+		encodeiframecontent += "&searchurl=1";
+		
+	var newPathname = "";
+
+	encodeiframecontent = encodeiframecontent.replace('visitor/', '');
+	encodeiframecontent = encodeURIComponent(encodeiframecontent);
+
+	window.open('ha_view_content_print.asp?path=' + encodeiframecontent, '_blank', 'width=750,height=700,top=0,left=0,scrollbars=yes,toolbar=no');
+
+}
+function viewFullContent(){
+	var encodeiframecontent
+	if (CheckIsIE() == true) 
+		encodeiframecontent = encodeURIComponent(RemoveBadCharJS(document.childframe.location.href));
+	else  
+		encodeiframecontent = encodeURIComponent(RemoveBadCharJS(window.frames['childframe'].location.href));
+	
+	window.open('view_fullcontent.asp?pagename=ha_visitor_index&iframepage='+encodeiframecontent,'_blank','top=0,left=0,scrollbars=yes,toolbar=yes,resizable=yes,location=yes');
+}
+</script>
+<script type="text/javascript">
+function HistoryBack(){
+	var encodeiframecontent
+	if (CheckIsIE() == true) 
+		encodeiframecontent = encodeURIComponent(document.childframe.location.href);
+	else  
+		encodeiframecontent = encodeURIComponent(window.frames['childframe'].location.href);
+
+	if (encodeiframecontent.indexOf("ha_isf_result")>-1){
+		location.replace("#");
+		self.history.go(-2);
+	}else if (encodeiframecontent.indexOf("ha_isf_result_gopc")>-1){
+		location.replace("#");
+		self.history.go(-2);
+	}else if (encodeiframecontent.indexOf("ha_isf_result_gopc_sms")>-1){
+		location.replace("#");
+		self.history.go(-2);
+	}else{
+		location.replace("#");
+		self.history.go(-1);
+	}
+}
+
+</script>
+
+
+<script language="JavaScript" type="text/javascript">
+<!--
+	function trim(str){
+		return str.replace(/(^\s*)|(\s*$)/g, ""); 
+	}
+
+	function checksubmit(){
+		var result = false;
+		var f = document.forms["f"];
+		var msg = "";
+		if (trim(f.as_q.value) == ""){
+			msg += "Please enter keyword for searching.";
+		}
+		if(msg!=""){
+			alert(msg);
+		}else{
+			result = true;
+		}
+		return result;
+	}
+//-->
+</script>
+
+
+<!-- horizontal menu Add by ASL 20161103 -->
+
+<script type="text/javascript">
+	<!--accessible menu-->
+	$(document).ready(function ($) {
+		var openchildmenu = false;
+		$('.menuFocus').focus(function () {
+			$(".menuFocus").next().removeAttr("style");
+			$('.submenuFocus').parent().parent().removeAttr("style");
+			$(this).next().css("display","block");
+		});	
+		
+		$('.submenuFocus').focus(function () {
+			$(this).parent().prev().children("ul").removeAttr("style");
+			$(this).next().css("display","block");
+			openchildmenu = true;
+		});	
+		
+		$('.submenuFocus').next().find('li:last-child a').blur(function () {
+			var count = $(this).children().length;
+			
+			if (count = 1 && !$(this).hasClass("submenuFocus"))
+				openchildmenu = false;
+				
+			if (!openchildmenu)
+				$(this).parent().parent().removeAttr("style");
+			else
+				openchildmenu = false;
+		});	
+		
+	});
+	
+	function closeAllMenu(){
+		$(".menuFocus").next().removeAttr("style");
+		$('.submenuFocus').parent().parent().removeAttr("style");
+	};
+	
+	$(document).ready(function ($) {
+		
+		$("#vertmenuBox ul li ul li:last-child a").addClass("lastchild");
+		
+		$('.verticalMenuItem').focus(function () {
+			$(this).next().css("display","block");
+		});	
+
+		$('.verticalMenuItem').blur(function () {
+			var count = $(this).children().length;
+			if ($(this).hasClass("lastchild") && count == 1)
+			{
+				$(this).parent().parent().removeAttr("style");				
+			}
+
+		});
+		
+		
+	});
+	
+</script>
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- <title>Hospital Authority</title> -->
+<title>Hospital Authority : Fees and Charges</title>
+<meta name="keywords" content="Hospital Authority, HA" />
+<meta name="description" content="A statutory body established on 1 December 1990 under the Hospital Authority Ordinance to manage all public hospitals in Hong Kong." />
+
+
+</head>
+
+<body id="body">
+    <!-- Load Facebook SDK for JavaScript ASL@20151023-->
+	<div id="fb-root"></div>
+
+<div id="wholeframe" style="width:1000px; margin-left:auto; margin-right:auto;">
+
+<input id="fileSuffix" type="hidden" value="-en" />
+<input id="fileLangSuffix" type="hidden" value="-en" />
+<input id="loadIFrameCSS" type="hidden" value="style-middle-en" />
+<div id="mainContent">
+<!--Move to common asp ASL@20151023-->
+
+
+
+<script language="JavaScript" type="text/javascript">
+
+	/* =================================================================================================
+	Socialbookmarking Share Functions
+	================================================================================================= */
+	var currentPath = escape(document.URL);
+	function shareFacebook(){
+		var currentPath = escape(document.URL);
+		var extLink = 'http://www.facebook.com/share.php?u=';
+		var pageTitle = document.title;
+		window.open(extLink + currentPath + '&t=' + pageTitle);
+	};
+
+	function shareTwitter(){
+		var currentPath = escape(document.URL);
+		var extLink = 'http://twitter.com/home?status=';
+		var pageTitle = encodeURI(document.title);
+		window.open(extLink + pageTitle + '%3A+' + currentPath);
+	};
+
+	function shareWeibo(){
+		var currentPath = escape(document.URL);
+		var extLink = "http://v.t.sina.com.cn/share/share.php?title=";
+		var pageTitle = encodeURI(document.title);
+		window.open(extLink + pageTitle + '&url=' + currentPath + '&source=bookmark');
+	};
+
+	function emailForm(){
+		var currentPath = escape(document.URL);
+		var pageTitle = document.title;
+		var mailto_link = 'mailto:?subject='+pageTitle+'&body='+currentPath;
+		window.open(mailto_link);
+	};
+
+	function shareYoutube(){
+		var currentPath = escape(document.URL);
+		var pageTitle = document.title;
+		var mailto_link = 'mailto:?subject='+pageTitle+'&body='+currentPath;
+		window.open(mailto_link);
+	};
+	
+</script>
+
+<script type="text/javascript">
+
+	$(document).ready(function ($) {
+		
+		$('#share, .share_bg').hover(function () {
+			$('#shareBg').css('display', 'block');
+		}, function () {
+			$('#shareBg').css('display', 'none');
+		});
+
+		$('#share, .share_bg').focus(function () {
+			$('#shareBg').css('display', 'block');
+		});
+			
+		$('#shareBg .shareItem').focus(function () {
+			$('#shareBg').css('display', 'block');
+		});		
+
+		
+	});
+	
+	function closeShare(){
+		$('#shareBg').css('display', 'none');
+	};
+	
+</script>     
+
+<script type="text/javascript">
+
+    (function () {
+        var cx = '5b0ea7adcef05262f';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+    })();
+
+
+	function submitSearchRequestToGCSE(){
+		if (checksubmit()){
+			var $haSearchingBox = $("#search_text");
+			if ($haSearchingBox.length == 0){
+				console.log('HA searching box is not found.');
+			}else{
+				var keyword = $haSearchingBox.val();
+				google.search.cse.element.getElement("gcseSearchingBox").execute(keyword);
+			}
+			return false;
+		}
+	}
+	
+</script> 
+
+<div id="header">
+
+<div class="gcseSearchingBox"><gcse:search enablehistory="false" gname="gcseSearchingBox" newWindow="true"></gcse:search></div>	
+
+<div class="skipLink">
+	<a href="#content">Skip to content</a>
+</div>
+<table style="width:1000px;" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td rowspan="2" valign="top" class="style" style="width:200px; padding-top:13px; padding-left:20px;"><a href ="/visitor/ha_index.asp"><img src="v3/common/images/ha_logo.gif" alt="Hospital Authority" title="Hospital Authority" name="HA" width="184" height="77" id="HA" /></a></td>
+		<td style="height:56px;" align="right" valign="top">
+			<ul id="functionList">
+				<li><a href="/visitor/ha_index.asp">Home</a></li>
+				<li>&nbsp;</li>
+				<li class="funtionListicons" style="padding-left:0px;">
+					<a href="/visitor/ha_visitor_index.asp?Content_ID=10044&Lang=ENG&amp;FontSymbol=as"><img src="v3/common/images/btn_as.gif" name="samllfont" width="16" height="16" border="0" id="samllfont" alt="Small font size" title="Small font size" /></a>
+					<a href="/visitor/ha_visitor_index.asp?Content_ID=10044&Lang=ENG&FontSymbol=am"><img src="v3/common/images/btn_am_on.gif" name="middlefont" width="16" height="16" border="0" id="middlefont" alt="Medium font size" title="Medium font size" /></a>
+					<a href="/visitor/ha_visitor_index.asp?Content_ID=10044&Lang=ENG&amp;FontSymbol=al"><img src="v3/common/images/btn_al.gif" name="largefont" width="16" height="16" border="0" id="largefont" alt="Large font size" title="Large font size" /></a>
+				</li>
+				<li>&nbsp;</li>
+				<li><a href="/visitor/ha_visitor_text_index.asp?Content_ID=10044&Lang=ENG&Dimension=100&Parent_ID=10042&amp;Ver=TEXT">Text-only</a></li>
+<li>&nbsp;</li>
+<li><a href="/visitor/ha_visitor_index.asp?Content_ID=222264&Lang=ENG&Dimension=100&amp;Ver=HTML">Apps</a></li>
+<li>&nbsp;</li>
+<li><a href="/visitor/ha_visitor_index.asp?Content_ID=10044&Lang=CHIB5&Dimension=100&Parent_ID=10042&amp;Ver=HTML">繁體</a></li>
+<li>&nbsp;</li>
+<li><a href="/visitor/ha_visitor_index.asp?Content_ID=10044&Lang=CHIGB&Dimension=100&Parent_ID=10042&amp;Ver=HTML">简体</a></li>
+<li>&nbsp;</li>
+<li><a href="https://www3.ha.org.hk/em/" target="_blank" rel="noopener">Other Languages</a></li>
+<li>&nbsp;</li>
+
+				<li><a href="/visitor/ha_visitor_index.asp?Page=ha_sitemap.asp&amp;Lang=ENG&amp;Ver=HTML">Sitemap</a></li>				
+                <li>&nbsp;</li>
+				<li><a href="#" onclick="javascript:printIframeContent();">Print</a></li>
+				<li>&nbsp;</li>
+				<li class="sharemenu">
+                    <div class="sharepos" >
+                        <a href="#" id="share" style="font-size: 12px; text-decoration: none;" class="iconBarItemFont iconBarItem share01">
+							<img src="v3/images/btn_share.png" style="width:20px; height:20px; margin-top:-5px;" alt="Share" title="Share" class="iconBarItem iconBarItemPadding"></img>
+						</a>
+                        <div id="shareBg" class="share_bg" style="display: none; background-image:url(v3/images/bg_share.png); background-repeat:no-repeat;">
+                                <table cellpadding="0" cellspacing="8" style="padding-left: 10px; margin-top: -7px;"><tbody><tr>
+							        <td>
+								        <a class="shareItem" href="javascript:emailForm();">
+									        <img src="v3/images/btn_email.png" style="width:22px; height:18px;" name="gmail" id="gmail" alt="Share by Email" title="Share by Email"></img>
+								        </a>
+							        </td>
+							        <td>
+								        <a class="shareItem" href="javascript:shareFacebook();">
+									        <img src="v3/images/btn_facebook_share_square.png" style="height:18px;" name="sharefacebook" id="sharefacebook" alt="Share to Facebook" title="Share to Facebook"></img>
+								        </a>
+							        </td>
+							        <td>
+								        <a class="shareItem" href="javascript:shareTwitter();">
+									        <img src="v3/images/btn_twitter_square.png" style="height:18px;" name="twitter" id="twitter" alt="Share to Twitter" title="Share to Twitter"></img>
+								        </a>
+							        </td>
+							        <!--td>
+								        <a class="shareItem" href="javascript:shareWeibo();" >
+									        <img src="v3/images/btn_weibao.png" style="height:18px;" name="sina" id="sina" alt="Share to Sina" title="Share to Sina"></img>
+								        </a>
+							        </td-->
+							        </tr></tbody>
+                                </table>
+						    <!--	<span><a style="display: block;" href="#">
+								    <img src="v3/images/bg_share.png" width="198px" alt="Background for Share to social media"></a> </span>-->
+					    </div>
+                       
+					</div>					
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr style="float:right;">
+	
+		<td><div>			
+			<form class="searchbox_1" name="f" method="get" action="#" onsubmit="return false;"> 	
+				<label for="search_text" style="position:absolute; left:-10000px; top:auto;">Enter search keyword(s)</label>
+				<input id="search_text" title="Search" name="as_q"  type="search" class="search_1" placeholder="Enter search keyword(s)"   />
+				<label for="search_btn" style="position:absolute; left:-10000px; top:auto;">Search</label>
+				
+				<button id="search_btn" title="Start searching" type="submit" class="submit_1" value="Search" onclick="submitSearchRequestToGCSE();"></button>&nbsp;&nbsp;&nbsp;
+				<input type="hidden" id="Page" name="Page" value="advancedsearch_result.asp" />
+				<input type="hidden" id="Lang" name="Lang" value="ENG" />
+				<input type="hidden" id="search_area" name="search_area" value="0" />
+				<input type="hidden" id="num" name="num" value="10" />
+				<input type="hidden" id="searchType" name="searchType" value="1" />
+
+			</form>
+	
+			</div>
+				
+		</td>
+	</tr>
+	<tr>
+		<td align="center" valign="bottom" colspan="3" style="padding-top:10px; height:30px;">
+
+			<table border="0" cellpadding="0" cellspacing="0" style="background:url('v3/common/images/top_nav_bg.gif'); width: 1000px;" bgcolor="#FFFFFF" class="container">
+				<tr><td><img src="v3/common/images/top_nav_start.gif" width="8" height="30" alt=""/></td>
+					<td class="myMenu">
+
+						<table cellspacing='0' cellpadding='0' border='0' style="width:965px;">
+							
+											<tr><!--c2:0-->
+												<td class="horizontalmenu ">
+													<ul class="horDropdownMenu">
+														<li><a class="menuFocus"
+																style="font-size:16px; text-align:center;"
+																href="/visitor/ha_visitor_index.asp?Content_ID=10004&Lang=ENG&Dimension=100">About
+																Us</a>
+															<ul id="menu_10004" class="">
+																<li><a class="submenuFocus"
+																		href="/visitor/ha_visitor_index.asp?Content_ID=10005&Lang=ENG&Dimension=100&Parent_ID=10004">
+																		<table style="width:170px;">
+																			<tr>
+																				<td
+																					style="width:13px; vertical-align:top;">
+																					<span
+																						style="font-size:14px; float:left; height:14px;">▶
+																						&nbsp;</span></td>
+																				<td style="vertical-align:top;"><span
+																						style="display:block; margin-left:2px; font-size:14px;">Welcome
+																						Messages</span></td>
+																			</tr>
+																		</table>
+																	</a>
+																	<ul id="menu_10005" class="">
+																		<li><a
+																				href="/visitor/ha_visitor_index.asp?Content_ID=10006&Lang=ENG&Dimension=100&Parent_ID=10005">
+																				<table style="width:170px;">
+																					<tr>
+																						<td
+																							style="width:13px; vertical-align:top;">
+																							<img
+																								src="v3/common/images/2nd_level_arrow.gif">
+																						</td>
+																						<td style="vertical-align:top;">
+																							<span
+																								style="display:block; margin-left:2px; font-size:14px;">Message
+																								from Chairman</span>
+																						</td>
+																					</tr>
+																				</table>
+																			</a></li>
+																		<li><a
+																				href="/visitor/ha_visitor_index.asp?Content_ID=10007&Lang=ENG&Dimension=100&Parent_ID=10005">
+																				<table style="width:170px;">
+																					<tr>
+																						<td
+																							style="width:13px; vertical-align:top;">
+																							<img
+																								src="v3/common/images/2nd_level_arrow.gif">
+																						</td>
+																						<td style="vertical-align:top;">
+																							<span
+																								style="display:block; margin-left:2px; font-size:14px;">Message
+																								from Chief
+																								Executive</span></td>
+																					</tr>
+																				</table>
+																			</a></li>
+																	</ul>
+																</li>
+																<li><a
+																		href="/visitor/ha_visitor_index.asp?Content_ID=10008&Lang=ENG&Dimension=100&Parent_ID=10004">
+																		<table style="width:170px;">
+																			<tr>
+																				<td
+																					style="width:13px; vertical-align:top;">
+																					<span
+																						style="font-size:14px; float:left; height:14px;">▶
+																						&nbsp;</span></td>
+																				<td style="vertical-align:top;"><span
+																						style="display:block; margin-left:2px; font-size:14px;">Introduction</span>
+																				</td>
+																			</tr>
+																		</table>
+																	</a></li>
+																<li><a
+																		href="/visitor/ha_visitor_index.asp?Content_ID=10009&Lang=ENG&Dimension=100&Parent_ID=10004">
+																		<table style="width:170px;">
+																			<tr>
+																				<td
+																					style="width:13px; vertical-align:top;">
+																					<span
+																						style="font-size:14px; float:left; height:14px;">▶
+																						&nbsp;</span></td>
+																				<td style="vertical-align:top;"><span
+																						style="display:block; margin-left:2px; font-size:14px;">Vision,
+																						Mission, Values</span></td>
+																			</tr>
+																		</table>
+																	</a></li>
+																<li><a class="submenuFocus"
+																		href="/visitor/ha_visitor_index.asp?Content_ID=10010&Lang=ENG&Dimension=100&Parent_ID=10004">
+																		<table style="width:170px;">
+																			<tr>
+																				<td
+																					style="width:13px; vertical-align:top;">
+																					<span
+																						style="font-size:14px; float:left; height:14px;">▶
+																						&nbsp;</span></td>
+																				<td style="vertical-align:top;"><span
+																						style="display:block; margin-left:2px; font-size:14px;">Corporate
+																						Governance</span></td>
+																			</tr>
+																		</table>
+																	</a>
+																	<ul id="menu_10010" class="">
+																		<li><a class="submenuFocus"
+																				href="/visitor/ha_visitor_index.asp?Content_ID=10011&Lang=ENG&Dimension=100&Parent_ID=10010">
+																				<table style="width:170px;">
+																					<tr>
+																						<td
+																							style="width:13px; vertical-align:top;">
+																							<img
+																								src="v3/common/images/2nd_level_arrow.gif">
+																						</td>
+																						<td style="vertical-align:top;">
+																							<span
+																								style="display:block; margin-left:2px; font-size:14px;">Hospital
+																								Authority Board</span>
+																						</td>
+																					</tr>
+																				</table>
+																			</a>
+																			<ul id="menu_10011" class="">
+																				<li><a
+																						href="/visitor/ha_visitor_index.asp?Content_ID=10192&Lang=ENG&Dimension=100&Parent_ID=10011">
+																						<table style="width:170px;">
+																							<tr>
+																								<td
+																									style="width:13px; vertical-align:top;">
+																									<img
+																										src="v3/common/images/2nd_level_arrow.gif">
+																								</td>
+																								<td
+																									style="vertical-align:top;">
+																									<span
+																										style="display:block; margin-left:2px; font-size:14px;">Membership</span>
+																								</td>
+																							</tr>
+																						</table>
+																					</a></li>
+																				<li><a
+																						href="/visitor/ha_visitor_index.asp?Content_ID=237981&Lang=ENG&Dimension=100&Parent_ID=10011">
+																						<table style="width:170px;">
+																							<tr>
+																								<td
+																									style="width:13px; vertical-align:top;">
+																									<img
+																										src="v3/common/images/2nd_level_arrow.gif">
+																								</td>
+																								<td
+																									style="vertical-align:top;">
+																									<span
+																										style="display:block; margin-left:2px; font-size:14px;">Administrative
+																										and Operational
+																										Meeting -
+																										Papers</span>
+																								</td>
+																							</tr>
+																						</table>
+																					</a></li>
+																				<li><a
+																						href="/visitor/ha_visitor_index.asp?Content_ID=238421&Lang=ENG&Dimension=100&Parent_ID=10011">
+																						<table style="width:170px;">
+																							<tr>
+																								<td
+																									style="width:13px; vertical-align:top;">
+																									<img
+																										src="v3/common/images/2nd_level_arrow.gif">
+																								</td>
+																								<td
+																									style="vertical-align:top;">
+																									<span
+																										style="display:block; margin-left:2px; font-size:14px;">Administrative
+																										and Operational
+																										Meeting -
+																										Minutes</span>
+																								</td>
+																							</tr>
+																						</table>
+																					</a></li>
+																				<li><a
+																						href="/visitor/ha_visitor_index.asp?Content_ID=238428&Lang=ENG&Dimension=100&Parent_ID=10011">
+																						<table style="width:170px;">
+																							<tr>
+																								<td
+																									style="width:13px; vertical-align:top;">
+																									<img
+																										src="v3/common/images/2nd_level_arrow.gif">
+																								</td>
+																								<td
+																									style="vertical-align:top;">
+																									<span
+																										style="display:block; margin-left:2px; font-size:14px;">Hospital
+																										Authority Board
+																										Meeting &#8211;
+																										Minutes</span>
+																								</td>
+																							</tr>
+																						</table>
+																					</a></li>
+																				<li><a
+																						href="/visitor/ha_visitor_index.asp?Content_ID=238430&Lang=ENG&Dimension=100&Parent_ID=10011">
+																						<table style="width:170px;">
+																							<tr>
+																								<td
+																									style="width:13px; vertical-align:top;">
+																									<img
+																										src="v3/common/images/2nd_level_arrow.gif">
+																								</td>
+																								<td
+																									style="vertical-align:top;">
+																									<span
+																										style="display:block; margin-left:2px; font-size:14px;">Hospital
+																										Authority Board
+																										Meeting &#8211;
+																										Papers</span>
+																								</td>
+																							</tr>
+																						</table>
+																					</a></li>
+																			</ul>
+																		</li>
+																		<li><a class="submenuFocus"
+																				href="/visitor/ha_visitor_index.asp?Content_ID=10015&Lang=ENG&Dimension=100&Parent_ID=10010">
+																				<table style="width:170px;">
+																					<tr>
+																						<td
+																							style="width:13px; vertical-align:top;">
+																							<img
+																								src="v3/common/images/2nd_level_arrow.gif">
+																						</td>
+																						<td style="vertical-align:top;">
+																							<span
+																								style="display:block; margin-left:2px; font-size:14px;">Board
+																								Committees</span></td>
+																					</tr>
+																				</table>
+																			</a>
+																			<ul id="menu_10015" class="">
+																				<li><a
+																						href="/visitor/ha_visitor_index.asp?Content_ID=10016&Lang=ENG&Dimension=100&Parent_ID=10015">
+																						<table style="width:170px;">
+																							<tr>
+																								<td
+																									style="width:13px; vertical-align:top;">
+																									<img
+																										src="v3/common/images/2nd_level_arrow.gif">
+																								</td>
+																								<td
+																									style="vertical-align:top;">
+																									<span
+																										style="display:block; margin-left:2px; font-size:14px;">Membership
+																										&amp; Terms of
+																										Reference
+																									</span></td>
+																							</tr>
+																						</table>
+																					</a></li>
+																			</ul>
+																		</li>
+																		<li><a
+																				href="/visitor/ha_visitor_index.asp?Content_ID=10031&Lang=ENG&Dimension=100&Parent_ID=10010">
+																				<table style="width:170px;">
+																					<tr>
+																						<td
+																							style="width:13px; vertical-align:top;">
+																							<img
+																								src="v3/common/images/2nd_level_arrow.gif">
+																						</td>
+																						<td style="vertical-align:top;">
+																							<span
+																								style="display:block; margin-left:2px; font-size:14px;">Hospital
+																								Governing Committees
+																							</span></td>
+																					</tr>
+																				</table>
+																			</a></li>
+																		<li><a cl
