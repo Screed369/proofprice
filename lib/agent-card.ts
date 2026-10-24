@@ -18,7 +18,7 @@ export function buildAgentCard() {
     {
       id: "check",
       name: "Price check",
-      description: `Is a quoted price typical? Compares it with recorded prices, with evidence, source and licence. MCP tool ${CHECK_TOOL}; REST GET ${SITE_URL}${CHECK_REST}. ${PREMIUM.check.freePerDay} free a day, then paid per call with x402 once payments are on: see ${SITE_URL}/pricing.`,
+      description: `Is a quoted price typical? Compares it with recorded prices, with evidence, source and licence. MCP tool ${CHECK_TOOL}; REST GET ${SITE_URL}${CHECK_REST}. ${PREMIUM.check.freePerDay} free a day, then paid per call with x402: see ${SITE_URL}/pricing.`,
       tags: ["prices", "price-check"],
       inputModes: ["application/json"],
       outputModes: ["application/json"],

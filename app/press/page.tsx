@@ -44,7 +44,7 @@ export default function Press() {
           on <a href="/method">/method</a>.
         </li>
         <li>
-          Answers are free and need no key. A few extra calls may cost a few cents each once payments are switched on; see{" "}
+          Answers are free and need no key. A few extra calls (price check, daily history) cost a few cents each after a free daily allowance; see{" "}
           <a href="/pricing">/pricing</a>.
         </li>
       </ul>

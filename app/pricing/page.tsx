@@ -19,8 +19,7 @@ export default function Pricing() {
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Pricing" }]} />
       <h1>Pricing</h1>
       <p className="lede">
-        Asking what people paid is free. A few extra calls cost a few cents each, once the free calls for the day are used and only after payments
-        are switched on.
+        Asking what people paid is free. A few extra calls cost a few cents each, once the free calls for the day are used.
       </p>
       <p>
         <strong>Right now:</strong> {p.payments_note} The prices below are the approved prices. They are
