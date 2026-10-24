@@ -229,6 +229,15 @@ export async function ieBackfill(from: string, to: string): Promise<BackfillResu
   };
 }
 
+/** The place a request names: town, or its aliases district / postcode_district (never silently ignored). */
+export function iePlaceOf(p: Record<string, unknown>): string | undefined {
+  for (const k of ["town", "district", "postcode_district"]) {
+    const v = p[k];
+    if (typeof v === "string" && v.trim() !== "") return v;
+  }
+  return undefined;
+}
+
 /** Where a request lives in the library. town may be a county or a Dublin postal district. */
 export function ieKey(p: { town?: string; county?: string; property_type?: string; months?: number }) {
   const place = p.county ?? p.town;

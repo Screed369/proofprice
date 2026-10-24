@@ -179,3 +179,32 @@ test("IE monthly history: whole months, medians per county and district, thin gr
   assert.equal(ieHistoryKey({ town: "Dublin 6", property_type: "new", months: 240 }, { monthly: true })!.item, "new/month");
   assert.equal(ieHistoryKey({ town: "Dublin 6", property_type: "new" })!.item, "new:12m");
 });
+
+test("Gap G20261024-1: district=Dublin 1 / postcode_district=D01 with property_type=new is Dublin 1, never the Ireland-wide figure", async () => {
+  const { iePlaceOf } = await import("./source");
+  const { CATEGORIES, paramsFromQuery, unknownParams } = await import("../../lib/registry");
+  const cat = CATEGORIES.find((c) => c.id === "home-sales")!;
+  const dir = mkdtempSync(path.join(tmpdir(), "ie-gap-"));
+  mkdirSync(path.join(dir, "ie-ppr", "daily"), { recursive: true });
+  writeFileSync(path.join(dir, "ie-ppr", "meta.json"), JSON.stringify({ last_date: "2026-10-02" }));
+  writeFileSync(path.join(dir, "ie-ppr", "daily", "2026-10.csv"), [
+    "date,area,item,n,median,low,high,min,max",
+    "2026-10-02,dublin-1,new:12m,9,575000,371800,2069020,341000,5000000",
+    "2026-10-02,ALL,new:12m,14013,396476,300000,600000,100000,2000000",
+  ].join("\n") + "\n");
+  const prev = process.env.PROOFPRICE_LIBRARY_DIR;
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
+  try {
+    for (const q of ["country=IE&district=Dublin%201&property_type=new", "country=IE&postcode_district=D01&property_type=new", "country=IE&area=Dublin%201&property_type=new"]) {
+      const params = paramsFromQuery(cat, new URLSearchParams(q));
+      assert.deepEqual(unknownParams(cat, params), [], q); // accepted, not refused
+      const a = await ieHomeSales({ town: iePlaceOf(params), property_type: String(params.property_type) });
+      assert.equal(a.status, "ok", q);
+      assert.notEqual(a.price?.median, 396476, q);
+      assert.equal(a.price?.median, 575000, q);
+    }
+    await assert.rejects(() => ieHomeSales({ town: iePlaceOf({ district: "Atlantis" }) }), /Unknown Irish place/);
+  } finally {
+    if (prev === undefined) delete process.env.PROOFPRICE_LIBRARY_DIR; else process.env.PROOFPRICE_LIBRARY_DIR = prev;
+  }
+});

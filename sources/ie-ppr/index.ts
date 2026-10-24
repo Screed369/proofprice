@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { INFO, IE_TYPES, ieBackfill, ieHarvest, ieHistoryKey, ieHomeSales } from "./source";
+import { INFO, iePlaceOf, IE_TYPES, ieBackfill, ieHarvest, ieHistoryKey, ieHomeSales } from "./source";
 import { CROSS_CHECK } from "./crosscheck";
 
 export default defineSource({
@@ -15,7 +15,7 @@ export default defineSource({
   // Outside check against the publisher's headline figure (internal, never shown): ./crosscheck.ts
   crossCheck: CROSS_CHECK,
   paramNotes: {
-    town: "IE: a county ('Cork') or Dublin postal district ('Dublin 6'). Omit for all of Ireland.",
+    town: "IE: a county ('Cork') or Dublin postal district ('Dublin 6'; district=Dublin 6 and postcode_district=D06 also work). Omit for all of Ireland.",
     property_type: "IE: any, new or second-hand (new homes are usually recorded without VAT).",
     months: "IE: rounded to the nearest of 3, 6, 12, 24 or 36.",
   },
@@ -33,9 +33,9 @@ export default defineSource({
     if (p.property_type !== undefined && !(IE_TYPES as readonly string[]).includes(String(p.property_type).toLowerCase())) {
       throw new InputError(`property_type must be one of: ${IE_TYPES.join(", ")}`);
     }
-    return ieHomeSales({ county: str(p.county), town: str(p.town), property_type: str(p.property_type), months: num(p.months), baseUrl: ctx.baseUrl });
+    return ieHomeSales({ county: str(p.county), town: iePlaceOf(p), property_type: str(p.property_type), months: num(p.months), baseUrl: ctx.baseUrl });
   },
   harvest: ieHarvest,
   backfill: ieBackfill,
-  historyKey: (p, o) => ieHistoryKey({ county: str(p.county), town: str(p.town), property_type: str(p.property_type), months: num(p.months) }, o),
+  historyKey: (p, o) => ieHistoryKey({ county: str(p.county), town: iePlaceOf(p), property_type: str(p.property_type), months: num(p.months) }, o),
 });
