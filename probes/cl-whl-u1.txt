@@ -1,0 +1,22 @@
+URL: https://datos.odepa.gob.cl/api/3/action/datastore_search_sql?sql=SELECT%20%22Unidad%20de%20comercializacion%22%20AS%20u%2C%20count(*)%20AS%20n%20FROM%20%22580beca0-e87e-4dd4-9e8a-0bd92773f4a6%22%20WHERE%20%22Fecha%22%3E%3D%272026-10-01%27%20GROUP%20BY%201%20ORDER%20BY%202%20DESC%20LIMIT%2060
+Fetched: 2026-10-24T02:52:10Z from GitHub Actions
+Status, type, bytes: 400 application/json;charset=utf-8 68
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 BAD REQUEST
+Date: Sat, 24 Oct 2026 02:52:10 GMT
+Server: Secure
+Strict-Transport-Security: max-age=31536000; includeSubDomains; ; preload
+x-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google.com https://www.google-analytics.com https://stats.g.doubleclick.net; media-src 'self' https:; form-action 'self'; upgrade-insecure-requests;
+Content-Type: application/json;charset=utf-8
+Content-Length: 68
+Cache-Control: public, max-age=0, must-revalidate
+Vary: Cookie
+Connection: close
+
+=== FILE TYPE: ASCII text, with no line terminators
+=== FIRST 30000 BYTES
+"Solicitud incorrecta - Action name not known: datastore_search_sql"
