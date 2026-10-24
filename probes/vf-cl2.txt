@@ -1,0 +1,23 @@
+URL: https://datos.gob.cl/api/3/action/package_search?q=precio+combustible+estaciones&rows=5
+Fetched: 2026-10-24T04:44:23Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 212
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 04:44:23 GMT
+content-type: application/json;charset=utf-8
+content-length: 212
+cache-control: public, max-age=3600, must-revalidate
+set-cookie: ckan=d309f04e4846fa22e70ccd2a8ce9c98d74e65803gAJ9cQAoWAcAAABfZG9tYWlucQFOWAUAAABfcGF0aHECWAEAAAAvcQNYAwAAAF9pZHEEWCAAAAA0OTJiZGM3ODNhZGU0ZGZjODAxMjQ1ODNmMmJkNWMzMHEFWAYAAABfZnJlc2hxBolYDgAAAF9jcmVhdGlvbl90aW1lcQdHQdq3DenvQlRYDgAAAF9hY2Nlc3NlZF90aW1lcQhHQdq3DenvQlZ1Lg==; expires=Tue, 19-Jan-2038 03:14:07 GMT; HttpOnly; Path=/; SameSite=Lax; Secure
+strict-transport-security: max-age=63072000; includeSubDomains
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), vr=(), accelerometer=(), gyroscope=(), magnetometer=()
+content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; img-src * data: blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net; worker-src 'self' blob:; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com; frame-ancestors 'self'; object-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"help": "https://datos.gob.cl/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 0, "facets": {}, "results": [], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
