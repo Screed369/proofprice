@@ -1,0 +1,21 @@
+URL: https://data.sa.gov.au/data/api/3/action/datastore_search?resource_id=4245a13e-a972-431c-b446-e1e11c951836&limit=6
+Fetched: 2026-10-24T15:13:22Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1907
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 15:13:21 GMT
+content-type: application/json;charset=utf-8
+content-length: 1907
+server: nginx
+cache-control: public, max-age=0, must-revalidate
+access-control-allow-origin: *
+access-control-allow-methods: GET, POST, OPTIONS
+access-control-allow-headers: authorization,DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range
+access-control-expose-headers: Content-Length,Content-Range
+x-frame-options: SAMEORIGIN
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://data.sa.gov.au/data/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "limit": 6, "records_format": "objects", "resource_id": "4245a13e-a972-431c-b446-e1e11c951836", "total_estimation_threshold": null, "records": [{"_id":1,"City":"ADELAIDE","Suburb":"ADELAIDE","Sales 3Q 2025":"3","Median 3Q 2025":"1020000","Sales 3Q 2026":"3","Median 3Q 2026":"1830000","Median Change":"0.7941176470588235"},{"_id":2,"City":"ADELAIDE","Suburb":"NORTH ADELAIDE","Sales 3Q 2025":"9","Median 3Q 2025":"2000000","Sales 3Q 2026":"8","Median 3Q 2026":"1800000","Median Change":"-0.1"},{"_id":3,"City":"ADELAIDE HILLS","Suburb":"ALDGATE","Sales 3Q 2025":"6","Median 3Q 2025":"1610000","Sales 3Q 2026":"8","Median 3Q 2026":"1450000","Median Change":"-0.09937888198757763"},{"_id":4,"City":"ADELAIDE HILLS","Suburb":"ASHTON","Sales 3Q 2025":null,"Median 3Q 2025":null,"Sales 3Q 2026":null,"Median 3Q 2026":null,"Median Change":null},{"_id":5,"City":"ADELAIDE HILLS","Suburb":"BALHANNAH","Sales 3Q 2025":"4","Median 3Q 2025":"837500","Sales 3Q 2026":"3","Median 3Q 2026":"1145000","Median Change":"0.36716417910447763"},{"_id":6,"City":"ADELAIDE HILLS","Suburb":"BASKET RANGE","Sales 3Q 2025":null,"Median 3Q 2025":null,"Sales 3Q 2026":null,"Median 3Q 2026":null,"Median Change":null}], "fields": [{"id": "_id", "type": "int"}, {"id": "City", "type": "text"}, {"id": "Suburb", "type": "text"}, {"id": "Sales 3Q 2025", "type": "text"}, {"id": "Median 3Q 2025", "type": "text"}, {"id": "Sales 3Q 2026", "type": "text"}, {"id": "Median 3Q 2026", "type": "text"}, {"id": "Median Change", "type": "text"}], "_links": {"start": "/api/3/action/datastore_search?resource_id=4245a13e-a972-431c-b446-e1e11c951836&limit=6", "next": "/api/3/action/datastore_search?resource_id=4245a13e-a972-431c-b446-e1e11c951836&limit=6&offset=6"}, "total": 482, "total_was_estimated": false}}
