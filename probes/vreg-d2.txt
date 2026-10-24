@@ -1,0 +1,293 @@
+URL: https://assets.vlaamsenutsregulator.be/2026-10/202610-v-test-data-exclbtw%20v2_0.xlsx
+Fetched: 2026-10-24T21:34:42Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4032297
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+content-length: 4032297
+server: AmazonS3
+last-modified: Thu, 15 Oct 2026 07:33:00 GMT
+x-amz-server-side-encryption: AES256
+x-amz-version-id: ufWqr3DPEaKhTD0JCL1DMWDmRaM7q1PZ
+accept-ranges: bytes
+date: Sat, 24 Oct 2026 21:32:29 GMT
+etag: "d648ed218d6885703abd74a93460fc3e"
+x-cache: Hit from cloudfront
+via: 1.1 a27022837959b6f70545c8d6d0de9d04.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD12-P4
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: GPJz5axJfOl26O2I26mNN1C5_QoT1NRfTaokdUlWsEB8IlV9Sln-ow==
+age: 133
+
+=== FILE TYPE: Microsoft Excel 2007+
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     2326  1980-01-01 00:00   [Content_Types].xml
+      588  1980-01-01 00:00   _rels/.rels
+     3157  1980-01-01 00:00   xl/workbook.xml
+     1262  1980-01-01 00:00   xl/_rels/workbook.xml.rels
+     8024  1980-01-01 00:00   xl/worksheets/sheet1.xml
+ 12271184  1980-01-01 00:00   xl/worksheets/sheet2.xml
+ 17959213  1980-01-01 00:00   xl/worksheets/sheet3.xml
+  1964120  1980-01-01 00:00   xl/worksheets/sheet4.xml
+  1929728  1980-01-01 00:00   xl/worksheets/sheet5.xml
+     8450  1980-01-01 00:00   xl/theme/theme1.xml
+     3919  1980-01-01 00:00   xl/styles.xml
+    33726  1980-01-01 00:00   xl/sharedStrings.xml
+      429  1980-01-01 00:00   xl/worksheets/_rels/sheet1.xml.rels
+      475  1980-01-01 00:00   xl/worksheets/_rels/sheet2.xml.rels
+      475  1980-01-01 00:00   xl/worksheets/_rels/sheet3.xml.rels
+      910  1980-01-01 00:00   xl/tables/table1.xml
+      920  1980-01-01 00:00   xl/tables/table2.xml
+     4840  1980-01-01 00:00   xl/printerSettings/printerSettings1.bin
+      481  1980-01-01 00:00   xl/namedSheetViews/namedSheetView1.xml
+     4840  1980-01-01 00:00   xl/printerSettings/printerSettings2.bin
+      481  1980-01-01 00:00   xl/namedSheetViews/namedSheetView2.xml
+      824  1980-01-01 00:00   docProps/core.xml
+     1045  1980-01-01 00:00   docProps/app.xml
+---------                     -------
+ 34201417                     23 files
+=== SPREADSHEET SHEETS (first 70 rows each, cells joined with |)
+--- SHEET: Info
+rows 57 header ['In dit bestand vindt u de open data van alle producten die in de V-test® hebben gestaan per maand. De nettarieven en heffingen zijn niet opgenomen in dit bestand. Alle prijzen zijn exclusief btw.\nHieronder vindt u meer uitleg over de verschillende gegevens in de andere tabbladen. Het tweede tabblad bevat alle variabele en dynamische producten. Het derde tabblad bevat alle vaste producten. Deze dataset werd laatst geüpdatet op 15 oktober 2026. Voor vragen kan u terecht bij datamanagement@vlaamsenutsregulator.be. In februari 2026 voegden we een aantal nieuwe kolommen toe om producten toe te laten die gebruikmaken van 4 indexatieparemeters. Hiervoor zijn er 2 nieuwe tabbladen toegevoegd met voor deze nieuwe structuur (2026).'] ['In dit bestand vindt u de open data van alle producten die in de V-test® hebben gestaan per maand. De nettarieven en heffingen zijn niet opgenomen in dit bestand. Alle prijzen zijn exclusief btw.\nHieronder vindt u meer uitleg over de verschillende gegevens in de andere tabbladen. Het tweede tabblad bevat alle variabele en dynamische producten. Het derde tabblad bevat alle vaste producten. Deze dataset werd laatst geüpdatet op 15 oktober 2026. Voor vragen kan u terecht bij datamanagement@vlaamsenutsregulator.be. In februari 2026 voegden we een aantal nieuwe kolommen toe om producten toe te laten die gebruikmaken van 4 indexatieparemeters. Hiervoor zijn er 2 nieuwe tabbladen toegevoegd met voor deze nieuwe structuur (2026).']
+In dit bestand vindt u de open data van alle producten die in de V-test® hebben gestaan per maand. De nettarieven en heffingen zijn niet opgenomen in dit bestand. Alle prijzen zijn exclusief btw.
+Hieronder vindt u meer uitleg over de verschillende gegevens in de andere tabbladen. Het tweede tabblad 
+Gegevens|Uitleg
+Jaar|Jaar waarin het product in de V-test® stond
+--- SHEET: Producten var-dyn (excl. btw)
+rows 18578 header ['Jaar', 'Maand', 'Segment', 'Energietype', 'Contracttype', 'Handelsnaam', 'Productnaam', 'Vast/variabel/dynamisch', 'Prijsonderdeel', 'Indexatieparameter X (a.X + b.Y + c.Z + d)'] ['Prijs']
+months first [(('2025', 'jan'), 1233), (('2025', 'feb'), 1304), (('2025', 'mrt'), 1355)] last [(('2025', 'mei'), 1539), (('2025', 'jun'), 1606), (('2025', 'jul'), 1649), (('2025', 'aug'), 1674), (('2025', 'sep'), 1680), (('2025', 'okt'), 1603), (('2025', 'nov'), 1777), (('2025', 'dec'), 1794)]
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Dynamisch tarief') 25
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Kosten WKK (c€/kWh)') 25
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Kosten groene stroom (c€/kWh)') 25
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Vaste vergoeding (€)') 25
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Daluren') 1
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 49
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Kosten WKK (c€/kWh)') 50
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Kosten groene stroom (c€/kWh)') 50
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Piekuren') 1
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Superdaluren') 1
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)') 48
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)') 48
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Uitsluitend nachtmeter (c€/kWh)') 48
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding (€)') 48
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding enkelvoudige meter (€)') 2
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding tweevoudige meter (€)') 2
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding uitsluitend nachtmeter (€)') 2
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Dynamisch', 'Dynamisch tarief') 26
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Dynamisch', 'Enkelvoudige meter dagtarief (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Dynamisch', 'Vaste vergoeding (€)') 26
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Daluren') 1
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 48
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Kosten WKK (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Kosten groene stroom (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Piekuren') 1
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Superdaluren') 1
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Tweevoudige meter dag- en (exclusief) nachttarief (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)') 48
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)') 48
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Uitsluitend nachtmeter (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Variabel', 'Vaste vergoeding (€)') 50
+   ('Onderneming', 'Gas', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 46
+   ('Onderneming', 'Gas', 'Afname', 'Variabel', 'Vaste vergoeding (€)') 46
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Dynamisch tarief') 34
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Kosten WKK (c€/kWh)') 34
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Kosten groene stroom (c€/kWh)') 34
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Vaste vergoeding (€)') 34
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Daluren') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 62
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (vast) (c€/kWh), <1000kWh') 3
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Kosten WKK (c€/kWh)') 64
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Kosten groene stroom (c€/kWh)') 64
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Piekuren') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Superdaluren') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter dag- en (exclusief) nachttarief (c€/kWh)') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)') 62
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter dagtarief (vast) (c€/kWh), < 1000kWh') 3
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)') 62
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Uitsluitend nachtmeter (c€/kWh)') 62
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding (€)') 63
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding enkelvoudige meter (€)') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding tweevoudige meter (€)') 2
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding uitsluitend nachtmeter (€)') 2
+   ('Woning', 'Elektriciteit', 'Injectie', 'Dynamisch', 'Dynamisch tarief') 30
+   ('Woning', 'Elektriciteit', 'Injectie', 'Dynamisch', 'Enkelvoudige meter dagtarief (c€/kWh)') 1
+   ('Woning', 'Elektriciteit', 'Injectie', 'Dynamisch', 'Vaste vergoeding (€)') 30
+   ('Woning', 'Elektriciteit', 'Injectie', 'Variabel', 'Daluren') 1
+   ('Woning', 'Elektriciteit', 'Injectie', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 59
+   ('Woning', 'Elektriciteit', 'Injectie', 'Variabel', 'Kosten groene stroom (c€/kWh)') 1
+   ('Woning', 'Elektriciteit', 'Injectie', 'Variabel', 'Piekuren') 1
+   ('Woning', 'Elektriciteit', 'Injectie', 'Variabel', 'Superdaluren') 1
+   ('Woning', 'Elektriciteit', 'Injectie', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)') 58
+   ('Woning', 'Elektriciteit', 'Injectie', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)') 58
+   ('Woning', 'Elektriciteit', 'Injectie', 'Variabel', 'Vaste vergoeding (€)') 60
+   ('Woning', 'Gas', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 54
+   ('Woning', 'Gas', 'Afname', 'Variabel', 'Vaste vergoeding (€)') 54
+products latest month 209
+last row ['2025', 'dec', 'Woning', 'Gas', 'Afname', 'Trevion', 'Trevion Gas Flex', 'Variabel', 'Vaste vergoeding (€)'] 39.79
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)'] 2
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Kosten groene stroom (c€/kWh)'] 1.08
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Kosten WKK (c€/kWh)'] 0.41
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)'] 2
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)'] 2
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Uitsluitend nachtmeter (c€/kWh)'] 2
+--- SHEET: Var-dyn (excl. btw) (2026)
+rows 18146 header ['Year', 'Month', 'Segment', 'Energietype', 'Contracttype', 'Handelsnaam', 'Productnaam', 'Variabel/Dynamisch', 'Prijsonderdeel', 'Indexatieparameter A (a.A + b.B + c.C + d.D + z)'] ['Prijs']
+months first [(('2026', 'jan'), 1639), (('2026', 'feb'), 1727), (('2026', 'mrt'), 2044)] last [(('2026', 'mrt'), 2044), (('2026', 'apr'), 1720), (('2026', 'mei'), 1765), (('2026', 'jun'), 1799), (('2026', 'jul'), 1854), (('2026', 'aug'), 1847), (('2026', 'sep'), 1857), (('2026', 'okt'), 1893)]
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Dynamisch tarief') 37
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Enkelvoudige meter dagtarief (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Kosten WKK (c€/kWh)') 37
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Kosten groene stroom (c€/kWh)') 37
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Dynamisch', 'Vaste vergoeding (€)') 37
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Daluren') 1
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 52
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Kosten WKK (c€/kWh)') 54
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Kosten groene stroom (c€/kWh)') 54
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Piekuren') 1
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Superdaluren') 1
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)') 51
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)') 51
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Uitsluitend nachtmeter (c€/kWh)') 51
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding (€)') 52
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding enkelvoudige meter (€)') 2
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding tweevoudige meter (€)') 2
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding uitsluitend nachtmeter (€)') 2
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Dynamisch', 'Dynamisch tarief') 30
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Dynamisch', 'Enkelvoudige meter dagtarief (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Dynamisch', 'Vaste vergoeding (€)') 31
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Daluren') 1
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 51
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Kosten WKK (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Kosten groene stroom (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Piekuren') 1
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Superdaluren') 1
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Tweevoudige meter dag- en (exclusief) nachttarief (c€/kWh)') 2
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)') 51
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)') 51
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Uitsluitend nachtmeter (c€/kWh)') 1
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Vaste vergoeding (€)') 55
+   ('Onderneming', 'Gas', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 46
+   ('Onderneming', 'Gas', 'Afname', 'Variabel', 'Vaste vergoeding (€)') 46
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Dynamisch tarief') 41
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Enkelvoudige meter dagtarief (c€/kWh)') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Kosten WKK (c€/kWh)') 41
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Kosten groene stroom (c€/kWh)') 41
+   ('Woning', 'Elektriciteit', 'Afname', 'Dynamisch', 'Vaste vergoeding (€)') 41
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Daluren') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 58
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (vast) (c€/kWh), <1000kWh') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Kosten WKK (c€/kWh)') 61
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Kosten groene stroom (c€/kWh)') 61
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Piekuren') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Superdaluren') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter dag- en (exclusief) nachttarief (c€/kWh)') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)') 58
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter dagtarief (vast) (c€/kWh), < 1000kWh') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)') 58
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Tweevoudige meter nachttarief (vast) (c€/kWh), < 1000kWh') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Uitsluitend nachtmeter (c€/kWh)') 58
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding (€)') 60
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding enkelvoudige meter (€)') 1
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding tweevoudige meter (€)') 2
+   ('Woning', 'Elektriciteit', 'Afname', 'Variabel', 'Vaste vergoeding uitsluitend nachtmeter (€)') 2
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Dynamisch', 'Dynamisch tarief') 35
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Dynamisch', 'Enkelvoudige meter dagtarief (c€/kWh)') 1
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Dynamisch', 'Vaste vergoeding (€)') 35
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Daluren') 1
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 58
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Kosten groene stroom (c€/kWh)') 1
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Piekuren') 1
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Superdaluren') 1
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)') 56
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)') 56
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Variabel', 'Vaste vergoeding (€)') 60
+   ('Woning', 'Gas', 'Afname', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)') 52
+   ('Woning', 'Gas', 'Afname', 'Variabel', 'Vaste vergoeding (€)') 52
+products latest month 198
+last row ['2026', 'okt', 'Woning', 'Gas', 'Afname', 'Trevion', 'Trevion Gas Flex', 'Variabel', 'Vaste vergoeding (€)'] 36.792400000000001
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Enkelvoudige meter dagtarief (c€/kWh)'] 2
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Kosten groene stroom (c€/kWh)'] 1.0780000000000001
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Kosten WKK (c€/kWh)'] 0.40600000000000003
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Tweevoudige meter dagtarief (c€/kWh)'] 2
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Tweevoudige meter nachttarief (c€/kWh)'] 2
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Aspiravi Energy ', 'Eco Plus flex', 'Variabel', 'Uitsluitend nachtmeter (c€/kWh)'] 2
+--- SHEET: Producten vast (excl. btw)
+rows 5142 header ['Jaar', 'Maand', 'Segment', 'Energietype', 'Contracttype', 'Handelsnaam', 'Productnaam', 'Vast/variabel/dynamisch', 'Prijsonderdeel', 'Prijs'] ['Prijs']
+months first [(('2025', 'jan'), 357), (('2025', 'feb'), 362), (('2025', 'mrt'), 440)] last [(('2025', 'mei'), 449), (('2025', 'jun'), 436), (('2025', 'jul'), 423), (('2025', 'aug'), 423), (('2025', 'sep'), 423), (('2025', 'okt'), 423), (('2025', 'nov'), 500), (('2025', 'dec'), 504)]
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Kosten WKK (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Kosten groene stroom (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Uitsluitend nachtmeter (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Vaste vergoeding (€)') 21
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 10
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 10
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)') 10
+   ('Onderneming', 'Elektriciteit', 'Injectie', 'Vast', 'Vaste vergoeding (€)') 10
+   ('Onderneming', 'Gas', 'Afname', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 20
+   ('Onderneming', 'Gas', 'Afname', 'Vast', 'Vaste vergoeding (€)') 20
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 26
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Kosten WKK (c€/kWh)') 27
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Kosten groene stroom (c€/kWh)') 27
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 27
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)') 26
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Uitsluitend nachtmeter (c€/kWh)') 27
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Vaste vergoeding (€)') 27
+   ('Woning', 'Elektriciteit', 'Injectie', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 10
+   ('Woning', 'Elektriciteit', 'Injectie', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 10
+   ('Woning', 'Elektriciteit', 'Injectie', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)') 10
+   ('Woning', 'Elektriciteit', 'Injectie', 'Vast', 'Vaste vergoeding (€)') 10
+   ('Woning', 'Gas', 'Afname', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 24
+   ('Woning', 'Gas', 'Afname', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 1
+   ('Woning', 'Gas', 'Afname', 'Vast', 'Vaste vergoeding (€)') 25
+products latest month 44
+last row ['2025', 'dec', 'Woning', 'Gas', 'Afname', 'TotalEnergies', 'myEssential Vast', 'Vast', 'Vaste vergoeding (€)'] 33.018859999999997
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)'] 13.147
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Kosten groene stroom (c€/kWh)'] 1.1057999999999999
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Kosten WKK (c€/kWh)'] 0.39243
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)'] 13.147
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)'] 13.147
+EX ['2025', 'dec', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Uitsluitend nachtmeter (c€/kWh)'] 13.147
+--- SHEET: Vast (excl. btw) (2026)
+rows 5001 header ['Jaar', 'Maand', 'Segment', 'Energietype', 'Contracttype', 'Handelsnaam', 'Productnaam', 'Vast/variabel/dynamisch', 'Prijsonderdeel', 'Prijs'] ['Prijs']
+months first [(('2026', 'jan'), 470), (('2026', 'feb'), 518), (('2026', 'mrt'), 532)] last [(('2026', 'mrt'), 532), (('2026', 'apr'), 505), (('2026', 'mei'), 505), (('2026', 'jun'), 500), (('2026', 'jul'), 488), (('2026', 'aug'), 488), (('2026', 'sep'), 488), (('2026', 'okt'), 506)]
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Kosten WKK (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Kosten groene stroom (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Uitsluitend nachtmeter (c€/kWh)') 21
+   ('Onderneming', 'Elektriciteit', 'Afname', 'Vast', 'Vaste vergoeding (€)') 21
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 12
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 12
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)') 12
+   ('Onderneming', 'Elektriciteit', 'Teruglevering', 'Vast', 'Vaste vergoeding (€)') 12
+   ('Onderneming', 'Gas', 'Afname', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 20
+   ('Onderneming', 'Gas', 'Afname', 'Vast', 'Vaste vergoeding (€)') 20
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 25
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Kosten WKK (c€/kWh)') 25
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Kosten groene stroom (c€/kWh)') 25
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 25
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)') 25
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Uitsluitend nachtmeter (c€/kWh)') 25
+   ('Woning', 'Elektriciteit', 'Afname', 'Vast', 'Vaste vergoeding (€)') 25
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 12
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)') 12
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)') 12
+   ('Woning', 'Elektriciteit', 'Teruglevering', 'Vast', 'Vaste vergoeding (€)') 12
+   ('Woning', 'Gas', 'Afname', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)') 24
+   ('Woning', 'Gas', 'Afname', 'Vast', 'Vaste vergoeding (€)') 24
+products latest month 44
+last row ['2026', 'okt', 'Woning', 'Gas', 'Afname', 'TotalEnergies', 'myEssential Vast', 'Vast', 'Vaste vergoeding (€)'] 33.018859999999997
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Enkelvoudige meter dagtarief (c€/kWh)'] 21.376999999999999
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Kosten groene stroom (c€/kWh)'] 1.1030199999999999
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Kosten WKK (c€/kWh)'] 0.36414000000000002
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Tweevoudige meter dagtarief (c€/kWh)'] 21.376999999999999
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Tweevoudige meter nachttarief (c€/kWh)'] 21.376999999999999
+EX ['2026', 'okt', 'Woning', 'Elektriciteit', 'Afname', 'Bolt', 'Bolt Vast', 'Vast', 'Uitsluitend nachtmeter (c€/kWh)'] 21.376999999999999
+=== FIRST 200000 BYTES OF [Content_Types].xml
