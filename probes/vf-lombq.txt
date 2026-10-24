@@ -1,0 +1,27 @@
+URL: https://dati.lombardia.it/api/catalog/v1?q=prezzario&limit=10
+Fetched: 2026-10-24T16:42:03Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 129
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 16:42:03 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-eu-west-1-prod
+X-Socrata-RequestId: d5f639e08eda1a8aa609a268c245d79c
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "results" : [],
+  "resultSetSize" : 0,
+  "timings" : { "serviceMillis" : 34, "searchMillis" : [ 4, 5 ] },
+  "warnings" : []
+}
