@@ -1,0 +1,23 @@
+URL: https://www.data.qld.gov.au/api/3/action/datastore_search_sql?sql=SELECT%20%22Fuel_Type%22%2C%20count%28%2A%29%20AS%20n%20FROM%20%22420319e2-6518-4243-83a6-3c7769bd7e6c%22%20GROUP%20BY%20%22Fuel_Type%22%20ORDER%20BY%20n%20DESC
+Fetched: 2026-10-24T01:02:35Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 676
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 676
+date: Sat, 24 Oct 2026 01:02:35 GMT
+strict-transport-security: max-age=31536000
+server: nginx
+cache-control: public, max-age=1800, must-revalidate
+vary: Cookie
+x-cache: Miss from cloudfront
+via: 1.1 0dc812a83c1e947b351f1eb1761c3c94.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD61-P12
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: jxtB5RBsTcf2iQqmWvo2dBXmSHds45APUF7Jh0HJqmxKZdGFB8_CPg==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://www.data.qld.gov.au/api/3/action/help_show?name=datastore_search_sql", "success": true, "result": {"sql": "SELECT \"Fuel_Type\", count(*) AS n FROM \"420319e2-6518-4243-83a6-3c7769bd7e6c\" GROUP BY \"Fuel_Type\" ORDER BY n DESC", "records": [{"Fuel_Type": "Unleaded", "n": 19899}, {"Fuel_Type": "PULP 98 RON", "n": 18032}, {"Fuel_Type": "e10", "n": 15854}, {"Fuel_Type": "Premium Diesel", "n": 14058}, {"Fuel_Type": "PULP 95/96 RON", "n": 13637}, {"Fuel_Type": "Diesel", "n": 10584}, {"Fuel_Type": "LPG", "n": 120}, {"Fuel_Type": "e85", "n": 42}, {"Fuel_Type": "OPAL", "n": 18}], "fields": [{"id": "Fuel_Type", "type": "text"}, {"id": "n", "type": "int8"}]}}
