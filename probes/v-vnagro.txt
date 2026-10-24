@@ -1,0 +1,407 @@
+URL: https://agro.gov.vn/vn/tID3058_Weekly-Price-17-234-29407.html
+Fetched: 2026-10-24T14:41:28Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 54681
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+cache-control: private
+content-type: text/html; charset=utf-8
+server: Microsoft-IIS/10.0
+set-cookie: ASP.NET_SessionId=izulncnc2ie54pfao142h1hz; path=/; HttpOnly; SameSite=Lax
+x-xss-protection: 0
+x-aspnet-version: 4.0.30319
+x-powered-by: ASP.NET
+x-xss-protection: 0
+date: Sat, 24 Oct 2026 14:41:27 GMT
+content-length: 54681
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (29753), with CRLF line terminators
+=== FIRST 30000 BYTES
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /><title>
+	Weekly Price 17 (23/4 - 29/4/07)
+</title><link rel="stylesheet" href="../font/font.css" /><link rel="stylesheet" href="../css/style.css" /><link href="../css/flexslider.css" rel="stylesheet" type="text/css" media="screen" /><link href="../css/added.css" rel="stylesheet" />
+
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+    <meta name="keywords" content="báo cáo ngành hàng, nông sản, lúa gạo, chè, cà phê, đường, sữa, hạt tiêu, hạt điều, thịt và thực phẩm, thủy sản, thức ăn chăn nuôi, số liệu thống kê, giá nông sản" /><meta property="og:site_name" content="agro.gov.vn" /><meta id="ctl00_meta_url" property="og:url" content="https://agro.gov.vn/vn/tID3058_Weekly-Price-17-234-29407.html" /><meta property="og:type" content="website" /><meta id="ctl00_meta_title" property="og:title" content="Weekly Price 17 (23/4 - 29/4/07)" /><meta id="ctl00_meta_description" property="og:description" content="Commodity  Price  Unit      Cotton No.2  1.13  USD    King Orange  25000  VND/kg    Rice bran  3050  VND/kg    Rubber RSS2  3.61  USD/ton    Soybean oil  705  USD/ton    Peanut oil  1.14  USD/ton    RE Sugar (Domestic)  7500  VND/kg" /><meta id="ctl00_meta_image" property="og:image" content="https://agro.gov.vn/images/noimage.jpg" />
+    <!-- JAVASCRIPTS 
+================================================== -->
+    <!-- Javascript files placed here for faster loading -->
+    <script type="text/javascript" src="../JS/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.flexslider.js"></script>
+
+    <script type="text/javascript" src="../Scripts/superfish.js"></script>
+    <script type="text/javascript" src="../Scripts/hoverIntent.js"></script>
+
+    <script type="text/javascript" src="../javascripts/responsivemenu.js"></script>
+    <script type="text/javascript" src="../js/jcookie.js"></script>
+
+    <script type="text/javascript" src="../js/global.js"></script>
+
+    <script type="text/javascript" src="../js/main.js"></script>
+
+    <!-- tablesorter new  -->
+    <link href="../style/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <style type="text/css" title="currentStyle">
+        @import "../media/css/demo_page.css";
+        @import "../media/css/demo_table.css";
+    </style>
+    <script type="text/javascript" language="javascript" src="../media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../js/jquery.stickytableheaders.js"></script>
+    <!-- tablesorter   -->
+    <script type="text/javascript" charset="utf-8" src="../js/jquery.validate.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/messages_vi.js"></script>
+
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+
+
+    <script language="JavaScript" type="text/javascript">
+
+        function kiemtra_batbuoc() {
+            chonfile();
+            $(".cssdate").datepicker({ dateFormat: "dd-mm-yy", changeMonth: true, changeYear: true, dateFormat: "dd-mm-yy", yearRange: "-50:+5" });
+            $('.kiemtra').click(function () {
+                var isValid = $("#aspnetForm").valid();
+                //alert(isValid);
+                if (isValid)
+                    return true;
+                else
+                    return false;
+            });
+        }
+        //":contains('val1'):contains('val2')"
+        $(document).ready(function () {
+            khoa_divID("dvGrid");
+            $("img:not(:contains('http://')),img:not(:contains('https://'))").each(function () {
+                var img = $(this);
+                if (img.attr("src").indexOf('http://') < 0 && img.attr("src").indexOf('https://') < 0) {
+                    //img.attr("src", 'http://agro.gov.vn/' + img.attr("src"));
+                }
+            });
+            kiemtra_batbuoc();
+        });
+
+        function chonfile() {
+            $('.upload_docs').click(function () {
+                var tên_id = "ctl00_maincontent_" + $(this).attr("id").substring(14, 200)
+                var finder = new CKFinder();
+                finder.selectActionFunction = function (fileUrl) {
+                    $("#" + tên_id).val(fileUrl);
+                    $('#ctl00_maincontent_Image_banner').attr("src", fileUrl);
+                };
+                finder.popup();
+            });
+
+        }
+    </script>
+
+
+    <script type="text/javascript" src="../JS/jquery.blockUI.js"></script>
+    <script type="text/javascript">
+        function khoa_divID(elementID) {
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+            prm.add_beginRequest(function () {
+                try {
+                    if (window.waitingDialog && typeof waitingDialog.show === "function") {
+                        waitingDialog.show("Đang tải dữ liệu...");
+                    } else if (window.jQuery && jQuery.fn.block) {
+                        jQuery("#" + elementID).block({
+                            message: '<table align="center"><tr><td><img src="../images/loadingAnim.gif"/></td></tr></table>',
+                            css: {},
+                            overlayCSS: { backgroundColor: '#000000', opacity: 0.6, border: '3px solid #63B2EB' }
+                        });
+                    }
+                } catch (ex) { }
+            });
+            prm.add_endRequest(function () {
+                try {
+                    if (window.waitingDialog && typeof waitingDialog.hide === "function") {
+                        waitingDialog.hide();
+                    } else if (window.jQuery && jQuery.fn.unblock) {
+                        jQuery("#" + elementID).unblock();
+                    }
+                    if (typeof kiemtra_batbuoc === "function") {
+                        kiemtra_batbuoc();
+                    }
+                    if (window.jQuery && jQuery.fn.stickyTableHeaders) {
+                        jQuery('#ctl00_maincontent_GridView1').stickyTableHeaders();
+                    }
+                } catch (ex) { }
+            });
+        }
+
+        function hightlight(id_bang, id_hientai) {
+            $("#" + id_bang + " a").each(function () {
+                var title = $(this).attr("title");
+                var p_id = $("#" + id_hientai).text();
+                if (title == p_id) {
+                    $(this).closest("tr").css("background-color", "#ffdc87");
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myModal").show();
+            });
+            $(".close").click(function () {
+                $("#myModal").hide();
+            });
+        });
+        // Get the modal
+
+
+    </script>
+
+
+</head>
+
+<body style="min-height: 400px;">
+
+    <!-- HEADER
+================================================== -->
+    <form name="aspnetForm" method="post" action="/vn/tID3058_Weekly-Price-17-234-29407.html" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJLTg4MDUyNjY2ZGQ5DRxWD8Skm2DkPUBwX8t4+d6hbgvahAWN9/NeU/0kqg==" />
+</div>
+
+
+<script src="/ScriptResource.axd?d=Runatll47kK487gxeDBjDSvSJx5J9RpwAs4dAIbMgjVLQX6TjN-hEnuzFoTepHEEpriKqTXtGxJ3GtxLneDrRtkERp2nEfuYP9plOzAEpnTWOoMJHr9ZyHsXNJoipgSILg34xOxSn0-f6NhdxBcbQQ2&amp;t=51e37521" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5D91F89B" />
+</div>
+        <div class="header">
+            <div class="p0">
+                <div class="wrapper">
+                    <img class="logo" style="cursor: pointer" src="../img/logo.png  " alt="" onclick="window.location.href='../vn/default.aspx'" />
+                    <div class="lang" style="display: none">
+                        <div class="uk"></div>
+                        <div class="vn"></div>
+                    </div>
+
+                    <div class="mobile-only menu"></div>
+
+                    <div class="search">
+                        <div id="ctl00_panel_timkiem">
+	
+                            <input name="ctl00$keyword" type="text" id="ctl00_keyword" />
+                            <input type="submit" name="ctl00$Btn_timkiem" value="Tìm kiếm" id="ctl00_Btn_timkiem" style="color:White;background-color:#5D9E1D;" />
+                        
+</div>
+
+
+                    </div>
+                    <div class="slogan" style="cursor: pointer" onclick="window.location.href='../vn/default.aspx'">
+                            Kết nối nghiên cứu với thực tiễn<br> cho một nền NÔNG NGHIỆP tăng trưởng toàn diện
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="p1">
+                <div class="wrapper">
+                    <div class="wrapper">
+                        <ul class="menu">
+                            <li class="mobile-only order"><a href="order.html"><span>Đặt Mua Báo Cáo</span></a></li>
+
+                            
+
+            <li><span onclick="window.location.href='../vn/default.aspx'">Trang Chủ</span></li>
+            <li>
+                <span>Giới thiệu</span>
+                <div class="submenu">
+                    <a href="../vn/vechungtoi.html">Giới thiệu chung</a> 
+
+                    <a href="../vn/cocautochuc.html">Cơ cấu tổ chức</a> 
+
+                    <a href="../vn/linhvucchuyenmon.html">Các lĩnh vực chuyên môn</a>
+
+                    <a href="../vn/kinhnghiem.html">Kinh nghiệm</a>
+
+                    <a href="../vn/giatricotloi.html">Giá trị cốt lõi</a> 
+
+                    <a href="../vn/doitac.html">Đối tác</a>
+
+                </div>
+
+            </li>
+
+
+            <li>
+                <span>Tin tức</span>
+
+                <div class="submenu">
+
+                    <a href="../vn/p1_0Tin_tuc_News.html">Tin tức</a>
+
+                    <a href="../vn/xc8_Dieu.html">Ðiều</a>
+
+                    <a href="../vn/xc5_Ho-tieu.html">Hồ tiêu</a>
+
+                    <a href="../vn/xc7_Lam-san-va-go.html">Lâm sản &amp;gỗ</a>
+
+                    <a href="../vn/xc4_Rau-qua.html">Rau quả</a>
+
+                    <a href="../vn/xc1_Che.html">Chè</a>
+
+                    <a href="../vn/xc73_Sua.html">Sữa</a>
+
+                    <a href="../vn/xc2_Ca-phe.html">Cà phê</a>
+
+                    <a href="../vn/xc3_Mia-duong.html">Mía đường</a>
+
+                    <a href="../vn/xc10_Cao-su.html">Cao su</a>
+
+                    <a href="../vn/xc6_Thit-va-thuc-pham.html">Thịt &amp; thực phẩm</a>
+
+                    <a href="../vn/xc71_Phan-bon.html">Phân bón</a>
+
+                    <a href="../vn/xc72_Thuc-an-chan-nuoi.html">Thức ăn chăn nuôi</a>
+
+                    <a href="../vn/xc41_Thuy-san.html">Thủy sản</a>
+
+                    <a href="../vn/xc9_Lua-gao.html">Lúa gạo</a>
+
+                </div>
+
+            </li>
+
+
+            <li>
+                <span>Hoạt động</span>
+
+                <div class="submenu">
+
+                    <a href="../vn/nhomanpham.aspx?tennhom=Lúa+gạo%7cRice">Bản tin</a>
+
+                    <a href="../vn/cacduanhoatdongdalam.html">Các dự án,hoạt động đã làm</a>
+
+                    <a href="../vn/cacduan.html">Các dự án</a>
+
+                </div>
+
+            </li>
+
+
+            <li>
+                <span>Nhân sự</span>
+
+                <div class="submenu">
+
+                    <a href="../vn/banlanhdao.html">Ban lãnh đạo</a>
+
+                    <a href="../vn/phongtonghop.html">Phòng Tổng hợp</a>
+
+                <a href="../vn/phongthongtintruyenthong.html">Phòng Thông tin truyền thông</a>
+
+                </div>
+
+            </li>
+
+
+            <li>
+                <span>Sản phẩm</span>
+                <div class="submenu">
+                    <a href="../vn/nguonwmy.aspx">Dữ liệu</a>                
+                    <a href="http://ipsard.gov.vn/vn/searchw.aspx">Thư viện</a>
+                </div>
+
+            </li>
+      
+
+
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <input type="hidden" name="ctl00$catid" id="ctl00_catid" value="12" />
+        
+      
+            <div id="dvGrid">
+
+                <span id="ctl00_lbl_loi"></span>
+                
+    <div class="wrapper">
+        <div class="main">
+            <div class="heading-article">
+                <div class="title">
+                    <span id="ctl00_maincontent_N_TIEUDE">Weekly Price 17 (23/4 - 29/4/07)</span>
+                </div>
+                <div class="date">
+                    <span id="ctl00_maincontent_N_NGAYTHANG">07 | 10 | 2007</span>
+                </div>
+                <div class="brief">
+                    <span id="ctl00_maincontent_N_TRICHDAN"><table cellpading=0 cellspacing=0 width='100%'>
+
+
+
+
+<tr>
+<td class=tblgia><STRONG>Commodity</STRONG></FONT></TD>
+<td class=tblgia><STRONG>Price</STRONG></FONT></TD>
+<td class=tblgia><STRONG>Unit</FONT></STRONG></TD></TR>
+<tr>
+<td class=tblgia>
+<&#070;ORM action=baocaotuan.asp method=post ?>Cotton No.2</FONT></TD>
+<td class=tblgia>1.13</FONT></TD>
+<td class=tblgia>USD</FONT></TD></TR>
+<tr>
+<td class=tblgia>King Orange</FONT></TD>
+<td class=tblgia>25000</FONT></TD>
+<td class=tblgia>VND/kg</FONT></TD></TR>
+<tr>
+<td class=tblgia>Rice bran</FONT></TD>
+<td class=tblgia>3050</FONT></TD>
+<td class=tblgia>VND/kg</FONT></TD></TR>
+<tr>
+<td class=tblgia>Rubber RSS2</FONT></TD>
+<td class=tblgia>3.61</FONT></TD>
+<td class=tblgia>USD/ton</FONT></TD></TR>
+<tr>
+<td class=tblgia>Soybean oil</FONT></TD>
+<td class=tblgia>705</FONT></TD>
+<td class=tblgia>USD/ton</FONT></TD></TR>
+<tr>
+<td class=tblgia>Peanut oil</FONT></TD>
+<td class=tblgia>1.14</FONT></TD>
+<td class=tblgia>USD/ton</FONT></TD></TR>
+<tr>
+<td class=tblgia>RE Sugar (Domestic)</FONT></TD>
+<td class=tblgia>7500</FONT></TD>
+<td class=tblgia>VND/kg</FONT></TD></TR></TABLE></&#070;ORM></span>
+                </div>
+            </div>
+            <div class="text-article">
+                <span id="ctl00_maincontent_N_NOIDUNG"><table cellpading=0 cellspacing=0 width='100%'><TBODY><tr><td class=tblgia>&nbsp;<STRONG>Commodity</STRONG></FONT></TD><td class=tblgia>&nbsp;<STRONG>Market</STRONG></FONT></TD><td class=tblgia>&nbsp;<STRONG>Price</STRONG></FONT></TD><td class=tblgia>&nbsp;<STRONG>Currency</STRONG></FONT></TD><td class=tblgia>&nbsp;<STRONG>Source</STRONG></FONT></TD><td class=tblgia>&nbsp;<STRONG>Sort Price</STRONG></FONT></TD><td class=tblgia>&nbsp;<STRONG>Unit</FONT></STRONG></TD></TR><tr><td class=tblgia>&nbsp;Cotton No.2</FONT></TD><td class=tblgia>&nbsp;NewYork</FONT></TD><td class=tblgia>&nbsp;1.13</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Vietnam economic times</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=tblgia>&nbsp;King Orange</FONT></TD><td class=tblgia>&nbsp;Hanoi</FONT></TD><td class=tblgia>&nbsp;25000</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice bran</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;3050</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Wholesale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rubber RSS2</FONT></TD><td class=tblgia>&nbsp;FOB BangKok</FONT></TD><td class=tblgia>&nbsp;3.61</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Vietnam economic times</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rubber RSS2</FONT></TD><td class=tblgia>&nbsp;FOB Singapore</FONT></TD><td class=tblgia>&nbsp;3.61</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Vietnam economic times</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=tblgia>&nbsp;Soybean oil</FONT></TD><td class=tblgia>&nbsp;CBOT</FONT></TD><td class=tblgia>&nbsp;705</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Vietnam economic times</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=tblgia>&nbsp;Peanut oil</FONT></TD><td class=tblgia>&nbsp;CIF Rotterdam</FONT></TD><td class=tblgia>&nbsp;1.14</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Vietnam economic times</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=tblgia>&nbsp;No.1 grade for yellow soybeans</FONT></TD><td class=tblgia>&nbsp;CBOT</FONT></TD><td class=tblgia>&nbsp;267.5</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Vietnam economic times</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=tblgia>&nbsp;RE Sugar (Domestic)</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;7500</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;RE Sugar (Domestic)</FONT></TD><td class=tblgia>&nbsp;Binh Duong</FONT></TD><td class=tblgia>&nbsp;9000</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice 100% grade B</FONT></TD><td class=tblgia>&nbsp;Thailand</FONT></TD><td class=tblgia>&nbsp;324</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=tblgia>&nbsp;"Nang huong" Rice</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;8000</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;"Nang huong" Rice</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6500</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;"Nang huong" Rice</FONT></TD><td class=tblgia>&nbsp;Binh Duong</FONT></TD><td class=tblgia>&nbsp;8500</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Ordinary rice</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;48000</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Ordinary rice</FONT></TD><td class=tblgia>&nbsp;Binh Duong</FONT></TD><td class=tblgia>&nbsp;4900</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Ordinary rice</FONT></TD><td class=tblgia>&nbsp;Lang Son</FONT></TD><td class=tblgia>&nbsp;5700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Aromatic rice</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6100</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;4850</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Raw Export</FONT></TD><td class=tblgia>&nbsp;Binh Duong</FONT></TD><td class=tblgia>&nbsp;8700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Raw Export</FONT></TD><td class=tblgia>&nbsp;Dong Nai</FONT></TD><td class=tblgia>&nbsp;9200</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Black Pepper (Domestic)</FONT></TD><td class=tblgia>&nbsp;Dong Nai</FONT></TD><td class=tblgia>&nbsp;47000</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;High quality paddy</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;2938.33</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Wholesale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed 4498</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed AS 996</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed HD 1</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6900</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed IR 50404</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed Jamine</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;8000</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed 2395</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed OM 2514</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed OM 2517</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed OM 4655</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6900</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed OMCS 2000</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6700</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed OMCS 21(OM 3536)</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6800</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Rice seed VND 95-20</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;6500</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Wheat</FONT></TD><td class=tblgia>&nbsp;CBOT</FONT></TD><td class=tblgia>&nbsp;176.5</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Vietnam economic times</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=tblgia>&nbsp;Ordinary paddy</FONT></TD><td class=tblgia>&nbsp;Binh Duong</FONT></TD><td class=tblgia>&nbsp;3600</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Ordinary paddy</FONT></TD><td class=tblgia>&nbsp;Dong Nai</FONT></TD><td class=tblgia>&nbsp;3000</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Ordinary paddy</FONT></TD><td class=tblgia>&nbsp;Nghe An</FONT></TD><td class=tblgia>&nbsp;3300</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Retailsale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Paddy</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;3250</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Wholesale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Sticky rice</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;2816.67</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;An Giang Department of MARD</FONT></TD><td class=tblgia>&nbsp;Wholesale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;Maize</FONT></TD><td class=tblgia>&nbsp;An Giang</FONT></TD><td class=tblgia>&nbsp;2300</FONT></TD><td class=tblgia>&nbsp;VND</FONT></TD><td class=tblgia>&nbsp;Ministry of Finance</FONT></TD><td class=tblgia>&nbsp;Wholesale Price</FONT></TD><td class=tblgia>&nbsp;kg</FONT></TD></TR><tr><td class=tblgia>&nbsp;No. 2 grade for yellow corn</FONT></TD><td class=tblgia>&nbsp;CBOT</FONT></TD><td class=tblgia>&nbsp;143.3</FONT></TD><td class=tblgia>&nbsp;USD</FONT></TD><td class=tblgia>&nbsp;Vietnam economic times</FONT></TD><td class=tblgia>&nbsp;Export Price</FONT></TD><td class=tblgia>&nbsp;ton</FONT></TD></TR><tr><td class=
