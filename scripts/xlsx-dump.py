@@ -19,6 +19,7 @@ for sh in wb.find("m:sheets", NS):
     path = "xl/" + rels[rid].lstrip("/").replace("xl/", "")
     print("--- SHEET:", sh.get("name"))
     shown = 0
+    allrows = []
     for row in ET.fromstring(z.read(path)).iter("{%s}row" % NS["m"]):
         cells = {}
         for c in row.findall("m:c", NS):
@@ -29,5 +30,18 @@ for sh in wb.find("m:sheets", NS):
             else: val = v.text
             cells[col(c.get("r"))] = val
         if cells:
-            print("|".join(cells.get(i, "") for i in range(max(cells) + 1))); shown += 1
-        if shown >= limit: break
+            allrows.append([cells.get(i, "") for i in range(max(cells) + 1)])
+    import collections
+    print("rows", len(allrows), "header", allrows[0][:10], allrows[0][-1:])
+    if len(allrows[0]) < 9 or len(allrows) < 5: 
+        for r in allrows[:3]: print("|".join(r)[:300])
+        continue
+    ym = collections.Counter((x[0], x[1]) for x in allrows[1:] if len(x) > 8)
+    print("months first", list(ym.items())[:3], "last", list(ym.items())[-8:])
+    last = list(ym)[-1]
+    c = collections.Counter((x[2], x[3], x[4], x[7], x[8]) for x in allrows[1:] if len(x) > 8 and (x[0], x[1]) == last)
+    for k, v in sorted(c.items()): print("  ", k, v)
+    print("products latest month", len(set((x[5], x[6]) for x in allrows[1:] if len(x) > 8 and (x[0], x[1]) == last)))
+    print("last row", allrows[-1][:9], allrows[-1][-1])
+    ex = [x for x in allrows[1:] if len(x) > 8 and (x[0], x[1]) == last and x[2] == "Woning" and x[4] == "Afname"][:6]
+    for x in ex: print("EX", x[:9], x[-1])
