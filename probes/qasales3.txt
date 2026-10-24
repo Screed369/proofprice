@@ -1,0 +1,32 @@
+URL: https://www.data.gov.qa/api/explore/v2.1/catalog/datasets/weekly-real-estates-sales-bulletin/records?select=usage%2Ccount(*)%20as%20n%2Cmin(price_per_square_meter)%20as%20lo%2Cmax(price_per_square_meter)%20as%20hi%2Cmin(registration_date)%20as%20first%2Cmax(registration_date)%20as%20newest&group_by=usage&limit=100
+Fetched: 2026-10-24T08:53:35Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 4187
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: openresty
+date: Sat, 24 Oct 2026 08:53:35 GMT
+content-type: application/json; charset=utf-8
+content-length: 4187
+x-ratelimit-remaining: 499999
+x-ratelimit-limit: 500000
+x-ratelimit-reset: 2026-10-25 00:00:00+00:00
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+vary: Accept-Language, Cookie, Host
+content-language: en-gb
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS
+access-control-max-age: 1000
+access-control-allow-headers: Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type, ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+access-control-expose-headers: ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit, X-RateLimit-dataset-Reset
+strict-transport-security: max-age=31536000;includeSubdomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: upgrade-insecure-requests; 
+x-ua-compatible: IE=edge
+permissions-policy: midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"total_count": 29, "results": [{"usage": null, "n": 4960, "lo": 0.0, "hi": 74928, "first": "2020-07-05T00:00:00+00:00", "newest": "2025-04-22T00:00:00+00:00"}, {"usage": "Apartment buildings or residential compounds/villas or houses", "n": 3, "lo": 3262, "hi": 12174, "first": "2022-11-22T00:00:00+00:00", "newest": "2022-11-24T00:00:00+00:00"}, {"usage": "Buffer zone (uninhabited)", "n": 2, "lo": 1300, "hi": 4800, "first": "2020-11-18T00:00:00+00:00", "newest": "2022-08-01T00:00:00+00:00"}, {"usage": "Commercial", "n": 32, "lo": 1303, "hi": 20352, "first": "2020-08-17T00:00:00+00:00", "newest": "2025-06-29T00:00:00+00:00"}, {"usage": "Commercial / Residential", "n": 1, "lo": 6149, "hi": 6149, "first": "2025-11-06T00:00:00+00:00", "newest": "2025-11-06T00:00:00+00:00"}, {"usage": "Commercial Offices", "n": 80, "lo": 2109, "hi": 245573, "first": "2020-07-06T00:00:00+00:00", "newest": "2025-12-30T00:00:00+00:00"}, {"usage": "Entertainment venues", "n": 21, "lo": 1503, "hi": 28711, "first": "2021-02-22T00:00:00+00:00", "newest": "2024-08-19T00:00:00+00:00"}, {"usage": "Government Land", "n": 1, "lo": 4618, "hi": 4618, "first": "2022-06-20T00:00:00+00:00", "newest": "2022-06-20T00:00:00+00:00"}, {"usage": "Government schools and institutes", "n": 17, "lo": 1850, "hi": 26423, "first": "2020-07-29T00:00:00+00:00", "newest": "2023-05-16T00:00:00+00:00"}, {"usage": "Land with no specified use", "n": 34, "lo": 4333, "hi": 37931, "first": "2020-07-13T00:00:00+00:00", "newest": "2024-11-20T00:00:00+00:00"}, {"usage": "Markets and shops", "n": 7, "lo": 4303, "hi": 69795, "first": "2020-08-09T00:00:00+00:00", "newest": "2023-09-24T00:00:00+00:00"}, {"usage": "Mosques", "n": 7, "lo": 2226, "hi": 13362, "first": "2022-03-27T00:00:00+00:00", "newest": "2023-06-08T00:00:00+00:00"}, {"usage": "Multi purpose use", "n": 2, "lo": 2976, "hi": 5597, "first": "2025-09-28T00:00:00+00:00", "newest": "2025-12-24T00:00:00+00:00"}, {"usage": "Multi-Use", "n": 1, "lo": 5712, "hi": 5712, "first": "2025-12-01T00:00:00+00:00", "newest": "2025-12-01T00:00:00+00:00"}, {"usage": "Multi-Use Commercial Land", "n": 157, "lo": 1399, "hi": 41818, "first": "2020-07-05T00:00:00+00:00", "newest": "2025-12-28T00:00:00+00:00"}, {"usage": "Multi-use Land", "n": 7, "lo": 2966, "hi": 39254, "first": "2023-01-18T00:00:00+00:00", "newest": "2025-09-24T00:00:00+00:00"}, {"usage": "Multi-use commercial Land", "n": 105, "lo": 3070, "hi": 39886, "first": "2023-01-11T00:00:00+00:00", "newest": "2025-08-21T00:00:00+00:00"}, {"usage": "Multi-use land", "n": 15, "lo": 1241, "hi": 19561, "first": "2020-07-28T00:00:00+00:00", "newest": "2025-06-12T00:00:00+00:00"}, {"usage": "Multiple Commercial Lands", "n": 44, "lo": 3397, "hi": 36952, "first": "2022-01-19T00:00:00+00:00", "newest": "2022-11-03T00:00:00+00:00"}, {"usage": "Private areas", "n": 100, "lo": 2160, "hi": 80788, "first": "2020-07-14T00:00:00+00:00", "newest": "2025-07-24T00:00:00+00:00"}, {"usage": "Residence", "n": 83, "lo": 969, "hi": 9222, "first": "2025-12-14T00:00:00+00:00", "newest": "2025-12-17T00:00:00+00:00"}, {"usage": "Residential Buildings or Compounds", "n": 2255, "lo": 37, "hi": 241061, "first": "2020-07-05T00:00:00+00:00", "newest": "2025-12-30T00:00:00+00:00"}, {"usage": "Schools", "n": 9, "lo": 3145, "hi": 6000, "first": "2020-08-20T00:00:00+00:00", "newest": "2023-07-27T00:00:00+00:00"}, {"usage": "Senior staff residences", "n": 33, "lo": 2493, "hi": 6122, "first": "2020-07-07T00:00:00+00:00", "newest": "2025-07-15T00:00:00+00:00"}, {"usage": "Unspecified residential land", "n": 1, "lo": 11312, "hi": 11312, "first": "2022-10-17T00:00:00+00:00", "newest": "2022-10-17T00:00:00+00:00"}, {"usage": "Unspecified use land", "n": 4, "lo": 7143, "hi": 14881, "first": null, "newest": null}, {"usage": "amenities", "n": 10, "lo": 2532, "hi": 7600, "first": "2020-12-28T00:00:00+00:00", "newest": "2023-09-07T00:00:00+00:00"}, {"usage": "farms", "n": 96, "lo": 1507, "hi": 6337, "first": "2020-07-05T00:00:00+00:00", "newest": "2024-08-22T00:00:00+00:00"}, {"usage": "villas or residential houses", "n": 18632, "lo": 4, "hi": 47462, "first": "2020-07-05T00:00:00+00:00", "newest": "2025-12-31T00:00:00+00:00"}]}
