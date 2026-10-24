@@ -1,0 +1,54 @@
+URL: https://data.cityofnewyork.us/resource/usep-8jbt.json?$select=building_class_category,count(*)%20as%20n,min(sale_date)%20as%20d0,max(sale_date)%20as%20d1&$where=tax_class_at_time_of_sale=4%20AND%20sale_price>=100000&$group=building_class_category&$order=n%20DESC
+Fetched: 2026-10-24T01:33:27Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3433
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 01:33:27 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC42NzE1N180XzY2NFVqVlJQeXI1R0UzLVplZ3ZpV0Fnend3TlBr---gzipNzwjM-8UUOLs865-tKjP9Iz7mWU--gzip--gzip"
+X-SODA2-Fields: ["building_class_category","n","d0","d1"]
+X-SODA2-Types: ["text","number","floating_timestamp","floating_timestamp"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+Last-Modified: Thu, 15 Oct 2026 15:49:33 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 340b18eccbbe99b5a64442201d4bd1d7
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"building_class_category":"44 CONDO PARKING","n":"915","d0":"2025-10-01T00:00:00.000","d1":"2026-09-24T00:00:00.000"}
+,{"building_class_category":"22 STORE BUILDINGS","n":"562","d0":"2025-10-01T00:00:00.000","d1":"2026-09-30T00:00:00.000"}
+,{"building_class_category":"45 CONDO HOTELS","n":"353","d0":"2025-10-10T00:00:00.000","d1":"2026-09-30T00:00:00.000"}
+,{"building_class_category":"29 COMMERCIAL GARAGES","n":"337","d0":"2025-10-01T00:00:00.000","d1":"2026-09-18T00:00:00.000"}
+,{"building_class_category":"21 OFFICE BUILDINGS","n":"275","d0":"2025-10-01T00:00:00.000","d1":"2026-09-29T00:00:00.000"}
+,{"building_class_category":"47 CONDO NON-BUSINESS STORAGE","n":"255","d0":"2025-10-01T00:00:00.000","d1":"2026-09-28T00:00:00.000"}
+,{"building_class_category":"43 CONDO OFFICE BUILDINGS","n":"243","d0":"2025-10-01T00:00:00.000","d1":"2026-09-25T00:00:00.000"}
+,{"building_class_category":"46 CONDO STORE BUILDINGS","n":"213","d0":"2025-10-01T00:00:00.000","d1":"2026-09-25T00:00:00.000"}
+,{"building_class_category":"30 WAREHOUSES","n":"185","d0":"2025-10-01T00:00:00.000","d1":"2026-09-30T00:00:00.000"}
+,{"building_class_category":"31 COMMERCIAL VACANT LAND","n":"174","d0":"2025-10-08T00:00:00.000","d1":"2026-09-29T00:00:00.000"}
+,{"building_class_category":"27 FACTORIES","n":"94","d0":"2025-10-03T00:00:00.000","d1":"2026-09-25T00:00:00.000"}
+,{"building_class_category":"41 TAX CLASS 4 - OTHER","n":"71","d0":"2025-10-03T00:00:00.000","d1":"2026-09-30T00:00:00.000"}
+,{"building_class_category":"28 COMMERCIAL CONDOS","n":"48","d0":"2025-10-02T00:00:00.000","d1":"2026-09-22T00:00:00.000"}
+,{"building_class_category":"37 RELIGIOUS FACILITIES","n":"47","d0":"2025-10-03T00:00:00.000","d1":"2026-09-11T00:00:00.000"}
+,{"building_class_category":"33 EDUCATIONAL FACILITIES","n":"34","d0":"2025-10-16T00:00:00.000","d1":"2026-09-25T00:00:00.000"}
+,{"building_class_category":"32 HOSPITAL AND HEALTH FACILITIES","n":"32","d0":"2025-10-30T00:00:00.000","d1":"2026-09-09T00:00:00.000"}
+,{"building_class_category":"26 OTHER HOTELS","n":"32","d0":"2025-10-21T00:00:00.000","d1":"2026-09-16T00:00:00.000"}
+,{"building_class_category":"42 CONDO CULTURAL/MEDICAL/EDUCATIONAL/ETC","n":"16","d0":"2025-10-15T00:00:00.000","d1":"2026-09-03T00:00:00.000"}
+,{"building_class_category":"48 CONDO TERRACES/GARDENS/CABANAS","n":"16","d0":"2025-12-05T00:00:00.000","d1":"2026-09-08T00:00:00.000"}
+,{"building_class_category":"49 CONDO WAREHOUSES/FACTORY/INDUS","n":"14","d0":"2025-11-10T00:00:00.000","d1":"2026-07-30T00:00:00.000"}
+,{"building_class_category":"35 INDOOR PUBLIC AND CULTURAL FACILITIES","n":"12","d0":"2025-11-12T00:00:00.000","d1":"2026-06-30T00:00:00.000"}
+,{"building_class_category":"25 LUXURY HOTELS","n":"10","d0":"2025-10-09T00:00:00.000","d1":"2026-09-10T00:00:00.000"}
+,{"building_class_category":"38 ASYLUMS AND HOMES","n":"8","d0":"2025-10-28T00:00:00.000","d1":"2026-06-24T00:00:00.000"}
+,{"building_class_category":"36 OUTDOOR RECREATIONAL FACILITIES","n":"6","d0":"2025-12-19T00:00:00.000","d1":"2026-04-29T00:00:00.000"}
+,{"building_class_category":"34 THEATRES","n":"4","d0":"2025-10-31T00:00:00.000","d1":"2025-12-11T00:00:00.000"}
+,{"building_class_category":"40 SELECTED GOVERNMENTAL FACILITIES","n":"1","d0":"2026-06-25T00:00:00.000","d1":"2026-06-25T00:00:00.000"}
+,{"building_class_category":"39 TRANSPORTATION FACILITIES","n":"1","d0":"2026-07-15T00:00:00.000","d1":"2026-07-15T00:00:00.000"}]
