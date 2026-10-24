@@ -18,7 +18,7 @@ export default defineSource({
       "US with basis=medicare_spend: a brand or generic name as CMS lists it ('Lipitor', 'atorvastatin', 'Eliquis', 'metformin'); strength is ignored. Returns Medicare Part D's average spending per dosage unit in the newest data year.",
   },
   extraParams: {
-    basis: z.string().optional().describe("US only: leave out for the pharmacy's acquisition cost (NADAC, weekly); 'medicare_spend' for what Medicare Part D spent per dosage unit (CMS, yearly, before rebates); 'part_b_asp' for Medicare Part B's payment limit for doctor-administered drugs such as injections (CMS, quarterly; medicine = generic name or HCPCS code)."),
+    basis: z.string().optional().describe("US only: leave out for the pharmacy's acquisition cost (NADAC, weekly); 'medicare_spend' for what Medicare Part D spent per dosage unit (CMS, yearly, before rebates); 'part_b_asp' for Medicare Part B's payment limit for doctor-administered drugs such as injections (CMS, quarterly; medicine = generic name or HCPCS code); 'medicaid' for what State Medicaid programmes reimbursed per unit (CMS, quarterly); 'mfp' for Medicare's negotiated maximum fair price for a 30-day supply (CMS, about 40 selected drugs)."),
   },
   examples: [{ params: { country: "US", medicine: "atorvastatin", basis: "medicare_spend" } }, { params: { country: "US", medicine: "Eliquis", basis: "medicare_spend" }, smoke: false }],
   method:

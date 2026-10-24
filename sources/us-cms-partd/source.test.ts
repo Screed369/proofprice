@@ -119,3 +119,11 @@ test("licence and attribution are filled", () => {
   assert.match(INFO.licence_url, /usa\.gov/);
   assert.match(INFO.attribution, /not affiliated with or endorsed by CMS/);
 });
+
+// Audit fix (Quality Auditor 24 Oct 2026): the shared `basis` parameter is declared here, so its text must name every basis that a US
+// medicines source serves (medicaid and mfp were missing, so agents could not discover them from the tool schema).
+test("basis parameter text lists every US medicines basis", async () => {
+  const manifest = (await import("./index")).default as any;
+  const text = String(manifest.extraParams.basis.description ?? "");
+  for (const b of ["medicare_spend", "part_b_asp", "medicaid", "mfp"]) assert.ok(text.includes(`'${b}'`), `basis text misses '${b}'`);
+});
