@@ -1,0 +1,1009 @@
+URL: https://sniiv.sedatu.gob.mx/
+Fetched: 2026-10-24T01:41:46Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 47724
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx/1.20.1
+Date: Sat, 24 Oct 2026 01:41:45 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (424), with CRLF line terminators
+=== FIRST 60000 BYTES
+<!DOCTYPE html>
+<html lang="es">
+<head><script async src="https://www.googletagmanager.com/gtag/js?id=G-DERGVEG5EM"></script><script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-DERGVEG5EM'); </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCJJB68FJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HFCJJB68FJ');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="sniiv">
+    <meta name="author" content="developer">
+    <title>Acerca de - SNIIV</title>
+
+
+
+    <link rel="shortcut icon" href="/img/Home/Icon.png">
+    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+
+    <script src="/js/jquery-1.11/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var url = window.location.pathname;
+            var urlaspx = url.length != 0 ? url : 'Dashboard/Inicio';
+
+            var idtab;
+
+        });
+        var clickMenu = false;
+
+        $(document).ready(function () {
+            var cookie = false;
+            var cookieContent = $('.cache-disclaimer');
+
+            $(".parent").click(function () {
+                $(".multi-collapse").collapse('hide');
+            });
+
+            $(".child").click(function () {
+                $(".submenu").collapse('hide');
+            });
+            $(".navbar-toggler").click(function () {
+                $(".nav-tog").css("display", "block");
+                clickMenu = !clickMenu;
+                if (clickMenu) {
+                    $(".nav-tog").show();
+                }
+                else {
+                    $(".nav-tog").hide();
+                }
+            });
+            if ($(window).width() < 930) {
+                $('.img-sniiv').hide();
+            } else {
+                $('.img-sniiv').show();
+            }
+            checkCookie();
+
+            if (cookie === true) {
+                cookieContent.hide();
+            }
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                console.log(exdays * 24 * 60 * 60 * 1000);
+                var expires = "expires=" + d.toGMTString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i].trim();
+                    if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                var check = getCookie("acache");
+                if (check !== "") {
+                    return cookie = true;
+                } else {
+                    return cookie = false;
+                }
+
+            }
+            $('.accept-cache').click(function () {
+                setCookie("acache", "accepted", 8);
+                cookieContent.hide(500);
+            });
+
+        });
+
+        function pages(url) {
+            window.location.href = url;
+        }
+
+        function activaTab(tab) {
+            $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+        }
+        $(window).on('resize', function () {
+            if ($(window).width() < 930) {
+                $('.img-sniiv').hide();
+            }
+            else {
+                $('.img-sniiv').show();
+            }
+        });
+    </script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="/css/stroke-7/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style1.css" rel="stylesheet" type="text/css" />
+    <link href="/css/Components/NavBar.css" rel="stylesheet" type="text/css" />
+    
+    <link href="/css/Inicio/Acerca_de.css" rel="stylesheet" type="text/css" />
+    <link href="/css/Inicio/Home.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <div class="menu-overlay" id="menu-overlay"></div>
+    <!-- Menu de navegacion -->
+
+    <header>
+        <div class="container-nav-bar">
+            <button class="hamburger" id="btn-menu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-btn">
+                <div class="nav-links">
+                    <ul>
+                        <li class="nav-link">
+                            <a href="/Inicio"><span class="icon s7-home"></span>Inicio</a>
+                            <div class="dropdown-nav-opt">
+                                <ul>                                    
+                                    <li class="dropdown-link">
+                                        <a href="/Inicio/Conoce_Sniiv">Conoce más del SNIIV</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link">
+                            <p> <span class="icon s7-graph"></span> Consulta Interactiva</p>
+                            <div class="dropdown-nav-opt">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="/Oferta/D_Inventario">Oferta<i class="glyphicon glyphicon-chevron-right"></i></a>
+                                        <div class="dropdown-nav-opt second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Inventario">Inventario</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Registro">Registro</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Verificacion">Verificación</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Produccion">Producción</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <p>Demanda<i class="glyphicon glyphicon-chevron-right"></i></p>
+                                        <div class="dropdown-nav-opt second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/financiamiento">Financiamientos</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Conavi">CONAVI</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Fovissste">FOVISSSTE</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Infonavit">INFONAVIT</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Cnbv">CNBV</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Insus">INSUS</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Empleo">Empleo</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link" style="cursor:pointer" onclick="window.location.href='/Inicio/Datos_e_Indicadores'">
+                            <p><span class="icon s7-display1"></span> Visualización de datos e indicadores</p>
+                            <div class="dropdown-nav-opt">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="/Demanda/Rezago">Rezago habitacional</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Oferta/D_Inventario">Días de inventario</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Dashboard/Covid">COVID-19 y vivienda</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Autoproduccion/Introduccion">Autoproducción</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Inicio/Precios_de_vivienda">Precios de la Vivienda</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <p>Oferta de vivienda<i class="glyphicon glyphicon-chevron-right"></i></p>
+                                        <div class="dropdown-nav-opt second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="/Dashboard/Oferta">RUV</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Oferta/Parque">Parque habitacional INEGI</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <p>Demanda<i class="glyphicon glyphicon-chevron-right"></i></p>
+                                        <div class="dropdown-nav-opt second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="/Dashboard/Inicio">ONAVIs</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Demanda/Potencial">Demanda potencial INFONAVIT</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Dashboard/Imss">Empleo IMSS</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Dashboard/Issste">Empleo ISSSTE</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <p>Series históricas<i class="glyphicon glyphicon-chevron-right"></i></p>
+                                        <div class="dropdown-nav-opt second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="/Dashboard/Sisevive">SISEVIVE</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Oferta/Renaret">Renaret</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Fonhapo">FONHAPO</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="https://decideyconstruye.gob.mx/index.php/paso-a-paso/" target="_blank">Decide y construye</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link">
+                            <p><span class="icon s7-hammer"></span>Política Nacional de Vivienda</p>
+                            <div class="dropdown-nav-opt">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="/PNV/Politica">¿Qué es la Política Nacional de Vivienda?</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/PNV/Programa">Programa Nacional de Vivienda</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/CNV/Consejo">Consejo Nacional de Vivienda</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/PNV/Premio">Premio Nacional de Vivienda</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Intranet/Login">Intranet PVB</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link">
+                            <a href="/Reporte/Analisis"><span class="icon s7-notebook"></span>Biblioteca digital</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="/Reporte/Datos_abiertos"><span class="icon s7-tools"></span>Datos abiertos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <br />
+    <br />
+
+
+    
+    
+
+    <div class="container container-home">
+        
+<!--Carousel-->
+<!---->
+
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<!-- HERO FULLSCREEN -->
+<section class="sniiv-hero" role="banner" aria-label="SNIIV hero">
+
+    <!-- Fondo -->
+    <div class="sniiv-hero__bg" aria-hidden="true"></div>
+
+    <!-- Degradado parcial -->
+    <div class="sniiv-hero__overlay" aria-hidden="true"></div>
+
+    
+    <!-- Contenido -->
+    <div class="container sniiv-hero__container">      
+
+        <div class="sec-logo">
+            <img class="sniiv_logo" src="/img/SNIIV_LOGO.png" alt="SNIIV">            
+            <p class="sniiv-hero__text" >Donde convergen el pasado, presente y futuro de la vivienda.</p>
+        </div>
+        
+        <div class="row" style="margin:75px 0 0 70px">
+            <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top:30px">
+                <div class="sniiv-hero__actions">
+                    <a href="/Inicio/Conoce_Sniiv" class="btn sniiv-btn">Conoce más del SNIIV</a>
+                    <a href="https://www.dof.gob.mx/nota_detalle.php?codigo=5784739&fecha=14/04/2026#gsc.tab=0" target="_blank" class="btn sniiv-btn">Conoce el Programa <br /> Nacional de Vivienda</a>
+                    <a href="https://situ.sedatu.gob.mx/" target="_blank" class="btn sniiv-btn sniiv-btn-logo">
+                        <img src="/img/Home/situ.png" alt="Vivienda" class="sniiv-btn-icon">
+                    </a>
+                    <a href="https://viviendabienestar.gob.mx/" target="_blank" class="btn sniiv-btn sniiv-btn-logo sniiv-btn-logo--pvb">
+                        <img src="/img/Home/Sedatu_PVB.svg" alt="Vivienda" class="sniiv-btn-icon sniiv-btn-icon--pvb">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="container">
+    <h6 class="titles">Indicadores clave del sector</h6>
+    <hr class="line" />
+
+    <div class="second-section">
+
+        <div class="icds">
+            <div class="first">
+                <div class="section section--header">
+                    <div class="header-grid">
+                        <div class="header-box header-box-left">
+                            <span class="big-number"> 21.9%</span>
+                        </div>
+                        <div class="header-box">
+                            <img src="/img/Home/casa 1.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="section ">
+                    <p class="sniiv-txt">
+                        de la vivendas se <br />encontraban en <b>rezago<br /> habitacional</b> en 2024.
+                    </p>
+                </div>
+                <div class="section section--footer">
+                    <button class="btn-indicador section-bottom-right" onclick="window.open('/Demanda/Rezago', '_blank')">
+                        <span>Ver indicador</span>
+                        <img src="/img/Home/arrow.svg" alt="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="icds">
+            <div class="first">
+                <div class="section section--header">
+                    <div class="header-grid">
+                        <div class="header-box header-box-left">
+                            <span class="big-number"> 550 mil</span>
+                        </div>
+                        <div class="header-box">
+                            <img src="/img/Home/arbol-de-familia 1.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <p style="font-size:1.5rem; padding:5px 0px 5px 13px">
+                        hogares <b>necesitarán una<br /> vivienda</b> en 2030
+                    </p>
+                </div>
+                <div class="section section--footer" onclick="window.open('https://sistemas.sedatu.gob.mx/repositorio/s/lhUF1C6cRci9LS4pCtCgrw', '_blank')">
+                    <button class="btn-indicador section-bottom-right ">
+                        <span>Ver indicador</span>
+                        <img src="/img/Home/arrow.svg" alt="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="icds">
+            <div class="first">
+                <div class="section section--header">
+                    <div class="header-grid">
+                        <div class="header-box header-box-left">
+                            <span class="big-number">5.2%</span>
+                        </div>
+                        <div class="header-box">
+                            <img src="/img/Home/carretilla 1.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <p style="font-size:1.5rem; padding:5px 0px 5px 13px">
+                        del <b>Producto Interno<br /> Bruto (PIB)</b> representa el<br /> sector de vivienda.
+                    </p>
+                </div>
+                <div class="section section--footer">
+                    <button class="btn-indicador section-bottom-right" onclick="window.open('https://sistemas.sedatu.gob.mx/repositorio/s/abP-Kba1Q3ihwDxpWn7_nQ', '_blank')">
+                        <span>Ver indicador</span>
+                        <img src="/img/Home/arrow.svg" alt="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="second-section-two">
+        <div class="second-icds">
+            <div class="second-1box">
+                <div class="second-1box-section">
+                    <p class="sniiv-txt">
+                        En el año 2026 se han otorgado
+                    </p>
+                    <span class="big-number ml">517,352</span>
+                    <p class="sniiv-txt">
+                        financiamientos y subsidios para vivienda.
+                    </p>
+                </div>
+                <div class=" section--footer h70">
+                    <button class="btn-indicador section-bottom-right" onclick="window.open('/Cubo/financiamiento', '_blank')">
+                        <span>Ver gráficas</span>
+                        <img src="/img/Home/arrow.svg" alt="" />
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="second-icds">
+            <div class="second-1box">
+                <div class="second-1box-section">
+                    <p class="sniiv-txt">
+                        Se están contruyendo
+                    </p>
+                    <span class="big-number ml">97,041</span>
+                    <p class="sniiv-txt">
+                        viviendas nuevas por desarrolladores privados.
+                    </p>
+                </div>
+                <div class=" section--footer h70">
+                    <button class="btn-indicador section-bottom-right" onclick="window.open('/Cubo/Verificacion', '_blank')">
+                        <span>Ver gráficas</span>
+                        <img src="/img/Home/arrow.svg" alt="" />
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="container">
+    <h6 class="titles">¿Qué información deseas consultar?</h6>
+    <hr class="line2" />
+
+    <div class="grid_boxs">
+        <div class="div-box" onclick="window.open('/Oferta/D_Inventario', '_blank')">
+            <div class="div-box_section bx1" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Oferta de<br /> vivienda</h5>
+                <p class="div-box_text">Producción, inventario y<br /> características de las<br /> viviendas nuevas</p>
+            </div>
+        </div>
+        <div class="div-box" onclick="window.open('/Cubo/financiamiento', '_blank')">
+            <div class="div-box_section bx2" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Financiamientos</h5>
+                <p class="div-box_text mt">Créditos hipotecarios<br /> públicos y privados y<br /> cofinanciamientos</p>
+            </div>
+        </div>
+        <div class="div-box" onclick="window.open('/Demanda/Rezago', '_blank')">
+            <div class="div-box_section bx3" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Rezago<br />habitacional</h5>
+                <p class="div-box_text mt">Viviendas con materiales y<br /> espacios inadecuados</p>
+            </div>
+        </div>
+        <div class="div-box" onclick="window.open('/Autoproduccion/Introduccion', '_blank')">
+            <div class="div-box_section bx4" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Autoproducción<br />de vivienda</h5>
+                <p class="div-box_text">Vivienda constuida para<br /> las necesidades de los<br /> hogares</p>
+            </div>
+        </div>
+        <div class="div-box" onclick="window.open('/Cubo/Insus', '_blank')">
+            <div class="div-box_section bx5" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Regularización<br /> de suelo</h5>
+                <p class="div-box_text mt">Subsidios federales para la<br /> regularización de predios</p>
+            </div>
+        </div>
+        <div class="div-box" onclick="window.open('/PNV/Politica', '_blank')">
+            <div class="div-box_section bx6" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Política Nacional<br /> de Vivienda</h5>
+                <p class="div-box_text mt">Estrategias, acciones y<br /> prioridades del sector</p>
+            </div>
+        </div>
+        <div class="div-box" onclick="window.open('/Inicio/Precios_de_vivienda', '_blank')">
+            <div class="div-box_section bx7" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Precios de la<br />vivienda</h5>
+                <p class="div-box_text">Desde la construcción<br />hasta la venta intervienen<br /> distintos precios</p>
+            </div>
+        </div>
+        <div class="div-box" onclick="window.open('/Cubo/Conavi', '_blank')">
+            <div class="div-box_section bx8" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Subsidios</h5>
+                <p class="div-box_text mt">Apoyos federales para el<br /> acceso y mejoramiento de<br /> viviendas</p>
+            </div>
+        </div>
+        <div class="div-box" onclick="window.open('/Inicio/Datos_e_Indicadores#historicas', '_blank')">
+            <div class="div-box_section bx9" aria-hidden="true"></div>
+            <div class="div_box_overlay" aria-hidden="true"></div>
+
+            <div class="div-box_content">
+                <h5 class="div-box_title">Información<br /> histórica</h5>
+                <p class="div-box_text mt">Datos sobre políticas de<br /> vivienda anteriores</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="container">
+    <h6 class="titles">Recursos</h6>
+    <hr class="line4" />
+
+    <div class="section-recursos">
+        <div class="recursos-box">
+            <a href="/Reporte/Analisis" target="_blank" class="btn-linkR">
+                <div class="btn-img bg-r1">
+                    <div class="btn-img-icon">
+                        <img src="/img/Home/biblioteca 1.svg" alt="Icono">
+                    </div>
+
+                    <div class="btn-img-text">
+                        <p>Biblioteca digital</p>
+                    </div>
+                </div>
+            </a>
+            <p class="recursos-description">
+                Documentos técnicos y estadísticos sobre el sector
+            </p>
+        </div>
+        <div class="recursos-box">
+            <a href="/Reporte/Datos_abiertos" target="_blank" class="btn-linkR">
+                <div class="btn-img bg-r2">
+                    <div class="btn-img-icon">
+                        <img src="/img/Home/datos_abiertos.svg" alt="Icono">
+                    </div>
+
+                    <div class="btn-img-text">
+                        <p>Datos abiertos</p>
+                    </div>
+                </div>
+            </a>
+            <p class="recursos-description">
+                Descarga de información en formato abierto
+            </p>
+        </div>
+        <div class="recursos-box">
+            <a href="/Inicio/Datos_e_Indicadores" target="_blank" class="btn-linkR">
+                <div class="btn-img bg-r3">
+                    <div class="btn-img-icon">
+                        <img src="/img/Home/tablero.svg" alt="Icono">
+                    </div>
+
+                    <div class="btn-img-text">
+                        <p>Tableros<br />interactivos</p>
+                    </div>
+                </div>
+            </a>
+            <p class="recursos-description">
+                Visualiza gráficas y compara indicadores
+            </p>
+        </div>
+        <div class="recursos-box">
+            <a href="/Reporte/Datos_abiertos#d" target="_blank" class="btn-linkR">
+                <div class="btn-img bg-r4">
+                    <div class="btn-img-icon">
+                        <img src="/img/Home/apis.svg" alt="Icono">
+                    </div>
+
+                    <div class="btn-img-text">
+                        <p>API para<br />desarrolladores</p>
+                    </div>
+                </div>
+            </a>
+            <p class="recursos-description">
+                Acceso automatizado a datos
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <h6 class="titles">Nuevas publicaciones</h6>
+    <hr class="line5" />
+
+        <div class="gallery js-flickity"
+             data-flickity-options='{
+                   "wrapAround": true,
+                   "contain": true,
+                   "pageDots": true,
+                   "prevNextButtons": true,
+                   "autoPlay": 3000,
+                   "pauseAutoPlayOnHover": true
+                 }'>
+
+                <div class="gallery-cell">
+                    <a href="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/2Bg2st3XRLCUAapTV56-Dw/content/Panorama_de_los_municipios_mexicanos_en_la_PNV" target="_blank" rel="noopener noreferrer">
+                        <img src="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/t7Z0PFYSTvC_RyKq1-VrKg/content/img" alt="Imagen 6">
+
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/NiSCAp_ORX2v_owGYoohxA/content/Planeacion_y_Ordenamiento_Territorial_en_mexico" target="_blank" rel="noopener noreferrer">
+                        <img src="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/NjYqQhtoSFyM_b00Y5z2Yg/content/img" alt="Imagen 7">
+
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/_RnHzsqGSxuu_Id4rK16tg/content/Vivienda_y_sustentabilidad" target="_blank" rel="noopener noreferrer">
+                        <img src="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/WTHHEiq_QaeFePnKnPSs0w/content/img" alt="Imagen 8">
+
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/oWe2GO_TQOyLC6B32nMCWg/content/Diagn%C3%B3stico_sobre_el_Derecho_a_la_Vivienda_Adecuada" target="_blank" rel="noopener noreferrer">
+                        <img src="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/mYQAay39TDes9DPZH47j7A/content/img" alt="Imagen 9">
+
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/yMreNPk8SUqKzCTAIHJskw/content/Guia_para_el_desarrollo_de_proyectos_de_conjuntos_urbanos" target="_blank" rel="noopener noreferrer">
+                        <img src="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/2yclmCnuRe2pc_VU7ERnKQ/content/img" alt="Imagen 1">
+
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="https://sistemas.sedatu.gob.mx/repositorio/s/_uyN2UG5T8ijXA1uh5twMA" target="_blank" rel="noopener noreferrer">
+                        <img src="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/Y2sAMjdDRiyVhznlqgs2bw/content/img" alt="Imagen 2">
+
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="https://sistemas.sedatu.gob.mx/repositorio/s/m2CzyWTtTNqBV4mJP1vnwA" target="_blank" rel="noopener noreferrer">
+                        <img src="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/zaBI0mP5T4CWyVPUsMPkrw/content/img" alt="Imagen 4">
+
+                    </a>
+                </div>
+                <div class="gallery-cell">
+                    <a href="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/0KjSbY0GQGqV41K70-7lTw/content/Reporte_Semanal_Sector_vivienda" target="_blank" rel="noopener noreferrer">
+                        <img src="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/8pOtI4aUT5WVDg1oKUgeZg/content/REPORTE" alt="Imagen 5">
+
+                    </a>
+                </div>
+        </div>
+</div>
+
+
+<div class="container" >
+    <h6 class="titles">Sitios de interés</h6>
+    <hr class="line3" />
+
+    <div class="carousel9 js-flickity"
+         data-flickity-options='{
+       "wrapAround": false,
+       "contain": true,
+       "pageDots": true,
+       "prevNextButtons": true,
+       "cellAlign": "left",
+       "groupCells": 3,
+       "percentPosition": true,
+       "cellSpacing": 20,
+       "autoPlay": 3500,
+       "pauseAutoPlayOnHover": true
+     }'>
+
+        <!-- 1 -->
+        <div class="carousel9-cell">
+            <article class="carousel9-card">
+                <div class="carousel9-img">
+                    <img src="/img/Home/sitios_interes/conavi.jpeg" alt="Conavi">
+                </div>
+
+                <div class="carousel9-body">
+                    <p>Organismo descentralizado sectorizado a la SEDATU que tiene como misión garantizar el ejercicio del derecho humano a una vivienda adecuada mediante el diseño, coordinación y ejecución de programas del Gobierno de México.</p>
+                </div>
+
+                <div class="carousel9-footer">
+                    <a href="https://www.gob.mx/conavi"
+                       target="_blank"
+                       class="carousel9-btn">
+                        Ir al sitio
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- 2 -->
+        <div class="carousel9-cell">
+            <article class="carousel9-card">
+                <div class="carousel9-img">
+                    <img src="/img/Home/sitios_interes/INFONAVIT.png" alt="Infonavit">
+                </div>
+
+                <div class="carousel9-body">
+                    <p>Organismo que tiene como misión ofrecer soluciones asequibles y suficientes de vivienda adecuada para las personas trabajadoras derechohabientes, mediante créditos baratos y suficientes, administrando los recursos del Fondo Nacional de la Vivienda para los Trabajadores, y otorgar rendimiento a la subcuenta de vivienda.<p>
+                </div>
+
+                <div class="carousel9-footer">
+                    <a href="https://portalmx.infonavit.org.mx/wps/portal/infonavitmx/mx2/derechohabientes/!ut/p/z1/hY-9DoJAEISfxYKWXX6Ew-4iiQoJgQbwGgMGDxLgCJzy-l6UxkR0ut35ZjcDDHJgffFoeCEb0Retms_MuTgHxOPeNiKSEopJ5EVm6FhmQF3I_gFM2bgiiirPXsjqBWcBPM-3jZCgGRsRYpImhn_yXdyivQA_ngTAeCvKdx_alxbhwMbqVo3VqN9Hta6lHKadhhrO86xzIXhb6VfRafgtUotJQv5JwtDl2MRdRia6eQLjCZYX/dz/d5/L2dBISEvZ0FBIS9nQSEh/" target="_blank" class="carousel9-btn">
+                        Ir al sitio
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- 3 -->
+        <div class="carousel9-cell">
+            <article class="carousel9-card">
+                <div class="carousel9-img">
+                    <img src="/img/Home/sitios_interes/shf_log.png" alt="Shf">
+                </div>
+
+                <div class="carousel9-body">
+                    <p>Institución Financiera perteneciente a la Banca de Desarrollo que tiene por objeto impulsar el desarrollo de los mercados primario y secundario de crédito a la vivienda, mediante el otorgamiento de garantías para la construcción, adquisición y mejora, así como a los financiamientos relacionados con el equipamiento de conjuntos habitacionales.</p>
+                </div>
+
+                <div class="carousel9-footer">
+                    <a href="https://www.gob.mx/shf" target="_blank" class="carousel9-btn">
+                        Ir al sitio
+                    </a>
+                </div>
+            </article>
+        </div>
+        <!-- 4 -->
+        <div class="carousel9-cell">
+            <article class="carousel9-card">
+                <div class="carousel9-img">
+                    <img src="/img/Home/sitios_interes/RUV_logo.png" alt="Ruv">
+                </div>
+
+                <div class="carousel9-body">
+                    <p>Plataforma digital del fideicomiso RUV que concentra, registra y verifica información técnica, jurídica y de avance de obra de los proyectos habitacionales en el país. Funciona como el padrón oficial que garantiza la calidad y certeza legal de las viviendas.</p>
+                </div>
+
+                <div class="carousel9-footer">
+                    <a href="https://portal.ruv.org.mx/" target="_blank" class="carousel9-btn">
+                        Ir al sitio
+                    </a>
+                </div>
+            </article>
+        </div>
+        <!-- 5 -->
+        <div class="carousel9-cell">
+            <article class="carousel9-card">
+                <div class="carousel9-img">
+                    <img src="/img/Home/sitios_interes/fovissste.jpeg" alt="Fovissste">
+                </div>
+
+                <div class="carousel9-body">
+                    <p>Órgano desconcentrado del Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE) que tiene por objeto establecer y operar un sistema de financiamiento que permita a los Trabajadores del Estado obtener crédito barato y suficiente, mediante préstamos con garantía hipotecaria.</p>
+                </div>
+
+                <div class="carousel9-footer">
+                    <a href="https://www.gob.mx/fovissste" target="_blank" class="carousel9-btn">
+                        Ir al sitio
+                    </a>
+                </div>
+            </article>
+        </div>
+        <!-- 6 -->
+        <div class="carousel9-cell">
+            <article class="carousel9-card">
+                <div class="carousel9-img">
+                    <img src="/img/Home/sitios_interes/cnbv_logo.png" alt="Cnbv" style="padding:20px">
+                </div>
+
+                <div class="carousel9-body">
+                    <p>Órgano desconcentrado de la Secretaría de Hacienda y Crédito Público (SHCP), con facultades en materia de autorización, regulación, supervisión y sanción sobre los diversos sectores y entidades que integran el sistema financiero en México.</p>
+                </div>
+
+                <div class="carousel9-footer">
+                    <a href="https://www.gob.mx/cnbv" target="_blank" class="carousel9-btn">
+                        Ir al sitio
+                    </a>
+                </div>
+            </article>
+        </div>
+        <!-- 7 -->
+        <div class="carousel9-cell">
+            <article class="carousel9-card">
+                <div class="carousel9-img">
+                    <img src="/img/Home/sitios_interes/INSUS.png" alt="Insus" style="padding:15px">
+                </div>
+
+                <div class="carousel9-body">
+                    <p>Organismo público descentralizado encargado de proyectos, estrategias, acciones, obras e inversiones relativas a la gestión y regularización del suelo, con criterios de desarrollo territorial, planificado y sustentable de acuerdo con los ejes de los programas e instrumentos normativos que regulan la política del sector.</p>
+                </div>
+
+                <div class="carousel9-footer">
+                    <a href="https://www.gob.mx/insus" target="_blank" class="carousel9-btn">
+                        Ir al sitio
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; min-height: auto; margin: 0; margin-top:50px;">
+    <iframe width="1050" height="500" src="https://lookerstudio.google.com/embed/reporting/bf093b14-9ab4-4a15-a1aa-9177d0d64074/page/e7OpF" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+</div>
+
+<section style="margin-top:50px">
+    
+</section>
+<script>
+        document.querySelectorAll('.sniiv-btn').forEach(a => {
+      a.addEventListener('click', () => a.blur());
+    });
+</script>                  
+
+
+<!-- Modal-->
+<div id="myModal3" class="modal-overlay" style="margin-top:70px">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="close-button" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <iframe src="/Inicio/Modal_rezago" title="Información del Rezago Habitacional"></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("myModal3");
+        modal.style.display = "flex";
+
+        // Cierra el modal si se da clic fuera de modal-content
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    });
+
+    function closeModal() {
+        document.getElementById("myModal3").style.display = "none";
+    }
+</script>
+        <link href="/css/Inicio/floating_bubble_button.css" rel="stylesheet" type="text/css" />
+
+<div class="floating-help-bubble-wrapper" id="floatingHelpBubble">
+    <div class="floating-help-menu">
+        <a href="https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/4allQgpcTG6cZdgK-6dLDA/content/GLOSARIO_SNIIV.pdf" target="_blank" rel="noopener noreferrer" class="floating-help-menu-item">
+            <span class="menu-text">¿Tienes dudas? Consulta nuestro glosario</span>
+            <span class="menu-icon-circle">
+                <img src="/img/Home/glosario.svg" alt="" class="icon-right">
+            </span>
+        </a>
+    </div>
+
+    <button type="button"
+            class="floating-help-bubble"
+            aria-label="Abrir opciones de ayuda">
+    </button>
+</div>
+
+<script>
+    const bubble = document.getElementById("floatingHelpBubble");
+    const button = bubble.querySelector("button");
+
+    button.addEventListener("click", function (e) {
+        e.stopPropagation();
+        bubble.classList.toggle("active");
+    });
+
+    document.addEventListener("click", function () {
+        bubble.classList.remove("active");
+    });
+</script>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <!-- /footer -->
+    <div class="footer">
+        <div class="container foot">
+            <h5>La información presentada  en esta plataforma es de carácter  informativo y está sujeta a modificaciones.</h5>
+        </div>
+
+        <div class="container">
+            <address class="address">
+                <br />
+                <a href="https://www.gob.mx/sedatu"><img class="sedatu" src="/img/sedatunewcolor.png" alt="SEDATU" data-toggle="tooltip" data-placement="bottom" title="Secretaría de Desarrollo Agrario, Territorial y Urbano"></a>
+                <br /><br /><b class="contacto">Contacto</b>
+                <br />Nuevo León No. 210. Col. Hipódromo Condesa. Alcaldía Cuauhtémoc. C.P. 06100. Ciudad de México.
+                <br /> 5568209700 &emsp; 
+            </address>
+        </div>
+    </div>
+
+    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+    <script>
+        (function () {
+            const btnMenu   = document.getElementById('btn-menu');
+            const navLinks  = document.querySelector('.nav-links');
+            const overlay   = document.getElementById('menu-overlay');
+
+            function toggleMenu() {
+                navLinks.classList.toggle('open');
+                btnMenu.classList.toggle('open'); // ← activa la clase que da top
+                overlay.classList.toggle('show');
+                document.body.classList.toggle('no-scroll');
+            }
+
+            btnMenu.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+        })();
+
+    </script>
+</body>
+</html>
