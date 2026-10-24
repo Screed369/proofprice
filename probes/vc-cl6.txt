@@ -1,0 +1,22 @@
+URL: https://datos.odepa.gob.cl/api/3/action/datastore_search?resource_id=9f885df4-afeb-4b75-8bab-9334f79db00f&limit=2&sort=_id%20desc
+Fetched: 2026-10-24T02:44:34Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3117
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sat, 24 Oct 2026 02:44:34 GMT
+Server: Secure
+Strict-Transport-Security: max-age=31536000; includeSubDomains; ; preload
+x-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google.com https://www.google-analytics.com https://stats.g.doubleclick.net; media-src 'self' https:; form-action 'self'; upgrade-insecure-requests;
+Content-Type: application/json;charset=utf-8
+Content-Length: 3117
+Cache-Control: public, max-age=0, must-revalidate
+Vary: Cookie
+Connection: close
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"help": "https://datos.odepa.gob.cl/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "limit": 2, "records_format": "objects", "resource_id": "9f885df4-afeb-4b75-8bab-9334f79db00f", "sort": "_id desc", "total_estimation_threshold": null, "records": [{"_id":264520,"Anio":"2026","Mes":"10","Semana":"43","Fecha inicio":"2026-10-19","Fecha termino":"2026-10-23","ID region":"16","Region":"Región de Ñuble","Sector":"Punilla","Tipo de punto monitoreo":"Supermercado","Grupo":"Pan","Producto":"Pan amasado","Unidad":"$/kilo","Precio minimo":"2850","Precio maximo":"3450","Precio promedio":"3150,000000"},{"_id":264519,"Anio":"2026","Mes":"10","Semana":"43","Fecha inicio":"2026-10-19","Fecha termino":"2026-10-23","ID region":"16","Region":"Región de Ñuble","Sector":"Punilla","Tipo de punto monitoreo":"Supermercado","Grupo":"Pan","Producto":"Marraqueta","Unidad":"$/kilo","Precio minimo":"1890","Precio maximo":"2190","Precio promedio":"2090,000000"}], "fields": [{"id": "_id", "type": "int"}, {"id": "Anio", "type": "text", "info": {"notes": "A\u00f1o de captura del precio"}}, {"id": "Mes", "type": "text", "info": {"notes": "Mes de captura del precio"}}, {"id": "Semana", "type": "text", "info": {"notes": "Semama de captura del precio"}}, {"id": "Fecha inicio", "type": "text", "info": {"notes": "Fecha de inicio de la semana de captura del precio (lunes)"}}, {"id": "Fecha termino", "type": "text", "info": {"notes": "Fecha de t\u00e9rmino de la semana de captura del precio (viernes)"}}, {"id": "ID region", "type": "text", "info": {"notes": "C\u00f3digo de la regi\u00f3n de Chile"}}, {"id": "Region", "type": "text", "info": {"notes": "Nombre de la regi\u00f3n de Chile donde fue capturado el precio"}}, {"id": "Sector", "type": "text", "info": {"notes": "Sector de la regi\u00f3n donde fue capturado el precio"}}, {"id": "Tipo de punto monitoreo", "type": "text", "info": {"notes": "Tipo de comercio donde fue capturado el precio"}}, {"id": "Grupo", "type": "text", "info": {"notes": "Grupo al que pertenece el producto"}}, {"id": "Producto", "type": "text", "info": {"notes": "Nombre del producto. Para los grupos de Frutas y Hortalizas, el nombre del producto est\u00e1 compuesto por tres partes: Especie,Variedad,Calidad, separadas por una linea vertical (|). Por ejemplo: \"Palta|Hass|Primera\"."}}, {"id": "Unidad", "type": "text", "info": {"notes": "Unidad de comercializaci\u00f3n del producto"}}, {"id": "Precio minimo", "type": "text", "info": {"notes": "Precio m\u00ednimo del producto en pesos chilenos (CLP)"}}, {"id": "Precio maximo", "type": "text", "info": {"notes": "Precio m\u00e1ximo del producto en pesos chilenos (CLP)"}}, {"id": "Precio promedio", "type": "text", "info": {"notes": "Precio promedio del producto en pesos chilenos (CLP)"}}], "_links": {"start": "/api/3/action/datastore_search?resource_id=9f885df4-afeb-4b75-8bab-9334f79db00f&limit=2&sort=_id+desc", "next": "/api/3/action/datastore_search?resource_id=9f885df4-afeb-4b75-8bab-9334f79db00f&limit=2&sort=_id+desc&offset=2"}, "total": 264520, "total_was_estimated": false}}
