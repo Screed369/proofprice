@@ -1,0 +1,32 @@
+URL: https://data.gov.tw/api/v2/rest/dataset/9322
+Fetched: 2026-10-24T17:43:42Z from GitHub Actions
+Status, type, bytes: 200 application/json 2270
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 17:43:42 GMT
+content-type: application/json
+content-length: 2270
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=31clm1c8bn62ule2a29jb5725u; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=S8.kyUfRC4iiuho9Tir1WZQt3EoB9NC29Vf1slvQ0Uw-1792863822.3220148-1.0.1.1-xCOcnPHTaqESnnhPHlz2d_QeX3qSgFBr3QAYV7.FcN0kKDiL_fUEof89cjFcozydvKrFh8gTzJeQIfzQzXZaI8JJMfQtqqc8jKsMe7JlRMLhshnEjGLGQCzaPZKaBZZx; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Sat, 24 Oct 2026 18:13:42 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4fac9098e4ff7c7-LAX
+
+=== FILE TYPE: JSON text data
+=== FIRST 10000 BYTES
+{"help":"","success":true,"result":{"categoryService":"I00","categoryDataset":"A","datasetId":9322,"identifier":"360000000G-000063","title":"近1季依採購性質決標之件數及決標金額統計","description":"提供近1季依採購性質之決標件數及決標金額統計。","type":"rawData","license":"1","cost":"free","dataProvider":"kristytien","publisherOID":"2.16.886.101.20003.20035","publisherContactName":"徐小姐","publisherContactPhone":"0287897639;02878978639","publisherContactEmail":"ywhsu@mail.pcc.gov.tw","updateFrequency":{"regularupdate":"1","Frequency":"3","unittime":"月"},"dataQuality":"無(白名單)","coverageStartedDate":"","coverageEndedDate":"","publishedDate":"2014-10-01","modifiedDate":"2023-04-11 14:33:03","spatialCoverage":"","language":"zh","relatedUrl":"","notes":"更新頻率說明: 每季第2月更新\r\n授權說明網址: http:\/\/data.gov.tw\/license","apiDocUrl":"","distribution":[{"resourceDescription":"","resourceField":[{"name":"採購性質","description":""},{"name":"決標件數","description":""},{"name":"決標金額","description":""}],"qcLevel":"","resourceFormat":"JSON","resourceCharacterEncoding":"UTF-8","resourceQualityCheckTime":"2026-06-01 10:19:16","resourceDownloadUrl":"https:\/\/web.pcc.gov.tw\/tps\/openDataApi\/atmOpenData?runType=3","resourceAmount":0,"resourceNotes":"","resourceRequestMethod":"","resourceOasUrl":"","resourceRequestParameters":[],"resourcePathParameters":[]}],"keyword":["採購性質","決標","其他"],"en":{"title":"The number of items and the amount of procurement by nature in the recent quarter were statistically determined.","description":"Provide statistics on the number and amount of procurement awards in the past quarter based on the nature of the purchases.","publisherContactName":"徐小姐","publisherContactPhone":"0287897639;02878978639","publisherContactEmail":["ywhsu@mail.pcc.gov.tw"],"updateFrequency":"Every 3 months","cost":"free","notes":"Update frequency: Updated in the second month of every quarterLicense description URL: http:\/\/data.gov.tw\/license","keyword":["Purchasing nature","Award the contract","Other"],"resources":[{"description":"","fieldDesc":"Procurement nature、Number of contract awards、The bid amount","note":""}]}}}
