@@ -14,7 +14,7 @@ import { Readable } from "node:stream";
 import { InputError, SourceError } from "../../lib/http";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { summarise } from "../../lib/stats";
+import { NO_COUNT, summarise } from "../../lib/stats";
 import { readLatestDay } from "../../lib/library/store";
 
 export const INFO: SourceInfo = {
@@ -72,6 +72,16 @@ export function norm(s: unknown): string {
 }
 
 export const ITEM_PREFIX = "r:";
+/** Marker row item: the date of the newest award in the file, e.g. "newest:2026-07-09". It carries no price (n NO_COUNT, zeros), so no
+ *  answer can ever show it as a figure; the answer reads it to say how old the data really is. */
+export const NEWEST_PREFIX = "newest:";
+export function newestMarker(newest: string): DailyRow | null {
+  return /^\d{4}-\d{2}-\d{2}$/.test(newest) ? { area: "ALL", item: NEWEST_PREFIX + newest, n: NO_COUNT, median: 0, low: 0, high: 0, min: 0, max: 0 } : null;
+}
+export function newestOf(rows: { area: string; item: string }[]): string | null {
+  const m = rows.find((r) => r.area === "ALL" && r.item.startsWith(NEWEST_PREFIX));
+  return m ? m.item.slice(NEWEST_PREFIX.length) : null;
+}
 export function rubroItems(rubros: string): string[] {
   const out = new Set<string>();
   for (const part of String(rubros ?? "").split(";")) {
@@ -285,6 +295,8 @@ export async function arHarvest(now: Date = new Date(), o: HarvestOptions = {}):
   if (header) throw new SourceError("The COMPR.AR file was empty");
   if (!awards.length) throw new SourceError(`The COMPR.AR file held no usable awards in the window (${countsText(counts)}): the file may not have been refreshed or its format may have changed`);
   const rows = aggregateAll(awards, from, to);
+  const marker = newestMarker(newest);
+  if (marker) rows.push(marker);
   return {
     date: to,
     currency: CURRENCY,
@@ -364,6 +376,9 @@ export async function arContracts(input: ArInput): Promise<PriceAnswer> {
   if (!day) throw new SourceError("Argentine contract prices have not been collected yet; the daily collector fills them. Try again tomorrow.");
   const { item, label } = resolveItem(input.what, day.rows.map((r) => r.item));
   const from = windowStart(day.date);
+  // The publisher refreshes the file about twice a year, so the newest award can be months older than the collection day.
+  const newest = newestOf(day.rows);
+  const to = newest && newest <= day.date ? newest : day.date;
   const row = day.rows.find((r) => r.area === "ALL" && r.item === item);
   const summary = row ? { count: row.n, median: row.median, low: row.low, high: row.high, min: row.min, max: row.max } : null;
   return buildAnswer({
@@ -372,14 +387,14 @@ export async function arContracts(input: ArInput): Promise<PriceAnswer> {
     summary,
     currency: CURRENCY,
     unit: UNIT,
-    period: { from, to: day.date },
+    period: { from, to },
     method:
-      `COMPR.AR awards dated ${from} to ${day.date} (the publisher refreshes the file about twice a year), product group: ${label}. Median and 10th–90th percentile of the awarded value in Argentine pesos. ` +
+      `COMPR.AR awards dated ${from} to ${to}${newest ? ` (the newest award in the file; collected ${day.date})` : ""} (the publisher refreshes the file about twice a year), product group: ${label}. Median and 10th–90th percentile of the awarded value in Argentine pesos. ` +
       "Totals per award, not unit prices; suppliers are never named.",
     describe: (s) =>
       `Argentine national public bodies awarded contracts (${label}) with a median total value of ${fmtMoney(s.median, CURRENCY)} per award ` +
       `(typical range ${fmtMoney(s.low, CURRENCY)} to ${fmtMoney(s.high, CURRENCY)}, 10th to 90th percentile). These are totals per award in pesos, not unit prices; with high inflation, older awards look smaller.`,
     baseUrl: input.baseUrl,
-    extra: { value_basis: "total awarded value (COMPR.AR), not a unit price", product_group: label, newest_collection: day.date },
+    extra: { value_basis: "total awarded value (COMPR.AR), not a unit price", product_group: label, newest_collection: day.date, ...(newest ? { newest_award: newest } : {}) },
   });
 }

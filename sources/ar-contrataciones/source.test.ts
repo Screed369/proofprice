@@ -132,7 +132,12 @@ test("harvest: streams the CSV, keeps aggregates only, notes what it saw; then a
     assert.equal(a.price?.currency, "ARS");
     assert.equal(a.price?.median, 103500);
     assert.equal(a.sample_size, 6);
-    assert.deepEqual(a.period, { from: "2025-10-24", to: "2026-10-24" });
+    // honesty (Gap G20261024-AUDIT-AR-FRESHNESS): the period ends at the newest award in the file, not at the collection day
+    assert.deepEqual(a.period, { from: "2025-10-24", to: "2026-05-28" });
+    assert.equal((a.extra as any).newest_award, "2026-05-28");
+    assert.match(a.method, /2025-10-24 to 2026-05-28/);
+    assert.ok(h.rows.some((r) => r.item === "newest:2026-05-28" && Number.isNaN(r.n)), "marker row carries the newest award date and no count");
+    assert.ok(!h.rows.some((r) => r.item.startsWith("r:newest")), "the marker is never a product group");
     assert.match(a.summary, /not unit prices/);
     assert.equal((await arContracts({ what: "all" })).sample_size, 11);
     assert.equal((await arContracts({ what: "alimentos" })).sample_size, 5);
