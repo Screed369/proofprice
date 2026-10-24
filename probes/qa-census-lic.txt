@@ -1,0 +1,94 @@
+URL: https://api.census.gov/data/timeseries/eits/ressales
+Fetched: 2026-10-24T12:15:12Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3551
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: private
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,OPTIONS
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Referrer-Policy: same-origin
+Content-Security-Policy: default-src 'self'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content
+X-Content-Type-Options: nosniff
+Content-Type: application/json;charset=utf-8
+Content-Length: 3551
+Date: Sat, 24 Oct 2026 12:15:12 GMT
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: TS010383f0=01283c52a45a42803c4f9b3c4f05247f734a9ced8510a8101be5beb536e2f90b9b2ebdec16c70378796b464fd1f285170145c27407; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{
+  "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
+  "@id": "http://api.census.gov/data/timeseries/eits/ressales.json",
+  "@type": "dcat:Catalog",
+  "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
+  "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json",
+  "dataset": [
+    {
+      "c_dataset": [
+        "timeseries",
+        "eits",
+        "ressales"
+      ],
+      "c_geographyLink": "http://api.census.gov/data/timeseries/eits/ressales/geography.json",
+      "c_variablesLink": "http://api.census.gov/data/timeseries/eits/ressales/variables.json",
+      "c_tagsLink": "http://api.census.gov/data/timeseries/eits/ressales/tags.json",
+      "c_examplesLink": "http://api.census.gov/data/timeseries/eits/ressales/examples.json",
+      "c_groupsLink": "http://api.census.gov/data/timeseries/eits/ressales/groups.json",
+      "c_sorts_url": "http://api.census.gov/data/timeseries/eits/ressales/sorts.json",
+      "c_documentationLink": "http://www.census.gov/developer/",
+      "c_isTimeseries": true,
+      "c_isCube": true,
+      "c_isAvailable": true,
+      "@type": "dcat:Dataset",
+      "title": "Time Series Economic Indicators Time Series -: New Home Sales",
+      "accessLevel": "public",
+      "bureauCode": [
+        "006:07"
+      ],
+      "description": "The U.S. Census Bureau.s economic indicator surveys provide monthly and quarterly data that are timely, reliable, and offer comprehensive measures of the U.S. economy. These surveys produce a variety of statistics covering construction, housing, international trade, retail trade, wholesale trade, services and manufacturing. The survey data provide measures of economic activity that allow analysis of economic performance and inform business investment and policy decisions. Other data included, which are not considered principal economic indicators, are the Quarterly Summary of State & Local Taxes, Quarterly Survey of Public Pensions, and the Manufactured Homes Survey.  For information on the reliability and use of the data, including important notes on estimation and sampling variance, seasonal adjustment, measures of sampling variability, and other information pertinent to the economic indicators, visit the individual programs' webpages - http://www.census.gov/cgi-bin/briefroom/BriefRm.",
+      "distribution": [
+        {
+          "@type": "dcat:Distribution",
+          "accessURL": "http://api.census.gov/data/timeseries/eits/ressales",
+          "description": "API endpoint",
+          "format": "API",
+          "mediaType": "application/json",
+          "title": "API endpoint"
+        }
+      ],
+      "contactPoint": {
+        "fn": "Economic Indicators Mail List",
+        "hasEmail": "mailto:econ.indicators@census.gov"
+      },
+      "identifier": "http://api.census.gov/data/id/EITSRESSALES",
+      "keyword": [
+        "census"
+      ],
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "modified": "2017-02-23",
+      "programCode": [
+        "006:007"
+      ],
+      "references": [
+        "http://www.census.gov/developers/"
+      ],
+      "spatial": "United States",
+      "publisher": {
+        "@type": "org:Organization",
+        "name": "U.S. Census Bureau",
+        "subOrganizationOf": {
+             "@type": "org:Organization",
+             "name": "U.S. Department Of Commerce",
+             "subOrganizationOf": {
+                 "@type": "org:Organization",
+                 "name": "U.S. Government"
+             }
+         }
+      }
+    }
+  ]
+}
