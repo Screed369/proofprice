@@ -66,7 +66,9 @@ async function main() {
     } catch (e: any) {
       const msg = String(e?.message ?? e).slice(0, 300);
       writeMeta(id, { ...prev, last_harvest_at: started, last_error: msg });
-      report.push(`FAIL ${id}: ${msg}`);
+      // A source that was already failing on the previous harvest is a known outage (recorded in meta.json and /api/v1/library, and
+      // in Notion by the Monitor): it is reported as DOWN and does not count towards the workflow's "more than 3 new failures" alarm.
+      report.push(`${prev.last_error && prev.last_harvest_at && !prev.last_error.startsWith("Data check held back") ? "DOWN" : "FAIL"} ${id}: ${msg}`);
     }
   }
   console.log(report.join("\n"));
