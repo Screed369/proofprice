@@ -1,0 +1,127 @@
+URL: https://oeffentlichevergabe.de/api/notice-exports?pubDay=2026-10-22&format=csv.zip
+Fetched: 2026-10-24T06:14:45Z from GitHub Actions
+Status, type, bytes: 200  786543
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Sat, 24 Oct 2026 06:14:44 GMT
+vary: Accept-Encoding
+etag: "version-6"
+content-disposition: attachment; filename=notices_2026-10-22_CSV.zip
+vary: Accept
+cache-control: max-age=120
+x-content-type-options: nosniff
+x-xss-protection: 0
+strict-transport-security: max-age=31536000; includeSubDomains
+x-frame-options: DENY
+referrer-policy: no-referrer
+content-security-policy: default-src 'self'
+
+=== FILE TYPE: Zip archive data, made by v2.0, extract using at least v2.0, last modified Oct 23 2026 00:00:00, uncompressed size 110474, method=deflate
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+   110474  2026-10-23 00:00   notice.csv
+    66326  2026-10-23 00:00   lot.csv
+   346930  2026-10-23 00:00   organisation.csv
+  1814654  2026-10-23 00:00   purpose.csv
+   159534  2026-10-23 00:00   classification.csv
+   174339  2026-10-23 00:00   placeOfPerformance.csv
+    96582  2026-10-23 00:00   duration.csv
+   119515  2026-10-23 00:00   procedure.csv
+    64855  2026-10-23 00:00   secondStage.csv
+    84629  2026-10-23 00:00   submissionTerms.csv
+    14461  2026-10-23 00:00   noticeResult.csv
+    24686  2026-10-23 00:00   procedureLotResult.csv
+    62716  2026-10-23 00:00   receivedSubmissions.csv
+      553  2026-10-23 00:00   cvdInformation.csv
+    22757  2026-10-23 00:00   tender.csv
+    25079  2026-10-23 00:00   contract.csv
+    78576  2026-10-23 00:00   strategicProcurement.csv
+    63083  2026-10-23 00:00   additionalInformation.csv
+    53131  2026-10-23 00:00   changes.csv
+---------                     -------
+  3382880                     19 files
+=== HEAD 8 LINES OF tender.csv
+noticeIdentifier,noticeVersion,tenderIdentifier,lotIdentifier,tenderValue,tenderValueCurrency,tenderPaymentValue,tenderPaymentValueCurrency,tenderPenalties,tenderPenaltiesCurrency,tenderRank,concessionRevenueUser,concessionRevenueUserCurrency,concessionRevenueBuyer,concessionRevenueBuyerCurrency,countryOrigin
+ac2c1cf7-55fa-497b-90e8-d1c37a70354a,01,TEN-0001,LOT-0001,667584.00,EUR,,,,,,,,,,
+70f3ea8b-d8bd-4e8f-80e7-6d726b090ee1,01,TEN-0001,LOT-0000,,,,,,,,,,,,
+2a4e511c-17bc-4807-ac6e-2d8502b20398,01,TEN-0001,LOT-0001,172278.00,EUR,,,,,,,,,,
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,TEN-0001,LOT-0002,48379.61,EUR,,,,,,,,,,
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,TEN-0002,LOT-0001,48379.61,EUR,,,,,,,,,,
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,TEN-0003,LOT-0006,528558.05,EUR,,,,,,,,,,
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,TEN-0004,LOT-0005,528558.05,EUR,,,,,,,,,,
+=== HEAD 8 LINES OF contract.csv
+noticeIdentifier,noticeVersion,contractIdentifier,winnerDecisionDate,contractConclusionDate,contractFrameworkAgreement
+ac2c1cf7-55fa-497b-90e8-d1c37a70354a,01,CON-0001,,2026-10-20T00:00:00+02:00,
+70f3ea8b-d8bd-4e8f-80e7-6d726b090ee1,01,CON-0001,,2026-10-20T00:00:00+02:00,
+2a4e511c-17bc-4807-ac6e-2d8502b20398,01,CON-0001,,2026-10-16T00:00:00+02:00,
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,CON-0001,,2026-10-20T00:00:00+02:00,
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,CON-0002,,2026-10-20T00:00:00+02:00,
+225c588b-ddb1-44f5-aa8a-2078ae6200e0,01,CON-0001,2026-07-02T00:00:00+02:00,2026-08-05T00:00:00+02:00,
+fb5df76d-b05f-4539-9fff-aed4910bfec7,01,CON-0001,2023-06-01T00:00:00+02:00,2023-06-12T00:00:00+02:00,
+=== HEAD 8 LINES OF noticeResult.csv
+noticeIdentifier,noticeVersion,noticeValue,noticeValueCurrency,noticeFrameworkValue,noticeFrameworkValueCurrency
+ac2c1cf7-55fa-497b-90e8-d1c37a70354a,01,667584.00,EUR,,
+70f3ea8b-d8bd-4e8f-80e7-6d726b090ee1,01,,,,
+2a4e511c-17bc-4807-ac6e-2d8502b20398,01,172278.00,EUR,,
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,576937.66,EUR,,
+225c588b-ddb1-44f5-aa8a-2078ae6200e0,01,872584.54,EUR,,
+fb5df76d-b05f-4539-9fff-aed4910bfec7,01,0,EUR,,
+66b56e30-3f21-4dc2-a7e1-fdc84254b6c0,01,53696.03,EUR,,
+=== HEAD 8 LINES OF lot.csv
+noticeIdentifier,noticeVersion,lotIdentifier
+e82b6f56-cbde-4786-b5f5-3ad1aa981492,01,LOT-0000
+d81c15f3-2bfd-4fa2-b834-68011f2521ae,01,LOT-0000
+a0d13b0c-d3ba-439b-9d53-3c88493f9e11,01,LOT-0001
+ac2c1cf7-55fa-497b-90e8-d1c37a70354a,01,LOT-0001
+3b2f0b93-3cf9-441f-89ab-0d9af3540c3a,01,LOT-0000
+c8b8f83a-fe28-453c-b381-1b2d8ffb3da0,01,LOT-0001
+99807dcc-abf0-4f62-ae71-789f298626c6,01,LOT-0000
+=== HEAD 8 LINES OF classification.csv
+noticeIdentifier,noticeVersion,lotIdentifier,classificationType,mainClassificationCode,additionalClassificationCodes,options
+e82b6f56-cbde-4786-b5f5-3ad1aa981492,01,,cpv,45421000,"45421131,45420000",
+e82b6f56-cbde-4786-b5f5-3ad1aa981492,01,LOT-0000,cpv,45421000,"45421131,45420000",
+d81c15f3-2bfd-4fa2-b834-68011f2521ae,01,,cpv,45000000,45443000,
+d81c15f3-2bfd-4fa2-b834-68011f2521ae,01,LOT-0000,cpv,45000000,45443000,
+a0d13b0c-d3ba-439b-9d53-3c88493f9e11,01,,cpv,31400000,34960000,
+a0d13b0c-d3ba-439b-9d53-3c88493f9e11,01,LOT-0001,cpv,31400000,,
+ac2c1cf7-55fa-497b-90e8-d1c37a70354a,01,,cpv,71300000,71541000,
+=== HEAD 8 LINES OF procedureLotResult.csv
+noticeIdentifier,noticeVersion,lotIdentifier,procedureLotResultNumber,winnerChosen,notAwardedReason,frameworkMaximumValue,frameworkMaximumValueCurrency,frameworkEstimatedValue,frameworkEstimatedValueCurrency,tenderValueLowest,tenderValueLowestCurrency,tenderValueHighest,tenderValueHighestCurrency
+ac2c1cf7-55fa-497b-90e8-d1c37a70354a,01,LOT-0001,0,selec-w,,,,,,667584.00,EUR,904355.00,EUR
+70f3ea8b-d8bd-4e8f-80e7-6d726b090ee1,01,LOT-0000,0,selec-w,,,,,,,,,
+2a4e511c-17bc-4807-ac6e-2d8502b20398,01,LOT-0001,0,selec-w,,,,,,165497.00,EUR,172278.00,EUR
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,LOT-0001,0,selec-w,,,,,,34464.27,EUR,40881.04,EUR
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,LOT-0002,1,selec-w,,,,,,13915.34,EUR,16195.83,EUR
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,LOT-0003,2,selec-w,,,,,,243007.35,EUR,316226.93,EUR
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,LOT-0004,3,selec-w,,,,,,153054.98,EUR,195066.90,EUR
+=== HEAD 8 LINES OF purpose.csv
+noticeIdentifier,noticeVersion,lotIdentifier,internalIdentifier,mainNature,additionalNature,title,estimatedValue,estimatedValueCurrency,description
+e82b6f56-cbde-4786-b5f5-3ad1aa981492,01,,E-SZEI-2024-324-2,works,,Tischler Ausbau und Innentüren,,,"Der Zweckverband Schulzentrum Eichstätt-Schottenau plant die Erweiterung des gleichnamigen Schulzentrums in Form eines eigenständigen, viergeschossigen Neubaus auf dem eigenen Grund-stück. 
+Zudem werden auch einzelne bauliche Sanierungsmaßnahmen und Nutzungsänderungen in den Be-standsgebäuden durchgeführt.
+Sämtliche Bauphasen des Neubaus finden parallel zum Schulbetrieb statt.
+Gegenstand der Ausschreibung sind:
+Ca. 150 St Innentüren (Stahlumfassungszarge, Holzumfassungszargen, Holzblockzargen und Türblät-ter in unterschiedlichen Ausführungen); Einbaumöbel v.a. Klassenzimmer und Büros u.a. Schränke, Schrankwände ca. 800m2, Brüstungsverkleidungen, Akustikwandverkleidungen ca. 150m2, sonstige Einbaumöbel"
+e82b6f56-cbde-4786-b5f5-3ad1aa981492,01,LOT-0000,E-SZEI-2024-324-2,works,,Tischler Ausbau und Innentüren,,,"Der Zweckverband Schulzentrum Eichstätt-Schottenau plant die Erweiterung des gleichnamigen Schulzentrums in Form eines eigenständigen, viergeschossigen Neubaus auf dem eigenen Grund-stück. 
+Zudem werden auch einzelne bauliche Sanierungsmaßnahmen und Nutzungsänderungen in den Be-standsgebäuden durchgeführt.
+=== FIRST 2000 BYTES OF notice.csv
+noticeIdentifier,noticeVersion,procedureIdentifier,procedureLegalBasis,formType,noticeType,publicationDate
+e82b6f56-cbde-4786-b5f5-3ad1aa981492,01,3ad95062-5ed4-46a9-bc3e-a09cf1cba206,32014L0024,competition,cn-standard,2026-10-22T00:00:00+02:00
+d81c15f3-2bfd-4fa2-b834-68011f2521ae,01,de5640bf-6151-4d61-81fd-692f2effd04d,32014L0024,competition,cn-standard,2026-10-22T00:00:00+02:00
+a0d13b0c-d3ba-439b-9d53-3c88493f9e11,01,a0d13b0c-d3ba-439b-9d53-3c88493f9e11,32014L0025,competition,cn-standard,2026-10-22T02:06:04Z
+ac2c1cf7-55fa-497b-90e8-d1c37a70354a,01,6f5c1009-e69d-4177-b7c8-bcd1dc41be16,32014L0024,result,can-standard,2026-10-22T02:06:04Z
+3b2f0b93-3cf9-441f-89ab-0d9af3540c3a,01,0a02892b-abd7-4477-88f3-3b3294038bce,32014L0025,competition,cn-standard,2026-10-22T02:06:04Z
+c8b8f83a-fe28-453c-b381-1b2d8ffb3da0,01,ca677a8c-e4da-43c5-9488-f0b097f3e330,32014L0024,competition,cn-standard,2026-10-22T02:06:04Z
+99807dcc-abf0-4f62-ae71-789f298626c6,01,b7923516-4960-447f-bf34-93612a949b35,32014L0024,competition,cn-standard,2026-10-22T02:06:04Z
+70f3ea8b-d8bd-4e8f-80e7-6d726b090ee1,01,13f5f94e-717b-41d9-a631-a3b07c6ad6d2,32014L0024,result,can-standard,2026-10-22T02:06:04Z
+ee04af73-d20c-42e7-b91c-55554140a4a9,01,2c1d9bbd-dc78-4baa-8dd8-3e3fb6799b27,32014L0025,competition,cn-standard,2026-10-22T02:06:04Z
+2a4e511c-17bc-4807-ac6e-2d8502b20398,01,9438594c-4a90-44af-aa8b-75270d748fd7,32014L0024,result,can-standard,2026-10-22T02:06:04Z
+84b98bb9-227a-4036-9447-e5cecdc662e5,01,c04224e4-df42-477e-994f-2177c81b7042,32014L0024,competition,cn-standard,2026-10-22T02:06:07Z
+ad442d63-1baf-46ac-a606-594d101dd7ea,01,f4678100-585d-4aef-9519-b5dc1a4a9952,32014L0024,result,can-standard,2026-10-22T02:06:04Z
+5a823d54-1b19-4a99-bc6d-ba3cd075a0e9,01,17652619-54fa-417b-b604-200c2db13d31,32014L0024,competition,cn-standard,2026-10-22T02:06:04Z
+225c588b-ddb1-44f5-aa8a-2078ae6200e0,01,72987891-2bdc-4f3c-86cd-ca80c68b9c4b,32014L0024,result,can-standard,2026-10-22T02:06:08Z
+a53c0280-c70b-432d-b41b-69
