@@ -1,0 +1,576 @@
+URL: https://api.us.socrata.com/api/catalog/v1?domains=www.datos.gov.co&q=SIPSA&limit=10
+Fetched: 2026-10-24T00:41:38Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 89690
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 00:41:38 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Sistema de Información de Precios y Abastecimiento del Sector Agropecuario Componente Abastecimiento de Alimentos - SIPSA - A - 2013 -2017",
+            "id" : "rtby-ng3n",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "El DANE produce información estadística que es estratégica para la toma de decisiones por parte de sus usuarios. Esta tiene una demanda progresiva e implica que debe contar con estándares de calidad, debe ser oportuna, estar disponible, además de ser accesible y clara; de tal manera que los usuarios la comprendan y hagan uso de ella. A causa de esto, se debe seguir los principios de las estadísticas determinados por la Organización de las Naciones Unidas (ONU), relacionados con la coherencia, comparabilidad, integralidad y calidad. Igualmente el DANE aplica en sus operaciones estadísticas el código nacional de buenas prácticas y la guía estándar para la presentación de documentos metodológicos de las instituciones productoras de información estadística procurando la transparencia, confianza y credibilidad en la calidad técnica de la información que produce.\n \nPor otra parte, el Ministerio de Agricultura y Desarrollo Rural (MADR), ha liderado la consolidación del Sistema de Información de Precios y Abastecimiento del Sector Agropecuario (SIPSA) desde 1966 bajo la operación de entidades como el Instituto de Mercadeo Agropecuario (IDEMA) y la Asociación Colombiana de Centrales de Abastos (ACOABASTOS) durante el periodo 1990-1995. \n\nConsecuentemente, y para solucionar la carencia de estadísticas continuas, confiables, oportunas, accesibles, con cobertura y desagregación, el MADR, junto con el Departamento Nacional de Planeación (DNP), el Instituto Interamericano de Cooperación para la Agricultura (IICA) y el DANE, coordinaron el diseño y montaje del SIPSA. En 1994 estuvo en manos del Centro de Investigaciones para el Desarrollo (CID), de la Universidad Nacional de Colombia. Luego de la prueba piloto realizada en 1995, el MADR encarga su operación a la Corporación Colombia Internacional (CCI), para el periodo 1996-2011. \n\nEn febrero de 2012, el MADR entrega la operación del SIPSA al DANE a través del Contrato Interadministrativo No. 134, con la misión de retomar la dinámica de la información que brindaba normalmente el SIPSA y con la expectativa de mejorar la calidad de la información de la cual estaban a la espera el sector académico, los productores, comerciantes y decisores de política, en general. \n\nEn cumplimiento de este encargo, el DANE asume la operación del SIPSA e inicia un proceso de armonización de cada una de las tres operaciones estadísticas del SIPSA, respecto a las normas, principios y procedimientos nacionales e internacionales para fortalecerlas en apoyo de las diferentes áreas técnicas del DANE y de acuerdo con las políticas de la entidad. \n\nLas tres operaciones estadísticas del SIPSA son: \n\n- Componente Precios Mayoristas (SIPSA_P) \n\n- Componente Abastecimiento de Alimentos (SIPSA_A) \n\n- Componente Insumos y Factores Asociados a la Producción (SIPSA_I) \n\nEl SIPSA_A genera estadísticas sobre los volúmenes y el flujo de alimentos que ingresan a los principales mercados mayoristas y transitan por los peajes. Dicha información permite conocer la oferta de los diferentes alimentos y los factores que afectan dicha oferta (ej., factores climáticos; el fenómeno de la niña o el niño, también factores de infraestructura; caminos de herradura, fiestas nacionales, entre otros) para la toma de decisiones por parte de: productores, agroindustriales, comercializadores y decisores de política. \n\nEl SIPSA_A cubre 156 productos de los grupos verduras y hortalizas, frutas, tubérculos, raíces y plátanos, granos y cereales, lácteos y huevos, carnes, pescados, procesados. \n\nPara el 2012 el DANE consideró los mismos mercados del SIPSA_A. Continuó con la recolección de información diaria en los mercados mayoristas de Bogotá, Medellín, Cali, Barranquilla, Bucaramanga, Cúcuta, Pereira, Armenia, Villavicencio y Neiva. Esta Información fue complementada con la recolección de volúmenes de alimentos que se transportan por los 21 peajes de entrada y salida vehicular a Bogotá, Medellín, Villavicencio, Cúcuta y Bucaramanga. En estos peajes se r",
+            "attribution" : null,
+            "attribution_link" : null,
+            "contact_email" : "mailto:www.dane.gov.co",
+            "type" : "federated_href",
+            "updatedAt" : "2026-05-21T15:03:02.000Z",
+            "createdAt" : "2026-05-21T15:03:02.000Z",
+            "metadata_updated_at" : "2026-05-21T15:03:02.000Z",
+            "data_updated_at" : "2026-05-21T15:03:02.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 5,
+                "page_views_last_month" : 37,
+                "page_views_total" : 227,
+                "page_views_last_week_log" : 2.584962500721156,
+                "page_views_last_month_log" : 5.247927513443585,
+                "page_views_total_log" : 7.832890014164742
+              },
+            "columns_name" : [],
+            "columns_field_name" : [],
+            "columns_datatype" : [],
+            "columns_description" : [],
+            "columns_format" : [],
+            "download_count" : 0,
+            "provenance" : "official",
+            "lens_view_type" : "href",
+            "lens_display_type" : "federated",
+            "locked" : false,
+            "backend" : "not_a_dataset",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-05-21T15:03:02.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_tags" :
+              [
+                "vehículo de carga",
+                "cultivo agrícola",
+                "cosecha",
+                "comerciante mayorista",
+                "cobertura",
+                "central de abastos",
+                "capacidad de carga",
+                "canasta de alimentos",
+                "agrícola",
+                "agroindustria",
+                "agricultura convencional",
+                "abastecimiento de alimentos",
+                "volumen",
+                "tipo de vehículo",
+                "sector agropecuario",
+                "región",
+                "productor agropecuario",
+                "producción",
+                "procedencia",
+                "plaza de mercado",
+                "peaje",
+                "oferta de alimentos",
+                "destino"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "mailto:www.dane.gov.co"
+                },
+                {
+                  "key" : "Common-Core_Last-Update",
+                  "value" : "2019-11-15T10:47:19-05:00"
+                },
+                {
+                  "key" : "Common-Core_License",
+                  "value" : "https=>//creativecommons.org/licenses/by-sa/4.0/legalcode"
+                },
+                {
+                  "key" : "Common-Core_Public-Access-Level",
+                  "value" : "Public"
+                },
+                {
+                  "key" : "Common-Core_Unique-Identifier",
+                  "value" : "1ac35f51608150690158cc16b401042a"
+                },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "Departamento Administrativo Nacional de Estadística (DANE)"
+                },
+                {
+                  "key" : "Common-Core_Homepage",
+                  "value" : "https://microdatos.dane.gov.co/index.php/catalog/645/get-microdata"
+                },
+                {
+                  "key" : "Common-Core_Theme",
+                  "value" : "Territorio-Microdatos"
+                },
+                {
+                  "key" : "Common-Core_Issued",
+                  "value" : "2019-11-06T08:42:54-05:00"
+                },
+                { "key" : "Common-Core_Contact-Name", "value" : "" }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "additional_access_points" :
+              [
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12278"
+                    },
+                  "title" : "SIPSA_2013"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12279"
+                    },
+                  "title" : "SIPSA_2014(I-SEMESTRE)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12280"
+                    },
+                  "title" : "SIPSA_2014(II-SEMESTRE)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12281"
+                    },
+                  "title" : "SIPSA_2015(I-SEMESTRE)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12282"
+                    },
+                  "title" : "SIPSA_2015(II-SEMESTRE)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12283"
+                    },
+                  "title" : "SIPSA_2016(I-SEMESTRE)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12284"
+                    },
+                  "title" : "SIPSA_2016(II-SEMESTRE)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12285"
+                    },
+                  "title" : "SIPSA_2017(I-SEMESTRE)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12286"
+                    },
+                  "title" : "SIPSA_2017(II-SEMESTRE)"
+                }
+              ],
+            "access_points" :
+              {
+                "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/645/download/12278"
+              }
+          },
+        "permalink" : "https://www.datos.gov.co/d/rtby-ng3n",
+        "link" : "https://www.datos.gov.co/dataset/Sistema-de-Información-de-Precios-y-Abastecimiento/rtby-ng3n",
+        "owner" :
+          {
+            "id" : "r4qn-dwdd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+          },
+        "creator" :
+          {
+            "id" : "r4qn-dwdd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Sistema de Información de Precios y Abastecimiento del Sector Agropecuario Componente de Insumos y Factores Asociados a la Producción Agropecuaria  – SIPSA - I - 2025 - 2026",
+            "id" : "9ka4-3qbp",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "El Departamento Administrativo Nacional de Estadística - DANE, de acuerdo con el Decreto 262 de 2004, tiene como objetivos garantizar la producción, disponibilidad y calidad de la información estadística estratégica, y dirigir, planear, ejecutar, coordinar, regular y evaluar la producción y difusión de información oficial básica. Este mismo Decreto define sus funciones generales como las relativas a la producción de estadísticas estratégicas, a la síntesis de cuentas nacionales, a la producción y difusión de información oficial básica y a la difusión y cultura estadística.\n\nPropendiendo por el desarrollo y fortalecimiento de la actividad estadística nacional, el DANE ejerce el rol de Coordinador del Sistema Estadístico Nacional (SEN), ceñido a las disposiciones establecidas en el Decreto 1170 de 2015, Decreto 1743 de 2016, y Decreto 2404 de 2019;  lidera la  formulación e implementación del Plan Estadístico Nacional (PEN), instrumento rector de la producción de estadísticas oficiales y el aprovechamiento de registros  administrativos con fines estadísticos; y promueve el rigor y la  calidad estadística, con fundamento en el Modelo Genérico del Proceso Estadístico - GSBPM (por sus siglas en inglés), la Norma Técnica de la Calidad del Proceso Estadístico (NTC PE 1000 2020), y el  Código Nacional de Buenas Prácticas Estadísticas de Colombia (2022). \n\nDesde el 2012 el DANE adelanta las mediciones que hacen parte del Sistema de Información de Precios y Abastecimiento del Sector Agropecuario (SIPSA), el cual tiene por objetivo, generar información de los precios mayoristas de los productos agroalimentarios y su nivel de abastecimiento en mercados mayoristas del país, así como los precios de los insumos y factores asociados a la producción agropecuaria; y, el precio de leche cruda en finca. Las operaciones estadísticas que componen el SIPSA son:\n\n·\tComponente Precios Mayoristas (SIPSA-P)\n·\tComponente Abastecimiento de Alimentos (SIPSA-A)\n·\tComponente de Insumos y Factores asociados a la Producción Agropecuaria (SIPSA-I)\n·\tComponente de precios de leche cruda en finca (SIPSA-L).\n\nSIPSA-I genera información continua sobre los precios promedio de mercado de una canasta de insumos y factores asociados a la producción agropecuaria, reportados en los municipios y departamentos donde la operación estadística tiene cobertura, para la toma de decisiones de los diferentes actores del sector agropecuario en el país.",
+            "attribution" : null,
+            "attribution_link" : null,
+            "contact_email" : "mailto:www.dane.gov.co",
+            "type" : "federated_href",
+            "updatedAt" : "2026-10-21T19:15:44.000Z",
+            "createdAt" : "2026-05-21T15:03:33.000Z",
+            "metadata_updated_at" : "2026-10-21T19:15:44.000Z",
+            "data_updated_at" : "2026-05-21T15:03:33.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 57,
+                "page_views_last_month" : 151,
+                "page_views_total" : 578,
+                "page_views_last_week_log" : 5.857980995127572,
+                "page_views_last_month_log" : 7.247927513443586,
+                "page_views_total_log" : 9.177419537989238
+              },
+            "columns_name" : [],
+            "columns_field_name" : [],
+            "columns_datatype" : [],
+            "columns_description" : [],
+            "columns_format" : [],
+            "download_count" : 0,
+            "provenance" : "official",
+            "lens_view_type" : "href",
+            "lens_display_type" : "federated",
+            "locked" : false,
+            "backend" : "not_a_dataset",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-05-21T15:03:33.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_tags" :
+              [
+                "semilla",
+                "repelente",
+                "vitamina",
+                "sal mineralizada",
+                "servicios agrícolas",
+                "regulador del crecimiento de plantas",
+                "servicio público domiciliario de energía eléctrica",
+                "suplemento",
+                "acondicionador de suelo",
+                "distritos de riego",
+                "acaricida",
+                "desinfectante",
+                "costo de energía eléctrica",
+                "coadyuvantes",
+                "bioinsumo",
+                "aditivo",
+                "bioabono",
+                "arriendo",
+                "antiséptico",
+                "aditivo agrícola",
+                "adsorbente",
+                "agente microbial para control de plagas",
+                "alimento balanceado",
+                "antiparasitario",
+                "antibiótico",
+                "antimicótico",
+                "herbicidas",
+                "productos bioquímicos",
+                "plaguicida",
+                "medicamento",
+                "material de propagación",
+                "jornal",
+                "fungicidas",
+                "extracto vegetal",
+                "elementos agropecuarios",
+                "fertilizante",
+                "especies productivas",
+                "insecticidas",
+                "propagación vegetal",
+                "hormonas sexuales (pecuario)",
+                "inoculante biológico",
+                "enmiendas",
+                "empaque"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "mailto:www.dane.gov.co"
+                },
+                {
+                  "key" : "Common-Core_Last-Update",
+                  "value" : "2026-07-27T13:27:16-05:00"
+                },
+                {
+                  "key" : "Common-Core_License",
+                  "value" : "https=>//creativecommons.org/licenses/by-sa/4.0/legalcode"
+                },
+                {
+                  "key" : "Common-Core_Public-Access-Level",
+                  "value" : "Public"
+                },
+                {
+                  "key" : "Common-Core_Unique-Identifier",
+                  "value" : "49a1d80cd4e0d0d999818d067a9f08c1"
+                },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "Departamento Administrativo Nacional de Estadística (DANE)"
+                },
+                {
+                  "key" : "Common-Core_Homepage",
+                  "value" : "https://microdatos.dane.gov.co/index.php/catalog/866/get-microdata"
+                },
+                {
+                  "key" : "Common-Core_Theme",
+                  "value" : "Territorio-Microdatos"
+                },
+                {
+                  "key" : "Common-Core_Issued",
+                  "value" : "2025-05-26T16:23:26-05:00"
+                },
+                { "key" : "Common-Core_Contact-Name", "value" : "" }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "additional_access_points" :
+              [
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/866/download/24516"
+                    },
+                  "title" : "BasesDatos-SIPSA_I-2025"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/866/download/24747"
+                    },
+                  "title" : "BasesDatos-SIPSA_I-2026."
+                }
+              ],
+            "access_points" :
+              {
+                "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/866/download/24516"
+              }
+          },
+        "permalink" : "https://www.datos.gov.co/d/9ka4-3qbp",
+        "link" : "https://www.datos.gov.co/dataset/Sistema-de-Información-de-Precios-y-Abastecimiento/9ka4-3qbp",
+        "owner" :
+          {
+            "id" : "r4qn-dwdd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+          },
+        "creator" :
+          {
+            "id" : "r4qn-dwdd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Sistema de Información de Precios y Abastecimiento del Sector Agropecuario Componente Abastecimiento de Alimentos - SIPSA - A - 2018 -2025",
+            "id" : "ymnp-apvk",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Desde febrero de 2012, el Ministerio de Agricultura y Desarrollo Rural (MADR) entregó la operación del Sistema de Información de Precios y Abastecimiento del Sector Agropecuario (SIPSA) al Departamento Administrativo Nacional de Estadística (DANE), con el propósito de producir y difundir información sobre el abastecimiento de alimentos en los principales mercados mayoristas del país, constituyéndose en insumo importante para la toma de decisiones por parte de productores, agroindustriales, comercializadores, académicos y decisores de política.\n\nEl SIPSA tiene por objetivo generar información de los precios mayoristas de los productos agroalimentarios y su nivel de abastecimiento en mercados mayoristas del país, así como los precios minoristas de los insumos y factores asociados a la producción, para la toma de decisiones de los diferentes actores del sector agropecuario.\n\nLas tres operaciones estadísticas que en la actualidad componen el SIPSA son:\n\nComponente Precios Mayoristas (SIPSA_P)\nComponente Abastecimiento de Alimentos (SIPSA_A)\nComponente Insumos y Factores Asociados a la Producción (SIPSA_I)\n\nSIPSA_A genera estadísticas sobre los volúmenes y flujo de alimentos del sector agropecuario que ingresan a los principales mercados mayoristas del país.\n\nSIPSA_A captura información en los mercados mayoristas de las principales ciudades del país de una canasta de productos, esta canasta es dinámica dependiendo de la presencia y continuidad de los productos en los mercados mayoristas de las principales ciudades del país. Los productos que componen la canasta de SIPSA_A se clasifican en ocho grupos:\n\nVerduras y hortalizas\nFrutas\nTubérculos, raíces y plátanos\nGranos y cereales\nLácteos y huevos\nCarnes\nPescados\nProcesados\n\nLa cobertura del SIPSA_A es igualmente dinámica ya que busca cubrir progresivamente los mercados mayoristas más representativos del país.\n\nEn los siguientes apartes de este documento metodológico se presenta la información técnica y conceptual necesaria para comprender la operación del SIPSA_A. El primer apartado señala los antecedentes en Colombia; el segundo trata sobre el diseño de la operación estadística que incluye el diseño temático, estadístico, de la ejecución, de análisis de resultados y de difusión de la información, entre otros.",
+            "attribution" : null,
+            "attribution_link" : null,
+            "contact_email" : "mailto:www.dane.gov.co",
+            "type" : "federated_href",
+            "updatedAt" : "2026-10-21T19:15:42.000Z",
+            "createdAt" : "2026-05-21T15:03:11.000Z",
+            "metadata_updated_at" : "2026-10-21T19:15:42.000Z",
+            "data_updated_at" : "2026-05-21T15:03:11.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 94,
+                "page_views_last_month" : 266,
+                "page_views_total" : 1090,
+                "page_views_last_week_log" : 6.569855608330948,
+                "page_views_last_month_log" : 8.060695931687555,
+                "page_views_total_log" : 10.091435386323607
+              },
+            "columns_name" : [],
+            "columns_field_name" : [],
+            "columns_datatype" : [],
+            "columns_description" : [],
+            "columns_format" : [],
+            "download_count" : 0,
+            "provenance" : "official",
+            "lens_view_type" : "href",
+            "lens_display_type" : "federated",
+            "locked" : false,
+            "backend" : "not_a_dataset",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-05-21T15:03:11.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_tags" :
+              [
+                "agrícola",
+                "alimento",
+                "canasta de alimentos",
+                "capacidad de carga",
+                "central de abastos",
+                "destino",
+                "cobertura",
+                "peaje",
+                "oferta de alimentos",
+                "comerciante mayorista",
+                "cosecha",
+                "cultivo agrícola",
+                "volumen",
+                "vehículo de carga",
+                "tipo de vehículo",
+                "sector agropecuario",
+                "región",
+                "productor agropecuario",
+                "producción",
+                "procedencia",
+                "plaza de mercado",
+                "abastecimiento de alimentos",
+                "agroindustria"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "mailto:www.dane.gov.co"
+                },
+                {
+                  "key" : "Common-Core_Last-Update",
+                  "value" : "2026-10-15T11:30:53-05:00"
+                },
+                {
+                  "key" : "Common-Core_License",
+                  "value" : "https=>//creativecommons.org/licenses/by-sa/4.0/legalcode"
+                },
+                {
+                  "key" : "Common-Core_Public-Access-Level",
+                  "value" : "Public"
+                },
+                {
+                  "key" : "Common-Core_Unique-Identifier",
+                  "value" : "a981711021345ed53eb99240541078fd"
+                },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "Departamento Administrativo Nacional de Estadística (DANE)"
+                },
+                {
+                  "key" : "Common-Core_Homepage",
+                  "value" : "https://microdatos.dane.gov.co/index.php/catalog/697/get-microdata"
+                },
+                {
+                  "key" : "Common-Core_Theme",
+                  "value" : "Territorio-Microdatos"
+                },
+                {
+                  "key" : "Common-Core_Issued",
+                  "value" : "2021-01-22T14:13:58-05:00"
+                },
+                { "key" : "Common-Core_Contact-Name", "value" : "" }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "additional_access_points" :
+              [
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/20281"
+                    },
+                  "title" : "2018 (I Semestre)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/20282"
+                    },
+                  "title" : "2018 (II Semestre)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/20283"
+                    },
+                  "title" : "2019 (I Semestre)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/20284"
+                    },
+                  "title" : "2019 (II Semestre)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/20285"
+                    },
+                  "title" : "2020 (I Semestre)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/20286"
+                    },
+                  "title" : "2020 (II Semestre)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/20536"
+                    },
+                  "title" : "2021 (I Semestre)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/21267"
+                    },
+                  "title" : "2021 (II Semestre)"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalog/697/download/21418"
+                    },
+                  "title" : "2022 (I Semestre )"
+                },
+                {
+                  "urls" :
+                    {
+                      "application/zip" : "https://microdatos.dane.gov.co/index.php/catalo
