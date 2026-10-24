@@ -1,0 +1,306 @@
+URL: https://www.datos.gov.co/api/views/he3q-86dn/rows.json?$limit=3
+Fetched: 2026-10-24T17:43:34Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2861685
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 17:43:34 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Deprecation: @1791331200
+Sunset: Tue, 22 Dec 2026 00:00:00 GMT
+Link: <https://support.socrata.com/hc/en-us/articles/43491231777047>; rel="deprecation"; type="text/html"
+Link: <https://support.socrata.com/hc/en-us/articles/43491231777047>; rel="sunset"; type="text/html"
+ETag: W/"anVsaWV0dC44NjUxXzFfOTk3bW1mZlkyeTY2R1Q1NGhYR0Z0MHJMY1lzcDRj---gzipHkEenH1isQ_cf3hnE0wYt5amIrs--gzip--gzip"
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+X-SODA2-Secondary-Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 405b6ea9aac535f6701119295582e0ef
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{
+  "meta" : {
+    "view" : {
+      "id" : "he3q-86dn",
+      "name" : "Consulta Precios Promedio de Gas Natural Comprimido Vehicular (AUTOMATIZADO)",
+      "assetType" : "dataset",
+      "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+      "attributionLink" : "https://sicom.gov.co/",
+      "averageRating" : 0,
+      "category" : "Minas y Energía",
+      "createdAt" : 1693858864,
+      "description" : "Conjunto de datos relacionado a los precios publicados por las estaciones de servicio de GNCV",
+      "diciBackend" : false,
+      "displayType" : "table",
+      "downloadCount" : 2096,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "licenseId" : "CC_40_BY_SA",
+      "locked" : false,
+      "newBackend" : true,
+      "numberOfComments" : 0,
+      "oid" : 39929106,
+      "provenance" : "official",
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1693861475,
+      "publicationGroup" : 19276775,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1792822301,
+      "rowsUpdatedBy" : "srxm-dgnd",
+      "tableId" : 19276775,
+      "totalTimesRated" : 0,
+      "viewCount" : 18225,
+      "viewLastModified" : 1779132203,
+      "viewType" : "tabular",
+      "approvals" : [ {
+        "reviewedAt" : 1695156878,
+        "reviewedAutomatically" : false,
+        "state" : "approved",
+        "submissionId" : 5778055,
+        "submissionObject" : "public_audience_request",
+        "submissionOutcome" : "change_audience",
+        "submittedAt" : 1695085218,
+        "targetAudience" : "public",
+        "workflowId" : 2188,
+        "reviewer" : {
+          "id" : "vc9x-zjzh",
+          "displayName" : "soporteccc"
+        },
+        "submissionDetails" : {
+          "permissionType" : "read"
+        },
+        "submissionOutcomeApplication" : {
+          "endedAt" : 1695156878,
+          "failureCount" : 0,
+          "startedAt" : 1695156878,
+          "status" : "success"
+        },
+        "submitter" : {
+          "id" : "srxm-dgnd",
+          "displayName" : "Ministerio de Minas y Energia"
+        }
+      } ],
+      "clientContext" : {
+        "clientContextVariables" : [ ],
+        "inheritedVariables" : { }
+      },
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 580468926,
+        "name" : "FECHA_PRECIO",
+        "dataTypeName" : "text",
+        "description" : "Fecha de publicación del precio",
+        "fieldName" : "fecha_precio",
+        "position" : 1,
+        "renderTypeName" : "text",
+        "tableColumnId" : 148293569,
+        "cachedContents" : {
+          "non_null" : "11315",
+          "largest" : "2026-9-01",
+          "null" : "0",
+          "top" : [ {
+            "item" : "2022-11-01",
+            "count" : "269"
+          }, {
+            "item" : "2022-10-01",
+            "count" : "260"
+          }, {
+            "item" : "2023-1-01",
+            "count" : "252"
+          }, {
+            "item" : "2023-11-01",
+            "count" : "240"
+          }, {
+            "item" : "2023-2-01",
+            "count" : "239"
+          }, {
+            "item" : "2022-12-01",
+            "count" : "233"
+          }, {
+            "item" : "2022-7-01",
+            "count" : "229"
+          }, {
+            "item" : "2023-3-01",
+            "count" : "223"
+          }, {
+            "item" : "2022-9-01",
+            "count" : "223"
+          }, {
+            "item" : "2022-5-01",
+            "count" : "222"
+          }, {
+            "item" : "2024-6-01",
+            "count" : "219"
+          }, {
+            "item" : "2023-12-01",
+            "count" : "215"
+          }, {
+            "item" : "2024-11-01",
+            "count" : "214"
+          }, {
+            "item" : "2023-9-01",
+            "count" : "214"
+          }, {
+            "item" : "2025-12-01",
+            "count" : "208"
+          }, {
+            "item" : "2024-9-01",
+            "count" : "206"
+          }, {
+            "item" : "2022-3-01",
+            "count" : "206"
+          }, {
+            "item" : "2023-10-01",
+            "count" : "205"
+          }, {
+            "item" : "2023-4-01",
+            "count" : "205"
+          }, {
+            "item" : "2025-10-01",
+            "count" : "204"
+          } ],
+          "smallest" : "2022-10-01",
+          "count" : "11315",
+          "cardinality" : "11315"
+        },
+        "format" : { }
+      }, {
+        "id" : 580468925,
+        "name" : "ANIO_PRECIO",
+        "dataTypeName" : "text",
+        "description" : "Año de publicación del precio",
+        "fieldName" : "anio_precio",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 148293568,
+        "cachedContents" : {
+          "non_null" : "11315",
+          "largest" : "2026",
+          "null" : "0",
+          "top" : [ {
+            "item" : "2022",
+            "count" : "2591"
+          }, {
+            "item" : "2023",
+            "count" : "2579"
+          }, {
+            "item" : "2024",
+            "count" : "2309"
+          }, {
+            "item" : "2025",
+            "count" : "2146"
+          }, {
+            "item" : "2026",
+            "count" : "1690"
+          } ],
+          "smallest" : "2022",
+          "count" : "11315",
+          "cardinality" : "11315"
+        },
+        "format" : {
+          "decimalSeparator" : ".",
+          "groupSeparator" : ","
+        }
+      }, {
+        "id" : 580468924,
+        "name" : "MES_PRECIO",
+        "dataTypeName" : "text",
+        "description" : "Mes de publicación del precio",
+        "fieldName" : "mes_precio",
+        "position" : 3,
+        "renderTypeName" : "text",
+        "tableColumnId" : 148293567,
+        "cachedContents" : {
+          "non_null" : "11315",
+          "largest" : "9",
+          "null" : "0",
+          "top" : [ {
+            "item" : "1",
+            "count" : "1026"
+          }, {
+            "item" : "10",
+            "count" : "1024"
+          }, {
+            "item" : "2",
+            "count" : "1007"
+          }, {
