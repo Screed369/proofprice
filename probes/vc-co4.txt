@@ -1,0 +1,35 @@
+URL: https://www.datos.gov.co/resource/7y2j-43cv.json?$select=municipio,year_radica,count(*),avg(valor)&$where=tiene_valor%3D1%20AND%20nombre_natujur%20like%20%27COMPRAVENTA%25%27%20AND%20valor%3E1000000&$group=municipio,year_radica&$limit=8
+Fetched: 2026-10-24T02:43:44Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 785
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 02:43:44 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC43MzI2OV8xXzMxSFJEdUtrSzktTmhpNEFlMnY2WUFCVWVkbUZn---gzipLRV38fVzUUWbiQxQLpgoE4hjvuw--gzip--gzip"
+X-SODA2-Fields: ["municipio","year_radica","count","avg_valor"]
+X-SODA2-Types: ["text","text","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+X-SODA2-Secondary-Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 53d02857cc089c074bf5d4834fc774d4
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"municipio":"ABEJORRAL","year_radica":"2015","count":"497","avg_valor":"13191560.748490945674"}
+,{"municipio":"ABEJORRAL","year_radica":"2016","count":"527","avg_valor":"16271485.686907020873"}
+,{"municipio":"ABEJORRAL","year_radica":"2017","count":"501","avg_valor":"22821055.313373253493"}
+,{"municipio":"ABEJORRAL","year_radica":"2018","count":"461","avg_valor":"18770390.856832971800"}
+,{"municipio":"ABEJORRAL","year_radica":"2019","count":"397","avg_valor":"38686978.690176322418"}
+,{"municipio":"ABEJORRAL","year_radica":"2020","count":"370","avg_valor":"46370737.013513513514"}
+,{"municipio":"ABEJORRAL","year_radica":"2021","count":"502","avg_valor":"57331256.565737051793"}
+,{"municipio":"ABEJORRAL","year_radica":"2022","count":"504","avg_valor":"68644873.626984126984"}]
