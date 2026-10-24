@@ -338,3 +338,35 @@ test("pt-home-prices: manifest collects daily with reference dates and no record
   assert.equal(s.nominalCounts, true);
   assert.deepEqual(s.historyKey!({ town: "Porto" }), { area: place("Porto").code, item: HARVEST_ITEM, label: "Porto" });
 });
+
+test("pt-home-prices: the live request is tried twice when INE drops the first connection", async () => {
+  const real = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls++;
+    if (calls === 1) throw Object.assign(new TypeError("fetch failed"), { cause: { code: "UND_ERR_CONNECT_TIMEOUT" } });
+    return new Response(JSON.stringify(F.LISBOA_HISTORY), { status: 200, headers: { "content-type": "application/json" } });
+  }) as typeof fetch;
+  try {
+    const a = await ptHomePrices({ town: "Lisbon" }, { now: NOW });
+    assert.equal(calls, 2);
+    assert.equal(a.status, "ok");
+  } finally {
+    globalThis.fetch = real;
+  }
+});
+
+test("pt-home-prices: a source that fails twice still ends in the source error (the library copy takes over in runCategory)", async () => {
+  const real = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls++;
+    throw new TypeError("fetch failed");
+  }) as typeof fetch;
+  try {
+    await assert.rejects(() => ptHomePrices({ town: "Lisbon" }, { now: NOW }), SourceError);
+    assert.equal(calls, 2);
+  } finally {
+    globalThis.fetch = real;
+  }
+});

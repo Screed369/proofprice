@@ -9,7 +9,7 @@
 // range fields null, sample_size null.
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { fetchJson, InputError, SourceError } from "../../lib/http";
+import { fetchJson, InputError, retryOnce, SourceError } from "../../lib/http";
 import type { DailyRow, HarvestResult } from "../../lib/plugin";
 import { NO_COUNT } from "../../lib/stats";
 import type { SourceInfo } from "../../lib/plugin";
@@ -54,7 +54,8 @@ export interface FetchOptions {
   now?: Date;
 }
 // INE's servers can be slow, and a request with a period code they do not know hangs: we only ever ask for "all periods" (Dim1=T).
-const defaultFetcher: Fetcher = (url) => fetchJson(url, {}, 25000);
+// INE drops connections from Vercel: two attempts of 15 s (0.5 s apart) stay inside the 40 s answer deadline; a library copy follows if both fail.
+const defaultFetcher: Fetcher = (url) => retryOnce(() => fetchJson(url, {}, 15000));
 
 // ---------- place names (pure) ----------
 
@@ -458,7 +459,7 @@ export function harvestRows(reply: IneReply): HarvestResult {
 }
 
 export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
-  const fetcher = o.fetcher ?? ((url: string) => fetchJson(url, {}, 60000));
+  const fetcher = o.fetcher ?? ((url: string) => retryOnce(() => fetchJson(url, {}, 60000)));
   return harvestRows(parseIne(await fetcher(harvestUrl())));
 }
 
