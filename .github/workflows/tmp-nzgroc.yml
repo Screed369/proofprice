@@ -1,0 +1,44 @@
+name: tmp nz groceries probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: fetch
+        run: |
+          mkdir -p /tmp/p && cd /tmp/p
+          U="https://www.stats.govt.nz/assets/Uploads/Selected-price-indexes/Selected-price-indexes-September-2026/Download-data/selected-price-indexes-september-2026.csv"
+          curl -sS -L --max-time 120 -A "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)" -D h.txt -o f.csv -w "%{http_code} %{size_download}\n" "$U" > s.txt || true
+          { cat s.txt; head -3 f.csv; echo ----SAP-ROWS-latest-and-first;
+            python3 - <<'PY'
+          import csv
+          rows=list(csv.reader(open('/tmp/p/f.csv',encoding='utf-8-sig')))
+          h=rows[0]; print(h)
+          idx={n:i for i,n in enumerate(h)}
+          sap=[r for r in rows[1:] if r[idx['Series_reference']].startswith('CPIM.SAP') and r[idx['UNITS']]=='Dollars']
+          print(len(sap), 'dollar SAP rows')
+          from collections import defaultdict
+          d=defaultdict(dict); t={}
+          for r in sap:
+              d[r[idx['Series_reference']]][r[idx['Period']]]=r[idx['Data_value']]; t[r[idx['Series_reference']]]=r
+          for k in sorted(d):
+              ps=sorted(d[k]); r=t[k]
+              print(k,'|',r[idx['Series_title_1']],'|',ps[0],ps[-1],'|',d[k][ps[-1]], '|prev',d[k].get(ps[-2]) if len(ps)>1 else None,'|n',len(ps))
+          print('SAMPLE RAW ROWS'); 
+          for r in sap[:3]: print(r)
+          print([r for r in rows[1:] if r[idx['Series_reference']]=='CPIM.SAP0100'][-2:])
+          print(set(r[idx['STATUS']] for r in sap), set(r[idx['Magnitude']] for r in sap), set(r[idx['Group']] for r in sap), set(r[idx['Subject']] for r in sap))
+          PY
+          } > result.txt 2>&1
+          cd "$GITHUB_WORKSPACE"
+          git config user.name "proofprice-librarian"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes; git checkout -q -B probes origin/probes
+          git rm -rq --cached . >/dev/null 2>&1 || true
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name probes -exec rm -rf {} +
+          mkdir -p probes && cp /tmp/p/result.txt probes/nzgroc-full.txt
+          git add probes; git commit -qm "Probe nzgroc-full"; git push -q origin probes
