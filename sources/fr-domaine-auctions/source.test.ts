@@ -2,7 +2,7 @@
 // (values from the publisher's tabular API for the same file; dates are dd/mm/yyyy in the CSV).
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { fold, parseRows, parseLots, matchLots, auctionPrices, INFO } from "./source";
+import { fold, parseRows, parseLots, matchLots, auctionPrices, auctionHarvest, auctionHarvestRows, auctionHistoryKey, INFO } from "./source";
 
 const HEAD = "﻿ID du Lot;Description du lot;Catégorie;Marque;Modèle;Date de première mise en circulation;Numéro Hermès de la Vente;Date de vente;CAV organisateur;Nom de la vente;Prix adjudication";
 const REAL = [
@@ -63,4 +63,55 @@ test("attribution names the publisher, the licence and the change", () => {
   assert.match(INFO.attribution, /Direction Nationale d'Interventions Domaniales/);
   assert.match(INFO.attribution, /Licence Ouverte 2\.0/);
   assert.match(INFO.attribution, /changed/);
+});
+
+// ---------- daily copy ----------
+const lotRow = (id: number, cat: string, city: string, date: string, price: number) =>
+  `${id};;${cat};RENAULT;CLIO;2013-02-27;V${id};${date};${city};Vente du CAV ${city};${price}`;
+const MANY = [
+  HEAD,
+  ...[3000, 3200, 3400, 3600, 3800, 4000].map((p, i) => lotRow(1000 + i, "Véhicules de tourisme", "LYON", "09/01/2024", p)),
+  ...[1000, 1100, 1200, 1300, 1400].map((p, i) => lotRow(2000 + i, "Véhicules de tourisme", "LYON SUD", "10/02/2024", p)),
+  ...[5000, 5100, 5200].map((p, i) => lotRow(3000 + i, "Véhicules de tourisme", "DIJON", "11/03/2024", p)),
+  ...[800, 900, 1000, 1100, 1200].map((p, i) => lotRow(4000 + i, "Utilitaires", "DIJON", "12/03/2024", p)),
+  lotRow(5000, "Véhicules de tourisme", "DIJON", "01/01/2023", 99999), // older than 12 months before the newest sale
+].join("\r\n");
+
+test("harvest rows: per lot group, France-wide and per city, only 5 lots or more", () => {
+  const { date, rows } = auctionHarvestRows(parseLots(MANY));
+  assert.equal(date, "2024-03-12");
+  const get = (area: string, item: string) => rows.find((r) => r.area === area && r.item === item);
+  assert.equal(get("ALL", "cars")!.n, 14); // 6 + 5 + 3, the 2023 lot is outside the 12 months
+  assert.equal(get("lyon", "cars")!.n, 11); // "lyon" also matches "lyon sud", as matchLots does
+  assert.equal(get("lyon sud", "cars")!.n, 5);
+  assert.equal(get("dijon", "cars"), undefined); // only 3 cars at Dijon
+  assert.equal(get("dijon", "vans")!.median, 1000);
+  assert.ok(rows.every((r) => r.n >= 5));
+});
+
+test("a stored figure equals the live answer for the same question", async () => {
+  const lots = parseLots(MANY);
+  const live = await auctionPrices({ what: "cars", city: "lyon", months: 12 }, lots);
+  const row = auctionHarvestRows(lots).rows.find((r) => r.area === "lyon" && r.item === "cars")!;
+  assert.equal(row.median, live.price!.median);
+  assert.equal(row.n, live.sample_size);
+});
+
+test("history key: group names and stored cities only", () => {
+  const cities = ["ALL", "lyon", "dijon"];
+  assert.deepEqual(auctionHistoryKey({ what: "cars" }, cities), { area: "ALL", item: "cars", label: "France (state auctions)" });
+  assert.equal(auctionHistoryKey({ what: "Cars", state: "Lyon" }, cities)!.area, "lyon");
+  assert.equal(auctionHistoryKey({ what: "renault clio", state: "Lyon" }, cities), null); // free words have no stored key
+  assert.equal(auctionHistoryKey({ what: "cars", state: "Toulouse" }, cities), null);
+  assert.equal(auctionHistoryKey({ what: "cars", months: 6 }, cities), null);
+  assert.equal(auctionHistoryKey({ what: "cars", months: 12 }, cities)!.item, "cars");
+  assert.equal(auctionHistoryKey({}, cities), null);
+});
+
+test("harvest reads the file once and reports EUR per lot", async () => {
+  const h = await auctionHarvest(parseLots(MANY));
+  assert.equal(h.currency, "EUR");
+  assert.equal(h.unit, "per lot");
+  assert.equal(h.date, "2024-03-12");
+  await assert.rejects(() => auctionHarvest(parseLots(HEAD)), /no sold lots/);
 });

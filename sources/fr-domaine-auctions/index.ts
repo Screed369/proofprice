@@ -1,5 +1,6 @@
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, auctionPrices } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, auctionHarvest, auctionHistoryKey, auctionPrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -18,4 +19,13 @@ export default defineSource({
   ],
   method: "France: median hammer price of lots sold at French state auctions (Enchères du Domaine, 2024), not retail prices.",
   handle: (p, ctx) => auctionPrices({ what: String(p.what), city: str(p.state), months: num(p.months) ?? 12, baseUrl: ctx.baseUrl }),
+  // A daily copy of the yearly file's lot groups (France-wide and per auction-house city), so a data.gouv.fr outage is answered
+  // from it (stale-if-error). Free-word requests such as 'renault clio' have no stored key and still get the honest error.
+  harvest: () => auctionHarvest(),
+  historyKey: (p) =>
+    auctionHistoryKey(
+      { what: str(p.what), state: str(p.state), months: num(p.months) },
+      [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))],
+    ),
+  referenceDates: true,
 });

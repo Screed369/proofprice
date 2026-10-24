@@ -1,9 +1,9 @@
 // French state auctions (Enchères du Domaine, DNID): lots sold in calendar 2024. Format checked on 2026-10-21
 // (12,978,652 bytes, semicolon-separated, UTF-8 with BOM, CRLF, dates dd/mm/yyyy).
 import { SourceError } from "../../lib/http";
-import { summarise } from "../../lib/stats";
+import { MIN_PUBLISH, summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 // Stable alias that follows republishing (resource id of "Données de ventes année 2024"); redirects to the current file.
 export const CSV_URL = "https://www.data.gouv.fr/api/1/datasets/r/76570370-c52e-46f1-80b0-76cb28058a47";
@@ -196,4 +196,76 @@ export async function auctionPrices(input: { what: string; city?: string; months
     baseUrl: input.baseUrl,
     evidence: AUCTION_EVIDENCE,
   });
+}
+
+// ---------- daily copy (stale-if-error) ----------
+// The collector stores, for every lot group in GROUPS and every auction-house city (and for all of France), the median and
+// 10th-90th percentile hammer price of the newest 12 months in the file. Aggregates only. A request with free words ("renault clio")
+// has no stored key, so it keeps the honest error while data.gouv.fr is down.
+
+const HARVEST_MONTHS = 12;
+
+/** Pure: library rows from the sold lots. A city area holds every lot whose auction-house name contains that city, exactly as matchLots does. */
+export function auctionHarvestRows(lots: Lot[]): { date: string; rows: DailyRow[] } {
+  const newest = lots.reduce((m, l) => (l.soldAt > m ? l.soldAt : m), "");
+  if (!newest) throw new SourceError("The auction file held no sold lots");
+  const d = new Date(newest + "T00:00:00Z");
+  d.setUTCMonth(d.getUTCMonth() - HARVEST_MONTHS);
+  const from = d.toISOString().slice(0, 10);
+  const recent = lots.filter((l) => l.soldAt >= from);
+  const cities = [...new Set(recent.map((l) => l.city).filter(Boolean))].sort();
+  const rows: DailyRow[] = [];
+  for (const group of Object.keys(GROUPS)) {
+    const cats = GROUPS[group];
+    const inGroup = recent.filter((l) => cats.includes(fold(l.category)));
+    for (const area of ["ALL", ...cities]) {
+      const prices = (area === "ALL" ? inGroup : inGroup.filter((l) => l.city.includes(area))).map((l) => l.price);
+      const s = summarise(prices);
+      if (!s || s.count < MIN_PUBLISH) continue;
+      rows.push({ area, item: group, n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max });
+    }
+  }
+  return { date: newest, rows };
+}
+
+/** The daily collector: one read of the yearly file, then aggregates. */
+export async function auctionHarvest(lots?: Lot[]): Promise<HarvestResult> {
+  let all = lots;
+  if (!all) {
+    let last: unknown;
+    for (let i = 0; i < 3 && !all; i++) {
+      try {
+        cache = null;
+        all = await loadLots();
+      } catch (e) {
+        last = e;
+        await new Promise((r) => setTimeout(r, 2000 * (i + 1)));
+      }
+    }
+    if (!all) throw last;
+  }
+  const { date, rows } = auctionHarvestRows(all);
+  if (!rows.length) throw new SourceError("The auction file gave no group with 5 or more lots");
+  return {
+    date,
+    currency: "EUR",
+    unit: "per lot",
+    rows,
+    note: `Enchères du Domaine (DNID), data.gouv.fr: median and 10th-90th percentile hammer price of lots sold in the ${HARVEST_MONTHS} months to ${date}, by lot group and auction-house city (groups under 5 lots left out).`,
+  };
+}
+
+/** Where a request lives in the library, without asking data.gouv.fr: a lot group (not free words) and, if given, an auction-house city we stored. */
+export function auctionHistoryKey(
+  p: { what?: string; state?: string; months?: number },
+  cities: string[],
+): { area: string; item: string; label: string } | null {
+  if (!p.what) return null;
+  if (p.months !== undefined && p.months !== HARVEST_MONTHS) return null;
+  const item = fold(p.what).replace(/\s+/g, " ");
+  if (!GROUPS[item]) return null;
+  const want = p.state ? fold(p.state) : "";
+  if (!want) return { area: "ALL", item, label: "France (state auctions)" };
+  if (!cities.includes(want)) return null;
+  return { area: want, item, label: `the ${want.replace(/\b\w/g, (c) => c.toUpperCase())} auction house` };
 }
