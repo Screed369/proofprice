@@ -1,0 +1,25 @@
+URL: https://opendata.nhsbsa.net/api/3/action/datastore_search_sql?resource_id=PCA_202608&sql=SELECT%20BNF_PRESENTATION_NAME%2C%20UNIT_OF_MEASURE%2C%20SUM%28ITEMS%29%20AS%20items%2C%20SUM%28TOTAL_QUANTITY%29%20AS%20quantity%2C%20SUM%28NIC%29%20AS%20nic%20FROM%20%60PCA_202608%60%20WHERE%20UPPER%28BNF_PRESENTATION_NAME%29%20LIKE%20%27BUDESONIDE%20%25%27%20GROUP%20BY%201%2C%202%20ORDER%20BY%20items%20DESC%20LIMIT%2040
+Fetched: 2026-10-24T00:53:09Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1533
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 00:53:09 GMT
+content-type: application/json;charset=utf-8
+content-length: 1533
+cache-control: public, max-age=300, must-revalidate
+vary: Cookie
+strict-transport-security: max-age=15724800; includeSubDomains
+server: hide
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+referrer-policy: origin
+expect-ct: max-age=86400, enforce, report-uri='[reportURL]'
+x-permitted-cross-domain-policies: none
+x-cache-status: MISS
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=datastore_search_sql", "success": true, "result": {"help": "https://demo.ckan.org/api/3/action/help_show?name=datastore_search_sql", "success": "true", "result": {"records": [{"BNF_PRESENTATION_NAME": "Budesonide 64micrograms/dose nasal spray", "UNIT_OF_MEASURE": "dose", "items": 4019, "quantity": 4717, "nic": 72115.99}, {"BNF_PRESENTATION_NAME": "Budesonide 3mg gastro-resistant capsules", "UNIT_OF_MEASURE": "capsule", "items": 3221, "quantity": 208796, "nic": 156699.07}, {"BNF_PRESENTATION_NAME": "Budesonide 3mg gastro-resistant modified-release capsules", "UNIT_OF_MEASURE": "capsule", "items": 1504, "quantity": 162033, "nic": 97345.16}, {"BNF_PRESENTATION_NAME": "Budesonide 500micrograms/2ml neb liq unit dose vials", "UNIT_OF_MEASURE": "unit dose", "items": 1417, "quantity": 78209, "nic": 60126.5}, {"BNF_PRESENTATION_NAME": "Budesonide 1mg/2ml nebuliser liquid unit dose vials", "UNIT_OF_MEASURE": "unit dose", "items": 933, "quantity": 52200, "nic": 57671.22}, {"BNF_PRESENTATION_NAME": "Budesonide 4mg suppositories", "UNIT_OF_MEASURE": "suppository", "items": 271, "quantity": 8952, "nic": 59083.2}, {"BNF_PRESENTATION_NAME": "Budesonide 500micrograms/2ml neb susp unit dose ampoules", "UNIT_OF_MEASURE": "unit dose", "items": 157, "quantity": 8385, "nic": 12627.81}, {"BNF_PRESENTATION_NAME": "Budesonide 1mg/2ml nebuliser suspension unit dose ampoules", "UNIT_OF_MEASURE": "unit dose", "items": 83, "quantity": 4625, "nic": 10545}], "fields": []}}}
