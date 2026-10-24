@@ -5,7 +5,7 @@ import { collectPages, resolveFetcher } from "../../lib/adapters";
 import type { Fetcher } from "../../lib/adapters";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "sg-hdb-resale",
@@ -174,4 +174,108 @@ export async function sgHomeSales(
         : {}),
     },
   });
+}
+
+
+// ---------- daily collector (stale-if-error copy and /history) ----------
+// data.gov.sg answers one town at a time and is slow from Vercel. Once a day the collector (GitHub Actions) reads the newest
+// 12 months of HDB resales in pages (all towns at once, newest first) and stores, per town, the rolling-12-month median of
+// all flats and of each flat type (5+ resales only). Aggregates only: no block, street or unit is kept. The library copy
+// stands in for a live answer for 7 days (lib/stale.ts) and /history shows the median moving day by day.
+
+export const HARVEST_MONTHS = 12;
+const HARVEST_MAX_ROWS = 45000; // about 30,000 resales a year; the platform's hard limit is 50,000
+const HARVEST_PAGE = 1000;
+
+const slug = (flat: string) => flat.trim().toLowerCase().replace(/\s+/g, "-");
+export const sgItem = (flat?: string) => `${flat ? slug(flat) : "any"}:${HARVEST_MONTHS}m`;
+
+/** Library key for a request, or null when the copy cannot answer it (not an HDB town, unknown flat type, other window). */
+export function sgHistoryKey(p: { town?: string; flat_type?: string; months?: number }, opts?: { monthly?: boolean }): { area: string; item: string; label: string } | null {
+  if (opts?.monthly) return null; // no long monthly history is loaded for this source
+  if (p.months !== undefined && p.months !== null && Number(p.months) !== HARVEST_MONTHS) return null;
+  const town = p.town ? resolveSgTown(p.town) : null;
+  if (!town) return null;
+  let flat: string | undefined;
+  if (p.flat_type) {
+    flat = p.flat_type.trim().toUpperCase();
+    if (!(SG_FLAT_TYPES as readonly string[]).includes(flat)) return null;
+  }
+  return { area: town, item: sgItem(flat), label: `${town}${flat ? ` ${flat}` : ""}` };
+}
+
+export function buildSgBulkUrl(limit = HARVEST_PAGE, offset = 0): string {
+  const params = new URLSearchParams({ resource_id: RESOURCE_ID, sort: "month desc,_id desc", limit: String(limit) });
+  if (offset > 0) params.set("offset", String(offset));
+  return `${ENDPOINT}?${params.toString()}`;
+}
+
+export interface SgSale {
+  month: string;
+  town: string;
+  flat: string;
+  price: number;
+}
+
+export function parseSgBulk(json: any): { sales: SgSale[]; rawCount: number; oldest: string } {
+  const recs = json?.result?.records;
+  if (!json?.success || !Array.isArray(recs)) throw new SourceError("Unexpected response from data.gov.sg");
+  const sales = recs
+    .map((r: any) => ({ month: String(r.month), town: String(r.town ?? "").toUpperCase(), flat: String(r.flat_type ?? "").toUpperCase(), price: Number(r.resale_price) }))
+    .filter((r) => /^\d{4}-\d{2}$/.test(r.month) && r.town && Number.isFinite(r.price) && r.price > 0);
+  return { sales, rawCount: recs.length, oldest: recs.length ? String(recs[recs.length - 1].month ?? "") : "" };
+}
+
+/** Pure: one library row per town and flat-type group (and per town for all flats) with at least 5 resales. */
+export function sgDailyRows(sales: SgSale[]): DailyRow[] {
+  const groups = new Map<string, number[]>();
+  const put = (key: string, price: number) => {
+    const g = groups.get(key);
+    if (g) g.push(price);
+    else groups.set(key, [price]);
+  };
+  for (const s of sales) {
+    put(`${s.town}\t${sgItem()}`, s.price);
+    if ((SG_FLAT_TYPES as readonly string[]).includes(s.flat)) put(`${s.town}\t${sgItem(s.flat)}`, s.price);
+  }
+  const rows: DailyRow[] = [];
+  for (const [key, prices] of groups) {
+    const sum = summarise(prices);
+    if (!sum || sum.count < 5) continue;
+    const [area, item] = key.split("\t");
+    rows.push({ area, item, n: sum.count, median: sum.median, low: sum.low, high: sum.high, min: sum.min, max: sum.max });
+  }
+  return rows.sort((a, b) => (a.area + a.item).localeCompare(b.area + b.item));
+}
+
+export async function sgHarvest(fetcher?: Fetcher, now = new Date()): Promise<HarvestResult> {
+  const fetch = fetcher ?? resolveFetcher({ timeoutMs: 30000 });
+  const cutoff = sgCutoffMonth(HARVEST_MONTHS, now);
+  const got = await collectPages<SgSale>({
+    maxRows: HARVEST_MAX_ROWS,
+    pageSize: HARVEST_PAGE,
+    fetchPage: async (offset, limit) => {
+      let json: unknown;
+      try {
+        json = await fetch(buildSgBulkUrl(limit, offset));
+      } catch {
+        json = await fetch(buildSgBulkUrl(limit, offset)); // one retry per page: the portal sometimes answers 429 or times out
+      }
+      const p = parseSgBulk(json);
+      return { rows: p.sales, more: p.rawCount >= limit && p.oldest > cutoff };
+    },
+  });
+  if (got.truncated) throw new SourceError(`HDB resale window holds more than ${HARVEST_MAX_ROWS} rows; the collector needs a higher cap.`);
+  const inWindow = got.rows.filter((r) => r.month > cutoff);
+  const rows = sgDailyRows(inWindow);
+  const towns = new Set(rows.filter((r) => r.item === sgItem()).map((r) => r.area));
+  // A real year has resales in all 26 towns; far fewer means a partial read or a changed layout.
+  if (towns.size < 20) throw new SourceError(`Only ${towns.size} HDB towns had 5+ resales in the window; the portal answer looks incomplete.`);
+  return {
+    date: now.toISOString().slice(0, 10),
+    currency: "SGD",
+    unit: "per flat",
+    rows,
+    note: `HDB resale flats, median of the registered resales from ${cutoff} (excluded) to the newest month, ${rows.length} town/flat-type rows over ${towns.size} towns, ${inWindow.length} resales read. Aggregates of 5+ resales only.`,
+  };
 }

@@ -105,3 +105,76 @@ test("G20261018-1: the portal is asked for the resolved town name", async () => 
   await sgHomeSales({ town: "Tampines, Singapore" }, async (u: string) => { urls.push(u); return { success: true, result: { records: [] } }; });
   assert.deepEqual(JSON.parse(new URL(urls[0]).searchParams.get("filters")!), { town: "TAMPINES" });
 });
+
+// ---------- daily collector ----------
+test("sgHistoryKey keys a request to the library (town, flat type, 12-month window only)", async () => {
+  const { sgHistoryKey } = await import("./source");
+  assert.deepEqual(sgHistoryKey({ town: "tampines" }), { area: "TAMPINES", item: "any:12m", label: "TAMPINES" });
+  assert.deepEqual(sgHistoryKey({ town: "AMK", flat_type: "4 room" }), { area: "ANG MO KIO", item: "4-room:12m", label: "ANG MO KIO 4 ROOM" });
+  assert.equal(sgHistoryKey({ town: "Orchard" }), null); // not an HDB town
+  assert.equal(sgHistoryKey({ town: "Tampines", months: 24 }), null); // the copy holds the 12-month window only
+  assert.equal(sgHistoryKey({ town: "Tampines", flat_type: "6 ROOM" }), null);
+  assert.equal(sgHistoryKey({ town: "Tampines" }, { monthly: true }), null);
+  assert.equal(sgHistoryKey({}), null);
+});
+
+// SYNTHETIC bulk portal in the live record shape (all towns mixed, newest first): 3 towns x 12 months x `per` resales, plus an old month.
+function fakeBulk(towns: string[], per: number) {
+  const records: Record<string, any>[] = [];
+  let id = 1;
+  const months = ["2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10"];
+  for (const month of months)
+    for (const town of towns)
+      for (let i = 0; i < per; i++) records.push({ _id: id++, month, town, flat_type: i % 2 ? "4 ROOM" : "5 ROOM", floor_area_sqm: "92", resale_price: String(500000 + i * 1000) });
+  records.reverse();
+  const calls: string[] = [];
+  const fetcher = async (url: string) => {
+    calls.push(url);
+    const u = new URL(url);
+    const limit = Number(u.searchParams.get("limit"));
+    const offset = Number(u.searchParams.get("offset") ?? 0);
+    return { success: true, result: { records: records.slice(offset, offset + limit) } };
+  };
+  return { fetcher, calls };
+}
+
+test("sgHarvest stores a rolling-12-month median per town and flat type, and stops paging at the window", async () => {
+  const { sgHarvest, sgItem } = await import("./source");
+  const towns = Array.from({ length: 24 }, (_, i) => `TOWN${i}`);
+  const { fetcher, calls } = fakeBulk(towns, 10);
+  const h = await sgHarvest(fetcher, new Date("2026-10-24T03:17:00Z"));
+  assert.equal(h.date, "2026-10-24");
+  assert.equal(h.currency, "SGD");
+  const any = h.rows.find((r) => r.area === "TOWN0" && r.item === sgItem())!;
+  assert.equal(any.n, 12 * 10); // 2025-11 .. 2026-10; 2025-09 and 2025-10 are outside the window
+  const four = h.rows.find((r) => r.area === "TOWN0" && r.item === "4-room:12m")!;
+  assert.equal(four.n, 12 * 5);
+  assert.ok(calls.length < 14 * 24 * 10 / 1000 + 3); // did not read the whole file
+});
+
+test("sgHarvest refuses a partial read and groups under 5 resales are not written", async () => {
+  const { sgHarvest, sgDailyRows } = await import("./source");
+  const { fetcher } = fakeBulk(["A", "B", "C"], 10);
+  await assert.rejects(() => sgHarvest(fetcher, new Date("2026-10-24T03:17:00Z")), /Only 3 HDB towns/);
+  const rows = sgDailyRows([
+    ...Array.from({ length: 5 }, (_, i) => ({ month: "2026-10", town: "BEDOK", flat: "4 ROOM", price: 600000 + i })),
+    ...Array.from({ length: 4 }, (_, i) => ({ month: "2026-10", town: "BEDOK", flat: "5 ROOM", price: 700000 + i })),
+  ]);
+  assert.ok(rows.some((r) => r.item === "4-room:12m"));
+  assert.ok(!rows.some((r) => r.item === "5-room:12m"));
+  assert.equal(rows.find((r) => r.item === "any:12m")!.n, 9);
+});
+
+// REAL response copied from data.gov.sg (probe dep-sghdb1, 2026-10-24, no filter, newest first): the bulk parser reads town and flat type.
+test("parseSgBulk reads the live record shape", async () => {
+  const { parseSgBulk } = await import("./source");
+  const live = { success: true, result: { records: [
+    { _id: 243500, month: "2026-10", town: "YISHUN", flat_type: "MULTI-GENERATION", block: "633", street_name: "YISHUN ST 61", storey_range: "10 TO 12", floor_area_sqm: "171.00", flat_model: "Multi Generation", lease_commence_date: "1987", remaining_lease: "60 years 03 months", resale_price: "1178000" },
+    { _id: 243441, month: "2026-10", town: "YISHUN", flat_type: "5 ROOM", block: "832", street_name: "YISHUN ST 81", storey_range: "01 TO 03", floor_area_sqm: "122.00", flat_model: "Improved", lease_commence_date: "1988", remaining_lease: "60 years 07 months", resale_price: "740000" },
+  ] }, total: 243500 };
+  const p = parseSgBulk(live);
+  assert.equal(p.rawCount, 2);
+  assert.equal(p.oldest, "2026-10");
+  assert.deepEqual(p.sales[0], { month: "2026-10", town: "YISHUN", flat: "MULTI-GENERATION", price: 1178000 });
+  assert.throws(() => parseSgBulk({ success: false }), /Unexpected response/);
+});
