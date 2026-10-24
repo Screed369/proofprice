@@ -13,10 +13,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: fetch
         run: |
+          set +e
           mkdir -p /tmp/p && cd /tmp/p
           U="https://www.stats.govt.nz/assets/Uploads/Selected-price-indexes/Selected-price-indexes-September-2026/Download-data/selected-price-indexes-september-2026.csv"
           curl -sS -L --max-time 120 -A "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)" -D h.txt -o f.csv -w "%{http_code} %{size_download}\n" "$U" > s.txt || true
-          { cat s.txt; head -3 f.csv; echo ----SAP-ROWS-latest-and-first;
+          { cat s.txt; head -c 600 f.csv; echo; head -c 600 h.txt; echo ----SAP-ROWS-latest-and-first;
             python3 - <<'PY'
           import csv
           rows=list(csv.reader(open('/tmp/p/f.csv',encoding='utf-8-sig')))
