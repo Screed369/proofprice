@@ -1,6 +1,8 @@
 name: tmp nz groceries probe
 on:
-  workflow_dispatch:
+  push:
+    branches: [src/nz-stats-grocery-prices]
+    paths: ['.github/workflows/tmp-nzgroc.yml']
 permissions:
   contents: write
 jobs:
