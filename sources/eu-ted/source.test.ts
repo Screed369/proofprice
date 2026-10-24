@@ -374,10 +374,11 @@ test("TED end to end with a stubbed API: no frameworks at all, the answer is unc
   );
 });
 
-test("routing: PT contracts go to pt-base-contracts, FR to fr-decp-contracts, DE stays with TED", async () => {
+test("routing: PT contracts go to pt-base-contracts, FR to fr-decp-contracts, DE to de-oev-contracts, NL stays with TED", async () => {
   const { categoryById, pickSource } = await import("../../lib/registry");
   const cat = categoryById("contracts")!;
   assert.equal(pickSource(cat, { country: "PT", what: "laptops" }).src.info.id, "pt-base-contracts");
   assert.equal(pickSource(cat, { country: "FR", what: "laptops" }).src.info.id, "fr-decp-contracts");
-  assert.equal(pickSource(cat, { country: "DE", what: "laptops" }).src.info.id, "eu-ted");
+  assert.equal(pickSource(cat, { country: "DE", what: "laptops" }).src.info.id, "de-oev-contracts");
+  assert.equal(pickSource(cat, { country: "NL", what: "laptops" }).src.info.id, "eu-ted");
 });
