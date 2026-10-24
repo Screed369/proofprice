@@ -1,6 +1,7 @@
 // Manifest: Australia home sales (official mean price of residential dwellings by state and territory, Australian Bureau of Statistics). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import { INFO, routeAustralia } from "./source";
+import { servesSuburb } from "../au-sa-metro-home-sales/source";
 
 export default defineSource({
   info: INFO,
@@ -27,6 +28,8 @@ export default defineSource({
   method:
     "Australia: the Australian Bureau of Statistics' mean price of residential dwellings (the ABS estimate of the total value of the dwelling stock divided by the number of dwellings) for each state and territory and for Australia, by quarter. " +
     "We pass on the published figure in AUD with the previous quarter and the year before; the newest quarter is preliminary. It is an official statistic of the whole housing stock, not a list of sales and not a suburb price.",
+  // Adelaide suburbs have their own source (au-sa-metro-home-sales); every other request stays with the ABS state figure.
+  serves: (p) => !servesSuburb(str(p.town), str(p.postcode)),
   handle: (p, ctx) =>
     routeAustralia({
       town: str(p.town),

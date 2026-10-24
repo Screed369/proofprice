@@ -231,3 +231,11 @@ test("coverage lists smoke:false examples apart so the smoke test can report the
   assert.ok(expected.length > 0);
   for (const p of expected) assert.ok(c.examples.includes(p), `${p} stays in examples`);
 });
+
+test("AU home sales: an Adelaide suburb goes to the SA source, everything else to the ABS state figure", async () => {
+  const { findSource } = await import("../lib/registry");
+  assert.equal(findSource("home-sales", "AU", { town: "Norwood" })?.info.id, "au-sa-metro-home-sales");
+  assert.equal(findSource("home-sales", "AU", { town: "Victoria" })?.info.id, "au-home-sales");
+  assert.equal(findSource("home-sales", "AU", { town: "Adelaide" })?.info.id, "au-home-sales");
+  assert.equal(findSource("home-sales", "AU", { postcode: "5067" })?.info.id, "au-home-sales");
+});
