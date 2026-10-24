@@ -108,3 +108,16 @@ test("a published annual-change rate (item ending :yoy) is never ratio-checked",
   assert.equal(r.held.length, 0);
   assert.equal(r.rows.length, 2);
 });
+
+test("a spot-price key whose median sits near zero is not frozen by the ratio test (VIC1 0.01 then 96.06)", () => {
+  const spot = (median: number, low: number, high: number): DailyRow => ({ area: "VIC1", item: "spot-5min", n: 288, median, low, high, min: -20, max: 299 });
+  writeDaily("au-spot", day("2026-10-22", [spot(0.01, -7.96, 149)], "AUD", "per MWh"));
+  const prev = previousByKey("au-spot", "2026-10-23");
+  const r = dataCheck({ result: day("2026-10-23", [spot(96.06, 20, 180)], "AUD", "per MWh"), prevMeta: { ...meta("AUD", "per MWh"), source: "au-spot" }, previous: prev });
+  assert.equal(r.held.length, 0);
+  assert.equal(r.rows.length, 1);
+  // a tight fuel-like series is still checked
+  writeDaily("tight", day("2026-10-22", [row("x", "d", 1.5)]));
+  const t = dataCheck({ result: day("2026-10-23", [row("x", "d", 6)]), prevMeta: meta(), previous: previousByKey("tight", "2026-10-23") });
+  assert.equal(t.held.length, 1);
+});

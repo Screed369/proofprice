@@ -36,6 +36,10 @@ export interface DataCheckResult {
 /** Items that are a published rate of change (e.g. "flat:yoy", a few percent, often near zero): a ratio test means nothing for them. */
 export const isRateItem = (item: string) => item.endsWith(":yoy");
 
+/** A median that sits near zero compared with the day's own spread (p10 to p90), e.g. a spot power price that can swing through zero: a ratio against it means nothing, in either direction. */
+export const isNearZero = (median: number, low: number, high: number) =>
+  Number.isFinite(low) && Number.isFinite(high) && high > low && Math.abs(median) < 0.25 * (high - low);
+
 export const keyOf = (area: string, item: string) => `${area}\u0000${item}`;
 
 /** The newest stored row per area and item that is older than `before`. Reads month files newest first, so it is meant for the collector. */
@@ -72,7 +76,8 @@ export function dataCheck(opts: { result: HarvestResult; prevMeta: SourceMeta | 
   const held: HeldKey[] = [];
   for (const r of result.rows) {
     const prev = previous.get(keyOf(r.area, r.item));
-    if (!isRateItem(r.item) && passesGate(r.n) && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0) {
+    if (!isRateItem(r.item) && passesGate(r.n) && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0 &&
+      !isNearZero(prev.median, prev.low, prev.high) && !isNearZero(r.median, r.low, r.high)) {
       const ratio = r.median / prev.median;
       if (ratio > MAX_RATIO || ratio < 1 / MAX_RATIO) {
         held.push({
