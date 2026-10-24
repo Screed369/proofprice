@@ -1,1179 +1,234 @@
-URL: https://datacatalog.cookcountyil.gov/api/views/wvhk-k5uv.json
-Fetched: 2026-10-22T00:56:27Z from GitHub Actions
-Status, type, bytes: 200 application/json; charset=utf-8 34345
+URL: https://www.cookcountyil.gov/terms-use
+Fetched: 2026-10-24T06:56:51Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 85127
 Errors: 
 
 === RESPONSE HEADERS
-HTTP/1.1 200 OK
-Server: nginx
-Date: Thu, 22 Oct 2026 00:56:27 GMT
-Content-Type: application/json; charset=utf-8
-Transfer-Encoding: chunked
-Connection: keep-alive
-Access-Control-Allow-Origin: *
-Vary: Accept-Encoding
-X-Socrata-Region: aws-us-east-1-fedramp-prod
-X-Socrata-RequestId: 8f0a79c6be1714a7b8c572fb84af47d8
-Strict-Transport-Security: max-age=31536000; includeSubDomains
+HTTP/2 200 
+content-type: text/html; charset=UTF-8
+server: nginx
+date: Sat, 24 Oct 2026 00:35:56 GMT
+via: varnish, 1.1 de5f21c2f649580fd17998648f514a66.cloudfront.net (CloudFront)
+accept-ranges: bytes
+cache-control: max-age=2764800, public
+content-language: en
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+expires: Sun, 19 Nov 1978 05:00:00 GMT
+last-modified: Sat, 24 Oct 2026 00:35:54 GMT
+x-generator: Drupal 11 (https://www.drupal.org)
+content-security-policy-report-only: object-src 'none'; script-src 'self' 'unsafe-eval' fonts.googleapis translate.google.com translate.googleapis.com translate-pa.googleapis.com *.gstatic.com siteimproveanalytics.com *.siteimprove.com svc.webspellchecker.net js-agent.newrelic.com bam.nr-data.net cdn.jsdelivr.net https://cdn.jsdelivr.net https://cdn.siteimprove.net https://cdnjs.cloudflare.com https://maps.googleapis.com https://rebilly.github.io https://static.addtoany.com https://unpkg.com https://webapp.recyclecoach.com maps.googleapis.com platform.instagram.com platform.twitter.com; script-src-attr 'self'; script-src-elem 'self' fonts.googleapis translate.google.com translate.googleapis.com translate-pa.googleapis.com *.gstatic.com siteimproveanalytics.com *.siteimprove.com svc.webspellchecker.net js-agent.newrelic.com bam.nr-data.net cdn.jsdelivr.net https://cdn.jsdelivr.net https://cdn.siteimprove.net https://cdnjs.cloudflare.com https://maps.googleapis.com https://rebilly.github.io https://static.addtoany.com https://unpkg.com https://webapp.recyclecoach.com maps.googleapis.com platform.instagram.com platform.twitter.com; style-src 'self' fonts.googleapis translate.google.com translate.googleapis.com translate-pa.googleapis.com *.gstatic.com siteimproveanalytics.com *.siteimprove.com svc.webspellchecker.net js-agent.newrelic.com bam.nr-data.net cdn.jsdelivr.net https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://use.fontawesome.com; style-src-attr 'self'; frame-ancestors 'self'
+x-drupal-cache: MISS
+x-request-id: v-df56bde8-cf42-11f1-8778-c7fedcd36c9b
+x-ah-environment: 01live
+etag: W/"1792802154"
+vary: Cookie,Accept-Encoding
+x-cache: Hit from cloudfront
+x-amz-cf-pop: PHX50-P2
+x-amz-cf-id: eLfETlKu_RL2xkUIO0k-T1rWX9-8t8N5Qh4v7TNJZa6UzlXX3SknUQ==
+age: 22855
 
-=== FILE TYPE: JSON text data
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (7820)
 === FIRST 30000 BYTES
-{
-  "id" : "wvhk-k5uv",
-  "name" : "Assessor - Parcel Sales",
-  "assetType" : "dataset",
-  "attribution" : "Cook County Assessor's Office",
-  "averageRating" : 0,
-  "category" : "Property & Taxation",
-  "createdAt" : 1650289055,
-  "description" : "Parcel sales for real property in Cook County, from 1999 to present. The Assessor's Office uses this data in its modeling to estimate the fair market value of unsold properties.\n\nWhen working with Parcel Index Numbers (PINs) make sure to zero-pad them to 14 digits. Some datasets may lose leading zeros for PINs when downloaded.\n\nSale document numbers correspond to those of the Cook County Clerk, and can be used on the <a href=\"https://ccrd.cookcountyclerkil.gov/i2/default.aspx\">Clerk's website</a> to find more information about each sale.\n\nNOTE: These sales <i>are</i> filtered, but likely include non-arms-length transactions - sales less than $10,000 along with quit claims, executor deeds, beneficial interests are excluded.  While the Data Department will upload what it has access to semi-monthly, sales are reported on a lag, with many records not populating until months after their official recording date.\n\nCurrent property class codes, their levels of assessment, and descriptions can be found <a href=\"https://prodassets.cookcountyassessoril.gov/s3fs-public/form_documents/classcode.pdf\">on the Assessor's website (pdf)</a> and <a href=\"https://github.com/ccao-data/data-architecture/blob/master/dbt/seeds/ccao/ccao.class_dict.csv\">in this class code dictionary (csv)</a>. Note that class codes details can change across time.\n\nFor more information on the sourcing of attached data and the preparation of this dataset, see the <a href=\"https://github.com/ccao-data/wiki/blob/master/SOPs/Open-Data.md\">Assessor's Standard Operating Procedures for Open Data</a> on GitHub.\n\nSee additional datasets in the <a href=\"https://datacatalog.cookcountyil.gov/stories/s/gzdr-q7c4\">Assessor's Open Data Catalog.</a>",
-  "diciBackend" : false,
-  "displayType" : "table",
-  "downloadCount" : 96083,
-  "hideFromCatalog" : false,
-  "hideFromDataJson" : false,
-  "locked" : false,
-  "newBackend" : true,
-  "numberOfComments" : 0,
-  "oid" : 41141238,
-  "provenance" : "official",
-  "publicationAppendEnabled" : false,
-  "publicationDate" : 1739485552,
-  "publicationGroup" : 18675076,
-  "publicationStage" : "published",
-  "rowIdentifierColumnId" : 605833770,
-  "rowsUpdatedAt" : 1792065409,
-  "rowsUpdatedBy" : "s6b5-uz7b",
-  "tableId" : 19783540,
-  "totalTimesRated" : 0,
-  "viewCount" : 52574,
-  "viewLastModified" : 1792515218,
-  "viewType" : "tabular",
-  "approvals" : [ {
-    "reviewedAt" : 1653314161,
-    "reviewedAutomatically" : true,
-    "state" : "approved",
-    "submissionId" : 6747672,
-    "submissionObject" : "public_audience_request",
-    "submissionOutcome" : "change_audience",
-    "submittedAt" : 1653314161,
-    "targetAudience" : "public",
-    "workflowId" : 2031,
-    "submissionDetails" : {
-      "permissionType" : "READ"
-    },
-    "submissionOutcomeApplication" : {
-      "endedAt" : 1653314161,
-      "failureCount" : 0,
-      "startedAt" : 1653314161,
-      "status" : "success"
-    },
-    "submitter" : {
-      "id" : "s6b5-uz7b",
-      "displayName" : "Cook County Assessor's Office Data Department"
-    }
-  } ],
-  "clientContext" : {
-    "clientContextVariables" : [ ],
-    "inheritedVariables" : { }
-  },
-  "columns" : [ {
-    "id" : 605833771,
-    "name" : "pin",
-    "dataTypeName" : "text",
-    "description" : "Parcel Identification Number (PIN)",
-    "fieldName" : "pin",
-    "position" : 1,
-    "renderTypeName" : "text",
-    "tableColumnId" : 141851744,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "33323020150000",
-      "null" : "0",
-      "top" : [ {
-        "item" : "17032220150000",
-        "count" : "151"
-      }, {
-        "item" : "17103180800000",
-        "count" : "126"
-      }, {
-        "item" : "17032220180000",
-        "count" : "125"
-      }, {
-        "item" : "17032220200000",
-        "count" : "124"
-      }, {
-        "item" : "17102070340000",
-        "count" : "83"
-      }, {
-        "item" : "14062120060000",
-        "count" : "80"
-      }, {
-        "item" : "17102070380000",
-        "count" : "77"
-      }, {
-        "item" : "17102070360000",
-        "count" : "77"
-      }, {
-        "item" : "14062140170000",
-        "count" : "77"
-      }, {
-        "item" : "17102070370000",
-        "count" : "76"
-      }, {
-        "item" : "17032280050000",
-        "count" : "75"
-      }, {
-        "item" : "17032280040000",
-        "count" : "74"
-      }, {
-        "item" : "17032280160000",
-        "count" : "74"
-      }, {
-        "item" : "17032280370000",
-        "count" : "73"
-      }, {
-        "item" : "17102070350000",
-        "count" : "73"
-      }, {
-        "item" : "17102070390000",
-        "count" : "73"
-      }, {
-        "item" : "17104000110000",
-        "count" : "65"
-      }, {
-        "item" : "14062190130000",
-        "count" : "63"
-      }, {
-        "item" : "05272000010000",
-        "count" : "61"
-      }, {
-        "item" : "03101190010000",
-        "count" : "58"
-      } ],
-      "smallest" : "01011000020000",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833772,
-    "name" : "year",
-    "dataTypeName" : "number",
-    "description" : "Year",
-    "fieldName" : "year",
-    "position" : 2,
-    "renderTypeName" : "number",
-    "tableColumnId" : 141979911,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "2026.0",
-      "null" : "0",
-      "top" : [ {
-        "item" : "2019",
-        "count" : "141100"
-      }, {
-        "item" : "2005",
-        "count" : "137198"
-      }, {
-        "item" : "2004",
-        "count" : "134192"
-      }, {
-        "item" : "2018",
-        "count" : "127839"
-      }, {
-        "item" : "2016",
-        "count" : "127660"
-      }, {
-        "item" : "2017.0",
-        "count" : "127399"
-      }, {
-        "item" : "2003",
-        "count" : "125121"
-      }, {
-        "item" : "2002",
-        "count" : "119391"
-      }, {
-        "item" : "2020",
-        "count" : "113844"
-      }, {
-        "item" : "2006",
-        "count" : "113356"
-      }, {
-        "item" : "2001",
-        "count" : "109468"
-      }, {
-        "item" : "2000",
-        "count" : "107117"
-      }, {
-        "item" : "2021.0",
-        "count" : "106960"
-      }, {
-        "item" : "2013.0",
-        "count" : "105644"
-      }, {
-        "item" : "2022.0",
-        "count" : "101398"
-      }, {
-        "item" : "2015.0",
-        "count" : "99265"
-      }, {
-        "item" : "2014",
-        "count" : "98349"
-      }, {
-        "item" : "2007",
-        "count" : "89507"
-      }, {
-        "item" : "2012",
-        "count" : "81494"
-      }, {
-        "item" : "2025",
-        "count" : "79257"
-      } ],
-      "smallest" : "1971",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : {
-      "noCommas" : "true"
-    }
-  }, {
-    "id" : 605833773,
-    "name" : "township_code",
-    "dataTypeName" : "text",
-    "description" : "Township code",
-    "fieldName" : "township_code",
-    "position" : 3,
-    "renderTypeName" : "text",
-    "tableColumnId" : 141851726,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "77",
-      "null" : "0",
-      "top" : [ {
-        "item" : "72",
-        "count" : "259190"
-      }, {
-        "item" : "77",
-        "count" : "253193"
-      }, {
-        "item" : "71",
-        "count" : "222954"
-      }, {
-        "item" : "73",
-        "count" : "209050"
-      }, {
-        "item" : "70",
-        "count" : "153055"
-      }, {
-        "item" : "74",
-        "count" : "152002"
-      }, {
-        "item" : "76",
-        "count" : "105387"
-      }, {
-        "item" : "37",
-        "count" : "98101"
-      }, {
-        "item" : "39",
-        "count" : "81996"
-      }, {
-        "item" : "38",
-        "count" : "81928"
-      }, {
-        "item" : "31",
-        "count" : "73044"
-      }, {
-        "item" : "22",
-        "count" : "68506"
-      }, {
-        "item" : "13",
-        "count" : "65516"
-      }, {
-        "item" : "35",
-        "count" : "65471"
-      }, {
-        "item" : "29",
-        "count" : "61514"
-      }, {
-        "item" : "21",
-        "count" : "57261"
-      }, {
-        "item" : "24",
-        "count" : "56168"
-      }, {
-        "item" : "18",
-        "count" : "53426"
-      }, {
-        "item" : "28",
-        "count" : "51134"
-      }, {
-        "item" : "12",
-        "count" : "49973"
-      } ],
-      "smallest" : "10",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833774,
-    "name" : "neighborhood_code",
-    "dataTypeName" : "text",
-    "description" : "Assessor neighborhood code, first two digits are township, last three are neighborhood",
-    "fieldName" : "nbhd",
-    "position" : 4,
-    "renderTypeName" : "text",
-    "tableColumnId" : 146785097,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "77999",
-      "null" : "0",
-      "top" : [ {
-        "item" : "74030",
-        "count" : "59065"
-      }, {
-        "item" : "77131",
-        "count" : "47540"
-      }, {
-        "item" : "74022",
-        "count" : "44432"
-      }, {
-        "item" : "76010",
-        "count" : "35602"
-      }, {
-        "item" : "76011",
-        "count" : "27974"
-      }, {
-        "item" : "77120",
-        "count" : "26167"
-      }, {
-        "item" : "74012",
-        "count" : "25002"
-      }, {
-        "item" : "73031",
-        "count" : "24390"
-      }, {
-        "item" : "73060",
-        "count" : "23106"
-      }, {
-        "item" : "70010",
-        "count" : "21940"
-      }, {
-        "item" : "73084",
-        "count" : "21292"
-      }, {
-        "item" : "24031",
-        "count" : "20504"
-      }, {
-        "item" : "77030",
-        "count" : "20166"
-      }, {
-        "item" : "77102",
-        "count" : "18802"
-      }, {
-        "item" : "73062",
-        "count" : "18418"
-      }, {
-        "item" : "70080",
-        "count" : "18170"
-      }, {
-        "item" : "72030",
-        "count" : "16979"
-      }, {
-        "item" : "72380",
-        "count" : "16264"
-      }, {
-        "item" : "71070",
-        "count" : "14776"
-      }, {
-        "item" : "77170",
-        "count" : "14620"
-      } ],
-      "smallest" : "10011",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833775,
-    "name" : "class",
-    "dataTypeName" : "text",
-    "description" : "Property class",
-    "fieldName" : "class",
-    "position" : 5,
-    "renderTypeName" : "text",
-    "tableColumnId" : 141851748,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "RR",
-      "null" : "0",
-      "top" : [ {
-        "item" : "299",
-        "count" : "846102"
-      }, {
-        "item" : "203",
-        "count" : "458847"
-      }, {
-        "item" : "211",
-        "count" : "244078"
-      }, {
-        "item" : "202",
-        "count" : "190127"
-      }, {
-        "item" : "234",
-        "count" : "115719"
-      }, {
-        "item" : "278",
-        "count" : "106962"
-      }, {
-        "item" : "295",
-        "count" : "99489"
-      }, {
-        "item" : "205",
-        "count" : "83218"
-      }, {
-        "item" : "100",
-        "count" : "80413"
-      }, {
-        "item" : "204",
-        "count" : "56567"
-      }, {
-        "item" : "207",
-        "count" : "51119"
-      }, {
-        "item" : "206",
-        "count" : "35479"
-      }, {
-        "item" : "517",
-        "count" : "31846"
-      }, {
-        "item" : "241",
-        "count" : "25284"
-      }, {
-        "item" : "593",
-        "count" : "23438"
-      }, {
-        "item" : "212",
-        "count" : "22318"
-      }, {
-        "item" : "590",
-        "count" : "22168"
-      }, {
-        "item" : "EX",
-        "count" : "22010"
-      }, {
-        "item" : "315",
-        "count" : "15903"
-      }, {
-        "item" : "208",
-        "count" : "13882"
-      } ],
-      "smallest" : "100",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833776,
-    "name" : "sale_date",
-    "dataTypeName" : "calendar_date",
-    "description" : "Sale date (recorded, not executed)",
-    "fieldName" : "sale_date",
-    "position" : 6,
-    "renderTypeName" : "calendar_date",
-    "tableColumnId" : 141846133,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "2026-08-12T00:00:00.000",
-      "null" : "0",
-      "top" : [ {
-        "item" : "2005-06-01T00:00:00.000",
-        "count" : "14332"
-      }, {
-        "item" : "2004-06-01T00:00:00.000",
-        "count" : "14232"
-      }, {
-        "item" : "2005-08-01T00:00:00.000",
-        "count" : "13731"
-      }, {
-        "item" : "2004-07-01T00:00:00.000",
-        "count" : "13323"
-      }, {
-        "item" : "2005-05-01T00:00:00.000",
-        "count" : "13188"
-      }, {
-        "item" : "2004-08-01T00:00:00.000",
-        "count" : "12951"
-      }, {
-        "item" : "2005-07-01T00:00:00.000",
-        "count" : "12690"
-      }, {
-        "item" : "2004-04-01T00:00:00.000",
-        "count" : "12472"
-      }, {
-        "item" : "2003-06-01T00:00:00.000",
-        "count" : "12210"
-      }, {
-        "item" : "2003-08-01T00:00:00.000",
-        "count" : "12161"
-      }, {
-        "item" : "2006-06-01T00:00:00.000",
-        "count" : "12070"
-      }, {
-        "item" : "2005-09-01T00:00:00.000",
-        "count" : "12070"
-      }, {
-        "item" : "2003-07-01T00:00:00.000",
-        "count" : "11951"
-      }, {
-        "item" : "2004-05-01T00:00:00.000",
-        "count" : "11861"
-      }, {
-        "item" : "2003-09-01T00:00:00.000",
-        "count" : "11801"
-      }, {
-        "item" : "2006-05-01T00:00:00.000",
-        "count" : "11794"
-      }, {
-        "item" : "2005-04-01T00:00:00.000",
-        "count" : "11761"
-      }, {
-        "item" : "2001-06-01T00:00:00.000",
-        "count" : "11748"
-      }, {
-        "item" : "2004-09-01T00:00:00.000",
-        "count" : "11622"
-      }, {
-        "item" : "2002-06-01T00:00:00.000",
-        "count" : "11589"
-      } ],
-      "smallest" : "1971-09-15T00:00:00.000",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : {
-      "view" : "date_monthdy"
-    }
-  }, {
-    "id" : 605833777,
-    "name" : "is_mydec_date",
-    "dataTypeName" : "checkbox",
-    "description" : "Indicates whether the sale date has been overwritten with a more precise value from IDOR (Illinois Department of Revenue). In the past the Assessor's ingest process truncated sale dates to the first of the month. Not all sales can be updated with dates from IDOR.",
-    "fieldName" : "is_mydec_date",
-    "position" : 7,
-    "renderTypeName" : "checkbox",
-    "tableColumnId" : 142375549,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "null" : "0",
-      "top" : [ {
-        "item" : false,
-        "count" : "1521744"
-      }, {
-        "item" : true,
-        "count" : "1167067"
-      } ],
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833778,
-    "name" : "sale_price",
-    "dataTypeName" : "number",
-    "description" : "Sale price",
-    "fieldName" : "sale_price",
-    "position" : 8,
-    "renderTypeName" : "number",
-    "tableColumnId" : 141846144,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "930000117",
-      "null" : "0",
-      "top" : [ {
-        "item" : "1",
-        "count" : "166209"
-      }, {
-        "item" : "250000",
-        "count" : "19482"
-      }, {
-        "item" : "150000",
-        "count" : "18648"
-      }, {
-        "item" : "200000",
-        "count" : "18401"
-      }, {
-        "item" : "0",
-        "count" : "17549"
-      }, {
-        "item" : "300000.0",
-        "count" : "16911"
-      }, {
-        "item" : "225000",
-        "count" : "15833"
-      }, {
-        "item" : "175000",
-        "count" : "15529"
-      }, {
-        "item" : "160000",
-        "count" : "15342"
-      }, {
-        "item" : "180000",
-        "count" : "15149"
-      }, {
-        "item" : "220000",
-        "count" : "14820"
-      }, {
-        "item" : "350000",
-        "count" : "14781"
-      }, {
-        "item" : "165000",
-        "count" : "14649"
-      }, {
-        "item" : "125000",
-        "count" : "14506"
-      }, {
-        "item" : "230000",
-        "count" : "14092"
-      }, {
-        "item" : "240000.0",
-        "count" : "13980"
-      }, {
-        "item" : "170000",
-        "count" : "13953"
-      }, {
-        "item" : "275000",
-        "count" : "13877"
-      }, {
-        "item" : "130000",
-        "count" : "13825"
-      }, {
-        "item" : "140000",
-        "count" : "13812"
-      } ],
-      "smallest" : "0",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : {
-      "precisionStyle" : "currency"
-    }
-  }, {
-    "id" : 605833780,
-    "name" : "sale_document_num",
-    "dataTypeName" : "text",
-    "description" : "Sale document number. Corresponds to Clerk's document number",
-    "fieldName" : "doc_no",
-    "position" : 9,
-    "renderTypeName" : "text",
-    "tableColumnId" : 141851739,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "99999999",
-      "null" : "0",
-      "top" : [ {
-        "item" : "1613718010",
-        "count" : "563"
-      }, {
-        "item" : "1408639079",
-        "count" : "529"
-      }, {
-        "item" : "1607419158",
-        "count" : "527"
-      }, {
-        "item" : "1607741074",
-        "count" : "443"
-      }, {
-        "item" : "1016818076",
-        "count" : "435"
-      }, {
-        "item" : "1120131059",
-        "count" : "420"
-      }, {
-        "item" : "1933940023",
-        "count" : "401"
-      }, {
-        "item" : "1401634057",
-        "count" : "341"
-      }, {
-        "item" : "2534627022",
-        "count" : "327"
-      }, {
-        "item" : "1716534070",
-        "count" : "324"
-      }, {
-        "item" : "1910045029",
-        "count" : "319"
-      }, {
-        "item" : "1721418087",
-        "count" : "316"
-      }, {
-        "item" : "2214522024",
-        "count" : "264"
-      }, {
-        "item" : "1435216102",
-        "count" : "246"
-      }, {
-        "item" : "2606427006",
-        "count" : "240"
-      }, {
-        "item" : "935810017",
-        "count" : "217"
-      }, {
-        "item" : "1622516092",
-        "count" : "208"
-      }, {
-        "item" : "1113926085",
-        "count" : "208"
-      }, {
-        "item" : "1123518042",
-        "count" : "190"
-      }, {
-        "item" : "910433031",
-        "count" : "190"
-      } ],
-      "smallest" : "0",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833781,
-    "name" : "sale_deed_type",
-    "dataTypeName" : "text",
-    "description" : "Sale deed type",
-    "fieldName" : "deed_type",
-    "position" : 10,
-    "renderTypeName" : "text",
-    "tableColumnId" : 141851728,
-    "cachedContents" : {
-      "non_null" : "2687652",
-      "largest" : "Warranty",
-      "null" : "1159",
-      "top" : [ {
-        "item" : "Warranty",
-        "count" : "1821966"
-      }, {
-        "item" : "Other",
-        "count" : "428225"
-      }, {
-        "item" : "Trustee",
-        "count" : "316107"
-      }, {
-        "item" : "Quit claim",
-        "count" : "96541"
-      }, {
-        "item" : "Executor",
-        "count" : "24813"
-      } ],
-      "smallest" : "Executor",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833782,
-    "name" : "mydec_deed_type",
-    "dataTypeName" : "text",
-    "description" : "Deed type from MyDec, more granular than CCAO deed type.",
-    "fieldName" : "mydec_deed_type",
-    "position" : 11,
-    "renderTypeName" : "text",
-    "tableColumnId" : 149894704,
-    "cachedContents" : {
-      "non_null" : "931334",
-      "largest" : "Warranty Deed",
-      "null" : "1757477",
-      "top" : [ {
-        "item" : "Warranty Deed",
-        "count" : "649721"
-      }, {
-        "item" : "Trustee Deed",
-        "count" : "119942"
-      }, {
-        "item" : "Special Warranty Deed",
-        "count" : "107230"
-      }, {
-        "item" : "Quit Claim Deed",
-        "count" : "15189"
-      }, {
-        "item" : "Judicial Sale",
-        "count" : "12238"
-      }, {
-        "item" : "Executor Deed",
-        "count" : "8546"
-      }, {
-        "item" : "Administrator's Deed",
-        "count" : "6309"
-      }, {
-        "item" : "Deed in Trust",
-        "count" : "4760"
-      }, {
-        "item" : "Other",
-        "count" : "3551"
-      }, {
-        "item" : "Guardian's Deed",
-        "count" : "954"
-      }, {
-        "item" : "Limited Warranty Deed",
-        "count" : "764"
-      }, {
-        "item" : "Beneficial interest",
-        "count" : "462"
-      }, {
-        "item" : "Judge's Deed",
-        "count" : "435"
-      }, {
-        "item" : "Sheriff's Deed",
-        "count" : "369"
-      }, {
-        "item" : "Selling Officer's Deed",
-        "count" : "338"
-      }, {
-        "item" : "Deed in lieu of Foreclosure",
-        "count" : "263"
-      }, {
-        "item" : "Special Commissioner's Deed",
-        "count" : "118"
-      }, {
-        "item" : "Tax Deed",
-        "count" : "105"
-      }, {
-        "item" : "Court Officer's Deed",
-        "count" : "11"
-      }, {
-        "item" : "Corrective Deed",
-        "count" : "7"
-      } ],
-      "smallest" : "Administrator's Deed",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833783,
-    "name" : "sale_seller_name",
-    "dataTypeName" : "text",
-    "description" : "Sale seller name",
-    "fieldName" : "seller_name",
-    "position" : 12,
-    "renderTypeName" : "text",
-    "tableColumnId" : 141846143,
-    "cachedContents" : {
-      "non_null" : "2504995",
-      "largest" : "Μ14 LAND INVESTMENTS LLC, AN ILLINOIS LIMITED LIABILITY COMPANY",
-      "null" : "183816",
-      "top" : [ {
-        "item" : "UNKNOWN",
-        "count" : "47858"
-      }, {
-        "item" : "CHICAGO TITLE LAND TRUST",
-        "count" : "15275"
-      }, {
-        "item" : "CHICAGO TITLE LAND TRUST CO TR 0000",
-        "count" : "13253"
-      }, {
-        "item" : "FANNIE MAE",
-        "count" : "11220"
-      }, {
-        "item" : "THE JUDICIAL SALES CORPOR",
-        "count" : "8322"
-      }, {
-        "item" : "DEUTSCHE BK NATL TRUST CO",
-        "count" : "8144"
-      }, {
-        "item" : "JUDICIAL SALES CORP",
-        "count" : "7266"
-      }, {
-        "item" : "FEDERAL HOME LOAN MTG CORP",
-        "count" : "6910"
-      }, {
-        "item" : "Federal Home Loan Mortgage Corporat",
-        "count" : "4542"
-      }, {
-        "item" : "US BK",
-        "count" : "4440"
-      }, {
-        "item" : "WELLS FARGO BK",
-        "count" : "4165"
-      }, {
-        "item" : "INTERCOUNTY JUDICIAL SALE",
-        "count" : "3961"
-      }, {
-        "item" : "HOUSING & URBAN DEVELOPMENT",
-        "count" : "3906"
-      }, {
-        "item" : "THE JUDICIAL SALES CORPORATION",
-        "count" : "3718"
-      }, {
-        "item" : "U S BK",
-        "count" : "3671"
-      }, {
-        "item" : "INTERCOUNTY JUDICIAL SALES CORP",
-        "count" : "3450"
-      }, {
-        "item" : "Federal National Mortgage Associati",
-        "count" : "3176"
-      }, {
-        "item" : "Fannie Mae a/k/a Federal National M",
-        "count" : "3064"
-      }, {
-        "item" : "FEDERAL NATL MTG ASSN",
-        "count" : "2915"
-      }, {
-        "item" : "HSBC BK USA",
-        "count" : "2897"
-      } ],
-      "smallest" : "`",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833784,
-    "name" : "is_multisale",
-    "dataTypeName" : "checkbox",
-    "description" : "Indicates whether a parcel was sold individually or as part of a larger group of PINs",
-    "fieldName" : "is_multisale",
-    "position" : 13,
-    "renderTypeName" : "checkbox",
-    "tableColumnId" : 141935867,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "null" : "0",
-      "top" : [ {
-        "item" : false,
-        "count" : "2122775"
-      }, {
-        "item" : true,
-        "count" : "566036"
-      } ],
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833785,
-    "name" : "num_parcels_sale",
-    "dataTypeName" : "number",
-    "description" : "The number of parcels that were part of the sale",
-    "fieldName" : "num_parcels_sale",
-    "position" : 14,
-    "renderTypeName" : "number",
-    "tableColumnId" : 141846128,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "largest" : "564.0",
-      "null" : "0",
-      "top" : [ {
-        "item" : "1",
-        "count" : "2122775"
-      }, {
-        "item" : "2",
-        "count" : "350116"
-      }, {
-        "item" : "3",
-        "count" : "75372"
-      }, {
-        "item" : "4",
-        "count" : "30767"
-      }, {
-        "item" : "5",
-        "count" : "16016"
-      }, {
-        "item" : "6",
-        "count" : "13634"
-      }, {
-        "item" : "7",
-        "count" : "9472"
-      }, {
-        "item" : "10",
-        "count" : "7608"
-      }, {
-        "item" : "8",
-        "count" : "7492"
-      }, {
-        "item" : "9",
-        "count" : "5806"
-      }, {
-        "item" : "12",
-        "count" : "3395"
-      }, {
-        "item" : "11.0",
-        "count" : "3194"
-      }, {
-        "item" : "13",
-        "count" : "2213"
-      }, {
-        "item" : "15",
-        "count" : "1996"
-      }, {
-        "item" : "14",
-        "count" : "1887"
-      }, {
-        "item" : "17",
-        "count" : "1648"
-      }, {
-        "item" : "16",
-        "count" : "1522"
-      }, {
-        "item" : "20",
-        "count" : "1447"
-      }, {
-        "item" : "19",
-        "count" : "1260"
-      }, {
-        "item" : "24",
-        "count" : "1184"
-      } ],
-      "smallest" : "1.0",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833786,
-    "name" : "sale_buyer_name",
-    "dataTypeName" : "text",
-    "description" : "Sale buyer name",
-    "fieldName" : "buyer_name",
-    "position" : 15,
-    "renderTypeName" : "text",
-    "tableColumnId" : 141846119,
-    "cachedContents" : {
-      "non_null" : "2522394",
-      "largest" : "Z & Z REAL ESTATE , LLC",
-      "null" : "166417",
-      "top" : [ {
-        "item" : "UNKNOWN",
-        "count" : "26586"
-      }, {
-        "item" : "CHICAGO TITLE LAND TRUST",
-        "count" : "8396"
-      }, {
-        "item" : "CHICAGO TITLE LAND TRUST CO TR 0008",
-        "count" : "2769"
-      }, {
-        "item" : "FEDERAL NATIONAL MORTGAGE",
-        "count" : "2166"
-      }, {
-        "item" : "CHICAGO TITLE LAND TRUST CO TR 0000",
-        "count" : "1098"
-      }, {
-        "item" : "CHICAGO TITLE LAND TRUST COMPANY",
-        "count" : "1042"
-      }, {
-        "item" : "U.S. BANK NATIONAL ASSOCI",
-        "count" : "973"
-      }, {
-        "item" : "COUNTY OF COOK, D/B/A COO",
-        "count" : "971"
-      }, {
-        "item" : "CHICAGO TITLE",
-        "count" : "892"
-      }, {
-        "item" : "FEDERAL HOME LOAN MORTGAG",
-        "count" : "852"
-      }, {
-        "item" : "SCANNELL PROPERTIES #425,",
-        "count" : "791"
-      }, {
-        "item" : "CSC PALATINE APARTMENTS L",
-        "count" : "728"
-      }, {
-        "item" : "GRANDVIEW CAPITAL, LLC",
-        "count" : "690"
-      }, {
-        "item" : "COUNTY OF COOK",
-        "count" : "675"
-      }, {
-        "item" : "THE SECRETARY OF HOUSING",
-        "count" : "607"
-      }, {
-        "item" : "CITY OF CHICAGO",
-        "count" : "530"
-      }, {
-        "item" : "2 W DELAWARE RESIDENCES LLC",
-        "count" : "529"
-      }, {
-        "item" : "AGJ 2WD OWNER 1 LLC",
-        "count" : "527"
-      }, {
-        "item" : "FEDERAL NATIONAL MORTGAGE ASSOCIATION",
-        "count" : "500"
-      }, {
-        "item" : "DEUTSCHE BANK NATIONAL TR",
-        "count" : "483"
-      } ],
-      "smallest" : "`",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833787,
-    "name" : "sale_type",
-    "dataTypeName" : "text",
-    "description" : "Sale type",
-    "fieldName" : "sale_type",
-    "position" : 16,
-    "renderTypeName" : "text",
-    "tableColumnId" : 141846110,
-    "cachedContents" : {
-      "non_null" : "2174150",
-      "largest" : "LAND AND BUILDING",
-      "null" : "514661",
-      "top" : [ {
-        "item" : "LAND AND BUILDING",
-        "count" : "2109737"
-      }, {
-        "item" : "LAND",
-        "count" : "64413"
-      } ],
-      "smallest" : "LAND",
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833788,
-    "name" : "sale_filter_same_sale_within_365",
-    "dataTypeName" : "checkbox",
-    "description" : "Remove sale with the same value (for the same PIN) within 365 days",
-    "fieldName" : "sale_filter_same_sale_within_365",
-    "position" : 17,
-    "renderTypeName" : "checkbox",
-    "tableColumnId" : 149499117,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "null" : "0",
-      "top" : [ {
-        "item" : false,
-        "count" : "2675426"
-      }, {
-        "item" : true,
-        "count" : "13385"
-      } ],
-      "count" : "2688811",
-      "cardinality" : "2688811"
-    },
-    "format" : { }
-  }, {
-    "id" : 605833789,
-    "name" : "sale_filter_less_than_10k",
-    "dataTypeName" : "checkbox",
-    "description" : "Indicator for whether sale is less than $10K FMW",
-    "fieldName" : "sale_filter_less_than_10k",
-    "position" : 18,
-    "renderTypeName" : "checkbox",
-    "tableColumnId" : 149499116,
-    "cachedContents" : {
-      "non_null" : "2688811",
-      "null" : "0",
-      "top" : [ {
-        "item" : false,
-        "count" : "2473102"
-      }, {
-        "item" : true,
-        "c
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="TERMS AND CONDITIONS OF USEAccess to the County websites is provided subject to the following terms and conditions. Please read these terms carefully as use of these sites constitutes acceptance of all of the following terms and conditions:1. Disclaimer of LiabilityNEITHER COOK COUNTY, NOR ANY OF ITS AGENCIES NOR ANY OF ITS EMPLOYEES SHALL BE HELD LIABLE FOR ANY IMPROPER OR INCORRECT USE OF THE INFORMATION DESCRIBED AND/OR CONTAINED HEREIN AND ASSUMES NO RESPONSIBILITY FOR ANYONE’S USE OF SUCH INFORMATION. IN NO EVENT SHALL THE COUNTY OR ITS AGENCIES OR EMPLOYEES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OR SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SYSTEM, WEBSITE, OR LINKED WEBSITES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THIS DISCLAIMER OF LIABILITY APPLIES TO ANY DAMAGES OR INJURY, INCLUDING BUT NOT LIMITED TO THOSE CAUSED BY ANY FAILURE OF PERFORMANCE, ERROR, OMISSION, INTERRUPTION, DELETION, DEFECT, DELAY IN OPERATION OR TRANSMISSION, COMPUTER VIRUS, COMMUNICATION LINE FAILURE, THEFT OR DESTRUCTION OR UNAUTHORIZED ACCESS TO, ALTERATION OF, OR USE OF RECORD, WHETHER FOR BREACH OF CONTRACT, TORTIOUS BEHAVIOR, NEGLIGENCE, OR UNDER ANY OTHER CAUSE OF ACTION.2. Disclaimer of Warranties and Accuracy of DataNO WARRANTY, EXPRESSED OR IMPLIED, IS MADE REGARDING ACCURACY, ADEQUACY, COMPLETENESS, LEGALITY, RELIABILITY OR USEFULNESS OF ANY INFORMATION POSTED ON THE COUNTY WEBSITES. THIS DISCLAIMER APPLIES TO BOTH ISOLATED AND AGGREGATE USES OF THE INFORMATION. THE COUNTY PROVIDES THIS INFORMATION ON AN “AS IS” BASIS. ALL WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, FREEDOM FROM CONTAMINATION BY COMPUTER VIRUSES AND NON-INFRINGEMENT OF PROPRIETARY RIGHTS ARE DISCLAIMED. CHANGES MAY BE PERIODICALLY MADE TO THE INFORMATION HEREIN; THESE CHANGES MAY OR MAY NOT BE INCORPORATED IN ANY NEW VERSION OF THE PUBLICATION. IF YOU HAVE OBTAINED INFORMATION FROM ANY OF THE COUNTY’S WEB PAGES FROM A SOURCE OTHER THAN THE COUNTY’S WEBSITE, BE AWARE THAT ELECTRONIC DATA CAN BE ALTERED SUBSEQUENT TO ORIGINAL DISTRIBUTION. DATA CAN ALSO QUICKLY BECOME OUT OF DATE. IT IS RECOMMENDED THAT CAREFUL ATTENTION BE PAID TO THE CONTENTS OF ANY DATA ASSOCIATED WITH A FILE, AND THAT THE ORIGINATOR OF THE DATA OR INFORMATION BE CONTACTED WITH ANY QUESTIONS REGARDING APPROPRIATE USE.3. Disclaimer of EndorsementCook County is a distributor of content sometimes supplied by third parties and users. Any opinions, advice, statements, services, offers, or other information or content expressed or made available by third parties, including information providers, users, or others, are those of the respective author(s) or distributor(s) and do not necessarily state or reflect those of Cook County and shall not be used for advertising or product endorsement purposes. Reference herein to any specific commercial products, process, or service by trade name, trademark, manufacturer, or otherwise, does not constitute or imply its endorsement, recommendation, or favoring by the County, its employees, or agents.4. Disclaimer for External LinksCook County may occasionally provide links to content supplied by third parties and users. The existence and/or provision of those links neither constitutes nor implies endorsement of the destination or departure website(s) or of the content, viewpoint, accuracy, opinions, policy(ies), product(s), accessibility or privacy policy of said destination or departure website(s). Nor does any link between the County’s websites and a third-party website imply sponsorship of such website, or the creator of such website. When you link to another site, you are subject to the privacy policy and terms of use of that new site.5. Disclaimer of Duty to Continue Provision of DataDue to the dynamic nature of the Internet, resources that are free and publicly available one day may require a fee or restricted access the next, and the location of items may change as menus, homepages, and files are reorganized. You expressly agree that use of the County websites is at your sole risk. The County does not warrant that the service will be uninterrupted or error free. The documents and related graphics published on this server could contain technical inaccuracies or typographical errors. Changes are periodically added to the information herein. The County and/or its respective agencies and programs may make improvements and/or changes in the information and/or programs described herein at any time.6. ContentTo promote open and productive dialogue, and in the spirit of fair and transparent access to the County’s websites, users are hereby advised that all postings, including any links to 3rd-party sites, shall be subject to limited monitoring for appropriateness. For purposes herein, appropriateness is defined as postings that are relevant to Cook County’s official governmental business, responsive to the issue(s) being discussed, and phrased in respectful and appropriate language for the general public. Content that is commercial, self-promotional, campaign-related, prurient, abusive, or that contains discriminatory speech, including but not limited to, hate speech based on race, gender, sex, national origin, age, sexual orientation, religion, or disability is considered inappropriate for posting on the Cook County websites. If content is determined to be inappropriate, such content either will not be posted or will be removed from the website.7. Choice of LawConstruction of the disclaimers above and resolution of disputes thereof are governed by the laws of the State of Illinois. The laws of the State of Illinois, U.S.A., shall apply to all uses of this data and this system. By use of this system and any data contained therein, you agree that your use shall conform to all applicable laws and regulations and you shall not violate the rights of any third parties.8. SecuritySecurity measures have been integrated into the design, implementation and day-to-day operations of the entire operating environment as part of our continuing commitment to the security of electronic content as well as the electronic transmission of information.The Cook County Bureau of Technology, as developer and manager of the County websites, has taken several steps to safeguard the integrity of its communications and computing infrastructure, including but not limited to authentication, monitoring, auditing, and encryption. Security measures have been integrated into the design, implementation, and day-to-day practices of the entire operating environment as part of its continuing commitment to risk management.This information should not be construed in any way as giving business, legal, or other advice, or warranting as fail proof, the security of information provided via the County websites.9. Web Accessibility ComplianceCook County is committed to providing equal, multi-platform access to all County government internet/web-based information and services. The County has adopted W3C Standards for Accessibility for websites covered by this policy.10. Intellectual PropertyThe content of County websites is copyrighted and may contain some third party content that is used with permission of the third party. Users are notified, therefore, that one should presume the need to obtain permission from the copyright holder before reproducing or otherwise using images/graphics from this website." />
+<meta name="abstract" content="TERMS AND CONDITIONS OF USEAccess to the County websites is provided subject to the following terms and conditions. Please read these terms carefully as use of these sites constitutes acceptance of all of the following terms and conditions:1. Disclaimer of LiabilityNEITHER COOK COUNTY, NOR ANY OF ITS AGENCIES NOR ANY OF ITS EMPLOYEES SHALL BE HELD LIABLE FOR ANY IMPROPER OR INCORRECT USE OF THE INFORMATION DESCRIBED AND/OR CONTAINED HEREIN AND ASSUMES NO RESPONSIBILITY FOR ANYONE’S USE OF SUCH INFORMATION. IN NO EVENT SHALL THE COUNTY OR ITS AGENCIES OR EMPLOYEES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OR SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SYSTEM, WEBSITE, OR LINKED WEBSITES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THIS DISCLAIMER OF LIABILITY APPLIES TO ANY DAMAGES OR INJURY, INCLUDING BUT NOT LIMITED TO THOSE CAUSED BY ANY FAILURE OF PERFORMANCE, ERROR, OMISSION, INTERRUPTION, DELETION, DEFECT, DELAY IN OPERATION OR TRANSMISSION, COMPUTER VIRUS, COMMUNICATION LINE FAILURE, THEFT OR DESTRUCTION OR UNAUTHORIZED ACCESS TO, ALTERATION OF, OR USE OF RECORD, WHETHER FOR BREACH OF CONTRACT, TORTIOUS BEHAVIOR, NEGLIGENCE, OR UNDER ANY OTHER CAUSE OF ACTION.2. Disclaimer of Warranties and Accuracy of DataNO WARRANTY, EXPRESSED OR IMPLIED, IS MADE REGARDING ACCURACY, ADEQUACY, COMPLETENESS, LEGALITY, RELIABILITY OR USEFULNESS OF ANY INFORMATION POSTED ON THE COUNTY WEBSITES. THIS DISCLAIMER APPLIES TO BOTH ISOLATED AND AGGREGATE USES OF THE INFORMATION. THE COUNTY PROVIDES THIS INFORMATION ON AN “AS IS” BASIS. ALL WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, FREEDOM FROM CONTAMINATION BY COMPUTER VIRUSES AND NON-INFRINGEMENT OF PROPRIETARY RIGHTS ARE DISCLAIMED. CHANGES MAY BE PERIODICALLY MADE TO THE INFORMATION HEREIN; THESE CHANGES MAY OR MAY NOT BE INCORPORATED IN ANY NEW VERSION OF THE PUBLICATION. IF YOU HAVE OBTAINED INFORMATION FROM ANY OF THE COUNTY’S WEB PAGES FROM A SOURCE OTHER THAN THE COUNTY’S WEBSITE, BE AWARE THAT ELECTRONIC DATA CAN BE ALTERED SUBSEQUENT TO ORIGINAL DISTRIBUTION. DATA CAN ALSO QUICKLY BECOME OUT OF DATE. IT IS RECOMMENDED THAT CAREFUL ATTENTION BE PAID TO THE CONTENTS OF ANY DATA ASSOCIATED WITH A FILE, AND THAT THE ORIGINATOR OF THE DATA OR INFORMATION BE CONTACTED WITH ANY QUESTIONS REGARDING APPROPRIATE USE.3. Disclaimer of EndorsementCook County is a distributor of content sometimes supplied by third parties and users. Any opinions, advice, statements, services, offers, or other information or content expressed or made available by third parties, including information providers, users, or others, are those of the respective author(s) or distributor(s) and do not necessarily state or reflect those of Cook County and shall not be used for advertising or product endorsement purposes. Reference herein to any specific commercial products, process, or service by trade name, trademark, manufacturer, or otherwise, does not constitute or imply its endorsement, recommendation, or favoring by the County, its employees, or agents.4. Disclaimer for External LinksCook County may occasionally provide links to content supplied by third parties and users. The existence and/or provision of those links neither constitutes nor implies endorsement of the destination or departure website(s) or of the content, viewpoint, accuracy, opinions, policy(ies), product(s), accessibility or privacy policy of said destination or departure website(s). Nor does any link between the County’s websites and a third-party website imply sponsorship of such website, or the creator of such website. When you link to another site, you are subject to the privacy policy and terms of use of that new site.5. Disclaimer of Duty to Continue Provision of DataDue to the dynamic nature of the Internet, resources that are free and publicly available one day may require a fee or restricted access the next, and the location of items may change as menus, homepages, and files are reorganized. You expressly agree that use of the County websites is at your sole risk. The County does not warrant that the service will be uninterrupted or error free. The documents and related graphics published on this server could contain technical inaccuracies or typographical errors. Changes are periodically added to the information herein. The County and/or its respective agencies and programs may make improvements and/or changes in the information and/or programs described herein at any time.6. ContentTo promote open and productive dialogue, and in the spirit of fair and transparent access to the County’s websites, users are hereby advised that all postings, including any links to 3rd-party sites, shall be subject to limited monitoring for appropriateness. For purposes herein, appropriateness is defined as postings that are relevant to Cook County’s official governmental business, responsive to the issue(s) being discussed, and phrased in respectful and appropriate language for the general public. Content that is commercial, self-promotional, campaign-related, prurient, abusive, or that contains discriminatory speech, including but not limited to, hate speech based on race, gender, sex, national origin, age, sexual orientation, religion, or disability is considered inappropriate for posting on the Cook County websites. If content is determined to be inappropriate, such content either will not be posted or will be removed from the website.7. Choice of LawConstruction of the disclaimers above and resolution of disputes thereof are governed by the laws of the State of Illinois. The laws of the State of Illinois, U.S.A., shall apply to all uses of this data and this system. By use of this system and any data contained therein, you agree that your use shall conform to all applicable laws and regulations and you shall not violate the rights of any third parties.8. SecuritySecurity measures have been integrated into the design, implementation and day-to-day operations of the entire operating environment as part of our continuing commitment to the security of electronic content as well as the electronic transmission of information.The Cook County Bureau of Technology, as developer and manager of the County websites, has taken several steps to safeguard the integrity of its communications and computing infrastructure, including but not limited to authentication, monitoring, auditing, and encryption. Security measures have been integrated into the design, implementation, and day-to-day practices of the entire operating environment as part of its continuing commitment to risk management.This information should not be construed in any way as giving business, legal, or other advice, or warranting as fail proof, the security of information provided via the County websites.9. Web Accessibility ComplianceCook County is committed to providing equal, multi-platform access to all County government internet/web-based information and services. The County has adopted W3C Standards for Accessibility for websites covered by this policy.10. Intellectual PropertyThe content of County websites is copyrighted and may contain some third party content that is used with permission of the third party. Users are notified, therefore, that one should presume the need to obtain permission from the copyright holder before reproducing or otherwise using images/graphics from this website." />
+<link rel="canonical" href="https://www.cookcountyil.gov/terms-use" />
+<meta property="og:site_name" content="Cook County" />
+<meta property="og:type" content="government" />
+<meta property="og:url" content="https://www.cookcountyil.gov/terms-use" />
+<meta property="og:title" content="Terms of Use" />
+<meta property="og:image" content="https://www.cookcountyil.gov/themes/custom/cook_county/cc_og_image.png" />
+<meta property="og:image:alt" content="Cook County" />
+<meta name="Generator" content="Drupal 11 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="ImageToolbar" content="false" />
+<link rel="icon" href="/themes/custom/cook_county/favicon.ico" type="image/vnd.microsoft.icon" />
+<script>window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};</script>
+
+    <title>Terms of Use | Cook County</title>
+    <link rel="stylesheet" media="all" href="/modules/contrib/cohesion/css/reset.css?tluiou" />
+<link rel="stylesheet" media="all" href="/sites/g/files/ywwepo161/files/cohesion/styles/base/cook-county-stylesheet.min.css?tluiou" />
+<link rel="stylesheet" media="all" href="/modules/contrib/cohesion/css/dist/elements/container/container.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/system/components/align.module.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/system/components/container-inline.module.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/system/components/clearfix.module.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/system/components/hidden.module.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/system/components/js.module.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/core/components/progress.module.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/core/components/ajax-progress.module.css?tluiou" />
+<link rel="stylesheet" media="all" href="/modules/contrib/cohesion/css/dist/responsive-grid-settings/responsive-grid-settings.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/filter/filter.caption.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/media/filter.caption.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/views/views.module.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/system/system.admin.css?tluiou" />
+<link rel="stylesheet" media="all" href="/core/themes/stable9/css/system/system.maintenance.css?tluiou" />
+<link rel="stylesheet" media="all" href="/modules/contrib/addtoany/css/addtoany.css?tluiou" />
+<link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css" />
+<link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v6.1.2/js/v4-shims.js" />
+<link rel="stylesheet" media="all" href="/modules/contrib/google_cse/css/google_cse.css?tluiou" />
+<link rel="stylesheet" media="all" href="/modules/contrib/google_cse/css/no_watermark.css?tluiou" />
+<link rel="stylesheet" media="all" href="/modules/contrib/tb_megamenu/dist/base.css?tluiou" />
+<link rel="stylesheet" media="all" href="/modules/contrib/tb_megamenu/dist/styles.css?tluiou" />
+<link rel="stylesheet" href="/modules/contrib/cohesion/css/dist/responsive-grid-settings/responsive-grid-settings-xl.css?tluiou" />
+<link rel="stylesheet" media="(max-width: 1399px)" href="/modules/contrib/cohesion/css/dist/responsive-grid-settings/responsive-grid-settings-lg.css?tluiou" />
+<link rel="stylesheet" media="(max-width: 1169px)" href="/modules/contrib/cohesion/css/dist/responsive-grid-settings/responsive-grid-settings-md.css?tluiou" />
+<link rel="stylesheet" media="(max-width: 1023px)" href="/modules/contrib/cohesion/css/dist/responsive-grid-settings/responsive-grid-settings-sm.css?tluiou" />
+<link rel="stylesheet" media="(max-width: 767px)" href="/modules/contrib/cohesion/css/dist/responsive-grid-settings/responsive-grid-settings-ps.css?tluiou" />
+<link rel="stylesheet" media="(max-width: 564px)" href="/modules/contrib/cohesion/css/dist/responsive-grid-settings/responsive-grid-settings-xs.css?tluiou" />
+<link rel="stylesheet" media="all" href="/sites/g/files/ywwepo161/files/cohesion/styles/theme/cook-county-stylesheet.min.css?tluiou" />
+<link rel="stylesheet" media="all" href="/themes/custom/cook_county/css/foundation.css?tluiou" />
+<link rel="stylesheet" media="all" href="/themes/contrib/zurb_foundation/css/foundation.min.css?tluiou" />
+<link rel="stylesheet" media="all" href="/themes/contrib/zurb_foundation/css/motion-ui.min.css?tluiou" />
+<link rel="stylesheet" media="all" href="/themes/contrib/zurb_foundation/css/zurb_foundation.css?tluiou" />
+<link rel="stylesheet" media="all" href="/themes/custom/cook_county_base/css/base.css?tluiou" />
+<link rel="stylesheet" media="all" href="/themes/custom/cook_county/css/cook_county.css?tluiou" />
+
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"node\/3451","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"gtag":{"tagId":"G-LMEDTH47YF","consentMode":false,"otherIds":[],"events":[],"additionalConfigInfo":[]},"ajaxPageState":{"libraries":"eJyFUkFywyAM_JBtvtFLzz0yMpaxGkAeJMdJXl85SSdx20kvsOyuBCzAMChDOTu4g26sXLQJPKEQF2egzTwsCfecTpj3lMdkVFEfrAFQwbqXK8rMReiIPlYaHuJ3nWKeEyhKl6gcXumV13bk2gZOSy7ysMbEPSSfqK9QyZymvIOG6Q0pTvrKOUOFlODkJVROdoL4wrxSGXi9Oc3GB7v0UvTsRpsGUCva0bcGO0pIsaU8Vz7is-B7EPyj4MZTEbVjtjNEbMYt6BWFM7on3K3Yb0v519DJRLmJzDGhD9u2V2jow3KuGerhWS38i1aILtrwc93BJ5z2ZG4yDgRupGRNugDzNSbtfcYI9sKL2664I0TPCaU5Eq7irmN3_4yXpfb-kfY9sC9pOhrU","theme":"cook_county","theme_token":null},"ajaxTrustedUrl":{"\/search\/results":true},"gtm":{"tagId":null,"settings":{"data_layer":"dataLayer","include_classes":false,"allowlist_classes":"","blocklist_classes":"","include_environment":false,"environment_id":"","environment_token":""},"tagIds":["GTM-W9K2SDNZ"]},"cohesion":{"currentAdminTheme":"cook_county_admin","front_end_settings":{"global_js":{"matchHeight":1,"parallax_scrolling":1,"cohMatchHeights":1}},"google_map_api_key":"AIzaSyDyNGo-8fDLe-LZuEQVO9JcMRYvoo8Y_NM","google_map_api_key_geo":"AIzaSyCLhzWjP8HbiFi6Ptn6VOecMsJO1CQOKmw","animate_on_view_mobile":"DISABLED","add_animation_classes":"DISABLED","responsive_grid_settings":{"gridType":"desktop-first","columns":12,"breakpoints":{"xl":{"width":1400,"innerGutter":30,"outerGutter":30,"widthType":"fixed","previewColumns":12,"label":"Television","class":"coh-icon-television","iconHex":"F26C","boxedWidth":1340},"lg":{"width":1170,"innerGutter":30,"outerGutter":30,"widthType":"fixed","previewColumns":12,"label":"Desktop","class":"coh-icon-desktop","iconHex":"F108","boxedWidth":1110},"md":{"width":1024,"innerGutter":30,"outerGutter":30,"widthType":"fixed","previewColumns":12,"label":"Laptop","class":"coh-icon-laptop","iconHex":"F109","boxedWidth":964},"sm":{"width":768,"innerGutter":30,"outerGutter":30,"widthType":"fixed","previewColumns":12,"label":"Tablet","class":"coh-icon-tablet","iconHex":"F10A","boxedWidth":708},"ps":{"width":565,"innerGutter":30,"outerGutter":30,"widthType":"fixed","previewColumns":12,"label":"Mobile landscape","class":"coh-icon-mobile-landscape","iconHex":"E91E","boxedWidth":505},"xs":{"width":320,"innerGutter":20,"outerGutter":20,"widthType":"fluid","mobilePlaceholderWidth":320,"mobilePlaceholderType":"fluid","previewColumns":12,"label":"Mobile","class":"coh-icon-mobile","iconHex":"F10B","boxedWidth":280}}},"default_font_settings":[],"use_dx8":true,"sidebar_view_style":"titles","log_dx8_error":true,"error_url":"\/cohesionapi\/logger\/jserrors","dx8_content_paths":[["settings","content"],["settings","content","text"],["settings","markerInfo","text"],["settings","title"],["markup","prefix"],["markup","suffix"],["markup","attributes",["value"]],["hideNoData","hideData"],["hideNoData","hideData","text"]]},"googlePSE":{"language":"en","displayWatermark":0},"TBMegaMenu":{"TBElementsCounter":{"column":null},"theme":"cook_county","b565f752-4b41-4d1b-9336-aadd8b17d0c7":{"arrows":"0"}},"csp":{"nonce":"vjBC2GfHLKFiG8MRcORZXg"},"ajax":[],"user":{"uid":0,"permissionsHash":"300e4e316e3c0886af5e7c9583b71ede3a1d30cd39aa01b78adb3d37ba7bd4f5"}}</script>
+<script src="/sites/g/files/ywwepo161/files/js/js_o7SVAG7CdkvdG3iougODoID3COR0oYltoY0uGa5jieY.js?scope=header&amp;delta=0&amp;language=en&amp;theme=cook_county&amp;include=eJx9kEtuwzAMRC9kW9fIJusuBUqmZdWUaFB0neT0YZAUabrwhhjOPIAfGEdlqFcHLzFMwlW7yDO2zNUhYcGqXrGsBIptoFyXo1x47yeWPjJtpbY3mogDkKccBCQbackZNM4nzGnWI3IFASK4-BaFyTZIB_Ce68j7kzSMFx95q3p9kR9Wy4p9LqvwD_4NfICGLtemNrdfIWGXmBOhj-Y_pakvu1gKyPKbKiSXrPzvB_iGy6dZOg2-YAL73-Ye87rbJsFPtsAI-j7tDjBgpQY"></script>
+<script src="/modules/contrib/google_tag/js/gtag.js?tluiou"></script>
+<script src="/modules/contrib/google_tag/js/gtm.js?tluiou"></script>
+
+    <cohesion-placeholder></cohesion-placeholder>
+
+    
+  </head>
+  <body class="lang-en section-terms-use path-node node--type-page page-node-type-page">
+  <a href="#main-content" class="show-on-focus skip-link">
+    Skip to main content
+  </a>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9K2SDNZ"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="off-canvas-wrapper">
+  <div class="inner-wrap off-canvas-wrapper-inner" id="inner-wrap" data-off-canvas-wrapper>
+    <aside id="left-off-canvas-menu" class="off-canvas left-off-canvas-menu position-left" role="complementary" data-off-canvas>
+        <div>
+    <div id="block-additionalinfo" data-block-plugin-id="additonal_info_block" class="settings-tray-editable block-additionalinfo block block-cook-county-agencies-services block-additonal-info-block" data-drupal-settingstray="editable">
+  
+    
+
+  
+          
+    
+    
+</div>
+<div class="views-element-container settings-tray-editable block-views-block-banners-banners-block-parent--2 block block-views block-views-blockbanners-banners-block-parent" id="block-views-block-banners-banners-block-parent--2" data-block-plugin-id="views_block:banners-banners_block_parent" data-drupal-settingstray="editable">
+  
+    
+
+  
+          <div><div class="js-view-dom-id-1dac3ff2ab948eeb20da5e18b76961c351031c1b7236db32cf9db15a27560136">
+  
+  
+  
+
+  
+  
+  
+
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+
+    
+    
+</div>
+<div id="block-cook-county-alerts-local-alerts" data-block-plugin-id="cook_county_local_alerts" class="settings-tray-editable block-cook-county-alerts-local-alerts block block-cook-county-alerts block-cook-county-local-alerts" data-drupal-settingstray="editable">
+  
+    
+
+  
+          
+    
+    
+</div>
+
+  </div>
+
+    </aside>
+
+    <aside id="right-off-canvas-menu" class="off-canvas right-off-canvas-menu position-right" role="complementary" data-off-canvas>
+        <div>
+    
+  
+              <ul class="menu right-submenu">
+              <li>
+        <a href="/service-groups" data-drupal-link-system-path="service-groups">Bureaus and Offices</a>
+                                <ul>
+              <li>
+        <a href="/agency/office-president" data-drupal-link-system-path="node/2151">Office of the President</a>
+              </li>
+          <li>
+        <a href="/board-of-commissioners" data-drupal-link-system-path="node/2208">Board of Commissioners</a>
+              </li>
+          <li>
+        <a href="/agency/secretary-board-commissioners" data-drupal-link-system-path="node/2209">Secretary to the Board of Commissioners</a>
+              </li>
+          <li>
+        <a href="/agency/assessor" data-drupal-link-system-path="node/2225">Assessor</a>
+              </li>
+          <li>
+        <a href="/agency/board-review" data-drupal-link-system-path="node/2223">Board of Review</a>
+              </li>
+          <li>
+        <a href="/agency/clerk-circuit-court" data-drupal-link-system-path="node/2221">Clerk of the Circuit Court</a>
+              </li>
+          <li>
+        <a href="/agency/county-clerk" data-drupal-link-system-path="node/2222">County Clerk</a>
+              </li>
+          <li>
+        <a href="/agency/chief-judge" data-drupal-link-system-path="node/2175">Chief Judge</a>
+              </li>
+          <li>
+        <a href="/agency/sheriff" data-drupal-link-system-path="node/2213">Sheriff</a>
+              </li>
+          <li>
+        <a href="/agency/states-attorney" data-drupal-link-system-path="node/2212">States Attorney</a>
+              </li>
+          <li>
+        <a href="/agency/treasurer" data-drupal-link-system-path="node/2211">Treasurer</a>
+              </li>
+          <li>
+        <a href="/agency/office-independent-inspector-general" data-drupal-link-system-path="node/2217">Office of the Independent Inspector General</a>
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+
+
+
+  
+              <ul class="menu right-submenu">
+              <li>
+        <a href="/service-groups" data-drupal-link-system-path="service-groups">Services by Category</a>
+                                <ul>
+              <li>
+        <a href="/service-groups/building-and-construction" data-drupal-link-system-path="taxonomy/term/52">Building and Construction</a>
+              </li>
+          <li>
+        <a href="/service-groups/county-vendor-resources" data-drupal-link-system-path="taxonomy/term/59">County Vendor Resources</a>
+              </li>
+          <li>
+        <a href="/service-groups/economic-development" data-drupal-link-system-path="taxonomy/term/56">Economic Development</a>
+              </li>
+          <li>
+        <a href="/service-groups/environmental" data-drupal-link-system-path="taxonomy/term/58">Environmental</a>
+              </li>
+          <li>
+        <a href="/service-groups/permits" data-drupa
