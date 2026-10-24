@@ -1,0 +1,32 @@
+URL: https://data.gov.tw/api/v2/rest/dataset/6576
+Fetched: 2026-10-24T15:41:02Z from GitHub Actions
+Status, type, bytes: 200 application/json 2543
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 15:41:02 GMT
+content-type: application/json
+content-length: 2543
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+set-cookie: PHPSESSID=gvau52om8tk0kufj0r83h5ru2o; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: __cf_bm=7aDsU_FJ0EfrCqpBEI0skTqKfaNjx51uiCVXnwbyzEs-1792856462.2135456-1.0.1.1-LGTpw3q6Kin9ve5DGOdbA1ZBdJtFKEz9nISedKNNL1J7u.gNqjpgkJUTZ8aZHwT_89fEIaTTa5GM.WR2A1FR8KtuJ7uNkrcpuSglw2ljeT2.cmw_TdJQ3P2k4jRmUlJO; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.tw; Expires=Sat, 24 Oct 2026 16:11:02 GMT
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+access-control-allow-origin: https://data.gov.tw
+access-control-allow-credentials: true
+access-control-allow-headers: X-Requested-With, Content-Type, Accept, Origin, Authorization
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+content-security-policy: frame-ancestors 'self'
+via: 1.1 google
+cf-cache-status: DYNAMIC
+cf-ray: a4fa1558d94da1d9-MSP
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help":"","success":true,"result":{"categoryService":"I00","categoryDataset":"A","datasetId":6576,"identifier":"360000000G-000025","title":"政府電子採購網採購標的分類","description":"提供政府電子採購網採用之採購標的分類代碼及中英文名稱清單。","type":"rawData","license":"1","cost":"free","dataProvider":"kristytien","publisherOID":"2.16.886.101.20003.20035","publisherContactName":"徐小姐","publisherContactPhone":"0287897639;02878978639","publisherContactEmail":"ywhsu@mail.pcc.gov.tw","updateFrequency":{"regularupdate":"1","Frequency":"1","unittime":"月"},"dataQuality":"無(白名單)","coverageStartedDate":"","coverageEndedDate":"","publishedDate":"2013-11-04","modifiedDate":"2023-04-11 15:10:59","spatialCoverage":"","language":"zh","relatedUrl":"","notes":"授權說明網址: http:\/\/data.gov.tw\/license","apiDocUrl":"","distribution":[{"resourceDescription":"政府電子採購網採購標的分類","resourceField":[{"name":"標的分類","description":""},{"name":"標的代碼","description":""},{"name":"分類名稱中文","description":""},{"name":"分類名稱英文","description":""},{"name":"本分類之下1層CPC細項","description":""},{"name":"我國採購標的舉例","description":""}],"qcLevel":"","resourceFormat":"XML","resourceCharacterEncoding":"UTF-8","resourceQualityCheckTime":"2026-06-01 08:42:08","resourceDownloadUrl":"https:\/\/web.pcc.gov.tw\/osm\/public\/proctrg\/download\/CpcOpenData.xml","resourceAmount":262,"resourceNotes":"","resourceRequestMethod":"","resourceOasUrl":"","resourceRequestParameters":[],"resourcePathParameters":[]}],"keyword":["標的分類","CPC","統一代碼"],"en":{"title":"Government Electronic Procurement System Procurement Target Classification","description":"Provide a list of procurement target classification codes and their Chinese and English names adopted by the government electronic procurement website.","publisherContactName":"徐小姐","publisherContactPhone":"0287897639;02878978639","publisherContactEmail":["ywhsu@mail.pcc.gov.tw"],"updateFrequency":"Every 1 month","cost":"free","notes":"Authorization explanation website: http:\/\/data.gov.tw\/license","keyword":["Target classification","CPC","Unified code"],"resources":[{"description":"Government Electronic Procurement Service Category","fieldDesc":"Target categorization、Target code、Category Name Chinese、Category Name in English、1st layer CPC subcategory under this category、My country's procurement targets as examples","note":""}]}}}
