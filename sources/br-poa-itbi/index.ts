@@ -17,7 +17,7 @@ export default defineSource({
   },
   paramValues: { property_type: TYPES.filter((t) => t !== "any") },
   examples: [
-    { params: { country: "BR", town: "Moinhos de Vento", property_type: "apartment" } },
+    { params: { country: "BR", town: "Petropolis", property_type: "apartment" } },
     { params: { country: "BR" }, smoke: false },
   ],
   method:

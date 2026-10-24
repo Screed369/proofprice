@@ -64,12 +64,12 @@ test("BR-POA: daily rows: windows end at the newest guide, under 5 guides never 
 });
 
 test("BR-POA: place names: truncated bairro names, city and unknown", () => {
-  const known = ["centro-historic", "moinhos-de-vento", "petropolis", "jar-leopoldina"];
+  const known = ["centro-historic", "moinhos-vento", "petropolis", "jar-leopoldina"]; // as the live file prints them (checked in the 24 Oct harvest)
   assert.deepEqual(resolveArea("Porto Alegre", known), { area: "ALL", label: "Porto Alegre" });
   assert.equal(resolveArea(undefined, known)?.area, "ALL");
   assert.equal(resolveArea("Petrópolis, Porto Alegre", known)?.area, "petropolis");
   assert.equal(resolveArea("Centro Histórico", known)?.area, "centro-historic");
-  assert.equal(resolveArea("Moinhos de Vento", known)?.area, "moinhos-de-vento");
+  assert.equal(resolveArea("Moinhos de Vento", known)?.area, "moinhos-vento");
   assert.equal(resolveArea("Narnia", known), null);
   assert.equal(poaKey({ town: "Petropolis", months: 5, property_type: "house" }, known)?.item, "house:6m");
   assert.equal(poaKey({ town: "Petropolis", property_type: "castle" }, known), null);

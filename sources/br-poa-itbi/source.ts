@@ -198,9 +198,10 @@ export function resolveArea(town: string | undefined, known: string[]): { area: 
   const n = normaliseName(town ?? "").replace(/\b(porto alegre|rs|brasil|brazil|bairro)\b/g, " ").replace(/\s+/g, " ").trim();
   if (!n) return { area: NATIONAL, label: "Porto Alegre" };
   const s = n.replace(/ /g, "-");
+  // The city's file shortens names ("CENTRO HISTORIC", "MOINHOS VENTO", "JAR LEOPOLDINA"): ignore de/do/da and accept a prefix either way.
+  const bare = (x: string) => x.replace(/-(de|do|da|dos|das)(?=-)/g, "");
   const exact = known.find((k) => k === s);
-  // The city's file truncates long names ("CENTRO HISTORIC", "JAR LEOPOLDINA"): accept a prefix either way.
-  const loose = exact ?? known.find((k) => k.length >= 6 && (s.startsWith(k) || k.startsWith(s))) ;
+  const loose = exact ?? known.find((k) => bare(k) === bare(s)) ?? known.find((k) => k.length >= 6 && (bare(s).startsWith(bare(k)) || bare(k).startsWith(bare(s))));
   const area = loose ?? (known.length ? null : s);
   if (!area) return null;
   return { area, label: area.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") + ", Porto Alegre" };
