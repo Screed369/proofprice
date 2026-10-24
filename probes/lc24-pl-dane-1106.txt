@@ -1,0 +1,23 @@
+URL: https://api.dane.gov.pl/1.4/datasets/1106
+Fetched: 2026-10-24T05:02:25Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.api+json 3388
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 05:00:28 GMT
+Content-Type: application/vnd.api+json
+Content-Length: 3388
+Connection: keep-alive
+x-api-version: 1.4
+content-language: pl
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS
+Access-Control-Allow-Headers: DNT,Authorization,User-Agent,X-Requested-With,Cookie,X-Mcod-Csrf-Token,X-Api-Version,If-Modified-Since,Cache-Control,Content-Type,Range,Expires,Pragma
+Access-Control-Expose-Headers: Content-Length,Content-Range
+Set-Cookie: BIGipServer~danePubliczne~POOL_danePubliczne=rd2o00000000000000000000ffffac19e9e0o80; path=/; Httponly; Secure
+
+=== FILE TYPE: JSON text data
+=== FIRST 60000 BYTES
+{"data": {"attributes": {"license_condition_personal_data": null, "title": "Leki refundowane", "categories": [{"code": "GOVE", "id": "148", "title": "Rz\u0105d i sektor publiczny"}], "regions": [{"is_additional": false, "name": "Polska", "hierarchy_label": "Polska", "region_id": "85633723"}], "archived_resources_files_url": "https://api.dane.gov.pl/datasets/1106,leki-refundowane/resources/files/download", "license_condition_custom_description": "", "has_dynamic_data": false, "license_description": "Other (Public Domain)", "visualization_types": [], "supplements": [], "source": null, "license_condition_default_cc40": false, "url": "", "license_condition_db_or_copyrighted": "", "license_condition_timestamp": null, "modified": "2024-04-29T06:27:01Z", "has_high_value_data": false, "downloads_count": 19052, "slug": "leki-refundowane", "views_count": 32617, "notes": "<p>Informacje o wielko\u015bci kwoty refundacji i liczbie zrefundowanych opakowa\u0144 jednostkowych lek\u00f3w, \u015brodk\u00f3w spo\u017cywczych specjalnego przeznaczenia \u017cywieniowego oraz jednostkowych wyrob\u00f3w medycznych wraz z podaniem kodu identyfikacyjnego EAN lub innego kodu odpowiadaj\u0105cego kodowi EAN</p>\r\n\r\n<p>Przedmiotowe dane s\u0105 danymi archiwalnymi. Obecnie dane publikowane s\u0105 pod adresem:</p>\r\n\r\n<p>- refundacja apteczna -\u00a0<a href=\"https://dane.gov.pl/pl/dataset/1601,api-statystyki-nfz-refundacja-apteczna\">API Statystyki\u00a0NFZ - Refundacja Apteczna - Otwarte Dane</a></p>\r\n\r\n<p>- leki w chemioterapii -\u00a0<a href=\"https://dane.gov.pl/pl/dataset/1682,api-statystyki-nfz-leki-w-chemioterapii\">API Statystyki NFZ - Leki w Chemioterapii - Otwarte Dane</a></p>\r\n\r\n<p>- leki w programach lekowych -\u00a0<a href=\"https://dane.gov.pl/pl/dataset/1676,api-statystyka-programy-lekowe\">API Statystyki NFZ - Leki w Programach Lekowych - Otwarte Dane</a></p>", "image_url": "", "is_promoted": false, "license_chosen": null, "created": "2015-05-18T13:22:35Z", "formats": ["xls", "xlsx"], "image_alt": "", "verified": "2018-08-23T13:32:37Z", "keywords": ["ubezpieczenie zdrowotne", "nfz", "zdrowie", "\u015bwiadczenia zdrowotne", "leki", "Narodowy Fundusz Zdrowia", "leki refundowane", "refundacja", "finansowanie \u015bwiadcze\u0144", "ean"], "has_research_data": false, "license_condition_original": null, "openness_scores": [2], "has_high_value_data_from_ec_list": null, "category": {"code": "", "id": "137", "title": "Zdrowie"}, "types": ["file"], "current_condition_descriptions": {}, "update_frequency": "Miesi\u0119cznie", "license_name": "CC0 1.0"}, "links": {"self": "https://api.dane.gov.pl/1.4/datasets/1106,leki-refundowane"}, "id": "1106", "relationships": {"resources": {"links": {"related": "https://api.dane.gov.pl/1.4/datasets/1106,leki-refundowane/resources"}, "meta": {"count": 112}}, "showcases": {"links": {"related": "https://api.dane.gov.pl/1.4/datasets/1106,leki-refundowane/showcases"}, "meta": {"count": 1}}, "institution": {"data": {"type": "institution", "id": "32"}, "links": {"related": "https://api.dane.gov.pl/1.4/institutions/32,narodowy-fundusz-zdrowia"}}}, "type": "dataset"}, "jsonapi": {"version": "1.4"}, "meta": {"server_time": "2026-10-24T05:00:28Z", "params": {}, "language": "pl", "relative_uri": "/1.4/datasets/1106", "path": "/1.4/datasets/1106"}, "links": {"self": "http://api.dane.gov.pl/1.4/datasets/1106"}}
