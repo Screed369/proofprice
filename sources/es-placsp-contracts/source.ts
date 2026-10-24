@@ -24,7 +24,7 @@ export const INFO: SourceInfo = {
   what_is_recorded:
     "Public contracts that Spanish public buyers awarded and published on PLACSP: what was bought (CPV product code), the award date and the awarded price in euros without VAT.",
   price_type: "contract_price",
-  freshness: "Daily: PLACSP adds awards through the day and our copy is collected once a day, covering the newest two weeks of awards",
+  freshness: "Daily: PLACSP adds awards through the day and our copy is collected once a day, covering the newest one to two days of awards",
   licence: "Spanish public-sector reuse conditions (Ley 37/2007, Real Decreto 1495/2011): commercial and non-commercial reuse allowed with the source cited",
   licence_url: "https://www.hacienda.gob.es/es-ES/Paginas/Avisolegal.aspx",
   attribution:
@@ -32,19 +32,19 @@ export const INFO: SourceInfo = {
   homepage: "https://www.hacienda.gob.es/es-ES/GobiernoAbierto/Datos%20Abiertos/Paginas/LicitacionesContratante.aspx",
   limits:
     "Awarded contract prices as registered by the buyer on PLACSP, in euros without VAT, for the whole contract (often several years); they are not unit prices and not amounts paid yet. " +
-    "Only the newest two weeks of awards are summarised, from the buyers' profile feed (some regional platforms publish elsewhere), so rarer purchases may have too few awards for a figure. " +
+    "Only the newest one to two days of awards are summarised (the feed downloads at about 125 KB/s, so a longer window does not fit the collector's 10 minutes), from the buyers' profile feed (some regional platforms publish elsewhere), so rarer purchases usually have too few awards for a figure; broad groups such as construction (CPV 45) do. " +
     "Prices under 500 euros and over 1 billion euros are left out, and each award is counted once. A contract is recognised from its first CPV product code, so a contract filed under another code is missed. " +
     "Aggregates only; buyers, winners and their tax numbers in the open feed are never read or kept.",
   method_version: "1",
 };
 
 export const FEED_URL = "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom";
-export const WINDOW_DAYS = 14;
+export const WINDOW_DAYS = 1;
 export const MIN_VALUE = 500;
 export const MAX_VALUE = 1_000_000_000;
 export const UNIT = "per contract, total awarded price without VAT";
-/** The collector gives each source 10 minutes: stop reading new files after this long. */
-export const TIME_BUDGET_MS = 8 * 60 * 1000;
+/** The collector gives each source 10 minutes: stop reading new files after this long (measured 24 Oct: about 80 s per 10 MB file, 6 files = about 1 day). */
+export const TIME_BUDGET_MS = 8.5 * 60 * 1000;
 export const MAX_FILES = 80;
 /** Result codes of a TenderResult that mean a winner was chosen (8 awarded, 9 formalised). */
 const AWARDED_CODES = new Set(["8", "9"]);
@@ -311,7 +311,7 @@ export async function esContracts(input: EsInput): Promise<PriceAnswer> {
     period: { from, to: day.date },
     method:
       `PLACSP awards dated ${from} to ${day.date}, recognised by their CPV product code (${label}). Median and 10th–90th percentile of the awarded price in EUR without VAT. ` +
-      "Totals per contract, not unit prices; buyers and winners are never named. Only two weeks of awards are summarised, so a rarer purchase may show no figure.",
+      "Totals per contract, not unit prices; buyers and winners are never named. Only the newest one to two days of awards are summarised, so a rarer purchase may show no figure; use a broad CPV division such as 45 (construction) for a figure.",
     describe: (s) =>
       `Spanish public buyers awarded ${label} with a median total price of ${fmtMoney(s.median, "EUR")} per contract without VAT ` +
       `(typical range ${fmtMoney(s.low, "EUR")} to ${fmtMoney(s.high, "EUR")}, 10th to 90th percentile). These are totals per contract, not unit prices.`,

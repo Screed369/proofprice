@@ -149,7 +149,7 @@ test("answer: median and range from the library, period and labels, and clear er
     assert.equal(a.price?.median, 54000);
     assert.equal(a.price?.currency, "EUR");
     assert.equal(a.sample_size, 130);
-    assert.deepEqual(a.period, { from: "2026-10-10", to: "2026-10-24" });
+    assert.deepEqual(a.period, { from: "2026-10-23", to: "2026-10-24" });
     assert.match(a.summary, /not unit prices/);
     assert.equal((await esContracts({ what: "laptops" })).status, "no_matches");
     await assert.rejects(esContracts({ what: "unicorns" }), InputError);
