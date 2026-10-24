@@ -1,0 +1,30 @@
+URL: https://api.gsa.gov/acquisition/calc/v3/api/ceilingrates/?keyword=zzqqxx&page=1&page_size=1
+Fetched: 2026-10-24T21:19:59Z from GitHub Actions
+Status, type, bytes: 200 application/json 1397
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 21:19:59 GMT
+content-type: application/json
+content-length: 1397
+vary: Accept-Encoding
+age: 1
+allow: GET, POST, HEAD, OPTIONS
+cross-origin-opener-policy: same-origin
+referrer-policy: same-origin
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+vary: Accept-Encoding
+vary: Accept, Cookie, origin
+via: https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+x-api-umbrella-request-id: d1dv4e6t1rv80je07oug
+x-cache: MISS
+x-content-type-options: nosniff
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-vcap-request-id: 9b820afa-5a20-4813-44be-7962de974398
+x-frame-options: DENY
+
+=== FILE TYPE: JSON text data
+=== FIRST 200000 BYTES
+{"took":5,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]},"aggregations":{"labor_category":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[]},"security_clearance":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[]},"histogram_percentiles":{"values":{"10.0":null,"25.0":null,"30.0":null,"35.0":null,"50.0":null,"65.0":null,"70.0":null,"75.0":null,"90.0":null}},"min_years_experience":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[]},"worksite":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[]},"wage_histogram":{"buckets":[]},"education_level":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[]},"current_price":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[]},"business_size":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[]},"wage_stats":{"count":0,"min":null,"max":null,"avg":null,"sum":0.0,"sum_of_squares":null,"variance":null,"variance_population":null,"variance_sampling":null,"std_deviation":null,"std_deviation_population":null,"std_deviation_sampling":null,"std_deviation_bounds":{"upper":null,"lower":null,"upper_population":null,"lower_population":null,"upper_sampling":null,"lower_sampling":null}},"median_price":{"values":{"50.0":null}}}}
