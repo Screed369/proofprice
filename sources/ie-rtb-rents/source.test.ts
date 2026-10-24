@@ -130,3 +130,43 @@ test("ieRent: G20261018-3 Dublin 8, 2 bedrooms (the district is empty in the tab
   assert.equal(all.price?.value, Math.round(((1797.64 + 1821.96) / 2) * 100) / 100); // plain mean of the two parts
   assert.match(String(all.statistic?.note), /plain mean/);
 });
+
+// ---------- daily copy (harvest, history key, stale-if-error) ----------
+import { ieHarvest, ieHarvestRows, ieHistoryKey } from "./source";
+
+test("ieHarvest: rows for the newest quarter from the real response, one published average each, no count", async () => {
+  // The real fixture holds every property type and bedroom size for Dublin and Swords; the same slice answers each per-type query.
+  const fetcher = async (url: string) => (url.includes("ReadMetadata") ? META : RPC);
+  const h = await ieHarvest(fetcher);
+  assert.equal(h.date, "2025-12-31"); // end of 2025Q4
+  assert.equal(h.currency, "EUR");
+  assert.equal(h.unit, "per month");
+  assert.ok(h.rows.every((r) => Number.isNaN(r.n) && r.low === r.median && r.high === r.median && r.median > 0));
+  const dub = h.rows.find((r) => r.area === "Dublin" && r.item === "all/all")!;
+  assert.ok(dub.median > 1500 && dub.median < 3500);
+  assert.ok(h.rows.some((r) => r.area === "Dublin" && r.item === "apartment/2"));
+  // no row twice, and none from an older quarter than the newest
+  const keys = h.rows.map((r) => `${r.area}|${r.item}`);
+  assert.equal(new Set(keys).size, keys.length);
+  assert.match(h.note ?? "", /2025-Q4/);
+});
+
+test("ieHarvestRows: an empty table is an error, not an empty day", () => {
+  const t = parseRpc(RPC);
+  const empty = { ...t, rows: t.rows.map((r) => ({ ...r, value: null })) };
+  assert.throws(() => ieHarvestRows([{ type: { name: "all", code: "-" }, table: empty }], []), /no usable average rent/);
+});
+
+test("ieHistoryKey: the request maps to the library keys without asking the CSO", () => {
+  const areas = ["Dublin", "Swords, Dublin", "Cork City", "Rialto, Dublin 8", "Drumcondra, Dublin 3", "Drumcondra, Dublin 9"];
+  assert.deepEqual(ieHistoryKey({ town: "Dublin" }, areas), { area: "Dublin", item: "all/all", label: "Dublin" });
+  assert.deepEqual(ieHistoryKey({ town: "swords", property_type: "apartment", bedrooms: 2 }, areas), { area: "Swords, Dublin", item: "apartment/2", label: "Swords, Dublin" });
+  assert.deepEqual(ieHistoryKey({ town: "Cork City", property_type: "house", house_type: "semi", bedrooms: 5 }, areas), { area: "Cork City", item: "semi-detached/4plus", label: "Cork City" });
+  assert.equal(ieHistoryKey({ town: "Drumcondra" }, areas), null); // ambiguous: the live path explains, the copy never guesses
+  assert.equal(ieHistoryKey({ town: "Atlantis" }, areas), null);
+  assert.equal(ieHistoryKey({ town: "Dublin", property_type: "house" }, areas), null); // houses need a type
+  assert.equal(ieHistoryKey({ town: "Dublin", property_type: "room" }, areas), null);
+  assert.equal(ieHistoryKey({ town: "Dublin", bedrooms: 0 }, areas), null);
+  assert.equal(ieHistoryKey({}, areas), null);
+  assert.equal(ieHistoryKey({ town: "Dublin" }, []), null);
+});

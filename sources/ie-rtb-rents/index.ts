@@ -1,6 +1,7 @@
 // Manifest: Ireland rents (RTB Average Monthly Rent Report via the CSO). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, ieRent } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, ieHarvest, ieHistoryKey, ieRent } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -31,4 +32,15 @@ export default defineSource({
       bedrooms: num(p.bedrooms),
       baseUrl: ctx.baseUrl,
     }),
+  // A daily copy of the newest quarter (every county, town and Dublin district; all homes, apartments and three house types; all
+  // sizes and 1, 2, 3, 4+ bedrooms), so a CSO outage is answered from it (stale-if-error) and /history builds up. Each row is one
+  // published average (n is NO_COUNT), dated by the end of the quarter.
+  harvest: () => ieHarvest(),
+  historyKey: (p) =>
+    ieHistoryKey(
+      { town: str(p.town), property_type: str(p.property_type), house_type: str(p.house_type), bedrooms: num(p.bedrooms) },
+      [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))],
+    ),
+  referenceDates: true,
+  nominalCounts: true,
 });

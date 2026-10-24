@@ -7,7 +7,8 @@
 import { InputError, SourceError, fetchJson } from "../../lib/http";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { parseJsonStat, periodRange, rowsWhere, JsonStatTable } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const INFO: SourceInfo = {
   id: "ie-rtb-rents",
@@ -320,4 +321,110 @@ export async function ieRent(input: IeRentInput, fetcher?: (url: string) => Prom
         }
       : undefined,
   });
+}
+
+// ---------- daily copy of the newest quarter (stale-if-error and history) ----------
+// One library row per place, property type and bedroom group for the newest quarter that has figures. Each row is one published
+// average: n is NO_COUNT and the range fields repeat the figure. Rows are dated by the end of the quarter (referenceDates).
+
+/** Property types kept in the copy: library item name -> CSO code. */
+const COPY_TYPES: { name: string; code: string }[] = [
+  { name: "all", code: "-" },
+  { name: "apartment", code: "04" },
+  { name: "detached", code: "01" },
+  { name: "semi-detached", code: "02" },
+  { name: "terraced", code: "03" },
+];
+/** Bedroom groups kept in the copy: library item name -> CSO code. */
+const COPY_BEDS: { name: string; code: string }[] = [
+  { name: "all", code: "-" },
+  { name: "1", code: "01" },
+  { name: "2", code: "02" },
+  { name: "3", code: "03" },
+  { name: "4plus", code: "08" },
+];
+
+export const rentItem = (type: string, bed: string) => `${type}/${bed}`;
+
+/** Pure: library rows from the tables the CSO returned (one per property type), newest quarter that has any figure. */
+export function ieHarvestRows(tables: { type: { name: string; code: string }; table: JsonStatTable }[], locations: { code: string; label: string }[]): HarvestResult {
+  const labelOf = new Map(locations.map((l) => [l.code, l.label.replace(/\s+,/, ",")]));
+  const newest = tables
+    .flatMap((t) => t.table.codes[D_TIME])
+    .filter((q, i, a) => a.indexOf(q) === i)
+    .sort()
+    .reverse()
+    .find((q) => tables.some((t) => rowsWhere(t.table, { [D_TIME]: q }).some((r) => r.value !== null && r.value > 0)));
+  if (!newest) throw new SourceError("The CSO table RIQ02 returned no usable average rent");
+  const seen = new Set<string>();
+  const rows: DailyRow[] = [];
+  for (const { type, table } of tables) {
+    for (const r of rowsWhere(table, { [D_TIME]: newest, [D_TYPE]: type.code })) {
+      const v = r.value;
+      if (v === null || !(v > 0)) continue;
+      const bed = COPY_BEDS.find((b) => b.code === String(r[D_BEDS]));
+      const area = labelOf.get(String(r[D_LOC]));
+      if (!bed || !area) continue;
+      const item = rentItem(type.name, bed.name);
+      if (seen.has(`${area}|${item}`)) continue; // a cell is one row, however the requests were split
+      seen.add(`${area}|${item}`);
+      rows.push({ area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+    }
+  }
+  if (!rows.length) throw new SourceError("The CSO table RIQ02 returned no usable average rent");
+  const period = periodRange(quarterLabel(newest))!;
+  return {
+    date: period.to,
+    currency: "EUR",
+    unit: "per month",
+    rows,
+    note: `RTB Average Monthly Rent Report ${quarterLabel(newest)} (CSO table RIQ02): average monthly rent of registered tenancies by place, property type and bedrooms. Published averages, not counts of tenancies (no count is published).`,
+  };
+}
+
+export async function ieHarvest(fetcher: (url: string) => Promise<unknown> = (u) => fetchJson(u, {}, 30000)): Promise<HarvestResult> {
+  const meta = await loadMeta(fetcher);
+  const quarters = meta.quarters.slice(-2);
+  const tables: { type: { name: string; code: string }; table: JsonStatTable }[] = [];
+  // The CSO's address layer refuses long GET addresses (HTTP 403 at 100 places, 200 at 25, probed 2026-10-24), so ask for at most
+  // 30 places per request, a few requests at a time.
+  const BATCH = 30;
+  for (const type of COPY_TYPES) {
+    const batches: string[][] = [];
+    for (let i = 0; i < meta.locations.length; i += BATCH) batches.push(meta.locations.slice(i, i + BATCH).map((l) => l.code));
+    let merged = null as JsonStatTable | null;
+    for (let i = 0; i < batches.length; i += 4) {
+      const got = await Promise.all(batches.slice(i, i + 4).map(async (codes) => parseRpc(await fetcher(buildRpcUrl(quarters, codes, type.code)))));
+      for (const t of got) merged = merged ? { ...merged, rows: [...merged.rows, ...t.rows] } : t;
+    }
+    if (merged) tables.push({ type, table: merged });
+  }
+  return ieHarvestRows(tables, meta.locations);
+}
+
+/** Where a request lives in the library, without asking the CSO: places come from the areas of our newest stored day. */
+export function ieHistoryKey(
+  p: { town?: string; property_type?: string; house_type?: string; bedrooms?: number },
+  areas: string[],
+): { area: string; item: string; label: string } | null {
+  if (!p.town || !areas.length) return null;
+  if (p.property_type === "room") return null;
+  let type = "all";
+  if (p.property_type === "apartment") type = "apartment";
+  else if (p.property_type === "house" || p.house_type) {
+    const h = houseType(p.house_type);
+    if (!h) return null;
+    type = h.name;
+  }
+  let bed = "all";
+  if (p.bedrooms !== undefined) {
+    if (!Number.isInteger(p.bedrooms) || p.bedrooms < 1) return null;
+    bed = p.bedrooms >= 4 ? "4plus" : String(p.bedrooms);
+  }
+  try {
+    const place = matchLocation({ updated: null, quarters: [], bedLabels: {}, typeLabels: {}, locations: areas.map((label, i) => ({ code: String(i), label })) }, p.town);
+    return { area: place.label, item: rentItem(type, bed), label: place.label };
+  } catch {
+    return null;
+  }
 }
