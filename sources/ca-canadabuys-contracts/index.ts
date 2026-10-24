@@ -9,8 +9,8 @@ export default defineSource({
   countryHelp: "CA = Canada (federal award notices on CanadaBuys)",
   placeName: "Canada (federal contracts, CanadaBuys)",
   status: "live",
-  // Declared serves() change: buyer_area=Quebec goes to ca-qc-contracts (SEAO); everything else stays here.
-  serves: (p) => !/^(qu[eé]bec|qc|province (of|de) qu[eé]bec)$/i.test(String(p.buyer_area ?? "").trim()),
+  // Declared serves() change: buyer_area=Quebec goes to ca-qc-contracts (SEAO) and buyer_area=Alberta to ca-ab-sole-source; everything else stays here.
+  serves: (p) => !/^(qu[eé]bec|qc|province (of|de) qu[eé]bec|alberta|ab|province of alberta|government of alberta|alberta government)$/i.test(String(p.buyer_area ?? "").trim()),
   paramNotes: {
     what: "CA: a common purchase in plain words ('translation services', 'legal services', 'catering', 'consultancy', 'IT services', 'laptops', 'security guards'). Recognised from the words in the notice title; other wording is not searched.",
     cpv: "CA: not used.",
