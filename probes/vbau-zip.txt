@@ -1,0 +1,699 @@
+URL: https://data.gov.au/data/dataset/8ab10b1f-6eac-423c-abc5-bbffc31b216c/resource/29e20ad3-2dfd-427a-bec8-4c75ebd1b080/download/privatehealth-01-sep-2026.zip
+Fetched: 2026-10-24T15:43:13Z from GitHub Actions
+Status, type, bytes: 200 application/zip 81901440
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/zip
+content-length: 81901440
+date: Sat, 24 Oct 2026 15:43:04 GMT
+cache-control: max-age=60
+cache-control: public, max-age=60, immutable
+server: nginx
+content-disposition: inline; filename=privatehealth-01-sep-2026.zip
+last-modified: Tue, 01 Sep 2026 00:02:35 GMT
+etag: "1788220955.693-81901440-3698659416"
+accept-ranges: bytes
+set-cookie: ckan=; Domain=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/
+expires: Sat, 24 Oct 2026 15:44:04 GMT
+vary: Cookie
+x-cache: Miss from cloudfront
+via: 1.1 71ef67708396c311b716d7bd3b3699e2.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD61-P15
+x-amz-cf-id: i1ErVtwLx4Ow-Uyf8-fqm_8XhYu5R_nvUOFPjuERONFh-lLCFkWyIQ==
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000
+vary: Origin
+
+=== FILE TYPE: Zip archive data, at least v2.0 to extract, compression method=deflate
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+   112675  2026-09-01 09:43   Agreement Hospitals 01-Sep-2026.csv
+529694755  2026-09-01 09:42   Combined Closed 01-Sep-2026.xml
+681349796  2026-09-01 09:40   Combined Open 01-Sep-2026.xml
+   228821  2026-09-01 09:43   Funds 01-Sep-2026.xml
+ 86612601  2026-09-01 09:43   GeneralHealth Closed 01-Sep-2026.xml
+229820809  2026-09-01 09:40   GeneralHealth Open 01-Sep-2026.xml
+148444880  2026-09-01 09:41   Hospital Closed 01-Sep-2026.xml
+254636607  2026-09-01 09:38   Hospital Open 01-Sep-2026.xml
+   523904  2021-07-08 15:38   Importing data.gov.au xml into Excel.pdf
+    16368  2022-01-20 13:40   PHOL-Lists-V3.1.xsd
+    92193  2023-08-15 14:25   PHOLSchema-V3.1.xsd
+     3597  2022-09-26 15:39   ReadMe.txt
+     1671  2026-09-01 09:45   Fund Changes 01-Sep-2026.csv
+  1408092  2026-09-01 09:45   Product Changes 01-Sep-2026.csv
+---------                     -------
+1932946769                     14 files
+=== FIRST 200000 BYTES OF Agreement Hospitals 01-Sep-2026.csv
+Provider,Title,Address1,Address2,Town,State,Postcode,Latitude,Longitude,IsDay,ACA,AHB,AHM,AMA,AUF,BUP,CBH,CDH,CPS,FAI,GMH,HBF,HCF,HCI,HIF,LHM,LHS,MBP,MDH,MYO,NHB,NIB,NTF,OMF,PWA,QCH,QTU,RBH,RTE,SLM,SPE,SPS,WFD
+0017540J,The Border Cancer Hospital,201-239 Borella Road,,Albury,NSW,2640,-36.078399,146.938123,False,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0056180F,The Southport Private Hospital,21 Spendelove Avenue,,Southport,QLD,4215,-27.973200,153.407643,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0087040F,Devonport Eye Hospital,62 Oldaker Street,,Devonport,TAS,7310,-41.175472,146.354875,True,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1
+0043920B,Victorian Gut Centre Bundoora,119 Plenty Road,,Bundoora,VIC,3083,-37.692508,145.061693,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1
+0044150Y,Genesis Care Radiation Oncology Centre at Cabrini,183 Wattletree Road,,Malvern,VIC,3144,-37.862953,145.033538,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017560F,Arcadia Pittwater Private Hospital,4 Daydream Street,,Warriewood,NSW,2102,-33.677603,151.286280,False,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0044160X,Rosebud Endoscopy,20 Boneo Road,,Rosebud,VIC,3939,-38.362040,144.889339,True,1,0,1,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,1,0,0,0
+0077260J,Nephrocare Midland Dialysis Clinic,11 The Avenue,,Midland,WA,6056,-31.887750,116.004213,True,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0077270H,Icon Cancer Centre Rockingham,2 Civic Boulevard,,Rockingham,WA,6168,-32.287448,115.746933,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0027000Y,Alexandria Specialist Day Hospital,15 Bowden Street,,Alexandria,NSW,2015,-33.904580,151.195551,True,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044170W,Rosebud Day Hospital,29-31 Boneo Road,,Rosebud,VIC,3939,-38.362243,144.890025,True,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017590Y,Northern Beaches Hospital,105 Frenchs Forest Road,,Frenchs Forest,NSW,2086,-33.751710,151.233770,False,1,0,1,1,0,1,0,1,0,1,0,1,0,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+0067260B,Seaford Day Surgery,4 Vista Parade,,Seaford Heights,SA,5169,-35.190865,138.493742,True,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0037010B,Arrow Health,8 Carlisle Street,,Woodend,VIC,3442,-37.347230,144.535670,False,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0057330Y,Chermside Day Hospital,"Suite 9, Chermside Medical Complex, 956 Gympie Road",,Chermside,QLD,4032,-27.381985,153.029419,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075680F,Genesis Care Shenton House,57 Shenton Avenue,,Joondalup,WA,6027,-31.739900,115.772700,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0037160K,Fullarton Clinic,8 Fullarton Drive,,Epping,VIC,3076,-37.649932,145.014289,False,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0075520Y,Albany Community Hospice,30 Warden Ave,,Albany,WA,6330,-35.029600,117.880800,False,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0067340B,Burnside Day Surgery,"Suite 1, 535-537 Glynburn Road",,Hazelwood Park,SA,5066,-34.939674,138.659920,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0027560K,Honeysuckle Day Hospital,"Unit 2, 19 Honeysuckle Drive",,Newcastle,NSW,2300,-32.925781,151.768005,True,1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0026880B,Chatswood Day Surgery,"Levels 3 & 4, 270 Victoria Street",,Chatswood,NSW,2067,-33.795100,151.187300,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043510Y,Fertility Control Clinic,116-118 Wellington Parade,,East Melbourne,VIC,3002,-37.816300,144.986000,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036620H,Cabrini Brighton,243 New Street,,Brighton,VIC,3186,-37.911700,144.991700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027260A,Ulladulla Endoscopy & Medical Centre,111 Princes Highway,,Ulladulla,NSW,2539,-35.358891,150.473599,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057440T,Miami Private Hospital,24 Hillcrest Parade,,Miami,QLD,4220,-28.063119,153.436895,False,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0035800K,St John of God Ballarat Hospital,101 Drummond Street North,,Ballarat,VIC,3350,-37.558500,143.847800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067280Y,Norwood Day Surgery,42 Nelson Street,,Stepney,SA,5069,-34.912201,138.629379,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0036490A,Warringal Private Hospital,216 Burgundy Street; Level 2/10 Martin Street; & Level 1/8 Martin Street,,Heidelberg,VIC,3084,-37.755500,145.060700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057400A,Icon Cancer Centre Townsville,9-13 Bayswater Road,,Hyde Park,QLD,4812,-19.275957,146.799101,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027470L,Sydney Day Hospital,"Level 1, Park House , 187 Macquarie Street",,Sydney,NSW,2000,-33.866998,151.212042,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027420A,Southside Cancer Care Centre,"Level 3, 531-533 The Kingsway",,Miranda,NSW,2228,-33.813927,151.009590,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0017550H,St Vincent's Private Community Hospital Griffith,41-45 Animoo Avenue,,Griffith,NSW,2680,-34.280713,146.041527,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055760T,Currumbin Clinic,37 Bilinga Street,,Currumbin,QLD,4223,-28.133600,153.485900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0085130X,The Hobart Clinic,31 Chipmans Road,,Rokeby,TAS,7019,-42.903500,147.435700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0015380B,Delmar Private Hospital,58 Quirk Street,,Dee Why,NSW,2099,-33.758300,151.288200,False,0,0,1,1,0,1,1,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,0,1,1,1,1,0,0
+0077130X,Bunbury Day Hospital,140 Spencer St,,Bunbury,WA,6230,-33.340433,115.639640,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0874031Y,Newcastle Eye Hospital,182 Christo Road,,Waratah,NSW,2298,-32.909600,151.717500,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656411A,Metwest Surgical,17 Hereward Highway,,Blacktown,NSW,2148,-33.774200,150.912100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0085270H,Specialist Care Australia - Campbell Town,101 High Street,,Campbell Town,TAS,7210,-41.928952,147.493904,True,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+0075800L,Kununurra Renal Health Centre,1125 Ironwood Drive,,Kununurra,WA,6743,-15.766302,128.736786,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0077200Y,SleepMed Healthcare,78 Farrington Road,,Leeming,WA,6149,-32.079530,115.855320,False,1,1,0,1,1,1,1,0,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0016580J,Nepean Private Hospital,Barber Avenue,,Kingswood,NSW,2747,-33.757500,150.709900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055580X,Canossa Private Hospital,169 Seventeen Mile Rocks Road,,Oxley,QLD,4075,-27.555300,152.962300,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0037070L,East Side Recovery,272B Dorset Road,,Boronia,VIC,3155,-37.859069,145.285939,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0666401J,Dee Why Endoscopy Unit,Level 4 Suite 4402 Dee Why Grand 834 Pittwater Road,,Dee Why,NSW,2099,-33.758800,151.280500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035270Y,Euroa Health,36 Kennedy Street,,Euroa,VIC,3666,-36.760600,145.582800,False,1,0,1,1,0,1,0,1,0,1,0,0,0,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,0,1,1,1,0
+0027500A,Genesis Care Radiation Oncology Centre Albury Wodonga,Corner Borella Rd and East St,,Albury,NSW,2640,-36.077136,146.939800,True,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017230A,Peninsula Sleep Clinic,"Level 2, Building 1, 49 Frenchs Forest Road",,Frenchs Forest,NSW,2086,-33.803500,151.291200,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027680B,"Bond Day Hospital ","Suite 2.01, 8 Elizabeth Macarthur Drive",,Bella Vista,NSW,2153,-33.744401,150.951917,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017130F,Southern Highlands Private Hospital,93-95 Bowral Street,,Bowral,NSW,2576,-34.486000,150.440300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065310B,St Andrew's Hospital Inc,350 South Terrace,,Adelaide,SA,5000,-34.934900,138.615100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0926591Y,Sunshine Coast Haematology and Oncology Clinic,8-10 King Street,,Buderim,QLD,4556,-27.546689,153.034594,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0077180J,Perth Dermatology Clinic,5-7 Robinson Avenue,,Perth,WA,6000,-31.944808,115.863852,True,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0067270A,Windsor Gardens Day Surgery,"Suite 1, Level 1, 480 North East Road",,Windsor Gardens,SA,5087,-34.862580,138.649850,True,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0037050W,Icon Cancer Centre Geelong,1 Epworth Place,,Waurn Ponds,VIC,3216,-38.193760,144.303030,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017760X,Wyvern Private Hospital,33A Myoora Road,,Terrey Hills,NSW,2084,-33.688223,151.221318,False,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,0,1,0,1,1,1,1,1,0,1,1,0,0,0,1
+0027460T,Sydney Surgical Centre,Level 1 166-168 Belmore Road,,Randwick,NSW,2031,-33.916954,151.241129,False,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036870K,Skin Cancer Day Surgery,19 Cleveland Road,,Ashwood,VIC,3147,-37.868110,145.105051,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0834441A,Northern Endoscopy Centre,127 Frost Road,,Salisbury South,SA,5106,-34.781400,138.651300,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027290W,Miranda Day Surgery,25/20-24 Gibbs St,,Miranda,NSW,2228,-34.036906,151.102889,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0037120X,Northern Private Hospital,12 Osburn Place,,Epping,VIC,3076,-37.653333,145.012505,False,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,0,1,0,1,1,1,1,1,1,1,0,0,1,1,1
+0056010A,Eden Private Hospital,50 Maple Street,,Cooroy,QLD,4563,-26.419900,152.908900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056330H,Westside Haematology And Oncology Clinic,"Suite 305, Level 3, 32 Morrow Street",,Taringa,QLD,4068,-27.492792,152.981889,True,1,1,0,0,1,1,1,0,1,1,1,1,1,0,1,1,0,0,0,1,0,1,1,1,1,1,1,1,1,0,1,0,1
+0056040W,RiverCity Private Hospital,"Floor 2, 401 Milton Road",,Auchenflower,QLD,4066,-27.473700,152.995700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0044130B,Sunshine Dialysis Clinic,"Level 1, 147-149 Furlong Road",,St Albans,VIC,3021,-37.761045,144.815997,True,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036320X,St John of God Bendigo Hospital,133-145 Lily Street,,Bendigo,VIC,3550,-36.760500,144.262800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056220L,B.Braun Morayfield Renal Care Centre,19-31 Dickson Road,,Morayfield,QLD,4506,-27.098069,152.950938,True,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,0,1,1,1
+0015860J,Eastern Suburbs Private Hospital,8 Chapel Street,,Randwick,NSW,2031,-33.910400,151.246400,False,1,0,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,0,0,1,1,1,1,0,0
+0035330B,Heyfield Hospital Inc,14 Licola Road,,Heyfield,VIC,3858,-37.976321,146.784017,False,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0036630F,Maryvale Private Hospital,286 Maryvale Road,,Morwell,VIC,3840,-38.207800,146.554900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016510A,Kareena Private Hospital,86 Kareena Road,,Caringbah,NSW,2229,-34.035000,151.113600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055970F,Mater Private Hospital Redland,Weippin Street,,Cleveland,QLD,4163,-27.541300,153.249000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056140L,Townsville Private Clinic,"136 Wills Street,",,Townsville City,QLD,4810,-19.258459,146.813416,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016930B,Brisbane Waters Private Hospital,21 Vidler Avenue,,Woy Woy,NSW,2256,-33.495700,151.322100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065110K,Glenelg Community Hospital Inc,5 Farrell Street,,Glenelg South,SA,5045,-34.989600,138.513100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027330B,Bella Vista Day Hospital,"Suite 102, 9 Norbrik Drive",,Bella Vista,NSW,2153,-33.745217,150.954017,True,1,1,1,1,1,0,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1
+0075260B,South Perth Hospital,76 South Terrace,,South Perth,WA,6151,-31.988800,115.880700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0085260J,Hobart Eye Surgeons,182 Argyle Street,,Hobart,TAS,7000,-42.875898,147.322116,True,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0057340X,Icon Cancer Centre Southport,"Level 9, Premion Place, 39 White Street",,Southport,QLD,4215,-27.972338,153.411176,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017480F,Ramsay Clinic Macarthur,92-96 Dumaresq Street,,Campbelltown,NSW,2560,-34.072022,150.816953,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0098010J,Darwin Day Surgery,Level 1/7B Gsell Street,,Wanguri,NT,0810,-12.371360,130.886342,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067120T,Bedford Day Surgery,913 South Road,,Clarence Gardens,SA,5039,-35.007393,138.575181,True,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0085240L,North Tas Day Hospital,23-27 Canning Street,,Launceston,TAS,7250,-41.442349,147.141807,True,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1
+0075700W,St John Of God Midland Health Campus,1 Clayton Street,,Midland,WA,6056,-31.894635,116.006817,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057650F,The Solace Clinic,"Suite 7.01 and 7.02, Level 7",12 Future Way,Maroochydore,QLD,4558,-26.658016,153.090363,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+0895551A,Icon Cancer Centre Wesley,"1st Floor, Wesley Medical Centre, 40 Chasley Street",,Auchenflower,QLD,4066,-27.476200,152.997200,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0893841H,Noble Park Endoscopy Centre,1304 Heatherton Road,,Noble Park,VIC,3174,-37.967000,145.189600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055130A,St Andrew's War Memorial Hospital,"457 Wickham Terrace & Ground Floor & Level 4, 33 North Street",,Spring Hill,QLD,4000,-27.461900,153.021100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027670F,Smithfield Endoscopy Centre,888 The Horsley Drive,,Smithfield,NSW,2164,-33.850850,150.921121,True,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0055820X,John Flynn Private Hospital,42 Inland Drive,,Tugun,QLD,4224,-28.152200,153.498000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056050T,Hopewell Hospice,11 Dunkirk Close,,Arundel,QLD,4214,-27.938638,153.381047,False,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0657791J,Albury Day Surgery,4 Baker Court,,Albury,NSW,2640,-36.073200,146.882600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043760B,Malvern Dialysis Clinic,1133 Malvern Road,,Malvern,VIC,3144,-37.851600,145.030500,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036310Y,Epworth Camberwell,888 Toorak Road,,Camberwell,VIC,3124,-37.845800,145.054600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036880J,North Melbourne Renal Care Centre,"Level 1, 185 - 187 Boundary Road",,North Melbourne,VIC,3051,-37.788624,144.939980,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0925661J,Southern Eye Centre Day Surgery,44 Cranbourne Road,,Frankston,VIC,3199,-38.146100,145.131900,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075810K,Fitzroy Crossing Renal Health Centre,52 Fallon Road,,Fitzroy Crossing,WA,6765,-18.191720,125.562713,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0056360A,Matrescence Birthing Centre Gold Coast,"Proxima Building Suite 1, 22 Frazer Street",,Southport,QLD,4215,-27.961247,153.385823,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0658011A,Rosebery Day Surgery,308 Gardeners Road,,Rosebery,NSW,2018,-33.922900,151.207100,True,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027490J,Fresenius Liverpool Private Dialysis Clinic,"Level 2, 26 Castlereagh Street",,Liverpool,NSW,2170,-33.918371,150.921181,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036550F,Shepparton Private Hospital,20 Fitzgerald Street,,Shepparton,VIC,3630,-36.359600,145.411600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036410W,Linacre Private Hospital,12 Linacre Road,,Hampton,VIC,3188,-37.942200,145.002900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055900X,Caboolture Private Hospital,McKean Street,,Caboolture,QLD,4510,-27.079200,152.960300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043570J,Bayside Day Procedure and Specialist Centre,141 Cranbourne Road,,Frankston,VIC,3199,-38.148100,145.143500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0095100J,National Capital Private Hospital,Gilmore Crescent & Hospital Road,,Garran,ACT,2605,-35.344923,149.102065,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057240A,Townsville Day Surgery,"1 Martinez Avenue, West End",,Townsville,QLD,4810,-19.268500,146.782600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017670Y,Ramsay Surgical Centre Coffs Harbour,69 Albany Street,,Coffs Harbour,NSW,2450,-30.300341,153.115858,True,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0666411H,Sydney Day Surgery - Prince Alfred,"Rpah Medical Centre Suite 106, 100 Carillon Avenue",,Newtown,NSW,2042,-33.891500,151.183300,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075210L,St John Of God Geraldton Hospital,12 Hermitage Street,,Geraldton,WA,6530,-28.787000,114.615500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075660J,Subiaco Private Hospital,"Suite 9, 1 Salvado Road",,Subiaco,WA,6008,-31.942867,115.826368,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0657031F,Focus Eye Centre,2 Middle Street,,Kingsford,NSW,2032,-33.921200,151.227200,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0043700T,Essendon Day Procedure Centre,"Level 1, 665 Mount Alexander Road",,Moonee Ponds,VIC,3039,-37.765817,144.923763,True,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067220K,Central Day Surgery,235 Greenhill Road,,Dulwich,SA,5065,-34.939762,138.626397,True,1,1,0,1,1,1,1,0,0,1,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0077210X,Icon Cancer Centre Midland,6 Centennial Place,,Midland,WA,6056,-31.894294,116.005240,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0044330W,Geelong Day Surgery,"21-29 Princess Highway ",,Norlane,VIC,3214,-38.096656,144.355021,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0036570A,The Melbourne Eastern Private Hospital,157 Scoresby Road,,Boronia,VIC,3155,-37.855400,145.268100,False,1,0,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,0,0,1,1,1,1,0,0
+0017030J,St Vincent's Private Hospital Lismore,Dalley Street,,Lismore,NSW,2480,-28.820600,153.287100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035290W,Epworth Freemasons,109 Albert Street & 320 Victoria Parade,,East Melbourne,VIC,3002,-37.810600,144.983700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016570K,Ramsay Clinic Cremorne,3 Harrison Street,,Cremorne,NSW,2090,-33.833300,151.223000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0077290B,Albany Day Hospital,6 Lubich Way,,Mira Mar,WA,6330,-35.015530,117.891775,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036610J,Knox Private Hospital,262 Mountain Highway,,Wantirna,VIC,3152,-37.848500,145.228000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027070H,Lindfield Renal Care Centre,280 Pacific Highway,,Lindfield,NSW,2070,-33.777300,151.168600,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0057320A,St Stephen's Hospital Hervey Bay,1 Medical Place,,Urraween,QLD,4655,-27.546689,153.034594,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075740J,GenesisCare Mandurah,Unit 3/35 Minilya Parkway,,Mandurah,WA,6210,-32.529961,115.764862,True,1,1,0,0,1,1,0,0,1,1,1,1,1,1,0,0,0,1,0,0,0,1,1,0,1,1,0,0,1,0,0,0,1
+0017360L,Macquarie University Hospital,3 Technology Place,,Macquarie Park,NSW,2109,-33.773716,151.118003,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067080H,Repromed Day Surgery,180 Fullarton Road,,Dulwich,SA,5065,-34.937000,138.624000,True,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0077250K,Rockingham Dialysis Clinic,Level 1/35 Mcnicholl Street,,Rockingham,WA,6168,-32.283629,115.746353,True,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0065810F,Calvary Central Districts Hospital,25-37 Jarvis Road,,Elizabeth Vale,SA,5112,-34.754600,138.655700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057120J,Mackay Specialist Day Hospital,85-87 Willetts Road,,North Mackay,QLD,4740,-21.129706,149.164647,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036730A,Sir John Monash Private Hospital,"1st Floor, 212-220 Clayton Road",,Clayton,VIC,3168,-37.919000,145.121000,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017690W,Camden Surgical Hospital,35 Hilder Street,,Elderslie,NSW,2570,-34.052305,150.716426,False,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0077220W,Craigie Day Surgery,"Suite 2, 9 Perilya Road",,Craigie,WA,6025,-31.784427,115.765933,True,1,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0085080L,Calvary - St Luke's Hospital,24 Lyttleton Street,,Launceston,TAS,7250,-41.433900,147.150000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067150J,Icon Cancer Centre Adelaide,"Suite 10, First Floor, Tennyson Centre, 520 South Road",,Kurralta Park,SA,5037,-34.949054,138.571375,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036350L,Holmesglen Private Hospital,490 South Road,,Moorabbin,VIC,3189,-37.935400,145.050000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017350T,GenesisCare Frenchs Forest,49 Frenchs Forest East,,Frenchs Forest,NSW,2086,-33.752560,151.239321,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027550L,Levant Cosmetic Day Surgery Randwick,"Level 1, 164 Belmore Road",,Randwick,NSW,2031,-33.916838,151.240873,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0067000A,Parkview Day Surgery,215 Greenhill Road,,Eastwood,SA,5063,-34.940300,138.621700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057250Y,Nambour Day Surgery,115 Howard Street,,Nambour,QLD,4560,-26.626279,152.964283,True,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017530K,Wollongong Private Hospital,360 Crown Street,,Wollongong,NSW,2500,-34.425852,150.880520,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656701L,The Digestive Health Centre,90 David Street,,Dandenong,VIC,3175,-37.977100,145.216300,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044040F,Casey Day Hospital,1A/30-32 Verdun Drive,,Narre Warren,VIC,3805,-38.024880,145.314480,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055530H,St Andrew's Toowoomba Hospital,280 North Street,,Toowoomba,QLD,4350,-27.539300,151.934100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055990A,Spendelove Private Hospital,24 Spendelove Avenue,,Southport,QLD,4215,-27.973400,153.408600,False,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0016950Y,Figtree Private Hospital,1 Suttor Place,,Figtree,NSW,2525,-34.439600,150.850500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044340T,West Gippsland Endoscopy Centre,41 Landsborough Street,,Warragul,VIC,3820,-38.173000,145.927680,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0044090W,Chelsea Heights Day Surgery and Endoscopy,93 Wells Road,,Chelsea Heights,VIC,3196,-38.033206,145.134586,True,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057580B,Broadwater Private Day Hospital,"7-11 Short Street ",,Southport,QLD,4215,-27.969949,153.416226,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017680X,Matilda Nepean Private Hospital,39 Orth Street,,Kingswood,NSW,2747,-33.759925,150.716512,False,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0057070B,Pacific Day Surgery Centre,38 Misterton Street,,Fortitude Valley,QLD,4006,-27.453400,153.032200,True,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0016800L,Shellharbour Private Hospital,27 Captain Cook Drive,,Barrack Heights,NSW,2528,-34.558700,150.847400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0095110H,Genea Canberra,Suite 17B and Unit 28/2 King Street,,Deakin,ACT,2600,-35.322500,149.093000,True,1,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0
+0017630H,Gregory Hills Renal Care Centre,"Unit 3 & 4, 31 Lasso Road",,Gregory Hill,NSW,2557,-34.022001,150.762865,True,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0032220K,"Boroondara Day Surgery ","110 Church Street ",,Hawthorn,VIC,3122,-37.817116,145.019265,True,1,1,0,0,1,1,1,0,1,1,1,1,1,0,0,1,0,1,0,1,0,1,1,1,1,1,0,1,1,0,0,0,1
+0016910H,Sydney Southwest Private Hospital,32-40 Bigge Street,,Liverpool,NSW,2170,-33.917100,150.928100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057000W,Moreton Day Hospital,"Specialist Medical Centre, Level 2, Suite 201, 6 North Lakes Drive",,North Lakes,QLD,4509,-27.241304,153.020318,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0035050K,North Eastern Rehabilitation Centre,134-144 Ford Street,,Ivanhoe,VIC,3079,-37.763300,145.031300,False,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0085290B,Tasmanian Digestive Centre,75-79 Oldaker Street,,Devonport,TAS,7310,-41.175873,146.353186,True,1,1,0,0,1,1,0,0,1,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,1,1,0,0,1,0,0,0,1
+0085010F,Calvary - Lenah Valley Hospital,49 Augusta Road,,Lenah Valley,TAS,7008,-42.866478,147.303481,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036560B,St John Of God Langmore Centre,3 Gibb Street,,Berwick,VIC,3806,-38.034412,145.344389,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036470F,St Vincent's Private Hospital Kew,5 Studley Avenue,,Kew,VIC,3101,-37.806900,145.024100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056000B,St Vincent's Private Hospital Northside,627 Rode Road,,Chermside,QLD,4032,-27.392500,153.020600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0037140T,Adeney Private Hospital,209 Cotham Road,,Kew,VIC,3101,-37.808572,145.048144,False,1,1,0,0,1,1,0,0,1,0,1,1,1,0,1,1,1,1,0,1,0,0,1,1,1,1,1,1,1,0,1,0,1
+0075420B,Mount Hospital,150 Mounts Bay Road,,Perth,WA,6000,-31.958400,115.845900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035660H,Neerim Health,29-39 Main Neerim Road,,Neerim South,VIC,3831,-38.022578,145.953848,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0999251T,Regional Imaging Cardiovascular Centre,"Calvary Hospital, 36, Hardy Avenue",,Wagga Wagga,NSW,2650,-35.118200,147.350100,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0075410F,Glengarry Private Hospital,53 Arnisdale Road,,Duncraig,WA,6023,-31.834800,115.785400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017610K,GenesisCare Kingswood,29-33 Derby Street and 38 Somerset Street,,Kingswood,NSW,2747,-33.761330,150.715640,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,0,1,1,0
+0055750W,Hillcrest - Rockhampton Private Hospital,4 Talford Street,,Rockhampton,QLD,4700,-23.381100,150.499800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0894521T,North West Day Hospital,221 Maribyrnong Road,,Ascot Vale,VIC,3032,-37.771100,144.910000,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1
+0065340X,Stirling Hospital Inc,20 Milan Terrace,,Stirling,SA,5152,-35.007000,138.715300,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0055190K,Friendly Society Private Hospital,19-23 Bingera Street,,Bundaberg West,QLD,4670,-24.870800,152.343000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057560H,Toowoomba Private Day Hospital,20 Goggs Street,,Toowoomba,QLD,4350,-27.566650,151.944600,True,1,0,0,1,0,0,1,0,0,0,0,1,0,0,1,1,1,0,0,1,1,0,0,1,0,0,0,1,0,0,1,0,0
+0097040K,ACT Endoscopy,2/70 Kent Street,,Deakin,ACT,2600,-35.320498,149.097298,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027600X,Monash IVF Sydney CBD,"Level 10, 207 Kent Street",,Sydney,NSW,2000,-33.858530,151.203780,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0057450L,Icon Cancer Centre North Lakes,9 McLennan Court,,North Lakes,QLD,4509,-27.240783,153.021180,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057500X,FMC Dialysis Clinic North Lakes,"T301-T305, Specialist Medical Centre, 6 North Lakes Drive",,North Lakes,QLD,4509,-27.241204,153.020304,True,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0077310T,Perth Day Hospital,10/454 Scarborough Beach Road,,Osborne Park,WA,6017,-31.906086,115.810485,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017580A,Gordon Private Hospital,746-748 Pacific Highway,,Gordon,NSW,2072,-33.757595,151.152950,False,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,1,1,0,0,1,1,1
+0055460F,St Vincent's Private Hospital Toowoomba,22-36 Scott Street,,Toowoomba,QLD,4350,-27.565700,151.972200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0926581A,Lions Eye Institute Day Surgery Centre,2 Verdun Street,,Nedlands,WA,6009,-31.967300,115.814100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027400F,Port Macquarie Ophthalmic Surgery,35 Ackroyd Street,,Port Macquarie,NSW,2444,-31.435919,152.900715,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027350Y,Chris O'Brien Lifehouse,119-143 Missenden Road,,Camperdown,NSW,2050,-33.888478,151.181364,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0035340A,St John Of God Geelong Hospital,80 Myers Street,,Geelong,VIC,3220,-38.151700,144.359900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027370W,Western Sydney Private Oncology & Infusion Centre,"Level 2, Westmead Specialist Centre, 16-18 Mons Road",,Westmead,NSW,2145,-33.801767,150.983123,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0097020T,Msi Canberra,"Level 1 ACT Health Building, Moore & Alinga Streets",,Canberra City,ACT,2601,-35.277875,149.127458,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0075360Y,Attadale Rehabilitation Hospital,21 Hislop Road,,Attadale,WA,6156,-32.029600,115.810400,False,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075200T,St John Of God Bunbury Hospital,Cnr Robertson Drive & Bussell Highway,,Bunbury,WA,6230,-33.364500,115.645700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056090H,Far North Day Hospital,"Level 4, 58-60 Mcleod Street",,Cairns,QLD,4870,-16.923079,145.770979,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0017810B,Liverpool Procedure Centre,"Level 2, 40 Bigge Street",,Liverpool,NSW,2107,-33.917158,150.928371,True,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+0027360X,Newcastle Endoscopy Centre,"Suite 15, 20-22 Smith Street",,Charlestown,NSW,2290,-32.963000,151.697600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0834361A,The Skin Hospital,7 Ashley Lane,,Westmead,NSW,2145,-33.807700,150.988500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0015570X,Hurstville Private Hospital,37 Gloucester Road,,Hurstville,NSW,2220,-33.962300,151.096300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065970K,Ph Prosthodontics Sa,241 Payneham Road,,Joslin,SA,5070,-34.903470,138.632587,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0035790X,Cabrini Malvern,"181-183 Wattletree Road (Main Campus) & 2-6 Hopetoun Road, Elsternwick 3185 (Elsternwick Campus)",,Malvern,VIC,3144,-37.862828,145.033069,False,1,1,0,0,1,1,1,0,0,1,1,1,1,0,1,1,0,0,0,1,0,1,1,1,1,0,0,1,0,0,1,0,0
+0075110W,The Park Private Hospital,14 Alvan Street,,Mount Lawley,WA,6050,-31.934300,115.874000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055740X,Buderim Private Hospital,12 Elsa Wilson Drive,,Buderim,QLD,4556,-26.698200,153.060600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065930X,Flinders Private Hospital,1 Flinders Drive,,Bedford Park,SA,5042,-35.024400,138.567900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036210B,Delmont Private Hospital,298 Warrigal Road,,Glen Iris,VIC,3146,-37.856500,145.094500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027190Y,Epping Surgery Centre,34 Boronia Avenue,,Epping,NSW,2121,-33.769800,151.083700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055360J,Mater Private Hospital Townsville,25 Fulham Road,,Pimlico,QLD,4810,-19.289400,146.788100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017090X,St George Private Hospital,1 South Street,,Kogarah,NSW,2217,-33.966300,151.136600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035000Y,Jessie McPherson Private Hospital,246 Clayton Road,,Clayton,VIC,3168,-37.920700,145.120700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027240F,Sight Foundation Theatre,"Sydney Eye Hospital, Level 3 Clinical Building, 8 Macquarie Street",,Sydney,NSW,2000,-33.867908,151.212548,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0037110Y,"Avive Clinic Mornington Peninsula ","1 St Johns Lane ",,"Mount Eliza ",VIC,3930,-38.178793,145.095431,False,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0015020F,Mt Wilga Private Hospital,66 Rosamond Street,,Hornsby,NSW,2077,-33.692900,151.094200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075770B,Esus Centre,"588 Hay Street ",,Subiaco,WA,6008,-31.946857,115.815431,True,1,1,0,0,1,1,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1
+0017370K,Central Coast Day Hospital - Erina,"Suite 1, 2 Ilya Avenue",,Erina,NSW,2250,-33.439818,151.384324,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0097080B,Levant Clinic Canberra,"Suite 3, Level C, Canberra Specialist Medical Centre, 1 Broula Street",,Bruce,ACT,2617,-35.236514,149.086506,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0016320H,Wolper Jewish Hospital,8 Trelawney Street,,Woollahra,NSW,2025,-33.883700,151.240600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065070B,Calvary Adelaide Hospital,120 Angas Street,,Adelaide,SA,5000,-34.929821,138.605286,False,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,1,1,0,1,1,0
+0056290Y,Avive Clinic Brisbane,"16 Bryden Street ",,Windsor,QLD,4030,-27.438517,153.031613,False,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0055400W,Mater Private Hospital Townsville (Hyde Park Campus),12-14 Oxford Street,,Hyde Park,QLD,4812,-19.277100,146.798200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075530X,Joondalup Health Campus,Shenton Avenue,,Joondalup,WA,6027,-31.739300,115.758900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056300L,Fitzroy Community Hospice,38 Agnes Street,,The Range,QLD,4700,-23.381568,150.492175,False,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0016080H,St John Of God Richmond Hospital,177 Grose Vale Road,,North Richmond,NSW,2754,-33.588500,150.702600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043630L,Forest Hill Dialysis Clinic,"Shops 26 & 27 Forest Hill Chase, 69 Mahoneys Road",,Forest Hill,VIC,3131,-37.835005,145.164649,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0026990X,Genea Liverpool,173-175 Bigge Street,,Liverpool,NSW,2170,-33.921900,150.927000,True,1,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0
+0656651H,Brisbane Endoscopy Service,"Suites 16 & 17 Mccullough Centre, 259 Mccullough Street",,Sunnybank,QLD,4109,-27.571700,153.062100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035820H,St John of God Warrnambool Hospital,136 Botanic Road,,Warrnambool,VIC,3280,-38.372100,142.478500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657411T,Liverpool Day Surgery,105-119 Longstaff Avenue,,Moorebank,NSW,2170,-33.926100,150.954000,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0043950X,Bendigo Day Surgery,1 Chum Street,,Bendigo,VIC,3554,-36.762077,144.258063,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016840F,President Private Hospital,369-381 President Avenue,,Kirrawee,NSW,2232,-34.037000,151.079800,False,1,0,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,0,0,1,1,1,1,1,0
+0044300A,Paso Infusion Centre,"5 Susono Way ",,Frankston,VIC,3199,-38.154527,145.132841,True,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0037080K,Anam Cara House Geelong,"Nicol Drive South, Deakin University",,Waurn Ponds,VIC,3216,-38.198022,144.298939,False,1,0,0,1,0,0,0,0,0,0,0,1,0,0,1,1,1,0,0,1,0,0,1,1,1,0,1,1,1,0,1,1,0
+0658181F,Adelaide Day Surgery,18 North Terrace,,Adelaide,SA,5000,-34.922200,138.588700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017160Y,Lady Davidson Private Hospital,434 Bobbin Head Road,,North Turramurra,NSW,2074,-33.690900,151.152000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057510W,Icon Cancer Centre Mackay,148 Sams Road,,Mackay,QLD,4740,-21.127802,149.164877,True,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044120F,Genesis Care Radiation Oncology Centre St Vincent's Hospital Melbourne,41 Victoria Parade,,Fitzroy,VIC,3065,-37.807546,144.975049,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0015400T,Dudley Private Hospital,261 March Street,,Orange,NSW,2800,-33.282400,149.121400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065770X,North Eastern Community Hospital,580 Lower North East Road,,Campbelltown,SA,5074,-34.875800,138.665800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0095130B,Canberra Private Hospital,"Equinox Business Park, Building 2 Level 2/3, 70 Kent Street",,Deakin,ACT,2600,-35.320476,149.097345,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0015550A,IMH Hirondelle Private Hospital,10 Wyvern Avenue,,Chatswood,NSW,2067,-33.789600,151.179000,False,1,0,1,0,0,1,0,1,0,1,0,0,1,1,0,0,0,1,1,0,1,1,0,0,0,0,0,0,0,1,0,0,0
+0057110K,Buderim Gastroenterology Centre,"Suite 5, 102 Wises Road",,Maroochydore,QLD,4558,-26.684200,153.071400,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016770B,Ramsay Clinic Northside,2 Frederick Street,,St Leonards,NSW,2065,-33.817269,151.190576,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0077050X,Msi Perth,8 Sayer Street,,Midland,WA,6056,-31.888200,116.010400,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0027660H,Family Planning NSW,8 Holker Street,,Newington,NSW,2127,-33.832292,151.056006,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0999801A,Central Sydney Private Hospital,"Level 5, 401 Sussex Street",,Sydney,NSW,2000,-33.878300,151.204700,True,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017100K,Bathurst Private Hospital,Gorman's Hill Road,,Bathurst,NSW,2795,-33.473700,149.582200,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0035400F,The Bays Healthcare Group Inc,"Vale Street (Main Campus) & 86 Victoria Street, Hastings",,Mornington,VIC,3931,-38.222100,145.040300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016920F,Baringa Private Hospital,31 Mackays Road,,Coffs Harbour,NSW,2450,-30.275600,153.104400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044270L,Notting Hill City Health Day Hospital,33-37 Duerdin Street,,Notting Hill,VIC,3168,-37.909800,145.147000,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0035260A,Epworth Richmond,89 Bridge Road,,Richmond,VIC,3121,-37.817800,144.993100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0015070W,Strathfield Private Hospital,3 Everton Road,,Strathfield,NSW,2135,-33.872200,151.097600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0085300W,Salveo Healthcare,"Level 1, 89-93 Cimitiere Street",,Launceston,TAS,7250,-41.433705,147.139387,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0087060A,Icon Cancer Centre Hobart,"Ground Floor, 2 Melville Street",,Hobart,TAS,7000,-42.878080,147.328069,True,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1
+0055570Y,St Vincent's Private Hospital Brisbane,411 Main Street,,Kangaroo Point,QLD,4169,-27.474300,153.035500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017780T,King Street Private Hospital,291 King Street,,Newcastle,NSW,2300,-32.928833,151.767996,False,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,0,1,0,1,1,1,1,1,0,1,0,0,0,0,1
+0075480L,St John of God Murdoch Hospital,100 Murdoch Drive,,Murdoch,WA,6150,-32.069000,115.843200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057260X,Eye-Tech Day Surgeries Southside,22-26 Sanders Street,,Upper Mount Gravatt,QLD,4122,-27.557655,153.081951,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057550J,Brisbane Procedure Centre,42 Doggett Street,,Newstead,QLD,4006,-27.454448,153.042162,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+0097070F,Canberra Region Neurology and Pain Centre,"Units 2-4 Corinna Chambers, 36-38 Corinna Street",,Phillip,ACT,2606,-35.345360,149.083890,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0067140K,Oromax Day Surgery,"Level 2, 66 Rundle Street",,Kent Town,SA,5067,-34.925315,138.611752,True,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0077110A,Mount Hawthorn Day Hospital,"Suite 4, 1st Floor 416-418 Oxford Street",,Mount Hawthorn,WA,6016,-31.922699,115.841563,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055340L,Mater Private Hospital Mackay,76 Willetts Road,,North Mackay,QLD,4740,-21.142300,149.178700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0988261T,Calvary Riverina Surgicentre,329 - 333 Edward Street,,Wagga Wagga,NSW,2650,-35.116500,147.352100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027510Y,Icon Cancer Centre Revesby,1-3 Macarthur Street,,Revesby,NSW,2212,-33.954004,151.015279,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0037130W,Jolimont Day Hospital,"Level 2, 150 Jolimont Road",,East Melbourne,VIC,3002,-37.816998,144.979212,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0037030Y,Habitat Therapeutics Private Hospital,117 Helms Street,,Newcomb,VIC,3219,-38.170796,144.399250,False,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0056020Y,Lady Bjelke-Petersen Community Hospital,31 Markwell Street,,Kingaroy,QLD,4610,-26.542500,151.836700,False,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027380T,The Skin Hospital (Darlinghurst),121 Crown Street,,Darlinghurst,NSW,2010,-33.875399,151.215920,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656741F,Centre For Digestive Diseases,"Level 1, 229 Great North Road",,Five Dock,NSW,2046,-33.865400,151.130400,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056060L,Hervey Bay Surgical Hospital,Cnr O'Rourke Street & Boat Harbour Drive,,Pialba,QLD,4655,-25.287925,152.834614,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067210L,Greenhill Dental Day Surgery,62 Greenhill Road,,Wayville,SA,5034,-34.942037,138.594236,True,1,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0043640K,Coburg Endoscopy Centre,15 Munro Street,,Coburg,VIC,3058,-37.771300,144.952700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075510A,Southbank Day Surgery,38 Meadowvale Avenue,,South Perth,WA,6151,-31.974400,115.871400,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017290K,Campbelltown Private Hospital,42 Parkside Crescent,,Campbelltown,NSW,2560,-34.075559,150.804968,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065120J,Griffith Rehabilitation Hospital,13 Dunrobin Road,,Hove,SA,5048,-35.009900,138.524300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657471B,Eastern Heart Clinic,"Level 3, Campus Centre Building, Prince Of Wales Campus, Barker Street",,Randwick,NSW,2031,-33.921800,151.242800,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036970H,Vermont Private Hospital,Level 2/645-647 Burwood Highway,,Vermont South,VIC,3133,-37.858815,145.199463,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043840B,Specialist Surgicentre Geelong,200 Malop Street,,Geelong,VIC,3220,-38.149044,144.366052,True,1,1,0,1,1,0,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0043870X,Hobson Healthcare Werribee,179 Princes Highway,,Werribee,VIC,3030,-37.890502,144.686763,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057290L,Chermside Dialysis Clinic,671 Gympie Road,,Chermside,QLD,4032,-27.391400,153.031500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0075780A,Broome Renal Health Centre,Lot 640 Anne Street,,Broome,WA,6725,-17.961111,122.232589,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0015500K,Holroyd Private Hospital,123-129 Chetwynd Road,,Guildford,NSW,2161,-33.845800,150.979500,False,0,0,1,1,0,1,1,0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,0,0,1,1,1,1,0,0
+0925491K,Pindara Day Procedure Centre,13 Carrara Street,,Benowa,QLD,4217,-28.006100,153.392400,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657211A,Pennant Hills Day Surgery,361 - 363 Pennant Hills Road,,Pennant Hills,NSW,2120,-33.738295,151.074354,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036360K,Waverley Private Hospital,343-357 Blackburn Road,,Mount Waverley,VIC,3149,-37.885100,145.145900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0015560Y,Hunters Hill Private Hospital,9 Mount Street,,Hunters Hill,NSW,2110,-33.835300,151.149900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055620F,Ramsay Clinic New Farm,22 Sargent Street,,New Farm,QLD,4005,-27.474000,153.045900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656281W,Rosemont Endoscopy Centre,56 Rosemont Street,,Wollongong,NSW,2500,-34.425200,150.877300,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055930L,Noosa Hospital,111 Goodchap Street,,Noosaville,QLD,4566,-26.404800,153.046000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0095150Y,Act Day Hospital,37/39 Geils Court,,Deakin,ACT,2600,-35.315781,149.096854,True,1,1,0,0,1,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,1,0,0,0,1
+0931151B,Brighton Day Surgery,1 Jetty Road,,Brighton,SA,5048,-35.017000,138.522800,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0055860K,Greenslopes Private Hospital,Newdegate Street,,Greenslopes,QLD,4120,-27.510282,153.052841,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017380J,Nephrocare Newcastle Dialysis Clinic,"Suite 402, Level 4, 670 Hunter Street",,Newcastle,NSW,2300,-32.926635,151.764874,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0044070Y,St John of God Berwick Day Oncology Centre,"Level 1, 55 Kangan Drive",,Berwick,VIC,3806,-38.045380,145.344956,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027280X,Macquarie St Day Surgery,"Level 11, 187 Macquarie St",,Sydney,NSW,2000,-33.867001,151.212009,True,1,1,0,1,1,0,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036950K,Epworth Geelong,1 Epworth Place,,Waurn Ponds,VIC,3216,-38.204394,144.298195,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0894301F,City West Specialist Day Hospital,30 Mons Road,,Westmead,NSW,2145,-33.801700,150.983100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017150A,The SAN Day Surgery,1a Northcote Road,,Hornsby,NSW,2077,-33.701800,151.110200,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0015000J,Calvary Bruce Private Hospital,30 Mary Potter Circuit,,Bruce,ACT,2617,-35.252401,149.089043,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067290X,Archer St Day Hospital,163 Archer Street,,North Adelaide,SA,5006,-34.907900,138.594820,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0027300J,Liverpool Eye Surgery,"Ground Floor, 1-7 Moore Street",,Liverpool,NSW,2170,-33.922601,150.926582,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027030T,Sydney Day Surgery,213-219 Darlinghurst Road,,Darlinghurst,NSW,2010,-33.876500,151.221200,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0027230H,North Shore Specialist Day Hospital,"Level 3, 176 Pacific Highway",,Greenwich,NSW,2065,-33.823700,151.187000,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0097010W,Sole Vita Surgery,7 Phipps Close,,Deakin,ACT,2600,-35.319100,149.095384,False,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0036690T,Wangaratta Private Hospital,134-150 Templeton Street,,Wangaratta,VIC,3677,-36.349600,146.313000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027040L,Surry Hills Day Hospital,573 Crown Street,,Surry Hills,NSW,2010,-33.891000,151.212800,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0077190H,St John Of God Subiaco Eye Hospital,190 Cambridge Street,,Wembley,WA,6014,-31.940481,115.823938,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0085250K,Specialist Care Australia Ulverstone,35A Queen St,,Ulverstone,TAS,7315,-41.151820,146.163160,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+0026930J,Illawarra Private Cancer Care Centre,25 Denison Street,,Wollongong,NSW,2500,-34.424133,150.888264,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0036520K,The Melbourne Clinic,130 Church Street,,Richmond,VIC,3121,-37.814900,144.999800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017500W,East Sydney Private Hospital,75-85 Crown Street,,East Sydney,NSW,2010,-33.873734,151.216200,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0075720L,Sundew Day Surgery,24 Sundew Rise,,Joondalup,WA,6027,-31.758560,115.769240,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0056100Y,Ramsay Clinic Cairns,253 Sheridan Street,,North Cairns,QLD,4870,-16.910605,145.762377,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027320F,GenesisCare,7 Westbourne Street,,St Leonards,NSW,2065,-33.823893,151.193193,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036430L,Ringwood Private Hospital,36 Mount Dandenong Road,,East Ringwood,VIC,3135,-37.811200,145.243200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036980F,St Vincents Private Hospital Werribee,240 Hoppers Lane,,Werribee,VIC,3030,-37.887987,144.700855,False,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035480K,Malvern Private Hospital,3-9 Wilton Vale Crescent,,Malvern East,VIC,3145,-37.867200,145.060700,False,0,0,0,1,0,1,1,1,0,1,0,1,1,1,1,1,1,0,0,1,1,1,0,1,0,0,0,1,1,1,1,0,0
+0044060A,Mornington Endoscopy Pty Ltd,350 Main Street,,Mornington,VIC,3931,-38.227676,145.044133,True,1,0,1,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,1,0,0,0
+0065960L,Genesiscare Western Hospital,168 Cudmore Terrace,,Henley Beach,SA,5022,-34.910590,138.500127,True,1,1,0,0,1,1,0,0,1,1,1,0,1,0,0,0,0,1,0,0,0,1,1,0,1,1,0,0,1,0,0,0,1
+0055720A,Sunnybank Private Hospital,245 McCullough Street,,Sunnybank,QLD,4109,-27.571600,153.061400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027630L,Genesiscare Maitland,30 Metford Road,,East Maitland,NSW,2323,-32.760368,151.601011,True,1,1,0,0,1,1,0,1,1,1,1,0,1,0,0,0,0,1,0,0,0,1,1,0,1,1,0,0,1,0,0,0,1
+0017700J,The George Centre,1A & 1B The Hermitage Way,,Gledswood Hills,NSW,2557,-34.023791,150.770994,False,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0015200A,Castlecrag Private Hospital,150 Edinburgh Road,,Castlecrag,NSW,2068,-33.801700,151.216500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027060J,Riverina Cancer Care Centre,31 Meurant Avenue,,Wagga Wagga,NSW,2650,-35.119937,147.352216,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0043620T,Ballarat Day Procedure Centre,1119-1123 Howitt Street,,Wendouree,VIC,3355,-37.540500,143.831600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056200W,Westside Private Hospital,"Suite 1, Ground Floor and Floor 1, 32 Morrow Street",,Taringa,QLD,4068,-27.492740,152.981460,False,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0999431K,Ipswich Day Hospital,10 Churchill Street,,Ipswich,QLD,4305,-27.618500,152.759100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035140J,Diamond Valley Renal Care Centre,15 Grimshaw Street,,Greensborough,VIC,3088,-37.705100,145.106700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656761A,Western Gastroenterology Services,30 Eleanor Street,,Footscray,VIC,3011,-37.792000,144.885500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017400Y,Charlestown Private Hospital,"Level 3, 250 Pacific Hwy",,Charlestown,NSW,2290,-32.960030,151.697330,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036910X,Goonawarra Day Hospital,1-11 Dornoch Drive,,Sunbury,VIC,3429,-37.579366,144.750323,True,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657401W,Hamilton House Day Surgery,470 Goodwood Road,,Cumberland Park,SA,5041,-34.975000,138.591400,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057100L,Noosa Surgical & Endoscopy Centre,22 Mary Street,,Noosaville,QLD,4566,-26.400045,153.064908,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0077240L,Cannington Dialysis Clinic,13-15 Leila Street,,Cannington,WA,6107,-32.016976,115.935066,True,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0016480L,Toronto Private Hospital,Cary Street,,Toronto,NSW,2283,-33.015200,151.592800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0896271A,Aesthetic Day Surgery,14 Kensington Street,,Kogarah,NSW,2217,-33.964600,151.135700,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0056070K,Kawana Private Hospital,"Suite 14, Level 1, 5 Innovation Parkway",,Birtinya,QLD,4575,-26.733775,153.122184,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044180T,Greensborough Day Surgery,9-13 Flintoff Street,,Greensborough,VIC,3088,-37.703820,145.106190,True,1,0,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,0,0,0
+0657221Y,Glenelg Day Surgery,24 Gordon Street,,Glenelg,SA,5045,-34.979900,138.517800,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0889011L,South Western Endoscopy Centre,20-22 Bigge Street,,Liverpool,NSW,2170,-33.916400,150.928200,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0017050F,Newcastle Private Hospital,14 Lookout Road,,New Lambton Heights,NSW,2305,-32.922551,151.698816,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017490B,Royal Rehab Private Ryde,235 Morrison Road,,Ryde,NSW,2112,-33.821336,151.105710,False,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036850T,Epworth Eastern,"1 Arnold Street, Box Hill (Main Campus)  & 116-118 Thames  Street, Box Hill North (Ekera Campus)",,Box Hill,VIC,3128,-37.813882,145.119304,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056030X,Toowoomba Hospice,57b O'Quinn Street,,Toowoomba,QLD,4350,-27.567900,151.934200,False,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0055730Y,Gold Coast Private Hospital,14 Hill Street,,Southport,QLD,4215,-27.971800,153.405700,False,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075710T,West Leederville Private Hospital,"Level 3, 2 McCourt Street",,West Leederville,WA,6007,-31.942957,115.827994,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0017000T,Minchinbury Community Private Hospital,120 Rupertswood Road,,Mount Druitt,NSW,2040,-33.780100,150.829800,False,1,0,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,0,0,1,1,1,1,1,0
+0656671B,Keilor Private,12A Kennedy Street,,Keilor,VIC,3036,-37.719500,144.834600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043610W,Eastside Endoscopy Centre,33 Wantirna Road,,Ringwood,VIC,3134,-37.819785,145.227663,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036340T,St Vincent's Private Hospital Fitzroy,59-61 Victoria Parade,,Fitzroy,VIC,3065,-37.808000,144.976000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055420L,St Andrew's Ipswich Private Hospital,Cnr Roderick and Pring Street,,Ipswich,QLD,4305,-27.618300,152.762900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036930T,Wyndham Clinic Private Hospital,242A Hoppers Lane & Suite 21/242 Hoppers Lane,,Werribee,VIC,3030,-37.885067,144.700356,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056170H,Robina Private Hospital,1 Bayberry Lane,,Robina,QLD,4226,-28.072463,153.377620,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043520X,St Albans Endoscopy Centre,328-330 Station Road,,St Albans,VIC,3021,-37.744200,144.779200,True,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0027650J,Cabramatta Day Surgery,2A Church Street,,Cabramatta,NSW,2166,-33.896251,150.937286,True,1,1,0,1,1,1,1,0,1,0,1,1,1,0,1,1,1,0,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1
+0925691B,Icon Cancer Centre South Brisbane,293 Vulture Street,,South Brisbane,QLD,4101,-27.483400,153.027700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057520T,East Brisbane Day Hospital,"Ground Floor, 45 Wellington Road",,East Brisbane,QLD,4169,-27.487762,153.039987,True,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0067330F,Hove Day Surgery,387 - 389 Brighton Road,,Hove,SA,5048,-35.011948,138.522293,True,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0999781K,Brindabella Endoscopy Centre,Suite 7/5 Dann Close,,Garran,ACT,2605,-35.440300,149.115100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075140K,Ngala Family Services,9 George Street,,Kensington,WA,6151,-32.031300,115.824200,False,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0990491F,Miranda Eye Surgical Centre,"Suite 4, 16-22 Willock Avenue",,Miranda,NSW,2228,-34.032300,151.102000,True,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0656931Y,Sydney Specialist Day Hospital,"Suite 501, 7 Help Street",,Chatswood,NSW,2067,-33.795500,151.180300,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035500A,St Vincent's Private Hospital East Melbourne,159 Grey Street,,East Melbourne,VIC,3002,-37.811800,144.984200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027050K,Ballina Day Surgery,"Suite 6, 46 Tamar Street",,Ballina,NSW,2478,-28.870500,153.563600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036170W,The Victoria Clinic,324 Malvern Road,,Prahran,VIC,3181,-37.847400,144.997600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057630J,Brisbane South Private Hospital,4 Paxton Street,,Springwood,QLD,4127,-27.617379,153.126381,True,1,1,0,0,1,1,1,0,1,0,1,1,0,0,0,1,0,0,0,1,0,0,1,1,1,1,0,1,0,0,0,0,1
+0055600J,Pindara Private Hospital,Allchurch Avenue,,Benowa,QLD,4217,-28.006100,153.392400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055810Y,Ramsay Clinic Caloundra,96 Beerburrum Street,,Caloundra,QLD,4551,-26.781300,153.125700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055220Y,Cairns Private Hospital,1 Upward Street,,Cairns,QLD,4870,-16.918800,145.765800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043710L,Glen Eira Day Surgery,544 Hawthorn Road,,Caulfield South,VIC,3162,-37.900533,145.019099,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657961H,MSI Sydney West,27 Railway Parade,,Westmead,NSW,2145,-33.808100,150.987700,True,1,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0027480K,Double Bay Day Hospital,"Level 2, 451 New South Head Rd",,Double Bay,NSW,2028,-33.877359,151.244058,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056190B,Hummingbird House,60 Curwen Terrace,,Chermside,QLD,4032,-27.383116,153.027551,False,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0075610X,Marian Centre,187 Cambridge Street,,Wembley,WA,6014,-31.940939,115.820765,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017770W,Cancer Care Northern Beaches,"Suite 4, 49 Frenchs Forest Road East",,Frenchs Forest,NSW,2086,-33.752128,151.239813,True,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0085010F,Calvary - St John's Hospital,30 Cascade Road,,South Hobart,TAS,7004,-42.895200,147.306400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035080F,St John Of God Berwick Hospital,75 Kangan Drive,,Berwick,VIC,3806,-38.034700,145.344400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044100J,Panch Day Surgery Centre,"Level 4, 84 Hotham Street",,Preston,VIC,3073,-37.746753,145.008164,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0087070Y,Hobart Specialist Day Hospital,"1st Floor, 2 Melville Street",,Hobart,TAS,7000,-42.878020,147.327927,True,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027150H,Madison Day Surgery,"Suite 3, 25-29 Hunter Street",,Hornsby,NSW,2077,-33.703245,151.100202,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657801A,Sunshine Coast Day Surgery,Cnr Memorial & Second Avenues,,Maroochydore,QLD,4558,-26.655821,153.095759,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027220J,Kogarah Private Hospital,"Level 1, 1 Derby Street",,Kogarah,NSW,2217,-33.965593,151.132393,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027430Y,Parramatta Eye Centre,"Suite 19, 34 Charles Street",,Parramatta,NSW,2150,-33.813927,151.009590,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057610L,Wide Bay Private Day Hospital,"125 Woongarra Street ",,Bundaberg West,QLD,4670,-24.870854,152.334849,True,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+0658121W,Kingsgrove Day Hospital,"Level 1, 322 Kingsgrove Road",,Kingsgrove,NSW,2208,-33.943900,151.101800,True,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036530J,Northpark Private Hospital,Cnr Plenty and Greenhills Road,,Bundoora,VIC,3083,-37.694100,145.044100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067240H,Adelaide Ambulatory Day Surgery,"Suites 10A, 50 Hutt Street",,Adelaide,SA,5000,-34.926778,138.612360,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017250X,Maitland Private Hospital,173 Chisholm Road,,East Maitland,NSW,2323,-32.764600,151.597200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043770A,Specialist Surgicentre Docklands,"Tenancy 2, 22 Rakaia Way",,Docklands,VIC,3008,-37.814463,144.941712,True,1,1,0,1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1
+0065030K,Ramsay Clinic Adelaide,33 Park Terrace,,Gilberton,SA,5081,-34.906500,138.612900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0085110A,Hobart Private Hospital,Corner Argyle Street and Collins Street,,Hobart,TAS,7001,-42.881238,147.329990,False,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,1,0,0,0,1,0,1,1,1,1,0,0,1,1,0,1,1,0
+0656641J,Spring Hill Specialist Day Hospital,"Levels 8 & 9, 525 Boundary Street",,Spring Hill,QLD,4000,-27.461200,153.021500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043680B,Kew Endoscopy Centre,"Suite 5, 828 High Street",,Kew East,VIC,3102,-37.794457,145.062441,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016750H,Lake Macquarie Private Hospital,3 Sydney Street,,Gateshead,NSW,2290,-32.981800,151.691800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0658051T,Excel Endoscopy Centre,490 Canterbury Road,,Campsie,NSW,2194,-33.919500,151.101400,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036960J,Monash House Private Hospital,"Level 1, 271 Clayton Road",,Clayton,VIC,3168,-37.920919,145.120318,False,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1
+0923141F,Brisbane Day Surgery,55 Little Edward Street,,Spring Hill,QLD,4004,-27.461336,153.024713,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027390L,Campsie Day Surgery,58 Campsie Street,,Campsie,NSW,2194,-33.910965,151.098933,True,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0016630T,The Sydney Clinic,22-24 Murray Street,,Bronte,NSW,2024,-33.901800,151.260800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036590X,The Geelong Clinic,98 Townsend Road,,St Albans Park,VIC,3219,-38.181700,144.393500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075130L,Abbotsford Private Hospital,61-69 Cambridge Street,,West Leederville,WA,6007,-31.940800,115.837700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657131A,Diagnostic Endoscopy Centre,601/438 Victoria Street,,Darlinghurst,NSW,2010,-33.881400,151.219100,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027210K,Westmead Rehabilitation Hospital,7 Coleman Street,,Merrylands,NSW,2160,-33.819107,150.981095,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044110H,Dr Scope,493 Ballarat Road,,Sunshine,VIC,3020,-37.777691,144.832523,True,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027180A,Coolenberg Day Surgery,60 Lake Road,,Port Macquarie,NSW,2444,-31.439600,152.909200,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043580H,The Glen Endoscopy Centre,302 Springvale Road,,Glen Waverley,VIC,3150,-37.884600,145.165100,True,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1
+0015930K,South Pacific Private Hospital,24 Beach Street,,Curl Curl,NSW,2096,-33.775027,151.291405,False,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027450W,Ramsay Surgical Centre Miranda,"Level 3, 533 Kingsway",,Miranda,NSW,2228,-34.034055,151.104055,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057480H,Tasman Health Care Day Infusion Unit,"Suite 3B & 8, Level 3, 123 Nerang Street",,Southport,QLD,4215,-27.970500,153.407934,True,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027520X,Artarmon Day Surgery,"Suite 4, 448 Pacific Highway",,Artarmon,NSW,2064,-33.811326,151.175961,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017390H,Waratah Private Hospital,"Level 1, 31 Dora Street",,Hurstville,NSW,2220,-33.964452,151.100485,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0017460J,South Coast Private,112 Burelli Street,,Wollongong,NSW,2500,-34.426137,150.890414,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0075020X,Bethesda Hospital,25 Queenslea Drive,,Claremont,WA,6010,-31.987500,115.779800,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0077020B,Murdoch Surgicentre,100 Murdoch Drive,,Murdoch,WA,6150,-32.069000,115.843200,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0097660F,Darwin Private Hospital,Rocklands Drive,,Tiwi,NT,0810,-12.359100,130.884300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065680Y,Ramsay Day Clinic Kahlyn,40 Briant Road,,Magill,SA,5072,-34.916900,138.669600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055690L,The Wesley Hospital,451 Coronation Drive,,Auchenflower,QLD,4066,-27.477000,152.998000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017200H,North Shore Private Hospital,Westbourne Street,,St Leonards,NSW,2065,-33.821900,151.188000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036810A,St John Of God Frankston Rehabilitation Hospital,255-265 Cranbourne Road,,Frankston,VIC,3199,-38.152500,145.155700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016940A,Port Macquarie Private Hospital,Lake Road,,Port Macquarie,NSW,2444,-31.447400,152.884700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055950J,Ipswich Hospice Care,"37 Chermside Road, Eastern Heights",,Ipswich,QLD,4305,-27.627100,152.769000,False,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0036740Y,Frances Perry House,Cnr Grattan Street & Flemington Road,,Parkville,VIC,3052,-37.798820,144.955495,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055850L,Mater Private Hospital (South Brisbane),301 Vulture St,,South Brisbane,QLD,4101,-27.483500,153.028500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044320X,Cremorne Private Day Surgery,"Level 1, 510 Church Street",,Cremorne,VIC,3121,-37.827889,144.997331,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0999271K,Hobart Day Surgery,10 Warneford Street,,Hobart,TAS,7000,-42.889400,147.319800,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067250F,Icon Cancer Centre Windsor Gardens,"Tenancy 1, Level 1, 480 North East Road",,Windsor Gardens,SA,5087,-34.862187,138.649485,True,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075670H,Spearwood Haemodialysis Unit,2-6 Lancaster Street,,Spearwood,WA,6163,-32.095337,115.783668,True,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+0026900T,The Cataract Clinic (Aust),1 McLaren Street,,North Sydney,NSW,2060,-33.834500,151.205200,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055800A,North West Private Hospital (Qld),137 Flockton Street,,Everton Park,QLD,4053,-27.394600,152.992600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027410B,Riverina Day Surgery,2-6 Meurant Avenue,,Wagga Wagga,NSW,2650,-35.121003,147.354268,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657041B,Inner West Endoscopy Centre,311 Marrickville Road,,Marrickville,NSW,2204,-33.909100,151.153500,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036700H,Melbourne Private Hospital,Royal Parade,,Parkville,VIC,3052,-37.798700,144.955700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075630T,Concept Day Hospital,218 Nicholson Road,,Subiaco,WA,6008,-31.949200,115.818600,True,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0065810F,Calvary Connery Centre,46 John Rice Avenue,,Elizabeth Vale,SA,5112,-34.748070,138.667523,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657421L,Windsor Private Hospital,"20 The Avenue ",,Windsor,VIC,3181,-37.856152,144.998245,False,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0016690B,Manly Waters Private Hospital,17 Cove Avenue,,Manly,NSW,2095,-33.805200,151.284200,False,1,0,1,1,0,1,1,0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,0,0,1,1,1,1,0,0
+0056080J,Icon Cancer Centre Chermside,"Chermside Medical Centre, 930-956 Gympie Road",,Chermside,QLD,4032,-27.381100,153.027700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0873741Y,North Adelaide Day Surgery Centre,174 Ward Street,,North Adelaide,SA,5006,-34.909000,138.594900,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057620K,"Springwood Day Surgery ","52 Cinderella Drive ",,Springwood,QLD,4127,-27.613547,153.130270,True,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017510T,Lakeview Private Hospital,17-19 Solent Circuit,,Norwest,NSW,2153,-31.940481,150.963323,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036640B,The Victorian Rehabilitation Centre,499 Springvale Road,,Glen Waverley,VIC,3150,-37.898500,145.162400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057410Y,South Brisbane Day Hospital,87 Ipswich Road,,Woolloongabba,QLD,4102,-27.475600,153.015389,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027570J,GenesisCare Hurstville,"Level B2 and 6, 31 Dora Street",,Hurstville,NSW,2220,-33.964610,151.101410,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,0,1,1,0
+0928171B,Wesley Hyperbaric,"Ground Floor, Sandford Jackson Building, Chasely Street",,Auchenflower,QLD,4066,-27.477000,152.998000,True,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,0,0,1,1,1
+0037040X,GenesisCare Radiation Oncology Centre Shepparton,124 Corio Street,,Shepparton,VIC,3630,-36.377670,145.403830,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0015250L,Forster Private Hospital,5A South Street,,Forster,NSW,2428,-32.190700,152.526700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036390F,Masada Private Hospital,26 Balaclava Road,,East St Kilda,VIC,3183,-37.869900,145.003000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016050L,Ramsay Clinic Wentworthville,23-27 Lytton Street,,Wentworthville,NSW,2145,-33.811160,150.974561,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036670X,Monash Surgical Private Hospital,252-256 Clayton Road,,Clayton,VIC,3168,-37.921500,145.120500,True,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075240H,St John Of God Subiaco Hospital,12 Salvado Road,,Subiaco,WA,6008,-31.940800,115.825100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035850A,John Fawkner Private Hospital,275 Moreland Road,,Coburg,VIC,3058,-37.754600,144.957400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0879791H,Glen Osmond Surgicentre,45 Glen Osmond Road,,Eastwood,SA,5063,-34.942900,138.619500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067320H,Harley Day Surgery,63 Palmer Place,,North Adelaide,SA,5006,-34.909387,138.594852,True,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0999771L,Adelaide Surgicentre,89 King William St,,Kent Town,SA,5067,-34.928000,138.610700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043400F,Ivanhoe Endoscopy Centre,2/226 Upper Heidelberg Road,,Ivanhoe,VIC,3079,-37.766900,145.044900,True,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0017210F,Lithgow Community Private Hospital,2 Col Drewe Drive,,Lithgow,NSW,2790,-33.479700,150.136500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075650K,Cambridge Day Surgery,"Suite 12, 178 Cambridge Street",,Wembley,WA,6014,-31.940496,115.824880,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065880L,Burnside Hospital Stepney,32 Payneham Road,,Stepney,SA,5069,-34.913904,138.625081,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055080W,Brisbane Private Hospital,259 Wickham Terrace,,Brisbane,QLD,4000,-27.465400,153.022500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0085280F,Launceston Health Hub Day Procedure Unit,247 Wellington Street,,Launceston,TAS,7250,-41.448574,147.140320,True,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0043850A,Bentleigh Surgicentre,157 Jasper Road,,Bentleigh,VIC,3204,-37.920103,145.041144,True,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656151F,Insight Private Hospital,"Level 5, 470 Wodonga Place",,Albury,NSW,2640,-36.075000,146.923300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027020W,Pittwater Day Surgery,202/20 Bungan Street,,Mona Vale,NSW,2103,-33.677700,151.301600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017710H,"Cancer Care Griffith ",115-119 Binya Street,,Griffith,NSW,2680,-34.280565,146.044074,True,0,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0657101H,Mugga Wara Endoscopy Centre,1/70 Kent Street,,Deakin,ACT,2600,-35.320051,149.097763,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0838221B,Marsden Eye Surgery Centre,152 Marsden Street,,Parramatta,NSW,2150,-33.813900,151.002000,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0056250H,Fraser Coast Hospice,222 Urraween Road,,Urraween,QLD,4655,-25.299313,152.808595,False,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0077280F,Western Haematology and Oncology Clinics,18 Prowse Street,,West Perth,WA,6005,-31.944620,115.841812,True,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0097060H,Icon Cancer Centre Canberra,University Of Canberra Medical Centre Corner Broula & Allawoona Streets,,Bruce,ACT,2617,-35.236270,149.086840,True,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0036190L,Donvale Rehabilitation Hospital,1119-1121 Doncaster Road,,Donvale,VIC,3111,-37.790100,145.171500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0834421F,Whitehorse Day Surgery,852-856 Whitehorse Road,,Box Hill,VIC,3128,-37.817600,145.119400,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065780W,Western Hospital,168 Cudmore Terrace,,Henley Beach,SA,5022,-34.910000,138.499300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055350K,Mater Private Hospital Rockhampton,Cnr Ward & Jessie Streets,,Rockhampton,QLD,4700,-23.396800,150.493000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0035970T,Brunswick Private Hospital,82 Moreland Road,,Brunswick,VIC,3056,-37.756400,144.971800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017720F,Victoria Street Private Hospital,2 Victoria Street,,Wollongong,NSW,2500,-34.422032,150.892944,True,1,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+0016880X,Warners Bay Private Hospital,Fairfax Road,,Warners Bay,NSW,2282,-32.961700,151.641100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017750Y,Gosford Specialist Day Hospital,"1 & 2, 131 Henry Parry Drive",,Gosford,NSW,2250,-33.425849,151.344832,True,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+0036900Y,Epworth Hawthorn,46-52 Burwood Road,,Hawthorn,VIC,3122,-37.821245,145.023418,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057540K,Southside Procedure Centre,"Suite 33, Level 2, 245 Mccullough Street",,Sunnybank,QLD,4109,-27.572363,153.061330,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+0056320J,Cancer Care Noosa,36-40 Hofmann Drive,,Noosaville,QLD,4566,-26.415680,153.046424,True,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0016150J,St Vincent's Private Hospital (Darlinghurst),406 Victoria Street,,Darlinghurst,NSW,2010,-33.879900,151.220600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017740A,Cancer Care Macarthur,218 Queen Street,,Campbelltown,NSW,2560,-34.067611,150.813618,True,0,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0077040Y,Kings Park Day Hospital,"Suite 1, 1 Walker Avenue",,West Perth,WA,6005,-31.950517,115.836247,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055330T,Mater Private Hospital Bundaberg,313 Bourbong Street,,Bundaberg,QLD,4670,-24.873900,152.320400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0015810X,Mayo Private Hospital,Lot 1 Potoroo Drive,,Taree,NSW,2430,-31.880900,152.432700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043650J,Knox Day Hospital,520 Mountain Highway,,Bayswater,VIC,3153,-37.837600,145.286900,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056310K,iMH Nundah Private Hospital,"Floors Ground, 2,3 & 4, 20 Nellie Street",,Nundah,QLD,4012,-27.399020,153.063650,False,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0044260T,VSC Day Surgery,"Level 1, 268 Manningham Road",,Templestowe Lower,VIC,3107,-37.773330,145.109910,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0016780A,Lingard Private Hospital,23 Merewether Street,,Merewether,NSW,2291,-32.941000,151.755800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036090W,Mitcham Private Hospital,27 and 36 Doncaster East Road,,Mitcham,VIC,3132,-37.810900,145.194300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027140J,Sydney Retina Clinic & Day Surgery,"Level 13, 187 Macquarie Street",,Sydney,NSW,2000,-33.866900,151.212300,True,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0017060B,Dubbo Private Hospital,River Street,,Dubbo,NSW,2830,-32.235000,148.618000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0077230T,Stirling Dialysis Clinic,1 Puccini Court,,Stirling,WA,6021,-31.889220,115.808272,True,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0027110T,Healthwoods Endoscopy Centre,53 Cowper Street,,Granville,NSW,2142,-33.831400,151.012100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0881091W,Mater Private Hospital Mackay (Wellington Street Campus),1 Wellington Street,,Mackay,QLD,4740,-21.138500,149.181200,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017790L,Southern Sydney Private Hospital,"Level 2, 629 Kingsway",,Miranda,NSW,2228,-34.033631,151.099185,False,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0037100A,Monash Heart Private Operated By Jessie Mcpherson Private Hospital,631 Blackburn Road,,Clayton,VIC,3168,-37.912217,145.140026,False,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0075490K,Hollywood Private Hospital,Monash Avenue,,Nedlands,WA,6009,-31.970500,115.807500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027620T,Swan Clinic For Plastic Surgery,331 The Boulevarde,,Gymea,NSW,2227,-34.027678,151.091923,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0075790Y,Derby Renal Health Centre,5 Stanley Street,,Derby,WA,6728,-17.307263,123.638845,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0057060F,Eastern Endoscopy Centre,120 Birkdale Road,,Birkdale,QLD,4159,-27.494300,153.213400,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044200F,Victorian Centre For Mental Health,112-116/445 Princes Hwy,,Officer,VIC,3809,-38.060240,145.411740,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0085080L,Calvary - St Vincent's Hospital,5 Frederick Street,,Launceston,TAS,7250,-41.441010,147.141456,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016410F,Ramsay Clinic Thirroul,72 Phillip Street,,Thirroul,NSW,2515,-34.310476,150.917554,False,1,0,0,1,1,1,1,0,0,1,1,1,1,0,1,1,1,0,0,1,0,1,1,1,1,0,0,1,1,0,1,1,0
+0894531L,Springvale Endoscopy Centre and Day Hospital,20 Balmoral Avenue,,Springvale,VIC,3171,-37.949400,145.149600,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017640F,Ramsay Surgical Centre Orange,"Level 3 & 4, 1521 Forest Road",,Orange,NSW,2800,-33.315372,149.090045,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,1,1,0,1,1,1
+0016990L,Gosford Private Hospital,Burrabil Avenue,,Gosford,NSW,2250,-33.418100,151.350300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043910F,WestPoint Endoscopy Day Hospital,243 Heaths Road,,Werribee,VIC,3030,-37.877668,144.679729,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0834321J,The Eye Hospital,262 Charles Street,,Launceston,TAS,7250,-41.444700,147.142000,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044230Y,Hampton Day Hospital,338 South Road,,Hampton East,VIC,3188,-37.933020,145.032540,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1
+0065020L,Ashford Hospital,55 Anzac Highway,,Ashford,SA,5035,-34.948500,138.577300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056350B,Mt Gravatt Private Hospital,2140 Logan Road,,Upper Mount Gravatt,QLD,4122,-27.561614,153.084317,True,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0056280A,Levant Gold Coast Day Hospital,"Level 2, 127 Queen Street",,Southport,QLD,4215,-27.971877,153.409683,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0044010K,Melbourne IVF Procedure Centre,36 Wellington Street,,Collingwood,VIC,3066,-37.809678,144.983329,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0097090A,A1 Dental Barton,"Barton Medical Precinct, Level 2, Suite 8A/3 Sydney Avenue",,Barton,ACT,2600,-35.312634,149.133329,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0015770K,The Sydney Private Hospital,63 Victoria Street,,Ashfield,NSW,2131,-33.894600,151.129800,False,1,0,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,1,0,0,1,1,1,1,0,0
+0016700W,Tamara Private Hospital,2-6 Dean Street,,Tamworth,NSW,2340,-31.078400,150.922300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075820J,Aegis Health Private Hospital,5 Bedbrook Row,,Murdoch,WA,6150,-32.068965,115.847469,False,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0067200T,Southern Endoscopy Centre,271 Brighton Road,,Somerton Park,SA,5144,-34.999507,138.521178,True,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0999721A,North Queensland Day Surgical Centre,119 Kings Road,,Pimlico,QLD,4812,-19.279800,146.791600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036220A,Dorset Rehabilitation Centre,146 Derby Street,,Pascoe Vale,VIC,3044,-37.723500,144.947200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016970W,Nowra Private Hospital,Weeroona Place,,Nowra,NSW,2541,-34.893100,150.607200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067310J,Advanced Oral and Maxillofacial Surgery,238 Angas Street,,Adelaide,SA,5000,-34.929207,138.609693,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+0043970T,Glen Iris Private,314 Warrigal Road,,Glen Iris,VIC,3146,-37.858058,145.093727,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044030H,Hobson Healthcare Sydenham,566 Melton Highway,,Sydenham,VIC,3037,-37.693199,144.758646,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036140A,Essendon Private Clinic,35 Rosehill Road,,Essendon West,VIC,3040,-37.748800,144.889400,False,1,0,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,0,0,1,1,1,1,0,0
+0999411T,Southside Endoscopy Centre,"Level 6, 4 Paxton Street",,Springwood,QLD,4127,-27.662900,153.178000,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016260B,Sydney Adventist Hospital,185 Fox Valley Road,,Wahroonga,NSW,2076,-33.735300,151.100000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017730B,Genesiscare Campbelltown,"38 Camden Road ",,"Campbelltown ",NSW,2560,-34.071293,150.806036,True,1,1,0,0,1,1,0,1,1,1,1,0,1,0,0,0,0,0,0,0,0,1,1,0,1,1,0,0,1,0,0,0,1
+0065050H,Burnside Hospital Toorak Gardens,120 Kensington Road,,Toorak Gardens,SA,5065,-34.927200,138.638700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657451H,Orange Eye Centre,267-277 Lords Place,,Orange,NSW,2800,-33.280400,149.101800,True,1,0,0,0,0,0,0,1,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0
+0656571H,Toowoomba Surgicentre,18 Scott Street,,Toowoomba,QLD,4350,-27.566000,151.973600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055470B,Nambour Selangor Private Hospital,62 Netherton Street,,Nambour,QLD,4560,-26.620000,152.956400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657381F,Forest Road Day Surgery,99A Forest Road,,Hurstville,NSW,2220,-33.966700,151.100200,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065360T,Calvary Adelaide Hospital,120 Angas Street,,Adelaide,SA,5000,-34.929821,138.605286,False,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,1,1,0,1,1,0
+0097000X,Barton Private Hospital,"2/9 Sydney Avenue & 18 National Circuit, (Barton Ward At Hotel Realm)",,Barton,ACT,2600,-35.312836,149.133192,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056240J,Wandi Nerida,228 Old Gympie Road,,Mooloolah Valley,QLD,4553,-26.753490,152.975610,False,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0056110X,Sunshine Coast University Private Hospital,3 Doherty Street,,Birtinya,QLD,4575,-26.730908,153.120436,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0077150T,Walcott Street Surgical Centre,"41 Walcott Street ",,Mount Lawley,WA,6050,-31.936347,115.874160,True,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036600K,Mildura Health Private Hospital,220-228 Thirteenth Street,,Mildura,VIC,3500,-34.185700,142.145800,False,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055110F,Mater Women's & Children's Private Health Services,Raymond Terrace,,South Brisbane,QLD,4101,-27.484700,153.028200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056370Y,Maroochy Private Hospital,"Ground Floor, Level 8, 9 & 10, 12 Future Way",,Maroochydore,QLD,4558,-26.658189,153.090375,False,0,1,0,0,1,1,1,0,1,0,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,1,0,0,0,1
+0067040T,Payneham Dialysis Clinic,2 Portrush Road,,Payneham,SA,5070,-34.896900,138.639300,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057530L,Bundaberg Private Day Hospital,51 Commercial Street,,Kensington,QLD,4670,-24.897440,152.324868,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,0,1,1,1
+0044240X,Icon Cancer Centre Moreland,275 Moreland Road,,Coburg,VIC,3058,-37.754590,144.958280,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0037060T,Gih Access Endoscopy,"Level 1, 445 Princes Highway",,Officer,VIC,3809,-38.060240,145.411740,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0836101F,Bondi Junction Endoscopy Centre,56 Grosvenor Street,,Woollahra,NSW,2025,-33.890200,151.249500,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027700T,Northern Sydney Eye Hospital,"Level 1, 22-26 Clarke Street",,Crows Nest,NSW,2605,-33.825129,151.199449,True,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0065060F,Calvary North Adelaide Hospital,89 Strangways Terrace,,North Adelaide,SA,5006,-34.911400,138.584200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017520L,Chatswood Private Hospital,Suite 1/38B Albert Avenue,,Chatswood,NSW,2067,-33.797661,151.185725,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016860A,Calvary Riverina Hospital,Hardy Avenue,,Wagga Wagga,NSW,2650,-35.118900,147.354600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017800F,Ramsay Surgical Centre Charlestown,"Level 4, 99 Pacific Highway",,Charlestown,NSW,2290,-32.965282,151.695953,False,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,0,0,1,0,1,1,1,1,0,0,1,1,0,0,0,1
+0015790H,Mater Hospital Sydney,25 Rocklands Road,,North Sydney,NSW,2060,-33.831300,151.201200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027640K,Sydney Pain Day Surgery,"Suite 3, 44-46 Oxford Street",,Epping,NSW,2121,-33.770936,151.083219,True,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1,1
+0057360T,Gold Coast Eye Hospital,"Tenancy 4110, Level 3, Robina Town Centre Drive",,Robina Town Centre,QLD,4230,-28.078834,153.386028,True,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0017170X,Prince Of Wales Private Hospital,"Levels 5-7, Ambulatory Care Services Centre Building, Prince Of Wales Campus, Barker Street",,Randwick,NSW,2031,-33.908300,151.242800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036580Y,Mulgrave Private Hospital,Blanton Drive,,Mulgrave,VIC,3170,-37.939200,145.210600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043560K,Stonnington Day Surgery,Level 1; 253 Wattletree Road,,Malvern,VIC,3144,-37.863500,145.037400,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0077000H,McCourt Street Day Surgery,28 McCourt Street,,West Leederville,WA,6007,-31.941300,115.827700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0999941K,Roderick Street Day Surgery,23 Roderick Street,,Ipswich,QLD,4305,-27.617300,152.758400,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0055830W,Pine Rivers Private Hospital,34 Dixon Street,,Strathpine,QLD,4500,-27.307500,152.994300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0930971X,Brighton Dialysis Clinic,361-365 Brighton Rd,,Hove,SA,5048,-35.009784,138.522158,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0017220B,Bondi Junction Private Hospital,"Level 1 & 2,  21 Spring Street",,Bondi Junction,NSW,2022,-33.892200,151.245900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036510L,Peninsula Private Hospital (Vic),525 McClelland Drive,,Frankston,VIC,3199,-38.157675,145.169532,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055630B,Belmont Private Hospital,1220 Creek Road,,Carina,QLD,4152,-27.501100,153.100300,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044080X,Ballarat Surgicentre,5-9 Wood Street,,Soldiers Hill,VIC,3350,-37.542901,143.852263,True,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656511X,Perth Eye Hospital,42 Ord Street,,West Perth,WA,6005,-31.950100,115.839400,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0037020A,The Hader Clinic,6-8 Townsend Road,,St Albans Park,VIC,3219,-38.180576,144.383148,False,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0075640L,West Coast Endoscopy Centre,1/32 Pimlico Place,,Joondalup,WA,6027,-31.739300,115.767600,True,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1
+0043820H,Manningham Private Hospital,"Suite 304, Level 3, 200 High Street",,Templestowe Lower,VIC,3107,-37.773469,145.115042,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657841T,Wollongong Day Surgery,354-358 Crown Street,,Wollongong,NSW,2500,-34.425900,150.881800,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057090Y,Vision Centre Day Surgery,95 Nerang Street,,Southport,QLD,4215,-27.975500,153.400100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044310Y,Doncaster Private Hospital,720 Doncaster Road,,Doncaster,VIC,3108,-37.787403,145.132884,True,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0067100X,Dextra Surgical,83 Kensington Road,,Norwood,SA,5067,-34.927313,138.630614,True,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044050B,Skin Health Institute,"Level 1, 80 Drummond Street",,Carlton,VIC,3053,-37.804888,144.968609,True,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657311X,Waverley Endoscopy,301 Blackburn Road,,Mount Waverley,VIC,3149,-37.880300,145.146800,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656351X,Footscray Day Surgery,89 Paisley Street,,Footscray,VIC,3011,-37.800500,144.895500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057370L,Southport Day Hospital,98A Marine Parade,,Southport,QLD,4215,-27.962478,153.413142,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0065950T,Eastwood Private Hospital,204 Greenhill Road,,Eastwood,SA,5063,-34.940921,138.618529,False,1,1,0,0,1,1,1,0,1,1,1,1,1,0,1,1,0,1,0,1,0,1,1,1,1,0,0,1,1,0,0,0,1
+0036280K,South Eastern Private Hospital,Cnr Princes Highway & Heatherton Road,,Noble Park,VIC,3174,-37.966800,145.194000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016830H,Longueville Private Hospital,45-47 Kenneth Street,,Longueville,NSW,2066,-33.827600,151.170000,False,1,0,1,1,0,1,1,0,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,1,0,0,1,1,1,1,0,0
+0656991J,Freshwater Day Surgery,10 Dale Street,,Brookvale,NSW,2100,-33.765800,151.267600,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016960X,Albury Wodonga Private Hospital,1125 Pemberton Street,,Albury,NSW,2640,-36.075200,146.882100,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017320Y,The Hills Private Hospital,499 Windsor Road,,Baulkham Hills,NSW,2153,-33.744500,150.982200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0016070J,St John Of God Burwood Hospital,13-21 Grantham Street,,Burwood,NSW,2134,-33.869814,151.100421,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0087050B,Specialist Care Australia Launceston,129 Wellington Street,,Launceston,TAS,7250,-41.442985,147.138799,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,0
+0056160J,Mater Private Hospital Springfield,30 Health Care Drive,,Springfield Central,QLD,4300,-27.679040,152.903792,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017190T,Armidale Private Hospital,Rusden Street,,Armidale,NSW,2350,-30.510000,151.648900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0015310W,Royal Rehab Private Petersham,275 Addison Road,,Petersham,NSW,2049,-33.899500,151.154900,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0091010Y,Calvary John James Hospital,173 Strickland Crescent,,Deakin,ACT,2600,-35.321800,149.095700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067130L,The Tennyson Centre Day Hospital,"Tenancy 18, Level 1, 520 South Road",,Kurralta Park,SA,5037,-34.949052,138.571066,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0834411H,Francis Street Ophthalmic Day Procedure Centre,112 Francis Street,,Richmond,NSW,2753,-33.595100,150.751300,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0027690A,Armidale Day Surgery,126 O'Dell Street,,Armidale,NSW,2350,-30.511670,151.654117,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017410X,Kellyville Private Hospital,3 McCausland Place,,Kellyville,NSW,2155,-33.718557,150.951440,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0044000L,Imaging @ Olympic Park,"AAMI Park Suite 2, 60 Olympic Boulevard",,Melbourne,VIC,3000,-37.824459,144.985210,True,1,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0067160H,Vista Day Surgery,57 Greenhill Road,,Wayville,SA,5034,-34.942095,138.592971,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057010T,Short Street Day Surgery,2 Short Street,,Southport,QLD,4215,-27.970200,153.417100,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0657501L,Sydney Clinic For Gastrointestinal Diseases,"Level 10, 1 Newland Street",,Bondi Junction,NSW,2022,-33.891800,151.247400,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0056380X,Mater Private Hospital Gold Coast,14 Hill Street,,Southport,QLD,4215,-27.961782,153.384278,False,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+0936951X,Cancer Care Wollongong,410 Crown Street,,Wollongong,NSW,2500,-34.425900,150.875800,True,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0096000F,NT Medical Specialist,21 Vanderlin Drive,,Wanguri,NT,0810,-12.376291,130.885694,True,1,1,0,1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,0,1,1,1
+0043860Y,Victoria Parade Surgery Centre,"Level 1, 100 Victoria Parade ",,East Melbourne,VIC,3002,-37.808451,144.975044,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027540T,Jamison Street Day Surgery,Suite 151 - 1 Jamison Street,,Sydney,NSW,2000,-33.864472,151.205820,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0044250W,South Yarra Day Surgery,"Level 11, 9 Yarra St",,South Yarra,VIC,3141,-37.837530,144.992950,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0656851Y,Chesterville Day Hospital,28 Chesterville Road,,Cheltenham,VIC,3192,-37.960400,145.056700,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017020K,Berkeley Vale Private Hospital,11 Lorraine Avenue,,Berkeley Vale,NSW,2261,-33.341300,151.430500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075160H,St John Of God Mt Lawley Hospital,Thirlmere Road,,Mount Lawley,WA,6050,-31.936400,115.882700,False,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057190W,Logan Endoscopy Services,Unit 2/3276 Beaudesert Road,,Browns Plains,QLD,4118,-27.607800,153.047500,True,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0097030L,Canberra Imaging Group,173 Strickland Crescent,,Deakin,ACT,2600,-35.319025,149.095577,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056230K,Hader Clinic Queensland Private,"30 Fraser Road ",,"Gympie ",QLD,4570,-26.165318,152.641910,False,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0015040A,Alwyn Rehabilitation Hospital,1 Emu Street,,Strathfield,NSW,2135,-33.882700,151.094600,False,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0026940H,Southern Suburbs Day Procedure Centre,47 Regent Street,,Kogarah,NSW,2217,-33.961800,151.134800,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057170Y,MSI Brisbane,8 Campbell Street,,Bowen Hills,QLD,4006,-27.447700,153.037100,True,1,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+0036790K,La Trobe Private Hospital,Cnr Plenty Road and Kingsbury Drive,,Bundoora,VIC,3083,-37.716900,145.043200,False,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0656581F,Camberwell Day Surgery,27 Denmark Hill Road,,Hawthorn East,VIC,3123,-37.832700,145.056300,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056340F,Cancer Care Moreton Bay,128 Mckean Street,,Caboolture,QLD,4510,-27.079438,152.965348,True,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+0057380K,North Lakes Day Hospital,7 Endeavour Boulevard,,North Lakes,QLD,4509,-27.239122,153.018778,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075550T,Perth Clinic,29 Havelock Street,,West Perth,WA,6005,-31.951100,115.843500,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0057490F,Mater Private Day Hospital Brookwater,Cnr Of Augusta Parkway & Tournament Drive,,Brookwater,QLD,4300,-27.663561,152.891684,True,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0043940Y,Corymbia Day Hospital,92 David Street,,Dandenong,VIC,3175,-37.977424,145.217044,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027610W,Coffs Day Hospital,201 Rose Avenue,,Coffs Harbour,NSW,2450,-30.287883,153.124000,True,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0899091B,Eye-Tech Day Surgeries,"Level 3, St Andrew's Place, 33 North Street",,Spring Hill,QLD,4000,-27.461200,153.021500,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017280L,Sutherland Heart Clinic,"Level 2, The Sutherland Hospital, The Kingsway",,Caringbah,NSW,2229,-34.037000,151.115000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055980B,Pacific Private Hospital,"Level 1 & 2, 119-123 Nerang Street",,Southport,QLD,4215,-27.970800,153.408000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017340W,Genea Northwest,"Level 1, Suite 101, 10 Norbrick Drive",,Bella Vista,NSW,2153,-33.744932,150.952792,True,1,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0
+0037150L,Sunshine Clinic Private Hospital,145-149 Furlong Road,,St Albans,VIC,3021,-37.761044,144.816371,True,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0999441J,Tweed Day Surgery,"Suite 4, 38-44 Boyd Street",,Tweed Heads,NSW,2485,-28.178600,153.539800,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0988281K,Canberra Surgicentre,"Suite 2, Scala House Torrens, 11 Torrens Street",,Braddon,ACT,2612,-35.274900,149.133800,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0036200F,Beleura Private Hospital,925 Nepean Highway,,Mornington,VIC,3931,-38.226100,145.049000,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0044280K,Templestowe Day Surgery,2/114 James Street,,Templestowe,VIC,3106,-37.756824,145.128394,True,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0016490K,Hunter Valley Private Hospital,20 Mawson Street,,Shortland,NSW,2307,-32.883500,151.694700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0075500B,Waikiki Private Hospital,221 Willmot Drive,,Waikiki,WA,6169,-32.280400,115.740900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0065240A,Memorial Hospital,Sir Edwin Smith Avenue,,North Adelaide,SA,5006,-34.911700,138.600900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0097050J,Canberra Microsurgery,16 Wilbow Street,,Phillip,ACT,2606,-35.345617,149.089471,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0887521H,Ramsay Surgical Centre Cairns,156-160 Grafton Street,,Cairns,QLD,4870,-16.919400,145.771800,True,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056260F,Herston Private Hospital,"Ground Floor and Floors 1 & 2, 7 Wren Street,",,Bowen Hills,QLD,4006,-27.447595,153.030694,False,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0036710F,Ramsay Clinic Albert Road,31 Albert Road,,Melbourne,VIC,3004,-37.834300,144.971800,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0067230J,Lift Cancer Care Services,7/506-520 South Road,,Kurralta Park,SA,5037,-34.948619,138.570827,True,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0017010L,St Luke's Hospital,18 Roslyn Street,,Potts Point,NSW,2011,-33.874600,151.225600,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0055790J,Peninsula Private Hospital (Qld),Cnr George and Florence Streets,,Kippa-Ring,QLD,4021,-27.229700,153.093900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0027590F,Gateway Day Hospital,"Level 18, Gateway Tower, 1 Macquarie Place",,Sydney,NSW,2000,-33.970619,151.080018,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0036440K,The Avenue Private Hospital,40 The Avenue,,Windsor,VIC,3181,-37.854600,144.998200,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0043490J,Msi Melbourne,26B Dickens Street,,Elwood,VIC,3184,-37.860178,145.007721,True,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0085000H,North West Private Hospital (Tas),21 Brickport Road,,Burnie,TAS,7320,-41.055700,145.882900,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0747341X,Genea Day Surgery,"Level 4, 321 Kent Street",,Sydney,NSW,2000,-33.864500,151.210600,True,1,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0
+0017600L,Tuggerah Lakes Private Hospital,645 Pacific Highway,,Kanwal,NSW,2259,-33.262430,151.482250,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1
+0095140A,IMH Deakin Private Hospital,Corner Of Strickland Crescent and Denison Street,,Deakin,ACT,2600,-35.318417,149.094045,False,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+0036770T,Western Private Hospital,1-9 Marion Street,,Footscray,VIC,3011,-37.792900,144.885400,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0056120W,Mackay Private Hospital,57 Norris Road,,Mount Pleasant,QLD,4740,-21.114331,149.166626,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0017660A,Somerset Private Hospital,"Level 1, 38 Somerset Street",,Kingswood,NSW,2747,-33.761330,150.715640,False,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1
+0017240Y,Westmead Private Hospital,Cnr Mons & Darcy Roads,,Westmead,NSW,2145,-33.812300,150.957700,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+0016870Y,Norwest Private Hospital,"11  Norbrik Drive, Norwest Business Park",,Bella Vista,NSW,2153,-33.744852,150.953484,False,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
