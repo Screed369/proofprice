@@ -47,9 +47,10 @@ export default defineSource({
       tax: str(p.tax),
       baseUrl: ctx.baseUrl,
     }),
-  // Stands in for the Italian, French and Spanish station-level sources when they cannot be reached and no recent copy is held
-  // (MIMIT refuses connections from cloud servers): the answer is this bulletin's national figure and says so.
-  fallbackFor: { sources: ["it-fuel", "fr-fuel", "es-fuel"], countries: ["IT", "FR", "ES"], label: "the European Commission Weekly Oil Bulletin" },
+  // Stands in for the Italian, French and Spanish station-level sources and for Statistics Netherlands (CBS) when they cannot be
+  // reached and no recent copy is held (MIMIT refuses connections from cloud servers): the answer is this bulletin's national figure
+  // and says so. NL is one of this source's countries but serves() leaves it to CBS, so it counts as a stand-in country here.
+  fallbackFor: { sources: ["it-fuel", "fr-fuel", "es-fuel", "nl-cbs-fuel"], countries: ["IT", "FR", "ES", "NL"], label: "the European Commission Weekly Oil Bulletin" },
   nominalCounts: true,
   harvest: wobHarvest,
   backfill: wobBackfill,

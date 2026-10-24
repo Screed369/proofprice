@@ -91,6 +91,19 @@ test("fallbackSources: only sources that declare this primary and this country, 
   assert.deepEqual(fallbackSources(frSrc, "FR").map((s) => s.info.id), ["eu-oil-bulletin"]);
 });
 
+test("fallbackSources: Statistics Netherlands (nl-cbs-fuel) falls back to the bulletin's national NL figure", async (t) => {
+  t.mock.method(console, "warn", () => {});
+  const nl = SOURCE_PLUGINS.find((s) => s.info.id === "nl-cbs-fuel")!;
+  assert.deepEqual(fallbackSources(nl, "NL").map((s) => s.info.id), ["eu-oil-bulletin"]);
+  // the bulletin still does not answer NL on its own (serves() leaves NL to CBS)
+  assert.equal(wobSrc.serves!({ country: "NL" }), false);
+  const fb = fake("fake-nl", () => Promise.resolve({ ...national(fake("x", down), 2.0), summary: "bulletin NL" } as PriceAnswer), { countries: ["NL"] });
+  (fb as any).fallbackFor = { sources: ["nl-cbs-fuel"], countries: ["NL"], label: "the fake bulletin" };
+  const a = await withHandle(nl, down, () => runCategory(fuelCat, { country: "NL", fuel: "diesel" }, {}, { sources: [nl, fb] }));
+  assert.equal(a.extra!.fallback_for, "nl-cbs-fuel");
+  assert.match(a.notice, /could not be reached/);
+});
+
 test("order 1: a live primary answer is returned and the fallback is never asked", async () => {
   const fb = fake("fake-fb", () => Promise.resolve(national(fake("x", down), 1.6)));
   const a = await withHandle(itSrc, live(itSrc), () => runCategory(fuelCat, RM, {}, { sources: [itSrc, fb] }));

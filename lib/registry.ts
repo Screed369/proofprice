@@ -270,7 +270,7 @@ export function fallbackProblems(all: SourcePlugin[] = SOURCE_PLUGINS): string[]
     }
     for (const c of fb.countries) {
       if (!/^[A-Z]{2}$/.test(c)) out.push(`${where}: country "${c}" must be an ISO 3166 alpha-2 code`);
-      else if (s.countries.includes(c)) out.push(`${where}: ${c} is already one of this source's own countries`);
+      else if (s.countries.includes(c) && (!s.serves || s.serves({ country: c }))) out.push(`${where}: ${c} is already one of this source's own countries`);
       else if (!targets.some((t) => t.countries.includes(c))) out.push(`${where}: ${c} is not a country of any of ${fb.sources.join(", ")}`);
     }
     if (fb.label !== undefined && !fb.label.trim()) out.push(`${where}.label is empty`);

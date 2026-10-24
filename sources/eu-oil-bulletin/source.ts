@@ -67,7 +67,7 @@ export const INFO: SourceInfo = {
     "The Commission states that the prices are \"the prices most frequently charged, based on a weighted average\" and that \"comparisons between prices and price trends in different countries shall be carefully made\" because of differences in product quality, marketing practices and market structures. " +
     "Only Euro-super 95 (petrol95), automotive gas oil (diesel) and LPG (lpg) can be asked for, plus heating gas oil in the extra fields; premium petrol, E10, E85 and natural gas are not published. " +
     "Some Member States report no LPG or heating gas oil price. Prices are those in force on the Monday of the bulletin week. For Czechia, Denmark, Hungary, Poland, Romania and Sweden the euro price moves with the exchange rate the Commission used, so changes in euro can differ from changes in the national currency. " +
-    "ES, FR, IT and AT are answered by their own national sources; when the Spanish, French or Italian source cannot be reached and ProofPrice holds no recent copy of it, this bulletin's national figure for that country is given instead and the answer says so. In the history tool, sample_size is null (the bulletin gives no count of stations).",
+    "ES, FR, IT and AT are answered by their own national sources; when the Spanish, French, Italian or Dutch source cannot be reached and ProofPrice holds no recent copy of it, this bulletin's national figure for that country is given instead and the answer says so. In the history tool, sample_size is null (the bulletin gives no count of stations).",
 };
 
 // ---------- countries and fuels ----------

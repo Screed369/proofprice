@@ -349,7 +349,7 @@ test("manifest and INFO: the countries, the examples, the licence quoted from th
   assert.deepEqual([...def.countries].sort(), "IE AT DE NL BE PT PL DK SE FI LU GR CZ SK SI HR HU RO BG EE LV LT CY MT".split(" ").sort());
   assert.deepEqual(def.countries, Object.keys(COUNTRIES));
   for (const c of ["ES", "FR", "IT"]) assert.ok(!def.countries.includes(c), `${c} has its own source`);
-  assert.deepEqual(def.fallbackFor, { sources: ["it-fuel", "fr-fuel", "es-fuel"], countries: ["IT", "FR", "ES"], label: "the European Commission Weekly Oil Bulletin" });
+  assert.deepEqual(def.fallbackFor, { sources: ["it-fuel", "fr-fuel", "es-fuel", "nl-cbs-fuel"], countries: ["IT", "FR", "ES", "NL"], label: "the European Commission Weekly Oil Bulletin" });
   assert.match(INFO.limits, /this bulletin's national figure for that country is given instead and the answer says so/);
   assert.equal(def.category, "fuel");
   assert.deepEqual(def.examples[0].params, { country: "IE", fuel: "diesel" });
