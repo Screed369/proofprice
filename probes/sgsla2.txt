@@ -1,0 +1,23 @@
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_2057d332317dd0d045e392fe4e9aca57&limit=6
+Fetched: 2026-10-24T06:42:19Z from GitHub Actions
+Status, type, bytes: 200 application/json 3710
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 06:42:19 GMT
+content-type: application/json
+x-content-type-options: nosniff
+vary: Accept-Encoding
+apigw-requestid: FvHztiWZSQ0EMCQ=
+strict-transport-security: max-age=31536000; includeSubDomains
+last-modified: Sat, 24 Oct 2026 06:42:19 GMT
+cache-control: max-age=300
+cf-cache-status: MISS
+set-cookie: _cfuvid=H5XSYXrCfdJ.Z1xMFzHvL7oGjIRX7ZVgOfejKOOzMEk-1792824137.8263123-1.0.1.1-JAGRomDNdk.xVR606s0K7m.hpGdQHjDlx2fbRIqkmKw; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+server: cloudflare
+cf-ray: a4f7002d6969c76b-IAD
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"success":true,"result":{"resource_id":"d_2057d332317dd0d045e392fe4e9aca57","fields":[{"type":"numeric","id":"year"},{"type":"text","id":"property_location"},{"type":"text","id":"mode_of_allocation"},{"type":"text","id":"land_area"},{"type":"text","id":"gross_floor_area"},{"type":"text","id":"tendered_uses"},{"type":"text","id":"tenure"},{"type":"text","id":"closing_date"},{"type":"text","id":"award_date"},{"type":"text","id":"awarded_usage"},{"type":"text","id":"award_value_per_month_for_the_first_term_tenancy"},{"type":"text","id":"successful_bidder"},{"type":"int4","id":"_id"}],"records":[{"_id":1,"year":"2004","property_location":"5 Pearl's Hill Road","mode_of_allocation":"Tender","land_area":"Parcel A - 8712 Parcel B - 3568","gross_floor_area":"Parcel A - 4612","tendered_uses":"Parcel A - Student Hostel Parcel B - Play Field","tenure":"3+2","closing_date":"4 02 2004","award_date":"5/18/2004","awarded_usage":"na","award_value_per_month_for_the_first_term_tenancy":"28288","successful_bidder":"Lim Moi Hong@Stephen Lim"},{"_id":2,"year":"2004","property_location":"2 Adis Road","mode_of_allocation":"Tender","land_area":"2478","gross_floor_area":"2985","tendered_uses":"Arts Related uses(include Arts Gallery, Arts Theatre, Arts School), Education Related Uses(include Music School, Dance School, Drama School, Speech School, Child Development Centre, Play School), Student Hostel, Childcare Centre, Kindergarden","tenure":"3+3+1","closing_date":"4/30/2004","award_date":"6/14/2004","awarded_usage":"na","award_value_per_month_for_the_first_term_tenancy":"22888","successful_bidder":"Lee Wee Peng"},{"_id":3,"year":"2004","property_location":"148A Silat Avenue","mode_of_allocation":"Tender","land_area":"4038","gross_floor_area":"3223","tendered_uses":"Kindergarten, Childcare Centre, Association, Nursing Home","tenure":"3+2","closing_date":"4/30/2004","award_date":"7/15/2004","awarded_usage":"na","award_value_per_month_for_the_first_term_tenancy":"16800","successful_bidder":"Orange Valley Investments Pte Ltd"},{"_id":4,"year":"2004","property_location":"98 Henderson Road","mode_of_allocation":"Tender","land_area":"7440","gross_floor_area":"3788","tendered_uses":"Foreign System School, Childcare Centre, Kindergarten, Fencing School, Martial Arts School,Archery School,Commercial School (Education & tuition centre), Student Hostel","tenure":"3+3+2","closing_date":"7/13/2004","award_date":"3 09 2004","awarded_usage":"na","award_value_per_month_for_the_first_term_tenancy":"68000","successful_bidder":"East Asia School of Business Pte Ltd"},{"_id":5,"year":"2004","property_location":"2 Kampong Kapor Road","mode_of_allocation":"Tender","land_area":"3310","gross_floor_area":"891","tendered_uses":"Student Care Centre, Elderly Day Care  Centre, Kindergarten, Childcare Centre, Association/Clubs for Sports related use & Community Service Centre.","tenure":"3+3+1","closing_date":"7/23/2004","award_date":"6 10 2004","awarded_usage":"na","award_value_per_month_for_the_first_term_tenancy":"10511","successful_bidder":"Ng Joo Hong"},{"_id":6,"year":"2004","property_location":"1 Woodlands Road","mode_of_allocation":"Tender","land_area":"15806.5","gross_floor_area":"12680","tendered_uses":"Retail Use, Commercial School,  other Retail Related Uses","tenure":"3+3","closing_date":"7/30/2004","award_date":"10/28/2004","awarded_usage":"na","award_value_per_month_for_the_first_term_tenancy":"99999","successful_bidder":"Sheng Siong Supermarket Pte Ltd"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_2057d332317dd0d045e392fe4e9aca57&limit=6","next":"/api/action/datastore_search?resource_id=d_2057d332317dd0d045e392fe4e9aca57&offset=6&limit=6"},"total":589,"limit":6}}
