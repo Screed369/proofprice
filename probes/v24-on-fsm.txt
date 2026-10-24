@@ -1,0 +1,25 @@
+URL: https://data.ontario.ca/api/3/action/package_show?id=fee-schedule-master-fsm
+Fetched: 2026-10-24T00:41:36Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3295
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 00:41:36 GMT
+content-type: application/json;charset=utf-8
+content-length: 3295
+cache-control: max-age=1800
+expires: Sat, 24 Oct 2026 01:11:36 GMT
+x-cache-status: MISS
+access-control-allow-credentials: true
+access-control-allow-headers: Content-Type, Content-Length, X-Requested-With, X-Authorization
+vary: Origin
+strict-transport-security: max-age=31536000; includeSubDomains
+x-frame-options: SAMEORIGIN
+x-azure-ref: 20261024T004136Z-179d79cf579fw9mbhC1CYSf2r40000000710000000001hzh
+x-cache: CONFIG_NOCACHE
+accept-ranges: bytes
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://data.ontario.ca/api/3/action/help_show?name=package_show", "success": true, "result": {"access_instructions": {}, "access_level": "restricted", "asset_type": "dataset", "creator_user_id": "faba29e3-f7ad-4b37-ad77-3ce832d12630", "current_as_of": "2017-01-17", "exemption": "privacy", "exemption_rationale": {"fr": "Les donn\u00e9es contiennent des renseignements personnels et sont prot\u00e9g\u00e9es par l\u2019exception relative \u00e0 la protection de la vie priv\u00e9e.", "en": "Data contains personal information and falls under the privacy exemption."}, "geographic_coverage_translated": {"fr": "Ontario", "en": "Ontario"}, "id": "d27cb5d1-0879-4d32-b259-a4901dd33861", "isopen": false, "keywords": {"fr": ["Sant\u00e9", "Gouvernement"], "en": ["Health", "Government"]}, "license_id": "notspecified", "license_title": "Licence Not Specified", "maintainer": null, "maintainer_branch": {}, "maintainer_translated": {}, "metadata_created": "2020-01-11T08:52:46.173775", "metadata_modified": "2021-01-14T22:06:17.873540", "name": "fee-schedule-master-fsm", "node_id": "82378", "notes": "This database contains the history of Fee Schedule codes, which are how much\nthe Ministry of Health and Long-Term Care pays a physician for performing a\nmedical procedure or service for patients.\n\n", "notes_translated": {"fr": "Cette base de donnees contient les codes des honoraires historiques et\ncourants, ce qui correspond au montant paye par le ministere de la Sante et\ndes Soins de longue duree aux medecins qui procedent a des actes medicaux ou\noffrent des services a des patients.\n\n", "en": "This database contains the history of Fee Schedule codes, which are how much\nthe Ministry of Health and Long-Term Care pays a physician for performing a\nmedical procedure or service for patients.\n\n"}, "num_resources": 0, "num_tags": 4, "opened_date": "2017-01-17", "organization": {"id": "b1ed4561-0f4b-4c71-985c-d461a16b248c", "name": "health", "title": "Health", "type": "organization", "description": "Helping people stay healthy, delivering high-quality care when they need it and protecting the health system for future generations.", "image_url": "2020-03-19-202841.721975health.jpg", "created": "2019-12-31T10:22:12.886454", "is_organization": true, "approval_status": "approved", "state": "active"}, "owner_org": "b1ed4561-0f4b-4c71-985c-d461a16b248c", "private": false, "state": "active", "title": "Fee Schedule Master (FSM)", "title_translated": {"fr": "Fichier principal des honoraires", "en": "Fee Schedule Master (FSM)"}, "type": "dataset", "update_frequency": "as_required", "version": null, "tags": [{"display_name": "Gouvernement", "id": "558f82ee-08bb-40b9-93bb-886771750f57", "name": "Gouvernement", "state": "active", "vocabulary_id": null}, {"display_name": "Government", "id": "f94166a9-337f-4b63-9127-dc9a86f212c8", "name": "Government", "state": "active", "vocabulary_id": null}, {"display_name": "Health", "id": "0a6718c8-3338-418f-ab6f-894043c2d53d", "name": "Health", "state": "active", "vocabulary_id": null}, {"display_name": "Sant\u00e9", "id": "bd5585cf-bccc-4d3e-9299-d7130f543e10", "name": "Sant\u00e9", "state": "active", "vocabulary_id": null}], "resources": [], "groups": [], "relationships_as_subject": [], "relationships_as_object": []}}
