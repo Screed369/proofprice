@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseCsv, dvfCommercialSales, windowSales, frCommercialDescribe, INFO } from "./source";
+import { parseCsv, dvfCommercialSales, windowSales, frCommercialDescribe, INFO, knownCommunes, frHistoryKey, frHarvest } from "./source";
 
 // Header exactly as published in geo-dvf (checked 17 Oct 2026 from files.data.gouv.fr/geo-dvf/latest/csv/2025/communes/33/33063.csv).
 // Rows 2025-384850, -384860 and -384892 are real Bordeaux rows copied from that file (addresses shortened); the rest are invented for the test.
@@ -65,4 +65,36 @@ test("FR DVF commercial: sentence and licence", () => {
   assert.match(t, /per m²/);
   assert.match(INFO.attribution, /DGFiP/);
   assert.match(INFO.licence, /Etalab/);
+});
+
+test("FR commercial: known places resolve without the geo API; history key only for places and windows the copy holds", () => {
+  assert.deepEqual(knownCommunes({ postcode: "69003" }), [{ code: "69383", nom: "Lyon 3e arrondissement", codeDepartement: "69" }]);
+  assert.equal(knownCommunes({ town: "Toulouse" })![0].code, "31555");
+  assert.equal(knownCommunes({ postcode: "33000" }), null);
+  assert.deepEqual(frHistoryKey({ postcode: "69003" }), { area: "69383", item: "commercial:24m", label: "Lyon 3e arrondissement" });
+  assert.deepEqual(frHistoryKey({ town: "Toulouse", property_type: "land", months: 24 }), { area: "31555", item: "land:24m", label: "Toulouse" });
+  assert.equal(frHistoryKey({ town: "Toulouse", months: 12 }), null);
+  assert.equal(frHistoryKey({ town: "Carcassonne" }), null);
+  assert.equal(frHistoryKey({ town: "Toulouse", property_type: "castle" }), null);
+});
+
+test("FR commercial: harvest writes 24-month medians per m2 per place and type, 5+ sales only, wrong commune names skipped", async () => {
+  const mk = (nom: string, n: number) =>
+    [H, ...Array.from({ length: n }, (_, i) => row(`${nom}-c${i}`, `2026-0${(i % 6) + 1}-15`, "Vente", String(100000 + i * 10000), "4", "100")), ...Array.from({ length: n }, (_, i) => row(`${nom}-l${i}`, `2026-0${(i % 6) + 1}-16`, "Vente", String(50000 + i * 5000), "", "", "S", "500"))]
+      .join("\n")
+      .replaceAll("Bordeaux", nom);
+  const fetchCsv = async (_y: number, c: { code: string }) => {
+    if (c.code === "33063") return parseCsv(mk("Bordeaux", 6));
+    if (c.code === "31555") return parseCsv(mk("Autre ville", 8)); // wrong name for Toulouse: skipped
+    if (c.code === "59350") return parseCsv(mk("Lille", 2)); // 2+2 sales: no row
+    return [];
+  };
+  const r = await frHarvest({ fetchCsv, years: [2025, 2026] });
+  const b = r.rows.filter((x) => x.area === "33063");
+  assert.deepEqual(b.map((x) => x.item).sort(), ["commercial:24m", "land:24m"]);
+  assert.equal(b[0].n, 12);
+  assert.ok(!r.rows.some((x) => x.area === "31555" || x.area === "59350"));
+  assert.match(r.note!, /31555/);
+  assert.equal(r.unit, "per m²");
+  assert.match(r.date, /^2026-0\d-1[56]$/);
 });
