@@ -5,7 +5,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { InputError, SourceError } from "../../lib/http";
 import { categoryById, SOURCE_PLUGINS } from "../../lib/registry";
-import { INFO, API_URL, answerFromRows, changeFrom, myFuel, parseRows } from "./source";
+import { NO_COUNT } from "../../lib/stats";
+import { INFO, API_URL, answerFromRows, changeFrom, harvestRows, myFuel, myFuelHistoryKey, parseRows } from "./source";
 
 const JSON_ROWS = JSON.parse(readFileSync(new URL("./fixtures/fuelprice-sample.json", import.meta.url), "utf8"));
 
@@ -63,4 +64,21 @@ test("my-fuel: fetch is injected and the registry routes MY to it", async () => 
   assert.equal(plugin.category, "fuel");
   assert.deepEqual(plugin.countries, ["MY"]);
   assert.ok(categoryById("fuel"));
+});
+
+test("my-fuel: harvest keeps one row per fuel for the newest week with no record count", () => {
+  const h = harvestRows(parseRows(JSON_ROWS));
+  assert.equal(h.date, "2026-10-15");
+  assert.equal(h.currency, "MYR");
+  assert.deepEqual(h.rows.map((r) => r.item), ["diesel", "petrol95", "petrol98"]);
+  assert.equal(h.rows[0].area, "MY");
+  assert.equal(h.rows[0].median, 5.17);
+  assert.equal(h.rows[0].n, NO_COUNT);
+  assert.throws(() => harvestRows([]), /no RON95/);
+});
+
+test("my-fuel: history key maps each fuel to the MY area and rejects unknown fuels", () => {
+  assert.deepEqual(myFuelHistoryKey({ fuel: "petrol98" })?.item, "petrol98");
+  assert.equal(myFuelHistoryKey({ fuel: "lpg" }), null);
+  assert.equal(myFuelHistoryKey({}), null);
 });

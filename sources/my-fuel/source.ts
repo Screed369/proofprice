@@ -5,7 +5,8 @@
 
 import { InputError, SourceError, fetchJson } from "../../lib/http";
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL = "https://data.gov.my/data-catalogue/fuelprice";
 export const API_URL = "https://api.data.gov.my/data-catalogue?id=fuelprice&limit=120&sort=-date";
@@ -139,4 +140,38 @@ export function answerFromRows(rows: FuelRow[], input: MyFuelInput): PriceAnswer
 
 export async function myFuel(input: MyFuelInput, fetcher: (url: string) => Promise<unknown> = (u) => fetchJson(u)): Promise<PriceAnswer> {
   return answerFromRows(parseRows(await fetcher(API_URL)), input);
+}
+
+// ---------- daily collector (stale-if-error copy and history) ----------
+// Once a day the collector stores data.gov.my's newest weekly announcement: one row per fuel the tool can be asked for (diesel, petrol95,
+// petrol98 = RON97), n NO_COUNT because the price is a government-set national figure, not a count of sales. Rows are dated by the
+// Thursday the announcement is for (referenceDates), so the copy keeps standing in for a week when api.data.gov.my is down.
+
+export function harvestRows(rows: FuelRow[]): HarvestResult {
+  const out = [];
+  let date = "";
+  for (const item of ["diesel", "petrol95", "petrol98"] as const) {
+    const key = SERIES[item].key;
+    const latest = rows.find((r) => r[key] !== null);
+    if (!latest) continue;
+    const v = latest[key] as number;
+    if (latest.date > date) date = latest.date;
+    out.push({ area: "MY", item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+  }
+  if (!out.length) throw new SourceError("data.gov.my fuel feed holds no RON95, RON97 or diesel price");
+  return {
+    date,
+    currency: "MYR",
+    unit: "per litre",
+    rows: out,
+    note: "data.gov.my weekly fuel prices: government-set national retail price per litre in ringgit (unsubsidised Peninsular Malaysia rate) of diesel, RON95 and RON97 for the newest weekly announcement. Published prices, not counts of sales.",
+  };
+}
+
+export async function myFuelHarvest(fetcher: (url: string) => Promise<unknown> = (u) => fetchJson(u)): Promise<HarvestResult> {
+  return harvestRows(parseRows(await fetcher(API_URL)));
+}
+
+export function myFuelHistoryKey(p: { fuel?: string }): { area: string; item: string; label: string } | null {
+  return p.fuel && SERIES[p.fuel] ? { area: "MY", item: p.fuel, label: "Malaysia (national set price)" } : null;
 }
