@@ -4,38 +4,20 @@ on:
     branches: [src/nz-stats-grocery-prices]
     paths: ['.github/workflows/tmp-nzgroc.yml']
 permissions:
-  contents: write
+  contents: read
 jobs:
   p:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
       - name: fetch
         run: |
           set +e
-          mkdir -p /tmp/p && cd /tmp/p
           U="https://www.stats.govt.nz/assets/Uploads/Selected-price-indexes/Selected-price-indexes-September-2026/Download-data/selected-price-indexes-september-2026.csv"
-          curl -sS -L --max-time 120 -A "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)" -D h.txt -o f.csv -w "%{http_code} %{size_download}\n" "$U" > s.txt || true
-          { cat s.txt; head -c 600 f.csv; echo; head -c 600 h.txt; echo ----SAP-ROWS-latest-and-first;
-            python3 - <<'PY'
-          import csv
-          rows=list(csv.reader(open('/tmp/p/f.csv',encoding='utf-8-sig')))
-          h=rows[0]; print(h)
-          idx={n:i for i,n in enumerate(h)}
-          sap=[r for r in rows[1:] if r[idx['Series_reference']].startswith('CPIM.SAP') and r[idx['UNITS']]=='Dollars']
-          print(len(sap), 'dollar SAP rows')
-          from collections import defaultdict
-          d=defaultdict(dict); t={}
-          for r in sap:
-              d[r[idx['Series_reference']]][r[idx['Period']]]=r[idx['Data_value']]; t[r[idx['Series_reference']]]=r
-          for k in sorted(d):
-              ps=sorted(d[k]); r=t[k]
-              print(k,'|',r[idx['Series_title_1']],'|',ps[0],ps[-1],'|',d[k][ps[-1]], '|prev',d[k].get(ps[-2]) if len(ps)>1 else None,'|n',len(ps))
-          print('SAMPLE RAW ROWS'); 
-          for r in sap[:3]: print(r)
-          print([r for r in rows[1:] if r[idx['Series_reference']]=='CPIM.SAP0100'][-2:])
-          print(set(r[idx['STATUS']] for r in sap), set(r[idx['Magnitude']] for r in sap), set(r[idx['Group']] for r in sap), set(r[idx['Subject']] for r in sap))
-          PY
-          } > result.txt 2>&1
-          cat /tmp/p/result.txt | head -c 60000
+          curl -sS -L --max-time 120 -A "ProofPrice-verifier/1.0 (+https://proofprice.com; hello@proofprice.com)" -o /tmp/f.csv "$U"
+          head -1 /tmp/f.csv
+          echo ---ROWS
+          grep -E '^"CPIM\.SAP(0100|0101|0102|0103|0106|0107|0108|0109|0110|0111|0112|0114|0115|0116|0117|0118|0120|0121|0123|0125|0126|0127|0128|0129|0130|0131|0132|0134|0137|0138|0139|0140|0147|0148|0149|0152|0160|0161|0167|0168|0176|0177|0178|0181|0184|0186|0187|0189|0190|0195|0197|0201|0203|0204|0205|0207|0211|0215|0216|0224|0226|0228|0229|0231|0232|0233|0235|0240|0245|0258|0259|0264|0265|0268)","(2025\.09|2026\.07|2026\.08|2026\.09)",' /tmp/f.csv | grep ',"Dollars",'
+          echo ---END
+          echo "periods in file for SAP0127:"; grep -c '^"CPIM.SAP0127"' /tmp/f.csv
+          exit 0
