@@ -1,0 +1,786 @@
+URL: https://sniiv.sedatu.gob.mx/Reporte/Datos_abiertos
+Fetched: 2026-10-24T05:41:31Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 291946
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx/1.20.1
+Date: Sat, 24 Oct 2026 05:41:30 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (316), with CRLF, LF line terminators
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="es">
+<head><script async src="https://www.googletagmanager.com/gtag/js?id=G-DERGVEG5EM"></script><script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-DERGVEG5EM'); </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCJJB68FJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HFCJJB68FJ');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="sniiv">
+    <meta name="author" content="developer">
+    <title>Datos abiertos - SNIIV</title>
+
+
+
+    <link rel="shortcut icon" href="/img/Home/Icon.png">
+    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+
+    <script src="/js/jquery-1.11/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var url = window.location.pathname;
+            var urlaspx = url.length != 0 ? url : 'Dashboard/Inicio';
+
+            var idtab;
+
+        });
+        var clickMenu = false;
+
+        $(document).ready(function () {
+            var cookie = false;
+            var cookieContent = $('.cache-disclaimer');
+
+            $(".parent").click(function () {
+                $(".multi-collapse").collapse('hide');
+            });
+
+            $(".child").click(function () {
+                $(".submenu").collapse('hide');
+            });
+            $(".navbar-toggler").click(function () {
+                $(".nav-tog").css("display", "block");
+                clickMenu = !clickMenu;
+                if (clickMenu) {
+                    $(".nav-tog").show();
+                }
+                else {
+                    $(".nav-tog").hide();
+                }
+            });
+            if ($(window).width() < 930) {
+                $('.img-sniiv').hide();
+            } else {
+                $('.img-sniiv').show();
+            }
+            checkCookie();
+
+            if (cookie === true) {
+                cookieContent.hide();
+            }
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                console.log(exdays * 24 * 60 * 60 * 1000);
+                var expires = "expires=" + d.toGMTString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i].trim();
+                    if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                var check = getCookie("acache");
+                if (check !== "") {
+                    return cookie = true;
+                } else {
+                    return cookie = false;
+                }
+
+            }
+            $('.accept-cache').click(function () {
+                setCookie("acache", "accepted", 8);
+                cookieContent.hide(500);
+            });
+
+        });
+
+        function pages(url) {
+            window.location.href = url;
+        }
+
+        function activaTab(tab) {
+            $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+        }
+        $(window).on('resize', function () {
+            if ($(window).width() < 930) {
+                $('.img-sniiv').hide();
+            }
+            else {
+                $('.img-sniiv').show();
+            }
+        });
+    </script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="/css/stroke-7/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style1.css" rel="stylesheet" type="text/css" />
+    <link href="/css/Components/NavBar.css" rel="stylesheet" type="text/css" />
+    
+    <script src="/js/util.js" type="text/javascript"></script>
+    <link href="/css/cubo.css" rel="stylesheet" type="text/css" />
+    <link href="/css/rezago.css" rel="stylesheet" type="text/css" />
+    <script>
+        $(document).ready(function () {
+            $('.api-section').first().show();
+            $("#dv_devep2").click(function () {
+                $("#myModal").modal();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        var anio;
+        var _conavi = 1, _financiamiento = 2, _ofertaVivienda = 3, _registroVivienda = 4, _diasInventario = 5, _cnbv = 7, _verificacion = 8, _produccion = 9;
+        var _csv = 1, _xlsx = 2;
+        var lim_rows = 100;
+        $(function () {
+            $(".loader").hide();
+
+            $('#dv_devep').hide();
+            $('#dv_devep2').hide();
+            $('#img_dev').hide();
+            
+            $('#img_conavi').click(function () { mostrarSubcategoria(_conavi); });
+            $('#img_financiamiento').click(function () { mostrarSubcategoria(_financiamiento); });
+            $('#img_oferta_vivienda').click(function () { mostrarSubcategoria(_ofertaVivienda); });
+            $('#img_registro_vivienda').click(function () { mostrarSubcategoria(_registroVivienda); });
+            $('#img_dias_inventario').click(function () { mostrarSubcategoria(_diasInventario); });
+            $('#img_cnbv').click(function () { mostrarSubcategoria(_cnbv); });
+            $('#img_verificacion').click(function () {mostrarSubcategoria(_verificacion)});
+            $('#img_produccion').click(function () {mostrarSubcategoria(_produccion)})
+
+            $('#lnk_f').click(function (e) {
+                $('.dv_contenido').hide();
+                $('#dv_financiamiento').show();
+                $('#dv_devep').hide();
+                $('#dv_devep2').hide();
+                $('#img_dev').hide();
+                $('#dv_devep01').hide();
+                $('#dv_devep02').hide();
+                $('#dv_devep03').hide();
+                $('#dv_devep04').hide();
+                $('#dv_devep05').hide();
+                $('#dv_devep06').hide();
+                $('#dv_devep07').hide();
+                $('#dv_devep08').hide();
+            });
+            $('#lnk_r').click(function (e) {
+                $('.dv_contenido').hide();
+                $('#dv_oferta_vivienda').show();
+                $('#dv_devep').hide();
+                $('#dv_devep2').hide();
+                $('#img_dev').hide();
+                $('#dv_devep01').hide();
+                $('#dv_devep02').hide();
+                $('#dv_devep03').hide();
+                $('#dv_devep04').hide();
+                $('#dv_devep05').hide();
+                $('#dv_devep06').hide();
+                $('#dv_devep07').hide();
+                $('#dv_devep08').hide();
+            });
+            $('#lnk_d').click(function (e) {
+                $('.dv_contenido').hide();
+                $('#dv_devep').show();
+                $('#dv_devep2').show();
+                $('#img_dev').show();
+                $('#dv_devep01').hide();
+                $('#dv_devep02').hide();
+                $('#dv_devep03').hide();
+                $('#dv_devep04').hide();
+                $('#dv_devep05').hide();
+                $('#dv_devep06').hide();
+                $('#dv_devep07').hide();
+                $('#dv_devep08').hide();
+
+            });
+
+            $('#lnk_c').click(function (e) {
+                $('#dv_devep').hide();
+                $('#dv_devep2').hide();
+                $('#img_dev').hide();
+
+                $('#dv_devep01').hide();
+                $('#dv_devep02').hide();
+                $('#dv_devep03').hide();
+                $('#dv_devep04').hide();
+                $('#dv_devep05').hide();
+                $('#dv_devep06').hide();
+                $('#dv_devep07').hide();
+                $('#dv_devep08').hide();
+            });
+
+            $('#tab-active').addClass('active');
+            $(".lst").click(function () {
+                $("#lbl_subtitulo").text($(this).first().text());
+            });
+        });
+
+        function descargar_dato(tipo, formato) {
+            switch (tipo) {
+                case _conavi:
+                    anio = $('#ddl_anio_s').val();
+                    break;
+                case _financiamiento:
+                    anio = $('#ddl_anio_f').val();
+                    break;
+                case _ofertaVivienda:
+                    anio = $('#ddl_anio_ov').val();
+                    break;
+                case _registroVivienda:
+                    anio = $('#ddl_anio_rv').val();
+                    break;
+                case _diasInventario:
+                    anio = $('#ddl_anio_di').val();
+                    break;
+                case _verificacion:
+                    anio = $('#ddl_anio_verificacion').val();
+                    break;
+                case _produccion:
+                    anio = $('#ddl_anio_produccion').val();
+                    break;
+                default:
+                    anio = $('#ddl_anio_cnbv').val();
+                    break;
+            }
+            $.getJSON(path + 'ReporteAPI/GetDocumentoAnio/' + tipo + '/' + anio + '/' + formato, function (json) {
+                window.open(json.documento);
+            });
+        }
+
+        function mostrar_dato(tipo, formato) {
+            var dv, tbl;
+            switch (tipo) {
+                case _conavi:
+                    anio = $('#ddl_anio_s').val();
+                    dv = $('#dv_s');
+                    tbl = $('#tbl_s');
+                    break;
+                case _financiamiento:
+                    anio = $('#ddl_anio_f').val();
+                    dv = $('#dv_f');
+                    tbl = $('#tbl_f');
+                    break;
+                case _ofertaVivienda:
+                    anio = $('#ddl_anio_ov').val();
+                    dv = $('#dv_ov');
+                    tbl = $('#tbl_ov');
+                    break;
+                case _registroVivienda:
+                    anio = $('#ddl_anio_rv').val();
+                    dv = $('#dv_rv');
+                    tbl = $('#tbl_rv');
+                    break;
+                case _diasInventario:
+                    anio = $('#ddl_anio_di').val();
+                    dv = $('#dv_di');
+                    tbl = $('#tbl_di');
+                    break;
+                case _verificacion:
+                    anio = $('#ddl_anio_verificacion').val();
+                    dv = $('#dv_verificacion');
+                    tbl = $('#tbl_verificacion');
+                    break;
+                case _produccion:
+                    anio = $('#ddl_anio_produccion').val();
+                    dv = $('#dv_produccion');
+                    tbl = $('#tbl_produccion');
+                    break;
+                default:
+                    anio = $('#ddl_anio_cnbv').val();
+                    dv = $('#dv_cnbv');
+                    tbl = $('#tbl_cnbv');
+                    break;
+            }
+            dv.hide();
+            $(".loader").show();
+            $.getJSON(path + 'ReporteAPI/GetDocumentoAnio/' + tipo + '/' + anio + '/' + formato, function (json) {
+                var archivo = 'https://sniiv-cors.herokuapp.com/' + json.documento;
+                $.ajax({
+                    url: archivo,
+                    dataType: 'text',
+                }).done(function (data, textStatus, jqXHR) {
+                    var allRows = data.split(/\r?\n|\r/);
+                    var table = '<table class="table table-striped table-condensed">';
+                    for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+                        if (singleRow === 0) {
+                            table += '<thead>';
+                            table += '<tr>';
+                        } else
+                            table += '<tr>';
+                        var rowCells = allRows[singleRow].split(',');
+                        for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+                            if (singleRow === 0) {
+                                table += '<th>';
+                                table += rowCells[rowCell];
+                                table += '</th>';
+                            } else {
+                                table += '<td>';
+                                table += rowCells[rowCell];
+                                table += '</td>';
+                            }
+                        }
+                        if (singleRow === 0) {
+                            table += '</tr>';
+                            table += '</thead>';
+                            table += '<tbody>';
+                        } else
+                            table += '</tr>';
+                        if (singleRow === lim_rows)
+                            break;
+                    }
+                    table += '</tbody>';
+                    table += '</table>';
+
+                    dv.show();
+                    tbl.empty();
+                    tbl.append(table);
+
+                    $('html, body').animate({
+                        scrollTop: dv.offset().top - 150
+                    }, 500);
+                })
+                    .fail(function (jqXHR, textStatus, errorThrown) { console.log(errorThrown); })
+                    .always(function () {
+                        $(".loader").hide();
+                    });
+            });
+        }
+
+        function copiar_dato(tipo, formato) {
+            switch (tipo) {
+                case _conavi:
+                    anio = $('#ddl_anio_s').val();
+                    break;
+                case _financiamiento:
+                    anio = $('#ddl_anio_f').val();
+                    break;
+                case _ofertaVivienda:
+                    anio = $('#ddl_anio_ov').val();
+                    break;
+                case _registroVivienda:
+                    anio = $('#ddl_anio_rv').val();
+                    break;
+                case _diasInventario:
+                    anio = $('#ddl_anio_di').val();
+                    break;
+               case _verificacion:
+                    anio = $('#ddl_anio_verificacion').val();
+                    break;
+                case _produccion:
+                    anio = $('#ddl_anio_produccion').val();
+                    break;
+                default:
+                    anio = $('#ddl_anio_cnbv').val();
+                    break;
+            }
+            $.getJSON(path + 'ReporteAPI/GetDocumentoAnio/' + tipo + '/' + anio + '/' + formato, function (json) {
+                var dummy = document.createElement('textarea');
+                document.body.appendChild(dummy);
+                dummy.value = json.documento;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+
+                $('.lbl_copy').fadeIn(900);
+                $('.lbl_copy').fadeOut(900);
+            });
+        }
+
+        function mostrarSubcategoria(tipo) {
+            $('.dv_contenido').hide();
+            switch (tipo) {
+                case _conavi:
+                    $('#dv_conavi').show();
+                    break;
+                case _financiamiento:
+                    $('#dv_financiamiento').show();
+                    break;
+                case _ofertaVivienda:
+                    $('#dv_oferta_vivienda').show();
+                    break;
+                case _registroVivienda:
+                    $('#dv_registro_vivienda').show();
+                    break;
+                case _diasInventario:
+                    $('#dv_dias_inventario').show();
+                    break;
+                case _verificacion:
+                    $('#dv_verificacion').show();
+                    break;
+                case _produccion:
+                    $('#dv_produccion').show();
+                    break;
+                default:
+                    $('#dv_banca').show();
+                    break;
+            }
+        }
+
+    </script>
+
+
+    <style>
+        * {
+            font-family: 'Noto Sans';
+        }
+
+        .text-image {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        .text-desa {
+            font-size: 15px;
+            text-align: justify;
+            text-emphasis-color: black;
+        }
+
+        .center-block {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .center-block2 {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 15px;
+            max-width: 42%;
+        }
+
+        .tab-content {
+            border: none;
+            padding: 0px;
+        }
+
+        .table-div {
+            font-size: 10px;
+            height: 350px;
+            overflow-y: auto;
+        }
+
+        .lindsw {
+            color: #B38E5D;
+            font-size: 15px;
+        }
+
+        .codelink {
+            color: darkred;
+        }
+
+        .codelink2 {
+            color: dimgray;
+        }
+
+        .img-rounded {
+            max-width: 65%;
+        }
+
+            .img-rounded:hover {
+                cursor: pointer;
+                border-radius: 6px;
+                -webkit-border-radius: 6px;
+                box-shadow: 0px 0px 5px 3px #999;
+                -webkit-box-shadow: 0px 0px 5px 3px #999;
+            }
+
+        .menu_dat {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-radius: 6px;
+            padding: 10px 0;
+            border-bottom: 2px solid #ccc;
+        }
+
+            .menu_dat > li {
+                list-style: none;
+            }
+
+                .menu_dat > li.active > a {
+                    display: block;
+                    padding: 10px 18px;
+                    background-color: #f4f4f4;
+                    color: #333;
+                    border-radius: 6px;
+                    text-decoration: none;
+                    border: 1px solid transparent;
+                    /*transition: all 0.3s ease;*/
+                }
+
+
+                .menu_dat > li > a:hover {
+                    color: black !important;
+                    background-color: #e6e6e6;
+                    border-color: #aaa;
+                }
+
+                .menu_dat > li.active > a,
+                .menu_dat > li#tab-active > a {
+                    color: #ddd !important;
+                    background-color: #a57f2c !important;
+                    border-color: #fff !important;
+                    font-weight: bold;
+                }
+
+        .paragrah-datos {
+            font-size: 15px;
+        }
+        /*Prueba de menu apis*/
+        /* verticalizar botones de APIs (forzado) */
+        .vertical-api-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px; /* espacio entre botones */
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .vertical-api-list .btn-doc {
+            display: block;      /* asegurar bloque */
+            width: 100%;         /* ocupar ancho de la columna */
+            text-align: left;    /* texto alineado a la izquierda para lectura */
+            padding: 8px 12px;   /* padding coherente con list-group-item */
+            box-sizing: border-box;
+            white-space: normal; /* permitir salto de línea en títulos largos */
+        }
+        .btn-doc:focus,
+        .btn-doc:focus-visible {
+            background-color: #a57f2c !important;
+            color: #fff !important;
+            outline: none; 
+        }
+
+        /*css Vivienda RUV*/
+        .btn-card {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 15px 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all .25s ease;
+            cursor: pointer;
+        }
+
+            .btn-card img {
+                max-width: 100%;
+                margin: 0 auto 10px;
+            }
+
+            .btn-card h5 {
+                margin: 0;
+                font-weight: 600;
+                color: #555;
+            }
+
+            .btn-card:hover {
+                text-decoration: none;
+                background: #f8f8f8;
+                border-color: #a02142;
+                box-shadow: 0 4px 12px rgba(0,0,0,.15);
+                transform: translateY(-3px);
+            }
+
+                .btn-card:hover h5 {
+                    color: #a02142;
+                }
+
+            .btn-card:focus {
+                text-decoration: none;
+                outline: none;
+            }
+
+
+    .btn-boton-imagen {
+        border: 1px solid #ddd;
+        background: #a57f2c;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 18px auto;
+    }
+
+        .btn-boton-imagen:focus,
+        .btn-boton-imagen:active {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+    .boton-contenido {
+        display: flex;
+        align-items: center;
+        min-height: 100px;
+    }
+
+    .boton-imagen {
+        width: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+        .boton-imagen img {
+            max-width: 150px;
+            max-height: 70px;
+            object-fit: contain;
+        }
+
+    .boton-texto {
+        width: 65%;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .btn-pptx{
+        background-color: #D24726;
+    }
+
+    .btn-video{
+        background-color: #e92922;
+    }
+</style>
+
+
+</head>
+<body>
+    <div class="menu-overlay" id="menu-overlay"></div>
+    <!-- Menu de navegacion -->
+
+    <header>
+        <div class="container-nav-bar">
+            <button class="hamburger" id="btn-menu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-btn">
+                <div class="nav-links">
+                    <ul>
+                        <li class="nav-link">
+                            <a href="/Inicio"><span class="icon s7-home"></span>Inicio</a>
+                            <div class="dropdown-nav-opt">
+                                <ul>                                    
+                                    <li class="dropdown-link">
+                                        <a href="/Inicio/Conoce_Sniiv">Conoce más del SNIIV</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link">
+                            <p> <span class="icon s7-graph"></span> Consulta Interactiva</p>
+                            <div class="dropdown-nav-opt">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="/Oferta/D_Inventario">Oferta<i class="glyphicon glyphicon-chevron-right"></i></a>
+                                        <div class="dropdown-nav-opt second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Inventario">Inventario</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Registro">Registro</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Verificacion">Verificación</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Produccion">Producción</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <p>Demanda<i class="glyphicon glyphicon-chevron-right"></i></p>
+                                        <div class="dropdown-nav-opt second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/financiamiento">Financiamientos</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Conavi">CONAVI</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Fovissste">FOVISSSTE</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Infonavit">INFONAVIT</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Cnbv">CNBV</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Insus">INSUS</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Cubo/Empleo">Empleo</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link" style="cursor:pointer" onclick="window.location.href='/Inicio/Datos_e_Indicadores'">
+                            <p><span class="icon s7-display1"></span> Visualización de datos e indicadores</p>
+                            <div class="dropdown-nav-opt">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="/Demanda/Rezago">Rezago habitacional</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Oferta/D_Inventario">Días de inventario</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Dashboard/Covid">COVID-19 y vivienda</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Autoproduccion/Introduccion">Autoproducción</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="/Inicio/Precios_de_vivienda">Precios de la Vivienda</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <p>Oferta de vivienda<i class="glyphicon glyphicon-chevron-right"></i></p>
+                                        <div class="dropdown-nav-opt second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="/Dashboard/Oferta">RUV</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="/Oferta/Parque">Parque habitacional INEGI</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <p>Demanda<i class="glyphicon glyphicon-chevron-right"></i></p>
+                                        <div 
