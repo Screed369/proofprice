@@ -1,3 +1,5 @@
+// OFFLINE (Repairer 2026-10-24): ftp.halmed.hr times out at TCP connect from GitHub Actions and Vercel (cloud IP block), so no harvest ever succeeded and every HR answer would be 502.
+// To bring it back: rename this file to index.ts once a probe or harvest from GitHub reaches the xlsx (curl exit 0).
 // Manifest: Croatia medicine prices (HALMED maximum permitted wholesale prices). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import { INFO, hrHarvest, hrHistoryKey, hrMedicines } from "./source";
