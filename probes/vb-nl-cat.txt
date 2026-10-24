@@ -1,0 +1,31 @@
+URL: https://opendata.cbs.nl/ODataCatalog/Tables?$format=json&$filter=substringof('supermarkt',Title)%20or%20substringof('Gemiddelde%20prijzen',Title)&$select=Identifier,Title,Modified,Period
+Fetched: 2026-10-24T17:42:17Z from GitHub Actions
+Status, type, bytes: 200 application/json;odata=minimalmetadata;streaming=true;charset=utf-8 126
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+Expires: Sun, 25 Oct 2026 18:42:17 GMT
+Vary: *
+X-Request-Origin: External
+X-Content-Type-Options: nosniff
+DataServiceVersion: 3.0;
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Sat, 24 Oct 2026 17:42:17 GMT
+Content-Length: 126
+TXID: 0004a26e
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=000b2d6c-edf8-1adc-9678-0050569b2a7a_2102438361_1615134217_00000000004295271022; Path=/; Expires=Sat, 24-Oct-2026 17:42:32 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"odata.metadata":"https://opendata.cbs.nl/ODataCatalog/$metadata#Tables&$select=Identifier,Title,Modified,Period","value":[]}
