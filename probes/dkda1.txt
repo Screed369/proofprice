@@ -1,0 +1,24 @@
+URL: https://api.energidataservice.dk/dataset/DayAheadPrices?limit=12&sort=TimeUTC%20desc&filter=%7B%22PriceArea%22:%5B%22DK1%22,%22DK2%22%5D%7D
+Fetched: 2026-10-24T01:13:23Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1824
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 01:13:23 GMT
+content-type: application/json; charset=utf-8
+cache-control: public, must-revalidate, max-age=60
+expires: Sat, 24 Oct 2026 01:14:23 GMT
+last-modified: Sat, 24 Oct 2026 01:13:23 GMT
+set-cookie: INGRESSCOOKIE=1792804404.036.22.986152|5c0ee527deb5851d7c49e79de25a81b3; Path=/; Secure; HttpOnly
+set-cookie: anon-id=7f27e6a8-37a3-4fe8-ad9d-d88d67057d40; expires=Mon, 23 Nov 2026 01:13:23 GMT; path=/; secure; samesite=strict; httponly
+strict-transport-security: max-age=31536000; includeSubDomains
+access-control-allow-origin: *
+x-cache-status: MISS
+remainingcalls: 2
+totalcalls: 3
+request-context: appId=cid-v1:0f6e3fb1-0e79-49b7-8196-9df349716d4a
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"total":12,"filters":"{\"PriceArea\":[\"DK1\",\"DK2\"]}","sort":"TimeUTC desc","limit":12,"dataset":"DayAheadPrices","records":[{"TimeUTC":"2026-10-24T21:45:00","TimeDK":"2026-10-24T23:45:00","PriceArea":"DK1","DayAheadPriceEUR":5.670000,"DayAheadPriceDKK":42.381549},{"TimeUTC":"2026-10-24T21:45:00","TimeDK":"2026-10-24T23:45:00","PriceArea":"DK2","DayAheadPriceEUR":5.770000,"DayAheadPriceDKK":43.129019},{"TimeUTC":"2026-10-24T21:30:00","TimeDK":"2026-10-24T23:30:00","PriceArea":"DK1","DayAheadPriceEUR":9.180000,"DayAheadPriceDKK":68.617746},{"TimeUTC":"2026-10-24T21:30:00","TimeDK":"2026-10-24T23:30:00","PriceArea":"DK2","DayAheadPriceEUR":9.350000,"DayAheadPriceDKK":69.888445},{"TimeUTC":"2026-10-24T21:15:00","TimeDK":"2026-10-24T23:15:00","PriceArea":"DK1","DayAheadPriceEUR":10.220000,"DayAheadPriceDKK":76.391434},{"TimeUTC":"2026-10-24T21:15:00","TimeDK":"2026-10-24T23:15:00","PriceArea":"DK2","DayAheadPriceEUR":10.400000,"DayAheadPriceDKK":77.736880},{"TimeUTC":"2026-10-24T21:00:00","TimeDK":"2026-10-24T23:00:00","PriceArea":"DK1","DayAheadPriceEUR":14.370000,"DayAheadPriceDKK":107.411439},{"TimeUTC":"2026-10-24T21:00:00","TimeDK":"2026-10-24T23:00:00","PriceArea":"DK2","DayAheadPriceEUR":14.620000,"DayAheadPriceDKK":109.280114},{"TimeUTC":"2026-10-24T20:45:00","TimeDK":"2026-10-24T22:45:00","PriceArea":"DK1","DayAheadPriceEUR":22.850000,"DayAheadPriceDKK":170.796895},{"TimeUTC":"2026-10-24T20:45:00","TimeDK":"2026-10-24T22:45:00","PriceArea":"DK2","DayAheadPriceEUR":23.260000,"DayAheadPriceDKK":173.861522},{"TimeUTC":"2026-10-24T20:30:00","TimeDK":"2026-10-24T22:30:00","PriceArea":"DK1","DayAheadPriceEUR":26.420000,"DayAheadPriceDKK":197.481574},{"TimeUTC":"2026-10-24T20:30:00","TimeDK":"2026-10-24T22:30:00","PriceArea":"DK2","DayAheadPriceEUR":26.900000,"DayAheadPriceDKK":201.069430}]}
