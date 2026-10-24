@@ -1,7 +1,7 @@
 // Manifest: France home sales (DVF, DGFiP via Etalab geo-dvf). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
 import { InputError } from "../../lib/http";
-import { INFO, frHomeSales } from "./source";
+import { INFO, frHarvest, frHistoryKey, frHomeSales } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -16,9 +16,16 @@ export default defineSource({
     property_type: "FR: house or apartment.",
   },
   paramValues: { property_type: ["house", "apartment"] },
-  examples: [{ params: { country: "FR", postcode: "69003", property_type: "apartment" } }],
+  examples: [
+    { params: { country: "FR", postcode: "69003", property_type: "apartment" } },
+    { params: { country: "FR", town: "Bordeaux", property_type: "house" }, smoke: false },
+  ],
   method:
     "France (DVF): only plain sales of exactly one house or apartment are counted; sales that bundle several homes or commercial premises are left out. DVF arrives with a delay of several months, so the period shown is the latest available.",
+  // Stale-if-error copy and /history: the collector stores the rolling-12-month median for the arrondissements of Paris, Lyon, Marseille and the big cities.
+  harvest: () => frHarvest(),
+  historyKey: (p) => frHistoryKey({ postcode: str(p.postcode), town: str(p.town), property_type: str(p.property_type), months: num(p.months) }),
+  referenceDates: true,
   handle: (p, ctx) => {
     if (!str(p.town) && !str(p.postcode)) throw new InputError("A French town or postcode is required.");
     return frHomeSales({

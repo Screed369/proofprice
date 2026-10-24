@@ -1,9 +1,10 @@
 // France: home sale prices from DVF (Demandes de valeurs foncières, DGFiP), using Etalab's
 // per-commune geo-dvf files. We only ever return aggregates (never addresses or parcels).
-import { fetchJson, InputError, SourceError } from "../../lib/http";
+import { fetchJson, InputError, retryOnce, SourceError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { arrondissementsOf, findArrondissementByPostcode, findCity, FR_ARRONDISSEMENTS, FR_CITIES, norm } from "./places";
 
 export const INFO: SourceInfo = {
   id: "fr-dvf",
@@ -117,26 +118,43 @@ export function dvfSales(rows: string[][]): DvfSale[] {
   return out;
 }
 
+/** Communes for a postcode or town we know by heart (the arrondissements of Paris, Lyon and Marseille and the big cities): no geo API call. */
+export function knownCommunes(input: { postcode?: string; town?: string }): Commune[] | null {
+  if (input.postcode) {
+    const a = findArrondissementByPostcode(input.postcode);
+    return a ? [{ code: a.code, nom: a.name, codeDepartement: a.dep }] : null;
+  }
+  if (input.town) {
+    const c = findCity(input.town);
+    if (!c) return null;
+    const arr = arrondissementsOf(c.code);
+    if (arr.length) return arr.map((a) => ({ code: a.code, nom: a.name, codeDepartement: a.dep }));
+    return [{ code: c.code, nom: c.name, codeDepartement: c.dep }];
+  }
+  return null;
+}
+
+// The geo API and the DVF files are slow from Vercel: two attempts of 12 s each stay inside the 40 s answer deadline.
+const geoJson = (url: string) => retryOnce(() => fetchJson(url, {}, 12000));
+
 export async function resolveCommunes(input: { postcode?: string; town?: string }): Promise<Commune[]> {
+  const known = knownCommunes(input);
+  if (known) return known;
   const fields = "fields=nom,code,codeDepartement";
   if (input.postcode) {
     const cp = input.postcode.replace(/\D/g, "").slice(0, 5);
     if (cp.length !== 5) throw new InputError("A French postcode must have 5 digits.");
-    let list: Commune[] = await fetchJson(`${GEO_API}?codePostal=${cp}&${fields}`, {}, 10000);
+    let list: Commune[] = await geoJson(`${GEO_API}?codePostal=${cp}&${fields}`);
     if (list.some((c) => CITY_WITH_ARRONDISSEMENTS.has(c.code))) {
-      const arr: Commune[] = await fetchJson(`${GEO_API}?codePostal=${cp}&type=arrondissement-municipal&${fields}`, {}, 10000);
+      const arr: Commune[] = await geoJson(`${GEO_API}?codePostal=${cp}&type=arrondissement-municipal&${fields}`);
       list = [...list.filter((c) => !CITY_WITH_ARRONDISSEMENTS.has(c.code)), ...arr];
     }
     return list;
   }
   if (input.town) {
-    const list: Commune[] = await fetchJson(
-      `${GEO_API}?nom=${encodeURIComponent(input.town)}&${fields}&boost=population&limit=1`,
-      {},
-      10000,
-    );
+    const list: Commune[] = await geoJson(`${GEO_API}?nom=${encodeURIComponent(input.town)}&${fields}&boost=population&limit=1`);
     if (list[0] && CITY_WITH_ARRONDISSEMENTS.has(list[0].code)) {
-      const arr: Commune[] = await fetchJson(`${GEO_API}?nom=${encodeURIComponent(input.town)}&type=arrondissement-municipal&${fields}&limit=30`, {}, 10000);
+      const arr: Commune[] = await geoJson(`${GEO_API}?nom=${encodeURIComponent(input.town)}&type=arrondissement-municipal&${fields}&limit=30`);
       return arr.filter((a) => a.code.startsWith(list[0].codeDepartement));
     }
     return list.slice(0, 1);
@@ -145,9 +163,24 @@ export async function resolveCommunes(input: { postcode?: string; town?: string 
 }
 
 let yearsCache: { at: number; years: number[] } | null = null;
+
+/** GET with a hard timeout (a hung connection would otherwise use up the whole answer deadline). */
+async function getText(url: string, ms: number): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  try {
+    return await fetch(url, { headers: { "user-agent": "pricepaid-plug/0.1" }, redirect: "follow", signal: controller.signal });
+  } catch (err: any) {
+    if (err?.name === "AbortError") throw new SourceError("Source timed out", url);
+    throw new SourceError("Could not reach the official source", String(err?.cause?.code ?? err?.message ?? err));
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function dvfYears(): Promise<number[]> {
   if (yearsCache && Date.now() - yearsCache.at < 6 * 3600 * 1000) return yearsCache.years;
-  const res = await fetch(DVF_BASE, { headers: { "user-agent": "pricepaid-plug/0.1" } });
+  const res = await retryOnce(() => getText(DVF_BASE, 12000));
   if (!res.ok) throw new SourceError(`DVF index returned HTTP ${res.status}`);
   const html = await res.text();
   const years = [...new Set([...html.matchAll(/(20\d{2})\//g)].map((m) => Number(m[1])))].sort((a, b) => a - b);
@@ -158,7 +191,7 @@ async function dvfYears(): Promise<number[]> {
 
 async function fetchCommuneCsv(year: number, c: Commune): Promise<string[][]> {
   const url = `${DVF_BASE}${year}/communes/${c.codeDepartement}/${c.code}.csv`;
-  const res = await fetch(url, { headers: { "user-agent": "pricepaid-plug/0.1" }, redirect: "follow" });
+  const res = await retryOnce(() => getText(url, 12000));
   if (res.status === 404) return [];
   if (!res.ok) throw new SourceError(`DVF file returned HTTP ${res.status}`);
   return parseCsv(await res.text());
@@ -226,4 +259,93 @@ frDescribe(type, place, x, to),
       data_lag_note: "DVF is updated twice a year; the most recent months are not yet included.",
     },
   });
+}
+
+
+// ---------- daily collector (stale-if-error copy and /history) ----------
+// DVF changes twice a year, but the files.data.gouv.fr host is slow from Vercel. Once a day the collector (GitHub Actions) stores the
+// rolling-12-month median of single-home sales for the arrondissements of Paris, Lyon and Marseille and for the biggest cities,
+// for houses, apartments and both together. Rows are dated by the newest sale in DVF (referenceDates), so a copy keeps standing
+// in for a live answer for 7 days after the last successful collection, and /history shows a new point only when DVF is updated.
+
+export const HARVEST_MONTHS = 12;
+export const harvestItem = (t: FrPropertyType) => `${t}:${HARVEST_MONTHS}m`;
+
+/** Library key for a request, or null when the copy cannot answer it (unknown place, other window). */
+export function frHistoryKey(p: { postcode?: string; town?: string; property_type?: string; months?: number }): { area: string; item: string; label: string } | null {
+  const type = (p.property_type ?? "any").trim().toLowerCase() || "any";
+  if (!(FR_PROPERTY_TYPES as readonly string[]).includes(type)) return null;
+  if (p.months !== undefined && p.months !== null && Number(p.months) !== HARVEST_MONTHS) return null;
+  const item = harvestItem(type as FrPropertyType);
+  if (p.postcode) {
+    const a = findArrondissementByPostcode(p.postcode);
+    return a ? { area: a.code, item, label: a.name } : null;
+  }
+  if (p.town) {
+    const c = findCity(p.town);
+    return c ? { area: c.code, item, label: c.name } : null;
+  }
+  return null;
+}
+
+export type CommuneCsvFetcher = (year: number, c: Commune) => Promise<string[][]>;
+
+const dailyRow = (area: string, item: string, sales: DvfSale[]): { row: DailyRow; to: string } | null => {
+  const { kept, to } = windowSales(sales, HARVEST_MONTHS);
+  const s = summarise(kept.map((x) => x.price));
+  if (!s || s.count < 5 || !to) return null;
+  return { row: { area, item, n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max }, to };
+};
+
+export async function frHarvest(o: { fetchCsv?: CommuneCsvFetcher; years?: number[] } = {}): Promise<HarvestResult> {
+  const years = (o.years ?? (await dvfYears())).slice(-2);
+  const fetchCsv = o.fetchCsv ?? fetchCommuneCsv;
+  // One entry per commune file we need: the arrondissements and the cities without arrondissements.
+  const communes = new Map<string, { c: Commune; expect: string }>();
+  for (const a of FR_ARRONDISSEMENTS) communes.set(a.code, { c: { code: a.code, nom: a.name, codeDepartement: a.dep }, expect: a.name });
+  for (const city of FR_CITIES) if (!arrondissementsOf(city.code).length) communes.set(city.code, { c: { code: city.code, nom: city.name, codeDepartement: city.dep }, expect: city.name });
+  const salesBy = new Map<string, DvfSale[]>();
+  const skipped: string[] = [];
+  const list = [...communes.values()];
+  for (let i = 0; i < list.length; i += 6) {
+    await Promise.all(
+      list.slice(i, i + 6).map(async ({ c, expect }) => {
+        const files = await Promise.all(years.map((y) => retryOnce(() => fetchCsv(y, c))));
+        // Guard against a wrong code: the commune name in the file must match the name we expect.
+        const hi = files.find((f) => f.length > 1);
+        const nameCol = hi ? hi[0].indexOf("nom_commune") : -1;
+        if (hi && nameCol >= 0 && !norm(hi[1][nameCol]).startsWith(norm(expect).replace(/ arrondissement$/, ""))) {
+          skipped.push(`${c.code} (${hi[1][nameCol]})`);
+          return;
+        }
+        salesBy.set(c.code, files.flatMap(dvfSales));
+      }),
+    );
+  }
+  if (!salesBy.size) throw new SourceError("DVF returned no commune files to collect");
+  const rows: DailyRow[] = [];
+  let newest = "";
+  const types: FrPropertyType[] = ["house", "apartment", "any"];
+  const add = (area: string, sales: DvfSale[]) => {
+    for (const t of types) {
+      const r = dailyRow(area, harvestItem(t), sales.filter((s) => t === "any" || s.type === t));
+      if (r) {
+        rows.push(r.row);
+        if (r.to > newest) newest = r.to;
+      }
+    }
+  };
+  for (const [code, sales] of salesBy) add(code, sales);
+  for (const city of FR_CITIES) {
+    const arr = arrondissementsOf(city.code);
+    if (arr.length) add(city.code, arr.flatMap((a) => salesBy.get(a.code) ?? []));
+  }
+  if (!rows.length || !newest) throw new SourceError("DVF files held too few single-home sales to collect");
+  return {
+    date: newest,
+    currency: "EUR",
+    unit: "per home",
+    rows,
+    note: `DVF single-home sales, median of the latest ${HARVEST_MONTHS} months to ${newest}, ${rows.length} place/type rows (arrondissements of Paris, Lyon, Marseille and ${FR_CITIES.length - 3} cities). Aggregates of 5+ sales only.` + (skipped.length ? ` Skipped (name mismatch): ${skipped.join(", ")}.` : ""),
+  };
 }
