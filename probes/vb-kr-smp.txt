@@ -1,0 +1,737 @@
+URL: https://epsis.kpx.or.kr/epsisnew/selectEkmaSmpShdGrid.do?menuId=040201&locale=eng
+Fetched: 2026-10-24T08:44:24Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 815005
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Set-Cookie: JSESSIONID=DDF709D92EFB1E2A98E9CE4D4117B7CB; Path=/epsisnew; Secure; HttpOnly
+vary: accept-encoding
+Content-Type: text/html;charset=UTF-8
+Content-Language: ko-KR
+Transfer-Encoding: chunked
+Date: Sat, 24 Oct 2026 08:44:23 GMT
+Server:  
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 30000 BYTES
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	
+
+
+
+
+
+
+
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, user-scalable=yes">
+	<link rel="apple-touch-icon" type="image/x-icon" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon-2.ico">
+    <link rel="icon" href="/favicon-2.ico">
+    <link rel="stylesheet" href="/epsisnew/resources/css/common.css" type="text/css">
+    <link rel="stylesheet" href="/epsisnew/resources/css/jquery-ui.css" type="text/css">
+    <link rel="stylesheet" href="/epsisnew/resources/css/common_en.css" type="text/css">
+    <link rel="stylesheet" href="/epsisnew/resources/css/datapicker.css" type="text/css">
+    <script src="/epsisnew/resources/js/jquery-2.1.3.min.js"></script>
+    <script src="/epsisnew/resources/js/jquery-ui.min.js"></script>
+    <script>
+	    $(function(){
+	        /*mainMnue*/
+	        var mPos = false;
+	        var mPos2 = false;
+
+            $("#"+"040201".substring(0,2)+"0000").addClass("nowOn");
+            $("#"+"040201".substring(0,4)+"00").addClass("on");
+            $("#"+"040201").addClass("on");
+            $("#L"+"040201".substring(0,4)+"00").addClass("on");
+            $("#L"+"040201").addClass("on");
+
+            /*headerMenu*/
+            var mPos = false;
+            $(".headerWrap").on("mouseover focusin",function(){mPos=true;})
+            $(".headerWrap").on("mouseout focusout",function(){mPos=false;})
+            $(".headerMenu li").one("mouseover",function(){/*최초마우스 오버시 반응*/
+                var num = $(this).index();
+                $(".headerGnbMenu > li").removeClass("on")
+        		$(".headerMenu li").find("a").removeClass("on")
+        		$(".headerGnbWrap").show("blind",200)
+        		$(this).find("a").addClass("on")
+        		$(".headerGnbMenu > li").eq(num).addClass("on")
+            });
+            $(".headerWrap").on("mouseover focusin",function(){
+                if(mPos){
+                    $(".headerMenu li").on("mouseover focusin",function(){
+                        var num = $(this).index();
+
+                        $(".headerGnbMenu > li").removeClass("on")
+    					$(".headerMenu li").find("a").removeClass("on")
+    					$(".headerGnbWrap").show("blind",200)
+    					$(this).find("a").addClass("on")
+    					$(".headerGnbMenu > li").eq(num).addClass("on")
+                    });
+                    $(".headerGnbMenu > ul > li").on("mouseover focusin",function(){
+                        var num = $(this).index()
+
+                        $(".headerGnbMenu > li").removeClass("on")
+						$(this).addClass("on")
+						$(".headerMenu a").removeClass("on")
+						$(".headerMenu a").eq(num).addClass("on")
+                    });
+                }else{
+                    $(".headerGnbWrap").hide("blind",200)
+                    $(".headerMenu a").removeClass("on");
+                }
+            });
+            $(".headerWrap").on("mouseleave",function(){
+                $(".headerGnbWrap").hide("blind",200)
+                $(".headerMenu a").removeClass("on");
+            });
+
+            /*left Menu action*/
+	        $(".hasSub").each(function(){
+	            if($(this).find("ul > li > a").hasClass("on")){
+	                $(this).addClass("on")
+	                $(this).find("ul").css("display","block");
+	            }
+	        });
+
+	        /*datepicker*/
+	        $(".datepicker").datepicker({
+	            showOn: "button",
+	            buttonImage: "/epsisnew/resources/images/calendar.gif",
+	            //buttonImageOnly: true,
+	            buttonText: "Select date",
+	            dayNamesMin: [ "일","월","화","수","목","금","토" ],
+	            monthNames: [ "1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월" ],
+	            dateFormat: "yy-mm-dd",
+	            changeYear: true
+	          });
+
+	        /*layout*/
+            if($(document).find(".laybox").size()){
+                $(".laybox > div").not(".flow").each(function(){
+                    if($(this).outerHeight() != "100"){
+                        if( $(this).find(".unit").size()){
+                            var head = $(this).find(".opBox").outerHeight();
+                            var hei = $(this).outerHeight();
+                            var val = hei - head - 30 //상수값 head 의 margin값 + 단위 표시 높이값
+                            $(this).find(".dataBox").css("height",val);
+                        }else{
+                            var head = $(this).find(".opBox").outerHeight();
+                            var hei = $(this).outerHeight();
+                            var val = hei - head - 10 //상수값 head 의 margin값
+                            $(this).find(".dataBox").css("height",val);
+                        }
+                    }
+
+                });
+                $(".laybox > div").not(".flow").each(function(){
+                    if($(this).outerWidth() != "69" &&  $(this).outerWidth() != "29" && $(this).outerWidth() != "100" && $(this).outerWidth() != "0"){
+	                    var wthis = $(this).outerWidth();
+	                    $(this).find(".dataBox").css("width",wthis);
+                    }
+                });
+            }
+
+          	//Title 변경
+	        var getNavi = $(".localNavi").text().split(">");
+	        var setNaviTmp=[];
+	        var finalTitle ="";
+
+	        for(var ii =0; ii < getNavi.length; ii++){
+	        	//
+	        	setNaviTmp[ii] = getNavi[getNavi.length-1-ii];
+	        	var arrStr = setNaviTmp[ii].trim();
+	        	//
+	        	if(ii == getNavi.length-1){
+	        		finalTitle = finalTitle+ arrStr;
+	        	}else{
+	        		finalTitle = finalTitle+ arrStr + " > ";
+	        	}
+	        }
+
+	        if(getNavi.length > 1){
+	        	document.title = finalTitle;
+	        }else{
+	        	document.title = "Electric Power Statistics Information System (EPSIS)";
+	        }
+	    });
+
+	    function siteOpen(obj) {
+            window.open($("#"+obj+" option:selected").val(),"_blank");
+        }
+
+		function fn_goHome(depth){
+
+			if(depth == "H"){
+				location.href="/epsisnew/selectMain.do?locale=eng";
+			}else if(depth == "1"){
+				if("040201".substring(0,2) == "99"){
+					$("#L"+"040201".substring(0,2)+"0100")[0].click();
+				}else{
+					$("#"+"040201".substring(0,2)+"0000")[0].click();
+				}
+			}else if(depth == "2"){
+				$("#"+"040201".substring(0,4)+"00")[0].click();
+			}
+
+		}
+    </script>
+    <title>Electric Power Statistics Information System (EPSIS)</title>
+
+	
+
+
+
+
+
+
+
+
+
+	<link rel="stylesheet" type="text/css" href="/epsisnew/resources/js/rMateGridH5/Assets/rMateH5.css"/>
+	<!-- rMateGridH5 라이센스 -->
+	<script src="/epsisnew/resources/js/LicenseKey/rMateGridH5License.js"></script>
+	<!-- rMateGridH5 라이브러리 -->
+    <script src="/epsisnew/resources/js/rMateGridH5/JS/rMateGridH5.js"></script>
+    <script src="/epsisnew/resources/js/rMateGridH5/JS/jszip.min.js"></script>
+    <script src="/epsisnew/resources/js/rMateGridH5/JS/xlsx.min.js"></script>
+    <script src="/epsisnew/resources/js/cpexcel.js"></script>
+	<script>
+		// 왼쪽에서부터 채움
+		function LPAD(s, c, n) {
+		    if (! s || ! c || s.length >= n) {
+		        return s;
+		    }
+
+		    var max = (n - s.length)/c.length;
+		    for (var i = 0; i < max; i++) {
+		        s = c + s;
+		    }
+
+		    return s;
+		}
+
+		// 오른쪽에서부터 채움
+		function RPAD(s, c, n) {
+		    if (! s || ! c || s.length >= n) {
+		        return s;
+		    }
+
+		    var max = (n - s.length)/c.length;
+		    for (var i = 0; i < max; i++) {
+		        s += c;
+		    }
+
+		    return s;
+		}
+		// 오른쪽에서부터 채움
+        function textFormmat(str,count) {
+            var rstr = "", sign = "";
+
+            //소수점몇자리 RPAD여부
+            //0자리면
+            if(str == "-" || str == "..."){
+                return str;
+            }else {
+                //
+            }
+            //
+            return str;
+        }
+
+		// 오른쪽에서부터 채움
+        function moneyFormmat(str) {
+            var rstr = "", sign = "";
+
+            if(str.substr(0, 1) == "-" ){
+              sign = "-";
+              str = str.substr(1);
+            }
+            var arr = str.split(".");
+            for(var ii = 0 ; ii < arr[0].length ; ii++){
+              if( ii % 3 == 0 && ii > 0){
+                rstr = arr[0].substring(arr[0].length-ii,arr[0].length-ii-1) + "," + rstr;
+              }else{
+                rstr = arr[0].substring(arr[0].length-ii,arr[0].length-ii-1) + rstr;
+              }
+            }
+            rstr = sign + rstr;
+            return arr.length > 1 ? rstr + "." + arr[1] : rstr;
+        }
+
+		//엑셀출력
+		function excelExport() {
+			// excel 파일 종류 지정
+			var tmp = $(".localNavi").text();
+			var name = tmp.replace(/ /g,"");
+			
+			dataGrid.exportType = "xlsx";
+			dataGrid.exportFileName = name+".xlsx";
+		//	dataGrid.exportSheetName = "Sheet1";
+
+			gridRoot.excelExportSave("", false);
+			//엑셀 다운로드 횟수 입력
+			$.ajax({
+                url  : "/epsisnew/insertCommExcount.ajax",
+                type : "POST",
+                data  : {
+                    menuId : "040201"
+                    ,locale : "eng"
+                    ,downKind : "E"
+                },
+                dataType :"text",
+                async: false,
+                    success:function(data) {
+                    },
+                    error: function(hxr, data, error) {
+                        console.log(error);
+                        return;
+                    }
+            });
+		}
+		
+		//신재생 엑셀출력
+		function knreExcelExport() {
+			// excel 파일 종류 지정
+			var tmp = $(".breadcrumb").text();
+			var name = tmp.replace(/ /g,"");
+			
+			dataGrid.exportType = "xlsx";
+			dataGrid.exportFileName = name+".xlsx";
+		//	dataGrid.exportSheetName = "Sheet1";
+
+			gridRoot.excelExportSave("", false);
+		}
+
+		//csv출력
+        function csvExport() {
+            // excel 파일 종류 지정
+            var tmp = $(".localNavi").text();
+			var name = tmp.replace(/ /g,"");
+            
+            dataGrid.exportType = "csv";
+            dataGrid.exportFileName = name+".csv";
+        //  dataGrid.exportSheetName = "Sheet1";
+
+            gridRoot.excelExportSave("", false);
+
+            $.ajax({
+                url  : "/epsisnew/insertCommExcount.ajax",
+                type : "POST",
+                data  : {
+                    menuId : "040201"
+                    ,locale : "eng"
+                    ,downKind : "C"
+                },
+                dataType :"text",
+                async: false,
+                    success:function(data) {
+                    },
+                    error: function(hxr, data, error) {
+                        console.log(error);
+                        return;
+                    }
+            });
+        }
+		
+      	//신재생 csv출력
+        function knreCsvExport() {
+            // excel 파일 종류 지정
+            var tmp = $(".breadcrumb").text();
+			var name = tmp.replace(/ /g,"");
+            
+            dataGrid.exportType = "csv";
+            dataGrid.exportFileName = name+".csv";
+        //  dataGrid.exportSheetName = "Sheet1";
+
+            gridRoot.excelExportSave("", false);
+
+        }
+
+		// 그리드의 속성인 rMateOnLoadCallFunction 으로 설정된 함수.
+		// rMate 그리드의 준비가 완료된 경우 이 함수가 호출됩니다.
+		// 이 함수를 통해 그리드에 레이아웃과 데이터를 삽입합니다.
+		// 파라메터 : id - rMateGridH5.create() 사용 시 사용자가 지정한 id 입니다.
+		function gridReadyHandler(id) {
+			// rMateGrid 관련 객체
+			gridApp = document.getElementById(id);	// 그리드를 포함하는 div 객체
+			gridRoot = gridApp.getRoot();	// 데이터와 그리드를 포함하는 객체
+
+			gridApp.setLayout(layoutStr);
+ 			gridApp.setData(gridData);
+
+ 			rMateGridH5.setAssetsPath("/epsisnew/resources/js/rMateGridH5/Assets/");
+
+ 		    // 사용자가 import를 완료하면 불려집니다.
+ 	        var importCompleteHandler = function() {
+ 	        }
+
+			var layoutCompleteHandler = function(event) {
+				dataGrid = gridRoot.getDataGrid();	// 그리드 객체
+				if("" == "001010" && "eng" != "eng"){
+				    dataGrid.addEventListener("change", selectionChangeHandler);
+				    gridRoot.addEventListener("importComplete", importCompleteHandler);
+				}
+			}
+			gridRoot.addEventListener("layoutComplete", layoutCompleteHandler);
+		}
+
+		function showLoadingBar() {
+		    dataGrid.setEnabled(false);
+		    gridRoot.addLoadingBar();
+		}
+
+		function hideLoadingBar() {
+		    dataGrid.setEnabled(true);
+		    gridRoot.removeLoadingBar();
+		}
+
+
+		function postObj(obj){
+		    try {
+
+		        // 타겟 document 객체
+		        var targetDocument = null;
+
+		        // 현제페이지기준 프레임 타겟       ITARGET
+		        if(obj["ITARGET"] != undefined){
+
+		            targetDocument = window.frames[obj["ITARGET"]].document;
+		        }
+
+		        // 탑페이지기준 프레임 타겟        TARGET
+		        else if(obj["TARGET"] != undefined){
+
+		            var target = obj["TARGET"].split(".");
+
+		            targetDocument = top;
+
+		            if(target.length>0){
+		                if(target[0] != ""){
+		                    for(var idx=0; idx<target.length; idx++){
+
+		                        // top 문자 처리
+		                        if(target[idx] == "top"){
+		                            targetDocument = targetDocument.top;
+		                        }
+
+		                        // opener 문자 처리
+		                        else if(target[idx] == "opener"){
+		                            targetDocument = targetDocument.opener;
+		                        }
+
+		                        // 프레임명 문자 처리
+		                        else{
+		                            targetDocument = targetDocument.frames[target[idx]];
+		                        }
+		                    }
+		                }
+		            }
+
+		        }else{
+		            targetDocument = document;
+		        }
+
+		        // 타겟 검사
+		        if(targetDocument == null) {
+		            alert("타겟지정이 잘못되었습니다. 다시지정하여주세요.");
+		            return false;
+		        }
+
+		        // 폼생성
+		        var fm = targetDocument.createElement("form");
+
+		        // 폼설정
+		        fm.method="post";
+		        fm.action=obj["URL"];
+
+		        if(obj["ITARGET"] != undefined) {
+		            fm.target=obj["ITARGET"];
+		        }
+		        if(obj["TOTARGET"] != undefined){
+		            fm.target=obj["TOTARGET"];
+		        }
+
+		        // 오브젝트변수를 form 에 적용
+		        for(i in obj){
+		            if(i != "TARGET" && i != "URL" && i != "TOTARGET" && i != "ITARGET"){
+
+		                if(typeof obj[i] == "object"){
+		                    var obj2 = obj[i];
+		                    if(obj2 == null){
+		                        var input=targetDocument.createElement("input");
+		                        input.setAttribute ("name", i);
+		                        input.setAttribute ("type", "hidden");
+		                        input.setAttribute ("value", obj[i]);
+		                        fm.appendChild(input);;
+		                    }else{
+		                        for(j in obj2){
+		                            if(typeof obj2[j] != "function"){
+		                                var input=targetDocument.createElement("input");
+		                                input.setAttribute ("name", i);
+
+		                                input.setAttribute ("type", "hidden");
+		                                input.setAttribute ("value", obj2[j]);
+		                                fm.appendChild(input);
+		                            }
+		                        }
+		                    }
+		                }else{
+		                    var input=targetDocument.createElement("input");
+		                    input.setAttribute ("name", i);
+		                    input.setAttribute ("type", "hidden");
+		                    input.setAttribute ("value", obj[i]);
+		                    fm.appendChild(input);
+		                }
+		            }
+		        }
+
+		        // 폼추가(타겟 문서에 폼을 추가한다.)
+		        targetDocument.body.appendChild(fm);
+
+		        // 타겟 문서 캐릭터셋 저장 (복구용)
+		        var documentCharset = targetDocument.charset;
+
+		        // 전송전 캐릭터셋 변경
+		        if(obj["CHARSET"] != undefined) {
+		            document.charset=obj["CHARSET"];
+		        }
+		        // 전송
+		        fm.submit();
+
+		        // 전송후 폼 삭제
+		        //removeElement(fm);
+
+		        // 캐릭터셋 복구
+		        if(obj["CHARSET"] != undefined) {
+		            targetDocument.charset=documentCharset;
+		        }
+
+		    } catch(e) {
+
+		        alert("postObj() - "+e.name+"("+e.number+") : "+ e.description);
+		    }
+		}
+
+	      // 그리드의 selctedIndex를 전달된 행으로 이동
+        function girdMoveSelctedIndex(idx) {
+            // addItemAt나 removeItemAt후에 바로 selctedIndex를 변경하면 무시되는 경우가 발생하여 setTimeout로 지연후 실행토록 함
+            setTimeout("gridSetSelectedIndex("+idx+")", 100);
+        }
+
+        function gridSetSelectedIndex(idx) {
+            // 현재 그리드의 verticalScrollPosition을 조사하여 스크롤을 일으킬지 조사하여 필요시 세팅
+            var verticalScrollPosition = dataGrid.getVerticalScrollPosition();
+            // 그리드의 행수를 가져옵니다 (이 값은 화면에 제대로 표시되지 않는 행을 포함하기 때문에 실제와 다른 값으로 보일 수 있으며, DataGrid의 variableRowHeight가 true일 경우에는 추정치를 의미합니다.
+            var rowCount = dataGrid.getRowCount();
+            if (rowCount > 0)
+                rowCount = rowCount - 1;
+            var halfRowCount = (rowCount / 2).toFixed();
+
+            // idx가 값이 없는 경우 collection에서 현재 데이터의 레코드수를 가져와 맨 마지막 행값을 계산.
+            if (idx == null || idx == undefined) {
+                if (!collection)
+                    collection = gridRoot.getCollection();
+                idx = collection.getLength() - 1;
+            }
+            dataGrid.setSelectedIndex(idx);
+            if (idx < verticalScrollPosition || idx > verticalScrollPosition + rowCount) {
+                if (idx - halfRowCount >= 0)    // 화면 중간에 위치하도록 계산
+                    dataGrid.setVerticalScrollPosition(idx - halfRowCount);
+                else
+                    dataGrid.setVerticalScrollPosition(0);
+            }
+        }
+
+        // 수정 작업 결과 가져오기 (그리드에서 작업된 입력,수정,삭제 내용을 가져옵니다)
+        // 데이터는 배열 형태로
+        //  idx: 행번호
+        //  job: 수행 작업 (I:입력, U:수정, D:삭제)
+        //  data: 행의 자료
+        // 를 가지고 있으며 삭제가 먼저 오도록 정렬되어 있습니다.
+        function getChangedData() {
+            var changedData = gridRoot.getChangedData();
+            if (changedData.length == 0)
+                if ( gridRoot.getRemoveAllData() ) {
+                    alert("전체 삭제");
+                } else
+                    alert("변경된 자료가 없습니다");
+            else {
+                for (var i = 0; i < changedData.length; i++)
+                    alert("index:"+changedData[i].idx+"\n"+"job:"+changedData[i].job+"\n"+"data:"+changedData[i].data);
+            }
+        }
+
+        // 수정 작업 결과 XML로 가져오기 (그리드에서 작업된 입력,수정,삭제 내용을 XML로 가져옵니다)
+        // 데이터는 XML 형태로
+        //  idx: 행번호
+        //  job: 수행 작업 (I:입력, U:수정, D:삭제)
+        //  data: 행의 자료
+        // node를 가지고 있으며 삭제가 먼저 오도록 정렬되어 있습니다.
+        function getChangedDataXML() {
+            var changedDataXML = gridRoot.getChangedDataXML();
+            if (changedDataXML == null)
+                if ( gridRoot.getRemoveAllData() ) {
+                    alert("전체 삭제");
+                } else
+                    alert("변경된 자료가 없습니다");
+            else
+                alert(changedDataXML);
+        }
+
+        // 전체 삭제
+        function removeAll() {
+            gridRoot.removeAll();
+        //  inputForm.itemXMLData.value = "";
+            inputForm.rowIndex.value = "0";
+        }
+
+        // 행 삭제
+        function removeItemAt() {
+            var selectedIndex = dataGrid.getSelectedIndex();
+            gridRoot.removeItemAt(selectedIndex);
+        }
+	</script>
+	<script>
+	// ----------------------- 그리드 설정 시작 -------------------------------------
+
+	// rMate 그리드 생성 준비가 완료된 상태 시 호출할 함수를 지정합니다.
+		var jsVars = "rMateOnLoadCallFunction=gridReadyHandler";
+		var layoutStr = "";
+		var count = 1000000;
+		var gridData = [];
+		var gridApp, gridRoot, dataGrid;
+		// rMateDataGrid 를 생성합니다.
+		// 파라메터 (순서대로)
+		//  1. 그리드의 id ( 임의로 지정하십시오. )
+		//  2. 그리드가 위치할 div 의 id (즉, 그리드의 부모 div 의 id 입니다.)
+		//  3. 그리드 생성 시 필요한 환경 변수들의 묶음인 jsVars
+		//  4. 그리드의 가로 사이즈 (생략 가능, 생략 시 100%)
+		//  5. 그리드의 세로 사이즈 (생략 가능, 생략 시 100%)
+		//----------------------- 그리드 설정 끝 -----------------------
+		function gridLayoutMake(){
+			layoutStr =
+			'<rMateGrid>\
+			<NumberFormatter id="numfmt" useThousandsSeparator="true" rounding="nearest" precision="'+$("#selCount").val()+'"/>\
+			<!--\n\
+            liveScrolling 마우스 버튼을 띄기 전에 스크롤바의 움직임에 따라 스크롤할지 여부 ("true", "false"중 택일, 기본 "true")\n\
+            showScrollTips 마우스의 스크롤바의 움직임에 따라 툴팁을 보여줄지 여부 ("true", "false"중 택일, 기본 "false")\n\
+            autoFitColumns: 컬럼의 세로줄 더블클릭시 컬럼 폭 자동 조정 (true,false중 택일, 기본 true)\n\
+            draggableColumns: 컬럼 이동가능여부 조정 (true,false중 택일, 기본 false)\n\
+            headerHeight: 헤더의 높이 조정 (단위:pixel)\n\
+            horizontalScrollPolicy: 좌우 스크롤 표시 조정 (auto,on,off중 택일, 기본 off)\n\
+            rowHeight: 행의 높이 조정(단위:pixel)\n\
+            selectionMode: 그리드의 선택모드 설정 (multipleCells, multipleRows, none, singleCell, singleRow중 택일, 기본 singleRow)\n\
+            showHeaders: 헤더 표시여부 조정 (true,false중 택일)\n\
+            sortableColumns: 컬럼 정렬가능여부 조정 (true,false중 택일, 기본 false)\n\
+            verticalScrollPolicy: 상하 스크롤 표시 조정 (auto,on,off중 택일, 기본 auto)\n\
+            variableRowHeight: 행 높이 자동 조정 여부 (true일 경우 rowHeight로 설정된 값은 무효화 됩니다)\n\
+            doubleClickEnabled: 더블클릭 가능 여부 (true,false중 택일, 기본 false, true의 경우 더블클릭하면 해당 셀을 수정할수 있게 됩니다)\n\
+            editable: 수정모드 지정 (true,false중 택일, 기본 false)\n\
+            enabled: 전체 잠금 여부 (true,false중 택일, 기본 true)\n\
+            headerWordWrap: 헤더 줄바꿈 가능여부 조정(true,false중 택일, 기본 false)\n\
+            lockedRowCount: 틀고정 행 설정 (0이면 해제)\n\
+            lockedColumnCount: 틀고정 열 설정 (0이면 해제)\n\
+            minColumnWidth: 컬럼 기본 최소  폭 지정 (단위:pixel)\n\
+            showScrollTips: 스크롤 이동시 툴팁(행번호를 표시)을 보여줄지 여부 (true,false중 택일, 기본 false)\n\
+            sortExpertMode: 헤더에 정렬 아이콘 표시 여부 조정 (true,false중 택일, 기본 true)\n\
+            wordWrap: 기본 셀 줄바꿈 가능여부 조정 (true,false중 택일, 기본 false)\n\
+            -->\n\
+				<DataGrid id="dg1"  horizontalScrollPolicy="auto" headerColors="[#eeeeee,#cccccc]" headerSeparatorColor="#999999" headerBorderBottomColor="#999999" headerBorderTopColor="#999999" headerHorizontalSeparatorColor="#999999"  textAlign="right" lockedColumnCount="1" >\
+					<groupedColumns>\
+						<DataGridColumn dataField="Date" headerText="Period" editable="false" width="100" textAlign="center"/>\
+                        <DataGridColumn dataField="c1" headerText="01 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c2" headerText="02 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c3" headerText="03 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c4" headerText="04 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c5" headerText="05 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c6" headerText="06 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c7" headerText="07 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c8" headerText="08 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c9" headerText="09 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c10" headerText="10 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c11" headerText="11 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c12" headerText="12 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c13" headerText="13 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c14" headerText="14 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c15" headerText="15 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c16" headerText="16 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c17" headerText="17 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c18" headerText="18 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c19" headerText="19 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c20" headerText="20 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c21" headerText="21 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c22" headerText="22 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c23" headerText="23 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c24" headerText="24 h" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c25" headerText="Max" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c26" headerText="Min" width="60" formatter="{numfmt}"/>\
+                        <DataGridColumn dataField="c27" headerText="Weighted\&lt\;br\&gt\;Average" width="80" formatter="{numfmt}"/>\
+					</groupedColumns>\
+				</DataGrid>\
+			</rMateGrid>';
+		}
+
+		// -----------------------차트 설정 끝 -----------------------
+
+		//
+		$(document).ready(function(){
+			//그리드레이아웃생성
+			gridLayoutMake();
+			//그리드생성
+            dataSerch("reset");
+			rMateGridH5.create("grid1", "gridHolder", jsVars, "100%", "100%");
+			//그리드 데이터입력
+			//
+		});
+		//
+		//그리드 데이터 입력
+		function dataSerch(text){
+			//
+			var count = $("#selCount option:selected").val();
+			var beginDate = $("#selBeginDate option:selected").val();
+			var endDate = $("#selEndDate option:selected").val();
+			//
+			var c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27;
+
+			gridData = [];
+
+			if(beginDate > endDate){
+                alert("조회시작년도가 조회끝년도보다 클 수 없습니다.");
+                return;
+            }
+			
+			    c1 = textFormmat("107.34",count);
+                c2 = textFormmat("105.45",count);
+                c3 = textFormmat("105.45",count);
+                c4 = textFormmat("101.38",count);
+                c5 = textFormmat("101.38",count);
+                c6 = textFormmat("101.38",count);
+                c7 = textFormmat("104.73",count);
+                c8 = textFormmat("105.55",count);
+                c9 = textFormmat("105.82",count);
+                c10 = textFormmat("107.03",count);
+                c11 = textFormmat("107.03",count);
+                c12 = textFormmat("107.03",count);
+                c13 = textFormmat("107.03",count);
+                c14
