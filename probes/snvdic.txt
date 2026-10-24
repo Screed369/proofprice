@@ -1,0 +1,57 @@
+URL: https://sistemas.sedatu.gob.mx/repositorio/proxy/alfresco-noauth/api/internal/shared/node/NGC6R5CLQ6SCexmbnOq4ZA/content/diccionario_financiamiento.xlsx?&a=true
+Fetched: 2026-10-24T05:49:29Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8 78783
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Server: nginx/1.22.0
+Date: Sat, 24 Oct 2026 05:49:29 GMT
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8
+Content-Length: 78783
+Connection: keep-alive
+Set-Cookie: JSESSIONID=D44764705F1E8F8BD808859DDBB2F823; Path=/repositorio; Secure; HttpOnly
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Accept-Ranges: bytes
+Content-Range: bytes 0-78782/78783
+Cache-Control: max-age=0,  must-revalidate
+ETag: "1681146700623"
+Last-Modified: Mon, 10 Apr 2023 17:11:40 GMT
+Strict-Transport-Security: max-age=15552000
+
+=== FILE TYPE: Microsoft Excel 2007+
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      718  2023-03-06 17:05   _rels/.rels
+      889  2023-03-06 17:05   xl/workbook.xml
+    15668  2023-03-06 17:05   xl/styles.xml
+    12456  2023-03-06 17:05   xl/sharedStrings.xml
+      549  2023-03-06 17:05   xl/_rels/workbook.xml.rels
+      650  2023-03-06 17:05   docProps/core.xml
+      442  2023-03-06 17:05   docProps/app.xml
+      241  2023-03-06 17:05   docProps/custom.xml
+     1492  2023-03-06 17:05   [Content_Types].xml
+   792918  2023-03-06 17:05   xl/worksheets/sheet1.xml
+---------                     -------
+   826023                     10 files
+=== SPREADSHEET SHEETS (first 70 rows each, cells joined with |)
+--- SHEET: Financiamientos
+ID del campo|Nemónico del campo|Descripción|Alias|Códigos|Concepto|Formato del dato|Longitud|Precisión|Formato para visualización|Tipo de campo|Fecha|Fuente
+1|año|Año|Año|Numérico|Año|Numérico entero|4||9|General|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+2|mes|Mes|Mes|01-12|Mes|Numérico entero|2||9|General|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+3|cve_ent|Clave de la entidad federativa, de acuerdo con el catálogo de entidades federativas, municipios y localidades del Instituto Nacional de Estadística y Geografía (INEGI),  en la que se ejerció el financiamiento|Clave de entidad federativa|01-32|Clave que identifica a la entidad federativa.|Texto|2|||Clave de la entidad geográfica|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+4|entidad|Nombre de la entidad federativa, de acuerdo con el catálogo de entidades federativas, municipios y localidades del INEGI, en la que se ejerció el financiamiento|Nombre de la entidad federativa|Texto|Nombre oficial de la entidad federativa|Texto|30|||Id descriptivo|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+5|cve_mun|Clave del  municipio, de acuerdo con el catálogo de entidades federativas, municipios y localidades del Instituto Nacional de Estadística y Geografía (INEGI),  en la que se ejerció el financiamiento|Clave municipal|000-570|Clave de municipio o demarcación territorial|Texto|3|||Clave de municipio|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+6|municipio|Nombre del municipio, de acuerdo con el catálogo de entidades federativas, municipios y localidades del INEGI, en la que se ejerció el financiamiento|Nombre del municipio|Texto|Nombre oficial del municipio o demarcación territorial en el caso de la Ciudad de México.|Texto|30|||Id descriptivo|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+7|sexo|Sexo de los acreditado(a)s|Sexo|1|Hombre|Numérico entero|1||9|General|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+||||2|Mujer|Numérico entero|1||9|General|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+|||||No disponible||1||9|General|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+8|edad_rango|Rango de edad en años de los acreditados |Rango de edad|1|29  o menos|Numérico entero|1||9|General|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+||||2|30 a 59 |Numérico entero|1||9|General|ene 2021 - dic 2021|Organismos Nacionales de Vivienda y Comisión Nacional Bancaria y de Valores
+||||3|60 o más|Numérico entero|1||9|General|ene 2021 - dic 2021|Organis=== FIRST 3000 BYTES OF xl/workbook.xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><fileVersion appName="Calc"/><workbookPr backupFile="false" showObjects="all" date1904="false"/><workbookProtection/><bookViews><workbookView showHorizontalScroll="true" showVerticalScroll="true" showSheetTabs="true" xWindow="0" yWindow="0" windowWidth="16384" windowHeight="8192" tabRatio="500" firstSheet="0" activeTab="0"/></bookViews><sheets><sheet name="Financiamientos" sheetId="1" state="visible" r:id="rId2"/></sheets><calcPr iterateCount="100" refMode="A1" iterate="false" iterateDelta="0.0001"/><extLst><ext xmlns:loext="http://schemas.libreoffice.org/" uri="{7626C862-2A13-11E5-B345-FEFF819CDC9F}"><loext:extCalcPr stringRefSyntax="ExcelA1"/></ext></extLst></workbook>
