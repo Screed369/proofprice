@@ -37,10 +37,4 @@ jobs:
           print(set(r[idx['STATUS']] for r in sap), set(r[idx['Magnitude']] for r in sap), set(r[idx['Group']] for r in sap), set(r[idx['Subject']] for r in sap))
           PY
           } > result.txt 2>&1
-          cd "$GITHUB_WORKSPACE"
-          git config user.name "proofprice-librarian"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes; git checkout -q -B probes origin/probes
-          git rm -rq --cached . >/dev/null 2>&1 || true
-          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name probes -exec rm -rf {} +
-          mkdir -p probes && cp /tmp/p/result.txt probes/nzgroc-full.txt
-          git add probes; git commit -qm "Probe nzgroc-full"; git push -q origin probes
+          cat /tmp/p/result.txt | head -c 60000
