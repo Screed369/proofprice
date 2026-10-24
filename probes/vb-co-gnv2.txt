@@ -1,0 +1,32 @@
+URL: https://www.datos.gov.co/resource/he3q-86dn.json?$limit=5&$order=:id
+Fetched: 2026-10-24T17:44:51Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1736
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 17:44:51 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC44NjUxXzFfOTk3NFFuckhiUTZjR2NzbEJUYk9CR3FFTUk2b1Zr---gzipMqoRHTmE6qK9cN3xNQcuaILHKKs--gzip--gzip"
+X-SODA2-Fields: ["fecha_precio","anio_precio","mes_precio","dia_precio","departamento_eds","municipio_eds","nombre_comercial_eds","precio_promedio_publicado","tipo_combustible","codigo_municipio_dane","latitud_municipio","longitud_municipio"]
+X-SODA2-Types: ["text","text","text","text","text","text","text","number","text","text","text","text"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+X-SODA2-Secondary-Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+Last-Modified: Sat, 24 Oct 2026 06:11:40 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 9bc747bbbc9ba20f7317dc7cc573f2fa
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"fecha_precio":"2025-5-01","anio_precio":"2025","mes_precio":"5","dia_precio":"01","departamento_eds":"ANTIOQUIA","municipio_eds":"MEDELLIN","nombre_comercial_eds":"EDS ESSO CASTILLA","precio_promedio_publicado":"3490","tipo_combustible":"GNCV","codigo_municipio_dane":"05001","latitud_municipio":"6.24663","longitud_municipio":"-75.581"}
+,{"fecha_precio":"2022-11-01","anio_precio":"2022","mes_precio":"11","dia_precio":"01","departamento_eds":"VALLE DEL CAUCA","municipio_eds":"CALI","nombre_comercial_eds":"ESTACION DE SERVICIO EL CAMBIO S.A.S","precio_promedio_publicado":"2287","tipo_combustible":"GNCV","codigo_municipio_dane":"76001","latitud_municipio":"3.41369","longitud_municipio":"-76.521"}
+,{"fecha_precio":"2022-7-01","anio_precio":"2022","mes_precio":"7","dia_precio":"01","departamento_eds":"BOGOTA D.C.","municipio_eds":"BOGOTA, D.C.","nombre_comercial_eds":"EDS ESSO MUZU","precio_promedio_publicado":"1809","tipo_combustible":"GNCV","codigo_municipio_dane":"11001","latitud_municipio":"4.64925","longitud_municipio":"-74.107"}
+,{"fecha_precio":"2022-7-01","anio_precio":"2022","mes_precio":"7","dia_precio":"01","departamento_eds":"BOLIVAR","municipio_eds":"CARTAGENA DE INDIAS","nombre_comercial_eds":"EDS LA HEROICA","precio_promedio_publicado":"1777","tipo_combustible":"GNCV","codigo_municipio_dane":"13001","latitud_municipio":"10.3851","longitud_municipio":"-75.496"}
+,{"fecha_precio":"2024-2-01","anio_precio":"2024","mes_precio":"2","dia_precio":"01","departamento_eds":"ATLANTICO","municipio_eds":"BARRANQUILLA","nombre_comercial_eds":"EDS SAN PEDRO","precio_promedio_publicado":"2300","tipo_combustible":"GNCV","codigo_municipio_dane":"08001","latitud_municipio":"10.978","longitud_municipio":"-74.815"}]
