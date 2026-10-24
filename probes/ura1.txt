@@ -1,0 +1,562 @@
+URL: https://eservice.ura.gov.sg/maps/api/
+Fetched: 2026-10-24T05:41:49Z from GitHub Actions
+Status, type, bytes: 200 text/html 89055
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: 2.0.0
+Date: Sat, 24 Oct 2026 05:41:49 GMT
+Content-Type: text/html
+Content-Length: 89055
+Cache-Control: max-age=172800,public
+Allow: GET, POST
+Last-Modified: Wed, 21 Oct 2026 05:50:26 GMT
+Accept-Ranges: bytes
+ETag: "0bd2122061dd1:0"
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Access-Control-Allow-Methods: GET, POST
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: no-referrer-when-downgrade
+Content-Security-Policy: default-src 'none'; script-src blob: https://*.ura.gov.sg https://*.google-analytics.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.wogaa.sg https://*.dcube.cloud https://fonts.googleapis.com https://va.ecitizen.gov.sg https://*.vica.gov.sg wss://*.vica.gov.sg https://*.google.com https://*.addthis.com https://*.addthisedge.com https://*.gstatic.com https://wogadobeanalytics.sc.omtrdc.net https://*.zdassets.com https://ifaqs.flexanswer.com https://flexanswer5593.zendesk.com wss://widget-mediator.zopim.com https://*.demdex.net https://*.arcgis.com https://*.onemap.sg https://*.onemap.gov.sg https://*.jquery.com https://*.cloudflare.com; connect-src 'self' https://*.ura.gov.sg https://*.google-analytics.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.wogaa.sg https://*.dcube.cloud https://fonts.googleapis.com https://*.vica.gov.sg wss://*.vica.gov.sg https://*.google.com https://*.gstatic.com https://va.ecitizen.gov.sg https://*.zdassets.com https://ifaqs.flexanswer.com https://flexanswer5593.zendesk.com wss://widget-mediator.zopim.com https://*.demdex.net https://*.arcgis.com https://*.onemap.sg https://*.onemap.gov.sg https://stats.g.doubleclick.net https://*.singpass.gov.sg https://*.addthis.com https://*.addthisedge.com; style-src 'self' https://*.ura.gov.sg https://va.ecitizen.gov.sg https://*.vica.gov.sg wss://*.vica.gov.sg https://fonts.googleapis.com https://*.addthis.com https://*.addthisedge.com https://*.wogaa.sg https://*.dcube.cloud https://*.arcgis.com https://*.bootstrapcdn.com; frame-src 'self' https://*.ura.gov.sg https://form.gov.sg https://*.demdex.net/ https://*.youtube.com https://*.youtube-nocookie.com https://*.vimeo.com https://www.google.com https://*.cloudpano.com/ https://*.addthis.com; img-src * data:; media-src *; object-src https://*.ura.gov.sg; frame-ancestors 'self' https://*.ura.gov.sg; font-src * data: fonts.gstatic.com; form-action 'self' https://*.ura.gov.sg http://*.ura.gov.sg https://*.enets.sg https://*.vica.gov.sg wss://*.vica.gov.sg;
+X-NXG: 186850495
+Age: 0
+Cache-stat: MISS
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (354), with CRLF line terminators
+=== FIRST 30000 BYTES
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link href="stylesheets/api.css" rel="stylesheet" />
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;curl&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="curl">curl</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-token" class="toc-h2 toc-link" data-title="Get Token">Get Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#car-park" class="toc-h1 toc-link" data-title="Car Park">Car Park</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#car-park-available-lots" class="toc-h2 toc-link" data-title="Car Park Available Lots">Car Park Available Lots</a>
+                  </li>
+                  <li>
+                    <a href="#car-park-list-and-rates" class="toc-h2 toc-link" data-title="Car Park List and Rates">Car Park List and Rates</a>
+                  </li>
+                  <li>
+                    <a href="#season-car-park-list-and-rates" class="toc-h2 toc-link" data-title="Season Car Park List and Rates">Season Car Park List and Rates</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#private-residential-property" class="toc-h1 toc-link" data-title="Private Residential Property">Private Residential Property</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#private-residential-property-transactions" class="toc-h2 toc-link" data-title="Private Residential Property Transactions">Private Residential Property Transactions</a>
+                  </li>
+                  <li>
+                    <a href="#private-non-landed-residential-properties-median-rentals-by-name" class="toc-h2 toc-link" data-title="Private Non-Landed Residential Properties Median Rentals by Name">Private Non-Landed Residential Properties Median Rentals by Name</a>
+                  </li>
+                  <li>
+                    <a href="#private-residential-properties-rental-contract" class="toc-h2 toc-link" data-title="Private Residential Properties Rental Contract">Private Residential Properties Rental Contract</a>
+                  </li>
+                  <li>
+                    <a href="#private-residential-property-units-sold-by-developers" class="toc-h2 toc-link" data-title="Private Residential Property Units Sold by Developers">Private Residential Property Units Sold by Developers</a>
+                  </li>
+                  <li>
+                    <a href="#private-residential-projects-in-the-pipeline" class="toc-h2 toc-link" data-title="Private Residential Projects in the Pipeline">Private Residential Projects in the Pipeline</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#planning-decisions" class="toc-h1 toc-link" data-title="Planning Decisions">Planning Decisions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#planning-decisions-2" class="toc-h2 toc-link" data-title="Planning Decisions">Planning Decisions</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#approved-use" class="toc-h1 toc-link" data-title="Approved Use">Approved Use</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#approved-residential-use" class="toc-h2 toc-link" data-title="Approved Residential Use">Approved Residential Use</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='reg.html'>Sign Up for an Access Key</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>URA publishes URA related data for public use and is available for download for the creation, development and testing of innovative applications by third party.</p>
+
+<p>You can register for an account <a href='reg.html'>here</a>. After activation of your account, you will receive an email with an access key from which you can generate a token for access to the API. </p>
+
+<p>Once the token is generated, users are allowed to access the URA data service using the following way.</p>
+<h1 id='authentication'>Authentication</h1><h2 id='get-token'>Get Token</h2>
+<blockquote>
+<p>To get a token, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/insertNewToken/v1"
+  -H "AccessKey: accesskey"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42-0xjxf--aYa3J@@bH4mq5aZga-MMd6Vc5XfK74d464Ayc4@AU8UP5h5TCCqt3ccV@0N+0874-j6d59dpC3bfscqPP3P252TYj"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return a token to be used for the day’s access to the API.</p>
+
+<p>Update Frequency: NA</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/insertNewToken/v1</code></p>
+<h3 id='http-request-header'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Result</td>
+<td>The token to be used for the day to access to the other data services.</td>
+</tr>
+</tbody></table>
+<h1 id='car-park'>Car Park</h1><h2 id='car-park-available-lots'>Car Park Available Lots</h2>
+<blockquote>
+<p>To get a list of available car park lots, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Availability"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"lotsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"carparkNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N0006"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28956.4609, 29088.2522"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lotsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"carparkNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S0108"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29930.895, 33440.7746"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return the list of URA car park available lots in JSON format.</p>
+
+<p>Update Frequency: Every 3 to 5 mins</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Availability</code></p>
+<h3 id='http-request-header-2'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-2'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>carparkNo</td>
+<td>5 digit car park code</td>
+</tr>
+<tr>
+<td>lotType</td>
+<td>The type of vehicle lots for the car park <p><ul><li>C - Car</li><li>M - Motorcycle</li><li>H - Heavy Vehicle</li></ul></p></td>
+</tr>
+<tr>
+<td>lotsAvailable</td>
+<td>Remaining free lots</td>
+</tr>
+<tr>
+<td>geometries</td>
+<td>An array of URA short term car park’s coordinates in SVY21 format.</td>
+</tr>
+<tr>
+<td>coordinates</td>
+<td>A set of URA short term car park coordinates Note: there may be more than 1 set of coordinates if the car park belongs to an on-street.</td>
+</tr>
+</tbody></table>
+<h2 id='car-park-list-and-rates'>Car Park List and Rates</h2>
+<blockquote>
+<p>To get a list of URA car park details and rates, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Details"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"weekdayMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ppName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALIWAL STREET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05.00 PM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weekdayRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08.30 AM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ppCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A0004"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sunPHRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"satdayMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sunPHMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parkingSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parkCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehCat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"satdayRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31045.6165, 31694.0055"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31126.0755, 31564.9876"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"weekdayMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ppName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALIWAL STREET "</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00 PM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weekdayRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05.00 PM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ppCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A0004"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sunPHRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"satdayMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sunPHMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 mins"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parkingSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parkCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehCat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"satdayRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$0.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31045.6165, 31694.0055"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31126.0755, 31564.9876"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return the list of URA car park details and rates in the JSON format.</p>
+
+<p>Update Frequency: Daily</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Details</code></p>
+<h3 id='http-request-header-3'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-3'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ppCode</td>
+<td>5 digit car park code</td>
+</tr>
+<tr>
+<td>ppName</td>
+<td>Carpark name</td>
+</tr>
+<tr>
+<td>vehCat</td>
+<td>Vehicle Category <p><ul><li>C - Car</li><li>M - Motorcycle</li><li>H - Heavy Vehicle</li></ul></p></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>Effective start time of parking rate</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Effective end time of parking rate</td>
+</tr>
+<tr>
+<td>weekdayRate</td>
+<td>Parking rate on weekday. Note that prices are in dollars ($)</td>
+</tr>
+<tr>
+<td>weekdayMin</td>
+<td>The maximum duration of the rate. Note that is this for Weekday. Value 30 mins would imply e.g. $0.65 per 30 min</td>
+</tr>
+<tr>
+<td>satdayRate</td>
+<td>Parking rate on Saturday</td>
+</tr>
+<tr>
+<td>satdayMin</td>
+<td>The maximum duration of the rate. Note that is this for Saturday. Value 30 mins would imply e.g. $0.65 per 30 min.</td>
+</tr>
+<tr>
+<td>sunPHRate</td>
+<td>Parking rate on Sunday and public holiday</td>
+</tr>
+<tr>
+<td>sunPHMin</td>
+<td>The maximum duration of the rate. Note that is this for Sunday. Value 30 mins would imply e.g. $0.65 per 30 min.</td>
+</tr>
+<tr>
+<td>remarks</td>
+<td>Remarks for the car park</td>
+</tr>
+<tr>
+<td>parkingSystem</td>
+<td>The type of parking system the car park is in use <p><ul><li>C - Coupon Parking System</li><li>B - Electronic Parking System</li></ul></p></td>
+</tr>
+<tr>
+<td>parkCapacity</td>
+<td>Number of carpark lots</td>
+</tr>
+<tr>
+<td>geometries</td>
+<td>An array of URA short term car park’s coordinates in SVY21 format</td>
+</tr>
+<tr>
+<td>coordinates</td>
+<td>A set of URA short term car park coordinates Note: there may be more than 1 set of coordinates if the car park belongs to an on-street.</td>
+</tr>
+</tbody></table>
+<h2 id='season-car-park-list-and-rates'>Season Car Park List and Rates</h2>
+<blockquote>
+<p>To get a list of available car park lots, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Car_Park_Availability"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="s2">"lotsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"carparkNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N0006"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28956.4609, 29088.2522"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lotsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"carparkNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S0108"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geometries"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29930.895, 33440.7746"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This data service will return the list of URA season car park details and rates available for application in JSON format.</p>
+
+<p>Update Frequency: Daily</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=Season_Car_Park_Details</code></p>
+<h3 id='http-request-header-4'>HTTP Request Header</h3>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AccessKey</td>
+<td>Yes</td>
+<td>The access key included in the email upon successful activation of account.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Yes</td>
+<td>The token generated from the request token service for daily data request.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-4'>HTTP Response</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ppCode</td>
+<td>5 digit car park code. Note: ppCode starting with ‘G’ represents group parking lots.</td>
+</tr>
+<tr>
+<td>ppName</td>
+<td>Carpark name</td>
+</tr>
+<tr>
+<td>vehCat</td>
+<td>Vehicle Category <p><ul><li>C - Car</li><li>M - Motorcycle</li><li>H - Heavy Vehicle</li></ul></p></td>
+</tr>
+<tr>
+<td>parkingHrs</td>
+<td>Season parking hours</td>
+</tr>
+<tr>
+<td>ticketType</td>
+<td>Type of season tickets</td>
+</tr>
+<tr>
+<td>monthlyRate</td>
+<td>Parking rate</td>
+</tr>
+<tr>
+<td>geometries</td>
+<td>An array of URA season car park’s coordinates in SVY21 format.</td>
+</tr>
+<tr>
+<td>coordinates</td>
+<td>A set of season car park coordinates Note: there may be more than 1 set of coordinates if the car park belongs to a group car park beginning with the prefix of ‘G’.</td>
+</tr>
+</tbody></table>
+<h1 id='private-residential-property'>Private Residential Property</h1><h2 id='private-residential-property-transactions'>Private Residential Property Transactions</h2>
+<blockquote>
+<p>To get a list of private property transactions for the past 5 years, use this code:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://eservice.ura.gov.sg/uraDataService/invokeUraDS/v1?service=PMI_Resi_Transaction&amp;batch=1"
+  -H "AccessKey: accesskey"
+  -H "Token: token"
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>accesskey</code> with your access key. </p>
+
+<p>Make sure to replace <code>token</code> with the day&#39;s token.</p>
+
+<p>The above request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TURQUOISE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marketSegment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CCR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"contractDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0715"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"203"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2900000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"propertyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Condominium"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"typeOfArea"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Strata"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tenure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99 yrs lease commencing from 2007"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01-05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"typeOfSale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"noOfUnits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</spa
