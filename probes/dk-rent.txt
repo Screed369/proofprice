@@ -1,0 +1,25 @@
+URL: https://api.statbank.dk/v1/tables?lang=en&format=JSON&subjects=&q=rent
+Fetched: 2026-10-24T09:42:50Z from GitHub Actions
+Status, type, bytes: 400 application/json; charset=utf-8 69
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+cache-control: no-cache
+pragma: no-cache
+content-type: application/json; charset=utf-8
+expires: -1
+server: Microsoft-IIS/10.0
+statbankapi-error-extract-notfound: Can't find subject:
+access-control-expose-headers: StatbankAPI-Error-EXTRACT-NOTFOUND
+access-control-expose-headers: StatbankAPI-Request-Id
+statbankapi-request-id: 9f2d9f53-50d6-456a-a2a6-7dcc5868b70f
+x-aspnet-version: 4.0.30319
+x-powered-by: ASP.NET
+strict-transport-security: max-age=31536000
+date: Sat, 24 Oct 2026 09:42:50 GMT
+content-length: 69
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"errorTypeCode":"EXTRACT-NOTFOUND","message":"Can't find subject: "}
