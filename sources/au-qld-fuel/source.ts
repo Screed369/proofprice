@@ -30,10 +30,10 @@ export const INFO: SourceInfo = {
   limits:
     "Queensland only (not the rest of Australia). Posted pump prices in Australian dollars per litre, GST included, as reported by stations: not prices paid. " +
     "The data is a month old or more, so this is NOT today's price. Only stations that reported a price change in the month are counted; a station whose price did not change that month is missing. " +
-    "A reported price of 999.9 c/L or more is the scheme's 'not available' marker and is left out. Standard unleaded (Unleaded) is 91 RON in Australia, not 95.",
+    "A reported price of 999.9 c/L or more is the scheme's 'not available' marker and is left out. Standard unleaded (Unleaded) is 91 RON in Australia, not 95; the file also holds a separate 95/96 RON product (PULP 95/96 RON) and Premium Diesel, which we do not offer yet.",
 };
 
-/** Our fuel names -> the Fuel_Type text in the data. Unleaded (91 RON) answers for petrol95 as in the rest of Australia; PULP 95/96 is not offered. */
+/** Our fuel names -> the Fuel_Type text in the data. Unleaded (91 RON) answers for petrol95 as in the rest of Australia (the answer says 91 RON). The file does hold "PULP 95/96 RON" (checked in the August 2026 file, 13,637 rows) and "Premium Diesel", but there is no fuel name for them in lib/fuels.ts yet (platform task). */
 export const QLD_FUEL_TYPE: Partial<Record<Fuel, string>> = {
   petrol95: "Unleaded",
   petrol98: "PULP 98 RON",

@@ -160,3 +160,12 @@ test("history keys follow the live place rules; month end date", () => {
   assert.equal(qldHistoryKey({ fuel: "hydrogen", area: "QLD" }), null);
   assert.equal(monthEndDate(2026 * 12 + 7), "2026-08-31");
 });
+
+import { QLD_FUEL_TYPE, INFO as QLD_INFO } from "./source";
+
+test("petrol95 answers with standard Unleaded (91 RON) and the text no longer says 95/96 does not exist (Fuel_Type values read from the August 2026 file)", () => {
+  assert.equal(QLD_FUEL_TYPE.petrol95, "Unleaded");
+  assert.equal(QLD_FUEL_TYPE.petrol98, "PULP 98 RON");
+  assert.match(QLD_INFO.limits, /PULP 95\/96 RON/);
+  assert.doesNotMatch(QLD_INFO.limits, /not offered/);
+});
