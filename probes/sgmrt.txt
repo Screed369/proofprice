@@ -1,0 +1,23 @@
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_2ca29f673b89e0cfddbb7c74516fa4d3&limit=5
+Fetched: 2026-10-24T11:42:00Z from GitHub Actions
+Status, type, bytes: 200 application/json 1310
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 24 Oct 2026 11:42:00 GMT
+content-type: application/json
+x-content-type-options: nosniff
+vary: Accept-Encoding
+apigw-requestid: FvztUjvXyQ0EPZw=
+strict-transport-security: max-age=31536000; includeSubDomains
+last-modified: Sat, 24 Oct 2026 11:42:00 GMT
+cache-control: max-age=300
+cf-cache-status: MISS
+set-cookie: _cfuvid=aiiLe1pHp5DVdpnzdk98ZlTw14COapaOwqxF2lgLK.s-1792842119.4397852-1.0.1.1-J76oNJ_C2jcw94Yg7i2Z4G4j3hZiiNmW4wewwimXKbM; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+server: cloudflare
+cf-ray: a4f8b72e780916a4-SJC
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"success":true,"result":{"resource_id":"d_2ca29f673b89e0cfddbb7c74516fa4d3","fields":[{"type":"text","id":"fare_type"},{"type":"text","id":"applicable_time"},{"type":"text","id":"distance"},{"type":"numeric","id":"fare_per_ride"},{"type":"int4","id":"_id"}],"records":[{"_id":1,"fare_type":"Adult card fare","applicable_time":"Before 7.45am  (Weekdays excluding public holidays)","distance":"Up to 3.2 km","fare_per_ride":"78"},{"_id":2,"fare_type":"Adult card fare","applicable_time":"Before 7.45am  (Weekdays excluding public holidays)","distance":"3.3 km - 4.2 km","fare_per_ride":"88"},{"_id":3,"fare_type":"Adult card fare","applicable_time":"Before 7.45am  (Weekdays excluding public holidays)","distance":"4.3 km - 5.2 km","fare_per_ride":"99"},{"_id":4,"fare_type":"Adult card fare","applicable_time":"Before 7.45am  (Weekdays excluding public holidays)","distance":"5.3 km - 6.2 km","fare_per_ride":"109"},{"_id":5,"fare_type":"Adult card fare","applicable_time":"Before 7.45am  (Weekdays excluding public holidays)","distance":"6.3 km - 7.2 km","fare_per_ride":"118"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_2ca29f673b89e0cfddbb7c74516fa4d3&limit=5","next":"/api/action/datastore_search?resource_id=d_2ca29f673b89e0cfddbb7c74516fa4d3&offset=5&limit=5"},"total":390,"limit":5}}
