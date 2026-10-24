@@ -1,0 +1,834 @@
+URL: https://www.datos.gov.co/api/catalog/v1?q=precios%20combustibles%20estaciones%20de%20servicio%20AUTOMATIZADO%20SICOM&limit=15
+Fetched: 2026-10-24T17:44:52Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 96717
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Oct 2026 17:44:52 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: c0ee987b5168390719d175cff0994677
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Consulta Precios Promedio de Gas Natural Comprimido Vehicular (AUTOMATIZADO)",
+            "id" : "he3q-86dn",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Conjunto de datos relacionado a los precios publicados por las estaciones de servicio de GNCV",
+            "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+            "attribution_link" : "https://sicom.gov.co/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-24T06:11:41.000Z",
+            "createdAt" : "2023-09-04T20:21:04.000Z",
+            "metadata_updated_at" : "2026-05-18T19:23:23.000Z",
+            "data_updated_at" : "2026-10-24T06:11:41.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 434,
+                "page_views_last_month" : 1194,
+                "page_views_total" : 18219,
+                "page_views_last_week_log" : 8.76487159073609,
+                "page_views_last_month_log" : 10.222794902868111,
+                "page_views_total_log" : 14.153235338689413
+              },
+            "columns_name" :
+              [
+                "PRECIO_PROMEDIO_PUBLICADO",
+                "ANIO_PRECIO",
+                "TIPO_COMBUSTIBLE",
+                "CODIGO_MUNICIPIO_DANE",
+                "MUNICIPIO_EDS",
+                "FECHA_PRECIO",
+                "LONGITUD_MUNICIPIO",
+                "LATITUD_MUNICIPIO",
+                "MES_PRECIO",
+                "NOMBRE_COMERCIAL_EDS",
+                "DIA_PRECIO",
+                "DEPARTAMENTO_EDS"
+              ],
+            "columns_field_name" :
+              [
+                "precio_promedio_publicado",
+                "anio_precio",
+                "tipo_combustible",
+                "codigo_municipio_dane",
+                "municipio_eds",
+                "fecha_precio",
+                "longitud_municipio",
+                "latitud_municipio",
+                "mes_precio",
+                "nombre_comercial_eds",
+                "dia_precio",
+                "departamento_eds"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Precio Promedio Mensual por Estación",
+                "Año de publicación del precio",
+                "Tipo de Combustible",
+                "Código Dane del Municipio",
+                "Municipio de ubicación de la EDS",
+                "Fecha de publicación del precio",
+                "Coordenadas de Georeferenciación del Municipio",
+                "Coordenadas de Georeferenciación del Municipio",
+                "Mes de publicación del precio",
+                "Razón Social de la Estación de Servicio",
+                "Día de publicación del precio",
+                "Departamento de ubicación de la EDS"
+              ],
+            "columns_format" :
+              [
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                {},
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                {},
+                {},
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                {},
+                { "decimalSeparator" : ".", "groupSeparator" : "," },
+                {}
+              ],
+            "download_count" : 2095,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-09-04T21:04:35.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Minas y Energía",
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-Datos_Frecuencia-de-Actualización",
+                  "value" : "Diaria"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Sector",
+                  "value" : "Minas y Energía"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Nombre-de-la-Entidad",
+                  "value" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Orden",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Municipio",
+                  "value" : "Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_DIVIPOLA-Municipio",
+                  "value" : "11001"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Departamento",
+                  "value" : "Bogotá D.C."
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "license" : "Creative Commons Attribution | Share Alike 4.0 International"
+          },
+        "permalink" : "https://www.datos.gov.co/d/he3q-86dn",
+        "link" : "https://www.datos.gov.co/Minas-y-Energía/Consulta-Precios-Promedio-de-Gas-Natural-Comprimid/he3q-86dn",
+        "owner" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          },
+        "creator" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "precio mes combustible",
+            "id" : "gjy9-tpph",
+            "resource_name" : null,
+            "parent_fxf" : [ "6vrh-a897" ],
+            "description" : "conjunto de datos  que representa el valor promedio del mes  de los diferentes productos de combustibles en cada estacion de servicio de colombia.",
+            "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "filter",
+            "updatedAt" : "2026-05-18T16:41:43.000Z",
+            "createdAt" : "2022-05-09T17:21:07.000Z",
+            "metadata_updated_at" : "2026-05-18T16:41:43.000Z",
+            "data_updated_at" : "2022-12-31T01:12:48.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 78,
+                "page_views_last_month" : 477,
+                "page_views_total" : 12993,
+                "page_views_last_week_log" : 6.303780748177103,
+                "page_views_last_month_log" : 8.90086680798075,
+                "page_views_total_log" : 13.665557989846414
+              },
+            "columns_name" :
+              [
+                "Departamento",
+                "Codigo_municipio",
+                "Periodo",
+                "Precio",
+                "Codigo_departamento",
+                "Mes",
+                "Producto",
+                "Municipio",
+                "Direccion",
+                "Estado",
+                "Bandera",
+                "Nombre_comercial"
+              ],
+            "columns_field_name" :
+              [
+                "departamento",
+                "codigo_municipio",
+                "periodo",
+                "precio",
+                "codigo_departamento",
+                "mes",
+                "producto",
+                "municipio",
+                "direccion",
+                "estado",
+                "bandera",
+                "nombre_comercial"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "nombre del departamente ",
+                "codigo dane del municipiode la estacion de servicio",
+                "Año al que corresponde el dato",
+                "precio promedio del mes para el producto en la estación de servicio",
+                "codigo dane del departamento de la estacion de servicio",
+                "Mes al que corresponde el dato",
+                "Producto ofertado en la estacion de servicio",
+                "nombre del municipio",
+                "direccion donde esta ubicada la estación de servicio",
+                "estado del producto",
+                "",
+                "nombre comercial de la estacion de servicio "
+              ],
+            "columns_format" :
+              [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 3237,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2022-11-29T13:05:19.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Minas y Energía",
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-Datos_Frecuencia-de-Actualización",
+                  "value" : "Mensual"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Sector",
+                  "value" : "Minas y Energía"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Nombre-de-la-Entidad",
+                  "value" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Orden",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Municipio",
+                  "value" : "Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_DIVIPOLA-Municipio",
+                  "value" : "11001"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Departamento",
+                  "value" : "Bogotá D.C."
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "license" : "Creative Commons Attribution | Share Alike 4.0 International"
+          },
+        "permalink" : "https://www.datos.gov.co/d/gjy9-tpph",
+        "link" : "https://www.datos.gov.co/Minas-y-Energía/precio-mes-combustible/gjy9-tpph",
+        "owner" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          },
+        "creator" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Beneficio de estaciones de servicio en zona de frontera: Asignación de combustibles líquidos en zona de frontera (AUTOMATIZADO)",
+            "id" : "shbt-hqy9",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Conjunto de datos con los registros de asignación o beneficio máximo a despachar de combustibles desde un mayorista a una estación de servicio en zona de frontera.\n\nConjunto de datos  consumo de combustibles con beneficios sobre el precio de venta al consumidor final para los 171 municipios ubicados en 12 departamentos del país, los cuales son considerados como zona de frontera de acuerdo con la Ley 191 de 1995.",
+            "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+            "attribution_link" : "https://sicom.gov.co/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-24T08:03:06.000Z",
+            "createdAt" : "2022-10-18T19:04:16.000Z",
+            "metadata_updated_at" : "2026-05-18T18:26:57.000Z",
+            "data_updated_at" : "2026-10-24T08:03:06.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 118,
+                "page_views_last_month" : 556,
+                "page_views_total" : 11577,
+                "page_views_last_week_log" : 6.894817763307944,
+                "page_views_last_month_log" : 9.121533517340032,
+                "page_views_total_log" : 13.49909844122888
+              },
+            "columns_name" :
+              [
+                "MES_BENEFICIO",
+                "ANIO_BENEFICIO",
+                "TIPO_AGENTE",
+                "BENEFICIO",
+                "LATITUD",
+                "CODIGO_MUNICIPIO_DANE_DESTINO",
+                "MUNICIPIO",
+                "DIA_BENEFICIO",
+                "LONGITUD",
+                "DEPARTAMENTO",
+                "FECHA_BENEFICIO",
+                "TIPO_BENEFICIO"
+              ],
+            "columns_field_name" :
+              [
+                "mes_beneficio",
+                "anio_beneficio",
+                "tipo_agente",
+                "beneficio",
+                "latitud",
+                "codigo_municipio_dane_destino",
+                "municipio",
+                "dia_beneficio",
+                "longitud",
+                "departamento",
+                "fecha_beneficio",
+                "tipo_beneficio"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Mes de cupo",
+                "Año del cupo en formato AAAA",
+                "\"Agente que recibe el cupo. Literal: DISTRIBUIDOR MINORISTA\"",
+                "Volumen del cupo en galones",
+                "Coordenadas de georeferenciación",
+                "Código DANE del municipio donde se recibe el cupo",
+                "Nombre del municipio donde se recibe el cupo",
+                "dia de cupo",
+                "Coordenadas de georeferenciación",
+                "Nombre del departamento donde se recibe el cupo",
+                "Fecha en formato AAAA-MM-DD",
+                "Literal: CUPO UPME"
+              ],
+            "columns_format" :
+              [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 887,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-07-18T16:17:58.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Minas y Energía",
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-Datos_Frecuencia-de-Actualización",
+                  "value" : "Diaria"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Sector",
+                  "value" : "Minas y Energía"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Nombre-de-la-Entidad",
+                  "value" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Orden",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Municipio",
+                  "value" : "Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_DIVIPOLA-Municipio",
+                  "value" : "11001"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Departamento",
+                  "value" : "Bogotá D.C."
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "license" : "Creative Commons Attribution | Share Alike 4.0 International"
+          },
+        "permalink" : "https://www.datos.gov.co/d/shbt-hqy9",
+        "link" : "https://www.datos.gov.co/Minas-y-Energía/Beneficio-de-estaciones-de-servicio-en-zona-de-fro/shbt-hqy9",
+        "owner" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          },
+        "creator" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Estaciones de Servicio Automotriz y Fluvial:Despacho de combustibles líquidos a nivel nacional (AUTOMATIZADO)",
+            "id" : "fbht-2fzd",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Conjunto de los volúmenes comprados por las Estaciones de Servicio Automotriz y Fluvial en Colombia.",
+            "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+            "attribution_link" : "https://sicom.gov.co/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-24T09:07:57.000Z",
+            "createdAt" : "2022-10-14T16:34:45.000Z",
+            "metadata_updated_at" : "2026-05-18T17:54:21.000Z",
+            "data_updated_at" : "2026-10-24T09:07:57.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 279,
+                "page_views_last_month" : 1133,
+                "page_views_total" : 28541,
+                "page_views_last_week_log" : 8.129283016944965,
+                "page_views_last_month_log" : 10.147204924942228,
+                "page_views_total_log" : 14.80079881068361
+              },
+            "columns_name" :
+              [
+                "TIPO_PROVEEDOR",
+                "SUBTIPO_COMPRADOR",
+                "DEPARTAMENTO",
+                "DIA_DESPACHO",
+                "LONGITUD",
+                "ZONA_FRONTERA",
+                "PRODUCTO",
+                "VOLUMEN_DESPACHADO",
+                "MUNICIPIO",
+                "MUNICIPIO_PROVEEDOR",
+                "LATITUD",
+                "CODIGO_MUNICIPIO_DANE_DESTINO",
+                "MES_DESPACHO",
+                "TIPO_COMPRADOR",
+                "CODIGO_MUNICIPIO_DANE_PROVEEDOR",
+                "ANIO_DESPACHO",
+                "FECHA_DESPACHO",
+                "DEPARTAMENTO_PROVEEDOR"
+              ],
+            "columns_field_name" :
+              [
+                "tipo_proveedor",
+                "subtipo_comprador",
+                "departamento",
+                "dia_despacho",
+                "longitud",
+                "zona_frontera",
+                "producto",
+                "volumen_despachado",
+                "municipio",
+                "municipio_proveedor",
+                "latitud",
+                "codigo_municipio_dane_destino",
+                "mes_despacho",
+                "tipo_comprador",
+                "codigo_municipio_dane",
+                "anio_despacho",
+                "fecha_despacho",
+                "departamento_proveedor"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "LITERAL: ESTACIÓN DE SERVICIO",
+                "Estaciones de Servicio Automotriz y Fluvial",
+                "Departamento donde se recibe el despacho",
+                "Día del despacho en formato: DD",
+                "Coordenadas de georeferenciación",
+                "Da a conocer si es Zona Frontera o no",
+                "Tipo de Producto",
+                "Volumen en galones",
+                "Municipio donde se recibe el despacho",
+                "Nombre del municipio desde el cual se realiza el despacho",
+                "Coordenadas de georeferenciación",
+                "Código DANE del municipio donde se recibe el despacho",
+                "Mes del despacho en formato: MM",
+                "LITERAL: DISTRIBUIDOR MINORISTA",
+                "Código DANE del municipio desde el cual se realiza el despacho",
+                "Año del despacho en formato: AAAA",
+                " Fecha del despacho",
+                "Nombre del departamento desde el cual se realiza el despacho"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 7146,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-07-12T05:13:28.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Minas y Energía",
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-Datos_Frecuencia-de-Actualización",
+                  "value" : "Diaria"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Sector",
+                  "value" : "Minas y Energía"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Nombre-de-la-Entidad",
+                  "value" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Orden",
+                  "value" : "Nacional"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Municipio",
+                  "value" : "Bogotá D.C."
+                },
+                {
+                  "key" : "Información-de-la-Entidad_DIVIPOLA-Municipio",
+                  "value" : "11001"
+                },
+                {
+                  "key" : "Información-de-la-Entidad_Departamento",
+                  "value" : "Bogotá D.C."
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "www.datos.gov.co",
+            "license" : "Creative Commons Attribution | Share Alike 4.0 International"
+          },
+        "permalink" : "https://www.datos.gov.co/d/fbht-2fzd",
+        "link" : "https://www.datos.gov.co/Minas-y-Energía/Estaciones-de-Servicio-Automotriz-y-Fluvial-Despac/fbht-2fzd",
+        "owner" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          },
+        "creator" :
+          {
+            "id" : "srxm-dgnd",
+            "user_type" : "interactive",
+            "display_name" : "Ministerio de Minas y Energia"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Precios Combustibles (2017-1)",
+            "id" : "x6id-4v3g",
+            "resource_name" : null,
+            "parent_fxf" : [ "exxm-uyfs" ],
+            "description" : "En este conjunto de Datos se tiene los precios de venta del combustible reportados por las Estaciones de Servicio (EDS) acorde al precio regulado o de mercado.",
+            "attribution" : "Ministerio de Minas y Energía - MinEnergía, Bogotá D.C.",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "filter",
+            "updatedAt" : "2025-12-19T23:16:46.000Z",
+            "createdAt" : "2020-05-26T20:17:32.000Z",
+            "metadata_updated_at" : "2025-12-19T23:16:46.000Z",
+            "data_updated_at" : "2018-05-15T20:01:03.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 57,
+                "page_views_last_month" : 246,
+                "page_views_total" : 8838,
+                "page_views_last_week_log" : 5.857980995127572,
+                "page_views_last_month_log" : 7.948367231584678,
+                "page_views_total_log" : 13.109667444250805
+              },
+            "columns_name" :
+              [
+                "precio",
+                "direccion",
+                "producto",
+                "estado",
+                "departamentocodigo",
+                "departamentonombre",
+                "municipiocodigo",
+                "municipionombre",
+                "fecharegistro",
+                "agente",
+                "bandera"
+              ],
+            "columns_field_name" :
+              [
+                "precio",
+                "direccion",
+                "producto",
+                "estado",
+                "departamentocodigo",
+                "departamentonombre",
+                "municipiocodigo",
+                "municipionombre",
+                "fecharegistro",
+                "agente",
+                "bandera"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "",
+                "",
+                "",
+                "",
+                "codigo del departamento",
+                "nombre del departamento",
+                "código del municipio",
+                "nombre del municipio",
+                "",
+                "",
+                ""
+              ],
+            "columns_format" : [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 13194,
+            "provenance" : "community",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-06-25T05:17:21.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Economía y Finanzas",
+            "domain_tags" :
+              [
+                "gasolina",
+                "ministerio",
+                "combustible",
+                "precio",
+                "minas",
+                "energía",
+                "minminas"
+              ],
+            "domain_metadata" :
+              [
+                { "key" : "Información-de-Datos_Idioma", "value" : "Español" },
+                {
+                  "key" : "Información-de-Datos_Cobertura-Geográfica",
+                  "value" : "Nacional"
+                }
