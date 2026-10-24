@@ -1,6 +1,6 @@
 // Manifest: Uruguay regulated maximum pump prices (ANCAP, national open-data catalogue). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, uyFuelNow } from "./source";
+import { INFO, uyFuelHarvest, uyFuelHistoryKey, uyFuelNow } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -21,4 +21,9 @@ export default defineSource({
     "Uruguay (fuel): ANCAP publishes in the national open-data catalogue the maximum consumer price per litre of Super 95 petrol and gasoil 10-S diesel, approved by decree and in force each month, in Uruguayan pesos with IVA included. " +
     "We pass on the newest month that has a quotation, with the change on the previous quoted month and a year earlier; it is a regulated maximum with no count of sales, not a station price.",
   handle: (p, ctx) => uyFuelNow({ fuel: String(p.fuel), area: str(p.area), town: str(p.town), postcode: str(p.postcode), baseUrl: ctx.baseUrl }),
+  harvest: () => uyFuelHarvest(),
+  historyKey: (p) => uyFuelHistoryKey({ fuel: str(p.fuel) }),
+  referenceDates: true,
+  nominalCounts: true,
+  noHistory: "Uruguay: ANCAP sets one maximum price per fuel per month and ProofPrice keeps no separate history of it yet; ask pricepaid_fuel_prices_now (/api/v1/fuel) for the newest quoted month, which carries the change on the previous month and a year earlier.",
 });

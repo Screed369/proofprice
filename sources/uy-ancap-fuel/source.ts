@@ -11,7 +11,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError, fetchJson } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const RESOURCE_ID = "c486544e-0fca-4f6f-8403-3ee379a868f4";
 export const DATASET_URL = "https://catalogodatos.gub.uy/dataset/ancap-precio-combustible-pe";
@@ -177,4 +178,37 @@ export async function uyFuelNow(input: UyFuelInput, today = new Date()): Promise
     throw new InputError("Uruguay: ANCAP publishes maximum prices for Super 95 petrol (petrol95) and gasoil 10-S diesel (diesel). Other fuels are not available for Uruguay.");
   }
   return uyFuelAnswer(await fetchQuotes(), input, today);
+}
+
+// ---------- daily collector (stale-if-error copy) ----------
+// Once a day the collector stores the newest month in which BOTH Super 95 and gasoil 10-S have a quotation: one national row per
+// fuel (area UY), n NO_COUNT because ANCAP publishes a decreed maximum, not a count of sales. Rows are dated by the last day of
+// that month (referenceDates), so the copy keeps standing in for the live portal for a week when catalogodatos.gub.uy is down.
+
+/** Pure: the quotes -> the library rows for the newest month quoted for every pump fuel. */
+export function uyHarvestRows(qs: Quote[]): HarvestResult {
+  const quoted = (product: string) => new Set(qs.filter((q) => q.product === product && q.value !== null).map((q) => q.month));
+  const sets = FUEL_ORDER.map((f) => quoted(FUELS[f].product));
+  const common = [...sets[0]].filter((m) => sets.every((s) => s.has(m))).sort();
+  const month = common[common.length - 1];
+  if (!month) throw new SourceError("ANCAP dataset holds no month with a quoted maximum price for both Super 95 and gasoil 10-S; this source needs updating.");
+  const rows = FUEL_ORDER.map((f) => {
+    const v = Math.round((quoteOf(qs, FUELS[f].product, month) as number) * 100) / 100;
+    return { area: "UY", item: f, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
+  });
+  return {
+    date: lastDay(month),
+    currency: "UYU",
+    unit: "per litre",
+    rows,
+    note: "ANCAP regulated maximum consumer price per litre (set by decree, IVA included) of Super 95 and gasoil 10-S for the newest month quoted for both. A published decreed maximum, not a count of records.",
+  };
+}
+
+export async function uyFuelHarvest(): Promise<HarvestResult> {
+  return uyHarvestRows(await fetchQuotes());
+}
+
+export function uyFuelHistoryKey(p: { fuel?: string }): { area: string; item: string; label: string } | null {
+  return p.fuel === "petrol95" || p.fuel === "diesel" ? { area: "UY", item: p.fuel, label: "Uruguay (national maximum price)" } : null;
 }

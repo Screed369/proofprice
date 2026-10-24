@@ -3,7 +3,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { REAL_REPLY, OLD_RECORDS } from "./fixtures";
-import { API, INFO, uyFuelAnswer, parseQuotes } from "./source";
+import { API, INFO, uyFuelAnswer, parseQuotes, uyHarvestRows, uyFuelHistoryKey } from "./source";
+import { NO_COUNT } from "../../lib/stats";
 import manifest from "./index";
 
 const TODAY = new Date("2026-10-22T12:00:00Z");
@@ -73,4 +74,21 @@ test("request URL is ASCII-only (accented names were refused by the portal) and 
   assert.match(INFO.attribution, /Converted and aggregated by ProofPrice/);
   assert.deepEqual(manifest.countries, ["UY"]);
   assert.equal(manifest.examples?.[0].params.country, "UY");
+});
+
+test("harvest stores the newest month quoted for both pump fuels (July 2026), national, no record count", () => {
+  const h = uyHarvestRows(parseQuotes(REAL_REPLY));
+  assert.equal(h.date, "2026-07-31"); // Aug and Sep are S/C for every pump fuel
+  assert.equal(h.currency, "UYU");
+  assert.equal(h.unit, "per litre");
+  assert.deepEqual(h.rows.map((r) => [r.area, r.item, r.median]), [["UY", "petrol95", 88.67], ["UY", "diesel", 67.33]]);
+  assert.ok(h.rows.every((r) => Number.isNaN(r.n) && Number.isNaN(NO_COUNT) && r.low === r.median && r.max === r.median));
+  assert.throws(() => uyHarvestRows(parseQuotes({ result: { records: [{ Ano: "2026", Mes: "9", Producto: "SUPER 95 30-S", Unidad: "S/C", Valor: "S/C" }, { Ano: "2026", Mes: "9", Producto: "QUEROSENO ILUMINANTE", Unidad: "67,5", Valor: "$/lt" }] } })), /no month with a quoted/);
+});
+
+test("historyKey maps the two askable fuels to the national library rows, nothing else", () => {
+  assert.deepEqual(uyFuelHistoryKey({ fuel: "diesel" }), { area: "UY", item: "diesel", label: "Uruguay (national maximum price)" });
+  assert.equal(uyFuelHistoryKey({ fuel: "petrol95" })?.area, "UY");
+  assert.equal(uyFuelHistoryKey({ fuel: "lpg" }), null);
+  assert.ok(manifest.harvest && manifest.historyKey && manifest.referenceDates && manifest.nominalCounts);
 });
