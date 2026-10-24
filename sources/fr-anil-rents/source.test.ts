@@ -112,3 +112,41 @@ test("unknown town gives the list instead of a silent answer", async () => {
 test("licence is on the answer", () => {
   assert.ok(INFO.attribution.includes("Observatoires Locaux des Loyers"));
 });
+
+import { harvestRows, rentHistoryKey, rentItem, frRentHarvest } from "./source";
+
+test("harvest rows: publisher counts, 5+ only, deciles kept", () => {
+  const byArea = new Map<string, RentRow[]>([["Paris intra-muros", PARIS.data as RentRow[]]]);
+  const { rows, year } = harvestRows(byArea);
+  assert.equal(year, 2025);
+  assert.ok(rows.length >= 1);
+  for (const r of rows) {
+    assert.ok(r.n >= 5 && r.median > 0 && r.low <= r.median + 1e-9 && r.high >= r.median - 1e-9);
+    assert.equal(r.area, "Paris intra-muros");
+  }
+  assert.ok(rows.some((r) => r.item === "Appart 2P"));
+});
+
+test("history key matches the harvest item and refuses what is not stored", () => {
+  const areas = parseAgglomerations(AGG);
+  assert.deepEqual(rentHistoryKey({ town: "Toulouse", property_type: "apartment", bedrooms: 1 }, areas), { area: "Agglomération de Toulouse", item: "Appart 2P", label: "Agglomération de Toulouse" });
+  assert.equal(rentHistoryKey({ town: "Paris" }, areas)?.item, "Tous");
+  assert.equal(rentHistoryKey({ town: "Paris", tenancy: "new" }, areas), null);
+  assert.equal(rentHistoryKey({ town: "Lyon" }, areas), null);
+  assert.equal(rentHistoryKey({ town: "Paris" }, []), null);
+  assert.equal(rentItem({ property_type: "room" }), null);
+});
+
+test("harvest end to end on fixtures", async () => {
+  const fetcher = async (u: string) => {
+    if (u === RESOURCES_URL) return RES;
+    if (u.includes("groupby")) return AGG;
+    if (u.includes("agglomeration__exact=Paris%20intra-muros")) return PARIS;
+    return { data: [], links: {} };
+  };
+  const h = await frRentHarvest(fetcher);
+  assert.equal(h.date, "2025-12-31");
+  assert.equal(h.unit, "per month");
+  assert.ok(h.rows.every((r) => r.area === "Paris intra-muros"));
+  await assert.rejects(frRentHarvest(async (u) => (u === RESOURCES_URL ? RES : u.includes("groupby") ? AGG : { data: [], links: {} })), /no usable rows/);
+});

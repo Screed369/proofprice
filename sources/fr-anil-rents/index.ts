@@ -1,7 +1,8 @@
 // Manifest: France observed rents (Observatoires Locaux des Loyers, ANIL network, via data.gouv.fr). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, frRent } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, frRent, frRentHarvest, rentHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -34,4 +35,13 @@ export default defineSource({
       tenancy: str(p.tenancy),
       baseUrl: ctx.baseUrl,
     }),
+  // A daily copy of the latest national results, so a data.gouv.fr outage is answered from it (stale-if-error). Rows are dated by the
+  // results year and carry the publisher's own number of observed leases.
+  harvest: () => frRentHarvest(),
+  historyKey: (p) =>
+    rentHistoryKey(
+      { town: str(p.town), property_type: str(p.property_type), bedrooms: num(p.bedrooms), tenancy: str(p.tenancy) },
+      [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))],
+    ),
+  referenceDates: true,
 });

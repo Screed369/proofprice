@@ -3,7 +3,7 @@
 // Format checked live on 2026-10-20 from GitHub's servers (see fixtures/: rows-paris-2p.json, agglomerations.json, resources.json).
 import { InputError, SourceError, fetchJson } from "../../lib/http";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "fr-anil-rents",
@@ -232,4 +232,114 @@ export async function frRent(input: FrRentInput, fetcher?: (url: string) => Prom
         }
       : { agglomeration: res.area, note: row ? "Fewer than 5 observed leases in this group; the publisher's figure is withheld here." : "The observatory publishes no figure for this combination (try another size, or leave tenancy at 'all')." },
   });
+}
+
+// ---------- daily copy (harvest) so an outage of data.gouv.fr is answered from our own copy (stale-if-error) ----------
+// One row per observed agglomeration and size/dwelling combination for ALL leases (the default question). Rows are dated by the
+// publication year (referenceDates), n is the publisher's own number of observed leases (5+ only), low/high are the publisher's own
+// deciles when it gives them (else the median, so the row stays valid; the live answer is the one that shows them as missing).
+
+/** The library item for a request: the publisher's size/dwelling group, or "Tous" for everything. Null if the request cannot be stored. */
+export function rentItem(opts: { property_type?: string; bedrooms?: number; tenancy?: string }): string | null {
+  if ((opts.tenancy ?? "all") !== "all") return null;
+  if (opts.property_type === "room") return null;
+  if (opts.bedrooms !== undefined && (!Number.isInteger(opts.bedrooms) || opts.bedrooms < 0)) return null;
+  const s = selection({ property_type: opts.property_type, bedrooms: opts.bedrooms, tenancy: "all" });
+  return s.pieces ?? s.type ?? "Tous";
+}
+
+export function rentHistoryKey(
+  p: { town?: string; property_type?: string; bedrooms?: number; tenancy?: string },
+  areas: string[],
+): { area: string; item: string; label: string } | null {
+  if (!p.town || !areas.length) return null;
+  try {
+    const item = rentItem(p);
+    if (!item) return null;
+    const area = matchAgglomeration(areas, p.town);
+    return { area, item, label: area };
+  } catch {
+    return null;
+  }
+}
+
+const HARVEST_COMBOS: { property_type?: string; bedrooms?: number }[] = [
+  {},
+  { property_type: "apartment" },
+  { property_type: "house" },
+  ...[0, 1, 2, 3].flatMap((bedrooms) => [{ property_type: "apartment", bedrooms }, { bedrooms }]),
+  { property_type: "house", bedrooms: 1 },
+  { property_type: "house", bedrooms: 3 },
+];
+
+/** Turns the rows of every agglomeration into daily rows. Pure, so it is tested on the fixture. */
+export function harvestRows(byArea: Map<string, RentRow[]>): { rows: DailyRow[]; year: number } {
+  const rows: DailyRow[] = [];
+  let year = 0;
+  const seen = new Set<string>();
+  for (const [area, data] of byArea) {
+    for (const combo of HARVEST_COMBOS) {
+      const item = rentItem(combo);
+      if (!item || seen.has(`${area}|${item}`)) continue;
+      const row = chooseRow(data, selection({ ...combo, tenancy: "all" }));
+      const n = row?.nombre_observations ?? 0;
+      const med = row?.loyer_mensuel_median;
+      if (!row || n < 5 || typeof med !== "number" || !(med > 0)) continue;
+      seen.add(`${area}|${item}`);
+      const low = row.loyer_mensuel_1_decile ?? med;
+      const high = row.loyer_mensuel_9_decile ?? med;
+      rows.push({ area, item, n, median: med, low, high, min: low, max: high });
+      if (row.Data_year > year) year = row.Data_year;
+    }
+  }
+  return { rows, year };
+}
+
+export async function frRentHarvest(fetcher?: (url: string) => Promise<unknown>): Promise<HarvestResult> {
+  const get = fetcher ?? ((u: string) => fetchJson(u, {}, 30000));
+  const retry = async <T>(f: () => Promise<T>): Promise<T> => {
+    try {
+      return await f();
+    } catch {
+      await new Promise((r) => setTimeout(r, 1500));
+      return f();
+    }
+  };
+  let id = FALLBACK_RESOURCE_ID;
+  try {
+    const r = pickResource(await retry(() => get(RESOURCES_URL)));
+    if (r) id = r.id;
+  } catch {
+    /* the fallback file id is still valid */
+  }
+  const names = parseAgglomerations(await retry(() => get(listUrl(id))));
+  const byArea = new Map<string, RentRow[]>();
+  const failed: string[] = [];
+  for (let i = 0; i < names.length; i += 5) {
+    await Promise.all(
+      names.slice(i, i + 5).map(async (area) => {
+        try {
+          const rows: RentRow[] = [];
+          for (let page = 1; page <= 6; page++) {
+            const body = (await retry(() => get(rowsUrl(id, area, null, page)))) as { data?: RentRow[]; links?: { next?: string | null } };
+            if (!Array.isArray(body.data)) throw new SourceError("layout changed");
+            rows.push(...body.data);
+            if (!body.links?.next) break;
+          }
+          byArea.set(area, rows);
+        } catch {
+          failed.push(area);
+        }
+      }),
+    );
+  }
+  const { rows, year } = harvestRows(byArea);
+  if (!rows.length || !year) throw new SourceError("The rent observatories' files held no usable rows to collect");
+  return {
+    date: `${year}-12-31`,
+    currency: "EUR",
+    unit: "per month",
+    rows,
+    note: `Observed median monthly rents (all leases), ${year} results, ${rows.length} agglomeration/size rows from ${byArea.size} agglomerations; groups of 5+ leases only.` + (failed.length ? ` Not read: ${failed.join("; ")}.` : ""),
+  };
 }
