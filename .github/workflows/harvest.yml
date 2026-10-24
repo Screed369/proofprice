@@ -12,6 +12,10 @@ on:
         description: "Only these source ids (space-separated). Empty = all."
         required: false
         default: ""
+      accept_changes:
+        description: "Set to true to accept a real jump or unit change once (skips the data checker). Use with a single source id."
+        required: false
+        default: "false"
 
 permissions:
   contents: write
@@ -40,12 +44,14 @@ jobs:
       - name: Harvest
         env:
           SOURCES: ${{ github.event.inputs.sources }}
+          ACCEPT: ${{ github.event.inputs.accept_changes }}
         # One source failing is recorded in its library status (/api/v1/library) and in the summary below, and must not email
         # Simon. The run fails only if the collector crashes, no source produced data (both exit non-zero), or more than 3 sources errored.
         run: |
           set -o pipefail
           rc=0
-          npm run harvest -- $SOURCES 2>&1 | tee harvest.log || rc=$?
+          flag=""; [ "$ACCEPT" = "true" ] && [ -n "$SOURCES" ] && flag="--accept-changes"
+          npm run harvest -- $flag $SOURCES 2>&1 | tee harvest.log || rc=$?
           failed=$(grep -c '^FAIL ' harvest.log || true)
           {
             echo "### Harvest: $(grep -c '^OK \|^HELD ' harvest.log || true) ok, $failed source(s) with errors"

@@ -242,3 +242,18 @@ test("gb-nhs-pca historyKey only for a plain medicine name", () => {
   assert.equal(nhsHistoryKey({ country: "GB", medicine: "omeprazole capsules" }), null);
   assert.equal(nhsHistoryKey({ country: "GB" }), null);
 });
+
+test("dominantUnit keeps capsules when a nasal spray is close behind (budesonide, Aug 2026 counts), whatever the row order", () => {
+  const rows = [
+    { presentation: "Budesonide 64micrograms/dose nasal spray", unit: "dose", items: 4019, quantity: 4717, nic: 72115.99 },
+    { presentation: "Budesonide 3mg gastro-resistant capsules", unit: "capsule", items: 1800, quantity: 100000, nic: 80000 },
+  ];
+  assert.equal(dominantUnit(rows), "capsule");
+  assert.equal(dominantUnit([...rows].reverse()), "capsule");
+  // a solid unit far behind does not win
+  assert.equal(dominantUnit([{ ...rows[0] }, { ...rows[1], items: 500 }]), "dose");
+  // exact tie between two non-solid units breaks on the name, not the row order
+  const a = { presentation: "X a", unit: "ml", items: 10, quantity: 1, nic: 1 };
+  const b = { presentation: "X b", unit: "dose", items: 10, quantity: 1, nic: 1 };
+  assert.equal(dominantUnit([a, b]), dominantUnit([b, a]));
+});

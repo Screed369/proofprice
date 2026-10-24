@@ -293,11 +293,23 @@ export function mergePresentations(rows: PcaRow[]): Presentation[] {
   return [...by.values()].sort((a, b) => b.items - a.items);
 }
 
-/** The unit of measure with the most prescription items (tablet, capsule, ml...). */
+/** Solid oral units. A name that also covers sprays, vials or devices (budesonide: capsules and nasal spray) has two near-equal
+ *  leading units, and which one led used to flip from month to month (0.69 vs 15.28 a unit). Tablets and capsules win when they hold
+ *  at least this share of the leading unit's prescription items, so the headline unit stays the same month after month. */
+export const SOLID_UNIT_SHARE = 0.4;
+const SOLID_UNITS = ["tablet", "capsule"];
+
+/** The unit of measure with the most prescription items (tablet, capsule, ml...), except that tablets/capsules are kept when they
+ *  are close behind (SOLID_UNIT_SHARE). Ties break on the unit name so the choice never depends on row order. */
 export function dominantUnit(ps: Presentation[]): string | null {
   const by = new Map<string, number>();
   for (const p of ps) by.set(p.unit, (by.get(p.unit) ?? 0) + p.items);
-  return [...by.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+  const ranked = [...by.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  if (!ranked.length) return null;
+  const top = ranked[0];
+  const solid = ranked.filter(([u]) => SOLID_UNITS.includes(u)).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0];
+  if (solid && solid[1] >= top[1] * SOLID_UNIT_SHARE) return solid[0];
+  return top[0];
 }
 
 export function gbp(v: number): string {
@@ -316,7 +328,7 @@ export function gbpPack(v: number): string {
 function methodText(): string {
   return (
     "From NHSBSA's Prescription Cost Analysis (PCA) monthly table for the newest month published: for every presentation whose name starts with the medicine name (narrowed by any strength, form or extra word you gave), " +
-    "we add up Net Ingredient Cost (the Drug Tariff basic price of the quantity dispensed) and the quantity, over the unit of measure with the most prescription items, and divide: the average basic price the NHS in England reimbursed for the drug per tablet, capsule or ml. " +
+    "we add up Net Ingredient Cost (the Drug Tariff basic price of the quantity dispensed) and the quantity, over the unit of measure with the most prescription items (tablets and capsules are kept when they are close behind, so the unit does not change from month to month), and divide: the average basic price the NHS in England reimbursed for the drug per tablet, capsule or ml. " +
     "Aggregated by NHSBSA across all dispensers and suppliers; before dispenser discounts, fees and patient charges."
   );
 }
