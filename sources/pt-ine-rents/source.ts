@@ -457,7 +457,7 @@ export function harvestRows(reply: IneReply): HarvestResult {
 }
 
 export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
-  const fetcher = o.fetcher ?? ((url: string) => fetchJson(url, {}, 60000));
+  const fetcher = o.fetcher ?? ((url: string) => retryOnce(() => fetchJson(url, {}, 60000), 2000));
   const now = o.now ?? new Date();
   // 1) newest quarter INE already publishes: a tiny national request per candidate, newest first
   let found: { code: string } | null = null;
@@ -466,7 +466,10 @@ export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
       const probe = parseIne(await fetcher(harvestUrl(c.code, ["PT"])));
       if (probe.rows.length) { found = c; break; }
     } catch (e) {
-      if (!(e instanceof SourceError)) throw e; // a network failure is a failure; "code not valid" just means that quarter is not out
+      // Only INE's own answer "code not valid" (parseIne: "INE Portugal could not answer") means that quarter is not out yet.
+      // fetchJson turns every network error, timeout and HTTP error into a SourceError too: those are failures, not "not out"
+      // (on 24 Oct a flaky INE made all four probes fail and the run reported "no rent medians for the last four quarters").
+      if (!(e instanceof SourceError) || !e.message.startsWith("INE Portugal could not answer")) throw e;
     }
   }
   if (!found) throw new SourceError("INE Portugal has no rent medians for the last four quarters");

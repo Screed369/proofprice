@@ -178,6 +178,13 @@ test("pt-ine-rents: ptHarvest fails loudly when INE holds none of the last four 
   await assert.rejects(ptHarvest({ fetcher: async () => { throw new Error("socket hang up"); }, now: new Date("2026-10-23T00:00:00Z") }), /socket hang up/);
 });
 
+test("pt-ine-rents: ptHarvest reports a dropped connection as that, not as 'no rent medians for the last four quarters'", async () => {
+  const urls: string[] = [];
+  const fetcher = async (url: string) => { urls.push(url); throw new SourceError("Could not reach the official source", "UND_ERR_CONNECT_TIMEOUT"); };
+  await assert.rejects(ptHarvest({ fetcher, now: new Date("2026-10-23T00:00:00Z") }), /Could not reach the official source/);
+  assert.equal(urls.length, 1, "stops at the first failure instead of trying older quarters");
+});
+
 test("pt-ine-rents: historyKey maps the request to INE's place code; a type/bedroom split or postcode-only request has no copy", () => {
   assert.deepEqual(ptHistoryKey({ town: "Porto" }), { area: place("Porto").code, item: HARVEST_ITEM, label: "Porto" });
   assert.deepEqual(ptHistoryKey({}), { area: "PT", item: HARVEST_ITEM, label: "Portugal" });
