@@ -1,0 +1,26 @@
+URL: https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/000641367?lastNObservations=6
+Fetched: 2026-10-24T01:44:38Z from GitHub Actions
+Status, type, bytes: 200 application/xml;charset=UTF-8 2289
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers, Accept-Encoding
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+strict-transport-security: max-age=31536000 ; includeSubDomains
+x-frame-options: DENY
+content-type: application/xml;charset=UTF-8
+date: Sat, 24 Oct 2026 01:44:38 GMT
+server: unknown
+set-cookie: INSEE=rd4o00000000000000000000ffff0ac3387ao8080; expires=Sat, 24-Oct-2026 02:04:38 GMT; path=/; Httponly; Secure
+strict-transport-security: max-age=100000; includeSubDomains
+
+=== FILE TYPE: XML 1.0 document, Unicode text, UTF-8 text, with very long lines (2283), with no line terminators
+=== FIRST 20000 BYTES
+<?xml version='1.0' encoding='UTF-8'?><message:StructureSpecificData xmlns:ss="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message/footer" xmlns:ns1="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=FR1:SERIES_BDM(1.0):ObsLevelDim:TIME_PERIOD" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace"><message:Header><message:ID>SERIES_BDM_1792806278415</message:ID><message:Test>false</message:Test><message:Prepared>2026-10-24T03:44:38</message:Prepared><message:Sender id="FR1"><common:Name xml:lang="fr">Institut national de la statistique et des études économiques</common:Name></message:Sender><message:Structure structureID="FR1_SERIES_BDM_1_0" namespace="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=FR1:SERIES_BDM(1.0):ObsLevelDim:TIME_PERIOD" dimensionAtObservation="TIME_PERIOD"><common:StructureUsage><Ref agencyID="FR1" id="SERIES_BDM" version="1.0"/></common:StructureUsage></message:Structure><message:Source xml:lang="fr">Banque de données macro-économiques</message:Source></message:Header><message:DataSet ss:dataScope="DataStructure" xsi:type="ns1:DataSetType" ss:structureRef="FR1_SERIES_BDM_1_0"><Series IDBANK="000641367" FREQ="M" TITLE_FR="Prix moyens mensuels de vente au détail en métropole - Pommes (1 kg)" TITLE_EN="Monthly average consumer prices in metropolitan France - Apples (1 kg)" LAST_UPDATE="2026-10-15" UNIT_MEASURE="EUROS" UNIT_MULT="0" REF_AREA="FM" DECIMALS="2"><Obs TIME_PERIOD="2026-09" OBS_VALUE="3.15" OBS_STATUS="A" OBS_QUAL="DEF" OBS_TYPE="A"/><Obs TIME_PERIOD="2026-08" OBS_VALUE="3.19" OBS_STATUS="A" OBS_QUAL="DEF" OBS_TYPE="A"/><Obs TIME_PERIOD="2026-07" OBS_VALUE="3.16" OBS_STATUS="A" OBS_QUAL="DEF" OBS_TYPE="A"/><Obs TIME_PERIOD="2026-06" OBS_VALUE="3.14" OBS_STATUS="A" OBS_QUAL="DEF" OBS_TYPE="A"/><Obs TIME_PERIOD="2026-05" OBS_VALUE="3.03" OBS_STATUS="A" OBS_QUAL="DEF" OBS_TYPE="A"/><Obs TIME_PERIOD="2026-04" OBS_VALUE="2.96" OBS_STATUS="A" OBS_QUAL="DEF" OBS_TYPE="A"/></Series></message:DataSet></message:StructureSpecificData>
