@@ -1,0 +1,23 @@
+name: sa-check
+on:
+  push:
+    branches: ["dbg/sa-harvest-check"]
+permissions:
+  contents: read
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run harvest -- au-adelaide-sa-rents 2>&1 | tail -20
+      - run: |
+          cat library/au-adelaide-sa-rents/meta.json
+          ls library/au-adelaide-sa-rents | head
+          f=$(ls library/au-adelaide-sa-rents/*.csv | head -1); wc -l $f
+          grep -E ",(5000|s:adelaide|s:glenelg|5067|5290)," $f | head -40
