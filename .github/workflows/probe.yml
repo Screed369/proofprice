@@ -61,6 +61,7 @@ jobs:
                 python3 "$GITHUB_WORKSPACE/scripts/xlsx-dump.py" body.bin 70 | head -c "$N" | iconv -f utf-8 -t utf-8 -c
               fi
               FIRST=$(unzip -Z1 body.bin | grep -iE '\.(csv|txt|json|xml)$' | head -1)
+              for M in tender.csv contract.csv noticeResult.csv lot.csv classification.csv procedureLotResult.csv purpose.csv; do if unzip -Z1 body.bin | grep -qx "$M"; then echo "=== HEAD 8 LINES OF $M"; unzip -p body.bin "$M" | head -8 | cut -c1-900 | iconv -f utf-8 -t utf-8 -c; fi; done
               if [ -n "$FIRST" ]; then echo "=== FIRST $N BYTES OF $FIRST"; unzip -p body.bin "$FIRST" | head -c "$N" | iconv -f utf-8 -t utf-8 -c; fi
             elif file -b body.bin | grep -qi gzip; then
               echo "=== FIRST $N BYTES (gunzipped)"; gunzip -c body.bin | head -c "$N" | iconv -f utf-8 -t utf-8 -c
