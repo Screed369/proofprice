@@ -1,0 +1,310 @@
+URL: https://data.statistik.gv.at/web/meta.jsp?dataset=OGD_deps001_Energiepreise
+Fetched: 2026-10-25T07:42:00Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 9555
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-security-policy: default-src 'self' *.statistik.at *.local *.statcube.at 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.statistik.at *.statcube.at *.local; img-src 'self' data: *
+set-cookie: JSESSIONID=0BD70B46373F50E5DA02602B147AE971; Path=/data.statistik.gv.at; HttpOnly
+vary: accept-encoding
+content-type: text/html;charset=UTF-8
+content-language: de
+date: Sun, 25 Oct 2026 07:42:00 GMT
+set-cookie: statistik_cookie=!t0KjPN9sGSvZysFmjN8wvuxp1i3/XzdGd5tP0ZZWxoeIEUgu8wYKfmsDF0qKgvAnLgbJ+cfuZ+KfssRCpBVF8tjfhAsb3D9tAXwCkklZink=; expires=Sun, 25-Oct-2026 07:45:00 GMT; path=/; Httponly; Secure
+set-cookie: f5avraaaaaaaaaaaaaaaa_session_=GGBLIBKJKJGMGLHOGNECEDPGBOENDGGIILFGDEMNICPIBPCLAEGPJADDCFOJPGDILFGDEIHONCHCNCLLCDNAKPHLHLEHNLHFMLHPADMIGLAHLCGDEACNBGBDLANKHALN; HttpOnly; secure;
+set-cookie: TS017b3bc9=012bdc77282d8d97042bf569120cb72b99b8042916a25cc4f18259033071b0e3b312b24e8986d484e5d6fed4683df0425a6452d2cf22f926244a1eed4a74e49c97770e7725fa030f454e773b4cc40e3fc239062ad9; Path=/; Secure; HttpOnly
+set-cookie: TS0138c0d8=012bdc77285863ebf7cb21e67f6828a686cf46c125a25cc4f18259033071b0e3b312b24e89ef5a172ec72fcf90942b788ec6b8c85f169b9c6c48ceb03c3f48f2d02179f729; path=/data.statistik.gv.at; HttpOnly; Secure
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 30000 BYTES
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="de">
+	<!-- HEAD fragment -->
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=9">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="publisher" content="Statistik Austria"/>
+		<meta name="copyright" content="Statistik Austria"/>
+		<meta name="keywords" content="Österreich, Statistik, Open, Data, open.data"/>
+		<meta name="description" content="Open.data">
+		<meta name="author" content="HE,PW">
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="assets/favicon.png">
+
+		<title>Statistik Austria Open.data</title>
+
+		<!-- Bootstrap core CSS  -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
+		
+		<!-- Custom styles for this template -->
+		<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+
+		
+<!-- TOPNAVI fragmet -->
+		<div class="navbar navbar-inverse navbar-fixed-top" id="topNavi" aria-labelledby="topNavi" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarTop">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="./" aria-label="Startseite / welcome page"><img src="assets/logo_openData.png" alt="Logo von Statistik Austria open.data" /></a>
+
+				</div>
+				<div class="collapse navbar-collapse" id="navbarTop">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="catalog.jsp">Daten</a>
+						</li>
+						<li>
+							<a href="./?page=formats">Formate</a>
+						</li>
+						<li>
+							<a href="./?page=terms">Nutzungsbedingungen</a>
+						</li>
+						<li>
+							<a href="./?page=apps">Anwendungen</a>
+						</li>
+						<li>
+							<a href="./?page=contact">Kontakt</a>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!-- /.container -->
+		</div><!-- /#topNavi -->
+
+		
+		
+		
+		<!-- content -->
+
+		<section class="container" id="mitte">
+
+			<div class="row">
+				<div class="col col-md-12 col-lg-12 bg_gray">
+					<!-- LOGO TOP fragment -->
+				<div id="logoTop">
+					<img src="assets/logo_statistik.gif" alt="logo von statistik austria">
+				</div>
+
+					<h1 class="mitte">
+						
+						<br />
+						<span class="gray">Metadaten</span>
+					</h1>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1" id="meta">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="2">Inhalt</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="metaLabel">Inhaltliche Beschreibung des Datensatzes/Dienstes</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Beschlagwortung des Datensatzes/Dienstes</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">F&uuml;r den Datensatz/Dienst zust&auml;ndige Organisation</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Lizenz</td>
+								<td class="metaContent"></td>
+							</tr>
+							
+						</tbody>
+					</table>
+					
+					<table>
+						<thead>
+							<tr>
+								<th colspan="2">Zus&auml;tzliche Informationen</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="metaLabel">Eindeutiger Identifikator</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Datum des Metadatensatzes</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Bezeichnung der Metadatenstruktur</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Sprache des Metadatensatzes</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Zeichensatzcode des Metadatensatzes</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Weiterf&uuml;hrende Metadaten</td>
+								<td class="metaContent metaLink">
+									
+								</td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Attributbeschreibung</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Kontaktseite der datenverantwortlichen Stelle</td>
+								<td class="metaContent metaLink"><a href="" target="_blank"></a></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Element zur Erfassung des Beginns der G&uuml;ltigkeit eines Datensatzes</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Aktualisierungszeitraum</td>
+								<td class="metaContent"></td>
+							</tr>
+							<tr>
+								<td class="metaLabel">Die richtige Namensnennung der Datenquelle</td>
+								<td class="metaContent"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div><!-- /#content -->
+			</div><!-- /.row -->
+
+		</section><!-- /#mitte -->
+		
+		
+
+<!-- FOOTER fragment -->
+		<footer class="container">
+			<div class="row">
+				<div class="col col-md-12">
+					<div class="navbar navbar-inverse">
+						<ul class="navbar navbar-nav">
+							<li>
+								<a href="https://www.statistik.at/statcube/sdb/prod/STATcube_Impressum_DE.html" target="_blank">Impressum</a>
+								&nbsp;|&nbsp;
+							</li>
+							<li>
+								<a href="https://www.statistik.at/statcube/opendata/prod/117089_Datenschutzinformation_OpenData.pdf" target="_blank">Datenschutzinformation</a>
+								&nbsp;|&nbsp;
+							</li>
+							<li>
+								<a href="https://www.statistik.at/statcube/opendata/prod/124351_Barrierefreiheitserklaerung_OpenData.pdf" target="_blank">Barrierefreiheitserkl&auml;rung</a>
+								&nbsp;|&nbsp;
+							</li>
+							<li>
+								<a href="#" data-toggle="modal" data-target="#window">Rechtlicher Hinweis</a>
+							</li>
+						</ul>
+						<ul class="navbar navbar-right">
+							<li>
+								&copy; 2014-2024 STATISTIK AUSTRIA &mdash; 
+								Version: 1.20 Rev 3
+								
+							</li>
+						</ul>
+					</div><!-- /.navbar-invers -->
+				</div><!-- /.col-md-12 -->
+			</div><!-- /.row -->
+		</footer>
+
+		<!-- MODAL WINDOW fragment -->
+		<section class="modal fade" id="window" tabindex="-1" role="dialog" aria-labelledby="windowLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="windowLabel">Haftungsausschluss</h4>
+					</div><!-- /.modal-header -->
+					<div class="modal-body">
+						<p>
+							Die Bundesanstalt Statistik &Ouml;sterreich (STATISTIK AUSTRIA) sowie alle Mitwirkenden an diesen Webseiten
+							haben deren Inhalte sorgf&auml;ltig recherchiert und erstellt. Fehler k&ouml;nnen dennoch nicht g&auml;nzlich ausgeschlossen werden.
+							Die Genannten &uuml;bernehmen daher keine Haftung f&uuml;r die Richtigkeit, Vollst&auml;ndigkeit und Aktualit&auml;t der Inhalte,
+							insbesondere &uuml;bernehmen sie keinerlei Haftung f&uuml;r eventuelle unmittelbare oder mittelbare Sch&auml;den,
+							die durch die direkte oder indirekte Nutzung der angebotenen Inhalte entstehen.
+						</p>
+						<p>
+							Korrekturhinweise senden Sie bitte an <a href="mailto:open.data@statistik.gv.at">open.data@statistik.gv.at</a>.
+						</p>
+						<p>
+							Bei Nutzungsausf&auml;llen der Website wegen technischer oder organisatorischer St&ouml;rungen bestehen keinerlei Anspr&uuml;che
+							&mdash; gleich welcher Art &mdash; gegen STATISTIK AUSTRIA.
+						</p>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- modal-dialog -->
+		</section>
+
+		<!-- LOGO BRIDGE fragment -->
+		<div id="logoBridge" class="logo navbar-fixed-top" role="banner">
+			<img src="assets/logo_statistik.gif" alt="Logo der Statistik Austria" width="100%" />
+		</div>
+
+		<!-- Placed at the end of the document so the pages load faster -->
+		<!-- BOOTSTRAP fragment  -->
+<script src="js/jquery-3.6.1.min.js"></script>
+<script src="js/bootstrap-3.4.1.min.js"></script>
+<!-- keeps accordion open on browser-back-button -->
+<script src="js/stat.js"></script>
+
+<script>
+	$('.closeall').click(function() {
+		$(".in").not('.sticky').collapse('hide');
+	});
+
+	$('.openall').click(function() {
+		$('.collapse').not('.sticky').collapse('show');
+	});
+</script>
+
+		<!-- PIWIK fragment -->
+		<script type="text/javascript">
+			var _paq = _paq || [];
+			_paq.push(["trackPageView"]);
+			_paq.push(["enableLinkTracking"]);
+
+			(function() {
+				var u = (("https:" == document.location.protocol) ? "https" : "http") + "://www.statistik.at/piwik/";
+				_paq.push(["setTrackerUrl", u + "piwik.php"]);
+				_paq.push(["setSiteId", "7"]);
+				var d = document, g = d.createElement("script"), s = d.getElementsByTagName("script")[0];
+				g.type = "text/javascript";
+				g.defer = true;
+				g.async = true;
+				g.src = u + "piwik.js";
+				s.parentNode.insertBefore(g, s);
+			})();
+		</script>
+
+	</body>
+</html>
