@@ -65,7 +65,7 @@ jobs:
             elif file -b body.bin | grep -qi gzip; then
               echo "=== FIRST $N BYTES (gunzipped)"; gunzip -c body.bin | head -c "$N" | iconv -f utf-8 -t utf-8 -c
             else
-              echo "=== FIRST $N BYTES"; head -c "$N" body.bin | iconv -f utf-8 -t utf-8 -c
+              echo "=== FIRST $N BYTES"; head -c "$N" body.bin | iconv -f utf-8 -t utf-8 -c; echo; echo "=== LAST $N BYTES"; tail -c "$N" body.bin | iconv -f utf-8 -t utf-8 -c; echo "=== DATES"; grep -o '"訪價日期": *"[0-9]*"' body.bin | sort -u | sed -n '1p;$p' 
             fi
           } > "result.txt"
           cd "$GITHUB_WORKSPACE"
