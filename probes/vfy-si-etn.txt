@@ -1,0 +1,439 @@
+URL: https://podatki.gov.si/api/3/action/package_search?q=ETN&rows=5
+Fetched: 2026-10-25T02:41:27Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 76246
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 25 Oct 2026 02:41:27 GMT
+Server: Apache
+Pragma: no-cache
+Cache-Control: no-cache
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, PUT, GET, DELETE, OPTIONS
+Access-Control-Allow-Headers: X-CKAN-API-KEY, Authorization, Content-Type
+Vary: Cookie
+Content-Length: 76246
+Content-Type: application/json;charset=utf-8
+Via: 1.1 podatki.gov.si
+Strict-Transport-Security: max-age=48000000; includeSubDomains
+Set-Cookie: SESSA=D1&D2.D1; path=/; expires=(null); host=https://podatki.gov.si/;
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+    "help": "https://podatki.gov.si/api/3/action/help_show?name=package_search",
+    "success": true,
+    "result": {
+        "count": 2,
+        "sort": "score desc, popularity desc, name asc",
+        "facets": {},
+        "results": [
+            {
+                "vrsta_pravne_podlage": "",
+                "license_title": "",
+                "maintainer": null,
+                "licence": "/",
+                "temporal_coverage-from": "[]",
+                "relationships_as_object": [],
+                "tag_string": "kupoprodaje nepremi\u010dnin, najemi nepremi\u010dnin, trg nepremi\u010dnin",
+                "publisher": "MINISTRSTVO ZA OKOLJE IN PROSTOR, GEODETSKA UPRAVA REPUBLIKE SLOVENIJE",
+                "private": false,
+                "revision_timestamp": "2026-09-02T12:23:51.033561",
+                "organization": {
+                    "description": "",
+                    "created": "2026-09-01T13:52:23.413878",
+                    "title": "MINISTRSTVO ZA OKOLJE IN PROSTOR, GEODETSKA UPRAVA REPUBLIKE SLOVENIJE",
+                    "name": "ministrstvo_za_okolje_in_prostor_geodetska_uprava_republike_slovenije",
+                    "revision_timestamp": "2026-09-01T11:51:04.389688",
+                    "is_organization": true,
+                    "state": "active",
+                    "image_url": "",
+                    "revision_id": "69484880-559c-4f0f-8227-96c055a8c038",
+                    "type": "organization",
+                    "id": "2632934000",
+                    "approval_status": "approved"
+                },
+                "foi-email": "gurs@assist.si",
+                "dostopnost_zbirke": "Podatki so javno dostopni in na voljo za dostop in ponovno uporabo",
+                "id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                "metadata_created": "2018-05-18T07:56:53.948940",
+                "municipal": false,
+                "pogoji_licence": "Splo\u0161ni pogoji uporabe geodetskih podatkov: https://www.e-prostor.gov.si/dostopi/javni-dostop/?acitem=1821-1822",
+                "metadata_modified": "2026-08-17T23:21:31.832622",
+                "author": null,
+                "author_email": null,
+                "geographic_coverage": "Slovenija",
+                "state": "active",
+                "version": null,
+                "archiver": {
+                    "status": "Archived successfully",
+                    "is_broken": false,
+                    "reason": "",
+                    "status_id": 0
+                },
+                "opsi_tip": "1",
+                "license_id": "",
+                "type": "dataset",
+                "resources": [
+                    {
+                        "hash": "",
+                        "description": "Vpogled v aktualne cene nepremi\u010dnin",
+                        "created": "2022-08-31T01:22:31.895434",
+                        "url": "https://eprostor.gov.si/ETN-JV/",
+                        "format": "HTML",
+                        "qa": "{'updated': '2024-11-08T04:13:31.108316', 'openness_score': 0, 'archival_timestamp': '2024-11-08T03:34:14.611359', 'format': u'HTML', 'created': '2022-08-31T01:22:37.109823', 'resource_timestamp': None, 'openness_score_reason': u'Licenca ni odprta'}",
+                        "tracking_summary": {
+                            "total": 0,
+                            "recent": 0
+                        },
+                        "resource_locator_function": "",
+                        "archiver": "{'is_broken_printable': 'Downloaded OK', 'updated': '2024-11-08T03:34:14.611359', 'cache_filepath': u'/var/ckan/resource_cache/76/7662a4a0-e926-48f8-a41e-7178227929c6/resource', 'last_success': '2024-11-08T03:34:14.611359', 'size': u'887', 'is_broken': False, 'failure_count': 0, 'etag': None, 'status': 'Archived successfully', 'url_redirected_to': None, 'hash': u'716679abd9cd80e99cae8cac11adda12de5b8391', 'status_id': 0, 'reason': u'', 'last_modified': u'Fri, 06 Oct 2023 05:33:21 GMT', 'resource_timestamp': '2022-08-30T23:22:31.448163', 'mimetype': u'text/html', 'cache_url': u'http://localhost:5000/data/resource_cache/76/7662a4a0-e926-48f8-a41e-7178227929c6/resource', 'created': '2022-08-31T01:22:35.599406', 'first_failure': None}",
+                        "resource_locator_protocol": "WWW:LINK-1.0-http--link",
+                        "position": 0,
+                        "revision_id": "3a52d204-e4a7-4874-ac40-7f791a0e1496",
+                        "datastore_active": false,
+                        "id": "7662a4a0-e926-48f8-a41e-7178227929c6",
+                        "name": "Vpogled v aktualne cene nepremi\u010dnin"
+                    },
+                    {
+                        "hash": "",
+                        "description": "Aplikacija JGP za prenos brezpla\u010dnih podatkov",
+                        "created": "2024-04-12T01:20:23.790767",
+                        "url": "https://ipi.eprostor.gov.si/jgp/",
+                        "format": "HTML",
+                        "qa": "{'updated': '2024-11-08T04:13:31.125563', 'openness_score': 0, 'archival_timestamp': '2024-10-22T03:32:31.160815', 'format': u'HTML', 'created': '2024-04-12T01:20:31.243885', 'resource_timestamp': None, 'openness_score_reason': u'Lokalna kopija ne obstaja, uporabljena prej\\u0161nja ocena: Licenca ni odprta'}",
+                        "tracking_summary": {
+                            "total": 18,
+                            "recent": 4
+                        },
+                        "resource_locator_function": "information",
+                        "archiver": "{'is_broken_printable': 'Downloaded OK', 'updated': '2024-10-22T03:32:31.160815', 'cache_filepath': u'/var/ckan/resource_cache/90/902ef494-56a7-486b-b8a2-958ad5cbab47/resource', 'last_success': '2024-10-22T03:32:31.160815', 'size': u'13487', 'is_broken': False, 'failure_count': 0, 'etag': u'\"670ccadb-34af\"', 'status': 'Archived successfully', 'url_redirected_to': None, 'hash': u'57060749ca6e00735f4484d9360388a9f27feb39', 'status_id': 0, 'reason': u'', 'last_modified': u'Mon, 14 Oct 2024 07:40:11 GMT', 'resource_timestamp': '2024-04-11T23:20:23.602055', 'mimetype': u'text/html', 'cache_url': u'http://localhost:5000/data/resource_cache/90/902ef494-56a7-486b-b8a2-958ad5cbab47/resource', 'created': '2024-04-12T01:20:28.519057', 'first_failure': None}",
+                        "resource_locator_protocol": "WWW:LINK-1.0-http--link",
+                        "position": 1,
+                        "revision_id": "647d74bc-c91f-4042-ac56-42f932dd4fd7",
+                        "datastore_active": false,
+                        "id": "902ef494-56a7-486b-b8a2-958ad5cbab47",
+                        "name": "Aplikacija JGP za prenos brezpla\u010dnih podatkov"
+                    },
+                    {
+                        "hash": "",
+                        "description": "Portal Prostor",
+                        "created": "2022-08-31T01:22:31.895461",
+                        "url": "https://www.e-prostor.gov.si/podrocja/trg-in-vrednosti-nepremicnin/trg-nepremicnin/#c1975",
+                        "format": "HTML",
+                        "qa": "{'updated': '2024-11-08T04:13:31.182648', 'openness_score': 0, 'archival_timestamp': '2024-11-08T03:34:15.153686', 'format': u'HTML', 'created': '2022-08-31T01:22:37.369779', 'resource_timestamp': None, 'openness_score_reason': u'Licenca ni odprta'}",
+                        "tracking_summary": {
+                            "total": 11,
+                            "recent": 1
+                        },
+                        "resource_locator_function": "",
+                        "archiver": "{'is_broken_printable': 'Downloaded OK', 'updated': '2024-11-08T03:34:15.153686', 'cache_filepath': u'/var/ckan/resource_cache/74/74fcbd28-f1df-45ea-ba9a-fe094375cde9/resource', 'last_success': '2024-11-08T03:34:15.153686', 'size': u'295783', 'is_broken': False, 'failure_count': 0, 'etag': None, 'status': 'Archived successfully', 'url_redirected_to': None, 'hash': u'83256573f70145d4af3eb58ee2a5afe25d07b60b', 'status_id': 0, 'reason': u'', 'last_modified': None, 'resource_timestamp': '2024-01-31T00:20:23.026716', 'mimetype': u'text/html', 'cache_url': u'http://localhost:5000/data/resource_cache/74/74fcbd28-f1df-45ea-ba9a-fe094375cde9/resource', 'created': '2022-08-31T01:22:36.485695', 'first_failure': None}",
+                        "resource_locator_protocol": "WWW:LINK-1.0-http--link",
+                        "position": 2,
+                        "revision_id": "74f3fe56-d354-44ce-a7ed-9a9e98eae6c7",
+                        "datastore_active": false,
+                        "id": "74fcbd28-f1df-45ea-ba9a-fe094375cde9",
+                        "name": "Portal Prostor"
+                    },
+                    {
+                        "hash": "",
+                        "description": "Vir na portalu INSPIRE",
+                        "created": "2020-09-21T13:59:25.209247",
+                        "url": "https://eprostor.gov.si/imps/srv/slv/catalog.search#/metadata/eed3b549-d06b-410e-a59d-27653f90fdfd",
+                        "format": "HTML",
+                        "qa": "{'updated': '2024-11-08T04:13:31.209303', 'openness_score': 0, 'archival_timestamp': '2024-11-08T03:34:15.342118', 'format': u'HTML', 'created': '2020-09-21T13:59:53.375262', 'resource_timestamp': None, 'openness_score_reason': u'Licenca ni odprta'}",
+                        "tracking_summary": {
+                            "total": 4,
+                            "recent": 1
+                        },
+                        "archiver": "{'is_broken_printable': 'Downloaded OK', 'updated': '2024-11-08T03:34:15.342118', 'cache_filepath': u'/var/ckan/resource_cache/06/06bbc50d-7775-429c-b1f8-1994b3947cfa/catalog.search', 'last_success': '2024-11-08T03:34:15.342118', 'size': u'12773', 'is_broken': False, 'failure_count': 0, 'etag': None, 'status': 'Archived successfully', 'url_redirected_to': None, 'hash': u'c9bd58125719c136336cb26352ca0dbe39fd3b36', 'status_id': 0, 'reason': u'', 'last_modified': None, 'resource_timestamp': '2022-08-30T23:22:31.448163', 'mimetype': u'text/html', 'cache_url': u'http://localhost:5000/data/resource_cache/06/06bbc50d-7775-429c-b1f8-1994b3947cfa/catalog.search', 'created': '2020-09-21T13:59:52.587705', 'first_failure': None}",
+                        "position": 3,
+                        "revision_id": "3a52d204-e4a7-4874-ac40-7f791a0e1496",
+                        "datastore_active": false,
+                        "id": "06bbc50d-7775-429c-b1f8-1994b3947cfa",
+                        "resource_type": "documentation",
+                        "name": "Vir na portalu INSPIRE"
+                    }
+                ],
+                "num_resources": 4,
+                "pogoji_licence_cena": "Ni podatka",
+                "contact-email": "pisarna.gu@gov.si",
+                "tags": [
+                    {
+                        "vocabulary_id": null,
+                        "display_name": "kupoprodaje nepremi\u010dnin",
+                        "name": "kupoprodaje nepremi\u010dnin",
+                        "revision_timestamp": "2020-02-11T14:09:30.569785",
+                        "state": "active",
+                        "id": "880b7b6b-6cda-45cd-ad6e-deeaa1a8e31e"
+                    },
+                    {
+                        "vocabulary_id": null,
+                        "display_name": "najemi nepremi\u010dnin",
+                        "name": "najemi nepremi\u010dnin",
+                        "revision_timestamp": "2020-02-11T14:09:30.569785",
+                        "state": "active",
+                        "id": "3b37cd71-f223-4fb0-bc4b-c836ca41cba9"
+                    },
+                    {
+                        "vocabulary_id": null,
+                        "display_name": "trg nepremi\u010dnin",
+                        "name": "trg nepremi\u010dnin",
+                        "revision_timestamp": "2020-02-11T14:09:30.569785",
+                        "state": "active",
+                        "id": "b9ff3760-0d83-4003-8843-f510e185a692"
+                    }
+                ],
+                "title": "Evidenca trga nepremi\u010dnin",
+                "foi-name": "Geodetska uprava Republike Slovenije",
+                "temporal_coverage-to": "[]",
+                "povezanost_desc": "Ni podatka",
+                "accessRights": "public",
+                "tracking_summary": {
+                    "total": 2628,
+                    "recent": 120
+                },
+                "sop_stevilka": "2017-01-3730",
+                "groups": [],
+                "creator_user_id": "0af4535b-16ab-45e7-842c-cf9661c33bac",
+                "podrocje": "Okolje in prostor",
+                "additional_resources": [
+                    {
+                        "hash": "",
+                        "description": "Vir na portalu INSPIRE",
+                        "created": "2020-09-21T13:59:25.209247",
+                        "url": "https://eprostor.gov.si/imps/srv/slv/catalog.search#/metadata/eed3b549-d06b-410e-a59d-27653f90fdfd",
+                        "format": "HTML",
+                        "qa": "{'updated': '2024-11-08T04:13:31.209303', 'openness_score': 0, 'archival_timestamp': '2024-11-08T03:34:15.342118', 'format': u'HTML', 'created': '2020-09-21T13:59:53.375262', 'resource_timestamp': None, 'openness_score_reason': u'Licenca ni odprta'}",
+                        "tracking_summary": {
+                            "total": 4,
+                            "recent": 1
+                        },
+                        "archiver": "{'is_broken_printable': 'Downloaded OK', 'updated': '2024-11-08T03:34:15.342118', 'cache_filepath': u'/var/ckan/resource_cache/06/06bbc50d-7775-429c-b1f8-1994b3947cfa/catalog.search', 'last_success': '2024-11-08T03:34:15.342118', 'size': u'12773', 'is_broken': False, 'failure_count': 0, 'etag': None, 'status': 'Archived successfully', 'url_redirected_to': None, 'hash': u'c9bd58125719c136336cb26352ca0dbe39fd3b36', 'status_id': 0, 'reason': u'', 'last_modified': None, 'resource_timestamp': '2022-08-30T23:22:31.448163', 'mimetype': u'text/html', 'cache_url': u'http://localhost:5000/data/resource_cache/06/06bbc50d-7775-429c-b1f8-1994b3947cfa/catalog.search', 'created': '2020-09-21T13:59:52.587705', 'first_failure': None}",
+                        "position": 3,
+                        "revision_id": "3a52d204-e4a7-4874-ac40-7f791a0e1496",
+                        "datastore_active": false,
+                        "id": "06bbc50d-7775-429c-b1f8-1994b3947cfa",
+                        "resource_type": "documentation",
+                        "name": "Vir na portalu INSPIRE"
+                    }
+                ],
+                "relationships_as_subject": [],
+                "num_tags": 3,
+                "naziv_zakona": "<span class=\"form-control field_req\" readonly=\"\" rows=\"1\" cols=\"60\"><a href=\"http://www.pisrs.si/Pis.web/pregledPredpisa?sop=2017-01-3730\" target=\"_blank\">Zakon o mno\u017ei\u010dnem vrednotenju nepremi\u010dnin (ZMVN-1)</a></span>",
+                "contact-name": "Geodetska uprava Republike Slovenije",
+                "name": "evidenca-trga-nepremicnin",
+                "isopen": false,
+                "rights": "/",
+                "url": null,
+                "restricted_data": "false",
+                "bulk_download": false,
+                "owner_org": "2632934000",
+                "high_value_data": "false",
+                "qa": {
+                    "openness_score_reason": "Licenca ni odprta",
+                    "updated": "2024-11-08T04:13:31.209303",
+                    "openness_score": 0
+                },
+                "naziv_zakona_lep_izpis": "Zakon o mno\u017ei\u010dnem vrednotenju nepremi\u010dnin (ZMVN-1)",
+                "jezik_zbirke": "slv",
+                "opsi_tip_naziv": "Dr\u017eavni organi",
+                "individual_resources": [
+                    {
+                        "hash": "",
+                        "description": "Vpogled v aktualne cene nepremi\u010dnin",
+                        "created": "2022-08-31T01:22:31.895434",
+                        "url": "https://eprostor.gov.si/ETN-JV/",
+                        "format": "HTML",
+                        "qa": "{'updated': '2024-11-08T04:13:31.108316', 'openness_score': 0, 'archival_timestamp': '2024-11-08T03:34:14.611359', 'format': u'HTML', 'created': '2022-08-31T01:22:37.109823', 'resource_timestamp': None, 'openness_score_reason': u'Licenca ni odprta'}",
+                        "tracking_summary": {
+                            "total": 0,
+                            "recent": 0
+                        },
+                        "resource_locator_function": "",
+                        "archiver": "{'is_broken_printable': 'Downloaded OK', 'updated': '2024-11-08T03:34:14.611359', 'cache_filepath': u'/var/ckan/resource_cache/76/7662a4a0-e926-48f8-a41e-7178227929c6/resource', 'last_success': '2024-11-08T03:34:14.611359', 'size': u'887', 'is_broken': False, 'failure_count': 0, 'etag': None, 'status': 'Archived successfully', 'url_redirected_to': None, 'hash': u'716679abd9cd80e99cae8cac11adda12de5b8391', 'status_id': 0, 'reason': u'', 'last_modified': u'Fri, 06 Oct 2023 05:33:21 GMT', 'resource_timestamp': '2022-08-30T23:22:31.448163', 'mimetype': u'text/html', 'cache_url': u'http://localhost:5000/data/resource_cache/76/7662a4a0-e926-48f8-a41e-7178227929c6/resource', 'created': '2022-08-31T01:22:35.599406', 'first_failure': None}",
+                        "resource_locator_protocol": "WWW:LINK-1.0-http--link",
+                        "position": 0,
+                        "revision_id": "3a52d204-e4a7-4874-ac40-7f791a0e1496",
+                        "datastore_active": false,
+                        "id": "7662a4a0-e926-48f8-a41e-7178227929c6",
+                        "name": "Vpogled v aktualne cene nepremi\u010dnin"
+                    },
+                    {
+                        "hash": "",
+                        "description": "Aplikacija JGP za prenos brezpla\u010dnih podatkov",
+                        "created": "2024-04-12T01:20:23.790767",
+                        "url": "https://ipi.eprostor.gov.si/jgp/",
+                        "format": "HTML",
+                        "qa": "{'updated': '2024-11-08T04:13:31.125563', 'openness_score': 0, 'archival_timestamp': '2024-10-22T03:32:31.160815', 'format': u'HTML', 'created': '2024-04-12T01:20:31.243885', 'resource_timestamp': None, 'openness_score_reason': u'Lokalna kopija ne obstaja, uporabljena prej\\u0161nja ocena: Licenca ni odprta'}",
+                        "tracking_summary": {
+                            "total": 18,
+                            "recent": 4
+                        },
+                        "resource_locator_function": "information",
+                        "archiver": "{'is_broken_printable': 'Downloaded OK', 'updated': '2024-10-22T03:32:31.160815', 'cache_filepath': u'/var/ckan/resource_cache/90/902ef494-56a7-486b-b8a2-958ad5cbab47/resource', 'last_success': '2024-10-22T03:32:31.160815', 'size': u'13487', 'is_broken': False, 'failure_count': 0, 'etag': u'\"670ccadb-34af\"', 'status': 'Archived successfully', 'url_redirected_to': None, 'hash': u'57060749ca6e00735f4484d9360388a9f27feb39', 'status_id': 0, 'reason': u'', 'last_modified': u'Mon, 14 Oct 2024 07:40:11 GMT', 'resource_timestamp': '2024-04-11T23:20:23.602055', 'mimetype': u'text/html', 'cache_url': u'http://localhost:5000/data/resource_cache/90/902ef494-56a7-486b-b8a2-958ad5cbab47/resource', 'created': '2024-04-12T01:20:28.519057', 'first_failure': None}",
+                        "resource_locator_protocol": "WWW:LINK-1.0-http--link",
+                        "position": 1,
+                        "revision_id": "647d74bc-c91f-4042-ac56-42f932dd4fd7",
+                        "datastore_active": false,
+                        "id": "902ef494-56a7-486b-b8a2-958ad5cbab47",
+                        "name": "Aplikacija JGP za prenos brezpla\u010dnih podatkov"
+                    },
+                    {
+                        "hash": "",
+                        "description": "Portal Prostor",
+                        "created": "2022-08-31T01:22:31.895461",
+                        "url": "https://www.e-prostor.gov.si/podrocja/trg-in-vrednosti-nepremicnin/trg-nepremicnin/#c1975",
+                        "format": "HTML",
+                        "qa": "{'updated': '2024-11-08T04:13:31.182648', 'openness_score': 0, 'archival_timestamp': '2024-11-08T03:34:15.153686', 'format': u'HTML', 'created': '2022-08-31T01:22:37.369779', 'resource_timestamp': None, 'openness_score_reason': u'Licenca ni odprta'}",
+                        "tracking_summary": {
+                            "total": 11,
+                            "recent": 1
+                        },
+                        "resource_locator_function": "",
+                        "archiver": "{'is_broken_printable': 'Downloaded OK', 'updated': '2024-11-08T03:34:15.153686', 'cache_filepath': u'/var/ckan/resource_cache/74/74fcbd28-f1df-45ea-ba9a-fe094375cde9/resource', 'last_success': '2024-11-08T03:34:15.153686', 'size': u'295783', 'is_broken': False, 'failure_count': 0, 'etag': None, 'status': 'Archived successfully', 'url_redirected_to': None, 'hash': u'83256573f70145d4af3eb58ee2a5afe25d07b60b', 'status_id': 0, 'reason': u'', 'last_modified': None, 'resource_timestamp': '2024-01-31T00:20:23.026716', 'mimetype': u'text/html', 'cache_url': u'http://localhost:5000/data/resource_cache/74/74fcbd28-f1df-45ea-ba9a-fe094375cde9/resource', 'created': '2022-08-31T01:22:36.485695', 'first_failure': None}",
+                        "resource_locator_protocol": "WWW:LINK-1.0-http--link",
+                        "position": 2,
+                        "revision_id": "74f3fe56-d354-44ce-a7ed-9a9e98eae6c7",
+                        "datastore_active": false,
+                        "id": "74fcbd28-f1df-45ea-ba9a-fe094375cde9",
+                        "name": "Portal Prostor"
+                    }
+                ],
+                "pogostost_osvezevanja": "",
+                "revision_id": "b603153d-0472-4ead-8fd7-ee9783bb7635",
+                "notes": "Evidenca trga nepremi\u010dnin (ETN) je ve\u010dnamenska, javna zbirka podatkov o sklenjenih kupoprodajnih in najemnih pravnih poslih z nepremi\u010dninami. Evidenco vodi in vzdr\u017euje Urad za mno\u017ei\u010dno vrednotenje nepremi\u010dnin na Geodetski upravi republike Slovenije. Vzpostavljena je bila v za\u010detku leta 2007. Istega leta je bil omogo\u010den tudi javni dostop do evidentiranih podatkov, Geodetska uprava Republike Slovenije pa je za\u010dela objavljati poro\u010dila o slovenskem nepremi\u010dninskem trgu.",
+                "extras": [
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "True",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "UKLP",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "75f6ccad-b454-4872-9a32-6befaae6cc9c"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "Ni omejitev",
+                        "revision_timestamp": "2025-09-16T23:34:42.862221",
+                        "state": "active",
+                        "key": "access_constraints",
+                        "revision_id": "3f25ae53-740c-470b-84eb-83aa7184b4cc",
+                        "id": "ed71e7ff-5ab9-443d-af49-f3d6c08b1e59"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "17.00",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "bbox-east-long",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "7574b36f-bdee-4684-822d-877072be535d"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "47.00",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "bbox-north-lat",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "0f6c766a-5b4f-48b2-8d22-0965db354977"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "45.00",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "bbox-south-lat",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "8e419f4c-4fdf-4c3b-9ab9-ae3fc3410a6c"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "13.00",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "bbox-west-long",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "855ea314-a3e1-4b22-abc4-49ce8b68b8c6"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "pisarna.gu@gov.si",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "contact-email",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "011badde-8a30-41bd-b7f8-7b0867ba3b65"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "Geodetska uprava Republike Slovenije",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "contact-name",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "0ca6b040-40c3-484c-b259-709cec598742"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "[{\"type\": \"creation\", \"value\": \"2007-01-01\"}]",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "dataset-reference-date",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "f44dc99c-eb1b-4ea4-9fb8-04f521df283b"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "Podatki so javno dostopni in na voljo za dostop in ponovno uporabo",
+                        "revision_timestamp": "2025-04-25T23:20:43.664722",
+                        "state": "active",
+                        "key": "dostopnost_zbirke",
+                        "revision_id": "ad86d9a8-e03d-4c9e-84c3-6924d16b1975",
+                        "id": "b1019f5c-4d53-4d83-b0b7-65bd096a3892"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "gurs@assist.si",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "foi-email",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "7b60fe85-009f-416c-a7c0-679423ba0c95"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "Geodetska uprava Republike Slovenije",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "foi-name",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "ac9d73bc-5690-4bc6-b79f-9463cad767b3"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "daily",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        "key": "frequency-of-update",
+                        "revision_id": "423bad02-42c8-4ab2-9993-3e5a39aa647d",
+                        "id": "125baf14-b630-4ff0-a305-2b3716f8b9f1"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "Slovenija",
+                        "revision_timestamp": "2020-09-21T11:59:25.179883",
+                        "state": "active",
+                        "key": "geographic_coverage",
+                        "revision_id": "a7762a75-4430-4a43-9c0c-09c8f9e5d227",
+                        "id": "8fe1c849-99f1-452e-bf88-8a1e2086e4d1"
+                    },
+                    {
+                        "package_id": "64b5a08e-6c18-4c3e-82ac-a1de690f36d3",
+                        "value": "eed3b549-d06b-410e-a59d-27653f90fdfd",
+                        "revision_timestamp": "2018-05-18T07:56:53.948940",
+                        "state": "active",
+                        
