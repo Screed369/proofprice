@@ -1,0 +1,2623 @@
+URL: https://data.statistik.gv.at/web/catalog.jsp
+Fetched: 2026-10-25T07:43:03Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 1081594
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-security-policy: default-src 'self' *.statistik.at *.local *.statcube.at 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.statistik.at *.statcube.at *.local; img-src 'self' data: *
+set-cookie: JSESSIONID=36CA3D4475967FA3C74A259944701A54; Path=/data.statistik.gv.at; HttpOnly
+vary: accept-encoding
+content-type: text/html;charset=UTF-8
+content-language: de
+date: Sun, 25 Oct 2026 07:43:01 GMT
+set-cookie: statistik_cookie=!4H1kVRzrqv6+ybdmjN8wvuxp1i3/XwzReVe7CD99EzMbuY2T1lPodCeo/t4PbmfmVS22yCncX7e0aGvK9lBpT3wQQECmoHmFr+AVUztr508=; expires=Sun, 25-Oct-2026 07:46:01 GMT; path=/; Httponly; Secure
+set-cookie: f5avraaaaaaaaaaaaaaaa_session_=GMHBHLDFKPNOIAECCFLBNIPJHOPALABKHPDKFJKIEFKOMBKJILLOJIOFFKKFGLJGMHKDMJCGKCILONOMDPGAMKBELLIDDNCPJHAOAKHEPBCMDNFDCKILDGBIAMOHHHFH; HttpOnly; secure;
+set-cookie: TS017b3bc9=012bdc77289b80cd1bb242cb77322c8fb38f476ce8d9cac3fe512ba0f04e8de903ca3fea4c20e83802ee1c6cae30dda5bbff8e43f53a03d26f64de92e8a3a26c03bdde0f16a5c5a873681ae27b1d6f123065223717; Path=/; Secure; HttpOnly
+set-cookie: TS0138c0d8=012bdc7728d2a8da2a4d9bbb78dfa62fec57f95bd1d9cac3fe512ba0f04e8de903ca3fea4c341107027d991c0e2a9555808db40f1a2282281f51c09340ed66af95d0950008; path=/data.statistik.gv.at; HttpOnly; Secure
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (867), with CRLF line terminators
+=== FIRST 120000 BYTES
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="de">
+	<!-- HEAD fragment -->
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=9">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="publisher" content="Statistik Austria"/>
+		<meta name="copyright" content="Statistik Austria"/>
+		<meta name="keywords" content="Österreich, Statistik, Open, Data, open.data"/>
+		<meta name="description" content="Open.data">
+		<meta name="author" content="HE,PW">
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="assets/favicon.png">
+
+		<title>Statistik Austria Open.data</title>
+
+		<!-- Bootstrap core CSS  -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
+		
+		<!-- Custom styles for this template -->
+		<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+		
+<!-- TOPNAVI fragmet -->
+		<div class="navbar navbar-inverse navbar-fixed-top" id="topNavi" aria-labelledby="topNavi" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarTop">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="./" aria-label="Startseite / welcome page"><img src="assets/logo_openData.png" alt="Logo von Statistik Austria open.data" /></a>
+
+				</div>
+				<div class="collapse navbar-collapse" id="navbarTop">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="catalog.jsp">Daten</a>
+						</li>
+						<li>
+							<a href="./?page=formats">Formate</a>
+						</li>
+						<li>
+							<a href="./?page=terms">Nutzungsbedingungen</a>
+						</li>
+						<li>
+							<a href="./?page=apps">Anwendungen</a>
+						</li>
+						<li>
+							<a href="./?page=contact">Kontakt</a>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!-- /.container -->
+		</div><!-- /#topNavi -->
+
+		
+		
+		<!-- content -->
+
+		<section class="container start-template" id="mitte">
+			<div class="row" id="content">
+				<!-- LOGO TOP fragment -->
+				<div id="logoTop">
+					<img src="assets/logo_statistik.gif" alt="logo von statistik austria">
+				</div>
+
+				<div class="col col-md-12">
+					<h1>Datens&auml;tze</h1>
+   			</div>
+   			<div class="panel-heading">
+			   	<h4 class="panel-title" >
+			   		Filter
+					</h4>
+				</div>
+			</div>
+
+			<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_new">Neueste Daten</a></h4>
+						</div>
+						<div id="collapse_new" class="panel-collapse collapse sticky">
+							<div class="panel-body">
+								<table>
+									<thead>
+										<tr>
+											<th>Titel</th>
+											<th>Letzte &Auml;nderung</th>
+											<th>Format</th>
+											<th>Metadaten</th>
+										</tr>
+									</thead>
+									<tbody>
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_krankenbewegungen_ex_LEISTUNGEN_20211" aria-label="OGD_krankenbewegungen_ex_LEISTUNGEN_20211">Medizinische Leistungen während stationärer Aufenthalte</a></h4>
+														<p>Medizinische Leistungen (Unterkapitel) nach Personenmerkmalen (Codes bis 2008)</p>
+													</td>
+													<td>
+														22.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_krankenbewegungen_ex_LEISTUNGEN_20211.csv" aria-label="OGD_krankenbewegungen_ex_LEISTUNGEN_20211.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_krankenbewegungen_ex_LEISTUNGEN_20211" aria-label="OGD_krankenbewegungen_ex_LEISTUNGEN_20211">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_krankenbewegungen_ex_LEISTUNGEN_20212" aria-label="OGD_krankenbewegungen_ex_LEISTUNGEN_20212">Medizinische Leistungen während stationärer Aufenthalte</a></h4>
+														<p>Medizinische Leistungen (Unterkapitel) nach Personenmerkmalen (Codes ab 2009)</p>
+													</td>
+													<td>
+														22.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_krankenbewegungen_ex_LEISTUNGEN_20212.csv" aria-label="OGD_krankenbewegungen_ex_LEISTUNGEN_20212.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_krankenbewegungen_ex_LEISTUNGEN_20212" aria-label="OGD_krankenbewegungen_ex_LEISTUNGEN_20212">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_krankenbewegungen_ex_ENTLASSUNGEN_PERSMERK_2021" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_PERSMERK_2021">Spitalsentlassungen nach Personenmerkmalen</a></h4>
+														<p>Zahl und Dauer von Spitalsaufenthalten nach Geschlecht, Alter und Wohnort (Bundesland) der Patient:innen</p>
+													</td>
+													<td>
+														22.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_krankenbewegungen_ex_ENTLASSUNGEN_PERSMERK_2021.csv" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_PERSMERK_2021.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_krankenbewegungen_ex_ENTLASSUNGEN_PERSMERK_2021" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_PERSMERK_2021">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20211" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20211">Spitalsentlassungen nach Versorgungssektoren</a></h4>
+														<p>Zahl und Dauer von Spitalsaufenthalten nach Versorgungssektor, Bundesland (Standort Krankenanstalt) und Diagnose (ICD-9)</p>
+													</td>
+													<td>
+														22.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20211.csv" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20211.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20211" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20211">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20212" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20212">Spitalsentlassungen nach Versorgungssektoren</a></h4>
+														<p>Zahl und Dauer von Spitalsaufenthalten nach Versorgungssektor, Bundesland (Standort Krankenanstalt) und Diagnose (ICD-10)</p>
+													</td>
+													<td>
+														22.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20212.csv" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20212.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20212" aria-label="OGD_krankenbewegungen_ex_ENTLASSUNGEN_VSEKT_20212">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_konjunkturmonitor_KonMon_1" aria-label="OGD_konjunkturmonitor_KonMon_1">Konjunkturmonitor</a></h4>
+														<p>Konjunkturmonitor</p>
+													</td>
+													<td>
+														20.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_konjunkturmonitor_KonMon_1.csv" aria-label="OGD_konjunkturmonitor_KonMon_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_konjunkturmonitor_KonMon_1" aria-label="OGD_konjunkturmonitor_KonMon_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022">ITGS (International Trade in Goods Statistics), Außenhandel, nach EU-Konzept 2022</a></h4>
+														<p>Werte der Einfuhren bzw. Ausfuhren, Partnerländer, Gesamtjahr 2022 nach EU-Konzept</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022.csv" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023">ITGS (International Trade in Goods Statistics), Außenhandel, nach EU-Konzept 2023</a></h4>
+														<p>Werte der Einfuhren bzw. Ausfuhren, Partnerländer, Gesamtjahr 2023 nach EU-Konzept</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023.csv" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024">ITGS (International Trade in Goods Statistics), Außenhandel, nach EU-Konzept 2024</a></h4>
+														<p>Werte der Einfuhren bzw. Ausfuhren, Partnerländer, Gesamtjahr 2024 nach EU-Konzept</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024.csv" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025">ITGS (International Trade in Goods Statistics), Außenhandel, nach EU-Konzept 2025</a></h4>
+														<p>Werte der Einfuhren bzw. Ausfuhren, Partnerländer, Gesamtjahr 2025 nach EU-Konzept</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025.csv" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_tli16nace20_TLI_110" aria-label="OGD_tli16nace20_TLI_110">Tariflohnindex 2016 nach ÖNACE 2008 und sozialer Stellung</a></h4>
+														<p>Tariflohnindex 2016 nach ÖNACE 2008 und sozialer Stellung</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_tli16nace20_TLI_110.csv" aria-label="OGD_tli16nace20_TLI_110.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_tli16nace20_TLI_110" aria-label="OGD_tli16nace20_TLI_110">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_tli16kvg_TLI_109" aria-label="OGD_tli16kvg_TLI_109">Tariflohnindex 2006 ausgewählte Kollektivvertragsgruppen und öffentlicher Dienst</a></h4>
+														<p>Tariflohnindex 2006 ausgewählte Kollektivvertragsgruppen und öffentlicher Dienst</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_tli16kvg_TLI_109.csv" aria-label="OGD_tli16kvg_TLI_109.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_tli16kvg_TLI_109" aria-label="OGD_tli16kvg_TLI_109">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_tli16kv_TLI_108" aria-label="OGD_tli16kv_TLI_108">Tariflohnindex 2016 ausgewählte Kollektivverträge</a></h4>
+														<p>Tariflohnindex 2016 ausgewählte Kollektivverträge</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_tli16kv_TLI_108.csv" aria-label="OGD_tli16kv_TLI_108.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_tli16kv_TLI_108" aria-label="OGD_tli16kv_TLI_108">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_tli16wk15_TLI_107" aria-label="OGD_tli16wk15_TLI_107">Tariflohnindex 2016 nach Wirtschaftskammersystematik 2015 und sozialer Stellung</a></h4>
+														<p>Tariflohnindex 2016 nach Wirtschaftskammersystematik 2015 und sozialer Stellung</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_tli16wk15_TLI_107.csv" aria-label="OGD_tli16wk15_TLI_107.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_tli16wk15_TLI_107" aria-label="OGD_tli16wk15_TLI_107">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_persph_LEHR_1" aria-label="OGD_persph_LEHR_1">Lehrpersonen an Pädagogischen Hochschulen</a></h4>
+														<p>Anzahl an Lehrpersonen nach Bundesland und Personaltyp</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_persph_LEHR_1.csv" aria-label="OGD_persph_LEHR_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_persph_LEHR_1" aria-label="OGD_persph_LEHR_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_aea001_HVD_AEA_1" aria-label="OGD_aea001_HVD_AEA_1">Luftemissionsrechnung ab 2008</a></h4>
+														<p>Die Luftemissionsrechnung weist Emissionen von Luftschadstoffen und Treibhausgasen den wirtschaftlichen Aktivitäten der Unternehmen sowie dem Konsum der privaten Haushalte zu. Die Zuordnung erfolgt nach dem sogenannten Inländerprinzip und entlang der wirtschaftlichen Klassifikation ÖNACE, die auch in der Volkswirtschaftlichen Gesamtrechnung (VGR) verwendet wird. Dadurch können Emissionen direkt mit wirtschaftlichen Kennzahlen wie Produktion, Wertschöpfung oder Beschäftigung verknüpft und für Analysen der Umwelt- und Wirtschaftsentwicklung genutzt werden.</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_aea001_HVD_AEA_1.csv" aria-label="OGD_aea001_HVD_AEA_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_aea001_HVD_AEA_1" aria-label="OGD_aea001_HVD_AEA_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_aea003_HVD_AEA_GAS_1" aria-label="OGD_aea003_HVD_AEA_GAS_1">Luftemissionsrechnung ab 2008 F-Gase</a></h4>
+														<p>In der Luftemissionsrechnung für die F-Gase werden die Emissionen von fluorierten Treibhausgasen (F-Gasen) den wirtschaftlichen Aktivitäten der Unternehmen sowie dem Konsum der privaten Haushalte zugewiesen. Die Zuordnung erfolgt nach dem Inländerprinzip und entlang der ÖNACE-Klassifikation, die auch in der Volkswirtschaftlichen Gesamtrechnung (VGR) verwendet wird. Die dargestellten Emissionen umfassen insbesondere teilfluorierte Kohlenwasserstoffe (HFKW), perfluorierte Kohlenwasserstoffe (PFKW), Schwefelhexafluorid (SF6) und Stickstofftrifluorid (NF3), die vor allem als Kältemittel, in Wärmepumpen, in der Elektronikindustrie oder in elektrischen Schaltanlagen eingesetzt werden. Dadurch lassen sich die Emissionen dieser besonders klimawirksamen Gase mit wirtschaftlichen Aktivitäten verknüpfen und sektorale Emissionsmuster analysieren.</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_aea003_HVD_AEA_GAS_1.csv" aria-label="OGD_aea003_HVD_AEA_GAS_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_aea003_HVD_AEA_GAS_1" aria-label="OGD_aea003_HVD_AEA_GAS_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpilhki45_VPI_LHKI45_1" aria-label="OGD_vpilhki45_VPI_LHKI45_1">Lebenskostenindexindex Basis 1945</a></h4>
+														<p>Lebenskostenindexindex, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 1947</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpilhki45_VPI_LHKI45_1.csv" aria-label="OGD_vpilhki45_VPI_LHKI45_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpilhki45_VPI_LHKI45_1" aria-label="OGD_vpilhki45_VPI_LHKI45_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpilhki38_VPI_LHKI38_1" aria-label="OGD_vpilhki38_VPI_LHKI38_1">Lebenshaltungskostenindex Basis 1938</a></h4>
+														<p>Lebenshaltungskostenindex, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 1947</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpilhki38_VPI_LHKI38_1.csv" aria-label="OGD_vpilhki38_VPI_LHKI38_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpilhki38_VPI_LHKI38_1" aria-label="OGD_vpilhki38_VPI_LHKI38_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpikhpi_VPI_KHPI_1" aria-label="OGD_vpikhpi_VPI_KHPI_1">Kleinhandelspreisindex</a></h4>
+														<p>Kleinhandelspreisindex, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 1949</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpikhpi_VPI_KHPI_1.csv" aria-label="OGD_vpikhpi_VPI_KHPI_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpikhpi_VPI_KHPI_1" aria-label="OGD_vpikhpi_VPI_KHPI_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi58ii_VPI_1958_ii_1" aria-label="OGD_vpi58ii_VPI_1958_ii_1">Verbraucherpreisindex II Basis 1958</a></h4>
+														<p>Verbraucherpreisindex, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 1959</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi58ii_VPI_1958_ii_1.csv" aria-label="OGD_vpi58ii_VPI_1958_ii_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi58ii_VPI_1958_ii_1" aria-label="OGD_vpi58ii_VPI_1958_ii_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi58_VPI_1958_i_1" aria-label="OGD_vpi58_VPI_1958_i_1">Verbraucherpreisindex I Basis 1958</a></h4>
+														<p>Verbraucherpreisindex, Monatliche Zeitreihe ab Jänner 1959</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi58_VPI_1958_i_1.csv" aria-label="OGD_vpi58_VPI_1958_i_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi58_VPI_1958_i_1" aria-label="OGD_vpi58_VPI_1958_i_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi66_VPI_1966_1" aria-label="OGD_vpi66_VPI_1966_1">Verbraucherpreisindex Basis 1966</a></h4>
+														<p>Verbraucherpreisindex, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 1967</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi66_VPI_1966_1.csv" aria-label="OGD_vpi66_VPI_1966_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi66_VPI_1966_1" aria-label="OGD_vpi66_VPI_1966_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi76_VPI_1976_1" aria-label="OGD_vpi76_VPI_1976_1">Verbraucherpreisindex Basis 1976</a></h4>
+														<p>Verbraucherpreisindex, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 1977</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi76_VPI_1976_1.csv" aria-label="OGD_vpi76_VPI_1976_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi76_VPI_1976_1" aria-label="OGD_vpi76_VPI_1976_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi86_VPI_1986_1" aria-label="OGD_vpi86_VPI_1986_1">Verbraucherpreisindex Basis 1986</a></h4>
+														<p>Verbraucherpreisindex,  Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 1987, Ein Teil der Indexwerte im April 2020 basieren auf hauptsächlich bzw. vollständig imputierten Preisen</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi86_VPI_1986_1.csv" aria-label="OGD_vpi86_VPI_1986_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi86_VPI_1986_1" aria-label="OGD_vpi86_VPI_1986_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi96_VPI_1996_1" aria-label="OGD_vpi96_VPI_1996_1">Verbraucherpreisindex Basis 1996</a></h4>
+														<p>Verbraucherpreisindex, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 1997, Ein Teil der Indexwerte im April 2020 basieren auf hauptsächlich bzw. vollständig imputierten Preisen</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi96_VPI_1996_1.csv" aria-label="OGD_vpi96_VPI_1996_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi96_VPI_1996_1" aria-label="OGD_vpi96_VPI_1996_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi00_VPI_2000_1" aria-label="OGD_vpi00_VPI_2000_1">Verbraucherpreisindex Basis 2000</a></h4>
+														<p>Verbraucherpreisindex, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 2001, Ein Teil der Indexwerte im April 2020 basieren auf hauptsächlich bzw. vollständig imputierten Preisen</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi00_VPI_2000_1.csv" aria-label="OGD_vpi00_VPI_2000_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi00_VPI_2000_1" aria-label="OGD_vpi00_VPI_2000_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi05c18_VPI_2005COICOP18_1" aria-label="OGD_vpi05c18_VPI_2005COICOP18_1">Verbraucherpreisindex Basis 2005</a></h4>
+														<p>Verbraucherpreisindex und Subindizes, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 2006,  COICOP18</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi05c18_VPI_2005COICOP18_1.csv" aria-label="OGD_vpi05c18_VPI_2005COICOP18_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi05c18_VPI_2005COICOP18_1" aria-label="OGD_vpi05c18_VPI_2005COICOP18_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi10c18_VPI_2010COICOP18_1" aria-label="OGD_vpi10c18_VPI_2010COICOP18_1">Verbraucherpreisindex Basis 2010</a></h4>
+														<p>Verbraucherpreisindex und Subindizes, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 2011, Ein Teil der Indexwerte im April 2020 basieren auf hauptsächlich bzw. vollständig imputierten Preisen.</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi10c18_VPI_2010COICOP18_1.csv" aria-label="OGD_vpi10c18_VPI_2010COICOP18_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi10c18_VPI_2010COICOP18_1" aria-label="OGD_vpi10c18_VPI_2010COICOP18_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi15c18_VPI_2015COICOP18_1" aria-label="OGD_vpi15c18_VPI_2015COICOP18_1">Verbraucherpreisindex Basis 2015</a></h4>
+														<p>Verbraucherpreisindex und Subindizes, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 2016</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi15c18_VPI_2015COICOP18_1.csv" aria-label="OGD_vpi15c18_VPI_2015COICOP18_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi15c18_VPI_2015COICOP18_1" aria-label="OGD_vpi15c18_VPI_2015COICOP18_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi20c18_VPI_2020COICOP18_1" aria-label="OGD_vpi20c18_VPI_2020COICOP18_1">Verbraucherpreisindex Basis 2020</a></h4>
+														<p>Verbraucherpreisindex und Subindizes, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 2021, nach COICOP18</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi20c18_VPI_2020COICOP18_1.csv" aria-label="OGD_vpi20c18_VPI_2020COICOP18_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi20c18_VPI_2020COICOP18_1" aria-label="OGD_vpi20c18_VPI_2020COICOP18_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_hvpi25_HVD_HVPI_2025_1" aria-label="OGD_hvpi25_HVD_HVPI_2025_1">Harmonisierter Verbraucherpreisindex, HVPI, Basis 2025</a></h4>
+														<p>Harmonisierter Verbraucherpreisindex und Subindizes, Datensatz beinhaltet Messzahlen und Gewichtung, Monatliche Zeitreihe ab Jänner 2025, nach COICOP18</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_hvpi25_HVD_HVPI_2025_1.csv" aria-label="OGD_hvpi25_HVD_HVPI_2025_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_hvpi25_HVD_HVPI_2025_1" aria-label="OGD_hvpi25_HVD_HVPI_2025_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vpi25c18_VPI_2025COICOP18_1" aria-label="OGD_vpi25c18_VPI_2025COICOP18_1">Verbraucherpreisindex Basis 2025</a></h4>
+														<p>Verbraucherpreisindex und Subindizes, Datensatz beinhaltet neben Messzahlen auch Veränderungen zum Vormonat, Monatliche Zeitreihe ab Jänner 2026, nach COICOP18</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vpi25c18_VPI_2025COICOP18_1.csv" aria-label="OGD_vpi25c18_VPI_2025COICOP18_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vpi25c18_VPI_2025COICOP18_1" aria-label="OGD_vpi25c18_VPI_2025COICOP18_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_ahlgrhs_Aussenhandel_3" aria-label="OGD_ahlgrhs_Aussenhandel_3">Außenhandelsdaten nach Ländergruppen ab 1995</a></h4>
+														<p>Euro Werte der Einfuhren bzw. Ausfuhren nach Ländergruppen, jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														15.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_ahlgrhs_Aussenhandel_3.csv" aria-label="OGD_ahlgrhs_Aussenhandel_3.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_ahlgrhs_Aussenhandel_3" aria-label="OGD_ahlgrhs_Aussenhandel_3">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_ahlgrhs_Aussenhandel_2" aria-label="OGD_ahlgrhs_Aussenhandel_2">Außenhandelsdaten nach SITC ab 1995</a></h4>
+														<p>Euro Werte der Einfuhren bzw. Ausfuhren nach SITC-1-Steller, jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														15.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_ahlgrhs_Aussenhandel_2.csv" aria-label="OGD_ahlgrhs_Aussenhandel_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_ahlgrhs_Aussenhandel_2" aria-label="OGD_ahlgrhs_Aussenhandel_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_1531kn2_Aussenhandel_4" aria-label="OGD_1531kn2_Aussenhandel_4">Außenhandelsdaten nach Partnerländern ab 2007</a></h4>
+														<p>Euro Werte der Einfuhren bzw. Ausfuhren nach Ursprungs- bzw. Bestimmungsländern, jährliche Zeitreihe ab 2007</p>
+													</td>
+													<td>
+														15.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_1531kn2_Aussenhandel_4.csv" aria-label="OGD_1531kn2_Aussenhandel_4.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_1531kn2_Aussenhandel_4" aria-label="OGD_1531kn2_Aussenhandel_4">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_bkiwasserbau2025_BKI_W25_1" aria-label="OGD_bkiwasserbau2025_BKI_W25_1">BKI: Baukostenindex für den Siedlungswasserbau (2025=100)</a></h4>
+														<p>BKI: Baukostenindex für den Siedlungswasserbau (2025=100)</p>
+													</td>
+													<td>
+														15.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_bkiwasserbau2025_BKI_W25_1.csv" aria-label="OGD_bkiwasserbau2025_BKI_W25_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_bkiwasserbau2025_BKI_W25_1" aria-label="OGD_bkiwasserbau2025_BKI_W25_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_bkibrueckenbau2025_BKI_B25_1" aria-label="OGD_bkibrueckenbau2025_BKI_B25_1">BKI: Baukostenindex für den Brückenbau (2025=100)</a></h4>
+														<p>BKI: Baukostenindex für den Brückenbau (2025=100)</p>
+													</td>
+													<td>
+														15.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_bkibrueckenbau2025_BKI_B25_1.csv" aria-label="OGD_bkibrueckenbau2025_BKI_B25_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_bkibrueckenbau2025_BKI_B25_1" aria-label="OGD_bkibrueckenbau2025_BKI_B25_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_bkistrassebitumen2025_BKI_SB25_1" aria-label="OGD_bkistrassebitumen2025_BKI_SB25_1">BKI: Baukostenindex für den Straßenbau, Bitumen (2025=100)</a></h4>
+														<p>BKI: Baukostenindex für den Straßenbau, Bitumen (2025=100)</p>
+													</td>
+													<td>
+														15.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_bkistrassebitumen2025_BKI_SB25_1.csv" aria-label="OGD_bkistrassebitumen2025_BKI_SB25_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_bkistrassebitumen2025_BKI_SB25_1" aria-label="OGD_bkistrassebitumen2025_BKI_SB25_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_bkistrassenbau2025_BKI_S25_1" aria-label="OGD_bkistrassenbau2025_BKI_S25_1">BKI: Baukostenindex für den Straßenbau (2025=100)</a></h4>
+														<p>BKI: Baukostenindex für den Straßenbau (2025=100)</p>
+													</td>
+													<td>
+														15.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_bkistrassenbau2025_BKI_S25_1.csv" aria-label="OGD_bkistrassenbau2025_BKI_S25_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_bkistrassenbau2025_BKI_S25_1" aria-label="OGD_bkistrassenbau2025_BKI_S25_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_bkiwhsiedlg2025_BKI_WS25_1" aria-label="OGD_bkiwhsiedlg2025_BKI_WS25_1">Baukostenindex für den Wohnungs- und Siedlungsbau (2025=100)</a></h4>
+														<p>Baukostenindex für den Wohnungs- und Siedlungsbau (2025=100)</p>
+													</td>
+													<td>
+														15.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_bkiwhsiedlg2025_BKI_WS25_1.csv" aria-label="OGD_bkiwhsiedlg2025_BKI_WS25_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_bkiwhsiedlg2025_BKI_WS25_1" aria-label="OGD_bkiwhsiedlg2025_BKI_WS25_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_f0760ext_OD_PkwGZL_1" aria-label="OGD_f0760ext_OD_PkwGZL_1">Pkw-Gebrauchtzulassungen nach Marken ab Jänner 2000</a></h4>
+														<p>Anzahl der Personenkraftwagen-Gebrauchtzulassungen nach Marken in Österreich, monatliche Zeitreihe ab Jänner 2000</p>
+													</td>
+													<td>
+														14.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_f0760ext_OD_PkwGZL_1.csv" aria-label="OGD_f0760ext_OD_PkwGZL_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_f0760ext_OD_PkwGZL_1" aria-label="OGD_f0760ext_OD_PkwGZL_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_2" aria-label="OGD_indquot001_HVD_INDQUOTE_2">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Altenabhängigenquotient</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Altenabhängigenquotient</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_2.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_2" aria-label="OGD_indquot001_HVD_INDQUOTE_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_6" aria-label="OGD_indquot001_HVD_INDQUOTE_6">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Gesamtfertilitätsrate</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Gesamtfertilitätsrate</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_6.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_6.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_6" aria-label="OGD_indquot001_HVD_INDQUOTE_6">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_1" aria-label="OGD_indquot001_HVD_INDQUOTE_1">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Medianalter</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Medianalter</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_1.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_1" aria-label="OGD_indquot001_HVD_INDQUOTE_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_3" aria-label="OGD_indquot001_HVD_INDQUOTE_3">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Rohe Geburtenrate</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Rohe Geburtenrate</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_3.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_3.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_3" aria-label="OGD_indquot001_HVD_INDQUOTE_3">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_4" aria-label="OGD_indquot001_HVD_INDQUOTE_4">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Rohe Sterberate</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Rohe Sterberate</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_4.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_4.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_4" aria-label="OGD_indquot001_HVD_INDQUOTE_4">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_5" aria-label="OGD_indquot001_HVD_INDQUOTE_5">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Säuglingssterberate</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Säuglingssterberate</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_5.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_5.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_5" aria-label="OGD_indquot001_HVD_INDQUOTE_5">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_hpivr_HPI_VR_1" aria-label="OGD_hpivr_HPI_VR_1">Häuserpreisindex Prozentveränderung zum Vorjahr</a></h4>
+														<p>Häuserpreisindex Prozentveränderung zum Vorjahr; Erhebung der Kaufpreise von Wohnimmobilien</p>
+													</td>
+													<td>
+														12.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_hpivr_HPI_VR_1.csv" aria-label="OGD_hpivr_HPI_VR_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_hpivr_HPI_VR_1" aria-label="OGD_hpivr_HPI_VR_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_hpi2025_HPI_25_1" aria-label="OGD_hpi2025_HPI_25_1">Häuserpreisindex 2025</a></h4>
+														<p>Häuserpreisindex Basis 2025; Erhebung der Kaufpreise von Wohnimmobilien</p>
+													</td>
+													<td>
+														12.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_hpi2025_HPI_25_1.csv" aria-label="OGD_hpi2025_HPI_25_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_hpi2025_HPI_25_1" aria-label="OGD_hpi2025_HPI_25_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_hpi2015_HPI_15_1" aria-label="OGD_hpi2015_HPI_15_1">Häuserpreisindex 2015</a></h4>
+														<p>Häuserpreisindex Basis 2015; Erhebung der Kaufpreise von Wohnimmobilien</p>
+													</td>
+													<td>
+														12.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_hpi2015_HPI_15_1.csv" aria-label="OGD_hpi2015_HPI_15_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_hpi2015_HPI_15_1" aria-label="OGD_hpi2015_HPI_15_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_hpi2010_HPI_10_1" aria-label="OGD_hpi2010_HPI_10_1">Häuserpreisindex 2010</a></h4>
+														<p>Häuserpreisindex Basis 2010; Erhebung der Kaufpreise von Wohnimmobilien</p>
+													</td>
+													<td>
+														12.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_hpi2010_HPI_10_1.csv" aria-label="OGD_hpi2010_HPI_10_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_hpi2010_HPI_10_1" aria-label="OGD_hpi2010_HPI_10_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_bewwohn303_BB303_1" aria-label="OGD_bewwohn303_BB303_1">Baubewilligungen, Wohnungen ab 2010  (ohne An-, Auf-, Umbautätigkeit in Wien)</a></h4>
+														<p>Baubewilligungen, Wohnungen ab 2010  (ohne An-, Auf-, Umbautätigkeit in Wien)</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_bewwohn303_BB303_1.csv" aria-label="OGD_bewwohn303_BB303_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_bewwohn303_BB303_1" aria-label="OGD_bewwohn303_BB303_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_bauvh302_BB302_1" aria-label="OGD_bauvh302_BB302_1">Baubewilligungen, Neuerrichtung ganzer Gebäude ab 2010</a></h4>
+														<p>Baubewilligungen, Neuerrichtung ganzer Gebäude ab 2010</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_bauvh302_BB302_1.csv" aria-label="OGD_bauvh302_BB302_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_bauvh302_BB302_1" aria-label="OGD_bauvh302_BB302_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_fkfzul0759_OD_PkwNZL_1" aria-label="OGD_fkfzul0759_OD_PkwNZL_1">Pkw-Neuzulassungen nach Marken ab Jänner 2000</a></h4>
+														<p>Anzahl der Personenkraftwagen-Neuzulassungen nach Marken in Österreich, monatliche Zeitreihe ab Jänner 2000</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_fkfzul0759_OD_PkwNZL_1.csv" aria-label="OGD_fkfzul0759_OD_PkwNZL_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_fkfzul0759_OD_PkwNZL_1" aria-label="OGD_fkfzul0759_OD_PkwNZL_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_prodvindexusb2021_KJID2021_PVISTD_1" aria-label="OGD_prodvindexusb2021_KJID2021_PVISTD_1">Produktionsindex je unselbstständig Beschäftigten (Basis 2021)</a></h4>
+														<p>Produktionsindex je unselbstständig Beschäftigten (Basis 2021)</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_prodvindexusb2021_KJID2021_PVISTD_1.csv" aria-label="OGD_prodvindexusb2021_KJID2021_PVISTD_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_prodvindexusb2021_KJID2021_PVISTD_1" aria-label="OGD_prodvindexusb2021_KJID2021_PVISTD_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_prodindexstd2021_KJID2021_PVISTD_1" aria-label="OGD_prodindexstd2021_KJID2021_PVISTD_1">Produktionsindex je geleisteter Arbeitsstunde (Basis 2021)</a></h4>
+														<p>Produktionsindex je geleisteter Arbeitsstunde (Basis 2021)</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_prodindexstd2021_KJID2021_PVISTD_1.csv" aria-label="OGD_prodindexstd2021_KJID2021_PVISTD_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_prodindexstd2021_KJID2021_PVISTD_1" aria-label="OGD_prodindexstd2021_KJID2021_PVISTD_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjiprodindex2021_KJID2021_PI_1" aria-label="OGD_kjiprodindex2021_KJID2021_PI_1">Produktionsindex Nace Rev.2 (Basis 2021)</a></h4>
+														<p>Produktionsindex Nace Rev.2 (Basis 2021)</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjiprodindex2021_KJID2021_PI_1.csv" aria-label="OGD_kjiprodindex2021_KJID2021_PI_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjiprodindex2021_KJID2021_PI_1" aria-label="OGD_kjiprodindex2021_KJID2021_PI_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjiumsatzindex2021_KJID2021_UI_1" aria-label="OGD_kjiumsatzindex2021_KJID2021_UI_1">Umsatzindex Nace Rev.2 (Basis 2021), EU-harmonisierte Bereinigung</a></h4>
+														<p>Umsatzindex Nace Rev.2 (Basis 2021), EU-harmonisierte Bereinigung</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjiumsatzindex2021_KJID2021_UI_1.csv" aria-label="OGD_kjiumsatzindex2021_KJID2021_UI_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjiumsatzindex2021_KJID2021_UI_1" aria-label="OGD_kjiumsatzindex2021_KJID2021_UI_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_bruttoverdiensteindex2021a_KJID2021_BVIa_1" aria-label="OGD_bruttoverdiensteindex2021a_KJID2021_BVIa_1">Bruttoverdiensteindex (Basis 2021), EU-harmonisierte Bereinigung</a></h4>
+														<p>Bruttoverdiensteindex (Basis 2021), EU-harmonisierte Bereinigung</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_bruttoverdiensteindex2021a_KJID2021_BVIa_1.csv" aria-label="OGD_bruttoverdiensteindex2021a_KJID2021_BVIa_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_bruttoverdiensteindex2021a_KJID2021_BVIa_1" aria-label="OGD_bruttoverdiensteindex2021a_KJID2021_BVIa_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_beschaeftigtenindex2021_KJID2021_BI_1" aria-label="OGD_beschaeftigtenindex2021_KJID2021_BI_1">Index der Beschäftigten insgesamt ÖNACE 2008 (Basis 2021)</a></h4>
+														<p>Index der Beschäftigten insgesamt ÖNACE 2008 (Basis 2021)</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_beschaeftigtenindex2021_KJID2021_BI_1.csv" aria-label="OGD_beschaeftigtenindex2021_KJID2021_BI_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_beschaeftigtenindex2021_KJID2021_BI_1" aria-label="OGD_beschaeftigtenindex2021_KJID2021_BI_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjiarbeitsvolindex2021_KJID2021_AST_1" aria-label="OGD_kjiarbeitsvolindex2021_KJID2021_AST_1">Arbeitsvolumensindex (Basis 2021), EU-harmonisierte Bereinigung</a></h4>
+														<p>Arbeitsvolumensindex (Basis 2021), EU-harmonisierte Bereinigung</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjiarbeitsvolindex2021_KJID2021_AST_1.csv" aria-label="OGD_kjiarbeitsvolindex2021_KJID2021_AST_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjiarbeitsvolindex2021_KJID2021_AST_1" aria-label="OGD_kjiarbeitsvolindex2021_KJID2021_AST_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjiauftragseingangsindex2021_KJID2021_AEGI_1" aria-label="OGD_kjiauftragseingangsindex2021_KJID2021_AEGI_1">Auftragseingangsindex Nace Rev.2 (Basis 2021)</a></h4>
+														<p>Auftragseingangsindex Nace Rev.2 (Basis 2021)</p>
+													</td>
+													<td>
+														09.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjiauftragseingangsindex2021_KJID2021_AEGI_1.csv" aria-label="OGD_kjiauftragseingangsindex2021_KJID2021_AEGI_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjiauftragseingangsindex2021_KJID2021_AEGI_1" aria-label="OGD_kjiauftragseingangsindex2021_KJID2021_AEGI_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_skesvg2010_NFSK_ESVG10_1" aria-label="OGD_skesvg2010_NFSK_ESVG10_1">Nicht-finanzielle Sektorkonten nach ESVG 2010</a></h4>
+														<p>Nichtfinanzielle Transaktionen nach institutionellen Sektoren, gemäß ESVG 2010, in Mio. EUR, ab 1995</p>
+													</td>
+													<td>
+														06.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_skesvg2010_NFSK_ESVG10_1.csv" aria-label="OGD_skesvg2010_NFSK_ESVG10_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_skesvg2010_NFSK_ESVG10_1" aria-label="OGD_skesvg2010_NFSK_ESVG10_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_touextsai_Tour_HKL_1" aria-label="OGD_touextsai_Tour_HKL_1">Nächtigungsstatistik ab November 1973 - Nächtigungen nach Herkunftsländern und Bundesländern</a></h4>
+														<p>Statistik Austria stellt monatlich aktualisierte Daten über Ankünfte und Übernachtungen auf Bundeslandebene getrennt nach Herkunftsländern ab November 1973 zur Verfügung</p>
+													</td>
+													<td>
+														06.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_touextsai_Tour_HKL_1.csv" aria-label="OGD_touextsai_Tour_HKL_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_touextsai_Tour_HKL_1" aria-label="OGD_touextsai_Tour_HKL_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_touextsai_Tour_UA_1" aria-label="OGD_touextsai_Tour_UA_1">Nächtigungsstatistik ab November 1973 - Nächtigungen nach Unterkunftsarten und Bundesländern</a></h4>
+														<p>Statistik Austria stellt monatlich aktualisierte Daten über Ankünfte und Übernachtungen auf Bundeslandebene getrennt nach Unterkunftsarten ab November 1973 zur Verfügung</p>
+													</td>
+													<td>
+														06.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_touextsai_Tour_UA_1.csv" aria-label="OGD_touextsai_Tour_UA_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_touextsai_Tour_UA_1" aria-label="OGD_touextsai_Tour_UA_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_pregps004_GHPI_25S_1" aria-label="OGD_pregps004_GHPI_25S_1">GHPI 2025; Sondergliederungen</a></h4>
+														<p>Großhandelspreisindex Basis 2025,  Sondergliederungen</p>
+													</td>
+													<td>
+														06.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_pregps004_GHPI_25S_1.csv" aria-label="OGD_pregps004_GHPI_25S_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_pregps004_GHPI_25S_1" aria-label="OGD_pregps004_GHPI_25S_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_pregpi004_GHPI_25_1" aria-label="OGD_pregpi004_GHPI_25_1">Grosshandelspreisindex 2025</a></h4>
+														<p>Grosshandelspreisindex  Basis 2025; Monatliche Erhebung von Großhandelspreisen bei Großhandelsunternehmen</p>
+													</td>
+													<td>
+														06.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_pregpi004_GHPI_25_1.csv" aria-label="OGD_pregpi004_GHPI_25_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_pregpi004_GHPI_25_1" aria-label="OGD_pregpi004_GHPI_25_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_gvd_schleusungen_GVD_SCHLEUS_1" aria-label="OGD_gvd_schleusungen_GVD_SCHLEUS_1">Schleusungen, monatlich nach Schleuse, Fahrtrichtung, Ladezustand und Schiffsgattung</a></h4>
+														<p>Schleusungen, monatlich nach Schleuse, Fahrtrichtung, Ladezustand und Schiffsgattung</p>
+													</td>
+													<td>
+														05.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_gvd_schleusungen_GVD_SCHLEUS_1.csv" aria-label="OGD_gvd_schleusungen_GVD_SCHLEUS_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_gvd_schleusungen_GVD_SCHLEUS_1" aria-label="OGD_gvd_schleusungen_GVD_SCHLEUS_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_gvd_waren_GVD_W_3" aria-label="OGD_gvd_waren_GVD_W_3">Transportaufkommen und Transportleistung in der Binnenschifffahrt nach Häfen</a></h4>
+														<p>Transportaufkommen und Transportleistung in der Binnenschifffahrt, Einladehafen und Ausladehafen</p>
+													</td>
+													<td>
+														05.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_gvd_waren_GVD_W_3.csv" aria-label="OGD_gvd_waren_GVD_W_3.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_gvd_waren_GVD_W_3" aria-label="OGD_gvd_waren_GVD_W_3">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_gvd_waren_GVD_W_4" aria-label="OGD_gvd_waren_GVD_W_4">Transportaufkommen und Transportleistung in der Binnenschifffahrt nach Regionen</a></h4>
+														<p>Transportaufkommen und Transportleistung in der Binnenschifffahrt, Einladeregion und Ausladeregion</p>
+													</td>
+													<td>
+														05.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_gvd_waren_GVD_W_4.csv" aria-label="OGD_gvd_waren_GVD_W_4.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_gvd_waren_GVD_W_4" aria-label="OGD_gvd_waren_GVD_W_4">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_gvd_fahrten_GVD_F_3" aria-label="OGD_gvd_fahrten_GVD_F_3">Beförderungen / Beladene Fahrten in der Binnenschifffahrt nach Häfen</a></h4>
+														<p>Beförderungen / Beladene Fahrten in der Binnenschifffahrt, Einladehafen und Ausladehafen</p>
+													</td>
+													<td>
+														05.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_gvd_fahrten_GVD_F_3.csv" aria-label="OGD_gvd_fahrten_GVD_F_3.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_gvd_fahrten_GVD_F_3" aria-label="OGD_gvd_fahrten_GVD_F_3">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_gvd_fahrten_GVD_F_4" aria-label="OGD_gvd_fahrten_GVD_F_4">Beförderungen / Beladene Fahrten in der Binnenschifffahrt nach Regionen</a></h4>
+														<p>Beförderungen / Beladene Fahrten in der Binnenschifffahrt; Einladeregion und Ausladeregion</p>
+													</td>
+													<td>
+														05.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_gvd_fahrten_GVD_F_4.csv" aria-label="OGD_gvd_fahrten_GVD_F_4.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_gvd_fahrten_GVD_F_4" aria-label="OGD_gvd_fahrten_GVD_F_4">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1" aria-label="OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1">Nicht-finanzielle Sektorkonten nach ESVG 2010, ausgewählte Ergebnisse und Indikatoren</a></h4>
+														<p>Nichtfinanzielle Transaktionen nach institutionellen Sektoren, gemäß ESVG 2010, ausgewählte Ergebnisse und Indikatoren, ab 1995</p>
+													</td>
+													<td>
+														05.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1.csv" aria-label="OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1" aria-label="OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGDEXT_HVD_FBNR_OENACE_1" aria-label="OGDEXT_HVD_FBNR_OENACE_1">Firmenbuchnummer ÖNACE Zuordnung</a></h4>
+														<p>Firmenbuchnummer mit ÖNACE Zuordnung; Grundmasse: alle aktiv im Firmenbuch eingetragenen Unternehmen mit aktiv zugeordneter Wirtschaftstätigkeit. Unternehmen ohne zugeordnete ÖNACE sind nicht enthalten.</p>
+													</td>
+													<td>
+														01.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGDEXT_HVD_FBNR_OENACE_1.csv" aria-label="OGDEXT_HVD_FBNR_OENACE_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGDEXT_HVD_FBNR_OENACE_1" aria-label="OGDEXT_HVD_FBNR_OENACE_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_zlf_komm_ZLF_KOM_2" aria-label="OGD_zlf_komm_ZLF_KOM_2">Kommerzielle Zivilluftfahrt</a></h4>
+														<p>Kommerzielle Zivilluftfahrt</p>
+													</td>
+													<td>
+														01.10.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_zlf_komm_ZLF_KOM_2.csv" aria-label="OGD_zlf_komm_ZLF_KOM_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_zlf_komm_ZLF_KOM_2" aria-label="OGD_zlf_komm_ZLF_KOM_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_oeff_fin_q_Oeff_Fin_2" aria-label="OGD_oeff_fin_q_Oeff_Fin_2">Öffentliche Finanzen ab 2001 quartalsweise, ESVG 2010</a></h4>
+														<p>Erstellung der Nichtfinanziellen Konten des Sektors Staat (Quartalsrechnung)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_oeff_fin_q_Oeff_Fin_2.csv" aria-label="OGD_oeff_fin_q_Oeff_Fin_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_oeff_fin_q_Oeff_Fin_2" aria-label="OGD_oeff_fin_q_Oeff_Fin_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_prodcom102_PRODCOM25_MO_1" aria-label="OGD_prodcom102_PRODCOM25_MO_1">Güterproduktion nach ÖCPA und ÖPRODCOM ab 2025, monatliche Betriebsdaten (Primärerhebung)</a></h4>
+														<p>Güterproduktion nach ÖCPA und ÖPRODCOM ab 2025, monatliche Betriebsdaten (Primärerhebung)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_prodcom102_PRODCOM25_MO_1.csv" aria-label="OGD_prodcom102_PRODCOM25_MO_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_prodcom102_PRODCOM25_MO_1" aria-label="OGD_prodcom102_PRODCOM25_MO_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_oeff_fin_Oeff_Fin_1" aria-label="OGD_oeff_fin_Oeff_Fin_1">Öffentliche Finanzen ab 1995, ESVG 2010</a></h4>
+														<p>Erstellung der Nichtfinanziellen Konten des Sektors Staat (Jahresrechnung)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_oeff_fin_Oeff_Fin_1.csv" aria-label="OGD_oeff_fin_Oeff_Fin_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_oeff_fin_Oeff_Fin_1" aria-label="OGD_oeff_fin_Oeff_Fin_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjeunt25m_KJE25_U_M_1" aria-label="OGD_kjeunt25m_KJE25_U_M_1">Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Unternehmensdaten (Primärerhebung)</a></h4>
+														<p>Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Unternehmensdaten (Primärerhebung)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjeunt25m_KJE25_U_M_1.csv" aria-label="OGD_kjeunt25m_KJE25_U_M_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjeunt25m_KJE25_U_M_1" aria-label="OGD_kjeunt25m_KJE25_U_M_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjebet25m_KJE25_B_M_1" aria-label="OGD_kjebet25m_KJE25_B_M_1">Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Betriebsdaten (Primärerhebung)</a></h4>
+														<p>Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Betriebsdaten (Primärerhebung)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjebet25m_KJE25_B_M_1.csv" aria-label="OGD_kjebet25m_KJE25_B_M_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjebet25m_KJE25_B_M_1" aria-label="OGD_kjebet25m_KJE25_B_M_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjeunt25mmde_KJE25_MDE_U_M_2" aria-label="OGD_kjeunt25mmde_KJE25_MDE_U_M_2">Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Unternehmensdaten (Grundgesamtheit) nach ÖNACE 2-Steller</a></h4>
+														<p>Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Unternehmensdaten (Grundgesamtheit) nach ÖNACE 2-Steller</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjeunt25mmde_KJE25_MDE_U_M_2.csv" aria-label="OGD_kjeunt25mmde_KJE25_MDE_U_M_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjeunt25mmde_KJE25_MDE_U_M_2" aria-label="OGD_kjeunt25mmde_KJE25_MDE_U_M_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjeunt25mmde_KJE25_MDE_U_M_1" aria-label="OGD_kjeunt25mmde_KJE25_MDE_U_M_1">Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Unternehmensdaten (Grundgesamtheit)</a></h4>
+														<p>Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Unternehmensdaten (Grundgesamtheit)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjeunt25mmde_KJE25_MDE_U_M_1.csv" aria-label="OGD_kjeunt25mmde_KJE25_MDE_U_M_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjeunt25mmde_KJE25_MDE_U_M_1" aria-label="OGD_kjeunt25mmde_KJE25_MDE_U_M_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kjebet25mmde_KJE25_MDE_B_M_1" aria-label="OGD_kjebet25mmde_KJE25_MDE_B_M_1">Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Betriebsdaten (Grundgesamtheit)</a></h4>
+														<p>Konjunkturstatistik im Produzierenden Bereich ab 2025, monatliche Betriebsdaten (Grundgesamtheit)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kjebet25mmde_KJE25_MDE_B_M_1.csv" aria-label="OGD_kjebet25mmde_KJE25_MDE_B_M_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kjebet25mmde_KJE25_MDE_B_M_1" aria-label="OGD_kjebet25mmde_KJE25_MDE_B_M_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_konjidxdl21_KJIX_DL_21_1" aria-label="OGD_konjidxdl21_KJIX_DL_21_1">Konjunkturindizes Dienstleistungen Basis 2021</a></h4>
+														<p>Konjunkturindizes Dienstleistungen; monatliche Zeitreihe</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_konjidxdl21_KJIX_DL_21_1.csv" aria-label="OGD_konjidxdl21_KJIX_DL_21_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_konjidxdl21_KJIX_DL_21_1" aria-label="OGD_konjidxdl21_KJIX_DL_21_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_konjidxhan21_KJIX_H_21_1" aria-label="OGD_konjidxhan21_KJIX_H_21_1">Konjunkturindizes Handel Basis 2021</a></h4>
+														<p>Konjunkturindizes Handel, monatliche Zeitreihe</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_konjidxhan21_KJIX_H_21_1.csv" aria-label="OGD_konjidxhan21_KJIX_H_21_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_konjidxhan21_KJIX_H_21_1" aria-label="OGD_konjidxhan21_KJIX_H_21_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kons_brv_q_HVD_KONS_BRV_Q_1" aria-label="OGD_kons_brv_q_HVD_KONS_BRV_Q_1">Konsolidierte Bruttoverschuldung des Staates, vierteljährlich ab 2001</a></h4>
+														<p>Konsolidierte Bruttoverschuldung des Staates, vierteljährlich ab 2001</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kons_brv_q_HVD_KONS_BRV_Q_1.csv" aria-label="OGD_kons_brv_q_HVD_KONS_BRV_Q_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kons_brv_q_HVD_KONS_BRV_Q_1" aria-label="OGD_kons_brv_q_HVD_KONS_BRV_Q_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_kons_brv_HVD_KONS_BRV_1" aria-label="OGD_kons_brv_HVD_KONS_BRV_1">Konsolidierte Bruttoverschuldung des Staates, jährlich ab 1995</a></h4>
+														<p>Konsolidierte Bruttoverschuldung des Staates, jährlich ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_kons_brv_HVD_KONS_BRV_1.csv" aria-label="OGD_kons_brv_HVD_KONS_BRV_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_kons_brv_HVD_KONS_BRV_1" aria-label="OGD_kons_brv_HVD_KONS_BRV_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_epi2021nac08_EPI_2021_OENACE_1" aria-label="OGD_epi2021nac08_EPI_2021_OENACE_1">Erzeugerpreisindex (2021 = 100) ÖNACE 2008</a></h4>
+														<p>Monatliche Erhebung der Erzeugerpreise im Produktionsbereich</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_epi2021nac08_EPI_2021_OENACE_1.csv" aria-label="OGD_epi2021nac08_EPI_2021_OENACE_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_epi2021nac08_EPI_2021_OENACE_1" aria-label="OGD_epi2021nac08_EPI_2021_OENACE_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_epi2021cpa15_EPI_2021_OECPA_1" aria-label="OGD_epi2021cpa15_EPI_2021_OECPA_1">Erzeugerpreisindex (2021 = 100) ÖCPA 2015</a></h4>
+														<p>Monatliche Erhebung der Erzeugerpreise im Produktionsbereich</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_epi2021cpa15_EPI_2021_OECPA_1.csv" aria-label="OGD_epi2021cpa15_EPI_2021_OECPA_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_epi2021cpa15_EPI_2021_OECPA_1" aria-label="OGD_epi2021cpa15_EPI_2021_OECPA_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_finkonseks2_FKSS_Jahr_2" aria-label="OGD_finkonseks2_FKSS_Jahr_2">Finanzielle Konten Sektor Staat Jahr</a></h4>
+														<p>Erstellung der Finanzellen Konten des Sektors Staat (Jahresrechnung)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_finkonseks2_FKSS_Jahr_2.csv" aria-label="OGD_finkonseks2_FKSS_Jahr_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_finkonseks2_FKSS_Jahr_2" aria-label="OGD_finkonseks2_FKSS_Jahr_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_finkonseks1_FKSS_Quartal_1" aria-label="OGD_finkonseks1_FKSS_Quartal_1">Finanzielle Konten Sektor Staat Quartal</a></h4>
+														<p>Erstellung der Finanzellen Konten des Sektors Staat (Quartalsrechnung)</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_finkonseks1_FKSS_Quartal_1.csv" aria-label="OGD_finkonseks1_FKSS_Quartal_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_finkonseks1_FKSS_Quartal_1" aria-label="OGD_finkonseks1_FKSS_Quartal_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vgr108_VGR_HA_vj_1" aria-label="OGD_vgr108_VGR_HA_vj_1">Hauptaggregate der VGR; vierteljährlich; ESVG 2010</a></h4>
+														<p>Hauptaggregate der VGR; ESVG 2010; nominell und real saison- und arbeitstagsbereinigt, in Mio. EURO, vierteljähliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vgr108_VGR_HA_vj_1.csv" aria-label="OGD_vgr108_VGR_HA_vj_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vgr108_VGR_HA_vj_1" aria-label="OGD_vgr108_VGR_HA_vj_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vgr110_VGR_Personen_1" aria-label="OGD_vgr110_VGR_Personen_1">Hauptaggregate der VGR; Personen (Inlandskonzpet); jährlich; ESVG 2010</a></h4>
+														<p>Hauptaggregate der VGR; Personen (Inlandskonzpet) jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vgr110_VGR_Personen_1.csv" aria-label="OGD_vgr110_VGR_Personen_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vgr110_VGR_Personen_1" aria-label="OGD_vgr110_VGR_Personen_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vgr109_VGR_Erwerb_1" aria-label="OGD_vgr109_VGR_Erwerb_1">Hauptaggregate der VGR; Erwerbstätigkeit; vierteljährlich und jährlich; ESVG 2010</a></h4>
+														<p>Hauptaggregate der VGR; Erwerbstätigkeit, saison- und arbeitstagsbereinigt; vierteljährliche und jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vgr109_VGR_Erwerb_1.csv" aria-label="OGD_vgr109_VGR_Erwerb_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vgr109_VGR_Erwerb_1" aria-label="OGD_vgr109_VGR_Erwerb_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vgr107_VGR_HA_BAI_2" aria-label="OGD_vgr107_VGR_HA_BAI_2">Hauptaggregate der VGR; Bruttoanlageinvestitionen nach ÖNACE-Abteilungen; jährlich</a></h4>
+														<p>Hauptaggregate der VGR; Bruttoanlageinvestitionen nach ÖNACE-Abteilungen; nominell in Mio. EURO und verketteter Volumenindex; jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vgr107_VGR_HA_BAI_2.csv" aria-label="OGD_vgr107_VGR_HA_BAI_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vgr107_VGR_HA_BAI_2" aria-label="OGD_vgr107_VGR_HA_BAI_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vgr106_VGR_HA_Prod_2" aria-label="OGD_vgr106_VGR_HA_Prod_2">Hauptaggregate der VGR; Produktion nach ÖNACE-Abteilungen; jährlich</a></h4>
+														<p>Hauptaggregate der VGR; Produktion nach ÖNACE-Abteilungen; nominell in Mio. EURO und verketteter Volumenindex; jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vgr106_VGR_HA_Prod_2.csv" aria-label="OGD_vgr106_VGR_HA_Prod_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vgr106_VGR_HA_Prod_2" aria-label="OGD_vgr106_VGR_HA_Prod_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vgr105_VGR_HA_Bws_2" aria-label="OGD_vgr105_VGR_HA_Bws_2">Hauptaggregate der VGR; Bruttowertschöpfung nach ÖNACE-Abteilungen; jährlich</a></h4>
+														<p>Hauptaggregate der VGR; Bruttowertschöpfung nach ÖNACE-Abteilungen; nominell in Mio. EURO und verketteter Volumenindex; jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vgr105_VGR_HA_Bws_2.csv" aria-label="OGD_vgr105_VGR_HA_Bws_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vgr105_VGR_HA_Bws_2" aria-label="OGD_vgr105_VGR_HA_Bws_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vgr104_VGR_Konsum_2" aria-label="OGD_vgr104_VGR_Konsum_2">Hauptaggregate der VGR; Konsumausgaben der privaten Haushalte; jährlich</a></h4>
+														<p>Hauptaggregate der VGR; Konsumausgaben der privaten Haushalte; nominell in Mio. EURO und verketteter Volumenindex; jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vgr104_VGR_Konsum_2.csv" aria-label="OGD_vgr104_VGR_Konsum_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vgr104_VGR_Konsum_2" aria-label="OGD_vgr104_VGR_Konsum_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_vgr101_VGRJahresR_3" aria-label="OGD_vgr101_VGRJahresR_3">VGR-Jahresrechnungen, Hauptaggregate; jählich; ESVG 2010</a></h4>
+														<p>Hauptaggregate der VGR; ESVG 2010; nominell in Mio. EURO und verketteter Volumenindex, jährliche Zeitreihe ab 1995</p>
+													</td>
+													<td>
+														30.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_vgr101_VGRJahresR_3.csv" aria-label="OGD_vgr101_VGRJahresR_3.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_vgr101_VGRJahresR_3" aria-label="OGD_vgr101_VGRJahresR_3">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_sgv_daten_international_SGV_INT_1" aria-label="OGD_sgv_daten_international_SGV_INT_1">Schienengüterverkehr in Österreich ab 2017</a></h4>
+														<p>Schienengüterverkehr in Österreich ab 2017</p>
+													</td>
+													<td>
+														29.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_sgv_daten_international_SGV_INT_1.csv" aria-label="OGD_sgv_daten_international_SGV_INT_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_sgv_daten_international_SGV_INT_1" aria-label="OGD_sgv_daten_international_SGV_INT_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_epidl25_EPIDL25_1" aria-label="OGD_epidl25_EPIDL25_1">Erzeugerpreisindex Dienstleistungen (2025 = 100)</a></h4>
+														<p>Erzeugerpreisindex für unternehmensnahe Dienstleistungen</p>
+													</td>
+													<td>
+														28.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_epidl25_EPIDL25_1.csv" aria-label="OGD_epidl25_EPIDL25_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_epidl25_EPIDL25_1" aria-label="OGD_epidl25_EPIDL25_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_epidl21_EPIDL21_1" aria-label="OGD_epidl21_EPIDL21_1">Erzeugerpreisindex Dienstleistungen (2021 = 100)</a></h4>
+														<p>Erzeugerpreisindex für unternehmensnahe Dienstleistungen</p>
+													</td>
+													<td>
+														28.09.2026
+													</td>
+													<td>
+		                                                
+																					
+																					
+							                              <a href="../data/OGD_epidl21_EPIDL21_1.csv" aria-label="OGD_epidl21_EPIDL21_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_epidl21_EPIDL21_1" aria-label="OGD_epidl21_EPIDL21_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_hvd">Hochwertige Datens&auml;tze / HighValueDataset</a></h4>
+						</div>
+						<div id="collapse_hvd" class="panel-collapse collapse sticky">
+							<div class="panel-body">
+								<table>
+									<thead>
+										<tr>
+											<th>Titel</th>
+											<th>Letzte &Auml;nderung</th>
+											<th>Format</th>
+											<th>Metadaten</th>
+										</tr>
+									</thead>
+									<tbody>
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022">ITGS (International Trade in Goods Statistics), Außenhandel, nach EU-Konzept 2022</a></h4>
+														<p>Werte der Einfuhren bzw. Ausfuhren, Partnerländer, Gesamtjahr 2022 nach EU-Konzept</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022.csv" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2022">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023">ITGS (International Trade in Goods Statistics), Außenhandel, nach EU-Konzept 2023</a></h4>
+														<p>Werte der Einfuhren bzw. Ausfuhren, Partnerländer, Gesamtjahr 2023 nach EU-Konzept</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023.csv" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2023">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024">ITGS (International Trade in Goods Statistics), Außenhandel, nach EU-Konzept 2024</a></h4>
+														<p>Werte der Einfuhren bzw. Ausfuhren, Partnerländer, Gesamtjahr 2024 nach EU-Konzept</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024.csv" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2024">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025">ITGS (International Trade in Goods Statistics), Außenhandel, nach EU-Konzept 2025</a></h4>
+														<p>Werte der Einfuhren bzw. Ausfuhren, Partnerländer, Gesamtjahr 2025 nach EU-Konzept</p>
+													</td>
+													<td>
+														19.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025.csv" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025" aria-label="OGD_itgs_hvd_ogdonly_HVD_ITGSEUKON_2025">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_aea001_HVD_AEA_1" aria-label="OGD_aea001_HVD_AEA_1">Luftemissionsrechnung ab 2008</a></h4>
+														<p>Die Luftemissionsrechnung weist Emissionen von Luftschadstoffen und Treibhausgasen den wirtschaftlichen Aktivitäten der Unternehmen sowie dem Konsum der privaten Haushalte zu. Die Zuordnung erfolgt nach dem sogenannten Inländerprinzip und entlang der wirtschaftlichen Klassifikation ÖNACE, die auch in der Volkswirtschaftlichen Gesamtrechnung (VGR) verwendet wird. Dadurch können Emissionen direkt mit wirtschaftlichen Kennzahlen wie Produktion, Wertschöpfung oder Beschäftigung verknüpft und für Analysen der Umwelt- und Wirtschaftsentwicklung genutzt werden.</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_aea001_HVD_AEA_1.csv" aria-label="OGD_aea001_HVD_AEA_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_aea001_HVD_AEA_1" aria-label="OGD_aea001_HVD_AEA_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_aea003_HVD_AEA_GAS_1" aria-label="OGD_aea003_HVD_AEA_GAS_1">Luftemissionsrechnung ab 2008 F-Gase</a></h4>
+														<p>In der Luftemissionsrechnung für die F-Gase werden die Emissionen von fluorierten Treibhausgasen (F-Gasen) den wirtschaftlichen Aktivitäten der Unternehmen sowie dem Konsum der privaten Haushalte zugewiesen. Die Zuordnung erfolgt nach dem Inländerprinzip und entlang der ÖNACE-Klassifikation, die auch in der Volkswirtschaftlichen Gesamtrechnung (VGR) verwendet wird. Die dargestellten Emissionen umfassen insbesondere teilfluorierte Kohlenwasserstoffe (HFKW), perfluorierte Kohlenwasserstoffe (PFKW), Schwefelhexafluorid (SF6) und Stickstofftrifluorid (NF3), die vor allem als Kältemittel, in Wärmepumpen, in der Elektronikindustrie oder in elektrischen Schaltanlagen eingesetzt werden. Dadurch lassen sich die Emissionen dieser besonders klimawirksamen Gase mit wirtschaftlichen Aktivitäten verknüpfen und sektorale Emissionsmuster analysieren.</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_aea003_HVD_AEA_GAS_1.csv" aria-label="OGD_aea003_HVD_AEA_GAS_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_aea003_HVD_AEA_GAS_1" aria-label="OGD_aea003_HVD_AEA_GAS_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_hvpi25_HVD_HVPI_2025_1" aria-label="OGD_hvpi25_HVD_HVPI_2025_1">Harmonisierter Verbraucherpreisindex, HVPI, Basis 2025</a></h4>
+														<p>Harmonisierter Verbraucherpreisindex und Subindizes, Datensatz beinhaltet Messzahlen und Gewichtung, Monatliche Zeitreihe ab Jänner 2025, nach COICOP18</p>
+													</td>
+													<td>
+														16.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_hvpi25_HVD_HVPI_2025_1.csv" aria-label="OGD_hvpi25_HVD_HVPI_2025_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_hvpi25_HVD_HVPI_2025_1" aria-label="OGD_hvpi25_HVD_HVPI_2025_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_2" aria-label="OGD_indquot001_HVD_INDQUOTE_2">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Altenabhängigenquotient</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Altenabhängigenquotient</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_2.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_2.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_2" aria-label="OGD_indquot001_HVD_INDQUOTE_2">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_6" aria-label="OGD_indquot001_HVD_INDQUOTE_6">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Gesamtfertilitätsrate</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Gesamtfertilitätsrate</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_6.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_6.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_6" aria-label="OGD_indquot001_HVD_INDQUOTE_6">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_1" aria-label="OGD_indquot001_HVD_INDQUOTE_1">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Medianalter</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Medianalter</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_1.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_1" aria-label="OGD_indquot001_HVD_INDQUOTE_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_3" aria-label="OGD_indquot001_HVD_INDQUOTE_3">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Rohe Geburtenrate</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Rohe Geburtenrate</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_3.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_3.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_3" aria-label="OGD_indquot001_HVD_INDQUOTE_3">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_4" aria-label="OGD_indquot001_HVD_INDQUOTE_4">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Rohe Sterberate</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Rohe Sterberate</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_4.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_4.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_4" aria-label="OGD_indquot001_HVD_INDQUOTE_4">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_indquot001_HVD_INDQUOTE_5" aria-label="OGD_indquot001_HVD_INDQUOTE_5">Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Säuglingssterberate</a></h4>
+														<p>Ausgewählte demographische Indikatoren für Österreich und alle NUTS-Regionen ab 2002, Säuglingssterberate</p>
+													</td>
+													<td>
+														13.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_indquot001_HVD_INDQUOTE_5.csv" aria-label="OGD_indquot001_HVD_INDQUOTE_5.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_indquot001_HVD_INDQUOTE_5" aria-label="OGD_indquot001_HVD_INDQUOTE_5">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1" aria-label="OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1">Nicht-finanzielle Sektorkonten nach ESVG 2010, ausgewählte Ergebnisse und Indikatoren</a></h4>
+														<p>Nichtfinanzielle Transaktionen nach institutionellen Sektoren, gemäß ESVG 2010, ausgewählte Ergebnisse und Indikatoren, ab 1995</p>
+													</td>
+													<td>
+														05.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a href="../data/OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1.csv" aria-label="OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1.csv">CSV</a>
+							                            </td>
+													<td>
+														<h4><a href="../ogd/json?dataset=OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1" aria-label="OGD_skesvg2010indikat_HVD_NFSK_INDIKAT_1">JSON</a></h4>
+													</td>
+												</tr>
+											
+										
+											
+												<tr>
+													<td>
+														<h4><a href="meta.jsp?dataset=OGDEXT_HVD_FBNR_OENACE_1" aria-label="OGDEXT_HVD_FBNR_OENACE_1">Firmenbuchnummer ÖNACE Zuordnung</a></h4>
+														<p>Firmenbuchnummer mit ÖNACE Zuordnung; Grundmasse: alle aktiv im Firmenbuch eingetragenen Unternehmen mit aktiv zugeordneter Wirtschaftstätigkeit. Unternehmen ohne zugeordnete ÖNACE sind nicht enthalten.</p>
+													</td>
+													<td>
+														01.10.2026
+													</td>
+													<td>
+														
+																					
+																					
+							                              <a hr
