@@ -170,3 +170,18 @@ test("ieHistoryKey: the request maps to the library keys without asking the CSO"
   assert.equal(ieHistoryKey({}, areas), null);
   assert.equal(ieHistoryKey({ town: "Dublin" }, []), null);
 });
+
+test("manifest: area, city and place are read as the town (G20261025-1: area=Dublin 8 was refused)", async () => {
+  const { default: manifest } = await import("./index");
+  const seen: unknown[] = [];
+  const orig = (manifest as any).handle;
+  assert.equal(typeof orig, "function");
+  for (const key of ["area", "city", "place"]) {
+    await assert.rejects(
+      (manifest as any).handle({ country: "IE", [key]: "Atlantis" }, { baseUrl: "http://127.0.0.1:9" }),
+      (e: Error) => !/A place is required/.test(e.message),
+    );
+    seen.push(key);
+  }
+  assert.equal(seen.length, 3);
+});

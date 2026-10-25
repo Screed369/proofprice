@@ -3,6 +3,9 @@ import { defineSource, num, str } from "../../lib/plugin";
 import { readLatestDay } from "../../lib/library/store";
 import { INFO, ieHarvest, ieHistoryKey, ieRent } from "./source";
 
+/** The place can arrive as town, or as area, city or place (usage 25 Oct: area="Dublin 8" was refused as "A place is required"). */
+const placeOf = (p: Record<string, unknown>) => str(p.town) ?? str(p.area) ?? str(p.city) ?? str(p.place);
+
 export default defineSource({
   info: INFO,
   category: "rent",
@@ -26,7 +29,7 @@ export default defineSource({
     "Ireland rents: the average monthly rent of tenancies registered with the Residential Tenancies Board in the latest quarter, published by the CSO as table RIQ02. It is the actual (not standardised) average, passed on with its quarter; it is an average, not a list of rents.",
   handle: (p, ctx) =>
     ieRent({
-      town: str(p.town),
+      town: placeOf(p),
       property_type: str(p.property_type),
       house_type: str(p.house_type),
       bedrooms: num(p.bedrooms),
@@ -38,7 +41,7 @@ export default defineSource({
   harvest: () => ieHarvest(),
   historyKey: (p) =>
     ieHistoryKey(
-      { town: str(p.town), property_type: str(p.property_type), house_type: str(p.house_type), bedrooms: num(p.bedrooms) },
+      { town: placeOf(p), property_type: str(p.property_type), house_type: str(p.house_type), bedrooms: num(p.bedrooms) },
       [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))],
     ),
   referenceDates: true,
