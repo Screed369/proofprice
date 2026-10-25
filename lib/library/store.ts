@@ -27,6 +27,8 @@ export interface SourceMeta {
   last_ok_at: string | null;
   last_error: string | null;
   note?: string | null;
+  /** Data checker: held medians seen so far per "area::item" (accepted after 3 distinct days at the same level). */
+  held_streak?: Record<string, { median: number; dates: string[] }>;
 }
 
 export function libraryRoot(): string {

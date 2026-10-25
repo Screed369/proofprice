@@ -59,7 +59,8 @@ async function main() {
         last_rows: rows,
         last_ok_at: started,
         last_error: check?.message ?? null,
-        note: result.note ?? null,
+        note: [result.note, check?.accepted.length ? `Data check accepted a level shift: ${check.accepted.slice(0, 3).join("; ")}${check.accepted.length > 3 ? `; and ${check.accepted.length - 3} more` : ""}.` : null].filter(Boolean).join(" ") || null,
+        ...(check && Object.keys(check.heldStreak).length ? { held_streak: check.heldStreak } : {}),
       });
       ok++;
       report.push(`${check?.held.length ? "HELD" : "OK  "} ${id}: ${rows} rows for ${result.date} (${dates.length} days held)${check?.message ? ` | ${check.message}` : ""}`);
