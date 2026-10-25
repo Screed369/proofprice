@@ -1,0 +1,273 @@
+URL: https://www.statistik.at/preisradar/Js/graphUtils.js
+Fetched: 2026-10-25T09:42:31Z from GitHub Actions
+Status, type, bytes: 200 application/javascript 7217
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 25 Oct 2026 09:42:31 GMT
+last-modified: Fri, 16 Oct 2026 07:15:08 GMT
+etag: "1c31-65defec951144"
+accept-ranges: bytes
+content-length: 7217
+content-type: application/javascript
+set-cookie: statistik_cookie=!KSpy3k9odYY7I95mjN8wvuxp1i3/X0qsnC/CM9lwMHNaoWf7yYy0Qfro3O9NQ2AniQ4Xj50DNdwhg1l/jStZhDCMrUus126SV658KltbhSoJ; expires=Sun, 25-Oct-2026 09:45:31 GMT; path=/; Httponly; Secure
+set-cookie: f5avraaaaaaaaaaaaaaaa_session_=OBJMPFJENINMIDHJCFMPIOOHNDFPCEANOFMMEIHJJAAGGMJCOMACCIBLGACDNPFPBAGDLPEIMOJKHLEJGFGAAMPOLMDFKDNOAFPFNHOGHOMNKGNILBKNJMIAMKDJKJMN; HttpOnly; secure;
+set-cookie: TS017b3bc9=012bdc77287d33751b3864901dd62ccc2f0c0c64a75840d8c2dcc53199d1b5f79d9a842bcb9e97944ad610afff21bce5feddee95152cfe239b78cb1f24b5739242fe3a9f0b40b068744b192b44751e354662122613; Path=/; Secure; HttpOnly
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text
+=== FIRST 60000 BYTES
+// read current label from input field
+export function getCurrentLabel(displayId) {
+  const displayInput = document.getElementById(displayId);
+  return displayInput ? displayInput.textContent.trim() : 'Unknown selection';
+}
+
+// fetch and cache data
+export async function getAndCacheData(id, cache, dataPathPrefix, transformFunc) {
+  if (cache.has(id)) {
+    return cache.get(id);
+  }
+
+  const url = `${dataPathPrefix}${id}.json`;
+  const resp = await fetch(url);
+
+  if (!resp.ok) {
+    throw new Error(`Could not load data for ID ${id} from ${dataPathPrefix}. Status: ${resp.status}`);
+  }
+
+  const raw = await resp.json();
+  const transformed = transformFunc(raw);
+  cache.set(id, transformed);
+  return transformed;
+}
+
+// load JSON-configs
+export async function loadBaseConfigs(configPaths) {
+  const responses = await Promise.all(configPaths.map(path => fetch(path)));
+  const failed = responses.filter(resp => !resp.ok);
+  if (failed.length > 0) {
+    throw new Error("Failed to load one or more chart config JSON files.");
+  }
+  return Promise.all(responses.map(resp => resp.json()));
+}
+
+// create scaled highcharts series which are filtered by range and scaled to 100 at the beginning
+export function createScaledIndexSeries(tsMap, visibilityMap, labelsMap, lang, tMin, tMax, colorPalette = null) {
+  const validIndices = tsMap || {};
+  const validVisibilityMap = visibilityMap || {};
+  const validLabels = labelsMap?.[lang] || {};
+
+  // check if a valid range is set
+  const hasRange = tMin != null && tMax != null;
+
+  let seriesIndex = 0;
+  const createdSeries = Object.entries(validIndices)
+    .map(([idxName, ts]) => {
+      let filtered;
+
+      if (hasRange) {
+        // filter by range only if tMin and tMax are provided
+        filtered = ts.filter(([t]) => t >= tMin && t <= tMax);
+      } else {
+        // if no range is set (initial load), use all data
+        filtered = ts;
+      }
+
+      if (filtered.length === 0) {
+        return null;
+      }
+
+      // scale data
+      const baseValue = filtered[0][1];
+      const scaledData = filtered.map(([t, v]) => [t, (v / baseValue) * 100]);
+
+      // Prepare the series object
+      const seriesObject = {
+        name: validLabels[idxName] || idxName,
+        data: scaledData,
+        visible: !!validVisibilityMap[idxName]
+      };
+
+      // color assignment
+      if (colorPalette && Array.isArray(colorPalette)) {
+        if (seriesIndex < colorPalette.length) {
+          seriesObject.color = colorPalette[seriesIndex];
+        }
+      }
+      seriesIndex++;
+      return seriesObject;
+    })
+    .filter(series => series !== null && series.data.length > 0);
+  return createdSeries;
+}
+
+// initialize chart listeners for dynamic select inputs
+export function initializeChartListener(inputId, renderFunc) {
+  const inputElement = document.getElementById(inputId);
+  if (!inputElement) {
+    console.error(`Hidden input '${inputId}' not found. Cannot attach chart listener.`);
+    return;
+  }
+  // we listen for the custom 'selectchange' event (defined in select.js)
+  inputElement.addEventListener("selectchange", () => {
+    renderFunc(inputElement.value);
+  });
+}
+
+// update a div with currently selected time-range (for debugging purposes)
+export function updateRangeText(elementId, min, max) {
+  const el = document.getElementById(elementId);
+  if (el) {
+    const minDate = Highcharts.dateFormat('%m.%Y', min);
+    const maxDate = Highcharts.dateFormat('%m.%Y', max);
+    el.innerHTML = `Gewählter Zeitraum: <strong>${minDate}</strong> bis <strong>${maxDate}</strong>`;
+  }
+}
+
+// axis snapping to the first day of the month
+export function snapExtremesToMonth(e) {
+  // Only snap on user-triggered events
+  if (e.trigger !== 'navigator' && e.trigger !== 'rangeSelectorInput' && e.trigger !== 'rangeSelectorButton') {
+    return;
+  }
+
+  const {
+    min,
+    max
+  } = e;
+  let newMin = null;
+  let newMax = null;
+
+  // Utility fn to snap a timestamp to the first of the month
+  const snapTS = (ts, isMax) => {
+    if (ts === null || ts === undefined) return null;
+
+    const d = new Date(ts);
+    let year = d.getUTCFullYear();
+    let month = d.getUTCMonth(); // 0-indexed month
+    let day = d.getUTCDate();
+
+    // Snapping Logic
+    if (isMax) {
+      // Snap Max to the start of the nearest month (15th as breakpoint)
+      if (day >= 15) {
+        month++;
+      }
+    } else {
+      // Always set Min to the 1st of the current month
+      if (day !== 1) {
+        day = 1;
+      }
+    }
+
+    // we use the timestamp for the 1st of the relevant month
+    return Date.UTC(year, month, 1);
+  };
+
+  // Calculate new min
+  if (min !== undefined) {
+    newMin = snapTS(min, false);
+  }
+
+  // Calculate new max
+  if (max !== undefined) {
+    newMax = snapTS(max, true);
+  }
+
+  // Apply new extremes if they are different from the original
+  if ((newMin !== null && newMin !== min) || (newMax !== null && newMax !== max)) {
+    e.target.setExtremes(newMin, newMax, true, false, {
+      trigger: 'callback'
+    });
+    // Return false to cancel the original setExtremes event
+    return false;
+  }
+}
+
+// normalizer
+export function normalizeInput(str) {
+  return str.trim().toLowerCase().replace(/\s+/g, "-");
+}
+
+// csv-export
+export function CsvExport(chart, pidPrefix, pid) {
+  // generate raw CSV string
+  const raw = chart.getCSV();
+  const rows = raw.split('\n');
+
+  const processedRows = rows.map((row, rowIndex) => {
+    const cells = row.split(';');
+
+    const processedCells = cells.map((cell, cellIndex) => {
+      // remove quotes
+      const c = cell.replace(/^"|"$/g, '');
+      if (rowIndex > 0 && cellIndex === 0) {
+        const dateObj = new Date(c);
+
+        // check if parsing was successful and format it
+        if (!isNaN(dateObj)) {
+          const year = dateObj.getFullYear();
+
+          // get month (0-indexed) and pad with a leading zero
+          const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+          return `${year}-${month}`;
+        }
+
+        // fallback if parsing fails
+        return c;
+      }
+
+      // processing for numeric cells
+      const normalized = c.replace(',', '.');
+      const num = parseFloat(normalized);
+
+      if (!isNaN(num)) {
+        // Round and reformat with comma
+        return num.toFixed(1).replace('.', ',');
+      }
+      return c;
+    });
+
+    // rejoin with semicolon & quote text cells
+    return processedCells.map(c => `"${c}"`).join(';');
+  });
+
+  // build final csv
+  const finalCsv = processedRows.join('\n');
+
+  // Download manually
+  const blob = new Blob([finalCsv], {
+    type: 'text/csv;charset=utf-8;'
+  });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute('download', `${pidPrefix}-${pid}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// update dom-title
+export function updateDomTitle(elementId, fullTitle) {
+  const titleElement = document.getElementById(elementId);
+  if (titleElement) {
+    titleElement.innerHTML = fullTitle;
+  }
+}
+
+// colors
+export const custom_colors = [
+  '#ff0000',
+  '#3498db',
+  '#2ecc71',
+  '#f1c40f',
+  '#9b59b6',
+  '#e67e22',
+  '#1abc9c',
+  '#d35400',
+  '#e74c3c',
+  '#34495e',
+  '#7f8c8d',
+  '#f39c12'
+];
