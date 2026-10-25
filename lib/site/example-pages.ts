@@ -258,13 +258,25 @@ function clip(text: string, max: number): string {
   return stop > max * 0.5 ? cut.slice(0, stop + 1) : `${cut.slice(0, cut.lastIndexOf(" "))}…`;
 }
 
+/** Longest page title (search engines cut longer ones; tests/example-pages checks it). */
+export const MAX_TITLE = 139;
+
+/** "<label>: <figure> <unit> (<category>, <country>)", shortened when a long unit or label would pass MAX_TITLE, so a new library day
+ *  can never make a page title too long (Quality Auditor 2026-10-25: a BE title of 150+ characters turned main red after a harvest). Pure. */
+export function figureTitle(plan: Pick<PagePlan, "label" | "categoryLabel" | "countryName">, figure: Pick<ExampleFigure, "headline" | "unit">): string {
+  const core = `${plan.label}: ${figure.headline} ${figure.unit}`;
+  const full = `${core} (${plan.categoryLabel}, ${plan.countryName})`;
+  if (full.length <= MAX_TITLE) return full;
+  const withCountry = `${core} (${plan.countryName})`;
+  if (withCountry.length <= MAX_TITLE) return withCountry;
+  return clip(core, MAX_TITLE);
+}
+
 /** Everything but the figure; the figure is added by the caller. Pure. */
 export function pageFromPlan(plan: PagePlan, figure: ExampleFigure | null, info: SourceInfo, mcpArgs: Record<string, string | number>, today: string): ExamplePage {
   const rest = `/api/v1/${plan.restPath}?${new URLSearchParams(plan.params).toString()}`;
   const src = shortPublisher(info.publisher);
-  const title = figure
-    ? `${plan.label}: ${figure.headline} ${figure.unit} (${plan.categoryLabel}, ${plan.countryName})`
-    : `${plan.label}: ${plan.categoryLabel} ${inCountry(plan.countryName)}, ask live`;
+  const title = figure ? figureTitle(plan, figure) : `${plan.label}: ${plan.categoryLabel} ${inCountry(plan.countryName)}, ask live`;
   const description = figure
     ? clip(`${figure.answer} Source: ${src}.`, 300)
     : `${plan.question} Ask ProofPrice with the ${plan.tool} tool or the REST API: the answer comes live from ${src}, with its period, source and licence.`;

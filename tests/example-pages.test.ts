@@ -17,6 +17,8 @@ import {
   loadExamplePages,
   planExamplePages,
   type ExamplePage,
+  figureTitle,
+  MAX_TITLE,
 } from "../lib/site/example-pages";
 import { examplePageGraph, serializeJsonLd } from "../lib/site/jsonld";
 import { OfflineError, isOfflineError, runOffline } from "../lib/site/offline";
@@ -570,4 +572,15 @@ test("the real tool descriptions mention a country only when a source behind the
     }
     for (const p of toolPlaces(cat)) assert.ok(description.includes(p.place), `${cat.id} leaves out ${p.place}`);
   }
+});
+
+test("page title: a long unit or label is shortened, never over the limit, and keeps the figure", () => {
+  const plan = { label: "Flemish home electricity offers", categoryLabel: "Household and business energy prices", countryName: "Belgium" };
+  const short = figureTitle(plan, { headline: "€0.205", unit: "per kWh" });
+  assert.equal(short, "Flemish home electricity offers: €0.205 per kWh (Household and business energy prices, Belgium)");
+  const long = figureTitle(plan, { headline: "€0.2051", unit: "per kWh, energy cost excl. VAT, grid fees and taxes, fixed-price products only" });
+  assert.ok(long.length <= MAX_TITLE, long);
+  assert.ok(long.includes("€0.2051"));
+  const huge = figureTitle({ ...plan, label: "x".repeat(60) }, { headline: "€1", unit: "per kWh ".repeat(20) });
+  assert.ok(huge.length <= MAX_TITLE && huge.length > 10, huge);
 });
