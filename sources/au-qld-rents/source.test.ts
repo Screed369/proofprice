@@ -13,7 +13,8 @@ import { makeXlsx } from "../../tests/helpers/make-zip";
 import { readXlsx } from "../../categories/rent/xlsx";
 import { writeDaily, writeMeta } from "../../lib/library/store";
 import {
-  INFO, WORKBOOK_URL, findSheets, harvestOptions, parseDwelling, parsePostcodeTable, qldBeds, qldDailyRows, qldHarvest, qldKinds, qldPostcode, qldRents,
+  INFO, WORKBOOK_URL, findSheets, harvestOptions, parseDwelling, parsePostcodeTable, qldBeds, qldDailyRows, qldHarvest, qldItem, qldKinds, qldPostcode, qldRents,
+  qldHistoryKey,
 } from "./source";
 import type { Cell } from "../../categories/rent/xlsx";
 
@@ -249,3 +250,14 @@ test("INFO: CC BY 4.0 from the workbook, official statistic, new tenancies only"
 
 // keep the type import used
 export type _Cell = Cell;
+
+test("qldHistoryKey: one point per quarter for a postcode, type and bedrooms; open type or bedrooms has no key; bad input throws", () => {
+  assert.deepEqual(qldHistoryKey({ postcode: "4000", property_type: "apartment", bedrooms: 2 })?.item, qldItem("flat", 2));
+  assert.equal(qldHistoryKey({ postcode: "4000", property_type: "apartment", bedrooms: 2 })?.area, "4000");
+  assert.equal(qldHistoryKey({ postcode: "4870", property_type: "house", bedrooms: 3 })?.item, qldItem("house", 3));
+  assert.equal(qldHistoryKey({ postcode: "4000" }), null);
+  assert.equal(qldHistoryKey({ postcode: "4000", property_type: "apartment" }), null);
+  assert.equal(qldHistoryKey({ postcode: "4000", property_type: "apartment", bedrooms: 4 }), null);
+  assert.throws(() => qldHistoryKey({ town: "Brisbane" }));
+  assert.throws(() => qldHistoryKey({ postcode: "4000", property_type: "room", bedrooms: 1 }));
+});

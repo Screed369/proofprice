@@ -1,6 +1,6 @@
 // Manifest: Queensland (Australia) rents, median weekly rent of new tenancies by postcode (RTA bond statistics). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, qldHarvest, qldRents } from "./source";
+import { INFO, qldHarvest, qldHistoryKey, qldRents } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -37,4 +37,6 @@ export default defineSource({
       baseUrl: ctx.baseUrl,
     }),
   harvest: qldHarvest,
+  historyKey: (p) => qldHistoryKey({ postcode: str(p.postcode), town: str(p.town), property_type: str(p.property_type), bedrooms: num(p.bedrooms) }),
+  referenceDates: true,
 });

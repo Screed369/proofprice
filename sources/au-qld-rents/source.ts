@@ -205,6 +205,19 @@ export function qldBeds(b?: number): number | undefined {
   return b;
 }
 
+/** Pure: the library key for /history and the stale-copy fallback. Rows are dated by the quarter they end, so the series is one point per
+ *  quarter for one postcode, dwelling type and bedroom count. A request that leaves the type or the bedrooms open is answered live by the
+ *  most common dwelling, which a stored copy cannot reproduce, so it has no key (null). Throws InputError like the answer. */
+export function qldHistoryKey(input: { postcode?: string; town?: string; property_type?: string; bedrooms?: number }): { area: string; item: string; label: string } | null {
+  const postcode = qldPostcode(input);
+  const k = qldKinds(input.property_type);
+  const beds = qldBeds(input.bedrooms);
+  if (k.kinds.length !== 1 || beds === undefined) return null;
+  const kind = k.kinds[0];
+  if (!QLD_DWELLINGS.some((d) => d.kind === kind && d.beds === beds)) return null;
+  return { area: postcode, item: qldItem(kind, beds), label: `${beds}-bedroom ${k.label} in postcode ${postcode}, Queensland (quarterly)` };
+}
+
 const quarterLabel = (date: string) => {
   const [y, m] = date.split("-").map(Number);
   return `${y}-Q${Math.ceil(m / 3)}`;
