@@ -1,0 +1,383 @@
+URL: https://www.statistik.at/preisradar/Js/graphEp.js
+Fetched: 2026-10-25T09:42:32Z from GitHub Actions
+Status, type, bytes: 200 application/javascript 10250
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 25 Oct 2026 09:42:32 GMT
+last-modified: Fri, 16 Oct 2026 07:15:08 GMT
+etag: "280a-65defec951144"
+accept-ranges: bytes
+content-length: 10250
+content-type: application/javascript
+set-cookie: statistik_cookie=!kHydNe8EVu+3YlNmjN8wvuxp1i3/X79Pb12y3NSfUb7LWLv6INN6plPL60b5wL5YwtW651KyXvuHk92wAdpAhwwnrhZpfI1Mw6ZU5Asr336N; expires=Sun, 25-Oct-2026 09:45:32 GMT; path=/; Httponly; Secure
+set-cookie: f5avraaaaaaaaaaaaaaaa_session_=NDPFLOPNLNJHBICKIJBGMKPBHMBNGEOMGFAJKIGHKHACAFKCNDHLDBJHJOPPDDGLJMCDMPIHNODHOAKKALBAKBMCLMCCBDMGGIJAAAHLHHNHNHGNBILFKFMDDLCGOJHO; HttpOnly; secure;
+set-cookie: TS017b3bc9=012bdc772830009dddce67af6e45ad21252e50867787ee392dc88148bfc4790479dcd244fb29593de5d28f3890adbb70acbed37d0b9c235e5c14e4eea97a58a7b3d87a09de34ff5c2460de8f165e17075dcdbee599; Path=/; Secure; HttpOnly
+
+=== FILE TYPE: ASCII text
+=== FIRST 60000 BYTES
+// Import utility functions
+import {
+  getCurrentLabel,
+  getAndCacheData,
+  loadBaseConfigs,
+  createScaledIndexSeries,
+  initializeChartListener,
+  updateRangeText,
+  snapExtremesToMonth,
+  normalizeInput,
+  CsvExport,
+  updateDomTitle,
+  custom_colors
+} from './graphUtils.js';
+
+// State, Caches
+let priceChart = null;
+let indexChart = null;
+let priceChartBaseConfig = null;
+let indexChartBaseConfig = null;
+let currentProductId = null;
+const productDataCache = new Map();
+
+// Transformer so that data can be used in highcharts easily
+function transformProductData(raw) {
+  const lang = window.APP_LANG || "de";
+
+  // Data is assumed to be [[timestamp_ms, value, ...], ...]
+  const toTS = (arr) => {
+    if (!Array.isArray(arr)) return arr;
+
+    // Series of data points: [[ts, v], [ts, v], ...] or [[ts, min, max], ...]
+    if (Array.isArray(arr[0])) {
+      return arr.map(point => point.map(Number));
+    }
+
+    // Single data point: [ts, v, ...]
+    return arr.map(Number);
+  };
+
+  const price = {
+    minData: toTS(raw.price.minData),
+    maxData: toTS(raw.price.maxData),
+    medianData: toTS(raw.price.medianData),
+    meanData: toTS(raw.price.meanData),
+    rangeData: toTS(raw.price.rangeData)
+  };
+
+  const rawIndicesData = raw.indices.data || {};
+  const indices = {};
+  for (const [idxName, seriesArr] of Object.entries(rawIndicesData)) {
+    indices[idxName] = toTS(seriesArr);
+  }
+
+  return {
+    productId: raw.productId,
+    graphTitle: raw[`productTitle_${lang}`],
+    price,
+    indices,
+    indices_visible: raw.indices_visible,
+    indices_labels: raw.indices.labels || {}
+  };
+}
+
+// Config loader
+async function loadBaseConfigsEp() {
+  const [priceCfg, indexCfg] = await loadBaseConfigs([
+    "config/priceChartConfig.json",
+    "config/indexChartConfig.json"
+  ]);
+  priceChartBaseConfig = priceCfg;
+  indexChartBaseConfig = indexCfg;
+}
+
+// main rendering function
+async function renderDashboardForProduct(productId) {
+  currentProductId = productId;
+  const data = await getAndCacheData(
+    productId,
+    productDataCache,
+    'data/ep/',
+    transformProductData
+  );
+
+  // Draw main (Price) Chart
+  drawPriceChart(productId, data);
+
+  // draw IndexChart
+  if (priceChart && priceChart.xAxis && priceChart.xAxis.length > 0) {
+    const min = priceChart.xAxis[0].min;
+    const max = priceChart.xAxis[0].max;
+
+    // pass the priceChart as the master chart reference and redraw
+    drawIndexChart(productId, min, max, priceChart);
+  } else {
+    // Fallback: Draw the chart without initial syncing
+    drawIndexChart(productId, null, null, null);
+    console.warn("Master chart (priceChart) axis not ready for initial sync.");
+  }
+}
+
+// draw PriceChart
+function drawPriceChart(productId, data) {
+  const lang = window.APP_LANG || "de";
+
+  if (!priceChartBaseConfig) {
+    throw new Error("Price chart base config not loaded yet.");
+  }
+
+  if (priceChart) {
+    priceChart.destroy();
+  }
+
+  // compute min floor/max ceiling
+  // we need to find the absolute minimum and maximum timestamps across all price series
+  const allPriceSeries = [
+    ...data.price.rangeData,
+    ...data.price.medianData,
+    ...data.price.meanData
+  ].filter(p => p[0] != null); // Ensure timestamp is not null
+
+  let maxDataTS = 0;
+  let minDataTS = Infinity;
+
+  if (allPriceSeries.length > 0) {
+    maxDataTS = allPriceSeries.reduce((max, point) => Math.max(max, point[0]), 0);
+    minDataTS = allPriceSeries.reduce((min, point) => Math.min(min, point[0]), Infinity);
+  }
+
+  // compute the boundaries: floor (min)/ceiling(max)
+  let absoluteMaxCeiling = null;
+  let absoluteMinFloor = null;
+
+  if (maxDataTS > 0) {
+    // calculate ceiling
+    const dMax = new Date(maxDataTS);
+    let maxYear = dMax.getUTCFullYear();
+    let maxMonth = dMax.getUTCMonth(); // 0-indexed
+    maxMonth++;
+    absoluteMaxCeiling = Date.UTC(maxYear, maxMonth, 1);
+
+    // calculate floor
+    const dMin = new Date(minDataTS);
+    let minYear = dMin.getUTCFullYear();
+    let minMonth = dMin.getUTCMonth();
+    absoluteMinFloor = Date.UTC(minYear, minMonth, 1);
+
+    // generate all monthly tick positions between floor and ceiling
+    let currentTS = absoluteMinFloor;
+    while (currentTS <= absoluteMaxCeiling) {
+      const currentD = new Date(currentTS);
+      currentD.setUTCMonth(currentD.getUTCMonth() + 1); // Advance one month
+      currentTS = currentD.getTime();
+    }
+  }
+
+  const productLabel = data.graphTitle;
+  const styleCfg = priceChartBaseConfig.seriesStyles || {};
+  const baseColor = styleCfg.color || "#0077cc";
+
+  const graph_meta = {
+    en: {
+      prefix: "Price range (quartiles)",
+      ylab: "Price in Euros",
+      lab_median: "Median (weighted by sales volume)",
+      lab_mean: "Mean (weighted by sales volume)"
+    },
+    de: {
+      prefix: "Preisband (Quartile)",
+      ylab: "Preis in Euro",
+      lab_median: "Median (gewichtet nach Absatzmenge)",
+      lab_mean: "Durchschnittspreise (gewichtet nach Absatzmenge)"
+    }
+  };
+
+  const lab_median = graph_meta[lang].lab_median;
+  const lab_mean = graph_meta[lang].lab_mean;
+
+  // insert graph-title into dom-element
+  const title_ylab = graph_meta[lang].ylab;
+  const title_prefix = graph_meta[lang].prefix;
+  const full_title = `${title_prefix}: <i>${productLabel}</i>`;
+  updateDomTitle("container-price-hdr", full_title);
+
+  const customOptions = {
+    navigator: {
+      enabled: true,
+      xAxis: {
+        labels: {
+          formatter: function() {
+            return Highcharts.dateFormat('%b %Y', this.value);
+          }
+        }
+      }
+    },
+    series: [{
+        name: "Preisband",
+        type: 'arearange',
+        data: data.price.rangeData,
+        lineWidth: 1,
+        showInNavigator: false,
+        linkedTo: ':previous',
+        color: Highcharts.getOptions().colors[0],
+        fillOpacity: 0.3,
+        zIndex: 0,
+        marker: {
+          enabled: false
+        }
+      },
+      {
+        name: lab_median,
+        data: data.price.medianData,
+        zIndex: 1,
+        showInNavigator: true,
+        marker: {
+          enabled: true,
+          symbol: "circle",
+          fillColor: 'white',
+          radius: 5,
+          lineWidth: 3,
+          lineColor: Highcharts.getOptions().colors[0]
+        }
+      },
+      {
+        name: lab_mean,
+        data: data.price.meanData,
+        zIndex: 2,
+        showInNavigator: false,
+        visible: false,
+        marker: {
+          enabled: true,
+          symbol: "triangle",
+          fillColor: 'white',
+          radius: 5,
+          lineWidth: 3,
+          lineColor: Highcharts.getOptions().colors[1]
+        }
+      }
+    ],
+    xAxis: {
+      // set the calculated ceiling here to prevent over-scrolling/dragging
+      ceiling: absoluteMaxCeiling,
+      events: {
+        setExtremes: snapExtremesToMonth,
+        afterSetExtremes: function(e) {
+          // sync must only run on the snapped event ('callback') or a manual button click
+          if (e.trigger !== 'callback' && e.trigger !== 'rangeSelectorButton' && e.trigger !== 'navigator') {
+            return;
+          }
+          // use the computed absoluteMaxCeiling to drawIndexChart to enforce boundaries
+          drawIndexChart(productId, e.min, e.max, this.chart, absoluteMaxCeiling);
+        }
+      }
+    },
+    yAxis: {
+      title: {
+        text: title_ylab
+      }
+    }
+  };
+  const mergedOptions = Highcharts.merge(priceChartBaseConfig, customOptions);
+  priceChart = Highcharts.stockChart("container-price", mergedOptions);
+
+  // remove arrows from scrollbar (could also be done via css, this way it is easier)
+  const container = document.getElementById("container-price");
+  if (container) {
+    container.querySelectorAll(".highcharts-scrollbar-button").forEach(el => {
+      el.remove();
+    });
+    container.querySelectorAll(".highcharts-scrollbar-arrow").forEach(el => {
+      el.remove();
+    });
+  }
+}
+
+// draw drawIndexChart
+async function drawIndexChart(productId, tMin, tMax, masterChart, ceilingMax) {
+  if (!indexChartBaseConfig) {
+    throw new Error("Index chart base config not loaded yet.");
+  }
+
+  let filterMax = tMax;
+
+  // deal with case when tMax is close to absolute ceiling
+  if (ceilingMax !== null && tMax !== null && Math.abs(tMax - ceilingMax) < 1) {
+    filterMax = ceilingMax;
+  }
+
+  // add 1 millisecond to guarantee that last datapoint is included
+  if (filterMax !== null) {
+    filterMax += 1;
+  }
+
+  const lang = window.APP_LANG || "de";
+  const data = await getAndCacheData(
+    productId,
+    productDataCache,
+    'data/ep/',
+    transformProductData
+  );
+
+  // use the computed filterMax for the series creation
+  const series = createScaledIndexSeries(
+    data.indices,
+    data.indices_visible,
+    data.indices_labels,
+    lang,
+    tMin,
+    filterMax,
+    custom_colors
+  );
+
+  if (indexChart) {
+    indexChart.destroy();
+  }
+
+  const graph_titles = {
+    en: {
+      titlePrefix: "Price indices (Index = 100 at start)"
+    },
+    de: {
+      titlePrefix: "Preisindizes (Index = 100 bei Start)"
+    }
+  };
+
+  // insert graph-title into dom-element
+  const full_title = graph_titles[lang].titlePrefix;
+  updateDomTitle("container-index-hdr", full_title);
+
+  const customOptions = {
+    series: series,
+    xAxis: {
+      min: tMin,
+      max: tMax
+    }
+  };
+  const mergedOptions = Highcharts.merge(indexChartBaseConfig, customOptions);
+  indexChart = Highcharts.stockChart("container-index", mergedOptions);
+}
+
+// Entry
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await loadBaseConfigsEp();
+    initializeChartListener('valueInputEp', renderDashboardForProduct);
+    const initialId = document.getElementById("valueInputEp").value;
+    if (initialId) {
+      renderDashboardForProduct(initialId);
+    }
+
+  } catch (err) {
+    console.error("Error initializing dashboard (EP):", err);
+  }
+});
+
+// export/download functionality
+document.getElementById("downloadCsvPrice").addEventListener("click", () => {
+  const pid = normalizeInput(document.getElementById("valueInputEp").value);
+  CsvExport(priceChart, "data-product", pid);
+});
+document.getElementById("downloadCsvIndex").addEventListener("click", () => {
+  const pid = normalizeInput(document.getElementById("valueInputEp").value);
+  CsvExport(indexChart, "data-indices", pid);
+});
