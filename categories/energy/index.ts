@@ -45,7 +45,8 @@ export default defineCategory({
           "excluding VAT unless taxes says otherwise, with the other bands, the previous period and the change. It is an official average, not a quote or a tariff, and " +
           `sector=business needs a country that has business figures. Business freshness: ${freshnessList(business)}. `
         : "") +
-      "Do not use for a specific supplier's offer or a quote for a particular home or company, for wholesale exchange prices, for petrol and diesel, or for other countries."
+      "Where a country offers it, supplier_offers=true returns the median of the supplier offers posted on the regulator's comparison tool (posted offers, not paid prices; the country notes say where). " +
+      "Do not use for one supplier's quote for a particular home or company, for wholesale exchange prices, for petrol and diesel, or for other countries."
     );
   },
   params: {
