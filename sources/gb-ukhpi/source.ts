@@ -6,7 +6,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { fetchJson, InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import { NI_AREAS, SCOTLAND_AREAS } from "./areas";
 
 export const SPARQL_URL = "https://landregistry.data.gov.uk/landregistry/query";
@@ -337,4 +338,71 @@ export async function ukHpi(q: Query): Promise<PriceAnswer> {
   }
   const json = await fetchJson(queryUrl(place.slug), { headers: { accept: "application/sparql-results+json" } }, 15000);
   return ukhpiAnswer(place, type, parseMonths(json), q);
+}
+
+// ---------- the daily collector and its library key (stale-if-error) ----------
+// One row per place and property type for the newest month that every collected place shares. The UK HPI publishes one average per
+// month (no record count, no range), so rows are NO_COUNT and median = low = high. Months are revised later, so the collector keeps
+// only the newest month; the library copy exists so a SPARQL outage answers from our copy (lib/stale.ts) instead of a 502.
+
+/** Library rows for one place from its parsed months: only the given month, one row per property type that has a figure. */
+export function placeRows(place: Place, months: Month[], month: string): DailyRow[] {
+  const m = months.find((x) => x.month === month);
+  if (!m) return [];
+  const rows: DailyRow[] = [];
+  for (const type of PROPERTY_TYPES) {
+    const v = m.values[TYPE_FIELD[type]];
+    if (v !== null && v !== undefined && v > 0) rows.push({ area: place.slug, item: type, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+  }
+  return rows;
+}
+
+export const harvestOptions = { retryDelayMs: 2000, batch: 5 };
+
+async function monthsFor(place: Place, tries = 3): Promise<Month[]> {
+  let last: unknown;
+  for (let i = 0; i < tries; i++) {
+    try {
+      return parseMonths(await fetchJson(queryUrl(place.slug), { headers: { accept: "application/sparql-results+json" } }, 20000));
+    } catch (e) {
+      last = e;
+      if (i < tries - 1) await new Promise((r) => setTimeout(r, harvestOptions.retryDelayMs * (i + 1)));
+    }
+  }
+  throw last;
+}
+
+/** The daily collector: the newest UK HPI month for every Scottish and Northern Irish place. */
+export async function ukHpiHarvest(): Promise<HarvestResult> {
+  const got: { place: Place; months: Month[] }[] = [];
+  let failed = 0;
+  for (let i = 0; i < PLACES.length; i += harvestOptions.batch) {
+    const results = await Promise.allSettled(PLACES.slice(i, i + harvestOptions.batch).map(async (place) => ({ place, months: await monthsFor(place) })));
+    for (const r of results) (r.status === "fulfilled" ? got.push(r.value) : failed++);
+  }
+  // Most places must answer; a handful failing is tolerated, a mostly-failed run is a real fault.
+  if (got.length < Math.ceil(PLACES.length * 0.8)) throw new SourceError(`The UK House Price Index answered for only ${got.length} of ${PLACES.length} places`);
+  // The newest month that the nations (the two largest series) both have; places that lag behind it are left out rather than mixed in.
+  const nations = got.filter((g) => g.place.level === "nation").map((g) => g.months.find((m) => m.values.a !== null)?.month).filter(Boolean) as string[];
+  if (!nations.length) throw new SourceError("The UK House Price Index returned no month with an average price for Scotland or Northern Ireland");
+  const month = nations.sort()[0];
+  const rows = got.flatMap((g) => placeRows(g.place, g.months, month));
+  if (rows.length < PLACES.length) throw new SourceError(`Only ${rows.length} rows for ${month}; this source needs checking`);
+  return {
+    date: monthEnd(month),
+    currency: "GBP",
+    unit: "per home",
+    rows,
+    note: `UK House Price Index, ${month}: published average home price per place and property type (an official average; no record count is published). ${failed} place(s) did not answer today.`,
+  };
+}
+
+/** The library row that stands for this request: place slug and property type. Null when no place is named (the live handler would refuse too). */
+export function ukHpiHistoryKey(input: { town?: string; property_type?: string }): { area: string; item: string; label: string } | null {
+  const place = findPlace(input.town);
+  if (!place) return null;
+  const raw = (input.property_type ?? "any").toLowerCase();
+  if (!PROPERTY_TYPES.includes(raw as PropertyType)) return null;
+  const type = raw as PropertyType;
+  return { area: place.slug, item: type, label: `${place.label} (${TYPE_WORDS[type]})` };
 }

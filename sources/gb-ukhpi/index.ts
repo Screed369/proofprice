@@ -1,6 +1,6 @@
 // Manifest: Scotland and Northern Ireland home prices (UK House Price Index, official monthly average by council area and property type). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { findPlace, INFO, PROPERTY_TYPES, ukHpi } from "./source";
+import { findPlace, INFO, PROPERTY_TYPES, ukHpi, ukHpiHarvest, ukHpiHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -26,4 +26,10 @@ export default defineSource({
   method:
     "Scotland and Northern Ireland: the official monthly average home price from the UK House Price Index (HM Land Registry, Registers of Scotland, Land & Property Services NI), by nation, council area and property type, with the change on the year before.",
   handle: (p, ctx) => ukHpi({ town: str(p.town), property_type: str(p.property_type), baseUrl: ctx.baseUrl }),
+  // Daily copy of the newest month for every place: if the Land Registry SPARQL service is down, the answer comes from our copy (up to 7 days old).
+  harvest: ukHpiHarvest,
+  historyKey: (p) => ukHpiHistoryKey({ town: str(p.town), property_type: str(p.property_type) }),
+  referenceDates: true,
+  nominalCounts: true,
+  noHistory: "Scotland and Northern Ireland: the UK House Price Index publishes one average per month and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest month, with the change on the year before.",
 });
