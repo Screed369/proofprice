@@ -9,7 +9,7 @@ import path from "node:path";
 const dir = mkdtempSync(path.join(tmpdir(), "pp-check-"));
 process.env.PROOFPRICE_LIBRARY_DIR = dir;
 
-import { MAX_RATIO, dataCheck, keyOf, previousByKey } from "../lib/library/check";
+import { MAX_RATIO, MAX_RATIO_SPOT, dataCheck, keyOf, previousByKey } from "../lib/library/check";
 import { readDaily, writeDaily, writeMeta } from "../lib/library/store";
 import type { SourceMeta } from "../lib/library/store";
 import type { DailyRow, HarvestResult } from "../lib/plugin";
@@ -123,24 +123,24 @@ test("a spot-price key whose median sits near zero is not frozen by the ratio te
 });
 
 test("a real level shift is accepted once the same new level is seen on 3 distinct days; a one-day spike stays held", () => {
-  writeDaily("shift-src", day("2026-10-01", [row("VIC1", "spot", 50), row("NSW1", "spot", 50)]));
+  writeDaily("shift-src", day("2026-10-01", [row("VIC1", "fuel", 50), row("NSW1", "fuel", 50)]));
   const prev0 = (d: string) => previousByKey("shift-src", d);
   const m = (held?: Record<string, { median: number; dates: string[] }>): SourceMeta => ({ ...meta(), source: "shift-src", ...(held ? { held_streak: held } : {}) });
   // day 2: both jump 10x; both held, streak started
-  const d2 = dataCheck({ result: day("2026-10-02", [row("VIC1", "spot", 500), row("NSW1", "spot", 500)]), prevMeta: m(), previous: prev0("2026-10-02") });
+  const d2 = dataCheck({ result: day("2026-10-02", [row("VIC1", "fuel", 500), row("NSW1", "fuel", 500)]), prevMeta: m(), previous: prev0("2026-10-02") });
   assert.equal(d2.held.length, 2);
   assert.equal(d2.accepted.length, 0);
   // day 3: VIC1 stays near 500 (within 10%), NSW1 falls back to normal (a one-day spike)
-  const d3 = dataCheck({ result: day("2026-10-03", [row("VIC1", "spot", 520), row("NSW1", "spot", 51)]), prevMeta: m(d2.heldStreak), previous: prev0("2026-10-03") });
+  const d3 = dataCheck({ result: day("2026-10-03", [row("VIC1", "fuel", 520), row("NSW1", "fuel", 51)]), prevMeta: m(d2.heldStreak), previous: prev0("2026-10-03") });
   assert.deepEqual(d3.held.map((h) => h.area), ["VIC1"]);
-  assert.deepEqual(Object.keys(d3.heldStreak), ["VIC1::spot"]);
-  assert.deepEqual(d3.heldStreak["VIC1::spot"].dates, ["2026-10-02", "2026-10-03"]);
+  assert.deepEqual(Object.keys(d3.heldStreak), ["VIC1::fuel"]);
+  assert.deepEqual(d3.heldStreak["VIC1::fuel"].dates, ["2026-10-02", "2026-10-03"]);
   // day 4: third day at the new level: accepted and published
-  const d4 = dataCheck({ result: day("2026-10-04", [row("VIC1", "spot", 480)]), prevMeta: m(d3.heldStreak), previous: prev0("2026-10-04") });
+  const d4 = dataCheck({ result: day("2026-10-04", [row("VIC1", "fuel", 480)]), prevMeta: m(d3.heldStreak), previous: prev0("2026-10-04") });
   assert.equal(d4.held.length, 0);
   assert.equal(d4.rows.length, 1);
   assert.equal(d4.message, null);
-  assert.match(d4.accepted[0], /^VIC1\/spot: median 480 accepted after 3 days/);
+  assert.match(d4.accepted[0], /^VIC1\/fuel: median 480 accepted after 3 days/);
   assert.deepEqual(d4.heldStreak, {});
 });
 
@@ -153,4 +153,16 @@ test("a held value that moves to another level restarts the count; a re-run on t
   const r2 = dataCheck({ result: day("2026-10-04", [row("A", "x", 300)]), prevMeta: m({ "A::x": { median: 100, dates: ["2026-10-02", "2026-10-03"] } }), previous: prev() });
   assert.equal(r2.accepted.length, 0);
   assert.deepEqual(r2.heldStreak["A::x"].dates, ["2026-10-04"]);
+});
+
+test("spot and day-ahead power may swing 10x (a windy Sunday), but a 1000x unit slip is still held", () => {
+  writeDaily("de-smard", day("2026-10-01", [row("DE", "day-ahead", 130), row("NL", "spot", 130)], "EUR", "per MWh"));
+  const prev = previousByKey("de-smard", "2026-10-02");
+  const m = { ...meta("EUR", "per MWh"), source: "de-smard" };
+  const ok = dataCheck({ result: day("2026-10-02", [row("DE", "day-ahead", 21), row("NL", "spot", 13.5)], "EUR", "per MWh"), prevMeta: m, previous: prev });
+  assert.equal(ok.held.length, 0);
+  assert.equal(ok.rows.length, 2);
+  const bad = dataCheck({ result: day("2026-10-02", [row("DE", "day-ahead", 0.13), row("NL", "spot", 130000)], "EUR", "per MWh"), prevMeta: m, previous: prev });
+  assert.equal(bad.held.length, 2);
+  assert.equal(MAX_RATIO_SPOT, 20);
 });

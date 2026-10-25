@@ -3,6 +3,7 @@
 // the previous value, or a change of currency or unit, is more likely a broken feed than a real price move: that key is NOT
 // published (the previous value stays in the library) and the reason is recorded in meta.json (last_error), which
 // /api/v1/library and the smoke test show. A source's first harvest has nothing to compare with, so it is exempt.
+// Spot and day-ahead power items use a band of 20x (MAX_RATIO_SPOT) because they genuinely swing that much.
 // A real level shift (a new price regime) would be held forever, because the previous value never changes. So the held values are
 // remembered in meta.json (held_streak): when the same new median (within 10%) has been seen on 3 distinct harvest days in a row,
 // it is accepted and published, with a note in meta.json. A one-day spike is never accepted. To accept a real change at once, run the collector with --accept-changes for that source (npm run harvest -- --accept-changes <id>).
@@ -16,6 +17,10 @@ import type { LibraryRow, SourceMeta } from "./store";
 
 /** A new median above this many times the previous one, or below its reciprocal, is held back. */
 export const MAX_RATIO = 3;
+/** Spot and day-ahead power prices swing several-fold between a windy Sunday and a calm weekday (DE day-ahead: 130 then 21 EUR/MWh), so those items get a wider band. A unit mix-up (MWh against kWh) is 1000x, far outside it. */
+export const MAX_RATIO_SPOT = 20;
+/** Items that are a wholesale spot or day-ahead power price. */
+export const isSpotItem = (item: string) => item === "day-ahead" || item === "spot" || item.startsWith("spot-") || item.endsWith("/day-ahead");
 /** Distinct harvest days on which the same new level must be seen before a held jump is accepted as a real shift. */
 export const ACCEPT_AFTER_DAYS = 3;
 /** How close (relative) two held medians must be to count as the same level. */
@@ -100,7 +105,8 @@ export function dataCheck(opts: { result: HarvestResult; prevMeta: SourceMeta | 
     if (!isRateItem(r.item) && passesGate(r.n) && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0 &&
       !isNearZero(prev.median, prev.low, prev.high) && !isNearZero(r.median, r.low, r.high)) {
       const ratio = r.median / prev.median;
-      if (ratio > MAX_RATIO || ratio < 1 / MAX_RATIO) {
+      const limit = isSpotItem(r.item) ? MAX_RATIO_SPOT : MAX_RATIO;
+      if (ratio > limit || ratio < 1 / limit) {
         const sk = streakKey(r.area, r.item);
         const old = before[sk];
         const dates = old && sameLevel(old.median, r.median) ? [...old.dates.filter((d) => d !== result.date), result.date] : [result.date];
