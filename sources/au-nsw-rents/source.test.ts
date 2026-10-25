@@ -13,7 +13,7 @@ import { makeXlsx } from "../../tests/helpers/make-zip";
 import { readXlsx } from "../../categories/rent/xlsx";
 import { writeDaily, writeMeta } from "../../lib/library/store";
 import {
-  INFO, consecutiveRun, harvestOptions, nswArea, nswBeds, nswDailyRows, nswHarvest, nswItem, nswRents, nswType, parseBonds, parseLodgementLinks, windowStart, monthEnd, type Bond,
+  INFO, consecutiveRun, harvestOptions, nswArea, nswBeds, nswDailyRows, nswHarvest, nswHistoryKey, nswItem, nswRents, nswType, parseBonds, parseLodgementLinks, windowStart, monthEnd, type Bond,
 } from "./source";
 
 const LINKS = readFileSync(new URL("./fixtures/links.html", import.meta.url), "utf8");
@@ -254,4 +254,13 @@ test("INFO: licence quoted from the NSW data portal, and what the rents are", ()
   assert.match(INFO.licence_url, /^https:\/\/data\.nsw\.gov\.au\//);
   assert.equal(INFO.price_type, "transaction");
   assert.match(INFO.limits, /new tenancies, not sitting tenants/);
+});
+
+test("nswHistoryKey: 3-month window by postcode, type and bedrooms; state default; bad input throws", () => {
+  assert.deepEqual(nswHistoryKey({ postcode: "2000" }).item, nswItem("any", "any", 3));
+  assert.equal(nswHistoryKey({ postcode: "2150", property_type: "apartment", bedrooms: 2 }).item, nswItem("apartment", "2", 3));
+  assert.equal(nswHistoryKey({ postcode: "2150", bedrooms: 6 }).item, nswItem("any", "4", 3));
+  assert.equal(nswHistoryKey({ town: "NSW" }).area, nswArea({ town: "NSW" }).area);
+  assert.throws(() => nswHistoryKey({ town: "Sydney" }));
+  assert.throws(() => nswHistoryKey({ postcode: "2000", property_type: "room" }));
 });

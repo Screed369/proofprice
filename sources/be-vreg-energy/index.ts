@@ -30,6 +30,10 @@ export default defineSource({
     { params: { country: "BE", energy: "electricity", supplier_offers: "true" } },
     { params: { country: "BE", energy: "gas", supplier_offers: "true" }, smoke: false },
   ],
+  pages: [
+    { params: { country: "BE", energy: "electricity", supplier_offers: "true" }, label: "Flemish home electricity offers", question: "What do fixed-price home electricity offers cost in Flanders, Belgium?" },
+    { params: { country: "BE", energy: "gas", supplier_offers: "true" }, label: "Flemish home gas offers", question: "What do fixed-price home gas offers cost in Flanders, Belgium?" },
+  ],
   method: beMethod(),
   harvest: () => beHarvest(),
   referenceDates: true,

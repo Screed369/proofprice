@@ -1,6 +1,6 @@
 // Manifest: New South Wales (Australia) rents from rental bond lodgements. Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, nswHarvest, nswRents } from "./source";
+import { INFO, nswHarvest, nswHistoryKey, nswRents } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -39,4 +39,6 @@ export default defineSource({
       baseUrl: ctx.baseUrl,
     }),
   harvest: nswHarvest,
+  historyKey: (p) => nswHistoryKey({ postcode: str(p.postcode), town: str(p.town), property_type: str(p.property_type), bedrooms: num(p.bedrooms) }),
+  referenceDates: true,
 });

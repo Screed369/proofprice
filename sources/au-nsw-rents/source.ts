@@ -245,6 +245,15 @@ export function nswBeds(b?: number): { key: string; label: string } {
   return { key, label: b === 0 ? "studio or no-bedroom " : b >= 4 ? "4+ bedroom " : `${b}-bedroom ` };
 }
 
+/** Pure: the library key for /history. Rows are dated by the month they end, so the series is one point per month: the
+ *  3-month window (the default answer) by postcode (or the whole state), dwelling type and bedrooms. Throws InputError like the answer. */
+export function nswHistoryKey(input: { postcode?: string; town?: string; property_type?: string; bedrooms?: number }): { area: string; item: string; label: string } {
+  const a = nswArea(input);
+  const t = nswType(input.property_type);
+  const b = nswBeds(input.bedrooms);
+  return { area: a.area, item: nswItem(t.type, b.key, 3), label: `${b.label}${t.label} in ${a.label}, NSW (3-month window)` };
+}
+
 /** Pure: the answer for one library row (or null). */
 export function nswAnswerFromRow(
   row: (DailyRow & { date: string }) | null,
