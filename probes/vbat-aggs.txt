@@ -1,0 +1,425 @@
+URL: https://www.statistik.at/preisradar/data/idx/aggregates.json
+Fetched: 2026-10-25T09:44:26Z from GitHub Actions
+Status, type, bytes: 200 application/json 10748
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 25 Oct 2026 09:44:26 GMT
+last-modified: Fri, 16 Oct 2026 07:15:29 GMT
+etag: "29fc-65defede34343"
+accept-ranges: bytes
+content-length: 10748
+content-type: application/json
+set-cookie: statistik_cookie=!EZtpp/kLx1lFpR9mjN8wvuxp1i3/X/GV6V8rPYiwtgY+pynPFtLTRo3IX4QC1fr9dd718/oYUaVm1qJahibOf+2NAX+B1v1OI2239NupnWXF; expires=Sun, 25-Oct-2026 09:47:26 GMT; path=/; Httponly; Secure
+set-cookie: f5avraaaaaaaaaaaaaaaa_session_=JPEFMFKPEPDNFOKHGCKCGPEDJGLEGOBNLKIFKPOKCODJDMLPOIEFKMONINACBPOAJDCDPDFDPPNCBKCJJKEAEILOCMODPJPCEHIOGGIJELCHINJCNHJHEIFMGFPHFNFG; HttpOnly; secure;
+set-cookie: TS017b3bc9=012bdc77285a0daae2f75b98e1707fd55e4c5888ba94241c5db041d5db6d5aabcc02bae85398844d60b98ac9cc55871d125fe434ff3fbb68276342c71c740656051163f28ad2c45e2a5c5b84dd343190ae7ee412f8; Path=/; Secure; HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{
+  "aggregates": [
+    {
+      "id": "01",
+      "label_de": "Nahrungsmittel und alkoholfreie Getränke",
+      "label_en": "Food and non-alcoholic beverages",
+      "level": 1
+    },
+    {
+      "id": "011",
+      "label_de": "NAHRUNGSMITTEL",
+      "label_en": "Food",
+      "level": 2
+    },
+    {
+      "id": "0111",
+      "label_de": "Getreide und Getreideerzeugnisse",
+      "label_en": "Cereals and cereal products",
+      "level": 3
+    },
+    {
+      "id": "01111",
+      "label_de": "Getreide",
+      "label_en": "Cereals",
+      "level": 4
+    },
+    {
+      "id": "01112",
+      "label_de": "Mehl aus Getreide",
+      "label_en": "Flour of cereals",
+      "level": 4
+    },
+    {
+      "id": "01113",
+      "label_de": "Brot und Backwaren",
+      "label_en": "Bread and bakery products",
+      "level": 4
+    },
+    {
+      "id": "01114",
+      "label_de": "Frühstückscerealien",
+      "label_en": "Breakfast cereals",
+      "level": 4
+    },
+    {
+      "id": "01115",
+      "label_de": "Makkaroni, Nudeln, Couscous und Ähnliches",
+      "label_en": "Macaroni, noodles, couscous and similar pasta products",
+      "level": 4
+    },
+    {
+      "id": "01119",
+      "label_de": "Sonstige Cerealien und Mahl- und Schälmühlenerzeugnisse",
+      "label_en": "Other milled cereal and grain products",
+      "level": 4
+    },
+    {
+      "id": "0112",
+      "label_de": "Lebende Tiere, Fleisch und andere Teile geschlachteter Landtiere",
+      "label_en": "Live animals, and meat and other parts of slaughtered land animals",
+      "level": 3
+    },
+    {
+      "id": "01122",
+      "label_de": "Fleisch, frisch, gekühlt oder tiefgefroren",
+      "label_en": "Meat, fresh, chilled or frozen",
+      "level": 4
+    },
+    {
+      "id": "01123",
+      "label_de": "Fleisch, getrocknet, gesalzen, in Salzlake oder geräuchert",
+      "label_en": "Meat, dried, salted, in brine or smoked",
+      "level": 4
+    },
+    {
+      "id": "01125",
+      "label_de": "Fleisch, Schlachtnebenerzeugnisse, Blut und andere Teile geschlachteter Tiere, zubereitet",
+      "label_en": "Preparations of meat, offal, blood and other parts of slaughtered animals",
+      "level": 4
+    },
+    {
+      "id": "0113",
+      "label_de": "Fische und andere Meeresfrüchte",
+      "label_en": "Fish and other seafood",
+      "level": 3
+    },
+    {
+      "id": "01131",
+      "label_de": "Fische, lebend, frisch, gekühlt oder tiefgefroren",
+      "label_en": "Fish, live, fresh, chilled or frozen",
+      "level": 4
+    },
+    {
+      "id": "01132",
+      "label_de": "Fische, getrocknet, gesalzen, in Salzlake oder geräuchert",
+      "label_en": "Fish, dried, salted, in brine or smoked",
+      "level": 4
+    },
+    {
+      "id": "01133",
+      "label_de": "Zubereitungen aus Fisch",
+      "label_en": "Fish preparations",
+      "level": 4
+    },
+    {
+      "id": "0114",
+      "label_de": "Milch, andere Milcherzeugnisse und Eier",
+      "label_en": "Milk, other dairy products and eggs",
+      "level": 3
+    },
+    {
+      "id": "01141",
+      "label_de": "Roh- und Vollmilch",
+      "label_en": "Raw and whole milk",
+      "level": 4
+    },
+    {
+      "id": "01143",
+      "label_de": "Andere Milch und Sahne/Schlagobers",
+      "label_en": "Other milk and cream",
+      "level": 4
+    },
+    {
+      "id": "01145",
+      "label_de": "Käse",
+      "label_en": "Cheese",
+      "level": 4
+    },
+    {
+      "id": "01146",
+      "label_de": "Joghurt und ähnliche Produkte",
+      "label_en": "Yoghurt and similar products",
+      "level": 4
+    },
+    {
+      "id": "01147",
+      "label_de": "Desserts und Getränke auf der Grundlage von Milch",
+      "label_en": "Milk-based dessert and beverages",
+      "level": 4
+    },
+    {
+      "id": "01148",
+      "label_de": "Eier",
+      "label_en": "Eggs",
+      "level": 4
+    },
+    {
+      "id": "0115",
+      "label_de": "Speisefette und -öle",
+      "label_en": "Oils and fats",
+      "level": 3
+    },
+    {
+      "id": "01151",
+      "label_de": "Pflanzliche Öle",
+      "label_en": "Vegetable oils",
+      "level": 4
+    },
+    {
+      "id": "01152",
+      "label_de": "Butter und andere Fettstoffe aus der Milch",
+      "label_en": "Butter and other oils and fats derived from milk",
+      "level": 4
+    },
+    {
+      "id": "01153",
+      "label_de": "Margarine und ähnliche Zubereitungen",
+      "label_en": "Margarine and similar preparations",
+      "level": 4
+    },
+    {
+      "id": "0116",
+      "label_de": "Obst und Nüsse",
+      "label_en": "Fruits and nuts",
+      "level": 3
+    },
+    {
+      "id": "01161",
+      "label_de": "Datteln, Feigen und tropische Früchte, frisch",
+      "label_en": "Dates, figs and tropical fruits, fresh",
+      "level": 4
+    },
+    {
+      "id": "01162",
+      "label_de": "Zitrusfrüchte, frisch",
+      "label_en": "Citrus fruits, fresh",
+      "level": 4
+    },
+    {
+      "id": "01163",
+      "label_de": "Stein- und Kernobst, frisch",
+      "label_en": "Stone fruits and pome fruits, fresh",
+      "level": 4
+    },
+    {
+      "id": "01164",
+      "label_de": "Beeren, frisch",
+      "label_en": "Berries, fresh",
+      "level": 4
+    },
+    {
+      "id": "01165",
+      "label_de": "Anderes Obst, frisch",
+      "label_en": "Other fruits, fresh",
+      "level": 4
+    },
+    {
+      "id": "01167",
+      "label_de": "Obst, getrocknet und dehydriert",
+      "label_en": "Fruits, dried and dehydrated",
+      "level": 4
+    },
+    {
+      "id": "01169",
+      "label_de": "Obst und Nüsse, gemahlen oder anders zubereitet",
+      "label_en": "Fruits and nuts, ground, and in other preparations",
+      "level": 4
+    },
+    {
+      "id": "0117",
+      "label_de": "Gemüse, Knollengewächse, Kochbananen und Hülsenfrüchte",
+      "label_en": "Vegetables, tubers, plantains, cooking bananas and pulses",
+      "level": 3
+    },
+    {
+      "id": "01171",
+      "label_de": "Blatt- oder Stängelgemüse, frisch oder gekühlt",
+      "label_en": "Leafy or stem vegetables, fresh or chilled",
+      "level": 4
+    },
+    {
+      "id": "01172",
+      "label_de": "Fruchtgemüse, frisch oder gekühlt",
+      "label_en": "Fruit-bearing vegetables, fresh or chilled",
+      "level": 4
+    },
+    {
+      "id": "01174",
+      "label_de": "Anderes Gemüse, frisch oder gekühlt",
+      "label_en": "Other vegetables, fresh or chilled",
+      "level": 4
+    },
+    {
+      "id": "01175",
+      "label_de": "Knollengewächse und Kochbananen",
+      "label_en": "Tubers, plantains and cooking bananas, fresh or chilled",
+      "level": 4
+    },
+    {
+      "id": "01178",
+      "label_de": "Gemüse, Knollengewächse und Kochbananen, tiefgefroren",
+      "label_en": "Vegetables, tubers, plantains and cooking bananas, frozen",
+      "level": 4
+    },
+    {
+      "id": "01179",
+      "label_de": "Gemüse, Knollengewächse, Kochbananen und Hülsenfrüchte, gemahlen oder sonstige Zubereitungen",
+      "label_en": "Vegetables, tubers, plantains, cooking bananas and pulses, ground, and in other preparations",
+      "level": 4
+    },
+    {
+      "id": "0118",
+      "label_de": "Zucker, Süßwaren und Desserts",
+      "label_en": "Sugar, confectionery and desserts",
+      "level": 3
+    },
+    {
+      "id": "01181",
+      "label_de": "Rohr- und Rübenzucker",
+      "label_en": "Cane sugar and beet sugar",
+      "level": 4
+    },
+    {
+      "id": "01183",
+      "label_de": "Konfitüren, Fruchtgelees, Marmeladen, Fruchtmuse und Fruchtpasten, Honig",
+      "label_en": "Jams, marmalades, fruit jellies, purées and pastes, and honey",
+      "level": 4
+    },
+    {
+      "id": "01185",
+      "label_de": "Schokolade, Kakao und Lebensmittel auf der Grundlage von Kakao",
+      "label_en": "Chocolate, cocoa and cocoa-based food products",
+      "level": 4
+    },
+    {
+      "id": "01186",
+      "label_de": "Eis, Eiscreme und Sorbet",
+      "label_en": "Ice, ice cream and sorbets",
+      "level": 4
+    },
+    {
+      "id": "01189",
+      "label_de": "Sonstige Süßwaren und Desserts a. n. g.",
+      "label_en": "Other sugar confectionery and desserts n.e.c.",
+      "level": 4
+    },
+    {
+      "id": "0119",
+      "label_de": "Fertiggerichte und andere Nahrungsmittel a. n. g.",
+      "label_en": "Ready-made food and other food products",
+      "level": 3
+    },
+    {
+      "id": "01191",
+      "label_de": "Fertiggerichte",
+      "label_en": "Ready-made food",
+      "level": 4
+    },
+    {
+      "id": "01192",
+      "label_de": "Säuglings- und Babynahrung",
+      "label_en": "Baby food",
+      "level": 4
+    },
+    {
+      "id": "01193",
+      "label_de": "Salz, Würzmittel und Saucen",
+      "label_en": "Salt, condiments and sauces",
+      "level": 4
+    },
+    {
+      "id": "01194",
+      "label_de": "Gewürze, Küchenkräuter und genießbare Samen",
+      "label_en": "Spices, culinary herbs and seeds",
+      "level": 4
+    },
+    {
+      "id": "012",
+      "label_de": "ALKOHOLFREIE GETRÄNKE",
+      "label_en": "Non-alcoholic beverages",
+      "level": 2
+    },
+    {
+      "id": "0121",
+      "label_de": "Frucht- und Gemüsesäfte",
+      "label_en": "Fruit and vegetable juices",
+      "level": 3
+    },
+    {
+      "id": "01210",
+      "label_de": "Frucht- und Gemüsesäfte",
+      "label_en": "Fruit and vegetable juices",
+      "level": 4
+    },
+    {
+      "id": "0122",
+      "label_de": "Kaffee und Kaffeemittel",
+      "label_en": "Coffee and coffee substitutes",
+      "level": 3
+    },
+    {
+      "id": "01220",
+      "label_de": "Kaffee und Kaffeemittel",
+      "label_en": "Coffee and coffee substitutes",
+      "level": 4
+    },
+    {
+      "id": "0123",
+      "label_de": "Tee, Mate und andere Pflanzenprodukte für Tees",
+      "label_en": "Tea, maté and other plant-derived products for infusion",
+      "level": 3
+    },
+    {
+      "id": "01230",
+      "label_de": "Tee, Mate und andere Pflanzenprodukte für Tees",
+      "label_en": "Tea, maté and other plant-derived products for infusion",
+      "level": 4
+    },
+    {
+      "id": "0125",
+      "label_de": "Wasser",
+      "label_en": "Water",
+      "level": 3
+    },
+    {
+      "id": "01250",
+      "label_de": "Wasser",
+      "label_en": "Water",
+      "level": 4
+    },
+    {
+      "id": "0126",
+      "label_de": "Erfrischungsgetränke",
+      "label_en": "Soft drinks",
+      "level": 3
+    },
+    {
+      "id": "01260",
+      "label_de": "Erfrischungsgetränke",
+      "label_en": "Soft drinks",
+      "level": 4
+    },
+    {
+      "id": "0129",
+      "label_de": "Sonstige alkoholfreie Getränke",
+      "label_en": "Other non-alcoholic beverages",
+      "level": 3
+    },
+    {
+      "id": "01290",
+      "label_de": "Sonstige alkoholfreie Getränke",
+      "label_en": "Other non-alcoholic beverages",
+      "level": 4
+    }
+  ]
+}
