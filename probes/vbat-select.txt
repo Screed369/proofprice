@@ -1,0 +1,298 @@
+URL: https://www.statistik.at/preisradar/Js/select.js
+Fetched: 2026-10-25T09:43:35Z from GitHub Actions
+Status, type, bytes: 200 application/javascript 8011
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 25 Oct 2026 09:43:35 GMT
+last-modified: Fri, 16 Oct 2026 07:15:08 GMT
+etag: "1f4b-65defec954bdc"
+accept-ranges: bytes
+content-length: 8011
+content-type: application/javascript
+set-cookie: statistik_cookie=!lVtVpEO1DZhcYCtmjN8wvuxp1i3/X4EDZ5txcaT0GI345BPdNcVjDnaeXaHSSGYKfn1ewpcu9/BnBzyhfy+yLOuphqHs5K1aV/KpzfxFiskW; expires=Sun, 25-Oct-2026 09:46:35 GMT; path=/; Httponly; Secure
+set-cookie: f5avraaaaaaaaaaaaaaaa_session_=FDOBCIGKOIEMEJBNHFAKAGBAJGJLOFMJHLNBFKGPFOIGLFOPHDBKNDCBKIFFCMJGLFCDLCMJMOLFJHBLALNAODOIPMJBKNMDCJDHEJGJIPPDEOMLEDPBHBDBKIGNFAGL; HttpOnly; secure;
+set-cookie: TS017b3bc9=012bdc7728cb8212585e7f001bb1fd15cc843697d2baf63d35d85ef099cb5058989a4dd18a4d0ffa2a9ba5f51967f4781b29b65c1edb2903cdbf89d7cef79157a0dc3bef07df1b1f50a1ab2531e546f6e4dffa4e57; Path=/; Secure; HttpOnly
+
+=== FILE TYPE: Unicode text, UTF-8 text
+=== FIRST 80000 BYTES
+// Initialize a Tree Select component
+function initializeTreeSelect(config) {
+  const container = document.getElementById(config.containerId);
+  const input = document.getElementById(config.displayId);
+  const hiddenInput = document.getElementById(config.valueId);
+  const listbox = document.getElementById(config.listId);
+  const debugId = document.getElementById(config.debugId);
+  const debugLabel = document.getElementById(config.debugLabel);
+  const srStatus = config.srStatusId
+      ? document.getElementById(config.srStatusId)
+      : null;
+  const scrollTargetId = config.scrollTargetId || null;
+  const screenreader_msgs = {
+    en: {
+      zero: "0 Suggestions",
+      one: "1 Suggestion",
+      other: "{count} Suggestions.",
+      newContent: "New content is available."
+    },
+    de: {
+      zero: "0 Ergebnis",
+      one: "1 Ergebnis",
+      other: "{count} Ergebnisse",
+      newContent: "Neuer Inhalt ist verfügbar."
+    }
+  };
+
+  let activeIndex = -1;
+  let visibleOptions = [];
+
+  const lang = window.APP_LANG || "de";
+
+  // Initialize
+  fetch(config.jsonPath)
+    .then((response) => {
+      if (!response.ok) throw new Error("HTTP error " + response.status);
+      return response.json();
+    })
+    .then((data) => {
+      const items = data[config.rootKey] || [];
+      if (!items.length) throw new Error("Empty or missing JSON array");
+
+      renderOptions(items);
+
+      // Auto-select first item
+      const first = items[0];
+      selectItem({ id: first.id, label: first[`label_${lang}`] });
+
+      input.disabled = false;
+    })
+    .catch((err) => {
+      console.error(err);
+      input.placeholder = "Fehler beim Laden";
+    });
+
+  // Render logic
+  function renderOptions(items) {
+    items.forEach((item) => {
+      const id = item.id;
+      const label = item[`label_${lang}`];
+      const depth = (item.level > 0) ? item.level - 1 : 0;
+      appendOption(id, label, depth);
+    });
+    refreshVisibleOptions();
+  }
+
+  // Create each option
+  function appendOption(id, label, depth) {
+    const opt = document.createElement("div");
+    opt.className = "tree-option";
+    opt.id = `option-${id}`;
+    opt.setAttribute("role", "option");
+    opt.setAttribute("aria-selected", "false");
+
+    opt.dataset.id = id;
+    opt.dataset.label = label;
+
+    opt.style.paddingLeft = `${depth * 20 + 10}px`;
+    opt.innerHTML = `${label} <span class="meta-id">(${id})</span>`;
+
+    opt.addEventListener("click", () => {
+      selectItem({ id, label });
+    });
+
+    listbox.appendChild(opt);
+  }
+
+  // Apply filtering
+  function filterOptions(query) {
+    const q = query.toLowerCase();
+    const options = listbox.querySelectorAll(".tree-option");
+
+    options.forEach((opt) => {
+      const text = opt.dataset.label.toLowerCase();
+      const id = opt.dataset.id.toLowerCase();
+      const match = text.includes(q) || id.includes(q);
+      opt.classList.toggle("hidden", !match);
+    });
+
+    activeIndex = -1;
+    refreshVisibleOptions();
+    updateActiveDescendant();
+
+    // no results
+    listbox.querySelector(".no-results")?.remove();
+    if (visibleOptions.length === 0) {
+      const msg = lang === "en" ? "No suggestions found." : "Keine Ergebnisse.";
+      const div = document.createElement("div");
+      div.className = "no-results";
+      div.style.paddingLeft = "10px";
+      div.textContent = msg;
+      listbox.appendChild(div);
+    }
+
+    // announce number of results
+    if (srStatus) {
+      const count = visibleOptions.length;
+      const messages = screenreader_msgs[lang] || screenreader_msgs.de;
+      let status_key = "";
+      if (count === 0) {
+        status_key = 'zero';
+      } else if (count === 1) {
+        status_key = 'one';
+      } else {
+        status_key = 'other';
+      }
+      const rawMessage = messages[status_key];
+      srStatus.textContent = rawMessage.replace("{count}", count);
+    }
+  }
+
+  function refreshVisibleOptions() {
+    visibleOptions = [...listbox.querySelectorAll(".tree-option:not(.hidden)")];
+  }
+
+  // Selection
+  function selectItem(item) {
+    input.value = item.label;
+    hiddenInput.value = item.id;
+    if (debugId) debugId.textContent = item.id;
+    if (debugLabel) debugLabel.textContent = item.label;
+
+    closeListbox();
+    filterOptions("");
+
+    // Dispatch custom event
+    hiddenInput.dispatchEvent(
+      new CustomEvent("selectchange", {
+        detail: { id: item.id, label: item.label },
+        bubbles: true,
+      })
+    );
+
+    // Scroll to target
+    if (scrollTargetId) {
+      const targetElement = document.getElementById(scrollTargetId);
+      if (targetElement) {
+        tablistHeight = document.querySelector('.tablist')?.offsetHeight || 0;
+        yOffset = -tablistHeight;
+        y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset - 35;
+        window.scrollTo({top: y, behavior: 'instant'});
+      }
+    }
+  }
+
+  // Dropdown open/close
+  function openListbox() {
+    listbox.classList.add("open");
+    input.setAttribute("aria-expanded", "true");
+  }
+
+  function closeListbox() {
+    listbox.classList.remove("open");
+    input.setAttribute("aria-expanded", "false");
+    input.removeAttribute("aria-activedescendant");
+  }
+
+  // Active descendent handling
+  function updateActiveDescendant() {
+    visibleOptions.forEach((o) => o.setAttribute("aria-selected", "false"));
+
+    if (activeIndex >= 0 && activeIndex < visibleOptions.length) {
+      const opt = visibleOptions[activeIndex];
+      opt.setAttribute("aria-selected", "true");
+      input.setAttribute("aria-activedescendant", opt.id);
+      opt.scrollIntoView({ block: "nearest" });
+
+      // announce highlighted option
+      //if (srStatus) {
+      //  srStatus.textContent = `Markiert: ${opt.dataset.label}.`;
+      //}
+    }
+  }
+
+  // Keyboard Interaction
+  input.addEventListener("keydown", (e) => {
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        openListbox();
+        if (activeIndex < visibleOptions.length - 1) activeIndex++;
+        updateActiveDescendant();
+        break;
+
+      case "ArrowUp":
+        e.preventDefault();
+        if (activeIndex > 0) activeIndex--;
+        updateActiveDescendant();
+        break;
+
+      case "Enter":
+        if (activeIndex >= 0) {
+          const opt = visibleOptions[activeIndex];
+          selectItem({ id: opt.dataset.id, label: opt.dataset.label });
+          if (srStatus) {
+            srStatus.textContent = screenreader_msgs[lang].newContent;
+          }
+        }
+        break;
+
+      case "Escape":
+        closeListbox();
+        activeIndex = -1;
+        break;
+    }
+  });
+
+  // Input event (filter)
+  input.addEventListener("input", (e) => {
+    openListbox();
+    filterOptions(e.target.value);
+  });
+
+  // Click outside closes popup
+  document.addEventListener("click", (e) => {
+    if (!container.contains(e.target)) closeListbox();
+  });
+
+  // Select text on focus
+  input.addEventListener("focus", (e) => {
+    openListbox();
+
+    const hasText = e.target.value && e.target.value.length > 0;
+    if (hasText && (e.target.matches(":focus-visible"))) {
+      setTimeout(() => {
+        try { e.target.select(); } catch {}
+      }, 0);
+    }
+  });
+}
+
+// Initialization (we need 2 instances)
+document.addEventListener("DOMContentLoaded", () => {
+  initializeTreeSelect({
+    jsonPath: "data/ep/products.json",
+    rootKey: "products",
+    containerId: "treeSelectEp",
+    displayId: "displayInputEp",
+    valueId: "valueInputEp",
+    listId: "optionsListEp",
+    srStatusId: "sr-status-ep",
+    //scrollTargetId: "container-price-hdr",
+    debugId: "sel-output-id-ep",
+    debugLabel: "sel-output-label-ep",
+  });
+
+  initializeTreeSelect({
+    jsonPath: 'data/idx/aggregates.json',
+    rootKey: 'aggregates',
+    containerId: 'treeSelectAgg',
+    displayId: 'displayInputAgg',
+    valueId: 'valueInputAgg',
+    listId: 'optionsListAgg',
+    srStatusId: "sr-status-agg",
+    //scrollTargetId: "container-agg-nat-hdr",
+    debugId: 'sel-output-id-agg',
+    debugLabel: 'sel-output-label-agg'
+  });
+});
