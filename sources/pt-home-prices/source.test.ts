@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS, countriesFor, categoryById, paramSchemas } from "../../lib/registry";
-import { HARVEST_ITEM, INFO, apiUrl, coverageText, findPlace, foldName, harvestRows, harvestUrl, parseIne, ptAnswer, ptHarvest, ptHistoryKey, ptHomePrices, readPt, windowOf } from "./source";
+import { HARVEST_ITEM, INFO, apiUrl, coverageText, findPlace, foldName, harvestChunkUrls, harvestRows, harvestUrl, parseIne, ptAnswer, ptHarvest, ptHistoryKey, ptHomePrices, readPt, windowOf } from "./source";
 import type { IneReply } from "./source";
 import { PT_PLACES } from "./places";
 import * as F from "./fixtures";
@@ -321,6 +321,36 @@ test("pt-home-prices: ptHarvest uses the one-request URL", async () => {
   assert.equal(f.urls.length, 1);
   assert.equal(f.urls[0], harvestUrl());
   assert.ok(out.rows.length >= 1);
+});
+
+test("pt-home-prices: the smaller requests together ask for every place exactly once, the country first", () => {
+  const urls = harvestChunkUrls();
+  assert.ok(urls.length >= 3);
+  const asked = urls.flatMap((u) => new URL(u).searchParams.get("Dim2")!.split(","));
+  assert.equal(asked[0], "PT");
+  assert.equal(new Set(asked).size, asked.length);
+  assert.deepEqual([...asked].sort(), PT_PLACES.map((p) => p.code).sort());
+  for (const u of urls) assert.ok(u.length < harvestUrl().length);
+});
+
+test("pt-home-prices: when the one big request fails ptHarvest falls back to the smaller ones", async () => {
+  const urls: string[] = [];
+  const fetcher = async (u: string) => {
+    urls.push(u);
+    if (u === harvestUrl()) throw new SourceError("Could not reach the official source");
+    return F.LISBOA_PT_THREE_QUARTERS;
+  };
+  const out = await ptHarvest({ fetcher });
+  assert.equal(urls[0], harvestUrl());
+  assert.equal(urls.length, 1 + harvestChunkUrls().length);
+  assert.ok(out.rows.some((r) => r.area === "PT"));
+});
+
+test("pt-home-prices: if the smaller requests fail too the error says so", async () => {
+  const fetcher = async () => {
+    throw new SourceError("Could not reach the official source");
+  };
+  await assert.rejects(() => ptHarvest({ fetcher }), /smaller requests also failed/);
 });
 
 test("pt-home-prices: historyKey maps the request to INE's place code; a type split or postcode-only request has no copy", () => {

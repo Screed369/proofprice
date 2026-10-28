@@ -458,9 +458,44 @@ export function harvestRows(reply: IneReply): HarvestResult {
   };
 }
 
+/** The same request cut into slices of geographies (the country row rides in the first), for when INE cannot answer the one big request in time. */
+export function harvestChunkUrls(size = 25): string[] {
+  const codes = PT_PLACES.map((p) => p.code);
+  const rest = codes.filter((c) => c !== "PT");
+  const urls: string[] = [];
+  for (let i = 0; i < rest.length; i += size) {
+    const slice = i === 0 ? ["PT", ...rest.slice(0, size - 1)] : rest.slice(i - 1, i - 1 + size);
+    urls.push(`${API_BASE}?op=2&varcd=${INDICATOR}&Dim1=T&Dim2=${slice.join(",")}&Dim3=T&lang=EN`);
+  }
+  return urls;
+}
+
+/** Merge slice replies into one reply (rows added, newest label and update date kept from the first slice that has them). */
+export function mergeReplies(replies: IneReply[]): IneReply {
+  return {
+    rows: replies.flatMap((r) => r.rows),
+    latestLabel: replies.find((r) => r.latestLabel)?.latestLabel ?? null,
+    updated: replies.find((r) => r.updated)?.updated ?? null,
+  };
+}
+
 export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
   const fetcher = o.fetcher ?? ((url: string) => retryOnce(() => fetchJson(url, {}, 60000)));
-  return harvestRows(parseIne(await fetcher(harvestUrl())));
+  try {
+    return harvestRows(parseIne(await fetcher(harvestUrl())));
+  } catch (err) {
+    // INE's server is slow: one 100-place request sometimes times out while smaller ones answer. Try the slices before giving up.
+    const urls = harvestChunkUrls();
+    const replies: IneReply[] = [];
+    try {
+      for (const u of urls) replies.push(parseIne(await fetcher(u)));
+    } catch (second) {
+      const first = err instanceof Error ? err.message : String(err);
+      const why = second instanceof Error ? second.message : String(second);
+      throw new SourceError(`${first} (and the ${urls.length} smaller requests also failed: ${why})`);
+    }
+    return harvestRows(mergeReplies(replies));
+  }
 }
 
 /** Library key for a request: the place's INE code. Null when the request cannot be answered from the copy (a bedroom/type split, an unknown place). */
