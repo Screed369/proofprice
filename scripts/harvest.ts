@@ -65,7 +65,10 @@ async function main() {
       ok++;
       report.push(`${check?.held.length ? "HELD" : "OK  "} ${id}: ${rows} rows for ${result.date} (${dates.length} days held)${check?.message ? ` | ${check.message}` : ""}`);
     } catch (e: any) {
-      const msg = String(e?.message ?? e).slice(0, 300);
+      // SourceError keeps the network cause (ENOTFOUND, certificate errors, UND_ERR_CONNECT_TIMEOUT) in `detail`; put short ones in the
+      // recorded error so "Could not reach the official source" always says why (pt-ine-rents / pt-home-prices hid theirs, 27-28 Oct).
+      const detail = typeof e?.detail === "string" && /^[\w .:()'/-]{1,80}$/.test(e.detail) && !String(e.message).includes(e.detail) ? ` (${e.detail})` : "";
+      const msg = `${String(e?.message ?? e)}${detail}`.slice(0, 300);
       writeMeta(id, { ...prev, last_harvest_at: started, last_error: msg });
       // A source that was already failing on the previous harvest is a known outage (recorded in meta.json and /api/v1/library, and
       // in Notion by the Monitor): it is reported as DOWN and does not count towards the workflow's "more than 3 new failures" alarm.
