@@ -3,30 +3,48 @@
   "currency": "UAH",
   "unit": "per contract, total contract value as signed (incl. VAT where charged)",
   "first_date": "2026-10-23",
-  "last_date": "2026-10-27",
-  "days": 5,
-  "last_harvest_at": "2026-10-27T09:21:29.194Z",
-  "last_rows": 155,
-  "last_ok_at": "2026-10-27T09:21:29.194Z",
-  "last_error": "Data check held back 3 keys for 2026-10-27 (previous kept): ALL/cpv-0911: median 99960 vs previous 717721 on 2026-10-26 (0.14x); ALL/cpv-1481: median 1320 vs previous 7499 on 2026-10-23 (0.18x); ALL/cpv-1853: median 4400 vs previous 14390 on 2026-10-26 (0.31x).",
-  "note": "Sample of the 3000 most recently updated contracts; 3000 read, 0 failed, 1818 usable (signed 2026-07-29 to 2026-10-27).",
+  "last_date": "2026-10-28",
+  "days": 6,
+  "last_harvest_at": "2026-10-28T10:00:59.659Z",
+  "last_rows": 165,
+  "last_ok_at": "2026-10-28T10:00:59.659Z",
+  "last_error": "Data check held back 6 keys for 2026-10-28 (previous kept): ALL/consultancy: median 60000 vs previous 8190 on 2026-10-26 (7.33x); ALL/cpv-1421: median 780570 vs previous 12600 on 2026-10-24 (61.95x); ALL/cpv-3152: median 11773 vs previous 3640 on 2026-10-27 (3.23x); ALL/cpv-3951: median 4200 vs previous 18900 on 2026-10-27 (0.22x); ALL/cpv-77: median 113583 vs previous 2152560 on 2026-10-27 (0.05x); and 1 more.",
+  "note": "Sample of the 3000 most recently updated contracts; 3000 read, 0 failed, 1817 usable (signed 2026-07-30 to 2026-10-28).",
   "held_streak": {
-    "ALL::cpv-0911": {
-      "median": 99960,
+    "ALL::consultancy": {
+      "median": 60000,
       "dates": [
-        "2026-10-27"
+        "2026-10-28"
       ]
     },
-    "ALL::cpv-1481": {
-      "median": 1320,
+    "ALL::cpv-1421": {
+      "median": 780570,
       "dates": [
-        "2026-10-27"
+        "2026-10-28"
       ]
     },
-    "ALL::cpv-1853": {
-      "median": 4400,
+    "ALL::cpv-3152": {
+      "median": 11773,
       "dates": [
-        "2026-10-27"
+        "2026-10-28"
+      ]
+    },
+    "ALL::cpv-3951": {
+      "median": 4200,
+      "dates": [
+        "2026-10-28"
+      ]
+    },
+    "ALL::cpv-77": {
+      "median": 113583,
+      "dates": [
+        "2026-10-28"
+      ]
+    },
+    "ALL::cpv-7941": {
+      "median": 60000,
+      "dates": [
+        "2026-10-28"
       ]
     }
   }
