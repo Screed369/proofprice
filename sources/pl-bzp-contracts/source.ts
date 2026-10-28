@@ -46,7 +46,9 @@ export const MAX_VALUE = 5_000_000_000;
 export const UNIT = "per contract (or part), total contract value";
 export const WINDOW_PREFIX = "window:";
 export const TIME_BUDGET_MS = 25 * 60 * 1000;
-export const CONCURRENCY = 4; // days read side by side (first harvest read only 5 days in 8 minutes one by one)
+export const CONCURRENCY = 1; // one day at a time: reading side by side got the GitHub runner blocked (HTTP 403 Access Blocked) after 5 days
+export const PAUSE_MS = 2000; // between two calls, to stay under the portal's block
+export const BLOCK_WAIT_MS = 90_000; // after a 403/429 block, wait before asking again
 
 /** One contract (a whole tender, or one part of a split tender) with only the fields we use. */
 export interface PlContract {
@@ -159,16 +161,22 @@ export function windowOf(rows: { area: string; item: string }[]): string | null 
 }
 
 export type NoticeFetcher = (url: string) => Promise<any[]>;
+let lastCallAt = 0;
 const httpNotices: NoticeFetcher = async (url) => {
   let lastErr: unknown;
-  for (let attempt = 0; attempt < 3; attempt++) {
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const wait = lastCallAt + PAUSE_MS - Date.now();
+    if (wait > 0) await new Promise((r) => setTimeout(r, wait));
     try {
       const body = await fetchJson(url, { headers: { accept: "application/json" } }, 60000);
+      lastCallAt = Date.now();
       if (!Array.isArray(body)) throw new SourceError("The e-Zamowienia notice list is not a JSON array: the format may have changed");
       return body;
     } catch (err) {
+      lastCallAt = Date.now();
       lastErr = err;
-      await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+      const blocked = /HTTP (403|429)/.test(String((err as any)?.message ?? err));
+      await new Promise((r) => setTimeout(r, blocked ? BLOCK_WAIT_MS * (attempt + 1) : 1500 * (attempt + 1)));
     }
   }
   throw lastErr;
