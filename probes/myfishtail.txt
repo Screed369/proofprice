@@ -1,0 +1,46 @@
+URL: https://api.data.gov.my/data-catalogue?id=fish_prices&sort=-date&limit=5
+Fetched: 2026-10-28T18:52:48Z from GitHub Actions
+Status, type, bytes: 200 application/json 434
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+date: Wed, 28 Oct 2026 18:52:46 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+location: /data-catalogue/?id=fish_prices&sort=-date&limit=5
+vary: Origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-do-app-origin: 404fac77-61ff-48b1-8339-787252035e9b
+cache-control: private
+x-do-orig-status: 301
+set-cookie: __cf_bm=.Sm.Yip2_jUBj5OUDvqeRc725PorGN4GCkTE.MEQZ9M-1793213566.279912-1.0.1.1-lXMHrolVZkmF2EDnCPez3nU3KLLQYwlso83HJy1UTsb3ELNaQZldX03Yj.Pbs9NwSrcfl_O9GZ6buhxD8NUFUvlflUG9fMnt8WJNQY3MCwfLeral0NhjE9HT2b_Huxe1; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.data.gov.my; Expires=Wed, 28 Oct 2026 19:22:46 GMT
+cf-cache-status: BYPASS
+cf-ray: a51c23b53c6e11de-DFW
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 200 
+date: Wed, 28 Oct 2026 18:52:48 GMT
+content-type: application/json
+content-length: 434
+server: cloudflare
+allow: GET, HEAD, OPTIONS
+x-frame-options: DENY
+vary: Origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+accept-ranges: bytes
+x-do-app-origin: 404fac77-61ff-48b1-8339-787252035e9b
+cache-control: private
+x-do-orig-status: 200
+cf-cache-status: BYPASS
+set-cookie: __cf_bm=GoPIvQEWhvjkidb1NiZKW1iuPYPpv.lYZF1lmc2cz24-1793213566.880295-1.0.1.1-wO04jdMd96RuMczBxu4uGcUy8Xagg6QlzqMqNV7KeWbeGL1.xKBqtj9gydPeeeJcRszX6ptAPIxlQooGXFrICUlngu9u4PH4ZO6aclLnceCvpxzQEdStRboYV5KGVt2V; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.data.gov.my; Expires=Wed, 28 Oct 2026 19:22:48 GMT
+cf-ray: a51c23b8fb9011de-DFW
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"date": "2025-12-01", "level": "wholesale", "price": 9.82, "species": "bilis"}, {"date": "2025-12-01", "level": "wholesale", "price": 5.61, "species": "bulan_bulan"}, {"date": "2025-12-01", "level": "wholesale", "price": 3.83, "species": "biji_nangka"}, {"date": "2025-12-01", "level": "wholesale", "price": 4.52, "species": "biji_nangka_tanda_merah"}, {"date": "2025-12-01", "level": "wholesale", "price": 8.38, "species": "bulu"}]
