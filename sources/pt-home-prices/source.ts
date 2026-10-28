@@ -490,8 +490,9 @@ export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
     try {
       for (const u of urls) replies.push(parseIne(await fetcher(u)));
     } catch (second) {
-      const first = err instanceof Error ? err.message : String(err);
-      const why = second instanceof Error ? second.message : String(second);
+      const say = (e: unknown) => (e instanceof SourceError ? `${e.message}${e.detail ? ` [${String(e.detail).slice(0, 120)}]` : ""}` : e instanceof Error ? e.message : String(e));
+      const first = say(err);
+      const why = say(second);
       throw new SourceError(`${first} (and the ${urls.length} smaller requests also failed: ${why})`);
     }
     return harvestRows(mergeReplies(replies));
