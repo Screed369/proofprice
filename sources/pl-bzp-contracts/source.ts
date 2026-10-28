@@ -248,7 +248,10 @@ export async function plContractsHarvest(now: Date = new Date(), o: HarvestOptio
   // the window must be unbroken from today back to the oldest day we claim
   const unbroken: string[] = [];
   for (let i = 0; i < days && read.includes(daysBefore(to, i)); i++) unbroken.push(daysBefore(to, i));
-  if (unbroken.length < MIN_DAYS) throw new SourceError(`Only ${unbroken.length} unbroken days of e-Zamowienia notices could be read (need ${MIN_DAYS})`, String((lastError as any)?.message ?? ""));
+  if (unbroken.length < MIN_DAYS) {
+    const why = lastError ? `${String((lastError as any)?.message ?? lastError)} ${String((lastError as any)?.detail ?? "")}`.trim().slice(0, 200) : "time budget";
+    throw new SourceError(`Only ${unbroken.length} unbroken days of e-Zamowienia notices could be read (need ${MIN_DAYS}); not read: ${failed.slice(0, 6).join(", ")}; last error: ${why}; ${notices} notices read in ${Math.round((Date.now() - started) / 1000)} s`);
+  }
   const oldest = unbroken[unbroken.length - 1];
   const used = contracts.filter((c) => c.date >= oldest);
   if (!used.length) throw new SourceError("The e-Zamowienia notices held no usable contract values in the window: the notice layout may have changed");
