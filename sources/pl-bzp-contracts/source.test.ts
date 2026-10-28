@@ -138,11 +138,11 @@ test("harvest: reads each day newest first, builds the window marker and aggrega
   const r = await plContractsHarvest(now, { get: api.get });
   assert.equal(r.currency, "PLN");
   assert.equal(r.date, "2026-10-28");
-  assert.equal(windowOf(r.rows), "2026-10-08");
+  assert.equal(windowOf(r.rows), "2026-10-15");
   const cpv45 = r.rows.find((x) => x.item === "cpv-45");
-  assert.equal(cpv45?.n, 63);
+  assert.equal(cpv45?.n, 42);
   assert.equal(cpv45?.median, 200000);
-  assert.ok(r.note?.includes("2026-10-08 to 2026-10-28"));
+  assert.ok(r.note?.includes("2026-10-15 to 2026-10-28"));
   // a day that fails right after today leaves too few unbroken days
   const failing = async (url: string) => {
     if (url.includes("2026-10-27")) throw new SourceError("down");
@@ -151,11 +151,11 @@ test("harvest: reads each day newest first, builds the window marker and aggrega
   await assert.rejects(plContractsHarvest(now, { get: failing }), SourceError);
   // a day that fails deep in the window only shortens the window
   const failOld = async (url: string) => {
-    if (url.includes("2026-10-10")) throw new SourceError("down");
+    if (url.includes("2026-10-20")) throw new SourceError("down");
     return api.get(url);
   };
   const short = await plContractsHarvest(now, { get: failOld });
-  assert.equal(windowOf(short.rows), "2026-10-11");
+  assert.equal(windowOf(short.rows), "2026-10-21");
   await assert.rejects(plContractsHarvest(now, { get: async () => { throw new SourceError("down"); } }), SourceError);
   await assert.rejects(plContractsHarvest(now, { get: async () => [] }), SourceError);
 });

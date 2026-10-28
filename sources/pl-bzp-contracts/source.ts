@@ -38,14 +38,15 @@ export const INFO: SourceInfo = {
 };
 
 export const API_URL = "https://ezamowienia.gov.pl/mo-board/api/v1/notice";
-export const WINDOW_DAYS = 21;
-export const MIN_DAYS = 10; // fewer fully read days than this is a failed harvest, not a thin one
+export const WINDOW_DAYS = 14;
+export const MIN_DAYS = 8; // fewer fully read days than this is a failed harvest, not a thin one
 export const PAGE_SIZE = 50;
 export const MIN_VALUE = 1000;
 export const MAX_VALUE = 5_000_000_000;
 export const UNIT = "per contract (or part), total contract value";
 export const WINDOW_PREFIX = "window:";
-export const TIME_BUDGET_MS = 8 * 60 * 1000;
+export const TIME_BUDGET_MS = 25 * 60 * 1000;
+export const CONCURRENCY = 4; // days read side by side (first harvest read only 5 days in 8 minutes one by one)
 
 /** One contract (a whole tender, or one part of a split tender) with only the fields we use. */
 export interface PlContract {
@@ -227,23 +228,29 @@ export async function plContractsHarvest(now: Date = new Date(), o: HarvestOptio
   const failed: string[] = [];
   let notices = 0;
   let lastError: unknown = null;
-  // newest day first, so a time-out loses the oldest days, never the newest
-  for (let i = 0; i < days; i++) {
-    const day = daysBefore(to, i);
-    if (Date.now() - started > budget) {
-      failed.push(`${day} (time)`);
-      continue;
+  // newest day first, so a time-out loses the oldest days, never the newest; a few days run side by side
+  const dayList = Array.from({ length: days }, (_, i) => daysBefore(to, i));
+  let next = 0;
+  const worker = async () => {
+    while (next < dayList.length) {
+      const day = dayList[next++];
+      if (Date.now() - started > budget) {
+        failed.push(`${day} (time)`);
+        continue;
+      }
+      const dayContracts: PlContract[] = [];
+      try {
+        const c = await readDay(day, get, (n) => dayContracts.push(...contractsOf(n, day, day)));
+        notices += c;
+        contracts.push(...dayContracts);
+        read.push(day);
+      } catch (err) {
+        failed.push(day);
+        lastError = err;
+      }
     }
-    const dayContracts: PlContract[] = [];
-    try {
-      notices += await readDay(day, get, (n) => dayContracts.push(...contractsOf(n, day, day)));
-      contracts.push(...dayContracts);
-      read.push(day);
-    } catch (err) {
-      failed.push(day);
-      lastError = err;
-    }
-  }
+  };
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, days) }, worker));
   if (!read.length) throw new SourceError("Could not read the e-Zamowienia notices (ezamowienia.gov.pl)", String((lastError as any)?.message ?? lastError));
   // the window must be unbroken from today back to the oldest day we claim
   const unbroken: string[] = [];
