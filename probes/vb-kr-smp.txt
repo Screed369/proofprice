@@ -1,16 +1,16 @@
-URL: https://epsis.kpx.or.kr/epsisnew/selectEkmaSmpShdGrid.do?menuId=040201&locale=eng
-Fetched: 2026-10-24T08:44:24Z from GitHub Actions
-Status, type, bytes: 200 text/html;charset=UTF-8 815005
+URL: https://epsis.kpx.or.kr/epsisnew/selectEkmaSmpShdGrid.do?menuId=040202&locale=eng
+Fetched: 2026-10-28T21:41:58Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 827675
 Errors: 
 
 === RESPONSE HEADERS
 HTTP/1.1 200 
-Set-Cookie: JSESSIONID=DDF709D92EFB1E2A98E9CE4D4117B7CB; Path=/epsisnew; Secure; HttpOnly
+Set-Cookie: JSESSIONID=5082253BC1E7680D7C4745B40CF03179; Path=/epsisnew; Secure; HttpOnly
 vary: accept-encoding
 Content-Type: text/html;charset=UTF-8
 Content-Language: ko-KR
 Transfer-Encoding: chunked
-Date: Sat, 24 Oct 2026 08:44:23 GMT
+Date: Wed, 28 Oct 2026 21:41:57 GMT
 Server:  
 
 === FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF line terminators
@@ -59,11 +59,11 @@ Server:
 	        var mPos = false;
 	        var mPos2 = false;
 
-            $("#"+"040201".substring(0,2)+"0000").addClass("nowOn");
-            $("#"+"040201".substring(0,4)+"00").addClass("on");
-            $("#"+"040201").addClass("on");
-            $("#L"+"040201".substring(0,4)+"00").addClass("on");
-            $("#L"+"040201").addClass("on");
+            $("#"+"040202".substring(0,2)+"0000").addClass("nowOn");
+            $("#"+"040202".substring(0,4)+"00").addClass("on");
+            $("#"+"040202").addClass("on");
+            $("#L"+"040202".substring(0,4)+"00").addClass("on");
+            $("#L"+"040202").addClass("on");
 
             /*headerMenu*/
             var mPos = false;
@@ -185,13 +185,13 @@ Server:
 			if(depth == "H"){
 				location.href="/epsisnew/selectMain.do?locale=eng";
 			}else if(depth == "1"){
-				if("040201".substring(0,2) == "99"){
-					$("#L"+"040201".substring(0,2)+"0100")[0].click();
+				if("040202".substring(0,2) == "99"){
+					$("#L"+"040202".substring(0,2)+"0100")[0].click();
 				}else{
-					$("#"+"040201".substring(0,2)+"0000")[0].click();
+					$("#"+"040202".substring(0,2)+"0000")[0].click();
 				}
 			}else if(depth == "2"){
-				$("#"+"040201".substring(0,4)+"00")[0].click();
+				$("#"+"040202".substring(0,4)+"00")[0].click();
 			}
 
 		}
@@ -295,7 +295,7 @@ Server:
                 url  : "/epsisnew/insertCommExcount.ajax",
                 type : "POST",
                 data  : {
-                    menuId : "040201"
+                    menuId : "040202"
                     ,locale : "eng"
                     ,downKind : "E"
                 },
@@ -339,7 +339,7 @@ Server:
                 url  : "/epsisnew/insertCommExcount.ajax",
                 type : "POST",
                 data  : {
-                    menuId : "040201"
+                    menuId : "040202"
                     ,locale : "eng"
                     ,downKind : "C"
                 },
@@ -721,17 +721,17 @@ Server:
                 return;
             }
 			
-			    c1 = textFormmat("107.34",count);
-                c2 = textFormmat("105.45",count);
-                c3 = textFormmat("105.45",count);
-                c4 = textFormmat("101.38",count);
-                c5 = textFormmat("101.38",count);
-                c6 = textFormmat("101.38",count);
-                c7 = textFormmat("104.73",count);
-                c8 = textFormmat("105.55",count);
-                c9 = textFormmat("105.82",count);
-                c10 = textFormmat("107.03",count);
-                c11 = textFormmat("107.03",count);
-                c12 = textFormmat("107.03",count);
-                c13 = textFormmat("107.03",count);
-                c14
+			    c1 = textFormmat("99.36",count);
+                c2 = textFormmat("97.7",count);
+                c3 = textFormmat("96.79",count);
+                c4 = textFormmat("94.97",count);
+                c5 = textFormmat("95.88",count);
+                c6 = textFormmat("101.17",count);
+                c7 = textFormmat("102.25",count);
+                c8 = textFormmat("106.98",count);
+                c9 = textFormmat("106.98",count);
+                c10 = textFormmat("106.98",count);
+                c11 = textFormmat("167.27",count);
+                c12 = textFormmat("167.26",count);
+                c13 = textFormmat("167.12",count);
+                c14 = tex
