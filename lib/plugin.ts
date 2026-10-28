@@ -128,7 +128,7 @@ export interface SourcePlugin {
    *  placeholder count (5 or 10), which is never shown. */
   nominalCounts?: boolean;
   /** Optional: map a request to the library keys used by harvest, so /history can answer. */
-  historyKey?(params: Params, opts?: { monthly?: boolean }): { area: string; item: string; label: string } | null;
+  historyKey?(params: Params, opts?: { monthly?: boolean; stale?: boolean }): { area: string; item: string; label: string } | null;
   /** Optional: this source can stand in for other sources of the same category, in the given countries, when they cannot be
    *  reached. runCategory (lib/registry.ts) tries it only after the primary source failed with an outage (timeout, network error,
    *  5xx) AND no library copy of the primary from the last 7 days exists. The answer stays this source's own answer (its source,

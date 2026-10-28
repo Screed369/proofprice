@@ -99,3 +99,56 @@ test("GB history: keys", () => {
   assert.deepEqual(gbHistoryKey({ property_type: "terraced" }, { monthly: true }), { area: "ALL", item: "terraced/month", label: "England & Wales" });
   assert.throws(() => gbHistoryKey({ district: "Camden" }, { monthly: false }), /months/);
 });
+
+// ---------- daily collector + stale-if-error key (Depth Builder, 28 Oct 2026) ----------
+import { gbHarvest } from "./history";
+
+test("GB harvest: the newest WHOLE month (two held back), councils all homes, E&W by type, dated by the month's last day", async () => {
+  const lines: string[] = [];
+  for (let i = 0; i < 6; i++) lines.push(row(200000 + i * 10000, "2026-08-10", "T", "LEEDS")); // the month to keep
+  for (let i = 0; i < 6; i++) lines.push(row(300000, "2026-09-10", "D", "LEEDS")); // too new: held back
+  for (let i = 0; i < 6; i++) lines.push(row(310000, "2026-10-20", "D", "LEEDS")); // newest sale -> holds back Sep, Oct
+  for (let i = 0; i < 3; i++) lines.push(row(150000, "2026-08-11", "F", "CAMDEN")); // under 5
+  const text = lines.join("\n") + "\n";
+  const asked: number[] = [];
+  const r = await gbHarvest({
+    today: new Date("2026-10-28T03:17:00Z"),
+    log: () => {},
+    openYear: async function* (y) { asked.push(y); yield text; },
+  });
+  assert.deepEqual(asked, [2026]);
+  assert.equal(r.date, "2026-08-31");
+  assert.equal(r.currency, "GBP");
+  const leeds = r.rows.find((x) => x.area === "leeds" && x.item === "any/month")!;
+  assert.equal(leeds.n, 6);
+  assert.equal(leeds.median, 225000);
+  assert.ok(r.rows.find((x) => x.area === "ALL" && x.item === "terraced/month" && x.n === 6));
+  assert.ok(!r.rows.some((x) => x.area === "camden"));
+  assert.ok(!JSON.stringify(r).includes("SOME STREET"));
+});
+
+test("GB harvest: in January the held-back month lies in the previous year's file", async () => {
+  const text = [...Array(6)].map(() => row(250000, "2025-11-05", "S", "LEEDS")).join("\n") + "\n" + row(260000, "2026-01-03", "S", "LEEDS") + "\n";
+  const tail = row(1, "2026-01-03", "S", "LEEDS");
+  const asked: number[] = [];
+  const r = await gbHarvest({
+    today: new Date("2026-01-15T03:17:00Z"),
+    log: () => {},
+    pauseMs: 0,
+    openYear: async function* (y) { asked.push(y); yield y === 2026 ? [...Array(6)].map(() => row(260000, "2026-01-03", "S", "LEEDS")).join("\n") + "\n" : text + tail; },
+  });
+  assert.deepEqual(asked, [2026, 2025]);
+  assert.equal(r.date, "2025-11-30");
+});
+
+test("GB harvest: nothing usable is an error, never an empty day", async () => {
+  await assert.rejects(gbHarvest({ today: new Date("2026-10-28T00:00:00Z"), log: () => {}, pauseMs: 0, openYear: async function* () { yield "garbage\n"; } }));
+});
+
+test("GB history key: stale-if-error accepts the daily copy; a postcode district or a type for a council gets none; /history stays monthly-only", () => {
+  assert.deepEqual(gbHistoryKey({ town: "Bristol" }, { stale: true }), { area: "city-of-bristol", item: "any/month", label: "City Of Bristol (local authority), England & Wales" });
+  assert.equal(gbHistoryKey({ town: "Bristol", postcode_district: "BS8" }, { stale: true }), null);
+  assert.throws(() => gbHistoryKey({ town: "Bristol", property_type: "terraced" }, { stale: true }));
+  assert.equal(gbHistoryKey({ property_type: "terraced" }, { stale: true })!.item, "terraced/month");
+  assert.throws(() => gbHistoryKey({ town: "Bristol" }, { monthly: false }), /monthly figures/);
+});

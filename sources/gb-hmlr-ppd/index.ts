@@ -5,7 +5,7 @@ import { InputError } from "../../lib/http";
 import { findPlace } from "../gb-ukhpi/source";
 import { INFO, ukHomeSales, UK_PROPERTY_TYPES, UkPropertyType } from "./source";
 import { CROSS_CHECK } from "./crosscheck";
-import { gbBackfill, gbHistoryKey } from "./history";
+import { gbBackfill, gbHarvest, gbHistoryKey } from "./history";
 
 export default defineSource({
   info: INFO,
@@ -33,9 +33,13 @@ export default defineSource({
         "GB only: local authority (council area or London borough) as the Land Registry records it, e.g. 'Camden', 'City of Bristol', 'South Gloucestershire'. Use it instead of town for a London borough or when the postal town is wider than the place you mean.",
       ),
   },
-  // Monthly history since 1995 (History backfill, streamed from the yearly Price Paid files); no daily collector for this source.
+  // Monthly history since 1995 (History backfill, streamed from the yearly Price Paid files). The daily collector keeps only the newest whole month
+  // per council (all homes) and for England & Wales, dated by that month, as the stale-if-error copy when the SPARQL endpoint is down.
   backfill: (from, to) => gbBackfill(from, to),
-  historyKey: (p, o) => gbHistoryKey({ town: str(p.town), district: str(p.district), property_type: str(p.property_type) }, o),
+  harvest: () => gbHarvest(),
+  referenceDates: true,
+  historyKey: (p, o) =>
+    gbHistoryKey({ town: str(p.town), district: str(p.district), property_type: str(p.property_type), postcode_district: str(p.postcode_district) }, o),
   examples: [{ params: { country: "GB", town: "Bristol", property_type: "terraced" } }],
   method: "England & Wales: standard-price sales (category A) only; repossessions and transfers to companies are excluded.",
   handle: (p, ctx) => {

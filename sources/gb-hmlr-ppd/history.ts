@@ -5,7 +5,7 @@
 import { InputError, SourceError } from "../../lib/http";
 import { summarise, MIN_PUBLISH } from "../../lib/stats";
 import { NATIONAL } from "../../lib/library/aggregate";
-import type { BackfillResult, DailyRow } from "../../lib/plugin";
+import type { BackfillResult, DailyRow, HarvestResult } from "../../lib/plugin";
 import { normaliseDistrict } from "./source";
 
 export const PPD_YEAR_URL = (year: number) => `https://price-paid-data.publicdata.landregistry.gov.uk/pp-${year}.csv`;
@@ -188,11 +188,13 @@ export async function gbBackfill(from: string, to: string, deps: GbBackfillDeps 
 
 /** Library keys for /history: months=N asks for the monthly figures of a local authority (district) or, with no place, England & Wales. */
 export function gbHistoryKey(
-  input: { town?: string; district?: string; property_type?: string },
-  opts?: { monthly?: boolean },
+  input: { town?: string; district?: string; property_type?: string; postcode_district?: string },
+  opts?: { monthly?: boolean; stale?: boolean },
 ): { area: string; item: string; label: string } | null {
   const t = (input.property_type ?? "any").toLowerCase() as GbMonthlyType;
-  if (!opts?.monthly) throw new InputError("England & Wales: history is kept as monthly figures (no daily snapshots). Pass months, for example months=120 for ten years.");
+  // Stale-if-error (lib/stale.ts) reads the collector's newest whole month; a postcode district is narrower than any council row, so it gets no copy.
+  if (opts?.stale && input.postcode_district) return null;
+  if (!opts?.monthly && !opts?.stale) throw new InputError("England & Wales: history is kept as monthly figures (no daily snapshots). Pass months, for example months=120 for ten years.");
   if (!(GB_MONTHLY_TYPES as readonly string[]).includes(t)) return null;
   const place = input.district ?? input.town;
   if (!place) return { area: NATIONAL, item: gbMonthlyItem(t), label: "England & Wales" };
@@ -201,4 +203,43 @@ export function gbHistoryKey(
   if (!slug) return null;
   const nice = normaliseDistrict(place)!.toLowerCase().replace(/(^|\s)([a-z])/g, (_m, sp, c) => sp + c.toUpperCase());
   return { area: slug, item: gbMonthlyItem(t), label: `${nice} (local authority), England & Wales` };
+}
+
+/** The last day of a month "YYYY-MM". */
+const monthEnd = (ym: string) => new Date(Date.UTC(Number(ym.slice(0, 4)), Number(ym.slice(5, 7)), 0)).toISOString().slice(0, 10);
+
+/** Daily collector: the newest WHOLE month (the registration lag holds back the newest two) of the current year's Price Paid file, as monthly
+ *  medians per council (all homes) and for England & Wales (all homes and by type). Rows are dated by the month's last day (referenceDates), so
+ *  the live source's stale-if-error copy (lib/stale.ts) can stand in when the Land Registry SPARQL endpoint does not answer. Streamed; no record kept. */
+export async function gbHarvest(deps: GbBackfillDeps & { today?: Date } = {}): Promise<HarvestResult> {
+  const open = deps.openYear ?? fetchYear;
+  const log = deps.log ?? ((s: string) => console.log(s));
+  const thisYear = (deps.today ?? new Date()).getUTCFullYear();
+  const load = async (y: number): Promise<GbYearAccumulator> => {
+    for (let attempt = 1; ; attempt++) {
+      const a = new GbYearAccumulator();
+      try {
+        await feedChunks(open(y), a);
+        if (a.kept === 0) throw new SourceError(`Price Paid Data ${y} held no usable sales`);
+        log(`${y}: ${a.lines} lines, ${a.kept} sales kept, newest ${a.newest}`);
+        return a;
+      } catch (e) {
+        log(`${y}: attempt ${attempt} failed: ${String((e as Error)?.message ?? e)}`);
+        if (attempt >= 3) throw e;
+        await sleep((deps.pauseMs ?? 5000) * attempt);
+      }
+    }
+  };
+  const cur = await load(thisYear);
+  const month = prevMonth(cur.newest.slice(0, 7), GB_HOLD_BACK_MONTHS);
+  const acc = month.startsWith(String(thisYear)) ? cur : await load(thisYear - 1);
+  const rows = acc.periods().get(month);
+  if (!rows?.length) throw new SourceError(`Price Paid Data: no month ${month} with 5 or more sales`);
+  return {
+    date: monthEnd(month),
+    currency: "GBP",
+    unit: "per home",
+    rows,
+    note: `HM Land Registry Price Paid Data, completion month ${month} (the newest whole month; the latest two are held back for late registration): median and 10th-90th percentile of standard-price residential sales (category A) per local authority (all homes) and for England & Wales (all homes and by type). Our copy for stale-if-error.`,
+  };
 }

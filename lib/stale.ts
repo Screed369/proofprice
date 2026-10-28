@@ -45,7 +45,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
   const { cat, src } = o;
   if (!src.harvest || !src.historyKey) return null;
   try {
-    const key = src.historyKey(o.params);
+    const key = src.historyKey(o.params, { stale: true });
     if (!key) return null;
     // The library keys some requests to the whole country ("ALL"). If the caller named a smaller place, a national figure
     // would answer a different question, so keep the honest 502 instead.

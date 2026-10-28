@@ -450,9 +450,9 @@ test("stale-if-error: the 502 stays when it should", async (t) => {
   );
   // a source without library data (no harvest): the outage is reported as before
   const homes = categoryById("home-sales")!;
-  const gb = SOURCE_PLUGINS.find((s) => s.info.id === "gb-hmlr-ppd")!;
-  assert.equal(gb.harvest, undefined);
-  await assert.rejects(withHandle(gb, () => { throw new SourceError("Source timed out"); }, () => runCategory(homes, { country: "GB", town: "Bristol" })), /Source timed out/);
+  const us = SOURCE_PLUGINS.find((s) => s.info.id === "us-home-sales")!;
+  assert.equal(us.harvest, undefined);
+  await assert.rejects(withHandle(us, () => { throw new SourceError("Source timed out"); }, () => runCategory(homes, { country: "US", town: "Hartford" })), /Source timed out/);
 });
 
 test("stale-if-error: a snapshot older than a week is not recent, and thin days are never served", () => {
@@ -569,4 +569,24 @@ test("stale-if-error, reference-dated rows: the newest published month is served
   // a collector that last succeeded more than a week ago: no copy is recent enough
   writeMeta("ca-statcan-fuel", { ...meta, last_ok_at: new Date(Date.now() - (STALE_MAX_DAYS + 2) * 86400000).toISOString() });
   assert.equal(staleAnswer(base), null);
+});
+
+test("stale-if-error: England & Wales home sales stand in with the newest whole month when the Land Registry does not answer", () => {
+  const gb = SOURCE_PLUGINS.find((s) => s.info.id === "gb-hmlr-ppd")!;
+  const homes = categoryById("home-sales")!;
+  assert.ok(gb.harvest && gb.referenceDates);
+  writeDaily("gb-hmlr-ppd", { date: "2026-08-31", currency: "GBP", unit: "per home", rows: [{ area: "city-of-bristol", item: "any/month", n: 420, median: 340000, low: 190000, high: 620000, min: 60000, max: 2000000 }] });
+  writeMeta("gb-hmlr-ppd", { source: "gb-hmlr-ppd", currency: "GBP", unit: "per home", first_date: "2026-08-31", last_date: "2026-08-31", days: 1, last_harvest_at: null, last_rows: 1, last_error: null, last_ok_at: new Date(Date.now() - 86400000).toISOString() });
+  const params = { country: "GB", town: "Bristol" };
+  const base = { cat: homes, src: gb, params: { ...params }, query: params, error: new SourceError("Source timed out") };
+  const a = staleAnswer(base)!;
+  assert.ok(a, "served from the copy");
+  assert.equal(a.price!.value, 340000);
+  assert.equal(a.sample_size, 420);
+  assert.deepEqual(a.period, { from: "2026-08-31", to: "2026-08-31" });
+  assert.equal(a.extra!.stale, true);
+  assert.match(a.notice, /did not respond/);
+  // a narrower question (postcode district) or a type for a council is never answered from the council row
+  assert.equal(staleAnswer({ ...base, params: { ...params, postcode_district: "BS8" } }), null);
+  assert.equal(staleAnswer({ ...base, params: { ...params, property_type: "terraced" } }), null);
 });
