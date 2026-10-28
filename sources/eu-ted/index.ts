@@ -12,8 +12,8 @@ export default defineSource({
     ". Award notices above the EU procurement thresholds from TED.",
   placeName: "EU and EEA states (TED)",
   status: "live",
-  // FR is answered by fr-decp-contracts (French DECP, Licence Ouverte 2.0), PT by pt-base-contracts (Portal BASE), ES by es-placsp-contracts and DE by de-oev-contracts (CC0); declared serves() change.
-  serves: (p) => !["FR", "PT", "ES", "DE"].includes(String(p.country ?? "").toUpperCase()),
+  // FR is answered by fr-decp-contracts (French DECP, Licence Ouverte 2.0), PT by pt-base-contracts (Portal BASE), ES by es-placsp-contracts, DE by de-oev-contracts (CC0) and PL by pl-bzp-contracts (e-Zamowienia, CC0); declared serves() change.
+  serves: (p) => !["FR", "PT", "ES", "DE", "PL"].includes(String(p.country ?? "").toUpperCase()),
   paramNotes: {
     what:
       "EU and EEA: common purchases are matched to CPV product codes (laptops, desktop computers, school meals, road resurfacing, office cleaning, electricity, natural gas, ambulances, waste collection and about 30 more, in English and the main EU languages); " +
@@ -23,10 +23,9 @@ export default defineSource({
     months: "EU and EEA: up to 60; only the newest 1,000 matching notices are read, so a very common purchase covers a shorter period than asked (the answer says so).",
   },
   examples: [
-    { params: { country: "PL", what: "laptops" } },
-    { params: { country: "PL", what: "office cleaning" }, smoke: false },
-    { params: { country: "ES", what: "road resurfacing" }, smoke: false },
+    { params: { country: "IE", what: "laptops" } },
     { params: { country: "IE", what: "office cleaning" }, smoke: false },
+    { params: { country: "ES", what: "road resurfacing" }, smoke: false },
   ],
   method:
     "Contract award notices (form type 'result') published on TED by public buyers in the chosen country, found by CPV product code or free text. Each lot with a chosen winner and a stated value counts as one contract; " +
