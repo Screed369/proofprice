@@ -208,7 +208,7 @@ function fuelFigures(spec: PageSourceSpec, area: AreaInfo, rows: DayRow[], date:
       confidence,
       medianText,
       rangeText,
-      liveRestPath: area.kind === "country" ? null : rest(`/api/v1/${cat.restPath}`, params),
+      liveRestPath: area.kind === "country" || area.kind === "region" ? null : rest(`/api/v1/${cat.restPath}`, params),
       mcpArgs: params,
     });
   }

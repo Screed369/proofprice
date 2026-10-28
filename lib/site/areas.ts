@@ -52,7 +52,7 @@ export function slugify(s: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-export type AreaKind = "country" | "province" | "department" | "county" | "district";
+export type AreaKind = "country" | "province" | "department" | "region" | "county" | "district";
 
 export interface AreaInfo {
   code: string; // the library key
@@ -125,6 +125,23 @@ const ES: Record<string, RawName> = {
   "50": { name: "Zaragoza" },
   "51": { name: "Ceuta", bare: true },
   "52": { name: "Melilla", bare: true },
+};
+
+// ---------- France: regions (library keys R11 ... R94, written by the daily collector next to the departments) ----------
+const FR_REGION_NAMES: Record<string, RawName> = {
+  R11: { name: "Île-de-France" },
+  R24: { name: "Centre-Val de Loire" },
+  R27: { name: "Bourgogne-Franche-Comté" },
+  R28: { name: "Normandy" },
+  R32: { name: "Hauts-de-France" },
+  R44: { name: "Grand Est" },
+  R52: { name: "Pays de la Loire" },
+  R53: { name: "Brittany" },
+  R75: { name: "Nouvelle-Aquitaine" },
+  R76: { name: "Occitanie" },
+  R84: { name: "Auvergne-Rhône-Alpes" },
+  R93: { name: "Provence-Alpes-Côte d'Azur" },
+  R94: { name: "Corsica" },
 };
 
 // ---------- France: departments (prefecture codes; Corsica is 2A and 2B) ----------
@@ -397,6 +414,8 @@ export function areaFor(sourceId: string, code: string): AreaInfo | null {
       return raw ? fromRaw(code, raw, "province", raw.bare ? raw.name : `${raw.name} province`) : null;
     }
     case "fr-fuel": {
+      const region = FR_REGION_NAMES[code.toUpperCase()];
+      if (region) return fromRaw(code.toUpperCase(), region, "region", `${region.name} (region)`);
       const raw = FR[code.toUpperCase()];
       return raw ? fromRaw(code.toUpperCase(), raw, "department", `${raw.name} (department ${code.toUpperCase()})`) : null;
     }
@@ -422,7 +441,7 @@ export function knownAreaCodes(sourceId: string): string[] {
     case "es-fuel":
       return Object.keys(ES);
     case "fr-fuel":
-      return Object.keys(FR);
+      return [...Object.keys(FR), ...Object.keys(FR_REGION_NAMES)];
     case "it-fuel":
       return Object.keys(IT);
     case "ie-ppr":
