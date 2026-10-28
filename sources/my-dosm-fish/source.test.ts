@@ -116,3 +116,8 @@ test("gap G20261023-1: product=squid (English, no level) answers with a named fi
   assert.ok(others.includes("sotong_kereta") && !others.includes("sotong_katak"));
   assert.equal(fishAnswer(lib09(), { product: "cuttlefish" }, NOW).status, "ok");
 });
+
+test("freshness text names the newest published month, not the catalogue's 'last updated' date", () => {
+  assert.match(INFO.freshness, /December 2025/);
+  assert.doesNotMatch(INFO.freshness, /last updated 10 October/);
+});

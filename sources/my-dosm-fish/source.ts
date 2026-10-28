@@ -26,7 +26,7 @@ export const INFO: SourceInfo = {
     "For about 150 kinds of fish, prawns, crabs, shellfish and squid, the average price per kilogram each month at three levels: ex-vessel (the first sale at landing, what fishers receive), wholesale and retail, in Malaysian ringgit. " +
     "One published monthly average per species and level; never a single sale.",
   price_type: "official_statistic",
-  freshness: "Monthly, not live: the catalogue is refreshed after each month closes (catalogue last updated 10 October 2026 when checked); our copy is refreshed daily and every answer names its month",
+  freshness: "Monthly, not live: when checked on 28 October 2026 the newest month DOSM publishes was December 2025 (its 'last updated' date is not the data period); our copy is refreshed daily and every answer names its month",
   licence: "Creative Commons Attribution 4.0 International (CC BY 4.0)",
   licence_url: "https://creativecommons.org/licenses/by/4.0/",
   attribution:
