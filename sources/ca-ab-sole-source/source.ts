@@ -137,7 +137,7 @@ export async function abSoleSourceHarvest(now: Date = new Date()): Promise<Harve
   return { date: to, currency: "CAD", unit: UNIT, rows, note: `Contracts starting ${from} to ${to}; ${inWindow.length} usable contracts read.` };
 }
 
-export interface AbInput { what: string; cpv?: string; buyer_area?: string; baseUrl?: string }
+export interface AbInput { what: string; cpv?: string; buyer_area?: string; baseUrl?: string; whatDefaulted?: boolean }
 
 export const SUPPORTED_EXAMPLES = ["all", "consultancy", "legal services", "IT services", "software", "translation services", "security guards"];
 
@@ -158,7 +158,7 @@ export async function abSoleSource(input: AbInput): Promise<PriceAnswer> {
   const from = windowStart(day.date);
   const row = day.rows.find((r) => r.area === "ALL" && r.item === item);
   const summary = row ? { count: row.n, median: row.median, low: row.low, high: row.high, min: row.min, max: row.max } : null;
-  return buildAnswer({
+  const answer = buildAnswer({
     source: INFO,
     query: { country: "CA", buyer_area: "Alberta", what: input.what },
     summary,
@@ -174,4 +174,6 @@ export async function abSoleSource(input: AbInput): Promise<PriceAnswer> {
     baseUrl: input.baseUrl,
     extra: { value_basis: "total contract value (sole-source, no competition), not a unit price", matched_purchase: item, newest_collection: day.date },
   });
+  if (input.whatDefaulted) answer.summary = `${answer.summary} No purchase was named (what), so this covers all Alberta sole-source service contracts; add what=consultancy, legal services or another common service to narrow it.`;
+  return answer;
 }

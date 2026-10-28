@@ -43,8 +43,10 @@ export default defineCategory({
   required: ["what"],
   prepare: (p) => {
     let what = (str(p.what) ?? "").replace(/\s+/g, " ").trim();
-    // New Zealand answers a bare country question with all awards (the source says so in its answer); other countries need a purchase.
-    const whatDefaulted = what.length === 0 && String(p.country ?? "").toUpperCase() === "NZ" && !str(p.cpv);
+    // New Zealand, and Canada asked for Alberta (whose sole-source list supports what=all), answer a bare question with all awards
+    // (the source says so in its answer); other countries need a purchase.
+    const country = String(p.country ?? "").toUpperCase();
+    const whatDefaulted = what.length === 0 && !str(p.cpv) && (country === "NZ" || (country === "CA" && /alberta/i.test(str(p.buyer_area) ?? "")));
     if (whatDefaulted) what = "all";
     if (what.length < 2) {
       throw new InputError("what is required: say what was bought, for example 'laptops', 'school meals' or 'road resurfacing'.");

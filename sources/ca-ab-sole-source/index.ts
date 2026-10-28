@@ -12,7 +12,7 @@ export default defineSource({
   status: "live",
   serves: (p) => isAlbertaArea(p.buyer_area),
   paramNotes: {
-    what: "Alberta: what=all for every sole-source service contract, or a common service in plain words ('consultancy', 'legal services', 'IT services', 'software', 'translation services').",
+    what: "Alberta: optional (left out = all); what=all for every sole-source service contract, or a common service in plain words ('consultancy', 'legal services', 'IT services', 'software', 'translation services').",
     cpv: "Alberta: not used.",
     buyer_area: "Alberta: write Alberta to get Alberta government departments; these are contracts awarded without competition.",
     months: "Alberta: not used; each figure covers contracts starting in the newest 24 months.",
@@ -23,7 +23,7 @@ export default defineSource({
   ],
   method:
     "Alberta government sole-source service contracts of CA$10,000 or more (Open Alberta, Open Government Licence - Alberta), starting in the newest 24 months. Median and 10th–90th percentile of the contract value in CAD, from the daily copy in our price library. Totals per contract awarded without competition, not unit prices; suppliers are never named.",
-  handle: (p, ctx) => abSoleSource({ what: String(p.what), cpv: str(p.cpv), buyer_area: str(p.buyer_area), baseUrl: ctx.baseUrl }),
+  handle: (p, ctx) => abSoleSource({ what: String(p.what), cpv: str(p.cpv), buyer_area: str(p.buyer_area), whatDefaulted: p.what_defaulted === true, baseUrl: ctx.baseUrl }),
   harvest: () => abSoleSourceHarvest(),
   noHistory: "Alberta: the contract figures cover the newest 24 months in one window; ProofPrice keeps no daily history of them. Ask pricepaid_contract_prices (/api/v1/contracts) for the current figure.",
 });

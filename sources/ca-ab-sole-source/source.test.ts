@@ -71,6 +71,18 @@ test("harvest with a mocked data service; the answer comes from the stored copy"
     assert.deepEqual(a.period, { from: "2024-10-24", to: "2026-10-24" });
     assert.match(a.source.attribution, /Open Government Licence - Alberta/);
     assert.equal((await abSoleSource({ what: "legal services" })).price?.median, 12000);
+    // gap G20261028-1: country=CA&buyer_area=Alberta with no 'what' answers with all contracts and says so
+    const contracts = (await import("../../categories/contracts/index")).default;
+    const prepared = contracts.prepare!({ country: "CA", buyer_area: "Alberta" } as any) as any;
+    assert.equal(prepared.what, "all");
+    assert.equal(prepared.what_defaulted, true);
+    const d = await abSoleSource({ what: prepared.what, buyer_area: "Alberta", whatDefaulted: prepared.what_defaulted === true });
+    assert.equal(d.status, "ok");
+    assert.equal(d.price?.median, 12000);
+    assert.match(d.summary, /No purchase was named/);
+    assert.equal(((contracts.prepare!({ country: "CA", buyer_area: "Alberta", what: "legal services" } as any)) as any).what_defaulted, undefined);
+    assert.throws(() => contracts.prepare!({ country: "CA" } as any), InputError);
+    assert.throws(() => contracts.prepare!({ country: "CA", buyer_area: "Quebec" } as any), InputError);
     await assert.rejects(abSoleSource({ what: "xyzzy widgets" }), InputError);
     await assert.rejects(abSoleSource({ what: "all", cpv: "1" }), InputError);
   } finally {
