@@ -9,7 +9,7 @@ import path from "node:path";
 const dir = mkdtempSync(path.join(tmpdir(), "pp-check-"));
 process.env.PROOFPRICE_LIBRARY_DIR = dir;
 
-import { MAX_RATIO, MAX_RATIO_SPOT, dataCheck, keyOf, previousByKey } from "../lib/library/check";
+import { MAX_RATIO, MAX_RATIO_SPOT, MAX_RATIO_THIN, dataCheck, keyOf, previousByKey } from "../lib/library/check";
 import { readDaily, writeDaily, writeMeta } from "../lib/library/store";
 import type { SourceMeta } from "../lib/library/store";
 import type { DailyRow, HarvestResult } from "../lib/plugin";
@@ -165,4 +165,18 @@ test("spot and day-ahead power may swing 10x (a windy Sunday), but a 1000x unit 
   const bad = dataCheck({ result: day("2026-10-02", [row("DE", "day-ahead", 0.13), row("NL", "spot", 130000)], "EUR", "per MWh"), prevMeta: m, previous: prev });
   assert.equal(bad.held.length, 2);
   assert.equal(MAX_RATIO_SPOT, 20);
+});
+
+test("a thin key (n under 30) may move up to 10x; a unit slip is still held", () => {
+  writeDaily("thin-src", day("2026-10-01", [row("ALL", "cpv-1", 4615, 8)]));
+  const prev = previousByKey("thin-src", "2026-10-02");
+  const ok = dataCheck({ result: day("2026-10-02", [row("ALL", "cpv-1", 16822, 9)]), prevMeta: { ...meta(), source: "thin-src" }, previous: prev });
+  assert.equal(ok.held.length, 0, "3.65x on 8-9 records is noise, not a broken feed");
+  const slip = dataCheck({ result: day("2026-10-02", [row("ALL", "cpv-1", 4615 * 100, 9)]), prevMeta: { ...meta(), source: "thin-src" }, previous: prev });
+  assert.equal(slip.held.length, 1);
+  assert.ok(MAX_RATIO_THIN > MAX_RATIO);
+  // thick keys keep the 3x band
+  writeDaily("thick-src", day("2026-10-01", [row("ALL", "x", 100, 200)]));
+  const thick = dataCheck({ result: day("2026-10-02", [row("ALL", "x", 400, 200)]), prevMeta: { ...meta(), source: "thick-src" }, previous: previousByKey("thick-src", "2026-10-02") });
+  assert.equal(thick.held.length, 1);
 });
