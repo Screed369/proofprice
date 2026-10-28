@@ -158,7 +158,11 @@ export async function frFuelNow(input: {
   const local = frAnswer(reported, { fuel: input.fuel, area, query: input, today: input.today, baseUrl: input.baseUrl });
   // Niche fuels (LPG, E85) are sold at few stations: a thin department gets the labelled national figure, never a bare refusal.
   if (local.status !== "ok" && input.department && !input.postcode) {
-    const wide = frWidenToNational(input, area, local.extra?.stations_counted as number | undefined);
+    // The department's region first (finer), then the national figure.
+    const regionCode = frRegionOf(input.department!.replace(/[^0-9AB]/gi, "").toUpperCase());
+    const wide =
+      (regionCode ? frWidenToNational(input, area, undefined, regionCode) : null) ??
+      frWidenToNational(input, area, local.extra?.stations_counted as number | undefined);
     if (wide) return wide;
   }
   // A thin postcode (few LPG/E85 stations): first its whole department when that has 5 or more, then the national figure.
@@ -182,17 +186,21 @@ export async function frFuelNow(input: {
 /** LPG and E85 are sold at few stations, so a thin local area may be widened (diesel and petrol never are). */
 export const frIsNiche = (fuel: FrFuel) => fuel === "gplc" || fuel === "e85";
 
-/** The national (metropolitan France) library row for this fuel, as a labelled answer; null when the library has none. */
+/** The library row for this niche fuel, as a labelled answer: the department's region when `region` is given, else metropolitan France.
+ *  Null when the library has no recent row with 5 or more stations. */
 export function frWidenToNational(
   input: { department?: string; fuel: FrFuel; today?: string; baseUrl?: string },
   area: string,
   _local?: number,
+  region?: string,
 ): PriceAnswer | null {
   const common = (Object.entries(FR_NAME) as [Fuel, FrFuel][]).find(([, v]) => v === input.fuel)?.[0];
   if (!common || common === "diesel" || common === "petrol95" || common === "petrol98" || common === "e10") return null;
-  const row = nationalRow("fr-fuel", common, input.today ? new Date(input.today + "T12:00:00Z") : undefined);
+  const whole = region ? FR_REGIONS[region]?.name : "metropolitan France";
+  if (!whole) return null;
+  const row = nationalRow("fr-fuel", common, input.today ? new Date(input.today + "T12:00:00Z") : undefined, region ?? "ALL");
   if (!row) return null;
-  const sentence = widenSentence(FUEL_LABEL[input.fuel], area, "metropolitan France", row.summary.count);
+  const sentence = widenSentence(FUEL_LABEL[input.fuel], area, whole, row.summary.count);
   const a = buildAnswer({
     source: INFO,
     query: { country: "FR", postcode: null, department: input.department ?? null, fuel: input.fuel },
@@ -201,11 +209,11 @@ export function frWidenToNational(
     unit: "per litre",
     period: { from: row.date, to: row.date },
     method:
-      `Median and 10th–90th percentile of the latest pump price per litre reported by each station in metropolitan France for the selected fuel (our daily copy of ${row.date}). Prices not updated in the last ${STALE_DAYS} days are left out.`,
+      `Median and 10th–90th percentile of the latest pump price per litre reported by each station in ${whole} for the selected fuel (our daily copy of ${row.date}). Prices not updated in the last ${STALE_DAYS} days are left out.`,
     describe: (x) =>
-      `${FUEL_LABEL[input.fuel]} in metropolitan France: the latest posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} per litre; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+      `${FUEL_LABEL[input.fuel]} in ${whole}: the latest posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} per litre; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
     baseUrl: input.baseUrl,
-    extra: { widened: true, widened_from: area, widened_to: "metropolitan France", stations_counted: row.summary.count },
+    extra: { widened: true, widened_from: area, widened_to: whole, stations_counted: row.summary.count },
   });
   return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}` };
 }
@@ -242,7 +250,27 @@ const EXPORT_URL =
 /** National row: metropolitan France only (overseas departments have regulated, very different prices). */
 const METRO = "ALL";
 
-/** One day of aggregates for the price library: every department and fuel, plus France as a whole ("ALL").
+/** Metropolitan regions (INSEE codes) and their departments. The library also holds one row per region ("R84" ...), used only to
+ *  widen a thin department for LPG/E85 to its region before the national figure. */
+export const FR_REGIONS: Record<string, { name: string; departments: string[] }> = {
+  R84: { name: "Auvergne-Rhône-Alpes", departments: ["01", "03", "07", "15", "26", "38", "42", "43", "63", "69", "73", "74"] },
+  R27: { name: "Bourgogne-Franche-Comté", departments: ["21", "25", "39", "58", "70", "71", "89", "90"] },
+  R53: { name: "Brittany", departments: ["22", "29", "35", "56"] },
+  R24: { name: "Centre-Val de Loire", departments: ["18", "28", "36", "37", "41", "45"] },
+  R94: { name: "Corsica", departments: ["2A", "2B"] },
+  R44: { name: "Grand Est", departments: ["08", "10", "51", "52", "54", "55", "57", "67", "68", "88"] },
+  R32: { name: "Hauts-de-France", departments: ["02", "59", "60", "62", "80"] },
+  R11: { name: "Île-de-France", departments: ["75", "77", "78", "91", "92", "93", "94", "95"] },
+  R28: { name: "Normandy", departments: ["14", "27", "50", "61", "76"] },
+  R75: { name: "Nouvelle-Aquitaine", departments: ["16", "17", "19", "23", "24", "33", "40", "47", "64", "79", "86", "87"] },
+  R76: { name: "Occitanie", departments: ["09", "11", "12", "30", "31", "32", "34", "46", "48", "65", "66", "81", "82"] },
+  R52: { name: "Pays de la Loire", departments: ["44", "49", "53", "72", "85"] },
+  R93: { name: "Provence-Alpes-Côte d'Azur", departments: ["04", "05", "06", "13", "83", "84"] },
+};
+const REGION_OF = new Map<string, string>(Object.entries(FR_REGIONS).flatMap(([r, v]) => v.departments.map((d) => [d, r] as [string, string])));
+export const frRegionOf = (department: string): string | null => REGION_OF.get(department.toUpperCase()) ?? null;
+
+/** One day of aggregates for the price library: every department and fuel, plus each region and France as a whole ("ALL").
  *  Prices not updated in the last 8 days are left out, so closed stations do not freeze the figures. */
 export function frDailyRows(records: any[], today: string): HarvestResult {
   const rows: { area: string; item: string; price: number }[] = [];
@@ -250,6 +278,8 @@ export function frDailyRows(records: any[], today: string): HarvestResult {
     for (const st of frFreshStations(parseFrRecords({ results: records }, fr), today)) {
       if (!st.department) continue;
       rows.push({ area: st.department, item: common, price: st.price });
+      const region = frRegionOf(st.department);
+      if (region) rows.push({ area: region, item: common, price: st.price });
       if (!st.department.startsWith("97") && !st.department.startsWith("98")) rows.push({ area: METRO, item: common, price: st.price });
     }
   }

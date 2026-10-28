@@ -38,7 +38,7 @@ test("FR: departments (Corsica, overseas) and daily library rows skip stale pric
     { id: 3, cp: "75017", gazole_prix: 1.10, gazole_maj: "2026-01-01T08:00:00+00:00" },
   ], "2026-10-14");
   const keys = day.rows.map((r) => `${r.area}/${r.item}/${r.n}`);
-  assert.deepEqual(keys, ["75/diesel/2", "75/petrol95/1", "ALL/diesel/2", "ALL/petrol95/1"]);
+  assert.deepEqual(keys, ["75/diesel/2", "75/petrol95/1", "ALL/diesel/2", "ALL/petrol95/1", "R11/diesel/2", "R11/petrol95/1"]);
   assert.equal(frHistoryKey({ postcode: "69003", fuel: "diesel" })!.area, "69");
 });
 
@@ -46,7 +46,7 @@ test("FR: an unreadable timestamp never stops the daily collection", async () =>
   const { frDailyRows } = await import("./source");
   const day = frDailyRows([{ id: 1, cp: "75015", gazole_prix: 1.75, gazole_maj: "13/10/2026 08:00" }, { id: 2, cp: "97110", gazole_prix: 1.9, gazole_maj: "2026-10-13T08:00:00+00:00" }], "2026-10-14");
   const keys = day.rows.map((r) => `${r.area}/${r.item}/${r.n}`);
-  assert.deepEqual(keys, ["75/diesel/1", "971/diesel/1", "ALL/diesel/1"]); // overseas kept per department, left out of the national row
+  assert.deepEqual(keys, ["75/diesel/1", "971/diesel/1", "ALL/diesel/1", "R11/diesel/1"]); // overseas kept per department, left out of the national row
 });
 
 test("FR: placeholders (0, empty, 0.001, 9.999) are missing values, never prices", () => {
@@ -222,4 +222,27 @@ test("FR: a thin postcode (LPG) is widened to its department when that has 5+ st
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+test("FR: every metropolitan department belongs to exactly one region", async () => {
+  const { FR_REGIONS, frRegionOf } = await import("./source");
+  const all = Object.values(FR_REGIONS).flatMap((r) => r.departments);
+  assert.equal(all.length, 96);
+  assert.equal(new Set(all).size, 96);
+  assert.equal(frRegionOf("08"), "R44");
+  assert.equal(frRegionOf("2a"), "R94");
+  assert.equal(frRegionOf("971"), null);
+});
+
+test("FR: a thin department widens to its region when the library holds a region row, else to France", async () => {
+  const { frWidenToNational } = await import("./source");
+  const { frDailyRows } = await import("./source");
+  // No region row in the library yet (it appears after the next harvest): the region step is skipped, never invented.
+  assert.equal(frWidenToNational({ department: "08", fuel: "gplc", today: "2026-10-22" }, "department 08", undefined, "R44"), null);
+  // The collector writes one region row per fuel from the same stations as the department rows.
+  const recs = Array.from({ length: 6 }, (_, i) => ({ id: i, cp: i < 3 ? "08000" : "51100", gplc_prix: 1 + i / 100, gplc_maj: "2026-10-13T08:00:00+00:00" }));
+  const day = frDailyRows(recs, "2026-10-14");
+  const r44 = day.rows.find((r) => r.area === "R44" && r.item === "lpg");
+  assert.equal(r44?.n, 6);
+  assert.equal(day.rows.find((r) => r.area === "08" && r.item === "lpg")?.n, 3);
 });

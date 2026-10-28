@@ -14,10 +14,10 @@ export interface NationalRow {
 }
 
 /** The newest recent national ("ALL") library row for an item, or null when none passes the 5-record gate. */
-export function nationalRow(sourceId: string, item: string, today: Date = new Date()): NationalRow | null {
+export function nationalRow(sourceId: string, item: string, today: Date = new Date(), area = "ALL"): NationalRow | null {
   const iso = (d: Date) => d.toISOString().slice(0, 10);
   const from = iso(new Date(today.getTime() - WIDEN_MAX_DAYS * 86400000));
-  const r = readDaily(sourceId, { area: "ALL", item, from, to: iso(today) })
+  const r = readDaily(sourceId, { area, item, from, to: iso(today) })
     .filter((x) => passesGate(x.n) && Number.isFinite(x.median) && x.median > 0)
     .pop();
   if (!r) return null;
