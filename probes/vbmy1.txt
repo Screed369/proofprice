@@ -1,0 +1,2503 @@
+URL: https://myenergystats.st.gov.my/dashboard
+Fetched: 2026-10-28T23:41:58Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 206697
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Date: Wed, 28 Oct 2026 23:41:57 GMT
+Server: Apache
+Strict-Transport-Security: max-age=63072000; includeSubdomains;
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Cache-Control: private, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Liferay-Portal: Liferay Community Edition Portal
+Content-Type: text/html;charset=UTF-8
+Vary: Accept-Encoding
+Set-Cookie: JSESSIONID=4D0D9A71C6F8A19ADCEA0F30D5D6D23F; Path=/; Secure; HttpOnly
+Set-Cookie: COOKIE_SUPPORT=true; Max-Age=31536000; Expires=Thu, 28 Oct 2027 23:41:57 GMT; Path=/; HttpOnly
+Set-Cookie: GUEST_LANGUAGE_ID=en_US; Max-Age=31536000; Expires=Thu, 28 Oct 2027 23:41:57 GMT; Path=/; HttpOnly
+Access-Control-Allow-Origin: *
+Transfer-Encoding: chunked
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (4425)
+=== FIRST 60000 BYTES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+			<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="ltr light-mode" dir=" lang.dir" lang="en-US">
+
+<head>
+    <title>
+        Energy Database - MyEnergyStats
+    </title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport" />
+    <meta name="google-site-verification" content="tCTzW7eer8lB2ZtCEIwLiuveXCPIfX2DbZ7g3Sxjfoo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+
+
+
+
+
+
+
+
+
+<meta content="Energy Database Dashboard and Statistics are your premier dashboard for accessing comprehensive and current energy data in Malaysia, featuring user-friendly visualisations and interactive tools at your fingertips." lang="en-US" name="description" /><meta content="Energy Dashboard, Statistics Overview, List of Licensee &amp; Tariff, System Generation and Demand, Highest Demand Recorded, Highest Energy Recorded, Reserved Margin, Installed Capacity, Energy Balance, Sankey Diagram, Energy Balance Flow, Primary Energy Supply, Final Energy Consumption, Independent Power Producers (IPP), Electricity Distributors, Co-Generation, Renewable Energy, TNB Tariffs, SESB Tariffs, SEB Tariffs, Statistics Resources, Statistics Supply, Statistics Trade, Statistics Transformation, Statistics Consumption, Statistics Indicators, Statistics Prices, Statistics Crude Oil Petroleum Products, Statistics Natural Gas, Statistics Coal, Statistics Electricity, Statistics Total Energy" lang="en-US" name="keywords" />
+
+
+<script type="importmap">{"imports":{"react-dom":"/o/frontend-js-react-web/__liferay__/exports/react-dom.js","@clayui/breadcrumb":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$breadcrumb.js","@clayui/form":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$form.js","@clayui/popover":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$popover.js","@clayui/charts":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$charts.js","@clayui/shared":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$shared.js","@clayui/localized-input":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$localized-input.js","@clayui/modal":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$modal.js","@clayui/empty-state":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$empty-state.js","react":"/o/frontend-js-react-web/__liferay__/exports/react.js","@clayui/color-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$color-picker.js","@clayui/navigation-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$navigation-bar.js","@clayui/pagination":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$pagination.js","@clayui/icon":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$icon.js","@clayui/table":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$table.js","@clayui/autocomplete":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$autocomplete.js","@clayui/slider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$slider.js","@clayui/management-toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$management-toolbar.js","@clayui/multi-select":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$multi-select.js","@clayui/nav":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$nav.js","@clayui/time-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$time-picker.js","@clayui/provider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$provider.js","@clayui/upper-toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$upper-toolbar.js","@clayui/loading-indicator":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$loading-indicator.js","@clayui/panel":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$panel.js","@clayui/drop-down":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$drop-down.js","@clayui/list":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$list.js","@clayui/date-picker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$date-picker.js","@clayui/label":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$label.js","@clayui/data-provider":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$data-provider.js","@liferay/frontend-js-api/data-set":"/o/frontend-js-dependencies-web/__liferay__/exports/@liferay$js-api$data-set.js","@clayui/core":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$core.js","@clayui/pagination-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$pagination-bar.js","@clayui/layout":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$layout.js","@clayui/multi-step-nav":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$multi-step-nav.js","@liferay/frontend-js-api":"/o/frontend-js-dependencies-web/__liferay__/exports/@liferay$js-api.js","@clayui/css":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$css.js","@clayui/toolbar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$toolbar.js","@clayui/alert":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$alert.js","@clayui/badge":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$badge.js","@clayui/link":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$link.js","@clayui/card":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$card.js","@clayui/progress-bar":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$progress-bar.js","@clayui/tooltip":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$tooltip.js","@clayui/button":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$button.js","@clayui/tabs":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$tabs.js","@clayui/sticker":"/o/frontend-taglib-clay/__liferay__/exports/@clayui$sticker.js"},"scopes":{}}</script><script data-senna-track="temporary">var Liferay = window.Liferay || {};Liferay.Icons = Liferay.Icons || {};Liferay.Icons.controlPanelSpritemap = 'https://myenergystats.st.gov.my/o/admin-theme/images/clay/icons.svg';Liferay.Icons.spritemap = 'https://myenergystats.st.gov.my/o/energy-portal-theme/images/clay/icons.svg';</script>
+<script data-senna-track="permanent" type="text/javascript">window.Liferay = window.Liferay || {}; window.Liferay.CSP = {nonce: ''};</script>
+<script data-senna-track="permanent" src="/combo?browserId=other&minifierType=js&languageId=en_US&t=1790904963899&/o/frontend-js-jquery-web/jquery/jquery.min.js&/o/frontend-js-jquery-web/jquery/init.js&/o/frontend-js-jquery-web/jquery/ajax.js&/o/frontend-js-jquery-web/jquery/bootstrap.bundle.min.js&/o/frontend-js-jquery-web/jquery/collapsible_search.js&/o/frontend-js-jquery-web/jquery/fm.js&/o/frontend-js-jquery-web/jquery/form.js&/o/frontend-js-jquery-web/jquery/popper.min.js&/o/frontend-js-jquery-web/jquery/side_navigation.js" type="text/javascript"></script>
+<link data-senna-track="temporary" href="https://myenergystats.st.gov.my/dashboard" rel="canonical" />
+<link data-senna-track="temporary" href="https://myenergystats.st.gov.my/dashboard" hreflang="en-US" rel="alternate" />
+<link data-senna-track="temporary" href="https://myenergystats.st.gov.my/dashboard" hreflang="x-default" rel="alternate" />
+<meta property="og:description" content="Energy Database Dashboard and Statistics are your premier dashboard for accessing comprehensive and current energy data in Malaysia, featuring user-friendly visualisations and interactive tools at your fingertips.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="MyEnergyStats">
+<meta property="og:title" content="Energy Database - MyEnergyStats">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://myenergystats.st.gov.my/dashboard">
+
+
+<link href="/documents/20117/174891/mobile+app+logo+2+-+1024px/1e982067-e211-dff7-2b18-f777fe85d879" rel="apple-touch-icon" />
+<link href="/documents/20117/174891/mobile+app+logo+2+-+1024px/1e982067-e211-dff7-2b18-f777fe85d879" rel="icon" />
+
+
+
+<link class="lfr-css-file" data-senna-track="temporary" href="https://myenergystats.st.gov.my/o/energy-portal-theme/css/clay.css?browserId=other&amp;themeId=energyportal_WAR_energyportaltheme&amp;minifierType=css&amp;languageId=en_US&amp;t=1736755850000" id="liferayAUICSS" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+	<link href="/combo?browserId=other&amp;minifierType=css&amp;themeId=energyportal_WAR_energyportaltheme&amp;languageId=en_US&amp;com_liferay_journal_content_web_portlet_JournalContentPortlet_INSTANCE_dpvi:%2Fo%2Fjournal-content-web%2Fcss%2Fmain.css&amp;com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch:%2Fo%2Fportal-search-web%2Fcss%2Fmain.css&amp;com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet:%2Fo%2Fproduct-navigation-product-menu-web%2Fcss%2Fmain.css&amp;com_liferay_product_navigation_user_personal_bar_web_portlet_ProductNavigationUserPersonalBarPortlet:%2Fo%2Fproduct-navigation-user-personal-bar-web%2Fcss%2Fmain.css&amp;com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet:%2Fo%2Fsite-navigation-menu-web%2Fcss%2Fmain.css&amp;energydatabase_INSTANCE_tnaw:%2Fo%2Fenergy-database-0.1.0%2Fstatic%2Fcss%2Fmain.css&amp;t=1790794784000" rel="stylesheet" type="text/css"
+ data-senna-track="temporary" id="8bf70ba6" />
+
+
+
+
+
+
+
+
+<script data-senna-track="temporary" type="text/javascript">
+	// <![CDATA[
+		var Liferay = Liferay || {};
+
+		Liferay.Browser = {
+			acceptsGzip: function() {
+				return false;
+			},
+
+			
+
+			getMajorVersion: function() {
+				return 0;
+			},
+
+			getRevision: function() {
+				return '';
+			},
+			getVersion: function() {
+				return '';
+			},
+
+			
+
+			isAir: function() {
+				return false;
+			},
+			isChrome: function() {
+				return false;
+			},
+			isEdge: function() {
+				return false;
+			},
+			isFirefox: function() {
+				return false;
+			},
+			isGecko: function() {
+				return false;
+			},
+			isIe: function() {
+				return false;
+			},
+			isIphone: function() {
+				return false;
+			},
+			isLinux: function() {
+				return false;
+			},
+			isMac: function() {
+				return false;
+			},
+			isMobile: function() {
+				return false;
+			},
+			isMozilla: function() {
+				return false;
+			},
+			isOpera: function() {
+				return false;
+			},
+			isRtf: function() {
+				return false;
+			},
+			isSafari: function() {
+				return false;
+			},
+			isSun: function() {
+				return false;
+			},
+			isWebKit: function() {
+				return false;
+			},
+			isWindows: function() {
+				return false;
+			}
+		};
+
+		Liferay.Data = Liferay.Data || {};
+
+		Liferay.Data.ICONS_INLINE_SVG = true;
+
+		Liferay.Data.NAV_SELECTOR = '#navigation';
+
+		Liferay.Data.NAV_SELECTOR_MOBILE = '#navigationCollapse';
+
+		Liferay.Data.isCustomizationView = function() {
+			return false;
+		};
+
+		Liferay.Data.notices = [
+			
+		];
+
+		(function () {
+			var available = {};
+
+			var direction = {};
+
+			
+
+				available['en_US'] = 'English\x20\x28United\x20States\x29';
+				direction['en_US'] = 'ltr';
+
+			
+
+				available['ar_SA'] = 'Arabic\x20\x28Saudi\x20Arabia\x29';
+				direction['ar_SA'] = 'rtl';
+
+			
+
+				available['ca_ES'] = 'Catalan\x20\x28Spain\x29';
+				direction['ca_ES'] = 'ltr';
+
+			
+
+				available['zh_CN'] = 'Chinese\x20\x28China\x29';
+				direction['zh_CN'] = 'ltr';
+
+			
+
+				available['nl_NL'] = 'Dutch\x20\x28Netherlands\x29';
+				direction['nl_NL'] = 'ltr';
+
+			
+
+				available['fi_FI'] = 'Finnish\x20\x28Finland\x29';
+				direction['fi_FI'] = 'ltr';
+
+			
+
+				available['fr_FR'] = 'French\x20\x28France\x29';
+				direction['fr_FR'] = 'ltr';
+
+			
+
+				available['de_DE'] = 'German\x20\x28Germany\x29';
+				direction['de_DE'] = 'ltr';
+
+			
+
+				available['hu_HU'] = 'Hungarian\x20\x28Hungary\x29';
+				direction['hu_HU'] = 'ltr';
+
+			
+
+				available['ja_JP'] = 'Japanese\x20\x28Japan\x29';
+				direction['ja_JP'] = 'ltr';
+
+			
+
+				available['pt_BR'] = 'Portuguese\x20\x28Brazil\x29';
+				direction['pt_BR'] = 'ltr';
+
+			
+
+				available['es_ES'] = 'Spanish\x20\x28Spain\x29';
+				direction['es_ES'] = 'ltr';
+
+			
+
+				available['sv_SE'] = 'Swedish\x20\x28Sweden\x29';
+				direction['sv_SE'] = 'ltr';
+
+			
+
+			Liferay.Language = {
+				available,
+				direction,
+				get: function(key) {
+					return key;
+				}
+			};
+		})();
+
+		var featureFlags = {"LPS-193884":false,"LPS-157988":false,"LPS-178642":false,"LPS-193005":false,"LPS-187284":false,"LPS-187285":false,"LPS-114786":false,"COMMERCE-8087":false,"LRAC-10757":false,"LPS-180090":false,"LPS-170809":false,"LPS-178052":false,"LPS-189856":false,"LPS-187436":false,"LPS-182184":false,"LPS-185892":false,"LPS-186620":false,"LPS-159650":false,"COMMERCE-11026":false,"COMMERCE-12754":false,"LPS-197692":false,"LPS-184404":false,"LPS-180328":false,"COMMERCE-11028":false,"LPS-198183":false,"LPS-171364":false,"LPS-153714":false,"LPS-96845":false,"COMMERCE-10890":false,"LPS-170670":false,"LPS-141392":false,"LPS-169981":false,"LPS-153839":false,"LPS-187793":false,"LPS-177027":false,"COMMERCE-12192":false,"LPS-196768":false,"LPS-172416":false,"LPS-196724":false,"LPS-196648":false,"LPS-163118":false,"LPS-114700":false,"LPS-135430":false,"LPS-134060":false,"LPS-164563":false,"LPS-122920":false,"LPS-148856":false,"LPS-154290":false,"LPS-173135":false,"LPS-194395":false,"COMMERCE-9599":false,"LPS-187142":false,"LPS-196935":false,"LPS-187854":false,"LPS-197909":false,"LPS-144527":false,"COMMERCE-8949":false,"COMMERCE-11922":false,"LPS-194362":false,"LPS-165481":false,"LPS-153813":false,"LPS-174455":false,"LPS-194763":false,"LPS-165482":false,"COMMERCE-11287":false,"LPS-193551":false,"LPS-197477":false,"LPS-174816":false,"LPS-186360":false,"LPS-153332":false,"LPS-179669":false,"LPS-174417":false,"LRAC-14922":false,"LPS-183882":false,"LPS-155284":false,"LPS-200108":false,"LPS-159643":false,"LPS-181663":false,"LPS-161033":false,"LPS-164948":false,"LPS-186871":false,"LPS-188058":false,"LPS-129412":false,"LPS-198573":false,"LPS-166126":false,"LPS-169837":false};
+
+		Liferay.FeatureFlags = Object.keys(featureFlags).reduce(
+			(acc, key) => ({
+				...acc, [key]: featureFlags[key] === 'true' || featureFlags[key] === true
+			}), {}
+		);
+
+		Liferay.PortletKeys = {
+			DOCUMENT_LIBRARY: 'com_liferay_document_library_web_portlet_DLPortlet',
+			DYNAMIC_DATA_MAPPING: 'com_liferay_dynamic_data_mapping_web_portlet_DDMPortlet',
+			ITEM_SELECTOR: 'com_liferay_item_selector_web_portlet_ItemSelectorPortlet'
+		};
+
+		Liferay.PropsValues = {
+			JAVASCRIPT_SINGLE_PAGE_APPLICATION_TIMEOUT: 0,
+			UPLOAD_SERVLET_REQUEST_IMPL_MAX_SIZE: 1104857600
+		};
+
+		Liferay.ThemeDisplay = {
+
+			
+
+			
+				getLayoutId: function() {
+					return '13';
+				},
+
+				
+
+				getLayoutRelativeControlPanelURL: function() {
+					return '/group/guest/~/control_panel/manage';
+				},
+
+				getLayoutRelativeURL: function() {
+					return '/dashboard';
+				},
+				getLayoutURL: function() {
+					return 'https://myenergystats.st.gov.my/dashboard';
+				},
+				getParentLayoutId: function() {
+					return '0';
+				},
+				isControlPanel: function() {
+					return false;
+				},
+				isPrivateLayout: function() {
+					return 'false';
+				},
+				isVirtualLayout: function() {
+					return false;
+				},
+			
+
+			getBCP47LanguageId: function() {
+				return 'en-US';
+			},
+			getCanonicalURL: function() {
+
+				
+
+				return 'https\x3a\x2f\x2fmyenergystats\x2est\x2egov\x2emy\x2fdashboard';
+			},
+			getCDNBaseURL: function() {
+				return 'https://myenergystats.st.gov.my';
+			},
+			getCDNDynamicResourcesHost: function() {
+				return '';
+			},
+			getCDNHost: function() {
+				return '';
+			},
+			getCompanyGroupId: function() {
+				return '20119';
+			},
+			getCompanyId: function() {
+				return '5570773937246803877';
+			},
+			getDefaultLanguageId: function() {
+				return 'en_US';
+			},
+			getDoAsUserIdEncoded: function() {
+				return '';
+			},
+			getLanguageId: function() {
+				return 'en_US';
+			},
+			getParentGroupId: function() {
+				return '20117';
+			},
+			getPathContext: function() {
+				return '';
+			},
+			getPathImage: function() {
+				return '/image';
+			},
+			getPathJavaScript: function() {
+				return '/o/frontend-js-web';
+			},
+			getPathMain: function() {
+				return '/c';
+			},
+			getPathThemeImages: function() {
+				return 'https://myenergystats.st.gov.my/o/energy-portal-theme/images';
+			},
+			getPathThemeRoot: function() {
+				return '/o/energy-portal-theme';
+			},
+			getPlid: function() {
+				return '39';
+			},
+			getPortalURL: function() {
+				return 'https://myenergystats.st.gov.my';
+			},
+			getRealUserId: function() {
+				return '20095';
+			},
+			getRemoteAddr: function() {
+				return '10.3.3.20';
+			},
+			getRemoteHost: function() {
+				return '10.3.3.20';
+			},
+			getScopeGroupId: function() {
+				return '20117';
+			},
+			getScopeGroupIdOrLiveGroupId: function() {
+				return '20117';
+			},
+			getSessionId: function() {
+				return '';
+			},
+			getSiteAdminURL: function() {
+				return 'https://myenergystats.st.gov.my/group/guest/~/control_panel/manage?p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view';
+			},
+			getSiteGroupId: function() {
+				return '20117';
+			},
+			getURLControlPanel: function() {
+				return '/group/control_panel?refererPlid=39';
+			},
+			getURLHome: function() {
+				return 'https\x3a\x2f\x2fmyenergystats\x2est\x2egov\x2emy\x2f';
+			},
+			getUserEmailAddress: function() {
+				return '';
+			},
+			getUserId: function() {
+				return '20095';
+			},
+			getUserName: function() {
+				return '';
+			},
+			isAddSessionIdToURL: function() {
+				return false;
+			},
+			isImpersonated: function() {
+				return false;
+			},
+			isSignedIn: function() {
+				return false;
+			},
+
+			isStagedPortlet: function() {
+				
+					
+						return false;
+					
+				
+			},
+
+			isStateExclusive: function() {
+				return false;
+			},
+			isStateMaximized: function() {
+				return false;
+			},
+			isStatePopUp: function() {
+				return false;
+			}
+		};
+
+		var themeDisplay = Liferay.ThemeDisplay;
+
+		Liferay.AUI = {
+
+			
+
+			getCombine: function() {
+				return true;
+			},
+			getComboPath: function() {
+				return '/combo/?browserId=other&minifierType=&languageId=en_US&t=1701965772020&';
+			},
+			getDateFormat: function() {
+				return '%m/%d/%Y';
+			},
+			getEditorCKEditorPath: function() {
+				return '/o/frontend-editor-ckeditor-web';
+			},
+			getFilter: function() {
+				var filter = 'raw';
+
+				
+					
+						filter = 'min';
+					
+					
+
+				return filter;
+			},
+			getFilterConfig: function() {
+				var instance = this;
+
+				var filterConfig = null;
+
+				if (!instance.getCombine()) {
+					filterConfig = {
+						replaceStr: '.js' + instance.getStaticResourceURLParams(),
+						searchExp: '\\.js$'
+					};
+				}
+
+				return filterConfig;
+			},
+			getJavaScriptRootPath: function() {
+				return '/o/frontend-js-web';
+			},
+			getPortletRootPath: function() {
+				return '/html/portlet';
+			},
+			getStaticResourceURLParams: function() {
+				return '?browserId=other&minifierType=&languageId=en_US&t=1701965772020';
+			}
+		};
+
+		Liferay.authToken = 'WGFriQZ1';
+
+		
+
+		Liferay.currentURL = '\x2fdashboard';
+		Liferay.currentURLEncoded = '\x252Fdashboard';
+	// ]]>
+</script>
+
+<script data-senna-track="temporary" type="text/javascript">window.__CONFIG__= {basePath: '',combine: true, defaultURLParams: null, explainResolutions: false, exposeGlobal: false, logLevel: 'warn', moduleType: 'module', namespace:'Liferay', nonce: '', reportMismatchedAnonymousModules: 'warn', resolvePath: '/o/js_resolve_modules', url: '/combo/?browserId=other&minifierType=js&languageId=en_US&t=1701965772020&', waitTimeout: 60000};</script><script data-senna-track="permanent" src="/o/frontend-js-loader-modules-extender/loader.js?&mac=9WaMmhziBCkScHZwrrVcOR7VZF4=&browserId=other&languageId=en_US&minifierType=js" type="text/javascript"></script><script data-senna-track="permanent" src="/combo?browserId=other&minifierType=js&languageId=en_US&t=1701965772020&/o/frontend-js-aui-web/aui/aui/aui-min.js&/o/frontend-js-aui-web/liferay/modules.js&/o/frontend-js-aui-web/liferay/aui_sandbox.js&/o/frontend-js-aui-web/aui/attribute-base/attribute-base-min.js&/o/frontend-js-aui-web/aui/attribute-complex/attribute-complex-min.js&/o/frontend-js-aui-web/aui/attribute-core/attribute-core-min.js&/o/frontend-js-aui-web/aui/attribute-observable/attribute-observable-min.js&/o/frontend-js-aui-web/aui/attribute-extras/attribute-extras-min.js&/o/frontend-js-aui-web/aui/event-custom-base/event-custom-base-min.js&/o/frontend-js-aui-web/aui/event-custom-complex/event-custom-complex-min.js&/o/frontend-js-aui-web/aui/oop/oop-min.js&/o/frontend-js-aui-web/aui/aui-base-lang/aui-base-lang-min.js&/o/frontend-js-aui-web/liferay/dependency.js&/o/frontend-js-aui-web/liferay/util.js&/o/oauth2-provider-web/js/liferay.js&/o/frontend-js-web/liferay/dom_task_runner.js&/o/frontend-js-web/liferay/events.js&/o/frontend-js-web/liferay/lazy_load.js&/o/frontend-js-web/liferay/liferay.js&/o/frontend-js-web/liferay/global.bundle.js&/o/frontend-js-web/liferay/portlet.js&/o/frontend-js-web/liferay/workflow.js" type="text/javascript"></script>
+<script data-senna-track="temporary" type="text/javascript">window.Liferay = Liferay || {}; window.Liferay.OAuth2 = {getAuthorizeURL: function() {return 'https://myenergystats.st.gov.my/o/oauth2/authorize';}, getBuiltInRedirectURL: function() {return 'https://myenergystats.st.gov.my/o/oauth2/redirect';}, getIntrospectURL: function() { return 'https://myenergystats.st.gov.my/o/oauth2/introspect';}, getTokenURL: function() {return 'https://myenergystats.st.gov.my/o/oauth2/token';}, getUserAgentApplication: function(externalReferenceCode) {return Liferay.OAuth2._userAgentApplications[externalReferenceCode];}, _userAgentApplications: {"d3862ad4-28cd-8674-7ba9-0be90dbfed1a":{"clientId":"id-6d256ff3-cd20-cf43-5d7e-121de3c92","homePageURL":"","redirectURIs":["https://myenergystats.st.gov.my/neb-module","https://adiwira.st.gov.my/ekids-kuiz","https://myenergystats.st.gov.my/myenergystats-admin","https://neb.st.gov.my","https://neb.st.gov.my/activate"]}}}</script><script data-senna-track="temporary" type="text/javascript">try {var MODULE_MAIN='calendar-web@5.0.84/index';var MODULE_PATH='/o/calendar-web';AUI().applyConfig({groups:{calendar:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-calendar-a11y":{path:"calendar_a11y.js",requires:["calendar"]},"liferay-calendar-container":{path:"calendar_container.js",requires:["aui-alert","aui-base","aui-component","liferay-portlet-base"]},"liferay-calendar-date-picker-sanitizer":{path:"date_picker_sanitizer.js",requires:["aui-base"]},"liferay-calendar-interval-selector":{path:"interval_selector.js",requires:["aui-base","liferay-portlet-base"]},"liferay-calendar-interval-selector-scheduler-event-link":{path:"interval_selector_scheduler_event_link.js",requires:["aui-base","liferay-portlet-base"]},"liferay-calendar-list":{path:"calendar_list.js",requires:["aui-template-deprecated","liferay-scheduler"]},"liferay-calendar-message-util":{path:"message_util.js",requires:["liferay-util-window"]},"liferay-calendar-recurrence-converter":{path:"recurrence_converter.js",requires:[]},"liferay-calendar-recurrence-dialog":{path:"recurrence.js",requires:["aui-base","liferay-calendar-recurrence-util"]},"liferay-calendar-recurrence-util":{path:"recurrence_util.js",requires:["aui-base","liferay-util-window"]},"liferay-calendar-reminders":{path:"calendar_reminders.js",requires:["aui-base"]},"liferay-calendar-remote-services":{path:"remote_services.js",requires:["aui-base","aui-component","liferay-calendar-util","liferay-portlet-base"]},"liferay-calendar-session-listener":{path:"session_listener.js",requires:["aui-base","liferay-scheduler"]},"liferay-calendar-simple-color-picker":{path:"simple_color_picker.js",requires:["aui-base","aui-template-deprecated"]},"liferay-calendar-simple-menu":{path:"simple_menu.js",requires:["aui-base","aui-template-deprecated","event-outside","event-touch","widget-modality","widget-position","widget-position-align","widget-position-constrain","widget-stack","widget-stdmod"]},"liferay-calendar-util":{path:"calendar_util.js",requires:["aui-datatype","aui-io","aui-scheduler","aui-toolbar","autocomplete","autocomplete-highlighters"]},"liferay-scheduler":{path:"scheduler.js",requires:["async-queue","aui-datatype","aui-scheduler","dd-plugin","liferay-calendar-a11y","liferay-calendar-message-util","liferay-calendar-recurrence-converter","liferay-calendar-recurrence-util","liferay-calendar-util","liferay-scheduler-event-recorder","liferay-scheduler-models","promise","resize-plugin"]},"liferay-scheduler-event-recorder":{path:"scheduler_event_recorder.js",requires:["dd-plugin","liferay-calendar-util","resize-plugin"]},"liferay-scheduler-models":{path:"scheduler_models.js",requires:["aui-datatype","dd-plugin","liferay-calendar-util"]}},root:MODULE_PATH+"/js/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='contacts-web@5.0.54/index';var MODULE_PATH='/o/contacts-web';AUI().applyConfig({groups:{contactscenter:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-contacts-center":{path:"main.js",requires:["aui-io-plugin-deprecated","aui-toolbar","autocomplete-base","datasource-io","json-parse","liferay-portlet-base","liferay-util-window"]}},root:MODULE_PATH+"/js/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='item-selector-taglib@6.0.4/index.es';var MODULE_PATH='/o/item-selector-taglib';AUI().applyConfig({groups:{"item-selector-taglib":{base:MODULE_PATH+"/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-image-selector":{path:"image_selector/js/image_selector.js",requires:["aui-base","liferay-item-selector-dialog","liferay-portlet-base","uploader"]}},root:MODULE_PATH+"/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='dynamic-data-mapping-web@5.0.96/index';var MODULE_PATH='/o/dynamic-data-mapping-web';!function(){const a=Liferay.AUI;AUI().applyConfig({groups:{ddm:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:a.getFilterConfig(),modules:{"liferay-ddm-form":{path:"ddm_form.js",requires:["aui-base","aui-datatable","aui-datatype","aui-image-viewer","aui-parse-content","aui-set","aui-sortable-list","json","liferay-form","liferay-map-base","liferay-translation-manager","liferay-util-window"]},"liferay-portlet-dynamic-data-mapping":{condition:{trigger:"liferay-document-library"},path:"main.js",requires:["arraysort","aui-form-builder-deprecated","aui-form-validator","aui-map","aui-text-unicode","json","liferay-menu","liferay-translation-manager","liferay-util-window","text"]},"liferay-portlet-dynamic-data-mapping-custom-fields":{condition:{trigger:"liferay-document-library"},path:"custom_fields.js",requires:["liferay-portlet-dynamic-data-mapping"]}},root:MODULE_PATH+"/js/"}}})}();
+} catch(error) {console.error(error);}try {var MODULE_MAIN='frontend-editor-alloyeditor-web@5.0.43/index';var MODULE_PATH='/o/frontend-editor-alloyeditor-web';AUI().applyConfig({groups:{alloyeditor:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-alloy-editor":{path:"alloyeditor.js",requires:["aui-component","liferay-portlet-base","timers"]},"liferay-alloy-editor-source":{path:"alloyeditor_source.js",requires:["aui-debounce","liferay-fullscreen-source-editor","liferay-source-editor","plugin"]}},root:MODULE_PATH+"/js/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='staging-processes-web@5.0.53/index';var MODULE_PATH='/o/staging-processes-web';AUI().applyConfig({groups:{stagingprocessesweb:{base:MODULE_PATH+"/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-staging-processes-export-import":{path:"js/main.js",requires:["aui-datatype","aui-dialog-iframe-deprecated","aui-modal","aui-parse-content","aui-toggler","liferay-portlet-base","liferay-util-window"]}},root:MODULE_PATH+"/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/document-library-web@6.0.172/document_library/js/index';var MODULE_PATH='/o/document-library-web';AUI().applyConfig({groups:{dl:{base:MODULE_PATH+"/document_library/js/legacy/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"document-library-upload-component":{path:"DocumentLibraryUpload.js",requires:["aui-component","aui-data-set-deprecated","aui-overlay-manager-deprecated","aui-overlay-mask-deprecated","aui-parse-content","aui-progressbar","aui-template-deprecated","liferay-search-container","querystring-parse-simple","uploader"]}},root:MODULE_PATH+"/document_library/js/legacy/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/frontend-taglib@13.1.2/index';var MODULE_PATH='/o/frontend-taglib';AUI().applyConfig({groups:{"frontend-taglib":{base:MODULE_PATH+"/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-management-bar":{path:"management_bar/js/management_bar.js",requires:["aui-component","liferay-portlet-base"]},"liferay-sidebar-panel":{path:"sidebar_panel/js/sidebar_panel.js",requires:["aui-base","aui-debounce","aui-parse-content","liferay-portlet-base"]}},root:MODULE_PATH+"/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/frontend-js-state-web@1.0.18/index';var MODULE_PATH='/o/frontend-js-state-web';AUI().applyConfig({groups:{state:{mainModule:MODULE_MAIN}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='@liferay/frontend-js-react-web@5.0.34/index';var MODULE_PATH='/o/frontend-js-react-web';AUI().applyConfig({groups:{react:{mainModule:MODULE_MAIN}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='frontend-js-components-web@2.0.59/index';var MODULE_PATH='/o/frontend-js-components-web';AUI().applyConfig({groups:{components:{mainModule:MODULE_MAIN}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='portal-search-web@6.0.122/index';var MODULE_PATH='/o/portal-search-web';AUI().applyConfig({groups:{search:{base:MODULE_PATH+"/js/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-search-custom-filter":{path:"custom_filter.js",requires:[]},"liferay-search-date-facet":{path:"date_facet.js",requires:["aui-form-validator","liferay-search-facet-util"]},"liferay-search-date-facet-configuration":{path:"date_facet_configuration.js",requires:["aui-node"]},"liferay-search-facet-util":{path:"facet_util.js",requires:[]},"liferay-search-modified-facet":{path:"modified_facet.js",requires:["aui-form-validator","liferay-search-facet-util"]},"liferay-search-modified-facet-configuration":{path:"modified_facet_configuration.js",requires:["aui-node"]},"liferay-search-sort-configuration":{path:"sort_configuration.js",requires:["aui-node"]},"liferay-search-sort-util":{path:"sort_util.js",requires:[]}},root:MODULE_PATH+"/js/"}}});
+} catch(error) {console.error(error);}try {var MODULE_MAIN='exportimport-web@5.0.81/index';var MODULE_PATH='/o/exportimport-web';AUI().applyConfig({groups:{exportimportweb:{base:MODULE_PATH+"/",combine:Liferay.AUI.getCombine(),filter:Liferay.AUI.getFilterConfig(),modules:{"liferay-export-import-export-import":{path:"js/main.js",requires:["aui-datatype","aui-dialog-iframe-deprecated","aui-modal","aui-parse-content","aui-toggler","liferay-portlet-base","liferay-util-window"]}},root:MODULE_PATH+"/"}}});
+} catch(error) {console.error(error);}</script>
+
+
+<script data-senna-track="temporary" type="text/javascript">
+	// <![CDATA[
+		
+			
+				
+		
+
+		
+
+		
+	// ]]>
+</script>
+
+
+
+
+
+	
+		
+
+			
+
+			
+				<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSP4SEDXWG"></script>
+
+				<script>
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-NSP4SEDXWG');
+
+					
+
+					
+				</script>
+			
+		
+		
+
+
+
+	
+		
+
+			
+
+			
+		
+		
+
+
+
+	
+		
+
+			
+
+			
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link class="lfr-css-file" data-senna-track="temporary" href="https://myenergystats.st.gov.my/o/energy-portal-theme/css/main.css?browserId=other&amp;themeId=energyportal_WAR_energyportaltheme&amp;minifierType=css&amp;languageId=en_US&amp;t=1736755850000" id="liferayThemeCSS" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+	<style data-senna-track="temporary" type="text/css">
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_ .portlet-content {
+background-color: rgba(0, 0, 0, 0);
+color: #000000
+}
+.navbar-classic .input-group .input-group-inset-item .btn {
+    align-items: end;
+    display: flex;
+    height: 75%;
+    justify-content: center;
+    line-height: 1;
+    margin-left: 0.1875rem;
+    margin-right: 0.1875rem;
+    padding-bottom: 0;
+    padding-left: 0.5rem;
+    padding-right: 14px;
+    padding-top: 0;
+background-color: transparent !important;
+}
+
+.lexicon-icon {
+    display: inline-block;
+    height: 1em;
+    margin-top: -3px;
+    vertical-align: middle;
+    width: 1em;
+}
+
+.navbar-classic .form-control {
+    display: flex;
+    padding: 8px 16px;
+    align-items: center;
+    gap: 116px;
+    border-radius: 10px;
+    background-color: transparent !important;
+color:white;
+}
+
+.navbar-classic .input-group .input-group-inset-item {
+  background-color: transparent !important;
+}
+
+.input-group-item {
+ flex-wrap: nowrap;
+}
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+			
+
+		
+
+			
+
+				
+
+					
+
+#p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_ .portlet-content {
+background-color: #191C4D;
+color: #FFFFFF;
+font-family: 'Arial'
+}
+/* comment 10 Jan 2025
+
+.nav-tabs .nav-link  {
+    border: .0625rem solid #0000;
+    border-radius: .25rem .25rem 0 0;
+    color:#ffffff ; 
+    font-weight: 600;
+    padding-bottom: .28125rem;
+    padding-top: .28125rem;
+    transition: box-shadow .15s ease-in-out;
+    white-space: nowrap
+}
+
+.navbar-classic .nav li.active a {
+    border-radius: 10px;
+    background-color: #C5D9FF;
+    color: #191C4D !important;
+}
+.dropdown-toggle:after {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .dropdown-menu {
+        max-height: fit-content;
+        max-width: 230px;
+    }
+}
+
+@media (max-width: 767.98px) {
+  .navbar-classic .nav-tabs :hover {
+   display:none !important;
+}
+}
+*/
+
+
+
+				
+
+			
+
+		
+
+			
+
+		
+
+	</style>
+
+
+<script data-senna-track="temporary">var Liferay = window.Liferay || {}; Liferay.CommerceContext = {"commerceAccountGroupIds":[],"accountEntryAllowedTypes":["person"],"commerceChannelId":"0","showUnselectableOptions":false,"currency":{"currencyId":"30335","currencyCode":"USD"},"showSeparateOrderItems":false,"commerceSiteType":0};</script><link href="/o/commerce-frontend-js/styles/main.css" rel="stylesheet" type="text/css" />
+<style data-senna-track="temporary" type="text/css">
+	:root {
+		--container-max-sm: 540px;
+		--h4-font-size: 1rem;
+		--font-weight-bold: 700;
+		--rounded-pill: 50rem;
+		--display4-weight: 300;
+		--danger: #da1414;
+		--display2-size: 5.5rem;
+		--body-bg: #fff;
+		--display2-weight: 300;
+		--display1-weight: 300;
+		--display3-weight: 300;
+		--box-shadow-sm: 0 .125rem .25rem rgba(0, 0, 0, .075);
+		--font-weight-lighter: lighter;
+		--h3-font-size: 1.1875rem;
+		--btn-outline-primary-hover-border-color: #0b5fff;
+		--transition-collapse: height .35s ease;
+		--blockquote-small-color: #6b6c7e;
+		--gray-200: #f1f2f5;
+		--btn-secondary-hover-background-color: #f7f8f9;
+		--gray-600: #6b6c7e;
+		--secondary: #6b6c7e;
+		--btn-outline-primary-color: #0b5fff;
+		--btn-link-hover-color: #004ad7;
+		--hr-border-color: rgba(0, 0, 0, .1);
+		--hr-border-margin-y: 1rem;
+		--light: #f1f2f5;
+		--btn-outline-primary-hover-color: #0b5fff;
+		--btn-secondary-background-color: #fff;
+		--btn-outline-secondary-hover-border-color: transparent;
+		--display3-size: 4.5rem;
+		--primary: #0b5fff;
+		--container-max-md: 720px;
+		--border-radius-sm: 0.1875rem;
+		--display-line-height: 1.2;
+		--h6-font-size: 0.8125rem;
+		--h2-font-size: 1.375rem;
+		--aspect-ratio-4-to-3: 75%;
+		--spacer-10: 10rem;
+		--font-weight-semi-bold: 600;
+		--font-weight-normal: 400;
+		--dark: #272833;
+		--blockquote-small-font-size: 80%;
+		--h5-font-size: 0.875rem;
+		--blockquote-font-size: 1.25rem;
+		--brand-color-3: #2e5aac;
+		--brand-color-2: #6b6c7e;
+		--brand-color-1: #0b5fff;
+		--transition-fade: opacity .15s linear;
+		--display4-size: 3.5rem;
+		--border-radius-lg: 0.375rem;
+		--btn-primary-hover-color: #fff;
+		--display1-size: 6rem;
+		--brand-color-4: #30313f;
+		--black: #000;
+		--lighter: #f7f8f9;
+		--gray-300: #e7e7ed;
+		--gray-700: #495057;
+		--btn-secondary-border-color: #cdced9;
+		--btn-outline-secondary-hover-color: #272833;
+		--body-color: #272833;
+		--btn-outline-secondary-hover-background-color: rgba(39, 40, 51, 0.03);
+		--btn-primary-color: #fff;
+		--btn-secondary-color: #6b6c7e;
+		--btn-secondary-hover-border-color: #cdced9;
+		--box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, .175);
+		--container-max-lg: 960px;
+		--btn-outline-primary-border-color: #0b5fff;
+		--aspect-ratio: 100%;
+		--gray-dark: #393a4a;
+		--aspect-ratio-16-to-9: 56.25%;
+		--box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+		--white: #fff;
+		--warning: #b95000;
+		--info: #2e5aac;
+		--hr-border-width: 1px;
+		--btn-link-color: #0b5fff;
+		--gray-400: #cdced9;
+		--gray-800: #393a4a;
+		--btn-outline-primary-hover-background-color: #f0f5ff;
+		--btn-primary-hover-background-color: #0053f0;
+		--btn-primary-background-color: #0b5fff;
+		--success: #287d3c;
+		--font-size-sm: 0.875rem;
+		--btn-primary-border-color: #0b5fff;
+		--font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+		--spacer-0: 0;
+		--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+		--lead-font-size: 1.25rem;
+		--border-radius: 0.25rem;
+		--spacer-9: 9rem;
+		--font-weight-light: 300;
+		--btn-secondary-hover-color: #272833;
+		--spacer-2: 0.5rem;
+		--spacer-1: 0.25rem;
+		--spacer-4: 1.5rem;
+		--spacer-3: 1rem;
+		--spacer-6: 4.5rem;
+		--spacer-5: 3rem;
+		--spacer-8: 7.5rem;
+		--border-radius-circle: 50%;
+		--spacer-7: 6rem;
+		--font-size-lg: 1.125rem;
+		--aspect-ratio-8-to-3: 37.5%;
+		--font-family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+		--gray-100: #f7f8f9;
+		--font-weight-bolder: 900;
+		--container-max-xl: 1248px;
+		--btn-outline-secondary-color: #6b6c7e;
+		--gray-500: #a7a9bc;
+		--h1-font-size: 1.625rem;
+		--gray-900: #272833;
+		--text-muted: #a7a9bc;
+		--btn-primary-hover-border-color: transparent;
+		--btn-outline-secondary-border-color: #cdced9;
+		--lead-font-weight: 300;
+		--font-size-base: 0.875rem;
+	}
+</style>
+<script>
+Liferay.Loader.require(
+'frontend-js-spa-web@5.0.43/init',
+function(frontendJsSpaWebInit) {
+try {
+(function() {
+frontendJsSpaWebInit.default({"navigationExceptionSelectors":":not([target=\"_blank\"]):not([data-senna-off]):not([data-resource-href]):not([data-cke-saved-href]):not([data-cke-saved-href])","cacheExpirationTime":-1,"clearScreensCache":false,"portletsBlacklist":["com_liferay_nested_portlets_web_portlet_NestedPortletsPortlet","com_liferay_site_navigation_directory_web_portlet_SitesDirectoryPortlet","com_liferay_questions_web_internal_portlet_QuestionsPortlet","com_liferay_account_admin_web_internal_portlet_AccountUsersRegistrationPortlet","com_liferay_portal_language_override_web_internal_portlet_PLOPortlet","com_liferay_login_web_portlet_LoginPortlet","com_liferay_login_web_portlet_FastLoginPortlet"],"validStatusCodes":[221,490,494,499,491,492,493,495,220],"debugEnabled":false,"loginRedirect":"","excludedPaths":["/c/document_library","/documents","/image"],"userNotification":{"message":"It looks like this is taking longer than expected.","title":"Oops","timeout":30000},"requestTimeout":0})
+})();
+} catch (err) {
+	console.error(err);
+}
+});
+
+</script><script>
+Liferay.Loader.require(
+'@liferay/frontend-js-state-web@1.0.18',
+function(FrontendJsState) {
+try {
+} catch (err) {
+	console.error(err);
+}
+});
+
+</script><link data-senna-track="temporary" href="/o/layout-common-styles/main.css?plid=39&segmentsExperienceId=187605&t=17834112531411736677083454" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-senna-track="temporary" type="text/javascript">
+	if (window.Analytics) {
+		window._com_liferay_document_library_analytics_isViewFileEntry = false;
+	}
+</script>
+
+<script type="text/javascript">
+Liferay.on(
+	'ddmFieldBlur', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'fieldBlurred',
+				'Form',
+				{
+					fieldName: event.fieldName,
+					focusDuration: event.focusDuration,
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFieldFocus', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'fieldFocused',
+				'Form',
+				{
+					fieldName: event.fieldName,
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title:event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormPageShow', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'pageViewed',
+				'Form',
+				{
+					formId: event.formId,
+					formPageTitle: event.formPageTitle,
+					page: event.page,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormSubmit', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'formSubmitted',
+				'Form',
+				{
+					formId: event.formId,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+Liferay.on(
+	'ddmFormView', function(event) {
+		if (window.Analytics) {
+			Analytics.send(
+				'formViewed',
+				'Form',
+				{
+					formId: event.formId,
+					title: event.title
+				}
+			);
+		}
+	}
+);
+
+</script><script>
+
+</script>
+
+</head>
+
+<body class="other controls-visible  yui3-skin-sam guest-site signed-out public-page site">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<nav aria-label="Quick Links" class="bg-dark cadmin quick-access-nav text-center text-white" id="lkvb_quickAccessNav">
+		
+			
+				<a class="d-block p-2 sr-only sr-only-focusable text-reset" href="#main-content">
+		Skip to Main Content
+	</a>
+			
+			
+	</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="d-flex flex-column min-vh-100">
+        <div class="d-flex flex-column flex-fill" id="wrapper">
+                <header id="banner">
+                    <nav class="navbar navbar-expand-lg navbar-classic navbar-top" id="navb">
+                        <!-- Logo -->
+                        <a class="navbar-brand logo custom-logo" href="https://myenergystats.st.gov.my" title="Go to ">
+                            <!-- <img alt="MyEnergyStats" src="/image/layout_set_logo?img_id=201104&amp;t=1792805203433" class="navbar-logo" /> -->
+                            <img alt="MyEnergyStats" src="/documents/d/guest/logo-myenergystats-portal-svg" class="navbar-logo" />
+                        </a>
+                        <!-- Content Panel -->
+                        <div class="d-flex justify-content-end flex-grow-1 pe-3" style="gap: 1rem;">
+                            <!-- Header Search -->
+                            <div id="navbContent" class="navbar-form collapse" role="search"
+                                style="display: none; opacity: 0; transform: translateY(-20px); transition: all 0.3s ease-in-out;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div class="portlet-boundary portlet-boundary_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_  portlet-static portlet-static-end portlet-barebone portlet-search-bar " id="p_p_id_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_">
+		<span id="p_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch"></span>
+
+
+
+
+	
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+<section class="portlet" id="portlet_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch">
+
+
+	<div class="portlet-content">
+
+
+		
+			<div class=" portlet-content-container">
+				
+
+
+	<div class="portlet-body">
+
+
+
+	
+		
+			
+				
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
+
+				
+
+				
+					
+						
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form action="https://myenergystats.st.gov.my/search" class="form  " data-fm-namespace="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_" id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm" method="get" name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm" >
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
+		
+			
+				<input  class="field form-control"  id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_formDate"    name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_formDate"     type="hidden" value="1793230917419"   />
+			
+		
+
+		
+	
+
+
+
+
+
+
+
+
+
+			
+
+			
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+					
+					
+						<div class="search-bar">
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
+		
+			
+				<input  class="field search-bar-empty-search-input form-control"  id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_emptySearchEnabled"    name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_emptySearchEnabled"     type="hidden" value="false"   />
+			
+		
+
+		
+	
+
+
+
+
+
+
+
+
+
+
+							<div class="input-group search-bar-simple">
+								
+									
+									
+										<div class="input-group-item search-bar-keywords-input-wrapper">
+											<input aria-label="Search" autocomplete="off" class="form-control input-group-inset input-group-inset-after search-bar-keywords-input" data-qa-id="searchInput" id="dkrk___q" name="q" placeholder="Search..." title="Search" type="text" value="" />
+
+											
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
+		
+			
+				<input  class="field form-control"  id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_scope"    name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_scope"     type="hidden" value=""   />
+			
+		
+
+		
+	
+
+
+
+
+
+
+
+
+
+
+											<div class="input-group-inset-item input-group-inset-item-after">
+												<button class="btn btn-monospaced btn-unstyled" type="submit" aria-label="Search" ><span class="inline-item"><svg class="lexicon-icon lexicon-icon-search" role="presentation" viewBox="0 0 512 512"><use xlink:href="https://myenergystats.st.gov.my/o/energy-portal-theme/images/clay/icons.svg#search" /></svg></span></button>
+											</div>
+										</div>
+									
+								
+							</div>
+						</div>
+					
+				
+			
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+</form>
+
+
+
+<script>
+AUI().use(
+  'liferay-form',
+function(A) {
+(function() {
+var $ = AUI.$;var _ = AUI._;
+	Liferay.Form.register(
+		{
+			id: '_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm'
+
+			
+				, fieldRules: [
+
+					
+
+				]
+			
+
+			
+
+			, validateOnBlur: true
+		}
+	);
+
+	var onDestroyPortlet = function(event) {
+		if (event.portletId === 'com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch') {
+			delete Liferay.Form._INSTANCES['_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm'];
+		}
+	};
+
+	Liferay.on('destroyPortlet', onDestroyPortlet);
+
+	
+
+	Liferay.fire(
+		'_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_formReady',
+		{
+			formName: '_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_fm'
+		}
+	);
+})();
+});
+
+</script>
+
+		<script>
+Liferay.Loader.require(
+'portal-search-web@6.0.122/js/SearchBar',
+function(SearchBar) {
+try {
+(function() {
+Liferay.component('__UNNAMED_COMPONENT__502c5717-1f4b-05ab-86fb-09274751443e', new SearchBar.default({"spritemap":"https:\/\/myenergystats.st.gov.my\/o\/energy-portal-theme\/images\/clay\/icons.svg","namespace":"_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch_"}), { destroyOnNavigate: true, portletId: 'com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_templateSearch'});
+})();
+} catch (err) {
+	console.error(err);
+}
+});
+
+</script>
+	
+
+
+	
+	
+					
+				
+			
+		
+	
+	
+
+
+	</div>
+
+			</div>
+		
+	</div>
+</section>
+	
+
+		
+		
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+                            </div>
+                            <!-- Search Button (Visible on all screen sizes) -->
+                            <button
+                                id="toggleSearchButton"
+                                class="rounded-circle d-flex align-items-center justify-content-center p-2"
+                                type="button"
+                                aria-expanded="false"
+                                aria-label="Toggle search"
+                                style="width: 40px; height: 40px;">
+                                <svg class="lexicon-icon lexicon-icon-search" role="presentation">
+                                    <use href="/o/admin-theme/images/clay/icons.svg#search"></use>
+                                </svg>
+                            </button>
+                            <div class="d-flex align-items-center">
+                                <!-- Mobile View: Sun and Moon Icons -->
+                                <span
+                                    role="button"
+                                    class="d-lg-none"
+                                    id="mobile-theme-toggle"
+                                    aria-label="Toggle theme"
+                                    onclick="toggleTheme()"
+                                    style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                                    <svg class="lexicon-icon lexicon-icon-sun light-mode-icon" role="presentation">
+                                        <use href="/o/admin-theme/images/clay/icons.svg#sun"></use>
+                                    </svg>
+                                    <svg
+                                        class="lexicon-icon lexicon-icon-moon dark-mode-icon"
+                                        role="presentation"
+                                        style="display: none;">
+                                        <use href="/o/admin-theme/images/clay/icons.svg#moon"></use>
+                                    </svg>
+                                </span>
+                                <!-- Desktop View: ClayUI Toggle -->
+                                <!-- Desktop View: ClayUI Toggle with Sun and Moon Icons -->
+                                <label
+                                    class="toggle-switch toggle-switch-sm d-none d-lg-flex align-items-center"
+                                    id="desktop-theme-toggle"
+                                    style="margin-left: 10px; position: relative; padding-right: 50px;">
+                                    <span class="toggle-switch-check-bar">
+                                        <input
+                                            class="toggle-switch-check"
+                                            role="switch"
+                                            type="checkbox"
+                                            id="theme-toggle"
+                                            aria-label="Toggle theme"
+                                            onclick="toggleTheme()" />
+                                        <span aria-hidden="true" class="toggle-switch-bar">
+                                            <span class="toggle-switch-handle">
+                                                <span class="button-icon button-icon-on fas fa-sun light-mode-icon toggle-switch-icon"></span> <!-- Light mode icon -->
+                                                <span class="button-icon button-icon-off fas fa-moon dark-mode-icon toggle-switch-icon" style="display: none;"></span> <!-- Dark mode icon -->
+                                            </span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- FAQ Button -->
+                        <!-- Mobile View -->
+                        <button
+                            class="rounded-circle d-flex align-items-center justify-content-center p-2 d-lg-none"
+                            onclick="window.location.href='/faq';"
+                            title="FAQ"
+                            aria-label="FAQ"
+                            style="width: 40px; height: 40px;">
+                            <svg class="lexicon-icon lexicon-icon-info-circle-open" role="presentation">
+                                <use href="/o/admin-theme/images/clay/icons.svg#info-circle-open"></use>
+                            </svg>
+                        </button>
+                        <!-- Desktop View -->
+                        <div class="col-md-auto d-none d-lg-flex align-items-center icon-item">
+                            <a href="/faq" title="FAQ">
+                                <img src="/documents/d/guest/faq-icon" alt="Information" />
+                            </a>
+                        </div>
+                        <!-- Login Button -->
+                                <!-- Mobile View: Original Login Button (unchanged) -->
+                                <button
+                                    class="rounded-circle d-flex align-items-center justify-content-center p-2 d-lg-none"
+                                    onclick="window.location.href='https://myenergystats.st.gov.my/c/portal/login?p_l_id=39';"
+                                    title="Log In"
+                                    aria-label="Log In"
+                                    style="width: 40px; height: 40px;">
+                                    <svg class="lexicon-icon lexicon-icon-user" role="presentation">
+                                        <use href="/o/admin-theme/images/clay/icons.svg#user"></use>
+                                    </svg>
+                                </button>
+                                <!-- Desktop View: Custom Login Button -->
+                                <div class="d-none d-lg-block">
+                                    <button class="btn btn-nm btn-primary button1 btn btn-sm btn-unstyled"
+                                        type="button"
+                                        onclick="window.location.href='https://myenergystats.st.gov.my/c/portal/login?p_l_id=39';"
+                                        title="Log In"
+                                        aria-label="Log In">
+                                        Log In
+                                    </button>
+                                </div>
+                    </nav>
+                    <!-- Liferay Menu Below Navbar -->
+<nav class="navbar navbar-expand-lg navbar-classic navbar-top justify-content-center justify-content-lg-start" id="navigation">
+    <!-- Toggle Button -->
+    <button
+        aria-controls="navigationCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        class="navbar-toggler ml-auto"
+        data-target="#navigationCollapse"
+        data-toggle="liferay-collapse"
+        type="button">
+        <svg class="lexicon-icon lexicon-icon-bars" role="presentation">
+            <use href="/o/admin-theme/images/clay/icons.svg#bars"></use>
+        </svg>
+    </button>
+    <!-- Collapsible Navigation Menu -->
+    <div class="collapse navbar-collapse justify-content-center" id="navigationCollapse">
+        <!-- Navigation Menu -->
+        <ul class="navbar-nav">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div class="portlet-boundary portlet-boundary_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_  portlet-static portlet-static-end portlet-barebone portlet-navigation " id="p_p_id_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_">
+		<span id="p_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet"></span>
+
+
+
+
+	
+
+	
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+<section class="portlet" id="portlet_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet">
+
+
+	<div class="portlet-content">
+
+
+		
+			<div class=" portlet-content-container">
+				
+
+
+	<div class="portlet-body">
+
+
+
+	
+		
+			
+				
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+	
+
+				
+
+				
+					
+						
+
+
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
+		
+			
+				
+
+	<div id="navbar_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet">
+		<ul aria-label="Site Pages" class="nav nav-tabs navbar-site" role="menubar">
+
+
+
+
+
+
+					<li class="nav-item lfr-nav-item nav-item" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_187959" role="presentation">
+						<a  class="nav-link nav-link text-truncate" href='https://myenergystats.st.gov.my/homepage'  role="menuitem">
+							<span class="text-truncate"> Home </span>
+						</a>
+
+					</li>
+
+
+
+
+
+					<li class="nav-item lfr-nav-item nav-item" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_186516" role="presentation">
+						<a  class="nav-link nav-link text-truncate" href='https://myenergystats.st.gov.my/about-us'  role="menuitem">
+							<span class="text-truncate"> About Us </span>
+						</a>
+
+					</li>
+
+
+
+
+
+					<li class="nav-item lfr-nav-item nav-item dropdown" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_186769" role="presentation">
+						<a aria-haspopup='true' class="nav-link nav-link text-truncate dropdown-toggle" href='https://myenergystats.st.gov.my/energy-in-malaysia'  role="menuitem">
+							<span class="text-truncate"> Energy in Malaysia <span class="lfr-nav-child-toggle"><i class="icon-caret-down"></i></span></span>
+						</a>
+
+							<ul aria-expanded="false" class="child-menu dropdown-menu nav-item" role="menu">
+
+
+
+		<li class="" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_186770" role="presentation">
+					<a class="dropdown-item" href="https://myenergystats.st.gov.my/oil1"  role="menuitem">Oil</a>
+		</li>
+
+
+
+		<li class="" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_190587" role="presentation">
+					<a class="dropdown-item" href="https://myenergystats.st.gov.my/natural-gas1"  role="menuitem">Natural Gas</a>
+		</li>
+
+
+
+		<li class="" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_188939" role="presentation">
+					<a class="dropdown-item" href="https://myenergystats.st.gov.my/coal"  role="menuitem">Coal</a>
+		</li>
+
+
+
+		<li class="" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_187450" role="presentation">
+					<a class="dropdown-item" href="https://myenergystats.st.gov.my/electricity1"  role="menuitem">Electricity</a>
+		</li>
+
+
+
+		<li class="" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_188609" role="presentation">
+					<a class="dropdown-item" href="https://myenergystats.st.gov.my/renewable-energy"  role="menuitem">Renewable Energy</a>
+		</li>
+
+
+
+		<li class="" id="layout_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_189941" role="presentation">
+					<a class="dropdown-item" href="https://myener
