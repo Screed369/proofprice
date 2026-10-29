@@ -1,0 +1,515 @@
+URL: https://www.bit.courts.go.jp/
+Fetched: 2026-10-29T02:41:44Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 354156
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+date: Thu, 29 Oct 2026 02:41:43 GMT
+content-type: text/html; charset=iso-8859-1
+content-length: 241
+location: https://www.bit.courts.go.jp/app/
+via: JSTCDN
+x-cache: REFRESH_MISS/S
+x-cache-age: 0/-
+x-origin-date: Thu, 29 Oct 2026 02:21:55 GMT
+
+HTTP/2 302 
+date: Thu, 29 Oct 2026 02:41:43 GMT
+content-length: 0
+vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+location: /app/top/pt001/h01
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+via: JSTCDN
+x-cache: -
+
+HTTP/2 200 
+date: Thu, 29 Oct 2026 02:41:43 GMT
+content-type: text/html;charset=UTF-8
+set-cookie: lastTime=2026.10.29; Max-Age=3600; Expires=Thu, 29-Oct-2026 03:41:43 GMT; Path=/; HttpOnly
+set-cookie: lastHours=11; Max-Age=3600; Expires=Thu, 29-Oct-2026 03:41:43 GMT; Path=/; HttpOnly
+set-cookie: Counter=1614; Max-Age=3600; Expires=Thu, 29-Oct-2026 03:41:43 GMT; Path=/; HttpOnly
+set-cookie: lastTime=2026.10.29; Max-Age=3600; Expires=Thu, 29-Oct-2026 03:41:43 GMT; Path=/; HttpOnly
+set-cookie: lastHours=11; Max-Age=3600; Expires=Thu, 29-Oct-2026 03:41:43 GMT; Path=/; HttpOnly
+set-cookie: Counter=1614; Max-Age=3600; Expires=Thu, 29-Oct-2026 03:41:43 GMT; Path=/; HttpOnly
+content-language: ja-JP
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+via: JSTCDN
+x-cache: -
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+	<title>ホーム | BIT 不動産競売物件情報サイト</title>
+	<!-- Bootstrap -->
+	<link href="../../common/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../common/css/main.css" rel="stylesheet">
+	<script src="../../common/lib/jquery/jquery-3.5.1.min.js"></script>
+</head>
+
+<body id="bit__body" class="bit__top_body">
+	<!-- header -->
+	<div>
+	<div>
+		<nav class="container-fluid mb-2 px-0">
+	<div class="bit__header_inner">
+		<div
+			class="bit__header_blankSpace d-flex justify-content-between align-items-center row">
+			<!-- flexbox_left -->
+			<div class="bit__header_flexbox_left col-9 col-sm-4 pl-0 pr-0">
+				<a href="/app/top/pt001/h01"> <img class="col-12 px-0"
+					src="../../common/images/logo.png" alt="BIT　不動産競売物件情報サイト">
+				</a>
+			</div>
+			<!-- flexbox_right -->
+			<div
+				class="bit__header_flexbox_right d-flex flex-column col-2 col-sm-8 pl-0 pr-0">
+				<!-- hamburger menu -->
+				<div class="bit__header_menu_sp d-flex d-sm-none mt-3 mb-3">
+					<button type="button" class="bit__header_btn_menu">
+						<i class="bit__header_btn_menu_icon"></i>
+					</button>
+				</div>
+				<div class="bit__header_menu col-sm-11 px-0">
+					<div class="bit__header_menu_inner">
+						<div
+							class="d-flex flex-column-reverse flex-sm-column justify-content-end">
+							<!-- header_linkbox -->
+							<ul
+								class="bit__header_linkbox d-flex flex-column flex-sm-row justify-content-sm-end mt-4 mt-sm-0 mx-0 mb-0 p-0">
+								<li class="pt-sm-2 pr-sm-0 pb-sm-2 pl-sm-4"><a href="/help/index.html"
+									class="d-block p-3 p-sm-0">使い方</a></li>
+								<li class="pt-sm-2 pr-sm-0 pb-sm-2 pl-sm-4"><a href="/guidance/index.html"
+									class="d-block p-3 p-sm-0">手続案内</a></li>
+								<li class="pt-sm-2 pr-sm-0 pb-sm-2 pl-sm-4"><a href="/info/index.html"
+									class="d-block p-3 p-sm-0">お知らせ</a></li>
+								<li class="pt-sm-2 pr-sm-0 pb-sm-2 pl-sm-4"><a href="/words/index.html"
+									class="d-block p-3 p-sm-0">用語集</a></li>
+								<li class="pt-sm-2 pr-sm-0 pb-sm-2 pl-sm-4"><a href="/faq/index.html"
+									class="d-block p-3 p-sm-0">FAQ</a></li>
+								<li class="pt-sm-2 pr-sm-0 pb-sm-2 pl-sm-4"><a href="/contact.html"
+									class="d-block p-3 p-sm-0">お問い合わせ</a></li>
+							</ul>
+							<!-- navbar -->
+							<ul class="bit__navbar d-flex flex-column flex-sm-row m-0 p-0">
+								<li id="kyobaiblock" class="py-0 py-sm-1 px-0 col-sm-3"><a
+									href="#" onclick="tranArea(&#39;property&#39;,&#39;&#39;);"
+									class="d-block p-3 p-sm-0 text-sm-center">競売物件</a></li>
+								<li id="baikyakublock" class="py-0 py-sm-1 px-0 col-sm-3"><a
+									href="#" onclick="tranArea(&#39;result&#39;,&#39;&#39;);"
+									class="d-block p-3 p-sm-0 text-sm-center">売却結果</a></li>
+								<li id="pastdatablock" class="py-0 py-sm-1 px-0 col-sm-3"><a
+									href="#" onclick="tranArea(&#39;past&#39;,&#39;&#39;);"
+									class="d-block p-3 p-sm-0 text-sm-center">過去データ</a></li>
+								<li id="schedule" class="py-0 py-sm-1 px-0 col-sm-3"><a
+									href="/schedule/index.html" 
+									class="d-block p-3 p-sm-0 text-sm-center">スケジュール</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- header_info -->
+	<div class="bit__header_info">
+		<div class="bit__header_blankSpace row">
+			<div class="col-12 py-2 px-0">
+				<p class="bit__text_small mb-0">
+					閲覧可能な競売物件は,<span class="bit__info_text_red mx-1">1,614</span>件です。（<span>2026年10月29日</span> <span>11</span>時現在）
+				</p>
+			</div>
+		</div>
+	</div>
+	<form id="headerForm" name="headerForm"
+		action="/app/area/pk001/h01" method="post">
+		<input type="hidden" id="menu_tabId" name="tabId">
+		<input type="hidden" id="menu_blockCls" name="blockCls">
+	</form>
+
+</nav>
+	</div>
+	
+</div>
+				
+	<!-- main content -->
+	<main class="container-fluid px-0">
+		<div class="bit__top_MapContainer">
+			<div class="bit__top_blankSpace">
+				<div class="bit__MapContainer_SPbackground row mt-3 mx-0">
+					<div class="col-12 px-0">
+						<div class="form-contents position-relative">
+							<div class="bit__top_mapHeader">
+								<a class="bit__mapHeader_title bit__text_mapHeader bit__icon_search bit__top_collapseBtn d-flex justify-content-center justify-content-sm-start align-items-center font-weight-bold text-center py-3 py-sm-0 collapsed"
+									data-toggle="collapse" href="#bit__top_areaList" aria-expanded="false"
+									aria-controls="bit__top_areaList" role="button"><span class="bit__mapHeader_title_inner">競売物件検索</span></a>
+								<p class="bit__mapHeader_message text-center">お探しの地域を選んでください</p>
+							</div>
+							<div class="row justify-content-center col-12 d-none d-sm-flex position-relative mb-sm-3">
+								<div class="bit__clickablemap bit__clickablemap_zenkoku">
+									<div class="bit__clickablemap_image">
+										<img src="../../common/images/clickablemap_nihon.png" alt="日本地図" usemap="#bit__map_nihon">
+									</div>
+									<map name="bit__map_nihon">
+										<area class="bit__clickablemap_map_hokkaidou" shape="poly" alt="北海道" coords="542,117,560,69,580,69,604,2,726,2,684,117,542,117,542,117" href="#" onclick="tranAreaMap(&#39;01&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_touhoku" shape="poly" alt="東北" coords="537,127,606,127,568,232,499,232,537,127" href="#" onclick="tranAreaMap(&#39;02&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_kantou" shape="poly" alt="関東" coords="536,322,508,322,514,306,499,306,494,322,466,322,494,245,564,245,536,322" href="#" onclick="tranAreaMap(&#39;03&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_hokurikukoushinetsu" shape="poly" alt="北陸・甲信越" coords="375,227,356,279,347,303,361,303,370,279,471,279,489,227,375,227" href="#" onclick="tranAreaMap(&#39;04&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_toukai" shape="poly" alt="東海" coords="405,356,349,356,373,291,469,291,453,334,413,334,405,356" href="#" onclick="tranAreaMap(&#39;05&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_kinki" shape="poly" alt="近畿" coords="336,315,343,297,271,297,252,348,279,348,262,392,308,392,308,392,327,392,355,315,336,315" href="#" onclick="tranAreaMap(&#39;06&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_chugoku" shape="poly" alt="中国" coords="178,348,188,320,164,320,172,297,262,297,243,348,178,348" href="#" onclick="tranAreaMap(&#39;07&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_shikoku" shape="poly" alt="四国" coords="174,356,267,356,252,396,159,396,174,356" href="#" onclick="tranAreaMap(&#39;08&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_kyusyuokinawa" shape="poly" alt="九州・沖縄" coords="140,328,130,328,103,328,89,367,116,367,91,433,138,433,177,328,140,328" href="#" onclick="tranAreaMap(&#39;09&#39;,&#39;property&#39;);">
+										<area class="bit__clickablemap_map_kyusyuokinawa" shape="poly" alt="九州・沖縄" coords="32,446,4,446,20,403,49,403,32,446" href="#" onclick="tranAreaMap(&#39;09&#39;,&#39;property&#39;);">
+									</map>
+								</div>
+							</div>
+							<div class="row col-12 flex-wrap my-3 mx-0 px-0 d-sm-none collapse" id="bit__top_areaList">
+								<div class="col-6 mt-2 pr-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;01&#39;,&#39;property&#39;);">北海道</a></p>
+								</div>
+								<div class="col-6 mt-2 pl-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;02&#39;,&#39;property&#39;);">東北</a></p>
+								</div>
+								<div class="col-6 mt-2 pr-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;04&#39;,&#39;property&#39;);">北陸・甲信越</a></p>
+								</div>
+								<div class="col-6 mt-2 pl-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;03&#39;,&#39;property&#39;);">関東</a></p>
+								</div>
+								<div class="col-6 mt-2 pr-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;05&#39;,&#39;property&#39;);">東海</a></p>
+								</div>
+								<div class="col-6 mt-2 pl-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;06&#39;,&#39;property&#39;);">近畿</a></p>
+								</div>
+								<div class="col-6 mt-2 pr-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;07&#39;,&#39;property&#39;);">中国</a></p>
+								</div>
+								<div class="col-6 mt-2 pl-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;08&#39;,&#39;property&#39;);">四国</a></p>
+								</div>
+								<div class="col-6 mt-2 pr-1">
+									<p class="mb-0"><a class="bit__btn_primary btn btn-primary col-12 col-sm-2" href="#" onclick="tranAreaMap(&#39;09&#39;,&#39;property&#39;);">九州・沖縄</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bit__top_infoContainer">
+			<div class="bit__top_blankSpace pt-3">
+				<!-- 新着情報 -->
+				<div class="bg-white mb-3">
+					<a class="d-flex bit__text_textDecoration_none bit__text_bigger bit__text_blue_top bit__top_collapseBtn font-weight-bold justify-content-center position-relative py-3 collapsed"
+						data-toggle="collapse" href="#bit__top_latestInformation" aria-expanded="false"
+						aria-controls="bit__top_latestInformation" role="button">
+						新着情報
+					</a>
+					<div class="row collapse d-sm-flex" id="bit__top_latestInformation">
+						<div class="bit__border_latestInfomation col-12 col-sm-6 pr-sm-0 mb-sm-3">
+							<p class="bit__latestInformation_subTitle text-sm-center font-weight-bold ml-3 ml-sm-0">
+								競売物件情報</p>
+							<ul
+								class="bit__text_normal bit__ul_liststyle_none bit__border_latestInfomation_SP row mx-2 mx-sm-3 flex-column flex-sm-row pl-0 pb-3 pb-sm-0 mb-sm-0 bit__top_infoListContainer">
+								<li
+									class="col-12 col-sm-6 mb-2 px-sm-0 bit__flexbox_flexbasis_auto"><a href="#"
+									onclick="tranPropertyResult(&quot;20&quot;,&quot;32033&quot;,&quot;20000015401&quot;,&quot;2&quot;,&#39;property&#39;);"
+									class="bit__text_normal bit__text_top_black bit__top_arrow_black"><span>長野地方裁判所諏訪支部</span><br />
+									<span>（特売）</span></a></li>
+								<li
+									class="col-12 col-sm-6 mb-2 px-sm-0 bit__flexbox_flexbasis_auto"><a href="#"
+									onclick="tranPropertyResult(&quot;44&quot;,&quot;36411&quot;,&quot;20000014334&quot;,&quot;1&quot;,&#39;property&#39;);"
+									class="bit__text_normal bit__text_top_black bit__top_arrow_black"><span>大分地方裁判所本庁</span><br />
+									<span>（期間）</span></a></li>
+								<li
+									class="col-12 col-sm-6 mb-2 px-sm-0 bit__flexbox_flexbasis_auto"><a href="#"
+									onclick="tranPropertyResult(&quot;44&quot;,&quot;36411&quot;,&quot;20000014341&quot;,&quot;1&quot;,&#39;property&#39;);"
+									class="bit__text_normal bit__text_top_black bit__top_arrow_black"><span>大分地方裁判所本庁</span><br />
+									<span>（★期間）</span></a></li>
+									<li
+									class="col-12 col-sm-6 mb-2 px-sm-0 bit__flexbox_flexbasis_auto">
+									</li>
+								
+							</ul>
+						</div>
+						<div class="col-12 col-sm-6 pl-sm-0">
+							<p class="bit__latestInformation_subTitle text-sm-center font-weight-bold ml-3 ml-sm-0">売却結果情報
+							</p>
+							<ul
+								class="bit__text_normal bit__ul_liststyle_none row mx-2 mx-sm-3 flex-column flex-sm-row pl-0 mb-sm-0 bit__top_infoListContainer">
+								<li
+									class="col-12 col-sm-6 mb-2 px-sm-0 bit__flexbox_flexbasis_auto"><a href="#"
+									onclick="tranResult(&quot;10&quot;,&quot;31731&quot;,&quot;20000013453&quot;,&quot;2&quot;,&#39;result&#39;);"
+									class="bit__text_normal bit__text_top_black bit__top_arrow_black"><span>前橋地方裁判所桐生支部</span><br />
+									<span>（特売）</span></a></li>
+								<li
+									class="col-12 col-sm-6 mb-2 px-sm-0 bit__flexbox_flexbasis_auto"><a href="#"
+									onclick="tranResult(&quot;13&quot;,&quot;31111&quot;,&quot;20000014089&quot;,&quot;2&quot;,&#39;result&#39;);"
+									class="bit__text_normal bit__text_top_black bit__top_arrow_black"><span>東京地方裁判所本庁</span><br />
+									<span>（特売）</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- 検索 -->
+				<div class="row mx-0">
+					<div class="col-12 col-sm-6 px-0 pr-sm-2 mb-3"><a href="#" onclick="tranArea(&#39;result&#39;,&#39;&#39;);"
+							class="bit__top_arrow_blue bit__text_bigger py-5 d-flex align-items-center justify-content-center position-relative bit__text_blue_top bit__text_textDecoration_none bg-white"><span
+								class="bit__icon_sale position-relative d-inline-flex align-items-center font-weight-bold">売却情報検索</span></a>
+					</div>
+					<div class="col-12 col-sm-6 px-0 pl-sm-2 mb-3"><a href="#" onclick="tranArea(&#39;past&#39;,&#39;&#39;);"
+							class="bit__top_arrow_blue bit__text_bigger py-5 d-flex align-items-center justify-content-center position-relative bit__text_blue_top bit__text_textDecoration_none bg-white"><span
+								class="bit__icon_barchart position-relative d-inline-flex align-items-center font-weight-bold">過去データ検索</span></a>
+					</div>
+				</div>
+				
+				<div class="row mx-0 pb-4" id="getfile">
+		<!-- トピックス -->
+		<div class="col-12 col-sm-10 px-0 px-sm-5 mx-0 mb-3 bg-white bit__text_normal">
+ 			<a class="bit__text_bigger bit__text_blue_top bit__text_textDecoration_none bit__top_collapseBtn font-weight-bold d-flex justify-content-center position-relative py-3 collapsed" data-toggle="collapse" href="#bit__top_topicsContainer"
+				aria-expanded="false" aria-controls="bit__top_topicsContainer" role="button">トピックス</a>
+			<div class="collapse d-sm-block px-3 px-sm-0" id="bit__top_topicsContainer">
+				<div class="bit__border_topics pb-3 mb-3">
+					<div>
+						最高裁判所からのお知らせ<br><br>
+						令和８年１０月１日以降、「競売物件詳細」ページの「周辺情報」で提供していた「参考交通」情報の掲載を行わないこととしました。競売物件の交通に関する情報は「評価書上の交通」欄をご参照ください。<br><br>
+						【重要】最高裁判所からのお知らせ（インボイス対応：適格請求書の交付について）<br> <br>
+						令和5年10月1日から、適格請求書等保存方式（インボイス制度）が開始されます。裁判所における民事執行手続においても、改正後の消費税法施行令70条の12第5項の特例規定により、執行機関が債務者等に代わって適格請求書を交付することが可能となりますが、買受人の求めがあった場合でも、執行機関において、適格請求書の交付に必要な情報が把握できない場合には、適格請求書を交付できないこともありますのでご注意ください。<br>
+						なお、特例規定による適格請求書の交付を希望する方は、管轄の裁判所にお問い合わせください。<br><br>
+						【重要】最高裁判所からのお知らせ ★不適法な入札が増えていますので，必ず下記をお読みください。★<br> <br>
+						令和２年４月１日以降に売却実施処分がされた不動産競売事件では，入札時に入札書ごとに次の各書面を提出する必要があります。<br>
+						１ 暴力団員等に該当しない旨の陳述書<br> ２ 住民票（入札人が個人の場合）又は資格証明書（入札人が法人の場合）<br>
+						３ 宅地建物取引業の免許証の写し（入札人が宅地建物取引業者の場合）<br>
+						◆上記１及び２の各書面は，入札時に提出がないと無効になります。また，記載に不備があった場合，入札が無効になる場合があります。<br>
+						◆入札書及び上記１の陳述書の書式は，本サイトのトップ画面の右にある「ダウンロード」からダウンロードすることができるほか，各事件が係属する地方裁判所の執行官室で配布を受けられます。各書面の記入方法は，各書面の注意書欄に記載されていますので，よくお読みください。<br>
+						なお，上記1の陳述書の「陳述」欄「□自己の計算において・・・ありません。」の□のチェックは，入札人が他人から資金の提供を受けて入札に参加する場合など「自己の計算において買受けの申出をさせようとする者」がいる場合のみチェックするものです。チェックを入れた場合には，注意書9を参照の上，必ず別紙も添付してください。<br>
+						◆その他入札に関してご不明な点は，各事件が係属する地方裁判所の執行官室にお問合せください。
+					</div>
+				</div>
+				<ul class="bit__topics_list px-0 px-sm-5 mb-0">
+				<li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年10月29日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202610.html#cms94044" class="bit__link">奈良地方裁判所本庁からのお知らせ（売却スケジュールの取消）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年10月20日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202610.html#cms25363" class="bit__link">東京地方裁判所立川支部からのお知らせ（売却スケジュールの取消）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年10月20日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202610.html#cms44EE8" class="bit__link">山形地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年10月13日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202610.html#cms5BE8C" class="bit__link">盛岡地方裁判所遠野支部からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年10月13日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202610.html#cmsD1E38" class="bit__link">千葉地方裁判所本庁からのお知らせ（開札期日が令和８年１１月１１日となっている物件について）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年10月08日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202610.html#cms2F9EA" class="bit__link">福岡地方裁判所本庁からのお知らせ（売却スケジュールの取消）</a>
+						</div>
+					</li><!-- <li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月28日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms3EF61" class="bit__link">千葉地方裁判所松戸支部からのお知らせ（開札期日が令和８年１２月１０日となっている物件について）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月28日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms81CEF" class="bit__link">千葉地方裁判所松戸支部からのお知らせ（開札期日が令和８年１０月１５日及び同年１１月１２日となっている物件について）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月24日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms7069F" class="bit__link">千葉地方裁判所本庁からのお知らせ（開札期日が令和８年１０月１４日となっている物件について）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月24日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms9A677" class="bit__link">大分地方裁判所佐伯支部からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月18日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms5C7D0" class="bit__link">秋田地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月16日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cmsFB830" class="bit__link">さいたま地方裁判所川越支部からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月15日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cmsDB5B5" class="bit__link">鹿児島地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月15日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms1E1D8" class="bit__link">山形地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月11日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms60774" class="bit__link">那覇地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月10日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cmsD7983" class="bit__link">那覇地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月09日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms91F1F" class="bit__link">神戸地方裁判所尼崎支部からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月04日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms3BFE4" class="bit__link">津地方裁判所伊勢支部からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年09月02日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202609.html#cms604AF" class="bit__link">水戸地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月27日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cms1F682" class="bit__link">前橋地方裁判所太田支部からのお知らせ（売却スケジュールの変更）</a>
+						</div>
+					</li><!-- <li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月18日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cms8D109" class="bit__link">千葉地方裁判所松戸支部からのお知らせ（開札期日が令和８年９月１０日となっている物件について）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月18日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cms62233" class="bit__link">千葉地方裁判所本庁からのお知らせ（開札期日が令和８年９月１６日となっている物件について）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月18日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cms87D99" class="bit__link">千葉地方裁判所本庁からのお知らせ（開札期日が令和８年９月２日となっている物件について）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月10日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cms6B947" class="bit__link">熊本地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月07日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cms8104F" class="bit__link">東京地方裁判所立川支部からのお知らせ（売却スケジュールの取消）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月06日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cms66F45" class="bit__link">広島地方裁判所福山支部からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月04日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cms88FA4" class="bit__link">さいたま地方裁判所熊谷支部からのお知らせ（売却スケジュールの取消）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月04日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cmsD9C32" class="bit__link">山形地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年08月04日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202608.html#cmsC52AF" class="bit__link">山形地方裁判所本庁からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-items-top position-relative bit__text_small">
+							2026年07月31日
+						</div>
+						<div class="col-12 col-sm-9">
+							<a href="/backnumber/202607.html#cms2762A" class="bit__link">奈良地方裁判所葛城支部からのお知らせ（個別事件情報）</a>
+						</div>
+					</li><li class="row px-0 mb-2">
+						<div class="col-12 col-sm-3 d-flex align-it
