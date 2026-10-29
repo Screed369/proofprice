@@ -36,6 +36,8 @@ export const INFO: SourceInfo = {
 export const BASE = "https://dadosabertos.compras.gov.br/modulo-pesquisa-preco/1_consultarMaterial";
 export const PAGE_SIZE = 500;
 export const MAX_PAGES = 4;
+/** Total time for all pages: the whole answer must fit the 20 s budget. */
+export const BUDGET_MS = 14000;
 
 /** Furniture families of the federal catalogue (PDM codes from the 29 Oct 2026 catalogue probe, class 7110 office furniture), with plain-word aliases. */
 export interface Product {
@@ -139,14 +141,32 @@ export interface FurnitureInput {
 export async function brFurniture(input: FurnitureInput): Promise<PriceAnswer> {
   const product = resolveProduct(input.what, input.cpv);
   const uf = ufOf(input.buyer_area);
-  const months = Math.min(60, Math.max(1, Math.round(input.months ?? 12)));
+  const months = Math.min(60, Math.max(1, Math.round(input.months ?? 24)));
   const win = monthsWindow(months, input.now);
-  const get = input.fetcher ?? ((u: string) => fetchJson(u, {}, 15000));
+  const started = Date.now();
+  const get = input.fetcher ?? ((u: string) => fetchJson(u, {}, Math.max(3000, BUDGET_MS - (Date.now() - started))));
   const seen = new Map<string, Award>();
+  let pagesRead = 0;
+  let cutShort = false;
   for (let page = 1; page <= MAX_PAGES; page++) {
-    const { awards, pages } = parseAwards(await get(buildUrl(product.pdm, page, win.from, win.to, uf)));
-    for (const a of awards) if (!seen.has(a.key)) seen.set(a.key, a);
-    if (page >= pages) break;
+    let parsed: { awards: Award[]; pages: number };
+    try {
+      parsed = parseAwards(await get(buildUrl(product.pdm, page, win.from, win.to, uf)));
+    } catch (err) {
+      // The publisher's API is slow: later pages may time out. Keep what page 1.. already gave; page 1 failing is a real failure.
+      if (page > 1 && err instanceof SourceError) {
+        cutShort = true;
+        break;
+      }
+      throw err;
+    }
+    pagesRead = page;
+    for (const a of parsed.awards) if (!seen.has(a.key)) seen.set(a.key, a);
+    if (page >= parsed.pages) break;
+    if (Date.now() - started > BUDGET_MS * 0.5) {
+      cutShort = true;
+      break;
+    }
   }
   const list = [...seen.values()];
   const summary: PriceSummary | null = summarise(list.map((a) => a.unitPrice));
@@ -175,6 +195,8 @@ export async function brFurniture(input: FurnitureInput): Promise<PriceAnswer> {
       catalogue_family: product.pdm,
       product: product.id,
       ...(newest ? { newest_award_used: newest } : {}),
+      pages_read: pagesRead,
+      ...(cutShort ? { partial: "the publisher's API was slow, so only the first pages of awards were read" } : {}),
       free_tier_only: true,
     },
   });

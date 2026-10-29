@@ -63,3 +63,12 @@ test("answer: fewer than 5 awards gives no figure", async () => {
   const a = await brFurniture({ what: "safe", buyer_area: "DF", fetcher: async () => ({ resultado: rows(4, 800), totalPaginas: 1 }), now: new Date("2026-10-29T00:00:00Z") });
   assert.notEqual(a.status, "ok");
 });
+
+test("a slow later page keeps the awards already read; a failing first page is a failure", async () => {
+  let n = 0;
+  const a = await brFurniture({ what: "safe", fetcher: async () => { n++; if (n === 1) return { resultado: rows(6, 900), totalPaginas: 3 }; throw new SourceError("Source timed out", "x"); }, now: new Date("2026-10-29T00:00:00Z") });
+  assert.equal(a.status, "ok");
+  assert.equal(a.sample_size, 6);
+  assert.match(String((a.extra as any).partial), /slow/);
+  await assert.rejects(() => brFurniture({ what: "safe", fetcher: async () => { throw new SourceError("Source timed out", "x"); } }), SourceError);
+});
