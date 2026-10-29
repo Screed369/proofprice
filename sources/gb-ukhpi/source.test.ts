@@ -112,7 +112,7 @@ describe("gb-ukhpi collector and library key", () => {
       assert.equal(r.rows.length, 45 * 5);
     } finally {
       globalThis.fetch = original;
-      harvestOptions.retryDelayMs = 2000;
+      harvestOptions.retryDelayMs = 3000;
     }
   });
   it("fails loudly when most places do not answer", async () => {
@@ -120,10 +120,10 @@ describe("gb-ukhpi collector and library key", () => {
     harvestOptions.retryDelayMs = 0;
     globalThis.fetch = (async () => new Response("down", { status: 503 })) as any;
     try {
-      await assert.rejects(ukHpiHarvest());
+      await assert.rejects(ukHpiHarvest(), /first error: Source returned HTTP 503/);
     } finally {
       globalThis.fetch = original;
-      harvestOptions.retryDelayMs = 2000;
+      harvestOptions.retryDelayMs = 3000;
     }
   });
 });

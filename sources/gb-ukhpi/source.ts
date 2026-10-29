@@ -357,9 +357,9 @@ export function placeRows(place: Place, months: Month[], month: string): DailyRo
   return rows;
 }
 
-export const harvestOptions = { retryDelayMs: 2000, batch: 5 };
+export const harvestOptions = { retryDelayMs: 3000, batch: 3, tries: 4 };
 
-async function monthsFor(place: Place, tries = 3): Promise<Month[]> {
+async function monthsFor(place: Place, tries = harvestOptions.tries): Promise<Month[]> {
   let last: unknown;
   for (let i = 0; i < tries; i++) {
     try {
@@ -376,12 +376,21 @@ async function monthsFor(place: Place, tries = 3): Promise<Month[]> {
 export async function ukHpiHarvest(): Promise<HarvestResult> {
   const got: { place: Place; months: Month[] }[] = [];
   let failed = 0;
+  let firstError = "";
   for (let i = 0; i < PLACES.length; i += harvestOptions.batch) {
     const results = await Promise.allSettled(PLACES.slice(i, i + harvestOptions.batch).map(async (place) => ({ place, months: await monthsFor(place) })));
-    for (const r of results) (r.status === "fulfilled" ? got.push(r.value) : failed++);
+    for (const r of results) {
+      if (r.status === "fulfilled") got.push(r.value);
+      else {
+        failed++;
+        if (!firstError) firstError = `${(r.reason as any)?.message ?? r.reason}${(r.reason as any)?.detail ? ` (${String((r.reason as any).detail).slice(0, 120)})` : ""}`;
+      }
+    }
+    // A fully failed first batch means the endpoint is down or refusing us: stop at once instead of waiting through 45 places.
+    if (!got.length && i + harvestOptions.batch >= harvestOptions.batch * 2) break;
   }
   // Most places must answer; a handful failing is tolerated, a mostly-failed run is a real fault.
-  if (got.length < Math.ceil(PLACES.length * 0.8)) throw new SourceError(`The UK House Price Index answered for only ${got.length} of ${PLACES.length} places`);
+  if (got.length < Math.ceil(PLACES.length * 0.8)) throw new SourceError(`The UK House Price Index answered for only ${got.length} of ${PLACES.length} places${firstError ? `; first error: ${firstError}` : ""}`);
   // The newest month that the nations (the two largest series) both have; places that lag behind it are left out rather than mixed in.
   const nations = got.filter((g) => g.place.level === "nation").map((g) => g.months.find((m) => m.values.a !== null)?.month).filter(Boolean) as string[];
   if (!nations.length) throw new SourceError("The UK House Price Index returned no month with an average price for Scotland or Northern Ireland");
