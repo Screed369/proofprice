@@ -1,0 +1,621 @@
+URL: https://creativecommons.tankerkoenig.de/
+Fetched: 2026-10-29T21:12:58Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 110571
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx/1.10.3 (Ubuntu)
+Date: Thu, 29 Oct 2026 21:12:58 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (435)
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<!--[if IE 8]>			<html lang="DE" class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html lang="DE" class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="DE"> <!--<![endif]-->
+
+
+<!--
+
+http://localhost/benzinpreis/www/html/creativecommons/
+https://creativecommons.tankerkoenig.de/
+
+
+-->
+
+<head>
+    <title>Tankerkönig API</title>
+
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Benzinpreis,Spritpreis,Tankerkönig,Spritpreis-API, historische Spritpreise" />
+    <meta name="description" content="" />
+    <meta name="Author" content="Martin Kurz" />
+
+    <!-- mobile settings -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+    <!-- WEB FONTS : use %7C instead of | (pipe) -->
+    <!-- link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" / -->
+    <link href="/assets/css/fonts.css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+
+    <!-- CORE CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- THEME CSS -->
+    <link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+
+    <!-- PAGE LEVEL SCRIPTS -->
+    <link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/tkfooter.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- TK SCRIPTS -->
+    <link href="assets/css/cc.css" rel="stylesheet" type="text/css" />
+
+    <link href="assets/css/color_scheme/blue.css" rel="stylesheet" type="text/css" id="color_scheme" />
+
+    <!-- added: CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- created with http://www.favicon-generator.org/ -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="smoothscroll enable-animation">
+
+<!-- wrapper -->
+<div id="wrapper">
+
+    <div id="header" class="sticky clearfix">
+        <!-- TOP NAV -->
+        <header id="topNav">
+            <div class="no-container">
+
+                <!-- Mobile Menu Button -->
+                <button id="nav-dropdown" class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Logo -->
+                <a class="logo pull-left default-cursor">
+                    <img src="assets/images/TK-Logo-Combined.svg" alt="Tankerkönig Logo" />
+                </a>
+
+
+                <div id="nav-container" class="navbar-collapse pull-right nav-main-collapse collapse">
+                    <nav class="nav-main">
+                        <ul id="topMain" class="nav nav-pills nav-main"></ul>
+                    </nav>
+                </div>
+
+            </div>
+        </header>
+        <!-- /Top Nav -->
+    </div>
+
+    <!-- home page -->
+    <div class="page hidden" id="home-page" text="Home">
+        <div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="big">
+                        <!-- <img src="assets/images/tk-round.svg" alt="Tankerkönig"> -->
+                        <img src="assets/images/tk-round.png" alt="Tankerkönig">
+                        Spritpreise für alle!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <a class="div-a col-xs-12 col-md-12 margin-bottom-30" open-page="info">
+                    <div>
+                        <h2 class="h2">Hinweis: auf eine behördliche Anforderung müssen wir Vor-/Nachnamen aller registrierten Benutzer nacherfassen. Dazu werden emails mit einem Link zum Nacherfassungsformular verschickt, das ist kein Spam..</h2>
+                        <i class="ico-light ico-lg ico-rounded ico-hover et-gears"></i>
+                        <h2 class="h2">Echtzeit-Benzinpreis-API unter Creative-Commons-Lizenz</h2>
+                        <p class="small-margin">
+                            Hier gibt es den einfachen Zugang zu den aktuellen Spritpreisen aller an die
+                            Markttransparenzstelle für Kraftstoffe (MTS-K) meldenden Tankstellen Deutschlands.
+                        </p>
+                        <p class="small-margin">
+                            Alle 14000+ Tankstellen im Bundesgebiet müssen die Preise für Super E5, Super E10 und
+                            Diesel zeitnah an diese Abteilung des Bundeskartellamtes melden.
+                            Der Zugang zu diesen Daten ist über diese Behörde ausschliesslich lizenzierten
+                            Spritpreis-Informationsdiensten möglich.
+                        </p>
+                        <p class="small-margin">
+                            Damit auch andere Anwender, sowie Entwickler von Apps, Websites und anderem diese Daten
+                            nutzen können gibt es die freie API von Tankerkönig. <br>
+                            Damit verringert sich der Aufwand für Website-Betreiber und App-Entwickler zur Suche und
+                            Anzeige aktueller Spritpreise dramatisch.
+                        </p>
+                        <p class="small-margin">
+                            Tankerkönig.de hat sich entschlossen, sein API freizugeben, um anderen die gesammelten
+                            Erfahrungen im Sinne des Open-Data-Gedankens zur Verfügung zu stellen. Als 
+                            technische Einschränkung muß ein API-Key benutzt werden, um Zugriffe zuordnen und
+                            Missbrauch verhindern zu können. Des weiteren ist die Umkreissuche uaf einen Radius von 25km und die Abfragefrequenz auf einen requet/Minute beschränkt,
+                            Die Bedingungen der MTS-K müssen ebenfalls eingehalten
+                            werden. 
+                        </p>
+                        <p class="small-margin">
+                            Danach dürfen die Daten insbesondere weder unmittelbar von Mineralölunternehmen
+                            und Tankstellenbetreibern einschließlich verbundenen Unternehmen noch von für die
+                            Mineralölindustrie tätigen IT-Dienstleistern bezogen oder an diese weitergegeben werden.
+                        </p>
+                        <p class="small-margin">
+
+                            Die freie API wird aus Kosten- und Ressourcengründen auf best-effort-Basis
+                            betrieben, eine Dienstgüte kann für die freie Version deshalb nicht garantiert werden.
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="row">
+                <a class="div-a col-xs-12 col-md-12 margin-bottom-30" open-page="history">
+                    <div>
+                        <i class="ico-light ico-lg ico-rounded ico-hover et-linegraph"></i>
+                        <h2 class="h2">Historische Preisdaten</h2>
+                        <p class="small-margin">
+                            Speziell für Forschungsprojekte, Statistiker, Tageszeitungen, aber auch für privat
+                            Interessierte gibt es neben den aktuellen Spritpreisen auch die seit Juni 2014
+                            archivierten Spritpreise als csv-Dateien.
+                        </p>
+                        <p class="small-margin">
+                            Die Daten werden täglich aktualisiert und werden als csv-Dateien bereitgestellt. <br>
+                            Diese Preisdaten können Grundlage für statistische Auswertungen sein. Regionale Unterschiede,
+                            Unterschiede im Tages- und Wochenverlauf, Korrelationen mit dem Ölpreis und anderen
+                            Faktoren, Gegenüberstellung von Marken und freien Tankstellen und so weiter.
+                        </p>
+                    </div>
+                </a>
+
+
+                <a class="div-a col-xs-12 col-md-6 margin-bottom-30" open-page="commercial">
+                    <div>
+                        <i class="ico-light ico-lg ico-rounded ico-hover et-wallet"></i>
+                        <h2 class="h2">Kommerzieller Service</h2>
+                        <p class="small-margin">
+                            Auch wenn größeres geplant ist, das mit der freien API nicht umgesetzt werden kann,
+                            ist Tankerkönig der Partner der Wahl. Wir finden eine individuelle Lösung, die die
+                            speziellen Anforderungen des Projektes abdeckt.
+                            Wenn beispielsweise
+                        </p>
+                        <ul class="list small-margin">
+                            <li>Massenabfragen nötig sind,</li>
+                            <li>Anpassungen der API erforderlich sind,</li>
+                            <li>weitere Informationen abgefragt werden sollen,</li>
+                            <li>die Daten auf eigenen Servern gehostet werden, oder</li>
+                            <li>historische Daten aufbereitet werden müssen</li>
+                        </ul>
+                        <p class="small-margin">
+                        Bitte beachten Sie, dass Tankerkönig keine Lösungen zur Nutzung der MTS-K-Daten
+                        durch Mineralölunternehmen und Tankstellenbetreiber einschließlich verbundener
+                        Unternehmen und durch für die Minerlölbranche tätiger IT-Dienstleister zur Verfügung stellt.
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!-- /home page -->
+
+
+    <!--  info page -->
+    <div class="page hidden" id="info-page" text="Info">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h2 class="h2">API Informationen</h2>
+                    <hr/>
+                    <p class="small-margin">
+                        Die Tankerkönig-API besteht aus drei HTTP-GET-Methoden, um Tankstellen-Informationen und
+                        Preise zu holen, sowie einer HTTP-POST-Methode, mit der fehlerhafte Daten an die MTS-K gemeldet
+                        werden können.
+                    </p>
+                    <p class="small-margin">
+                        Die API kann von einem Server (z.B. über PHP), vom Browser (via JavaScript/AJAX) oder auch per
+                        Direktaufruf der URL (ideal zum Testen) abgefragt werden. Als Datenformat wird JSON
+                        zurückgeliefert.
+                    </p>
+
+                    <h3 class="h3">Demo-Key</h3>
+                    <p class="small-margin">
+                        Die Beispielaufrufe hier werden mit dem Demo-Key gemacht. Im Unterschied zu echten Keys
+                        werden keine echten Preise ausgeliefert. Außerdem sind die Daten zur besseren Lesbarkeit
+                        formatiert.
+                    </p>
+
+                    <h3 class="h3">Requests allgemein</h3>
+                    <div class="small-margin">
+                        In jedem Aufruf einer API-Methode muss ein API-Key mit angegeben werden. <br>
+                        Die Antwort enthält immer ein <code>ok</code> flag, dessen Status abgefragt werden sollte. Im
+                        Fehlerfall (ok == false) enthält die Antwort einen Text mit der Fehlerursache, bspw:
+                        <div class="h10"></div>
+<pre>
+{
+  "ok":false,
+  "message":"parameter error"
+}
+</pre>
+                        Es ist sinnvoll und dringend empfohlen, immer das ok-Flag abzufragen um zu testen, ob der
+                        Aufruf erfolgreich war. <br>
+                        Je nach Applikation sollte der Fehler entsprechend behandelt werden, etwa so:
+                    </div>
+                    <ul class="small-margin-top">
+                        <li>Fehlertext anzeigen,</li>
+                        <li>Fehlertext an Server melden, falls ein eigener Server eingesetzt wird,</li>
+                        <li>Keine weiteren Requests mehr senden</li>
+                    </ul>
+
+
+                    <h3 class="h3">API-Methode 1 - Umkreissuche</h3>
+                    <p class="small-margin">
+                        Die Umkreissuche erfolgt über die API-Methode <code>list.php</code>. Damit können um einen
+                        gegebenen Standort die Tankstellen-Informationen und Preise der im angegebenen Radius
+                        befindlichen Tankstellen abgerufen werden.
+                    </p>
+                    <p class="small-margin">
+                        Die Parameter dieses Request sind:
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Bedeutung</th>
+                            <th>Format</th>
+                        </tr>
+                        <tr>
+                            <td>lat</td>
+                            <td>geographische Breite des Standortes</td>
+                            <td>Floatingpoint-Zahl</td>
+                        </tr>
+                        <tr>
+                            <td>lng</td>
+                            <td>geographische Länge</td>
+                            <td>Floatingpoint-Zahl</td>
+                        </tr>
+                        <tr>
+                            <td>rad</td>
+                            <td>Suchradius in km</td>
+                            <td>Floatingpoint-Zahl, max: 25</td>
+                        </tr>
+                        <tr>
+                            <td>type</td>
+                            <td>Spritsorte</td>
+                            <td>'e5', 'e10', 'diesel' oder 'all'</td>
+                        </tr>
+                        <tr>
+                            <td>sort</td>
+                            <td>Sortierung</td>
+                            <td>price, dist (1)</td>
+                        </tr>
+                        <tr>
+                            <td>apikey</td>
+                            <td>Der persönliche API-Key</td>
+                            <td>UUID</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <p class="small-margin">
+                        (1) Bei type=all wird immer nach Entfernung sortiert - die Angabe der Sortierung ist dann optional
+                    </p>
+
+                    <h4 class="h4">Beispielaufruf</h4>
+                    <a href="https://creativecommons.tankerkoenig.de/json/list.php?lat=52.521&lng=13.438&rad=1.5&sort=dist&type=all&apikey=00000000-0000-0000-0000-000000000002" target="_blank">
+                        <code>
+                            https://creativecommons.tankerkoenig.de/json/list.php?lat=52.521&lng=13.438&rad=1.5&sort=dist&type=all&apikey=00000000-0000-0000-0000-000000000002
+                        </code>
+                    </a>
+
+                    <h4 class="h4">Beispielantwort</h4>
+                    <pre>
+{
+    "ok": true,
+    "license": "CC BY 4.0 -  https:\/\/creativecommons.tankerkoenig.de",
+    "data": "MTS-K",
+    "status": "ok",
+    "stations": [
+        {                                                     Datentyp, Bedeutung
+            "id": "474e5046-deaf-4f9b-9a32-9797b778f047",   - UUID, eindeutige Tankstellen-ID
+            "name": "TOTAL BERLIN",                         - String, Name
+            "brand": "TOTAL",                               - String, Marke
+            "street": "MARGARETE-SOMMER-STR.",              - String, Straße
+            "place": "BERLIN",                              - String, Ort
+            "lat": 52.53083,                                - float, geographische Breite
+            "lng": 13.440946,                               - float, geographische Länge
+            "dist": 1.1,                                    - float, Entfernung zum Suchstandort in km
+            "diesel": 1.109,                                \
+            "e5": 1.339,                                     - float, Spritpreise in Euro
+            "e10": 1.319,                                   /
+            "isOpen": true,                                 - boolean, true, wenn die Tanke zum Zeitpunkt der
+                                                              Abfrage offen hat, sonst false
+            "houseNumber": "2",                             - String, Hausnummer
+            "postCode": 10407                               - integer, PLZ
+        },
+        ... weitere Tankstellen
+    ]
+}
+                    </pre>
+                    <p class="small-margin">
+                        Alle Tankstelleninformation wie vom Betreiber angegeben.
+                    </p>
+                    <p>
+                        Wenn nur eine Spritsorte abgefragt wird ist im JSON statt Name der Sorte 'price'
+                        angegeben.
+                    </p>
+                    <h3 class="h3">Beispielcode</h3>
+                    <p class="small-margin">
+                        <a class="btn btn-primary" open-popup="sample-code-js-list">jQuery</a>
+                        <a class="btn btn-primary" open-popup="sample-code-php-list">PHP</a>
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h3 class="h3">API-Methode 2 - Preisabfrage</h3>
+                    <p class="small-margin">
+                        Die Preisabfrage erfolgt über die API-Methode <code>prices.php</code>. Damit können die Preise
+                        von bis zu 10 bekannten Tankstellen gleichzeitig abgefragt werden.
+                    </p>
+                    <p class="small-margin">
+                        Die Parameter dieses Request sind die IDs der entsprechenden Tankstellen:
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-sm-8 col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Bedeutung</th>
+                            <th>Format</th>
+                        </tr>
+                        <tr>
+                            <td>ids</td>
+                            <td>IDs der Tankstellen</td>
+                            <td>UUIDs, durch Komma getrennt</td>
+                        </tr>
+                        <tr>
+                            <td>apikey</td>
+                            <td>Der persönliche API-Key</td>
+                            <td>UUID</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h4 class="h4">Beispielaufruf</h4>
+                    <a href="https://creativecommons.tankerkoenig.de/json/prices.php?ids=278130b1-e062-4a0f-80cc-19e486b4c024,93d1a836-ec60-4bca-b313-d0e9cf1e5411&apikey=00000000-0000-0000-0000-000000000002" target="_blank">
+                        <code>
+                            https://creativecommons.tankerkoenig.de/json/prices.php?ids=278130b1-e062-4a0f-80cc-19e486b4c024,93d1a836-ec60-4bca-b313-d0e9cf1e5411&apikey=00000000-0000-0000-0000-000000000002
+                        </code>
+                    </a>
+                    <h4 class="h4">Beispielantwort</h4>
+                    <pre>
+{
+    "ok": true,
+    "license": "CC BY 4.0 -  https:\/\/creativecommons.tankerkoenig.de",
+    "data": "MTS-K",
+    "prices": {
+        "60c0eefa-d2a8-4f5c-82cc-b5244ecae955": {
+            "status": "open",                               - Tankstelle ist offen
+            "e5": false,                                    - kein Super
+            "e10": false,                                   - kein E10
+            "diesel": 1.189                                 - Tankstelle führt nur Diesel
+        },
+        "446bdcf5-9f75-47fc-9cfa-2c3d6fda1c3b": {
+            "status": "closed"                              - Tankstelle ist zu
+        },
+        "4429a7d9-fb2d-4c29-8cfe-2ca90323f9f8": {
+            "status": "open",
+            "e5": 1.409,
+            "e10": 1.389,
+            "diesel": 1.129
+        },
+        "44444444-4444-4444-4444-444444444444": {
+            "status": "no prices"                           - keine Preise für Tankstelle verfügbar
+        }
+    }
+}
+                    </pre>
+                    <h3 class="h3">Beispielcode</h3>
+                    <p class="small-margin">
+                        <a class="btn btn-primary" open-popup="sample-code-js-prices">jQuery</a>
+                        <!--<a class="btn btn-primary" open-popup="sample-code-php-prices">PHP</a> -->
+                    </p>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h3 class="h3">API-Methode 3 - Detailabfrage</h3>
+                    <p class="small-margin">
+                        Mit der Detail-Abfrage werden einige wenige Informationen geliefert, die in der Antwort der
+                        Umkreissuche nicht enthalten sind:
+                        <code>detail.php</code>.
+                    </p>
+                    <table class="table">
+                        <tr>
+                            <th>Parameter-Name</th>
+                            <th>Bedeutung</th>
+                            <th>Werte</th>
+                        </tr>
+                        <tr>
+                            <td>openingTimes</td>
+                            <td>Öffnungszeiten</td>
+                            <td>Array mit Objekten, in denen der Text und die Zeiten stehen</td>
+                        </tr>
+                        <tr>
+                            <td>overrides</td>
+                            <td>erweiterte Öffnungszeiten</td>
+                            <td>Änderungen der regulären ÖZ - bspw. eine temporäre Schliessung</td>
+                        </tr>
+                        <tr>
+                            <td>wholeDay</td>
+                            <td>ganztägig geöffnet</td>
+                            <td>true, false</td>
+                        </tr>
+                        <tr>
+                            <td>state</td>
+                            <td>Bundesland</td>
+                            <td>Ein Kürzel für das Bundesland - ist meist nicht angegeben</td>
+                        </tr>
+                    </table>
+                    <p>
+                        Ein Aufruf dieser Funktion ist für Apps sinnvoll, wenn dem User Details einer ausgewählten
+                        Tankstelle angezeigt werden sollen. <br>
+                        Zur regelmäßigen Preisabfragen ist diese Methode nicht gedacht. Statt dessen sollte hier die
+                        Umkreissuche, oder die Preisabfrage verwendet werden.
+                    </p>
+
+                    <p class="small-margin">
+                        Die Parameter dieses Request sind neben dem API-Key die ID der Tankstelle:
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-sm-8 col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Bedeutung</th>
+                            <th>Format</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>ID der Tankstelle</td>
+                            <td>UUID</td>
+                        </tr>
+                        <tr>
+                            <td>apikey</td>
+                            <td>Der persönliche API-Key</td>
+                            <td>UUID</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h4 class="h4">Beispielaufruf</h4>
+                    <a href="https://creativecommons.tankerkoenig.de/json/detail.php?id=24a381e3-0d72-416d-bfd8-b2f65f6e5802&apikey=00000000-0000-0000-0000-000000000002" target="_blank">
+                        <code>
+                            https://creativecommons.tankerkoenig.de/json/detail.php?id=24a381e3-0d72-416d-bfd8-b2f65f6e5802&apikey=00000000-0000-0000-0000-000000000002
+                        </code>
+                    </a>
+                    <h4 class="h4">Beispielantwort</h4>
+                    Eine Tankstelle mit geänderten Öffnungszeiten:
+                    <pre>
+{
+    "ok": true,
+    "license": "CC BY 4.0 -  https:\/\/creativecommons.tankerkoenig.de",
+    "data": "MTS-K",
+    "status": "ok",
+    "station": {
+        "id": "24a381e3-0d72-416d-bfd8-b2f65f6e5802",
+        "name": "Esso Tankstelle",
+        "brand": "ESSO",
+        "street": "HAUPTSTR. 7",
+        "houseNumber": " ",
+        "postCode": 84152,
+        "place": "MENGKOFEN",
+        "openingTimes": [                                               - Array mit regulären Öffnungszeiten
+            {
+                "text": "Mo-Fr",
+                "start": "06:00:00",
+                "end": "22:30:00"
+            },
+            {
+                "text": "Samstag",
+                "start": "07:00:00",
+                "end": "22:00:00"
+            },
+            {
+                "text": "Sonntag",
+                "start": "08:00:00",
+                "end": "22:00:00"
+            }
+        ],
+        "overrides": [                                                  - Array mit geänderten Öffnungszeiten
+            "13.04.2017, 15:00:00 - 13.11.2017, 15:00:00: geschlossen"  - im angegebenen Zeitraum geschlossen
+        ],
+        "wholeDay": false,                                              - nicht ganztägig geöffnet
+        "isOpen": false,
+        "e5": 1.379,
+        "e10": 1.359,
+        "diesel": 1.169,
+        "lat": 48.72210601,
+        "lng": 12.44438439,
+        "state": null                                                   - Bundesland nicht angegeben
+    }
+}                        </pre>
+                    <p></p>
+                    <p></p>
+                    <h3 class="h3">Beispielcode</h3>
+                    <p class="small-margin">
+                        <a class="btn btn-primary" open-popup="sample-code-js-detail">jQuery</a>
+                        <!--<a class="btn btn-primary" open-popup="sample-code-php-detail">PHP</a> -->
+                    </p>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h3 class="h3">API-Methode 4 - Fehlermeldung</h3>
+                    <p class="small-margin">
+                        Über die API können mit <code>complaint.php</code> auch fehlerhafte Daten über uns an die MTS-K weitergeleitet werden.
+                    </p>
+                    <p class="small-margin">
+                        Die Parameter dieses Request sind wie folgt:
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <table class="table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Bedeutung</th>
+                            <th>Format</th>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>ID der Tankstelle</td>
+                            <td>UUID</td>
+                        </tr>
+                        <tr>
+                            <td>apikey</td>
+                            <td>Der persönliche API-Key</td>
+                            <td>UUID</td>
+                        </tr>
+                        <tr>
+                            <td>type</td>
+                            <td>Fehlertyp</td>
+                            <td>(2)</td>
+                        </tr>
+                        <tr>
+                            <td>correction</td>
+               
