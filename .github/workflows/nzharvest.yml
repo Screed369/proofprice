@@ -1,0 +1,38 @@
+name: nzharvest
+on:
+  push:
+    branches: [src/nz-hud-home-sales]
+    paths: [".github/workflows/nzharvest.yml"]
+permissions:
+  contents: write
+jobs:
+  h:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: harvest once (branch only, output not committed to the branch)
+        continue-on-error: true
+        run: |
+          mkdir -p dump
+          npm run harvest -- nz-hud-home-sales 2>&1 | tail -30 | tee dump/harvest-log.txt
+          cp -r library/nz-hud-home-sales dump/ 2>/dev/null || true
+          ls -la library/nz-hud-home-sales/daily 2>/dev/null | tee -a dump/harvest-log.txt
+          for a in "national" "ta|Wellington City" "ta|Auckland City" "region|Auckland" "region|Wellington" "ta|Queenstown-Lakes District" "ta|Christchurch City" "board|Howick"; do grep -h ",$a," library/nz-hud-home-sales/daily/*.csv || true; done > dump/sample-rows.txt
+          wc -l library/nz-hud-home-sales/daily/*.csv >> dump/harvest-log.txt || true
+      - name: licence text
+        continue-on-error: true
+        run: |
+          curl -sS -L -A "ProofPrice-probe (hello@proofprice.com)" "https://www.hud.govt.nz/about-us/copyright-and-disclaimer" -o dump/copyright.html || true
+          sed 's/<[^>]*>/ /g' dump/copyright.html | tr -s ' \n' ' ' | grep -o '.\{200\}Creative Commons.\{300\}' | head -3 > dump/licence.txt || true
+      - name: push dump
+        if: always()
+        run: |
+          mkdir -p probes_nz2 && cp -r dump/* probes_nz2/
+          git config user.name probe; git config user.email probe@users.noreply.github.com
+          git checkout -B nz-probe-out2; git add -f probes_nz2; git commit -qm "nz harvest dump"; git push -f origin nz-probe-out2
