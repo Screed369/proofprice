@@ -5,7 +5,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { parseDatastoreSearch, datastoreSearchUrl } from "../../lib/adapters";
-import { INFO, RESOURCE_ID, SITE, cutoffMonth, normaliseFlatType, normaliseTown, parseSgRents, sgRents } from "./source";
+import { INFO, RESOURCE_ID, SG_TOWNS, SITE, cutoffMonth, normaliseFlatType, normaliseTown, parseSgRents, sgRentDailyRows, sgRentHarvest, sgRentHistoryKey, sgRents } from "./source";
 
 const read = (name: string) => JSON.parse(readFileSync(new URL(`./fixtures/${name}`, import.meta.url), "utf8"));
 const FILTERED = read("datastore-tampines-4room.json");
@@ -135,4 +135,74 @@ test("parse: empty, 'na' or 0 rents are dropped, never counted as a rent of 0", 
     { rent_approval_date: "2026-09", flat_type: "4-ROOM", monthly_rent: "2900" },
   ]);
   assert.deepEqual(r, [{ month: "2026-09", flat_type: "4-ROOM", rent: 2900 }]);
+});
+
+
+/** SYNTHETIC: 10 rents per month per town (5 four-room, 5 five-room), 2025-01 .. 2026-09, in the real record shape. */
+function fakeAllTowns(towns: readonly string[] = SG_TOWNS) {
+  const records: Record<string, any>[] = [];
+  let id = 1;
+  for (const town of towns) {
+    for (let y = 2025, m = 1; y < 2026 || m <= 9; ) {
+      const month = `${y}-${String(m).padStart(2, "0")}`;
+      for (let i = 0; i < 10; i++) records.push({ _id: id++, rent_approval_date: month, town, block: String(i), street_name: "X ST 1", flat_type: i % 2 ? "4-ROOM" : "5-ROOM", monthly_rent: String(2500 + i * 100) });
+      if (++m > 12) { m = 1; y++; }
+    }
+  }
+  records.sort((a, b) => (a.rent_approval_date < b.rent_approval_date ? 1 : a.rent_approval_date > b.rent_approval_date ? -1 : b._id - a._id));
+  const calls: string[] = [];
+  const fetcher = async (url: string) => {
+    calls.push(url);
+    const u = new URL(url);
+    const limit = Number(u.searchParams.get("limit"));
+    const offset = Number(u.searchParams.get("offset") ?? 0);
+    const filters = JSON.parse(u.searchParams.get("filters")!);
+    const rows = records.filter((r) => r.town === filters.town);
+    return { success: true, result: { resource_id: RESOURCE_ID, records: rows.slice(offset, offset + limit), total: rows.length } };
+  };
+  return { fetcher, calls };
+}
+
+test("sgRentHarvest: one row per town for all flats and per flat type, window of 12 months, aggregates of 5+ only", async () => {
+  const { fetcher } = fakeAllTowns();
+  const h = await sgRentHarvest(fetcher, new Date("2026-10-14T00:00:00Z"));
+  assert.equal(h.date, "2026-10-14");
+  assert.equal(h.currency, "SGD");
+  assert.equal(h.unit, "per month");
+  const any = h.rows.find((r) => r.area === "TAMPINES" && r.item === "any:12m")!;
+  assert.equal(any.n, 12 * 10); // 2025-10 .. 2026-09
+  assert.equal(any.median, 2950);
+  assert.ok(any.low < any.median && any.median < any.high);
+  assert.equal(h.rows.find((r) => r.area === "TAMPINES" && r.item === "4-room:12m")!.n, 60);
+  assert.equal(h.rows.find((r) => r.area === "TAMPINES" && r.item === "1-room:12m"), undefined); // no 1-room rentals: no row, no made-up figure
+  assert.ok(h.rows.every((r) => r.n >= 5));
+  assert.match(h.note ?? "", /26 towns/);
+});
+
+test("sgRentHarvest: a partial read (too few towns) fails instead of publishing a thin copy", async () => {
+  const { fetcher } = fakeAllTowns(SG_TOWNS.slice(0, 10));
+  await assert.rejects(sgRentHarvest(fetcher, new Date("2026-10-14T00:00:00Z")), /Only 10 HDB towns/);
+});
+
+test("sgRentHarvest: retries a page once, then gives up", async () => {
+  const { fetcher } = fakeAllTowns();
+  let n = 0;
+  const flaky = async (url: string) => { if (n++ === 0) throw new Error("429"); return fetcher(url); };
+  const h = await sgRentHarvest(flaky, new Date("2026-10-14T00:00:00Z"));
+  assert.equal(h.rows.length, 26 * 3); // all flats, 4-room and 5-room per town
+  const dead = async () => { throw new Error("down"); };
+  await assert.rejects(sgRentHarvest(dead, new Date("2026-10-14T00:00:00Z")), /down/);
+});
+
+test("sgRentHistoryKey: matches the harvest rows; other windows and bad input have no copy", () => {
+  assert.deepEqual(sgRentHistoryKey({ town: "Tampines", flat_type: "4 ROOM" }), { area: "TAMPINES", item: "4-room:12m", label: "TAMPINES 4-ROOM" });
+  assert.deepEqual(sgRentHistoryKey({ town: "kallang" }), { area: "KALLANG/WHAMPOA", item: "any:12m", label: "KALLANG/WHAMPOA" });
+  assert.equal(sgRentHistoryKey({ town: "Tampines", months: 6 }), null);
+  assert.deepEqual(sgRentHistoryKey({ town: "Tampines", months: 12 })?.item, "any:12m");
+  assert.equal(sgRentHistoryKey({ town: "Orchard" }), null);
+  assert.equal(sgRentHistoryKey({ town: "Tampines", flat_type: "9 ROOM" }), null);
+  assert.equal(sgRentHistoryKey({}), null);
+  assert.equal(sgRentHistoryKey({ town: "Tampines" }, { monthly: true }), null);
+  const rows = sgRentDailyRows({ BEDOK: [{ month: "2026-09", flat_type: "3-ROOM", rent: 2000 }] });
+  assert.deepEqual(rows, []); // one rental is not a figure
 });
