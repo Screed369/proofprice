@@ -1,0 +1,489 @@
+URL: https://prices.shufersal.co.il/
+Fetched: 2026-10-29T09:42:26Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 47123
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Length: 47123
+Content-Type: text/html; charset=utf-8
+Date: Thu, 29 Oct 2026 09:42:26 GMT
+Server: Microsoft-IIS/10.0
+Access-Control-Expose-Headers: Request-Context
+Cache-Control: private
+Set-Cookie: ARRAffinity=9a7ac821a374137c385e580545578e56bf0ba025dad054862b35e567c54ac62e;Path=/;HttpOnly;Secure;Domain=prices.shufersal.co.il
+Set-Cookie: ARRAffinitySameSite=9a7ac821a374137c385e580545578e56bf0ba025dad054862b35e567c54ac62e;Path=/;HttpOnly;SameSite=None;Secure;Domain=prices.shufersal.co.il
+X-AspNetMvc-Version: 5.2
+X-AspNet-Version: 4.0.30319
+Request-Context: appId=cid-v1:c2c1aee6-bd00-4ea6-8c14-c12d8a9b9ed7
+X-Powered-By: ASP.NET
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (315), with CRLF line terminators
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שופרסל אתר שקיפות מחירים</title>
+    <link href="/Content/css?v=LmlgICyFsmfz61ZxX9-qS9axA2GsxaGuQxBsSvCCiPM1" rel="stylesheet"/>
+
+    <script src="/bundles/modernizr?v=w9fZKPSiHtN4N4FRqV7jn-3kGoQY5hHpkwFv5TfMrus1"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+<script src="/Scripts/jquery-2.1.4.js"></script>
+<script src="/Scripts/Spin.js"></script>
+<script>
+    var serverUrl = "/";
+</script>
+
+<br />
+<div>
+    <img src="https://res.cloudinary.com/shufersal/image/upload/f_auto,q_auto/prod/site_resources/general_images/shufersal_red_logo.gif" align="left" border="0">
+</div>
+
+<div style="background-image:url(https://res.cloudinary.com/shufersal/image/upload/f_auto,q_auto/prod/site_resources/general_images/shufersal_red_stroke.gif); background-repeat: repeat-x; background-position: top; width: 100%; height: 52px;">
+</div>
+<div style="text-align:center; margin-top: -20px;color: #b90000; font-weight: bold; font-size:24px" >
+    <div>אתר שקיפות מחירים</div>
+</div>
+<div style="padding-left:50px; padding-top:20px">
+    <div style="float:right; width:500px">
+        <div class="ddlClass" style="width:320px">
+            <select id="ddlStore" name="ddlStore"><option value="0">All</option>
+<option value="1">1 - שלי ת&quot;א- בן יהודה</option>
+<option value="2">2 - שלי ירושלים- אגרון</option>
+<option value="3">3 - שלי גבעתיים- סירקין</option>
+<option value="4">4 - שלי חיפה- כרמל</option>
+<option value="5">5 - שלי ירושלים- יובל</option>
+<option value="7">7 - שלי ת&quot;א- ארלוזורוב</option>
+<option value="9">9 - שלי נתניה- ויצמן</option>
+<option value="11">11 - שלי ת&quot;א- נורדאו</option>
+<option value="12">12 - יש בני ברק- ירושלים</option>
+<option value="13">13 - יוניברס בית שמש- העליה</option>
+<option value="14">14 - דיל ברנע אשקלון</option>
+<option value="15">15 - יש פ&quot;ת- רוטשילד</option>
+<option value="17">17 - שלי חיפה- חורב</option>
+<option value="18">18 - דיל חולון-קרן היסוד</option>
+<option value="19">19 - שלי חיפה- זיו</option>
+<option value="20">20 - שלי רחובות- הרצל</option>
+<option value="21">21 - יש מרים ירושלים-  פארן</option>
+<option value="22">22 - שלי נתניה- סמילנסקי</option>
+<option value="23">23 - שלי מיתר</option>
+<option value="24">24 - שלי אשדוד- הנביאים</option>
+<option value="26">26 - BE בלוך גבעתיים</option>
+<option value="27">27 - שלי רעננה- אחוזה</option>
+<option value="28">28 - שלי ת&quot;א- צה&quot;ל</option>
+<option value="29">29 - אקספרס האודםחריש</option>
+<option value="30">30 - שלי רמת גן- קריניצי</option>
+<option value="32">32 - שלי רמת גן- קסם</option>
+<option value="33">33 - שלי חיפה- סטלה</option>
+<option value="34">34 - שלי רמת השרון- סוקולוב</option>
+<option value="35">35 - יוניברס באר שבע וולפסון</option>
+<option value="36">36 - שלי כ&quot;ס- רוטשילד</option>
+<option value="38">38 - שלי חיפה- דניה</option>
+<option value="39">39 - שלי ת&quot;א- ברזיל</option>
+<option value="40">40 - שלי ב&quot;ש- עומר</option>
+<option value="41">41 - BE דיזנגוף סנטר</option>
+<option value="42">42 - שלי ירושלים- ניות</option>
+<option value="43">43 - שלי הוד השרון- הבנים</option>
+<option value="45">45 - דיל ירושלים- תלפיות</option>
+<option value="49">49 - דיל ב&quot;ש- הר בוקר</option>
+<option value="50">50 - שלי מבשרת ציון</option>
+<option value="51">51 - אקספרס הרצליה</option>
+<option value="56">56 - אקספרס  חריש הרימון</option>
+<option value="57">57 - שלי רמת השרון- אוסישקין</option>
+<option value="61">61 - אקספרס צור משה</option>
+<option value="62">62 - יש חסד רכסים</option>
+<option value="65">65 - דיל ב&quot;ש- צ&#39;ורלי</option>
+<option value="68">68 - דיל כורדני</option>
+<option value="69">69 - שלי ת&quot;א- רמת אביב ב</option>
+<option value="70">70 - שלי רמת גן- מרום נווה</option>
+<option value="71">71 - יוניברס תל חנן  נשר</option>
+<option value="72">72 - שלי רעות</option>
+<option value="73">73 - יש חסד אשדוד</option>
+<option value="76">76 - דיל אריאל</option>
+<option value="77">77 - דיל  חריש</option>
+<option value="78">78 - יש הר נוף ירושלים-שאולזו</option>
+<option value="79">79 - אקספרס חריש</option>
+<option value="80">80 - שלי ראשל&quot;צ- נווה הדרים</option>
+<option value="81">81 - יש חסד מודיעין עלית דרום</option>
+<option value="82">82 - אקספרס חולון</option>
+<option value="83">83 - דיל ב&quot;ש- שאול המלך</option>
+<option value="84">84 - אקספרס בית חשמונאי</option>
+<option value="87">87 - דיל רעננה- החרושת</option>
+<option value="89">89 - דיל עזריאלי - רמלה</option>
+<option value="90">90 - אקספרס גב ים באר שבע</option>
+<option value="91">91 - יוניברס עמק חפר- אזור תעשיה</option>
+<option value="92">92 - דיל אשדוד- שבט לוי</option>
+<option value="93">93 - שלי יהוד- סביונים</option>
+<option value="95">95 - דיל חדרה- קניון אורות</option>
+<option value="96">96 - דיל חדרה- הפרדס</option>
+<option value="97">97 - דיל קרית שמונה- מתחם ביג</option>
+<option value="98">98 - דיל קרית טבעון- אלונים</option>
+<option value="101">101 - שלי הוד השרון- ק מרגלית</option>
+<option value="102">102 - שלי פרדסיה- הנשיא</option>
+<option value="103">103 - שלי שוהם- מרכז מסחרי</option>
+<option value="104">104 - שלי פ&quot;ת- גד מכנס</option>
+<option value="105">105 - דיל פ&quot;ת- אליעזר פרדימן</option>
+<option value="106">106 - יוניברס נס ציונה - הפטיש</option>
+<option value="109">109 - שלי ראש העין- ז&#39;בוטינסקי</option>
+<option value="110">110 - דיל הפארק ב&quot;ש</option>
+<option value="111">111 - יש חסד טבריה עלית-לב האג</option>
+<option value="112">112 - BE קרית מוצקין</option>
+<option value="113">113 - דיל ראשל&quot;צ- גולדה מאיר</option>
+<option value="114">114 - דיל ירושלים- גילה</option>
+<option value="116">116 - שלי גבעתיים- מכתש</option>
+<option value="117">117 - שלי תל אביב-איכילוב</option>
+<option value="118">118 - דיל אילת  הסתת</option>
+<option value="119">119 - דיל מודיעין- סנטר</option>
+<option value="121">121 - יוניברס נהריה- לוחמי הגטאות</option>
+<option value="122">122 - דיל יבנה- ברוש דרך הים</option>
+<option value="123">123 - דיל חולון- גולדה</option>
+<option value="124">124 - יוניברס בת ים- אורט ישראל</option>
+<option value="127">127 - אקספרס טירת הכרמל</option>
+<option value="128">128 - יוניברס טירת הכרמל- נחום חת</option>
+<option value="129">129 - יוניברס נתניה המלאכה</option>
+<option value="130">130 - דיל נתניה- קלאוזנר עמליה</option>
+<option value="131">131 - אקספרס הוד השרון</option>
+<option value="133">133 - יש חסד ביתר עילית-  הר&quot;ן</option>
+<option value="134">134 - יוניברס מודיעין- ישפרו סנטר</option>
+<option value="135">135 - יוניברס אשקלון- פאור סנטר</option>
+<option value="139">139 - יוניברס צפת- דובק ויצמן</option>
+<option value="140">140 - אקספרס תל חי</option>
+<option value="141">141 - דיל יוקנעם- שדרות רבין</option>
+<option value="142">142 - דיל זכרון- המייסדים</option>
+<option value="144">144 - דיל שבירו כפר סבא</option>
+<option value="145">145 - BE נתיבות</option>
+<option value="147">147 - אקספרס זכרון</option>
+<option value="148">148 - אקספרס מלצר רחובות</option>
+<option value="150">150 - אקספרס רודנסקי ת&quot;א</option>
+<option value="151">151 - דיל רעננה- קניון רננים</option>
+<option value="152">152 - דיל ערד- ישפרו המנוף</option>
+<option value="153">153 - דיל אופקים- ז&#39;בוטינסקי</option>
+<option value="155">155 - יוניברס צור יגאל- מרכז מסחרי</option>
+<option value="159">159 - דיל רמת הנשיא חיפה</option>
+<option value="161">161 - המפיץ סיטונאות אשדוד</option>
+<option value="163">163 - דיל שדרות- הפלדה</option>
+<option value="164">164 - שלי רמת גן- ביאליק</option>
+<option value="166">166 - יוניברס אשדוד- הבושם</option>
+<option value="168">168 - שלי אשדוד- כינרת</option>
+<option value="169">169 - אקספרס באר שבע</option>
+<option value="171">171 - אקספרס אוסטשינסקי</option>
+<option value="172">172 - BE באר יעקב</option>
+<option value="173">173 - דיל כפר יונה</option>
+<option value="174">174 - דיל ערד- קניון</option>
+<option value="176">176 - שערי רווחה ירושלים</option>
+<option value="177">177 - דיל מצפה רמון- בן גוריון</option>
+<option value="178">178 - BE סגולה פתח תקווה</option>
+<option value="179">179 - שופרסל אקספרס הרוא&quot;ה רמת גן</option>
+<option value="180">180 - דיל ק.מוצקין- בן גוריון</option>
+<option value="181">181 - דיל אשקלון- רמז</option>
+<option value="182">182 - יוניברס דימונה- גולדה מאיר</option>
+<option value="183">183 - דיל אשדוד- הרצל</option>
+<option value="184">184 - דיל ראשל&quot;צ- זבוטינסקי</option>
+<option value="186">186 - אקספרס התשבי</option>
+<option value="187">187 - דיל קניון מעלה אדומים</option>
+<option value="188">188 - דילירוחם- צבי בורנשטיין</option>
+<option value="189">189 - דיל פרדס חנה</option>
+<option value="190">190 - דיל חצור- הגלילית</option>
+<option value="195">195 - יוניברס קריון- דרך עכו</option>
+<option value="198">198 - BE פארם יהלום נתניה</option>
+<option value="199">199 - דיל בת ים- בלפור</option>
+<option value="201">201 - BE בריגה</option>
+<option value="203">203 - יוניברס רמלה לוד- הצופית</option>
+<option value="205">205 - יוניברס יהוד- אלטלף</option>
+<option value="207">207 - יש אור יהודה - אליהו סעדו</option>
+<option value="208">208 - דיל אילת נחל אורה</option>
+<option value="209">209 - דילאשקלון- רוטשילד</option>
+<option value="210">210 - יוניברס ראשל&quot;צ- שמוטקין</option>
+<option value="211">211 - יוניברס כרמיאל- אזור התעשיה</option>
+<option value="212">212 - שלי חיפה- ורדיה</option>
+<option value="214">214 - יוניברס קרית גת- מלכי ישראל</option>
+<option value="215">215 - דיל בית שאן-ירושלים הבירה</option>
+<option value="216">216 - שלי הוד השרון</option>
+<option value="218">218 - יוניברס עפולה- יצחק רבין</option>
+<option value="219">219 - יש חסד בני ברק- עזרא</option>
+<option value="222">222 - דיל רמות ב&quot;ש ב&#39;</option>
+<option value="224">224 - אקספרס ראשל&quot;צ-נווה דקלים</option>
+<option value="226">226 - דיל כרמיאל</option>
+<option value="227">227 - דיל-איקאה קרית אתא</option>
+<option value="228">228 - שלי בנימינה - הגביע</option>
+<option value="229">229 - דיל ת&quot;א- יגאל אלון</option>
+<option value="230">230 - שלי כ&quot;ס- ויצמן</option>
+<option value="231">231 - אקספרס רעננה- רבקה גרובר</option>
+<option value="232">232 - שלי צפת- מ.מסחר רמת רזים</option>
+<option value="233">233 - BE באר שבע</option>
+<option value="234">234 - יש חסד רסידו</option>
+<option value="236">236 - אקספרס אילת שחמון</option>
+<option value="238">238 - דיל באר יעקב</option>
+<option value="239">239 - אקספרס יפו- הדרור</option>
+<option value="240">240 - דיל רהט</option>
+<option value="241">241 - יוניברס בני ברק איילון</option>
+<option value="242">242 - BE ויוה חדרה</option>
+<option value="244">244 - יוניברס גלילות רמת השרון</option>
+<option value="245">245 - דיל ירושלים- פסגת זאב</option>
+<option value="247">247 - שלי חולון- רבינוביץ</option>
+<option value="248">248 - דיל ב&quot;ש- נווה מנחם</option>
+<option value="249">249 - דיל נתניה- פולג</option>
+<option value="250">250 - קריית שמונה</option>
+<option value="251">251 - יוניברס עפולה- כורש</option>
+<option value="252">252 - BE עין שמר</option>
+<option value="254">254 - דיל כרמי גת</option>
+<option value="255">255 - דיל כפר תבור</option>
+<option value="256">256 - BE נס ציונה</option>
+<option value="259">259 - יוניברס גזית כ&quot;ס- ויצמן</option>
+<option value="260">260 - יוניברס ירושלים-קניון תלפיות</option>
+<option value="262">262 - שלי מזכרת בתיה- בגין</option>
+<option value="263">263 - שופרסל אקספרס מקס ברוד</option>
+<option value="265">265 - אקספרס חולון - זלמן ארן</option>
+<option value="266">266 - שלי רזין אילת</option>
+<option value="267">267 - דיל קצרין- חרמון</option>
+<option value="269">269 - יוניברס פ&quot;ת- סגולה</option>
+<option value="270">270 - BE חולון הפלד</option>
+<option value="271">271 - שלי רחובות- יעקובי</option>
+<option value="272">272 - שלי גבעתיים- ויצמן</option>
+<option value="274">274 - אקספרס ת&quot;א- פלורנטין</option>
+<option value="276">276 - יוניברס אמט&quot;ל רחובות</option>
+<option value="277">277 - אקספרס.בני בנימין הרצליה</option>
+<option value="278">278 - שלי פ&quot;ת -העצמאות</option>
+<option value="279">279 - אקספרס-ת&quot;א דרויאנוב</option>
+<option value="281">281 - דיל מגדל העמק- המדע</option>
+<option value="282">282 - דיל צומת גבעת מרדכי</option>
+<option value="283">283 - יוניברס קרית עקרון- ביל&quot;ו</option>
+<option value="284">284 - שלי תל מונד- הדקל</option>
+<option value="285">285 - אקספרס סוקולוב פ&quot;ת</option>
+<option value="287">287 - שלי גבעתיים-שביט</option>
+<option value="288">288 - יש רחובות- סירני</option>
+<option value="290">290 - דיל  פ&quot;ת- יכין סנטר</option>
+<option value="295">295 - יש חסד בני ברק-שלמה המלך</option>
+<option value="296">296 - אקספרס פ&quot;ת רחל המשוררת</option>
+<option value="297">297 - יוניברס חדרה- ארבע האגודות</option>
+<option value="298">298 - BE אמות באר שבע</option>
+<option value="299">299 - אקספרסהוד השרון</option>
+<option value="300">300 - יש חסד בארות יצחק- פאוור</option>
+<option value="301">301 - אקספרס אחי מאיר</option>
+<option value="302">302 - שלי חיפה- קלר</option>
+<option value="305">305 - אקספרס ת&quot;א- יהודה המכבי</option>
+<option value="306">306 - יש נוה שאנן חיפה- חניתה</option>
+<option value="307">307 - יש קרית אתא- זבולון</option>
+<option value="308">308 - שלי קרית אתא- איינשטין</option>
+<option value="310">310 - שלי קרית חיים- דגניה</option>
+<option value="311">311 - אקספרס רחובות- בוסתנאי</option>
+<option value="312">312 - דיל חיפה- קרית אליעזר</option>
+<option value="313">313 - שלי קרית חיים-אח&quot;י אילת</option>
+<option value="314">314 - יש חיפה- צרפת</option>
+<option value="315">315 - אקספרס כפר נטר</option>
+<option value="316">316 - דיל קרית מוצקין-שד ויצמן</option>
+<option value="317">317 - אקספרס גבעת עדה</option>
+<option value="318">318 - אקספרס חולון - וולפסון</option>
+<option value="319">319 - שלי עכו- שפירא</option>
+<option value="320">320 - דיל האגס</option>
+<option value="322">322 - גן העיר תל אביב</option>
+<option value="325">325 - אקספרס ששת הימים נס ציונ</option>
+<option value="326">326 - שלי נהריה- הגעתון</option>
+<option value="327">327 - אקספרס חיפה- ראול ולנברג</option>
+<option value="333">333 - שלי חיפה- אורן</option>
+<option value="334">334 - אקספרס פ&quot;ת - שפירא</option>
+<option value="335">335 - אקספרס כ&quot;ס- בן גוריון</option>
+<option value="336">336 - שלי חיפה- רמות ספיר</option>
+<option value="338">338 - אקספרס כוכב הצפון</option>
+<option value="339">339 - דיל טבריה- העמקים</option>
+<option value="340">340 - אקספרס ת&quot;א- זריצקי</option>
+<option value="341">341 - אקספרס רמת גן- הרוא&quot;ה</option>
+<option value="342">342 - דיל כרמיאל- קניוןלב</option>
+<option value="343">343 - שלי ראש העין- ברקן</option>
+<option value="344">344 - דיל מעלות- דרך האלוף עוז</option>
+<option value="345">345 - BE מידטאון</option>
+<option value="347">347 - אקספרס גדרה- דרך הפרחים</option>
+<option value="348">348 - אקספרס פ&quot;ת- קק&quot;ל</option>
+<option value="349">349 - יש חסד צפת- כנען</option>
+<option value="350">350 - דיל גבעת אולגה-הרב ניסים</option>
+<option value="352">352 - Be טייבה</option>
+<option value="353">353 - אקספרס יותם</option>
+<option value="354">354 - &#39;אקספרס ת&quot;א- קינג ג&#39;ורג</option>
+<option value="357">357 - דיל צורן קדימה-לב השרון</option>
+<option value="359">359 - דיל חיפה- גרנד קניון</option>
+<option value="360">360 - אקספרס מאירוביץ ראשל&quot;צ</option>
+<option value="361">361 - דיל מגדל העמק- א ת דרומי</option>
+<option value="362">362 - אקספרס קרן היסוד ירושלים</option>
+<option value="364">364 - יש חסד בית וגן</option>
+<option value="365">365 - שליפרדס חנה כרכור- קדמה</option>
+<option value="366">366 - שלי כפר ורדים- מרכז מסחר</option>
+<option value="368">368 - אקספרס-נשר מרגנית</option>
+<option value="369">369 - שלי שוהם- תרשיש</option>
+<option value="371">371 - שלי ברניצקי</option>
+<option value="372">372 - אקספרס בת ים- חשמונאים</option>
+<option value="373">373 - Be פארם אור יהודה</option>
+<option value="374">374 - שליהרצליה- הבנים</option>
+<option value="375">375 - אקספרס כ&quot;ס- הגליל</option>
+<option value="376">376 - אקספרס רעננה- משה דיין</option>
+<option value="377">377 - אקספרס ירושלים- הדסה</option>
+<option value="379">379 - אקספרס גבעתיים- כצנלסון</option>
+<option value="380">380 - אקספרס ת&quot;א- מרמורק</option>
+<option value="382">382 - אקספרס פ&quot;ת- היבנר</option>
+<option value="384">384 - אקספרס קרית ביאליק</option>
+<option value="385">385 - אקספרס מאיר יערי תל אביב</option>
+<option value="388">388 - אקספרס דניה</option>
+<option value="390">390 - שופרסל אקספרס אם המושבות</option>
+<option value="391">391 - אקספרס אלקנה</option>
+<option value="392">392 - BE שילת</option>
+<option value="393">393 - אקספרס להבים באר שבע</option>
+<option value="394">394 - אקספרס הכרמל כפר סבא</option>
+<option value="396">396 - דיל הקדר נתניה</option>
+<option value="397">397 - אקספרס פארק עפולה</option>
+<option value="398">398 - אקספרס אגמים</option>
+<option value="400">400 - אקספרס שבזי ראש העין</option>
+<option value="413">413 - שופרסל ONLINE</option>
+<option value="437">437 - BE אייס מול אילת</option>
+<option value="444">444 - אקספרס.ב&quot;ש אביסרור</option>
+<option value="445">445 - אקספרס רחובות</option>
+<option value="448">448 - שערי רווחה</option>
+<option value="476">476 - BE הוד השרון כיכר המושבה</option>
+<option value="477">477 - אקספרס הציפורים מודיעין</option>
+<option value="478">478 - אקספרס גדרה</option>
+<option value="479">479 - אקספרס בר אילן</option>
+<option value="482">482 - BE רמלה נווה דורון</option>
+<option value="485">485 - BE אשדוד בלה</option>
+<option value="489">489 - אקספרס מודיעין</option>
+<option value="496">496 - יש חסד כנפי נשרים</option>
+<option value="499">499 - יש חסד עפולה עילית</option>
+<option value="507">507 - BE פארם נאות שמיר</option>
+<option value="511">511 - אקספרס רסקו נצרת</option>
+<option value="518">518 - Be כפר קרע</option>
+<option value="550">550 - דן דיל קריית גת</option>
+<option value="579">579 - אקספרס סביון</option>
+<option value="593">593 - יש חסד באר טוביה</option>
+<option value="595">595 - אקספרס בת חפר</option>
+<option value="596">596 - אקספרס אבן גבירול</option>
+<option value="598">598 - אקספרס הירדן</option>
+<option value="599">599 - אקספרס ההסתדרות</option>
+<option value="601">601 - BE פרדס חנה</option>
+<option value="602">602 - BE (פ.י) אשקלון מרינה</option>
+<option value="606">606 - יש חסד בית שמש- מ. מסחרי</option>
+<option value="607">607 - יש חסד מודיעין עלי-ק.ספר</option>
+<option value="608">608 - יש חסד ירושלים-קרית שאול</option>
+<option value="609">609 - יש חסד אלעד-ניסים גאון</option>
+<option value="610">610 - יש חסד ירושלים- רמת שלמה</option>
+<option value="611">611 - יש חסד בני ברק- השומר</option>
+<option value="613">613 - BE נהריה</option>
+<option value="614">614 - BE נתניה</option>
+<option value="615">615 - BE כפר סבא</option>
+<option value="618">618 - BE ראשון לציון</option>
+<option value="620">620 - BE מלכת שבא אילת</option>
+<option value="621">621 - BE סינמה סיטי נתניה</option>
+<option value="623">623 - BE סביונים</option>
+<option value="631">631 - סניף וולפסון</option>
+<option value="633">633 - BE נשר תל-חנן</option>
+<option value="634">634 - BE בת ים</option>
+<option value="635">635 - BE 16 ראש-פינה</option>
+<option value="637">637 - BE רעננה</option>
+<option value="638">638 - BE   משמר השרון</option>
+<option value="639">639 - BE אריאל</option>
+<option value="640">640 - BE דלית אל כרמל</option>
+<option value="641">641 - BE גבעתיים</option>
+<option value="642">642 - BE אלונים- טבעון</option>
+<option value="643">643 - BE פתח תקוה</option>
+<option value="645">645 - BE גבעת שמואל</option>
+<option value="648">648 - BE מאיר-כפר סבא</option>
+<option value="649">649 - BE עכו</option>
+<option value="650">650 - BE חיפה</option>
+<option value="651">651 - BE דרורים</option>
+<option value="652">652 - BE מודיעין</option>
+<option value="653">653 - BE בני-ברק</option>
+<option value="654">654 - BE אם המושבות</option>
+<option value="655">655 - BE רחובות מזרח</option>
+<option value="656">656 - סניף בן יהודה</option>
+<option value="657">657 - Be קריית שמונה</option>
+<option value="658">658 - BE קריית אתא</option>
+<option value="659">659 - BE  הדר</option>
+<option value="660">660 - סניף רמת השרון</option>
+<option value="662">662 - BE בית חולים אשדוד</option>
+<option value="664">664 - BE בית חולים שערי צדק ירושלים</option>
+<option value="665">665 - BE חשמונאים</option>
+<option value="667">667 - BE מדיקל הלל יפה חדרה</option>
+<option value="668">668 - BE קריית השרון נתניה</option>
+<option value="670">670 - BE (פ.י) איכילוב</option>
+<option value="672">672 - סניף אשדוד סיטי</option>
+<option value="673">673 - BE 59 פנורמה חיפה</option>
+<option value="674">674 - BE  תל ברוך</option>
+<option value="675">675 - BE 61 שרונים</option>
+<option value="676">676 - BE יוקנעם</option>
+<option value="677">677 - BE הרצליה</option>
+<option value="678">678 - BE עפולה</option>
+<option value="679">679 - BE כרכור מדיקל</option>
+<option value="681">681 - BE שהם</option>
+<option value="682">682 - BE כפר סבא צפון</option>
+<option value="684">684 - Be  שדרות</option>
+<option value="685">685 - BE  אזורי חן</option>
+<option value="688">688 - BE  מדיקל-בלינסון פ&quot;ת</option>
+<option value="691">691 - Be (פ.י) אשדוד מדיקל</option>
+<option value="695">695 - BE  אסותא רמת החייל</option>
+<option value="696">696 - BE מדיקל-אלעד</option>
+<option value="697">697 - BE  ירכא</option>
+<option value="698">698 - BE כרמיאל</option>
+<option value="712">712 - BE עין הים חדרה</option>
+<option value="713">713 - BE אור ים</option>
+<option value="714">714 - Be סכנין</option>
+<option value="715">715 - BE אגמים</option>
+<option value="716">716 - Be mall 7  באר שבע</option>
+<option value="734">734 - גוד מרקט גאולה חיפה</option>
+<option value="737">737 - המפיץ סיטונאות באר שבע</option>
+<option value="738">738 - אקפסרס הרצליה</option>
+<option value="740">740 - אקספרס שלמה המלך</option>
+<option value="741">741 - אקספרס יצחק רבין</option>
+<option value="743">743 - אקספרס קריית גת</option>
+<option value="744">744 - אקספרס אשקלון</option>
+<option value="748">748 - BE שבעת הכוכבים אילת</option>
+<option value="750">750 - גוד מרקט שירת הים</option>
+<option value="751">751 - גוד מרקט בני ברק</option>
+<option value="752">752 - אקספרס כפר סבא דוכיפת</option>
+<option value="753">753 - גוד מרקט רש&quot;י ירושלים</option>
+<option value="756">756 - שלי באר יעקב</option>
+<option value="757">757 - אקספרס קריית אונו</option>
+<option value="760">760 - שלי ראש העין</option>
+<option value="762">762 - BE אוסישקין</option>
+<option value="763">763 - BE שפרעם</option>
+<option value="764">764 - BE סטאר אשדוד</option>
+<option value="765">765 - יש חסד בן איש חי</option>
+<option value="766">766 - יש חסד שדרות</option>
+<option value="768">768 - אקספרס קרניצי רמת גן</option>
+<option value="771">771 - גוד מרקט בני ברק</option>
+<option value="772">772 - גוד מרקט מאה שערים</option>
+<option value="773">773 - GOOD MARKET אהבת שלום בית שמש</option>
+<option value="776">776 - BE טירה</option>
+<option value="777">777 - אקספרס נרקיסים</option>
+<option value="778">778 - GOOD MARKET אהליאב ירושלים</option>
+<option value="779">779 - אקספרס יבנה</option>
+<option value="780">780 - אקספרס המעפיל רמת גן</option>
+<option value="781">781 - BE פרישמן ת&quot;א</option>
+<option value="784">784 - BE כפר גנים</option>
+<option value="787">787 - BE אריאל</option>
+<option value="788">788 - BE אפרת</option>
+<option value="789">789 - גוד מרקט אופקים</option>
+<option value="790">790 - דיל רמלה</option>
+<option value="840">840 - גוד מרקט חריש</o
