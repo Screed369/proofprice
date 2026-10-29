@@ -15,7 +15,7 @@ export default defineSource({
     town: `PL: a city, required (${cities}); Polish or English spelling. Flats only. A city county is read as a whole; districts are not available.`,
     postcode: "PL: not supported; give the city as town.",
     property_type: "PL: only flats are in the register extract we read, so leave out or use any.",
-    months: "PL: 1 to 6 months of 30 days up to today; default 3. Large cities are read as a sample of up to 300 records per 30 days (the answer says so).",
+    months: "PL: 1 to 6 months of 30 days up to today; default 3, widened automatically to 6 then 12 months when a city has fewer than 5 recent sales (the register lags; the answer says so). Large cities are read as a sample of up to 300 records per 30 days (the answer says so).",
   },
   examples: [
     { params: { country: "PL", town: "Warszawa" } },

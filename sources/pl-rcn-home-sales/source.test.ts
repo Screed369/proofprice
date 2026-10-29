@@ -114,3 +114,23 @@ test("manifest: PL, home-sales, working first example, licence line mentions the
   assert.equal(plugin.examples[0].params.town, "Warszawa");
   assert.match(INFO.limits, /unclear/);
 });
+
+test("plHomeSales: no window asked and too few recent sales (register lag) widens to 6 then 12 months and says so; an explicit window is never widened", async () => {
+  const today = "2026-10-20";
+  const old = slices(today, 12).slice(6); // months 7-12 hold the loaded sales
+  const calls: string[] = [];
+  const fetchGml = async (u: string) => {
+    calls.push(u);
+    const isOld = old.some((sl) => u.includes(encodeURIComponent(`<fes:Literal>${sl.from}</fes:Literal>`)));
+    return wrap(isOld ? Array.from({ length: 8 }, (_, i) => member(i, 800000 + i * 10000, 50, "rynekWtorny", "Warszawa")) : []);
+  };
+  const a = await plHomeSales({ town: "Warszawa", today, fetchGml });
+  assert.equal(a.status, "ok");
+  assert.equal(calls.length, 12);
+  assert.equal((a.extra as any).widened, true);
+  assert.equal(a.query.months, 12);
+  assert.match(a.method, /widened automatically/);
+  const fixed = await plHomeSales({ town: "Warszawa", months: 3, today, fetchGml: async () => wrap([]) });
+  assert.notEqual(fixed.status, "ok");
+  assert.equal((fixed.extra as any).widened, false);
+});

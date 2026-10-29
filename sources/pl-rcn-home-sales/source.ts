@@ -37,6 +37,8 @@ export const SLICE_DAYS = 30;
 export const SLICE_CAP = 300;
 export const MAX_MONTHS = 6;
 export const DEFAULT_MONTHS = 3;
+/** When the caller did not ask for a window and it holds fewer than MIN_PUBLISH sales (the register lags in some cities), widen in steps up to this many months. */
+export const AUTO_WIDEN_STEPS = [6, 12];
 export const AREA_RANGE: [number, number] = [12, 250];
 export const M2_RANGE: [number, number] = [2000, 60000];
 
@@ -132,11 +134,11 @@ export function sliceUrl(teryt: string, from: string, toExclusive: string): stri
 }
 
 /** Slices of SLICE_DAYS days, newest first, covering `months` x 30 days that end the day after `today`. */
-export function slices(today: string, months: number): { from: string; to: string }[] {
+export function slices(today: string, months: number, skip = 0): { from: string; to: string }[] {
   const day = 86400000;
   const end = Date.parse(today + "T00:00:00Z") + day; // exclusive
   const out: { from: string; to: string }[] = [];
-  for (let i = 0; i < months; i++) {
+  for (let i = skip; i < skip + months; i++) {
     const to = end - i * SLICE_DAYS * day;
     const from = to - SLICE_DAYS * day;
     out.push({ from: new Date(from).toISOString().slice(0, 10), to: new Date(to).toISOString().slice(0, 10) });
@@ -183,17 +185,32 @@ export async function plHomeSales(args: PlHomeArgs): Promise<PriceAnswer> {
   const months = monthsOf(args.months);
   const today = args.today ?? new Date().toISOString().slice(0, 10);
   const fetchGml = args.fetchGml ?? defaultFetch;
-  const parts = slices(today, months);
-  const results = await Promise.all(parts.map(async (sl) => parseSales(await fetchGml(sliceUrl(place.teryt, sl.from, sl.to)))));
-
+  let parts = slices(today, months);
   const all: Sale[] = [];
   let capped = false, returned = 0, wrongCity = 0;
-  for (const r of results) {
-    returned += r.returned;
-    if (r.returned >= SLICE_CAP) capped = true;
-    for (const s of r.sales) {
-      if (s.msc && s.msc !== normaliseName(place.msc)) { wrongCity++; continue; }
-      all.push(s);
+  const readParts = async (sl: { from: string; to: string }[]) => {
+    const results = await Promise.all(sl.map(async (x) => parseSales(await fetchGml(sliceUrl(place.teryt, x.from, x.to)))));
+    for (const r of results) {
+      returned += r.returned;
+      if (r.returned >= SLICE_CAP) capped = true;
+      for (const s of r.sales) {
+        if (s.msc && s.msc !== normaliseName(place.msc)) { wrongCity++; continue; }
+        all.push(s);
+      }
+    }
+  };
+  await readParts(parts);
+  // The register lags by a few weeks and some cities (Warsaw) load slowly: with no window asked for and too few sales, widen step by step and say so.
+  let usedMonths = months;
+  let widened = false;
+  if (args.months === undefined) {
+    for (const target of AUTO_WIDEN_STEPS) {
+      if (all.filter(plausible).length >= MIN_PUBLISH || wrongCity > 0) break;
+      const extra = slices(today, target - usedMonths, usedMonths);
+      await readParts(extra);
+      parts = parts.concat(extra);
+      usedMonths = target;
+      widened = true;
     }
   }
   // Guard against a wrong county code: if most records name another city, refuse rather than answer for the wrong place.
@@ -214,13 +231,13 @@ export async function plHomeSales(args: PlHomeArgs): Promise<PriceAnswer> {
   const period = { from: parts[parts.length - 1].from, to: today };
   return buildAnswer({
     source: INFO,
-    query: { country: "PL", town: place.label, months },
+    query: { country: "PL", town: place.label, months: usedMonths },
     summary,
     currency: "PLN",
     unit: "per flat",
     period,
     method:
-      `Poland: notarised flat sales on the free market in ${place.label} from the national Real Estate Price Register (GUGiK), ${months * SLICE_DAYS} days up to ${today}; ` +
+      `Poland: notarised flat sales on the free market in ${place.label} from the national Real Estate Price Register (GUGiK), ${usedMonths * SLICE_DAYS} days up to ${today}${widened ? " (widened automatically from " + months * SLICE_DAYS + " days because the register held too few recent sales for this city)" : ""}; ` +
       `median and 10th-90th percentile of the gross price per flat; implausible records dropped; ${capped ? "at least one 30-day slice hit the " + SLICE_CAP + "-record read limit, so this is a sample of the period" : "every record of the period was read"}.`,
     describe: (s) =>
       `Flats in ${place.label} sold for a median of ${zl(s.median)} (typical range ${zl(s.low)} to ${zl(s.high)})` +
@@ -231,6 +248,7 @@ export async function plHomeSales(args: PlHomeArgs): Promise<PriceAnswer> {
       per_m2: m2 && m2.count >= MIN_PUBLISH ? { median: m2.median, typical_low: m2.low, typical_high: m2.high, currency: "PLN" } : null,
       by_market: byMarket,
       sampled: capped,
+      widened,
       records_read: returned,
       records_dropped: all.length - kept.length,
       newest_sale: dates.length ? dates[dates.length - 1] : null,
