@@ -1,0 +1,31 @@
+name: zaprobe
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: fetch and dump
+        run: |
+          mkdir -p out
+          curl -sS -A "ProofPrice-probe (hello@proofprice.com)" -o out/all.zip "https://www.statssa.gov.za/timeseriesdata/Excel/P0141%20-%20CPI%20Average%20Prices%20All%20urban%20(202609).zip" || true
+          cd out && unzip -o all.zip >/dev/null 2>&1; ls -la
+          pip install openpyxl -q
+          python3 - <<'PY' > ../zadump.txt
+          import glob, openpyxl
+          for f in glob.glob('*.xlsx'):
+              wb = openpyxl.load_workbook(f, read_only=True)
+              print('FILE', f)
+              for ws in wb.worksheets:
+                  print('SHEET', ws.title, ws.max_row, ws.max_column)
+                  for i, row in enumerate(ws.iter_rows(values_only=True)):
+                      if i < 14 or 60 <= i < 64: print(i, [c for c in row][:12])
+                      if i > 70: break
+          PY
+          cd ..; mkdir -p probes_za; cp zadump.txt probes_za/
+      - name: push
+        run: |
+          git config user.name probe; git config user.email probe@users.noreply.github.com
+          git checkout -B za-probe-out; git add -f probes_za; git commit -qm "za probe dump" ; git push -f origin za-probe-out
