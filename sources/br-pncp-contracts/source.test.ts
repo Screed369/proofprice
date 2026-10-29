@@ -179,3 +179,20 @@ test("harvest keeps inside its time budget: no budget left means no day is read,
   const cut = await readDay("2026-10-27", { fetcher: base, deadline: 0 });
   assert.equal(cut.complete, false);
 });
+
+test("HTTP 429 is waited out and retried; a 400 is not; no time left means no retry", async () => {
+  const base = fakePncp({ "2026-10-27": guards(6, "r") });
+  let n = 0;
+  const flaky = async (url: string) => { if (n++ < 2) throw new SourceError("PNCP returned HTTP 429", url, 429); return base(url); };
+  const d = await readDay("2026-10-27", { fetcher: flaky, backoffMs: [1] });
+  assert.equal(d.contracts.length, 6);
+  assert.equal(n, 3);
+  let m = 0;
+  const bad = async (url: string) => { m++; throw new SourceError("HTTP 400", url, 400); };
+  await assert.rejects(readDay("2026-10-27", { fetcher: bad, backoffMs: [1] }), /400/);
+  assert.equal(m, 1);
+  let k = 0;
+  const always = async (url: string) => { k++; throw new SourceError("HTTP 429", url, 429); };
+  await assert.rejects(readDay("2026-10-27", { fetcher: always, backoffMs: [1], deadline: 0 }), /429/);
+  assert.equal(k, 1);
+});

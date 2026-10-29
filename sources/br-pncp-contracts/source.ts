@@ -10,7 +10,7 @@
 // Licence: the PNCP site footer says CC BY-ND 3.0; no licence is stated for the API itself (Notion Source Pipeline row, 24 Oct 2026). Served as FREE TIER ONLY
 // (Simon, 29 Oct 2026: unclear licence = free only; the payment gate lists cleared sources in lib/payments/cleared.ts and this one is not on it).
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
-import { InputError, retryOnce, SourceError } from "../../lib/http";
+import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { summarise } from "../../lib/stats";
 import { readLatestDay } from "../../lib/library/store";
@@ -42,7 +42,8 @@ export const BASE_URL = "https://pncp.gov.br/api/consulta/v1/contratos";
 export const WINDOW_DAYS = 7;
 export const PAGE_SIZE = 500;
 export const MAX_PAGES_PER_DAY = 24; // about 12,000 contracts, 1.5 times a normal day
-export const PAGE_CONCURRENCY = 6;
+export const PAGE_CONCURRENCY = 2; // first parallel run (6 at once) was answered HTTP 429 by the PNCP within 30 s
+export const BACKOFF_MS = [5_000, 15_000, 45_000]; // waits before retrying after HTTP 429 or 5xx
 export const TIME_BUDGET_MS = 420_000; // the collector gives a source 600 s; stay well inside it (first live run timed out reading pages one by one)
 export const MIN_VALUE = 1_000;
 export const MAX_VALUE = 10_000_000_000;
@@ -174,6 +175,7 @@ export interface HarvestOptions {
   maxPages?: number;
   days?: number;
   concurrency?: number;
+  backoffMs?: number[]; // tests only
   deadline?: number; // ms epoch: stop starting new page batches after this
   budgetMs?: number; // harvest only: total time budget
 }
@@ -202,7 +204,19 @@ export async function readDay(day: string, o: HarvestOptions = {}): Promise<{ co
   const deadline = o.deadline ?? Infinity;
   const contracts: BrContract[] = [];
   const load = async (page: number) => {
-    const body = await retryOnce(() => fetcher(pageUrl(day, page)), 2000);
+    let body: any;
+    for (let attempt = 0; ; attempt++) {
+      try {
+        body = await fetcher(pageUrl(day, page));
+        break;
+      } catch (err: any) {
+        const status = Number(err?.status);
+        const retryable = status === 429 || status >= 500 || !Number.isFinite(status) || status === 0;
+        const wait = o.backoffMs ? o.backoffMs[Math.min(attempt, o.backoffMs.length - 1)] : BACKOFF_MS[attempt];
+        if (!retryable || attempt >= BACKOFF_MS.length || Date.now() + wait > deadline) throw err;
+        await new Promise((r) => setTimeout(r, wait));
+      }
+    }
     if (!body || !Array.isArray(body.data)) throw new SourceError("The PNCP answered in an unexpected format (no data list): the API may have changed");
     return body;
   };
