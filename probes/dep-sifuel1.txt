@@ -1,112 +1,41 @@
-URL: https://goriva.si/api/v1/stations/?format=json
-Fetched: 2026-10-23T15:14:37Z from GitHub Actions
-Status, type, bytes: 404 text/html; charset=utf-8 2571
+URL: https://data.gov.si/api/3/action/package_search?q=goriva+cene&rows=10
+Fetched: 2026-10-29T00:12:02Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 277
 Errors: 
 
 === RESPONSE HEADERS
-HTTP/1.1 404 Not Found
-Server: nginx/1.18.0 (Ubuntu)
-Date: Fri, 23 Oct 2026 15:14:37 GMT
-Content-Type: text/html; charset=utf-8
-Content-Length: 2571
-Connection: keep-alive
-X-Frame-Options: DENY
-Vary: Cookie, Origin
-X-Content-Type-Options: nosniff
-Referrer-Policy: same-origin
-Cross-Origin-Opener-Policy: same-origin
+HTTP/1.1 301 Moved Permanently
+Date: Thu, 29 Oct 2026 00:12:01 GMT
+Server: Apache
+Location: https://podatki.gov.si/api/3/action/package_search?q=goriva+cene&rows=10
+Content-Length: 284
+Content-Type: text/html; charset=iso-8859-1
 
-=== FILE TYPE: HTML document, Unicode text, UTF-8 text
-=== FIRST 30000 BYTES
+HTTP/1.1 200 OK
+Date: Thu, 29 Oct 2026 00:12:02 GMT
+Server: Apache
+Pragma: no-cache
+Cache-Control: no-cache
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, PUT, GET, DELETE, OPTIONS
+Access-Control-Allow-Headers: X-CKAN-API-KEY, Authorization, Content-Type
+Vary: Cookie
+Content-Length: 277
+Content-Type: application/json;charset=utf-8
+Via: 1.1 podatki.gov.si
+Strict-Transport-Security: max-age=48000000; includeSubDomains
+Set-Cookie: SESSA=D1&D2.D2; path=/; expires=(null); host=https://podatki.gov.si/;
 
-
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="/static2/select2/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/static2/stylesheets/style.css" />
-
-
-    <title> | Cene naftnih derivatov</title>
-    
-    
-  </head>
-  <body>
-
-    
-
-
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="/">Cene naftnih derivatov</a>
-  <button class="navbar-toggler" type="button" data-toggle="offcanvas" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="offcanvas-collapse navbar-collapse" id="navbarsExample03">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Iskalnik</a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="/accounts/profile/">Nadzorna plošča</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-      
-        <li class="nav-item">
-          <a class="nav-link" href="/accounts/login/">Prijava</a>
-        </li>
-      
-    </ul>
-  </div>
-</nav>
-
-
-    <div class="container-fluid">
-
-      <div class="row">
-        <div class="col-12 col-md-3 col-xl-2 dashboard__sidebar">
-          <div class="sidebar">
-            
-
-
-
-<ul class="nav flex-column">
-
-</ul>
-
-          </div>
-        </div>
-
-        <main class="col-12 col-md-9 col-xl-10 py-md-3 pl-md-5 dashboard__content" role="main">
-          
-
-          
-<h1>Page not found</h1>
-
-<p>This is not the page you were looking for.</p>
-
-        </main>
-      </div>
-
-    </div> <!-- /container -->
-
-    
-
-    <script crossorigin="anonymous" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script crossorigin="anonymous" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/static2/cruds_mixins/js/cruds_mixins.js"></script>
-    <script src="/static2/js/offcanvas.js"></script>
-    <script src="/static2/select2/js/select2.min.js"></script>
-    <script src="/static2/js/formset.js"></script>
-    <script src="/static2/js/changeset.js"></script>
-    <script src="/static2/js/application.js"></script>
-  </body>
-</html>
-
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+{
+    "help": "https://podatki.gov.si/api/3/action/help_show?name=package_search",
+    "success": true,
+    "result": {
+        "count": 0,
+        "sort": "score desc, popularity desc, name asc",
+        "facets": {},
+        "results": [],
+        "search_facets": {}
+    }
+}
