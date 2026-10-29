@@ -3,12 +3,12 @@
 // (newest first, a few pages at most) and give the median and 10th-90th percentile; never a block or street.
 // Format checked live on 2026-10-14 from GitHub's servers (datastore_search on resource d_c9f57187485a850908655db0e8cfe651).
 
-import { InputError } from "../../lib/http";
+import { InputError, SourceError } from "../../lib/http";
 import { collectPages, datastoreSearchUrl, parseDatastoreSearch, resolveFetcher } from "../../lib/adapters";
 import type { Fetcher } from "../../lib/adapters";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "sg-hdb-rents",
@@ -164,4 +164,84 @@ export async function sgRents(input: SgRentInput, fetcher?: Fetcher, now = new D
       ...(ageMonths > 2 ? { data_age_note: `The newest approval month in this window is ${last}, ${ageMonths} months ago.` } : {}),
     },
   });
+}
+
+
+// ---------- daily collector (stale-if-error copy and /history) ----------
+// data.gov.sg is slow from Vercel and sometimes answers 429. Once a day the collector (GitHub Actions) reads, town by town
+// (26 small requests, newest first, stopping at the window start), the last 12 months of approved HDB rentals and stores
+// per town the median and 10th-90th percentile of all flats and of each flat type (5+ rentals only). Aggregates only: no
+// block or street is kept. The library copy stands in for a live answer for 7 days (lib/stale.ts) and /history shows it moving.
+
+export const HARVEST_MONTHS = 12;
+export const sgRentItem = (flat?: string) => `${flat ? flat.toLowerCase() : "any"}:${HARVEST_MONTHS}m`;
+
+/** Library key for a request, or null when the copy cannot answer it (not an HDB town, unknown flat type, other window). */
+export function sgRentHistoryKey(p: { town?: string; flat_type?: string; months?: number }, opts?: { monthly?: boolean }): { area: string; item: string; label: string } | null {
+  if (opts?.monthly) return null; // no long monthly history is loaded for this source
+  if (p.months !== undefined && p.months !== null && Number(p.months) !== HARVEST_MONTHS) return null;
+  if (!p.town) return null;
+  let town: string;
+  let flat: string | undefined;
+  try {
+    town = normaliseTown(p.town);
+    flat = p.flat_type ? normaliseFlatType(p.flat_type) : undefined;
+  } catch {
+    return null;
+  }
+  return { area: town, item: sgRentItem(flat), label: `${town}${flat ? ` ${flat}` : ""}` };
+}
+
+/** Pure: one library row per town and flat type (and per town for all flats) with at least 5 rentals. */
+export function sgRentDailyRows(byTown: Record<string, SgRent[]>): DailyRow[] {
+  const rows: DailyRow[] = [];
+  const add = (area: string, item: string, rents: number[]) => {
+    const s = summarise(rents);
+    if (!s || s.count < 5) return;
+    rows.push({ area, item, n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max });
+  };
+  for (const [town, list] of Object.entries(byTown)) {
+    add(town, sgRentItem(), list.map((r) => r.rent));
+    for (const ft of SG_FLAT_TYPES) add(town, sgRentItem(ft), list.filter((r) => r.flat_type === ft).map((r) => r.rent));
+  }
+  return rows.sort((a, b) => (a.area + a.item).localeCompare(b.area + b.item));
+}
+
+export async function sgRentHarvest(fetcher?: Fetcher, now = new Date()): Promise<HarvestResult> {
+  const fetch = fetcher ?? resolveFetcher({ timeoutMs: 30000 });
+  const from = cutoffMonth(HARVEST_MONTHS, now);
+  const byTown: Record<string, SgRent[]> = {};
+  let read = 0;
+  for (const town of SG_TOWNS) {
+    const got = await collectPages<Record<string, any>>({
+      maxRows: 10000,
+      pageSize: 1000,
+      fetchPage: async (offset, limit) => {
+        const url = datastoreSearchUrl(SITE, { resourceId: RESOURCE_ID, filters: { town }, sort: ["rent_approval_date desc", "_id desc"], limit, offset, includeTotal: false });
+        let json: unknown;
+        try {
+          json = await fetch(url);
+        } catch {
+          json = await fetch(url); // one retry per page: the portal sometimes answers 429 or times out
+        }
+        const r = parseDatastoreSearch(json);
+        const oldest = r.records.length ? String(r.records[r.records.length - 1].rent_approval_date ?? "") : "";
+        return { rows: r.records, more: r.records.length >= limit && oldest >= from };
+      },
+    });
+    if (got.truncated) throw new SourceError(`HDB rentals in ${town} exceed the collector's cap of 10 000 rows.`);
+    byTown[town] = parseSgRents(got.rows).filter((r) => r.month >= from);
+    read += byTown[town].length;
+  }
+  const rows = sgRentDailyRows(byTown);
+  const towns = new Set(rows.filter((r) => r.item === sgRentItem()).map((r) => r.area));
+  // A real year has 5+ approved rentals in nearly every town; far fewer means a partial read or a changed layout.
+  if (towns.size < 20) throw new SourceError(`Only ${towns.size} HDB towns had 5+ rentals in the window; the portal answer looks incomplete.`);
+  return {
+    date: now.toISOString().slice(0, 10),
+    currency: "SGD",
+    unit: "per month",
+    rows,
+    note: `HDB approved rentals, median of approvals from ${from} to the newest month, ${rows.length} town/flat-type rows over ${towns.size} towns, ${read} rentals read. Aggregates of 5+ rentals only.`,
+  };
 }

@@ -1,7 +1,7 @@
 // Manifest: Singapore rents (HDB "Renting Out of Flats"). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, SG_FLAT_TYPES, sgRents } from "./source";
+import { INFO, SG_FLAT_TYPES, sgRentHarvest, sgRentHistoryKey, sgRents } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -26,5 +26,7 @@ export default defineSource({
   ],
   method:
     "Singapore rents: median and 10th–90th percentile of the monthly rents of HDB flats approved for renting out, by town, flat type and recent window (data.gov.sg). The rents are owner-declared and not verified by HDB; private condominiums are not included.",
+  harvest: () => sgRentHarvest(),
+  historyKey: (p, o) => sgRentHistoryKey({ town: str(p.town), flat_type: str(p.flat_type), months: num(p.months) }, o),
   handle: (p, ctx) => sgRents({ town: str(p.town), flat_type: str(p.flat_type), months: num(p.months), baseUrl: ctx.baseUrl }),
 });
