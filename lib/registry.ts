@@ -8,7 +8,7 @@ import { num } from "./plugin";
 import { PRICE_TYPE_LABEL } from "./price-types";
 import { normaliseCountry } from "./countries";
 import { InputError, SourceError, isSourceOutage, withDeadline } from "./http";
-import { PriceAnswer, fmtMoney, METHOD_URL } from "./answer";
+import { PriceAnswer, fmtMoney, METHOD_URL, withCategoryEvidence } from "./answer";
 import { readDaily, readMeta } from "./library/store";
 import { readHistoryMeta, readMonthly } from "./library/backfill";
 import { asFallback, staleAnswer } from "./stale";
@@ -302,6 +302,10 @@ function handleWithin(src: SourcePlugin, params: Params, ctx: HandleContext, dea
  *  -> fallback source's own copy (<= 7 days) -> the primary's error (502). A fallback is used only when it answers with status ok;
  *  anything else from it (bad input for that source, no figure, its own outage without a copy) ends in the primary's error. */
 export async function runCategory(cat: CategoryPlugin, params: Params, ctx: HandleContext = {}, opts: RunOptions = {}): Promise<PriceAnswer> {
+  return withCategoryEvidence(cat.id, await runCategoryRaw(cat, params, ctx, opts));
+}
+
+async function runCategoryRaw(cat: CategoryPlugin, params: Params, ctx: HandleContext, opts: RunOptions): Promise<PriceAnswer> {
   const { src, prepared } = pickSource(cat, params);
   const deadlineMs = opts.deadlineMs ?? ANSWER_DEADLINE_MS;
   try {

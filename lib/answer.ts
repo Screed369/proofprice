@@ -199,6 +199,23 @@ export const EVIDENCE_KINDS: Record<string, { label: string; meaning: string }> 
   },
 };
 
+/** Categories whose "transaction" prices are not sales of things: the default wording ("completed sales") would be wrong for them. */
+export const TRANSACTION_EVIDENCE_BY_CATEGORY: Record<string, { label: string; meaning: string }> = {
+  rent: {
+    label: "Recorded rents of new leases",
+    meaning: "Rents recorded in official records when a lease or rental bond is lodged: they show the rent agreed on new tenancies, not what sitting tenants pay and not an asking rent.",
+  },
+};
+
+/** Swap the default sale wording for the category's own when an answer is a recorded transaction of another kind (for example rent).
+ *  Only the evidence label and meaning change; a source's own custom evidence is left alone. */
+export function withCategoryEvidence<T extends PriceAnswer>(categoryId: string, answer: T): T {
+  const alt = TRANSACTION_EVIDENCE_BY_CATEGORY[categoryId];
+  const ev = answer.evidence;
+  if (!alt || !ev || ev.type !== "transaction" || ev.label !== EVIDENCE_KINDS.transaction.label) return answer;
+  return { ...answer, evidence: { ...ev, ...alt } };
+}
+
 /** Evidence for an index (currency "INDEX"): whatever the price_type, an index value is not a price. */
 export const INDEX_EVIDENCE = {
   label: "Official published index",
