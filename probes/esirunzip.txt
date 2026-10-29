@@ -1,0 +1,52 @@
+URL: https://opendata.euskadi.eus/transport/moveuskadi/irunbus/gtfs_irunbus.zip
+Fetched: 2026-10-29T08:43:19Z from GitHub Actions
+Status, type, bytes: 200 application/zip 177049
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 301 Moved Permanently
+Content-Type: text/html; charset=iso-8859-1
+Content-Length: 330
+Connection: keep-alive
+Date: Thu, 29 Oct 2026 08:43:18 GMT
+Server: Apache
+Location: https://s3.itbatera.euskadi.eus/02-pro-e3525cfb1b3d99109c5220a2b24bcb30-inet/transport/moveuskadi/irunbus/gtfs_irunbus.zip
+
+HTTP/1.1 200 OK
+Content-Type: application/zip
+Content-Length: 177049
+Connection: keep-alive
+Server: openresty
+Date: Thu, 29 Oct 2026 08:43:18 GMT
+x-amz-version-id: 3938323036383332373138363339393939393939454a49452020203436362e3531303433323033372e37383436313533
+Accept-Ranges: bytes
+ETag: "a39ab32b425f738c633709ea58ccf8e6"
+Last-Modified: Wed, 28 Oct 2026 06:01:21 GMT
+x-amz-replication-status: COMPLETED
+x-amz-id-2: c1468005ca46834f3e3d
+x-amz-request-id: c1468005ca46834f3e3d
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: Zip archive data, at least v2.0 to extract, compression method=deflate
+=== ZIP CONTENTS
+Archive:  body.bin
+GTFS de lurraldebus_auif
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      365  2026-10-26 01:35   routes.txt
+    47788  2026-10-26 01:35   trips.txt
+  1135843  2026-10-26 01:35   stop_times.txt
+      198  2026-10-26 01:35   agency.txt
+     5965  2026-10-26 01:35   stops.txt
+      229  2026-10-26 01:35   feed_info.txt
+      230  2026-10-26 01:35   calendar.txt
+   108351  2026-10-26 01:35   shapes.txt
+---------                     -------
+  1298969                     8 files
+=== FIRST 30000 BYTES OF routes.txt
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+1,13,L1,L1 - Zaisa-ospitalea,,3,,FFFFFF,8DC63F
+2,13,L2,L2 - San Juan-ventas-txingudi Mg,,3,,FFFFFF,8DC63F
+3,13,L3,L3 - San Juan-artia,,3,,FFFFFF,8DC63F
+4,13,L4,L4 - San Juan-anzaran-olaberria,,3,,FFFFFF,8DC63F
+50,13,GA,Gautxori,,3,,FFFFFF,8DC63F
