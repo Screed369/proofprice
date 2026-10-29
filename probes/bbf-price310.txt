@@ -1,0 +1,26 @@
+URL: https://dadosabertos.compras.gov.br/modulo-pesquisa-preco/1_consultarMaterial?pagina=1&tamanhoPagina=5&tipo=codigoPdm&codigo=310&dataCompraInicio=2026-01-01&dataCompraFim=2026-10-29
+Fetched: 2026-10-29T08:14:46Z from GitHub Actions
+Status, type, bytes: 400 application/problem+json 236
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+date: Thu, 29 Oct 2026 08:14:46 GMT
+content-type: application/problem+json
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+x-content-type-options: nosniff
+x-xss-protection: 0
+strict-transport-security: max-age=31536000 ; includeSubDomains
+x-frame-options: DENY
+request-context: appId=cid-v1:2894325d-a3a7-4f18-a825-845ad88afd2f
+set-cookie: ASLBSA=0003517d28cd6c50749b2439305c3937ec45265dc4ac21f9935340eec647d97456ff; Path=/; Secure; HttpOnly;
+set-cookie: ASLBSACORS=0003517d28cd6c50749b2439305c3937ec45265dc4ac21f9935340eec647d97456ff; SameSite=none; Path=/; Secure; HttpOnly;
+x-azure-ref: 20261029T081445Z-15bb65d6b9575l8vhC1CO1hxa00000000cr000000000dq8d
+x-cache: CONFIG_NOCACHE
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{"type":"about:blank","title":"Erro de Validação","status":400,"detail":"tamanhoPagina: O tamanho da página deve ser no mínimo 10","instance":"/modulo-pesquisa-preco/1_consultarMaterial","timestamp":"2026-10-29T08:14:46.231055770Z"}
