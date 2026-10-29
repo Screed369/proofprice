@@ -133,3 +133,11 @@ test("manifest: groceries tool, listed countries, harvest, a smoke example for A
   assert.ok(categoryById("groceries"));
   assert.ok(countriesFor("groceries").includes("AF"));
 });
+
+import manifestWfp from "./index";
+test("serves(): Indonesia PIHPS staples go to id-bi-pihps, other ID items and other countries stay with WFP", () => {
+  const s = manifestWfp.serves!;
+  assert.equal(s({ country: "ID", item: "rice" }), false);
+  assert.equal(s({ country: "ID", item: "wheat flour" }), true);
+  assert.equal(s({ country: "AF", item: "rice" }), true);
+});

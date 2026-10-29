@@ -1,6 +1,8 @@
 // Manifest: WFP market food prices (staple foods in about 50 countries). Logic lives in ./source.ts.
 // The daily collector (harvest) reads the two newest yearly WFP files from HDX; requests are answered from the price library.
 import { defineSource, str } from "../../lib/plugin";
+import { matchItem } from "../../categories/groceries/items";
+import { ITEMS as PIHPS_ITEMS } from "../id-bi-pihps/source";
 import { COUNTRIES, INFO, LISTED, wfpFoodPrices, wfpHarvest, wfpHistoryKey } from "./source";
 
 export default defineSource({
@@ -25,6 +27,8 @@ export default defineSource({
   method:
     "WFP countries (food): the World Food Programme Price Database on HDX (market surveys in about 50 countries) is collected once a day into our price library; an answer is the median and range across markets of each market's newest price for a food, in US dollars at WFP's conversion. " +
     "Posted market-survey prices, not receipts; the newest survey in a country is often months old and the answer says when.",
+  // Indonesia: Bank Indonesia PIHPS (id-bi-pihps) answers the staples it lists; WFP keeps every other item and every other country.
+  serves: (p) => !(String(p.country ?? "").toUpperCase() === "ID" && matchItem(PIHPS_ITEMS, String(p.item ?? "")).primary !== null),
   handle: (p, ctx) => wfpFoodPrices({ country: String(p.country), item: str(p.item), region: str(p.region), baseUrl: ctx.baseUrl }),
   harvest: wfpHarvest,
   historyKey: (p) => wfpHistoryKey({ country: String(p.country), item: str(p.item) }),
