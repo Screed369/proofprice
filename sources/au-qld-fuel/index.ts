@@ -22,6 +22,13 @@ export default defineSource({
   ],
   method:
     "Queensland: each station's latest reported price per litre in the newest published month of the Queensland Government Fuel Price Reporting dataset. A posted price, a month or more old.",
+  // Australia has two station-level fuel sources (Queensland here, Western Australia in au-wa-fuelwatch): Queensland answers 4xxx postcodes and
+  // Queensland/Brisbane names; au-wa-fuelwatch answers 6xxx postcodes, Perth/WA and WA suburbs; anything else falls to the first source (this one).
+  serves: (p) => {
+    const pc = (str(p.postcode) ?? (/^\d{4}$/.test((str(p.town) ?? "").trim()) ? str(p.town) : "") ?? "").trim();
+    if (/^\d{4}$/.test(pc)) return pc.startsWith("4");
+    return [str(p.area), str(p.town)].some((n) => n && /^(qld|queensland|brisbane|greater brisbane)$/i.test(n.trim()));
+  },
   handle: (p, ctx) =>
     qldFuelNow({
       postcode: str(p.postcode),
