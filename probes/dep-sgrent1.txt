@@ -1,0 +1,23 @@
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&limit=3&sort=rent_approval_date%20desc
+Fetched: 2026-10-29T18:17:58Z from GitHub Actions
+Status, type, bytes: 200 application/json 1122
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 29 Oct 2026 18:17:58 GMT
+content-type: application/json
+x-content-type-options: nosniff
+vary: Accept-Encoding
+apigw-requestid: GBMZdgSkSQ0EJZA=
+strict-transport-security: max-age=31536000; includeSubDomains
+last-modified: Thu, 29 Oct 2026 18:17:58 GMT
+cache-control: max-age=300
+cf-cache-status: MISS
+set-cookie: _cfuvid=apgKkjRB3MD2WiWTpHhN1U0VgtEl.bujccAiyoneEl4-1793297877.0302773-1.0.1.1-Xo2kMeGNuzxdJ2FcYwQlh88faW_oMFQjj6GHxIVNC8w; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+server: cloudflare
+cf-ray: a5242e136b795d06-DFW
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"success":true,"result":{"resource_id":"d_c9f57187485a850908655db0e8cfe651","fields":[{"type":"text","id":"rent_approval_date"},{"type":"text","id":"town"},{"type":"text","id":"block"},{"type":"text","id":"street_name"},{"type":"text","id":"flat_type"},{"type":"numeric","id":"monthly_rent"},{"type":"int4","id":"_id"}],"records":[{"_id":209854,"rent_approval_date":"2026-09","town":"TAMPINES","block":"627B","street_name":"TAMPINES ST 61","flat_type":"4-ROOM","monthly_rent":"3500"},{"_id":209855,"rent_approval_date":"2026-09","town":"TAMPINES","block":"663C","street_name":"TAMPINES ST 64","flat_type":"5-ROOM","monthly_rent":"2800"},{"_id":209856,"rent_approval_date":"2026-09","town":"TOA PAYOH","block":"263","street_name":"TOA PAYOH EAST","flat_type":"3-ROOM","monthly_rent":"3650"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&limit=3&sort=rent_approval_date%20desc","next":"/api/action/datastore_search?resource_id=d_c9f57187485a850908655db0e8cfe651&offset=3&limit=3&sort=rent_approval_date%20desc"},"total":212597,"limit":3,"sort":"rent_approval_date%20desc"}}
