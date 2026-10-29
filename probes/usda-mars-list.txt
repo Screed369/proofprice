@@ -1,0 +1,27 @@
+URL: https://marsapi.ams.usda.gov/services/v1.2/reports
+Fetched: 2026-10-29T20:42:14Z from GitHub Actions
+Status, type, bytes: 403 application/json 253
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 403 
+content-type: application/json
+x-xss-protection: 0
+x-frame-options: DENY
+x-content-type-options: nosniff
+content-length: 253
+expires: Thu, 29 Oct 2026 20:42:14 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Thu, 29 Oct 2026 20:42:14 GMT
+server-timing: cdn-cache; desc=MISS
+server-timing: edge; dur=70
+server-timing: origin; dur=228
+alt-svc: h3=":443"; ma=93600
+strict-transport-security: max-age=31536000 ; includeSubDomains
+akamai-grn: 0.cbed2717.1793306533.1b388b0f
+server-timing: ak_p; desc="1793306533827_388492747_456690447_29770_6658_18_19_15";dur=1
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"dateTime":"2026-10-29T14:42:13.9834543","detail":"Attempt to access the protected resource. Please use HELP LINK for more information: https://marsapi.ams.usda.gov/services/help","errorCode":403,"message":"Access is denied","status":"403 - Forbidden"}
