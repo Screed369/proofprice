@@ -105,9 +105,11 @@ test("femaNfip: a ZIP is read in full from four quarterly slices, median and ran
 
 test("femaNfip: big area is sampled with narrow date slices, never deep $skip", async () => {
   const urls: string[] = [];
-  const a = await femaNfip({ area: "TX", fetcher: fake(124000, BODY.NfipPolicies, urls) });
-  assert.equal(urls.length, 8); // 4 quarter pages + 4 narrow slices
+  const a = await femaNfip({ area: "TX", fetcher: fake(1300, BODY.NfipPolicies, urls) });
+  assert.equal(urls.length, 8); // 8 single-day windows, no whole-quarter request
+  for (const u of urls) { const d = decodeURIComponent(u); const m = /ge '(\d{4}-\d{2}-\d{2})' and policyEffectiveDate lt '(\d{4}-\d{2}-\d{2})'/.exec(d)!; assert.equal((Date.parse(m[2]) - Date.parse(m[1])) / 86400000, 1); }
   assert.equal((a.extra as any).sampled, true);
-  assert.equal((a.extra as any).policies_in_period, 496000);
-  assert.equal(a.sample_size, 24);
+  assert.equal((a.extra as any).policies_in_period_is_estimate, true);
+  assert.ok(Math.abs((a.extra as any).policies_in_period - 1300 * 365) <= 1300);
+  assert.equal(a.sample_size, 48);
 });

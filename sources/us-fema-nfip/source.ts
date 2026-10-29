@@ -62,6 +62,8 @@ export function parseArea(raw: string | undefined): Area {
   throw new InputError("area is required: a 5-digit ZIP code such as '32935' or a state code such as 'TX'.");
 }
 
+const DAY_SAMPLES = 8;
+
 export function windowStart(now: Date = new Date(), months = 12): string {
   const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - months, now.getUTCDate()));
   return d.toISOString().slice(0, 10);
@@ -148,20 +150,38 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
   // FEMA sometimes stalls on a single call: two attempts of 12 s fit the 40 s answer deadline for one round (see lib/http retryOnce).
   const get = opts.fetcher ?? ((u: string) => retryOnce(() => fetchJson(u, {}, 12000)));
   const to = (opts.now ?? new Date()).toISOString().slice(0, 10);
-  const quarters = quarterSlices(from, to);
-  // Round 1: one bounded request per quarter, with the count. A quarter that fits one page (every ZIP, normally) is already complete.
-  const counted = await Promise.all(quarters.map(async (sl) => ({ sl, body: await get(buildUrl(area, sl.from, { until: sl.until, count: true })) })));
-  const counts = counted.map((c) => totalCount(c.body));
-  const total = counts.reduce((x, y) => x + y, 0);
-  const sampled = counts.some((c) => c > PAGE);
-  // Round 2, big areas only: replace a quarter's first page (just the first rows FEMA returns) with one narrow slice from its middle.
-  const pages = await Promise.all(
-    counted.map((c, i) => {
-      if (counts[i] <= PAGE) return Promise.resolve(c.body);
-      const sl = narrowSlice(c.sl, counts[i]);
-      return get(buildUrl(area, sl.from, { until: sl.until }));
-    }),
-  );
+  let pages: any[];
+  let counts: number[];
+  let total: number;
+  let sampled: boolean;
+  let estimated = false;
+  if (area.kind === "state") {
+    // A whole quarter of a big state (TX: ~500k policies a year) times out even with $count. Ask instead for single-day windows spread evenly
+    // over the 12 months (each ~1,000 to 1,500 policies, fast), and estimate the year's total from their average daily count.
+    const days = DAY_SAMPLES;
+    const span = Math.max(days, Math.round((Date.parse(to + "T00:00:00Z") - Date.parse(from + "T00:00:00Z")) / 86400000));
+    const wins = Array.from({ length: days }, (_, i) => { const d = addDays(from, Math.floor(((i + 0.5) * span) / days)); return { from: d, until: addDays(d, 1) }; });
+    pages = await Promise.all(wins.map((w) => get(buildUrl(area, w.from, { until: w.until, count: true }))));
+    counts = pages.map((b) => totalCount(b));
+    total = Math.round((counts.reduce((x, y) => x + y, 0) / days) * span);
+    sampled = true;
+    estimated = true;
+  } else {
+    const quarters = quarterSlices(from, to);
+    // Round 1: one bounded request per quarter, with the count. A quarter that fits one page (every ZIP, normally) is already complete.
+    const counted = await Promise.all(quarters.map(async (sl) => ({ sl, body: await get(buildUrl(area, sl.from, { until: sl.until, count: true })) })));
+    counts = counted.map((c) => totalCount(c.body));
+    total = counts.reduce((x, y) => x + y, 0);
+    sampled = counts.some((c) => c > PAGE);
+    // Round 2, big areas only: replace a quarter's first page (just the first rows FEMA returns) with one narrow slice from its middle.
+    pages = await Promise.all(
+      counted.map((c, i) => {
+        if (counts[i] <= PAGE) return Promise.resolve(c.body);
+        const sl = narrowSlice(c.sl, counts[i]);
+        return get(buildUrl(area, sl.from, { until: sl.until }));
+      }),
+    );
+  }
   let policies: Policy[] = [];
   for (const b of pages) if (b) policies = policies.concat(parsePolicies(b));
   if (total > 0 && pages.some((b) => b && !Array.isArray(b?.NfipPolicies))) throw new SourceError("The source answered in an unexpected format", "NfipPolicies missing");
@@ -188,7 +208,8 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
           place: label,
           policies_in_period: total,
           sampled,
-          ...(sampled ? { note: `Summarised from a systematic sample of ${policies.length} of ${total} policies.` } : {}),
+          ...(estimated ? { policies_in_period_is_estimate: true } : {}),
+          ...(sampled ? { note: estimated ? `Summarised from ${policies.length} policies on ${DAY_SAMPLES} single days spread over the year; the yearly total is an estimate from their average daily count.` : `Summarised from a systematic sample of ${policies.length} of ${total} policies.` } : {}),
           premium_only: s.premium ? { median: s.premium.median, typical_low: s.premium.low, typical_high: s.premium.high, note: "Premium before federal fees, surcharge and reserve fund assessment." } : null,
           data_as_of: s.asOf,
           cover: "Flood insurance from the National Flood Insurance Program only.",
