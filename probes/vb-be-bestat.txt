@@ -1,0 +1,219 @@
+URL: https://bestat.statbel.fgov.be/bestat/crosstable.xhtml?datasource=5ae14ee3-5b4f-4762-800b-a08a36486eff
+Fetched: 2026-10-29T03:43:47Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 276216
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Thu, 29 Oct 2026 03:43:46 GMT
+Cache-Control: no-cache,no-store,must-revalidate
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Set-Cookie: oam.Flash.RENDERMAP.TOKEN=-151nf19efs; Path=/bestat; HttpOnly
+Set-Cookie: JSESSIONID=00003RbGnU1ZDhWSnZ1JhVDKH1S:1d5tn68m7; Path=/bestat; HttpOnly
+Vary: Accept-Encoding,User-Agent
+XFF: p2
+Content-Type: text/html; charset=UTF-8
+Content-Language: en-US
+Set-Cookie: MY_SESSION=!UxJADjpiNDOk6q87x0mso+D5V/y3EFc91E6LdmKlvcrHWH2XZTR9/tC25whf6+JsAFzualrixqiwxQ==; path=/; Httponly; Secure
+Strict-Transport-Security: max-age=63072000; includeSubdomains; preload
+Set-Cookie: TS015ebd60=01fa75d7871f814d67450da4e9f3c9d41c2149e840e1535b7f2ffdece68146f3c708aff3fa44392dbf3b9728131c109eb153a5a4d4; Path=/
+Set-Cookie: TS01cd0ef1=01fa75d7871f814d67450da4e9f3c9d41c2149e840e1535b7f2ffdece68146f3c708aff3fa44392dbf3b9728131c109eb153a5a4d4; path=/bestat
+Server: Deathstar :)
+Transfer-Encoding: chunked
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (8239)
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml"><head id="j_id_4">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" /><link type="text/css" rel="stylesheet" href="/bestat/javax.faces.resource/theme.css?ln=primefaces-bootstrap" /><link rel="stylesheet" type="text/css" href="/bestat/javax.faces.resource/cdn/bootstrap.min.css?ln=css" /><link rel="stylesheet" type="text/css" href="/bestat/javax.faces.resource/cdn/font-awesome.min.css?ln=css" /><link rel="stylesheet" type="text/css" href="/bestat/javax.faces.resource/master.min.css?ln=css" /><script type="text/javascript" src="/bestat/javax.faces.resource/jquery/jquery.js?ln=primefaces&amp;v=6.0"></script><script type="text/javascript" src="/bestat/javax.faces.resource/jquery/jquery-plugins.js?ln=primefaces&amp;v=6.0"></script><script type="text/javascript" src="/bestat/javax.faces.resource/core.js?ln=primefaces&amp;v=6.0"></script><link rel="stylesheet" type="text/css" href="/bestat/javax.faces.resource/components.css?ln=primefaces&amp;v=6.0" /><script type="text/javascript" src="/bestat/javax.faces.resource/components.js?ln=primefaces&amp;v=6.0"></script><link rel="stylesheet" type="text/css" href="/bestat/javax.faces.resource/watermark/watermark.css?ln=primefaces&amp;v=6.0" /><script type="text/javascript" src="/bestat/javax.faces.resource/watermark/watermark.js?ln=primefaces&amp;v=6.0"></script><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='nl';}</script>
+        <script>
+            $(document).ready(function () {
+                crosstable.enableSidebarToggleMobile();
+                crosstable.enableSidebarToggleDesktop();
+                bootstrapUtils.enableTooltip();
+                bestat.closeDialogOnDocumentClick();
+
+                crosstable.initDraggableBehavior();
+            });
+            /**
+             * When resizing the browser we need to recalculate the scrollbars
+             */
+            $(window).resize(function () {
+                crosstable.recalculateScrollbarHeight();
+            });
+            /**
+             *
+             * The ready event fires when DOM is ready, load event fires when all the images and iframes are loaded completely.
+             * Only in the load function will .height() return correct values.
+             *
+             * http://stackoverflow.com/questions/13762229/jquery-div-myclass-height-is-not-accurate
+             */
+            $(window).load(function () {
+            	crosstable.recalculateScrollbarHeight();
+
+            });
+        </script>
+        
+
+    
+    <style>
+	    /*states and images */
+	    .ui-icon{width:16px;height:16px;background-image:url("/bestat/javax.faces.resource/images/ui-icons_333333_256x240.png?ln=primefaces-bootstrap");}
+	    .ui-widget-content .ui-icon{background-image:url("/bestat/javax.faces.resource/images/ui-icons_333333_256x240.png?ln=primefaces-bootstrap");}
+	    .ui-widget-header .ui-icon{background-image:url("/bestat/javax.faces.resource/images/ui-icons_333333_256x240.png?ln=primefaces-bootstrap");}
+	    .ui-state-default .ui-icon{background-image:url("/bestat/javax.faces.resource/images/ui-icons_333333_256x240.png?ln=primefaces-bootstrap");}
+	    .ui-state-hover .ui-icon, .ui-state-focus .ui-icon{background-image:url("/bestat/javax.faces.resource/images/ui-icons_333333_256x240.png?ln=primefaces-bootstrap");}
+	    .ui-state-active .ui-icon{background-image:url("/bestat/javax.faces.resource/images/ui-icons_333333_256x240.png?ln=primefaces-bootstrap");}
+	    /*.ui-state-highlight .ui-icon{background-image:url("/bestat/javax.faces.resource/images/ui-icons_ffffff_256x240.png?ln=primefaces-bootstrap");}*/
+	    .ui-state-error .ui-icon, .ui-state-error-text .ui-icon{background-image:url("/bestat/javax.faces.resource/images/ui-icons_333333_256x240.png?ln=primefaces-bootstrap");}
+    </style>
+    
+    
+    
+    <style>
+    	/* overwrite highlight image to keep black version instead of the default white */
+    	.ui-state-highlight .ui-icon{
+            background-image: url("/bestat/javax.faces.resource/images/ui-icons_333333_256x240.png?ln=primefaces-bootstrap");
+            
+        }
+        
+        .loading{
+ 		   background-image: url(/bestat/javax.faces.resource/squares_large_blue.gif?ln=images);
+    		width: 100px;
+    		height: 100px;
+    		background-repeat: no-repeat;
+    		margin: 0 auto;
+		}
+	</style><script type="text/javascript" src="/bestat/javax.faces.resource/cdn/bootstrap.min.js?ln=js"></script><script type="text/javascript" src="/bestat/javax.faces.resource/master.min.js?ln=js"></script><script type="text/javascript" src="/bestat/javax.faces.resource/crosstable.min.js?ln=js"></script>
+      
+        <title>be.STAT</title></head><body class="ui-mobile-width">
+	 <meta name="viewport" content="width=device-width, initial-scale=1" /><div id="ajaxStatusPanel"></div><script id="ajaxStatusPanel_s" type="text/javascript">$(function(){PrimeFaces.cw("AjaxStatus","widget_ajaxStatusPanel",{id:"ajaxStatusPanel",start:function(){bestat.showLoaderDelayed();},complete:function(){bestat.hideLoader();}});});</script><div id="view-selection-dialog-component" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span id="view-selection-dialog-component_title" class="ui-dialog-title">View selecteren</span><a href="#" class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all" aria-label="Close"><span class="ui-icon ui-icon-closethick"></span></a></div><div class="ui-dialog-content ui-widget-content"></div></div><script id="view-selection-dialog-component_s" type="text/javascript">$(function(){PrimeFaces.cw("Dialog","viewSelectionDialog",{id:"view-selection-dialog-component",resizable:false,modal:true,dynamic:true});});</script><div id="growl"><span id="growl-error"></span><script id="growl-error_s" type="text/javascript">$(function(){PrimeFaces.cw('Growl','widget_growl_error',{id:'growl-error',sticky:false,life:15000,escape:true,msgs:[]});});</script><span id="growl-warn"></span><script id="growl-warn_s" type="text/javascript">$(function(){PrimeFaces.cw('Growl','widget_growl_warn',{id:'growl-warn',sticky:false,life:15000,escape:true,msgs:[]});});</script><span id="growl-success"></span><script id="growl-success_s" type="text/javascript">$(function(){PrimeFaces.cw('Growl','widget_growl_success',{id:'growl-success',sticky:false,life:15000,escape:true,msgs:[]});});</script></div>
+
+		<div class="wrap">
+
+	<nav id="header" class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="min-width: 302px;">
+		<div class="container-fluid">
+			<a href="https://statbel.fgov.be/nl" target="_blank"><img id="j_id_15" src="/bestat/javax.faces.resource/images/logo_Statbel_nl.png" class="navbar-brand navbar-left navbar-logo" alt="STATBEL" />
+			</a>
+
+			<div class="navbar-header">
+
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button><a href="/bestat/index.xhtml" class="navbar-brand navbar-right navbar-bestat-logo">be.STAT</a>
+				 
+			</div>
+			<nav id="bs-navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;"><form id="navigation-form" name="navigation-form" method="post" action="/bestat/crosstable.xhtml" enctype="application/x-www-form-urlencoded">
+					<ul class="nav navbar-nav navbar-right">
+    
+    <li><script type="text/javascript" src="/bestat/javax.faces.resource/oamSubmit.js?ln=org.apache.myfaces"></script><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:j_id_1d');" class="active-language">NL</a>
+    </li>
+    <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:j_id_1f');" class="">FR</a>
+    </li>
+    <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:j_id_1h');" class="">EN</a>
+    </li>
+	<li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:j_id_1j');" class="">DE</a>
+    </li>
+							<li title="Overview"><a href="/bestat/index.xhtml">
+									<span class="glyphicon glyphicon-th-list"></span></a></li>
+
+    <li class="dropdown" title="User">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+                <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:j_id_1w');">Inloggen</a>
+                </li>
+                <li><a href="/bestat/register.xhtml">Registreren</a>
+                </li>
+
+    <li>
+    </li>
+	<li>
+    </li>
+
+        </ul>
+    </li>
+
+    <li class="dropdown" title="Export">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+                <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:exportExcel',null,[['format','EXCEL']]);" id="navigation-form:exportExcel">Excel</a>
+                </li>
+                <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:exportCsv',null,[['format','CSV']]);" id="navigation-form:exportCsv">CSV</a>
+                </li>
+                <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:exportPdf',null,[['format','PDF']]);" id="navigation-form:exportPdf">PDF</a>
+                </li>
+                <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:exportHtml',null,[['format','HTML']]);" id="navigation-form:exportHtml">HTML</a>
+                </li>
+                <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:exportJson',null,[['format','JSON']]);" id="navigation-form:exportJson">JSON</a>
+                </li>
+                <li><a href="#" onclick="return myfaces.oam.submitForm('navigation-form','navigation-form:exportXml',null,[['format','XML']]);" id="navigation-form:exportXml">XML</a>
+                </li>
+
+        </ul>
+    </li>
+
+	<li class="dropdown" title="Help">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+			<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+            	<a href="https://statbel.fgov.be/nl/statistieken/bestat/faq" target="_blank">FAQ</a>
+            </li>
+            <li>
+            	<a href="mailto:be.stat@economie.fgov.be" target="_blank">Contacteer ons</a>
+            </li>
+            
+		</ul>
+	</li>
+
+					</ul><input type="hidden" name="navigation-form_SUBMIT" value="1" /><input type="hidden" name="javax.faces.ViewState" id="j_id__v_0:javax.faces.ViewState:1" value="FuxDVEESSQiLlkL4rZIb1Avpqt7+jiN5EWlQVwIRF/p/QQmMATp21vXggQYhOQOfeaK++g==" autocomplete="off" /></form>
+			</nav>
+		</div>
+	</nav><div id="filter-dialog-component" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span id="filter-dialog-component_title" class="ui-dialog-title"></span><a href="#" class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all" aria-label="Close"><span class="ui-icon ui-icon-closethick"></span></a></div><div class="ui-dialog-content ui-widget-content"><form id="filter-dialog-form" name="filter-dialog-form" method="post" action="/bestat/crosstable.xhtml" enctype="application/x-www-form-urlencoded">
+            <div class="modal-body"><div id="filter-dialog-form:member-selection" class="filter"><div id="filter-dialog-form:j_id_4r_2_1" class="ui-tree ui-widget ui-widget-content ui-corner-all" role="tree" tabindex="0" aria-multiselectable="true"><ul class="ui-tree-container"></ul><input type="hidden" id="filter-dialog-form:j_id_4r_2_1_selection" name="filter-dialog-form:j_id_4r_2_1_selection" value="" autocomplete="off" /></div><script id="filter-dialog-form:j_id_4r_2_1_s" type="text/javascript">$(function(){PrimeFaces.cw("VerticalTree","widget_filter_dialog_form_j_id_4r_2_1",{id:"filter-dialog-form:j_id_4r_2_1",dynamic:false,cache:false,selectionMode:"single",propagateUp:false,propagateDown:false,iconStates:{}});});</script></div>
+
+            </div>
+
+            <div class="modal-footer"><button id="filter-dialog-form:j_id_4t" name="filter-dialog-form:j_id_4t" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only pull-right" onclick="PrimeFaces.ab({s:&quot;filter-dialog-form:j_id_4t&quot;,p:&quot;filter-dialog-form&quot;,u:&quot;filter-dialog-form&quot;,ps:true,onco:function(xhr,status,args){handlefilterRequest(args);}});return false;" type="submit"><span class="ui-button-text ui-c">OK</span></button><script id="filter-dialog-form:j_id_4t_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_filter_dialog_form_j_id_4t",{id:"filter-dialog-form:j_id_4t"});</script>
+
+            </div><input type="hidden" name="filter-dialog-form_SUBMIT" value="1" /><input type="hidden" name="javax.faces.ViewState" id="j_id__v_0:javax.faces.ViewState:2" value="FuxDVEESSQiLlkL4rZIb1Avpqt7+jiN5EWlQVwIRF/p/QQmMATp21vXggQYhOQOfeaK++g==" autocomplete="off" /></form></div></div><script id="filter-dialog-component_s" type="text/javascript">$(function(){PrimeFaces.cw("Dialog","filterDialog",{id:"filter-dialog-component",resizable:false,modal:true});});</script>
+    <script type="text/javascript">
+     function handlefilterRequest(args) {
+        if(args.validationFailed) {
+            document.getElementById("filter-dialog-form")
+            .reset();
+            PF('filterDialog')
+            .jq.effect("shake", {times:4}, 100);
+            
+        }
+         else {
+            PF('filterDialog').hide();
+            crosstable.delayedLayoutSubmit();
+        }  
+    }
+    </script><div id="save-view-dialog-component" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span id="save-view-dialog-component_title" class="ui-dialog-title">Opslaan</span><a href="#" class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all" aria-label="Close"><span class="ui-icon ui-icon-closethick"></span></a></div><div class="ui-dialog-content ui-widget-content"></div></div><script id="save-view-dialog-component_s" type="text/javascript">$(function(){PrimeFaces.cw("Dialog","saveViewDialog",{id:"save-view-dialog-component",resizable:false,modal:true,dynamic:true});});</script>
+        <div id="page-wrapper" class="container-fluid">
+            <div class="row special-row row-offcanvas row-offcanvas-left body">
+                <div class="overlay"></div><div id="sidemenu" class="col-sm-3 sidebar-offcanvas sidemenu"><form id="sidemenu-form" name="sidemenu-form" method="post" action="/bestat/crosstable.xhtml" enctype="application/x-www-form-urlencoded"><div id="sidemenu-form:sidemenu-form-tab" class="ui-tabs ui-widget ui-widget-content ui-corner-all ui-hidden-container ui-tabs-top" data-widget="widget_sidemenu_form_sidemenu_form_tab"><ul class="ui-tabs-nav ui-helper-reset ui-widget-header ui-corner-all" role="tablist"><li class="ui-state-default ui-tabs-selected ui-state-active ui-corner-top" role="tab" aria-expanded="true" aria-selected="true" aria-label=""><a href="#sidemenu-form:sidemenu-form-tab:data-tab" tabindex="-1">Gegevens</a></li><li class="ui-state-default ui-corner-top" role="tab" aria-expanded="false" aria-selected="false" aria-label=""><a href="#sidemenu-form:sidemenu-form-tab:filters-tab" tabindex="-1">Filters</a></li></ul><div class="ui-tabs-panels"><div id="sidemenu-form:sidemenu-form-tab:data-tab" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="false"><div id="sidemenu-form:sidemenu-form-tab:sidemenu-data-tab" class="ui-outputpanel ui-widget"><fieldset id="sidemenu-form:sidemenu-form-tab:j_id_5v" class="ui-fieldset ui-widget ui-widget-content ui-corner-all ui-hidden-container" data-widget="widget_sidemenu_form_sidemenu_form_tab_j_id_5v"><legend class="ui-fieldset-legend ui-corner-all ui-state-default">Categorieën</legend><div class="ui-fieldset-content"><div id="sidemenu-form:sidemenu-form-tab:categories" class="ui-datalist ui-widget business-item-list category-list"><div id="sidemenu-form:sidemenu-form-tab:categories_content" class="ui-datalist-content ui-widget-content"><ul id="sidemenu-form:sidemenu-form-tab:categories_list" class="ui-datalist-data"><li class="ui-datalist-item"><div id="sidemenu-form:sidemenu-form-tab:categories:0:singleHierarchy" class="ui-outputpanel ui-widget business-item category ui-orderlist-item draggItem selected" data-item-value="root.Geografische ligging vastgoed" data-businessitem-id="root.Geografische ligging vastgoed"><div class="sidebar-mobile-buttons">
+                                                <i class="glyphicon glyphicon-remove business-item-remove sidebar-item"></i></div><div id="sidemenu-form:sidemenu-form-tab:categories:0:j_id_64" class="ui-outputpanel ui-widget business-item-box">
+                                                <i class="fa business-item-arrows"></i><label id="sidemenu-form:sidemenu-form-tab:categories:0:j_id_66" class="ui-outputlabel ui-widget" title="Geografische ligging vastgoed">Geografische ligging vastgoed</label><button id="sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_69" name="sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_69" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only visible-xs pull-right " onclick="PrimeFaces.ab({s:&quot;sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_69&quot;,p:&quot;sidemenu-form&quot;,u:&quot;selections crosstable sidemenu-form&quot;,ps:true,onco:function(xhr,status,args){crosstable.initDraggableBehavior();;}});return false;" type="submit"><span class="ui-button-text ui-c">C</span></button><script id="sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_69_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_sidemenu_form_sidemenu_form_tab_categories_0_j_id_68_j_id_69",{id:"sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_69"});</script><button id="sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_6a" name="sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_6a" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only visible-xs pull-right selected-axis" onclick="PrimeFaces.ab({s:&quot;sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_6a&quot;,p:&quot;sidemenu-form&quot;,u:&quot;selections crosstable sidemenu-form&quot;,ps:true,onco:function(xhr,status,args){crosstable.initDraggableBehavior();;}});return false;" type="submit"><span class="ui-button-text ui-c">R</span></button><script id="sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_6a_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_sidemenu_form_sidemenu_form_tab_categories_0_j_id_68_j_id_6a",{id:"sidemenu-form:sidemenu-form-tab:categories:0:j_id_68:j_id_6a"});</script><span class="feedback-filter hide">column</span><span class="feedback-filter ">row</span></div></div><script id="sidemenu-form:sidemenu-form-tab:categories:0:j_id_6d_s" type="text/javascript">$(function(){PrimeFaces.cw("Draggable","widget_sidemenu_form_sidemenu_form_tab_categories_0_j_id_6d",{id:"sidemenu-form:sidemenu-form-tab:categories:0:j_id_6d",target:"sidemenu-form:sidemenu-form-tab:categories:0:singleHierarchy",cursor:"crosshair",helper:"clone"});});</script></li><li class="ui-datalist-item"><div id="sidemenu-form:sidemenu-form-tab:categories:1:singleHierarchy" class="ui-outputpanel ui-widget business-item category ui-orderlist-item draggItem selected" data-item-value="root.Verkoopdatum" data-businessitem-id="root.Verkoopdatum"><div class="sidebar-mobile-buttons">
+                                                <i class="glyphicon glyphicon-remove business-item-remove sidebar-item"></i></div><div id="sidemenu-form:sidemenu-form-tab:categories:1:j_id_64" class="ui-outputpanel ui-widget business-item-box">
+                                                <i class="fa business-item-arrows"></i><label id="sidemenu-form:sidemenu-form-tab:categories:1:j_id_66" class="ui-outputlabel ui-widget" title="Verkoopdatum">Verkoopdatum</label><button id="sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_69" name="sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_69" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only visible-xs pull-right selected-axis" onclick="PrimeFaces.ab({s:&quot;sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_69&quot;,p:&quot;sidemenu-form&quot;,u:&quot;selections crosstable sidemenu-form&quot;,ps:true,onco:function(xhr,status,args){crosstable.initDraggableBehavior();;}});return false;" type="submit"><span class="ui-button-text ui-c">C</span></button><script id="sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_69_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_sidemenu_form_sidemenu_form_tab_categories_1_j_id_68_j_id_69",{id:"sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_69"});</script><button id="sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_6a" name="sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_6a" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only visible-xs pull-right " onclick="PrimeFaces.ab({s:&quot;sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_6a&quot;,p:&quot;sidemenu-form&quot;,u:&quot;selections crosstable sidemenu-form&quot;,ps:true,onco:function(xhr,status,args){crosstable.initDraggableBehavior();;}});return false;" type="submit"><span class="ui-button-text ui-c">R</span></button><script id="sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_6a_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_sidemenu_form_sidemenu_form_tab_categories_1_j_id_68_j_id_6a",{id:"sidemenu-form:sidemenu-form-tab:categories:1:j_id_68:j_id_6a"});</script><span class="feedback-filter ">column</span><span class="feedback-filter hide">row</span></div></div><script id="sidemenu-form:sidemenu-form-tab:categories:1:j_id_6d_s" type="text/javascript">$(function(){PrimeFaces.cw("Draggable","widget_sidemenu_form_sidemenu_form_tab_categories_1_j_id_6d",{id:"sidemenu-form:sidemenu-form-tab:categories:1:j_id_6d",target:"sidemenu-form:sidemenu-form-tab:categories:1:singleHierarchy",cursor:"crosshair",helper:"clone"});});</script></li><li class="ui-datalist-item"><div id="sidemenu-form:sidemenu-form-tab:categories:2:singleHierarchy" class="ui-outputpanel ui-widget business-item category ui-orderlist-item draggItem " data-item-value="root.Perceeloppervlakte" data-businessitem-id="root.Perceeloppervlakte"><div class="sidebar-mobile-buttons">
+                                                <i class="glyphicon glyphicon-remove business-item-remove sidebar-item"></i></div><div id="sidemenu-form:sidemenu-form-tab:categories:2:j_id_64" class="ui-outputpanel ui-widget business-item-box">
+                                                <i class="fa business-item-arrows"></i><label id="sidemenu-form:sidemenu-form-tab:categories:2:j_id_66" class="ui-outputlabel ui-widget" title="Perceeloppervlakte">Perceeloppervlakte</label><button id="sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_69" name="sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_69" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only visible-xs pull-right " onclick="PrimeFaces.ab({s:&quot;sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_69&quot;,p:&quot;sidemenu-form&quot;,u:&quot;selections crosstable sidemenu-form&quot;,ps:true,onco:function(xhr,status,args){crosstable.initDraggableBehavior();;}});return false;" type="submit"><span class="ui-button-text ui-c">C</span></button><script id="sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_69_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_sidemenu_form_sidemenu_form_tab_categories_2_j_id_68_j_id_69",{id:"sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_69"});</script><button id="sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_6a" name="sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_6a" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only visible-xs pull-right " onclick="PrimeFaces.ab({s:&quot;sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_6a&quot;,p:&quot;sidemenu-form&quot;,u:&quot;selections crosstable sidemenu-form&quot;,ps:true,onco:function(xhr,status,args){crosstable.initDraggableBehavior();;}});return false;" type="submit"><span class="ui-button-text ui-c">R</span></button><script id="sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_6a_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_sidemenu_form_sidemenu_form_tab_categories_2_j_id_68_j_id_6a",{id:"sidemenu-form:sidemenu-form-tab:categories:2:j_id_68:j_id_6a"});</script><span class="feedback-filter hide">column</span><span class="feedback-filter hide">row</span></div></div><script id="sidemenu-form:sidemenu-form-tab:categories:2:j_id_6d_s" type="text/javascript">$(function(){PrimeFaces.cw("Draggable","widget_sidemenu_form_sidemenu_form_tab_categories_2_j_id_6d",{id:"sidemenu-form:sidemenu-form-tab:categories:2:j_id_6d",target:"sidemenu-form:sidemenu-form-tab:categories:2:singleHierarchy",cursor:"crosshair",helper:"clone"});});</script></li></ul></div></div><script id="sidemenu-form:sidemenu-form-tab:categories_s" type="text/javascript">$(function(){PrimeFaces.cw("DataList","widget_sidemenu_form_sidemenu_form_tab_categories",{id:"sidemenu-form:sidemenu-form-tab:categories"});});</script></div></fieldset><script id="sidemenu-form:sidemenu-form-tab:j_id_5v_s" type="text/javascript">PrimeFaces.cw("Fieldset","widget_sidemenu_form_sidemenu_form_tab_j_id_5v",{id:"sidemenu-form:sidemenu-form-tab:j_id_5v"});</script><fieldset id="sidemenu-form:sidemenu-form-tab:measures_fieldset" class="ui-fieldset ui-widget ui-widget-content ui-corner-all ui-hidden-container" data-widget="widget_sidemenu_form_sidemenu_form_tab_measures_fieldset"><legend class="ui-fieldset-legend ui-corner-all ui-state-default">Gegevens</legend><div class="ui-fieldset-content"><div id="sidemenu-form:sidemenu-form-tab:measures" class="ui-datalist ui-widget business-item-list measure-list"><div id="sidemenu-form:sidemenu-form-tab:measures_content" class="ui-datalist-content ui-widget-content"><ul id="sidemenu-form:sidemenu-form-tab:measures_list" class="ui-datalist-data"><li class="ui-datalist-item"><div id="sidemenu-form:sidemenu-form-tab:measures:0:measure" class="ui-outputpanel ui-widget business-item measure ui-orderlist-item draggItem  " data-item-value="root.Aantal verkopen" data-businessitem-id="root.Aantal verkopen"><div class="sidebar-mobile-buttons">
+                                            <i class="glyphicon glyphicon-remove business-item-remove sidebar-item"></i></div><div id="sidemenu-form:sidemenu-form-tab:measures:0:j_id_75" class="ui-outputpanel ui-widget business-item-box">
+                                            <i class="fa business-item-arrows"></i><label id="sidemenu-form:sidemenu-form-tab:measures:0:j_id_77" class="ui-outputlabel ui-widget" title="Aantal verkopen">Aantal verkopen</label><button id="sidemenu-form:sidemenu-form-tab:measures:0:j_id_79" name="sidemenu-form:sidemenu-form-tab:measures:0:j_id_79" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only visible-xs pull-right " onclick="PrimeFaces.ab({s:&quot;sidemenu-form:sidemenu-form-tab:measures:0:j_id_79&quot;,p:&quot;sidemenu-form&quot;,u:&quot;selections crosstable dialog-form sidemenu-form&quot;,ps:true,onco:function(xhr,status,args){crosstable.initDraggableBehavior();;}});return false;" type="submit"><span class="ui-button-text ui-c">C</span></button><script id="sidemenu-form:sidemenu-form-tab:measures:0:j_id_79_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_sidemenu_form_sidemenu_form_tab_measures_0_j_id_79",{id:"sidemenu-form:sidemenu-form-tab:measures:0:j_id_79"});</script><span class="feedback-filter hide">column</span><span class="feedback-filter hide">row</span></div></div><script id="sidemenu-form:sidemenu-form-tab:measures:0:j_id_7d_s" type="text/javascript">$(function(){PrimeFaces.cw("Draggable","widget_sidemenu_form_sidemenu_form_tab_measures_0_j_id_7d",{id:"sidemenu-form:sidemenu-form-tab:measures:0:j_id_7d",target:"sidemenu-form:sidemenu-form-tab:measures:0:measure",cursor:"crosshair",helper:"clone"});});</script></li><li class="ui-datalist-item"><div id="sidemenu-form:sidemenu-form-tab:measures:1:measure" class="ui-outputpanel ui-widget business-item measure ui-orderlist-item draggItem selected columnSelection" data-item-value="root.Gemiddelde prijs per m²" data-businessitem-id="root.Gemiddelde prijs per m²"><div class="sidebar-mobile-buttons">
+                                            <i class="glyphicon glyphicon-remove business-item-remove sidebar-item"></i></div><div id="sidemenu-form:sidemenu-form-tab:measures:1:j_id_75" class="ui-outputpanel ui-widget business-item-box">
+                                            <
