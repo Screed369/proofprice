@@ -41,7 +41,9 @@ export const INFO: SourceInfo = {
 export const BASE_URL = "https://pncp.gov.br/api/consulta/v1/contratos";
 export const WINDOW_DAYS = 7;
 export const PAGE_SIZE = 500;
-export const MAX_PAGES_PER_DAY = 40; // about 20,000 contracts, 2.5 times a normal day
+export const MAX_PAGES_PER_DAY = 24; // about 12,000 contracts, 1.5 times a normal day
+export const PAGE_CONCURRENCY = 6;
+export const TIME_BUDGET_MS = 420_000; // the collector gives a source 600 s; stay well inside it (first live run timed out reading pages one by one)
 export const MIN_VALUE = 1_000;
 export const MAX_VALUE = 10_000_000_000;
 export const UNIT = "per contract, total contract value";
@@ -171,6 +173,9 @@ export interface HarvestOptions {
   fetcher?: (url: string) => Promise<any>;
   maxPages?: number;
   days?: number;
+  concurrency?: number;
+  deadline?: number; // ms epoch: stop starting new page batches after this
+  budgetMs?: number; // harvest only: total time budget
 }
 
 async function defaultFetcher(url: string): Promise<any> {
@@ -189,22 +194,33 @@ async function defaultFetcher(url: string): Promise<any> {
   }
 }
 
-/** Collects one publication day, page by page. Returns the usable contracts and whether the day was read completely. */
+/** Collects one publication day: page 1 first (it tells the page count), then the rest in parallel batches. Stops at `deadline` (ms epoch) and then reports the day as incomplete. */
 export async function readDay(day: string, o: HarvestOptions = {}): Promise<{ contracts: BrContract[]; complete: boolean; total: number }> {
   const fetcher = o.fetcher ?? defaultFetcher;
   const maxPages = o.maxPages ?? MAX_PAGES_PER_DAY;
+  const concurrency = o.concurrency ?? PAGE_CONCURRENCY;
+  const deadline = o.deadline ?? Infinity;
   const contracts: BrContract[] = [];
-  let total = 0;
-  let pages = 1;
-  for (let page = 1; page <= pages && page <= maxPages; page++) {
+  const load = async (page: number) => {
     const body = await retryOnce(() => fetcher(pageUrl(day, page)), 2000);
     if (!body || !Array.isArray(body.data)) throw new SourceError("The PNCP answered in an unexpected format (no data list): the API may have changed");
-    total = Number(body.totalRegistros) || total;
-    pages = Number(body.totalPaginas) || pages;
-    contracts.push(...contractsOf(body.data));
-    if (body.data.length === 0 || body.empty === true) break;
+    return body;
+  };
+  const first = await load(1);
+  const total = Number(first.totalRegistros) || 0;
+  const pages = Number(first.totalPaginas) || 1;
+  contracts.push(...contractsOf(first.data));
+  let complete = pages <= maxPages;
+  if (first.data.length === 0 || first.empty === true) return { contracts, complete: true, total };
+  const last = Math.min(pages, maxPages);
+  for (let start = 2; start <= last; start += concurrency) {
+    if (Date.now() > deadline) { complete = false; break; }
+    const batch: number[] = [];
+    for (let p = start; p < start + concurrency && p <= last; p++) batch.push(p);
+    const bodies = await Promise.all(batch.map(load));
+    for (const b of bodies) contracts.push(...contractsOf(b.data));
   }
-  return { contracts, complete: pages <= maxPages, total };
+  return { contracts, complete, total };
 }
 
 export async function brContractsHarvest(now: Date = new Date(), o: HarvestOptions = {}): Promise<HarvestResult> {
@@ -214,9 +230,12 @@ export async function brContractsHarvest(now: Date = new Date(), o: HarvestOptio
   const partial: string[] = [];
   let lastError: unknown = null;
   let read = 0;
-  for (const day of days) {
+  const deadline = Date.now() + (o.budgetMs ?? TIME_BUDGET_MS);
+  // newest day first: if the time budget runs out, the oldest days are the ones left unread
+  for (const day of [...days].reverse()) {
+    if (Date.now() > deadline) { failed.push(day); lastError = new SourceError("time budget used up"); continue; }
     try {
-      const d = await readDay(day, o);
+      const d = await readDay(day, { ...o, deadline });
       all.push(...d.contracts);
       read += d.total;
       if (!d.complete) partial.push(day);
@@ -235,7 +254,7 @@ export async function brContractsHarvest(now: Date = new Date(), o: HarvestOptio
     unit: UNIT,
     rows,
     note: `Contracts published ${days[0]} to ${days[days.length - 1]}; ${all.length} usable initial contracts out of ${read} listed.` +
-      (failed.length ? ` Days not read: ${failed.join(", ")}.` : "") +
+      (failed.length ? ` Days not read: ${[...failed].sort().join(", ")}.` : "") +
       (partial.length ? ` Days capped at ${MAX_PAGES_PER_DAY} pages: ${partial.join(", ")}.` : ""),
   };
 }
