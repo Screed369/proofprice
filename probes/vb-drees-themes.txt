@@ -1,0 +1,32 @@
+URL: https://data.drees.solidarites-sante.gouv.fr/api/explore/v2.1/catalog/datasets/enquete-oc-depuis-2019/records?select=theme,type_d_indicateur,count(*)&group_by=theme,type_d_indicateur&limit=60
+Fetched: 2026-10-29T03:46:15Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1785
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: openresty
+date: Thu, 29 Oct 2026 03:46:15 GMT
+content-type: application/json; charset=utf-8
+content-length: 1785
+x-ratelimit-remaining: 4999
+x-ratelimit-limit: 5000
+x-ratelimit-reset: 2026-10-30 00:00:00+00:00
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+vary: Accept-Language, Cookie, Host
+content-language: fr-fr
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS
+access-control-max-age: 1000
+access-control-allow-headers: Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type, ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+access-control-expose-headers: ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit, X-RateLimit-dataset-Reset
+strict-transport-security: max-age=31536000;includeSubdomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: upgrade-insecure-requests; 
+x-ua-compatible: IE=edge
+permissions-policy: midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"total_count": 15, "results": [{"theme": "Effectifs et chiffre d'affaires des organismes", "type_d_indicateur": "Part de b\u00e9n\u00e9ficiaires", "count(*)": 21}, {"theme": "Effectifs et chiffre d'affaires des organismes", "type_d_indicateur": "Part de chiffre d'affaires", "count(*)": 21}, {"theme": "Effectifs et chiffre d'affaires des organismes", "type_d_indicateur": "Part de souscripteurs", "count(*)": 84}, {"theme": "Garanties de pr\u00e9vention", "type_d_indicateur": "Modalit\u00e9s de prise en charge", "count(*)": 12}, {"theme": "Garanties en dentaire", "type_d_indicateur": "Garanties de remboursement", "count(*)": 1200}, {"theme": "Garanties en dentaire", "type_d_indicateur": "Modalit\u00e9s de prise en charge", "count(*)": 1740}, {"theme": "Garanties en optique", "type_d_indicateur": "Garanties de remboursement", "count(*)": 540}, {"theme": "Garanties en optique", "type_d_indicateur": "Modalit\u00e9s de prise en charge", "count(*)": 864}, {"theme": "Garanties en soins de ville", "type_d_indicateur": "Garanties de remboursement", "count(*)": 660}, {"theme": "Garanties en soins de ville", "type_d_indicateur": "Modalit\u00e9s de prise en charge", "count(*)": 1212}, {"theme": "Garanties \u00e0 l'h\u00f4pital", "type_d_indicateur": "Garanties de remboursement", "count(*)": 180}, {"theme": "Garanties \u00e0 l'h\u00f4pital", "type_d_indicateur": "Modalit\u00e9s de prise en charge", "count(*)": 288}, {"theme": "Pratiques tarifaires", "type_d_indicateur": "Modalit\u00e9s de prise en charge", "count(*)": 216}, {"theme": "Primes", "type_d_indicateur": "Prime mensuelle, pour un assur\u00e9 de r\u00e9f\u00e9rence", "count(*)": 75}, {"theme": "Services et clauses particuli\u00e8res", "type_d_indicateur": "Modalit\u00e9s de prise en charge", "count(*)": 336}]}
