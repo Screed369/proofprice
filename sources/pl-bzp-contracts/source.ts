@@ -40,14 +40,14 @@ export const INFO: SourceInfo = {
 export const API_URL = "https://ezamowienia.gov.pl/mo-board/api/v1/notice";
 export const WINDOW_DAYS = 14;
 export const MIN_DAYS = 8; // fewer fully read days than this is a failed harvest, not a thin one
-export const PAGE_SIZE = 50;
+export const PAGE_SIZE = 500; // proven 29 Oct: the portal serves 500 per call (5 MB); 50 per call timed out the 10-minute collector
 export const MIN_VALUE = 1000;
 export const MAX_VALUE = 5_000_000_000;
 export const UNIT = "per contract (or part), total contract value";
 export const WINDOW_PREFIX = "window:";
-export const TIME_BUDGET_MS = 25 * 60 * 1000;
+export const TIME_BUDGET_MS = 8.5 * 60 * 1000; // must stay under the collector's 10-minute limit (scripts/harvest.ts)
 export const CONCURRENCY = 1; // one day at a time: reading side by side got the GitHub runner blocked (HTTP 403 Access Blocked) after 5 days
-export const PAUSE_MS = 2000; // between two calls, to stay under the portal's block
+export const PAUSE_MS = 1500; // between two calls, to stay under the portal's block
 export const BLOCK_WAIT_MS = 90_000; // after a 403/429 block, wait before asking again
 
 /** One contract (a whole tender, or one part of a split tender) with only the fields we use. */
