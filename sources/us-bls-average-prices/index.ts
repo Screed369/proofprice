@@ -1,7 +1,7 @@
 // Manifest: United States grocery and everyday prices (BLS CPI average price data). Logic lives in ./source.ts.
 // The daily collector (harvest) copies the BLS flat file into the price library; requests are answered from the library.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, usBlsPrices, usHarvest } from "./source";
+import { INFO, usBackfill, usBlsPrices, usHarvest, usHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -25,5 +25,7 @@ export default defineSource({
     "for the U.S. city average and four regions, with the change on a year earlier. We copy the BLS file once a day and pass on the published average and its month; no range is calculated, and these are shelf prices, not receipts.",
   nominalCounts: true,
   harvest: usHarvest,
+  backfill: usBackfill,
+  historyKey: (p) => usHistoryKey({ item: String(p.item ?? ""), region: str(p.region) }),
   handle: (p, ctx) => usBlsPrices({ item: String(p.item ?? ""), region: str(p.region), baseUrl: ctx.baseUrl }),
 });

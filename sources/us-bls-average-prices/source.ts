@@ -14,7 +14,7 @@ import { InputError, SourceError } from "../../lib/http";
 import { periodRange } from "../../lib/adapters";
 import { readDaily, readMeta } from "../../lib/library/store";
 import { NO_COUNT } from "../../lib/stats";
-import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import type { BackfillResult, DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { exampleWords, ItemDef, matchItem } from "../../categories/groceries/items";
 
 export const INFO: SourceInfo = {
@@ -231,6 +231,60 @@ export async function usHarvest(): Promise<HarvestResult> {
       `BLS CPI average prices for ${day.month}: ${current} series (items x U.S. city average and four regions), plus the same series a year earlier (item@y1) and a month earlier (item@m1). ` +
       `BLS publishes one average per series and month, so low/high/min/max repeat it and no record count is stored (n is empty).`,
   };
+}
+
+
+// ---------- history backfill (the whole BLS file, monthly) ----------
+
+/**
+ * Pure: monthly figures for every wanted series, for the months from..to (YYYY-MM, inclusive). One BLS average per series and month, so
+ * low/high/min/max repeat it and n is NO_COUNT (BLS publishes no record count). Months with no price are simply absent.
+ */
+export function usMonthly(series: SeriesMap, fromMonth: string, toMonth: string): BackfillResult["periods"] {
+  const byMonth = new Map<string, DailyRow[]>();
+  for (const [key, s] of series) {
+    const [area, item] = key.split("|");
+    for (const [m, v] of s) {
+      if (m < fromMonth || m > toMonth) continue;
+      const list = byMonth.get(m) ?? [];
+      list.push(libraryRow(area, item, v));
+      byMonth.set(m, list);
+    }
+  }
+  return [...byMonth.keys()].sort().map((m) => ({
+    period: m,
+    rows: byMonth.get(m)!.sort((a, b) => a.area.localeCompare(b.area) || a.item.localeCompare(b.item)),
+  }));
+}
+
+/** Backfill: ap.data.0.Current already holds each series from its first month, so one download covers any range. */
+export async function usBackfill(from: string, to: string): Promise<BackfillResult> {
+  const res = await fetch(AP_DATA_URL, { headers: { "user-agent": BLS_USER_AGENT } });
+  if (!res.ok) throw new SourceError(`BLS average price data returned HTTP ${res.status}`);
+  const series = parseApData(Buffer.from(await res.arrayBuffer()).toString("utf8"));
+  const periods = usMonthly(series, from.slice(0, 7), to.slice(0, 7));
+  console.log(`series: ${series.size}; months: ${periods.length} (${periods[0]?.period} to ${periods[periods.length - 1]?.period}); rows: ${periods.reduce((a, p) => a + p.rows.length, 0)}`);
+  return {
+    currency: "USD",
+    unit: "per item (see the item definition)",
+    periods,
+    note:
+      "BLS CPI Average Price Data (series APU): the monthly average retail price of each standard item for the U.S. city average and four regions, as published. " +
+      "BLS publishes one average per series and month, so low/high/min/max repeat it and no record count is stored (n is empty).",
+  };
+}
+
+/** Maps a request to the library keys for /history: the item's BLS code and the area. null when the item or region is not recognised. */
+export function usHistoryKey(p: { item: string; region?: string }): { area: string; item: string; label: string } | null {
+  const m = matchItem(ITEMS, p.item ?? "");
+  if (!m.primary) return null;
+  let area: Area;
+  try {
+    area = resolveArea(p.region).area;
+  } catch {
+    return null;
+  }
+  return { area: area.code, item: m.primary.code, label: `${m.primary.label}, ${area.code === NATIONAL_AREA ? "U.S. city average" : area.name}` };
 }
 
 // ---------- the answer (pure) ----------
