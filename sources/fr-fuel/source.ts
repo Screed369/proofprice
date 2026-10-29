@@ -135,6 +135,10 @@ export async function frFuelNow(input: {
   today?: string;
   baseUrl?: string;
 }): Promise<PriceAnswer> {
+  // A department code (08, 2A, 971) sent as the postcode is what it is: answer for the department instead of finding no station.
+  if (input.postcode && /^\s*(\d{2,3}|2[AB])\s*$/i.test(input.postcode)) {
+    input = { ...input, department: input.postcode.trim(), postcode: undefined };
+  }
   let where: string;
   let area: string;
   if (input.postcode) {

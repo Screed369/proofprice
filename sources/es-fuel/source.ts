@@ -110,7 +110,12 @@ export async function esFuelNow(input: {
   baseUrl?: string;
 }): Promise<PriceAnswer> {
   if (!ES_FIELD[input.fuel]) throw new InputError(`Fuel '${input.fuel}' is not published for Spain.`);
-  const cp = input.postcode?.replace(/\D/g, "");
+  let cp = input.postcode?.replace(/\D/g, "");
+  // A province code (08, 30) sent as the postcode is a province, not a postcode: answer for the province.
+  if (cp && cp.length <= 2) {
+    input = { ...input, area: cp, postcode: undefined };
+    cp = undefined;
+  }
   let province = cp ? esProvinceFromPostcode(cp) : null;
   if (!province && input.area) {
     const a = input.area.replace(/\D/g, "").padStart(2, "0");

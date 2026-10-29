@@ -246,3 +246,23 @@ test("FR: a thin department widens to its region when the library holds a region
   assert.equal(r44?.n, 6);
   assert.equal(day.rows.find((r) => r.area === "08" && r.item === "lpg")?.n, 3);
 });
+
+test("FR: G20261029-4 a department code sent as the postcode ('08' / lpg, '70' / lpg) answers for the department", async () => {
+  const { frFuelNow } = await import("./source");
+  const rec = (i: number) => ({ id: String(i), adresse: "x", ville: "Charleville", cp: "0810" + i, code_departement: "08", gplc_prix: 0.9 + i / 100, gplc_maj: "2026-10-21T10:00:00+00:00" });
+  const realFetch = globalThis.fetch;
+  const seen: string[] = [];
+  globalThis.fetch = (async (url: any) => {
+    seen.push(decodeURIComponent(String(url)));
+    return new Response(JSON.stringify({ results: [1, 2, 3, 4, 5, 6].map(rec) }), { status: 200, headers: { "content-type": "application/json" } });
+  }) as any;
+  try {
+    const a = await frFuelNow({ postcode: "08", fuel: "gplc", today: "2026-10-22" });
+    assert.equal(a.status, "ok");
+    assert.ok(a.sample_size! >= 5);
+    assert.ok(seen.every((u) => /code_departement="08"/.test(u) && !/cp="08"/.test(u)), "queried by department, not by a 2-digit postcode");
+    assert.match(a.summary, /department 08/);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

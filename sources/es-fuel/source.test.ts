@@ -138,3 +138,23 @@ test("ES: widening to a community needs a library row for it; an unknown communi
   assert.equal(esWidenToNational("lpg", "province 42", undefined, new Date("2026-10-22T12:00:00Z"), "RXX"), null);
   assert.equal(esWidenToNational("lpg", "province 42", undefined, new Date("2026-10-22T12:00:00Z"), "RCL"), null); // no RCL rows in the library until the next harvest
 });
+
+test("ES: G20261029-4 a province code sent as the postcode ('08' / lpg, '30' / methane) answers for the province", async () => {
+  const { esFuelNow } = await import("./source");
+  const st = (i: number) => ({ "C.P.": "08001", IDProvincia: "08", Municipio: "BARCELONA", "Tipo Venta": "P", "Precio Gases licuados del petróleo": `0,${80 + i}` });
+  const realFetch = globalThis.fetch;
+  const seen: string[] = [];
+  globalThis.fetch = (async (url: any) => {
+    seen.push(String(url));
+    return new Response(JSON.stringify({ Fecha: "29/10/2026 8:00:00", ListaEESSPrecio: [1, 2, 3, 4, 5, 6].map(st) }), { status: 200, headers: { "content-type": "application/json" } });
+  }) as any;
+  try {
+    const a = await esFuelNow({ postcode: "08", fuel: "lpg" });
+    assert.equal(a.status, "ok");
+    assert.ok(a.sample_size! >= 5);
+    assert.match(seen[0], /FiltroProvincia\/08$/);
+    assert.match(a.summary, /province 08/);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
