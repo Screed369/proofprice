@@ -1,0 +1,32 @@
+URL: https://data.iledefrance-mobilites.fr/api/explore/v2.1/catalog/datasets/titres-et-tarifs
+Fetched: 2026-10-29T05:43:10Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 4763
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: openresty
+date: Thu, 29 Oct 2026 05:43:10 GMT
+content-type: application/json; charset=utf-8
+content-length: 4763
+x-ratelimit-remaining: 999999
+x-ratelimit-limit: 1000000
+x-ratelimit-reset: 2026-10-30 00:00:00+00:00
+cache-control: public, max-age=60
+vary: Accept-Language, Cookie, Host
+content-language: fr-fr
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS
+access-control-max-age: 1000
+access-control-allow-headers: Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type, ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+access-control-expose-headers: ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit, X-RateLimit-dataset-Reset
+strict-transport-security: max-age=31536000;includeSubdomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: upgrade-insecure-requests; 
+x-ua-compatible: IE=edge
+permissions-policy: midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+{"visibility": "domain", "fields": [{"name": "product_name", "description": "Nom complet du produit ", "annotations": {"sortable": true}, "label": "Nom du Produit", "type": "text"}, {"name": "short_description", "description": "Description du produit ", "annotations": {}, "label": "Description", "type": "text"}, {"name": "price_indication", "description": "Indication sur le produit", "annotations": {"sortable": true}, "label": "Indication du produit", "type": "text"}, {"name": "price_period", "description": "P\u00e9riode de validit\u00e9 du produit ", "annotations": {"sortable": true}, "label": "P\u00e9riode du produit", "type": "text"}, {"name": "url", "description": "Lien vers le site du titre ", "annotations": {"sortable": true}, "label": "LIEN VERS LE PORTAIL", "type": "text"}, {"name": "duration_new_fr", "description": "Dur\u00e9e d'application du titre", "annotations": {"facet": true, "facetsort": "-count", "disjunctive": true, "sortable": true}, "label": "DUR\u00c9E", "type": "text"}, {"name": "profile_new_fr", "description": "Profil du voyageur", "annotations": {"facet": true, "facetsort": "-count", "disjunctive": true, "sortable": true}, "label": "PROFIL", "type": "text"}, {"name": "price", "description": null, "annotations": {"sortable": true}, "label": "TARIF", "type": "text"}, {"name": "selling_arguments", "description": null, "annotations": {}, "label": "selling_arguments", "type": "text"}, {"name": "other_product_tag", "description": null, "annotations": {}, "label": "other_product_tag", "type": "text"}, {"name": "duration_new_en", "description": "Dur\u00e9e d'application du titre \u00e9crit en anglais", "annotations": {}, "label": "Dur\u00e9e en anglais", "type": "text"}, {"name": "profile_new_en", "description": "Profil \u00e9crit en anglais", "annotations": {}, "label": "Profil en anglais", "type": "text"}, {"name": "definition_cta_url_button_cta_url_url", "description": "Lien du bouton pour recharger le produit ", "annotations": {}, "label": "Lien recharger produit", "type": "text"}, {"name": "visual_image_mini_alt", "description": "Description de l'image du produit pour les malvoyants", "annotations": {}, "label": "Description image du produit", "type": "text"}, {"name": "visual_image_mini_url", "description": "L'url de l'mage du produit ", "annotations": {}, "label": "Image du produit", "type": "text"}, {"name": "ishighlightable", "description": null, "annotations": {}, "label": "isHighlightable", "type": "int"}], "dataset_id": "titres-et-tarifs", "dataset_uid": "da_nz6zta", "has_records": true, "features": ["analyze", "custom_view"], "attachments": [], "alternative_exports": [], "data_visible": true, "metas": {"default": {"title": "Description et tarif des titres de transport en Ile-de-France", "description": "<p><span style=\"font-family: inherit; color: rgb(0, 0, 0); font-size: 0.875rem; background-color: rgb(255, 255, 255);\">Descriptif des titres de transport valables en Ile-de-France.</span><br></p>\n<p><a href=\"http://www.vianavigo.com/fr/rss-titres-et-tarifs/\" target=\"_blank\"></a></p>", "theme": ["Tarifs & Ventes"], "keyword": ["Titres de transport", "Chercheur ou journaliste", "Collectivit\u00e9", "Plateforme num\u00e9rique"], "license": "Licence Ouverte v2.0 (Etalab)", "license_url": "https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf", "language": "fr", "modified": "2026-10-28T19:00:27+00:00", "publisher": "\u00cele-de-France Mobilit\u00e9s", "references": null, "attributions": null, "update_frequency": null, "bbox": null, "data_processed": "2026-10-28T19:00:27+00:00", "federated": false, "geographic_reference": ["fr_40_11"], "geographic_reference_auto": true, "geometry_types": null, "metadata_languages": ["fr"], "metadata_processed": "2026-10-28T19:00:27.554000+00:00", "modified_updates_on_data_change": true, "modified_updates_on_metadata_change": false, "parent_domain": null, "records_count": 30, "shared_catalog": null, "source_dataset": null, "source_domain": null, "source_domain_address": null, "source_domain_title": null, "territory": ["\u00cele-de-France"], "timezone": null}, "dcat": {"created": null, "issued": null, "creator": null, "contributor": null, "contact_name": null, "contact_email": null, "accrualperiodicity": "Variable", "spatial": null, "temporal": null, "granularity": null, "dataquality": null, "publisher_type": null, "conforms_to": null, "temporal_coverage_start": null, "temporal_coverage_end": null, "accessRights": null, "relation": null}, "custom": {"cgu": null, "plateforme-de-paiement": null, "id-produit": null, "account-id": null, "is-upcoming-data": false, "data_type": "Jeu de donn\u00e9es", "subtitle": null, "canal-slack": "donnees-statiques", "canal_slack": "donnees-statiques"}}}
