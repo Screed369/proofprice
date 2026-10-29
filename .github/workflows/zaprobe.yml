@@ -34,7 +34,7 @@ jobs:
                       if i > 3000: break
           PY
           
-          cd ..; mkdir -p probes_za; cp zadump.txt probes_za/
+          cd ..; mkdir -p probes_za; cp zadump.txt probes_za/; cp out/all.zip probes_za/za-cpi-avg-prices-202609.zip
       - name: push
         run: |
           git config user.name probe; git config user.email probe@users.noreply.github.com
