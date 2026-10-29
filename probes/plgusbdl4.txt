@@ -1,0 +1,23 @@
+URL: https://bdl.stat.gov.pl/api/v1/subjects/search?name=cena&format=json&lang=pl&page-size=50
+Fetched: 2026-10-29T12:48:47Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 3031
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public,max-age=1800
+Content-Length: 3031
+Content-Type: application/json; charset=utf-8
+ETag: 1Y7lDrVY1Of6I0wPwspa5w
+Vary: Accept,Accept-Language
+X-Rate-Limit-Limit: 7d
+X-Rate-Limit-Remaining: 9999
+X-Rate-Limit-Reset: 2026-11-05T12:48:45.5624541Z
+Date: Thu, 29 Oct 2026 12:48:45 GMT
+Set-Cookie: cookie=85e497491d001d5aeeddc2fbaf40e36a;max-age=1800;Path=/;HttpOnly
+Set-Cookie: cookiesession1=678B288AB13117726085DFFCFD081C28;Expires=Fri, 29 Oct 2027 12:48:47 GMT;Path=/;HttpOnly
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"totalRecords":16,"page":0,"pageSize":50,"links":{"first":"https://bdl.stat.gov.pl/api/v1/subjects/search?name=cena&format=json&lang=pl&page-size=50&page=0","self":"https://bdl.stat.gov.pl/api/v1/subjects/search?name=cena&format=json&lang=pl&page-size=50&page=0","last":"https://bdl.stat.gov.pl/api/v1/subjects/search?name=cena&format=json&lang=pl&page-size=50&page=0"},"results":[{"id":"P3415","parentId":"G186","name":"Cena zakupu/sprzedaży użytków rolnych za 1 ha w obrocie prywatnym","hasVariables":true,"children":[],"levels":[3]},{"id":"P3183","parentId":"G186","name":"Cena zakupu/sprzedaży użytków rolnych za 1 ha w obrocie prywatnym (dane kwartalne / półroczne)","hasVariables":true,"children":[],"levels":[3]},{"id":"P2752","parentId":"G573","name":"Dynamika produkcji sprzedanej przemysłu wg sekcji i działów PKD 2007 - w cenach stałych 2005r.","hasVariables":true,"children":[],"levels":[3]},{"id":"P3371","parentId":"G573","name":"Dynamika produkcji sprzedanej przemysłu wg sekcji i działów PKD 2007 - w cenach stałych 2010 r.","hasVariables":true,"children":[],"levels":[3]},{"id":"P3757","parentId":"G379","name":"Dynamika produkcji sprzedanej przemysłu wg sekcji i działów PKD 2007 - w cenach stałych 2015 r.","hasVariables":true,"children":[],"levels":[3]},{"id":"P4503","parentId":"G379","name":"Dynamika produkcji sprzedanej przemysłu wg sekcji i działów PKD 2007 - w cenach stałych 2021 r.","hasVariables":true,"children":[],"levels":[3]},{"id":"P2309","parentId":"G375","name":"Produkcja rolnicza (w cenach stałych roku poprzedniego)","hasVariables":true,"children":[],"levels":[3]},{"id":"P3412","parentId":"G10","name":"Subiektywna ocena sytuacji materialnej gospodarstw domowych","hasVariables":true,"children":[],"levels":[3]},{"id":"P3776","parentId":"G596","name":"Średnia cena lokali mieszkalnych","hasVariables":true,"children":[],"levels":[5]},{"id":"P3782","parentId":"G596","name":"Średnia cena lokali mieszkalnych (dane kwartalne)","hasVariables":true,"children":[],"levels":[5]},{"id":"P3786","parentId":"G597","name":"Średnia cena lokali mieszkalnych sprzedanych w ramach transakcji rynkowych","hasVariables":true,"children":[],"levels":[5]},{"id":"P3792","parentId":"G597","name":"Średnia cena lokali mieszkalnych sprzedanych w ramach transakcji rynkowych (dane kwartalne)","hasVariables":true,"children":[],"levels":[5]},{"id":"P3775","parentId":"G596","name":"Średnia cena za 1 m2 lokali mieszkalnych","hasVariables":true,"children":[],"levels":[5]},{"id":"P3781","parentId":"G596","name":"Średnia cena za 1 m2 lokali mieszkalnych (dane kwartalne)","hasVariables":true,"children":[],"levels":[5]},{"id":"P3788","parentId":"G597","name":"Średnia cena za 1 m2 lokali mieszkalnych sprzedanych w ramach transakcji rynkowych","hasVariables":true,"children":[],"levels":[5]},{"id":"P3794","parentId":"G597","name":"Średnia cena za 1 m2 lokali mieszkalnych sprzedanych w ramach transakcji rynkowych (dane kwartalne)","hasVariables":true,"children":[],"levels":[5]}]}
