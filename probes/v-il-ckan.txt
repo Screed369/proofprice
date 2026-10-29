@@ -1,0 +1,21 @@
+URL: https://data.gov.il/api/3/action/package_search?q=used+car+price&rows=5
+Fetched: 2026-10-29T22:42:13Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 199
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 199
+date: Thu, 29 Oct 2026 22:42:13 GMT
+set-cookie: ckan=98d6a1e1200cf624a48110610aca3e55fe56d28bgAJ9cQAoWAcAAABfZG9tYWlucQFOWAUAAABfcGF0aHECWAEAAAAvcQNYAwAAAF9pZHEEWCAAAABlOWI4ZjZkZWFkMWI0NjY0ODJjZWYzNjZiNTNmMzE0ZHEFWAYAAABfZnJlc2hxBolYDgAAAF9jcmVhdGlvbl90aW1lcQdHQdq48vFaglNYDgAAAF9hY2Nlc3NlZF90aW1lcQhHQdq48vFaglZ1Lg==; expires=Tue, 19-Jan-2038 03:14:07 GMT; HttpOnly; Path=/; SameSite=Lax
+set-cookie: TS012a021d=011618f29a670e1afb13f96db21daa9973dd633298cf7234f7f4ba01197bf84408d744af2522b0ab1cd956882479870a3a4143016d08122d168520a3d6fda04d16b50474f0; Path=/; Domain=.data.gov.il
+cache-control: public, max-age=0, must-revalidate
+x-cache: Miss from cloudfront
+via: 1.1 a19e5a78228f461a542b5c5f6d13243e.cloudfront.net (CloudFront)
+x-amz-cf-pop: PHX52-P1
+x-amz-cf-id: Yu_MkByXJKiua7vx7Xuvh3BzRosMA_zaBruWbRG2pLhSaG9XllUn0A==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://data.gov.il/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 0, "facets": {}, "results": [], "sort": "metadata_modified desc", "search_facets": {}}}
