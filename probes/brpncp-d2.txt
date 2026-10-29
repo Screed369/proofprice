@@ -1,0 +1,25 @@
+URL: https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20261027&dataFinal=20261027&pagina=1&tamanhoPagina=500
+Fetched: 2026-10-29T17:34:11Z from GitHub Actions
+Status, type, bytes: 200 application/json 863289
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+access-control-allow-origin: *
+access-control-allow-methods: GET,PUT,POST,DELETE,OPTIONS
+access-control-allow-credentials: true
+access-control-allow-headers: Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+date: Thu, 29 Oct 2026 17:34:09 GMT
+strict-transport-security: max-age=15768000
+Transfer-Encoding: chunked
+
+=== FILE TYPE: JSON text data
+=== FIRST 2000 BYTES
+{"data":[{"numeroControlePncpCompra":"12075748000132-1-000081/2025","numeroControlePncpAta":"12075748000132-1-000081/2025-000041","codigoPaisFornecedor":null,"orgaoEntidade":{"cnpj":"83102830000157","razaoSocial":"MUNICIPIO DE BARRA VELHA","poderId":"N","esferaId":"M"},"anoContrato":2026,"sequencialContrato":1917,"dataAtualizacao":"2026-10-27T00:00:14","emendaParlamentar":null,"processo":"000043/2025","informacaoComplementar":null,"dataPublicacaoPncp":"2026-10-27T00:00:13","dataAtualizacaoGlobal":"2026-10-27T00:00:14","unidadeOrgao":{"ufNome":"Santa Catarina","ufSigla":"SC","municipioNome":"Barra Velha","codigoUnidade":"CIN461","nomeUnidade":"MUNICÍPIO DE BARRA VELHA","codigoIbge":"4202107"},"orgaoSubRogado":null,"unidadeSubRogada":null,"receita":false,"numeroParcelas":1,"numeroRetificacao":0,"temRemanejamento":false,"frutoAdesao":false,"numeroControlePNCP":"83102830000157-2-001917/2026","tipoContrato":{"id":8,"nome":"Outros"},"numeroContratoEmpenho":"AF355656","categoriaProcesso":{"id":2,"nome":"Compras"},"tipoPessoaSubContratada":null,"niFornecedorSubContratado":null,"nomeFornecedorSubContratado":null,"objetoContrato":"APARELHOS DE AR-CONDICIONADO E CORRELATOS - LEI 14.133/2021 (RENOVADO)","valorInicial":4600.0000,"valorParcela":4600.0000,"valorGlobal":4600.0000,"valorAcumulado":null,"dataAssinatura":"2026-10-26","dataVigenciaInicio":"2026-10-26","dataVigenciaFim":"2026-11-25","identificadorCipi":null,"urlCipi":null,"tipoPessoa":"PJ","niFornecedor":"08824171004304","nomeRazaoSocialFornecedor":"J. C. M. NITEROI REFRIGERACAO LTDA","usuarioNome":"Inovea Tecnologia Ltda"},{"numeroControlePncpCompra":"80881915000192-1-000089/2026","numeroControlePncpAta":null,"codigoPaisFornecedor":null,"orgaoEntidade":{"cnpj":"80881915000192","razaoSocial":"MUNICIPIO DE LINDOESTE","poderId":"N","esferaId":"M"},"anoContrato":2026,"sequencialContrato":22,"dataAtualizacao":"2026-10-27T00:00:20","emendaParlamentar":null,"processo":"IL24/2026","informacaoComplementar":null,"dataPublicacao
