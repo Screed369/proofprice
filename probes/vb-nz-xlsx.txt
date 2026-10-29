@@ -1,0 +1,311 @@
+URL: https://www.hud.govt.nz/assets/Property-and-Sales-data-download-July-2026.xlsx?m=e141007c9ceaea6c61ca3f7d76ad900682f583d8
+Fetched: 2026-10-29T17:44:48Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 27663803
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 29 Oct 2026 17:44:44 GMT
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Length: 27663803
+Last-Modified: Wed, 14 Oct 2026 02:40:19 GMT
+Connection: keep-alive
+ETag: "6aceeb93-1a61dbb"
+Cache-Control: public, no-transform
+Accept-Ranges: bytes
+Set-Cookie: visid_incap_1790121=cYuy0h+ESs2KCjTzwlL8UQuG42oAAAAAQUIPAAAAAAAZbv4Fk5tnYG6gV7I6gEqH; expires=Fri, 29 Oct 2027 07:06:33 GMT; HttpOnly; path=/; Domain=.hud.govt.nz; Secure; SameSite=None
+Set-Cookie: nlbi_1790121=z0Auf3w9IDSPJsU1yB/bXgAAAADfH9xnMDDoHn/A7e46BKhy; HttpOnly; path=/; Domain=.hud.govt.nz; Secure; SameSite=None
+Set-Cookie: incap_ses_1325_1790121=aTD2b9s8ml4ynexyN1ljEgyG42oAAAAAwDX3Ti8hVPyV4+mJwAzYUQ==; path=/; Domain=.hud.govt.nz; Secure; SameSite=None
+X-CDN: Imperva
+X-Iinfo: 14-45631392-45631393 NNNN CT(179 174 0) RT(1793295884208 9) q(0 0 3 0) r(7 7) U3
+
+=== FILE TYPE: Microsoft Excel 2007+
+=== ZIP CONTENTS
+Archive:  body.bin
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     2727  1980-01-01 00:00   [Content_Types].xml
+      881  1980-01-01 00:00   _rels/.rels
+     1813  1980-01-01 00:00   xl/workbook.xml
+     1691  1980-01-01 00:00   xl/_rels/workbook.xml.rels
+    12912  1980-01-01 00:00   xl/worksheets/sheet1.xml
+ 49797145  1980-01-01 00:00   xl/worksheets/sheet2.xml
+ 52031348  1980-01-01 00:00   xl/worksheets/sheet3.xml
+ 87955035  1980-01-01 00:00   xl/worksheets/sheet4.xml
+     4363  1980-01-01 00:00   xl/theme/theme1.xml
+     4110  1980-01-01 00:00   xl/styles.xml
+     8988  1980-01-01 00:00   xl/sharedStrings.xml
+      293  1980-01-01 00:00   xl/worksheets/_rels/sheet2.xml.rels
+      293  1980-01-01 00:00   xl/worksheets/_rels/sheet3.xml.rels
+      293  1980-01-01 00:00   xl/worksheets/_rels/sheet4.xml.rels
+     1483  1980-01-01 00:00   xl/tables/table1.xml
+     1623  1980-01-01 00:00   xl/tables/table2.xml
+     1488  1980-01-01 00:00   xl/tables/table3.xml
+     1681  1980-01-01 00:00   customXml/item1.xml
+      321  1980-01-01 00:00   customXml/itemProps1.xml
+    16938  1980-01-01 00:00   customXml/item2.xml
+     1149  1980-01-01 00:00   customXml/itemProps2.xml
+      335  1980-01-01 00:00   customXml/itemProps4.xml
+      309  1980-01-01 00:00   docMetadata/LabelInfo.xml
+      617  1980-01-01 00:00   docProps/core.xml
+      874  1980-01-01 00:00   docProps/app.xml
+      563  1980-01-01 00:00   docProps/custom.xml
+     1022  1980-01-01 00:00   customXml/item3.xml
+      219  1980-01-01 00:00   customXml/item4.xml
+      296  1980-01-01 00:00   customXml/_rels/item1.xml.rels
+      296  1980-01-01 00:00   customXml/_rels/item2.xml.rels
+      296  1980-01-01 00:00   customXml/_rels/item3.xml.rels
+      296  1980-01-01 00:00   customXml/_rels/item4.xml.rels
+      954  1980-01-01 00:00   customXml/itemProps3.xml
+---------                     -------
+189852652                     33 files
+=== SPREADSHEET SHEETS (first 70 rows each, cells joined with |)
+--- SHEET: Instructions
+|Property and Sales Statistics data extract
+|This extract is a copy of the data used to populate the property and sales statistics dashboard, and is useful for conducting ad-hoc analysis.
+|When using the data for publication purposes, please use the dashboard as published on our website.
+|For further information metric definitions, please refer to the property and sales statistics website "About" tab.
+|For assistance with analysis, general questions, or data requests, please contact us at HUD.Insights@hud.govt.nz
+|How to use this data
+|For your ease of use, this data has been grouped into sheets corresponding to the different tabs found on the dashboard.
+||Each tab contains data related to a particular type of statistic and each comes with its own notes and caveats as below.
+|For analysis, please make sure only one measure is selected at a time before graphing (e.g. filter down to the highest number column available for the measure you want to investigate).
+|Disclaimer:
+||The District Valuation Roll data published by the Ministry for Cities, Environment, Regions, and Transport (formerly Te Tūāpapa Kura Kāinga – Ministry of Housing and Urban Development) is sourced from Toitū Whenua - Land Information New Zealand (LINZ).
+||Valuation and sales data on the District Valuation Roll is collected and prepared by territorial authorities or their agents for rating and other administrative purposes and are based on assumptions, methodologies, and information available at the valuation date. They do not represent current market values and may not reflect individual property circumstances.
+||This information is provided for general information purposes only. It should not be relied upon for financial, investment, valuation, or other decision‑making purposes.
+||The Ministry does not warrant the accuracy, completeness, or currency of the data and accepts no responsibility or liability for any use of the information beyond its intended purpose.
+|Sales
+|Data caveats:
+||Sales counts are for S11 sales (single property, freehold, market sales) as defined in the DVR by the Office of the Valuer General (OVG).
+||Sales counts are for Residential Apartments/Houses/Flats as defined in DVR (R[ADF]).
+||Sales quartile stats exclude sales where a sale price is zero (0).
+||Sales quartile stats exclude groupings where there are fewer than 50 non-zero sales.  
+||Data is sourced from councils after settlement, so is only reported after a 3-month lag.
+||Sales can continue to be received for past months depending on the speed of council processing and data delivery. Consequently, the entire series is revised each month.
+||Ideally new results could be scheduled on the first working day of each month, but this is dependent on the data source being productionised (LINZ).
+||Sale price quartiles can be volatile from month to month and can be affected by compositional change over time. Users wanting to make long term comparisons using sale price quartiles need to be aware of this, and that using a House Price Index (HPI) change may be more appropriate as HPIs are adjusted for quality and composition.
+|Sales composition
+|Data caveats:
+||See Sales data caveats above, these also apply here.
+||CV Quartile allocations are only available for properties that are currently ‘active’ and represent its current state. This means, any historic sales for properties that no longer exist will not be allocated to a CV Quartile. Likewise, if a property has gone through significant change(s) in the past, any sale for that property will still only be allocated the current CV Quartile.
+||Allocating CV Quartiles outside TAs, for example by Regions or National, requires the CVs to be ‘equalised’ or a slightly different approach to be taken. If there is demand, this could be easily added later.
+|House Price Index
+|Data caveats:
+||See Sales data caveats above, these also apply here.
+||The index shows the price change in any area, with all indices based at the same point in time (2018).
+--- SHEET: Sales
+stat_type|area_type|area|period|residential_sales|lower_quartile_sale_price|median_sale_price|upper_quartile_sale_price
+Monthly|Territorial Authority|Far North District|29221|2
+Monthly|Territorial Authority|Far North District|29252|1
+Monthly|Territorial Authority|Far North District|29312|1
+Monthly|Territorial Authority|Far North District|29342|3
+Monthly|Territorial Authority|Far North District|29373|5
+Monthly|Territorial Authority|Far North District|29403|4
+Monthly|Territorial Authority|Far North District|29434|5
+Monthly|Territorial Authority|Far North District|29465|5
+Monthly|Territorial Authority|Far North District|29495|14
+Monthly|Territorial Authority|Far North District|29526|20
+Monthly|Territorial Authority|Far North District|29556|30
+Monthly|Territorial Authority|Far North District|29587|17
+Monthly|Territorial Authority|Far North District|29618|35
+Monthly|Territorial Authority|Far North District|29646|38
+Monthly|Territorial Authority|Far North District|29677|31
+Monthly|Territorial Authority|Far North District|29707|37
+Monthly|Territorial Authority|Far North District|29738|45
+Monthly|Territorial Authority|Far North District|29768|58|29000|34000|54500
+Monthly|Territorial Authority|Far North District|29799|46
+Monthly|Territorial Authority|Far North District|29830|61|29000|40000|57500
+Monthly|Territorial Authority|Far North District|29860|58|31000|40000|60000
+Monthly|Territorial Authority|Far North District|29891|51|31500|40000|50000
+Monthly|Territorial Authority|Far North District|29921|30
+Monthly|Territorial Authority|Far North District|29952|36
+Monthly|Territorial Authority|Far North District|29983|53|38000|57000|70000
+Monthly|Territorial Authority|Far North District|30011|60|31000|42000|51500
+Monthly|Territorial Authority|Far North District|30042|27
+Monthly|Territorial Authority|Far North District|30072|27
+Monthly|Territorial Authority|Far North District|30103|29
+Monthly|Territorial Authority|Far North District|30133|25
+Monthly|Territorial Authority|Far North District|30164|30
+Monthly|Territorial Authority|Far North District|30195|26
+Monthly|Territorial Authority|Far North District|30225|22
+Monthly|Territorial Authority|Far North District|30256|27
+Monthly|Territorial Authority|Far North District|30286|29
+Monthly|Territorial Authority|Far North District|30317|8
+Monthly|Territorial Authority|Far North District|30348|24
+Monthly|Territorial Authority|Far North District|30376|32
+Monthly|Territorial Authority|Far North District|30407|23
+Monthly|Territorial Authority|Far North District|30437|29
+Monthly|Territorial Authority|Far North District|30468|29
+Monthly|Territorial Authority|Far North District|30498|26
+Monthly|Territorial Authority|Far North District|30529|29
+Monthly|Territorial Authority|Far North District|30560|32
+Monthly|Territorial Authority|Far North District|30590|30
+Monthly|Territorial Authority|Far North District|30621|35
+Monthly|Territorial Authority|Far North District|30651|20
+Monthly|Territorial Authority|Far North District|30682|15
+Monthly|Territorial Authority|Far North District|30713|39
+Monthly|Territorial Authority|Far North District|30742|31
+Monthly|Territorial Authority|Far North District|30773|23
+Monthly|Territorial Authority|Far North District|30803|31
+Monthly|Territorial Authority|Far North District|30834|23
+Monthly|Territorial Authority|Far North District|30864|21
+Monthly|Territorial Authority|Far North District|30895|26
+Monthly|Territorial Authority|Far North District|30926|32
+Monthly|Territorial Authority|Far North District|30956|41
+Monthly|Territorial Authority|Far North District|30987|32
+Monthly|Territorial Authority|Far North District|31017|35
+Monthly|Territorial Authority|Far North District|31048|24
+Monthly|Territorial Authority|Far North District|31079|39
+Monthly|Territorial Authority|Far North District|31107|43
+Monthly|Territorial Authority|Far North District|31138|36
+Monthly|Territorial Authority|Far North District|31168|43
+Monthly|Territorial Authority|Far North District|31199|42
+Monthly|Territorial Authority|Far North District|31229|34
+Monthly|Territorial Authority|Far North District|31260|38
+Monthly|Territorial Authority|Far North District|31291|37
+Monthly|Territorial Authority|Far North District|31321|40
+--- SHEET: Sales composition
+stat_type|area_type|area|period|median_sale_price|composition_quartile_1_low_percent|composition_quartile_2_percent|composition_quartile_3_percent|composition_quartile_4_high_percent
+Monthly|Territorial Authority|Far North District|29221||0.5|0|0|0
+Monthly|Territorial Authority|Far North District|29252||0|0|0|0
+Monthly|Territorial Authority|Far North District|29312||0|0|0|0
+Monthly|Territorial Authority|Far North District|29342||0.33300000000000002|0.66700000000000004|0|0
+Monthly|Territorial Authority|Far North District|29373||0.6|0.4|0|0
+Monthly|Territorial Authority|Far North District|29403||0|0.5|0.5|0
+Monthly|Territorial Authority|Far North District|29434||0.4|0.4|0|0.2
+Monthly|Territorial Authority|Far North District|29465||0|0.2|0|0.4
+Monthly|Territorial Authority|Far North District|29495||0.42899999999999999|0.28599999999999998|0.14299999999999999|7.0999999999999994E-2
+Monthly|Territorial Authority|Far North District|29526||0.15|0.1|0.2|0.25
+Monthly|Territorial Authority|Far North District|29556||0.2|0.26700000000000002|0.1|0.26700000000000002
+Monthly|Territorial Authority|Far North District|29587||0.41199999999999998|0.17599999999999999|0.29399999999999998|5.8999999999999997E-2
+Monthly|Territorial Authority|Far North District|29618||0.34300000000000003|8.5999999999999993E-2|0.28599999999999998|0.17100000000000001
+Monthly|Territorial Authority|Far North District|29646||0.184|0.26300000000000001|0.13200000000000001|0.21099999999999999
+Monthly|Territorial Authority|Far North District|29677||0.32300000000000001|0.25800000000000001|0.32300000000000001|3.2000000000000001E-2
+Monthly|Territorial Authority|Far North District|29707||0.189|0.216|0.216|0.24299999999999999
+Monthly|Territorial Authority|Far North District|29738||0.24399999999999999|0.311|0.17799999999999999|0.17799999999999999
+Monthly|Territorial Authority|Far North District|29768|34000|0.25900000000000001|0.27600000000000002|0.20699999999999999|0.20699999999999999
+Monthly|Territorial Authority|Far North District|29799||0.17399999999999999|0.39100000000000001|0.217|0.152
+Monthly|Territorial Authority|Far North District|29830|40000|0.246|0.32800000000000001|9.8000000000000004E-2|0.16400000000000001
+Monthly|Territorial Authority|Far North District|29860|40000|0.34499999999999997|0.224|0.10299999999999999|0.19
+Monthly|Territorial Authority|Far North District|29891|40000|0.35299999999999998|0.23499999999999999|0.17599999999999999|0.13700000000000001
+Monthly|Territorial Authority|Far North District|29921||0.3|0.2|0.26700000000000002|0.2
+Monthly|Territorial Authority|Far North District|29952||0.27800000000000002|0.27800000000000002|0.25|0.13900000000000001
+Monthly|Territorial Authority|Far North District|29983|57000|0.17|0.28299999999999997|0.245|0.113
+Monthly|Territorial Authority|Far North District|30011|42000|0.23300000000000001|0.38300000000000001|0.23300000000000001|0.1
+Monthly|Territorial Authority|Far North District|30042||0.37|0.29599999999999999|7.3999999999999996E-2|0.111
+Monthly|Territorial Authority|Far North District|30072||0.44400000000000001|0.14799999999999999|0.111|0.185
+Monthly|Territorial Authority|Far North District|30103||0.34499999999999997|0.13800000000000001|0.17199999999999999|0.24099999999999999
+Monthly|Territorial Authority|Far North District|30133||0.4|0.2|0.16|0.12
+Monthly|Territorial Authority|Far North District|30164||0.433|0.23300000000000001|0.26700000000000002|0
+Monthly|Territorial Authority|Far North District|30195||0.42299999999999999|0.23100000000000001|7.6999999999999999E-2|0.154
+Monthly|Territorial Authority|Far North District|30225||0.27300000000000002|0.36399999999999999|0.13600000000000001|0.182
+Monthly|Territorial Authority|Far North District|30256||0.37|0.29599999999999999|0.222|3.6999999999999998E-2
+Monthly|Territorial Authority|Far North District|30286||0.27600000000000002|0.31|0.24099999999999999|0.10299999999999999
+Monthly|Territorial Authority|Far North District|30317||0.25|0.5|0.125|0
+Monthly|Territorial Authority|Far North District|30348||0.41699999999999998|0.20799999999999999|8.3000000000000004E-2|8.3000000000000004E-2
+Monthly|Territorial Authority|Far North District|30376||0.375|0.375|6.3E-2|9.4E-2
+Monthly|Territorial Authority|Far North District|30407||0.30399999999999999|0.30399999999999999|0.17399999999999999|8.6999999999999994E-2
+Monthly|Territorial Authority|Far North District|30437||0.41399999999999998|0.31|0.17199999999999999|6.9000000000000006E-2
+Monthly|Territorial Authority|Far North District|30468||0.13800000000000001|0.44800000000000001|0.17199999999999999|0.10299999999999999
+Monthly|Territorial Authority|Far North District|30498||0.42299999999999999|0.154|0.154|0.192
+Monthly|Territorial Authority|Far North District|30529||0.31|0.20699999999999999|0.34499999999999997|0.13800000000000001
+Monthly|Territorial Authority|Far North District|30560||0.28100000000000003|0.25|0.188|0.28100000000000003
+Monthly|Territorial Authority|Far North District|30590||0.2|0.5|6.7000000000000004E-2|0.13300000000000001
+Monthly|Territorial Authority|Far North District|30621||0.17100000000000001|0.371|0.14299999999999999|0.22900000000000001
+Monthly|Territorial Authority|Far North District|30651||0.15|0.2|0.35|0.2
+Monthly|Territorial Authority|Far North District|30682||0|0.26700000000000002|6.7000000000000004E-2|0.4
+Monthly|Territorial Authority|Far North District|30713||0.20499999999999999|0.25600000000000001|7.6999999999999999E-2|0.25600000000000001
+Monthly|Territorial Authority|Far North District|30742||0.22600000000000001|0.25800000000000001|0.25800000000000001|0.19400000000000001
+Monthly|Territorial Authority|Far North District|30773||0.26100000000000001|0.34799999999999998|0.17399999999999999|4.2999999999999997E-2
+Monthly|Territorial Authority|Far North District|30803||0.25800000000000001|0.38700000000000001|0.129|6.5000000000000002E-2
+Monthly|Territorial Authority|Far North District|30834||0.26100000000000001|0.13|0.217|0.217
+Monthly|Territorial Authority|Far North District|30864||0.19|0.28599999999999998|0.33300000000000002|9.5000000000000001E-2
+Monthly|Territorial Authority|Far North District|30895||0.34599999999999997|0.192|0.154|0.26900000000000002
+Monthly|Territorial Authority|Far North District|30926||0.28100000000000003|0.219|0.25|0.219
+Monthly|Territorial Authority|Far North District|30956||0.39|0.19500000000000001|0.22|0.122
+Monthly|Territorial Authority|Far North District|30987||0.34399999999999997|0.28100000000000003|0.125|0.219
+Monthly|Territorial Authority|Far North District|31017||0.22900000000000001|0.314|0.28599999999999998|8.5999999999999993E-2
+Monthly|Territorial Authority|Far North District|31048||0.375|0.20799999999999999|0.125|0.16700000000000001
+Monthly|Territorial Authority|Far North District|31079||0.25600000000000001|0.23100000000000001|0.154|0.20499999999999999
+Monthly|Territorial Authority|Far North District|31107||0.14000000000000001|0.27900000000000003|0.30199999999999999|0.16300000000000001
+Monthly|Territorial Authority|Far North District|31138||0.5|0.111|0.19400000000000001|0.16700000000000001
+Monthly|Territorial Authority|Far North District|31168||0.25600000000000001|0.372|0.20899999999999999|7.0000000000000007E-2
+Monthly|Territorial Authority|Far North District|31199||0.40500000000000003|0.33300000000000002|7.0999999999999994E-2|0.11899999999999999
+Monthly|Territorial Authority|Far North District|31229||0.38200000000000001|0.26500000000000001|0.20599999999999999|8.7999999999999995E-2
+Monthly|Territorial Authority|Far North District|31260||0.34200000000000003|0.23699999999999999|0.13200000000000001|0.23699999999999999
+Monthly|Territorial Authority|Far North District|31291||0.24299999999999999|0.378|0.108|0.16200000000000001
+Monthly|Territorial Authority|Far North District|31321||0.17499999999999999|0.22500000000000001|0.22500000000000001|0.2
+--- SHEET: House Price Index
+stat_type|area_type|area|period|value_quartile|residential_sales_used_for_HPI|house_price_index|annual_change_in_hpi_percent
+Monthly|Territorial Authority|Far North District|29556|All|30|96
+Monthly|Territorial Authority|Far North District|29618|All|35|103
+Monthly|Territorial Authority|Far North District|29646|All|38|94
+Monthly|Territorial Authority|Far North District|29677|All|31|107
+Monthly|Territorial Authority|Far North District|29707|All|37|99
+Monthly|Territorial Authority|Far North District|29738|All|45|106
+Monthly|Territorial Authority|Far North District|29768|All|58|105
+Monthly|Territorial Authority|Far North District|29799|All|46|113
+Monthly|Territorial Authority|Far North District|29830|All|61|123
+Monthly|Territorial Authority|Far North District|29860|All|58|115
+Monthly|Territorial Authority|Far North District|29891|All|51|128
+Monthly|Territorial Authority|Far North District|29921|All|30|121|0.26041666666666702
+Monthly|Territorial Authority|Far North District|29952|All|36|115
+Monthly|Territorial Authority|Far North District|29983|All|53|133|0.29126213592233002
+Monthly|Territorial Authority|Far North District|30011|All|60|136|0.44680851063829802
+Monthly|Territorial Authority|Far North District|30164|All|30|155|0.37168141592920401
+Monthly|Territorial Authority|Far North District|30376|All|32|138|1.4705882352941201E-2
+Monthly|Territorial Authority|Far North District|30560|All|32|148
+Monthly|Territorial Authority|Far North District|30590|All|30|133
+Monthly|Territorial Authority|Far North District|30621|All|35|140
+Monthly|Territorial Authority|Far North District|30713|All|39|161
+Monthly|Territorial Authority|Far North District|30742|All|31|151|9.4202898550724598E-2
+Monthly|Territorial Authority|Far North District|30803|All|31|154
+Monthly|Territorial Authority|Far North District|30926|All|32|169|0.141891891891892
+Monthly|Territorial Authority|Far North District|30956|All|41|163|0.22556390977443599
+Monthly|Territorial Authority|Far North District|30987|All|32|171|0.221428571428571
+Monthly|Territorial Authority|Far North District|31017|All|35|177
+Monthly|Territorial Authority|Far North District|31079|All|39|176|9.3167701863354005E-2
+Monthly|Territorial Authority|Far North District|31107|All|43|176|0.165562913907285
+Monthly|Territorial Authority|Far North District|31138|All|36|185
+Monthly|Territorial Authority|Far North District|31168|All|43|166|7.7922077922077906E-2
+Monthly|Territorial Authority|Far North District|31199|All|42|172
+Monthly|Territorial Authority|Far North District|31229|All|34|195
+Monthly|Territorial Authority|Far North District|31260|All|38|188
+Monthly|Territorial Authority|Far North District|31291|All|37|169|0
+Monthly|Territorial Authority|Far North District|31321|All|40|188|0.153374233128834
+Monthly|Territorial Authority|Far North District|31352|All|32|204|0.19298245614035101
+Monthly|Territorial Authority|Far North District|31382|All|32|175
+Monthly|Territorial Authority|Far North District|31413|All|31|171
+Monthly|Territorial Authority|Far North District|31472|All|38|203|0.15340909090909099
+Monthly|Territorial Authority|Far North District|31503|All|44|178
+Monthly|Territorial Authority|Far North District|31533|All|38|196|0.180722891566265
+Monthly|Territorial Authority|Far North District|31564|All|37|182|5.8139534883720902E-2
+Monthly|Territorial Authority|Far North District|31594|All|38|181
+Monthly|Territorial Authority|Far North District|31625|All|51|193|2.6595744680851099E-2
+Monthly|Territorial Authority|Far North District|31656|All|37|193|0.14201183431952699
+Monthly|Territorial Authority|Far North District|31686|All|43|211|0.122340425531915
+Monthly|Territorial Authority|Far North District|31717|All|43|214|4.9019607843137303E-2
+Monthly|Territorial Authority|Far North District|31747|All|52|216|0.23428571428571399
+Monthly|Territorial Authority|Far North District|31778|All|33|205|0.198830409356725
+Monthly|Territorial Authority|Far North District|31809|All|46|203
+Monthly|Territorial Authority|Far North District|31837|All|52|209|2.95566502463054E-2
+Monthly|Territorial Authority|Far North District|31868|All|35|210|0.17977528089887601
+Monthly|Territorial Authority|Far North District|31898|All|48|203|3.5714285714285698E-2
+Monthly|Territorial Authority|Far North District|31929|All|35|214|0.175824175824176
+Monthly|Territorial Authority|Far North District|31959|All|40|233|0.287292817679558
+Monthly|Territorial Authority|Far North District|31990|All|38|243|0.25906735751295301
+Monthly|Territorial Authority|Far North District|32021|All|54|220|0.13989637305699501
+Monthly|Territorial Authority|Far North District|32051|All|42|233|0.104265402843602
+Monthly|Territorial Authority|Far North District|32082|All|33|240|0.121495327102804
+Monthly|Territorial Authority|Far North District|32112|All|32|237|9.7222222222222196E-2
+Monthly|Territorial Authority|Far North District|32143|All|31|224|9.2682926829268306E-2
+Monthly|Territorial Authority|Far North District|32174|All|39|228|0.123152709359606
+Monthly|Territorial Authority|Far North District|32203|All|44|233|0.11483253588516699
+Monthly|Territorial Authority|Far North District|32234|All|35|210|0
+Monthly|Territorial Authority|Far North District|32264|All|47|230|0.133004926108374
+Monthly|Territorial Authority|Far North District|32295|All|40|212
+Monthly|Territorial Authority|Far North District|32325|All|37|241|3.4334763948497903E-2
+Monthly|Territorial Authority|Far North District|32356|All|52|234
+=== FIRST 30000 BYTES OF [Content_Types].xml
