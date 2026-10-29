@@ -14,7 +14,7 @@ export default defineSource({
       "AT: a municipality among the 100 largest ('Wien' / 'Vienna', 'Graz', 'Linz', 'Salzburg', 'Innsbruck'), a district ('Wien 2' for Leopoldstadt, 'Bezirk Baden', 'Kitzbühel'), or a Bundesland ('Tirol', 'Niederösterreich' / 'Lower Austria'). Omit for Austria. Official annual medians per m², not a list of sales.",
     postcode: "AT: only Vienna postcodes (1010 to 1230) are matched, to the Vienna district; elsewhere give the town or district as town.",
     property_type:
-      "AT: house or apartment (flats). The figure is the price per m² of living area. With no type given the headline is the flat figure and both medians are in extra.by_type. There is no figure for both together or for villas, detached, semi-detached or terraced homes.",
+      "AT: house or apartment (flats). The figure is the price per m² of living area. With no type given the headline is the flat figure and both medians are in extra.by_type. There is no figure for both together. Villa, detached, semi-detached and terraced get the all-houses figure, labelled as such (extra.widened_from).",
     months: "AT: ignored; STATISTIK AUSTRIA publishes one figure per calendar year (the latest is returned).",
   },
   paramValues: { property_type: ["house", "apartment"] },

@@ -457,11 +457,18 @@ export function atAnswer(data: AtData, q: AtQuery): PriceAnswer {
   const label = areaLabel(area);
 
   if (want === null) {
-    return noMatch(
-      q,
-      label,
-      `STATISTIK AUSTRIA publishes prices for houses and for owner-occupied flats only; it does not split houses into detached, semi-detached, terraced or villas, so there is no official figure for property_type '${q.property_type}'. Ask for 'house' or 'apartment'.`,
-    );
+    // Depth Builder 2026-10-29: villa/detached/semi-detached/terraced used to end in no_matches. STATISTIK AUSTRIA has one figure for all houses,
+    // so pass that on, labelled as the all-houses figure (never presented as the figure for the sub-type asked).
+    const base = atAnswer(data, { ...q, property_type: "house" });
+    if (base.status !== "ok") return base;
+    return {
+      ...base,
+      query: { ...base.query, property_type: q.property_type },
+      summary:
+        `STATISTIK AUSTRIA does not split houses into detached, semi-detached, terraced or villas, so there is no figure for '${q.property_type}' on its own. ` +
+        `This is the published figure for all houses (Wohnhäuser) together. ${base.summary}`,
+      extra: { ...(base.extra ?? {}), widened_from: q.property_type, widened_to: "house" },
+    };
   }
 
   if (want === "any") {

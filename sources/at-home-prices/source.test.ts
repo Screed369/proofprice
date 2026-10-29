@@ -422,8 +422,12 @@ test("at-home-prices: 'any' gives both medians with the flat figure as headline;
   assert.match(at.summary, /Austria/);
   for (const t of ["villa", "detached", "semi-detached", "terraced"]) {
     const a = answer("Wien", t);
-    assert.equal(a.status, "no_matches", t);
-    assert.match(a.summary, new RegExp(`no official figure for property_type '${t}'`));
+    assert.equal(a.status, "ok", t);
+    assert.equal(a.price!.value, 5376, t); // the all-houses figure, labelled as such
+    assert.match(a.summary, new RegExp(`no figure for '${t}' on its own`));
+    assert.match(a.summary, /figure for all houses \(Wohnhäuser\) together/);
+    assert.equal((a.extra as any).widened_from, t);
+    assert.equal(a.query.property_type, t);
   }
   for (const t of ["condo", "flat-maisonette"]) assert.equal(answer("Wien", t).price!.value, 5212, t);
   // a place that has only one of the two kinds
