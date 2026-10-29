@@ -1,0 +1,35 @@
+URL: https://www.datos.gov.co/resource/he3q-86dn.json?%24where=anio_precio%3D%272026%27&%24limit=8&%24order=fecha_precio%20DESC
+Fetched: 2026-10-29T12:50:23Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2843
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 29 Oct 2026 12:50:23 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC44NjUxXzFfMTAwMUdaUlNFZ1FMeDVwZUZWN2djZWF1WElxLWV0MA---gzimN5h6CvRo7GvGvTyWwDQ0g1t8hh--gzip--gzip"
+X-SODA2-Fields: ["fecha_precio","anio_precio","mes_precio","dia_precio","departamento_eds","municipio_eds","nombre_comercial_eds","precio_promedio_publicado","tipo_combustible","codigo_municipio_dane","latitud_municipio","longitud_municipio"]
+X-SODA2-Types: ["text","text","text","text","text","text","text","number","text","text","text","text"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 29 Oct 2026 06:01:36 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 29 Oct 2026 06:01:36 GMT
+Last-Modified: Thu, 29 Oct 2026 06:01:36 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 1369cfd51154a6f700a3623ec441cb48
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 9000 BYTES
+[{"fecha_precio":"2026-9-01","anio_precio":"2026","mes_precio":"9","dia_precio":"01","departamento_eds":"CUNDINAMARCA","municipio_eds":"UBATE","nombre_comercial_eds":"ESTACION DE SERVICIO VILLA DE SAN DIEGO","precio_promedio_publicado":"3701","tipo_combustible":"GNCV","codigo_municipio_dane":"25843","latitud_municipio":"5.30746","longitud_municipio":"-73.814"}
+,{"fecha_precio":"2026-9-01","anio_precio":"2026","mes_precio":"9","dia_precio":"01","departamento_eds":"BOGOTA D.C.","municipio_eds":"BOGOTA, D.C.","nombre_comercial_eds":"BIOMAX SANANDRESITO 38","precio_promedio_publicado":"3661","tipo_combustible":"GNCV","codigo_municipio_dane":"11001","latitud_municipio":"4.64925","longitud_municipio":"-74.107"}
+,{"fecha_precio":"2026-9-01","anio_precio":"2026","mes_precio":"9","dia_precio":"01","departamento_eds":"ANTIOQUIA","municipio_eds":"MEDELLIN","nombre_comercial_eds":"EDS TERPEL NORTE GNV","precio_promedio_publicado":"3296","tipo_combustible":"GNCV","codigo_municipio_dane":"05001","latitud_municipio":"6.24663","longitud_municipio":"-75.581"}
+,{"fecha_precio":"2026-9-01","anio_precio":"2026","mes_precio":"9","dia_precio":"01","departamento_eds":"BOGOTA D.C.","municipio_eds":"BOGOTA, D.C.","nombre_comercial_eds":"ESTACION DE SERVICIO SAN CARLOS DEL SUR","precio_promedio_publicado":"3699","tipo_combustible":"GNCV","codigo_municipio_dane":"11001","latitud_municipio":"4.64925","longitud_municipio":"-74.107"}
+,{"fecha_precio":"2026-9-01","anio_precio":"2026","mes_precio":"9","dia_precio":"01","departamento_eds":"CUNDINAMARCA","municipio_eds":"SOACHA","nombre_comercial_eds":"EDS EL RETORNO GNV","precio_promedio_publicado":"3769","tipo_combustible":"GNCV","codigo_municipio_dane":"25754","latitud_municipio":"4.57927","longitud_municipio":"-74.215"}
+,{"fecha_precio":"2026-9-01","anio_precio":"2026","mes_precio":"9","dia_precio":"01","departamento_eds":"VALLE DEL CAUCA","municipio_eds":"CALI","nombre_comercial_eds":"ESTACION DE SERVICIO LA LUNA GNV","precio_promedio_publicado":"3499","tipo_combustible":"GNCV","codigo_municipio_dane":"76001","latitud_municipio":"3.41369","longitud_municipio":"-76.521"}
+,{"fecha_precio":"2026-9-01","anio_precio":"2026","mes_precio":"9","dia_precio":"01","departamento_eds":"BOYACA","municipio_eds":"TUNJA","nombre_comercial_eds":"ESTACION DE SERVICIO GNV LA ESMERALDA","precio_promedio_publicado":"4029","tipo_combustible":"GNCV","codigo_municipio_dane":"15001","latitud_municipio":"5.53988","longitud_municipio":"-73.355"}
+,{"fecha_precio":"2026-9-01","anio_precio":"2026","mes_precio":"9","dia_precio":"01","departamento_eds":"RISARALDA","municipio_eds":"DOSQUEBRADAS","nombre_comercial_eds":"ESTACION DE SERVICIO DEL CAFÉ","precio_promedio_publicado":"3270","tipo_combustible":"GNCV","codigo_municipio_dane":"66170","latitud_municipio":"4.83313","longitud_municipio":"-75.675"}]
