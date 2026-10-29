@@ -1,0 +1,23 @@
+URL: https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3820&format=json&lang=pl&page-size=60
+Fetched: 2026-10-29T12:49:53Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2802
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public,max-age=1800
+Content-Length: 2802
+Content-Type: application/json; charset=utf-8
+ETag: jjsygrlcGXrXJVqixwuOfA
+Vary: Accept,Accept-Language
+X-Rate-Limit-Limit: 7d
+X-Rate-Limit-Remaining: 9999
+X-Rate-Limit-Reset: 2026-11-05T12:49:49.4320284Z
+Date: Thu, 29 Oct 2026 12:49:51 GMT
+Set-Cookie: cookie=85e497491d001d5aeeddc2fbf140e36a;max-age=1800;Path=/;HttpOnly
+Set-Cookie: cookiesession1=678B288A4F84EE21B4EE7786B8441080;Expires=Fri, 29 Oct 2027 12:49:53 GMT;Path=/;HttpOnly
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"totalRecords":14,"page":0,"pageSize":60,"links":{"first":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3820&format=json&lang=pl&page-size=60&page=0","self":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3820&format=json&lang=pl&page-size=60&page=0","last":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3820&format=json&lang=pl&page-size=60&page=0"},"results":[{"id":747060,"subjectId":"P3820","n1":"mieszkania oddane do użytkowania na 1000 ludności","level":6,"measureUnitId":1,"measureUnitName":"-"},{"id":747061,"subjectId":"P3820","n1":"mieszkania oddane do użytkowania na 10 tys. ludności","level":6,"measureUnitId":1,"measureUnitName":"-"},{"id":747062,"subjectId":"P3820","n1":"mieszkania oddane do użytkowania na 1000 zawartych małżeństw","level":6,"measureUnitId":1,"measureUnitName":"-"},{"id":747063,"subjectId":"P3820","n1":"powierzchnia użytkowa mieszkań oddanych do użytkowania na 1000 ludności","level":6,"measureUnitId":16,"measureUnitName":"m2"},{"id":747064,"subjectId":"P3820","n1":"przeciętna powierzchnia użytkowa 1 mieszkania oddanego do użytkowania","level":6,"measureUnitId":16,"measureUnitName":"m2"},{"id":747065,"subjectId":"P3820","n1":"przeciętna liczba izb w 1 mieszkaniu oddanym do użytkowania","level":6,"measureUnitId":1,"measureUnitName":"-"},{"id":747066,"subjectId":"P3820","n1":"nowe budynki mieszkalne na 1000 ludności","level":6,"measureUnitId":1,"measureUnitName":"-"},{"id":747067,"subjectId":"P3820","n1":"udział mieszkań oddanych do użytkowania w nowych budynkach jednorodzinnych w łącznej liczbie mieszkań oddanych do użytkowania w nowych budynkach mieszkalnych","level":6,"measureUnitId":50,"measureUnitName":"%"},{"id":747068,"subjectId":"P3820","n1":"udział mieszkań oddanych do użytkowania w nowych budynkach wielorodzinnych w łącznej liczbie mieszkań oddanych do użytkowania w nowych budynkach mieszkalnych","level":6,"measureUnitId":50,"measureUnitName":"%"},{"id":747069,"subjectId":"P3820","n1":"przeciętny czas trwania budowy nowych budynków mieszkalnych jednorodzinnych","level":6,"measureUnitId":86,"measureUnitName":"mc"},{"id":747070,"subjectId":"P3820","n1":"przeciętny czas trwania budowy nowych budynków mieszkalnych wielorodzinnych","level":6,"measureUnitId":86,"measureUnitName":"mc"},{"id":747071,"subjectId":"P3820","n1":"średnia trzyletnia liczby mieszkań oddanych do użytkowania","level":6,"measureUnitId":1,"measureUnitName":"-"},{"id":747072,"subjectId":"P3820","n1":"średnia trzyletnia liczby mieszkań oddanych do użytkowania na 1000 ludności","level":6,"measureUnitId":1,"measureUnitName":"-"},{"id":1725019,"subjectId":"P3820","n1":"powierzchnia użytkowa mieszkań oddanych do użytkowania na 1 mieszkańca","level":6,"measureUnitId":16,"measureUnitName":"m2"}]}
