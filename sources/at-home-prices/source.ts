@@ -627,12 +627,11 @@ export async function atHomePrices(
     throw new InputError(`property_type must be one of: ${TYPE_ASK.join(", ")}`);
   }
   const postcode = (input.postcode ?? "").trim() || null;
-  if (!postcode && !(input.town ?? "").trim()) {
-    throw new InputError("A place is required: give the town or district as town (for example town=Wien, town=Graz, town=Tirol) or a Vienna postcode (postcode=1020). town=Austria gives the national figure.");
-  }
+  // gap G20261029-1: no place at all means the national figure, never an error or no_matches
+  const town = (input.town ?? "").trim() || (postcode ? null : "Austria");
   if (postcode && !input.town && viennaDistrictOfPostcode(postcode) === null) {
     throw new InputError("STATISTIK AUSTRIA publishes Austrian home prices by district, municipality and Bundesland; only Vienna postcodes (1010 to 1230) can be matched. Give the town or district as town.");
   }
   const data = o.data ?? (await loadData({ fetcher: o.fetcher, now: o.now }));
-  return atAnswer(data, { town: input.town ?? null, postcode, property_type: type as AskType, baseUrl: input.baseUrl });
+  return atAnswer(data, { town: postcode && !(input.town ?? "").trim() ? null : town, postcode, property_type: type as AskType, baseUrl: input.baseUrl });
 }

@@ -180,6 +180,24 @@
       "tool": "pricepaid_wholesale_power_prices",
       "rest_path": "wholesale-power",
       "comment": "existing before 21 Oct 2026"
+    },
+    {
+      "id": "transport-fares",
+      "tool": "pricepaid_transport_fares",
+      "rest_path": "transport-fares",
+      "comment": "approved by Simon 29 Oct 2026 (posted public-transport fares, labelled posted; first sources SG MRT/LRT and FR IDFM)"
+    },
+    {
+      "id": "state-property-rents",
+      "tool": "pricepaid_state_property_rents",
+      "rest_path": "state-property-rents",
+      "comment": "approved by Simon 29 Oct 2026 (rents awarded on state-owned property; first source SG SLA)"
+    },
+    {
+      "id": "supplementary-health-insurance",
+      "tool": "pricepaid_supplementary_health_insurance",
+      "rest_path": "supplementary-health-insurance",
+      "comment": "approved by Simon 29 Oct 2026 (complementary health cover premiums; first source FR DREES; use the existing health-insurance tool first if it fits)"
     }
   ]
 }
