@@ -1,0 +1,31 @@
+URL: https://data.bus-data.dft.gov.uk/api/v1/fares/dataset/?limit=1
+Fetched: 2026-10-29T14:45:31Z from GitHub Actions
+Status, type, bytes: 401 application/json 58
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 401 
+content-type: application/json
+content-length: 58
+date: Thu, 29 Oct 2026 14:45:31 GMT
+content-security-policy: script-src 'self' 'unsafe-inline' www.googletagmanager.com ajax.googleapis.com/ajax/libs/jquery google-analytics.com; frame-ancestors 'self'; connect-src 'self' *.mapbox.com *.localhost:8000 *.bus-data.dft.gov.uk google-analytics.com; default-src 'self'; object-src 'none'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; worker-src 'self' blob:
+set-cookie: AWSALB=mXCnqrHVNvAun31RGvIo5fXg+5CIy/EgKAQYUNB2HfA/F645I2biqM85RF23/UG3ypogYrI3EUK8U9gsyXxuHE0qhCEwiRqiXTQbiNGTV9HNpqi3uQ80j/CMe9p+; Expires=Thu, 05 Nov 2026 14:45:31 GMT; Path=/
+set-cookie: AWSALBCORS=mXCnqrHVNvAun31RGvIo5fXg+5CIy/EgKAQYUNB2HfA/F645I2biqM85RF23/UG3ypogYrI3EUK8U9gsyXxuHE0qhCEwiRqiXTQbiNGTV9HNpqi3uQ80j/CMe9p+; Expires=Thu, 05 Nov 2026 14:45:31 GMT; Path=/; SameSite=None; Secure
+server: gunicorn
+www-authenticate: Token
+allow: GET, HEAD, OPTIONS
+vary: Cookie, origin
+permissions-policy: geolocation=(self), microphone=(self), camera=(self)
+x-frame-options: DENY
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-cache: Error from cloudfront
+via: 1.1 d001ee82d54e86bc2401900221a7c6cc.cloudfront.net (CloudFront)
+x-amz-cf-pop: ORD58-P9
+x-amz-cf-id: -3AzJoOLfxw1LGXuYA-g0D_DmQN8Iz0s69yZmEc5BZ5aJNgTBkZeZA==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"detail":"Authentication credentials were not provided."}
