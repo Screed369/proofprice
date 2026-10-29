@@ -1,0 +1,17 @@
+
+> proofprice@1.0.0 harvest
+> node scripts/gen-registry.mjs && tsx scripts/harvest.ts nz-hud-home-sales
+
+gen-registry: skipping sources/at-fuel (no index.ts)
+gen-registry: skipping sources/au-wa-fuel (no index.ts)
+gen-registry: skipping sources/hr-halmed-medicines (no index.ts)
+gen-registry: skipping sources/no-fiskeridir-fish (no index.ts)
+gen-registry: skipping sources/us-cms-inpatient (no index.ts)
+gen-registry: skipping sources/us-cms-physician (no index.ts)
+gen-registry: 33 categories, 200 sources
+OK   nz-hud-home-sales: 251 rows for 2026-07-31 (1 days held)
+total 32
+drwxr-xr-x 2 runner runner  4096 Oct 29 18:52 .
+drwxr-xr-x 3 runner runner  4096 Oct 29 18:52 ..
+-rw-r--r-- 1 runner runner 20625 Oct 29 18:52 2026-07.csv
+252 library/nz-hud-home-sales/daily/2026-07.csv
