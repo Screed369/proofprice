@@ -627,6 +627,9 @@ export async function atHomePrices(
     throw new InputError(`property_type must be one of: ${TYPE_ASK.join(", ")}`);
   }
   const postcode = (input.postcode ?? "").trim() || null;
+  if (!postcode && !(input.town ?? "").trim()) {
+    throw new InputError("A place is required: give the town or district as town (for example town=Wien, town=Graz, town=Tirol) or a Vienna postcode (postcode=1020). town=Austria gives the national figure.");
+  }
   if (postcode && !input.town && viennaDistrictOfPostcode(postcode) === null) {
     throw new InputError("STATISTIK AUSTRIA publishes Austrian home prices by district, municipality and Bundesland; only Vienna postcodes (1010 to 1230) can be matched. Give the town or district as town.");
   }

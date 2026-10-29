@@ -503,6 +503,10 @@ test("at-home-prices: downloadFile asks the publisher once, honestly, and report
 test("at-home-prices: atHomePrices validates input and answers from the parsed file", async () => {
   clearCache();
   await assert.rejects(() => atHomePrices({ town: "Wien", property_type: "castle" }, { data: DATA }), (e: unknown) => e instanceof InputError && /property_type must be one of/.test((e as Error).message));
+  // gap G20261029-1: no place at all is a 400 with examples, not no_matches
+  for (const blank of [{}, { town: "" }, { town: "   ", property_type: "apartment" }]) {
+    await assert.rejects(() => atHomePrices(blank, { data: DATA }), (e: unknown) => e instanceof InputError && /town=Wien/.test((e as Error).message) && /postcode=1020/.test((e as Error).message));
+  }
   await assert.rejects(() => atHomePrices({ postcode: "4020" }, { data: DATA }), InputError); // only Vienna postcodes can be matched
   const byPostcode = await atHomePrices({ postcode: "1210", property_type: "apartment" }, { data: DATA });
   assert.equal(byPostcode.price!.value, 5253);
