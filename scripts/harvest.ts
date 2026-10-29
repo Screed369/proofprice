@@ -13,6 +13,14 @@ import { libraryDates, readMeta, writeDaily, writeMeta, SourceMeta } from "../li
 import { passesGate } from "../lib/stats";
 
 const TIMEOUT_MS = 10 * 60 * 1000;
+// A source that already failed on its previous harvest (a known outage) runs after the healthy ones, and the
+// whole run stops starting sources at DEADLINE_MS, so a few hanging outages can never push the workflow past its 45-minute limit
+// (the scheduled run of 29 Oct 09:54 UTC was cancelled at 45 min with pl-bzp-contracts, gb-ukhpi and others timing out in a row).
+const DEADLINE_MS = 38 * 60 * 1000;
+
+function knownOutage(prev: SourceMeta | null): boolean {
+  return !!(prev?.last_error && prev.last_harvest_at && !prev.last_error.startsWith("Data check held back"));
+}
 
 function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
   return new Promise((resolve, reject) => {
@@ -31,8 +39,15 @@ async function main() {
   }
   let ok = 0;
   const report: string[] = [];
-  for (const s of targets) {
+  const runStart = Date.now();
+  // healthy sources first, known outages last (stable within each group)
+  const ordered = [...targets].sort((a, b) => Number(knownOutage(readMeta(a.info.id))) - Number(knownOutage(readMeta(b.info.id))));
+  for (const s of ordered) {
     const id = s.info.id;
+    if (Date.now() - runStart > DEADLINE_MS) {
+      report.push(`SKIP ${id}: not started, the run's ${DEADLINE_MS / 60000}-minute budget was used up (it is collected on the next run)`);
+      continue;
+    }
     const started = new Date().toISOString();
     const prev: SourceMeta = readMeta(id) ?? {
       source: id, currency: null, unit: null, first_date: null, last_date: null, days: 0,
@@ -76,7 +91,7 @@ async function main() {
     }
   }
   console.log(report.join("\n"));
-  if (ok === 0) {
+  if (ok === 0 && targets.length) {
     console.error("Every source failed.");
     process.exit(1);
   }
