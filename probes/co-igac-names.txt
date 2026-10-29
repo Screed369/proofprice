@@ -1,0 +1,33 @@
+URL: https://www.datos.gov.co/resource/7y2j-43cv.json?$select=municipio,departamento,max(year_radica),count(*)&$where=tiene_valor%3D1%20AND%20nombre_natujur%20like%20%27COMPRAVENTA%25%27%20AND%20(municipio%20like%20%27%25BOGOT%25%27%20OR%20municipio%20like%20%27%25MEDELL%25%27%20OR%20municipio%20like%20%27%25CALI%25%27)&$group=municipio,departamento&$limit=20
+Fetched: 2026-10-29T20:54:17Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 602
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 29 Oct 2026 20:54:17 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC43MzI2OV8xXzMxa0lWNF9teFc1TFRMdzFtcG9WYlp4d2ZhaWpB---gzipAWyn6D0U3l6zXjKok1zYx4z94fg--gzip--gzip"
+X-SODA2-Fields: ["municipio","departamento","max_year_radica","count"]
+X-SODA2-Types: ["text","text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+X-SODA2-Secondary-Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: a0e16aae4d896437384bebd1605518cb
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"municipio":"BOGOTÁ D.C.","departamento":"BOGOTÁ D.C.","max_year_radica":"2023","count":"295534"}
+,{"municipio":"CALIFORNIA","departamento":"SANTANDER","max_year_radica":"2023","count":"278"}
+,{"municipio":"CALIMA","departamento":"VALLE DEL CAUCA","max_year_radica":"2023","count":"1570"}
+,{"municipio":"MEDELLÍN","departamento":"ANTIOQUIA","max_year_radica":"2023","count":"126520"}
+,{"municipio":"SAN CALIXTO","departamento":"NORTE DE SANTANDER","max_year_radica":"2023","count":"285"}
+,{"municipio":"SANTIAGO DE CALI","departamento":"VALLE DEL CAUCA","max_year_radica":"2023","count":"93166"}]
