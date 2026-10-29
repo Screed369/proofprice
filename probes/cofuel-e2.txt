@@ -1,0 +1,807 @@
+URL: https://www.datos.gov.co/api/views/he3q-86dn/columns.json
+Fetched: 2026-10-29T12:49:17Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 16406
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 29 Oct 2026 12:49:17 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: a660da21ae8b705b12422acb4b6f44b9
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[ {
+  "id" : 580468926,
+  "name" : "FECHA_PRECIO",
+  "dataTypeName" : "text",
+  "description" : "Fecha de publicación del precio",
+  "fieldName" : "fecha_precio",
+  "position" : 1,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293569,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "2026-9-01",
+    "null" : "0",
+    "top" : [ {
+      "item" : "2022-11-01",
+      "count" : "269"
+    }, {
+      "item" : "2022-10-01",
+      "count" : "260"
+    }, {
+      "item" : "2023-1-01",
+      "count" : "252"
+    }, {
+      "item" : "2023-11-01",
+      "count" : "240"
+    }, {
+      "item" : "2023-2-01",
+      "count" : "239"
+    }, {
+      "item" : "2022-12-01",
+      "count" : "233"
+    }, {
+      "item" : "2022-7-01",
+      "count" : "229"
+    }, {
+      "item" : "2023-3-01",
+      "count" : "223"
+    }, {
+      "item" : "2022-9-01",
+      "count" : "223"
+    }, {
+      "item" : "2022-5-01",
+      "count" : "222"
+    }, {
+      "item" : "2024-6-01",
+      "count" : "219"
+    }, {
+      "item" : "2023-12-01",
+      "count" : "215"
+    }, {
+      "item" : "2024-11-01",
+      "count" : "214"
+    }, {
+      "item" : "2023-9-01",
+      "count" : "214"
+    }, {
+      "item" : "2025-12-01",
+      "count" : "208"
+    }, {
+      "item" : "2024-9-01",
+      "count" : "206"
+    }, {
+      "item" : "2022-3-01",
+      "count" : "206"
+    }, {
+      "item" : "2023-10-01",
+      "count" : "205"
+    }, {
+      "item" : "2023-4-01",
+      "count" : "205"
+    }, {
+      "item" : "2025-10-01",
+      "count" : "204"
+    } ],
+    "smallest" : "2022-10-01",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : { }
+}, {
+  "id" : 580468925,
+  "name" : "ANIO_PRECIO",
+  "dataTypeName" : "text",
+  "description" : "Año de publicación del precio",
+  "fieldName" : "anio_precio",
+  "position" : 2,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293568,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "2026",
+    "null" : "0",
+    "top" : [ {
+      "item" : "2022",
+      "count" : "2591"
+    }, {
+      "item" : "2023",
+      "count" : "2579"
+    }, {
+      "item" : "2024",
+      "count" : "2309"
+    }, {
+      "item" : "2025",
+      "count" : "2146"
+    }, {
+      "item" : "2026",
+      "count" : "1697"
+    } ],
+    "smallest" : "2022",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 580468924,
+  "name" : "MES_PRECIO",
+  "dataTypeName" : "text",
+  "description" : "Mes de publicación del precio",
+  "fieldName" : "mes_precio",
+  "position" : 3,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293567,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "9",
+    "null" : "0",
+    "top" : [ {
+      "item" : "10",
+      "count" : "1031"
+    }, {
+      "item" : "1",
+      "count" : "1026"
+    }, {
+      "item" : "2",
+      "count" : "1007"
+    }, {
+      "item" : "9",
+      "count" : "979"
+    }, {
+      "item" : "3",
+      "count" : "947"
+    }, {
+      "item" : "7",
+      "count" : "937"
+    }, {
+      "item" : "5",
+      "count" : "921"
+    }, {
+      "item" : "6",
+      "count" : "921"
+    }, {
+      "item" : "4",
+      "count" : "911"
+    }, {
+      "item" : "8",
+      "count" : "903"
+    }, {
+      "item" : "11",
+      "count" : "890"
+    }, {
+      "item" : "12",
+      "count" : "849"
+    } ],
+    "smallest" : "1",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 580468923,
+  "name" : "DIA_PRECIO",
+  "dataTypeName" : "text",
+  "description" : "Día de publicación del precio",
+  "fieldName" : "dia_precio",
+  "position" : 4,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293566,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "01",
+    "null" : "0",
+    "top" : [ {
+      "item" : "01",
+      "count" : "11322"
+    } ],
+    "smallest" : "01",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 580468922,
+  "name" : "DEPARTAMENTO_EDS",
+  "dataTypeName" : "text",
+  "description" : "Departamento de ubicación de la EDS",
+  "fieldName" : "departamento_eds",
+  "position" : 5,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293565,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "VALLE DEL CAUCA",
+    "null" : "0",
+    "top" : [ {
+      "item" : "BOGOTA D.C.",
+      "count" : "3191"
+    }, {
+      "item" : "VALLE DEL CAUCA",
+      "count" : "2123"
+    }, {
+      "item" : "ANTIOQUIA",
+      "count" : "1258"
+    }, {
+      "item" : "ATLANTICO",
+      "count" : "1055"
+    }, {
+      "item" : "CUNDINAMARCA",
+      "count" : "553"
+    }, {
+      "item" : "RISARALDA",
+      "count" : "371"
+    }, {
+      "item" : "SANTANDER",
+      "count" : "322"
+    }, {
+      "item" : "BOYACA",
+      "count" : "305"
+    }, {
+      "item" : "BOLIVAR",
+      "count" : "295"
+    }, {
+      "item" : "MAGDALENA",
+      "count" : "293"
+    }, {
+      "item" : "CALDAS",
+      "count" : "264"
+    }, {
+      "item" : "META",
+      "count" : "214"
+    }, {
+      "item" : "CORDOBA",
+      "count" : "198"
+    }, {
+      "item" : "QUINDIO",
+      "count" : "197"
+    }, {
+      "item" : "TOLIMA",
+      "count" : "171"
+    }, {
+      "item" : "SUCRE",
+      "count" : "170"
+    }, {
+      "item" : "CESAR",
+      "count" : "147"
+    }, {
+      "item" : "CASANARE",
+      "count" : "93"
+    }, {
+      "item" : "HUILA",
+      "count" : "55"
+    }, {
+      "item" : "CAUCA",
+      "count" : "40"
+    } ],
+    "smallest" : "ANTIOQUIA",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : { }
+}, {
+  "id" : 580468921,
+  "name" : "MUNICIPIO_EDS",
+  "dataTypeName" : "text",
+  "description" : "Municipio de ubicación de la EDS",
+  "fieldName" : "municipio_eds",
+  "position" : 6,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293564,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "ZIPAQUIRA",
+    "null" : "0",
+    "top" : [ {
+      "item" : "BOGOTA, D.C.",
+      "count" : "3191"
+    }, {
+      "item" : "CALI",
+      "count" : "1587"
+    }, {
+      "item" : "BARRANQUILLA",
+      "count" : "899"
+    }, {
+      "item" : "MEDELLIN",
+      "count" : "823"
+    }, {
+      "item" : "PEREIRA",
+      "count" : "296"
+    }, {
+      "item" : "SANTA MARTA",
+      "count" : "276"
+    }, {
+      "item" : "CARTAGENA DE INDIAS",
+      "count" : "262"
+    }, {
+      "item" : "MANIZALES",
+      "count" : "229"
+    }, {
+      "item" : "VILLAVICENCIO",
+      "count" : "172"
+    }, {
+      "item" : "IBAGUE",
+      "count" : "163"
+    }, {
+      "item" : "TULUA",
+      "count" : "154"
+    }, {
+      "item" : "BARBOSA",
+      "count" : "150"
+    }, {
+      "item" : "MOSQUERA",
+      "count" : "148"
+    }, {
+      "item" : "SINCELEJO",
+      "count" : "142"
+    }, {
+      "item" : "ARMENIA",
+      "count" : "139"
+    }, {
+      "item" : "MONTERIA",
+      "count" : "122"
+    }, {
+      "item" : "PALMIRA",
+      "count" : "115"
+    }, {
+      "item" : "BELLO",
+      "count" : "110"
+    }, {
+      "item" : "COTA",
+      "count" : "108"
+    }, {
+      "item" : "CHIA",
+      "count" : "90"
+    } ],
+    "smallest" : "ACACIAS",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : { }
+}, {
+  "id" : 580468920,
+  "name" : "NOMBRE_COMERCIAL_EDS",
+  "dataTypeName" : "text",
+  "description" : "Razón Social de la Estación de Servicio",
+  "fieldName" : "nombre_comercial_eds",
+  "position" : 7,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293563,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "VÍA GAS",
+    "null" : "0",
+    "top" : [ {
+      "item" : "EDS PATIO SITP PROSPERIDAD",
+      "count" : "58"
+    }, {
+      "item" : "ESTACION DE SERVICIO GNV LA ESMERALDA",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO TM AMERICAS",
+      "count" : "58"
+    }, {
+      "item" : "EDS ESTANCIA",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO TM SUBA",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO TM NORTE ACTUAL",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO TM TEMPORAL NORTE",
+      "count" : "58"
+    }, {
+      "item" : "EDS LA TEXANA",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO SITP SAN BERNARDINO",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO SITP SAN ANDRES",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO SITP BRASIL",
+      "count" : "58"
+    }, {
+      "item" : "ESTACIÓN DE SERVICIO PATIO TUNAL",
+      "count" : "58"
+    }, {
+      "item" : "ESTACIÓN DE SERVICIO PATIO USME",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO TM TEMPORAL 80",
+      "count" : "58"
+    }, {
+      "item" : "EDS LA METRO GNV",
+      "count" : "58"
+    }, {
+      "item" : "EDS ESSO PTE ARANDA",
+      "count" : "58"
+    }, {
+      "item" : "EDS PATIO SITP UVAL",
+      "count" : "58"
+    }, {
+      "item" : "LA AVENIDA GN",
+      "count" : "57"
+    }, {
+      "item" : "SERVICENTRO ESSO PLANETA RICA",
+      "count" : "57"
+    }, {
+      "item" : "ESTACION DE SERVICIOS LAS CEIBAS CALI S.A.S.",
+      "count" : "57"
+    } ],
+    "smallest" : "AGAS GAS NATURAL VEHÍCULAR",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : { }
+}, {
+  "id" : 580468919,
+  "name" : "PRECIO_PROMEDIO_PUBLICADO",
+  "dataTypeName" : "number",
+  "description" : "Precio Promedio Mensual por Estación",
+  "fieldName" : "precio_promedio_publicado",
+  "position" : 8,
+  "renderTypeName" : "number",
+  "tableColumnId" : 148293562,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "5000",
+    "null" : "0",
+    "top" : [ {
+      "item" : "1799",
+      "count" : "264"
+    }, {
+      "item" : "1899",
+      "count" : "190"
+    }, {
+      "item" : "2079",
+      "count" : "163"
+    }, {
+      "item" : "1999",
+      "count" : "159"
+    }, {
+      "item" : "2199",
+      "count" : "146"
+    }, {
+      "item" : "2519",
+      "count" : "123"
+    }, {
+      "item" : "2499",
+      "count" : "118"
+    }, {
+      "item" : "2299",
+      "count" : "114"
+    }, {
+      "item" : "2099",
+      "count" : "113"
+    }, {
+      "item" : "2550",
+      "count" : "107"
+    }, {
+      "item" : "1499",
+      "count" : "97"
+    }, {
+      "item" : "1699",
+      "count" : "96"
+    }, {
+      "item" : "2400",
+      "count" : "84"
+    }, {
+      "item" : "2999",
+      "count" : "77"
+    }, {
+      "item" : "1599",
+      "count" : "73"
+    }, {
+      "item" : "2269",
+      "count" : "69"
+    }, {
+      "item" : "3399",
+      "count" : "67"
+    }, {
+      "item" : "3067",
+      "count" : "67"
+    }, {
+      "item" : "2139",
+      "count" : "62"
+    }, {
+      "item" : "2415",
+      "count" : "61"
+    } ],
+    "smallest" : "1012",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 580468918,
+  "name" : "TIPO_COMBUSTIBLE",
+  "dataTypeName" : "text",
+  "description" : "Tipo de Combustible",
+  "fieldName" : "tipo_combustible",
+  "position" : 9,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293561,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "GNCV",
+    "null" : "0",
+    "top" : [ {
+      "item" : "GNCV",
+      "count" : "11322"
+    } ],
+    "smallest" : "GNCV",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : { }
+}, {
+  "id" : 580468917,
+  "name" : "CODIGO_MUNICIPIO_DANE",
+  "dataTypeName" : "text",
+  "description" : "Código Dane del Municipio",
+  "fieldName" : "codigo_municipio_dane",
+  "position" : 10,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293560,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "85250",
+    "null" : "0",
+    "top" : [ {
+      "item" : "11001",
+      "count" : "3191"
+    }, {
+      "item" : "76001",
+      "count" : "1587"
+    }, {
+      "item" : "08001",
+      "count" : "899"
+    }, {
+      "item" : "05001",
+      "count" : "823"
+    }, {
+      "item" : "66001",
+      "count" : "296"
+    }, {
+      "item" : "47001",
+      "count" : "276"
+    }, {
+      "item" : "13001",
+      "count" : "262"
+    }, {
+      "item" : "17001",
+      "count" : "229"
+    }, {
+      "item" : "50001",
+      "count" : "172"
+    }, {
+      "item" : "73001",
+      "count" : "163"
+    }, {
+      "item" : "76834",
+      "count" : "154"
+    }, {
+      "item" : "25473",
+      "count" : "148"
+    }, {
+      "item" : "70001",
+      "count" : "142"
+    }, {
+      "item" : "63001",
+      "count" : "139"
+    }, {
+      "item" : "23001",
+      "count" : "122"
+    }, {
+      "item" : "76520",
+      "count" : "115"
+    }, {
+      "item" : "68077",
+      "count" : "112"
+    }, {
+      "item" : "05088",
+      "count" : "110"
+    }, {
+      "item" : "25214",
+      "count" : "108"
+    }, {
+      "item" : "25175",
+      "count" : "90"
+    } ],
+    "smallest" : "05001",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 580468916,
+  "name" : "LATITUD_MUNICIPIO",
+  "dataTypeName" : "text",
+  "description" : "Coordenadas de Georeferenciación del Municipio",
+  "fieldName" : "latitud_municipio",
+  "position" : 11,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293559,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "9.9751",
+    "null" : "0",
+    "top" : [ {
+      "item" : "4.64925",
+      "count" : "3191"
+    }, {
+      "item" : "3.41369",
+      "count" : "1587"
+    }, {
+      "item" : "10.978",
+      "count" : "899"
+    }, {
+      "item" : "6.24663",
+      "count" : "823"
+    }, {
+      "item" : "4.80499",
+      "count" : "296"
+    }, {
+      "item" : "11.2047",
+      "count" : "276"
+    }, {
+      "item" : "10.3851",
+      "count" : "262"
+    }, {
+      "item" : "5.05766",
+      "count" : "229"
+    }, {
+      "item" : "4.12637",
+      "count" : "172"
+    }, {
+      "item" : "4.43225",
+      "count" : "163"
+    }, {
+      "item" : "4.0854",
+      "count" : "154"
+    }, {
+      "item" : "4.70653",
+      "count" : "148"
+    }, {
+      "item" : "9.30232",
+      "count" : "142"
+    }, {
+      "item" : "4.53598",
+      "count" : "139"
+    }, {
+      "item" : "8.75979",
+      "count" : "122"
+    }, {
+      "item" : "3.53154",
+      "count" : "115"
+    }, {
+      "item" : "5.93253",
+      "count" : "112"
+    }, {
+      "item" : "6.33359",
+      "count" : "110"
+    }, {
+      "item" : "4.81256",
+      "count" : "108"
+    }, {
+      "item" : "7.11647",
+      "count" : "90"
+    } ],
+    "smallest" : "10.3483",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 580468915,
+  "name" : "LONGITUD_MUNICIPIO",
+  "dataTypeName" : "text",
+  "description" : "Coordenadas de Georeferenciación del Municipio",
+  "fieldName" : "longitud_municipio",
+  "position" : 12,
+  "renderTypeName" : "text",
+  "tableColumnId" : 148293558,
+  "cachedContents" : {
+    "non_null" : "11322",
+    "largest" : "-77.010",
+    "null" : "0",
+    "top" : [ {
+      "item" : "-74.107",
+      "count" : "3191"
+    }, {
+      "item" : "-76.521",
+      "count" : "1587"
+    }, {
+      "item" : "-74.815",
+      "count" : "899"
+    }, {
+      "item" : "-75.581",
+      "count" : "823"
+    }, {
+      "item" : "-75.719",
+      "count" : "296"
+    }, {
+      "item" : "-74.199",
+      "count" : "276"
+    }, {
+      "item" : "-75.496",
+      "count" : "262"
+    }, {
+      "item" : "-75.491",
+      "count" : "229"
+    }, {
+      "item" : "-73.622",
+      "count" : "172"
+    }, {
+      "item" : "-75.194",
+      "count" : "163"
+    }, {
+      "item" : "-76.197",
+      "count" : "154"
+    }, {
+      "item" : "-74.221",
+      "count" : "148"
+    }, {
+      "item" : "-75.395",
+      "count" : "142"
+    }, {
+      "item" : "-75.680",
+      "count" : "139"
+    }, {
+      "item" : "-75.873",
+      "count" : "122"
+    }, {
+      "item" : "-76.298",
+      "count" : "115"
+    }, {
+      "item" : "-73.616",
+      "count" : "112"
+    }, {
+      "item" : "-75.555",
+      "count" : "110"
+    }, {
+      "item" : "-74.102",
+      "count" : "108"
+    }, {
+      "item" : "-73.132",
+      "count" : "90"
+    } ],
+    "smallest" : "-71.890",
+    "count" : "11322",
+    "cardinality" : "11322"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+} ]
