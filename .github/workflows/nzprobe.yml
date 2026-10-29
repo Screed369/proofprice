@@ -24,15 +24,29 @@ jobs:
           ls -la out
           pip install openpyxl -q
           python3 - <<'PY' > out/dump.txt
-          import openpyxl
+          import openpyxl, collections
           wb = openpyxl.load_workbook('out/data.xlsx', read_only=True)
-          for ws in wb.worksheets:
-              print('SHEET', repr(ws.title), ws.max_row, ws.max_column)
-              for i, row in enumerate(ws.iter_rows(values_only=True)):
-                  if i >= 14: break
-                  row = list(row)
-                  while row and row[-1] in (None, ''): row.pop()
-                  print(i, row[:24])
+          ws = wb['Sales']
+          rows = list(ws.iter_rows(values_only=True))
+          hdr = rows[0]; body = rows[1:]
+          print('HDR', hdr, len(body))
+          c = collections.Counter((r[0], r[1]) for r in body)
+          print('TYPES', c)
+          areas = collections.defaultdict(set)
+          for r in body: areas[r[1]].add(r[2])
+          for k, v in areas.items(): print('AREAS', k, len(v), sorted(v)[:80])
+          per = sorted(set(r[3] for r in body if r[0]=='Monthly'))
+          print('PERIODS first/last', per[:2], per[-6:])
+          for name in ('New Zealand','Auckland','Wellington City','Christchurch City','Queenstown-Lakes District'):
+              sel = [r for r in body if r[2]==name and r[0]=='Monthly']
+              print('AREA', name, len(sel))
+              for r in sel[-8:]: print('  ', r)
+          q = [r for r in body if r[0]!='Monthly'][:6]
+          print('NONMONTHLY sample', q)
+          low = [r for r in body if r[0]=='Monthly' and r[4] is not None and r[4] < 5][:3]
+          print('LOWCOUNT sample', low)
+          nomed = [r for r in body if r[0]=='Monthly' and r[6] is None and r[4] and r[4]>=5][:3]
+          print('NOMED>=5 sample', nomed)
           PY
           mkdir -p probes_nz; cp out/dump.txt out/links.txt probes_nz/; echo "$U" > probes_nz/url.txt
       - name: push
