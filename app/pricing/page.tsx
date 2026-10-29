@@ -1,4 +1,6 @@
 import { Breadcrumbs } from "../_components/Breadcrumbs";
+import { JsonLd } from "../_components/JsonLd";
+import { faqPageGraph } from "../../lib/site/jsonld";
 import { CONTACT } from "../../lib/site/constants";
 import { pageMetadata } from "../../lib/site/meta";
 import { pricingFacts } from "../../lib/pricing";
@@ -14,8 +16,22 @@ export const metadata = pageMetadata({
 
 export default function Pricing() {
   const p = pricingFacts();
+  const faq = [
+    { question: "Is ProofPrice free for AI agents?", answer: `Yes. ${p.free_forever.join("; ")}. No key and no sign-up.` },
+    {
+      question: "What do the premium calls cost?",
+      answer: p.premium.map((x) => `${x.what}: ${x.price_per_call} per call after ${x.free_calls_per_day} free calls a day`).join("; ") + ".",
+    },
+    {
+      question: "How does an AI agent pay for ProofPrice?",
+      answer: `${p.payment_method.how} Protocol: ${p.payment_method.protocol}. Network: ${p.payment_method.network_when_live}.`,
+    },
+    { question: "When is an agent never charged?", answer: `${p.never_charged.join("; ")}.` },
+    { question: "Are there business plans?", answer: `For higher volumes, an invoice or a custom arrangement: ${p.business_plans}.` },
+  ];
   return (
     <main>
+      <JsonLd data={faqPageGraph("/pricing", [{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing" }], faq)} />
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Pricing" }]} />
       <h1>Pricing</h1>
       <p className="lede">

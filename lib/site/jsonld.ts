@@ -267,6 +267,27 @@ export function breadcrumbGraph(crumbs: { name: string; path: string }[]) {
   return { "@context": "https://schema.org", ...breadcrumbLd(crumbs) };
 }
 
+/** A page of plain questions and answers (for example /pricing): breadcrumbs plus FAQPage. The answers must match the visible page. */
+export function faqPageGraph(path: string, crumbs: { name: string; path: string }[], qas: { question: string; answer: string }[]) {
+  const url = absolute(path);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebPage", "@id": `${url}#page`, url, isPartOf: { "@id": WEBSITE_ID }, breadcrumb: breadcrumbLd(crumbs) },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        url,
+        mainEntity: qas.map((q) => ({
+          "@type": "Question",
+          name: q.question,
+          acceptedAnswer: { "@type": "Answer", text: q.answer },
+        })),
+      },
+    ],
+  };
+}
+
 /** An example page: breadcrumbs, and its Q&A only when the page shows an answer. The "ask live" form states no answer, so it has no FAQ. */
 export function examplePageGraph(page: ExamplePage, crumbs: { name: string; path: string }[]) {
   const url = absolute(page.path);
