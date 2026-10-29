@@ -117,7 +117,8 @@ export function answerFromAwards(parsed: ParsedAwards, input: SlaInput): PriceAn
   const from = ys.length ? String(Math.min(...ys)) : String(fromYear);
   const to = ys.length ? String(Math.max(...ys)) : String(newest);
   const label =
-    `${allocation ? (allocation === "direct" ? "direct allocations" : allocation + "s") : "awards"} of Singapore state property` + (use ? ` with "${use}" among the tendered uses` : "");
+    `${allocation ? (allocation === "direct" ? "direct allocations" : allocation + "s") : "tenders, allocations and auctions"} of Singapore state land and buildings` +
+    (use ? ` with "${use}" among the tendered uses` : "");
 
   const byAllocation: Record<string, number> = {};
   for (const a of picked) byAllocation[a.allocation] = (byAllocation[a.allocation] ?? 0) + 1;
@@ -131,7 +132,7 @@ export function answerFromAwards(parsed: ParsedAwards, input: SlaInput): PriceAn
     period: { from, to },
     method: METHOD,
     describe: (x) =>
-      `Rents awarded in ${label}, award years ${from}-${to}, had a median of ${fmtMoney(x.median, "SGD")} a month for the first lease term; 10th-90th percentile range ${fmtMoney(x.low, "SGD")}-${fmtMoney(x.high, "SGD")}. ` +
+      `The rent awarded in ${label}, award years ${from}-${to}, had a median of ${fmtMoney(x.median, "SGD")} a month for the first lease term; 10th-90th percentile range ${fmtMoney(x.low, "SGD")}-${fmtMoney(x.high, "SGD")}. ` +
       "These are contract rents from Singapore Land Authority award results for state land and buildings of very different sizes and uses, not market rents and not home rents.",
     baseUrl: input.baseUrl,
     extra: {
