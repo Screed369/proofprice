@@ -63,7 +63,7 @@ test("area names are readable and URL-safe", () => {
 });
 
 test("every name map is complete and has no duplicate slugs", () => {
-  assert.equal(knownAreaCodes("es-fuel").length, 52);
+  assert.equal(knownAreaCodes("es-fuel").length, 52 + 17); // provinces + autonomous communities
   assert.equal(knownAreaCodes("it-fuel").length, 107);
   assert.ok(knownAreaCodes("fr-fuel").length >= 96);
   assert.equal(knownAreaCodes("ie-ppr").length, 26);

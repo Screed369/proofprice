@@ -127,6 +127,27 @@ const ES: Record<string, RawName> = {
   "52": { name: "Melilla", bare: true },
 };
 
+// ---------- Spain: autonomous communities (library keys RAN ... RRI, written by the daily collector next to the provinces) ----------
+const ES_COMMUNITY_NAMES: Record<string, RawName> = {
+  RAN: { name: "Andalusia autonomous community" },
+  RAR: { name: "Aragon autonomous community" },
+  RAS: { name: "Asturias autonomous community" },
+  RBA: { name: "Balearic Islands autonomous community" },
+  RCN: { name: "Canary Islands autonomous community" },
+  RCB: { name: "Cantabria autonomous community" },
+  RCL: { name: "Castile and León autonomous community" },
+  RCM: { name: "Castilla-La Mancha autonomous community" },
+  RCT: { name: "Catalonia autonomous community" },
+  RVC: { name: "Valencian Community autonomous community" },
+  REX: { name: "Extremadura autonomous community" },
+  RGA: { name: "Galicia autonomous community" },
+  RMD: { name: "Community of Madrid autonomous community" },
+  RMC: { name: "Region of Murcia autonomous community" },
+  RNC: { name: "Navarre autonomous community" },
+  RPV: { name: "Basque Country autonomous community" },
+  RRI: { name: "La Rioja autonomous community" },
+};
+
 // ---------- France: regions (library keys R11 ... R94, written by the daily collector next to the departments) ----------
 const FR_REGION_NAMES: Record<string, RawName> = {
   R11: { name: "Île-de-France" },
@@ -410,6 +431,8 @@ export function areaFor(sourceId: string, code: string): AreaInfo | null {
   }
   switch (sourceId) {
     case "es-fuel": {
+      const community = ES_COMMUNITY_NAMES[code.toUpperCase()];
+      if (community) return fromRaw(code.toUpperCase(), community, "region", `${community.name.replace(" autonomous community", "")} (autonomous community)`);
       const raw = ES[code];
       return raw ? fromRaw(code, raw, "province", raw.bare ? raw.name : `${raw.name} province`) : null;
     }
@@ -439,7 +462,7 @@ export function areaFor(sourceId: string, code: string): AreaInfo | null {
 export function knownAreaCodes(sourceId: string): string[] {
   switch (sourceId) {
     case "es-fuel":
-      return Object.keys(ES);
+      return [...Object.keys(ES), ...Object.keys(ES_COMMUNITY_NAMES)];
     case "fr-fuel":
       return [...Object.keys(FR), ...Object.keys(FR_REGION_NAMES)];
     case "it-fuel":
