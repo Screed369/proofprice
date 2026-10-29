@@ -1,0 +1,54 @@
+URL: https://landregistry.data.gov.uk/landregistry/query?output=json&query=PREFIX%20ukhpi%3A%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fukhpi%2F%3E%0ASELECT%20%3Fm%20%3Fa%20%3Fad%20%3Fas%20%3Fat%20%3Faf%20%3Fi%20%3Fy%20%3Fv%20WHERE%20%7B%20%3Fobs%20ukhpi%3ArefRegion%20%3Fr%20%3B%20ukhpi%3ArefMonth%20%3Fm%20%3B%20ukhpi%3AaveragePrice%20%3Fa%20.%0AOPTIONAL%7B%3Fobs%20ukhpi%3AaveragePriceDetached%20%3Fad%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3AaveragePriceSemiDetached%20%3Fas%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3AaveragePriceTerraced%20%3Fat%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3AaveragePriceFlatMaisonette%20%3Faf%7D%0AOPTIONAL%7B%3Fobs%20ukhpi%3AhousePriceIndex%20%3Fi%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3ApercentageAnnualChange%20%3Fy%7D%20OPTIONAL%7B%3Fobs%20ukhpi%3AsalesVolume%20%3Fv%7D%0AFILTER(%3Fr%20%3D%20%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fscotland%3E)%20%7D%20ORDER%20BY%20DESC(%3Fm)%20LIMIT%2014
+Fetched: 2026-10-29T11:27:04Z from GitHub Actions
+Status, type, bytes: 200 application/sparql-results+json; charset=utf-8 14569
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: must-revalidate,no-cache,no-store
+Content-Type: application/sparql-results+json; charset=utf-8
+Date: Thu, 29 Oct 2026 11:27:04 GMT
+Fuseki-Request-Id: 1043406
+Pragma: no-cache
+Server: nginx/1.31.8
+Vary: Accept,Accept-Encoding,Accept-Charset,Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+Content-Length: 14569
+Connection: keep-alive
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{ "head": {
+    "vars": [ "m" , "a" , "ad" , "as" , "at" , "af" , "i" , "y" , "v" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "m": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#gYearMonth" , "value": "2026-08" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "198397" } ,
+        "ad": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "365984" } ,
+        "as": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "226592" } ,
+        "at": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "184396" } ,
+        "af": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "138886" } ,
+        "i": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#decimal" , "value": "113.30" } ,
+        "y": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#decimal" , "value": "2.90" }
+      } ,
+      { 
+        "m": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#gYearMonth" , "value": "2026-07" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "196582" } ,
+        "ad": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "362009" } ,
+        "as": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "224963" } ,
+        "at": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "182973" } ,
+        "af": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "137522" } ,
+        "i": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#decimal" , "value": "112.30" } ,
+        "y": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#decimal" , "value": "2.40" }
+      } ,
+      { 
+        "m": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#gYearMonth" , "value": "2026-06" } ,
+        "a": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "193790" } ,
+        "ad": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "356150" } ,
+        "as": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "221979" } ,
+        "at": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "180602" } ,
+        "af": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "135579" } ,
+        "i": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#decimal" , "value": "110.70" } ,
+        "y": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#decimal" , "value": "1.50" } ,
+        "v": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema
