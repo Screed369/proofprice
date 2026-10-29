@@ -1,0 +1,23 @@
+URL: https://bdl.stat.gov.pl/api/v1/data/by-variable/634007?format=json&year=2024&year=2023&unit-level=2&page-size=20&lang=en
+Fetched: 2026-10-29T14:46:44Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 2204
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public,max-age=1800
+Content-Length: 2204
+Content-Type: application/json; charset=utf-8
+ETag: QFXqrfNQvtVedVwcdNu_zg
+Vary: Accept,Accept-Language
+X-Rate-Limit-Limit: 7d
+X-Rate-Limit-Remaining: 9999
+X-Rate-Limit-Reset: 2026-11-05T14:46:42.8952486Z
+Date: Thu, 29 Oct 2026 14:46:43 GMT
+Set-Cookie: cookie=85e497491d001d5aeeddc2fb545ce36a;max-age=1800;Path=/;HttpOnly
+Set-Cookie: cookiesession1=678B288A59B38C5A72F04C78EF941D64;Expires=Fri, 29 Oct 2027 14:46:44 GMT;Path=/;HttpOnly
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"totalRecords":16,"variableId":634007,"measureUnitId":4,"aggregateId":1,"lastUpdate":null,"results":[{"id":"011200000000","name":"MAŁOPOLSKIE","values":[{"year":"2023","val":9613,"attrId":1},{"year":"2024","val":11327,"attrId":1}]},{"id":"012400000000","name":"ŚLĄSKIE","values":[{"year":"2023","val":5448,"attrId":1},{"year":"2024","val":6424,"attrId":1}]},{"id":"020800000000","name":"LUBUSKIE","values":[{"year":"2023","val":5170,"attrId":1},{"year":"2024","val":6135,"attrId":1}]},{"id":"023000000000","name":"WIELKOPOLSKIE","values":[{"year":"2023","val":6297,"attrId":1},{"year":"2024","val":7390,"attrId":1}]},{"id":"023200000000","name":"ZACHODNIOPOMORSKIE","values":[{"year":"2023","val":7170,"attrId":1},{"year":"2024","val":7152,"attrId":1}]},{"id":"030200000000","name":"DOLNOŚLĄSKIE","values":[{"year":"2023","val":6950,"attrId":1},{"year":"2024","val":8335,"attrId":1}]},{"id":"031600000000","name":"OPOLSKIE","values":[{"year":"2023","val":4873,"attrId":1},{"year":"2024","val":5646,"attrId":1}]},{"id":"040400000000","name":"KUJAWSKO-POMORSKIE","values":[{"year":"2023","val":5718,"attrId":1},{"year":"2024","val":6694,"attrId":1}]},{"id":"042200000000","name":"POMORSKIE","values":[{"year":"2023","val":8333,"attrId":1},{"year":"2024","val":9728,"attrId":1}]},{"id":"042800000000","name":"WARMIŃSKO-MAZURSKIE","values":[{"year":"2023","val":5567,"attrId":1},{"year":"2024","val":6447,"attrId":1}]},{"id":"051000000000","name":"ŁÓDZKIE","values":[{"year":"2023","val":6652,"attrId":1},{"year":"2024","val":7460,"attrId":1}]},{"id":"052600000000","name":"ŚWIĘTOKRZYSKIE","values":[{"year":"2023","val":6236,"attrId":1},{"year":"2024","val":6719,"attrId":1}]},{"id":"060600000000","name":"LUBELSKIE","values":[{"year":"2023","val":7140,"attrId":1},{"year":"2024","val":7874,"attrId":1}]},{"id":"061800000000","name":"PODKARPACKIE","values":[{"year":"2023","val":6036,"attrId":1},{"year":"2024","val":7245,"attrId":1}]},{"id":"062000000000","name":"PODLASKIE","values":[{"year":"2023","val":6633,"attrId":1},{"year":"2024","val":7941,"attrId":1}]},{"id":"071400000000","name":"MAZOWIECKIE","values":[{"year":"2023","val":9588,"attrId":1},{"year":"2024","val":11290,"attrId":1}]}]}
