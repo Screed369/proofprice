@@ -1,0 +1,23 @@
+URL: https://bdl.stat.gov.pl/api/v1/subjects/search?name=mieszkaniowe&format=json&lang=pl&page-size=50
+Fetched: 2026-10-29T12:48:48Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 3808
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public,max-age=1800
+Content-Length: 3808
+Content-Type: application/json; charset=utf-8
+ETag: 1AEwrdNa05_9u1vtGO55aA
+Vary: Accept,Accept-Language
+X-Rate-Limit-Limit: 7d
+X-Rate-Limit-Remaining: 9999
+X-Rate-Limit-Reset: 2026-11-05T12:48:46.0235164Z
+Date: Thu, 29 Oct 2026 12:48:46 GMT
+Set-Cookie: cookie=85e497491d001d5aeeddc2fbaf40e36a;max-age=1800;Path=/;HttpOnly
+Set-Cookie: cookiesession1=678B288AA78CD2F078ECAEDCDFEA7AF8;Expires=Fri, 29 Oct 2027 12:48:47 GMT;Path=/;HttpOnly
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"totalRecords":22,"page":0,"pageSize":50,"links":{"first":"https://bdl.stat.gov.pl/api/v1/subjects/search?name=mieszkaniowe&format=json&lang=pl&page-size=50&page=0","self":"https://bdl.stat.gov.pl/api/v1/subjects/search?name=mieszkaniowe&format=json&lang=pl&page-size=50&page=0","last":"https://bdl.stat.gov.pl/api/v1/subjects/search?name=mieszkaniowe&format=json&lang=pl&page-size=50&page=0"},"results":[{"id":"G603","parentId":"K12","name":"BUDOWNICTWO MIESZKANIOWE","hasVariables":false,"children":["P3821","P3822","P3823","P3824","P4135","P4136","P4150"],"levels":[5,6,7]},{"id":"P3820","parentId":"G656","name":"Budownictwo mieszkaniowe – wskaźniki","hasVariables":true,"children":[],"levels":[6]},{"id":"G602","parentId":"K12","name":"BUDOWNICTWO NIEMIESZKANIOWE","hasVariables":false,"children":["P3812"],"levels":[6]},{"id":"P4264","parentId":"G231","name":"Dochód uzasadniający uzyskanie prawa do najmu lokalu mieszkalnego z mieszkaniowego zasobu gminy","hasVariables":true,"children":[],"levels":[6]},{"id":"G335","parentId":"K11","name":"DODATKI MIESZKANIOWE","hasVariables":false,"children":["P2173"],"levels":[6]},{"id":"G619","parentId":"K11","name":"GOSPODARKA GRUNTAMI POD BUDOWNICTWO MIESZKANIOWE","hasVariables":false,"children":["P3953","P3954"],"levels":[6]},{"id":"P3953","parentId":"G619","name":"Grunty pozostające w zasobie gmin pod budownictwo mieszkaniowe","hasVariables":true,"children":[],"levels":[6]},{"id":"P3954","parentId":"G619","name":"Grunty przekazane/sprzedane inwestorom pod budownictwo mieszkaniowe","hasVariables":true,"children":[],"levels":[6]},{"id":"P3950","parentId":"G231","name":"Najem lokali z mieszkaniowego zasobu gmin oraz tymczasowych pomieszczeń","hasVariables":true,"children":[],"levels":[6]},{"id":"P4088","parentId":"G231","name":"Zapotrzebowanie na najem lokali z mieszkaniowego zasobu gmin","hasVariables":true,"children":[],"levels":[6]},{"id":"G231","parentId":"K11","name":"ZASOBY MIESZKANIOWE","hasVariables":false,"children":["P1719","P1727","P1728","P1732","P2166","P2430","P2431","P2762","P2908","P2909","P3950","P3952","P3966","P4050","P4088","P4264","P4265","P4267","P4268","P4269","P4564"],"levels":[3,5,6]},{"id":"P2166","parentId":"G231","name":"Zasoby mieszkaniowe","hasVariables":true,"children":[],"levels":[6]},{"id":"P1721","parentId":"G562","name":"Zasoby mieszkaniowe - Budynki mieszkalne sprzedane osobom fizycznym","hasVariables":true,"children":[],"levels":[6]},{"id":"P1972","parentId":"G562","name":"Zasoby mieszkaniowe - Użytkownicy lokali zalegający z opłatami za mieszkania","hasVariables":true,"children":[],"levels":[6]},{"id":"P2430","parentId":"G231","name":"Zasoby mieszkaniowe - wskaźniki","hasVariables":true,"children":[],"levels":[5,6]},{"id":"P2762","parentId":"G231","name":"Zasoby mieszkaniowe gmin (komunalne)","hasVariables":true,"children":[],"levels":[6]},{"id":"P4268","parentId":"G231","name":"Zasoby mieszkaniowe gmin (komunalne) dla których naliczane są koszty","hasVariables":true,"children":[],"levels":[6]},{"id":"P4267","parentId":"G231","name":"Zasoby mieszkaniowe gmin (komunalne) niespełniające standardów technicznych do zamieszkania","hasVariables":true,"children":[],"levels":[6]},{"id":"P4564","parentId":"G231","name":"Zasoby mieszkaniowe gmin (komunalne) wynajmowane od innych podmiotów","hasVariables":true,"children":[],"levels":[6]},{"id":"P4050","parentId":"G231","name":"Zasoby mieszkaniowe gmin (komunalne) wyposażenie w urządzenia techniczno - sanitarne","hasVariables":true,"children":[],"levels":[6]},{"id":"P1727","parentId":"G231","name":"Zasoby mieszkaniowe gminne sprzedane","hasVariables":true,"children":[],"levels":[6]},{"id":"P1719","parentId":"G231","name":"Zasoby mieszkaniowe wg form własności","hasVariables":true,"children":[],"levels":[5,6]}]}
