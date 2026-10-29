@@ -1,0 +1,85 @@
+URL: https://www.datos.gov.co/resource/he3q-86dn.json?%24select=fecha_precio,tipo_combustible,count(*)%20as%20n&%24group=fecha_precio,tipo_combustible&%24limit=500&%24order=fecha_precio%20DESC
+Fetched: 2026-10-29T12:50:26Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3842
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 29 Oct 2026 12:50:26 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC44NjUxXzFfMTAwMXZMYi1fTmhMSDV6djV4aHBWWlczR25iVG5wNA---gzimoaAfpj_ksHtVO0UvlR3s-KrUFl--gzip--gzip"
+X-SODA2-Fields: ["fecha_precio","tipo_combustible","n"]
+X-SODA2-Types: ["text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 29 Oct 2026 06:01:36 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 29 Oct 2026 06:01:36 GMT
+Last-Modified: Thu, 29 Oct 2026 06:01:36 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 4096ea8135311d917884707c9bf7b7c2
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 12000 BYTES
+[{"fecha_precio":"2026-9-01","tipo_combustible":"GNCV","n":"171"}
+,{"fecha_precio":"2026-8-01","tipo_combustible":"GNCV","n":"151"}
+,{"fecha_precio":"2026-7-01","tipo_combustible":"GNCV","n":"167"}
+,{"fecha_precio":"2026-6-01","tipo_combustible":"GNCV","n":"149"}
+,{"fecha_precio":"2026-5-01","tipo_combustible":"GNCV","n":"167"}
+,{"fecha_precio":"2026-4-01","tipo_combustible":"GNCV","n":"150"}
+,{"fecha_precio":"2026-3-01","tipo_combustible":"GNCV","n":"178"}
+,{"fecha_precio":"2026-2-01","tipo_combustible":"GNCV","n":"192"}
+,{"fecha_precio":"2026-1-01","tipo_combustible":"GNCV","n":"198"}
+,{"fecha_precio":"2026-10-01","tipo_combustible":"GNCV","n":"174"}
+,{"fecha_precio":"2025-9-01","tipo_combustible":"GNCV","n":"165"}
+,{"fecha_precio":"2025-8-01","tipo_combustible":"GNCV","n":"167"}
+,{"fecha_precio":"2025-7-01","tipo_combustible":"GNCV","n":"172"}
+,{"fecha_precio":"2025-6-01","tipo_combustible":"GNCV","n":"175"}
+,{"fecha_precio":"2025-5-01","tipo_combustible":"GNCV","n":"157"}
+,{"fecha_precio":"2025-4-01","tipo_combustible":"GNCV","n":"175"}
+,{"fecha_precio":"2025-3-01","tipo_combustible":"GNCV","n":"167"}
+,{"fecha_precio":"2025-2-01","tipo_combustible":"GNCV","n":"196"}
+,{"fecha_precio":"2025-12-01","tipo_combustible":"GNCV","n":"208"}
+,{"fecha_precio":"2025-11-01","tipo_combustible":"GNCV","n":"167"}
+,{"fecha_precio":"2025-1-01","tipo_combustible":"GNCV","n":"193"}
+,{"fecha_precio":"2025-10-01","tipo_combustible":"GNCV","n":"204"}
+,{"fecha_precio":"2024-9-01","tipo_combustible":"GNCV","n":"206"}
+,{"fecha_precio":"2024-8-01","tipo_combustible":"GNCV","n":"182"}
+,{"fecha_precio":"2024-7-01","tipo_combustible":"GNCV","n":"174"}
+,{"fecha_precio":"2024-6-01","tipo_combustible":"GNCV","n":"219"}
+,{"fecha_precio":"2024-5-01","tipo_combustible":"GNCV","n":"181"}
+,{"fecha_precio":"2024-4-01","tipo_combustible":"GNCV","n":"190"}
+,{"fecha_precio":"2024-3-01","tipo_combustible":"GNCV","n":"173"}
+,{"fecha_precio":"2024-2-01","tipo_combustible":"GNCV","n":"188"}
+,{"fecha_precio":"2024-12-01","tipo_combustible":"GNCV","n":"193"}
+,{"fecha_precio":"2024-11-01","tipo_combustible":"GNCV","n":"214"}
+,{"fecha_precio":"2024-1-01","tipo_combustible":"GNCV","n":"201"}
+,{"fecha_precio":"2024-10-01","tipo_combustible":"GNCV","n":"188"}
+,{"fecha_precio":"2023-9-01","tipo_combustible":"GNCV","n":"214"}
+,{"fecha_precio":"2023-8-01","tipo_combustible":"GNCV","n":"202"}
+,{"fecha_precio":"2023-7-01","tipo_combustible":"GNCV","n":"195"}
+,{"fecha_precio":"2023-6-01","tipo_combustible":"GNCV","n":"195"}
+,{"fecha_precio":"2023-5-01","tipo_combustible":"GNCV","n":"194"}
+,{"fecha_precio":"2023-4-01","tipo_combustible":"GNCV","n":"205"}
+,{"fecha_precio":"2023-3-01","tipo_combustible":"GNCV","n":"223"}
+,{"fecha_precio":"2023-2-01","tipo_combustible":"GNCV","n":"239"}
+,{"fecha_precio":"2023-12-01","tipo_combustible":"GNCV","n":"215"}
+,{"fecha_precio":"2023-11-01","tipo_combustible":"GNCV","n":"240"}
+,{"fecha_precio":"2023-1-01","tipo_combustible":"GNCV","n":"252"}
+,{"fecha_precio":"2023-10-01","tipo_combustible":"GNCV","n":"205"}
+,{"fecha_precio":"2022-9-01","tipo_combustible":"GNCV","n":"223"}
+,{"fecha_precio":"2022-8-01","tipo_combustible":"GNCV","n":"201"}
+,{"fecha_precio":"2022-7-01","tipo_combustible":"GNCV","n":"229"}
+,{"fecha_precio":"2022-6-01","tipo_combustible":"GNCV","n":"183"}
+,{"fecha_precio":"2022-5-01","tipo_combustible":"GNCV","n":"222"}
+,{"fecha_precio":"2022-4-01","tipo_combustible":"GNCV","n":"191"}
+,{"fecha_precio":"2022-3-01","tipo_combustible":"GNCV","n":"206"}
+,{"fecha_precio":"2022-2-01","tipo_combustible":"GNCV","n":"192"}
+,{"fecha_precio":"2022-12-01","tipo_combustible":"GNCV","n":"233"}
+,{"fecha_precio":"2022-11-01","tipo_combustible":"GNCV","n":"269"}
+,{"fecha_precio":"2022-1-01","tipo_combustible":"GNCV","n":"182"}
+,{"fecha_precio":"2022-10-01","tipo_combustible":"GNCV","n":"260"}]
