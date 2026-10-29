@@ -1,0 +1,45 @@
+URL: https://api.data.gov.my/data-catalogue?contains=house
+Fetched: 2026-10-29T11:43:06Z from GitHub Actions
+Status, type, bytes: 400 application/json 70
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+date: Thu, 29 Oct 2026 11:43:05 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+location: /data-catalogue/?contains=house
+vary: Origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+x-do-app-origin: 404fac77-61ff-48b1-8339-787252035e9b
+cache-control: private
+x-do-orig-status: 301
+set-cookie: __cf_bm=jAd4g2IWxhuNHOJZkFImY_r9HcRKzj.HcKU6SIN8j_k-1793274185.0090525-1.0.1.1-enwV8yrQRe_C_0Cgvh_NqtYpUEF2I.PKbKVovvaFDb0YmDSzNh5dhQdVVBpUG3bzv6P7L4eYJHw48.b4ytAxuK9c_IwATqYOyWt_auJr9L0KkSsQGsdagWuTZsPAIBLT; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.data.gov.my; Expires=Thu, 29 Oct 2026 12:13:05 GMT
+cf-cache-status: BYPASS
+cf-ray: a521eba84f99b4c4-LAX
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 400 
+date: Thu, 29 Oct 2026 11:43:06 GMT
+content-type: application/json
+content-length: 70
+server: cloudflare
+allow: GET, HEAD, OPTIONS
+x-frame-options: DENY
+vary: Origin
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+set-cookie: __cf_bm=HMhAuf9tjA0I9NytyGP4jnz5nyqFVHtdrEQFTNwg.QE-1793274185.5934808-1.0.1.1-GU5O9uTsiqVZCrvt5KDQdwFtaQTUotU3LFVwxHMNj.Cmu2aNGAHNC6Jt2.LqOwnhLXvu3p5pmh_2gVu7_nqYm.W2kR5JDqXaWhCmaysSdKD4af0I_ZZAWFZPti8pvNEp; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.data.gov.my; Expires=Thu, 29 Oct 2026 12:13:06 GMT
+x-do-app-origin: 404fac77-61ff-48b1-8339-787252035e9b
+cache-control: private
+x-do-orig-status: 400
+cf-cache-status: BYPASS
+cf-ray: a521ebabffc6b4c4-LAX
+alt-svc: h3=":443"; ma=86400
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"status_code": 400, "details": ["Query parameter 'id' is required."]}
