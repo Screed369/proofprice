@@ -1,6 +1,7 @@
 // Manifest: Brazilian public-purchase unit prices of office and school furniture (Compras.gov.br price research). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
 import { brFurniture, INFO } from "./source";
+import { purchaseFor } from "../br-pncp-contracts/source";
 
 export default defineSource({
   info: INFO,
@@ -9,6 +10,7 @@ export default defineSource({
   countryHelp: "BR = Brazil (unit prices of furniture in public purchases, Compras.gov.br)",
   placeName: "Brazil (furniture bought by public bodies)",
   status: "live",
+  serves: (p) => purchaseFor(String(p.what ?? "")) === null,
   paramNotes: {
     what: "BR: office or school furniture in plain words ('filing cabinet', 'office chair', 'desk', 'school desk', 'whiteboard', 'safe', 'armchair'; Portuguese words such as 'cadeira' also work). Other goods are not covered. The figure is a UNIT price.",
     cpv: "BR: optional Compras.gov.br product-family code as 'pdm:310' instead of a word.",
