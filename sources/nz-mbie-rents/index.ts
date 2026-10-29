@@ -1,6 +1,6 @@
 // Manifest: New Zealand rents (MBIE Tenancy Services rental bond data). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, nzRents } from "./source";
+import { INFO, nzHarvest, nzHistoryKey, nzRents } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -26,4 +26,8 @@ export default defineSource({
     "New Zealand rents: the median weekly rent and published lower and upper quartile of new private-sector tenancies whose rental bond was lodged in the latest month, by territorial authority or region, from MBIE Tenancy Services' monthly rental bond data. The range is the quartiles; the count is bonds lodged.",
   handle: (p, ctx) =>
     nzRents({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), house_type: str(p.house_type), bedrooms: num(p.bedrooms), baseUrl: ctx.baseUrl }),
+  harvest: () => nzHarvest(),
+  historyKey: (p) => nzHistoryKey({ town: str(p.town) }),
+  referenceDates: true,
+  nominalCounts: true,
 });

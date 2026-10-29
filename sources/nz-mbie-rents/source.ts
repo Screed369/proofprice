@@ -10,8 +10,8 @@
 
 import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { PriceSummary } from "../../lib/stats";
-import type { SourceInfo } from "../../lib/plugin";
+import { NO_COUNT, type PriceSummary } from "../../lib/stats";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const PAGE_URL = "https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/";
 export const LICENCE_URL = "https://creativecommons.org/licenses/by/3.0/nz/";
@@ -277,4 +277,60 @@ export async function nzRents(input: NzRentInput, fetcher: (url: string) => Prom
     throw new InputError(`'${input.town}' is not a New Zealand territorial authority or region in the Tenancy Services rental bond data. Use a city or district such as Wellington, Auckland, Christchurch, Hamilton, Dunedin, or a region such as Canterbury.`);
   }
   return answerFromRows(regionRows, region, input);
+}
+
+// ---------- daily collector (history and stale-if-error) ----------
+// One row per territorial authority and region for the newest published month, dated by the month end. MBIE gives a median and
+// quartiles, not a 10th-90th range, so the library keeps only the published median (NO_COUNT, range repeated): the history and a
+// stale copy never present quartiles as a percentile range. Area keys: territorial authority = name without City/District
+// ("wellington"), region = full name ("wellington region"), country = "ALL".
+
+/** Library area key for a place name as typed or as published; the same function builds the keys and reads them back. */
+export function areaKey(name: string, kind: Place["kind"]): string {
+  if (kind === "country") return "ALL";
+  const k = norm(name);
+  return kind === "region" ? (/ region$/.test(k) ? k : `${k} region`) : stripSuffix(k);
+}
+
+export function nzHarvestRows(tla: RentRow[], region: RentRow[]): { month: string; rows: DailyRow[] } {
+  const rows: DailyRow[] = [];
+  let month = "";
+  const take = (list: RentRow[], kind: Place["kind"]) => {
+    const usable = list.filter((r) => r.name !== "NA" && r.id !== "-1" && r.median !== null && r.median > 0 && (r.lodged ?? 0) >= 5);
+    if (!usable.length) return;
+    const newest = usable.reduce((m, r) => (r.month > m ? r.month : m), "");
+    if (newest > month) month = newest;
+    for (const r of usable) {
+      if (r.month !== newest) continue;
+      const k = r.id === "-99" ? "ALL" : areaKey(r.name, kind);
+      if (rows.some((x) => x.area === k)) continue;
+      rows.push({ area: k, item: "rent", n: NO_COUNT, median: r.median!, low: r.median!, high: r.median!, min: r.median!, max: r.median! });
+    }
+  };
+  take(tla, "territorial authority");
+  take(region, "region");
+  return { month, rows: rows.sort((a, b) => a.area.localeCompare(b.area)) };
+}
+
+export async function nzHarvest(fetcher: (url: string) => Promise<string> = fetchText): Promise<HarvestResult> {
+  const links = parseLinks(await fetcher(PAGE_URL));
+  if (!links.tla || !links.region) throw new SourceError("The Tenancy Services page no longer lists the monthly rental bond files; this source needs updating.");
+  const { month, rows } = nzHarvestRows(parseRents(await fetcher(links.tla)), parseRents(await fetcher(links.region)));
+  if (!month || rows.length < 20) throw new SourceError("The rental bond files held too few usable places; this source needs updating.");
+  return {
+    date: monthEnd(month),
+    currency: "NZD",
+    unit: "per week",
+    rows,
+    note: `MBIE Tenancy Services rental bond data, ${month}: published median weekly rent of new private tenancies per territorial authority and region (a published statistic; quartiles are not stored).`,
+  };
+}
+
+/** Where a request lives in the library, without asking MBIE. A bare region name (no "Region") is not found offline. */
+export function nzHistoryKey(p: { town?: string }): { area: string; item: string; label: string } | null {
+  const t = (p.town ?? "").trim();
+  if (!t) return null;
+  if (COUNTRY_WORDS.has(norm(t))) return { area: "ALL", item: "rent", label: "New Zealand" };
+  const kind: Place["kind"] = /\bregion$/.test(norm(t)) ? "region" : "territorial authority";
+  return { area: areaKey(t, kind), item: "rent", label: t };
 }

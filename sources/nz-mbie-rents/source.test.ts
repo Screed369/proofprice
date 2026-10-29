@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS } from "../../lib/registry";
-import { INFO, PAGE_URL, answerFromRows, matchPlace, nzRents, parseLinks, parseRents, placesIn } from "./source";
+import { INFO, PAGE_URL, areaKey, answerFromRows, nzHarvest, nzHarvestRows, nzHistoryKey, matchPlace, nzRents, parseLinks, parseRents, placesIn } from "./source";
 
 const f = (n: string) => readFileSync(new URL(`./fixtures/${n}`, import.meta.url), "utf8");
 const LINKS = f("links.html");
@@ -103,4 +103,26 @@ test("nz-mbie-rents: registered for NZ in the rent category", () => {
 test("nz-mbie-rents: the examples only pass parameters the source applies (no bedrooms)", async () => {
   const { default: plugin } = await import("./index");
   for (const ex of plugin.examples) assert.ok(!("bedrooms" in ex.params), JSON.stringify(ex.params));
+});
+
+test("nz-mbie-rents: harvest rows are the newest month per place, medians only, keys match historyKey", () => {
+  const { month, rows } = nzHarvestRows(parseRents(TLA), parseRents(REGION));
+  assert.match(month, /^\d{4}-\d{2}$/);
+  const w = rows.find((r) => r.area === "wellington")!;
+  assert.equal(w.item, "rent");
+  assert.equal(w.median, w.low);
+  assert.equal(w.median, w.high);
+  assert.ok(Number.isNaN(w.n));
+  assert.ok(rows.some((r) => r.area === "wellington region"));
+  assert.ok(rows.some((r) => r.area === "ALL"));
+  assert.equal(nzHistoryKey({ town: "Wellington City" })?.area, "wellington");
+  assert.equal(nzHistoryKey({ town: "Wellington Region" })?.area, "wellington region");
+  assert.equal(nzHistoryKey({ town: "New Zealand" })?.area, "ALL");
+  assert.equal(nzHistoryKey({}), null);
+  assert.equal(areaKey("Queenstown-Lakes District", "territorial authority"), "queenstown-lakes");
+});
+
+test("nz-mbie-rents: harvest refuses a file with too few places", async () => {
+  const fetcher = async (u: string) => (u === PAGE_URL ? LINKS : u.includes("region") ? REGION : TLA);
+  await assert.rejects(() => nzHarvest(fetcher), SourceError);
 });
