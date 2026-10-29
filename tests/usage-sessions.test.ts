@@ -4,7 +4,7 @@
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import {
-  BLOB_PREFIX, CLOSE_GRACE_MS, DAILY_PREFIX, DIRECTORY_CHECK_NAMES, SALT_PREFIX, compactUsage, flushUsage, isDirectoryCheck, memoryStore,
+  BLOB_PREFIX, CLOSE_GRACE_MS, CRAWLER_CLIENT, DAILY_PREFIX, DIRECTORY_CHECK_NAMES, SALT_PREFIX, compactUsage, flushUsage, isDirectoryCheck, memoryStore,
   pendingSessionsSummary, recordUsage, reduceSessions, resetUsage, saltedHash, sessionBucket, setUsageStore, summariseUsage, usageReport,
   visitorOf,
 } from "../lib/usage";
@@ -268,4 +268,19 @@ test("through the real MCP handler: initialize names the app, a later tool call 
     else process.env.BLOB_READ_WRITE_TOKEN = saved;
     resetUsage(DAY1.getTime());
   }
+});
+
+test("by_day.real_by_status splits real questions by status; answered counts only real questions that came back ok (not crawlers, handshakes or our own checks)", () => {
+  const rows: UsageRow[] = [
+    { day: "2026-10-14", tool: "pricepaid_rent_prices", country: "IE", key: "dublin", status: "ok", client: "", count: 6 },
+    { day: "2026-10-14", tool: "pricepaid_rent_prices", country: "IE", key: "", status: "bad_request", client: "", count: 3 },
+    { day: "2026-10-14", tool: "pricepaid_fuel_prices_now", country: "ES", key: "28 / diesel", status: "error", client: "", count: 2 },
+    { day: "2026-10-14", tool: "pricepaid_fuel_prices_now", country: "ES", key: "28 / diesel", status: "ok", client: CRAWLER_CLIENT, count: 40 },
+    { day: "2026-10-14", tool: "mcp_initialize", country: "", key: "", status: "ok", client: "cursor", count: 9 },
+    { day: "2026-10-14", tool: "pricepaid_fuel_prices_now", country: "ES", key: "28 / diesel", status: "ok", client: "proofprice-smoke", count: 7 },
+  ];
+  const d = summariseUsage([{ rows }], DAY1).by_day![0];
+  assert.equal(d.real_questions, 11);
+  assert.equal(d.answered, 6);
+  assert.deepEqual(d.real_by_status, { ok: 6, bad_request: 3, error: 2 });
 });

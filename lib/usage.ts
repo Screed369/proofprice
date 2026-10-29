@@ -833,8 +833,11 @@ export interface UsageReport {
     day: string;
     questions: number;
     outside_questions: number;
+    /** real questions (see real_questions) that came back ok */
     answered: number;
     real_questions: number;
+    /** The same real questions split by status (ok, bad_request, error, no_matches, ...), so a fall in the answered share can be told apart: a wrong request, a failing source or a place with no data. */
+    real_by_status: Record<string, number>;
     /** crawler hits that day (not in real_questions) */
     crawler_questions: number;
     handshakes: number;
@@ -909,7 +912,7 @@ export function summariseUsage(
 ): UsageReport {
   const to = dayOf(now);
   const from = dayOf(new Date(now.getTime() - (days - 1) * 86400000));
-  const byDay = new Map<string, { questions: number; outside_questions: number; answered: number; real_questions: number; crawler_questions: number; handshakes: number }>();
+  const byDay = new Map<string, { questions: number; outside_questions: number; answered: number; real_questions: number; real_by_status: Record<string, number>; crawler_questions: number; handshakes: number }>();
   let ownTotal = 0;
   let real = 0;
   let crawlerQ = 0;
@@ -935,16 +938,19 @@ export function summariseUsage(
         ownTotal += r.count;
         ownClients.add(r.client);
       }
-      const d = byDay.get(r.day) ?? { questions: 0, outside_questions: 0, answered: 0, real_questions: 0, crawler_questions: 0, handshakes: 0 };
+      const d = byDay.get(r.day) ?? { questions: 0, outside_questions: 0, answered: 0, real_questions: 0, real_by_status: {}, crawler_questions: 0, handshakes: 0 };
       d.questions += r.count;
       if (!own) {
         d.outside_questions += r.count;
         if (crawl) {
           if (!hs) d.crawler_questions += r.count; // a crawler's connection handshake is neither a question nor a handshake
         } else if (hs) d.handshakes += r.count;
-        else d.real_questions += r.count;
+        else {
+          d.real_questions += r.count;
+          d.real_by_status[r.status] = (d.real_by_status[r.status] ?? 0) + r.count;
+          if (r.status === "ok") d.answered += r.count;
+        }
       }
-      if (r.status === "ok" && !hs && !crawl) d.answered += r.count;
       byDay.set(r.day, d);
       add(byTool, r.tool, r.count);
       if (!own) {
@@ -996,7 +1002,7 @@ export function summariseUsage(
   }
   const sessionsByDay = new Map(sess);
   const dayList = [...new Set([...byDay.keys(), ...sessionsByDay.keys()])].sort();
-  const emptyDay = { questions: 0, outside_questions: 0, answered: 0, real_questions: 0, crawler_questions: 0, handshakes: 0 };
+  const emptyDay = { questions: 0, outside_questions: 0, answered: 0, real_questions: 0, real_by_status: {}, crawler_questions: 0, handshakes: 0 };
   const countries = top([...byCountry].map(([country, questions]) => ({ country, questions })), 50);
   const clientList = [...named.values()].sort((a, b) => b.questions + b.handshakes - (a.questions + a.handshakes));
   return {
