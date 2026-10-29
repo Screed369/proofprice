@@ -1,0 +1,24 @@
+URL: https://api.data.gov.hk/v1/package?id=hk-gld-suppmgmt3-auction-result
+Fetched: 2026-10-29T10:15:43Z from GitHub Actions
+Status, type, bytes: 403 application/json 42
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 403 Forbidden
+Content-Type: application/json
+Content-Length: 42
+Connection: keep-alive
+Date: Thu, 29 Oct 2026 10:15:43 GMT
+X-Content-Type-Options: nosniff
+x-amzn-RequestId: 2ca558be-ddaa-4a51-bc2c-50db17932b97
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-amzn-ErrorType: MissingAuthenticationTokenException
+x-amz-apigw-id: GAFwhHSqtjMEtkw=
+X-Cache: Error from cloudfront
+Via: 1.1 a370d46600e8edb82a0d021e035d2bee.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: IAD61-P15
+X-Amz-Cf-Id: JQueXzRYd1LiL7RId3BtGOC99ido4wdwksxEFQqwlU9Gi7EdUdQiQQ==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"message":"Missing Authentication Token"}
