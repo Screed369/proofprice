@@ -207,7 +207,12 @@ export function sgRentDailyRows(byTown: Record<string, SgRent[]>): DailyRow[] {
   return rows.sort((a, b) => (a.area + a.item).localeCompare(b.area + b.item));
 }
 
-export async function sgRentHarvest(fetcher?: Fetcher, now = new Date()): Promise<HarvestResult> {
+/** Politeness towards data.gov.sg, which answers HTTP 429 to a fast burst (first live run 2026-10-29): a pause before every call and a longer one before each retry. */
+export const HARVEST_PAUSE_MS = 1500;
+export const HARVEST_RETRY_MS = [6000, 20000];
+const realSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
+export async function sgRentHarvest(fetcher?: Fetcher, now = new Date(), sleep: (ms: number) => Promise<void> = realSleep): Promise<HarvestResult> {
   const fetch = fetcher ?? resolveFetcher({ timeoutMs: 30000 });
   const from = cutoffMonth(HARVEST_MONTHS, now);
   const byTown: Record<string, SgRent[]> = {};
@@ -218,11 +223,16 @@ export async function sgRentHarvest(fetcher?: Fetcher, now = new Date()): Promis
       pageSize: 1000,
       fetchPage: async (offset, limit) => {
         const url = datastoreSearchUrl(SITE, { resourceId: RESOURCE_ID, filters: { town }, sort: ["rent_approval_date desc", "_id desc"], limit, offset, includeTotal: false });
+        await sleep(HARVEST_PAUSE_MS);
         let json: unknown;
-        try {
-          json = await fetch(url);
-        } catch {
-          json = await fetch(url); // one retry per page: the portal sometimes answers 429 or times out
+        for (let attempt = 0; ; attempt++) {
+          try {
+            json = await fetch(url);
+            break;
+          } catch (e) {
+            if (attempt >= HARVEST_RETRY_MS.length) throw e; // the portal sometimes answers 429 or times out: wait, then try again
+            await sleep(HARVEST_RETRY_MS[attempt]);
+          }
         }
         const r = parseDatastoreSearch(json);
         const oldest = r.records.length ? String(r.records[r.records.length - 1].rent_approval_date ?? "") : "";

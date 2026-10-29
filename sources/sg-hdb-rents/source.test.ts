@@ -163,9 +163,12 @@ function fakeAllTowns(towns: readonly string[] = SG_TOWNS) {
   return { fetcher, calls };
 }
 
+const noSleepLog: number[] = [];
+const noSleep = async (ms: number) => { noSleepLog.push(ms); };
+
 test("sgRentHarvest: one row per town for all flats and per flat type, window of 12 months, aggregates of 5+ only", async () => {
   const { fetcher } = fakeAllTowns();
-  const h = await sgRentHarvest(fetcher, new Date("2026-10-14T00:00:00Z"));
+  const h = await sgRentHarvest(fetcher, new Date("2026-10-14T00:00:00Z"), noSleep);
   assert.equal(h.date, "2026-10-14");
   assert.equal(h.currency, "SGD");
   assert.equal(h.unit, "per month");
@@ -181,17 +184,21 @@ test("sgRentHarvest: one row per town for all flats and per flat type, window of
 
 test("sgRentHarvest: a partial read (too few towns) fails instead of publishing a thin copy", async () => {
   const { fetcher } = fakeAllTowns(SG_TOWNS.slice(0, 10));
-  await assert.rejects(sgRentHarvest(fetcher, new Date("2026-10-14T00:00:00Z")), /Only 10 HDB towns/);
+  await assert.rejects(sgRentHarvest(fetcher, new Date("2026-10-14T00:00:00Z"), noSleep), /Only 10 HDB towns/);
 });
 
-test("sgRentHarvest: retries a page once, then gives up", async () => {
+test("sgRentHarvest: pauses before every call, waits longer and retries after a 429, then gives up", async () => {
+  noSleepLog.length = 0;
   const { fetcher } = fakeAllTowns();
   let n = 0;
   const flaky = async (url: string) => { if (n++ === 0) throw new Error("429"); return fetcher(url); };
-  const h = await sgRentHarvest(flaky, new Date("2026-10-14T00:00:00Z"));
+  const h = await sgRentHarvest(flaky, new Date("2026-10-14T00:00:00Z"), noSleep);
   assert.equal(h.rows.length, 26 * 3); // all flats, 4-room and 5-room per town
-  const dead = async () => { throw new Error("down"); };
-  await assert.rejects(sgRentHarvest(dead, new Date("2026-10-14T00:00:00Z")), /down/);
+  assert.ok(noSleepLog.includes(6000) && noSleepLog.filter((x) => x === 1500).length >= 26);
+  let tries = 0;
+  const dead = async () => { tries++; throw new Error("down"); };
+  await assert.rejects(sgRentHarvest(dead, new Date("2026-10-14T00:00:00Z"), noSleep), /down/);
+  assert.equal(tries, 3); // first call + 2 retries
 });
 
 test("sgRentHistoryKey: matches the harvest rows; other windows and bad input have no copy", () => {
