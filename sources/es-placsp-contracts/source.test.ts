@@ -160,6 +160,26 @@ test("answer: median and range from the library, period and labels, and clear er
   }
 });
 
+test("answer: a thin newest day falls back to the newest earlier day with 5+ awards, and says so", async () => {
+  process.env.PROOFPRICE_LIBRARY_DIR = mkdtempSync(path.join(tmpdir(), "esplacsp-"));
+  try {
+    const unit = "per contract, total awarded price without VAT";
+    writeDaily(INFO.id, { date: "2026-10-24", currency: "EUR", unit, rows: [{ area: "ALL", item: "cpv-45", n: 12, median: 172232, low: 40045, high: 3890362, min: 6341, max: 8301079 }] });
+    writeDaily(INFO.id, { date: "2026-10-29", currency: "EUR", unit, rows: [{ area: "ALL", item: "cpv-03", n: 12, median: 48988, low: 25664, high: 89146, min: 25020, max: 150064 }] });
+    writeMeta(INFO.id, { source: INFO.id, currency: "EUR", unit, first_date: "2026-10-24", last_date: "2026-10-29", days: 2, last_harvest_at: "x", last_rows: 1, last_ok_at: "x", last_error: null });
+    const a = await esContracts({ what: "works", cpv: "45" });
+    assert.equal(a.status, "ok");
+    assert.equal(a.price?.median, 172232);
+    assert.deepEqual(a.period, { from: "2026-10-23", to: "2026-10-24" });
+    assert.match(a.method ?? "", /fewer than 5 awards/);
+    assert.equal((a.extra as any).fell_back_to_earlier_day, "2026-10-24");
+    // older than a week: still no matches
+    assert.equal((await esContracts({ what: "laptops" })).status, "no_matches");
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
+});
+
 test("INFO: reuse with source cited, contract prices, no buyers or winners", () => {
   assert.equal(INFO.price_type, "contract_price");
   assert.match(INFO.attribution, /Origen de los datos: Ministerio de Hacienda/);

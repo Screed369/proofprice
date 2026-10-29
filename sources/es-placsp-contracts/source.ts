@@ -12,7 +12,7 @@ import { InputError, SourceError } from "../../lib/http";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { summarise } from "../../lib/stats";
-import { readLatestDay } from "../../lib/library/store";
+import { readDaily, readLatestDay } from "../../lib/library/store";
 import { cleanCpv, cpvStem, matchPurchase, PURCHASES } from "../../categories/contracts/purchases";
 
 export const INFO: SourceInfo = {
@@ -299,8 +299,21 @@ export async function esContracts(input: EsInput): Promise<PriceAnswer> {
   }
   const day = readLatestDay(INFO.id);
   if (!day) throw new SourceError("Spanish contract prices have not been collected yet; the daily collector fills them. Try again tomorrow.");
-  const from = windowStart(day.date);
-  const row = day.rows.find((r) => r.area === "ALL" && r.item === item);
+  let useDate = day.date;
+  let row = day.rows.find((r) => r.area === "ALL" && r.item === item);
+  let fellBack = false;
+  if (!row) {
+    // The newest collection can be a thin partial day (the feed is read early in the day). Use the newest earlier day within a week that
+    // has at least 5 awards for this item, and say so, rather than answering "no matches" for a purchase that was clearly awarded.
+    const earlier = readDaily(INFO.id, { area: "ALL", item, from: windowStart(day.date, 7), to: windowStart(day.date, 1) });
+    const prev = earlier[earlier.length - 1];
+    if (prev) {
+      row = prev;
+      useDate = prev.date;
+      fellBack = true;
+    }
+  }
+  const from = windowStart(useDate);
   const summary = row ? { count: row.n, median: row.median, low: row.low, high: row.high, min: row.min, max: row.max } : null;
   return buildAnswer({
     source: INFO,
@@ -308,14 +321,15 @@ export async function esContracts(input: EsInput): Promise<PriceAnswer> {
     summary,
     currency: "EUR",
     unit: UNIT,
-    period: { from, to: day.date },
+    period: { from, to: useDate },
     method:
-      `PLACSP awards dated ${from} to ${day.date}, recognised by their CPV product code (${label}). Median and 10th–90th percentile of the awarded price in EUR without VAT. ` +
+      `PLACSP awards dated ${from} to ${useDate}, recognised by their CPV product code (${label}). Median and 10th–90th percentile of the awarded price in EUR without VAT. ` +
+      (fellBack ? `The newest collection (${day.date}) held fewer than 5 awards for this purchase, so this is the newest earlier day that did. ` : "") +
       "Totals per contract, not unit prices; buyers and winners are never named. Only the newest one to two days of awards are summarised, so a rarer purchase may show no figure; use a broad CPV division such as 45 (construction) for a figure.",
     describe: (s) =>
       `Spanish public buyers awarded ${label} with a median total price of ${fmtMoney(s.median, "EUR")} per contract without VAT ` +
       `(typical range ${fmtMoney(s.low, "EUR")} to ${fmtMoney(s.high, "EUR")}, 10th to 90th percentile). These are totals per contract, not unit prices.`,
     baseUrl: input.baseUrl,
-    extra: { value_basis: "total awarded price without VAT (registered on PLACSP), not a unit price", ...matched, newest_collection: day.date },
+    extra: { value_basis: "total awarded price without VAT (registered on PLACSP), not a unit price", ...matched, newest_collection: day.date, ...(fellBack ? { fell_back_to_earlier_day: useDate } : {}) },
   });
 }
