@@ -7,7 +7,7 @@ import { deflateRawSync } from "node:zlib";
 import { CITIES } from "./cities";
 import manifest from "./index";
 import { InputError } from "../../lib/http";
-import { INFO, ITEM, cityFigure, deRent, figureFromRows, findCity, fold, harvestFrom, parseGrid, toLaea, unzipEntry } from "./source";
+import { INFO, ITEM, cityFigure, deRent, reuseStored, figureFromRows, findCity, fold, harvestFrom, parseGrid, toLaea, unzipEntry } from "./source";
 
 const REAL_100M = `GITTER_ID_100m;x_mp_100m;y_mp_100m;durchschnMieteQM;werterlaeuternde_Zeichen
 CRS3035RES100mN2691700E4341100;4341150;2691750;6,26;
@@ -164,4 +164,12 @@ test("manifest: licence is the Destatis wording, DE rent, harvest with no histor
   assert.equal(manifest.category, "rent");
   assert.equal(manifest.historyKey!({}), null);
   assert.ok(manifest.harvest);
+});
+
+test("reuseStored keeps the stored census day when the download is refused", () => {
+  const kept = reuseStored("HTTP 403");
+  assert.ok(kept !== null);
+  assert.equal(kept!.date, "2022-05-15");
+  assert.ok(kept!.rows.length >= 20);
+  assert.match(kept!.note ?? "", /HTTP 403/);
 });

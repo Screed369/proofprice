@@ -208,9 +208,35 @@ export function harvestFrom(grid: ParsedGrid): HarvestResult {
   };
 }
 
+/** The census is static (15 May 2022). If the download is refused or unreachable (Destatis answered HTTP 403 to the collector on 28-29 Oct 2026)
+ *  and the library already holds that census day, keep those stored figures instead of reporting a fault every day. */
+export function reuseStored(why: string): HarvestResult | null {
+  const held = readLatestDay("de-zensus-rents");
+  if (!held || held.date !== CENSUS_DATE || held.rows.length < 20) return null;
+  return {
+    date: held.date,
+    currency: "EUR",
+    unit: "per m2 per month",
+    rows: held.rows.map((r) => ({ area: r.area, item: r.item, n: NO_COUNT, median: r.median, low: r.low, high: r.high, min: r.min, max: r.max })),
+    note: `Zensus 2022 average net cold rent per m2 (census date ${held.date}), 1 km grid. The census figures do not change; the Destatis download was unavailable today (${why}), so the figures stored on the first successful read are kept. n is NO_COUNT: the cell averages are not counts of tenancies.`,
+  };
+}
+
 export async function deHarvest(): Promise<HarvestResult> {
-  const res = await fetch(ZIP_URL, { headers: { "user-agent": "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)" }, signal: AbortSignal.timeout(240_000) });
-  if (!res.ok) throw new SourceError(`Destatis returned HTTP ${res.status}`);
+  const ua = "Mozilla/5.0 (compatible; ProofPrice-collector/1.0; +https://proofprice.com; hello@proofprice.com)";
+  let res: Response;
+  try {
+    res = await fetch(ZIP_URL, { headers: { "user-agent": ua, accept: "application/zip,*/*" }, signal: AbortSignal.timeout(240_000) });
+  } catch (e: any) {
+    const kept = reuseStored(String(e?.message ?? e).slice(0, 80));
+    if (kept) return kept;
+    throw e;
+  }
+  if (!res.ok) {
+    const kept = reuseStored(`HTTP ${res.status}`);
+    if (kept) return kept;
+    throw new SourceError(`Destatis returned HTTP ${res.status}`);
+  }
   const csv = unzipEntry(Buffer.from(await res.arrayBuffer()), ENTRY_NAME).toString("utf8");
   return harvestFrom(parseGrid(csv));
 }
