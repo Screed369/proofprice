@@ -1,0 +1,21 @@
+URL: https://data.gov.il/api/3/action/package_search?q=used+car+price&rows=10
+Fetched: 2026-10-29T11:45:02Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 199
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 199
+date: Thu, 29 Oct 2026 11:45:02 GMT
+set-cookie: ckan=f54e555f71b3aa3ed4a5d0918987cc15fb26bbc8gAJ9cQAoWAcAAABfZG9tYWlucQFOWAUAAABfcGF0aHECWAEAAAAvcQNYAwAAAF9pZHEEWCAAAABjZmRlYzViYTdmYzM0ODRiYmI4YzdmMDMwZGNmN2E4N3EFWAYAAABfZnJlc2hxBolYDgAAAF9jcmVhdGlvbl90aW1lcQdHQdq4zG+zCkBYDgAAAF9hY2Nlc3NlZF90aW1lcQhHQdq4zG+zCkJ1Lg==; expires=Tue, 19-Jan-2038 03:14:07 GMT; HttpOnly; Path=/; SameSite=Lax
+set-cookie: TS012a021d=011618f29a58ed652d862c1a8d08ba71bc41a856303dc761defbe4b93e501991f0ba5535f37072e5da4827835b4cde01c5a7386834a31d77ff1ea277dc5109ebb456604798; Path=/; Domain=.data.gov.il
+cache-control: public, max-age=0, must-revalidate
+x-cache: Miss from cloudfront
+via: 1.1 892f87ce2e6bc73e8729aeca32f541c0.cloudfront.net (CloudFront)
+x-amz-cf-pop: ORD58-P13
+x-amz-cf-id: KEEp9dOj2JZjFgOSDpMT6MZTNVjVFiQAQPV4IuqkMo1s9zVC6tno-w==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://data.gov.il/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 0, "facets": {}, "results": [], "sort": "metadata_modified desc", "search_facets": {}}}
