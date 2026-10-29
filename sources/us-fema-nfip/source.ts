@@ -161,9 +161,10 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
     const days = DAY_SAMPLES;
     const span = Math.max(days, Math.round((Date.parse(to + "T00:00:00Z") - Date.parse(from + "T00:00:00Z")) / 86400000));
     const wins = Array.from({ length: days }, (_, i) => { const d = addDays(from, Math.floor(((i + 0.5) * span) / days)); return { from: d, until: addDays(d, 1) }; });
-    pages = await Promise.all(wins.map((w) => get(buildUrl(area, w.from, { until: w.until, count: true }))));
-    counts = pages.map((b) => totalCount(b));
-    total = Math.round((counts.reduce((x, y) => x + y, 0) / days) * span);
+    // No $count here: FEMA's count over a state filter is what timed out in the 29 Oct preview. The year's total is therefore not reported for states.
+    pages = await Promise.all(wins.map((w) => get(buildUrl(area, w.from, { until: w.until }))));
+    counts = pages.map((b) => (Array.isArray(b?.NfipPolicies) ? b.NfipPolicies.length : 0));
+    total = 0;
     sampled = true;
     estimated = true;
   } else {
@@ -184,7 +185,7 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
   }
   let policies: Policy[] = [];
   for (const b of pages) if (b) policies = policies.concat(parsePolicies(b));
-  if (total > 0 && pages.some((b) => b && !Array.isArray(b?.NfipPolicies))) throw new SourceError("The source answered in an unexpected format", "NfipPolicies missing");
+  if ((total > 0 || estimated) && pages.some((b) => b && !Array.isArray(b?.NfipPolicies))) throw new SourceError("The source answered in an unexpected format", "NfipPolicies missing");
   const s = summarisePolicies(policies);
   const label = area.kind === "zip" ? `ZIP code ${area.value}` : `${area.value} (state)`;
   const enough = s.cost && s.cost.count >= MIN_PUBLISH;
@@ -206,14 +207,13 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
     extra: enough
       ? {
           place: label,
-          policies_in_period: total,
+          ...(estimated ? {} : { policies_in_period: total }),
           sampled,
-          ...(estimated ? { policies_in_period_is_estimate: true } : {}),
-          ...(sampled ? { note: estimated ? `Summarised from ${policies.length} policies on ${DAY_SAMPLES} single days spread over the year; the yearly total is an estimate from their average daily count.` : `Summarised from a systematic sample of ${policies.length} of ${total} policies.` } : {}),
+          ...(sampled ? { note: estimated ? `Summarised from ${policies.length} policies on ${DAY_SAMPLES} single days spread over the last 12 months (the yearly total is not counted for states).` : `Summarised from a systematic sample of ${policies.length} of ${total} policies.` } : {}),
           premium_only: s.premium ? { median: s.premium.median, typical_low: s.premium.low, typical_high: s.premium.high, note: "Premium before federal fees, surcharge and reserve fund assessment." } : null,
           data_as_of: s.asOf,
           cover: "Flood insurance from the National Flood Insurance Program only.",
         }
-      : { place: label, policies_in_period: total },
+      : { place: label, ...(estimated ? {} : { policies_in_period: total }) },
   });
 }

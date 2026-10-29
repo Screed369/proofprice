@@ -109,7 +109,7 @@ test("femaNfip: big area is sampled with narrow date slices, never deep $skip", 
   assert.equal(urls.length, 8); // 8 single-day windows, no whole-quarter request
   for (const u of urls) { const d = decodeURIComponent(u); const m = /ge '(\d{4}-\d{2}-\d{2})' and policyEffectiveDate lt '(\d{4}-\d{2}-\d{2})'/.exec(d)!; assert.equal((Date.parse(m[2]) - Date.parse(m[1])) / 86400000, 1); }
   assert.equal((a.extra as any).sampled, true);
-  assert.equal((a.extra as any).policies_in_period_is_estimate, true);
-  assert.ok(Math.abs((a.extra as any).policies_in_period - 1300 * 365) <= 1300);
+  assert.ok(urls.every((u) => !u.includes("$count")), "no $count on a state");
+  assert.equal((a.extra as any).policies_in_period, undefined);
   assert.equal(a.sample_size, 48);
 });
