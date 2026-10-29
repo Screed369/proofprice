@@ -1,5 +1,8 @@
 name: zaprobe
-on: workflow_dispatch
+on:
+  push:
+    branches: [src/za-statssa-groceries]
+    paths: [".github/workflows/zaprobe.yml"]
 permissions:
   contents: write
 jobs:
