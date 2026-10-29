@@ -1,0 +1,30 @@
+URL: https://www.datos.gov.co/resource/7y2j-43cv.json?$limit=3&$where=tiene_valor%3D1
+Fetched: 2026-10-29T20:53:26Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1778
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 29 Oct 2026 20:53:26 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"anVsaWV0dC43MzI2OV8xXzMxOGs5SWRXblJ1MDJxS19oVENyYXc4cmhvRC0w---gzipHY4dENfJbxQ8ADKq2hMgetQunWA--gzip--gzip"
+X-SODA2-Fields: ["pk","matricula","fecha_radica_texto","fecha_apertura_texto","year_radica","orip","divipola","departamento","municipio","tipo_predio_zona","categoria_ruralidad_2024","num_anotacion","estado_folio","folios_derivados","dinamica_2024","cod_natujur","nombre_natujur","numero_catastral","numero_catastral_antiguo","documento_justificativo","count_a","count_de","predios_nuevos","tiene_valor","tiene_mas_de_un_valor","valor"]
+X-SODA2-Types: ["text","text","text","text","text","text","text","text","text","text","text","number","text","text","number","number","text","text","text","text","number","number","number","number","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+X-SODA2-Secondary-Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+Last-Modified: Fri, 04 Apr 2025 15:08:38 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 3aea99f95eff9877fd3ef33c6b765295
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"pk":"05002-002-006532-00011-00125-2016","matricula":"002-6532","fecha_radica_texto":"29/09/2016","year_radica":"2016","orip":"2","divipola":"5002","departamento":"ANTIOQUIA","municipio":"ABEJORRAL","tipo_predio_zona":"URBANO","categoria_ruralidad_2024":"Rural","num_anotacion":"11","estado_folio":"ACTIVO","dinamica_2024":"1","cod_natujur":"125","nombre_natujur":"COMPRAVENTA","documento_justificativo":"00-ESCRITURA 434 DE 20/09/2016;  NOTARIA UNICA - ABEJORRAL","count_a":"1","count_de":"1","predios_nuevos":"0","tiene_valor":"1","tiene_mas_de_un_valor":"0","valor":"5000000.0"}
+,{"pk":"05002-002-006532-00012-00125-2016","matricula":"002-6532","fecha_radica_texto":"02/12/2016","year_radica":"2016","orip":"2","divipola":"5002","departamento":"ANTIOQUIA","municipio":"ABEJORRAL","tipo_predio_zona":"URBANO","categoria_ruralidad_2024":"Rural","num_anotacion":"12","estado_folio":"ACTIVO","dinamica_2024":"1","cod_natujur":"125","nombre_natujur":"COMPRAVENTA","documento_justificativo":"00-ESCRITURA 537 DE 28/11/2016;  NOTARIA UNICA - ABEJORRAL","count_a":"2","count_de":"1","predios_nuevos":"0","tiene_valor":"1","tiene_mas_de_un_valor":"0","valor":"3100000.0"}
+,{"pk":"05002-002-008032-00012-00125-2021","matricula":"002-8032","fecha_radica_texto":"21/09/21","fecha_apertura_texto":"1994-01-11 00:00:00","year_radica":"2021","orip":"2","divipola":"5002","departamento":"ANTIOQUIA","municipio":"ABEJORRAL","tipo_predio_zona":"RURAL","categoria_ruralidad_2024":"Rural","num_anotacion":"12","estado_folio":"ACTIVO","dinamica_2024":"1","cod_natujur":"125","nombre_natujur":"COMPRAVENTA","documento_justificativo":"00-ESCRITURA 1338 DEL 07/09/21; ABEJORRAL","count_a":"1","count_de":"1","predios_nuevos":"0","tiene_valor":"1","tiene_mas_de_un_valor":"0","valor":"230000000"}]
