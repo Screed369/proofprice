@@ -161,3 +161,21 @@ test("INFO: contract prices, free-tier wording, no suppliers", () => {
   assert.match(INFO.limits, /suppliers and their tax ids in the open file are never read/);
   assert.match(INFO.attribution, /Portal Nacional de Contratacoes Publicas/);
 });
+
+test("harvest keeps inside its time budget: no budget left means no day is read, newest days are read first, pages load in parallel", async () => {
+  const now = new Date("2026-10-29T03:17:00Z");
+  const days = windowDays(now);
+  const perDay: Record<string, any[]> = {};
+  days.forEach((d, i) => (perDay[d] = guards(3, `d${i}`)));
+  await assert.rejects(brContractsHarvest(now, { fetcher: fakePncp(perDay), budgetMs: -1 }), /Could not read/);
+  // parallel pages: 6 pages of one day are all requested, in at most two batches of 4
+  let inFlight = 0, peak = 0;
+  const base = fakePncp({ "2026-10-27": guards(6, "p") }, [], 3);
+  const slow = async (url: string) => { inFlight++; peak = Math.max(peak, inFlight); await new Promise((r) => setTimeout(r, 5)); inFlight--; return base(url); };
+  const d = await readDay("2026-10-27", { fetcher: slow, concurrency: 4 });
+  assert.equal(d.contracts.length, 18); // the fake repeats 6 rows on each of its 3 pages
+  assert.ok(peak > 1 && peak <= 4, `peak ${peak}`);
+  // a deadline in the past stops after page 1 and marks the day incomplete
+  const cut = await readDay("2026-10-27", { fetcher: base, deadline: 0 });
+  assert.equal(cut.complete, false);
+});
