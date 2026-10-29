@@ -1,0 +1,455 @@
+URL: https://api.stat.gov.pl/Home/BdlApi?lang=en
+Fetched: 2026-10-29T12:46:56Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 95344
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Server: Microsoft-IIS/10.0
+X-AspNetMvc-Version: 5.2
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Date: Thu, 29 Oct 2026 12:46:54 GMT
+Set-Cookie: NSC_JO3gu32gbem412vb0b43sqctnd1s2dh=ffffffffc3a0103b45525d5f4f58455e445a4a423660;path=/;secure;httponly
+Strict-Transport-Security: max-age=15552000
+Transfer-Encoding: chunked
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (452), with CRLF line terminators
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal API GUS</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/Content/images/favicon.ico" />
+    
+    <link href="/Content/css/Bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/css/Aos.css" rel="stylesheet" />
+    <link href="/Content/css/Font_FiraSans.css" rel="stylesheet" />
+    <link href="/Content/css/Site.css?ver=240225" rel="stylesheet">
+    <link href="/Content/css/Site_En.css" rel="stylesheet" />
+    <script src="/Content/scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Content/scripts/bootstrap.min.js"></script>
+    
+    <script src="/Content/scripts/Chart.bundle.js"></script>
+    <script src="/Content/scripts/Chart.js"></script>
+    <script src="/Content/scripts/Script2.js?ver=1"></script>
+
+    <script src="/Content/scripts/WCAG.js?ver=2"></script>
+    <script src="/Content/scripts/LangScript.js?v=240410"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <a href="/Home/Index?lang=en" title="API Portal"><img src="/Content/images/logo_PortalAPI-GUS.svg" class="logo" /></a>
+            </div>
+            <div class="col-lg-8 col-xs-12">
+                <div class="col-xs-12 d-sm-none">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link link-logo" href="https://stat.gov.pl/en/" target="_blank" title="Go to the Statistics Poland Portal">Information Portal</a>
+                        </li>
+                        <li class="nav-item">
+                            <button name="lang" class="nav-link lang lang-pl" title="Polski" onclick="ChangeLangPL()"></button>
+                            
+                        </li>
+                    </ul>
+                    <ul class="nav justify-content-center menu-top">
+                        <li class="nav-item" style="background-color: #FFF;">
+                            <span class="nav-link" id="mCD" title="Default contrast"><img src="/Content/images/eye-black-grey-22x20.png" /></span>
+                        </li>
+                        <li class="nav-item" style="background-color: #FFF;">
+                            <span class="nav-link" id="mCBY" title="Contrast black and yellow"><img src="/Content/images/eye-black-yellow-22x20.png" /></span>
+                        </li>
+                        <li class="nav-item" style="background-color: #FFF;">
+                            <span class="nav-link" id="mCYB" title="Contrast yellow and black"><img src="/Content/images/eye-yellow-black-22x20.png" /></span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link myButtonS" id="mLS" title="Small font size">A</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link myButtonM" id="mLM" title="Medium font size">A</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link myButtonL" id="mLL" title="Large font size">A</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 d-none d-sm-block">
+                    <ul class="nav justify-content-end menu-top">
+                        <li class="nav-item">
+                            <a class="nav-link link-logo" href="https://stat.gov.pl/en/" target="_blank" title="Go to the Statistics Poland Portal">Information Portal</a>
+                        </li>
+                        <li class="nav-item">
+                            <button name="lang" class="nav-link lang lang-pl" title="Polski" onclick="ChangeLangPL()"></button>
+                            
+                        </li>
+                        <li class="nav-item" style="background-color: #FFF;">
+                            <span class="nav-link" id="CD" title="Default contrast"><img class="d-none d-lg-block" src="/Content/images/eye-black-grey-27x24.png" /><img class="d-lg-none" src="/Content/images/eye-black-grey-22x20.png" /></span>
+                        </li>
+                        <li class="nav-item" style="background-color: #FFF;">
+                            <span class="nav-link" id="CBY" title="Contrast black and yellow"><img class="d-none d-lg-block" src="/Content/images/eye-black-yellow-27x24.png" /><img class="d-lg-none" src="/Content/images/eye-black-yellow-22x20.png" /></span>
+                        </li>
+                        <li class="nav-item" style="background-color: #FFF;">
+                            <span class="nav-link" id="CYB" title="Contrast yellow and black"><img class="d-none d-lg-block" src="/Content/images/eye-yellow-black-27x24.png" /><img class="d-lg-none" src="/Content/images/eye-yellow-black-22x20.png" /></span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link myButtonS" id="LS" title="Small font size">A</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link myButtonM" id="LM" title="Medium font size">A</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link myButtonL" id="LL" title="Large font size">A</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+<div class="container main-2">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <h1 class="mt-2 api-title">API BDL</h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto d-block d-lg-none">
+    <li class="nav-item" id="navItem1">
+        <a class="nav-link" href="/Home/Index?lang=en">Back</a>
+    </li>
+        <li class="nav-item" id="navItem2">
+            <a class="nav-link" href="/Home/RegonApi?lang=en">API REGON</a>
+        </li>
+            <li class="nav-item" id="navItem3">
+            <a class="nav-link" href="/Home/TerytApi?lang=en">API TERYT</a>
+        </li>
+            <li class="nav-item" id="navItem7">
+            <a class="nav-link" href="/Home/SDPApi?lang=en">API SDP</a>
+        </li>
+                <li class="nav-item" id="navItem2">
+            <a class="nav-link" href="/Home/DBWApi?lang=en">API DBW</a>
+        </li>
+            <li class="nav-item" id="navItem6">
+            <a class="nav-link" href="/Home/SMUPApi?lang=en">API SMUP</a>
+        </li>
+            <li class="nav-item" id="navItem6">
+            <a class="nav-link" href="/Home/StrategApi?lang=en">API STRATEG</a>
+        </li>
+            <li class="nav-item" id="navItem5">
+            <a class="nav-link" href="/Home/SDGApi?lang=en">API SDG</a>
+        </li>
+            <li class="nav-item" id="navItem8">
+            <a class="nav-link" href="/Home/TranStatApi?lang=en">API TranStat</a>
+        </li>
+</ul>
+
+<div class="dropdown ml-auto d-none d-lg-block">
+    <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/Home/RegonApi?lang=en">API REGON</a>
+                    <a class="dropdown-item" href="/Home/TerytApi?lang=en">API TERYT</a>
+                    <a class="dropdown-item" href="/Home/SDPApi?lang=en">API SDP</a>
+                            <a class="dropdown-item" href="/Home/DBWApi?lang=en">API DBW</a>
+                    <a class="dropdown-item" href="/Home/SMUPApi?lang=en" title="API SMUP">API SMUP</a>
+                    <a class="dropdown-item" href="/Home/StrategApi?lang=en">API STRATEG</a>
+                    <a class="dropdown-item" href="/Home/SDGApi?lang=en">API SDG</a>
+                    <a class="dropdown-item" href="/Home/TranStatApi?lang=en">API TranStat</a>
+        <a class="dropdown-item" href="/Home/Index?lang=en">Back</a>
+    </div>
+</div>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row" data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
+        <div class="col-lg-3 mt-4">
+            <div class="list-group">
+                <a href="#menu1" class="list-group-item active color-3 brdColor-3" data-toggle="pill" title="General information">General information</a>
+                <a href="#menu2" class="list-group-item color-3 brdColor-3" data-toggle="pill" title="Registration">Registration</a>
+                <a href="#menu3" class="list-group-item color-3 brdColor-3" data-toggle="pill" title="Manual">Manual</a>
+                <a href="#menu4" class="list-group-item color-3 brdColor-3" data-toggle="pill" title="Contact">Contact</a>
+                <a href="#menu5" class="list-group-item color-3 brdColor-3" data-toggle="pill" title="Statistics" onclick="loadDataApi()">Statistics</a>
+            </div>
+        </div>
+        <div class="col-lg-9 mt-4">
+            <div class="tab-content">
+                <div class="tab-pane active" id="menu1">
+                    <div class="card card-outline-secondary brdColor-3">
+                        <div class="card-header bgColor-3">
+                            General information
+                        </div>
+                        <div class="card-body fontSizeCard">
+                            <p>
+                                LOCAL DATA BANK (POL.: BDL) is Poland's largest database of the economy, society and the environment.
+                            </p>
+                            <p>
+                                BDL offers thousands statistical data grouped thematically. The first data comes from 1995.
+                            </p>
+                            <p>
+                                <ul>
+                                    <li>Data and indicators describe statistical towns, municipalities, counties, voivodships and Poland as well as units compliant with the NUTS nomenclature: subregions, regions and macroregions.</li>
+                                    <li>Information resources (annual and short-term statistics) are constantly supplemented and updated.</li>
+                                </ul>
+                            </p>
+                            <p>
+                                The API application allows to browse and download for further processing the full range of data located in the Bank. The data is made available through REST API in XML and JSON format.
+                            </p>
+                            <p>
+                                The BDL API was implemented as part of a project <a href="https://bip.stat.gov.pl/dzialalnosc-statystyki-publicznej/projekty-unijne-w-statystyce/otwarte-dane-dostep-standard-edukacja/">"Open data - access, standard, education"</a>, whose leader is the Ministry of Digitization. The project is co-financed from the European Union funds from the Operational Program Digital Poland.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="menu2">
+                    <div class="card card-outline-secondary brdColor-3">
+                        <div class="card-header bgColor-3">
+                            Registration
+                        </div>
+                        <div class="card-body fontSizeCard">
+                            <iframe class="myFrame" src="https://bdl.stat.gov.pl/api/v1/client?lang=en&theme=Default&showInFrame=yes" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="menu3">
+                    <div class="card card-outline-secondary brdColor-3">
+                        <div class="card-header bgColor-3">
+                            Manual
+                        </div>
+                        <div class="card-body fontSizeCard">
+                            <h2 class="card-title">Scope of information</h2>
+                            <p>
+                                The scope of data available in the API and in the BDL web application is the same, but for technological and ergonomic reasons, the organization and presentation of information is slightly different. This is to ensure an easy start for new users who do not know the BDL structure, as well as the appropriate performance and convenience of using the so-called permanent users.
+                            </p>
+                            <hr>
+                            <h2 class="card-title">Limits and API key</h2>
+                            <p>
+                                For API security reasons, quantitative limits are imposed on the number of requests. Users who need larger limits may register and get an automatically generated personal API key. The API key should be provided in the request as an HTTP header named X-ClientId, e.g.    
+                            </p>
+                            <div class="mt-3 mb-3 bg-light p-3 border rounded text-black-50 text-monospace">
+                                GET https://bdl.stat.gov.pl/api/v1/data/by-variable/3643?format=xml&year=2000&year=2010 HTTP/1.1<br />
+                                Host: hostname<br />
+                                X-ClientId: 1A6B2AB1-0DF0-4DAC-74A3-07D7C07FC3BE
+                            </div>
+                            <p>In the field of requests, the following user limits apply:</p>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th>Period</th>
+                                    <th>Anonymous user</th>
+                                    <th>Registered user</th>
+                                </tr>
+                                <tr>
+                                    <td>1s</td>
+                                    <td>5</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>15m</td>
+                                    <td>100</td>
+                                    <td>500</td>
+                                </tr>
+                                <tr>
+                                    <td>12h</td>
+                                    <td>1&#xA0;000</td>
+                                    <td>5&#xA0;000</td>
+                                </tr>
+                                <tr>
+                                    <td>7d</td>
+                                    <td>10&#xA0;000</td>
+                                    <td>50&#xA0;000</td>
+                                </tr>
+                            </table>
+                            <hr>
+                            <h2 class="card-title">Resource structure</h2>
+                            <p>
+                                The following BDL resources are made available in the API application:
+                            </p>
+                            <ol>
+                                <li>
+                                    Aggregates - data aggregation levels for which data are available, e.g. municipalities or urban-rural communes.
+                                </li>
+                                <li>
+                                    Attributes - descriptions of specific situations in the data that are associated with each numerical value, e.g. 'Value smaller than the adopted presentation format'.    
+                                </li>
+                                <li>
+                                    Data - numerical data in the form of three [real number, attribute identifier, year identifier], in the form of a data set for a specific variable or set of data for one unit (more information below).
+                                </li>
+                                <li>
+                                    Units of measurement - units of measurement appearing in the data, related to specific variables, e.g. 'thousand liters'.
+                                </li>
+                                <li>
+                                    Level of validity - the level of validity of data by:
+                                    <ul>
+                                        <li>0 - Polish level</li>
+                                        <li>1 - Macro-regions level</li>
+                                        <li>2 - Voivedships level</li>
+                                        <li>3 - Regions level</li>
+                                        <li>4 - Subregions level</li>
+                                        <li>5 - Counties level</li>
+                                        <li>6 - Municipalities level</li>
+                                        <li>7 - Statistical towns level</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Topics – hierarchically related groups of variables according to the substantive scope, eg. 'Population', 'Population by age and gender groups' (more information below).
+                                </li>
+                                <li>
+                                    Units - hierarchically related list of territorial units (from Poland up to municipalities) and statistical towns.
+                                </li>
+                                <li>
+                                    Variables - these are multidimensional features representing a specific phenomenon, with a defined validity in years and at a specific level of units, e.g. the number of employees for the ages of '20 -26 'and gender' men '.
+                                </li>
+                                <li>
+                                    Years - years of validity for which data may exist, e.g. '2003', '2004'.
+                                </li>
+                            </ol>
+                            <hr>
+                            <h2 class="card-title">Variability and quantity of resources</h2>
+                            <p>
+                                Resources such as Aggregates, Attributes, Units of Measure and Years are dictionary resources with very low variability and multiplicity, therefore they can be treated as so-called 'typical dictionaries', occasionally updated at specific time intervals or at the user request. These resources are not paged and can’t be searched according to complicated criteria.
+                            </p>
+                            <p>
+                                Resource such as Units, denoting the territorial division units, is a resource of large multiplicity and very small variability, updated only when inputting the data for the new year in BDL (at the beginning of the year). Due to its multiplicity, it may cause difficulties in downloading it in full size, therefore we are able to search and download partially according to our own criteria, of course in a limited scope.
+                            </p>
+                            <p>
+                                Resources such as Data and Variables are resources with very high variability, because the Bank is constantly undergoing the process of extending the scope of data as well as verification and corrections.
+                            </p>
+                            <hr>
+                            <h2 class="card-title">Downloading data</h2>
+                            <p>
+                                The data is made available by the API in two alternative ways:
+                            </p>
+
+                            <ul>
+                                <li>for one variable and many territorial units</li>
+                                <li>for one territorial unit and many variables</li>
+                            </ul>
+
+                            <h2 class="card-title">
+                                Data for one variable and many territorial units
+                            </h2>
+
+                            <p>
+                                The process of downloading data for one variable and many territorial units in a simplified way may look as follows:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Download a list of main level topics, e.g.
+                                    <p class="mt-2 bg-light p-3 border rounded text-monospace">
+                                        <a href="https://bdl.stat.gov.pl/api/v1/subjects?format=xml" target="_blank">/api/v1/subjects?format=xml</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/subjects?lang=pl&format=json" target="_blank">/api/v1/subjects?lang=pl&format=json</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    Choose a topic and download a list of sublevels until you reach the level in which the topic has variables (hasVariables=true), e.g.
+                                    <p class="mt-2 bg-light p-3 border rounded text-monospace">
+                                        <a href="https://bdl.stat.gov.pl/api/v1/subjects?parent-id=K15" target="_blank">/api/v1/subjects?parent-id=K15</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/subjects?parent-id=G186" target="_blank">/api/v1/subjects?parent-id=G186</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    Download the list of variables for the selected topic and select the variable of interest.
+                                    <p class="mt-2 bg-light p-3 border rounded text-monospace">
+                                        <a href="https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3183" target="_blank">/api/v1/Variables?subject-id=P3183</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    Download data for the selected variable, possibly narrowing down the list of territorial units and years to an interesting range, e.g.
+                                    <p class="mt-2 bg-light p-3 border rounded text-monospace">
+                                        <a href="https://bdl.stat.gov.pl/api/v1/data/by-variable/3643?format=xml&unit-level=2" target="_blank">
+                                            /api/v1/data/by-variable/3643?format=xml&unit-level=2
+                                        </a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/data/by-variable/3643?format=xml&year=2009&year=2010&year=2011&unit-parent-id=010000000000&unit-level=2" target="_blank">
+                                            /api/v1/data/by-variable/3643?format=xml&year=2009&year=2010&year=2011&unit-parent-id=010000000000&unit-level=2
+                                        </a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/data/by-variable/2137?unit-level=4&page-size=10&page=3" target="_blank">
+                                            /api/v1/data/by-variable/2137?unit-level=4&page-size=10&page=3
+                                        </a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/data/localities/by-variable/148190?unit-parent-id=011212001011" target="_blank">
+                                            /api/v1/data/localities/by-variable/148190?unit-parent-id=011212001011
+                                        </a>
+                                    </p>
+                                </li>
+                            </ol>
+
+                            <h2 class="card-title">
+                                Data for one territorial unit and many variables
+                            </h2>
+
+                            <p>
+                                The process of downloading data for one territorial unit and many variables in a simplified way may look as follows:
+                            </p>
+
+                            <ol>
+                                <li>
+                                    Select a territorial unit by navigating the list of territorial units, e.g.
+                                    <p class="mt-2 bg-light p-3 border rounded text-monospace">
+                                        <a href="https://bdl.stat.gov.pl/api/v1/units" target="_blank">/api/v1/Units</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/units?level=2" target="_blank">/api/v1/Units?level=2</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/units?parent-id=011200000000&level=5" target="_blank">/api/v1/Units?parent-id=011200000000&level=5</a><br />
+                                    </p>
+                                </li>
+                                <li>
+                                    Download a list of main level topics, e.g.
+                                    <p class="mt-2 bg-light p-3 border rounded text-monospace">
+                                        <a href="https://bdl.stat.gov.pl/api/v1/subjects?format=xml" target="_blank">/api/v1/subjects?format=xml</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/subjects?lang=pl&format=json" target="_blank">/api/v1/subjects?lang=pl&format=json</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    Navigating the list of topics and variables, select the variables that interest you, e.g.
+                                    <p class="mt-2 bg-light p-3 border rounded text-monospace">
+                                        <a href="https://bdl.stat.gov.pl/api/v1/subjects?parent-id=K15" target="_blank">/api/v1/subjects?parent-id=K15</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/subjects?parent-id=G186" target="_blank">/api/v1/subjects?parent-id=G186</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3183" target="_blank">/api/v1/Variables?subject-id=P3183</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    Download data for the selected unit and selected variables, narrowing down the range of years, e.g.
+                                    <p class="mt-2 bg-light p-3 border rounded text-monospace">
+                                        <a href="https://bdl.stat.gov.pl/api/v1/data/by-unit/023200000000?var-id=3643" target="_blank">/api/v1/data/by-unit/023200000000?var-id=3643</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/data/by-unit/023200000000?var-id=3643&var-id=2137&var-id=148190" target="_blank">/api/v1/data/by-unit/023200000000?var-id=3643&var-id=2137&var-id=148190</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/data/localities/by-unit/011212001011-0981682?var-id=148190" target="_blank">/api/v1/data/localities/by-unit/011212001011-0981682?var-id=148190</a><br />
+                                        <a href="https://bdl.stat.gov.pl/api/v1/data/localities/by-unit/011212001011-0981682?var-id=148190&year=2009&year=2011" target="_blank">/api/v1/data/localities/by-unit/011212001011-0981682?var-id=148190&year=2009&year=2011</a>
+                                    </p>
+                                </li>
+                            </ol>
+
+                            <p>In both approaches, the issue of discretionary is the time and the rules for retrieving dictionary data, i.e. attributes, aggregate lists, etc.</p>
+                            <hr>
+                            <h2 class="card-title">Examples</h2>
+                            <style type="text/css">
+    table td.fit,
+    table th.fit {
+        white-space: nowrap;
+        width: 1%;
+    }
+</style>
+
+<p>We invite you to read the examples of valid API calls.</p>
+
+<div class="row mt-3 mb-3 d-none d-lg-block">
+    <div class="col col-12">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#nav-aggregates" role="tab">Aggregates</a>
+                    </li>
+                    <li class="nav-item">
+                       
