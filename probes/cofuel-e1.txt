@@ -1,0 +1,19 @@
+URL: https://www.datos.gov.co/resource/he3q-86dn.json?%24limit=6&%24order=a%C3%B1o_despacho%20DESC
+Fetched: 2026-10-29T12:49:16Z from GitHub Actions
+Status, type, bytes: 400 application/json;charset=utf-8 1385
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 Bad Request
+Server: nginx
+Date: Thu, 29 Oct 2026 12:49:16 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+X-Socrata-RequestId: 4e39f62af4e2604390131936d2a1028d
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"message":"Query coordinator error: query.soql.no-such-column; No such column: año_despacho; position: Map(row -> 1, column -> 253, line -> \"SELECT `fecha_precio`, `anio_precio`, `mes_precio`, `dia_precio`, `departamento_eds`, `municipio_eds`, `nombre_comercial_eds`, `precio_promedio_publicado`, `tipo_combustible`, `codigo_municipio_dane`, `latitud_municipio`, `longitud_municipio` ORDER BY `año_despacho` DESC NULL FIRST LIMIT 6\\n                                                                                                                                                                                                                                                            ^\")","errorCode":"query.soql.no-such-column","data":{"column":"año_despacho","dataset":"juliett.8651","position":{"row":1,"column":253,"line":"SELECT `fecha_precio`, `anio_precio`, `mes_precio`, `dia_precio`, `departamento_eds`, `municipio_eds`, `nombre_comercial_eds`, `precio_promedio_publicado`, `tipo_combustible`, `codigo_municipio_dane`, `latitud_municipio`, `longitud_municipio` ORDER BY `año_despacho` DESC NULL FIRST LIMIT 6\n                                                                                                                                                                                                                                                            ^"}}}
