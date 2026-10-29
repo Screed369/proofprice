@@ -10,7 +10,7 @@ import { PAGE_SOURCES, buildSourcePages, noFullStop, shortLicence, shortPublishe
 import { areaFor, dublinDistrictName, knownAreaCodes, slugify } from "../lib/site/areas";
 import { HOME_TITLE, SITE_URL } from "../lib/site/constants";
 import { homeExamples } from "../lib/site/examples";
-import { answerPageGraph, datasetLd, homeGraph, serializeJsonLd, sourcesGraph } from "../lib/site/jsonld";
+import { answerPageGraph, faqPageGraph, datasetLd, homeGraph, serializeJsonLd, sourcesGraph } from "../lib/site/jsonld";
 import { int, longDate, monthsBefore } from "../lib/site/format";
 import { allAnswerPages, loadAnswerPages } from "../lib/site/prices";
 import { datasetInput, groupByCategory, sourceCards } from "../lib/site/sources";
@@ -435,4 +435,14 @@ test("home title names the product, the data and the audience, and fits a search
   for (const word of ["ProofPrice", "prices paid", "MCP", "API", "AI agents"]) {
     assert.ok(HOME_TITLE.toLowerCase().includes(word.toLowerCase()) || (word === "prices paid" && /prices paid/i.test(HOME_TITLE)), `missing ${word}`);
   }
+});
+
+test("faqPageGraph builds a FAQPage with absolute URLs and the given answers", () => {
+  const g = faqPageGraph("/pricing", [{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing" }], [{ question: "Q?", answer: "A." }]) as {
+    "@graph": Record<string, unknown>[];
+  };
+  const faq = g["@graph"].find((n) => n["@type"] === "FAQPage") as { url: string; mainEntity: { name: string; acceptedAnswer: { text: string } }[] };
+  assert.equal(faq.url, `${SITE_URL}/pricing`);
+  assert.equal(faq.mainEntity[0].name, "Q?");
+  assert.equal(faq.mainEntity[0].acceptedAnswer.text, "A.");
 });
