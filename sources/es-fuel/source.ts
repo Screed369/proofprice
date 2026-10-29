@@ -151,7 +151,12 @@ export async function esFuelNow(input: {
         return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}`, extra: { ...a.extra, widened: true, widened_from: input.town, widened_to: `province ${province}` } };
       }
     }
-    const wide = esWidenToNational(input.fuel, cp ? `postcode ${cp}` : input.town ?? `province ${province}`, input.baseUrl);
+    // The province's autonomous community first (finer), then the national figure.
+    const place = cp ? `postcode ${cp}` : input.town ?? `province ${province}`;
+    const regionCode = esRegionOf(province);
+    const wide =
+      (regionCode ? esWidenToNational(input.fuel, place, input.baseUrl, undefined, regionCode) : null) ??
+      esWidenToNational(input.fuel, place, input.baseUrl);
     if (wide) return wide;
   }
   const cheapest = [...picked].sort((a, b) => a.price - b.price).slice(0, 3).map(({ province, ...s }) => s);
@@ -175,11 +180,13 @@ export async function esFuelNow(input: {
 const ES_NICHE = new Set<Fuel>(["lpg", "methane"]);
 
 /** The national (mainland + Balearics) library row for this fuel as a labelled answer; null when the library has none. */
-export function esWidenToNational(fuel: Fuel, area: string, baseUrl?: string, today?: Date): PriceAnswer | null {
-  const row = nationalRow("es-fuel", fuel, today);
+export function esWidenToNational(fuel: Fuel, area: string, baseUrl?: string, today?: Date, region?: string): PriceAnswer | null {
+  const whole = region ? ES_REGIONS[region]?.name : "mainland Spain and the Balearics";
+  if (!whole) return null;
+  const row = nationalRow("es-fuel", fuel, today, region ?? "ALL");
   if (!row) return null;
   const unit = fuel === "methane" ? "per kg" : "per litre";
-  const sentence = widenSentence(FUEL_LABEL[fuel], area, "mainland Spain and the Balearics", row.summary.count);
+  const sentence = widenSentence(FUEL_LABEL[fuel], area, whole, row.summary.count);
   const a = buildAnswer({
     source: INFO,
     query: { country: "ES", postcode: null, area: area.replace(/\D/g, "") || null, town: null, fuel },
@@ -188,18 +195,42 @@ export function esWidenToNational(fuel: Fuel, area: string, baseUrl?: string, to
     unit,
     period: { from: row.date, to: row.date },
     method:
-      `Median and 10th–90th percentile of the current pump price reported by each public filling station in mainland Spain and the Balearics for the selected fuel (our daily copy of ${row.date}). Restricted-sale stations are excluded.`,
+      `Median and 10th–90th percentile of the current pump price reported by each public filling station in ${whole} for the selected fuel (our daily copy of ${row.date}). Restricted-sale stations are excluded.`,
     describe: (x) =>
-      `${FUEL_LABEL[fuel]} in mainland Spain and the Balearics: current posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+      `${FUEL_LABEL[fuel]} in ${whole}: current posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
     baseUrl,
-    extra: { widened: true, widened_from: area, widened_to: "mainland Spain and the Balearics", stations_counted: row.summary.count },
+    extra: { widened: true, widened_from: area, widened_to: whole, stations_counted: row.summary.count },
   });
   return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}` };
 }
 
+/** Autonomous communities and their province codes. The library also holds one row per community ("RAN" ...), used only to
+ *  widen a thin province for LPG/methane to its community before the national figure. Ceuta and Melilla (51, 52) have none. */
+export const ES_REGIONS: Record<string, { name: string; provinces: string[] }> = {
+  RAN: { name: "Andalusia", provinces: ["04", "11", "14", "18", "21", "23", "29", "41"] },
+  RAR: { name: "Aragon", provinces: ["22", "44", "50"] },
+  RAS: { name: "Asturias", provinces: ["33"] },
+  RBA: { name: "the Balearic Islands", provinces: ["07"] },
+  RCN: { name: "the Canary Islands", provinces: ["35", "38"] },
+  RCB: { name: "Cantabria", provinces: ["39"] },
+  RCL: { name: "Castile and León", provinces: ["05", "09", "24", "34", "37", "40", "42", "47", "49"] },
+  RCM: { name: "Castilla-La Mancha", provinces: ["02", "13", "16", "19", "45"] },
+  RCT: { name: "Catalonia", provinces: ["08", "17", "25", "43"] },
+  RVC: { name: "the Valencian Community", provinces: ["03", "12", "46"] },
+  REX: { name: "Extremadura", provinces: ["06", "10"] },
+  RGA: { name: "Galicia", provinces: ["15", "27", "32", "36"] },
+  RMD: { name: "the Community of Madrid", provinces: ["28"] },
+  RMC: { name: "the Region of Murcia", provinces: ["30"] },
+  RNC: { name: "Navarre", provinces: ["31"] },
+  RPV: { name: "the Basque Country", provinces: ["01", "20", "48"] },
+  RRI: { name: "La Rioja", provinces: ["26"] },
+};
+const REGION_OF = new Map<string, string>(Object.entries(ES_REGIONS).flatMap(([r, v]) => v.provinces.map((p) => [p, r] as [string, string])));
+export const esRegionOf = (province: string): string | null => REGION_OF.get(province) ?? null;
+
 const ES_OUTSIDE_NATIONAL = new Set(["35", "38", "51", "52"]);
 
-/** One day of aggregates for the price library: every province and fuel, plus Spain as a whole ("ALL"). */
+/** One day of aggregates for the price library: every province and fuel, plus each autonomous community and Spain as a whole ("ALL"). */
 export function esDailyRows(json: any): HarvestResult {
   const records: { area: string; item: string; price: number }[] = [];
   let fecha: string | null = null;
@@ -209,6 +240,8 @@ export function esDailyRows(json: any): HarvestResult {
     for (const s of parsed.stations) {
       if (!s.province) continue;
       records.push({ area: s.province, item: fuel, price: s.price });
+      const region = esRegionOf(s.province);
+      if (region) records.push({ area: region, item: fuel, price: s.price });
       // National row: mainland Spain and the Balearics (Canarias, Ceuta and Melilla have different fuel taxes).
       if (!ES_OUTSIDE_NATIONAL.has(s.province)) records.push({ area: "ALL", item: fuel, price: s.price });
     }

@@ -110,3 +110,31 @@ test("ES: a thin town (LPG) is widened to its province when that has 5+ stations
     globalThis.fetch = realFetch;
   }
 });
+
+test("ES: every province 01-52 except Ceuta and Melilla belongs to exactly one autonomous community", async () => {
+  const { ES_REGIONS, esRegionOf } = await import("./source");
+  const all = Object.values(ES_REGIONS).flatMap((r) => r.provinces);
+  assert.equal(new Set(all).size, all.length);
+  for (let i = 1; i <= 50; i++) assert.ok(esRegionOf(String(i).padStart(2, "0")), `province ${i} has a community`);
+  assert.equal(esRegionOf("51"), null);
+  assert.equal(esRegionOf("52"), null);
+  assert.equal(esRegionOf("42"), "RCL");
+});
+
+test("ES: the daily collector writes one row per community next to the province and national rows", async () => {
+  const { esDailyRows } = await import("./source");
+  const mk = (prov: string, p: string) => ({ "C.P.": prov + "001", IDProvincia: prov, "Tipo Venta": "P", "Precio Gases licuados del petróleo": p });
+  // 3 LPG stations in province 42 (Soria) and 3 in 47 (Valladolid): neither province reaches 5, Castile and León does.
+  const list = [mk("42", "0,80"), mk("42", "0,81"), mk("42", "0,82"), mk("47", "0,83"), mk("47", "0,84"), mk("47", "0,85")];
+  const { rows } = esDailyRows({ Fecha: "29/10/2026 8:00:00", ListaEESSPrecio: list });
+  const get = (area: string) => rows.find((r) => r.area === area && r.item === "lpg");
+  assert.equal(get("RCL")!.n, 6);
+  assert.equal(get("ALL")!.n, 6);
+  assert.equal(get("42")!.n, 3);
+});
+
+test("ES: widening to a community needs a library row for it; an unknown community or no row means null (national figure follows)", async () => {
+  const { esWidenToNational } = await import("./source");
+  assert.equal(esWidenToNational("lpg", "province 42", undefined, new Date("2026-10-22T12:00:00Z"), "RXX"), null);
+  assert.equal(esWidenToNational("lpg", "province 42", undefined, new Date("2026-10-22T12:00:00Z"), "RCL"), null); // no RCL rows in the library until the next harvest
+});
