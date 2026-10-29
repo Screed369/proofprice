@@ -1,0 +1,23 @@
+URL: https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3794&format=json&lang=en
+Fetched: 2026-10-29T14:46:47Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1900
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public,max-age=1800
+Content-Length: 1900
+Content-Type: application/json; charset=utf-8
+ETag: FJmWozd0Jq1-f3x7i09C0A
+Vary: Accept,Accept-Language
+X-Rate-Limit-Limit: 7d
+X-Rate-Limit-Remaining: 9999
+X-Rate-Limit-Reset: 2026-11-05T14:46:45.2464305Z
+Date: Thu, 29 Oct 2026 14:46:45 GMT
+Set-Cookie: cookie=85e497491d001d5aeeddc2fb575ce36a;max-age=1800;Path=/;HttpOnly
+Set-Cookie: cookiesession1=678B288A26F0A69F64D0864A80789960;Expires=Fri, 29 Oct 2027 14:46:47 GMT;Path=/;HttpOnly
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"totalRecords":60,"page":0,"pageSize":10,"links":{"first":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3794&format=json&lang=en&page=0&page-size=10","self":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3794&format=json&lang=en&page=0&page-size=10","next":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3794&format=json&lang=en&page=1&page-size=10","last":"https://bdl.stat.gov.pl/api/v1/variables?subject-id=P3794&format=json&lang=en&page=5&page-size=10"},"results":[{"id":634007,"subjectId":"P3794","n1":"quarter 1","n2":"total","n3":"total","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634008,"subjectId":"P3794","n1":"quarter 1","n2":"total","n3":"to 40 m2","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634009,"subjectId":"P3794","n1":"quarter 1","n2":"total","n3":"from 40.1 to 60 m2","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634010,"subjectId":"P3794","n1":"quarter 1","n2":"total","n3":"from 60.1 to 80 m2","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634011,"subjectId":"P3794","n1":"quarter 1","n2":"total","n3":"from 80.1 m2","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634012,"subjectId":"P3794","n1":"quarter 1","n2":"primary market","n3":"total","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634013,"subjectId":"P3794","n1":"quarter 1","n2":"primary market","n3":"to 40 m2","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634014,"subjectId":"P3794","n1":"quarter 1","n2":"primary market","n3":"from 40.1 to 60 m2","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634015,"subjectId":"P3794","n1":"quarter 1","n2":"primary market","n3":"from 60.1 to 80 m2","level":5,"measureUnitId":4,"measureUnitName":"PLN"},{"id":634016,"subjectId":"P3794","n1":"quarter 1","n2":"primary market","n3":"from 80.1 m2","level":5,"measureUnitId":4,"measureUnitName":"PLN"}]}
