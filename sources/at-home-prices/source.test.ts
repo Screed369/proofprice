@@ -522,3 +522,11 @@ test("at-home-prices: the query type is Query-shaped (compile-time check of the 
   const q: Query = parseQuery("Wien");
   assert.equal(q.q, "wien");
 });
+
+test("at-home-prices: gap G20261029-1, a request with no town, postcode or area answers for Austria (never no_matches) for every property_type", async () => {
+  for (const t of [undefined, "house", "apartment", "villa", "terraced", "detached"]) {
+    const a = await atHomePrices({ property_type: t, baseUrl: "https://proofprice.com" }, { data: DATA });
+    assert.equal(a.status, "ok", String(t));
+    assert.match(a.summary, /Austria/, String(t));
+  }
+});
