@@ -264,3 +264,27 @@ test("manifest: United States, category groceries, harvest present, first exampl
   assert.equal(INFO.price_type, "official_statistic");
   assert.match(INFO.licence, /public domain/i);
 });
+
+import { usMonthly, usHistoryKey } from "./source";
+import { test as histTest } from "node:test";
+import histAssert from "node:assert/strict";
+
+histTest("history: monthly rows per series within the range, no record count", () => {
+  const s = new Map([
+    ["0000|708111", new Map([["2020-01", 1.5], ["2020-02", 1.6], ["2020-03", 1.7]])],
+    ["0100|708111", new Map([["2020-02", 1.8]])],
+  ]);
+  const p = usMonthly(s as never, "2020-02", "2020-03");
+  histAssert.deepEqual(p.map((x) => x.period), ["2020-02", "2020-03"]);
+  histAssert.equal(p[0].rows.length, 2);
+  histAssert.equal(p[0].rows[0].median, 1.6);
+  histAssert.equal(p[0].rows[0].low, 1.6);
+});
+
+histTest("history key: item code and area, null for unknown", () => {
+  histAssert.equal(usHistoryKey({ item: "eggs" })?.item, "708111");
+  histAssert.equal(usHistoryKey({ item: "eggs" })?.area, "0000");
+  histAssert.equal(usHistoryKey({ item: "eggs", region: "Texas" })?.area, "0300");
+  histAssert.equal(usHistoryKey({ item: "unobtainium" }), null);
+  histAssert.equal(usHistoryKey({ item: "eggs", region: "Narnia" }), null);
+});

@@ -28,5 +28,7 @@ export default defineSource({
     "ONS advises against comparing months, so there is no change on a year earlier; these are shelf prices, not receipts.",
   nominalCounts: true,
   harvest: gbHarvest,
+  // ONS advises against comparing months and its product keys change with each release: no price history is offered for the UK.
+  historyKey: () => null,
   handle: (p, ctx) => gbOnsPriceLevels({ item: String(p.item ?? ""), region: str(p.region), baseUrl: ctx.baseUrl }),
 });

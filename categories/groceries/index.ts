@@ -33,6 +33,16 @@ export default defineCategory({
       .optional()
       .describe("Region inside the country, only where the statistics office publishes regional averages. Leave out for the national average."),
   },
+  history: {
+    tool: "pricepaid_grocery_price_history",
+    title: "Grocery price history",
+    description:
+      "Use this when a user asks how the shop price of an everyday grocery item (eggs, milk, bread, coffee, beef...) has changed over time, or whether it is getting cheaper or dearer. " +
+      "Returns the official average price by month over many years (pass months, up to 360) where a source has loaded long history, otherwise recent snapshots, with the change over the period. " +
+      "Published national statistics, not receipts. Do not use for today's price or for a particular supermarket.",
+    minDays: 7,
+    itemLabel: (item) => item,
+  },
   required: ["item"],
   prepare: (p) => {
     const item = str(p.item);
