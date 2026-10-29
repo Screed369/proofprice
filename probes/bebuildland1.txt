@@ -1,0 +1,572 @@
+URL: https://statbel.fgov.be/en/open-data/sales-real-estate-region-according-nature-property-land-register
+Fetched: 2026-10-29T01:43:39Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 92807
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Vary: Accept-Encoding
+Cache-Control: must-revalidate, no-cache, private
+Date: Thu, 29 Oct 2026 01:43:38 GMT
+X-Drupal-Dynamic-Cache: UNCACHEABLE
+Content-language: en
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Expires: Sun, 19 Nov 1978 05:00:00 GMT
+Content-Security-Policy-Report-Only: default-src 'self' https://app-widgets.jotform.io https://app.luzmo.com https://bestat.economie.fgov.be https://bestat.statbel.fgov.be https://e.infogram.com https://experience.arcgis.com https://form.jotform.com https://indexsearch.economie.fgov.be https://rentcalculator.economie.fgov.be https://www.youtube.com; script-src 'self' 'unsafe-inline' https://cdn.jotfor.ms https://cdn.luzmo.com https://e.infogram.com https://matomo.bosa.be; object-src 'none'; style-src 'self' 'unsafe-inline' data: https://cdnjs.cloudflare.com https://fonts.googleapis.com https://maxcdn.bootstrapcdn.com; img-src 'self' 'unsafe-inline' data: https://matomo.bosa.be; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://matomo.bosa.be; upgrade-insecure-requests
+Strict-Transport-Security: max-age=1000
+X-Drupal-Cache: MISS
+Set-Cookie: language=en; expires=Fri, 29 Oct 2027 01:43:37 GMT; Max-Age=31535999; path=/; httponly; samesite=lax
+X-Varnish: 119415451
+Age: 0
+Via: 1.1 varnish (Varnish/6.0)
+Accept-Ranges: bytes
+Content-Length: 92807
+Connection: keep-alive
+Set-Cookie: TS01364fc7=01d2e30d32e51ccf269fb90e9813ca50d88e345543c5608e90661f178c93df7187f260e4c9dc4a6d46aebffbbe2c6b100d78c6e2db; Path=/; Domain=.statbel.fgov.be; Secure; HttpOnly
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (1112)
+=== FIRST 40000 BYTES
+<!DOCTYPE html>
+<html  lang="en" dir="ltr" class="no-js" xml:lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="Description : Sales of real estate - type of real estate, number of transactions, total price(€), total surface(m²), average price(€), P10 price(€), Q25 price(€), Q50 price(€), Q75 price(€), P90 price(€), - by region (1973-2017) Figures from 2015 are provisional. Period: 1973-2017 Metadata:  Metadata variables" />
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="outdatedbrowser-ieTarget" content="11" />
+<link rel="alternate" hreflang="nl" href="https://statbel.fgov.be/nl/open-data/verkoop-van-onroerende-goederen-gewest-volgens-aard-op-het-kadastrale-plan" />
+<link rel="alternate" hreflang="fr" href="https://statbel.fgov.be/fr/open-data/ventes-de-biens-immobiliers-par-region-selon-la-nature-du-bien-dans-le-plan-cadastral" />
+<link rel="alternate" hreflang="en" href="https://statbel.fgov.be/en/open-data/sales-real-estate-region-according-nature-property-land-register" />
+<link rel="icon" href="/themes/custom/statbel_theme/favicon.ico" type="image/vnd.microsoft.icon" />
+
+    <title>Sales of real estate by region according to the nature of the property in the land register | Statbel</title>
+    <link rel="stylesheet" media="all" href="/core/misc/components/progress.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/align.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/fieldgroup.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/container-inline.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/clearfix.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/details.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/hidden.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/item-list.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/js.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/nowrap.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/position-container.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/reset-appearance.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/resize.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-counter.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-report-counters.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-report-general-info.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/tablesort.module.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/modules/contrib/leaflet/js/leaflet/dist/leaflet.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/modules/contrib/jquery_ui/assets/vendor/jquery.ui/themes/base/core.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/modules/contrib/jquery_ui/assets/vendor/jquery.ui/themes/base/menu.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/modules/contrib/jquery_ui/assets/vendor/jquery.ui/themes/base/autocomplete.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/modules/contrib/jquery_ui/assets/vendor/jquery.ui/themes/base/theme.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/modules/contrib/extlink/extlink.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/core/modules/layout_discovery/layouts/twocol/twocol.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/modules/contrib/openfed_social/assets/styles/openfed_social.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/profiles/contrib/openfed/modules/openfed_features/openfed_federalheader/assets/styles/openfed_federalheader.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/themes/custom/statbel_theme/styles/css/accessibility.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/themes/custom/statbel_theme/styles/css/styles.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/themes/custom/statbel_theme/styles/css/custom.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/themes/custom/statbel_theme/styles/css/bosa.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/themes/custom/statbel_theme/styles/css/orejime.css?tnll8i" />
+<link rel="stylesheet" media="all" href="/themes/custom/statbel_theme/styles/css/outdated-browser.css?tnll8i" />
+
+    
+  </head>
+  <body class="term-- path-node page-node-type-dataset has-glyphicons">
+    <a href="#page" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div id="page">
+        <div class="wrapper-header">
+
+                                        <div  class="navbar navbar-default container" id="navbar">
+                                                      <div class="wrapper-toolbar">
+                  <div class="toolbar">
+                      <div class="region region-tools">
+    <nav class="language-switcher-language-url block block--language block--language--language-interface" id="block-statbel-theme-languageswitcher-2" aria-label="language switcher">
+      <ul class="links menu"><li data-drupal-link-system-path="node/672" class="nl is-active" aria-current="page"><a href="/nl/open-data/verkoop-van-onroerende-goederen-gewest-volgens-aard-op-het-kadastrale-plan" class="language-link" lang="nl" aria-label="NL" hreflang="nl" data-drupal-link-system-path="node/672"><abbr title="NL">NL</abbr></a></li><li data-drupal-link-system-path="node/672" class="fr is-active" aria-current="page"><a href="/fr/open-data/ventes-de-biens-immobiliers-par-region-selon-la-nature-du-bien-dans-le-plan-cadastral" class="language-link" lang="fr" aria-label="French" hreflang="fr" data-drupal-link-system-path="node/672"><abbr title="French">FR</abbr></a></li><li class="de"><span class="language-link disabled">DE</span></li><li data-drupal-link-system-path="node/672" class="en is-active" aria-current="page"><a href="/en/open-data/sales-real-estate-region-according-nature-property-land-register" class="language-link is-active" lang="en" aria-label="English" hreflang="en" data-drupal-link-system-path="node/672" aria-current="page"><abbr title="English">EN</abbr></a></li></ul>
+  </nav>
+<section id="block-statbel-theme-federalheader" class="block block--openfed-federalheader block--openfed-federalheader--">
+  
+    
+
+      <div id="openfed-federal-header-wrapper">
+  <div id="openfed-federal-header-link">
+   Other information and services: <span><a href="https://www.belgium.be/en">www.belgium.be</a></span>
+  </div>
+  <div id="openfed-federal-header-logo">
+    <img src="/themes/custom/statbel_theme/images/logos/logo-federalheader.png" alt="Logo of the Belgian Federal Authorities" width="34" height="25" />
+  </div>
+</div>
+
+  </section>
+
+  </div>
+
+                  </div>
+                </div>
+                                      <header class="wrapper-header-inner clearfix" role="banner">
+                              <div class="navbar-header">
+                                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                                      <div class="region region-navigation">
+    
+<div id="block-sitebranding" class="block block--system-branding">
+                    <a class="logo navbar-brand" href="/en" title="Return to the Statbel home page" rel="home">
+                      <img src="/themes/custom/statbel_theme/images/logos/logo-en.svg" class="site-logo not-inline" width="265" height="60" alt="Return to the Statbel home page" />
+                  </a>
+          
+      </div>
+  </div>
+
+                </div>
+
+                                                  <div id="navbar-collapse" class="navbar-collapse collapse">
+                      <div class="region region-navigation-collapsible">
+    <nav role="navigation" aria-label="Main menu EN" id="block-statbel-theme-mainmenuen" class="block block--menu block--menu--main-menu-en navigation">
+        
+              <ul class="menu nav navbar-nav navbar-right">
+                                  <li>
+          <a href="/en" title="Statbel, the Belgian statistical office" hreflang="en" data-drupal-link-system-path="node/15">Home</a>
+                  </li>
+                              <li class="expanded dropdown">
+          <a class="expanded dropdown" href="/en/themes" class="dropdown-toggle" data-toggle="dropdown">Themes<span class="caret"></span></a>
+                                  <ul class="menu dropdown-menu">
+                                  <li class="expanded">
+          <a class="expanded" href="/en/themes/consumer-prices">
+                        <img src="/sites/default/files/themes_svgs/consumer-prices.svg" alt="" width="26" height="26" />
+            Consumer prices
+          </a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/consumer-prices/consumer-price-index" title="Consumer price index" hreflang="en" data-drupal-link-system-path="node/508">Consumer price index</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/consumer-prices/health-index" title="Health index" hreflang="en" data-drupal-link-system-path="node/461">Health index</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/consumer-prices/index-search" title="Index search" hreflang="en" data-drupal-link-system-path="node/1446">Index search</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/consumer-prices/rent-calculator" title="Rent Calculator" hreflang="en" data-drupal-link-system-path="node/510">Rent Calculator</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/consumer-prices/harmonised-index-consumer-prices-hicp" title="Harmonised Index of Consumer Prices (HICP)" hreflang="en" data-drupal-link-system-path="node/236">Harmonised Index of Consumer Prices (HICP)</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/consumer-prices/medical-index" title="Medical index" hreflang="en" data-drupal-link-system-path="node/462">Medical index</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a class="expanded" href="/en/themes/population">
+                        <img src="/sites/default/files/themes_svgs/population.svg" alt="" width="26" height="26" />
+            Population
+          </a>
+                                  <ul class="menu dropdown-menu">
+                                  <li class="expanded">
+          <a href="/en/themes/population/structure-population" title="Structure of the Population" hreflang="en" data-drupal-link-system-path="node/472">Structure of the Population</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/population/structure-population/households" title="Households" hreflang="en" data-drupal-link-system-path="node/4688">Households</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/structure-population/origin" title="Origin" hreflang="en" data-drupal-link-system-path="node/3271">Origin</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/structure-population/population-density" title="Population density" hreflang="en" data-drupal-link-system-path="node/2665">Population density</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a href="/en/themes/population/population-movement" title="Population movement" hreflang="en" data-drupal-link-system-path="node/468">Population movement</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/population/population-movement/births" title="Births" hreflang="en" data-drupal-link-system-path="node/4682">Births</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/population-movement/deaths" title="Deaths" hreflang="en" data-drupal-link-system-path="node/194">Deaths</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/population-movement/migration" title="Migration" hreflang="en" data-drupal-link-system-path="node/469">Migration</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/population-movement/changes-nationality" title="Changes of nationality" hreflang="en" data-drupal-link-system-path="node/2673">Changes of nationality</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li>
+          <a href="/en/themes/population/natality-and-fertility" title="Natality and fertility" hreflang="en" data-drupal-link-system-path="node/470">Natality and fertility</a>
+                  </li>
+                              <li class="expanded">
+          <a href="/en/themes/population/mortality-life-expectancy-and-causes-death" title="Mortality, Life expectancy and causes of death" hreflang="en" data-drupal-link-system-path="node/1212">Mortality, Life expectancy and causes of death</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/population/population-movement/deaths" data-drupal-link-system-path="node/194">Mortality</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/mortality-life-expectancy-and-causes-death/life-expectancy-and-life-tables" title="Life expectancy and life tables" hreflang="en" data-drupal-link-system-path="node/192">Life expectancy and life tables</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/mortality-life-expectancy-and-causes-death/causes-death" title=" Causes of death" hreflang="en" data-drupal-link-system-path="node/277">Causes of death</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/mortality-life-expectancy-and-causes-death/feto-infant-mortality" title="Feto-infant mortality" hreflang="en" data-drupal-link-system-path="node/279">Feto-infant mortality</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/mortality-life-expectancy-and-causes-death/maternal-mortality" title="Maternal mortality" hreflang="en" data-drupal-link-system-path="node/1214">Maternal mortality</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a href="/en/themes/population/partnership" title="Partnership" hreflang="en" data-drupal-link-system-path="node/991">Partnership</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/population/partnership/marriages" title="Marriages" hreflang="en" data-drupal-link-system-path="node/323">Marriages</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/partnership/divorces" title="Divorces" hreflang="en" data-drupal-link-system-path="node/471">Divorces</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/partnership/declarations-legal-cohabitation" title="Declarations of legal cohabitation" hreflang="en" data-drupal-link-system-path="node/1756">Declarations of legal cohabitation</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/partnership/widowhood" title="Widowhood" hreflang="en" data-drupal-link-system-path="node/2092">Widowhood</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a href="/en/themes/population/family-names-and-first-names" title="Family names and First names" hreflang="en" data-drupal-link-system-path="node/760">Family names and First names</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/population/family-names-and-first-names/first-names-boys-and-girls" title="First names for boys and girls " hreflang="en" data-drupal-link-system-path="node/188">First names for boys and girls </a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/family-names-and-first-names/male-and-female-first-names" title="Male and female first names" hreflang="en" data-drupal-link-system-path="node/476">Male and female first names</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/population/family-names-and-first-names/family-names" title="Family names " hreflang="en" data-drupal-link-system-path="node/477">Family names </a>
+                  </li>
+        </ul>
+  
+            </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a class="expanded" href="/en/themes/housing">
+                        <img src="/sites/default/files/themes_svgs/housing.svg" alt="" width="26" height="26" />
+            Housing
+          </a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/housing/real-estate" title="Real Estate" hreflang="en" data-drupal-link-system-path="node/268">Real Estate</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/housing/sales-secondary-market" title="Existing dwellings" hreflang="en" data-drupal-link-system-path="node/6449">Sales on the secondary market </a>
+                  </li>
+                              <li>
+          <a href="/en/themes/housing/building-permits" title="Building permits" hreflang="en" data-drupal-link-system-path="node/204">Building permits</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/housing/building-stock" title="Building stock" hreflang="en" data-drupal-link-system-path="node/518">Building stock</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/housing/land-cover" title="Land cover" hreflang="en" data-drupal-link-system-path="node/206">Land cover</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/housing/house-price-index" title="House price index" hreflang="en" data-drupal-link-system-path="node/253">House price index</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a class="expanded" href="/en/themes/enterprises">
+                        <img src="/sites/default/files/themes_svgs/enterprises.svg" alt="" width="26" height="26" />
+            Enterprises
+          </a>
+                                  <ul class="menu dropdown-menu">
+                                  <li class="expanded">
+          <a href="/en/themes/enterprises/demography-enterprises" title="Demography of enterprises" hreflang="en" data-drupal-link-system-path="node/2510">Demography of enterprises</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/enterprises/demography-enterprises/demography-enterprises-market-sector" title="Demography of enterprises in the market sector" hreflang="en" data-drupal-link-system-path="node/1232">Demography of enterprises in the market sector</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/demography-enterprises/demography-employers-market-sector" title="Demography of employers in the market sector" hreflang="en" data-drupal-link-system-path="node/2506">Demography of employers in the market sector</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/demography-enterprises/high-growth-enterprises-market-sector" title="High-growth enterprises in the market sector" hreflang="en" data-drupal-link-system-path="node/2508">High-growth enterprises in the market sector</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a href="/en/themes/enterprises/bankruptcy-statistic" title="The bankruptcy statistic" hreflang="en" data-drupal-link-system-path="node/264">The bankruptcy statistic</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/enterprises/bankruptcy-statistic/bankruptcies-weekly-basis" title="Bankruptcies on a weekly basis" hreflang="en" data-drupal-link-system-path="node/2774">Bankruptcies on a weekly basis</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/bankruptcy-statistic/bankruptcies-monthly-basis" title="Bankruptcies on a monthly basis" hreflang="en" data-drupal-link-system-path="node/2773">Bankruptcies on a monthly basis</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a href="/en/themes/enterprises/vat-registered-businesses" title="VAT-registered businesses" hreflang="en" data-drupal-link-system-path="node/1152">VAT-registered businesses</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/enterprises/vat-registered-businesses/vat-registered-enterprises" title="VAT-registered enterprises" hreflang="en" data-drupal-link-system-path="node/484">VAT-registered enterprises</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/vat-registered-businesses/migrations-vat-registered-enterprises" title="Migrations of VAT-registered enterprises" hreflang="en" data-drupal-link-system-path="node/2495">Migrations of VAT-registered enterprises</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/vat-registered-businesses/survivals-vat-registered-enterprises" title="Survivals of VAT-registered enterprises" hreflang="en" data-drupal-link-system-path="node/2489">Survivals of VAT-registered enterprises</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/vat-registered-businesses/statistics-number-vat-units-monthly" title="Statistics on the number of VAT units (monthly) " hreflang="en" data-drupal-link-system-path="node/485">Statistics on the number of VAT units (monthly) </a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li>
+          <a href="/en/themes/enterprises/turnover-and-investments" title="Turnover and investments" hreflang="en" data-drupal-link-system-path="node/481">Turnover and investments</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/industrial-production" title="Industrial production" hreflang="en" data-drupal-link-system-path="node/483">Industrial production</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/ict-and-e-commerce-enterprises" title="ICT and e-commerce in enterprises" hreflang="en" data-drupal-link-system-path="node/246">ICT and e-commerce in enterprises</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/cinemas" title="Cinemas" hreflang="en" data-drupal-link-system-path="node/486">Cinemas</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/tourist-accommodations" title="Tourist accommodations" hreflang="en" data-drupal-link-system-path="node/436">Tourist accommodations</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/enterprises/consumer-credits-amounted" title="Consumer credits amounted " hreflang="en" data-drupal-link-system-path="node/487">Consumer credits amounted </a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a class="expanded" href="/en/themes/households">
+                        <img src="/sites/default/files/themes_svgs/households.svg" alt="" width="26" height="26" />
+            Households
+          </a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/households/household-budget-survey-hbs" title="Household budget survey (HBS)" hreflang="en" data-drupal-link-system-path="node/267">Household budget survey (HBS)</a>
+                  </li>
+                              <li class="expanded">
+          <a href="/en/themes/households/poverty-and-living-conditions" title="Poverty and living conditions" hreflang="en" data-drupal-link-system-path="node/502">Poverty and living conditions</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/risk-poverty-or-social-exclusion" title="Risk of poverty or social exclusion" hreflang="en" data-drupal-link-system-path="node/499">Risk of poverty or social exclusion</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/material-and-social-deprivation" title="Material deprivation means that one cannot afford the common standard of living." hreflang="en" data-drupal-link-system-path="node/500">Material and social deprivation</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/quarterly-monitoring" title="Quarterly monitoring on personal wellbeing and living conditions." hreflang="en" data-drupal-link-system-path="node/3965">Monitoring of living conditions</a>
+                  </li>
+                              <li class="expanded">
+          <a href="/en/themes/households/poverty-and-living-conditions/focus-living-conditions" title="Focus on living conditions" hreflang="en" data-drupal-link-system-path="node/4787">Focus on living conditions</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/focus-living-conditions/intergenerational" title="Intergenerational transmission of poverty" hreflang="en" data-drupal-link-system-path="node/6366">Intergenerational transmission of poverty</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/focus-living-conditions/material-deprivation" title=" Material deprivation specific to children" hreflang="en" data-drupal-link-system-path="node/6305"> Material deprivation specific to children</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/focus-living-conditions/health-and-well-being" title="Health and  well-being" hreflang="en" data-drupal-link-system-path="node/4788">Health and  well-being</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/focus-living-conditions/social-and-cultural" title="Social and cultural participation" hreflang="en" data-drupal-link-system-path="node/5259">Social and cultural participation</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/focus-living-conditions/household-energy-efficiency" title="Household Energy Efficiency" hreflang="en" data-drupal-link-system-path="node/5746">Household Energy Efficiency</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/households/poverty-and-living-conditions/focus-living-conditions/access-services" title="Access to services" hreflang="en" data-drupal-link-system-path="node/6334">Access to services</a>
+                  </li>
+        </ul>
+  
+            </li>
+        </ul>
+  
+            </li>
+                              <li>
+          <a href="/en/themes/households/taxable-income" title="Taxable income" hreflang="en" data-drupal-link-system-path="node/298">Taxable income</a>
+                  </li>
+                              <li class="expanded">
+          <a href="/en/themes/households/ict-usage-households" title="ICT usage in households" hreflang="en" data-drupal-link-system-path="node/282">ICT usage in households</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/households/ict-usage-households/digital-skills" title="Digital skills" hreflang="en" data-drupal-link-system-path="node/4817">Digital skills</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li>
+          <a href="/en/themes/households/survey-holidays-and-travels" title="Survey on holidays and travels" hreflang="en" data-drupal-link-system-path="node/503">Survey on holidays and travels</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/households/time-use-survey" title="Time use survey" hreflang="en" data-drupal-link-system-path="node/2199">Time use survey</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a class="expanded" href="/en/themes/work-training">
+                        <img src="/sites/default/files/themes_svgs/work-training.svg" alt="" width="26" height="26" />
+            Work &amp; training
+          </a>
+                                  <ul class="menu dropdown-menu">
+                                  <li class="expanded">
+          <a href="/en/themes/work-training/labour-market" title="Labour Market" hreflang="en" data-drupal-link-system-path="node/783">Labour Market</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/work-training/labour-market/employment-and-unemployment" title="Employment and unemployment" hreflang="en" data-drupal-link-system-path="node/273">Employment and unemployment</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/labour-market/transitions-labour-market" title="Transitions on the labour market" hreflang="en" data-drupal-link-system-path="node/3325">Transitions on the labour market</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/labour-market/job-vacancy" title="Job vacancy" hreflang="en" data-drupal-link-system-path="node/492">Job vacancy</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/labour-market/focus-labour-market" title="Focus on the labour market" hreflang="en" data-drupal-link-system-path="node/1647">Focus on the labour market</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/labour-market/part-time-employment" title="Part-time employment" hreflang="en" data-drupal-link-system-path="node/491">Part-time employment</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/labour-market/second-job" title="Second job" hreflang="en" data-drupal-link-system-path="node/1245">Second job</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/labour-market/occupations-belgium" title="Occupations in Belgium " hreflang="en" data-drupal-link-system-path="node/493">Occupations in Belgium </a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/labour-market/working-home" title="Working from home" hreflang="en" data-drupal-link-system-path="node/4650">Working from home</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a href="/en/themes/work-training/training-and-education" title="Training and education" hreflang="en" data-drupal-link-system-path="node/774">Training and education</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/work-training/training-and-education/neet" title="NEET" hreflang="en" data-drupal-link-system-path="node/1151">NEET</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/training-and-education/adult-education-survey" title="Adult education survey" hreflang="en" data-drupal-link-system-path="node/497">Adult education survey</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/training-and-education/level-education" title="Level of education" hreflang="en" data-drupal-link-system-path="node/495">Level of education</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/training-and-education/early-leavers-education-and-training" title="Early leavers from education and training" hreflang="en" data-drupal-link-system-path="node/496">Early leavers from education and training</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/training-and-education/lifelong-learning" title="Lifelong learning" hreflang="en" data-drupal-link-system-path="node/3490">Lifelong learning</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a href="/en/themes/work-training/wages-and-labourcost" title="Wages and labourcost" hreflang="en" data-drupal-link-system-path="node/773">Wages and labourcost</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/work-training/wages-and-labourcost/labour-cost" title="Labour Cost" hreflang="en" data-drupal-link-system-path="node/488">Labour Cost</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/wages-and-labourcost/overview-belgian-wages-and-salaries" title="An overview of Belgian wages and salaries" hreflang="en" data-drupal-link-system-path="node/250">An overview of Belgian wages and salaries</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/work-training/wages-and-labourcost/gender-pay-gap" title=" Gender pay gap" hreflang="en" data-drupal-link-system-path="node/489"> Gender pay gap</a>
+                  </li>
+        </ul>
+  
+            </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a class="expanded" href="/en/themes/agriculture-fishery">
+                        <img src="/sites/default/files/themes_svgs/agriculture-fishery.svg" alt="" width="26" height="26" />
+            Agriculture &amp; fishery
+          </a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/agriculture-fishery/farm-and-horticultural-holdings" title="Farm and horticultural holdings" hreflang="en" data-drupal-link-system-path="node/190">Farm and horticultural holdings</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/agriculture-fishery/economic-accounts-agriculture" title="Economic accounts for agriculture" hreflang="en" data-drupal-link-system-path="node/291">Economic accounts for agriculture</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/agriculture-fishery/agricultural-prices" title="Agricultural prices " hreflang="en" data-drupal-link-system-path="node/455">Agricultural prices </a>
+                  </li>
+                              <li>
+          <a href="/en/themes/agriculture-fishery/organic-farming" title="Organic farming" hreflang="en" data-drupal-link-system-path="node/458">Organic farming</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/agriculture-fishery/agricultural-land-renting-prices" title="Agricultural land renting prices" hreflang="en" data-drupal-link-system-path="node/456">Agricultural land renting prices</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/agriculture-fishery/supply-balance-sheets-meat" title="Supply balance sheets for meat" hreflang="en" data-drupal-link-system-path="node/459">Supply balance sheets for meat</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/agriculture-fishery/milk-and-milk-product-statistics" title="Milk and milk product statistics" hreflang="en" data-drupal-link-system-path="node/454">Milk and milk product statistics</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/agriculture-fishery/animal-slaughtering" title="Animal slaughtering" hreflang="en" data-drupal-link-system-path="node/263">Animal slaughtering</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/agriculture-fishery/sea-fishing" title="Sea fishing" hreflang="en" data-drupal-link-system-path="node/457">Sea fishing</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li class="expanded">
+          <a class="expanded" href="/en/themes/environment">
+                        <img src="/sites/default/files/themes_svgs/environment.svg" alt="" width="26" height="26" />
+            Environment
+          </a>
+                                  <ul class="menu dropdown-menu">
+                                  <li class="expanded">
+          <a href="/en/themes/environment/land-cover-and-use" title="Land cover and use" hreflang="en" data-drupal-link-system-path="node/441">Land cover and use</a>
+                                  <ul class="menu dropdown-menu">
+                                  <li>
+          <a href="/en/themes/housing/land-cover" data-drupal-link-system-path="node/206">Land cover</a>
+                  </li>
+                              <li>
+          <a href="/en/themes/environment/land-cover-and-use/land-use" title="Land use" hreflang="en" data-drupal-link-system-path="node/442">Land use</a>
+                  </li>
+        </ul>
+  
+            </li>
+                              <li cl
