@@ -1,0 +1,61 @@
+URL: https://www.datos.gov.co/resource/ytme-6qnu.json?$select=operador_de_red,nivel,count(*)&$group=operador_de_red,nivel&$limit=100
+Fetched: 2026-10-30T00:14:07Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3065
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 30 Oct 2026 00:14:07 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuNjMzMjFfMV8yMkszcEhBMC1xZlhPMzJFNC1UTmFNcUlBV2M2cw---gzisAmEjAYWc7GYJygo6Pb74O0TLuv--gzip--gzip"
+X-SODA2-Fields: ["operador_de_red","nivel","count"]
+X-SODA2-Types: ["text","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 6c7d29eeed707fef231ca01079484195
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"operador_de_red":"EMCALI - Cali","nivel":"Nivel 1  (Propiedad Cliente)","count":"12"}
+,{"operador_de_red":"CELSIA - Tolima","nivel":"NIVEL III","count":"12"}
+,{"operador_de_red":"CELSIA - Valle del Cauca","nivel":"NIVEL III","count":"12"}
+,{"operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"Nivel 1  (Propiedad Cliente)","count":"12"}
+,{"operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"Nivel 1 (Propiedad Cliente)","count":"9"}
+,{"operador_de_red":"CELSIA - Valle del Cauca","nivel":"Nivel 1 (Propiedad Compartida)","count":"12"}
+,{"operador_de_red":"EMCALI - Cali","nivel":"Nivel 1 ( Propiedad OR )","count":"12"}
+,{"operador_de_red":"CELSIA - Tolima","nivel":"NIVEL II","count":"12"}
+,{"operador_de_red":"EMCALI - Cali","nivel":"Nivel 1 (Propiedad OR)","count":"9"}
+,{"operador_de_red":"CELSIA Colombia - Valle del Cauca","nivel":"NIVEL II","count":"9"}
+,{"operador_de_red":"CELSIA Colombia - Tolima","nivel":"Nivel 1 (Propiedad Cliente)","count":"8"}
+,{"operador_de_red":"CELSIA - Tolima","nivel":"Nivel 1  (Propiedad Cliente)","count":"12"}
+,{"operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"NIVEL II","count":"21"}
+,{"operador_de_red":"CELSIA - Valle del Cauca","nivel":"Nivel 1  (Propiedad Cliente)","count":"12"}
+,{"operador_de_red":"CELSIA - Valle del Cauca","nivel":"NIVEL II","count":"12"}
+,{"operador_de_red":"CELSIA - Tolima","nivel":"Nivel 1 ( Propiedad OR )","count":"12"}
+,{"operador_de_red":"CELSIA Colombia - Tolima","nivel":"Nivel 1 (Propiedad OR)","count":"8"}
+,{"operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"Nivel 1 (Propiedad Compartida)","count":"21"}
+,{"operador_de_red":"CELSIA Colombia - Valle del Cauca","nivel":"Nivel 1 (Propiedad Compartida)","count":"9"}
+,{"operador_de_red":"CELSIA Colombia - Tolima","nivel":"NIVEL III","count":"8"}
+,{"operador_de_red":"CELSIA Colombia - Tolima","nivel":"NIVEL II","count":"8"}
+,{"operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"Nivel 1 (Propiedad OR)","count":"9"}
+,{"operador_de_red":"CELSIA - Tolima","nivel":"Nivel 1 (Propiedad Compartida)","count":"12"}
+,{"operador_de_red":"EMCALI - Cali","nivel":"Nivel 1 (Propiedad Cliente)","count":"9"}
+,{"operador_de_red":"EMCALI - Cali","nivel":"Nivel 1 (Propiedad Compartida)","count":"21"}
+,{"operador_de_red":"CELSIA Colombia - Valle del Cauca","nivel":"NIVEL III","count":"9"}
+,{"operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"Nivel 1 ( Propiedad OR )","count":"12"}
+,{"operador_de_red":"CELSIA Colombia - Valle del Cauca","nivel":"Nivel 1 (Propiedad OR)","count":"9"}
+,{"operador_de_red":"CELSIA Colombia - Valle del Cauca","nivel":"Nivel 1 (Propiedad Cliente)","count":"9"}
+,{"operador_de_red":"CELSIA - Valle del Cauca","nivel":"Nivel 1 ( Propiedad OR )","count":"12"}
+,{"operador_de_red":"EMCALI - Cali","nivel":"NIVEL II","count":"21"}
+,{"operador_de_red":"CELSIA Colombia - Tolima","nivel":"Nivel 1 (Propiedad Compartida)","count":"8"}
+,{"operador_de_red":"EMCALI - Cali","nivel":"NIVEL III","count":"21"}
+,{"operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"NIVEL III","count":"21"}]
