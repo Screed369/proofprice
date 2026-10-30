@@ -75,7 +75,14 @@ function textOf(xml: string): string {
   return out;
 }
 
-export function parseSharedStrings(xml: string): string[] {
+/** Some writers (for example the Swedish SCB workbooks) prefix every element with a namespace, `<x:row><x:c>`. Drop the prefix on
+ *  element names (never on attributes such as r:id) so the readers below see the same plain tags as in an ordinary workbook. */
+export function stripNsPrefix(xml: string): string {
+  return xml.replace(/<(\/?)[A-Za-z_][\w.-]*:(?=[A-Za-z])/g, "<$1");
+}
+
+export function parseSharedStrings(xmlIn: string): string[] {
+  const xml = stripNsPrefix(xmlIn);
   const out: string[] = [];
   const re = /<si(?:\s[^>]*?)?(?:\/>|>([\s\S]*?)<\/si>)/g;
   let m: RegExpExecArray | null;
@@ -89,7 +96,8 @@ function attr(tag: string, name: string): string | undefined {
 }
 
 /** Parse one worksheet's XML into rows of cells. */
-export function parseSheetXml(xml: string, shared: string[], maxRows = Infinity): Cell[][] {
+export function parseSheetXml(xmlIn: string, shared: string[], maxRows = Infinity): Cell[][] {
+  const xml = stripNsPrefix(xmlIn);
   const rows: Cell[][] = [];
   const rowRe = /<row(\s[^>]*?)?(?:\/>|>([\s\S]*?)<\/row>)/g;
   let rm: RegExpExecArray | null;
@@ -155,9 +163,10 @@ function relTarget(base: string, target: string): string {
 export function readXlsx(buf: Buffer, opts: { maxRows?: number } = {}): Sheet[] {
   const files = unzipAll(buf);
   const get = (name: string) => files.get(name)?.toString("utf8");
-  const workbook = get("xl/workbook.xml");
+  const workbookRaw = get("xl/workbook.xml");
+  const workbook = workbookRaw === undefined ? undefined : stripNsPrefix(workbookRaw);
   if (!workbook) throw new SourceError("Not an Excel workbook (xl/workbook.xml missing)");
-  const rels = get("xl/_rels/workbook.xml.rels") ?? "";
+  const rels = stripNsPrefix(get("xl/_rels/workbook.xml.rels") ?? "");
   const relMap = new Map<string, string>();
   for (const m of rels.matchAll(/<Relationship\s[^>]*?\/?>/g)) {
     const id = attr(m[0], "Id");

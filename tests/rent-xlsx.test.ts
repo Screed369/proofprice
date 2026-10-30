@@ -84,3 +84,20 @@ test("excelDate converts serial numbers and rejects other numbers", () => {
   assert.equal(excelDate(650), null);
   assert.equal(excelDate("2023-03-15"), null);
 });
+
+test("namespace-prefixed workbooks (x:row, x:c, x:sheet) read the same as plain ones", () => {
+  const px = (xml: string) => xml.replace(/<(\/?)([A-Za-z][\w]*)(?=[\s/>])/g, "<$1x:$2");
+  const files = {
+    "[Content_Types].xml": "<Types/>",
+    "xl/workbook.xml": px(WORKBOOK),
+    "xl/_rels/workbook.xml.rels": px(RELS),
+    "xl/sharedStrings.xml": px(SHARED),
+    "xl/worksheets/sheet1.xml": px(SHEET1),
+    "xl/worksheets/sheet2.xml": px(SHEET2),
+  };
+  const plain = readXlsx(makeZip(FILES, true));
+  const prefixed = readXlsx(makeZip(files, true));
+  assert.deepEqual(prefixed, plain);
+  assert.equal(prefixed[1].name, "Data & more");
+  assert.equal(prefixed[1].rows[1][0], 2000);
+});
