@@ -1,6 +1,6 @@
 // Manifest: Poland home sales (Real Estate Price Register RCN, GUGiK). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, PLACES, plHomeSales } from "./source";
+import { INFO, PLACES, plHarvest, plHistoryKey, plHomeSales } from "./source";
 
 const cities = PLACES.map((p) => p.label).join(", ");
 
@@ -33,6 +33,9 @@ export default defineSource({
   serves: (p) => !!str(p.town),
   method:
     "Poland: notarised flat sales on the free market from the national Real Estate Price Register (GUGiK), read live from the official Geoportal WFS service in 30-day slices; median and 10th-90th percentile of the gross price per flat and per m2, implausible records dropped, and only the aggregate kept.",
+  // Daily copy of one rolling-6-month figure per city: feeds /history and stands in (stale-if-error) when the slow register does not answer.
+  harvest: () => plHarvest(),
+  historyKey: (p) => plHistoryKey({ town: str(p.town) }),
   handle: (p, ctx) =>
     plHomeSales({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), months: num(p.months), baseUrl: ctx.baseUrl }),
 });

@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { INFO, PLACES, findPlace, monthsOf, normaliseName, parseSales, plHomeSales, plausible, sliceUrl, slices } from "./source";
+import { HARVEST_ITEM, INFO, PLACES, findPlace, monthsOf, normaliseName, parseSales, plDailyRows, plHarvest, plHistoryKey, plHomeSales, plausible, sliceUrl, slices } from "./source";
 import plugin from "./index";
 
 const GML = readFileSync(new URL("./fixtures/lokale-warszawa.gml", import.meta.url), "utf8");
@@ -133,4 +133,61 @@ test("plHomeSales: no window asked and too few recent sales (register lag) widen
   const fixed = await plHomeSales({ town: "Warszawa", months: 3, today, fetchGml: async () => wrap([]) });
   assert.notEqual(fixed.status, "ok");
   assert.equal((fixed.extra as any).widened, false);
+});
+
+test("plHistoryKey: a known city maps to its library row; unknown or missing city gets none", () => {
+  assert.deepEqual(plHistoryKey({ town: "Warszawa" }), { area: "Warsaw", item: HARVEST_ITEM, label: "Warsaw (notarised flat sales, last 6 months)" });
+  assert.equal(plHistoryKey({ town: "Łódź" })?.area, "Lodz");
+  assert.equal(plHistoryKey({ town: "Zakopane" }), null);
+  assert.equal(plHistoryKey({}), null);
+  assert.equal(HARVEST_ITEM, "any:6m");
+});
+
+test("plDailyRows: a city needs 5 plausible sales; implausible ones do not count", () => {
+  const sale = (price: number, area = 50) => ({ date: "2026-10-01", market: "secondary" as const, price, area, msc: "warszawa" });
+  const warsaw = PLACES[0], krakow = PLACES[1];
+  const rows = plDailyRows([
+    { place: warsaw, sales: [sale(500000), sale(600000), sale(700000), sale(800000), sale(900000), sale(10000)] }, // the 6th is 200 PLN/m2, dropped
+    { place: krakow, sales: [sale(500000), sale(600000), sale(700000), sale(800000)] }, // only 4
+  ]);
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].area, "Warsaw");
+  assert.equal(rows[0].n, 5);
+  assert.equal(rows[0].median, 700000);
+});
+
+test("plHarvest on the real WFS answer: 19 cities read, one aggregate row each, no address in the output", async () => {
+  // the fixture holds 3 real sales; repeat it so every city and slice carries enough records for the 5-sale floor
+  const calls: string[] = [];
+  const fetchGml = async (url: string) => {
+    calls.push(url);
+    const city = decodeURIComponent(url).match(/TERYT<\/fes:ValueReference><fes:Literal>(\d+)/)?.[1] ?? "";
+    const place = PLACES.find((p) => p.teryt === city)!;
+    return GML.replace(/MSC:Warszawa/g, `MSC:${place.msc}`);
+  };
+  const out = await plHarvest(fetchGml, new Date("2026-10-30T10:00:00Z"));
+  assert.equal(out.date, "2026-10-30");
+  assert.equal(out.currency, "PLN");
+  assert.equal(out.rows.length, 19);
+  assert.equal(calls.length, 19 * 6);
+  assert.ok(out.rows.every((r) => r.item === "any:6m" && r.n >= 5));
+  assert.ok(!JSON.stringify(out).includes("REDACTED"));
+});
+
+test("plHarvest: one city failing twice is left out and named; too many failing fails the run", async () => {
+  const ok = async (url: string) => {
+    const city = decodeURIComponent(url).match(/TERYT<\/fes:ValueReference><fes:Literal>(\d+)/)?.[1] ?? "";
+    if (city === "1465") throw new Error("boom");
+    const place = PLACES.find((p) => p.teryt === city)!;
+    return GML.replace(/MSC:Warszawa/g, `MSC:${place.msc}`);
+  };
+  const out = await plHarvest(ok, new Date("2026-10-30T10:00:00Z"));
+  assert.equal(out.rows.length, 18);
+  assert.match(out.note ?? "", /not read today: Warsaw/);
+  await assert.rejects(() => plHarvest(async () => { throw new Error("down"); }, new Date("2026-10-30T10:00:00Z")), /Only 0 of 19/);
+});
+
+test("manifest: harvest and historyKey are wired to the city", () => {
+  assert.equal(typeof plugin.harvest, "function");
+  assert.equal(plugin.historyKey?.({ country: "PL", town: "Krakow" } as any)?.area, "Krakow");
 });

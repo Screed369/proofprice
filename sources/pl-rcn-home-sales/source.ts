@@ -8,7 +8,7 @@
 import { InputError, SourceError } from "../../lib/http";
 import { MIN_PUBLISH, summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "pl-rcn-home-sales",
@@ -148,9 +148,9 @@ export function slices(today: string, months: number, skip = 0): { from: string;
 
 export type GmlFetcher = (url: string) => Promise<string>;
 
-export const defaultFetch: GmlFetcher = async (url) => {
+export const makeFetch = (timeoutMs: number): GmlFetcher => async (url) => {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 14000);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const res = await fetch(url, { signal: controller.signal, headers: { "user-agent": "ProofPrice/1.0 (+https://proofprice.com; hello@proofprice.com)", accept: "application/gml+xml, text/xml" } });
     if (!res.ok) throw new SourceError(`Source returned HTTP ${res.status}`, (await res.text().catch(() => "")).slice(0, 200), res.status);
@@ -163,6 +163,8 @@ export const defaultFetch: GmlFetcher = async (url) => {
     clearTimeout(timer);
   }
 };
+
+export const defaultFetch: GmlFetcher = makeFetch(14000);
 
 export interface PlHomeArgs { town?: string; postcode?: string; property_type?: string; months?: number; baseUrl?: string; today?: string; fetchGml?: GmlFetcher }
 
@@ -254,4 +256,72 @@ export async function plHomeSales(args: PlHomeArgs): Promise<PriceAnswer> {
       newest_sale: dates.length ? dates[dates.length - 1] : null,
     },
   });
+}
+
+// ---------- price library: daily collector, history and stale-if-error ----------
+
+/** The collector reads this many 30-day slices per city (about half a year) and stores one rolling-window row per city. */
+export const HARVEST_MONTHS = 6;
+/** Library item: all flats, rolling HARVEST_MONTHS months (the home-sales history tool reads "<type>:<N>m"). */
+export const HARVEST_ITEM = `any:${HARVEST_MONTHS}m`;
+/** A real day has 5+ sales in nearly every one of the 19 cities; far fewer means the register or its layout changed. */
+export const HARVEST_MIN_CITIES = 15;
+
+/** Pure: library keys for a request. Only a named city has a row; months is ignored (the library holds one window). */
+export function plHistoryKey(input: { town?: string }): { area: string; item: string; label: string } | null {
+  const place = input.town ? findPlace(input.town) : null;
+  if (!place) return null;
+  return { area: place.label, item: HARVEST_ITEM, label: `${place.label} (notarised flat sales, last ${HARVEST_MONTHS} months)` };
+}
+
+/** Pure: the library rows for the cities whose plausible free-market flat sales number MIN_PUBLISH or more. */
+export function plDailyRows(byCity: { place: Place; sales: Sale[] }[]): DailyRow[] {
+  const rows: DailyRow[] = [];
+  for (const { place, sales } of byCity) {
+    const sum = summarise(sales.filter(plausible).map((s) => s.price));
+    if (!sum || sum.count < MIN_PUBLISH) continue;
+    rows.push({ area: place.label, item: HARVEST_ITEM, n: sum.count, median: sum.median, low: sum.low, high: sum.high, min: sum.min, max: sum.max });
+  }
+  return rows.sort((a, b) => a.area.localeCompare(b.area));
+}
+
+/** The daily collector: for each of the 19 cities read the last HARVEST_MONTHS slices, keep only (price, area, date, market) in memory
+ *  and store one aggregate per city. A city that fails twice is left out for the day; too few cities fail the run. */
+export async function plHarvest(fetchGml: GmlFetcher = makeFetch(40000), now = new Date()): Promise<HarvestResult> {
+  const today = now.toISOString().slice(0, 10);
+  const byCity: { place: Place; sales: Sale[] }[] = [];
+  const failed: string[] = [];
+  let capped = 0;
+  let read = 0;
+  for (const place of PLACES) {
+    try {
+      const sales: Sale[] = [];
+      for (const sl of slices(today, HARVEST_MONTHS)) {
+        const url = sliceUrl(place.teryt, sl.from, sl.to);
+        let parsed;
+        try {
+          parsed = parseSales(await fetchGml(url));
+        } catch {
+          parsed = parseSales(await fetchGml(url)); // one retry per slice: Warsaw loads slowly
+        }
+        if (parsed.returned >= SLICE_CAP) capped++;
+        read += parsed.returned;
+        for (const s of parsed.sales) if (!s.msc || s.msc === normaliseName(place.msc)) sales.push(s);
+      }
+      byCity.push({ place, sales });
+    } catch {
+      failed.push(place.label);
+    }
+  }
+  const rows = plDailyRows(byCity);
+  if (rows.length < HARVEST_MIN_CITIES) {
+    throw new SourceError(`Only ${rows.length} of ${PLACES.length} Polish cities had 5+ flat sales in the last ${HARVEST_MONTHS * SLICE_DAYS} days (${failed.length} could not be read); the register answer looks incomplete.`);
+  }
+  return {
+    date: today,
+    currency: "PLN",
+    unit: "per flat",
+    rows,
+    note: `RCN free-market flat sales in ${rows.length} city counties over the last ${HARVEST_MONTHS * SLICE_DAYS} days, ${read} records read${capped ? ` (${capped} slices hit the ${SLICE_CAP}-record read limit, so large cities are a sample)` : ""}${failed.length ? `; not read today: ${failed.join(", ")}` : ""}. Aggregates of 5+ sales only.`,
+  };
 }
