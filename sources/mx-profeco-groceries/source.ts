@@ -215,7 +215,10 @@ export function unpack(file: string, dir: string): void {
       execFileSync(bin, args, { stdio: ["ignore", "pipe", "pipe"], maxBuffer: 64 * 1024 * 1024 });
       return;
     } catch (e) {
-      errors.push(`${bin}: ${(e as Error).message.split("\n")[0]}`);
+      const err = e as Error & { stderr?: Buffer | string; stdout?: Buffer | string };
+      if ((err as NodeJS.ErrnoException).code === "ENOENT") continue; // tool not installed: not worth a word in the error
+      const out = String(err.stderr || "").trim() || String(err.stdout || "").trim().split("\n").slice(-3).join(" ");
+      errors.push(`${bin}: ${out.replace(/\s+/g, " ").slice(0, 160)}`);
     }
   }
   throw new SourceError(`Could not unpack the Profeco RAR (${errors.join("; ")})`);
@@ -250,7 +253,7 @@ export function extractYearly(buf: Buffer, dir: string, out: string, year: numbe
   if (kind === "html" || kind === "unknown") throw new SourceError(`Profeco ${year} file is not an archive (${describeBytes(buf)})`);
   const file = join(dir, `qqp-${year}.${kind}`);
   writeFileSync(file, buf);
-  try { unpack(file, out); } catch (e) { throw new SourceError(`${(e as Error).message}; file: ${describeBytes(buf)}`); }
+  try { unpack(file, out); } catch (e) { throw new SourceError(`Profeco ${year} file: ${describeBytes(buf)}. ${(e as Error).message.replace("Could not unpack the Profeco RAR", "Unpack failed")}`); }
 }
 
 /** All CSV files under dir, sorted by path (monthly file names start with the month). */
