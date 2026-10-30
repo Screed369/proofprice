@@ -171,7 +171,9 @@ export function answerFrom(bands: Band[], all: MonthCounts[], months: number, ba
     // min and max of the band edges would look like a real cheapest and dearest sale: say nothing instead.
     answer.price = { ...answer.price, min: null as unknown as number, max: null as unknown as number };
   }
-  return { ...answer, confidence: answer.status === "ok" ? "low" : answer.confidence };
+  if (answer.status !== "ok") return answer;
+  // The summary sentence names the confidence buildAnswer computed from the deal count; ours is always low.
+  return { ...answer, confidence: "low", summary: answer.summary.replace(/Confidence: \w+\./, "Confidence: low.") };
 }
 
 async function fetchYear(year: number): Promise<unknown | null> {

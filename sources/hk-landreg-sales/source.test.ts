@@ -65,6 +65,8 @@ test("HK-LR: the answer says it is an estimate from bands, low confidence, no fa
   assert.equal(a.period.to, "2026-09-30");
   assert.equal((a.extra as any).estimated_from_price_bands, true);
   assert.match(a.summary, /estimated from price bands/);
+  assert.match(a.summary, /Confidence: low\./);
+  assert.doesNotMatch(a.summary, /Confidence: high/);
   assert.match(a.source.attribution, /Land Registry, HKSAR Government, via DATA\.GOV\.HK/);
   assert.equal(INFO.price_type, "transaction");
 });
