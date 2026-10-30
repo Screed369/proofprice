@@ -448,11 +448,11 @@ test("stale-if-error: the 502 stays when it should", async (t) => {
     withHandle(itSrc, () => { throw new SourceError("MIMIT timed out"); }, () => runCategory(fuelCat, { country: "IT", area: "RM", fuel: "diesel" })),
     /MIMIT timed out/,
   );
-  // a source without library data (no harvest): the outage is reported as before
+  // a source without library data (no harvest; us-home-sales gained one on 2026-10-30, so DC stands in): the outage is reported as before
   const homes = categoryById("home-sales")!;
-  const us = SOURCE_PLUGINS.find((s) => s.info.id === "us-home-sales")!;
+  const us = SOURCE_PLUGINS.find((s) => s.info.id === "us-dc-home-sales")!;
   assert.equal(us.harvest, undefined);
-  await assert.rejects(withHandle(us, () => { throw new SourceError("Source timed out"); }, () => runCategory(homes, { country: "US", town: "Hartford" })), /Source timed out/);
+  await assert.rejects(withHandle(us, () => { throw new SourceError("Source timed out"); }, () => runCategory(homes, { country: "US", state: "DC" })), /Source timed out/);
 });
 
 test("stale-if-error: a snapshot older than a week is not recent, and thin days are never served", () => {

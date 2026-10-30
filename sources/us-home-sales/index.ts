@@ -1,7 +1,7 @@
 // Manifest: United States home sales, partial coverage (Connecticut, New York City, Cook County IL). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, usHomeSales } from "./source";
+import { INFO, usHarvest, usHistoryKey, usHomeSales } from "./source";
 import { isDcRequest } from "../us-dc-home-sales/source";
 
 export default defineSource({
@@ -42,4 +42,6 @@ export default defineSource({
       months: num(p.months),
       baseUrl: ctx.baseUrl,
     }),
+  harvest: () => usHarvest(),
+  historyKey: (p) => usHistoryKey({ town: str(p.town), postcode: str(p.postcode), state: str(p.state), property_type: str(p.property_type), months: num(p.months) }),
 });

@@ -292,3 +292,50 @@ test("the combined record says plainly that this is not nationwide", () => {
     assert.ok(d.info.attribution.startsWith("Source: "));
   }
 });
+
+// ---------- daily library copy (harvest) and history keys ----------
+import { HARVEST_PLACES, usHarvest, usHistoryKey, usAreaKey } from "./source";
+
+test("depth: history keys for the collected places, 12 months only, no ZIP", () => {
+  assert.deepEqual(usHistoryKey({ town: "Hartford" }), { area: "hartford-ct", item: "any:12m", label: "Hartford, CT" });
+  assert.deepEqual(usHistoryKey({ town: "hartford, ct", property_type: "condo", months: 12 }), { area: "hartford-ct", item: "condo:12m", label: "Hartford, CT" });
+  assert.equal(usHistoryKey({ town: "Brooklyn", property_type: "coop" })?.item, "coop:12m");
+  assert.equal(usHistoryKey({ town: "Chicago" })?.area, "chicago-il");
+  assert.equal(usHistoryKey({ town: "Hartford", months: 6 }), null); // another window is not the stored one
+  assert.equal(usHistoryKey({ town: "Brooklyn", postcode: "11201" }), null); // ZIPs are not collected
+  assert.equal(usHistoryKey({ town: "Williamsburg" }), null); // neighborhoods are not collected
+  assert.equal(usHistoryKey({ town: "Hartford", property_type: "coop" }), null); // coop is New York City only
+  assert.equal(usHistoryKey({ town: "Atlantis" }), null); // unknown place never throws
+});
+
+test("depth: every collected place routes to a unique library key", () => {
+  const keys = HARVEST_PLACES.map((n) => usAreaKey(routeUsPlace({ town: n })));
+  assert.equal(new Set(keys).size, HARVEST_PLACES.length);
+});
+
+test("depth: harvest writes aggregate rows only and skips what it cannot read in full", async () => {
+  const rowsFor = (url: string) => {
+    if (url.includes("max(")) return [{ latest: url.includes("5mzw-sjtu") ? LATEST.ct : url.includes("usep-8jbt") ? LATEST.nyc : LATEST.cook }];
+    const field = url.includes("5mzw-sjtu") ? ["saleamount", "daterecorded"] : ["sale_price", "sale_date"];
+    const date = url.includes("5mzw-sjtu") ? "2025-09-20T00:00:00.000" : "2026-08-10T00:00:00.000";
+    // Brooklyn is "too big": a full first page (so the collector reports truncation); every other place has 6 sales.
+    const n = decodeURIComponent(url).includes("borough = '3'") ? MAX_ROWS : 6;
+    return Array.from({ length: Math.min(n, PAGE_SIZE) }, (_, i) => ({ [field[0]]: String(300000 + i * 1000), [field[1]]: date }));
+  };
+  const out = await usHarvest({ fetcher: async (url: string) => rowsFor(url), today: new Date("2026-10-30T03:00:00Z") });
+  assert.equal(out.date, "2026-10-30");
+  assert.equal(out.currency, "USD");
+  assert.ok(out.rows.length > 20);
+  for (const r of out.rows) {
+    assert.ok(r.n >= 5, "5-record rule");
+    assert.ok(r.median > 0 && r.low <= r.median && r.median <= r.high);
+    assert.match(r.item, /^(any|house|condo|coop):12m$/);
+  }
+  assert.ok(out.rows.some((r) => r.area === "hartford-ct" && r.item === "any:12m"));
+  assert.ok(!out.rows.some((r) => r.area === "brooklyn-new-york-city"), "a place cut by the row cap is not stored");
+  assert.ok(!out.rows.some((r) => r.area === "ALL"), "no nationwide row for a partial source");
+});
+
+test("depth: harvest fails loudly when no portal answers", async () => {
+  await assert.rejects(usHarvest({ fetcher: async () => { throw new Error("down"); }, today: new Date("2026-10-30T03:00:00Z") }), /No.*portals|none/i);
+});

@@ -10,6 +10,7 @@ import { socrataAll, socrataQuery, soqlString, Fetcher } from "../../lib/adapter
 import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { summarise } from "../../lib/stats";
+import { aggregateDaily } from "../../lib/library/aggregate";
 import type { SourceInfo } from "../../lib/plugin";
 import { CHICAGO_TOWNSHIP_CODES, COOK_TOWNSHIPS, CT_TOWNS, NYC_BOROUGHS, NYC_NEIGHBORHOODS } from "./places";
 
@@ -535,4 +536,102 @@ export async function usHomeSales(input: UsHomeSalesInput, opts: UsHomeSalesOpti
       ...(notes.length ? { notes } : {}),
     },
   });
+}
+
+// ---------- daily library copy (harvest) and history keys ----------
+// The most-asked places are collected once a day into the price library, so that (1) /history works and (2) if a Socrata portal
+// times out or answers 5xx, runCategory answers from our copy of the last 7 days (stale-if-error) instead of a 502.
+// Only whole-place windows of 12 months are kept. A place whose 12 months hold more than MAX_ROWS sales (all of New York City,
+// Manhattan, Brooklyn, Queens for "any") would be cut to the newest ones, so it is skipped rather than stored biased.
+
+export const HARVEST_MONTHS = 12;
+/** Places collected daily, spelled as a request would be. Resolved through routeUsPlace(), so the library key is the routed place. */
+export const HARVEST_PLACES: string[] = [
+  "Connecticut", "Hartford, CT", "Stamford, CT", "New Haven, CT", "Bridgeport, CT", "Waterbury, CT", "Norwalk, CT", "Danbury, CT",
+  "Greenwich, CT", "West Hartford, CT", "New Britain, CT",
+  "New York City", "Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island",
+  "Chicago", "Cook County",
+];
+
+/** Library area key for a routed place: the label, lower case, words joined by "-" ("hartford-ct"). ZIPs, neighborhoods and townships are not collected. */
+export function usAreaKey(place: UsPlace): string {
+  return norm(place.label).replace(/ /g, "-");
+}
+
+const harvestAreas = (): Map<string, UsPlace> => {
+  const m = new Map<string, UsPlace>();
+  for (const name of HARVEST_PLACES) {
+    const p = routeUsPlace({ town: name });
+    m.set(usAreaKey(p), p);
+  }
+  return m;
+};
+
+export const harvestItem = (type: UsType) => `${type}:${HARVEST_MONTHS}m`;
+
+/** The library key for a request, or null when the request is not one of the collected places and windows. */
+export function usHistoryKey(p: { town?: string; postcode?: string; state?: string; property_type?: string; months?: number }): { area: string; item: string; label: string } | null {
+  try {
+    if (p.postcode) return null;
+    const type = (p.property_type ?? "any").toLowerCase();
+    if (!(US_TYPES as readonly string[]).includes(type)) return null;
+    const months = p.months === undefined || !Number.isFinite(p.months) ? HARVEST_MONTHS : Math.round(p.months);
+    if (months !== HARVEST_MONTHS) return null;
+    const place = routeUsPlace({ town: p.town, state: p.state });
+    if (type === "coop" && place.dataset !== "nyc") return null;
+    const area = usAreaKey(place);
+    if (!harvestAreas().has(area)) return null;
+    return { area, item: harvestItem(type as UsType), label: place.label };
+  } catch {
+    return null;
+  }
+}
+
+export interface UsHarvestOptions {
+  fetcher?: Fetcher;
+  today?: Date;
+}
+
+/** One day of aggregates: every collected place and property type over the latest 12 months of its dataset. */
+export async function usHarvest(opts: UsHarvestOptions = {}): Promise<import("../../lib/plugin").HarvestResult> {
+  const today = opts.today ?? new Date();
+  const records: { area: string; item: string; price: number }[] = [];
+  const skipped: string[] = [];
+  let failures = 0;
+  let attempts = 0;
+  for (const [area, place] of harvestAreas()) {
+    const f = DATASETS[place.dataset];
+    const types: UsType[] = place.dataset === "nyc" ? ["any", "house", "condo", "coop"] : ["any", "house", "condo"];
+    for (const type of types) {
+      attempts++;
+      try {
+        const latest = await datasetLatest(place.dataset, today, opts.fetcher);
+        const window = { from: monthsBack(latest, Math.min(HARVEST_MONTHS, f.maxMonths)), to: latest };
+        const got = await socrataAll(
+          f.domain,
+          f.id,
+          { select: buildSelect(place.dataset), where: buildWhere(place, type, window), order: buildOrder(place.dataset), limit: MAX_ROWS },
+          { fetcher: opts.fetcher, maxRows: MAX_ROWS, pageSize: PAGE_SIZE, timeoutMs: 25000 },
+        );
+        if (got.truncated) {
+          skipped.push(`${area}/${type}`);
+          continue;
+        }
+        for (const s of parseSales(place.dataset, got.rows)) records.push({ area, item: harvestItem(type), price: s.price });
+      } catch (e) {
+        failures++;
+        skipped.push(`${area}/${type}`);
+      }
+    }
+  }
+  if (failures > 0 && failures === attempts) throw new SourceError("None of the US Socrata portals answered");
+  const rows = aggregateDaily(records, false); // summarise() drops groups under 5 sales
+  if (!rows.length) throw new SourceError("US home-sales harvest produced no rows");
+  return {
+    date: today.toISOString().slice(0, 10),
+    currency: "USD",
+    unit: "per home",
+    rows,
+    note: `Rolling ${HARVEST_MONTHS} months up to each dataset's latest sale (Connecticut, New York City, Cook County IL); ${skipped.length} place/type combinations left out (too many sales for one read, too few sales, or no answer)${skipped.length ? ": " + skipped.slice(0, 12).join(", ") : ""}.`,
+  };
 }
