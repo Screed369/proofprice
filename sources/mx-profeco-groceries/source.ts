@@ -5,7 +5,8 @@
 // POSTED shelf prices (not receipts, not what one shopper paid), in Mexican pesos. Addresses, shop names and coordinates are never read into the library.
 
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { gunzipSync } from "node:zlib";
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { InputError, SourceError } from "../../lib/http";
@@ -220,6 +221,38 @@ export function unpack(file: string, dir: string): void {
   throw new SourceError(`Could not unpack the Profeco RAR (${errors.join("; ")})`);
 }
 
+/** What a downloaded yearly file really is, from its first bytes (the publisher changed the catalogue on 27 Oct 2026 and the file no longer opened). */
+export function sniff(buf: Buffer): "rar" | "zip" | "7z" | "gzip" | "csv" | "html" | "unknown" {
+  const h = buf.subarray(0, 8);
+  if (h.subarray(0, 4).toString("latin1") === "Rar!") return "rar";
+  if (h[0] === 0x50 && h[1] === 0x4b) return "zip";
+  if (h[0] === 0x37 && h[1] === 0x7a && h[2] === 0xbc && h[3] === 0xaf) return "7z";
+  if (h[0] === 0x1f && h[1] === 0x8b) return "gzip";
+  const head = buf.subarray(0, 400).toString("utf8").replace(/^\uFEFF/, "").trimStart().toLowerCase();
+  if (head.startsWith("<!doctype") || head.startsWith("<html") || head.startsWith("<?xml")) return "html";
+  if (/^"?producto"?\s*[,;|\t]/.test(head)) return "csv";
+  return "unknown";
+}
+
+/** A short description of a download for error messages: size and first bytes. */
+export function describeBytes(buf: Buffer): string {
+  const head = buf.subarray(0, 24);
+  const printable = head.toString("latin1").replace(/[^\x20-\x7e]/g, ".");
+  return `${buf.length} bytes, type ${sniff(buf)}, starts ${head.toString("hex")} "${printable}"`;
+}
+
+/** Put a downloaded yearly file into `out`: unpack archives, gunzip, or store a plain CSV as it is. */
+export function extractYearly(buf: Buffer, dir: string, out: string, year: number): void {
+  const kind = sniff(buf);
+  mkdirSync(out, { recursive: true });
+  if (kind === "csv") { writeFileSync(join(out, `${year}.csv`), buf); return; }
+  if (kind === "gzip") { extractYearly(gunzipSync(buf), dir, out, year); return; }
+  if (kind === "html" || kind === "unknown") throw new SourceError(`Profeco ${year} file is not an archive (${describeBytes(buf)})`);
+  const file = join(dir, `qqp-${year}.${kind}`);
+  writeFileSync(file, buf);
+  try { unpack(file, out); } catch (e) { throw new SourceError(`${(e as Error).message}; file: ${describeBytes(buf)}`); }
+}
+
 /** All CSV files under dir, sorted by path (monthly file names start with the month). */
 export function listCsv(dir: string): string[] {
   const out: string[] = [];
@@ -244,10 +277,8 @@ export async function profecoHarvest(): Promise<HarvestResult> {
     for (const link of links.slice(0, 2)) {
       const res = await fetch(link.url, { headers: UA });
       if (!res.ok) throw new SourceError(`Profeco file ${link.year} returned HTTP ${res.status}`);
-      const rar = join(dir, `qqp-${link.year}.rar`);
-      writeFileSync(rar, Buffer.from(await res.arrayBuffer()));
       const out = join(dir, String(link.year));
-      unpack(rar, out);
+      extractYearly(Buffer.from(await res.arrayBuffer()), dir, out, link.year);
       const csvs = listCsv(out);
       if (!csvs.length) throw new SourceError(`Profeco ${link.year} archive held no CSV files`);
       for (const f of csvs.slice(-2)) { // the newest two monthly files cover the 30-day window even right after a month change

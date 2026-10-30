@@ -3,7 +3,7 @@
 // The rows are generated in that layout (the monthly CSVs sit inside a RAR the probe cannot open), so a state has 5+ shops.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { INFO, Newest, buildRows, decodeText, defsFor, isoDate, itemKey, matchItems, parseIndex, parsePrices, profecoAnswerFromRows, readHeader, resolveState, splitLine, stateName } from "./source";
+import { INFO, Newest, buildRows, decodeText, defsFor, describeBytes, extractYearly, sniff, isoDate, itemKey, matchItems, parseIndex, parsePrices, profecoAnswerFromRows, readHeader, resolveState, splitLine, stateName } from "./source";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
 
@@ -132,4 +132,14 @@ test("manifest: groceries in Mexico, posted price type, harvest and history key 
   assert.ok(manifest.harvest && manifest.historyKey);
   assert.ok(categoryById("groceries"));
   assert.ok(countriesFor("groceries").includes("MX"));
+});
+
+test("sniff: tells a RAR, a zip, a plain CSV and an HTML error page apart, and says so in errors", () => {
+  assert.equal(sniff(Buffer.from("Rar!\x1a\x07\x01\x00abc", "latin1")), "rar");
+  assert.equal(sniff(Buffer.from([0x50, 0x4b, 3, 4])), "zip");
+  assert.equal(sniff(Buffer.from([0x1f, 0x8b, 8, 0])), "gzip");
+  assert.equal(sniff(Buffer.from(HEAD + "\n")), "csv");
+  assert.equal(sniff(Buffer.from("<!DOCTYPE html><html>")), "html");
+  assert.match(describeBytes(Buffer.from("<html>nope")), /10 bytes, type html/);
+  assert.throws(() => extractYearly(Buffer.from("<html>nope"), "/tmp", "/tmp/zz-profeco-test", 2026), /not an archive \(10 bytes/);
 });
