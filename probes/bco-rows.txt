@@ -1,0 +1,30 @@
+URL: https://www.datos.gov.co/resource/ytme-6qnu.json?$limit=3
+Fetched: 2026-10-30T00:14:03Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1109
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 30 Oct 2026 00:14:03 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuNjMzMjFfMV8yMlkyM240aVd1Z011Ujh6eG5LaTRkeDhXY1oxSQ---gzitGNq7EX_7ZmKIq8Iu1Dj6yJ6dBu--gzip--gzip"
+X-SODA2-Fields: ["a_o","periodo","operador_de_red","nivel","cu_total","costo_compra_gm_i","cargo_transporte_stn_tm","cargo_transporte_sdl_dn_m","margen_comercializaci_n_cvm","costo_g_t_p_rdidas_prn_m","restricciones_rm","cot","cfm_j_fact"]
+X-SODA2-Types: ["number","text","text","text","number","number","number","number","number","number","number","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 46bd98f8c26cd5d6f71d26d8e6bb06cd
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"a_o":"2025","periodo":"Enero","operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"Nivel 1 (Propiedad OR)","cu_total":"810.46","costo_compra_gm_i":"372.46","cargo_transporte_stn_tm":"56.03","cargo_transporte_sdl_dn_m":"280.91","margen_comercializaci_n_cvm":"24.86","costo_g_t_p_rdidas_prn_m":"72.49","restricciones_rm":"3.71","cot":"0","cfm_j_fact":"9.813"}
+,{"a_o":"2025","periodo":"Enero","operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"Nivel 1 (Propiedad Compartida)","cu_total":"787.37","costo_compra_gm_i":"372.46","cargo_transporte_stn_tm":"56.03","cargo_transporte_sdl_dn_m":"257.82","margen_comercializaci_n_cvm":"24.86","costo_g_t_p_rdidas_prn_m":"72.49","restricciones_rm":"3.71","cot":"0","cfm_j_fact":"9.813"}
+,{"a_o":"2025","periodo":"Enero","operador_de_red":"ENEL Bogotá - Cundinamarca","nivel":"Nivel 1 (Propiedad Cliente)","cu_total":"764.29","costo_compra_gm_i":"372.46","cargo_transporte_stn_tm":"56.03","cargo_transporte_sdl_dn_m":"234.73","margen_comercializaci_n_cvm":"24.86","costo_g_t_p_rdidas_prn_m":"72.49","restricciones_rm":"3.71","cot":"0","cfm_j_fact":"9.813"}]
