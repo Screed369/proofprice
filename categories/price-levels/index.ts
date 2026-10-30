@@ -22,6 +22,10 @@ export default defineCategory({
     `How fresh: ${freshnessList(places)}. ` +
     "Do not use for the price of a particular product, a town or city, exchange rates on the money market, or for countries that are not listed.",
   params: {
+    measure: z
+      .enum(["price_level", "inflation"])
+      .optional()
+      .describe("price_level (default): how expensive the country is against an average. inflation: how consumer prices changed over time (index, monthly and yearly change), only where the country notes list it."),
     spend: z
       .string()
       .optional()
@@ -32,11 +36,13 @@ export default defineCategory({
       .describe("What the index is measured against, as a short name of a comparison area. Leave out for the default; the allowed values are listed in the notes for the country."),
   },
   prepare: (p) => {
-    const { spend: _s, compare_to: _c, ...rest } = p;
+    const { spend: _s, compare_to: _c, measure: _m, ...rest } = p;
+    const measure = str(p.measure)?.toLowerCase();
+    if (measure && measure !== "price_level" && measure !== "inflation") throw new InputError("measure must be price_level (default) or inflation.");
     const spend = str(p.spend);
     const cmp = str(p.compare_to);
     if (spend && spend.length > 80) throw new InputError("spend is too long: use a few words such as 'food' or 'housing'.");
     if (cmp && cmp.length > 20) throw new InputError("compare_to must be OECD, USA or EU.");
-    return { ...rest, ...(spend ? { spend } : {}), ...(cmp ? { compare_to: cmp } : {}) };
+    return { ...rest, ...(measure ? { measure } : {}), ...(spend ? { spend } : {}), ...(cmp ? { compare_to: cmp } : {}) };
   },
 });
