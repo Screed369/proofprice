@@ -166,6 +166,7 @@ test("routing: unknown countries and fuels get a clear 400 message", async () =>
   await assert.rejects(runCategory(fuel, { country: "XX", fuel: "diesel" }), /Live fuel prices are available for .*\bES\b.*\bFR\b.*\bIT\b.* so far\. Not yet: XX/);
   await assert.rejects(runCategory(fuel, { country: "ES", fuel: "kerosene" }), /fuel must be one of/);
   await assert.rejects(runCategory(fuel, {}), /country is required/);
+  await assert.rejects(runCategory(fuel, { area: "7501", fuel: "diesel" }), /country is required: one of .*for example \/api\/v1\/fuel\?country=[A-Z]{2}.*coverage\?category=fuel/s);
   const hs = categoryById("home-sales")!;
   await assert.rejects(runCategory(hs, { country: "england" }), /A town is required/); // "england" -> GB, then GB needs a town
 });

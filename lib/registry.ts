@@ -207,7 +207,15 @@ export function assertKnownParams(cat: CategoryPlugin, params: Params): void {
 export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePlugin; prepared: Params } {
   const country = normaliseCountry(params.country);
   const covered = countriesFor(cat.id);
-  if (!country) throw new InputError(`country is required: one of ${covered.join(", ")}.`);
+  if (!country) {
+    // Missing country is the biggest single cause of refused calls (usage top_bad_requests, 30 Oct 2026). We never guess a country
+    // from a place name, but we show a ready-to-copy call so the caller can fix it in one step.
+    const eg = covered.includes("US") ? "US" : covered[0];
+    throw new InputError(
+      `country is required: one of ${covered.join(", ")}. Add the ISO code of the country the place is in, for example /api/v1/${cat.restPath}?country=${eg}&... ` +
+        `(use the pricepaid_coverage tool or /api/v1/coverage?category=${cat.id} for working examples).`,
+    );
+  }
   const src = findSource(cat.id, country);
   if (!src) {
     const labels = sourcesFor(cat.id).map((s) => s.info.country);
