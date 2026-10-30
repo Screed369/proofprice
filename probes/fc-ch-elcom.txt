@@ -1,0 +1,1043 @@
+URL: https://ckan.opendata.swiss/dataset/median-strompreis-fur-die-schweiz
+Fetched: 2026-10-30T14:34:29Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 30716
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 30 Oct 2026 14:34:29 GMT
+content-type: text/html; charset=utf-8
+content-length: 30716
+cache-control: private
+vary: Cookie
+set-cookie: ckan=eyJfY3NyZl90b2tlbiI6IjVlM2JjNWM3MmY2ZmJjNThkYzNkMjczOGU5MmU2ZGRmZDNlMjY3NjAifQ.auSq9Q.Jgi7DVXQBrxcES3i-v64KT2m_xE; Domain=; HttpOnly; Path=/; SameSite=Lax
+x-robots-tag: noindex, nofollow
+strict-transport-security: max-age=15724800; includeSubDomains
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET, PUT, POST, DELETE, PATCH, OPTIONS
+access-control-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+access-control-max-age: 1728000
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (610)
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"  > <!--<![endif]-->
+  <head>
+    
+  <meta charset="utf-8" />
+      <meta name="csrf_field_name" content="_csrf_token" />
+      <meta name="_csrf_token" content="IjVlM2JjNWM3MmY2ZmJjNThkYzNkMjczOGU5MmU2ZGRmZDNlMjY3NjAi.auSq9Q.OyBM6A-jq92heSiyNAKTAnKuuDQ" />
+
+      <meta name="generator" content="ckan 2.11.7" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex" />
+
+    <title>Median electricity tariff for Switzerland - Dataset - opendata.swiss</title>
+
+    
+    
+
+    <link rel="shortcut icon" href="/images/favicon-128.png" />
+    
+
+    
+      
+          <link rel="alternate" type="text/n3" href="https://ckan.opendata.swiss/dataset/f615219d-203a-48b3-9977-c34eec49745b.n3"/>
+          <link rel="alternate" type="text/turtle" href="https://ckan.opendata.swiss/dataset/f615219d-203a-48b3-9977-c34eec49745b.ttl"/>
+          <link rel="alternate" type="application/rdf+xml" href="https://ckan.opendata.swiss/dataset/f615219d-203a-48b3-9977-c34eec49745b.xml"/>
+          <link rel="alternate" type="application/ld+json" href="https://ckan.opendata.swiss/dataset/f615219d-203a-48b3-9977-c34eec49745b.jsonld"/>
+      
+    
+
+  
+    
+  
+  
+      
+      
+      
+    
+  
+
+  
+
+    
+
+  
+
+
+  
+  
+    
+  
+
+
+
+    
+    <link href="/webassets/base/c5c63dee_main.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-activity/8dd77216_activity.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-scheming/073d7cfa_scheming_css.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-harvest/c95a0af2_harvest_css.css" rel="stylesheet"/>
+<link href="/webassets/switzerland/switzerland.css?f834523a" rel="stylesheet"/>
+<link href="/webassets/switzerland/switzerland-red-bg.css?fdfb09ff" rel="stylesheet"/>
+    
+    
+  
+  <meta property="og:title" content="Median electricity tariff for Switzerland - opendata.swiss">
+  <meta property="og:description" content="">
+
+
+  </head>
+
+  
+  <body data-site-root="https://ckan.opendata.swiss/" data-locale-root="https://ckan.opendata.swiss/" >
+
+    
+    <div class="visually-hidden-focusable"><a href="#content">Skip to main content</a></div>
+  
+
+  
+    
+
+ 
+<div class="account-masthead">
+  <div class="container">
+     
+    <nav class="account not-authed" aria-label="Account">
+      <ul class="list-unstyled">
+        
+        <li><a href="/user/login">Log in</a></li>
+         
+      </ul>
+    </nav>
+     
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="container">
+      
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <hgroup class="header-image navbar-left">
+
+      
+      
+      <a class="logo" href="/">
+        <img src="https://opendata.swiss/images/logo_horizontal.png" alt="opendata.swiss"
+          title="opendata.swiss" />
+      </a>
+      
+      
+
+       </hgroup>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation-toggle"
+        aria-controls="main-navigation-toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars text-white"></span>
+      </button>
+
+      <div class="main-navbar collapse navbar-collapse" id="main-navigation-toggle">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          
+<nav class="section navigation">
+<ul class="nav nav-pills">
+  
+     
+     
+     
+     <li class="active">
+         <a href="/dataset/">Datasets</a>
+     </li>
+     <li class="">
+         <a href="/organization/">Organizations</a>
+     </li>
+     <li class="">
+       <a href="/showcase">Showcases</a>
+     </li>
+     <li class="">
+         <a href="/group/">Categories</a>
+     </li>
+  
+</ul>
+</nav>
+
+      
+          <form class="d-flex site-search" action="/dataset/" method="get">
+              <label class="d-none" for="field-sitewide-search">Search Datasets...</label>
+              <input id="field-sitewide-search" class="form-control me-2"  type="text" name="q" placeholder="Search" aria-label="Search datasets..."/>
+              <button class="btn" type="submit" aria-label="Submit"><i class="fa fa-search"></i></button>
+          </form>
+      
+      </div>
+    </nav>
+  </div>
+</header>
+
+  
+    <div class="main">
+      <div id="content" class="container">
+        
+          
+  
+  
+    
+  
+  
+            <div class="flash-messages">
+              
+                
+              
+            </div>
+          
+
+
+          
+            <div class="toolbar" role="navigation" aria-label="Breadcrumb">
+              
+                
+                  <ol class="breadcrumb">
+                    
+<li class="home"><a href="/" aria-label="Home"><i class="fa fa-home"></i><span> Home</span></a></li>
+                    
+  
+    
+    
+       
+
+
+
+<li>
+  <a href="/organization/">Organizations</a>
+</li>
+
+
+<li class="active">
+    <a href="/organization/elcom">Federal Electricity Commission ElCom</a>
+</li>
+    
+      <li class="active"><a href="/dataset/median-strompreis-fur-die-schweiz" title="Median electricity tariff for Switzerland">Median electricity tariff...</a></li>
+  
+
+                  </ol>
+                
+              
+            </div>
+          
+
+          <div class="row wrapper">
+            
+            
+            
+
+            
+              <aside class="secondary col-md-3">
+                
+                
+
+  
+
+  
+    
+
+  
+    <section id="package-info" class="module module-narrow">
+      <div class="module context-info">
+        <div class="module-content">
+          
+            
+              <h1 class="heading">Median electricity tariff for Switzerland</h1>
+            
+            
+
+            
+  
+  <div class="nums">
+    
+    <!-- 
+
+ -->
+    <label class="control-label" for="subscribe-email">Sign up for email updates</label>
+    <form method='post' action="/subscribe/signup" id="subscribe-form" enctype="multipart/form-data" class="form-inline">
+      
+<input type="hidden" name="_csrf_token" value="IjVlM2JjNWM3MmY2ZmJjNThkYzNkMjczOGU5MmU2ZGRmZDNlMjY3NjAi.auSq9Q.OyBM6A-jq92heSiyNAKTAnKuuDQ"/>
+      <!-- (Bootstrap 3) <div class="form-group input-group-sm"> -->
+        <input id="subscribe-email" type="email" name="email" class="form-control input-small" value="" placeholder="" />
+        
+            <!-- reCAPTCHA  -->
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            <div class="g-recaptcha" data-sitekey=6LeHuMEqAAAAANm2azAciPpdRkx6Fnj0zBRAEIl1 style="transform:scale(0.85);transform-origin:0"></div>
+        
+        <input id="subscribe-dataset" type="hidden" name="dataset" value="median-strompreis-fur-die-schweiz"` />
+      <!-- </div> -->
+      <button type="submit" class="btn btn-default" name="save">Submit</button>
+    </form>
+  </div>
+  
+
+          
+        </div>
+      </div>
+    </section>
+  
+
+  
+
+  
+    
+      
+      
+
+
+
+
+
+  <section id="organization-info" class="module module-narrow">
+    <div class="module context-info">
+    <div class="module-content">
+      
+      
+        <div class="image">
+          <a href="/organization/elcom">
+            <img src="/base/images/placeholder-organization.png" width="200" alt="elcom" />
+          </a>
+        </div>
+      
+      
+  <h1 class="heading">Federal Electricity Commission ElCom
+    
+  </h1>
+
+      
+  
+    <p class="description">
+      ElCom is Switzerland&#39;s independent regulatory authority in the electricity sector. It is responsible for monitoring compliance with the Swiss Federal Electricity Act and the...
+    </p>
+    <p class="read-more">
+      <a href="/organization/about/elcom">read more</a>
+    </p>
+  
+
+      
+      
+      </div>
+    </div>
+  </section>
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+    
+
+  
+
+
+              </aside>
+            
+
+            
+              <div class="primary col-md-9 col-xs-12" role="main">
+                
+                
+                  <article class="module">
+                    
+                      <header class="module-content page-header">
+                        
+                        <ul class="nav nav-tabs">
+                          
+  <li class="active"><a href="/dataset/median-strompreis-fur-die-schweiz"><i class="fa fa-sitemap"></i> Dataset</a></li>
+  <li><a href="/dataset/groups/median-strompreis-fur-die-schweiz"><i class="fa fa-users"></i> Categories</a></li>
+  <li><a href="/dataset/showcases/median-strompreis-fur-die-schweiz"><i class="fa fa-trophy"></i> Showcases</a></li>
+  <li><a href="/dataset/activity/median-strompreis-fur-die-schweiz"><i class="fa fa-clock"></i> Activity Stream</a></li>
+
+                        </ul>
+                      </header>
+                    
+                    <div class="module-content">
+                      
+                      
+  
+                      
+  
+    
+    <h1>
+      
+        Median electricity tariff for Switzerland
+        
+        
+      
+    </h1>
+    
+      
+        <div class="notes embedded-content">
+          <p>Median electricity tariff for Switzerland by consumption profiles</p>
+        </div>
+      
+    
+  
+
+  
+    
+
+<section id="dataset-resources" class="resources">
+  <h2>Data and Resources</h2>
+  
+    
+      <ul class="resource-list">
+        
+  
+    
+    
+
+
+
+<li class="resource-item" data-id="0e0664fd-e205-416f-9a95-e169a777f23c">
+  
+  
+  <a class="heading" href="/dataset/median-strompreis-fur-die-schweiz/resource/0e0664fd-e205-416f-9a95-e169a777f23c" title="SPARQL Endpoint with graph preselection">
+    SPARQL Endpoint with graph preselection<span class="format-label" property="dc:format" data-format="sparql">SPARQL</span>
+  </a>
+  
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" type="button" id="dropdownExplorer" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownExplorer">
+      
+  
+  
+        
+  
+    
+          <li>
+            <a class="dropdown-item" href="/dataset/median-strompreis-fur-die-schweiz/resource/0e0664fd-e205-416f-9a95-e169a777f23c">
+              
+                <i class="fa fa-info-circle"></i>
+                More information
+              
+            </a>
+          </li>
+        
+  
+
+
+
+
+        
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://lindas.admin.ch/sparql/#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT+*%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Felcom%2Felectricityprice%3E%0AWHERE+%7B%0A++%3Chttps%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss%3E+%3Fp+%3Fo.%0A%7D%0A&amp;contentTypeConstruct=text%2Fturtle&amp;contentTypeSelect=application%2Fsparql-results%2Bjson&amp;endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery&amp;requestMethod=POST&amp;tabTitle=Query+3&amp;headers=%7B%7D&amp;outputFormat=table" target="_blank" rel="noreferrer">
+          
+            <i class="fa fa-external-link"></i>
+            Go to resource
+          
+        </a>
+      </li>
+      
+      
+      
+
+    </ul>
+  </div>
+  
+  
+</li>
+  
+    
+    
+
+
+
+<li class="resource-item" data-id="b88beade-a08e-4e2a-9b6c-edcb8dd82652">
+  
+  
+  <a class="heading" href="/dataset/median-strompreis-fur-die-schweiz/resource/b88beade-a08e-4e2a-9b6c-edcb8dd82652" title="visualize.admin.ch">
+    visualize.admin.ch<span class="format-label" property="dc:format" data-format="html">HTML</span>
+  </a>
+  
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" type="button" id="dropdownExplorer" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownExplorer">
+      
+  
+  
+        
+  
+    
+          <li>
+            <a class="dropdown-item" href="/dataset/median-strompreis-fur-die-schweiz/resource/b88beade-a08e-4e2a-9b6c-edcb8dd82652">
+              
+                <i class="fa fa-info-circle"></i>
+                More information
+              
+            </a>
+          </li>
+        
+  
+
+
+
+
+        
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://visualize.admin.ch/en/browse?dataset=https%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss" target="_blank" rel="noreferrer">
+          
+            <i class="fa fa-external-link"></i>
+            Go to resource
+          
+        </a>
+      </li>
+      
+      
+      
+
+    </ul>
+  </div>
+  
+  
+</li>
+  
+    
+    
+
+
+
+<li class="resource-item" data-id="e4e5935f-6bdf-4e75-81a9-2d83c31c9520">
+  
+  
+  <a class="heading" href="/dataset/median-strompreis-fur-die-schweiz/resource/e4e5935f-6bdf-4e75-81a9-2d83c31c9520" title="Electricity tariff in Switzerland">
+    Electricity tariff in Switzerland<span class="format-label" property="dc:format" data-format="service">SERVICE</span>
+  </a>
+  
+  
+  
+
+  
+    <p class="description">
+      
+        Electricity tariff in Switzerland
+      
+    </p>
+  
+  
+  
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" type="button" id="dropdownExplorer" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explore
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownExplorer">
+      
+  
+  
+        
+  
+    
+          <li>
+            <a class="dropdown-item" href="/dataset/median-strompreis-fur-die-schweiz/resource/e4e5935f-6bdf-4e75-81a9-2d83c31c9520">
+              
+                <i class="fa fa-info-circle"></i>
+                More information
+              
+            </a>
+          </li>
+        
+  
+
+
+
+
+        
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://www.strompreis.elcom.admin.ch/" target="_blank" rel="noreferrer">
+          
+            <i class="fa fa-external-link"></i>
+            Go to resource
+          
+        </a>
+      </li>
+      
+      
+      
+
+    </ul>
+  </div>
+  
+  
+</li>
+  
+
+      </ul>
+    
+  
+</section>
+  
+
+  
+  <section class="additional-info">
+  <h3>Additional Info</h3>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+      <tr>
+        <th scope="row" class="dataset-label">Identifier</th>
+  <td class="dataset-details">
+      <a href="/perma/electricityprice-swiss@elcom">
+          electricityprice-swiss@elcom
+      </a>
+  </td><tr>
+        <th scope="row" class="dataset-label">Title for URL of the dataset</th>
+        <td class="dataset-details">median-strompreis-fur-die-schweiz</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Schedule the publication of the dataset</th>
+        <td class="dataset-details">-</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Issued date</th>
+        <td class="dataset-details">January 1, 2021</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Modification date</th>
+        <td class="dataset-details">October 28, 2026</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Conforms to</th>
+        <td class="dataset-details">
+ -
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Update interval</th>
+        <td class="dataset-details">-</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Temporal coverage</th>
+        <td class="dataset-details">
+  
+    January 1, 2009
+    
+      - January 1, 2028
+    
+  
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Publisher Information</th>
+        <td class="dataset-details">
+  
+    <a href="https://register.ld.admin.ch/opendataswiss/org/elcom" target="_blank" class="break-word">Commission fédérale de l&#39;électricité ElCom</a>
+  
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Contact points</th>
+        <td class="dataset-details">
+  
+    
+      <a href="mailto:data@elcom.admin.ch">ElCom</a>
+    
+  
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Languages</th>
+        <td class="dataset-details">
+  
+    <ul><li>English</li><li>German</li><li>French</li><li>Italian</li></ul>
+  
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">URL</th>
+        <td class="dataset-details">
+  <a href="https://www.strompreis.elcom.admin.ch/" target="_blank" class="break-word">https://www.strompreis.elcom.admin.ch/</a>
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Relation</th>
+        <td class="dataset-details">
+  
+
+  
+    
+      
+    
+    
+      
+    
+    
+      <a href="https://ld.admin.ch/vocabulary/TermsOfUse/Open-Use" target="_blank">Legal basis</a>
+    
+  
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Spatial</th>
+        <td class="dataset-details">http://publications.europa.eu/resource/authority/country/CH</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Related datasets</th>
+        <td class="dataset-details">
+ -
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Documentation</th>
+        <td class="dataset-details">
+ -
+</td>
+      </tr><tr>
+        <th scope="row" class="dataset-label">Keywords</th>
+        <td class="dataset-details"><section class="tags">
+  
+  
+    
+      <ul class="tag-list">
+        
+          
+          <li>
+            <a class="tag" href="/dataset/?keywords_en=electricity">electricity</a>
+          </li>
+        
+      </ul>
+    
+  
+</section></td>
+      </tr><tr>
+    <th scope="row" class="dataset-label">Terms of use</th>
+    <td class="dataset-details">https://opendata.swiss/terms-of-use#terms_open</td>
+  </tr>
+  <tr>
+    <th scope="row" class="dataset-label">Metadata Access</th>
+    <td class="dataset-details">
+        <a href="/api/3/action/package_show?id=median-strompreis-fur-die-schweiz" class="btn btn-primary btn-xs" role="button" target="_blank" >
+            <i class="fa fa-external-link"></i> API (JSON)
+        </a>
+        <a href="/dataset/median-strompreis-fur-die-schweiz.xml" class="btn btn-primary btn-xs" role="button" target="_blank" download="median-strompreis-fur-die-schweiz-metadata">
+            <i class="fa fa-arrow-circle-o-down"></i> Download XML
+        </a>
+    </td>
+  </tr>
+  
+
+
+    </tbody>
+  </table>
+</section>
+
+
+  
+    
+    
+
+  
+
+
+
+                    </div>
+                  </article>
+                
+              </div>
+            
+          </div>
+        
+      </div>
+    </div>
+  
+    <footer class="site-footer">
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-8 footer-links">
+        
+          <ul class="list-unstyled">
+            
+
+          </ul>
+          <ul class="list-unstyled">
+            
+              
+              <li><a href="https://docs.ckan.org/en/2.11/api/">CKAN API</a></li>
+              <li><a href="https://www.ckan.org/">CKAN Association</a></li>
+              <li><a href="https://www.opendefinition.org/od/"><img src="/base/images/od_80x15_blue.png" alt="Open Data"></a></li>
+            
+          </ul>
+        
+      </div>
+      <div class="col-md-4 attribution">
+        
+          <p><strong>Powered by</strong> <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a></p>
+        
+        
+          
+
+
+<div class="btn-group dropup">
+   <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     English <span class="caret"></span>
+   </button>
+   <ul class="dropdown-menu" role="menu">
+    
+      <li >
+        <a href="/en/dataset/median-strompreis-fur-die-schweiz">
+          English
+        </a>
+      </li>
+    
+      <li >
+        <a href="/de/dataset/median-strompreis-fur-die-schweiz">
+          Deutsch
+        </a>
+      </li>
+    
+      <li >
+        <a href="/fr/dataset/median-strompreis-fur-die-schweiz">
+          Français
+        </a>
+      </li>
+    
+      <li >
+        <a href="/it/dataset/median-strompreis-fur-die-schweiz">
+          Italiano
+        </a>
+      </li>
+    
+  </ul>
+</div>
+        
+      </div>
+    </div>
+    
+  </div>
+</footer>
+  
+
+  
+  
+  
+  
+  
+  
+    
+  
+
+
+  
+
+
+  
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+    "@context": {
+        "brick": "https://brickschema.org/schema/Brick#",
+        "csvw": "http://www.w3.org/ns/csvw#",
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "dcam": "http://purl.org/dc/dcam/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dcmitype": "http://purl.org/dc/dcmitype/",
+        "dcterms": "http://purl.org/dc/terms/",
+        "doap": "http://usefulinc.com/ns/doap#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "geo": "http://www.opengis.net/ont/geosparql#",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "org": "http://www.w3.org/ns/org#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "prof": "http://www.w3.org/ns/dx/prof/",
+        "prov": "http://www.w3.org/ns/prov#",
+        "qb": "http://purl.org/linked-data/cube#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "http://schema.org/",
+        "sh": "http://www.w3.org/ns/shacl#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "sosa": "http://www.w3.org/ns/sosa/",
+        "ssn": "http://www.w3.org/ns/ssn/",
+        "time": "http://www.w3.org/2006/time#",
+        "vann": "http://purl.org/vocab/vann/",
+        "void": "http://rdfs.org/ns/void#",
+        "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@graph": [
+        {
+            "@id": "https://visualize.admin.ch/en/browse?dataset=https%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss",
+            "@type": "schema:DataDownload",
+            "schema:datePublished": "2021-01-01T15:13:53.346000+02:00",
+            "schema:encodingFormat": "HTML",
+            "schema:license": "https://opendata.swiss/terms-of-use#terms_open",
+            "schema:name": "visualize.admin.ch",
+            "schema:url": "https://visualize.admin.ch/en/browse?dataset=https%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss"
+        },
+        {
+            "@id": "https://lindas.admin.ch/sparql/#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT+*%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Felcom%2Felectricityprice%3E%0AWHERE+%7B%0A++%3Chttps%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss%3E+%3Fp+%3Fo.%0A%7D%0A\u0026contentTypeConstruct=text%2Fturtle\u0026contentTypeSelect=application%2Fsparql-results%2Bjson\u0026endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery\u0026requestMethod=POST\u0026tabTitle=Query+3\u0026headers=%7B%7D\u0026outputFormat=table",
+            "@type": "schema:DataDownload",
+            "schema:datePublished": "2021-01-01T15:13:53.346000+02:00",
+            "schema:encodingFormat": "SPARQL",
+            "schema:license": "https://opendata.swiss/terms-of-use#terms_open",
+            "schema:name": "SPARQL Endpoint with graph preselection",
+            "schema:url": "https://lindas.admin.ch/sparql/#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT+*%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Felcom%2Felectricityprice%3E%0AWHERE+%7B%0A++%3Chttps%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss%3E+%3Fp+%3Fo.%0A%7D%0A\u0026contentTypeConstruct=text%2Fturtle\u0026contentTypeSelect=application%2Fsparql-results%2Bjson\u0026endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery\u0026requestMethod=POST\u0026tabTitle=Query+3\u0026headers=%7B%7D\u0026outputFormat=table"
+        },
+        {
+            "@id": "https://energy.ld.admin.ch/elcom/electricityprice-swiss/distribution/1",
+            "@type": "schema:DataDownload",
+            "schema:dateModified": "2026-10-28T00:00:00",
+            "schema:datePublished": "2026-10-28T02:35:22.347000+00:00",
+            "schema:description": "Electricity tariff in Switzerland",
+            "schema:encodingFormat": "SERVICE",
+            "schema:inLanguage": [
+                "de",
+                "it",
+                "fr"
+            ],
+            "schema:license": "https://opendata.swiss/terms-of-use#terms_open",
+            "schema:name": "Electricity tariff in Switzerland",
+            "schema:url": "https://www.strompreis.elcom.admin.ch/"
+        },
+        {
+            "@id": "https://energy.ld.admin.ch/elcom/electricityprice-swiss",
+            "@type": "schema:Dataset",
+            "schema:about": [
+                {
+                    "@id": "_:N753fa498234849d7b84d42863a83026d"
+                },
+                {
+                    "@id": "_:Nda24dde45ab04c0294bdef6d14361f4d"
+                }
+            ],
+            "schema:creator": {
+                "@id": "https://ckan.opendata.swiss/organization/ef18ac69-4999-4f3f-ae5b-90ed76383aa1"
+            },
+            "schema:dateModified": "2026-10-28T00:00:00",
+            "schema:datePublished": "2021-01-01T15:13:53.346000+02:00",
+            "schema:distribution": [
+                {
+                    "@id": "https://lindas.admin.ch/sparql/#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT+*%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Felcom%2Felectricityprice%3E%0AWHERE+%7B%0A++%3Chttps%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss%3E+%3Fp+%3Fo.%0A%7D%0A\u0026contentTypeConstruct=text%2Fturtle\u0026contentTypeSelect=application%2Fsparql-results%2Bjson\u0026endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery\u0026requestMethod=POST\u0026tabTitle=Query+3\u0026headers=%7B%7D\u0026outputFormat=table"
+                },
+                {
+                    "@id": "https://visualize.admin.ch/en/browse?dataset=https%3A%2F%2Fenergy.ld.admin.ch%2Felcom%2Felectricityprice-swiss"
+                },
+                {
+                    "@id": "https://energy.ld.admin.ch/elcom/electricityprice-swiss/distribution/1"
+                }
+            ],
+            "schema:identifier": "electricityprice-swiss@elcom",
+            "schema:inLanguage": [
+                "fr",
+                "de",
+                "it",
+                "en"
+            ],
+            "schema:includedInDataCatalog": {
+                "@id": "_:N1fe51270396f47f4ab2d71e4a57423dc"
+            },
+            "schema:keywords": [
+                "courant",
+                "energia-elettrica",
+                "electricity",
+                "strom"
+            ],
+            "schema:name": "Median electricity tariff for Switzerland",
+            "schema:publisher": {
+                "@id": "https://ckan.opendata.swiss/organization/ef18ac69-4999-4f3f-ae5b-90ed76383aa1"
+            },
+            "schema:spatialCoverage": {
+                "@id": "_:N81febbca4f0c40c3a5cb08752caa3c50"
+            },
+            "schema:url": "https://ckan.opendata.swiss/dataset/median-strompreis-fur-die-schweiz"
+        },
+        {
+            "@id": "_:N1fe51270396f47f4ab2d71e4a57423dc",
+            "@type": "schema:DataCatalog",
+            "schema:description": "",
+            "schema:name": "opendata.swiss",
+            "schema:url": "https://ckan.opendata.swiss"
+        },
+        {
+            "@id": "_:N753fa498234849d7b84d42863a83026d",
+            "@type": "schema:Thing",
+            "schema:name": "econ",
+            "schema:url": "https://ckan.opendata.swiss/group/34f50c10-ddd0-4e37-b5c0-49456b39e31a"
+        },
+        {
+            "@id": "_:Nda24dde45ab04c0294bdef6d14361f4d",
+            "@type": "schema:Thing",
+            "schema:name": "ener",
+            "schema:url": "https://ckan.opendata.swiss/group/f6a373cb-993f-4a8e-af25-65cdf81e1cab"
+        },
+        {
+            "@id": "_:N81febbca4f0c40c3a5cb08752caa3c50",
+            "@type": "schema:Place",
+            "schema:geo": {
+                "@id": "_:Nbd9c85b73a4541ac960960d54c4fcafe"
+            }
+        },
+        {
+            "@id": "_:Nbd9c85b73a4541ac960960d54c4fcafe",
+            "@type": "schema:GeoShape",
+            "schema:polygon": "http://publications.europa.eu/resource/authority/country/CH"
+        },
+        {
+            "@id": "https://ckan.opendata.swiss/organization/ef18ac69-4999-4f3f-ae5b-90ed76383aa1",
+            "@type": "schema:Organization",
+            "schema:contactPoint": [
+                {
+                    "@id": "_:N0b96cfd4aba64f4d87dc8c5cdf3b75ee"
+                },
+                {
+                    "@id": "_:Nbc42a9a1eeea4cbb8bc2a2b6a7a2eda4"
+                }
+            ],
+            "schema:name": "{'de': 'Eidgen\u00f6ssische Elektrizit\u00e4tskommission ElCom', 'en': 'Federal Electricity Commission ElCom', 'fr': \"Commission f\u00e9d\u00e9rale de l'\u00e9lectricit\u00e9 ElCom\", 'it': \"Commissione federale dell'energia elettrica ElCom\"}"
+        },
+        {
+            "@id": "_:N0b96cfd4aba64f4d87dc8c5cdf3b75ee",
+            "@type": "schema:ContactPoint",
+            "schema:contactType": "customer service",
+            "schema:name": "data@elcom.admin.ch",
+            "schema:url": "https://www.elcom.admin.ch/elcom/de/home.html"
+        },
+        {
+            "@id": "_:Nbc42a9a1eeea4cbb8bc2a2b6a7a2eda4",
+            "@type": "schema:ContactPoint",
+            "schema:contactType": "customer service",
+            "schema:name": "data@elcom.admin.ch",
+            "schema:url": "https://www.elcom.admin.ch/elcom/de/home.html"
+        }
+    ]
+}
+    </script>
+  
+
+
+    
+    
+    <link href="/webassets/subscribe/subscribe.css?d088d95f" rel="stylesheet"/>
+<link href="/webassets/ckanext-xloader/1dfb6897_xloader.css" rel="stylesheet"/>
+<link href="/webassets/vendor/f3b8236b_select2.css" rel="stylesheet"/>
+<link href="/webassets/vendor/53df638c_fontawesome.css" rel
