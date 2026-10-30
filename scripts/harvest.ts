@@ -14,9 +14,10 @@ import { passesGate } from "../lib/stats";
 
 const TIMEOUT_MS = 10 * 60 * 1000;
 // A source that already failed on its previous harvest (a known outage) runs after the healthy ones, and the
-// whole run stops starting sources at DEADLINE_MS, so a few hanging outages can never push the workflow past its 45-minute limit
-// (the scheduled run of 29 Oct 09:54 UTC was cancelled at 45 min with pl-bzp-contracts, gb-ukhpi and others timing out in a row).
-const DEADLINE_MS = 38 * 60 * 1000;
+// whole run stops starting sources at DEADLINE_MS, so a few hanging outages can never push the workflow past its 60-minute limit
+// (the scheduled run of 29 Oct 09:54 UTC was cancelled at the old 45-minute limit with pl-bzp-contracts, gb-ukhpi and others timing out in a row).
+// Worst case: ~5 min setup (npm ci + npm test) + 36 min of sources + one last source of up to TIMEOUT_MS (10 min) = 51 min < 60.
+const DEADLINE_MS = 36 * 60 * 1000;
 
 function knownOutage(prev: SourceMeta | null): boolean {
   return !!(prev?.last_error && prev.last_harvest_at && !prev.last_error.startsWith("Data check held back"));
