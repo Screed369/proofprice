@@ -1,0 +1,26 @@
+URL: https://api-production.data.gov.sg/v2/public/api/datasets/d_e225b635fbe3ecf5b378447e4b517939/metadata
+Fetched: 2026-10-30T06:41:43Z from GitHub Actions
+Status, type, bytes: 200 application/json 4110
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 30 Oct 2026 06:41:43 GMT
+content-type: application/json
+content-length: 4110
+cf-ray: a5286f93bef7ccdc-LAX
+cf-cache-status: DYNAMIC
+access-control-allow-origin: *
+server: cloudflare
+cf-placement: remote-SIN
+x-amz-apigw-id: GC5WMF2yyQ0EWTg=
+x-amzn-requestid: 9d7a2c8a-c45f-4c3a-ba70-7538e4bc25e6
+x-amzn-trace-id: Root=1-6ae43c27-20a7ffda5df0bc6d42124e43
+x-dgs-request-id: a5286f93bef7ccdc
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+vary: accept-encoding
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"code":0,"data":{"datasetId":"d_e225b635fbe3ecf5b378447e4b517939","createdAt":"2016-05-19T20:24:39+08:00","name":"Vacant Sites Sold By URA","collectionIds":["1669"],"format":"CSV","lastUpdatedAt":"2024-06-06T15:04:25+08:00","managedBy":"Urban Redevelopment Authority","coverageStart":"1992-08-31T08:00:00+08:00","coverageEnd":"2016-04-28T08:00:00+08:00","datasetSize":62298,"columnMetadata":{"order":["c_473a5b0vtwbet1zps35f4agq2","c_elfa6pkh9vbc2mppb4tpwtkci","c_7n8st9bfdqmjuc1ee17h8b6cb","c_8jtx7tgt2xugij3sx6b9fmodr","c_8uorh3clkjihinac4ngemhwml","c_620atns38v3iagiat33non3gc","c_56omtkz5h6w31j4o5kxegflbm","c_am129neyxgx5m0ekj3m33eriz","c_9nri90at1wx5zqkpxhikq8r15","c_2m99yg7g6i9p329d1hp7f40cz","c_580b32g6qdnyts66zgz040205","c_764m7eo4o73yuvuqwwfp8c9c","c_ae6i1aiuqyxmj2ocs97pxqht8","c_9n8a6hobupvvj28yi112ofp6g","c_4ss4rgwqobpnbkm2e023rt762"],"map":{"c_473a5b0vtwbet1zps35f4agq2":"date_of_launch","c_elfa6pkh9vbc2mppb4tpwtkci":"date_of_tender_closing","c_7n8st9bfdqmjuc1ee17h8b6cb":"date_of_award","c_8jtx7tgt2xugij3sx6b9fmodr":"location","c_8uorh3clkjihinac4ngemhwml":"type_of_devt_allowed","c_620atns38v3iagiat33non3gc":"lease","c_56omtkz5h6w31j4o5kxegflbm":"type_of_devt_code","c_am129neyxgx5m0ekj3m33eriz":"site_area","c_9nri90at1wx5zqkpxhikq8r15":"gross_plot_ratio","c_2m99yg7g6i9p329d1hp7f40cz":"gross_floor_area","c_580b32g6qdnyts66zgz040205":"no_of_bids","c_764m7eo4o73yuvuqwwfp8c9c":"successful_tenderer_name","c_ae6i1aiuqyxmj2ocs97pxqht8":"successful_tender_price","c_9n8a6hobupvvj28yi112ofp6g":"psm_per_gpr_or_gfa","c_4ss4rgwqobpnbkm2e023rt762":"planning_area"},"metaMapping":{"c_473a5b0vtwbet1zps35f4agq2":{"name":"date_of_launch","columnTitle":"Date Of Tender Launch","dataType":"Date (YYYY-MM-DD)","index":"0","isCategorical":false},"c_elfa6pkh9vbc2mppb4tpwtkci":{"name":"date_of_tender_closing","columnTitle":"Date Of Tender Closing","dataType":"Date (YYYY-MM-DD)","index":"1","isCategorical":false},"c_7n8st9bfdqmjuc1ee17h8b6cb":{"name":"date_of_award","columnTitle":"Date Of Tender Award","dataType":"Date (YYYY-MM-DD)","index":"2","isCategorical":false},"c_8jtx7tgt2xugij3sx6b9fmodr":{"name":"location","columnTitle":"Location Of Sale Site","dataType":"Text","index":"3","isCategorical":false},"c_8uorh3clkjihinac4ngemhwml":{"name":"type_of_devt_allowed","columnTitle":"Type Of Development Allowed","dataType":"Text","index":"4","isCategorical":false},"c_620atns38v3iagiat33non3gc":{"name":"lease","columnTitle":"Lease","dataType":"Numeric","unitOfMeasure":"No. of Years","index":"5","isCategorical":false},"c_56omtkz5h6w31j4o5kxegflbm":{"name":"type_of_devt_code","columnTitle":"Type Of Development Code","dataType":"Text","index":"6","isCategorical":false},"c_am129neyxgx5m0ekj3m33eriz":{"name":"site_area","columnTitle":"Tendered Site Area","dataType":"Numeric","unitOfMeasure":"Square Metre","index":"7","isCategorical":false},"c_9nri90at1wx5zqkpxhikq8r15":{"name":"gross_plot_ratio","columnTitle":"Gross Plot Ratio","dataType":"Numeric","unitOfMeasure":"unit","index":"8","isCategorical":false},"c_2m99yg7g6i9p329d1hp7f40cz":{"name":"gross_floor_area","columnTitle":"Gross Floor Area","dataType":"Numeric","unitOfMeasure":"Square Metre","index":"9","isCategorical":false},"c_580b32g6qdnyts66zgz040205":{"name":"no_of_bids","columnTitle":"No. of bids","dataType":"Numeric","unitOfMeasure":"Count","index":"10","isCategorical":false},"c_764m7eo4o73yuvuqwwfp8c9c":{"name":"successful_tenderer_name","columnTitle":"Successful Tenderer Name","dataType":"Text","index":"11","isCategorical":false},"c_ae6i1aiuqyxmj2ocs97pxqht8":{"name":"successful_tender_price","columnTitle":"Successful Tender Price","dataType":"Numeric","unitOfMeasure":"S$","index":"12","isCategorical":false},"c_9n8a6hobupvvj28yi112ofp6g":{"name":"psm_per_gpr_or_gfa","columnTitle":"Price PSM Per Gross Plot Ratio/Gross Floor Area","dataType":"Numeric","unitOfMeasure":"S$","description":"PSM stands for Per Square Metre.","index":"13","isCategorical":false},"c_4ss4rgwqobpnbkm2e023rt762":{"name":"planning_area","columnTitle":"Planning Area","dataType":"Text","index":"14","isCategorical":false}}}},"errorMsg":""}
