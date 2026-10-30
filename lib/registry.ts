@@ -202,6 +202,19 @@ export function assertKnownParams(cat: CategoryPlugin, params: Params): void {
 
 // ---------- answering ----------
 
+/** A required parameter sent as an empty or blank string (an MCP client that fills every field, a form with an empty box) is the same
+ *  as a missing one: answer 400 with a working example, so usage logs bad_request and not "no_matches" (Gap G20261030-2). A category's
+ *  own prepare() may fill a default first (NZ contracts what=all); only a value still blank after it is refused. */
+export function assertNoBlankRequired(cat: CategoryPlugin, raw: Params, prepared: Params, src: SourcePlugin): void {
+  const isBlank = (v: unknown) => v === null || (typeof v === "string" && v.trim() === "");
+  for (const name of cat.required ?? []) {
+    if (!(name in raw) || !isBlank(raw[name]) || !isBlank(prepared[name])) continue;
+    const ex = src.examples.find((e) => e.params && e.params[name] !== undefined && e.params[name] !== "")?.params ?? src.examples[0]?.params;
+    const qs = ex ? Object.entries(ex).map(([k, v]) => `${k}=${encodeURIComponent(String(v))}`).join("&") : `country=${src.countries[0]}&${name}=...`;
+    throw new InputError(`${name} is required and was sent empty. Give a value, for example /api/v1/${cat.restPath}?${qs}.`);
+  }
+}
+
 /** Which source answers a request, and the request after the category's own normalisation (country upper-cased, fuel aliases ...).
  *  Throws InputError for a missing or uncovered country or invalid input. Shared by runCategory, runHistory and the answer pages. */
 export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePlugin; prepared: Params } {
@@ -223,6 +236,7 @@ export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePl
   }
   const withCountry = { ...params, country };
   const prepared = cat.prepare ? cat.prepare(withCountry) : withCountry;
+  assertNoBlankRequired(cat, params, prepared, src);
   const chosen = findSource(cat.id, country, prepared) ?? src;
   cat.guard?.(chosen, prepared, (c) => findSource(cat.id, c, { ...prepared, country: c })?.info.id, covered);
   return { src: chosen, prepared };
