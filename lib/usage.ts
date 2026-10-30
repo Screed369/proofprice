@@ -865,6 +865,8 @@ export interface UsageReport {
   };
   coverage?: { days: number; days_with_data: number; days_from_summaries: number; days_from_small_files: number; small_files_read: number; capped: boolean };
   top_unanswered?: { tool: string; country: string; key: string; status: string; questions: number }[];
+  /** Real questions that were refused as a wrong request (status bad_request), most frequent first: shows which callers send wrong parameters, apart from places with no data. */
+  top_bad_requests?: { tool: string; country: string; key: string; status: string; questions: number }[];
   fields?: Record<string, string>;
   note: string;
 }
@@ -881,6 +883,7 @@ export const SESSIONS_NOTE =
 export const CLIENTS_NOTE = "Directory checks are known directory probes and health checkers (a list kept in lib/usage.ts); other apps are every other app name sent when connecting.";
 
 export const FIELD_NOTES: Record<string, string> = {
+  top_bad_requests: "Real questions refused as a wrong request (bad_request), most frequent first, by tool, country and place or item asked about. Tells callers who send wrong parameters apart from places with no data (top_unanswered).",
   real_questions: "Tool calls from outside: the questions actually asked. Search/AI/SEO crawlers and bots are not included (see crawler_questions); AI fetchers started by a person are.",
   crawler_questions: "Hits from known web crawlers and bots that follow links on our public pages. Not questions, so not in real_questions.",
   handshakes: "Connection handshakes (mcp_initialize). An app connecting, not a question.",
@@ -925,6 +928,7 @@ export function summariseUsage(
   const byClient = new Map<string, number>();
   const named = new Map<string, Named>();
   const unanswered = new Map<string, { tool: string; country: string; key: string; status: string; questions: number }>();
+  const badRequests = new Map<string, { tool: string; country: string; key: string; status: string; questions: number }>();
   let total = 0;
   const add = (m: Map<string, number>, k: string, n: number) => m.set(k, (m.get(k) ?? 0) + n);
   for (const f of files) {
@@ -970,6 +974,12 @@ export function summariseUsage(
         if (hs) c.handshakes += r.count;
         else c.questions += r.count;
         named.set(r.client, c);
+      }
+      if (r.status === "bad_request" && !hs && !crawl && !own) {
+        const id = JSON.stringify([r.tool, r.country, r.key]);
+        const b = badRequests.get(id) ?? { tool: r.tool, country: r.country, key: r.key, status: r.status, questions: 0 };
+        b.questions += r.count;
+        badRequests.set(id, b);
       }
       if (r.status !== "ok" && r.status !== "error" && r.status !== "bad_request" && !hs && !crawl) {
         const id = JSON.stringify([r.tool, r.country, r.key, r.status]);
@@ -1054,6 +1064,7 @@ export function summariseUsage(
     },
     ...(extra.coverage ? { coverage: extra.coverage } : {}),
     top_unanswered: top([...unanswered.values()], topN),
+    top_bad_requests: top([...badRequests.values()], topN),
     fields: FIELD_NOTES,
     note: USAGE_NOTE,
   };

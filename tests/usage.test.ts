@@ -88,13 +88,14 @@ test("the report: last 30 days, totals, answered share and the top unanswered qu
   });
   const files = [
     f("2026-10-13", [{ count: 5 }, { key: "galway", status: "no_matches", count: 3 }, { country: "ZZ", key: "", status: "unsupported", count: 2 }]),
-    f("2026-10-14", [{ key: "galway", status: "no_matches", count: 4 }, { status: "insufficient_data", key: "tiny", count: 1 }, { tool: "mcp_initialize", client: "cursor", count: 6 }, { status: "error", count: 9 }]),
+    f("2026-10-14", [{ key: "galway", status: "no_matches", count: 4 }, { status: "insufficient_data", key: "tiny", count: 1 }, { tool: "mcp_initialize", client: "cursor", count: 6 }, { status: "error", count: 9 }, { status: "bad_request", key: "'><a", count: 4 }]),
     f("2026-08-01", [{ count: 100 }]), // older than 30 days
   ];
   const r = summariseUsage(files, NOW);
-  assert.equal(r.total_questions, 5 + 3 + 2 + 4 + 1 + 6 + 9);
+  assert.equal(r.total_questions, 5 + 3 + 2 + 4 + 1 + 6 + 9 + 4);
   assert.deepEqual(r.top_unanswered![0], { tool: "pricepaid_rent_prices", country: "IE", key: "galway", status: "no_matches", questions: 7 });
   assert.ok(!r.top_unanswered!.some((u) => u.tool === "mcp_initialize" || u.status === "error"));
+  assert.deepEqual(r.top_bad_requests, [{ tool: "pricepaid_rent_prices", country: "IE", key: "'><a", status: "bad_request", questions: 4 }]);
   assert.equal(r.by_client![0].client, "cursor");
   assert.equal(r.by_day![0].day, "2026-10-13");
   assert.equal(r.by_day![0].answered, 5);
@@ -108,8 +109,8 @@ test("the report: last 30 days, totals, answered share and the top unanswered qu
   mem.files.set("other/x.json", JSON.stringify(files[0]));
   const rep = await usageReport(NOW, ON, mem);
   assert.equal(rep.enabled, true);
-  assert.equal(rep.total_questions, 4 + 1 + 6 + 9);
-  assert.equal(rep.real_questions, 4 + 1 + 9);
+  assert.equal(rep.total_questions, 4 + 1 + 6 + 9 + 4);
+  assert.equal(rep.real_questions, 4 + 1 + 9 + 4);
   assert.equal(rep.handshakes, 6);
 });
 
