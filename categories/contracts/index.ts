@@ -49,7 +49,8 @@ export default defineCategory({
     const whatDefaulted = what.length === 0 && !str(p.cpv) && (country === "NZ" || (country === "CA" && /alberta/i.test(str(p.buyer_area) ?? "")));
     if (whatDefaulted) what = "all";
     if (what.length < 2) {
-      throw new InputError("what is required: say what was bought, for example 'laptops', 'school meals' or 'road resurfacing'.");
+      const esHint = country === "ES" ? " For Spain, try /api/v1/contracts?country=ES&what=office%20cleaning, or a CPV division such as cpv=45 (construction) with any what." : "";
+      throw new InputError("what is required: say what was bought, for example 'laptops', 'school meals' or 'road resurfacing'." + esHint);
     }
     const months = Math.round(num(p.months) ?? 24);
     if (!(months >= 1 && months <= 60)) throw new InputError("months must be between 1 and 60.");

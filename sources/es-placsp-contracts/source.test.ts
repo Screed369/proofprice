@@ -185,3 +185,14 @@ test("INFO: reuse with source cited, contract prices, no buyers or winners", () 
   assert.match(INFO.attribution, /Origen de los datos: Ministerio de Hacienda/);
   assert.match(INFO.limits, /never read or kept/);
 });
+
+test("gap G20261030-1: /api/v1/contracts?country=ES with no 'what' is refused as a bad request that names working examples", async () => {
+  const contracts = (await import("../../categories/contracts/index")).default;
+  assert.throws(
+    () => contracts.prepare!({ country: "ES" } as any),
+    (e: any) => e instanceof InputError && /what is required/.test(e.message) && /country=ES&what=office%20cleaning/.test(e.message) && /cpv=45/.test(e.message),
+  );
+  // with a purchase it still prepares
+  const ok = contracts.prepare!({ country: "ES", what: "office cleaning" } as any) as any;
+  assert.equal(ok.what, "office cleaning");
+});
