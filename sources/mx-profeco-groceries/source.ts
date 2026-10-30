@@ -285,26 +285,30 @@ export function listCsv(dir: string): string[] {
 }
 
 /** Download a file completely: the server closed the 2026 archive after 20.7 MB of ~60 MB (30 Oct 2026), so compare with Content-Length and resume with Range requests. */
-export async function downloadFully(url: string, year: number, tries = 8): Promise<Buffer> {
-  const parts: Buffer[] = [];
+export async function downloadFully(url: string, year: number, tries = 10): Promise<Buffer> {
+  let parts: Buffer[] = [];
   let have = 0, total = 0;
   for (let i = 0; i < tries; i++) {
+    let round = 0;
     try {
       const res = await fetch(url, { headers: have ? { ...UA, Range: `bytes=${have}-` } : UA });
+      if (res.status === 416 && have) break; // nothing left after what we hold: the file is complete
       if (!res.ok && res.status !== 206) throw new SourceError(`Profeco file ${year} returned HTTP ${res.status}`);
-      const resumed = res.status === 206;
-      if (have && !resumed) { parts.length = 0; have = 0; } // server ignored Range: start again
-      if (!total) total = Number(res.headers.get("content-length") || 0);
+      if (have && res.status !== 206) { parts = []; have = 0; total = 0; } // server ignored Range: start again
+      const range = /\/(\d+)\s*$/.exec(res.headers.get("content-range") || "");
+      if (range) total = Number(range[1]);
+      else if (!total && res.status === 200) total = Number(res.headers.get("content-length") || 0);
       const reader = res.body!.getReader();
       for (;;) { // keep what arrived even if the connection drops half way
         let chunk: ReadableStreamReadResult<Uint8Array>;
         try { chunk = await reader.read(); } catch { break; }
         if (chunk.done) break;
-        parts.push(Buffer.from(chunk.value)); have += chunk.value.length;
+        parts.push(Buffer.from(chunk.value)); have += chunk.value.length; round += chunk.value.length;
       }
     } catch (e) { if (e instanceof SourceError) throw e; }
     if (total && have >= total) break;
-    if (!total && have > 0) break; // no length announced: take what we have
+    // no length announced (chunked): ask again from where we stopped; an empty answer or a 416 means the file is complete
+    if (!total && have > 0 && round === 0) break;
   }
   if (total && have < total) throw new SourceError(`Profeco file ${year} incomplete after ${tries} tries: ${have} of ${total} bytes`);
   return Buffer.concat(parts);

@@ -169,3 +169,22 @@ test("downloadFully resumes a download the server cuts short", async () => {
   srv.close();
   assert.equal(got.length, 1000);
 });
+
+test("downloadFully resumes a chunked download that announces no length", async () => {
+  const http = await import("node:http");
+  const { downloadFully } = await import("./source");
+  const body = Buffer.alloc(1000, 9);
+  const srv = http.createServer((req, res) => {
+    const m = /bytes=(\d+)-/.exec(String(req.headers.range || ""));
+    const from = m ? Number(m[1]) : 0;
+    if (from >= body.length) { res.writeHead(416); res.end(); return; }
+    res.writeHead(m ? 206 : 200); // no content-length: chunked
+    res.write(body.subarray(from, Math.min(from + 400, body.length)));
+    if (from + 400 < body.length) setTimeout(() => res.destroy(), 10); else res.end();
+  });
+  await new Promise<void>((r) => srv.listen(0, r));
+  const port = (srv.address() as { port: number }).port;
+  const got = await downloadFully(`http://127.0.0.1:${port}/x`, 2026);
+  srv.close();
+  assert.equal(got.length, 1000);
+});
