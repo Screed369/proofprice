@@ -134,7 +134,13 @@ export async function sgHomeSales(
     maxRows: MAX_ROWS,
     pageSize: PAGE_SIZE,
     fetchPage: async (offset, limit) => {
-      const json = await fetch(buildSgUrl(resolved, input.flat_type, limit, offset));
+      const url = buildSgUrl(resolved, input.flat_type, limit, offset);
+      let json: unknown;
+      try {
+        json = await fetch(url);
+      } catch {
+        json = await fetch(url); // one retry per page: data.gov.sg sometimes answers 429 or times out, and a stale copy is worse than a second try
+      }
       const raw = (json as any)?.result?.records;
       const rows = parseSgRecords(json);
       const oldest = Array.isArray(raw) && raw.length ? String(raw[raw.length - 1].month ?? "") : "";

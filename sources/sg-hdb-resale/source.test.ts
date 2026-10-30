@@ -178,3 +178,17 @@ test("parseSgBulk reads the live record shape", async () => {
   assert.deepEqual(p.sales[0], { month: "2026-10", town: "YISHUN", flat: "MULTI-GENERATION", price: 1178000 });
   assert.throws(() => parseSgBulk({ success: false }), /Unexpected response/);
 });
+
+test("sgHomeSales retries a page once when the portal fails (429/timeout), so the live answer is not replaced by a stale copy", async () => {
+  const { sgHomeSales } = await import("./source");
+  const { fetcher } = fakePortal(40);
+  let failed = 0;
+  const flaky = async (url: string) => {
+    if (failed < 1) { failed++; throw new Error("HTTP 429"); }
+    return fetcher(url);
+  };
+  const a = await sgHomeSales({ town: "Tampines", months: 12 }, flaky as any, new Date("2026-10-14T00:00:00Z"));
+  assert.equal(a.status, "ok");
+  assert.equal(failed, 1);
+  assert.equal(a.sample_size, 12 * 40);
+});
