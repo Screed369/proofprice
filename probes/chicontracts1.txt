@@ -1,0 +1,32 @@
+URL: https://data.cityofchicago.org/resource/rsxa-ify5.json?$limit=5
+Fetched: 2026-10-30T00:41:27Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2512
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 30 Oct 2026 00:41:27 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC43MTU2XzVfNDI0M19vbVYtVTRMaklGQWVLSDhGSzE4cTZBQ1dPcw---gziuOygu4oBW565HLj199M71jjZH6V--gzip--gzip"
+X-SODA2-Fields: ["purchase_order_description","purchase_order_contract_number","revision_number","specification_number","contract_type","start_date","end_date","approval_date","department","vendor_name","vendor_id","address_1","address_2","city","state","zip","award_amount","procurement_type","contract_pdf"]
+X-SODA2-Types: ["text","text","text","text","text","floating_timestamp","floating_timestamp","floating_timestamp","text","text","text","text","text","text","text","text","number","text","url"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Thu, 29 Oct 2026 08:18:36 GMT
+X-SODA2-Secondary-Last-Modified: Thu, 29 Oct 2026 08:18:36 GMT
+Last-Modified: Thu, 29 Oct 2026 08:18:36 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 550e1d0fbe4f8c8759c653a438aa2eb7
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"purchase_order_description":"BACP-CORP-NBDC:","purchase_order_contract_number":"370809","revision_number":"0","specification_number":"1353758","contract_type":"DELEGATE AGENCY","approval_date":"2026-10-27T00:00:00.000","department":"DEPARTMENT OF BUSINESS AFFAIRS AND CONSUMER PROTECTION","vendor_name":"PUERTO RICAN CULTURAL CENTER","vendor_id":"55226227V","address_1":"LIZETTE SOPOMAYOR","address_2":"2739 W DIVISION ST","city":"CHICAGO","state":"IL","zip":"60622","award_amount":"200000"}
+,{"purchase_order_description":"DFSS-ECBG-CS-CEL:","purchase_order_contract_number":"368397","revision_number":"0","specification_number":"1070196","contract_type":"DELEGATE AGENCY","start_date":"2026-07-01T00:00:00.000","end_date":"2026-12-31T00:00:00.000","approval_date":"2026-10-27T00:00:00.000","department":"DEPARTMENT OF FAMILY AND SUPPORT SERVICES","vendor_name":"LITERACY ZONE, INC","vendor_id":"105460654A","address_1":"5831 S WESTERN AVE","city":"CHICAGO","state":"IL","zip":"60636","award_amount":"2654584"}
+,{"purchase_order_description":"LEASE","purchase_order_contract_number":"325120","revision_number":"3","specification_number":"1333970","contract_type":"PROPERTY LEASE","approval_date":"2026-10-27T00:00:00.000","vendor_name":"Britepath Consulting Inc.","vendor_id":"105499665M","city":"PALOS HEIGHTS","state":"IL","zip":"60463","award_amount":"-748930"}
+,{"purchase_order_description":"DFSS-IDOA-SS-CS:","purchase_order_contract_number":"367728","revision_number":"0","specification_number":"1347279","contract_type":"DELEGATE AGENCY","start_date":"2026-10-01T00:00:00.000","end_date":"2029-09-30T00:00:00.000","approval_date":"2026-10-27T00:00:00.000","department":"DEPARTMENT OF FAMILY AND SUPPORT SERVICES","vendor_name":"CHINESE AMERICAN SERVICE LEAGUE, INC.","vendor_id":"30779553M","address_1":"2141 S TAN CT FL 2ND","city":"CHICAGO","state":"IL","zip":"60616","award_amount":"1000000"}
+,{"purchase_order_description":"CDPH-RW-PA: PO 364373 Lawndale Christian Conference Center - EHE","purchase_order_contract_number":"364373","revision_number":"0","specification_number":"1338665","contract_type":"DELEGATE AGENCY","start_date":"2026-03-01T00:00:00.000","end_date":"2027-02-28T00:00:00.000","approval_date":"2026-10-27T00:00:00.000","department":"CHICAGO DEPARTMENT OF PUBLIC HEALTH","vendor_name":"LAWNDALE CHRISTIAN HEALTH CENTER","vendor_id":"22398712M","address_1":"3860 W OGDEN AVE FL 1ST","city":"CHICAGO","state":"IL","zip":"60623","award_amount":"171175","procurement_type":"RFP"}]
