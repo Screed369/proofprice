@@ -1,0 +1,48 @@
+URL: https://www.datos.gov.co/resource/ytme-6qnu.json?$select=a_o,periodo,count(*)&$group=a_o,periodo&$limit=100
+Fetched: 2026-10-30T00:14:10Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1012
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 30 Oct 2026 00:14:10 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"aW5kaWEuNjMzMjFfMV8yMkNkVTVyUWFEMTRWQW84aGIxRF9Nb0JNNDhxRQ---gzinZjuNCB4nDaN4Ufl1CKWEiWT1hG--gzip--gzip"
+X-SODA2-Fields: ["a_o","periodo","count"]
+X-SODA2-Types: ["number","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+X-SODA2-Secondary-Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+Last-Modified: Wed, 15 Jul 2026 14:27:09 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: f4f01f7e92811b45cc9c5c7a3f865f86
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"a_o":"2025","periodo":"Mayo","count":"20"}
+,{"a_o":"2025","periodo":"Septiembre","count":"15"}
+,{"a_o":"2024","periodo":"Junio","count":"20"}
+,{"a_o":"2025","periodo":"Enero","count":"20"}
+,{"a_o":"2024","periodo":"Marzo","count":"20"}
+,{"a_o":"2025","periodo":"Febrero","count":"20"}
+,{"a_o":"2024","periodo":"Noviembre","count":"20"}
+,{"a_o":"2025","periodo":"Marzo","count":"20"}
+,{"a_o":"2024","periodo":"Octubre","count":"20"}
+,{"a_o":"2025","periodo":"Julio","count":"20"}
+,{"a_o":"2024","periodo":"Diciembre","count":"20"}
+,{"a_o":"2024","periodo":"Mayo","count":"20"}
+,{"a_o":"2024","periodo":"Abril","count":"20"}
+,{"a_o":"2024","periodo":"Enero","count":"20"}
+,{"a_o":"2025","periodo":"Junio","count":"20"}
+,{"a_o":"2024","periodo":"Septiembre","count":"20"}
+,{"a_o":"2024","periodo":"Agosto","count":"20"}
+,{"a_o":"2025","periodo":"Agosto","count":"20"}
+,{"a_o":"2025","periodo":"Abril","count":"20"}
+,{"a_o":"2024","periodo":"Julio","count":"20"}
+,{"a_o":"2024","periodo":"Febrero","count":"20"}]
