@@ -143,3 +143,13 @@ test("sniff: tells a RAR, a zip, a plain CSV and an HTML error page apart, and s
   assert.match(describeBytes(Buffer.from("<html>nope")), /10 bytes, type html/);
   assert.throws(() => extractYearly(Buffer.from("<html>nope"), "/tmp", "/tmp/zz-profeco-test", 2026), /not an archive \(10 bytes/);
 });
+
+test("unpackWithNodeUnrar reports the library's own message for a file that is not a RAR", { timeout: 180000 }, async () => {
+  const { mkdtempSync, writeFileSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const { unpackWithNodeUnrar } = await import("./source");
+  const d = mkdtempSync(join(tmpdir(), "pf-"));
+  const f = join(d, "x.rar"); writeFileSync(f, "not a rar at all");
+  assert.throws(() => unpackWithNodeUnrar(f, join(d, "out")), (e: Error) => e.message.length > 0);
+});

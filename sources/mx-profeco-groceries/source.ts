@@ -221,7 +221,24 @@ export function unpack(file: string, dir: string): void {
       errors.push(`${bin}: ${out.replace(/\s+/g, " ").slice(0, 160)}`);
     }
   }
+  // Last resort: the runner's p7zip (16.02) cannot read RAR5, so fetch the official unrar library compiled to WebAssembly (pure JS, no system tool).
+  try { unpackWithNodeUnrar(file, dir); return; } catch (e) { errors.push(`node-unrar-js: ${(e as Error).message.replace(/\s+/g, " ").slice(0, 160)}`); }
   throw new SourceError(`Could not unpack the Profeco RAR (${errors.join("; ")})`);
+}
+
+/** Unpack with node-unrar-js, installed on the fly into a scratch folder (nothing is added to package.json). */
+export function unpackWithNodeUnrar(file: string, dir: string): void {
+  const lib = mkdtempSync(join(tmpdir(), "unrarjs-"));
+  execFileSync("npm", ["install", "--no-audit", "--no-fund", "--prefix", lib, "node-unrar-js@2.0.2"], { stdio: ["ignore", "pipe", "pipe"], timeout: 120000 });
+  const script = `const {createExtractorFromFile}=require(${JSON.stringify(join(lib, "node_modules", "node-unrar-js"))});` +
+    `(async()=>{const ex=await createExtractorFromFile({filepath:${JSON.stringify(file)},targetPath:${JSON.stringify(dir)}});` +
+    `const {files}=ex.extract();let n=0;for(const f of files){n++;}console.log(n);})().catch(e=>{console.error(String(e&&e.message||e));process.exit(1);});`;
+  try {
+    execFileSync(process.execPath, ["-e", script], { stdio: ["ignore", "pipe", "pipe"], maxBuffer: 64 * 1024 * 1024, timeout: 600000 });
+  } catch (e) {
+    const err = e as Error & { stderr?: Buffer | string };
+    throw new Error(String(err.stderr || err.message).trim());
+  }
 }
 
 /** What a downloaded yearly file really is, from its first bytes (the publisher changed the catalogue on 27 Oct 2026 and the file no longer opened). */
