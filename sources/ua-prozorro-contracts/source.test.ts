@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { aggregateAll, contractOf, INFO, itemsOf, listPage, uaContracts, uaContractsHarvest, windowStart } from "./source";
+import { HARVEST_MIN_N, aggregateAll, contractOf, INFO, itemsOf, listPage, uaContracts, uaContractsHarvest, windowStart } from "./source";
 import { writeDaily, writeMeta } from "../../lib/library/store";
 import { InputError, SourceError } from "../../lib/http";
 
@@ -77,6 +77,9 @@ test("itemsOf and aggregateAll: 5 distinct contracts needed, counted once", () =
   const l = rows.find((r) => r.item === "laptops");
   assert.deepEqual(l && [l.area, l.n, l.median], ["ALL", 5, 100002]);
   assert.deepEqual(aggregateAll(mk(4), "2026-07-25", "2026-10-23"), []);
+  // the daily library keeps only groups with 10+ contracts (6 contracts gave medians that swung 60x day to day)
+  assert.deepEqual(aggregateAll(mk(9), "2026-07-25", "2026-10-23", HARVEST_MIN_N), []);
+  assert.equal(aggregateAll(mk(10), "2026-07-25", "2026-10-23", HARVEST_MIN_N).find((r) => r.item === "laptops")?.n, 10);
 });
 
 test("harvest then answer: pages the list, reads details, skips failures, keeps aggregates only", async () => {
@@ -85,7 +88,7 @@ test("harvest then answer: pages the list, reads details, skips failures, keeps 
   process.env.PROOFPRICE_LIBRARY_DIR = dir;
   try {
     // 7 ids: id6 pending (dropped), id7 fails; 5 usable -> exactly the minimum
-    const h = await uaContractsHarvest(new Date("2026-10-23T03:17:00Z"), { get: api(calls) });
+    const h = await uaContractsHarvest(new Date("2026-10-23T03:17:00Z"), { get: api(calls), minN: 5 });
     assert.equal(h.currency, "UAH");
     assert.match(calls[0], /limit=100&descending=1&opt_fields=status$/);
     assert.match(h.note ?? "", /7 most recently updated contracts; 6 read, 1 failed, 5 usable/);

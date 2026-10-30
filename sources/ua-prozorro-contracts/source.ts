@@ -35,7 +35,7 @@ export const INFO: SourceInfo = {
     "Contract values in hryvnia as signed (VAT included where the supplier charges it), over the whole contract (often a year or more); they are not unit prices and not amounts paid yet. " +
     "The daily collector reads the most recently updated contracts (a sample of the whole feed, up to " + "3,000 per day" + "), not every contract, and only contracts signed in the last 90 days that are active or finished. " +
     "Values under 1,000 UAH (placeholders) or over 10 billion UAH (entry errors) are left out, a contract is counted once, and contracts that mix purchases from different product divisions are left out. " +
-    "Purchases are recognised from the contract's first product code, so a contract filed under another code is missed. Aggregates only; suppliers and buyers are never read or kept.",
+    "Purchases are recognised from the contract's first product code, so a contract filed under another code is missed. A product group is shown only when the sample holds at least 10 of its contracts. Aggregates only; suppliers and buyers are never read or kept.",
   method_version: "1",
 };
 
@@ -44,6 +44,9 @@ export const WINDOW_DAYS = 90;
 export const MIN_VALUE = 1_000;
 export const MAX_VALUE = 10_000_000_000;
 export const MAX_CONTRACTS = 3000;
+// A product group seen in fewer than this many contracts of the sample is not stored: with 5 or 6 contracts the median swung 3x to 60x
+// from one day to the next (the data checker held 6 keys back on 28 Oct 2026). The live answer still needs at least 5 (lib/stats gate).
+export const HARVEST_MIN_N = 10;
 export const CONCURRENCY = 6;
 export const UNIT = "per contract, total contract value as signed (incl. VAT where charged)";
 export const TIME_BUDGET_MS = 7 * 60 * 1000;
@@ -100,7 +103,7 @@ export function itemsOf(cpv: string): string[] {
 }
 
 /** Pure: library rows for every item with at least 5 distinct contracts. */
-export function aggregateAll(contracts: Iterable<UaContract>, from: string, to: string): DailyRow[] {
+export function aggregateAll(contracts: Iterable<UaContract>, from: string, to: string, minN = 5): DailyRow[] {
   const seen = new Set<string>();
   const groups = new Map<string, number[]>();
   for (const c of contracts) {
@@ -115,7 +118,7 @@ export function aggregateAll(contracts: Iterable<UaContract>, from: string, to: 
   const rows: DailyRow[] = [];
   for (const [item, values] of groups) {
     const s = summarise(values);
-    if (!s || s.count < 5) continue;
+    if (!s || s.count < Math.max(5, minN)) continue;
     rows.push({ area: "ALL", item, n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max });
   }
   return rows.sort((a, b) => a.item.localeCompare(b.item));
@@ -128,6 +131,7 @@ export interface HarvestOptions {
   get?: Getter;
   budgetMs?: number;
   maxContracts?: number;
+  minN?: number;
 }
 
 export async function uaContractsHarvest(now: Date = new Date(), o: HarvestOptions = {}): Promise<HarvestResult> {
@@ -169,7 +173,8 @@ export async function uaContractsHarvest(now: Date = new Date(), o: HarvestOptio
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
   if (!fetched) throw new SourceError("Could not read any Prozorro contract (public-api.prozorro.gov.ua)", String((lastError as any)?.message ?? lastError));
   if (!contracts.length) throw new SourceError("The Prozorro contracts held nothing usable in the window: the format may have changed");
-  const rows = aggregateAll(contracts, from, to);
+  const rows = aggregateAll(contracts, from, to, o.minN ?? HARVEST_MIN_N);
+  if (!rows.length) throw new SourceError(`No product group had ${o.minN ?? HARVEST_MIN_N} or more usable contracts in the sample`);
   return {
     date: to,
     currency: "UAH",
