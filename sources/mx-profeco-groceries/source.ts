@@ -284,6 +284,32 @@ export function listCsv(dir: string): string[] {
   return out.sort();
 }
 
+/** Download a file completely: the server closed the 2026 archive after 20.7 MB of ~60 MB (30 Oct 2026), so compare with Content-Length and resume with Range requests. */
+export async function downloadFully(url: string, year: number, tries = 8): Promise<Buffer> {
+  const parts: Buffer[] = [];
+  let have = 0, total = 0;
+  for (let i = 0; i < tries; i++) {
+    try {
+      const res = await fetch(url, { headers: have ? { ...UA, Range: `bytes=${have}-` } : UA });
+      if (!res.ok && res.status !== 206) throw new SourceError(`Profeco file ${year} returned HTTP ${res.status}`);
+      const resumed = res.status === 206;
+      if (have && !resumed) { parts.length = 0; have = 0; } // server ignored Range: start again
+      if (!total) total = Number(res.headers.get("content-length") || 0);
+      const reader = res.body!.getReader();
+      for (;;) { // keep what arrived even if the connection drops half way
+        let chunk: ReadableStreamReadResult<Uint8Array>;
+        try { chunk = await reader.read(); } catch { break; }
+        if (chunk.done) break;
+        parts.push(Buffer.from(chunk.value)); have += chunk.value.length;
+      }
+    } catch (e) { if (e instanceof SourceError) throw e; }
+    if (total && have >= total) break;
+    if (!total && have > 0) break; // no length announced: take what we have
+  }
+  if (total && have < total) throw new SourceError(`Profeco file ${year} incomplete after ${tries} tries: ${have} of ${total} bytes`);
+  return Buffer.concat(parts);
+}
+
 export async function profecoHarvest(): Promise<HarvestResult> {
   const idxRes = await fetch(INDEX_URL, { headers: UA });
   if (!idxRes.ok) throw new SourceError(`Profeco index page returned HTTP ${idxRes.status}`);
@@ -295,10 +321,9 @@ export async function profecoHarvest(): Promise<HarvestResult> {
     let read = 0, kept = 0, files = 0;
     // newest year first; if the newest year has fewer than WINDOW_DAYS of data (early January) the previous year is added
     for (const link of links.slice(0, 2)) {
-      const res = await fetch(link.url, { headers: UA });
-      if (!res.ok) throw new SourceError(`Profeco file ${link.year} returned HTTP ${res.status}`);
+      const buf = await downloadFully(link.url, link.year);
       const out = join(dir, String(link.year));
-      extractYearly(Buffer.from(await res.arrayBuffer()), dir, out, link.year);
+      extractYearly(buf, dir, out, link.year);
       const csvs = listCsv(out);
       if (!csvs.length) throw new SourceError(`Profeco ${link.year} archive held no CSV files`);
       for (const f of csvs.slice(-2)) { // the newest two monthly files cover the 30-day window even right after a month change

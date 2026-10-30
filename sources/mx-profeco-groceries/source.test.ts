@@ -153,3 +153,19 @@ test("unpackWithNodeUnrar reports the library's own message for a file that is n
   const f = join(d, "x.rar"); writeFileSync(f, "not a rar at all");
   assert.throws(() => unpackWithNodeUnrar(f, join(d, "out")), (e: Error) => e.message.length > 0);
 });
+
+test("downloadFully resumes a download the server cuts short", async () => {
+  const http = await import("node:http");
+  const { downloadFully } = await import("./source");
+  const body = Buffer.alloc(1000, 7);
+  const srv = http.createServer((req, res) => {
+    const m = /bytes=(\d+)-/.exec(String(req.headers.range || ""));
+    if (m) { const from = Number(m[1]); res.writeHead(206, { "content-length": body.length - from }); res.end(body.subarray(from)); return; }
+    res.writeHead(200, { "content-length": body.length }); res.write(body.subarray(0, 400)); setTimeout(() => res.destroy(), 20);
+  });
+  await new Promise<void>((r) => srv.listen(0, r));
+  const port = (srv.address() as { port: number }).port;
+  const got = await downloadFully(`http://127.0.0.1:${port}/x`, 2026);
+  srv.close();
+  assert.equal(got.length, 1000);
+});
