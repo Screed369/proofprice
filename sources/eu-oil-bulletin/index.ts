@@ -13,7 +13,13 @@ export default defineSource({
   placeName: "the EU (national averages)",
   status: "live",
   // NL is answered by the daily CBS source (nl-cbs-fuel); the bulletin keeps NL for its weekly history.
-  serves: (p) => String(p.country ?? "").toUpperCase() !== "NL",
+  // FI petrol95/diesel are answered by Statistics Finland (fi-stat-fuel); other FI fuels (lpg) stay with the bulletin.
+  serves: (p) => {
+    const c = String(p.country ?? "").toUpperCase();
+    if (c === "NL") return false;
+    if (c === "FI" && ["petrol95", "diesel"].includes(String(p.fuel ?? ""))) return false;
+    return true;
+  },
   paramNotes: {
     fuel: "EU Weekly Oil Bulletin countries: petrol95 (Euro-super 95), diesel (automotive gas oil) or lpg, as a national average per litre in euro with all taxes; heating gas oil is in the extra fields. Other fuels are not published.",
     postcode: "EU Weekly Oil Bulletin countries: not used; the bulletin publishes one national average per country, so the national figure is returned and says so.",

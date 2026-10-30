@@ -125,3 +125,10 @@ test("manifest: licence, attribution and the routing hook", () => {
   assert.equal(manifest.serves?.({ country: "FI", fuel: "lpg" }), false);
   assert.equal(manifest.serves?.({ country: "SE", fuel: "diesel" }), false);
 });
+
+test("routing: FI petrol95/diesel go to fi-stat-fuel, FI lpg stays with the EU bulletin, NL stays with CBS", async () => {
+  const { findSource } = await import("../../lib/registry");
+  assert.equal(findSource("fuel", "FI", { country: "FI", fuel: "diesel" })?.info.id, "fi-stat-fuel");
+  assert.equal(findSource("fuel", "FI", { country: "FI", fuel: "petrol95" })?.info.id, "fi-stat-fuel");
+  assert.equal(findSource("fuel", "FI", { country: "FI", fuel: "lpg" })?.info.id, "eu-oil-bulletin");
+});
