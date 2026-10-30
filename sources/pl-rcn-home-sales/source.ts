@@ -264,8 +264,8 @@ export async function plHomeSales(args: PlHomeArgs): Promise<PriceAnswer> {
 export const HARVEST_MONTHS = 6;
 /** Library item: all flats, rolling HARVEST_MONTHS months (the home-sales history tool reads "<type>:<N>m"). */
 export const HARVEST_ITEM = `any:${HARVEST_MONTHS}m`;
-/** A real day has 5+ sales in nearly every one of the 19 cities; far fewer means the register or its layout changed. */
-export const HARVEST_MIN_CITIES = 15;
+/** The live run of 30 Oct 2026 found 12 of 19 cities with 5+ flat sales in 180 days (small cities are thin); fewer than 8 means the register or its layout changed. */
+export const HARVEST_MIN_CITIES = 8;
 
 /** Pure: library keys for a request. Only a named city has a row; months is ignored (the library holds one window). */
 export function plHistoryKey(input: { town?: string }): { area: string; item: string; label: string } | null {
