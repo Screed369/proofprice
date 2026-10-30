@@ -4,13 +4,15 @@
 // https://www.statistik.at/fileadmin/pages/222/SonderauswertungImmobilienDurchschnittspreise.ods
 //
 // The file is small, changes once a year (late May) and is read through a six-hour in-memory cache, so the publisher is hit at most
-// a few times a day, never once per request. It holds no sample counts, so it cannot go into the price library (which keeps
-// only rows with at least five records), which is why this source has no harvest().
+// a few times a day, never once per request. It holds no sample counts, so its library rows carry n: NO_COUNT (an official
+// statistic, never a made-up number). The daily collector keeps the newest year's medians so that a stale-if-error copy can stand in
+// when statistik.at does not answer (see atHarvest below).
 // Formats below were checked live on 2026-10-14 (see fixtures.ts).
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import { OdsSheet, readOds } from "./ods";
 
 export const FILE_URL = "https://www.statistik.at/fileadmin/pages/222/SonderauswertungImmobilienDurchschnittspreise.ods";
@@ -209,7 +211,7 @@ export function parseWorkbook(sheets: OdsSheet[]): AtData {
 
 // ---------- finding a place (pure) ----------
 
-const NATIONAL_WORDS = new Set(["osterreich", "austria", "autriche", "at", "national", "nationwide", "whole country", "country", "oesterreich"]);
+export const NATIONAL_WORDS = new Set(["osterreich", "austria", "autriche", "at", "national", "nationwide", "whole country", "country", "oesterreich"]);
 const STATE_ALIASES: Record<string, string> = {
   carinthia: "karnten", kaernten: "karnten", "lower austria": "niederosterreich", niederoesterreich: "niederosterreich", "upper austria": "oberosterreich",
   oberoesterreich: "oberosterreich", styria: "steiermark", tyrol: "tirol", vienna: "wien", vienne: "wien", wien: "wien",
@@ -286,7 +288,7 @@ interface Keys {
   strong: string[];
   weak: string[];
 }
-function keysOf(a: Area): Keys {
+export function keysOf(a: Area): Keys {
   const f = foldName(a.name);
   if (a.level === "country") return { strong: ["osterreich", "austria"], weak: [] };
   if (a.level === "state") return { strong: [f, ...Object.entries(STATE_ALIASES).filter(([, to]) => to === f).map(([from]) => from)], weak: [] };
@@ -634,4 +636,79 @@ export async function atHomePrices(
   }
   const data = o.data ?? (await loadData({ fetcher: o.fetcher, now: o.now }));
   return atAnswer(data, { town: postcode && !(input.town ?? "").trim() ? null : town, postcode, property_type: type as AskType, baseUrl: input.baseUrl });
+}
+
+
+// ---------- daily collector (stale-if-error copy only) ----------
+// STATISTIK AUSTRIA publishes one median per place, type and year, so daily snapshots would only repeat it: the source offers no
+// /history (noHistory in the manifest). The collector keeps the newest year's medians so that, when statistik.at times out, a
+// recent copy answers instead of a 502 (lib/stale.ts). Library area keys are the folded names a caller can type ("graz", "wien 2",
+// "tirol", "austria"); when two places share a name the municipality wins, then the district, then the Bundesland (as in findArea).
+
+const HARVEST_RANK: Record<Level, number> = { municipality: 0, district: 1, state: 2, country: 3 };
+
+/** Library rows for the newest year: one row per typed place name and home type. Places without a figure for that year are left out. */
+export function atHarvestRows(data: AtData): DailyRow[] {
+  const taken = new Set<string>();
+  const rows: DailyRow[] = [];
+  const places = data.areas.filter(hasFigures).sort((a, b) => HARVEST_RANK[a.level] - HARVEST_RANK[b.level]);
+  for (const a of places) {
+    const names = a.level === "country" ? ["austria"] : keysOf(a).strong;
+    for (const name of names) {
+      if (taken.has(name)) continue;
+      taken.add(name);
+      for (const kind of ["house", "apartment"] as Kind[]) {
+        const v = a[kind][data.latestYear];
+        if (typeof v !== "number" || !(v > 0)) continue;
+        rows.push({ area: name, item: kind, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+      }
+    }
+  }
+  return rows;
+}
+
+export async function atHarvest(o: { fetcher?: FileFetcher } = {}): Promise<HarvestResult> {
+  const data = parseFile(await (o.fetcher ?? downloadFile)());
+  const rows = atHarvestRows(data);
+  if (rows.length < 100) throw new SourceError(`STATISTIK AUSTRIA's spreadsheet gave only ${rows.length} library rows; expected hundreds`);
+  return {
+    date: `${data.latestYear}-12-31`,
+    currency: "EUR",
+    unit: "per m²",
+    rows,
+    note: `STATISTIK AUSTRIA Immobilien-Durchschnittspreise ${data.latestYear}: published median price per m² of living area for houses and owner-occupied flats (five years of purchase contracts, the earlier years revalued by STATISTIK AUSTRIA's regression model). One published figure per place and type, no record count (n is not a count). Kept only so a stale copy can answer when the publisher is down.`,
+  };
+}
+
+const HOUSE_WORDS = new Set(["house", "villa", "detached", "semi-detached", "terraced"]);
+
+/** Library key for a request, or null when the copy cannot answer it. The place is the typed name folded the way findArea folds it. */
+export function atHistoryKey(p: { town?: string; postcode?: string; property_type?: string }): { area: string; item: string; label: string } | null {
+  const type = (p.property_type ?? "any").trim().toLowerCase() || "any";
+  if (!(TYPE_ASK as readonly string[]).includes(type)) return null;
+  const kind: Kind = HOUSE_WORDS.has(type) ? "house" : "apartment";
+  const postcode = (p.postcode ?? "").trim();
+  const town = (p.town ?? "").trim();
+  let area: string;
+  let label: string;
+  if (!town && postcode) {
+    const d = viennaDistrictOfPostcode(postcode);
+    if (d === null) return null;
+    area = `wien ${d}`;
+    label = `Wien ${d}`;
+  } else {
+    const q = parseQuery(town);
+    if (q.force) return null; // "Bezirk X" / "Land X": the key cannot say which level was meant
+    if (q.vienna !== null) {
+      area = `wien ${q.vienna}`;
+      label = `Wien ${q.vienna}`;
+    } else if (!q.q || NATIONAL_WORDS.has(q.q)) {
+      area = "austria";
+      label = "Austria";
+    } else {
+      area = q.q;
+      label = town;
+    }
+  }
+  return { area, item: kind, label };
 }

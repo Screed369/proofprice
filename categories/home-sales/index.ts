@@ -40,6 +40,7 @@ export default defineCategory({
         "high-rise": "High-rise flats", "mid-rise": "Mid-rise flats", "walk-up": "Walk-up flats",
       };
       const kind = KINDS[type] ?? "Homes";
+      if (parts.length === 1) return `${kind}, latest published annual figure`;
       return win === "month" ? `${kind}, monthly` : `${kind}, rolling ${win?.replace("m", "") ?? ""} months`;
     },
   },

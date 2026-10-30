@@ -1,6 +1,6 @@
 // Manifest: Austria home prices (STATISTIK AUSTRIA, official median price per m² by district, municipality and Bundesland). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, atHomePrices } from "./source";
+import { INFO, atHarvest, atHistoryKey, atHomePrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -32,4 +32,10 @@ export default defineSource({
       property_type: str(p.property_type),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector keeps the newest year's published medians (no record count), so a statistik.at outage is answered from them.
+  harvest: () => atHarvest(),
+  historyKey: (p) => atHistoryKey({ town: str(p.town) ?? str(p.area), postcode: str(p.postcode), property_type: str(p.property_type) }),
+  nominalCounts: true,
+  referenceDates: true,
+  noHistory: "Austria: STATISTIK AUSTRIA publishes one median per place, type and year, so daily snapshots would only repeat it; ProofPrice keeps no history of it. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure.",
 });

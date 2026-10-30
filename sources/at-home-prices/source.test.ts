@@ -91,13 +91,13 @@ test("at-home-prices: licence, attribution and type are STATISTIK AUSTRIA's", ()
   assert.equal(INFO.homepage, PAGE_URL);
 });
 
-test("at-home-prices: registered as the AT source of the home-sales tool, Wien apartment first, no harvest", () => {
+test("at-home-prices: registered as the AT source of the home-sales tool, Wien apartment first, collector for the stale copy", () => {
   const plugin = SOURCE_PLUGINS.find((s) => s.info.id === "at-home-prices")!;
   assert.equal(plugin.category, "home-sales");
   assert.deepEqual(plugin.countries, ["AT"]);
   assert.equal(plugin.status, "live");
   assert.deepEqual(plugin.examples[0].params, { country: "AT", town: "Wien", property_type: "apartment" });
-  assert.equal(plugin.harvest, undefined); // no sample counts, so nothing for the price library
+  assert.equal(typeof plugin.harvest, "function"); // a collector keeps the newest published medians (n: no count) for stale-if-error
   assert.ok(countriesFor("home-sales").includes("AT"));
   assert.match(String(paramSchemas(categoryById("home-sales")!).town.description), /AT: a municipality/);
 });
@@ -525,4 +525,64 @@ test("at-home-prices: gap G20261029-1, a request with no town, postcode or area 
     assert.equal(a.status, "ok", String(t));
     assert.match(a.summary, /Austria/, String(t));
   }
+});
+
+// ---------- library copy for stale-if-error ----------
+import { atHarvestRows, atHistoryKey } from "./source";
+
+const mk = (level: any, name: string, code: string, house: Record<number, number>, apartment: Record<number, number>, extra: any = {}): any => ({ level, name, code, state: "", house, apartment, ...extra });
+const sample: AtData = {
+  latestYear: 2025,
+  created: null,
+  areas: [
+    mk("country", "Österreich", "", { 2025: 2836 }, { 2025: 4162 }),
+    mk("municipality", "Graz", "60101", { 2025: 4034 }, { 2025: 5000 }),
+    mk("district", "Graz", "601", { 2025: 3000 }, { 2025: 3500 }),
+    mk("state", "Tirol", "", { 2025: 3200 }, { 2025: 5200 }),
+    mk("district", "Wien 2.,Leopoldstadt", "902", {}, { 2025: 5878 }, { vienna: 2 }),
+    mk("municipality", "Rust", "10101", {}, {}),
+    mk("municipality", "Alt", "20101", { 2024: 1000 }, {}),
+  ],
+};
+
+test("AT library rows: one row per typed name and type, municipality beats district, no figure for the newest year means no row, n is no count", () => {
+  const rows = atHarvestRows(sample);
+  const find = (a: string, i: string) => rows.find((r) => r.area === a && r.item === i);
+  assert.equal(find("austria", "apartment")!.median, 4162);
+  assert.equal(find("graz", "apartment")!.median, 5000); // the municipality, not the district
+  assert.equal(find("tirol", "house")!.median, 3200);
+  assert.equal(find("wien 2", "apartment")!.median, 5878);
+  assert.equal(find("wien 2", "house"), undefined);
+  assert.equal(rows.some((r) => r.area === "rust" || r.area === "alt"), false);
+  assert.ok(rows.every((r) => Number.isNaN(r.n) && r.low === r.median && r.high === r.median));
+});
+
+test("AT history key: typed names fold like findArea; Vienna postcode, national, house words, unknown type, forced level", () => {
+  assert.deepEqual(atHistoryKey({ town: "Graz", property_type: "house" }), { area: "graz", item: "house", label: "Graz" });
+  assert.equal(atHistoryKey({ town: "Wien 2", property_type: "apartment" })!.area, "wien 2");
+  assert.equal(atHistoryKey({ postcode: "1020" })!.area, "wien 2");
+  assert.equal(atHistoryKey({ postcode: "6020" }), null);
+  assert.equal(atHistoryKey({})!.area, "austria");
+  assert.equal(atHistoryKey({ town: "Österreich", property_type: "villa" })!.item, "house");
+  assert.equal(atHistoryKey({ town: "Bezirk Baden" }), null);
+  assert.equal(atHistoryKey({ town: "Graz", property_type: "castle" }), null);
+});
+
+test("AT: the source declares a collector, a key and no history; a copy of the newest year answers when the live file fails", () => {
+  const src = SOURCE_PLUGINS.find((s) => s.info.id === "at-home-prices")!;
+  assert.ok(src.harvest && src.historyKey && src.nominalCounts && src.referenceDates && src.noHistory);
+});
+
+test("AT library rows from the real fixture rows: every figure of the newest year is in the library under a name findArea resolves to the same place", () => {
+  const rows = atHarvestRows(DATA);
+  assert.ok(rows.length > 0);
+  let checked = 0;
+  for (const r of rows) {
+    const hit = findArea(DATA.areas, parseQuery(r.area));
+    if (hit.kind !== "found") continue;
+    const v = (hit.area as any)[r.item][DATA.latestYear];
+    assert.equal(r.median, v, `${r.area} ${r.item}`);
+    checked++;
+  }
+  assert.ok(checked > 0);
 });
