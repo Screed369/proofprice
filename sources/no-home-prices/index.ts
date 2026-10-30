@@ -1,6 +1,6 @@
 // Manifest: Norway home prices (official price per m² of existing dwellings, Statistics Norway). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, norwayHomePrices } from "./source";
+import { INFO, norwayHarvest, norwayHistoryKey, norwayHomePrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -33,4 +33,10 @@ export default defineSource({
       property_type: str(p.property_type),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector stores SSB's newest quarterly average for every region and dwelling type once a day.
+  harvest: () => norwayHarvest(),
+  historyKey: (p) => norwayHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type) }),
+  referenceDates: true,
+  staleMaxDays: 35, // SSB publishes quarterly; the newest figure cannot change between releases
+  noHistory: "Norway: SSB publishes one average per quarter and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure, which carries the previous quarter and the year earlier.",
 });

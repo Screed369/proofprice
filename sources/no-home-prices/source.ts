@@ -7,10 +7,10 @@
 // sample_size = the published number of sales. The change figures are calculated here from the published averages.
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { InputError } from "../../lib/http";
+import { fetchJson, InputError, retryOnce, SourceError } from "../../lib/http";
 import { parseJsonStat, periodRange, previousPeriod, resolveFetcher } from "../../lib/adapters";
 import type { FetchOptions, JsonStatTable } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { confidenceLabel, MIN_PUBLISH } from "../../lib/stats";
 import { NO_REGIONS } from "./places";
 
@@ -402,4 +402,75 @@ export async function norwayHomePrices(input: NorwayInput, o: FetchOptions & { n
   const table = parseJsonStat(await resolveFetcher(o)(url));
   const reading = readNorway(table, { place, type });
   return norwayAnswer(reading, { place, type, requestedType: input.property_type, baseUrl: input.baseUrl, apiUrl: url, now: o.now, notes });
+}
+
+
+// ---------- daily collector (stale-if-error copy) ----------
+// SSB answers one GET for every region and dwelling type, so the collector reads the newest quarter for all of them at once and
+// stores one row per region and dwelling type (rows dated by the quarter's last day). The library copy stands in for a live
+// answer when SSB does not respond (lib/stale.ts). SSB publishes an average, not a distribution, so low/high/min/max repeat it.
+
+/** Library item per dwelling type ("<kind>:3m" = the average of one quarter; kinds follow the home-sales history labels). */
+export const HARVEST_ITEMS: Record<TypeKey, string> = { any: "all:3m", detached: "house:3m", terraced: "terraced:3m", flat: "apartment:3m" };
+
+export function harvestUrl(base = SSB_API): string {
+  const q = [
+    "lang=en",
+    "outputFormat=json-stat2",
+    "valueCodes%5BRegion%5D=*",
+    `valueCodes%5BBoligtype%5D=${TYPE_ORDER.map((k) => TYPES[k].code).join(",")}`,
+    "valueCodes%5BContentsCode%5D=KvPris,Omsetninger",
+    "valueCodes%5BTid%5D=top(1)",
+  ];
+  return `${base}/tables/${TABLE}/data?${q.join("&")}`;
+}
+
+/** Last day of an SSB quarter code ("2026K3" -> "2026-09-30"). */
+export function quarterEndDate(code: string): string {
+  const m = /^(\d{4})K([1-4])$/.exec(code);
+  if (!m) throw new SourceError(`Statistics Norway returned an unexpected quarter code: ${code}`);
+  return new Date(Date.UTC(Number(m[1]), Number(m[2]) * 3, 0)).toISOString().slice(0, 10);
+}
+
+/** One row per region and dwelling type that has a price and 5 or more sales in the newest quarter. */
+export function harvestRows(table: JsonStatTable): HarvestResult {
+  const times = quarters(table);
+  const newest = times[times.length - 1];
+  if (!newest) throw new SourceError("Statistics Norway returned no quarter to collect");
+  const known = new Set(PLACES.map((p) => p.code));
+  const rows: DailyRow[] = [];
+  for (const region of table.codes.Region ?? []) {
+    if (!known.has(region)) continue;
+    for (const k of TYPE_ORDER) {
+      const pt = point(table, region, k, newest);
+      if (!pt || pt.sales === null || pt.sales < MIN_PUBLISH) continue;
+      const v = Math.round(pt.price);
+      rows.push({ area: region, item: HARVEST_ITEMS[k], n: pt.sales, median: v, low: v, high: v, min: v, max: v });
+    }
+  }
+  if (!rows.some((r) => r.area === "0" && r.item === HARVEST_ITEMS.any)) throw new SourceError("Statistics Norway returned no national average for the newest quarter");
+  return {
+    date: quarterEndDate(newest),
+    currency: "NOK",
+    unit: "per m²",
+    rows,
+    note: `SSB table ${TABLE}: average price per m² of existing dwellings sold in ${periodWords(isoQuarter(newest))}, ${rows.length} region and dwelling-type rows with 5 or more sales. Published averages (not medians), with the published number of sales.`,
+  };
+}
+
+export async function norwayHarvest(o: FetchOptions & { apiBase?: string } = {}): Promise<HarvestResult> {
+  const fetcher = o.fetcher ?? ((url: string) => retryOnce(() => fetchJson(url, {}, 60000)));
+  return harvestRows(parseJsonStat(await fetcher(harvestUrl(o.apiBase))));
+}
+
+/** Library key for a request: the SSB region code and dwelling type. Null when the copy cannot answer (a postcode, an unknown place or type). */
+export function norwayHistoryKey(p: { town?: string; postcode?: string; property_type?: string }): { area: string; item: string; label: string } | null {
+  if (p.postcode && !p.town) return null;
+  try {
+    const place = resolvePlace(p.town);
+    const type = normaliseType(p.property_type);
+    return { area: place.code, item: HARVEST_ITEMS[type], label: place.short };
+  } catch {
+    return null;
+  }
 }

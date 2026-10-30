@@ -247,3 +247,50 @@ test("no-home-prices: routed by country through the shared home-sales tool (netw
     globalThis.fetch = realFetch;
   }
 });
+
+// ---------- collector and stale-if-error copy ----------
+import { ALL_REGIONS_NEWEST } from "./fixtures-all";
+import { harvestRows, harvestUrl, HARVEST_ITEMS, norwayHarvest, norwayHistoryKey, quarterEndDate } from "./source";
+
+test("no-home-prices harvest: reads every region and dwelling type of the real newest-quarter response", () => {
+  const h = harvestRows(parseJsonStat(ALL_REGIONS_NEWEST));
+  assert.equal(h.currency, "NOK");
+  assert.equal(h.unit, "per m²");
+  assert.equal(h.date, "2026-09-30"); // 2026K3 ends on 30 September
+  const country = h.rows.find((r) => r.area === "0" && r.item === HARVEST_ITEMS.any)!;
+  assert.ok(country.median > 30000 && country.median < 150000, "national average per m² is plausible");
+  assert.ok(country.n >= 5);
+  const oslo = h.rows.find((r) => r.area === "0301" && r.item === HARVEST_ITEMS.flat)!;
+  assert.ok(oslo.median > country.median, "Oslo flats cost more per m² than the national average");
+  assert.ok(h.rows.every((r) => r.n >= 5), "no row from fewer than 5 sales");
+  assert.ok(h.rows.every((r) => r.low === r.median && r.high === r.median), "an average has no range");
+  assert.ok(h.rows.length > 300);
+});
+
+test("no-home-prices harvest: asks for every region, four types, newest quarter in one GET", () => {
+  const u = harvestUrl();
+  assert.match(u, /valueCodes%5BRegion%5D=\*/);
+  assert.match(u, /Boligtype%5D=00,01,02,03/);
+  assert.match(u, /Tid%5D=top\(1\)/);
+});
+
+test("no-home-prices harvest: collector goes through the injected fetcher; a failure is surfaced", async () => {
+  const ok = await norwayHarvest({ fetcher: async () => ALL_REGIONS_NEWEST });
+  assert.ok(ok.rows.length > 300);
+  await assert.rejects(() => norwayHarvest({ fetcher: async () => { throw new SourceError("down"); } }), SourceError);
+});
+
+test("no-home-prices historyKey: place code and dwelling type, null where the copy cannot answer", () => {
+  assert.deepEqual(norwayHistoryKey({ town: "Oslo" }), { area: "0301", item: "all:3m", label: "Oslo" });
+  assert.deepEqual(norwayHistoryKey({ town: "Bergen", property_type: "flat" }), { area: "4601", item: "apartment:3m", label: "Bergen" });
+  assert.deepEqual(norwayHistoryKey({}), { area: "0", item: "all:3m", label: "Norway" });
+  assert.equal(norwayHistoryKey({ postcode: "0150" }), null);
+  assert.equal(norwayHistoryKey({ town: "Atlantis" }), null);
+  assert.equal(norwayHistoryKey({ town: "Oslo", property_type: "castle" }), null);
+});
+
+test("no-home-prices: quarterEndDate", () => {
+  assert.equal(quarterEndDate("2026K1"), "2026-03-31");
+  assert.equal(quarterEndDate("2026K4"), "2026-12-31");
+  assert.throws(() => quarterEndDate("2026"), SourceError);
+});
