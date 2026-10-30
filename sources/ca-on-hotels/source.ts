@@ -19,14 +19,14 @@ export const INFO: SourceInfo = {
   country: "CA (Canada, province of Ontario)",
   category: "hotels (average daily rate per occupied room)",
   name: "Ontario hotel statistics: average daily rate, monthly",
-  publisher: "Ministry of Tourism, Culture and Gaming, Ontario",
+  publisher: "Ministry of Tourism, Culture and Gaming, Ontario (figures compiled by CBRE Limited)",
   what_is_recorded:
     "The average daily rate (ADR): average room revenue per occupied hotel room per night, published monthly with the occupancy rate and revenue per available room, for Ontario and its tourism areas.",
   price_type: "official_statistic",
   freshness: "Monthly, published about five weeks after the month ends; every answer states its month",
   licence: "Ontario.ca Terms of Use (the dataset's licence on the Ontario Data Catalogue). Commercial reuse is not separately confirmed, so this source is offered on the free tier only.",
   licence_url: LICENCE_URL,
-  attribution: "Source: Ministry of Tourism, Culture and Gaming, Ontario, Hotel statistics (data.ontario.ca), used under the Ontario.ca Terms of Use. Prepared by ProofPrice; figures are passed on as published.",
+  attribution: "Source: Ministry of Tourism, Culture and Gaming, Ontario, Hotel statistics (data.ontario.ca), used under the Ontario.ca Terms of Use; the workbook credits CBRE Limited as the source of the figures. Prepared by ProofPrice; figures are passed on as published.",
   homepage: "https://data.ontario.ca/dataset/hotel-statistics",
   limits:
     "A monthly average over the hotels in the area (what hotels charged per occupied room), not a quote or booking price for particular dates, not asking prices, and not a range: the Ministry gives one figure with no sample size, so the range fields are null. " +
@@ -92,7 +92,8 @@ export function parseHotelSheets(sheets: Sheet[]): AreaRow[] {
       for (const r of sheet.rows.slice(h + 1)) {
         const area = clean(r[lc] ?? null);
         const adr = asNumber(r[adrCol] ?? null);
-        if (!area) { if (rows.length) break; else continue; }
+        if (/^source\b/i.test(area)) break; // the CBRE credit line ends the table
+        if (!area) continue; // blank separator rows between groups of areas
         if (adr === null || adr <= 0 || adr > 2000) continue;
         const occ = occCol >= 0 ? asNumber(r[occCol] ?? null) : null;
         const rev = revCol >= 0 ? asNumber(r[revCol] ?? null) : null;
@@ -116,7 +117,8 @@ export function pickArea(rows: AreaRow[], area?: string): { row: AreaRow | null;
     if (whole) return { row: whole, others: [] };
     if (!q) return { row: null, others: rows.map((r) => r.area) };
   }
-  let hits = rows.filter((r) => norm(r.area) === q);
+  const alias: Record<string, string> = { toronto: "greater toronto area", gta: "greater toronto area", "niagara region": "other niagara region", kitchener: "kitchener waterloo cambridge guelph", waterloo: "kitchener waterloo cambridge guelph", guelph: "kitchener waterloo cambridge guelph" };
+  let hits = rows.filter((r) => norm(r.area) === (alias[q] ?? q));
   if (!hits.length && q.length >= 3) hits = rows.filter((r) => norm(r.area).includes(q));
   if (hits.length === 1) return { row: hits[0], others: [] };
   return { row: null, others: (hits.length ? hits : rows).map((r) => r.area).slice(0, 25) };
