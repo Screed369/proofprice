@@ -1,0 +1,550 @@
+URL: https://datos.profeco.gob.mx/
+Fetched: 2026-10-30T08:17:02Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 41264
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 30 Oct 2026 08:17:02 GMT
+Server: Apache
+Last-Modified: Tue, 27 Oct 2026 18:05:49 GMT
+ETag: "a130-65ed64be97bca"
+Accept-Ranges: bytes
+Content-Length: 41264
+Content-Type: text/html; charset=UTF-8
+
+=== FILE TYPE: HTML document, Non-ISO extended-ASCII text
+=== FIRST 30000 BYTES
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Catálogo de datos abiertos de la PROFECO: consulta y descarga conjuntos de datos sobre quejas, precios, proveedores y contratos en formatos CSV y XLSX." />
+    <meta name="author" content="PROFECO" />
+
+    <title>Catálogo de Datos Abiertos | PROFECO</title>
+<link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="assets/css/estilos.css?v=20260806" rel="stylesheet" />
+  </head>
+
+  <body>
+    <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido principal</a>
+
+    <section class="navbar-section">
+      <div class="container">
+        <nav class="navbar navbar-dark navbar-expand-md">
+          <a class="navbar-brand" href="https://www.gob.mx/profeco">
+            Profeco
+            <span>• &nbsp; Catálogo de datos abiertos</span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="navbar-collapse collapse" id="navbarMenu">
+            <div class="navbar-links">
+              <a class="navbar-link" href="https://www.gob.mx/index.xhtml">Trámites</a>
+              <a class="navbar-link" href="https://www.gob.mx/gobierno">Gobierno</a>
+              <a class="navbar-link" href="https://www.gob.mx/busqueda" aria-label="Buscar trámites"><img src="assets/img/ic_buscar_tramites.svg" alt="" width="24" height="24" /></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <div class="hero-wrap">
+      <section class="hero">
+        <div class="container">
+          <p class="eyebrow">Catálogo de datos abiertos</p>
+          <h1>Información pública para consultar, descargar y reutilizar</h1>
+          <p class="lead hero-desc">
+            La
+            <strong>Profeco</strong>
+            pone a disposición de la ciudadanía sus conjuntos de datos abiertos: información gratuita, en formatos reutilizables (CSV y XLSX), sobre precios, quejas, proveedores y contratos.
+          </p>
+        </div>
+      </section>
+
+      <!--
+        Barra de pestañas de sección. Cada botón activa el panel con el mismo
+        id (sin el prefijo "tab-") mediante el componente Tab de Bootstrap
+        (data-bs-toggle="pill"), sin recargar la página. Para agregar una
+        sección nueva: duplica un <li>, cambia el id, el data-bs-target,
+        aria-controls y el texto, y agrega su panel correspondiente más abajo
+        en #seccionPanels.
+      -->
+      <section class="tabs-bar">
+        <div class="container">
+          <ul class="nav nav-pills seccion-tabs" id="navSecciones" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="tab-inicio" data-bs-toggle="pill" data-bs-target="#panel-inicio" type="button" role="tab" aria-controls="panel-inicio" aria-selected="true">Inicio</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-quejas-servicios" data-bs-toggle="pill" data-bs-target="#panel-quejas-servicios" type="button" role="tab" aria-controls="panel-quejas-servicios" aria-selected="false">Quejas de servicios</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-quien-precios" data-bs-toggle="pill" data-bs-target="#panel-quien-precios" type="button" role="tab" aria-controls="panel-quien-precios" aria-selected="false">Quién es Quién en los Precios</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-telecomunicaciones" data-bs-toggle="pill" data-bs-target="#panel-telecomunicaciones" type="button" role="tab" aria-controls="panel-telecomunicaciones" aria-selected="false">Telecomunicaciones</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-comercio-electronico" data-bs-toggle="pill" data-bs-target="#panel-comercio-electronico" type="button" role="tab" aria-controls="panel-comercio-electronico" aria-selected="false">Comercio electrónico</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-contratos-adhesion" data-bs-toggle="pill" data-bs-target="#panel-contratos-adhesion" type="button" role="tab" aria-controls="panel-contratos-adhesion" aria-selected="false">Contratos de adhesión</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-buro-comercial" data-bs-toggle="pill" data-bs-target="#panel-buro-comercial" type="button" role="tab" aria-controls="panel-buro-comercial" aria-selected="false">Buró Comercial</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-aerolineas" data-bs-toggle="pill" data-bs-target="#panel-aerolineas" type="button" role="tab" aria-controls="panel-aerolineas" aria-selected="false">Aerolíneas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-casas-empeno" data-bs-toggle="pill" data-bs-target="#panel-casas-empeno" type="button" role="tab" aria-controls="panel-casas-empeno" aria-selected="false">Casas de empeño</button>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <main class="contenido" id="contenido">
+      <div class="container">
+        <div class="tab-content" id="seccionPanels">
+          <!--
+            Panel de Inicio: cuadrícula de tarjetas. Cada tarjeta es un botón
+            con data-id="<id-de-la-sección>" — al hacer clic, assets/js/app.js
+            activa la pestaña con ese mismo id (ver #navSecciones arriba).
+          -->
+          <div class="tab-pane fade show active" id="panel-inicio" role="tabpanel" aria-labelledby="tab-inicio" tabindex="-1">
+            <div class="panel-encabezado">
+              <h2>Explora los conjuntos de datos</h2>
+              <p class="text-secondary">Selecciona una categoría en las pestañas o en las tarjetas siguientes para ver y descargar sus archivos.</p>
+            </div>
+            <!--
+              Grid propio (no usa .row/.col de Bootstrap): con CSS Grid +
+              grid-auto-rows: 1fr, las 8 tarjetas quedan con exactamente la
+              misma altura (la del contenido más alto), no solo por fila.
+            -->
+            <div class="inicio-grid">
+              <button type="button" class="seccion-card" data-id="quejas-servicios">
+                <span class="seccion-card-icono">
+                  <img src="assets/img/ic_sec_quejas_servicios.svg" alt="" width="48" height="48" />
+                </span>
+                <span class="seccion-card-titulo">Quejas de servicios</span>
+                <span class="seccion-card-desc">Quejas presentadas por consumidores contra proveedores de bienes y servicios.</span>
+                <span class="seccion-card-link">Ver archivos →</span>
+              </button>
+              <button type="button" class="seccion-card" data-id="quien-precios">
+                <span class="seccion-card-icono">
+                  <img src="assets/img/ic_sec_quien_precios.svg" alt="" width="48" height="48" />
+                </span>
+                <span class="seccion-card-titulo">Quién es Quién en los Precios</span>
+                <span class="seccion-card-desc">Precios de productos de la canasta básica monitoreados en establecimientos de todo el país.</span>
+                <span class="seccion-card-link">Ver archivos →</span>
+              </button>
+              <button type="button" class="seccion-card" data-id="telecomunicaciones">
+                <span class="seccion-card-icono">
+                  <img src="assets/img/ic_sec_telecomunicaciones.svg" alt="" width="48" height="48" />
+                </span>
+                <span class="seccion-card-titulo">Quejas de Telecomunicaciones</span>
+                <span class="seccion-card-desc">Quejas del sector de telecomunicaciones: telefonía, internet y televisión de paga.</span>
+                <span class="seccion-card-link">Ver archivos →</span>
+              </button>
+              <button type="button" class="seccion-card" data-id="comercio-electronico">
+                <span class="seccion-card-icono">
+                  <img src="assets/img/ic_sec_comercio_electronico.svg" alt="" width="48" height="48" />
+                </span>
+                <span class="seccion-card-titulo">Precios en Comercio Electrónico</span>
+                <span class="seccion-card-desc">Monitoreo de precios de productos en tiendas de comercio electrónico.</span>
+                <span class="seccion-card-link">Ver archivos →</span>
+              </button>
+              <button type="button" class="seccion-card" data-id="contratos-adhesion">
+                <span class="seccion-card-icono">
+                  <img src="assets/img/ic_sec_contratos_adhesion.svg" alt="" width="48" height="48" />
+                </span>
+                <span class="seccion-card-titulo">Registro de Contratos de Adhesión</span>
+                <span class="seccion-card-desc">Contratos de adhesión registrados ante la PROFECO por los proveedores.</span>
+                <span class="seccion-card-link">Ver archivos →</span>
+              </button>
+              <button type="button" class="seccion-card" data-id="buro-comercial">
+                <span class="seccion-card-icono">
+                  <img src="assets/img/ic_sec_buro.svg" alt="" width="48" height="48" />
+                </span>
+                <span class="seccion-card-titulo">Buró Comercial</span>
+                <span class="seccion-card-desc">Historial de proveedores: sanciones, quejas y desempeño registrado.</span>
+                <span class="seccion-card-link">Ver archivos →</span>
+              </button>
+              <button type="button" class="seccion-card" data-id="aerolineas">
+                <span class="seccion-card-icono">
+                  <img src="assets/img/ic_sec_aerolineas.svg" alt="" width="48" height="48" />
+                </span>
+                <span class="seccion-card-titulo">Precios de Aerolíneas</span>
+                <span class="seccion-card-desc">Precios y condiciones de vuelos comerciales monitoreados por la PROFECO.</span>
+                <span class="seccion-card-link">Ver archivos →</span>
+              </button>
+              <button type="button" class="seccion-card" data-id="casas-empeno">
+                <span class="seccion-card-icono">
+                  <img src="assets/img/ic_sec_empeno.svg" alt="" width="48" height="48" />
+                </span>
+                <span class="seccion-card-titulo">Casas de Empeño (RPCE)</span>
+                <span class="seccion-card-desc">Registro Público de Casas de Empeño y sus contratos de adhesión autorizados.</span>
+                <span class="seccion-card-link">Ver archivos →</span>
+              </button>
+            </div>
+          </div>
+
+          <!--
+            Paneles de sección. Estructura de cada uno:
+              <div class="tab-pane fade" id="panel-<id>" role="tabpanel" aria-labelledby="tab-<id>" tabindex="-1">
+                <div class="panel-encabezado"><h2>...</h2><p class="text-secondary">...</p></div>
+                <ul class="archivo-lista list-unstyled">
+                  <li class="archivo-item">
+                    <span class="archivo-formato badge-fmt-csv|xlsx|pdf">CSV|XLSX|PDF</span>
+                    <span class="archivo-info">
+                      <span class="archivo-nombre">Nombre del archivo</span>
+                      <span class="archivo-meta">Tamaño · Actualizado mes año</span>
+                    </span>
+                    <a class="btn btn-guinda archivo-btn" href="RUTA-O-URL-REAL-DEL-ARCHIVO">
+                      <i class="bi bi-download" aria-hidden="true"></i> Descargar
+                    </a>
+                  </li>
+                  ... una <li> por archivo ...
+                </ul>
+              </div>
+            Para otros formatos de archivo agrega la clase badge-fmt-<formato> en
+            assets/css/estilos.css (junto a badge-fmt-csv/xlsx/pdf).
+
+            ⚠️ Los archivos de abajo son de EJEMPLO (placeholder): reemplaza nombre,
+            tamaño, fecha y el href de "Descargar" por los datos reales de cada
+            dataset antes de publicar.
+          -->
+
+          <div class="tab-pane fade" id="panel-quejas-servicios" role="tabpanel" aria-labelledby="tab-quejas-servicios" tabindex="-1">
+            <div class="panel-encabezado">
+              <h2>Quejas de servicios</h2>
+              <p class="text-secondary">Quejas presentadas por consumidores contra proveedores de bienes y servicios.</p>
+            </div>
+            <ul class="archivo-lista list-unstyled">
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Dataset Quejas de servicios</span>
+                  <span class="archivo-meta">53 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/quejas_servicios/quejas_servicios_ago2026.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <!--span class="archivo-formato badge-fmt-xlsx">XLSX</span-->
+		<span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Metadatos del dataset</span>
+                  <span class="archivo-meta">1 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/quejas_servicios/servicios_metadatos_dataset.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <!--span class="archivo-formato badge-fmt-pdf">PDF</span-->
+		<span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Diccionario de datos</span>
+                  <span class="archivo-meta">3 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/quejas_servicios/servicios_diccionario_dataset.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-pane fade" id="panel-quien-precios" role="tabpanel" aria-labelledby="tab-quien-precios" tabindex="-1">
+            <div class="panel-encabezado">
+              <h2>Quién es Quién en los Precios</h2>
+              <p class="text-secondary">Precios de productos de la canasta básica monitoreados en establecimientos de todo el país.</p>
+            </div>
+            <ul class="archivo-lista list-unstyled">
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Metadatos del dataset</span>
+                  <span class="archivo-meta">1 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_metadatos_dataset.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Diccionario de datos</span>
+                  <span class="archivo-meta">2 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_diccionario_dataset.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2026</span>
+                  <span class="archivo-meta">20 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2026.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2025</span>
+                  <span class="archivo-meta">53 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2025.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2024</span>
+                  <span class="archivo-meta">69 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2024.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2023</span>
+                  <span class="archivo-meta">53 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2023.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2022</span>
+                  <span class="archivo-meta">20 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2022.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2021</span>
+                  <span class="archivo-meta">69 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2021.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2020</span>
+                  <span class="archivo-meta">53 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2020.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2019</span>
+                  <span class="archivo-meta">69 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2019.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2018</span>
+                  <span class="archivo-meta">69 KB · Actualizado ago 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2018.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2017</span>
+                  <span class="archivo-meta">69 KB · Actualizado ago 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2017.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2016</span>
+                  <span class="archivo-meta">52 KB · Actualizado ago 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2016.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+		<li class="archivo-item">
+                <span class="archivo-formato badge-fmt-rar">RAR</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Monitoreo de precios — canasta básica 2015</span>
+                  <span class="archivo-meta">68 KB · Actualizado ago 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/qqp/QQP_2015.rar">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="tab-pane fade" id="panel-telecomunicaciones" role="tabpanel" aria-labelledby="tab-telecomunicaciones" tabindex="-1">
+            <div class="panel-encabezado">
+              <h2>Quejas de Telecomunicaciones</h2>
+              <p class="text-secondary">Quejas del sector de telecomunicaciones: telefonía, internet y televisión de paga.</p>
+            </div>
+            <ul class="archivo-lista list-unstyled">
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Quejas de telecomunicaciones</span>
+                  <span class="archivo-meta">13 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/quejas_telecom/quejas_telecomunicaciones_2022_ago_2026.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Metadatos del dataset</span>
+                  <span class="archivo-meta">1 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/quejas_telecom/quejas_telecom_metadatos_dataset.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Diccionario de datos</span>
+                  <span class="archivo-meta">3 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/quejas_telecom/quejas_telecom_diccionario_dataset.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-pane fade" id="panel-comercio-electronico" role="tabpanel" aria-labelledby="tab-comercio-electronico" tabindex="-1">
+            <div class="panel-encabezado">
+              <h2>Precios en Comercio Electrónico</h2>
+              <p class="text-secondary">Monitoreo de precios de productos en tiendas de comercio electrónico.</p>
+            </div>
+            <ul class="archivo-lista list-unstyled">
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Proveedores responsables</span>
+                  <span class="archivo-meta">42 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/comercio/proveedores_responsables_comercio_electronico_agosto_2026.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Metadatos del dataset</span>
+                  <span class="archivo-meta">1 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/comercio/metadatos_dataset.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Diccionario de datos</span>
+                  <span class="archivo-meta">1 KB · Actualizado oct 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="docs/comercio/diccionario_dataset.csv">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-pane fade" id="panel-contratos-adhesion" role="tabpanel" aria-labelledby="tab-contratos-adhesion" tabindex="-1">
+            <div class="panel-encabezado">
+              <h2>Registro de Contratos de Adhesión</h2>
+              <p class="text-secondary">Contratos de adhesión registrados ante la Profeco por los proveedores.</p>
+            </div>
+            <!--ul class="archivo-lista list-unstyled">
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-csv">CSV</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Registro de contratos de adhesión</span>
+                  <span class="archivo-meta">3.2 MB · Actualizado jul 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="#">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-xlsx">XLSX</span>
+                <span class="archivo-info">
+                  <span class="archivo-nombre">Padrón de proveedores registrados</span>
+                  <span class="archivo-meta">145 KB · Actualizado ago 2026</span>
+                </span>
+                <a class="btn btn-guinda archivo-btn" href="#">
+                  <i class="bi bi-download" aria-hidden="true"></i>
+                  Descargar
+                </a>
+              </li>
+              <li class="archivo-item">
+                <span class="archivo-formato badge-fmt-pdf">PDF</span>
+                <span class="archivo-info">
+        
