@@ -29,15 +29,16 @@ export const INFO: SourceInfo = {
   licence_url: "https://datos.gob.mx/libreusomx",
   attribution:
     "Source: Procuraduria Federal del Consumidor (Profeco), programa Quien es Quien en los Precios, datos.profeco.gob.mx, Libre Uso MX. Accessed by ProofPrice; changed by ProofPrice: for each product and pack we take every shop's newest price over 30 days and report the median and 10th to 90th percentile across shops, by state. Not endorsed by Profeco.",
-  homepage: "https://datos.profeco.gob.mx/datos_abiertos/qqp.php",
+  homepage: "https://datos.profeco.gob.mx/",
   limits:
     "Posted shelf prices that Profeco inspectors recorded in named shops, not receipts and not what one shopper paid; the sample is not representative of all shops. " +
     "Brands are pooled within a product and pack. Only the products and packs priced in the most shops are kept, a state needs 5 or more shops for a product, " +
     "and prices more than 4 times above or below the product's national median are dropped as entry errors. Shop names, addresses and coordinates are not stored.",
 };
 
-export const INDEX_URL = "https://datos.profeco.gob.mx/datos_abiertos/qqp.php";
-export const FILE_BASE = "https://datos.profeco.gob.mx/datos_abiertos/";
+// The publisher moved the catalogue on 27 Oct 2026: yearly files are now static links docs/qqp/QQP_<year>.rar on the root page.
+export const INDEX_URL = "https://datos.profeco.gob.mx/";
+export const FILE_BASE = "https://datos.profeco.gob.mx/";
 export const WINDOW_DAYS = 30; // a shop counts when its newest price for the product is within this many days of the newest day
 export const KEEP_ITEMS = 120; // products (product + pack) kept in the library: the ones priced in the most shops
 export const OUTLIER_FACTOR = 4;
@@ -194,6 +195,12 @@ export function parseIndex(html: string): { year: number; url: string }[] {
     if (!y) continue; // Metadatos / Diccionario links carry no year
     const href = m[1];
     out.push({ year: Number(y[1]), url: href.startsWith("http") ? href : new URL(href, FILE_BASE).toString() });
+  }
+  // Catalogue layout since 27 Oct 2026: <a href="docs/qqp/QQP_2026.rar">
+  const re2 = /href=["']([^"']*\/QQP_(20\d{2})\.rar)["']/gi;
+  while ((m = re2.exec(html))) {
+    const href = m[1];
+    out.push({ year: Number(m[2]), url: href.startsWith("http") ? href : new URL(href, FILE_BASE).toString() });
   }
   return out.sort((a, b) => b.year - a.year);
 }

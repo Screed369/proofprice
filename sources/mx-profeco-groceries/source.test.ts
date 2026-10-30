@@ -79,7 +79,16 @@ test("index page: yearly links are read with their hashes, Metadatos and Diccion
   <a href="file.php?t=42ed7dad4da507b9d536d9b737e7912d">Metadatos</a> <a href="file.php?t=2de3505b2d37e7db72557a09262d95c7">Diccionario</a>`;
   const l = parseIndex(html);
   assert.deepEqual(l.map((x) => x.year), [2026, 2025]);
-  assert.equal(l[0].url, "https://datos.profeco.gob.mx/datos_abiertos/file.php?t=9d62040eae6dcc63e36b8ac821427647");
+  assert.equal(l[0].url, "https://datos.profeco.gob.mx/file.php?t=9d62040eae6dcc63e36b8ac821427647");
+});
+
+test("index page: static docs/qqp links of the catalogue (since 27 Oct 2026)", () => {
+  const html = `<a class="btn" href="docs/qqp/QQP_2025.rar">Descargar</a>
+  <a class="btn" href="docs/qqp/QQP_2026.rar">Descargar</a>
+  <a class="btn" href="docs/qqp/QQP_metadatos_dataset.csv">Descargar</a>`;
+  const l = parseIndex(html);
+  assert.deepEqual(l.map((x) => x.year), [2026, 2025]);
+  assert.equal(l[0].url, "https://datos.profeco.gob.mx/docs/qqp/QQP_2026.rar");
 });
 
 test("matching: English and Spanish words, shorter names first, state aliases", () => {
