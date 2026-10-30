@@ -41,9 +41,10 @@ export const INFO: SourceInfo = {
 export const BASE_URL = "https://pncp.gov.br/api/consulta/v1/contratos";
 export const WINDOW_DAYS = 7;
 export const PAGE_SIZE = 500;
-export const MAX_PAGES_PER_DAY = 24; // about 12,000 contracts, 1.5 times a normal day
-export const PAGE_CONCURRENCY = 2; // first parallel run (6 at once) was answered HTTP 429 by the PNCP within 30 s
-export const BACKOFF_MS = [5_000, 15_000, 45_000]; // waits before retrying after HTTP 429 or 5xx
+export const MAX_PAGES_PER_DAY = 16; // about 8,000 contracts a day; sequential reading at ~2.5 s a page keeps 7 days inside the budget
+export const PAGE_CONCURRENCY = 1; // 6 at once and then 2 at once were both answered HTTP 429 by the PNCP (29 Oct); one at a time, paced
+export const MIN_GAP_MS = 2_000; // minimum time between the starts of two PNCP requests
+export const BACKOFF_MS = [20_000, 60_000, 120_000]; // waits before retrying after HTTP 429 or 5xx
 export const TIME_BUDGET_MS = 420_000; // the collector gives a source 600 s; stay well inside it (first live run timed out reading pages one by one)
 export const MIN_VALUE = 1_000;
 export const MAX_VALUE = 10_000_000_000;
@@ -180,7 +181,11 @@ export interface HarvestOptions {
   budgetMs?: number; // harvest only: total time budget
 }
 
+let lastStart = 0;
 async function defaultFetcher(url: string): Promise<any> {
+  const wait = lastStart + MIN_GAP_MS - Date.now();
+  lastStart = Math.max(Date.now(), lastStart + MIN_GAP_MS);
+  if (wait > 0) await new Promise((r) => setTimeout(r, wait));
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 60000);
   try {

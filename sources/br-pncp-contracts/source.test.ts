@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { aggregate, brContracts, brContractsHarvest, contractsOf, INFO, PATTERNS, PT_ALIASES, pageUrl, purchaseFor, purchasesOf, readDay, stateOf, windowDays } from "./source";
+import { aggregate, brContracts, brContractsHarvest, contractsOf, INFO, PATTERNS, PT_ALIASES, pageUrl, purchaseFor, purchasesOf, readDay, stateOf, windowDays, PAGE_CONCURRENCY, MIN_GAP_MS, BACKOFF_MS } from "./source";
 import { PURCHASES, normaliseText } from "../../categories/contracts/purchases";
 import { writeDaily, writeMeta } from "../../lib/library/store";
 import { InputError, SourceError } from "../../lib/http";
@@ -195,4 +195,21 @@ test("HTTP 429 is waited out and retried; a 400 is not; no time left means no re
   const always = async (url: string) => { k++; throw new SourceError("HTTP 429", url, 429); };
   await assert.rejects(readDay("2026-10-27", { fetcher: always, backoffMs: [1], deadline: 0 }), /429/);
   assert.equal(k, 1);
+});
+
+test("pacing: pages are read one at a time, with a gap and long back-offs (parallel reads were answered HTTP 429 on 29 Oct)", async () => {
+  assert.equal(PAGE_CONCURRENCY, 1);
+  assert.ok(MIN_GAP_MS >= 2000);
+  assert.ok(BACKOFF_MS[0] >= 20000);
+  let running = 0, peak = 0;
+  const fetcher = async (url: string) => {
+    running++; peak = Math.max(peak, running);
+    await new Promise((r) => setTimeout(r, 5));
+    running--;
+    const page = Number(new URL(url).searchParams.get("pagina"));
+    return { data: [LIVE[0]], totalRegistros: 4, totalPaginas: 4, numeroPagina: page };
+  };
+  const d = await readDay("2026-10-27", { fetcher });
+  assert.equal(peak, 1);
+  assert.equal(d.contracts.length, 4);
 });
