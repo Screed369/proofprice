@@ -590,3 +590,24 @@ test("stale-if-error: England & Wales home sales stand in with the newest whole 
   assert.equal(staleAnswer({ ...base, params: { ...params, postcode_district: "BS8" } }), null);
   assert.equal(staleAnswer({ ...base, params: { ...params, property_type: "terraced" } }), null);
 });
+
+test("stale-if-error: Portugal's quarterly INE medians stay available for 35 days after the last good collection, not for longer", () => {
+  const pt = SOURCE_PLUGINS.find((s) => s.info.id === "pt-home-prices")!;
+  const homes = categoryById("home-sales")!;
+  assert.ok(pt.harvest && pt.referenceDates && pt.staleMaxDays === 35);
+  const params = { country: "PT", town: "Lisboa" };
+  const key = pt.historyKey!(homes.prepare ? homes.prepare({ ...params }) : { ...params })!;
+  writeDaily("pt-home-prices", { date: "2026-06-30", currency: "EUR", unit: "per m²", rows: [{ area: key.area, item: key.item, n: 5, median: 4200, low: 4200, high: 4200, min: 4200, max: 4200 }] });
+  const meta = { source: "pt-home-prices", currency: "EUR", unit: "per m²", first_date: "2026-06-30", last_date: "2026-06-30", days: 1, last_harvest_at: null, last_rows: 1, last_error: null };
+  const base = { cat: homes, src: pt, params: (homes.prepare ? homes.prepare({ ...params }) : { ...params }), query: params, error: new SourceError("INE timed out") };
+  writeMeta("pt-home-prices", { ...meta, last_ok_at: new Date(Date.now() - 20 * 86400000).toISOString() });
+  const a = staleAnswer(base)!;
+  assert.ok(a, "20 days after the last good collection a quarterly figure is still the newest INE has");
+  assert.equal(a.extra!.stale, true);
+  assert.match(a.notice, /our copy of the figure for 2026-06-30, collected on \d{4}-\d{2}-\d{2}\./);
+  writeMeta("pt-home-prices", { ...meta, last_ok_at: new Date(Date.now() - 40 * 86400000).toISOString() });
+  assert.equal(staleAnswer(base), null, "beyond 35 days no copy is served");
+  // other reference-dated sources keep the one-week window
+  const ca = SOURCE_PLUGINS.find((s) => s.info.id === "ca-statcan-fuel")!;
+  assert.equal(ca.staleMaxDays, undefined);
+});

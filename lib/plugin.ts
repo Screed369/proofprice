@@ -149,6 +149,10 @@ export interface SourcePlugin {
    *  the day it was collected. A stale-if-error copy is then recent when the collector last succeeded within STALE_MAX_DAYS
    *  (the newest figure is still the newest the publisher has), and the answer states the reference date it is for. */
   referenceDates?: boolean;
+  /** Only with referenceDates: how many days after its last successful collection a stale-if-error copy may still stand in
+   *  (default STALE_MAX_DAYS, capped at STALE_MAX_DAYS_REFERENCE). For quarterly official statistics whose newest figure cannot
+   *  change between releases; the answer still states the reference date and the collection date. */
+  staleMaxDays?: number;
   /** Optional: the outside check (see CrossCheck). Internal only: never shown in answers, tools, REST, coverage or pages. */
   crossCheck?: CrossCheck;
 }

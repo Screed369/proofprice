@@ -29,6 +29,7 @@ export default defineSource({
   harvest: () => ptHarvest(),
   historyKey: (p) => ptHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), bedrooms: num(p.bedrooms) }),
   referenceDates: true,
+  staleMaxDays: 35, // INE publishes quarterly; its newest figure cannot change between releases, and INE often refuses cloud IPs for days
   nominalCounts: true,
   noHistory: "Portugal: INE publishes one rolling-12-month median rent per quarter and ProofPrice keeps no separate history of it yet. Ask pricepaid_rent_prices (/api/v1/rent) for the newest figure, which carries the previous quarter and the year earlier.",
 });

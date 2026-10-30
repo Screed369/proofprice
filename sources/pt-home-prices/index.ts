@@ -34,6 +34,7 @@ export default defineSource({
   harvest: () => ptHarvest(),
   historyKey: (p) => ptHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type) }),
   referenceDates: true,
+  staleMaxDays: 35, // INE publishes quarterly; its newest figure cannot change between releases, and INE often refuses cloud IPs for days
   nominalCounts: true,
   noHistory: "Portugal: INE publishes one rolling-12-month median per quarter and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure, which carries the previous quarter and the year earlier.",
 });

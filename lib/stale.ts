@@ -15,6 +15,8 @@ import { confidenceLabel, hasCount, passesGate, MIN_PUBLISH } from "./stats";
 
 /** A snapshot older than this many days is not recent enough to stand in for a live answer. */
 export const STALE_MAX_DAYS = 7;
+/** Upper limit a quarterly reference-dated source may ask for with staleMaxDays. */
+export const STALE_MAX_DAYS_REFERENCE = 45;
 
 export interface StaleOptions {
   cat: CategoryPlugin;
@@ -59,8 +61,10 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
     if (!last && src.referenceDates) {
       // Rows are dated by the month or quarter the figure is for. The newest day is still the newest published figure as long
       // as the collector succeeded within the last STALE_MAX_DAYS days.
+      const refDays = Math.min(Math.max(src.staleMaxDays ?? STALE_MAX_DAYS, STALE_MAX_DAYS), STALE_MAX_DAYS_REFERENCE);
+      const refFrom = iso(new Date(today.getTime() - refDays * 86400000));
       const okAt = meta?.last_ok_at ? meta.last_ok_at.slice(0, 10) : null;
-      const latest = okAt && okAt >= from && okAt <= iso(today) ? readLatestDay(src.info.id) : null;
+      const latest = okAt && okAt >= refFrom && okAt <= iso(today) ? readLatestDay(src.info.id) : null;
       const row = latest?.rows.find((r) => r.area === key.area && r.item === key.item && usable(r));
       if (row) {
         last = row;
