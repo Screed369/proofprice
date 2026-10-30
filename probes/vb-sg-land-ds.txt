@@ -1,0 +1,23 @@
+URL: https://data.gov.sg/api/action/datastore_search?resource_id=d_e225b635fbe3ecf5b378447e4b517939&limit=5
+Fetched: 2026-10-30T06:41:39Z from GitHub Actions
+Status, type, bytes: 200 application/json 3470
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Fri, 30 Oct 2026 06:41:39 GMT
+content-type: application/json
+x-content-type-options: nosniff
+vary: Accept-Encoding
+apigw-requestid: GC5VkhG7SQ0EJsQ=
+strict-transport-security: max-age=31536000; includeSubDomains
+last-modified: Fri, 30 Oct 2026 06:41:39 GMT
+cache-control: max-age=300
+cf-cache-status: MISS
+set-cookie: _cfuvid=bcddCk4WXi62EHXL4k68HPEn7WDbnSvmlULYvKVT0Cc-1793342498.5015907-1.0.1.1-3JKspnc.nPD8kXSBKJy0v4KgmIzXTffaONE4xbMF7Sc; HttpOnly; SameSite=None; Secure; Path=/; Domain=data.gov.sg
+server: cloudflare
+cf-ray: a5286f779997884e-IAD
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"success":true,"result":{"resource_id":"d_e225b635fbe3ecf5b378447e4b517939","fields":[{"type":"text","id":"date_of_launch"},{"type":"text","id":"date_of_tender_closing"},{"type":"text","id":"date_of_award"},{"type":"text","id":"location"},{"type":"text","id":"type_of_devt_allowed"},{"type":"numeric","id":"lease"},{"type":"text","id":"type_of_devt_code"},{"type":"numeric","id":"site_area"},{"type":"numeric","id":"gross_plot_ratio"},{"type":"numeric","id":"gross_floor_area"},{"type":"numeric","id":"no_of_bids"},{"type":"text","id":"successful_tenderer_name"},{"type":"numeric","id":"successful_tender_price"},{"type":"numeric","id":"psm_per_gpr_or_gfa"},{"type":"text","id":"planning_area"},{"type":"int4","id":"_id"}],"records":[{"_id":1,"date_of_launch":"2016-04-28","date_of_tender_closing":"2016-06-28","date_of_award":"2016-07-01","location":"Martin Place","type_of_devt_allowed":"Residential","lease":"99","type_of_devt_code":"Residential (Non-Landed)","site_area":"15936.1","gross_plot_ratio":"na","gross_floor_area":"44622","no_of_bids":"13","successful_tenderer_name":"First Bedok Land Pte Ltd","successful_tender_price":"595100000","psm_per_gpr_or_gfa":"13336.47","planning_area":"River Valley"},{"_id":2,"date_of_launch":"2016-03-30","date_of_tender_closing":"2016-05-24","date_of_award":"2016-05-30","location":"Bukit Batok West Avenue 6","type_of_devt_allowed":"Commercial and Residential","lease":"99","type_of_devt_code":"Commercial and Residential","site_area":"14696.7","gross_plot_ratio":"na","gross_floor_area":"44091","no_of_bids":"11","successful_tenderer_name":"Qingjian Realty (BBR) Pte Ltd. and Qingjian Realty (BBC) Pte Ltd.","successful_tender_price":"301160000","psm_per_gpr_or_gfa":"6830.42","planning_area":"Bukit Batok"},{"_id":3,"date_of_launch":"2016-02-25","date_of_tender_closing":"2016-04-07","date_of_award":"2016-04-13","location":"Jalan Kandis","type_of_devt_allowed":"Residential","lease":"99","type_of_devt_code":"Residential (Non-Landed)","site_area":"7045.6","gross_plot_ratio":"na","gross_floor_area":"9864","no_of_bids":"9","successful_tenderer_name":"Dillenia Land Pte.Ltd.","successful_tender_price":"51070228","psm_per_gpr_or_gfa":"5177.44","planning_area":"Sembawang"},{"_id":4,"date_of_launch":"2016-01-20","date_of_tender_closing":"2016-02-23","date_of_award":"2016-02-26","location":"New Upper Changi Road / Bedok South Avenue 3","type_of_devt_allowed":"Residential","lease":"99","type_of_devt_code":"Residential (Non-Landed)","site_area":"24394","gross_plot_ratio":"na","gross_floor_area":"51228","no_of_bids":"8","successful_tenderer_name":"CEL Residential Development Pte. Ltd.","successful_tender_price":"419380000","psm_per_gpr_or_gfa":"8186.54","planning_area":"Bedok"},{"_id":5,"date_of_launch":"2015-11-26","date_of_tender_closing":"2016-01-14","date_of_award":"2016-01-18","location":"Siglap Road","type_of_devt_allowed":"Residential","lease":"99","type_of_devt_code":"Residential (Non-Landed)","site_area":"19309.6","gross_plot_ratio":"na","gross_floor_area":"67584","no_of_bids":"8","successful_tenderer_name":"FCL Topaz Pte. Ltd., Sekisui House, Ltd. and KH Capital Pte. Ltd.","successful_tender_price":"624180000","psm_per_gpr_or_gfa":"9235.62","planning_area":"Bedok"}],"_links":{"start":"/api/action/datastore_search?resource_id=d_e225b635fbe3ecf5b378447e4b517939&limit=5","next":"/api/action/datastore_search?resource_id=d_e225b635fbe3ecf5b378447e4b517939&offset=5&limit=5"},"total":340,"limit":5}}
