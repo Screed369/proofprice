@@ -1,0 +1,1191 @@
+URL: https://www.datos.gov.co/api/views/3he6-m866
+Fetched: 2026-10-30T04:41:30Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 35080
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 30 Oct 2026 04:41:30 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: c057d141ed13bd556c73bc495a61c86f
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "id" : "3he6-m866",
+  "name" : "Consulta pública de Precios de Medicamentos",
+  "assetType" : "dataset",
+  "attribution" : "Ministerio de Salud y Protección Social - MinSalud, Bogotá D.C.",
+  "attributionLink" : "https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VS/MET/abece-circular-06-2018-sismed.pdf",
+  "averageRating" : 0,
+  "category" : "Salud y Protección Social",
+  "createdAt" : 1655217677,
+  "description" : "Consulta pública de Precios de Medicamentos\nSISMED - Sistema de Información de Precios de Medicamentos \nDiligencia la Encuesta de Satisfacción:\nhttps://tramites.minsalud.gov.co/FormularioInscripcion/EncuestaSatisfaccion.aspx",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 3214,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "CC_40_BY_SA",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 38584377,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1655305487,
+  "publicationGroup" : 18743190,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1655481758,
+  "tableId" : 18744363,
+  "totalTimesRated" : 0,
+  "viewCount" : 27638,
+  "viewLastModified" : 1779130042,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1655344448,
+    "reviewedAutomatically" : false,
+    "state" : "approved",
+    "submissionId" : 4770013,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1655321723,
+    "targetAudience" : "public",
+    "workflowId" : 2188,
+    "reviewer" : {
+      "id" : "r4qn-dwdd",
+      "displayName" : "Ministerio de Tecnologías de la Información y las Comunicaciones - Datos Abiertos"
+    },
+    "submissionDetails" : {
+      "permissionType" : "read"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1655344448,
+      "failureCount" : 0,
+      "startedAt" : 1655344448,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "e8g4-ac65",
+      "displayName" : "Minsalud"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 561909479,
+    "name" : "FechaCorte",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "fechacorte",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142637249,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "2019/06/01",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2017/01/01",
+        "count" : "1311285"
+      }, {
+        "item" : "2017/10/01",
+        "count" : "854210"
+      }, {
+        "item" : "2017/07/01",
+        "count" : "829229"
+      }, {
+        "item" : "2018/10/01",
+        "count" : "817373"
+      }, {
+        "item" : "2019/05/01",
+        "count" : "816583"
+      }, {
+        "item" : "2018/04/01",
+        "count" : "816194"
+      }, {
+        "item" : "2018/06/01",
+        "count" : "811440"
+      }, {
+        "item" : "2018/05/01",
+        "count" : "807203"
+      }, {
+        "item" : "2018/07/01",
+        "count" : "806467"
+      }, {
+        "item" : "2017/09/01",
+        "count" : "804930"
+      }, {
+        "item" : "2019/03/01",
+        "count" : "804780"
+      }, {
+        "item" : "2018/09/01",
+        "count" : "804361"
+      }, {
+        "item" : "2018/08/01",
+        "count" : "798477"
+      }, {
+        "item" : "2018/03/01",
+        "count" : "792568"
+      }, {
+        "item" : "2017/05/01",
+        "count" : "787207"
+      }, {
+        "item" : "2017/12/01",
+        "count" : "784423"
+      }, {
+        "item" : "2019/02/01",
+        "count" : "780984"
+      }, {
+        "item" : "2019/04/01",
+        "count" : "777389"
+      }, {
+        "item" : "2017/06/01",
+        "count" : "765853"
+      }, {
+        "item" : "2017/03/01",
+        "count" : "760736"
+      } ],
+      "smallest" : "2017/01/01",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : {
+      "view" : "date_ymd"
+    }
+  }, {
+    "id" : 561909453,
+    "name" : "RolActorDesc",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "rolactordesc",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619375,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "ELABORA O IMPORTA EL MEDICAMENTO",
+      "null" : "0",
+      "top" : [ {
+        "item" : "ELABORA O IMPORTA EL MEDICAMENTO",
+        "count" : "23050000"
+      } ],
+      "smallest" : "ELABORA O IMPORTA EL MEDICAMENTO",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909454,
+    "name" : "TipoReportePrecioDesc",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "tiporeportepreciodesc",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619376,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "VENTA",
+      "null" : "0",
+      "top" : [ {
+        "item" : "VENTA",
+        "count" : "16430593"
+      }, {
+        "item" : "COMPRA",
+        "count" : "6064150"
+      }, {
+        "item" : "RECOBRO",
+        "count" : "555257"
+      } ],
+      "smallest" : "COMPRA",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909455,
+    "name" : "TransaccionSISMEDDesc",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "transaccionsismeddesc",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619377,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "TRANSACCION PRIMARIA INSTITUCIONAL",
+      "null" : "0",
+      "top" : [ {
+        "item" : "TRANSACCION PRIMARIA INSTITUCIONAL",
+        "count" : "23050000"
+      } ],
+      "smallest" : "TRANSACCION PRIMARIA INSTITUCIONAL",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909477,
+    "name" : "CodigoIUM",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "codigoium",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142637247,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "1",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1",
+        "count" : "23050000"
+      } ],
+      "smallest" : "1",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909457,
+    "name" : "NombreIUM",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "nombreium",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619379,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "NO DEFINIDO",
+      "null" : "0",
+      "top" : [ {
+        "item" : "NO DEFINIDO",
+        "count" : "23050000"
+      } ],
+      "smallest" : "NO DEFINIDO",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909472,
+    "name" : "ExpedienteCum",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "expedientecum",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142637242,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "98734",
+      "null" : "0",
+      "top" : [ {
+        "item" : "29523",
+        "count" : "75172"
+      }, {
+        "item" : "1",
+        "count" : "58511"
+      }, {
+        "item" : "19936296",
+        "count" : "39305"
+      }, {
+        "item" : "39002",
+        "count" : "31237"
+      }, {
+        "item" : "17145",
+        "count" : "30210"
+      }, {
+        "item" : "35662",
+        "count" : "29974"
+      }, {
+        "item" : "19905554",
+        "count" : "29962"
+      }, {
+        "item" : "19940721",
+        "count" : "29742"
+      }, {
+        "item" : "19934768",
+        "count" : "29403"
+      }, {
+        "item" : "34162",
+        "count" : "27104"
+      }, {
+        "item" : "32606",
+        "count" : "27075"
+      }, {
+        "item" : "36743",
+        "count" : "26819"
+      }, {
+        "item" : "19943745",
+        "count" : "26752"
+      }, {
+        "item" : "19912966",
+        "count" : "26530"
+      }, {
+        "item" : "225064",
+        "count" : "26446"
+      }, {
+        "item" : "42216",
+        "count" : "26213"
+      }, {
+        "item" : "19913783",
+        "count" : "26127"
+      }, {
+        "item" : "19926478",
+        "count" : "25927"
+      }, {
+        "item" : "19943350",
+        "count" : "25886"
+      }, {
+        "item" : "19900906",
+        "count" : "25855"
+      } ],
+      "smallest" : "1",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 561909474,
+    "name" : "Consecutivo",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "consecutivo",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142637244,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "99",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1",
+        "count" : "9133656"
+      }, {
+        "item" : "2",
+        "count" : "4360651"
+      }, {
+        "item" : "3",
+        "count" : "2665981"
+      }, {
+        "item" : "4",
+        "count" : "1629472"
+      }, {
+        "item" : "5",
+        "count" : "1119452"
+      }, {
+        "item" : "6",
+        "count" : "1009428"
+      }, {
+        "item" : "7",
+        "count" : "567071"
+      }, {
+        "item" : "8",
+        "count" : "409190"
+      }, {
+        "item" : "9",
+        "count" : "280895"
+      }, {
+        "item" : "10",
+        "count" : "274281"
+      }, {
+        "item" : "12",
+        "count" : "204737"
+      }, {
+        "item" : "11",
+        "count" : "175346"
+      }, {
+        "item" : "13",
+        "count" : "159916"
+      }, {
+        "item" : "14",
+        "count" : "89945"
+      }, {
+        "item" : "15",
+        "count" : "87229"
+      }, {
+        "item" : "16",
+        "count" : "74666"
+      }, {
+        "item" : "19",
+        "count" : "64222"
+      }, {
+        "item" : "18",
+        "count" : "62401"
+      }, {
+        "item" : "17",
+        "count" : "60110"
+      }, {
+        "item" : "20",
+        "count" : "47836"
+      } ],
+      "smallest" : "1",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909460,
+    "name" : "DescripcionComercial",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "descripcioncomercial",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619381,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "Y OTRAS. ESTUCHE POR 2 CAPSULAS EN BLISTER PVC/PE/PVDC INCOLORO/ALUMINIO.",
+      "null" : "0",
+      "top" : [ {
+        "item" : "NO DEFINIDO",
+        "count" : "58511"
+      }, {
+        "item" : "CAJA POR 30 TABLETAS EN BLISTER PVC/ALUMINIO",
+        "count" : "26281"
+      }, {
+        "item" : "BOLSA DE PLASTICO GRADO MEDICO CON SOBREBOLSA DE POLIETILENO DE ALTA DENSIDAD POR 500 ML.",
+        "count" : "24443"
+      }, {
+        "item" : "CAJA CON TUBO DE ALUMINIO POR 30 ML + CÃNULA DE APLICACIÃ“N",
+        "count" : "24124"
+      }, {
+        "item" : "USO INSTITUCIONAL: CAJA POR 900 TABLETAS EN BLISTER ALUMINIO PVC/PVDC TRANSPARENTE INCOLORO POR 30 TABLETAS CADA UNO.",
+        "count" : "22397"
+      }, {
+        "item" : "CAJA POR 50 TABLETAS EN BLISTER PVC/ALUMINIO.",
+        "count" : "21791"
+      }, {
+        "item" : "CAJA POR 100 TABLETAS EN 10 BLISTER PVC INCOLORO MAS PAPEL ALUMINIO POR 10 TABLETAS CADA UNO",
+        "count" : "21607"
+      }, {
+        "item" : "CAJA POR 20 TABLETAS EN BLISTER PVC/ALUMINIO.",
+        "count" : "21444"
+      }, {
+        "item" : "CAJA CARTON POR 20 TABLETAS EN BLISTER PVC INCOLORO -ALUMINIO IMPRESO.",
+        "count" : "21363"
+      }, {
+        "item" : "CAJA PLEGADIZA POR 10 BLISTER DE ALUMINIO/PVC TRANSPARENTE POR 10 TABLETAS CADA BLISTER.",
+        "count" : "21014"
+      }, {
+        "item" : "CAJA X 30 TABLETAS EN BLISTER PVC/ALUMINIO",
+        "count" : "19686"
+      }, {
+        "item" : "CAJA POR 10 AMPOLLAS POR 1 ML AMPOLLA AMBAR DE VIDRIO TIPO I PRABADO AMARILLO CON AROS DE SEGURIDAD VERDE Y ROJO",
+        "count" : "19637"
+      }, {
+        "item" : "BOLSA DE PLASTICO GRADO MEDICO CON SOBREBOLSA DE POLIETILENO DE ALTA DENSIDAD POR 100 ML.",
+        "count" : "19479"
+      }, {
+        "item" : "CAJA POR 30 CAPSULAS EN BLISTER DE ALUMINIO/PVC-PVDC (BLISTER POR 10 CAPSULAS).",
+        "count" : "18593"
+      }, {
+        "item" : "CAJA POR 10 AMPOLLAS X 5 ML",
+        "count" : "18583"
+      }, {
+        "item" : "TUBO COLAPSIBLE POR 15 G. EN CAJA DE CARTON",
+        "count" : "18444"
+      }, {
+        "item" : "FRASCO PET AMBAR POR 120ML",
+        "count" : "18114"
+      }, {
+        "item" : "AMPOLLA AMBAR PIROGRABADA POR 1ML EN CAJA POR 10 AMPOLLAS.",
+        "count" : "18087"
+      }, {
+        "item" : "CAJA CON 24 AMPOLLETAS DE VIDRIO INCOLORO TIPO I POR 3ML.. EN BLISTER Y CON JERINGA DESECHABLE DE 3ML CON RS INVIMA2003-V0002329. 2009DM-0004935. 2010DM-0006182. 2011DM-0007276 Y 2013DM-000438-R2",
+        "count" : "17988"
+      }, {
+        "item" : "BOLSA PLÃSTICA DE PVC GRADO MÃ‰DICO DE DOS SALIDAS. CON BOLSA EXTERNA DE POLIETILENO DE ALTA DENSIDAD POR 500 ML",
+        "count" : "17885"
+      } ],
+      "smallest" : "",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909461,
+    "name" : "FormaFarmaceutica",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "formafarmaceutica",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619382,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "UNGUENTO TOPICO",
+      "null" : "0",
+      "top" : [ {
+        "item" : "TABLETA",
+        "count" : "4538510"
+      }, {
+        "item" : "SOLUCION INYECTABLE",
+        "count" : "3725757"
+      }, {
+        "item" : "TABLETA RECUBIERTA",
+        "count" : "2619938"
+      }, {
+        "item" : "CAPSULA DURA",
+        "count" : "1396765"
+      }, {
+        "item" : "TABLETA CUBIERTA CON PELICULA",
+        "count" : "1206481"
+      }, {
+        "item" : "SOLUCION ORAL",
+        "count" : "657205"
+      }, {
+        "item" : "POLVO ESTERIL PARA RECONSTITUIR A SOLUCION INYECTABLE",
+        "count" : "633049"
+      }, {
+        "item" : "JARABE",
+        "count" : "551101"
+      }, {
+        "item" : "SUSPENSION ORAL",
+        "count" : "550265"
+      }, {
+        "item" : "POLVO LIOFILIZADO PARA RECONSTITUIR A SOLUCION INYECTABLE",
+        "count" : "528849"
+      }, {
+        "item" : "SOLUCION OFTALMICA",
+        "count" : "510907"
+      }, {
+        "item" : "CAPSULA BLANDA",
+        "count" : "505605"
+      }, {
+        "item" : "CREMA TOPICA",
+        "count" : "503779"
+      }, {
+        "item" : "POLVO PARA RECONSTITUIR A SUSPENSION ORAL",
+        "count" : "334863"
+      }, {
+        "item" : "TABLETA DE LIBERACION PROLONGADA",
+        "count" : "333143"
+      }, {
+        "item" : "SUSPENSION INYECTABLE",
+        "count" : "251599"
+      }, {
+        "item" : "SOLUCION TOPICA",
+        "count" : "236644"
+      }, {
+        "item" : "TABLETA CUBIERTA (GRAGEA)",
+        "count" : "222918"
+      }, {
+        "item" : "CAPSULA DE LIBERACION PROLONGADA",
+        "count" : "193738"
+      }, {
+        "item" : "POLVO PARA RECONSTITUIR A SOLUCION ORAL",
+        "count" : "185238"
+      } ],
+      "smallest" : "",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909462,
+    "name" : "ATC",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "atc",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619383,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "V10XX10",
+      "null" : "0",
+      "top" : [ {
+        "item" : "N02BE01",
+        "count" : "245625"
+      }, {
+        "item" : "H03AA01",
+        "count" : "192123"
+      }, {
+        "item" : "M01AE01",
+        "count" : "191707"
+      }, {
+        "item" : "M01AB05",
+        "count" : "181583"
+      }, {
+        "item" : "N02BE51",
+        "count" : "177193"
+      }, {
+        "item" : "C10AA05",
+        "count" : "176218"
+      }, {
+        "item" : "A02BC05",
+        "count" : "174215"
+      }, {
+        "item" : "N02AX02",
+        "count" : "172142"
+      }, {
+        "item" : "B05CB01",
+        "count" : "161321"
+      }, {
+        "item" : "A02BC01",
+        "count" : "154848"
+      }, {
+        "item" : "M01AE02",
+        "count" : "153558"
+      }, {
+        "item" : "A02BA02",
+        "count" : "153139"
+      }, {
+        "item" : "C09CA01",
+        "count" : "145357"
+      }, {
+        "item" : "A03FA01",
+        "count" : "143447"
+      }, {
+        "item" : "J01CA04",
+        "count" : "143017"
+      }, {
+        "item" : "C07AB02",
+        "count" : "138212"
+      }, {
+        "item" : "H02AB02",
+        "count" : "137745"
+      }, {
+        "item" : "C08CA01",
+        "count" : "133963"
+      }, {
+        "item" : "A07CA99",
+        "count" : "129487"
+      }, {
+        "item" : "N03AG01",
+        "count" : "128883"
+      } ],
+      "smallest" : "1",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909463,
+    "name" : "Descripcion_Atc",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "descripcion_atc",
+    "position" : 12,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619384,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "ZUCLOPENTIXOL",
+      "null" : "0",
+      "top" : [ {
+        "item" : "PARACETAMOL",
+        "count" : "298163"
+      }, {
+        "item" : "SODIO CLORURO",
+        "count" : "217521"
+      }, {
+        "item" : "DICLOFENAC",
+        "count" : "217305"
+      }, {
+        "item" : "IBUPROFENO",
+        "count" : "197094"
+      }, {
+        "item" : "LEVOTIROXINA DE SODIO",
+        "count" : "192086"
+      }, {
+        "item" : "PARACETAMOL COMBINACIONES EXCLUYENDO SICOLEPTICOS",
+        "count" : "177004"
+      }, {
+        "item" : "ATORVASTATIN",
+        "count" : "175970"
+      }, {
+        "item" : "ESOMEPRAZOL",
+        "count" : "174205"
+      }, {
+        "item" : "METRONIDAZOL",
+        "count" : "173144"
+      }, {
+        "item" : "TRAMADOL",
+        "count" : "172137"
+      }, {
+        "item" : "GENTAMICINA",
+        "count" : "172011"
+      }, {
+        "item" : "CLOTRIMAZOL",
+        "count" : "170706"
+      }, {
+        "item" : "BETAMETASONA",
+        "count" : "163182"
+      }, {
+        "item" : "NAPROXENO",
+        "count" : "155035"
+      }, {
+        "item" : "OMEPRAZOL",
+        "count" : "154848"
+      }, {
+        "item" : "RANITIDINA",
+        "count" : "153139"
+      }, {
+        "item" : "DEXAMETASONA",
+        "count" : "149758"
+      }, {
+        "item" : "LOSARTAN",
+        "count" : "145083"
+      }, {
+        "item" : "METOCLOPRAMIDA",
+        "count" : "143447"
+      }, {
+        "item" : "AMOXICILINA",
+        "count" : "142928"
+      } ],
+      "smallest" : "-",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909464,
+    "name" : "Via_Administracion",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "via_administracion",
+    "position" : 13,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619385,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "VAGINAL",
+      "null" : "0",
+      "top" : [ {
+        "item" : "ORAL",
+        "count" : "14156674"
+      }, {
+        "item" : "INTRAMUSCULAR",
+        "count" : "2359951"
+      }, {
+        "item" : "INTRAVENOSA",
+        "count" : "2105170"
+      }, {
+        "item" : "TOPICA (EXTERNA)",
+        "count" : "1282056"
+      }, {
+        "item" : "CONJUNTIVAL",
+        "count" : "580809"
+      }, {
+        "item" : "PARENTERAL",
+        "count" : "538164"
+      }, {
+        "item" : "INHALACION",
+        "count" : "512069"
+      }, {
+        "item" : "SUBCUTANEA",
+        "count" : "314945"
+      }, {
+        "item" : "VAGINAL",
+        "count" : "265213"
+      }, {
+        "item" : "BUCAL",
+        "count" : "148990"
+      }, {
+        "item" : "INTRANASAL",
+        "count" : "111984"
+      }, {
+        "item" : "RECTAL",
+        "count" : "78092"
+      }, {
+        "item" : "OFTALMICA",
+        "count" : "68253"
+      }, {
+        "item" : "INTRA-ARTICULAR",
+        "count" : "66289"
+      }, {
+        "item" : "NO DEFINIDO",
+        "count" : "58527"
+      }, {
+        "item" : "OTICO AURICULAR",
+        "count" : "51075"
+      }, {
+        "item" : "TRANSDERMAL",
+        "count" : "46764"
+      }, {
+        "item" : "INTRA-ARTERIAL",
+        "count" : "42452"
+      }, {
+        "item" : "EPIDURAL",
+        "count" : "41311"
+      }, {
+        "item" : "INTRAOCULAR",
+        "count" : "38709"
+      } ],
+      "smallest" : "BUCAL",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909465,
+    "name" : "TipoEntidadDesc",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "tipoentidaddesc",
+    "position" : 14,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619386,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "PLANES COMPLEMENTARIOS",
+      "null" : "0",
+      "top" : [ {
+        "item" : "INSTITUCIÃ“N PRESTADORA DE SALUD",
+        "count" : "9601040"
+      }, {
+        "item" : "MAYORISTA",
+        "count" : "6374826"
+      }, {
+        "item" : "LABORATORIO",
+        "count" : "3857092"
+      }, {
+        "item" : "ENTIDAD PROMOTORA DE SALUD",
+        "count" : "2403208"
+      }, {
+        "item" : "CAJA DE COMPENSACIÃ“N FAMILIAR                         ",
+        "count" : "752544"
+      }, {
+        "item" : "DIRECCIÃ“N TERRITORIAL DE SALUD",
+        "count" : "25127"
+      }, {
+        "item" : "ENTIDAD DE OTRO TIPO",
+        "count" : "23048"
+      }, {
+        "item" : "NO DEFINIDO",
+        "count" : "5622"
+      }, {
+        "item" : "ADMINISTRADORA DE RIESGOS LABORALES",
+        "count" : "4436"
+      }, {
+        "item" : "ADMINISTRADORA CESANTIAS",
+        "count" : "1244"
+      }, {
+        "item" : "ORAL",
+        "count" : "1024"
+      }, {
+        "item" : "PLANES COMPLEMENTARIOS",
+        "count" : "391"
+      }, {
+        "item" : "EMPRESA PÃšBLICA",
+        "count" : "310"
+      }, {
+        "item" : "ENTIDAD RESPONSABLE DE PAGO",
+        "count" : "88"
+      } ],
+      "smallest" : "ADMINISTRADORA CESANTIAS",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909466,
+    "name" : "UnidadFacturaDesc",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "unidadfacturadesc",
+    "position" : 15,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142619387,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "NO DEFINIDO",
+      "null" : "0",
+      "top" : [ {
+        "item" : "NO DEFINIDO",
+        "count" : "23048976"
+      }, {
+        "item" : "MAYORISTA",
+        "count" : "721"
+      }, {
+        "item" : "CAJA DE COMPENSACIÃ“N FAMILIAR                         ",
+        "count" : "131"
+      }, {
+        "item" : "LABORATORIO",
+        "count" : "102"
+      }, {
+        "item" : "INSTITUCIÃ“N PRESTADORA DE SALUD",
+        "count" : "67"
+      }, {
+        "item" : "ENTIDAD PROMOTORA DE SALUD",
+        "count" : "3"
+      } ],
+      "smallest" : "CAJA DE COMPENSACIÃ“N FAMILIAR                         ",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909480,
+    "name" : "ValorMinimo",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "valorminimo",
+    "position" : 16,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142637250,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "NO DEFINIDO",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0.00000",
+        "count" : "6410747"
+      }, {
+        "item" : "100.00000",
+        "count" : "99105"
+      }, {
+        "item" : "200.00000",
+        "count" : "86646"
+      }, {
+        "item" : "300.00000",
+        "count" : "65371"
+      }, {
+        "item" : "150.00000",
+        "count" : "49366"
+      }, {
+        "item" : "500.00000",
+        "count" : "46142"
+      }, {
+        "item" : "2000.00000",
+        "count" : "45320"
+      }, {
+        "item" : "3000.00000",
+        "count" : "44856"
+      }, {
+        "item" : "1000.00000",
+        "count" : "42009"
+      }, {
+        "item" : "50.00000",
+        "count" : "41993"
+      }, {
+        "item" : "1500.00000",
+        "count" : "40204"
+      }, {
+        "item" : "400.00000",
+        "count" : "38873"
+      }, {
+        "item" : "2500.00000",
+        "count" : "38829"
+      }, {
+        "item" : "250.00000",
+        "count" : "35312"
+      }, {
+        "item" : "30.00000",
+        "count" : "32607"
+      }, {
+        "item" : "4000.00000",
+        "count" : "31982"
+      }, {
+        "item" : "1200.00000",
+        "count" : "30463"
+      }, {
+        "item" : "5000.00000",
+        "count" : "29901"
+      }, {
+        "item" : "6000.00000",
+        "count" : "29463"
+      }, {
+        "item" : "600.00000",
+        "count" : "29277"
+      } ],
+      "smallest" : "0.00000",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909473,
+    "name" : "ValorMaximo",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "valormaximo",
+    "position" : 17,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142637243,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "999999.00000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0.00000",
+        "count" : "6218510"
+      }, {
+        "item" : "100.00000",
+        "count" : "94148"
+      }, {
+        "item" : "200.00000",
+        "count" : "91569"
+      }, {
+        "item" : "300.00000",
+        "count" : "74036"
+      }, {
+        "item" : "500.00000",
+        "count" : "50590"
+      }, {
+        "item" : "3000.00000",
+        "count" : "50142"
+      }, {
+        "item" : "150.00000",
+        "count" : "48598"
+      }, {
+        "item" : "2000.00000",
+        "count" : "47308"
+      }, {
+        "item" : "1500.00000",
+        "count" : "42845"
+      }, {
+        "item" : "400.00000",
+        "count" : "42399"
+      }, {
+        "item" : "1000.00000",
+        "count" : "41649"
+      }, {
+        "item" : "2500.00000",
+        "count" : "41503"
+      }, {
+        "item" : "4000.00000",
+        "count" : "36642"
+      }, {
+        "item" : "250.00000",
+        "count" : "35736"
+      }, {
+        "item" : "5000.00000",
+        "count" : "32792"
+      }, {
+        "item" : "600.00000",
+        "count" : "32262"
+      }, {
+        "item" : "3500.00000",
+        "count" : "31984"
+      }, {
+        "item" : "6000.00000",
+        "count" : "31639"
+      }, {
+        "item" : "50.00000",
+        "count" : "31505"
+      }, {
+        "item" : "1200.00000",
+        "count" : "29546"
+      } ],
+      "smallest" : "0.00000",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909478,
+    "name" : "ValorPromedio",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "valorpromedio",
+    "position" : 18,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142637248,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "99999.93000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0.00000",
+        "count" : "6237396"
+      }, {
+        "item" : "100.00000",
+        "count" : "63761"
+      }, {
+        "item" : "200.00000",
+        "count" : "62100"
+      }, {
+        "item" : "300.00000",
+        "count" : "48922"
+      }, {
+        "item" : "150.00000",
+        "count" : "34141"
+      }, {
+        "item" : "500.00000",
+        "count" : "33730"
+      }, {
+        "item" : "3000.00000",
+        "count" : "31717"
+      }, {
+        "item" : "2000.00000",
+        "count" : "30902"
+      }, {
+        "item" : "400.00000",
+        "count" : "28660"
+      }, {
+        "item" : "1000.00000",
+        "count" : "28430"
+      }, {
+        "item" : "1500.00000",
+        "count" : "28316"
+      }, {
+        "item" : "2500.00000",
+        "count" : "27844"
+      }, {
+        "item" : "250.00000",
+        "count" : "25289"
+      }, {
+        "item" : "50.00000",
+        "count" : "24136"
+      }, {
+        "item" : "4000.00000",
+        "count" : "23643"
+      }, {
+        "item" : "5000.00000",
+        "count" : "21794"
+      }, {
+        "item" : "600.00000",
+        "count" : "21098"
+      }, {
+        "item" : "3500.00000",
+        "count" : "21082"
+      }, {
+        "item" : "6000.00000",
+        "count" : "21031"
+      }, {
+        "item" : "1200.00000",
+        "count" : "20843"
+      } ],
+      "smallest" : "0.00000",
+      "count" : "23050000",
+      "cardinality" : "23050000"
+    },
+    "format" : { }
+  }, {
+    "id" : 561909476,
+    "name" : "Unidades",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "unidades",
+    "position" : 19,
+    "renderTypeName" : "text",
+    "tableColumnId" : 142637246,
+    "cachedContents" : {
+      "non_null" : "23050000",
+      "largest" : "99.99998",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0.00000",
+        "count" : "6169298"
+      }, {
+        "item" : "1.00000",
+        "count" : "1111361"
+      }, {
+        "item" : "2.00000",
