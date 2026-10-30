@@ -1,0 +1,27 @@
+URL: https://mapy.geoportal.gov.pl/wss/service/rcn?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:lokale&count=300&filter=%3Cfes%3AFilter%20xmlns%3Afes%3D%22http%3A%2F%2Fwww.opengis.net%2Ffes%2F2.0%22%3E%3Cfes%3AAnd%3E%3Cfes%3APropertyIsGreaterThanOrEqualTo%3E%3Cfes%3AValueReference%3EDOK_DATA%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E2026-09-01%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsGreaterThanOrEqualTo%3E%3Cfes%3APropertyIsLessThan%3E%3Cfes%3AValueReference%3EDOK_DATA%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E2026-10-01%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsLessThan%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETERYT%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E1465%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ELOK_FUNKCJA%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Emieszkalna%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETRAN_RODZAJ_TRANS%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3EwolnyRynek%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3C%2Ffes%3AAnd%3E%3C%2Ffes%3AFilter%3E
+Fetched: 2026-10-30T09:17:42Z from GitHub Actions
+Status, type, bytes: 200 text/xml; subtype="gml/3.2.1"; charset=UTF-8 774
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Fri, 30 Oct 2026 09:17:41 GMT
+Content-Type: text/xml; subtype="gml/3.2.1"; charset=UTF-8
+Content-Length: 774
+Access-Control-Allow-Origin: *
+Set-Cookie: gahLaQu1eeYooCu=!URnmOhKT87k98yTEgCC3wH9en9lMvg+vNwdDeu9a/2G2F0KKy6hRYmjfXwLoMl2PCxnjrkm+n4C45hY=; path=/; Httponly; Secure
+Set-Cookie: TS017e0801=01e9e35b2278fa7b79253f713d96ea442734b3dceb24c3136270b11261b2e5e725bd8a7aec7fe7162b3e40c37e4d14c7f784b5756c90f908161cbbd0a7af529f95ab8d1372; Path=/; Domain=.mapy.geoportal.gov.pl
+Vary: Accept-Encoding
+
+=== FILE TYPE: XML 1.0 document, ASCII text, with very long lines (403)
+=== FIRST 60000 BYTES
+<?xml version='1.0' encoding="UTF-8" ?>
+<wfs:FeatureCollection
+   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"
+   xmlns:gml="http://www.opengis.net/gml/3.2"
+   xmlns:wfs="http://www.opengis.net/wfs/2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://mapserver.gis.umn.edu/mapserver https://mapy.geoportal.gov.pl/wss/service/rcn?SERVICE=WFS&amp;VERSION=2.0.0&amp;REQUEST=DescribeFeatureType&amp;TYPENAME=ms:lokale&amp;OUTPUTFORMAT=application%2Fgml%2Bxml%3B%20version%3D3.2 http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd http://www.opengis.net/gml/3.2 http://schemas.opengis.net/gml/3.2.1/gml.xsd"
+   timeStamp="2026-10-30T10:17:42" numberMatched="unknown" numberReturned="0">
+</wfs:FeatureCollection>
+
