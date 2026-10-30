@@ -1,0 +1,440 @@
+URL: https://www.scb.se/en/services/open-data-api/
+Fetched: 2026-10-30T07:00:31Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 19636
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+date: Fri, 30 Oct 2026 07:00:31 GMT
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+set-cookie: TS017383fb=017dca055c9a75cdf9ec0cd45c704098f83f84fc2648caad8199d5142fe9997f1485d706efca02bcd7144d234fb9aa9bf8565f3efb; Path=/; Domain=.www.scb.se; Secure; HttpOnly
+vary: Accept-Encoding
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (457), with CRLF, LF line terminators
+=== FIRST 30000 BYTES
+
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        
+
+
+
+     
+        <title>Statistics Sweden is statistics accessible via API</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Language" content="en" />
+    <meta name="description" content="Enterprises and private individuals can obtain access to Statistics Sweden&#x27;s statistics via open data and use it to develop new products and services. " />
+    <meta name="priority" content="0.5" />
+    <meta name="ROBOTS" content="INDEX,FOLLOW" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Inter-Semibold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/js/v-91987/scb.js" as="script" type="text/javascript" crossorigin />
+    <link rel="stylesheet" href="/ui/scb-wc-selfhost.css?v-91987" />
+    <link rel="stylesheet" href="/ui/scb-typography.css?v-91987" />
+    <link rel="preconnect" href="https://matomo.scb.analys.cloud" />
+        <meta property="og:site_name" content="Statistikmyndigheten SCB" />
+    <meta property="og:title" content="Statistics Sweden is statistics accessible via API" />
+    <meta property="og:description" content="Enterprises and private individuals can obtain access to Statistics Sweden&#x27;s statistics via open data and use it to develop new products and services. " />
+    <meta property="og:url" content="https://www.scb.se/en/services/open-data-api/" />
+    <meta name="pageid" content="117835" />
+    <meta name="pagetype" content="Standardsida" />
+    <meta property="og:category" content="" />
+        <meta property="og:image" content="~/Assets/Styles/Images/scb-pa-platta.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/img/scb-icon-192.png">
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
+    <meta name="scb-load-balance-environment" content="DW11">
+        <link rel="canonical" href="https://www.scb.se/en/services/open-data-api/" />
+    <link rel="stylesheet" href="/css/fonts.css?v=91987" />
+    <link rel="stylesheet" href="/css/v-91987/dist/shared.min.css?v=91987" />
+        <link rel="stylesheet" href="/css/v-91987/dist/modules/readspeaker.css" />
+    <link rel="alternate" type="application/rss+xml" title="Statistiknyheter RSS" href="/feed/statistiknyheter" />
+<link rel='stylesheet' href='/css/dist/modules/columns.css?v=v-91987'/><link rel='stylesheet' href='/css/v-91987/scb-wc-blocks/contactblock.css?v=v-91987'/>
+<link rel='stylesheet' href='/css/v-91987/scb-wc-partial/_leftmenu.css?v=v-91987'/>
+<link rel='stylesheet' href='/css/v-91987/scb-wc-partial/breadcrumb.css?v=v-91987'/>
+
+    
+    <link rel="stylesheet" href="/css/v-91987/dist/pagetype/standardpage.min.css?v=91987" />
+
+
+
+
+</head>
+<body id="body" class=' scb-body no-js'>
+    <script>(l => l.remove('no-js') + l.add('js'))(document.body.classList)</script>
+    
+    
+    
+    
+
+<scb-header logo-href="/en/"
+            logo-src="/img/scb-logo.svg"
+            logo-alt="Statistics Sweden, to startpage"
+            logotype-text="Statistics Sweden"
+            defer-drawer
+            always-show-menu-button
+            reserve-tabs
+            reserve-tabs-count="6"
+            reserve-tabs-widths="128px 104px 120px 132px 72px"
+            padding-inline="8"
+            search-button-label="Search"
+            menu-button-label="Menu">
+        <scb-header-tab label="Finding statistics" href="/en/finding-statistics/" >
+        </scb-header-tab>
+        <scb-header-tab label="Services" href="/en/services/" selected>
+        </scb-header-tab>
+        <scb-header-tab label="Documentation" href="/en/documentation/" >
+        </scb-header-tab>
+        <scb-header-tab label="Data collection" href="/en/data-collection/" >
+        </scb-header-tab>
+        <scb-header-tab label="About us" href="/en/About-us/" >
+        </scb-header-tab>
+
+    <scb-icon-button variant="standard" size="medium" shape="round" icon="close" aria-label="Stäng menyn"></scb-icon-button>
+    
+<scb-menu slot="drawer-menu"
+          lazy-src="/structure/getchildren?id={id}&lang=sv"
+          lazy-id-field="Id"
+          lazy-label-field="Name"
+          lazy-href-field="Url"
+          lazy-has-children-field="HasChildren"
+          lazy-has-link-field="HasLink">
+        <scb-menu-item 
+            label="Finding statistics" 
+            item-href="/en/finding-statistics/" 
+            data-node-id="83" 
+            has-children
+            
+             >
+
+
+            </scb-menu-item>
+        <scb-menu-item 
+            label="Services" 
+            item-href="/en/services/" 
+            data-node-id="36635" 
+            has-children
+            
+            expanded >
+
+
+                <scb-sub-menu expanded>
+        <scb-menu-item 
+            label="Open data, API" 
+            item-href="" 
+            data-node-id="117835" 
+            has-children
+            selected
+             >
+
+
+            </scb-menu-item>
+        <scb-menu-item 
+            label="Ordering data and statistics" 
+            item-href="/en/services/ordering-data-and-statistics/" 
+            data-node-id="144146" 
+            has-children
+            
+             >
+
+
+            </scb-menu-item>
+        <scb-menu-item 
+            label="Statistical software for px files" 
+            item-href="/en/services/statistical-programs-for-px-files/" 
+            data-node-id="92654" 
+            has-children
+            
+             >
+
+
+            </scb-menu-item>
+                </scb-sub-menu>
+            </scb-menu-item>
+        <scb-menu-item 
+            label="Documentation" 
+            item-href="/en/documentation/" 
+            data-node-id="76705" 
+            has-children
+            
+             >
+
+
+            </scb-menu-item>
+        <scb-menu-item 
+            label="Data collection" 
+            item-href="/en/data-collection/" 
+            data-node-id="84233" 
+            has-children
+            
+             >
+
+
+            </scb-menu-item>
+        <scb-menu-item 
+            label="About us" 
+            item-href="/en/About-us/" 
+            data-node-id="80017" 
+            has-children
+            
+             >
+
+
+            </scb-menu-item>
+</scb-menu>
+
+                <scb-header-utility label="P&#xE5; svenska" role="menuitem" lang=sv href="/vara-tjanster/oppna-data/"></scb-header-utility>
+                <scb-header-utility label="Press" role="menuitem" href="/en/About-us/news-and-press/"></scb-header-utility>
+                <scb-header-utility label="Contact us" role="menuitem" href="/en/About-us/contact-us2/"></scb-header-utility>
+        <div slot="drawer-menu" class="drawer-links">
+                    <scb-button role="menuitem" lang=sv href="/vara-tjanster/oppna-data/" variant="text">P&#xE5; svenska</scb-button>
+                    <scb-button role="menuitem" href="/en/About-us/news-and-press/" variant="text">Press</scb-button>
+                    <scb-button role="menuitem" href="/en/About-us/contact-us2/" variant="text">Contact us</scb-button>
+        </div>
+</scb-header>
+    
+        
+<section id="kakrutan" data-nosnippet role="dialog" aria-labelledby="krr">
+    <div class="centered-container">
+        <scb-action-card>
+            <span slot="heading">Cookies on scb.se</span>
+            <span slot="supporting-text">At Statistics Sweden we use cookies so that our website will function well for you. By continuing your surfing on our website you agree to the use of cookies.</span>
+            <div slot="actions">
+                <form action="/en/About-us/about-the-website-and-terms-of-use/cookies/AcceptAll" method="post">
+                    <scb-button name="val" type="submit" value="allt">Accept all</scb-button>
+                    <scb-button name="val" type="submit" value="inget">Necessary only</scb-button>
+                    <input type="hidden" name="camefrom" value="/en/services/open-data-api/" />
+                    <scb-button variant="outlined" href="/en/About-us/about-the-website-and-terms-of-use/cookies/?camefrom=/en/services/open-data-api/">Cookie settings</scb-button>
+                </form>
+            </div>
+        </scb-action-card>
+    </div>
+</section>
+    <main id="mainContent">
+
+        <div class="centered-container">
+                    
+    <scb-breadcrumb>
+            <scb-breadcrumb-item item-href="/">Home</scb-breadcrumb-item>
+            <scb-breadcrumb-item item-href="/en/services/">Services</scb-breadcrumb-item>
+        <scb-breadcrumb-item>Open data, API</scb-breadcrumb-item>
+    </scb-breadcrumb>
+
+            <scb-grid cols-compact="4" cols-medium="8" cols-expanded="12" gap="10">
+                    <scb-grid-item col-span="3" id="left-menu-wrapper">
+                        <nav id="left-menu" aria-label="Submenu">
+                            
+
+
+<scb-menu lazy-src="/structure/getchildren?id={id}&lang=sv"
+		  lazy-id-field="Id"
+		  lazy-label-field="Name"
+		  lazy-href-field="Url"
+		  lazy-has-children-field="HasChildren"
+		  lazy-has-link-field="HasLink"
+		  class="left-menu">
+		<scb-menu-item
+			label="Open data, API"
+			item-href=""
+			data-node-id="117835"
+			has-children
+			selected
+			>
+
+		</scb-menu-item>
+		<scb-menu-item
+			label="Ordering data and statistics"
+			item-href="/en/services/ordering-data-and-statistics/"
+			data-node-id="144146"
+			has-children
+			
+			>
+
+		</scb-menu-item>
+		<scb-menu-item
+			label="Statistical software for px files"
+			item-href="/en/services/statistical-programs-for-px-files/"
+			data-node-id="92654"
+			has-children
+			
+			>
+
+		</scb-menu-item>
+</scb-menu>
+
+                        </nav>
+                    </scb-grid-item>
+                <scb-grid-item col-span="9">
+                    <div id="pageContent">
+                            
+
+
+
+<div id="readspeaker_button1" class="rs_skip rsbtn_colorskin rs_preserve">
+    <scb-button rel="nofollow"
+                class="rsbtn_play rsplay rspart"
+                variant=filled-tonal
+                size="medium"
+                icon="volume_up"
+                href="//app-eu.readspeaker.com/cgi-bin/rsent?customerid=8809&lang=en_uk&readid=pageContent&url=https://www.scb.se/en/services/open-data-api/">   
+                Listen
+    </scb-button>
+</div>
+                        <div id="mainContentArea" tabindex="-1"></div>
+                        
+
+
+
+ 
+
+<div class="row">
+    <div class="columns eight ">
+        <h1>
+            Open data
+        </h1>
+        <div class="ingress">
+
+            Statistics Sweden&#x2019;s open data is available for everyone to use free of charge.
+        </div>
+        <div class="xhtmlText">
+            
+<h2>Open data offered by Statistics Sweden</h2>
+<h3><a href="/en/services/open-data-api/pxwebapi/api-for-the-statistical-database/" target="_top">The Statistical Database</a></h3>
+<p>The Statistical Database contains official statistics from Statistics Sweden and other statistical agencies.</p>
+<h3><a href="/en/services/open-data-api/key-ratios-by-industry-and-size-class/" target="_top">Industry business ratios</a></h3>
+<p>Industry business ratios compare a company’s strong and weak sides using key ratios for various industries.&nbsp;</p>
+<h3><a href="/en/services/open-data-api/open-geodata/" target="_top">Geodata</a></h3>
+<p>Geodata describes everything that has a geographic location, such as localities, activity units or grid statistics.</p>
+<h3><a href="/vara-tjanster/oppna-data/myndighetsregistret/" target="_top">Government Agencies Register</a></h3>
+<p>The Government Agencies Register is a register of government agencies in Sweden.</p>
+<h3><a href="/vara-tjanster/oppna-data/vardefulla-datamangder-hvd/">High-Value Datasets</a></h3>
+<p>High-Value Datasets are information that EU has classified as particularly valuable and of high value for public benefit and innovation.</p>
+<h2>How you may use Statistics Sweden's open data</h2>
+<p><a href="/en/services/open-data-api/">Statistics Sweden’s statistics are accessible via API (scb.se)</a></p>
+<p>You may use Statistics Sweden’s open data free of charge.&nbsp;We use the licence CC0 for this data, which means that you may use and disseminate or provide such data without any requirement to state the source.</p>
+<p>If you choose to state the source, we recommend putting (when stating it in English): “Source: Statistics Sweden”.</p>
+<p>Statistics Sweden’s database also includes statistics from other government agencies. If you use statistics made available over Statistics Sweden’s API, which have a source reference to another agency, you should state this.</p>
+<p>If you yourself have processed data from Statistics Sweden, do not state the source.</p>
+<p>You may not use the API to spread malicious code.</p>
+<p>You may not present a service as an “official cooperation” or “partnership” with Statistics Sweden.</p>
+<h2>How Statistics Sweden’s API works</h2>
+<p>Statistics Sweden's API is provided as it is. You may perform a maximum of ten call-ups in a 10-second period from an IP address. You yourself choose how the questions are distributed. For example, you can choose to ask ten questions in the first second and then be denied the nine following times.&nbsp;You can retrieve a maximum of 100,000 values per table. The error message “HTTP 403 Forbidden” indicates that the maximum value has been exceeded.</p>
+<h2>How corrections of the statistics are handled</h2>
+<p>The statistics distributed by Statistics Sweden via the API are continually updated as we correct source data.&nbsp;We only communicate the correction in the Statistical Database.</p>
+<h2>Open data directives</h2>
+<p>On its digital agenda, the Government has an ambition to improve the conditions for further use of public information from government agencies. It is also an aspect that is regulated in the Inspire Directive from the EU.</p>
+<p><a href="https://www.geodata.se/styrande/inspire/" target="_blank" rel="noopener">The EU INSPIRE Directive</a></p>
+        </div>
+
+    </div>
+
+    
+
+
+</div>
+
+    <div class="row">
+        <div class="box box-border columns seven">
+            <h3>Contact</h3>
+            <dl itemscope itemtype="http://schema.org/Person">
+                
+<div><div class="contact-block">
+<div class="cc">
+Statistics Service        <br />
+        <div><span>Telephone:</span> <scb-link href="tel:&#x2B;46 10 479 50 00">&#x2B;46 10 479 50 00</scb-link></div>
+
+        <div class="contact-info">Opening hours<br>Weekdays <br>9:00–12:00, 13:00–16:00</div>
+        <scb-grid gap="12px">
+                <scb-link href="https://www.scb.se/en/About-us/contact-us/statistikservice/ask-us/">Ask us</scb-link>
+        </scb-grid>
+</div></div></div>
+            </dl>
+        </div>
+    </div>
+
+                    </div>
+                </scb-grid-item>
+            </scb-grid>
+        </div>
+
+            
+
+
+<link rel="stylesheet" href="/css/v-91987/scb-wc-partial/_share.css" />
+        <div class="centered-container">
+            <scb-divider></scb-divider>
+            <div class="share-menu-wrapper">
+                <span>Share:</span>
+                <scb-icon-button icon-filled aria-controls="options-menu-aria" aria-expanded="true" icon="share" variant="filled-tonal" label="aria-controls"></scb-icon-button>
+                <scb-options-menu id="options-menu-aria">
+                    <scb-options-menu-item label="Mail" href="mailto:?subject=Open data, API&amp;body=http%3A%2F%2Fwww.scb.se%2Fen%2Fservices%2Fopen-data-api%2F"></scb-options-menu-item>
+                    <scb-options-menu-item label="Facebook" href="https://www.facebook.com/share.php?u=http%3A%2F%2Fwww.scb.se%2Fen%2Fservices%2Fopen-data-api%2F"></scb-options-menu-item>
+                    <scb-options-menu-item label="LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Fwww.scb.se%2Fen%2Fservices%2Fopen-data-api%2F"></scb-options-menu-item>
+                </scb-options-menu>
+            </div>
+        </div>
+
+    </main>
+
+
+
+    
+    <footer id="footer">
+        
+<scb-footer max-width="1440px" description="Our main task is to supply users and customers with statistics for decision making, debate and research.">
+        <scb-footer-section title="New statistics">
+                <scb-link href="/en/finding-statistics/statistical-news/">Statistical news</scb-link>
+                <scb-link href="/en/About-us/news-and-press-releases/">News and press releases</scb-link>
+                <scb-link href="/en/finding-statistics/publishing-calendar/">Publishing calendar</scb-link>
+        </scb-footer-section>
+        <scb-footer-section title="Quick find">
+                <scb-link href="/en/About-us/news-and-press-releases/press-contacts/">Press contacts</scb-link>
+                <scb-link href="/en/finding-statistics/publications/">Publications</scb-link>
+        </scb-footer-section>
+        <scb-footer-section title="About scb.se">
+                <scb-link href="/en/About-us/about-the-website-and-terms-of-use/">About scb.se</scb-link>
+                <scb-link href="/en/About-us/about-the-website-and-terms-of-use/cookies/">Cookies</scb-link>
+        </scb-footer-section>
+        <scb-footer-section title="Follow us">
+                <scb-link href="/en/About-us/news-and-press/news-updates/">Follow news</scb-link>
+                <scb-link href="/en/About-us/news-and-press/statistics-sweden-on-social-media/">Social media</scb-link>
+        </scb-footer-section>
+
+</scb-footer>
+    </footer>
+
+    
+<script type="module" src="/js/v-91987/scb.js"></script>
+
+
+<script type='module' src='/js/v-91987/scb-wc-partial/_readspeaker.js'></script> 
+<script as='script' type='module' src='/ui/v-91987/components/scb-action-card/scb-action-card.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-breadcrumb/scb-breadcrumb.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-button/scb-button.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-divider/scb-divider.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-footer/scb-footer.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-header/scb-header.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-icon-button/scb-icon-button.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-link/scb-link.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-menu/scb-menu.js?v=v-91987'></script>
+<script as='script' type='module' src='/ui/v-91987/components/scb-options-menu/scb-options-menu.js?v=v-91987'></script>
+
+
+
+    
+    
+        <script src='/js/v-4/tracking/matomo.js' async id="mtmo" data-key="9zXnh5Ss"></script>
+
+
+</body>
+
+</html>
