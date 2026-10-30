@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { InputError } from "../../lib/http";
 import { SOURCE_PLUGINS, countriesFor, categoryById, paramSchemas } from "../../lib/registry";
 import {
-  INFO, ODATA_BASE, NATIONAL_KEY, cleanPlace, dataUrl, foldName, nlAnswer, nlHomePrices, parseRegions, parseValues, pickRegion, plainTitle, readNl, regionLookupUrl, searchToken,
+  INFO, ODATA_BASE, nlHarvest, nlHarvestRows, nlHistoryKey, NATIONAL_KEY, cleanPlace, dataUrl, foldName, nlAnswer, nlHomePrices, parseRegions, parseValues, pickRegion, plainTitle, readNl, regionLookupUrl, searchToken,
 } from "./source";
 import type { Region } from "./source";
 import * as F from "./fixtures";
@@ -214,4 +214,61 @@ test("nl-home-prices: a home type CBS does not publish gets no_matches, not the 
 
 test("nl-home-prices: a postcode alone is refused with the reason", async () => {
   await assert.rejects(nlHomePrices({ postcode: "1011 AB" }, { fetcher: async () => ({}) }), (e: any) => e instanceof InputError && /not by postcode/.test(e.message));
+});
+
+// ---------- daily copy (checked live 2026-10-30: RegioS list and TypedDataSet rows have the shapes below) ----------
+const REG_ALL = {
+  value: [
+    { Key: "NL01  ", Title: "Nederland", Description: "" },
+    { Key: "PV27  ", Title: "Noord-Holland (PV)", Description: "" },
+    { Key: "GM0363", Title: "Amsterdam", Description: "" },
+    { Key: "GM0518", Title: "'s-Gravenhage (gemeente)", Description: "" },
+    { Key: "GM0999", Title: "Oudgemeente", Description: "Opgeheven per 1 januari 2020" },
+  ],
+};
+const VAL_ALL = {
+  value: [
+    { ID: 30, RegioS: "NL01  ", Perioden: "2025JJ00", GemiddeldeVerkoopprijs_1: 479527 },
+    { ID: 31, RegioS: "NL01  ", Perioden: "2024JJ00", GemiddeldeVerkoopprijs_1: 450000 },
+    { ID: 32, RegioS: "PV27  ", Perioden: "2025JJ00", GemiddeldeVerkoopprijs_1: 560000 },
+    { ID: 33, RegioS: "GM0363", Perioden: "2025JJ00", GemiddeldeVerkoopprijs_1: 640000.4 },
+    { ID: 34, RegioS: "GM0518", Perioden: "2025JJ00", GemiddeldeVerkoopprijs_1: 430000 },
+    { ID: 35, RegioS: "GM0999", Perioden: "2025JJ00", GemiddeldeVerkoopprijs_1: 300000 },
+  ],
+};
+
+test("nl harvest rows: newest year, current regions only, published figures with no count", () => {
+  const { year, rows } = nlHarvestRows(parseRegions(REG_ALL), parseValues(VAL_ALL), 1);
+  assert.equal(year, 2025);
+  assert.deepEqual(rows.map((r) => r.area), ["NL01 Nederland", "PV27 Noord-Holland", "GM0363 Amsterdam", "GM0518 's-Gravenhage"]);
+  assert.equal(rows[2].median, 640000);
+  assert.ok(rows.every((r) => r.item === "any" && r.low === r.median && !(r.n >= 5)), "n is NO_COUNT, not a made-up count");
+  assert.throws(() => nlHarvestRows(parseRegions(REG_ALL), parseValues(VAL_ALL)), /Only 4 Dutch regions/);
+});
+
+test("nl harvest: two requests, dated by the end of the year", async () => {
+  const f = fake([REG_ALL, VAL_ALL]);
+  const orig = nlHarvestRows;
+  assert.ok(orig);
+  await assert.rejects(nlHarvest({ fetcher: f.fetcher, now: NOW }), /Only 4 Dutch regions/);
+  assert.match(f.urls[0], /RegioS\?\$select=Key,Title,Description/);
+  assert.match(decodeURIComponent(f.urls[1]), /Perioden ge '2023JJ00'/);
+});
+
+test("nl history key: finds the stored area by name, alias, province and national; refuses postcode and home type", () => {
+  const areas = ["NL01 Nederland", "PV27 Noord-Holland", "GM0363 Amsterdam", "GM0518 's-Gravenhage"];
+  assert.equal(nlHistoryKey({ town: "Amsterdam" }, areas)?.area, "GM0363 Amsterdam");
+  assert.equal(nlHistoryKey({ town: "Den Haag" }, areas)?.area, "GM0518 's-Gravenhage");
+  assert.equal(nlHistoryKey({ town: "Noord-Holland" }, areas)?.area, "PV27 Noord-Holland");
+  assert.equal(nlHistoryKey({}, areas)?.area, "NL01 Nederland");
+  assert.equal(nlHistoryKey({ postcode: "1011" }, areas), null);
+  assert.equal(nlHistoryKey({ town: "Amsterdam", property_type: "house" }, areas), null);
+  assert.equal(nlHistoryKey({ town: "Atlantis" }, areas), null);
+  assert.equal(nlHistoryKey({ town: "Amsterdam" }, []), null);
+});
+
+test("nl manifest: has a collector and key (stale-if-error) and no separate history tool entry", () => {
+  const src = SOURCE_PLUGINS.find((s) => s.info.id === "nl-home-prices")!;
+  assert.ok(src.harvest && src.historyKey && src.referenceDates);
+  assert.match(String(src.noHistory), /one average per year/);
 });

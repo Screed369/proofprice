@@ -8,7 +8,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { fetchJson, InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const INFO: SourceInfo = {
   id: "nl-home-prices",
@@ -323,4 +324,76 @@ export async function nlHomePrices(
   const url = dataUrl(keys, since);
   const reading = readNl(parseValues(await fetcher(url)), region);
   return nlAnswer(reading, { place: input.town ?? null, property_type: type, baseUrl: input.baseUrl, apiUrl: url, now });
+}
+
+// ---------- the daily copy (stale-if-error) ----------
+
+/** All regions with their titles (one small request, about 85 KB). */
+export const allRegionsUrl = `${ODATA_BASE}/RegioS?$select=Key,Title,Description`;
+/** Every region's figures for the last few years, in one request (about 1 000 rows). */
+export function allDataUrl(sinceYear: number): string {
+  return `${ODATA_BASE}/TypedDataSet?$filter=${encodeURIComponent(`Perioden ge '${sinceYear}JJ00'`)}`;
+}
+
+/** Library rows for the newest year that has a national figure: one published average per current region (n is NO_COUNT). */
+export function nlHarvestRows(regions: Region[], values: NlValue[], minRegions = 100): { year: number; rows: DailyRow[] } {
+  const nationalYears = values.filter((v) => v.key.trim() === NATIONAL_KEY.trim()).map((v) => v.year);
+  if (!nationalYears.length) throw new SourceError("CBS returned no national average for the latest years; this source needs updating.");
+  const year = Math.max(...nationalYears);
+  const byKey = new Map(regions.filter((r) => !r.dissolved).map((r) => [r.key.trim(), r]));
+  const rows: DailyRow[] = [];
+  for (const v of values) {
+    if (v.year !== year) continue;
+    const region = byKey.get(v.key.trim());
+    if (!region) continue;
+    const x = Math.round(v.value);
+    rows.push({ area: `${region.key.trim()} ${plainTitle(region.title)}`, item: "any", n: NO_COUNT, median: x, low: x, high: x, min: x, max: x });
+  }
+  // The real table has the country, 4 landsdelen, 12 provinces and about 340 municipalities.
+  if (rows.length < minRegions) throw new SourceError(`Only ${rows.length} Dutch regions with a ${year} figure; the table may have changed.`);
+  return { year, rows };
+}
+
+export async function nlHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  const fetcher = o.fetcher ?? ((url: string) => fetchJson(url, {}, 60000));
+  const now = o.now ?? new Date();
+  const regions = parseRegions(await fetcher(allRegionsUrl));
+  const values = parseValues(await fetcher(allDataUrl(now.getUTCFullYear() - 3)));
+  const { year, rows } = nlHarvestRows(regions, values);
+  return {
+    date: `${year}-12-31`,
+    currency: "EUR",
+    unit: "per home",
+    rows,
+    note: `CBS table ${TABLE}: average sale price of existing owner-occupied homes in ${year}, ${rows.length} regions (country, landsdelen, provinces, municipalities). Published averages, not counts of records (CBS publishes no record count).`,
+  };
+}
+
+/** Library key for a request: the CBS region code and name taken from our newest stored day, so no CBS call is needed. */
+export function nlHistoryKey(
+  p: { town?: string; postcode?: string; property_type?: string },
+  areas: string[],
+): { area: string; item: string; label: string } | null {
+  if (p.postcode && !p.town) return null;
+  if ((p.property_type ?? "any").trim().toLowerCase() !== "any" && p.property_type) return null;
+  if (!areas.length) return null;
+  const regions: Region[] = areas.map((a) => {
+    const i = a.indexOf(" ");
+    const key = i > 0 ? a.slice(0, i) : a;
+    return { key, title: i > 0 ? a.slice(i + 1) : a, kind: (key.slice(0, 2) as Region["kind"]), dissolved: false };
+  });
+  try {
+    let region: Region | undefined;
+    const token = p.town ? searchToken(p.town) : "national";
+    if (token === "national") region = regions.find((r) => r.kind === "NL");
+    else {
+      const matches = regions.filter((r) => foldName(plainTitle(r.title)).includes(token));
+      region = pickRegion(matches, p.town!);
+    }
+    if (!region) return null;
+    const area = areas.find((a) => a.split(" ")[0] === region!.key.trim());
+    return area ? { area, item: "any", label: plainTitle(region.title) } : null;
+  } catch {
+    return null;
+  }
 }

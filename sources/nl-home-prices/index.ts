@@ -1,6 +1,7 @@
 // Manifest: Netherlands home prices (CBS, official average sale price by municipality). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, nlHomePrices } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, nlHarvest, nlHistoryKey, nlHomePrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -30,4 +31,16 @@ export default defineSource({
       property_type: str(p.property_type),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector stores CBS's newest annual average for every region once a day, so a CBS outage is
+  // answered from it. One published average per region and year (n is NO_COUNT), dated by the end of the year it is for.
+  harvest: () => nlHarvest(),
+  historyKey: (p) =>
+    nlHistoryKey(
+      { town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type) },
+      [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))],
+    ),
+  referenceDates: true,
+  nominalCounts: true,
+  staleMaxDays: 35, // CBS publishes once a year; the newest figure cannot change between releases
+  noHistory: "Netherlands: CBS publishes one average per year and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure, which carries the previous year and a six-year series.",
 });
