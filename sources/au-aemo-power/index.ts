@@ -10,6 +10,7 @@ export default defineSource({
   countryHelp: "AU = Australia (National Electricity Market, five regions; prices in Australian dollars per MWh, not euro)",
   placeName: "Australia",
   status: "live",
+  serves: (p) => String(p.commodity ?? "").toLowerCase() !== "gas",
   paramNotes: {
     market: "AU: spot only (AEMO's five-minute regional price), not day-ahead; leave it out.",
     lookback_days: "AU: 1 to 7 trading days of five-minute prices (default 3); each five-minute interval counts as one record. Prices are in Australian dollars (AUD) per MWh.",

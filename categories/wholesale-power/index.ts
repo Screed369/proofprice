@@ -18,6 +18,7 @@ export default defineCategory({
     `How fresh: ${freshnessList(places)}. ` +
     "Wholesale prices are not what households or businesses pay on their bills. Do not use for retail tariffs, for petrol and diesel, or for other countries.",
   params: {
+    commodity: z.enum(["electricity", "gas"]).optional().describe("electricity (default) or gas. gas returns wholesale natural-gas hub prices where a country has them (see the country notes); prices are per GJ or MWh as the answer states."),
     market: z.enum(["day-ahead"]).optional().describe("Which wholesale market. Only day-ahead (the next-day hourly auction) is available."),
     lookback_days: z.number().int().min(1).max(14).optional().describe("How many recent days of hourly prices to include. Default 7, at most 14."),
   },
