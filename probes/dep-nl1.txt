@@ -1,0 +1,41 @@
+URL: https://opendata.cbs.nl/ODataApi/odata/83625NED/TypedDataSet?$filter=Perioden%20eq%20%272025JJ00%27&$top=3
+Fetched: 2026-10-30T21:14:54Z from GitHub Actions
+Status, type, bytes: 200 application/json 428
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=1800
+Content-Type: application/json
+Vary: Content-Type,Accept
+X-Request-Origin: External
+DataServiceVersion: 3.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: OPTIONS,GET
+Access-Control-Allow-Headers: Origin,Content-Type,Accept,X-Requested-With,cache-control,pragma
+X-Robots-Tag: noindex
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+Date: Fri, 30 Oct 2026 21:14:53 GMT
+Content-Length: 428
+TXID: 0025459b
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Permissions-Policy: autoplay=(self),camera=(self),encrypted-media=(self),geolocation=(self),fullscreen=(self),microphone=(self),usb=(self)
+Set-Cookie: NSC_ESNS=00330f79-08cb-1ae5-9678-0050569b2a7a_4255375129_3132001502_00000000004297409947; Path=/; Expires=Fri, 30-Oct-2026 21:15:08 GMT
+Strict-Transport-Security: max-age=157680000; includeSubDomains; preload
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/83625NED/$metadata#Cbs.OData.WebAPI.TypedDataSet","value":[
+    {
+      "ID":30,"RegioS":"NL01  ","Perioden":"2025JJ00","GemiddeldeVerkoopprijs_1":479527
+    },{
+      "ID":61,"RegioS":"LD01  ","Perioden":"2025JJ00","GemiddeldeVerkoopprijs_1":385019
+    },{
+      "ID":92,"RegioS":"LD02  ","Perioden":"2025JJ00","GemiddeldeVerkoopprijs_1":458409
+    }
+  ]
+}
