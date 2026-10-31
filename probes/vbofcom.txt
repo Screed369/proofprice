@@ -1,0 +1,42 @@
+URL: https://www.data.gov.uk/api/action/package_show?id=f1425d4d-61f4-4596-a06a-8ff2522d8a46
+Fetched: 2026-10-31T17:42:18Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2482
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+content-type: text/html; charset=utf-8
+server: gunicorn
+location: https://ckan.publishing.service.gov.uk/api/action/package_show?id=f1425d4d-61f4-4596-a06a-8ff2522d8a46
+content-security-policy: default-src 'self'; connect-src 'self' *.google-analytics.com *.googletagmanager.com *.analytics.google.com s3-eu-west-1.amazonaws.com ckan.publishing.service.gov.uk; font-src 'self'; frame-ancestors 'self'; form-action 'self'; img-src 'self' *.google-analytics.com *.googletagmanager.com; manifest-src 'self'; media-src 'self'; object-src 'self'; script-src 'self' 'unsafe-inline' *.google-analytics.com *.googletagmanager.com; style-src 'self' 'unsafe-inline'
+x-frame-options: DENY
+content-language: en-GB
+strict-transport-security: max-age=60; includeSubDomains; preload
+x-content-type-options: nosniff
+referrer-policy: same-origin
+cross-origin-opener-policy: same-origin
+fastly-backend-name: origin
+accept-ranges: bytes
+age: 0
+date: Sat, 31 Oct 2026 17:42:17 GMT
+via: 1.1 varnish
+x-served-by: cache-sjc10056-SJC
+x-cache: MISS
+x-cache-hits: 0
+vary: Accept-Language
+content-length: 0
+
+HTTP/2 200 
+date: Sat, 31 Oct 2026 17:42:18 GMT
+content-type: application/json;charset=utf-8
+content-length: 2482
+server: nginx
+cache-control: public, max-age=0, must-revalidate
+set-cookie: ckan=1efa9561215b4bd858bede7727c06689ffd68f20gAJ9cQAoWAcAAABfZG9tYWlucQFOWAUAAABfcGF0aHECWAEAAAAvcQNYAwAAAF9pZHEEWCAAAABiOWNhYzMzMjVlYmM0NThlYjI4MjNkNmFjMmVlMjBjZXEFWAYAAABfZnJlc2hxBolYDgAAAF9jcmVhdGlvbl90aW1lcQdHQdq5ih6VydVYDgAAAF9hY2Nlc3NlZF90aW1lcQhHQdq5ih6Vydd1Lg==; expires=Tue, 19-Jan-2038 03:14:07 GMT; HttpOnly; Path=/; SameSite=Lax
+strict-transport-security: max-age=31536000; preload
+permissions-policy: interest-cohort=()
+x-content-type-options: nosniff
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://ckan.publishing.service.gov.uk/api/3/action/help_show?name=package_show", "success": true, "result": {"codelist": "", "contact-email": "", "contact-name": "", "contact-phone": "", "creator_user_id": "7139a174-6126-453d-bfbf-db8882ad5be7", "foi-email": "", "foi-name": "", "foi-phone": "", "foi-web": "", "id": "f1425d4d-61f4-4596-a06a-8ff2522d8a46", "isopen": true, "licence-custom": "", "license_id": "uk-ogl", "license_title": "UK Open Government Licence (OGL)", "license_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/", "metadata_created": "2020-02-05T13:40:47.894788", "metadata_modified": "2020-02-05T13:42:49.736182", "name": "pricing-trends-for-communications-services", "notes": "This report looks at pricing trends for residential phone, broadband and TV services in the UK. It examines the prices of standalone and bundled services and what consumers spend on them.\r\n\r\nIt also looks at how consumers engage with the market, illustrating how the prices paid by engaged consumers (those who shop around and are aware of their contractual status) who are currently within a minimum contract period, differ from prices paid by consumers outside a minimum contractual period.\r\nThe report also includes the results of our consumer engagement research, which looked at the reasons why consumers may not engage with the market.", "num_resources": 0, "num_tags": 0, "organization": {"id": "c8327a77-0e60-419e-b2b4-f0f58390841d", "name": "office-of-communications", "title": "Ofcom", "type": "organization", "description": "Ofcom (Office of Communications) is the communications regulator in the UK.\r\n\r\nIt regulates the TV, radio and on-demand sectors, fixed-line telecoms, mobiles, postal services, and the airwaves over which wireless devices operate.\r\n\r\nOfcom operates under a number of Acts of Parliament, including the Communications Act 2003. Ofcom must act within the powers and duties set for it by Parliament in legislation.", "image_url": "", "created": "2013-08-27T15:30:33.684242", "is_organization": true, "approval_status": "pending", "state": "active"}, "owner_org": "c8327a77-0e60-419e-b2b4-f0f58390841d", "private": false, "schema-vocabulary": "", "state": "active", "theme-primary": "", "title": "Pricing Trends for communications services", "type": "dataset", "url": null, "version": null, "resources": [], "tags": [], "groups": [], "relationships_as_subject": [], "relationships_as_object": []}}
