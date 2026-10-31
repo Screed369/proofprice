@@ -3,7 +3,7 @@
 // The rows are generated in that layout (the monthly CSVs sit inside a RAR the probe cannot open), so a state has 5+ shops.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { INFO, Newest, buildRows, decodeText, defsFor, describeBytes, extractYearly, sniff, isoDate, itemKey, matchItems, parseIndex, parsePrices, profecoAnswerFromRows, readHeader, resolveState, splitLine, stateName } from "./source";
+import { INFO, Newest, buildRows, decodeText, defsFor, describeBytes, extractYearly, hasPartialCsv, sniff, isoDate, itemKey, matchItems, parseIndex, parsePrices, profecoAnswerFromRows, readHeader, resolveState, splitLine, stateName } from "./source";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
 
@@ -187,4 +187,16 @@ test("downloadFully resumes a chunked download that announces no length", async 
   const got = await downloadFully(`http://127.0.0.1:${port}/x`, 2026);
   srv.close();
   assert.equal(got.length, 1000);
+});
+
+test("hasPartialCsv: a truncated archive that left monthly files is kept, an empty folder is not", async () => {
+  const { mkdtempSync, mkdirSync, writeFileSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const d = mkdtempSync(join(tmpdir(), "pp-profeco-"));
+  assert.equal(hasPartialCsv(d), false);
+  mkdirSync(join(d, "2026"));
+  writeFileSync(join(d, "2026", "01-2026_Q1.csv"), "producto,precio\n");
+  assert.equal(hasPartialCsv(d), true);
+  assert.equal(hasPartialCsv(join(d, "missing")), false);
 });

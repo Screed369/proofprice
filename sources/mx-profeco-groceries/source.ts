@@ -219,11 +219,19 @@ export function unpack(file: string, dir: string): void {
       if ((err as NodeJS.ErrnoException).code === "ENOENT") continue; // tool not installed: not worth a word in the error
       const out = String(err.stderr || "").trim() || String(err.stdout || "").trim().split("\n").slice(-3).join(" ");
       errors.push(`${bin}: ${out.replace(/\s+/g, " ").slice(0, 160)}`);
+      // The publisher's 2026 archive was uploaded cut short (26 Oct 2026: 20.7 MB announced and served, ~60 MB expected). 7-Zip still unpacks the months before the cut,
+      // so keep them: the answer's period shows the newest day actually read, never a later one.
+      if (hasPartialCsv(dir)) return;
     }
   }
   // Last resort: the runner's p7zip (16.02) cannot read RAR5, so fetch the official unrar library compiled to WebAssembly (pure JS, no system tool).
   try { unpackWithNodeUnrar(file, dir); return; } catch (e) { errors.push(`node-unrar-js: ${(e as Error).message.replace(/\s+/g, " ").slice(0, 160)}`); }
   throw new SourceError(`Could not unpack the Profeco RAR (${errors.join("; ")})`);
+}
+
+/** True when an extractor that reported an error still left monthly CSV files behind (a truncated archive). */
+export function hasPartialCsv(dir: string): boolean {
+  try { return listCsv(dir).length > 0; } catch { return false; }
 }
 
 /** Unpack with node-unrar-js, installed on the fly into a scratch folder (nothing is added to package.json). */
