@@ -1,164 +1,731 @@
-URL: https://csu.gov.cz/datastat/api/dotaz/data/vybery/uzivatelske/33c89c2e-cd9c-4e2c-afbf-3118becda449?jazyk=en
-Fetched: 2026-10-31T13:42:39Z from GitHub Actions
-Status, type, bytes: 200 application/json 3603
+URL: https://financnisprava.gov.cz/cs/financni-sprava/drazby-financni-spravy/drazby-prehled/app/detail/261108/APED
+Fetched: 2026-10-31T17:43:42Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 40526
 Errors: 
 
 === RESPONSE HEADERS
-HTTP/1.1 200 OK
-Server: nginx
-Date: Sat, 31 Oct 2026 13:42:39 GMT
-Content-Type: application/json
-Vary: Accept-Encoding, Origin
-X-Correlation-Id: 07dad6fa-bace-4d84-a012-2224787cf60e
-Permissions-Policy: camera=(), microphone=(),  usb=()
-Cross-Origin-Opener-Policy: same-origin
-Referrer-Policy: strict-origin-when-cross-origin
-Strict-Transport-Security: max-age=157680000
-Cache-Control: no-cache, no-store, must-revalidate
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-attr 'self' 'unsafe-inline';  script-src-elem 'self' 'unsafe-inline' https://mone.statistika.cz; style-src 'self' 'unsafe-inline'; style-src-attr 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; connect-src 'self' data: https://cdn.flexmonster.com https://mone.statistika.cz; font-src 'self' data: https://cdn.flexmonster.com; img-src 'self' data: blob:; frame-src 'self'; manifest-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'self';
-Expires: Sat, 31 Oct 2026 13:42:38 GMT
-Cross-Origin-Embedder-Policy: unsafe-none
-Cross-Origin-Resource-Policy: same-origin
-Referrer-Policy: strict-origin-when-cross-origin
-Permissions-Policy: microphone=(), payment=(), sync-xhr=(self), geolocation=(self)
-X-Frame-Options: SAMEORIGIN
-X-Content-Type-Options: nosniff
-Strict-Transport-Security: max-age=31536000; includeSubDomains
-X-XSS-Protection: 1; mode=block
-Content-Security-Policy: default-src 'self' https://scitani.gov.cz https://csu.gov.cz *.csu.gov.cz https://chatbot-cdn.scitani.cz https://www.czso.cz https://vdb.czso.cz https://data.statistika.cz https://www.youtube.com *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz https://lag-angujs-vm05.ab.czso.cz; connect-src 'self' https://scitani.gov.cz https://csu.gov.cz *.csu.gov.cz https://chatbot-cdn.scitani.cz https://www.czso.cz https://apl.czso.cz https://vdb.czso.cz https://data.statistika.cz https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; img-src 'self' data: https://scitani.gov.cz https://csu.gov.cz *.csu.gov.cz https://apl.czso.cz https://chatbot-cdn.scitani.cz https://www.youtube.com https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; frame-src 'self' formapps: https://www.youtube.com https://export.highcharts.com https://apl.czso.cz *.googleapis.com *.gstatic.com https://vdb.czso.cz https://lag-angujs-vm05.ab.czso.cz;  child-src 'self' *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; worker-src 'self' *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://d3js.org http://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://scitani.gov.cz https://csu.gov.cz *.csu.gov.cz https://chatbot-cdn.scitani.cz https://www.czso.cz https://apl.czso.cz https://vdb.czso.cz https://data.statistika.cz https://www.youtube.com https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://chatbot-cdn.scitani.cz https://apl.czso.cz https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz;  font-src 'self' https://stackpath.bootstrapcdn.com https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz;  frame-ancestors 'self' *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; form-action 'self' https://export.highcharts.com *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz;  object-src 'none';
-xkey: purgeable
-X-Cache-time: 60.000
-Age: 0
-Accept-Ranges: bytes
-X-Cache-Action: MISS
-Via: pdi-cache
-Connection: keep-alive
-Transfer-Encoding: chunked
-Strict-Transport-Security: max-age=157680000
+HTTP/2 200 
+cache-control: private
+content-type: text/html; charset=utf-8
+set-cookie: ASP.NET_SessionId=moquqjorit5q32bqmxfk0csi; path=/; HttpOnly; SameSite=Lax
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+referrer-policy: no-referrer
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+content-security-policy: default-src 'self'; connect-src *; font-src *; frame-src *; img-src * data:; media-src *; object-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';
+x-ua-compatible: IE=Edge,chrome=1
+x-frame-options: sameorigin
+permissions-policy: accelerometer=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+date: Sat, 31 Oct 2026 17:43:42 GMT
+content-length: 40526
+x-envoy-upstream-service-time: 554
+set-cookie: TS01dc4fc6=01ba63b7ee94c859fffd8bae03c7cb95f3afa144630004842c0ebfc6f550e53738139d014e59937029d1d604c88f39184816aadd36; Path=/; Secure; HttpOnly; SameSite=Strict
+x-volterra-location: b-dal3-dal
+server: volt-adc
 
-=== FILE TYPE: JSON text data
-=== FIRST 30000 BYTES
-{
-  "version" : "2.0",
-  "class" : "dataset",
-  "href" : "https://data.csu.gov.cz/api/dotaz/v1/data/vybery/uzivatelske/33c89c2e-cd9c-4e2c-afbf-3118becda449",
-  "label" : "CEN04T01_Průměrné kupní ceny nemovitostí a indexy cen nemovitostí",
-  "source" : "DataStat – database of CZSO",
-  "note" : [ "Uživatelem nastavený výběr.", null ],
-  "id" : [ "UZ02HN", "IndicatorType", "CasR" ],
-  "size" : [ 1, 6, 7 ],
-  "role" : {
-    "geo" : [ "UZ02HN" ],
-    "metric" : [ "IndicatorType" ],
-    "time" : [ "CasR" ]
-  },
-  "dimension" : {
-    "UZ02HN" : {
-      "label" : "Territory",
-      "category" : {
-        "index" : {
-          "CZ" : 0
-        },
-        "label" : {
-          "CZ" : "Czechia"
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF, LF line terminators
+=== FIRST 40000 BYTES
+
+<!DOCTYPE html>
+<html lang="cs" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <!-- ID: 11833 -->
+    <!-- Published: 27.10.2026 9:18 -->
+    <!--ATTACHMENTS ||| ATTACHMENTS-->
+			
+    <!--
+      <PageMap>
+         <DataObject type="document">
+            <Attribute name="title">Dražby - přehled</Attribute>
+            
+         </DataObject>
+      </PageMap>
+    -->
+    <title>Dražby - přehled | Dražby Finanční správy | Finanční správa | Finanční správa</title>
+    <meta name="description" content="Finančn&iacute; spr&aacute;va Česk&eacute; republiky">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Dražby - přehled">
+    <meta name="twitter:description" content="Finančn&iacute; spr&aacute;va Česk&eacute; republiky">
+    <meta name="twitter:image" content="/assets/img/logo.svg">
+    <meta property="og:title" content="Dražby - přehled">
+    <meta property="og:description" content="Finančn&iacute; spr&aacute;va Česk&eacute; republiky">
+    <meta property="og:image" content="/assets/img/logo.svg">
+    <meta property="og:site_name" content="Finanční správa České republiky">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+<!-- Cookiebot -->
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="1dcb2f9d-6c4b-47e5-85cc-7c271c973e78" data-blockingmode="auto" type="text/javascript"></script>
+<!-- Cookiebot End -->
+<!-- activation Google Consent API-integration -->
+<script data-cookieconsent="ignore">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag("consent", "default", {
+        ad_storage: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500,
+    });
+    gtag("set", "ads_data_redaction", true);
+    gtag("set", "url_passthrough", true);
+</script>
+<!-- / activation Google Consent API-integration -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="/assets/css/style.css?t=1610620228917" media="all">
+<link rel="stylesheet" href="/assets/css/print.css?t=1610620228917" media="print">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="preload" as="script" href="/assets/js/jquery-3.5.1.min.js?t=1610620228917">
+<link rel="preload" as="script" href="/assets/js/app.js?t=1610620228917">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest" crossorigin="use-credentials">
+<link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg" color="#000000">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-config" content="/assets/browserconfig.xml">
+<script>
+    (function () {
+        var className = document.documentElement.className;
+        className = className.replace('no-js', 'js');
+        (function () {
+            var mediaHover = window.matchMedia('(hover: none), (pointer: coarse), (pointer: none)');
+            mediaHover.addListener(function (media) {
+                document.documentElement.classList[media.matches ? 'add' : 'remove']('no-hoverevents');
+                document.documentElement.classList[!media.matches ? 'add' : 'remove']('hoverevents');
+            });
+            className += (mediaHover.matches ? ' no-hoverevents' : ' hoverevents');
+        })();
+        var supportsCover = 'CSS' in window && typeof CSS.supports === 'function' && CSS.supports('object-fit: cover');
+        className += (supportsCover ? ' ' : ' no-') + 'objectfit';
+        // fix iOS zoom issue: https://docs.google.com/document/d/1KclJmXyuuErcvit-kwCC6K2J7dClRef43oyGVCqWxFE/edit#heading=h.sgbqg5nzhvu9
+        var ua = navigator.userAgent.toLowerCase();
+        var isIOS = /ipad|iphone|ipod/.test(ua) && !window.MSStream;
+        if (isIOS === true) {
+            var viewportTag = document.querySelector("meta[name=viewport]");
+            viewportTag.setAttribute("content",
+                "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+                );
         }
+        document.documentElement.className = className;
+    }());
+</script>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://fs1.matomo.cloud/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='//cdn.matomo.cloud/fs1.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body>
+    <p class="m-accessibility">
+        <a title="Přejít k obsahu (Klávesová zkratka: Alt + 2)" accesskey="2" href="#main">Přejít k obsahu</a>
+        <span class="hide">|</span>
+        <a href="#menu-main">Přejít k hlavnímu menu</a>
+        <span class="hide">|</span>
+        <a href="#form-search">Přejít k vyhledávání</a>
+    </p>
+    <header class="b-site-header js-sticky-header compensate-for-scrollbar">
+        <nav class="b-site-nav js-site-nav">
+            <div class="row-main">
+                <div class="b-site-nav__inner">
+                <p class="u-mb-0">
+                    <a href="/" title="Finanční správa">
+                        <img src="/assets/img/logo.svg" class="b-site-nav__logo" alt="Finanční správa" width="60" height="60">
+                    </a>
+                </p>
+<div class="b-site-nav__menu js-site-nav-menu" role="navigation" aria-expanded="false">
+    <nav class="m-menu-main">
+        <ul class="m-menu-main__list">
+<li class="m-menu-main__item">
+    <a href="/cs/financni-sprava" title="Finanční správa" class="m-menu-main__link is-active">
+        Finanční správa
+    </a>
+</li>
+                                <li class="m-menu-main__item">
+                                    <a href="/cs/dane" title="Daně" class="m-menu-main__link">
+                                        Daně
+                                    </a>
+                                </li>
+                                <li class="m-menu-main__item">
+                                    <a href="/cs/mezinarodni-spoluprace" title="Mezinárodní spolupráce" class="m-menu-main__link">
+                                        Mezinárodní spolupráce
+                                    </a>
+                                </li>
+                                <li class="m-menu-main__item">
+                                    <a href="/cs/kontakty" title="Kontakty" class="m-menu-main__link">
+                                        Kontakty
+                                    </a>
+                                </li>
+        </ul>
+    </nav>
+    <form action="/cs/vyhledavani">
+        <p class=b-site-search-mobile>
+            <label for="navbar-mobile-search" class="inp-label h5">Vyhledat na webu</label>
+            <span class="inp-fix inp-icon inp-icon--after">
+                <input type="text" name="q" id="navbar-mobile-search" placeholder="Zadejte hledaný výraz" class="inp-text js-suggest__inp">
+                <button type="submit" class="btn btn--ghost inp-icon__icon" disabled="disabled">
+                    <span class="icon-svg icon-svg--search" aria-hidden="true">
+                        <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <use xlink:href="/assets/img/bg/icons-svg.svg#icon-search" width="100%" height="100%" focusable="false"></use>
+                        </svg>
+                    </span>
+                    <span class="u-vhide">Vyhledat na webu</span>
+                </button>
+            </span>
+        </p>
+    </form>
+</div>
+<div class="b-site-nav__lang-switch">
+    <nav class="b-lang-switch">
+        <ul class="b-lang-switch__list">
+            <li class="b-lang-switch__item">
+                <a href="/cs/snadne-cteni" title="Snadné čtení" class="b-lang-switch__link ">
+                    <span class="icon-svg icon-svg--book" aria-hidden="true">
+                        <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <use xlink:href="/assets/img/bg/icons-svg.svg#icon-book" width="100%" height="100%" focusable="false"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+            <li class="b-lang-switch__item">
+                <a href="/" class="b-lang-switch__link is-active">CZ</a>
+            </li>
+            <li class="b-lang-switch__item">
+                <a href="/en/index" class="b-lang-switch__link">EN</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<button type="button" class="js-site-nav-toggle b-site-nav__toggle" aria-label="Menu" data-close="&nbsp;" data-open="&nbsp;"> &nbsp; </button>
+<span class="b-site-nav__overlay js-site-nav-toggle"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="b-nav-bar">
+        <div class="row-main">
+            <div class="b-nav-bar__inner">
+                <nav class="b-breadcrumbs" aria-label="Zde se nacházíte">
+                                    <ol class="b-breadcrumbs__list">
+	<li class="b-breadcrumbs__item">
+		<a href="/" class="b-breadcrumbs__link" title="Úvodní stránka">
+			<span class="icon-svg icon-svg--bc-home b-breadcrumbs__home" aria-hidden="true">
+				<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<use xlink:href="/assets/img/bg/icons-svg.svg#icon-bc-home" width="100%" height="100%" focusable="false"></use>
+				</svg>
+			</span>
+		</a>
+	</li>
+                <li class="b-breadcrumbs__item">
+                  <a href="/cs/financni-sprava" title="Finanční správa" class="b-breadcrumbs__link"> Finanční správa </a>
+                </li>
+                <li class="b-breadcrumbs__item">
+                  <a href="/cs/financni-sprava/drazby-financni-spravy" title="Dražby Finanční správy" class="b-breadcrumbs__link"> Dražby Finanční správy </a>
+                </li>
+                <li class="b-breadcrumbs__item">
+                  <span aria-current="page" class="b-breadcrumbs__link"> Dražby - přehled </span>
+                </li>
+</ol>
+                </nav>
+                <form action="/cs/vyhledavani">
+                    <p class="b-site-search">
+                        <label for="navbar-search" class="inp-label h5 u-vhide">Hledat</label>
+                        <span class="inp-fix inp-icon inp-icon--after">
+                            <input type="text" name="q" id="navbar-search" class="inp-text js-suggest__inp" placeholder="Zadejte hledaný výraz">
+                            <button type="submit" class="btn inp-icon__icon" disabled="disabled">
+                                <span class="icon-svg icon-svg--search" aria-hidden="true">
+                                    <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <use xlink:href="/assets/img/bg/icons-svg.svg#icon-search" width="100%" height="100%" focusable="false"></use>
+                                    </svg>
+                                </span>
+                                <span class="u-vhide">Hledat</span>
+                            </button>
+                        </span>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <main id="main" class="main">
+        <div class="row-main">
+                        <div class="c-grid-layout c-grid-layout--reversed">
+                            <div class="c-grid-layout__main">
+                                <!-- content -->
+                                <div class="" id="drazby-11834">
+                    
+        <section class="b-box u-mb-xl">
+            
+                    
+                    <div class="b-box__inner">
+                        <h2 class="b-box__title h2">Finanční úřad pro Zlínský kraj oznamuje konání veřejné dražby Movité věci</h2>
+                        <div class="grid">
+                            <div class="grid__cell size--4-12@sm">
+                                <div class="b-info b-info--margin-sm">
+                                  <p class="b-info__caption">Číslo jednací:</p>
+                                  <div class="b-info__item">
+                                    <div class="b-info__content">
+                                      <div class="b-info__header link-mask">
+                                        <p class="b-info__title h5">
+                                          <span> 1715651/26/3300-80542-712723 </span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="b-info b-info--margin-sm">
+                                  <p class="b-info__caption">Celková výše nejnižšího/nejnižších podání:</p>
+                                  <div class="b-info__item">
+                                    <div class="b-info__content">
+                                      <div class="b-info__header link-mask">
+                                        <p class="b-info__title h5">
+                                          <span> 14 000,00 Kč </span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                    <div class="b-info">
+                                      <p class="b-info__caption">Dražební jistota</p>
+                                      <div class="b-info__item">
+                                        <div class="b-info__content">
+                                          <div class="b-info__header link-mask">
+                                            <p class="b-info__title h5">
+                                              <span> ,00 Kč </span>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="grid__cell size--4-12@sm">
+                                <div class="b-info b-info--margin-sm">
+                                      <p class="b-info__caption">Datum a čas:</p>
+                                      <div class="b-info__item">
+                                        <div class="b-info__content">
+                                          <div class="b-info__header link-mask">
+                                            <p class="b-info__title h5">
+                                              <span> 04.11.2026 od 8:00 hodin </span>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="grid__cell size--4-12@sm">
+                                
+                                <div class="b-info">
+                                      <p class="b-info__caption">Místo vyzvednutí:</p>
+                                      <div class="b-info__item">
+                                        <div class="b-info__content">
+                                          <div class="b-info__header link-mask">
+                                            <p class="b-info__title h5">
+                                              <span> Podolí (Uh. Hradiště), datum a čas předání vydražených věcí bude stanoven po úhradě nejvyššího podání dle dohody s vydražitelem na tel. čísle 953 150 102. </span>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- popis -->
+                        <div class="b-accordion">
+                            <!-- celkovy popis -->
+                            
+                                <div class="b-accordion__item js-accordion__item">
+                                    <h3 class="b-accordion__title js-accordion-title">
+                                      <button type="button" class="b-accordion__toggle" aria-expanded="false">
+                                        <span>
+                                          <span class="b-accordion__title-text h5"> Stručný popis dražby </span>
+                                        </span>
+                                        <span class="b-accordion__indicator" aria-hidden="true">
+                                          <span class="icon-svg icon-svg--arrow-down" aria-hidden="true">
+                                            <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                              <use xlink:href="https://financnisprava.gov.cz/assets//img/bg/icons-svg.svg#icon-arrow-down" width="100%" height="100%" focusable="false"></use>
+                                            </svg>
+                                          </span>
+                                        </span>
+                                      </button>
+                                    </h3>
+                                    <div class="b-accordion__content" hidden>
+                                        Nízkozdvižný vozík, 
+                                    </div>
+                                </div>
+                            
+                            <!-- /celkovy popis -->
+                            <!-- predmety -->
+                            
+                            <!-- /predmety -->
+                            
+                        </div>
+                        <!-- /popis -->
+                    </div>
+                    <!-- odkazy a prilohy -->
+                    <div class="b-box__inner b-box__inner--subtle b-box__inner--sm">
+                        
+                            <div class="b-teaser u-mb-md@md u-mb-35">
+                                <div class="b-teaser__item">
+                                  <div class="b-teaser__icon b-teaser__icon--primary">
+                                    <span class="icon-svg icon-svg--document" aria-hidden="true">
+                                      <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <use xlink:href="https://financnisprava.gov.cz/assets//img/bg/icons-svg.svg#icon-document" width="100%" height="100%" focusable="false"></use>
+                                      </svg>
+                                    </span>
+                                  </div>
+                                  <div class="b-teaser__content">
+                                    <div class="b-teaser__content-main">
+                                      <div class="b-teaser__header link-mask">
+                                        <h2 class="b-teaser__title h5 js-matchHeight" style="">
+                                          <span> Dražební vyhláška </span>
+                                        </h2>
+                                      </div>
+                                      <div class="b-teaser__extra">
+                                        <p class="btn__wrapper">
+                                          <a href="https://drazby.fs.gov.cz/handlers/Vyhlaska/5880" class="btn btn--ghost btn--icon-only" title="Stahnout https://drazby.fs.gov.cz/handlers/Vyhlaska/5880">
+                                            <span class="btn__inner">
+                                              <span class="icon-svg icon-svg--download-pdf" aria-hidden="true">
+                                                <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                  <use xlink:href="https://financnisprava.gov.cz/assets//img/bg/icons-svg.svg#icon-download-pdf" width="100%" height="100%" focusable="false"></use>
+                                                </svg>
+                                              </span>
+                                              <span class="u-vhide"> Stáhnout PDF </span>
+                                            </span>
+                                          </a>
+                                        </p>
+                                      </div>
+                                    </div>
+                    
+                                  </div>
+                                </div>
+                              </div>
+                        
+                        
+                        
+                        
+                            <div class="b-teaser u-mb-md@md u-mb-35">
+                                <div class="b-teaser__item">
+                                  
+                                  <div class="b-teaser__content">
+                                    <div class="b-teaser__content-main">
+                                      <div class="b-teaser__header link-mask">
+                                        <h2 class="b-teaser__title h5 js-matchHeight" style="">
+                                            <a href="https://drazby.fs.gov.cz/mwclient/main.html?formName=drazba&selectedID=5880" class="is-external link-mask__link v-teaser__link"> Vstup do aplikace elektronických dražeb </a>
+                                        </h2>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        
+                    </div>
+                    <!-- /odkazy a prilohy -->
+                
+                
+        </section>
+    
+</div>
+                                <!-- /content -->
+                            </div>
+                            <aside class="c-grid-layout__aside u-mb-lg">
+                                <div class="title u-mb-md">
+                                    <h1 class="h2 u-mb-lg">Dražby - přehled</h1>
+                                    <div class="title__content h2">
+                                        <p class="btn__wrapper">
+                                            <a href="javascript:;" class="btn btn--ghost btn--icon-only" data-fancybox="" data-type="ajax" data-src="/include/cs/share.htm" data-subject="Dražby - přehled" title="Sd&iacute;let">
+                                                <span class="btn__inner">
+                                                    <span class="icon-svg icon-svg--share" aria-hidden="true">
+                                                        <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                            <use xlink:href="/assets/img/bg/icons-svg.svg#icon-share" width="100%" height="100%" focusable="false"></use>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="u-vhide"> Sd&iacute;let </span>
+                                                </span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- leftMenu -->
+                                    <nav class="b-side-nav">
+        <a href="#" class="btn btn--fullwidth js-menu-opener" data-open="Zobraz obsah" data-close="Skrýt obsah"></a>
+        <ul class="b-side-nav__list">
+		    <li class="b-side-nav__item">
+    <div class="b-side-nav__link h5 is-active">
+        <a href="/cs/financni-sprava/drazby-financni-spravy/drazby-prehled" title="Dražby - přehled" class="b-side-nav__link h5">
+            Dražby - přehled
+        </a>
+    </div>
+</li>
+			
+							    <li class="b-side-nav__item">
+                                    <a href="/cs/financni-sprava/drazby-financni-spravy/nejcastejsi-dotazy" title="Nejčastější dotazy" class="b-side-nav__link h5">
+                                        Nejčastější dotazy
+                                    </a>
+                                </li>
+                                
+                        <li class="b-side-nav__item">
+                            <a href="https://drazby.fs.gov.cz/" class="is-external b-side-nav__link h5" title="Elektronické dražby" >
+                                Elektronické dražby
+                            </a>
+                        </li>
+                        
+							    <li class="b-side-nav__item">
+                                    <a href="/cs/financni-sprava/drazby-financni-spravy/seznam-pracovist-pro-overeni-identity" title="Seznam pracovišť pro ověření identity" class="b-side-nav__link h5">
+                                        Seznam pracovišť pro ověření identity
+                                    </a>
+                                </li>
+                                
+        </ul>
+    </nav>
+                                <!-- /leftMenu -->
+                            </aside>
+                        </div>
+        </div>
+    </main>
+                    <div class="b-nav-bar">
+    <div class="b-nav-bar__logo">
+        <img src="/assets/img/logo.svg" alt="Finanční správa" width="30" height="30">
+    </div>
+    <div class="row-main">
+        <div class="b-nav-bar__inner">
+            <nav class="b-breadcrumbs" aria-label="Zde se nacházíte">
+                <ol class="b-breadcrumbs__list">
+                    <li class="b-breadcrumbs__item">
+                        <a href="/" class="b-breadcrumbs__link">
+                            <span class="icon-svg icon-svg--bc-home b-breadcrumbs__home" aria-hidden="true">
+                                <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <use xlink:href="/assets/img/bg/icons-svg.svg#icon-bc-home" width="100%" height="100%" focusable="false"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </li>
+                <li class="b-breadcrumbs__item">
+                  <a href="/cs/financni-sprava" title="Finanční správa" class="b-breadcrumbs__link"> Finanční správa </a>
+                </li>
+                <li class="b-breadcrumbs__item">
+                  <a href="/cs/financni-sprava/drazby-financni-spravy" title="Dražby Finanční správy" class="b-breadcrumbs__link"> Dražby Finanční správy </a>
+                </li>
+                <li class="b-breadcrumbs__item">
+                  <span aria-current="page" class="b-breadcrumbs__link"> Dražby - přehled </span>
+                </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+    <footer>
+        <div id="footer-11693" class="footer">
+	<div class="footer__inner">
+		<div class="b-footer-columns">
+			<div class="b-footer-column">
+				<div class="b-footer-column__column-inner js-accordion__item">
+					<h5 class="b-footer-column__title js-accordion-title">
+						<button class="b-footer-column__toggle" aria-expanded="false">
+							<span class="b-footer-column__title-text h5">Vybran&eacute; informace</span>
+							<span class="b-footer-column__indicator" aria-hidden="true">
+								<span class="icon-svg icon-svg--arrow-down" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="/assets/img/bg/icons-svg.svg#icon-arrow-down" width="100%" height="100%" focusable="false"/>
+									</svg>
+								</span>
+							</span>
+						</button>
+					</h5>
+					<div class="b-footer-column__content" hidden="">
+						    <div class="b-footer-column__item"><a href="/cs/financni-sprava/povinne-zverejnovane-informace" target="_self" class="b-footer-column__link">Povinně zveřejňované informace</a></div>
+						    <div class="b-footer-column__item"><a href="/cs/financni-sprava/media-a-verejnost" target="_self" class="b-footer-column__link">Pro média</a></div>
+						    <div class="b-footer-column__item"><a href="/cs/nepotrebny-majetek" target="_self" class="b-footer-column__link">Nabídka nepotřebného majetku</a></div>
+						    <div class="b-footer-column__item"><a href="/cs/informacni-zdroje" target="_self" class="b-footer-column__link">Další informační zdroje</a></div>
+						    <div class="b-footer-column__item"><a href="/cs/financni-sprava/nabidka-zamestnani" target="_self" class="b-footer-column__link">Nabídka zaměstnání</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="b-footer-column">
+				<div class="b-footer-column__column-inner js-accordion__item">
+					<h5 class="b-footer-column__title js-accordion-title">
+						<button class="b-footer-column__toggle" aria-expanded="false">
+							<span class="b-footer-column__title-text h5">Odkazy</span>
+							<span class="b-footer-column__indicator" aria-hidden="true">
+								<span class="icon-svg icon-svg--arrow-down" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="/assets/img/bg/icons-svg.svg#icon-arrow-down" width="100%" height="100%" focusable="false"/>
+									</svg>
+								</span>
+							</span>
+						</button>
+					</h5>
+					<div class="b-footer-column__content" hidden="">
+						    <div class="b-footer-column__item"><a href="https://www.mfcr.cz" class="is-external b-footer-column__link" >Ministerstvo financí ČR</a></div>
+						    <div class="b-footer-column__item"><a href="https://celnisprava.gov.cz/" class="is-external b-footer-column__link" >Celní správa ČR</a></div>
+						    <div class="b-footer-column__item"><a href="https://www.mfcr.cz/cs/kontrola-a-regulace/cenova-regulace-a-kontrola/cenovy-vestnik" class="is-external b-footer-column__link" >Cenový věstník MF</a></div>
+						    <div class="b-footer-column__item"><a href="https://www.mfcr.cz/cs/dane-a-ucetnictvi/financni-zpravodaj" class="is-external b-footer-column__link" >Finanční zpravodaj MF</a></div>
+						    <div class="b-footer-column__item"><a href="https://www.mpsv.cz/jednotne-mesicni-hlaseni-zamestnavatelu-jmhz" class="is-external b-footer-column__link" >Jednotné měsíční hlášení zaměstnavatelů</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="b-footer-column">
+				<div class="b-footer-column__column-inner js-accordion__item">
+					<h5 class="b-footer-column__title js-accordion-title">
+						<button class="b-footer-column__toggle" aria-expanded="false">
+							<span class="b-footer-column__title-text h5">Weby FS</span>
+							<span class="b-footer-column__indicator" aria-hidden="true">
+								<span class="icon-svg icon-svg--arrow-down" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="/assets/img/bg/icons-svg.svg#icon-arrow-down" width="100%" height="100%" focusable="false"/>
+									</svg>
+								</span>
+							</span>
+						</button>
+					</h5>
+					<div class="b-footer-column__content" hidden="">
+						    <div class="b-footer-column__item"><a href="https://www.mojedane.cz/" class="is-external b-footer-column__link " target="_blank"  rel="noreferrer noopener">MOJE daně</a></div>
+						    <div class="b-footer-column__item"><a href="https://eet.gov.cz" class="is-external b-footer-column__link " target="_blank"  rel="noreferrer noopener">EET 2.0</a></div>
+						    <div class="b-footer-column__item"><a href="https://drazby.fs.gov.cz/" class="is-external b-footer-column__link " target="_blank"  rel="noreferrer noopener">Elektronické dražby</a></div>
+						    <div class="b-footer-column__item"><a href="https://red.fs.gov.cz/" class="is-external b-footer-column__link " target="_blank"  rel="noreferrer noopener">Registr dotací (ReD)</a></div>
+						    <div class="b-footer-column__item"><a href="https://danovakobra.gov.cz/" class="is-external b-footer-column__link " target="_blank"  rel="noreferrer noopener">Daňová kobra</a></div>
+						    <div class="b-footer-column__item"><a href="https://finfoveskole.gov.cz/" class="is-external b-footer-column__link " target="_blank"  rel="noreferrer noopener">Finfo ve škole</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="b-footer-media">
+			<div class="b-footer-column-horizontal__content">
+				<div class="b-footer-column-horizontal__item u-hide u-show@md">
+					<h5 class="b-footer-column-horizontal__title h5">Sledujte n&aacute;s</h5>
+				</div>
+				<div class="b-footer-column-horizontal__item">
+					<a  href="https://cz.linkedin.com/company/financnisprava" class=" b-footer-column-horizontal__link"  target="_blank" rel="noreferrer noopener" title="LinkedIn Finanční správa ČR">
+						<span class="icon-svg icon-svg--linkedin" aria-hidden="true">
+							<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+								<use xlink:href="/assets/img/bg/icons-svg.svg#icon-linkedin" width="100%" height="100%" focusable="false"/>
+							</svg>
+						</span>
+						<span class="u-vhide">LinkedIn</span>
+					</a>
+				</div>
+				<div class="b-footer-column-horizontal__item">
+					<a  href="https://x.com/financnisprava" class=" b-footer-column-horizontal__link"  target="_blank" rel="noreferrer noopener" title="síť X Finanční správa ČR">
+						<span class="icon-svg icon-svg--twitter" aria-hidden="true">
+							<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+								<use xlink:href="/assets/img/bg/icons-svg.svg#icon-twitter" width="100%" height="100%" focusable="false"/>
+							</svg>
+						</span>
+						<span class="u-vhide">X</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="footer-cta-11693" class="b-newsletter-cta">
+    <div class="row-main">
+        <h2 class="b-newsletter-cta__title h2">Zůstaňte s námi v&nbsp;kontaktu</h2>
+        <form action="/cs/novinky-e-mailem" method="post">
+            <input type="hidden" name="showCaptcha" value="1" />
+            <ul class="b-newsletter-cta__checkboxes">
+                <li class="b-newsletter-cta__checkbox">
+                    <label class="inp-item inp-item--checkbox">
+                        <input type="checkbox" name="type" id="type_calendar" value="calendar" class="inp-item__inp">
+                        <span class="inp-item__text">Zasílat novinky z&nbsp;kalendáře</span>
+                    </label>
+                </li>
+                <li class="b-newsletter-cta__checkbox">
+                    <label class="inp-item inp-item--checkbox">
+                        <input type="checkbox" name="type" id="type_jobs" value="jobs" class="inp-item__inp">
+                        <span class="inp-item__text">Zasílat nabídky zaměstnání</span>
+                    </label>
+                </li>
+            </ul>
+            <div class="b-newsletter-cta__input-wrapper">
+                <p>
+                    <label for="email" class="inp-label h5 u-vhide">Zadejte váš e-mail</label>
+                    <span class="inp-fix inp-icon">
+                        <input type="email" name="email" id="email" placeholder="Váš e-mail" class="inp-text ">
+                        <span class="inp-icon__icon">
+                            <span class="icon-svg icon-svg--mail" aria-hidden="true">
+                                <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <use xlink:href="/assets/img/bg/icons-svg.svg#icon-mail" width="100%" height="100%" focusable="false"></use>
+                                </svg>
+                            </span>
+                        </span>
+                    </span>
+                </p>
+                <p class="btn__wrapper btn__wrapper--fullwidth-sm">
+                    <button type="submit" class="btn btn--fullwidth-sm">
+                        <span class="btn__inner">
+                            <span class="btn__text">Přihlásit k&nbsp;odběru</span>
+                        </span>
+                    </button>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="b-colophon">
+	<div class="row-main">
+		<div class="b-colophon__inner">
+			<p></p>
+          <p class="b-colophon__title">
+            <a href="#" class="b-colophon__wrap js-opener">
+              <span class="b-colophon__text">O webu</span>
+              <span class="b-colophon__indicator">
+                <span class="icon-svg icon-svg--arrow-down" aria-hidden="true">
+                  <svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <use xlink:href="/assets/img/bg/icons-svg.svg#icon-arrow-down" width="100%" height="100%" focusable="false"></use>
+                  </svg>
+                </span>
+              </span>
+            </a>
+          </p>
+            <div class="b-colophon__item">
+				    <p><a href="/cs/prohlaseni-o-pristupnosti">Prohlášení o přístupnosti</a></p>
+				    <p><a href="/cs/financni-sprava/povinne-zverejnovane-informace/gdpr-zpracovani-osobnich-udaju">GDPR</a></p>
+				    <p><a href="javascript: Cookiebot.renew()">Nastavení cookies</a></p>
+				    <p><a href="/cs/mapa-stranek">Mapa stránek</a></p>
+				    <p><a href="/cs/rss">Odebírat RSS</a></p>
+            </div>
+		</div>
+	</div>
+</div>
+
+
+    </footer>
+<script src="/assets/js/jquery-3.5.1.min.js?t=1610620228917"></script>
+<script src="/assets/js/app.js?t=1610620228917"></script>
+<!-- <script>
+    var header = Array.from(document.getElementsByClassName('js-sticky-header'))[0];
+    const body = document.querySelectorAll('body')[0];
+    function getTransitionEndEventName() {
+      var transitions = {
+        "transition": "transitionend",
+        "OTransition": "oTransitionEnd",
+        "MozTransition": "transitionend",
+        "WebkitTransition": "webkitTransitionEnd"
       }
-    },
-    "IndicatorType" : {
-      "label" : "Indicator",
-      "note" : [ "" ],
-      "category" : {
-        "index" : {
-          "7432J01" : 0,
-          "7432J02" : 1,
-          "6144J01" : 2,
-          "6144J02" : 3,
-          "6144J03" : 4,
-          "6144J04" : 5
-        },
-        "label" : {
-          "7432J01" : "Average purchase prices of family houses (CZK per square metre)",
-          "7432J02" : "Average purchase prices of flats (CZK per square metre)",
-          "6144J01" : "Price indices of family houses (corresponding period of previous year = 100)",
-          "6144J02" : "Price indices of flats (corresponding period of previous year = 100)",
-          "6144J03" : "Price indices of family houses (average 2015 = 100)",
-          "6144J04" : "Price indices of flats (average 2015 = 100)"
-        },
-        "unit" : {
-          "7432J01" : {
-            "decimals" : 0,
-            "label" : "CZK per square metre",
-            "symbol" : ""
-          },
-          "7432J02" : {
-            "decimals" : 0,
-            "label" : "CZK per square metre",
-            "symbol" : ""
-          },
-          "6144J01" : {
-            "decimals" : 1,
-            "label" : "per cent",
-            "symbol" : "per cent"
-          },
-          "6144J02" : {
-            "decimals" : 1,
-            "label" : "per cent",
-            "symbol" : "per cent"
-          },
-          "6144J03" : {
-            "decimals" : 1,
-            "label" : "per cent",
-            "symbol" : "per cent"
-          },
-          "6144J04" : {
-            "decimals" : 1,
-            "label" : "per cent",
-            "symbol" : "per cent"
-          }
-        }
-      }
-    },
-    "CasR" : {
-      "label" : "Years",
-      "category" : {
-        "index" : {
-          "2019" : 0,
-          "2020" : 1,
-          "2021" : 2,
-          "2022" : 3,
-          "2023" : 4,
-          "2024" : 5,
-          "2025" : 6
-        },
-        "label" : {
-          "2019" : "2019",
-          "2020" : "2020",
-          "2021" : "2021",
-          "2022" : "2022",
-          "2023" : "2023",
-          "2024" : "2024",
-          "2025" : "2025"
+      let bodyStyle = document.body.style;
+      for (let transition in transitions) {
+        if (bodyStyle[transition] != undefined) {
+          return transitions[transition];
         }
       }
     }
-  },
-"value":[
-34513.0, 37244.0, 43044.0, 49782.0, 48320.0, 51867.0, 56066.0, 39306.0, 44082.0, 54461.0, 61742.0, 58641.0, 63521.0, 72410.0, 110.9, 114.5, 119.2, 111.0, 101.0, 101.0, 106.7, 109.2, 113.5, 122.2, 116.3, 94.4, 106.0, 110.6, 145.2, 166.3, 198.1, 220.0, 222.3, 224.6, 239.6, 159.8, 181.4, 221.6, 257.7, 243.2, 257.7, 285.1],
-"status":{
-  },
-"extension":{
-"published":
-[1, 1, 2, 2, 3, 3, 4, 1, 1, 2, 2, 2, 3, 4, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1, 2, 3, 4],
-"publishedCode":{
-     "1" : "2024-01-05T08:00Z",
-     "2" : "2024-12-31T08:00Z",
-     "3" : "2025-12-31T08:00Z",
-     "4" : "2026-07-15T07:00Z"
-  },
-"status":{
-    "label":{
-    }
-  }
-},
-"updated":"2026-07-15T07:00Z"
-}
+    let 
