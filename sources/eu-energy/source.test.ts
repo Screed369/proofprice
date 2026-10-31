@@ -317,3 +317,10 @@ test("eu-energy: a missing (':') or zero latest cell is no figure: the previous 
   assert.equal(a.status, "no_matches");
   assert.equal(a.price, null);
 });
+
+test("eu-energy: serves() hands NO household electricity to a national source, keeps NO gas and other countries", async () => {
+  const { default: m } = await import("./index");
+  assert.equal(m.serves!({ country: "NO", energy: "electricity" }), false);
+  assert.equal(m.serves!({ country: "NO", energy: "gas" }), true);
+  assert.equal(m.serves!({ country: "IE", energy: "electricity" }), true);
+});

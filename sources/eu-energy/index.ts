@@ -13,11 +13,11 @@ export default defineSource({
   placeName: "the EU, Norway and Iceland",
   status: "live",
   // business requests go to eu-energy-business (same countries, other source); SE household electricity goes to se-scb-energy
-  // (Statistics Sweden, declared serves() change, Gap fix G20261023-PLATFORM-SERVES-ENERGY-RENT); NL household electricity and gas go to nl-cbs-energy (CBS, same Gap fix); FI household electricity goes to fi-stat-energy (Statistics Finland table 13rb, declared serves() change, Builder C 23 Oct).
+  // (Statistics Sweden, declared serves() change, Gap fix G20261023-PLATFORM-SERVES-ENERGY-RENT); NL household electricity and gas go to nl-cbs-energy (CBS, same Gap fix); FI household electricity goes to fi-stat-energy (Statistics Finland table 13rb, declared serves() change, Builder C 23 Oct); NO household electricity goes to no-ssb-electricity (SSB table 14491) once that folder exists, declared serves() change by the Repairer 31 Oct (platform task from Builders B and D). Until then the request falls back to this source.
   serves: (p) =>
     p.sector !== "business" &&
     String(p.country ?? "").toUpperCase() !== "NL" &&
-    !(["SE", "FI"].includes(String(p.country ?? "").toUpperCase()) && String(p.energy ?? "") === "electricity"),
+    !(["SE", "FI", "NO"].includes(String(p.country ?? "").toUpperCase()) && String(p.energy ?? "") === "electricity"),
   paramNotes: {
     energy: "EU/NO/IS: Eurostat currently has no recent household gas price for CY, FI, IS, MT or NO (status no_matches).",
     consumption_band:
