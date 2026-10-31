@@ -1,0 +1,24 @@
+URL: https://catalogodatos.cnmc.es/api/3/action/datastore_search?resource_id=69671e28-b299-4e45-8cf9-24d04f7e5117&limit=6
+Fetched: 2026-10-31T05:47:27Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2236
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Sat, 31 Oct 2026 05:47:27 GMT
+content-type: application/json;charset=utf-8
+content-length: 2236
+vary: Accept-Encoding
+vary: Accept-Encoding
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy:  default-src 'self' ;  script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://cdnjs.cloudflare.com https://catalogodatos.cnmc.es ;  frame-src 'self' https://challenges.cloudflare.com  ;  img-src 'self' data: https://gravatar.com https://stamen-tiles-b.a.ssl.fastly.net ;  media-src 'self' ;  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://catalogodatos.cnmc.es ;  font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com ;  object-src 'self';  connect-src 'self' ;  frame-ancestors 'self' ; 
+strict-transport-security: max-age=31536000; includeSubdomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://catalogodatos.cnmc.es/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "limit": 6, "records_format": "objects", "resource_id": "69671e28-b299-4e45-8cf9-24d04f7e5117", "total_estimation_threshold": null, "records": [{"_id":1,"mes":"2022-11","empresa":"Iryo","tipo_de_servicio":"Comercial","tipo_de_producto":"LD AV","trayecto":"Madrid-Barcelona","precio":45.73000},{"_id":2,"mes":"2022-11","empresa":"OUIGO","tipo_de_servicio":"Comercial","tipo_de_producto":"LD AV","trayecto":"Madrid-Barcelona","precio":40.85000},{"_id":3,"mes":"2022-11","empresa":"OUIGO","tipo_de_servicio":"Comercial","tipo_de_producto":"LD AV","trayecto":"Madrid-Valencia","precio":25.08000},{"_id":4,"mes":"2022-11","empresa":"Renfe-AVE","tipo_de_servicio":"Comercial","tipo_de_producto":"LD AV","trayecto":"Madrid-Alicante","precio":48.73000},{"_id":5,"mes":"2022-11","empresa":"Renfe-AVE","tipo_de_servicio":"Comercial","tipo_de_producto":"LD AV","trayecto":"Madrid-Barcelona","precio":78.78000},{"_id":6,"mes":"2022-11","empresa":"Renfe-AVE","tipo_de_servicio":"Comercial","tipo_de_producto":"LD AV","trayecto":"Madrid-Málaga","precio":67.77000}], "fields": [{"id": "_id", "type": "int"}, {"id": "mes", "type": "text", "info": {"label": "Mes", "notes": "atributo", "description": "Mes"}}, {"id": "empresa", "type": "text", "info": {"label": "Empresa", "notes": "atributo", "description": "Empresa"}}, {"id": "tipo_de_servicio", "type": "text", "info": {"label": "Tipo de servicio", "notes": "atributo", "description": "Tipo de servicio"}}, {"id": "tipo_de_producto", "type": "text", "info": {"label": "Tipo de producto", "notes": "atributo", "description": "Tipo de producto"}}, {"id": "trayecto", "type": "text", "info": {"label": "Trayecto", "notes": "atributo", "description": "Trayecto"}}, {"id": "precio", "type": "numeric", "info": {"label": "Precio (\u20ac)", "notes": "indicador", "description": "Precio (\u20ac)"}}], "_links": {"start": "//api/3/action/datastore_search?resource_id=69671e28-b299-4e45-8cf9-24d04f7e5117&limit=6", "next": "//api/3/action/datastore_search?resource_id=69671e28-b299-4e45-8cf9-24d04f7e5117&limit=6&offset=6"}, "total": 1001, "total_was_estimated": false}}
