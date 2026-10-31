@@ -1,0 +1,69 @@
+URL: https://reports-public.ieso.ca/public/PriceHOEPAverage/PUB_PriceHOEPAverage_2025.xml
+Fetched: 2026-10-31T19:42:52Z from GitHub Actions
+Status, type, bytes: 200 text/xml 1887
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sat, 31 Oct 2026 19:42:52 GMT
+Server: Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k
+Last-Modified: Wed, 14 May 2025 14:16:48 GMT
+ETag: "75f-63519332052a5"
+Accept-Ranges: bytes
+Content-Length: 1887
+Connection: close
+Content-Type: text/xml
+
+=== FILE TYPE: XML 1.0 document, ASCII text
+=== FIRST 8000 BYTES
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://reports-public.ieso.ca/docrefs/stylesheet/PriceHOEPAverage_HTML_t1-1.xsl" ?>
+<Document docID="PriceHOEPAverage" xmlns="http://www.ieso.ca/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ieso.ca/schema https://reports-public.ieso.ca/docrefs/schema/PriceHOEPAverage_r1.xsd">
+<DocHeader>
+<DocTitle>HOEP Monthly Averages Report</DocTitle>
+<DocRevision>1</DocRevision>
+<DocConfidentiality>
+<DocConfClass>PUB</DocConfClass>
+</DocConfidentiality>
+<CreatedAt>2025-05-14T09:14:46</CreatedAt>
+</DocHeader>
+<DocBody>
+<ReportYear>2025</ReportYear>
+<HOEP>
+<Month>January</Month>
+<ArithmeticAve>65.98</ArithmeticAve>
+<WeightedAve>68.28</WeightedAve>
+<ArithmeticOnPeakAve>81.27</ArithmeticOnPeakAve>
+<ArithmeticOffPeakAve>52.26</ArithmeticOffPeakAve>
+<WeightedOnPeakAve>82.80</WeightedOnPeakAve>
+<WeightedOffPeakAve>53.28</WeightedOffPeakAve>
+</HOEP>
+<HOEP>
+<Month>February</Month>
+<ArithmeticAve>76.68</ArithmeticAve>
+<WeightedAve>78.41</WeightedAve>
+<ArithmeticOnPeakAve>82.10</ArithmeticOnPeakAve>
+<ArithmeticOffPeakAve>72.20</ArithmeticOffPeakAve>
+<WeightedOnPeakAve>83.55</WeightedOnPeakAve>
+<WeightedOffPeakAve>73.71</WeightedOffPeakAve>
+</HOEP>
+<HOEP>
+<Month>March</Month>
+<ArithmeticAve>47.44</ArithmeticAve>
+<WeightedAve>48.92</WeightedAve>
+<ArithmeticOnPeakAve>51.71</ArithmeticOnPeakAve>
+<ArithmeticOffPeakAve>43.93</ArithmeticOffPeakAve>
+<WeightedOnPeakAve>52.79</WeightedOnPeakAve>
+<WeightedOffPeakAve>45.45</WeightedOffPeakAve>
+</HOEP>
+<HOEP>
+<Month>April</Month>
+<ArithmeticAve>39.22</ArithmeticAve>
+<WeightedAve>41.09</WeightedAve>
+<ArithmeticOnPeakAve>44.23</ArithmeticOnPeakAve>
+<ArithmeticOffPeakAve>35.19</ArithmeticOffPeakAve>
+<WeightedOnPeakAve>45.63</WeightedOnPeakAve>
+<WeightedOffPeakAve>37.00</WeightedOffPeakAve>
+</HOEP>
+</DocBody>
+</Document>
