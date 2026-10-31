@@ -382,3 +382,10 @@ test("routing: PT contracts go to pt-base-contracts, FR to fr-decp-contracts, DE
   assert.equal(pickSource(cat, { country: "DE", what: "laptops" }).src.info.id, "de-oev-contracts");
   assert.equal(pickSource(cat, { country: "NL", what: "laptops" }).src.info.id, "eu-ted");
 });
+
+test("routing: IE and PL contracts reach their own sources, not TED (exact gap-fix URLs)", async () => {
+  const { categoryById, pickSource } = await import("../../lib/registry");
+  const cat = categoryById("contracts")!;
+  assert.equal(pickSource(cat, { country: "IE", what: "road resurfacing" }).src.info.id, "ie-etenders-contracts");
+  assert.equal(pickSource(cat, { country: "PL", what: "office cleaning" }).src.info.id, "pl-bzp-contracts");
+});
