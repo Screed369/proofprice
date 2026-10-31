@@ -2,6 +2,7 @@
 import { defineSource, num, str } from "../../lib/plugin";
 import { INFO, usContracts } from "./source";
 import { isLaborRateRequest } from "../../categories/contracts/labor";
+import { isChicagoArea } from "../us-chicago-contracts/source";
 
 export default defineSource({
   info: INFO,
@@ -11,7 +12,8 @@ export default defineSource({
   placeName: "the United States (federal contracts)",
   status: "live",
   // Declared platform edit (Platform Builder 24 Oct 2026): hourly labour-rate questions are answered by us-gsa-calc (GSA CALC+ ceiling rates).
-  serves: (p) => !isLaborRateRequest(p),
+  // Declared platform edit (Builder C 31 Oct 2026): buyer_area=Chicago is answered by us-chicago-contracts (City of Chicago awards).
+  serves: (p) => !isLaborRateRequest(p) && !isChicagoArea(p.buyer_area),
   paramNotes: {
     what: "US: a phrase searched in the federal award descriptions (common purchases such as 'laptops' use a tuned keyword; 'road resurfacing' uses the road-repair product code Z2LB). Several words must appear together, so shorter is better.",
     cpv: "US: a product or service code (PSC, e.g. 7010 or psc:7010) or a NAICS code (e.g. 334111 or naics:334111) instead of the keyword; there are no CPV codes in the US.",
