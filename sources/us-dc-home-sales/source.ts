@@ -7,8 +7,8 @@
 import { arcgisAll, arcgisQuery, Fetcher } from "../../lib/adapters";
 import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { summarise } from "../../lib/stats";
-import type { SourceInfo } from "../../lib/plugin";
+import { MIN_PUBLISH, summarise } from "../../lib/stats";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 
 const BASE = "https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Property_and_Land_WebMercator/MapServer";
 export const LAYERS = { house: `${BASE}/25`, condo: `${BASE}/24` } as const;
@@ -190,4 +190,56 @@ export async function dcHomeSales(input: DcHomeSalesInput, opts: DcHomeSalesOpti
       notes,
     },
   });
+}
+
+
+// ---------- daily collector (stale-if-error copy) ----------
+// Stores the default 12-month window for houses, condos and both together (whole District), so that an outage of the DC GIS server
+// is answered from the library (extra.stale) instead of failing. Aggregates only; rows are dated by the day of collection.
+
+export const HARVEST_AREA = "DC";
+export const harvestItem = (type: DcType): string => `sales-12m/${type}`;
+
+/** Library key for a request: only the default whole-District 12-month window (any, house or condo) is stored. */
+export function dcHistoryKey(p: { town?: string; postcode?: string; property_type?: string; months?: number }): { area: string; item: string; label: string } | null {
+  if (p.postcode && String(p.postcode).trim()) return null;
+  if (p.months !== undefined && p.months !== null && p.months !== 12) return null;
+  const type = (p.property_type ?? "any").toLowerCase();
+  if (!(DC_TYPES as readonly string[]).includes(type)) return null;
+  return { area: HARVEST_AREA, item: harvestItem(type as DcType), label: "Washington, DC" };
+}
+
+/** Pure part of the collector: three library rows from the two parsed tables (only rows with at least 5 sales). */
+export function harvestFrom(house: DcSale[], condo: DcSale[]): HarvestResult | null {
+  const sets: [DcType, DcSale[]][] = [["any", [...house, ...condo]], ["house", house], ["condo", condo]];
+  const rows = [];
+  for (const [type, sales] of sets) {
+    const s = summarise(sales.map((x) => x.price));
+    if (!s || s.count < MIN_PUBLISH) continue;
+    rows.push({ area: HARVEST_AREA, item: harvestItem(type), n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max });
+  }
+  if (!rows.length) return null;
+  return {
+    date: new Date().toISOString().slice(0, 10),
+    currency: "USD",
+    unit: "per sale",
+    rows,
+    note: "Washington, DC qualified (arm's-length) sales of $10,000 or more in the 12 months up to the newest recorded sale, from the District's CAMA tables. Aggregates only.",
+  };
+}
+
+export async function dcHarvest(opts: { fetcher?: Fetcher; today?: Date } = {}): Promise<HarvestResult> {
+  const today = opts.today ?? new Date();
+  const [h, c] = await Promise.all([LAYERS.house, LAYERS.condo].map(async (l) => {
+    const latest = await latestSale(l, today, opts.fetcher);
+    if (!latest) throw new SourceError("The DC property sales tables returned no recent qualified sales");
+    return { latest, layer: l };
+  }));
+  const latest = [h.latest, c.latest].sort().reverse()[0];
+  const where = buildWhere({ from: monthsBack(latest, 12), to: latest });
+  const [hp, cp] = await Promise.all([h.layer, c.layer].map((l) => arcgisAll(l, { where, outFields: OUT_FIELDS, orderByFields: ORDER }, { fetcher: opts.fetcher, maxRows: MAX_ROWS, pageSize: PAGE_SIZE, timeoutMs: 25000 })));
+  const res = harvestFrom(parseSales(hp.rows), parseSales(cp.rows));
+  if (!res) throw new SourceError("The DC tables hold fewer than 5 qualified sales in the newest 12 months");
+  res.date = today.toISOString().slice(0, 10);
+  return res;
 }

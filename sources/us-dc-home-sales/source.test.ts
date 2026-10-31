@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError } from "../../lib/http";
-import { buildWhere, clampMonths, dcHomeSales, INFO, isDcRequest, LAYERS, monthsBack, OUT_FIELDS, parseSales } from "./source";
+import { buildWhere, clampMonths, dcHarvest, dcHistoryKey, dcHomeSales, harvestFrom, INFO, isDcRequest, LAYERS, monthsBack, OUT_FIELDS, parseSales } from "./source";
 import usHomeSales from "../us-home-sales";
 import dcSource from "./index";
 import { findSource } from "../../lib/registry";
@@ -102,4 +102,25 @@ test("honest refusals: coop, ZIP codes, and fewer than five sales", async () => 
 test("INFO names the licence and ships no personal fields", () => {
   assert.equal(INFO.id, "us-dc-home-sales");
   assert.match(INFO.limits, /never addresses/);
+});
+
+test("collector: three rows (any, house, condo) from the live-format tables; fewer than five sales drop a row", async () => {
+  const { fetcher } = fakeDc();
+  const h = await dcHarvest({ fetcher, today: new Date("2026-10-23T12:00:00Z") });
+  assert.equal(h.date, "2026-10-23");
+  const by = Object.fromEntries(h.rows.map((r) => [r.item, r]));
+  assert.deepEqual(Object.keys(by).sort(), ["sales-12m/any", "sales-12m/condo", "sales-12m/house"]);
+  assert.equal(by["sales-12m/any"].n, 16);
+  assert.equal(by["sales-12m/any"].median, 500565);
+  assert.ok(h.rows.every((r) => r.area === "DC" && r.n >= 5 && r.low <= r.median && r.median <= r.high));
+  const few = harvestFrom(parseSales(RES.slice(0, 3)), []);
+  assert.equal(few, null);
+});
+
+test("collector: only the default whole-District 12-month request has a library key", () => {
+  assert.deepEqual(dcHistoryKey({ town: "Washington, DC" }), { area: "DC", item: "sales-12m/any", label: "Washington, DC" });
+  assert.equal(dcHistoryKey({ property_type: "condo", months: 12 })!.item, "sales-12m/condo");
+  assert.equal(dcHistoryKey({ months: 6 }), null);
+  assert.equal(dcHistoryKey({ postcode: "20001" }), null);
+  assert.equal(dcHistoryKey({ property_type: "coop" }), null);
 });

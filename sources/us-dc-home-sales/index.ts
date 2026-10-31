@@ -1,7 +1,7 @@
 // Manifest: Washington, DC home sales (the District's assessment records). Shares the "home-sales" country US with us-home-sales:
 // this source serves Washington, DC requests and us-home-sales serves everything else (a declared serves() change in both folders).
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, dcHomeSales, isDcRequest } from "./source";
+import { INFO, dcHarvest, dcHistoryKey, dcHomeSales, isDcRequest } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -28,4 +28,8 @@ export default defineSource({
       months: num(p.months),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the daily collector stores the default 12-month window (houses, condos, both) for the whole District.
+  harvest: () => dcHarvest(),
+  historyKey: (p) => dcHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), months: num(p.months) }),
+  noHistory: "Washington, DC: ProofPrice keeps only the newest 12-month window as a backup copy in case the District's server is down, and no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) with months=1 to 36 for other windows.",
 });
