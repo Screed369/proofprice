@@ -1,0 +1,582 @@
+URL: https://data.cnmc.es/modules/custom/cnmc/js/cnmc.dataTable.load.js
+Fetched: 2026-10-31T05:45:46Z from GitHub Actions
+Status, type, bytes: 200 application/javascript 21324
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Sat, 31 Oct 2026 05:45:46 GMT
+content-type: application/javascript
+content-length: 21324
+vary: Accept-Encoding
+last-modified: Fri, 16 Oct 2026 09:16:54 GMT
+vary: Accept-Encoding
+etag: "6ad1eb86-534c"
+expires: Thu, 31 Dec 2037 23:55:55 GMT
+cache-control: max-age=315360000
+referrer-policy: no-referrer
+permissions-policy: geolocation=(),midi=(),sync-xhr=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+cross-origin-embedder-policy: require-corp
+cross-origin-opener-policy: same-origin
+cross-origin-resource-policy: same-origin
+accept-ranges: bytes
+x-xss-protection: 1; mode=block
+content-security-policy:  default-src 'self';  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://www.google-analytics.com ;  frame-src 'self' https://challenges.cloudflare.com  ;  img-src 'self' data: https://www.google-analytics.com ;  media-src 'self';  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com  ;  font-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.gstatic.com  ;  object-src 'self';  connect-src 'self' https://publicadordatos.cnmc.es https://region1.google-analytics.com https://www.google-analytics.com https://catalogodatos.cnmc.es ; 
+strict-transport-security: max-age=31536000; includeSubdomains
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 text
+=== FIRST 60000 BYTES
+(function ($, Drupal, drupalSettings) {
+  "use strict";
+
+  // Variables globales
+  const envVars = drupalSettings.cnmc?.env_vars || {};
+
+  let oCache = { iCacheLower: -1 };
+  let resource_id = "";
+  let columnsName = [];
+  const dominio = envVars.ckan_url;
+  let conOrdenacionAnterior = false;
+  let ordenacionAnterior = "";
+  let name_dataset = "";
+
+  // Funciones auxiliares
+  function fnGetKey( aoData, sKey ){
+	  for (let i=0, iLen=aoData.length ; i<iLen ; i++) {
+		  if (aoData[i].name == sKey) {
+			  return aoData[i].value;
+		  }
+	  }
+	  return null;
+  }
+
+  function fnSetKey (aoData, sKey, mValue) {
+    let encontrada = false;
+    let iLen = aoData.length;
+    for (var i=0; i < iLen; i++) {
+      if (aoData[i].name == sKey) {
+        aoData[i].value = mValue;
+        encontrada = true;
+      }
+    }
+    if (!encontrada) {
+      aoData.push({name: sKey, value: mValue});
+    }
+  }      
+
+  function converterUrl(aoData) {
+    const sourceData = { resource_id: resource_id, sort: "", q: "", limit: 10, offset: 0 };
+
+    const iDisplayLength = parseInt(fnGetKey(aoData, "iDisplayLength")) || 10;
+    sourceData.limit = iDisplayLength;
+
+    const iDisplayStart = parseInt(fnGetKey(aoData, "iDisplayStart")) || 0;
+    sourceData.offset = iDisplayStart;
+
+    const iSortCol = parseInt(fnGetKey(aoData, "iSortCol_0"));
+    const iSortColDir = fnGetKey(aoData, "sSortDir_0") || "asc";
+    const iSortColName = fnGetKey(aoData, "mDataProp_" + iSortCol);
+
+    // Si columnsName tiene mapeo por nombre, usarlo; si no, usar directamente iSortColName
+    const columna = (columnsName && columnsName[iSortColName]) ? columnsName[iSortColName] : iSortColName || "";
+
+    if (conOrdenacionAnterior) {
+      if (ordenacionAnterior === "") {
+        sourceData.sort = columna + ' ' + iSortColDir;
+      } else {
+        sourceData.sort = columna + ' ' + iSortColDir + ", " + ordenacionAnterior;
+      }
+      ordenacionAnterior = columna + ' ' + iSortColDir;
+    } else {
+      // añadimos orden secundario por _id asc para estabilidad
+      sourceData.sort = columna + ' ' + iSortColDir + ", _id asc";
+    }
+
+    const sSearch = fnGetKey(aoData, "sSearch") || "";
+    sourceData.q = sSearch;
+  
+    return sourceData;
+  }    
+
+  function converterData(sEcho, json) {
+    const data = { draw: sEcho, recordsTotal: 0, recordsFiltered: 0, data: [] };
+
+    if (!json || !json.result) return data;
+
+    data.recordsTotal = json.result.total || 0;
+    data.recordsFiltered = json.result.total || 0;
+
+    const records = JSON.stringify(json.result.records || []);
+
+    // reemplazar sólo si columnsName está definido
+    let fixedRecords = records;
+    for (let clave in columnsName) {
+      if (!Object.prototype.hasOwnProperty.call(columnsName, clave)) continue;
+      const title = columnsName[clave];
+      const esc = escapeForRegExp(title);
+      const reg = new RegExp('"' + esc + '"', "g");
+      fixedRecords = fixedRecords.replace(reg, '"' + clave + '"');
+    }
+
+    try {
+      data.data = JSON.parse(fixedRecords);
+    } catch (e) {
+      console.error("Error parseando records tras replace:", e);
+      data.data = json.result.records || [];
+    }
+
+    data.data = modificaTablon(data.data, json.result.fields || []);
+    return data;
+  }
+
+  function modificaTablon(registros, campos) {
+    if (!Array.isArray(registros) || registros.length === 0) return registros;
+    if (!Array.isArray(campos) || campos.length === 0) return registros;
+
+    for (let i = 0; i < campos.length; i++) {
+      const { type, info } = campos[i];
+      const notas = info && info.notes;
+
+      if (type === "numeric" || (type === "text" && notas === "indicador")) {
+        // Buscar clave real que corresponda a este campo (preferir id si existe)
+        const key = campos[i].id || Object.keys(registros[0])[i];
+        if (!key) continue;
+
+        for (let j = 0; j < registros.length; j++) {
+          if (Object.prototype.hasOwnProperty.call(registros[j], key)) {
+            const valor = registros[j][key];
+            if (valor != null && valor !== "") {
+              registros[j][key] = formateaNumerico(valor);
+            }
+          }
+        }
+      }
+    }
+
+    return registros;
+  }
+
+  function formateaNumerico(valor) {
+    // Convertir a número válido
+    const numero = parseFloat(
+      typeof valor === "string"
+        ? valor.replace(/\./g, "").replace(",", ".")
+        : valor
+    );
+
+    if (isNaN(numero)) return "";
+
+    // Separar parte entera y decimal con hasta 4 decimales
+    const [entera, decimal] = numero
+      .toFixed(4) // fuerza 4 decimales (con ceros)
+      .replace(/\.?0+$/, "") // elimina ceros sobrantes
+      .split(".");
+
+    // Añadir puntos de miles a la parte entera
+    const conMiles = entera.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+    return decimal ? `${conMiles},${decimal}` : conMiles;
+  }
+
+  function fnDataTablesPipeline(url, request, callback) {
+    const pageSize = request.length;
+    const start = request.start;
+    const draw = request.draw;
+
+    // Parámetros básicos para CKAN datastore_search
+    const data = {
+      resource_id: request.resource_id || '',
+      limit: pageSize,
+      offset: start
+    };
+
+    // -- Manejo de ordenación enviado por DataTables --
+    if (Array.isArray(request.order) && request.order.length > 0) {
+      const ord = request.order[0]; // primer orden (DataTables puede enviar varios)
+      const colIdx = ord.column;
+      const dir = ord.dir || 'asc';
+
+      // Determinar nombre de la columna (preferir columns[colIdx].data)
+      let sortField = '';
+      if (request.columns && request.columns[colIdx]) {
+        sortField = request.columns[colIdx].data || request.columns[colIdx].name || '';
+      }
+
+      // Si tienes un mapeo columnsName[campo] — usarlo si existe
+      if (sortField && columnsName && columnsName[sortField]) {
+        sortField = columnsName[sortField];
+      }
+
+      if (sortField) {
+        data.sort = sortField + ' ' + dir + ', _id asc'; // añadir orden secundario por _id
+      }
+    }
+
+    // -- Manejo de búsqueda (opcional) --
+    if (request.search && request.search.value) {
+      data.q = request.search.value;
+    }
+
+    // Llamada AJAX al endpoint CKAN
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'json',
+      data: data,
+      success: function (json) {
+        if (json && json.result && json.result.records) {
+          const recordsFormateados = modificaTablon(
+            json.result.records,
+            json.result.fields || []
+          );
+          
+          callback({
+            draw: draw,
+            recordsTotal: json.result.total || json.result.records.length,
+            recordsFiltered: json.result.total || json.result.records.length,
+            data: recordsFormateados
+          });
+        } else {
+          callback({
+            draw: draw,
+            recordsTotal: 0,
+            recordsFiltered: 0,
+            data: []
+          });
+        }
+      },
+      error: function (xhr, status, err) {
+        console.error('Error al cargar datos desde CKAN', status, err);
+        callback({
+          draw: draw,
+          recordsTotal: 0,
+          recordsFiltered: 0,
+          data: []
+        });
+      }
+    });
+  }
+
+  function cargaUrlBotonesDescarga(idRecurso, idNodo) {
+    var dominio = envVars.ckan_url;
+    const recurso_id = $(".recurso-id").text();
+    name_dataset = $("h1").first().text().trim();
+
+    if (!idNodo) {
+      console.warn("idNodo vacío. Se cancela cargaUrlBotonesDescarga()");
+      return;
+    }
+
+    if (!dominio) return;
+
+    $.ajax({ url: dominio + "/api/action/package_show?id=" + encodeURIComponent(idNodo), dataType: 'json' })
+    .done(function (data) {
+      if (!data || !data.success || !data.result) return;
+
+      const resources = data.result.resources || [];
+      let recursoCsv, recursoJson, recursoXml, nameCsv, nameJson, nameXml;
+
+      resources.forEach(function (r) {
+        const rt = (r.resource_type || r.format || "").toUpperCase();
+        if (rt === "CSV") { recursoCsv = r.id; nameCsv = r.name || r.id; }
+        if (rt === "JSON") { recursoJson = r.id; nameJson = r.name || r.id; }
+        if (rt === "XML") { recursoXml = r.id; nameXml = r.name || r.id; }
+      });
+
+      if (recursoCsv) {
+        const href = `${dominio}/dataset/${encodeURIComponent(idNodo)}/resource/${encodeURIComponent(recursoCsv)}/download/${encodeURIComponent(nameCsv)}`;
+        const $el = $("#csv_download").length ? $("#csv_download") : $('[data-format="csv"]');
+        $el.attr("href", href).attr("target", "_blank").show();
+      } else {
+        $("#csv_download").hide();
+      }
+
+      if (recursoJson) {
+        const href = `${dominio}/dataset/${encodeURIComponent(idNodo)}/resource/${encodeURIComponent(recursoJson)}/download/${encodeURIComponent(nameJson)}`;
+        const $el = $("#json_download").length ? $("#json_download") : $('[data-format="json"]');
+        $el.attr("href", href).attr("target", "_blank").show();
+      } else {
+        $("#json_download").hide();
+      }
+
+      if (recursoXml) {
+        const href = `${dominio}/dataset/${encodeURIComponent(idNodo)}/resource/${encodeURIComponent(recursoXml)}/download/${encodeURIComponent(nameXml)}`;
+        const $el = $("#xml_download").length ? $("#xml_download") : $('[data-format="xml"]');
+        $el.attr("href", href).attr("target", "_blank").show();
+      } else {
+        $("#xml_download").hide();
+      }
+      
+      $("#rdf_download").attr("href", dominio + "/dataset/" + encodeURIComponent(idNodo) + ".rdf");
+
+      $(".modal-header").append(`
+        <h3 class="modal-title" id="modalAPILongTitle">Acceso a los datos mediante API</h3>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times</span></button>`);
+
+      $(".modal-body").append(`
+			  <p>El acceso al recurso mediante una API web a los datos del conjunto de datos requiere realizar las siguientes dos consultas:</p>
+			  <ol>
+			    <li>Consulta en el catálogo de datos del identificador de la última versión (recurso) del conjunto de datos publicado.</li>
+					<li>Consulta en el almacén de datos de los datos asociados a un identificador de la última versión (recurso) del conjunto de datos.</li>
+					</ol>
+					  <p>A continuación, se muestran las consultas y código de ejemplo en Python para obtener los mismos datos que se muestran en la página.</p>
+					  <div id="accordionApi" role="tablist" aria-multiselectable="true" class="panel-group">
+						  <div class="panel panel-default">
+							  <div class="panel-heading" role="tab" id="apiOne">
+								  <h5 class="panel-title">
+									  <a data-toggle="collapse" data-parent="#accordionApi" href="#tit01" aria-expanded="false" aria-controls="tit01" class="accordion-toggle" href="#">Consultas »</a>
+								  </h5>
+							  </div>
+							  <div id="tit01" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tit01">
+								  <div class="panel-body txt-5">
+									  <ol>
+										  <li>
+											  <p class="negrita">Consulta para la obtención del identificador del último recurso (última versión) publicado del dataset</p>
+											  <p class="txt-5">La consulta debe realizarse solicitando la metainformación asociada a un determinado dataset según su título.</p>
+											  <p class="txt-5">El ejemplo para este dataset en concreto sería el siguiente:</p>
+					              <div class="well">
+												  <a href="` + dominio + `/api/3/action/package_search?q=` + name_dataset + `&fq=extras_estado:publicado" target="_blank">` + dominio + 
+                               `/api/3/action/package_search?q="` + name_dataset + `"&fq=extras_estado:publicado</a>
+                        </div>
+                        <p class="txt-5">La información sobre el identificador del último recurso publicado se ubica en el campo <span class="negrita">resources[0].id</span> de la respuesta.</p>
+                        <p class="txt-5">El identificador para este dataset corresponde a: <span class="negrita">` + recurso_id + `</span>.</p>
+										  </li>
+										  <li class="mtop20">
+											  <p class="negrita">Consulta para la obtención de los datos del recurso solicitado</p>
+											  <p class="txt-5">Una vez obtenido el identificador del recurso, la consulta de los datos debe realizarse incluyendo este identificador en el campo de búsqueda por resource_id.</p>
+											  <p class="txt-5">En este caso, para obtener los datos de este dataset la consulta sería:</p>
+											  <div class="well">
+												  <a href="` + dominio + `/api/3/action/datastore_search?limit=32000&resource_id=` + recurso_id + `" target="_blank">` +
+                            dominio + `api/3/action/datastore_search?limit=32000&resource_id=` + recurso_id + `</a>
+											  </div>
+											  <p class="txt-5 mtop10">Los datos se ubican en la colección <span class="negrita">records</span>.</p>
+										  </li>
+									  </ol>
+								  </div>
+							  </div>
+						  </div>
+						  <div class="panel panel-default">
+							  <div class="panel-heading" role="tab" id="apiTwo">
+								  <h5 class="panel-title">
+									  <a data-toggle="collapse" data-parent="#accordionApi" href="#tit02" aria-expanded="false" aria-controls="tit02" class="accordion-toggle" href="#">Ejemplo: Python »</a>
+								  </h5>
+							  </div>
+							  <div id="tit02" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tit02">
+								  <div class="panel-body">
+									  <pre>
+# Se importa la librería para la llamada a la API
+import requests
+
+# Llamada API para obtener la información del recurso del catálogo de un dataset
+# El parámetro fq=extras_estado:publicado filtra solo datasets publicados
+header = {"User-Agent": "Application"}
+url = "` + envVars.ckan_url + `/api/3/action/package_search?q=` + name_dataset + `&fq=extras_estado:publicado"
+r = requests.get(url, headers=header)
+
+# Obtención del identificador del recurso con los datos del dataset
+datos_catalogo = r.json()
+id_recurso = datos_catalogo["result"]["results"][0]["resources"][0]["id"]
+print(f"Identificador del recurso: {id_recurso}")
+
+# Llamada API para obtener todos los datos del recurso del dataset
+url = "` + envVars.ckan_url + `/api/3/action/datastore_search?limit=32000&resource_id=" + id_recurso
+r = requests.get(url, headers=header)
+datos_dataset = r.json()["result"]["records"]
+
+print(f"Total de registros obtenidos: {len(datos_dataset)}")
+									  </pre>
+								  </div>
+							  </div>
+						  </div>
+					  </div>
+					  <p>Para más información,  pueden consultar la página <a href="/reutilizadores">"Información para Reutilizadores"</a>.</p>`);
+
+      $(".modal-footer").append(
+        '<button type="button" class="btn btn-secondary fright" data-dismiss="modal">Cerrar</button>'
+      );
+    })
+    .fail(function () {
+      console.error("Error obteniendo package_show de CKAN para idNodo:", idNodo);
+    });
+  }
+ 
+  $(document).ready(function () {
+    
+    $("#btnVolver").click(function () {
+      history.back(-1);
+    });
+
+    ordenacionAnterior = "";
+    // Solución para ocultar la gráfica cuando se ha vaciado
+    if ($("#pintar-grafica").text() == "Desactivado") {
+      $(".highcharts-container").parent().parent().hide();
+    }
+
+    var recurso_id = $(".recurso-id").text();
+    resource_id = $.trim(recurso_id);
+
+    if (!resource_id) {
+      console.warn("resource_id vacío. No se lanza datastore_info.");
+      return;
+    }    
+
+    var idNodo = $("#dsname").text().trim();
+
+    /** Condición para la carga del idNodo cuando el artículo está en BORRADOR **/
+    if (!idNodo) {
+      idNodo = $(".field--name-field-cnmc-datoskey .field--item").text().trim();
+    }
+    /** Fin Condición para la carga del idNodo cuando el artículo está en BORRADOR **/
+
+    if (idNodo) {
+      cargaUrlBotonesDescarga(resource_id, idNodo);
+    } else {
+      console.warn("idNodo vacío. No se lanza package_show.");
+    }   
+
+    var url_recurso = dominio + "/api/3/action/datastore_info?&id=" + resource_id;
+
+    $.ajax({ url: url_recurso }).then(function (data) {
+      var head_datos = "";
+      var body_diccionario = "";
+      var columns = [];
+
+      if (data.success) {
+        head_datos = head_datos.concat("<thead><tr>");
+
+        var result = data.result;
+
+        for (var count = 0; count < result.fields.length; count++) {
+          var title = result.fields[count].id;
+          var titleNormalizado = result.fields[count].info.label;
+          var subtitle = title.substring(0, 15);
+          head_datos = head_datos.concat("<th>" + titleNormalizado + "</th>");
+          
+          var field = result.fields[count];
+          var name = field.id; 
+
+          var tipo = field.type;
+          if (tipo == "text") {
+            columns.push({ data: name, orderable: true, searchable: true, visible: true });
+          } else {
+            columns.push({ data: name, orderable: true, searchable: true, visible: true, className: "tright" });
+          }
+
+          columnsName[name] = name;
+
+
+          if (tipo == "text") {
+            tipo = "Texto";
+          } else if (tipo == "numeric") {
+            tipo = "Numérico";
+          }
+
+          body_diccionario = body_diccionario.concat("<tr>");
+          body_diccionario = body_diccionario.concat(
+            "<td>" + result.fields[count].id + "</td><td>" + tipo + "</td>"
+          );
+
+          if (result.fields[count].info != undefined) {
+            body_diccionario = body_diccionario.concat(
+              "<td>" + result.fields[count].info.label + "</td><td>" + result.fields[count].info.label + "</td>"
+            );
+          } else {
+            body_diccionario = body_diccionario.concat("<td></td><td></td>");
+          }
+          body_diccionario = body_diccionario.concat("</tr>");
+        }
+
+        head_datos = head_datos.concat("</tr></thead>");
+
+        //Rellenar cabecera de la tabla ckan
+        $("#table_ckan1").append(head_datos);
+        $("#table_ckan1").addClass("nowrap");
+
+        $.noConflict();
+
+        const table1 = $("#table_ckan1").DataTable({
+          layout: {
+            topStart: null,
+            topEnd: null,
+            bottomStart: 'info',
+            bottomEnd: 'paging'
+          },          
+          scrollY: '415px',
+          processing: true,
+          serverSide: true,
+          searching: false,
+          ajax: function (data, callback, settings) {
+            data.resource_id = resource_id;
+            fnDataTablesPipeline(`${dominio}/api/action/datastore_search`, data, callback);
+          },          
+          columns: columns,
+          order: [[0, "desc"]],
+          keys: true,
+          language: {
+            decimal: ",",
+            thousands: ".",
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar  _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo: "Mostrando _START_ de _END_ de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando 0 de 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sSearch: "Buscar:",            
+            oAria: {
+              sSortAscending:
+                ": Activar para ordenar la columna de manera ascendente",
+              sSortDescending:
+                ": Activar para ordenar la columna de manera descendente",
+            },
+            buttons: {
+              copy: "Copiar",
+              colvis: "Visibilidad",
+            },
+          },
+        });
+
+        // TABLA DICCIONARIO DE DATOS
+
+        //Rellenar cuerpo de la tabla diccionario
+        $("#table_ckan2 tbody").append(body_diccionario);
+
+        var table2 = $("#table_ckan2").DataTable({
+          paging: false,
+          ordering: false,
+          info: false,
+          searching: false,
+          keys: true,
+          columnDefs: [{ targets: [3], visible: false }],
+          language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo: "Mostrando _START_ de _END_ de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando 0 de 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sSearch: "Buscar:",            
+            oAria: {
+              sSortAscending:
+                ": Activar para ordenar la columna de manera ascendente",
+              sSortDescending:
+                ": Activar para ordenar la columna de manera descendente",
+            },
+            buttons: {
+              copy: "Copiar",
+              colvis: "Visibilidad",
+            },
+          },
+        });
+
+        // Cambia el label de la última columna del Diccionario de Datos
+        $("#table_ckan2 tr th:last").text("Etiqueta");
+      }
+    }, function () {
+      $("#tab-preview .table-responsive").html('<p class="p-3 text-muted">Vista previa no disponible en este entorno.</p>');
+      $("#tab-dictionary .table-responsive").html('<p class="p-3 text-muted">Diccionario no disponible en este entorno.</p>');
+    });
+  });
+})(jQuery, Drupal, drupalSettings);
