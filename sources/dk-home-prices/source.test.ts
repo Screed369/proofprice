@@ -355,3 +355,93 @@ test("dk-home-prices: routed by country through the shared home-sales tool (netw
     globalThis.fetch = realFetch;
   }
 });
+
+// ---------- stale-if-error copy (harvest) ----------
+import { dkHarvest, dkHistoryKey, harvestRows, harvestUrl, quarterEnd } from "./source";
+import { NO_COUNT } from "../../lib/stats";
+
+test("dk-home-prices: harvest asks for Denmark, every region and every province in ONE request", () => {
+  const u = harvestUrl();
+  assert.ok(u.startsWith("https://api.statbank.dk/v1/data/EJEN77/JSONSTAT?lang=en&OMR%C3%85DE=000,"));
+  for (const [c] of [...DK_REGIONS, ...DK_PROVINCES]) assert.ok(u.includes(`,${c}`), c);
+});
+
+test("dk-home-prices: quarterEnd gives the last day of the quarter", () => {
+  assert.equal(quarterEnd("2026K1"), "2026-03-31");
+  assert.equal(quarterEnd("2026K2"), "2026-06-30");
+  assert.equal(quarterEnd("2026K3"), "2026-09-30");
+  assert.equal(quarterEnd("2026K4"), "2026-12-31");
+  assert.throws(() => quarterEnd("2026"), SourceError);
+});
+
+test("dk-home-prices: harvestRows keeps the newest national quarter of the real reply, with no made-up count", () => {
+  const out = harvestRows(parseStatbank(F.ALL_AREAS));
+  assert.equal(out.currency, "DKK");
+  assert.equal(out.unit, "per property");
+  assert.match(out.date, /^\d{4}-(03-31|06-30|09-30|12-31)$/);
+  const national = out.rows.find((r) => r.area === "000" && r.item === "house")!;
+  assert.ok(national && national.median > 500000 && national.median < 10000000, `national house ${national?.median}`);
+  assert.ok(Number.isNaN(national.n) && national.n === NO_COUNT || Number.isNaN(national.n));
+  assert.equal(national.low, national.median);
+  assert.equal(national.high, national.median);
+  // every row is whole kroner, positive, and the three items are consistent: "any" equals one of house/flat in the same area
+  for (const r of out.rows) {
+    assert.ok(Number.isInteger(r.median) && r.median > 0, `${r.area}/${r.item}`);
+    if (r.item === "any") {
+      const h = out.rows.find((x) => x.area === r.area && x.item === "house");
+      const f = out.rows.find((x) => x.area === r.area && x.item === "flat");
+      assert.ok(r.median === h?.median || r.median === f?.median, `any in ${r.area}`);
+    }
+  }
+  // areas the live answer can name: Denmark, the five regions and the provinces that have enough sales
+  const areas = new Set(out.rows.map((r) => r.area));
+  for (const c of ["000", "084", "085", "083", "082", "081"]) assert.ok(areas.has(c), c);
+  assert.ok(areas.size >= 12, `areas ${areas.size}`);
+});
+
+test("dk-home-prices: harvestRows agrees with the live reader for the same area, quarter and type", () => {
+  const table = parseStatbank(F.ALL_AREAS);
+  const out = harvestRows(table);
+  const kbh = readDenmark(table, { place: resolvePlace("København"), type: "house" })!;
+  const row = out.rows.find((r) => r.area === "01" && r.item === "house")!;
+  assert.equal(row.median, Math.round(kbh.figure.average!));
+  assert.equal(out.date, quarterEnd(kbh.datasetLatest!.replace(/^(\d{4})-Q([1-4])$/, "$1K$2")));
+});
+
+test("dk-home-prices: harvestRows leaves out a place whose newest quarter has fewer than 5 sales", () => {
+  const table = parseStatbank(F.ALL_AREAS);
+  const out = harvestRows(table);
+  for (const r of out.rows.filter((x) => x.item !== "any")) {
+    const place = [...DK_REGIONS, ...DK_PROVINCES].find(([c]) => c === r.area) ? PLACES.find((p) => p.dataCode === r.area && p.level !== "municipality")! : PLACES[0];
+    const reading = readDenmark(table, { place, type: r.item as "house" | "flat" })!;
+    assert.ok((reading.figure.sales ?? 0) >= 5, `${r.area}/${r.item} has ${reading.figure.sales} sales`);
+  }
+});
+
+test("dk-home-prices: harvestRows refuses a cube with no national house price", () => {
+  const t = parseStatbank(F.ALL_AREAS);
+  assert.throws(() => harvestRows({ ...t, rows: t.rows.filter((r) => r["OMRÅDE"] !== "000") }), SourceError);
+});
+
+test("dk-home-prices: dkHarvest uses the injected fetcher and the one URL", async () => {
+  const seen: string[] = [];
+  const out = await dkHarvest({ fetcher: async (u: string) => (seen.push(u), F.ALL_AREAS) });
+  assert.deepEqual(seen, [harvestUrl()]);
+  assert.ok(out.rows.length > 30);
+});
+
+test("dk-home-prices: historyKey maps a municipality to its province and the type to the item", () => {
+  assert.deepEqual(dkHistoryKey({ town: "København" }), { area: "01", item: "any", label: "Byen København" });
+  assert.deepEqual(dkHistoryKey({ town: "Aarhus", property_type: "flat" })?.item, "flat");
+  assert.equal(dkHistoryKey({ town: "Aarhus", property_type: "flat" })?.area, resolvePlace("Aarhus").dataCode);
+  assert.equal(dkHistoryKey({ property_type: "house" })?.area, "000");
+  assert.equal(dkHistoryKey({ postcode: "8000" }), null);
+  assert.equal(dkHistoryKey({ town: "Aarhus", property_type: "detached" }), null);
+  assert.equal(dkHistoryKey({ town: "Atlantis" }), null);
+});
+
+test("dk-home-prices: manifest declares the copy: harvest, historyKey, reference dates, no record count, 35-day window", async () => {
+  const src = SOURCE_PLUGINS.find((s) => s.info.id === "dk-home-prices")!;
+  assert.ok(src.harvest && src.historyKey && src.referenceDates && src.nominalCounts);
+  assert.equal(src.staleMaxDays, 35);
+});

@@ -12,8 +12,8 @@ import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
 import { parseJsonStat, periodRange, previousPeriod, resolveFetcher } from "../../lib/adapters";
 import type { FetchOptions, JsonStatTable } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
-import { confidenceLabel, MIN_PUBLISH } from "../../lib/stats";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { confidenceLabel, MIN_PUBLISH, NO_COUNT } from "../../lib/stats";
 import { DK_MUNICIPALITIES, DK_PROVINCES, DK_REGIONS, PROVINCE_REGION } from "./places";
 
 export const INFO: SourceInfo = {
@@ -541,4 +541,76 @@ export async function denmarkHomePrices(input: DenmarkInput, o: FetchOptions & {
   const table = parseStatbank(await resolveFetcher(o)(url));
   const reading = readDenmark(table, { place, type });
   return denmarkAnswer(reading, { place, type, baseUrl: input.baseUrl, apiUrl: url, now: o.now, notes });
+}
+
+// ---------- daily collector (stale-if-error copy and history) ----------
+// Once a day the collector stores the newest quarter's average price per property for every region and province (and all of Denmark),
+// for houses, flats and "any" (the group with more sales, as the live answer picks it). One cube request, ordinary free trade. Rows are
+// dated by the last day of that quarter (referenceDates) and n is NO_COUNT (Statistics Denmark gives one average, not a record sample),
+// so the copy keeps standing in for the live answer while the collector keeps succeeding. A place-quarter with fewer than MIN_PUBLISH
+// sales, or a place whose newest quarter is older than the national one, is left out of the copy (the live answer still gives it).
+
+export const HARVEST_ITEMS = ["house", "flat", "any"] as const;
+export type HarvestItem = (typeof HARVEST_ITEMS)[number];
+
+/** Every area that holds a figure (all of Denmark, the regions, the provinces) in one GET. */
+export function harvestUrl(base = DST_API): string {
+  return dataUrl(["000", ...DK_REGIONS.map(([c]) => c), ...DK_PROVINCES.map(([c]) => c)], base);
+}
+
+/** Last day of a StatBank quarter code ("2026K2" -> "2026-06-30"). */
+export function quarterEnd(code: string): string {
+  const m = /^(\d{4})K([1-4])$/.exec(code);
+  if (!m) throw new SourceError(`Statistics Denmark: unexpected period code ${code}`);
+  const month = Number(m[2]) * 3;
+  const day = month === 3 || month === 12 ? 31 : 30;
+  return `${m[1]}-${String(month).padStart(2, "0")}-${day}`;
+}
+
+/** Pure: the cube -> the library rows for the national newest quarter. Throws SourceError if the cube holds no national price. */
+export function harvestRows(table: JsonStatTable): HarvestResult {
+  const idx = indexOf(table);
+  const times = [...(table.codes["Tid"] ?? [])].sort();
+  const national = latestTime(idx, times, "000", "house");
+  if (!national || pointOf(idx, "000", "house", national).average === null) throw new SourceError("Statistics Denmark returned no national house price to collect");
+  const regions = [...new Set(table.rows.map((r) => String(r["OMRÅDE"])))].filter((c) => c === "000" || DK_REGIONS.some(([x]) => x === c) || DK_PROVINCES.some(([x]) => x === c));
+  const rows: DailyRow[] = [];
+  for (const region of regions) {
+    const got: Partial<Record<Category, { value: number; sales: number }>> = {};
+    for (const type of ["house", "flat"] as Category[]) {
+      if (latestTime(idx, times, region, type) !== national) continue;
+      const p = pointOf(idx, region, type, national);
+      if (p.average === null || p.sales === null || p.sales < MIN_PUBLISH) continue;
+      got[type] = { value: Math.round(p.average), sales: p.sales };
+    }
+    const row = (item: HarvestItem, v: number): DailyRow => ({ area: region, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+    if (got.house) rows.push(row("house", got.house.value));
+    if (got.flat) rows.push(row("flat", got.flat.value));
+    const main = got.house && got.flat ? (got.flat.sales > got.house.sales ? got.flat : got.house) : got.house ?? got.flat;
+    if (main) rows.push(row("any", main.value));
+  }
+  return {
+    date: quarterEnd(national),
+    currency: "DKK",
+    unit: "per property",
+    rows,
+    note: `Statistics Denmark table ${TABLE}: average price per property of ordinary free-trade sales in ${isoQuarter(national)}, houses and owner-occupied flats, ${regions.length} areas (Denmark, regions, provinces). Published averages, not counts of records.`,
+  };
+}
+
+export async function dkHarvest(o: FetchOptions & { apiBase?: string } = {}): Promise<HarvestResult> {
+  return harvestRows(parseStatbank(await resolveFetcher(o)(harvestUrl(o.apiBase))));
+}
+
+/** Library key for a request: the data area (a municipality uses its province) and the type. Null when the copy cannot answer it (postcode only, detached/terraced, unknown place). */
+export function dkHistoryKey(p: { town?: string; postcode?: string; property_type?: string }): { area: string; item: string; label: string } | null {
+  try {
+    if (p.postcode && !p.town) return null;
+    const type = normaliseType(p.property_type);
+    if (type === "detached" || type === "terraced") return null;
+    const place = resolvePlace(p.town);
+    return { area: place.dataCode, item: type, label: place.dataShort };
+  } catch {
+    return null;
+  }
 }

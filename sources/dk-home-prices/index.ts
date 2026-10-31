@@ -1,6 +1,6 @@
 // Manifest: Denmark home prices (official average price per property of one-family houses and owner-occupied flats, Statistics Denmark). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { denmarkHomePrices, INFO } from "./source";
+import { denmarkHomePrices, dkHarvest, dkHistoryKey, INFO } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -34,4 +34,12 @@ export default defineSource({
       property_type: str(p.property_type),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector stores Statistics Denmark's newest quarterly average for every region and province once a day
+  // (rows dated by the quarter's end). Declared change for the platform gate: harvest + historyKey + staleMaxDays added by the Depth Builder.
+  harvest: () => dkHarvest(),
+  historyKey: (p) => dkHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type) }),
+  referenceDates: true,
+  staleMaxDays: 35, // one average per quarter: the newest figure cannot change between releases
+  nominalCounts: true,
+  noHistory: "Denmark: Statistics Denmark publishes one average per quarter and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest quarter, which carries the previous quarter and the year earlier.",
 });
