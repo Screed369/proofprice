@@ -1,0 +1,854 @@
+URL: https://dadosabertos.aneel.gov.br/dataset/tarifas-distribuidoras-energia-eletrica
+Fetched: 2026-10-31T06:56:52Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 23254
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Sat, 31 Oct 2026 06:56:51 GMT
+content-type: text/html; charset=utf-8
+content-length: 23254
+cache-control: private
+vary: Cookie
+set-cookie: ckan=eyJfY3NyZl90b2tlbiI6ImUwOTI5Y2Y1ZTI0ZGMxNTk5ZDU1Y2YyM2FlYWI5MTYwOTI0ZmI3ODAifQ.auWRMw.LkUi65YKawaPOR4dg9B_98pwfFU; Domain=; HttpOnly; Path=/; SameSite=Lax
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: geolocation=(), microphone=(), camera=()
+strict-transport-security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text
+=== FIRST 30000 BYTES
+<!DOCTYPE html>
+  <html lang="pt-BR"  class="js">
+  <head>
+    <meta charset="utf-8" />
+      <meta name="csrf_field_name" content="_csrf_token" />
+      <meta name="_csrf_token" content="ImUwOTI5Y2Y1ZTI0ZGMxNTk5ZDU1Y2YyM2FlYWI5MTYwOTI0ZmI3ODAi.auWRMw.FquvADICexSTjARfV2l3TjmzVBI" />
+      <meta name="site-root" content="https://dadosabertos.aneel.gov.br/" />
+      <meta name="locale-root" content="https://dadosabertos.aneel.gov.br/" />
+
+      <meta name="generator" content="ckan 2.12.1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifas de aplicação das distribuidoras de energia elétrica - Conjunto de dados - Portal de Dados Abertos - Agência Nacional de Energia Elétrica</title>
+
+    
+    <link rel="shortcut icon" href="/base/images/ckan.ico" />
+    
+      
+      
+      
+    
+
+    
+    <link href="/webassets/base/f1c08bee_main.css" rel="stylesheet"/><style>
+        .homepage .hero { none !important; background-color: #f5f5f5 !important; } section.featured.media-overlay { display: none !important; }
+      </style>
+    
+    
+  
+  <meta property="og:title" content="Tarifas de aplicação das distribuidoras de energia elétrica - Portal de Dados Abertos - Agência Nacional de Energia Elétrica">
+  <meta property="og:description" content="Apresenta os valores das Tarifas de Energia - TE e das Tarifas de Uso do Sistema de Distribuição - TUSD, resultantes dos processos de reajustes tarifários das distribuidoras de energia elétrica.">
+
+
+  </head>
+
+  
+  <body>
+
+    
+    <div class="visually-hidden-focusable"><a href="#content">Ir para o conteúdo principal</a></div>
+  
+
+  
+    
+
+ 
+<div class="account-masthead">
+  <div class="container">
+     
+    <nav class="account not-authed" aria-label="Conta">
+      <ul class="list-unstyled">
+        
+        <li><a href="/user/login">Entrar</a></li>
+         
+      </ul>
+    </nav>
+     
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="container">
+      
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <hgroup class="header-image navbar-left">
+
+      
+      
+      <a class="logo" href="/">
+        <img src="/logo-aneel.png" alt="Portal de Dados Abertos - Agência Nacional de Energia Elétrica"
+          aria-label="Navigate to Home - Portal de Dados Abertos - Agência Nacional de Energia Elétrica"/>
+      </a>
+      
+      
+
+       </hgroup>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation-toggle"
+        aria-controls="main-navigation-toggle" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="fa fa-bars text-white"></span>
+      </button>
+
+      <div class="main-navbar collapse navbar-collapse" id="main-navigation-toggle">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          
+            
+              
+              
+
+              <li class="active"><a href="/dataset/">Conjuntos de dados</a></li><li><a href="/organization/">Organizações</a></li><li><a href="/group/">Grupos</a></li><li><a href="/about">Sobre</a></li>
+            
+          </ul>
+
+      
+      
+          <form class="d-flex site-search" action="/dataset/" method="get">
+              <label class="d-none" for="field-sitewide-search">Pesquisar conjuntos de dados...</label>
+              <input id="field-sitewide-search" class="form-control me-2"  type="text" name="q" placeholder="Pesquisar" aria-label="Pesquisar conjuntos de dados..."/>
+              <button class="btn" type="submit" aria-label="Enviar"><i class="fa fa-search"></i></button>
+          </form>
+      
+      </div>
+    </nav>
+  </div>
+</header>
+
+  
+    <div class="main">
+      <div id="content" class="container">
+        
+          
+            <div class="flash-messages">
+              
+                
+              
+            </div>
+          
+
+          
+            <div class="toolbar" role="navigation" aria-label="Rastro de navegação">
+              
+                
+                  <ol class="breadcrumb">
+                    
+<li class="home"><a href="/" aria-label="Início"><i class="fa fa-home"></i><span> Início</span></a></li>
+                    
+  
+    
+    
+      
+      
+      <li><a href="/organization/">Organizações</a></li>
+      <li><a href="/organization/agencia-nacional-de-energia-eletrica" title="Agência Nacional de Energia Elétrica">Agência Nacional de...</a></li>
+    
+    <li class="active"><a href="/dataset/tarifas-distribuidoras-energia-eletrica" title="Tarifas de aplicação das distribuidoras de energia elétrica">Tarifas de aplicação das...</a></li>
+  
+
+                  </ol>
+                
+              
+            </div>
+          
+
+          <div class="row wrapper">
+            
+            
+            
+
+            
+              <aside class="secondary col-md-3">
+                
+                
+
+  
+
+  
+    
+
+  
+    <section id="package-info" class="module module-narrow">
+      <div class="module context-info">
+        <div class="module-content">
+          
+            
+              <h2 class="heading">Tarifas de aplicação das distribuidoras de energia elétrica</h2>
+            
+            
+              
+              <div class="nums">
+                <dl>
+                  <dt>Seguidores</dt>
+                  <dd><span>0</span></dd>
+                </dl>
+              </div>
+            
+            
+              
+            
+          
+        </div>
+      </div>
+    </section>
+  
+
+  
+
+  
+    
+      
+      
+
+
+
+
+
+  <section id="organization-info" class="module module-narrow">
+    <div class="module context-info">
+    <div class="module-content">
+      
+      
+        <div class="image">
+          <a href="/organization/agencia-nacional-de-energia-eletrica">
+            <img src="https://dadosabertos.aneel.gov.br/uploads/group/2026-05-29-130337.442419Aneel.png" width="200" alt="agencia-nacional-de-energia-eletrica" />
+          </a>
+        </div>
+      
+      
+      <h2 class="heading">Agência Nacional de Energia Elétrica
+        
+      </h2>
+      
+      
+      
+        <p class="description">
+          A Agência Nacional de Energia Elétrica (ANEEL), autarquia em regime especial vinculada ao Ministério de Minas e Energia, foi criada para regular o setor elétrico brasileiro, por...
+        </p>
+        <p class="read-more">
+          <a href="/organization/about/agencia-nacional-de-energia-eletrica">leia mais</a>
+        </p>
+      
+      
+      
+      
+      </div>
+    </div>
+  </section>
+  
+    
+  
+
+  
+    
+
+  <section class="module module-narrow social">
+    
+      <h2 class="module-heading"><i class="fa fa-share-square"></i> Social</h2>
+    
+    
+      <ul class="nav nav-simple">
+        
+        <li class="nav-item"><a href="https://x.com/share?url=https://dadosabertos.aneel.gov.br/dataset/tarifas-distribuidoras-energia-eletrica" target="_blank"><i class="fa-brands fa-square-x-twitter"></i> X</a></li>
+        <li class="nav-item"><a href="https://www.facebook.com/sharer.php?u=https://dadosabertos.aneel.gov.br/dataset/tarifas-distribuidoras-energia-eletrica" target="_blank"><i class="fa-brands fa-facebook-square"></i> Facebook</a></li>
+      </ul>
+    
+  </section>
+
+  
+
+  
+    
+
+
+  
+      
+        <section class="module module-narrow module-shallow license">
+          
+            <h2 class="module-heading"><i class="fa fa-lock"></i> Licença</h2>
+          
+          
+            <p class="module-content">
+              
+                
+  
+    <a href="http://www.opendefinition.org/licenses/odc-odbl" rel="dc:rights">Open Data Commons Open Database License (ODbL)</a>
+  
+
+                
+                  <a href="http://opendefinition.org/okd/" aria-label="Este conjunto de dados satisfaz a Definição de Aberto - Open Definition." data-bs-title="Este conjunto de dados satisfaz a Definição de Aberto - Open Definition." data-bs-toggle="tooltip">
+                      <img class="open-data" src="/base/images/od_80x15_blue.png" alt="[Open Data]" />
+                  </a>
+                
+              
+            </p>
+          
+        </section>
+      
+  
+
+  
+
+
+              </aside>
+            
+
+            
+              <div class="primary col-md-9 col-xs-12" role="main">
+                
+                
+                  <article class="module">
+                    
+                      <header class="module-content page-header">
+                        
+                        <ul class="nav nav-tabs">
+                          
+  <li class="active"><a href="/dataset/tarifas-distribuidoras-energia-eletrica"><i class="fa fa-sitemap"></i> Conjunto de dados</a></li>
+  <li><a href="/dataset/groups/tarifas-distribuidoras-energia-eletrica"><i class="fa fa-users"></i> Grupos</a></li>
+
+                        </ul>
+                      </header>
+                    
+                    <div class="module-content">
+                      
+                      
+  
+                      
+  
+    
+    <h1>
+      
+        Tarifas de aplicação das distribuidoras de energia elétrica
+        
+        
+      
+    </h1>
+    
+      
+        <div class="notes embedded-content">
+          <p>Apresenta os valores das Tarifas de Energia - TE e das Tarifas de Uso do Sistema de Distribuição - TUSD, resultantes dos processos de reajustes tarifários das distribuidoras de energia elétrica. </p>
+        </div>
+      
+    
+  
+
+  
+    
+
+<section id="dataset-resources" class="resources">
+  <h2>Dados e recursos</h2>
+  
+    
+      <ul class="resource-list">
+        
+          
+          
+            
+
+
+
+<li class="resource-item" data-id="2d3478e0-8aa0-4cd4-81a7-5f8967cd8804">
+  
+  
+
+  
+  <a class="heading" href="/dataset/tarifas-distribuidoras-energia-eletrica/resource/2d3478e0-8aa0-4cd4-81a7-5f8967cd8804" aria-label="Navigate to resource: Dicionário de dados">
+    Dicionário de dados<span class="format-label" property="dc:format" data-format="pdf">PDF</span>
+  </a>
+  
+
+
+<i class="fa-solid fa-fire-flame-curved" style="color:#f29c2b;" title="Popular: 319 visualizações"></i>
+
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" type="button" id="dropdownExplorer" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explorar
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownExplorer">
+      
+  
+  
+        
+          <li>
+            <a class="dropdown-item" href="/dataset/tarifas-distribuidoras-energia-eletrica/resource/2d3478e0-8aa0-4cd4-81a7-5f8967cd8804">
+              
+                <i class="fa fa-info-circle"></i>
+                Mais informações
+              
+            </a>
+          </li>
+        
+
+        
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://dadosabertos.aneel.gov.br/dataset/5a583f3e-1646-4f67-bf0f-69db4203e89e/resource/2d3478e0-8aa0-4cd4-81a7-5f8967cd8804/download/dd-tarifas-por-distribuidora.pdf" target="_blank" rel="noreferrer">
+          
+            <i class="fa fa-arrow-circle-down"></i>
+            Baixar
+          
+        </a>
+      </li>
+      
+      
+      
+
+    </ul>
+  </div>
+  
+  
+</li>
+          
+            
+
+
+
+<li class="resource-item" data-id="fcf2906c-7c32-4b9b-a637-054e7a5234f4">
+  
+  
+
+  
+  <a class="heading" href="/dataset/tarifas-distribuidoras-energia-eletrica/resource/fcf2906c-7c32-4b9b-a637-054e7a5234f4" aria-label="Navigate to resource: tarifas-homologadas-distribuidoras-energia-eletrica.csv">
+    tarifas-homologadas-distribuidoras-energia-eletrica.csv<span class="format-label" property="dc:format" data-format="csv">CSV</span>
+  </a>
+  
+
+
+<i class="fa-solid fa-fire-flame-curved" style="color:#f29c2b;" title="Popular: 651 visualizações"></i>
+
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" type="button" id="dropdownExplorer" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explorar
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownExplorer">
+      
+  
+  
+        
+          <li>
+            <a class="dropdown-item" href="/dataset/tarifas-distribuidoras-energia-eletrica/resource/fcf2906c-7c32-4b9b-a637-054e7a5234f4">
+              
+                <i class="fa fa-chart-bar"></i>
+                Pré-visualização
+              
+            </a>
+          </li>
+        
+
+        
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://dadosabertos.aneel.gov.br/dataset/5a583f3e-1646-4f67-bf0f-69db4203e89e/resource/fcf2906c-7c32-4b9b-a637-054e7a5234f4/download/tarifas-homologadas-distribuidoras-energia-eletrica.csv" target="_blank" rel="noreferrer">
+          
+            <i class="fa fa-arrow-circle-down"></i>
+            Baixar
+          
+        </a>
+      </li>
+      
+      
+      
+
+    </ul>
+  </div>
+  
+  
+</li>
+          
+            
+
+
+
+<li class="resource-item" data-id="cfad8fce-5a1c-4f43-a1cd-6aaf415c22dd">
+  
+  
+
+  
+  <a class="heading" href="/dataset/tarifas-distribuidoras-energia-eletrica/resource/cfad8fce-5a1c-4f43-a1cd-6aaf415c22dd" aria-label="Navigate to resource: tarifas-homologadas-distribuidoras-energia-eletrica.xml">
+    tarifas-homologadas-distribuidoras-energia-eletrica.xml<span class="format-label" property="dc:format" data-format="xml">XML</span>
+  </a>
+  
+
+
+<i class="fa-solid fa-fire-flame-curved" style="color:#f29c2b;" title="Popular: 258 visualizações"></i>
+
+
+  
+  
+
+  
+    <p class="description">
+      
+    </p>
+  
+  
+  
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" type="button" id="dropdownExplorer" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explorar
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownExplorer">
+      
+  
+  
+        
+          <li>
+            <a class="dropdown-item" href="/dataset/tarifas-distribuidoras-energia-eletrica/resource/cfad8fce-5a1c-4f43-a1cd-6aaf415c22dd">
+              
+                <i class="fa fa-info-circle"></i>
+                Mais informações
+              
+            </a>
+          </li>
+        
+
+        
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://dadosabertos.aneel.gov.br/dataset/5a583f3e-1646-4f67-bf0f-69db4203e89e/resource/cfad8fce-5a1c-4f43-a1cd-6aaf415c22dd/download/tarifas-homologadas-distribuidoras-energia-eletrica.xml" target="_blank" rel="noreferrer">
+          
+            <i class="fa fa-arrow-circle-down"></i>
+            Baixar
+          
+        </a>
+      </li>
+      
+      
+      
+
+    </ul>
+  </div>
+  
+  
+</li>
+          
+            
+
+
+
+<li class="resource-item" data-id="9af99ef4-376a-4493-a075-5e48ab4da51b">
+  
+  
+
+  
+  <a class="heading" href="/dataset/tarifas-distribuidoras-energia-eletrica/resource/9af99ef4-376a-4493-a075-5e48ab4da51b" aria-label="Navigate to resource: tarifas-homologadas-distribuidoras-energia-eletrica.parquet">
+    tarifas-homologadas-distribuidoras-energia-elet...<span class="format-label" property="dc:format" data-format="parquet">PARQUET</span>
+  </a>
+  
+
+
+<i class="fa-solid fa-fire-flame-curved" style="color:#f29c2b;" title="Popular: 30 visualizações"></i>
+
+
+  
+  
+
+  
+    <p class="description">
+      
+        Versao em formato Apache Parquet do recurso tarifas-homologadas-...
+      
+    </p>
+  
+  
+  
+  <div class="dropdown btn-group">
+    <a href="#" class="btn btn-primary dropdown-toggle" type="button" id="dropdownExplorer" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-share"></i>
+      Explorar
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownExplorer">
+      
+  
+  
+        
+          <li>
+            <a class="dropdown-item" href="/dataset/tarifas-distribuidoras-energia-eletrica/resource/9af99ef4-376a-4493-a075-5e48ab4da51b">
+              
+                <i class="fa fa-info-circle"></i>
+                Mais informações
+              
+            </a>
+          </li>
+        
+
+        
+      <li>
+        <a class="dropdown-item resource-url-analytics" href="https://dadosabertos.aneel.gov.br/dataset/5a583f3e-1646-4f67-bf0f-69db4203e89e/resource/9af99ef4-376a-4493-a075-5e48ab4da51b/download/tarifas-homologadas-distribuidoras-energia-eletrica.parquet" target="_blank" rel="noreferrer">
+          
+            <i class="fa fa-arrow-circle-down"></i>
+            Baixar
+          
+        </a>
+      </li>
+      
+      
+      
+
+    </ul>
+  </div>
+  
+  
+</li>
+          
+        
+      </ul>
+    
+  
+</section>
+  
+
+  
+    
+
+  <section class="tags">
+    
+
+
+  <ul class="tag-list">
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=TE" aria-label="Search datasets with the tag: TE">TE</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=TUSD" aria-label="Search datasets with the tag: TUSD">TUSD</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=base+econ%C3%B4mica" aria-label="Search datasets with the tag: base econômica">base econômica</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=distribuidora" aria-label="Search datasets with the tag: distribuidora">distribuidora</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=tarifa+de+energia" aria-label="Search datasets with the tag: tarifa de energia">tarifa de energia</a>
+      </li>
+    
+      <li>
+        <a class="tag" href="/dataset/?tags=tarifa+de+uso+do+sistema+de+distribui%C3%A7%C3%A3o" aria-label="Search datasets with the tag: tarifa de uso do sistema de distribuição">tarifa de uso do...</a>
+      </li>
+    
+  </ul>
+
+  </section>
+
+  
+
+  
+    <section class="additional-info">
+  <h3>Informações Adicionais</h3>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th scope="col">Campo</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        
+          <tr>
+            <th scope="row" class="dataset-label">Fonte</th>
+            
+              <td class="dataset-details" property="foaf:homepage">
+                <a href="https://dadosabertos.aneel.gov.br" rel="foaf:homepage" target="_blank">
+                  https://dadosabertos.aneel.gov.br
+                </a>
+              </td>
+            
+          </tr>
+        
+
+        
+          <tr>
+            <th scope="row" class="dataset-label">Autor</th>
+            <td class="dataset-details" property="dc:creator"><a href=mailto:master.sgt@aneel.gov.br>SGT/ANEEL</a></td>
+          </tr>
+        
+
+        
+
+        
+          <tr>
+            <th scope="row" class="dataset-label">Versão</th>
+            <td class="dataset-details">1.0</td>
+          </tr>
+        
+
+        
+        
+          <tr>
+            <th scope="row" class="dataset-label">Última Atualização</th>
+            <td class="dataset-details">
+                
+<span class="automatic-local-datetime" data-datetime="2026-10-30T07:13:06-0300">
+    outubro 30, 2026, 07:13 (BRT)
+</span>
+            </td>
+          </tr>
+        
+        
+          <tr>
+            <th scope="row" class="dataset-label">Criado</th>
+
+            <td class="dataset-details">
+                
+<span class="automatic-local-datetime" data-datetime="2026-05-27T12:59:47-0300">
+    maio 27, 2026, 12:59 (BRT)
+</span>
+            </td>
+          </tr>
+        
+
+      
+        
+          
+          <tr rel="dc:relation" resource="_:extra">
+            <th scope="row" class="dataset-label" property="rdfs:label">Categorias no VCGE</th>
+            <td class="dataset-details" property="rdf:value">Energia Elétrica</td>
+          </tr>
+        
+          
+          <tr rel="dc:relation" resource="_:extra">
+            <th scope="row" class="dataset-label" property="rdfs:label">Cobertura temporal</th>
+            <td class="dataset-details" property="rdf:value">2010 em diante</td>
+          </tr>
+        
+          
+          <tr rel="dc:relation" resource="_:extra">
+            <th scope="row" class="dataset-label" property="rdfs:label">Frequência de atualização</th>
+            <td class="dataset-details" property="rdf:value">Semanal</td>
+          </tr>
+        
+      
+
+      
+    </tbody>
+  </table>
+</section>
+  
+
+
+                    </div>
+                  </article>
+                
+              </div>
+            
+          </div>
+        
+      </div>
+    </div>
+  
+    <footer class="site-footer">
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-8 footer-links">
+        
+          <ul class="list-unstyled">
+            
+              <li><a href="/about">Sobre Portal de Dados Abertos - Agência Nacional de Energia Elétrica</a></li>
+            
+          </ul>
+          <ul class="list-unstyled">
+            
+              
+              <li><a href="https://docs.ckan.org/en/2.12/api/">API do CKAN</a></li>
+              <li><a href="https://www.ckan.org/">Associação CKAN</a></li>
+              <li><a href="https://www.opendefinition.org/od/"><img src="/base/images/od_80x15_blue.png" alt="Open Data"></a></li>
+            
+          </ul>
+        
+      </div>
+      <div class="col-md-4 attribution">
+        
+          <p><strong>Impulsionado por</strong> <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a></p>
+        
+        
+          
+<form class="lang-select" action="/util/redirect" data-module="select-switch" method="POST">
+  
+<input type="hidden" name="_csrf_token" value="ImUwOTI5Y2Y1ZTI0ZGMxNTk5ZDU1Y2YyM2FlYWI5MTYwOTI0ZmI3ODAi.auWRMw.FquvADICexSTjARfV2l3TjmzVBI"/>
+  <div class="form-group">
+    <label for="field-lang-select">Idioma</label>
+    <select id="field-lang-select" name="url" data-module="autocomplete" data-module-dropdown-class="lang-dropdown" data-module-container-class="lang-container">
+      
+        <option value="/pt_BR/dataset/tarifas-distribuidoras-energia-eletrica" lang="pt-BR" selected="selected">
+          português (Brasil)
+        </option>
+      
+    </select>
+  </div>
+  <button class="btn btn-secondary d-none " type="submit">Ir</button>
+</form>
+
+
+        
+      </div>
+    </div>
+    
+  </div>
+</footer>
+  
+  
+  
+  
+  
+    
+
+  
+
+
+    
+    
+    <link href="/webassets/ckanext-xloader/1dfb6897_xloader.css" rel="stylesheet"/>
+<link href="/webassets/vendor/e6de4a7c_select2.css" rel="stylesheet"/>
+<link href="/webassets/vendor/a760c347_fontawesome.css" rel="stylesheet"/>
+    <script src="/webassets/vendor/240e5086_jquery.js" type="text/javascript"></script>
+<script src="/webassets/vendor/5de0dd0d_vendor.js" type="text/javascript"></script>
+<script src="/webassets/vendor/3a25332d_htmx.js" type="text/javascript"></script>
+<script src="/webassets/base/975ea767_main.js" type="text/javascript"></script>
+<script src="/webassets/vendor/6b293cd1_bootstrap.js" type="text/javascript"></script>
+<script src="/webassets/base/a4ef7c98_ckan.js" type="text/javascript"></script>
+<script src="/webassets/tracking/7c904198_tracking.js" type="text/javascript"></script>
+  </body>
+</html>
