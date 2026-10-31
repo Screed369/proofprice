@@ -1,0 +1,18 @@
+URL: https://catalogodatos.gub.uy/api/3/action/datastore_search?resource_id=c486544e-0fca-4f6f-8403-3ee379a868f4&limit=5&sort=_id%20desc
+Fetched: 2026-10-31T06:11:49Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 1270
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+content-type: application/json;charset=utf-8
+content-length: 1270
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+set-cookie: e03f86a48979120f2e0ffe17b63d5245=68ac0f3e3003a764a6553e4f5e7f8c54; path=/; HttpOnly
+Set-Cookie: target_bal=!cqHAkxZ/68tFDO++VQTIchnEa09S/Tf65lMXhwkdSahEi1Hfcp+a//cLl6nIwxbLVs5zFE/8N4Iz1G8=; path=/; Httponly; Secure
+Set-Cookie: TS01cebe34=01f421a8d826dd8cd980d09de959d3b9c5a542c0f42ed126734a89f11cde37b6057fc7780eab1988a263add7f6a95343b54a811d03150f9672aaf75c6793d7ee2cdd43ad10ca7ba68d4f198cb4be3b31297d8bbfcf; Path=/
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://catalogodatos.gub.uy/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_total": true, "limit": 5, "records_format": "objects", "resource_id": "c486544e-0fca-4f6f-8403-3ee379a868f4", "sort": "_id desc", "total_estimation_threshold": null, "records": [{"_id":26618,"Ano":"2026","Mes":"9","Producto":"JET A-1","Unidad":"S/C","Valor":"S/C"},{"_id":26617,"Ano":"2026","Mes":"9","Producto":"BUTANO DESODORIZADO *","Unidad":"S/C","Valor":"S/C"},{"_id":26616,"Ano":"2026","Mes":"9","Producto":"GASOL.AV.100 OCTANOS","Unidad":"S/C","Valor":"S/C"},{"_id":26615,"Ano":"2026","Mes":"9","Producto":"QUEROSOL *","Unidad":"S/C","Valor":"S/C"},{"_id":26614,"Ano":"2026","Mes":"9","Producto":"QUEROSOL","Unidad":"S/C","Valor":"S/C"}], "fields": [{"id": "_id", "type": "int"}, {"id": "Ano", "type": "text"}, {"id": "Mes", "type": "text"}, {"id": "Producto", "type": "text"}, {"id": "Unidad", "type": "text"}, {"id": "Valor", "type": "text"}], "_links": {"start": "/api/3/action/datastore_search?resource_id=c486544e-0fca-4f6f-8403-3ee379a868f4&limit=5&sort=_id+desc", "next": "/api/3/action/datastore_search?resource_id=c486544e-0fca-4f6f-8403-3ee379a868f4&limit=5&sort=_id+desc&offset=5"}, "total": 26618, "total_was_estimated": false}}
