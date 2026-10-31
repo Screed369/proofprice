@@ -282,7 +282,7 @@ export interface IeInput {
   baseUrl?: string;
 }
 
-export const SUPPORTED_EXAMPLES = ["laptops", "school meals", "road resurfacing", "office cleaning", "catering", "ambulances"];
+export const SUPPORTED_EXAMPLES = ["catering", "school meals", "software", "consultancy", "legal services", "cars"];
 
 export async function ieContracts(input: IeInput): Promise<PriceAnswer> {
   if (input.buyer_area) throw new InputError("Ireland: buyer_area is not used; the figures are for all Irish public buyers together.");
