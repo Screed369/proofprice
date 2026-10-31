@@ -1,0 +1,37 @@
+URL: https://opendata.swiss/api/3/action/package_show?id=energiedashboard-ch-energiepreise
+Fetched: 2026-10-31T01:41:48Z from GitHub Actions
+Status, type, bytes: 404 application/json;charset=utf-8 162
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 302 
+date: Sat, 31 Oct 2026 01:41:48 GMT
+content-type: text/plain; charset=utf-8
+content-length: 112
+location: https://ckan.opendata.swiss/api/3/action/package_show?id=energiedashboard-ch-energiepreise
+x-powered-by: Express
+vary: Accept
+strict-transport-security: max-age=15724800; includeSubDomains
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET, PUT, POST, DELETE, PATCH, OPTIONS
+access-control-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+access-control-max-age: 1728000
+
+HTTP/2 404 
+date: Sat, 31 Oct 2026 01:41:48 GMT
+content-type: application/json;charset=utf-8
+content-length: 162
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-robots-tag: noindex, nofollow
+strict-transport-security: max-age=15724800; includeSubDomains
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET, PUT, POST, DELETE, PATCH, OPTIONS
+access-control-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+access-control-max-age: 1728000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://ckan.opendata.swiss/api/3/action/help_show?name=package_show", "error": {"__type": "Not Found Error", "message": "Not found"}, "success": false}
