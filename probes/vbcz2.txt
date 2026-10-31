@@ -1,0 +1,164 @@
+URL: https://csu.gov.cz/datastat/api/dotaz/data/vybery/uzivatelske/33c89c2e-cd9c-4e2c-afbf-3118becda449?jazyk=en
+Fetched: 2026-10-31T13:42:39Z from GitHub Actions
+Status, type, bytes: 200 application/json 3603
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 31 Oct 2026 13:42:39 GMT
+Content-Type: application/json
+Vary: Accept-Encoding, Origin
+X-Correlation-Id: 07dad6fa-bace-4d84-a012-2224787cf60e
+Permissions-Policy: camera=(), microphone=(),  usb=()
+Cross-Origin-Opener-Policy: same-origin
+Referrer-Policy: strict-origin-when-cross-origin
+Strict-Transport-Security: max-age=157680000
+Cache-Control: no-cache, no-store, must-revalidate
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-attr 'self' 'unsafe-inline';  script-src-elem 'self' 'unsafe-inline' https://mone.statistika.cz; style-src 'self' 'unsafe-inline'; style-src-attr 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline'; connect-src 'self' data: https://cdn.flexmonster.com https://mone.statistika.cz; font-src 'self' data: https://cdn.flexmonster.com; img-src 'self' data: blob:; frame-src 'self'; manifest-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'self';
+Expires: Sat, 31 Oct 2026 13:42:38 GMT
+Cross-Origin-Embedder-Policy: unsafe-none
+Cross-Origin-Resource-Policy: same-origin
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: microphone=(), payment=(), sync-xhr=(self), geolocation=(self)
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: default-src 'self' https://scitani.gov.cz https://csu.gov.cz *.csu.gov.cz https://chatbot-cdn.scitani.cz https://www.czso.cz https://vdb.czso.cz https://data.statistika.cz https://www.youtube.com *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz https://lag-angujs-vm05.ab.czso.cz; connect-src 'self' https://scitani.gov.cz https://csu.gov.cz *.csu.gov.cz https://chatbot-cdn.scitani.cz https://www.czso.cz https://apl.czso.cz https://vdb.czso.cz https://data.statistika.cz https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; img-src 'self' data: https://scitani.gov.cz https://csu.gov.cz *.csu.gov.cz https://apl.czso.cz https://chatbot-cdn.scitani.cz https://www.youtube.com https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; frame-src 'self' formapps: https://www.youtube.com https://export.highcharts.com https://apl.czso.cz *.googleapis.com *.gstatic.com https://vdb.czso.cz https://lag-angujs-vm05.ab.czso.cz;  child-src 'self' *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; worker-src 'self' *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://d3js.org http://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://scitani.gov.cz https://csu.gov.cz *.csu.gov.cz https://chatbot-cdn.scitani.cz https://www.czso.cz https://apl.czso.cz https://vdb.czso.cz https://data.statistika.cz https://www.youtube.com https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://chatbot-cdn.scitani.cz https://apl.czso.cz https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz;  font-src 'self' https://stackpath.bootstrapcdn.com https://api.mapy.cz *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz;  frame-ancestors 'self' *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz; form-action 'self' https://export.highcharts.com *.googleapis.com *.gstatic.com https://maps.google.cz https://www.google.com https://europa.eu https://ec.europa.eu https://ota.czso.gov.cz;  object-src 'none';
+xkey: purgeable
+X-Cache-time: 60.000
+Age: 0
+Accept-Ranges: bytes
+X-Cache-Action: MISS
+Via: pdi-cache
+Connection: keep-alive
+Transfer-Encoding: chunked
+Strict-Transport-Security: max-age=157680000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "version" : "2.0",
+  "class" : "dataset",
+  "href" : "https://data.csu.gov.cz/api/dotaz/v1/data/vybery/uzivatelske/33c89c2e-cd9c-4e2c-afbf-3118becda449",
+  "label" : "CEN04T01_Průměrné kupní ceny nemovitostí a indexy cen nemovitostí",
+  "source" : "DataStat – database of CZSO",
+  "note" : [ "Uživatelem nastavený výběr.", null ],
+  "id" : [ "UZ02HN", "IndicatorType", "CasR" ],
+  "size" : [ 1, 6, 7 ],
+  "role" : {
+    "geo" : [ "UZ02HN" ],
+    "metric" : [ "IndicatorType" ],
+    "time" : [ "CasR" ]
+  },
+  "dimension" : {
+    "UZ02HN" : {
+      "label" : "Territory",
+      "category" : {
+        "index" : {
+          "CZ" : 0
+        },
+        "label" : {
+          "CZ" : "Czechia"
+        }
+      }
+    },
+    "IndicatorType" : {
+      "label" : "Indicator",
+      "note" : [ "" ],
+      "category" : {
+        "index" : {
+          "7432J01" : 0,
+          "7432J02" : 1,
+          "6144J01" : 2,
+          "6144J02" : 3,
+          "6144J03" : 4,
+          "6144J04" : 5
+        },
+        "label" : {
+          "7432J01" : "Average purchase prices of family houses (CZK per square metre)",
+          "7432J02" : "Average purchase prices of flats (CZK per square metre)",
+          "6144J01" : "Price indices of family houses (corresponding period of previous year = 100)",
+          "6144J02" : "Price indices of flats (corresponding period of previous year = 100)",
+          "6144J03" : "Price indices of family houses (average 2015 = 100)",
+          "6144J04" : "Price indices of flats (average 2015 = 100)"
+        },
+        "unit" : {
+          "7432J01" : {
+            "decimals" : 0,
+            "label" : "CZK per square metre",
+            "symbol" : ""
+          },
+          "7432J02" : {
+            "decimals" : 0,
+            "label" : "CZK per square metre",
+            "symbol" : ""
+          },
+          "6144J01" : {
+            "decimals" : 1,
+            "label" : "per cent",
+            "symbol" : "per cent"
+          },
+          "6144J02" : {
+            "decimals" : 1,
+            "label" : "per cent",
+            "symbol" : "per cent"
+          },
+          "6144J03" : {
+            "decimals" : 1,
+            "label" : "per cent",
+            "symbol" : "per cent"
+          },
+          "6144J04" : {
+            "decimals" : 1,
+            "label" : "per cent",
+            "symbol" : "per cent"
+          }
+        }
+      }
+    },
+    "CasR" : {
+      "label" : "Years",
+      "category" : {
+        "index" : {
+          "2019" : 0,
+          "2020" : 1,
+          "2021" : 2,
+          "2022" : 3,
+          "2023" : 4,
+          "2024" : 5,
+          "2025" : 6
+        },
+        "label" : {
+          "2019" : "2019",
+          "2020" : "2020",
+          "2021" : "2021",
+          "2022" : "2022",
+          "2023" : "2023",
+          "2024" : "2024",
+          "2025" : "2025"
+        }
+      }
+    }
+  },
+"value":[
+34513.0, 37244.0, 43044.0, 49782.0, 48320.0, 51867.0, 56066.0, 39306.0, 44082.0, 54461.0, 61742.0, 58641.0, 63521.0, 72410.0, 110.9, 114.5, 119.2, 111.0, 101.0, 101.0, 106.7, 109.2, 113.5, 122.2, 116.3, 94.4, 106.0, 110.6, 145.2, 166.3, 198.1, 220.0, 222.3, 224.6, 239.6, 159.8, 181.4, 221.6, 257.7, 243.2, 257.7, 285.1],
+"status":{
+  },
+"extension":{
+"published":
+[1, 1, 2, 2, 3, 3, 4, 1, 1, 2, 2, 2, 3, 4, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1, 2, 3, 4],
+"publishedCode":{
+     "1" : "2024-01-05T08:00Z",
+     "2" : "2024-12-31T08:00Z",
+     "3" : "2025-12-31T08:00Z",
+     "4" : "2026-07-15T07:00Z"
+  },
+"status":{
+    "label":{
+    }
+  }
+},
+"updated":"2026-07-15T07:00Z"
+}
