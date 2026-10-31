@@ -1,0 +1,765 @@
+URL: https://data.cityofchicago.org/api/views/rsxa-ify5.json
+Fetched: 2026-10-31T17:03:55Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 41415
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 31 Oct 2026 17:03:55 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 3d2d399a5a8a8318af302129cca14720
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{
+  "id" : "rsxa-ify5",
+  "name" : "Contracts",
+  "assetType" : "dataset",
+  "attribution" : "City of Chicago",
+  "attributionLink" : "http://www.cityofchicago.org/city/en/depts/dps/provdrs/contract.html",
+  "averageRating" : 0,
+  "category" : "Administration & Finance",
+  "createdAt" : 1317369742,
+  "description" : "Contracts and modifications awarded by the City of Chicago since 1993. This data is currently maintained in the City’s Financial Management and Purchasing System (FMPS), which is used throughout the City for contract management and payment. \r\nLegacy System Records: Purchase Order/Contract Numbers that begin with alpha characters identify records imported from legacy systems. Records with a null value in the Contract Type field were imported from legacy systems. \r\n\"Comptroller-Other\" Contract Type: Some records where the Contract Type is \"COMPTROLLER-OTHER\" are ordinance-based agreements and may have start dates earlier than 1993. \r\nDepends Upon Requirements Contracts: If the contract Award Amount is $0, the contract is not cancelled, and the contract is a blanket contract, then the contract award total Depends Upon Requirements. A Depends Upon Requirements contract is an indefinite quantities contract in which the City places orders as needed and the vendor is not guaranteed any particular contract award amount. \r\n\r\nBlanket vs. Standard Contracts: Only blanket contracts (contracts for repeated purchases) have FMPS end dates. Standard contracts (for example, construction contracts) terminate upon completion and acceptance of all deliverables. These dates are tracked outside of FMPS. \r\n\r\nNegative Modifications: Some contracts are modified to delete scope and money from a contract. These reductions are indicated by negative numbers in the Award Amount field of this dataset. \r\n\r\nData Owner: Procurement Services. \r\nTime Period: 1993 to present. \r\nFrequency: Data is updated daily.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 93530,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "indexUpdatedAt" : 1556180170,
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 13317262,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1442262776,
+  "publicationGroup" : 215963,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1793434572,
+  "rowsUpdatedBy" : "n9j5-zhen",
+  "tableId" : 4331729,
+  "totalTimesRated" : 0,
+  "viewCount" : 165860,
+  "viewLastModified" : 1442305020,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1442262776,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 941083,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1442262776,
+    "targetAudience" : "public",
+    "workflowId" : 2226,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "scy9-9wg4",
+      "displayName" : "cocadmin"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 221888706,
+    "name" : "Purchase Order Description",
+    "dataTypeName" : "text",
+    "fieldName" : "purchase_order_description",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1296574,
+    "width" : 452,
+    "cachedContents" : {
+      "largest" : "ZOOMTEXT (+) SCREEN MAGNIFICATION SOFTWARE",
+      "non_null" : "182301",
+      "null" : "2779",
+      "top" : [ {
+        "item" : "DEMOLITION",
+        "count" : "7232"
+      }, {
+        "item" : "DFSS-ECBG-CS-CEL:",
+        "count" : "2462"
+      }, {
+        "item" : "MASTER AGREEMENT FOR DEMOLITION SERVICES",
+        "count" : "2159"
+      }, {
+        "item" : "DFSS-CORP-YS-OST:",
+        "count" : "1937"
+      }, {
+        "item" : "DFSS-HHS-CS-CEL:",
+        "count" : "1470"
+      }, {
+        "item" : "NEW CONTRACT",
+        "count" : "1220"
+      }, {
+        "item" : "ORIGINAL",
+        "count" : "1195"
+      }, {
+        "item" : "AMENDMENT",
+        "count" : "1119"
+      }, {
+        "item" : "Grant Agreement, IAP",
+        "count" : "917"
+      }, {
+        "item" : "DFSS-CORP-YS-MENT:",
+        "count" : "849"
+      }, {
+        "item" : "REVISION",
+        "count" : "748"
+      }, {
+        "item" : "DFSS-CDBG-WS-EPPP:",
+        "count" : "696"
+      }, {
+        "item" : "DFSS-IDHS-HL-INTHS:",
+        "count" : "638"
+      }, {
+        "item" : "REVISION 1",
+        "count" : "604"
+      }, {
+        "item" : "BACP-CORP-NBDC:",
+        "count" : "578"
+      }, {
+        "item" : "Grant Agreement, CityArts Small",
+        "count" : "563"
+      }, {
+        "item" : "BACP-CORP-NBDC",
+        "count" : "502"
+      }, {
+        "item" : "DFSS-CORP-YS-SYEP:",
+        "count" : "442"
+      }, {
+        "item" : "DFSS-HHS-CS-SS:",
+        "count" : "440"
+      }, {
+        "item" : "HEAD START",
+        "count" : "425"
+      } ],
+      "smallest" : "`",
+      "not_null" : "136332",
+      "count" : "185080",
+      "cardinality" : "185080"
+    },
+    "format" : {
+      "align" : "left",
+      "aggregate" : "count"
+    }
+  }, {
+    "id" : 221888709,
+    "name" : "Purchase Order (Contract) Number",
+    "dataTypeName" : "text",
+    "fieldName" : "purchase_order_contract_number",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1296591,
+    "width" : 278,
+    "cachedContents" : {
+      "largest" : "Z990250144D",
+      "non_null" : "185080",
+      "null" : "0",
+      "top" : [ {
+        "item" : "P011437",
+        "count" : "352"
+      }, {
+        "item" : "19486",
+        "count" : "216"
+      }, {
+        "item" : "P011887",
+        "count" : "180"
+      }, {
+        "item" : "129033",
+        "count" : "178"
+      }, {
+        "item" : "24640",
+        "count" : "173"
+      }, {
+        "item" : "22310",
+        "count" : "162"
+      }, {
+        "item" : "23954",
+        "count" : "156"
+      }, {
+        "item" : "19398",
+        "count" : "152"
+      }, {
+        "item" : "12457",
+        "count" : "148"
+      }, {
+        "item" : "24772",
+        "count" : "148"
+      }, {
+        "item" : "21773",
+        "count" : "141"
+      }, {
+        "item" : "12129",
+        "count" : "139"
+      }, {
+        "item" : "26117",
+        "count" : "137"
+      }, {
+        "item" : "63738",
+        "count" : "135"
+      }, {
+        "item" : "T25068",
+        "count" : "132"
+      }, {
+        "item" : "19666",
+        "count" : "131"
+      }, {
+        "item" : "24641",
+        "count" : "119"
+      }, {
+        "item" : "25946",
+        "count" : "115"
+      }, {
+        "item" : "P011471",
+        "count" : "113"
+      }, {
+        "item" : "29111",
+        "count" : "112"
+      } ],
+      "smallest" : "000600049",
+      "not_null" : "138941",
+      "count" : "185080",
+      "cardinality" : "185080"
+    },
+    "format" : {
+      "align" : "left"
+    }
+  }, {
+    "id" : 221888712,
+    "name" : "Revision Number",
+    "dataTypeName" : "text",
+    "fieldName" : "revision_number",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1487224,
+    "width" : 183,
+    "cachedContents" : {
+      "largest" : "TI0950",
+      "non_null" : "185080",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0",
+        "count" : "88717"
+      }, {
+        "item" : "1",
+        "count" : "20669"
+      }, {
+        "item" : "2",
+        "count" : "13325"
+      }, {
+        "item" : "3",
+        "count" : "8355"
+      }, {
+        "item" : "4",
+        "count" : "5824"
+      }, {
+        "item" : "5",
+        "count" : "4137"
+      }, {
+        "item" : "6",
+        "count" : "3185"
+      }, {
+        "item" : "7",
+        "count" : "2578"
+      }, {
+        "item" : "8",
+        "count" : "2035"
+      }, {
+        "item" : "9",
+        "count" : "1684"
+      }, {
+        "item" : "10",
+        "count" : "1367"
+      }, {
+        "item" : "11",
+        "count" : "1176"
+      }, {
+        "item" : "12",
+        "count" : "1004"
+      }, {
+        "item" : "13",
+        "count" : "855"
+      }, {
+        "item" : "14",
+        "count" : "774"
+      }, {
+        "item" : "15",
+        "count" : "673"
+      }, {
+        "item" : "16",
+        "count" : "612"
+      }, {
+        "item" : "17",
+        "count" : "565"
+      }, {
+        "item" : "18",
+        "count" : "503"
+      }, {
+        "item" : "19",
+        "count" : "463"
+      } ],
+      "smallest" : "0",
+      "not_null" : "138941",
+      "count" : "185080",
+      "cardinality" : "185080"
+    },
+    "format" : { }
+  }, {
+    "id" : 221888715,
+    "name" : "Specification Number",
+    "dataTypeName" : "text",
+    "fieldName" : "specification_number",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1296590,
+    "width" : 200,
+    "cachedContents" : {
+      "largest" : "TT121713",
+      "non_null" : "172956",
+      "null" : "12124",
+      "top" : [ {
+        "item" : "99999999999",
+        "count" : "13956"
+      }, {
+        "item" : "1070196",
+        "count" : "4098"
+      }, {
+        "item" : "B69683203",
+        "count" : "1463"
+      }, {
+        "item" : "1235949",
+        "count" : "1099"
+      }, {
+        "item" : "1042731",
+        "count" : "979"
+      }, {
+        "item" : "1037579",
+        "count" : "966"
+      }, {
+        "item" : "16194",
+        "count" : "895"
+      }, {
+        "item" : "B89683203",
+        "count" : "750"
+      }, {
+        "item" : "713707",
+        "count" : "736"
+      }, {
+        "item" : "1207793",
+        "count" : "608"
+      }, {
+        "item" : "C925990002",
+        "count" : "557"
+      }, {
+        "item" : "1246129",
+        "count" : "518"
+      }, {
+        "item" : "50679",
+        "count" : "515"
+      }, {
+        "item" : "1164969",
+        "count" : "500"
+      }, {
+        "item" : "1235846",
+        "count" : "465"
+      }, {
+        "item" : "1237958",
+        "count" : "440"
+      }, {
+        "item" : "457618",
+        "count" : "407"
+      }, {
+        "item" : "90996",
+        "count" : "389"
+      }, {
+        "item" : "1258323",
+        "count" : "386"
+      }, {
+        "item" : "1248935",
+        "count" : "372"
+      } ],
+      "smallest" : "00000",
+      "not_null" : "126715",
+      "count" : "185080",
+      "cardinality" : "185080"
+    },
+    "format" : {
+      "align" : "left"
+    }
+  }, {
+    "id" : 221888718,
+    "name" : "Contract Type",
+    "dataTypeName" : "text",
+    "fieldName" : "contract_type",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1296577,
+    "width" : 173,
+    "cachedContents" : {
+      "largest" : "WORK SERVICES-SMALL ORDERS",
+      "non_null" : "140462",
+      "null" : "44618",
+      "top" : [ {
+        "item" : "DELEGATE AGENCY",
+        "count" : "67188"
+      }, {
+        "item" : "COMPTROLLER-OTHER",
+        "count" : "15112"
+      }, {
+        "item" : "CONSTRUCTION-LARGE $3MILLIONorABOVE",
+        "count" : "8741"
+      }, {
+        "item" : "CONSTRUCTION-AVIATION",
+        "count" : "7007"
+      }, {
+        "item" : "ARCH/ENGINEERING",
+        "count" : "4820"
+      }, {
+        "item" : "WORK SERVICES / FACILITIES MAINT.",
+        "count" : "4383"
+      }, {
+        "item" : "COMMODITIES",
+        "count" : "4186"
+      }, {
+        "item" : "PRO SERV CONSULTING $250,000orABOVE",
+        "count" : "3715"
+      }, {
+        "item" : "CONSTRUCTION-GENERAL",
+        "count" : "3467"
+      }, {
+        "item" : "Modification",
+        "count" : "2228"
+      }, {
+        "item" : "Time Extension",
+        "count" : "2066"
+      }, {
+        "item" : "PROPERTY LEASE",
+        "count" : "1988"
+      }, {
+        "item" : "CONSTRUCTION",
+        "count" : "1791"
+      }, {
+        "item" : "VEHICLES/HEAVY EQUIPMENT (CAPITAL)",
+        "count" : "1388"
+      }, {
+        "item" : "CONVERTED",
+        "count" : "1207"
+      }, {
+        "item" : "Delegate Agency",
+        "count" : "1117"
+      }, {
+        "item" : "Term Agreement",
+        "count" : "1050"
+      }, {
+        "item" : "COMMODITIES-SMALL ORDERS",
+        "count" : "1049"
+      }, {
+        "item" : "WORK SERV-AVIATION",
+        "count" : "902"
+      }, {
+        "item" : "PRO SERV-AVIATION",
+        "count" : "827"
+      } ],
+      "smallest" : "07/23/02",
+      "not_null" : "94194",
+      "count" : "185080",
+      "cardinality" : "185080"
+    },
+    "format" : { }
+  }, {
+    "id" : 221888721,
+    "name" : "Start Date",
+    "dataTypeName" : "calendar_date",
+    "fieldName" : "start_date",
+    "position" : 6,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 1462732,
+    "width" : 132,
+    "cachedContents" : {
+      "largest" : "2048-02-25T00:00:00.000",
+      "non_null" : "120789",
+      "null" : "64291",
+      "top" : [ {
+        "item" : "2022-01-01T00:00:00.000",
+        "count" : "2539"
+      }, {
+        "item" : "2019-01-01T00:00:00.000",
+        "count" : "1594"
+      }, {
+        "item" : "2015-01-01T00:00:00.000",
+        "count" : "1530"
+      }, {
+        "item" : "2023-01-01T00:00:00.000",
+        "count" : "1509"
+      }, {
+        "item" : "2007-01-01T00:00:00.000",
+        "count" : "1495"
+      }, {
+        "item" : "2017-01-01T00:00:00.000",
+        "count" : "1244"
+      }, {
+        "item" : "2008-01-01T00:00:00.000",
+        "count" : "1239"
+      }, {
+        "item" : "2001-01-01T00:00:00.000",
+        "count" : "1177"
+      }, {
+        "item" : "2006-01-01T00:00:00.000",
+        "count" : "1080"
+      }, {
+        "item" : "2018-01-01T00:00:00.000",
+        "count" : "1048"
+      }, {
+        "item" : "2004-01-01T00:00:00.000",
+        "count" : "1045"
+      }, {
+        "item" : "2020-01-01T00:00:00.000",
+        "count" : "1000"
+      }, {
+        "item" : "2021-01-01T00:00:00.000",
+        "count" : "979"
+      }, {
+        "item" : "2009-01-01T00:00:00.000",
+        "count" : "978"
+      }, {
+        "item" : "2003-01-01T00:00:00.000",
+        "count" : "968"
+      }, {
+        "item" : "2005-01-01T00:00:00.000",
+        "count" : "920"
+      }, {
+        "item" : "2019-12-01T00:00:00.000",
+        "count" : "906"
+      }, {
+        "item" : "2013-01-01T00:00:00.000",
+        "count" : "881"
+      }, {
+        "item" : "2014-01-01T00:00:00.000",
+        "count" : "824"
+      }, {
+        "item" : "2024-01-01T00:00:00.000",
+        "count" : "820"
+      } ],
+      "smallest" : "0201-03-01T00:00:00.000",
+      "not_null" : "97725",
+      "count" : "185080",
+      "cardinality" : "185080"
+    },
+    "format" : {
+      "view" : "date",
+      "align" : "left"
+    }
+  }, {
+    "id" : 221888724,
+    "name" : "End Date",
+    "dataTypeName" : "calendar_date",
+    "fieldName" : "end_date",
+    "position" : 7,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 1462733,
+    "width" : 141,
+    "cachedContents" : {
+      "largest" : "3030-11-30T00:00:00.000",
+      "non_null" : "120038",
+      "null" : "65042",
+      "top" : [ {
+        "item" : "2024-12-31T00:00:00.000",
+        "count" : "2095"
+      }, {
+        "item" : "2021-12-31T00:00:00.000",
+        "count" : "1909"
+      }, {
+        "item" : "2023-12-31T00:00:00.000",
+        "count" : "1851"
+      }, {
+        "item" : "2025-12-31T00:00:00.000",
+        "count" : "1815"
+      }, {
+        "item" : "2006-12-31T00:00:00.000",
+        "count" : "1520"
+      }, {
+        "item" : "2018-12-31T00:00:00.000",
+        "count" : "1490"
+      }, {
+        "item" : "2016-12-31T00:00:00.000",
+        "count" : "1480"
+      }, {
+        "item" : "1999-12-31T00:00:00.000",
+        "count" : "1479"
+      }, {
+        "item" : "2022-12-31T00:00:00.000",
+        "count" : "1308"
+      }, {
+        "item" : "2000-12-31T00:00:00.000",
+        "count" : "1265"
+      }, {
+        "item" : "2020-12-31T00:00:00.000",
+        "count" : "1247"
+      }, {
+        "item" : "2013-12-31T00:00:00.000",
+        "count" : "1229"
+      }, {
+        "item" : "2017-12-31T00:00:00.000",
+        "count" : "1220"
+      }, {
+        "item" : "2014-12-31T00:00:00.000",
+        "count" : "1219"
+      }, {
+        "item" : "2011-12-31T00:00:00.000",
+        "count" : "1204"
+      }, {
+        "item" : "2010-12-31T00:00:00.000",
+        "count" : "1177"
+      }, {
+        "item" : "2007-12-31T00:00:00.000",
+        "count" : "1111"
+      }, {
+        "item" : "1997-12-31T00:00:00.000",
+        "count" : "1069"
+      }, {
+        "item" : "2001-12-31T00:00:00.000",
+        "count" : "1058"
+      }, {
+        "item" : "2012-12-31T00:00:00.000",
+        "count" : "1056"
+      } ],
+      "smallest" : "1989-02-15T00:00:00.000",
+      "not_null" : "96613",
+      "count" : "185080",
+      "cardinality" : "185080"
+    },
+    "format" : {
+      "view" : "date",
+      "align" : "left"
+    }
+  }, {
+    "id" : 221888727,
+    "name" : "Approval Date",
+    "dataTypeName" : "calendar_date",
+    "fieldName" : "approval_date",
+    "position" : 8,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 1462734,
+    "width" : 158,
+    "cachedContents" : {
+      "largest" : "2026-05-13T00:00:00.000",
+      "non_null" : "185059",
+      "null" : "21",
+      "top" : [ {
+        "item" : "2002-10-12T00:00:00.000",
+        "count" : "2315"
+      }, {
+        "item" : "2002-10-11T00:00:00.000",
+        "count" : "1751"
+      }, {
+        "item" : "2008-10-16T00:00:00.000",
+        "count" : "698"
+      }, {
+        "item" : "2008-10-21T00:00:00.000",
+        "count" : "656"
+      }, {
+        "item" : "1998-12-16T00:00:00.000",
+        "count" : "528"
+      }, {
+        "item" : "2008-10-28T00:00:00.000",
+        "count" : "392"
+      }, {
+        "item" : "2008-10-22T00:00:00.000",
+        "count" : "343"
+      }, {
+        "item" : "1996-02-01T00:00:00.000",
+        "count" : "329"
+      }, {
+        "item" : "1995-01-24T00:00:00.000",
+        "count" : "329"
+      }, {
+        "item" : "2023-12-21T00:00:00.000",
+        "count" : "325"
+      }, {
+        "item" : "2008-10-23T00:00:00.000",
+        "count" : "301"
+      }, {
+        "item" : "2015-01-22T00:00:00.000",
+        "count" : "282"
+      }, {
+        "item" : "2009-02-03T00:00:00.000",
+        "count" : "278"
+      }, {
+        "item" : "1995-10-17T00:00:00.000",
+        "count" : "276"
+      }, {
+        "item" : "2025-12-22T00:00:00.000",
+        "count" : "251"
+      }, {
+        "item" : "2009-06-02T00:00:00.000",
+        "count" : "240"
+      }, {
+        "item" : "2013-01-17T00:00:00.000",
+        "count" : "232"
+      }, {
+        "item" : "1998-01-16T00:00:00.000",
+        "count" : "231"
+      }, {
+        "item" : "2008-10-20T00:00:00.000",
+        "count" : "212"
+      }, {
+        "item" : "2013-12-11T00:00:00.000",
+        "count" : "212"
+      } ],
+      "smallest" : "1993-01-01T00:00:00.000",
+      "not_null" : "138920",
+      "count" : "185080",
+      "cardinality" : "185080"
+    },
+    "format" : {
+      "view" : "date",
+      "align" : "left"
+    }
+  }, {
+    "id" : 221888730,
+    "name" : "Department",
+    "dataTypeName" : "text",
+    "fieldName" : "department",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1296581,
+    "width" : 310,
+    "cachedContents" : {
+      "largest" : "PLANNING & DEVELOPMENT",
+      "non_null" : "174470",
+      "null" : "10610",
+      "top" : [ {
+        "item" : "DEPARTMENT OF FAMILY AND SUPPORT SERVICES",
+        "count" : "30512"
+      }, {
+        "item" : "CHICAGO DEPARTMENT OF TRANSPORTATION",
+        "count" : "21144"
+      }, {
+        "item" : "DEPARTMENT OF HUMAN RESOURCES",
+        "count" : "17959"
+      }, {
+        "item" : "CHICAGO DEPARTMENT OF PUBLIC HEALTH",
+        "count" : "14246"
+      }, {
+        "item" : "DEPARTMENT OF BUILDINGS",
+        "count" : "11250"
+      }, {
+        "item" : "CHICAGO DEPARTMENT OF AVIATION",
+        "count" : "
