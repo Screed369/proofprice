@@ -23,8 +23,8 @@ export default defineSource({
     months: "EU and EEA: up to 60; only the newest 1,000 matching notices are read, so a very common purchase covers a shorter period than asked (the answer says so).",
   },
   examples: [
-    { params: { country: "NL", what: "laptops" } },
-    { params: { country: "NL", what: "office cleaning" }, smoke: false },
+    { params: { country: "NL", what: "office cleaning" } },
+    { params: { country: "NL", what: "laptops" }, smoke: false },
     { params: { country: "IT", what: "road resurfacing" }, smoke: false },
     { params: { country: "BE", what: "office cleaning" }, smoke: false },
   ],
