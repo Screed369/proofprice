@@ -1,0 +1,35 @@
+URL: https://data.cityofchicago.org/resource/rsxa-ify5.json?$limit=8&$select=purchase_order_description,revision_number,contract_type,procurement_type,approval_date,start_date,department,award_amount&$where=revision_number%3D%270%27%20AND%20approval_date%3E%272026-01-01T00:00:00%27&$order=approval_date%20DESC
+Fetched: 2026-10-31T20:53:53Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2562
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 31 Oct 2026 20:53:53 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC43MTU2XzVfNDI0NTAtUDRQZGhEYUJaS3Y5emIxS0pUcEo3UmpPMA---gzimLyUbO3Zk0JVRpKosYsgEmcjhZh--gzip--gzip"
+X-SODA2-Fields: ["purchase_order_description","revision_number","contract_type","procurement_type","approval_date","start_date","department","award_amount"]
+X-SODA2-Types: ["text","text","text","text","floating_timestamp","floating_timestamp","text","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Sat, 31 Oct 2026 08:15:49 GMT
+X-SODA2-Secondary-Last-Modified: Sat, 31 Oct 2026 08:15:49 GMT
+Last-Modified: Sat, 31 Oct 2026 08:15:49 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: c4847f706b319a823d77cf83e90b1de3
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+[{"purchase_order_description":"Design for Artwork for 81 Club Artist by Damon Lamar Reed","revision_number":"0","contract_type":"COMPTROLLER-OTHER","approval_date":"2026-10-29T00:00:00.000","start_date":"2026-07-30T00:00:00.000","department":"DEPARTMENT OF CULTURAL AFFAIRS AND SPECIAL EVENTS","award_amount":"750"}
+,{"purchase_order_description":"Exhibition Agreement for Soul of the stone by Gallery Guichard","revision_number":"0","contract_type":"COMPTROLLER-OTHER","approval_date":"2026-10-29T00:00:00.000","start_date":"2026-09-01T00:00:00.000","department":"DEPARTMENT OF CULTURAL AFFAIRS AND SPECIAL EVENTS","award_amount":"8000"}
+,{"purchase_order_description":"UNITED AIRLINES - 2025 ORD REDETERINATION PROJECT PROJECT","revision_number":"0","contract_type":"COMPTROLLER-OTHER","approval_date":"2026-10-29T00:00:00.000","start_date":"2026-10-28T00:00:00.000","department":"CHICAGO DEPARTMENT OF AVIATION","award_amount":"5126000"}
+,{"purchase_order_description":"Design for Artwork for Riverwalk Banner by Laura Kina","revision_number":"0","contract_type":"COMPTROLLER-OTHER","approval_date":"2026-10-29T00:00:00.000","start_date":"2026-10-01T00:00:00.000","department":"DEPARTMENT OF CULTURAL AFFAIRS AND SPECIAL EVENTS","award_amount":"1000"}
+,{"purchase_order_description":"Design for Artwork for Riverwalk Banner by Damon Lamar Reed","revision_number":"0","contract_type":"COMPTROLLER-OTHER","approval_date":"2026-10-29T00:00:00.000","start_date":"2026-10-01T00:00:00.000","department":"DEPARTMENT OF CULTURAL AFFAIRS AND SPECIAL EVENTS","award_amount":"1000"}
+,{"purchase_order_description":"CDPH-LD-POISNING-PREV: PO 364694 ILLINOIS CHAPTER AMERICAN ACADEMY OF PEDIATRICS","revision_number":"0","contract_type":"DELEGATE AGENCY","procurement_type":"RFP","approval_date":"2026-10-29T00:00:00.000","start_date":"2026-09-30T00:00:00.000","department":"CHICAGO DEPARTMENT OF PUBLIC HEALTH","award_amount":"100000"}
+,{"purchase_order_description":"Grant Agreement for African Festival of the Arts","revision_number":"0","contract_type":"COMPTROLLER-OTHER","approval_date":"2026-10-29T00:00:00.000","start_date":"2026-10-01T00:00:00.000","department":"DEPARTMENT OF CULTURAL AFFAIRS AND SPECIAL EVENTS","award_amount":"10000"}
+,{"purchase_order_description":"Agreement between the City of Chicago and The Eli's Cheesecake Company","revision_number":"0","contract_type":"COMPTROLLER-OTHER","approval_date":"2026-10-29T00:00:00.000","start_date":"2026-05-22T00:00:00.000","department":"DEPARTMENT OF PLANNING AND DEVELOPMENT","award_amount":"1000000"}]
