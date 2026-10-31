@@ -1,0 +1,33 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/14491/data?lang=en&outputFormat=json-stat2&valuecodes%5BContentsCode%5D=KraftprisEA&valuecodes%5BTid%5D=top(3)
+Fetched: 2026-10-31T01:43:00Z from GitHub Actions
+Status, type, bytes: 400 application/json; charset=utf-8 91
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 400 
+date: Sat, 31 Oct 2026 01:42:59 GMT
+server: 
+content-type: application/json; charset=utf-8
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 59643093
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+content-length: 91
+set-cookie: X-Identity=12816260.026; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"type":"Parameter error","title":"Missing selection for mandantory variable","status":400}
