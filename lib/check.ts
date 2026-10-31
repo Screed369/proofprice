@@ -363,6 +363,15 @@ export function splitCheckArgs(raw: Record<string, unknown>): { fixed: Record<st
     if (CHECK_RESERVED.includes(k)) fixed[k] = v;
     else params[k] = v;
   }
+  // Gap G20261031-1: agents join place and bedroom count as "Dublin 8 / 2". Split it when no bedrooms was given.
+  for (const k of ["town", "area", "city", "place"]) {
+    const v = params[k];
+    const m = typeof v === "string" ? /^(.+?)\s*\/\s*(\d{1,2})\s*(?:-?\s*beds?(?:rooms?)?)?$/i.exec(v.trim()) : null;
+    if (m && (params.bedrooms === undefined || params.bedrooms === "")) {
+      params[k] = m[1].trim();
+      params.bedrooms = m[2];
+    }
+  }
   return { fixed, params };
 }
 

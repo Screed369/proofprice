@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { answerIdFor, buildAnswer, buildStatisticAnswer, evidenceFor, normaliseQuery } from "../lib/answer";
 import type { PriceAnswer } from "../lib/answer";
-import { CHECK_TOOL, judge, normUnit, periodEnd, runCheck, sameUnit } from "../lib/check";
+import { CHECK_TOOL, judge, normUnit, periodEnd, runCheck, sameUnit, splitCheckArgs } from "../lib/check";
 import { InputError } from "../lib/http";
 import { buildToolSpecs, ToolDeps, LIVE_DEPS } from "../lib/mcp-tools";
 import { buildOpenApi, buildLlmsTxt } from "../lib/openapi";
@@ -336,4 +336,18 @@ test("periodEndDate understands the period texts sources use", () => {
   assert.equal(periodEndDate("2025"), "2025-12-31");
   assert.equal(periodEndDate("latest"), null);
   assert.equal(periodEndDate(null), null);
+});
+
+test("splitCheckArgs reads 'Dublin 8 / 2' as place plus bedrooms (gap G20261031-1)", () => {
+  const a = splitCheckArgs({ category: "rent", country: "IE", area: "dublin 8 / 2", price: 2000 });
+  assert.equal(a.params.area, "dublin 8");
+  assert.equal(a.params.bedrooms, "2");
+  const b = splitCheckArgs({ category: "rent", country: "IE", town: "Dublin 8 / 2 bed", price: 2000 });
+  assert.equal(b.params.town, "Dublin 8");
+  assert.equal(b.params.bedrooms, "2");
+  // an explicit bedrooms value wins; plain places are untouched
+  const c = splitCheckArgs({ country: "IE", town: "Dublin 8 / 2", bedrooms: 3, price: 1 });
+  assert.equal(c.params.town, "Dublin 8 / 2");
+  assert.equal(c.params.bedrooms, 3);
+  assert.equal(splitCheckArgs({ country: "IE", town: "Dublin 8", price: 1 }).params.town, "Dublin 8");
 });
