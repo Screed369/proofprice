@@ -1,0 +1,32 @@
+URL: https://www.data.gov.bh/api/explore/v2.1/catalog/datasets?where=search(default.title%2C%22real%20estate%22)&select=dataset_id&limit=20
+Fetched: 2026-10-31T00:46:15Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 198
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: openresty
+date: Sat, 31 Oct 2026 00:46:15 GMT
+content-type: application/json; charset=utf-8
+content-length: 198
+x-ratelimit-remaining: 4999
+x-ratelimit-limit: 5000
+x-ratelimit-reset: 2026-11-01 00:00:00+00:00
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+vary: Accept-Language, Cookie, Host
+content-language: en-gb
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS
+access-control-max-age: 1000
+access-control-allow-headers: Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type, ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+access-control-expose-headers: ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit, X-RateLimit-dataset-Reset
+strict-transport-security: max-age=31536000;includeSubdomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: upgrade-insecure-requests; 
+x-ua-compatible: IE=edge
+permissions-policy: midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"total_count": 2, "results": [{"dataset_id": "12-cumulitive-number-of-gcc-nationals-owning-real-estate"}, {"dataset_id": "11-number-of-gcc-nationals-owning-real-estate-in-the-kingdom-of-bahrain"}]}
