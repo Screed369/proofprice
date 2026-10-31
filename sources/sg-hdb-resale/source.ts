@@ -254,19 +254,37 @@ export function sgDailyRows(sales: SgSale[]): DailyRow[] {
   return rows.sort((a, b) => (a.area + a.item).localeCompare(b.area + b.item));
 }
 
-export async function sgHarvest(fetcher?: Fetcher, now = new Date()): Promise<HarvestResult> {
+const RETRY_WAITS_MS = [3000, 10000, 25000]; // data.gov.sg rate-limits (HTTP 429) bursts of page calls; wait and try again
+
+/** Fetch one page, retrying after a growing pause when the portal answers 429/5xx or times out. Pure apart from `sleep`. */
+export async function fetchWithBackoff(
+  fetch: Fetcher,
+  url: string,
+  sleep: (ms: number) => Promise<void> = (ms) => new Promise((r) => setTimeout(r, ms)),
+  waits: number[] = RETRY_WAITS_MS,
+): Promise<unknown> {
+  let last: unknown;
+  for (let i = 0; i <= waits.length; i++) {
+    try {
+      return await fetch(url);
+    } catch (e) {
+      last = e;
+      if (i < waits.length) await sleep(waits[i]);
+    }
+  }
+  throw last;
+}
+
+export async function sgHarvest(fetcher?: Fetcher, now = new Date(), sleep?: (ms: number) => Promise<void>): Promise<HarvestResult> {
   const fetch = fetcher ?? resolveFetcher({ timeoutMs: 30000 });
+  const pause = sleep ?? ((ms: number) => new Promise<void>((r) => setTimeout(r, ms)));
   const cutoff = sgCutoffMonth(HARVEST_MONTHS, now);
   const got = await collectPages<SgSale>({
     maxRows: HARVEST_MAX_ROWS,
     pageSize: HARVEST_PAGE,
     fetchPage: async (offset, limit) => {
-      let json: unknown;
-      try {
-        json = await fetch(buildSgBulkUrl(limit, offset));
-      } catch {
-        json = await fetch(buildSgBulkUrl(limit, offset)); // one retry per page: the portal sometimes answers 429 or times out
-      }
+      if (offset > 0 && !fetcher) await pause(1500); // pace the page calls: the portal answers 429 to a fast burst
+      const json = await fetchWithBackoff(fetch, buildSgBulkUrl(limit, offset), pause);
       const p = parseSgBulk(json);
       return { rows: p.sales, more: p.rawCount >= limit && p.oldest > cutoff };
     },

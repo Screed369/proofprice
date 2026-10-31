@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildSgUrl, parseSgRecords } from "./source";
+import { buildSgUrl, parseSgRecords, fetchWithBackoff } from "./source";
 
 test("SG url and records parse (shape seen on data.gov.sg)", () => {
   const url = new URL(buildSgUrl("tampines", "4 room"));
@@ -191,4 +191,16 @@ test("sgHomeSales retries a page once when the portal fails (429/timeout), so th
   assert.equal(a.status, "ok");
   assert.equal(failed, 1);
   assert.equal(a.sample_size, 12 * 40);
+});
+
+test("fetchWithBackoff: HTTP 429 is retried after growing pauses", async () => {
+  let calls = 0;
+  const waits: number[] = [];
+  const out = await fetchWithBackoff(async () => { calls++; if (calls < 3) throw new Error("Source returned HTTP 429"); return { ok: 1 }; }, "u", async (ms) => { waits.push(ms); });
+  assert.deepEqual(out, { ok: 1 });
+  assert.deepEqual(waits, [3000, 10000]);
+});
+
+test("fetchWithBackoff: gives up with the last error", async () => {
+  await assert.rejects(fetchWithBackoff(async () => { throw new Error("Source returned HTTP 429"); }, "u", async () => {}, [1, 1]), /429/);
 });
