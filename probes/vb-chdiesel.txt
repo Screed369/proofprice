@@ -1,0 +1,23 @@
+URL: https://ckan.opendata.swiss/api/3/action/package_search?q=diesel&rows=10&fl=name,title,organization,metadata_modified
+Fetched: 2026-10-31T01:45:16Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 2789
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 31 Oct 2026 01:45:16 GMT
+content-type: application/json;charset=utf-8
+content-length: 2789
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-robots-tag: noindex, nofollow
+strict-transport-security: max-age=15724800; includeSubDomains
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET, PUT, POST, DELETE, PATCH, OPTIONS
+access-control-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+access-control-max-age: 1728000
+
+=== FILE TYPE: JSON text data
+=== FIRST 9000 BYTES
+{"help": "https://ckan.opendata.swiss/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 7, "facets": {}, "results": [{"name": "durchschnittliche-co2-emissionen-nach-treibstoffart", "title": "{\"de\": \"Durchschnittliche CO2-Emissionen nach Treibstoffart (PW)\", \"it\": \"Emissioni medie di CO2 per tipo di carburante (automobili)\", \"fr\": \"Emissions de CO2 moyennes par type de carburant (VT)\", \"en\": \"\"}", "metadata_modified": "2026-09-15T02:09:00.065Z", "organization": "bundesamt-fur-energie-bfe"}, {"name": "kennzahlen-alternativ-angetriebene-lnf", "title": "{\"fr\": \"Chiffres cl\u00e9s des VUL \u00e0 propulsion alternative\", \"it\": \"Indicatori VCL a propulsione alternativa\", \"de\": \"Kennzahlen alternativ angetriebene LNF\", \"en\": \"\"}", "metadata_modified": "2026-09-15T02:08:56.428Z", "organization": "bundesamt-fur-energie-bfe"}, {"name": "kennzahlen-alternativ-angetriebene-pw", "title": "{\"fr\": \"Chiffres cl\u00e9s des VT \u00e0 propulsion alternative\", \"it\": \"Indicatori relativi alle automobili a propulsione alternativa\", \"de\": \"Kennzahlen alternativ angetriebene PW\", \"en\": \"\"}", "metadata_modified": "2026-09-15T02:08:50.988Z", "organization": "bundesamt-fur-energie-bfe"}, {"name": "anteile-der-treibhausgasemissionen-aus-treibstoffen-im-sektor-verkehr", "title": "{\"de\": \"Anteile der Treibhausgasemissionen aus Treibstoffen im Sektor Verkehr\", \"en\": \"Shares of greenhouse gas emissions from motor fuels in the Transport sector\", \"fr\": \"Pourcentage des \u00e9missions de gaz \u00e0 effet de serre provenant des carburants dans le secteur des transports\", \"it\": \"Quote di emissioni di gas serra dei carburanti nel settore dei trasporti\"}", "metadata_modified": "2026-09-15T01:39:05.719Z", "organization": "bundesamt-fur-umwelt-bafu"}, {"name": "schweizerische-gesamtenergiestatistik-erdolbilanz-der-schweiz", "title": "{\"fr\": \"\", \"de\": \"Schweizerische Gesamtenergiestatistik: Erd\\u00f6lbilanz der Schweiz\", \"en\": \"\", \"it\": \"\"}", "metadata_modified": "2025-12-11T04:00:37.101Z", "organization": "bundesamt-fur-energie-bfe"}, {"name": "personenwagen-nach-treibstoffart-energie-ab-2017", "title": "{\"fr\": \"Voitures de tourisme, par type de carburant/\u00e9nergie, d\u00e8s 2017\", \"en\": \"\", \"de\": \"\", \"it\": \"\"}", "metadata_modified": "2026-10-14T03:08:10.054Z", "organization": "ssd"}, {"name": "co2-emissionen-nach-energietrager-gemeinde-und-jahr-seit-2018", "title": "{\"de\": \"CO2-Emissionen nach Energietr\u00e4ger, Gemeinde und Jahr (seit 2018)\", \"en\": \"\", \"fr\": \"\", \"it\": \"\"}", "metadata_modified": "2026-10-14T02:21:19.614Z", "organization": "kanton-basel-landschaft"}], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
