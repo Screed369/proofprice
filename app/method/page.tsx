@@ -1,3 +1,7 @@
+import { Breadcrumbs } from "../_components/Breadcrumbs";
+import { JsonLd } from "../_components/JsonLd";
+import { METHOD_FAQ } from "../../lib/site/method-faq";
+import { faqPageGraph } from "../../lib/site/jsonld";
 import { SOURCE_PLUGINS } from "../../lib/registry";
 import { SERVICE_VERSION } from "../../lib/site/constants";
 import { STALE_MAX_DAYS } from "../../lib/stale";
@@ -5,6 +9,8 @@ import { STALE_MAX_DAYS } from "../../lib/stale";
 export default function Method() {
   return (
     <main>
+      <JsonLd data={faqPageGraph("/method", [{ name: "Home", path: "/" }, { name: "Method", path: "/method" }], METHOD_FAQ)} />
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Method" }]} />
       <h1>Method (v{SERVICE_VERSION})</h1>
       <ul>
         <li>Most answers are a range: the median and the 10th–90th percentile of recorded prices, with the sample size, period and a confidence label. Official statistics (below) are the one exception.</li>
@@ -26,6 +32,13 @@ export default function Method() {
         ))}
         <li>Information, not a valuation or offer.</li>
       </ul>
+      <h2>Common questions</h2>
+      {METHOD_FAQ.map((q) => (
+        <div key={q.question}>
+          <h3>{q.question}</h3>
+          <p>{q.answer}</p>
+        </div>
+      ))}
       <h2>Official statistics</h2>
       <ul>
         <li>

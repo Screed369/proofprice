@@ -446,3 +446,11 @@ test("faqPageGraph builds a FAQPage with absolute URLs and the given answers", (
   assert.equal(faq.mainEntity[0].name, "Q?");
   assert.equal(faq.mainEntity[0].acceptedAnswer.text, "A.");
 });
+
+test("method FAQ answers keep the 5-record rule and aggregates-only wording", async () => {
+  const { METHOD_FAQ } = await import("../lib/site/method-faq");
+  const all = METHOD_FAQ.map((q) => q.answer).join(" ");
+  assert.match(all, /Below 5 records/);
+  assert.match(all, /50 or more/);
+  assert.match(all, /aggregates/);
+});
