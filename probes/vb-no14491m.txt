@@ -1,0 +1,33 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/14491/metadata?lang=en&outputFormat=json-stat2
+Fetched: 2026-10-31T01:44:06Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 5401
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 31 Oct 2026 01:44:05 GMT
+server: 
+content-type: application/json; charset=utf-8
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 54714429
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=23837728.138; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"version":"2.0","class":"dataset","label":"14491: Electricity prices  in the end-user market, by contract type 2012K1-2026K2","source":"Statistics Norway","updated":"2026-08-17T06:00:00Z","link":{"related":[{"extension":{"relation":"statistics-homepage","metaid":"KORTNAVN:elkraftpris"},"href":"https://www.ssb.no/en/elkraftpris","label":"Statistics page","type":"text/html"},{"extension":{"relation":"about-statistics","metaid":"KORTNAVN:elkraftpris"},"href":"https://www.ssb.no/en/elkraftpris#om-statistikken","label":"Definitions and explanations","type":"text/html"}]},"role":{"time":["Tid"],"metric":["ContentsCode"]},"id":["Kraftpriser","ContentsCode","Tid"],"size":[15,3,58],"dimension":{"Kraftpriser":{"label":"type of contract","category":{"index":{"1":0,"1.1":1,"1.2":2,"1.3":3,"2":4,"2.1":5,"2.2":6,"2.3":7,"3":8,"3.1":9,"3.2":10,"3.3":11,"4":12,"4.1":13,"4.2":14},"label":{"1":"Households, total","1.1":"Fixed-price contracts, households","1.2":"Contracts tied to spot price, households","1.3":"Variable price contracts, households","2":"Services, total","2.1":"Fixed-price contracts, services","2.2":"Contracts tied to spot price, services","2.3":"Variable price contracts, services","3":"Manufacturing excl. energy-intensive manufacturing, total","3.1":"Fixed-price contracts, manufacturing excl. energy-intensive manufacturing","3.2":"Contracts tied to spot price, manufacturing excl. energy-intensive manufacturing","3.3":"Variable price contracts, manufacturing excl. energy-intensive manufacturing","4":"Energy-intensive manufacturing, total","4.1":"Fixed-price contracts and contracts not entered in the market, energy-intensive manufacturing","4.2":"Contracts tied to spot price, energy-intensive manufacturing"}},"extension":{"elimination":false,"show":"code_value","codelists":[]}},"ContentsCode":{"label":"contents","category":{"index":{"KraftprisEA":0,"KraftprisIA":1,"Fordeling":2},"label":{"KraftprisEA":"Electricity price excl. taxes (øre/kWh)","KraftprisIA":"Electricity price, incl. VAT (øre/kWh)","Fordeling":"Breakdown of electircity sales (per cent)"},"unit":{"KraftprisEA":{"base":"øre/kWh","decimals":1},"KraftprisIA":{"base":"øre/kWh","decimals":1},"Fordeling":{"base":"per cent","decimals":1}}},"extension":{"elimination":false,"refperiod":{"KraftprisEA":"","KraftprisIA":"","Fordeling":""},"show":"value","codelists":[],"measuringType":{"KraftprisEA":"Average","KraftprisIA":"Average","Fordeling":"Average"},"priceType":{"KraftprisEA":"Current","KraftprisIA":"Current","Fordeling":"Current"},"adjustment":{"KraftprisEA":"None","KraftprisIA":"None","Fordeling":"None"},"alternativeText":{"KraftprisEA":"Electricity price excl. taxes (øre/kWh)","KraftprisIA":"Electricity price, incl. VAT (øre/kWh)","Fordeling":"Breakdown of electircity sales (per cent)"}}},"Tid":{"label":"quarter","category":{"index":{"2012K1":0,"2012K2":1,"2012K3":2,"2012K4":3,"2013K1":4,"2013K2":5,"2013K3":6,"2013K4":7,"2014K1":8,"2014K2":9,"2014K3":10,"2014K4":11,"2015K1":12,"2015K2":13,"2015K3":14,"2015K4":15,"2016K1":16,"2016K2":17,"2016K3":18,"2016K4":19,"2017K1":20,"2017K2":21,"2017K3":22,"2017K4":23,"2018K1":24,"2018K2":25,"2018K3":26,"2018K4":27,"2019K1":28,"2019K2":29,"2019K3":30,"2019K4":31,"2020K1":32,"2020K2":33,"2020K3":34,"2020K4":35,"2021K1":36,"2021K2":37,"2021K3":38,"2021K4":39,"2022K1":40,"2022K2":41,"2022K3":42,"2022K4":43,"2023K1":44,"2023K2":45,"2023K3":46,"2023K4":47,"2024K1":48,"2024K2":49,"2024K3":50,"2024K4":51,"2025K1":52,"2025K2":53,"2025K3":54,"2025K4":55,"2026K1":56,"2026K2":57},"label":{"2012K1":"2012K1","2012K2":"2012K2","2012K3":"2012K3","2012K4":"2012K4","2013K1":"2013K1","2013K2":"2013K2","2013K3":"2013K3","2013K4":"2013K4","2014K1":"2014K1","2014K2":"2014K2","2014K3":"2014K3","2014K4":"2014K4","2015K1":"2015K1","2015K2":"2015K2","2015K3":"2015K3","2015K4":"2015K4","2016K1":"2016K1","2016K2":"2016K2","2016K3":"2016K3","2016K4":"2016K4","2017K1":"2017K1","2017K2":"2017K2","2017K3":"2017K3","2017K4":"2017K4","2018K1":"2018K1","2018K2":"2018K2","2018K3":"2018K3","2018K4":"2018K4","2019K1":"2019K1","2019K2":"2019K2","2019K3":"2019K3","2019K4":"2019K4","2020K1":"2020K1","2020K2":"2020K2","2020K3":"2020K3","2020K4":"2020K4","2021K1":"2021K1","2021K2":"2021K2","2021K3":"2021K3","2021K4":"2021K4","2022K1":"2022K1","2022K2":"2022K2","2022K3":"2022K3","2022K4":"2022K4","2023K1":"2023K1","2023K2":"2023K2","2023K3":"2023K3","2023K4":"2023K4","2024K1":"2024K1","2024K2":"2024K2","2024K3":"2024K3","2024K4":"2024K4","2025K1":"2025K1","2025K2":"2025K2","2025K3":"2025K3","2025K4":"2025K4","2026K1":"2026K1","2026K2":"2026K2"}},"extension":{"elimination":false,"show":"code","codelists":[]}}},"extension":{"px":{"infofile":"None","tableid":"14491","decimals":1,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"14491: Electricity prices in the end-user market,","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["Kraftpriser"],"matrix":"14491","subject-code":"ei","subject-area":"Energy and manufacturing"},"contact":[{"name":"Thomas Aanensen","organization":"Statistics Norway","phone":"40 90 23 48","mail":"tre@ssb.no","raw":"Thomas Aanensen, Statistics Norway# +47 40 90 23 48#tre@ssb.no"},{"name":"Magne Holstad","organization":"Statistics Norway","phone":"40 90 23 42","mail":"gnh@ssb.no","raw":"Magne Holstad, Statistics Norway# +47 40 90 23 42#gnh@ssb.no"}]},"value":[]}
