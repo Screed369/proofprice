@@ -2,14 +2,15 @@
 // consideration (price) band, published on DATA.GOV.HK as consideration_<YYYY>.json (small JSON, 2005 onwards). The file holds
 // COUNTS per band, not prices: we estimate the median and the 10th-90th percentile range by interpolating inside the bands
 // (deals spread evenly within a band), say so in every answer and never give "high" confidence. The file is a few KB, so
-// requests read it live; no daily collector is needed.
+// requests read it live; the daily collector (harvest) only keeps a copy of the newest 12-month estimate so that an outage
+// of the publisher is answered from the library (stale-if-error, rows dated by the newest published month).
 // Format shape from the publisher's file as probed 2026-10-30 (all values are strings with thousands commas, blank for months
 // not yet published, a "Total" row to drop); see fixtures/consideration_2026.json and source.test.ts.
 
 import { InputError, SourceError } from "../../lib/http";
 import { MIN_PUBLISH } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const PAGE_URL = "https://data.gov.hk/en-data/dataset/hk-lr-data5-landreg";
 export const fileUrl = (year: number): string => `https://www.landreg.gov.hk/datagovhk/consideration_${year}.json`;
@@ -214,3 +215,48 @@ export async function hkLandRegSales(opts: { town?: string; postcode?: string; p
 }
 
 export const MIN_DEALS = MIN_PUBLISH;
+
+
+// ---------- daily collector (stale-if-error copy) ----------
+
+export const HARVEST_AREA = "ALL";
+export const HARVEST_ITEM = "sales-12m";
+
+/** Library key for a request: only the default all-Hong-Kong 12-month estimate is stored. */
+export function hkHistoryKey(p: { town?: string; postcode?: string; property_type?: string; months?: number }): { area: string; item: string; label: string } | null {
+  if (p.town || p.postcode) return null;
+  if (p.property_type && p.property_type !== "any") return null;
+  if (p.months !== undefined && p.months !== null && p.months !== 12) return null;
+  return { area: HARVEST_AREA, item: HARVEST_ITEM, label: "Hong Kong" };
+}
+
+/** Pure part of the collector: one library row from the parsed files (newest 12 published months). Null when nothing is published. */
+export function harvestFrom(bands: Band[], all: MonthCounts[]): HarvestResult | null {
+  const est = estimate(bands, all, 12);
+  if (!est || est.deals < MIN_PUBLISH) return null;
+  return {
+    date: monthEnd(est.to),
+    currency: "HKD",
+    unit: "per home (agreement price)",
+    rows: [{ area: HARVEST_AREA, item: HARVEST_ITEM, n: est.deals, median: est.median, low: est.low, high: est.high, min: est.low, max: est.high }],
+    note: `Land Registry residential agreements by HKD 1 million price band, newest 12 published months (${est.from} to ${est.to}), ${est.deals} agreements; median and 10th-90th percentile ESTIMATED from the bands (low confidence). Aggregates only.`,
+  };
+}
+
+export async function hkHarvest(): Promise<HarvestResult> {
+  const thisYear = new Date().getUTCFullYear();
+  const years = [thisYear, thisYear - 1];
+  const files = await Promise.all(years.map((y) => fetchYear(y)));
+  let bands: Band[] | null = null;
+  const all: MonthCounts[] = [];
+  files.forEach((json, i) => {
+    if (json === null) return;
+    const parsed = parseYear(json, years[i]);
+    if (!bands) bands = parsed.bands;
+    all.push(...parsed.months);
+  });
+  if (!bands) throw new SourceError("The Land Registry file could not be found", years.join(", "), 404);
+  const res = harvestFrom(bands, all);
+  if (!res) throw new SourceError("The Land Registry file holds fewer than 5 published agreements for the newest 12 months", years.join(", "));
+  return res;
+}

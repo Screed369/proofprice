@@ -1,7 +1,7 @@
 // Manifest: Hong Kong home sales from the Land Registry, estimated from monthly price-band counts. Logic lives in ./source.ts.
 // Shares country HK in home-sales with hk-ha-tps-sales: this source answers when no town is given, the Housing Authority source when a town (estate) is given.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, hkLandRegSales } from "./source";
+import { INFO, hkHarvest, hkHistoryKey, hkLandRegSales } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -21,4 +21,9 @@ export default defineSource({
   method:
     "Hong Kong: the Land Registry's monthly counts of registered residential sale and purchase agreements by HKD 1 million price band are read live; the median and the 10th-90th percentile range are estimated by spreading the deals evenly inside each band. Estimates from bands, low confidence.",
   handle: async (p, ctx) => hkLandRegSales({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), months: num(p.months), baseUrl: ctx.baseUrl }),
+  // Stale-if-error copy: the collector stores the newest 12-month estimate (rows dated by the newest published month's end).
+  harvest: () => hkHarvest(),
+  historyKey: (p) => hkHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), months: num(p.months) }),
+  referenceDates: true,
+  noHistory: "Hong Kong: the Land Registry file holds counts per price band; ProofPrice keeps only the newest 12-month estimate as a backup copy and no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) with months=1 to 36 for other windows.",
 });

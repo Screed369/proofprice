@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { parseBand, parseCount, parseYear, stripBom, bandPercentile, estimate, answerFrom, hkLandRegSales, INFO, type Band } from "./source";
+import { parseBand, parseCount, parseYear, stripBom, bandPercentile, estimate, answerFrom, hkLandRegSales, harvestFrom, hkHistoryKey, INFO, type Band } from "./source";
 import { findSource } from "../../lib/registry";
 
 // Fixture: consideration_2026.json exactly as probed 2026-10-30 (UTF-8, 22 rows: 21 bands + Total; Jan..Sep filled, Oct..Dec blank).
@@ -87,4 +87,25 @@ test("HK-LR: routing - no town goes to the Land Registry, an estate to the Housi
   assert.equal(findSource("home-sales", "HK", { country: "HK" })!.info.id, "hk-landreg-sales");
   assert.equal(findSource("home-sales", "HK", { country: "HK", months: 24 })!.info.id, "hk-landreg-sales");
   assert.equal(findSource("home-sales", "HK", { country: "HK", town: "Shan King" })!.info.id, "hk-ha-tps-sales");
+});
+
+test("HK-LR: collector row = the newest 12 published months, dated by the newest month's end, matches the live estimate", () => {
+  const { bands, months } = parseYear(fixture, 2026);
+  const h = harvestFrom(bands, months);
+  assert.ok(h);
+  assert.equal(h!.date, "2026-09-30");
+  assert.equal(h!.rows.length, 1);
+  const est = estimate(bands, months, 12)!;
+  const r = h!.rows[0];
+  assert.deepEqual([r.area, r.item, r.n, r.median], ["ALL", "sales-12m", est.deals, est.median]);
+  assert.ok(r.n >= 5 && r.low <= r.median && r.median <= r.high);
+  assert.equal(harvestFrom(bands, []), null);
+});
+
+test("HK-LR: only the default all-Hong Kong 12-month request has a library key", () => {
+  assert.deepEqual(hkHistoryKey({}), { area: "ALL", item: "sales-12m", label: "Hong Kong" });
+  assert.deepEqual(hkHistoryKey({ months: 12 }), { area: "ALL", item: "sales-12m", label: "Hong Kong" });
+  assert.equal(hkHistoryKey({ months: 3 }), null);
+  assert.equal(hkHistoryKey({ town: "Shan King" }), null);
+  assert.equal(hkHistoryKey({ property_type: "flat" }), null);
 });
