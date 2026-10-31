@@ -322,6 +322,17 @@ export async function downloadFully(url: string, year: number, tries = 10): Prom
   return Buffer.concat(parts);
 }
 
+/** For error messages only: the column names and the product, price, date and state of the first row (no shop names or addresses). */
+export function describeFirstRow(buf: Buffer): string {
+  try {
+    const text = decodeText(buf);
+    const { idx, body } = readHeader(text);
+    const c = splitLine(body.slice(0, Math.max(0, body.indexOf("\n"))).replace(/\r$/, ""));
+    const pick = (k: string) => JSON.stringify((c[idx[k]] ?? "").slice(0, 40));
+    return `header ${text.slice(0, text.indexOf("\n")).slice(0, 200)}; first row producto=${pick("producto")} precio=${pick("precio")} fecha=${pick("fecha_registro")} estado=${pick("estado")}`;
+  } catch (e) { return `unreadable (${(e as Error).message.slice(0, 80)})`; }
+}
+
 export async function profecoHarvest(): Promise<HarvestResult> {
   const idxRes = await fetch(INDEX_URL, { headers: UA });
   if (!idxRes.ok) throw new SourceError(`Profeco index page returned HTTP ${idxRes.status}`);
@@ -330,7 +341,7 @@ export async function profecoHarvest(): Promise<HarvestResult> {
   const dir = mkdtempSync(join(tmpdir(), "profeco-"));
   try {
     const newest = new Newest();
-    let read = 0, kept = 0, files = 0;
+    let read = 0, kept = 0, files = 0, diagFirst = "";
     // newest year first; if the newest year has fewer than WINDOW_DAYS of data (early January) the previous year is added
     for (const link of links.slice(0, 2)) {
       const buf = await downloadFully(link.url, link.year);
@@ -338,6 +349,7 @@ export async function profecoHarvest(): Promise<HarvestResult> {
       extractYearly(buf, dir, out, link.year);
       const csvs = listCsv(out);
       if (!csvs.length) throw new SourceError(`Profeco ${link.year} archive held no CSV files`);
+      if (!kept && !read) diagFirst = csvs.length ? describeFirstRow(readFileSync(csvs[csvs.length - 1])) : "";
       for (const f of csvs.slice(-2)) { // the newest two monthly files cover the 30-day window even right after a month change
         const r = parsePrices(decodeText(readFileSync(f)), newest);
         read += r.rows; kept += r.kept; files++;
@@ -345,7 +357,7 @@ export async function profecoHarvest(): Promise<HarvestResult> {
       if (newest.newestDate && Number(newest.newestDate.slice(5, 7)) > 1) break;
     }
     const built = buildRows(newest.entries(), newest.newestDate);
-    if (!built.rows.length || !built.date) throw new SourceError(`Profeco files held no usable prices (${read} rows read, ${kept} kept)`);
+    if (!built.rows.length || !built.date) throw new SourceError(`Profeco files held no usable prices (${read} rows read, ${kept} kept; newest file: ${diagFirst})`);
     return {
       date: built.date,
       currency: "MXN",
