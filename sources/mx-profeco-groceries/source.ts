@@ -77,7 +77,11 @@ export function isoDate(raw: string): string {
   const s = raw.trim().replace(/^"|"$/g, "");
   let m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s);
   if (m) return `${m[1]}-${m[2]}-${m[3]}`;
-  m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(s);
+  m = /^(\d{4})[/.](\d{1,2})[/.](\d{1,2})/.exec(s);
+  if (m) return `${m[1]}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}`;
+  m = /^(\d{4})(\d{2})(\d{2})(?!\d)/.exec(s);
+  if (m) return `${m[1]}-${m[2]}-${m[3]}`;
+  m = /^(\d{1,2})[/.-](\d{1,2})[/.-](\d{4})/.exec(s);
   if (m) return `${m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`;
   return "";
 }
@@ -129,9 +133,10 @@ export class Newest {
   entries(): Seen[] { return [...this.map.values()]; }
 }
 
-export function parsePrices(text: string, into: Newest): { rows: number; kept: number } {
+export function parsePrices(text: string, into: Newest): { rows: number; kept: number; drops: { price: number; date: number; product: number; state: number } } {
   const { idx, body } = readHeader(text);
   let rows = 0, kept = 0;
+  const drops = { price: 0, date: 0, product: 0, state: 0 };
   let pos = 0;
   while (pos < body.length) {
     let end = body.indexOf("\n", pos);
@@ -145,13 +150,14 @@ export function parsePrices(text: string, into: Newest): { rows: number; kept: n
     const date = isoDate(c[idx.fecha_registro] ?? "");
     const product = (c[idx.producto] ?? "").trim(), pack = (c[idx.presentacion] ?? "").trim();
     const state = stateName(c[idx.estado] ?? "");
+    if (!(price > 0)) drops.price++; else if (!date) drops.date++; else if (!product) drops.product++; else if (!state) drops.state++;
     if (!(price > 0) || !date || !product || !state) continue;
     const shop = [c[idx.cadena_comercial], idx.nombre_comercial >= 0 ? c[idx.nombre_comercial] : "", idx.municipio >= 0 ? c[idx.municipio] : "", idx.direccion >= 0 ? c[idx.direccion] : ""]
       .map((x) => (x ?? "").trim().toLowerCase()).join("~");
     into.add(shop, itemKey(product, pack), state, date, price);
     kept++;
   }
-  return { rows, kept };
+  return { rows, kept, drops };
 }
 
 export interface Built { rows: DailyRow[]; date: string | null; items: number; states: string[]; dropped: { outliers: number } }
@@ -329,7 +335,7 @@ export function describeFirstRow(buf: Buffer): string {
     const { idx, body } = readHeader(text);
     const c = splitLine(body.slice(0, Math.max(0, body.indexOf("\n"))).replace(/\r$/, ""));
     const pick = (k: string) => JSON.stringify((c[idx[k]] ?? "").slice(0, 40));
-    return `header ${text.slice(0, text.indexOf("\n")).slice(0, 200)}; first row producto=${pick("producto")} precio=${pick("precio")} fecha=${pick("fecha_registro")} estado=${pick("estado")}`;
+    return `first row precio=${pick("precio")} fecha=${pick("fecha_registro")} estado=${pick("estado")} producto=${pick("producto")}`;
   } catch (e) { return `unreadable (${(e as Error).message.slice(0, 80)})`; }
 }
 
@@ -342,6 +348,7 @@ export async function profecoHarvest(): Promise<HarvestResult> {
   try {
     const newest = new Newest();
     let read = 0, kept = 0, files = 0, diagFirst = "";
+    const dropTotals = { price: 0, date: 0, product: 0, state: 0 };
     // newest year first; if the newest year has fewer than WINDOW_DAYS of data (early January) the previous year is added
     for (const link of links.slice(0, 2)) {
       const buf = await downloadFully(link.url, link.year);
@@ -353,11 +360,12 @@ export async function profecoHarvest(): Promise<HarvestResult> {
       for (const f of csvs.slice(-2)) { // the newest two monthly files cover the 30-day window even right after a month change
         const r = parsePrices(decodeText(readFileSync(f)), newest);
         read += r.rows; kept += r.kept; files++;
+        for (const k of Object.keys(dropTotals) as (keyof typeof dropTotals)[]) dropTotals[k] += r.drops[k];
       }
       if (newest.newestDate && Number(newest.newestDate.slice(5, 7)) > 1) break;
     }
     const built = buildRows(newest.entries(), newest.newestDate);
-    if (!built.rows.length || !built.date) throw new SourceError(`Profeco files held no usable prices (${read} rows read, ${kept} kept; newest file: ${diagFirst})`);
+    if (!built.rows.length || !built.date) throw new SourceError(`Profeco files held no usable prices (${read} rows read, ${kept} kept; dropped ${JSON.stringify(dropTotals)}; ${diagFirst})`);
     return {
       date: built.date,
       currency: "MXN",

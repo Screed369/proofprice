@@ -200,3 +200,13 @@ test("hasPartialCsv: a truncated archive that left monthly files is kept, an emp
   assert.equal(hasPartialCsv(d), true);
   assert.equal(hasPartialCsv(join(d, "missing")), false);
 });
+
+test("dates: compact, slashed and dashed day-first forms are read; drop reasons are counted", () => {
+  assert.equal(isoDate("20260814"), "2026-08-14");
+  assert.equal(isoDate("2026/8/4"), "2026-08-04");
+  assert.equal(isoDate("04-08-2026"), "2026-08-04");
+  const n = new Newest();
+  const r = parsePrices("producto,presentacion,precio,fecha_registro,estado,cadena_comercial\nLECHE,1 L,20,20260814,JALISCO,X\nLECHE,1 L,20,,JALISCO,X\nLECHE,1 L,20,20260814,,X\n", n);
+  assert.deepEqual(r.drops, { price: 0, date: 1, product: 0, state: 1 });
+  assert.equal(r.kept, 1);
+});
