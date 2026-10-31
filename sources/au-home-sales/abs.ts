@@ -13,7 +13,10 @@ import { SourceError } from "../../lib/http";
 import { periodRange, previousPeriod, resolveFetcher } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
 import { INFO } from "./info";
+import { resolvePlace } from "./places";
 import type { Place, RegionCode } from "./places";
+import { NO_COUNT } from "../../lib/stats";
+import type { DailyRow, HarvestResult } from "../../lib/plugin";
 
 export const ABS_API = "https://data.api.abs.gov.au/rest";
 export const DATAFLOW = "ABS,RES_DWELL_ST";
@@ -299,4 +302,49 @@ export async function absHomePrices(place: Place, o: FetchOptions & { now?: Date
   const series = parseAbs(await resolveFetcher(o)(url));
   const reading = readAbs(series, place.region.code);
   return absAnswer(reading, { place, property_type: o.property_type, baseUrl: o.baseUrl, apiUrl: url, now: o.now });
+}
+
+// ---------- the collector (stale-if-error copy) ----------
+
+/** One GET: the newest observation of the mean price for Australia and all 8 states and territories. */
+export function harvestUrl(base = ABS_API): string {
+  return `${base}/data/${DATAFLOW}/${MEASURE_PRICE}.AUS+1+2+3+4+5+6+7+8.Q?lastNObservations=1&format=jsondata`;
+}
+
+/** Library key of the single item this source keeps. */
+export const LIBRARY_ITEM = "dwelling-stock-mean";
+
+/** The newest published quarter as one library day (dated by the quarter's last day): one row per region, the published mean price,
+ *  no record count (the ABS publishes none) and no range. Throws if fewer than all 9 regions have a price. */
+export function absHarvestFrom(series: Series[]): HarvestResult {
+  const prices = series.filter((s) => s.measure === MEASURE_PRICE && s.points.length && s.points[s.points.length - 1].value > 0);
+  const rows: DailyRow[] = prices.map((s) => {
+    const v = s.points[s.points.length - 1].value;
+    return { area: s.region, item: LIBRARY_ITEM, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
+  });
+  if (rows.length < 9) throw new SourceError(`The ABS Data API gave a mean price for only ${rows.length} of 9 regions`);
+  const newest = prices.map((s) => s.points[s.points.length - 1].period).sort().pop()!;
+  const range = periodRange(newest);
+  if (!range) throw new SourceError(`Unreadable ABS period "${newest}"`);
+  return {
+    date: range.to,
+    currency: AUD,
+    unit: "per dwelling",
+    rows,
+    note: `ABS mean price of residential dwellings (RES_DWELL_ST measure 5) for ${newest}: the estimated value of the whole dwelling stock divided by the number of dwellings, one published figure per state or territory and Australia, no record count. Kept only so a stale copy can answer when the ABS API is down.`,
+  };
+}
+
+export async function absHarvest(o: FetchOptions & { apiBase?: string } = {}): Promise<HarvestResult> {
+  return absHarvestFrom(parseAbs(await resolveFetcher(o)(harvestUrl(o.apiBase))));
+}
+
+/** Library key for a request: the ABS region the place lies in. Null when the place cannot be resolved. */
+export function absHistoryKey(p: { town?: string; postcode?: string }): { area: string; item: string; label: string } | null {
+  try {
+    const place = resolvePlace(p.town, p.postcode);
+    return { area: place.region.code, item: LIBRARY_ITEM, label: place.region.name };
+  } catch {
+    return null;
+  }
 }

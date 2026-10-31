@@ -14,6 +14,7 @@ import { absHomePrices } from "./abs";
 import { resolvePlace } from "./places";
 
 export { INFO } from "./info";
+export { absHarvest, absHistoryKey } from "./abs";
 
 export interface AustraliaInput {
   town?: string;

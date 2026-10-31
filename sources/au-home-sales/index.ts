@@ -1,6 +1,6 @@
 // Manifest: Australia home sales (official mean price of residential dwellings by state and territory, Australian Bureau of Statistics). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, routeAustralia } from "./source";
+import { INFO, absHarvest, absHistoryKey, routeAustralia } from "./source";
 import { servesSuburb } from "../au-sa-metro-home-sales/source";
 
 export default defineSource({
@@ -37,4 +37,11 @@ export default defineSource({
       property_type: str(p.property_type),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector keeps the newest quarter's published mean price per state, so an ABS API outage is answered from it.
+  harvest: () => absHarvest(),
+  historyKey: (p) => absHistoryKey({ town: str(p.town), postcode: str(p.postcode) }),
+  nominalCounts: true,
+  referenceDates: true,
+  staleMaxDays: 45,
+  noHistory: "Australia: the ABS publishes one mean price per state and quarter, so daily snapshots would only repeat it; ProofPrice keeps no history of it. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure.",
 });

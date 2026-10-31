@@ -44,7 +44,7 @@ test("au-home-sales: registered for AU on the home-sales tool, Victoria is the s
   assert.equal(plugin.category, "home-sales");
   assert.deepEqual(plugin.countries, ["AU"]);
   assert.deepEqual(plugin.examples[0].params, { country: "AU", town: "Victoria" });
-  assert.equal(plugin.harvest, undefined);
+  assert.equal(typeof plugin.harvest, "function"); // stale-if-error copy (Depth Builder, 31 Oct 2026)
   const types = (paramSchemas(categoryById("home-sales")!).property_type as any).unwrap().options as string[];
   assert.ok(types.includes("any"));
 });
@@ -313,4 +313,36 @@ test("au-home-sales: routed by country through the shared home-sales tool (netwo
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+import { absHarvestFrom, absHarvest, absHistoryKey, harvestUrl, LIBRARY_ITEM } from "./abs";
+import { NO_COUNT } from "../../lib/stats";
+
+test("au-home-sales harvest: one row per region from the newest quarter, no count, dated by the quarter end", async () => {
+  const day = absHarvestFrom(parseAbs(FIX));
+  assert.equal(day.rows.length, 9);
+  assert.deepEqual(day.rows.map((r) => r.area).sort(), ["1", "2", "3", "4", "5", "6", "7", "8", "AUS"]);
+  for (const r of day.rows) {
+    assert.equal(r.item, LIBRARY_ITEM);
+    assert.equal(r.n, NO_COUNT);
+    assert.ok(r.median > 100000 && r.median === r.low && r.median === r.high);
+  }
+  assert.match(day.date, /^\d{4}-(03-31|06-30|09-30|12-31)$/);
+  assert.equal(day.currency, "AUD");
+  const urls: string[] = [];
+  await absHarvest({ fetcher: async (u) => (urls.push(u), FIX) });
+  assert.equal(urls[0], harvestUrl());
+  assert.match(urls[0], /\/5\.AUS\+1\+2\+3\+4\+5\+6\+7\+8\.Q\?lastNObservations=1/);
+});
+
+test("au-home-sales harvest: fewer than 9 regions is an error, not a partial day", () => {
+  const some = parseAbs(FIX).filter((s) => s.region === "AUS" || s.region === "1");
+  assert.throws(() => absHarvestFrom(some), /only/);
+});
+
+test("au-home-sales historyKey: the region of the place, null for an unknown place", () => {
+  assert.deepEqual(absHistoryKey({ town: "Parramatta" }), { area: "1", item: LIBRARY_ITEM, label: "New South Wales" });
+  assert.equal(absHistoryKey({ postcode: "4000" })?.area, "3");
+  assert.equal(absHistoryKey({})?.area, "AUS");
+  assert.equal(absHistoryKey({ town: "Nowheresville" }), null);
 });
