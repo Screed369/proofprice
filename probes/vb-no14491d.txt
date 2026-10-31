@@ -1,0 +1,35 @@
+URL: https://data.ssb.no/api/pxwebapi/v2/tables/14491/data?lang=en&outputFormat=json-stat2&valuecodes%5BKraftpriser%5D=1,1.1,1.2,1.3&valuecodes%5BContentsCode%5D=KraftprisEA,KraftprisIA&valuecodes%5BTid%5D=top(3)
+Fetched: 2026-10-31T01:45:14Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=UTF-8 2445
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sat, 31 Oct 2026 01:45:13 GMT
+server: 
+content-type: application/json; charset=UTF-8
+content-disposition: inline; filename="14491.json"
+content-disposition: inline; filename="14491.json"
+x-frame-options: SAMEORIGIN
+vary: Accept-Encoding
+x-varnish: 59547584
+age: 0
+content-security-policy: upgrade-insecure-requests
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=15768000
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: MISS
+x-ua-compatible: IE=Edge
+x-ratelimit-resource: SB_API_1MIN
+x-ratelimit-limit: 40
+x-ratelimit-policy: 40;w=60s
+x-ratelimit-remaining: 39
+accept-ranges: bytes
+set-cookie: X-Identity=17792625.548; Path=/; Secure; HttpOnly
+via: 1.1 varnish (Varnish/6.0), 1.1 google
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+
+=== FILE TYPE: JSON text data
+=== FIRST 20000 BYTES
+{"version":"2.0","class":"dataset","label":"14491: Electricity prices in the end-user market, by type of contract and quarter","source":"Statistics Norway","updated":"2026-08-17T06:00:00Z","role":{"time":["Tid"],"metric":["ContentsCode"]},"id":["Kraftpriser","ContentsCode","Tid"],"size":[4,2,3],"dimension":{"Kraftpriser":{"label":"type of contract","category":{"index":{"1":0,"1.1":1,"1.2":2,"1.3":3},"label":{"1":"Households, total","1.1":"Fixed-price contracts, households","1.2":"Contracts tied to spot price, households","1.3":"Variable price contracts, households"}},"extension":{"elimination":false,"show":"code_value"}},"ContentsCode":{"label":"contents","category":{"index":{"KraftprisEA":0,"KraftprisIA":1},"label":{"KraftprisEA":"Electricity price excl. taxes (øre/kWh)","KraftprisIA":"Electricity price, incl. VAT (øre/kWh)"},"unit":{"KraftprisEA":{"base":"øre/kWh","decimals":1},"KraftprisIA":{"base":"øre/kWh","decimals":1}}},"extension":{"elimination":false,"refperiod":{"KraftprisEA":"","KraftprisIA":""},"show":"value","measuringType":{"KraftprisEA":"Average","KraftprisIA":"Average"},"priceType":{"KraftprisEA":"Current","KraftprisIA":"Current"},"adjustment":{"KraftprisEA":"None","KraftprisIA":"None"},"alternativeText":{"KraftprisEA":"Electricity price excl. taxes (øre/kWh)","KraftprisIA":"Electricity price, incl. VAT (øre/kWh)"}}},"Tid":{"label":"quarter","category":{"index":{"2025K4":0,"2026K1":1,"2026K2":2},"label":{"2025K4":"2025K4","2026K1":"2026K1","2026K2":"2026K2"}},"extension":{"elimination":false,"show":"code"}}},"extension":{"px":{"infofile":"None","tableid":"14491","decimals":1,"official-statistics":true,"aggregallowed":false,"copyright":false,"language":"en","contents":"14491: Electricity prices in the end-user market,","descriptiondefault":false,"heading":["ContentsCode","Tid"],"stub":["Kraftpriser"],"matrix":"14491","subject-code":"ei","subject-area":"Energy and manufacturing"},"discontinued":null,"contact":[{"name":"Thomas Aanensen","organization":"Statistics Norway","phone":"40 90 23 48","mail":"tre@ssb.no","raw":"Thomas Aanensen, Statistics Norway# +47 40 90 23 48#tre@ssb.no"},{"name":"Magne Holstad","organization":"Statistics Norway","phone":"40 90 23 42","mail":"gnh@ssb.no","raw":"Magne Holstad, Statistics Norway# +47 40 90 23 42#gnh@ssb.no"}]},"value":[77,119.8,100.1,93.7,145.8,122.3,42.9,48.4,49.9,52.2,59,61,77.3,120.7,100.4,94,146.9,122.7,87.3,103.5,112.1,106.2,125.9,137]}
