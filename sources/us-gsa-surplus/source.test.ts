@@ -61,3 +61,11 @@ test("the figure is called a winning bid level, not a recorded sale; licence and
   assert.match(INFO.attribution, /GovAuctions \(https:\/\/govauctions\.app\)/);
   assert.match(INFO.attribution, /changed/);
 });
+
+test("serves(): federal questions stay here, a request naming Seattle goes to a city source", async () => {
+  const src = (await import("./index")).default as any;
+  assert.equal(src.serves({ country: "US", what: "vehicles" }), true);
+  assert.equal(src.serves({ country: "US", what: "vehicles", state: "TX" }), true);
+  assert.equal(src.serves({ country: "US", what: "trucks", city: "Seattle" }), false);
+  assert.equal(src.serves({ country: "US", what: "trucks", place: "seattle" }), false);
+});

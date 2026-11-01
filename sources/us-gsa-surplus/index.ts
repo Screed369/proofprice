@@ -14,5 +14,7 @@ export default defineSource({
     { params: { country: "US", what: "office furniture", state: "TX" }, smoke: false },
   ],
   method: "United States: median final bid on sold GSA surplus auction lots, used goods, not retail prices.",
+  // Shares surplus-auctions/US with city-level sources (Seattle sold fleet items): requests that name Seattle belong to that source.
+  serves: (p) => !/seattle/i.test([p.city, p.town, p.place, p.area].map((v) => String(v ?? "")).join(" ")),
   handle: (p, ctx) => auctionPrices({ what: String(p.what), state: str(p.state), months: num(p.months) ?? 12, baseUrl: ctx.baseUrl }),
 });
