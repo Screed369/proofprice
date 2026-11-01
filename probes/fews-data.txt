@@ -1,0 +1,106 @@
+URL: https://fews.net/data
+Fetched: 2026-11-01T12:42:38Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 2692
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 301 
+content-type: text/html; charset=utf-8
+location: https://fdw.fews.net/data-explorer/
+date: Sun, 01 Nov 2026 12:42:37 GMT
+last-modified: Wed, 28 Oct 2026 14:25:19 GMT
+etag: "1793197519"
+server: Apache
+x-redirect-id: 8948
+content-language: en
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+expires: Sun, 19 Nov 1978 05:00:00 GMT
+cache-control: max-age=300, public
+vary: Cookie,User-Agent
+x-generator: Drupal 11 (https://www.drupal.org)
+content-security-policy: object-src 'none'; script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval' https://*.cloudfront.net https://*.googletagmanager.com https://*.googleapis.com https://*.fews.net/ https://*.awswaf.com cdnjs.cloudflare.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://www.google.com unpkg.com; script-src-elem 'self' 'unsafe-inline' https://*.cookielaw.org https://*.cloudfront.net https://*.googletagmanager.com https://*.googleapis.com https://*.fews.net https://*.gstatic.com https://fnt-fdwprd-alb-176561129.us-east-1.elb.amazonaws.com https://*.awswaf.com cdnjs.cloudflare.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://www.google.com unpkg.com; style-src 'self' 'report-sample' 'unsafe-inline' https://*.cloudfront.net https://*.googleapis.com https://*.fews.net/ cdnjs.cloudflare.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com unpkg.com; style-src-elem 'self' 'unsafe-inline' https://fnt-fdwprd-alb-176561129.us-east-1.elb.amazonaws.com https://*.cloudfront.net https://*.googleapis.com https://*.fews.net/ cdnjs.cloudflare.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com unpkg.com; worker-src 'self' blob:; base-uri 'self'; form-action 'self' https://*.fews.net; frame-ancestors 'self'; report-uri /report-csp-violation
+x-xss-protection: 1; mode=block
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-drupal-cache: HIT
+permissions-policy: geolocation=(), microphone=(), camera=()
+x-cache: Miss from cloudfront
+via: 1.1 08c82ab3383dabe3fa524280760ed8d0.cloudfront.net (CloudFront)
+x-amz-cf-pop: ORD58-P12
+x-amz-cf-id: FblrgvSwkEAHf3665OZew2oTLmb8PDEwjAOyuFrSMPvKifX0LlV5oQ==
+
+HTTP/2 200 
+date: Sun, 01 Nov 2026 12:42:38 GMT
+content-type: text/html; charset=utf-8
+content-length: 2692
+server: uvicorn
+vary: Authorization, Accept-Language, Cookie, origin, Accept-Encoding
+content-language: en
+x-frame-options: DENY
+strict-transport-security: max-age=3600; includeSubDomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+cross-origin-opener-policy: same-origin
+
+=== FILE TYPE: HTML document, ASCII text
+=== FIRST 20000 BYTES
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      ;(function (w, d, s, l, i) {
+        // Check if the GTM ID has been passed/exists. This is dynamic based on the build value provided ADE/FDE
+        if ('%VITE_GTM_ID' && 'VITE_GTM_ID' !== 'undefined' && '%NPM_TARGET' !== 'air') {
+          w[l] = w[l] || []
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : ''
+          j.async = true
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+          f.parentNode.insertBefore(j, f)
+        }
+      })(window, document, 'script', 'dataLayer', 'GTM-W589K27')
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <link rel="icon" id="dynamic-favicon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="FEWS NET Data Explorer" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="/data-explorer/fdw-manifest.json" type="application/manifest+json" />
+
+    <title>FEWS NET Data Explorer</title>
+    <script type="module" crossorigin src="/data-explorer/assets/index-CRKIT2Ua.js"></script>
+    <link rel="stylesheet" crossorigin href="/data-explorer/assets/index-zosaav87.css">
+  </head>
+
+  <body>
+    <a href="#body-scroll-container" class="skip-link">Skip to main content</a>
+    <a href="#side-bar" class="skip-link">Skip to side menu</a>
+    <a href="#footer-id" class="skip-link">Skip to footer</a>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W589K27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="fde"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <!-- Script for JIRA Helpdesk widget -->
+  </body>
+</html>
