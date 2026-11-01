@@ -1,0 +1,97 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0005164&lang=EN
+Fetched: 2026-11-01T13:27:42Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 5939
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 01 Nov 2026 13:27:42 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 5939
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=JHuTXmfBt--Y87Y5j0ZxFJ0IJDsHy-M_uiqEeYEo.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 2500 BYTES
+[ {
+  "IndicadorCod" : "0005164",
+  "IndicadorNome" : "Central administrations that have detected computer security problems (No.) by Geographic localization (Mainland); Annual - DGEEC, Survey on ICT usage in public administration",
+  "Periodic" : "Annual",
+  "PrimeiroPeriodo" : "2005",
+  "UltimoPeriodo" : "2025",
+  "UnidadeMedida" : "Number (No.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-07-22",
+  "DataExtracao" : "2026-11-01T13:27:42.019Z",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period",
+      "versao" : "XXXXX",
+      "nota_dsg" : "From 2011, the reference universe consists on the entities that comprise the Sector of General Government (S.13 of the European System of National and Regional Accounts - ESA 95)."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (Mainland)",
+      "versao" : "01109"
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S7A2005" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2005",
+        "categ_cod" : "S7A2005",
+        "categ_dsg" : "2005",
+        "categ_ord" : "20050101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2006" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2006",
+        "categ_cod" : "S7A2006",
+        "categ_dsg" : "2006",
+        "categ_ord" : "20060101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2007" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2007",
+        "categ_cod" : "S7A2007",
+        "categ_dsg" : "2007",
+        "categ_ord" : "20070101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2008" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2008",
+        "categ_cod" : "S7A2008",
+        "categ_dsg" : "2008",
+        "categ_ord" : "20080101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2009" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2009",
+        "categ_cod" : "S7A2009",
+        "categ_dsg" : "2009",
+        "categ_ord" : "20090101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2010" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2010",
+        "categ_cod" : "S7A2010",
+        "categ_dsg" : "2010",
+        "categ_ord" : "20100101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2011" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2011",
+        "categ_cod" : "S7A2011",
+        "categ_dsg" : "2011",
+        "categ_ord" : "20110101
