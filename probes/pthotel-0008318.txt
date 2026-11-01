@@ -1,0 +1,54 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0008318&lang=EN
+Fetched: 2026-11-01T13:18:19Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 83126
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 01 Nov 2026 13:18:18 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=DgU1l-fuerHds5sMBTCTn4dZOFVbkZCvhyom4hQB.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 1500 BYTES
+[ {
+  "IndicadorCod" : "0008318",
+  "IndicadorNome" : "Licensed buildings (row houses - No.) in new constructions for family housing by Geographic localization (NUTS - 2013); Annual - Statistics Portugal, Projects of building constructions and demolitions survey",
+  "Periodic" : "Annual",
+  "PrimeiroPeriodo" : "2004",
+  "UltimoPeriodo" : "2025",
+  "UnidadeMedida" : "Number (No.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Nota" : "For 2004 and 2005, data for the municipalities of Lisboa and Seia were underestimated since we could not get the information.<br>Definitive data till 2020 and preliminary data as of 2021.",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2026-07-17",
+  "DataExtracao" : "2026-11-01T13:18:18.407Z",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (NUTS - 2013)",
+      "versao" : "03505",
+      "nota_dsg" : "From January 1st, 2015 came into force a new version of NUTS (NUTS 2013). At NUTS II level was just a name change in \"Lisboa\" which became known as \"Área Metropolitana de Lisboa\"."
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S7A2004" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2004",
+        "categ_cod" : "S7A2004",
+        "categ_dsg" : "2004",
+        "categ_ord" : "20040101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2005" : [ {
+        "dim_num"
