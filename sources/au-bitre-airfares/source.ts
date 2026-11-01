@@ -202,7 +202,7 @@ export function fareHarvestRows(records: Record<string, any>[]): HarvestResult {
 }
 
 export async function auAirfaresHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
-  const got = await ckanAll(SITE, { resourceId: RESOURCE_ID, sort: "YearMonth desc", includeTotal: false }, { ...o, maxRows: 1500, pageSize: 1000 });
+  const got = await ckanAll(SITE, { resourceId: RESOURCE_ID, sort: "YearMonth desc", includeTotal: false }, { timeoutMs: 60000, ...o, maxRows: 1500, pageSize: 500 });
   return fareHarvestRows(got.rows);
 }
 
