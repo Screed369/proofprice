@@ -1,0 +1,108 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0008339&lang=EN
+Fetched: 2026-11-01T13:17:15Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 80906
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 01 Nov 2026 13:17:14 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=W0lZpWUZuTm_Lysyr6cpeJMIf9PKMiPqqxQwsJRx.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+[ {
+  "IndicadorCod" : "0008339",
+  "IndicadorNome" : "Beneficiaries of social integration income, of social security per 1000 inhabitants in active age (‰) by Place of residence (NUTS - 2013); Annual - Institute of Informatics",
+  "Periodic" : "Annual",
+  "PrimeiroPeriodo" : "2011",
+  "UltimoPeriodo" : "2022",
+  "UnidadeMedida" : "Permillage (‰)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "2",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2023-08-29",
+  "DataExtracao" : "2026-11-01T13:17:14.218Z",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period",
+      "versao" : "XXXXX",
+      "nota_dsg" : "In 2013 and 2014 the full updating of data according to the code of the administrative division, as defined by Law No 61/2012 of 5 December, No 56/2012 of 8 November and No 11 A/2013 of 28 January is not complete."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Place of residence (NUTS - 2013)",
+      "versao" : "03505",
+      "nota_dsg" : "From January 1st, 2015 came into force a new version of NUTS (NUTS 2013). At NUTS II level was just a name change in \"Lisboa\" which became known as \"Área Metropolitana de Lisboa\"."
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S7A2011" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2011",
+        "categ_cod" : "S7A2011",
+        "categ_dsg" : "2011",
+        "categ_ord" : "20110101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2012" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2012",
+        "categ_cod" : "S7A2012",
+        "categ_dsg" : "2012",
+        "categ_ord" : "20120101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2013" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2013",
+        "categ_cod" : "S7A2013",
+        "categ_dsg" : "2013",
+        "categ_ord" : "20130101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2014" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2014",
+        "categ_cod" : "S7A2014",
+        "categ_dsg" : "2014",
+        "categ_ord" : "20140101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2015" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2015",
+        "categ_cod" : "S7A2015",
+        "categ_dsg" : "2015",
+        "categ_ord" : "20150101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2016" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2016",
+        "categ_cod" : "S7A2016",
+        "categ_dsg" : "2016",
+        "categ_ord" : "20160101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2017" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2017",
+        "categ_cod" : "S7A2017",
+        "categ_dsg" : "2017",
+        "categ_ord" : "20170101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2018" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2018",
+        "categ_cod" : "S7A2018",
+        "categ_dsg" : "2018",
+        "categ_ord" : "20180101",
+        "categ_nivel" : "1"
+     
