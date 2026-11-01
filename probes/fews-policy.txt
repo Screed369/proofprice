@@ -1,0 +1,1313 @@
+URL: https://help.fews.net/fdp/data-and-information-use-and-attribution-policy
+Fetched: 2026-11-01T12:43:42Z from GitHub Actions
+Status, type, bytes: 200 text/html 40202
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: text/html
+content-length: 40202
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age=31536000
+date: Sun, 01 Nov 2026 12:43:42 GMT
+etag: "6d214525668243e6e15d5f137cbb2170"
+x-cache: RefreshHit from cloudfront
+via: 1.1 7c3b0cfb69ad8eb122e5fb09c0b23aa0.cloudfront.net (CloudFront)
+x-amz-cf-pop: DFW59-P6
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: keyYgTAaRoaDKRLisyVxNhd1zRDps0V6oT46PswccfE03c2b9IVA9A==
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (757)
+=== FIRST 40000 BYTES
+
+														
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+<!DOCTYPE html>
+<html
+	lang="en"
+	data-page-template="article"
+	
+ data-page-id="ci_aa1d8d1bb5381d3cb38081bb1892eac79e76166458a03080f8e94f4006df95bc" data-confluence-content-id="2033909768"
+		data-color-scheme="light"
+>
+<head>
+	<meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="color-scheme" content="light">
+
+						<link id="pageTreeSource" rel="preload" href="/fdp/__pagetree.json" as="fetch" type="application/json" crossorigin="anonymous">
+
+		<meta name="site-path" content="/">
+
+					<link rel="x-site-path" href="/">
+	<link rel="x-root-path" href="/">
+
+	<meta name="site-default-language" content="en">
+		<meta name="site-languages" content="en,es">
+		<meta name="confluence-content-type" content="page">
+		<meta name="confluence-base-url" content="https://fewsnet.atlassian.net/wiki">
+		<meta name="confluence-space-key" content="FNDP">
+			<meta name="page-title" content="Data and information use and attribution policy">
+
+		<meta name="google-site-verification" content="goGly7aMSL8Wbp8fOsGoZkq_1Fx-Ql2ZEQMPKJw2saE"/>
+
+
+
+	<link rel="icon" href="/__site/a8dde753-69e9-44b1-876e-f2bea22cbcfe/favicon-32x32%20(1).png" type="image/svg+xml">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<title>Data and information use and attribution policy | Glossary and Policies | FEWS NET Help Center</title>
+		<meta property="og:title" content="Data and information use and attribution policy | Glossary and Policies | FEWS NET Help Center">
+		<meta property="twitter:title" content="Data and information use and attribution policy | Glossary and Policies | FEWS NET Help Center">
+
+		<link rel="canonical" href="https://help.fews.net/fdp/data-and-information-use-and-attribution-policy">
+		<meta property="og:url" content="https://help.fews.net/fdp/data-and-information-use-and-attribution-policy">
+
+		<meta name="description" content="Background The content and information found on fews.net and its subdomains is not official United States Government information and does not necessarily refle…">
+		<meta property="og:description" content="Background The content and information found on fews.net and its subdomains is not official United States Government information and does not necessarily refle…">
+		<meta property="twitter:description" content="Background The content and information found on fews.net and its subdomains is not official United States Government information and does not necessarily refle…">
+
+		<meta property="og:image" content="https://help.fews.net/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png">
+		<meta property="twitter:image" content="https://help.fews.net/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png">
+
+	<meta property="og:type" content="website">
+	<meta property="twitter:card" content="summary_large_image">
+
+		<meta name="page-last-modified" content="2026-06-08T13:55:34.998Z">
+
+		<script>
+		(function () {
+			const defaultLanguageMeta = /** @type {string|undefined} */(document.querySelector('meta[name="site-default-language"]')?.content);
+			const availableLanguagesMeta = /** @type {string|undefined} */(document.querySelector('meta[name="site-languages"]')?.content);
+			const fallbackLanguage = defaultLanguageMeta ?? 'en';
+			const supportedLanguagesFromMeta = availableLanguagesMeta?.split(',') ?? [];
+			const supportedLanguages = [...new Set([fallbackLanguage, ...supportedLanguagesFromMeta])].filter(Boolean);
+			const detectedLanguage = new URLSearchParams(self.location.search).get('l') || document.documentElement.lang;
+			const resolvedLanguage = supportedLanguages.includes(detectedLanguage) ? detectedLanguage : fallbackLanguage;
+			document.documentElement.lang = resolvedLanguage;
+			const sheet = new CSSStyleSheet();
+			document.adoptedStyleSheets.push(sheet);
+			// Hide any element with a `data-lang` attribute that does NOT match the detected language
+			sheet.replaceSync('[data-lang]:not([data-lang="' + resolvedLanguage + '"]) { display: none; }');
+		})();
+	</script>
+
+		<script>
+		(function() {
+			/** @typedef {'light'|'dark'} ColorScheme */
+			/** @type {ColorScheme[]} */
+			const availableColorSchemes = document.documentElement.querySelector('meta[name="color-scheme"]').content.split(' ').filter(Boolean);
+			/** @type {ColorScheme|'system'} */
+			const userPreference = localStorage?.getItem('color-scheme-preference') ?? 'system';
+			// Clean-up user preference in case there's nothing to choose from
+			// Fall back to the HTML document's default color theme
+			if (availableColorSchemes.length <= 1 || ![...availableColorSchemes, 'system'].includes(userPreference)) {
+				localStorage?.removeItem('color-scheme-preference');
+				return;
+			}
+			// Override default HTML document with client-side user preference
+			if (userPreference === 'system') {
+				updateThemeAttribute(self.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+			} else {
+				updateThemeAttribute(userPreference)
+			}
+			/** @param {ColorScheme} colorScheme */
+			function updateThemeAttribute(colorScheme) {
+				document.documentElement.setAttribute('data-color-scheme', colorScheme);
+			}
+		})();
+	</script>
+
+	<script data-cfasync="false">
+	(() => {
+		if (!new URLSearchParams(location.search).has('disable-custom-overrides')) {
+			return;
+		}
+
+		new MutationObserver((records) => {
+			for (const { addedNodes } of records) {
+				for (const node of addedNodes) {
+					if (node.nodeType === Node.ELEMENT_NODE && node.hasAttribute('data-custom-overrides')) {
+						node.remove();
+					}
+				}
+			}
+		}).observe(document.documentElement, { childList: true, subtree: true });
+	})();
+</script>
+
+		<script>
+		
+		function sortContentSources(a, b) {
+			let result = a.precedence - b.precedence;
+
+			if (result === 0) {
+				result = a.value.localeCompare(b.value);
+			}
+
+			return result;
+		}
+
+		
+		function applyContentSourceOrderToElements({ parent, children }) {
+			const contentSourceElements = [...children];
+
+			contentSourceElements
+				.sort((a, b) => (
+					sortContentSources(
+						{ value: a.dataset.orderValue, precedence: a.dataset.orderPrecedence },
+						{ value: b.dataset.orderValue, precedence: b.dataset.orderPrecedence }
+					)
+				))
+				.forEach((element) => {
+					delete element.dataset.orderValue;
+					delete element.dataset.orderPrecedence;
+				});
+
+			parent.replaceChildren(...contentSourceElements);
+		}
+	</script>
+
+<script>
+	(() => {
+		if (isInAppHelpEnabled()) {
+			document.documentElement.dataset.inAppHelp = 'true';
+
+			if (isTitleHidden()) {
+				document.documentElement.dataset.hideTitle = 'true';
+			}
+		}
+
+		function isInAppHelpEnabled() {
+			return new URLSearchParams(location.search).get('inAppHelp') === 'true';
+		}
+
+		function isTitleHidden() {
+			return new URLSearchParams(location.search).get('title') === 'false';
+		}
+	})();
+</script>
+
+<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/in-app-help.css"/>
+<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/in-app-help.js"></script>
+
+	<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/styles.css">
+	<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/fonts.css">
+	<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/search-styles-bundle.css">
+
+	
+
+	<style>
+		@layer overrides {
+			:root {
+				--theme-headline-font: "Roboto";
+				--theme-text-font: "Roboto";
+				--theme-headline-scale: calc(100 / 100);
+				--theme-text-scale: calc(100 / 100);
+			}
+		}
+	</style>
+
+	<style>
+		@layer overrides {
+			:root, :host {
+					--theme-header-logo-size: 40px;
+					--theme-footer-logo-size: 40px;
+			}
+
+			:root[data-color-scheme='light'],
+			:host([data-color-scheme='light']) {
+					--theme-header-text-color: #212721;
+					--theme-header-background-color: #ffffff;
+					--theme-footer-text-color: #096640;
+					--theme-footer-background-color: #ffffff;
+			}
+
+			:root[data-color-scheme='dark'],
+			:host([data-color-scheme='dark']) {
+					--theme-header-text-color: #FFFFFF;
+					--theme-header-background-color: #0a0b0c;
+					--theme-footer-text-color: #FFFFFF;
+					--theme-footer-background-color: #0a0b0c;
+			}
+		}
+	</style>
+
+	 
+
+
+
+
+
+<script data-site-data="content-sources" type="application/json">
+{
+	"collection": {
+		"members": [
+
+
+	{
+	"name": "Data Explorer Knowledge Base",
+	"id": "af657afe-b33b-4860-b366-6e4f7fc4f048",
+	"key": "TKB",
+	"path": "/fde/v3",
+		"prefix": "/fde/v3",
+		"current": false,
+	"versions": {
+		"available": [
+				{
+					"name": "v3"
+				}
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+
+
+
+		
+
+	
+					
+										
+						
+
+
+
+
+
+
+
+		
+
+	
+					
+										
+						
+
+
+
+
+	{
+	"name": "Agroclimatological Tools Knowledge Base",
+	"id": "720cd490-86be-4c20-b531-6c253e475ee8",
+	"key": "GCLIMKB",
+	"path": "/en/tools/v3",
+		"prefix": "/en/tools/v3",
+		"current": false,
+		"__translations": {
+				"en": {
+					"name": "Agroclimatological Tools Knowledge Base"
+				},
+				"es": {
+					"name": "Agroclimatological Tools Knowledge Base"
+				}
+		},
+	"versions": {
+		"available": [
+				{
+					"name": "v3"
+				}
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+				{
+					"name": "English",
+					"code": "en",
+					"prefix": "en"
+				},
+				{
+					"name": "Spanish",
+					"code": "es",
+					"prefix": "es"
+				}
+		]
+	}
+}
+,
+
+
+	{
+	"name": "Livelihoods Explorer Knowledge Base",
+	"id": "6e989099-7d40-4aba-9b2a-ad5dc73204c7",
+	"key": "LE",
+	"path": "/lex",
+		"prefix": "/lex",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "Glossary and Policies",
+	"id": "9ee23c47-5a5c-45be-abd2-f9b6af6688af",
+	"key": "FNDP",
+	"path": "/fdp",
+		"prefix": "/fdp",
+		"current": true,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "Data Warehouse Knowledge Base",
+	"id": "7ee0fbba-d432-40f3-bf7f-282154bddc3a",
+	"key": "FDWKB",
+	"path": "/fdw",
+		"prefix": "/fdw",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "FEWS NET Website CMS Knowledge Base",
+	"id": "967d740e-b391-4397-8c5a-2151e3bf9cde",
+	"key": "FNWCKB",
+	"path": "/cms",
+		"prefix": "/cms",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "Livelihoods Explorer HEA Database Knowledge Base",
+	"id": "1d37cb0e-5cb8-433f-9717-17457ed989a4",
+	"key": "HEAE",
+	"path": "/hea",
+		"prefix": "/hea",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "FEWS NET Brand",
+	"id": "5079236f-3d00-475d-9735-db104c90051e",
+	"key": "Brand",
+	"path": "/brand",
+		"prefix": "/brand",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+
+		]
+	}
+}
+</script>
+
+
+<script data-theme-placeholder="site" type="application/json">
+	{
+		"id": "bfd07ca6-d479-4809-b08b-eb1744de831c",
+		"path": "/",
+		"url": "/",
+		"domain": "help.fews.net",
+		"aiSearchEnabled": false,
+		"isMcpServerEnabled": false,
+		"visibleToSearchEngines": true,
+		"isProtectionEnabled": false,
+		"isPublished": true,
+		"isAiAssistantEnabled": false
+	}
+</script>
+
+ 
+<script data-config="cookieconsent" type="application/json">
+{
+	"enabled": true,
+	"mode": "opt-in",
+	"heading": "",
+	"description": "This site uses third-party website tracking technologies to provide and continually improve our services. I agree and may revoke or change my consent at any time with effect for the future.",
+	"links": [
+	]
+}
+</script>
+
+	<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/main.js"></script>
+	<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/page-tree.js" fetchpriority="high"></script>
+	<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/search-bundle.js"></script>
+
+							<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/article.js"></script>
+
+		<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/ai-actions.css">
+		<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/ai-actions.js"></script>
+
+
+
+
+
+
+<template data-custom-overrides data-type="code-asset">
+	<link rel="stylesheet" href="/__site/02d89787-70dc-42ce-975d-dcfb0e4e160f/code_custom_css_override_asset.css">
+</template>
+
+<template data-custom-overrides data-type="code-asset">
+				<script data-cfasync="false" src="/__site/c8cba9ac-13de-4b62-8742-2884279595b1/code_custom_js_override_asset.js"></script>
+</template>
+
+<script data-cfasync="false">
+	(() => {
+		document.querySelectorAll('template[data-custom-overrides]').forEach(template => {
+			const type = template.getAttribute('data-type');
+
+			if (type === 'code-asset') {
+				const assetElement = template.content.cloneNode(true).firstElementChild;
+				const appendAsset = () => document.head.appendChild(assetElement);
+
+				if (assetElement.tagName === 'SCRIPT') {
+															if (document.readyState === 'complete') {
+						appendAsset();
+					} else {
+												document.addEventListener('DOMContentLoaded', appendAsset, { once: true });
+					}
+				} else {
+					appendAsset();
+				}
+			}
+		});
+	})();
+</script>
+
+
+			
+		<script data-config="integration:ga" type="application/json">
+			{
+				"enabled": true,
+				"tagId": "G-R1VWS4F5TW"
+			}
+		</script>
+		<script
+			type="text/plain"
+			data-category="analytics"
+			data-service="ga"
+			data-src="https://www.googletagmanager.com/gtag/js?id=G-R1VWS4F5TW"
+			async
+		></script>
+
+
+
+
+
+
+
+
+
+
+
+
+			</head>
+<body>
+	<a href="#content" class="skip-link">
+		<i18n-message i18nkey="navigation.skip.to.main.label">Skip to main content</i18n-message>
+	</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+<header data-component="header" class="header">
+
+	<div class="header-site-branding">
+		<i18n-message id="dda714cd18eb48c2-2" class="sr-only" i18nkey="header.home.label"></i18n-message>
+
+		<a href="/" aria-labelledby="dda714cd18eb48c2-2">
+
+
+
+
+		<img class="header-logo header-logo--dark" src="/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png" alt="">
+
+		<img class="header-logo header-logo--light" src="/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png" alt="">
+
+		</a>
+
+			<a href="/fdp" class="header-site-name">
+				Glossary and Policies
+			</a>
+	</div>
+	<div class="header-content">
+			<div class="header-links">
+				<ul>
+						<li><a href="https://help.fews.net/fdp/fews-net-glossary">Glossary</a></li>
+						<li><a href="https://fewsnet.atlassian.net/servicedesk/customer/portal/2/group/-1">Contact Us</a></li>
+						<li><a href="https://fews.net">FEWS NET Website</a></li>
+				</ul>
+			</div>
+
+		<div class="header-pickers">
+
+
+	
+
+			
+
+
+			
+	
+
+		
+		
+
+
+			
+	
+
+		
+
+
+	<language-picker>
+							<i18n-message replacecontent="dda714cd18eb48c2-3" i18nkey="language.en" ns="common" hidden>
+				English
+			</i18n-message>
+			<i18n-message replacecontent="dda714cd18eb48c2-4" i18nkey="language.es" ns="common" hidden>
+				Spanish
+			</i18n-message>
+
+									<theme-select name="language">
+				<label class="sr-only">
+			<i18n-message i18nkey="language.picker.label"></i18n-message>
+		</label>
+
+		<button type="button">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-scroll-translations-logo ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#scroll-translations-logo"></use>
+	</svg>
+
+									
+						<span data-select-value></span>
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-caret_down ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#caret_down"></use>
+	</svg>
+		</button>
+
+		<theme-listbox>
+				<theme-option value="/?l=en" lang="en">
+										<span id="dda714cd18eb48c2-3" data-select-label>English</span>
+				</theme-option>
+				<theme-option value="/?l=es" lang="es">
+										<span id="dda714cd18eb48c2-4" data-select-label>Spanish</span>
+				</theme-option>
+		</theme-listbox>
+	</theme-select>
+	</language-picker>
+		</div>
+
+			<div class="header-search">
+				<search-bar quicksearch></search-bar>
+			</div>
+
+
+				<button type="button" aria-controls="drawer-dda714cd18eb48c2-1" aria-haspopup="dialog" aria-expanded="false" class="header-nav-toggle" onclick="self['drawer-dda714cd18eb48c2-1'].showModal()">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-menu ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#menu"></use>
+	</svg>
+			<i18n-message class="sr-only" i18nkey="navigation.main.label">Main navigation</i18n-message>
+		</button>
+	</div>
+
+	
+
+<dialog id="drawer-dda714cd18eb48c2-1" class="drawer">
+	<header data-component="header" class="header">
+
+	<div class="header-site-branding">
+		<i18n-message id="dda714cd18eb48c2-5" class="sr-only" i18nkey="header.home.label"></i18n-message>
+
+		<a href="/" aria-labelledby="dda714cd18eb48c2-5">
+
+
+
+
+		<img class="header-logo header-logo--dark" src="/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png" alt="">
+
+		<img class="header-logo header-logo--light" src="/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png" alt="">
+
+		</a>
+
+			<a href="/fdp" class="header-site-name">
+				Glossary and Policies
+			</a>
+	</div>
+
+		<div class="header-content">
+			<button type="button" aria-controls="drawer-dda714cd18eb48c2-1" aria-haspopup="dialog" aria-expanded="true" autofocus class="drawer-toggle" onclick="self['drawer-dda714cd18eb48c2-1'].close()">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-close ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#close"></use>
+	</svg>
+				<i18n-message class="sr-only" i18nkey="action.close.label">Close</i18n-message>
+			</button>
+		</div>
+	</header>
+
+	<div class="drawer-section drawer-search">
+		<search-bar quicksearch></search-bar>
+	</div>
+
+		<div class="drawer-section drawer-pickers">
+
+
+	
+
+			
+
+
+			
+	
+
+		
+		
+
+
+			
+	
+
+		
+
+
+	<language-picker>
+							<i18n-message replacecontent="dda714cd18eb48c2-6" i18nkey="language.en" ns="common" hidden>
+				English
+			</i18n-message>
+			<i18n-message replacecontent="dda714cd18eb48c2-7" i18nkey="language.es" ns="common" hidden>
+				Spanish
+			</i18n-message>
+
+									<theme-select name="language">
+				<label class="sr-only">
+			<i18n-message i18nkey="language.picker.label"></i18n-message>
+		</label>
+
+		<button type="button">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-scroll-translations-logo ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#scroll-translations-logo"></use>
+	</svg>
+
+									
+						<span data-select-value></span>
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-caret_down ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#caret_down"></use>
+	</svg>
+		</button>
+
+		<theme-listbox>
+				<theme-option value="/?l=en" lang="en">
+										<span id="dda714cd18eb48c2-6" data-select-label>English</span>
+				</theme-option>
+				<theme-option value="/?l=es" lang="es">
+										<span id="dda714cd18eb48c2-7" data-select-label>Spanish</span>
+				</theme-option>
+		</theme-listbox>
+	</theme-select>
+	</language-picker>
+		</div>
+
+	<nav id="drawer-nav" class="drawer-section drawer-nav tree" aria-labelledby="drawer-nav-label">
+		<i18n-message id="drawer-nav-label" class="sr-only" i18nkey="navigation.main.label">Main</i18n-message>
+
+						<copy-page-tree target="articleTree"></copy-page-tree>
+	</nav>
+
+			<div class="drawer-section drawer-links tree">
+<ul  >
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="dda714cd18eb48c2-8" href="https://help.fews.net/fdp/fews-net-glossary" >Glossary</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="dda714cd18eb48c2-9" href="https://fewsnet.atlassian.net/servicedesk/customer/portal/2/group/-1" >Contact Us</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="dda714cd18eb48c2-10" href="https://fews.net" >FEWS NET Website</a>
+			</div>
+
+		</li>
+</ul>
+		</div>
+</dialog>
+
+</header>
+		<section class="article-page body">
+		<theme-navigator class="navigator">
+			<button id="navigator-toggle" class="navigator-toggle" aria-controls="navigator-nav" aria-labelledby="navigator-nav-label" aria-expanded="true">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-menu navigator-icon-closed">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#menu"></use>
+	</svg>
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-chevron_left navigator-icon-opened">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#chevron_left"></use>
+	</svg>
+			</button>
+						<nav id="navigator-nav" class="navigator-body tree" aria-labelledby="navigator-nav-label">
+				<i18n-message id="navigator-nav-label" class="sr-only" i18nkey="navigation.main.label">Main</i18n-message>
+				<theme-page-tree id="articleTree">
+<ul  >
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="dda714cd18eb48c2-11" href="/fdp/data-and-information-use-and-attribution-policy" aria-current="page">Data and information use and attribution policy</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="dda714cd18eb48c2-12" href="/fdp/privacy-policy" >Privacy Policy</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="dda714cd18eb48c2-13" href="/fdp/fews-net-glossary" >FEWS NET Glossary</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="false"
+						aria-labelledby="dda714cd18eb48c2-14"
+aria-busy="true" aria-disabled="true"					></button>
+				<a id="dda714cd18eb48c2-14" href="/fdp/release-notes" >Release Notes</a>
+			</div>
+
+		</li>
+</ul>
+				</theme-page-tree>
+			</nav>
+		</theme-navigator>
+
+		<main class="main-content">
+			<div class="topbar">
+
+
+
+
+	<theme-breadcrumbs class="breadcrumbs" itemsbeforecollapse="2" maxitems="4">
+		<i18n-message id="dda714cd18eb48c2-16" class="sr-only" i18nkey="breadcrumbs.label">Breadcrumbs</i18n-message>
+		<nav aria-labelledby="dda714cd18eb48c2-16">
+				<ol>
+							<li>
+								<a href="/">
+										<i18n-message i18nkey="breadcrumbs.home.label">Home</i18n-message>
+								</a>
+							</li>
+							<li>
+								<a href="/fdp">
+										FEWS NET Knowledge Base Home
+								</a>
+							</li>
+				</ol>
+		</nav>
+	</theme-breadcrumbs>
+					<ai-actions class="ai-actions"><theme-dropdown></theme-dropdown></ai-actions>
+			</div>
+				<script src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/breadcrumbs.js"></script>
+		<nav class="toc sticky" data-component="toc" aria-labelledby="dda714cd18eb48c2-17">
+			<h2 class="toc-heading" id="dda714cd18eb48c2-17">
+				<i18n-message i18nkey="page.article.toc.label">On this Page</i18n-message>
+			</h2>
+			<theme-toc for="content"></theme-toc>
+		</nav>
+			<article id="content" tabindex="-1" class="fb-layout-container">
+				<header>
+					<h1>Data and information use and attribution policy</h1>
+				</header>
+				<section class="article-body fb-layout-body" data-searchable-content>
+			
+
+	
+
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+
+	
+
+	
+
+	
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+	
+	
+	
+	
+	
+	<h2 id="Background" style=""><span id="Dataandinformationuseandattributionpolicy-Background"></span><strong>Background</strong>
+ <i18n-message i18nkey="clipboard.copyLink.label" attribute="description">
+  <copy-clipboard class="anchor-copy-button" value="https://help.fews.net/fdp/data-and-information-use-and-attribution-policy#Background">
+   <svg role="img" aria-hidden="true" data-component="icon" class="icon icon-link copy-headline-link-icon">
+    <use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#link"></use>
+   </svg>
+  </copy-clipboard>
+ </i18n-message></h2>
+<p>The content and information found on <a href="http://fews.net/" data-scope="external" rel="external noreferrer"><u>fews.net</u></a> and its subdomains is not official United States Government information and does not necessarily reflect the view of the United States Department of State or the United States Government.</p>
+<p>Relevant data and information are organized and made available on the FEWS NET website and data center to promote their effective and wide-ranging use among FEWS NET’s global audience, including decision-makers responding to food security emergencies. FEWS NET works together with partners to ensure continued improvement in data availability, quality, accessibility, and use.&nbsp;</p>
+<h2 id="Data-sources" style=""><span id="Dataandinformationuseandattributionpolicy-Datasources"></span><strong>Data sources</strong>
+ <i18n-message i18nkey="clipboard.copyLink.label" attribute="description">
+  <copy-clipboard class="anchor-copy-button" value="https://help.fews.net/fdp/data-and-information-use-and-attribution-policy#Data-sources">
+   <svg role="img" aria-hidden="true" data-component="icon" class="icon icon-link copy-headline-link-icon">
+    <use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#link"></use>
+   </svg>
+  </copy-clipboard>
+ </i18n-message></h2>
+<p>Data and information available on the FEWS NET website and data platform are gathered from various sources. FEWS NET engages in regular data collection activities, compiles data from public online sources, and receives data through partnerships with United Nations partners, non-governmental organization partners, the FEWS NET Science Team, regional and intergovernmental organizations, and global institutions, among others.</p>
+<p>FEWS NET publishes all data according to permissions provided by the original source institution, and all data sources are fully attributed. There is no attempt to otherwise duplicate the information or systems of other organizations.</p>
+<h2 id="Terms-of-use-and-disclaimer" style=""><span id="Dataandinformationuseandattributionpolicy-Termsofuseanddisclaimer"></span>Terms of use and disclaimer
+ <i18n-message i18nkey="clipboard.copyLink.label" attribute="description">
+  <copy-clipboard class="anchor-copy-button" value="https://help.fews.net/fdp/data-and-information-use-and-attribution-policy#Terms-of-use-and-disclaimer">
+   <svg role="img" aria-hidden="true" data-component="icon" class="icon icon-link copy-headline-link-icon">
+    <use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#link"></use>
+   </svg>
+  </copy-clipboard>
+ </i18n-message></h2>
+<p>FEWS NET provides this information as a public service and makes every effort to provide accurate and complete information. Please note that FEWS NET:</p>
+<ul>
+ <li>
+  <p>cannot guarantee that there will be no errors;</p>
+ </li>
+ <li>
+  <p>makes no claims, promises or guarantees about the accuracy, completeness, or adequacy of the data on this website; and</p>
+ </li>
+ <li>
+  <p>expressly disclaim liability arising from use, reference to, or reliance on any data contained on this website.</p>
+ </li>
+</ul>
+<p>This is a service that is continually under development, and FEWS NET will make every effort to keep this website current and to correct errors brought to our attention. Please email <a href="https://groups.google.com/u/1/a/fews.net/g/data.policy" data-scope="external" rel="external noreferrer">data.policy@fews.net</a> with any questions or concerns.</p>
+<p>Users should exercise their own skill and care with respect to their use of data from this website and evaluate the accuracy, currency, completeness and relevance of the data for their own purposes. For the most complete and up-to-date information, users should reference the original data sources.</p>
+<h2 id="Attribution-policy" style=""><span id="Dataandinformationuseandattributionpolicy-Attributionpolicy"></span>Attribution policy
+ <i18n-message i18nkey="clipboard.copyLink.label" attribute="description">
+  <copy-clipboard class="anchor-copy-button" value="https://help.fews.net/fdp/data-and-information-use-and-attribution-policy#Attribution-policy">
+   <svg role="img" aria-hidden="true" data-component="icon" class="icon icon-link copy-headline-link-icon">
+    <use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#link"></use>
+   </svg>
+  </copy-clipboard>
+ </i18n-message></h2>
+<p>Please note the following:</p>
+<ul>
+ <li>
+  <p><strong>If using data provided through the </strong><a href="http://fews.net/" data-scope="external" rel="external noreferrer"><strong>FEWS NET Wesbite</strong></a><strong> in any way, direct or manipulated</strong>, you must include attribution for the data you use in the manner indicated in the metadata included with the data or documentation.</p>
+ </li>
+ <li>
+  <p><strong>If generating a data file for public use or private use and presenting those data to another party</strong>, you agree to include the same acknowledgment requirement in any sub-licenses of the data that you grant, and a requirement that any sub-licensees do the same. You may meet this requirement by providing the uniform resource locator (URL) of these terms of use when it is developed.</p>
+  <ul>
+   <li>
+    <p>You may use our application programming interfaces (“APIs”) to facilitate access, whether through a separate website or through another type of software application.</p>
+   </li>
+   <li>
+    <p>You must not claim or imply that FEWS NET endorses your use of the data, or use the FEWS NET name, logo(s) or trademark(s) in conjunction with such use.</p>
+   </li>
+   <li>
+    <p>Some data are provided by third parties, and may not be redistributed or reused without the consent of the original data provider, or may be subject to additional terms and conditions. Where applicable, these conditions are included in the dataset or indicator metadata.</p>
+   </li>
+  </ul>
+ </li>
+ <li>
+  <p><strong>If using data collected by FEWS NET in a visual, graphic, map or infographic of your own</strong>, please attribute the source data clearly and prominently on the visual itself or within the key/legend and include a link to the <a href="http://fews.net/" data-scope="external" rel="external noreferrer">FEWS NET Website</a>.</p>
+ </li>
+ <li>
+  <p><strong>If using third party data from other organizations hosted by the FEWS NET Data Warehouse or provided by the </strong><a href="http://fews.net/" data-scope="external" rel="external noreferrer"><strong>FEWS NET Website</strong></a>, please check the primary source’s website, and follow their policies on use and re-distribution of data. For instance, some data sources, such as the UN COMTRADE data, cannot be disseminated in any form without written permission of the United Nations Statistics Division. In the absence of specific guidance from the primary source any visual, graphic, map or infographic that you produce should attribute the primary source organization clearly and prominently on the visual itself or within the key/legend.</p>
+ </li>
+ <li>
+  <p><strong>If you wish to reproduce or publish a graphic, graph, or map </strong><a href="http://fews.net/" data-scope="external" rel="external noreferrer"><strong>FEWS NET</strong></a><strong> has already published</strong> (rather than creating an original image using raw data) please cite the graphic, graph or map, including the author, using the following sample format [1]:</p>
+  <ul>
+   <li>
+    <p>Author: Famine Early Warning Systems Network</p>
+   </li>
+   <li>
+    <p>Title: Complete title of the graphic, graph or map, including the edition or version number, if applicable.</p>
+   </li>
+   <li>
+    <p>Date of publication: Year the graphic, graph or map was published or disseminated.</p>
+   </li>
+   <li>
+    <p>Publisher and/or distributor: Famine Early Warning Systems Network</p>
+   </li>
+   <li>
+    <p>Electronic location or identifier: Web address or unique, persistent, global identifier used to locate the graphic, graph or map. Append the date retrieved if the title and locator are not specific to the exact instance of the graphic, graph or map you used.</p>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p>These elements can be combined as in the examples below, Chicago-style.</p>
+<div class="theme-table" style="--width: 760px;">
+ <table-expand>
+  <scroll-shadow>
+   <table-sort>
+    <div data-component="table" data-align="unset" data-number-column="false">
+     <table>
+      <colgroup>
+       <col style="width: 163px">
+       <col style="width: 516px">
+      </colgroup>
+      <tbody>
+       <tr>
+        <th>
+         <p><strong>Type of citation</strong></p>
+        </th>
+        <th>
+         <p><strong>Example</strong></p>
+        </th>
+       </tr>
+       <tr>
+        <td>
+         <p>Note</p>
+        </td>
+        <td>
+         <p>19. Famine Early Warning Systems Network, Chad Projected Food Security Outcomes March 2022 - May 2022, (February 2022), distributed by Famine Early Warning Systems Network, <a href="https://fdw.fews.net/ipcpngmap/country/TD/ML1/2022-03-01/?&amp;scenario=ML1" data-scope="external" rel="external noreferrer">https://fdw.fews.net/ipcpngmap/country/TD/ML1/2022-03-01/?&amp;scenario=ML1</a>.</p>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <p>Bibliographic entry</p>
+        </td>
+        <td>
+         <p>Famine Early Warning Systems Network. Chad Projected Food Security Outcomes March 2022 - May 2022. February 2022. Distributed by Famine Early Warning Systems Network. <a href="https://fdw.fews.net/ipcpngmap/country/TD/ML1/2022-03-01/?&amp;scenario=ML1" data-scope="external" rel="external noreferrer">https://fdw.fews.net/ipcpngmap/country/TD/ML1/2022-03-01/?&amp;scenario=ML1</a>.</p>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </table-sort>
+  </scroll-shadow>
+ </table-expand>
+</div>
+<ul>
+ <li>
+  <p><strong>If you wish to reproduce or publish a graphic, graph, or map that appears within a published </strong><a href="http://fews.net/" data-scope="external" rel="external noreferrer"><strong>FEWS NET</strong></a><strong> report</strong> (rather than creating an original image using raw data) please cite the report using the format above with the following additions:</p>
+  <ul>
+   <li>
+    <p>Before the citation of the report:</p>
+    <ul>
+     <li>
+      <p>Creator of the graphic or image: Name(s) of each individual or organizational entity responsible for the creation of the graphic/image.</p>
+     </li>
+     <li>
+      <p>Title of the graphic or image: Complete title of the graphic/image.</p>
+     </li>
+    </ul>
+   </li>
+   <li>
+    <p>After the citation of the report:</p>
+    <ul>
+     <li>
+      <p>Page number where the graphic or image is found.</p>
+     </li>
+     <li>
+      <p>Number of the image or figure, if applicable.</p>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p>These elements can be combined as in the example below, Chicago-style.</p>
+<div data-component="panel" role="note" data-appearance="info">
+ <div class="panel-content">
+  <p><strong>Example of a note</strong></p>
+  <p>20. Kenya Food Security Steering Group, “Figure 1. Estimated 2021 short rains maize production in Kenya compared to the five-year average,” in Widespread Crisis (IPC Phase 3) outcomes following third consecutive below-average season, (February 2022), distributed by Famine Early Warning Systems Network, 3, fig. 1. <a href="https://fews.net/east-africa/kenya/food-security-outlook/february-2022" data-scope="external" rel="external noreferrer">https://fews.net/east-africa/kenya/food-security-outlook/february-2022</a></p>
+ </div>
+</div>
+<p>FEWS NET makes <strong>no warranties with respect to the data</strong> and <strong>you agree that FEWS NET shall not be liable to you in connection with your use of the data.</strong></p>
+<p>If you have any questions about this data use and attribution policy, or its application, please feel free to contact us directly at <a href="/fdp/data-and-information-use-and-attribution-policy" data-scope="internal">data.policy@fews.net</a>.</p>
+<p>
+ <br>
+</p>
+
+
+																				<script>
+						// Mark block images on the first level as breakout so they can grow wider than the article content.
+						document.querySelectorAll('.article-body > .theme-block-image [data-component="image"]').forEach((element) => {
+							const propertyValue = element.style.getPropertyValue('--width');
+							if (!propertyValue) {
+								return;
+							}
+							if (parseInt(propertyValue) >= 760) {
+								element.closest('.theme-block-image').classList.add('theme-block-image--breakout');
+							}
+						});
+
+						// Remove the inline size on page layouts as this would lead to layouts breaking out of the article content.
+						document.querySelectorAll('.article-body [data-component="layout-section"]').forEach((element) => {
+							const propertyValue = element.style.getPropertyValue('--inline-size');
+							if (!propertyValue) {
+								return;
+							}
+							// ONLY for this very specific width (Confluence default)
+							if (parseInt(propertyValue) === 760) {
+								element.style.removeProperty('--inline-size');
+							}
+						})
+
+						// Set the initial state of the navigation toggle to prevent shifting in the UI
+						try {
+							const navigationToggle = document.querySelector('#navigator-toggle');
+							const navigationState = localStorage.getItem('theme-navigation-state');
+
+							if (navigationState === 'collapsed' && navigationToggle) {
+								navigationToggle.setAttribute('aria-expanded', 'false');
+							}
+						} catch (error) {
+							console.error(error);
+						}
+					</script>
+																			</section>
+				<footer>
+
+				</footer>
+			</article>
+		</main>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer data-component="footer" class="footer">
+
+
+
+
+
+		<img class="footer-logo footer-logo--dark" src="/__site/290ce914-9285-4043-b677-46788c0ac0a5/FEWS_NET_Wordmark_Square_1.0in.jpg" alt="">
+
+		<img class="footer-logo footer-logo--light" src="/__site/290ce914-9285-4043-b677-46788c0ac0a5/FEWS_NET_Wordmark_Square_1.0in.jpg" alt="">
+		<ul class="footer-links">
+				<li><a href="https://fews.net/">FEWS NET Website</a></li>
+				<li><a href="https://help.fews.net/fdp/data-and-information-use-and-attribution-policy">Data Usage Policy</a></li>
+				<li><a href="https://help.fews.net/fdp/privacy-policy">Privacy Policy</a></li>
+		</ul>
+	<ul class="footer-content">
+		<li><i18n-message i18nkey="footer.copyright.label">Copyright</i18n-message> <current-year></current-year> FEWS NET</li>		<li><i18n-message i18nkey="footer.poweredBy.label">Powered by</i18n-message> <a href="https://www.k15t.com/go/scroll-sites-cloud" rel="external nofollow">Scroll&nbsp;Sites</a> & <a href="https://www.atlassian.com/software/confluence" rel="external nofollow">Atlassian&nbsp;Confluence</a></li>
+			<li>
+				<button type=
