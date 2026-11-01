@@ -1,0 +1,48 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0005145&lang=EN
+Fetched: 2026-11-01T13:27:55Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 94377
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 01 Nov 2026 13:27:54 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=ian5w38RZZoD40PP9V6PrxLi66vvsU39BsUNIZ2M.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 2500 BYTES
+[ {
+  "IndicadorCod" : "0005145",
+  "IndicadorNome" : "Dissolved marriages by divorce (Between persons of the opposite sex - No.) by Place of last residence of the household (NUTS - 2002), Age group of wife and Duration of previous marriage; Annual - Statistics Portugal, Divorces",
+  "Periodic" : "Annual",
+  "PrimeiroPeriodo" : "1995",
+  "UltimoPeriodo" : "2013",
+  "UnidadeMedida" : "Number (No.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "0",
+  "Nota" : "When the information of the place of last residence of the household was omitted or ignored, the geographic distribution of the Court of Law or the Registry Office where the divorce was decreed was used. Law No. 9/ 2010, from May 31st, legalized civil marriage between same-sex individuals. From 2011 figures include same-sex dissolved marriages ",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2018-03-30",
+  "DataExtracao" : "2026-11-01T13:27:54.406Z",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period",
+      "versao" : "XXXXX",
+      "nota_dsg" : "Values for 2012 were rectified on 30 march 2018, due to final validation of microdata series."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Place of last residence of the household (NUTS - 2002)",
+      "versao" : "00388",
+      "nota_dsg" : "The entry into force of Law no. 61/2012 of 5 December, fixing the boundaries of the municipalities of Faro and Loulé, changed the boundaries of the parishes of Montenegro, São Pedro (now called União das freguesias de Faro as a result of the aggregation with the parish of Sé with the Law no. 11-A/2013 of 28 January) and Santa Bárbara de Nexe, from the municipality of Faro, and the parish of Almancil, from the municipality of Loulé.<br>The entry into force of Law no. 56/2012 of 8 November, on the administrative reorganization of Lisboa, and the Law no. 11-A/2013 of 28 January, on the administrative reorganization of the territory limits of the parishes, both producing effects since the 30th September 2013, changed the boundaries of the municipalities of Lisboa and Loures, with the formation of the parish of Parque das Nações in the municipality of Lisboa, and the municipalities of Golegã and Santarém, with the change of the parish of Pombalinho from Santarém to Golegã. Users are advised to take these changes into account when considering data from 2013."
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Age group of wife",
+      "versao" : "00705"
+    },
