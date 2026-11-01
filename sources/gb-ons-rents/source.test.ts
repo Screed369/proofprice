@@ -307,3 +307,15 @@ test("a published annual change of 0 reads 'unchanged', not 'up 0%'", async () =
   const a = gbAnswer(lib, { town: "Manchester" }, new Date("2026-10-14T12:00:00Z"));
   assert.match(a.summary, /was £1,373, unchanged on a year earlier\./);
 });
+
+test("gbHistoryKey maps area and measure to the library row, null when unmatched", async () => {
+  const { gbHistoryKey } = await import("./source");
+  const areas = ["E06000001 Hartlepool", "E12000007 London", "E09000007 Camden"];
+  assert.deepEqual(gbHistoryKey({ town: "Camden", bedrooms: 2 }, areas)?.item, "bed2");
+  assert.equal(gbHistoryKey({ town: "Camden", bedrooms: 2 }, areas)?.area, "E09000007 Camden");
+  assert.equal(gbHistoryKey({ town: "London", property_type: "house", house_type: "terraced" }, areas)?.item, "terraced");
+  assert.equal(gbHistoryKey({ town: "Camden" }, areas)?.item, "all");
+  assert.equal(gbHistoryKey({ town: "Glasgow" }, areas), null);
+  assert.equal(gbHistoryKey({ town: "Camden", bedrooms: 2, property_type: "apartment" }, areas), null);
+  assert.equal(gbHistoryKey({}, areas), null);
+});

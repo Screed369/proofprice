@@ -1,6 +1,7 @@
 // Manifest: England and Wales rents (ONS Price Index of Private Rents). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, gbHarvest, gbRents } from "./source";
+import { readLatestDay } from "../../lib/library/store";
+import { INFO, gbHarvest, gbHistoryKey, gbRents } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -35,4 +36,10 @@ export default defineSource({
     }),
   nominalCounts: true,
   harvest: gbHarvest,
+  // Monthly history per area and measure (one library day per ONS month); also lets the stale-if-error copy work.
+  historyKey: (p) =>
+    gbHistoryKey(
+      { town: str(p.town), property_type: str(p.property_type), house_type: str(p.house_type), bedrooms: num(p.bedrooms) },
+      [...new Set((readLatestDay(INFO.id)?.rows ?? []).map((r) => r.area))],
+    ),
 });

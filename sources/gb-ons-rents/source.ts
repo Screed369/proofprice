@@ -363,3 +363,23 @@ export async function gbRents(input: GbInput, now = new Date()): Promise<PriceAn
   if (!lib) throw new SourceError("Not yet available: the ONS rent figures appear after the next collection (the price library has no data for this source yet).");
   return gbAnswer(lib, input, now);
 }
+
+/** History key (/history and the stale copy): the library row for this area and measure. Null when the question cannot be matched. */
+export function gbHistoryKey(
+  p: { town?: string; property_type?: string; house_type?: string; bedrooms?: number },
+  areaNames: string[],
+): { area: string; item: string; label: string } | null {
+  if (!p.town?.trim() || !areaNames.length) return null;
+  try {
+    const areas: LibArea[] = [];
+    for (const a of areaNames) {
+      const i = a.indexOf(" ");
+      if (i > 0) areas.push({ code: a.slice(0, i), name: a.slice(i + 1) });
+    }
+    const area = matchArea(areas, p.town);
+    const sel = gbSelect(p);
+    return { area: `${area.code} ${area.name}`, item: sel.measure.key, label: `${area.name}, ${sel.measure.label}` };
+  } catch {
+    return null;
+  }
+}
