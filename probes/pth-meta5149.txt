@@ -1,0 +1,418 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0005149&lang=EN
+Fetched: 2026-11-01T13:26:05Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 11725
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 01 Nov 2026 13:26:05 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 11725
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=M-P0COf9OJodTiFUOVKxyGClfV9ySRvU_KcLqOA-.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 40000 BYTES
+[ {
+  "IndicadorCod" : "0005149",
+  "IndicadorNome" : "Revenue per available room (Rev Par) (€) of hotel establishments by Geographic localization (NUTS - 2013) and Type (hotel establishment); Annual - Statistics Portugal, Guests stays and other data on hotel activity survey",
+  "Periodic" : "Annual",
+  "PrimeiroPeriodo" : "2009",
+  "UltimoPeriodo" : "2017",
+  "UnidadeMedida" : "Euro (€)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "1",
+  "Nota" : "A new data series with additional types of tourist accommodation is available.<br><a href=\"https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0009929&selTab=tab0 \"target=\"_blank\">https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0009929&selTab=tab0</a>",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2019-01-28",
+  "DataExtracao" : "2026-11-01T13:26:05.486Z",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period",
+      "versao" : "XXXXX",
+      "nota_dsg" : "In 2013 and 2014, values in column \"Total\" include, besides hotel establishments, those related to tourism in rural areas, lodging tourism and new local accommodation units, which implies a statistical break in the time series. <br>From 2014 to 2017, values for Portugal and for Autonomous Region of Açores do not include local accommodation in Autonomous Region of Açores given the different methodology applied."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (NUTS - 2013)",
+      "versao" : "03505",
+      "nota_dsg" : "From January 1st, 2015 came into force a new version of NUTS (NUTS 2013). At NUTS II level was just a name change in \"Lisboa\" which became known as \"Área Metropolitana de Lisboa\"."
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Type (hotel establishment)",
+      "versao" : "02268",
+      "nota_dsg" : "Local accommodation with ten or more beds."
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S7A2009" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2009",
+        "categ_cod" : "S7A2009",
+        "categ_dsg" : "2009",
+        "categ_ord" : "20090101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2010" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2010",
+        "categ_cod" : "S7A2010",
+        "categ_dsg" : "2010",
+        "categ_ord" : "20100101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2011" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2011",
+        "categ_cod" : "S7A2011",
+        "categ_dsg" : "2011",
+        "categ_ord" : "20110101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2012" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2012",
+        "categ_cod" : "S7A2012",
+        "categ_dsg" : "2012",
+        "categ_ord" : "20120101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2013" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2013",
+        "categ_cod" : "S7A2013",
+        "categ_dsg" : "2013",
+        "categ_ord" : "20130101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2014" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2014",
+        "categ_cod" : "S7A2014",
+        "categ_dsg" : "2014",
+        "categ_ord" : "20140101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2015" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2015",
+        "categ_cod" : "S7A2015",
+        "categ_dsg" : "2015",
+        "categ_ord" : "20150101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2016" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2016",
+        "categ_cod" : "S7A2016",
+        "categ_dsg" : "2016",
+        "categ_ord" : "20160101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2017" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2017",
+        "categ_cod" : "S7A2017",
+        "categ_dsg" : "2017",
+        "categ_ord" : "20170101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num2_PT" : [ {
+        "dim_num" : "2",
+        "cat_id" : "PT",
+        "categ_cod" : "PT",
+        "categ_dsg" : "Portugal",
+        "categ_ord" : "1",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num2_1" : [ {
+        "dim_num" : "2",
+        "cat_id" : "1",
+        "categ_cod" : "1",
+        "categ_dsg" : "Continente",
+        "categ_ord" : "2",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_11" : [ {
+        "dim_num" : "2",
+        "cat_id" : "11",
+        "categ_cod" : "11",
+        "categ_dsg" : "Norte",
+        "categ_ord" : "3",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_16" : [ {
+        "dim_num" : "2",
+        "cat_id" : "16",
+        "categ_cod" : "16",
+        "categ_dsg" : "Centro",
+        "categ_ord" : "1524",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_17" : [ {
+        "dim_num" : "2",
+        "cat_id" : "17",
+        "categ_cod" : "17",
+        "categ_dsg" : "Área Metropolitana de Lisboa",
+        "categ_ord" : "2605",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_18" : [ {
+        "dim_num" : "2",
+        "cat_id" : "18",
+        "categ_cod" : "18",
+        "categ_dsg" : "Alentejo",
+        "categ_ord" : "2743",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_15" : [ {
+        "dim_num" : "2",
+        "cat_id" : "15",
+        "categ_cod" : "15",
+        "categ_dsg" : "Algarve",
+        "categ_ord" : "3106",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_2" : [ {
+        "dim_num" : "2",
+        "cat_id" : "2",
+        "categ_cod" : "2",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "3191",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_20" : [ {
+        "dim_num" : "2",
+        "cat_id" : "20",
+        "categ_cod" : "20",
+        "categ_dsg" : "Região Autónoma dos Açores",
+        "categ_ord" : "3192",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num2_3" : [ {
+        "dim_num" : "2",
+        "cat_id" : "3",
+        "categ_cod" : "3",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "3369",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num2_30" : [ {
+        "dim_num" : "2",
+        "cat_id" : "30",
+        "categ_cod" : "30",
+        "categ_dsg" : "Região Autónoma da Madeira",
+        "categ_ord" : "3370",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_T" : [ {
+        "dim_num" : "3",
+        "cat_id" : "T",
+        "categ_cod" : "T",
+        "categ_dsg" : "Total",
+        "categ_ord" : "10",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num3_01" : [ {
+        "dim_num" : "3",
+        "cat_id" : "01",
+        "categ_cod" : "01",
+        "categ_dsg" : "Hotels",
+        "categ_ord" : "20",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_0105" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0105",
+        "categ_cod" : "0105",
+        "categ_dsg" : "Five stars",
+        "categ_ord" : "30",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0104" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0104",
+        "categ_cod" : "0104",
+        "categ_dsg" : "Four stars",
+        "categ_ord" : "40",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0103" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0103",
+        "categ_cod" : "0103",
+        "categ_dsg" : "Three stars",
+        "categ_ord" : "50",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0102" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0102",
+        "categ_cod" : "0102",
+        "categ_dsg" : "Two stars",
+        "categ_ord" : "60",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0101" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0101",
+        "categ_cod" : "0101",
+        "categ_dsg" : "One star",
+        "categ_ord" : "70",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_02" : [ {
+        "dim_num" : "3",
+        "cat_id" : "02",
+        "categ_cod" : "02",
+        "categ_dsg" : "Guest houses",
+        "categ_ord" : "80",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_03" : [ {
+        "dim_num" : "3",
+        "cat_id" : "03",
+        "categ_cod" : "03",
+        "categ_dsg" : "Inns",
+        "categ_ord" : "90",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_04" : [ {
+        "dim_num" : "3",
+        "cat_id" : "04",
+        "categ_cod" : "04",
+        "categ_dsg" : "Lodging houses",
+        "categ_ord" : "100",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_05" : [ {
+        "dim_num" : "3",
+        "cat_id" : "05",
+        "categ_cod" : "05",
+        "categ_dsg" : "Motels",
+        "categ_ord" : "110",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_06" : [ {
+        "dim_num" : "3",
+        "cat_id" : "06",
+        "categ_cod" : "06",
+        "categ_dsg" : "Hotel-apartments",
+        "categ_ord" : "120",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_0605" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0605",
+        "categ_cod" : "0605",
+        "categ_dsg" : "Five stars",
+        "categ_ord" : "130",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0604" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0604",
+        "categ_cod" : "0604",
+        "categ_dsg" : "Four stars",
+        "categ_ord" : "140",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0603" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0603",
+        "categ_cod" : "0603",
+        "categ_dsg" : "Three stars",
+        "categ_ord" : "150",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0602" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0602",
+        "categ_cod" : "0602",
+        "categ_dsg" : "Two stars",
+        "categ_ord" : "160",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_07" : [ {
+        "dim_num" : "3",
+        "cat_id" : "07",
+        "categ_cod" : "07",
+        "categ_dsg" : "Tourist villages",
+        "categ_ord" : "170",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_0705" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0705",
+        "categ_cod" : "0705",
+        "categ_dsg" : "Five stars",
+        "categ_ord" : "180",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0704" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0704",
+        "categ_cod" : "0704",
+        "categ_dsg" : "Four stars",
+        "categ_ord" : "190",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0703" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0703",
+        "categ_cod" : "0703",
+        "categ_dsg" : "Three stars",
+        "categ_ord" : "200",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_08" : [ {
+        "dim_num" : "3",
+        "cat_id" : "08",
+        "categ_cod" : "08",
+        "categ_dsg" : "Tourist apartments",
+        "categ_ord" : "210",
+        "categ_nivel" : "2"
+      } ],
+      "Dim_Num3_0805" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0805",
+        "categ_cod" : "0805",
+        "categ_dsg" : "Five stars",
+        "categ_ord" : "220",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0804" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0804",
+        "categ_cod" : "0804",
+        "categ_dsg" : "Four stars",
+        "categ_ord" : "230",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0803" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0803",
+        "categ_cod" : "0803",
+        "categ_dsg" : "Three stars",
+        "categ_ord" : "240",
+        "categ_nivel" : "3"
+      } ],
+      "Dim_Num3_0802" : [ {
+        "dim_num" : "3",
+        "cat_id" : "0802",
+        "categ_cod" : "0802",
+        "categ_dsg" : "Two stars",
+        "categ_ord" : "250",
+        "categ_nivel" : "3"
+      } ]
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
