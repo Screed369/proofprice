@@ -62,6 +62,8 @@ test("routing: suburb yes, state/city/postcode no, ambiguous names need an SA hi
   assert.equal(servesSuburb("Norwood", "5067"), false);
   assert.equal(servesSuburb("Brighton"), false);
   assert.equal(servesSuburb("Brighton SA"), true);
+  assert.equal(servesSuburb("Glenelg North"), false); // also a Victorian locality: needs the SA hint
+  assert.equal(servesSuburb("Glenelg North, SA"), true);
 });
 
 test("saHomeSales reads package_show then datastore_search", async () => {

@@ -17,7 +17,7 @@ export default defineSource({
     property_type: "AU (Adelaide suburbs): houses only.",
     months: "AU (Adelaide suburbs): not used; one median per quarter (the newest is returned).",
   },
-  examples: [{ params: { country: "AU", town: "Norwood" } }, { params: { country: "AU", town: "Glenelg, SA" }, smoke: false }, { params: { country: "AU", town: "Glenelg North" }, smoke: false }],
+  examples: [{ params: { country: "AU", town: "Norwood" } }, { params: { country: "AU", town: "Glenelg, SA" }, smoke: false }, { params: { country: "AU", town: "Glenelg North, SA" }, smoke: false }],
   method:
     "Adelaide: the South Australian Government's quarterly median house sale price for each metropolitan suburb, with the number of sales as sample size (a suburb with fewer than 5 sales in the newest quarter is answered from the newest of the last four quarters with 5 or more, and the answer names that quarter). The published median is passed on unchanged; no range is published.",
   serves: (p) => servesSuburb(str(p.town), str(p.postcode)),
