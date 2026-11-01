@@ -1,6 +1,6 @@
 // Manifest: South Australia (Australia) rents, median weekly rent of new tenancies by suburb or postcode (SA Housing Authority Private Rent Report). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, knowsSuburb, saHarvest, saRents } from "./source";
+import { INFO, knowsSuburb, saHarvest, saHistoryKey, saRents } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -34,4 +34,6 @@ export default defineSource({
   handle: (p, ctx) =>
     saRents({ postcode: str(p.postcode), town: str(p.town), property_type: str(p.property_type), bedrooms: num(p.bedrooms), baseUrl: ctx.baseUrl }),
   harvest: saHarvest,
+  // Quarterly history per suburb or postcode and dwelling kind (one library day per quarter); also enables /history.
+  historyKey: (p) => saHistoryKey({ postcode: str(p.postcode), town: str(p.town), property_type: str(p.property_type), bedrooms: num(p.bedrooms) }),
 });

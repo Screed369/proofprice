@@ -11,7 +11,7 @@ import { makeXlsx } from "../../tests/helpers/make-zip";
 import { readXlsx } from "../../categories/rent/xlsx";
 import { writeDaily, writeMeta } from "../../lib/library/store";
 import { findSource } from "../../lib/registry";
-import { INFO, PACKAGE_URL, findSheet, harvestOptions, newestWorkbook, parseSheet, quarterEnd, saAnswerFromCandidates, saArea, saHarvest, saRents, saWants, suburbKey } from "./source";
+import { INFO, PACKAGE_URL, findSheet, harvestOptions, newestWorkbook, parseSheet, quarterEnd, saAnswerFromCandidates, saArea, saHarvest, saHistoryKey, saRents, saWants, suburbKey } from "./source";
 
 const N = 27;
 const pad = (r: (string | number | null)[]) => [...r, ...Array<null>(N - r.length).fill(null)];
@@ -180,6 +180,15 @@ test("harvest and answers from the library (fake site)", async () => {
     assert.equal(findSource("rent", "AU", { postcode: "2000" })?.info.id, "au-nsw-rents");
     assert.equal(findSource("rent", "AU", { postcode: "4000" })?.info.id, "au-qld-rents");
     assert.equal(findSource("rent", "AU", { town: "Parramatta" })?.info.id, "au-nsw-rents");
+
+    // history key (library row behind /history and the stale copy): same pick as the answer
+    assert.deepEqual(saHistoryKey({ postcode: "5000" }), { area: "5000", item: "all", label: "postcode 5000, homes of all kinds (flats, houses and other dwellings)" });
+    assert.equal(saHistoryKey({ town: "Glenelg", property_type: "apartment", bedrooms: 2 })?.item, "flat-2");
+    assert.equal(saHistoryKey({ town: "glenelg", bedrooms: 3 })?.item, "house-3");
+    assert.equal(saHistoryKey({ postcode: "5006", property_type: "house", bedrooms: 5 })?.item, "house-4");
+    assert.equal(saHistoryKey({ postcode: "5000", bedrooms: 0 }), null);
+    assert.equal(saHistoryKey({}), null);
+    assert.equal(findSource("rent", "AU", { postcode: "5000" })?.historyKey?.({ postcode: "5000" } as any)?.item, "all");
   } finally {
     delete process.env.PROOFPRICE_LIBRARY_DIR;
   }

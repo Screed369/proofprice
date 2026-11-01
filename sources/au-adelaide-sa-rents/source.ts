@@ -312,3 +312,27 @@ export async function saRents(input: SaInput): Promise<PriceAnswer> {
   if (ageDays > 150) ans.extra = { ...(ans.extra ?? {}), data_age_note: `The newest quarter held ends ${meta.last_date}, ${ageDays} days ago; the report normally appears within about six weeks of a quarter's end.` };
   return ans;
 }
+
+/** History key (/history and the stale copy): the library area and dwelling item this question would be answered from.
+ *  When several kinds fit (no type given with a bedroom count), the kind with the most bonds in the latest quarter wins, as in the answer. Null when it cannot be matched. */
+export function saHistoryKey(p: { postcode?: string; town?: string; property_type?: string; bedrooms?: number }): { area: string; item: string; label: string } | null {
+  try {
+    const { area, label } = saArea(p);
+    const items = saWants(p.property_type, p.bedrooms);
+    if (!items.length) return null;
+    let best = items[0];
+    if (items.length > 1) {
+      let bestN = -1;
+      for (const item of items) {
+        const r = latestRows(area, item);
+        if (r && r.n > bestN) {
+          best = item;
+          bestN = r.n;
+        }
+      }
+    }
+    return { area, item: best, label: `${label}, ${itemText(best)}` };
+  } catch {
+    return null;
+  }
+}
