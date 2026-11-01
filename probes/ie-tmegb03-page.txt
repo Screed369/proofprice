@@ -1,0 +1,613 @@
+URL: https://data.gov.ie/en_GB/dataset/tmegb03-residential-electricity-prices
+Fetched: 2026-11-01T17:41:20Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 33396
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx/1.30.4
+date: Sun, 01 Nov 2026 17:41:20 GMT
+content-type: text/html; charset=utf-8
+content-length: 33396
+cache-control: private
+x-cached: MISS
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=31536000; includeSubDomains
+content-security-policy: frame-ancestors 'self' https://data.gov.ie
+access-control-allow-origin: https://superset.data.gov.ie
+access-control-allow-headers: x-csrftoken
+access-control-allow-headers: content-type
+access-control-allow-credentials: true
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (447)
+=== FIRST 20000 BYTES
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en_GB" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en_GB"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+      <meta name="generator" content="ckan 2.9.16" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMEGB03 - Residential Electricity Prices - Dataset - data.gov.ie</title>
+
+    
+    
+
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    
+
+    <!--[if IE]>
+    <script src="/classList.min.js"></script>
+    <![endif]-->
+
+    
+    
+
+
+    
+      
+          <link rel="alternate" type="text/n3" href="https://data.gov.ie/en_GB/dataset/283f8089-5381-41d6-834f-4d2d250c299a.n3"/>
+          <link rel="alternate" type="text/turtle" href="https://data.gov.ie/en_GB/dataset/283f8089-5381-41d6-834f-4d2d250c299a.ttl"/>
+          <link rel="alternate" type="application/rdf+xml" href="https://data.gov.ie/en_GB/dataset/283f8089-5381-41d6-834f-4d2d250c299a.xml"/>
+          <link rel="alternate" type="application/ld+json" href="https://data.gov.ie/en_GB/dataset/283f8089-5381-41d6-834f-4d2d250c299a.jsonld"/>
+      
+    
+
+
+
+
+    
+    
+
+
+
+  
+      
+      
+      
+    
+  
+
+
+
+<link rel="stylesheet" href="/en_GB/styles/impactstories.css">
+
+
+
+
+
+
+
+    
+    
+
+
+    
+    
+
+
+
+
+
+
+
+
+    
+  
+  <script>
+   (()=>{
+       var ct = 0
+       window.addEventListener(
+           "message",
+           (event) => {
+               if (event.origin !== "https://superset.data.gov.ie") return;
+               // For unclear cross-origin reasons, event.source.frameElement isn't
+               // allowed, despite us running in precisely the context that *should* be
+               // allowed to acccess it.
+               // window.frames just gives us a list of the windows, so that's also
+               // not helpful.
+               // Technically, this breaks if someone tries to embed with a frame
+               // rather than an iframe. Don't.
+               for (var frame of document.getElementsByTagName('iframe')) {
+                   if (frame.contentWindow === event.source) {
+                       break;
+                   }
+               }
+               // The second condition can occur if we have a non-iframe embed
+               if (!frame || frame.contentWindow !== event.source) return;
+               
+               var height = event.data.height;
+               // Check that only height is set on event.data
+               if (!height || Object.keys(event.data).length !== 1) return;
+               // Use style.height because it overrides height=, and we've used both in
+               // various locations
+               // UNDONE -- there's a thing pushing out the height when logged in with filters
+               if (ct < 3) {
+                   ct = ct + 1;
+                   frame.style.height = height + "px";
+               }
+           }
+       )
+   })();
+  </script>
+
+  
+  <meta property="og:title" content="TMEGB03 - Residential Electricity Prices - data.gov.ie">
+  <meta property="og:description" content="Residential Electricity Prices">
+
+
+    
+    <link href="/webassets/ckanext-pages/ff80043b_medium.css" rel="stylesheet"/>
+<link href="/webassets/vendor/f3b8236b_select2.css" rel="stylesheet"/>
+<link href="/webassets/vendor/0b01aef1_font-awesome.css" rel="stylesheet"/>
+<link href="/webassets/base/2471d0b8_main.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-scheming/728ec589_scheming_css.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-featured/0b79b321_featured_css.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-dgithree/4068f437_mailchimp.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-dgithree/20ae8349_dgithree.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-dgithree/50ef836a_dgithree_less.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-harvest/c95a0af2_harvest_css.css" rel="stylesheet"/>
+<link href="/webassets/ckanext-geoview/77c3ca23_geo-resource-styles.css" rel="stylesheet"/>
+<link href="/webassets/cookieconsent/cookieconsent_9de201b1.css" rel="stylesheet"/>
+    
+  </head>
+
+  
+  <body data-site-root="https://data.gov.ie/" data-locale-root="https://data.gov.ie/en_GB/" >
+
+    
+    <div class="sr-only sr-only-focusable"><a href="#content">Skip to content</a></div>
+  
+
+  
+    
+    
+
+    <nav id="dgi-nav">
+        
+        <div class="container" style="position:relative; z-index:10;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar" style="background-color: white"></span>
+                    <span class="icon-bar" style="background-color: white"></span>
+                    <span class="icon-bar" style="background-color: white"></span>
+                </button>
+                <a class="brand" href="/en_GB/"><img style="max-height: 100%; padding: 5px;" src="/img/dgi-logo-new.png" alt="Data.Gov.IE" title="Data.Gov.IE" rel="home"/></a>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="top-navbar-collapse">
+                <div class="">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/en_GB/dataset/">Datasets</a></li>
+                        <li><a href="/en_GB/organization/">Publishers</a></li>
+                        
+                        <li><a href="/en_GB/dataset/suggest/">Suggest Data</a></li>
+                        <li><a href="/en_GB/dashboards">Dashboards</a></li>
+                        <li><a href="/en_GB/contact">Contact</a></li>
+                        <li><a href="/en_GB/about_page">About</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/en_GB/faqs">FAQs</a></li>
+                                <li><a href="/en_GB/how-to-guides">How To Guides</a></li>
+
+                                <li role="separator" class="divider"></li>
+
+                                <li><a href="/en_GB/blog">Latest News</a></li>
+                                <li><a href="/en_GB/impact/">Impact Stories</a></li>
+                                <li><a href="/en_GB/haleandhearty">Hale and Hearty</a></li>
+                                <li><a href="/en_GB/showcase">Showcases</a></li>
+
+                                <li role="separator" class="divider"></li>
+
+                                <li><a href="/en_GB/resources">Resources & Publications</a></li>
+                                <li><a href="/en_GB/formats">Formats</a></li>
+
+                                
+                                <li><a href="/en_GB/pages/re-useofpublicsectorinformation">Re-Use of Public Sector Information</a></li>
+                                
+                                
+                                <li><a href="/en_GB/license">Open Data Licence </a></li>
+                                
+                                
+                                <li><a href="/en_GB/resources/open-data-governance-board">Open Data Governance Board</a></li>
+                                
+                                <li role="separator" class="divider"></li>
+
+                                <li><a href="/en_GB/developers_corner">Developer's Corner</a></li>
+                                <li><a href="/en_GB/developers">Developer Resources</a></li>
+                                <li><a class="hidden-xs" href="/en_GB/stats">Stats</a></li>
+                                <li><a href="/en_GB/broken_links">Broken Links</a></li>
+                                <li><a href="/en_GB/resources/useful-links">Useful Links</a></li>
+
+<!--                                <li role="separator" class="divider"></li>-->
+<!--                                <li><a href="/en_GB/qa-report">QA Report</a></li>-->
+<!--                                <li><a href="/en_GB/kpi-report">KPI Report</a></li>-->
+
+
+                            </ul>
+                        </li>
+                        
+                        
+                        
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">EN/GA <span
+            class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        
+        
+        <li><a href="/en_GB/dataset/tmegb03-residential-electricity-prices">English</a></li>
+        
+        
+        
+        <li><a href="/ga/dataset/tmegb03-residential-electricity-prices">Gaeilge</a></li>
+        
+        
+    </ul>
+</li>
+                        
+                        
+                        <li><a href="/en_GB/user/login">Login</a></li>
+                        
+  
+
+          <li><form class="d-flex site-search" action="/en_GB/site_search/" method="get">
+              <div class="input-group" style="display:inline-flex;">
+                <input id="field-sitewide-search" class="form-control me-2"  type="text" name="q" placeholder="Search Articles, News & Events..." aria-label=" _('Search pages...') }}"/>
+                <span class="input-group-btn">
+                    <button class="btn" type="submit" aria-label="Submit"><span class="fa fa-search"></span></button>
+                </span>
+              </div>
+          </form></li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+  
+
+<div role="main">
+    <div class="container-fluid no-padding">
+        
+        <div class="toolbar">
+            <div class="container">
+                
+                
+                <ol class="breadcrumb">
+                    
+<li class="home"><a href="/en_GB/" aria-label="Home"><i class="fa fa-home"></i><span> Home</span></a></li>
+                    
+  
+    
+    
+      
+      
+      <li><a href="/en_GB/organization/">Publishers</a></li>
+      <li><a href="/en_GB/organization/central-statistics-office">Central Statistics Office</a></li>
+    
+    <li class="active"><a href="/en_GB/dataset/tmegb03-residential-electricity-prices">TMEGB03 - Residential...</a></li>
+  
+
+                </ol>
+                
+                
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="content" class="container">
+        
+        
+        <div class="flash-messages">
+            
+            
+            
+        </div>
+        
+
+        <div class="row wrapper no-nav">
+            
+            
+            
+
+            
+
+            
+            <div class="primary col-xs-12 col-sm-12">
+                
+                
+    
+        
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        
+        <h1>
+            
+                TMEGB03 - Residential Electricity Prices
+                
+                
+            
+        </h1>
+
+        
+            
+            
+                    
+        
+
+        
+            <div class="dataset-top-meta" style="font-size: 1em;">
+                <div>
+                    <h5>
+                        
+                            Published by: <strong>
+                            <a href="/en_GB/organization/central-statistics-office">
+                                Central Statistics Office
+                            </a></strong>
+                        
+
+                        
+
+                    </h5>
+                </div>
+
+                <div>
+                    <h5 property="dc:rights">
+                        
+                            
+                            
+                                Licensed under: <strong><a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a></strong>
+                            
+                        
+                    </h5>
+                </div>
+
+                <div>
+                    <h5>Category:
+                        <a href="/dataset?theme=Government">
+                            <strong class="theme-color-government">
+                                Government
+                            </strong>
+                        </a>
+                    </h5>
+                </div>
+
+                <div>
+                    <h5>Views: <strong>127</strong></h5>
+                </div>
+
+                <div>
+                    <h5>Openness rating: 
+<div class="qa openness-3">
+    
+        <span title="One of the resource formats is 3-star data - machine-readable data in an open format." data-toggle="tooltip">
+            
+<span class="star-rating"><span class="star-rating-stars"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star-o"></span><span class="fa fa-star-o"></span></span></span> <br>
+    
+</div></h5>
+                </div>
+
+
+            </div>
+        
+
+    </div>
+
+    
+        
+        <div class="col-md-4 hidden-sm hidden-xs" id="actionPanel">
+            <div class="panel panel-dataset-actions">
+                <a data-toggle="collapse" data-parent="#actionPanel" href="#actions">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="fa fa-chevron-down"></span> Dataset Actions</h3>
+                    </div>
+                </a>
+                <ul class="list-group list-group-collapse panel-collapse collapse" id="actions">
+
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+                    <li class="list-group-item">
+                        <span class="fa fa-newspaper-o"></span>
+                        <a href="/en_GB/dataset/showcases/tmegb03-residential-electricity-prices">View showcases with this dataset</a>
+                    </li>
+
+                    
+                    
+                        <li class="list-group-item">
+                            <span class="fa fa-reply"></span>
+                            <a href="mailto:environment@cso.ie">Contact dataset owner</a>
+                        </li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    
+</div>
+
+<div class="row">
+    <div class="col-md-12 lolwhut">
+
+    <div class="notes embedded-content">
+      <p>Residential Electricity Prices</p>
+    </div>
+  
+
+    </div>
+</div>
+    
+
+    
+        
+    <style>
+        .hidden {
+            display: none
+        }
+    </style>
+    <script>
+        function toggleDashboard(id) {
+            $("#dashboard" + id).toggleClass('hidden')
+            var link = $("#dashboardtoggle" + id)
+            if (link.text().includes("Show")) {
+                link.text(" (Hide) ")
+            } else {
+                link.text(" (Show) ")
+            }
+        }
+    </script>
+    
+    <h5>Public Dashboards</h5>
+    
+      
+        No dashboard exists for this dataset.
+      
+    
+    
+
+        
+
+
+
+<section id="dataset-resources" class="resources">
+    <h2>Data Resources (4)</h2>
+    
+    <div class="row">
+        
+            <div class="col-sm-6">
+                <div class="dataset-resource">
+                    <div class="dataset-resource-format col-md-2">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                        <span class="format-name">
+                            
+                                CSV
+                            
+                        </span>
+                    </div>
+                    <div class="dataset-resource-text col-md-7">
+                        
+                        
+
+                        
+
+                        
+                            <div>
+                                Residential Electricity Prices
+                            </div>
+                        
+                    </div>
+                    <div class="dataset-resource-buttons col-md-3">
+                        <a class="btn btn-lg btn-info btn-block" href="/en_GB/dataset/tmegb03-residential-electricity-prices/resource/fd909b22-7742-4944-b5f5-fc12a721e8a2">
+                            
+                                Details
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            
+
+                        </a>
+                        <a target="_blank" download class="resource-url-analytics btn btn-lg btn-primary btn-block btn-download" href="https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/TMEGB03/CSV/1.0/en">
+                            Download
+                            <i class="fa fa-download" aria-hidden="true"></i>&nbsp;
+                        </a>
+                    </div><!--/dropdown-->
+                </div><!-- /dataset-resource -->
+            </div><!-- /col-sm-6 -->
+        
+            <div class="col-sm-6">
+                <div class="dataset-resource">
+                    <div class="dataset-resource-format col-md-2">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                        <span class="format-name">
+                            
+                                JSON-STAT
+                            
+                        </span>
+                    </div>
+                    <div class="dataset-resource-text col-md-7">
+                        
+                        
+
+                        
+
+                        
+                            <div>
+                                Residential Electricity Prices
+                            </div>
+                        
+                    </div>
+                    <div class="dataset-resource-buttons col-md-3">
+                        <a class="btn btn-lg btn-info btn-block" href="/en_GB/dataset/tmegb03-residential-electricity-prices/resource/da21a6f0-c70a-4ae3-9797-6e5a94831df9">
+                            
+                                Preview
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            
+
+                        </a>
+                        <a target="_blank" download class="resource-url-analytics btn btn-lg btn-primary btn-block btn-download" href="https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/TMEGB03/JSON-stat/1.0/en">
+                            Download
+                            <i class="fa fa-download" aria-hidden="true"></i>&nbsp;
+                        </a>
+                    </div><!--/dropdown-->
+                </div><!-- /dataset-resource -->
+            </div><!-- /col-sm-6 -->
+        
+            <div class="col-sm-6">
+                <div class="dataset-resource">
+                    <div class="dataset-resource-format col-md-2">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                        <span class="format-name">
+                            
+                                PX
+                            
+                        </span>
+                    </div>
+                    <div class="dataset-resource-text col-md-7">
+                        
+                        
+
+                        
+
+                        
+                            <div>
+                                Residential Electricity Prices
+                            </div>
+                        
+                    </div>
+                    <div class="dataset-resource-buttons col-md-3">
+                        <a class="btn btn-lg btn-info btn-block" href="/en_GB/dataset/tmegb03-residential-electricity-prices/resource/d042bac6-
