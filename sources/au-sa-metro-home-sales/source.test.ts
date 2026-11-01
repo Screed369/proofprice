@@ -72,3 +72,68 @@ test("saHomeSales reads package_show then datastore_search", async () => {
   assert.match(urls[1], /datastore_search\?resource_id=4245a13e-a972-431c-b446-e1e11c951836/);
   await assert.rejects(() => saHomeSales({ postcode: "5067" }, async () => pkg), /by suburb/);
 });
+
+// Look-back for a thin suburb. Rows copied from the live Q3 and Q2 2026 files (data.sa.gov.au, read 2026-11-01): Glenelg had 2 house sales in Q3 and 3 in Q2.
+const mk = (q: number, rows: [string, string, string, string, string, string][]) => {
+  const y = 2026;
+  return {
+    success: true,
+    result: {
+      records: rows.map(([city, suburb, s, m, ps, pm]) => ({
+        City: city, Suburb: suburb,
+        [`Sales ${q}Q ${y - 1}`]: ps, [`Median ${q}Q ${y - 1}`]: pm,
+        [`Sales ${q}Q ${y}`]: s, [`Median ${q}Q ${y}`]: m,
+      })),
+    },
+  };
+};
+const q3 = parseTable(mk(3, [["HOLDFAST BAY", "GLENELG", "2", "1870000", "3", "2000000"], ["HOLDFAST BAY", "GLENELG NORTH", "9", "1485000", "16", "1410000"]]));
+const q2 = parseTable(mk(2, [["HOLDFAST BAY", "GLENELG", "3", "2775000", "2", "2465000"], ["HOLDFAST BAY", "GLENELG NORTH", "14", "1593000", "19", "1550000"]]));
+const q1 = parseTable(mk(1, [["HOLDFAST BAY", "GLENELG", "6", "2100000", "5", "1900000"], ["HOLDFAST BAY", "GLENELG NORTH", "10", "1500000", "12", "1400000"]]));
+
+test("thin suburb: still withheld when no earlier quarter was given", () => {
+  const a = answerFor(q3, "Glenelg");
+  assert.equal(a.price, null);
+  assert.equal(a.extra.withheld, "only 2 house sales in the quarter (minimum 5)");
+});
+
+test("thin suburb: looks back to the newest earlier quarter with 5+ sales and says so", () => {
+  const a = answerFor(q3, "Glenelg", undefined, [q2, q1]);
+  assert.equal(a.status, "ok");
+  assert.equal(a.price?.median, 2100000);
+  assert.equal(a.sample_size, 6);
+  assert.equal(a.period.from, "2026-01-01");
+  assert.equal(a.period.to, "2026-03-31");
+  assert.deepEqual(a.extra.looked_back_from, { latest_quarter: "2026-Q3", latest_sales: 2 });
+  assert.match(a.summary, /2026-Q1/);
+  assert.match(a.summary, /had only 2 house sales in 2026-Q3/);
+});
+
+test("a suburb with enough sales now is never looked back", () => {
+  const a = answerFor(q3, "Glenelg North", undefined, [q2, q1]);
+  assert.equal(a.price?.median, 1485000);
+  assert.equal(a.extra.looked_back_from, undefined);
+});
+
+test("saHomeSales fetches earlier quarters only for a thin suburb", async () => {
+  const calls: string[] = [];
+  const pk = {
+    success: true,
+    result: { resources: ["Q3", "Q2", "Q1", "Q4"].map((q, i) => ({ id: `r${i}`, name: `Metropolitan Median House Sales ${q} ${q === "Q4" ? 2025 : 2026}`, datastore_active: true })) },
+  };
+  const fetcher = async (u: string) => {
+    calls.push(u);
+    if (u.includes("package_show")) return pk;
+    if (u.includes("resource_id=r0")) return mk(3, [["HOLDFAST BAY", "GLENELG", "2", "1870000", "3", "2000000"], ["HOLDFAST BAY", "GLENELG NORTH", "9", "1485000", "16", "1410000"]]);
+    if (u.includes("resource_id=r1")) return mk(2, [["HOLDFAST BAY", "GLENELG", "3", "2775000", "2", "2465000"]]);
+    if (u.includes("resource_id=r2")) return mk(1, [["HOLDFAST BAY", "GLENELG", "6", "2100000", "5", "1900000"]]);
+    throw new Error("unexpected " + u);
+  };
+  const thin = await saHomeSales({ town: "Glenelg" }, fetcher);
+  assert.equal(thin.price?.median, 2100000);
+  assert.equal(calls.length, 4); // package + Q3 + Q2 + Q1 (stops at Q1)
+  calls.length = 0;
+  const ok = await saHomeSales({ town: "Glenelg North" }, fetcher);
+  assert.equal(ok.price?.median, 1485000);
+  assert.equal(calls.length, 2);
+});

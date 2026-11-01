@@ -78,6 +78,20 @@ export function pickLatestResource(pkg: any): { id: string; quarter: string } {
   return { id: best.id, quarter: `${best.y}-Q${best.q}` };
 }
 
+/** The newest `count` quarterly resources (newest first) that have a datastore: used to look back when a suburb is thin in the latest quarter. */
+export function pickRecentResources(pkg: any, count: number): { id: string; quarter: string }[] {
+  const list = pkg?.result?.resources;
+  if (!pkg?.success || !Array.isArray(list)) throw new SourceError("Unexpected response from data.sa.gov.au (package_show)");
+  const out: { id: string; q: number; y: number }[] = [];
+  for (const r of list) {
+    const m = /Median House Sales Q([1-4]) (\d{4})/i.exec(String(r?.name ?? ""));
+    if (!m || !r.id || r.datastore_active === false) continue;
+    out.push({ id: String(r.id), q: Number(m[1]), y: Number(m[2]) });
+  }
+  out.sort((a, b) => b.y * 10 + b.q - (a.y * 10 + a.q));
+  return out.slice(0, count).map((r) => ({ id: r.id, quarter: `${r.y}-Q${r.q}` }));
+}
+
 /** Rows of one quarterly file; the columns are named "Sales 3Q 2026", "Median 3Q 2026" and the year before. Values are text, null when no sales. */
 export function parseTable(json: any): SaTable {
   const recs = json?.result?.records;
@@ -107,18 +121,39 @@ export function quarterBounds(q: string): { from: string; to: string } {
 
 const title = (s: string) => s.toLowerCase().replace(/(^|[\s'-])([a-z])/g, (_, a, b) => a + b.toUpperCase()).replace(/\bAnd\b/g, "and").replace(/\bSt\b/g, "St");
 
-export function answerFor(table: SaTable, townRaw: string, baseUrl?: string): PriceAnswer {
+const enoughSales = (r: SaRow) => r.sales !== null && r.sales >= MIN_SALES && r.median !== null && r.median > 0;
+const bestPart = (parts: SaRow[]) => [...parts].sort((a, b) => (b.sales ?? -1) - (a.sales ?? -1))[0];
+
+/** `earlier` = the quarters before `latest`, newest first. A suburb with fewer than 5 sales in the latest quarter is answered from the newest
+ *  earlier quarter in which it had 5 or more, and the answer says which quarter that is (medians of different quarters are never pooled). */
+export function answerFor(latest: SaTable, townRaw: string, baseUrl?: string, earlier: SaTable[] = []): PriceAnswer {
   const { name } = clean(townRaw);
-  const parts = table.rows.filter((r) => fold(r.suburb) === name);
+  const partsOf = (t: SaTable) => t.rows.filter((r) => fold(r.suburb) === name);
+  let table = latest;
+  let parts = partsOf(latest);
   if (!parts.length) {
     throw new InputError(`"${townRaw.trim()}" is not a metropolitan Adelaide suburb in the South Australian file. Give a suburb such as Norwood, Glenelg, Marion or Prospect.`);
   }
-  const best = [...parts].sort((a, b) => (b.sales ?? -1) - (a.sales ?? -1))[0];
+  let best = bestPart(parts);
+  let lookedBack: { latest_quarter: string; latest_sales: number | null } | null = null;
+  if (!enoughSales(best)) {
+    for (const t of earlier) {
+      const p = partsOf(t);
+      if (p.length && enoughSales(bestPart(p))) {
+        lookedBack = { latest_quarter: latest.quarter, latest_sales: best.sales };
+        table = t;
+        parts = p;
+        best = bestPart(p);
+        break;
+      }
+    }
+  }
   const b = quarterBounds(table.quarter);
   const place = title(best.suburb);
   const enough = best.sales !== null && best.sales >= MIN_SALES && best.median !== null && best.median > 0;
   const split = parts.length > 1;
   const extra: Record<string, unknown> = {
+    ...(lookedBack ? { looked_back_from: lookedBack } : {}),
     suburb: place,
     council: title(best.council),
     quarter: table.quarter,
@@ -144,8 +179,12 @@ export function answerFor(table: SaTable, townRaw: string, baseUrl?: string): Pr
     method:
       "The South Australian Government publishes, for each metropolitan Adelaide suburb and quarter, the number of house sales and their median price. We pass the published median on unchanged, with the sales count as sample size; a suburb with fewer than 5 sales is withheld.",
     describe: (v) =>
+      (lookedBack ? `${place} had only ${lookedBack.latest_sales ?? 0} house sales in ${lookedBack.latest_quarter} (minimum ${MIN_SALES} to publish), so this is the newest of the last four quarters with enough sales. ` : "") +
       `Houses in ${place}${split ? ` (${title(best.council)} council part)` : ""}, Adelaide, sold for a median of ${fmtMoney(v, "AUD")} in ${table.quarter} (${best.sales} sales).${yoy}`,
-    note: split ? `${place} lies in more than one council area; this is the part with most sales (${title(best.council)}).` : undefined,
+    note: [
+      lookedBack ? `${place} had ${lookedBack.latest_sales ?? 0} house sales in ${lookedBack.latest_quarter}, too few to publish a median (minimum ${MIN_SALES}); this is the newest of the last four quarters with ${MIN_SALES} or more sales (${table.quarter}).` : "",
+      split ? `${place} lies in more than one council area; this is the part with most sales (${title(best.council)}).` : "",
+    ].filter(Boolean).join(" ") || undefined,
     baseUrl,
     extra,
     ending: "Median of house sales published by the South Australian Government (Department for Housing and Urban Development). Houses only, not units.",
@@ -163,5 +202,22 @@ export async function saHomeSales(input: { town?: string; postcode?: string; bas
   const pkg = await fetch(`${SITE}/data/api/3/action/package_show?id=${PACKAGE}`);
   const res = pickLatestResource(pkg);
   const data = await fetch(`${SITE}/data/api/3/action/datastore_search?resource_id=${res.id}&limit=1000`);
-  return answerFor(parseTable(data), input.town, input.baseUrl);
+  const latest = parseTable(data);
+  // Thin suburb in the newest quarter: look back (at most 3 earlier quarters, one call each, stopping at the first with 5+ sales).
+  const { name } = clean(input.town);
+  const mine = latest.rows.filter((r) => fold(r.suburb) === name);
+  if (mine.length && !enoughSales(bestPart(mine))) {
+    const earlier: SaTable[] = [];
+    for (const r of pickRecentResources(pkg, 4).filter((x) => x.quarter !== res.quarter)) {
+      try {
+        earlier.push(parseTable(await fetch(`${SITE}/data/api/3/action/datastore_search?resource_id=${r.id}&limit=1000`)));
+      } catch {
+        break; // an older file that will not load: answer with what we have
+      }
+      const p = earlier[earlier.length - 1].rows.filter((x) => fold(x.suburb) === name);
+      if (p.length && enoughSales(bestPart(p))) break;
+    }
+    return answerFor(latest, input.town, input.baseUrl, earlier);
+  }
+  return answerFor(latest, input.town, input.baseUrl);
 }
