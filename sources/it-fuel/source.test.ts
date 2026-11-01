@@ -98,3 +98,13 @@ test("IT: an unreachable MIMIT host is reported with its network cause and still
     globalThis.fetch = realFetch;
   }
 });
+
+test("IT: a country-only question answers with the Weekly Oil Bulletin national average, labelled; methane gets a 400 with examples", async () => {
+  const { itCountryOnly } = await import("./source");
+  const a = await itCountryOnly({ fuel: "diesel" });
+  assert.equal(a.status, "ok");
+  assert.match(a.summary, /No province or comune was given/);
+  assert.match(a.summary, /Weekly Oil Bulletin/);
+  assert.equal((a.extra as any).national, true);
+  await assert.rejects(() => itCountryOnly({ fuel: "methane" as any }), /area=MI/);
+});

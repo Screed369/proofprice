@@ -266,3 +266,22 @@ test("FR: G20261029-4 a department code sent as the postcode ('08' / lpg, '70' /
     globalThis.fetch = realFetch;
   }
 });
+
+test("FR: a country-only question answers with metropolitan France from the library, labelled (never a bare 400)", async () => {
+  const { frNationalAnswer } = await import("./source");
+  const { readFileSync } = await import("node:fs");
+  const date = JSON.parse(readFileSync("library/fr-fuel/meta.json", "utf8")).last_date as string; // newest day in this repo's library copy
+  assert.ok(date);
+  const a = frNationalAnswer({ fuel: "gazole", today: date })!;
+  assert.ok(a, "library holds a national diesel row");
+  assert.equal(a.status, "ok");
+  assert.match(a.summary, /metropolitan France/);
+  assert.match(a.summary, /No postcode or department was given/);
+  assert.equal((a.extra as any).national, true);
+  assert.equal(frNationalAnswer({ fuel: "gazole", today: "2020-01-01" }), null); // no recent row: caller keeps the helpful 400
+});
+
+test("FR: with nothing in the library the 400 names working examples", async () => {
+  const { frFuelNow } = await import("./source");
+  await assert.rejects(() => frFuelNow({ fuel: "gazole", today: "2020-01-01" }), /postcode=75015 or area=69/);
+});

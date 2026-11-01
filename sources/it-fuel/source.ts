@@ -228,3 +228,15 @@ export function itHistoryKey(p: { area?: string; fuel: string; service?: string 
   }
   return { area: "ALL", item, label: "Italy" };
 }
+
+/** Country-only question (no province, no comune): the European Commission Weekly Oil Bulletin's national average for Italy from our
+ *  library, labelled as such. Station-level ranges need a province ('MI') or a comune. Methane is not in the bulletin: plain 400. */
+export async function itCountryOnly(input: { fuel: Fuel; baseUrl?: string }): Promise<PriceAnswer> {
+  if (!["diesel", "petrol95", "lpg"].includes(input.fuel)) {
+    throw new InputError("Give an Italian town (comune) or a 2-letter province code as area, e.g. area=MI, area=RM or town=Bologna. A national figure exists only for diesel, petrol95 and lpg.");
+  }
+  const { wobFuelNow } = await import("../eu-oil-bulletin/source");
+  const a = await wobFuelNow({ country: "IT", fuel: input.fuel, baseUrl: input.baseUrl });
+  const sentence = "No province or comune was given, so this is Italy's national average pump price from the European Commission Weekly Oil Bulletin (an official weekly average, not station prices). Add area=MI or town=Bologna for a station-level range from MIMIT.";
+  return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}`, extra: { ...a.extra, national: true } };
+}

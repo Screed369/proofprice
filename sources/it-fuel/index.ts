@@ -1,7 +1,7 @@
 // Manifest: Italy daily pump prices (MIMIT Osservaprezzi). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import { Fuel } from "../../lib/fuels";
-import { INFO, itFuelNow, itHarvest, itHistoryKey } from "./source";
+import { INFO, itFuelNow, itHarvest, itHistoryKey, itCountryOnly } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -20,7 +20,9 @@ export default defineSource({
   method:
     "Italy: prices in force at 08:00 on the extraction day, self-service unless asked otherwise; prices not updated in 30 days are left out.",
   handle: (p, ctx) =>
-    itFuelNow({
+    !str(p.area)?.trim() && !str(p.town)?.trim()
+      ? itCountryOnly({ fuel: p.fuel as Fuel, baseUrl: ctx.baseUrl })
+      : itFuelNow({
       area: str(p.area),
       town: str(p.town),
       fuel: p.fuel as Fuel,

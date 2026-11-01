@@ -150,7 +150,10 @@ export async function frFuelNow(input: {
     where = `code_departement="${d}"`;
     area = `department ${d}`;
   } else {
-    throw new InputError("Give a French postcode or department code.");
+    // Country-only question: the national figure from our daily copy, labelled as such (never a bare 400).
+    const national = frNationalAnswer(input);
+    if (national) return national;
+    throw new InputError("Give a French postcode or department code, e.g. postcode=75015 or area=69.");
   }
   const reported: Station[] = [];
   for (let offset = 0; offset < 500; offset += 100) {
@@ -185,6 +188,28 @@ export async function frFuelNow(input: {
     }
   }
   return local;
+}
+
+/** No area given: metropolitan France as a whole, from the library's newest recent "ALL" row (5+ stations). Null when the library has none. */
+export function frNationalAnswer(input: { fuel: FrFuel; today?: string; baseUrl?: string }): PriceAnswer | null {
+  const row = nationalRow("fr-fuel", Object.entries(FR_NAME).find(([, v]) => v === input.fuel)![0], input.today ? new Date(input.today + "T12:00:00Z") : undefined, METRO);
+  if (!row) return null;
+  const whole = "metropolitan France";
+  const sentence = `No postcode or department was given, so this is the figure for ${whole} (${row.summary.count} stations). Add postcode=75015 or area=69 for a local range.`;
+  const a = buildAnswer({
+    source: INFO,
+    query: { country: "FR", postcode: null, department: null, fuel: input.fuel },
+    summary: row.summary,
+    currency: "EUR",
+    unit: "per litre",
+    period: { from: row.date, to: row.date },
+    method: `Median and 10th–90th percentile of the latest pump price per litre reported by each station in ${whole} for the selected fuel (our daily copy of ${row.date}). Prices not updated in the last ${STALE_DAYS} days are left out; overseas departments are not included.`,
+    describe: (x) =>
+      `${FUEL_LABEL[input.fuel]} in ${whole}: the latest posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} per litre; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+    baseUrl: input.baseUrl,
+    extra: { national: true, stations_counted: row.summary.count },
+  });
+  return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}` };
 }
 
 /** LPG and E85 are sold at few stations, so a thin local area may be widened (diesel and petrol never are). */
