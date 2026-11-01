@@ -1,0 +1,32 @@
+URL: https://data.seattle.gov/resource/y6ef-jf2w.json?$limit=5&$order=sale_date%20DESC
+Fetched: 2026-11-01T00:42:27Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 423
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 01 Nov 2026 00:42:27 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC43MDI0XzRfMTU5V0hiVFlsR0xPdGFRSWtyOHRTdDRaRHV6N0pr---gzipuUnI6I0Gqfrao_vIWk6R3AErn7U--gzip--gzip"
+X-SODA2-Fields: ["equip_id","year","make","model","description","dept","sale_price","sale_date","sold_by","vin","equipment_type","asset_weight_category","system_group","fuel_type"]
+X-SODA2-Types: ["text","number","text","text","text","text","number","floating_timestamp","text","text","text","text","text","text"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Tue, 20 Oct 2026 20:24:37 GMT
+X-SODA2-Secondary-Last-Modified: Tue, 20 Oct 2026 20:24:37 GMT
+Last-Modified: Tue, 20 Oct 2026 20:24:37 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 787998a6a838447a8fb80baac9c389b5
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"fuel_type":"DSL"}
+,{"fuel_type":"ELE"}
+,{"fuel_type":"NON"}
+,{"fuel_type":"UNL"}
+,{"equip_id":"32570","year":"2014","make":"FORD","model":"TRANSCT","description":"MINIVAN CARGO","dept":"SPU","sale_price":"6100","sale_date":"2026-10-15T00:00:01.000","sold_by":"BIDADOO ONLINE AUCTION","vin":"NM0KS6FX4E1154901","equipment_type":"VAN - MINIVAN","asset_weight_category":"ASSET","system_group":"MINIVAN","fuel_type":"UNL"}]
