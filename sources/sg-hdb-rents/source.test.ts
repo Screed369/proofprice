@@ -5,6 +5,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { parseDatastoreSearch, datastoreSearchUrl } from "../../lib/adapters";
+import { SourceError } from "../../lib/http";
 import { INFO, RESOURCE_ID, SG_TOWNS, SITE, cutoffMonth, normaliseFlatType, normaliseTown, parseSgRents, sgRentDailyRows, sgRentHarvest, sgRentHistoryKey, sgRents } from "./source";
 
 const read = (name: string) => JSON.parse(readFileSync(new URL(`./fixtures/${name}`, import.meta.url), "utf8"));
@@ -76,6 +77,21 @@ function fakePortal() {
   };
   return { fetcher, calls };
 }
+
+test("sgRents: a page refused with HTTP 429 is retried once, so the live answer is not served from our copy", async () => {
+  const { fetcher } = fakePortal();
+  let n = 0;
+  const flaky = async (url: string) => {
+    if (n++ === 0) throw new SourceError("data.gov.sg answered HTTP 429", undefined, 429);
+    return fetcher(url);
+  };
+  const a = await sgRents({ town: "Tampines", flat_type: "4 ROOM", months: 6 }, flaky, new Date("2026-10-14T00:00:00Z"), async () => {});
+  assert.equal(a.status, "ok");
+  assert.equal(n, 2);
+  // Two refusals in a row still surface as an outage (stale-if-error then answers from the library).
+  const dead = async () => { throw new SourceError("data.gov.sg answered HTTP 429", undefined, 429); };
+  await assert.rejects(sgRents({ town: "Tampines" }, dead, new Date("2026-10-14T00:00:00Z"), async () => {}), /429/);
+});
 
 test("sgRents: median and range, period, caveat, and the paging stops at the window", async () => {
   const { fetcher, calls } = fakePortal();

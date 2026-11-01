@@ -3,7 +3,7 @@
 // (newest first, a few pages at most) and give the median and 10th-90th percentile; never a block or street.
 // Format checked live on 2026-10-14 from GitHub's servers (datastore_search on resource d_c9f57187485a850908655db0e8cfe651).
 
-import { InputError, SourceError } from "../../lib/http";
+import { InputError, SourceError, retryOnce } from "../../lib/http";
 import { collectPages, datastoreSearchUrl, parseDatastoreSearch, resolveFetcher } from "../../lib/adapters";
 import type { Fetcher } from "../../lib/adapters";
 import { summarise } from "../../lib/stats";
@@ -98,7 +98,13 @@ export interface SgRentInput {
   baseUrl?: string;
 }
 
-export async function sgRents(input: SgRentInput, fetcher?: Fetcher, now = new Date()): Promise<PriceAnswer> {
+const realSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
+/** data.gov.sg answers HTTP 429 to a burst (smoke 2026-11-01 served Bedok from our copy): the live path pauses between pages and retries a refused page once. */
+export const LIVE_PAGE_PAUSE_MS = 300;
+export const LIVE_RETRY_MS = 1500;
+
+export async function sgRents(input: SgRentInput, fetcher?: Fetcher, now = new Date(), sleep: (ms: number) => Promise<void> = realSleep): Promise<PriceAnswer> {
   if (!input.town) throw new InputError("A town is required, e.g. 'Tampines'.");
   const town = normaliseTown(input.town);
   const flatType = input.flat_type ? normaliseFlatType(input.flat_type) : undefined;
@@ -114,7 +120,8 @@ export async function sgRents(input: SgRentInput, fetcher?: Fetcher, now = new D
     pageSize: 1000,
     fetchPage: async (offset, limit) => {
       const url = datastoreSearchUrl(SITE, { resourceId: RESOURCE_ID, filters, sort: ["rent_approval_date desc", "_id desc"], limit, offset, includeTotal: false });
-      const r = parseDatastoreSearch(await o.fetcher(url));
+      if (offset > 0) await sleep(LIVE_PAGE_PAUSE_MS);
+      const r = parseDatastoreSearch(await retryOnce(() => o.fetcher(url), LIVE_RETRY_MS));
       const oldest = r.records.length ? String(r.records[r.records.length - 1].rent_approval_date ?? "") : "";
       return { rows: r.records, more: r.records.length >= limit && oldest >= from };
     },
@@ -210,7 +217,6 @@ export function sgRentDailyRows(byTown: Record<string, SgRent[]>): DailyRow[] {
 /** Politeness towards data.gov.sg, which answers HTTP 429 to a fast burst (first live run 2026-10-29): a pause before every call and a longer one before each retry. */
 export const HARVEST_PAUSE_MS = 1500;
 export const HARVEST_RETRY_MS = [6000, 20000];
-const realSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 export async function sgRentHarvest(fetcher?: Fetcher, now = new Date(), sleep: (ms: number) => Promise<void> = realSleep): Promise<HarvestResult> {
   const fetch = fetcher ?? resolveFetcher({ timeoutMs: 30000 });
