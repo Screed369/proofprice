@@ -1,0 +1,20 @@
+URL: https://landregistry.data.gov.uk/landregistry/query?query=PREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0APREFIX+lrppi%3A+%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fppi%2F%3E%0APREFIX+lrcommon%3A+%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fcommon%2F%3E%0ASELECT+%28SUBSTR%28STR%28%3Fdate%29%2C1%2C7%29+AS+%3Fm%29+%28COUNT%28%2A%29+AS+%3Fn%29+WHERE+%7B%0A++VALUES+%3Ftown+%7B+%22BRISTOL%22%5E%5Exsd%3Astring+%7D%0A++%3Faddr+lrcommon%3Atown+%3Ftown+.%0A++%3Ftransx+lrppi%3ApropertyAddress+%3Faddr+%3B+lrppi%3ApricePaid+%3Famount+%3B+lrppi%3AtransactionDate+%3Fdate+%3B%0A+++lrppi%3AtransactionCategory+%3Chttp%3A%2F%2Flandregistry.data.gov.uk%2Fdef%2Fppi%2FstandardPricePaidTransaction%3E+.%0A++FILTER+%28%3Fdate+%3E%3D+%222026-01-01%22%5E%5Exsd%3Adate%29%0A%7D+GROUP+BY+%28SUBSTR%28STR%28%3Fdate%29%2C1%2C7%29%29+ORDER+BY+%3Fm&output=json
+Fetched: 2026-11-01T15:50:38Z from GitHub Actions
+Status, type, bytes: 400 text/plain;charset=utf-8 92
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 400 Bad Request
+Cache-Control: must-revalidate,no-cache,no-store
+Content-Type: text/plain;charset=utf-8
+Date: Sun, 01 Nov 2026 15:50:38 GMT
+Fuseki-Request-Id: 3972496
+Pragma: no-cache
+Server: nginx/1.31.8
+Vary: Accept,Accept-Encoding,Accept-Charset,Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+Content-Length: 92
+Connection: keep-alive
+
+=== FILE TYPE: ASCII text
+=== FIRST 30000 BYTES
+Parse error: Non-group key variable in SELECT: ?date in expression (substr (str ?date) 1 7)
