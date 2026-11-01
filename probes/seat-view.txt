@@ -1,0 +1,274 @@
+URL: https://data.seattle.gov/api/views/y6ef-jf2w.json
+Fetched: 2026-11-01T00:42:28Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 24687
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 01 Nov 2026 00:42:28 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: ab8442899e19ab403db070839d6f29cc
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{
+  "id" : "y6ef-jf2w",
+  "name" : "Sold Fleet Equipment",
+  "assetType" : "dataset",
+  "attribution" : "City of Seattle",
+  "averageRating" : 0,
+  "category" : "City Administration",
+  "createdAt" : 1391704851,
+  "description" : "This dataset includes sales data for fleet equipment that was sold in the current and previous three years. This dataset does not include sales data for Seattle City Light (SCL) fleet equipment.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "domainCName" : "data.seattle.gov",
+  "downloadCount" : 1952,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "PUBLIC_DOMAIN",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 36408443,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1612914659,
+  "publicationGroup" : 1467962,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1792527878,
+  "rowsUpdatedBy" : "2u45-tx99",
+  "tableId" : 18015081,
+  "totalTimesRated" : 0,
+  "viewCount" : 24266,
+  "viewLastModified" : 1792527876,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1533766847,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 3214211,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1533766847,
+    "targetAudience" : "public",
+    "workflowId" : 3127,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "sb28-e8im",
+      "displayName" : "FAS - Fleet Management"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 4739
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 523773201,
+    "name" : "EQUIP_ID",
+    "dataTypeName" : "text",
+    "description" : "Equipment ID Number",
+    "fieldName" : "equip_id",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 17984720,
+    "width" : 83,
+    "cachedContents" : {
+      "non_null" : "1693",
+      "largest" : "W6640",
+      "null" : "4",
+      "top" : [ {
+        "item" : "66457",
+        "count" : "1"
+      }, {
+        "item" : "31434",
+        "count" : "1"
+      }, {
+        "item" : "84733",
+        "count" : "1"
+      }, {
+        "item" : "36112",
+        "count" : "1"
+      }, {
+        "item" : "34793",
+        "count" : "1"
+      }, {
+        "item" : "33131",
+        "count" : "1"
+      }, {
+        "item" : "33915",
+        "count" : "1"
+      }, {
+        "item" : "32652",
+        "count" : "1"
+      }, {
+        "item" : "31540",
+        "count" : "1"
+      }, {
+        "item" : "33371",
+        "count" : "1"
+      }, {
+        "item" : "32659",
+        "count" : "1"
+      }, {
+        "item" : "31809",
+        "count" : "1"
+      }, {
+        "item" : "70461",
+        "count" : "1"
+      }, {
+        "item" : "86368",
+        "count" : "1"
+      }, {
+        "item" : "89213",
+        "count" : "1"
+      }, {
+        "item" : "33365",
+        "count" : "1"
+      }, {
+        "item" : "32941",
+        "count" : "1"
+      }, {
+        "item" : "32757",
+        "count" : "1"
+      }, {
+        "item" : "71578",
+        "count" : "1"
+      }, {
+        "item" : "32680",
+        "count" : "1"
+      } ],
+      "smallest" : "06605",
+      "count" : "1697",
+      "cardinality" : "1697"
+    },
+    "format" : { }
+  }, {
+    "id" : 523773202,
+    "name" : "YEAR",
+    "dataTypeName" : "number",
+    "description" : "Model Year",
+    "fieldName" : "year",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 17984721,
+    "width" : 57,
+    "cachedContents" : {
+      "non_null" : "1693",
+      "largest" : "2024",
+      "null" : "4",
+      "top" : [ {
+        "item" : "2014",
+        "count" : "225"
+      }, {
+        "item" : "2015",
+        "count" : "187"
+      }, {
+        "item" : "2008",
+        "count" : "174"
+      }, {
+        "item" : "2009",
+        "count" : "147"
+      }, {
+        "item" : "2012",
+        "count" : "124"
+      }, {
+        "item" : "2011",
+        "count" : "113"
+      }, {
+        "item" : "2016",
+        "count" : "111"
+      }, {
+        "item" : "2010",
+        "count" : "100"
+      }, {
+        "item" : "2007",
+        "count" : "93"
+      }, {
+        "item" : "2013",
+        "count" : "91"
+      }, {
+        "item" : "2017",
+        "count" : "66"
+      }, {
+        "item" : "2006",
+        "count" : "52"
+      }, {
+        "item" : "2005",
+        "count" : "38"
+      }, {
+        "item" : "2018",
+        "count" : "27"
+      }, {
+        "item" : "2004",
+        "count" : "19"
+      }, {
+        "item" : "2001",
+        "count" : "16"
+      }, {
+        "item" : "2003",
+        "count" : "16"
+      }, {
+        "item" : "2002",
+        "count" : "15"
+      }, {
+        "item" : "2000",
+        "count" : "11"
+      }, {
+        "item" : "2020",
+        "count" : "10"
+      } ],
+      "smallest" : "1983",
+      "count" : "1697",
+      "cardinality" : "1697"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 523773203,
+    "name" : "MAKE",
+    "dataTypeName" : "text",
+    "description" : "Equipment Manufacturer",
+    "fieldName" : "make",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 17984722,
+    "width" : 131,
+    "cachedContents" : {
+      "non_null" : "1693",
+      "largest" : "WHIT",
+      "null" : "4",
+      "top" : [ {
+        "item" : "FORD",
+        "count" : "858"
+      }, {
+        "item" : "TOYT",
+        "count" : "103"
+      }, {
+        "item" : "CHEV",
+        "count" : "102"
+      }, {
+        "item" : "PETE",
+        "count" : "67"
+      }, {
