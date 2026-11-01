@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { aggregateAll, EntrySplitter, esContracts, esContractsHarvest, feedUrl, INFO, itemsOf, nextLink, parseEntry, windowStart } from "./source";
+import { aggregateAll, EntrySplitter, esContracts, esContractsHarvest, feedUrl, INFO, itemsOf, nextLink, parseEntry, windowDaysFor, windowStart } from "./source";
 import { writeDaily, writeMeta } from "../../lib/library/store";
 import { InputError, SourceError } from "../../lib/http";
 
@@ -132,6 +132,19 @@ test("harvest refuses to store a partial window and reports a read failure", asy
   );
   await assert.rejects(esContractsHarvest(new Date("2026-10-24T03:17:00Z"), { open: async () => { throw new Error("boom"); } }), SourceError);
   assert.ok(first);
+});
+
+test("a Sunday or Monday collection looks back to Friday (1 Nov 2026 Sunday found no awards and failed twice)", async () => {
+  assert.equal(windowDaysFor("2026-11-01"), 2); // Sunday
+  assert.equal(windowDaysFor("2026-11-02"), 3); // Monday
+  assert.equal(windowDaysFor("2026-11-03"), 1); // Tuesday
+  assert.equal(windowDaysFor("2026-10-31"), 1); // Saturday
+  const f = fileOf("", [1, 2, 3, 4, 5], "2026-10-23T10:00:00+02:00"); // awards dated Friday 23 Oct
+  const sunday = await esContractsHarvest(new Date("2026-10-25T03:17:00Z"), { open: async () => [f] });
+  assert.equal(sunday.date, "2026-10-25");
+  assert.equal(sunday.rows.find((x) => x.item === "cpv-45")?.n, 5);
+  // a Tuesday window of one day would not see Friday's awards, and says so without calling it a format change
+  await assert.rejects(esContractsHarvest(new Date("2026-10-27T03:17:00Z"), { open: async () => [f] }), /weekend or holiday/);
 });
 
 test("windowStart", () => assert.equal(windowStart("2026-10-24", 14), "2026-10-10"));

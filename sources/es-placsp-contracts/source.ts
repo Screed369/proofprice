@@ -67,6 +67,15 @@ function tag(xml: string, name: string): string {
   return m ? m[1].trim() : "";
 }
 
+/** Days to read back from a collection date. Public buyers publish awards on working days, so a Sunday or Monday collection looks back
+ *  to Friday (1 Nov 2026, a Sunday, found no awards dated 31 Oct or 1 Nov and the collector failed twice). Saturday and weekdays: 1 day. */
+export function windowDaysFor(today: string): number {
+  const dow = new Date(today + "T00:00:00Z").getUTCDay(); // 0 Sunday .. 6 Saturday
+  if (dow === 0) return 2;
+  if (dow === 1) return 3;
+  return WINDOW_DAYS;
+}
+
 export function windowStart(today: string, days = WINDOW_DAYS): string {
   const d = new Date(today + "T00:00:00Z");
   return new Date(d.getTime() - days * 86400000).toISOString().slice(0, 10);
@@ -201,7 +210,7 @@ export interface HarvestOptions {
 export async function esContractsHarvest(now: Date = new Date(), o: HarvestOptions = {}): Promise<HarvestResult> {
   const started = Date.now();
   const to = now.toISOString().slice(0, 10);
-  const days = o.days ?? WINDOW_DAYS;
+  const days = o.days ?? windowDaysFor(to);
   const from = windowStart(to, days);
   const open = o.open ?? openHttp;
   const budget = o.budgetMs ?? TIME_BUDGET_MS;
@@ -211,6 +220,7 @@ export async function esContractsHarvest(now: Date = new Date(), o: HarvestOptio
   let url = FEED_URL;
   let files = 0;
   let entries = 0;
+  let withResults = 0; // entries that hold a TenderResult at all: proves the feed format is still read correctly
   let reached = false;
   let oldest = to;
   while (url && files < maxFiles) {
@@ -220,6 +230,7 @@ export async function esContractsHarvest(now: Date = new Date(), o: HarvestOptio
       const e = parseEntry(xml, from, to);
       if (!e) return;
       entries++;
+      if (xml.includes("<cac:TenderResult>")) withResults++;
       if (e.updated < fileOldest) fileOldest = e.updated;
       if (seenEntries.has(e.id)) return; // newest version of an entry is read first
       seenEntries.add(e.id);
@@ -250,7 +261,13 @@ export async function esContractsHarvest(now: Date = new Date(), o: HarvestOptio
       `The PLACSP feed was read back only to ${oldest} (${files} files) in the time allowed, short of the ${days} days wanted (${from}): not storing a partial window`,
     );
   }
-  if (!awards.length) throw new SourceError("The PLACSP feed held no usable awards in the window: the feed format may have changed");
+  if (!awards.length) {
+    throw new SourceError(
+      withResults
+        ? `The PLACSP feed held no awards dated ${from} to ${to} (${withResults} awarded entries read, none in the window: weekend or holiday); the earlier collection stays in use`
+        : "The PLACSP feed held no usable awards in the window: the feed format may have changed",
+    );
+  }
   const rows = aggregateAll(awards, from, to);
   return {
     date: to,
@@ -313,7 +330,7 @@ export async function esContracts(input: EsInput): Promise<PriceAnswer> {
       fellBack = true;
     }
   }
-  const from = windowStart(useDate);
+  const from = windowStart(useDate, windowDaysFor(useDate));
   const summary = row ? { count: row.n, median: row.median, low: row.low, high: row.high, min: row.min, max: row.max } : null;
   return buildAnswer({
     source: INFO,
