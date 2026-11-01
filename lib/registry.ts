@@ -215,6 +215,33 @@ export function assertNoBlankRequired(cat: CategoryPlugin, raw: Params, prepared
   }
 }
 
+/** Gap G20261101-BADREQ: every 400 about a call (REST and MCP both answer through runCategory) names the required parameters and
+ *  ends with up to 3 working example calls from the sources' own examples, the asked country's first. Error body only; once per message. */
+export function withBadRequestHelp(cat: CategoryPlugin, params: Params, err: InputError): InputError {
+  if (/Working examples:/.test(err.message)) return err;
+  const asked = typeof params.country === "string" ? params.country.trim().toUpperCase() : "";
+  const sources = sourcesFor(cat.id);
+  const ordered = [...sources.filter((s) => s.countries.includes(asked)), ...sources.filter((s) => !s.countries.includes(asked))];
+  const seen = new Set<string>();
+  const calls: string[] = [];
+  for (const s of ordered) {
+    const ex = s.examples[0];
+    if (!ex) continue;
+    const path = `/api/v1/${cat.restPath}?${new URLSearchParams(ex.params).toString()}`;
+    if (seen.has(path)) continue;
+    seen.add(path);
+    calls.push(path);
+    if (calls.length === 3) break;
+  }
+  const need = ["country", ...(cat.required ?? [])];
+  const out = new InputError(
+    `${err.message} Required parameters: ${need.join(", ")}.` + (calls.length ? ` Working examples: ${calls.join(" ; ")}.` : ""),
+    err.detail,
+    err.status,
+  );
+  return out;
+}
+
 /** Which source answers a request, and the request after the category's own normalisation (country upper-cased, fuel aliases ...).
  *  Throws InputError for a missing or uncovered country or invalid input. Shared by runCategory, runHistory and the answer pages. */
 export function pickSource(cat: CategoryPlugin, params: Params): { src: SourcePlugin; prepared: Params } {
@@ -328,11 +355,18 @@ export async function runCategory(cat: CategoryPlugin, params: Params, ctx: Hand
 }
 
 async function runCategoryRaw(cat: CategoryPlugin, params: Params, ctx: HandleContext, opts: RunOptions): Promise<PriceAnswer> {
-  const { src, prepared } = pickSource(cat, params);
+  let picked: { src: SourcePlugin; prepared: Params };
+  try {
+    picked = pickSource(cat, params);
+  } catch (err) {
+    throw err instanceof InputError ? withBadRequestHelp(cat, params, err) : err;
+  }
+  const { src, prepared } = picked;
   const deadlineMs = opts.deadlineMs ?? ANSWER_DEADLINE_MS;
   try {
     return await handleWithin(src, prepared, ctx, deadlineMs);
   } catch (err) {
+    if (err instanceof InputError) throw withBadRequestHelp(cat, params, err);
     if (!isSourceOutage(err)) throw err;
     const query = knownParams(cat, prepared);
     const stale = staleAnswer({ cat, src, params: prepared, query, error: err, baseUrl: ctx.baseUrl });
