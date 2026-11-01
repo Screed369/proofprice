@@ -11,6 +11,7 @@ import { SOURCE_PLUGINS } from "../lib/registry";
 import { dataCheck, previousByKey } from "../lib/library/check";
 import { libraryDates, readMeta, writeDaily, writeMeta, SourceMeta } from "../lib/library/store";
 import { passesGate } from "../lib/stats";
+import { harvestOrder, isKnownOutage } from "../lib/library/harvest-order";
 
 const TIMEOUT_MS = 10 * 60 * 1000;
 // A source that already failed on its previous harvest (a known outage) runs after the healthy ones, and the
@@ -19,9 +20,6 @@ const TIMEOUT_MS = 10 * 60 * 1000;
 // Worst case: ~5 min setup (npm ci + npm test) + 36 min of sources + one last source of up to TIMEOUT_MS (10 min) = 51 min < 60.
 const DEADLINE_MS = 36 * 60 * 1000;
 
-function knownOutage(prev: SourceMeta | null): boolean {
-  return !!(prev?.last_error && prev.last_harvest_at && !prev.last_error.startsWith("Data check held back"));
-}
 
 function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
   return new Promise((resolve, reject) => {
@@ -41,8 +39,10 @@ async function main() {
   let ok = 0;
   const report: string[] = [];
   const runStart = Date.now();
-  // healthy sources first, known outages last (stable within each group)
-  const ordered = [...targets].sort((a, b) => Number(knownOutage(readMeta(a.info.id))) - Number(knownOutage(readMeta(b.info.id))));
+  const durations: [string, number][] = [];
+  // healthy sources first, known outages last; inside each group the longest-waiting source first, so a source skipped by the
+  // time budget leads the queue next run instead of being skipped every day (lib/library/harvest-order.ts)
+  const ordered = harvestOrder(targets, (id) => readMeta(id));
   for (const s of ordered) {
     const id = s.info.id;
     if (Date.now() - runStart > DEADLINE_MS) {
@@ -55,7 +55,9 @@ async function main() {
       last_harvest_at: null, last_rows: 0, last_ok_at: null, last_error: null,
     };
     try {
+      const t0 = Date.now();
       const result = await withTimeout(s.harvest!(), TIMEOUT_MS, id);
+      durations.push([id, Date.now() - t0]);
       if (!result.rows.length) throw new Error("harvest returned no rows");
       // the data checker: a first harvest has no previous values, so it passes untouched
       const check = acceptChanges ? null : dataCheck({ result, prevMeta: prev, previous: previousByKey(id, result.date) });
@@ -91,6 +93,9 @@ async function main() {
       report.push(`${prev.last_error && prev.last_harvest_at && !prev.last_error.startsWith("Data check held back") ? "DOWN" : "FAIL"} ${id}: ${msg}`);
     }
   }
+  // the five slowest sources, so the next person sees what eats the time budget
+  const slow = durations.sort((a, b) => b[1] - a[1]).slice(0, 5).map(([id, ms]) => `${id} ${Math.round(ms / 1000)}s`);
+  if (slow.length) report.push(`TIME slowest sources: ${slow.join(", ")}; total ${Math.round((Date.now() - runStart) / 60000)} min`);
   console.log(report.join("\n"));
   if (ok === 0 && targets.length) {
     console.error("Every source failed.");
