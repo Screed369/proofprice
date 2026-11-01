@@ -1,0 +1,106 @@
+URL: https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0005149&Dim1=T&Dim2=PT&Dim3=T&lang=EN
+Fetched: 2026-11-01T13:26:12Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 2178
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 01 Nov 2026 13:26:12 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 2178
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=g5u0SUFWwQUgdhVToMELkhuHX3Xkg_4edNXflqEg.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indica.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[ {
+  "IndicadorCod" : "0005149",
+  "IndicadorDsg" : "Revenue per available room (Rev Par) (€) of hotel establishments by Geographic localization (NUTS - 2013) and Type (hotel establishment); Annual - Statistics Portugal, Guests stays and other data on hotel activity survey",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0005149&lingua=EN",
+  "DataExtracao" : "2026-11-01T13:26:11.530Z",
+  "DataUltimoAtualizacao" : "2019-01-28",
+  "UltimoPref" : "2017",
+  "Dados" : {
+    "2009" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "28,1",
+      "valor" : "28.1"
+    } ],
+    "2010" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "28,3",
+      "valor" : "28.3"
+    } ],
+    "2011" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "29,5",
+      "valor" : "29.5"
+    } ],
+    "2012" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "28,5",
+      "valor" : "28.5"
+    } ],
+    "2013" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "30,2",
+      "valor" : "30.2"
+    } ],
+    "2014" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "31,5",
+      "valor" : "31.5"
+    } ],
+    "2015" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "39,1",
+      "valor" : "39.1"
+    } ],
+    "2016" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "40,2",
+      "valor" : "40.2"
+    } ],
+    "2017" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "46,2",
+      "valor" : "46.2"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
