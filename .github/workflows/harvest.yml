@@ -52,6 +52,20 @@ jobs:
           rc=0
           flag=""; [ "$ACCEPT" = "true" ] && [ -n "$SOURCES" ] && flag="--accept-changes"
           npm run harvest -- $flag $SOURCES 2>&1 | tee harvest.log || rc=$?
+          # Second chance in a FRESH process for sources that failed on a network error. On 1 Nov pt-ine-rents and pt-home-prices
+          # (INE, UND_ERR_CONNECT_TIMEOUT) and au-bitre-airfares failed in the long daily run, yet both INE sources passed when run alone
+          # minutes later (and curl reached INE from the same runner). Full runs only; at most 8 sources; 10 minutes at most.
+          if [ -z "$SOURCES" ]; then
+            retry=$(grep -E '^(FAIL|DOWN) ' harvest.log | grep -E 'UND_ERR|timed out|Could not reach|ECONN|ETIMEDOUT|ENOTFOUND' | sed -E 's/^(FAIL|DOWN) ([^:]+):.*/\2/' | head -8 | tr '\n' ' ' || true)
+            if [ -n "$retry" ]; then
+              echo "Retrying in a fresh process: $retry"
+              timeout 600 npm run harvest -- $retry 2>&1 | tee harvest-retry.log || true
+              for id in $retry; do
+                if grep -qE "^(OK|HELD)[[:space:]]+$id:" harvest-retry.log; then sed -i -E "/^(FAIL|DOWN) $id:/d" harvest.log; fi
+              done
+              grep -E '^(OK|HELD)[[:space:]]' harvest-retry.log >> harvest.log || true
+            fi
+          fi
           failed=$(grep -c '^FAIL ' harvest.log || true)
           {
             echo "### Harvest: $(grep -c '^OK \|^HELD ' harvest.log || true) ok, $failed new error(s), $(grep -c '^DOWN ' harvest.log || true) known outage(s)"
