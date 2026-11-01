@@ -1,0 +1,70 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0005160&lang=EN
+Fetched: 2026-11-01T13:26:03Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 32851
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 01 Nov 2026 13:26:02 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=eba26904f8e1c94dc999848eae4532d5; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=PdoWlyDKBjywLT3apA9ITd1CKedto8x9N0EWv9Iz.portal-prod01; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 2500 BYTES
+[ {
+  "IndicadorCod" : "0005160",
+  "IndicadorNome" : "Bed occupancy net rate (%) in hotel establishments by Type (hotel establishment); Monthly - Statistics Portugal, Guests stays and other data on hotel activity survey",
+  "Periodic" : "Monthly",
+  "PrimeiroPeriodo" : "January 2009",
+  "UltimoPeriodo" : "December 2017",
+  "UnidadeMedida" : "Percentage (%)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "1",
+  "Nota" : "A new data series with additional types of tourist accommodation is available.<br><a href=\"https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0009928&selTab=tab0 \"target=\"_blank\">https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0009928&selTab=tab0</a>",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2019-01-22",
+  "DataExtracao" : "2026-11-01T13:26:02.834Z",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period (Month)",
+      "versao" : "XXXXX",
+      "nota_dsg" : "In 2013 and 2014, values in column \"Total\" include, besides hotel establishments, those related to tourism in rural areas, lodging tourism and new local accommodation units, which implies a statistical break in the time series. <br>From 2014 to 2017, values for Portugal and for Autonomous Region of Açores do not include local accommodation in Autonomous Region of Açores given the different methodology applied."
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Geographic localization (Portugal)",
+      "versao" : "05361"
+    }, {
+      "dim_num" : "3",
+      "abrv" : "Type (hotel establishment)",
+      "versao" : "02268",
+      "nota_dsg" : "Local accommodation with 10 or more beds on the Mainland and Autonomous Region of Açores and with no minimum capacity limit in Autonomous Region of Madeira."
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S3A200901" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A200901",
+        "categ_cod" : "S3A200901",
+        "categ_dsg" : "January 2009",
+        "categ_ord" : "20090101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A200902" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A200902",
+        "categ_cod" : "S3A200902",
+        "categ_dsg" : "February 2009",
+        "categ_ord" : "20090201",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S3A200903" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S3A200903",
+        "categ_cod" : "S3A200903",
+        "categ_dsg" : "March 2
