@@ -1,0 +1,26 @@
+URL: https://fdw.fews.net/api/marketpricefacts/?format=json&page_size=3
+Fetched: 2026-11-01T12:41:29Z from GitHub Actions
+Status, type, bytes: 200 application/json 2061
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 01 Nov 2026 12:41:29 GMT
+content-type: application/json
+content-length: 2061
+server: uvicorn
+x-fdw-responsecache: miss d8be6f84d0f6803ebec54a949a77bdf1
+cache-control: max-age=900, private
+vary: Accept, Authorization, Accept-Language, Cookie, origin, Accept-Encoding
+allow: GET, POST, HEAD, OPTIONS
+etag: "10f3a1b5bc25ecd242b2a799afca2968"
+content-language: en
+x-frame-options: DENY
+strict-transport-security: max-age=3600; includeSubDomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+cross-origin-opener-policy: same-origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"count":4305553,"next":"https://fdw.fews.net/api/marketpricefacts/?format=json&offset=3&page_size=3","previous":null,"results":[{"geographic_group":"Southern Asia","fewsnet_region":"Asia","fewsnet_region_code":905,"country":"Afghanistan","country_code":"AF","admin_1":"Kunar","admin_2":"Asad Abad","fnid":"AF0000M041","market":"Asadabad","cpcv2":"P39120AE","cpcv2_description":"Animal Feed (Concentrate)","product":"Animal Feed (Concentrate)","source_organization":"WFP VAM, Afghanistan","source_document":"World Food Programme Vulnerability Analysis, Monitoring and Evaluation (WFP VAME), Afghanistan, Price","collection_status":"Published","period_date":"2022-03-31","price_type":"Retail","product_source":"Import","unit":"100_kg","unit_type":"Weight","currency":"AFN","status":"Aggregated","value":2800.0,"availability":null,"availability_description":null,"common_unit":"kg","common_currency":"USD","exchange_rate":0.0111371,"common_unit_price":28.0,"common_currency_price":0.3118388,"value_one_month_ago":null,"value_one_year_ago":null,"value_two_years_ago":null,"value_three_years_ago":null,"value_four_years_ago":null,"value_five_years_ago":null,"value_one_year_ahead":3540.0,"two_year_average":null,"five_year_average":null,"pct_change_from_one_month_ago":null,"pct_change_from_one_year_ago":null,"pct_change_from_two_year_average":null,"pct_change_from_five_year_average":null,"start_date":"2022-03-01","id":null,"datacollectionperiod":null,"datacollection":null,"datasourcedocument":171,"datasourceorganization":171,"market_id":212302,"dataseries":6936647,"dataseries_name":"Asadabad, Afghanistan (Open Ended): P39120AE / Animal Feed (Concentrate): 100 kg: AFN: Retail: Import","dataseries_specialization_type":"/MarketProduct/","specialization_type":"/MarketPrice/","data_usage_policy":"Public","created":"2023-11-07T05:15:33","modified":"2026-01-22T08:45:19","status_changed":"2023-11-07T05:21:43","collection_status_changed":"2024-02-01T18:10:08","collection_schedule":"Monthly","longitude":71.150832,"latitude":34.872795,"is_staple_food":false}]}
