@@ -1,0 +1,1285 @@
+URL: https://help.fews.net/fdw/prices
+Fetched: 2026-11-01T12:41:22Z from GitHub Actions
+Status, type, bytes: 200 text/html 54273
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: text/html
+content-length: 54273
+date: Sun, 01 Nov 2026 12:41:22 GMT
+x-content-type-options: nosniff
+etag: "712865eec74fc473beea84c194b31652"
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age=31536000
+x-cache: Miss from cloudfront
+via: 1.1 554a247e2bb62ed2a3603decd985d5d6.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD61-P6
+alt-svc: h3=":443"; ma=86400
+x-amz-cf-id: zAnJnE0alr3DZx2qky35t-dlxprUBPlkO-n1OTWsq7iLvy7C85XcVg==
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (497)
+=== FIRST 30000 BYTES
+
+														
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+<!DOCTYPE html>
+<html
+	lang="en"
+	data-page-template="article"
+	
+ data-page-id="ci_c911d457a183793c82096ec9324af68ce70b6b8dba6d6039c84ccf70920c0312" data-confluence-content-id="2412314625"
+		data-color-scheme="light"
+>
+<head>
+	<meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="color-scheme" content="light">
+
+						<link id="pageTreeSource" rel="preload" href="/fdw/__pagetree.json" as="fetch" type="application/json" crossorigin="anonymous">
+
+		<meta name="site-path" content="/">
+
+					<link rel="x-site-path" href="/">
+	<link rel="x-root-path" href="/">
+
+	<meta name="site-default-language" content="en">
+		<meta name="site-languages" content="en,es">
+		<meta name="confluence-content-type" content="page">
+		<meta name="confluence-base-url" content="https://fewsnet.atlassian.net/wiki">
+		<meta name="confluence-space-key" content="FDWKB">
+			<meta name="page-title" content="Prices">
+
+		<meta name="google-site-verification" content="goGly7aMSL8Wbp8fOsGoZkq_1Fx-Ql2ZEQMPKJw2saE"/>
+
+
+
+	<link rel="icon" href="/__site/a8dde753-69e9-44b1-876e-f2bea22cbcfe/favicon-32x32%20(1).png" type="image/svg+xml">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<title>Prices | Data Warehouse Knowledge Base | FEWS NET Help Center</title>
+		<meta property="og:title" content="Prices | Data Warehouse Knowledge Base | FEWS NET Help Center">
+		<meta property="twitter:title" content="Prices | Data Warehouse Knowledge Base | FEWS NET Help Center">
+
+		<link rel="canonical" href="https://help.fews.net/fdw/prices">
+		<meta property="og:url" content="https://help.fews.net/fdw/prices">
+
+		<meta name="description" content="This page discusses the processes for preparing and uploading prices data to the FEWS NET Data Warehouse (FDW). It covers the steps for adding historical data …">
+		<meta property="og:description" content="This page discusses the processes for preparing and uploading prices data to the FEWS NET Data Warehouse (FDW). It covers the steps for adding historical data …">
+		<meta property="twitter:description" content="This page discusses the processes for preparing and uploading prices data to the FEWS NET Data Warehouse (FDW). It covers the steps for adding historical data …">
+
+		<meta property="og:image" content="https://help.fews.net/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png">
+		<meta property="twitter:image" content="https://help.fews.net/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png">
+
+	<meta property="og:type" content="website">
+	<meta property="twitter:card" content="summary_large_image">
+
+		<meta name="page-last-modified" content="2026-03-04T20:18:12.959Z">
+
+		<script>
+		(function () {
+			const defaultLanguageMeta = /** @type {string|undefined} */(document.querySelector('meta[name="site-default-language"]')?.content);
+			const availableLanguagesMeta = /** @type {string|undefined} */(document.querySelector('meta[name="site-languages"]')?.content);
+			const fallbackLanguage = defaultLanguageMeta ?? 'en';
+			const supportedLanguagesFromMeta = availableLanguagesMeta?.split(',') ?? [];
+			const supportedLanguages = [...new Set([fallbackLanguage, ...supportedLanguagesFromMeta])].filter(Boolean);
+			const detectedLanguage = new URLSearchParams(self.location.search).get('l') || document.documentElement.lang;
+			const resolvedLanguage = supportedLanguages.includes(detectedLanguage) ? detectedLanguage : fallbackLanguage;
+			document.documentElement.lang = resolvedLanguage;
+			const sheet = new CSSStyleSheet();
+			document.adoptedStyleSheets.push(sheet);
+			// Hide any element with a `data-lang` attribute that does NOT match the detected language
+			sheet.replaceSync('[data-lang]:not([data-lang="' + resolvedLanguage + '"]) { display: none; }');
+		})();
+	</script>
+
+		<script>
+		(function() {
+			/** @typedef {'light'|'dark'} ColorScheme */
+			/** @type {ColorScheme[]} */
+			const availableColorSchemes = document.documentElement.querySelector('meta[name="color-scheme"]').content.split(' ').filter(Boolean);
+			/** @type {ColorScheme|'system'} */
+			const userPreference = localStorage?.getItem('color-scheme-preference') ?? 'system';
+			// Clean-up user preference in case there's nothing to choose from
+			// Fall back to the HTML document's default color theme
+			if (availableColorSchemes.length <= 1 || ![...availableColorSchemes, 'system'].includes(userPreference)) {
+				localStorage?.removeItem('color-scheme-preference');
+				return;
+			}
+			// Override default HTML document with client-side user preference
+			if (userPreference === 'system') {
+				updateThemeAttribute(self.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+			} else {
+				updateThemeAttribute(userPreference)
+			}
+			/** @param {ColorScheme} colorScheme */
+			function updateThemeAttribute(colorScheme) {
+				document.documentElement.setAttribute('data-color-scheme', colorScheme);
+			}
+		})();
+	</script>
+
+	<script data-cfasync="false">
+	(() => {
+		if (!new URLSearchParams(location.search).has('disable-custom-overrides')) {
+			return;
+		}
+
+		new MutationObserver((records) => {
+			for (const { addedNodes } of records) {
+				for (const node of addedNodes) {
+					if (node.nodeType === Node.ELEMENT_NODE && node.hasAttribute('data-custom-overrides')) {
+						node.remove();
+					}
+				}
+			}
+		}).observe(document.documentElement, { childList: true, subtree: true });
+	})();
+</script>
+
+		<script>
+		
+		function sortContentSources(a, b) {
+			let result = a.precedence - b.precedence;
+
+			if (result === 0) {
+				result = a.value.localeCompare(b.value);
+			}
+
+			return result;
+		}
+
+		
+		function applyContentSourceOrderToElements({ parent, children }) {
+			const contentSourceElements = [...children];
+
+			contentSourceElements
+				.sort((a, b) => (
+					sortContentSources(
+						{ value: a.dataset.orderValue, precedence: a.dataset.orderPrecedence },
+						{ value: b.dataset.orderValue, precedence: b.dataset.orderPrecedence }
+					)
+				))
+				.forEach((element) => {
+					delete element.dataset.orderValue;
+					delete element.dataset.orderPrecedence;
+				});
+
+			parent.replaceChildren(...contentSourceElements);
+		}
+	</script>
+
+<script>
+	(() => {
+		if (isInAppHelpEnabled()) {
+			document.documentElement.dataset.inAppHelp = 'true';
+
+			if (isTitleHidden()) {
+				document.documentElement.dataset.hideTitle = 'true';
+			}
+		}
+
+		function isInAppHelpEnabled() {
+			return new URLSearchParams(location.search).get('inAppHelp') === 'true';
+		}
+
+		function isTitleHidden() {
+			return new URLSearchParams(location.search).get('title') === 'false';
+		}
+	})();
+</script>
+
+<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/in-app-help.css"/>
+<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/in-app-help.js"></script>
+
+	<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/styles.css">
+	<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/fonts.css">
+	<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/search-styles-bundle.css">
+
+	
+
+	<style>
+		@layer overrides {
+			:root {
+				--theme-headline-font: "Roboto";
+				--theme-text-font: "Roboto";
+				--theme-headline-scale: calc(100 / 100);
+				--theme-text-scale: calc(100 / 100);
+			}
+		}
+	</style>
+
+	<style>
+		@layer overrides {
+			:root, :host {
+					--theme-header-logo-size: 40px;
+					--theme-footer-logo-size: 40px;
+			}
+
+			:root[data-color-scheme='light'],
+			:host([data-color-scheme='light']) {
+					--theme-header-text-color: #212721;
+					--theme-header-background-color: #ffffff;
+					--theme-footer-text-color: #096640;
+					--theme-footer-background-color: #ffffff;
+			}
+
+			:root[data-color-scheme='dark'],
+			:host([data-color-scheme='dark']) {
+					--theme-header-text-color: #FFFFFF;
+					--theme-header-background-color: #0a0b0c;
+					--theme-footer-text-color: #FFFFFF;
+					--theme-footer-background-color: #0a0b0c;
+			}
+		}
+	</style>
+
+	 
+
+
+
+
+
+<script data-site-data="content-sources" type="application/json">
+{
+	"collection": {
+		"members": [
+
+
+	{
+	"name": "Data Explorer Knowledge Base",
+	"id": "af657afe-b33b-4860-b366-6e4f7fc4f048",
+	"key": "TKB",
+	"path": "/fde/v3",
+		"prefix": "/fde/v3",
+		"current": false,
+	"versions": {
+		"available": [
+				{
+					"name": "v3"
+				}
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+
+
+
+		
+
+	
+					
+										
+						
+
+
+
+
+
+
+
+		
+
+	
+					
+										
+						
+
+
+
+
+	{
+	"name": "Agroclimatological Tools Knowledge Base",
+	"id": "720cd490-86be-4c20-b531-6c253e475ee8",
+	"key": "GCLIMKB",
+	"path": "/en/tools/v3",
+		"prefix": "/en/tools/v3",
+		"current": false,
+		"__translations": {
+				"en": {
+					"name": "Agroclimatological Tools Knowledge Base"
+				},
+				"es": {
+					"name": "Agroclimatological Tools Knowledge Base"
+				}
+		},
+	"versions": {
+		"available": [
+				{
+					"name": "v3"
+				}
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+				{
+					"name": "English",
+					"code": "en",
+					"prefix": "en"
+				},
+				{
+					"name": "Spanish",
+					"code": "es",
+					"prefix": "es"
+				}
+		]
+	}
+}
+,
+
+
+	{
+	"name": "Livelihoods Explorer Knowledge Base",
+	"id": "6e989099-7d40-4aba-9b2a-ad5dc73204c7",
+	"key": "LE",
+	"path": "/lex",
+		"prefix": "/lex",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "Glossary and Policies",
+	"id": "9ee23c47-5a5c-45be-abd2-f9b6af6688af",
+	"key": "FNDP",
+	"path": "/fdp",
+		"prefix": "/fdp",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "Data Warehouse Knowledge Base",
+	"id": "7ee0fbba-d432-40f3-bf7f-282154bddc3a",
+	"key": "FDWKB",
+	"path": "/fdw",
+		"prefix": "/fdw",
+		"current": true,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "FEWS NET Website CMS Knowledge Base",
+	"id": "967d740e-b391-4397-8c5a-2151e3bf9cde",
+	"key": "FNWCKB",
+	"path": "/cms",
+		"prefix": "/cms",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "Livelihoods Explorer HEA Database Knowledge Base",
+	"id": "1d37cb0e-5cb8-433f-9717-17457ed989a4",
+	"key": "HEAE",
+	"path": "/hea",
+		"prefix": "/hea",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+,
+
+
+	{
+	"name": "FEWS NET Brand",
+	"id": "5079236f-3d00-475d-9735-db104c90051e",
+	"key": "Brand",
+	"path": "/brand",
+		"prefix": "/brand",
+		"current": false,
+	"versions": {
+		"available": [
+		]
+	},
+	"variants": {
+		"available": [
+		]
+	},
+	"languages": {
+		"available": [
+		]
+	}
+}
+
+		]
+	}
+}
+</script>
+
+
+<script data-theme-placeholder="site" type="application/json">
+	{
+		"id": "bfd07ca6-d479-4809-b08b-eb1744de831c",
+		"path": "/",
+		"url": "/",
+		"domain": "help.fews.net",
+		"aiSearchEnabled": false,
+		"isMcpServerEnabled": false,
+		"visibleToSearchEngines": true,
+		"isProtectionEnabled": false,
+		"isPublished": true,
+		"isAiAssistantEnabled": false
+	}
+</script>
+
+ 
+<script data-config="cookieconsent" type="application/json">
+{
+	"enabled": true,
+	"mode": "opt-in",
+	"heading": "",
+	"description": "This site uses third-party website tracking technologies to provide and continually improve our services. I agree and may revoke or change my consent at any time with effect for the future.",
+	"links": [
+	]
+}
+</script>
+
+	<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/main.js"></script>
+	<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/page-tree.js" fetchpriority="high"></script>
+	<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/search-bundle.js"></script>
+
+							<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/article.js"></script>
+
+		<link rel="stylesheet" href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/ai-actions.css">
+		<script type="module" src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/ai-actions.js"></script>
+
+
+
+
+
+
+<template data-custom-overrides data-type="code-asset">
+	<link rel="stylesheet" href="/__site/02d89787-70dc-42ce-975d-dcfb0e4e160f/code_custom_css_override_asset.css">
+</template>
+
+<template data-custom-overrides data-type="code-asset">
+				<script data-cfasync="false" src="/__site/c8cba9ac-13de-4b62-8742-2884279595b1/code_custom_js_override_asset.js"></script>
+</template>
+
+<script data-cfasync="false">
+	(() => {
+		document.querySelectorAll('template[data-custom-overrides]').forEach(template => {
+			const type = template.getAttribute('data-type');
+
+			if (type === 'code-asset') {
+				const assetElement = template.content.cloneNode(true).firstElementChild;
+				const appendAsset = () => document.head.appendChild(assetElement);
+
+				if (assetElement.tagName === 'SCRIPT') {
+															if (document.readyState === 'complete') {
+						appendAsset();
+					} else {
+												document.addEventListener('DOMContentLoaded', appendAsset, { once: true });
+					}
+				} else {
+					appendAsset();
+				}
+			}
+		});
+	})();
+</script>
+
+
+			
+		<script data-config="integration:ga" type="application/json">
+			{
+				"enabled": true,
+				"tagId": "G-R1VWS4F5TW"
+			}
+		</script>
+		<script
+			type="text/plain"
+			data-category="analytics"
+			data-service="ga"
+			data-src="https://www.googletagmanager.com/gtag/js?id=G-R1VWS4F5TW"
+			async
+		></script>
+
+
+
+
+
+
+
+
+
+
+
+
+			</head>
+<body>
+	<a href="#content" class="skip-link">
+		<i18n-message i18nkey="navigation.skip.to.main.label">Skip to main content</i18n-message>
+	</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+<header data-component="header" class="header">
+
+	<div class="header-site-branding">
+		<i18n-message id="605e08b8b8166141-2" class="sr-only" i18nkey="header.home.label"></i18n-message>
+
+		<a href="/" aria-labelledby="605e08b8b8166141-2">
+
+
+
+
+		<img class="header-logo header-logo--dark" src="/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png" alt="">
+
+		<img class="header-logo header-logo--light" src="/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png" alt="">
+
+		</a>
+
+			<a href="/fdw" class="header-site-name">
+				Data Warehouse Knowledge Base
+			</a>
+	</div>
+	<div class="header-content">
+			<div class="header-links">
+				<ul>
+						<li><a href="https://help.fews.net/fdp/fews-net-glossary">Glossary</a></li>
+						<li><a href="https://fewsnet.atlassian.net/servicedesk/customer/portal/2/group/-1">Contact Us</a></li>
+						<li><a href="https://fews.net">FEWS NET Website</a></li>
+				</ul>
+			</div>
+
+		<div class="header-pickers">
+
+
+	
+
+			
+
+
+			
+	
+
+		
+		
+
+
+			
+	
+
+		
+
+
+	<language-picker>
+							<i18n-message replacecontent="605e08b8b8166141-3" i18nkey="language.en" ns="common" hidden>
+				English
+			</i18n-message>
+			<i18n-message replacecontent="605e08b8b8166141-4" i18nkey="language.es" ns="common" hidden>
+				Spanish
+			</i18n-message>
+
+									<theme-select name="language">
+				<label class="sr-only">
+			<i18n-message i18nkey="language.picker.label"></i18n-message>
+		</label>
+
+		<button type="button">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-scroll-translations-logo ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#scroll-translations-logo"></use>
+	</svg>
+
+									
+						<span data-select-value></span>
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-caret_down ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#caret_down"></use>
+	</svg>
+		</button>
+
+		<theme-listbox>
+				<theme-option value="/?l=en" lang="en">
+										<span id="605e08b8b8166141-3" data-select-label>English</span>
+				</theme-option>
+				<theme-option value="/?l=es" lang="es">
+										<span id="605e08b8b8166141-4" data-select-label>Spanish</span>
+				</theme-option>
+		</theme-listbox>
+	</theme-select>
+	</language-picker>
+		</div>
+
+			<div class="header-search">
+				<search-bar quicksearch></search-bar>
+			</div>
+
+
+				<button type="button" aria-controls="drawer-605e08b8b8166141-1" aria-haspopup="dialog" aria-expanded="false" class="header-nav-toggle" onclick="self['drawer-605e08b8b8166141-1'].showModal()">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-menu ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#menu"></use>
+	</svg>
+			<i18n-message class="sr-only" i18nkey="navigation.main.label">Main navigation</i18n-message>
+		</button>
+	</div>
+
+	
+
+<dialog id="drawer-605e08b8b8166141-1" class="drawer">
+	<header data-component="header" class="header">
+
+	<div class="header-site-branding">
+		<i18n-message id="605e08b8b8166141-5" class="sr-only" i18nkey="header.home.label"></i18n-message>
+
+		<a href="/" aria-labelledby="605e08b8b8166141-5">
+
+
+
+
+		<img class="header-logo header-logo--dark" src="/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png" alt="">
+
+		<img class="header-logo header-logo--light" src="/__site/966b7261-2103-45c6-ac9c-f9cdce304099/FEWS_NET_Logo_Full.png" alt="">
+
+		</a>
+
+			<a href="/fdw" class="header-site-name">
+				Data Warehouse Knowledge Base
+			</a>
+	</div>
+
+		<div class="header-content">
+			<button type="button" aria-controls="drawer-605e08b8b8166141-1" aria-haspopup="dialog" aria-expanded="true" autofocus class="drawer-toggle" onclick="self['drawer-605e08b8b8166141-1'].close()">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-close ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#close"></use>
+	</svg>
+				<i18n-message class="sr-only" i18nkey="action.close.label">Close</i18n-message>
+			</button>
+		</div>
+	</header>
+
+	<div class="drawer-section drawer-search">
+		<search-bar quicksearch></search-bar>
+	</div>
+
+		<div class="drawer-section drawer-pickers">
+
+
+	
+
+			
+
+
+			
+	
+
+		
+		
+
+
+			
+	
+
+		
+
+
+	<language-picker>
+							<i18n-message replacecontent="605e08b8b8166141-6" i18nkey="language.en" ns="common" hidden>
+				English
+			</i18n-message>
+			<i18n-message replacecontent="605e08b8b8166141-7" i18nkey="language.es" ns="common" hidden>
+				Spanish
+			</i18n-message>
+
+									<theme-select name="language">
+				<label class="sr-only">
+			<i18n-message i18nkey="language.picker.label"></i18n-message>
+		</label>
+
+		<button type="button">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-scroll-translations-logo ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#scroll-translations-logo"></use>
+	</svg>
+
+									
+						<span data-select-value></span>
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-caret_down ">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#caret_down"></use>
+	</svg>
+		</button>
+
+		<theme-listbox>
+				<theme-option value="/?l=en" lang="en">
+										<span id="605e08b8b8166141-6" data-select-label>English</span>
+				</theme-option>
+				<theme-option value="/?l=es" lang="es">
+										<span id="605e08b8b8166141-7" data-select-label>Spanish</span>
+				</theme-option>
+		</theme-listbox>
+	</theme-select>
+	</language-picker>
+		</div>
+
+	<nav id="drawer-nav" class="drawer-section drawer-nav tree" aria-labelledby="drawer-nav-label">
+		<i18n-message id="drawer-nav-label" class="sr-only" i18nkey="navigation.main.label">Main</i18n-message>
+
+						<copy-page-tree target="articleTree"></copy-page-tree>
+	</nav>
+
+			<div class="drawer-section drawer-links tree">
+<ul  >
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-8" href="https://help.fews.net/fdp/fews-net-glossary" >Glossary</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-9" href="https://fewsnet.atlassian.net/servicedesk/customer/portal/2/group/-1" >Contact Us</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-10" href="https://fews.net" >FEWS NET Website</a>
+			</div>
+
+		</li>
+</ul>
+		</div>
+</dialog>
+
+</header>
+		<section class="article-page body">
+		<theme-navigator class="navigator">
+			<button id="navigator-toggle" class="navigator-toggle" aria-controls="navigator-nav" aria-labelledby="navigator-nav-label" aria-expanded="true">
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-menu navigator-icon-closed">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#menu"></use>
+	</svg>
+	<svg role="img" aria-hidden="true" data-component="icon" class="icon icon-chevron_left navigator-icon-opened">
+		<use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#chevron_left"></use>
+	</svg>
+			</button>
+						<nav id="navigator-nav" class="navigator-body tree" aria-labelledby="navigator-nav-label">
+				<i18n-message id="navigator-nav-label" class="sr-only" i18nkey="navigation.main.label">Main</i18n-message>
+				<theme-page-tree id="articleTree">
+<ul  >
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="false"
+						aria-labelledby="605e08b8b8166141-11"
+aria-busy="true" aria-disabled="true"					></button>
+				<a id="605e08b8b8166141-11" href="/fdw/about-the-fews-net-data-warehouse" >About the FEWS NET Data Warehouse</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="false"
+						aria-labelledby="605e08b8b8166141-13"
+aria-busy="true" aria-disabled="true"					></button>
+				<a id="605e08b8b8166141-13" href="/fdw/warehouse-key-concepts-and-architecture" >Key Concepts and Architecture</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="true"
+aria-controls="605e08b8b8166141-16"						aria-labelledby="605e08b8b8166141-15"
+					></button>
+				<a id="605e08b8b8166141-15" href="/fdw/managing-data" >Managing Data</a>
+			</div>
+
+<ul  id="605e08b8b8166141-16" >
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="false"
+						aria-labelledby="605e08b8b8166141-17"
+aria-busy="true" aria-disabled="true"					></button>
+				<a id="605e08b8b8166141-17" href="/fdw/generic-data-management-processes" >Generic Data Management Processes</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="true"
+aria-controls="605e08b8b8166141-20"						aria-labelledby="605e08b8b8166141-19"
+					></button>
+				<a id="605e08b8b8166141-19" href="/fdw/domain-specific-data-management" >Domain Specific Data Management</a>
+			</div>
+
+<ul  id="605e08b8b8166141-20" >
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-21" href="/fdw/ipc-classification-data" >Acute Food Insecurity Area-Level Classification Data</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-22" href="/fdw/food-assistance-outlook-brief-faob-data" >Acutely Food Insecure Population Estimates</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-23" href="/fdw/commodity-availability-data" >Commodity Availability Data</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-24" href="/fdw/commodity-balance-data" >Commodity Balance Data</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-25" href="/fdw/crop-production-estimates" >Crop Production Estimates</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-26" href="/fdw/cross-border-trade" >Cross Border Trade</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-27" href="/fdw/livelihoods" >Livelihoods</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-28" href="/fdw/population-indicator" >Population Indicator</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+				<a id="605e08b8b8166141-29" href="/fdw/prices" aria-current="page">Prices</a>
+			</div>
+
+		</li>
+</ul>
+		</li>
+</ul>
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="false"
+						aria-labelledby="605e08b8b8166141-30"
+aria-busy="true" aria-disabled="true"					></button>
+				<a id="605e08b8b8166141-30" href="/fdw/managing-metadata" >Managing Metadata</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="false"
+						aria-labelledby="605e08b8b8166141-32"
+aria-busy="true" aria-disabled="true"					></button>
+				<a id="605e08b8b8166141-32" href="/fdw/administration" >Administration</a>
+			</div>
+
+		</li>
+		<li class="tree-item">
+			<div class="tree-item-header">
+					<button
+						class="tree-action"
+						type="button"
+						aria-expanded="false"
+						aria-labelledby="605e08b8b8166141-34"
+aria-busy="true" aria-disabled="true"					></button>
+				<a id="605e08b8b8166141-34" href="/fdw/recent-updates" >Recent Updates</a>
+			</div>
+
+		</li>
+</ul>
+				</theme-page-tree>
+			</nav>
+		</theme-navigator>
+
+		<main class="main-content">
+			<div class="topbar">
+
+
+
+
+	<theme-breadcrumbs class="breadcrumbs" itemsbeforecollapse="2" maxitems="4">
+		<i18n-message id="605e08b8b8166141-36" class="sr-only" i18nkey="breadcrumbs.label">Breadcrumbs</i18n-message>
+		<nav aria-labelledby="605e08b8b8166141-36">
+				<ol>
+							<li>
+								<a href="/">
+										<i18n-message i18nkey="breadcrumbs.home.label">Home</i18n-message>
+								</a>
+							</li>
+							<li>
+								<a href="/fdw">
+										FEWS NET Data Warehouse Knowledge Base
+								</a>
+							</li>
+							<li>
+								<a href="/fdw/managing-data">
+										Managing Data
+								</a>
+							</li>
+							<li>
+								<a href="/fdw/domain-specific-data-management">
+										Domain Specific Data Management
+								</a>
+							</li>
+				</ol>
+		</nav>
+	</theme-breadcrumbs>
+					<ai-actions class="ai-actions"><theme-dropdown></theme-dropdown></ai-actions>
+			</div>
+				<script src="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/breadcrumbs.js"></script>
+		<nav class="toc sticky" data-component="toc" aria-labelledby="605e08b8b8166141-37">
+			<h2 class="toc-heading" id="605e08b8b8166141-37">
+				<i18n-message i18nkey="page.article.toc.label">On this Page</i18n-message>
+			</h2>
+			<theme-toc for="content"></theme-toc>
+		</nav>
+			<article id="content" tabindex="-1" class="fb-layout-container">
+				<header>
+					<h1>Prices</h1>
+				</header>
+				<section class="article-body fb-layout-body" data-searchable-content>
+			
+
+	
+	
+
+	
+
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+						
+		
+
+
+				
+
+
+	
+	
+	
+	
+	
+	<p>This page discusses the processes for preparing and uploading prices data to the FEWS NET Data Warehouse (FDW). It covers the steps for adding historical data to FDW for a new data source, as well as the routine processes for uploading monthly or weekly data collections.</p>
+<h2 id="Historical-data" style=""><span id="Prices-Historicaldata"></span>Historical data
+ <i18n-message i18nkey="clipboard.copyLink.label" attribute="description">
+  <copy-clipboard class="anchor-copy-button" value="https://help.fews.net/fdw/prices#Historical-data">
+   <svg role="img" aria-hidden="true" data-component="icon" class="icon icon-link copy-headline-link-icon">
+    <use href="/__theme/b_8ca5a7d7-80f3-41c8-bea7-75cce14ad14f/scroll-sites-help-center-theme/57/icons.svg#link"></use>
+   </svg>
+  </copy-clipboard>
+ </i18n-message></h2>
+<p>Before FDW can ingest a new prices data source, you must do the following:&nbsp;</p>
+<ul>
+ <li>
+  <p>Identify new metadata, such as new markets or products, and add it to FDW.</p>
+ </li>
+ <li>
+  <p>Prepare a file containing the historical data that has been cleaned and organized using an upload template built for price recognition.&nbsp;</p>
+  <ul>
+   <li>
+    <p>The historical data file will be used as the basis for a new upload file for the field to begin adding their prices monthly or weekly.</p>
+   </li>
+  </ul>
+ </li>
+</ul>
+<h3 id="Add-new-metadata" style=""><span id="Prices-Addnewmetadata"></span>Add new metadata
+ <i18n-message i18nkey="clipboard.copyLink.label" attribute="description">
+  <copy-clipboard class="anchor-copy-button" value="https://help.fews.net/fdw/prices#Add-new-metadata">
+   <svg role="img" aria-hidden="true" data-component="icon" class="icon icon-link copy-headline-link-icon">
+    <use href="/__theme/
