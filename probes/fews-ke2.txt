@@ -1,0 +1,26 @@
+URL: https://fdw.fews.net/api/marketpricefacts/?format=json&country_code=KE&page_size=2
+Fetched: 2026-11-01T12:43:54Z from GitHub Actions
+Status, type, bytes: 200 application/json 3864
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 01 Nov 2026 12:43:54 GMT
+content-type: application/json
+content-length: 3864
+server: uvicorn
+x-fdw-responsecache: miss e19ab32a4064cb5ef7344a0d48f4cade
+cache-control: max-age=900, private
+vary: Accept, Authorization, Accept-Language, Cookie, origin, Accept-Encoding
+allow: GET, POST, HEAD, OPTIONS
+etag: "ee31d611640ebc03d501aea0b02bc253"
+content-language: en
+x-frame-options: DENY
+strict-transport-security: max-age=3600; includeSubDomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+cross-origin-opener-policy: same-origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+{"count":51405,"next":"https://fdw.fews.net/api/marketpricefacts/?country_code=KE&format=json&offset=2&page_size=2","previous":null,"results":[{"geographic_group":"Eastern Africa","fewsnet_region":"East Africa","fewsnet_region_code":902,"country":"Kenya","country_code":"KE","admin_1":"Kisumu","admin_2":"Nyando","fnid":"KE0000M0104","market":"Ahero","cpcv2":"R01701AA","cpcv2_description":"Common bean family","product":"Beans (mixed)","source_organization":"KNBS, Kenya","source_document":"Kenya National Bureau of Statistics (KNBS), Leading Economic Indicators, Price, Kenya","collection_status":"Published","period_date":"2018-01-31","price_type":"Retail","product_source":"Local","unit":"kg","unit_type":"Weight","currency":"KES","status":"Not Collected","value":null,"availability":null,"availability_description":null,"common_unit":"kg","common_currency":"USD","exchange_rate":0.00981,"common_unit_price":null,"common_currency_price":null,"value_one_month_ago":null,"value_one_year_ago":null,"value_two_years_ago":null,"value_three_years_ago":null,"value_four_years_ago":null,"value_five_years_ago":null,"value_one_year_ahead":null,"two_year_average":null,"five_year_average":null,"pct_change_from_one_month_ago":null,"pct_change_from_one_year_ago":null,"pct_change_from_two_year_average":null,"pct_change_from_five_year_average":null,"start_date":"2018-01-01","id":39649933,"datacollectionperiod":355561,"datacollection":365980,"datasourcedocument":8198,"datasourceorganization":2081,"market_id":254229,"dataseries":7706507,"dataseries_name":"Ahero, Kenya (Open Ended): R01701AA / Beans (mixed): Kilogram: KES: Retail: Local","dataseries_specialization_type":"/MarketProduct/","specialization_type":"/MarketPrice/","data_usage_policy":"Public","created":"2025-12-02T09:36:48","modified":"2026-03-12T06:07:01","status_changed":"2025-12-02T09:36:48","collection_status_changed":"2026-03-12T06:07:01","collection_schedule":"Monthly","longitude":34.92034,"latitude":-0.17444,"is_staple_food":false},{"geographic_group":"Eastern Africa","fewsnet_region":"East Africa","fewsnet_region_code":902,"country":"Kenya","country_code":"KE","admin_1":"Kisumu","admin_2":"Nyando","fnid":"KE0000M0104","market":"Ahero","cpcv2":"R01701AA","cpcv2_description":"Common bean family","product":"Beans (mixed)","source_organization":"KNBS, Kenya","source_document":"Kenya National Bureau of Statistics (KNBS), Leading Economic Indicators, Price, Kenya","collection_status":"Published","period_date":"2018-02-28","price_type":"Retail","product_source":"Local","unit":"kg","unit_type":"Weight","currency":"KES","status":"Not Collected","value":null,"availability":null,"availability_description":null,"common_unit":"kg","common_currency":"USD","exchange_rate":0.00995,"common_unit_price":null,"common_currency_price":null,"value_one_month_ago":null,"value_one_year_ago":null,"value_two_years_ago":null,"value_three_years_ago":null,"value_four_years_ago":null,"value_five_years_ago":null,"value_one_year_ahead":null,"two_year_average":null,"five_year_average":null,"pct_change_from_one_month_ago":null,"pct_change_from_one_year_ago":null,"pct_change_from_two_year_average":null,"pct_change_from_five_year_average":null,"start_date":"2018-02-01","id":39651943,"datacollectionperiod":355584,"datacollection":365999,"datasourcedocument":8198,"datasourceorganization":2081,"market_id":254229,"dataseries":7706507,"dataseries_name":"Ahero, Kenya (Open Ended): R01701AA / Beans (mixed): Kilogram: KES: Retail: Local","dataseries_specialization_type":"/MarketProduct/","specialization_type":"/MarketPrice/","data_usage_policy":"Public","created":"2025-12-02T11:49:31","modified":"2026-03-12T06:07:00","status_changed":"2025-12-02T11:49:31","collection_status_changed":"2026-03-12T06:07:00","collection_schedule":"Monthly","longitude":34.92034,"latitude":-0.17444,"is_staple_food":false}]}
