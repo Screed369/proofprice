@@ -23,6 +23,7 @@ export default defineSource({
   method:
     "Brazil (Porto Alegre): the city's ITBI property-transfer tax guides are collected once a day into our price library; answers are rolling 3 to 24 month windows by neighbourhood for apartments and houses. The figure is the ITBI tax base, not a verified price paid.",
   handle: (p, ctx) => poaHomeSales({ town: str(p.town), property_type: str(p.property_type), months: num(p.months), baseUrl: ctx.baseUrl }),
+  serves: () => true,
   harvest: poaHarvest,
   historyKey: (p) => poaHistoryKey({ town: str(p.town), property_type: str(p.property_type), months: num(p.months) }),
 });
