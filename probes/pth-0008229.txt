@@ -1,0 +1,79 @@
+URL: https://www.ine.pt/ine/json_indicador/pindicaMeta.jsp?varcd=0008229&lang=EN
+Fetched: 2026-11-01T13:22:06Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=UTF-8 80917
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 01 Nov 2026 13:22:05 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: ineportal=77e5d0058644ef0cf7e54ce2c23f20f4; Path=/; HttpOnly; secure; SameSite=Strict
+Set-Cookie: JSESSIONID=OTlxn-qsY77rMteyudsx1dCqYQ6gnkT3eTmMkV2b.portal-prod02; path=/ine; HttpOnly; secure; SameSite=Strict
+Content-Disposition: attachment; filename="indicaMeta.json"
+Strict-Transport-Security: max-age=31536000
+Content-Security-Policy: upgrade-insecure-requests
+
+=== FILE TYPE: JSON text data
+=== FIRST 2000 BYTES
+[ {
+  "IndicadorCod" : "0008229",
+  "IndicadorNome" : "Household consumption of electric energy by inhabitant (kWh/ inhab.) by Place of residence (NUTS - 2013); Annual - DGEG, Statistics on coal, oil, electric power and natural gas",
+  "Periodic" : "Annual",
+  "PrimeiroPeriodo" : "2011",
+  "UltimoPeriodo" : "2023",
+  "UnidadeMedida" : "Kilowatt hour/ Inhabitant (kWh/ inhab.)",
+  "Potencia10" : "0",
+  "PrecisaoDecimal" : "1",
+  "Lingua" : "EN",
+  "DataUltimaAtualizacao" : "2025-02-26",
+  "DataExtracao" : "2026-11-01T13:22:05.665Z",
+  "Dimensoes" : {
+    "Descricao_Dim" : [ {
+      "dim_num" : "1",
+      "abrv" : "Data reference period",
+      "versao" : "XXXXX"
+    }, {
+      "dim_num" : "2",
+      "abrv" : "Place of residence (NUTS - 2013)",
+      "versao" : "03505",
+      "nota_dsg" : "From January 1st, 2015 came into force a new version of NUTS (NUTS 2013). At NUTS II level was just a name change in \"Lisboa\" which became known as \"Área Metropolitana de Lisboa\"."
+    } ],
+    "Categoria_Dim" : [ {
+      "Dim_Num1_S7A2011" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2011",
+        "categ_cod" : "S7A2011",
+        "categ_dsg" : "2011",
+        "categ_ord" : "20110101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2012" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2012",
+        "categ_cod" : "S7A2012",
+        "categ_dsg" : "2012",
+        "categ_ord" : "20120101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2013" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2013",
+        "categ_cod" : "S7A2013",
+        "categ_dsg" : "2013",
+        "categ_ord" : "20130101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2014" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2014",
+        "categ_cod" : "S7A2014",
+        "categ_dsg" : "2014",
+        "categ_ord" : "20140101",
+        "categ_nivel" : "1"
+      } ],
+      "Dim_Num1_S7A2015" : [ {
+        "dim_num" : "1",
+        "cat_id" : "S7A2015",
+       
