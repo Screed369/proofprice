@@ -1,0 +1,782 @@
+URL: https://data.seattle.gov/api/catalog/v1?q=fleet%20equipment&only=datasets&limit=5
+Fetched: 2026-11-01T00:41:13Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 25731
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 01 Nov 2026 00:41:12 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 0d95c3e0c75b038d43e324d263e3b5f5
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Sold Fleet Equipment",
+            "id" : "y6ef-jf2w",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "This dataset includes sales data for fleet equipment that was sold in the current and previous three years. This dataset does not include sales data for Seattle City Light (SCL) fleet equipment.",
+            "attribution" : "City of Seattle",
+            "attribution_link" : null,
+            "contact_email" : "open.data@seattle.gov",
+            "type" : "dataset",
+            "updatedAt" : "2026-10-20T20:24:38.000Z",
+            "createdAt" : "2014-02-06T16:40:51.000Z",
+            "metadata_updated_at" : "2026-10-20T20:24:36.000Z",
+            "data_updated_at" : "2026-10-20T20:24:38.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 42,
+                "page_views_last_month" : 218,
+                "page_views_total" : 176774,
+                "page_views_last_week_log" : 5.426264754702098,
+                "page_views_last_month_log" : 7.774787059601174,
+                "page_views_total_log" : 17.431554733746047
+              },
+            "columns_name" :
+              [
+                "DESCRIPTION",
+                "DEPT",
+                "EQUIP_ID",
+                "Equipment Type",
+                "System Group",
+                "MAKE",
+                "SALE_PRICE",
+                "SALE_DATE",
+                "YEAR",
+                "MODEL",
+                "Fuel Type",
+                "Asset Weight Category",
+                "VIN",
+                "SOLD_BY"
+              ],
+            "columns_field_name" :
+              [
+                "description",
+                "dept",
+                "equip_id",
+                "equipment_type",
+                "system_group",
+                "make",
+                "sale_price",
+                "sale_date",
+                "year",
+                "model",
+                "fuel_type",
+                "asset_weight_category",
+                "vin",
+                "sold_by"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Equipment purpose or additional descriptive information",
+                "Department previously assigned this equipment",
+                "Equipment ID Number",
+                "Category of equipment based on type and function",
+                "General asset type/purpose",
+                "Equipment Manufacturer",
+                "Equipment's sale price",
+                "Equipment's sale date",
+                "Model Year",
+                "Equipment Model",
+                "Primary fuel type",
+                "GVWR (Gross Vehicle Weight Rating) Class",
+                "Vehicle Identification Number",
+                "Auction house responsible for sale"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "precision" : "2",
+                  "align" : "right"
+                },
+                { "view" : "date", "align" : "left" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "right"
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 6068,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-02-09T23:50:59.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "City Administration",
+            "domain_tags" :
+              [
+                "finance",
+                "surplus",
+                "sold fleet equipment",
+                "fleet",
+                "finance and administrative services",
+                "trucks",
+                "fas",
+                "equipment",
+                "cars",
+                "auction"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Department_Department",
+                  "value" : "Department of Finance and Administrative Services"
+                },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "data.seattle.gov"
+                },
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "open.data@seattle.gov"
+                },
+                { "key" : "Refresh-Frequency_Frequency", "value" : "Monthly" }
+              ]
+          },
+        "metadata" :
+          { "domain" : "cos-data.seattle.gov", "license" : "Public Domain" },
+        "permalink" : "https://cos-data.seattle.gov/d/y6ef-jf2w",
+        "link" : "https://cos-data.seattle.gov/City-Administration/Sold-Fleet-Equipment/y6ef-jf2w",
+        "owner" :
+          {
+            "id" : "2u45-tx99",
+            "user_type" : "interactive",
+            "display_name" : "Lucy.Bonomo@seattle.gov"
+          },
+        "creator" :
+          {
+            "id" : "2u45-tx99",
+            "user_type" : "interactive",
+            "display_name" : "Lucy.Bonomo@seattle.gov"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Fleet Equipment Inventory",
+            "id" : "93vc-wpdr",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "This dataset contains a list of Montgomery County Fleet equipment (vehicle) inventory and status (readiness).\r\nUpdate Frequency : Quarterly",
+            "attribution" : "Montgomery County, MD",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2025-10-01T10:25:13.000Z",
+            "createdAt" : "2018-04-03T23:21:46.000Z",
+            "metadata_updated_at" : "2023-04-03T23:59:29.000Z",
+            "data_updated_at" : "2025-10-01T10:25:13.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 664,
+                "page_views_last_month" : 3003,
+                "page_views_total" : 118651,
+                "page_views_last_week_log" : 9.377210530388552,
+                "page_views_last_month_log" : 11.552669097514274,
+                "page_views_total_log" : 16.856376893264194
+              },
+            "columns_name" :
+              [ "Department", "Equipment Class", "Equipment Count" ],
+            "columns_field_name" :
+              [ "department", "equipment_class", "equipment_count" ],
+            "columns_datatype" : [ "Text", "Text", "Number" ],
+            "columns_description" :
+              [
+                "Department Name\n",
+                "Equipment Class\n",
+                "Equipment Count\n"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "right"
+                }
+              ],
+            "download_count" : 26316,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2018-04-03T23:24:24.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Government",
+            "domain_tags" :
+              [
+                "fleet",
+                "equipment",
+                "vehicle",
+                "automobile",
+                "inventory",
+                "car"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Dataset-Information_Departments",
+                  "value" : "General Services, Department of"
+                },
+                {
+                  "key" : "Dataset-Information_Update-Frequency",
+                  "value" : "Quarterly"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "data.montgomerycountymd.gov",
+            "license" : "Public Domain"
+          },
+        "permalink" : "https://data.montgomerycountymd.gov/d/93vc-wpdr",
+        "link" : "https://data.montgomerycountymd.gov/Government/Fleet-Equipment-Inventory/93vc-wpdr",
+        "owner" :
+          {
+            "id" : "uruq-macm",
+            "user_type" : "interactive",
+            "display_name" : "svc dmesb"
+          },
+        "creator" :
+          {
+            "id" : "uruq-macm",
+            "user_type" : "interactive",
+            "display_name" : "svc dmesb"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Current Fleet Surplus/Auction List",
+            "id" : "6gnm-7jex",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Most recent list of fleet equipment sent to auction",
+            "attribution" : "City of Seattle",
+            "attribution_link" : null,
+            "contact_email" : "open.data@seattle.gov",
+            "type" : "dataset",
+            "updatedAt" : "2026-10-20T20:37:52.000Z",
+            "createdAt" : "2014-03-25T17:01:36.000Z",
+            "metadata_updated_at" : "2026-10-20T20:37:51.000Z",
+            "data_updated_at" : "2026-10-20T20:37:52.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 82,
+                "page_views_last_month" : 525,
+                "page_views_total" : 177562,
+                "page_views_last_week_log" : 6.375039431346925,
+                "page_views_last_month_log" : 9.038918989292304,
+                "page_views_total_log" : 17.437971463345143
+              },
+            "columns_name" :
+              [
+                "Equipment Type",
+                "VIN",
+                "Fuel Type",
+                "Retirement Date",
+                "AUCTION HOUSE",
+                "Asset Weight Category",
+                "DESCRIPTION",
+                "MODEL",
+                "MAKE",
+                "YEAR",
+                "COLOR",
+                "System Group",
+                "COMMENTS",
+                "Department",
+                "EQUIP_ID"
+              ],
+            "columns_field_name" :
+              [
+                "equipment_type",
+                "vin",
+                "fuel_type",
+                "retirement_date",
+                "auction_house",
+                "asset_weight_category",
+                "description",
+                "model",
+                "make",
+                "year",
+                "color",
+                "system_group",
+                "comments",
+                "department",
+                "equip_id"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Category of equipment based on type and function",
+                "Vehicle Identification Number",
+                "Vehicle's primary fuel type",
+                "Date equipment was retired from use",
+                "Company handling this equipment's auction",
+                "GVWR (Gross Vehicle Weight Rating) Class",
+                "Equipment purpose or additional descriptive information ",
+                "Model",
+                "Manufacturer",
+                "Model Year",
+                "Equipment body color",
+                "General asset type/purpose",
+                "Disposal Reason",
+                "Department previously assigned this equipment",
+                "Equipment ID Number"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                { "view" : "date", "align" : "left" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 4913,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-02-09T22:45:43.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "City Administration",
+            "domain_tags" : [],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Department_Department",
+                  "value" : "Department of Finance and Administrative Services"
+                },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "data.seattle.gov"
+                },
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "open.data@seattle.gov"
+                },
+                { "key" : "Refresh-Frequency_Frequency", "value" : "Monthly" }
+              ]
+          },
+        "metadata" :
+          { "domain" : "cos-data.seattle.gov", "license" : "Public Domain" },
+        "permalink" : "https://cos-data.seattle.gov/d/6gnm-7jex",
+        "link" : "https://cos-data.seattle.gov/City-Administration/Current-Fleet-Surplus-Auction-List/6gnm-7jex",
+        "owner" :
+          {
+            "id" : "2u45-tx99",
+            "user_type" : "interactive",
+            "display_name" : "Lucy.Bonomo@seattle.gov"
+          },
+        "creator" :
+          {
+            "id" : "2u45-tx99",
+            "user_type" : "interactive",
+            "display_name" : "Lucy.Bonomo@seattle.gov"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Active Fleet Complement",
+            "id" : "enxu-fgzb",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "The City of Seattle's active fleet equipment complement is dynamic. This list is updated on a monthly basis.",
+            "attribution" : "City of Seattle",
+            "attribution_link" : "http://www.seattle.gov",
+            "contact_email" : "open.data@seattle.gov",
+            "type" : "dataset",
+            "updatedAt" : "2026-10-20T20:39:56.000Z",
+            "createdAt" : "2014-02-04T22:36:58.000Z",
+            "metadata_updated_at" : "2026-10-20T20:39:54.000Z",
+            "data_updated_at" : "2026-10-20T20:39:56.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 21,
+                "page_views_last_month" : 97,
+                "page_views_total" : 19885,
+                "page_views_last_week_log" : 4.459431618637297,
+                "page_views_last_month_log" : 6.614709844115209,
+                "page_views_total_log" : 14.279465491793964
+              },
+            "columns_name" :
+              [
+                "Fuel Type",
+                "Estimated Replacement Year",
+                "Asset Weight Category",
+                "Dept",
+                "Equipment Type",
+                "System Group",
+                "License#",
+                "Year",
+                "Make",
+                "Model",
+                "Description",
+                "InServiceDate",
+                "InServiceCost",
+                "EquipID"
+              ],
+            "columns_field_name" :
+              [
+                "fuel_type",
+                "estimated_replacement_year",
+                "asset_weight_category",
+                "dept",
+                "equipment_type",
+                "system_group",
+                "license",
+                "year",
+                "make",
+                "model",
+                "descrip",
+                "inservicedate",
+                "inservicecost",
+                "equipid"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Number",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Primary fuel type",
+                "Year this equipment is expected to be replaced",
+                "GVWR (Gross Vehicle Weight Rating) Class",
+                "Assigned department",
+                "Category of equipment based on type and function",
+                "General asset type/purpose",
+                "License Number",
+                "Model Year",
+                "Equipment Manufacturer",
+                "Equipment Model",
+                "Equipment purpose or additional descriptive information",
+                "Date equipment went into service",
+                "Cost to place in service",
+                "Equipment ID Number"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "right"
+                },
+                {},
+                {},
+                { "align" : "left" },
+                { "view" : "date", "align" : "left" },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "USD",
+                  "precision" : "2"
+                },
+                {}
+              ],
+            "download_count" : 5272,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-02-09T23:32:41.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "City Administration",
+            "domain_tags" : [ "equipment", "cars", "trucks", "fleet" ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Department_Department",
+                  "value" : "Department of Finance and Administrative Services"
+                },
+                {
+                  "key" : "Common-Core_Publisher",
+                  "value" : "data.seattle.gov"
+                },
+                {
+                  "key" : "Common-Core_Contact-Email",
+                  "value" : "open.data@seattle.gov"
+                },
+                { "key" : "Refresh-Frequency_Frequency", "value" : "Monthly" }
+              ]
+          },
+        "metadata" :
+          { "domain" : "cos-data.seattle.gov", "license" : "Public Domain" },
+        "permalink" : "https://cos-data.seattle.gov/d/enxu-fgzb",
+        "link" : "https://cos-data.seattle.gov/City-Administration/Active-Fleet-Complement/enxu-fgzb",
+        "owner" :
+          {
+            "id" : "2u45-tx99",
+            "user_type" : "interactive",
+            "display_name" : "Lucy.Bonomo@seattle.gov"
+          },
+        "creator" :
+          {
+            "id" : "2u45-tx99",
+            "user_type" : "interactive",
+            "display_name" : "Lucy.Bonomo@seattle.gov"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Fleet",
+            "id" : "w26i-qme9",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "This dataset provides data about the assets that are managed by the Division of Fleet Management.  Assets fall into two categories: vehicle or equipment.  \n\nFleet Management uses a point system that considers a variety of factors to determine which assets are recommended for replacement.   An asset with 15 points or higher is recommended for replacement.",
+            "attribution" : "Department of General Services",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-01-09T20:57:50.000Z",
+            "createdAt" : "2020-12-08T16:11:40.000Z",
+            "metadata_updated_at" : "2026-01-09T20:57:50.000Z",
+            "data_updated_at" : "2026-01-06T18:34:01.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 23,
+                "page_views_last_month" : 158,
+                "page_views_total" : 6706,
+                "page_views_last_week_log" : 4.584962500721157,
+                "page_views_last_month_log" : 7.312882955284356,
+                "page_views_total_log" : 12.711451886714766
+              },
+            "columns_name" :
+              [
+                "Department",
+                "Class",
+                "Model",
+                "Type",
+                "Division",
+                "Life-to-Date Maintenance Costs",
+                "Cost",
+                "Age (month)",
+                "Make",
+                "Asset Number",
+                "Points",
+                "Year"
+              ],
+            "columns_field_name" :
+              [
+                "department",
+                "class",
+                "model",
+                "type",
+                "division",
+                "life_to_date_maintenance",
+                "acquire_capitalized_cost",
+                "age_month",
+                "make",
+                "asset_number",
+                "all_points",
+                "year"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Number"
+              ],
+            "columns_description" :
+              [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+            "columns_format" :
+              [
+                {},
+                { "noCommas" : "true" },
+                {},
+                {},
+                {},
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "USD",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "currency",
+                  "currencyStyle" : "USD",
+                  "align" : "right"
+                },
+                {},
+                {},
+                {},
+                {},
+                { "noCommas" : "true" }
+              ],
+            "download_count" : 2001,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2020-12-09T08:01:13.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Government",
+            "domain_tags" :
+              [
+                "vehicle",
+                "car",
+                "city services & operations",
+                "equipment",
+                "fleet",
+                "truck"
+              ],
+            "domain_metadata" : []
+          },
+        "metadata" : { "domain" : "data.norfolk.gov" },
+        "permalink" : "https://data.norfolk.gov/d/w26i-qme9",
+        "link" : "https://data.norfolk.gov/Government/Fleet/w26i-qme9",
+        "owner" :
+          {
+            "id" : "q847-u5c9",
+            "user_type" : "interactive",
+            "display_name" : "City of Norfolk"
+          },
+        "creator" :
+          {
+            "id" : "q847-u5c9",
+            "user_type" : "interactive",
+            "display_name" : "City of Norfolk"
+          }
+      }
+    ],
+  "resultSetSize" : 35,
+  "timings" : { "serviceMillis" : 37, "searchMillis" : [ 5, 9 ] },
+  "warnings" : []
+}
