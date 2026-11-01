@@ -1,0 +1,28 @@
+URL: https://data.seattle.gov/resource/y6ef-jf2w.json?$select=count(*),min(sale_date),max(sale_date),min(sale_price),max(sale_price),avg(sale_price)&$where=sale_price>0
+Fetched: 2026-11-01T00:43:32Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 190
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 01 Nov 2026 00:43:32 GMT
+Content-Type: application/json;charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+ETag: W/"Zm94dHJvdC43MDI0XzRfMTU5RVdDdEZpSHhQbUR3ODlwNnVlQ0xuTm9JWHFN---gzipXMDmdOqOvPKRV_CgNdflvVR-az4--gzip--gzip"
+X-SODA2-Fields: ["count","min_sale_date","max_sale_date","min_sale_price","max_sale_price","avg_sale_price"]
+X-SODA2-Types: ["number","floating_timestamp","floating_timestamp","number","number","number"]
+X-SODA2-Data-Out-Of-Date: false
+X-SODA2-Truth-Last-Modified: Tue, 20 Oct 2026 20:24:37 GMT
+X-SODA2-Secondary-Last-Modified: Tue, 20 Oct 2026 20:24:37 GMT
+Last-Modified: Tue, 20 Oct 2026 20:24:37 GMT
+Vary: Accept-Encoding
+X-Socrata-Region: aws-us-east-1-fedramp-prod
+X-Socrata-RequestId: 7ddfcb527aa1b99b5c8bea92fb2bdfb0
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+=== FILE TYPE: JSON text data
+=== FIRST 5000 BYTES
+[{"count":"1621","min_sale_date":"2019-01-12T00:00:01.000","max_sale_date":"2026-10-15T00:00:01.000","min_sale_price":"36","max_sale_price":"330000","avg_sale_price":"11104.1986428130783"}]
