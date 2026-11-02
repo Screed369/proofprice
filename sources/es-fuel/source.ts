@@ -102,6 +102,58 @@ function fechaToIso(f: string | null): string | null {
   return m ? `${m[3]}-${m[2]}-${m[1]}` : null;
 }
 
+
+/** Province names (and common Spanish, English, Catalan, Basque and Galician spellings) -> INE province code, so area=Madrid or
+ *  town=Valencia work as well as area=28. Keys are compared with accents and case stripped. */
+const ES_PROVINCE_NAMES: Record<string, string[]> = {
+  "01": ["Álava", "Araba", "Araba/Álava", "Alava"], "02": ["Albacete"], "03": ["Alicante", "Alacant", "Alicante/Alacant"], "04": ["Almería"],
+  "05": ["Ávila"], "06": ["Badajoz"], "07": ["Balearic Islands", "Illes Balears", "Islas Baleares", "Baleares", "Balears", "Mallorca", "Majorca", "Palma", "Palma de Mallorca", "Menorca", "Ibiza", "Eivissa"],
+  "08": ["Barcelona"], "09": ["Burgos"], "10": ["Cáceres"], "11": ["Cádiz", "Cadiz"], "12": ["Castellón", "Castelló", "Castellón/Castelló", "Castellon de la Plana"],
+  "13": ["Ciudad Real"], "14": ["Córdoba", "Cordoba"], "15": ["A Coruña", "La Coruña", "Coruña", "Corunna"], "16": ["Cuenca"], "17": ["Girona", "Gerona"],
+  "18": ["Granada"], "19": ["Guadalajara"], "20": ["Gipuzkoa", "Guipúzcoa", "Guipuzcoa", "San Sebastián", "Donostia", "Donostia-San Sebastián"], "21": ["Huelva"], "22": ["Huesca"],
+  "23": ["Jaén", "Jaen"], "24": ["León", "Leon"], "25": ["Lleida", "Lérida", "Lerida"], "26": ["La Rioja", "Rioja", "Logroño", "Logrono"], "27": ["Lugo"], "28": ["Madrid"],
+  "29": ["Málaga", "Malaga"], "30": ["Murcia"], "31": ["Navarre", "Navarra", "Pamplona", "Iruña"], "32": ["Ourense", "Orense"], "33": ["Asturias", "Oviedo"],
+  "34": ["Palencia"], "35": ["Las Palmas", "Las Palmas de Gran Canaria", "Gran Canaria"], "36": ["Pontevedra", "Vigo"], "37": ["Salamanca"],
+  "38": ["Santa Cruz de Tenerife", "Tenerife"], "39": ["Cantabria", "Santander"], "40": ["Segovia"], "41": ["Seville", "Sevilla"], "42": ["Soria"],
+  "43": ["Tarragona"], "44": ["Teruel"], "45": ["Toledo"], "46": ["Valencia", "València"], "47": ["Valladolid"], "48": ["Bizkaia", "Vizcaya", "Biscay", "Bilbao"],
+  "49": ["Zamora"], "50": ["Zaragoza", "Saragossa"], "51": ["Ceuta"], "52": ["Melilla"],
+};
+const ES_NAME_TO_PROVINCE = new Map<string, string>(
+  Object.entries(ES_PROVINCE_NAMES).flatMap(([code, names]) => names.map((n) => [stripAccents(n), code] as [string, string])),
+);
+
+/** "Madrid", "provincia de Sevilla", "Province of Girona" -> "28" | "41" | "17"; null when the text is not a province name. */
+export function esProvinceFromName(raw: string | undefined | null): string | null {
+  if (!raw) return null;
+  const t = stripAccents(raw.replace(/\b(provincia|province|prov\.?)\s+(de|del|of)?\s*/i, "").replace(/\s*\b(province|provincia)$/i, ""));
+  return ES_NAME_TO_PROVINCE.get(t) ?? null;
+}
+
+let townIndex: { at: number; map: Map<string, string> } | null = null;
+/** Municipality name -> province code (the province with most stations of that name), read from the national feed; cached for 6 hours. */
+async function esProvinceOfTown(town: string): Promise<string | null> {
+  const t = stripAccents(town);
+  if (!townIndex || Date.now() - townIndex.at > 6 * 3600 * 1000) {
+    const json = await fetchJson(NATIONAL_URL, { headers: { accept: "application/json" } }, 40000);
+    const list = json?.ListaEESSPrecio;
+    if (!Array.isArray(list)) throw new SourceError("Unexpected response from the Spanish fuel price service");
+    const counts = new Map<string, Map<string, number>>();
+    for (const r of list) {
+      const prov = provinceOf(r);
+      if (!prov) continue;
+      for (const name of new Set([r.Municipio, r.Localidad].filter(Boolean).map((x: any) => stripAccents(String(x))))) {
+        const m = counts.get(name) ?? new Map<string, number>();
+        m.set(prov, (m.get(prov) ?? 0) + 1);
+        counts.set(name, m);
+      }
+    }
+    const map = new Map<string, string>();
+    for (const [name, m] of counts) map.set(name, [...m.entries()].sort((a, b) => b[1] - a[1])[0][0]);
+    townIndex = { at: Date.now(), map };
+  }
+  return townIndex.map.get(t) ?? null;
+}
+
 export async function esFuelNow(input: {
   postcode?: string;
   area?: string;
@@ -118,10 +170,20 @@ export async function esFuelNow(input: {
   }
   let province = cp ? esProvinceFromPostcode(cp) : null;
   if (!province && input.area) {
-    const a = input.area.replace(/\D/g, "").padStart(2, "0");
-    if (Number(a) >= 1 && Number(a) <= 52) province = a;
+    const digits = input.area.replace(/\D/g, "");
+    const a = digits.padStart(2, "0");
+    if (digits && Number(a) >= 1 && Number(a) <= 52) province = a;
+    else province = esProvinceFromName(input.area);
   }
-  if (!province) throw new InputError("Give a 5-digit Spanish postcode, or a province code (01–52) as area.");
+  // A place name with no code: a province name (town=Madrid) or any municipality found in the national feed (town=Marbella).
+  if (!province && input.town) {
+    province = esProvinceFromName(input.town) ?? (await esProvinceOfTown(input.town));
+  }
+  if (!province) {
+    throw new InputError(
+      `Spain: give a 5-digit postcode, a province code (01–52) or name as area (area=Madrid, area=28), or a town name (town=Marbella). Examples: /api/v1/fuel?country=ES&area=Madrid&fuel=diesel , /api/v1/fuel?country=ES&postcode=28001&fuel=petrol95 , /api/v1/fuel?country=ES&town=Valencia&fuel=diesel.`,
+    );
+  }
 
   const json = await fetchJson(BASE + province, { headers: { accept: "application/json" } }, 20000);
   const { stations: all, fecha } = parseEsStations(json, input.fuel);
@@ -143,8 +205,20 @@ export async function esFuelNow(input: {
     area = input.town;
   }
 
-  const s = summarise(picked.map((x) => x.price));
+  let s = summarise(picked.map((x) => x.price));
+  let townWidened = false;
   const day = fechaToIso(fecha);
+  // A town with fewer than 5 stations for a common fuel: say so and answer for its province instead of refusing.
+  if ((!s || s.count < 5) && !cp && input.town && !ES_NICHE.has(input.fuel)) {
+    const prov = summarise(all.map((x) => x.price));
+    if (prov && prov.count >= 5) {
+      note = `Fewer than 5 stations sell ${FUEL_LABEL[input.fuel]} in ${input.town}, so no local range is published; this is the figure for province ${province} instead.`;
+      townWidened = true;
+      picked = all;
+      area = `province ${province} (around ${input.town})`;
+      s = prov;
+    }
+  }
   // Niche fuels (LPG, methane) are sold at few stations: a thin province gets the labelled national figure, never a bare refusal.
   if ((!s || s.count < 5) && ES_NICHE.has(input.fuel)) {
     // A thin town: its whole province when that has 5 or more stations; otherwise (and for a thin province) the national figure.
@@ -176,7 +250,7 @@ export async function esFuelNow(input: {
     method:
       "Median and 10th–90th percentile of the current pump price reported by each public filling station in the area for the selected fuel. Restricted-sale stations are excluded.",
     describe: (x) =>
-      `${FUEL_LABEL[input.fuel]} in ${area}: current posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+      `${townWidened && note ? note + " " : ""}${FUEL_LABEL[input.fuel]} in ${area}: current posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
     baseUrl: input.baseUrl,
     extra: { cheapest_stations: cheapest, stations_counted: picked.length, ...(note ? { note } : {}) },
   });
@@ -268,7 +342,10 @@ export function esHistoryKey(p: { postcode?: string; area?: string; fuel: string
     return province ? { area: province, item: p.fuel, label: `province ${province}` } : null;
   }
   if (p.area) {
-    if (!/^\d{1,2}$/.test(p.area.trim())) return null;
+    if (!/^\d{1,2}$/.test(p.area.trim())) {
+      const named = esProvinceFromName(p.area);
+      return named ? { area: named, item: p.fuel, label: `province ${named}` } : null;
+    }
     const a = p.area.trim().padStart(2, "0");
     return Number(a) >= 1 && Number(a) <= 52 ? { area: a, item: p.fuel, label: `province ${a}` } : null;
   }

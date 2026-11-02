@@ -158,3 +158,56 @@ test("ES: G20261029-4 a province code sent as the postcode ('08' / lpg, '30' / m
     globalThis.fetch = realFetch;
   }
 });
+
+test("ES: province names resolve to codes (Spanish, English, Catalan, Basque spellings); non-provinces do not", async () => {
+  const { esProvinceFromName, esHistoryKey } = await import("./source");
+  assert.equal(esProvinceFromName("Madrid"), "28");
+  assert.equal(esProvinceFromName("  sevilla "), "41");
+  assert.equal(esProvinceFromName("Seville"), "41");
+  assert.equal(esProvinceFromName("provincia de Girona"), "17");
+  assert.equal(esProvinceFromName("Madrid province"), "28");
+  assert.equal(esProvinceFromName("València"), "46");
+  assert.equal(esProvinceFromName("Vizcaya"), "48");
+  assert.equal(esProvinceFromName("Illes Balears"), "07");
+  assert.equal(esProvinceFromName("Marbella"), null);
+  assert.equal(esProvinceFromName(""), null);
+  assert.equal(esHistoryKey({ area: "Madrid", fuel: "diesel" })!.area, "28");
+  assert.equal(esHistoryKey({ area: "Narnia", fuel: "diesel" }), null);
+});
+
+test("ES: area=Madrid and town=Marbella (no code) answer; a 400 names working examples", async () => {
+  const { esFuelNow } = await import("./source");
+  const st = (town: string, prov: string, p: string, i: number) => ({ "C.P.": prov + "001", Municipio: town, IDProvincia: prov, "Tipo Venta": "P", "Precio Gasoleo A": p, "Precio Gasolina 95 E5": p, "Dirección": "x", "Rótulo": "y", IDEESS: String(i) });
+  // national feed: Marbella (29) has 2 stations, Málaga province 6 in total; Madrid has 6
+  const list = [
+    ...["1,50", "1,52", "1,54", "1,56", "1,58", "1,60"].map((p, i) => st("MADRID", "28", p, i)),
+    st("MARBELLA", "29", "1,70", 20), st("MARBELLA", "29", "1,72", 21),
+    ...["1,60", "1,61", "1,62", "1,63"].map((p, i) => st("MALAGA", "29", p, 30 + i)),
+  ];
+  const feed = { Fecha: "02/11/2026 9:00:00", ListaEESSPrecio: list };
+  const realFetch = globalThis.fetch;
+  const urls: string[] = [];
+  globalThis.fetch = (async (u: any) => {
+    urls.push(String(u));
+    const prov = String(u).split("FiltroProvincia/")[1];
+    const body = prov ? { ...feed, ListaEESSPrecio: list.filter((r) => r.IDProvincia === prov) } : feed;
+    return new Response(JSON.stringify(body), { status: 200 });
+  }) as typeof fetch;
+  try {
+    const m = await esFuelNow({ area: "Madrid", fuel: "diesel" });
+    assert.equal(m.status, "ok");
+    assert.match(m.summary, /province 28/);
+    assert.ok(urls.some((u) => u.endsWith("FiltroProvincia/28")));
+    // town only: found through the national feed, thin town -> its province, labelled
+    const t = await esFuelNow({ town: "Marbella", fuel: "petrol95" });
+    assert.equal(t.status, "ok");
+    assert.match(t.summary, /Fewer than 5 stations sell .* in Marbella, so no local range is published; this is the figure for province 29 instead/);
+    assert.equal((t.extra as any).stations_counted, 6);
+    // town that is also a province name keeps the town filter
+    const c = await esFuelNow({ town: "Madrid", fuel: "diesel" });
+    assert.match(c.summary, /in Madrid:/);
+    await assert.rejects(esFuelNow({ area: "Narnia", fuel: "diesel" }), /area=Madrid/);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

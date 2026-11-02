@@ -15,12 +15,14 @@ export default defineSource({
   crossCheck: CROSS_CHECK,
   paramNotes: {
     postcode: "ES: 5-digit postcode, e.g. '28001'.",
-    area: "ES: province code ('28' = Madrid).",
-    town: "ES: town name, e.g. 'Valencia'.",
+    area: "ES: province code ('28') or province name ('Madrid', 'Sevilla', 'Girona').",
+    town: "ES: town name, e.g. 'Valencia' or 'Marbella' (a town with fewer than 5 stations for the fuel is answered for its province, labelled).",
   },
   examples: [
     { params: { country: "ES", area: "42", fuel: "diesel" } },
     { params: { country: "ES", postcode: "28001", fuel: "petrol95" }, smoke: false },
+    { params: { country: "ES", area: "Madrid", fuel: "diesel" } },
+    { params: { country: "ES", town: "Marbella", fuel: "petrol95" }, smoke: false },
   ],
   handle: (p, ctx) =>
     esFuelNow({

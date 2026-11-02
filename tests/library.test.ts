@@ -66,7 +66,7 @@ test("history: asks the same questions the live tool accepts", () => {
   const fuel = categoryById("fuel")!;
   const now = new Date("2026-11-02T12:00:00Z");
   assert.throws(() => runHistory(fuel, { country: "FR", fuel: "methane" }, {}, now), /History is kept by area and fuel/);
-  assert.throws(() => runHistory(fuel, { country: "ES", area: "Madrid", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
+  assert.throws(() => runHistory(fuel, { country: "ES", area: "Narnia", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
   assert.throws(() => runHistory(fuel, { country: "IT", area: "Milano", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
 });
 
