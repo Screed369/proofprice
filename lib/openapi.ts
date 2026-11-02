@@ -8,6 +8,8 @@ import { CHECK_REST, CHECK_TOOL, checkExamplePath } from "./check";
 import { checkResultSchema, coverageSchema, errorSchema, historyAnswerSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { joinAnd } from "./text";
+import { JWKS_PATH, VERIFY_PATH } from "./proofs";
+import { PROOFS_PAGE, PROOFS_SHORT, proofsLlmsLines } from "./proofs/docs";
 
 const jsonBody = (schemaName: string) => ({ content: { "application/json": { schema: { $ref: `#/components/schemas/${schemaName}` } } } });
 
@@ -19,13 +21,22 @@ const STALE_HEADER = {
   },
 };
 
+const PROOF_HEADERS = {
+  "X-ProofPrice-Proof": {
+    description:
+      `Signed Price Proof (only on status ok answers and real verdicts, when proofs are on): a compact JWS (EdDSA / Ed25519, typ proofprice-proof+jws) of what the official records showed. Check it free at ${VERIFY_PATH} or offline with the keys at ${JWKS_PATH}. See ${SITE_URL}${PROOFS_PAGE}.`,
+    schema: { type: "string" },
+  },
+  Link: { description: 'With a proof: <https://proofprice.com/p/<jws>>; rel="proof", a page a person can open to see the proof checked.', schema: { type: "string" } },
+};
+
 const answerResponses = {
   "200": {
     description:
       "A price answer: median, 10th–90th percentile range, sample size, period, confidence, source and licence. " +
       "For an official statistic: the published average or median (value, measure), its reference period, confidence, source and licence; the range fields and sample_size may be null. " +
       "If the official source does not respond and ProofPrice holds a recent daily copy of it, you get that copy instead of an error: status is ok, period and as_of carry the snapshot date, the notice says so and extra.stale is true.",
-    headers: STALE_HEADER,
+    headers: { ...STALE_HEADER, ...PROOF_HEADERS },
     ...jsonBody("PriceAnswer"),
   },
   "400": { description: "Missing or invalid parameter, or a country that is not covered yet.", ...jsonBody("Error") },
@@ -70,6 +81,7 @@ function parameters(catId: string, onlyCountries?: string[]) {
 
 const FIXED_TAG = "Coverage";
 const CHECK_TAG = "Price check";
+const PROOF_TAG = "Price proofs";
 
 /** The text of an MCP tool description names other tools (pricepaid_fuel_prices_now); in the REST description say the endpoint instead. */
 function restWording(text: string): string {
@@ -164,10 +176,36 @@ export function buildOpenApi(baseUrl: string) {
         "Also returns where the price sits, the reasons and cautions (posted prices are not paid prices, old periods), what is missing, one quotable sentence, and the full evidence answer with its audit-trail fields. Information, not a valuation or advice.",
       parameters: checkParameters(),
       responses: {
-        "200": { description: "A verdict with its evidence. cannot_judge is a normal 200 answer, with the reason in reasons and missing.", headers: STALE_HEADER, ...jsonBody("CheckResult") },
+        "200": { description: "A verdict with its evidence. cannot_judge is a normal 200 answer, with the reason in reasons and missing.", headers: { ...STALE_HEADER, ...PROOF_HEADERS }, ...jsonBody("CheckResult") },
         "400": { description: "Missing or invalid parameter (for example no price, or a country the category does not cover).", ...jsonBody("Error") },
         "502": { description: "The official source could not be reached and ProofPrice holds no recent copy of it.", ...jsonBody("Error") },
       },
+    },
+  };
+  const verifyResponse = {
+    "200": {
+      description:
+        "The check: valid (signature good, ProofPrice key, in date), reason (ok, malformed, unsupported_alg, wrong_type, unknown_key, bad_signature, wrong_issuer, expired, not_yet_valid), signature_valid, expired, kid, the signed claims, a plain-English human_summary, answer_matches (only when an answer was sent), keys_url and the statement.",
+      content: { "application/json": { schema: { type: "object", properties: { valid: { type: "boolean" }, reason: { type: "string" }, signature_valid: { type: "boolean" }, expired: { type: "boolean" }, kid: { type: ["string", "null"] }, claims: { type: ["object", "null"] }, human_summary: { type: ["string", "null"] }, answer_matches: { type: "boolean" }, keys_url: { type: "string" }, statement: { type: "string" } }, required: ["valid", "reason"] } } },
+    },
+    "400": { description: "No proof given.", ...jsonBody("Error") },
+  };
+  paths[VERIFY_PATH] = {
+    get: {
+      operationId: "verifyProof",
+      tags: [PROOF_TAG],
+      summary: "Check a Signed Price Proof (free)",
+      description: `${PROOFS_SHORT} Free, never charged, CORS open, nothing stored.`,
+      parameters: [{ name: "proof", in: "query", required: true, description: "The proof: the compact JWS from the X-ProofPrice-Proof header or the MCP _meta[\"proofprice/proof\"].jws.", schema: { type: "string" } }],
+      responses: verifyResponse,
+    },
+    post: {
+      operationId: "verifyProofWithAnswer",
+      tags: [PROOF_TAG],
+      summary: "Check a Signed Price Proof, and that a full answer matches it (free)",
+      description: "Send the proof, and optionally the full answer you were shown: answer_matches says whether its canonical-JSON SHA-256 equals the signed answer_sha256.",
+      requestBody: { required: true, content: { "application/json": { schema: { type: "object", properties: { proof: { type: "string" }, answer: { type: "object" } }, required: ["proof"] } } } },
+      responses: verifyResponse,
     },
   };
   paths["/api/v1/coverage"] = {
@@ -197,7 +235,7 @@ export function buildOpenApi(baseUrl: string) {
         "The ProofPrice terms of use govern use of the API itself. Free, read-only, no API key. A few premium calls (price check, daily history) cost a few cents each after a free daily allowance, paid per call with x402; see " + `${SITE_URL}/pricing` + " and " + `${SITE_URL}/pricing.json`+ ".",
     },
     servers: [{ url: baseUrl }],
-    tags: [...CATEGORIES.map(tagFor), { name: CHECK_TAG, description: "Check a proposed price against recorded official evidence before paying." }, { name: FIXED_TAG, description: "Which countries, categories and official sources are covered." }],
+    tags: [...CATEGORIES.map(tagFor), { name: CHECK_TAG, description: "Check a proposed price against recorded official evidence before paying." }, { name: PROOF_TAG, description: "Check the signed proof that comes with an answer or verdict, free." }, { name: FIXED_TAG, description: "Which countries, categories and official sources are covered." }],
     paths,
     components: {
       schemas: {
@@ -248,6 +286,10 @@ export function buildLlmsTxt(baseUrl: string): string {
 - MCP tool ${CHECK_TOOL}, or GET ${baseUrl}${CHECK_REST}: give category, country, the category's own parameters and price (optional: currency, unit, includes).
 - Returns a verdict (within_typical_range, above_typical_range, below_typical_range, about_average, above_average, below_average or cannot_judge), where the price sits, the reasons, what is missing, one quotable sentence and the full evidence answer. Currencies and units are never converted: a mismatch is cannot_judge.
 - Example: ${checkExample}
+- Every verdict comes with a Signed Price Proof another agent can verify for free (see "Signed Price Proofs" below).
+
+## Signed Price Proofs
+${proofsLlmsLines(baseUrl).join("\n")}
 
 ## Use it
 - MCP server (Streamable HTTP): ${baseUrl}/api/mcp — tools: ${tools}

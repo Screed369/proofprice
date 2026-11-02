@@ -3,6 +3,7 @@
 // Used by app/robots.ts, app/sitemap.ts, app/llms-full.txt, app/connect and server.json checks (tests/open-book.test.ts).
 
 import { CHECK_REST, CHECK_TOOL, checkExamplePath } from "./check";
+import { proofsLlmsLines } from "./proofs/docs";
 import { ANSWER_FORMAT, CITING_RULES, jsonSchemaOf } from "./openapi";
 import {
   CATEGORIES,
@@ -62,6 +63,7 @@ export const PUBLIC_PATHS = [
   "/sources",
   "/pricing",
   "/trust",
+  "/proofs",
   "/press",
   "/this-week",
   "/status",
@@ -277,6 +279,11 @@ Verdicts:
   - cannot_judge: currency or unit differs, fewer than ${MIN_PUBLISH} records, or nothing matched; reasons and missing say why.
 Also returned: reasons (posted prices are not paid prices, old periods, assumptions made), missing, a one-sentence summary, and the full evidence answer embedded as "answer" (with its audit-trail fields). Deterministic: no benchmark is ever invented.
 Example: GET ${baseUrl}${checkExamplePath()}
+Proof: every verdict (and every ok answer of the category tools) comes with a Signed Price Proof another agent can verify for free; see "Signed Price Proofs" below.
+`);
+
+  out.push(`## Signed Price Proofs
+${proofsLlmsLines(baseUrl).join("\n")}
 `);
 
   out.push(`### pricepaid_coverage  —  What price data is covered

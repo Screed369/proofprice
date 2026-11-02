@@ -22,6 +22,8 @@ import { historySources, checkSources } from "./premium-sources";
 import { gate, paymentHeaderFromMeta, premiumNote, readGateConfig, isAnswered, type PremiumKey } from "./payments";
 import { isOwnClient, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageClient, usageEnabled, usageKey, visitorOf } from "./usage";
 import type { UsageContext } from "./usage";
+import { PROOF_META_KEY, proofFor } from "./proofs";
+import type { ProofKind } from "./proofs";
 
 /** The same four hints on every tool: they read official sources and never change anything. */
 export const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } as const;
@@ -33,6 +35,8 @@ export interface McpToolResult {
   content: { type: "text"; text: string }[];
   structuredContent?: Record<string, unknown>;
   isError?: boolean;
+  /** Out-of-band data: proofprice/proof (a Signed Price Proof, lib/proofs), proofprice/note, x402/payment-response. */
+  _meta?: Record<string, unknown>;
 }
 
 export interface ToolSpec {
@@ -102,6 +106,7 @@ async function guarded(
   limits: ToolLimits,
   fn: () => unknown | Promise<unknown>,
   count?: { tool: string; args: Record<string, unknown> },
+  proof?: { kind: ProofKind; category: string },
 ): Promise<McpToolResult> {
   const started = Date.now();
   const deadlineMs = limits.deadlineMs ?? TOOL_DEADLINE_MS;
@@ -114,7 +119,13 @@ async function guarded(
     );
     // anonymous usage counting: does nothing unless it has been switched on (lib/usage.ts)
     if (count) recordUsage({ tool: count.tool, country: count.args.country, key: usageKey(count.args), status: statusOfAnswer(out?.answer ?? out) });
-    return asResult(out);
+    const result = asResult(out);
+    // Signed Price Proof beside the answer (the answer itself is unchanged): only ok answers and real verdicts, time-boxed, never fails
+    if (proof) {
+      const p = await proofFor(proof.kind, name, proof.category, out, SITE_URL);
+      if (p) result._meta = { [PROOF_META_KEY]: p };
+    }
+    return result;
   } catch (e) {
     outcome = "error";
     if (count) recordUsage({ tool: count.tool, country: count.args.country, key: usageKey(count.args), status: statusOfError(e) });
@@ -138,7 +149,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
         outputSchema: priceAnswerSchema,
         annotations: { title: cat.title, ...READ_ONLY },
       },
-      call: (args) => guarded(cat.tool, limits, () => deps.runCategory(cat, args, { baseUrl: SITE_URL }), { tool: cat.tool, args }),
+      call: (args) => guarded(cat.tool, limits, () => deps.runCategory(cat, args, { baseUrl: SITE_URL }), { tool: cat.tool, args }, { kind: "answer", category: cat.id }),
     });
     // History tools appear once the price library holds enough days to be useful.
     if (cat.history && deps.historyDays(cat) >= cat.history.minDays) {
@@ -175,7 +186,13 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
       annotations: { title: checkTitle, ...READ_ONLY },
     },
     call: (args) =>
-      guarded(CHECK_TOOL, limits, () => runCheck(args, { categories: deps.categories, runCategory: deps.runCategory }, { baseUrl: SITE_URL }), { tool: CHECK_TOOL, args }),
+      guarded(
+        CHECK_TOOL,
+        limits,
+        () => runCheck(args, { categories: deps.categories, runCategory: deps.runCategory }, { baseUrl: SITE_URL }),
+        { tool: CHECK_TOOL, args },
+        { kind: "check", category: "" }, // a check's category is read from its own result (input.category)
+      ),
   });
   const coverageTitle = "What price data is covered";
   specs.push({
@@ -239,7 +256,9 @@ export function registerTools(server: { registerTool: (...a: any[]) => unknown }
       const note = out.headers["x-proofprice-note"];
       if (note) return { ...out.result, _meta: { ...((out.result as any)._meta ?? {}), "proofprice/note": note, "proofprice/charged": false } };
       const settlement = out.headers["payment-response"];
-      return settlement ? { ...out.result, _meta: { "x402/payment-response": JSON.parse(Buffer.from(settlement, "base64").toString("utf8")) } } : out.result;
+      return settlement
+        ? { ...out.result, _meta: { ...((out.result as any)._meta ?? {}), "x402/payment-response": JSON.parse(Buffer.from(settlement, "base64").toString("utf8")) } }
+        : out.result;
     });
   }
 }

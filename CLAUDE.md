@@ -59,6 +59,10 @@ Owner: Simon (non-technical founder). Live at **https://proofprice.com** (public
   `crossCheck` in a manifest compares our figure with the publisher's own headline figure weekly and writes AGREES / EXPLAINED / SUSPECT to
   `library/_crosscheck/<source>.csv` (written only by that workflow). Publisher readers: `sources/_crosscheck/feeds.ts`. Never shown to agents.
 - `lib/openapi.ts` — openapi.json and llms.txt, generated from the registry. `lib/receipts/*` — DKIM receipt verifier.
+- `lib/proofs/` — Signed Price Proofs: Ed25519 compact JWS beside every ok answer / real verdict (REST `X-ProofPrice-Proof` + `Link`,
+  MCP `_meta["proofprice/proof"]`; the answer shape is untouched). Key = env `PROOFPRICE_PROOF_SIGNING_KEY`, else self-provisioned in the
+  private Blob store (`proofprice-proof-keys/<VERCEL_ENV>/`), else off. Free check: `/api/v1/proofs/verify`, `/p/<jws>`, keys at
+  `/.well-known/proofprice-keys.json`. On rotation, move the old public key into `lib/proofs/retired-keys.json`. Never sign errors.
 - `tests/registry.test.ts` — the gate every manifest must pass; its messages say what to fix.
 
 ## How to add a source (the Builder recipe)

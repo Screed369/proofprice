@@ -4,6 +4,7 @@
 import { CATEGORIES, paramsFromQuery, runCategory } from "../../../../lib/registry";
 import { CHECK_RESERVED, CHECK_TOOL, resolveCategory, runCheck } from "../../../../lib/check";
 import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, visitorOf, withoutOwnParam } from "../../../../lib/usage";
+import { proofFor, proofHeaders } from "../../../../lib/proofs";
 import { gatedRest } from "../../../../lib/payments";
 import { checkSourcesFromUrl } from "../../../../lib/premium-sources";
 import { json, errorResponse, baseUrl, corsPreflight, STALE_CACHE_SECONDS } from "../../../../lib/route-helpers";
@@ -37,7 +38,9 @@ async function handle(req: Request) {
     recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfAnswer(result.answer), own, visitor: own ? null : visitorOf(req) });
     const stale = result.answer.extra?.stale === true;
     const cache = stale ? Math.min(cat.cacheSeconds ?? 600, STALE_CACHE_SECONDS) : cat.cacheSeconds ?? 600;
-    return json(result, 200, cache, stale ? { "x-proofprice-stale": `snapshot=${String(result.answer.extra?.snapshot_date ?? "")}` } : {});
+    // Signed Price Proof (lib/proofs): only on a real verdict on an ok answer, time-boxed, never fails the check
+    const proof = await proofFor("check", CHECK_TOOL, cat.id, result, baseUrl(req));
+    return json(result, 200, cache, { ...(stale ? { "x-proofprice-stale": `snapshot=${String(result.answer.extra?.snapshot_date ?? "")}` } : {}), ...proofHeaders(proof) });
   } catch (e) {
     return errorResponse(e);
   }

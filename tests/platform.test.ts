@@ -487,7 +487,8 @@ test("stale-if-error: REST sends the copy with a short cache and an X-ProofPrice
   assert.equal(res.status, 200);
   assert.equal(res.headers.get("x-proofprice-stale"), `snapshot=${day(-1)}`);
   assert.match(res.headers.get("cache-control")!, /s-maxage=60,/);
-  assert.equal(res.headers.get("access-control-expose-headers"), "x-proofprice-stale");
+  // the stale flag is readable from browsers (as are the Signed Price Proof headers, lib/proofs)
+  assert.equal(res.headers.get("access-control-expose-headers"), "x-proofprice-stale, x-proofprice-proof, link");
   const live = answerResponse(fixtures("fuel").range, 600);
   assert.equal(live.headers.get("x-proofprice-stale"), null);
   assert.match(live.headers.get("cache-control")!, /s-maxage=600,/);

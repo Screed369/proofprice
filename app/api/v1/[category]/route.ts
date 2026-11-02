@@ -2,6 +2,7 @@
 // Examples: /api/v1/fuel?country=ES&area=28&fuel=diesel · /api/v1/home-sales?country=GB&town=Bristol
 import { categoryByRestPath, assertKnownParams, paramsFromQuery, runCategory } from "../../../../lib/registry";
 import { json, answerResponse, errorResponse, baseUrl, corsPreflight } from "../../../../lib/route-helpers";
+import { proofFor, proofHeaders } from "../../../../lib/proofs";
 import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, visitorOf, withoutOwnParam } from "../../../../lib/usage";
 
 export const maxDuration = 60;
@@ -17,7 +18,9 @@ export async function GET(req: Request, ctx: { params: Promise<{ category: strin
     try {
       const answer = await runCategory(cat, params, { baseUrl: baseUrl(req) });
       recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfAnswer(answer), own, visitor: own ? null : visitorOf(req) });
-      return answerResponse(answer, cat.cacheSeconds ?? 600);
+      // Signed Price Proof (lib/proofs): only on ok answers, time-boxed, never fails the answer; no key = no header
+      const proof = await proofFor("answer", cat.tool, cat.id, answer, baseUrl(req));
+      return answerResponse(answer, cat.cacheSeconds ?? 600, proofHeaders(proof));
     } catch (e) {
       recordUsage({ tool: cat.tool, country: params.country, key: usageKey(params), status: statusOfError(e), own, visitor: own ? null : visitorOf(req) });
       throw e;
