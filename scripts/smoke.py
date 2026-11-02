@@ -26,6 +26,7 @@ UA = "ProofPrice-smoke/1.1 (+https://proofprice.com; hello@proofprice.com)"
 MCP_BUDGET = 20  # seconds each MCP request may take, start to last byte
 MCP_CLIENT = {"name": "proofprice-smoke", "version": "1"}
 RETRY_WAIT_1 = 20  # seconds before the first retry of a failed example (or MCP check)
+STALE_RECHECK_WAIT = 65  # seconds before a STALE example is asked again (past the 60 s answer cache, and time for an upstream 429 to ease)
 RETRY_WAIT_2 = 60  # seconds before the second retry, only when the first retry was a 5xx too
 WORKERS = 6  # examples asked at the same time (one after another took over 20 minutes once there were 228 examples)
 
@@ -62,6 +63,35 @@ def get_with_retries(url: str):
         time.sleep(RETRY_WAIT_2)
         code, headers, raw, secs = get(url)
     return code, headers, raw, secs, example_ok(code, raw)
+
+
+def is_stale_answer(code: int, headers: dict, raw: bytes) -> bool:
+    """True when the answer is ok but came from our library copy (extra.stale or the X-ProofPrice-Stale header)."""
+    try:
+        ans = json.loads(raw)
+    except Exception:
+        ans = {}
+    return code == 200 and ans.get("status") == "ok" and (
+        bool((ans.get("extra") or {}).get("stale")) or "x-proofprice-stale" in {k.lower() for k in headers}
+    )
+
+
+def recheck_stale(base: str, examples: list, results: list, wait: float = STALE_RECHECK_WAIT, getter=None, sleeper=time.sleep):
+    """Our own burst of parallel calls can trip an official site's rate limit (HTTP 429), so a source that is fine answered STALE.
+    Ask each STALE example once more, one at a time, after `wait` seconds. A clean ok replaces the stale result and is reported as rechecked;
+    a result that is still stale stays STALE (a real outage). Returns (new results list, list of rechecked paths)."""
+    getter = getter or get
+    idxs = [i for i, r in enumerate(results) if is_stale_answer(r[0], r[1], r[2])]
+    if not idxs:
+        return results, []
+    sleeper(wait)
+    out, healed = list(results), []
+    for i in idxs:
+        code, headers, raw, secs = getter(base + examples[i])
+        if example_ok(code, raw) and not is_stale_answer(code, headers, raw):
+            out[i] = (code, headers, raw, secs, True)
+            healed.append(examples[i])
+    return out, healed
 
 
 def post_mcp(base: str, payload: dict, extra_headers: dict | None = None, budget: float = MCP_BUDGET):
@@ -249,6 +279,7 @@ def main() -> int:
     # Ask several examples at once (each waits on a different official server), then print in the coverage order.
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         results = list(pool.map(lambda p: get_with_retries(base + p), examples))
+    results, rechecked = recheck_stale(base, examples, results)
     for path, (code, headers, raw, secs, retried_ok) in zip(examples, results):
         try:
             ans = json.loads(raw)
@@ -270,7 +301,7 @@ def main() -> int:
             tag = "FAIL "
             fails.append(path)
         if retried_ok:
-            print(f"RETRY-OK  {path} passed on a retry (a first call failed)")
+            print(f"RETRY-OK  {path} passed on a retry (a first call failed)" if path not in rechecked else f"RETRY-OK  {path} was STALE at first (likely our own burst hitting the publisher's rate limit) and answered live on a recheck")
         print(f"{tag} {code} {secs:5.1f}s {path}\n      {summary}")
 
     print(f"\nMCP server ({base}/api/mcp, {MCP_BUDGET} s for each request):")
