@@ -3,7 +3,7 @@
 // The rows are generated in that layout (the monthly CSVs sit inside a RAR the probe cannot open), so a state has 5+ shops.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { INFO, Newest, buildRows, decodeText, defsFor, describeBytes, extractYearly, hasPartialCsv, sniff, isoDate, itemKey, matchItems, parseIndex, parsePrices, profecoAnswerFromRows, readHeader, resolveState, splitLine, stateName } from "./source";
+import { INFO, Newest, buildRows, decodeText, defsFor, describeBytes, extractYearly, hasPartialCsv, sniff, isoDate, itemKey, matchItems, parseIndex, parseKey, parsePrices, profecoAnswerFromRows, readHeader, resolveState, splitLine, stateName } from "./source";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
 
@@ -209,4 +209,13 @@ test("dates: compact, slashed and dashed day-first forms are read; drop reasons 
   const r = parsePrices("producto,presentacion,precio,fecha_registro,estado,cadena_comercial\nLECHE,1 L,20,20260814,JALISCO,X\nLECHE,1 L,20,,JALISCO,X\nLECHE,1 L,20,20260814,,X\n", n);
   assert.deepEqual(r.drops, { price: 0, date: 1, product: 0, state: 1 });
   assert.equal(r.kept, 1);
+});
+
+test("matching: plain 'milk' prefers fresh/UHT milk over tinned evaporated milk, but 'evaporated milk' still finds it (live 2 Nov: milk answered evaporada)", () => {
+  const row = { date: "2026-03-31", area: "ALL", item: "", n: 400, median: 30, low: 25, high: 35, min: 20, max: 40 };
+  const mk = (key: string, n: number) => ({ key, ...parseKey(key)!, n, row: { ...row, item: key, n } });
+  const defs = [mk("Leche Evaporada|Lata 360 Gr. Evaporada Parcialmente Descremada", 423), mk("Leche Ultrapasteurizada|Caja 1 Lt. Entera", 391)];
+  assert.equal(matchItems(defs, "milk")[0].name, "Leche Ultrapasteurizada");
+  assert.equal(matchItems(defs, "leche")[0].name, "Leche Ultrapasteurizada");
+  assert.equal(matchItems(defs, "evaporated milk")[0].name, "Leche Evaporada");
 });

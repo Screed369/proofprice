@@ -388,12 +388,18 @@ export const GLOSS: Record<string, string> = {
   cereal: "cereal", salchicha: "sausage hot dog", mayonesa: "mayonnaise", catsup: "ketchup", mostaza: "mustard", shampoo: "shampoo", dental: "toothpaste toothbrush",
   panal: "diaper nappy", desodorante: "deodorant", rastrillo: "razor", chocolate: "chocolate", mermelada: "jam", lenteja: "lentils", garbanzo: "chickpeas chickpea",
   vinagre: "vinegar", servilleta: "napkin tissue", cloro: "bleach", suavizante: "softener fabric", jugo: "juice", nectar: "juice nectar", te: "tea", vaso: "glass cup",
-  ultrapasteurizada: "uht", deslactosada: "lactose free", entera: "whole full fat", light: "light", descremada: "skimmed skim", blanco: "white", integral: "wholegrain",
+  ultrapasteurizada: "uht", evaporada: "evaporated", condensada: "condensed", polvo: "powder", deslactosada: "lactose free", entera: "whole full fat", light: "light", descremada: "skimmed skim", blanco: "white", integral: "wholegrain",
   toalla: "towel", sanitaria: "sanitary pad pads", pasta_dental: "toothpaste", crema_dental: "toothpaste", pila: "battery", foco: "bulb light", licuadora: "blender",
 };
 const stem = (w: string) => (w.length > 3 ? w.replace(/(ies|es|s)$/, (m) => (m === "ies" ? "y" : "")) : w);
 const STOP = new Set(["price", "prices", "of", "the", "a", "cost", "per", "kg", "in", "mexico", "how", "much", "is", "for", "retail", "de", "del", "la", "el", "un", "una", "precio", "precios"]);
 const QUERY_SYNONYMS: Record<string, string> = { chilies: "chilli", chillies: "chilli", eggs: "egg", frijoles: "frijol", huevos: "huevo" };
+
+/** Specialty variants that must not win a plain question ("milk" is fresh or UHT milk, not tinned evaporated milk): they rank lower unless the question names them. */
+const SPECIALTY: Record<string, string[]> = {
+  evaporada: ["evaporada", "evaporated"], condensada: ["condensada", "condensed"], polvo: ["polvo", "powder", "powdered"],
+  formula: ["formula", "infant"], saborizada: ["saborizada", "flavoured", "flavored"], chocolate: ["chocolate"],
+};
 
 export interface Def { key: string; name: string; pack: string; n: number; row: DailyRow }
 
@@ -421,7 +427,9 @@ export function matchItems(defs: Def[], query: string): Def[] {
     const own = norm(d.name).split(" ").filter(Boolean);
     const has = wordsOf(d.name);
     if (!words.every((w) => has.has(w))) continue;
-    scored.push({ d, s: 100 - 4 * Math.max(0, own.length - words.length) });
+    const asked = new Set(words);
+    const specialty = own.some((w) => SPECIALTY[stem(w)] && !SPECIALTY[stem(w)].some((x) => asked.has(stem(x))));
+    scored.push({ d, s: 100 - 4 * Math.max(0, own.length - words.length) - (specialty ? 20 : 0) });
   }
   return scored.sort((a, b) => b.s - a.s || b.d.n - a.d.n || a.d.key.localeCompare(b.d.key)).map((x) => x.d);
 }
