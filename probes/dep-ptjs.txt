@@ -1,0 +1,622 @@
+URL: https://precoscombustiveis.dgeg.gov.pt/assets/js/functions.js
+Fetched: 2026-11-02T21:13:49Z from GitHub Actions
+Status, type, bytes: 200 application/javascript 28644
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Mon, 02 Nov 2026 21:13:49 GMT
+Content-Type: application/javascript
+Content-Length: 28644
+Connection: keep-alive
+Last-Modified: Mon, 12 Oct 2026 15:53:38 GMT
+Accept-Ranges: bytes
+ETag: "0ed67d8615add1:0"
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Strict-Transport-Security: max-age=31536000
+Server: cloudflare
+
+=== FILE TYPE: JavaScript source, Unicode text, UTF-8 (with BOM) text, with CRLF line terminators
+=== FIRST 30000 BYTES
+﻿(function () {
+    'use strict'
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
+function goBack() {
+    location.href = document.referrer;
+}
+function Paginacao(dgeg, qtd, pagina) {
+    $("#pagination").html("");
+    var valor = parseInt(qtd) / 15;
+    if ((parseInt(qtd) % 15) != 0) {
+        valor = Math.floor(valor) + 1;
+    }
+
+    var row = "";
+    if (parseInt(pagina) == 1) {
+        row += "<li class='page-item disabled'><a  class='page - link' onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + (1) + ");'>Primeira Página</a></li>";
+        row += "<li class='page-item disabled'><a  class='page - link' onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + (parseInt(pagina) - 1) + ");'>Anterior</a></li>";
+    } else {
+        row += "<li class='page-item '><a class='page - link' onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + (1) + ");'>Primeira Página</a></li>";
+        row += "<li class='page-item '><a class='page - link' onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + (parseInt(pagina) - 1) + ");'>Anterior</a></li>";
+    }
+
+    if (pagina <= valor - 5) {
+        for (var i = parseInt(pagina); i < parseInt(pagina) + 5; i++) {
+            if (parseInt(pagina) == i) {
+                row += "<li class='page-item' ><a class='page-link' style='color:black' onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + i + ");' >" + i + "</a></li>";
+            } else {
+                row += "<li class='page-item' ><a class='page-link' onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + i + ");' >" + i + "</a></li>";
+            }
+
+        }
+    } else {
+        row += "<li class='page-item ' ><a class='page-link' style='color:black' onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + parseInt(pagina) + ");' >" + parseInt(pagina) + "</a></li>";
+    }
+    if (parseInt(pagina) == valor) {
+        row += row = "<li class='page-item disabled'><a class='page - link'  onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + (parseInt(pagina) + 1) + ");'>Seguinte</a></li>";
+        row += row = "<li class='page-item disabled'><a class='page - link'  onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + valor + ");'>Última Página</a></li>";
+    } else {
+        row += row = "<li class='page-item '><a class='page - link'  onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + (parseInt(pagina) + 1) + ");'>Seguinte</a></li>";
+        row += row = "<li class='page-item '><a class='page - link'  onclick='AdicionarTabelaMenu(" + dgeg + ", null, " + valor + ");'>Última Página</a></li>";
+    }
+
+    $("#pagination").append(row);
+}
+function Export(items, filename) {
+    const replacer = (key, value) => value === null ? '' : value;
+    const header = Object.keys(items[0]);
+    let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'));
+    csv.unshift(header.join(';'));
+    csv = csv.join('\r\n');
+
+    var link = document.createElement("a");
+    link.id = "lnkDwnldLnk";
+    document.body.appendChild(link);
+    blob = new Blob([decodeURIComponent('%ef%bb%bf') /*prepend bom*/, csv], { type: 'text/csv;charset=utf-8' });
+    var csvUrl = window.webkitURL.createObjectURL(blob);
+    jQuery("#lnkDwnldLnk")
+        .attr({
+            'download': filename,
+            'href': csvUrl
+        });
+    jQuery('#lnkDwnldLnk')[0].click();
+    document.body.removeChild(link);
+}
+function printData() {
+    AdicionarTabelaRelatorio('tblPesquisa');
+    var divElements = document.getElementById('tblPesquisa').outerHTML;
+    var oldPage = document.body.innerHTML;
+    document.body.innerHTML = "<html><head><title></title></head><body>" +
+        divElements + "</body>";
+    $("#tablerecords th:last-child, #tablerecords td:last-child").hide();
+    window.print();
+    document.body.innerHTML = oldPage;
+    location.reload();
+}
+function CarregarCombo(pUrl, pData, pIdCombo, pValue, pText, pSelecione, pSelected) {
+    var opt = '';
+    $.ajax({
+        url: pUrl,
+        type: "GET",
+        datatype: "json",
+        data: pData,
+        beforeSend: function (XMLHttpRequest) {
+            $(pIdCombo).empty();
+            if (pSelecione) {
+                opt += '<option value="">Selecione</option>';
+            }
+        },
+        success:
+            function (data, textStatus, XMLHttpRequest) {
+                if (data.status) {
+                    $.each(data.resultado, function (index, item) {
+                        var value = item[pValue];
+                        var text = item[pText];
+                        var selected = "";
+                        if (value == pSelected) {
+                            selected = "selected";
+                        }
+                        opt += '<option value="' + value + '" ' + selected + '>' + text + '</option>';
+                    });
+                    $(pIdCombo).append(opt);
+                    var sel = $(pIdCombo);
+                    var selected = sel.val(); // cache selected value, before reordering
+                    var opts_list = sel.find('option');
+                    opts_list.sort(function (a, b) { return $(a).text().localeCompare($(b).text()); });
+                    sel.html('').append(opts_list);
+                    sel.val(selected); // set cached selected value
+                    $(pIdCombo + " option:first").before($(pIdCombo + '>option[value=""]'));
+
+                    var optionValues = [];
+                    $('' + pIdCombo + ' option').each(function () {
+                        if ($.inArray(this.value, optionValues) > -1) {
+                            $(this).remove()
+                        } else {
+                            optionValues.push(this.value);
+                        }
+                    });
+
+                }
+            },
+        error:
+            function (data, textStatus, XMLHttpRequest) {
+                console.log("Error: " + textStatus);
+            },
+        complete: function () {
+            
+
+        }
+    });
+}
+function CarregarComboMun(pUrl, pData, pIdCombo, pValue, pText, pSelecione, pSelected) {
+    var opt = '';
+    $.ajax({
+        url: pUrl,
+        type: "GET",
+        datatype: "json",
+        data: pData,
+        beforeSend: function (XMLHttpRequest) {
+            $(pIdCombo).empty();
+
+        },
+        success:
+            function (data, textStatus, XMLHttpRequest) {
+                if (data.status) {
+                    $.each(data.resultado, function (index, item) {
+                        var value = item[pValue];
+                        var text = item[pText];
+                        var selected = "";
+                        if (value == pSelected) {
+                            selected = " selected";
+                        }
+                        opt = '<option value="' + value + '" ' + selected + '>' + text + '</option>' + opt;
+                    });
+                    if (pSelecione) {
+                        opt = '<option value="">Selecione</option>' + opt;
+                    }
+                }
+            },
+        error:
+            function (data, textStatus, XMLHttpRequest) {
+                console.log("Error: " + textStatus);
+            },
+        complete: function () {
+            $(pIdCombo).append(opt);
+            var optionValues = [];
+            $('' + pIdCombo + ' option').each(function () {
+                if ($.inArray(this.value, optionValues) > -1) {
+                    $(this).remove()
+                } else {
+                    optionValues.push(this.value);
+                }
+            });
+
+        }
+    });
+}
+function CarregarComboMultComb(pUrl, pData, pIdCombo, pValue, pText, pSelecione, pSelected) {
+    var opt = '';
+    $.ajax({
+        url: pUrl,
+        type: "GET",
+        datatype: "json",
+        data: pData,
+        beforeSend: function (XMLHttpRequest) {
+            $(pIdCombo).empty();
+        },
+        success:
+            function (data, textStatus, XMLHttpRequest) {
+                if (data.status) {
+                    $.each(data.resultado, function (index, item) {
+                        if ($(pIdCombo)[0] !== undefined)
+                            $(pIdCombo)[0].sumo.add(item[pValue], item[pText], 0);
+
+                        opt += '<option value="' + item[pValue] + '" >' + item[pText] + '</option>';
+                    });
+                    var sel = $(pIdCombo);
+                    var selected = sel.val(); // cache selected value, before reordering
+                    var opts_list = sel.find('option');
+                    opts_list.sort(function (a, b) { return $(a).text() > $(b).text() ? 1 : -1; });
+                    sel.html('').append(opts_list);
+                    sel.val(selected); // set cached selected value
+                }
+            },
+        error:
+            function (data, textStatus, XMLHttpRequest) {
+                console.log("Error: " + textStatus);
+            },
+        complete: function () {
+            //$(pIdCombo).html(opt);
+            //$(pIdCombo + '.selectBox')[0].sumo.reload();
+        }
+    });
+}
+
+function CarregarComboMult(pUrl, pData, pIdCombo, pValue, pText, pSelecione, pSelected) {
+    var opt = '';
+    $.ajax({
+        url: pUrl,
+        type: "GET",
+        datatype: "json",
+        data: pData,
+        beforeSend: function (XMLHttpRequest) {
+            $(pIdCombo).empty();
+        },
+        success:
+            function (data, textStatus, XMLHttpRequest) {
+                if (data.status) {
+                    $.each(data.resultado, function (index, item) {
+                        opt += '<option value="' + item[pValue] + '" ><input type="checkbox" id="scales" name="scales" checked >' + item[pText] + '</option>';
+                    });
+                }
+            },
+        error:
+            function (data, textStatus, XMLHttpRequest) {
+                console.log("Error: " + textStatus);
+            },
+        complete: function () {
+            $(pIdCombo).html(opt).selectpicker('refresh');
+            if (pSelecione) {
+                $(pIdCombo).selectpicker('val', pSelected);
+            }
+        }
+    });
+}
+
+function ExportarDadosPostos(qtdPostos) {
+    var url = urlGlobal + "/PesquisarPostos";
+    var idsTiposComb = $("#cboTipoCombustivel").val();
+    var idsMunicipios = $("#cboMunicipio").val();
+    var data = {
+        idsTiposComb: idsTiposComb ? idsTiposComb.toString() : "",
+        idMarca: $("#cboMarca").val(),
+        idTipoPosto: $("#cboTipoPosto").val(),
+        idDistrito: $("#cboDistrito").val(),
+        idsMunicipios: idsMunicipios ? idsMunicipios.toString() : "",
+        qtdPorPagina: qtdPostos,
+        pagina: 1,
+        orderDesc: null
+    };
+    $.ajax({
+        url: url,
+        type: "GET",
+        datatype: "json",
+        data: data,
+        beforeSend: function (XMLHttpRequest) {
+        },
+        success:
+            function (data, textStatus, XMLHttpRequest) {
+                if (data.status) {
+                    let postos = [];
+                    $.each(data.resultado, function (index, item) {
+                        delete item["Id"];
+                        delete item["Quantidade"];
+                        postos.push(item);
+                    });
+                    Export(postos, "Postos.csv");
+                }
+            },
+        error:
+            function (data, textStatus, XMLHttpRequest) {
+                console.log("Error: " + textStatus);
+            }
+    });
+}
+
+function Export(items, filename) {
+    const replacer = (key, value) => value === null ? '' : value;
+    const header = Object.keys(items[0]);
+    let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'));
+    csv.unshift(header.join(';'));
+    csv = csv.join('\r\n');
+
+    var link = document.createElement("a");
+    link.id = "lnkDwnldLnk";
+    document.body.appendChild(link);
+    blob = new Blob([decodeURIComponent('%ef%bb%bf') /*prepend bom*/, csv], { type: 'text/csv;charset=utf-8' });
+    var csvUrl = window.webkitURL.createObjectURL(blob);
+    jQuery("#lnkDwnldLnk")
+        .attr({
+            'download': filename,
+            'href': csvUrl
+        });
+    jQuery('#lnkDwnldLnk')[0].click();
+    document.body.removeChild(link);
+}
+
+function ExportFicheiro(tipoFicheiro, items, fl_header, filename) {
+    var file = "";
+    switch (tipoFicheiro) {
+        case 'CSV':
+            const replacer = (key, value) => value === null ? '' : value;
+            const header = Object.keys(items[0]);
+            file = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'));
+            if (fl_header) {
+                file.unshift(header.join(';'));
+            }
+            file = file.join('\r\n');
+            break;
+        case 'XML':
+            file = items;
+            break;
+    }
+
+    var link = document.createElement("a");
+    link.id = "lnkDwnldLnk";
+    document.body.appendChild(link);
+    blob = new Blob([decodeURIComponent('%ef%bb%bf'), file], { type: 'text/' + tipoFicheiro + ';charset=utf-8' });
+    var fileUrl = window.webkitURL.createObjectURL(blob);
+    jQuery("#lnkDwnldLnk")
+        .attr({
+            'download': filename,
+            'href': fileUrl
+        });
+    jQuery('#lnkDwnldLnk')[0].click();
+    document.body.removeChild(link);
+}
+
+
+function CarregarDetalhesPosto(idPosto, idDiv, bDivModal, bHeader) {
+    //var url = urlGlobal + "/Pesquisa/GetDadosPosto";
+    var url = urlGlobal + "/GetDadosPosto";
+    var data = {
+        id: idPosto
+    };
+    var divDetalhe = '';
+    var latitude = '';
+    var longitude = '';
+    $.ajax({
+        url: url,
+        type: "GET",
+        datatype: "json",
+        data: data,
+        success:
+            function (data, textStatus, XMLHttpRequest) {
+                var combus1 = '';
+                var combus2 = '';
+                var combus3 = '';
+                var cont = 0;
+
+                divDetalhe += '<div class="modal-dialog modal-dialog-centered modal-xl margem_top_0" role="document">';
+                divDetalhe += '   <div class="modal-content">';
+                divDetalhe += '       <div id="content">';
+
+                // Mostra o Header para pHeader = true
+                if (bHeader) {
+                    divDetalhe += '  <div class="modal-header">';
+                    divDetalhe += '    <div class="col-md-12">';
+                    divDetalhe += '         <h5 class="modal-title"><b><span class="span-0f0b73">' + data.resultado.Nome + '</span></b></h5>';
+                    divDetalhe += '         <h9 class="modal-title"><span class="span-0f0b73">Marca:&nbsp;</span></h9>';
+                    divDetalhe += '         <span>' + data.resultado.Marca + '</span>';
+                    divDetalhe += '         <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                    divDetalhe += '         <span aria-hidden="true">&times;</span>';
+                    divDetalhe += '         </button>';
+                    divDetalhe += '     </div>';
+                    divDetalhe += ' </div>';
+                }
+
+                divDetalhe += '<div class="modal-body">';
+                divDetalhe += '<div class="containerModalHome">';
+                divDetalhe += ' <div class="row" >';
+                divDetalhe += '       <div class="col-md-4">';
+                divDetalhe += '    <div class="col-md-12 pd_top_12"> <label class="lableSubModal">Informações do Posto:</label>';
+                divDetalhe += '  </div>';
+                if (data.resultado.TipoPosto != null) {
+                    divDetalhe += '      <div class="row col-lg-12 margem_top_10">';
+                    divDetalhe += '        <div class="col-lg-12"><b><span class="span-0f0b73">Tipo de Posto:</span></b></div>';
+                    divDetalhe += '   </div>';
+                    divDetalhe += '    <div class="row col-lg-12">';
+                    divDetalhe += '      <div class="col-md-6">';
+                    divDetalhe += '      <span class="label-formularios">' + data.resultado.TipoPosto + '</span>';
+                    divDetalhe += '     </div>';
+                    divDetalhe += '     </div>';
+                }
+                divDetalhe += '        <div class="col-lg-4"><b><span class="span-0f0b73">Morada:</span></b></div>';
+                divDetalhe += '   <div class="col-lg-12"><span class="label-formularios">' + data.resultado.Morada.Morada + '<br />' + data.resultado.Morada.CodPostal + '&nbsp' + data.resultado.Morada.Distrito + '</span></div>';
+
+                latitude = data.resultado.Morada.Latitude;
+                longitude = data.resultado.Morada.Longitude;
+
+                if (data.resultado.Morada.Sentido != null) {
+                    divDetalhe += '      <div class="row col-lg-12 margem_top_10">';
+                    divDetalhe += '      <div class="col-md-6">';
+                    divDetalhe += '          <b><span class="span-0f0b73">Sentido:</span></b>';
+                    divDetalhe += '   </div>';
+                    divDetalhe += '   </div>';
+                    divDetalhe += '    <div class="row col-lg-12">';
+                    divDetalhe += '      <div class="col-md-6">';
+                    divDetalhe += '      <span class="label-formularios">' + data.resultado.Morada.Sentido + '</span>';
+                    divDetalhe += '     </div>';
+                    divDetalhe += '     </div>';
+                }
+                divDetalhe += '            <div class="row col-lg-12 margem_top_10">';
+                divDetalhe += '        <div class="col-md-6">';
+                divDetalhe += '                <b><span class="span-0f0b73">Dias Úteis:</span></b>';
+                divDetalhe += '         </div>';
+                divDetalhe += '        <div class="col-md-6">';
+                divDetalhe += '                <b><span class="span-0f0b73">Feriados:</span></b>';
+                divDetalhe += '         </div>';
+                divDetalhe += '           </div>';
+                divDetalhe += '           <div class="row col-lg-12">';
+                divDetalhe += '        <div class="col-md-6">';
+                divDetalhe += '             <span class="label-formularios">' + data.resultado.HorarioPosto.DiasUteis + "</span>";
+                divDetalhe += '         </div>';
+                divDetalhe += '        <div class="col-md-6">';
+                divDetalhe += '             <span class="label-formularios">' + data.resultado.HorarioPosto.Feriado + "</span>";
+                divDetalhe += '         </div>';
+                divDetalhe += '    </div>';
+                divDetalhe += '<div class="row col-lg-12 margem_top_10">';
+                divDetalhe += '        <div class="col-md-6">';
+                divDetalhe += '                <b><span class="span-0f0b73">Sábados:</span></b>';
+                divDetalhe += '         </div>';
+                divDetalhe += '        <div class="col-md-6">';
+                divDetalhe += '                <b><span class="span-0f0b73">Domingos:</span></b>';
+                divDetalhe += '         </div>';
+                divDetalhe += '           </div>';
+                divDetalhe += '           <div class="row col-lg-12">';
+                divDetalhe += '        <div class="col-md-6">';
+                divDetalhe += '             <span class="label-formularios">' + data.resultado.HorarioPosto.Sabado + "</span>";
+                divDetalhe += '         </div>';
+                divDetalhe += '        <div class="col-md-6">';
+                divDetalhe += '         <span class="label-formularios">' + data.resultado.HorarioPosto.Domingo + "</span>";
+                divDetalhe += '      </div>';
+                divDetalhe += '</div>';
+                //if (data.resultado.Utilizacao != null) {
+                //    divDetalhe += '      <div class="row col-lg-12 margem_top_10">';
+                //    divDetalhe += '      <div class="col-md-6">';
+                //    divDetalhe += '          <b><span class="span-0f0b73">Utilização:</span></b>';
+                //    divDetalhe += '   </div>';
+                //    divDetalhe += '   </div>';
+                //    divDetalhe += '    <div class="row col-lg-12">';
+                //    divDetalhe += '      <div class="col-md-6">';
+                //    divDetalhe += '      <span class="label-formularios">' + data.resultado.Utilizacao + '</span>';
+                //    divDetalhe += '     </div>';
+                //    divDetalhe += '     </div>';
+                //}
+                if (data.resultado.Servicos != null) {
+                    divDetalhe += '          <div class="col-lg-12 margem_top_10">';
+                    divDetalhe += '              <b><span class="span-0f0b73">Serviços:</span></b>';
+                    divDetalhe += '          </div>';
+                    divDetalhe += '          <div class="col-lg-12 servicos">';
+
+                    $.each(data.resultado.Servicos, function (indice, servico) {
+                        divDetalhe += "<img src='../../assets/img/" + servico.FicheiroLogo + "'title=" + servico.Descritivo + " width='20' heidht='20'/>&nbsp;";
+                    });
+                    divDetalhe += '        </div>';
+                }
+                if (data.resultado.OutrosServicos != null) {
+                    divDetalhe += '          <div class=" col-lg-12 margem_top_10">';
+                    divDetalhe += '              <b><span class="span-0f0b73">Observações:</span></b>';
+                    divDetalhe += '          </div>';
+                    divDetalhe += '          <div class="col-lg-12 servicos">';
+                    divDetalhe += '<span class="label-formularios">' + data.resultado.OutrosServicos + "</span>";
+                    divDetalhe += '        </div>';
+                }
+                if (data.resultado.MeiosPagamento != null) {
+                    divDetalhe += '          <div class="col-lg-12 margem_top_10">';
+                    divDetalhe += '              <b><span class="span-0f0b73">Meios de Pagamento:</span></b>';
+                    divDetalhe += '          </div>';
+                    divDetalhe += '          <div class="col-lg-12 servicos">';
+
+                    $.each(data.resultado.MeiosPagamento, function (indice, meio) {
+                        divDetalhe += "<img src='../../assets/img/" + meio.FicheiroLogo + "'title=" + meio.Descritivo + " width='20' heidht='20'/>&nbsp;";
+                    });
+                    divDetalhe += '        </div>';
+                }
+                divDetalhe += '     </div>';
+                divDetalhe += '                                     <div class="col-md-8">';
+                divDetalhe += '                                        <div class=" col-md-12">';
+                divDetalhe += '                                            <div class=" col-md-12 alert alert-secondary">';
+                divDetalhe += '                                                <label class=" lableSubModal">Combustíveis Comercializados:</label>';
+
+                divDetalhe += '                                            <div class="row col-md-12 divCombustiveisModal">';
+
+                var dataAtualizacao = "";
+                $.each(data.resultado.Combustiveis, function (indice, combustivel) {
+                    if (dataAtualizacao == "") {
+                        dataAtualizacao = combustivel.DataAtualizacao;
+                    }
+                    if (cont == 0) {
+                        combus1 += '<div class="row col-lg-12">';
+                        combus1 += '    <span class="span-0f0b73">' + combustivel.TipoCombustivel + ':</span>';
+                        combus1 += '</div>';
+                        combus1 += '<div class="row col-lg-12">';
+                        combus1 += '    <span class="label-formularios"><b>' + combustivel.Preco + '</b></span>';
+                        combus1 += '</div>';
+                    }
+                    else if (cont == 1) {
+                        combus2 += '<div class="row col-lg-12">';
+                        combus2 += '    <span class="span-0f0b73">' + combustivel.TipoCombustivel + ':</span>';
+                        combus2 += '</div>';
+                        combus2 += '<div class="row col-lg-12">';
+                        combus2 += '    <span class="label-formularios"><b>' + combustivel.Preco + '</b></span>';
+                        combus2 += '</div>';
+                    }
+                    else if (cont == 2) {
+                        combus3 += '<div class="row col-lg-12">';
+                        combus3 += '    <span class="span-0f0b73">' + combustivel.TipoCombustivel + ':</span>';
+                        combus3 += '</div>';
+                        combus3 += '<div class="row col-lg-12">';
+                        combus3 += '    <span class="label-formularios"><b>' + combustivel.Preco + '</b></span>';
+                        combus3 += '</div>';
+                    }
+                    cont = cont + 1;
+                    if (cont == 3) {
+                        cont = 0;
+                    }
+                });
+
+                divDetalhe += '     <div class="col-md-4">' + combus1 + '</div>';
+                divDetalhe += '     <div class="col-md-4">' + combus2 + '</div>';
+                divDetalhe += '     <div class="col-md-4">' + combus3 + '</div>';
+                divDetalhe += ' </div>';
+                divDetalhe += '</div>';
+                divDetalhe += '<div class=" divMapaModal">';
+                divDetalhe += '     <iframe src="" class="mapaModal" name="map' + idPosto + '" id="map' + idPosto + '" frameborder="0" marginwidth="0" marginheight="0" scrolling = "no" allowtransparency = "false"></iframe >';
+                divDetalhe += '</div>';
+                divDetalhe += '</div>';
+                divDetalhe += '</div>';
+                divDetalhe += '</div>';
+                divDetalhe += '</div>';
+
+                if (dataAtualizacao != "") {
+                    divDetalhe += '<div class="modal-footer d-flex justify-content-center">';
+                    divDetalhe += '  <span class="label-formularios">Última atualização: ' + dataAtualizacao + '</span>';
+                    divDetalhe += '</div>';
+                }
+                divDetalhe += '</div>';
+                divDetalhe += '</div>';
+                divDetalhe += ' </div>';
+            },
+        error:
+            function (data, textStatus, XMLHttpRequest) {
+                console.log("Error: " + textStatus);
+            },
+        complete: function () {
+            $(idDiv).html(divDetalhe);
+
+            if (bDivModal) {
+                $(idDiv).modal('show');
+            }
+
+
+            CarregarMapDet("map" + idPosto, latitude, longitude);
+            //CarregarMapa("map" + idPosto, idPosto, true, false);
+        }
+    });
+    ///ativa a validaçao dos campos de input(validação vermelha)
+    (function () {
+        'use strict'
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+}
+
