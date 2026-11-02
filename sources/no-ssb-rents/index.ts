@@ -1,7 +1,7 @@
 // Manifest: Norway rents (Statistics Norway Rental market survey, table 09895). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, noRent } from "./source";
+import { INFO, noRent, noRentHarvest, noRentHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -27,4 +27,10 @@ export default defineSource({
   method:
     "Norway rents: the weighted average monthly rent of rented homes from Statistics Norway's annual Rental market survey (table 09895), by price zone and number of rooms. It is a published average with its year, not a list of rents.",
   handle: (p, ctx) => noRent({ town: str(p.town), rooms: num(p.rooms), baseUrl: ctx.baseUrl }),
+  // Depth Builder: yearly library copy (price zone x rooms) for /history and stale-if-error.
+  harvest: () => noRentHarvest(),
+  historyKey: (p) => noRentHistoryKey({ town: str(p.town), rooms: num(p.rooms) }),
+  referenceDates: true,
+  staleMaxDays: 400, // one survey average per year: the newest figure cannot change between releases
+  nominalCounts: true,
 });

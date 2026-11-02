@@ -2,7 +2,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { INFO, matchZone, noRent, parseTable, pickLatest, URL_LATEST, URL_RECENT } from "./source";
+import { NO_COUNT } from "../../lib/stats";
+import { INFO, matchZone, noRent, noRentHarvest, noRentHarvestRows, noRentHistoryKey, parseTable, pickLatest, URL_LATEST, URL_RECENT } from "./source";
 
 const FIX = JSON.parse(readFileSync(new URL("./fixtures/t09895.json", import.meta.url), "utf8"));
 
@@ -107,4 +108,25 @@ test("suppressed '..' cells are missing, never a rent of 0", () => {
   const t = parseTable(FIX);
   assert.ok(t.rows.every((r) => r.value !== null && (r.value as number) > 0));
   assert.doesNotMatch(INFO.what_is_recorded, /year end/);
+});
+
+test("library copy: one row per price zone and room count with a published figure, dated 1 Jan of the survey year, n is not a count", async () => {
+  const t = parseTable(FIX);
+  const { date, rows } = noRentHarvestRows(t);
+  assert.match(date, /^\d{4}-01-01$/);
+  assert.ok(rows.length >= 30);
+  const oslo2 = rows.find((r) => r.area === "01" && r.item === "rooms-2");
+  assert.equal(oslo2?.median, 15260);
+  assert.equal(oslo2?.n, NO_COUNT);
+  assert.ok(!rows.some((r) => r.area === "02" && r.item === "rooms-1")); // suppressed '..' cell is not stored
+  const h = await noRentHarvest(async () => FIX);
+  assert.equal(h.currency, "NOK");
+  assert.equal(h.unit, "per month");
+});
+
+test("history key maps place and rooms to the library row, null when it cannot answer", () => {
+  assert.deepEqual(noRentHistoryKey({ town: "Oslo", rooms: 2 }), { area: "01", item: "rooms-2", label: "Oslo and Baerum" });
+  assert.equal(noRentHistoryKey({ town: "Norway", rooms: 7 })?.item, "rooms-5+");
+  assert.equal(noRentHistoryKey({ town: "Oslo" }), null);
+  assert.equal(noRentHistoryKey({ town: "Narnia", rooms: 2 }), null);
 });

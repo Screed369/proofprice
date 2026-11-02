@@ -5,7 +5,8 @@
 import { InputError, SourceError, fetchJson } from "../../lib/http";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { parseJsonStat, rowsWhere, JsonStatTable } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const INFO: SourceInfo = {
   id: "no-ssb-rents",
@@ -173,4 +174,49 @@ export async function noRent(input: NoRentInput, fetcher?: (url: string) => Prom
         }
       : undefined,
   });
+}
+
+
+// ---------- library copy (stale-if-error and history) ----------
+// Once a day the collector stores the newest survey year for every price zone and room count as one library day dated
+// 1 January of the survey year. Kept so a stale copy can answer when SSB is down and history builds up year by year.
+
+/** Library rows for the newest year: average monthly rent (NOK) by price zone and rooms. One published average per cell; n is not a count. */
+export function noRentHarvestRows(table: JsonStatTable): { date: string; rows: DailyRow[] } {
+  let year: string | null = null;
+  const rows: DailyRow[] = [];
+  for (const zone of table.codes[D_ZONE] ?? []) {
+    for (const rooms of Object.values(ROOM_CODES)) {
+      const pick = pickLatest(table, zone, rooms);
+      if (!pick) continue;
+      if (year === null || pick.year > year) year = pick.year;
+      rows.push({ area: zone, item: `rooms-${rooms}`, n: NO_COUNT, median: pick.value, low: pick.value, high: pick.value, min: pick.value, max: pick.value });
+    }
+  }
+  if (!year) throw new SourceError("Statistics Norway's rent table gave no year");
+  return { date: `${year}-01-01`, rows };
+}
+
+export async function noRentHarvest(fetcher?: (url: string) => Promise<unknown>): Promise<HarvestResult> {
+  const get = fetcher ?? ((u: string) => fetchJson(u, {}, 30000));
+  const { date, rows } = noRentHarvestRows(parseTable(await get(URL_LATEST)));
+  if (rows.length < 30) throw new SourceError(`Statistics Norway's rent table gave only ${rows.length} library rows; expected about 45`);
+  return {
+    date,
+    currency: "NOK",
+    unit: "per month",
+    rows,
+    note: "Statistics Norway Rental market survey, table 09895: weighted average monthly rent of rented homes by price zone and number of rooms, newest survey year. One published average per cell; n is not a count. Kept so a stale copy can answer when the publisher is down and so history builds up.",
+  };
+}
+
+const NO_LABELS: Record<string, string> = { "00": "Norway", "01": "Oslo and Baerum", "02": "Akershus", "03": "Bergen", "04": "Trondheim", "05": "Stavanger", "20": "large towns", "21": "medium towns", "22": "small towns" };
+
+/** Library key for a request, or null when the copy cannot answer it (rooms missing, unknown price zone). */
+export function noRentHistoryKey(p: { town?: string; rooms?: number }): { area: string; item: string; label: string } | null {
+  if (p.rooms === undefined || !Number.isInteger(p.rooms) || p.rooms < 1) return null;
+  const code = ALIASES[norm(p.town ?? "")];
+  if (!code) return null;
+  const rooms = ROOM_CODES[String(Math.min(p.rooms, 5))];
+  return { area: code, item: `rooms-${rooms}`, label: NO_LABELS[code] ?? code };
 }
