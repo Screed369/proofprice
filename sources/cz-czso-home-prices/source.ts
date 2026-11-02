@@ -1,13 +1,14 @@
 // Czechia average purchase prices of flats and family houses (CZK per m2), from the Czech Statistical Office (CZSO / ČSÚ).
 // Format checked live on 2026-10-31 through the GitHub probe: plain GET, JSON-stat 2.0, no key, 3.6 KB (fixture.json is that response).
 // What CZSO publishes: one figure per year and property type for the whole country, built from cadastre (CUZK) purchase records.
-// It is an official annual statistic: no sample size, no range. Answered live (tiny file), no harvest.
+// It is an official annual statistic: no sample size, no range. Answered live (tiny file); the collector keeps the newest published year (n: no count) only so a stale copy can answer when csu.gov.cz is down.
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
-import { InputError } from "../../lib/http";
+import { InputError, SourceError } from "../../lib/http";
 import { fetchJsonStat, JsonStatTable } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const SELECTION_URL = "https://csu.gov.cz/datastat/api/dotaz/data/vybery/uzivatelske/33c89c2e-cd9c-4e2c-afbf-3118becda449?jazyk=en";
 
@@ -117,4 +118,40 @@ export async function czHomePrices(input: { property_type?: string; town?: strin
   const reading = readCz(table, kind);
   const otherKind: Kind = kind === "flat" ? "house" : "flat";
   return czAnswer(reading, readCz(table, otherKind), { kind, baseUrl: input.baseUrl, ignoredTown: input.town?.trim() || undefined });
+}
+
+/** Library rows for the stale-if-error copy: the newest published year per type, no record count. Null when the table has no usable year. */
+export function czHarvestRows(table: JsonStatTable): { year: string; rows: DailyRow[] } | null {
+  const rows: DailyRow[] = [];
+  let year = "";
+  for (const kind of Object.keys(KINDS) as Kind[]) {
+    const r = readCz(table, kind);
+    if (!r) continue;
+    if (r.latest.year > year) year = r.latest.year;
+    const v = r.latest.value;
+    rows.push({ area: "czechia", item: kind, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+  }
+  return rows.length && year ? { year, rows } : null;
+}
+
+export async function czHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  const got = czHarvestRows(await fetchJsonStat(SELECTION_URL, o));
+  if (!got) throw new SourceError("CZSO table CEN04T01 gave no usable average price for flats or family houses");
+  return {
+    date: `${got.year}-12-31`,
+    currency: "CZK",
+    unit: "per m2",
+    rows: got.rows,
+    note: `CZSO CEN04T01 ${got.year}: published national average purchase price per m2 of flats and family houses (cadastre purchase records). One figure per type, no record count (n is not a count). Kept only so a stale copy can answer when the publisher is down.`,
+  };
+}
+
+/** Library key for a request: one national row per type (town is ignored by this source). */
+export function czHistoryKey(p: { property_type?: string }): { area: string; item: string; label: string } | null {
+  try {
+    const { kind } = parseKind(p.property_type);
+    return { area: "czechia", item: kind, label: "Czechia" };
+  } catch {
+    return null;
+  }
 }

@@ -4,7 +4,8 @@ import { readFileSync } from "node:fs";
 import { parseJsonStat } from "../../lib/adapters";
 import { InputError } from "../../lib/http";
 import { SOURCE_PLUGINS, findSource } from "../../lib/registry";
-import { INFO, czAnswer, czHomePrices, parseKind, readCz } from "./source";
+import { NO_COUNT } from "../../lib/stats";
+import { INFO, czAnswer, czHarvest, czHarvestRows, czHistoryKey, czHomePrices, parseKind, readCz } from "./source";
 
 // Fixture: real CZSO JSON-stat response captured 2026-10-31 (fixture.json), https://csu.gov.cz/prices-of-real-estate
 const raw = () => JSON.parse(readFileSync(new URL("./fixture.json", import.meta.url), "utf8"));
@@ -62,4 +63,27 @@ test("cz-czso-home-prices: routing shares CZ with the Eurostat index by measure"
   assert.equal(mine.serves!({ country: "CZ", measure: "index" }), false);
   assert.equal(findSource("home-sales", "CZ", { country: "CZ" })?.info.id, "cz-czso-home-prices");
   assert.equal(findSource("home-sales", "CZ", { country: "CZ", measure: "index" })?.info.id, "eu-home-price-index");
+});
+
+test("cz-czso-home-prices: collector keeps the newest year per type with no record count", async () => {
+  const got = czHarvestRows(table())!;
+  assert.equal(got.year, "2025");
+  const flat = got.rows.find((r) => r.item === "flat")!;
+  assert.equal(flat.area, "czechia");
+  assert.equal(flat.median, 72410);
+  assert.equal(flat.n, NO_COUNT);
+  assert.equal(got.rows.find((r) => r.item === "house")!.median, 56066);
+  const h = await czHarvest({ fetcher: async () => raw() });
+  assert.equal(h.date, "2025-12-31");
+  assert.equal(h.currency, "CZK");
+  assert.equal(h.rows.length, 2);
+});
+
+test("cz-czso-home-prices: library key is national, town ignored; bad type gives no key", () => {
+  assert.deepEqual(czHistoryKey({ property_type: "house" }), { area: "czechia", item: "house", label: "Czechia" });
+  assert.equal(czHistoryKey({})?.item, "flat");
+  assert.equal(czHistoryKey({ property_type: "castle" }), null);
+  const mine = SOURCE_PLUGINS.find((s) => s.info.id === "cz-czso-home-prices")!;
+  assert.equal(typeof mine.harvest, "function");
+  assert.equal(mine.nominalCounts, true);
 });

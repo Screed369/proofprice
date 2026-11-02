@@ -1,7 +1,7 @@
 // Manifest: Czechia average purchase prices of flats and family houses per m2 (CZSO, annual official statistic). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, czHomePrices } from "./source";
+import { INFO, czHarvest, czHistoryKey, czHomePrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -28,5 +28,11 @@ export default defineSource({
   serves: (p) => (str(p.measure) ?? "").toLowerCase() !== "index",
   method:
     "Czechia: the Czech Statistical Office's published average purchase price per square metre of flats and family houses (CZK), compiled from cadastre purchase records. We pass on the latest annual figure and its change over the year before; it is a national official statistic, with no range or sample size.",
+  // Stale-if-error copy: the collector keeps the newest published year (no record count), so a csu.gov.cz outage is answered from it.
+  harvest: () => czHarvest(),
+  historyKey: (p) => czHistoryKey({ property_type: str(p.property_type) }),
+  nominalCounts: true,
+  referenceDates: true,
+  noHistory: "Czechia: CZSO publishes one national average per type and year, so daily snapshots would only repeat it; ProofPrice keeps no history of it. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest figure.",
   handle: (p, ctx) => czHomePrices({ property_type: str(p.property_type), town: str(p.town), baseUrl: ctx.baseUrl }),
 });
