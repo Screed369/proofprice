@@ -1,4 +1,5 @@
 import { Breadcrumbs } from "./Breadcrumbs";
+import { HowToCite } from "./HowToCite";
 import { JsonLd } from "./JsonLd";
 import { shortLicence, shortPublisher } from "../../lib/site/answer-pages";
 import { MCP_URL } from "../../lib/site/constants";
@@ -131,6 +132,25 @@ export function ExampleAnswerPage({ page, siblings }: { page: ExamplePage; sibli
           period. See <a href="/trust">how we earn trust</a> and <a href="/method">the method</a>.
         </dd>
       </dl>
+
+      {f && (
+        <HowToCite
+          cite={{
+            title: page.h1,
+            headline: f.headline,
+            unit: f.unit,
+            measure: f.measure,
+            statistic: f.statistic,
+            n: f.n,
+            basis: page.basis,
+            period: f.referencePeriod ?? f.periodText,
+            asOf: f.asOf,
+            publisher: shortPublisher(s.publisher),
+            licence: shortLicence(s.licence),
+            path: page.path,
+          }}
+        />
+      )}
 
       <h2>Ask your AI</h2>
       <p>

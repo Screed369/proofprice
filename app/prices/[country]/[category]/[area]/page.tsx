@@ -9,6 +9,7 @@ import { pageMetadata } from "../../../../../lib/site/meta";
 import { findExamplePage } from "../../../../../lib/site/example-pages";
 import { allAnswerPages, findAnswerPage, pageRefs } from "../../../../../lib/site/prices";
 import { ExampleAnswerPage } from "../../../../_components/ExampleAnswerPage";
+import { HowToCite } from "../../../../_components/HowToCite";
 
 // Built at deploy time from the newest day of the price library (library/<source>/daily/*.csv).
 export const dynamic = "force-static";
@@ -119,6 +120,23 @@ export default async function AnswerPageView({ params }: Props) {
         <dt>Rule</dt>
         <dd>A figure is shown only when at least 5 records sit behind it. See <a href="/trust">how we earn trust</a> and <a href="/method">the method</a>.</dd>
       </dl>
+
+      <HowToCite
+        cite={{
+          title: page.h1,
+          headline: headline.medianText,
+          unit: headline.unit,
+          measure: "median",
+          statistic: false,
+          n: headline.n,
+          basis: page.basis,
+          period: page.period ? `${longDate(page.period.from)} to ${longDate(page.period.to)}` : null,
+          asOf: page.asOf,
+          publisher: shortPublisher(s.publisher),
+          licence: shortLicence(s.licence),
+          path: page.path,
+        }}
+      />
 
       <h2>Ask your AI</h2>
       <p>
