@@ -175,6 +175,8 @@ export interface UkCollected {
   /** Single days that still hit the row cap: only part of that day's sales are in the figure. */
   capped: DateWindow[];
   queries: number;
+  /** Why pieces failed (first few distinct messages, shortened), so a partial window can be diagnosed from the answer itself. */
+  errors?: string[];
 }
 
 /** Fetch every piece of the window. `fetchWindow` is injected so tests need no network. Never throws for one bad piece:
@@ -218,6 +220,8 @@ export async function collectUk(
         out.rows.push(...rows);
       } catch (e) {
         firstError ??= e;
+        const msg = `${w.from}: ${String((e as any)?.message ?? e)}`.slice(0, 160);
+        if ((out.errors ??= []).length < 3) out.errors.push(msg);
         out.missing.push(w);
       }
     }
@@ -261,6 +265,7 @@ export function describeCoverage(c: UkCollected, requested: { months: number; fr
     complete,
     ...(missing.length ? { missing_ranges: missing } : {}),
     ...(c.capped.length ? { capped_days: c.capped.map((w) => w.from) } : {}),
+    ...(c.errors?.length ? { errors: c.errors } : {}),
   };
 }
 

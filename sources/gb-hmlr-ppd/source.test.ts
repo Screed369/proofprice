@@ -210,3 +210,9 @@ test("UK manifest: district is an extra on home-sales (no new tool), town no lon
   assert.match(m.paramNotes.town, /every London sale is filed under 'London'/);
   assert.match(m.paramNotes.town, /use district/);
 });
+
+test("UK window: a failed piece reports why in coverage.errors", async () => {
+  const got = await collectUk(async (w) => { if (w.from.startsWith("2026-03")) throw new Error("timeout after 18000ms"); return [{ amount: 100000, date: w.from }]; }, monthWindows("2026-02-01", "2026-04-30"), { concurrency: 1 });
+  assert.equal(got.missing.length, 1);
+  assert.match(got.errors![0], /2026-03-01: timeout/);
+});
