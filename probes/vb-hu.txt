@@ -1,0 +1,38 @@
+URL: https://ekr.gov.hu/
+Fetched: 2026-11-02T19:45:48Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=UTF-8 216476
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+date: Mon, 02 Nov 2026 19:45:47 GMT
+server: Apache
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+strict-transport-security: max-age=15768000; includeSubDomains
+last-modified: Thu, 29 Oct 2026 14:03:11 GMT
+accept-ranges: bytes
+x-xss-protection: 1; mode=block
+content-type: text/html; charset=UTF-8
+x-oneagent-js-injection: true
+x-ruxit-js-agent: true
+content-length: 216476
+etag: "1793282592:dtagent10345260810170330GN0p"
+server-timing: dtSInfo;desc="0", dtRpid;desc="1216893686"
+set-cookie: dtCookie7gis1lmx=v_4_srv_1_sn_1617965F0C6EC821C17EC7BBBD7CE7F0_perc_100000_ol_0_mul_1_app-3Aea7c4b59f27d43eb_1; Path=/; Domain=.gov.hu; secure
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with very long lines (1989)
+=== FIRST 6000 BYTES
+<!doctype html><html><head><meta charset="utf-8"><title>Elektronikus Közbeszerzési Rendszer</title><base href="/portal"><meta name="viewport" content="width=device-width,initial-scale=1"><script type="text/javascript" data-dtconfig="rid=RID_2418|rpid=1216893686|domain=gov.hu|reportUrl=/rb_f2bc1c23-ab20-4210-b7f5-d570bd0ef118|app=ea7c4b59f27d43eb|ssc=1|auto=1|srtbv=4|owasp=1|featureHash=ICA7NVfqrux|rdnt=0|uxrgce=1|cuc=7gis1lmx|mel=100000|expw=1|dpvc=1|lastModification=1793409153039|postfix=7gis1lmx|tp=500,50,0|srbbv=3|agentUri=/ruxitagentjs_ICA7NVfqrux_10345260810170330.js">/*
+ Copyright and licenses see https://www.dynatrace.com/company/trust-center/customers/reports/ */
+(function(){function Wa(qa){let Aa;return function(){if(Aa)return Aa;var la,wa,Na;if(-1!==Sa)var ta=Sa;else{var Ga=(null==(la=null==(ta=Fa.dT_)?void 0:ta.scv)?void 0:la.call(ta,"postfix"))||(null==(Na=null==(wa=Fa.dT_)?void 0:wa.gCP)?void 0:Na.call(wa));ta=(Ga&&(Sa=Ga),Ga)}return ta?(Aa=`${qa}${ta}`,Aa):qa}}function Ha(){var qa;(qa=void 0===Fa.dialogArguments&&navigator.cookieEnabled)||(document.cookie="dTValidationCookie=1;SameSite=Lax",qa=document.cookie.includes("dTValidationCookie"),qa=(document.cookie=
+"dTValidationCookie=1; expires=Thu, 01-Jan-1970 00:00:01 GMT",qa));return qa}function fb(){if(Ha()){var qa=Fa.dT_,Aa=null==qa?void 0:qa.platformPrefix,la;if(la=!qa||Aa){var wa;la=(null===(wa=document.currentScript)||void 0===wa?void 0:wa.getAttribute("data-dtconfig"))||"#CONFIGSTRING#|auto=#AUTO#|domain=#DOMAIN#|rid=RID_#REQUEST_ID#|rpid=#RESPONSE_ID#";la=(wa=null==qa?void 0:qa.minAgentVersion)&&"10345260810170330"<`${wa}`?(console.log("[CookiePrefix/initConfig] Min agent version detected, and javascript agent is older - the javascript agent will not be initialized!"),
+!1):Aa&&!la.includes(`cuc=${Aa}`)?(console.log(`[CookiePrefix/initConfig] value of platformPrefix [${Aa}] does not match the "cuc" value in the current config - initConfig will not initialize!`),!1):!0}la&&(qa={cfg:"#CONFIGSTRING#|auto=#AUTO#|domain=#DOMAIN#|rid=RID_#REQUEST_ID#|rpid=#RESPONSE_ID#",iCE:Ha,platformCookieOffset:null==qa?void 0:qa.platformCookieOffset},Aa&&(qa.platformPrefix=Aa),Fa.dT_=qa)}}function Ba(qa){return"function"==typeof qa}function Xa(){let qa=window.performance;return qa&&
+Ca&&eb&&!!qa.timeOrigin&&Ba(qa.now)&&Ba(qa.getEntriesByType)&&Ba(qa.getEntriesByName)&&Ba(qa.setResourceTimingBufferSize)&&Ba(qa.clearResourceTimings)}this.dT_&&dT_.prm&&dT_.prm();var Fa="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:void 0,Sa=-1;Wa("dtPC");Wa("dtCookie");Wa("rxvt");Wa("rxVisitor");Wa("dTValidationCookie");Wa("dtSa");Wa("dtSR");var eb="function"==typeof PerformanceResourceTiming||"object"==typeof PerformanceResourceTiming,Ca="function"==typeof PerformanceNavigationTiming||
+"object"==typeof PerformanceNavigationTiming;if((!("documentMode"in document)||Number.isNaN(document.documentMode))&&Xa()){let qa=Fa.dT_;!qa||!qa.cfg&&qa.platformPrefix?fb():qa.gCP||(Fa.console.log("Duplicate agent injection detected, turning off redundant initConfig."),qa.di=1)}})();
+(function(){function Wa(){let g=0;try{g=Math.round(Pa.performance.timeOrigin)}catch(p){}if(0>=g||Number.isNaN(g)||!Number.isFinite(g))Hd.push({severity:"Warning",type:"ptoi",text:`performance.timeOrigin is invalid, with a value of [${g}]. Falling back to performance.timing.navigationStart`}),g=ve;return wd=g,We=Ha,wd}function Ha(){return wd}function fb(){return We()}function Ba(){let g=0;try{g=Math.round(Pa.performance.now())}catch(p){}return 0>=g||Number.isNaN(g)||!Number.isFinite(g)?Date.now()-
+We():g}function Xa(g,p){if(!p)return"";var z=g+"=";g=p.indexOf(z);if(0>g)return"";for(;0<=g;){if(0===g||" "===p.charAt(g-1)||";"===p.charAt(g-1))return z=g+z.length,g=p.indexOf(";",g),0<=g?p.substring(z,g):p.substring(z);g=p.indexOf(z,g+z.length)}return""}function Fa(g){return Xa(g,document.cookie)}function Sa(){}function eb(g,p=[]){var z;if(!g||"object"!=typeof g&&"function"!=typeof g)return!1;let O="number"!=typeof p?p:[],T=null,pa=[];switch("number"==typeof p?p:5){case 0:T="Array";break;case 1:T=
+"Boolean";break;case 2:T="Number";break;case 3:T="String";break;case 4:T="Function";break;case 5:T="Object";break;case 6:T="Date";pa.push("getTime");break;case 7:T="Error";pa.push("name","message");break;case 8:T="Element";break;case 9:T="HTMLElement";break;case 10:T="HTMLImageElement";pa.push("complete");break;case 11:T="PerformanceEntry";break;case 13:T="PerformanceResourceTiming";break;case 14:T="PerformanceNavigationTiming";break;case 15:T="CSSRule";pa.push("cssText","parentStyleSheet");break;
+case 16:T="CSSStyleSheet";pa.push("cssRules","insertRule");break;case 17:T="Request";pa.push("url");break;case 18:T="Response";pa.push("ok","status","statusText");break;case 19:T="Set";pa.push("add","entries","forEach");break;case 20:T="Map";pa.push("set","entries","forEach");break;case 21:T="Worker";pa.push("addEventListener","postMessage","terminate");break;case 22:T="XMLHttpRequest";pa.push("open","send","setRequestHeader");break;case 23:T="SVGScriptElement";pa.push("ownerSVGElement","type");break;
+case 24:T="HTMLMetaElement";pa.push("httpEquiv","content","name");break;case 25:T="HTMLHeadElement";break;case 26:T="ArrayBuffer";break;case 27:T="ShadowRoot",pa.push("host","mode")}let {Me:$a,We:vb}={Me:T,We:pa};if(!$a)return!1;p=vb.length?vb:O;if(!O.length)try{if(Pa[$a]&&g instanceof Pa[$a]||Object.prototype.toString.call(g)==="[object "+$a+"]")return!0;if(g&&g.nodeType&&1===g.nodeType){let Mb=null===(z=g.ownerDocument.defaultView)||void 0===z?void 0:z[$a];if("function"==typeof Mb&&g instanceof
+Mb)return!0}}catch(Mb){}for(let Mb of p)if("string"!=typeof Mb&&"number"!=typeof Mb&&"symbol"!=typeof Mb||!(Mb in g))return!1;return!!p.length}function Ca(g,p,z,O){"undefined"==typeof O&&(O=Aa(p,!0));"boolean"==typeof O&&(O=Aa(p,O));g===Pa?He&&He(p,z,O):me&&eb(g,21)?we.call(g,p,z,O):g.addEventListener&&(g===Pa.document||g===Pa.document.documentElement?Xg.call(g,p,z,O):He.call(g,p,z,O));O=!1;fo
