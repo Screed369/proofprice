@@ -1,6 +1,6 @@
 // Manifest: Sweden rents (Statistics Sweden rent survey, table BO0406). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, seRent } from "./source";
+import { INFO, seRent, seRentHarvest, seRentHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -26,4 +26,10 @@ export default defineSource({
   // will answer requests with its own parameter new_build=true; this source answers every other SE rent request, as before.
   serves: (p) => !(p.new_build === true || String(p.new_build ?? "").toLowerCase() === "true"),
   handle: (p, ctx) => seRent({ town: str(p.town), rooms: num(p.bedrooms), baseUrl: ctx.baseUrl }),
+  // Depth Builder: yearly library copy (24 rows: 6 region groups x 4 room counts) for /history and stale-if-error.
+  harvest: () => seRentHarvest(),
+  historyKey: (p) => seRentHistoryKey({ town: str(p.town), rooms: num(p.bedrooms) }),
+  referenceDates: true,
+  staleMaxDays: 400, // one survey median per year: the newest figure cannot change between releases
+  nominalCounts: true,
 });

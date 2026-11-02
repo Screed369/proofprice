@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { INFO, matchRegion, parseTable, pickLatest, seRent, URL_ALL_REGIONS } from "./source";
+import { INFO, matchRegion, parseTable, pickLatest, seRent, seRentHarvest, seRentHarvestRows, seRentHistoryKey, URL_ALL_REGIONS } from "./source";
 
 const FIX = JSON.parse(readFileSync(new URL("./fixtures/tab4618.json", import.meta.url), "utf8")); // all regions, 2026
 const DEF = JSON.parse(readFileSync(new URL("./fixtures/tab4618-default.json", import.meta.url), "utf8")); // default selection (Sweden only)
@@ -59,4 +59,25 @@ test("data_as_of is never after today: a year not yet over gives the table's upd
   const a = await seRent({ town: "Greater Stockholm", rooms: 2 }, async () => FIX);
   const today = new Date().toISOString().slice(0, 10);
   assert.ok(a.data_as_of! <= today, a.data_as_of!);
+});
+
+test("harvest rows: 6 region groups x 4 room counts, monthly SEK, dated 1 Jan of the survey year", async () => {
+  const { date, rows } = seRentHarvestRows(parseTable(FIX));
+  assert.equal(date, "2026-01-01");
+  assert.equal(rows.length, 24);
+  const se2 = rows.find((r) => r.area === "00" && r.item === "rooms-2")!;
+  assert.equal(se2.median, Math.round(95875 / 12));
+  const sth2 = rows.find((r) => r.area === "0010" && r.item === "rooms-2")!;
+  assert.equal(sth2.median, Math.round(110365 / 12));
+  const h = await seRentHarvest(async () => FIX);
+  assert.equal(h.currency, "SEK");
+  assert.equal(h.rows.length, 24);
+});
+
+test("historyKey matches the harvest keys", () => {
+  assert.deepEqual(seRentHistoryKey({ town: "Greater Stockholm", rooms: 2 }), { area: "0010", item: "rooms-2", label: "Greater Stockholm" });
+  assert.equal(seRentHistoryKey({ rooms: 6 })!.item, "rooms-4");
+  assert.equal(seRentHistoryKey({ rooms: 6 })!.area, "00");
+  assert.equal(seRentHistoryKey({ town: "Atlantis", rooms: 2 }), null);
+  assert.equal(seRentHistoryKey({ town: "Stockholm" }), null);
 });
