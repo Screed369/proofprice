@@ -6,7 +6,7 @@ import { joinAnd } from "../../lib/text";
 
 export const metadata = pageMetadata({
   title: "Connect ProofPrice to your AI",
-  description: "Copy-paste setup for Claude, ChatGPT, Cursor, VS Code, Windsurf, Claude Code and agent frameworks. No key needed.",
+  description: "Copy-paste setup for Claude, ChatGPT, Grok, Cursor, VS Code, Windsurf, Claude Code, the xAI API and agent frameworks. No key needed.",
   path: "/connect",
 });
 

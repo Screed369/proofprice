@@ -223,7 +223,7 @@ Contact: ${CONTACT}
 - MCP Server Card (draft discovery standard): ${baseUrl}/.well-known/mcp-server-card
 - A2A Agent Card (agent discovery; points at the MCP and REST endpoints, ProofPrice does not run A2A messaging): ${baseUrl}/.well-known/agent-card.json
 - REST (GET, JSON, CORS open): ${baseUrl}/api/v1/<category>
-- Add-to-client instructions for Claude, ChatGPT, Cursor, VS Code, Windsurf, Claude Code and agent frameworks: ${baseUrl}/connect
+- Add-to-client instructions for Claude, ChatGPT, Grok and Grok Bot, Cursor, VS Code, Windsurf, Claude Code, the xAI API and agent frameworks: ${baseUrl}/connect
 
 ## Pages for people and crawlers
 - Sources, licences and attribution (every source with its publisher, licence and limits): ${baseUrl}/sources
@@ -461,6 +461,50 @@ export function connectGuides(): ConnectGuide[] {
       language: "bash",
       code: `claude mcp add --transport http proofprice ${MCP_URL}`,
       docUrl: "https://code.claude.com/docs/en/mcp",
+    },
+    {
+      id: "grok",
+      title: "Grok (grok.com connectors)",
+      steps: [
+        "Open grok.com/connectors and add a custom connector.",
+        `Paste the server URL: ${MCP_URL}`,
+        "Choose no sign-in. ProofPrice needs no key. Save it, then switch it on in a chat.",
+        "On Business and Enterprise plans an admin adds it in the xAI console; members then use it.",
+      ],
+      docUrl: "https://docs.x.ai/grok/connectors",
+    },
+    {
+      id: "grok-bot",
+      title: "Grok Bot",
+      steps: [
+        "Grok Bot has no config file. In a chat, ask it to add a custom MCP server with this address:",
+        MCP_URL,
+        "It then has every ProofPrice tool, including the price check, before it buys something for you.",
+      ],
+      note: "Grok Bot can make purchases. Ask it to run the ProofPrice price check (check a price before you pay) on a flight, hotel, rent or fuel price first.",
+      docUrl: "https://docs.x.ai/grok/connectors",
+    },
+    {
+      id: "xai-api",
+      title: "xAI API (Grok remote MCP tool)",
+      steps: ["xAI's servers call ProofPrice for you. Put the MCP tool in the tools list (OpenAI-compatible Responses API on api.x.ai):"],
+      codeLabel: "python",
+      language: "python",
+      code: `from openai import OpenAI
+
+client = OpenAI(base_url="https://api.x.ai/v1", api_key="YOUR_XAI_API_KEY")
+resp = client.responses.create(
+    model="YOUR_GROK_MODEL",
+    tools=[{
+        "type": "mcp",
+        "server_label": "proofprice",
+        "server_url": "${MCP_URL}",
+    }],
+    input="Is 1.89 euro a litre a fair price for diesel in Ireland right now?",
+)
+print(resp.output_text)`,
+      note: "xAI accepts Streamable HTTP and SSE servers and does not support require_approval, so leave it out. Use allowed_tools to limit which ProofPrice tools Grok sees.",
+      docUrl: "https://docs.x.ai/developers/tools/remote-mcp",
     },
     {
       id: "openai-responses",
