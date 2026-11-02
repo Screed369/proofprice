@@ -336,8 +336,22 @@ export async function ukHpi(q: Query): Promise<PriceAnswer> {
   if (!place) {
     return empty(q, q.town, type, `The UK House Price Index source here covers Scotland and Northern Ireland only. '${q.town}' is not one of their council areas. Valid places: ${placeNames()}.`);
   }
-  const json = await fetchJson(queryUrl(place.slug), { headers: { accept: "application/sparql-results+json" } }, 15000);
+  const json = await liveJson(place);
   return ukhpiAnswer(place, type, parseMonths(json), q);
+}
+
+/** The Land Registry SPARQL service often fails the first call and answers the second (smoke runs showed STALE while a live call a minute later was ok;
+ *  the collector needs up to 4 tries for the same reason). One quick retry on a failure keeps live answers live: 10 s + 1 s + 15 s stays inside the 40 s deadline. */
+export const liveOptions = { firstMs: 10000, retryMs: 15000, pauseMs: 1000 };
+async function liveJson(place: Place): Promise<unknown> {
+  const init = { headers: { accept: "application/sparql-results+json" } };
+  try {
+    return await fetchJson(queryUrl(place.slug), init, liveOptions.firstMs);
+  } catch (e) {
+    if (e instanceof InputError) throw e;
+    await new Promise((r) => setTimeout(r, liveOptions.pauseMs));
+    return await fetchJson(queryUrl(place.slug), init, liveOptions.retryMs);
+  }
 }
 
 // ---------- the daily collector and its library key (stale-if-error) ----------

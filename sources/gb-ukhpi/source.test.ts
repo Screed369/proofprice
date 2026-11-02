@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { buildQuery, findPlace, harvestOptions, INFO, parseMonths, placeRows, queryUrl, ukHpiHarvest, ukHpiHistoryKey, ukhpiAnswer } from "./source";
+import { buildQuery, findPlace, harvestOptions, INFO, liveOptions, ukHpi, parseMonths, placeRows, queryUrl, ukHpiHarvest, ukHpiHistoryKey, ukhpiAnswer } from "./source";
 import { SCOTLAND_JSON } from "./fixtures";
 import source from "./index";
 
@@ -124,6 +124,38 @@ describe("gb-ukhpi collector and library key", () => {
     } finally {
       globalThis.fetch = original;
       harvestOptions.retryDelayMs = 3000;
+    }
+  });
+  it("live call retries once after a failed first call (Edinburgh flat, smoke showed STALE while a later call was ok)", async () => {
+    const original = globalThis.fetch;
+    liveOptions.pauseMs = 0;
+    let calls = 0;
+    globalThis.fetch = (async () => {
+      calls++;
+      if (calls === 1) return new Response("busy", { status: 503 });
+      return new Response(JSON.stringify(SCOTLAND_JSON), { status: 200, headers: { "content-type": "application/json" } });
+    }) as any;
+    try {
+      const a = await ukHpi({ town: "Edinburgh", property_type: "flat-maisonette" });
+      assert.equal(calls, 2);
+      assert.equal(a.status, "ok");
+      assert.equal(a.price?.value, 136950);
+    } finally {
+      globalThis.fetch = original;
+      liveOptions.pauseMs = 1000;
+    }
+  });
+  it("live call still fails (so the library copy can answer) when both calls fail", async () => {
+    const original = globalThis.fetch;
+    liveOptions.pauseMs = 0;
+    let calls = 0;
+    globalThis.fetch = (async () => { calls++; return new Response("down", { status: 503 }); }) as any;
+    try {
+      await assert.rejects(ukHpi({ town: "Edinburgh" }), /HTTP 503/);
+      assert.equal(calls, 2);
+    } finally {
+      globalThis.fetch = original;
+      liveOptions.pauseMs = 1000;
     }
   });
 });
