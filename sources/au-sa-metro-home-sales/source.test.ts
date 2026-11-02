@@ -139,3 +139,25 @@ test("saHomeSales fetches earlier quarters only for a thin suburb", async () => 
   assert.equal(ok.price?.median, 1485000);
   assert.equal(calls.length, 2);
 });
+
+import { harvestRows, saHarvest, saHistoryKey } from "./source";
+
+test("harvest rows: suburbs with 5+ sales only, folded-name areas", () => {
+  const rows = harvestRows(parseTable(data));
+  const n = rows.find((r) => r.area === "norwood")!;
+  assert.equal(n.n, 13);
+  assert.equal(n.median, 2325000);
+  assert.equal(n.item, "house");
+  assert.equal(rows.find((r) => r.area === "glenelg"), undefined); // 2 sales
+  assert.equal(rows.find((r) => r.area === "ashton"), undefined); // no sales
+});
+
+test("harvest refuses a file with too few suburbs (format change guard)", async () => {
+  const fetch = async (u: string) => (u.includes("package_show") ? pkg : data);
+  await assert.rejects(() => saHarvest(fetch), /may have changed/);
+});
+
+test("history key maps a suburb to its library area", () => {
+  assert.deepEqual(saHistoryKey({ town: "Norwood" }), { area: "norwood", item: "house", label: "Norwood, Adelaide (houses)" });
+  assert.equal(saHistoryKey({ town: "Sydney" }), null);
+});

@@ -4,7 +4,7 @@
 
 import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { SA_SUBURBS } from "./suburbs";
 
 export const INFO: SourceInfo = {
@@ -220,4 +220,46 @@ export async function saHomeSales(input: { town?: string; postcode?: string; bas
     return answerFor(latest, input.town, input.baseUrl, earlier);
   }
   return answerFor(latest, input.town, input.baseUrl);
+}
+
+// ---------- daily collector and history ----------
+
+/** Library area for a suburb: the folded name, e.g. "norwood". */
+export const suburbArea = (name: string) => fold(name);
+
+/** One library row per suburb for the newest quarter: the council part with most sales, only when it has 5 or more sales. The publisher gives a
+ *  median and a count, no range, so low/high/min/max repeat the median (the same convention as the Adelaide rents source). */
+export function harvestRows(table: SaTable): DailyRow[] {
+  const bySuburb = new Map<string, SaRow[]>();
+  for (const r of table.rows) bySuburb.set(fold(r.suburb), [...(bySuburb.get(fold(r.suburb)) ?? []), r]);
+  const out: DailyRow[] = [];
+  for (const [area, parts] of bySuburb) {
+    const b = bestPart(parts);
+    if (!enoughSales(b)) continue;
+    out.push({ area, item: "house", n: b.sales as number, median: b.median as number, low: b.median as number, high: b.median as number, min: b.median as number, max: b.median as number });
+  }
+  return out;
+}
+
+export async function saHarvest(fetch: (u: string) => Promise<any> = (u) => fetchJson(u, {}, 20000)): Promise<HarvestResult> {
+  const pkg = await fetch(`${SITE}/data/api/3/action/package_show?id=${PACKAGE}`);
+  const res = pickLatestResource(pkg);
+  const table = parseTable(await fetch(`${SITE}/data/api/3/action/datastore_search?resource_id=${res.id}&limit=1000`));
+  if (table.quarter !== res.quarter) throw new SourceError(`The newest South Australian file is ${res.quarter} but its columns say ${table.quarter}; this source needs updating.`);
+  const rows = harvestRows(table);
+  if (rows.length < 50) throw new SourceError(`Only ${rows.length} Adelaide suburbs had 5 or more house sales in ${table.quarter}; the file may have changed.`);
+  return {
+    date: quarterBounds(table.quarter).to,
+    currency: "AUD",
+    unit: "per house",
+    rows,
+    note: `Median house sale price by metropolitan Adelaide suburb in ${table.quarter}; n is the number of house sales (suburbs with fewer than ${MIN_SALES} sales are left out; a suburb in two councils uses the part with most sales).`,
+  };
+}
+
+/** Library keys for a request, or null when it is not an Adelaide suburb. */
+export function saHistoryKey(p: { town?: string; postcode?: string }): { area: string; item: string; label: string } | null {
+  if (!servesSuburb(p.town, p.postcode)) return null;
+  const { name } = clean(p.town as string);
+  return { area: suburbArea(name), item: "house", label: `${title(name)}, Adelaide (houses)` };
 }

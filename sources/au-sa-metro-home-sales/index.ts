@@ -2,7 +2,7 @@
 // Folder name sorts AFTER au-home-sales on purpose: the registry takes the first source whose serves() says yes and otherwise the FIRST source,
 // so the ABS state source (no serves) stays the default and only an Adelaide suburb comes here.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, saHomeSales, servesSuburb } from "./source";
+import { INFO, saHarvest, saHistoryKey, saHomeSales, servesSuburb } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -22,4 +22,8 @@ export default defineSource({
     "Adelaide: the South Australian Government's quarterly median house sale price for each metropolitan suburb, with the number of sales as sample size (a suburb with fewer than 5 sales in the newest quarter is answered from the newest of the last four quarters with 5 or more, and the answer names that quarter). The published median is passed on unchanged; no range is published.",
   serves: (p) => servesSuburb(str(p.town), str(p.postcode)),
   handle: (p, ctx) => saHomeSales({ town: str(p.town), postcode: str(p.postcode), baseUrl: ctx.baseUrl }),
+  // Daily collector reads the newest quarterly file; one library day per quarter (dated by the quarter's last day). Also enables /history and stale-if-error.
+  harvest: saHarvest,
+  referenceDates: true,
+  historyKey: (p) => saHistoryKey({ town: str(p.town), postcode: str(p.postcode) }),
 });
