@@ -1,0 +1,83 @@
+URL: https://lisansws.epdk.gov.tr/services/bildirimPetrolAkaryakitFiyatlari?wsdl
+Fetched: 2026-11-02T13:44:02Z from GitHub Actions
+Status, type, bytes: 200 text/xml 4315
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+content-type: text/xml
+date: Mon, 02 Nov 2026 13:44:02 GMT
+transfer-encoding: chunked
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=16000000; includeSubDomains; preload;
+
+=== FILE TYPE: ASCII text, with very long lines (802)
+=== FIRST 30000 BYTES
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://genel.service.ws.epvys.g222.tubitak.gov.tr/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://genel.service.ws.epvys.g222.tubitak.gov.tr/">
+   <wsdl:types>
+      <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified">
+         <xsd:import namespace="http://genel.service.ws.epvys.g222.tubitak.gov.tr/" schemaLocation="bildirimPetrolAkaryakitFiyatlari?xsd=xsd0.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="genelSorgu">
+      <wsdl:part name="parameters" element="tns:genelSorgu"/>
+   </wsdl:message>
+   <wsdl:message name="genelSorguResponse">
+      <wsdl:part name="parameters" element="tns:genelSorguResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="bildirimPetrolAkaryakitFiyatlariPortType">
+      <wsdl:operation name="genelSorgu">
+         <wsdl:input message="tns:genelSorgu" wsaw:Action="genelSorgu"/>
+         <wsdl:output message="tns:genelSorguResponse" wsaw:Action="http://genel.service.ws.epvys.g222.tubitak.gov.tr/DBService/genelSorguResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="bildirimPetrolAkaryakitFiyatlariSoap11Binding" type="tns:bildirimPetrolAkaryakitFiyatlariPortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="genelSorgu">
+         <soap:operation soapAction="genelSorgu" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="bildirimPetrolAkaryakitFiyatlariSoap12Binding" type="tns:bildirimPetrolAkaryakitFiyatlariPortType">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="genelSorgu">
+         <soap12:operation soapAction="genelSorgu" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="bildirimPetrolAkaryakitFiyatlariHttpBinding" type="tns:bildirimPetrolAkaryakitFiyatlariPortType">
+      <http:binding verb="POST"/>
+      <wsdl:operation name="genelSorgu">
+         <http:operation location="genelSorgu"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="bildirimPetrolAkaryakitFiyatlari">
+      <wsdl:port name="bildirimPetrolAkaryakitFiyatlariHttpSoap11Endpoint" binding="tns:bildirimPetrolAkaryakitFiyatlariSoap11Binding">
+         <soap:address location="http://lisansws.epdk.org.tr/services/bildirimPetrolAkaryakitFiyatlari.bildirimPetrolAkaryakitFiyatlariHttpSoap11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="bildirimPetrolAkaryakitFiyatlariHttpSoap12Endpoint" binding="tns:bildirimPetrolAkaryakitFiyatlariSoap12Binding">
+         <soap12:address location="http://lisansws.epdk.org.tr/services/bildirimPetrolAkaryakitFiyatlari.bildirimPetrolAkaryakitFiyatlariHttpSoap12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="bildirimPetrolAkaryakitFiyatlariHttpEndpoint" binding="tns:bildirimPetrolAkaryakitFiyatlariHttpBinding">
+         <http:address location="http://lisansws.epdk.org.tr/services/bildirimPetrolAkaryakitFiyatlari.bildirimPetrolAkaryakitFiyatlariHttpEndpoint"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
