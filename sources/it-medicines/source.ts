@@ -132,8 +132,32 @@ export function itDailyRows(packs: ItPack[]): DailyRow[] {
 
 const UA = { "user-agent": "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)" };
 
+/** GET the list; a 5xx or a network error is retried (2 more tries, pauses injectable for tests). AIFA answered one HTTP 502 on 1 Nov
+ * and the whole day's copy was skipped. A 4xx is not retried. */
+export async function fetchListWithRetry(
+  doFetch: (url: string, init: { headers: Record<string, string> }) => Promise<Response> = fetch,
+  pauses: number[] = [3000, 8000],
+): Promise<Response> {
+  let last: Response | null = null;
+  let lastErr: unknown = null;
+  for (let i = 0; i <= pauses.length; i++) {
+    try {
+      const res = await doFetch(CSV_URL, { headers: UA });
+      if (res.status < 500) return res;
+      last = res;
+      lastErr = null;
+    } catch (e) {
+      lastErr = e;
+      last = null;
+    }
+    if (i < pauses.length) await new Promise((r) => setTimeout(r, pauses[i]));
+  }
+  if (last) return last;
+  throw new SourceError(`AIFA transparency list could not be reached: ${lastErr instanceof Error ? lastErr.message : String(lastErr)}`);
+}
+
 export async function itHarvest(): Promise<HarvestResult> {
-  const res = await fetch(CSV_URL, { headers: UA });
+  const res = await fetchListWithRetry();
   if (!res.ok) throw new SourceError(`AIFA transparency list returned HTTP ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
   const list = parseList(decodeCsv(buf));

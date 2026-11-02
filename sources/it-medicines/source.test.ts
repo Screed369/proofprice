@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseList, parseCsv, parseEuro, headerDate, nameKey, decodeCsv, itDailyRows, itAnswerFromRow, itKey, itHistoryKey } from "./source";
+import { parseList, parseCsv, parseEuro, headerDate, nameKey, decodeCsv, itDailyRows, itAnswerFromRow, itKey, itHistoryKey, fetchListWithRetry } from "./source";
 
 // First rows of the live Lista_farmaci_equivalenti.csv (semicolon, quoted fields, decimal comma), probed 15 Oct 2026.
 const csv = `Principio attivo;Confezione di riferimento;ATC;AIC;Farmaco;Confezione;Ditta;Prezzo riferimento SSN;Prezzo Pubblico 15 ottobre 2026;Differenza;Nota;Codice gruppo equivalenza
@@ -66,4 +66,20 @@ test("it-medicines keys and answer", () => {
   assert.equal(a.extra, undefined);
   assert.equal((itAnswerFromRow(row, { key: "paracetamolo", today: "2026-10-30" }).extra as any).stale, true);
   assert.equal(itAnswerFromRow({ ...row, n: 4 }, { key: "paracetamolo", today: "2026-10-15" }).status, "insufficient_data");
+});
+
+test("it-medicines retries a 502 and a network error, not a 404", async () => {
+  let calls = 0;
+  const flaky = async () => { calls++; return calls < 3 ? new Response("bad gateway", { status: 502 }) : new Response("ok", { status: 200 }); };
+  const ok = await fetchListWithRetry(flaky as never, [0, 0]);
+  assert.equal(ok.status, 200);
+  assert.equal(calls, 3);
+  let n = 0;
+  const gone = async () => { n++; return new Response("no", { status: 404 }); };
+  assert.equal((await fetchListWithRetry(gone as never, [0, 0])).status, 404);
+  assert.equal(n, 1);
+  let m = 0;
+  const down = async () => { m++; throw new Error("ECONNRESET"); };
+  await assert.rejects(() => fetchListWithRetry(down as never, [0, 0]), /could not be reached: ECONNRESET/);
+  assert.equal(m, 3);
 });
