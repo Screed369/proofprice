@@ -1,6 +1,6 @@
 // Manifest: Sweden home prices (official average purchase prices of houses and tenant-owned flats, Statistics Sweden). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, swedenHomePrices } from "./source";
+import { INFO, seHarvest, seHistoryKey, swedenHomePrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -33,4 +33,11 @@ export default defineSource({
       property_type: str(p.property_type),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector stores Statistics Sweden's newest quarterly house average for every county and Sweden (rows dated by the
+  // quarter's end). Declared change for the platform gate: harvest + historyKey + staleMaxDays added by the Depth Builder.
+  harvest: () => seHarvest(),
+  historyKey: (p) => seHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type) }),
+  referenceDates: true,
+  staleMaxDays: 35, // one average per quarter: the newest figure cannot change between releases
+  nominalCounts: true,
 });

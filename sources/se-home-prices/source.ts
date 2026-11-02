@@ -9,11 +9,11 @@
 // sample_size = the published number of sales. Prices are converted from SEK thousand to SEK. Changes are calculated here.
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { InputError } from "../../lib/http";
+import { InputError, SourceError } from "../../lib/http";
 import { parseJsonStat, periodRange, previousPeriod, resolveFetcher } from "../../lib/adapters";
 import type { FetchOptions, JsonStatTable } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
-import { confidenceLabel, MIN_PUBLISH } from "../../lib/stats";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { confidenceLabel, MIN_PUBLISH, NO_COUNT } from "../../lib/stats";
 import { SE_REGIONS } from "./places";
 
 export const INFO: SourceInfo = {
@@ -565,4 +565,60 @@ export async function swedenHomePrices(input: SwedenInput, o: FetchOptions & { n
     urls.push(...flats.urls);
   }
   return swedenAnswer(houses.fig, { type, asked: place, ...asOf, apiUrls: urls, notes: [...notes, ...(houses.note ? [houses.note] : [])], context });
+}
+
+
+// ---------- library copy (stale-if-error and history) ----------
+// Once a day the collector stores the newest quarter of TAB1167 (houses, county and Sweden, with the number of sales) as one
+// library day dated by the quarter's end. Municipalities (yearly table), tenant-owned flats and the metropolitan areas are not
+// stored, so a request for them keeps the honest 502 when SCB is down.
+
+/** "2026K3" -> "2026-09-30" (the last day of the quarter). */
+export function quarterEnd(tid: string): string | null {
+  const m = /^(\d{4})K([1-4])$/.exec(tid);
+  return m ? `${m[1]}-${["03-31", "06-30", "09-30", "12-31"][Number(m[2]) - 1]}` : null;
+}
+
+/** The newest quarter of every county and Sweden, as library rows (average purchase price in SEK; n is NO_COUNT: SCB's count of sales is kept out of the row, the figure is an average). */
+export function seHarvestRows(table: JsonStatTable): { date: string; rows: DailyRow[] } {
+  const times = [...(table.codes.Tid ?? [])].sort();
+  const latest = times[times.length - 1];
+  const date = latest ? quarterEnd(latest) : null;
+  if (!date) throw new SourceError("Statistics Sweden's quarterly house table named no quarter");
+  const rows: DailyRow[] = [];
+  for (const place of PLACES.filter((p) => p.level === "county" || p.level === "country")) {
+    const pt = readSeries(table, { ...HOUSES_QUARTERLY_CODES, region: place.code }).find((p) => p.reference_period === isoPeriod(latest));
+    if (!pt || pt.average === null || !(pt.sales !== null && pt.sales >= 5)) continue; // never a figure from fewer than 5 sales
+    rows.push({ area: place.code, item: "house", n: NO_COUNT, median: pt.average, low: pt.average, high: pt.average, min: pt.average, max: pt.average });
+  }
+  return { date, rows };
+}
+
+export const harvestUrl = (base?: string) =>
+  url(HOUSES_QUARTERLY, { Region: PLACES.filter((p) => p.level === "county" || p.level === "country").map((p) => p.code), ContentsCode: ["BO0501L2", "BO0501L3"] }, 1, base);
+
+export async function seHarvest(o: FetchOptions & { apiBase?: string } = {}): Promise<HarvestResult> {
+  const { date, rows } = seHarvestRows(parseJsonStat(await resolveFetcher(o)(harvestUrl(o.apiBase))));
+  if (rows.length < 20) throw new SourceError(`Statistics Sweden's quarterly table gave only ${rows.length} library rows; expected 22`);
+  return {
+    date,
+    currency: "SEK",
+    unit: "per home (average purchase price)",
+    rows,
+    note: "Statistics Sweden BO0501 (TAB1167): average purchase price of one- and two-dwelling buildings for permanent living sold in the quarter, by county and Sweden (counties with fewer than 5 sales left out). One published average per place and quarter, preliminary for the newest quarters; n is not a count. Kept so a stale copy can answer when the publisher is down and so history builds up.",
+  };
+}
+
+/** Library key for a request, or null when the copy cannot answer it (municipality, metro area, flats, postcode only, unknown place). */
+export function seHistoryKey(p: { town?: string; postcode?: string; property_type?: string }): { area: string; item: string; label: string } | null {
+  try {
+    if (p.postcode && !p.town) return null;
+    const type = normaliseType(p.property_type);
+    if (type !== "any" && type !== "house") return null;
+    const place = resolvePlace(p.town);
+    if (place.level !== "county" && place.level !== "country") return null;
+    return { area: place.code, item: "house", label: place.name };
+  } catch {
+    return null;
+  }
 }

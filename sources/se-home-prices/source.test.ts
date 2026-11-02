@@ -323,3 +323,63 @@ test("se-home-prices: routed by country through the shared home-sales tool (netw
     globalThis.fetch = realFetch;
   }
 });
+
+// ---- library copy (harvest, history key, stale-if-error); fixture = live response of 2026-11-02 ----
+import { harvestUrl, quarterEnd, seHarvest, seHarvestRows, seHistoryKey } from "./source";
+
+test("se-home-prices: harvest url asks the quarterly table for the newest quarter of every county and Sweden", () => {
+  const u = harvestUrl();
+  assert.match(u, /tables\/TAB1167\/data/);
+  assert.match(u, /top\(1\)/);
+  assert.equal((u.match(/Region%5D=([^&]*)/)![1].split(",")).length, 22);
+});
+
+test("se-home-prices: quarter end dates", () => {
+  assert.equal(quarterEnd("2026K3"), "2026-09-30");
+  assert.equal(quarterEnd("2026K1"), "2026-03-31");
+  assert.equal(quarterEnd("2025"), null);
+});
+
+test("se-home-prices: harvest rows from the real cube: Sweden and counties, SEK, dated by the quarter's end", () => {
+  const { date, rows } = seHarvestRows(parseJsonStat(F.ALL_COUNTIES_LATEST_Q));
+  assert.match(date, /^\d{4}-(03-31|06-30|09-30|12-31)$/);
+  assert.ok(rows.length >= 20 && rows.length <= 22, `rows ${rows.length}`);
+  assert.ok(rows.some((r) => r.area === "00") && rows.some((r) => r.area === "01"));
+  for (const r of rows) {
+    assert.equal(r.item, "house");
+    assert.ok(r.median > 500_000 && r.median < 20_000_000, `${r.area} ${r.median}`); // SEK, not SEK thousand
+    assert.equal(r.low, r.median);
+  }
+});
+
+test("se-home-prices: seHarvest runs end to end on a stubbed fetch", async () => {
+  const h = await seHarvest({ fetcher: async () => F.ALL_COUNTIES_LATEST_Q } as any);
+  assert.equal(h.currency, "SEK");
+  assert.ok(h.rows.length >= 20);
+});
+
+test("se-home-prices: a county with under 5 sales is never stored", () => {
+  const t = JSON.parse(JSON.stringify(F.ALL_COUNTIES_LATEST_Q));
+  assert.ok(seHarvestRows(parseJsonStat(t)).rows.some((r) => r.area === "01"));
+  const pos = t.dimension.Region.category.index["01"] as number;
+  const nIdx = t.dimension.ContentsCode.category.index["BO0501L2"] as number;
+  t.value[pos * 2 + nIdx] = 3; // cube order: Region, ContentsCode, one period
+  assert.ok(!seHarvestRows(parseJsonStat(t)).rows.some((r) => r.area === "01"));
+});
+
+test("se-home-prices: history key covers county and Sweden houses only", () => {
+  assert.deepEqual(seHistoryKey({}), { area: "00", item: "house", label: "Sweden" });
+  assert.equal(seHistoryKey({ town: "Skåne" })?.area, "12");
+  assert.equal(seHistoryKey({ town: "Stockholms län", property_type: "house" })?.area, "01");
+  assert.equal(seHistoryKey({ town: "Stockholm", property_type: "flat" }), null);
+  assert.equal(seHistoryKey({ postcode: "11122" }), null);
+  assert.equal(seHistoryKey({ town: "Greater Gothenburg" }), null);
+  assert.equal(seHistoryKey({ town: "Nowhereville" }), null);
+});
+
+test("se-home-prices: the manifest declares the library hooks", () => {
+  const s: any = SOURCE_PLUGINS.find((x: any) => x.info.id === "se-home-prices");
+  assert.equal(typeof s.harvest, "function");
+  assert.equal(typeof s.historyKey, "function");
+  assert.equal(s.referenceDates, true);
+});
