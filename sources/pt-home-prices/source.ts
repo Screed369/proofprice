@@ -54,8 +54,8 @@ export interface FetchOptions {
   now?: Date;
 }
 // INE's servers can be slow, and a request with a period code they do not know hangs: we only ever ask for "all periods" (Dim1=T).
-// INE drops connections from Vercel: two attempts of 15 s (0.5 s apart) stay inside the 40 s answer deadline; a library copy follows if both fail.
-const defaultFetcher: Fetcher = (url) => retryOnce(() => fetchJson(url, {}, 15000));
+// INE drops connections from Vercel: two attempts of 10 s (0.5 s apart) so a dead INE costs about 20 s, not 30 s (smoke 2 Nov: Porto/PT answered from the copy after 30.7 s, too slow for many agents); a library copy follows if both fail.
+const defaultFetcher: Fetcher = (url) => retryOnce(() => fetchJson(url, {}, 10000));
 
 // ---------- place names (pure) ----------
 
