@@ -17,6 +17,8 @@ export default defineSource({
   serves: (p) => {
     const c = String(p.country ?? "").toUpperCase();
     if (c === "NL") return false;
+    // PT petrol95/petrol98/diesel/lpg/methane are answered by DGEG station prices (pt-dgeg-fuel); the bulletin now only stands in for it (fallbackFor).
+    if (c === "PT" && (!p.fuel || ["petrol95", "petrol98", "diesel", "lpg", "methane"].includes(String(p.fuel)))) return false;
     if (c === "FI" && ["petrol95", "diesel"].includes(String(p.fuel ?? ""))) return false;
     return true;
   },
@@ -56,7 +58,7 @@ export default defineSource({
   // Stands in for the Italian, French and Spanish station-level sources and for Statistics Netherlands (CBS) when they cannot be
   // reached and no recent copy is held (MIMIT refuses connections from cloud servers): the answer is this bulletin's national figure
   // and says so. NL is one of this source's countries but serves() leaves it to CBS, so it counts as a stand-in country here.
-  fallbackFor: { sources: ["it-fuel", "fr-fuel", "es-fuel", "nl-cbs-fuel"], countries: ["IT", "FR", "ES", "NL"], label: "the European Commission Weekly Oil Bulletin" },
+  fallbackFor: { sources: ["it-fuel", "fr-fuel", "es-fuel", "nl-cbs-fuel", "pt-dgeg-fuel"], countries: ["IT", "FR", "ES", "NL", "PT"], label: "the European Commission Weekly Oil Bulletin" },
   nominalCounts: true,
   harvest: wobHarvest,
   backfill: wobBackfill,
