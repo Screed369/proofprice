@@ -1,0 +1,94 @@
+URL: https://api.census.gov/data/2023/acs/acs5?get=NAME,B25064_001E,B25064_001M&for=county:*&in=state:06
+Fetched: 2026-11-02T18:41:41Z from GitHub Actions
+Status, type, bytes: 200 text/html 8764
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 302 
+date: Mon, 02 Nov 2026 18:41:41 GMT
+content-length: 0
+location: https://api.census.gov/data/missing_key.html
+x-content-type-options: nosniff
+x-datawebapi-keyerror: 1
+set-cookie: originalReferer=http%3A%2F%2Fapi.census.gov%2Fdata%2F2023%2Facs%2Facs5%3Fget%3DNAME%2CB25064_001E%2CB25064_001M%26for%3Dcounty%3A*%26in%3Dstate%3A06; Path=/; Secure
+set-cookie: TS010383f0=01283c52a476b4dffceead120f0954ebe7e4f2a057364b0f58a909c3171658c01133d350d74b0a5a1ad4e9b061523324ad353d51b4; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+set-cookie: __cf_bm=kJkI1fBGQYf5.BkFn_bLmuFYM7XlQt1FaCJ9nxt8B7Y-1793644901.4611077-1.0.1.1-qGX_Ut2dAcYQoblhfnfBiRj_G6Tqf9Cxc5N7WIFgb5L7TbnBzpkCFqOomY0_BnXTd45d.bcxWc9lR1FSY1W7yYVLcqHBxWO9dISL.cXirMgCa8RUEC.JlbunlZXUBjwQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.census.gov; Expires=Mon, 02 Nov 2026 19:11:41 GMT
+strict-transport-security: max-age=31536000; includeSubDomains
+cf-cache-status: DYNAMIC
+server: cloudflare
+cf-ray: a545465a1d834ada-EWR
+
+HTTP/2 200 
+date: Mon, 02 Nov 2026 18:41:41 GMT
+content-type: text/html
+cache-control: private
+access-control-allow-origin: *
+access-control-allow-methods: GET,POST,OPTIONS
+access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept
+referrer-policy: same-origin
+content-security-policy: default-src 'self'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content
+x-content-type-options: nosniff
+accept-ranges: bytes
+cf-cache-status: DYNAMIC
+last-modified: Mon, 27 Jul 2026 12:40:40 GMT
+set-cookie: TS010383f0=01283c52a4bde3780d79ae9fa712108bde6ba934da7ca6a3db3449326e5bbabfe036a833aa7310cc1529a9ce3d1ac48f2c87fa0cda; Path=/; Domain=.api.census.gov; Secure; HttpOnly
+set-cookie: __cf_bm=Sr0Ip4VJ7X6kXw_GqtuMwfPnq4Knb9sNHJBvLv8RlaU-1793644901.5033772-1.0.1.1-i5lkVCaGyFw1dMU0tJHE4czrrM6Bn6a15MbvwqUGBHsJgVSf4UjUYYCGw.PzfTXK4pxnoaWXXKtCaGHc0gZ2BDYxxAuYwusdrz3duhBY3ofsWEWHowVuKxF1n6Udj7Ez; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.census.gov; Expires=Mon, 02 Nov 2026 19:11:41 GMT
+strict-transport-security: max-age=31536000; includeSubDomains
+server: cloudflare
+cf-ray: a545465a6e634ada-EWR
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text
+=== FIRST 3000 BYTES
+<html style="font-size: 14px;">
+
+<head>
+    <title>Missing Key</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <script type="text/javascript" src="assets/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
+
+            // Get the referrer from the cookie
+            document.getElementById('text-field').value = decodeURIComponent(getCookie('originalReferer'));
+            
+            $(".menu-activator").click(function () {
+                $(".gov-menu").toggle()
+                $(".chevron").toggleClass('rotate')
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <div data-v-8adc6fed="" data-v-2f72e816="" class="gov-banner noprint">
+            <div data-v-8adc6fed="" class="aqua-layout horizontal align-start justify-start banner-header">
+                <img data-v-8adc6fed=""
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII="
+                    alt="U.S flag" class="usflag" role="img" aria-hidden="true">
+                <span data-v-8adc6fed="">
+                    <div data-v-8adc6fed="" class="aqua-layout horizontal" tabindex="0">
+                        <div data-v-8adc6fed="" tabindex="0"
+                            aria-label="An official website of the United States government">
+                            An official website of the United States government
+                        </div>
+                        <div data-v-8adc6fed="" class="menu-activator"
+                            aria-label="Here's how you know. Press enter for more information." tabindex="0">
+                            <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start"> Here&rsquo;s how you
+                                know <div data-v-8adc6fed="" class="chevron"><img data-v-8adc6fed="" class="aqua-icon"
+                                        src="assets/images/chevron-down.svg"
+                                        style="width: 0.75rem; height: 0.75rem; max-height: 0.75rem; transition: all 500ms ease 0s; filter: invert(30%) sepia(8%) saturate(3837%) hue-rotate(171deg) brightness(99%) contrast(89%);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div data-v-8adc6fed="" class="aqua-layout horizontal justify-start gov-menu" style="d
