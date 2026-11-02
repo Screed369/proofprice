@@ -1,0 +1,47 @@
+URL: https://datos.gob.es/apidata/catalog/dataset/e05233601-transacciones-inmobiliarias-de-vivienda.json
+Fetched: 2026-11-02T19:42:02Z from GitHub Actions
+Status, type, bytes: 200 application/json 3410
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: nginx
+date: Mon, 02 Nov 2026 19:42:22 GMT
+content-type: application/json
+content-length: 3410
+access-control-allow-origin: *
+content-location: http://datos.gob.es/apidata/catalog/dataset/e05233601-transacciones-inmobiliarias-de-vivienda.json
+age: 0
+accept-ranges: bytes
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy: default-src 'self'; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; frame-src 'self' https: data:; frame-ancestors 'self'; connect-src 'self' https: data:
+referrer-policy: strict-origin-when-cross-origin
+set-cookie: nlbi_3275850=wzybZHZe+UxixSFkSHffnQAAAADYCeooNhEr9qORlxYQUbGu; HttpOnly; path=/; Domain=.datos.gob.es; Secure; SameSite=None
+set-cookie: visid_incap_3275850=EkATT7d3Sqa/ltVSAmDiK4nn6GoAAAAAQUIPAAAAAADuXOvmmUrFkVEw4dIzpYyG; expires=Mon, 01 Nov 2027 22:52:04 GMT; HttpOnly; path=/; Domain=.datos.gob.es; Secure; SameSite=None
+set-cookie: incap_ses_569_3275850=YxICSAZnzmcPF9/PsX7lB4nn6GoAAAAAKHF31dyxjooJ6tYPoaHj8Q==; path=/; Domain=.datos.gob.es; Secure; SameSite=None
+strict-transport-security: max-age=31536000
+x-cdn: Imperva
+x-iinfo: 54-23637111-23327576 pNNN RT(1793648521654 156) q(0 0 0 5) r(2 2) U24
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{ "format" : "linked-data-api", "version" : "0.2", "result" : {"_about" : "http://datos.gob.es/apidata/catalog/dataset/e05233601-transacciones-inmobiliarias-de-vivienda.json", "definition" : "http://datos.gob.es/apidata/catalog/meta/dataset/_id.json", "extendedMetadataVersion" : "http://datos.gob.es/apidata/catalog/dataset/e05233601-transacciones-inmobiliarias-de-vivienda.json?_metadata=all", "first" : "http://datos.gob.es/apidata/catalog/dataset/e05233601-transacciones-inmobiliarias-de-vivienda.json?_page=0", "hasPart" : "http://datos.gob.es/apidata/catalog/dataset/e05233601-transacciones-inmobiliarias-de-vivienda.json", "isPartOf" : "http://datos.gob.es/apidata/catalog/dataset/e05233601-transacciones-inmobiliarias-de-vivienda.json", "items" : [{"_about" : "https://datos.gob.es/catalogo/e05233601-transacciones-inmobiliarias-de-vivienda", "accrualPeriodicity" : "http://publications.europa.eu/resource/authority/frequency/QUARTERLY", "description" : [{"_value" : "Conjunto de datos que recoge el número y valor de las transacciones inmobiliarias de viviendas, desagregadas por ámbito geográfico, tipología de vivienda y periodo temporal.", "_lang" : "es"}
+      ], "distribution" : {"_about" : "https://datos.gob.es/catalogo/e05233601-transacciones-inmobiliarias-de-vivienda/resource/864d7aed-764e-425b-9e34-2b5112b4cf92", "accessURL" : "https://cdn.mivau.gob.es/portal-web-mivau/Datos_MIVAU/CSV/VDP003_01.csv", "downloadURL" : "https://cdn.mivau.gob.es/portal-web-mivau/Datos_MIVAU/CSV/VDP003_01.csv", "format" : "http://publications.europa.eu/resource/authority/file-type/CSV", "title" : [{"_value" : "Transacciones inmobiliarias de vivienda", "_lang" : "es"}
+        ], "type" : "http://www.w3.org/ns/dcat#Distribution"}
+      , "identifier" : "d9d2dd78-3ba1-4d76-bf66-4dfb7b6344a3", "issued" : "mié, 29 abr 2026", "keyword" : [{"_value" : "Comercio", "_lang" : "es"}
+      , {"_value" : "Economía", "_lang" : "es"}
+      , {"_value" : "Infraestructuras", "_lang" : "es"}
+      , {"_value" : "Número Transacciones", "_lang" : "pt"}
+      , {"_value" : "Urbanismo", "_lang" : "es"}
+      , {"_value" : "Valor Transacciones", "_lang" : "es"}
+      , {"_value" : "Vivienda", "_lang" : "es"}
+      , {"_value" : "Vivienda Nueva Protegida", "_lang" : "es"}
+      , {"_value" : "Vivienda Protegida Nueva", "_lang" : "es"}
+      , {"_value" : "Vivienda Protegida Segunda Mano", "_lang" : "es"}
+      , {"_value" : "Vivienda Segunda Mano", "_lang" : "es"}
+      ], "language" : "http://publications.europa.eu/resource/authority/language/SPA", "modified" : "jue, 01 oct 2026", "publisher" : "http://datos.gob.es/recurso/sector-publico/org/Organismo/E05233601", "spatial" : "http://publications.europa.eu/resource/authority/country/ESP", "temporal" : "https://www.mivau.gob.es/catalogo/bnode/N4b70a12558ac4838bb64ecf49108eec8", "theme" : ["http://datos.gob.es/kos/sector-publico/sector/comercio", "http://datos.gob.es/kos/sector-publico/sector/economia", "http://datos.gob.es/kos/sector-publico/sector/urbanismo-infraestructuras", "http://datos.gob.es/kos/sector-publico/sector/vivienda"], "title" : [{"_value" : "Transacciones inmobiliarias de vivienda", "_lang" : "es"}
+      ], "type" : "http://www.w3.org/ns/dcat#Dataset"}
+    ], "itemsPerPage" : 10, "page" : 0, "startIndex" : 1, "type" : ["http://purl.org/linked-data/api/vocab#ListEndpoint", "http://purl.org/linked-data/api/vocab#Page"]}
+}
