@@ -71,6 +71,16 @@ function compactQuery(q: Record<string, unknown> | undefined): Record<string, un
   return out;
 }
 
+const clip = (t: string, max: number) => (t.length > max ? t.slice(0, max - 1).trimEnd() + "…" : t);
+
+/** The licence's name, not its full legal text, so a proof stays small (under 2 KB): the first sentence, at most 120 characters.
+ *  The full licence wording is in the answer itself (and its hash is signed) and on /sources. */
+export function shortLicence(text: string | undefined | null): string {
+  const t = String(text ?? "").replace(/\s+/g, " ").trim();
+  const first = t.match(/^(.+?[.;])(\s|$)/)?.[1] ?? t;
+  return clip(first.replace(/[.;]$/, ""), 120);
+}
+
 export interface ProofResult {
   category: string;
   country: string | null;
@@ -147,7 +157,7 @@ export function buildClaims(kind: ProofKind, tool: string, category: string, bod
     tool,
     query: compactQuery(q),
     result,
-    sources: [{ id: answer.source.id, name: answer.source.name, licence: answer.source.licence }],
+    sources: [{ id: answer.source.id, name: clip(answer.source.name, 100), licence: shortLicence(answer.source.licence) }],
     answer_sha256: sha256Hex(canonicalJson(body)),
     statement: PROOF_STATEMENT,
   };
@@ -187,7 +197,8 @@ export function humanSummary(c: Partial<ProofClaims> | null | undefined): string
   else if (typeof r.value === "number") figures.push(`Official ${r.measure ?? "figure"} ${num(r.value)} ${r.currency}${unit}`);
   if (typeof r.p10 === "number" && typeof r.p90 === "number") figures.push(`typical ${num(r.p10)}–${num(r.p90)}`);
   figures.push(typeof r.n === "number" ? `${num(r.n)} records` : "record count not published");
-  const period = r.period?.from || r.period?.to ? `period ${[r.period.from, r.period.to].filter(Boolean).join(" to ")}` : "";
+  const ends = [...new Set([r.period?.from, r.period?.to].filter(Boolean))];
+  const period = ends.length ? `period ${ends.join(" to ")}` : "";
   if (period) figures.push(period);
   const src = (c.sources ?? []).map((s) => `${s.name} (licence: ${s.licence})`).join("; ");
   const when = typeof c.iat === "number" ? `On ${day(c.iat)} ` : "";

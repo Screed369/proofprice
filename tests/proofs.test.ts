@@ -313,6 +313,20 @@ test("a check proof carries the verdict and the asked price; an official average
   assert.equal(claims.iat, 1_800_000_000);
 });
 
+test("a proof stays under 2 KB even when a source's licence is a long paragraph", async () => {
+  const src = SOURCES["eu-oil-bulletin"];
+  assert.ok(src.licence.length > 300, "fixture: the Oil Bulletin licence is long");
+  const a = buildStatisticAnswer({
+    source: src, query: { country: "IE", fuel: "diesel" }, value: 2.1367, measure: "average", currency: "EUR", unit: "per litre",
+    period: { from: "2026-10-26", to: "2026-10-26" }, reference_period: "2026-10-26", method: "m", describe: () => "x",
+  });
+  const check = judge(a, { category: "fuel", country: "IE", price: 1.89, currency: null, unit: null, includes: null });
+  const p = await proofFor("check", CHECK_TOOL, "fuel", check, PROOF_ISSUER, { getKey });
+  assert.ok(p!.jws.length < 2048, `proof is ${p!.jws.length} characters`);
+  assert.equal(claimsOf(p!.jws).sources[0].licence, "Creative Commons Attribution 4.0 International (CC BY 4.0)");
+  assert.match(humanSummary(claimsOf(p!.jws)), /checked 1\.89 EUR per litre for diesel in Ireland against official records: below the official average/);
+});
+
 // ---------- REST ----------
 
 test("REST category answer: X-ProofPrice-Proof and Link headers on ok, none on insufficient_data; CORS exposes them", async () => {
