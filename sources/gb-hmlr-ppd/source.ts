@@ -126,7 +126,21 @@ export const UK_ROW_CAP = 2500;
 /** Most sub-queries one answer may use (12 months plus splits of the busiest months). */
 export const UK_MAX_QUERIES = 48;
 /** How many sub-queries run at once (be gentle with the public endpoint). */
-export const UK_CONCURRENCY = 6;
+export const UK_CONCURRENCY = 2;
+/** Pause before the one retry of a piece the endpoint refused with HTTP 429 (1 Nov-2 Nov: 3 of 7 month pieces got 429 at 6 at once). */
+export const UK_RETRY_429_MS = 1500;
+
+/** Run `fn`; if the endpoint answers 429 (too many requests), wait and try once more. Pure apart from the injected sleep. */
+export async function retryOn429<T>(fn: () => Promise<T>, sleep: (ms: number) => Promise<void> = (ms) => new Promise((r) => setTimeout(r, ms))): Promise<T> {
+  try {
+    return await fn();
+  } catch (e) {
+    if (!/HTTP 429/.test(String((e as any)?.message ?? e))) throw e;
+    await sleep(UK_RETRY_429_MS);
+    return fn();
+  }
+}
+
 /** Time allowed for all sub-queries together; ANSWER_DEADLINE_MS (40 s) is the outer limit. */
 export const UK_BUDGET_MS = 30_000;
 const UK_QUERY_TIMEOUT_MS = 18_000;
@@ -321,10 +335,12 @@ export async function ukHomeSales(input: {
         limit: UK_ROW_CAP,
       });
       // GET with output=json: the form proven live against the endpoint on 2026-10-12.
-      const json = await fetchJson(
-        `${ENDPOINT}?${new URLSearchParams({ query, output: "json" }).toString()}`,
-        { headers: { accept: "application/sparql-results+json" } },
-        UK_QUERY_TIMEOUT_MS,
+      const json = await retryOn429(() =>
+        fetchJson(
+          `${ENDPOINT}?${new URLSearchParams({ query, output: "json" }).toString()}`,
+          { headers: { accept: "application/sparql-results+json" } },
+          UK_QUERY_TIMEOUT_MS,
+        ),
       );
       return parseUkBindings(json);
     });

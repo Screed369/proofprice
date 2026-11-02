@@ -43,7 +43,7 @@ test("UK bindings: zero, empty and missing amounts are dropped, never counted as
 
 // ---------- the 12-month window (pilot finding 1, 22 Oct 2026) ----------
 // A fake Land Registry: `perDay(date)` sales on each day, returned in the endpoint's SPARQL JSON shape and cut at the row limit.
-import { monthWindows, splitWindow, collectUk, ukHomeSales, mergeWindows, UK_ROW_CAP, buildUkQuery as buildQ, DateWindow } from "./source";
+import { retryOn429, monthWindows, splitWindow, collectUk, ukHomeSales, mergeWindows, UK_ROW_CAP, buildUkQuery as buildQ, DateWindow } from "./source";
 
 function fakeEndpoint(perDay: (date: string) => number, opts: { failFrom?: string } = {}) {
   const calls: DateWindow[] = [];
@@ -215,4 +215,16 @@ test("UK window: a failed piece reports why in coverage.errors", async () => {
   const got = await collectUk(async (w) => { if (w.from.startsWith("2026-03")) throw new Error("timeout after 18000ms"); return [{ amount: 100000, date: w.from }]; }, monthWindows("2026-02-01", "2026-04-30"), { concurrency: 1 });
   assert.equal(got.missing.length, 1);
   assert.match(got.errors![0], /2026-03-01: timeout/);
+});
+
+test("UK window: a 429 is retried once after a pause; other errors are not retried", async () => {
+  let n = 0; const waits: number[] = [];
+  const ok = await retryOn429(async () => { if (++n === 1) throw new Error("Source returned HTTP 429"); return "rows"; }, async (ms) => { waits.push(ms); });
+  assert.equal(ok, "rows"); assert.equal(n, 2); assert.equal(waits.length, 1);
+  let m = 0;
+  await assert.rejects(retryOn429(async () => { m++; throw new Error("Source returned HTTP 500"); }, async () => {}), /500/);
+  assert.equal(m, 1);
+  let k = 0;
+  await assert.rejects(retryOn429(async () => { k++; throw new Error("Source returned HTTP 429"); }, async () => {}), /429/);
+  assert.equal(k, 2);
 });
