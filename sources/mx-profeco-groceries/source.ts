@@ -523,7 +523,7 @@ export function profecoAnswerFromRows(day: LibraryDay, input: { item?: string; r
       shops: r.n,
       area: place,
       ...(others.length ? { other_definitions: others } : {}),
-      ...(stale ? { stale: true, days_since_newest: ageDays } : {}),
+      ...(stale ? { publisher_data_old: true, days_since_newest: ageDays } : {}),
     },
   });
 }

@@ -219,3 +219,13 @@ test("matching: plain 'milk' prefers fresh/UHT milk over tinned evaporated milk,
   assert.equal(matchItems(defs, "leche")[0].name, "Leche Ultrapasteurizada");
   assert.equal(matchItems(defs, "evaporated milk")[0].name, "Leche Evaporada");
 });
+
+test("old publisher data is flagged publisher_data_old, never extra.stale (that flag means our copy stood in for a dead source)", () => {
+  const { b } = built();
+  const day = { date: b.date!, rows: b.rows };
+  const old = profecoAnswerFromRows(day, { item: "milk", today: "2026-12-31" });
+  assert.equal(old.extra?.publisher_data_old, true);
+  assert.equal(old.extra?.stale, undefined);
+  const fresh = profecoAnswerFromRows(day, { item: "milk", today: "2026-10-20" });
+  assert.equal(fresh.extra?.publisher_data_old, undefined);
+});
