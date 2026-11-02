@@ -106,3 +106,19 @@ test("eu-energy-charts: registry routes the wholesale-power countries to this so
   assert.equal(p.category, "wholesale-power");
   assert.ok(p.countries.includes("FR") && !p.countries.includes("DE") && !p.countries.includes("ES"));
 });
+
+test("eu-energy-charts: CZ is served (CC BY 4.0 response seen 2026-11-02) with its own zone", () => {
+  assert.equal(COUNTRIES.CZ.defaultZone, "CZ");
+  assert.equal(resolveZone("CZ", undefined).code, "CZ");
+  const resp = {
+    license_info: "CC BY 4.0 (creativecommons.org/licenses/by/4.0) from Bundesnetzagentur | SMARD.de",
+    unix_seconds: [1793318400, 1793319300, 1793320200, 1793321100],
+    price: [253.27, 246.0, 233.35, 240.0],
+    unit: "EUR / MWh",
+  };
+  assert.doesNotThrow(() => checkLicence(resp, "CZ"));
+  assert.equal(parseHourly(resp).length, 1);
+  assert.ok(priceUrl("CZ", Date.UTC(2026, 9, 30), Date.UTC(2026, 9, 31)).includes("bzn=CZ"));
+  const p = SOURCE_PLUGINS.find((s) => s.info.id === INFO.id)!;
+  assert.ok(p.countries.includes("CZ"));
+});

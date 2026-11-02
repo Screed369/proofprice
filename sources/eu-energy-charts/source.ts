@@ -2,7 +2,7 @@
 // Format checked live on 2026-10-17 from GitHub's servers (probe):
 //   GET https://api.energy-charts.info/price?bzn=FR&start=2026-10-16&end=2026-10-17  (no key)
 //   -> {"license_info":"CC BY 4.0 (...) from Bundesnetzagentur | SMARD.de","unix_seconds":[s, ...15-min steps, start of period],"price":[EUR/MWh,...],"unit":"EUR / MWh","deprecated":false}
-// The licence differs by zone: FR, NL, AT, BE, PL, DK1, DK2, IT-North, NO2 say CC BY 4.0; ES, PT, SE1-4, NO1, IT-Sicily say "private and internal use only".
+// The licence differs by zone: FR, NL, AT, BE, PL, DK1, DK2, IT-North, NO2 say CC BY 4.0, and CZ (added 2026-11-02, probe ec-cz: license_info "CC BY 4.0 ... from Bundesnetzagentur | SMARD.de"); ES, PT, SE1-4, NO1, IT-Sicily say "private and internal use only".
 // So we serve only the CC BY zones and refuse any answer whose license_info is not CC BY (the licence is checked on every response).
 // Germany is served by de-smard (same wholesale-power category), so DE is not listed here.
 
@@ -28,6 +28,7 @@ export interface CountryZones {
 export const COUNTRIES: Record<string, CountryZones> = {
   AT: { name: "Austria", defaultZone: "AT", zones: { AT: "Austria" } },
   BE: { name: "Belgium", defaultZone: "BE", zones: { BE: "Belgium" } },
+  CZ: { name: "Czechia", defaultZone: "CZ", zones: { CZ: "Czechia" } },
   DK: { name: "Denmark", defaultZone: "DK1", zones: { DK1: "West Denmark (DK1)", DK2: "East Denmark (DK2)" } },
   FR: { name: "France", defaultZone: "FR", zones: { FR: "France" } },
   IT: { name: "Italy", defaultZone: "IT-North", zones: { "IT-North": "Northern Italy" } },
@@ -38,7 +39,7 @@ export const COUNTRIES: Record<string, CountryZones> = {
 
 export const INFO: SourceInfo = {
   id: "eu-energy-charts",
-  country: "AT, BE, DK, FR, IT (north), NL, NO (south-west), PL",
+  country: "AT, BE, CZ, DK, FR, IT (north), NL, NO (south-west), PL",
   category: "wholesale electricity (day-ahead)",
   name: "Energy-Charts: day-ahead wholesale electricity price by bidding zone",
   publisher: "Fraunhofer ISE (Energy-Charts), with data from Bundesnetzagentur | SMARD.de",
