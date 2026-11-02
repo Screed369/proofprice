@@ -320,9 +320,9 @@ export async function esContracts(input: EsInput): Promise<PriceAnswer> {
   let row = day.rows.find((r) => r.area === "ALL" && r.item === item);
   let fellBack = false;
   if (!row) {
-    // The newest collection can be a thin partial day (the feed is read early in the day). Use the newest earlier day within a week that
+    // The newest collection can be a thin partial day (the feed is read early in the day). Use the newest earlier day within two weeks that
     // has at least 5 awards for this item, and say so, rather than answering "no matches" for a purchase that was clearly awarded.
-    const earlier = readDaily(INFO.id, { area: "ALL", item, from: windowStart(day.date, 7), to: windowStart(day.date, 1) });
+    const earlier = readDaily(INFO.id, { area: "ALL", item, from: windowStart(day.date, 14), to: windowStart(day.date, 1) });
     const prev = earlier[earlier.length - 1];
     if (prev) {
       row = prev;

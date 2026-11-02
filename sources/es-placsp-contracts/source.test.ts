@@ -193,6 +193,23 @@ test("answer: a thin newest day falls back to the newest earlier day with 5+ awa
   }
 });
 
+test("gap 2 Nov: smoke example cpv=45 still answers when the last CPV 45 day is 8 days before the newest (weekend gap), older than 14 days is no_matches", async () => {
+  process.env.PROOFPRICE_LIBRARY_DIR = mkdtempSync(path.join(tmpdir(), "esplacsp-"));
+  try {
+    const unit = "per contract, total awarded price without VAT";
+    writeDaily(INFO.id, { date: "2026-10-24", currency: "EUR", unit, rows: [{ area: "ALL", item: "cpv-45", n: 12, median: 172232, low: 40045, high: 3890362, min: 6341, max: 8301079 }] });
+    writeDaily(INFO.id, { date: "2026-11-01", currency: "EUR", unit, rows: [{ area: "ALL", item: "cpv-03", n: 12, median: 48988, low: 25664, high: 89146, min: 25020, max: 150064 }] });
+    writeMeta(INFO.id, { source: INFO.id, currency: "EUR", unit, first_date: "2026-10-24", last_date: "2026-11-01", days: 2, last_harvest_at: "x", last_rows: 1, last_ok_at: "x", last_error: null });
+    const a = await esContracts({ what: "construction works", cpv: "45" });
+    assert.equal(a.status, "ok");
+    assert.equal((a.extra as any).fell_back_to_earlier_day, "2026-10-24");
+    writeDaily(INFO.id, { date: "2026-11-20", currency: "EUR", unit, rows: [{ area: "ALL", item: "cpv-03", n: 12, median: 1, low: 1, high: 2, min: 1, max: 3 }] });
+    assert.equal((await esContracts({ what: "construction works", cpv: "45" })).status, "no_matches");
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
+});
+
 test("INFO: reuse with source cited, contract prices, no buyers or winners", () => {
   assert.equal(INFO.price_type, "contract_price");
   assert.match(INFO.attribution, /Origen de los datos: Ministerio de Hacienda/);
