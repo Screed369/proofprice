@@ -32,6 +32,11 @@ export default function Connect() {
           with a verdict (within, above or below the typical range, or about, above or below the official average, or cannot_judge), where the price
           sits, the reasons, what is missing, and the full evidence answer to keep with your reasoning. Currencies and units are never converted.
         </p>
+        <p>
+          Every check comes with a <a href="/proofs">Signed Price Proof</a> another agent (or the seller) can verify for free, without trusting you:
+          the <code>X-ProofPrice-Proof</code> header on REST, or <code>_meta[&quot;proofprice/proof&quot;]</code> on the MCP result. Verify at{" "}
+          <code>{SITE_URL}/api/v1/proofs/verify?proof=&lt;proof&gt;</code>.
+        </p>
         <pre>
           <code>{`${SITE_URL}${CHECK_REST}?category=rent&country=IE&town=Dublin&price=2400&unit=per%20month`}</code>
         </pre>

@@ -5,7 +5,7 @@ export const CORS_HEADERS = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET, POST, OPTIONS",
   "access-control-allow-headers": "content-type",
-  "access-control-expose-headers": "x-proofprice-stale",
+  "access-control-expose-headers": "x-proofprice-stale, x-proofprice-proof, link",
 };
 
 /** cacheSeconds > 0 lets Vercel's CDN serve repeat questions without running the function (cost and abuse control).
@@ -25,13 +25,13 @@ export function json(data: unknown, status = 200, cacheSeconds = 0, extraHeaders
  *  so the CDN does not keep it once the source is back, and flagged in a header so a Monitor can tell it from a live answer. */
 export const STALE_CACHE_SECONDS = 60;
 
-export function answerResponse(answer: { extra?: Record<string, unknown> }, cacheSeconds: number) {
+export function answerResponse(answer: { extra?: Record<string, unknown> }, cacheSeconds: number, extraHeaders: Record<string, string> = {}) {
   const stale = answer.extra?.stale === true;
   return json(
     answer,
     200,
     stale ? Math.min(cacheSeconds, STALE_CACHE_SECONDS) : cacheSeconds,
-    stale ? { "x-proofprice-stale": `snapshot=${String(answer.extra?.snapshot_date ?? "")}` } : {},
+    { ...(stale ? { "x-proofprice-stale": `snapshot=${String(answer.extra?.snapshot_date ?? "")}` } : {}), ...extraHeaders },
   );
 }
 
