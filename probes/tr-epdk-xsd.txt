@@ -1,0 +1,40 @@
+URL: https://lisansws.epdk.gov.tr/services/bildirimPetrolAkaryakitFiyatlari?xsd=xsd0.xsd
+Fetched: 2026-11-02T13:45:10Z from GitHub Actions
+Status, type, bytes: 200 text/xml 970
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+content-type: text/xml
+date: Mon, 02 Nov 2026 13:45:10 GMT
+transfer-encoding: chunked
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+referrer-policy: no-referrer-when-downgrade
+strict-transport-security: max-age=16000000; includeSubDomains; preload;
+
+=== FILE TYPE: ASCII text
+=== FIRST 30000 BYTES
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://genel.service.ws.epvys.g222.tubitak.gov.tr/"
+           attributeFormDefault="unqualified"
+           elementFormDefault="unqualified"
+           targetNamespace="http://genel.service.ws.epvys.g222.tubitak.gov.tr/"
+           version="1.0">
+   <xs:element name="genelSorgu" type="tns:genelSorgu"/>
+   <xs:element name="genelSorguResponse" type="tns:genelSorguResponse"/>
+   <xs:complexType name="genelSorgu">
+      <xs:sequence>
+         <xs:element minOccurs="0" name="sorguNo" type="xs:long"/>
+         <xs:element maxOccurs="unbounded"
+                     minOccurs="0"
+                     name="parametreler"
+                     type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="genelSorguResponse">
+      <xs:sequence>
+         <xs:element minOccurs="0" name="return" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>
