@@ -10,6 +10,8 @@ export default defineSource({
   countryHelp: "TW = Taiwan (Taichung City markets only)",
   placeName: "Taiwan (Taichung City markets)",
   status: "live",
+  // Shares groceries/TW with tw-moa-rice (national rice prices): rice and paddy questions go there, every other item stays here.
+  serves: (p) => String(p.country ?? "").toUpperCase() === "TW" && !/\b(rice|paddy)\b|米|稻/i.test(String(p.item ?? "")),
   paramNotes: {
     item:
       "TW: an everyday food in English or Chinese ('eggs', 'pork loin', 'pork belly', 'cabbage', 'garlic', 'banana', 'milkfish', 'shrimp', '雞蛋', '蒜頭'). About 60 vegetables, fruit, fish, pork, beef, poultry and eggs " +
