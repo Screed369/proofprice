@@ -212,7 +212,7 @@ test("UK manifest: district is an extra on home-sales (no new tool), town no lon
 });
 
 test("UK window: a failed piece reports why in coverage.errors", async () => {
-  const got = await collectUk(async (w) => { if (w.from.startsWith("2026-03")) throw new Error("timeout after 18000ms"); return [{ amount: 100000, date: w.from }]; }, monthWindows("2026-02-01", "2026-04-30"), { concurrency: 1 });
+  const got = await collectUk(async (w) => { if (w.from.startsWith("2026-03")) throw new Error("timeout after 18000ms"); return [{ amount: 100000, date: w.from }]; }, monthWindows("2026-02-01", "2026-04-30"), { concurrency: 1, sleep: async () => {} });
   assert.equal(got.missing.length, 1);
   assert.match(got.errors![0], /2026-03-01: timeout/);
 });
@@ -227,4 +227,32 @@ test("UK window: a 429 is retried once after a pause; other errors are not retri
   let k = 0;
   await assert.rejects(retryOn429(async () => { k++; throw new Error("Source returned HTTP 429"); }, async () => {}), /429/);
   assert.equal(k, 2);
+});
+
+test("UK window: pieces refused on the first pass are retried once in a second pass and recovered", async () => {
+  const calls: Record<string, number> = {};
+  const got = await collectUk(async (w) => {
+    calls[w.from] = (calls[w.from] ?? 0) + 1;
+    if (w.from.startsWith("2026-03") && calls[w.from] === 1) throw new Error("Source returned HTTP 429");
+    return [{ amount: 100000, date: w.from }];
+  }, monthWindows("2026-02-01", "2026-04-30"), { concurrency: 2, sleep: async () => {} });
+  assert.equal(got.missing.length, 0);
+  assert.equal(got.rows.length, 3);
+  assert.equal(calls["2026-03-01"], 2);
+});
+
+test("UK window: a piece that fails in both passes stays missing and is tried only twice", async () => {
+  let n = 0;
+  const got = await collectUk(async (w) => { if (w.from.startsWith("2026-03")) { n++; throw new Error("Source returned HTTP 429"); } return [{ amount: 1, date: w.from }]; },
+    monthWindows("2026-02-01", "2026-04-30"), { concurrency: 2, sleep: async () => {} });
+  assert.equal(n, 2);
+  assert.equal(got.missing.length, 1);
+});
+
+test("UK window: no second pass once the time budget is spent", async () => {
+  let t = 0; let n = 0;
+  const got = await collectUk(async (w) => { t += 20_000; if (w.from.startsWith("2026-03")) { n++; throw new Error("Source returned HTTP 429"); } return [{ amount: 1, date: w.from }]; },
+    monthWindows("2026-02-01", "2026-04-30"), { concurrency: 1, budgetMs: 30_000, now: () => t, sleep: async () => {} });
+  assert.equal(n, 1);
+  assert.ok(got.missing.length >= 1);
 });

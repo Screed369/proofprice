@@ -141,6 +141,9 @@ export async function retryOn429<T>(fn: () => Promise<T>, sleep: (ms: number) =>
   }
 }
 
+/** Pause before the second pass over pieces that failed in the first pass. */
+export const UK_RETRY_PASS_MS = 2500;
+
 /** Time allowed for all sub-queries together; ANSWER_DEADLINE_MS (40 s) is the outer limit. */
 export const UK_BUDGET_MS = 30_000;
 const UK_QUERY_TIMEOUT_MS = 18_000;
@@ -198,7 +201,7 @@ export interface UkCollected {
 export async function collectUk(
   fetchWindow: (w: DateWindow) => Promise<UkRow[]>,
   windows: DateWindow[],
-  opts: { cap?: number; maxQueries?: number; concurrency?: number; budgetMs?: number; now?: () => number } = {},
+  opts: { cap?: number; maxQueries?: number; concurrency?: number; budgetMs?: number; now?: () => number; retryPauseMs?: number; sleep?: (ms: number) => Promise<void> } = {},
 ): Promise<UkCollected> {
   const cap = opts.cap ?? UK_ROW_CAP;
   const maxQueries = opts.maxQueries ?? UK_MAX_QUERIES;
@@ -206,10 +209,14 @@ export async function collectUk(
   const budgetMs = opts.budgetMs ?? UK_BUDGET_MS;
   const now = opts.now ?? Date.now;
   const started = now();
+  const sleep = opts.sleep ?? ((ms: number) => new Promise<void>((r) => setTimeout(r, ms)));
+  const retryPauseMs = opts.retryPauseMs ?? UK_RETRY_PASS_MS;
   const queue: DateWindow[] = [...windows];
   const out: UkCollected = { rows: [], missing: [], capped: [], queries: 0 };
   let firstError: unknown = null;
   let succeeded = 0;
+  let retrying = false;
+  const failed: DateWindow[] = [];
 
   const worker = async () => {
     for (;;) {
@@ -237,6 +244,7 @@ export async function collectUk(
         const msg = `${w.from}: ${String((e as any)?.message ?? e)}`.slice(0, 160);
         if ((out.errors ??= []).length < 3) out.errors.push(msg);
         out.missing.push(w);
+        if (!retrying) failed.push(w);
       }
     }
   };
@@ -245,6 +253,19 @@ export async function collectUk(
   do {
     await Promise.all(Array.from({ length: Math.min(concurrency, Math.max(queue.length, 1)) }, worker));
   } while (queue.length > 0);
+
+  // Second pass: pieces the endpoint refused or failed (typically HTTP 429 under load) get one more go, one at a time after a
+  // pause, while the time budget lasts. Pieces skipped only because time ran out are not retried (no time left anyway).
+  if (succeeded > 0 && failed.length > 0 && now() - started < budgetMs) {
+    const again = failed.splice(0);
+    out.missing = out.missing.filter((m) => !again.some((a) => a.from === m.from && a.to === m.to));
+    await sleep(retryPauseMs);
+    retrying = true;
+    queue.push(...again);
+    do {
+      await Promise.all(Array.from({ length: 1 }, worker));
+    } while (queue.length > 0);
+  }
 
   if (succeeded === 0 && firstError) throw firstError;
   out.missing.sort((a, b) => a.from.localeCompare(b.from));
