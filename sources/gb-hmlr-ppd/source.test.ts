@@ -123,6 +123,18 @@ test("UK window: a spent time budget leaves pieces missing and reported, not sil
   assert.deepEqual(mergeWindows([{ from: "a", to: "b" }, { from: "b", to: "c" }]), [{ from: "a", to: "c" }]);
 });
 
+test("UK window: when the time budget runs short the oldest month is dropped, never the newest", async () => {
+  let t = 0;
+  const ep = fakeEndpoint(() => 20);
+
+  // default clock is real time, so assert through collectUk with an injected clock using the same ordering
+  const got = await collectUk(async (w) => { t += 10_000; return ep.fetchWindow(w); }, monthWindows("2026-01-01", "2026-06-30").reverse(), { budgetMs: 25_000, concurrency: 1, now: () => t });
+  const missingFrom = got.missing.map((m) => m.from).sort();
+  assert.ok(missingFrom.length > 0 && missingFrom.every((f) => f < "2026-04"), "only the oldest pieces are missing");
+  assert.ok(got.errors?.some((e) => /budget/.test(e)));
+
+});
+
 // ---------- district and London (pilot findings 2 and 3, 22 Oct 2026) ----------
 import { normaliseDistrict, londonBoroughFor, boroughLabel } from "./source";
 import { InputError } from "../../lib/http";

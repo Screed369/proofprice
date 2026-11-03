@@ -223,6 +223,7 @@ export async function collectUk(
       const w = queue.shift();
       if (!w) return;
       if (out.queries >= maxQueries || now() - started > budgetMs) {
+        if ((out.errors ??= []).length < 3) out.errors.push(`${w.from}: not fetched, time or query budget used up`);
         out.missing.push(w);
         continue;
       }
@@ -365,7 +366,8 @@ export async function ukHomeSales(input: {
       );
       return parseUkBindings(json);
     });
-  const got = await collectUk(fetchWindow, monthWindows(fromDate, today));
+  // Newest month first: if the time budget runs out, the oldest month is the one left out, never the latest sales.
+  const got = await collectUk(fetchWindow, monthWindows(fromDate, today).reverse());
   const rows = got.rows;
   const cov = describeCoverage(got, { months, from: fromDate, to: today });
   const s = summarise(rows.map((r) => r.amount));
