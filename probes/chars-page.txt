@@ -1,0 +1,936 @@
+URL: https://www.census.gov/construction/chars/current.html
+Fetched: 2026-11-03T06:46:36Z from GitHub Actions
+Status, type, bytes: 200 text/html; charset=utf-8 73196
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 03 Nov 2026 06:46:36 GMT
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+last-modified: Tue, 03 Nov 2026 06:23:01 GMT
+expires: Tue, 03 Nov 2026 13:30:00 GMT
+age: 1414
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age=31536000; includeSubDomains
+cf-cache-status: HIT
+set-cookie: __cf_bm=MZSyqfD.IwIVBOSpu70z5.aAYVlLkJaXwzUWx1rMVSY-1793688396.361634-1.0.1.1-UJ8DCgYa30X9VjQrpBXf8J47Ot1Zr_v4EIa_pBZ4hQcmuYay1OuMBIhX57UEV7X4K7teDOcEpxpaRmUwKokiYiNEVuw3ibygr6uF_pIfz0lNh9mWPgMcJLQnVGaTzK8o; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.census.gov; Expires=Tue, 03 Nov 2026 07:16:36 GMT
+set-cookie: _cfuvid=CVniCvRiYJOMol4SX5Ux8vuuKYBwjzupHyxyOE17elE-1793688396.361634-1.0.1.1-hS6RJxIhSkGaKJiJXMfkiBrXHqtZ3odiK9_ZFN9KicI; HttpOnly; SameSite=None; Secure; Path=/; Domain=www.census.gov
+speculation-rules: "/cdn-cgi/speculation"
+vary: accept-encoding
+publisher: econ
+expect-ct: max-age=86400, enforce
+server: cloudflare
+cf-ray: a5496c3d3b6043bd-EWR
+
+=== FILE TYPE: HTML document, ASCII text, with very long lines (11441), with CRLF, LF line terminators
+=== FIRST 60000 BYTES
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>CHARS - Current Data</title>	
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noodp, noydir" />
+        <meta name="author" content="US Census Bureau"  />
+        <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"  /><![endif]-->
+        <!--[if gte IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
+        <link rel="stylesheet" href="econ_assets/page/local/bootstrap.css" type="text/css"/>
+        <link rel="stylesheet" href="econ_assets/page/local/jquery.css" type="text/css"/>
+        <link rel="stylesheet" href="econ_assets/page/local/clientlibs.css" type="text/css"/>
+        <link rel="stylesheet" href="econ_assets/page/local/clientlibs2.css" type="text/css"/>
+        <link rel="icon" sizes="192x192" href="econ_assets/page/local/android-chrome-192x192.png" />
+        <link rel="icon" sizes="256x256" href="econ_assets/page/local/android-chrome-256x256.png" />
+        <link rel="shortcut icon" sizes="32x32" href="econ_assets/page/local/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="econ_assets/page/local/apple-touch-icon-180x180.png" />     
+        <meta name="msapplication-square150x150logo" content="econ_assets/page/local/mstile-150x150.png" />
+        <link href="econ_assets/page/local/print.css" rel="stylesheet" type="text/css" media="print"/>   
+        <meta name="DC.title" property="og:title" content="CHARS - Current Data" />
+        <meta name="DC.creator" content="US Census Bureau" />
+        <meta name="DC.date.created" property="article:published_time" scheme="ISO8601" content="" />
+        <meta name="DC.date.reviewed" property="article:modified_time" scheme="ISO8601" content="2019-04-15T15:38:26.310-04:00" />
+        <meta name="DC.language" scheme="DCTERMS.RFC1766" content="EN-US" />
+        <meta name="DC.title" property="og:title" content="CHARS - Current Data" />
+        <meta http-equiv="description" property="og:description" content="" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="" />
+        <!-- context hub -->
+        <!-- DTM-->
+        <script type="text/javascript">
+            var digitalData = digitalData || {};
+            digitalData = {
+                "page": {
+                    "pageInfo": {
+                        "pageName": "CHARS - Current Data",
+                        "legacyPageName": "en>programsRSUY>CHARS - Current Data",
+                        "pageURL": window.location.href,
+                        "language": "en",
+                        "pageTemplate": "LPL",
+                        "tool": "aem",
+                        "siteSection": "programs-surveys",
+                        "subSectionOne": ""
+                    },
+                    "pageTag": {
+                        "program": "Program Survey Landing Page",
+                        "topic": "Econ"
+                    }
+                },
+                "event": {
+                    "eventName": {},
+                    "eventInfo": {
+                        "share": {},
+                        "download": {},
+                        "search": {},
+                        "expandCollapseList": {},
+                        "language": {},
+                        "landingPageTab": {},
+                        "faceted": {}
+                    }
+                }
+            };
+
+            if (typeof (Storage) !== "undefined") {
+                if (localStorage.getItem("pageLanguage") != null) {
+                    digitalData.event.eventInfo.language.pageLanguage = localStorage.getItem("pageLanguage");
+                }
+                if (localStorage.getItem("langEventName") != null) {
+                    digitalData.event.eventName = localStorage.getItem("langEventName");
+                }
+                if (localStorage.getItem("clickValue") != null) {
+                    digitalData.event.eventInfo.search.clickValue = localStorage.getItem("clickValue");
+                }
+                if (localStorage.getItem("searchEventName") != null) {
+                    digitalData.event.eventName = localStorage.getItem("searchEventName");
+                }
+                /*if ( localStorage.getItem("landingPageTabClickValue") != null ) {
+                 digitalData.event.eventInfo.landingPageTab.clickValue = localStorage.getItem("landingPageTabClickValue");
+                 }*/
+                if (localStorage.getItem("tabEventName") != null) {
+                    digitalData.event.eventName = localStorage.getItem("tabEventName");
+                }
+                if (localStorage.getItem("pageName") != null) {
+                    digitalData.page.pageInfo.pageName = localStorage.getItem("pageName");
+                }
+                //After assigning the value to digitalData, clear the localStorage variable's content
+                localStorage.removeItem("pageLanguage");
+                localStorage.removeItem("langEventName");
+                localStorage.removeItem("clickValue");
+                localStorage.removeItem("searchEventName");
+                localStorage.removeItem("landingPageTabClickValue");
+                localStorage.removeItem("tabEventName");
+                localStorage.removeItem("pageName");
+            } else {
+                if (getCookie("pageLanguage") != "") {
+                    digitalData.event.eventInfo.language.pageLanguage = getCookie("pageLanguage");
+                }
+                if (getCookie("langEventName") != "") {
+                    digitalData.event.eventName = getCookie("langEventName");
+                }
+                if (getCookie("clickValue") != "") {
+                    digitalData.event.eventInfo.search.clickValue = getCookie("clickValue");
+                }
+                if (getCookie("searchEventName") != "") {
+                    digitalData.event.eventName = getCookie("searchEventName");
+                }
+                if (getCookie("landingPageTabClickValue") != "") {
+                    digitalData.event.eventInfo.landingPageTab.clickValue = getCookie("landingPageTabClickValue");
+                }
+                if (getCookie("tabEventName") != "") {
+                    digitalData.event.eventName = getCookie("tabEventName");
+                }
+                if (getCookie("pageName") != "") {
+                    digitalData.page.pageInfo.pageName = getCookie("pageName");
+                }
+                //After assigning the value to digitalData, clear the localStorage variable's content
+                setCookie("pageLanguage", "");
+                setCookie("langEventName", "");
+                setCookie("clickValue", "");
+                setCookie("searchEventName", "");
+                setCookie("landingPageTabClickValue", "");
+                setCookie("pageName", "");
+            }
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        </script>
+        <script type="text/javascript" src="econ_assets/page/local/jsapi.js"></script>
+        <link rel="stylesheet" href="econ_assets/page/local/censusfonts.css" type="text/css"/>
+        <link rel="stylesheet" href="econ_assets/page/local/orionicons.css" type="text/css"/>		
+    </head>	  
+    <body id="innerPage" class="   ">
+        <div>
+            <div class="clientcontext parbase">
+                <script type="text/javascript" src="econ_assets/page/local/jquery.js"></script>
+                <script type="text/javascript" src="econ_assets/page/local/jquery-ui.js"></script>
+                <script type="text/javascript" src="econ_assets/page/local/utils.js"></script>
+                <script type="text/javascript" src="econ_assets/page/local/granite.js"></script>
+                <script type="text/javascript" src="econ_assets/page/local/jquery2.js"></script>
+                <script type="text/javascript" src="econ_assets/page/local/shared.js"></script>
+                <script type="text/javascript" src="econ_assets/page/local/kernel.js"></script>
+            </div>
+        </div>
+        <a name="skipfooter" class="skip"></a>
+        <div class="uscb-main-container">
+            <div class="censusheader universalheader">
+                <header id="data-uscb-main-header" class="uscb-header uscb-print-hide">
+                    <!-- GOV BANNER AND SIMPLE HEADER LAST UPDATED 11/17/2021 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://www.census.gov/main/uswds/uswds-2.12.0/js/uswds-init.min.js"></script>
+    <script async
+        src="https://assets.adobedtm.com/7d6e749d4118/1f2b049df95b/launch-ENdc1ca6bab15e46a5b880a2c3f9d462ab.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://www.census.gov/main/uswds/uswds-2.12.0/css/uswds.min.css" /> -->
+    <!--  <link rel="stylesheet" href="https://www.census.gov/main/.in/css/all_header_styles.css" /> -->
+    <link rel="stylesheet" href="https://www.census.gov/main/css/all_header_styles.css" />
+
+
+</head>
+
+<body>
+    <script src="https://www.census.gov/main/uswds/uswds-2.12.0/js/uswds.min.js"></script>
+    <section class="usa-banner" aria-label="Official government website">
+        <div class="usa-accordion">
+            <header class="usa-banner__header">
+                <div class="usa-banner__inner">
+                    <div class="grid-col-auto">
+                        <img class="usa-banner__header-flag"
+                            src="https://www.census.gov/main/uswds/uswds-2.12.0/img/us_flag_small.png"
+                            alt="U.S. flag" />
+                    </div>
+                    <div class="grid-col-fill tablet:grid-col-auto">
+                        <p class="usa-banner__header-text">
+                            An official website of the United States government
+                        </p>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </section>
+    
+
+    <style id="antiClickjack">
+        body {
+            display: none !important
+        }
+    </style>
+    <script type="text/javascript" src="https://www.census.gov/main/javascript/clickjack.js"></script>
+    <script src="econ_assets/js/jquery.min.js"
+        class="cb-main-support global-file"></script>
+    <script src="https://www.census.gov/main/responsive-header/jquery/jquery-ui.js"
+        class="cb-main-support global-file"></script>
+
+    <!-- Check for jquery conflict -->
+    <script type="text/javascript">
+
+        // REMOTE SERVERS include adobe-launch in <head>
+        // 	$.ajax({
+        // 		type : 'get',
+        // 		url : '/main/app-config/header/adobe-launch.txt',	
+        // 		dataType: 'text',            	
+        // 		success : function(data){		 		
+        // 	                var adobeLaunchScript = document.createElement("script");
+        // 	                adobeLaunchScript.setAttribute("src",data);
+        // 	                document.head.appendChild(adobeLaunchScript);
+        // 	            },
+        // 	    error : function(xhr, errorText, errorMessage){
+        // 	                console.log('adobe-launch URL recognition failed: ' + errorText);
+        // 	            }
+        // 	});
+
+        $acn = jQuery.noConflict();
+        if (typeof jQuery === 'undefined' || typeof $ === 'undefined') {
+            jQuery = $acn;
+            $ = $acn;
+        }
+        $(function () {
+            $('.cb-header-skip-nav').click(function () {
+                $('#cb-after-header-anchor').focus();
+            });
+        });
+    </script>
+
+    <script src="https://www.census.gov/main/responsive-header/bootstrap-custom/js/bootstrap.js"
+        class="cb-main-support global-file"></script>
+    <script src="https://www.census.gov/main/responsive-header/js/typeahead.js"
+        class="cb-main-support global-file"></script>
+
+
+    <style type="text/css">
+        header.hdr-primary,
+        header.hdr-primary>nav {
+            display: flex !important;
+            align-items: center !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 64px !important;
+            background-color: #ffffff !important;
+            /* border-color: #112e51 !important;*/
+        }
+
+        header.hdr-primary>nav>div {
+            box-sizing: border-box !important;
+            height: 36.62px !important;
+            font-size: 20px !important;
+            font-weight: 500 !important;
+            letter-spacing: 0.02em !important;
+            line-height: 30px !important;
+            white-space: nowrap !important;
+            vertical-align: baseline !important;
+            padding: 0 0 0 16px !important;
+            margin: 0 !important;
+            min-width: 150px !important;
+        }
+
+        header.hdr-primary>nav>div>a,
+        header.hdr-primary>nav>div>a>img {
+            padding: 0 !important;
+            margin: 0 !important;
+            border-style: none !important;
+            background: transparent !important;
+            text-decoration: none !important;
+        }
+
+        header.hdr-primary>nav>div>a {
+            box-sizing: border-box !important;
+            cursor: pointer !important;
+            text-decoration: none !important;
+        }
+
+        header.hdr-primary>nav>div>a>img {
+            width: 86px !important;
+            height: 33.62px !important;
+            margin-left: 15px !important;
+        }
+
+        hr.blue-line {
+            /* border-top-width: 2px;*/
+            /* border-color: #d0dce1;*/
+            margin: 0px;
+            border-bottom: #d0dce1 1px solid;
+
+        }
+
+        body {
+            opacity: 1 !important;
+        }
+
+        .uscb-header {
+            background-color: #ffffff;
+        }
+
+        .uscb-footer {
+            height: 0px;
+        }
+    </style>
+    <button class="cb-header-skip-nav sr-only sr-only-focusable">Skip to main content</button>
+    <header class="hdr-primary">
+        <nav>
+            <!--  <div><a href="https://www.census.gov" id="census-home-link"><img src="https://data.census.gov/cedsci/img/census-logo-white.25c8cb29.svg" alt="United States Census Bureau" title="U.S. Census Bureau"></a></div> 
+          <div><a href="https://www.census.gov" id="census-home-link"><img src="https://www.census.gov/main/.in/USCENSUS_IDENTITY_SOLO_White_2in_TM.svg" alt="United States Census Bureau" title="U.S. Census Bureau"></a></div>
+    -->
+            <div><a href="https://www.census.gov" id="census-home-link"><img
+                        src="https://www.census.gov/main/img/USCENSUS_IDENTITY_SOLO_BLACK_1.5in_R_no_padding.svg"
+                        alt="United States Census Bureau" title="U.S. Census Bureau"></a></div>
+        </nav>
+    </header>
+    <hr class="blue-line">
+    <a class="sr-only" tabindex="-1" id="cb-after-header-anchor">end of header</a>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5496c3d3b6043bd',t:'MTc5MzY4ODM5Ng=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5496c3d3b6043bd',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>
+                </header>
+                <script type="text/javascript">
+                    document.addEventListener("DOMContentLoaded", function (event) {
+                        CensusUniversalHeader.initHeader();
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="topBg">
+            </div>
+            <div class="wrapper wrapperMarginTop">
+                <a name="skip"> </a>
+                <div id="sectionTitleRow" class="belowHeader row no-gutter">
+                    <div class="col-xs-12 uscb-margin-T-5">
+                        <div class="hidden-xs hidden-sm hidden-md col-lg-2" style="width: calc(200% / 16.3 + 5%)"></div>
+                        <div id="breadContainer" class="belowHeader hidden-xs visible-lg uscb-print-hide">
+                            
+                            <ul class="uscb-layout-row uscb-top-pagination uscb-layout-align-start-center">
+                                <li>
+                                    <a tabindex="0" href="/en.html" class="uscb-top-pagination-links" onclick="CQ_Analytics.record({event: 'followBreadcrumb', values: {breadcrumbPath: '/content/census/en.html'}, collect: false, options: {obj: this}})">
+                                        Census.gov
+                                    </a>
+                                    <span>></span>
+                                </li>                                
+                                <li>    <a tabindex="0" href="https://www.census.gov/topics/housing.html" class="uscb-top-pagination-links" onclick="CQ_Analytics.record({event: 'followBreadcrumb', values: {breadcrumbPath: 'https://www.census.gov/topics/housing.html'}, collect: false, options: {obj: this}})">Housing</a>    <span>></span></li><li>    <a tabindex="0" href="/construction/chars/index.html" class="uscb-top-pagination-links" onclick="CQ_Analytics.record({event: 'followBreadcrumb', values: {breadcrumbPath: '/construction/chars/index.html'}, collect: false, options: {obj: this}})">Characteristics of New Housing</a>    <span>></span></li><li><span class="uscb-top-pagination-links">Current Data</span></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    <div id="infoBannerSection" class="col-xs-12 uscb-padding-LR-0">
+                        <script type="text/javascript">
+                            function getBanners() {
+                                var urlVal = "https://www.census.gov/content/census/en/programs-surveys/.infobanners.html";
+                                $.ajax({
+                                    url: urlVal,
+                                    dataType: "html",
+                                    success: function (result) {
+                                        $('infoBannerSection').html(result);
+                                    },
+                                    error: function (err) {
+                                        console.log(err);
+                                    }
+                                });
+                                return false;
+                            }
+                            $(document).ready(function () {
+                                getBanners();
+                                $('.info-banner-clickable-div').click(function (e) {
+                                    var href = $(this).attr('id');
+                                    if (typeof (href) !== 'undefined' && !$(e.target).hasClass('data-uscb-exit-btn') && !$(e.target).hasClass('data-uscb-banner-dismiss-btn')) {
+                                        window.location = href;
+                                    }
+                                    return false;
+                                });
+                                $('.uscb-banner-pointer-div').hover(
+                                        function (e) {
+                                            $hoverTargets = $(this).find(".data-uscb-banner-hover-target");
+                                            $hoverTargets.addClass("uscb-text-decoration-underline");
+                                            $hoverTargets.removeClass("uscb-text-decoration-none");
+                                        },
+                                        function (e) {
+                                            $hoverTargets = $(this).find(".data-uscb-banner-hover-target");
+                                            $hoverTargets.removeClass("uscb-text-decoration-underline");
+                                            $hoverTargets.addClass("uscb-text-decoration-none");
+                                        }
+                                );
+                                $('.data-uscb-banner-dismiss-btn').click(function (e) {
+                                    if ($(e.target).hasClass('data-uscb-banner-dismiss-btn')) {
+                                        var dismissedBannerClass = $(this).attr('id');
+                                        var randStr = $(this).attr('id');
+                                        var existingCookieValue = getCookie('dismissedBannersClasses');
+                                        var newValue = (typeof (existingCookieValue) != 'undefined' && existingCookieValue != '') ? existingCookieValue + '|' + dismissedBannerClass : dismissedBannerClass;
+
+                                        setCookie('dismissedBannersClasses', newValue, 7);
+                                        $('.info-banner-section_' + randStr).remove();
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="hidden-xs hidden-sm hidden-md col-lg-2" style="width: calc(200% / 17.3 + 5%)"></div>
+                    <div class="col-xs-12 col-lg-8">
+                        <span>
+                           <h1 class="uscb-h1 uscb-medium"></h1>
+                        </span> 
+                    </div>
+                    <div class="hidden-xs hidden-sm hidden-md col-lg-4 uscb-padding-R-0">
+                        <div id="desktopLanguageSelectorContainer" class="pull-right">
+                        </div>
+                    </div>	
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $(document).click(function (event) {
+                                if ($(event.target).is('#mobileFacetSelection')) {
+                                    closeMobileFacetSelection();
+                                } else {
+                                    //span('clicked inside...');
+                                }
+                            });
+                        });//end document.ready function
+
+                        function toggleMobileLeftNavigation() {
+                            if ($('.leftNavigation').hasClass('no-show')) {
+                                $('.leftNavigation').removeClass('no-show');
+                                $('.belowHeader:not(#sectionTitleRow, #listPageContent)').hide();
+                                $('#infoBannerSection').hide();
+                            } else {
+                                $('.leftNavigation').addClass('no-show');
+                                $('.belowHeader:not(#sectionTitleRow, #listPageContent)').show();
+                                $('#infoBannerSection').show();
+                            }
+                            $('#sectionTitleRow .leftNavButton').toggleClass('open');
+                            $('#mobileTitleRow').toggleClass('menuHeader');
+                            $('#sectionTitleRow').toggleClass('menuHeader');
+                            var sectionTitleRowHeight = $('#sectionTitleRow').height();
+                            var leftNavPaddingOffset = 150;
+                            if (sectionTitleRowHeight)
+                                leftNavPaddingOffset = sectionTitleRowHeight + 65;
+
+                            $('#mobileLeftNavigation .menuContent').css('padding-top', sectionTitleRowHeight + 65 + 'px');
+                        }
+
+                        function toggleFacetSelection() {
+                            if (!$('body').hasClass('menu-slider')) {
+                                $('body').addClass('menu-slider');
+                                $('body').addClass('in');
+                            } else {
+                                $('body').removeClass('menu-slider');
+                                $('body').removeClass('in');
+                            }
+                        }
+
+                        function openMobileFacetSelection() {
+                            $('#mobileFacetSelection').css('width', '100%');
+                        }
+
+                        function closeMobileFacetSelection() {
+                            $('#mobileFacetSelection').css('width', '0%');
+                        }
+                    </script>
+                </div>
+                <link rel="stylesheet" href="econ_assets/page/local/legacy.css" type="text/css" />
+<div class="row no-gutter col-lg-12">
+    
+<div id="leftColumn" class="col-lg-2">
+    <div class="grid_navInnerLandingHolder">
+        <a href="#skipsideNav" class="offscreen">Skip to looking for section</a>
+        <div class="grid_navInnerLandingLinks">
+            <!-- begin Navigation items -->
+            <div class="leftnav">
+                <div>
+                    <ul class="uscb-margin-L--10 uscb-print-hide visible-lg uscb-print-hide">	  
+                        	<li class="uscb-filter-parent">
+			    <span>
+				<a href="https://www.census.gov/construction/chars/index.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>Main</span>
+				</a>
+			    </span>
+			</li>	<li class="uscb-filter-parent">
+			    <span>
+				<a href="/construction/soc/about.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>About</span>
+				</a>
+			    </span>
+			</li>	<li class="uscb-filter-parent">
+			    <span>
+				<a href="/construction/soc/forms.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>Information for Respondents</span>
+				</a>
+			    </span>
+			</li>	<li class="uscb-filter-parent">
+			    <span>
+				<a href="https://www.census.gov/construction/chars/current.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>Data</span>
+				</a>
+			    </span>
+			</li>	<li class="uscb-filter-parent">
+			    <span>
+				<a href="/construction/soc/methodology.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>Technical Documentation</span>
+				</a>
+			    </span>
+			</li>	<li class="uscb-filter-parent">
+			    <span>
+				<a href="/construction/soc/schedule.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>Release Schedule</span>
+				</a>
+			    </span>
+			</li>	<li class="uscb-filter-parent">
+			    <span>
+				<a href="/construction/soc/definitions.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>Definitions</span>
+				</a>
+			    </span>
+			</li>	<li class="uscb-filter-parent">
+			    <span>
+				<a href="https://www.census.gov/construction/chars/faqs.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>FAQs</span>
+				</a>
+			    </span>
+			</li>	<li class="uscb-filter-parent">
+			    <span>
+				<a href="/construction/soc/contact.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+				    <span>Contact Us</span>
+				</a>
+			    </span>
+			</li>
+                    </ul>
+                    <div class="visible-lg uscb-margin-B-10 uscb-print-hide">
+                        <div class="uscb-layout-row uscb-margin-T-10">
+                            <i class="o-angle-left-1 uscb-color-accent uscb-font-2x uscb-margin-R-10 uscb-position-relative" style="top: -8px"></i>
+                            <a href="https://www.census.gov/programs-surveys.html" class="uscb-color-primary uscb-medium uscb-underline-hover">
+                                <span>Back to Our Surveys &amp; Programs</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hidden-lg uscb-margin-B-8 uscb-print-hide">
+                        <div class="ui-widget uscb-input-wrapper" id="data-uscb-input-wrapper-mobile-nav">
+                            <div class="uscb-dropdown-container uscb-layout-row">
+                                  <input class="tags uscb-flex-row-gt-sm-90 uscb-flex-row-sm-8" placeholder="Sections" style="height: 34px;"/>
+                                  <div class="uscb-form-dropdown-button-chevron uscb-icon-button">
+                                      <i class="o-angle-down-1 uscb-font-2x uscb-color-accent" alt="Local nav dropdown chevron"></i>
+                                  </div>
+                            </div>
+                            <ul class="uscb-filter-list" style="display: none;">	
+                                	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="https://www.census.gov/construction/chars/index.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>Main</span>
+					</a>
+				    </span>
+				</li>	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="/construction/soc/about.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>About</span>
+					</a>
+				    </span>
+				</li>	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="/construction/soc/forms.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>Information for Respondents</span>
+					</a>
+				    </span>
+				</li>	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="https://www.census.gov/construction/chars/current.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>Data</span>
+					</a>
+				    </span>
+				</li>	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="/construction/soc/methodology.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>Technical Documentation</span>
+					</a>
+				    </span>
+				</li>	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="/construction/soc/schedule.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>Release Schedule</span>
+					</a>
+				    </span>
+				</li>	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="/construction/soc/definitions.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>Definitions</span>
+					</a>
+				    </span>
+				</li>	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="https://www.census.gov/construction/chars/faqs.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>FAQs</span>
+					</a>
+				    </span>
+				</li>	<li class="uscb-filter-parent uscb-border-0 uscb-padding-0">
+				    <span>
+					<a href="/construction/soc/contact.html" tabindex="0" class="uscb-color-primary" style="font-size: 1rem;">
+					    <span>Contact Us</span>
+					</a>
+				    </span>
+				</li>
+                                <div class="uscb-layout-row uscb-margin-T-10 uscb-margin-L-15 uscb-underline-hover">
+                                    <i class="o-angle-left-1 uscb-color-accent uscb-font-2x uscb-margin-R-10 uscb-position-relative" style="top: -10px"></i>
+                                    <a href="https://www.census.gov/programs-surveys.html" class="uscb-color-primary uscb-bold">
+                                        <span>Back to Our Surveys &amp; Programs</span>
+                                    </a>
+                                </div>
+                            </ul>
+                        </div>
+                    </div><!-- end mobile -->
+                    <div class="uscb-layout-row uscb-layout-align-flex-end hidden-lg uscb-print-hide"></div>
+                    <noscript class="hidden-lg uscb-print-hide">                                        
+                        <ul class="uscb-filter-list">
+                            <li class="uscb-margin-0">
+				    <a tabindex="0">Main</a>
+				</li><li class="uscb-margin-0">
+				    <a tabindex="0">About</a>
+				</li><li class="uscb-margin-0">
+				    <a tabindex="0">Information for Respondents</a>
+				</li><li class="uscb-margin-0">
+				    <a tabindex="0">Data</a>
+				</li><li class="uscb-margin-0">
+				    <a tabindex="0">Technical Documentation</a>
+				</li><li class="uscb-margin-0">
+				    <a tabindex="0">Release Schedule</a>
+				</li><li class="uscb-margin-0">
+				    <a tabindex="0">Definitions</a>
+				</li><li class="uscb-margin-0">
+				    <a tabindex="0">FAQs</a>
+				</li><li class="uscb-margin-0">
+				    <a tabindex="0">Contact Us</a>
+				</li>
+                        </ul>
+                    </noscript>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sponsorlogo sponsoringlogo image">
+            <div id="sponsorLogoHolder" class="uscb-print-hide">
+                <div id="sponsorLogo" class="sponsorlogo sponsoringlogo image belowHeader">
+                    <div class="grid_navSponsorLogoHolder">	
+                        <div class="grid_navSponsorLogoHeading">
+                            <b>Sponsored By:</b><br/>
+                        </div>
+                        <a href="https://www.huduser.gov/portal/home.html" tabindex="0">
+                            <img src="data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAIPRJREFUeNrsnQ2MXNV1x2dmt8UkkXcxEgYTe+1gVLskXiNIsVMZg5AwVjB2RBNjyZjEUUDUyAppjBS2MsKtiQQpSC6kMpJJMCh8tBSvHRUbicLiJjjFFNah2CoGvHaxS0TwLgpl03hnen937hnfuXvfmzczbz73HWk0O7Pz9e793/Pxv+ecm0olkkgiiSSSyISWdDIE0SSXyy0uDFo6PZCMSAKsMLD0qrtudVts7nvNv+T5qDKsboPm70HzGPANKxAOJsBqbxDNNADqNbfFdfz6AQM4bgMKbEcSYLUukNA4yw2AuPU00c8bMmDj1q+ANpwAqzXAdJ25bxXpV7ed7QSydJsAChCtaTEwhYFsuwJYfwKsxvlMgOmmaszc4P98kh46OZo6oO5HRse4Tw0Nj6ZXzz8n99dXzsjK6/72xaOZe146lt79zS9mL5/VlZPnl/zkzcy9S2fles/9bO6x13+T3ntkJD2j+4zUPPW456xJKZ6vwlw+qm5bWlGLdbYooDYaUJUlOw/+Nn10+Pep2xZOK0z2Q68cT+869FFaA0EBYtHMyanV3ecUgQcBcMjNO97OHLr90jF5HiCNfHpKv5b3H5jUqZ77OPXQvhOZkdFT+jV89roF03I3XnxOOSDrMde5UV3zdnW/qZWc/s6JACiRG548lOF+2dyzxwABgnYBAHu+9cVs2HvRZl0KNADzQQVGG5wigFEAOeeB/R0Aqu+K6bmXFfjk+yoUrnlNKwEs0wqAUrdH1J+Ho4BqWIEEs/WNJw4GXtsupbnk73keU4V55OY+z2uvnTMlt/mlY5lho42CBACi/QAaJtXVgNrWGZDye19+byQdEWCHGQ+z0BJgVRLhqRsaan8pQOHbMEHyGF/o58q8MWE2WERDoUHk+e5JeaW94B/eyKBlPnPXLzoWqr9XBgDzvqVf0Jrtjufey4T5bUGgtX22uer77tj9XubxN36Tvuanb+rv9wE6AGD7GR8TCSfAKiPKe82Yvu4wQDEZtyi/54CZEIAiEwrARBMoP0i/Z9mcs3OATjSOaBLMXN8VM7I45weVD2X7UUWOjwLmugXn5QBDEAjkuwS0Pl+P30aAcPwHl+nv4jvV63PXqGCglDaUNWHG5zV7uykBVrCWekb9+UxQpCem7rwf/koDislgch7+2oUFH4kJE+2Es21P1DJlyrh3TQ9mC+caoJXyhzBtgFdpLS+wRCP6zJ/WdkpLLZrZleM3C/j4znuvmZXD39t18KO0bS5LAI1xeoFxaybtlWkyLXW4FBd187NvZ1TElUZrEGkJTVAEklldBYDxv80vHsvYDjbaCa11GlRdOfszAB03NGLQ7wAEe4/4/SL8qxkh4OT//H6f858H02javl5lpjvCfouR5cb/agour7MZtJS6uz/Mj8LkqBWdY3Xj44hGYTU/tO94x2alwWyNBXfExEIRbF0xOyvRoK21dlnA6prUkcK08Vmnn+sUzZcz/tI4EPB/3udzynu6J+XC/C+fmXQ1k/BifA9abvNLRwF09rq5Z+dCzCOaa4uJHocnJLBMdgERX6/XpCitgSljhTPRDKrNBQEwmdx7l84qmqzLlRYCPE+vmpvlNQo0RRqK9+QBcEbqNqX5AA7vCTJh9y2dNY6OAMzqNu53iykO8NFyPhDlo9U82OV3KCAVTCavJ2BgkRCZcl0hQ7te3Rar8V074bIrUNnq9qG6nXJvJz/9w6nv/PN/Zc/c+G+5r//srezAu8NjVz/ya/2Y/9mvPXJy9BTP/82/DmXt5/vf+nCM57nnPX9y/6s5bvL57ufU83bZj1/PcrN/wxsnfjd27j37cjzP4+3/8YH+/X//y/fH3OvlmiJ+14eNMo3pBoFqo4loUj4zgk/B35gxUftoL0LyV26dn3W3SfBD0E4Hb79kzNZaUAdoOchMVnxQlFZvwRwS/Z32A09pU4z53vOtL41hmuc+8FpHnpg9pTUsRGtQMBBBMIub2tp5N2TnxhBToekCBlcGElA8aEyZ8qfGhfnrFHCYgAdfOV50Pf9795+PCUPeLKASH5BFoMCSVY66XkwsgH23ztc7AlwH18Nj6A/ew6KyuTrXF4OHC4keN5pxbz+NZZx0aITFUVY0JCVR36KZk3O37DicsZ1u/BQ16EU+Bkw7volvq6WVBHCgrbhWOyCB+/Jtaov2Y5xK+F0I+V/X18OpT9cRVC8EOelBzDQkopgL5ZxrzkdMov1cO4kELJjEKPuLaCql8ca5AWHrVt2uqjW4Mo0EFSYgjISU9BObSMQ83qn8jXx6y+/bLgOW64OJjwKqDSpKhMfDjLqgQoMH7Az0GkK1u2WBFQYqHG72yhicIN/g4RUXZhk417cAdPs8TvxEEkwjFAo0DByXPUaMKQSwbC01AlyZRoDK5nEYHHwKH7PM6sXPIpsgTLtNNGEs8DuJFjGB+FeACy3FODKmd5aOImsKrlpqrGfCfCo2g7l/8oY5et+NfT+yMd09vL4rp2eJEIdOjiY1kJa21xrduAg47ZjDvUc+TjOOjKed/VoCXM+0DLBMaBsa/S2bO0Xv2TEYJNmx+ti+wDFn4ESjMXD4HFVwOGVzTM0OLDbM4fhsP4xoOE/TdKaeKh0d2rK4FlREZw1ANS7LE5AcOPFJ2gYHgMnTB79Nj4yeygAq1DfbN5CFuw591CG8Tr1EIlH4r0rfT7ZFrSkPnzbiuxlDLIA9ZphNEhvJuGDM2Q7y7DWSnXokThK1M2ZQsX2w0XUyZROY1bRbaSdxurlIAyI9IHLBq+efo/Ol6gUqvmvlE4cyQdkK5Qi+jprEoki2HhSF5HfZoBGOS9h7s2g1VWNzZEYgUQfjqg7KxAgq7PU216zgZKKizUrK2ZmZDEKX0Vz2gKDZQnbwY58Ugoc4QCVCRMa2VL3M6pBOg+7SvJ79HKBizEkixN0gkobJ3+Vk11qyzcxjcwDLRBbY6e5iLXAwg+ONlgIoYupsB13Y9IhZk7GLijjTIzX4bq6T3YN6gIuMD4Bja0hSiWTsbc0flu5j5u+ROCLFuDTWRjcCZLUwuHBRcsGsZDSU7WthDpnYepKdmOd6aRPhkgI0RM0E4AAgnzlmMR8Npm96UyF7uXUDlvGr1rvPb/3ahdrMrVT+FZPIwHKxu50yKzQZZrJeZOcGk9MUQh7WRPCBlkTPZ49Fgoo5dpkFHiLrq023yVQJqm7XryrAXl2Uiep0gQADu1VpLx+A6uFPmXScjJ3wV2/Bj8Ofi1jqVZWwHeYzdyxynpfc/xDZVo1JrFZjbbP9KrSBbWKw7WgouQg7l7uewm/CmT7QBBwVZj8sBSYugTDF9RBOcDifVpQWh/5eJyMWsDu7G4FKo6bAMiVHy22/xacNsPGEtjjuaC22HertqMPjjDQoOAj8TVbOfS0EK4CF4Hum/fBXHdygQjCPux1HHzcFsG947l0XD8srLS3rrBBUEgUW8Tc4i2LqWB1Uy8hjSL2e7klps2GaibjlULGwZwb5+nR5LHRDtClNSWrhDhAtqtuYmN6uMzuL8rk0HfTs22k0+bVO/pclRImXlJtmU6nGwlnvsSeR8qk+AxYuBAAdOPFJyqYfuFD8rtsWTqvZZPM9qH/2zNyysGYUggiCiQ0hldXVivSUsEGFllpocrnQbCzAAEK3xxecxQ4s0zNgvT2RVJNQJyd8CdwQhJ1U1AA8VLGw6bVipIVpDuBomlpwI0zSXl0i43vMHLHQI3TBWV9ur4hKVklR2TslS3AiylEsFHoS/ZD8XyDrFPCCOJU4BVAdaIFN5CA5YIKMWoKLxSdpNXsc8lQUBcBzgovucrmtTAXaao1rx+Gh1A/SmQncsNdCgvIDbTNZ64ir1UWTxTVMERL+zufjohQAdgAls6YcrZWpQFt5IxBSW7DV8CcS5rI6SNKzzWQijZWesyaN610hWgqlwGNK7AIyNCJrrc5qtJUvClk2d8oYUR/9FfB1YHhr6awnUiawdLecaTl2RMjpkog+309iWo7EyhCXBa0VqfFbZ6XaCsTbZeqS58OPQs0qMOn6OHiTVq+kYUU/rgIQzD35VqsvPqelr8m0C8hIOhNWxu2tarrcpD07JeBgbSzAMrxVQVtJjhXaCBb38TfyICPKeGrVHI14AVirr3DMOVka1qYt5j1V7yTEWoCLxY8/52bnQmJLNx7m1Gmjidb6XileK6qPVcRjkGNFlHfiB5eNkeNDf6qtpqKGvbDhNnCiC9f67NtpNxNgRPsk72Za/dpYGAIqeC3mDUsEqIgaCcqYUw/HVpLXijo4N8kfeTL0VMrea0I74V+xVTBizEY7gApzEERfMPg7rV6mrSzCa9kOPVXluDbsOXp4wZuqBpZJnyiw7HwJ/pTPx8Aeozqxze2isVi5OLW+/+H0toN2Zk65RoBUiBpNRm2P6Srt5K/1lEqriaKx1thOLOQnq1Vq2NwVvjeftN8WhaS6d5aKaNU1ef+PibS7BbYydya5W1wzzjy96hFpxuJx4tdUDCzrbJqCycOfQj0e1UWTb+teoMJZPfb6B/nWPOU1ym9qKcXmQya2ejHttaZa6vSCmlRUTYX/7Hnb8rB8rVJR4Th1153npXSJk04aU1oLVSp2uB5bN/USFkyULSIiK+nU14pCR0PIUawQhcRcM9XV/C8g48HGx6OVmMLrwv6JeiRsJTokggD5YW0SW0mEp0tNACEyZP6kkpoijL4rZ0SZx+vK1liuGSz5Dcrxq1fJViLxi5m/MSG8fYKFIhXKyobQ5tDHaXWWYwYTaX+xQWXzWmSiipPvpNl4zWEYsBYnwzzxBK20970RnTotRbz508vOyy1TWs0THS6uCbCaqWlsItULOw1kleK8Ew3SvKXE/C6O7GOZTIaiI0eEcXfTKdhohrU9GLELXSLNLXSqKXMeIUtnuhkPnVFQSNhtpcCM6TyrF4/qBD5p4p+Aqv18LJ91omsQbTodBQNeIgGr17a5gAq1iNMmzSbMj9CZDYSqyZS0lwiI2NoBSHBb9mb8ollddvFxb1Qfq/BCavLswgiaTWASpZE/ZeNEDQnV0D5ip81oEKn5N8Sp3rIzxxznfHgpyxRKLvmQaYpm1w/SXU72lRJpD4GJ1+6N1Vfe9DbN2Dl3YQ58p8dx7y22uZNAqq57k81YuzBCgJZMR/uIm/gnnQ4DGrYVcGMfCOXTWEUbi3m/ajRHDjuP8bWg/CHO2PnG7t548dTEx2pTkcAtDFQ+3HRG4SVIMVa3Iuohv6fUmXJ7XibSfqAimwVylMRGnHhcHxq8OKdngJuByBrLJ9IToB0GzxxwGYspx21QPkjRc/RLaEWRfmYoD0r47tj9Xv56zJnbHvenpMbqnUir0nfAZaViFlzb+JvzzEm1ckjovPNCK656o0SFkRCNSnQqOKqS//7dR/r+85+bUrfB+8+P3k9//IdPi55bOHV2ReD4x3f+Pf1P77xalGqz8dIVuYumnF8XsMW5vea6P+VKqMZ67PXTCXySsnqagojfEu459mv9Xd+eu7huq37T/h3pfR+8U5xifeP9Y5UtjJPjPkuBtm7XQpo02btxtt2Umkp8K0mpsXnNcjRWwVba2ZPCYdkvvNNq/BGHyGqvJ7DaSSS9uHfprFjGz+0TbzChe8XvNb3sy/GxSvofunWRWh1wGxQ9xqF+MYNvncwn7vN3Pc1hOwgLH+oHcKl5i+UzKdSFYX9q1fyiyF8KlpXvlQ46haMiRAAkQKcuosM9yqRaMyh/x6m14NmU81mkbXFE6znxcgRvraLFXabGEXChaao1h/CUup36Ny8cl2DA9p30io8VWNXKtoMD6U37+zPBfk9/Rt2KnvuLC76c+7uvrKooUGBgGl3sEOchU7SGcms3bTeFzBO0iRvhVbKfK79bmt+Kb4VpxCRGct7dRqZu22h7cNjiAdGVrHy0kTJ12e//8snMx//3aehrJ//xmSqyWp79+gV/VvHEvPLB4fQNz/+4aBC+O29J7vbeJXXbMVj5/EOZuIIEHPSVTxxKBx3TwgYyjfAKr1fapdyDo+x2R8w7oKJAV/hL/O8ZjiYDP+l0eqCkxpJ+SUHiOzI2qiyZ/qXcRV89f+w7Lz2SEd/KlT89a1ruR19ZVbdwvVWEMYfmsc/N9glkJnNUCbcm0Z8CE4c+5KQiWtgC6QpYDt1weqXfOj9rn+AAaqVXO4RZteodB/25a7+fXfrzH3nB9dTV67JorESCuSZ8R3pdud0M3ZPWKhH686OlaPRiuxLSWSis71kRsFBjSp2dJib8PypW7YEpDNJY/K8cYElIbPkVbQ8uXBFfi0wSBap14Ml9x4yKyVMaipaggaS4mMGGOe9B0SCmj3sBWrnRYZy7APV06is9eDMfDfoPIogjOqxmu6vhwHr+2JtpifruunSFvpC79+/IQJZyKwdYd7+6Q5nU98eZ00ZMeFSpdhtISFGiPg7GoqAU8yXtpOIiS1sKWJg6gEXUZwMIWmHB1As0JVGOOQRUbuTV7FLNNhBmiQgQc0W/Mpz6XjaMZ3WNQW4GdclpFLAol+6uF7D+5at/lfWtTuiFhVNnj5XrZ8UlbE6zj+hyafwuqIPi6PX81F1fXlF3M4wZJOpzqQQiODotSpe+OtV9DpcCFumldamCJir8fEgw0MhtHTIeXE2yYOpsHbx4tGJDzE0pGqHOPWAH7Qct3zQskRqpH9O3IU5TWKSx2D6gjp/QnRCWbn0SxpdI/EqkhQUzy1E1HAxRicbqLGUrhcPAETRpNGkff9SKoX4iwcJcXz6zLAK8pI81YD+w+16RXA/7Tl0ZWQ1U6RCVtPLBSIn4BUUCe0+KTO95n4vSQmGgLI3laqbHd2hwcR5hqQMUE2lxjWUAlj9E0xRRUKDMvQds4RqLokN7W8cW2RvkAEXZ4Cx31zyR5hdx2iGIpV8WQCN71Gx668wG2/+yi1WDNJaotSLKQY55Fc2FlkrqCdtWWxXac7Ml1OuUyHkOJh+IEhWOiwwJPRMtNXGEqD+sbYInq2WwHGAVBEqBL+rTB4afUaTFHnrluG51w6FFCfXQ+oISIW26TOURGVjjVJs46KhA8qtVRGifiKVTLLrP7Uw0WYsL/BXtE/ChaF0UsZwsmimk7Z9y4IdSpl0kKOYLSfCSKIFoEJUJ3cA5LHHWsiXSOGGbqGtSR5Z5Zb7JFMUFIulPzqR03jLkOxizswQK19goxqGTBhE8z/nB88whAsmUtI/Y3CU8lrTjll4OTmbqgO8zIgELFJOKYftXClR6n3F3wri3Ne0gFdCSperJTC0bWNRfbZMHNqio0OELqZUThx1kc2RGor1aVwjGduXnsYgYxQyuXnGhPtrXQzH1lwUsjrFQfhZvKjqhAgBhdzGJlAgBMrIYdSmYQnLS9711RcrphVZaNKurVN58f9ARvqUQsNMG1pA+Su6w5rOwt6TAdhkqIu5mFInUn2ZgHkVJMLc46yoyTIUcIrAz6PNKAavIHKImxdbO6J6sqzbsKGFIHwx5NJPsHbaeSNsE+j6ISaTolaDtlh15FoCmtw452l8RsFxzaKLBLNrJRjBolxMq8qA7I9MOJ9hPFCGF2S7BN9s4OfpjCW+JhXK2cfrDTrKP4gxtF2CZo2yLzB1VsVIVgirFNNIIN64uNInUVgALCkEFYl43Rubcw8RvD/vckqnJCpVorCFfKMrhAcJvUTWNCey7crruqnyHcuqTaWt+wXVZZFW1o72W/OTNUnM3ZHBRObCMPOqqTvo6UG5P1+Q9FmEm+4ovHxlJkv9aQFth4vpMDwZcGqwNOVe2RfKcef1oqc+OCqwtvic5KcrXGudoix++PVG1FX4y99KTYcgcKO8pqtgSC7CMk1awqTjmbFIqczdOK0nfUjYwk6lrbpHDLiXlHG3FgZfiG2947l29Ge2UmW0Pc9rL1VjIJvsBBBo/iioen8+Fr5VMXXPLwdsvGaMVEQCb+8D+DgIw2QeWI3v7rhgX3W+K8tmRwzaT8YDW0vuH0i6QiFCayyN2uXcizSf4UQRWMkdYHyJ4zCAai4RO5hANFqCtjsQKLAuta+QBUeC6hdP0yeaEpUmdYfMLZs9UVmVoIkLQ5QJM+EjOTapEW5VrClMGrUX8Ra851RwHMAFV84ukHB8wrbZtx1wAxjHMmMhKtVXZwLJQO1zJRaGGhz1NwhKpn+DCsD3D33TpgzYi4LJfg/Vxdk6Gy9FWFQHLoHZLue+TZvQrnziUEKcNlvuWfiHLDgkHSkE3EHBhIkPesqUcbVWpxhIeY6hcUJEX3xfzaRaJlB57onW0klgLNBK0ArQQfrL0bOd1HosyVIkiqQhYhsdYG+W1XFC+dKxDZ5vG2e88kdJCz3doIbQSTWrRTIANU8ecwFUBLjng1OMnr43CW8WlsaSRaeh+EUmAwmtRHubmayX+Vu0F0EjxqT4ZV4GMhU5qOU0/iBBJ3sRRf3rVXDcK7Lcb1tYFWEa+HeTIE22QaYqjiKZyVwKajBVUTQ+mRMJNIHu6FMIw/swDW22AiZRyKqzkNAs5ltmNtcz8ViRV8QMmX4svf2YcsNTKgGDzrALdcwtilZUU55k2lTaybaRwOoa6xfqZcrSyTNOuQ1O0NsKCsNgpoQds9y6dpSuw1Bx4lUYlJjAujSVpNV7njqNs3eew8ZL2amsyN+RNpDIR9wOHnKYebL1h7tBgZIjiS8FhUbpHMHWjP6V8S6m0mJpqLEvgOOj1UDgMkT2ne146pqMRfjz+FJEhF+WeiC4rzHMGXiwy/bNTcpydYz+34NwL9GMa06Y8PUQvOuv83JNX/2XW/Rzu3ecn/9GZhc/8bmpJyvceGuOaHqY1BRUayR5fsn3Zchs6Oao7KjMXSkNlmYuAdt2D5XJWXoUT10UpkwioXkhZHZcFMKZ6Ryfps2JsRldeA59C9MI9jd0SFr9yEyjAYjFjISjLI3iyS7fktFSPX3WV25KoocAy4Fru+ls455L0556/g3omQpFWk8J3wQj7HP5EooOLtgd05WNBkzcXsYLq+mpNYE2AZcC1Ud1tjBK1SB0bUYp9Lh7bDEm7pHCRs5oBDg2HcT1EA6GliPhm5Pu9R+0CtEmBalNcvy/27RXz47aXGhROToBXwYm396sAGAPiHvSYyHiqZrPyYalaJhjCGd9pTlkVNh3Xg16xET5ye5ygitN5d8G1VmmunpTnIAJx4kdGxwrNJVhhqG/l2OeGhkdTwrfY2g3ns5ITQttNJF3YznvjORYqxcQ9Z03SY8r/SI3hyLkSx8sNMF9x/85abghfn/I05ELcjiWsMDQXEQ2A22r6BMjrGTQOt16S32+c0MAiTx2NzpiJicMESnMWtnC47zZjjL8qz/k8EjNPqZYBliHXrkp5ugPu8awgnu8y/7OjRthjNBjVQDwmhXYic175aG48PyjVUXBW9nM47gEUzqCJAIdbClhh4PL5DDib7Li7g0g2IxEOZhDQkYB2S74leNs7574FhF86ErDHuszkWdmCNvM47zUFVc2BFQVcts/gluVLjhBbEIOm77j4Xsrnamut9bihDdy9VKqfIJl9e6wURXSVjgBrDqq6AMsB14BvRaGF1jnUQr7f1kg6n9g/qvkumGUOLmDw5JR1Ef4HEFs1YwLttMGqHl99cb5dwWbnMHHNnCs3AqfcBhd/o/XDuh2b8a85qGrCY0XguR5JWQUZQWaAcJoBxPzxePOLx/R2hWlXWUS02qe525xYK/hLj73+geac8CPdrS65Lvea7O0xxgMAyiIM2RLbXovor650QwQq4kgqhEQFRPgRUuotLXbU4OmIyB5kVjqDzwC7Z/rMUY4+jm4zHiBlk5i3LZg2roMPQkXyQ/tOwFel7WuWiI/MBLlm5Z9mQ+iYTXHzVE0HLAOuTQpc2Hp6b407zZUBVeZPr1YV5cDC5+g9zm78PCuatPfGuF3z0zfTtjY4mr+l7UO3+ZtytVKHSMYtpArx+6WV5rDpnOce22bv4QEgAhrGAVMn4JIu1uYawq5D51TFtU3TdD5WALj6g5z6HpPHhQmAgYeZX2ia6fYZBx8fTDa4Uf84+Nq5t7aGCk6tYaQRDjzgHL5amDUmXBLsfI415G9h8ahIF60sbDmLBJ4OOmXQ0rwsMvG1+Hw+GzcBtr1EZCxOen9D5rfRJkFprm5jFtcHvUZAIgWxss/Ic9IzEyIQsyAnz3/jiYOa/8LUcM8ZyWIeLzdnAfm+6zN3/aLDfgxxq8BclLNkmvvq2jw79Je+nSwCAhI7yiUVWH1WUVkVv0X+5jfyXWhe16SJryURH1oMwIXsAW4x5m+4UfPa8PQBc/HfUwAbCDKNbkaEgMpkQOTEAbbfQ6qIaXCh2wCw2mH1ZQLDfhOgAHz5RhnHdURK/y8Bl2jHpwxp61aAw7uR7nvjxVMLZs3koRWBGd+K38brAUrQoVf8T11fB6ArAaiGmb6mMYUBppFMuNBBASh9V0zPypaQFFfaYTYaThpc2E0uxCSWiholvQcfhu/RpsizLcJrfBXg0hCFChj7eTny2KYUhPQUUAkxisa1nXV8Ma4zBFR6/JoBVE2hsTza63qlvdi8hpbo8flfQek0iwx5KkShaBj8MLY6hnWkWV4rgG5d2Dm5aKuEaJXGr2Ki0WxwbQJI3rN1xezsDQ7XRADifrbU9KHd2Afkt7Mo0KoByXjj3LtUvkRroJnmsikz6RgkBa5LjN+13mcew4QEN3t7A99GuKI7KyiYNWcGFT2nex9YUeg8rT0nFf6PnwSIb1YBxsOmuYYvw0CAhdM+wxSSKpBFOQty2PhSWxrpS7UUsCzttcm0TtpYilS1nWKAYPtRJv8+LX+HRXY+waea4ZloCRSChACBPClY8qCtFjQcPhZasYy0oO3GOT/SrPPX9H0UGDzDGM9OlUggtCfUniQ0BcCwzaMXWJ79R8wngYCdHxb1dHcpZce0zQv5XritiKDabvyotc0MqqbWWD6A4UsoDbYpigZzhRRdCMoor8U0SZ4+JhBg9Hn61kN6dulEuzwgMbXsedrgRZOq5zOLZla1zdT0GqrpeKwq+S/8r5t8Tn4lApVBX1WAJFslAIJGJnYkKXn5/I0mlPwoojs6ucR0VjZO+aPN6kO1LbAckC03Gmx5G1wOdMH2ZqENJjSwHC0GuK5rMZABIg486m9F7dT2wAoA2WJz62min4eZGzC3tgHThACWB2gzU6fbAPSmPBVENRQANGhuA63khCfAqgxsAKzbgKw7dbr3hDwfVYZTp7M0Bs1jwDQcR7l6Aqz2BuFii/oYSEYkkUQSSaRd5P8FGACpri9twN6dYwAAAABJRU5ErkJggg=="/>  
+                        </a>
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function(){	
+                              moveSponsorLogo();		
+                              $(window).resize(function(){
+                                  moveSponsorLogo();
+                              });		
+                        });	
+                        function moveSponsorLogo(){		
+                            if (Modernizr.mq('only screen and (max-width : 959px)')) {			
+                                $('#sponsorLogo').insertBefore('#footerContainer');
+                            }else{
+                                $('#sponsorLogoHolder').before($('#sponsorLogo'));
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<a name="skipNav-CMSContent" id="skipNav-CMSContent"></a>
+    <!--  Content -->
+    <div id="detailMiddleColumn" class="belowHeader col-xs-12  col-lg-10 detailPageMiddleColumn">
+        
+        <div id="stdTemplate" class="form-group">
+            <div class="border richtext"><h1>Current Data</h1>
+Annual Characteristics of New Housing for 2025 were published on July 1, 2026.</div><br><br><div class="border richtext"><h2>Annual Characteristics Tables</h2>
+
+<table>
+	<tbody>
+		<tr>
+			<th>Item</th>
+			<th>Single-Family Completed</th>
+			<th>Single-Family Sold</th>
+			<th>Multifamily Units</th>
+			<th>Multifamily Buildings</th>
+		</tr>
+		<tr>
+			<td>Age-Restricted</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/agerestricted_cust.xls" id="anch_342" target="_blank">XLS</a> [54kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldagerestricted_cust.xls" id="anch_343" target="_blank">XLS</a> [63kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_agerestricted_cust.xls" id="anch_344" target="_blank">XLS</a> [49kb]</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Age-Restricted Starts <sup>s</sup></td>
+			<td></td>
+			<td></td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_agerestricted_starts_cust.xls" id="anch_345" target="_blank">XLS</a> [49kb]</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Air-Conditioning</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/aircond_cust.xls" id="anch_346" target="_blank">XLS</a> [139kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldaircond_cust.xls" id="anch_347" target="_blank">XLS</a> [90kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_aircond_cust.xls" id="anch_348" target="_blank">XLS</a> [72kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfb_aircond_cust.xls" id="anch_349" target="_blank">XLS</a> [95kb]</td>
+		</tr>
+		<tr>
+			<td>Bathrooms</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/bathrooms_cust.xls" id="anch_350" target="_blank">XLS</a> [171kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldbathrooms_cust.xls" id="anch_351" target="_blank">XLS</a> [126kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_bathrooms_cust.xls" id="anch_352" target="_blank">XLS</a> [94kb]</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Bedrooms</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/bedrooms_cust.xls" id="anch_353" target="_blank">XLS</a> [150kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldbedrooms_cust.xls" id="anch_354" target="_blank">XLS</a> [89kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_bedrooms_cust.xls" id="anch_355" target="_blank">XLS</a> [101kb]</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Bathrooms by Bedrooms</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/bedsbybaths_cust.xls" id="anch_356" target="_blank">XLS</a> [125kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldbedsbybaths_cust.xls" id="anch_357" target="_blank">XLS</a> [85kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Construction Method</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/conmethod_cust.xls" id="anch_358" target="_blank">XLS</a> [104kb]</td>
+			<td></td>
+			<td></td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfb_conmethod_cust.xls" id="anch_359" target="_blank">XLS</a> [73kb]</td>
+		</tr>
+		<tr>
+			<td>Contract Price <sup>s, r, m, f</sup></td>
+			<td><a href="https://www.census.gov/construction/chars/xls/contractprice_cust.xls" id="anch_360" target="_blank">XLS</a> [68kb]</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Contract Price per Square Foot <sup>s, r, m</sup></td>
+			<td><a href="https://www.census.gov/construction/chars/xls/contractpricesqft_cust.xls" id="anch_361" target="_blank">XLS</a> [50kb]</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Design (Apartments or Townhouses)</td>
+			<td></td>
+			<td></td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_design_cust.xls" id="anch_362" target="_blank">XLS</a> [83kb]</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Exterior Wall Material - Primary</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/exwallmat_cust.xls" id="anch_363" target="_blank">XLS</a> [227kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldexwallmat_cust.xls" id="anch_364" target="_blank">XLS</a> [143kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Exterior Wall Material - Secondary</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/exwallmat2_cust.xls" id="anch_365" target="_blank">XLS</a> [139kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldexwallmat2_cust.xls" id="anch_366" target="_blank">XLS</a> [150kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>by Brick Primary Wall Material</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/secexwallbybrick_cust.xls" id="anch_367" target="_blank">XLS</a> [93kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldsecexwallbybrick_cust.xls" id="anch_368" target="_blank">XLS</a> [79kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>by Fiber Cement Primary Wall Material</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/secexwallbyfiber_cust.xls" id="anch_369" target="_blank">XLS</a> [83kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldsecexwallbyfiber_cust.xls" id="anch_370" target="_blank">XLS</a> [72kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>by 'Other' Primary Wall Material</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/secexwallbyother_cust.xls" id="anch_371" target="_blank">XLS</a> [88kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldsecexwallbyother_cust.xls" id="anch_372" target="_blank">XLS</a> [76kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>by Stucco Primary Wall Material</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/secexwallbystucco_cust.xls" id="anch_373" target="_blank">XLS</a> [92kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldsecexwallbystucco_cust.xls" id="anch_374" target="_blank">XLS</a> [79kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>by Vinyl Primary Wall Material</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/secexwallbyvinyl_cust.xls" id="anch_375" target="_blank">XLS</a> [93kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldsecexwallbyvinyl_cust.xls" id="anch_376" target="_blank">XLS</a> [80kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>by Wood Primary Wall Material</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/secexwallbywood_cust.xls" id="anch_377" target="_blank">XLS</a> [97kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldsecexwallbywood_cust.xls" id="anch_378" target="_blank">XLS</a> [81kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Financing</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/financing_cust.xls" id="anch_379" target="_blank">XLS</a> [148kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldfinancing_cust.xls" id="anch_380" target="_blank">XLS</a> [123kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Fireplaces</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/fireplace_cust.xls" id="anch_381" target="_blank">XLS</a> [152kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldfireplace_cust.xls" id="anch_382" target="_blank">XLS</a> [90kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_fireplace_cust.xls" id="anch_383" target="_blank">XLS</a> [83kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfb_fireplace_cust.xls" id="anch_384" target="_blank">XLS</a> [70kb]</td>
+		</tr>
+		<tr>
+			<td>Floors/Stories</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/stories_cust.xls" id="anch_385" target="_blank">XLS</a> [61kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldstories_cust.xls" id="anch_386" target="_blank">XLS</a> [76kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_floors_cust.xls" id="anch_387" target="_blank">XLS</a> [95kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfb_floors_cust.xls" id="anch_388" target="_blank">XLS</a> [85kb]</td>
+		</tr>
+		<tr>
+			<td>Foundation</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/foundation_cust.xls" id="anch_389" target="_blank">XLS</a> [157kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldfoundation_cust.xls" id="anch_390" target="_blank">XLS</a> [117kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Foyer</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/foyer_cust.xls" id="anch_391" target="_blank">XLS</a> [103kb]</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Framing</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/framing_cust.xls" id="anch_392" target="_blank">XLS</a> [93kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldframing_cust.xls" id="anch_393" target="_blank">XLS</a> [99kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_framing_cust.xls" id="anch_394" target="_blank">XLS</a> [49kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfb_framing_cust.xls" id="anch_395" target="_blank">XLS</a> [58kb]</td>
+		</tr>
+		<tr>
+			<td>Heating Fuel</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/heatingfuel_cust.xls" id="anch_396" target="_blank">XLS</a> [188kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldheatingfuel_cust.xls" id="anch_397" target="_blank">XLS</a> [140kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_heatingfuel_cust.xls" id="anch_398" target="_blank">XLS</a> [101kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfb_heatingfuel_cust.xls" id="anch_399" target="_blank">XLS</a> [83kb]</td>
+		</tr>
+		<tr>
+			<td>Heating System</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/heatsystem_cust.xls" id="anch_400" target="_blank">XLS</a> [175kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldheatsystem_cust.xls" id="anch_401" target="_blank">XLS</a> [132kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_heatsystem_cust.xls" id="anch_402" target="_blank">XLS</a> [49kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfb_heatsystem_cust.xls" id="anch_403" target="_blank">XLS</a> [68kb]</td>
+		</tr>
+		<tr>
+			<td>Heating Fuel by Heating System</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/heatfuelbysystem_cust.xls" id="anch_404" target="_blank">XLS</a> [156kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldheatfuelbysystem_cust.xls" id="anch_405" target="_blank">XLS</a> [134kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_heatfuelbysystem_cust.xls" id="anch_406" target="_blank">XLS</a> [96kb]</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Homeowners' Association</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/association_cust.xls" id="anch_407" target="_blank">XLS</a> [85kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/soldassociation_cust.xls" id="anch_408" target="_blank">XLS</a> [69kb]</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Laundry</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/laundry_cust.xls" id="anch_409" target="_blank">XLS</a> [105kb]</td>
+			<td></td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfu_laundry_cust.xls" id="anch_410" target="_blank">XLS</a> [70kb]</td>
+			<td><a href="https://www.census.gov/construction/chars/xls/mfb_laundry_cust.xls" id="anch_4
