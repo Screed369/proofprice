@@ -1,0 +1,282 @@
+URL: https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/documentation/Geos20245YR.txt
+Fetched: 2026-11-03T06:57:36Z from GitHub Actions
+Status, type, bytes: 200 text/plain 90707242
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Tue, 03 Nov 2026 06:57:36 GMT
+content-type: text/plain
+content-length: 90707242
+content-security-policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' census.gov *.census.gov http://www.census.gov assets.adobedtm.com www.googletagmanager.com https://dpm.demdex.net https://cm.everesttech.net https://uscensusbureau.demdex.net dap.digitalgov.gov www.google-analytics.com https://static.cloudflareinsights.com; frame-ancestors 'self';
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+cache-control: public, max-age=14400
+referrer-policy: strict-origin-when-cross-origin
+last-modified: Thu, 22 Jan 2026 12:15:04 GMT
+accept-ranges: bytes
+vary: Accept-Encoding
+x-xss-protection: 1; mode=block
+set-cookie: __cf_bm=M.8P8RWhwPP0gxkmURcJJqDW1NjsQ.0WJhWLUPq2Hho-1793689056.3021965-1.0.1.1-3ZpQ90OpRNit60NH.cofeqPkoLAjJ98oCN8f_L_x9DSVFKcbWC2DJzryQf.RW3007M9Ao7vg2TZmg2HO6qmNOebYBjLeWetzsocEjFExlp.knyDpcVITDFgFKVghJ895; HttpOnly; SameSite=None; Secure; Path=/; Domain=www2.census.gov; Expires=Tue, 03 Nov 2026 07:27:36 GMT
+strict-transport-security: max-age=31536000
+age: 499441
+expires: Tue, 03 Nov 2026 10:57:36 GMT
+cf-cache-status: HIT
+server: cloudflare
+cf-ray: a5497c59edced648-IAD
+
+=== FILE TYPE: ASCII text
+=== FIRST 30000 BYTES
+FILEID|STUSAB|SUMLEVEL|COMPONENT|US|REGION|DIVISION|STATE|COUNTY|COUSUB|PLACE|TRACT|BLKGRP|CONCIT|AIANHH|AIANHHFP|AIHHTLI|AITS|AITSFP|ANRC|CBSA|CSA|METDIV|MACC|MEMI|NECTA|CNECTA|NECTADIV|UA|CDCURR|SLDU|SLDL|ZCTA5|SUBMCD|SDELM|SDSEC|SDUNI|UR|PCI|PUMA5|GEO_ID|NAME|BTTR|BTBG|TL_GEO_ID
+ACSSF|US|010|00|1||||||||||||||||||||||||||||||||||||0100000US|United States|||
+ACSSF|US|010|89|1||||||||||||||||||||||||||||||||||||0100089US|United States -- American Indian Reservation and Trust Land -- Federal|||
+ACSSF|US|010|90|1||||||||||||||||||||||||||||||||||||0100090US|United States -- American Indian Reservation and Trust Land -- State|||
+ACSSF|US|010|91|1||||||||||||||||||||||||||||||||||||0100091US|United States -- Oklahoma Tribal Statistical Area|||
+ACSSF|US|010|92|1||||||||||||||||||||||||||||||||||||0100092US|United States -- Tribal Designated Statistical Area|||
+ACSSF|US|010|93|1||||||||||||||||||||||||||||||||||||0100093US|United States -- Alaska Native Village Statistical Area|||
+ACSSF|US|010|94|1||||||||||||||||||||||||||||||||||||0100094US|United States -- State Designated Tribal Statistical Area|||
+ACSSF|US|010|95|1||||||||||||||||||||||||||||||||||||0100095US|United States -- Hawaiian Home Land|||
+ACSSF|US|010|A0|1||||||||||||||||||||||||||||||||||||01000A0US|United States -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|010|C0|1||||||||||||||||||||1||||||||||||||||01000C0US|United States -- In metropolitan statistical area|||
+ACSSF|US|010|C1|1||||||||||||||||||||1||||||||||||||Y||01000C1US|United States -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|010|C2|1||||||||||||||||||||1||||||||||||||||01000C2US|United States -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|010|E0|1||||||||||||||||||||2||||||||||||||||01000E0US|United States -- In micropolitan statistical area|||
+ACSSF|US|010|E1|1||||||||||||||||||||2||||||||||||||Y||01000E1US|United States -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|010|E2|1||||||||||||||||||||2||||||||||||||||01000E2US|United States -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|010|G0|1||||||||||||||||||||9||||||||||||||||01000G0US|United States -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|010|H0|1||||||||||||||||||||||||||||||||||||01000H0US|United States -- Not in metropolitan statistical area|||
+ACSSF|US|010|01|1|||||||||||||||||||||||||||||||||U|||010C201US|United States -- Urban|||
+ACSSF|US|010|43|1|||||||||||||||||||||||||||||||||R|||010C243US|United States -- Rural|||
+ACSSF|US|020|00||1|||||||||||||||||||||||||||||||||||0200000US1|Northeast Region|||
+ACSSF|US|020|00||2|||||||||||||||||||||||||||||||||||0200000US2|Midwest Region|||
+ACSSF|US|020|00||3|||||||||||||||||||||||||||||||||||0200000US3|South Region|||
+ACSSF|US|020|00||4|||||||||||||||||||||||||||||||||||0200000US4|West Region|||
+ACSSF|US|020|A0||1|||||||||||||||||||||||||||||||||||02000A0US1|Northeast Region -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|020|A0||2|||||||||||||||||||||||||||||||||||02000A0US2|Midwest Region -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|020|A0||3|||||||||||||||||||||||||||||||||||02000A0US3|South Region -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|020|A0||4|||||||||||||||||||||||||||||||||||02000A0US4|West Region -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|020|C0||1|||||||||||||||||||1||||||||||||||||02000C0US1|Northeast Region -- In metropolitan statistical area|||
+ACSSF|US|020|C0||2|||||||||||||||||||1||||||||||||||||02000C0US2|Midwest Region -- In metropolitan statistical area|||
+ACSSF|US|020|C0||3|||||||||||||||||||1||||||||||||||||02000C0US3|South Region -- In metropolitan statistical area|||
+ACSSF|US|020|C0||4|||||||||||||||||||1||||||||||||||||02000C0US4|West Region -- In metropolitan statistical area|||
+ACSSF|US|020|C1||1|||||||||||||||||||1||||||||||||||Y||02000C1US1|Northeast Region -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|020|C1||2|||||||||||||||||||1||||||||||||||Y||02000C1US2|Midwest Region -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|020|C1||3|||||||||||||||||||1||||||||||||||Y||02000C1US3|South Region -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|020|C1||4|||||||||||||||||||1||||||||||||||Y||02000C1US4|West Region -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|020|C2||1|||||||||||||||||||1||||||||||||||||02000C2US1|Northeast Region -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|020|C2||2|||||||||||||||||||1||||||||||||||||02000C2US2|Midwest Region -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|020|C2||3|||||||||||||||||||1||||||||||||||||02000C2US3|South Region -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|020|C2||4|||||||||||||||||||1||||||||||||||||02000C2US4|West Region -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|020|E0||1|||||||||||||||||||2||||||||||||||||02000E0US1|Northeast Region -- In micropolitan statistical area|||
+ACSSF|US|020|E0||2|||||||||||||||||||2||||||||||||||||02000E0US2|Midwest Region -- In micropolitan statistical area|||
+ACSSF|US|020|E0||3|||||||||||||||||||2||||||||||||||||02000E0US3|South Region -- In micropolitan statistical area|||
+ACSSF|US|020|E0||4|||||||||||||||||||2||||||||||||||||02000E0US4|West Region -- In micropolitan statistical area|||
+ACSSF|US|020|E1||1|||||||||||||||||||2||||||||||||||Y||02000E1US1|Northeast Region -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|020|E1||2|||||||||||||||||||2||||||||||||||Y||02000E1US2|Midwest Region -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|020|E1||3|||||||||||||||||||2||||||||||||||Y||02000E1US3|South Region -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|020|E1||4|||||||||||||||||||2||||||||||||||Y||02000E1US4|West Region -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|020|E2||1|||||||||||||||||||2||||||||||||||||02000E2US1|Northeast Region -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|020|E2||2|||||||||||||||||||2||||||||||||||||02000E2US2|Midwest Region -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|020|E2||3|||||||||||||||||||2||||||||||||||||02000E2US3|South Region -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|020|E2||4|||||||||||||||||||2||||||||||||||||02000E2US4|West Region -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|020|G0||1|||||||||||||||||||9||||||||||||||||02000G0US1|Northeast Region -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|020|G0||2|||||||||||||||||||9||||||||||||||||02000G0US2|Midwest Region -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|020|G0||3|||||||||||||||||||9||||||||||||||||02000G0US3|South Region -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|020|G0||4|||||||||||||||||||9||||||||||||||||02000G0US4|West Region -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|020|H0||1|||||||||||||||||||||||||||||||||||02000H0US1|Northeast Region -- Not in metropolitan statistical area|||
+ACSSF|US|020|H0||2|||||||||||||||||||||||||||||||||||02000H0US2|Midwest Region -- Not in metropolitan statistical area|||
+ACSSF|US|020|H0||3|||||||||||||||||||||||||||||||||||02000H0US3|South Region -- Not in metropolitan statistical area|||
+ACSSF|US|020|H0||4|||||||||||||||||||||||||||||||||||02000H0US4|West Region -- Not in metropolitan statistical area|||
+ACSSF|US|020|01||1||||||||||||||||||||||||||||||||U|||020C201US1|Northeast Region -- Urban|||
+ACSSF|US|020|01||2||||||||||||||||||||||||||||||||U|||020C201US2|Midwest Region -- Urban|||
+ACSSF|US|020|01||3||||||||||||||||||||||||||||||||U|||020C201US3|South Region -- Urban|||
+ACSSF|US|020|01||4||||||||||||||||||||||||||||||||U|||020C201US4|West Region -- Urban|||
+ACSSF|US|020|43||1||||||||||||||||||||||||||||||||R|||020C243US1|Northeast Region -- Rural|||
+ACSSF|US|020|43||2||||||||||||||||||||||||||||||||R|||020C243US2|Midwest Region -- Rural|||
+ACSSF|US|020|43||3||||||||||||||||||||||||||||||||R|||020C243US3|South Region -- Rural|||
+ACSSF|US|020|43||4||||||||||||||||||||||||||||||||R|||020C243US4|West Region -- Rural|||
+ACSSF|US|030|00|||1||||||||||||||||||||||||||||||||||0300000US1|New England Division|||
+ACSSF|US|030|00|||2||||||||||||||||||||||||||||||||||0300000US2|Middle Atlantic Division|||
+ACSSF|US|030|00|||3||||||||||||||||||||||||||||||||||0300000US3|East North Central Division|||
+ACSSF|US|030|00|||4||||||||||||||||||||||||||||||||||0300000US4|West North Central Division|||
+ACSSF|US|030|00|||5||||||||||||||||||||||||||||||||||0300000US5|South Atlantic Division|||
+ACSSF|US|030|00|||6||||||||||||||||||||||||||||||||||0300000US6|East South Central Division|||
+ACSSF|US|030|00|||7||||||||||||||||||||||||||||||||||0300000US7|West South Central Division|||
+ACSSF|US|030|00|||8||||||||||||||||||||||||||||||||||0300000US8|Mountain Division|||
+ACSSF|US|030|00|||9||||||||||||||||||||||||||||||||||0300000US9|Pacific Division|||
+ACSSF|US|030|A0|||1||||||||||||||||||||||||||||||||||03000A0US1|New England Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|A0|||2||||||||||||||||||||||||||||||||||03000A0US2|Middle Atlantic Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|A0|||3||||||||||||||||||||||||||||||||||03000A0US3|East North Central Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|A0|||4||||||||||||||||||||||||||||||||||03000A0US4|West North Central Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|A0|||5||||||||||||||||||||||||||||||||||03000A0US5|South Atlantic Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|A0|||6||||||||||||||||||||||||||||||||||03000A0US6|East South Central Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|A0|||7||||||||||||||||||||||||||||||||||03000A0US7|West South Central Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|A0|||8||||||||||||||||||||||||||||||||||03000A0US8|Mountain Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|A0|||9||||||||||||||||||||||||||||||||||03000A0US9|Pacific Division -- In metropolitan or micropolitan statistical area|||
+ACSSF|US|030|C0|||1||||||||||||||||||1||||||||||||||||03000C0US1|New England Division -- In metropolitan statistical area|||
+ACSSF|US|030|C0|||2||||||||||||||||||1||||||||||||||||03000C0US2|Middle Atlantic Division -- In metropolitan statistical area|||
+ACSSF|US|030|C0|||3||||||||||||||||||1||||||||||||||||03000C0US3|East North Central Division -- In metropolitan statistical area|||
+ACSSF|US|030|C0|||4||||||||||||||||||1||||||||||||||||03000C0US4|West North Central Division -- In metropolitan statistical area|||
+ACSSF|US|030|C0|||5||||||||||||||||||1||||||||||||||||03000C0US5|South Atlantic Division -- In metropolitan statistical area|||
+ACSSF|US|030|C0|||6||||||||||||||||||1||||||||||||||||03000C0US6|East South Central Division -- In metropolitan statistical area|||
+ACSSF|US|030|C0|||7||||||||||||||||||1||||||||||||||||03000C0US7|West South Central Division -- In metropolitan statistical area|||
+ACSSF|US|030|C0|||8||||||||||||||||||1||||||||||||||||03000C0US8|Mountain Division -- In metropolitan statistical area|||
+ACSSF|US|030|C0|||9||||||||||||||||||1||||||||||||||||03000C0US9|Pacific Division -- In metropolitan statistical area|||
+ACSSF|US|030|C1|||1||||||||||||||||||1||||||||||||||Y||03000C1US1|New England Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C1|||2||||||||||||||||||1||||||||||||||Y||03000C1US2|Middle Atlantic Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C1|||3||||||||||||||||||1||||||||||||||Y||03000C1US3|East North Central Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C1|||4||||||||||||||||||1||||||||||||||Y||03000C1US4|West North Central Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C1|||5||||||||||||||||||1||||||||||||||Y||03000C1US5|South Atlantic Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C1|||6||||||||||||||||||1||||||||||||||Y||03000C1US6|East South Central Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C1|||7||||||||||||||||||1||||||||||||||Y||03000C1US7|West South Central Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C1|||8||||||||||||||||||1||||||||||||||Y||03000C1US8|Mountain Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C1|||9||||||||||||||||||1||||||||||||||Y||03000C1US9|Pacific Division -- In metropolitan statistical area -- in principal city|||
+ACSSF|US|030|C2|||1||||||||||||||||||1||||||||||||||||03000C2US1|New England Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|C2|||2||||||||||||||||||1||||||||||||||||03000C2US2|Middle Atlantic Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|C2|||3||||||||||||||||||1||||||||||||||||03000C2US3|East North Central Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|C2|||4||||||||||||||||||1||||||||||||||||03000C2US4|West North Central Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|C2|||5||||||||||||||||||1||||||||||||||||03000C2US5|South Atlantic Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|C2|||6||||||||||||||||||1||||||||||||||||03000C2US6|East South Central Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|C2|||7||||||||||||||||||1||||||||||||||||03000C2US7|West South Central Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|C2|||8||||||||||||||||||1||||||||||||||||03000C2US8|Mountain Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|C2|||9||||||||||||||||||1||||||||||||||||03000C2US9|Pacific Division -- In metropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E0|||1||||||||||||||||||2||||||||||||||||03000E0US1|New England Division -- In micropolitan statistical area|||
+ACSSF|US|030|E0|||2||||||||||||||||||2||||||||||||||||03000E0US2|Middle Atlantic Division -- In micropolitan statistical area|||
+ACSSF|US|030|E0|||3||||||||||||||||||2||||||||||||||||03000E0US3|East North Central Division -- In micropolitan statistical area|||
+ACSSF|US|030|E0|||4||||||||||||||||||2||||||||||||||||03000E0US4|West North Central Division -- In micropolitan statistical area|||
+ACSSF|US|030|E0|||5||||||||||||||||||2||||||||||||||||03000E0US5|South Atlantic Division -- In micropolitan statistical area|||
+ACSSF|US|030|E0|||6||||||||||||||||||2||||||||||||||||03000E0US6|East South Central Division -- In micropolitan statistical area|||
+ACSSF|US|030|E0|||7||||||||||||||||||2||||||||||||||||03000E0US7|West South Central Division -- In micropolitan statistical area|||
+ACSSF|US|030|E0|||8||||||||||||||||||2||||||||||||||||03000E0US8|Mountain Division -- In micropolitan statistical area|||
+ACSSF|US|030|E0|||9||||||||||||||||||2||||||||||||||||03000E0US9|Pacific Division -- In micropolitan statistical area|||
+ACSSF|US|030|E1|||1||||||||||||||||||2||||||||||||||Y||03000E1US1|New England Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E1|||2||||||||||||||||||2||||||||||||||Y||03000E1US2|Middle Atlantic Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E1|||3||||||||||||||||||2||||||||||||||Y||03000E1US3|East North Central Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E1|||4||||||||||||||||||2||||||||||||||Y||03000E1US4|West North Central Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E1|||5||||||||||||||||||2||||||||||||||Y||03000E1US5|South Atlantic Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E1|||6||||||||||||||||||2||||||||||||||Y||03000E1US6|East South Central Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E1|||7||||||||||||||||||2||||||||||||||Y||03000E1US7|West South Central Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E1|||8||||||||||||||||||2||||||||||||||Y||03000E1US8|Mountain Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E1|||9||||||||||||||||||2||||||||||||||Y||03000E1US9|Pacific Division -- In micropolitan statistical area -- in principal city|||
+ACSSF|US|030|E2|||1||||||||||||||||||2||||||||||||||||03000E2US1|New England Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E2|||2||||||||||||||||||2||||||||||||||||03000E2US2|Middle Atlantic Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E2|||3||||||||||||||||||2||||||||||||||||03000E2US3|East North Central Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E2|||4||||||||||||||||||2||||||||||||||||03000E2US4|West North Central Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E2|||5||||||||||||||||||2||||||||||||||||03000E2US5|South Atlantic Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E2|||6||||||||||||||||||2||||||||||||||||03000E2US6|East South Central Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E2|||7||||||||||||||||||2||||||||||||||||03000E2US7|West South Central Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E2|||8||||||||||||||||||2||||||||||||||||03000E2US8|Mountain Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|E2|||9||||||||||||||||||2||||||||||||||||03000E2US9|Pacific Division -- In micropolitan statistical area -- not in principal city|||
+ACSSF|US|030|G0|||1||||||||||||||||||9||||||||||||||||03000G0US1|New England Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|G0|||2||||||||||||||||||9||||||||||||||||03000G0US2|Middle Atlantic Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|G0|||3||||||||||||||||||9||||||||||||||||03000G0US3|East North Central Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|G0|||4||||||||||||||||||9||||||||||||||||03000G0US4|West North Central Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|G0|||5||||||||||||||||||9||||||||||||||||03000G0US5|South Atlantic Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|G0|||6||||||||||||||||||9||||||||||||||||03000G0US6|East South Central Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|G0|||7||||||||||||||||||9||||||||||||||||03000G0US7|West South Central Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|G0|||8||||||||||||||||||9||||||||||||||||03000G0US8|Mountain Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|G0|||9||||||||||||||||||9||||||||||||||||03000G0US9|Pacific Division -- Not in metropolitan or micropolitan statistical area|||
+ACSSF|US|030|H0|||1||||||||||||||||||||||||||||||||||03000H0US1|New England Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|H0|||2||||||||||||||||||||||||||||||||||03000H0US2|Middle Atlantic Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|H0|||3||||||||||||||||||||||||||||||||||03000H0US3|East North Central Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|H0|||4||||||||||||||||||||||||||||||||||03000H0US4|West North Central Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|H0|||5||||||||||||||||||||||||||||||||||03000H0US5|South Atlantic Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|H0|||6||||||||||||||||||||||||||||||||||03000H0US6|East South Central Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|H0|||7||||||||||||||||||||||||||||||||||03000H0US7|West South Central Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|H0|||8||||||||||||||||||||||||||||||||||03000H0US8|Mountain Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|H0|||9||||||||||||||||||||||||||||||||||03000H0US9|Pacific Division -- Not in metropolitan statistical area|||
+ACSSF|US|030|01|||1|||||||||||||||||||||||||||||||U|||030C201US1|New England Division -- Urban|||
+ACSSF|US|030|01|||2|||||||||||||||||||||||||||||||U|||030C201US2|Middle Atlantic Division -- Urban|||
+ACSSF|US|030|01|||3|||||||||||||||||||||||||||||||U|||030C201US3|East North Central Division -- Urban|||
+ACSSF|US|030|01|||4|||||||||||||||||||||||||||||||U|||030C201US4|West North Central Division -- Urban|||
+ACSSF|US|030|01|||5|||||||||||||||||||||||||||||||U|||030C201US5|South Atlantic Division -- Urban|||
+ACSSF|US|030|01|||6|||||||||||||||||||||||||||||||U|||030C201US6|East South Central Division -- Urban|||
+ACSSF|US|030|01|||7|||||||||||||||||||||||||||||||U|||030C201US7|West South Central Division -- Urban|||
+ACSSF|US|030|01|||8|||||||||||||||||||||||||||||||U|||030C201US8|Mountain Division -- Urban|||
+ACSSF|US|030|01|||9|||||||||||||||||||||||||||||||U|||030C201US9|Pacific Division -- Urban|||
+ACSSF|US|030|43|||1|||||||||||||||||||||||||||||||R|||030C243US1|New England Division -- Rural|||
+ACSSF|US|030|43|||2|||||||||||||||||||||||||||||||R|||030C243US2|Middle Atlantic Division -- Rural|||
+ACSSF|US|030|43|||3|||||||||||||||||||||||||||||||R|||030C243US3|East North Central Division -- Rural|||
+ACSSF|US|030|43|||4|||||||||||||||||||||||||||||||R|||030C243US4|West North Central Division -- Rural|||
+ACSSF|US|030|43|||5|||||||||||||||||||||||||||||||R|||030C243US5|South Atlantic Division -- Rural|||
+ACSSF|US|030|43|||6|||||||||||||||||||||||||||||||R|||030C243US6|East South Central Division -- Rural|||
+ACSSF|US|030|43|||7|||||||||||||||||||||||||||||||R|||030C243US7|West South Central Division -- Rural|||
+ACSSF|US|030|43|||8|||||||||||||||||||||||||||||||R|||030C243US8|Mountain Division -- Rural|||
+ACSSF|US|030|43|||9|||||||||||||||||||||||||||||||R|||030C243US9|Pacific Division -- Rural|||
+ACSSF|AL|040|00||||01|||||||||||||||||||||||||||||||||0400000US01|Alabama|||01
+ACSSF|AK|040|00||||02|||||||||||||||||||||||||||||||||0400000US02|Alaska|||02
+ACSSF|AZ|040|00||||04|||||||||||||||||||||||||||||||||0400000US04|Arizona|||04
+ACSSF|AR|040|00||||05|||||||||||||||||||||||||||||||||0400000US05|Arkansas|||05
+ACSSF|CA|040|00||||06|||||||||||||||||||||||||||||||||0400000US06|California|||06
+ACSSF|CO|040|00||||08|||||||||||||||||||||||||||||||||0400000US08|Colorado|||08
+ACSSF|CT|040|00||||09|||||||||||||||||||||||||||||||||0400000US09|Connecticut|||09
+ACSSF|DE|040|00||||10|||||||||||||||||||||||||||||||||0400000US10|Delaware|||10
+ACSSF|DC|040|00||||11|||||||||||||||||||||||||||||||||0400000US11|District of Columbia|||11
+ACSSF|FL|040|00||||12|||||||||||||||||||||||||||||||||0400000US12|Florida|||12
+ACSSF|GA|040|00||||13|||||||||||||||||||||||||||||||||0400000US13|Georgia|||13
+ACSSF|HI|040|00||||15|||||||||||||||||||||||||||||||||0400000US15|Hawaii|||15
+ACSSF|ID|040|00||||16|||||||||||||||||||||||||||||||||0400000US16|Idaho|||16
+ACSSF|IL|040|00||||17|||||||||||||||||||||||||||||||||0400000US17|Illinois|||17
+ACSSF|IN|040|00||||18|||||||||||||||||||||||||||||||||0400000US18|Indiana|||18
+ACSSF|IA|040|00||||19|||||||||||||||||||||||||||||||||0400000US19|Iowa|||19
+ACSSF|KS|040|00||||20|||||||||||||||||||||||||||||||||0400000US20|Kansas|||20
+ACSSF|KY|040|00||||21|||||||||||||||||||||||||||||||||0400000US21|Kentucky|||21
+ACSSF|LA|040|00||||22|||||||||||||||||||||||||||||||||0400000US22|Louisiana|||22
+ACSSF|ME|040|00||||23|||||||||||||||||||||||||||||||||0400000US23|Maine|||23
+ACSSF|MD|040|00||||24|||||||||||||||||||||||||||||||||0400000US24|Maryland|||24
+ACSSF|MA|040|00||||25|||||||||||||||||||||||||||||||||0400000US25|Massachusetts|||25
+ACSSF|MI|040|00||||26|||||||||||||||||||||||||||||||||0400000US26|Michigan|||26
+ACSSF|MN|040|00||||27|||||||||||||||||||||||||||||||||0400000US27|Minnesota|||27
+ACSSF|MS|040|00||||28|||||||||||||||||||||||||||||||||0400000US28|Mississippi|||28
+ACSSF|MO|040|00||||29|||||||||||||||||||||||||||||||||0400000US29|Missouri|||29
+ACSSF|MT|040|00||||30|||||||||||||||||||||||||||||||||0400000US30|Montana|||30
+ACSSF|NE|040|00||||31|||||||||||||||||||||||||||||||||0400000US31|Nebraska|||31
+ACSSF|NV|040|00||||32|||||||||||||||||||||||||||||||||0400000US32|Nevada|||32
+ACSSF|NH|040|00||||33|||||||||||||||||||||||||||||||||0400000US33|New Hampshire|||33
+ACSSF|NJ|040|00||||34|||||||||||||||||||||||||||||||||0400000US34|New Jersey|||34
+ACSSF|NM|040|00||||35|||||||||||||||||||||||||||||||||0400000US35|New Mexico|||35
+ACSSF|NY|040|00||||36|||||||||||||||||||||||||||||||||0400000US36|New York|||36
+ACSSF|NC|040|00||||37|||||||||||||||||||||||||||||||||0400000US37|North Carolina|||37
+ACSSF|ND|040|00||||38|||||||||||||||||||||||||||||||||0400000US38|North Dakota|||38
+ACSSF|OH|040|00||||39|||||||||||||||||||||||||||||||||0400000US39|Ohio|||39
+ACSSF|OK|040|00||||40|||||||||||||||||||||||||||||||||0400000US40|Oklahoma|||40
+ACSSF|OR|040|00||||41|||||||||||||||||||||||||||||||||0400000US41|Oregon|||41
+ACSSF|PA|040|00||||42|||||||||||||||||||||||||||||||||0400000US42|Pennsylvania|||42
+ACSSF|RI|040|00||||44|||||||||||||||||||||||||||||||||0400000US44|Rhode Island|||44
+ACSSF|SC|040|00||||45|||||||||||||||||||||||||||||||||0400000US45|South Carolina|||45
+ACSSF|SD|040|00||||46|||||||||||||||||||||||||||||||||0400000US46|South Dakota|||46
+ACSSF|TN|040|00||||47|||||||||||||||||||||||||||||||||0400000US47|Tennessee|||47
+ACSSF|TX|040|00||||48|||||||||||||||||||||||||||||||||0400000US48|Texas|||48
+ACSSF|UT|040|00||||49|||||||||||||||||||||||||||||||||0400000US49|Utah|||49
+ACSSF|VT|040|00||||50|||||||||||||||||||||||||||||||||0400000US50|Vermont|||50
+ACSSF|VA|040|00||||51|||||||||||||||||||||||||||||||||0400000US51|Virginia|||51
+ACSSF|WA|040|00||||53|||||||||||||||||||||||||||||||||0400000US53|Washington|||53
+ACSSF|WV|040|00||||54|||||||||||||||||||||||||||||||||0400000US54|West Virginia|||54
+ACSSF|WI|040|00||||55|||||||||||||||||||||||||||||||||0400000US55|Wisconsin|||55
+ACSSF|WY|040|00||||56|||||||||||||||||||||||||||||||||0400000US56|Wyoming|||56
+ACSSF|PR|040|00||||72|||||||||||||||||||||||||||||||||0400000US72|Puerto Rico|||72
+ACSSF|AL|040|A0||||01|||||||||||||||||||||||||||||||||04000A0US01|Alabama -- In metropolitan or micropolitan statistical area|||
+ACSSF|AK|040|A0||||02|||||||||||||||||||||||||||||||||04000A0US02|Alaska -- In metropolitan or micropolitan statistical area|||
+ACSSF|AZ|040|A0||||04|||||||||||||||||||||||||||||||||04000A0US04|Arizona -- In metropolitan or micropolitan statistical area|||
+ACSSF|AR|040|A0||||05|||||||||||||||||||||||||||||||||04000A0US05|Arkansas -- In metropolitan or micropolitan statistical area|||
+ACSSF|CA|040|A0||||06|||||||||||||||||||||||||||||||||04000A0US06|California -- In metropolitan or micropolitan statistical area|||
+ACSSF|CO|040|A0||||08|||||||||||||||||||||||||||||||||04000A0US08|Colorado -- In metropolitan or micropolitan statistical area|||
+ACSSF|CT|040|A0||||09|||||||||||||||||||||||||||||||||04000A0US09|Connecticut -- In metropolitan or micropolitan statistical area|||
+ACSSF|DE|040|A0||||10|||||||||||||||||||||||||||||||||04000A0US10|Delaware -- In metropolitan or micropolitan statistical area|||
+ACSSF|DC|040|A0||||11|||||||||||||||||||||||||||||||||04000A0US11|District of Columbia -- In metropolitan or micropolitan statistical area|||
+ACSSF|FL|040|A0||||12|||||||||||||||||||||||||||||||||04000A0US12|Florida -- In metropolitan or micropolitan statistical area|||
+ACSSF|GA|040|A0||||13|||||||||||||||||||||||||||||||||04000A0US13|Georgia -- In metropolitan or micropolitan statistical area|||
+ACSSF|HI|040|A0||||15|||||||||||||||||||||||||||||||||04000A0US15|Hawaii -- In metropolitan or micropolitan statistical area|||
+ACSSF|ID|040|A0||||16|||||||||||||||||||||||||||||||||04000A0US16|Idaho -- In metropolitan or micropolitan statistical area|||
+ACSSF|IL|040|A0||||17|||||||||||||||||||||||||||||||||04000A0US17|Illinois -- In metropolitan or micropolitan statistical area|||
+ACSSF|IN|040|A0||||18|||||||||||||||||||||||||||||||||04000A0US18|Indiana -- In metropolitan or micropolitan statistical area|||
+ACSSF|IA|040|A0||||19|||||||||||||||||||||||||||||||||04000A0US19|Iowa -- In metropolitan or micropolitan statistical area|||
+ACSSF|KS|040|A0||||20|||||||||||||||||||||||||||||||||04000A0US20|Kansas -- In metropolitan or micropolitan statistical area|||
+ACSSF|KY|040|A0||||21|||||||||||||||||||||||||||||||||04000A0US21|Kentucky -- In metropolitan or micropolitan statistical area|||
+ACSSF|LA|040|A0||||22|||||||||||||||||||||||||||||||||04000A0US22|Louisiana -- In metropolitan or micropolitan statistical area|||
+ACSSF|ME|040|A0||||23|||||||||||||||||||||||||||||||||04000A0US23|Maine -- In metropolitan or micropolitan statistical area|||
+ACSSF|MD|040|A0||||24|||||||||||||||||||||||||||||||||04000A0US24|Maryland -- In metropolitan or micropolitan statistical area|||
+ACSSF|MA|040|A0||||25|||||||||||||||||||||||||||||||||04000A0US25|Massachusetts -- In metropolitan or micropolitan statistical area|||
+ACSSF|MI|040|A0||||26|||||||||||||||||||||||||||||||||04000A0US26|Michigan -- In metropolitan or micropolitan statistical area|||
+ACSSF|MN|040|A0||||27|||||||||||||||||||||||||||||||||04000A0US27|Minnesota -- In metropolitan or micropolitan statistical area|||
+ACSSF|MS|040|A0||||28||||||||||||||||||||||||||||||||
