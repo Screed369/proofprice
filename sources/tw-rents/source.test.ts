@@ -13,7 +13,7 @@ import { writeDaily, writeMeta } from "../../lib/library/store";
 import { parseTable, type Release } from "../tw-home-sales/moi";
 import { NATIONAL_AREA, newStats, snapshotFromRows, INFO as SALES_INFO, type HarvestDeps } from "../tw-home-sales/source";
 import {
-  INFO, LOGIC_VERSION, RENT_TYPES, buildingOf, kindOf, normaliseRentType, parseRentals, rentItemKey, rentRows, twRents, twRentsHarvest, typesOf, type Rental,
+  INFO, LOGIC_VERSION, RENT_TYPES, buildingOf, kindOf, normaliseRentType, parseRentals, rentItemKey, rentRows, twRents, twRentsHarvest, twRentsHistoryKey, typesOf, type Rental,
 } from "./source";
 
 const CSV = readFileSync(new URL("./fixtures/a_lvr_land_c.csv", import.meta.url), "utf8");
@@ -373,4 +373,16 @@ test("licence and facts: same Ministry licence as the sales source, quoted with 
   assert.match(INFO.licence, /Open Government Data License, version 1\.0/);
   assert.match(INFO.attribution, /Ministry of the Interior/);
   assert.match(INFO.limits, /social-housing/);
+});
+
+test("history key: names the rolling-window row the collector stores for the place, kind and size", async () => {
+  const snap = await snapshot();
+  const k = twRentsHistoryKey({ town: "Da'an, Taipei" }, { snapshot: snap })!;
+  assert.equal(k.item, rentItemKey("any", "all", "rent", 12));
+  assert.ok(snap.rows.has(`${k.area}\u0000${k.item}`), "the key must match a stored row");
+  assert.equal(twRentsHistoryKey({}, { snapshot: snap })!.area, NATIONAL_AREA);
+  assert.equal(twRentsHistoryKey({ town: "Da'an, Taipei", bedrooms: 2, property_type: "apartment" }, { snapshot: snap })!.item, rentItemKey("apartment", "2", "rent", 12));
+  assert.equal(twRentsHistoryKey({ town: "Taipei", months: 24 }, { snapshot: snap })!.item, rentItemKey("any", "all", "rent", 24));
+  assert.throws(() => twRentsHistoryKey({ town: "Taipei", property_type: "room", bedrooms: 1 }, { snapshot: snap }), /does not apply to rooms/);
+  assert.equal(twRentsHistoryKey({ town: "Taipei" }, { snapshot: null }), null);
 });

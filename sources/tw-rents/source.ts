@@ -417,3 +417,19 @@ export async function twRents(
   if (!snap) throw new SourceError("Not yet available: ProofPrice collects Taiwan's actual price registration daily; figures appear after the next collection.");
   return twRentAnswer(snap, { town: input.town, property_type: type, bedrooms: input.bedrooms, months: input.months, baseUrl: input.baseUrl, now: o.now });
 }
+
+/** Library keys for /history: the rolling 12-month (24 when months > 18) monthly-rent row of one place, kind and size, as the
+ *  collector stores it each time the Ministry releases new data. Null when the collector has not stored a snapshot yet. */
+export function twRentsHistoryKey(
+  input: { town?: string; property_type?: string; bedrooms?: number; months?: number },
+  o: { snapshot?: Snapshot | null } = {},
+): { area: string; item: string; label: string } | null {
+  const snap = o.snapshot !== undefined ? o.snapshot : loadSnapshot();
+  if (!snap) return null;
+  const where = resolveTown(input.town, snap);
+  const type = normaliseRentType(input.property_type);
+  if (input.bedrooms !== undefined && type === "room") throw new InputError("bedrooms does not apply to rooms let separately (property_type room); leave it out.");
+  const beds: Bedrooms = input.bedrooms === undefined ? "all" : (String(Math.min(Math.max(0, Math.round(input.bedrooms)), 5)) as Bedrooms);
+  const w = input.months !== undefined && input.months > 18 ? 24 : 12;
+  return { area: where.area, item: rentItemKey(type, beds, "rent", w), label: `${where.label}, Taiwan` };
+}

@@ -1,6 +1,6 @@
 // Manifest: Taiwan rents (Ministry of the Interior, actual price registration, rentals). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, twRents, twRentsHarvest } from "./source";
+import { INFO, twRents, twRentsHarvest, twRentsHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -47,4 +47,5 @@ export default defineSource({
       baseUrl: ctx.baseUrl,
     }),
   harvest: twRentsHarvest,
+  historyKey: (p) => twRentsHistoryKey({ town: str(p.town), property_type: str(p.property_type), bedrooms: num(p.bedrooms), months: num(p.months) }),
 });
