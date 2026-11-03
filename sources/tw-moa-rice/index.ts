@@ -1,6 +1,7 @@
 // Manifest: Taiwan rice prices (Ministry of Agriculture national average daily retail, wholesale and paddy prices). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, twHarvest, twHistoryKey, twRicePrices } from "./source";
+import { INFO, ITEMS, twHarvest, twHistoryKey, twRicePrices } from "./source";
+import { matchItem } from "../../categories/groceries/items";
 
 export default defineSource({
   info: INFO,
@@ -9,6 +10,9 @@ export default defineSource({
   countryHelp: "TW = Taiwan (Ministry of Agriculture: national average daily rice prices, retail, wholesale and paddy)",
   placeName: "Taiwan",
   status: "live",
+  // Shares groceries/TW with tw-taichung-markets: rice questions come here, every other item goes to Taichung.
+  // Needs the matching serves() in sources/tw-taichung-markets (platform task, see the Source Pipeline row).
+  serves: (p) => String(p.country ?? "").toUpperCase() === "TW" && matchItem(ITEMS, String(p.item ?? "")).primary !== null,
   paramNotes: {
     item:
       "TW: rice only. 'rice' = retail japonica white rice (NT$ per kg); also indica rice, soft indica rice, glutinous rice, long glutinous rice; " +
