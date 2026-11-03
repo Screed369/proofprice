@@ -8,8 +8,8 @@ import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { parseJsonStat, resolveFetcher } from "../../lib/adapters";
 import type { FetchOptions, JsonStatTable } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
-import { MIN_PUBLISH } from "../../lib/stats";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { MIN_PUBLISH, NO_COUNT } from "../../lib/stats";
 
 export const INFO: SourceInfo = {
   id: "fi-stat-rents",
@@ -270,3 +270,98 @@ export async function finlandRent(input: FinlandRentInput, o: FinlandRentOptions
   if (!table.codes[v.time.code] || !table.codes[v.contents.code]) throw new SourceError("Statistics Finland changed the layout of table 15fa; this source needs updating.");
   return answerFor(input, place, roomText === "total" ? "all room sizes" : roomText, readFigure(table, v), table.updated);
 }
+
+// ---------- daily collector (stale-if-error copy) ----------
+// Once a day the collector stores the newest quarter of the main places and room sizes: one row per place and room size, n NO_COUNT
+// (an average of rents, not a list of them; only cells backed by at least 5 observations are stored). Rows are dated by the last day of
+// the quarter (referenceDates), so a copy stays usable while pxdata.stat.fi is down. Rents have no history tool, so noHistory is set.
+
+/** Places the collector keeps: whole country, Greater Helsinki, the rest of Finland, and the largest towns (codes as in the table). */
+export const HARVEST_PLACES = ["SSS", "pks", "msu", "091", "049", "092", "837", "853", "564", "179", "398", "405"];
+/** Room sizes kept: all sizes, then 1, 2 and 3 or more rooms. */
+export const HARVEST_ROOMS = ["all", "1", "2", "3"];
+
+/** The cells of one place and room size, as a table reader sees them: rows of the table narrowed to that place and room size. */
+function cellOf(table: JsonStatTable, v: Vars, areaCode: string, roomCode: string): JsonStatTable {
+  return { ...table, rows: table.rows.filter((r) => String(r[v.area.code]) === areaCode && String(r[v.rooms.code]) === roomCode) };
+}
+
+/** The room code in the table for one of our room labels ("all" is the table's total). */
+export function harvestRoomCode(v: Vars, room: string): string {
+  if (room === "all") return v.rooms.values.find((c) => c === "SSS") ?? v.rooms.values[0];
+  return roomsCode(v.rooms, Number(room)) as string;
+}
+
+export function harvestRows(table: JsonStatTable, v: Vars): HarvestResult {
+  const wanted = HARVEST_PLACES.filter((c) => v.area.values.includes(c));
+  const figures: Array<{ area: string; item: string; f: Figure }> = [];
+  for (const area of wanted) {
+    for (const room of HARVEST_ROOMS) {
+      const f = readFigure(cellOf(table, v, area, harvestRoomCode(v, room)), v);
+      if (f) figures.push({ area, item: room, f });
+    }
+  }
+  const head = figures.find((x) => x.area === "SSS" && x.item === "all");
+  if (!head) throw new SourceError("Statistics Finland table 15fa holds no usable national average rent in the latest quarters");
+  // One date per day of collection: keep only the cells whose newest usable quarter is the national one.
+  const rows = figures
+    .filter((x) => x.f.quarter === head.f.quarter)
+    .map(({ area, item, f }) => ({ area, item, n: NO_COUNT, median: f.price, low: f.price, high: f.price, min: f.price, max: f.price }));
+  return {
+    date: quarterRange(head.f.quarter).to,
+    currency: "EUR",
+    unit: "per m²",
+    rows,
+    note: `Statistics Finland table 15fa: average rent per m² of market-rate rented flats for ${quarterWords(head.f.quarter)}, ${rows.length} place and room-size cells, each backed by at least ${MIN_PUBLISH} observations. Published averages, not counts of records.`,
+  };
+}
+
+export interface FinlandHarvestOptions extends FetchOptions {
+  poster?: (url: string, body: unknown) => Promise<unknown>;
+  apiBase?: string;
+}
+
+export async function finlandRentHarvest(o: FinlandHarvestOptions = {}): Promise<HarvestResult> {
+  const get = resolveFetcher(o);
+  const post = o.poster ?? ((url: string, body: unknown) => fetchJson(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }, o.timeoutMs ?? 30000));
+  const url = tableUrl(o.apiBase);
+  const v = readVars(readMeta(await get(url)));
+  const areas = HARVEST_PLACES.filter((c) => v.area.values.includes(c));
+  const rooms = HARVEST_ROOMS.map((r) => harvestRoomCode(v, r));
+  const quarters = v.time.values.slice(Math.max(0, v.time.values.length - HOW_MANY_QUARTERS));
+  const body = buildQuery([
+    [v.area.code, areas],
+    [v.funding.code, [nonSubsidisedCode(v.funding)]],
+    [v.rooms.code, rooms],
+    [v.time.code, quarters],
+    [v.contents.code, [C_PRICE, C_COUNT]],
+  ]);
+  const table = parseJsonStat(await post(url, body));
+  if (!table.codes[v.time.code] || !table.codes[v.contents.code]) throw new SourceError("Statistics Finland changed the layout of table 15fa; this source needs updating.");
+  return harvestRows(table, v);
+}
+
+/** The library key for a request: place code and room label. A place or room size the collector does not keep has no copy. */
+export function finlandRentHistoryKey(p: { town?: string; bedrooms?: number }, places?: Place[]): { area: string; item: string; label: string } | null {
+  const list = places ?? FALLBACK_PLACES;
+  let place: Place;
+  try {
+    place = resolvePlace(list, p.town);
+  } catch {
+    return null;
+  }
+  if (!HARVEST_PLACES.includes(place.code)) return null;
+  let item = "all";
+  if (p.bedrooms !== undefined) {
+    if (!Number.isInteger(p.bedrooms) || p.bedrooms < 1) return null;
+    item = String(Math.min(p.bedrooms, 3));
+  }
+  return { area: place.code, item, label: place.kind === "country" ? "Finland" : place.name };
+}
+
+/** Names of the kept places, for the history key when the table metadata is not at hand (the live table is the source of truth when it is up). */
+const FALLBACK_PLACES: Place[] = [
+  ["SSS", "Whole country", "country"], ["pks", "Greater Helsinki", "area"], ["msu", "Whole country excluding Greater Helsinki", "area"],
+  ["091", "Helsinki", "town"], ["049", "Espoo-Kauniainen", "town"], ["092", "Vantaa", "town"], ["837", "Tampere", "town"], ["853", "Turku", "town"],
+  ["564", "Oulu", "town"], ["179", "Jyväskylä", "town"], ["398", "Lahti", "town"], ["405", "Kuopio", "town"],
+].map(([code, name, kind]) => ({ code, name, kind: kind as Place["kind"] }));

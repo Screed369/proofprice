@@ -1,6 +1,6 @@
 // Manifest: Finland rents (Statistics Finland, average rent per m² of rented flats, table 15fa). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { finlandRent, INFO } from "./source";
+import { finlandRent, finlandRentHarvest, finlandRentHistoryKey, INFO } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -24,4 +24,10 @@ export default defineSource({
     "Finland: Statistics Finland's average rent per square metre of market-rate (non-subsidised) rented flats, with the number of observations behind it, by quarter, area and number of rooms (table 15fa). " +
     "We pass on the published average for the newest quarter with at least 5 observations. It is an average per m², not a list of rents.",
   handle: (p, ctx) => finlandRent({ town: str(p.town), bedrooms: num(p.bedrooms), baseUrl: ctx.baseUrl }),
+  harvest: () => finlandRentHarvest(),
+  historyKey: (p) => finlandRentHistoryKey({ town: str(p.town), bedrooms: num(p.bedrooms) }),
+  referenceDates: true,
+  staleMaxDays: 45,
+  nominalCounts: true,
+  noHistory: "Finland rents: Statistics Finland publishes one average per area, room size and quarter, and ProofPrice has no rent history tool. Ask pricepaid_rent_prices (/api/v1/rent) for the newest quarter.",
 });

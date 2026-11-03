@@ -163,3 +163,84 @@ test("fi-stat-rents: routed by country through the shared rent tool (network stu
     globalThis.fetch = realFetch;
   }
 });
+
+// ---------- daily collector and stale copy ----------
+import { finlandRentHarvest, finlandRentHistoryKey, harvestRows, HARVEST_PLACES, HARVEST_ROOMS } from "./source";
+import { NO_COUNT } from "../../lib/stats";
+import fiRents from "./index";
+
+/** A multi-place table in PxWeb's JSON-stat2 layout (hand-built, illustrative numbers). cell(area, room, quarter) -> [price, count]. */
+function multi(cell: (a: string, r: string, q: string) => [number | null, number | null]) {
+  const areas = HARVEST_PLACES;
+  const rooms = HARVEST_ROOMS.map((r) => (r === "all" ? "SSS" : r));
+  const quarters = ["2025Q4", "2026Q1", "2026Q2", "2026Q3"];
+  const contents = ["asvu_keskineliovuokra", "asvu_keskineliovuokra_lkm"];
+  const value: Array<number | null> = [];
+  for (const a of areas) for (const r of rooms) for (const q of quarters) { const [p, n] = cell(a, r, q); value.push(p, n); }
+  const cat = (xs: string[]) => ({ index: Object.fromEntries(xs.map((x, i) => [x, i])), label: Object.fromEntries(xs.map((x) => [x, x])) });
+  return {
+    version: "2.0", class: "dataset", updated: "2026-10-13T05:00:00Z",
+    id: [v.area.code, v.funding.code, v.rooms.code, "timeperiod_q", "contentscode"],
+    size: [areas.length, 1, rooms.length, quarters.length, contents.length],
+    dimension: {
+      [v.area.code]: { label: "Area", category: cat(areas) },
+      [v.funding.code]: { label: "Type of funding", category: cat(["1"]) },
+      [v.rooms.code]: { label: "Number of rooms", category: cat(rooms) },
+      timeperiod_q: { label: "Quarter", category: cat(quarters) },
+      contentscode: { label: "Information", category: cat(contents) },
+    },
+    value,
+  };
+}
+const GOOD = multi((a, r) => [20 + (a === "091" ? 5 : 0) + (r === "SSS" ? 0 : Number(r)), 200]);
+
+test("harvest: one row per kept place and room size, dated by the quarter end, no made-up count", () => {
+  const h = harvestRows(parseJsonStat(GOOD), v);
+  assert.equal(h.date, "2026-09-30");
+  assert.equal(h.currency, "EUR");
+  assert.equal(h.unit, "per m²");
+  assert.equal(h.rows.length, HARVEST_PLACES.length * HARVEST_ROOMS.length);
+  const hel = h.rows.find((r) => r.area === "091" && r.item === "2")!;
+  assert.equal(hel.median, 27);
+  assert.equal(hel.n, NO_COUNT);
+  assert.equal(hel.low, hel.high);
+});
+
+test("harvest: cells under 5 observations or from an older quarter are left out; no national figure is an error", () => {
+  const thin = multi((a, r, q) => (a === "564" && q === "2026Q3" ? [19, 3] : [20, 100]));
+  const h = harvestRows(parseJsonStat(thin), v);
+  assert.ok(!h.rows.some((r) => r.area === "564"), "Oulu's newest quarter is thin, so its older quarter must not share the national date");
+  assert.ok(h.rows.some((r) => r.area === "SSS"));
+  const none = multi((a) => (a === "SSS" ? [null, null] : [20, 100]));
+  assert.throws(() => harvestRows(parseJsonStat(none), v), SourceError);
+});
+
+test("harvest: finlandRentHarvest reads the metadata, posts ONE query for all places and room sizes", async () => {
+  const r = rig(GOOD);
+  const h = await finlandRentHarvest({ fetcher: r.fetcher as any, poster: r.poster });
+  assert.equal(r.log.filter((x) => x.method === "POST").length, 1);
+  const by = Object.fromEntries(r.log.find((x) => x.method === "POST")!.body.query.map((x: any) => [x.code, x.selection.values]));
+  assert.deepEqual(by[v.area.code], HARVEST_PLACES);
+  assert.deepEqual(by[v.rooms.code], ["SSS", "1", "2", "3"]);
+  assert.deepEqual(by["contentscode"], ["asvu_keskineliovuokra", "asvu_keskineliovuokra_lkm"]);
+  assert.equal(h.rows.length, 48);
+});
+
+test("historyKey: place code and room label for the kept places; other places have no copy", () => {
+  assert.deepEqual(finlandRentHistoryKey({}), { area: "SSS", item: "all", label: "Finland" });
+  assert.deepEqual(finlandRentHistoryKey({ town: "Helsinki", bedrooms: 2 }), { area: "091", item: "2", label: "Helsinki" });
+  assert.deepEqual(finlandRentHistoryKey({ town: "Tampere", bedrooms: 5 }), { area: "837", item: "3", label: "Tampere" });
+  assert.equal(finlandRentHistoryKey({ town: "Helsinki 2" }), null, "a district is not kept");
+  assert.equal(finlandRentHistoryKey({ town: "Nurmes" }), null);
+  assert.equal(finlandRentHistoryKey({ bedrooms: 0 }), null);
+});
+
+test("manifest: harvests with reference dates, no rent history tool, stale copy allowed up to 45 days", () => {
+  const s: any = fiRents;
+  assert.equal(typeof s.harvest, "function");
+  assert.equal(s.referenceDates, true);
+  assert.equal(s.nominalCounts, true);
+  assert.equal(s.staleMaxDays, 45);
+  assert.match(s.noHistory, /newest quarter/);
+  assert.deepEqual(s.historyKey({ town: "Espoo" }), { area: "049", item: "all", label: "Espoo-Kauniainen" });
+});
