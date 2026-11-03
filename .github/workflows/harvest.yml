@@ -55,8 +55,10 @@ jobs:
           # Second chance in a FRESH process for sources that failed on a network error. On 1 Nov pt-ine-rents and pt-home-prices
           # (INE, UND_ERR_CONNECT_TIMEOUT) and au-bitre-airfares failed in the long daily run, yet both INE sources passed when run alone
           # minutes later (and curl reached INE from the same runner). Full runs only; at most 8 sources; 10 minutes at most.
+          # 3 Nov 10:47 UTC: TW MOI (3 sources, 'fetch failed'), br-fuel ('terminated'), gb-ukhpi (HTTP 403) and es-placsp ('no rows') were not
+          # matched, so 7 sources counted as new errors and the run failed and emailed Simon; the pattern now covers those messages (and the cap is 12).
           if [ -z "$SOURCES" ]; then
-            retry=$(grep -E '^(FAIL|DOWN) ' harvest.log | grep -E 'UND_ERR|timed out|Could not reach|ECONN|ETIMEDOUT|ENOTFOUND' | sed -E 's/^(FAIL|DOWN) ([^:]+):.*/\2/' | head -8 | tr '\n' ' ' || true)
+            retry=$(grep -E '^(FAIL|DOWN) ' harvest.log | grep -E 'UND_ERR|timed out|Could not reach|Could not download|fetch failed|terminated|ECONN|ETIMEDOUT|ENOTFOUND|HTTP (403|429|5[0-9][0-9])|returned no rows' | sed -E 's/^(FAIL|DOWN) ([^:]+):.*/\2/' | head -12 | tr '\n' ' ' || true)
             if [ -n "$retry" ]; then
               echo "Retrying in a fresh process: $retry"
               timeout 600 npm run harvest -- $retry 2>&1 | tee harvest-retry.log || true
