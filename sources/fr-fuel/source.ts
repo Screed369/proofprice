@@ -1,7 +1,7 @@
 // France live pump prices from the Ministère de l'Économie open feed (updated ~every 10 minutes).
 // Station addresses are business addresses and are returned for the cheapest stations.
 
-import { fetchJson, InputError, SourceError } from "../../lib/http";
+import { fetchJson, InputError, SourceError, isSourceOutage } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import type { BackfillResult, HarvestResult, SourceInfo } from "../../lib/plugin";
@@ -128,6 +128,16 @@ export function frFreshStations<T extends { updated: string | null }>(stations: 
   });
 }
 
+/** One live page must answer within this; the publisher's API either answers in a couple of seconds or not at all. */
+export const FR_LIVE_TIMEOUT_MS = 8000;
+/** After a timeout or 5xx, skip the live API for this long (per server instance). */
+export const FR_BREAKER_MS = 120_000;
+let frLiveDownUntil = 0;
+/** Tests only. */
+export function frResetBreaker(): void {
+  frLiveDownUntil = 0;
+}
+
 export async function frFuelNow(input: {
   postcode?: string;
   department?: string;
@@ -156,11 +166,20 @@ export async function frFuelNow(input: {
     throw new InputError("Give a French postcode or department code, e.g. postcode=75015 or area=69.");
   }
   const reported: Station[] = [];
-  for (let offset = 0; offset < 500; offset += 100) {
-    const json = await fetchJson(buildFrUrl(where, offset), {}, 15000);
-    const page = parseFrRecords(json, input.fuel);
-    reported.push(...page);
-    if (!Array.isArray(json?.results) || json.results.length < 100) break;
+  // Fail fast when the publisher's API is down: after one outage the next calls skip it for a short while and go straight to
+  // runCategory's stale-if-error (our daily library copy), instead of every agent waiting 15 s for the same timeout.
+  if (Date.now() < frLiveDownUntil) throw new SourceError("Source timed out (skipped: the live API just failed, using our daily copy)");
+  try {
+    for (let offset = 0; offset < 500; offset += 100) {
+      const json = await fetchJson(buildFrUrl(where, offset), {}, FR_LIVE_TIMEOUT_MS);
+      const page = parseFrRecords(json, input.fuel);
+      reported.push(...page);
+      if (!Array.isArray(json?.results) || json.results.length < 100) break;
+    }
+    frLiveDownUntil = 0;
+  } catch (err) {
+    if (isSourceOutage(err)) frLiveDownUntil = Date.now() + FR_BREAKER_MS;
+    throw err;
   }
   const local = frAnswer(reported, { fuel: input.fuel, area, query: input, today: input.today, baseUrl: input.baseUrl });
   // Niche fuels (LPG, E85) are sold at few stations: a thin department gets the labelled national figure, never a bare refusal.

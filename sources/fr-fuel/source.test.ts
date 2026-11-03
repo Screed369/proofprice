@@ -285,3 +285,35 @@ test("FR: with nothing in the library the 400 names working examples", async () 
   const { frFuelNow } = await import("./source");
   await assert.rejects(() => frFuelNow({ fuel: "gazole", today: "2020-01-01" }), /postcode=75015 or area=69/);
 });
+
+test("FR live outage: the first call times out, the next ones fail fast as outages (so runCategory serves the library copy)", async () => {
+  const { frFuelNow, frResetBreaker } = await import("./source");
+  const { isSourceOutage } = await import("../../lib/http");
+  const realFetch = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls++;
+    return new Response("bad gateway", { status: 502 });
+  }) as any;
+  try {
+    frResetBreaker();
+    await assert.rejects(frFuelNow({ postcode: "75015", fuel: "gazole" }), (e: any) => isSourceOutage(e));
+    assert.equal(calls, 1);
+    const t = Date.now();
+    await assert.rejects(frFuelNow({ postcode: "69001", fuel: "gazole" }), (e: any) => isSourceOutage(e));
+    assert.equal(calls, 1, "breaker open: no second upstream call");
+    assert.ok(Date.now() - t < 200);
+    // recovery: once the breaker is reset a good response answers normally and keeps it closed
+    frResetBreaker();
+    globalThis.fetch = (async () => {
+      calls++;
+      return new Response(JSON.stringify({ results: [] }), { status: 200, headers: { "content-type": "application/json" } });
+    }) as any;
+    const a = await frFuelNow({ postcode: "75015", fuel: "gazole" });
+    assert.notEqual(a.status, undefined);
+    assert.equal(calls, 2);
+  } finally {
+    globalThis.fetch = realFetch;
+    frResetBreaker();
+  }
+});
