@@ -6,7 +6,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const URL_RENTS = "https://www.rvd.gov.hk/datagovhk/1.1M.csv";
 export const TERMS_URL = "https://data.gov.hk/en/terms-and-conditions";
@@ -237,4 +238,48 @@ export async function hkRents(input: HkRentInput, fetcher: (url: string) => Prom
   resolveRegion(input.town);
   normaliseClass(input.flat_class);
   return hkRentAnswer(parseRents(await fetcher(URL_RENTS)), input);
+}
+
+// ---------- daily collector (price library): history and stale-if-error ----------
+
+/** Library key of a request: area = region name, item = flat class. Null when the request cannot be keyed (no region, bad class). */
+export function hkHistoryKey(p: { town?: string; flat_class?: string }): { area: string; item: string; label: string } | null {
+  if (!p.town || !p.town.trim()) return null;
+  try {
+    const { region } = resolveRegion(p.town);
+    const cls = normaliseClass(p.flat_class) ?? DEFAULT_CLASS;
+    const regionName = region === "Hong Kong" ? "Hong Kong Island" : region;
+    return { area: region, item: cls, label: `${CLASS_LABEL[cls]} flats, ${regionName}` };
+  } catch {
+    return null;
+  }
+}
+
+/** One row per class and region for the newest month with usable figures (unreliable and blank cells left out). Each row is a single
+ *  published average, so n is NO_COUNT. Dated by the month's last day (reference period). */
+export function hkHarvestRows(rows: MonthRow[]): HarvestResult {
+  const out: HarvestResult["rows"] = [];
+  let month = "";
+  for (let i = rows.length - 1; i >= Math.max(0, rows.length - 3) && !out.length; i--) {
+    for (const cls of CLASSES) {
+      for (const region of REGIONS) {
+        const c = rows[i].cells[`${cls}|${region}`];
+        if (!c || c.value === null || c.unreliable) continue;
+        out.push({ area: region, item: cls, n: NO_COUNT, median: c.value, low: c.value, high: c.value, min: c.value, max: c.value });
+      }
+    }
+    month = rows[i].month;
+  }
+  if (!out.length) throw new SourceError("The RVD rents file has no usable average rent in its last three months");
+  return {
+    date: monthRange(month).to,
+    currency: "HKD",
+    unit: "per m² of saleable area per month",
+    rows: out,
+    note: `RVD Property Market Statistics, private domestic average rents by class and region for ${monthWords(month)}. Published averages, not counts of tenancies (no count is published).`,
+  };
+}
+
+export async function hkHarvest(fetcher: (url: string) => Promise<string> = fetchText): Promise<HarvestResult> {
+  return hkHarvestRows(parseRents(await fetcher(URL_RENTS)));
 }

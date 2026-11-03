@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { INFO, hkRents, newestUsable, normaliseClass, parseRents, resolveRegion, URL_RENTS } from "./source";
+import { INFO, hkHarvest, hkHarvestRows, hkHistoryKey, hkRents, newestUsable, normaliseClass, parseRents, resolveRegion, URL_RENTS } from "./source";
 
 const CSV = readFileSync(new URL("./fixtures/1.1M.csv", import.meta.url), "utf8");
 
@@ -92,4 +92,33 @@ test("licence and honesty fields", () => {
   assert.equal(INFO.price_type, "official_statistic");
   assert.match(INFO.licence, /DATA\.GOV\.HK/);
   assert.match(INFO.limits, /not an asking rent/);
+});
+
+test("harvest: newest month, one NO_COUNT row per usable class and region, unreliable cells left out", async () => {
+  const h = await hkHarvest(async () => CSV);
+  assert.equal(h.date, "2026-08-31");
+  assert.equal(h.currency, "HKD");
+  // real file: 15 cells in 2026-08, Class E Kowloon is unreliable (Z)
+  assert.equal(h.rows.length, 14);
+  assert.ok(!h.rows.some((r) => r.area === "Kowloon" && r.item === "E"));
+  const a = h.rows.find((r) => r.area === "Hong Kong" && r.item === "A")!;
+  assert.equal(a.median, 568);
+  assert.ok(Number.isNaN(a.n));
+  assert.equal(a.low, a.high);
+});
+
+test("harvest falls back to an earlier month when the newest has no usable cell, and refuses an empty file", () => {
+  const rows = parseRents(CSV);
+  const blank = rows.map((r, i) => (i === rows.length - 1 ? { ...r, cells: Object.fromEntries(Object.entries(r.cells).map(([k, c]) => [k, { ...c, unreliable: true }])) } : r));
+  assert.equal(hkHarvestRows(blank).date, "2026-07-31");
+  const none = rows.map((r, i) => (i >= rows.length - 3 ? { ...r, cells: Object.fromEntries(Object.entries(r.cells).map(([k, c]) => [k, { ...c, value: null }])) } : r));
+  assert.throws(() => hkHarvestRows(none));
+});
+
+test("historyKey maps a request to the library row (region, class); default class B; bad input gives null", () => {
+  assert.deepEqual(hkHistoryKey({ town: "Mong Kok" }), { area: "Kowloon", item: "B", label: "Class B (40 to 69.9 m²) flats, Kowloon" });
+  assert.equal(hkHistoryKey({ town: "Hong Kong", flat_class: "a" })!.item, "A");
+  assert.equal(hkHistoryKey({ town: "Hong Kong", flat_class: "Z" }), null);
+  assert.equal(hkHistoryKey({ town: "Narnia" }), null);
+  assert.equal(hkHistoryKey({}), null);
 });

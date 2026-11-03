@@ -1,7 +1,7 @@
 // Manifest: Hong Kong rents (Rating and Valuation Dept, private domestic average rents by class). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, hkRents } from "./source";
+import { INFO, hkRents, hkHarvest, hkHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -29,4 +29,10 @@ export default defineSource({
     "Hong Kong rents: the average monthly rent per square metre of saleable area of private domestic flats from the Rating and Valuation Department, for the region and flat class asked, with the change on a year earlier. " +
     "It is a published average, not a list of rents and not an asking rent; no range is calculated.",
   handle: (p, ctx) => hkRents({ town: str(p.town), flat_class: str(p.flat_class), baseUrl: ctx.baseUrl }),
+  // A daily copy of the newest month (one published average per class and region, n is NO_COUNT), dated by the reference month:
+  // gives /history and lets an RVD outage be answered from our copy (stale-if-error).
+  harvest: () => hkHarvest(),
+  historyKey: (p) => hkHistoryKey({ town: str(p.town), flat_class: str(p.flat_class) }),
+  referenceDates: true,
+  nominalCounts: true,
 });
