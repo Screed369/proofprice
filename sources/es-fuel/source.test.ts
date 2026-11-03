@@ -211,3 +211,26 @@ test("ES: area=Madrid and town=Marbella (no code) answer; a 400 names working ex
     globalThis.fetch = realFetch;
   }
 });
+
+test("ES: country-only question (/api/v1/fuel?country=ES&fuel=diesel) answers with the labelled national figure, Canaries excluded", async () => {
+  const { esFuelNow } = await import("./source");
+  const st = (prov: string, p: string, i: number) => ({ "C.P.": prov + "001", Municipio: "X", IDProvincia: prov, "Tipo Venta": "P", "Precio Gasoleo A": p, "Dirección": "x", "Rótulo": "y", IDEESS: String(i) });
+  const list = [
+    ...["1,50", "1,52", "1,54", "1,56", "1,58", "1,60"].map((p, i) => st("28", p, i)),
+    ...["1,40", "1,41", "1,42"].map((p, i) => st("35", p, 50 + i)), // Canarias: not in the national figure
+  ];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async () => new Response(JSON.stringify({ Fecha: "02/11/2026 9:00:00", ListaEESSPrecio: list }), { status: 200 })) as typeof fetch;
+  try {
+    const a = await esFuelNow({ fuel: "diesel" });
+    assert.equal(a.status, "ok");
+    assert.match(a.summary, /No area was given, so this is the national figure for mainland Spain and the Balearics \(6 stations\)/);
+    assert.equal((a.extra as any).national, true);
+    assert.equal((a.extra as any).stations_counted, 6);
+    assert.equal(a.sample_size, 6);
+    // an unknown area is still refused with examples
+    await assert.rejects(esFuelNow({ area: "Narnia", fuel: "diesel" }), /area=Madrid/);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

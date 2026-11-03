@@ -179,6 +179,11 @@ export async function esFuelNow(input: {
   if (!province && input.town) {
     province = esProvinceFromName(input.town) ?? (await esProvinceOfTown(input.town));
   }
+  // Country-only question (no postcode, area or town): answer with the labelled national figure instead of a 400.
+  if (!province && !input.postcode && !input.area && !input.town) {
+    const national = await esNationalNow(input.fuel, input.baseUrl);
+    if (national) return national;
+  }
   if (!province) {
     throw new InputError(
       `Spain: give a 5-digit postcode, a province code (01–52) or name as area (area=Madrid, area=28), or a town name (town=Marbella). Examples: /api/v1/fuel?country=ES&area=Madrid&fuel=diesel , /api/v1/fuel?country=ES&postcode=28001&fuel=petrol95 , /api/v1/fuel?country=ES&town=Valencia&fuel=diesel.`,
@@ -254,6 +259,45 @@ export async function esFuelNow(input: {
     baseUrl: input.baseUrl,
     extra: { cheapest_stations: cheapest, stations_counted: picked.length, ...(note ? { note } : {}) },
   });
+}
+
+/** Spain as a whole (mainland and the Balearics) for a country-only question: our daily copy first, else the live national feed. */
+export async function esNationalNow(fuel: Fuel, baseUrl?: string): Promise<PriceAnswer | null> {
+  const unit = fuel === "methane" ? "per kg" : "per litre";
+  const whole = "mainland Spain and the Balearics";
+  let summary: ReturnType<typeof summarise> = null;
+  let day: string | null = null;
+  let source = "live national feed";
+  try {
+    const json = await fetchJson(NATIONAL_URL, { headers: { accept: "application/json" } }, 25000);
+    const parsed = parseEsStations(json, fuel);
+    summary = summarise(parsed.stations.filter((x) => !ES_OUTSIDE_NATIONAL.has(x.province ?? "")).map((x) => x.price));
+    day = fechaToIso(parsed.fecha);
+  } catch {
+    summary = null;
+  }
+  if (!summary || summary.count < 5 || !day) {
+    const row = nationalRow("es-fuel", fuel);
+    if (!row) return null;
+    summary = row.summary;
+    day = row.date;
+    source = `our daily copy of ${row.date}`;
+  }
+  const note = `No area was given, so this is the national figure for ${whole} (${summary.count} stations). Give a postcode, province (area=Madrid) or town for a local range.`;
+  const a = buildAnswer({
+    source: INFO,
+    query: { country: "ES", postcode: null, area: null, town: null, fuel },
+    summary,
+    currency: "EUR",
+    unit,
+    period: { from: day, to: day },
+    method: `Median and 10th–90th percentile of the current pump price reported by each public filling station in ${whole} for the selected fuel (${source}). Restricted-sale stations are excluded.`,
+    describe: (x) =>
+      `${FUEL_LABEL[fuel]} in ${whole}: current posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} ${unit}; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+    baseUrl,
+    extra: { national: true, widened_to: whole, stations_counted: summary.count },
+  });
+  return { ...a, summary: `${note} ${a.summary}`, notice: `${note} ${a.notice}` };
 }
 
 const ES_NICHE = new Set<Fuel>(["lpg", "methane"]);

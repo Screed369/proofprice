@@ -20,6 +20,7 @@ export default defineSource({
   },
   examples: [
     { params: { country: "ES", area: "42", fuel: "diesel" } },
+    { params: { country: "ES", fuel: "diesel" }, smoke: false },
     { params: { country: "ES", postcode: "28001", fuel: "petrol95" }, smoke: false },
     { params: { country: "ES", area: "Madrid", fuel: "diesel" } },
     { params: { country: "ES", town: "Marbella", fuel: "petrol95" }, smoke: false },
