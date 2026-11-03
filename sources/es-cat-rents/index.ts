@@ -1,6 +1,6 @@
 // Manifest: Catalonia (Spain) rents from the INCASOL rental-deposit register. Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, esCatRent } from "./source";
+import { INFO, esCatHarvest, esCatHistoryKey, esCatRent } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -23,4 +23,11 @@ export default defineSource({
   method:
     "Catalonia rents: the average monthly rent of home leases newly lodged with INCASOL (the legal rental deposit) in a municipality in the latest quarter, with the number of contracts. It is a published average, not a list of rents.",
   handle: (p, ctx) => esCatRent({ town: str(p.town), baseUrl: ctx.baseUrl }),
+  // Daily copy of the newest quarter for every municipality (dated by the quarter's end): gives /history and lets a portal outage
+  // be answered from our copy (stale-if-error). The portal publishes one mean per municipality, so the library repeats it in low/high.
+  harvest: () => esCatHarvest(),
+  historyKey: (p) => esCatHistoryKey({ town: str(p.town) }),
+  referenceDates: true,
+  nominalCounts: true,
+  staleMaxDays: 35, // INCASOL publishes quarterly; the newest figure cannot change between releases
 });

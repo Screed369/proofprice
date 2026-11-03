@@ -6,7 +6,8 @@
 import { InputError, SourceError, fetchJson } from "../../lib/http";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { socrataUrl, parseSoda, soqlString } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const INFO: SourceInfo = {
   id: "es-cat-rents",
@@ -17,7 +18,7 @@ export const INFO: SourceInfo = {
   what_is_recorded:
     "Average monthly rent in euros of home leases newly signed and lodged with INCASOL (the legal rental deposit), by municipality and quarter, with the number of contracts behind each average.",
   price_type: "official_statistic",
-  freshness: "Quarterly; latest published quarter Q1 2026 (dataset updated 30 July 2026)",
+  freshness: "Quarterly, a few weeks after each quarter ends; the daily collector keeps a copy for history and outages",
   licence: "Generalitat de Catalunya open data: reuse allowed with attribution (dataset licence field says 'See terms of use')",
   licence_url: "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
   attribution: "Source: Departament de Territori, Habitatge i Transició Ecològica, Generalitat de Catalunya (INCASOL), open data.",
@@ -154,4 +155,51 @@ export async function esCatRent(input: EsCatInput, fetcher?: (url: string) => Pr
       rent_kind: "mean monthly rent of newly lodged leases (registered rental deposits)",
     },
   });
+}
+
+/** Library key for a municipality: the accent-free, article-first name key (both "Canonja, la" and "La Canonja" give "canonja"). */
+export function esCatHistoryKey(p: { town?: string }): { area: string; item: string; label: string } | null {
+  const town = p.town?.trim();
+  if (!town || town.length < 2) return null;
+  return { area: nameKey(town), item: "new-leases", label: `${town} (Catalonia)` };
+}
+
+/** SoQL for the collector: every municipality row of the last two calendar years in one request. */
+export function harvestUrl(now: Date = new Date()): string {
+  return socrataUrl(DOMAIN, DATASET, {
+    where: `ambit_territorial = 'Municipi' AND any >= ${now.getUTCFullYear() - 1}`,
+    order: ["any DESC", "codi_territorial ASC"],
+    limit: 20000,
+  });
+}
+
+/** One row per municipality for the newest single quarter INCASOL has published anywhere. Municipalities whose own newest
+ *  quarter is older are left out (the figure would not describe the date). n is the real contract count (INCASOL leaves out
+ *  municipalities with fewer than 6, and the library gate drops anything under 5 again). */
+export function esCatHarvestRows(rows: DepositRow[]): HarvestResult {
+  const newest = latestQuarter(rows);
+  if (!newest) throw new SourceError("The INCASOL rents dataset has no single-quarter municipality rows");
+  const dates = quarterDates(newest.year, newest.period)!;
+  const seen = new Set<string>();
+  const out: HarvestResult["rows"] = [];
+  for (const r of rows) {
+    if (r.year !== newest.year || r.period !== newest.period) continue;
+    const area = nameKey(r.name);
+    if (!area || seen.has(area)) continue;
+    seen.add(area);
+    const rent = Math.round(r.rent);
+    out.push({ area, item: "new-leases", n: r.contracts, median: rent, low: rent, high: rent, min: rent, max: rent });
+  }
+  if (out.length < 20) throw new SourceError(`The INCASOL rents dataset gave only ${out.length} municipalities for ${dates.label}`);
+  return {
+    date: dates.to,
+    currency: "EUR",
+    unit: "per month",
+    rows: out,
+    note: `INCASOL rental-deposit register, average monthly rent of new home leases by municipality for ${dates.label}. Published means (not medians), with the number of contracts.`,
+  };
+}
+
+export async function esCatHarvest(fetcher: (url: string) => Promise<unknown> = (u) => fetchJson(u, {}, 60000)): Promise<HarvestResult> {
+  return esCatHarvestRows(parseRows(await fetcher(harvestUrl())));
 }

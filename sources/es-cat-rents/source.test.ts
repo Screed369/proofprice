@@ -60,3 +60,37 @@ test("unknown town and missing town", async () => {
   await assert.rejects(() => esCatRent({ town: "Atlantis" }, async () => []), /No published rent/);
   await assert.rejects(() => esCatRent({}, async () => []), /Give a Catalan/);
 });
+
+import { esCatHarvestRows, esCatHistoryKey, harvestUrl } from "./source";
+
+function fakeRows(n: number, period = "gener-març", year = 2026) {
+  return Array.from({ length: n }, (_, i) => ({ ambit_territorial: "Municipi", codi_territorial: String(i), nom_territori: `Poble ${i}`, any: String(year), periode: period, habitatges: String(10 + i), renda: String(700 + i) }));
+}
+
+test("harvest keeps the newest quarter, one row per municipality, with real counts", () => {
+  const rows = parseRows([...fakeRows(25), ...fakeRows(25, "octubre-desembre", 2025), ...BCN, ...SAB]);
+  const h = esCatHarvestRows(rows);
+  assert.equal(h.date, "2026-03-31");
+  assert.equal(h.currency, "EUR");
+  assert.equal(h.rows.length, 25 + 2);
+  const bcn = h.rows.find((r) => r.area === "barcelona")!;
+  assert.equal(bcn.n, 8156);
+  assert.equal(bcn.median, 1137);
+  assert.ok(h.rows.every((r) => r.item === "new-leases" && r.low === r.median));
+});
+
+test("harvest refuses a thin file", () => {
+  assert.throws(() => esCatHarvestRows(parseRows(fakeRows(3))), /only 3/);
+  assert.throws(() => esCatHarvestRows([]), /no single-quarter/);
+});
+
+test("history key matches the harvest area, article order does not matter", () => {
+  assert.equal(esCatHistoryKey({ town: "Barcelona" })!.area, "barcelona");
+  assert.equal(esCatHistoryKey({ town: "La Canonja" })!.area, esCatHistoryKey({ town: "Canonja, la" })!.area);
+  assert.equal(esCatHistoryKey({}), null);
+});
+
+test("harvest URL asks for municipalities of the last two years", () => {
+  const u = decodeURIComponent(harvestUrl(new Date("2026-11-03T00:00:00Z")));
+  assert.ok(u.includes("any >= 2025") && u.includes("Municipi"));
+});
