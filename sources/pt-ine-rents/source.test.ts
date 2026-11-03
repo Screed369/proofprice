@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS, countriesFor, categoryById } from "../../lib/registry";
-import { HARVEST_ITEM, INFO, apiUrl, coverageText, findPlace, chunkCodes, harvestRows, harvestUrl, parseIne, periodCandidates, ptAnswer, ptHarvest, ptHistoryKey, ptRents, readPt, windowOf } from "./source";
+import { HARVEST_ITEM, INFO, apiUrl, coverageText, findPlace, chunkCodes, harvestRows, harvestUrl, parseIne, periodCandidates, ptAnswer, ptHarvest, ptHistoryKey, ptRents, readPt, windowApiUrl, windowOf } from "./source";
 import { PT_PLACES } from "./places";
 import * as F from "./fixtures";
 
@@ -231,4 +231,29 @@ test("pt-ine-rents: a source that fails twice still ends in the source error (th
   } finally {
     globalThis.fetch = real;
   }
+});
+
+test("windowApiUrl names the 13 newest published quarters (a quarter is a candidate 60 days after it ends)", () => {
+  const lisboa = place("Lisboa");
+  const u = windowApiUrl(lisboa, new Date("2026-11-03T18:00:00Z"));
+  assert.ok(u.includes("Dim1=S5A20262,S5A20261,S5A20254,"));
+  assert.ok(u.includes("S5A20232&Dim2=1A01106,PT&"));
+  assert.equal(u.split("Dim1=")[1].split("&")[0].split(",").length, 13);
+  assert.ok(windowApiUrl(lisboa, new Date("2027-01-10T00:00:00Z")).includes("Dim1=S5A20263,S5A20262"));
+  assert.ok(windowApiUrl(PT_PLACES[0], new Date("2026-11-03T18:00:00Z")).includes("Dim2=PT&"));
+});
+
+test("ptRents: asks for named quarters first and falls back to all periods only when INE says the code is not valid", async () => {
+  const urls: string[] = [];
+  const bad = [{ Sucesso: { Falso: [{ IndicadorCod: "0014696", Msg: "(EN) Code(s) in Dim1 not valid for the indicator.", Cod: "4" }] } }];
+  const fetcher = async (url: string) => (urls.push(url), url.includes("Dim1=T") ? F.LISBOA_PT_HISTORY : bad);
+  const a = await ptRents({ town: "Lisboa" }, { fetcher, now: NOW });
+  assert.equal(a.status, "ok");
+  assert.equal(a.price!.value, 17.43);
+  assert.equal(urls.length, 2);
+  assert.ok(!urls[0].includes("Dim1=T&") && urls[1].includes("Dim1=T&"));
+  // a network failure is not retried with the slow request: it goes to the library copy
+  const urls2: string[] = [];
+  await assert.rejects(ptRents({ town: "Lisboa" }, { fetcher: async (u) => { urls2.push(u); throw new SourceError("Could not reach the official source", "UND_ERR_CONNECT_TIMEOUT"); }, now: NOW }), SourceError);
+  assert.equal(urls2.length, 1);
 });

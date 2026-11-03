@@ -53,7 +53,8 @@ export interface FetchOptions {
 }
 // INE's servers can be slow, and a request with a period code they do not know hangs: we only ever ask for "all periods" (Dim1=T).
 // INE is slow and drops connections from Vercel: two attempts of 15 s (0.5 s apart) stay inside the 40 s answer deadline; a copy from the library follows if both fail.
-const defaultFetcher: Fetcher = (url) => retryOnce(() => fetchJson(url, {}, 15000));
+// A first attempt of 10 s and one retry keep a failing INE inside ~21 s, so the library copy answers well before the 40 s deadline.
+const defaultFetcher: Fetcher = (url) => retryOnce(() => fetchJson(url, {}, 10000));
 
 // ---------- place names (pure) ----------
 
@@ -209,6 +210,27 @@ export function parseIne(json: unknown): IneReply {
 export function apiUrl(place: PtPlace): string {
   const geos = place.code === "PT" ? "PT" : `${place.code},PT`;
   return `${API_BASE}?op=2&varcd=${INDICATOR}&Dim1=T&Dim2=${geos}&lang=EN`;
+}
+
+/** Request URL for the 13 newest quarters INE can hold (a year-earlier comparison plus a 12-quarter series), named explicitly: about three times
+ *  faster than "all periods" (0.8 s against 2.7 s, checked 3 Nov 2026). INE rejects the whole call when a code is not out yet, so the newest
+ *  candidate is the last quarter that ended 60+ days ago and the caller falls back to apiUrl (all periods) when INE says the code is not valid. */
+export function windowApiUrl(place: PtPlace, now: Date): string {
+  const geos = place.code === "PT" ? "PT" : `${place.code},PT`;
+  let year = now.getUTCFullYear();
+  let quarter = Math.floor(now.getUTCMonth() / 3) + 1;
+  const ended = (y: number, q: number) => new Date(Date.UTC(y, q * 3, 0)).getTime();
+  while (now.getTime() - ended(year, quarter) < 60 * 86400000) {
+    quarter -= 1;
+    if (quarter === 0) { quarter = 4; year -= 1; }
+  }
+  const periods: string[] = [];
+  for (let i = 0; i < 13; i++) {
+    periods.push(periodCode(year, quarter));
+    quarter -= 1;
+    if (quarter === 0) { quarter = 4; year -= 1; }
+  }
+  return `${API_BASE}?op=2&varcd=${INDICATOR}&Dim1=${periods.join(",")}&Dim2=${geos}&lang=EN`;
 }
 
 // ---------- reading it (pure) ----------
@@ -395,8 +417,17 @@ export async function ptRents(
     };
   }
 
-  const url = apiUrl(place);
-  const reading = readPt(parseIne(await fetcher(url)), place);
+  let url = windowApiUrl(place, now);
+  let reply: IneReply;
+  try {
+    reply = parseIne(await fetcher(url));
+  } catch (e) {
+    // Only INE's own "code not valid" (that quarter is not out yet) falls back to all periods; a network failure goes on to the library copy.
+    if (!(e instanceof SourceError) || !e.message.startsWith("INE Portugal could not answer")) throw e;
+    url = apiUrl(place);
+    reply = parseIne(await fetcher(url));
+  }
+  const reading = readPt(reply, place);
   return ptAnswer(reading, { place: input.town ?? null, property_type: type, baseUrl: input.baseUrl, apiUrl: url, now });
 }
 
