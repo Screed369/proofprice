@@ -25,6 +25,8 @@ Never edit another source's folder.
 Rules: official open data, licensed data, partner data or verified receipts only. Aggregates only for anything about
 people's homes or purchases. No figure from fewer than 5 records. Asking prices are never presented as paid prices.
 
+**Before claiming a row, grep `docs/blocked-hosts.json` for the publisher's host.** Publishers that refuse our servers are listed there; add a line when you find a new one.
+
 ## Adapters: one plug for hundreds of portals (`lib/adapters/`)
 
 Many governments run the same few open-data platforms, so you rarely need to write fetch code from scratch.

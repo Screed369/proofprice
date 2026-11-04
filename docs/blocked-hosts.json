@@ -1,0 +1,19 @@
+{
+  "about": "Publishers whose servers refuse or drop ProofPrice's cloud/Node clients. Scouts, Verifiers and Builders: grep this file for the host BEFORE claiming a row. Do not work around a block (no browser user agents, no proxies). Add a line when you find a new one; keep entries factual.",
+  "hosts": [
+    { "host": "epra.go.ke", "symptom": "Node fetch gets HTTP 403 (workspace and GitHub Actions); curl and the probe workflow get 200. Parked on branch src/ke-epra-fuel.", "date": "2026-11-03", "found_by": "Builder D" },
+    { "host": "mimit.gov.it", "symptom": "Connect timeout from Vercel (iad1 and fra1) and GitHub; IT fuel answers from the EU Oil Bulletin fallback.", "date": "2026-11-02", "found_by": "Builder C" },
+    { "host": "enecho.meti.go.jp", "symptom": "HTTP 403 on every path from GitHub probes.", "date": "2026-11-03", "found_by": "Verifier B" },
+    { "host": "data.gov.ro", "symptom": "Times out at 120 s from GitHub probes.", "date": "2026-11-03", "found_by": "Verifier B" },
+    { "host": "data.gov.me", "symptom": "Drops datacenter IPs (probe and curl time out); ME fuel collector stuck.", "date": "2026-11-04", "found_by": "Builder B" },
+    { "host": "www150.statcan.gc.ca", "symptom": "WDS POST returns HTTP 409 and GitHub probe connection reset; CA groceries Broken.", "date": "2026-11-04", "found_by": "Builder D" },
+    { "host": "www.education.gov.au", "symptom": "HTTP/2 INTERNAL_ERROR from GitHub, timeout from Vercel; AU childcare built but not merged.", "date": "2026-10-31", "found_by": "Builder D" },
+    { "host": "gov.scot", "symptom": "CSV answers a 202 WAF challenge from GitHub.", "date": "2026-10-23", "found_by": "Builder C" },
+    { "host": "posokanei.gov.gr", "symptom": "HTTP 403 on a plain GET.", "date": "2026-10-28", "found_by": "Verifier" },
+    { "host": "joburgmarket.co.za", "symptom": "HTTP 409 JS cookie challenge.", "date": "2026-10-28", "found_by": "Verifier" },
+    { "host": "ckan-open-nrw.nrw.de", "symptom": "Times out from GitHub.", "date": "2026-10-29", "found_by": "Verifier" },
+    { "host": "data.ibb.gov.tr", "symptom": "Times out from GitHub.", "date": "2026-10-29", "found_by": "Verifier" },
+    { "host": "adat.aki.gov.hu", "symptom": "Times out from GitHub.", "date": "2026-10-29", "found_by": "Verifier" },
+    { "host": "data.bus-data.dft.gov.uk", "symptom": "API answers 401, needs a token.", "date": "2026-10-29", "found_by": "Verifier" }
+  ]
+}
