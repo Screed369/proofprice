@@ -24,7 +24,7 @@ export const INFO: SourceInfo = {
   what_is_recorded:
     "Public contracts that Spanish public buyers awarded and published on PLACSP: what was bought (CPV product code), the award date and the awarded price in euros without VAT.",
   price_type: "contract_price",
-  freshness: "Daily: PLACSP adds awards through the day and our copy is collected once a day, covering the newest one to two days of awards",
+  freshness: "Daily: PLACSP adds awards through the day and our copy is collected once a day, covering the newest three to four days of awards",
   licence: "Spanish public-sector reuse conditions (Ley 37/2007, Real Decreto 1495/2011): commercial and non-commercial reuse allowed with the source cited",
   licence_url: "https://www.hacienda.gob.es/es-ES/Paginas/Avisolegal.aspx",
   attribution:
@@ -32,14 +32,16 @@ export const INFO: SourceInfo = {
   homepage: "https://www.hacienda.gob.es/es-ES/GobiernoAbierto/Datos%20Abiertos/Paginas/LicitacionesContratante.aspx",
   limits:
     "Awarded contract prices as registered by the buyer on PLACSP, in euros without VAT, for the whole contract (often several years); they are not unit prices and not amounts paid yet. " +
-    "Only the newest one to two days of awards are summarised (the feed downloads at about 125 KB/s, so a longer window does not fit the collector's 10 minutes), from the buyers' profile feed (some regional platforms publish elsewhere), so rarer purchases usually have too few awards for a figure; broad groups such as construction (CPV 45) do. " +
+    "Only the newest three to four days of awards are summarised (the feed downloads at about 125 KB/s, so a longer window does not fit the collector's 10 minutes), from the buyers' profile feed (some regional platforms publish elsewhere), so rarer purchases usually have too few awards for a figure; broad groups such as construction (CPV 45) do. " +
     "Prices under 500 euros and over 1 billion euros are left out, and each award is counted once. A contract is recognised from its first CPV product code, so a contract filed under another code is missed. " +
     "Aggregates only; buyers, winners and their tax numbers in the open feed are never read or kept.",
   method_version: "1",
 };
 
 export const FEED_URL = "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom";
-export const WINDOW_DAYS = 1;
+export const WINDOW_DAYS = 3;
+/** First collection date read with the wider window. */
+export const WIDE_FROM = "2026-11-04";
 export const MIN_VALUE = 500;
 export const MAX_VALUE = 1_000_000_000;
 export const UNIT = "per contract, total awarded price without VAT";
@@ -67,12 +69,19 @@ function tag(xml: string, name: string): string {
   return m ? m[1].trim() : "";
 }
 
-/** Days to read back from a collection date. Public buyers publish awards on working days, so a Sunday or Monday collection looks back
- *  to Friday (1 Nov 2026, a Sunday, found no awards dated 31 Oct or 1 Nov and the collector failed twice). Saturday and weekdays: 1 day. */
+/** Days to read back from a collection date. Public buyers publish awards on working days and only a handful per CPV group each day
+ *  (24 Oct: 12 for construction; 29 and 30 Oct: 2 groups with 5+ awards; 3 Nov: none, so the daily collector failed with "harvest returned
+ *  no rows" for a window of one day). Every collection therefore looks back 3 days; a Monday collection looks back 4 so that it still
+ *  reaches Friday. */
 export function windowDaysFor(today: string): number {
   const dow = new Date(today + "T00:00:00Z").getUTCDay(); // 0 Sunday .. 6 Saturday
-  if (dow === 0) return 2;
-  if (dow === 1) return 3;
+  if (today < WIDE_FROM) {
+    // Copies collected before the wider window (kept in the library) were read with the old windows: label them truthfully.
+    if (dow === 0) return 2;
+    if (dow === 1) return 3;
+    return 1;
+  }
+  if (dow === 1) return 4;
   return WINDOW_DAYS;
 }
 
@@ -342,7 +351,7 @@ export async function esContracts(input: EsInput): Promise<PriceAnswer> {
     method:
       `PLACSP awards dated ${from} to ${useDate}, recognised by their CPV product code (${label}). Median and 10th–90th percentile of the awarded price in EUR without VAT. ` +
       (fellBack ? `The newest collection (${day.date}) held fewer than 5 awards for this purchase, so this is the newest earlier day that did. ` : "") +
-      "Totals per contract, not unit prices; buyers and winners are never named. Only the newest one to two days of awards are summarised, so a rarer purchase may show no figure; use a broad CPV division such as 45 (construction) for a figure.",
+      "Totals per contract, not unit prices; buyers and winners are never named. Only the newest three to four days of awards are summarised, so a rarer purchase may show no figure; use a broad CPV division such as 45 (construction) for a figure.",
     describe: (s) =>
       `Spanish public buyers awarded ${label} with a median total price of ${fmtMoney(s.median, "EUR")} per contract without VAT ` +
       `(typical range ${fmtMoney(s.low, "EUR")} to ${fmtMoney(s.high, "EUR")}, 10th to 90th percentile). These are totals per contract, not unit prices.`,
