@@ -174,10 +174,40 @@ export function answerFromStations(stations: Station[], year: number, month: num
   });
 }
 
+/** Pure: all (year, month) pairs of a grouped listing, newest first. */
+export function monthsNewestFirst(rows: unknown): { year: number; month: number }[] {
+  if (!Array.isArray(rows)) throw new SourceError("datos.gov.co returned an unexpected answer for the list of months; this source needs updating.");
+  const seen = new Map<number, { year: number; month: number }>();
+  for (const r of rows as any[]) {
+    const year = Number(r?.anio_precio);
+    const month = Number(r?.mes_precio);
+    if (!Number.isInteger(year) || !Number.isInteger(month) || month < 1 || month > 12 || year < 2000) continue;
+    seen.set(year * 12 + month, { year, month });
+  }
+  return [...seen.entries()].sort((a, b) => b[0] - a[0]).map(([, v]) => v);
+}
+
+/**
+ * The newest month is often only partly reported (the first days of a month: 56 stations, none yet in Antioquia, on 2026-11-04).
+ * If the asked scope has fewer than 5 stations in the newest month, the next older months (up to 3) are tried; the answer states its month.
+ */
 export async function coFuel(input: CoFuelInput, fetcher: Fetcher = defaultFetcher): Promise<PriceAnswer> {
   if (input.fuel !== "methane") throw fuelError(input.fuel);
-  const { year, month, stations } = await newestStations(fetcher);
-  return answerFromStations(stations, year, month, input);
+  const monthsJson = await fetcher(monthsUrl());
+  const months = monthsNewestFirst(monthsJson).slice(0, 4);
+  if (!months.length) throw new SourceError("The Colombian CNG price dataset lists no months; this source needs updating.");
+  let first: PriceAnswer | null = null;
+  for (const m of months) {
+    let stations = parseStations(await fetcher(stationsUrl(m.year, m.month)));
+    if (!stations.length && m.month < 10) stations = parseStations(await fetcher(stationsUrl(m.year, Number("0" + m.month))));
+    stations = stations.filter((s) => s.year === m.year && s.month === m.month);
+    if (!stations.length) continue;
+    const ans = answerFromStations(stations, m.year, m.month, input);
+    if (ans.status === "ok") return ans;
+    first = first ?? ans;
+  }
+  if (first) return first;
+  throw new SourceError("The Colombian CNG price dataset has no station rows in its newest months; this source needs updating.");
 }
 
 // ---------- daily collector ----------

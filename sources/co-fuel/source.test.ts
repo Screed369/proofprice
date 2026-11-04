@@ -75,3 +75,32 @@ test("co-fuel: history keys match the harvest keys", () => {
   assert.equal(coHistoryKey({ fuel: "methane", town: "Medellín" })!.area, "mun:MEDELLIN");
   assert.equal(coHistoryKey({ fuel: "diesel" }), null);
 });
+
+// Gap G20261104-1: area "antioquia" (lowercase) + fuel=methane answered no_matches on 2026-11-04 because the newest month (2026-11) was only
+// partly reported (56 stations, none in Antioquia). The answer now falls back to the latest month where the asked area has 5+ stations.
+test("co-fuel: lowercase 'antioquia' falls back to the previous month when the newest month has no Antioquia stations yet", async () => {
+  const row = (y: number, m: number, dep: string, mun: string, price: number) => ({
+    fecha_precio: `${y}-${m}-01`, anio_precio: String(y), mes_precio: String(m), departamento_eds: dep, municipio_eds: mun,
+    precio_promedio_publicado: String(price), tipo_combustible: "GNCV",
+  });
+  const nov = Array.from({ length: 6 }, (_, i) => row(2026, 11, "BOGOTA D.C.", "BOGOTA, D.C.", 3600 + i));
+  const oct = [
+    ...Array.from({ length: 5 }, (_, i) => row(2026, 10, "ANTIOQUIA", "MEDELLIN", 3500 + i * 10)),
+    ...nov.map((r) => ({ ...r, mes_precio: "10", fecha_precio: "2026-10-01" })),
+  ];
+  const months = [{ anio_precio: "2026", mes_precio: "10", n: "11" }, { anio_precio: "2026", mes_precio: "11", n: "6" }];
+  const fetcher = async (url: string) => {
+    if (url === monthsUrl()) return months;
+    if (url === stationsUrl(2026, 11)) return nov;
+    if (url === stationsUrl(2026, 10)) return oct;
+    return [];
+  };
+  const a = await coFuel({ fuel: "methane", area: "antioquia" }, fetcher);
+  assert.equal(a.status, "ok");
+  assert.equal(a.sample_size, 5);
+  assert.equal(a.period.from, "2026-10-01");
+  assert.match(a.summary, /Antioquia/);
+  // the whole country still uses the newest month when it has enough stations
+  const n = await coFuel({ fuel: "methane" }, fetcher);
+  assert.equal(n.period.from, "2026-11-01");
+});
