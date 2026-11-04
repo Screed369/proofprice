@@ -98,6 +98,7 @@ describe("gb-ukhpi collector and library key", () => {
   it("harvests every place from the real response shape", async () => {
     const original = globalThis.fetch;
     harvestOptions.retryDelayMs = 0;
+    harvestOptions.pauseMs = 0;
     let calls = 0;
     globalThis.fetch = (async () => {
       calls++;
@@ -113,17 +114,34 @@ describe("gb-ukhpi collector and library key", () => {
     } finally {
       globalThis.fetch = original;
       harvestOptions.retryDelayMs = 3000;
+      harvestOptions.pauseMs = 400;
+    }
+  });
+  it("sends an identified client name (the Land Registry nginx 403s the generic one)", async () => {
+    const original = globalThis.fetch;
+    let ua = "";
+    globalThis.fetch = (async (_u: any, init: any) => {
+      ua = String(init?.headers?.["user-agent"] ?? "");
+      return new Response(JSON.stringify(SCOTLAND_JSON), { status: 200, headers: { "content-type": "application/json" } });
+    }) as any;
+    try {
+      await ukHpi({ town: "Scotland" });
+      assert.match(ua, /^ProofPrice-collector\/1\.0 \(\+https:\/\/proofprice\.com/);
+    } finally {
+      globalThis.fetch = original;
     }
   });
   it("fails loudly when most places do not answer", async () => {
     const original = globalThis.fetch;
     harvestOptions.retryDelayMs = 0;
+    harvestOptions.pauseMs = 0;
     globalThis.fetch = (async () => new Response("down", { status: 503 })) as any;
     try {
       await assert.rejects(ukHpiHarvest(), /first error: Source returned HTTP 503/);
     } finally {
       globalThis.fetch = original;
       harvestOptions.retryDelayMs = 3000;
+      harvestOptions.pauseMs = 400;
     }
   });
   it("live call retries once after a failed first call (Edinburgh flat, smoke showed STALE while a later call was ok)", async () => {

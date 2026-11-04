@@ -10,6 +10,9 @@ import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { NO_COUNT } from "../../lib/stats";
 import { NI_AREAS, SCOTLAND_AREAS } from "./areas";
 
+// The Land Registry's nginx answers 403 to bursts and to our generic client name (harvest of 3-4 Nov: 0 of 45 places). Send the same honest,
+// identified client string that the GitHub probe uses (which gets 200) and keep the collector gentle: one place at a time with a pause.
+export const UA = "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)";
 export const SPARQL_URL = "https://landregistry.data.gov.uk/landregistry/query";
 export const PAGE_URL = "https://landregistry.data.gov.uk/app/ukhpi/";
 export const LICENCE_URL = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/";
@@ -344,7 +347,7 @@ export async function ukHpi(q: Query): Promise<PriceAnswer> {
  *  the collector needs up to 4 tries for the same reason). One quick retry on a failure keeps live answers live: 10 s + 1 s + 15 s stays inside the 40 s deadline. */
 export const liveOptions = { firstMs: 10000, retryMs: 15000, pauseMs: 1000 };
 async function liveJson(place: Place): Promise<unknown> {
-  const init = { headers: { accept: "application/sparql-results+json" } };
+  const init = { headers: { accept: "application/sparql-results+json", "user-agent": UA } };
   try {
     return await fetchJson(queryUrl(place.slug), init, liveOptions.firstMs);
   } catch (e) {
@@ -371,13 +374,13 @@ export function placeRows(place: Place, months: Month[], month: string): DailyRo
   return rows;
 }
 
-export const harvestOptions = { retryDelayMs: 3000, batch: 3, tries: 4 };
+export const harvestOptions = { retryDelayMs: 3000, batch: 1, tries: 4, pauseMs: 400 };
 
 async function monthsFor(place: Place, tries = harvestOptions.tries): Promise<Month[]> {
   let last: unknown;
   for (let i = 0; i < tries; i++) {
     try {
-      return parseMonths(await fetchJson(queryUrl(place.slug), { headers: { accept: "application/sparql-results+json" } }, 20000));
+      return parseMonths(await fetchJson(queryUrl(place.slug), { headers: { accept: "application/sparql-results+json", "user-agent": UA } }, 20000));
     } catch (e) {
       last = e;
       if (i < tries - 1) await new Promise((r) => setTimeout(r, harvestOptions.retryDelayMs * (i + 1)));
@@ -392,6 +395,7 @@ export async function ukHpiHarvest(): Promise<HarvestResult> {
   let failed = 0;
   let firstError = "";
   for (let i = 0; i < PLACES.length; i += harvestOptions.batch) {
+    if (i > 0 && harvestOptions.pauseMs > 0) await new Promise((r) => setTimeout(r, harvestOptions.pauseMs));
     const results = await Promise.allSettled(PLACES.slice(i, i + harvestOptions.batch).map(async (place) => ({ place, months: await monthsFor(place) })));
     for (const r of results) {
       if (r.status === "fulfilled") got.push(r.value);
