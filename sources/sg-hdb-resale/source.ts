@@ -101,6 +101,7 @@ export function sgCutoffMonth(months: number, now = new Date()): string {
   return d.toISOString().slice(0, 7);
 }
 
+const LIVE_RETRY_WAITS_MS = [1500, 3500];
 export const MAX_ROWS = 5000;
 export const PAGE_SIZE = 1000;
 
@@ -108,6 +109,7 @@ export async function sgHomeSales(
   input: { town: string; flat_type?: string; months?: number; baseUrl?: string },
   fetcher?: Fetcher,
   now = new Date(),
+  sleep?: (ms: number) => Promise<void>,
 ): Promise<PriceAnswer> {
   const months = Math.max(1, Math.min(36, Math.round(input.months ?? 12)));
   const resolved = resolveSgTown(input.town);
@@ -128,19 +130,16 @@ export async function sgHomeSales(
     return { ...none, summary: `"${input.town.trim()}" is not an HDB town, so there are no HDB resales to report. Use one of: ${SG_TOWNS.join(", ")}.` };
   }
   const cutoffMonth = sgCutoffMonth(months, now);
-  const fetch = fetcher ?? resolveFetcher({ timeoutMs: 20000 });
+  const fetch = fetcher ?? resolveFetcher({ timeoutMs: 10000 });
   // Newest first; keep paging while a full page still reaches into the window. At most MAX_ROWS resales.
   const got = await collectPages<{ month: string; price: number; area: number }>({
     maxRows: MAX_ROWS,
     pageSize: PAGE_SIZE,
     fetchPage: async (offset, limit) => {
       const url = buildSgUrl(resolved, input.flat_type, limit, offset);
-      let json: unknown;
-      try {
-        json = await fetch(url);
-      } catch {
-        json = await fetch(url); // one retry per page: data.gov.sg sometimes answers 429 or times out, and a stale copy is worse than a second try
-      }
+      // Unfiltered towns need 2-3 pages in a row and data.gov.sg answers 429 to the second or third call; a single immediate retry
+      // was not enough (smoke 3 Nov: Tampines without flat_type came from the library copy). Two short, growing pauses, 10 s per try.
+      const json = await fetchWithBackoff(fetch, url, sleep, LIVE_RETRY_WAITS_MS);
       const raw = (json as any)?.result?.records;
       const rows = parseSgRecords(json);
       const oldest = Array.isArray(raw) && raw.length ? String(raw[raw.length - 1].month ?? "") : "";

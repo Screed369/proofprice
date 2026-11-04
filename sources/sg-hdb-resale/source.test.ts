@@ -204,3 +204,20 @@ test("fetchWithBackoff: HTTP 429 is retried after growing pauses", async () => {
 test("fetchWithBackoff: gives up with the last error", async () => {
   await assert.rejects(fetchWithBackoff(async () => { throw new Error("Source returned HTTP 429"); }, "u", async () => {}, [1, 1]), /429/);
 });
+
+test("sgHomeSales live path: a 429 on page 2 is retried after a short pause instead of dropping to the library copy", async () => {
+  const { sgHomeSales } = await import("./source");
+  const { fetcher } = fakePortal(150);
+  let calls = 0, failed = 0;
+  const waits: number[] = [];
+  const flaky = async (url: string) => {
+    calls++;
+    if (new URL(url).searchParams.get("offset") === "1000" && failed < 2) { failed++; throw new Error("HTTP 429"); }
+    return fetcher(url);
+  };
+  const a = await sgHomeSales({ town: "Tampines", months: 12 }, flaky, new Date("2026-10-14T00:00:00Z"), async (ms) => { waits.push(ms); });
+  assert.equal(failed, 2);
+  assert.deepEqual(waits, [1500, 3500]);
+  assert.ok(calls >= 4);
+  assert.ok(a.sample_size >= 5);
+});
