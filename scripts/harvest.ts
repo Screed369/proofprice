@@ -29,9 +29,16 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
 }
 
 async function main() {
-  const only = process.argv.slice(2).filter((a) => !a.startsWith("-"));
+  // Ids may be space- or comma-separated ("tw-home-sales,tw-rents"): the workflow input is passed through unquoted, and a
+  // comma list used to become ONE unknown id, so the run said "Nothing to harvest" (Depth Builder, 4 Nov 2026).
+  const only = process.argv.slice(2).filter((a) => !a.startsWith("-")).flatMap((a) => a.split(",")).map((a) => a.trim()).filter(Boolean);
   const acceptChanges = process.argv.includes("--accept-changes");
   const targets = SOURCE_PLUGINS.filter((s) => s.harvest && (only.length === 0 || only.includes(s.info.id)));
+  if (only.length) {
+    const known = new Set(SOURCE_PLUGINS.filter((s) => s.harvest).map((s) => s.info.id));
+    const unknown = only.filter((id) => !known.has(id));
+    if (unknown.length) console.log(`Not a harvestable source id: ${unknown.join(", ")}`);
+  }
   if (!targets.length) {
     console.log("Nothing to harvest.");
     return;
