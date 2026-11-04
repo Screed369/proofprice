@@ -37,6 +37,15 @@ test("place matching: exact, town in county, Dublin district, ambiguity, unknown
   assert.equal(matchLocation(m, "Ballyfermot").label, "Ballyfermot, Dublin 10");
 });
 
+test("place matching: 'Dublin 8', 'dublin 8' and 'D8' all reach the Dublin 8 district (gap G20261104-3)", () => {
+  const m = parseRiqMeta(META);
+  const want = matchLocation(m, "Dublin 8");
+  assert.equal(want.label, "Dublin 8");
+  assert.deepEqual(matchLocation(m, "dublin 8"), want);
+  assert.deepEqual(matchLocation(m, "D8"), want);
+  assert.deepEqual(matchLocation(m, " d 8 "), want);
+});
+
 test("query URL asks only for the cells needed", () => {
   const url = new URL(buildRpcUrl(["20253", "20254"], "120500", "04"));
   assert.equal(url.origin + url.pathname, "https://ws.cso.ie/public/api.jsonrpc");
