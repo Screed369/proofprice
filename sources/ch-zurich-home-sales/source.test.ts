@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError } from "../../lib/http";
 import { SOURCE_PLUGINS } from "../../lib/registry";
-import { INFO, normaliseType, parseRows, resolveArea, zurichAnswer, zurichHomeSales } from "./source";
+import { INFO, normaliseType, parseRows, resolveArea, zurichAnswer, zurichHarvest, zurichHarvestRows, zurichHistoryKey, zurichHomeSales } from "./source";
 import { SAMPLE } from "./fixtures";
 
 // Fixture: real rows fetched from data.stadt-zuerich.ch on 2026-10-31.
@@ -69,4 +69,35 @@ test("fetch wrapper asks the CKAN datastore and answers", async () => {
   assert.equal(a.status, "ok");
   assert.match(urls[0], /data\.stadt-zuerich\.ch\/api\/3\/action\/datastore_search\?/);
   assert.match(urls[0], /d9d471e9-11fc-4cca-8242-bc63e8d6ac92/);
+});
+
+test("harvest: one row per publishable area for the newest year, published medians without a count", () => {
+  const h = zurichHarvestRows(recs);
+  assert.equal(h.date, "2025-12-31");
+  assert.equal(h.currency, "CHF");
+  const city = h.rows.find((r) => r.area === "0")!;
+  assert.equal(city.median, 1681598);
+  assert.ok(Number.isNaN(city.n));
+  assert.equal(h.rows.find((r) => r.area === "7")!.median, 2370000);
+  assert.ok(!h.rows.some((r) => r.area === "119" && false));
+  assert.equal(new Set(h.rows.map((r) => r.area)).size, h.rows.length);
+  assert.throws(() => zurichHarvestRows([]), /no publishable/);
+  const suppressed = parseRows(recs).areas; // Rathaus has no publishable 2025 row, so no library row either
+  const rathaus = [...suppressed].find(([, n]) => n === "Rathaus")![0];
+  assert.ok(!h.rows.some((r) => r.area === rathaus));
+});
+
+test("harvest fetch wrapper uses the same CKAN request", async () => {
+  const h = await zurichHarvest({ fetcher: async () => SAMPLE } as any);
+  assert.ok(h.rows.length > 1);
+});
+
+test("historyKey: city and districts only; houses and quarters have no copy", () => {
+  assert.deepEqual(zurichHistoryKey({ town: "Zürich" }), { area: "0", item: "flat", label: "Zürich" });
+  assert.deepEqual(zurichHistoryKey({}), { area: "0", item: "flat", label: "Zürich" });
+  assert.equal(zurichHistoryKey({ town: "Kreis 7" })!.area, "7");
+  assert.equal(zurichHistoryKey({ town: "11" })!.area, "11");
+  assert.equal(zurichHistoryKey({ town: "Altstetten" }), null);
+  assert.equal(zurichHistoryKey({ town: "Kreis 13" }), null);
+  assert.equal(zurichHistoryKey({ town: "Zürich", property_type: "house" }), null);
 });

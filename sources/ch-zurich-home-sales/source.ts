@@ -6,9 +6,9 @@
 import { ckanSearch } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { InputError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
-import { MIN_PUBLISH } from "../../lib/stats";
+import { InputError, SourceError } from "../../lib/http";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { MIN_PUBLISH, NO_COUNT } from "../../lib/stats";
 
 export const SITE = "https://data.stadt-zuerich.ch";
 export const RESOURCE_ID = "d9d471e9-11fc-4cca-8242-bc63e8d6ac92";
@@ -164,4 +164,45 @@ export async function zurichHomeSales(q: AnswerInput & FetchOptions): Promise<Pr
     q,
   );
   return zurichAnswer(res.records, q);
+}
+
+// ---- Stale-if-error copy (library) ----
+export const HARVEST_ITEM = "flat";
+
+/** One library row per area (area = the table's RaumCd: "0" whole city, "7" Kreis 7, "119" Seebach ...) for the newest year the table
+ *  holds. Areas whose newest publishable year is older are left out: a library day describes one year. Published medians, no record count. */
+export function zurichHarvestRows(records: Array<Record<string, any>>): HarvestResult {
+  const { rows } = parseRows(records);
+  if (rows.length === 0) throw new SourceError("Statistik Stadt Zürich returned no publishable condominium medians to collect");
+  const latestYear = rows.reduce((m, r) => Math.max(m, r.year), 0);
+  const out: DailyRow[] = [];
+  const seen = new Set<string>();
+  for (const r of rows) {
+    if (r.year !== latestYear || seen.has(r.code)) continue;
+    seen.add(r.code);
+    out.push({ area: r.code, item: HARVEST_ITEM, n: NO_COUNT, median: r.medianFlat, low: r.medianFlat, high: r.medianFlat, min: r.medianFlat, max: r.medianFlat });
+  }
+  if (!seen.has("0")) throw new SourceError("Statistik Stadt Zürich returned no whole-city median for the newest year");
+  return {
+    date: `${latestYear}-12-31`,
+    currency: "CHF",
+    unit: "per flat",
+    rows: out,
+    note: `Median price per freehold condominium sold in ${latestYear}, ${out.length} areas (city, districts, statistical quarters) with at least ${MIN_PUBLISH} sales and a published median. Published medians, no price range.`,
+  };
+}
+
+export async function zurichHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  const res = await ckanSearch(SITE, { resourceId: RESOURCE_ID, filters: { HAArtLevel1Cd: "22", HASTWECd: "J" }, sort: "Stichtagdatjahr desc", limit: 1000, includeTotal: false }, o);
+  return zurichHarvestRows(res.records);
+}
+
+/** Library key for a request: the whole city or a district (Kreis 1-12). Statistical quarters need the live table, so they have no copy. */
+export function zurichHistoryKey(p: { town?: string; property_type?: string }): { area: string; item: string; label: string } | null {
+  try { normaliseType(p.property_type); } catch { return null; }
+  const key = fold(p.town ?? "");
+  if (CITY_WORDS.includes(key)) return { area: "0", item: HARVEST_ITEM, label: "Zürich" };
+  const k = key.replace(/^(kreis|district|bezirk|quartier|stadtkreis)\s+/, "");
+  if (/^\d{1,2}$/.test(k) && Number(k) >= 1 && Number(k) <= 12) return { area: String(Number(k)), item: HARVEST_ITEM, label: `Kreis ${Number(k)}` };
+  return null;
 }
