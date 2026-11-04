@@ -52,9 +52,22 @@ export interface FetchOptions {
   now?: Date;
 }
 // INE's servers can be slow, and a request with a period code they do not know hangs: we only ever ask for "all periods" (Dim1=T).
-// INE is slow and drops connections from Vercel: two attempts of 15 s (0.5 s apart) stay inside the 40 s answer deadline; a copy from the library follows if both fail.
-// A first attempt of 10 s and one retry keep a failing INE inside ~21 s, so the library copy answers well before the 40 s deadline.
-const defaultFetcher: Fetcher = (url) => retryOnce(() => fetchJson(url, {}, 10000));
+// INE hangs (rather than refusing) when it blocks Vercel's cloud IPs: the 23 Oct and 3 Nov smoke tests took 21 to 26 s to reach the library copy
+// with two attempts of 10 s, beyond the 20 s many agents wait. One attempt of 8 s sends a hanging INE to the library copy in ~8 s; a fast INE
+// answers in 1 to 3 s, and a quick 5xx still gets one retry.
+const LIVE_TIMEOUT_MS = 8000;
+export const defaultFetcher: Fetcher = async (url) => {
+  const started = Date.now();
+  try {
+    return await fetchJson(url, {}, LIVE_TIMEOUT_MS);
+  } catch (err) {
+    // A timeout means INE is hanging: do not wait again. A fast failure (5xx, reset) gets one retry inside the same ~8 s budget.
+    const left = LIVE_TIMEOUT_MS - (Date.now() - started);
+    if (left < 3500) throw err;
+    await new Promise((r) => setTimeout(r, 300));
+    return await fetchJson(url, {}, left - 300);
+  }
+};
 
 // ---------- place names (pure) ----------
 

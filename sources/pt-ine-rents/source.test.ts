@@ -257,3 +257,21 @@ test("ptRents: asks for named quarters first and falls back to all periods only 
   await assert.rejects(ptRents({ town: "Lisboa" }, { fetcher: async (u) => { urls2.push(u); throw new SourceError("Could not reach the official source", "UND_ERR_CONNECT_TIMEOUT"); }, now: NOW }), SourceError);
   assert.equal(urls2.length, 1);
 });
+
+test("pt-ine-rents default fetcher: one quick retry after a fast 5xx, never a second long wait", async () => {
+  const { defaultFetcher } = await import("./source");
+  const real = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls++;
+    if (calls === 1) return new Response("busy", { status: 503 });
+    return new Response(JSON.stringify([{ ok: true }]), { status: 200, headers: { "content-type": "application/json" } });
+  }) as typeof fetch;
+  try {
+    const out = await defaultFetcher("https://www.ine.pt/ine/json_indicador/pindica.jsp?x=1");
+    assert.deepEqual(out, [{ ok: true }]);
+    assert.equal(calls, 2);
+  } finally {
+    globalThis.fetch = real;
+  }
+});
