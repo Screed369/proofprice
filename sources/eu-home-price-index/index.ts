@@ -1,6 +1,6 @@
 // Manifest: official house price index (Eurostat prc_hpi_q) for EU countries that have no national home-sales source here. Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { COUNTRIES, INFO, euHomePriceIndex } from "./source";
+import { COUNTRIES, INFO, euHomePriceIndex, hpiHarvest, hpiHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -25,5 +25,12 @@ export default defineSource({
   serves: (p) => !str(p.town),
   method:
     "Eurostat's quarterly house price index (2015 = 100) of the prices households paid for dwellings, built by each national statistics office from purchase transactions. We pass on the latest published index with its change over a quarter and a year; it is an official index, not a price in money and not a list of sales.",
+  // Stale-if-error copy: the collector stores Eurostat's newest quarterly index for every country once a day (rows dated by the quarter's end).
+  harvest: () => hpiHarvest(),
+  historyKey: (p) => hpiHistoryKey({ country: str(p.country), town: str(p.town), postcode: str(p.postcode) }),
+  referenceDates: true,
+  staleMaxDays: 35,
+  nominalCounts: true,
+  noHistory: "Eurostat house price index: ProofPrice keeps only the newest quarter as a stand-in copy, not a separate history yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the latest index, which carries the previous quarter and the year earlier.",
   handle: (p, ctx) => euHomePriceIndex({ country: String(p.country), baseUrl: ctx.baseUrl }),
 });

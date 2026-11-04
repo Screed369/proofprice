@@ -6,10 +6,11 @@
 // the answer is an official statistic with value = index points, range and sample size null.
 
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
-import { InputError } from "../../lib/http";
+import { InputError, SourceError } from "../../lib/http";
 import { eurostatUrl, fetchEurostat, JsonStatTable, periodRange, previousPeriod, toEurostatGeo } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const INFO: SourceInfo = {
   id: "eu-home-price-index",
@@ -168,4 +169,43 @@ export async function euHomePriceIndex(input: { country: string; baseUrl?: strin
   const window = { lastTimePeriod: WINDOW_PERIODS };
   const table = await fetchEurostat("prc_hpi_q", filters, window, o);
   return hpiAnswer(readHpi(table, country), { country, baseUrl: input.baseUrl, apiUrl: eurostatUrl("prc_hpi_q", filters, window) });
+}
+
+// ---------- daily collector (stale-if-error copy) ----------
+// Once a day: ONE Eurostat request for all 18 countries (last 2 quarters). Each country's newest index is stored dated by the END of its
+// quarter (referenceDates), n = NO_COUNT (Eurostat publishes no record count), the index repeated in low/high/min/max. Only countries that
+// have the newest quarter any country has are stored, so every row of a day describes the same quarter. Index points, never a price in money.
+export const HARVEST_ITEM = "house-price-index";
+
+export function hpiHarvestRows(table: JsonStatTable): HarvestResult {
+  const readings = Object.keys(COUNTRIES).map((c) => readHpi(table, c)).filter((r): r is HpiReading => !!r);
+  if (!readings.length) throw new SourceError("Eurostat returned no house price index to collect");
+  const newest = readings.reduce((a, r) => (r.latest.period > a ? r.latest.period : a), "");
+  const range = periodRange(newest);
+  if (!range) throw new SourceError(`Eurostat returned an unrecognised period: ${newest}`);
+  const rows: DailyRow[] = readings
+    .filter((r) => r.latest.period === newest)
+    .map((r) => {
+      const v = roundTo(r.latest.value, 2);
+      return { area: r.country, item: HARVEST_ITEM, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
+    });
+  return {
+    date: range.to,
+    currency: "INDEX",
+    unit: "index points (2015 = 100)",
+    rows,
+    note: `Eurostat prc_hpi_q, house price index (2015 = 100) for ${newest}, ${rows.length} of ${readings.length} countries with a figure (countries still on an older quarter are left out). Published index values, not counts of records.`,
+  };
+}
+
+export async function hpiHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  const filters = { ...HPI_FILTERS, geo: Object.keys(COUNTRIES).map(toEurostatGeo) };
+  return hpiHarvestRows(await fetchEurostat("prc_hpi_q", filters, { lastTimePeriod: 2 }, o));
+}
+
+/** Library key for a request: the country's national index. Null when a place smaller than the country is named. */
+export function hpiHistoryKey(p: { country?: string; town?: string; postcode?: string }): { area: string; item: string; label: string } | null {
+  if (p.town || p.postcode) return null;
+  const c = (p.country ?? "").trim().toUpperCase();
+  return COUNTRIES[c] ? { area: c, item: HARVEST_ITEM, label: COUNTRIES[c] } : null;
 }

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { parseJsonStat } from "../../lib/adapters";
 import { InputError } from "../../lib/http";
 import { countriesFor, SOURCE_PLUGINS } from "../../lib/registry";
-import { COUNTRIES, euHomePriceIndex, hpiAnswer, HPI_FILTERS, INFO, quarterWords, readHpi, sameQuarterLastYear } from "./source";
+import { COUNTRIES, hpiHarvestRows, hpiHistoryKey, euHomePriceIndex, hpiAnswer, HPI_FILTERS, INFO, quarterWords, readHpi, sameQuarterLastYear } from "./source";
 import * as F from "./fixtures";
 
 // Fixture: real Eurostat response captured 2026-10-20 (see fixtures.ts).
@@ -76,4 +76,29 @@ test("eu-home-price-index: one request for the country, last 6 quarters, and bad
   assert.ok(urls[0].includes("prc_hpi_q?") && urls[0].includes("geo=ES") && urls[0].includes("unit=I15_Q") && urls[0].includes("lastTimePeriod=6"), urls[0]);
   assert.equal(HPI_FILTERS.purchase, "TOTAL");
   await assert.rejects(() => euHomePriceIndex({ country: "IE" }, { fetcher: async () => F.HPI_ALL }), InputError);
+});
+
+test("eu-home-price-index: harvest stores the newest quarter per country from the real fixture, index repeated, no count", () => {
+  const h = hpiHarvestRows(table());
+  assert.equal(h.date, "2026-06-30");
+  assert.equal(h.currency, "INDEX");
+  const es = h.rows.find((r) => r.area === "ES")!;
+  assert.equal(es.item, "house-price-index");
+  assert.equal(es.median, readHpi(table(), "ES")!.latest.value);
+  assert.equal(es.low, es.high);
+  assert.ok(h.rows.length >= 15);
+  assert.ok(h.rows.every((r) => r.median > 0 && Object.keys(COUNTRIES).includes(r.area)));
+});
+
+test("eu-home-price-index: harvest keeps only countries on the newest quarter; empty table throws", () => {
+  const t = table();
+  const fewer = { ...t, rows: t.rows.filter((r) => !(r.geo === "ES" && r.time === "2026-Q2")) };
+  assert.ok(!hpiHarvestRows(fewer).rows.some((r) => r.area === "ES"));
+  assert.throws(() => hpiHarvestRows({ ...t, rows: [] }), /no house price index/);
+});
+
+test("eu-home-price-index: history key is the national index only", () => {
+  assert.deepEqual(hpiHistoryKey({ country: "es" }), { area: "ES", item: "house-price-index", label: "Spain" });
+  assert.equal(hpiHistoryKey({ country: "ES", town: "Madrid" }), null);
+  assert.equal(hpiHistoryKey({ country: "FR" }), null);
 });

@@ -32,6 +32,7 @@ export default defineCategory({
     minDays: 7,
     // items: "<type>:<N>m" (rolling N months), "<type>/month" (monthly), or "<type>:total:<N>m" (Taiwan: total price, rolling N months)
     itemLabel: (item) => {
+      if (item === "house-price-index") return "House price index (2015 = 100, an index not a price in money), latest published quarter";
       if (item === "dwelling-stock-mean") return "Whole dwelling stock, mean price, latest published quarter";
       const parts = item.split(/[:/]/);
       const type = parts[0];
