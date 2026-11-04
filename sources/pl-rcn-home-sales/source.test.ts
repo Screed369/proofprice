@@ -108,6 +108,15 @@ test("plHomeSales: input errors say what to give", async () => {
   await assert.rejects(plHomeSales({ town: "Warszawa", property_type: "house" }), /only flats/);
 });
 
+test("plHomeSales: apartment, flat and mieszkanie are accepted as the flats the register holds; house is still refused", async () => {
+  const f = async () => wrap(Array.from({ length: 10 }, (_, i) => member(i, 700000, 50, "rynekWtorny", "Warszawa")));
+  for (const t of ["apartment", "Flat", "any", "mieszkanie"]) {
+    const a = await plHomeSales({ town: "Warszawa", property_type: t, months: 1, today: "2026-10-20", fetchGml: f });
+    assert.equal(a.status, "ok", t);
+  }
+  await assert.rejects(plHomeSales({ town: "Warszawa", property_type: "house" }), /only flats/);
+});
+
 test("manifest: PL, home-sales, working first example, licence line mentions the unclear status", () => {
   assert.deepEqual(plugin.countries, ["PL"]);
   assert.equal(plugin.category, "home-sales");

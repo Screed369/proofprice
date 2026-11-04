@@ -173,6 +173,10 @@ export function monthsOf(n: number | undefined): number {
   return Math.max(1, Math.min(MAX_MONTHS, Math.round(n)));
 }
 
+/** Every word an agent may use for "a flat": the register holds flats only, so these all get the one figure. */
+export const FLAT_WORDS = new Set(["any", "all", "apartment", "apartments", "flat", "flats", "condo", "condominium", "studio", "mieszkanie", "mieszkania"]);
+export const isFlatType = (t: string): boolean => FLAT_WORDS.has(t.trim().toLowerCase());
+
 const zl = (v: number) => fmtMoney(v, "PLN");
 
 export async function plHomeSales(args: PlHomeArgs): Promise<PriceAnswer> {
@@ -181,7 +185,7 @@ export async function plHomeSales(args: PlHomeArgs): Promise<PriceAnswer> {
     throw new InputError(`Give a city in town: ${PLACES.map((p) => p.label).join(", ")}. Poland's register is read per city county.`);
   }
   if (args.postcode) throw new InputError("Poland: postcode is not supported; give the city as town.");
-  if (args.property_type && args.property_type !== "any") throw new InputError("Poland: only flats are available (property_type any).");
+  if (args.property_type && !isFlatType(args.property_type)) throw new InputError("Poland: only flats are available (property_type apartment or any). Houses are not in the register extract we read.");
   const place = findPlace(town);
   if (!place) throw new InputError(`Give a city from this list in town: ${PLACES.map((p) => p.label).join(", ")}.`);
   const months = monthsOf(args.months);
