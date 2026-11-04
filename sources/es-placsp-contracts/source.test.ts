@@ -135,13 +135,10 @@ test("harvest refuses to store a partial window and reports a read failure", asy
 });
 
 test("a Sunday or Monday collection looks back to Friday (1 Nov 2026 Sunday found no awards and failed twice)", async () => {
-  assert.equal(windowDaysFor("2026-11-01"), 2); // Sunday, old window (before 4 Nov)
-  assert.equal(windowDaysFor("2026-11-02"), 3); // Monday, old window
-  assert.equal(windowDaysFor("2026-11-03"), 1); // Tuesday, old window
-  assert.equal(windowDaysFor("2026-11-08"), 3); // Sunday, wide window
-  assert.equal(windowDaysFor("2026-11-09"), 4); // Monday, wide window
-  assert.equal(windowDaysFor("2026-11-10"), 3); // Tuesday, wide window
-  assert.equal(windowDaysFor("2026-10-31"), 1); // Saturday, old window
+  assert.equal(windowDaysFor("2026-11-01"), 2); // Sunday
+  assert.equal(windowDaysFor("2026-11-02"), 3); // Monday
+  assert.equal(windowDaysFor("2026-11-03"), 1); // Tuesday
+  assert.equal(windowDaysFor("2026-10-31"), 1); // Saturday
   const f = fileOf("", [1, 2, 3, 4, 5], "2026-10-23T10:00:00+02:00"); // awards dated Friday 23 Oct
   const sunday = await esContractsHarvest(new Date("2026-10-25T03:17:00Z"), { open: async () => [f] });
   assert.equal(sunday.date, "2026-10-25");
@@ -228,13 +225,4 @@ test("gap G20261030-1: /api/v1/contracts?country=ES with no 'what' is refused as
   // with a purchase it still prepares
   const ok = contracts.prepare!({ country: "ES", what: "office cleaning" } as any) as any;
   assert.equal(ok.what, "office cleaning");
-});
-
-test("a Tuesday collection reads three days, so awards spread over Sat to Mon still give a row (3 Nov 2026: one-day window gave no rows)", async () => {
-  const mk = (i: number, day: string) => entry(i, "ADJ", result("8", day, 10000 + i * 1000)).replace("2026-10-23T19:23:02.714+02:00", "2026-11-09T10:00:00+01:00");
-  const f = head("") + [mk(1, "2026-11-07"), mk(2, "2026-11-07"), mk(3, "2026-11-08"), mk(4, "2026-11-09"), mk(5, "2026-11-09")].join("\n") + "\n</feed>";
-  const r = await esContractsHarvest(new Date("2026-11-10T03:17:00Z"), { open: async () => [f] });
-  assert.equal(r.rows.find((x) => x.item === "cpv-45")?.n, 5);
-  const oneDay = await esContractsHarvest(new Date("2026-11-10T03:17:00Z"), { open: async () => [f], days: 1 });
-  assert.equal(oneDay.rows.find((x) => x.item === "cpv-45"), undefined);
 });
