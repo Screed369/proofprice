@@ -242,3 +242,33 @@ test("BR: the collector reads the two newest monthly files of each group and ski
     globalThis.fetch = realFetch;
   }
 });
+
+test("br-fuel: a download cut off mid-body is retried, then returns the file", async () => {
+  const { fetchMonth } = await import("./source");
+  let calls = 0;
+  const orig = globalThis.fetch;
+  globalThis.fetch = (async () => {
+    calls++;
+    if (calls < 3) return { status: 200, ok: true, text: async () => { throw new TypeError("terminated"); } } as any;
+    return { status: 200, ok: true, text: async () => "csv-body" } as any;
+  }) as any;
+  try {
+    assert.equal(await fetchMonth(2026, 10, "diesel-gnv", 3, 1), "csv-body");
+    assert.equal(calls, 3);
+  } finally {
+    globalThis.fetch = orig;
+  }
+});
+
+test("br-fuel: a 404 (month not published) is not retried", async () => {
+  const { fetchMonth } = await import("./source");
+  let calls = 0;
+  const orig = globalThis.fetch;
+  globalThis.fetch = (async () => { calls++; return { status: 404, ok: false } as any; }) as any;
+  try {
+    assert.equal(await fetchMonth(2026, 11, "diesel-gnv", 3, 1), null);
+    assert.equal(calls, 1);
+  } finally {
+    globalThis.fetch = orig;
+  }
+});

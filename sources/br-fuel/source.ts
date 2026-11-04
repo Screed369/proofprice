@@ -235,8 +235,7 @@ export function brDailyRows(records: BrRecord[]): HarvestResult {
 
 const UA = "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)";
 
-async function fetchMonth(year: number, month: number, group: AnpGroup): Promise<string | null> {
-  const url = anpFileUrl(year, month, group);
+async function fetchMonthOnce(url: string): Promise<string | null> {
   let res: Response;
   try {
     res = await fetch(url, { headers: { "user-agent": UA, accept: "text/csv,*/*" }, signal: AbortSignal.timeout(240000) });
@@ -245,7 +244,28 @@ async function fetchMonth(year: number, month: number, group: AnpGroup): Promise
   }
   if (res.status === 404) return null; // the month is not published yet
   if (!res.ok) throw new SourceError(`ANP returned HTTP ${res.status}`, url, res.status);
-  return await res.text();
+  try {
+    return await res.text();
+  } catch (e: any) {
+    // The connection was cut while the big file was coming down ("terminated"). Worth another try.
+    throw new SourceError("ANP file download was cut off", String(e?.cause?.code ?? e?.message ?? e));
+  }
+}
+
+/** One monthly file, retried when the download is cut off or the server has a hiccup (the files are 4-9 MB). */
+export async function fetchMonth(year: number, month: number, group: AnpGroup, attempts = 3, pauseMs = 5000): Promise<string | null> {
+  const url = anpFileUrl(year, month, group);
+  let last: unknown;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await fetchMonthOnce(url);
+    } catch (e: any) {
+      last = e;
+      if (typeof e?.status === "number" && e.status >= 400 && e.status < 500) throw e;
+      if (i < attempts - 1) await new Promise((r) => setTimeout(r, pauseMs * (i + 1)));
+    }
+  }
+  throw last;
 }
 
 /** Daily collector: the two newest monthly files of each product group (so a week that straddles a month end is whole). */
@@ -253,12 +273,22 @@ export async function brHarvest(now = new Date()): Promise<HarvestResult> {
   const records: BrRecord[] = [];
   for (const group of ["gasolina-etanol", "diesel-gnv"] as AnpGroup[]) {
     let found = 0;
+    let lastErr: unknown = null;
     for (const { year, month } of candidateMonths(now)) {
-      const text = await fetchMonth(year, month, group);
+      let text: string | null;
+      try {
+        text = await fetchMonth(year, month, group);
+      } catch (e) {
+        // The newest month may be unreachable while an older one still works: keep what we can read, fail only with nothing.
+        if (found > 0 || lastErr) throw e;
+        lastErr = e;
+        continue;
+      }
       if (text === null) continue;
       for (const r of parseAnpCsv(text)) records.push(r);
       if (++found === 2) break;
     }
+    if (!found && lastErr) throw lastErr;
     if (!found) throw new SourceError(`No ANP monthly file found for ${group} in the last three months`);
   }
   return brDailyRows(records);
