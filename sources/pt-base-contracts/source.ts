@@ -61,11 +61,13 @@ export function windowStart(today: string, months = WINDOW_MONTHS): string {
   return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() - months, d.getUTCDate())).toISOString().slice(0, 10);
 }
 
-/** "23/02/2026" to "2026-02-23", or "" when it is not a real date. */
+/** "23/02/2026" (old file) or "2026-02-23" (file from Oct 2026) to "2026-02-23", or "" when it is not a real date. */
 export function isoDate(s: unknown): string {
-  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(String(s ?? "").trim());
-  if (!m) return "";
-  const iso = `${m[3]}-${m[2]}-${m[1]}`;
+  const t = String(s ?? "").trim();
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(t);
+  const n = /^(\d{4})-(\d{2})-(\d{2})$/.exec(t);
+  if (!m && !n) return "";
+  const iso = m ? `${m[3]}-${m[2]}-${m[1]}` : t;
   return new Date(iso + "T00:00:00Z").toISOString().slice(0, 10) === iso ? iso : "";
 }
 
@@ -77,7 +79,12 @@ export function contractOf(r: any, from: string, to: string): PtContract | null 
   if (!Number.isFinite(value) || value < MIN_VALUE || value > MAX_VALUE) return null;
   const date = isoDate(r.dataCelebracaoContrato);
   if (!date || date < from || date > to) return null;
-  const first = Array.isArray(r.cpv) ? String(r.cpv[0] ?? "") : String(r.cpv ?? "");
+  // Old file: cpv ["72210000-0 - text"]. File from Oct 2026: CPV [{cpvID: "72210000-0", CPVObjeto: "Principal"}], main code first.
+  let first = "";
+  if (Array.isArray(r.CPV) && r.CPV.length) {
+    const main = r.CPV.find((c: any) => c && c.CPVObjeto === "Principal") ?? r.CPV[0];
+    first = String(main?.cpvID ?? "");
+  } else first = Array.isArray(r.cpv) ? String(r.cpv[0] ?? "") : String(r.cpv ?? "");
   const cpv = first.split(" - ")[0].replace(/\D/g, "").slice(0, 8);
   if (cpv.length !== 8) return null;
   return { key: r.idcontrato ? String(r.idcontrato) : "", date, value, cpv };

@@ -77,11 +77,12 @@ test("the dataset listing gives the yearly zip files only, newest first", () => 
   assert.deepEqual(yearlyFiles(null), []);
 });
 
-test("isoDate reads dd/mm/yyyy and refuses everything else", () => {
+test("isoDate reads dd/mm/yyyy and yyyy-mm-dd and refuses everything else", () => {
   assert.equal(isoDate("23/02/2026"), "2026-02-23");
   assert.equal(isoDate("31/02/2026"), "");
   assert.equal(isoDate(""), "");
-  assert.equal(isoDate("2026-02-23"), "");
+  assert.equal(isoDate("2026-02-23"), "2026-02-23");
+  assert.equal(isoDate("23.02.2026"), "");
 });
 
 test("the splitter reads a compact JSON array across tiny pieces, strings with braces and escaped quotes, and stops at the end", () => {
@@ -114,6 +115,13 @@ test("contractOf: keeps real contracts; drops placeholders, entry errors, undate
   assert.equal(contractOf(rec("5", { dataCelebracaoContrato: "11/10/2021" }), f, t), null);
   assert.equal(contractOf(rec("5", { dataCelebracaoContrato: "01/01/2027" }), f, t), null);
   assert.equal(contractOf(rec("5", { dataCelebracaoContrato: "" }), f, t), null);
+  assert.equal(contractOf(rec("5", { cpv: [] }), f, t), null);
+  // File format from 29 Oct 2026: ISO dates and a CPV array of objects (main code marked "Principal").
+  const nu = { idcontrato: "9", dataCelebracaoContrato: "2026-02-03", precoContratual: 15525, CPV: [{ cpvID: "03220000-9", CPVObjeto: "Secundário" }, { cpvID: "30213100-6", CPVObjeto: "Principal" }] };
+  assert.deepEqual(contractOf(nu, f, t), { key: "9", date: "2026-02-03", value: 15525, cpv: "30213100" });
+  assert.equal(contractOf({ ...nu, CPV: [] }, f, t), null);
+  assert.equal(isoDate("2026-02-30"), "");
+  assert.equal(isoDate("2026-02-03"), "2026-02-03");
   assert.equal(contractOf(rec("5", { cpv: [] }), f, t), null);
   assert.equal(contractOf(rec("5", { cpv: ["NC"] }), f, t), null);
   assert.equal(contractOf(null, f, t), null);
