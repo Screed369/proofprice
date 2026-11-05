@@ -283,7 +283,7 @@ export function buildLlmsTxt(baseUrl: string): string {
 > Real prices actually paid, for AI agents. Ask "what did people actually pay for X, here, recently?" and get a range (median, 10th–90th percentile), sample size, period, confidence, source and licence. Built from official open data. Aggregates only. Check a price before you pay: give a proposed price and get a verdict against the recorded evidence.
 
 ## Check a price before you pay
-- MCP tool ${CHECK_TOOL}, or GET ${baseUrl}${CHECK_REST}: give category, country, the category's own parameters and price (optional: currency, unit, includes).
+- MCP tool ${CHECK_TOOL}, or GET ${baseUrl}${CHECK_REST}: give category, country, the category's own parameters and price (optional: currency, unit, includes, negotiate=buyer|seller for evidence to quote when haggling).
 - Returns a verdict (within_typical_range, above_typical_range, below_typical_range, about_average, above_average, below_average or cannot_judge), where the price sits, the reasons, what is missing, one quotable sentence and the full evidence answer. Currencies and units are never converted: a mismatch is cannot_judge.
 - Example: ${checkExample}
 - Every verdict comes with a Signed Price Proof another agent can verify for free (see "Signed Price Proofs" below).

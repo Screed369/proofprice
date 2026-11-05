@@ -124,6 +124,20 @@ export const checkResultSchema = z
       .describe("The price check as understood, echoed back. currency and unit are null when not given (the evidence currency and unit were assumed)."),
     answer: priceAnswerSchema.describe("The full evidence answer (the same answer the category tool returns), embedded so the reasoning can be kept with its source, licence and audit-trail fields."),
     notice: z.string(),
+    negotiation: z
+      .looseObject({
+        stance: z.enum(["buyer", "seller"]),
+        leverage: z.enum(["none", "some", "strong"]).describe("Whether the evidence gives this side an argument: strong = the price is beyond the typical range against them, some = beyond the median, none = otherwise."),
+        asked_price: number,
+        gap_to_median: nullableNumber,
+        gap_to_median_percent: nullableNumber,
+        points: z.array(z.looseObject({ label: z.string(), value: number, asked_vs_point_percent: number })).describe("The evidence figures to quote (10th percentile, median, 90th percentile, or one official average)."),
+        talking_points: z.array(z.string()).describe("Quotable evidence sentences with source and period."),
+        cautions: z.array(z.string()),
+      })
+      .nullable()
+      .optional()
+      .describe("Only present when negotiate=buyer|seller was given. Null when the check could not judge."),
   })
   .describe("A price check: a verdict on a proposed price against recorded evidence, where it sits, why, what is missing, and the full evidence answer. Deterministic: no benchmark is ever invented.");
 

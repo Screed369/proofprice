@@ -11,6 +11,8 @@ import { InputError } from "./http";
 import type { CategoryPlugin, HandleContext, Params } from "./plugin";
 import { exampleUrls, pickSource, toolShape, paramSchemas } from "./registry";
 import { joinAnd } from "./text";
+import { buildNegotiation, parseStance } from "./negotiation";
+import type { Negotiation, Stance } from "./negotiation";
 
 export type Verdict =
   | "within_typical_range"
@@ -41,6 +43,8 @@ export interface CheckResult {
   input: { category: string; country: string; price: number; currency: string | null; unit: string | null; includes: string | null };
   answer: PriceAnswer;
   notice: string;
+  /** Only when the check was asked with negotiate=buyer|seller: the same evidence as numbers to quote across the table. */
+  negotiation?: Negotiation | null;
 }
 
 export const CHECK_TOOL = "pricepaid_check_price";
@@ -55,7 +59,7 @@ export const OLD_POSTED_DAYS = 30;
 export const OLD_DAYS = 366;
 
 /** Words that are not parameters of the category: they belong to the check itself. */
-export const CHECK_RESERVED = ["category", "price", "currency", "unit", "includes"];
+export const CHECK_RESERVED = ["category", "price", "currency", "unit", "includes", "negotiate"];
 
 // ---------- resolving the category ----------
 
@@ -194,6 +198,7 @@ export interface JudgeInput {
   currency?: string | null;
   unit?: string | null;
   includes?: string | null;
+  negotiate?: Stance | null;
 }
 
 function cannot(answer: PriceAnswer, input: JudgeInput, summary: string, reasons: string[], missing: string[]): CheckResult {
@@ -222,6 +227,14 @@ function echo(input: JudgeInput): CheckResult["input"] {
 
 /** Compare a price with an evidence answer. Pure: same inputs, same output (today only matters for the old-period flag). */
 export function judge(answer: PriceAnswer, input: JudgeInput, today: Date = new Date()): CheckResult {
+  const res = judgeCore(answer, input, today);
+  if (!input.negotiate) return res;
+  const p = answer.price;
+  const line = p ? `Source: ${answer.source.name}, ${answer.source.publisher}; period ${periodText(answer)}${answer.sample_size ? `; ${answer.sample_size} records` : ""}.` : "";
+  return { ...res, negotiation: buildNegotiation(input.negotiate, input.price, res.position, answer, line) };
+}
+
+function judgeCore(answer: PriceAnswer, input: JudgeInput, today: Date): CheckResult {
   const reasons: string[] = [];
   const missing: string[] = [];
   const type = answer.price_type;
@@ -375,6 +388,13 @@ export function splitCheckArgs(raw: Record<string, unknown>): { fixed: Record<st
   return { fixed, params };
 }
 
+function parseNegotiate(raw: unknown): Stance | null {
+  if (raw === undefined || raw === null || raw === "") return null;
+  const s = parseStance(raw);
+  if (!s) throw new InputError("negotiate must be \"buyer\" or \"seller\": which side of the table the agent is on.");
+  return s;
+}
+
 export async function runCheck(raw: Record<string, unknown>, deps: CheckDeps, ctx: HandleContext = {}, today: Date = new Date()): Promise<CheckResult> {
   const { fixed, params } = splitCheckArgs(raw);
   const cat = resolveCategory(deps.categories, fixed.category);
@@ -401,6 +421,7 @@ export async function runCheck(raw: Record<string, unknown>, deps: CheckDeps, ct
       currency: fixed.currency !== undefined ? String(fixed.currency) : null,
       unit: fixed.unit !== undefined ? String(fixed.unit) : null,
       includes: fixed.includes !== undefined ? String(fixed.includes) : null,
+      negotiate: parseNegotiate(fixed.negotiate),
     },
     today,
   );
@@ -433,6 +454,7 @@ export function checkToolShape(categories: CategoryPlugin[]): Record<string, z.Z
     currency: z.string().optional().describe("ISO 4217 currency code of the price (for example EUR). Defaults to the evidence currency. A different currency gives cannot_judge: ProofPrice never converts."),
     unit: z.string().optional().describe("What the price is per, for example 'per month', 'per litre', 'per home'. Defaults to the evidence unit. A different unit gives cannot_judge."),
     includes: z.string().optional().describe("What the price includes or excludes, as free text (for example 'VAT included, delivery excluded'). Echoed back as a caution; it is not used to adjust the figure."),
+    negotiate: z.enum(["buyer", "seller"]).optional().describe("Optional. Which side of the table you are on. Adds a negotiation block: the median and 10th/90th percentile as numbers to quote, the gap to the median, which side the evidence favours (leverage none/some/strong) and quotable evidence sentences. Evidence only, never advice on what to offer."),
   };
   for (const [name, notes] of byName) {
     if (name in shape || name === "country") continue;
