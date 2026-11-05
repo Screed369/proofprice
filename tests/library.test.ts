@@ -112,3 +112,12 @@ test("honesty: an official statistic stores no record count, and history never s
   assert.ok(h.series.every((r) => r.sample_size === null), "history sample_size is null for old and new rows alike");
   assert.match(String(h.sample_size_note), /null/);
 });
+
+test("failingDays: days since last good run, null when healthy or never ok", async () => {
+  const { failingDays } = await import("../lib/library/store");
+  const now = new Date("2026-11-05T12:00:00Z");
+  assert.equal(failingDays({ last_error: "boom", last_ok_at: "2026-11-02T03:00:00Z" }, now), 3);
+  assert.equal(failingDays({ last_error: "boom", last_ok_at: "2026-11-05T03:00:00Z" }, now), 0);
+  assert.equal(failingDays({ last_error: null, last_ok_at: "2026-11-02T03:00:00Z" }, now), null);
+  assert.equal(failingDays({ last_error: "boom", last_ok_at: null }, now), null);
+});

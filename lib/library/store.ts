@@ -211,6 +211,15 @@ export function libraryStatus(): SourceMeta[] {
     .sort((a, b) => a.source.localeCompare(b.source));
 }
 
+/** Whole days a collector has been failing: days since its last good run, or null when it is not failing (or never succeeded).
+ *  One day means a one-night upstream hiccup; 3 or more is an outage worth a person's attention. */
+export function failingDays(m: Pick<SourceMeta, "last_error" | "last_ok_at">, now: Date = new Date()): number | null {
+  if (!m.last_error || !m.last_ok_at) return null;
+  const ok = Date.parse(m.last_ok_at);
+  if (Number.isNaN(ok)) return null;
+  return Math.max(0, Math.floor((now.getTime() - ok) / 86_400_000));
+}
+
 // ---------- outside check results (library/_crosscheck/, written only by scripts/crosscheck.ts on GitHub Actions) ----------
 // One CSV per source: our figure next to the publisher's headline figure, one row per area and release, and a meta.json with the
 // state of every source's last run. The folder name starts with "_" so it is never mistaken for a source (libraryStatus skips it).

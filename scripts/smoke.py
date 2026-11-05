@@ -316,7 +316,7 @@ def main() -> int:
             lib = json.loads(lib_raw)
             errs = [s for s in lib.get("sources", []) if s.get("last_error")]
             missing = lib.get("missing", [])
-            lib_note = f"library: {len(errs)} collector error(s)" + (": " + ", ".join(str(s.get("source")) for s in errs) if errs else "")
+            lib_note = f"library: {len(errs)} collector error(s)" + (": " + ", ".join(str(s.get("source")) + (f" ({s['failing_days']}d)" if s.get("failing_days") is not None else "") for s in errs) if errs else "")
             if missing:
                 lib_note += f"; not yet collected: {', '.join(missing)}"
         except Exception:

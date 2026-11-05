@@ -1,6 +1,6 @@
 // GET /api/v1/library  What the price library holds: per source, first and last day collected,
-// number of days, last collection time and last error. Used by the Monitor worker.
-import { libraryStatus } from "../../../../lib/library/store";
+// number of days, last collection time, last error and failing_days (whole days since the last good run, null when healthy). Used by the Monitor worker.
+import { failingDays, libraryStatus } from "../../../../lib/library/store";
 import { SOURCE_PLUGINS } from "../../../../lib/registry";
 import { json } from "../../../../lib/route-helpers";
 
@@ -14,7 +14,7 @@ export async function GET() {
     service: "ProofPrice price library",
     what: "Daily aggregate snapshots (median, 10th–90th percentile, count per area and item) of official price data. Aggregates only.",
     collected_sources: collected,
-    sources: status,
+    sources: status.map((m) => ({ ...m, failing_days: failingDays(m) })),
     missing: collected.filter((id) => !status.find((m) => m.source === id)),
   });
 }
