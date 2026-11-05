@@ -20,6 +20,8 @@ export default defineSource({
     // PT petrol95/petrol98/diesel/lpg/methane are answered by DGEG station prices (pt-dgeg-fuel); the bulletin now only stands in for it (fallbackFor).
     if (c === "PT" && (!p.fuel || ["petrol95", "petrol98", "diesel", "lpg", "methane"].includes(String(p.fuel)))) return false;
     if (c === "FI" && ["petrol95", "diesel"].includes(String(p.fuel ?? ""))) return false;
+    // LU E10 (monthly, not in the bulletin) is answered by lu-statec-fuel; keep in step with that source's serves() (platform change declared by the Quality Auditor, fix/audit-lu-fuel).
+    if (c === "LU" && String(p.fuel ?? "") === "e10" && String(p.tax ?? "") !== "without") return false;
     return true;
   },
   paramNotes: {

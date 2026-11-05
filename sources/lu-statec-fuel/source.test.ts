@@ -84,3 +84,12 @@ test("lu-statec-fuel: serves() takes only E10 for LU, never tax=without", async 
   // once eu-oil-bulletin excludes LU+e10, add: assert.equal(findSource(...).info.id, "lu-statec-fuel").
   void findSource;
 });
+
+import bulletin from "../eu-oil-bulletin/index";
+import luManifest from "./index";
+test("routing: LU e10 goes to the STATEC source, LU diesel stays with the weekly bulletin", () => {
+  assert.equal(bulletin.serves!({ country: "LU", fuel: "e10" }), false);
+  assert.equal(luManifest.serves!({ country: "LU", fuel: "e10" }), true);
+  assert.equal(bulletin.serves!({ country: "LU", fuel: "diesel" }), true);
+  assert.equal(luManifest.serves!({ country: "LU", fuel: "diesel" }), false);
+});
