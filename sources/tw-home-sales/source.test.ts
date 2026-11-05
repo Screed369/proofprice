@@ -647,3 +647,12 @@ test("backfill: the portal's placeholder zips for the earliest quarters (manifes
   assert.ok(bigNoSales.length >= 2000);
   await assert.rejects(twBackfill("2012-01-01", "2012-12-31", { ...deps, download: async () => bigNoSales }), /holds no sales files/);
 });
+
+import { describeFetchError } from "./moi";
+test("describeFetchError keeps the cause code behind 'fetch failed'", () => {
+  const e: any = new TypeError("fetch failed");
+  e.cause = { code: "UND_ERR_CONNECT_TIMEOUT", message: "Connect Timeout Error" };
+  assert.equal(describeFetchError(e), "fetch failed (UND_ERR_CONNECT_TIMEOUT Connect Timeout Error)");
+  assert.equal(describeFetchError(new Error("boom")), "boom");
+  assert.equal(describeFetchError("x"), "x");
+});

@@ -297,6 +297,16 @@ export const harvestOptions = { retryDelayMs: 3000, timeoutMs: 240_000 };
 
 const cache = new Map<string, Promise<Buffer>>();
 
+/** Node's fetch hides the real reason behind "fetch failed" (the code is on err.cause, e.g. UND_ERR_CONNECT_TIMEOUT, ECONNRESET,
+ *  ENOTFOUND). Keep it, so a collector error in meta.json says whether the host dropped GitHub's address or something else broke. */
+export function describeFetchError(e: any): string {
+  const msg = String(e?.message ?? e);
+  const c = e?.cause;
+  const code = c?.code ?? c?.errno;
+  const detail = [code, c?.message && c.message !== msg ? c.message : ""].filter(Boolean).join(" ");
+  return detail ? `${msg} (${detail})` : msg;
+}
+
 /**
  * Download a URL (retrying), keeping the result for the rest of the process: tw-home-sales and tw-rents read the same release
  * zips, and the collector runs both in one process, so each zip is fetched once.
@@ -312,7 +322,7 @@ export function download(url: string, tries = 3): Promise<Buffer> {
         if (res.ok) return Buffer.from(await res.arrayBuffer());
         last = `HTTP ${res.status}`;
       } catch (e: any) {
-        last = String(e?.message ?? e);
+        last = describeFetchError(e);
       }
       if (i < tries - 1) await new Promise((r) => setTimeout(r, harvestOptions.retryDelayMs * (i + 1)));
     }
