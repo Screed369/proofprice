@@ -1,7 +1,7 @@
 // Manifest: Switzerland rents (BFS average net rent by canton and length of tenancy). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, chRents } from "./source";
+import { INFO, chHarvest, chHistoryKey, chRents } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -39,4 +39,12 @@ export default defineSource({
       tenancy_length: str(p.tenancy_length),
       baseUrl: ctx.baseUrl,
     }),
+  // Stale-if-error copy: the collector stores BFS's newest yearly averages (all cantons, all tenancy lengths) once a day.
+  harvest: () => chHarvest(),
+  historyKey: (p) =>
+    chHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), bedrooms: num(p.bedrooms), tenancy_length: str(p.tenancy_length) }),
+  referenceDates: true,
+  staleMaxDays: 35,
+  nominalCounts: true,
+  noHistory: "Switzerland: BFS publishes one average per canton and tenancy length each year, and ProofPrice keeps no separate history of it yet. Ask pricepaid_rent_prices (/api/v1/rent) for the newest figure.",
 });

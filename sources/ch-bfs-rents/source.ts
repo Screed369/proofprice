@@ -9,7 +9,8 @@
 import { InputError, SourceError } from "../../lib/http";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { readXlsx, Sheet } from "../../categories/rent/xlsx";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const ASSET_URL = "https://dam-api.bfs.admin.ch/hub/api/dam/assets/36398542/master";
 export const DATASET_URL = "https://www.bfs.admin.ch/asset/de/je-d-09.03.03.64";
@@ -238,4 +239,66 @@ export async function chRents(input: ChInput): Promise<PriceAnswer> {
   matchCanton(input.town);
   matchTenancy(input.tenancy_length);
   return chAnswer(await loadTable(), input);
+}
+
+// ---------- daily collector (stale-if-error copy) ----------
+// BFS publishes one workbook a year, but its download host sometimes times out from Vercel. Once a day the collector (GitHub Actions)
+// stores the newest year's published average for Switzerland and every canton, for every tenancy length. Rows are dated by the last
+// day of the reference year and n is NO_COUNT (BFS gives an average and a confidence interval, no record count), so the copy stands
+// in for a live answer for up to 35 days after the last successful collection (referenceDates).
+
+/** Library item key per tenancy length (readable: the stale answer prints it). */
+export const HARVEST_ITEMS: Record<TenancyKey, string> = {
+  any: "average net rent, all tenancies",
+  new_build: "average net rent, new-build homes",
+  new_let: "average net rent, new lets of older homes",
+  "2_5y": "average net rent, tenancies of 2 to 5 years",
+  "6_10y": "average net rent, tenancies of 6 to 10 years",
+  "11_20y": "average net rent, tenancies of 11 to 20 years",
+  "21plus": "average net rent, tenancies of 21 years or more",
+};
+
+/** Pure: one row per canton (code, "CH" for Switzerland) and tenancy length that BFS publishes. */
+export function harvestFromTable(table: Table): HarvestResult {
+  const rows: DailyRow[] = [];
+  for (const r of table.rows) {
+    const canton = CANTONS.find((c) => c.de === r.name);
+    const area = r.name === "Schweiz" ? "CH" : canton?.code;
+    if (!area) continue;
+    for (const t of TENANCIES) {
+      const v = r.cells[t.key].rent;
+      if (v === null) continue; // fewer than 5 observations: not published
+      rows.push({ area, item: HARVEST_ITEMS[t.key], n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+    }
+  }
+  if (!rows.some((r) => r.area === "CH")) throw new SourceError("The BFS table gave no figure for Switzerland to collect.");
+  return {
+    date: `${table.year}-12-31`,
+    currency: "CHF",
+    unit: "per month",
+    rows,
+    note: `BFS Strukturerhebung table T 09.03.03.64, year ${table.year}: average monthly net rent (without heating and service charges) of tenant and co-operative homes for Switzerland and ${new Set(rows.map((r) => r.area)).size - 1} cantons by length of tenancy. Published averages, not counts of records (BFS publishes no record count).`,
+  };
+}
+
+export async function chHarvest(): Promise<HarvestResult> {
+  clearCache();
+  return harvestFromTable(await loadTable());
+}
+
+/** Library key for a request, or null when the copy cannot answer it (a bedroom or type split, a postcode, an unknown canton). */
+export function chHistoryKey(p: { town?: string; postcode?: string; property_type?: string; bedrooms?: number; tenancy_length?: string }): { area: string; item: string; label: string } | null {
+  if (p.bedrooms !== undefined && p.bedrooms !== null) return null;
+  if (p.property_type !== undefined && p.property_type !== "any" && p.property_type.trim() !== "") return null;
+  if (p.postcode && !p.town) return null;
+  try {
+    const name = matchCanton(p.town);
+    const ten = matchTenancy(p.tenancy_length);
+    const canton = CANTONS.find((c) => c.de === name);
+    return name === "Schweiz"
+      ? { area: "CH", item: HARVEST_ITEMS[ten.key], label: "Switzerland" }
+      : { area: canton!.code, item: HARVEST_ITEMS[ten.key], label: `canton ${name}` };
+  } catch {
+    return null;
+  }
 }

@@ -137,3 +137,55 @@ test("fetching: reads the workbook once, caches it, and a bad request does not d
   }
   assert.ok(body.length > 0);
 });
+
+import { chHarvest, chHistoryKey, harvestFromTable } from "./source";
+
+test("harvest: one row per canton and tenancy length, X cells skipped, dated by the year end, no made-up count", () => {
+  const h = harvestFromTable(table());
+  assert.equal(h.date, "2024-12-31");
+  assert.equal(h.currency, "CHF");
+  assert.equal(h.unit, "per month");
+  const ch = h.rows.find((r) => r.area === "CH" && r.item.endsWith("all tenancies"))!;
+  assert.equal(ch.median, 1485);
+  assert.ok(Number.isNaN(ch.n)); // NO_COUNT
+  const zh = h.rows.find((r) => r.area === "ZH" && r.item.endsWith("new-build homes"))!;
+  assert.equal(zh.median, 2254);
+  assert.ok(!h.rows.some((r) => r.area === "GL" && r.item.endsWith("new-build homes"))); // Glarus: X
+  assert.ok(h.rows.some((r) => r.area === "GE"));
+});
+
+test("harvest: refuses a table without Switzerland", () => {
+  const t = table();
+  assert.throws(() => harvestFromTable({ ...t, rows: t.rows.filter((r) => r.name !== "Schweiz") }), /no figure for Switzerland/);
+});
+
+test("historyKey: canton and tenancy length map to the library rows; unsupported splits give null", () => {
+  assert.deepEqual(chHistoryKey({}), { area: "CH", item: "average net rent, all tenancies", label: "Switzerland" });
+  assert.equal(chHistoryKey({ town: "Zurich" })!.area, "ZH");
+  assert.equal(chHistoryKey({ town: "Geneva", tenancy_length: "new_let" })!.item, "average net rent, new lets of older homes");
+  assert.equal(chHistoryKey({ bedrooms: 2 }), null);
+  assert.equal(chHistoryKey({ property_type: "apartment" }), null);
+  assert.equal(chHistoryKey({ postcode: "8001" }), null);
+  assert.equal(chHistoryKey({ town: "Winterthur" }), null);
+  // every key harvest writes is a key a request can ask for
+  const h = harvestFromTable(table());
+  const items = new Set(h.rows.map((r) => r.item));
+  for (const k of ["any", "new_build", "new_let", "2_5y", "6_10y", "11_20y", "21plus"]) assert.ok(items.has(chHistoryKey({ tenancy_length: k })!.item));
+});
+
+test("chHarvest downloads the workbook fresh (cache cleared)", async () => {
+  const realFetch = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => { calls++; return new Response(book(), { status: 200 }); }) as any;
+  const saved = { ...fetchOptions };
+  try {
+    clearCache();
+    // table() uses minRows 5, the live parser expects 20: a 7-row fixture must be refused with the layout message
+    await assert.rejects(() => chHarvest(), /Only 7 rows/);
+    assert.equal(calls, 1);
+  } finally {
+    globalThis.fetch = realFetch;
+    Object.assign(fetchOptions, saved);
+    clearCache();
+  }
+});
