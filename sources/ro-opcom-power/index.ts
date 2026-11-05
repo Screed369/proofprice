@@ -1,6 +1,6 @@
 // Manifest: day-ahead wholesale electricity for Romania (OPCOM, euro per MWh, 15-minute prices). Logic lives in ./source.ts.
 import { defineSource, num } from "../../lib/plugin";
-import { INFO, opcomHarvest, opcomHistoryKey, opcomSpot } from "./source";
+import { INFO, opcomSpot } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -18,6 +18,6 @@ export default defineSource({
   method:
     "Romania wholesale power: the median and 10th-90th percentile of the 15-minute day-ahead clearing price (euro per MWh) over the last days, from the OPCOM Day-Ahead Market results. Exchange prices, not household bills.",
   handle: (p, ctx) => opcomSpot({ days: num(p.lookback_days), baseUrl: ctx.baseUrl }),
-  harvest: () => opcomHarvest(),
-  historyKey: (p) => opcomHistoryKey(String(p.country ?? "")),
+  // No harvest()/historyKey(): opcom.ro answers HTTP 403 to GitHub Actions runners (checked 4-5 Nov 2026), so the daily
+  // collector only produced an error every night. Live answers from Vercel work. harvest helpers stay exported in source.ts.
 });
