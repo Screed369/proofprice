@@ -13,7 +13,7 @@ import { InputError, SourceError } from "../../lib/http";
 import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 import { exampleWords, ItemDef, matchItem } from "../../categories/groceries/items";
 import {
-  CubeDimension, CubeMember, DataSeries, Poster, changePercent, coordinate, dimension, latestPeriods, loadCubeMeta, memberByName, monthOf, monthRange,
+  CubeDimension, CubeMember, DataSeries, Poster, wdsPost, changePercent, coordinate, dimension, latestPeriods, loadCubeMeta, memberByName, monthOf, monthRange,
   monthWords, monthsBehind, newestUsable, roundTo, shiftMonth, usable,
 } from "../_ca-statcan/wds";
 import { OPEN_LICENCE_TEXT, OPEN_LICENCE_URL, openLicenceAttribution, openLicenceNotice } from "../_ca-statcan/licence";
@@ -467,7 +467,25 @@ export function pricesHarvestRows(series: { region: string; code: string; data: 
   };
 }
 
-export async function caPricesHarvest(post?: Poster): Promise<HarvestResult> {
+/** The daily collector asks Statistics Canada about 50 times in a row from a shared GitHub Actions address; WDS answers 409 (or 429/5xx)
+ *  when that address is busy (library/ca-statcan-prices last_error "Source returned HTTP 409", 4 Nov). Wait and ask again, up to 5 tries. */
+export function patientPoster(base: Poster, sleep: (ms: number) => Promise<void> = (ms) => new Promise((r) => setTimeout(r, ms)), waitMs = 3000): Poster {
+  return async (path, body) => {
+    for (let attempt = 1; ; attempt++) {
+      try {
+        return await base(path, body);
+      } catch (err: any) {
+        const st = Number(err?.status);
+        const busy = st === 409 || st === 429 || st >= 500 || /timed out|Could not reach/i.test(String(err?.message));
+        if (!busy || attempt >= 5) throw err;
+        await sleep(waitMs * attempt);
+      }
+    }
+  };
+}
+
+export async function caPricesHarvest(postIn?: Poster): Promise<HarvestResult> {
+  const post: Poster = postIn ?? patientPoster(wdsPost);
   const meta = await loadCubeMeta(PRODUCT_ID, post);
   const geo = dimension(meta, 1, "Geography");
   const products = dimension(meta, 2, "Products");

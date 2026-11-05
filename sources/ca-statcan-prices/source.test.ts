@@ -112,3 +112,28 @@ test("history key: item words and regions resolve offline; unknown items give no
   assert.equal(caPricesHistoryKey({ item: "unobtainium" }, areas), null);
   assert.ok(manifest.harvest && manifest.historyKey && manifest.referenceDates && manifest.nominalCounts);
 });
+
+test("patientPoster retries a busy Statistics Canada (409 on 4 Nov 2026), not a 404, and gives up after 5 tries", async () => {
+  const { patientPoster } = await import("./source");
+  const { SourceError } = await import("../../lib/http");
+  let calls = 0;
+  const waits: number[] = [];
+  const post = patientPoster(
+    async () => {
+      calls++;
+      if (calls < 3) throw new SourceError("Source returned HTTP 409", "", 409);
+      return [{ status: "SUCCESS" }];
+    },
+    async (ms) => void waits.push(ms),
+    10,
+  );
+  assert.deepEqual(await post("x", {}), [{ status: "SUCCESS" }]);
+  assert.equal(calls, 3);
+  assert.deepEqual(waits, [10, 20]);
+  let n = 0;
+  await assert.rejects(patientPoster(async () => { n++; throw new SourceError("Source returned HTTP 404", "", 404); }, async () => {}, 1)("x", {}), /404/);
+  assert.equal(n, 1);
+  n = 0;
+  await assert.rejects(patientPoster(async () => { n++; throw new SourceError("Source returned HTTP 409", "", 409); }, async () => {}, 1)("x", {}), /409/);
+  assert.equal(n, 5);
+});
