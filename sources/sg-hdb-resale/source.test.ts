@@ -39,13 +39,13 @@ function fakePortal(perMonth: number) {
   return { fetcher, calls };
 }
 
-test("sgHomeSales pages past 1 000 resales so the 12-month window is whole (was cut at 1 000 rows)", async () => {
+test("sgHomeSales pages past one page of resales so the 12-month window is whole", async () => {
   const { sgHomeSales } = await import("./source");
-  const { fetcher, calls } = fakePortal(150); // 1 800 resales in 12 months
+  const { fetcher, calls } = fakePortal(250); // 3 000 resales in 12 months: more than one 2 500-row page
   const a = await sgHomeSales({ town: "Tampines", months: 12 }, fetcher, new Date("2026-10-14T00:00:00Z"));
   assert.equal(a.status, "ok");
   assert.deepEqual(a.period, { from: "2025-11", to: "2026-10" });
-  assert.equal(a.sample_size, 12 * 150);
+  assert.equal(a.sample_size, 12 * 250);
   assert.ok(calls.length >= 2);
   assert.match(a.summary, /^HDB resale flats in TAMPINES \(all flat types\) sold for a median of SGD/);
   assert.match(a.summary, /10th–90th percentile range/);
@@ -205,14 +205,23 @@ test("fetchWithBackoff: gives up with the last error", async () => {
   await assert.rejects(fetchWithBackoff(async () => { throw new Error("Source returned HTTP 429"); }, "u", async () => {}, [1, 1]), /429/);
 });
 
+test("sgHomeSales: a town with ~2 000 resales a year is read in ONE call asking only the needed fields", async () => {
+  const { sgHomeSales } = await import("./source");
+  const { fetcher, calls } = fakePortal(150); // 1 800 resales in 12 months
+  const a = await sgHomeSales({ town: "Tampines", months: 12 }, fetcher, new Date("2026-10-14T00:00:00Z"));
+  assert.equal(a.sample_size, 12 * 150);
+  assert.equal(calls.length, 1);
+  assert.equal(new URL(calls[0]).searchParams.get("fields"), "month,resale_price,floor_area_sqm");
+});
+
 test("sgHomeSales live path: a 429 on page 2 is retried after a short pause instead of dropping to the library copy", async () => {
   const { sgHomeSales } = await import("./source");
-  const { fetcher } = fakePortal(150);
+  const { fetcher } = fakePortal(250);
   let calls = 0, failed = 0;
   const waits: number[] = [];
   const flaky = async (url: string) => {
     calls++;
-    if (new URL(url).searchParams.get("offset") === "1000" && failed < 2) { failed++; throw new Error("HTTP 429"); }
+    if (new URL(url).searchParams.get("offset") === "2500" && failed < 2) { failed++; throw new Error("HTTP 429"); }
     return fetcher(url);
   };
   const a = await sgHomeSales({ town: "Tampines", months: 12 }, flaky, new Date("2026-10-14T00:00:00Z"), async (ms) => { waits.push(ms); });

@@ -73,13 +73,14 @@ export function resolveSgTown(raw: string): string | null {
   return null;
 }
 
-export function buildSgUrl(town: string, flatType?: string, limit = 1000, offset = 0): string {
+export function buildSgUrl(town: string, flatType?: string, limit = PAGE_SIZE, offset = 0): string {
   const filters: Record<string, string> = { town: town.trim().toUpperCase() };
   if (flatType) filters.flat_type = flatType.trim().toUpperCase();
   const params = new URLSearchParams({
     resource_id: RESOURCE_ID,
     filters: JSON.stringify(filters),
     sort: "month desc,_id desc",
+    fields: "month,resale_price,floor_area_sqm", // only what the median needs: a smaller body that the portal serves faster
     limit: String(limit),
   });
   if (offset > 0) params.set("offset", String(offset));
@@ -103,7 +104,7 @@ export function sgCutoffMonth(months: number, now = new Date()): string {
 
 const LIVE_RETRY_WAITS_MS = [1500, 3500];
 export const MAX_ROWS = 5000;
-export const PAGE_SIZE = 1000;
+export const PAGE_SIZE = 2500; // Tampines holds ~2,000 resales a year: one page instead of three, so no 429 on the second call
 
 export async function sgHomeSales(
   input: { town: string; flat_type?: string; months?: number; baseUrl?: string },
