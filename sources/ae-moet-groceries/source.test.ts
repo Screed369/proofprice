@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { INFO, KNOWN, answerFromRows, buildRows, defsFromRows, itemKey, matchItems, moetHistoryKey, parsePage, parseUpdated } from "./source";
+import { INFO, KNOWN, answerFromRows, buildRows, defsFromRows, itemKey, matchItems, moetHistoryKey, libraryIsFresh, LIBRARY_FRESH_HOURS, parsePage, parseUpdated } from "./source";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
 
@@ -72,4 +72,15 @@ test("manifest: groceries tool, AE only, licence unclear so free tier", () => {
   assert.ok(categoryById("groceries"));
   assert.ok(countriesFor("groceries").includes("AE"));
   assert.match(INFO.licence, /UNVERIFIED/);
+});
+
+test("library-first: a copy collected within 36 hours is fresh, an older or missing one is not", () => {
+  const now = Date.parse("2026-11-05T12:00:00Z");
+  assert.equal(LIBRARY_FRESH_HOURS, 36);
+  assert.equal(libraryIsFresh("2026-11-05T10:55:35.718Z", now), true);
+  assert.equal(libraryIsFresh("2026-11-04T06:00:00Z", now), true);
+  assert.equal(libraryIsFresh("2026-11-03T11:00:00Z", now), false);
+  assert.equal(libraryIsFresh(null, now), false);
+  assert.equal(libraryIsFresh("not a date", now), false);
+  assert.equal(libraryIsFresh("2026-11-06T00:00:00Z", now), false);
 });

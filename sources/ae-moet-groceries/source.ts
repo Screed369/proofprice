@@ -8,6 +8,7 @@ import { InputError, SourceError } from "../../lib/http";
 import { MIN_PUBLISH } from "../../lib/stats";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { aggregateDaily, NATIONAL } from "../../lib/library/aggregate";
+import { readLatestDay, readMeta } from "../../lib/library/store";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
@@ -187,7 +188,24 @@ export function answerFromRows(day: { date: string; rows: DailyRow[] }, input: {
   });
 }
 
+/** The collector's copy is fresh enough to answer from when it was collected within this many hours. */
+export const LIBRARY_FRESH_HOURS = 36;
+
+export function libraryIsFresh(lastOkAt: string | null | undefined, now = Date.now()): boolean {
+  const t = lastOkAt ? Date.parse(lastOkAt) : NaN;
+  return Number.isFinite(t) && now - t >= 0 && now - t <= LIBRARY_FRESH_HOURS * 3600_000;
+}
+
 export async function moetPrices(input: { item?: string; baseUrl?: string }): Promise<PriceAnswer> {
+  // Library first: the Ministry page is ~1 MB and takes 6 to 12 s, which made live answers time out. The daily collector reads the same page.
+  try {
+    const meta = readMeta(INFO.id);
+    const day = libraryIsFresh(meta?.last_ok_at) ? readLatestDay(INFO.id) : null;
+    if (day && day.rows.length >= 5) return answerFromRows(day, input);
+  } catch (e) {
+    if (e instanceof InputError) throw e;
+    // library unreadable: fall through to the live page
+  }
   const { page } = await fetchPage();
   return answerFromRows({ date: page.date ?? new Date().toISOString().slice(0, 10), rows: buildRows(page) }, input);
 }
