@@ -13,7 +13,7 @@ export default defineSource({
   paramNotes: {
     item:
       "AR: a packaged everyday product in English or Spanish ('milk', 'sugar', 'rice', 'yerba mate', 'cooking oil', 'pasta', 'flour', 'butter', 'coffee', 'leche', 'azucar', 'arroz', 'aceite', 'fideos'). " +
-      "Chains name products in Spanish with the pack size, so the answer names the exact product and pack and lists related ones. About 200 products priced in the most shops are held; loose fruit, vegetables and meat are not.",
+      "Chains name products in Spanish with the pack size, so the answer names the exact product and pack and lists related ones. About 100 products priced in the most shops are held; loose fruit, vegetables and meat are not.",
     region: "AR: a province ('Buenos Aires', 'Cordoba', 'Mendoza', 'Santa Fe', 'CABA' for the city of Buenos Aires); leave out for the national figure. A province needs 5 or more shops pricing the product.",
   },
   examples: [

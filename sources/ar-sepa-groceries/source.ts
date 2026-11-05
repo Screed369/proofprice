@@ -38,8 +38,8 @@ export const INFO: SourceInfo = {
 };
 
 export const PACKAGE_URL = "https://datos.produccion.gob.ar/api/3/action/package_show?id=sepa-precios";
-export const KEEP_TOP = 110; // products priced in the most shops
-export const KEEP_PER_STAPLE = 4; // plus the best-covered products of each everyday staple, so milk, rice and sugar are not crowded out by soft drinks
+export const KEEP_TOP = 50; // products priced in the most shops
+export const KEEP_PER_STAPLE = 2; // plus the best-covered products of each everyday staple, so milk, rice and sugar are not crowded out by soft drinks
 export const OUTLIER_FACTOR = 4;
 const UA = { "user-agent": "ProofPrice-collector/1.0 (+https://proofprice.com; hello@proofprice.com)" };
 
@@ -391,27 +391,40 @@ export function parsePackage(json: unknown): { name: string; url: string }[] {
   return out;
 }
 
+const STEP_MS = { head: 30_000, download: 270_000 };
+
+/** The Last-Modified header of a weekday file: a HEAD request, else a GET whose body is thrown away (headers are enough; never pull 325 MB for them). */
 async function lastModified(url: string): Promise<string> {
+  try {
+    const res = await fetch(url, { method: "HEAD", headers: UA, signal: AbortSignal.timeout(STEP_MS.head) });
+    if (res.ok) return res.headers.get("last-modified") ?? "";
+  } catch { /* fall through to GET */ }
   const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), STEP_MS.head);
   try {
     const res = await fetch(url, { headers: UA, signal: ctl.signal });
     if (!res.ok) throw new SourceError(`SEPA file returned HTTP ${res.status}`);
-    return res.headers.get("last-modified") ?? "";
+    const lm = res.headers.get("last-modified") ?? "";
+    void res.body?.cancel().catch(() => undefined);
+    return lm;
   } finally {
-    ctl.abort(); // headers are enough; do not pull 325 MB
+    clearTimeout(timer);
+    ctl.abort();
   }
 }
 
-/** Download a file to disk, checking the byte count against Content-Length; the server ignores Range, so a cut-short download starts again. */
-export async function downloadTo(url: string, file: string, tries = 4): Promise<number> {
+/** Download a file to disk, checking the byte count against Content-Length; the server ignores Range, so a cut-short download starts again.
+ *  Every try has its own deadline, so a stalled transfer fails with a message that says how far it got (the collector's own timeout says nothing). */
+export async function downloadTo(url: string, file: string, tries = 2): Promise<number> {
   let last = "";
   for (let i = 0; i < tries; i++) {
+    const t0 = Date.now();
+    let have = 0;
     try {
-      const res = await fetch(url, { headers: UA });
+      const res = await fetch(url, { headers: UA, signal: AbortSignal.timeout(STEP_MS.download) });
       if (!res.ok) throw new SourceError(`SEPA file returned HTTP ${res.status}`);
       const want = Number(res.headers.get("content-length") || 0);
       const chunks: Buffer[] = [];
-      let have = 0;
       const reader = res.body!.getReader();
       for (;;) {
         const r = await reader.read();
@@ -419,15 +432,15 @@ export async function downloadTo(url: string, file: string, tries = 4): Promise<
         chunks.push(Buffer.from(r.value));
         have += r.value.length;
       }
-      if (want && have < want) { last = `got ${have} of ${want} bytes`; continue; }
+      if (want && have < want) { last = `try ${i + 1}: got ${have} of ${want} bytes in ${Math.round((Date.now() - t0) / 1000)}s`; continue; }
       writeFileSync(file, Buffer.concat(chunks, have));
       return have;
     } catch (e) {
       if (e instanceof SourceError && /HTTP 4\d\d/.test(e.message)) throw e;
-      last = (e as Error).message;
+      last = `try ${i + 1}: ${(e as Error).message.slice(0, 120)} after ${have} bytes in ${Math.round((Date.now() - t0) / 1000)}s`;
     }
   }
-  throw new SourceError(`SEPA file incomplete after ${tries} tries (${last})`);
+  throw new SourceError(`SEPA file download failed (${last})`);
 }
 
 /** Read a downloaded weekday zip: every chain's zip goes through the collector. Returns the date of the snapshot (the folder name inside the zip). */
@@ -459,14 +472,12 @@ export function readWeekdayZip(file: string, into: Collector): { date: string; z
 }
 
 export async function sepaHarvest(): Promise<HarvestResult> {
-  const catRes = await fetch(PACKAGE_URL, { headers: UA });
+  const catRes = await fetch(PACKAGE_URL, { headers: UA, signal: AbortSignal.timeout(60_000) });
   if (!catRes.ok) throw new SourceError(`SEPA catalogue returned HTTP ${catRes.status}`);
   const days = parsePackage(await catRes.json());
-  const dated: Weekday[] = [];
-  for (const d of days) {
-    try { dated.push({ ...d, modified: await lastModified(d.url) }); } catch { /* a weekday that does not answer is skipped */ }
-  }
-  if (!dated.length) throw new SourceError("None of the SEPA weekday files answered");
+  const settled = await Promise.allSettled(days.map(async (d) => ({ ...d, modified: await lastModified(d.url) } as Weekday)));
+  const dated: Weekday[] = settled.flatMap((r) => (r.status === "fulfilled" ? [r.value] : []));
+  if (!dated.length) throw new SourceError(`None of the SEPA weekday files answered (${settled.map((r) => (r.status === "rejected" ? String((r.reason as Error)?.message ?? r.reason).slice(0, 60) : "ok")).slice(0, 3).join("; ")})`);
   dated.sort((a, b) => (Date.parse(b.modified) || 0) - (Date.parse(a.modified) || 0));
   const dir = mkdtempSync(join(tmpdir(), "sepa-"));
   try {
