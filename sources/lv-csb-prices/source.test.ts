@@ -7,7 +7,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { exampleWords, matchItem } from "../../categories/groceries/items";
 import { parseJsonStat } from "../../lib/adapters";
-import { INFO, ITEMS, buildQuery, changeOver, csbAnswer, findDimensions, lvCsbPrices, monthFromCode, monthWords, monthsBehind, readItem, shiftMonth } from "./source";
+import { INFO, ITEMS, TABLE_URL, TABLE_URL_EN, buildQuery, changeOver, csbAnswer, findDimensions, lvCsbPrices, monthFromCode, monthWords, monthsBehind, readItem, shiftMonth } from "./source";
 import manifest from "./index";
 
 const MONTHS = ["2025M09", "2025M10", "2025M11", "2025M12", "2026M01", "2026M02", "2026M03", "2026M04", "2026M05", "2026M06", "2026M07", "2026M08", "2026M09"];
@@ -152,4 +152,14 @@ test("manifest: LV groceries, first example is a smoke test, licence and attribu
   assert.equal(manifest.examples[0].params.item, "milk");
   assert.match(INFO.attribution, /CC BY 4\.0/);
   assert.equal(INFO.price_type, "official_statistic");
+});
+
+test("asks the Latvian API path first and falls back to the English one when it fails (the English path answered HTTP 400 in Nov 2026)", async () => {
+  const urls: string[] = [];
+  const a = await lvCsbPrices({ item: "milk", today: TODAY }, { poster: async (url) => { urls.push(url); if (url === TABLE_URL) throw new Error("Source returned HTTP 400"); return JSON.parse(JSON.stringify(MILK)); } });
+  assert.deepEqual(urls, [TABLE_URL, TABLE_URL_EN]);
+  assert.match(TABLE_URL, /\/api\/v1\/lv\//);
+  const urls2: string[] = [];
+  await lvCsbPrices({ item: "milk", today: TODAY }, { poster: async (url) => { urls2.push(url); return JSON.parse(JSON.stringify(MILK)); } });
+  assert.deepEqual(urls2, [TABLE_URL]);
 });

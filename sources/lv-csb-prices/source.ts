@@ -37,7 +37,9 @@ export const INFO: SourceInfo = {
 };
 
 export const TABLE_CODE = "PCC010m";
-export const TABLE_URL = "https://data.stat.gov.lv/api/v1/en/OSP_PUB/START/VEK/PC/PCC/PCC010m";
+/** The CSB's English API path for this table started answering HTTP 400 in Nov 2026 (the Latvian path still works), so Latvian is asked first and English is the fallback. Item codes, not labels, drive the answer. */
+export const TABLE_URL = "https://data.stat.gov.lv/api/v1/lv/OSP_PUB/START/VEK/PC/PCC/PCC010m";
+export const TABLE_URL_EN = "https://data.stat.gov.lv/api/v1/en/OSP_PUB/START/VEK/PC/PCC/PCC010m";
 /** Months asked for: 14 gives the latest month, the month before and the same month a year earlier even when the newest month is missing. */
 export const MONTHS_ASKED = 14;
 
@@ -378,7 +380,15 @@ export async function lvCsbPrices(input: CsbQuery, o: CsbOptions = {}): Promise<
   const m = matchItem(ITEMS, item);
   if (!m.primary) return csbAnswer(null, null, [], input);
   const post = o.poster ?? ((url, body) => fetchJson(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }, o.timeoutMs ?? 20000));
-  const table = parseJsonStat(await post(TABLE_URL, buildQuery(m.primary.code)));
+  const body = buildQuery(m.primary.code);
+  let raw: unknown;
+  try {
+    raw = await post(TABLE_URL, body);
+  } catch (e) {
+    if (e instanceof InputError) throw e;
+    raw = await post(TABLE_URL_EN, body);
+  }
+  const table = parseJsonStat(raw);
   const reading = readItem(table, m.primary.code);
   return csbAnswer(reading, m.primary, m.related, input);
 }
