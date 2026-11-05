@@ -2,13 +2,14 @@
 // dwelling in thousand HUF, by region and settlement type (capital, county seats, towns, villages), used and new dwellings,
 // one figure per calendar year since 2007, built by KSH from the tax authority's records of sale contracts.
 // Page: https://www.ksh.hu/stadat_files/lak/hu/lak0025.html  CSV: same folder, lak0025.csv (small, ISO-8859-2, ';' separated).
-// The CSV is read through a six-hour in-memory cache. KSH gives no sale counts, so there is no harvest() (the library keeps only
-// rows with a record count or NO_COUNT; this table would be better served by a later historical backfill).
+// The CSV is read through a six-hour in-memory cache. KSH gives no sale counts: harvest() stores the newest year's published
+// averages with n = NO_COUNT (an official statistic) so a KSH outage is answered from our copy (stale-if-error).
 // Format checked live on 2026-10-23 (see source.test.ts).
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const CSV_URL = "https://www.ksh.hu/stadat_files/lak/hu/lak0025.csv";
 export const PAGE_URL = "https://www.ksh.hu/stadat_files/lak/hu/lak0025.html";
@@ -252,4 +253,60 @@ export async function loadData(o: { fetcher?: TextFetcher; now?: number } = {}):
 export async function huHomePrices(input: { town?: string | null; property_type?: string | null; settlement?: string | null; baseUrl?: string }, o: { data?: HuData; fetcher?: TextFetcher; now?: number } = {}): Promise<PriceAnswer> {
   const data = o.data ?? (await loadData({ fetcher: o.fetcher, now: o.now }));
   return huAnswer(data, { town: input.town ?? null, property_type: input.property_type ?? null, settlement: input.settlement ?? null, baseUrl: input.baseUrl });
+}
+
+// ---------- daily copy (stale-if-error) ----------
+
+const SETTLEMENT_LABEL: Record<string, string> = { all: "", county_seat: " / county seats", towns: " / other towns", villages: " / villages" };
+
+/** Library area for a region and settlement type: English name, plus the settlement type unless it is "all". Budapest has one figure. */
+export function libraryArea(region: { published: string; english: string }, settlement: SettlementKey): string {
+  return region.published === "Budapest" ? "Budapest" : region.english + (SETTLEMENT_LABEL[settlement] ?? "");
+}
+
+/** One day of the library: for every region and settlement type the newest year's published average (HUF per m²), both property types. */
+export function huHarvestRows(data: HuData): HarvestResult {
+  const rows: HarvestResult["rows"] = [];
+  for (const kind of ["existing", "new"] as const) {
+    for (const region of REGIONS) {
+      const settlements: SettlementKey[] = region.published === "Budapest" ? ["capital"] : ["all", "county_seat", "towns", "villages"];
+      for (const st of settlements) {
+        const row = pickRow(data[kind], region.published, st);
+        const v = row?.values[data.latestYear];
+        if (!row || v === undefined || !Number.isFinite(v) || v <= 0) continue;
+        const value = Math.round(v * 1000);
+        rows.push({
+          area: libraryArea(region, st), item: kind === "new" ? "new" : "second-hand",
+          n: NO_COUNT, median: value, low: value, high: value, min: value, max: value,
+        });
+      }
+    }
+  }
+  if (!rows.length) throw new SourceError("KSH's price table held no figure for its latest year", CSV_URL);
+  return {
+    date: `${data.latestYear}-12-31`,
+    currency: "HUF",
+    unit: "per m²",
+    rows,
+    note: `KSH STADAT table 18.1.2.9 for ${data.latestYear}: average price per m² of used and new dwellings by region and settlement type, from tax-office sale contracts. Published averages; KSH gives no count.`,
+  };
+}
+
+export async function huHarvest(o: { fetcher?: TextFetcher } = {}): Promise<HarvestResult> {
+  return huHarvestRows(parseCsv(await (o.fetcher ?? downloadCsv)()));
+}
+
+/** Where a request lives in the library; null when the live answer would be an error or a no-match. */
+export function huHistoryKey(p: { town?: string | null; property_type?: string | null; settlement?: string | null }): { area: string; item: string; label: string } | null {
+  const region = findRegion(p.town ?? null);
+  if (!region) return null;
+  const kindRaw = (p.property_type ?? "existing").trim().toLowerCase();
+  const kind = ["existing", "used", "second-hand", "secondhand", "resale", "any", ""].includes(kindRaw) ? "second-hand" : ["new", "new-build", "newbuild", "new_build"].includes(kindRaw) ? "new" : null;
+  if (!kind) return null;
+  const settleRaw = (p.settlement ?? "all").trim().toLowerCase().replace(/[\s-]+/g, "_");
+  const st = (({ all: "all", together: "all", county_seat: "county_seat", county_seats: "county_seat", towns: "towns", town: "towns", villages: "villages", village: "villages", capital: "capital" }) as Record<string, SettlementKey>)[settleRaw];
+  if (!st) return null;
+  const eff = region.published === "Budapest" ? "capital" : st;
+  const area = libraryArea(region, eff);
+  return { area, item: kind, label: area };
 }

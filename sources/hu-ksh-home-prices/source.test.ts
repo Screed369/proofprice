@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS } from "../../lib/registry";
-import { CSV_URL, INFO, clearCache, downloadCsv, findRegion, huAnswer, huHomePrices, loadData, parseCsv } from "./source";
+import { CSV_URL, INFO, clearCache, downloadCsv, findRegion, huAnswer, huHarvestRows, huHistoryKey, huHomePrices, loadData, parseCsv } from "./source";
 
 // Fixture: rows of KSH STADAT lak0025.csv (table 18.1.2.9, thousand HUF per m2), read from GitHub Actions on 2026-10-23.
 // The probe garbled the ISO-8859-2 accents; they are restored here. Rows trimmed to the ones the tests use.
@@ -135,4 +135,40 @@ test("manifest: serves a Hungarian request only when a town is named, so the Eur
   const idx = SOURCE_PLUGINS.find((x) => x.info.id === "eu-home-price-index")!;
   assert.equal(idx.serves!({ country: "HU" }), true);
   assert.equal(idx.serves!({ country: "HU", town: "Budapest" }), false);
+});
+
+// ---------- daily copy (stale-if-error) ----------
+
+test("harvest: newest year's published averages by area and property type, same figure as the live answer, no made-up count", () => {
+  const h = huHarvestRows(data);
+  assert.equal(h.date, "2025-12-31");
+  assert.equal(h.currency, "HUF");
+  assert.equal(h.unit, "per m²");
+  const bp = h.rows.find((r) => r.area === "Budapest" && r.item === "second-hand")!;
+  assert.equal(bp.median, 1194000);
+  assert.ok(Number.isNaN(bp.n), "official statistic: n is NO_COUNT");
+  assert.equal(bp.low, bp.high);
+  assert.equal(h.rows.find((r) => r.area === "Hungary" && r.item === "new")!.median, 955000);
+  assert.equal(h.rows.find((r) => r.area === "Southern Great Plain / county seats" && r.item === "new")!.median, 1090000);
+  assert.equal(h.rows.find((r) => r.area === "Southern Great Plain / villages" && r.item === "new")!.median, 869000);
+  // a cell KSH leaves blank for the latest year (towns, new) is not stored
+  assert.equal(h.rows.find((r) => r.area === "Southern Great Plain / other towns" && r.item === "new"), undefined);
+  assert.ok(h.rows.every((r) => r.median > 0));
+  const live = huAnswer(data, { town: "Budapest", property_type: "existing", settlement: null });
+  assert.equal(live.price.value, bp.median);
+});
+
+test("history key: town, property type and settlement pick the library row; unknown values give null", () => {
+  assert.deepEqual(huHistoryKey({ town: "Budapest" }), { area: "Budapest", item: "second-hand", label: "Budapest" });
+  assert.deepEqual(huHistoryKey({ town: "Szeged", property_type: "new", settlement: "county_seat" }), { area: "Southern Great Plain / county seats", item: "new", label: "Southern Great Plain / county seats" });
+  assert.equal(huHistoryKey({ town: "Debrecen" })!.area, "Northern Great Plain");
+  assert.equal(huHistoryKey({})!.area, "Hungary");
+  assert.equal(huHistoryKey({ town: "Nowhereville" }), null);
+  assert.equal(huHistoryKey({ town: "Pest", property_type: "castle" }), null);
+  assert.equal(huHistoryKey({ town: "Pest", settlement: "moon" }), null);
+});
+
+test("the manifest declares the daily copy for stale-if-error", () => {
+  const m = SOURCE_PLUGINS.find((s) => s.info.id === INFO.id)!;
+  assert.ok(m.harvest && m.historyKey && m.referenceDates && m.nominalCounts);
 });

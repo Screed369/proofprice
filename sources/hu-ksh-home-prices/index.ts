@@ -1,7 +1,7 @@
 // Manifest: Hungary home prices (KSH, official average price per m² by region and settlement type). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, huHomePrices } from "./source";
+import { INFO, huHarvest, huHistoryKey, huHomePrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -28,6 +28,13 @@ export default defineSource({
   serves: (p) => !!str(p.town),
   method:
     "Hungary: the average price per m² of used and of new dwellings that KSH publishes once a year for Budapest, the seven statistical regions and Hungary, split by settlement type, from the tax authority's records of sale contracts. We pass on the latest published year with the change on the year before; it is an average per m², not a price per home.",
+  // A daily copy of KSH's newest yearly averages (n is NO_COUNT), dated by the year they are for, so a KSH outage is answered from it.
+  harvest: () => huHarvest(),
+  historyKey: (p) => huHistoryKey({ town: str(p.town), property_type: str(p.property_type), settlement: str(p.settlement) }),
+  referenceDates: true,
+  nominalCounts: true,
+  staleMaxDays: 45,
+  noHistory: "Hungary: KSH publishes one average per calendar year, so there is no day-by-day or monthly history; the yearly series sits in extra.series of the live answer.",
   handle: (p, ctx) =>
     huHomePrices({ town: str(p.town), property_type: str(p.property_type), settlement: str(p.settlement), baseUrl: ctx.baseUrl }),
 });
