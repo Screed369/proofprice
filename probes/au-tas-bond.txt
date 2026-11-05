@@ -1,0 +1,28 @@
+URL: https://www.data.gov.au/data/api/3/action/package_show?id=rental-bond-and-rental-data-july-2026-to-june-2027
+Fetched: 2026-11-05T12:42:46Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 5402
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 5402
+date: Thu, 05 Nov 2026 12:42:46 GMT
+set-cookie: ckan=; Domain=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/
+server: nginx
+cache-control: public, max-age=900, must-revalidate
+vary: Cookie,Origin
+x-cache: Miss from cloudfront
+via: 1.1 61c1975e6aa05b258b8f9dc4d26c4eba.cloudfront.net (CloudFront)
+x-amz-cf-pop: IAD61-P15
+x-amz-cf-id: UNqAdjTUmIJmD1cmVxJVqL7ulmzeO1HXiymf6DVtOT8M2ke00OqLYw==
+x-xss-protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000
+vary: Origin
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"help": "https://data.gov.au/data/api/3/action/help_show?name=package_show", "success": true, "result": {"archived": false, "author": "", "author_email": null, "contact_point": "rda@justice.tas.gov.au", "creator_user_id": "72c9b35d-9e95-4f84-92ff-013dae206ba1", "duplicate_score": 1, "geospatial_topic": [], "id": "cda8637c-c017-4353-b39b-d14851835134", "isopen": false, "language": "", "license_id": "cc-by-4.0", "license_title": "Creative Commons Attribution 4.0 International", "license_url": "http://creativecommons.org/licenses/by/4.0", "maintainer": null, "maintainer_email": null, "metadata_created": "2026-07-16T01:29:51.457098", "metadata_modified": "2026-09-17T00:32:51.697421", "name": "rental-bond-and-rental-data-july-2026-to-june-2027", "notes": "A group of datasets that records suburb, rent, bond amount, dwelling type, number of bedrooms and length of tenancy", "num_resources": 3, "num_tags": 4, "organization": {"id": "0483eac0-22f2-40fd-852f-0b395167f2fe", "name": "department-of-justice-tasmania", "title": "Department of Justice (Tasmania)", "type": "organization", "description": "The Department of Justice provides services to maintain and promote rights and responsibilities, resolve disputes, and contribute to the aim of achieving a safer and more inclusive society to benefit the Tasmanian community as a whole.", "image_url": "2016-08-25-042344.501660Logo.jpg", "created": "2016-08-25T13:39:40.681712", "is_organization": true, "approval_status": "approved", "state": "active"}, "original_harvest_source": {"site_url": "https://data.gov.au/data/dataset/", "href": "https://data.gov.au/data/dataset/rental-bond-and-rental-data-july-2026-to-june-2027", "title": "data.gov.au"}, "original_name": "", "owner_org": "0483eac0-22f2-40fd-852f-0b395167f2fe", "private": false, "promotion_level": "0", "remote_last_updated": "", "spatial": "{\"type\": \"Point\",\"coordinates\": [146.75,-42]}", "spatial_coverage": "The State of Tasmania,", "state": "active", "temporal_coverage_from": "2026-07-01 00:00:00", "temporal_coverage_to": "2027-06-30 00:00:00", "title": "Rental Bond and Rental Data July 2026 to June 2027", "type": "dataset", "unpublished": false, "url": null, "version": null, "resources": [{"cache_last_updated": null, "cache_url": null, "created": "2026-07-16T01:29:59.227926", "datastore_active": false, "datastore_contains_all_records_of_source_file": false, "description": "", "format": "", "hash": "", "id": "b87a7e3b-ccd7-4522-94e5-88aa0ddba9b0", "last_modified": null, "metadata_modified": "2026-07-16T01:30:00.580698", "mimetype": null, "mimetype_inner": null, "name": "", "package_id": "cda8637c-c017-4353-b39b-d14851835134", "position": 0, "resource_type": null, "size": null, "state": "active", "url": "", "url_type": "", "zip_extract": false}, {"cache_last_updated": null, "cache_url": null, "created": "2026-09-17T00:10:05.823302", "datastore_active": false, "datastore_contains_all_records_of_source_file": false, "description": "Record shows suburb, r
