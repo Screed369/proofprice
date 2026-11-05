@@ -14,6 +14,8 @@ export default defineSource({
     distance_km: "Singapore: ride distance in km (default 5); the fare is read from the published 1 km band.",
     travel_time: "Singapore: early = before 7.45am on weekdays (discounted fares), other = all other times (default).",
   },
+  // Shares SG with sg-ptc-bus-fares: service=bus goes there, everything else here.
+  serves: (p) => String(p.service ?? "").toLowerCase() !== "bus",
   examples: [
     { params: { country: "SG", distance_km: "8.5" } },
     { params: { country: "SG", fare_type: "student", distance_km: "12", travel_time: "early" }, smoke: false },
