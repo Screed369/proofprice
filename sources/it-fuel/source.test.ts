@@ -108,3 +108,42 @@ test("IT: a country-only question answers with the Weekly Oil Bulletin national 
   assert.equal((a.extra as any).national, true);
   await assert.rejects(() => itCountryOnly({ fuel: "methane" as any }), /area=MI/);
 });
+
+test("IT: area accepts province names, English names and comune fallbacks (was a 400 for area=Milano)", async () => {
+  const { resolveItArea } = await import("./provinces");
+  assert.deepEqual(resolveItArea("MI"), { province: "MI" });
+  assert.deepEqual(resolveItArea("rm"), { province: "RM" });
+  const { itHistoryKey } = await import("./source");
+  assert.deepEqual(resolveItArea("Milano"), { province: "MI" });
+  assert.deepEqual(resolveItArea("Milan"), { province: "MI" });
+  assert.deepEqual(resolveItArea("Rome"), { province: "RM" });
+  assert.deepEqual(resolveItArea("Provincia di Napoli"), { province: "NA" });
+  assert.deepEqual(resolveItArea("Forlì"), { province: "FC" });
+  assert.deepEqual(resolveItArea("L'Aquila"), { province: "AQ" });
+  assert.deepEqual(resolveItArea("Reggio Emilia"), { province: "RE" });
+  assert.deepEqual(resolveItArea("Sesto San Giovanni"), { town: "Sesto San Giovanni" });
+  assert.deepEqual(resolveItArea(""), {});
+  assert.deepEqual(itHistoryKey({ area: "Torino", fuel: "diesel" }), { area: "TO", item: "diesel", label: "province TO" });
+  assert.equal(itHistoryKey({ area: "Sesto San Giovanni", fuel: "diesel" }), null);
+});
+
+test("IT: itFuelNow answers area=Milano from the province MI stations", async () => {
+  const { itFuelNow } = await import("./source");
+  const ids = [90001, 90002, 90003, 90004, 90005, 90006];
+  const stations = ["Estrazione del 2026-10-12", "idImpianto|Gestore|Bandiera|Tipo Impianto|Nome Impianto|Indirizzo|Comune|Provincia|Latitudine|Longitudine",
+    ...ids.map((id) => `${id}|G|Q8|Stradale|N|VIA ROMA ${id}|MILANO|MI|45.46|9.19`)].join("\n");
+  const prices = ["Estrazione del 2026-10-12", "idImpianto|descCarburante|prezzo|isSelf|dtComu",
+    ...ids.map((id, i) => `${id}|Gasolio|${(2.2 + i / 100).toFixed(3)}|1|0${i + 4}/10/2026 07:30:00`)].join("\n");
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async (u: any) => new Response(String(u).includes("anagrafica") ? stations : prices, { status: 200 })) as typeof fetch;
+  try {
+    const a = await itFuelNow({ area: "Milano", fuel: "diesel" });
+    assert.equal(a.status, "ok");
+    assert.match(a.summary, /in province MI:/);
+    const b = await itFuelNow({ area: "Milano", town: "Milano", fuel: "diesel" });
+    assert.equal(b.status, "ok");
+    assert.match(b.summary, /in Milano \(MI\):/);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

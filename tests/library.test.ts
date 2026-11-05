@@ -67,7 +67,7 @@ test("history: asks the same questions the live tool accepts", () => {
   const now = new Date("2026-11-02T12:00:00Z");
   assert.throws(() => runHistory(fuel, { country: "FR", fuel: "methane" }, {}, now), /History is kept by area and fuel/);
   assert.throws(() => runHistory(fuel, { country: "ES", area: "Narnia", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
-  assert.throws(() => runHistory(fuel, { country: "IT", area: "Milano", fuel: "diesel" }, {}, now), /History is kept by area and fuel/);
+  assert.throws(() => runHistory(fuel, { country: "IT", area: "Sesto San Giovanni", fuel: "diesel" }, {}, now), /History is kept by area and fuel/); // Milano now resolves to province MI (it-fuel/provinces.ts); a comune has no history key
 });
 
 test("history: months=N reads the monthly history loaded by the backfill (string from a URL works too)", async () => {

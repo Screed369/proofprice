@@ -12,7 +12,7 @@ export default defineSource({
   status: "live",
   paramNotes: {
     fuel: "Italy: diesel, petrol95, lpg, methane only.",
-    area: "IT: province ('MI', 'RM').",
+    area: "IT: province code ('MI', 'RM') or province name ('Milano', 'Roma', 'Rome'); any other name is tried as a comune.",
     town: "IT: comune name, e.g. 'Bologna'.",
     service: "IT: self-service (default) or attended service, which costs more.",
   },

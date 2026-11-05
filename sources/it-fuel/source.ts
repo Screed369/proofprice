@@ -6,6 +6,7 @@ import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { Fuel, FUEL_LABEL, stripAccents } from "../../lib/fuels";
 import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 import { aggregateDaily } from "../../lib/library/aggregate";
+import { resolveItArea } from "./provinces";
 
 export const INFO: SourceInfo = {
   id: "it-fuel",
@@ -164,9 +165,12 @@ export async function itFuelNow(input: {
   baseUrl?: string;
 }): Promise<PriceAnswer> {
   if (!IT_FUEL[input.fuel]) throw new InputError(`Fuel '${input.fuel}' is not published for Italy. Use diesel, petrol95, lpg or methane.`);
-  const province = input.area?.trim().toUpperCase();
-  if (!province && !input.town) throw new InputError("Give an Italian town (comune) or a 2-letter province code as area, e.g. 'MI' or 'RM'.");
-  if (province && !/^[A-Z]{2}$/.test(province)) throw new InputError("Italian area must be a 2-letter province code, e.g. 'MI' or 'RM'.");
+  // area may be a province code ('MI'), a province name ('Milano', 'Rome') or, failing that, a comune name.
+  const resolved = resolveItArea(input.area);
+  const province = resolved.province;
+  const townName = input.town?.trim() || resolved.town;
+  if (!province && !townName) throw new InputError("Give an Italian town (comune) or a province as area, e.g. area=MI, area=Roma or town=Bologna.");
+  input = { ...input, town: townName };
   const service = input.service === "served" ? "served" : "self";
   const data = await loadItaly();
   const rows = selectItPrices(data.prices, data.stations, { fuel: input.fuel, service, province, town: input.town, extracted: data.extracted });
@@ -223,8 +227,8 @@ export function itHistoryKey(p: { area?: string; fuel: string; service?: string 
   const service = p.service === "served" ? "served" : "self";
   const item = itItem(p.fuel as Fuel, service);
   if (p.area) {
-    const prov = p.area.trim().toUpperCase();
-    return /^[A-Z]{2}$/.test(prov) ? { area: prov, item, label: `province ${prov}` } : null;
+    const prov = resolveItArea(p.area).province;
+    return prov ? { area: prov, item, label: `province ${prov}` } : null;
   }
   return { area: "ALL", item, label: "Italy" };
 }
