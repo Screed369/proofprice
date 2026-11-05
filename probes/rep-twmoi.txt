@@ -1,0 +1,129 @@
+URL: https://plvr.land.moi.gov.tw/Download_ajax_active
+Fetched: 2026-11-05T06:53:13Z from GitHub Actions
+Status, type, bytes: 200 text/html;charset=UTF-8 21853
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: SAMEORIGIN
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET,PUT,POST,DELETE,OPTIONS
+Access-Control-Allow-Credentials: false
+Content-Security-Policy: default-src 'self';frame-ancestors 'self';font-src 'self' data: https: http:;img-src * data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google-analytics.com https://www.googletagmanager.com https://www.google-analytics.com ; style-src 'self' 'unsafe-inline' https:;connect-src *;object-src 'none' ; base-uri 'none';
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: origin
+Permissions-Policy: microphone=(),camera=()
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: JSESSIONID=A5495229EC66371949C83A3BF20CC26C;Path=/;  HttpOnly; Secure; SameSite=strict
+Access-Control-Max-Age: 60
+Content-Type: text/html;charset=UTF-8
+Content-Language: zh-TW
+Transfer-Encoding: chunked
+Date: Thu, 05 Nov 2026 06:53:11 GMT
+
+=== FILE TYPE: HTML document, Unicode text, UTF-8 text, with CRLF, LF line terminators
+=== FIRST 3000 BYTES
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+	<div class="form-row p-0 mx-0 my-0">
+		<div class="form-group col-sm-12">
+			<span class="text-info">【註:CSV格式編碼為UTF-8】</span><br>
+			<span class="text-danger">資料內容：登記日期 115年10月11日至 115年10月20日之買賣案件，及訂約日期 115年9月11日至 115年9月20日之租賃案件，及交易日期115年9月11日至 115年9月20日之預售屋案件</span>
+		</div>
+		<div class="form-group col-sm-6">
+			<label for="exampleFormControlSelect1"
+				class="font-weight-bold">下載檔案格式(<a  href="./FreeDownload.action?fileName=%E7%A7%9F%E8%B3%83opendata%E4%BF%AE%E6%94%B9%E8%AA%AA%E6%98%8E.txt"  role="button" >租賃opendata修改說明.txt</a>)</label>
+				<select name="fileFormat" id="fileFormatId" class="form-control">
+    <option value="xls">XLS 格式</option>
+    <option value="xml">XML 格式</option>
+    <option value="txt">TXT 格式</option>
+    <option value="csv">CSV 格式</option>
+
+
+</select>
+
+
+
+		</div>
+
+		<div class="form-group col-sm-5 d-flex align-items-end">
+			<a id="download-button" ></a>     
+			<a class="btn btn-secondary" href="javascript:void(0);"  role="button" onclick="preDownload();">下載</a>
+		</div>
+	</div>
+	<div class="bg-light p-2 rounded">
+		<div class="form-group">
+			<label class="font-weight-bold">下載方式</label>
+			
+				<div class="form-check">
+					<input class="form-check-input" type="radio"
+						name="downloadType" id="downloadTypeId1" value="1" onclick="chgDownloadType(this);"
+						checked> <label class="form-check-label "
+						for="downloadTypeId1"> <span class="font-weight-bold">全國</span><span
+						class="text-success"> (含不動產買賣+預售屋買賣+不動產租賃)</span>
+					</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio"
+						name="downloadType" id="downloadTypeId2" value="2" onclick="chgDownloadType(this);">
+					<label class="form-check-label" for="downloadTypeId2">
+						<span class="font-weight-bold">進階下載</span><span
+						class="text-success"> (勾選欲下載 縣市/交易類別)</span>
+					</label>
+				</div>
+			 
+			
+		</div>
+
+	<table width="100%" border='0' cellpadding='0' cellspacing='0'
+		id='table5'
+		style='border-left: 1px solid #cecece; border-right: 1px solid #cecece; border-top: 1px solid #dfdfdf; border-bottom: 1px solid #cecece; text-align: left;'>
+
+		
+
+			<tr class="advDownloadClass">
+				<td class="form_gray"><font face='Arial' size='-1'>縣市\交易類別</font></td>
+				<td class="form_gray"><font face='Arial' size='-1'>不動產買賣
+						<!-- &nbsp;&nbsp;<input type="checkbox" id="typeASelectAll" /> -->
+				</font></td>
+				<td class="form_gray"><font face='Arial' size='-1'>預售屋買賣
+						<!--&nbsp;&nbsp;<input type="checkbox" id="typeBSelectAll" /> -->
+				</font></td>
+				<td class="form_gray"><font face='Arial' size='-1'
