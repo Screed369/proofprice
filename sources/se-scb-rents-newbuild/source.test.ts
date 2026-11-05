@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { INFO, matchRegion, parseTable, pickLatest, roomCode, seNewBuildRent, URL_ALL } from "./source";
+import { INFO, matchRegion, parseTable, pickLatest, roomCode, seNewBuildHarvest, seNewBuildHarvestRows, seNewBuildHistoryKey, seNewBuildRent, URL_ALL } from "./source";
 import manifest from "./index";
 
 const FIX = JSON.parse(readFileSync(new URL("./fixtures/tab6421.json", import.meta.url), "utf8"));
@@ -70,4 +70,31 @@ test("serves() takes only new_build requests", () => {
   assert.equal(manifest.serves!({ country: "SE", new_build: true }), true);
   assert.equal(manifest.serves!({ country: "SE", new_build: "true" }), true);
   assert.equal(manifest.serves!({ country: "SE" }), false);
+});
+
+test("library copy: one row per region group and room count with 5+ flats, dated 31 Dec of the newest year", () => {
+  const { date, rows } = seNewBuildHarvestRows(parseTable(FIX));
+  assert.equal(date, "2025-12-31");
+  assert.ok(rows.length >= 15 && rows.length <= 30);
+  assert.ok(rows.every((r) => r.n >= 5 && r.median > 1000));
+  const se3 = rows.find((r) => r.area === "00" && r.item === "rooms-3")!;
+  assert.equal(se3.median, 13571);
+  assert.equal(se3.n, 2511);
+  assert.equal(rows.find((r) => r.area === "00" && r.item === "rooms-00")!.n, 11441);
+});
+
+test("harvest() returns the library day through the fetcher", async () => {
+  const h = await seNewBuildHarvest(async () => FIX);
+  assert.equal(h.currency, "SEK");
+  assert.equal(h.date, "2025-12-31");
+});
+
+test("historyKey matches the harvest rows and refuses unknown places", () => {
+  assert.deepEqual(seNewBuildHistoryKey({ town: "Greater Stockholm", rooms: 2 }), { area: "0010", item: "rooms-2", label: "Greater Stockholm" });
+  assert.deepEqual(seNewBuildHistoryKey({}), { area: "00", item: "rooms-00", label: "Sweden" });
+  assert.equal(seNewBuildHistoryKey({ town: "Atlantis" }), null);
+  const { rows } = seNewBuildHarvestRows(parseTable(FIX));
+  const k = seNewBuildHistoryKey({ town: "Göteborg", rooms: 9 })!;
+  assert.equal(k.item, "rooms-4");
+  assert.ok(rows.some((r) => r.area === k.area && r.item === k.item));
 });

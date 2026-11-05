@@ -2,7 +2,7 @@
 // Answers rent requests for SE that carry new_build=true; sources/se-scb-rents answers every other SE rent request (declared serves() in both).
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, seNewBuildRent } from "./source";
+import { INFO, seNewBuildHarvest, seNewBuildHistoryKey, seNewBuildRent } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -26,4 +26,9 @@ export default defineSource({
     "Sweden new-build rents: the average monthly rent of rented flats in newly constructed buildings at 31 December (Statistics Sweden, table BO0404), by region group and number of rooms, with the number of flats behind it. It is a published average, not a list of rents.",
   serves: (p) => p.new_build === true || String(p.new_build ?? "").toLowerCase() === "true",
   handle: (p, ctx) => seNewBuildRent({ town: str(p.town), rooms: num(p.bedrooms), baseUrl: ctx.baseUrl }),
+  // Stale-if-error copy: the collector stores SCB's newest yearly averages (all region groups, all room counts) once a day.
+  harvest: () => seNewBuildHarvest(),
+  historyKey: (p) => seNewBuildHistoryKey({ town: str(p.town), rooms: num(p.bedrooms) }),
+  referenceDates: true,
+  staleMaxDays: 400, // one figure per year: the newest cannot change between releases
 });

@@ -4,7 +4,7 @@
 import { InputError, SourceError, fetchJson } from "../../lib/http";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { parseJsonStat, rowsWhere, JsonStatTable } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const INFO: SourceInfo = {
   id: "se-scb-rents-newbuild",
@@ -125,3 +125,53 @@ export async function seNewBuildRent(input: SeNewBuildInput, fetcher?: (url: str
       : { reason: `No figure with at least ${MIN_DWELLINGS} flats for ${region.label}, ${roomLabel.toLowerCase()}. Try another number of rooms or a wider region (Sweden).` },
   });
 }
+
+
+// ---------- library copy (stale-if-error and history) ----------
+// Once a day the collector stores the newest year for every region group and room count (6 x 5 cells, those with 5+ flats) as one
+// library day dated 31 December of that year (rents at 31 December). Kept so a stale copy can answer when SCB is down and history
+// builds up year by year. n is SCB's own count of flats.
+
+const ROOM_CODES = ["00", "1", "2", "3", "4"];
+
+/** Library rows for the newest year in the table: average monthly rent (SEK) by region group and rooms, 5+ flats only. */
+export function seNewBuildHarvestRows(table: JsonStatTable): { date: string; rows: DailyRow[] } {
+  let year: string | null = null;
+  const rows: DailyRow[] = [];
+  for (const region of table.codes.Region) {
+    for (const rooms of ROOM_CODES) {
+      const pick = pickLatest(table, region, rooms);
+      if (!pick) continue;
+      if (year === null || pick.year > year) year = pick.year;
+      const m = Math.round(pick.monthly);
+      rows.push({ area: region, item: `rooms-${rooms}`, n: pick.dwellings, median: m, low: m, high: m, min: m, max: m });
+    }
+  }
+  if (!year) throw new SourceError("Statistics Sweden's new-build rent table gave no year");
+  return { date: `${year}-12-31`, rows };
+}
+
+export async function seNewBuildHarvest(fetcher?: (url: string) => Promise<unknown>): Promise<HarvestResult> {
+  const get = fetcher ?? ((u: string) => fetchJson(u, {}, 30000));
+  const { date, rows } = seNewBuildHarvestRows(parseTable(await get(URL_ALL)));
+  if (rows.length < 15) throw new SourceError(`Statistics Sweden's new-build rent table gave only ${rows.length} library rows; expected about 25`);
+  return {
+    date,
+    currency: "SEK",
+    unit: "per month",
+    rows,
+    note: "Statistics Sweden BO0404 (TAB6421): average monthly rent of rented flats in newly constructed buildings at 31 December, by region group and number of rooms, newest year. One published average per place and year; n is SCB's count of flats (cells under 5 flats are left out). Kept so a stale copy can answer when the publisher is down and so history builds up.",
+  };
+}
+
+/** Library key for a request, or null when the copy cannot answer it (unknown region group). */
+export function seNewBuildHistoryKey(p: { town?: string; rooms?: number }): { area: string; item: string; label: string } | null {
+  const code = REGION_ALIASES[norm(p.town ?? "sweden")];
+  if (!code) return null;
+  if (p.rooms !== undefined && (!Number.isInteger(p.rooms) || p.rooms < 1)) return null;
+  const rc = roomCode(p.rooms);
+  const label = code === "00" ? "Sweden" : (REGION_LABELS[code] ?? code);
+  return { area: code, item: `rooms-${rc}`, label };
+}
+
+const REGION_LABELS: Record<string, string> = { "0010": "Greater Stockholm", "0020": "Greater Gothenburg", "0030": "Greater Malmo", "0040": "large municipalities", "0041": "small municipalities" };
