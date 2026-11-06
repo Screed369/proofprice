@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS, findSource } from "../../lib/registry";
 import { parseCsv } from "../lv-vzd-home-sales/source";
-import { BANDS, bandFor, clearCache, INFO, loadBand, lvHouseAnswer, lvHouseSales } from "./source";
+import { BANDS, bandFor, clearCache, INFO, houseHarvestRows, loadBand, lvHouseAnswer, lvHouseHistoryKey, lvHouseSales } from "./source";
 
 // Fixture: header and rows copied from the live VZD files publish_statistika_ind_dz_{60,110,180}_gads.csv (houses by floor area,
 // yearly), downloaded from data.gov.lv on 2026-11-04 (UTF-8 with BOM, comma separated, quoted text, empty cell = not published).
@@ -134,4 +134,20 @@ test("routing: house requests with a town go to this source, apartments stay wit
   const none = findSource("home-sales", "LV", { country: "LV" });
   assert.equal(none?.info.id, "eu-home-price-index");
   assert.ok(SOURCE_PLUGINS.some((s) => s.info.id === INFO.id));
+});
+
+test("library copy: harvest keeps the busiest band per place, history key only without floor area", () => {
+  const mk = (band: number, rows: string[], head: string) => parseCsv([head, ...rows].join("\n"), band);
+  const tables = [mk(60, R60, H60), mk(110, R110, H110)];
+  const r = houseHarvestRows(tables, 1);
+  assert.equal(r.date, "2025-12-31");
+  assert.equal(r.unit, "per house");
+  const carn = r.rows.find((x) => x.area.startsWith("carnikavas"))!;
+  assert.equal(carn.item, "house");
+  assert.equal(carn.n, 27); // the 60-110 m2 band (27 deals) beats 110-180 m2 (16 deals) in 2025
+  assert.ok(r.rows.find((x) => x.area === "riga"));
+  assert.equal(r.rows.find((x) => x.area === "plavinas"), undefined); // 3 deals: below the 5-deal floor
+  assert.deepEqual(lvHouseHistoryKey({ town: "Riga", property_type: "house" }), { area: "riga", item: "house", label: "Riga" });
+  assert.equal(lvHouseHistoryKey({ town: "Riga", property_type: "house", floor_area: 140 }), null);
+  assert.equal(lvHouseHistoryKey({ town: "Riga", property_type: "flat" }), null);
 });

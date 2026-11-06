@@ -8,8 +8,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
-import { findPlace, MIN_SALES, parseCsv, type LvTable, type Row, type Stat } from "../lv-vzd-home-sales/source";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { areaKey, findPlace, fold, MIN_SALES, parseCsv, type LvTable, type Row, type Stat } from "../lv-vzd-home-sales/source";
 
 export const PAGE_URL = "https://data.gov.lv/dati/lv/dataset/tirgus-statistika";
 const DATASET = "864bbe12-f7bf-4437-b5fa-1ec187684d01";
@@ -206,4 +206,63 @@ export async function lvHouseSales(
   const bands = q.floor_area !== null ? [bandFor(q.floor_area)] : BANDS;
   const tables = await Promise.all(bands.map((b) => loadBand(b, { fetcher: o.fetcher, now: o.now })));
   return lvHouseAnswer(tables, q);
+}
+
+// ---------- price library copy (stale-if-error) ----------
+// Once a day the collector stores, for every town, parish, municipality (its towns) and Riga, VZD's newest-year house median for the floor-area
+// band with the most deals (the band the live answer picks when no floor area is given). If data.gov.lv does not answer, the shared
+// stale-if-error path answers a town question without floor_area from that copy. Rows are dated 31 December of the year they describe.
+const isTotal = (r: Row): boolean => /kopa/.test(fold(r.place));
+const isUrban = (r: Row): boolean => /pilsetu teritorijas kopa/.test(fold(r.place));
+
+export function houseHarvestRows(tables: LvTable[], minPlaces = 20): HarvestResult {
+  const newest = Math.max(0, ...tables.flatMap((t) => t.years));
+  if (!newest) throw new SourceError("VZD's house price tables hold no year to collect", PAGE_URL);
+  const best = new Map<string, { n: number; stat: Stat }>();
+  const seen = new Map<string, number>();
+  for (const tb of tables) {
+    for (const r of tb.rows) {
+      let area: string | null = null;
+      if (fold(r.municipality) === "riga") area = "riga";
+      else if (isUrban(r)) area = areaKey(r.municipality);
+      else if (!isTotal(r)) area = areaKey(r.place);
+      if (!area) continue;
+      if (tb === tables[0]) seen.set(area, (seen.get(area) ?? 0) + 1);
+      const st = r.byYear[newest];
+      if (!st || st.n < MIN_SALES || st.median === null || st.median <= 0) continue;
+      const cur = best.get(area);
+      if (!cur || st.n > cur.n) best.set(area, { n: st.n, stat: st });
+    }
+  }
+  const rows: DailyRow[] = [];
+  for (const [area, { n, stat }] of best) {
+    if ((seen.get(area) ?? 0) > 1) continue; // a name shared by two places is ambiguous: leave it out
+    const median = stat.median!;
+    rows.push({ area, item: "house", n, median, low: stat.min ?? median, high: stat.max ?? median, min: stat.min ?? median, max: stat.max ?? median });
+  }
+  if (rows.length < minPlaces) throw new SourceError(`VZD's house tables gave only ${rows.length} places with ${MIN_SALES}+ deals; the files may have changed`, PAGE_URL);
+  rows.sort((a, b) => a.area.localeCompare(b.area));
+  return {
+    date: `${newest}-12-31`,
+    currency: "EUR",
+    unit: "per house",
+    rows,
+    note: `VZD Real Estate Market Statistics ${newest}: median price per house by town, parish, municipality (towns) and Riga, for the floor-area band with the most deals; places with fewer than ${MIN_SALES} deals left out. Low/high are the cheapest and dearest single deals, not percentiles.`,
+  };
+}
+
+export async function lvHouseHarvest(o: { fetcher?: CsvFetcher } = {}): Promise<HarvestResult> {
+  const fetcher = o.fetcher ?? downloadCsv;
+  const tables = await Promise.all(BANDS.map(async (b) => parseCsv(await fetcher(b), b.key)));
+  return houseHarvestRows(tables);
+}
+
+/** Library key: the folded town, only without a floor area (the copy holds the busiest band). */
+export function lvHouseHistoryKey(p: { town?: string | null; property_type?: string | null; floor_area?: number | null }): { area: string; item: string; label: string } | null {
+  const town = (p.town ?? "").trim();
+  if (!town || (p.floor_area !== undefined && p.floor_area !== null)) return null;
+  if (!isHouseType(p.property_type)) return null;
+  const area = areaKey(town);
+  if (!area || /\b(parish)\b/.test(area)) return null;
+  return { area, item: "house", label: town };
 }

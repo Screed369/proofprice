@@ -3,7 +3,7 @@
 // This folder sorts before lv-vzd-home-sales on purpose: the first source whose serves() says yes is used.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, isHouseType, lvHouseSales } from "./source";
+import { INFO, isHouseType, lvHouseHarvest, lvHouseHistoryKey, lvHouseSales } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -27,5 +27,11 @@ export default defineSource({
   serves: (p) => !!str(p.town) && isHouseType(str(p.property_type)) && str(p.property_type)!.toLowerCase() !== "any",
   method:
     "Latvia houses: the median price per house in EUR (not per m2) of the deals VZD, the State Land Service, registered in its Real Estate Market Database, per town, parish or Riga, by house floor-area band, for the latest full calendar year, with VZD's deal count.",
+  // Stale-if-error copy of VZD's newest full-year house median per place (rows dated 31 December).
+  harvest: () => lvHouseHarvest(),
+  historyKey: (p) => lvHouseHistoryKey({ town: str(p.town), property_type: str(p.property_type), floor_area: num(p.floor_area) }),
+  referenceDates: true,
+  staleMaxDays: 35,
+  noHistory: "Latvia houses: VZD publishes one median per calendar year and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) with property_type=house for the newest year, which carries the previous year.",
   handle: (p, ctx) => lvHouseSales({ town: str(p.town), property_type: str(p.property_type), floor_area: num(p.floor_area), baseUrl: ctx.baseUrl }),
 });
