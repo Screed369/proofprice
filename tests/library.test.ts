@@ -92,6 +92,14 @@ test("/api/v1/library lists only registered sources: an offline source's old fol
   assert.ok(body.sources.some((m: any) => m.source === "es-fuel"));
 });
 
+test("/api/v1/library leaves out a registered source that has no harvest() any more (ro-opcom-power: frozen 403 error)", async () => {
+  writeMeta("ro-opcom-power", { source: "ro-opcom-power", currency: null, unit: null, first_date: null, last_date: null, days: 0, last_harvest_at: "2026-11-04T17:09:41.668Z", last_rows: 0, last_ok_at: null, last_error: "Source returned HTTP 403" } as any);
+  const { GET } = await import("../app/api/v1/library/route");
+  const body: any = await (await GET()).json();
+  assert.ok(!body.sources.some((m: any) => m.source === "ro-opcom-power"));
+  assert.ok(!body.collected_sources.includes("ro-opcom-power"));
+});
+
 test("honesty: an official statistic stores no record count, and history never shows a made-up one (G20261021-PLACEHOLDER-N)", () => {
   const official = (n: number) => ({ area: "ALL", item: "diesel", n, median: 1.45, low: 1.45, high: 1.45, min: 1.45, max: 1.45 });
   // the gate: a real count must reach 5; "no count" passes, because there is no sample to be thin
