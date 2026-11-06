@@ -1,6 +1,6 @@
 // Manifest: Qatar home sales (registered sales, National Planning Council, Qatar Open Data). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, MUNICIPALITY_LIST, qaHomeSales } from "./source";
+import { INFO, MUNICIPALITY_LIST, qaHarvest, qaHistoryKey, qaHomeSales } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -18,5 +18,9 @@ export default defineSource({
   examples: [{ params: { country: "QA", town: "Doha" } }, { params: { country: "QA" }, smoke: false }],
   method:
     "Qatar: median and 10th–90th percentile of registered sale values of villas, houses and residential buildings (QAR, whole plot) in the months before the newest sale in the National Planning Council's sales bulletin (newest sale: Dec 2025); never plots or owners.",
+  harvest: () => qaHarvest(),
+  historyKey: (p, o) => qaHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), months: num(p.months) }, o),
+  referenceDates: true, // the bulletin is republished in batches: a copy stays valid until the publisher adds sales
+  staleMaxDays: 400,
   handle: (p, ctx) => qaHomeSales({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), months: num(p.months), baseUrl: ctx.baseUrl }),
 });

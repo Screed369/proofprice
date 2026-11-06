@@ -9,7 +9,7 @@ import type { Fetcher } from "../../lib/adapters";
 import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { summarise } from "../../lib/stats";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const DOMAIN = "www.data.gov.qa";
 export const DATASET = "weekly-real-estates-sales-bulletin";
@@ -189,4 +189,72 @@ export async function qaHomeSales(input: QaInput, opts: QaOptions = {}): Promise
       notes: ["Qatar publishes this bulletin in batches; the newest registered sale is older than the date of this answer."],
     },
   });
+}
+
+
+// ---------- daily collector (stale-if-error copy) ----------
+// The portal is a single static bulletin that is republished in batches (newest sale 2025-12-31). Once a day the collector reads
+// the last 12 months of home sales up to the newest sale and stores, per municipality (and "ALL" for Qatar) and per type
+// (any / villa / building), the median and 10th-90th percentile of the sale values, 5+ sales only. Aggregates only: no plot,
+// district or owner is kept. The copy stands in for a live answer when data.gov.qa times out (lib/stale.ts, reference dates).
+
+export const HARVEST_MONTHS = 12;
+export const qaItem = (type: QaType) => `${type}:${HARVEST_MONTHS}m`;
+
+/** Library key for a request, or null when the copy cannot answer it (district name, other window, unknown type, postcode). */
+export function qaHistoryKey(p: { town?: string; postcode?: string; property_type?: string; months?: number }, opts?: { monthly?: boolean }): { area: string; item: string; label: string } | null {
+  if (opts?.monthly) return null;
+  if (p.postcode && String(p.postcode).trim()) return null;
+  if (p.months !== undefined && p.months !== null && Number(p.months) !== HARVEST_MONTHS) return null;
+  const type = (p.property_type ?? "any").toLowerCase();
+  if (!(TYPES as readonly string[]).includes(type)) return null;
+  const town = p.town?.trim() || "";
+  let area = "ALL";
+  let label = "Qatar";
+  if (town) {
+    const m = municipalityOf(town);
+    if (!m) return null; // a district: not kept in the library
+    area = m;
+    label = m.replace(/ Municipality$/, "");
+  }
+  return { area, item: qaItem(type as QaType), label };
+}
+
+/** Pure: one library row per municipality (and ALL) and type with at least 5 sales. */
+export function qaDailyRows(sales: QaSale[]): DailyRow[] {
+  const rows: DailyRow[] = [];
+  const add = (area: string, type: QaType, list: QaSale[]) => {
+    const s = summarise(list.map((x) => x.value));
+    if (!s || s.count < 5) return;
+    rows.push({ area, item: qaItem(type), n: s.count, median: s.median, low: s.low, high: s.high, min: s.min, max: s.max });
+  };
+  const byType = (list: QaSale[], t: QaType) => (t === "building" ? list.filter((x) => x.type === "Residential Building") : t === "villa" ? list.filter((x) => /villa|house/i.test(x.type)) : list);
+  const groups: Record<string, QaSale[]> = { ALL: sales };
+  for (const x of sales) (groups[x.municipality] ??= []).push(x);
+  for (const [area, list] of Object.entries(groups)) {
+    if (area !== "ALL" && !Object.values(MUNICIPALITIES).includes(area)) continue;
+    for (const t of TYPES) add(area, t, byType(list, t));
+  }
+  return rows.sort((a, b) => (a.area + a.item).localeCompare(b.area + b.item));
+}
+
+export async function qaHarvest(opts: QaOptions = {}): Promise<HarvestResult> {
+  const newestRows = await odsQuery(DOMAIN, DATASET, { select: ["registration_date"], where: `usage=${q(HOME_USAGE)} and property_value>=${MIN_VALUE}`, orderBy: "registration_date desc", limit: 1 }, { fetcher: opts.fetcher, timeoutMs: 30000 });
+  const newest = typeof newestRows.results[0]?.registration_date === "string" ? newestRows.results[0].registration_date.slice(0, 10) : null;
+  if (!newest) throw new SourceError("The Qatar sales bulletin returned no recent home sales");
+  const from = monthsBack(newest, HARVEST_MONTHS);
+  const got = await odsExport(DOMAIN, DATASET, { select: SELECT, where: buildWhere({ from, municipality: null, type: "any" }), orderBy: "registration_date desc", limit: MAX_ROWS }, { fetcher: opts.fetcher, timeoutMs: 45000, maxRows: MAX_ROWS });
+  if (got.truncated) throw new SourceError(`Qatar home sales in the 12-month window exceed the collector's cap of ${MAX_ROWS} rows`);
+  const sales = parseSales(got.rows);
+  const rows = qaDailyRows(sales);
+  const munis = new Set(rows.filter((r) => r.item === qaItem("any") && r.area !== "ALL").map((r) => r.area));
+  // A real year has 5+ home sales in most municipalities; far fewer means a partial read or a changed layout.
+  if (!rows.some((r) => r.area === "ALL") || munis.size < 3) throw new SourceError(`Only ${munis.size} Qatar municipalities had 5+ home sales in the window; the portal answer looks incomplete.`);
+  return {
+    date: newest,
+    currency: "QAR",
+    unit: "per property sold (plot with its building)",
+    rows,
+    note: `Qatar registered home sales, ${from} (exclusive) to ${newest}, ${rows.length} municipality/type rows over ${munis.size} municipalities, ${sales.length} sales read. Aggregates of 5+ sales only; the bulletin is republished in batches.`,
+  };
 }

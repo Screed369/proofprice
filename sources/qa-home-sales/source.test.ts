@@ -4,7 +4,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildWhere, clampMonths, INFO, municipalityOf, monthsBack, norm, parseSales, qaHomeSales } from "./source";
+import { buildWhere, clampMonths, INFO, municipalityOf, monthsBack, norm, parseSales, qaDailyRows, qaHarvest, qaHistoryKey, qaHomeSales } from "./source";
 import manifest from "./index";
 
 const real = JSON.parse(readFileSync(new URL("./fixture.json", import.meta.url), "utf8"));
@@ -85,4 +85,48 @@ test("manifest: Qatar, home-sales, licensed CC BY", () => {
   assert.deepEqual(manifest.countries, ["QA"]);
   assert.equal(manifest.category, "home-sales");
   assert.match(INFO.licence, /CC BY 4.0/);
+});
+
+// ---- daily collector and library keys ----
+const sale = (muni: string, type: string, value: number) => ({ ...real.results[1], municipality_name: muni, property_type: type, property_value: value });
+const bulk = (muni: string, type: string, n: number, base: number) => [...Array(n)].map((_, i) => sale(muni, type, base + i * 100_000));
+
+test("history key: municipality, type and the 12-month window; districts and other windows have no copy", () => {
+  assert.deepEqual(qaHistoryKey({}), { area: "ALL", item: "any:12m", label: "Qatar" });
+  assert.deepEqual(qaHistoryKey({ town: "Al Rayyan", property_type: "villa" }), { area: "Al Rayyan Municipality", item: "villa:12m", label: "Al Rayyan" });
+  assert.equal(qaHistoryKey({ town: "Luaib" }), null);
+  assert.equal(qaHistoryKey({ months: 6 }), null);
+  assert.equal(qaHistoryKey({ postcode: "1234" }), null);
+  assert.equal(qaHistoryKey({ property_type: "castle" }), null);
+  assert.equal(qaHistoryKey({}, { monthly: true }), null);
+  assert.deepEqual(qaHistoryKey({ months: 12 }), { area: "ALL", item: "any:12m", label: "Qatar" });
+});
+
+test("daily rows: 5+ sales only, per municipality and type, plus ALL; no district kept", () => {
+  const sales = parseSales([...bulk("Doha Municipality", "Residential Building", 6, 3_000_000), ...bulk("Doha Municipality", "Villa", 5, 4_000_000), ...bulk("Al Wakra Municipality", "Villa", 4, 2_000_000)]);
+  const rows = qaDailyRows(sales);
+  const key = (a: string, i: string) => rows.find((r) => r.area === a && r.item === i);
+  assert.equal(key("Doha Municipality", "any:12m")?.n, 11);
+  assert.equal(key("Doha Municipality", "building:12m")?.n, 6);
+  assert.equal(key("Doha Municipality", "villa:12m")?.n, 5);
+  assert.equal(key("Al Wakra Municipality", "any:12m"), undefined); // only 4
+  assert.equal(key("ALL", "any:12m")?.n, 15);
+  assert.ok(rows.every((r) => r.n >= 5));
+});
+
+test("harvest: dated from the newest sale, rejects a partial read", async () => {
+  const rows = [...bulk("Doha Municipality", "Residential Building", 6, 3_000_000), ...bulk("Al Rayyan Municipality", "Villa", 6, 2_000_000), ...bulk("Umm Slal Municipality", "Villa", 6, 1_500_000)];
+  const { f } = fakeFetcher(rows.map((r) => ({ ...r, registration_date: "2025-12-31" })));
+  const h = await qaHarvest({ fetcher: f });
+  assert.equal(h.date, "2025-12-31");
+  assert.equal(h.currency, "QAR");
+  assert.ok(h.rows.some((r) => r.area === "ALL" && r.n === 18));
+  const thin = fakeFetcher(bulk("Doha Municipality", "Villa", 6, 2_000_000));
+  await assert.rejects(qaHarvest({ fetcher: thin.f }), /looks incomplete/);
+});
+
+test("manifest wires the harvest, the history key and reference dates", () => {
+  assert.equal(typeof manifest.harvest, "function");
+  assert.equal(typeof manifest.historyKey, "function");
+  assert.equal(manifest.referenceDates, true);
 });
