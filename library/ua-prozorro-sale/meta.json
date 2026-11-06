@@ -3,11 +3,19 @@
   "currency": "UAH",
   "unit": "per lot",
   "first_date": "2026-10-24",
-  "last_date": "2026-11-05",
-  "days": 11,
-  "last_harvest_at": "2026-11-05T10:55:51.624Z",
-  "last_rows": 95,
-  "last_ok_at": "2026-11-05T10:55:51.624Z",
-  "last_error": null,
-  "note": "33469 procedures read in 335 pages; 1850 concluded sales (not leases) signed 2026-09-06 to 2026-11-05."
+  "last_date": "2026-11-06",
+  "days": 12,
+  "last_harvest_at": "2026-11-06T10:57:14.217Z",
+  "last_rows": 94,
+  "last_ok_at": "2026-11-06T10:57:14.217Z",
+  "last_error": "Data check held back 1 key for 2026-11-06 (previous kept): lviv/electronics: median 25000 vs previous 2355000 on 2026-11-05 (0.01x).",
+  "note": "33506 procedures read in 336 pages; 1877 concluded sales (not leases) signed 2026-09-07 to 2026-11-06.",
+  "held_streak": {
+    "lviv::electronics": {
+      "median": 25000,
+      "dates": [
+        "2026-11-06"
+      ]
+    }
+  }
 }
