@@ -74,12 +74,13 @@ test("manifest: groceries tool, AE only, licence unclear so free tier", () => {
   assert.match(INFO.licence, /UNVERIFIED/);
 });
 
-test("library-first: a copy collected within 36 hours is fresh, an older or missing one is not", () => {
+test("library-first: a copy collected within 72 hours is fresh, an older or missing one is not", () => {
   const now = Date.parse("2026-11-05T12:00:00Z");
-  assert.equal(LIBRARY_FRESH_HOURS, 36);
+  assert.equal(LIBRARY_FRESH_HOURS, 72);
   assert.equal(libraryIsFresh("2026-11-05T10:55:35.718Z", now), true);
   assert.equal(libraryIsFresh("2026-11-04T06:00:00Z", now), true);
-  assert.equal(libraryIsFresh("2026-11-03T11:00:00Z", now), false);
+  assert.equal(libraryIsFresh("2026-11-03T11:00:00Z", now), true); // 49 h: the shipped copy before the next deploy
+  assert.equal(libraryIsFresh("2026-11-02T11:00:00Z", now), false);
   assert.equal(libraryIsFresh(null, now), false);
   assert.equal(libraryIsFresh("not a date", now), false);
   assert.equal(libraryIsFresh("2026-11-06T00:00:00Z", now), false);

@@ -188,8 +188,9 @@ export function answerFromRows(day: { date: string; rows: DailyRow[] }, input: {
   });
 }
 
-/** The collector's copy is fresh enough to answer from when it was collected within this many hours. */
-export const LIBRARY_FRESH_HOURS = 36;
+/** The collector's copy is fresh enough to answer from when it was collected within this many hours.
+ * 72: the page changes about monthly, and the collector (about 11:30 UTC) runs after the Librarian deploy (07:20 UTC), so the shipped copy is up to ~44 h old before the next deploy. 36 made production fall back to the slow live fetch every evening. */
+export const LIBRARY_FRESH_HOURS = 72;
 
 export function libraryIsFresh(lastOkAt: string | null | undefined, now = Date.now()): boolean {
   const t = lastOkAt ? Date.parse(lastOkAt) : NaN;
