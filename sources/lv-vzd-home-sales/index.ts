@@ -1,7 +1,7 @@
 // Manifest: Latvia home sales (VZD apartment sale statistics from the Real Estate Market Database). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, lvHomeSales } from "./source";
+import { INFO, lvHarvest, lvHistoryKey, lvHomeSales } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -27,5 +27,12 @@ export default defineSource({
   serves: (p) => !!str(p.town),
   method:
     "Latvia: the median price per apartment in EUR (not per m2) of the deals VZD, the State Land Service, registered in its Real Estate Market Database, per town, parish or Riga, by room count, for the latest full calendar year, with VZD's deal count.",
+  // Stale-if-error copy: the collector stores VZD's newest full-year median per place once a day (rows dated 31 December of that year).
+  // Declared change for the platform gate: harvest + historyKey + referenceDates + staleMaxDays + noHistory added by the Depth Builder.
+  harvest: () => lvHarvest(),
+  historyKey: (p) => lvHistoryKey({ town: str(p.town), property_type: str(p.property_type), rooms: num(p.rooms) }),
+  referenceDates: true,
+  staleMaxDays: 35,
+  noHistory: "Latvia: VZD publishes one median per calendar year and ProofPrice keeps no separate history of it yet. Ask pricepaid_home_sales (/api/v1/home-sales) for the newest year, which carries the previous year.",
   handle: (p, ctx) => lvHomeSales({ town: str(p.town), property_type: str(p.property_type), rooms: num(p.rooms), baseUrl: ctx.baseUrl }),
 });

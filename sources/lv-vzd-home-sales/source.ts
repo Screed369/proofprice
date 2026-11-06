@@ -7,7 +7,7 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
 export const PAGE_URL = "https://data.gov.lv/dati/lv/dataset/tirgus-statistika";
 export const BASE = "https://data.gov.lv/dati/lv/dataset/tirgus-statistika/resource";
@@ -311,4 +311,69 @@ export async function lvHomeSales(
   const sizes = rooms !== null ? [rooms] : [1, 2, 3, 4];
   const tables = await Promise.all(sizes.map((r) => loadTable(r, { fetcher: o.fetcher, now: o.now })));
   return lvAnswer(tables, q);
+}
+
+// ---------- the daily copy (stale-if-error) ----------
+// Once a day the collector stores, for every town, parish, municipality (its towns) and Riga, the median of the apartment size with the
+// most deals (the same size the live answer picks when no rooms are given), for VZD's newest full year. If data.gov.lv does not answer,
+// the shared stale-if-error path answers a town question from that copy. Rows are dated by the year they describe (31 December).
+
+/** Library area key for a place name: its folded name ("riga", "valmiera", "valmieras novads", "bebru pagasts"). */
+export const areaKey = (name: string): string => fold(name).replace(/\b(latvia|latvija|lv)$/, "").trim();
+
+export function harvestRows(tables: LvTable[], minPlaces = 20): HarvestResult {
+  const newest = Math.max(0, ...tables.flatMap((t) => t.years));
+  if (!newest) throw new SourceError("VZD's price tables hold no year to collect", PAGE_URL);
+  // area -> best room count (most deals) for the newest year
+  const best = new Map<string, { n: number; stat: Stat }>();
+  const seen = new Map<string, number>(); // area -> how many different places fold to it
+  for (const tb of tables) {
+    for (const r of tb.rows) {
+      const isUrban = isUrbanTotal(r);
+      let area: string | null = null;
+      if (fold(r.municipality) === "riga") area = "riga";
+      else if (isUrban) area = areaKey(r.municipality);
+      else if (!isTotalRow(r)) area = areaKey(r.place);
+      if (!area) continue;
+      const st = r.byYear[newest];
+      if (tb === tables[0]) seen.set(area, (seen.get(area) ?? 0) + 1);
+      if (!st || st.n < MIN_SALES || st.median === null || st.median <= 0) continue;
+      const cur = best.get(area);
+      if (!cur || st.n > cur.n) best.set(area, { n: st.n, stat: st });
+    }
+  }
+  const rows: DailyRow[] = [];
+  for (const [area, { n, stat }] of best) {
+    // a name used by two different places (or a town that shares its name with its municipality's town total) is ambiguous: leave it out
+    if ((seen.get(area) ?? 0) > 1) continue;
+    const median = stat.median!;
+    rows.push({ area, item: "apartment", n, median, low: stat.min ?? median, high: stat.max ?? median, min: stat.min ?? median, max: stat.max ?? median });
+  }
+  if (rows.length < minPlaces) throw new SourceError(`VZD's price tables gave only ${rows.length} places with ${MIN_SALES}+ deals; the file may have changed`, PAGE_URL);
+  rows.sort((a, b) => a.area.localeCompare(b.area));
+  return {
+    date: `${newest}-12-31`,
+    currency: "EUR",
+    unit: "per apartment",
+    rows,
+    note: `VZD Real Estate Market Statistics ${newest}: median apartment price per town, parish, municipality (towns) and Riga, for the room count with the most deals; places with fewer than ${MIN_SALES} deals left out. Low/high are the cheapest and dearest single deals, not percentiles.`,
+  };
+}
+
+export async function lvHarvest(o: { fetcher?: CsvFetcher } = {}): Promise<HarvestResult> {
+  const fetcher = o.fetcher ?? downloadCsv;
+  const tables = await Promise.all([1, 2, 3, 4].map(async (r) => parseCsv(await fetcher(r), r)));
+  return harvestRows(tables);
+}
+
+/** Library key for a request: the folded town, only without a room count (the copy holds the busiest size). Null when the copy cannot answer. */
+export function lvHistoryKey(p: { town?: string | null; property_type?: string | null; rooms?: number | null }): { area: string; item: string; label: string } | null {
+  const town = (p.town ?? "").trim();
+  if (!town) return null;
+  if (p.rooms !== undefined && p.rooms !== null) return null;
+  const t = (p.property_type ?? "").trim().toLowerCase();
+  if (t && !["any", "flat", "flats", "apartment", "apartments"].includes(t)) return null;
+  const area = areaKey(town);
+  if (!area || /\b(parish)\b/.test(area)) return null;
+  return { area, item: "apartment", label: town };
 }

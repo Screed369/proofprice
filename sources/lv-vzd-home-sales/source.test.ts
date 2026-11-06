@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS } from "../../lib/registry";
-import { clearCache, findPlace, INFO, loadTable, lvAnswer, lvHomeSales, parseCsv, splitLine } from "./source";
+import { areaKey, clearCache, findPlace, harvestRows, INFO, loadTable, lvAnswer, lvHarvest, lvHistoryKey, lvHomeSales, parseCsv, splitLine } from "./source";
 
 // Fixture: rows copied from the live VZD file publish_statistika_dzivokli_2_gads.csv (2-room apartments, yearly), read from
 // GitHub Actions on 2026-10-24 (UTF-8 with BOM, comma separated, quoted text, empty cell = not published). Trimmed to the rows used.
@@ -145,4 +145,48 @@ test("manifest: serves a Latvian request only when a town is named, so the Euros
   assert.equal(s.serves!({ country: "LV" }), false);
   assert.equal(idx.serves!({ country: "LV" }), true);
   assert.equal(idx.serves!({ country: "LV", town: "Riga" }), false);
+});
+
+// ---------- the daily copy ----------
+
+test("harvest: one row per place from the busiest room count, newest year, places under 5 deals left out", () => {
+  const h = harvestRows([two, three], 3);
+  assert.equal(h.date, "2025-12-31");
+  assert.equal(h.currency, "EUR");
+  assert.equal(h.unit, "per apartment");
+  const by = Object.fromEntries(h.rows.map((r) => [r.area, r]));
+  assert.equal(by["riga"].n, 5200); // the synthetic 3-room table has more Riga deals than the 2-room table
+  assert.equal(by["riga"].median, 81000);
+  assert.equal(by["aizkraukle"].n, 67);
+  assert.equal(by["aizkraukle"].median, 17300);
+  assert.equal(by["valmieras novads"].median, 32000); // the municipality's town total
+  assert.equal(by["valmiera"].n, 98);
+  assert.equal(by["bebru pagasts"], undefined, "4 deals in 2025 is under 5");
+  assert.equal(by["aiviekstes pagasts"], undefined, "no 2025 figure");
+  assert.ok(h.rows.every((r) => r.item === "apartment" && r.n >= 5));
+  assert.throws(() => harvestRows([two], 50), SourceError);
+});
+
+test("harvest through a fetcher parses all four room files", async () => {
+  const seen: number[] = [];
+  const h = await lvHarvest({ fetcher: async (r) => { seen.push(r); return csv(ROWS).replace(/2_istabu/g, `${r}_istabu`); } }).catch((e) => e);
+  assert.deepEqual(seen.sort(), [1, 2, 3, 4]);
+  assert.ok(h instanceof SourceError, "the small fixture has fewer than 20 places, so the sanity floor stops it");
+});
+
+test("history key: folded town, apartments only, no room count", () => {
+  assert.deepEqual(lvHistoryKey({ town: "Rīga" }), { area: "riga", item: "apartment", label: "Rīga" });
+  assert.equal(lvHistoryKey({ town: "Valmieras novads" })!.area, "valmieras novads");
+  assert.equal(lvHistoryKey({ town: "Riga", rooms: 2 }), null);
+  assert.equal(lvHistoryKey({ town: "Riga", property_type: "house" }), null);
+  assert.equal(lvHistoryKey({ town: "Bebru parish" }), null);
+  assert.equal(lvHistoryKey({ town: null }), null);
+  assert.equal(areaKey("Jūrmala, Latvia"), "jurmala");
+});
+
+test("manifest declares the copy: harvest, historyKey, reference dates", () => {
+  const src = SOURCE_PLUGINS.find((s) => s.info.id === "lv-vzd-home-sales")!;
+  assert.ok(src.harvest && src.historyKey);
+  assert.equal(src.referenceDates, true);
+  assert.deepEqual(src.historyKey!({ town: "Riga" }), { area: "riga", item: "apartment", label: "Riga" });
 });
