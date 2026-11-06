@@ -37,6 +37,12 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
 const PLACE_PARAMS = ["postcode", "area", "town", "region", "county", "department", "province", "city", "commune", "postcode_district"];
 
 /** The sentence agents and people see, word for word. */
+/** Opening words of a stale summary. Library item keys can be internal ("Brown Eggs|piece"): then the area label already names the item. */
+export function staleLead(itemLabel: string, areaLabel: string): { lead: string; item: string } {
+  if (itemLabel.includes("|")) return { lead: `${areaLabel}: `, item: itemLabel.split("|")[0].trim() };
+  return { lead: `${itemLabel} in ${areaLabel}: `, item: itemLabel };
+}
+
 export const staleSentence = (date: string) => `The official source did not respond; this is our copy from ${date}.`;
 /** The same for a source whose library rows are dated by the period the figure is for (referenceDates). */
 export const staleReferenceSentence = (date: string, collected: string) =>
@@ -108,7 +114,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         "It is shown because the live source did not respond. The copy covers the area named in the summary.",
       method_url: (o.baseUrl ?? "") + METHOD_URL,
       summary:
-        `${itemLabel} in ${key.label}: ` +
+        staleLead(itemLabel, key.label).lead +
         (src.nominalCounts ? `${money(last.median)} ${unit}, ` : `median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), `) +
         `based on ${src.nominalCounts ? "the published figure (no record count is published)" : hasCount(last.n) ? `${last.n} records` : "the published figure"} in our copy of ${src.info.name} (${src.info.publisher}) ${collected ? `for ${last.date}` : `taken on ${last.date}`}. ${sentence} Confidence: ${conf}.`,
       notice: `${sentence} ${NOTICE}`,
@@ -116,7 +122,7 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         stale: true,
         snapshot_date: last.date,
         snapshot_area: key.label,
-        snapshot_item: itemLabel,
+        snapshot_item: staleLead(itemLabel, key.label).item,
         live_source_error: String(err?.message ?? err ?? "unknown").slice(0, 200),
       },
     }, src.info);
