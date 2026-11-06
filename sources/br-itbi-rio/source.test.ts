@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync, mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { parseRows, kindOf, dailyRows, resolveArea, rioKey, rioHistoryKey, rioHomeSales, servesRio, monthsBack, ymToDate, type Group } from "./source";
+import { parseRows, yearlyDailyRows, kindOf, dailyRows, resolveArea, rioKey, rioHistoryKey, rioHomeSales, servesRio, monthsBack, ymToDate, type Group } from "./source";
 import { parseArcgisQuery } from "../../lib/adapters";
 
 // Fixture: the first residential rows of Aug 2026 from the live layer (Fazenda/ITBI MapServer/8), probed 1 Nov 2026.
@@ -117,6 +117,60 @@ test("BR-RIO: answer from the library: labelled as declared value, per m2, widen
     const thin = await rioHomeSales({ town: "Copacabana", property_type: "house" });
     assert.notEqual(thin.status, "ok");
     assert.equal(thin.price, null);
+  } finally {
+    if (prev === undefined) delete process.env.PROOFPRICE_LIBRARY_DIR; else process.env.PROOFPRICE_LIBRARY_DIR = prev;
+  }
+});
+
+// Fixture: first rows of the city's yearly layer (Fazenda/ITBI MapServer/4), read 6 Nov 2026 while the monthly layer 8 was empty (count 0).
+const liveYear = parseArcgisQuery(JSON.parse(readFileSync(path.join(__dirname, "fixtures", "layer4-head.json"), "utf8")));
+
+test("BR-RIO yearly fallback: layer 4 rows parse without a month; the 95% rule replaces 99.5%", () => {
+  const g = parseRows(liveYear.rows, true);
+  assert.ok(g.length >= 5);
+  assert.equal(g[0].ym, 2026 * 12 + 11);
+  assert.equal(g[0].area, "barra-olimpica");
+  assert.equal(g[0].weight, 60); // 142 transfers capped
+  assert.equal(parseRows(liveYear.rows, false).length < g.length, true); // the monthly rule would drop the 98.5% rows
+  assert.ok(!JSON.stringify(g).match(/logradouro/i));
+});
+
+test("BR-RIO yearly fallback: 12m = newest year to date, 24m = that year and the one before, under 5 never published", () => {
+  const Y = 2026;
+  const groups = [...mk("copacabana", Y * 12 + 11, 3, 800000, 2), ...mk("copacabana", (Y - 1) * 12 + 11, 3, 700000, 2), ...mk("tijuca", (Y - 2) * 12 + 11, 9, 500000)];
+  const r = yearlyDailyRows(groups, Y, "2026-11-06");
+  assert.equal(r.date, "2026-11-06");
+  assert.equal(r.year, 2026);
+  const get = (a: string, i: string) => r.rows.find((x) => x.area === a && x.item === i);
+  assert.equal(get("copacabana", "any:12m")?.n, 6);
+  assert.equal(get("copacabana", "any:24m")?.n, 12);
+  assert.equal(get("tijuca", "any:24m"), undefined); // two years back is out
+  assert.equal(get("ALL", "any:3m"), undefined); // no month windows in yearly mode
+});
+
+test("BR-RIO yearly fallback: the answer says calendar year, not months", async () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "rio-lib-y-"));
+  mkdirSync(path.join(dir, "br-itbi-rio", "daily"), { recursive: true });
+  writeFileSync(path.join(dir, "br-itbi-rio", "meta.json"), JSON.stringify({ last_date: "2026-11-06", note: "yearly:2026 The city's monthly layer is empty" }));
+  writeFileSync(path.join(dir, "br-itbi-rio", "daily", "2026-11.csv"), [
+    "date,area,item,n,median,low,high,min,max",
+    "2026-11-06,copacabana,apartment:12m,400,900000,500000,1800000,200000,4000000",
+    "2026-11-06,urca,any:24m,7,1500000,900000,2500000,800000,3000000",
+  ].join("\n") + "\n");
+  const prev = process.env.PROOFPRICE_LIBRARY_DIR;
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
+  try {
+    const a = await rioHomeSales({ town: "Copacabana", property_type: "apartment", months: 3 });
+    assert.equal(a.status, "ok");
+    assert.deepEqual(a.period, { from: "2026-01-01", to: "2026-11-06" });
+    assert.match(a.summary, /calendar-year figures: 2026 to date/);
+    assert.match(a.method, /calendar-year layer/);
+    assert.equal((a.extra as any).granularity, "calendar year");
+    const u = await rioHomeSales({ town: "Urca" });
+    assert.deepEqual(a.price?.median, 900000);
+    assert.deepEqual(u.period, { from: "2025-01-01", to: "2026-11-06" });
+    assert.equal((u.extra as any).window_widened, true);
+    assert.match(u.summary, /2025 and 2026/);
   } finally {
     if (prev === undefined) delete process.env.PROOFPRICE_LIBRARY_DIR; else process.env.PROOFPRICE_LIBRARY_DIR = prev;
   }

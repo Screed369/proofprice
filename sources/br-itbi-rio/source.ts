@@ -33,7 +33,8 @@ export const INFO: SourceInfo = {
     "Rio de Janeiro city only, not the rest of Brazil. The figure is the transaction value declared for the transfer tax (ITBI), not a verified price paid. " +
     "The city publishes street-month averages, not single sales, so ranges are spread between street-month averages and are narrower than single sales would give. " +
     "Residential apartments and houses bought and sold in full (100% transferred) only (promises of sale, parking spaces, rooms and commercial property are left out); values under BRL 30,000 and of BRL 20 million or more are dropped. " +
-    "Aggregates only, by neighbourhood (bairro) and rolling window; never streets.",
+    "Aggregates only, by neighbourhood (bairro) and rolling window; never streets. " +
+    "While the city's monthly layer is empty (from Nov 2026) the figures come from its calendar-year layer (year to date and last two years) and keep transfers that are at least 95% full-property on average.",
   method_version: "1",
 };
 
@@ -45,6 +46,9 @@ export const MIN_VALUE = 30_000;
 export const MAX_VALUE = 20_000_000; // exclusive
 export const M2_RANGE: [number, number] = [1_000, 60_000]; // BRL per m2 of built area
 export const MIN_AREA = 15; // m2 to count a price per m2
+export const YEARLY_MIN_PERC = 95; // yearly rows average the share transferred over many transfers, so a few part-transfers pull it just under 100
+export const YEARLY_LAYER_URL = "https://pgeo3.rio.rj.gov.br/arcgis/rest/services/Fazenda/ITBI/MapServer/4";
+export const YEARLY_NOTE = "yearly:";
 export const MAX_WEIGHT = 60; // most transfers one street-month row counts as
 
 /** One street-month group, reduced: no street. */
@@ -64,7 +68,7 @@ export function kindOf(tipologia: string): Kind | null {
 }
 
 /** Parse the attribute rows of the ArcGIS layer into plausible residential groups. Reads fields by name; streets are never read. */
-export function parseRows(rows: Record<string, any>[]): Group[] {
+export function parseRows(rows: Record<string, any>[], yearly = false): Group[] {
   const out: Group[] = [];
   if (rows.length && !("média_valor_transação" in rows[0] && "bairro" in rows[0] && "ano_transação" in rows[0])) {
     throw new SourceError("The Rio ITBI layer has an unexpected format (fields changed)", Object.keys(rows[0]).join(",").slice(0, 200));
@@ -73,10 +77,10 @@ export function parseRows(rows: Record<string, any>[]): Group[] {
     if (normaliseName(String(r["uso"] ?? "")) !== "residencial") continue;
     if (!/compra e venda/i.test(String(r["principal_transação_mercado"] ?? "").normalize("NFD").replace(/[̀-ͯ]/g, ""))) continue;
     const perc = Number(r["média_percentual_transferido"]);
-    if (!Number.isFinite(perc) || perc < 99.5) continue;
+    if (!Number.isFinite(perc) || perc < (yearly ? YEARLY_MIN_PERC : 99.5)) continue;
     const kind = kindOf(String(r["principais_tipologias"] ?? ""));
     if (!kind) continue;
-    const y = Number(r["ano_transação"]), m = Number(r["mês_transação"]);
+    const y = Number(r["ano_transação"]), m = yearly ? 12 : Number(r["mês_transação"]);
     const value = Number(r["média_valor_transação"]);
     const n = Math.floor(Number(r["total_transações"]));
     const area = slug(String(r["bairro"] ?? ""));
@@ -123,6 +127,28 @@ export function dailyRows(groups: Group[], thisMonth: number): { date: string; r
   return { date: ymToDate(last), rows: aggregateDaily(recs, true).filter((r) => r.n >= MIN_PUBLISH) };
 }
 
+/** Fallback while the city's monthly layer is empty: its yearly layer has calendar-year rows only. Items "<type>:12m" = the newest calendar year to date,
+ *  "<type>:24m" = that year and the one before. `today` is the collection day (the data describes the year to date). */
+export function yearlyDailyRows(groups: Group[], thisYear: number, today: string): { date: string; year: number; rows: DailyRow[] } {
+  const valid = groups.filter((g) => Math.floor(g.ym / 12) <= thisYear);
+  if (!valid.length) throw new SourceError("The Rio ITBI yearly layer held no usable residential groups");
+  const year = Math.floor(valid.reduce((a, g) => Math.max(a, g.ym), 0) / 12);
+  const recs: { area: string; item: string; price: number }[] = [];
+  for (const g of valid) {
+    const gy = Math.floor(g.ym / 12);
+    const wins = gy === year ? [12, 24] : gy === year - 1 ? [24] : [];
+    for (const m of wins) {
+      for (const t of ["any", g.kind] as const) {
+        for (let i = 0; i < g.weight; i++) {
+          recs.push({ area: g.area, item: `${t}:${m}m`, price: g.value });
+          if (g.m2 !== null) recs.push({ area: g.area, item: `${t}-m2:${m}m`, price: g.m2 });
+        }
+      }
+    }
+  }
+  return { date: today, year, rows: aggregateDaily(recs, true).filter((r) => r.n >= MIN_PUBLISH) };
+}
+
 const FIELDS = ["bairro", "total_transações", "uso", "principais_tipologias", "média_percentual_transferido", "média_área_construída", "média_valor_transação", "principal_transação_mercado", "ano_transação", "mês_transação"];
 
 /** The daily collector: the newest three calendar years of residential purchase-and-sale rows cover the 24-month window. */
@@ -130,7 +156,15 @@ export async function rioHarvest(): Promise<HarvestResult> {
   const now = new Date();
   const where = `uso='RESIDENCIAL' AND principal_transação_mercado='COMPRA E VENDA' AND ano_transação>=${now.getUTCFullYear() - 2}`;
   const res = await arcgisAll(LAYER_URL, { where, outFields: FIELDS, orderByFields: "objectid ASC" }, { maxRows: 50_000, pageSize: 2000, timeoutMs: 90_000 });
-  if (!res.rows.length) throw new SourceError("The Rio ITBI layer returned no rows");
+  if (!res.rows.length) {
+    // The city emptied its monthly layer (Nov 2026). Use its yearly layer instead and say so in the note and in every answer.
+    const yFields = FIELDS.filter((f) => f !== "mês_transação");
+    const yWhere = `uso='RESIDENCIAL' AND principal_transação_mercado='COMPRA E VENDA' AND ano_transação>=${now.getUTCFullYear() - 1}`;
+    const yr = await arcgisAll(YEARLY_LAYER_URL, { where: yWhere, outFields: yFields, orderByFields: "objectid ASC" }, { maxRows: 50_000, pageSize: 2000, timeoutMs: 90_000 });
+    if (!yr.rows.length) throw new SourceError("The Rio ITBI layers (monthly and yearly) returned no rows");
+    const y = yearlyDailyRows(parseRows(yr.rows, true), now.getUTCFullYear(), now.toISOString().slice(0, 10));
+    return { date: y.date, currency: "BRL", unit: "per home", rows: y.rows, note: `${YEARLY_NOTE}${y.year} The city's monthly layer is empty, so this uses its calendar-year layer: windows are the year ${y.year} to date (12m) and ${y.year - 1} to ${y.year} (24m); residential ITBI declared transaction values, street-year averages weighted by transfers.` };
+  }
   const groups = parseRows(res.rows);
   const { date, rows } = dailyRows(groups, now.getUTCFullYear() * 12 + now.getUTCMonth());
   return { date, currency: "BRL", unit: "per home", rows, note: `Windows of 3/6/12/24 months ending ${date}; residential ITBI declared transaction values (apartments and houses), street-month averages weighted by transfers.` };
@@ -229,6 +263,9 @@ export async function rioHomeSales(input: { town?: string; property_type?: strin
   const to = meta.last_date;
   const from = new Date(Date.parse(to + "T00:00:00Z") - 60 * 86400000).toISOString().slice(0, 10);
   const pick = (item: string) => { const r = readDaily(INFO.id, { area: k.area, item, from, to }); return r[r.length - 1]; };
+  const yearMatch = /^yearly:(\d{4})\b/.exec(meta.note ?? "");
+  const dataYear = yearMatch ? Number(yearMatch[1]) : null;
+  if (dataYear) { k.months = k.months > 12 ? 24 : 12; k.item = `${k.type}:${k.months}m`; }
   let row = pick(k.item), usedMonths = k.months, widened = false;
   if (!row || row.n < MIN_PUBLISH) {
     for (const m of WINDOWS) {
@@ -250,6 +287,19 @@ export async function rioHomeSales(input: { town?: string; property_type?: strin
   }
   const m2row = pick(`${k.type}-m2:${usedMonths}m`);
   const a = rioAnswerFromRow(row, m2row, { label: k.label, type: k.type, months: usedMonths, baseUrl: input.baseUrl });
+  if (dataYear) {
+    const fromYear = usedMonths > 12 ? dataYear - 1 : dataYear;
+    a.period = { from: `${fromYear}-01-01`, to: to };
+    a.method += ` NOTE: the city's monthly layer is currently empty, so this answer uses its calendar-year layer: ${usedMonths > 12 ? `${fromYear} and ${dataYear} to date` : `${dataYear} to date`}, street-year averages weighted by transfers.`;
+    a.extra = { ...(a.extra ?? {}), granularity: "calendar year", window_years: usedMonths > 12 ? [fromYear, dataYear] : [dataYear] };
+    a.summary = a.summary.replace(/^(.*?)\. This is the value declared/, (_m, head) => `${head} (calendar-year figures: ${usedMonths > 12 ? `${fromYear} and ${dataYear}` : `${dataYear}`} to date; the city's monthly layer is currently empty). This is the value declared`);
+    if (widened) {
+      (a.query as Record<string, unknown>).months = input.months ?? 12;
+      a.summary = `Fewer than ${MIN_PUBLISH} ${word} transfers in ${k.label} in ${dataYear} to date, so this uses ${dataYear - 1} and ${dataYear}. ` + a.summary;
+      a.extra = { ...(a.extra ?? {}), window_widened: true, window_months: usedMonths };
+    }
+    return a;
+  }
   if (widened) {
     (a.query as Record<string, unknown>).months = k.months;
     a.summary = `Fewer than ${MIN_PUBLISH} ${word} transfers in ${k.label} in the last ${k.months} months, so this uses the last ${usedMonths} months. ` + a.summary;
