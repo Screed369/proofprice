@@ -317,3 +317,32 @@ test("FR live outage: the first call times out, the next ones fail fast as outag
     frResetBreaker();
   }
 });
+
+test("FR: departments can be asked by name (Gironde, Rhône, Côte-d'Or, Corse-du-Sud), code or 'département du ...'", async () => {
+  const { frDepartmentCode, FR_DEPARTMENT_NAMES } = await import("./departments");
+  assert.equal(frDepartmentCode("Gironde"), "33");
+  assert.equal(frDepartmentCode("gironde "), "33");
+  assert.equal(frDepartmentCode("Rhône"), "69");
+  assert.equal(frDepartmentCode("rhone"), "69");
+  assert.equal(frDepartmentCode("Ardennes"), "08");
+  assert.equal(frDepartmentCode("Haute-Saône"), "70");
+  assert.equal(frDepartmentCode("haute saone"), "70");
+  assert.equal(frDepartmentCode("Côte-d'Or"), "21");
+  assert.equal(frDepartmentCode("département du Nord"), "59");
+  assert.equal(frDepartmentCode("Corse-du-Sud"), "2A");
+  assert.equal(frDepartmentCode("Haute-Corse"), "2B");
+  assert.equal(frDepartmentCode("La Réunion"), "974");
+  assert.equal(frDepartmentCode("2a"), "2A");
+  assert.equal(frDepartmentCode("69"), "69");
+  assert.equal(frDepartmentCode("971"), "971");
+  assert.equal(frDepartmentCode("Atlantis"), null);
+  assert.equal(frDepartmentCode("'><a"), null);
+  assert.equal(Object.keys(FR_DEPARTMENT_NAMES).length, 101);
+});
+
+test("FR: an unknown area text is a clear 400, not a query for 'department A'; a name feeds the history key as its code", async () => {
+  const { frFuelNow, frHistoryKey } = await import("./source");
+  await assert.rejects(() => frFuelNow({ department: "Atlantis", fuel: "gazole" }), /not a French department.*area=Gironde/);
+  assert.deepEqual(frHistoryKey({ department: "Gironde", fuel: "diesel" }), { area: "33", item: "diesel", label: "department 33" });
+  assert.equal(frHistoryKey({ department: "Atlantis", fuel: "diesel" }), null);
+});

@@ -18,6 +18,7 @@ import { previousByKey } from "../../lib/library/check";
 import type { LibraryRow } from "../../lib/library/store";
 import type { Fuel } from "../../lib/fuels";
 import { nationalRow, widenSentence } from "../../lib/widen";
+import { frDepartmentCode } from "./departments";
 
 export const INFO: SourceInfo = {
   id: "fr-fuel",
@@ -156,7 +157,9 @@ export async function frFuelNow(input: {
     where = `cp="${cp}"`;
     area = `postcode ${cp}`;
   } else if (input.department) {
-    const d = input.department.replace(/[^0-9AB]/gi, "").toUpperCase().slice(0, 3);
+    const d = frDepartmentCode(input.department);
+    if (!d) throw new InputError(`'${input.department}' is not a French department. Give its code or name, e.g. area=33 or area=Gironde (2A and 2B for Corsica).`);
+    input = { ...input, department: d };
     where = `code_departement="${d}"`;
     area = `department ${d}`;
   } else {
@@ -382,8 +385,8 @@ export function frHistoryKey(p: { postcode?: string; department?: string; fuel: 
     return d ? { area: d, item: p.fuel, label: `department ${d}` } : null;
   }
   if (p.department) {
-    const d = p.department.trim().toUpperCase();
-    return /^(\d{2,3}|2A|2B)$/.test(d) ? { area: d, item: p.fuel, label: `department ${d}` } : null;
+    const d = frDepartmentCode(p.department);
+    return d ? { area: d, item: p.fuel, label: `department ${d}` } : null;
   }
   return { area: "ALL", item: p.fuel, label: "metropolitan France" };
 }

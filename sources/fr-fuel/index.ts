@@ -16,7 +16,7 @@ export default defineSource({
   crossCheck: CROSS_CHECK,
   paramNotes: {
     postcode: "FR: 5-digit postcode, e.g. '75015'.",
-    area: "FR: department ('69', '2A').",
+    area: "FR: department code or name ('69', '2A', 'Gironde', 'Rhône').",
     fuel:
       "France: petrol95 means SP95 only (about a quarter of French 95-octane stations, and the dearer fuel). Most stations sell E10 instead, which is a separate item and already available: ask for fuel=e10 for the common 95-octane petrol. Also diesel, petrol98 (SP98), e85 and lpg.",
   },
