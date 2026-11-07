@@ -346,3 +346,29 @@ test("FR: an unknown area text is a clear 400, not a query for 'department A'; a
   assert.deepEqual(frHistoryKey({ department: "Gironde", fuel: "diesel" }), { area: "33", item: "diesel", label: "department 33" });
   assert.equal(frHistoryKey({ department: "Atlantis", fuel: "diesel" }), null);
 });
+
+test("FR: area=<region name> answers with the region's library row, labelled; department names still win over region names", async () => {
+  const { frRegionCode, frDepartmentCode } = await import("./departments");
+  assert.equal(frRegionCode("Bretagne"), "R53");
+  assert.equal(frRegionCode("Île-de-France"), "R11");
+  assert.equal(frRegionCode("region Occitanie"), "R76");
+  assert.equal(frRegionCode("PACA"), "R93");
+  assert.equal(frRegionCode("Corse"), "R94");
+  assert.equal(frRegionCode("Corse-du-Sud"), null); // a department
+  assert.equal(frDepartmentCode("Corse-du-Sud"), "2A");
+  assert.equal(frRegionCode("Atlantis"), null);
+  const { frRegionAnswer, frFuelNow, frHistoryKey } = await import("./source");
+  const { readFileSync } = await import("node:fs");
+  const date = JSON.parse(readFileSync("library/fr-fuel/meta.json", "utf8")).last_date as string;
+  const a = frRegionAnswer({ region: "R53", fuel: "gazole", today: date, asked: "Bretagne" });
+  assert.equal(a.status, "ok");
+  assert.match(a.summary, /Bretagne is a region: this is the figure for all of Brittany/);
+  assert.match(a.summary, /Diesel \(Gazole\) in Brittany/);
+  assert.ok(a.sample_size! >= 5);
+  assert.equal((a.extra as any).region_code, "R53");
+  assert.throws(() => frRegionAnswer({ region: "R53", fuel: "gazole", today: "2020-01-01" }), /No region figure/);
+  const viaNow = await frFuelNow({ department: "Bretagne", fuel: "gazole", today: date });
+  assert.equal(viaNow.status, "ok");
+  await assert.rejects(() => frFuelNow({ department: "Atlantis", fuel: "gazole", today: date }), /not a French department or region/);
+  assert.deepEqual(frHistoryKey({ department: "Bretagne", fuel: "diesel" }), { area: "R53", item: "diesel", label: "Brittany" });
+});

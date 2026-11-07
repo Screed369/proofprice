@@ -18,7 +18,7 @@ import { previousByKey } from "../../lib/library/check";
 import type { LibraryRow } from "../../lib/library/store";
 import type { Fuel } from "../../lib/fuels";
 import { nationalRow, widenSentence } from "../../lib/widen";
-import { frDepartmentCode } from "./departments";
+import { frDepartmentCode, frRegionCode } from "./departments";
 
 export const INFO: SourceInfo = {
   id: "fr-fuel",
@@ -158,7 +158,12 @@ export async function frFuelNow(input: {
     area = `postcode ${cp}`;
   } else if (input.department) {
     const d = frDepartmentCode(input.department);
-    if (!d) throw new InputError(`'${input.department}' is not a French department. Give its code or name, e.g. area=33 or area=Gironde (2A and 2B for Corsica).`);
+    if (!d) {
+      // A region by name (Bretagne, Île-de-France, Occitanie ...): answered from the daily library's region row.
+      const region = frRegionCode(input.department);
+      if (region) return frRegionAnswer({ region, fuel: input.fuel, today: input.today, baseUrl: input.baseUrl, asked: input.department });
+      throw new InputError(`'${input.department}' is not a French department or region. Give a department code or name, e.g. area=33 or area=Gironde (2A and 2B for Corsica), or a region such as area=Bretagne.`);
+    }
     input = { ...input, department: d };
     where = `code_departement="${d}"`;
     area = `department ${d}`;
@@ -230,6 +235,31 @@ export function frNationalAnswer(input: { fuel: FrFuel; today?: string; baseUrl?
       `${FUEL_LABEL[input.fuel]} in ${whole}: the latest posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} per litre; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
     baseUrl: input.baseUrl,
     extra: { national: true, stations_counted: row.summary.count },
+  });
+  return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}` };
+}
+
+/** A whole region (Bretagne, Occitanie ...) from the library's region row for the newest recent day (5+ stations), labelled as our daily copy.
+ *  Throws a source error when the copy has no usable row, so the caller never gets a made-up figure. */
+export function frRegionAnswer(input: { region: string; fuel: FrFuel; today?: string; baseUrl?: string; asked?: string }): PriceAnswer {
+  const common = (Object.entries(FR_NAME) as [Fuel, FrFuel][]).find(([, v]) => v === input.fuel)![0];
+  const whole = FR_REGIONS[input.region]?.name;
+  if (!whole) throw new InputError("Unknown French region.");
+  const row = nationalRow("fr-fuel", common, input.today ? new Date(input.today + "T12:00:00Z") : undefined, input.region);
+  if (!row) throw new SourceError(`No region figure for ${FUEL_LABEL[input.fuel]} in ${whole} (fewer than 5 stations or no recent daily copy). Try a department, e.g. area=${FR_REGIONS[input.region].departments[0]}.`);
+  const sentence = `${input.asked ?? whole} is a region: this is the figure for all of ${whole} (${row.summary.count} stations, ${FR_REGIONS[input.region].departments.length} departments). Add area=<department> or postcode for a local range.`;
+  const a = buildAnswer({
+    source: INFO,
+    query: { country: "FR", postcode: null, department: input.asked ?? whole, fuel: input.fuel },
+    summary: row.summary,
+    currency: "EUR",
+    unit: "per litre",
+    period: { from: row.date, to: row.date },
+    method: `Median and 10th–90th percentile of the latest pump price per litre reported by each station in ${whole} for the selected fuel (our daily copy of ${row.date}). Prices not updated in the last ${STALE_DAYS} days are left out.`,
+    describe: (x) =>
+      `${FUEL_LABEL[input.fuel]} in ${whole}: the latest posted pump prices (taxes included) have a median of ${fmtMoney(x.median, "EUR")} per litre; typical range (10th–90th percentile) ${fmtMoney(x.low, "EUR")}–${fmtMoney(x.high, "EUR")} across stations.`,
+    baseUrl: input.baseUrl,
+    extra: { region: whole, region_code: input.region, stations_counted: row.summary.count },
   });
   return { ...a, summary: `${sentence} ${a.summary}`, notice: `${sentence} ${a.notice}` };
 }
@@ -386,7 +416,9 @@ export function frHistoryKey(p: { postcode?: string; department?: string; fuel: 
   }
   if (p.department) {
     const d = frDepartmentCode(p.department);
-    return d ? { area: d, item: p.fuel, label: `department ${d}` } : null;
+    if (d) return { area: d, item: p.fuel, label: `department ${d}` };
+    const r = frRegionCode(p.department);
+    return r ? { area: r, item: p.fuel, label: FR_REGIONS[r].name } : null;
   }
   return { area: "ALL", item: p.fuel, label: "metropolitan France" };
 }

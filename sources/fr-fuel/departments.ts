@@ -113,7 +113,7 @@ for (const [code, name] of Object.entries(FR_DEPARTMENT_NAMES)) BY_NAME.set(norm
 for (const [alias, code] of Object.entries({
   "corsica south": "2A", "south corsica": "2A", "upper corsica": "2B", "haute corse": "2B", "corse du sud": "2A",
   "reunion": "974", "la reunion": "974", "french guiana": "973", "guiana": "973", "bouches du rhone": "13",
-  "seine et marne": "77", "paris department": "75", "ile de france": "75",
+  "seine et marne": "77", "paris department": "75",
 }) as [string, string][]) BY_NAME.set(norm(alias), code);
 
 /** A department given as a code ('69', '2A', '971') or a name ('Rhône', 'rhone', 'Côte-d'Or'): the INSEE code, or null. */
@@ -122,4 +122,30 @@ export function frDepartmentCode(input: string): string | null {
   if (/^(\d{2,3}|2[AB])$/i.test(t)) return t.toUpperCase();
   const withoutPrefix = t.replace(/^(d[eé]partement|dept\.?|dep\.?)\s+(du |de la |de l'|des |de |d')?/i, "");
   return BY_NAME.get(norm(withoutPrefix)) ?? BY_NAME.get(norm(t)) ?? null;
+}
+
+/** French regions by name (French and English spellings agents use) -> INSEE region code used by the price library ("R84" ...). */
+const REGION_BY_NAME = new Map<string, string>();
+for (const [alias, code] of Object.entries({
+  "auvergne rhone alpes": "R84", "auvergne": "R84", "rhone alpes": "R84",
+  "bourgogne franche comte": "R27", "bourgogne": "R27", "burgundy": "R27", "franche comte": "R27",
+  "bretagne": "R53", "brittany": "R53",
+  "centre val de loire": "R24", "centre": "R24",
+  "corse": "R94", "corsica": "R94",
+  "grand est": "R44", "alsace": "R44", "lorraine": "R44", "champagne ardenne": "R44",
+  "hauts de france": "R32", "nord pas de calais": "R32", "picardie": "R32", "picardy": "R32",
+  "ile de france": "R11", "paris region": "R11", "region parisienne": "R11",
+  "normandie": "R28", "normandy": "R28",
+  "nouvelle aquitaine": "R75", "aquitaine": "R75", "limousin": "R75", "poitou charentes": "R75",
+  "occitanie": "R76", "languedoc roussillon": "R76", "midi pyrenees": "R76",
+  "pays de la loire": "R52", "pays de loire": "R52",
+  "provence alpes cote d azur": "R93", "paca": "R93", "provence": "R93", "cote d azur": "R93",
+}) as [string, string][]) REGION_BY_NAME.set(norm(alias), code);
+
+/** A region given by name ('Bretagne', 'Île-de-France', 'Occitanie', 'Brittany', 'PACA'): its library code ("R53"), or null.
+ *  Department names win: 'Corse-du-Sud' is a department, 'Corse' the region. */
+export function frRegionCode(input: string): string | null {
+  const t = input.trim();
+  if (!t || frDepartmentCode(t)) return null;
+  return REGION_BY_NAME.get(norm(t.replace(/^(r[eé]gion|region)\s+(du |de la |de l'|des |de |d')?/i, ""))) ?? REGION_BY_NAME.get(norm(t)) ?? null;
 }
