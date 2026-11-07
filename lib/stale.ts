@@ -39,6 +39,12 @@ const PLACE_PARAMS = ["postcode", "area", "town", "region", "county", "departmen
 /** The sentence agents and people see, word for word. */
 /** Opening words of a stale summary. Library item keys can be internal ("Brown Eggs|piece"): then the area label already names the item. */
 export function staleLead(itemLabel: string, areaLabel: string): { lead: string; item: string } {
+  const rooms = /^rooms-(\d+)$/.exec(itemLabel); // rent copies key by number of rooms; "00" means all sizes together
+  if (rooms) {
+    const n = Number(rooms[1]);
+    const nice = n === 0 ? "rented flats (all sizes)" : `rented flats with ${n} room${n === 1 ? "" : "s"}`;
+    return { lead: `${nice} in ${areaLabel}: `, item: nice };
+  }
   if (itemLabel.includes("|")) return { lead: `${areaLabel}: `, item: itemLabel.split("|")[0].trim() };
   return { lead: `${itemLabel} in ${areaLabel}: `, item: itemLabel };
 }
@@ -113,9 +119,10 @@ export function staleAnswer(o: StaleOptions): PriceAnswer | null {
         "Our copy of the official source: once a day ProofPrice stores, for each area and item, the median, 10th–90th percentile and count. " +
         "It is shown because the live source did not respond. The copy covers the area named in the summary.",
       method_url: (o.baseUrl ?? "") + METHOD_URL,
+      // a library row whose low, median and high are equal is one published figure, not a spread: never print it as a range
       summary:
         staleLead(itemLabel, key.label).lead +
-        (src.nominalCounts ? `${money(last.median)} ${unit}, ` : `median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), `) +
+        (src.nominalCounts || (last.low === last.median && last.high === last.median) ? `${money(last.median)} ${unit}, ` : `median ${money(last.median)} ${unit} (typical range ${money(last.low)} to ${money(last.high)}), `) +
         `based on ${src.nominalCounts ? "the published figure (no record count is published)" : hasCount(last.n) ? `${last.n} records` : "the published figure"} in our copy of ${src.info.name} (${src.info.publisher}) ${collected ? `for ${last.date}` : `taken on ${last.date}`}. ${sentence} Confidence: ${conf}.`,
       notice: `${sentence} ${NOTICE}`,
       extra: {
