@@ -3,7 +3,7 @@
 // (only the columns this source asks for). The category list is from probe nyccat1 (same day). Newest sale in the file that day: 2026-09-30.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { InputError } from "../../lib/http";
+import { InputError, SourceError } from "../../lib/http";
 import { socrataUrl } from "../../lib/adapters";
 import { buildSelect, buildWhere, clampMonths, clearLatestCache, COMMERCIAL_CATEGORIES, INFO, monthsBack, parseLatest, parseSales, routePlace, usNycCommercial } from "./source";
 
@@ -115,4 +115,24 @@ test("usNycCommercial: fewer than 5 qualifying sales gives no figure", async () 
 
 test("usNycCommercial: bad property_type is a 400", async () => {
   await assert.rejects(usNycCommercial({ property_type: "farm" }, { fetcher: fakePortal([]).fetcher }), InputError);
+});
+
+test("usNycCommercial: one HTTP 503 from the portal is retried once and then answers (smoke 7 Nov gave a 502)", async () => {
+  clearLatestCache();
+  const rows = Array.from({ length: 8 }, (_, i) => ({ block: String(100 + i), sale_price: String(2_000_000 + i * 100_000), sale_date: "2026-09-20T00:00:00.000", gross_square_feet: "5000", land_square_feet: "1,500" }));
+  let calls = 0;
+  const fetcher = async (url: string) => {
+    calls++;
+    if (calls === 1) throw new SourceError("Source returned HTTP 503", undefined, 503);
+    return url.includes("max(") ? [{ latest: "2026-09-30T00:00:00.000" }] : rows;
+  };
+  const a = await usNycCommercial({ postcode: "10017" }, { fetcher, today: new Date("2026-10-05") });
+  assert.equal(a.status, "ok");
+  assert.ok(calls >= 3);
+  clearLatestCache();
+  const dead = async () => {
+    throw new SourceError("Source returned HTTP 503", undefined, 503);
+  };
+  await assert.rejects(usNycCommercial({ postcode: "10017" }, { fetcher: dead, today: new Date("2026-10-05") }), /503/);
+  clearLatestCache();
 });

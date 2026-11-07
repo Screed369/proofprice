@@ -4,7 +4,7 @@
 // Aggregates only: block numbers are fetched only to drop repeated rows of one deal and are never returned.
 // Formats checked live on 2026-10-24 through the Probe workflow (probes nyccat1, nycrows5).
 import { socrataAll, socrataQuery, soqlString, Fetcher } from "../../lib/adapters";
-import { InputError, SourceError } from "../../lib/http";
+import { InputError, SourceError, retryOnce } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { summarise } from "../../lib/stats";
 import type { SourceInfo } from "../../lib/plugin";
@@ -188,7 +188,8 @@ export function clearLatestCache(): void {
 async function datasetLatest(today: Date, fetcher?: Fetcher): Promise<string> {
   if (latestCache && !fetcher && Date.now() - latestCache.at < LATEST_TTL_MS) return latestCache.date;
   const tomorrow = nextDay(today.toISOString().slice(0, 10)); // ignore mistyped future dates in the file
-  const rows = await socrataQuery(DOMAIN, DATASET, { select: "max(sale_date) as latest", where: `sale_date < '${tomorrow}T00:00:00'` }, { fetcher, timeoutMs: 25000 });
+  // One retry on a 5xx/timeout (smoke 7 Nov: a single HTTP 503 from NYC Open Data gave a 502); two short attempts fit the answer budget.
+  const rows = await retryOnce(() => socrataQuery(DOMAIN, DATASET, { select: "max(sale_date) as latest", where: `sale_date < '${tomorrow}T00:00:00'` }, { fetcher, timeoutMs: 6000 }));
   const date = parseLatest(rows);
   if (!date) throw new SourceError("The NYC Rolling Calendar Sales dataset returned no latest sale date");
   if (!fetcher) latestCache = { date, at: Date.now() };
@@ -223,11 +224,13 @@ export async function usNycCommercial(input: UsCommercialInput, opts: UsCommerci
   const { requested, applied } = clampMonths(input.months);
   const latest = await datasetLatest(opts.today ?? new Date(), opts.fetcher);
   const window = { from: monthsBack(latest, applied), to: latest };
-  const collected = await socrataAll(
-    DOMAIN,
-    DATASET,
-    { select: buildSelect(), where: buildWhere(place, type, window), order: ["sale_date DESC", "sale_price DESC"], limit: MAX_ROWS },
-    { fetcher: opts.fetcher, maxRows: MAX_ROWS, pageSize: PAGE_SIZE, timeoutMs: 25000 },
+  const collected = await retryOnce(() =>
+    socrataAll(
+      DOMAIN,
+      DATASET,
+      { select: buildSelect(), where: buildWhere(place, type, window), order: ["sale_date DESC", "sale_price DESC"], limit: MAX_ROWS },
+      { fetcher: opts.fetcher, maxRows: MAX_ROWS, pageSize: PAGE_SIZE, timeoutMs: 8000 },
+    ),
   );
   const sales = parseSales(collected.rows, type);
   const dates = sales.map((s) => s.date).sort();
