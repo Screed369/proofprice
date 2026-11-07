@@ -78,7 +78,7 @@ function fakePortal() {
   return { fetcher, calls };
 }
 
-test("sgRents: a page refused with HTTP 429 is retried once, so the live answer is not served from our copy", async () => {
+test("sgRents: a page refused with HTTP 429 is retried (twice, with pauses), so the live answer is not served from our copy", async () => {
   const { fetcher } = fakePortal();
   let n = 0;
   const flaky = async (url: string) => {
@@ -88,7 +88,7 @@ test("sgRents: a page refused with HTTP 429 is retried once, so the live answer 
   const a = await sgRents({ town: "Tampines", flat_type: "4 ROOM", months: 6 }, flaky, new Date("2026-10-14T00:00:00Z"), async () => {});
   assert.equal(a.status, "ok");
   assert.equal(n, 2);
-  // Two refusals in a row still surface as an outage (stale-if-error then answers from the library).
+  // Three refusals in a row still surface as an outage (stale-if-error then answers from the library).
   const dead = async () => { throw new SourceError("data.gov.sg answered HTTP 429", undefined, 429); };
   await assert.rejects(sgRents({ town: "Tampines" }, dead, new Date("2026-10-14T00:00:00Z"), async () => {}), /429/);
 });
@@ -112,7 +112,7 @@ test("sgRents: median and range, period, caveat, and the paging stops at the win
   assert.match(a.summary, /10th–90th percentile range SGD\s[\d,]+–SGD\s[\d,]+\./);
   assert.match(a.method, /declared by the owner and not verified/);
   assert.match(String((a.extra as any).caveat), /not verified by HDB/);
-  assert.equal(calls.length, 1); // 180 rents fit in one page of 1 000, and the page reached back before the window
+  assert.equal(calls.length, 1); // 180 rents fit in one page of 2 500, and the page reached back before the window
   assert.equal(a.source.id, "sg-hdb-rents");
 });
 
@@ -121,7 +121,7 @@ test("sgRents: all flat types gives a breakdown; a long window pages on", async 
   const a = await sgRents({ town: "TAMPINES", months: 24 }, fetcher, new Date("2026-10-14T00:00:00Z"));
   assert.equal(a.status, "ok");
   assert.equal(a.sample_size, 16 * 60); // June 2025 .. September 2026
-  assert.equal(calls.length, 1); // 960 rents < 1 000: one page, nothing older to fetch
+  assert.equal(calls.length, 1); // 960 rents < 2 500: one page, nothing older to fetch
   const by = (a.extra as any).by_flat_type;
   assert.ok(by["4-ROOM"].median > 0 && by["5-ROOM"].median > 0);
   assert.equal(by["4-ROOM"].records + by["5-ROOM"].records, a.sample_size);
@@ -228,4 +228,22 @@ test("sgRentHistoryKey: matches the harvest rows; other windows and bad input ha
   assert.equal(sgRentHistoryKey({ town: "Tampines" }, { monthly: true }), null);
   const rows = sgRentDailyRows({ BEDOK: [{ month: "2026-09", flat_type: "3-ROOM", rent: 2000 }] });
   assert.deepEqual(rows, []); // one rental is not a figure
+});
+
+test("sgRents: the live call asks only month, flat type and rent, in one 2 500-row page", async () => {
+  const { fetcher, calls } = fakePortal();
+  await sgRents({ town: "Tampines", months: 12 }, fetcher, new Date("2026-10-14T00:00:00Z"));
+  const u = new URL(calls[0]);
+  assert.equal(u.searchParams.get("fields"), "rent_approval_date,flat_type,monthly_rent");
+  assert.equal(u.searchParams.get("limit"), "2500");
+});
+
+test("sgRents: two 429s in a row are survived by the backoff, a third surfaces", async () => {
+  const { fetcher } = fakePortal();
+  let n = 0;
+  const waits: number[] = [];
+  const flaky = async (url: string) => { if (n++ < 2) throw new SourceError("data.gov.sg answered HTTP 429", undefined, 429); return fetcher(url); };
+  const a = await sgRents({ town: "Tampines", flat_type: "4 ROOM", months: 6 }, flaky, new Date("2026-10-14T00:00:00Z"), async (ms) => { waits.push(ms); });
+  assert.equal(a.status, "ok");
+  assert.deepEqual(waits, [1500, 3500]);
 });

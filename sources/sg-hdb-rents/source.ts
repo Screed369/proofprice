@@ -3,7 +3,7 @@
 // (newest first, a few pages at most) and give the median and 10th-90th percentile; never a block or street.
 // Format checked live on 2026-10-14 from GitHub's servers (datastore_search on resource d_c9f57187485a850908655db0e8cfe651).
 
-import { InputError, SourceError, retryOnce } from "../../lib/http";
+import { InputError, SourceError } from "../../lib/http";
 import { collectPages, datastoreSearchUrl, parseDatastoreSearch, resolveFetcher } from "../../lib/adapters";
 import type { Fetcher } from "../../lib/adapters";
 import { summarise } from "../../lib/stats";
@@ -102,7 +102,25 @@ const realSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
 /** data.gov.sg answers HTTP 429 to a burst (smoke 2026-11-01 served Bedok from our copy): the live path pauses between pages and retries a refused page once. */
 export const LIVE_PAGE_PAUSE_MS = 300;
-export const LIVE_RETRY_MS = 1500;
+/** Two short, growing pauses before giving up (the same pacing as sg-hdb-resale). */
+export const LIVE_RETRY_WAITS_MS = [1500, 3500];
+/** Only the three columns the median needs: a smaller body that the portal serves faster. */
+export const LIVE_FIELDS = ["rent_approval_date", "flat_type", "monthly_rent"];
+/** One page holds a whole town-year (about 2 500 rents for a busy town), so a typical question is one call instead of three (smoke 2026-11-07: Bedok from our copy). */
+export const LIVE_PAGE_SIZE = 2500;
+
+async function fetchWithBackoff(fetch: Fetcher, url: string, sleep: (ms: number) => Promise<void>, waits: number[] = LIVE_RETRY_WAITS_MS): Promise<unknown> {
+  let last: unknown;
+  for (let i = 0; i <= waits.length; i++) {
+    try {
+      return await fetch(url);
+    } catch (e) {
+      last = e;
+      if (i < waits.length) await sleep(waits[i]);
+    }
+  }
+  throw last;
+}
 
 export async function sgRents(input: SgRentInput, fetcher?: Fetcher, now = new Date(), sleep: (ms: number) => Promise<void> = realSleep): Promise<PriceAnswer> {
   if (!input.town) throw new InputError("A town is required, e.g. 'Tampines'.");
@@ -112,16 +130,16 @@ export async function sgRents(input: SgRentInput, fetcher?: Fetcher, now = new D
   const from = cutoffMonth(months, now);
   const filters: Record<string, string> = { town };
   if (flatType) filters.flat_type = flatType;
-  const o = { fetcher: fetcher ?? resolveFetcher({ timeoutMs: 20000 }) };
+  const o = { fetcher: fetcher ?? resolveFetcher({ timeoutMs: 12000 }) };
 
-  // Newest first; stop paging as soon as a page reaches back before the window. At most 5 pages (5 000 rents).
+  // Newest first; stop paging as soon as a page reaches back before the window. At most 2 pages (5 000 rents).
   const got = await collectPages<Record<string, any>>({
     maxRows: 5000,
-    pageSize: 1000,
+    pageSize: LIVE_PAGE_SIZE,
     fetchPage: async (offset, limit) => {
-      const url = datastoreSearchUrl(SITE, { resourceId: RESOURCE_ID, filters, sort: ["rent_approval_date desc", "_id desc"], limit, offset, includeTotal: false });
+      const url = datastoreSearchUrl(SITE, { resourceId: RESOURCE_ID, filters, fields: LIVE_FIELDS, sort: ["rent_approval_date desc", "_id desc"], limit, offset, includeTotal: false });
       if (offset > 0) await sleep(LIVE_PAGE_PAUSE_MS);
-      const r = parseDatastoreSearch(await retryOnce(() => o.fetcher(url), LIVE_RETRY_MS));
+      const r = parseDatastoreSearch(await fetchWithBackoff(o.fetcher, url, sleep));
       const oldest = r.records.length ? String(r.records[r.records.length - 1].rent_approval_date ?? "") : "";
       return { rows: r.records, more: r.records.length >= limit && oldest >= from };
     },
