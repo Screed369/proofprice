@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS } from "../../lib/registry";
-import { INFO, answerFromRows, candidateStamps, fileUrl, matchRegion, nzElectricity, parseFileLinks, parsePowerCsv, regionsIn } from "./source";
+import { INFO, answerFromRows, candidateStamps, fileUrl, harvestFromRows, loadRows, matchRegion, nzElectricity, nzHistoryKey, parseFileLinks, parsePowerCsv, regionKey, regionsIn } from "./source";
 
 const f = (n: string) => readFileSync(new URL(`./fixtures/${n}`, import.meta.url), "utf8");
 const CSV = f("sample.csv");
@@ -74,4 +74,37 @@ test("end to end with a fake fetcher; gas is refused", async () => {
 
 test("registered", () => {
   assert.ok(SOURCE_PLUGINS.some((s) => s.info.id === "nz-ea-electricity" && s.countries.includes("NZ")));
+});
+
+test("harvest: one row per region and band, national median, no record count", () => {
+  const many = Array.from({ length: 8 }, (_, i) => ["Standard user", "Low user"].map((load) => ({ month: "2026-05-31", code: String(i), region: `Town${i} (Net${i})`, load, fixedPerDay: 1, variablePerKwh: 0.2, kwh: 600 + i * 10, bill: 200 + i * 5, network: 50 }))).flat();
+  assert.throws(() => harvestFromRows(ROWS), SourceError); // the 4-row fixture is too thin to store
+  const h = harvestFromRows(many);
+  assert.equal(h.currency, "NZD");
+  assert.match(h.date, /^\d{4}-\d{2}-\d{2}$/);
+  const std = h.rows.filter((r) => r.item === "standard");
+  assert.ok(std.some((r) => r.area === "ALL"));
+  for (const r of h.rows) assert.ok(Number.isNaN(r.n) && r.median > 0 && r.median < 2);
+  // the key a request maps to exists in the stored rows
+  const k = nzHistoryKey({ region: "Town3" })!;
+  assert.ok(h.rows.some((r) => r.area === k.area && r.item === "standard"));
+  assert.equal(regionKey("Auckland (Vector)"), "auckland");
+});
+
+test("history key: band and region, bad band gives null", () => {
+  assert.deepEqual(nzHistoryKey({}), { area: "ALL", item: "standard", label: "New Zealand (median of network regions)" });
+  assert.equal(nzHistoryKey({ consumption_band: "low", region: "Wellington" })!.item, "low");
+  assert.equal(nzHistoryKey({ consumption_band: "huge" }), null);
+});
+
+test("manifest declares harvest, historyKey, reference dates", () => {
+  const s: any = SOURCE_PLUGINS.find((x) => x.info.id === "nz-ea-electricity");
+  assert.ok(s.harvest && s.historyKey && s.referenceDates && s.nominalCounts);
+});
+
+test("loadRows stops at the deadline instead of trying every month", async () => {
+  let calls = 0;
+  const slow = async () => { calls++; await new Promise((r) => setTimeout(r, 30)); throw new SourceError("Source timed out"); };
+  await assert.rejects(loadRows(slow, new Date("2026-10-20T00:00:00Z"), 50), SourceError);
+  assert.ok(calls < 7, `made ${calls} calls`);
 });

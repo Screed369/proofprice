@@ -6,7 +6,8 @@
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
 import { percentile } from "../../lib/stats";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 
 export const BASE = "https://www.emi.ea.govt.nz";
 export const DATASET_PAGE = `${BASE}/Retail/Datasets/RegionalPowerPrices`;
@@ -182,8 +183,12 @@ export function answerFromRows(rows: PowerRow[], input: PowerInput): PriceAnswer
 const METHOD = "New Zealand electricity: the Electricity Authority's modelled average monthly bill for a typical household in a network region, divided by its monthly kWh.";
 
 // ---------- fetching ----------
+// The EMI host is sometimes slow from Vercel (a smoke run waited 27 s and failed on 7 Nov 2026). So: a short timeout per call, one
+// retry for a timeout / network error / 5xx, and a total deadline so a slow host cannot hold a request for half a minute.
 
-async function fetchText(url: string, timeoutMs = 25000): Promise<string> {
+const TOTAL_DEADLINE_MS = 20000;
+
+async function fetchOnce(url: string, timeoutMs: number): Promise<string> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -199,15 +204,24 @@ async function fetchText(url: string, timeoutMs = 25000): Promise<string> {
   }
 }
 
-export async function nzElectricity(
-  input: PowerInput & { energy?: string },
+const retryable = (err: unknown) => err instanceof SourceError && (!(err as any).status || (err as any).status >= 500);
+
+export async function fetchText(url: string, timeoutMs = 9000): Promise<string> {
+  try {
+    return await fetchOnce(url, timeoutMs);
+  } catch (err) {
+    if (!retryable(err)) throw err;
+    return await fetchOnce(url, timeoutMs);
+  }
+}
+
+/** Newest usable rows: the dataset page names the files; if it cannot be read, try recent month ends. Stops at the deadline. */
+export async function loadRows(
   fetcher: (url: string) => Promise<string> = fetchText,
   now: Date = new Date(),
-): Promise<PriceAnswer> {
-  const energy = (input.energy ?? "electricity").toString().toLowerCase();
-  if (energy !== "electricity") throw new InputError("NZ: only electricity is available (no gas). Use energy=electricity.");
-  normaliseLoad(input.consumption_band); // fail early on bad input
-
+  deadlineMs = TOTAL_DEADLINE_MS,
+): Promise<PowerRow[]> {
+  const t0 = Date.now();
   let stamps: string[] = [];
   try {
     stamps = parseFileLinks(await fetcher(DATASET_PAGE));
@@ -217,12 +231,73 @@ export async function nzElectricity(
   if (!stamps.length) stamps = candidateStamps(now);
   let lastErr: unknown = null;
   for (const stamp of stamps.slice(0, 6)) {
+    if (Date.now() - t0 > deadlineMs) break;
     try {
-      return answerFromRows(parsePowerCsv(await fetcher(fileUrl(stamp))), input);
+      return parsePowerCsv(await fetcher(fileUrl(stamp)));
     } catch (err) {
-      if (err instanceof InputError) throw err;
       lastErr = err;
     }
   }
   throw lastErr instanceof SourceError ? lastErr : new SourceError("Could not read the Electricity Authority regional power prices file.");
+}
+
+export async function nzElectricity(
+  input: PowerInput & { energy?: string },
+  fetcher: (url: string) => Promise<string> = fetchText,
+  now: Date = new Date(),
+): Promise<PriceAnswer> {
+  const energy = (input.energy ?? "electricity").toString().toLowerCase();
+  if (energy !== "electricity") throw new InputError("NZ: only electricity is available (no gas). Use energy=electricity.");
+  normaliseLoad(input.consumption_band); // fail early on bad input
+  return answerFromRows(await loadRows(fetcher, now), input);
+}
+
+// ---------- daily library copy (stale-if-error) ----------
+// One row per network region and household type, dated by the month the figure is for; "ALL" = unweighted median across regions.
+// The area key is the region name before the bracket in lower case ("auckland"), so a request can be mapped without the network.
+
+export const regionKey = (raw: string) => norm(raw.replace(/\(.*\)/, ""));
+
+export function harvestFromRows(rows: PowerRow[]): HarvestResult {
+  const month = rows.map((r) => r.month).sort().pop();
+  if (!month) throw new SourceError("The Electricity Authority file had no usable rows.");
+  const out: DailyRow[] = [];
+  const one = (area: string, item: string, v: number): DailyRow => ({ area, item, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+  for (const [load, item] of [["Standard user", "standard"], ["Low user", "low"]] as const) {
+    const latest = rows.filter((r) => r.month === month && r.load === load);
+    const byKey = new Map<string, PowerRow[]>();
+    for (const r of latest) byKey.set(regionKey(r.region), [...(byKey.get(regionKey(r.region)) ?? []), r]);
+    const vals: number[] = [];
+    for (const [key, rs] of byKey) {
+      if (!key || rs.length !== 1) continue; // two networks with the same leading name: leave both out rather than guess
+      out.push(one(key, item, r4(rs[0].bill / rs[0].kwh)));
+    }
+    for (const r of latest) vals.push(r4(r.bill / r.kwh));
+    if (vals.length >= 5) out.push(one("ALL", item, r4(percentile(vals.sort((a, b) => a - b), 0.5))));
+  }
+  if (out.length < 10) throw new SourceError(`Only ${out.length} Electricity Authority rows found for ${month}; refusing to store them.`);
+  return {
+    date: month,
+    currency: "NZD",
+    unit: "per kWh (monthly bill divided by monthly kWh, including GST and the fixed daily charge)",
+    rows: out,
+    note: `Electricity Authority regional power prices for ${month.slice(0, 7)}: modelled average household bill per kWh by network region. A statistic, no record count.`,
+  };
+}
+
+export async function nzHarvest(fetcher: (url: string) => Promise<string> = fetchText, now: Date = new Date()): Promise<HarvestResult> {
+  return harvestFromRows(await loadRows(fetcher, now, 60000));
+}
+
+export function nzHistoryKey(p: { region?: string; consumption_band?: string }): { area: string; item: string; label: string } | null {
+  let item: string;
+  try {
+    item = normaliseLoad(p.consumption_band) === "Low user" ? "low" : "standard";
+  } catch {
+    return null;
+  }
+  const region = (p.region ?? "").trim();
+  if (!region) return { area: "ALL", item, label: "New Zealand (median of network regions)" };
+  const key = regionKey(region);
+  return key ? { area: key, item, label: region } : null;
 }

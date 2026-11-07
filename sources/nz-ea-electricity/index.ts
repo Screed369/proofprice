@@ -1,7 +1,7 @@
 // Manifest: New Zealand household electricity (Electricity Authority, EMI regional power prices). Logic lives in ./source.ts.
 import { z } from "zod";
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, nzElectricity } from "./source";
+import { INFO, nzElectricity, nzHarvest, nzHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -25,4 +25,8 @@ export default defineSource({
   method:
     "New Zealand electricity: the Electricity Authority's modelled average monthly bill for a typical household in a network region, divided by its monthly kWh, from the newest monthly file on the Electricity Market Information site. A modelled average from retail tariffs, not a count of paid bills.",
   handle: (p, ctx) => nzElectricity({ energy: str(p.energy), region: str(p.region), consumption_band: str(p.consumption_band), taxes: str(p.taxes), baseUrl: ctx.baseUrl }),
+  harvest: () => nzHarvest(),
+  historyKey: (p) => nzHistoryKey({ region: str(p.region), consumption_band: str(p.consumption_band) }),
+  referenceDates: true,
+  nominalCounts: true,
 });
