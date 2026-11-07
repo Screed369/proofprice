@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS } from "../../lib/registry";
-import { INFO, answerFromRows, candidateStamps, fileUrl, matchRegion, nzElectricity, parseFileLinks, parsePowerCsv, regionsIn } from "./source";
+import { INFO, TOTAL_BUDGET_MS, answerFromRows, fetchPowerRows, harvestFromRows, nzHistoryKey, candidateStamps, fileUrl, matchRegion, nzElectricity, parseFileLinks, parsePowerCsv, regionsIn } from "./source";
 
 const f = (n: string) => readFileSync(new URL(`./fixtures/${n}`, import.meta.url), "utf8");
 const CSV = f("sample.csv");
@@ -74,4 +74,37 @@ test("end to end with a fake fetcher; gas is refused", async () => {
 
 test("registered", () => {
   assert.ok(SOURCE_PLUGINS.some((s) => s.info.id === "nz-ea-electricity" && s.countries.includes("NZ")));
+});
+
+test("a slow publisher stops after the time budget instead of trying every file", async () => {
+  let t = 0;
+  const calls: string[] = [];
+  const fetcher = async (url: string) => {
+    calls.push(url);
+    t += 12000; // every request "takes" 12 s
+    throw new SourceError("Source timed out", url);
+  };
+  await assert.rejects(() => fetchPowerRows(fetcher, new Date("2026-10-20T00:00:00Z"), () => t), SourceError);
+  assert.ok(calls.length <= 3, `tried ${calls.length} requests`);
+  assert.ok(TOTAL_BUDGET_MS <= 20000);
+});
+
+test("harvest stores each region and the national median, no record count", () => {
+  const h = harvestFromRows(ROWS);
+  assert.equal(h.date, "2026-05-31");
+  assert.equal(h.currency, "NZD");
+  const auck = h.rows.filter((r) => r.item === "electricity/standard" && (r.area === "auckland" || r.area === "auckland vector"));
+  assert.equal(auck.length, 2);
+  assert.ok(auck.every((r) => r.median === 0.4286 && Number.isNaN(r.n)));
+  const all = h.rows.find((r) => r.area === "ALL" && r.item === "electricity/standard")!;
+  assert.ok(all.median > 0.3 && all.median < 0.6);
+  assert.ok(h.rows.some((r) => r.area === "auckland" && r.item === "electricity/low"));
+});
+
+test("history keys match the harvest rows", () => {
+  assert.deepEqual(nzHistoryKey({}), { area: "ALL", item: "electricity/standard", label: "New Zealand (median of network regions)" });
+  assert.equal(nzHistoryKey({ region: "Auckland", consumption_band: "low" })?.area, "auckland");
+  assert.equal(nzHistoryKey({ consumption_band: "bogus" }), null);
+  const plugin = SOURCE_PLUGINS.find((p) => p.info.id === "nz-ea-electricity")!;
+  assert.ok(plugin.harvest && plugin.historyKey && plugin.referenceDates);
 });
