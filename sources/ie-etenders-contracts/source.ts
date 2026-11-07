@@ -169,12 +169,16 @@ export function windowStart(today: string, months = WINDOW_MONTHS): string {
   return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() - months, d.getUTCDate())).toISOString().slice(0, 10);
 }
 
+/** Library item that holds every award in the window (answers a country-only question: what=all). */
+export const ALL_ITEM = "all";
+const ALL_WORDS = ["all", "any", "everything", "all contracts", "all purchases", "todo", "todos"];
+
 /** The library items an award belongs to: shared purchases by CPV group, plus its 2-digit division and 4-digit group. */
 const PURCHASE_STEMS = PURCHASES.map((p) => ({ id: p.id, stems: p.cpv.map(cpvStem) }));
 export function itemsOf(cpv: string): string[] {
   const items: string[] = [];
   for (const p of PURCHASE_STEMS) if (p.stems.some((s) => cpv.startsWith(s))) items.push(p.id);
-  items.push(`cpv-${cpv.slice(0, 2)}`, `cpv-${cpv.slice(0, 4)}`);
+  items.push(ALL_ITEM, `cpv-${cpv.slice(0, 2)}`, `cpv-${cpv.slice(0, 4)}`);
   return items;
 }
 
@@ -298,6 +302,10 @@ export async function ieContracts(input: IeInput): Promise<PriceAnswer> {
     item = `cpv-${group}`;
     label = `contracts under CPV group ${group}`;
     matched = { cpv_group: group, cpv_requested: code };
+  } else if (ALL_WORDS.includes(input.what.trim().toLowerCase())) {
+    item = ALL_ITEM;
+    label = "all public contracts";
+    matched = { matched_purchase: "all" };
   } else {
     const p = matchPurchase(input.what);
     if (!p) {

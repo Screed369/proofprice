@@ -46,14 +46,18 @@ export default defineCategory({
     // New Zealand, and Canada asked for Alberta (whose sole-source list supports what=all), answer a bare question with all awards
     // (the source says so in its answer); other countries need a purchase.
     const country = String(p.country ?? "").toUpperCase();
-    const whatDefaulted = what.length === 0 && !str(p.cpv) && (country === "NZ" || (country === "CA" && /alberta/i.test(str(p.buyer_area) ?? "")));
+    // ES and IE also answer "all" (every award in the window); CA with no area and no purchase is read as the federal all-contracts file.
+    let buyerArea = str(p.buyer_area);
+    const bare = what.length === 0 && !str(p.cpv);
+    const whatDefaulted = bare && (country === "NZ" || country === "ES" || country === "IE" || (country === "CA" && (!buyerArea || /alberta|federal/i.test(buyerArea))));
     if (whatDefaulted) what = "all";
+    if (whatDefaulted && country === "CA" && !buyerArea) buyerArea = "federal";
     if (what.length < 2) {
       const esHint = country === "ES" ? " For Spain, try /api/v1/contracts?country=ES&what=office%20cleaning, or a CPV division such as cpv=45 (construction) with any what." : "";
       throw new InputError("what is required: say what was bought, for example 'laptops', 'school meals' or 'road resurfacing'." + esHint);
     }
     const months = Math.round(num(p.months) ?? 24);
     if (!(months >= 1 && months <= 60)) throw new InputError("months must be between 1 and 60.");
-    return { ...p, what, months, cpv: str(p.cpv), buyer_area: str(p.buyer_area), ...(whatDefaulted ? { what_defaulted: true } : {}) };
+    return { ...p, what, months, cpv: str(p.cpv), buyer_area: buyerArea, ...(whatDefaulted ? { what_defaulted: true } : {}) };
   },
 });

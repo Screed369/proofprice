@@ -139,3 +139,25 @@ test("answer: median and range from the library, period from the window marker, 
     delete process.env.PROOFPRICE_LIBRARY_DIR;
   }
 });
+
+test("gap G20261107-1: a country-only IE question answers every award (what=all)", async () => {
+  const contracts = (await import("../../categories/contracts/index")).default;
+  const prep = contracts.prepare!({ country: "IE" } as any) as any;
+  assert.equal(prep.what, "all");
+  assert.ok(itemsOf("45233120").includes("all"));
+  const rows = aggregateAll([1, 2, 3, 4, 5].map((i) => ({ id: String(i), date: "2026-09-01", value: i * 100000, cpv: "45233120" })), "2024-10-31", "2026-10-31");
+  assert.equal(rows.find((r) => r.item === "all")?.n, 5);
+  const dir = mkdtempSync(path.join(tmpdir(), "ieet-all-"));
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
+  try {
+    const h = { date: "2026-10-31", currency: "EUR", unit: "per contract, total awarded value (ex VAT)", rows: [{ area: "ALL", item: "all", n: 5000, median: 90000, low: 12000, high: 1500000, min: 1000, max: 4e8 }, windowMarker("2024-10-31", "2026-09-29")] };
+    writeDaily(INFO.id, h);
+    writeMeta(INFO.id, { source: INFO.id, currency: "EUR", unit: h.unit, first_date: h.date, last_date: h.date, days: 1, last_harvest_at: "x", last_rows: 2, last_ok_at: "x", last_error: null });
+    const a = await ieContracts({ what: "all" });
+    assert.equal(a.status, "ok");
+    assert.equal(a.sample_size, 5000);
+    assert.equal(a.price?.median, 90000);
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
+});

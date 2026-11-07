@@ -194,3 +194,14 @@ test("unit price: needs five contracts in one unit, uses the unit with most cont
   assert.equal(unitPriceFrom([...rows("piece", 5, 1000, 0), ...rows("piece", 4)], "EUR"), null);
   assert.equal(unitPriceFrom([], "EUR"), null);
 });
+
+test("gap G20261107-1: country-only calls for NZ, ES, IE and CA read as all awards; CA goes to the federal file; other countries keep the 400", () => {
+  const prep = (p: Record<string, unknown>) => contracts.prepare!(p as any) as any;
+  for (const country of ["NZ", "ES", "IE"]) assert.equal(prep({ country }).what, "all", country);
+  const ca = prep({ country: "CA" });
+  assert.equal(ca.what, "all");
+  assert.equal(ca.buyer_area, "federal");
+  assert.equal(prep({ country: "CA", buyer_area: "Alberta" }).buyer_area, "Alberta");
+  assert.throws(() => prep({ country: "CA", buyer_area: "Ontario" }), InputError);
+  assert.throws(() => prep({ country: "FR" }), InputError);
+});

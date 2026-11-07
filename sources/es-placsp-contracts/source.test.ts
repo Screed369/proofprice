@@ -216,13 +216,28 @@ test("INFO: reuse with source cited, contract prices, no buyers or winners", () 
   assert.match(INFO.limits, /never read or kept/);
 });
 
-test("gap G20261030-1: /api/v1/contracts?country=ES with no 'what' is refused as a bad request that names working examples", async () => {
+test("gap G20261107-1: a country-only ES question answers every award (what=all); a country with no all-figure keeps the 400 with examples", async () => {
   const contracts = (await import("../../categories/contracts/index")).default;
-  assert.throws(
-    () => contracts.prepare!({ country: "ES" } as any),
-    (e: any) => e instanceof InputError && /what is required/.test(e.message) && /country=ES&what=office%20cleaning/.test(e.message) && /cpv=45/.test(e.message),
-  );
+  const prep = contracts.prepare!({ country: "ES" } as any) as any;
+  assert.equal(prep.what, "all");
+  assert.equal(prep.what_defaulted, true);
+  assert.throws(() => contracts.prepare!({ country: "FR" } as any), (e: any) => e instanceof InputError && /what is required/.test(e.message));
   // with a purchase it still prepares
   const ok = contracts.prepare!({ country: "ES", what: "office cleaning" } as any) as any;
   assert.equal(ok.what, "office cleaning");
+  // the answer: itemsOf puts every award in "all", and esContracts reads it
+  assert.ok(itemsOf("30213100").includes("all"));
+  process.env.PROOFPRICE_LIBRARY_DIR = mkdtempSync(path.join(tmpdir(), "esplacsp-all-"));
+  try {
+    const h = { date: "2026-10-24", currency: "EUR", unit: "per contract, total awarded price without VAT", rows: [{ area: "ALL", item: "all", n: 900, median: 31000, low: 4000, high: 380000, min: 600, max: 9e6 }] };
+    writeDaily(INFO.id, h);
+    writeMeta(INFO.id, { source: INFO.id, currency: "EUR", unit: h.unit, first_date: h.date, last_date: h.date, days: 1, last_harvest_at: "x", last_rows: 1, last_ok_at: "x", last_error: null });
+    const a = await esContracts({ what: "all" });
+    assert.equal(a.status, "ok");
+    assert.equal(a.sample_size, 900);
+    assert.equal(a.price?.median, 31000);
+    assert.match(a.summary, /all public contracts/);
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
 });

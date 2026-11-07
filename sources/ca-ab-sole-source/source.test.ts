@@ -81,7 +81,7 @@ test("harvest with a mocked data service; the answer comes from the stored copy"
     assert.equal(d.price?.median, 12000);
     assert.match(d.summary, /No purchase was named/);
     assert.equal(((contracts.prepare!({ country: "CA", buyer_area: "Alberta", what: "legal services" } as any)) as any).what_defaulted, undefined);
-    assert.throws(() => contracts.prepare!({ country: "CA" } as any), InputError);
+    assert.equal(((contracts.prepare!({ country: "CA" } as any)) as any).buyer_area, "federal"); // G20261107-1: a bare CA call reads as the federal all-contracts file
     assert.throws(() => contracts.prepare!({ country: "CA", buyer_area: "Quebec" } as any), InputError);
     await assert.rejects(abSoleSource({ what: "xyzzy widgets" }), InputError);
     await assert.rejects(abSoleSource({ what: "all", cpv: "1" }), InputError);
