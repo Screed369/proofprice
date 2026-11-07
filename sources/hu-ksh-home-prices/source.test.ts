@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS } from "../../lib/registry";
-import { CSV_URL, INFO, clearCache, downloadCsv, findRegion, huAnswer, huHarvestRows, huHistoryKey, huHomePrices, loadData, parseCsv } from "./source";
+import { CSV_URL, FETCH_TIMEOUT_MS, INFO, clearCache, downloadCsv, findRegion, huAnswer, huHarvestRows, huHistoryKey, huHomePrices, loadData, parseCsv } from "./source";
 
 // Fixture: rows of KSH STADAT lak0025.csv (table 18.1.2.9, thousand HUF per m2), read from GitHub Actions on 2026-10-23.
 // The probe garbled the ISO-8859-2 accents; they are restored here. Rows trimmed to the ones the tests use.
@@ -171,4 +171,8 @@ test("history key: town, property type and settlement pick the library row; unkn
 test("the manifest declares the daily copy for stale-if-error", () => {
   const m = SOURCE_PLUGINS.find((s) => s.info.id === INFO.id)!;
   assert.ok(m.harvest && m.historyKey && m.referenceDates && m.nominalCounts);
+});
+
+test("KSH fetch gives up within 10 s so the stale copy answers quickly (HU Budapest took 20 s in smoke)", () => {
+  assert.ok(FETCH_TIMEOUT_MS <= 10_000 && FETCH_TIMEOUT_MS >= 5_000);
 });

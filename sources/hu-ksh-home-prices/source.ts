@@ -219,9 +219,13 @@ export function huAnswer(data: HuData, q: Query): PriceAnswer {
 const UA = "ProofPrice/1.0 (+https://proofprice.com; hello@proofprice.com)";
 export type TextFetcher = () => Promise<string>;
 
+// The CSV is tiny, so a healthy KSH answers in about a second. Smoke runs 6-7 Nov showed KSH hanging from Vercel and the answer
+// arriving from our copy only after the old 25 s wait; give up after 8 s so the stale-if-error copy comes back quickly.
+export const FETCH_TIMEOUT_MS = 8_000;
+
 export async function downloadCsv(): Promise<string> {
   try {
-    const res = await fetch(CSV_URL, { headers: { "user-agent": UA }, signal: AbortSignal.timeout(25_000) });
+    const res = await fetch(CSV_URL, { headers: { "user-agent": UA }, signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
     if (!res.ok) throw new SourceError(`Source returned HTTP ${res.status}`, CSV_URL, res.status);
     return new TextDecoder("iso-8859-2").decode(await res.arrayBuffer());
   } catch (err: any) {
