@@ -14,6 +14,11 @@
     { "host": "ckan-open-nrw.nrw.de", "symptom": "Times out from GitHub.", "date": "2026-10-29", "found_by": "Verifier" },
     { "host": "data.ibb.gov.tr", "symptom": "Times out from GitHub.", "date": "2026-10-29", "found_by": "Verifier" },
     { "host": "adat.aki.gov.hu", "symptom": "Times out from GitHub.", "date": "2026-10-29", "found_by": "Verifier" },
-    { "host": "data.bus-data.dft.gov.uk", "symptom": "API answers 401, needs a token.", "date": "2026-10-29", "found_by": "Verifier" }
+    { "host": "data.bus-data.dft.gov.uk", "symptom": "API answers 401, needs a token.", "date": "2026-10-29", "found_by": "Verifier" },
+    { "host": "data.humdata.org", "symptom": "CSV downloads answer HTTP 202, empty body, x-amzn-waf-action: challenge (AWS bot check) since 4 Nov; package_show still works. WFP food prices Broken.", "date": "2026-11-05", "found_by": "Builder C" },
+    { "host": "datos.gob.mx", "symptom": "Akamai 403 to both the workspace and GitHub probes; look for the file on another official host.", "date": "2026-11-07", "found_by": "Verifier B" },
+    { "host": "historico.datos.gob.mx", "symptom": "Akamai 403 to both the workspace and GitHub probes.", "date": "2026-11-07", "found_by": "Verifier B" },
+    { "host": "www.gov.il", "symptom": "Cloudflare challenge (403) to the workspace and GitHub probes.", "date": "2026-11-07", "found_by": "Verifier B" },
+    { "host": "www.stats.gov.sa", "symptom": "Average-prices page is an Angular shell with no data link.", "date": "2026-11-07", "found_by": "Verifier B" }
   ]
 }
