@@ -9,7 +9,8 @@
 import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
 import { periodRange } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import { exampleWords, ItemDef, matchItem } from "../../categories/groceries/items";
 
 export const INFO: SourceInfo = {
@@ -380,4 +381,53 @@ export async function huKshGroceries(input: KshQuery, o: KshOptions = {}): Promi
   const bytes = await (o.loader ? o.loader() : download(o.timeoutMs ?? 20000));
   const table = parseKsh(decodeCsv(bytes));
   return kshAnswer(readItem(table, m.primary.code), m.primary, m.related, input);
+}
+
+// ---------- daily copy (stale-if-error) ----------
+// www.ksh.hu answers slowly or not at all to Vercel's addresses (smoke 6 and 7 Nov 2026: "Could not reach the official source" for HU milk and eggs,
+// no library copy to fall back on). The collector (GitHub Actions) reads the same file once a day and keeps the newest month of every mapped
+// product. Each row is one published national average (n is NO_COUNT: KSH gives no record count), dated by the reference month.
+
+export const NATIONAL_AREA = "ALL";
+
+/** Pure: one library row per mapped product that has a price in the newest month of the file. Products lagging behind are left out. */
+export function harvestRows(t: KshTable): HarvestResult {
+  const readings = ITEMS.map((def) => ({ def, r: readItem(t, def.code) })).filter((x): x is { def: ItemDef; r: KshReading } => !!x.r);
+  if (!readings.length) throw new SourceError("The KSH table held no price for any mapped product");
+  const month = readings.map((x) => x.r.latest.month).sort().pop()!;
+  const rows = readings
+    .filter((x) => x.r.latest.month === month)
+    .map((x) => {
+      const v = x.r.latest.value;
+      return { area: NATIONAL_AREA, item: x.def.label, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
+    });
+  const range = periodRange(month);
+  return {
+    date: range?.to ?? `${month}-28`,
+    currency: "HUF",
+    unit: "per kg, litre or pack (named in the item)",
+    rows,
+    note: `KSH STADAT 1.2.1.8: national average consumer prices for ${monthWords(month)}, ${rows.length} products. Published averages, not counts of records (no record count is published).`,
+  };
+}
+
+export async function huKshHarvest(o: KshOptions & { sleep?: (ms: number) => Promise<void> } = {}): Promise<HarvestResult> {
+  const sleep = o.sleep ?? ((ms: number) => new Promise<void>((r) => setTimeout(r, ms)));
+  let last: unknown;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const bytes = await (o.loader ? o.loader() : download(o.timeoutMs ?? 60000));
+      return harvestRows(parseKsh(decodeCsv(bytes)));
+    } catch (err) {
+      last = err;
+      if (attempt < 3) await sleep(5000 * attempt);
+    }
+  }
+  throw last;
+}
+
+/** Where a request lives in the library: national rows only, the item key is KSH's denomination. */
+export function huKshHistoryKey(p: { item?: string }): { area: string; item: string; label: string } | null {
+  const def = matchItem(ITEMS, p.item ?? "").primary;
+  return def ? { area: NATIONAL_AREA, item: def.label, label: "Hungary" } : null;
 }

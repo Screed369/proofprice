@@ -105,3 +105,38 @@ test("manifest", () => {
   assert.deepEqual(manifest.countries, ["HU"]);
   assert.equal(INFO.price_type, "official_statistic");
 });
+
+// ---------- daily copy and stale-if-error ----------
+import { harvestRows, huKshHarvest, huKshHistoryKey } from "./source";
+
+test("harvest: one national row per product with a price in the newest month, same figure as the live answer", async () => {
+  const h = await huKshHarvest({ loader: async () => BYTES, sleep: async () => {} });
+  assert.equal(h.currency, "HUF");
+  assert.match(h.date, /^\d{4}-\d{2}-\d{2}$/);
+  assert.ok(h.rows.length > 0);
+  assert.ok(h.rows.every((r) => r.area === "ALL" && Number.isNaN(r.n) && r.low === r.median && r.median > 0));
+  const milk = ITEMS.find((d) => d.code === "11101")!;
+  const row = h.rows.find((r) => r.item === milk.label);
+  const live = await huKshGroceries({ item: "milk", today: TODAY }, { loader: async () => BYTES });
+  assert.equal(row?.median, live.price!.value);
+  assert.throws(() => harvestRows({ title: "t", months: ["2026-09"], products: new Map([["99999", { label: "Other", series: [{ month: "2026-09", value: 5 }] }]]) }), /no price for any mapped product/);
+});
+
+test("harvest retries a failing download twice, then gives up with the last error", async () => {
+  let calls = 0;
+  const waits: number[] = [];
+  const h = await huKshHarvest({ loader: async () => { calls++; if (calls < 3) throw new Error("reset"); return BYTES; }, sleep: async (ms) => { waits.push(ms); } });
+  assert.ok(h.rows.length > 0);
+  assert.equal(calls, 3);
+  assert.deepEqual(waits, [5000, 10000]);
+  calls = 0;
+  await assert.rejects(() => huKshHarvest({ loader: async () => { calls++; throw new Error("down"); }, sleep: async () => {} }), /down/);
+  assert.equal(calls, 3);
+});
+
+test("history key: item words resolve offline to the national row; unknown items give no key", () => {
+  const milk = ITEMS.find((d) => d.code === "11101")!;
+  assert.deepEqual(huKshHistoryKey({ item: "milk" }), { area: "ALL", item: milk.label, label: "Hungary" });
+  assert.equal(huKshHistoryKey({ item: "unobtainium" }), null);
+  assert.ok(manifest.harvest && manifest.historyKey && manifest.referenceDates && manifest.nominalCounts);
+});
