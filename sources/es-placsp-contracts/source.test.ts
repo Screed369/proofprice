@@ -216,13 +216,32 @@ test("INFO: reuse with source cited, contract prices, no buyers or winners", () 
   assert.match(INFO.limits, /never read or kept/);
 });
 
-test("gap G20261030-1: /api/v1/contracts?country=ES with no 'what' is refused as a bad request that names working examples", async () => {
+test("gap G20261107-1 (replaces G20261030-1): /api/v1/contracts?country=ES with no 'what' answers with all awards; the 400 help for other countries stays", async () => {
   const contracts = (await import("../../categories/contracts/index")).default;
-  assert.throws(
-    () => contracts.prepare!({ country: "ES" } as any),
-    (e: any) => e instanceof InputError && /what is required/.test(e.message) && /country=ES&what=office%20cleaning/.test(e.message) && /cpv=45/.test(e.message),
-  );
+  const bare = contracts.prepare!({ country: "ES" } as any) as any;
+  assert.equal(bare.what, "all");
+  assert.equal(bare.what_defaulted, true);
+  assert.throws(() => contracts.prepare!({ country: "FR" } as any), InputError);
   // with a purchase it still prepares
   const ok = contracts.prepare!({ country: "ES", what: "office cleaning" } as any) as any;
   assert.equal(ok.what, "office cleaning");
+});
+
+test("gap G20261107-1: Spain with what=all answers from the all-awards row, and the all row needs 5 awards", async () => {
+  const mk = (i: number, cpv: string) => ({ key: `k${i}`, date: "2026-10-23", value: i * 1000, cpv });
+  const rows = aggregateAll([mk(1, "45233120"), mk(2, "30213100"), mk(3, "72000000"), mk(4, "55300000"), mk(5, "45233120")], "2026-10-10", "2026-10-24");
+  assert.equal(rows.find((x) => x.item === "all")?.n, 5);
+  assert.equal(aggregateAll([mk(1, "45233120"), mk(2, "30213100"), mk(3, "72000000"), mk(4, "55300000")], "2026-10-10", "2026-10-24").length, 0);
+  process.env.PROOFPRICE_LIBRARY_DIR = mkdtempSync(path.join(tmpdir(), "esall-"));
+  try {
+    const h = { date: "2026-10-24", currency: "EUR", unit: "per contract, total awarded price without VAT", rows };
+    writeDaily(INFO.id, h);
+    writeMeta(INFO.id, { source: INFO.id, currency: "EUR", unit: h.unit, first_date: h.date, last_date: h.date, days: 1, last_harvest_at: "x", last_rows: rows.length, last_ok_at: "x", last_error: null });
+    const a = await esContracts({ what: "all", whatDefaulted: true });
+    assert.equal(a.status, "ok");
+    assert.equal(a.price?.median, 3000);
+    assert.match(JSON.stringify(a), /No purchase was named/);
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
 });

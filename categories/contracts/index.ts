@@ -46,8 +46,12 @@ export default defineCategory({
     // New Zealand, and Canada asked for Alberta (whose sole-source list supports what=all), answer a bare question with all awards
     // (the source says so in its answer); other countries need a purchase.
     const country = String(p.country ?? "").toUpperCase();
-    const whatDefaulted = what.length === 0 && !str(p.cpv) && (country === "NZ" || (country === "CA" && /alberta/i.test(str(p.buyer_area) ?? "")));
+    // Spain and Ireland (their libraries carry an "all awards" figure) do the same. Canada without an area still needs a purchase (platform task: CA federal default).
+    const caArea = str(p.buyer_area) ?? "";
+    const whatDefaulted =
+      what.length === 0 && !str(p.cpv) && (country === "NZ" || country === "ES" || country === "IE" || (country === "CA" && /alberta/i.test(caArea)));
     if (whatDefaulted) what = "all";
+
     if (what.length < 2) {
       const esHint = country === "ES" ? " For Spain, try /api/v1/contracts?country=ES&what=office%20cleaning, or a CPV division such as cpv=45 (construction) with any what." : "";
       throw new InputError("what is required: say what was bought, for example 'laptops', 'school meals' or 'road resurfacing'." + esHint);

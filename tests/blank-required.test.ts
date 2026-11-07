@@ -16,13 +16,13 @@ test("REST: /api/v1/groceries?country=MY and an empty item are 400 with an examp
   }
 });
 
-test("REST: /api/v1/contracts?country=ES is 400", async () => {
-  assert.equal((await rest("contracts", "country=ES")).status, 400);
-  assert.equal((await rest("contracts", "country=ES&what=")).status, 400);
+test("REST: /api/v1/contracts?country=FR is 400", async () => {
+  assert.equal((await rest("contracts", "country=FR")).status, 400);
+  assert.equal((await rest("contracts", "country=FR&what=")).status, 400);
 });
 
 test("pickSource: a blank required value sent through MCP (not the REST parser) is refused as InputError", () => {
-  for (const [cat, key, country] of [["groceries", "item", "MY"], ["contracts", "what", "ES"], ["medicines", "medicine", "GB"]] as const) {
+  for (const [cat, key, country] of [["groceries", "item", "MY"], ["contracts", "what", "FR"], ["medicines", "medicine", "GB"]] as const) {
     const c = categoryByRestPath(cat)!;
     assert.throws(() => pickSource(c, { country, [key]: "   " }), InputError, cat);
   }

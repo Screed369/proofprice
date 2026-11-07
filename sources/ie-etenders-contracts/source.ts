@@ -185,7 +185,7 @@ export function aggregateAll(awards: Iterable<IeAward>, from: string, to: string
   for (const a of awards) {
     if (a.date < from || a.date > to || seen.has(a.id)) continue;
     seen.add(a.id);
-    for (const item of itemsOf(a.cpv)) {
+    for (const item of ["all", ...itemsOf(a.cpv)]) {
       const g = groups.get(item);
       if (g) g.push(a.value);
       else groups.set(item, [a.value]);
@@ -280,6 +280,7 @@ export interface IeInput {
   cpv?: string;
   buyer_area?: string;
   baseUrl?: string;
+  whatDefaulted?: boolean;
 }
 
 export const SUPPORTED_EXAMPLES = ["catering", "school meals", "software", "consultancy", "legal services", "cars"];
@@ -298,6 +299,10 @@ export async function ieContracts(input: IeInput): Promise<PriceAnswer> {
     item = `cpv-${group}`;
     label = `contracts under CPV group ${group}`;
     matched = { cpv_group: group, cpv_requested: code };
+  } else if (/^\s*all\s*$/i.test(input.what)) {
+    item = "all";
+    label = "contracts of every kind";
+    matched = { matched_purchase: "all" };
   } else {
     const p = matchPurchase(input.what);
     if (!p) {
@@ -323,7 +328,8 @@ export async function ieContracts(input: IeInput): Promise<PriceAnswer> {
     period: { from: win.from, to: win.to },
     method:
       `eTenders awards published ${win.from} to ${win.to}, recognised by their main CPV product code (${label}). Median and 10th–90th percentile of the awarded value in euro, ex VAT. ` +
-      "Framework agreements and dynamic purchasing systems are left out (their value is a ceiling). Totals per contract, not unit prices; buyers and suppliers are never named.",
+      "Framework agreements and dynamic purchasing systems are left out (their value is a ceiling). Totals per contract, not unit prices; buyers and suppliers are never named." +
+      (input.whatDefaulted ? " No purchase was named (what), so this covers all awards; add what=catering, software or another common purchase to narrow it." : ""),
     describe: (s) =>
       `Irish public buyers awarded ${label} with a median total value of ${fmtMoney(s.median, "EUR")} per contract, ex VAT ` +
       `(typical range ${fmtMoney(s.low, "EUR")} to ${fmtMoney(s.high, "EUR")}, 10th to 90th percentile). These are totals per contract, not unit prices.`,

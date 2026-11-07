@@ -173,7 +173,7 @@ export function aggregateAll(awards: Iterable<EsAward>, from: string, to: string
   for (const c of awards) {
     if (c.date < from || c.date > to || seen.has(c.key)) continue;
     seen.add(c.key);
-    for (const item of itemsOf(c.cpv)) {
+    for (const item of ["all", ...itemsOf(c.cpv)]) {
       const g = groups.get(item);
       if (g) g.push(c.value);
       else groups.set(item, [c.value]);
@@ -285,6 +285,7 @@ export interface EsInput {
   cpv?: string;
   buyer_area?: string;
   baseUrl?: string;
+  whatDefaulted?: boolean;
 }
 
 export const SUPPORTED_EXAMPLES = ["laptops", "school meals", "road resurfacing", "office cleaning", "catering", "ambulances"];
@@ -303,6 +304,14 @@ export async function esContracts(input: EsInput): Promise<PriceAnswer> {
     item = `cpv-${group}`;
     label = `contracts under CPV group ${group}`;
     matched = { cpv_group: group, cpv_requested: code };
+  } else if (/^\s*all\s*$/i.test(input.what)) {
+    item = "all";
+    label = "contracts of every kind";
+    matched = { matched_purchase: "all" };
+  } else if (/^\s*all\s*$/i.test(input.what)) {
+    item = "all";
+    label = "contracts of every kind";
+    matched = { matched_purchase: "all" };
   } else {
     const p = matchPurchase(input.what);
     if (!p) {
@@ -342,7 +351,8 @@ export async function esContracts(input: EsInput): Promise<PriceAnswer> {
     method:
       `PLACSP awards dated ${from} to ${useDate}, recognised by their CPV product code (${label}). Median and 10th–90th percentile of the awarded price in EUR without VAT. ` +
       (fellBack ? `The newest collection (${day.date}) held fewer than 5 awards for this purchase, so this is the newest earlier day that did. ` : "") +
-      "Totals per contract, not unit prices; buyers and winners are never named. Only the newest one to two days of awards are summarised, so a rarer purchase may show no figure; use a broad CPV division such as 45 (construction) for a figure.",
+      "Totals per contract, not unit prices; buyers and winners are never named. Only the newest one to two days of awards are summarised, so a rarer purchase may show no figure; use a broad CPV division such as 45 (construction) for a figure." +
+      (input.whatDefaulted ? " No purchase was named (what), so this covers all awards; add what=office cleaning or another common purchase to narrow it." : ""),
     describe: (s) =>
       `Spanish public buyers awarded ${label} with a median total price of ${fmtMoney(s.median, "EUR")} per contract without VAT ` +
       `(typical range ${fmtMoney(s.low, "EUR")} to ${fmtMoney(s.high, "EUR")}, 10th to 90th percentile). These are totals per contract, not unit prices.`,

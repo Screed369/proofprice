@@ -139,3 +139,33 @@ test("answer: median and range from the library, period from the window marker, 
     delete process.env.PROOFPRICE_LIBRARY_DIR;
   }
 });
+
+test("gap G20261107-1: /api/v1/contracts?country=IE with no 'what' answers with all awards and says so", async () => {
+  const contracts = (await import("../../categories/contracts/index")).default;
+  const prepared = contracts.prepare!({ country: "IE" } as any) as any;
+  assert.equal(prepared.what, "all");
+  assert.equal(prepared.what_defaulted, true);
+  // aggregateAll holds an "all" row once 5 distinct tenders exist
+  const mk = (i: number, cpv: string) => ({ id: String(i), date: "2026-09-01", value: i * 100000, cpv });
+  const rows = aggregateAll([mk(1, "45233120"), mk(2, "30213100"), mk(3, "72000000"), mk(4, "55300000"), mk(5, "45233120")], "2024-10-31", "2026-10-31");
+  const all = rows.find((x) => x.item === "all");
+  assert.equal(all?.n, 5);
+  assert.equal(all?.median, 300000);
+  const dir = mkdtempSync(path.join(tmpdir(), "ieall-"));
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
+  try {
+    const h = { date: "2026-10-31", currency: "EUR", unit: "per contract, total awarded value (ex VAT)", rows: [...rows, windowMarker("2024-10-31", "2026-09-01")] };
+    writeDaily(INFO.id, h);
+    writeMeta(INFO.id, { source: INFO.id, currency: "EUR", unit: h.unit, first_date: h.date, last_date: h.date, days: 1, last_harvest_at: "x", last_rows: h.rows.length, last_ok_at: "x", last_error: null });
+    const a = await ieContracts({ what: prepared.what, whatDefaulted: true });
+    assert.equal(a.status, "ok");
+    assert.equal(a.price?.median, 300000);
+    assert.match(JSON.stringify(a), /No purchase was named/);
+  } finally {
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
+  }
+  // the same bare question for NZ and ES also prepares; a country with no all-awards figure still needs a purchase
+  for (const c of ["NZ", "ES"]) assert.equal((contracts.prepare!({ country: c } as any) as any).what, "all", c);
+  assert.equal((contracts.prepare!({ country: "IE", what: "catering" } as any) as any).what_defaulted, undefined);
+  assert.throws(() => contracts.prepare!({ country: "FR" } as any), InputError);
+});

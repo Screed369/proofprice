@@ -7,7 +7,7 @@ const rest = async (cat: string, qs: string) =>
   GET(new Request(`https://example.test/api/v1/${cat}?${qs}&ppcheck=1`), { params: Promise.resolve({ category: cat }) });
 
 test("400s name the required parameters and give working examples", async () => {
-  for (const [cat, qs] of [["groceries", "country=MY"], ["contracts", "country=ES"], ["fuel", ""], ["home-sales", "country=ZZ"]] as const) {
+  for (const [cat, qs] of [["groceries", "country=MY"], ["contracts", "country=FR"], ["fuel", ""], ["home-sales", "country=ZZ"]] as const) {
     const r = await rest(cat, qs);
     assert.equal(r.status, 400, `${cat}?${qs}`);
     const body = await r.text();
