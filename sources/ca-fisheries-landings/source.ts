@@ -8,7 +8,8 @@
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import { ckanPackage, latestResource } from "../../lib/adapters";
 import type { CkanPackage } from "../../lib/adapters";
 
@@ -316,4 +317,48 @@ export async function caFisheriesPrices(
       areas: AREAS,
     },
   });
+}
+
+// ---------- daily library copy (stale-if-error) ----------
+
+/** Pure: one library row per species and area for the newest year of the file (only prices of that year, so a copy never passes an older year off as the newest). Each row is one derived annual average (n is NO_COUNT). */
+export function harvestRows(rows: LandingRow[]): HarvestResult {
+  const lastYear = rows.reduce((m, r) => Math.max(m, r.year), 0);
+  if (!lastYear) throw new SourceError("DFO's landings file held no data rows");
+  const out: DailyRow[] = [];
+  for (const sp of SPECIES) {
+    for (const area of AREAS) {
+      const { series } = priceSeries(rows, sp.label, area);
+      const now = series[0];
+      if (!now || now.year !== lastYear) continue;
+      const v = round2(now.perKg);
+      out.push({ area, item: sp.label, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v });
+    }
+  }
+  if (!out.length) throw new SourceError(`DFO's landings file held no landed value for ${lastYear}`);
+  return {
+    date: `${lastYear}-12-31`,
+    currency: "CAD",
+    unit: "per kg",
+    rows: out,
+    note: `DFO annual landed value per kg for ${lastYear} (value divided by weight): one derived average per species and area, not counts of sales (no count is published).`,
+  };
+}
+
+export async function caFisheriesHarvest(getPackage?: PackageGetter, getFile?: FileGetter): Promise<HarvestResult> {
+  clearLandingsCache();
+  return harvestRows((await loadLandings(getPackage, getFile)).rows);
+}
+
+/** Where a request lives in the library, without asking DFO. */
+export function caFisheriesHistoryKey(p: { product?: string; region?: string }): { area: string; item: string; label: string } | null {
+  const def = matchSpecies(String(p.product ?? ""));
+  if (!def) return null;
+  let area: string;
+  try {
+    area = resolveArea(p.region).area;
+  } catch {
+    return null;
+  }
+  return { area, item: def.label, label: `${area === "Canada" ? "Canada" : area}, ${def.label.toLowerCase()}` };
 }

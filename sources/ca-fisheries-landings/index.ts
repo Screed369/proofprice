@@ -2,7 +2,7 @@
 // Shares category "farm-gate-prices" with ca-farm-prices (Statistics Canada, monthly crops and livestock): serves() sends fish to this source.
 // The folder name sorts AFTER ca-farm-prices on purpose: the registry falls back to the first source for the country when no serves() says yes.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, caFisheriesMethod, caFisheriesPrices, exampleSpecies, matchSpecies } from "./source";
+import { INFO, caFisheriesHarvest, caFisheriesHistoryKey, caFisheriesMethod, caFisheriesPrices, exampleSpecies, matchSpecies } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -24,5 +24,10 @@ export default defineSource({
   method: caFisheriesMethod(),
   serves: (p) => matchSpecies(String(p.product ?? "")) !== null,
   handle: (p, ctx) => caFisheriesPrices({ species: String(p.product ?? ""), region: str(p.region), baseUrl: ctx.baseUrl }),
+  // A daily copy of the newest year (one derived average per species and area), so a DFO outage is answered from it (stale-if-error).
+  harvest: () => caFisheriesHarvest(),
+  historyKey: (p) => caFisheriesHistoryKey({ product: str(p.product), region: str(p.region) }),
+  referenceDates: true,
+  nominalCounts: true,
 });
 

@@ -2,7 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { LANDINGS_CSV, PACKAGE_SHOW } from "./fixtures";
-import { INFO, caFisheriesPrices, matchSpecies, parseLandings, parseNumber, priceSeries, resolveArea, splitCsvLine } from "./source";
+import { INFO, caFisheriesHarvest, caFisheriesHistoryKey, caFisheriesPrices, harvestRows, matchSpecies, parseLandings, parseNumber, priceSeries, resolveArea, splitCsvLine } from "./source";
 import { parsePackageShow } from "../../lib/adapters";
 import manifest from "./index";
 import { categoryById, countriesFor, findSource, sourcesFor } from "../../lib/registry";
@@ -105,4 +105,35 @@ test("routing: the registry picks this source for fish and ca-farm-prices for ev
   assert.equal(pick("lobster"), "ca-fisheries-landings");
   assert.equal(pick("wheat"), "ca-farm-prices");
   assert.equal(pick("hogs"), "ca-farm-prices");
+});
+
+test("harvest: one row per species and area for the newest year only, n is NO_COUNT, values match the live answer", async () => {
+  const h = await caFisheriesHarvest(pkg, file);
+  assert.equal(h.date, "2024-12-31");
+  assert.equal(h.currency, "CAD");
+  assert.equal(h.unit, "per kg");
+  const lobster = h.rows.find((r) => r.area === "Canada" && r.item === "Lobster");
+  assert.equal(lobster?.median, 18.73);
+  assert.ok(Number.isNaN(lobster?.n));
+  assert.equal(lobster?.low, lobster?.high);
+  // zero-landing rows (BC lobster, Atlantic salmon) have no price and are left out
+  assert.equal(h.rows.find((r) => r.area === "British Columbia" && r.item === "Lobster"), undefined);
+  assert.equal(h.rows.find((r) => r.area === "Atlantic" && r.item === "Salmon"), undefined);
+  assert.ok(h.rows.every((r) => r.median > 0));
+});
+
+test("harvest: a species whose newest price is an older year is not copied as if it were current", () => {
+  const rows = parseLandings(LANDINGS_CSV).filter((r) => !(r.year === 2024 && r.species === "Cod" && r.area === "Canada"));
+  const h = harvestRows(rows);
+  assert.equal(h.rows.find((r) => r.area === "Canada" && r.item === "Cod"), undefined);
+  assert.ok(h.rows.find((r) => r.area === "Canada" && r.item === "Lobster"));
+});
+
+test("historyKey: matches the harvest keys for species words and regions, null for unknowns", () => {
+  assert.deepEqual(caFisheriesHistoryKey({ product: "crab" }), { area: "Canada", item: "Snow crab", label: "Canada, snow crab" });
+  assert.deepEqual(caFisheriesHistoryKey({ product: "salmon", region: "BC" }), { area: "British Columbia", item: "Salmon", label: "British Columbia, salmon" });
+  assert.equal(caFisheriesHistoryKey({ product: "unicorn" }), null);
+  assert.equal(caFisheriesHistoryKey({ product: "cod", region: "Ontario" }), null);
+  assert.equal(typeof manifest.harvest, "function");
+  assert.equal(manifest.referenceDates, true);
 });
