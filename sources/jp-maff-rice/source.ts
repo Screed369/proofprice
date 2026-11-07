@@ -281,8 +281,8 @@ export function answerFrom(
   const { variety } = varietyOf(req.product);
   const f = figureFor(table, prefecture, variety);
   const where = prefecture ? PREFECTURES[prefecture] ?? prefecture : "Japan (national)";
-  const what = variety ? (Object.entries(VARIETIES).find(([, ja]) => ja === variety)?.[0] ?? variety) : "all brands";
-  const label = `${what} rice, ${where}`;
+  const what = variety ? `${Object.entries(VARIETIES).find(([, ja]) => ja === variety)?.[0] ?? variety} rice` : "rice (all brands)";
+  const label = `${what}, ${where}`;
   const query = { country: "JP", product: req.product, ...(req.region ? { region: req.region } : {}) };
   const m = table.month;
   const ref = monthKey(m);
