@@ -1,4 +1,7 @@
 import { test } from "node:test";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import assert from "node:assert/strict";
 import { parseEsStations, parseEsPrice, esProvinceFromPostcode } from "./source";
 
@@ -214,6 +217,9 @@ test("ES: area=Madrid and town=Marbella (no code) answer; a 400 names working ex
 
 test("ES: country-only question (/api/v1/fuel?country=ES&fuel=diesel) answers with the labelled national figure, Canaries excluded", async () => {
   const { esFuelNow } = await import("./source");
+  const emptyLib = fs.mkdtempSync(path.join(os.tmpdir(), "es-lib-"));
+  const prevLib = process.env.PROOFPRICE_LIBRARY_DIR;
+  process.env.PROOFPRICE_LIBRARY_DIR = emptyLib; // no daily copy: the live feed answers
   const st = (prov: string, p: string, i: number) => ({ "C.P.": prov + "001", Municipio: "X", IDProvincia: prov, "Tipo Venta": "P", "Precio Gasoleo A": p, "Dirección": "x", "Rótulo": "y", IDEESS: String(i) });
   const list = [
     ...["1,50", "1,52", "1,54", "1,56", "1,58", "1,60"].map((p, i) => st("28", p, i)),
@@ -232,5 +238,84 @@ test("ES: country-only question (/api/v1/fuel?country=ES&fuel=diesel) answers wi
     await assert.rejects(esFuelNow({ area: "Narnia", fuel: "diesel" }), /area=Madrid/);
   } finally {
     globalThis.fetch = realFetch;
+  }
+});
+
+// Shape copied from the live ministry list on 8 Nov 2026 (Listados/Municipios/, 8,112 rows, about 1 MB).
+const muniSample = [
+  { IDMunicipio: "1", IDProvincia: "01", IDCCAA: "16", Municipio: "Alegría-Dulantzi", Provincia: "ARABA/ÁLAVA", CCAA: "País Vasco" },
+  { IDMunicipio: "1669", IDProvincia: "10", IDCCAA: "11", Municipio: "Moraleja", Provincia: "CÁCERES", CCAA: "Extremadura" },
+  { IDMunicipio: "2784", IDProvincia: "29", IDCCAA: "01", Municipio: "Marbella", Provincia: "MÁLAGA", CCAA: "Andalucia" },
+  { IDMunicipio: "9001", IDProvincia: "05", IDCCAA: "08", Municipio: "San Miguel", Provincia: "ÁVILA", CCAA: "Castilla y León" },
+  { IDMunicipio: "9002", IDProvincia: "22", IDCCAA: "02", Municipio: "San Miguel", Provincia: "HUESCA", CCAA: "Aragón" },
+];
+// the live list has 8,112 rows; the code ignores any answer under 100 rows, so tests pad the sample
+const muniFull = [...muniSample, ...Array.from({ length: 120 }, (_, i) => ({ IDMunicipio: String(5000 + i), IDProvincia: "41", IDCCAA: "01", Municipio: "Pueblo " + i, Provincia: "SEVILLA", CCAA: "Andalucia" }))];
+
+test("ES: the municipality list maps accent-free names to a province; a name used in two provinces is ambiguous (null)", async () => {
+  const { parseEsMunicipios } = await import("./source");
+  const m = parseEsMunicipios(muniSample);
+  assert.equal(m.get("MARBELLA"), "29");
+  assert.equal(m.get("ALEGRIA-DULANTZI"), "01");
+  assert.equal(m.get("SAN MIGUEL"), null);
+  assert.equal(parseEsMunicipios({ not: "a list" }).size, 0);
+});
+
+test("ES: town=Marbella is resolved from the small municipality list, not the 10 MB national feed", async () => {
+  const { esFuelNow } = await import("./source");
+  const st = (p: string, i: number) => ({ "C.P.": "29600", Municipio: "MARBELLA", IDProvincia: "29", "Tipo Venta": "P", "Precio Gasoleo A": p, "Dirección": "x", "Rótulo": "y", IDEESS: String(i) });
+  const list = ["1,50", "1,52", "1,54", "1,56", "1,58", "1,60"].map(st);
+  const realFetch = globalThis.fetch;
+  const urls: string[] = [];
+  globalThis.fetch = (async (u: any) => {
+    const url = String(u);
+    urls.push(url);
+    if (url.includes("Listados/Municipios")) return new Response(JSON.stringify(muniFull), { status: 200 });
+    return new Response(JSON.stringify({ Fecha: "08/11/2026 9:00:00", ListaEESSPrecio: list }), { status: 200 });
+  }) as typeof fetch;
+  try {
+    const a = await esFuelNow({ town: "Marbella", fuel: "diesel" });
+    assert.equal(a.status, "ok");
+    assert.ok(urls.some((u) => u.includes("Listados/Municipios")));
+    assert.ok(urls.some((u) => u.endsWith("FiltroProvincia/29")));
+    assert.ok(!urls.some((u) => u.endsWith("EstacionesTerrestres/")), "the national feed must not be downloaded");
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test("ES: a country-only question is answered from a copy of today or yesterday without touching the live feed; an older copy goes live", async () => {
+  const { esFuelNow } = await import("./source");
+  const lib = fs.mkdtempSync(path.join(os.tmpdir(), "es-lib-"));
+  const prevLib = process.env.PROOFPRICE_LIBRARY_DIR;
+  process.env.PROOFPRICE_LIBRARY_DIR = lib;
+  const { writeDaily } = await import("../../lib/library/store");
+  const iso = (d: number) => new Date(Date.now() - d * 86400000).toISOString().slice(0, 10);
+  const row = (date: string, median: number) => ({ date, area: "ALL", item: "diesel", n: 9000, median, low: median - 0.1, high: median + 0.1, min: 1, max: 2 });
+  const realFetch = globalThis.fetch;
+  let live = 0;
+  const liveList = ["1,70", "1,72", "1,74", "1,76", "1,78", "1,80"].map((p, i) => ({ "C.P.": "28001", Municipio: "X", IDProvincia: "28", "Tipo Venta": "P", "Precio Gasoleo A": p, "Dirección": "x", "Rótulo": "y", IDEESS: String(i) }));
+  globalThis.fetch = (async () => {
+    live++;
+    return new Response(JSON.stringify({ Fecha: "08/11/2026 9:00:00", ListaEESSPrecio: liveList }), { status: 200 });
+  }) as typeof fetch;
+  try {
+    writeDaily("es-fuel", { date: iso(1), currency: "EUR", unit: "per litre", note: "t", rows: [row(iso(1), 1.55)] });
+    const a = await esFuelNow({ fuel: "diesel" });
+    assert.equal(a.status, "ok");
+    assert.equal(live, 0, "a fresh copy answers without the live feed");
+    assert.equal(a.price!.median, 1.55);
+    assert.match(a.summary, /national figure for mainland Spain and the Balearics \(9000 stations\)/);
+    // an old copy (4 days) is not fresh: the live feed answers
+    fs.rmSync(lib, { recursive: true, force: true });
+    fs.mkdirSync(lib, { recursive: true });
+    writeDaily("es-fuel", { date: iso(4), currency: "EUR", unit: "per litre", note: "t", rows: [row(iso(4), 1.4)] });
+    const b = await esFuelNow({ fuel: "diesel" });
+    assert.equal(live, 1);
+    assert.equal(b.price!.median, 1.75);
+  } finally {
+    globalThis.fetch = realFetch;
+    if (prevLib === undefined) delete process.env.PROOFPRICE_LIBRARY_DIR;
+    else process.env.PROOFPRICE_LIBRARY_DIR = prevLib;
   }
 });

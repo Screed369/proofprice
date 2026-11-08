@@ -28,6 +28,7 @@ export const INFO: SourceInfo = {
 
 const NATIONAL_URL = "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/";
 const BASE = NATIONAL_URL + "FiltroProvincia/";
+const MUNICIPIOS_URL = "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Municipios/";
 
 export const ES_FIELD: Partial<Record<Fuel, string>> = {
   diesel: "Precio Gasoleo A",
@@ -129,6 +130,35 @@ export function esProvinceFromName(raw: string | undefined | null): string | nul
   return ES_NAME_TO_PROVINCE.get(t) ?? null;
 }
 
+let muniIndex: { at: number; map: Map<string, string | null> } | null = null;
+/** Parse the ministry's municipality list (about 1 MB, 8,000 rows) into name -> province code; a name used in two provinces maps to null. */
+export function parseEsMunicipios(json: unknown): Map<string, string | null> {
+  const map = new Map<string, string | null>();
+  if (!Array.isArray(json)) return map;
+  for (const r of json as any[]) {
+    const prov = String(r?.IDProvincia ?? "").padStart(2, "0");
+    if (!r?.Municipio || !/^\d{2}$/.test(prov)) continue;
+    const name = stripAccents(String(r.Municipio));
+    const seen = map.get(name);
+    map.set(name, seen === undefined || seen === prov ? prov : null);
+  }
+  return map;
+}
+/** Fast town -> province: the small municipality list (about 2 s) instead of the 10 MB national feed (about 20 s cold). Null when the
+ *  name is unknown, ambiguous or the list is unreachable; the caller then falls back to the national feed. */
+async function esProvinceOfMunicipio(town: string): Promise<string | null> {
+  try {
+    if (!muniIndex || Date.now() - muniIndex.at > 24 * 3600 * 1000) {
+      const map = parseEsMunicipios(await fetchJson(MUNICIPIOS_URL, { headers: { accept: "application/json" } }, 8000));
+      if (map.size < 100) return null; // not the real list (error page, partial answer): never cached
+      muniIndex = { at: Date.now(), map };
+    }
+    return muniIndex.map.get(stripAccents(town)) ?? null;
+  } catch {
+    return null;
+  }
+}
+
 let townIndex: { at: number; map: Map<string, string> } | null = null;
 /** Municipality name -> province code (the province with most stations of that name), read from the national feed; cached for 6 hours. */
 async function esProvinceOfTown(town: string): Promise<string | null> {
@@ -177,7 +207,7 @@ export async function esFuelNow(input: {
   }
   // A place name with no code: a province name (town=Madrid) or any municipality found in the national feed (town=Marbella).
   if (!province && input.town) {
-    province = esProvinceFromName(input.town) ?? (await esProvinceOfTown(input.town));
+    province = esProvinceFromName(input.town) ?? (await esProvinceOfMunicipio(input.town)) ?? (await esProvinceOfTown(input.town));
   }
   // Country-only question (no postcode, area or town): answer with the labelled national figure instead of a 400.
   if (!province && !input.postcode && !input.area && !input.town) {
@@ -268,7 +298,16 @@ export async function esNationalNow(fuel: Fuel, baseUrl?: string): Promise<Price
   let summary: ReturnType<typeof summarise> = null;
   let day: string | null = null;
   let source = "live national feed";
-  try {
+  // A copy from today or yesterday is as good as the live feed (the ministry updates it through the day) and answers in milliseconds;
+  // the live feed (about 20 s cold) is only for a missing or older copy.
+  const fresh = nationalRow("es-fuel", fuel);
+  const freshDay = fresh && Date.now() - Date.parse(fresh.date + "T00:00:00Z") <= 2 * 86400000 ? fresh : null;
+  if (freshDay) {
+    summary = freshDay.summary;
+    day = freshDay.date;
+    source = `our daily copy of ${freshDay.date}`;
+  }
+  if (!summary) try {
     const json = await fetchJson(NATIONAL_URL, { headers: { accept: "application/json" } }, 25000);
     const parsed = parseEsStations(json, fuel);
     summary = summarise(parsed.stations.filter((x) => !ES_OUTSIDE_NATIONAL.has(x.province ?? "")).map((x) => x.price));
