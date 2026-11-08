@@ -54,7 +54,7 @@ export function pricingFacts(baseUrl: string = SITE_URL) {
         ? "Paid calls are not switched on yet. Every call is free today."
         : mode === "testnet"
           ? "Paid calls are being tested with test money only (no real money moves)."
-          : "Paid calls are switched on (crypto, USDC on Base). More cryptocurrencies, and card and bank payments, are coming in the next weeks.",
+          : "Paid calls are switched on (crypto, USDC on Base). USDC on Solana is being added next; card and bank payments are being looked at.",
     free_forever: [
       "Every category tool and REST path (/api/v1/<category>)",
       "Coverage, sources, licences",

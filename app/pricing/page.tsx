@@ -43,8 +43,8 @@ export default function Pricing() {
         also available as <a href="/pricing.json">JSON</a>.
       </p>
       <p>
-        Payments are live now in crypto (USDC) on the Base network, through Coinbase and the x402 standard. More cryptocurrencies, and card and bank
-        (fiat) payments, are coming in the next few weeks.
+        Payments are live now in crypto (USDC) on the Base network, through Coinbase and the x402 standard. USDC on Solana is being added next. Card and bank
+        (fiat) payments are being looked at.
       </p>
 
       <h2>Free, always</h2>
