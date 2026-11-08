@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import { makeXlsx } from "../../tests/helpers/make-zip";
 import { readXlsx } from "../../categories/rent/xlsx";
 import { InputError, SourceError } from "../../lib/http";
-import { CANTONS, INFO, chAnswer, chRents, clearCache, fetchOptions, matchCanton, matchTenancy, parseTable } from "./source";
+import { CANTONS, INFO, LIVE_BUDGET_MS, chAnswer, chRents, clearCache, fetchOptions, matchCanton, matchTenancy, parseTable } from "./source";
 
 const TITLE = ["Durchschnittlicher Mietpreis1) nach Bezugsdauer der Wohnung2) und Kanton", null, null, null, null, null, null, null, null, null, null, null, null, null, "T 09.03.03.64"];
 const HEAD = [[null, "Total"], [null, "Durch-schnittlicher Mietpreis "]];
@@ -186,6 +186,29 @@ test("chHarvest downloads the workbook fresh (cache cleared)", async () => {
   } finally {
     globalThis.fetch = realFetch;
     Object.assign(fetchOptions, saved);
+    clearCache();
+  }
+});
+
+test("a live read of a hanging BFS host gives up inside its 8 s budget (so the library copy answers fast)", async () => {
+  const realFetch = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = ((_u: any, init: any) => {
+    calls++;
+    return new Promise((_res, rej) => init.signal.addEventListener("abort", () => rej(new Error("aborted by timeout"))));
+  }) as any;
+  try {
+    clearCache();
+    const keepAlive = setInterval(() => {}, 100); // AbortSignal.timeout timers are unref'd: keep the loop alive while we wait
+    assert.equal(LIVE_BUDGET_MS, 8000);
+    const t0 = Date.now();
+    await assert.rejects(chRents({}), (e: any) => e instanceof SourceError && /Could not reach the official source/.test(e.message));
+    clearInterval(keepAlive);
+    const took = Date.now() - t0;
+    assert.ok(took < 9500, `took ${took} ms`);
+    assert.ok(calls >= 1 && calls <= 2);
+  } finally {
+    globalThis.fetch = realFetch;
     clearCache();
   }
 });

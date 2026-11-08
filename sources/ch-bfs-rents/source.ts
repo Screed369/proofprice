@@ -209,6 +209,9 @@ export function chAnswer(table: Table, input: ChInput, now = new Date()): PriceA
 let cache: { at: number; table: Table } | null = null;
 export const fetchOptions = { url: ASSET_URL, cacheMs: 12 * 3600 * 1000, retryDelayMs: 1500 };
 
+/**
+ * Patient download for the daily collector: 3 tries of 20 s. A live answer must not wait that long: see downloadLive.
+ */
 async function download(url: string, tries = 3): Promise<Buffer> {
   let last = "";
   for (let i = 0; i < tries; i++) {
@@ -224,9 +227,31 @@ async function download(url: string, tries = 3): Promise<Buffer> {
   throw new SourceError(`Could not reach the official source (BFS): ${last}`);
 }
 
-export async function loadTable(now = Date.now()): Promise<Table> {
+// BFS's download host hangs (rather than refuses) from Vercel's cloud IPs: 3 x 20 s took 40 s to reach the library copy (smoke 7 Nov: CH rent STALE after 40.1 s).
+// A live answer gets one budget of 8 s in total; a quick failure (5xx, reset) still gets one retry inside it. The collector keeps the patient download above.
+export const LIVE_BUDGET_MS = 8000;
+async function downloadLive(url: string, budgetMs = LIVE_BUDGET_MS): Promise<Buffer> {
+  const started = Date.now();
+  let last = "";
+  for (let i = 0; i < 2; i++) {
+    const left = budgetMs - (Date.now() - started);
+    if (left < 2500) break;
+    try {
+      const res = await fetch(url, { headers: { "user-agent": UA }, signal: AbortSignal.timeout(left) });
+      if (res.ok) return Buffer.from(await res.arrayBuffer());
+      last = `HTTP ${res.status}`;
+    } catch (e: any) {
+      last = String(e?.message ?? e);
+    }
+    if (i === 0) await new Promise((r) => setTimeout(r, Math.min(fetchOptions.retryDelayMs, 300)));
+  }
+  throw new SourceError(`Could not reach the official source (BFS): ${last || "timed out"}`);
+}
+
+export async function loadTable(now = Date.now(), live = true): Promise<Table> {
   if (cache && now - cache.at < fetchOptions.cacheMs) return cache.table;
-  const table = parseTable(readXlsx(await download(fetchOptions.url)));
+  const buf = live ? await downloadLive(fetchOptions.url) : await download(fetchOptions.url);
+  const table = parseTable(readXlsx(buf));
   cache = { at: now, table };
   return table;
 }
@@ -283,7 +308,7 @@ export function harvestFromTable(table: Table): HarvestResult {
 
 export async function chHarvest(): Promise<HarvestResult> {
   clearCache();
-  return harvestFromTable(await loadTable());
+  return harvestFromTable(await loadTable(Date.now(), false));
 }
 
 /** Library key for a request, or null when the copy cannot answer it (a bedroom or type split, a postcode, an unknown canton). */
