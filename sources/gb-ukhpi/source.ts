@@ -213,6 +213,32 @@ const numOf = (b: any, k: string): number | null => {
   return Number.isFinite(n) ? n : null;
 };
 
+export function restUrl(slug: string): string {
+  if (!/^[a-z-]+$/.test(slug)) throw new InputError("Unknown place.");
+  return `https://landregistry.data.gov.uk/data/ukhpi/region/${slug}.json?_sort=-refMonth&_pageSize=14&_view=all`;
+}
+
+const restNum = (v: unknown): number | null => (typeof v === "number" && Number.isFinite(v) ? v : null);
+
+/** Linked-data REST JSON (same publisher and data as the SPARQL answer) -> months, newest first. */
+export function parseRestMonths(json: any): Month[] {
+  const items = json?.result?.items;
+  if (!Array.isArray(items)) throw new SourceError("Unexpected answer from the UK House Price Index service", "no result.items");
+  const out: Month[] = [];
+  for (const it of items) {
+    const month = String(it?.refMonth ?? "");
+    if (!/^\d{4}-\d{2}$/.test(month)) continue;
+    out.push({
+      month,
+      values: { a: restNum(it.averagePrice), ad: restNum(it.averagePriceDetached), as: restNum(it.averagePriceSemiDetached), at: restNum(it.averagePriceTerraced), af: restNum(it.averagePriceFlatMaisonette) },
+      index: restNum(it.housePriceIndex),
+      annualChange: restNum(it.percentageAnnualChange),
+      salesVolume: restNum(it.salesVolume),
+    });
+  }
+  return out.sort((x, y) => (x.month < y.month ? 1 : -1));
+}
+
 /** SPARQL JSON -> months, newest first. Throws SourceError when the shape is not a SPARQL result. */
 export function parseMonths(json: any): Month[] {
   const rows = json?.results?.bindings;
@@ -339,21 +365,33 @@ export async function ukHpi(q: Query): Promise<PriceAnswer> {
   if (!place) {
     return empty(q, q.town, type, `The UK House Price Index source here covers Scotland and Northern Ireland only. '${q.town}' is not one of their council areas. Valid places: ${placeNames()}.`);
   }
-  const json = await liveJson(place);
-  return ukhpiAnswer(place, type, parseMonths(json), q);
+  return ukhpiAnswer(place, type, await liveMonths(place), q);
 }
 
-/** The Land Registry SPARQL service often fails the first call and answers the second (smoke runs showed STALE while a live call a minute later was ok;
- *  the collector needs up to 4 tries for the same reason). One quick retry on a failure keeps live answers live: 10 s + 1 s + 15 s stays inside the 40 s deadline. */
-export const liveOptions = { firstMs: 10000, retryMs: 15000, pauseMs: 1000 };
-async function liveJson(place: Place): Promise<unknown> {
+/** The Land Registry SPARQL service often fails a call and answers the next (smoke runs showed STALE while a live call a minute later was ok).
+ *  Order: SPARQL, then the same publisher's linked-data REST JSON (a different, lighter service path), then SPARQL once more: 8 s + 8 s + 1 s + 12 s
+ *  stays inside the 40 s deadline and keeps live answers live before the library copy is used. */
+export const liveOptions = { firstMs: 8000, restMs: 8000, retryMs: 12000, pauseMs: 1000 };
+async function liveMonths(place: Place): Promise<Month[]> {
   const init = { headers: { accept: "application/sparql-results+json", "user-agent": UA } };
+  let first: unknown;
   try {
-    return await fetchJson(queryUrl(place.slug), init, liveOptions.firstMs);
+    return parseMonths(await fetchJson(queryUrl(place.slug), init, liveOptions.firstMs));
   } catch (e) {
     if (e instanceof InputError) throw e;
-    await new Promise((r) => setTimeout(r, liveOptions.pauseMs));
-    return await fetchJson(queryUrl(place.slug), init, liveOptions.retryMs);
+    first = e;
+  }
+  try {
+    const months = parseRestMonths(await fetchJson(restUrl(place.slug), { headers: { accept: "application/json", "user-agent": UA } }, liveOptions.restMs));
+    if (months.length) return months;
+  } catch {
+    /* fall through to one more SPARQL try */
+  }
+  await new Promise((r) => setTimeout(r, liveOptions.pauseMs));
+  try {
+    return parseMonths(await fetchJson(queryUrl(place.slug), init, liveOptions.retryMs));
+  } catch {
+    throw first;
   }
 }
 
@@ -380,6 +418,11 @@ async function monthsFor(place: Place, tries = harvestOptions.tries): Promise<Mo
   let last: unknown;
   for (let i = 0; i < tries; i++) {
     try {
+      if (i % 2 === 1) {
+        // every second try uses the same publisher's REST JSON, in case only the SPARQL path is unwell
+        const months = parseRestMonths(await fetchJson(restUrl(place.slug), { headers: { accept: "application/json", "user-agent": UA } }, 20000));
+        if (months.length) return months;
+      }
       return parseMonths(await fetchJson(queryUrl(place.slug), { headers: { accept: "application/sparql-results+json", "user-agent": UA } }, 20000));
     } catch (e) {
       last = e;

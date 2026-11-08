@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { buildQuery, findPlace, harvestOptions, INFO, liveOptions, ukHpi, parseMonths, placeRows, queryUrl, ukHpiHarvest, ukHpiHistoryKey, ukhpiAnswer } from "./source";
-import { SCOTLAND_JSON } from "./fixtures";
+import { buildQuery, findPlace, harvestOptions, INFO, liveOptions, ukHpi, parseMonths, parseRestMonths, placeRows, queryUrl, restUrl, ukHpiHarvest, ukHpiHistoryKey, ukhpiAnswer } from "./source";
+import { NI_REST_JSON, SCOTLAND_JSON } from "./fixtures";
 import source from "./index";
 
 describe("gb-ukhpi places", () => {
@@ -144,6 +144,34 @@ describe("gb-ukhpi collector and library key", () => {
       harvestOptions.pauseMs = 400;
     }
   });
+  it("live call falls back to the REST JSON of the same publisher when SPARQL fails", async () => {
+    const original = globalThis.fetch;
+    liveOptions.pauseMs = 0;
+    const urls: string[] = [];
+    globalThis.fetch = (async (u: any) => {
+      urls.push(String(u));
+      if (String(u).includes("/landregistry/query")) return new Response("busy", { status: 503 });
+      return new Response(JSON.stringify(NI_REST_JSON), { status: 200, headers: { "content-type": "application/json" } });
+    }) as any;
+    try {
+      const a = await ukHpi({ town: "Northern Ireland" });
+      assert.equal(urls.length, 2);
+      assert.match(urls[1], /\/data\/ukhpi\/region\/northern-ireland\.json/);
+      assert.equal(a.status, "ok");
+      assert.equal(a.price?.value, NI_REST_JSON.result.items[0].averagePrice);
+    } finally {
+      globalThis.fetch = original;
+      liveOptions.pauseMs = 1000;
+    }
+  });
+  it("parses the REST JSON like the SPARQL answer (newest first, per-type figures)", () => {
+    const months = parseRestMonths(NI_REST_JSON);
+    assert.equal(months[0].month, NI_REST_JSON.result.items[0].refMonth);
+    assert.equal(months[0].values.a, NI_REST_JSON.result.items[0].averagePrice);
+    assert.ok(months.length >= 13);
+    assert.match(restUrl("scotland"), /region\/scotland\.json\?_sort=-refMonth/);
+    assert.throws(() => parseRestMonths({}), /Unexpected answer/);
+  });
   it("live call retries once after a failed first call (Edinburgh flat, smoke showed STALE while a later call was ok)", async () => {
     const original = globalThis.fetch;
     liveOptions.pauseMs = 0;
@@ -155,7 +183,7 @@ describe("gb-ukhpi collector and library key", () => {
     }) as any;
     try {
       const a = await ukHpi({ town: "Edinburgh", property_type: "flat-maisonette" });
-      assert.equal(calls, 2);
+      assert.equal(calls, 3);
       assert.equal(a.status, "ok");
       assert.equal(a.price?.value, 136950);
     } finally {
@@ -170,7 +198,7 @@ describe("gb-ukhpi collector and library key", () => {
     globalThis.fetch = (async () => { calls++; return new Response("down", { status: 503 }); }) as any;
     try {
       await assert.rejects(ukHpi({ town: "Edinburgh" }), /HTTP 503/);
-      assert.equal(calls, 2);
+      assert.equal(calls, 3);
     } finally {
       globalThis.fetch = original;
       liveOptions.pauseMs = 1000;
