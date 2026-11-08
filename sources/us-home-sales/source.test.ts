@@ -7,7 +7,7 @@ import { InputError } from "../../lib/http";
 import { summarise } from "../../lib/stats";
 import {
   buildOrder, buildSelect, buildWhere, clampMonths, clearLatestCache, DATASETS, INFO, MAX_ROWS, monthsBack, norm, PAGE_SIZE,
-  parseLatest, parseSales, parseZip, routeUsPlace, stateCode, usHomeSales,
+  hedged, parseLatest, parseSales, parseZip, routeUsPlace, stateCode, usHomeSales,
 } from "./source";
 import { CT_TOWNS, NYC_NEIGHBORHOODS } from "./places";
 
@@ -338,4 +338,23 @@ test("depth: harvest writes aggregate rows only and skips what it cannot read in
 
 test("depth: harvest fails loudly when no portal answers", async () => {
   await assert.rejects(usHarvest({ fetcher: async () => { throw new Error("down"); }, today: new Date("2026-10-30T03:00:00Z") }), /No.*portals|none/i);
+});
+
+test("depth: hedged request - a slow first call is overtaken by the second; both failing rejects with the first error", async () => {
+  let calls = 0;
+  const t0 = Date.now();
+  const got = await hedged(async () => {
+    const n = ++calls;
+    if (n === 1) await new Promise((r) => setTimeout(r, 400));
+    return n;
+  }, 20);
+  assert.equal(got, 2);
+  assert.ok(Date.now() - t0 < 300, "the second call answered without waiting for the slow first one");
+  let n2 = 0;
+  await assert.rejects(hedged(async () => { throw new Error(`down ${++n2}`); }, 10), /down 1/);
+  // a fast first call never sends the second request
+  let n3 = 0;
+  assert.equal(await hedged(async () => ++n3, 30), 1);
+  await new Promise((r) => setTimeout(r, 60));
+  assert.equal(n3, 1);
 });

@@ -406,12 +406,42 @@ export function clearLatestCache(): void {
   latestCache.clear();
 }
 
+/** Send the same request again if the first has not answered after hedgeMs; the first success wins. Socrata's max() query takes 0.5 s
+ *  on some calls and 14 s on others (8 Nov 2026), and it runs before the sales query, so one slow call used to push Brooklyn past its
+ *  time budget and onto the stale copy. */
+export async function hedged<T>(run: () => Promise<T>, hedgeMs: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const first = run();
+  const second = new Promise<T>((resolve, reject) => {
+    timer = setTimeout(() => run().then(resolve, reject), hedgeMs);
+  });
+  second.catch(() => {});
+  try {
+    return await Promise.any([first, second]);
+  } catch (e) {
+    throw (e as AggregateError).errors?.[0] ?? e;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+export const LATEST_HEDGE_MS = 3500;
+
 async function datasetLatest(dataset: UsDataset, today: Date, fetcher?: Fetcher): Promise<string> {
   const hit = latestCache.get(dataset);
   if (hit && !fetcher && Date.now() - hit.at < LATEST_TTL_MS) return hit.date;
   const f = DATASETS[dataset];
   const tomorrow = nextDay(today.toISOString().slice(0, 10)); // ignore mistyped future dates in the file
-  const rows = await socrataQuery(f.domain, f.id, { select: `max(${f.dateField}) as latest`, where: `${f.dateField} < '${tomorrow}T00:00:00'` }, { fetcher, timeoutMs: 25000 });
+  const ask = (timeoutMs: number) =>
+    socrataQuery(f.domain, f.id, { select: `max(${f.dateField}) as latest`, where: `${f.dateField} < '${tomorrow}T00:00:00'` }, { fetcher, timeoutMs });
+  let rows: Record<string, any>[];
+  try {
+    rows = fetcher ? await ask(25000) : await hedged(() => ask(15000), LATEST_HEDGE_MS);
+  } catch (e) {
+    // The newest sale date moves by days, not minutes: an expired copy from this instance is better than no answer.
+    if (hit && !fetcher) return hit.date;
+    throw e;
+  }
   const date = parseLatest(rows);
   if (!date) throw new SourceError(`The ${f.info.name} dataset returned no latest sale date`);
   if (!fetcher) latestCache.set(dataset, { date, at: Date.now() });
