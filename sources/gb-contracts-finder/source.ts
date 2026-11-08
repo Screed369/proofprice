@@ -7,11 +7,13 @@
 // silently ignored (so only the names below are sent); a cpvCodes filter also matches notices that carry a parent code (45000000 for 45233142), so
 // notices are checked against their own cpvCodes field afterwards.
 // The OCDS search (GET /Published/Notices/OCDS/Search) has no keyword filter, so this v2 search is used instead.
-import { fetchJson, InputError, SourceError } from "../../lib/http";
+import { InputError, retryOnce, SourceError } from "../../lib/http";
+import { aggregateDaily, NATIONAL } from "../../lib/library/aggregate";
+import type { HarvestResult, Params } from "../../lib/plugin";
 import type { SourceInfo } from "../../lib/plugin";
 import type { PriceAnswer } from "../../lib/answer";
 import { contractAnswer } from "../../categories/contracts/answer";
-import { cleanCpv, cpvInGroups, cpvStem, matchPurchase, monthsWindow, normaliseText, sliceWindow } from "../../categories/contracts/purchases";
+import { cleanCpv, cpvInGroups, cpvStem, matchPurchase, monthsWindow, normaliseText, PURCHASES, sliceWindow } from "../../categories/contracts/purchases";
 
 export const INFO: SourceInfo = {
   id: "gb-contracts-finder",
@@ -135,12 +137,43 @@ export function buildRequest(c: GbCriteria, slice: { from: string; to: string },
 }
 
 
+/** Parse a Contracts Finder reply. It must be JSON: the service has answered a GOV.UK HTML page (a block or maintenance page) with HTTP 200,
+ *  which used to surface as "Unexpected token <". Now the error names what came back, and reads as an outage so the library copy can answer. */
+export function parseReply(status: number, contentType: string, text: string): any {
+  const head = text.slice(0, 80).replace(/\s+/g, " ").trim();
+  if (status >= 400) throw new SourceError(`Source returned HTTP ${status}`, head, status);
+  if (/^\s*</.test(text) || /html/i.test(contentType)) {
+    throw new SourceError("Could not reach the official source: Contracts Finder answered a web page instead of data", `HTTP ${status} ${contentType}: ${head}`, 503);
+  }
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new SourceError("Could not reach the official source: Contracts Finder answered something that is not JSON", `HTTP ${status} ${contentType}: ${head}`, 503);
+  }
+}
+
+async function postSearch(body: unknown, timeoutMs: number): Promise<any> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(SEARCH_URL, {
+      method: "POST",
+      signal: controller.signal,
+      headers: { "user-agent": "pricepaid-plug/0.1 (+price-paid data for AI agents)", "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify(body),
+    });
+    return parseReply(res.status, res.headers.get("content-type") ?? "", await res.text());
+  } catch (err: any) {
+    if (err?.name === "AbortError") throw new SourceError("Source timed out", SEARCH_URL);
+    if (err instanceof SourceError) throw err;
+    throw new SourceError("Could not reach the official source", String(err?.cause?.code ?? err?.message ?? err));
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function search(c: GbCriteria, slice: { from: string; to: string }, stems?: string[]): Promise<{ awards: GbAward[]; hitCount: number; other_product: number }> {
-  const json = await fetchJson(
-    SEARCH_URL,
-    { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(buildRequest(c, slice, PER_SLICE)) },
-    25000,
-  );
+  const json = await retryOnce(() => postSearch(buildRequest(c, slice, PER_SLICE), 9000));
   return parseNotices(json, stems);
 }
 
@@ -226,4 +259,53 @@ export async function gbContracts(input: GbInput): Promise<PriceAnswer> {
     baseUrl: input.baseUrl,
     extra: { matched_filter: how, notices_matching: whole.hitCount, awards_used: awards.length, slices },
   });
+}
+
+
+// ---------- daily library copy (stale-if-error) ----------
+
+const HARVEST_MONTHS = 24;
+
+/** The library item for a request: the common purchase its words match, or null (no copy kept for free-text searches). */
+export function gbItemFor(what: string): string | null {
+  return matchPurchase(what)?.id ?? null;
+}
+
+/** Maps a request to the library keys, so a copy can answer when Contracts Finder does not. Only plain national requests (no CPV, no region, default window). */
+export function gbHistoryKey(p: Params): { area: string; item: string; label: string } | null {
+  if (p.cpv || p.buyer_area) return null;
+  if (p.months !== undefined && p.months !== null && Number(p.months) !== HARVEST_MONTHS) return null;
+  const purchase = matchPurchase(String(p.what ?? ""));
+  return purchase ? { area: NATIONAL, item: purchase.id, label: `United Kingdom, ${purchase.label}` } : null;
+}
+
+/** Aggregates only: for each common purchase, the median and 10th-90th percentile of the awarded values over the newest 24 months. */
+export async function gbHarvest(): Promise<HarvestResult> {
+  const win = monthsWindow(HARVEST_MONTHS);
+  const records: { area: string; item: string; price: number }[] = [];
+  let failed = 0;
+  let lastErr: unknown;
+  for (let i = 0; i < PURCHASES.length; i += 4) {
+    await Promise.all(
+      PURCHASES.slice(i, i + 4).map(async (p) => {
+        try {
+          const c: GbCriteria = { keyword: keywordFor(p.gb ?? p.keyword) };
+          const r = await search(c, win);
+          for (const a of r.awards) records.push({ area: NATIONAL, item: p.id, price: a.value });
+        } catch (e) {
+          failed++;
+          lastErr = e;
+        }
+      }),
+    );
+  }
+  if (failed === PURCHASES.length) throw lastErr instanceof Error ? lastErr : new SourceError("Contracts Finder did not answer");
+  const rows = aggregateDaily(records, false);
+  return {
+    date: win.to,
+    currency: "GBP",
+    unit: "per contract (lot), total awarded value",
+    rows,
+    note: `Contracts Finder awarded-contract notices with an award date from ${win.from} to ${win.to}, one search per common purchase (up to ${PER_SLICE} notices each, parent notices not double counted). ${failed} of ${PURCHASES.length} searches failed. Never supplier names.`,
+  };
 }

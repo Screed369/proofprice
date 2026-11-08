@@ -189,3 +189,29 @@ test("Contracts Finder: a bad region or code is the caller's mistake", async () 
   await assert.rejects(() => gbContracts({ what: "laptops", cpv: "3021", months: 12 }), InputError);
   await assert.rejects(() => gbContracts({ what: "laptops", cpv: "x", months: 12 }), InputError);
 });
+
+// ---- G20261108-GB-CONTRACTS: Contracts Finder answered an HTML page (HTTP 200) to the POST ----
+import { gbHistoryKey, parseReply } from "./source";
+import { isSourceOutage } from "../../lib/http";
+
+test("Contracts Finder: an HTML page instead of JSON is a clear outage error, not 'Unexpected token <'", () => {
+  const html = '<!DOCTYPE html><html><head><title>Service unavailable</title></head><body>…</body></html>';
+  assert.throws(
+    () => parseReply(200, "text/html; charset=utf-8", html),
+    (e: any) => e instanceof SourceError && /web page instead of data/.test(e.message) && /HTTP 200 text\/html/.test(e.detail ?? "") && isSourceOutage(e),
+  );
+  assert.throws(() => parseReply(200, "application/json", "not json at all"), (e: any) => e instanceof SourceError && isSourceOutage(e));
+  assert.throws(() => parseReply(503, "text/html", "<html>"), (e: any) => e instanceof SourceError && e.status === 503);
+  assert.deepEqual(parseReply(200, "application/json", '{"hitCount":0,"noticeList":[]}'), { hitCount: 0, noticeList: [] });
+});
+
+test("Contracts Finder: the library copy is keyed for plain national requests only (the two smoke questions)", () => {
+  const k = gbHistoryKey({ what: "road resurfacing", months: 24 });
+  assert.equal(k?.area, "ALL");
+  assert.ok(k?.item);
+  assert.ok(gbHistoryKey({ what: "laptops" }));
+  assert.equal(gbHistoryKey({ what: "laptops", buyer_area: "London" }), null);
+  assert.equal(gbHistoryKey({ what: "laptops", cpv: "30213100" }), null);
+  assert.equal(gbHistoryKey({ what: "laptops", months: 12 }), null);
+  assert.equal(gbHistoryKey({ what: "zzz unknown thing" }), null);
+});

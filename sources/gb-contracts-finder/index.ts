@@ -1,6 +1,6 @@
 // Manifest: UK government contract prices (Contracts Finder awarded contracts). Logic lives in ./source.ts.
 import { defineSource, num, str } from "../../lib/plugin";
-import { gbContracts, INFO } from "./source";
+import { gbContracts, gbHarvest, gbHistoryKey, INFO } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -30,4 +30,6 @@ export default defineSource({
       baseUrl: ctx.baseUrl,
     });
   },
+  harvest: gbHarvest,
+  historyKey: (p) => gbHistoryKey(p),
 });
