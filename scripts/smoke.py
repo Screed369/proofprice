@@ -1,7 +1,8 @@
 """Smoke test: ask a ProofPrice deployment every example question in /api/v1/coverage, then talk to its MCP server.
 
 Usage: python3 -I scripts/smoke.py https://proofprice.com
-Prints one line per example (OK / STALE / FAIL), then the MCP checks, then a summary. Exit code 1 if any example or MCP check fails.
+Prints one line per example (OK / STALE / FAIL), then the MCP checks, then a summary. Exit code 1 if any example or MCP check fails,
+except examples covered by an unexpired entry in scripts/smoke-known-outages.json (reported as KNOWN OUTAGE, max 14 days each).
 A "stale" answer (served from our library copy because the official source did not respond) counts as a warning.
 The MCP checks (POST /api/mcp, 20 seconds each, however slowly the server answers) are what an AI app does when it connects:
 initialize, tools/list, one small tools/call, and the 2026-protocol "subscriptions/listen" request, which must be answered
@@ -12,8 +13,10 @@ when a retry passed. Only a failure that survives the retries is a FAIL. Each MC
 Examples are asked WORKERS at a time and reported in coverage order. Standard library only, so it runs anywhere.
 """
 
+import datetime
 import http.client
 import json
+import os
 import socket
 import sys
 import time
@@ -28,7 +31,53 @@ MCP_CLIENT = {"name": "proofprice-smoke", "version": "1"}
 RETRY_WAIT_1 = 20  # seconds before the first retry of a failed example (or MCP check)
 STALE_RECHECK_WAIT = 65  # seconds before a STALE example is asked again (past the 60 s answer cache, and time for an upstream 429 to ease)
 RETRY_WAIT_2 = 60  # seconds before the second retry, only when the first retry was a 5xx too
+KNOWN_OUTAGES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "smoke-known-outages.json")
+KNOWN_OUTAGE_MAX_DAYS = 14  # an entry may cover at most this many days from `since`, so it cannot hide a problem for ever
 WORKERS = 6  # examples asked at the same time (one after another took over 20 minutes once there were 228 examples)
+
+
+def load_known_outages(path: str = KNOWN_OUTAGES_FILE, today: datetime.date | None = None):
+    """Read the reviewed list of known upstream outages. Returns (active entries, problems). An entry is {path, reason, since, expires}
+    (`path` is the example path, or a prefix of it such as /api/v1/farm-prices?country=IE). Dates are YYYY-MM-DD (UTC). An entry counts
+    only when since <= today <= expires AND expires is at most KNOWN_OUTAGE_MAX_DAYS after since; expired or malformed entries are
+    dropped (the example then FAILS again) and listed in `problems` so the report says why."""
+    today = today or datetime.datetime.now(datetime.timezone.utc).date()
+    try:
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+    except FileNotFoundError:
+        return [], []
+    except Exception as e:
+        return [], [f"known-outages file unreadable ({e}); ignoring it"]
+    entries = raw.get("outages") if isinstance(raw, dict) else raw
+    active, problems = [], []
+    for e in entries if isinstance(entries, list) else []:
+        try:
+            pth, reason = str(e["path"]), str(e["reason"])
+            since = datetime.date.fromisoformat(e["since"])
+            expires = datetime.date.fromisoformat(e["expires"])
+            if not pth.startswith("/") or not reason.strip():
+                raise ValueError("needs a path starting with / and a reason")
+            if expires < since or (expires - since).days > KNOWN_OUTAGE_MAX_DAYS:
+                raise ValueError(f"expires must be within {KNOWN_OUTAGE_MAX_DAYS} days of since")
+        except Exception as err:
+            problems.append(f"known-outages entry ignored ({err}): {e!r}")
+            continue
+        if since > today:
+            problems.append(f"known-outages entry not yet active (since {since}): {pth}")
+        elif today > expires:
+            problems.append(f"known-outages entry EXPIRED on {expires}, so it no longer excuses a failure: {pth}")
+        else:
+            active.append({"path": pth, "reason": reason, "since": str(since), "expires": str(expires)})
+    return active, problems
+
+
+def match_known_outage(path: str, active: list):
+    """The active entry that excuses this failing example path (exact match or prefix), or None."""
+    for e in active:
+        if path == e["path"] or path.startswith(e["path"]):
+            return e
+    return None
 
 
 def get(url: str, timeout: int = 60):
@@ -275,7 +324,10 @@ def main() -> int:
     print(f"{len(cov.get('tools', []))} tools, {len(cov.get('sources', []))} sources, {len(examples)} examples\n")
 
     non_smoke = set(cov.get("non_smoke_examples", []))
-    fails, stale, info = [], [], []
+    fails, stale, info, known = [], [], [], []
+    known_active, known_problems = load_known_outages()
+    for line in known_problems:
+        print(f"NOTE  {line}")
     # Ask several examples at once (each waits on a different official server), then print in the coverage order.
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         results = list(pool.map(lambda p: get_with_retries(base + p), examples))
@@ -298,8 +350,14 @@ def main() -> int:
             tag = "INFO "
             info.append(path)
         else:
-            tag = "FAIL "
-            fails.append(path)
+            entry = match_known_outage(path, known_active)
+            if entry:
+                tag = "KNOWN"
+                known.append((path, entry))
+                summary = f"KNOWN OUTAGE until {entry['expires']}: {entry['reason']} | {summary}"[:300]
+            else:
+                tag = "FAIL "
+                fails.append(path)
         if retried_ok:
             print(f"RETRY-OK  {path} passed on a retry (a first call failed)" if path not in rechecked else f"RETRY-OK  {path} was STALE at first (likely our own burst hitting the publisher's rate limit) and answered live on a recheck")
         print(f"{tag} {code} {secs:5.1f}s {path}\n      {summary}")
@@ -325,13 +383,15 @@ def main() -> int:
         lib_note = f"library: HTTP {lib_code}"
 
     print(
-        f"\nSUMMARY: {len(examples) - len(fails) - len(stale) - len(info)} ok, {len(stale)} stale, {len(fails)} failed{f', {len(info)} info (smoke:false examples)' if info else ''}; "
+        f"\nSUMMARY: {len(examples) - len(fails) - len(stale) - len(info) - len(known)} ok, {len(stale)} stale, {len(fails)} failed{f', {len(known)} known outage(s) (not counted as failures)' if known else ''}{f', {len(info)} info (smoke:false examples)' if info else ''}; "
         f"mcp: {mcp_ok} ok, {len(mcp_fails)} failed; {lib_note}"
     )
     for p in fails:
         print(f"  FAILED {p}")
     for name in mcp_fails:
         print(f"  FAILED {name}")
+    for p, e in known:
+        print(f"  KNOWN OUTAGE {p} (until {e['expires']}: {e['reason']})")
     for p in stale:
         print(f"  STALE  {p}")
     for p in info:
