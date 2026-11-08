@@ -3,7 +3,7 @@ import { JsonLd } from "../_components/JsonLd";
 import { faqPageGraph } from "../../lib/site/jsonld";
 import { CONTACT } from "../../lib/site/constants";
 import { pageMetadata } from "../../lib/site/meta";
-import { pricingFacts } from "../../lib/pricing";
+import { ANY_TOKEN_NOTE, pricingFacts } from "../../lib/pricing";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +26,7 @@ export default function Pricing() {
       question: "How does an AI agent pay for ProofPrice?",
       answer: `${p.payment_method.how} Protocol: ${p.payment_method.protocol}. Network: ${p.payment_method.network_when_live}.`,
     },
+    { question: "Can an agent pay with a token other than USDC?", answer: ANY_TOKEN_NOTE },
     { question: "When is an agent never charged?", answer: `${p.never_charged.join("; ")}.` },
     { question: "Are there business plans?", answer: `For higher volumes, an invoice or a custom arrangement: ${p.business_plans}.` },
   ];
@@ -84,6 +85,9 @@ export default function Pricing() {
         is an HTTP 402 (or an error result for MCP) that says what to pay and where. The agent signs a USDC payment and repeats the call. There
         is no account and no card. We take the payment only when we have a real answer to give.
       </p>
+
+      <h2 id="any-token">Pay with any token</h2>
+      <p>{ANY_TOKEN_NOTE}</p>
 
       <h2>When you are never charged</h2>
       <ul>

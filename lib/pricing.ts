@@ -17,6 +17,17 @@ export function paymentMode(): PaymentMode {
   return cfg.network === "base" ? "mainnet" : "testnet";
 }
 
+/** Whether USDC on Solana is offered next to Base (PROOFPRICE_X402_SOLANA_PAY_TO set). Never returns the address. */
+export function solanaOffered(): boolean {
+  return Boolean(readGateConfig()?.solana);
+}
+
+/** "Pay with any token": one factual paragraph, used on /pricing, pricing.json, llms.txt and llms-full.txt. */
+export const ANY_TOKEN_NOTE =
+  "ProofPrice receives USDC only. An agent that holds another coin can swap it to USDC first and then pay the normal x402 reply, " +
+  "for example with NEAR Intents' Agent Payments Skill (which funds x402 payments in USDC from assets on other chains) or any other swap tool. " +
+  "The swap is between the agent and that tool: ProofPrice never swaps, holds or forwards other tokens, and has no part in that tool's fees or terms.";
+
 export function usd(microUsd: number): string {
   const v = microUsd / 1_000_000;
   return `USD ${v.toFixed(2)}`;
@@ -53,8 +64,9 @@ export function pricingFacts(baseUrl: string = SITE_URL) {
     payment_method: {
       protocol: "x402 (version 2)",
       how: "The caller asks. After the free calls for the day are used, the reply is HTTP 402 (REST) or an error result (MCP) that says what to pay and where. The caller signs a USDC payment and repeats the call with it. We only settle the payment when we have a real answer.",
-      network_when_live: "Base (USDC)",
+      network_when_live: solanaOffered() ? "Base (USDC), or Solana (USDC)" : "Base (USDC)",
     },
+    pay_with_any_token: ANY_TOKEN_NOTE,
     never_charged: [
       "Any answer that uses a source not yet cleared for commercial use (served free, with a note)",
       "Answers with not enough records, no match, errors or a source that could not be reached",

@@ -8,6 +8,7 @@ import { CHECK_REST, CHECK_TOOL, checkExamplePath } from "./check";
 import { checkResultSchema, coverageSchema, errorSchema, historyAnswerSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { joinAnd } from "./text";
+import { ANY_TOKEN_NOTE } from "./pricing";
 import { JWKS_PATH, VERIFY_PATH } from "./proofs";
 import { PROOFS_PAGE, PROOFS_SHORT, proofsLlmsLines } from "./proofs/docs";
 
@@ -313,6 +314,7 @@ ${CITING_RULES.map((r) => `- ${r}`).join("\n")}
 - Everything in one file (tools, parameters, examples, sources, licences): ${baseUrl}/llms-full.txt
 - Every source with its publisher, licence and limits: ${baseUrl}/sources
 - Pricing: what is free forever, what premium calls cost, how agents pay per call with x402 (JSON: ${baseUrl}/pricing.json): ${baseUrl}/pricing
+- Pay with any token: ${ANY_TOKEN_NOTE}
 - How we check sources and earn trust: ${baseUrl}/trust
 - Press: a plain description of ProofPrice, live facts, logo files and contact: ${baseUrl}/press
 - What people paid this week: the biggest week-on-week moves in fuel, energy and homes, from the price library: ${baseUrl}/this-week

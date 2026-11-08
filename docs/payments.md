@@ -11,7 +11,7 @@ Status: built, **OFF by default**. With neither `PROOFPRICE_X402_ENABLED` nor `P
 
 ## Flow
 1. No payment, free calls left → answer, free.
-2. No payment, quota used → **HTTP 402** (REST) or an `isError` result (MCP) with `x402Version: 2`, `accepts: [{scheme: "exact", network, amount, asset, payTo, ...}]` (also in the `PAYMENT-REQUIRED` header, base64).
+2. No payment, quota used → **HTTP 402** (REST) or an `isError` result (MCP) with `x402Version: 2`, `accepts: [{scheme: "exact", network, amount, asset, payTo, ...}]` (Base first; a second Solana entry only when switched on) (also in the `PAYMENT-REQUIRED` header, base64).
 3. Payment sent (`PAYMENT-SIGNATURE` or `X-PAYMENT` header, base64 JSON; for MCP `_meta["x402/payment"]`) → we check it is for our wallet, network and price, the **facilitator verifies** it, we run the call, and only for a real answer the **facilitator settles**. If settlement fails the answer is withheld (fail closed). Success carries `PAYMENT-RESPONSE` (settlement transaction hash only).
 4. Facilitator down → HTTP 503 on premium calls only. Free tools never touch the gate.
 
@@ -23,6 +23,17 @@ Status: built, **OFF by default**. With neither `PROOFPRICE_X402_ENABLED` nor `P
 | `PROOFPRICE_X402_NETWORK` | `base-sepolia` (default, testnet) or `base` (mainnet). |
 | `PROOFPRICE_X402_FACILITATOR_URL` | Optional. Default: x402.org (testnet), Coinbase CDP (mainnet). |
 | `CDP_API_KEY_ID`, `CDP_API_KEY_SECRET` | Coinbase CDP facilitator keys. Required for mainnet (the gate stays off without them). Secret: Vercel settings only. |
+| `PROOFPRICE_X402_SOLANA_PAY_TO` | Optional. Your PUBLIC Solana receiving address (base58). Adds USDC on Solana as a second option in `accepts` (Solana mainnet when the network is `base`, Solana devnet when it is `base-sepolia`). Unset or invalid = Base only, exactly as before. Only works while the gate itself is on. |
+
+## Solana USDC (second option, OFF by default)
+- Built 8 Nov 2026 (Simon approved). Off unless `PROOFPRICE_X402_SOLANA_PAY_TO` holds a valid public Solana address. Base stays the first entry in `accepts`; nothing about Base changes.
+- Format, from the x402 spec (`specs/schemes/exact/scheme_exact_svm.md` in coinbase/x402): `scheme: "exact"`, `network: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"` (mainnet; devnet `solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1`), `asset` = the USDC mint `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v` (devnet `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`), 6 decimals so the same `amount` as Base, `payTo` = our address, `extra.feePayer` = the facilitator's fee-paying signer. The payer sends `payload.transaction` (a partially signed Solana transaction, base64); the facilitator adds its fee-payer signature when it settles.
+- The fee payer comes from the facilitator's `GET /supported` (`kinds[].extra.feePayer` for `exact` on that network, cached 10 minutes; `signers` also accepted). If the facilitator does not list the Solana network, or cannot be reached, the 402 simply offers Base only.
+- Checks before the facilitator is asked (fail closed): our Solana address, the official USDC mint, the exact price (not more, not less), scheme `exact`, a transaction present, and a fee payer the facilitator itself advertises. Then the facilitator verifies and, only for a real answer, settles, exactly as for Base. The same signed transaction is never settled twice within 120 s on one instance (the spec's duplicate-settlement guard).
+- Coinbase's CDP facilitator lists Solana mainnet for `exact` (docs.cdp.coinbase.com/x402/network-support); x402.org lists Solana devnet. Not yet tested against either (no network here): first live check is a devnet paid call.
+
+## Pay with any token
+ProofPrice receives USDC only. An agent holding another coin can swap to USDC first (for example NEAR Intents' Agent Payments Skill, or any swap tool) and then pay the normal 402. ProofPrice never swaps, holds or forwards other tokens. The text lives in `ANY_TOKEN_NOTE` (`lib/pricing.ts`) and appears on /pricing, pricing.json, llms.txt and llms-full.txt.
 
 ## Honest limits
 - **Free quota is best-effort.** There are no API keys, so a caller is a network address, hashed with a daily salt and held in one server instance's memory (never stored, returned or logged). With several instances the true allowance can exceed the setting. A shared store would fix it; not needed yet.

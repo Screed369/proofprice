@@ -25,6 +25,7 @@ import { examplePlans } from "./site/example-pages";
 import { countryGroups, newestLibraryDay, pageRefs } from "./site/prices";
 import { MIN_PUBLISH } from "./stats";
 import { joinAnd } from "./text";
+import { ANY_TOKEN_NOTE } from "./pricing";
 
 // The canonical public address and the contact live in lib/site/constants.ts (shared with the website pages); re-exported here.
 export { CONTACT, MCP_URL, SITE_URL };
@@ -230,6 +231,7 @@ Contact: ${CONTACT}
 ## Pages for people and crawlers
 - Sources, licences and attribution (every source with its publisher, licence and limits): ${baseUrl}/sources
 - Pricing (free forever, premium calls, how agents pay with x402): ${baseUrl}/pricing (JSON: ${baseUrl}/pricing.json)
+- Pay with any token: ${ANY_TOKEN_NOTE} (${baseUrl}/pricing#any-token)
 - How we earn trust (rules, checks before a source goes live, corrections): ${baseUrl}/trust
 - Press (plain description, live facts, logo files, contact): ${baseUrl}/press
 - What people paid this week (biggest week-on-week moves in fuel, energy and homes, from the price library): ${baseUrl}/this-week
