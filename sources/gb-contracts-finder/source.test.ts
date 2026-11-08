@@ -189,3 +189,16 @@ test("Contracts Finder: a bad region or code is the caller's mistake", async () 
   await assert.rejects(() => gbContracts({ what: "laptops", cpv: "3021", months: 12 }), InputError);
   await assert.rejects(() => gbContracts({ what: "laptops", cpv: "x", months: 12 }), InputError);
 });
+
+test("gb-contracts-finder: a retired search address (302 to not-found, seen 8 Nov 2026) gives a clear 502 SourceError", async () => {
+  const real = globalThis.fetch;
+  globalThis.fetch = (async () => new Response(null, { status: 302, headers: { location: "https://www.contractsfinder.service.gov.uk/syserror/notfound" } })) as any;
+  try {
+    await assert.rejects(
+      () => gbContracts({ what: "laptops", months: 12 }),
+      (e: any) => e instanceof SourceError && /moved or been retired/.test(e.message) && e.status === 502,
+    );
+  } finally {
+    globalThis.fetch = real;
+  }
+});

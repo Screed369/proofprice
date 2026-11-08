@@ -138,9 +138,18 @@ export function buildRequest(c: GbCriteria, slice: { from: string; to: string },
 async function search(c: GbCriteria, slice: { from: string; to: string }, stems?: string[]): Promise<{ awards: GbAward[]; hitCount: number; other_product: number }> {
   const json = await fetchJson(
     SEARCH_URL,
-    { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(buildRequest(c, slice, PER_SLICE)) },
+    { method: "POST", redirect: "manual", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(buildRequest(c, slice, PER_SLICE)) },
     25000,
-  );
+  ).catch((err) => {
+    // 8 Nov 2026: the v2 search address answers 302 -> /syserror/notfound (retired). Say so instead of a JSON parse error.
+    if (err instanceof SourceError && /HTTP 30\d/.test(err.message)) {
+      throw new SourceError("Contracts Finder search address has moved or been retired (redirect to its not-found page)", err.message, 502);
+    }
+    if (err instanceof SourceError && /is not valid JSON|Unexpected token/.test(String(err.detail ?? ""))) {
+      throw new SourceError("Contracts Finder answered a web page instead of JSON", String(err.detail).slice(0, 80), 502);
+    }
+    throw err;
+  });
   return parseNotices(json, stems);
 }
 
