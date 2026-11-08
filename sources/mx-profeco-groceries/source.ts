@@ -493,6 +493,13 @@ export function profecoAnswerFromRows(day: LibraryDay, input: { item?: string; r
   if (!hits.length) {
     const all = matchItems(defsFor(day.rows, NATIONAL), item);
     const names = [...new Set(defsFor(day.rows, NATIONAL).map((d) => d.name))].sort().slice(0, 30);
+    // G20261108-MX-JALISCO: a word that matches no product at all (for example a state name sent as the item) is a bad request, not a silent empty answer.
+    if (!all.length)
+      throw new InputError(
+        `item '${item}' not recognised: it matches no product priced in 5 or more shops in our copy. Send an everyday product in plain words such as 'milk', 'eggs', 'tortilla', 'cooking oil' or 'leche'` +
+          (resolveState(day.rows, item) ? `; '${item}' looks like a Mexican state, so put it in region instead` : "") +
+          (names.length ? `. Products held include: ${names.join("; ")}.` : "."),
+      );
     return empty(
       area !== NATIONAL && all.length
         ? `Fewer than 5 shops in ${place} priced '${item}' in the last 30 days of data. Leave region out for the national figure.`
