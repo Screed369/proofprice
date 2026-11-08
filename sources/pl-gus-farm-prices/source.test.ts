@@ -182,9 +182,9 @@ test("harvest rows: one per product, NO_COUNT, dated the last day of the month; 
 });
 
 test("routing: PL products GUS publishes come here; everything else for PL and all other countries stay with eu-farm-prices", () => {
-  // PLATFORM TASK: eu-farm-prices (folder sorts first) still says yes to every PL question, so until its serves() hands GUS products to this source
-  // the registry answers PL wheat from the EU portal. Either source is fine here; flip this to pl-gus-farm-prices once the platform task is done.
-  assert.ok(["pl-gus-farm-prices", "eu-farm-prices"].includes(findSource("farm-prices", "PL", { country: "PL", product: "wheat" })!.info.id));
+  // eu-farm-prices (folder sorts first) hands GUS products to this source through its own serves() (Repairer 8 Nov).
+  assert.equal(findSource("farm-prices", "PL", { country: "PL", product: "wheat" })!.info.id, "pl-gus-farm-prices");
+  assert.ok(!euManifest.serves!({ country: "PL", product: "wheat" }));
   assert.equal(findSource("farm-prices", "PL", { country: "PL", product: "apples" })?.info.id, "eu-farm-prices");
   assert.equal(findSource("farm-prices", "DE", { country: "DE", product: "wheat" })?.info.id, "eu-farm-prices");
   assert.ok(manifest.serves!({ country: "pl", product: "Wheat" }));

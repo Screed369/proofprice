@@ -1,6 +1,7 @@
 // Manifest: farm and wholesale food prices for EU member states (European Commission Agri-food data portal API). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import { productHelp, resolveProduct } from "./products";
+import { plProductOf } from "../pl-gus-farm-prices/source";
 import { COUNTRIES, euFarmHarvest, euFarmPrices, farmHistoryKey, INFO } from "./source";
 
 /** Product keys for which Luke (fi-luke-farm-prices) answers FI. A test in that folder checks both lists agree. */
@@ -30,6 +31,8 @@ export default defineSource({
   serves: (p) => {
     const country = String(p.country ?? "").toUpperCase();
     if (country === "FI" && LUKE_FI_PRODUCTS.includes(productKey(p.product))) return false;
+    // PL producer prices GUS publishes (declared serves() change, Repairer 8 Nov, platform task from Builder C) go to pl-gus-farm-prices.
+    if (country === "PL" && plProductOf(p.product) !== null) return false;
     if (country === "FR" && typeof p.product === "string" && p.product.trim() !== "" && productKey(p.product) === "") return false;
     return true;
   },
