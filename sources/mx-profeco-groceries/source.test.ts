@@ -122,6 +122,8 @@ test("answer: national and state figures, posted label, sample size, empty and b
   assert.throws(() => profecoAnswerFromRows(day, { item: "jalisco", today: "2026-10-20" }), /not recognised.*looks like a Mexican state, so put it in region/);
   assert.throws(() => profecoAnswerFromRows(day, { item: "milk", region: "Chiapas" }), /States with figures: Jalisco, Nuevo Leon/);
   assert.throws(() => profecoAnswerFromRows(day, {}), /item is required/);
+  assert.throws(() => profecoAnswerFromRows(day, { item: "jalisco" }), /is a Mexican state, not a product.*region=Jalisco/);
+  assert.throws(() => profecoAnswerFromRows(day, { item: "Nuevo León" }), /region=Nuevo Leon/);
   const thin = profecoAnswerFromRows(day, { item: "eggs", region: "Nuevo Leon", today: "2026-10-20" });
   assert.equal(thin.status, "no_matches");
 });

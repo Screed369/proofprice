@@ -491,6 +491,9 @@ export function profecoAnswerFromRows(day: LibraryDay, input: { item?: string; r
     });
   const hits = matchItems(defsFor(day.rows, area), item);
   if (!hits.length) {
+    // A state name sent where a product belongs (G20261108-MX-JALISCO, item "jalisco"): refuse clearly instead of a silent empty answer.
+    const asState = !region && item.length >= 4 ? resolveState(day.rows, item) : null;
+    if (asState) throw new InputError(`item '${item}' is a Mexican state, not a product. Put the state in region (region=${asState}) and a product in item, for example item=milk, eggs, tortilla, rice, beans, sugar or cooking oil.`);
     const all = matchItems(defsFor(day.rows, NATIONAL), item);
     const names = [...new Set(defsFor(day.rows, NATIONAL).map((d) => d.name))].sort().slice(0, 30);
     // G20261108-MX-JALISCO: a word that matches no product at all (for example a state name sent as the item) is a bad request, not a silent empty answer.
