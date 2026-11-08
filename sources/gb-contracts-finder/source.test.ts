@@ -172,6 +172,34 @@ test("Contracts Finder end to end with a stubbed API: a region filter is sent an
   assert.equal(seen[0].searchCriteria.regions, "London");
 });
 
+test("Contracts Finder: slices are read three at a time with one retry; if a slice keeps failing the whole-window read answers", async () => {
+  let calls = 0;
+  let live = 0;
+  let maxLive = 0;
+  const real = globalThis.fetch;
+  globalThis.fetch = (async (_url: any, init: any) => {
+    calls++;
+    live++;
+    maxLive = Math.max(maxLive, live);
+    await new Promise((r) => setTimeout(r, 5));
+    live--;
+    JSON.parse(init.body);
+    if (calls === 1) return new Response(JSON.stringify(wrap(sixNotices(), 1500)), { status: 200, headers: { "content-type": "application/json" } });
+    return new Response("<!DOCTYPE html><html>busy</html>", { status: 200, headers: { "content-type": "text/html" } });
+  }) as typeof fetch;
+  try {
+    const a = await gbContracts({ what: "road resurfacing", months: 24 });
+    assert.equal(a.status, "ok");
+    assert.equal(a.sample_size, 6);
+    assert.equal(a.extra?.slices_failed, 12);
+    assert.match(a.summary, /did not answer 12 of the period slices/);
+    assert.ok(maxLive <= 3, `at most 3 requests at once, saw ${maxLive}`);
+    assert.equal(calls, 1 + 12 * 2); // whole window + every slice twice
+  } finally {
+    globalThis.fetch = real;
+  }
+});
+
 test("Contracts Finder end to end: a cpv code filters on each notice's own codes, fewer than five awards is insufficient_data", async () => {
   await withFetch(
     () => wrap([SLIP_ROAD, SUB_NOTICE, BEESTON, HOSPITAL_ROADS]),

@@ -153,6 +153,20 @@ async function search(c: GbCriteria, slice: { from: string; to: string }, stems?
   return parseNotices(json, stems);
 }
 
+export const SLICE_BATCH = 3;
+
+/** One period slice with one retry; null when the publisher still does not answer. */
+async function searchOnce(c: GbCriteria, slice: { from: string; to: string }, stems?: string[]): Promise<{ awards: GbAward[]; hitCount: number; other_product: number } | null> {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await search(c, slice, stems);
+    } catch (err) {
+      if (!(err instanceof SourceError)) throw err;
+    }
+  }
+  return null;
+}
+
 async function inBatches<T, R>(items: T[], size: number, fn: (x: T) => Promise<R>): Promise<R[]> {
   const out: R[] = [];
   for (let i = 0; i < items.length; i += size) out.push(...(await Promise.all(items.slice(i, i + size).map(fn))));
@@ -198,24 +212,33 @@ export async function gbContracts(input: GbInput): Promise<PriceAnswer> {
   let awards = whole.awards;
   let slices = 1;
   let capped = false;
+  let sliceFailures = 0;
   if (whole.hitCount > PER_SLICE) {
+    // 8 Nov 2026: Contracts Finder answers heavy bursts with a web page or a timeout from Vercel. Read 3 slices at a time, one retry
+    // per slice, and if a slice still fails keep the single whole-window read (up to 1,000 notices) instead of failing the answer.
     const parts = sliceWindow(win.from, win.to, Math.min(input.months, 12));
-    const results = await inBatches(parts, 6, (s) => search(c, s, stems));
-    const seen = new Set<string>();
-    awards = [];
-    for (const r of results) {
-      for (const a of r.awards) {
-        if (a.id && seen.has(a.id)) continue;
-        if (a.id) seen.add(a.id);
-        awards.push(a);
+    const results = await inBatches(parts, SLICE_BATCH, (s) => searchOnce(c, s, stems));
+    sliceFailures = results.filter((r) => r === null).length;
+    if (sliceFailures === 0) {
+      const seen = new Set<string>();
+      awards = [];
+      for (const r of results as Array<{ awards: GbAward[]; hitCount: number }>) {
+        for (const a of r.awards) {
+          if (a.id && seen.has(a.id)) continue;
+          if (a.id) seen.add(a.id);
+          awards.push(a);
+        }
       }
+      slices = parts.length;
+      capped = results.some((r) => (r as { hitCount: number }).hitCount > PER_SLICE);
+    } else {
+      capped = true;
     }
-    slices = parts.length;
-    capped = results.some((r) => r.hitCount > PER_SLICE);
   }
   const dates = awards.map((a) => a.date).filter(Boolean).sort();
   const notes: string[] = [];
-  if (capped) notes.push(`${whole.hitCount} matching awards exist; up to ${PER_SLICE} per period slice were read.`);
+  if (sliceFailures > 0) notes.push(`${whole.hitCount} matching awards exist; the publisher did not answer ${sliceFailures} of the period slices, so only the first ${PER_SLICE} notices of the whole period were read.`);
+  else if (capped) notes.push(`${whole.hitCount} matching awards exist; up to ${PER_SLICE} per period slice were read.`);
   notes.push(`Each value is the total the buyer stated at award, often covering several years of supply and sometimes a framework ceiling; values under ${MIN_VALUE} pounds are left out as placeholders.`);
   if (c.region) notes.push(`The region filter also keeps nationwide contracts that list ${c.region} among several regions.`);
   return contractAnswer({
@@ -233,6 +256,6 @@ export async function gbContracts(input: GbInput): Promise<PriceAnswer> {
       `. Each notice's awarded value is one contract (parent notices whose lots are listed are not counted twice). Median and 10th–90th percentile in GBP; never supplier names. Totals per contract, not unit prices.`,
     notes,
     baseUrl: input.baseUrl,
-    extra: { matched_filter: how, notices_matching: whole.hitCount, awards_used: awards.length, slices },
+    extra: { matched_filter: how, notices_matching: whole.hitCount, awards_used: awards.length, slices, ...(sliceFailures ? { slices_failed: sliceFailures } : {}) },
   });
 }
