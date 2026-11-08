@@ -63,6 +63,7 @@ export function parseArea(raw: string | undefined): Area {
 }
 
 const DAY_SAMPLES = 8;
+const MIN_DAYS = 4; // a state answer needs at least this many of the DAY_SAMPLES single-day windows
 
 export function windowStart(now: Date = new Date(), months = 12): string {
   const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - months, now.getUTCDate()));
@@ -155,6 +156,7 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
   let total: number;
   let sampled: boolean;
   let estimated = false;
+  let daysUsed = DAY_SAMPLES;
   if (area.kind === "state") {
     // A whole quarter of a big state (TX: ~500k policies a year) times out even with $count. Ask instead for single-day windows spread evenly
     // over the 12 months (each ~1,000 to 1,500 policies, fast), and estimate the year's total from their average daily count.
@@ -162,7 +164,14 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
     const span = Math.max(days, Math.round((Date.parse(to + "T00:00:00Z") - Date.parse(from + "T00:00:00Z")) / 86400000));
     const wins = Array.from({ length: days }, (_, i) => { const d = addDays(from, Math.floor(((i + 0.5) * span) / days)); return { from: d, until: addDays(d, 1) }; });
     // No $count here: FEMA's count over a state filter is what timed out in the 29 Oct preview. The year's total is therefore not reported for states.
-    pages = await Promise.all(wins.map((w) => get(buildUrl(area, w.from, { until: w.until }))));
+    // One stalled day must not sink the answer (the 8 Nov smoke got a 502 for TX): keep the days that answered, and fail only when fewer than MIN_DAYS did.
+    const settled = await Promise.allSettled(wins.map((w) => get(buildUrl(area, w.from, { until: w.until }))));
+    pages = settled.filter((r): r is PromiseFulfilledResult<any> => r.status === "fulfilled").map((r) => r.value);
+    if (pages.length < MIN_DAYS) {
+      const bad = settled.find((r): r is PromiseRejectedResult => r.status === "rejected");
+      throw bad ? bad.reason : new SourceError("The source answered too few days", `${pages.length} of ${days}`);
+    }
+    daysUsed = pages.length;
     counts = pages.map((b) => (Array.isArray(b?.NfipPolicies) ? b.NfipPolicies.length : 0));
     total = 0;
     sampled = true;
@@ -209,7 +218,7 @@ export async function femaNfip(opts: { area?: string; baseUrl?: string; now?: Da
           place: label,
           ...(estimated ? {} : { policies_in_period: total }),
           sampled,
-          ...(sampled ? { note: estimated ? `Summarised from ${policies.length} policies on ${DAY_SAMPLES} single days spread over the last 12 months (the yearly total is not counted for states).` : `Summarised from a systematic sample of ${policies.length} of ${total} policies.` } : {}),
+          ...(sampled ? { note: estimated ? `Summarised from ${policies.length} policies on ${daysUsed} single days spread over the last 12 months (the yearly total is not counted for states).` : `Summarised from a systematic sample of ${policies.length} of ${total} policies.` } : {}),
           premium_only: s.premium ? { median: s.premium.median, typical_low: s.premium.low, typical_high: s.premium.high, note: "Premium before federal fees, surcharge and reserve fund assessment." } : null,
           data_as_of: s.asOf,
           cover: "Flood insurance from the National Flood Insurance Program only.",

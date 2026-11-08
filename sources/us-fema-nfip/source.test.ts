@@ -113,3 +113,17 @@ test("femaNfip: big area is sampled with narrow date slices, never deep $skip", 
   assert.equal((a.extra as any).policies_in_period, undefined);
   assert.equal(a.sample_size, 48);
 });
+
+test("femaNfip: a state answer survives a few stalled days and says how many days it used", async () => {
+  let n = 0;
+  const fetcher = async () => { n++; if (n % 2 === 0) throw new Error("timeout"); return { NfipPolicies: BODY.NfipPolicies }; };
+  const a = await femaNfip({ area: "TX", fetcher });
+  assert.equal(a.status, "ok");
+  assert.match(String((a.extra as any).note), /on 4 single days/);
+});
+
+test("femaNfip: a state answer fails when fewer than 4 days answer", async () => {
+  let n = 0;
+  const fetcher = async () => { n++; if (n > 3) throw new Error("timeout"); return { NfipPolicies: BODY.NfipPolicies }; };
+  await assert.rejects(() => femaNfip({ area: "TX", fetcher }));
+});
