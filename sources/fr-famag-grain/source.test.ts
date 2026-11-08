@@ -75,7 +75,7 @@ test("no overlap with the EU portal: every crop of ours is unknown to eu-farm-pr
   assert.equal(manifest.serves!({ country: "FR", product: "wheat" }), false);
   assert.equal(manifest.serves!({ country: "FR", product: "rapeseed" }), true);
   assert.equal(manifest.serves!({ country: "DE", product: "rapeseed" }), false);
-  assert.equal(euManifest.serves!({ country: "FR", product: "rapeseed" }), true); // eu portal still claims FR; the registry picks the declared serves() winner
+  assert.equal(euManifest.serves!({ country: "FR", product: "rapeseed" }), false); // eu-farm-prices now declines FR crops it cannot resolve (platform fix 8 Nov), so only this source claims them
 });
 
 import { crc32 } from "node:zlib";

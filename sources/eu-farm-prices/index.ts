@@ -25,7 +25,14 @@ export default defineSource({
   status: "live",
   // FI meat, milk and egg producer prices that Luke publishes go to fi-luke-farm-prices (declared serves() change, Gap fix
   // G20261023-PLATFORM-SERVES-FI-FARM-US-DC part 1, same commit as that source); everything else for FI stays here.
-  serves: (p) => !(String(p.country ?? "").toUpperCase() === "FI" && LUKE_FI_PRODUCTS.includes(productKey(p.product))),
+  // FR crops the EU portal does not carry (rapeseed, sunflower, peas ...) go to fr-famag-grain (FranceAgriMer, folder sorts after this one): for FR with a
+  // product this source cannot resolve, serves() says no. No product, or a product we know, stays here. Unknown products for any other country stay here too (clear error).
+  serves: (p) => {
+    const country = String(p.country ?? "").toUpperCase();
+    if (country === "FI" && LUKE_FI_PRODUCTS.includes(productKey(p.product))) return false;
+    if (country === "FR" && typeof p.product === "string" && p.product.trim() !== "" && productKey(p.product) === "") return false;
+    return true;
+  },
   paramNotes: {
     product:
       "EU: required. The product, by name; aliases such as 'pork', 'corn', 'tomato' are understood. Prices are weekly (raw milk monthly), per tonne for cereals and per 100 kg otherwise (piglets per head), " +
