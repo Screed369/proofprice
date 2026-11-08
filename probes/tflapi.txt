@@ -1,0 +1,35 @@
+URL: https://api.tfl.gov.uk/StopPoint/940GZZLUKSX/FareTo/940GZZLUVIC
+Fetched: 2026-11-08T13:42:18Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 3953
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Sun, 08 Nov 2026 13:42:18 GMT
+content-type: application/json; charset=utf-8
+access-control-allow-headers: Content-Type
+access-control-allow-methods: GET,POST,PUT,DELETE,OPTIONS
+access-control-allow-origin: *
+age: 0
+api-entity-payload: SingleFareDetails
+cache-control: public, must-revalidate, max-age=43200, s-maxage=86400
+vary: accept-encoding
+server: cloudflare
+via: 1.1 varnish
+x-aspnet-version: 4.0.30319
+x-backend: api
+x-banning: 
+x-cache: MISS
+x-cacheable: Yes. Cacheable
+x-frame-options: deny
+x-proxy-connection: unset
+x-ttl: 86400.000
+x-ttl-rule: 0
+x-varnish: 1277624212
+strict-transport-security: max-age=31536000
+cf-cache-status: DYNAMIC
+cf-ray: a5750007fe9e8e8b-SEA
+
+=== FILE TYPE: JSON text data
+=== FIRST 6000 BYTES
+[{"$type":"Tfl.Api.Presentation.Entities.Fares.FaresSection, Tfl.Api.Presentation.Entities","header":"Single Fare Finder","index":1,"journey":{"$type":"Tfl.Api.Presentation.Entities.Fares.Journey, Tfl.Api.Presentation.Entities","fromStation":{"$type":"Tfl.Api.Presentation.Entities.Fares.FareStation, Tfl.Api.Presentation.Entities","atcoCode":"940GZZLUKSX","commonName":"King's Cross St. Pancras Underground Station","fareCategory":"All"},"toStation":{"$type":"Tfl.Api.Presentation.Entities.Fares.FareStation, Tfl.Api.Presentation.Entities","atcoCode":"940GZZLUVIC","commonName":"Victoria Underground Station","fareCategory":"All"}},"rows":[{"$type":"Tfl.Api.Presentation.Entities.Fares.FareDetails, Tfl.Api.Presentation.Entities","startDate":"2026-11-01T00:00:00Z","endDate":"2027-11-01T00:00:00Z","passengerType":"Adult","contactlessPAYGOnlyFare":false,"from":"King's Cross St. Pancras Underground Station","to":"Victoria Underground Station","fromStation":"940GZZLUKSX","toStation":"940GZZLUVIC","displayName":"Default Route","displayOrder":0,"routeDescription":"Default route","specialFare":false,"throughFare":false,"isTour":false,"ticketsAvailable":[{"$type":"Tfl.Api.Presentation.Entities.Fares.Ticket, Tfl.Api.Presentation.Entities","passengerType":"Adult","ticketType":{"$type":"Tfl.Api.Presentation.Entities.Fares.TicketType, Tfl.Api.Presentation.Entities","type":"CashSingle","description":"CashSingle"},"ticketTime":{"$type":"Tfl.Api.Presentation.Entities.Fares.TicketTime, Tfl.Api.Presentation.Entities","type":"Anytime","description":"At any time."},"cost":"7.00","description":"CashSingle","mode":"tube","displayOrder":1,"messages":[]},{"$type":"Tfl.Api.Presentation.Entities.Fares.Ticket, Tfl.Api.Presentation.Entities","passengerType":"Adult","ticketType":{"$type":"Tfl.Api.Presentation.Entities.Fares.TicketType, Tfl.Api.Presentation.Entities","type":"Pay as you go","description":"Pay as you go"},"ticketTime":{"$type":"Tfl.Api.Presentation.Entities.Fares.TicketTime, Tfl.Api.Presentation.Entities","type":"Off Peak","description":"At all other times including public holidays."},"cost":"3.00","description":"Pay as you go","mode":"tube","displayOrder":2,"messages":[]},{"$type":"Tfl.Api.Presentation.Entities.Fares.Ticket, Tfl.Api.Presentation.Entities","passengerType":"Adult","ticketType":{"$type":"Tfl.Api.Presentation.Entities.Fares.TicketType, Tfl.Api.Presentation.Entities","type":"Pay as you go","description":"Pay as you go"},"ticketTime":{"$type":"Tfl.Api.Presentation.Entities.Fares.TicketTime, Tfl.Api.Presentation.Entities","type":"Peak","description":"Monday to Friday from 0630 to 0930 and from 1600 to 1900."},"cost":"3.10","description":"Pay as you go","mode":"tube","displayOrder":3,"messages":[]}],"messages":[]}],"messages":[{"$type":"Tfl.Api.Presentation.Entities.Message, Tfl.Api.Presentation.Entities","bulletOrder":0,"messageText":"When you pay as you go, you must touch your card on a yellow card reader at the start and end of your journey. If you do not, you may be charged a maximum fare."},{"$type":"Tfl.Api.Presentation.Entities.Message, Tfl.Api.Presentation.Entities","bulletOrder":0,"messageText":"Some journeys are charged via Zone 1 irrespective of the route taken."},{"$type":"Tfl.Api.Presentation.Entities.Message, Tfl.Api.Presentation.Entities","bulletOrder":0,"messageText":"Paper single and return tickets are valid for travel only on the date shown on the ticket and up to 04:29 the next day."},{"$type":"Tfl.Api.Presentation.Entities.Message, Tfl.Api.Presentation.Entities","bulletOrder":0,"messageText":"Where a fare for a paper ticket is shown, a return journey will be double the equivalent single fare. In some cases a Day Travelcard may be cheaper."},{"$type":"Tfl.Api.Presentation.Entities.Message, Tfl.Api.Presentation.Entities","bulletOrder":0,"messageText":"Fares shown do not include travel on Gatwick Express, Heathrow Express or Southeastern high speed services unless stated."}]}]
