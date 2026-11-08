@@ -1,3 +1,6 @@
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
 // Fixture: real rows copied on 2026-11-08 from IRW_2026_Polygon.dbf inside IRW_EPSG25832_Shape.zip
 // (https://www.opengeodata.nrw.de/produkte/infrastruktur_bauen_wohnen/boris/IRW/, 19,388 rows, UTF-8, STAG 01.01.2026).
 // Columns kept: GENA, IMRW, STAG, TEILMA, OBJGR, IRWTYP. Field widths are the live ones; the .dbf below is built to the dBase III layout of the live file.
@@ -174,5 +177,14 @@ test("history key and manifest", () => {
 });
 
 test("reuseStored: nothing stored means a real error, not an empty copy", () => {
-  assert.equal(reuseStored("HTTP 403"), null);
+  // Hermetic: point the library at an empty folder, so the test does not depend on whether the
+  // collector has already written library/de-nrw-irw (it has, since 8 Nov, and this test went red on main).
+  const prev = process.env.PROOFPRICE_LIBRARY_DIR;
+  process.env.PROOFPRICE_LIBRARY_DIR = mkdtempSync(path.join(tmpdir(), "pp-empty-lib-"));
+  try {
+    assert.equal(reuseStored("HTTP 403"), null);
+  } finally {
+    if (prev === undefined) delete process.env.PROOFPRICE_LIBRARY_DIR;
+    else process.env.PROOFPRICE_LIBRARY_DIR = prev;
+  }
 });
