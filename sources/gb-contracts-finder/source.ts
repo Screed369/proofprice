@@ -41,16 +41,17 @@ export const INFO: SourceInfo = {
 
 export const FEED_URL = "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search";
 export const PAGE_LIMIT = 100; // the feed refuses more
-export const WINDOW_DAYS = 56;
-export const MIN_DAYS = 28; // fewer unbroken days than this is a failed harvest, not a thin one
+export const WINDOW_DAYS = 14;
+export const MIN_DAYS = 14; // fewer unbroken days than this is a failed harvest, not a thin one
+export const CHUNK_DAYS = 7; // days asked for in one cursor-paged query: the feed throttles after a few dozen calls, so fewer, longer queries
 /** Awarded values below this are placeholders (0 and 0.01 appear often), not contract prices. */
 export const MIN_VALUE = 100;
 export const MAX_VALUE = 5_000_000_000;
 export const UNIT = "per contract (lot), total awarded value";
 export const WINDOW_PREFIX = "window:";
 export const TIME_BUDGET_MS = 8.5 * 60 * 1000; // must stay under the collector's 10-minute limit (scripts/harvest.ts)
-export const PAUSE_MS = 400; // between two calls
-export const BLOCK_WAIT_MS = 30_000; // after a 429, wait before asking again
+export const PAUSE_MS = 5000; // between two calls
+export const BLOCK_WAIT_MS = 45_000; // after a throttle (429, or the empty default-query reply), wait before asking again
 
 /** One award with only the fields we use. */
 export interface GbAward {
@@ -140,9 +141,10 @@ export function windowOf(rows: { area: string; item: string }[]): string | null 
   return m ? m.item.slice(WINDOW_PREFIX.length) : null;
 }
 
-export function dayUrl(day: string): string {
-  return `${FEED_URL}?publishedFrom=${day}T00:00:00&publishedTo=${day}T23:59:59&stages=award&limit=${PAGE_LIMIT}`;
+export function rangeUrl(from: string, to: string): string {
+  return `${FEED_URL}?publishedFrom=${from}T00:00:00&publishedTo=${to}T23:59:59&stages=award&limit=${PAGE_LIMIT}`;
 }
+export const dayUrl = (day: string) => rangeUrl(day, day);
 
 /** Pure: true when the feed's echo of the query ("uri") still carries our publishedFrom, i.e. it answered the question we asked. */
 export function feedHonoured(body: any): boolean {
@@ -153,7 +155,7 @@ export type FeedFetcher = (url: string) => Promise<any>;
 let lastCallAt = 0;
 const httpFeed: FeedFetcher = async (url) => {
   let lastErr: unknown;
-  for (let attempt = 0; attempt < 4; attempt++) {
+  for (let attempt = 0; attempt < 7; attempt++) {
     const wait = lastCallAt + PAUSE_MS - Date.now();
     if (wait > 0) await new Promise((r) => setTimeout(r, wait));
     try {
@@ -166,19 +168,20 @@ const httpFeed: FeedFetcher = async (url) => {
     } catch (err) {
       lastCallAt = Date.now();
       lastErr = err;
-      const blocked = /HTTP (403|429)/.test(String((err as any)?.message ?? err));
-      await new Promise((r) => setTimeout(r, blocked ? BLOCK_WAIT_MS * (attempt + 1) : 1500 * (attempt + 1)));
+      const blocked = /HTTP (403|429)|ignored the request/.test(String((err as any)?.message ?? err));
+      if (!blocked && attempt >= 3) break; // ordinary errors: four tries; throttles: keep waiting (the budget in the harvest bounds the total)
+      await new Promise((r) => setTimeout(r, blocked ? BLOCK_WAIT_MS : 1500 * (attempt + 1)));
     }
   }
   throw lastErr;
 };
 
-/** Reads every award release published on one day, following the feed's cursor links. Returns the number of releases. */
-export async function readDay(day: string, get: FeedFetcher, on: (release: any) => void): Promise<number> {
-  let url: string | undefined = dayUrl(day);
+/** Reads every award release published from one day to another (inclusive), following the feed's cursor links. Returns the number of releases. */
+export async function readRange(from: string, to: string, get: FeedFetcher, on: (release: any) => void): Promise<number> {
+  let url: string | undefined = rangeUrl(from, to);
   let count = 0;
   const seenUrls = new Set<string>();
-  for (let page = 0; page < 200 && url; page++) {
+  for (let page = 0; page < 400 && url; page++) {
     if (seenUrls.has(url)) break;
     seenUrls.add(url);
     const body = await get(url);
@@ -209,20 +212,23 @@ export async function gbContractsHarvest(now: Date = new Date(), o: HarvestOptio
   const failed: string[] = [];
   let releases = 0;
   let lastError: unknown = null;
-  // newest day first, so a time-out loses the oldest days, never the newest
-  for (let i = 0; i < days; i++) {
-    const day = daysBefore(to, i);
+  // newest week first, so a time-out or a throttle loses the oldest days, never the newest
+  for (let i = 0; i < days; i += CHUNK_DAYS) {
+    const last = Math.min(days, i + CHUNK_DAYS) - 1; // index of the oldest day of this chunk
+    const chunkDays = Array.from({ length: last - i + 1 }, (_, k) => daysBefore(to, i + k));
+    const chunkFrom = chunkDays[chunkDays.length - 1];
+    const chunkTo = chunkDays[0];
     if (Date.now() - started > budget) {
-      failed.push(`${day} (time)`);
+      failed.push(`${chunkFrom}..${chunkTo} (time)`);
       continue;
     }
-    const dayAwards: GbAward[] = [];
+    const chunkAwards: GbAward[] = [];
     try {
-      releases += await readDay(day, get, (r) => dayAwards.push(...awardsOf(r)));
-      awards.push(...dayAwards);
-      read.push(day);
+      releases += await readRange(chunkFrom, chunkTo, get, (r) => chunkAwards.push(...awardsOf(r)));
+      awards.push(...chunkAwards);
+      read.push(...chunkDays);
     } catch (err) {
-      failed.push(day);
+      failed.push(`${chunkFrom}..${chunkTo}`);
       lastError = err;
     }
   }
@@ -258,7 +264,7 @@ export interface GbInput {
   baseUrl?: string;
 }
 
-export const SUPPORTED_EXAMPLES = ["laptops", "school meals", "road resurfacing", "office cleaning", "catering", "ambulances"];
+export const SUPPORTED_EXAMPLES = ["software", "IT services", "consultancy", "legal services", "insurance", "cars"];
 
 export async function gbContracts(input: GbInput): Promise<PriceAnswer> {
   if (input.buyer_area) throw new InputError("UK: buyer_area is not used any more; the figures are for all UK public buyers together.");

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { aggregateAll, awardsOf, dayUrl, daysBefore, feedHonoured, gbContracts, gbContractsHarvest, INFO, itemsOf, mainCpv, readDay, windowMarker, windowOf } from "./source";
+import { aggregateAll, awardsOf, dayUrl, daysBefore, feedHonoured, gbContracts, gbContractsHarvest, INFO, itemsOf, mainCpv, rangeUrl, readRange, windowMarker, windowOf } from "./source";
 import { writeDaily, writeMeta } from "../../lib/library/store";
 import { InputError, SourceError } from "../../lib/http";
 
@@ -77,46 +77,46 @@ test("aggregateAll keeps the newest release of an award (a correction replaces t
   assert.equal(r?.min, 2000);
 });
 
-test("dayUrl asks for the whole day with a time part (a date-only day returns nothing) and the 100 page cap", () => {
-  const u = dayUrl("2026-11-05");
-  assert.match(u, /publishedFrom=2026-11-05T00:00:00&publishedTo=2026-11-05T23:59:59/);
+test("rangeUrl asks for whole days with a time part (a date-only day returns nothing) and the 100 page cap", () => {
+  const u = rangeUrl("2026-11-02", "2026-11-05");
+  assert.match(u, /publishedFrom=2026-11-02T00:00:00&publishedTo=2026-11-05T23:59:59/);
   assert.match(u, /stages=award&limit=100$/);
+  assert.equal(dayUrl("2026-11-05"), rangeUrl("2026-11-05", "2026-11-05"));
 });
 
-/** A fake feed: pages of 2 releases per day, with the cursor link the live feed gives. */
-function fakeFeed(releasesByDay: Record<string, any[]>, pageSize = 2) {
+/** A fake feed: pages of 2 releases, filtered by the dates in the URL, with the cursor link the live feed gives. */
+function fakeFeed(releases: any[], pageSize = 2) {
   const calls: string[] = [];
   const get = async (url: string) => {
     calls.push(url);
-    const day = /publishedFrom=(\d{4}-\d{2}-\d{2})/.exec(url)![1];
+    const from = /publishedFrom=(\d{4}-\d{2}-\d{2})/.exec(url)![1];
+    const to = /publishedTo=(\d{4}-\d{2}-\d{2})/.exec(url)![1];
     const off = Number(/cursor=(\d+)/.exec(url)?.[1] ?? 0);
-    const all = releasesByDay[day] ?? [];
+    const all = releases.filter((r) => r.date.slice(0, 10) >= from && r.date.slice(0, 10) <= to);
     const page = all.slice(off, off + pageSize);
-    const body: any = { releases: page };
+    const body: any = { uri: url.split("&cursor=")[0], releases: page };
     if (off + pageSize < all.length) body.links = { next: `${url.split("&cursor=")[0]}&cursor=${off + pageSize}` };
     return body;
   };
   return { get, calls };
 }
 
-test("readDay follows the cursor links through every page of a day, and stops when there is no next link", async () => {
-  const feed = fakeFeed({ "2026-11-05": LIVE.slice(0, 5) }, 2);
+test("readRange follows the cursor links through every page, and stops when there is no next link", async () => {
+  const day = LIVE[0].date.slice(0, 10);
+  const feed = fakeFeed(LIVE.slice(0, 5), 2);
   const got: string[] = [];
-  const n = await readDay("2026-11-05", feed.get, (r) => got.push(r.ocid));
+  const n = await readRange(day, day, feed.get, (r) => got.push(r.ocid));
   assert.equal(n, 5);
   assert.equal(feed.calls.length, 3);
   assert.equal(new Set(got).size, 5);
-  assert.equal(await readDay("2026-11-06", feed.get, () => {}), 0); // a weekend: empty list, no crash
+  assert.equal(await readRange("2026-01-03", "2026-01-04", feed.get, () => {}), 0); // a weekend: empty list, no crash
 });
 
-test("harvest: reads each day newest first, builds the window marker and aggregates; a broken day inside the window is refused", async () => {
+test("harvest: reads a week at a time newest first, builds the window marker and aggregates; a broken newest week is refused", async () => {
   const now = new Date("2026-11-08T03:17:00Z");
-  const byDay: Record<string, any[]> = {};
-  for (let d = 0; d < 40; d++) {
-    const day = daysBefore("2026-11-08", d);
-    byDay[day] = synth(3, "45233251", day, (k) => (k + 1) * 100000);
-  }
-  const feed = fakeFeed(byDay, 2);
+  const rel: any[] = [];
+  for (let d = 0; d < 40; d++) rel.push(...synth(3, "45233251", daysBefore("2026-11-08", d), (k) => (k + 1) * 100000));
+  const feed = fakeFeed(rel, 50);
   const r = await gbContractsHarvest(now, { get: feed.get, days: 35 });
   assert.equal(r.currency, "GBP");
   assert.equal(r.date, "2026-11-08");
@@ -125,17 +125,18 @@ test("harvest: reads each day newest first, builds the window marker and aggrega
   assert.equal(road?.n, 105);
   assert.equal(road?.median, 200000);
   assert.ok(r.note?.includes("2026-10-05 to 2026-11-08"));
+  assert.equal(feed.calls.length, 5); // five weekly queries, one page each: few calls, because the feed throttles
   const failing = async (url: string) => {
-    if (url.includes("2026-11-07")) throw new SourceError("down");
+    if (url.includes("publishedTo=2026-11-08")) throw new SourceError("down");
     return feed.get(url);
   };
   await assert.rejects(gbContractsHarvest(now, { get: failing, days: 35 }), SourceError);
   const failOld = async (url: string) => {
-    if (url.includes("2026-10-08")) throw new SourceError("down");
+    if (url.includes("publishedFrom=2026-10-05")) throw new SourceError("down");
     return feed.get(url);
   };
   const short = await gbContractsHarvest(now, { get: failOld, days: 35 });
-  assert.equal(windowOf(short.rows), "2026-10-09");
+  assert.equal(windowOf(short.rows), "2026-10-12");
   await assert.rejects(gbContractsHarvest(now, { get: async () => { throw new SourceError("down"); } }), SourceError);
   await assert.rejects(gbContractsHarvest(now, { get: async () => ({ releases: [] }), days: 35 }), SourceError);
 });
