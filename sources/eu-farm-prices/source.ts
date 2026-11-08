@@ -16,7 +16,8 @@ import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { InputError, SourceError } from "../../lib/http";
 import { resolveFetcher, toEurostatGeo } from "../../lib/adapters";
 import type { FetchOptions } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import { Family, kgPerUnit, Product, resolveProduct, UNIT_TEXT, Variant } from "./products";
 
 export const INFO: SourceInfo = {
@@ -710,4 +711,96 @@ export async function euFarmPrices(
   const rows = await fetchRows(url, o);
   const result = readFarm(rows, { product, country, geo });
   return farmAnswer(result, { country, product, baseUrl: input.baseUrl, apiUrl: url, now });
+}
+
+// ---------- daily library copy (stale-if-error) ----------
+// The portal's gateway throttles (HTTP 429 "quota exceeded") and now and then reports "endpoint SUSPENDED" for days (6-8 Nov 2026), and the source had
+// no copy to fall back on. The collector keeps the newest WEEKLY price per country and main product, in euro per kg, so an outage is answered
+// from it (stale-if-error, with the date stated). Monthly series (raw milk) and per-head prices are left out: a copy must not pass an older month off
+// as the newest week. A small fixed list keeps the request count (and the quota used) low.
+
+/** Country and product pairs kept in the library: the main producers and the products agents ask for most. Keys are catalogue keys. */
+export const HARVEST_PAIRS: Array<[string, string[]]> = [
+  ["IE", ["pig", "beef", "wheat", "barley"]],
+  ["FR", ["wheat", "pig", "beef", "maize", "barley"]],
+  ["ES", ["olive oil", "pig", "wheat", "barley", "maize"]],
+  ["DE", ["wheat", "pig", "barley", "maize", "butter"]],
+  ["IT", ["olive oil", "pig", "wheat", "durum wheat"]],
+  ["NL", ["pig", "beef", "wheat"]],
+  ["PL", ["pig", "wheat", "apples"]],
+  ["PT", ["olive oil", "pig"]],
+  ["BE", ["pig", "beef"]],
+  ["AT", ["pig", "wheat"]],
+  ["DK", ["pig", "wheat"]],
+  ["SE", ["pig", "wheat"]],
+  ["GR", ["olive oil"]],
+];
+export const HARVEST_PAUSE_MS = 1500;
+/** Weekly figures older than this many days behind the newest one are left out of the copy. */
+export const HARVEST_MAX_LAG_DAYS = 14;
+const HARVEST_MAX_MISSES = 4;
+
+const round4 = (n: number) => Math.round(n * 10000) / 10000;
+
+/** Pure: one library row for a reading, or null when it must not be kept (monthly, per head, or no weight unit). */
+export function harvestRow(reading: FarmReading, country: string): { row: DailyRow; end: string } | null {
+  if (reading.monthly) return null;
+  const kg = kgPerUnit(reading.product.unit);
+  if (!kg) return null;
+  const v = round4(reading.latest.value / kg);
+  if (!(v > 0)) return null;
+  return { row: { area: country, item: reading.product.key, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v }, end: reading.latest.end };
+}
+
+/** Where a request lives in the library, without asking the portal. */
+export function farmHistoryKey(p: { country?: string; product?: string }): { area: string; item: string; label: string } | null {
+  const country = String(p.country ?? "").trim().toUpperCase();
+  if (!COUNTRIES[country] || !p.product) return null;
+  let product: Product;
+  try {
+    product = resolveProduct(String(p.product));
+  } catch {
+    return null;
+  }
+  return { area: country, item: product.key, label: `${COUNTRIES[country]}, ${product.name}` };
+}
+
+export async function euFarmHarvest(
+  o: FetchOptions & { now?: Date; pairs?: Array<[string, string[]]>; sleep?: (ms: number) => Promise<void> } = {},
+): Promise<HarvestResult> {
+  const now = o.now ?? new Date();
+  const sleep = o.sleep ?? ((ms: number) => new Promise<void>((r) => setTimeout(r, ms)));
+  const found: Array<{ row: DailyRow; end: string }> = [];
+  let misses = 0;
+  let lastError: unknown = null;
+  outer: for (const [country, products] of o.pairs ?? HARVEST_PAIRS) {
+    for (const key of products) {
+      try {
+        const product = resolveProduct(key);
+        const geo = toEurostatGeo(country);
+        const rows = await fetchRows(farmUrl(product, geo, now), o);
+        const reading = readFarm(rows, { product, country, geo });
+        misses = 0;
+        if (isFarmReading(reading)) {
+          const kept = harvestRow(reading, country);
+          if (kept) found.push(kept);
+        }
+      } catch (e) {
+        lastError = e;
+        if (++misses >= HARVEST_MAX_MISSES) break outer; // the portal is throttling or down: stop asking, keep what we have
+      }
+      await sleep(HARVEST_PAUSE_MS);
+    }
+  }
+  if (!found.length) throw lastError instanceof Error ? lastError : new SourceError("The Agri-food data portal gave no weekly prices for the library");
+  const newest = found.reduce((m, f) => (f.end > m ? f.end : m), "");
+  const newestDay = Date.parse(newest);
+  const rows = found.filter((f) => (newestDay - Date.parse(f.end)) / 86400000 <= HARVEST_MAX_LAG_DAYS).map((f) => f.row);
+  return {
+    date: newest,
+    currency: "EUR",
+    unit: "per kg",
+    rows,
+    note: `Newest weekly price per country and product from the European Commission Agri-food data portal (week ending ${newest}), converted to euro per kg; official statistics, no record count is published.`,
+  };
 }

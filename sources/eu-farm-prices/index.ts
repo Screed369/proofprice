@@ -1,7 +1,7 @@
 // Manifest: farm and wholesale food prices for EU member states (European Commission Agri-food data portal API). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
 import { productHelp, resolveProduct } from "./products";
-import { COUNTRIES, euFarmPrices, INFO } from "./source";
+import { COUNTRIES, euFarmHarvest, euFarmPrices, farmHistoryKey, INFO } from "./source";
 
 /** Product keys for which Luke (fi-luke-farm-prices) answers FI. A test in that folder checks both lists agree. */
 const LUKE_FI_PRODUCTS = ["pig", "beef", "young bull", "heifer", "cow", "calf", "lamb", "chicken", "eggs", "barn eggs", "free range eggs", "organic eggs", "cage eggs", "milk"];
@@ -57,4 +57,10 @@ export default defineSource({
       product: str(p.product),
       baseUrl: ctx.baseUrl,
     }),
+  // A daily copy of the newest weekly price (euro per kg) so a portal outage or throttle is answered from it (stale-if-error).
+  harvest: () => euFarmHarvest(),
+  historyKey: (p) => farmHistoryKey({ country: str(p.country), product: str(p.product) }),
+  referenceDates: true,
+  nominalCounts: true,
+  noHistory: "History is not offered for EU farm prices yet: the daily copy holds only the newest weekly price per country and product, kept for outages.",
 });
