@@ -1,232 +1,195 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildRequest, gbContracts, INFO, keywordFor, MIN_VALUE, parseNotices, REGION_NAMES, regionName, SEARCH_URL } from "./source";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { aggregateAll, awardsOf, dayUrl, daysBefore, feedHonoured, gbContracts, gbContractsHarvest, INFO, itemsOf, mainCpv, readDay, windowMarker, windowOf } from "./source";
+import { writeDaily, writeMeta } from "../../lib/library/store";
 import { InputError, SourceError } from "../../lib/http";
-import { cpvStem } from "../../categories/contracts/purchases";
 
-// Items copied from live Contracts Finder responses (POST https://www.contractsfinder.service.gov.uk/api/rest/2/search_notices/json,
-// types Contract, statuses Awarded, keyword resurfacing), checked 2026-10-14. Only the fields the source reads are kept
-// (description, organisation, supplier and the other fields are left out on purpose; suppliers are never named).
-const SUB_NOTICE = { id: "dfa40e13-7b0a-424b-927a-5af26f927a63", parentId: "b6e04b53-8919-423c-afbb-265c66b6eb17", isSubNotice: true, noticeType: "Contract", noticeStatus: "Awarded", title: "12379 CRSTS Highway Capital Maintenance Programme 2024/25 - Carriageway Resurfacing Works (Bulk Tender Number 2)", awardedValue: 1034923.66, awardedDate: "2024-10-16T00:00:00+01:00", publishedDate: "2024-10-17T14:53:52+01:00", cpvCodes: "45233223", region: "North West" };
-const SLIP_ROAD = { id: "9693df03-16b1-476f-8386-44752fbbf253", parentId: null, isSubNotice: false, noticeType: "Contract", noticeStatus: "Awarded", title: "621600 - Western IC entry slip road pavement - construction phase support", awardedValue: 231185.88, awardedDate: "2025-04-28T00:00:00+01:00", publishedDate: "2025-10-16T14:35:59+01:00", cpvCodes: "45233210", region: "North East" };
-const BEESTON = { id: "2a5f8a33-d72a-4463-ac61-564aa22c81d6", parentId: null, isSubNotice: false, noticeType: "Contract", noticeStatus: "Awarded", title: "CPU 8610 Main Roads - Beeston Road Resurfacing Works", awardedValue: 254555.72, awardedDate: "2026-08-07T00:00:00+01:00", publishedDate: "2026-09-08T11:07:28+01:00", cpvCodes: "45000000", region: "North East,North West,Yorkshire and The Humber,East Midlands,West Midlands,East of England,London,South East,South West" };
-const HOSPITAL_ROADS = { id: "0c0716a1-a58a-41d6-bbe4-7a25336539a1", parentId: null, isSubNotice: false, noticeType: "Contract", noticeStatus: "Awarded", title: "CGH and GHR Roads and Pathways Resurfacing", awardedValue: 760648.98, awardedDate: "2026-03-05T00:00:00Z", publishedDate: "2026-03-05T18:41:33Z", cpvCodes: "45233142", region: "North East,North West,Yorkshire and The Humber,East Midlands,West Midlands,East of England,London,South East,South West" };
+// Releases copied from the live OCDS award feed (GET /Published/Notices/OCDS/Search?publishedFrom=2026-11-05T00:00:00&publishedTo=2026-11-05T23:59:59&stages=award&limit=100,
+// checked 2026-11-08). Only the fields the source reads are kept (buyers, suppliers, contacts and descriptions are left out on purpose).
+// Item 5 is a real award and item 6 the real awardUpdate release of the same award (same award id, same value).
+const LIVE: any[] = [{"ocid":"ocds-b5fd17-0ef89377-15da-487b-8dc2-10cf0225f8c4","date":"2026-11-05T19:10:34Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"34121000","description":"Buses and coaches"}},"awards":[{"id":"ocds-b5fd17-0ef89377-15da-487b-8dc2-10cf0225f8c4-1","status":"active","date":"2026-09-30T00:00:00+01:00","value":{"amount":645844.8,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-03e0c50a-5982-4e08-ba4b-5931fbfd3919","date":"2026-11-05T17:47:20Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"72260000","description":"Software-related services"}},"awards":[{"id":"ocds-b5fd17-03e0c50a-5982-4e08-ba4b-5931fbfd3919-2","status":"active","date":"2026-02-28T00:00:00Z","value":{"amount":165000,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-46a4e8d4-df83-4d68-aa15-73b8f3c791f3","date":"2026-11-05T17:45:08Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"30211300","description":"Computer platforms"}},"awards":[{"id":"ocds-b5fd17-46a4e8d4-df83-4d68-aa15-73b8f3c791f3-1","status":"active","date":"2026-10-27T00:00:00Z","value":{"amount":62716.8,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-5bacf30e-05e5-4e15-a3b2-05c86fb4dbb0","date":"2026-11-05T17:43:21Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"45453100","description":"Refurbishment work"}},"awards":[{"id":"ocds-b5fd17-5bacf30e-05e5-4e15-a3b2-05c86fb4dbb0-1","status":"active","date":"2026-10-30T00:00:00Z","value":{"amount":1330000,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-059610c9-43bf-482c-b89c-63ee31ef596d","date":"2026-11-05T17:16:47Z","tag":["awardUpdate"],"tender":{"classification":{"scheme":"CPV","id":"18444100","description":"Safety headgear"}},"awards":[{"id":"ocds-b5fd17-059610c9-43bf-482c-b89c-63ee31ef596d-1","status":"active","date":"2026-11-05T00:00:00Z","value":{"amount":870000,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-059610c9-43bf-482c-b89c-63ee31ef596d","date":"2026-11-05T17:11:41Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"18444100","description":"Safety headgear"}},"awards":[{"id":"ocds-b5fd17-059610c9-43bf-482c-b89c-63ee31ef596d-1","status":"active","date":"2026-11-05T00:00:00Z","value":{"amount":870000,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-3fed8dfa-e3b0-4946-8932-ee0e4f236bb1","date":"2026-11-05T16:35:22Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"45312100","description":"Fire-alarm system installation work"}},"awards":[{"id":"ocds-b5fd17-3fed8dfa-e3b0-4946-8932-ee0e4f236bb1-1","status":"active","date":"2026-10-23T00:00:00+01:00","value":{"amount":431708.78,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-b324137b-ee25-43ff-a6d6-41a2f391fb7d","date":"2026-11-05T16:32:18Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"73110000","description":"Research services"}},"awards":[{"id":"ocds-b5fd17-b324137b-ee25-43ff-a6d6-41a2f391fb7d-1","status":"active","date":"2026-10-14T00:00:00+01:00","value":{"amount":199925,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-a4652b07-1d1c-4ffc-b78d-a0a9ea440be9","date":"2026-11-05T16:28:08Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"72221000","description":"Business analysis consultancy services"}},"awards":[{"id":"ocds-b5fd17-a4652b07-1d1c-4ffc-b78d-a0a9ea440be9-1","status":"active","date":"2026-10-06T00:00:00+01:00","value":{"amount":173625.6,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-fc3f2623-bda1-4e21-8f97-898ae2274a72","date":"2026-11-05T16:01:16Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"48000000","description":"Software package and information systems"}},"awards":[{"id":"ocds-b5fd17-fc3f2623-bda1-4e21-8f97-898ae2274a72-1","status":"active","date":"2026-10-29T00:00:00Z","value":{"amount":64247.96,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-93465123-e41d-493b-9a89-b97bb646dedb","date":"2026-11-05T15:40:28Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"60000000","description":"Transport services (excl. Waste transport)"}},"awards":[{"id":"ocds-b5fd17-93465123-e41d-493b-9a89-b97bb646dedb-1","status":"active","date":"2026-11-05T00:00:00Z","value":{"amount":6116.4,"currency":"GBP"}}]},{"ocid":"ocds-b5fd17-f9ffdd45-b22b-47d7-b1ff-b935ce0f10cd","date":"2026-11-05T15:39:29Z","tag":["award"],"tender":{"classification":{"scheme":"CPV","id":"72253200","description":"Systems support services"}},"awards":[{"id":"ocds-b5fd17-f9ffdd45-b22b-47d7-b1ff-b935ce0f10cd-1","status":"active","date":"2026-08-31T00:00:00+01:00","value":{"amount":115533,"currency":"GBP"}}]}];
 
-const wrap = (items: any[], hitCount = items.length) => ({ hitCount, maxHits: 1000, noticeList: items.map((item, i) => ({ score: 1 - i / 100, item })) });
+const synth = (n: number, cpv: string, date: string, value: (k: number) => number, tag = "award") =>
+  Array.from({ length: n }, (_, k) => ({
+    ocid: `synthetic-${cpv}-${date}-${k}`, date: `${date}T10:00:00Z`, tag: [tag],
+    tender: { classification: { scheme: "CPV", id: cpv } },
+    awards: [{ id: `synthetic-${cpv}-${date}-${k}-1`, status: "active", date: `${date}T00:00:00Z`, value: { amount: value(k), currency: "GBP" } }],
+  }));
 
-test("Contracts Finder: awarded notices become contracts with their award date and value", () => {
-  const r = parseNotices(wrap([SUB_NOTICE, SLIP_ROAD, BEESTON, HOSPITAL_ROADS]));
-  assert.equal(r.hitCount, 4);
-  assert.deepEqual(r.awards.map((a) => [a.value, a.date]), [
-    [1034923.66, "2024-10-16"],
-    [231185.88, "2025-04-28"],
-    [254555.72, "2026-08-07"],
-    [760648.98, "2026-03-05"],
-  ]);
+test("mainCpv and awardsOf read the live layout: CPV id, active GBP award value, publication date", () => {
+  assert.equal(mainCpv(LIVE[0]), "34121000");
+  assert.equal(mainCpv({ tender: { classification: { scheme: "CPV", id: "34121000-1" } } }), "34121000");
+  assert.equal(mainCpv({ tender: { classification: { scheme: "OTHER", id: "34121000" } } }), "");
+  assert.equal(mainCpv({}), "");
+  const a = awardsOf(LIVE[0]);
+  assert.equal(a.length, 1);
+  assert.equal(a[0].value, 645844.8);
+  assert.equal(a[0].date, LIVE[0].date.slice(0, 10));
+  assert.equal(a[0].cpv, "34121000");
 });
 
-test("Contracts Finder: with CPV groups only notices that carry their own code in the group count (parent codes do not)", () => {
-  const road = parseNotices(wrap([SUB_NOTICE, SLIP_ROAD, BEESTON, HOSPITAL_ROADS]), ["45233142"]);
-  assert.deepEqual(road.awards.map((a) => a.id), [HOSPITAL_ROADS.id]);
-  assert.equal(road.other_product, 3); // BEESTON only carries the parent code 45000000
-  // "45233210" is a user-typed code: its stem is the code itself
-  assert.deepEqual(parseNotices(wrap([SUB_NOTICE, SLIP_ROAD]), [cpvStem("45233210")]).awards.map((a) => a.id), [SLIP_ROAD.id]);
-  // a group stem covers everything below it
-  assert.equal(parseNotices(wrap([SUB_NOTICE, SLIP_ROAD, HOSPITAL_ROADS]), ["45233"]).awards.length, 3);
+test("awardsOf drops placeholders (0, 0.01), other currencies, inactive awards and missing codes", () => {
+  const r = (amount: any, over: any = {}) => ({ ...LIVE[0], awards: [{ id: "x-1", status: "active", value: { amount, currency: "GBP" }, ...over }] });
+  assert.equal(awardsOf(r(0)).length, 0);
+  assert.equal(awardsOf(r(0.01)).length, 0);
+  assert.equal(awardsOf(r(99)).length, 0);
+  assert.equal(awardsOf(r(100)).length, 1);
+  assert.equal(awardsOf(r(1000, { value: { amount: 1000, currency: "EUR" } })).length, 0);
+  assert.equal(awardsOf(r(1000, { status: "cancelled" })).length, 0);
+  assert.equal(awardsOf(r(6e9)).length, 0);
+  assert.equal(awardsOf({ ...LIVE[0], tender: {} }).length, 0);
+  assert.equal(awardsOf(null).length, 0);
+  assert.equal(awardsOf({ ...LIVE[0], date: "bad" }).length, 0);
 });
 
-test("Contracts Finder: a parent notice whose lots are also listed is not counted twice (derived: the parent is built from the real sub-notice's numbers)", () => {
-  const parent = { ...SUB_NOTICE, id: SUB_NOTICE.parentId, parentId: null, isSubNotice: false, awardedValue: 2238000 };
-  const r = parseNotices(wrap([parent, SUB_NOTICE, SLIP_ROAD]));
-  assert.deepEqual(r.awards.map((a) => a.id), [SUB_NOTICE.id, SLIP_ROAD.id]);
-  // a parent on its own (its lots are not in the results) stays
-  assert.equal(parseNotices(wrap([parent, SLIP_ROAD])).awards.length, 2);
+test("itemsOf files an award under its shared purchase, its 2-digit division and its 4-digit group", () => {
+  assert.deepEqual(itemsOf("30213100"), ["laptops", "cpv-30", "cpv-3021"]);
+  assert.ok(itemsOf("45233251").includes("road-resurfacing"));
+  assert.deepEqual(itemsOf("72260000").slice(-2), ["cpv-72", "cpv-7226"]);
 });
 
-test("Contracts Finder: placeholder values and repeated notices are left out (derived from a real notice, value changed to 0.01)", () => {
-  const placeholder = { ...HOSPITAL_ROADS, id: "derived-placeholder", awardedValue: 0.01 };
-  const r = parseNotices(wrap([placeholder, SLIP_ROAD, SLIP_ROAD, { ...BEESTON, awardedValue: null }, { ...BEESTON, id: "derived-no-value", awardedValue: undefined }]));
-  assert.deepEqual(r.awards.map((a) => a.id), [SLIP_ROAD.id]);
-  assert.equal(MIN_VALUE, 100);
+test("aggregateAll counts an award once even when an update repeats it, and never publishes fewer than 5 awards", () => {
+  const live = LIVE.flatMap(awardsOf);
+  assert.equal(live.length, 12); // 12 releases, 12 award rows (the awardUpdate repeats one)
+  const rows = aggregateAll(live, "2026-11-01", "2026-11-30");
+  assert.deepEqual(rows, []); // 11 distinct awards spread over many groups: none reaches 5
+  const more = [...live, ...synth(6, "72260000", "2026-11-04", (k) => 100000 * (k + 1)).flatMap(awardsOf)];
+  const r = aggregateAll(more, "2026-11-01", "2026-11-30");
+  const d72 = r.find((x) => x.item === "cpv-72");
+  assert.equal(d72?.n, 6 + 3); // 6 synthetic + the 3 live codes starting 72 (72260000, 72221000, 72253200)
+  const d7226 = r.find((x) => x.item === "cpv-7226");
+  assert.equal(d7226?.n, 7);
+  // the duplicated award (18444100) is not double counted
+  const dup = aggregateAll([...synth(5, "18444100", "2026-11-04", () => 870000).flatMap(awardsOf), ...LIVE.slice(4, 6).flatMap(awardsOf)], "2026-11-01", "2026-11-30");
+  assert.equal(dup.find((x) => x.item === "cpv-18")?.n, 6);
 });
 
-test("Contracts Finder: an unexpected response is a source error", () => {
-  assert.throws(() => parseNotices({ message: "bad request" }), SourceError);
-  assert.throws(() => parseNotices(null), SourceError);
+test("aggregateAll keeps the newest release of an award (a correction replaces the earlier value)", () => {
+  const a = { key: "k-1", date: "2026-11-02", value: 1000, cpv: "30213100", stamp: "2026-11-02T10:00:00Z" };
+  const b = { ...a, value: 5000, stamp: "2026-11-03T10:00:00Z" };
+  const others = [1, 2, 3, 4].map((i) => ({ ...a, key: `o-${i}`, value: 2000 }));
+  const r = aggregateAll([a, ...others, b], "2026-11-01", "2026-11-30").find((x) => x.item === "laptops");
+  assert.equal(r?.n, 5);
+  assert.equal(r?.max, 5000);
+  assert.equal(r?.min, 2000);
 });
 
-test("Contracts Finder: several words are searched as a phrase, one word as it is", () => {
-  assert.equal(keywordFor("road resurfacing"), '"road resurfacing"');
-  assert.equal(keywordFor("resurfacing"), "resurfacing");
-  assert.equal(keywordFor('  school "meals"  '), '"school meals"');
+test("dayUrl asks for the whole day with a time part (a date-only day returns nothing) and the 100 page cap", () => {
+  const u = dayUrl("2026-11-05");
+  assert.match(u, /publishedFrom=2026-11-05T00:00:00&publishedTo=2026-11-05T23:59:59/);
+  assert.match(u, /stages=award&limit=100$/);
 });
 
-test("Contracts Finder: regions use the names the search knows, and unknown names are refused instead of silently ignored", () => {
-  assert.equal(regionName("London"), "London");
-  assert.equal(regionName("yorkshire"), "Yorkshire and The Humber");
-  assert.equal(regionName("Yorkshire and Humber"), "Yorkshire and The Humber");
-  assert.equal(regionName("East"), "East of England");
-  assert.equal(regionName("north-west"), "North West");
-  assert.equal(regionName("Narnia"), null);
-  assert.equal(REGION_NAMES.length, 12);
+/** A fake feed: pages of 2 releases per day, with the cursor link the live feed gives. */
+function fakeFeed(releasesByDay: Record<string, any[]>, pageSize = 2) {
+  const calls: string[] = [];
+  const get = async (url: string) => {
+    calls.push(url);
+    const day = /publishedFrom=(\d{4}-\d{2}-\d{2})/.exec(url)![1];
+    const off = Number(/cursor=(\d+)/.exec(url)?.[1] ?? 0);
+    const all = releasesByDay[day] ?? [];
+    const page = all.slice(off, off + pageSize);
+    const body: any = { releases: page };
+    if (off + pageSize < all.length) body.links = { next: `${url.split("&cursor=")[0]}&cursor=${off + pageSize}` };
+    return body;
+  };
+  return { get, calls };
+}
+
+test("readDay follows the cursor links through every page of a day, and stops when there is no next link", async () => {
+  const feed = fakeFeed({ "2026-11-05": LIVE.slice(0, 5) }, 2);
+  const got: string[] = [];
+  const n = await readDay("2026-11-05", feed.get, (r) => got.push(r.ocid));
+  assert.equal(n, 5);
+  assert.equal(feed.calls.length, 3);
+  assert.equal(new Set(got).size, 5);
+  assert.equal(await readDay("2026-11-06", feed.get, () => {}), 0); // a weekend: empty list, no crash
 });
 
-test("Contracts Finder: the request is for awarded contracts in the window", () => {
-  const slice = { from: "2024-10-14", to: "2026-10-14" };
-  assert.deepEqual(buildRequest({ keyword: "resurfacing", region: "London" }, slice, 1000), {
-    searchCriteria: {
-      types: ["Contract"],
-      statuses: ["Awarded"],
-      awardedFrom: "2024-10-14T00:00:00",
-      awardedTo: "2026-10-14T23:59:59",
-      keyword: "resurfacing",
-      regions: "London",
-    },
-    size: 1000,
-  });
-  const byCode = buildRequest({ cpv: "45233142", keyword: "ignored" }, slice, 1000) as any;
-  assert.deepEqual(byCode.searchCriteria.cpvCodes, ["45233142"]);
-  assert.equal("keyword" in byCode.searchCriteria, false);
-  assert.equal(SEARCH_URL, "https://www.contractsfinder.service.gov.uk/api/rest/2/search_notices/json");
-});
-
-test("Contracts Finder: the licence is the Open Government Licence v3.0", () => {
-  assert.equal(INFO.price_type, "contract_price");
-  assert.match(INFO.licence, /Open Government Licence v3\.0/);
-  assert.equal(INFO.licence_url, "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/");
-  assert.match(INFO.attribution, /Contains public sector information licensed under the Open Government Licence v3\.0/);
-});
-
-async function withFetch(handler: (url: string, body: any) => any, run: () => Promise<void>): Promise<void> {
-  const real = globalThis.fetch;
-  globalThis.fetch = (async (url: any, init: any) => {
-    const out = handler(String(url), JSON.parse(init.body));
-    return new Response(JSON.stringify(out.body ?? out), { status: out.status ?? 200, headers: { "content-type": "application/json" } });
-  }) as typeof fetch;
-  try {
-    await run();
-  } finally {
-    globalThis.fetch = real;
+test("harvest: reads each day newest first, builds the window marker and aggregates; a broken day inside the window is refused", async () => {
+  const now = new Date("2026-11-08T03:17:00Z");
+  const byDay: Record<string, any[]> = {};
+  for (let d = 0; d < 40; d++) {
+    const day = daysBefore("2026-11-08", d);
+    byDay[day] = synth(3, "45233251", day, (k) => (k + 1) * 100000);
   }
-}
-
-/** Six notices: the real ones plus two synthetic copies with new ids (so the sample reaches the minimum of five). */
-function sixNotices(): any[] {
-  return [
-    SUB_NOTICE, SLIP_ROAD, BEESTON, HOSPITAL_ROADS,
-    { ...SLIP_ROAD, id: "synthetic-1", awardedValue: 310000, awardedDate: "2026-01-12T00:00:00Z" },
-    { ...SLIP_ROAD, id: "synthetic-2", awardedValue: 95000, awardedDate: "2026-02-20T00:00:00Z" },
-  ];
-}
-
-test("Contracts Finder end to end with a stubbed API: road resurfacing in the UK (one request for the whole window)", async () => {
-  const seen: any[] = [];
-  await withFetch(
-    (_url, body) => {
-      seen.push(body);
-      return wrap(sixNotices());
-    },
-    async () => {
-      const a = await gbContracts({ what: "road resurfacing", months: 24 });
-      assert.equal(a.status, "ok");
-      assert.equal(a.price_type, "contract_price");
-      assert.equal(a.price?.currency, "GBP");
-      assert.equal(a.sample_size, 6);
-      assert.equal(a.source.id, "gb-contracts-finder");
-      assert.match(a.summary, /not unit prices/);
-      assert.match(a.summary, /Newest award used: 2026-08-07\.|newest matching award is from 2026-08-07/); // which one depends on today's date
-      assert.equal(a.extra?.newest_award_used, "2026-08-07");
-      assert.equal(a.extra?.slices, 1);
-    },
-  );
-  assert.equal(seen.length, 1);
-  assert.equal(seen[0].searchCriteria.keyword, "resurfacing"); // the single distinctive word, not the OR-ed phrase
-  assert.equal(seen[0].size, 1000);
+  const feed = fakeFeed(byDay, 2);
+  const r = await gbContractsHarvest(now, { get: feed.get, days: 35 });
+  assert.equal(r.currency, "GBP");
+  assert.equal(r.date, "2026-11-08");
+  assert.equal(windowOf(r.rows), "2026-10-05");
+  const road = r.rows.find((x) => x.item === "road-resurfacing");
+  assert.equal(road?.n, 105);
+  assert.equal(road?.median, 200000);
+  assert.ok(r.note?.includes("2026-10-05 to 2026-11-08"));
+  const failing = async (url: string) => {
+    if (url.includes("2026-11-07")) throw new SourceError("down");
+    return feed.get(url);
+  };
+  await assert.rejects(gbContractsHarvest(now, { get: failing, days: 35 }), SourceError);
+  const failOld = async (url: string) => {
+    if (url.includes("2026-10-08")) throw new SourceError("down");
+    return feed.get(url);
+  };
+  const short = await gbContractsHarvest(now, { get: failOld, days: 35 });
+  assert.equal(windowOf(short.rows), "2026-10-09");
+  await assert.rejects(gbContractsHarvest(now, { get: async () => { throw new SourceError("down"); } }), SourceError);
+  await assert.rejects(gbContractsHarvest(now, { get: async () => ({ releases: [] }), days: 35 }), SourceError);
 });
 
-test("Contracts Finder end to end with a stubbed API: a region filter is sent and explained, more than 1000 hits are read in slices", async () => {
-  const seen: any[] = [];
-  let n = 0;
-  await withFetch(
-    (_url, body) => {
-      seen.push(body);
-      n++;
-      // The whole-window call reports 1500 hits; each slice returns three notices with fresh ids.
-      if (seen.length === 1) return wrap([SLIP_ROAD], 1500);
-      return wrap(
-        [1, 2, 3].map((k) => ({ ...SLIP_ROAD, id: `synthetic-${n}-${k}`, awardedValue: 100000 * k })),
-        800,
-      );
-    },
-    async () => {
-      const a = await gbContracts({ what: "laptops", buyer_area: "London", months: 24 });
-      assert.equal(a.status, "ok");
-      assert.match(a.summary, /London/);
-      assert.match(a.summary, /nationwide contracts/);
-      assert.equal(a.extra?.slices, 12);
-      assert.equal(a.sample_size, 36);
-    },
-  );
-  assert.equal(seen.length, 13);
-  assert.equal(seen[0].searchCriteria.keyword, "laptop");
-  assert.equal(seen[0].searchCriteria.regions, "London");
-});
-
-test("Contracts Finder: slices are read three at a time with one retry; if a slice keeps failing the whole-window read answers", async () => {
-  let calls = 0;
-  let live = 0;
-  let maxLive = 0;
-  const real = globalThis.fetch;
-  globalThis.fetch = (async (_url: any, init: any) => {
-    calls++;
-    live++;
-    maxLive = Math.max(maxLive, live);
-    await new Promise((r) => setTimeout(r, 5));
-    live--;
-    JSON.parse(init.body);
-    if (calls === 1) return new Response(JSON.stringify(wrap(sixNotices(), 1500)), { status: 200, headers: { "content-type": "application/json" } });
-    return new Response("<!DOCTYPE html><html>busy</html>", { status: 200, headers: { "content-type": "text/html" } });
-  }) as typeof fetch;
+test("answer: median and range from the library, period from the window marker, and clear refusals", async () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "gbcf-"));
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
   try {
-    const a = await gbContracts({ what: "road resurfacing", months: 24 });
+    const h = {
+      date: "2026-11-08",
+      currency: "GBP",
+      unit: "per contract (lot), total awarded value",
+      rows: [
+        { area: "ALL", item: "road-resurfacing", n: 87, median: 141664, low: 40000, high: 900000, min: 12000, max: 2000000 },
+        { area: "ALL", item: "cpv-45", n: 400, median: 250000, low: 50000, high: 2000000, min: 12000, max: 9000000 },
+        windowMarker("2026-09-13"),
+      ],
+    };
+    writeDaily(INFO.id, h);
+    writeMeta(INFO.id, { source: INFO.id, currency: "GBP", unit: h.unit, first_date: h.date, last_date: h.date, days: 1, last_harvest_at: "x", last_rows: h.rows.length, last_ok_at: "x", last_error: null });
+    const a = await gbContracts({ what: "road resurfacing" });
     assert.equal(a.status, "ok");
-    assert.equal(a.sample_size, 6);
-    assert.equal(a.extra?.slices_failed, 12);
-    assert.match(a.summary, /did not answer 12 of the period slices/);
-    assert.ok(maxLive <= 3, `at most 3 requests at once, saw ${maxLive}`);
-    assert.equal(calls, 1 + 12 * 2); // whole window + every slice twice
+    assert.equal(a.price_type, "contract_price");
+    assert.equal(a.price?.currency, "GBP");
+    assert.equal(a.sample_size, 87);
+    assert.equal(a.price?.median, 141664);
+    assert.deepEqual(a.period, { from: "2026-09-13", to: "2026-11-08" });
+    assert.match(a.summary, /not unit prices/);
+    assert.doesNotMatch(JSON.stringify(a), /window:/);
+    const c = await gbContracts({ what: "x", cpv: "45233142" }); // 4-digit group cpv-4523 has no row in this fixture: an honest "not enough records"
+    assert.notEqual(c.status, "ok");
+    const d = await gbContracts({ what: "x", cpv: "45" });
+    assert.equal(d.sample_size, 400);
+    await assert.rejects(gbContracts({ what: "x", cpv: "123" }), InputError);
+    await assert.rejects(gbContracts({ what: "laptops", buyer_area: "London" }), InputError);
+    await assert.rejects(gbContracts({ what: "quantum widgets" }), InputError);
   } finally {
-    globalThis.fetch = real;
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
   }
 });
 
-test("Contracts Finder end to end: a cpv code filters on each notice's own codes, fewer than five awards is insufficient_data", async () => {
-  await withFetch(
-    () => wrap([SLIP_ROAD, SUB_NOTICE, BEESTON, HOSPITAL_ROADS]),
-    async () => {
-      const a = await gbContracts({ what: "anything", cpv: "45233210", months: 12 });
-      assert.equal(a.status, "insufficient_data");
-      assert.equal(a.price, null);
-      assert.equal(a.sample_size, 1);
-    },
-  );
-});
-
-test("Contracts Finder: a bad region or code is the caller's mistake", async () => {
-  await assert.rejects(() => gbContracts({ what: "laptops", buyer_area: "Narnia", months: 12 }), InputError);
-  await assert.rejects(() => gbContracts({ what: "laptops", cpv: "3021", months: 12 }), InputError);
-  await assert.rejects(() => gbContracts({ what: "laptops", cpv: "x", months: 12 }), InputError);
-});
-
-test("gb-contracts-finder: a retired search address (302 to not-found, seen 8 Nov 2026) gives a clear 502 SourceError", async () => {
-  const real = globalThis.fetch;
-  globalThis.fetch = (async () => new Response(null, { status: 302, headers: { location: "https://www.contractsfinder.service.gov.uk/syserror/notfound" } })) as any;
+test("answer: no library copy yet is a clear source error, not a crash", async () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "gbcf-"));
+  process.env.PROOFPRICE_LIBRARY_DIR = dir;
   try {
-    await assert.rejects(
-      () => gbContracts({ what: "laptops", months: 12 }),
-      (e: any) => e instanceof SourceError && /moved or been retired/.test(e.message) && e.status === 502,
-    );
+    await assert.rejects(gbContracts({ what: "laptops" }), SourceError);
   } finally {
-    globalThis.fetch = real;
+    delete process.env.PROOFPRICE_LIBRARY_DIR;
   }
+});
+
+test("feedHonoured spots the throttled reply (empty list, default query echoed without publishedFrom)", () => {
+  // copied from the live feed on 2026-11-08 when it answered a default query to a dated request
+  assert.equal(feedHonoured({ uri: "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?publishedTo=2026-11-08T01:48:59Z&limit=100", releases: [] }), false);
+  assert.equal(feedHonoured({ uri: "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search?publishedFrom=2026-11-05T00:00:00&publishedTo=2026-11-05T23:59:59&stages=award&limit=100", releases: [] }), true);
+  assert.equal(feedHonoured({ releases: [] }), true);
 });
