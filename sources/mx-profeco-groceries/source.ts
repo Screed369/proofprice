@@ -38,7 +38,7 @@ export const INFO: SourceInfo = {
 };
 
 // The publisher moved the catalogue on 27 Oct 2026: yearly files are now static links docs/qqp/QQP_<year>.rar on the root page.
-export const INDEX_URL = "https://datos.profeco.gob.mx/";
+export const INDEX_URL = "https://datos.profeco.gob.mx/index.php"; // the root page now only redirects (JS) to index.php (checked 8 Nov 2026)
 export const FILE_BASE = "https://datos.profeco.gob.mx/";
 export const WINDOW_DAYS = 30; // a shop counts when its newest price for the product is within this many days of the newest day
 export const KEEP_ITEMS = 120; // products (product + pack) kept in the library: the ones priced in the most shops

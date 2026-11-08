@@ -3,7 +3,7 @@
 // The rows are generated in that layout (the monthly CSVs sit inside a RAR the probe cannot open), so a state has 5+ shops.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { INFO, Newest, buildRows, decodeText, defsFor, describeBytes, extractYearly, hasPartialCsv, sniff, isoDate, itemKey, matchItems, parseIndex, parseKey, parsePrices, profecoAnswerFromRows, readHeader, resolveState, splitLine, stateName } from "./source";
+import { INDEX_URL, INFO, Newest, buildRows, decodeText, defsFor, describeBytes, extractYearly, hasPartialCsv, sniff, isoDate, itemKey, matchItems, parseIndex, parseKey, parsePrices, profecoAnswerFromRows, readHeader, resolveState, splitLine, stateName } from "./source";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
 
@@ -228,4 +228,8 @@ test("old publisher data is flagged publisher_data_old, never extra.stale (that 
   assert.equal(old.extra?.stale, undefined);
   const fresh = profecoAnswerFromRows(day, { item: "milk", today: "2026-10-20" });
   assert.equal(fresh.extra?.publisher_data_old, undefined);
+});
+
+test("the index is read from index.php (the root page only redirects with JavaScript, 8 Nov 2026)", () => {
+  assert.equal(INDEX_URL, "https://datos.profeco.gob.mx/index.php");
 });
