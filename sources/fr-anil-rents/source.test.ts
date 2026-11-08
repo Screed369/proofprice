@@ -150,3 +150,17 @@ test("harvest end to end on fixtures", async () => {
   assert.ok(h.rows.every((r) => r.area === "Paris intra-muros"));
   await assert.rejects(frRentHarvest(async (u) => (u === RESOURCES_URL ? RES : u.includes("groupby") ? AGG : { data: [], links: {} })), /no usable rows/);
 });
+
+test("live read gives up after the total budget so the library copy answers fast", async () => {
+  const { frRent: live, LIVE_TOTAL_MS } = await import("./source");
+  assert.ok(LIVE_TOTAL_MS <= 10000);
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = ((_u: any, init: any) => new Promise((_res, rej) => { init?.signal?.addEventListener("abort", () => rej(Object.assign(new Error("aborted"), { name: "AbortError" }))); })) as any;
+  const t0 = Date.now();
+  try {
+    await assert.rejects(live({ town: "Paris" }), (e: any) => /timed out/i.test(e.message));
+    assert.ok(Date.now() - t0 < 11000);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});

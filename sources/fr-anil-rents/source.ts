@@ -1,7 +1,7 @@
 // France: observed rents from the local rent observatories (Observatoires Locaux des Loyers, ANIL network),
 // national results by agglomeration on data.gouv.fr, read through the key-free Tabular API.
 // Format checked live on 2026-10-20 from GitHub's servers (see fixtures/: rows-paris-2p.json, agglomerations.json, resources.json).
-import { InputError, SourceError, fetchJson } from "../../lib/http";
+import { InputError, SourceError, fetchJson, withDeadline } from "../../lib/http";
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 
@@ -164,8 +164,18 @@ export function chooseRow(rows: RentRow[], sel: Selection): RentRow | null {
 
 export interface FrRentInput { town?: string; property_type?: string; bedrooms?: number; tenancy?: string; baseUrl?: string }
 
+// data.gouv.fr's tabular API hangs rather than refusing at times: the live read used to wait 20 s per call (listing, group list, up to 5 pages),
+// so Paris/Toulouse reached the library copy after 31 s (smoke 7 Nov). Now every call gets 8 s and the whole live read 10 s; a hanging
+// publisher goes to the stale-if-error copy in about 10 s. Tests that inject a fetcher are not time-limited.
+export const LIVE_CALL_MS = 8000;
+export const LIVE_TOTAL_MS = 10000;
+
 export async function frRent(input: FrRentInput, fetcher?: (url: string) => Promise<unknown>): Promise<PriceAnswer> {
-  const get = fetcher ?? ((u: string) => fetchJson(u, {}, 20000));
+  if (fetcher) return frRentRun(input, fetcher);
+  return withDeadline(frRentRun(input, (u: string) => fetchJson(u, {}, LIVE_CALL_MS)), LIVE_TOTAL_MS, () => new SourceError("Source timed out", "data.gouv.fr rent results"));
+}
+
+async function frRentRun(input: FrRentInput, get: (url: string) => Promise<unknown>): Promise<PriceAnswer> {
   const sel = selection(input);
   let resourceId = FALLBACK_RESOURCE_ID;
   try {
