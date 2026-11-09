@@ -136,3 +136,25 @@ test("usNycCommercial: one HTTP 503 from the portal is retried once and then ans
   await assert.rejects(usNycCommercial({ postcode: "10017" }, { fetcher: dead, today: new Date("2026-10-05") }), /503/);
   clearLatestCache();
 });
+
+// ---------- harvest and history keys (stale-if-error cover) ----------
+import { usHarvest, usHistoryKey, HARVEST_PLACES } from "./source";
+
+test("depth: historyKey maps whole-city and borough windows, not ZIPs or neighborhoods", () => {
+  assert.deepEqual(usHistoryKey({ town: "Manhattan", property_type: "commercial" }), { area: "manhattan-new-york-city", item: "commercial:12m", label: "Manhattan, New York City" });
+  assert.equal(usHistoryKey({ property_type: "land" })?.item, "land:12m");
+  assert.equal(usHistoryKey({ postcode: "10017" }), null);
+  assert.equal(usHistoryKey({ town: "SoHo" }), null);
+  assert.equal(usHistoryKey({ town: "Manhattan", months: 6 }), null);
+  assert.ok(HARVEST_PLACES.length >= 6);
+});
+
+test("depth: harvest writes aggregate rows only; fails loudly when the portal is down", async () => {
+  const sale = (i: number) => ({ block: String(100 + i), sale_price: String(3_000_000 + i * 100_000), sale_date: "2026-09-20T00:00:00.000", gross_square_feet: "6000", land_square_feet: "1,500" });
+  const rows = Array.from({ length: 6 }, (_, i) => sale(i));
+  const out = await usHarvest({ fetcher: async (url: string) => (url.includes("max(") ? [{ latest: "2026-09-30T00:00:00.000" }] : rows), today: new Date("2026-10-30T03:00:00Z") });
+  assert.equal(out.unit, "per m²");
+  assert.ok(out.rows.length > 0);
+  assert.ok(JSON.stringify(out.rows).indexOf("block") === -1);
+  await assert.rejects(usHarvest({ fetcher: async () => { throw new Error("down"); }, today: new Date("2026-10-30T03:00:00Z") }), /did not answer/);
+});

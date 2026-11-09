@@ -7,6 +7,7 @@ import { socrataAll, socrataQuery, soqlString, Fetcher } from "../../lib/adapter
 import { InputError, SourceError, retryOnce } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { summarise } from "../../lib/stats";
+import { aggregateDaily } from "../../lib/library/aggregate";
 import type { SourceInfo } from "../../lib/plugin";
 
 export const DOMAIN = "data.cityofnewyork.us";
@@ -261,4 +262,93 @@ export async function usNycCommercial(input: UsCommercialInput, opts: UsCommerci
       ...(collected.truncated ? { notes: [...notes, `Result capped at the ${MAX_ROWS.toLocaleString("en-US")} most recent matching sales.`] } : notes.length ? { notes } : {}),
     },
   });
+}
+
+// ---------- daily library copy (harvest) and history keys ----------
+// The city's portal sometimes answers 503/timeouts (smoke 9 Nov). One copy a day of the whole-city and borough windows lets
+// runCategory answer from our library (stale-if-error, last 7 days) instead of a 502. Aggregates only (per m² prices, never rows).
+
+export const HARVEST_MONTHS = 12;
+/** Places collected daily, spelled as a request would be. */
+export const HARVEST_PLACES: string[] = ["New York City", "Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"];
+
+/** Library area key for a routed place: the label, lower case, words joined by "-" ("manhattan-new-york-city"). */
+export function areaKey(place: UsPlace): string {
+  return norm(place.label).replace(/ /g, "-");
+}
+
+export const harvestItem = (type: UsType) => `${type}:${HARVEST_MONTHS}m`;
+
+const harvestAreas = (): Map<string, UsPlace> => {
+  const m = new Map<string, UsPlace>();
+  for (const name of HARVEST_PLACES) {
+    const p = routePlace({ town: name });
+    m.set(areaKey(p), p);
+  }
+  return m;
+};
+
+/** The library key for a request, or null when it is not one of the collected places and windows. */
+export function usHistoryKey(p: { town?: string; postcode?: string; property_type?: string; months?: number }): { area: string; item: string; label: string } | null {
+  try {
+    if (p.postcode) return null;
+    const type = (p.property_type ?? "commercial").toLowerCase();
+    if (!(US_TYPES as readonly string[]).includes(type)) return null;
+    const months = p.months === undefined || !Number.isFinite(p.months) ? HARVEST_MONTHS : Math.round(p.months);
+    if (months !== HARVEST_MONTHS) return null;
+    const place = routePlace({ town: p.town });
+    if (place.neighborhood) return null;
+    const area = areaKey(place);
+    if (!harvestAreas().has(area)) return null;
+    return { area, item: harvestItem(type as UsType), label: place.label };
+  } catch {
+    return null;
+  }
+}
+
+export interface UsHarvestOptions {
+  fetcher?: Fetcher;
+  today?: Date;
+}
+
+/** One day of aggregates: every collected place and type over the latest 12 months of the file. */
+export async function usHarvest(opts: UsHarvestOptions = {}): Promise<import("../../lib/plugin").HarvestResult> {
+  const today = opts.today ?? new Date();
+  const records: { area: string; item: string; price: number }[] = [];
+  const skipped: string[] = [];
+  let failures = 0;
+  let attempts = 0;
+  for (const [area, place] of harvestAreas()) {
+    for (const type of US_TYPES) {
+      attempts++;
+      try {
+        const latest = await datasetLatest(today, opts.fetcher);
+        const window = { from: monthsBack(latest, HARVEST_MONTHS), to: latest };
+        const got = await socrataAll(
+          DOMAIN,
+          DATASET,
+          { select: buildSelect(), where: buildWhere(place, type, window), order: ["sale_date DESC", "sale_price DESC"], limit: MAX_ROWS },
+          { fetcher: opts.fetcher, maxRows: MAX_ROWS, pageSize: PAGE_SIZE, timeoutMs: 25000 },
+        );
+        if (got.truncated) {
+          skipped.push(`${area}/${type}`);
+          continue;
+        }
+        for (const s of parseSales(got.rows, type)) records.push({ area, item: harvestItem(type), price: s.perSqm });
+      } catch {
+        failures++;
+        skipped.push(`${area}/${type}`);
+      }
+    }
+  }
+  if (failures > 0 && failures === attempts) throw new SourceError("NYC Open Data did not answer");
+  const rows = aggregateDaily(records, false); // summarise() drops groups under 5 sales
+  if (!rows.length) throw new SourceError("NYC commercial harvest produced no rows");
+  return {
+    date: today.toISOString().slice(0, 10),
+    currency: "USD",
+    unit: "per m²",
+    rows,
+    note: `Rolling ${HARVEST_MONTHS} months up to the file's latest sale; ${skipped.length} place/type combinations left out (too many sales for one read, too few sales, or no answer)${skipped.length ? ": " + skipped.slice(0, 12).join(", ") : ""}.`,
+  };
 }

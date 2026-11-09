@@ -1,6 +1,6 @@
 // Manifest: United States commercial premises and vacant land sales, New York City only (NYC Department of Finance rolling sales).
 import { defineSource, num, str } from "../../lib/plugin";
-import { INFO, usNycCommercial } from "./source";
+import { INFO, usHarvest, usHistoryKey, usNycCommercial } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -23,4 +23,6 @@ export default defineSource({
     "US (New York City only): price per m² of tax class 4 sales (offices, stores, lofts, factories, garages, warehouses, or commercial vacant land) in the Department of Finance Rolling Calendar Sales file, last 12 months; nominal transfers dropped; condo units excluded; never addresses.",
   handle: (p, ctx) =>
     usNycCommercial({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), months: num(p.months), baseUrl: ctx.baseUrl }),
+  harvest: () => usHarvest(),
+  historyKey: (p) => usHistoryKey({ town: str(p.town), postcode: str(p.postcode), property_type: str(p.property_type), months: num(p.months) }),
 });
