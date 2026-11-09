@@ -24,6 +24,8 @@ export default defineSource({
   ],
   method:
     "Taiwan electricity: Taipower's published residential tariff table; the average price per kWh is the bill for a month's use, charged tier by tier, divided by the kWh used. A posted tariff, not a count of paid bills.",
+  // Platform task (Builders B/E, 9 Nov): a later TW gas source in this category must be reachable. Gas and LPG requests are not ours; everything else (including no energy given) stays here.
+  serves: (p) => !/\b(gas|lng|lpg|natural|heating)\b/i.test(String(p.energy ?? "")),
   handle: (p, ctx) =>
     twElectricity({ energy: str(p.energy), consumption_band: str(p.consumption_band), season: str(p.season), taxes: str(p.taxes), baseUrl: ctx.baseUrl }),
 });

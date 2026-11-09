@@ -93,3 +93,11 @@ test("manifest is registered for TW energy", () => {
   assert.equal(p.category, "energy");
   assert.deepEqual(p.countries, ["TW"]);
 });
+
+test("serves(): electricity and unspecified energy stay with Taipower, gas does not (platform task, 9 Nov)", () => {
+  const sv = SOURCE_PLUGINS.find((x) => x.info.id === "tw-taipower-tariffs")!.serves!;
+  assert.equal(sv({ country: "TW" }), true);
+  assert.equal(sv({ country: "TW", energy: "electricity" }), true);
+  assert.equal(sv({ country: "TW", energy: "gas" }), false);
+  assert.equal(sv({ country: "TW", energy: "natural gas" }), false);
+});
