@@ -398,7 +398,7 @@ export async function ukHomeSales(input: {
     unit: "per home",
     period: { from: cov.covered_from, to: cov.covered_to },
     method:
-      "Median and 10th–90th percentile of standard-price residential sales (category A) recorded by HM Land Registry in the selected area and period. Repossessions, buy-to-let and transfers to companies (category B) are excluded. The period is fetched month by month so a busy town still gets the whole window.",
+      "Median and 10th–90th percentile of standard-price residential sales (category A) recorded by HM Land Registry in the selected area and period. Repossessions, buy-to-let and transfers to companies (category B) are excluded. A busy town is fetched in pieces so it still gets the whole window.",
     describe: (x) =>
       `${capitalise(typeLabel)} in ${where} sold for a median of ${fmtMoney(x.median, "GBP")} (standard-price sales); typical range (10th–90th percentile) ${fmtMoney(x.low, "GBP")}–${fmtMoney(x.high, "GBP")}.`,
     baseUrl: input.baseUrl,
