@@ -11,11 +11,11 @@ export default defineSource({
   placeName: "Taiwan (gas)",
   status: "live",
   paramNotes: {
-    energy: "TW: gas = natural gas (TWD per cubic metre), lpg = LPG (TWD per kg); electricity is answered by Taipower's tariff.",
-    consumption_band: "TW natural gas: 'household' (default, CPC direct household customers), 'industrial', 'utility', 'cogeneration' or 'power'. Not used for LPG.",
+    energy: "TW: gas = natural gas (TWD per cubic metre, CPC list price); for LPG (TWD per kg) send energy=gas with consumption_band=lpg. Electricity is answered by Taipower's tariff.",
+    consumption_band: "TW gas: 'household' (default, CPC direct household customers), 'industrial', 'utility', 'cogeneration', 'power' (natural gas, per m3) or 'lpg' (household-use LPG list price to dealers, per kg).",
     taxes: "TW gas: not used; prices are before the 5% business tax.",
   },
-  examples: [{ params: { country: "TW", energy: "gas" } }, { params: { country: "TW", energy: "lpg" }, smoke: false }],
+  examples: [{ params: { country: "TW", energy: "gas" } }, { params: { country: "TW", energy: "gas", consumption_band: "lpg" }, smoke: false }],
   method:
     "Taiwan gas: CPC Corporation's published list prices (natural gas per cubic metre by customer type, LPG per kg to dealers), before 5% business tax. Posted list prices, not a count of paid bills.",
   serves: (p) => /\b(gas|lng|lpg|natural|heating|propane)\b/i.test(String(p.energy ?? "")),

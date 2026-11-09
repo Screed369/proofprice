@@ -73,6 +73,7 @@ export function parseRows(json: unknown): CpcRow[] {
 
 export type Fuel = "natural_gas" | "lpg";
 export type Band = "household" | "industrial" | "utility" | "cogeneration" | "power";
+// The shared energy parameter only accepts electricity|gas, so LPG is asked as energy=gas&consumption_band=lpg.
 
 /** Pure: energy input to a fuel. */
 export function normaliseFuel(raw?: string): Fuel {
@@ -90,7 +91,7 @@ export function normaliseBand(raw?: string): Band {
   if (s === "utility" || s === "gas_utility") return "utility";
   if (s === "cogeneration" || s === "chp") return "cogeneration";
   if (s === "power" || s === "power_plant" || s === "electricity") return "power";
-  throw new InputError('consumption_band for TW natural gas: "household" (default), "industrial", "utility", "cogeneration" or "power".');
+  throw new InputError('consumption_band for TW gas: "household" (default), "industrial", "utility", "cogeneration", "power" or "lpg".');
 }
 
 const CUSTOMER: Record<Band, string> = {
@@ -200,7 +201,8 @@ async function get(url: string): Promise<unknown> {
 
 export async function twGas(input: TwGasInput, fetcher: (url: string) => Promise<unknown> = get): Promise<PriceAnswer> {
   const fuel = normaliseFuel(input.energy);
-  if (fuel === "lpg") return lpgAnswer(parseRows(await fetcher(LPG_URL)), input);
+  const bandRaw = (input.consumption_band ?? "").trim().toLowerCase();
+  if (fuel === "lpg" || bandRaw === "lpg") return lpgAnswer(parseRows(await fetcher(LPG_URL)), input);
   const band = normaliseBand(input.consumption_band);
   return naturalGasAnswer(parseRows(await fetcher(NATURAL_GAS_URL)), band, input);
 }

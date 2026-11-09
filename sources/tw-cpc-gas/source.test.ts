@@ -48,7 +48,8 @@ test("natural gas customer types", async () => {
 });
 
 test("LPG: median of household-use dealer list prices", async () => {
-  const a = await twGas({ energy: "lpg" }, fake);
+  const a = await twGas({ energy: "gas", consumption_band: "lpg" }, fake);
+  assert.equal((await twGas({ energy: "lpg" }, fake)).price!.value, 20.01);
   assert.equal(a.price!.value, 20.01);
   assert.equal(a.period!.from, "2026-04-02");
   assert.match(a.summary, /per kg/);
