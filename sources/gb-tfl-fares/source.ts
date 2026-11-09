@@ -22,7 +22,7 @@ export const INFO: SourceInfo = {
     "The posted adult fare for one London Underground journey between two stations (20 central and main stations in this version): pay-as-you-go (Oyster or contactless) peak and off-peak fares, and the cash single fare, in pounds. A published fare table, not amounts paid.",
   price_type: "posted_price",
   freshness: "Updated by TfL when fares change (the annual change takes effect in March; the table read on 9 Nov 2026 runs 1 Nov 2026 to 1 Nov 2027)",
-  licence: "TfL open data under the Transport Data Service terms (UNVERIFIED: the terms page is behind a Cloudflare challenge and was not read); free tier only",
+  licence: "TfL open data under the Transport Data Service terms; reuse terms not yet confirmed, so free tier only",
   licence_url: "https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service",
   attribution:
     "Powered by TfL Open Data. Contains information from the Transport for London Unified API (api.tfl.gov.uk). " +
