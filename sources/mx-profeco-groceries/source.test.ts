@@ -118,6 +118,12 @@ test("answer: national and state figures, posted label, sample size, empty and b
   assert.equal(j.sample_size, 8);
   assert.ok(j.price!.median! > 24 && j.price!.median! < 28);
   assert.throws(() => profecoAnswerFromRows(day, { item: "caviar", today: "2026-10-20" }), /item 'caviar' not recognised/);
+  // Quality Auditor 2026-11-09: the hint must not suggest 'eggs' when this copy holds no eggs (MX eggs + Jalisco)
+  const noEggs = { ...day, rows: day.rows.filter((r) => !/HUEVO/i.test(JSON.stringify(r))) };
+  assert.throws(
+    () => profecoAnswerFromRows(noEggs, { item: "eggs", region: "Jalisco", today: "2026-10-20" }),
+    (e: Error) => /not recognised/.test(e.message) && !/such as [^`]*'eggs'/.test(e.message) && /'milk'/.test(e.message),
+  );
   // G20261108-MX-JALISCO: a state name sent as the item is refused with a pointer to region
   assert.throws(() => profecoAnswerFromRows(day, { item: "jalisco", today: "2026-10-20" }), /is a Mexican state, not a product.*region=Jalisco/);
   assert.throws(() => profecoAnswerFromRows(day, { item: "milk", region: "Chiapas" }), /States with figures: Jalisco, Nuevo Leon/);

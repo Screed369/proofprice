@@ -498,10 +498,14 @@ export function profecoAnswerFromRows(day: LibraryDay, input: { item?: string; r
     if (asState) throw new InputError(`item '${item}' is a Mexican state, not a product. Put the state in region (region=${asState}) and a product in item, for example item=milk, eggs, tortilla, rice, beans, sugar or cooking oil.`);
     const all = matchItems(defsFor(day.rows, NATIONAL), item);
     const names = [...new Set(defsFor(day.rows, NATIONAL).map((d) => d.name))].sort().slice(0, 30);
+    // Suggest only everyday words that match a product this copy really holds (the library copy may lack e.g. eggs).
+    const natDefs = defsFor(day.rows, NATIONAL);
+    const held = ["milk", "eggs", "tortilla", "cooking oil", "leche", "sugar", "rice", "beans"].filter((w) => matchItems(natDefs, w).length > 0);
+    const heldText = held.length ? held.map((w) => `'${w}'`).join(", ") : "a product from the list below";
     // G20261108-MX-JALISCO: a word that matches no product at all (for example a state name sent as the item) is a bad request, not a silent empty answer.
     if (!all.length)
       throw new InputError(
-        `item '${item}' not recognised: it matches no product priced in 5 or more shops in our copy. Send an everyday product in plain words such as 'milk', 'eggs', 'tortilla', 'cooking oil' or 'leche'` +
+        `item '${item}' not recognised: it matches no product priced in 5 or more shops in our copy. Send an everyday product in plain words such as ${heldText}` +
           (resolveState(day.rows, item) ? `; '${item}' looks like a Mexican state, so put it in region instead` : "") +
           (names.length ? `. Products held include: ${names.join("; ")}.` : "."),
       );

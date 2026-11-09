@@ -18,7 +18,7 @@ export default defineSource({
   },
   examples: [
     { params: { country: "MX", item: "milk" } },
-    { params: { country: "MX", item: "eggs", region: "Jalisco" }, smoke: false },
+    { params: { country: "MX", item: "milk", region: "Jalisco" }, smoke: false },
   ],
   method:
     "Mexico (shop prices): Profeco's Quien es Quien en los Precios, collected once a day into our price library; an answer is the median and range across shops of each shop's newest price for a product and pack over the last 30 days of data, in pesos. " +
