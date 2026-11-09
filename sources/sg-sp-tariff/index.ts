@@ -17,5 +17,7 @@ export default defineSource({
   examples: [{ params: { country: "SG", energy: "electricity" } }],
   method:
     "Singapore electricity: SP Group's published tariff for domestic Low Tension supplies (cents per kWh excluding GST), latest calendar year, converted to dollars. A posted tariff, not a count of paid bills.",
+  // Gas questions go to sg-town-gas (sorts later, so this must say no to them); everything else stays here.
+  serves: (p) => !String(p.energy ?? "").toLowerCase().includes("gas"),
   handle: (p, ctx) => sgElectricity({ energy: str(p.energy), consumption_band: str(p.consumption_band), baseUrl: ctx.baseUrl }),
 });

@@ -61,3 +61,10 @@ test("the live request URL is the plain datastore_search call we probed", () => 
     "https://data.gov.sg/api/action/datastore_search?resource_id=d_d610f8ed1864daa6c7e790318bbc3323&limit=50",
   );
 });
+
+test("routing: SG electricity stays here, SG gas goes to sg-town-gas", async () => {
+  const { findSource } = await import("../../lib/registry");
+  assert.equal(findSource("energy", "SG", { country: "SG", energy: "electricity" })?.info.id, "sg-sp-tariff");
+  assert.equal(findSource("energy", "SG", { country: "SG" })?.info.id, "sg-sp-tariff");
+  assert.equal(findSource("energy", "SG", { country: "SG", energy: "gas" })?.info.id, "sg-town-gas");
+});
