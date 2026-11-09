@@ -28,3 +28,31 @@ export const OLD_RECORDS = [
   { _id: 1, Ano: "2022", Mes: "2", Producto: "SUPER 95 30-S", Unidad: "73,41", Valor: "$/lt" },
   { _id: 2, Ano: "2022", Mes: "2", Producto: "GASOIL 10-S *", Unidad: "65,98", Valor: "$/lt" },
 ];
+
+/** REAL lines of the dataset's static CSV (datos-de-precios-de-combustibles.csv, read 2026-11-09 from the open-data catalogue): semicolons, a UTF-8 BOM
+ *  and a header on the full file, CRLF line ends, the number in "Unidad" and the unit in "Valor". The first line is cut, as a Range tail slice is. */
+export const REAL_CSV_TAIL =
+  "\uFEFFcio;Producto;Unidad;Valor\r\n" +
+  [
+    "2025;7;GASOIL 10-S *;55,08;$/lt",
+    "2025;7;GASOIL 50-S *;48,08;$/lt",
+    "2025;7;PREMIUM 97 30-S;81,13;$/lt",
+    "2025;7;SUPER 95 30-S;78,72;$/lt",
+    "2026;6;GASOIL 10-S *;70,91;$/lt",
+    "2026;6;GASOIL 50-S *;61,76;$/lt",
+    "2026;6;PREMIUM 97 30-S;96;$/lt",
+    "2026;6;SUPER 95 30-S;93,36;$/lt",
+    "2026;7;GASOIL 10-S *;67,33;$/lt",
+    "2026;7;GASOIL 50-S *;58,68;$/lt",
+    "2026;7;PREMIUM 97 30-S;91,19;$/lt",
+    "2026;7;SUPER 95 30-S;88,67;$/lt",
+    "2026;8;GASOIL 10-S *;S/C;S/C",
+    "2026;8;GASOIL 50-S *;S/C;S/C",
+    "2026;8;PREMIUM 97 30-S;S/C;S/C",
+    "2026;8;SUPER 95 30-S;S/C;S/C",
+    "2026;9;GASOIL 10-S *;S/C;S/C",
+    "2026;9;GASOIL 50-S *;S/C;S/C",
+    "2026;9;PREMIUM 97 30-S;S/C;S/C",
+    "2026;9;SUPER 95 30-S;S/C;S/C"
+  ].join("\r\n") +
+  "\r\n";

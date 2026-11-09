@@ -10,7 +10,7 @@
 // The ASCII-only query string matters: a request with accented column names was refused by the portal's security filter.
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { InputError, SourceError, fetchJson } from "../../lib/http";
+import { InputError, SourceError, fetchJson, retryOnce } from "../../lib/http";
 import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 import { NO_COUNT } from "../../lib/stats";
 
@@ -86,8 +86,61 @@ export function parseQuotes(body: unknown): Quote[] {
   return out;
 }
 
+// The CKAN datastore API above answers in 15-21 s whatever the size (measured 2026-11-09: 40 rows 16 s, 150 rows 21 s, while the catalogue's
+// package_show takes 1.5 s), so live questions timed out and were answered from the library copy (smoke 8 Nov: UY fuel 22-25 s, STALE).
+// The static CSV of the same resource downloads in about 3 s and supports Range requests, so we read only the tail (the newest months).
+export const CSV_URL = `https://catalogodatos.gub.uy/dataset/556beb30-02fc-4d06-909a-f42083c89ef7/resource/${RESOURCE_ID}/download/datos-de-precios-de-combustibles.csv`;
+const CSV_TAIL_BYTES = 120000; // about 3,500 rows, 50+ months at the real 22-66 rows a month: enough for the newest quoted month and a year earlier
+
+/** Pure: the CSV text (whole file or a tail slice, semicolon separated, "Ano;Mes;Producto;Unidad;Valor") -> the same records the datastore gives,
+ *  so parseQuotes reads both. A header line and a cut first line of a Range slice are skipped because their year is not four digits. */
+export function csvToRecords(text: string): Record<string, string>[] {
+  const out: Record<string, string>[] = [];
+  for (const line of text.replace(/^\uFEFF+/, "").split(/\r?\n/)) {
+    const c = line.split(";");
+    if (c.length !== 5 || !/^\d{4}$/.test(c[0].trim())) continue;
+    out.push({ Ano: c[0], Mes: c[1], Producto: c[2], Unidad: c[3], Valor: c[4] });
+  }
+  return out;
+}
+
+export function parseCsvQuotes(text: string): Quote[] {
+  const records = csvToRecords(text);
+  if (!records.length) throw new SourceError("The Uruguay open-data portal's CSV held no price rows in the known layout; this source needs updating.");
+  return parseQuotes({ result: { records } });
+}
+
+async function fetchCsvTail(timeoutMs: number): Promise<Quote[]> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(CSV_URL, {
+      headers: { range: `bytes=-${CSV_TAIL_BYTES}`, "user-agent": "pricepaid-plug/0.1 (+price-paid data for AI agents)" },
+      signal: controller.signal,
+    });
+    if (!res.ok) throw new SourceError(`Source returned HTTP ${res.status}`, "", res.status);
+    return parseCsvQuotes(await res.text());
+  } catch (err: any) {
+    if (err?.name === "AbortError") throw new SourceError("Source timed out", CSV_URL);
+    if (err instanceof SourceError) throw err;
+    throw new SourceError("Could not reach the official source", String(err?.cause?.code ?? err?.message ?? err));
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/** Live answer: the CSV tail, two quick attempts (7 s each; the portal sometimes resets the first connection), inside the 20 s answer budget. */
 export async function fetchQuotes(): Promise<Quote[]> {
-  return parseQuotes(await fetchJson(API, { headers: { accept: "application/json" } }, 25000));
+  return retryOnce(() => fetchCsvTail(7000));
+}
+
+/** Collector (no answer deadline): the CSV, and the slow datastore API only if the CSV fails. */
+export async function fetchQuotesForHarvest(): Promise<Quote[]> {
+  try {
+    return await fetchCsvTail(25000);
+  } catch {
+    return parseQuotes(await fetchJson(API, { headers: { accept: "application/json" } }, 25000));
+  }
 }
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -206,7 +259,7 @@ export function uyHarvestRows(qs: Quote[]): HarvestResult {
 }
 
 export async function uyFuelHarvest(): Promise<HarvestResult> {
-  return uyHarvestRows(await fetchQuotes());
+  return uyHarvestRows(await fetchQuotesForHarvest());
 }
 
 export function uyFuelHistoryKey(p: { fuel?: string }): { area: string; item: string; label: string } | null {

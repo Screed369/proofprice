@@ -92,3 +92,18 @@ test("historyKey maps the two askable fuels to the national library rows, nothin
   assert.equal(uyFuelHistoryKey({ fuel: "lpg" }), null);
   assert.ok(manifest.harvest && manifest.historyKey && manifest.referenceDates && manifest.nominalCounts);
 });
+
+import { REAL_CSV_TAIL } from "./fixtures";
+import { csvToRecords, parseCsvQuotes } from "./source";
+
+test("the CSV tail (real lines, BOM, cut first line, CRLF) gives the same quotes as the datastore reply", () => {
+  assert.equal(csvToRecords(REAL_CSV_TAIL).length, 20);
+  const q = parseCsvQuotes(REAL_CSV_TAIL);
+  assert.equal(q.find((x) => x.month === "2026-07" && x.product === "GASOIL 10-S")?.value, 67.33);
+  assert.equal(q.find((x) => x.month === "2026-09" && x.product === "SUPER 95 30-S")?.value, null);
+  const a = uyFuelAnswer(q, { fuel: "diesel" }, TODAY);
+  assert.equal(a.price?.value, 67.33);
+  assert.equal((a.extra as any).change_on_year_earlier.value, 55.08); // the real July 2025 row
+  assert.equal((a.extra as any).change_on_year_earlier.change_percent, 22.2);
+  assert.throws(() => parseCsvQuotes("<html>blocked</html>"), /known layout/);
+});
