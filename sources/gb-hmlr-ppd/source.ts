@@ -121,8 +121,10 @@ export function parseUkBindings(json: any): { amount: number; date: string }[] {
 // row cap is split in halves until each piece fits (down to one day), so the window is covered completely or we say exactly
 // which part is missing.
 
-/** Rows one sub-query may return; a piece that reaches it is split in two. */
-export const UK_ROW_CAP = 2500;
+/** Rows one sub-query may return; a piece that reaches it is split in two. Measured 9 Nov 2026 from the workspace: the endpoint answers every
+ *  query in about 5 s whatever the window (Bristol, 12 months, all types: 8,669 rows in 5.9 s; Manchester 7,740 in 6.7 s; whole of London
+ *  30,152 in 26 s), so thirteen month pieces cost 31 s (and one piece of them kept getting HTTP 429) while one query costs 5-6 s. */
+export const UK_ROW_CAP = 10_000;
 /** Most sub-queries one answer may use (12 months plus splits of the busiest months). */
 export const UK_MAX_QUERIES = 48;
 /** How many sub-queries run at once (be gentle with the public endpoint). */
@@ -171,6 +173,13 @@ export function monthWindows(fromDate: string, today: string): DateWindow[] {
   }
   return out;
 }
+
+/** The whole period as ONE piece (to the day after `today`); collectUk splits it in halves only if it reaches the row cap. */
+export function wholeWindow(fromDate: string, today: string): DateWindow[] {
+  return [{ from: fromDate, to: addDays(today, 1) }];
+}
+
+const windowDays = (w: DateWindow) => Math.round((Date.parse(w.to + "T00:00:00Z") - Date.parse(w.from + "T00:00:00Z")) / dayMs);
 
 /** A window cut into two halves, or null when it is a single day. */
 export function splitWindow(w: DateWindow): [DateWindow, DateWindow] | null {
@@ -234,7 +243,7 @@ export async function collectUk(
         if (rows.length >= cap) {
           const halves = splitWindow(w);
           if (halves) {
-            queue.push(...halves);
+            queue.push(halves[1], halves[0]); // newest half first
             continue;
           }
           out.capped.push(w);
@@ -242,6 +251,13 @@ export async function collectUk(
         out.rows.push(...rows);
       } catch (e) {
         firstError ??= e;
+        // A long piece that TIMED OUT was probably too heavy for one query: try its halves (newest first) instead of giving up on all of it.
+        // Other errors (HTTP 429/5xx, unreachable) are not made worse by more queries, so they go to the missing list / second pass as before.
+        const halves = /timed? ?out|timeout/i.test(String((e as any)?.message ?? e)) && windowDays(w) > 31 ? splitWindow(w) : null;
+        if (halves) {
+          queue.push(halves[1], halves[0]);
+          continue;
+        }
         const msg = `${w.from}: ${String((e as any)?.message ?? e)}`.slice(0, 160);
         if ((out.errors ??= []).length < 3) out.errors.push(msg);
         out.missing.push(w);
@@ -366,8 +382,9 @@ export async function ukHomeSales(input: {
       );
       return parseUkBindings(json);
     });
-  // Newest month first: if the time budget runs out, the oldest month is the one left out, never the latest sales.
-  const got = await collectUk(fetchWindow, monthWindows(fromDate, today).reverse());
+  // One query for the whole period (the endpoint's cost is about 5 s per query whatever the size); a piece that fills the row cap is split in
+  // halves, newest half first, so if the time budget runs out it is the oldest sales that are left out, never the latest.
+  const got = await collectUk(fetchWindow, wholeWindow(fromDate, today));
   const rows = got.rows;
   const cov = describeCoverage(got, { months, from: fromDate, to: today });
   const s = summarise(rows.map((r) => r.amount));

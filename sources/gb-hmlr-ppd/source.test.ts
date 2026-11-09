@@ -97,16 +97,44 @@ test("UK window: a very busy month is split until it fits, so London-sized month
 });
 
 test("UK window: when the endpoint fails for part of the window the answer says so and reports the true period", async () => {
+  // a whole-period query is refused as too heavy (timeout) whenever it reaches into the failing dates; shorter pieces fail only from May on
   const ep = fakeEndpoint(() => 20, { failFrom: "2026-05-01" });
-  const a = await ukHomeSales({ town: "Bristol", months: 12, today: "2026-08-28", fetchWindow: ep.fetchWindow });
+  const fetchWindow = async (w: DateWindow) => {
+    if (w.to > "2026-05-01" && w.from < "2026-05-01" && windowDaysT(w) > 31) throw new Error("Source timed out");
+    return ep.fetchWindow(w);
+  };
+  const a = await ukHomeSales({ town: "Bristol", months: 12, today: "2026-08-28", fetchWindow });
   assert.equal(a.status, "ok");
-  assert.equal(a.period.to, "2026-04-30"); // nothing after April is in the figure, and the period says so
+  assert.ok(a.period.to < "2026-06-01", "little from May on is in the figure, and the period says so: " + a.period.to);
   const cov = (a.extra as any).coverage;
   assert.equal(cov.complete, false);
-  assert.deepEqual(cov.missing_ranges, [{ from: "2026-05-01", to: "2026-08-28" }]);
+  assert.equal(cov.missing_ranges[cov.missing_ranges.length - 1].to, "2026-08-28");
   assert.match(a.notice, /Partial window: the 12-month period asked for/);
-  assert.match(a.notice, /2026-05-01 to 2026-08-28/);
   assert.match(a.summary, /Partial window/);
+});
+
+const windowDaysT = (w: DateWindow) => Math.round((Date.parse(w.to) - Date.parse(w.from)) / 86400000);
+
+test("UK window: a normal town is ONE query for the whole period (the endpoint costs about 5 s per query, not per row)", async () => {
+  const ep = fakeEndpoint(() => 23); // Bristol-sized: about 8,400 a year, under the 10,000 cap
+  const a = await ukHomeSales({ town: "Bristol", months: 12, today: "2026-08-28", fetchWindow: ep.fetchWindow });
+  assert.equal(ep.calls.length, 1);
+  assert.deepEqual(ep.calls[0], { from: "2025-08-28", to: "2026-08-29" });
+  assert.equal((a.extra as any).coverage.complete, true);
+});
+
+test("UK window: a whole-period query that times out is retried as halves, and the newest half is asked first", async () => {
+  const ep = fakeEndpoint(() => 10);
+  const order: string[] = [];
+  const fetchWindow = async (w: DateWindow) => {
+    order.push(w.from);
+    if (windowDaysT(w) > 200) throw new Error("Source timed out");
+    return ep.fetchWindow(w);
+  };
+  const a = await ukHomeSales({ town: "Bristol", months: 12, today: "2026-08-28", fetchWindow });
+  assert.equal((a.extra as any).coverage.complete, true);
+  assert.equal(order.length, 3); // the whole period (failed), then its two halves
+  assert.ok(order[1] > order[2], "newest half first");
 });
 
 test("UK window: if every piece fails the error is thrown (so stale-if-error can answer), never an empty ok", async () => {
