@@ -111,15 +111,19 @@ export function parseAwards(json: any): UsAward[] {
   return out;
 }
 
-async function post(path: string, body: unknown): Promise<any> {
+/** Whole question must finish inside the platform limit: each call gets the time left, never more than 12 s. */
+const BUDGET_MS = 24000;
+async function post(path: string, body: unknown, deadline = Date.now() + BUDGET_MS): Promise<any> {
+  const left = Math.min(12000, deadline - Date.now());
+  if (left < 1500) throw new SourceError("USAspending did not answer in time");
   return fetchJson(
     `${BASE}/${path}/`,
     { method: "POST", headers: { "content-type": "application/json", accept: "application/json" }, body: JSON.stringify(body) },
-    25000,
+    left,
   );
 }
 
-async function sliceAwards(f: UsFilters, slice: { from: string; to: string }): Promise<{ awards: UsAward[]; full: boolean }> {
+async function sliceAwards(f: UsFilters, slice: { from: string; to: string }, deadline: number): Promise<{ awards: UsAward[]; full: boolean }> {
   const body = (newOnly: boolean) => ({
     filters: buildFilters(f, slice, newOnly),
     fields: ["Award Amount", "Base Obligation Date"],
@@ -130,10 +134,10 @@ async function sliceAwards(f: UsFilters, slice: { from: string; to: string }): P
   });
   let json: any;
   try {
-    json = await post("spending_by_award", body(true));
+    json = await post("spending_by_award", body(true), deadline);
   } catch (e: any) {
     // Some deployments reject the "new awards only" period type: repeat with the default (action date).
-    if (e instanceof SourceError && /HTTP 4\d\d/.test(e.message)) json = await post("spending_by_award", body(false));
+    if (e instanceof SourceError && /HTTP 4\d\d/.test(e.message)) json = await post("spending_by_award", body(false), deadline);
     else throw e;
   }
   return { awards: parseAwards(json), full: Array.isArray(json?.results) && json.results.length >= PER_SLICE };
@@ -182,10 +186,24 @@ export async function usContracts(input: UsInput): Promise<PriceAnswer> {
     where = `the United States (federal agencies, work in ${STATES[st]})`;
   }
   const slices = sliceWindow(win.from, win.to, Math.min(input.months, 12));
-  const [perSlice, count] = await Promise.all([
-    inBatches(slices, 6, (s) => sliceAwards(f, s)),
-    post("spending_by_award_count", { filters: buildFilters(f, win, true) }).catch(() => null),
+  const deadline = Date.now() + BUDGET_MS;
+  // One slow slice must not sink the answer: keep the slices that arrived (failing only when none did).
+  let failedSlices = 0;
+  let firstError: unknown = null;
+  const [settled, count] = await Promise.all([
+    inBatches(slices, 12, (s) =>
+      sliceAwards(f, s, deadline).catch((e) => {
+        failedSlices++;
+        firstError ??= e;
+        return null;
+      }),
+    ),
+    post("spending_by_award_count", { filters: buildFilters(f, win, true) }, deadline).catch(() => null),
   ]);
+  const perSlice = settled.filter((x): x is { awards: UsAward[]; full: boolean } => x !== null);
+  if (!perSlice.length) throw firstError instanceof Error ? firstError : new SourceError("USAspending did not answer in time");
+  // Too many missing slices would bias the period: only accept up to a third missing.
+  if (failedSlices * 3 > slices.length) throw firstError instanceof Error ? firstError : new SourceError("USAspending did not answer in time");
   const seen = new Set<string>();
   const awards: UsAward[] = [];
   for (const { awards: list } of perSlice) {
@@ -200,6 +218,7 @@ export async function usContracts(input: UsInput): Promise<PriceAnswer> {
   const capped = perSlice.some((s) => s.full);
   const notes: string[] = [];
   if (capped) notes.push(`${Number.isFinite(matching) ? matching : "More"} matching awards exist; the newest ${PER_SLICE} of each period slice were read, ${awards.length} usable.`);
+  if (failedSlices) notes.push(`${failedSlices} of ${slices.length} period slices did not answer in time and are left out, so the period is covered only in part.`);
   notes.push(`Each amount is what had been obligated to the award so far, including later modifications; amounts under ${MIN_VALUE} dollars are left out.`);
   return contractAnswer({
     source: INFO,

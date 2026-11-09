@@ -185,3 +185,23 @@ test("USAspending: a missing, empty, text or negative (de-obligated) amount is n
   ];
   assert.deepEqual(parseAwards({ results: rows }).map((a) => [a.id, a.amount]), [["6", 2500]]);
 });
+
+test("USAspending: two slow slices of twelve are left out with a note; most slices missing is a source error", async () => {
+  const mk = (bad: number) => {
+    let n = 0;
+    return (url: string) => {
+      if (url.includes("_count")) return { results: { contracts: 458 } };
+      n++;
+      if (n <= bad) return { status: 503, body: { detail: "busy" } };
+      return { results: LAPTOP_ROWS.map((r) => ({ ...r, internal_id: r.internal_id + n * 1000000 })) };
+    };
+  };
+  await withFetch(mk(2), async () => {
+    const a = await usContracts({ what: "laptops", months: 24 });
+    assert.equal(a.status, "ok");
+    assert.ok(JSON.stringify(a).includes("2 of 12 period slices"));
+  });
+  await withFetch(mk(8), async () => {
+    await assert.rejects(() => usContracts({ what: "laptops", months: 24 }), SourceError);
+  });
+});
