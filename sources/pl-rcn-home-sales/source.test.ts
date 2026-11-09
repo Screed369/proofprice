@@ -3,8 +3,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { HARVEST_ITEM, INFO, PLACES, findPlace, monthsOf, normaliseName, parseSales, plDailyRows, plHarvest, plHistoryKey, plHomeSales, plausible, sliceUrl, slices } from "./source";
+import { HARVEST_ITEM, INFO, PLACES, findPlace, monthsOf, normaliseName, parseSales, plDailyRows, plHarvest, plHistoryKey, plHomeSales, plausible, sliceUrl, slices, withOneRetry } from "./source";
 import plugin from "./index";
+import { SourceError } from "../../lib/http";
 
 const GML = readFileSync(new URL("./fixtures/lokale-warszawa.gml", import.meta.url), "utf8");
 
@@ -199,4 +200,17 @@ test("plHarvest: one city failing twice is left out and named; too many failing 
 test("manifest: harvest and historyKey are wired to the city", () => {
   assert.equal(typeof plugin.harvest, "function");
   assert.equal(plugin.historyKey?.({ country: "PL", town: "Krakow" } as any)?.area, "Krakow");
+});
+
+test("withOneRetry: a dropped first connection is retried once; an HTTP 4xx is not; a second failure surfaces", async () => {
+  let calls = 0;
+  const flaky = withOneRetry(async () => { if (++calls === 1) throw new SourceError("Source timed out", "x"); return "ok"; });
+  assert.equal(await flaky("u"), "ok");
+  assert.equal(calls, 2);
+  let c4 = 0;
+  await assert.rejects(() => withOneRetry(async () => { c4++; throw new SourceError("Source returned HTTP 400", "", 400); })("u"), /HTTP 400/);
+  assert.equal(c4, 1);
+  let c2 = 0;
+  await assert.rejects(() => withOneRetry(async () => { c2++; throw new SourceError("Source timed out", "x"); })("u"), /timed out/);
+  assert.equal(c2, 2);
 });

@@ -164,7 +164,17 @@ export const makeFetch = (timeoutMs: number): GmlFetcher => async (url) => {
   }
 };
 
-export const defaultFetch: GmlFetcher = makeFetch(14000);
+/** Live answers: two quick attempts per slice (9 s each, inside the 20 s answer budget). The smoke of 9 Nov showed Warsaw and Krakow failing at 10-11 s
+ *  from Vercel while the same requests take 1-2 s from elsewhere, i.e. a dropped first connection that a second try recovers. */
+export const withOneRetry = (f: GmlFetcher): GmlFetcher => async (url) => {
+  try {
+    return await f(url);
+  } catch (err) {
+    if (err instanceof SourceError && err.status !== undefined && err.status >= 400 && err.status < 500) throw err;
+    return await f(url);
+  }
+};
+export const defaultFetch: GmlFetcher = withOneRetry(makeFetch(9000));
 
 export interface PlHomeArgs { town?: string; postcode?: string; property_type?: string; months?: number; baseUrl?: string; today?: string; fetchGml?: GmlFetcher }
 
