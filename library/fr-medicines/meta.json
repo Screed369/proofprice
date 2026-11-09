@@ -3,11 +3,19 @@
   "currency": "EUR",
   "unit": "per box",
   "first_date": "2026-10-14",
-  "last_date": "2026-11-07",
-  "days": 24,
-  "last_harvest_at": "2026-11-07T10:40:11.335Z",
-  "last_rows": 499,
-  "last_ok_at": "2026-11-07T10:40:11.335Z",
-  "last_error": null,
-  "note": "Regulated prices incl. dispensing fee, 11563 priced packs on sale, 499 medicine names with 5+ packs."
+  "last_date": "2026-11-09",
+  "days": 25,
+  "last_harvest_at": "2026-11-09T11:39:19.774Z",
+  "last_rows": 498,
+  "last_ok_at": "2026-11-09T11:39:19.774Z",
+  "last_error": "Data check held back 1 key for 2026-11-09 (previous kept): ALL/name:xurta: median 31.96 vs previous 1.02 on 2026-11-07 (31.33x).",
+  "note": "Regulated prices incl. dispensing fee, 11563 priced packs on sale, 499 medicine names with 5+ packs.",
+  "held_streak": {
+    "ALL::name:xurta": {
+      "median": 31.96,
+      "dates": [
+        "2026-11-09"
+      ]
+    }
+  }
 }
