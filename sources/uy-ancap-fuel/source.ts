@@ -188,7 +188,7 @@ export function uyFuelAnswer(qs: Quote[], input: UyFuelInput, today = new Date()
   }
   const value = head.value as number;
   const newestMonth = qs.reduce((m, q) => (q.month > m ? q.month : m), head.month);
-  const unquoted = own.filter((q) => q.value === null && q.month > head.month).map((q) => q.month).sort();
+  const unquoted = [...new Set(own.filter((q) => q.value === null && q.month > head.month).map((q) => q.month))].sort(); // the dataset repeats a month (two S/C rows for Aug 2026): list each once
   const prevMonth = own.find((q) => q.value !== null && q.month < head.month);
   const year = quoteOf(qs, def.product, shift(head.month, -12));
   const alsoVal = quoteOf(qs, def.also.product, head.month);

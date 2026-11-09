@@ -107,3 +107,10 @@ test("the CSV tail (real lines, BOM, cut first line, CRLF) gives the same quotes
   assert.equal((a.extra as any).change_on_year_earlier.change_percent, 22.2);
   assert.throws(() => parseCsvQuotes("<html>blocked</html>"), /known layout/);
 });
+
+test("a month repeated as S/C in the dataset (CSV tail 2026-11-09: two August rows) is listed once in the note", () => {
+  const dup = { Ano: "2026", Mes: "8", Producto: "GASOIL 10-S", Unidad: "S/C", Valor: "S/C" };
+  const a = uyFuelAnswer(parseQuotes({ result: { records: [...REAL_REPLY.result.records, dup] } }), { fuel: "diesel" }, TODAY);
+  assert.deepEqual((a.extra as any).months_without_quotation_since, ["2026-08", "2026-09"]);
+  assert.match(a.statistic?.note ?? "", /in August 2026 and September 2026, so/);
+});
