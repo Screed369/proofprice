@@ -1,0 +1,36 @@
+URL: https://api.tfl.gov.uk/StopPoint/Search?query=victoria&modes=tube&maxResults=3
+Fetched: 2026-11-09T01:16:14Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 345
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Mon, 09 Nov 2026 01:16:14 GMT
+content-type: application/json; charset=utf-8
+cache-control: public, must-revalidate, max-age=302400, s-maxage=604800
+via: 1.1 varnish
+strict-transport-security: max-age=31536000
+age: 0
+access-control-allow-headers: Content-Type
+access-control-allow-methods: GET,POST,PUT,DELETE,OPTIONS
+access-control-allow-origin: *
+api-entity-payload: StopPoint
+x-backend: api
+x-cache: MISS
+x-cacheable: Yes. Cacheable
+x-frame-options: deny
+x-proxy-connection: unset
+x-ttl: 604800.000
+x-ttl-rule: 0
+x-varnish: 312261143
+x-aspnet-version: 4.0.30319
+x-operation: StopPoint_SearchByQueryQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLine
+x-api: StopPoint
+cf-cache-status: DYNAMIC
+vary: accept-encoding
+server: cloudflare
+cf-ray: a578f88a99de072c-MSP
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"$type":"Tfl.Api.Presentation.Entities.SearchResponse, Tfl.Api.Presentation.Entities","query":"victoria","total":1,"matches":[{"$type":"Tfl.Api.Presentation.Entities.MatchedStop, Tfl.Api.Presentation.Entities","icsId":"1000248","modes":["bus","tube","national-rail"],"zone":"1","id":"HUBVIC","name":"Victoria","lat":51.495812,"lon":-0.143826}]}
