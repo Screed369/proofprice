@@ -204,6 +204,19 @@ test("hasPartialCsv: a truncated archive that left monthly files is kept, an emp
   assert.equal(hasPartialCsv(join(d, "missing")), false);
 });
 
+test("hasPartialCsv: monthly files of 0 bytes (what p7zip leaves of a cut-short RAR5) are not a partial result", async () => {
+  const { mkdtempSync, mkdirSync, writeFileSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const d = mkdtempSync(join(tmpdir(), "pp-profeco-"));
+  mkdirSync(join(d, "2026"));
+  writeFileSync(join(d, "2026", "01-2026_Q1.csv"), "");
+  writeFileSync(join(d, "2026", "03-2026_Q2.csv"), "");
+  assert.equal(hasPartialCsv(d), false);
+  writeFileSync(join(d, "2026", "02-2026_Q1.csv"), "producto,precio\n");
+  assert.equal(hasPartialCsv(d), true);
+});
+
 test("dates: compact, slashed and dashed day-first forms are read; drop reasons are counted", () => {
   assert.equal(isoDate("20260814"), "2026-08-14");
   assert.equal(isoDate("2026/8/4"), "2026-08-04");
