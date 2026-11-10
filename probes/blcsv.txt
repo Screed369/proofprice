@@ -1,0 +1,444 @@
+URL: https://data.bl.ch/api/v2/catalog/datasets/10210/exports/csv?use_labels=true
+Fetched: 2026-11-10T06:45:19Z from GitHub Actions
+Status, type, bytes: 200 text/csv; charset=utf-8 15019
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+server: openresty
+date: Tue, 10 Nov 2026 06:45:19 GMT
+content-type: text/csv; charset=utf-8
+content-disposition: attachment; filename="10210.csv"
+ods-explore-api-deprecation: DEPRECATED_XLS_EXPORT_FORMAT: xls export is removed in 2.1, and replaced with xlsx;deprecated API version (v2), please use the current v2.1 version
+link: <https://help.huwise.com/apis/ods-explore-v2/explore_v2.1.html#section/Introduction/v2.1-Changelog>;rel="deprecation"; type="text/html"
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+x-ratelimit-remaining: 99999
+x-ratelimit-limit: 100000
+x-ratelimit-reset: 2026-11-11 00:00:00+00:00
+vary: Accept-Language, Cookie, Host
+content-language: en-gb
+access-control-allow-origin: *
+access-control-allow-methods: POST, GET, OPTIONS
+access-control-max-age: 1000
+access-control-allow-headers: Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type, ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+access-control-expose-headers: ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit, X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit, X-RateLimit-dataset-Reset
+strict-transport-security: max-age=31536000;includeSubdomains
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: upgrade-insecure-requests; 
+x-ua-compatible: IE=edge
+permissions-policy: midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+
+=== FILE TYPE: ASCII text, with CRLF line terminators
+=== FIRST 30000 BYTES
+Jahr;Bezirk_Nummer;Bezirk;Zimmerzahl;Verkaufspreis_CHF
+2025;1301;Bezirk Arlesheim;Total;1028138
+2025;1301;Bezirk Arlesheim;1;475000
+2025;1301;Bezirk Arlesheim;2;642072
+2025;1301;Bezirk Arlesheim;3;846964
+2025;1301;Bezirk Arlesheim;4;1176802
+2025;1301;Bezirk Arlesheim;5+;1395057
+2025;1302;Bezirk Laufen;Total;716289
+2025;1302;Bezirk Laufen;2;505000
+2025;1302;Bezirk Laufen;3;576933
+2025;1302;Bezirk Laufen;4;809706
+2025;1302;Bezirk Laufen;5+;1095000
+2025;1303;Bezirk Liestal;Total;803882
+2025;1303;Bezirk Liestal;1;( )
+2025;1303;Bezirk Liestal;2;487156
+2025;1303;Bezirk Liestal;3;656327
+2025;1303;Bezirk Liestal;4;920186
+2025;1303;Bezirk Liestal;5+;1065304
+2025;1304;Bezirk Sissach;Total;739640
+2025;1304;Bezirk Sissach;2;336349
+2025;1304;Bezirk Sissach;3;702198
+2025;1304;Bezirk Sissach;4;805636
+2025;1304;Bezirk Sissach;5+;989763
+2025;1305;Bezirk Waldenburg;Total;520196
+2025;1305;Bezirk Waldenburg;2;331375
+2025;1305;Bezirk Waldenburg;3;426000
+2025;1305;Bezirk Waldenburg;4;652636
+2025;1305;Bezirk Waldenburg;5+;( )
+2024;1301;Bezirk Arlesheim;Total;1044081
+2024;1301;Bezirk Arlesheim;1;( )
+2024;1301;Bezirk Arlesheim;2;650962
+2024;1301;Bezirk Arlesheim;3;913403
+2024;1301;Bezirk Arlesheim;4;1188890
+2024;1301;Bezirk Arlesheim;5+;1396924
+2024;1302;Bezirk Laufen;Total;776852
+2024;1302;Bezirk Laufen;2;458167
+2024;1302;Bezirk Laufen;3;800658
+2024;1302;Bezirk Laufen;4;839114
+2024;1302;Bezirk Laufen;5+;1068893
+2024;1303;Bezirk Liestal;Total;747236
+2024;1303;Bezirk Liestal;1;191667
+2024;1303;Bezirk Liestal;2;520875
+2024;1303;Bezirk Liestal;3;630015
+2024;1303;Bezirk Liestal;4;882503
+2024;1303;Bezirk Liestal;5+;977132
+2024;1304;Bezirk Sissach;Total;775919
+2024;1304;Bezirk Sissach;1;141000
+2024;1304;Bezirk Sissach;2;234800
+2024;1304;Bezirk Sissach;3;671280
+2024;1304;Bezirk Sissach;4;857220
+2024;1304;Bezirk Sissach;5+;1099938
+2024;1305;Bezirk Waldenburg;Total;474000
+2024;1305;Bezirk Waldenburg;2;353333
+2024;1305;Bezirk Waldenburg;3;391533
+2024;1305;Bezirk Waldenburg;4;644333
+2024;1305;Bezirk Waldenburg;5+;( )
+2023;1301;Bezirk Arlesheim;Total;1061224
+2023;1301;Bezirk Arlesheim;1;232415
+2023;1301;Bezirk Arlesheim;2;609722
+2023;1301;Bezirk Arlesheim;3;876671
+2023;1301;Bezirk Arlesheim;4;1162445
+2023;1301;Bezirk Arlesheim;5+;1493819
+2023;1302;Bezirk Laufen;Total;761653
+2023;1302;Bezirk Laufen;2;330060
+2023;1302;Bezirk Laufen;3;590938
+2023;1302;Bezirk Laufen;4;847424
+2023;1302;Bezirk Laufen;5+;1175833
+2023;1303;Bezirk Liestal;Total;851692
+2023;1303;Bezirk Liestal;1;491667
+2023;1303;Bezirk Liestal;2;648750
+2023;1303;Bezirk Liestal;3;620795
+2023;1303;Bezirk Liestal;4;868970
+2023;1303;Bezirk Liestal;5+;1172190
+2023;1304;Bezirk Sissach;Total;756676
+2023;1304;Bezirk Sissach;2;478891
+2023;1304;Bezirk Sissach;3;695647
+2023;1304;Bezirk Sissach;4;866702
+2023;1304;Bezirk Sissach;5+;989770
+2023;1305;Bezirk Waldenburg;Total;647016
+2023;1305;Bezirk Waldenburg;2;405600
+2023;1305;Bezirk Waldenburg;3;547657
+2023;1305;Bezirk Waldenburg;4;723120
+2022;1301;Bezirk Arlesheim;Total;1118170
+2022;1301;Bezirk Arlesheim;1;432500
+2022;1301;Bezirk Arlesheim;2;592012
+2022;1301;Bezirk Arlesheim;3;876622
+2022;1301;Bezirk Arlesheim;4;1231471
+2022;1301;Bezirk Arlesheim;5+;1689501
+2022;1302;Bezirk Laufen;Total;727940
+2022;1302;Bezirk Laufen;2;497600
+2022;1302;Bezirk Laufen;3;646278
+2022;1302;Bezirk Laufen;4;766485
+2022;1302;Bezirk Laufen;5+;912547
+2022;1303;Bezirk Liestal;Total;791027
+2022;1303;Bezirk Liestal;1;243124
+2022;1303;Bezirk Liestal;2;496236
+2022;1303;Bezirk Liestal;3;671737
+2022;1303;Bezirk Liestal;4;866338
+2022;1303;Bezirk Liestal;5+;1142063
+2022;1304;Bezirk Sissach;Total;750012
+2022;1304;Bezirk Sissach;1;294750
+2022;1304;Bezirk Sissach;2;590250
+2022;1304;Bezirk Sissach;3;739496
+2022;1304;Bezirk Sissach;4;730687
+2022;1304;Bezirk Sissach;5+;939467
+2022;1305;Bezirk Waldenburg;Total;481750
+2022;1305;Bezirk Waldenburg;1;( )
+2022;1305;Bezirk Waldenburg;2;( )
+2022;1305;Bezirk Waldenburg;3;461118
+2022;1305;Bezirk Waldenburg;4;490667
+2022;1305;Bezirk Waldenburg;5+;650000
+2021;1301;Bezirk Arlesheim;Total;989364
+2021;1301;Bezirk Arlesheim;1;338333
+2021;1301;Bezirk Arlesheim;2;539468
+2021;1301;Bezirk Arlesheim;3;780973
+2021;1301;Bezirk Arlesheim;4;1080496
+2021;1301;Bezirk Arlesheim;5+;1418235
+2021;1302;Bezirk Laufen;Total;654788
+2021;1302;Bezirk Laufen;2;436667
+2021;1302;Bezirk Laufen;3;616129
+2021;1302;Bezirk Laufen;4;701240
+2021;1302;Bezirk Laufen;5+;833750
+2021;1303;Bezirk Liestal;Total;669864
+2021;1303;Bezirk Liestal;1;187200
+2021;1303;Bezirk Liestal;2;424583
+2021;1303;Bezirk Liestal;3;571716
+2021;1303;Bezirk Liestal;4;771876
+2021;1303;Bezirk Liestal;5+;910238
+2021;1304;Bezirk Sissach;Total;722640
+2021;1304;Bezirk Sissach;2;374600
+2021;1304;Bezirk Sissach;3;605648
+2021;1304;Bezirk Sissach;4;701238
+2021;1304;Bezirk Sissach;5+;1012135
+2021;1305;Bezirk Waldenburg;Total;646410
+2021;1305;Bezirk Waldenburg;2;( )
+2021;1305;Bezirk Waldenburg;3;599556
+2021;1305;Bezirk Waldenburg;4;683178
+2021;1305;Bezirk Waldenburg;5+;786667
+2020;1301;Bezirk Arlesheim;Total;937135
+2020;1301;Bezirk Arlesheim;1;427700
+2020;1301;Bezirk Arlesheim;2;567302
+2020;1301;Bezirk Arlesheim;3;742673
+2020;1301;Bezirk Arlesheim;4;1018303
+2020;1301;Bezirk Arlesheim;5+;1376060
+2020;1302;Bezirk Laufen;Total;564951
+2020;1302;Bezirk Laufen;2;439700
+2020;1302;Bezirk Laufen;3;540693
+2020;1302;Bezirk Laufen;4;600211
+2020;1302;Bezirk Laufen;5+;622500
+2020;1303;Bezirk Liestal;Total;706714
+2020;1303;Bezirk Liestal;1;( )
+2020;1303;Bezirk Liestal;2;378000
+2020;1303;Bezirk Liestal;3;527148
+2020;1303;Bezirk Liestal;4;806185
+2020;1303;Bezirk Liestal;5+;921333
+2020;1304;Bezirk Sissach;Total;742663
+2020;1304;Bezirk Sissach;2;( )
+2020;1304;Bezirk Sissach;3;606652
+2020;1304;Bezirk Sissach;4;782038
+2020;1304;Bezirk Sissach;5+;956923
+2020;1305;Bezirk Waldenburg;Total;547316
+2020;1305;Bezirk Waldenburg;2;( )
+2020;1305;Bezirk Waldenburg;3;421667
+2020;1305;Bezirk Waldenburg;4;596333
+2020;1305;Bezirk Waldenburg;5+;737333
+2019;1301;Bezirk Arlesheim;Total;931931
+2019;1301;Bezirk Arlesheim;1;398600
+2019;1301;Bezirk Arlesheim;2;529910
+2019;1301;Bezirk Arlesheim;3;768500
+2019;1301;Bezirk Arlesheim;4;1025432
+2019;1301;Bezirk Arlesheim;5+;1399948
+2019;1302;Bezirk Laufen;Total;543961
+2019;1302;Bezirk Laufen;2;470000
+2019;1302;Bezirk Laufen;3;475945
+2019;1302;Bezirk Laufen;4;596083
+2019;1302;Bezirk Laufen;5+;( )
+2019;1303;Bezirk Liestal;Total;686659
+2019;1303;Bezirk Liestal;1;( )
+2019;1303;Bezirk Liestal;2;446083
+2019;1303;Bezirk Liestal;3;561291
+2019;1303;Bezirk Liestal;4;782794
+2019;1303;Bezirk Liestal;5+;930824
+2019;1304;Bezirk Sissach;Total;645172
+2019;1304;Bezirk Sissach;1;( )
+2019;1304;Bezirk Sissach;2;477333
+2019;1304;Bezirk Sissach;3;662415
+2019;1304;Bezirk Sissach;4;664788
+2019;1304;Bezirk Sissach;5+;710958
+2019;1305;Bezirk Waldenburg;Total;486560
+2019;1305;Bezirk Waldenburg;3;406667
+2019;1305;Bezirk Waldenburg;4;522513
+2018;1301;Bezirk Arlesheim;Total;924779
+2018;1301;Bezirk Arlesheim;1;( )
+2018;1301;Bezirk Arlesheim;2;491133
+2018;1301;Bezirk Arlesheim;3;747994
+2018;1301;Bezirk Arlesheim;4;1024264
+2018;1301;Bezirk Arlesheim;5+;1406650
+2018;1302;Bezirk Laufen;Total;594682
+2018;1302;Bezirk Laufen;2;( )
+2018;1302;Bezirk Laufen;3;502556
+2018;1302;Bezirk Laufen;4;635430
+2018;1302;Bezirk Laufen;5+;( )
+2018;1303;Bezirk Liestal;Total;696220
+2018;1303;Bezirk Liestal;1;163333
+2018;1303;Bezirk Liestal;2;419833
+2018;1303;Bezirk Liestal;3;477022
+2018;1303;Bezirk Liestal;4;811791
+2018;1303;Bezirk Liestal;5+;932647
+2018;1304;Bezirk Sissach;Total;630553
+2018;1304;Bezirk Sissach;1;( )
+2018;1304;Bezirk Sissach;2;434818
+2018;1304;Bezirk Sissach;3;494158
+2018;1304;Bezirk Sissach;4;694457
+2018;1304;Bezirk Sissach;5+;911250
+2018;1305;Bezirk Waldenburg;Total;542230
+2018;1305;Bezirk Waldenburg;2;348333
+2018;1305;Bezirk Waldenburg;3;495700
+2018;1305;Bezirk Waldenburg;4;560047
+2018;1305;Bezirk Waldenburg;5+;626889
+2017;1301;Bezirk Arlesheim;Total;894464
+2017;1301;Bezirk Arlesheim;1;267333
+2017;1301;Bezirk Arlesheim;2;538398
+2017;1301;Bezirk Arlesheim;3;732856
+2017;1301;Bezirk Arlesheim;4;993172
+2017;1301;Bezirk Arlesheim;5+;1280007
+2017;1302;Bezirk Laufen;Total;591569
+2017;1302;Bezirk Laufen;2;463280
+2017;1302;Bezirk Laufen;3;535000
+2017;1302;Bezirk Laufen;4;687400
+2017;1302;Bezirk Laufen;5+;855403
+2017;1303;Bezirk Liestal;Total;669699
+2017;1303;Bezirk Liestal;1;( )
+2017;1303;Bezirk Liestal;2;532000
+2017;1303;Bezirk Liestal;3;535652
+2017;1303;Bezirk Liestal;4;737923
+2017;1303;Bezirk Liestal;5+;811467
+2017;1304;Bezirk Sissach;Total;679997
+2017;1304;Bezirk Sissach;1;( )
+2017;1304;Bezirk Sissach;2;( )
+2017;1304;Bezirk Sissach;3;613594
+2017;1304;Bezirk Sissach;4;726766
+2017;1304;Bezirk Sissach;5+;902600
+2017;1305;Bezirk Waldenburg;Total;532138
+2017;1305;Bezirk Waldenburg;2;381286
+2017;1305;Bezirk Waldenburg;3;479136
+2017;1305;Bezirk Waldenburg;4;564045
+2017;1305;Bezirk Waldenburg;5+;605000
+2016;1301;Bezirk Arlesheim;Total;843344
+2016;1301;Bezirk Arlesheim;1;225000
+2016;1301;Bezirk Arlesheim;2;504113
+2016;1301;Bezirk Arlesheim;3;732072
+2016;1301;Bezirk Arlesheim;4;909051
+2016;1301;Bezirk Arlesheim;5+;1278254
+2016;1302;Bezirk Laufen;Total;543062
+2016;1302;Bezirk Laufen;2;172693
+2016;1302;Bezirk Laufen;3;479889
+2016;1302;Bezirk Laufen;4;713580
+2016;1302;Bezirk Laufen;5+;681820
+2016;1303;Bezirk Liestal;Total;633233
+2016;1303;Bezirk Liestal;1;( )
+2016;1303;Bezirk Liestal;2;431000
+2016;1303;Bezirk Liestal;3;599303
+2016;1303;Bezirk Liestal;4;646426
+2016;1303;Bezirk Liestal;5+;823455
+2016;1304;Bezirk Sissach;Total;662000
+2016;1304;Bezirk Sissach;2;443356
+2016;1304;Bezirk Sissach;3;646571
+2016;1304;Bezirk Sissach;4;729231
+2016;1304;Bezirk Sissach;5+;772279
+2016;1305;Bezirk Waldenburg;Total;585665
+2016;1305;Bezirk Waldenburg;2;( )
+2016;1305;Bezirk Waldenburg;3;424800
+2016;1305;Bezirk Waldenburg;4;597147
+2016;1305;Bezirk Waldenburg;5+;( )
+2015;1301;Bezirk Arlesheim;Total;779777
+2015;1301;Bezirk Arlesheim;1;234500
+2015;1301;Bezirk Arlesheim;2;501134
+2015;1301;Bezirk Arlesheim;3;611014
+2015;1301;Bezirk Arlesheim;4;910124
+2015;1301;Bezirk Arlesheim;5+;1026545
+2015;1302;Bezirk Laufen;Total;561245
+2015;1302;Bezirk Laufen;2;( )
+2015;1302;Bezirk Laufen;3;347500
+2015;1302;Bezirk Laufen;4;572545
+2015;1302;Bezirk Laufen;5+;720233
+2015;1303;Bezirk Liestal;Total;621593
+2015;1303;Bezirk Liestal;1;202500
+2015;1303;Bezirk Liestal;2;390429
+2015;1303;Bezirk Liestal;3;534580
+2015;1303;Bezirk Liestal;4;698085
+2015;1303;Bezirk Liestal;5+;856833
+2015;1304;Bezirk Sissach;Total;730851
+2015;1304;Bezirk Sissach;1;( )
+2015;1304;Bezirk Sissach;2;475000
+2015;1304;Bezirk Sissach;3;532668
+2015;1304;Bezirk Sissach;4;727014
+2015;1304;Bezirk Sissach;5+;908729
+2015;1305;Bezirk Waldenburg;Total;591554
+2015;1305;Bezirk Waldenburg;2;( )
+2015;1305;Bezirk Waldenburg;3;511167
+2015;1305;Bezirk Waldenburg;4;597323
+2015;1305;Bezirk Waldenburg;5+;784000
+2014;1301;Bezirk Arlesheim;Total;852199
+2014;1301;Bezirk Arlesheim;1;256667
+2014;1301;Bezirk Arlesheim;2;449759
+2014;1301;Bezirk Arlesheim;3;671567
+2014;1301;Bezirk Arlesheim;4;931694
+2014;1301;Bezirk Arlesheim;5+;1205059
+2014;1302;Bezirk Laufen;Total;610016
+2014;1302;Bezirk Laufen;2;( )
+2014;1302;Bezirk Laufen;3;450266
+2014;1302;Bezirk Laufen;4;668400
+2014;1302;Bezirk Laufen;5+;745000
+2014;1303;Bezirk Liestal;Total;687434
+2014;1303;Bezirk Liestal;1;177667
+2014;1303;Bezirk Liestal;2;260667
+2014;1303;Bezirk Liestal;3;516762
+2014;1303;Bezirk Liestal;4;723250
+2014;1303;Bezirk Liestal;5+;882208
+2014;1304;Bezirk Sissach;Total;560783
+2014;1304;Bezirk Sissach;1;140000
+2014;1304;Bezirk Sissach;2;192190
+2014;1304;Bezirk Sissach;3;456659
+2014;1304;Bezirk Sissach;4;646444
+2014;1304;Bezirk Sissach;5+;913125
+2014;1305;Bezirk Waldenburg;Total;522710
+2014;1305;Bezirk Waldenburg;2;( )
+2014;1305;Bezirk Waldenburg;3;381222
+2014;1305;Bezirk Waldenburg;4;594650
+2014;1305;Bezirk Waldenburg;5+;( )
+2013;1301;Bezirk Arlesheim;Total;806493
+2013;1301;Bezirk Arlesheim;1;140975
+2013;1301;Bezirk Arlesheim;2;361984
+2013;1301;Bezirk Arlesheim;3;639178
+2013;1301;Bezirk Arlesheim;4;862202
+2013;1301;Bezirk Arlesheim;5+;1315014
+2013;1302;Bezirk Laufen;Total;564393
+2013;1302;Bezirk Laufen;2;367000
+2013;1302;Bezirk Laufen;3;448727
+2013;1302;Bezirk Laufen;4;605767
+2013;1302;Bezirk Laufen;5+;803000
+2013;1303;Bezirk Liestal;Total;505617
+2013;1303;Bezirk Liestal;1;215000
+2013;1303;Bezirk Liestal;2;390393
+2013;1303;Bezirk Liestal;3;493497
+2013;1303;Bezirk Liestal;4;517022
+2013;1303;Bezirk Liestal;5+;704817
+2013;1304;Bezirk Sissach;Total;715797
+2013;1304;Bezirk Sissach;2;300955
+2013;1304;Bezirk Sissach;3;551071
+2013;1304;Bezirk Sissach;4;795782
+2013;1304;Bezirk Sissach;5+;1025600
+2013;1305;Bezirk Waldenburg;Total;475289
+2013;1305;Bezirk Waldenburg;2;296440
+2013;1305;Bezirk Waldenburg;3;463000
+2013;1305;Bezirk Waldenburg;4;542589
+2013;1305;Bezirk Waldenburg;5+;( )
+2012;1301;Bezirk Arlesheim;Total;767693
+2012;1301;Bezirk Arlesheim;1;227800
+2012;1301;Bezirk Arlesheim;2;431245
+2012;1301;Bezirk Arlesheim;3;594376
+2012;1301;Bezirk Arlesheim;4;848536
+2012;1301;Bezirk Arlesheim;5+;1059829
+2012;1302;Bezirk Laufen;Total;652882
+2012;1302;Bezirk Laufen;2;( )
+2012;1302;Bezirk Laufen;3;629000
+2012;1302;Bezirk Laufen;4;627824
+2012;1302;Bezirk Laufen;5+;764167
+2012;1303;Bezirk Liestal;Total;517446
+2012;1303;Bezirk Liestal;1;159530
+2012;1303;Bezirk Liestal;2;349140
+2012;1303;Bezirk Liestal;3;395997
+2012;1303;Bezirk Liestal;4;574295
+2012;1303;Bezirk Liestal;5+;791768
+2012;1304;Bezirk Sissach;Total;547492
+2012;1304;Bezirk Sissach;1;( )
+2012;1304;Bezirk Sissach;2;198750
+2012;1304;Bezirk Sissach;3;418101
+2012;1304;Bezirk Sissach;4;651970
+2012;1304;Bezirk Sissach;5+;610550
+2012;1305;Bezirk Waldenburg;Total;522385
+2012;1305;Bezirk Waldenburg;3;( )
+2012;1305;Bezirk Waldenburg;4;503500
+2012;1305;Bezirk Waldenburg;5+;( )
+2011;1301;Bezirk Arlesheim;Total;719362
+2011;1301;Bezirk Arlesheim;1;138233
+2011;1301;Bezirk Arlesheim;2;346354
+2011;1301;Bezirk Arlesheim;3;581285
+2011;1301;Bezirk Arlesheim;4;812620
+2011;1301;Bezirk Arlesheim;5+;1075317
+2011;1302;Bezirk Laufen;Total;512301
+2011;1302;Bezirk Laufen;2;( )
+2011;1302;Bezirk Laufen;3;455317
+2011;1302;Bezirk Laufen;4;568800
+2011;1302;Bezirk Laufen;5+;( )
+2011;1303;Bezirk Liestal;Total;510687
+2011;1303;Bezirk Liestal;1;( )
+2011;1303;Bezirk Liestal;2;350479
+2011;1303;Bezirk Liestal;3;421274
+2011;1303;Bezirk Liestal;4;551296
+2011;1303;Bezirk Liestal;5+;711549
+2011;1304;Bezirk Sissach;Total;573391
+2011;1304;Bezirk Sissach;2;212600
+2011;1304;Bezirk Sissach;3;498786
+2011;1304;Bezirk Sissach;4;603913
+2011;1304;Bezirk Sissach;5+;734567
+2011;1305;Bezirk Waldenburg;Total;443028
+2011;1305;Bezirk Waldenburg;2;( )
+2011;1305;Bezirk Waldenburg;3;329692
+2011;1305;Bezirk Waldenburg;4;537150
+2011;1305;Bezirk Waldenburg;5+;( )
