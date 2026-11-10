@@ -1,6 +1,7 @@
 {
   "about": "Publishers whose servers refuse or drop ProofPrice's cloud/Node clients. Scouts, Verifiers and Builders: grep this file for the host BEFORE claiming a row. Do not work around a block (no browser user agents, no proxies). Add a line when you find a new one; keep entries factual.",
   "hosts": [
+    { "host": "www.nsi.bg", "symptom": "HTTP 403 to Vercel (iad1) for the HH_6.1 xlsx; workspace curl and GitHub Actions get 200. bg-nsi-groceries answers from the daily library copy first.", "date": "2026-11-10", "found_by": "Builder C" },
     { "host": "epra.go.ke", "symptom": "Node fetch gets HTTP 403 (workspace and GitHub Actions); curl and the probe workflow get 200. Parked on branch src/ke-epra-fuel.", "date": "2026-11-03", "found_by": "Builder D" },
     { "host": "mimit.gov.it", "symptom": "Connect timeout from Vercel (iad1 and fra1) and GitHub; IT fuel answers from the EU Oil Bulletin fallback.", "date": "2026-11-02", "found_by": "Builder C" },
     { "host": "enecho.meti.go.jp", "symptom": "HTTP 403 on every path from GitHub probes.", "date": "2026-11-03", "found_by": "Verifier B" },

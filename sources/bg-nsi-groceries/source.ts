@@ -15,6 +15,7 @@ import { InputError, SourceError } from "../../lib/http";
 import { readXlsx, Cell } from "../../categories/rent/xlsx";
 import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 import { NO_COUNT } from "../../lib/stats";
+import { readLatestDay } from "../../lib/library/store";
 import { exampleWords, ItemDef, matchItem } from "../../categories/groceries/items";
 
 export const INFO: SourceInfo = {
@@ -165,6 +166,8 @@ export interface NsiReading {
   fileUnit: string;
   title: string;
   tableLatestYear: number;
+  /** Set when the figure was read from our daily copy of the NSI file (YYYY-MM-DD the copy is dated). */
+  copyDate?: string;
 }
 
 export function readFood(t: NsiTable, code: string): NsiReading | null {
@@ -230,6 +233,12 @@ export function nsiAnswer(reading: NsiReading | null, def: ItemDef | null, relat
     quantity_bought_per_household: r.latest.quantity != null ? { year: r.latest.year, amount: r.latest.quantity, unit: r.fileUnit === "number" ? "items" : r.fileUnit } : null,
     published_by_year: r.series.slice(-8).map((s) => ({ year: s.year, average_price_eur: s.price })),
     other_definitions: related.map((d) => ({ item: d.words[0], definition: d.label, unit: d.unit })),
+    ...(r.copyDate
+      ? {
+          read_from: "ProofPrice's daily copy of the NSI file (www.nsi.bg refuses requests from our cloud servers, so the collector reads it)",
+          copy_dated: r.copyDate,
+        }
+      : {}),
     dataset: { code: "HH_6.1 (EUR, English)", title: r.title || null, latest_year_in_file: r.tableLatestYear, url: INFO.homepage },
     ...(regionNote ? { region_note: regionNote } : {}),
   };
@@ -248,12 +257,16 @@ export function nsiAnswer(reading: NsiReading | null, def: ItemDef | null, relat
   });
 }
 
+export const NATIONAL_AREA = "ALL";
+
 // ---------- the request ----------
 
 export interface NsiOptions {
   /** Replace the download (tests): returns the raw file bytes. */
   loader?: () => Promise<ArrayBuffer | Uint8Array>;
   timeoutMs?: number;
+  /** Replace the library read (tests). Default: the newest day of the price library for this source. */
+  libraryReader?: () => { date: string; rows: { area: string; item: string; median: number }[] } | null;
 }
 
 async function download(timeoutMs: number): Promise<ArrayBuffer> {
@@ -277,16 +290,33 @@ export async function bgNsiGroceries(input: NsiQuery, o: NsiOptions = {}): Promi
   if (!item) throw new InputError("item is required: an everyday food such as 'milk', 'bread' or 'eggs'.");
   const m = matchItem(ITEMS, item);
   if (!m.primary) return nsiAnswer(null, null, [], input);
+  // www.nsi.bg answers HTTP 403 to Vercel's addresses (preview test 2026-11-10) but not to GitHub Actions, so the daily collector keeps
+  // a copy of the newest year and requests are answered from it first. The file is annual: the copy is as new as the publisher's file.
+  const copy = readCopy(m.primary, o);
+  if (copy) return nsiAnswer(copy, m.primary, m.related, input);
   const bytes = await (o.loader ? o.loader() : download(o.timeoutMs ?? 20000));
   const table = parseNsi(Buffer.from(bytes as ArrayBuffer));
   return nsiAnswer(readFood(table, m.primary.code), m.primary, m.related, input);
 }
 
+/** The figure from our own daily copy, shaped like a reading; null when the library holds none for this food. */
+export function readCopy(def: ItemDef, o: Pick<NsiOptions, "libraryReader"> = {}): NsiReading | null {
+  let day: ReturnType<NonNullable<NsiOptions["libraryReader"]>> = null;
+  try {
+    day = o.libraryReader ? o.libraryReader() : readLatestDay(INFO.id);
+  } catch {
+    return null;
+  }
+  const row = day?.rows.find((r) => r.area === NATIONAL_AREA && r.item === def.label);
+  const year = day ? Number(day.date.slice(0, 4)) : NaN;
+  if (!day || !row || !(row.median > 0) || !Number.isFinite(year)) return null;
+  const latest: YearValue = { year, price: row.median, quantity: null };
+  return { code: def.code, series: [latest], latest, fileUnit: def.unit, title: "", tableLatestYear: year, copyDate: day.date };
+}
+
 // ---------- daily copy (stale-if-error) ----------
 // The collector reads the same file once a day and keeps the newest year of every mapped food (one published average each, n is NO_COUNT,
 // dated by the last day of the reference year).
-
-export const NATIONAL_AREA = "ALL";
 
 export function harvestRows(t: NsiTable): HarvestResult {
   const readings = ITEMS.map((def) => ({ def, r: readFood(t, def.code) })).filter((x): x is { def: ItemDef; r: NsiReading } => !!x.r);
