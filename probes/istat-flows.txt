@@ -1,0 +1,309 @@
+URL: https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1?detail=allstubs
+Fetched: 2026-11-10T09:46:16Z from GitHub Actions
+Status, type, bytes: 200 application/vnd.sdmx.structure+xml; version=2.1; charset=utf-8 2294689
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Cache-Control: no-store,no-cache
+Pragma: no-cache
+Transfer-Encoding: chunked
+Content-Type: application/vnd.sdmx.structure+xml; version=2.1; charset=utf-8
+Accept-Ranges: values
+Vary: Accept
+Server: Microsoft-IIS/10.0
+Strict-Transport-Security: max-age=2592000
+api-supported-versions: 1
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+X-Frame-Options: ALLOW-FROM https://*.istat.it
+X-Content-Type-Options: nosniff
+Server: IIS
+X-Powered-By: ASP.NET
+Server-Timing: dtSInfo;desc="0", dtRpid;desc="-1734369756"
+Set-Cookie: dtCookie=v_4_srv_4_sn_B5489F76D9786B873B5AA932C074DB42_perc_100000_ol_0_mul_1_app-3A521fadc1a45e0215_1; Path=/; Domain=.istat.it
+Date: Tue, 10 Nov 2026 09:46:11 GMT
+
+=== FILE TYPE: XML 1.0 document, Unicode text, UTF-8 text, with CRLF line terminators
+=== FIRST 30000 BYTES
+<?xml version="1.0" encoding="utf-8"?>
+<!--NSI Web Service v9.11.0.0-->
+<message:Structure xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+  <message:Header>
+    <message:ID>IDREF6459</message:ID>
+    <message:Test>false</message:Test>
+    <message:Prepared>2026-11-10T10:46:12.2818681+01:00</message:Prepared>
+    <message:Sender id="Unknown" />
+    <message:Receiver id="Unknown" />
+  </message:Header>
+  <message:Structures>
+    <structure:Dataflows>
+      <structure:Dataflow id="101_1015" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1015/1.0">
+        <common:Name xml:lang="en">Crops</common:Name>
+        <common:Name xml:lang="it">Coltivazioni</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1015_DF_DCSP_COLTIVAZIONI_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1015_DF_DCSP_COLTIVAZIONI_1/1.0">
+        <common:Name xml:lang="en">Areas and production - overall data</common:Name>
+        <common:Name xml:lang="it">Superfici e produzione - dati in complesso</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1015_DF_DCSP_COLTIVAZIONI_10" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1015_DF_DCSP_COLTIVAZIONI_10/1.0">
+        <common:Name xml:lang="en">Sowing forecast</common:Name>
+        <common:Name xml:lang="it">Intenzioni di semina</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1015_DF_DCSP_COLTIVAZIONI_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1015_DF_DCSP_COLTIVAZIONI_2/1.0">
+        <common:Name xml:lang="en">Areas and production - overall data - provinces</common:Name>
+        <common:Name xml:lang="it">Superfici e produzione - dati in complesso - prov</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1030" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1030/1.0">
+        <common:Name xml:lang="en">PDO, PGI and TSG quality products</common:Name>
+        <common:Name xml:lang="it">Prodotti agroalimentari di qualità DOP/IGP e STG</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1030_DF_DCSP_DOPIGP_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1030_DF_DCSP_DOPIGP_1/1.0">
+        <common:Name xml:lang="en">Operators by sector</common:Name>
+        <common:Name xml:lang="it">Operatori per settore</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1030_DF_DCSP_DOPIGP_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1030_DF_DCSP_DOPIGP_2/1.0">
+        <common:Name xml:lang="en">Operators by product</common:Name>
+        <common:Name xml:lang="it">Operatori per prodotto</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1030_DF_DCSP_DOPIGP_3" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1030_DF_DCSP_DOPIGP_3/1.0">
+        <common:Name xml:lang="en">Dynamics of operators</common:Name>
+        <common:Name xml:lang="it">Dinamica degli operatori</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1030_DF_DCSP_DOPIGP_4" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1030_DF_DCSP_DOPIGP_4/1.0">
+        <common:Name xml:lang="en">PDO, PGI and TSG active products</common:Name>
+        <common:Name xml:lang="it">Prodotti DOP, IGP e STG attivi</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1030_DF_DCSP_DOPIGP_5" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1030_DF_DCSP_DOPIGP_5/1.0">
+        <common:Name xml:lang="en">Working process by altimetric zone</common:Name>
+        <common:Name xml:lang="it">Processo di lavorazione per zona altimetrica</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1030_DF_DCSP_DOPIGP_6" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1030_DF_DCSP_DOPIGP_6/1.0">
+        <common:Name xml:lang="en">Working process by sex of the conductor</common:Name>
+        <common:Name xml:lang="it">Processo di lavorazione per sesso del conduttore</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1033" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1033/1.0">
+        <common:Name xml:lang="en">Slaughtering</common:Name>
+        <common:Name xml:lang="it">Macellazioni</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1033_DF_DASH_DCSP_MACELLAZIONI_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1033_DF_DASH_DCSP_MACELLAZIONI_1/1.0">
+        <common:Name xml:lang="en">Meat - monthly data</common:Name>
+        <common:Name xml:lang="it">Carni - dati mensili</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1033_DF_DCSP_MACELLAZIONI_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1033_DF_DCSP_MACELLAZIONI_1/1.0">
+        <common:Name xml:lang="en">Red meat - monthly data</common:Name>
+        <common:Name xml:lang="it">Carni rosse - dati mensili</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1033_DF_DCSP_MACELLAZIONI_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1033_DF_DCSP_MACELLAZIONI_2/1.0">
+        <common:Name xml:lang="en">White meat - monthly data</common:Name>
+        <common:Name xml:lang="it">Carni bianche - dati mensili</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1033_DF_DCSP_MACELLAZIONI_3" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1033_DF_DCSP_MACELLAZIONI_3/1.0">
+        <common:Name xml:lang="en">Red meat - annual data</common:Name>
+        <common:Name xml:lang="it">Carni rosse - dati annuali</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1033_DF_DCSP_MACELLAZIONI_4" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1033_DF_DCSP_MACELLAZIONI_4/1.0">
+        <common:Name xml:lang="en">White meat - annual data</common:Name>
+        <common:Name xml:lang="it">Carni bianche - dati annuali</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1039" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1039/1.0">
+        <common:Name xml:lang="en">Agritourism - municipalities</common:Name>
+        <common:Name xml:lang="it">Agriturismo - comuni</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1039_DF_DCSP_AGRITURISMO_COM_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1039_DF_DCSP_AGRITURISMO_COM_1/1.0">
+        <common:Name xml:lang="en">Agritourism - municipalities</common:Name>
+        <common:Name xml:lang="it">Agriturismo - comuni</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1077" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1077/1.0">
+        <common:Name xml:lang="en">PDO, PGI and TSG products:  operators - municipalities data</common:Name>
+        <common:Name xml:lang="it">Prodotti di qualità DOP/IGP e STG: operatori - dati comunali</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_1077_DF_DCSP_DOPIGP_COM_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_1077_DF_DCSP_DOPIGP_COM_1/1.0">
+        <common:Name xml:lang="en">PDO, PGI and TSG products: operators - municipalities data</common:Name>
+        <common:Name xml:lang="it">Prodotti di qualità DOP/IGP e STG: operatori - dati comunali</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12/1.0">
+        <common:Name xml:lang="en">Agricoltural prices</common:Name>
+        <common:Name xml:lang="it">Prezzi dei prodotti agricoli</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_1/1.0">
+        <common:Name xml:lang="en">Agricultural purchase price index, monthly data (base 2015)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi dei prodotti acquistati dagli agricoltori, mensile (base 2015)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_10" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_10/1.0">
+        <common:Name xml:lang="en">Agricultural producer price index, monthly data (base 2020)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi alla produzione dei prodotti venduti dagli agricoltori, mensile (base 2020)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_11" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_11/1.0">
+        <common:Name xml:lang="en">Agricultural purchase price index, annual average (base 2020)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi dei prodotti acquistati dagli agricoltori, media annua (base 2020)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_12" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_12/1.0">
+        <common:Name xml:lang="en">Agricultural producer price index, annual average (base 2020)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi alla produzione dei prodotti venduti dagli agricoltori, media annua (base 2020)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_2/1.0">
+        <common:Name xml:lang="en">Agricultural producer price index, monthly data (base 2015)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi alla produzione dei prodotti venduti dagli agricoltori, mensile (base 2015)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_3" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_3/1.0">
+        <common:Name xml:lang="en">Agricultural purchase price index, annual average (base 2015)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi dei prodotti acquistati dagli agricoltori, media annua (base 2015)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_4" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_4/1.0">
+        <common:Name xml:lang="en">Agricultural producer price index, annual average (base 2015)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi alla produzione dei prodotti venduti dagli agricoltori, media annua (base 2015)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_5" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_5/1.0">
+        <common:Name xml:lang="en">Agricultural purchase price index, monthly data (base 2010)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi dei prodotti acquistati dagli agricoltori, mensile (base 2010)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_6" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_6/1.0">
+        <common:Name xml:lang="en">Agricultural producer price index, monthly data (base 2010)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi alla produzione dei prodotti venduti dagli agricoltori, mensile (base 2010)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_7" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_7/1.0">
+        <common:Name xml:lang="en">Agricultural purchase price index, annual average (base 2010)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi dei prodotti acquistati dagli agricoltori, media annua (base 2010)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_8" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_8/1.0">
+        <common:Name xml:lang="en">Agricultural producer price index, annual average (base 2010)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi alla produzione dei prodotti venduti dagli agricoltori, media annua (base 2010)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_12_DF_DCSP_PREZZIAGR_9" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_12_DF_DCSP_PREZZIAGR_9/1.0">
+        <common:Name xml:lang="en">Agricultural purchase price index, monthly data (base 2020)</common:Name>
+        <common:Name xml:lang="it">Indice dei prezzi dei prodotti acquistati dagli agricoltori, mensile (base 2020)</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_148" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_148/1.0">
+        <common:Name xml:lang="en">Economic results of farms</common:Name>
+        <common:Name xml:lang="it">Risultati economici delle aziende agricole</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_148_DF_DCSP_RICAREA_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_148_DF_DCSP_RICAREA_1/1.0">
+        <common:Name xml:lang="en">Economic results of farms - Key data</common:Name>
+        <common:Name xml:lang="it">Risultati economici delle aziende agricole - Principali dati</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_148_DF_DCSP_RICAREA_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_148_DF_DCSP_RICAREA_2/1.0">
+        <common:Name xml:lang="en">Farm average economic values by AWU class</common:Name>
+        <common:Name xml:lang="it">Valori economici medi per azienda per classe di ULA</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_148_DF_DCSP_RICAREA_3" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_148_DF_DCSP_RICAREA_3/1.0">
+        <common:Name xml:lang="en">Farm average economic values by turnover class</common:Name>
+        <common:Name xml:lang="it">Valori economici medi per azienda per classe di fatturato</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_148_DF_DCSP_RICAREA_4" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_148_DF_DCSP_RICAREA_4/1.0">
+        <common:Name xml:lang="en">Farm average economic values by legal form</common:Name>
+        <common:Name xml:lang="it">Valori economici medi per azienda per forma giuridica</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_148_DF_DCSP_RICAREA_5" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_148_DF_DCSP_RICAREA_5/1.0">
+        <common:Name xml:lang="en">Performance indicators by sector</common:Name>
+        <common:Name xml:lang="it">Idicatori di performance per settore</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_22" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_22/1.0">
+        <common:Name xml:lang="en">Plant protection products</common:Name>
+        <common:Name xml:lang="it">Fitosanitari</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_22_DF_DCSP_FITOSANITARI_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_22_DF_DCSP_FITOSANITARI_1/1.0">
+        <common:Name xml:lang="en">Distributed products - provinces</common:Name>
+        <common:Name xml:lang="it">Prodotti distribuiti - prov.</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_22_DF_DCSP_FITOSANITARI_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_22_DF_DCSP_FITOSANITARI_2/1.0">
+        <common:Name xml:lang="en">Active substances conteined - provinces</common:Name>
+        <common:Name xml:lang="it">Principi attivi contenuti - prov.</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_22_DF_DCSP_FITOSANITARI_3" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_22_DF_DCSP_FITOSANITARI_3/1.0">
+        <common:Name xml:lang="en">Use by type of crop - Key data</common:Name>
+        <common:Name xml:lang="it">Utilizzo per tipo di coltura - Principali dati</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_22_DF_DCSP_FITOSANITARI_4" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_22_DF_DCSP_FITOSANITARI_4/1.0">
+        <common:Name xml:lang="en">Use - detail of active substances</common:Name>
+        <common:Name xml:lang="it">Utilizzo - dettaglio di principio attivo</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_22_DF_DCSP_FITOSANITARI_5" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_22_DF_DCSP_FITOSANITARI_5/1.0">
+        <common:Name xml:lang="en">Treatmemts made class</common:Name>
+        <common:Name xml:lang="it">Classe di trattamenti effettuati</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_959" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_959/1.0">
+        <common:Name xml:lang="en">Milk and dairy products</common:Name>
+        <common:Name xml:lang="it">Latte e prodotti lattiero caseari</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_959_DF_DCSP_LATTE_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_959_DF_DCSP_LATTE_1/1.0">
+        <common:Name xml:lang="en">Products - monthly data</common:Name>
+        <common:Name xml:lang="it">Prodotti - dati mensili</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_959_DF_DCSP_LATTE_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_959_DF_DCSP_LATTE_2/1.0">
+        <common:Name xml:lang="en">Products by kind of productive unit</common:Name>
+        <common:Name xml:lang="it">Prodotti per tipo di unità produttiva</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_959_DF_DCSP_LATTE_3" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_959_DF_DCSP_LATTE_3/1.0">
+        <common:Name xml:lang="en">Quantity of fresh products imported</common:Name>
+        <common:Name xml:lang="it">Quantità di materie prime fresche importate</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_959_DF_DCSP_LATTE_4" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_959_DF_DCSP_LATTE_4/1.0">
+        <common:Name xml:lang="en">Products and factories by tonnes of product</common:Name>
+        <common:Name xml:lang="it">Prodotti e stabilimenti per classi di tonnellate di prodotto</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_959_DF_DCSP_LATTE_5" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_959_DF_DCSP_LATTE_5/1.0">
+        <common:Name xml:lang="en">Factories by productive unit - reg</common:Name>
+        <common:Name xml:lang="it">Stabilimenti per unità produttive - reg</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_959_DF_DCSP_LATTE_6" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_959_DF_DCSP_LATTE_6/1.0">
+        <common:Name xml:lang="en">Products - reg</common:Name>
+        <common:Name xml:lang="it">Prodotti - reg</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_961" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_961/1.0">
+        <common:Name xml:lang="en">Livestock</common:Name>
+        <common:Name xml:lang="it">Consistenze degli allevamenti</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_961_DF_DCSP_CONSISTENZE_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_961_DF_DCSP_CONSISTENZE_1/1.0">
+        <common:Name xml:lang="en">Livestock at 1st of december - regional</common:Name>
+        <common:Name xml:lang="it">Consistenze al 1° dicembre - reg</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_961_DF_DCSP_CONSISTENZE_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_961_DF_DCSP_CONSISTENZE_2/1.0">
+        <common:Name xml:lang="en">Livestock at 1st of june</common:Name>
+        <common:Name xml:lang="it">Consistenze al 1° giugno</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_962" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_962/1.0">
+        <common:Name xml:lang="en">Livestock import export</common:Name>
+        <common:Name xml:lang="it">Import export di bestiame</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_962_DF_DCSP_LIVESTIMPEXP_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_962_DF_DCSP_LIVESTIMPEXP_1/1.0">
+        <common:Name xml:lang="en">Live animals - Monthly data</common:Name>
+        <common:Name xml:lang="it">Animali vivi - dati mensili</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_962_DF_DCSP_LIVESTIMPEXP_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_962_DF_DCSP_LIVESTIMPEXP_2/1.0">
+        <common:Name xml:lang="en">Live animals - Annual data</common:Name>
+        <common:Name xml:lang="it">Animali vivi - dati annuali</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_962_DF_DCSP_LIVESTIMPEXP_3" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_962_DF_DCSP_LIVESTIMPEXP_3/1.0">
+        <common:Name xml:lang="en">Meat - Monthly data</common:Name>
+        <common:Name xml:lang="it">Carni - dati mensili</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_962_DF_DCSP_LIVESTIMPEXP_4" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_962_DF_DCSP_LIVESTIMPEXP_4/1.0">
+        <common:Name xml:lang="en">Meat - Annual data</common:Name>
+        <common:Name xml:lang="it">Carni - dati annuali</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_965" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_965/1.0">
+        <common:Name xml:lang="en">Agritourism</common:Name>
+        <common:Name xml:lang="it">Agriturismo</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_965_DF_DCSP_AGRITURISMO_1" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_965_DF_DCSP_AGRITURISMO_1/1.0">
+        <common:Name xml:lang="en">Authorized farms</common:Name>
+        <common:Name xml:lang="it">Aziende autorizzate - prov</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_965_DF_DCSP_AGRITURISMO_2" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_965_DF_DCSP_AGRITURISMO_2/1.0">
+        <common:Name xml:lang="en">Agrituristic services</common:Name>
+        <common:Name xml:lang="it">Servizi agrituristici</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_965_DF_DCSP_AGRITURISMO_3" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_965_DF_DCSP_AGRITURISMO_3/1.0">
+        <common:Name xml:lang="en">Altimetric zone and conductor sex - provincial data</common:Name>
+        <common:Name xml:lang="it">Zona altimetrica e sesso del conduttore - prov</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_965_DF_DCSP_AGRITURISMO_4" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_965_DF_DCSP_AGRITURISMO_4/1.0">
+        <common:Name xml:lang="en">Authorised duration of agritouristic activity - provincial data</common:Name>
+        <common:Name xml:lang="it">Durata dell'autorizzazione - prov</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="101_965_DF_DCSP_AGRITURISMO_5" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/101_965_DF_DCSP_AGRITURISMO_5/1.0">
+        <common:Name xml:lang="en">Authorized farms dinamic - provincial data</common:Name>
+        <common:Name xml:lang="it">Dinamica autorizzazioni - prov</common:Name>
+      </structure:Dataflow>
+      <structure:Dataflow id="102_974" agencyID="IT1" version="1.0" isExternalReference="true" isFinal="true" structureURL="https://esploradati.istat.it/SDMXWS/rest/dataflow/IT1/102_97
