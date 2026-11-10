@@ -18,4 +18,6 @@ export default defineSource({
   handle: (p, ctx) => usLivestock({ product: String(p.product ?? ""), baseUrl: ctx.baseUrl }),
   harvest: () => livestockHarvest(),
   historyKey: (p) => livestockHistoryKey({ product: str(p.product) }),
+  // Rows are dated by the weekly report (a Monday), so a copy is exactly 7 days old when the next report is due: judge it by the last good collection instead (smoke 10 Nov, US cattle 502 with the 2 Nov copy 8 days old).
+  referenceDates: true,
 });
