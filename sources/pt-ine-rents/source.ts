@@ -8,7 +8,7 @@
 // count. So the answer is an official statistic: value + measure "median", range fields null, sample_size null. These are agreed (contract) rents.
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
-import { fetchJson, InputError, retryOnce, SourceError } from "../../lib/http";
+import { fetchJson, InputError, isSourceOutage, SourceError } from "../../lib/http";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { NO_COUNT } from "../../lib/stats";
 import { PT_PLACES, PtLevel, PtPlace } from "./places";
@@ -500,8 +500,24 @@ export function harvestRows(reply: IneReply): HarvestResult {
   };
 }
 
+/** Up to `attempts` tries for the collector's INE calls: INE often times out on connect from GitHub's servers (23 Oct, 9 Nov: the whole run was lost
+ *  after one retry), and one lost call of the eight throws the whole day's copy away. Only outages are retried; INE's own "code not valid" is not. */
+export async function withRetries<T>(work: () => Promise<T>, attempts = 4, backoffMs = 3000): Promise<T> {
+  let last: unknown;
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      return await work();
+    } catch (err) {
+      last = err;
+      if (!isSourceOutage(err) || i === attempts) throw err;
+      await new Promise((r) => setTimeout(r, backoffMs * i));
+    }
+  }
+  throw last;
+}
+
 export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
-  const fetcher = o.fetcher ?? ((url: string) => retryOnce(() => fetchJson(url, {}, 60000), 2000));
+  const fetcher = o.fetcher ?? ((url: string) => withRetries(() => fetchJson(url, {}, 30000)));
   const now = o.now ?? new Date();
   // 1) newest quarter INE already publishes: a tiny national request per candidate, newest first
   let found: { code: string } | null = null;

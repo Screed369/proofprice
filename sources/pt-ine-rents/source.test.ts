@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError, SourceError } from "../../lib/http";
 import { SOURCE_PLUGINS, countriesFor, categoryById } from "../../lib/registry";
-import { HARVEST_ITEM, INFO, apiUrl, coverageText, findPlace, chunkCodes, harvestRows, harvestUrl, parseIne, periodCandidates, ptAnswer, ptHarvest, ptHistoryKey, ptRents, readPt, windowApiUrl, windowOf } from "./source";
+import { HARVEST_ITEM, INFO, apiUrl, coverageText, findPlace, chunkCodes, harvestRows, harvestUrl, parseIne, periodCandidates, ptAnswer, ptHarvest, ptHistoryKey, ptRents, readPt, withRetries, windowApiUrl, windowOf } from "./source";
 import { PT_PLACES } from "./places";
 import * as F from "./fixtures";
 
@@ -274,4 +274,23 @@ test("pt-ine-rents default fetcher: one quick retry after a fast 5xx, never a se
   } finally {
     globalThis.fetch = real;
   }
+});
+
+test("withRetries: a collector call that times out twice then answers is kept; INE's own refusal is not retried", async () => {
+  let calls = 0;
+  const flaky = async () => {
+    calls++;
+    if (calls < 3) throw new SourceError("Could not reach the official source (UND_ERR_CONNECT_TIMEOUT)");
+    return "ok";
+  };
+  assert.equal(await withRetries(flaky, 4, 1), "ok");
+  assert.equal(calls, 3);
+  let refused = 0;
+  await assert.rejects(
+    withRetries(async () => { refused++; throw new Error("INE Portugal could not answer: code not valid"); }, 4, 1),
+  );
+  assert.equal(refused, 1);
+  let down = 0;
+  await assert.rejects(withRetries(async () => { down++; throw new SourceError("Could not reach the official source (UND_ERR_CONNECT_TIMEOUT)"); }, 3, 1));
+  assert.equal(down, 3);
 });
