@@ -1,5 +1,6 @@
 // Manifest: Switzerland (city of Zürich) condominium sale prices, Statistik Stadt Zürich. Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
+import { servesBl } from "../ch-zz-bl-home-sales/source";
 import { INFO, zurichHarvest, zurichHistoryKey, zurichHomeSales } from "./source";
 
 export default defineSource({
@@ -9,6 +10,8 @@ export default defineSource({
   countryHelp: "CH = Switzerland, city of Zürich only (Statistik Stadt Zürich: median price of condominiums sold, by district and quarter of the city; yearly)",
   placeName: "Zürich (Switzerland)",
   status: "live",
+  // Shares CH with ch-zz-bl-home-sales: Zürich answers every ask that is not a Basel-Landschaft district or municipality (including no town).
+  serves: (p) => !servesBl({ country: p.country, town: p.town }),
   paramNotes: {
     town: "CH: Zürich for the whole city, a district ('Kreis 7', 'Kreis 11') or a statistical quarter (Altstetten, Oerlikon, Seefeld, Enge). Other Swiss towns are not covered.",
     postcode: "CH: not used; give a district or quarter of Zürich in town.",

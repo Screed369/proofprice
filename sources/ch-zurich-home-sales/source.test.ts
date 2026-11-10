@@ -101,3 +101,19 @@ test("historyKey: city and districts only; houses and quarters have no copy", ()
   assert.equal(zurichHistoryKey({ town: "Kreis 13" }), null);
   assert.equal(zurichHistoryKey({ town: "Zürich", property_type: "house" }), null);
 });
+
+import { servesBl as __servesBl } from "../ch-zz-bl-home-sales/source";
+import zurichManifest from "./index";
+import blManifest from "../ch-zz-bl-home-sales/index";
+test("CH routing: Zürich keeps country-only and Zürich asks, Basel-Landschaft places go to the BL source", () => {
+  const ask = (town?: string) => ({ country: "CH", ...(town ? { town } : {}) });
+  for (const t of [undefined, "Zürich", "Kreis 7", "Altstetten"]) {
+    assert.equal(zurichManifest.serves!(ask(t)), true, `Zürich serves ${t}`);
+    assert.equal(blManifest.serves!(ask(t)), false, `BL does not serve ${t}`);
+  }
+  for (const t of ["Liestal", "Arlesheim", "Muttenz"]) {
+    assert.equal(zurichManifest.serves!(ask(t)), false, `Zürich does not serve ${t}`);
+    assert.equal(blManifest.serves!(ask(t)), true, `BL serves ${t}`);
+  }
+  assert.equal(__servesBl({ country: "CH", town: "Liestal" }), true);
+});
