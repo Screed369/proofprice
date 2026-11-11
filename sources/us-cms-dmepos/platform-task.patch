@@ -1,0 +1,33 @@
+diff --git a/sources/us-cms-medicare/index.ts b/sources/us-cms-medicare/index.ts
+index a4325775..6ba644f2 100644
+--- a/sources/us-cms-medicare/index.ts
++++ b/sources/us-cms-medicare/index.ts
+@@ -3,6 +3,7 @@
+ // and ../us-cms-inpatient/source.ts; the request routing is in ./source.ts (see the note at its top).
+ import { defineSource, str } from "../../lib/plugin";
+ import { INFO, medicalPrices } from "./source";
++import { isDmeposRequest } from "../us-cms-dmepos/source";
+ 
+ export default defineSource({
+   info: INFO,
+@@ -11,6 +12,7 @@ export default defineSource({
+   countryHelp: "US = United States (what Medicare paid, nationally or by state)",
+   placeName: "the United States (what Medicare paid doctors and hospitals)",
+   status: "live",
++  serves: (p) => !isDmeposRequest(p),
+   paramNotes: {
+     service:
+       "US: plain words ('office visit', 'MRI lower back', 'colonoscopy', 'physical therapy', 'knee replacement', 'pneumonia'), a billing code (HCPCS/CPT such as 99213 or G0121) or an MS-DRG hospital-stay code ('DRG 470').",
+diff --git a/sources/us-cms-medicare/source.test.ts b/sources/us-cms-medicare/source.test.ts
+index edb0f525..f83feb5e 100644
+--- a/sources/us-cms-medicare/source.test.ts
++++ b/sources/us-cms-medicare/source.test.ts
+@@ -71,7 +71,7 @@ test("us-cms-medicare: registered for medical / US with the tool, path and examp
+   assert.equal(cat.restPath, "medical");
+   assert.equal(cat.cacheSeconds, 86400);
+   assert.equal(cat.title, "Doctor and hospital prices paid");
+-  assert.deepEqual(Object.keys(paramSchemas(cat)).sort(), ["service", "setting", "state"]);
++  assert.deepEqual(Object.keys(paramSchemas(cat)).sort(), ["basis", "service", "setting", "state"]);
+   assert.deepEqual(cat.required, ["service"]);
+   const smoke = exampleUrls().filter((e) => e.source === "us-cms-medicare" && e.smoke);
+   assert.deepEqual(smoke.map((e) => e.path), ["/api/v1/medical?country=US&service=99213", "/api/v1/medical?country=US&service=knee+replacement&state=TX"]);
