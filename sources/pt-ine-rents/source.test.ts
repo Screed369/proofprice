@@ -168,7 +168,8 @@ test("pt-ine-rents: ptHarvest skips quarters INE does not hold yet, then reads e
   };
   const out = await ptHarvest({ fetcher, now: new Date("2026-10-23T00:00:00Z") });
   assert.ok(urls[0].includes("Dim1=S5A20264") && urls[1].includes("Dim1=S5A20263") && urls[2].includes("Dim1=S5A20262"));
-  assert.equal(urls.length, 3 + chunkCodes(PT_PLACES.map((p) => p.code)).length);
+  assert.equal(urls.length, 3, "one all-places request per quarter tried (no Dim2), no per-group requests");
+  assert.ok(urls.every((u) => !u.includes("Dim2=")));
   assert.equal(out.date, windowOf({ year: 2026, quarter: 2 }).to);
   assert.ok(out.rows.some((r) => r.area === "PT"));
 });
@@ -182,7 +183,19 @@ test("pt-ine-rents: ptHarvest reports a dropped connection as that, not as 'no r
   const urls: string[] = [];
   const fetcher = async (url: string) => { urls.push(url); throw new SourceError("Could not reach the official source", "UND_ERR_CONNECT_TIMEOUT"); };
   await assert.rejects(ptHarvest({ fetcher, now: new Date("2026-10-23T00:00:00Z") }), /Could not reach the official source/);
-  assert.equal(urls.length, 1, "stops at the first failure instead of trying older quarters");
+  assert.equal(urls.length, 2, "one all-places try, then the old per-place path, which stops at its first failure instead of trying older quarters");
+});
+
+test("pt-ine-rents: when the all-places request fails ptHarvest falls back to the per-place requests", async () => {
+  const urls: string[] = [];
+  const fetcher = async (url: string) => {
+    urls.push(url);
+    if (!url.includes("Dim2=")) throw new SourceError("Could not reach the official source", "UND_ERR_CONNECT_TIMEOUT");
+    return url.includes("Dim1=S5A20262") ? F.FIVE_PLACES : INE_BAD_CODE;
+  };
+  const out = await ptHarvest({ fetcher, now: new Date("2026-10-23T00:00:00Z") });
+  assert.ok(urls[0].includes("Dim1=S5A20264") && !urls[0].includes("Dim2="));
+  assert.ok(out.rows.some((r) => r.area === "PT"));
 });
 
 test("pt-ine-rents: historyKey maps the request to INE's place code; a type/bedroom split or postcode-only request has no copy", () => {

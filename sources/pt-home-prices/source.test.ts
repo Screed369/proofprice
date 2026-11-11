@@ -284,8 +284,8 @@ test("pt-home-prices: a postcode alone is refused with the reason", async () => 
 
 test("pt-home-prices: harvest url asks for every place in ONE request (INE rejects Dim2=T)", () => {
   const u = harvestUrl();
-  assert.ok(u.includes("Dim3=T") && !u.includes("Dim2=T&"));
-  for (const p of PT_PLACES) assert.ok(u.includes(p.code), p.code);
+  // No Dim2 at all: INE hangs on a ~100-code Dim2 list from GitHub (11 Nov 2026), while the unfiltered request answers in seconds; harvestRows keeps the known places.
+  assert.ok(u.includes("Dim3=T") && !u.includes("Dim2="));
   assert.equal(u.split("pindica.jsp").length, 2);
 });
 
@@ -330,7 +330,7 @@ test("pt-home-prices: the smaller requests together ask for every place exactly 
   assert.equal(asked[0], "PT");
   assert.equal(new Set(asked).size, asked.length);
   assert.deepEqual([...asked].sort(), PT_PLACES.map((p) => p.code).sort());
-  for (const u of urls) assert.ok(u.length < harvestUrl().length);
+  for (const u of urls) assert.ok(u.includes("Dim2="));
 });
 
 test("pt-home-prices: when the one big request fails ptHarvest falls back to the smaller ones", async () => {

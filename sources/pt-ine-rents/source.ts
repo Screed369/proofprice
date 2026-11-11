@@ -516,7 +516,33 @@ export async function withRetries<T>(work: () => Promise<T>, attempts = 4, backo
   throw last;
 }
 
+/** Every geography for one quarter in ONE small request (no Dim2, about 90 KB). Since 6 Nov 2026 INE hangs from GitHub on requests with a Dim2 code list
+ *  (probed 11 Nov: a 100-code Dim2 URL timed out at 120 s while the same request without Dim2 answered in 2 s), so this is tried first. */
+export function harvestAllUrl(period: string): string {
+  return `${API_BASE}?op=2&varcd=${INDICATOR}&Dim1=${period}&lang=EN`;
+}
+
 export async function ptHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+  const fetcher = o.fetcher ?? ((url: string) => withRetries(() => fetchJson(url, {}, 30000)));
+  const now = o.now ?? new Date();
+  try {
+    for (const c of periodCandidates(now)) {
+      let reply: IneReply;
+      try {
+        reply = parseIne(await fetcher(harvestAllUrl(c.code)));
+      } catch (e) {
+        if (e instanceof SourceError && e.message.startsWith("INE Portugal could not answer")) continue;
+        throw e;
+      }
+      if (reply.rows.length) return harvestRows(reply);
+    }
+  } catch {
+    // fall through to the older Dim2-based path below
+  }
+  return ptHarvestByPlaces(o);
+}
+
+export async function ptHarvestByPlaces(o: FetchOptions = {}): Promise<HarvestResult> {
   const fetcher = o.fetcher ?? ((url: string) => withRetries(() => fetchJson(url, {}, 30000)));
   const now = o.now ?? new Date();
   // 1) newest quarter INE already publishes: a tiny national request per candidate, newest first

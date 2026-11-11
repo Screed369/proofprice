@@ -439,9 +439,10 @@ export async function ptHomePrices(
 // answer for 7 days after the last successful collection. Only the all-dwellings total is stored (no bedroom split).
 
 export const HARVEST_ITEM = "all:12m";
-/** One request for every place: INE rejects Dim2=T but accepts a comma list of geography codes. */
+/** One request for every place. INE rejects Dim2=T, and since 6 Nov 2026 a ~100-code Dim2 list hangs until timeout (probed 11 Nov from GitHub: that URL timed
+ *  out at 120 s while the same request with NO Dim2 returned 3.7 MB in seconds). So ask for all geographies at once and let harvestRows keep the known places. */
 export function harvestUrl(): string {
-  return `${API_BASE}?op=2&varcd=${INDICATOR}&Dim1=T&Dim2=${PT_PLACES.map((p) => p.code).join(",")}&Dim3=T&lang=EN`;
+  return `${API_BASE}?op=2&varcd=${INDICATOR}&Dim1=T&Dim3=T&lang=EN`;
 }
 
 /** The newest quarter in the reply and one row per place that has a total median for it. */
