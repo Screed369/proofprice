@@ -280,9 +280,10 @@ async function headOk(url: string): Promise<boolean> {
   }
 }
 
-/** The newest 5-year release that exists (tries this year down to 2024). */
-export async function newestYear(now = new Date()): Promise<number> {
-  for (let y = now.getUTCFullYear(); y >= 2024; y--) if (await headOk(dataUrl(y, "b25064"))) return y;
+/** The newest 5-year release that exists (tries this year down to 2024). A release counts only when the table AND its
+ *  geography file are both up: Census uploads them piecemeal, and on 11 Nov 2026 the 2025 table was there but Geos20255YR.txt was a 404. */
+export async function newestYear(now = new Date(), exists: (url: string) => Promise<boolean> = headOk): Promise<number> {
+  for (let y = now.getUTCFullYear(); y >= 2024; y--) if ((await exists(dataUrl(y, "b25064"))) && (await exists(geosUrl(y)))) return y;
   throw new SourceError("No ACS 5-year table B25064 found on www2.census.gov");
 }
 

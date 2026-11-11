@@ -12,7 +12,7 @@ const expect = (v: any) => ({
   not: { toContain: (x: any) => assert.ok(!v.includes(x), `${JSON.stringify(v)} should not contain ${x}`) },
 });
 import {
-  areasOf, buildRows, harvestFrom, parseGeos, parseTable, resolveArea, answerFrom, usRentHistoryKey, dataUrl, geosUrl, collectLines, keepGeo,
+  areasOf, buildRows, harvestFrom, parseGeos, parseTable, resolveArea, answerFrom, usRentHistoryKey, dataUrl, geosUrl, collectLines, keepGeo, newestYear,
 } from "./source";
 
 const TABLE = ["GEO_ID|B25064_E001|B25064_M001", "0100000US|1413|2", "0100089US|816|10", "0400000US53|1707|8", "0400000US48|1257|5", "0500000US53033|1900|12", "1600000US5363000|1834|20", "1600000US5360000|1400|700", "3100000US42660|1850|15", "1600000US4805000|1300|", "1600000US4159000|1500|30", "1600000US2338970|1200|30", "1600000US9999999|-|-"];
@@ -119,5 +119,17 @@ describe("us-census-acs-rent answer", () => {
 describe("us-census-acs-rent harvest rows", () => {
   it("needs a national figure and enough areas", () => {
     expect(() => harvestFrom(2024, parseGeos(GEOS), parseTable(TABLE, "b25064"), parseTable(POP, "b01003"))).toThrow(/only \d+ usable areas/);
+  });
+});
+
+describe("us-census-acs-rent newest release", () => {
+  const now = new Date("2026-11-11T12:00:00Z");
+  it("skips a year whose geography file is not up yet (Census upload in progress, 11 Nov 2026)", async () => {
+    const up = new Set([dataUrl(2025, "b25064"), dataUrl(2024, "b25064"), geosUrl(2024)]);
+    expect(await newestYear(now, async (u) => up.has(u))).toBe(2024);
+  });
+  it("takes the newest year when table and geography are both up", async () => {
+    const up = new Set([dataUrl(2025, "b25064"), geosUrl(2025), dataUrl(2024, "b25064"), geosUrl(2024)]);
+    expect(await newestYear(now, async (u) => up.has(u))).toBe(2025);
   });
 });
