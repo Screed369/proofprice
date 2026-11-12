@@ -10,6 +10,8 @@ export default defineSource({
   countryHelp: "TW = Taiwan (Taipei Metro fares between two stations from the operator's open data, TWD, a posted tariff; other lines and operators not included)",
   placeName: "Taiwan (Taipei Metro)",
   status: "live",
+  // Shares TW with tw-tra-fares (Taiwan Railway): tw_operator=tra selects that source.
+  serves: (p) => !/^(tra|railway|rail|train|taiwan railway)$/i.test(String(p.tw_operator ?? "").trim()),
   paramNotes: {
     fare_type: "Taiwan (Taipei Metro): adult (default, the full fare), or senior / disability (both give the one concession fare for senior, Love and companion card holders and children in Taipei and New Taipei). student and workfare are not available.",
     distance_km: "Taiwan (Taipei Metro): not used; the fare depends on the two stations, so give origin_station and destination_station.",
