@@ -1,0 +1,22 @@
+URL: https://data.wprdc.org/api/3/action/datastore_search?resource_id=0bd13902-f2ee-4340-b7c8-c54ebd0f6bd0&limit=3
+Fetched: 2026-11-12T18:45:52Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 3214
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+content-type: application/json;charset=utf-8
+content-length: 3214
+server: nginx/1.28.3 (Ubuntu)
+date: Thu, 12 Nov 2026 18:45:52 GMT
+set-cookie: ckan=; Domain=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; HttpOnly; Path=/; SameSite=Lax
+cache-control: public, max-age=0, must-revalidate
+vary: Cookie
+x-cache: Miss from cloudfront
+via: 1.1 53ee82a7eb57de316cba44c26680b4a6.cloudfront.net (CloudFront)
+x-amz-cf-pop: HIO52-P1
+x-amz-cf-id: AuQQreg7hWlYI4wprn-paEW7U8a20-w771VeU1ty1bLLvrLRBE6hvA==
+
+=== FILE TYPE: JSON text data
+=== FIRST 30000 BYTES
+{"help": "https://data.wprdc.org/api/3/action/help_show?name=datastore_search", "success": true, "result": {"include_next_page": false, "include_total": true, "limit": 3, "records_format": "objects", "resource_id": "0bd13902-f2ee-4340-b7c8-c54ebd0f6bd0", "records": [{"_id":2542156,"PARID":"1065H00275000000","FULL_ADDRESS":"0 HENRY RD, SEWICKLEY, PA 15143","PROPERTYHOUSENUM":"0","PROPERTYFRACTION":" ","PROPERTYADDRESSDIR":null,"PROPERTYADDRESSSTREET":"HENRY","PROPERTYADDRESSSUF":"RD","PROPERTYADDRESSUNITDESC":null,"PROPERTYUNITNO":null,"PROPERTYCITY":"SEWICKLEY","PROPERTYSTATE":"PA","PROPERTYZIP":"15143","SCHOOLCODE":"27","SCHOOLDESC":"North Allegheny","MUNICODE":"884","MUNIDESC":"Franklin Park ","RECORDDATE":"2026-08-07","SALEDATE":"2026-07-31","PRICE":10000,"DEEDBOOK":"20514","DEEDPAGE":"532","SALECODE":"H","SALEDESC":"MULTI-PARCEL SALE","INSTRTYP":"CO","INSTRTYPDESC":"CORRECTIVE DEED"},{"_id":2542157,"PARID":"1065H00279000000","FULL_ADDRESS":"0 HENRY RD, SEWICKLEY, PA 15143","PROPERTYHOUSENUM":"0","PROPERTYFRACTION":" ","PROPERTYADDRESSDIR":null,"PROPERTYADDRESSSTREET":"HENRY","PROPERTYADDRESSSUF":"RD","PROPERTYADDRESSUNITDESC":null,"PROPERTYUNITNO":null,"PROPERTYCITY":"SEWICKLEY","PROPERTYSTATE":"PA","PROPERTYZIP":"15143","SCHOOLCODE":"27","SCHOOLDESC":"North Allegheny","MUNICODE":"884","MUNIDESC":"Franklin Park ","RECORDDATE":"2026-08-07","SALEDATE":"2026-07-31","PRICE":10000,"DEEDBOOK":"20514","DEEDPAGE":"532","SALECODE":"H","SALEDESC":"MULTI-PARCEL SALE","INSTRTYP":"CO","INSTRTYPDESC":"CORRECTIVE DEED"},{"_id":2542158,"PARID":"1519S00240000000","FULL_ADDRESS":"0 KUNTZ ST, NATRONA HEIGHTS, PA 15065","PROPERTYHOUSENUM":"0","PROPERTYFRACTION":" ","PROPERTYADDRESSDIR":null,"PROPERTYADDRESSSTREET":"KUNTZ","PROPERTYADDRESSSUF":"ST","PROPERTYADDRESSUNITDESC":null,"PROPERTYUNITNO":null,"PROPERTYCITY":"NATRONA HEIGHTS","PROPERTYSTATE":"PA","PROPERTYZIP":"15065","SCHOOLCODE":"21","SCHOOLDESC":"Highlands","MUNICODE":"916","MUNIDESC":"Harrison  ","RECORDDATE":"2026-05-04","SALEDATE":"2026-04-17","PRICE":1,"DEEDBOOK":"15600","DEEDPAGE":"466","SALECODE":"3","SALEDESC":"LOVE AND AFFECTION SALE","INSTRTYP":"DE","INSTRTYPDESC":"DEED"}], "fields": [{"id": "_id", "type": "int"}, {"id": "PARID", "type": "text"}, {"id": "FULL_ADDRESS", "type": "text"}, {"id": "PROPERTYHOUSENUM", "type": "text"}, {"id": "PROPERTYFRACTION", "type": "text"}, {"id": "PROPERTYADDRESSDIR", "type": "text"}, {"id": "PROPERTYADDRESSSTREET", "type": "text"}, {"id": "PROPERTYADDRESSSUF", "type": "text"}, {"id": "PROPERTYADDRESSUNITDESC", "type": "text"}, {"id": "PROPERTYUNITNO", "type": "text"}, {"id": "PROPERTYCITY", "type": "text"}, {"id": "PROPERTYSTATE", "type": "text"}, {"id": "PROPERTYZIP", "type": "text"}, {"id": "SCHOOLCODE", "type": "text"}, {"id": "SCHOOLDESC", "type": "text"}, {"id": "MUNICODE", "type": "text"}, {"id": "MUNIDESC", "type": "text"}, {"id": "RECORDDATE", "type": "date"}, {"id": "SALEDATE", "type": "date"}, {"id": "PRICE", "type": "float8"}, {"id": "DEEDBOOK", "type": "text"}, {"id": "DEEDPAGE", "type": "text"}, {"id": "SALECODE", "type": "text"}, {"id": "SALEDESC", "type": "text"}, {"id": "INSTRTYP", "type": "text"}, {"id": "INSTRTYPDESC", "type": "text"}], "total": 24477}}
