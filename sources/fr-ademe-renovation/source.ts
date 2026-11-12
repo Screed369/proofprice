@@ -4,7 +4,7 @@
 //  - GET https://data.ademe.fr/data-fair/api/v1/datasets/<id>/lines?size=10000&select=<fields>&format=json -> {"total":N,"results":[{...}]}
 //    (no key; size up to 10000, our largest dataset has 4,515 rows so one page holds everything; "next" is only present when there is more).
 //  - datasets: chauffage (heating; field generateur, PAC = heat pump), isolation (field poste_isolation), menuiseries (windows),
-//    photovoltaique (solar). Every row may carry cout_total_ht = total cost of the job in EUR EXCLUDING VAT; many rows have no cost.
+//    photovoltaique (solar). Only isolation, menuiseries and photovoltaique have a "region" column; chauffage has not (select=region there is HTTP 400). Every row may carry cout_total_ht = total cost of the job in EUR EXCLUDING VAT; many rows have no cost.
 //  - departement = upper-case name (e.g. "AIN"), region = short code (e.g. "BRE", "ARA"), annee_travaux = year of works (a few bad years like 216).
 // We never keep or show single jobs: only a median / 10th-90th range over at least 5 jobs. No names or addresses are read.
 
@@ -117,6 +117,11 @@ export function pickCosts(rows: Line[], plan: Plan, area?: string): Picked {
   return { costs, years };
 }
 
+/** Fields to ask for. The chauffage dataset has no "region" column (asking for it is an HTTP 400); the other three have one. */
+export function selectFields(plan: Plan): string[] {
+  return ["cout_total_ht", "annee_travaux", "departement", ...(plan.dataset === "chauffage" ? [] : ["region"]), ...(plan.field ? [plan.field] : [])];
+}
+
 async function fetchRows(dataset: string, fields: string[], base = API): Promise<Line[]> {
   const url = `${base}/${dataset}/lines?size=10000&format=json&select=${fields.join(",")}`;
   const j = await fetchJson(url, { headers: { Accept: "application/json" } }, 20000);
@@ -136,12 +141,13 @@ export async function frRenovation(measure: string, opts: Opts = {}): Promise<Pr
       extra: { reason: "The ADEME survey is split by kind of work (heat pump, solar_pv, attic_insulation, wall_insulation, windows); it has no figure for a general 'renovation'. Ask for one of those." },
     });
   }
-  const fields = ["cout_total_ht", "annee_travaux", "departement", "region", ...(plan.field ? [plan.field] : [])];
+  const fields = selectFields(plan);
   const rows = await fetchRows(plan.dataset, fields, opts.apiBase);
   const { costs, years } = pickCosts(rows, plan, opts.area);
   const summary = summarise(costs);
-  const from = years.length ? `${Math.min(...years)}-01-01` : null;
-  const to = years.length ? `${Math.max(...years)}-12-31` : null;
+  // The windows dataset has no year column: use the survey's own span (works of 2011-2018, as the publisher describes it).
+  const from = years.length ? `${Math.min(...years)}-01-01` : "2011-01-01";
+  const to = years.length ? `${Math.max(...years)}-12-31` : "2018-12-31";
   return buildAnswer({
     source: INFO,
     query: { country: "FR", measure, ...(opts.dwelling_type ? { dwelling_type: opts.dwelling_type } : {}), ...(opts.area ? { area: opts.area } : {}) },
@@ -151,7 +157,7 @@ export async function frRenovation(measure: string, opts: Opts = {}): Promise<Pr
       `Median and 10th-90th percentile of the total cost excluding VAT of ${plan.label} jobs in ADEME's FAIRE survey` +
       (opts.area ? ` in ${opts.area}` : " in France") + ". Jobs from about 2011 to 2018; the cost covers the whole job, not a unit price.",
     describe: (s) =>
-      `${plan.label[0].toUpperCase()}${plan.label.slice(1)} in France${opts.area ? ` (${opts.area})` : ""}: median ${s.median} EUR excl. VAT per job (typical ${s.low} to ${s.high}). HISTORICAL: jobs of ${from?.slice(0, 4) ?? "?"}-${to?.slice(0, 4) ?? "?"}.`,
+      `${plan.label[0].toUpperCase()}${plan.label.slice(1)} in France${opts.area ? ` (${opts.area})` : ""}: median ${s.median} EUR excl. VAT per job (typical ${s.low} to ${s.high}). HISTORICAL: jobs of ${from.slice(0, 4)}-${to.slice(0, 4)}.`,
     baseUrl: opts.baseUrl,
     evidence: { label: "Invoiced works in a survey (historical)", meaning: "Costs recorded by advisers from households' invoices or quotes in a one-off ADEME survey (mostly 2011-2018). A sample of jobs, not a register of all works, and not today's prices." },
     extra: { historical: true, includes_vat: false, note: "Old survey: prices have risen since; use as a historical reference only." },

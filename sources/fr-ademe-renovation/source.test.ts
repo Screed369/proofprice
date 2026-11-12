@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { InputError } from "../../lib/http";
 import { priceAnswerSchema } from "../../lib/schemas";
-import { INFO, Line, frRenovation, norm, pickCosts, planFor } from "./source";
+import { INFO, Line, frRenovation, norm, pickCosts, planFor, selectFields } from "./source";
 
 const PAC: Line[] = [
   { generateur: "PAC", cout_total_ht: 13032, annee_travaux: 2018, departement: "AIN", region: "ARA" },
@@ -80,5 +80,24 @@ test("general renovation returns no_matches without a download", async () => {
     const a = await frRenovation("renovation");
     assert.equal(a.status, "no_matches");
     assert.equal(a.price, null);
+  } finally { globalThis.fetch = orig; }
+});
+
+test("selectFields never asks chauffage for region (live HTTP 400 on 2026-11-12) but does for the others", () => {
+  assert.ok(!selectFields(planFor("heat_pump")!).includes("region"));
+  assert.ok(selectFields(planFor("heat_pump")!).includes("generateur"));
+  assert.ok(selectFields(planFor("windows")!).includes("region"));
+  assert.ok(selectFields(planFor("wall_insulation")!).includes("poste_isolation"));
+});
+
+test("windows have no year column: period falls back to the survey span", async () => {
+  const orig = globalThis.fetch;
+  const rows: Line[] = [1000, 2000, 3000, 4000, 5000].map((c) => ({ cout_total_ht: c, departement: "SOMME", region: "HDF" }));
+  globalThis.fetch = fakeApi(rows);
+  try {
+    const a = await frRenovation("windows");
+    assert.equal(a.status, "ok");
+    assert.equal(a.period.from, "2011-01-01");
+    assert.equal(a.period.to, "2018-12-31");
   } finally { globalThis.fetch = orig; }
 });
