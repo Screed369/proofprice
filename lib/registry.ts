@@ -122,8 +122,22 @@ export function toolPlaces(cat: CategoryPlugin): ToolPlace[] {
   );
 }
 
+/** One entry per place, not per country: a source that covers 20 countries is named once, with its country codes together
+ *  ("Bulgaria, Croatia ... (country BG, HR, CY ...)"), instead of the same long place name 20 times. This is most of the size of a
+ *  tool list that an AI has to read in full before it asks anything. */
+export function mergePlaces(places: ToolPlace[]): ToolPlace[] {
+  const out = new Map<string, ToolPlace>();
+  for (const p of places) {
+    const key = JSON.stringify([p.place, p.freshness, p.priceType, p.sourceName, p.publisher, p.whatIsRecorded]);
+    const seen = out.get(key);
+    if (!seen) out.set(key, { ...p });
+    else if (!seen.code.split(", ").includes(p.code)) seen.code += `, ${p.code}`;
+  }
+  return [...out.values()];
+}
+
 export function toolDescription(cat: CategoryPlugin): string {
-  return cat.description(toolPlaces(cat));
+  return cat.description(mergePlaces(toolPlaces(cat)));
 }
 
 /** Words callers use for "the place", in the order we prefer them as the category's own location parameter. */

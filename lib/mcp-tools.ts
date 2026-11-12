@@ -11,12 +11,12 @@
 
 import { createMcpHandler } from "mcp-handler";
 import { z } from "zod";
+import { slimAnswerSchema, slimCheckSchema, slimCoverageSchema, slimHistorySchema, slimShape } from "./mcp-slim";
 import type { ZodTypeAny } from "zod";
 import type { CategoryPlugin } from "./plugin";
 import { CATEGORIES, coverageView, historyDays, runCategory, runHistory, toolDescription, toolShape } from "./registry";
 import { CHECK_TOOL, checkToolDescription, checkToolShape, runCheck } from "./check";
 import { withDeadline } from "./http";
-import { checkResultSchema, coverageToolSchema, historyAnswerSchema, priceAnswerSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { historySources, checkSources } from "./premium-sources";
 import { gate, paymentHeaderFromMeta, premiumNote, readGateConfig, isAnswered, type PremiumKey } from "./payments";
@@ -145,8 +145,8 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
       config: {
         title: cat.title,
         description: toolDescription(cat),
-        inputSchema: z.object(toolShape(cat)),
-        outputSchema: priceAnswerSchema,
+        inputSchema: z.object(slimShape(toolShape(cat))),
+        outputSchema: slimAnswerSchema,
         annotations: { title: cat.title, ...READ_ONLY },
       },
       call: (args) => guarded(cat.tool, limits, () => deps.runCategory(cat, args, { baseUrl: SITE_URL }), { tool: cat.tool, args }, { kind: "answer", category: cat.id }),
@@ -162,11 +162,11 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
           title: h.title,
           description: h.description,
           inputSchema: z.object({
-            ...toolShape(cat),
+            ...slimShape(toolShape(cat)),
             days: z.number().int().min(2).max(366).optional().describe("How many recent days to include. Default 30."),
             months: z.number().int().min(2).max(360).optional().describe("Instead of days: how many whole months of monthly history to return, where a source has loaded long history."),
           }),
-          outputSchema: historyAnswerSchema,
+          outputSchema: slimHistorySchema,
           annotations: { title: h.title, ...READ_ONLY },
         },
         call: (args) => guarded(h.tool, limits, () => deps.runHistory(cat, args, { baseUrl: SITE_URL }), { tool: h.tool, args }),
@@ -181,8 +181,8 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
     config: {
       title: checkTitle,
       description: checkToolDescription(deps.categories),
-      inputSchema: z.object(checkToolShape(deps.categories)),
-      outputSchema: checkResultSchema,
+      inputSchema: z.looseObject(slimShape(checkToolShape(deps.categories, true))),
+      outputSchema: slimCheckSchema,
       annotations: { title: checkTitle, ...READ_ONLY },
     },
     call: (args) =>
@@ -213,7 +213,7 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
           .optional()
           .describe("Optional. Return the full detail of the sources that cover this country: an ISO code such as IE, GB or FR. Can be combined with category."),
       }),
-      outputSchema: coverageToolSchema,
+      outputSchema: slimCoverageSchema,
       annotations: { title: coverageTitle, ...READ_ONLY },
     },
     call: (args) =>

@@ -89,6 +89,6 @@ test("tool description: says what the figures are (statistics offices, CPI shelf
   assert.match(d, /change on a year earlier/i);
   for (const s of sources) {
     assert.ok(d.includes(s.placeName), `description should name ${s.placeName}`);
-    for (const code of s.countries) assert.ok(d.includes(`country ${code}`), `description should give the country code ${code}`);
+    for (const code of s.countries) assert.ok(new RegExp(`country (?:[A-Z]{2}, )*${code}\\b`).test(d), `description should give the country code ${code}`);
   }
 });

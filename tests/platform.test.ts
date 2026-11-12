@@ -22,6 +22,7 @@ import {
   CATEGORIES, COMING_NEXT, SOURCE_PLUGINS, categoryById, countriesFor, coverage, exampleUrls, historySources, paramsFromQuery, runCategory, sourcesFor,
 } from "../lib/registry";
 import { coverageToolSchema, historyAnswerSchema, priceAnswerSchema } from "../lib/schemas";
+import { slimCoverageSchema, slimHistorySchema } from "../lib/mcp-slim";
 import { SERVICE_VERSION } from "../lib/site/constants";
 import { groupByCategory, sourceCards } from "../lib/site/sources";
 import { STALE_MAX_DAYS, staleAnswer } from "../lib/stale";
@@ -240,6 +241,7 @@ test("every category tool handler returns structuredContent that matches its out
       assert.ok(result.structuredContent, `${cat.tool}/${kind}: structuredContent`);
       const parsed = spec.config.outputSchema.safeParse(result.structuredContent);
       assert.ok(parsed.success, `${cat.tool}/${kind}: ${parsed.success ? "" : JSON.stringify(parsed.error.issues)}`);
+      assert.ok(priceAnswerSchema.safeParse(result.structuredContent).success, `${cat.tool}/${kind}: fits the full answer schema`);
       assert.equal(result.structuredContent!.status, answer.status);
       assert.equal(result.content[0].type, "text");
       assert.ok(result.content[0].text.startsWith(answer.summary), `${cat.tool}/${kind}: text starts with the summary`);
@@ -259,19 +261,21 @@ test("a stale-if-error answer is a valid tool result too", async () => {
 test("the history and coverage tool handlers return structuredContent that matches their outputSchema", async () => {
   const specs = buildToolSpecs({ ...LIVE_DEPS, historyDays: () => 999 });
   const history = specs.find((s) => s.name === fuelCat.history!.tool)!;
-  assert.equal(history.config.outputSchema, historyAnswerSchema);
+  assert.equal(history.config.outputSchema, slimHistorySchema); // the advertised sketch; answers must also fit the full schema (below)
   const ok = await history.call({ ...ES_PARAMS, days: 30 });
   assert.ok(!ok.isError, ok.content[0].text);
   assert.equal(ok.structuredContent!.status, "ok");
   assert.ok(history.config.outputSchema.safeParse(ok.structuredContent).success);
+  assert.ok(historyAnswerSchema.safeParse(ok.structuredContent).success, "answers still fit the full history schema");
   const empty = await history.call({ country: "FR", postcode: "75015", fuel: "diesel" }); // no library rows for France here
   assert.equal(empty.structuredContent!.status, "no_history_yet");
   assert.ok(history.config.outputSchema.safeParse(empty.structuredContent).success);
 
   const cov = specs.find((s) => s.name === "pricepaid_coverage")!;
-  assert.equal(cov.config.outputSchema, coverageToolSchema);
+  assert.equal(cov.config.outputSchema, slimCoverageSchema);
   const covResult = await cov.call({});
   assert.ok(cov.config.outputSchema.safeParse(covResult.structuredContent).success);
+  assert.ok(coverageToolSchema.safeParse(covResult.structuredContent).success, "answers still fit the full coverage schema");
   const slice = await cov.call({ category: "fuel", country: "ES" }); // a slice: full per-source detail
   assert.ok(cov.config.outputSchema.safeParse(slice.structuredContent).success);
 });
