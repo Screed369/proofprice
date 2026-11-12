@@ -82,3 +82,15 @@ test("us-caiso-power: registry routing", () => {
   assert.equal(p.category, "wholesale-power");
   assert.deepEqual(p.countries, ["US"]);
 });
+
+test("us-caiso-power: one 429 is retried after a pause, a second 429 is an error", async () => {
+  const { getPatiently } = await import("./source");
+  let calls = 0;
+  const once = async () => { if (++calls === 1) throw new SourceError("Source returned HTTP 429", "", 429); return ZIP; };
+  assert.equal((await getPatiently("u", once, 0)).length, ZIP.length);
+  assert.equal(calls, 2);
+  const always = async () => { throw new SourceError("Source returned HTTP 429", "", 429); };
+  await assert.rejects(() => getPatiently("u", always, 0), SourceError);
+  const down = async () => { throw new SourceError("Source returned HTTP 500", "", 500); };
+  await assert.rejects(() => getPatiently("u", down, 0), SourceError);
+});

@@ -117,7 +117,7 @@ export type Getter = (url: string) => Promise<Buffer>;
 
 export const defaultGet: Getter = async (url) => {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 12000);
+  const timer = setTimeout(() => controller.abort(), 6000);
   try {
     const res = await fetch(url, { signal: controller.signal, headers: { accept: "application/zip,*/*", "user-agent": "ProofPrice/1.0 (+https://proofprice.com; hello@proofprice.com)" } });
     if (!res.ok) throw new SourceError(`Source returned HTTP ${res.status}`, "", res.status);
@@ -131,8 +131,21 @@ export const defaultGet: Getter = async (url) => {
   }
 };
 
-export async function loadRange(hub: Hub, fromDate: string, toDate: string, get: Getter = defaultGet): Promise<HourPrice[]> {
-  const zip = await get(queryUrl(hub, fromDate, toDate));
+/** OASIS answers HTTP 429 when two requests arrive within a few seconds (seen 12 Nov 2026 on a preview): wait and ask once more. */
+export async function getPatiently(url: string, get: Getter, pauseMs = 5500): Promise<Buffer> {
+  try {
+    return await get(url);
+  } catch (err: any) {
+    if (err instanceof SourceError && err.status === 429) {
+      await new Promise((r) => setTimeout(r, pauseMs));
+      return await get(url);
+    }
+    throw err;
+  }
+}
+
+export async function loadRange(hub: Hub, fromDate: string, toDate: string, get: Getter = defaultGet, pauseMs = 5500): Promise<HourPrice[]> {
+  const zip = await getPatiently(queryUrl(hub, fromDate, toDate), get, pauseMs);
   return parseLmp(unzipFirst(zip).toString("utf8"));
 }
 
