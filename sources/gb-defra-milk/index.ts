@@ -1,6 +1,6 @@
 // Manifest: UK farm-gate milk price (Defra monthly statistics, Open Government Licence v3.0). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, gbMilkHarvest, gbMilkPrices, milkHistoryKey } from "./source";
+import { INFO, gbMilkHarvest, gbMilkPrices, isMilk, milkHistoryKey } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -22,4 +22,6 @@ export default defineSource({
   historyKey: (p) => milkHistoryKey({ product: str(p.product) }),
   referenceDates: true,
   nominalCounts: true,
+  // Only milk is ours; other GB farm-gate products (e.g. sea fish) go to their own source.
+  serves: (p) => isMilk(String(p.product ?? "")),
 });
