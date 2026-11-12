@@ -1,5 +1,5 @@
 // Malaysia fuel: weekly government-set retail prices of RON95, RON97 and diesel from data.gov.my (Ministry of Finance / KPDN price notices).
-// Format checked live on 2026-10-16 from GitHub's servers: GET https://api.data.gov.my/data-catalogue?id=fuelprice&limit=120&sort=-date
+// Format checked live on 2026-10-16 from GitHub's servers: GET https://api.data.gov.my/data-catalogue/?id=fuelprice&limit=120&sort=-date
 // returns a JSON array, two rows per Thursday: series_type "level" (MYR per litre) and "change_weekly" (difference to the week before).
 // limit=120 covers about 60 weeks, enough for the change on the week and on the year. Fixture rows were copied from that response.
 
@@ -9,7 +9,7 @@ import type { HarvestResult, SourceInfo } from "../../lib/plugin";
 import { NO_COUNT } from "../../lib/stats";
 
 export const PAGE_URL = "https://data.gov.my/data-catalogue/fuelprice";
-export const API_URL = "https://api.data.gov.my/data-catalogue?id=fuelprice&limit=120&sort=-date";
+export const API_URL = "https://api.data.gov.my/data-catalogue/?id=fuelprice&limit=120&sort=-date";
 export const LICENCE_URL = "https://creativecommons.org/licenses/by/4.0/";
 
 export const INFO: SourceInfo = {
