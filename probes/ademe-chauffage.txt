@@ -1,0 +1,26 @@
+URL: https://data.ademe.fr/data-fair/api/v1/datasets/chauffage/lines?size=3&format=json
+Fetched: 2026-11-12T01:41:58Z from GitHub Actions
+Status, type, bytes: 200 application/json; charset=utf-8 1592
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/2 200 
+date: Thu, 12 Nov 2026 01:41:58 GMT
+content-type: application/json; charset=utf-8
+content-length: 1592
+vary: Accept-Encoding
+x-powered-by: Express
+access-control-allow-origin: *
+x-resource: {"type":"datasets","id":"chauffage","title":"Co%C3%BBts%20des%20travaux%20de%20r%C3%A9novation%20-%20Chauffage"}
+x-owner: {"type":"organization","id":"g1pKfMqaE"}
+x-operation: {"class":"read","id":"readLines","track":"readDataAPI"}
+last-modified: Mon, 25 May 2020 12:44:42 GMT
+cache-control: must-revalidate, public, max-age=300
+link: <https://data.ademe.fr/data-fair/api/v1/datasets/chauffage/lines?size=3&format=json&after=3>; rel=next
+etag: W/"638-ZC/W5vsd6rTjD1A8jQT4zjCR764"
+strict-transport-security: max-age=31536000; includeSubDomains
+x-cache-status: HIT
+
+=== FILE TYPE: JSON text data
+=== FIRST 3000 BYTES
+{"total":3014,"next":"https://data.ademe.fr/data-fair/api/v1/datasets/chauffage/lines?size=3&format=json&after=3","results":[{"annee_travaux":2018,"departement":"AIN","date_facture":"13/07/2018","Code_département":"01","generateur":"CHAUDIERE","_i":1,"Code_région":84,"marque":"FROLING","date_sigture_devis":"13/07/2018","energie_chauffage_installee":"BOIS","climat":"H1","puissance":20,"_rand":356652,"cout_implementation_ht":1810,"date_x":"13/07/2018","modele":"PE1","id":"2118","type_chaudiere":"STANDARD","type_logement":"INDIVIDUEL","_score":null,"_id":"Z7ndS3IB2JTjtkdyBpRK"},{"annee_travaux":2018,"departement":"AIN","energie_chauffage_avt_travaux":"BOIS","date_facture":"13/07/2018","Code_département":"01","generateur":"POELE","_i":2,"Code_région":84,"marque":"MCZ","date_sigture_devis":"13/07/2018","energie_chauffage_installee":"GAZ","climat":"H1","puissance":6,"_rand":971667,"date_x":"13/07/2018","modele":"AMY","id":"2119","cout_materiaux_ht":1980,"type_logement":"INDIVIDUEL","_score":null,"_id":"aLndS3IB2JTjtkdyBpRK"},{"cout_total_ht":13032,"annee_travaux":2018,"departement":"AIN","energie_chauffage_avt_travaux":"FIOUL","date_facture":"13/07/2018","Code_département":"01","generateur":"PAC","_i":3,"Code_région":84,"marque":"ATLANTIC","date_sigture_devis":"13/07/2018","energie_chauffage_installee":"ELECTRICITE","climat":"H1","puissance":14,"_rand":731480,"cout_implementation_ht":1536,"date_x":"13/07/2018","modele":"EXCELIA","id":"2120","cout_materiaux_ht":11496,"type_chaudiere":"AIR-EAU","type_logement":"INDIVIDUEL","_score":null,"_id":"abndS3IB2JTjtkdyBpRK"}]}
