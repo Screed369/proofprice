@@ -3,7 +3,7 @@
 // never the address, parcel number, grantor or grantee. The view holds some future-dated and $1 rows, so we filter hard.
 // Gotchas: sale_date is a date-only field (compare with a plain 'YYYY-MM-DD' string); orderByFields works with ObjectId or sale_date.
 
-import { arcgisAll, arcgisQuery, Fetcher } from "../../lib/adapters";
+import { arcgisCount, arcgisQuery, Fetcher } from "../../lib/adapters";
 import { InputError, SourceError } from "../../lib/http";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { MIN_PUBLISH, summarise } from "../../lib/stats";
@@ -102,6 +102,22 @@ async function latestSale(today: string, fetcher?: Fetcher): Promise<string | nu
   return (await latestIn(monthsBack(today, 6), today, fetcher)) ?? (await latestIn(monthsBack(today, 60), today, fetcher));
 }
 
+/** Fetch every matching sale: count first, then pages in parallel (the server caps a page at 1,000 rows; sequential paging took 19 s for a year). */
+async function fetchSales(where: string, fetcher?: Fetcher): Promise<{ rows: Record<string, any>[]; truncated: boolean }> {
+  const total = await arcgisCount(LAYER, where, { fetcher, timeoutMs: 25000 });
+  const want = Math.min(total, MAX_ROWS);
+  const offsets: number[] = [];
+  for (let o = 0; o < want; o += PAGE_SIZE) offsets.push(o);
+  const rows: Record<string, any>[] = [];
+  for (let i = 0; i < offsets.length; i += 8) {
+    const batch = await Promise.all(
+      offsets.slice(i, i + 8).map((o) => arcgisQuery(LAYER, { where, outFields: FIELDS, orderByFields: ["ObjectId ASC"], resultOffset: o, resultRecordCount: PAGE_SIZE }, { fetcher, timeoutMs: 25000 })),
+    );
+    for (const r of batch) rows.push(...r.rows);
+  }
+  return { rows, truncated: total > MAX_ROWS };
+}
+
 export interface DetroitInput { town?: string; postcode?: string; state?: string; months?: number; property_type?: string; baseUrl?: string }
 export interface DetroitOptions { fetcher?: Fetcher; today?: Date }
 
@@ -115,7 +131,7 @@ export async function detroitHomeSales(input: DetroitInput, opts: DetroitOptions
   const latest = await latestSale(today, opts.fetcher);
   if (!latest) throw new SourceError("The Detroit property sales table returned no recent qualified sales");
   const window = { from: monthsBack(latest, months), to: latest };
-  const c = await arcgisAll(LAYER, { where: buildWhere(window, zip || undefined), outFields: FIELDS, orderByFields: ["ObjectId ASC"] }, { fetcher: opts.fetcher, maxRows: MAX_ROWS, pageSize: PAGE_SIZE, timeoutMs: 25000 });
+  const c = await fetchSales(buildWhere(window, zip || undefined), opts.fetcher);
   const sales = parseSales(c.rows);
   const dates = sales.map((s) => s.date).sort();
   const summary = summarise(sales.map((s) => s.price));
@@ -164,7 +180,7 @@ export async function detroitHarvest(opts: DetroitOptions = {}): Promise<Harvest
   const today = (opts.today ?? new Date()).toISOString().slice(0, 10);
   const latest = await latestSale(today, opts.fetcher);
   if (!latest) throw new SourceError("The Detroit property sales table returned no recent qualified sales");
-  const c = await arcgisAll(LAYER, { where: buildWhere({ from: monthsBack(latest, 12), to: latest }), outFields: FIELDS, orderByFields: ["ObjectId ASC"] }, { fetcher: opts.fetcher, maxRows: MAX_ROWS, pageSize: PAGE_SIZE, timeoutMs: 25000 });
+  const c = await fetchSales(buildWhere({ from: monthsBack(latest, 12), to: latest }), opts.fetcher);
   const res = harvestFrom(parseSales(c.rows), today);
   if (!res) throw new SourceError("The Detroit table holds fewer than 5 qualified sales in the newest 12 months");
   return res;

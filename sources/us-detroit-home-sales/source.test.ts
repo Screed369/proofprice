@@ -19,6 +19,7 @@ function fake() {
   const urls: string[] = [];
   const fetcher = async (url: string) => {
     urls.push(url);
+    if (url.includes("returnCountOnly=true")) return { count: ROWS.length };
     const n = /resultRecordCount=(\d+)/.exec(url)?.[1];
     const out = n === "1" ? ROWS.slice(0, 1) : ROWS;
     return { features: out.map((attributes) => ({ attributes })), exceededTransferLimit: false };
