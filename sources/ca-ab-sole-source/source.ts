@@ -8,6 +8,7 @@ import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { buildAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
 import { summarise } from "../../lib/stats";
 import { readLatestDay } from "../../lib/library/store";
+import { getTextRepairingChain } from "./tls-chain";
 import { matchPurchase, PURCHASES } from "../../categories/contracts/purchases";
 
 export const INFO: SourceInfo = {
@@ -123,14 +124,23 @@ export function aggregate(contracts: AbContract[], from: string, to: string): Da
 export async function abSoleSourceHarvest(now: Date = new Date()): Promise<HarvestResult> {
   const to = now.toISOString().slice(0, 10);
   const from = windowStart(to);
-  let res: Response;
+  const headers = { "user-agent": "ProofPrice/1.0 (+https://proofprice.com; hello@proofprice.com)" };
+  let res: { status: number; text: string };
   try {
-    res = await fetch(CSV_URL, { headers: { "user-agent": "ProofPrice/1.0 (+https://proofprice.com; hello@proofprice.com)" }, signal: AbortSignal.timeout(120000) });
+    try {
+      const r = await fetch(CSV_URL, { headers, signal: AbortSignal.timeout(120000) });
+      res = { status: r.status, text: r.ok ? await r.text() : "" };
+    } catch (err: any) {
+      const code = String(err?.cause?.code ?? "");
+      // the server leaves out its intermediate certificate: repair the chain safely (checking stays on)
+      if (code !== "UNABLE_TO_VERIFY_LEAF_SIGNATURE" && code !== "UNABLE_TO_GET_ISSUER_CERT_LOCALLY") throw err;
+      res = await getTextRepairingChain(CSV_URL, headers, 120000);
+    }
   } catch (err: any) {
-    throw new SourceError("Could not reach the Alberta sole-source data service", String(err?.cause?.code ?? err?.message ?? err));
+    throw new SourceError("Could not reach the Alberta sole-source data service", String(err?.code ?? err?.cause?.code ?? err?.message ?? err));
   }
-  if (!res.ok) throw new SourceError(`The Alberta sole-source data service returned HTTP ${res.status}`, CSV_URL, res.status);
-  const contracts = contractsFromCsv(await res.text());
+  if (res.status < 200 || res.status > 299) throw new SourceError(`The Alberta sole-source data service returned HTTP ${res.status}`, CSV_URL, res.status);
+  const contracts = contractsFromCsv(res.text);
   const inWindow = contracts.filter((c) => c.date >= from && c.date <= to);
   if (!contracts.length) throw new SourceError("The Alberta sole-source file held no usable contracts");
   const rows = aggregate(contracts, from, to);
