@@ -71,7 +71,7 @@ test("us-cms-medicare: registered for medical / US with the tool, path and examp
   assert.equal(cat.restPath, "medical");
   assert.equal(cat.cacheSeconds, 86400);
   assert.equal(cat.title, "Doctor and hospital prices paid");
-  assert.deepEqual(Object.keys(paramSchemas(cat)).sort(), ["service", "setting", "state"]);
+  assert.deepEqual(Object.keys(paramSchemas(cat)).sort(), ["basis", "service", "setting", "state"]);
   assert.deepEqual(cat.required, ["service"]);
   const smoke = exampleUrls().filter((e) => e.source === "us-cms-medicare" && e.smoke);
   assert.deepEqual(smoke.map((e) => e.path), ["/api/v1/medical?country=US&service=99213", "/api/v1/medical?country=US&service=knee+replacement&state=TX"]);
