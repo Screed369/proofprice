@@ -1,0 +1,17 @@
+URL: https://datosabiertos.bogota.gov.co/api/3/action/package_search?q=tarifa&rows=10&fl=name,title,license_id,organization
+Fetched: 2026-11-13T11:42:09Z from GitHub Actions
+Status, type, bytes: 200 application/json;charset=utf-8 849
+Errors: 
+
+=== RESPONSE HEADERS
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=utf-8
+Content-Length: 849
+Cache-Control: public, max-age=2592000, must-revalidate
+Set-cookie:  ckan=27869a13e0df968bd80cad20a48e08dc43b7c85dgAJ9cQAoWAcAAABfZG9tYWlucQFOWAUAAABfcGF0aHECWAEAAAAvcQNYAwAAAF9pZHEEWCAAAABiYzQ2NDJmZmI1Y2M0NDhiOWI0ZDhjZmQ4MGE0M2IxNXEFWAYAAABfZnJlc2hxBolYDgAAAF9jcmVhdGlvbl90aW1lcQdHQdq9veR3weRYDgAAAF9hY2Nlc3NlZF90aW1lcQhHQdq9veR3wep1Lg==; expires=Mon, 18-Jan-2038 22:14:07 GMT; HttpOnly; Path=/; SameSite=Lax
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Set-Cookie: cookiesession1=678A3E668342C442F4DFFFB51AA8119D;Expires=Sat, 13 Nov 2027 11:42:09 GMT;Path=/;HttpOnly
+
+=== FILE TYPE: JSON text data
+=== FIRST 8000 BYTES
+{"help": "https://datosabiertos.bogota.gov.co/api/3/action/help_show?name=package_search", "success": true, "result": {"count": 3, "facets": {}, "results": [{"name": "resumen-actividades-de-apoyo-a-organizaciones-de-recicladores-2019-2021", "title": "Resumen Actividades de Apoyo a Organizaciones de Recicladores 2019-2021", "license_id": "CC-BY-SA-4.0", "organization": "uaesp"}, {"name": "zona-de-parqueo-pago", "title": "Zona de Parqueo Pago. Bogot\u00e1 D. C.", "license_id": "CC-BY-4.0", "organization": "terminal-de-transporte-s-a"}, {"name": "resumen-actividades-de-apoyo-a-organizaciones-de-recicladores", "title": "Actividades de Fortalecimiento a Organizaciones de Recicladores 2020-2022. UAESP. Bogot\u00e1 D.C.", "license_id": "CC-BY-SA-4.0", "organization": "uaesp"}], "sort": "score desc, metadata_modified desc", "search_facets": {}}}
