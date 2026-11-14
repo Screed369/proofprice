@@ -10,7 +10,7 @@ import euManifest from "../eu-farm-prices/index";
 import { resolveProduct } from "../eu-farm-prices/products";
 import {
   answerFor, atFarmPrices, atHarvest, atHistoryKey, atProductOf, AT_KEYS, clearCache, FILE_URL, harvestRows, INFO, itemName, loadWorkbook, monthRange, monthWords,
-  parseFile, parseWorkbook, PRODUCTS, seriesFor, shiftMonth, sheetMonth, unitOf,
+  parseFile, parseWorkbook, PRODUCTS, seriesFor, shiftMonth, sheetMonth, stripFootnote, unitOf,
 } from "./source";
 
 // fixture-sheets.json: rows copied on 2026-11-06 from the real https://www.statistik.at/fileadmin/pages/142/Erzeugerpreise2026EN.ods
@@ -202,6 +202,14 @@ test("history key matches the library item name for every product", () => {
     assert.equal(atHistoryKey({ product: p.key })!.item, itemName(p, row), p.key);
   }
   assert.equal(atHistoryKey({ product: "pig" }), null);
+});
+
+test("footnote digits are dropped from row names (Gap G20261112-AUDIT-ATRAPE)", async () => {
+  assert.equal(stripFootnote("Rape seed4"), "Rape seed");
+  assert.equal(stripFootnote("Potatoes for starch industry5"), "Potatoes for starch industry");
+  assert.equal(stripFootnote("Beech, class B 3"), "Beech, class B 3");
+  const a: any = await atFarmPrices({ product: "rapeseed" }, { workbook: parseWorkbook(SHEETS), now: new Date("2026-11-12T00:00:00Z") });
+  assert.equal(a.extra.product.statistik_name, "Rape seed");
 });
 
 test("manifest: category farm-prices, AT, examples, harvest and history key", () => {

@@ -132,6 +132,9 @@ export function sheetMonth(sheet: OdsSheet): string | null {
   return `${m[2]}-${String(MONTH_WORDS.indexOf(m[1].toLowerCase()) + 1).padStart(2, "0")}`;
 }
 
+/** STATISTIK AUSTRIA marks footnotes with a digit glued to the last letter of a row name ("Rape seed4", "Soya beans4"); drop it. A digit after a space ("class B 3") is part of the name. */
+export const stripFootnote = (name: string) => name.replace(/(?<=[A-Za-z])\d{1,2}$/, "");
+
 export function parseWorkbook(sheets: OdsSheet[]): Workbook {
   const rows = new Map<string, Row>();
   const months: Month[] = [];
@@ -145,7 +148,7 @@ export function parseWorkbook(sheets: OdsSheet[]): Workbook {
     for (const r of sheet.rows) {
       if (!/^\d+$/.test(r[0] ?? "")) continue;
       const clean = (x: unknown) => String(x ?? "").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
-      rows.set(r[0], { code: r[0], name: clean(r[1]), unit: clean(r[2]) });
+      rows.set(r[0], { code: r[0], name: stripFootnote(clean(r[1])), unit: clean(r[2]) });
       const value = num(r[3]);
       if (value === null || value <= 0) continue;
       const provinces: Record<string, number> = {};

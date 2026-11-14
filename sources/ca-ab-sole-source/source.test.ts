@@ -101,3 +101,19 @@ test("routing: buyer_area=Alberta goes to ca-ab-sole-source; Quebec and the rest
   assert.equal(id({}), "ca-canadabuys-contracts");
   assert.equal(id({ buyer_area: "Ontario" }), "ca-canadabuys-contracts");
 });
+
+import { caIssuersUrl, toPem, signedByAny } from "./tls-chain";
+import { X509Certificate } from "node:crypto";
+import tls from "node:tls";
+
+test("tls chain helpers: issuer link, DER to PEM, root check", () => {
+  assert.equal(caIssuersUrl("OCSP - URI:http://o.example/\nCA Issuers - URI:http://c.example/ca.crt\n"), "http://c.example/ca.crt");
+  assert.equal(caIssuersUrl(undefined), null);
+  const root = new X509Certificate(tls.rootCertificates[0]);
+  const der = Buffer.from(root.raw);
+  assert.equal(new X509Certificate(toPem(der)).fingerprint256, root.fingerprint256);
+  assert.equal(toPem(Buffer.from(tls.rootCertificates[0])), tls.rootCertificates[0]);
+  const other = new X509Certificate(tls.rootCertificates[5]);
+  assert.equal(signedByAny(other, [root]), false);
+  assert.equal(signedByAny(root, [root]), true); // self-signed root
+});

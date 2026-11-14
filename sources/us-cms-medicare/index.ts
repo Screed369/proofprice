@@ -3,6 +3,7 @@
 // and ../us-cms-inpatient/source.ts; the request routing is in ./source.ts (see the note at its top).
 import { defineSource, str } from "../../lib/plugin";
 import { INFO, medicalPrices } from "./source";
+import { isDmeposRequest } from "../us-cms-dmepos/source";
 
 export default defineSource({
   info: INFO,
@@ -11,6 +12,7 @@ export default defineSource({
   countryHelp: "US = United States (what Medicare paid, nationally or by state)",
   placeName: "the United States (what Medicare paid doctors and hospitals)",
   status: "live",
+  serves: (p) => !isDmeposRequest(p),
   paramNotes: {
     service:
       "US: plain words ('office visit', 'MRI lower back', 'colonoscopy', 'physical therapy', 'knee replacement', 'pneumonia'), a billing code (HCPCS/CPT such as 99213 or G0121) or an MS-DRG hospital-stay code ('DRG 470').",
