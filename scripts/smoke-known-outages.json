@@ -1,6 +1,7 @@
 {
   "_readme": "Reviewed list of KNOWN upstream publisher outages that the smoke test reports as KNOWN OUTAGE instead of FAIL. path = example path or a prefix of it. Dates YYYY-MM-DD (UTC). An entry covers at most 14 days from since and stops counting after expires, so it cannot hide a problem for ever. Remove an entry as soon as the publisher recovers.",
   "outages": [
+    { "path": "/api/v1/wholesale-fresh-food?country=FR", "reason": "FranceAgriMer RNM answers HTTP 403 to cloud servers (publisher firewall; GitHub probe confirmed 14 Nov)", "since": "2026-11-14", "expires": "2026-11-21" },
     { "path": "/api/v1/farm-prices?country=IE", "reason": "EU farm prices API (agri-food data portal) suspended by the publisher", "since": "2026-11-08", "expires": "2026-11-22" },
     { "path": "/api/v1/farm-prices?country=FR", "reason": "EU farm prices API (agri-food data portal) suspended by the publisher", "since": "2026-11-08", "expires": "2026-11-22" },
     { "path": "/api/v1/farm-prices?country=ES", "reason": "EU farm prices API (agri-food data portal) suspended by the publisher", "since": "2026-11-08", "expires": "2026-11-22" },
