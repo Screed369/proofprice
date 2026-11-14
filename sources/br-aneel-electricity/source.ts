@@ -15,6 +15,12 @@ export const SITE = "https://dadosabertos.aneel.gov.br";
 export const RESOURCE_ID = "fcf2906c-7c32-4b9b-a637-054e7a5234f4";
 export const ROW_LIMIT = 300;
 
+/** Only the columns parseTariffs reads. The full line has dozens of columns; asking for these keeps the slow portal's answer small. */
+export const FIELDS = [
+  "DscSubGrupo", "DscBaseTarifaria", "DscModalidadeTarifaria", "DscSubClasse", "DscDetalhe", "DscUnidadeTerciaria",
+  "VlrTE", "VlrTUSD", "SigAgente", "NumCNPJDistribuidora", "DatInicioVigencia", "DatFimVigencia", "DscREH",
+];
+
 export const INFO: SourceInfo = {
   id: "br-aneel-electricity",
   country: "BR",
@@ -192,7 +198,7 @@ export const ATTEMPT_TIMEOUT_MS = 9000;
 
 async function fetchTariffs(o: FetchOptions, timeoutMs: number, backoffMs: number): Promise<Tariff[]> {
   const res = await retryOnce(
-    () => ckanSearch(SITE, { resourceId: RESOURCE_ID, filters: ckanFilters(), sort: "DatInicioVigencia desc", limit: ROW_LIMIT, includeTotal: false }, { timeoutMs, ...o }),
+    () => ckanSearch(SITE, { resourceId: RESOURCE_ID, filters: ckanFilters(), fields: FIELDS, sort: "DatInicioVigencia desc", limit: ROW_LIMIT, includeTotal: false }, { timeoutMs, ...o }),
     backoffMs,
   );
   return parseTariffs(res.records);

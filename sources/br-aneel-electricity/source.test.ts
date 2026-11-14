@@ -160,3 +160,12 @@ test("the national figure says ProofPrice calculated the median; a distributor's
   const d = brElectricityAnswer(parseTariffs(RECORDS), { energy: "electricity", distributor: "cemig", today: TODAY });
   assert.ok(d.data_as_of! <= new Date().toISOString().slice(0, 10));
 });
+
+import { datastoreSearchUrl } from "../../lib/adapters/ckan";
+import { FIELDS, RESOURCE_ID } from "./source";
+
+test("request asks only for the columns the parser reads", () => {
+  const url = decodeURIComponent(datastoreSearchUrl("https://dadosabertos.aneel.gov.br", { resourceId: RESOURCE_ID, filters: ckanFilters(), fields: FIELDS, limit: 300 }));
+  assert.ok(url.includes("fields=DscSubGrupo,"));
+  for (const f of ["VlrTE", "VlrTUSD", "SigAgente", "DatInicioVigencia", "DatFimVigencia", "DscUnidadeTerciaria"]) assert.ok(FIELDS.includes(f), f);
+});
