@@ -1,0 +1,39 @@
+URL: https://rnm.franceagrimer.fr/prix?CAROTTE
+Fetched: 2026-11-14T04:49:10Z from GitHub Actions
+Status, type, bytes: 403 text/html; charset=UTF-8 830
+Errors: curl: (56) OpenSSL SSL_read: OpenSSL/3.5.5: error:0A000126:SSL routines::unexpected eof while reading, errno 0
+
+=== RESPONSE HEADERS
+HTTP/1.1 403 Forbidden
+Content-Type: text/html; charset=UTF-8
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: 0
+Connection: close
+
+=== FILE TYPE: HTML document, ASCII text
+=== FIRST 30000 BYTES
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML; CHARSET=utf-8"/>
+<title>Error</title>
+</head>
+<body>
+<H2>Erreur</H2>
+<table summary="Erreur" border="0" bgcolor="#FF0000" cellpadding="0" cellspacing="0" width="383">
+<tr><td>
+<table summary="Erreur" border="0" cellpadding="3" cellspacing="1">
+<tr valign="top" bgcolor="#FFB8B8" align="left">
+<td><STRONG>Erreur</STRONG></td>
+</tr>
+<tr valign="top" bgcolor="#FFFFFF">
+<td>
+Un probl&#232;me a &#233;t&#233; d&#233;tect&#233; dans votre requ&#234;te.<br><br>
+Veuillez contacter le centre de service de FranceAgriMer.<br>
+Le code incident est : WAF N/A.
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>
