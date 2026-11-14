@@ -35,6 +35,8 @@ record is opened and shows that licence. Until then they are served free, never 
 record (https://www.data.gouv.fr/datasets/prix-des-carburants-en-france-flux-instantane-v2-amelioree: "Licence Ouverte / Open Licence version 2.0")
 and it stays cleared.
 
+Update, later on 14 Nov 2026: the lead opened the fr-anil-rents record (https://www.data.gouv.fr/datasets/resultats-nationaux-des-observatoires-locaux-des-loyers: producer "Observatoires Locaux des Loyers", "Licence Ouverte / Open Licence version 2.0", no restriction stated), so fr-anil-rents is now on `CLEARED_FOR_PAID`. The other six stay held back: their publishers' pages could not be opened from here that day. A second look at the two unclear sources confirmed they stay free: the es-fuel record on datos.gob.es shows no licence of its own, and the ie-ppr terms speak of "non-commercial research and study".
+
 | Source id | Publisher | Licence | Quoted clause (checked 2026-11-14) | URL | Restrictions |
 |---|---|---|---|---|---|
 | fr-anil-rents | ANIL local rent observatories | Licence Ouverte 2.0 | "à des fins commerciales ou non" | https://www.data.gouv.fr/pages/legal/licences/etalab-2-0 | Credit source. Basis: page. |

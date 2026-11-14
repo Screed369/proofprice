@@ -15,6 +15,7 @@ export const CLEARED_FOR_PAID: ReadonlySet<string> = new Set([
   "wb-fpn-diet-costs", // World Bank CC BY 4.0, "commercial: yes" (checked 2026-10-18)
   "it-fuel", // MIMIT, IODL 2.0, commercial use stated in s.3 (checked 2026-11-14)
   "fr-fuel", // Etalab Licence Ouverte 2.0, "à des fins commerciales ou non" (checked 2026-11-14)
+  "fr-anil-rents", // Licence Ouverte 2.0; the dataset's own record on data.gouv.fr shows it (lead opened it 2026-11-14)
   "fr-dvf", // Licence Ouverte 2.0; no re-identification, no search indexing (we serve aggregates) (checked 2026-11-14)
   "eu-oil-bulletin", // European Commission, CC BY 4.0 (answers IE and DE fuel) (checked 2026-11-14)
   "us-eia-fuel", // US EIA, public domain (checked 2026-11-14)
