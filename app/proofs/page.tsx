@@ -7,7 +7,7 @@ import { pageMetadata } from "../../lib/site/meta";
 export const dynamic = "force-static";
 
 export const metadata = pageMetadata({
-  title: "Signed Price Proofs",
+  title: "Signed price statements",
   description:
     "Every ProofPrice price answer and price check can carry a small signed proof that another agent, a seller or a person can check for free, without trusting the agent that shows it.",
   path: PROOFS_PAGE,
@@ -17,7 +17,7 @@ export default function Proofs() {
   return (
     <main>
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Price proofs" }]} />
-      <h1>Signed Price Proofs</h1>
+      <h1>Signed price statements</h1>
       <p className="lede">
         Think of a notary&apos;s stamp. Before two agents agree a price, one can show the other what the official records said, with
         ProofPrice&apos;s stamp on it. The other agent does not need to trust the first one: it checks the stamp, for free, in a second.
@@ -87,7 +87,7 @@ export default function Proofs() {
       <h2>What a proof is not</h2>
       <p>
         It is evidence of what official records showed when ProofPrice signed it. It is not a valuation, a guarantee or an offer, and it does not
-        say whether a price is fair for one particular item.
+        say whether a price is typical for one particular item.
       </p>
     </main>
   );

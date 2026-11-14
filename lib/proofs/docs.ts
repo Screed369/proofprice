@@ -4,7 +4,7 @@ import { JWKS_PATH, PROOF_META_KEY, PROOF_STATEMENT, VERIFY_PATH, VIEW_PREFIX } 
 export const PROOFS_PAGE = "/proofs";
 
 export const PROOFS_SHORT =
-  "Every ok price answer and every price-check verdict can come with a Signed Price Proof: a small Ed25519-signed statement (compact JWS) of what the official records showed, which any other agent, seller or person can check for free without trusting the agent that shows it.";
+  "Every ok price answer and every price-check verdict can come with a signed price statement: a small Ed25519-signed note (compact JWS) of what the official records showed, which any other agent, seller or person can check for free without trusting the agent that shows it.";
 
 export function proofsLlmsLines(base: string): string[] {
   return [
