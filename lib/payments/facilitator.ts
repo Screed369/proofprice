@@ -4,7 +4,14 @@ import { isSolanaAddress, type GateConfig } from "./config";
 import { cdpJwt } from "./cdp-jwt";
 
 export interface VerifyResult { isValid: boolean; invalidReason?: string }
-export interface SettleResult { success: boolean; transaction?: string; network?: string; errorReason?: string }
+export interface SettleResult {
+  success: boolean;
+  transaction?: string;
+  network?: string;
+  errorReason?: string;
+  /** The payer's public address as the facilitator reports it. Only ever used to count distinct wallets (hashed, never stored or returned). */
+  payer?: string;
+}
 
 export interface Facilitator {
   verify(payload: unknown, requirements: unknown): Promise<VerifyResult>;
@@ -88,6 +95,7 @@ export function httpFacilitator(cfg: GateConfig, fetchImpl: typeof fetch = fetch
         transaction: typeof r?.transaction === "string" ? r.transaction : undefined,
         network: typeof r?.network === "string" ? r.network : undefined,
         errorReason: typeof r?.errorReason === "string" ? r.errorReason : undefined,
+        payer: typeof r?.payer === "string" ? r.payer : undefined,
       };
     },
   };

@@ -3,6 +3,7 @@ import { CONTACT, MCP_URL, SITE_URL, connectGuides } from "../../lib/open-book";
 import { CATEGORIES } from "../../lib/registry";
 import { pageMetadata } from "../../lib/site/meta";
 import { joinAnd } from "../../lib/text";
+import { NAME_YOUR_APP } from "../../lib/usage";
 
 export const metadata = pageMetadata({
   title: "Connect ProofPrice to your AI",
@@ -24,6 +25,11 @@ export default function Connect() {
       <p>
         Transport: Streamable HTTP. Tools: {joinAnd([...CATEGORIES.map((c) => c.title.toLowerCase()), "check a price before you pay", "a coverage check"])}.
       </p>
+      <p>
+        Only need homes and rent? A lighter address serves just four tools (home sales, rent prices, check a price and coverage):{" "}
+        <code>{MCP_URL}/homes</code>
+      </p>
+      <p>{NAME_YOUR_APP}</p>
       <section id="check-a-price">
         <h2>Check a price before you pay</h2>
         <p>
@@ -33,7 +39,7 @@ export default function Connect() {
           sits, the reasons, what is missing, and the full evidence answer to keep with your reasoning. Currencies and units are never converted.
         </p>
         <p>
-          Every check comes with a <a href="/proofs">Signed Price Proof</a> another agent (or the seller) can verify for free, without trusting you:
+          Every check comes with a <a href="/proofs">signed price statement</a> another agent (or the seller) can verify for free, without trusting you:
           the <code>X-ProofPrice-Proof</code> header on REST, or <code>_meta[&quot;proofprice/proof&quot;]</code> on the MCP result. Verify at{" "}
           <code>{SITE_URL}/api/v1/proofs/verify?proof=&lt;proof&gt;</code>.
         </p>

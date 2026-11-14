@@ -3,6 +3,7 @@
 import { categoryByRestPath, assertKnownParams, paramsFromQuery, runHistory } from "../../../../../lib/registry";
 import { gatedRest } from "../../../../../lib/payments";
 import { historySourcesFromUrl } from "../../../../../lib/premium-sources";
+import { withoutOwnParam } from "../../../../../lib/usage";
 import { json, errorResponse, baseUrl, corsPreflight } from "../../../../../lib/route-helpers";
 
 // Premium call: with the payment gate off (the default) this is exactly the plain handler (lib/payments/).
@@ -16,7 +17,7 @@ async function handle(req: Request, ctx: { params: Promise<{ category: string }>
   if (!cat) return json({ error: `Unknown endpoint /api/v1/${category}/history. See /api/v1/coverage.` }, 404);
   if (!cat.history) return json({ error: `No daily history is kept for ${cat.restPath} yet.` }, 404);
   try {
-    const params = paramsFromQuery(cat, new URL(req.url).searchParams);
+    const params = paramsFromQuery(cat, withoutOwnParam(new URL(req.url).searchParams)) // ?app= names the caller (lib/usage.ts); it is not a price parameter;
     assertKnownParams(cat, params);
     return json(runHistory(cat, params, { baseUrl: baseUrl(req) }), 200, 3600);
   } catch (e) {

@@ -5,10 +5,11 @@ import { z } from "zod";
 import type { CategoryPlugin } from "./plugin";
 import { CATEGORIES, countriesFor, countryHelp, exampleUrls, historySources, paramSchemas, sourcesFor, toolDescription } from "./registry";
 import { CHECK_REST, CHECK_TOOL, checkExamplePath } from "./check";
-import { checkResultSchema, coverageSchema, errorSchema, historyAnswerSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
+import { checkResultSchema, coverageSchema, errorSchema, historyAnswerSchema, lookupBundleSchema, priceAnswerSchema, toJsonSchema } from "./schemas";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { joinAnd } from "./text";
 import { ANY_TOKEN_NOTE } from "./pricing";
+import { NAME_YOUR_APP } from "./usage";
 import { JWKS_PATH, VERIFY_PATH } from "./proofs";
 import { PROOFS_PAGE, PROOFS_SHORT, proofsLlmsLines } from "./proofs/docs";
 
@@ -25,7 +26,7 @@ const STALE_HEADER = {
 const PROOF_HEADERS = {
   "X-ProofPrice-Proof": {
     description:
-      `Signed Price Proof (only on status ok answers and real verdicts, when proofs are on): a compact JWS (EdDSA / Ed25519, typ proofprice-proof+jws) of what the official records showed. Check it free at ${VERIFY_PATH} or offline with the keys at ${JWKS_PATH}. See ${SITE_URL}${PROOFS_PAGE}.`,
+      `Signed price statement (only on status ok answers and real verdicts, when proofs are on): a compact JWS (EdDSA / Ed25519, typ proofprice-proof+jws) of what the official records showed. Check it free at ${VERIFY_PATH} or offline with the keys at ${JWKS_PATH}. See ${SITE_URL}${PROOFS_PAGE}.`,
     schema: { type: "string" },
   },
   Link: { description: 'With a proof: <https://proofprice.com/p/<jws>>; rel="proof", a page a person can open to see the proof checked.', schema: { type: "string" } },
@@ -183,6 +184,29 @@ export function buildOpenApi(baseUrl: string) {
       },
     },
   };
+  // The pay-first door (a 14-day test from 14 Nov 2026): one templated path. The free look-up above is unchanged.
+  paths["/api/v1/paid/{category}"] = {
+    get: {
+      operationId: "paidLookup",
+      tags: [CHECK_TAG],
+      summary: "Paid look-up with trend (USD 0.01 from the first call, optional)",
+      description:
+        "The normal price answer of a category plus the daily trend from our library and, when you send a price, a check of that price, in one reply: { answer, trend, check, notice }. " +
+        "Costs USD 0.01 per answered call from the first call, paid with x402 (USDC). The call is only charged when the source behind it is cleared for paid use; otherwise it is served free with a note. " +
+        "Not charged for errors or too few records. The basic look-up without trend stays free at /api/v1/<category>.",
+      parameters: [
+        { name: "category", in: "path", required: true, description: "The category's REST path, as in /api/v1/<category>.", schema: { type: "string", enum: CATEGORIES.map((c) => c.restPath) } },
+        ...checkParameters().filter((x: { name: string }) => x.name !== "category").map((x: any) => (x.name === "price" ? { ...x, required: false, description: "Optional. A price to check against the evidence; adds the check result." } : x)),
+        { name: "days", in: "query", required: false, description: "Optional length of the trend in days (2–366). Default 30.", schema: { type: "integer", minimum: 2, maximum: 366, default: 30 } },
+      ],
+      responses: {
+        "200": { description: "{ answer, trend, check, notice }. trend is null when the source keeps no history; check is null when no price was sent.", headers: { ...STALE_HEADER, ...PROOF_HEADERS }, ...jsonBody("LookupBundle") },
+        "400": { description: "Missing or invalid parameter, or a country that is not covered yet.", ...jsonBody("Error") },
+        "402": { description: "Payment required (x402): the reply lists the price, network and pay-to address.", ...jsonBody("Error") },
+        "502": { description: "The official source could not be reached and ProofPrice holds no recent copy of it.", ...jsonBody("Error") },
+      },
+    },
+  };
   const verifyResponse = {
     "200": {
       description:
@@ -195,7 +219,7 @@ export function buildOpenApi(baseUrl: string) {
     get: {
       operationId: "verifyProof",
       tags: [PROOF_TAG],
-      summary: "Check a Signed Price Proof (free)",
+      summary: "Check a signed price statement (free)",
       description: `${PROOFS_SHORT} Free, never charged, CORS open, nothing stored.`,
       parameters: [{ name: "proof", in: "query", required: true, description: "The proof: the compact JWS from the X-ProofPrice-Proof header or the MCP _meta[\"proofprice/proof\"].jws.", schema: { type: "string" } }],
       responses: verifyResponse,
@@ -203,7 +227,7 @@ export function buildOpenApi(baseUrl: string) {
     post: {
       operationId: "verifyProofWithAnswer",
       tags: [PROOF_TAG],
-      summary: "Check a Signed Price Proof, and that a full answer matches it (free)",
+      summary: "Check a signed price statement, and that a full answer matches it (free)",
       description: "Send the proof, and optionally the full answer you were shown: answer_matches says whether its canonical-JSON SHA-256 equals the signed answer_sha256.",
       requestBody: { required: true, content: { "application/json": { schema: { type: "object", properties: { proof: { type: "string" }, answer: { type: "object" } }, required: ["proof"] } } } },
       responses: verifyResponse,
@@ -233,7 +257,7 @@ export function buildOpenApi(baseUrl: string) {
       description:
         "What did people actually pay for X, here, recently? Returns a price range from official open data: median, 10th–90th percentile, sample size, period, confidence, source and licence. Aggregates only; never individual records. " +
         "The data keeps each source's own licence: every answer names its source, that source's licence and the attribution line to show, so reuse follows the publisher's licence. " +
-        "The ProofPrice terms of use govern use of the API itself. Free, read-only, no API key. A few premium calls (price check, daily history) cost a few cents each after a free daily allowance, paid per call with x402; see " + `${SITE_URL}/pricing` + " and " + `${SITE_URL}/pricing.json`+ ".",
+        "The ProofPrice terms of use govern use of the API itself. Free, read-only, no API key. A few premium calls (price check, daily history) cost a few cents each after a free daily allowance, paid per call with x402. A new optional paid look-up with trend (GET /api/v1/paid/<category>, USD 0.01 a call from the first call, a 14-day test) is separate: basic look-ups stay free and unchanged. See " + `${SITE_URL}/pricing` + " and " + `${SITE_URL}/pricing.json`+ ".",
     },
     servers: [{ url: baseUrl }],
     tags: [...CATEGORIES.map(tagFor), { name: CHECK_TAG, description: "Check a proposed price against recorded official evidence before paying." }, { name: PROOF_TAG, description: "Check the signed proof that comes with an answer or verdict, free." }, { name: FIXED_TAG, description: "Which countries, categories and official sources are covered." }],
@@ -244,6 +268,7 @@ export function buildOpenApi(baseUrl: string) {
         PriceAnswer: toJsonSchema(priceAnswerSchema),
         CheckResult: toJsonSchema(checkResultSchema),
         HistoryAnswer: toJsonSchema(historyAnswerSchema),
+        LookupBundle: toJsonSchema(lookupBundleSchema),
         Coverage: toJsonSchema(coverageSchema),
       },
     },
@@ -287,13 +312,20 @@ export function buildLlmsTxt(baseUrl: string): string {
 - MCP tool ${CHECK_TOOL}, or GET ${baseUrl}${CHECK_REST}: give category, country, the category's own parameters and price (optional: currency, unit, includes, negotiate=buyer|seller for evidence to quote when haggling).
 - Returns a verdict (within_typical_range, above_typical_range, below_typical_range, about_average, above_average, below_average or cannot_judge), where the price sits, the reasons, what is missing, one quotable sentence and the full evidence answer. Currencies and units are never converted: a mismatch is cannot_judge.
 - Example: ${checkExample}
-- Every verdict comes with a Signed Price Proof another agent can verify for free (see "Signed Price Proofs" below).
+- Every verdict comes with a signed price statement another agent can verify for free (see "Signed price statements" below).
 
-## Signed Price Proofs
+## Paid look-up with trend (new, optional, a 14-day test)
+- GET ${baseUrl}/api/v1/paid/<category> takes the same parameters as GET ${baseUrl}/api/v1/<category> plus an optional price. USD 0.01 a call from the first call, paid with x402 (USDC); only charged when the source is cleared for paid use, otherwise served free.
+- Returns { answer, trend, check, notice }: the normal answer, the daily trend from our library (null when the source keeps none) and, when you send a price, the price check (otherwise null).
+- The basic look-up without trend stays free at ${baseUrl}/api/v1/<category>, unchanged.
+
+## Signed price statements
 ${proofsLlmsLines(baseUrl).join("\n")}
 
 ## Use it
 - MCP server (Streamable HTTP): ${baseUrl}/api/mcp — tools: ${tools}
+- Lighter MCP address for homes and rent only (4 tools: pricepaid_home_sales, pricepaid_rent_prices, ${CHECK_TOOL}, pricepaid_coverage): ${baseUrl}/api/mcp/homes
+- ${NAME_YOUR_APP}
 - REST API description (OpenAPI 3.1): ${baseUrl}/openapi.json
 - Coverage and licences: ${baseUrl}/api/v1/coverage
 - Method: ${baseUrl}/method

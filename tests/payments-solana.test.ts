@@ -125,7 +125,9 @@ test("Solana: facilitator says invalid -> refused; fee-payer list unreachable ->
   const bad = mock({ valid: false });
   const o1 = await gateCall(base(bad.f, solPayment()));
   assert.equal(o1.kind === "denied" && o1.status, 402);
-  assert.deepEqual(bad.ops(), ["verify"]);
+  // two checks, never a settle: first with our listing details attached, then the payer's own payload (lib/payments/gate.ts), so that
+  // listing details can never be the reason a good payment is refused
+  assert.deepEqual(bad.ops(), ["verify", "verify"]);
   const down = mock({ payers: "throw" });
   const o2 = await gateCall(base(down.f, solPayment()));
   assert.equal(o2.kind === "denied" && o2.status, 503);
