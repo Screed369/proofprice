@@ -101,8 +101,47 @@ export function isOwnRequest(req: Request): boolean {
 /** The query without ppcheck, so the marker never reaches a source or a cache key inside the answer. */
 export function withoutOwnParam(q: URLSearchParams): URLSearchParams {
   const out = new URLSearchParams();
-  for (const [k, v] of q.entries()) if (k !== OWN_QUERY_PARAM) out.append(k, v);
+  for (const [k, v] of q.entries()) if (k !== OWN_QUERY_PARAM && k !== APP_QUERY_PARAM) out.append(k, v);
   return out;
+}
+
+// ---------- an app may tell us its own name (optional) ----------
+
+/** REST: ?app=your-app. The same name an MCP client sends as clientInfo.name. It names software, never a person. */
+export const APP_QUERY_PARAM = "app";
+/** REST: the same thing as a header. */
+export const APP_HEADER = "x-proofprice-app";
+/** Names starting with this are ours (smoke tests, checks, builders): kept out of the bonus and out of the named-apps count. */
+export const OWN_APP_PREFIX = "proofprice-";
+/** The one sentence that tells callers about the bigger free allowance (MCP instructions, coverage rules, llms.txt, /connect, the 402 notice). */
+export const NAME_YOUR_APP = "Tell us your app's name (clientInfo.name on MCP, or ?app=your-app on REST) for a higher free allowance. No personal data.";
+/** A caller that names its app gets this many times the free daily allowance on the premium tools (lib/payments). */
+export const NAMED_APP_ALLOWANCE_FACTOR = 3;
+
+/** The app name, or "" when there is none or it is not allowed. Letters, digits, dot, dash, underscore and space; at most 40
+ *  characters. Anything else (a symbol, an @ sign, a longer text) means the whole value is ignored, not trimmed into something else,
+ *  so an email address or a sentence can never end up stored as a name. Lower-case, so "MyApp" and "myapp" count together. */
+export function validAppName(v: unknown): string {
+  if (typeof v !== "string") return "";
+  const t = v.trim();
+  if (!t || t.length > 40 || !/^[A-Za-z0-9._ -]+$/.test(t)) return "";
+  return t.toLowerCase();
+}
+
+/** The app name a REST or MCP-over-HTTP request carries: ?app= first, then the X-ProofPrice-App header. Nothing else is read. */
+export function appNameOfRequest(req: { url?: string; headers?: Headers | null } | null | undefined): string {
+  try {
+    const q = req?.url ? new URL(req.url, "http://localhost").searchParams.get(APP_QUERY_PARAM) : null;
+    return validAppName(q) || validAppName(req?.headers?.get(APP_HEADER));
+  } catch {
+    return "";
+  }
+}
+
+/** True when a named app earns the larger free allowance: it gave a valid name and the name is not one of ours. */
+export function earnsNamedBonus(name: unknown): boolean {
+  const n = validAppName(name);
+  return !!n && !n.startsWith(OWN_APP_PREFIX);
 }
 
 // ---------- directory probes and health checkers ----------
@@ -854,6 +893,9 @@ export interface UsageReport {
   by_status?: Record<string, number>;
   /** Legacy: every named client together. See clients. */
   by_client?: { client: string; questions: number }[];
+  /** Named apps (MCP clientInfo.name or REST ?app=) that asked at least one real question in the period. Directory probes, crawlers
+   *  and our own proofprice-* names are left out. Added 14 Nov 2026. */
+  named_apps_asking?: number;
   clients?: { directory_checks: Named[]; other_apps: Named[]; note: string };
   sessions?: SessionTotals & {
     days_with_data: number;
@@ -891,6 +933,7 @@ export const FIELD_NOTES: Record<string, string> = {
   by_country: "Old name for by_country_asked_about, kept for compatibility.",
   total_questions: "Old total: every recorded row, handshakes included. Use real_questions.",
   outside_questions: "Old total without our own checks, handshakes included. Use real_questions.",
+  named_apps_asking: "How many different apps that gave us their own name (MCP clientInfo.name, or ?app= / X-ProofPrice-App on REST) asked at least one real question in the period. Directory probes, crawlers and our own proofprice-* names are left out. An app name is software, never a person.",
   sessions: "Distinct anonymous visitors per day, summed over the period (visitor-days). Recorded from 21 Oct 2026.",
 };
 
@@ -1035,6 +1078,7 @@ export function summariseUsage(
     by_country_asked_about: countries.map((c) => ({ ...c })),
     by_status: byStatus,
     by_client: top([...byClient].map(([client, questions]) => ({ client, questions })), 20),
+    named_apps_asking: clientList.filter((c) => c.questions > 0 && !isDirectoryCheck(c.client) && !c.client.startsWith(OWN_APP_PREFIX)).length,
     clients: {
       directory_checks: clientList.filter((c) => isDirectoryCheck(c.client)).slice(0, 30),
       other_apps: clientList.filter((c) => !isDirectoryCheck(c.client)).slice(0, 30),
