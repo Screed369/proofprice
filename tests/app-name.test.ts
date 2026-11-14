@@ -74,7 +74,7 @@ test("no bonus for proofprice-* names, or for an invalid name", async () => {
 
 test("the 402 notice tells callers about the bigger allowance", () => {
   const body: any = paymentRequiredBody(cfg, "check", "https://proofprice.com/api/v1/check");
-  assert.match(body.notice, /Tell us your app's name \(clientInfo\.name on MCP, or \?app=your-app on REST\) for a higher free allowance\. No personal data\./);
+  assert.match(body.notice, /An app that gives its own name \(clientInfo\.name on MCP, or \?app=your-app on REST\) gets a higher free allowance\. No personal data\./);
   assert.match(body.notice, /60 free calls a day instead of 20/);
 });
 

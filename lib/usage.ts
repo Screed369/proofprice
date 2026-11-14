@@ -114,7 +114,7 @@ export const APP_HEADER = "x-proofprice-app";
 /** Names starting with this are ours (smoke tests, checks, builders): kept out of the bonus and out of the named-apps count. */
 export const OWN_APP_PREFIX = "proofprice-";
 /** The one sentence that tells callers about the bigger free allowance (MCP instructions, coverage rules, llms.txt, /connect, the 402 notice). */
-export const NAME_YOUR_APP = "Tell us your app's name (clientInfo.name on MCP, or ?app=your-app on REST) for a higher free allowance. No personal data.";
+export const NAME_YOUR_APP = "An app that gives its own name (clientInfo.name on MCP, or ?app=your-app on REST) gets a higher free allowance. No personal data.";
 /** A caller that names its app gets this many times the free daily allowance on the premium tools (lib/payments). */
 export const NAMED_APP_ALLOWANCE_FACTOR = 3;
 
