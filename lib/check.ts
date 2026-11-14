@@ -439,12 +439,11 @@ export function checkExamplePath(): string {
 
 /** One tool covers every category, so its input is the union of the categories' parameters (all optional here; the category's own
  *  validation runs inside runCheck). Descriptions say which category each parameter belongs to. Built from the registry. */
-export function checkToolShape(categories: CategoryPlugin[]): Record<string, z.ZodTypeAny> {
+export function checkToolShape(categories: CategoryPlugin[], coreOnly = false): Record<string, z.ZodTypeAny> {
   const byName = new Map<string, string[]>();
   for (const cat of categories) {
     for (const [name, schema] of Object.entries(paramSchemas(cat))) {
-      const d = (schema.description ?? "").replace(/\s+/g, " ").slice(0, 200);
-      byName.set(name, [...(byName.get(name) ?? []), `${cat.id}: ${d}`]);
+      byName.set(name, [...(byName.get(name) ?? []), cat.id]);
     }
   }
   const shape: Record<string, z.ZodTypeAny> = {
@@ -456,9 +455,11 @@ export function checkToolShape(categories: CategoryPlugin[]): Record<string, z.Z
     includes: z.string().optional().describe("What the price includes or excludes, as free text (for example 'VAT included, delivery excluded'). Echoed back as a caution; it is not used to adjust the figure."),
     negotiate: z.enum(["buyer", "seller"]).optional().describe("Optional. Which side of the table you are on. Adds a negotiation block: the median and 10th/90th percentile as numbers to quote, the gap to the median, which side the evidence favours (leverage none/some/strong) and quotable evidence sentences. Evidence only, never advice on what to offer."),
   };
-  for (const [name, notes] of byName) {
+  // coreOnly (the MCP tool list): the category's own parameters are not listed one by one, which would repeat every name of every
+  // category in the list an AI reads first; the tool accepts them all anyway (its input object is open) and its description says so.
+  for (const [name, notes] of coreOnly ? [] : byName) {
     if (name in shape || name === "country") continue;
-    shape[name] = z.union([z.string(), z.number()]).optional().describe(`Parameter of the category (same name and meaning as in its own tool). ${notes.join(" | ")}`);
+    shape[name] = z.union([z.string(), z.number()]).optional().describe(`Category parameter, same meaning as in its own tool${notes.length <= 3 ? ` (${notes.join(", ")})` : ""}.`);
   }
   return shape;
 }

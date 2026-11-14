@@ -26,6 +26,7 @@ import {
   ANSWER_DEADLINE_MS, CATEGORIES, SOURCE_PLUGINS, categoryById, countriesFor, coverage, coverageView, exampleUrls, runCategory, sourcesFor, updateFrequency,
 } from "../lib/registry";
 import { coverageToolSchema } from "../lib/schemas";
+import { slimCoverageSchema } from "../lib/mcp-slim";
 import { errorResponse } from "../lib/route-helpers";
 import { summarise } from "../lib/stats";
 import { pendingUsage, resetUsage, setUsageSink } from "../lib/usage";
@@ -368,7 +369,8 @@ test("pricepaid_coverage: the default answer is a short overview (under 20,000 c
   assert.ok(text.length < 20_000, `text is ${text.length} characters`);
   assert.ok(JSON.stringify(sc).length < 20_000, "structuredContent travels as compact JSON");
   assert.ok(spec.config.outputSchema.safeParse(sc).success, JSON.stringify((spec.config.outputSchema.safeParse(sc) as any).error?.issues));
-  assert.equal(spec.config.outputSchema, coverageToolSchema);
+  assert.equal(spec.config.outputSchema, slimCoverageSchema);
+  assert.ok(coverageToolSchema.safeParse(sc).success, "the answer still fits the full coverage schema");
   assert.equal(sc.detail, "summary");
   assert.equal(sc.full_coverage_url, "https://proofprice.com/api/v1/coverage");
   assert.match(sc.summary, /https:\/\/proofprice\.com\/api\/v1\/coverage/);
