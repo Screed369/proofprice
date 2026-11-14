@@ -42,7 +42,10 @@ export interface McpHandlerOptions {
   /** Serve only the tools with these names (in the order buildToolSpecs lists them). Omitted: every tool, as on /api/mcp. */
   tools?: readonly string[];
   /** The homes address only: the check tool talks about homes and rent only (description, category list, and a plain error for any other
-   *  category), and no payment-gate pricing sentence is ever added to a tool description. Omitted: exactly as on /api/mcp. */
+   *  category), and the payment gate is not applied there at all. That address is the one listed in the app directories, whose users
+   *  reach us from the directory's own servers (one shared network address, so one shared free allowance) and cannot pay per call;
+   *  a payment reply there would be a dead end for them and breaks the directories' no-pricing rule. Paid use lives on /api/mcp and
+   *  /api/v1/paid. Omitted: exactly as on /api/mcp. */
   homes?: boolean;
 }
 
@@ -266,16 +269,17 @@ export function registerTools(
   server: { registerTool: (...a: any[]) => unknown },
   specs: ToolSpec[],
   env: Record<string, string | undefined> = process.env,
-  opts: { noPricingText?: boolean } = {},
+  opts: { noGate?: boolean } = {},
 ): void {
   const gateOn = readGateConfig(env) !== null;
   for (const spec of specs) {
-    if (!gateOn || !spec.premium) {
+    // noGate (the homes address): every tool is registered plain, so there is no pricing sentence and never a payment reply
+    if (!gateOn || !spec.premium || opts.noGate) {
       server.registerTool(spec.name, spec.config, (args: Record<string, unknown>) => spec.call(args ?? {}));
       continue;
     }
     const key = spec.premium;
-    const config = { ...spec.config, description: opts.noPricingText ? spec.config.description : spec.config.description + premiumNote(key) };
+    const config = { ...spec.config, description: spec.config.description + premiumNote(key) };
     server.registerTool(spec.name, config, async (args: Record<string, unknown>, ctx: any) => {
       const req: Request | undefined = ctx?.http?.req;
       const meta = ctx?.mcpReq?._meta ?? ctx?._meta;
@@ -314,8 +318,8 @@ export function createProofPriceMcpHandler(deps: ToolDeps = LIVE_DEPS, options: 
     (server) => {
       const keep = options.tools;
       const specs = buildToolSpecs(deps, { homes: options.homes });
-      // homes: the payment gate still works, but its pricing sentence is never put in a description (OpenAI listing rule)
-      registerTools(server as any, keep ? specs.filter((s) => keep.includes(s.name)) : specs, process.env, { noPricingText: options.homes });
+      // homes: no payment gate on that address (see McpHandlerOptions.homes)
+      registerTools(server as any, keep ? specs.filter((s) => keep.includes(s.name)) : specs, process.env, { noGate: options.homes });
     },
     {
       serverInfo: { name: "proofprice", version: SERVICE_VERSION },

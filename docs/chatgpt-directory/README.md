@@ -17,6 +17,9 @@ node scripts/build-chatgpt-plugin.mjs /path/to/proofprice-homes-1.0.0.zip
 ```
 No dependency needed. It leaves out `test-cases.md`, checks the logo is square, and gives the same ZIP every time for the same input. Do not commit the ZIP.
 
+## Decision by the lead (14 Nov 2026)
+The homes address has no payment gate at all: directory users reach us from the directory's own servers (one shared network address, so one shared free allowance) and cannot pay per call. Paid use stays on `/api/mcp` and `/api/v1/paid`.
+
 ## Still to confirm
 - `developerName` (must match the verified OpenAI identity): left out for the lead.
 - `review.demo_recording_url`: left out until the video exists.
@@ -26,6 +29,6 @@ No dependency needed. It leaves out `test-cases.md`, checks the logo is square, 
 - Auth setting: the pack and OpenAI's page show `extensions["com.openai"].auth.type: "none"` inside the server entry of `mcp.json`, but the published `mcp.schema.json` allows only `type`, `url` and `headers` there. Left out. Confirm in the dashboard scan that no auth is read as none.
 - `skills/get-started/SKILL.md` and `onboardingSkill`: OpenAI's example has them, the page calls `onboardingSkill` optional. Left out.
 - `capabilities`: required for Codex packages only; left out.
-- `supportURL` is `https://proofprice.com/connect` (it names ProofPrice and gives hello@proofprice.com). It also mentions free use and links the pricing page. A dedicated support page would avoid any reviewer reading that as pricing wording: the lead decides.
+- `supportURL` is `https://proofprice.com/support`, a plain help page added with this change (no pricing wording). It is live only after the release that carries it.
 - Re-fetch the figures in `test-cases.md` and the country counts in the long description just before submission.
 - The domain token: set `OPENAI_APPS_CHALLENGE` in Vercel when OpenAI shows it (served at `/.well-known/openai-apps-challenge`).

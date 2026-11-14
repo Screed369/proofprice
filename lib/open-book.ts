@@ -73,6 +73,7 @@ export const PUBLIC_PATHS = [
   "/method",
   "/privacy",
   "/terms",
+  "/support",
   "/pricing.json",
   "/llms.txt",
   "/llms-full.txt",

@@ -9,7 +9,7 @@ process.env.PROOFPRICE_LIBRARY_DIR = mkdtempSync(path.join(tmpdir(), "pp-dir-"))
 delete process.env.BLOB_STORE_ID;
 delete process.env.BLOB_READ_WRITE_TOKEN;
 
-import { buildToolSpecs, createProofPriceMcpHandler, HOMES_TOOLS } from "../lib/mcp-tools";
+import { buildToolSpecs, createProofPriceMcpHandler, HOMES_TOOLS, registerTools } from "../lib/mcp-tools";
 import { challengeToken } from "../lib/openai-challenge";
 import { GET as challengeRoute } from "../app/.well-known/openai-apps-challenge/route";
 
@@ -93,4 +93,30 @@ test("/.well-known/openai-apps-challenge: token as plain text, or an uncached 40
   } finally {
     delete process.env.OPENAI_APPS_CHALLENGE;
   }
+});
+
+test("homes address with the payment gate ON: the check tool is registered plain, so it never answers with a payment reply", async () => {
+  const env = { PROOFPRICE_X402_ENABLED: "true", PROOFPRICE_X402_PAY_TO: "0x1111111111111111111111111111111111111111" };
+  let calls = 0;
+  const spec = {
+    premium: "check",
+    name: "pricepaid_check_price",
+    config: { title: "t", description: "plain text", inputSchema: {}, outputSchema: {}, annotations: {} },
+    call: async () => ({ content: [{ type: "text", text: "ok" }], structuredContent: { status: "ok", n: ++calls } }),
+  };
+  const seen: { config: { description: string }; handler: (a: Record<string, unknown>, c?: unknown) => Promise<any> }[] = [];
+  const server = { registerTool: (_n: string, config: any, handler: any) => seen.push({ config, handler }) };
+
+  registerTools(server, [spec as any], env, { noGate: true });
+  assert.equal(seen[0].config.description, "plain text", "no pricing sentence");
+  // far past the 20-a-day free allowance of the gated tool: every call is still answered
+  for (let i = 1; i <= 70; i++) {
+    const r = await seen[0].handler({}, {});
+    assert.ok(!r.isError, `call ${i} answered`);
+    assert.equal(r.structuredContent.n, i);
+  }
+
+  // the same spec on the full server keeps the gate and its wording
+  registerTools(server, [spec as any], env);
+  assert.match(seen[1].config.description, /x402/);
 });
