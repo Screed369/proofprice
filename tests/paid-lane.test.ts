@@ -256,6 +256,35 @@ test("settle carries the Bazaar fields: paymentPayload.resource and paymentPaylo
   assert.deepEqual(Object.keys(facilitatorPayload({ a: 1 }, "history", "https://proofprice.com/api/v1/fuel/history")).sort(), ["a", "extensions", "resource"]);
 });
 
+test("a facilitator that refuses the listing details still takes a good payment: plain payload is checked and settled", async () => {
+  const calls: { op: string; payload: any }[] = [];
+  const picky = {
+    async verify(payload: any) {
+      calls.push({ op: "verify", payload });
+      return payload?.extensions?.bazaar ? { isValid: false, invalidReason: "bazaar_schema_invalid" } : { isValid: true };
+    },
+    async settle(payload: any) {
+      calls.push({ op: "settle", payload });
+      return { success: true, transaction: "0xabc" };
+    },
+  };
+  const url = "https://proofprice.com/api/v1/paid/fuel";
+  const header = b64({ x402Version: 2, accepted: buildRequirements(cfg, "lookup"), payload: { authorization: { from: PAYER } } });
+  const o = await gateCall({ ...base({ resourceUrl: url }), facilitator: picky as any, paymentHeader: header });
+  assert.equal(o.kind, "served");
+  assert.equal(calls.filter((c) => c.op === "verify").length, 2, "enriched first, then the payer's own payload");
+  const settle = calls.find((c) => c.op === "settle")!.payload;
+  assert.equal(settle.extensions, undefined, "the plain payload is the one settled");
+  assert.equal(settle.resource, undefined);
+});
+
+test("a payment that is bad either way is still refused, with the facilitator's reason", async () => {
+  const never = { async verify() { return { isValid: false, invalidReason: "insufficient_funds" }; }, async settle() { throw new Error("must not settle"); } };
+  const header = b64({ x402Version: 2, accepted: buildRequirements(cfg, "lookup"), payload: { authorization: { from: PAYER } } });
+  const o: any = await gateCall({ ...base({ resourceUrl: "https://proofprice.com/api/v1/paid/fuel" }), facilitator: never as any, paymentHeader: header });
+  assert.notEqual(o.kind, "served");
+});
+
 // ---------- wallet counting ----------
 
 const BLOB = { BLOB_READ_WRITE_TOKEN: "test" };

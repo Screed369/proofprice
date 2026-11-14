@@ -18,7 +18,6 @@ against the Notion Source Pipeline rows.
 | it-fuel | MIMIT Osservaprezzi carburanti | IODL 2.0 | "anche qualora la finalità ... sia di tipo commerciale" (s.3) | https://www.dati.gov.it/content/italian-open-data-license-v20 | Name source and licensor; do not imply official status or endorsement. |
 | fr-fuel | Ministère de l'Économie | Licence Ouverte / Etalab 2.0 | "à des fins commerciales ou non" | https://www.data.gouv.fr/pages/legal/licences/etalab-2-0 | Credit source and last-update date. |
 | fr-dvf | DGFiP / Etalab | Licence Ouverte 2.0 | Dataset page shows "Licence Ouverte / Open Licence version 2.0"; clause as for fr-fuel | https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/ | Must not allow re-identification of people or indexing by search engines. Aggregates only. |
-| fr-anil-rents | ANIL local rent observatories | Licence Ouverte 2.0 | "à des fins commerciales ou non" | https://www.data.gouv.fr/pages/legal/licences/etalab-2-0 | Credit source. Basis: page. |
 | eu-oil-bulletin | European Commission DG Energy | CC BY 4.0 | "licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) licence" | https://commission.europa.eu/legal-notice_en | Credit and mark changes. Notice says "unless otherwise indicated". Answers IE and DE (and other EU) fuel. |
 | us-eia-fuel | US EIA | Public domain | "You may use and/or distribute any of our data" | https://www.eia.gov/about/copyrights_reuse.php | Acknowledge with publication date; EIA logo not used. |
 | gb-desnz-fuel | DESNZ | OGL v3.0 | "exploit the Information commercially and non-commercially" | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ | OGL excludes personal data and third-party rights. |
@@ -29,6 +28,17 @@ against the Notion Source Pipeline rows.
 | sg-hdb-resale | HDB via data.gov.sg | Singapore Open Data Licence v1.0 | "whether commercially or non-commercially" | https://data.gov.sg/open-data-licence | Visible attribution notice; do not imply endorsement. |
 | sg-hdb-rents | HDB via data.gov.sg | Singapore Open Data Licence v1.0 | same | same | same |
 | tw-home-sales | Ministry of the Interior, Taiwan | Open Government Data License v1.0 | "for any purpose, including but not limited to making all kinds of Derivative Works" (cl. 2.1) | https://data.gov.tw/license | Attribution (cl. 3.2). Read by curl (the fetch tool is robots-blocked there). |
+
+## Held back by the lead: licence text read, dataset record not yet opened
+
+These seven were first marked YES on the licence text alone. The lead (14 Nov 2026) took them off `CLEARED_FOR_PAID` until each dataset's own
+record is opened and shows that licence. Until then they are served free, never charged. fr-fuel was in the same position; the lead opened its
+record (https://www.data.gouv.fr/datasets/prix-des-carburants-en-france-flux-instantane-v2-amelioree: "Licence Ouverte / Open Licence version 2.0")
+and it stays cleared.
+
+| Source id | Publisher | Licence | Quoted clause (checked 2026-11-14) | URL | Restrictions |
+|---|---|---|---|---|---|
+| fr-anil-rents | ANIL local rent observatories | Licence Ouverte 2.0 | "à des fins commerciales ou non" | https://www.data.gouv.fr/pages/legal/licences/etalab-2-0 | Credit source. Basis: page. |
 | us-allegheny-home-sales | Allegheny County via WPRDC | CC0 1.0 | "copy, modify, distribute and perform the work, even for commercial purposes" | https://creativecommons.org/publicdomain/zero/1.0/ | Basis: page. |
 | us-dc-home-sales | DC OCFO | CC BY 4.0 | "for any purpose, even commercially" | https://creativecommons.org/licenses/by/4.0/ | Credit. Basis: page. |
 | au-sa-metro-home-sales | SA Govt (DHUD) | CC BY 4.0 | same | same | Credit. Basis: page. |

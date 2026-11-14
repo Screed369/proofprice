@@ -213,9 +213,9 @@ test("CDP JWT: signs with an EC key and with an Ed25519 key (generated here, not
 test("licence guard: the cleared list is exactly the sources whose Pipeline line says commercial: yes; default is not cleared", () => {
   // The 20 Oct batch (5) plus the 14 Nov 2026 batch checked against the licence pages (docs/licence-clearance-2026-11.md).
   assert.deepEqual([...CLEARED_FOR_PAID].sort(), [
-    "au-adelaide-sa-rents", "au-justice-tas-rents", "au-qld-rents", "au-sa-metro-home-sales", "ca-cmhc-rents", "ca-farm-prices", "eu-energy", "eu-oil-bulletin",
-    "fr-anil-rents", "fr-dvf", "fr-fuel", "gb-desnz-fuel", "gb-hmlr-ppd", "gb-ons-rents", "gb-ukhpi", "ie-ppr", "it-fuel", "no-childcare-fees", "sg-hdb-rents",
-    "sg-hdb-resale", "tw-home-sales", "us-allegheny-home-sales", "us-dc-home-sales", "us-eia-fuel", "wb-fpn-diet-costs",
+    "ca-cmhc-rents", "ca-farm-prices", "eu-energy", "eu-oil-bulletin",
+    "fr-dvf", "fr-fuel", "gb-desnz-fuel", "gb-hmlr-ppd", "gb-ons-rents", "gb-ukhpi", "ie-ppr", "it-fuel", "no-childcare-fees", "sg-hdb-rents",
+    "sg-hdb-resale", "tw-home-sales", "us-eia-fuel", "wb-fpn-diet-costs",
   ]);
   for (const notYet of ["es-fuel", "ie-rtb-rents", "us-detroit-home-sales", "us-az-maricopa-home-sales", "us-census-acs-rent"]) assert.equal(CLEARED_FOR_PAID.has(notYet), false);
   assert.equal(allCleared(["eu-energy"]), true);

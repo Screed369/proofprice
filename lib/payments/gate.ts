@@ -218,13 +218,26 @@ export async function gateCall<T>(o: GateOptions<T>): Promise<GateOutcome<T>> {
     }
   }
 
-  let verified;
+  // The listing details (resource + Bazaar block) ride along with the payment, but they must never cost us a payment that is good:
+  // if the facilitator refuses or fails on the enriched payload, the payer's own payload is checked exactly as before this change,
+  // and that plain payload is then the one settled (the call is simply not indexed).
+  let toFacilitator: unknown = facilitatorPayload(payload, key, o.resourceUrl);
+  let verified: Awaited<ReturnType<Facilitator["verify"]>> | null = null;
   try {
-    verified = await o.facilitator.verify(facilitatorPayload(payload, key, o.resourceUrl), want);
+    verified = await o.facilitator.verify(toFacilitator, want);
   } catch {
-    return unavailable("Could not check the payment. Nothing was charged. Try again later.");
+    verified = null;
   }
-  if (!verified.isValid) return deny("invalid_payment", verified.invalidReason ?? "payment not valid");
+  if (!verified?.isValid) {
+    try {
+      const plain = await o.facilitator.verify(payload, want);
+      if (plain.isValid || !verified) verified = plain;
+      if (plain.isValid) toFacilitator = payload;
+    } catch {
+      if (!verified) return unavailable("Could not check the payment. Nothing was charged. Try again later.");
+    }
+  }
+  if (!verified || !verified.isValid) return deny("invalid_payment", verified?.invalidReason ?? "payment not valid");
 
   const result = await o.run();
   if (!o.chargeable(result)) return { kind: "served", result, paid: false, headers: { "x-proofprice-charged": "no" } };
@@ -235,7 +248,7 @@ export async function gateCall<T>(o: GateOptions<T>): Promise<GateOutcome<T>> {
 
   let settled;
   try {
-    settled = await o.facilitator.settle(facilitatorPayload(payload, key, o.resourceUrl), want);
+    settled = await o.facilitator.settle(toFacilitator, want);
   } catch {
     return unavailable("The payment could not be completed, so no answer was released and nothing was charged. Try again later.");
   }

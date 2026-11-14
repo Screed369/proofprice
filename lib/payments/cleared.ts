@@ -16,7 +16,6 @@ export const CLEARED_FOR_PAID: ReadonlySet<string> = new Set([
   "it-fuel", // MIMIT, IODL 2.0, commercial use stated in s.3 (checked 2026-11-14)
   "fr-fuel", // Etalab Licence Ouverte 2.0, "à des fins commerciales ou non" (checked 2026-11-14)
   "fr-dvf", // Licence Ouverte 2.0; no re-identification, no search indexing (we serve aggregates) (checked 2026-11-14)
-  "fr-anil-rents", // Licence Ouverte 2.0 (checked 2026-11-14)
   "eu-oil-bulletin", // European Commission, CC BY 4.0 (answers IE and DE fuel) (checked 2026-11-14)
   "us-eia-fuel", // US EIA, public domain (checked 2026-11-14)
   "gb-desnz-fuel", // Open Government Licence v3.0 (checked 2026-11-14)
@@ -27,12 +26,6 @@ export const CLEARED_FOR_PAID: ReadonlySet<string> = new Set([
   "sg-hdb-resale", // Singapore Open Data Licence v1.0, commercial use allowed (checked 2026-11-14)
   "sg-hdb-rents", // Singapore Open Data Licence v1.0, commercial use allowed (checked 2026-11-14)
   "tw-home-sales", // Taiwan Open Government Data License v1.0, "for any purpose" (checked 2026-11-14)
-  "us-allegheny-home-sales", // CC0 1.0 (checked 2026-11-14)
-  "us-dc-home-sales", // CC BY 4.0 (checked 2026-11-14)
-  "au-sa-metro-home-sales", // CC BY 4.0 (checked 2026-11-14)
-  "au-adelaide-sa-rents", // CC BY 4.0 (checked 2026-11-14)
-  "au-justice-tas-rents", // CC BY 4.0 (checked 2026-11-14)
-  "au-qld-rents", // CC BY 4.0 (checked 2026-11-14)
 ]);
 
 export const UNCLEARED_NOTE =
