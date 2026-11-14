@@ -24,7 +24,6 @@ against the Notion Source Pipeline rows.
 | gb-hmlr-ppd | HM Land Registry | OGL v3.0 | same OGL clause | same | Aggregates only (the register holds addresses). |
 | gb-ukhpi | HMLR, RoS, LPS NI, ONS | OGL v3.0 | same OGL clause | same | As above. |
 | gb-ons-rents | ONS | OGL v3.0 | same OGL clause | same | |
-| ie-ppr | PSRA | CC BY 4.0 (data.gov.ie record "PSRA - Dublin Residential Property Price Register"); PSRA re-use terms | CC deed: "for any purpose, even commercially" (https://creativecommons.org/licenses/by/4.0/). PSRA terms: "free of charge in any format" | https://www.propertypriceregister.ie/website/npsra/ppr-copyright-en.html | PSRA terms forbid use "for the principal purpose of advertising or promoting a particular product or service". A price look-up is not that, but never use the register to promote a product. The PSRA page itself does not mention commercial use; the clearance rests on the CC BY 4.0 catalogue record (the record title says Dublin; the national file is the same register). Lead to confirm. |
 | sg-hdb-resale | HDB via data.gov.sg | Singapore Open Data Licence v1.0 | "whether commercially or non-commercially" | https://data.gov.sg/open-data-licence | Visible attribution notice; do not imply endorsement. |
 | sg-hdb-rents | HDB via data.gov.sg | Singapore Open Data Licence v1.0 | same | same | same |
 | tw-home-sales | Ministry of the Interior, Taiwan | Open Government Data License v1.0 | "for any purpose, including but not limited to making all kinds of Derivative Works" (cl. 2.1) | https://data.gov.tw/license | Attribution (cl. 3.2). Read by curl (the fetch tool is robots-blocked there). |
@@ -50,6 +49,7 @@ and it stays cleared.
 
 | Source id | Verdict | Why |
 |---|---|---|
+| ie-ppr | UNCLEAR | First marked YES on a CC BY 4.0 label on one data.gov.ie record (Dublin register). The lead held it back on 14 Nov 2026: the PSRA re-use terms never mention commercial use and forbid use for "the principal purpose of advertising or promoting a particular product", and nine earlier licence checks in the Source Pipeline said unclear. Served free. |
 | es-fuel | UNCLEAR | The ministry page named in INFO (sede.serviciosmin.gob.es aviso legal) belongs to the Industry ministry and never says "comerciales". datos.gob.es's general notice does allow "fines comerciales y no comerciales" but does not mention the Ministerio para la Transición Ecológica's dataset. The ministry also requires that content "no sea alterado"; our medians are derived. Needs the MITECO dataset's own licence line. |
 | es-appraised-homes | UNCLEAR | Ministry licence pages refused automated reading (INFO note). Not opened. |
 | ie-rtb-rents | UNCLEAR | CSO copyright page could not be opened today (fetch permission not granted). INFO says CC BY 4.0, which would be YES once confirmed. |

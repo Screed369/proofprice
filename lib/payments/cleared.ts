@@ -22,7 +22,6 @@ export const CLEARED_FOR_PAID: ReadonlySet<string> = new Set([
   "gb-hmlr-ppd", // Open Government Licence v3.0; aggregates only (checked 2026-11-14)
   "gb-ukhpi", // Open Government Licence v3.0 (checked 2026-11-14)
   "gb-ons-rents", // Open Government Licence v3.0 (checked 2026-11-14)
-  "ie-ppr", // PSRA, CC BY 4.0 on data.gov.ie; site terms forbid use to advertise or promote a product (checked 2026-11-14)
   "sg-hdb-resale", // Singapore Open Data Licence v1.0, commercial use allowed (checked 2026-11-14)
   "sg-hdb-rents", // Singapore Open Data Licence v1.0, commercial use allowed (checked 2026-11-14)
   "tw-home-sales", // Taiwan Open Government Data License v1.0, "for any purpose" (checked 2026-11-14)
