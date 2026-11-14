@@ -9,7 +9,8 @@ import { isSolanaAddress, type GateConfig } from "./config";
 import type { Facilitator } from "./facilitator";
 import { SITE_URL } from "../site/constants";
 import { bazaarExtension, descriptionFor } from "./discovery";
-import { DAILY_PAID_CAP, PREMIUM, type PremiumKey } from "./prices";
+import { DAILY_PAID_CAP, PREMIUM, freeAllowance, type PremiumKey } from "./prices";
+import { earnsNamedBonus, NAME_YOUR_APP } from "../usage";
 import { notePaid, paidCapReached, takeFree } from "./quota";
 
 export interface PaymentRequirements {
@@ -107,7 +108,7 @@ export function paymentRequiredBody(
     extensions: { bazaar: bazaarExtension(key, resourceUrl) },
     notice:
       p.freePerDay > 0
-        ? `The free allowance of ${p.freePerDay} calls a day for this tool is used up. Basic price look-ups stay free and need no payment. Not charged when the answer is "not enough records" or an error.`
+        ? `The free allowance of ${p.freePerDay} calls a day for this tool is used up. Basic price look-ups stay free and need no payment. Not charged when the answer is "not enough records" or an error. ${NAME_YOUR_APP} (${freeAllowance(key, true)} free calls a day instead of ${p.freePerDay}.)`
         : `This call is paid from the first call (USD ${(p.microUsd / 1_000_000).toFixed(2)}). The basic look-up without trend stays free and needs no payment. Not charged when the answer is "not enough records" or an error.`,
   };
 }
@@ -122,6 +123,8 @@ export interface GateOptions<T> {
   key: PremiumKey;
   /** Network address of the caller, used only for the free-quota counter (hashed in memory, see quota.ts). */
   callerAddress: string;
+  /** The app's own name, if the caller gave one (validated, lib/usage.ts validAppName). Only raises the free allowance. */
+  callerApp?: string | null;
   /** The payment header value (base64 JSON) if the caller sent one. */
   paymentHeader?: string | null;
   resourceUrl: string;
@@ -173,7 +176,7 @@ export async function gateCall<T>(o: GateOptions<T>): Promise<GateOutcome<T>> {
 
   if (!header) {
     // freePerDay 0 = paid from the first call: no free call is ever taken (and no counter entry is made).
-    if (PREMIUM[key].freePerDay > 0 && takeFree(o.callerAddress, key, PREMIUM[key].freePerDay, now)) {
+    if (PREMIUM[key].freePerDay > 0 && takeFree(o.callerAddress, key, freeAllowance(key, earnsNamedBonus(o.callerApp)), now)) {
       return { kind: "served", result: await o.run(), paid: false, headers: {} };
     }
     return deny402(cfg, key, o.resourceUrl, "payment_required", undefined, o.facilitator);

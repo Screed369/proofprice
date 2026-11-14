@@ -5,6 +5,8 @@
 // Basic official-data answers (the 15 category tools, /api/v1/<category>, coverage) are NOT in this list and stay free: the
 // discoverability plan depends on it. Bulk is not built yet, so it has no entry.
 
+import { NAMED_APP_ALLOWANCE_FACTOR } from "../usage";
+
 export type PremiumKey = "check" | "history" | "lookup";
 
 export interface PremiumPrice {
@@ -29,3 +31,8 @@ export const PREMIUM: Record<PremiumKey, PremiumPrice> = {
 
 /** Safety cap on paid calls served per UTC day by one server instance (spend/abuse control). */
 export const DAILY_PAID_CAP = 5_000;
+
+/** Free calls a day for this tool for a caller that names its app (lib/usage.ts, NAMED_APP_ALLOWANCE_FACTOR times the plain allowance). */
+export function freeAllowance(key: PremiumKey, namedApp: boolean): number {
+  return PREMIUM[key].freePerDay * (namedApp ? NAMED_APP_ALLOWANCE_FACTOR : 1);
+}

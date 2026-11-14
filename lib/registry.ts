@@ -1,6 +1,7 @@
 // The registry: everything about tools and sources is derived from the plug-in folders.
 // MCP tools, REST routes, coverage, openapi.json, llms.txt, the home page and the smoke tests all read from here.
 
+import { NAME_YOUR_APP } from "./usage";
 import { z, ZodTypeAny } from "zod";
 import { CATEGORY_MODULES, SOURCE_MODULES } from "./registry.generated";
 import type { CategoryPlugin, HandleContext, Params, SourceInfo, SourcePlugin, ToolPlace } from "./plugin";
@@ -570,6 +571,7 @@ const COVERAGE_RULES = [
   "No range is published from fewer than 5 records.",
   "Aggregates only: no individual addresses or personal data are returned for home sales.",
   "Information, not a valuation or offer.",
+  NAME_YOUR_APP,
 ];
 
 /** The complete coverage list, for GET /api/v1/coverage (the smoke test and the Monitor read its examples). Every source in full:

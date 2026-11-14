@@ -9,6 +9,7 @@ import { checkResultSchema, coverageSchema, errorSchema, historyAnswerSchema, lo
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { joinAnd } from "./text";
 import { ANY_TOKEN_NOTE } from "./pricing";
+import { NAME_YOUR_APP } from "./usage";
 import { JWKS_PATH, VERIFY_PATH } from "./proofs";
 import { PROOFS_PAGE, PROOFS_SHORT, proofsLlmsLines } from "./proofs/docs";
 
@@ -25,7 +26,7 @@ const STALE_HEADER = {
 const PROOF_HEADERS = {
   "X-ProofPrice-Proof": {
     description:
-      `Signed Price Proof (only on status ok answers and real verdicts, when proofs are on): a compact JWS (EdDSA / Ed25519, typ proofprice-proof+jws) of what the official records showed. Check it free at ${VERIFY_PATH} or offline with the keys at ${JWKS_PATH}. See ${SITE_URL}${PROOFS_PAGE}.`,
+      `Signed price statement (only on status ok answers and real verdicts, when proofs are on): a compact JWS (EdDSA / Ed25519, typ proofprice-proof+jws) of what the official records showed. Check it free at ${VERIFY_PATH} or offline with the keys at ${JWKS_PATH}. See ${SITE_URL}${PROOFS_PAGE}.`,
     schema: { type: "string" },
   },
   Link: { description: 'With a proof: <https://proofprice.com/p/<jws>>; rel="proof", a page a person can open to see the proof checked.', schema: { type: "string" } },
@@ -218,7 +219,7 @@ export function buildOpenApi(baseUrl: string) {
     get: {
       operationId: "verifyProof",
       tags: [PROOF_TAG],
-      summary: "Check a Signed Price Proof (free)",
+      summary: "Check a signed price statement (free)",
       description: `${PROOFS_SHORT} Free, never charged, CORS open, nothing stored.`,
       parameters: [{ name: "proof", in: "query", required: true, description: "The proof: the compact JWS from the X-ProofPrice-Proof header or the MCP _meta[\"proofprice/proof\"].jws.", schema: { type: "string" } }],
       responses: verifyResponse,
@@ -226,7 +227,7 @@ export function buildOpenApi(baseUrl: string) {
     post: {
       operationId: "verifyProofWithAnswer",
       tags: [PROOF_TAG],
-      summary: "Check a Signed Price Proof, and that a full answer matches it (free)",
+      summary: "Check a signed price statement, and that a full answer matches it (free)",
       description: "Send the proof, and optionally the full answer you were shown: answer_matches says whether its canonical-JSON SHA-256 equals the signed answer_sha256.",
       requestBody: { required: true, content: { "application/json": { schema: { type: "object", properties: { proof: { type: "string" }, answer: { type: "object" } }, required: ["proof"] } } } },
       responses: verifyResponse,
@@ -311,18 +312,20 @@ export function buildLlmsTxt(baseUrl: string): string {
 - MCP tool ${CHECK_TOOL}, or GET ${baseUrl}${CHECK_REST}: give category, country, the category's own parameters and price (optional: currency, unit, includes, negotiate=buyer|seller for evidence to quote when haggling).
 - Returns a verdict (within_typical_range, above_typical_range, below_typical_range, about_average, above_average, below_average or cannot_judge), where the price sits, the reasons, what is missing, one quotable sentence and the full evidence answer. Currencies and units are never converted: a mismatch is cannot_judge.
 - Example: ${checkExample}
-- Every verdict comes with a Signed Price Proof another agent can verify for free (see "Signed Price Proofs" below).
+- Every verdict comes with a signed price statement another agent can verify for free (see "Signed price statements" below).
 
 ## Paid look-up with trend (new, optional, a 14-day test)
 - GET ${baseUrl}/api/v1/paid/<category> takes the same parameters as GET ${baseUrl}/api/v1/<category> plus an optional price. USD 0.01 a call from the first call, paid with x402 (USDC); only charged when the source is cleared for paid use, otherwise served free.
 - Returns { answer, trend, check, notice }: the normal answer, the daily trend from our library (null when the source keeps none) and, when you send a price, the price check (otherwise null).
 - The basic look-up without trend stays free at ${baseUrl}/api/v1/<category>, unchanged.
 
-## Signed Price Proofs
+## Signed price statements
 ${proofsLlmsLines(baseUrl).join("\n")}
 
 ## Use it
 - MCP server (Streamable HTTP): ${baseUrl}/api/mcp — tools: ${tools}
+- Lighter MCP address for homes and rent only (4 tools: pricepaid_home_sales, pricepaid_rent_prices, ${CHECK_TOOL}, pricepaid_coverage): ${baseUrl}/api/mcp/homes
+- ${NAME_YOUR_APP}
 - REST API description (OpenAPI 3.1): ${baseUrl}/openapi.json
 - Coverage and licences: ${baseUrl}/api/v1/coverage
 - Method: ${baseUrl}/method
