@@ -17,7 +17,7 @@ export default function Privacy() {
     <main>
       <h1>Privacy notice</h1>
       <p>
-        <em>Version 1.1, 21 October 2026.</em>
+        <em>Version 1.2, 14 November 2026.</em>
       </p>
 
       <h2>Who we are</h2>
@@ -48,6 +48,12 @@ export default function Privacy() {
             sends it when it connects, the name of the app.
           </p>
           <p>
+            An app may give us its own name: an MCP app sends it when it connects (clientInfo.name), and a REST caller can add{" "}
+            <code>?app=your-app</code> or an <code>X-ProofPrice-App</code> header. We store that name with the anonymous counts above, and in return the app gets a
+            higher free daily allowance on the premium tools. The name should be the app&apos;s own, never a person&apos;s name. A value that is
+            not a plain app name (letters, digits, dots, dashes, underscores and spaces, up to 40 characters) is ignored.
+          </p>
+          <p>
             To count how many different visitors we had each day, we turn your IP address and the name of your software (user agent) into a
             one-way hash, mixed with a random value that is created each day. The hash is used only to count distinct visitors that day.
             Shortly after the day ends (UTC) we keep only the totals and delete the hashes and that day&apos;s random value, so the hash cannot be traced back
@@ -60,6 +66,22 @@ export default function Privacy() {
             need.
           </p>
         </>
+      )}
+
+      <h2>If you pay for a premium call</h2>
+      <p>
+        Paying with x402 uses a public wallet address on a public blockchain, and the payment itself is public there. We do not store your wallet
+        address and we do not return it in any answer. The payment is verified and settled through a payment service (Coinbase&apos;s x402
+        facilitator), which handles the address under its own terms. Paid calls are optional: basic price look-ups stay free and need no
+        payment and no wallet.
+      </p>
+      {counting && (
+        <p>
+          We keep anonymous daily counts of paid calls for each kind of premium call, and the number of different paying wallets each day. To count
+          different wallets, the address is turned into a one-way hash mixed with the same random daily value used for visitors, and only that hash is
+          used, only to count that day. Shortly after the day ends (UTC) the hashes and the daily value are deleted and only totals remain. Payments
+          from our own wallets are counted separately and are never part of the outside numbers.
+        </p>
       )}
 
       <h2>What we do not do</h2>

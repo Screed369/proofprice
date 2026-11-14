@@ -211,9 +211,15 @@ test("CDP JWT: signs with an EC key and with an Ed25519 key (generated here, not
 // ---------- licence guard (S1) ----------
 
 test("licence guard: the cleared list is exactly the sources whose Pipeline line says commercial: yes; default is not cleared", () => {
-  assert.deepEqual([...CLEARED_FOR_PAID].sort(), ["ca-cmhc-rents", "ca-farm-prices", "eu-energy", "no-childcare-fees", "wb-fpn-diet-costs"]);
+  // The 20 Oct batch (5) plus the 14 Nov 2026 batch checked against the licence pages (docs/licence-clearance-2026-11.md).
+  assert.deepEqual([...CLEARED_FOR_PAID].sort(), [
+    "ca-cmhc-rents", "ca-farm-prices", "eu-energy", "eu-oil-bulletin",
+    "fr-dvf", "fr-fuel", "gb-desnz-fuel", "gb-hmlr-ppd", "gb-ons-rents", "gb-ukhpi", "it-fuel", "no-childcare-fees", "sg-hdb-rents",
+    "sg-hdb-resale", "tw-home-sales", "us-eia-fuel", "wb-fpn-diet-costs",
+  ]);
+  for (const notYet of ["ie-ppr", "es-fuel", "ie-rtb-rents", "us-detroit-home-sales", "us-az-maricopa-home-sales", "us-census-acs-rent"]) assert.equal(CLEARED_FOR_PAID.has(notYet), false);
   assert.equal(allCleared(["eu-energy"]), true);
-  assert.equal(allCleared(["eu-energy", "ie-ppr"]), false, "one uncleared source is enough");
+  assert.equal(allCleared(["eu-energy", "es-fuel"]), false, "one uncleared source is enough");
   for (const bad of [null, undefined, [], ["new-source"], ["mx-fuel"], ["br-fuel"], ["us-home-sales"], ["un-wfp-food-prices"]]) assert.equal(allCleared(bad as any), false);
 });
 
