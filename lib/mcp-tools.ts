@@ -15,7 +15,7 @@ import { slimAnswerSchema, slimCheckSchema, slimCoverageSchema, slimHistorySchem
 import type { ZodTypeAny } from "zod";
 import type { CategoryPlugin } from "./plugin";
 import { CATEGORIES, coverageView, historyDays, runCategory, runHistory, toolDescription, toolShape } from "./registry";
-import { CHECK_TOOL, checkToolDescription, checkToolShape, runCheck } from "./check";
+import { CHECK_TOOL, HOMES_CHECK_CATEGORIES, checkToolDescription, checkToolShape, homesCheckCategoryMessage, homesCheckToolDescription, resolveCategory, runCheck } from "./check";
 import { withDeadline } from "./http";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { historySources, checkSources } from "./premium-sources";
@@ -41,6 +41,14 @@ export const HOMES_TOOLS = ["pricepaid_home_sales", "pricepaid_rent_prices", CHE
 export interface McpHandlerOptions {
   /** Serve only the tools with these names (in the order buildToolSpecs lists them). Omitted: every tool, as on /api/mcp. */
   tools?: readonly string[];
+  /** The homes address only: the check tool talks about homes and rent only (description, category list, and a plain error for any other
+   *  category), and no payment-gate pricing sentence is ever added to a tool description. Omitted: exactly as on /api/mcp. */
+  homes?: boolean;
+}
+
+export interface BuildSpecOptions {
+  /** See McpHandlerOptions.homes. */
+  homes?: boolean;
 }
 
 export interface McpToolResult {
@@ -147,7 +155,7 @@ async function guarded(
   }
 }
 
-export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
+export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS, opts: BuildSpecOptions = {}): ToolSpec[] {
   const specs: ToolSpec[] = [];
   const limits = deps.limits ?? {};
   for (const cat of deps.categories) {
@@ -185,25 +193,36 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
     }
   }
   const checkTitle = "Check a price before you pay";
+  // homes address: only the home-sales and rent categories are offered to, and accepted by, the check tool
+  const homesCats = opts.homes ? deps.categories.filter((c) => (HOMES_CHECK_CATEGORIES as readonly string[]).includes(c.id)) : null;
+  const checkCats = homesCats ?? deps.categories;
   specs.push({
     premium: "check",
     sources: (args) => checkSources(args, deps.categories),
     name: CHECK_TOOL,
     config: {
       title: checkTitle,
-      description: checkToolDescription(deps.categories),
-      inputSchema: z.looseObject(slimShape(checkToolShape(deps.categories, true))),
+      description: homesCats ? homesCheckToolDescription() : checkToolDescription(deps.categories),
+      inputSchema: z.looseObject(slimShape(checkToolShape(checkCats, true, homesCats !== null))),
       outputSchema: slimCheckSchema,
       annotations: { title: checkTitle, ...READ_ONLY },
     },
-    call: (args) =>
-      guarded(
+    call: (args) => {
+      if (homesCats) {
+        try {
+          resolveCategory(homesCats, args.category);
+        } catch {
+          return Promise.resolve(asError(new Error(homesCheckCategoryMessage())));
+        }
+      }
+      return guarded(
         CHECK_TOOL,
         limits,
         () => runCheck(args, { categories: deps.categories, runCategory: deps.runCategory }, { baseUrl: SITE_URL }),
         { tool: CHECK_TOOL, args },
         { kind: "check", category: "" }, // a check's category is read from its own result (input.category)
-      ),
+      );
+    },
   });
   const coverageTitle = "What price data is covered";
   specs.push({
@@ -243,7 +262,12 @@ function stringArg(v: unknown): string | undefined {
 /** Register the tools on an MCP server. The SDK validates each successful result's structuredContent against its outputSchema.
  *  Payment gate: premium tools are wrapped ONLY while the gate is active (lib/payments/config.ts). With it off, registration is
  *  exactly as before: same descriptions, same handlers, same tools/list. */
-export function registerTools(server: { registerTool: (...a: any[]) => unknown }, specs: ToolSpec[], env: Record<string, string | undefined> = process.env): void {
+export function registerTools(
+  server: { registerTool: (...a: any[]) => unknown },
+  specs: ToolSpec[],
+  env: Record<string, string | undefined> = process.env,
+  opts: { noPricingText?: boolean } = {},
+): void {
   const gateOn = readGateConfig(env) !== null;
   for (const spec of specs) {
     if (!gateOn || !spec.premium) {
@@ -251,7 +275,7 @@ export function registerTools(server: { registerTool: (...a: any[]) => unknown }
       continue;
     }
     const key = spec.premium;
-    const config = { ...spec.config, description: spec.config.description + premiumNote(key) };
+    const config = { ...spec.config, description: opts.noPricingText ? spec.config.description : spec.config.description + premiumNote(key) };
     server.registerTool(spec.name, config, async (args: Record<string, unknown>, ctx: any) => {
       const req: Request | undefined = ctx?.http?.req;
       const meta = ctx?.mcpReq?._meta ?? ctx?._meta;
@@ -289,7 +313,9 @@ export function createProofPriceMcpHandler(deps: ToolDeps = LIVE_DEPS, options: 
   return createMcpHandler(
     (server) => {
       const keep = options.tools;
-      registerTools(server as any, keep ? buildToolSpecs(deps).filter((s) => keep.includes(s.name)) : buildToolSpecs(deps));
+      const specs = buildToolSpecs(deps, { homes: options.homes });
+      // homes: the payment gate still works, but its pricing sentence is never put in a description (OpenAI listing rule)
+      registerTools(server as any, keep ? specs.filter((s) => keep.includes(s.name)) : specs, process.env, { noPricingText: options.homes });
     },
     {
       serverInfo: { name: "proofprice", version: SERVICE_VERSION },

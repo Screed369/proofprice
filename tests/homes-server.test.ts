@@ -15,7 +15,7 @@ import { buildToolSpecs, createProofPriceMcpHandler, HOMES_TOOLS } from "../lib/
 const HEADERS = { "content-type": "application/json", accept: "application/json, text/event-stream" };
 const META = { "io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientInfo": { name: "spec-test", version: "1" }, "io.modelcontextprotocol/clientCapabilities": {} };
 const main = createProofPriceMcpHandler();
-const homes = createProofPriceMcpHandler(undefined, { tools: HOMES_TOOLS });
+const homes = createProofPriceMcpHandler(undefined, { tools: HOMES_TOOLS, homes: true });
 
 async function rpc(h: (r: Request) => Promise<Response>, url: string, method: string, params: Record<string, unknown>) {
   const res = await h(new Request(url, { method: "POST", headers: { ...HEADERS, "mcp-method": method, ...(method === "tools/call" ? { "mcp-name": String(params.name) } : {}), "mcp-protocol-version": "2026-07-28" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params: { ...params, _meta: META } }) }));
@@ -31,7 +31,11 @@ test("the homes address lists exactly the four homes tools, under their public n
 test("each homes tool is the same tool as on the main address (same text, inputs, handler path)", async () => {
   const a = await rpc(main, "http://localhost/api/mcp", "tools/list", {});
   const b = await rpc(homes, "http://localhost/api/mcp/homes", "tools/list", {});
-  for (const t of b.result.tools) assert.deepEqual(t, a.result.tools.find((x: { name: string }) => x.name === t.name), t.name);
+  // the check tool is the one deliberate difference: on the homes address it speaks of homes and rent only (tests/chatgpt-directory.test.ts)
+  for (const t of b.result.tools) {
+    if (t.name === "pricepaid_check_price") continue;
+    assert.deepEqual(t, a.result.tools.find((x: { name: string }) => x.name === t.name), t.name);
+  }
   // one builder makes the specs for both addresses, so the handler is the same function path
   const names = new Set<string>(HOMES_TOOLS);
   assert.equal(buildToolSpecs().filter((s) => names.has(s.name)).length, 4);

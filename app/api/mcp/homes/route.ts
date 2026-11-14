@@ -4,7 +4,7 @@
 
 import { createProofPriceMcpHandler, HOMES_TOOLS, LIVE_DEPS, withInitializeCount } from "../../../../lib/mcp-tools";
 
-const handler = withInitializeCount(createProofPriceMcpHandler(LIVE_DEPS, { tools: HOMES_TOOLS }));
+const handler = withInitializeCount(createProofPriceMcpHandler(LIVE_DEPS, { tools: HOMES_TOOLS, homes: true }));
 
 export { handler as GET, handler as POST };
 export const maxDuration = 60;
