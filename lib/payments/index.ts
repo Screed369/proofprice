@@ -5,6 +5,7 @@ import { gateCall, type GateOutcome } from "./gate";
 import { allCleared, UNCLEARED_NOTE } from "./cleared";
 import { PREMIUM, type PremiumKey } from "./prices";
 import { json, CORS_HEADERS } from "../route-helpers";
+import { recordPaid } from "../usage";
 
 export type { GateConfig, Facilitator, GateOutcome, PremiumKey };
 export { readGateConfig, PREMIUM };
@@ -68,6 +69,7 @@ export async function gate<T>(
     resourceUrl: req.url.split("?")[0],
     run,
     chargeable,
+    onPaid: ({ key: k, wallet }) => recordPaid({ key: k, wallet }),
   });
 }
 

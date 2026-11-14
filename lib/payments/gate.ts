@@ -8,7 +8,7 @@
 import { isSolanaAddress, type GateConfig } from "./config";
 import type { Facilitator } from "./facilitator";
 import { SITE_URL } from "../site/constants";
-import { bazaarExtension } from "./discovery";
+import { bazaarExtension, descriptionFor } from "./discovery";
 import { DAILY_PAID_CAP, PREMIUM, type PremiumKey } from "./prices";
 import { notePaid, paidCapReached, takeFree } from "./quota";
 
@@ -70,6 +70,24 @@ export function buildRequirements(cfg: GateConfig, key: PremiumKey): PaymentRequ
   };
 }
 
+/** The `resource` block of a 402 (and of what the facilitator is sent): URL, a plain description (at most 500 characters) and the type. */
+export function resourceFor(key: PremiumKey, resourceUrl: string) {
+  return { url: resourceUrl, description: descriptionFor(key, resourceUrl), mimeType: "application/json" };
+}
+
+/**
+ * What the facilitator is sent on verify and settle. Coinbase's Bazaar indexes a paid resource only when the settle call carries
+ * `paymentPayload.resource` and `paymentPayload.extensions.bazaar`. A client normally echoes both from our 402, but we do not rely on
+ * that: our own values (never the payer's) are set here, over anything the payer sent. The payer's signed part is left untouched.
+ */
+export function facilitatorPayload(payload: any, key: PremiumKey, resourceUrl: string): any {
+  return {
+    ...payload,
+    resource: resourceFor(key, resourceUrl),
+    extensions: { ...(payload?.extensions && typeof payload.extensions === "object" ? payload.extensions : {}), bazaar: bazaarExtension(key, resourceUrl) },
+  };
+}
+
 export function paymentRequiredBody(
   cfg: GateConfig,
   key: PremiumKey,
@@ -84,10 +102,13 @@ export function paymentRequiredBody(
     x402Version: 2,
     error,
     ...(reason ? { reason } : {}),
-    resource: { url: resourceUrl, description: `ProofPrice ${p.label}`, mimeType: "application/json" },
+    resource: resourceFor(key, resourceUrl),
     accepts: [buildRequirements(cfg, key), ...more] as Array<PaymentRequirements | SolanaPaymentRequirements>,
     extensions: { bazaar: bazaarExtension(key, resourceUrl) },
-    notice: `The free allowance of ${p.freePerDay} calls a day for this tool is used up. Basic price look-ups stay free and need no payment. Not charged when the answer is "not enough records" or an error.`,
+    notice:
+      p.freePerDay > 0
+        ? `The free allowance of ${p.freePerDay} calls a day for this tool is used up. Basic price look-ups stay free and need no payment. Not charged when the answer is "not enough records" or an error.`
+        : `This call is paid from the first call (USD ${(p.microUsd / 1_000_000).toFixed(2)}). The basic look-up without trend stays free and needs no payment. Not charged when the answer is "not enough records" or an error.`,
   };
 }
 
@@ -108,6 +129,8 @@ export interface GateOptions<T> {
   /** True when the result is a real answer worth charging for. */
   chargeable: (r: T) => boolean;
   now?: Date;
+  /** Called once after a payment is settled, with the premium key and the payer's public address (when known). For anonymous counting only. */
+  onPaid?: (info: { key: PremiumKey; wallet: string | null }) => void;
 }
 
 const b64 = (o: unknown) => Buffer.from(JSON.stringify(o)).toString("base64");
@@ -149,7 +172,8 @@ export async function gateCall<T>(o: GateOptions<T>): Promise<GateOutcome<T>> {
   const header = o.paymentHeader?.trim();
 
   if (!header) {
-    if (takeFree(o.callerAddress, key, PREMIUM[key].freePerDay, now)) {
+    // freePerDay 0 = paid from the first call: no free call is ever taken (and no counter entry is made).
+    if (PREMIUM[key].freePerDay > 0 && takeFree(o.callerAddress, key, PREMIUM[key].freePerDay, now)) {
       return { kind: "served", result: await o.run(), paid: false, headers: {} };
     }
     return deny402(cfg, key, o.resourceUrl, "payment_required", undefined, o.facilitator);
@@ -196,7 +220,7 @@ export async function gateCall<T>(o: GateOptions<T>): Promise<GateOutcome<T>> {
 
   let verified;
   try {
-    verified = await o.facilitator.verify(payload, want);
+    verified = await o.facilitator.verify(facilitatorPayload(payload, key, o.resourceUrl), want);
   } catch {
     return unavailable("Could not check the payment. Nothing was charged. Try again later.");
   }
@@ -211,12 +235,19 @@ export async function gateCall<T>(o: GateOptions<T>): Promise<GateOutcome<T>> {
 
   let settled;
   try {
-    settled = await o.facilitator.settle(payload, want);
+    settled = await o.facilitator.settle(facilitatorPayload(payload, key, o.resourceUrl), want);
   } catch {
     return unavailable("The payment could not be completed, so no answer was released and nothing was charged. Try again later.");
   }
   if (!settled.success) return deny("settlement_failed", settled.errorReason ?? "settlement failed");
   notePaid(now);
+  try {
+    // The EVM payer is in the signed authorization; the facilitator may also report it (the only source on Solana). Counting only.
+    const wallet = settled.payer ?? payload?.payload?.authorization?.from;
+    o.onPaid?.({ key, wallet: typeof wallet === "string" && wallet ? wallet : null });
+  } catch {
+    /* counting must never break a paid answer */
+  }
   return {
     kind: "served",
     result,

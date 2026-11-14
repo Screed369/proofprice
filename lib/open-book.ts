@@ -284,6 +284,14 @@ Example: GET ${baseUrl}${checkExamplePath()}
 Proof: every verdict (and every ok answer of the category tools) comes with a Signed Price Proof another agent can verify for free; see "Signed Price Proofs" below.
 `);
 
+  out.push(`### Paid look-up with trend (new, optional, a 14-day test)
+REST: GET ${baseUrl}/api/v1/paid/<category>
+Description: The normal answer of a category plus the daily trend from our library and, when you send a price, a check of that price, in one reply. Takes the same parameters as GET ${baseUrl}/api/v1/<category>, plus an optional price (and currency, unit, includes) and an optional days (length of the trend).
+Returns: { answer, trend, check, notice }. answer is the normal answer unchanged; trend is the daily history for the same area and item (null when the source keeps none); check is the price check (null when no price was sent).
+Price: USD 0.01 per answered call, from the first call, paid with x402 (USDC). Only charged when the source behind the call is cleared for paid use; otherwise the call is served free with a note. Never charged for errors, no match or too few records.
+The basic look-up without trend stays free at ${baseUrl}/api/v1/<category>, unchanged.
+`);
+
   out.push(`## Signed Price Proofs
 ${proofsLlmsLines(baseUrl).join("\n")}
 `);

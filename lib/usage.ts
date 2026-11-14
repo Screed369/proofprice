@@ -35,7 +35,14 @@
 //    first; if the cap is ever hit the report says so in coverage.capped). Compaction is idempotent: each summary lists the files it
 //    merged, so two instances compacting at once never count a file twice.
 //
-// Never stored: IP addresses, user agents, unsalted digests, prices, free text or any other identifier.
+// 4. PAID CALLS AND PAYING WALLETS (added 14 Nov 2026 for the pay-first test). Paying with x402 uses a public wallet address. We never
+//    store it. After a payment settles, the address is turned into a one-way digest in memory and, at flush time, into
+//    HMAC-SHA256(day salt, digest): the same daily salt as sessions, deleted with the hashes when the day closes. What is kept is
+//    counts only: paid calls per day per premium key, and the number of distinct paying wallets per day. Payments from our own wallets
+//    (env PROOFPRICE_OWN_WALLETS, comma-separated PUBLIC addresses) are counted apart as own_paid_calls and are never in the outside
+//    numbers; their addresses are not hashed or stored either. See recordPaid.
+//
+// Never stored: IP addresses, user agents, unsalted digests, wallet addresses, prices, free text or any other identifier.
 // How: tallies are batched in memory and written to Vercel Blob (@vercel/blob, a private store) at most every few minutes. A
 // serverless instance that is frozen before its next flush loses its pending tallies, so counts can be a little low; they are never
 // invented. GET /api/v1/usage reads the last 30 days back as totals. The public privacy notice (app/privacy) describes this.
@@ -237,12 +244,30 @@ export interface SessionRecord {
   tools: Record<string, number>;
 }
 
+/** Paid calls in one small file of an open day. `wallets` holds salted hashes of distinct outside payers (never an address). */
+export interface PaidFile {
+  /** paid calls from outside, per premium key */
+  calls: Record<string, number>;
+  /** paid calls from our own wallets (PROOFPRICE_OWN_WALLETS) */
+  own_calls: number;
+  wallets?: string[];
+}
+
+/** Counts only: what is left of a day's paid calls once the day is closed. */
+export interface PaidDay {
+  calls: Record<string, number>;
+  own_calls: number;
+  /** distinct outside paying wallets that day */
+  wallets: number;
+}
+
 export interface UsageFile {
   version: 1 | 2;
   flushed_at: string;
   day?: string;
   rows: UsageRow[];
   sessions?: SessionRecord[];
+  paid?: PaidFile;
 }
 
 export const SESSION_BUCKETS = ["0", "1", "2-5", "6-20", "21+"] as const;
@@ -273,6 +298,8 @@ export interface DailySummary {
   rows: UsageRow[];
   /** null when the day was recorded before sessions were counted, or its hashes could not be read. */
   sessions: DaySessions | null;
+  /** Paid calls and distinct paying wallets for the day (counts only). Absent when no paid call was recorded. */
+  paid?: PaidDay;
 }
 
 /** Flush at most this often (milliseconds). */
@@ -523,6 +550,78 @@ export function recordUsage(ev: UsageEvent, now: Date = new Date(), env: Env = p
   }
 }
 
+// ---------- paid calls and paying wallets ----------
+
+interface PendingPaid {
+  calls: Record<string, number>;
+  own: number;
+  /** in-memory digests of outside wallets; salted at flush time, never written as they are */
+  wallets: Set<string>;
+}
+const pendingPaid = new Map<string, PendingPaid>();
+
+/** Our own public wallet addresses, from PROOFPRICE_OWN_WALLETS (comma-separated). 0x addresses are compared in lower case. */
+export function ownWallets(env: Env = process.env): Set<string> {
+  return new Set((env.PROOFPRICE_OWN_WALLETS ?? "").split(",").map((a) => normWallet(a)).filter(Boolean));
+}
+const normWallet = (a: string) => {
+  const t = a.trim();
+  return /^0x/i.test(t) ? t.toLowerCase() : t;
+};
+
+/**
+ * Count one settled paid call. `wallet` is the payer's public address when known: it is used only to tell distinct wallets apart (a
+ * one-way digest in memory, salted at flush time) and is never stored. A payment from one of our own wallets is counted only as an
+ * own paid call. Off (does nothing) while usage counting is off. Never throws.
+ */
+export function recordPaid(ev: { key: string; wallet?: string | null }, now: Date = new Date(), env: Env = process.env): void {
+  if (!usageEnabled(env)) return;
+  try {
+    const day = dayOf(now);
+    let d = pendingPaid.get(day);
+    if (!d) pendingPaid.set(day, (d = { calls: {}, own: 0, wallets: new Set() }));
+    const wallet = ev.wallet ? normWallet(ev.wallet) : "";
+    if (wallet && ownWallets(env).has(wallet)) {
+      d.own++;
+      return;
+    }
+    const key = clean(ev.key).slice(0, 30) || "unknown";
+    d.calls[key] = (d.calls[key] ?? 0) + 1;
+    if (wallet && d.wallets.size < MAX_PENDING_SESSIONS) d.wallets.add(createHash("sha256").update(`proofprice-wallet\n${wallet}`).digest("hex"));
+  } catch {
+    /* counting must never break a paid answer */
+  }
+}
+
+/** Paid calls waiting to be written, without any wallet digest (tests and diagnostics). */
+export function pendingPaidSummary(): { day: string; calls: Record<string, number>; own_calls: number; wallets: number }[] {
+  return [...pendingPaid].map(([day, d]) => ({ day, calls: { ...d.calls }, own_calls: d.own, wallets: d.wallets.size }));
+}
+
+function restorePaid(day: string, p: PendingPaid): void {
+  const cur = pendingPaid.get(day);
+  if (!cur) return void pendingPaid.set(day, p);
+  for (const [k, n] of Object.entries(p.calls)) cur.calls[k] = (cur.calls[k] ?? 0) + n;
+  cur.own += p.own;
+  for (const w of p.wallets) cur.wallets.add(w);
+}
+
+/** Distinct wallets and call counts of one day from its small files (pure). The same hash in two files is one wallet. */
+export function reducePaid(files: (PaidFile | undefined)[]): PaidDay | null {
+  const out: PaidDay = { calls: {}, own_calls: 0, wallets: 0 };
+  const wallets = new Set<string>();
+  let any = false;
+  for (const f of files) {
+    if (!f || typeof f !== "object") continue;
+    any = true;
+    for (const [k, n] of Object.entries(f.calls ?? {})) if (Number.isFinite(n) && n > 0) out.calls[k] = (out.calls[k] ?? 0) + n;
+    if (Number.isFinite(f.own_calls) && f.own_calls > 0) out.own_calls += f.own_calls;
+    for (const h of f.wallets ?? []) if (typeof h === "string") wallets.add(h);
+  }
+  out.wallets = wallets.size;
+  return any ? out : null;
+}
+
 export function pendingUsage(): UsageRow[] {
   return [...pending.values()];
 }
@@ -538,6 +637,7 @@ export function resetUsage(at: number = Date.now()): void {
   pending.clear();
   pendingSessions.clear();
   pendingSessionCount = 0;
+  pendingPaid.clear();
   salts.clear();
   lastFlush = at;
   lastCompact = 0;
@@ -578,7 +678,7 @@ export function saltedHash(salt: string, pre: string): string {
 /** Write the pending tallies: one aggregate file per day. Returns the number of tallies written. Failures keep the question tallies
  *  for the next try. Sessions of a day that is already closed are dropped (its salt is gone), so they can only fall short. */
 export async function flushUsage(now: Date = new Date(), env: Env = process.env): Promise<number> {
-  if (!usageEnabled(env) || flushing || (pending.size === 0 && pendingSessions.size === 0)) {
+  if (!usageEnabled(env) || flushing || (pending.size === 0 && pendingSessions.size === 0 && pendingPaid.size === 0)) {
     lastFlush = now.getTime();
     if (usageEnabled(env)) maybeCompact(now, env);
     return 0;
@@ -595,20 +695,26 @@ export async function flushUsage(now: Date = new Date(), env: Env = process.env)
     const sessionsByDay = new Map(pendingSessions);
     pendingSessions.clear();
     pendingSessionCount = 0;
-    const days = [...new Set([...rowsByDay.keys(), ...sessionsByDay.keys()])].sort();
+    const paidByDay = new Map(pendingPaid);
+    pendingPaid.clear();
+    const days = [...new Set([...rowsByDay.keys(), ...sessionsByDay.keys(), ...paidByDay.keys()])].sort();
     for (const day of days) {
       const rows = rowsByDay.get(day) ?? [];
       const sess = sessionsByDay.get(day);
+      const paid = paidByDay.get(day);
       try {
         let sessions: SessionRecord[] | undefined;
-        if (sess && sess.size) {
-          const salt = await saltFor(day, now, !isClosed(day, now));
-          if (salt) {
-            sessions = [...sess].map(([pre, s]) => ({ h: saltedHash(salt, pre), g: groupOf(s.client, s.probe, s.crawler), q: s.q, hs: s.hs, tools: s.tools }));
-          }
+        let paidFile: PaidFile | undefined;
+        const salt = (sess && sess.size) || paid?.wallets.size ? await saltFor(day, now, !isClosed(day, now)) : null;
+        if (sess && sess.size && salt) {
+          sessions = [...sess].map(([pre, s]) => ({ h: saltedHash(salt, pre), g: groupOf(s.client, s.probe, s.crawler), q: s.q, hs: s.hs, tools: s.tools }));
         }
-        if (!rows.length && !sessions?.length) continue;
-        const file: UsageFile = { version: 2, flushed_at: now.toISOString(), day, rows: rows.map(([, r]) => r), ...(sessions?.length ? { sessions } : {}) };
+        if (paid && (Object.keys(paid.calls).length || paid.own)) {
+          // Without a salt (a closed day) the wallet count can only fall short; the call counts are kept.
+          paidFile = { calls: paid.calls, own_calls: paid.own, ...(salt && paid.wallets.size ? { wallets: [...paid.wallets].map((pre) => saltedHash(salt, pre)) } : {}) };
+        }
+        if (!rows.length && !sessions?.length && !paidFile) continue;
+        const file: UsageFile = { version: 2, flushed_at: now.toISOString(), day, rows: rows.map(([, r]) => r), ...(sessions?.length ? { sessions } : {}), ...(paidFile ? { paid: paidFile } : {}) };
         const pathname = `${BLOB_PREFIX}${day}/${now.getTime()}-${randomBytes(4).toString("hex")}.json`;
         await store.write(pathname, file, false);
         for (const [id, r] of rows) {
@@ -617,10 +723,11 @@ export async function flushUsage(now: Date = new Date(), env: Env = process.env)
           cur.count -= r.count;
           if (cur.count <= 0) pending.delete(id);
         }
-        written += rows.length + (sessions?.length ?? 0);
+        written += rows.length + (sessions?.length ?? 0) + (paidFile ? 1 : 0);
       } catch (e) {
         console.warn("[usage] flush failed:", String((e as any)?.message ?? e).slice(0, 200));
         if (sess && !isClosed(day, now)) restoreSessions(day, sess); // try again next time
+        if (paid) restorePaid(day, paid);
       }
     }
     lastFlush = now.getTime(); // do not retry on every request
@@ -761,6 +868,7 @@ export async function compactUsage(
     const rows = new Map<string, UsageRow>();
     addRows(rows, existing?.rows);
     const records: SessionRecord[] = [];
+    const paidFiles: PaidFile[] = [];
     const readOk: string[] = [];
     for (let i = 0; i < names.length; i += 16) {
       const got = await Promise.all(names.slice(i, i + 16).map((n) => s.read<UsageFile>(n).then((f) => [n, f] as const).catch(() => [n, null] as const)));
@@ -769,8 +877,12 @@ export async function compactUsage(
         readOk.push(n);
         addRows(rows, f.rows);
         if (Array.isArray(f.sessions)) records.push(...f.sessions);
+        if (f.paid) paidFiles.push(f.paid);
       }
     }
+    // Paid calls: distinct wallets are counted only before the day has a summary (as for sessions); a late file adds its call counts.
+    const paidDay = existing?.paid ? reducePaid([{ calls: existing.paid.calls, own_calls: existing.paid.own_calls }, ...paidFiles.map((f) => ({ calls: f.calls, own_calls: f.own_calls }))]) : reducePaid(paidFiles);
+    if (paidDay && existing?.paid) paidDay.wallets = existing.paid.wallets;
     // Hashes can be merged into distinct sessions only before the day has a summary. Hashes in a late file are dropped (counts only
     // fall short), and deleted with the file.
     const sessions = existing ? existing.sessions : records.length ? reduceSessions(records) : null;
@@ -781,6 +893,7 @@ export async function compactUsage(
       merged: [...already, ...readOk].sort(),
       rows: [...rows.values()],
       sessions,
+      ...(paidDay ? { paid: paidDay } : {}),
     };
     await s.write(path, summary, true);
     const toDelete = byDay.get(day)!.filter((n) => already.has(n) || readOk.includes(n));
@@ -868,8 +981,25 @@ export interface UsageReport {
   /** Real questions that were refused as a wrong request (status bad_request), most frequent first: shows which callers send wrong parameters, apart from places with no data. */
   top_bad_requests?: { tool: string; country: string; key: string; status: string; questions: number }[];
   fields?: Record<string, string>;
+  /** Paid calls and distinct paying wallets (14 Nov 2026). Counts only: no wallet address is ever stored. */
+  paid?: PaidReport;
   note: string;
 }
+
+export interface PaidReport {
+  /** paid calls from outside, all premium keys */
+  paid_calls: number;
+  /** paid calls from our own wallets (PROOFPRICE_OWN_WALLETS): never in the outside numbers */
+  own_paid_calls: number;
+  /** distinct outside paying wallets per day, summed over the period (wallet-days, not people) */
+  paying_wallet_days: number;
+  paid_calls_by_key: Record<string, number>;
+  by_day: { day: string; paid_calls: number; own_paid_calls: number; paying_wallets: number; by_key: Record<string, number> }[];
+  note: string;
+}
+
+export const PAID_NOTE =
+  "Paying with x402 uses a public wallet address. We do not store it. Distinct paying wallets are counted per day with a one-way hash salted with the same daily random value as sessions, deleted with the hashes after the day ends. Payments from our own wallets are counted apart (own_paid_calls) and are never in the outside numbers. The same wallet on several days counts once per day.";
 
 export const OWN_CHECKS_NOTE =
   "Our own smoke test and monitors are no longer counted. Rows from our own checks that were recorded before this change are shown here, not as outside questions. Older smoke-test tool calls carried no app name, so a few may still sit in the outside number.";
@@ -905,13 +1035,27 @@ const totalsOf = (s: DaySessions): SessionTotals => ({
   unnamed: s.by_group.unnamed.sessions,
 });
 
+function paidReport(byDay: Record<string, PaidDay>, from: string, to: string): PaidReport {
+  const out: PaidReport = { paid_calls: 0, own_paid_calls: 0, paying_wallet_days: 0, paid_calls_by_key: {}, by_day: [], note: PAID_NOTE };
+  for (const day of Object.keys(byDay).filter((d) => d >= from && d <= to).sort()) {
+    const p = byDay[day];
+    const total = Object.values(p.calls ?? {}).reduce((a, n) => a + n, 0);
+    out.paid_calls += total;
+    out.own_paid_calls += p.own_calls ?? 0;
+    out.paying_wallet_days += p.wallets ?? 0;
+    for (const [k, n] of Object.entries(p.calls ?? {})) out.paid_calls_by_key[k] = (out.paid_calls_by_key[k] ?? 0) + n;
+    out.by_day.push({ day, paid_calls: total, own_paid_calls: p.own_calls ?? 0, paying_wallets: p.wallets ?? 0, by_key: { ...p.calls } });
+  }
+  return out;
+}
+
 /** Totals over a set of usage files (pure). `sessions` holds each day's distinct-session counts, where known. */
 export function summariseUsage(
   files: { rows?: UsageRow[] }[],
   now: Date = new Date(),
   days = 30,
   topN = 20,
-  extra: { sessions?: Record<string, DaySessions>; coverage?: UsageReport["coverage"] } = {},
+  extra: { sessions?: Record<string, DaySessions>; coverage?: UsageReport["coverage"]; paid?: Record<string, PaidDay> } = {},
 ): UsageReport {
   const to = dayOf(now);
   const from = dayOf(new Date(now.getTime() - (days - 1) * 86400000));
@@ -1063,6 +1207,7 @@ export function summariseUsage(
       note: SESSIONS_NOTE,
     },
     ...(extra.coverage ? { coverage: extra.coverage } : {}),
+    ...(extra.paid ? { paid: paidReport(extra.paid, from, to) } : {}),
     top_unanswered: top([...unanswered.values()], topN),
     top_bad_requests: top([...badRequests.values()], topN),
     fields: FIELD_NOTES,
@@ -1104,6 +1249,7 @@ export async function usageReport(
   const smallNames = allSmall.sort().reverse().slice(0, MAX_FILES_READ);
   const files: { rows?: UsageRow[] }[] = [...summaries.values()];
   const records = new Map<string, SessionRecord[]>();
+  const paidSmall = new Map<string, PaidFile[]>();
   for (let i = 0; i < smallNames.length; i += 16) {
     const got = await Promise.all(smallNames.slice(i, i + 16).map((n) => s.read<UsageFile>(n).then((f) => [n, f] as const).catch(() => [n, null] as const)));
     for (const [n, f] of got) {
@@ -1111,6 +1257,20 @@ export async function usageReport(
       files.push(f);
       const day = n.slice(6, 16);
       if (!summaries.has(day) && Array.isArray(f.sessions)) records.set(day, [...(records.get(day) ?? []), ...f.sessions]);
+      if (f.paid) paidSmall.set(day, [...(paidSmall.get(day) ?? []), f.paid]);
+    }
+  }
+  // Paid calls: a closed day's summary, plus (for any day) call counts from small files its summary has not merged yet.
+  const paid: Record<string, PaidDay> = {};
+  for (const [day, sum] of summaries) if (sum.paid) paid[day] = { calls: { ...sum.paid.calls }, own_calls: sum.paid.own_calls, wallets: sum.paid.wallets };
+  for (const [day, fs] of paidSmall) {
+    const r = reducePaid(fs);
+    if (!r) continue;
+    const have = paid[day];
+    if (!have) paid[day] = r;
+    else {
+      for (const [k, n] of Object.entries(r.calls)) have.calls[k] = (have.calls[k] ?? 0) + n;
+      have.own_calls += r.own_calls;
     }
   }
   const sessions: Record<string, DaySessions> = {};
@@ -1120,6 +1280,7 @@ export async function usageReport(
   const dataDays = new Set([...summaries.keys(), ...smallDays]);
   return summariseUsage(files, now, days, 20, {
     sessions,
+    paid,
     coverage: {
       days,
       days_with_data: dataDays.size,
