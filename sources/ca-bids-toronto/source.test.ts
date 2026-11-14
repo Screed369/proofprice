@@ -97,3 +97,23 @@ test("routing: buyer_area=Toronto goes to ca-bids-toronto; Quebec, Alberta and e
   assert.equal(pickSource(cat, { country: "CA", what: "laptops" }).src.info.id, "ca-canadabuys-contracts");
   assert.equal(pickSource(cat, { country: "CA", what: "laptops", buyer_area: "Ontario" }).src.info.id, "ca-canadabuys-contracts");
 });
+
+test("new layout (13 Nov 2026): Award is a JSON list per solicitation, repeated on every row; both layouts parse and repeats share a key", () => {
+  const list = JSON.stringify([
+    { Award_Amount: "771,931.57", AwardedDate: null, Date_Awarded: "2026-10-04", Initial_Contract_Val: null, Successful_Bidder: "ASCA Office Solutions", city: "TORONTO" },
+    { Award_Amount: "$0.00", Date_Awarded: "2026-10-04", Successful_Bidder: "Zero Placeholder Ltd" },
+    { Award_Amount: "52000", Date_Awarded: "2026-10-05", Initial_Contract_Val: "52000", Successful_Bidder: "Friends of Simon" },
+  ]);
+  const q = (s: string) => `"${s.replace(/"/g, '""')}"`;
+  const head = "_id,Document Number,RFx (Solicitation) Type,High Level Category,Award,Award Authority Obtained Date,Division,Buyer Name,Buyer Email,Buyer Phone Number,Solicitation Document Description,Supplier Address,Wards";
+  const csv = `${head}\n1,3303123110,RFQ,Goods and Services,${q(list)},2026-10-04,Div,,,,toners,,\n2,3303123110,RFQ,Goods and Services,${q(list)},2026-10-05,Div,,,,toners,,\n3,9,RFP,Professional Services,None,,Div,,,,x,,\n`;
+  const a = awardsFromCsv(csv);
+  assert.equal(a.length, 4); // two usable awards on each of two repeated rows; the zero placeholder and the "None" row are dropped
+  assert.deepEqual(new Set(a.map((x) => x.key)), new Set(["3303123110|asca office solutions", "3303123110|friends of simon"]));
+  assert.deepEqual(a.slice(0, 2).map((x) => [x.date, x.value, x.category]), [["2026-10-04", 771931.57, "goods and services"], ["2026-10-05", 52000, "goods and services"]]);
+  assert.ok(!JSON.stringify(a).includes("MISSISSAUGA"));
+});
+
+test("a file with neither layout still fails loudly", () => {
+  assert.throws(() => awardsFromCsv("a,b,c\n1,2,3\n"), /expected column is missing/);
+});

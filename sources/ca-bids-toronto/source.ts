@@ -108,22 +108,34 @@ export function awardsFromCsv(text: string): TorAward[] {
   const col = (name: string) => head.indexOf(name);
   const iDoc = col("Document Number"), iCat = col("High Level Category"), iSup = col("Successful Supplier"), iAward = col("Award");
   const iDate = col("Award Authority Obtained Date"), iDesc = col("Solicitation Document Description");
-  if ([iDoc, iCat, iSup, iAward, iDate].some((i) => i < 0)) throw new SourceError("Open Data Toronto changed the awarded-contracts file: an expected column is missing", head.join("|"));
+  // Since 2026-11-13 the publisher has no "Successful Supplier" column: "Award" holds a JSON list of awards for the solicitation
+  // ([{"Award_Amount": "771,931.57", "Date_Awarded": "2012-10-04", "Successful_Bidder": "..."}]) and the list is repeated on every
+  // row of the same solicitation. Both layouts are read; the repeats collapse on the document + supplier key downstream.
+  if ([iDoc, iCat, iAward, iDate].some((i) => i < 0) || (iSup < 0 && !head.includes("Award"))) throw new SourceError("Open Data Toronto changed the awarded-contracts file: an expected column is missing", head.join("|"));
   const out: TorAward[] = [];
-  for (const r of rows.slice(1)) {
-    const raw = (r[iAward] ?? "").replace(/,/g, "").trim();
-    if (!/^\d+(\.\d+)?$/.test(raw)) continue; // "None", blank
+  const push = (doc: string, sup: string, rawAmount: unknown, rawDate: unknown, cat: string, desc: string) => {
+    const raw = String(rawAmount ?? "").replace(/[$,\s]/g, "");
+    if (!/^\d+(\.\d+)?$/.test(raw)) return; // "None", blank
     const value = Number(raw);
-    if (!Number.isFinite(value) || value < MIN_VALUE) continue;
-    const date = (r[iDate] ?? "").trim().slice(0, 10);
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
-    out.push({
-      key: `${(r[iDoc] ?? "").trim()}|${(r[iSup] ?? "").trim().toLowerCase()}`,
-      date,
-      value,
-      category: (r[iCat] ?? "").trim().toLowerCase(),
-      description: iDesc >= 0 ? (r[iDesc] ?? "").replace(/\s+/g, " ").trim() : "",
-    });
+    if (!Number.isFinite(value) || value < MIN_VALUE) return;
+    const date = String(rawDate ?? "").trim().slice(0, 10);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
+    out.push({ key: `${doc.trim()}|${sup.trim().toLowerCase()}`, date, value, category: cat.trim().toLowerCase(), description: desc });
+  };
+  for (const r of rows.slice(1)) {
+    const desc = iDesc >= 0 ? (r[iDesc] ?? "").replace(/\s+/g, " ").trim() : "";
+    const awardCell = (r[iAward] ?? "").trim();
+    if (iSup < 0 || awardCell.startsWith("[")) {
+      let list: unknown;
+      try { list = JSON.parse(awardCell); } catch { continue; }
+      if (!Array.isArray(list)) continue;
+      for (const a of list as Array<Record<string, unknown>>) {
+        if (!a || typeof a !== "object") continue;
+        push(r[iDoc] ?? "", String(a.Successful_Bidder ?? ""), a.Award_Amount ?? a.Initial_Contract_Val, a.Date_Awarded ?? a.AwardedDate ?? r[iDate], r[iCat] ?? "", desc);
+      }
+      continue;
+    }
+    push(r[iDoc] ?? "", r[iSup] ?? "", r[iAward], r[iDate], r[iCat] ?? "", desc);
   }
   return out;
 }
