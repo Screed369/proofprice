@@ -2,7 +2,8 @@
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import { ICP_IRL_BREAD, ICP_SGP_HOUSEHOLD, ICP_USA_BREAD } from "./fixtures";
-import { COUNTRIES, INFO, SPENDS, cached, checkCompare, clearCache, countryUrl, icpPriceLevel, matchSpend, parseIcp } from "./source";
+import { SourceError } from "../../lib/http";
+import { COUNTRIES, INFO, SPENDS, cached, liveJson, checkCompare, clearCache, countryUrl, icpPriceLevel, matchSpend, parseIcp } from "./source";
 import oecd from "../oecd-price-levels/index";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
@@ -109,4 +110,19 @@ test("manifest: category, licence, countries, no country shared with another pri
   assert.ok(Object.keys(COUNTRIES).length >= 125);
   assert.match(INFO.attribution, /World Bank/);
   assert.match(INFO.licence, /CC BY 4\.0/);
+});
+
+test("liveJson retries once after a timeout or 5xx, but not after a 4xx", async () => {
+  let n = 0;
+  const flaky = async () => { if (++n === 1) throw new SourceError("Source timed out", "u"); return { ok: 1 }; };
+  assert.deepEqual(await liveJson("u", flaky), { ok: 1 });
+  assert.equal(n, 2);
+  n = 0;
+  const bad = async () => { n++; throw new SourceError("Source returned HTTP 404", "", 404); };
+  await assert.rejects(() => liveJson("u", bad));
+  assert.equal(n, 1);
+  n = 0;
+  const down = async () => { n++; throw new SourceError("Source returned HTTP 503", "", 503); };
+  await assert.rejects(() => liveJson("u", down));
+  assert.equal(n, 2);
 });

@@ -266,9 +266,9 @@ export function gapPct(index: number, base: number): number { return round1((ind
 export interface Ask { country: string; spend?: string; compare_to?: string; baseUrl?: string }
 export type Fetcher = (url: string) => Promise<any>;
 
-async function liveJson(url: string): Promise<any> {
+async function liveJsonOnce(url: string, timeoutMs: number): Promise<any> {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 15000);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const res = await fetch(url, { signal: controller.signal, headers: { "user-agent": "pricepaid-plug/0.1 (+price-paid data for AI agents)", accept: "application/json" } });
     if (!res.ok) throw new SourceError(`Source returned HTTP ${res.status}`, (await res.text().catch(() => "")).slice(0, 300), res.status);
@@ -279,6 +279,22 @@ async function liveJson(url: string): Promise<any> {
     throw new SourceError("Could not reach the official source", String(err?.cause?.code ?? err?.message ?? err));
   } finally {
     clearTimeout(timer);
+  }
+}
+
+/** True for a timeout, a network error or a 5xx: worth one more try (a 4xx is not). */
+export function retryable(err: any): boolean {
+  const status = Number(err?.status);
+  return !(Number.isFinite(status) && status >= 400 && status < 500);
+}
+
+/** One retry (smoke 15 Nov 2026: a single World Bank call timed out at 15 s and the IN example answered 502 while the next call was fine). Two tries of 8 s fit the same budget. */
+export async function liveJson(url: string, once: (u: string, ms: number) => Promise<any> = liveJsonOnce): Promise<any> {
+  try {
+    return await once(url, 8000);
+  } catch (err: any) {
+    if (!retryable(err)) throw err;
+    return await once(url, 8000);
   }
 }
 
