@@ -5,7 +5,12 @@ name: Daily price library harvest
 
 on:
   schedule:
-    - cron: "17 3 * * *" # 03:17 UTC every day
+    # GitHub starts scheduled runs late (the 03:17 run began at 10:19 to 10:59 UTC on 12-15 Nov, after the Librarian's 10:40 deploy,
+    # so production kept yesterday's library: Gap fixes LIBSTALE). Three chances before 10:40 UTC; the guard step below makes the
+    # first one that starts do the day's harvest and the others exit at once.
+    - cron: "37 0 * * *" # 00:37 UTC
+    - cron: "17 3 * * *" # 03:17 UTC
+    - cron: "47 5 * * *" # 05:47 UTC
   workflow_dispatch:
     inputs:
       sources:
@@ -34,14 +39,28 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 100
+      - name: Guard (scheduled runs only collect once per UTC day)
+        id: guard
+        run: |
+          today=$(date -u +%F)
+          if [ "${{ github.event_name }}" = "schedule" ] && git log -n 100 --format=%s | grep -qx "Library: daily harvest $today"; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"; echo "Already harvested $today: nothing to do."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/setup-node@v4
+        if: steps.guard.outputs.skip != 'true'
         with:
           node-version: 22
           cache: npm
       - run: npm ci
+        if: steps.guard.outputs.skip != 'true'
       - name: Check the code first
+        if: steps.guard.outputs.skip != 'true'
         run: npm test
       - name: Harvest
+        if: steps.guard.outputs.skip != 'true'
         env:
           SOURCES: ${{ github.event.inputs.sources }}
           ACCEPT: ${{ github.event.inputs.accept_changes }}
@@ -77,7 +96,7 @@ jobs:
           if [ "$failed" -gt 3 ]; then echo "::error::$failed sources errored (more than 3 new)"; exit 1; fi
           if [ "$failed" -gt 0 ]; then echo "::warning::$failed source(s) errored; see summary and /api/v1/library"; fi
       - name: Commit the day's library (also when some sources failed, so their errors are recorded)
-        if: always()
+        if: always() && steps.guard.outputs.skip != 'true'
         run: |
           git config user.name "proofprice-librarian"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -92,6 +111,6 @@ jobs:
 
       # Tell search engines (IndexNow, no account needed) which pages changed. Must never fail the harvest.
       - name: Ping IndexNow
-        if: always()
+        if: always() && steps.guard.outputs.skip != 'true'
         continue-on-error: true
         run: npx tsx scripts/indexnow.ts || true
