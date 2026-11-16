@@ -49,7 +49,7 @@ Owner: Simon (non-technical founder). Live at **https://proofprice.com** (public
   `library` (library status for the Monitor), `receipts/verify`, `receipts/sender-check`.
 - `lib/answer.ts` + `lib/stats.ts` — the one answer format and the statistics. Do not change the answer shape without a Decision.
 - `lib/library/` + `library/` — the **price library**: daily aggregate CSVs per source, written by
-  `scripts/harvest.ts`, run every day at 03:17 UTC by `.github/workflows/harvest.yml` (GitHub Actions, free),
+  `scripts/harvest.ts`, run every day (first scheduled start among 00:37, 03:17, 05:47 UTC; a once-a-day guard skips the rest) by `.github/workflows/harvest.yml` (GitHub Actions, free),
   committed to `main`, and shipped with each deployment. Aggregates only. To move to a database later, replace
   `lib/library/store.ts` only.
 - `lib/usage.ts` + `/api/v1/usage` — anonymous usage meter (on only while a Blob store is connected). Counts questions apart from
