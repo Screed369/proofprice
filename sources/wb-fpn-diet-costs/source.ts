@@ -171,7 +171,22 @@ export interface Ask {
 }
 
 export type Fetcher = (url: string) => Promise<unknown>;
-const live: Fetcher = (url) => fetchJson(url, { headers: { accept: "application/json" } }, 15000);
+/** True for a timeout, a network error or a 5xx: worth one more try (a 4xx is not). */
+export function retryable(err: any): boolean {
+  const status = Number(err?.status);
+  return !(Number.isFinite(status) && status >= 400 && status < 500);
+}
+
+/** One retry (smoke 17 Nov 2026: the IE and US examples answered 502 after a 15 s World Bank timeout, and passed live minutes later). Two tries of 8 s fit the same budget. */
+export async function liveWithRetry(url: string, once: (u: string, ms: number) => Promise<any> = (u, ms) => fetchJson(u, { headers: { accept: "application/json" } }, ms)): Promise<any> {
+  try {
+    return await once(url, 8000);
+  } catch (err: any) {
+    if (!retryable(err)) throw err;
+    return await once(url, 8000);
+  }
+}
+const live: Fetcher = (url) => liveWithRetry(url);
 
 export const wbMethod = (group: GroupDef) =>
   `World Bank Food Prices for Nutrition 5.0: modelled national cost of the ${group.label}, per person per day, in local currency and 2021 PPP dollars; passed on as published, with the change on the previous year calculated by ProofPrice. A model, not a list of sales.`;

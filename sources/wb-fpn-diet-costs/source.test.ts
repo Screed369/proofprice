@@ -2,7 +2,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { FPN_IRL_GROUPS, FPN_MULTI, FPN_TWN } from "./fixtures";
-import { COUNTRIES, GROUPS, INFO, byYear, changePct, matchGroup, parseFpn, requestUrl, seriesFor, wbDietCost } from "./source";
+import { COUNTRIES, GROUPS, INFO, byYear, changePct, matchGroup, parseFpn, requestUrl, seriesFor, wbDietCost, liveWithRetry } from "./source";
+import { SourceError } from "../../lib/http";
 import manifest from "./index";
 import { categoryById, countriesFor } from "../../lib/registry";
 
@@ -130,4 +131,19 @@ test("manifest: category, countries and examples", () => {
   assert.ok(countriesFor("diet-costs").includes("IE"));
   assert.ok(Object.keys(COUNTRIES).length >= 60);
   assert.equal(manifest.examples[0].params.country, "IE");
+});
+
+test("a timeout or 5xx is retried once; a 4xx is not", async () => {
+  let n = 0;
+  const flaky = async () => { n++; if (n === 1) throw new SourceError("Source timed out", "x"); return { ok: true }; };
+  assert.deepEqual(await liveWithRetry("u", flaky), { ok: true });
+  assert.equal(n, 2);
+  let m = 0;
+  const bad = async () => { m++; throw new SourceError("Source returned HTTP 400", "x", 400); };
+  await assert.rejects(() => liveWithRetry("u", bad));
+  assert.equal(m, 1);
+  let k = 0;
+  const down = async () => { k++; throw new SourceError("Source returned HTTP 503", "x", 503); };
+  await assert.rejects(() => liveWithRetry("u", down));
+  assert.equal(k, 2);
 });
