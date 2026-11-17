@@ -93,8 +93,13 @@ export function parseSales(rows: Record<string, any>[]): Sale[] {
 }
 
 async function latestIn(from: string, today: string, fetcher?: Fetcher): Promise<string | null> {
-  const r = await arcgisQuery(LAYER, { where: buildWhere({ from, to: today }), outFields: ["sale_date"], orderByFields: ["sale_date DESC"], resultRecordCount: 1 }, { fetcher, timeoutMs: 25000 });
-  return parseSales(r.rows.map((x) => ({ sale_date: x.sale_date, amt_sale_price: MIN_SALE })))[0]?.date ?? null;
+  // MAX(sale_date) as a server-side statistic answers in about 0.4 s; "ORDER BY sale_date DESC, 1 row" scanned the view and timed out (>40 s, 16-17 Nov 2026).
+  const r = await arcgisQuery(
+    LAYER,
+    { where: buildWhere({ from, to: today }), outStatistics: [{ statisticType: "max", onStatisticField: "sale_date", outStatisticFieldName: "latest" }] },
+    { fetcher, timeoutMs: 25000 },
+  );
+  return parseSales(r.rows.map((x) => ({ sale_date: x.latest, amt_sale_price: MIN_SALE })))[0]?.date ?? null;
 }
 
 /** A narrow 6-month look-back is much faster on this view than an open-ended one (7 s cold vs 1.5 s); fall back to 5 years if the table is stale. */

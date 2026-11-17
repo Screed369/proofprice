@@ -20,6 +20,7 @@ function fake() {
   const fetcher = async (url: string) => {
     urls.push(url);
     if (url.includes("returnCountOnly=true")) return { count: ROWS.length };
+    if (url.includes("outStatistics=")) return { features: [{ attributes: { latest: "2026-11-10" } }] }; // MAX(sale_date): the fast "newest sale" query
     const n = /resultRecordCount=(\d+)/.exec(url)?.[1];
     const out = n === "1" ? ROWS.slice(0, 1) : ROWS;
     return { features: out.map((attributes) => ({ attributes })), exceededTransferLimit: false };
@@ -65,6 +66,8 @@ test("detroitHomeSales answers a median with the 5-record rule and no addresses 
   assert.equal(a.sample_size, 8);
   assert.equal(a.price?.median, 75500);
   assert.equal(a.period.to, "2026-11-10");
+  assert.ok(urls.some((u) => u.includes("outStatistics=")), "newest sale comes from MAX(sale_date), not ORDER BY (timed out live)");
+  assert.ok(!urls.some((u) => /orderByFields=sale_date/.test(u)));
   for (const u of urls) { assert.ok(!/address|parcel|grantor|grantee/i.test(decodeURIComponent(u.split("outFields=")[1] ?? ""))); }
 });
 
