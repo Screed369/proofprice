@@ -380,6 +380,8 @@ test("isSourceOutage: timeouts, unreachable sources and 5xx are outages; bad inp
     new SourceError("MIMIT returned HTTP 503"),
     new SourceError("Could not reach the official source", "ENOTFOUND"),
     new SourceError("Source returned HTTP 500", "", 500),
+    new SourceError("Source returned HTTP 403", "", 403),
+    new SourceError("Source returned HTTP 403"),
     new SourceError("The Agri-food data portal is limiting requests at the moment; try again in a minute"),
     Object.assign(new Error("aborted"), { name: "AbortError" }),
     Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNRESET" } }),

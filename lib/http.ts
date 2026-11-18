@@ -74,10 +74,10 @@ export class InputError extends SourceError {}
 export const INPUT_MESSAGE = /required|must be|Give a|Not yet/;
 
 const OUTAGE_MESSAGE =
-  /timed? ?out|timeout|HTTP (?:5\d\d|408|425|429)\b|could not reach|unreachable|not respond|limiting requests|temporarily|try again|fetch failed/i;
+  /timed? ?out|timeout|HTTP (?:5\d\d|403|408|425|429)\b|could not reach|unreachable|not respond|limiting requests|temporarily|try again|fetch failed/i;
 const NETWORK_CODES = new Set(["ECONNRESET", "ECONNREFUSED", "ENOTFOUND", "ETIMEDOUT", "EAI_AGAIN", "EPIPE", "UND_ERR_CONNECT_TIMEOUT", "UND_ERR_SOCKET", "UND_ERR_HEADERS_TIMEOUT"]);
 
-/** True when a live official source timed out, could not be reached or answered with a server error (5xx, 408, 429),
+/** True when a live official source timed out, could not be reached or answered with a server error (5xx, 408, 429) or refused our server (403: a firewall such as Statistics Canada's blocks cloud addresses that the collector on GitHub can still reach),
  *  as opposed to the caller asking something wrong or the source changing its format. Only these are worth answering from
  *  our own copy of the data. */
 export function isSourceOutage(err: unknown): boolean {
@@ -85,7 +85,7 @@ export function isSourceOutage(err: unknown): boolean {
   if (!e || e instanceof InputError) return false;
   if (e instanceof SourceError) {
     if (INPUT_MESSAGE.test(e.message)) return false;
-    if (typeof e.status === "number") return e.status >= 500 || e.status === 408 || e.status === 425 || e.status === 429;
+    if (typeof e.status === "number") return e.status >= 500 || e.status === 403 || e.status === 408 || e.status === 425 || e.status === 429;
     return OUTAGE_MESSAGE.test(e.message);
   }
   // A raw network failure that escaped a source's own fetch code.
