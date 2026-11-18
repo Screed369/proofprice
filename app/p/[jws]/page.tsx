@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Price proof",
-  description: "Check a ProofPrice Signed Price Proof: who signed it, when, and what the official records showed.",
+  description: "Check a ProofPrice signed price statement: who signed it, when, and what the official records showed.",
   robots: { index: false, follow: false },
 };
 

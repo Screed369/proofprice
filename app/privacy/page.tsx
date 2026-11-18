@@ -48,6 +48,12 @@ export default function Privacy() {
             sends it when it connects, the name of the app.
           </p>
           <p>
+            An app may give us its own name: an MCP app sends it when it connects (clientInfo.name), and a REST caller can add{" "}
+            <code>?app=your-app</code> or an <code>X-ProofPrice-App</code> header. We store that name with the anonymous counts above, and in return the app gets a
+            higher free daily allowance on the premium tools. The name should be the app&apos;s own, never a person&apos;s name. A value that is
+            not a plain app name (letters, digits, dots, dashes, underscores and spaces, up to 40 characters) is ignored.
+          </p>
+          <p>
             To count how many different visitors we had each day, we turn your IP address and the name of your software (user agent) into a
             one-way hash, mixed with a random value that is created each day. The hash is used only to count distinct visitors that day.
             Shortly after the day ends (UTC) we keep only the totals and delete the hashes and that day&apos;s random value, so the hash cannot be traced back

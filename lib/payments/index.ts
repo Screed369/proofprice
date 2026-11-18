@@ -5,9 +5,10 @@ import { gateCall, type GateOutcome } from "./gate";
 import { allCleared, UNCLEARED_NOTE } from "./cleared";
 import { PREMIUM, type PremiumKey } from "./prices";
 import { json, CORS_HEADERS } from "../route-helpers";
+import { appNameOfRequest, NAME_YOUR_APP, NAMED_APP_ALLOWANCE_FACTOR } from "../usage";
 
 export type { GateConfig, Facilitator, GateOutcome, PremiumKey };
-export { readGateConfig, PREMIUM };
+export { readGateConfig, PREMIUM, NAME_YOUR_APP };
 
 /** Facilitator used by live routes; tests replace it with a mock. */
 let facilitatorOverride: Facilitator | null = null;
@@ -35,12 +36,12 @@ export function paymentHeaderOf(headers: Headers | undefined | null): string | n
 /** Description suffix added to a premium MCP tool only while the gate is active. */
 export function premiumNote(key: PremiumKey): string {
   const p = PREMIUM[key];
-  return ` After ${p.freePerDay} free calls a day per caller this tool costs USD ${(p.microUsd / 1_000_000).toFixed(2)} per answered call, paid with x402 (USDC); a 402 reply lists how. Nothing is charged for "not enough records" or errors.`;
+  return ` After ${p.freePerDay} free calls a day per caller (${p.freePerDay * NAMED_APP_ALLOWANCE_FACTOR} if the caller names its app) this tool costs USD ${(p.microUsd / 1_000_000).toFixed(2)} per answered call, paid with x402 (USDC); a 402 reply lists how. Nothing is charged for "not enough records" or errors.`;
 }
 
 export async function gate<T>(
   key: PremiumKey,
-  req: { headers: Headers | undefined | null; url: string; paymentHeader?: string | null },
+  req: { headers: Headers | undefined | null; url: string; paymentHeader?: string | null; app?: string | null },
   run: () => Promise<T>,
   chargeable: (r: T) => boolean,
   /** Source ids behind this call, worked out before anything is charged. REQUIRED: null/unknown/uncleared means served free, never a 402. */
@@ -64,6 +65,7 @@ export async function gate<T>(
     facilitator: facilitatorFor(cfg),
     key,
     callerAddress: callerAddressOf(req.headers),
+    callerApp: req.app ?? appNameOfRequest({ url: req.url, headers: req.headers }),
     paymentHeader: req.paymentHeader ?? paymentHeaderOf(req.headers),
     resourceUrl: req.url.split("?")[0],
     run,

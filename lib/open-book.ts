@@ -26,6 +26,7 @@ import { countryGroups, newestLibraryDay, pageRefs } from "./site/prices";
 import { MIN_PUBLISH } from "./stats";
 import { joinAnd } from "./text";
 import { ANY_TOKEN_NOTE } from "./pricing";
+import { NAME_YOUR_APP } from "./usage";
 
 // The canonical public address and the contact live in lib/site/constants.ts (shared with the website pages); re-exported here.
 export { CONTACT, MCP_URL, SITE_URL };
@@ -223,6 +224,8 @@ Contact: ${CONTACT}
 
 ## How to connect
 - MCP server (Streamable HTTP, no key, no sign-in): ${baseUrl}/api/mcp
+- Lighter MCP address for homes and rent only (4 tools): ${baseUrl}/api/mcp/homes
+- ${NAME_YOUR_APP}
 - MCP Server Card (draft discovery standard): ${baseUrl}/.well-known/mcp-server-card
 - A2A Agent Card (agent discovery; points at the MCP and REST endpoints, ProofPrice does not run A2A messaging): ${baseUrl}/.well-known/agent-card.json
 - REST (GET, JSON, CORS open): ${baseUrl}/api/v1/<category>
@@ -281,10 +284,10 @@ Verdicts:
   - cannot_judge: currency or unit differs, fewer than ${MIN_PUBLISH} records, or nothing matched; reasons and missing say why.
 Also returned: reasons (posted prices are not paid prices, old periods, assumptions made), missing, a one-sentence summary, and the full evidence answer embedded as "answer" (with its audit-trail fields). Deterministic: no benchmark is ever invented.
 Example: GET ${baseUrl}${checkExamplePath()}
-Proof: every verdict (and every ok answer of the category tools) comes with a Signed Price Proof another agent can verify for free; see "Signed Price Proofs" below.
+Proof: every verdict (and every ok answer of the category tools) comes with a signed price statement another agent can verify for free; see "Signed price statements" below.
 `);
 
-  out.push(`## Signed Price Proofs
+  out.push(`## Signed price statements
 ${proofsLlmsLines(baseUrl).join("\n")}
 `);
 
@@ -509,7 +512,7 @@ resp = client.responses.create(
         "server_label": "proofprice",
         "server_url": "${MCP_URL}",
     }],
-    input="Is 1.89 euro a litre a fair price for diesel in Ireland right now?",
+    input="Is 1.89 euro a litre within the typical range for diesel in Ireland right now?",
 )
 print(resp.output_text)`,
       note: "xAI accepts Streamable HTTP and SSE servers and does not support require_approval, so leave it out. Use allowed_tools to limit which ProofPrice tools Grok sees.",
