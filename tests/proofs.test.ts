@@ -493,10 +493,10 @@ test("JWKS: Ed25519 OKP keys with kid, use sig, alg EdDSA; empty when off", asyn
 test("docs: /proofs is public, and llms.txt, llms-full.txt and openapi.json describe proofs and the verify endpoint", () => {
   assert.ok(PUBLIC_PATHS.includes("/proofs"));
   const llms = buildLlmsTxt("https://proofprice.com");
-  assert.match(llms, /## Signed Price Proofs/);
+  assert.match(llms, /## Signed price statements/);
   assert.match(llms, /\/api\/v1\/proofs\/verify/);
   assert.match(llms, /\.well-known\/proofprice-keys\.json/);
-  assert.match(buildLlmsFullTxt("https://proofprice.com"), /## Signed Price Proofs/);
+  assert.match(buildLlmsFullTxt("https://proofprice.com"), /## Signed price statements/);
   const api: any = buildOpenApi("https://proofprice.com");
   assert.ok(api.paths["/api/v1/proofs/verify"].get && api.paths["/api/v1/proofs/verify"].post);
   assert.ok(api.paths["/api/v1/check"].get.responses["200"].headers["X-ProofPrice-Proof"]);

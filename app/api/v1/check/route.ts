@@ -3,7 +3,7 @@
 // Takes the category's own parameters plus price (required), currency, unit and includes.
 import { CATEGORIES, paramsFromQuery, runCategory } from "../../../../lib/registry";
 import { CHECK_RESERVED, CHECK_TOOL, resolveCategory, runCheck } from "../../../../lib/check";
-import { isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, visitorOf, withoutOwnParam } from "../../../../lib/usage";
+import { appNameOfRequest, isOwnRequest, recordUsage, statusOfAnswer, statusOfError, usageKey, visitorOf, withoutOwnParam } from "../../../../lib/usage";
 import { proofFor, proofHeaders } from "../../../../lib/proofs";
 import { gatedRest } from "../../../../lib/payments";
 import { checkSourcesFromUrl } from "../../../../lib/premium-sources";
@@ -32,10 +32,10 @@ async function handle(req: Request) {
     try {
       result = await runCheck(args, { categories: CATEGORIES, runCategory }, { baseUrl: baseUrl(req) });
     } catch (e) {
-      recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfError(e), own, visitor: own ? null : visitorOf(req) });
+      recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfError(e), own, visitor: own ? null : visitorOf(req), client: appNameOfRequest(req) });
       throw e;
     }
-    recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfAnswer(result.answer), own, visitor: own ? null : visitorOf(req) });
+    recordUsage({ tool: CHECK_TOOL, country: args.country, key: usageKey(args), status: statusOfAnswer(result.answer), own, visitor: own ? null : visitorOf(req), client: appNameOfRequest(req) });
     const stale = result.answer.extra?.stale === true;
     const cache = stale ? Math.min(cat.cacheSeconds ?? 600, STALE_CACHE_SECONDS) : cat.cacheSeconds ?? 600;
     // Signed Price Proof (lib/proofs): only on a real verdict on an ok answer, time-boxed, never fails the check

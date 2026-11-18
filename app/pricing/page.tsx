@@ -20,7 +20,7 @@ export default function Pricing() {
     { question: "Is ProofPrice free for AI agents?", answer: `Yes. ${p.free_forever.join("; ")}. No key and no sign-up.` },
     {
       question: "What do the premium calls cost?",
-      answer: p.premium.map((x) => `${x.what}: ${x.price_per_call} per call after ${x.free_calls_per_day} free calls a day`).join("; ") + ".",
+      answer: p.premium.map((x) => (x.pay_first ? `${x.what}: ${x.price_per_call} per call from the first call` : `${x.what}: ${x.price_per_call} per call after ${x.free_calls_per_day} free calls a day`)).join("; ") + ".",
     },
     {
       question: "How does an AI agent pay for ProofPrice?",
@@ -69,7 +69,7 @@ export default function Pricing() {
             <tr key={x.id}>
               <td>{x.what}</td>
               <td>{x.price_per_call}</td>
-              <td>{x.free_calls_per_day}</td>
+              <td>{x.pay_first ? "None (paid from the first call)" : x.free_calls_per_day}</td>
             </tr>
           ))}
         </tbody>
@@ -77,6 +77,11 @@ export default function Pricing() {
       <p>
         The price check is the tool <code>{p.premium[0].mcp_tools[0]}</code> or <code>GET /api/v1/check</code>. Daily history is the
         <code> /history</code> path of each category and the matching history tools. Answers are the same free or paid.
+      </p>
+      <p>
+        <strong>New, optional, a 14-day test:</strong> <code>GET /api/v1/paid/&lt;category&gt;</code> costs USD 0.01 from the first call. It returns the normal
+        answer, the daily trend from our library and, if you send a price, a check of that price, in one reply. The basic look-up without
+        trend stays free at <code>/api/v1/&lt;category&gt;</code>, exactly as before.
       </p>
 
       <h2>How an AI agent pays</h2>

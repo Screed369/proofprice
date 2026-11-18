@@ -15,12 +15,12 @@ import { slimAnswerSchema, slimCheckSchema, slimCoverageSchema, slimHistorySchem
 import type { ZodTypeAny } from "zod";
 import type { CategoryPlugin } from "./plugin";
 import { CATEGORIES, coverageView, historyDays, runCategory, runHistory, toolDescription, toolShape } from "./registry";
-import { CHECK_TOOL, checkToolDescription, checkToolShape, runCheck } from "./check";
+import { CHECK_TOOL, HOMES_CHECK_CATEGORIES, checkToolDescription, checkToolShape, homesCheckCategoryMessage, homesCheckToolDescription, resolveCategory, runCheck } from "./check";
 import { withDeadline } from "./http";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { historySources, checkSources } from "./premium-sources";
 import { gate, paymentHeaderFromMeta, premiumNote, readGateConfig, isAnswered, type PremiumKey } from "./payments";
-import { isOwnClient, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageClient, usageEnabled, usageKey, visitorOf } from "./usage";
+import { appNameOfRequest, NAME_YOUR_APP, isOwnClient, validAppName, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageClient, usageEnabled, usageKey, visitorOf } from "./usage";
 import type { UsageContext } from "./usage";
 import { PROOF_META_KEY, proofFor } from "./proofs";
 import type { ProofKind } from "./proofs";
@@ -28,8 +28,31 @@ import type { ProofKind } from "./proofs";
 /** The same four hints on every tool: they read official sources and never change anything. */
 export const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } as const;
 
+export const COVERAGE_TOOL = "pricepaid_coverage";
+
 export const MCP_INSTRUCTIONS =
-  "Tools that return real prices actually paid, from official records, as a range with sample size, period, confidence and source. Cite the source and attribution line when you use a figure.";
+  "Tools that return real prices actually paid, from official records, as a range with sample size, period, confidence and source. Cite the source and attribution line when you use a figure. " +
+  NAME_YOUR_APP;
+
+/** The light address /api/mcp/homes: only what an agent needs to ask what homes and rent cost. The same tools, descriptions and handlers
+ *  as the main address, under the same public names. */
+export const HOMES_TOOLS = ["pricepaid_home_sales", "pricepaid_rent_prices", CHECK_TOOL, COVERAGE_TOOL] as const;
+
+export interface McpHandlerOptions {
+  /** Serve only the tools with these names (in the order buildToolSpecs lists them). Omitted: every tool, as on /api/mcp. */
+  tools?: readonly string[];
+  /** The homes address only: the check tool talks about homes and rent only (description, category list, and a plain error for any other
+   *  category), and the payment gate is not applied there at all. That address is the one listed in the app directories, whose users
+   *  reach us from the directory's own servers (one shared network address, so one shared free allowance) and cannot pay per call;
+   *  a payment reply there would be a dead end for them and breaks the directories' no-pricing rule. Paid use lives on /api/mcp and
+   *  /api/v1/paid. Omitted: exactly as on /api/mcp. */
+  homes?: boolean;
+}
+
+export interface BuildSpecOptions {
+  /** See McpHandlerOptions.homes. */
+  homes?: boolean;
+}
 
 export interface McpToolResult {
   content: { type: "text"; text: string }[];
@@ -56,7 +79,6 @@ export interface ToolSpec {
   call(args: Record<string, unknown>): Promise<McpToolResult>;
 }
 
-export const COVERAGE_TOOL = "pricepaid_coverage";
 
 /** A tool call slower than this (milliseconds) is logged: the tool name and the time taken, nothing else. */
 export const SLOW_CALL_MS = 8_000;
@@ -136,7 +158,7 @@ async function guarded(
   }
 }
 
-export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
+export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS, opts: BuildSpecOptions = {}): ToolSpec[] {
   const specs: ToolSpec[] = [];
   const limits = deps.limits ?? {};
   for (const cat of deps.categories) {
@@ -174,25 +196,36 @@ export function buildToolSpecs(deps: ToolDeps = LIVE_DEPS): ToolSpec[] {
     }
   }
   const checkTitle = "Check a price before you pay";
+  // homes address: only the home-sales and rent categories are offered to, and accepted by, the check tool
+  const homesCats = opts.homes ? deps.categories.filter((c) => (HOMES_CHECK_CATEGORIES as readonly string[]).includes(c.id)) : null;
+  const checkCats = homesCats ?? deps.categories;
   specs.push({
     premium: "check",
     sources: (args) => checkSources(args, deps.categories),
     name: CHECK_TOOL,
     config: {
       title: checkTitle,
-      description: checkToolDescription(deps.categories),
-      inputSchema: z.looseObject(slimShape(checkToolShape(deps.categories, true))),
+      description: homesCats ? homesCheckToolDescription() : checkToolDescription(deps.categories),
+      inputSchema: z.looseObject(slimShape(checkToolShape(checkCats, true, homesCats !== null))),
       outputSchema: slimCheckSchema,
       annotations: { title: checkTitle, ...READ_ONLY },
     },
-    call: (args) =>
-      guarded(
+    call: (args) => {
+      if (homesCats) {
+        try {
+          resolveCategory(homesCats, args.category);
+        } catch {
+          return Promise.resolve(asError(new Error(homesCheckCategoryMessage())));
+        }
+      }
+      return guarded(
         CHECK_TOOL,
         limits,
         () => runCheck(args, { categories: deps.categories, runCategory: deps.runCategory }, { baseUrl: SITE_URL }),
         { tool: CHECK_TOOL, args },
         { kind: "check", category: "" }, // a check's category is read from its own result (input.category)
-      ),
+      );
+    },
   });
   const coverageTitle = "What price data is covered";
   specs.push({
@@ -232,10 +265,16 @@ function stringArg(v: unknown): string | undefined {
 /** Register the tools on an MCP server. The SDK validates each successful result's structuredContent against its outputSchema.
  *  Payment gate: premium tools are wrapped ONLY while the gate is active (lib/payments/config.ts). With it off, registration is
  *  exactly as before: same descriptions, same handlers, same tools/list. */
-export function registerTools(server: { registerTool: (...a: any[]) => unknown }, specs: ToolSpec[], env: Record<string, string | undefined> = process.env): void {
+export function registerTools(
+  server: { registerTool: (...a: any[]) => unknown },
+  specs: ToolSpec[],
+  env: Record<string, string | undefined> = process.env,
+  opts: { noGate?: boolean } = {},
+): void {
   const gateOn = readGateConfig(env) !== null;
   for (const spec of specs) {
-    if (!gateOn || !spec.premium) {
+    // noGate (the homes address): every tool is registered plain, so there is no pricing sentence and never a payment reply
+    if (!gateOn || !spec.premium || opts.noGate) {
       server.registerTool(spec.name, spec.config, (args: Record<string, unknown>) => spec.call(args ?? {}));
       continue;
     }
@@ -243,9 +282,12 @@ export function registerTools(server: { registerTool: (...a: any[]) => unknown }
     const config = { ...spec.config, description: spec.config.description + premiumNote(key) };
     server.registerTool(spec.name, config, async (args: Record<string, unknown>, ctx: any) => {
       const req: Request | undefined = ctx?.http?.req;
+      const meta = ctx?.mcpReq?._meta ?? ctx?._meta;
+      // the app's own name: clientInfo.name as the 2026 protocol sends it with each request, else ?app= / X-ProofPrice-App
+      const app = validAppName(meta?.["io.modelcontextprotocol/clientInfo"]?.name) || appNameOfRequest(req);
       const out = await gate(
         key,
-        { headers: req?.headers, url: req?.url ?? `${SITE_URL}/api/mcp`, paymentHeader: paymentHeaderFromMeta(ctx?.mcpReq?._meta ?? ctx?._meta) },
+        { headers: req?.headers, url: req?.url ?? `${SITE_URL}/api/mcp`, paymentHeader: paymentHeaderFromMeta(meta), app },
         () => spec.call(args ?? {}),
         (r) => !r.isError && isAnswered(JSON.stringify(r.structuredContent ?? {})),
         () => (spec.sources ? spec.sources(args ?? {}) : null),
@@ -271,10 +313,13 @@ export function registerTools(server: { registerTool: (...a: any[]) => unknown }
  *  changes with a deployment, so it never sends one, and a function that Vercel stops after 60 s cannot hold a stream open anyway:
  *  the likely cause of the "Task timed out after 60 seconds" bursts of 15 Oct 2026, with the client reconnecting every 61 s.
  *  With nothing to subscribe to, the SDK answers such a request with an acknowledgement and an immediate, graceful close. */
-export function createProofPriceMcpHandler(deps: ToolDeps = LIVE_DEPS) {
+export function createProofPriceMcpHandler(deps: ToolDeps = LIVE_DEPS, options: McpHandlerOptions = {}) {
   return createMcpHandler(
     (server) => {
-      registerTools(server as any, buildToolSpecs(deps));
+      const keep = options.tools;
+      const specs = buildToolSpecs(deps, { homes: options.homes });
+      // homes: no payment gate on that address (see McpHandlerOptions.homes)
+      registerTools(server as any, keep ? specs.filter((s) => keep.includes(s.name)) : specs, process.env, { noGate: options.homes });
     },
     {
       serverInfo: { name: "proofprice", version: SERVICE_VERSION },

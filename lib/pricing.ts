@@ -42,8 +42,9 @@ export function pricingFacts(baseUrl: string = SITE_URL) {
     price_usd: PREMIUM[key].microUsd / 1_000_000,
     price_per_call: usd(PREMIUM[key].microUsd),
     free_calls_per_day: PREMIUM[key].freePerDay,
-    mcp_tools: key === "check" ? [CHECK_TOOL] : historyTools,
-    rest: key === "check" ? `${baseUrl}${CHECK_REST}` : `${baseUrl}/api/v1/<category>/history`,
+    pay_first: PREMIUM[key].freePerDay === 0,
+    mcp_tools: key === "check" ? [CHECK_TOOL] : key === "history" ? historyTools : [],
+    rest: key === "check" ? `${baseUrl}${CHECK_REST}` : key === "history" ? `${baseUrl}/api/v1/<category>/history` : `${baseUrl}/api/v1/paid/<category>`,
   }));
   return {
     name: "ProofPrice pricing",
@@ -67,6 +68,13 @@ export function pricingFacts(baseUrl: string = SITE_URL) {
       network_when_live: solanaOffered() ? "Base (USDC), or Solana (USDC)" : "Base (USDC)",
     },
     pay_with_any_token: ANY_TOKEN_NOTE,
+    pay_first_door: {
+      note:
+        "A new, optional paid door, a 14-day test from 14 Nov 2026: GET /api/v1/paid/<category> costs " + usd(PREMIUM.lookup.microUsd) +
+        " from the first call (no free allowance) and returns { answer, trend, check, notice }: the normal answer, the daily trend from our library and, when you send a price, a check of that price. " +
+        "The basic look-up without trend stays free at /api/v1/<category>, unchanged.",
+      rest: `${baseUrl}/api/v1/paid/<category>`,
+    },
     never_charged: [
       "Any answer that uses a source not yet cleared for commercial use (served free, with a note)",
       "Answers with not enough records, no match, errors or a source that could not be reached",

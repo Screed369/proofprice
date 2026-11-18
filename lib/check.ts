@@ -50,7 +50,7 @@ export interface CheckResult {
 export const CHECK_TOOL = "pricepaid_check_price";
 export const CHECK_REST = "/api/v1/check";
 export const CHECK_NOTICE =
-  "Information, not a valuation, offer or advice. A verdict only compares a price with past recorded evidence; it does not say whether the price is fair for one particular item.";
+  "Information, not a valuation, offer or advice. A verdict only compares a price with past recorded evidence; it does not say whether the price is typical for one particular item.";
 
 /** The within-average band: a price within this share of an official average or median counts as "about average". */
 export const ABOUT_AVERAGE_PERCENT = 5;
@@ -439,7 +439,7 @@ export function checkExamplePath(): string {
 
 /** One tool covers every category, so its input is the union of the categories' parameters (all optional here; the category's own
  *  validation runs inside runCheck). Descriptions say which category each parameter belongs to. Built from the registry. */
-export function checkToolShape(categories: CategoryPlugin[], coreOnly = false): Record<string, z.ZodTypeAny> {
+export function checkToolShape(categories: CategoryPlugin[], coreOnly = false, homesOnly = false): Record<string, z.ZodTypeAny> {
   const byName = new Map<string, string[]>();
   for (const cat of categories) {
     for (const [name, schema] of Object.entries(paramSchemas(cat))) {
@@ -451,7 +451,7 @@ export function checkToolShape(categories: CategoryPlugin[], coreOnly = false): 
     country: z.string().describe("ISO country code of the place (for example IE, GB, FR). Which countries a category covers: see pricepaid_coverage."),
     price: z.number().positive().describe("The price to check, as a number above zero (for example 2400 or 1.95), in the unit and currency below."),
     currency: z.string().optional().describe("ISO 4217 currency code of the price (for example EUR). Defaults to the evidence currency. A different currency gives cannot_judge: ProofPrice never converts."),
-    unit: z.string().optional().describe("What the price is per, for example 'per month', 'per litre', 'per home'. Defaults to the evidence unit. A different unit gives cannot_judge."),
+    unit: z.string().optional().describe(`What the price is per, for example ${homesOnly ? "'per month', 'per home'" : "'per month', 'per litre', 'per home'"}. Defaults to the evidence unit. A different unit gives cannot_judge.`),
     includes: z.string().optional().describe("What the price includes or excludes, as free text (for example 'VAT included, delivery excluded'). Echoed back as a caution; it is not used to adjust the figure."),
     negotiate: z.enum(["buyer", "seller"]).optional().describe("Optional. Which side of the table you are on. Adds a negotiation block: the median and 10th/90th percentile as numbers to quote, the gap to the median, which side the evidence favours (leverage none/some/strong) and quotable evidence sentences. Evidence only, never advice on what to offer."),
   };
@@ -462,6 +462,27 @@ export function checkToolShape(categories: CategoryPlugin[], coreOnly = false): 
     shape[name] = z.union([z.string(), z.number()]).optional().describe(`Category parameter, same meaning as in its own tool${notes.length <= 3 ? ` (${notes.join(", ")})` : ""}.`);
   }
   return shape;
+}
+
+/** The only two categories the small homes MCP server (/api/mcp/homes) checks prices for. */
+export const HOMES_CHECK_CATEGORIES = ["home-sales", "rent"] as const;
+
+/** The homes server's version of the check tool text: homes and rent only, no mention of other kinds of price, and no pricing wording. */
+export function homesCheckToolDescription(): string {
+  return (
+    "Use this before paying: when a user or agent has a proposed price for a home or a rent and wants to know whether it is typical against recorded official evidence. " +
+    "Give the category (home-sales or rent), the country, the same parameters that category's own tool takes (for example town, postcode or property_type), and the price. " +
+    "It runs the category's normal answer and returns a verdict: within, above or below the typical range (10th–90th percentile of recorded prices) when the evidence is a set of records; " +
+    "about, above or below the average when the evidence is one official average (within 5% counts as about average, and it says plainly this is an average, not a distribution); or cannot_judge, with the reason, " +
+    "when the currency or unit differs (ProofPrice never converts), there are too few records or nothing matched. " +
+    "It also returns where the price sits (for example '27% above the median and above the 90th percentile'), the reasons and cautions (asking prices are not sale prices, old periods), what is missing, one quotable sentence, and the full evidence answer with source, licence and audit-trail fields to keep with the reasoning. " +
+    "Do not use it to value one specific home or address, as financial, mortgage or legal advice, or to compare prices in different currencies or units."
+  );
+}
+
+/** The plain-English reply when the homes server is asked to check any other category. */
+export function homesCheckCategoryMessage(): string {
+  return "This address checks prices for two kinds of thing only: home-sales (what homes sold for) and rent (what rent is paid). Ask again with category home-sales or rent.";
 }
 
 export function checkToolDescription(categories: CategoryPlugin[]): string {

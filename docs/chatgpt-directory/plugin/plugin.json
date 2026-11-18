@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "proofprice-homes",
+  "version": "1.0.0",
+  "description": "What homes really sold for, and what rent is really paid, from official records.",
+  "homepage": "https://proofprice.com",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ProofPrice Homes",
+        "shortDescription": "Home sale and rent prices paid",
+        "longDescription": "ProofPrice Homes answers one question: what did people actually pay for a home, or for rent, in a place?\n\nAsk about a town or postcode. You get a median price and a typical range (10th to 90th percentile) with the number of sales, the period covered, a confidence label, and the official source and licence. Where a source only publishes an average, such as many rent figures, you get that average and it says so.\n\nHome sale records come from government registers in 11 countries: Switzerland, Colombia, France, the United Kingdom (England and Wales), Hong Kong, Ireland, Poland, Qatar, Singapore, Taiwan and the United States. Other countries have official statistics only. Rent answers cover 17 countries. Use \"What price data is covered\" to see exactly which.\n\nYou can also check a price you have been offered. It tells you whether it sits within, above or below the typical range for that place.\n\nIntended users: home buyers, renters, researchers, journalists and anyone comparing prices.\n\nLimits: prices are from recorded sales and rents, not asking prices or listings. Official data arrives with a delay of weeks or months, so every answer shows its period. Results are aggregates for an area, never a value for one address. This is information, not a valuation, mortgage advice, legal advice or financial advice. No sign-in is needed. ProofPrice is not made or endorsed by OpenAI.",
+        "websiteURL": "https://proofprice.com",
+        "supportURL": "https://proofprice.com/support",
+        "privacyPolicyURL": "https://proofprice.com/privacy",
+        "termsOfServiceURL": "https://proofprice.com/terms",
+        "defaultPrompt": [
+          "What did terraced homes in Bristol actually sell for this year?",
+          "What rent do people pay in Dublin? Where does the data come from?",
+          "A flat in Lyon 69003 is offered at 300,000 euros. Is that typical?"
+        ],
+        "brandColor": "#0F5C54",
+        "brandColorDark": "#4CC3B3",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}
