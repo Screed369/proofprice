@@ -117,6 +117,9 @@ test("the report: last 30 days, totals, answered share and the top unanswered qu
 test("our own checks are skipped, never recorded", () => {
   assert.ok(OWN_CLIENTS.every((c) => isOwnClient(c)));
   assert.equal(isOwnClient("cursor"), false);
+  for (const n of ["proofprice-librarian", "proofprice-monitor", "proofprice-builder", "proofprice-jarvis"]) assert.ok(isOwnClient(n), n);
+  for (const ua of ["proofprice-librarian/1.0", "ProofPrice-Monitor/2", "proofprice-jarvis/1"]) assert.ok(isOwnRequest(new Request("https://proofprice.com/api/v1/fuel", { headers: { "user-agent": ua } })), ua);
+  assert.equal(isOwnRequest(new Request("https://proofprice.com/api/v1/fuel", { headers: { "user-agent": "curl/8" } })), false);
   recordUsage({ tool: "t", country: "IE", key: "x", status: "ok", own: true }, NOW, ON);
   recordUsage({ tool: "mcp_initialize", status: "ok", client: "proofprice-smoke" }, NOW, ON);
   recordUsage({ tool: "mcp_initialize", status: "ok", client: "ProofPrice-Check" }, NOW, ON);

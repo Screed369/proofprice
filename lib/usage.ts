@@ -75,14 +75,14 @@ export interface UsageEvent {
 
 /** MCP client names used by our own checks. A call from one of these is simply not counted. */
 export const OWN_CLIENTS = ["proofprice-smoke", "proofprice-check"] as const;
-/** The smoke test's user agent starts with this. It is only compared, never stored or counted. */
-export const OWN_UA_PREFIX = "proofprice-smoke/";
+/** Any of our own callers (smoke, librarian, monitor, builder, jarvis ...) labels itself 'proofprice-<name>/...' in its user agent or MCP client name. It is only compared, never stored or counted. */
+export const OWN_UA_PREFIX = "proofprice-";
 /** REST: add ppcheck=1 to a request and it is not counted. */
 export const OWN_QUERY_PARAM = "ppcheck";
 
 export function isOwnClient(name: unknown): boolean {
   const n = String(name ?? "").toLowerCase().trim();
-  return (OWN_CLIENTS as readonly string[]).includes(n);
+  return (OWN_CLIENTS as readonly string[]).includes(n) || n.startsWith(OWN_UA_PREFIX);
 }
 
 const truthy = (v: unknown) => v === true || v === 1 || /^(1|true|yes)$/i.test(String(v ?? "").trim());
