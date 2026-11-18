@@ -4,6 +4,8 @@ import { MUNICIPAL_ROWS, MUNICIPAL_SHEET, PROVINCE_ROWS } from "./fixtures";
 import {
   esAppraisedHomes, esHarvest, esHistoryKey, findPlace, foldName, harvestRows, nameKeys, parseMunicipalSheet, parseProvinceSheet, qLabel,
 } from "./source";
+import { isSourceOutage } from "../../lib/http";
+import { defaultFetcher, looksLikeXls } from "./source";
 import index from "./index";
 
 const province = () => parseProvinceSheet(PROVINCE_ROWS);
@@ -120,4 +122,18 @@ test("manifest", () => {
   assert.equal(index.info.id, "es-appraised-homes");
   assert.equal(index.category, "home-sales");
   assert.deepEqual(index.countries, ["ES"]);
+});
+
+test("a 200 HTML challenge page counts as an outage (stale copy answers), a real OLE2 header passes", async () => {
+  const orig = globalThis.fetch;
+  try {
+    globalThis.fetch = (async () => new Response("<html>Request blocked</html>", { status: 200 })) as any;
+    await assert.rejects(defaultFetcher("https://example.test/x.xls"), (e: any) => isSourceOutage(e));
+    const ole = Buffer.concat([Buffer.from([0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]), Buffer.alloc(600)]);
+    assert.ok(looksLikeXls(ole));
+    globalThis.fetch = (async () => new Response(ole, { status: 200 })) as any;
+    assert.equal((await defaultFetcher("https://example.test/x.xls")).length, ole.length);
+  } finally {
+    globalThis.fetch = orig;
+  }
 });

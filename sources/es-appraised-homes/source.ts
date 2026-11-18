@@ -41,6 +41,9 @@ export const INFO: SourceInfo = {
     "No figures for towns under 25,000 inhabitants or for postcodes.",
 };
 
+/** True when the bytes start with the OLE2 compound-file signature every legacy .xls file has. */
+export const looksLikeXls = (b: Buffer) => b.length >= 512 && b.subarray(0, 8).equals(Buffer.from([0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]));
+
 export type Fetcher = (url: string) => Promise<Buffer>;
 export const defaultFetcher: Fetcher = async (url) => {
   const controller = new AbortController();
@@ -48,7 +51,11 @@ export const defaultFetcher: Fetcher = async (url) => {
   try {
     const res = await fetch(url, { headers: { "user-agent": UA }, signal: controller.signal });
     if (!res.ok) throw new SourceError(`The Spanish ministry's appraisal tables answered HTTP ${res.status}`, undefined, res.status);
-    return Buffer.from(await res.arrayBuffer());
+    const body = Buffer.from(await res.arrayBuffer());
+    // A firewall can answer 200 with an HTML challenge page for cloud addresses (the collector on GitHub still gets the workbook).
+    // Treat that as an outage so the stale-if-error library copy answers, not a 502 "Not an .xls workbook".
+    if (!looksLikeXls(body)) throw new SourceError("The Spanish ministry's appraisal tables answered with a page instead of the workbook (blocked or changed)", undefined, 503);
+    return body;
   } catch (e: any) {
     if (e instanceof SourceError) throw e;
     throw new SourceError(`Could not reach the Spanish ministry's appraisal tables (${String(e?.cause?.code ?? e?.name ?? e?.message ?? e)})`);
