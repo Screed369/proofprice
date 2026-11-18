@@ -3,6 +3,7 @@
 import { categoryByRestPath, CATEGORIES, pickSource, paramsFromQuery } from "./registry";
 import { CHECK_RESERVED, resolveCategory, splitCheckArgs } from "./check";
 import { withoutOwnParam } from "./usage";
+import { LOOKUP_RESERVED } from "./paid-lookup";
 import { normaliseCountry } from "./countries";
 import type { CategoryPlugin, Params } from "./plugin";
 
@@ -49,6 +50,19 @@ export function historySourcesFromUrl(url: string, categoryPath: string): string
     const cat = categoryByRestPath(categoryPath);
     if (!cat) return null;
     return sourceIdOf(cat, paramsFromQuery(cat, withoutOwnParam(new URL(url).searchParams)));
+  } catch {
+    return null;
+  }
+}
+
+/** REST: sources behind GET /api/v1/paid/<category> (the pay-first door). The answer and the trend come from the same source. */
+export function lookupSourcesFromUrl(url: string, categoryPath: string): string[] | null {
+  try {
+    const cat = categoryByRestPath(categoryPath);
+    if (!cat) return null;
+    const rest = new URLSearchParams();
+    for (const [k, v] of withoutOwnParam(new URL(url).searchParams).entries()) if (!LOOKUP_RESERVED.includes(k)) rest.append(k, v);
+    return sourceIdOf(cat, paramsFromQuery(cat, rest));
   } catch {
     return null;
   }

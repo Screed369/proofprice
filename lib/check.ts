@@ -50,7 +50,7 @@ export interface CheckResult {
 export const CHECK_TOOL = "pricepaid_check_price";
 export const CHECK_REST = "/api/v1/check";
 export const CHECK_NOTICE =
-  "Information, not a valuation, offer or advice. A verdict only compares a price with past recorded evidence; it does not say whether the price is fair for one particular item.";
+  "Information, not a valuation, offer or advice. A verdict only compares a price with past recorded evidence; it does not say whether the price is typical for one particular item.";
 
 /** The within-average band: a price within this share of an official average or median counts as "about average". */
 export const ABOUT_AVERAGE_PERCENT = 5;

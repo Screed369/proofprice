@@ -20,7 +20,7 @@ import { withDeadline } from "./http";
 import { SERVICE_VERSION, SITE_URL } from "./site/constants";
 import { historySources, checkSources } from "./premium-sources";
 import { gate, paymentHeaderFromMeta, premiumNote, readGateConfig, isAnswered, type PremiumKey } from "./payments";
-import { isOwnClient, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageClient, usageEnabled, usageKey, visitorOf } from "./usage";
+import { appNameOfRequest, NAME_YOUR_APP, isOwnClient, validAppName, isOwnRequest, recordUsage, runWithOwnFlag, statusOfAnswer, statusOfError, usageClient, usageEnabled, usageKey, visitorOf } from "./usage";
 import type { UsageContext } from "./usage";
 import { PROOF_META_KEY, proofFor } from "./proofs";
 import type { ProofKind } from "./proofs";
@@ -28,8 +28,20 @@ import type { ProofKind } from "./proofs";
 /** The same four hints on every tool: they read official sources and never change anything. */
 export const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true } as const;
 
+export const COVERAGE_TOOL = "pricepaid_coverage";
+
 export const MCP_INSTRUCTIONS =
-  "Tools that return real prices actually paid, from official records, as a range with sample size, period, confidence and source. Cite the source and attribution line when you use a figure.";
+  "Tools that return real prices actually paid, from official records, as a range with sample size, period, confidence and source. Cite the source and attribution line when you use a figure. " +
+  NAME_YOUR_APP;
+
+/** The light address /api/mcp/homes: only what an agent needs to ask what homes and rent cost. The same tools, descriptions and handlers
+ *  as the main address, under the same public names. */
+export const HOMES_TOOLS = ["pricepaid_home_sales", "pricepaid_rent_prices", CHECK_TOOL, COVERAGE_TOOL] as const;
+
+export interface McpHandlerOptions {
+  /** Serve only the tools with these names (in the order buildToolSpecs lists them). Omitted: every tool, as on /api/mcp. */
+  tools?: readonly string[];
+}
 
 export interface McpToolResult {
   content: { type: "text"; text: string }[];
@@ -56,7 +68,6 @@ export interface ToolSpec {
   call(args: Record<string, unknown>): Promise<McpToolResult>;
 }
 
-export const COVERAGE_TOOL = "pricepaid_coverage";
 
 /** A tool call slower than this (milliseconds) is logged: the tool name and the time taken, nothing else. */
 export const SLOW_CALL_MS = 8_000;
@@ -243,9 +254,12 @@ export function registerTools(server: { registerTool: (...a: any[]) => unknown }
     const config = { ...spec.config, description: spec.config.description + premiumNote(key) };
     server.registerTool(spec.name, config, async (args: Record<string, unknown>, ctx: any) => {
       const req: Request | undefined = ctx?.http?.req;
+      const meta = ctx?.mcpReq?._meta ?? ctx?._meta;
+      // the app's own name: clientInfo.name as the 2026 protocol sends it with each request, else ?app= / X-ProofPrice-App
+      const app = validAppName(meta?.["io.modelcontextprotocol/clientInfo"]?.name) || appNameOfRequest(req);
       const out = await gate(
         key,
-        { headers: req?.headers, url: req?.url ?? `${SITE_URL}/api/mcp`, paymentHeader: paymentHeaderFromMeta(ctx?.mcpReq?._meta ?? ctx?._meta) },
+        { headers: req?.headers, url: req?.url ?? `${SITE_URL}/api/mcp`, paymentHeader: paymentHeaderFromMeta(meta), app },
         () => spec.call(args ?? {}),
         (r) => !r.isError && isAnswered(JSON.stringify(r.structuredContent ?? {})),
         () => (spec.sources ? spec.sources(args ?? {}) : null),
@@ -271,10 +285,11 @@ export function registerTools(server: { registerTool: (...a: any[]) => unknown }
  *  changes with a deployment, so it never sends one, and a function that Vercel stops after 60 s cannot hold a stream open anyway:
  *  the likely cause of the "Task timed out after 60 seconds" bursts of 15 Oct 2026, with the client reconnecting every 61 s.
  *  With nothing to subscribe to, the SDK answers such a request with an acknowledgement and an immediate, graceful close. */
-export function createProofPriceMcpHandler(deps: ToolDeps = LIVE_DEPS) {
+export function createProofPriceMcpHandler(deps: ToolDeps = LIVE_DEPS, options: McpHandlerOptions = {}) {
   return createMcpHandler(
     (server) => {
-      registerTools(server as any, buildToolSpecs(deps));
+      const keep = options.tools;
+      registerTools(server as any, keep ? buildToolSpecs(deps).filter((s) => keep.includes(s.name)) : buildToolSpecs(deps));
     },
     {
       serverInfo: { name: "proofprice", version: SERVICE_VERSION },

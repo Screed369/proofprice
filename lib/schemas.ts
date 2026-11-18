@@ -223,6 +223,16 @@ export const coverageToolSchema = z
   })
   .describe("Which price tools, countries and official sources are covered: a short overview by default, or full per-source detail (licence, attribution, limits) for a category and/or country.");
 
+/** The pay-first door's reply (GET /api/v1/paid/<category>): the normal answer, the daily trend, the price check, a notice. */
+export const lookupBundleSchema = z
+  .looseObject({
+    answer: priceAnswerSchema.describe("The normal price answer of the category, unchanged."),
+    trend: historyAnswerSchema.nullable().describe("The daily history from our library for the same area and item; null when the source keeps no history."),
+    check: checkResultSchema.nullable().describe("The price check, only when a price was sent; otherwise null."),
+    notice: z.string(),
+  })
+  .describe("A paid look-up: the normal answer plus the daily trend and, when a price was given, the price check.");
+
 export const errorSchema = z
   .looseObject({ error: z.string().describe("What went wrong, in plain words."), detail: z.unknown().optional() })
   .describe("An error: a missing or invalid parameter (400) or an official source that could not be reached (502).");

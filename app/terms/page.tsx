@@ -22,8 +22,9 @@ export default function Terms() {
         <li>
           <strong>Free use.</strong> You may use the website, the REST API and the MCP server for free, including inside apps and AI tools,
           without a key. Please keep to fair use: a normal number of requests, no attacks, and no attempts to get around limits. We may slow
-          down or block abusive use. Optional payments for a few premium calls (the itemised price check and long price history, after a daily
-          free allowance) are planned. Basic price look-ups will stay free.
+          down or block abusive use. Optional payments for a few premium calls are available: the itemised price check and long price history (after a daily
+          free allowance), and, as a new optional 14-day test, a paid look-up with trend at /api/v1/paid/&lt;category&gt; (USD 0.01 a call, from the first call).
+          Basic price look-ups stay free and do not change.
         </li>
         <li>
           <strong>Cite the source.</strong> When you show a figure, show the source and the attribution line we return with it. The data
