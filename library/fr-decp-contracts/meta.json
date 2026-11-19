@@ -3,11 +3,19 @@
   "currency": "EUR",
   "unit": "per contract, total award amount",
   "first_date": "2026-10-22",
-  "last_date": "2026-11-16",
-  "days": 23,
-  "last_harvest_at": "2026-11-16T11:42:37.880Z",
-  "last_rows": 861,
-  "last_ok_at": "2026-11-16T11:42:37.880Z",
-  "last_error": null,
-  "note": "Contracts notified 2025-11-16 to 2026-11-16; 452900 records in 8 monthly files (2025-12 to 2026-11), 200531 usable. Not read this day: 2026-09, 2026-08, 2026-07, 2026-06, 2025-11."
+  "last_date": "2026-11-19",
+  "days": 24,
+  "last_harvest_at": "2026-11-19T08:21:06.906Z",
+  "last_rows": 925,
+  "last_ok_at": "2026-11-19T08:21:06.906Z",
+  "last_error": "Data check held back 1 key for 2026-11-19 (previous kept): ALL/cpv-5510: median 1535333 vs previous 127272 on 2026-11-16 (12.06x).",
+  "note": "Contracts notified 2025-11-19 to 2026-11-19; 729502 records in 13 monthly files (2025-11 to 2026-11), 338083 usable.",
+  "held_streak": {
+    "ALL::cpv-5510": {
+      "median": 1535333,
+      "dates": [
+        "2026-11-19"
+      ]
+    }
+  }
 }
