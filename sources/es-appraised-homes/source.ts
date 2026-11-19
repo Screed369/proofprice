@@ -402,17 +402,59 @@ export function harvestRows(table: ProvinceTable): HarvestResult {
   };
 }
 
-export async function esHarvest(o: FetchOptions = {}): Promise<HarvestResult> {
+const muniArea = (name: string, province?: string) => "m-" + foldName(province ? `${name} ${province}` : name).replace(/ /g, "-");
+
+/** Municipalities over 25,000: one row per spelling of the name (and one per name+province) for the same quarter as Table 1,
+ *  so a blocked ministry site can still be answered from our copy. Only figures the ministry does not withhold (>= 5 appraisals). */
+export function municipalHarvestRows(table: MunicipalTable): DailyRow[] {
+  const rows: DailyRow[] = [];
+  const seen = new Set<string>();
+  const count = new Map<string, number>();
+  for (const r of table.rows) for (const k of nameKeys(r.name)) count.set(k, (count.get(k) ?? 0) + 1);
+  for (const r of table.rows) {
+    if (r.total === null || r.count === null || r.count < 5) continue;
+    const add = (area: string) => {
+      if (seen.has(area)) return;
+      seen.add(area);
+      rows.push({ area, item: HARVEST_ITEM, n: NO_COUNT, median: r.total!, low: r.total!, high: r.total!, min: r.total!, max: r.total! });
+    };
+    for (const k of nameKeys(r.name)) {
+      if (count.get(k) === 1) add(muniArea(k));
+      for (const pk of nameKeys(r.province)) add(muniArea(k, pk));
+    }
+  }
+  return rows;
+}
+
+export async function esHarvest(o: FetchOptions & { municipal?: () => Promise<MunicipalTable> } = {}): Promise<HarvestResult> {
   const fetcher = o.fetcher ?? defaultFetcher;
   const table = o.province ? await o.province() : parseProvinceWorkbook(await fetcher(PROVINCE_URL));
-  return harvestRows(table);
+  const res = harvestRows(table);
+  try {
+    const mt = o.municipal ? await o.municipal() : parseMunicipalWorkbook(await fetcher(MUNICIPAL_URL));
+    if (mt.period.year === table.periods[table.latest].year && mt.period.q === table.periods[table.latest].q) {
+      const extra = municipalHarvestRows(mt);
+      res.rows.push(...extra);
+      res.note += ` Plus ${extra.length} municipality keys (over 25,000 inhabitants, Table 4, 5+ appraisals).`;
+    }
+  } catch {
+    // Table 4 failing must not lose the province copy.
+  }
+  return res;
 }
 
 /** Library key: Spain, a region or a province (the table's own names). Null for municipalities and anything the copy cannot answer. */
 export function esHistoryKey(p: { town?: string; postcode?: string; property_type?: string; level?: string }): { area: string; item: string; label: string } | null {
-  if (p.postcode || (p.level ?? "").toLowerCase() === "municipality" || (p.town ?? "").includes(",")) return null;
+  if (p.postcode) return null;
   const t = (p.property_type ?? "any").trim().toLowerCase();
   if (t && t !== "any") return null;
+  const town = (p.town ?? "").trim();
+  const forceMuni = (p.level ?? "").toLowerCase() === "municipality";
+  if (town && (forceMuni || town.includes(",") || !KNOWN_KEYS.get(ALIASES[foldName(town)] ?? foldName(town)))) {
+    const [a, b] = town.split(",", 2);
+    if (!foldName(a)) return null;
+    return { area: muniArea(a, b && foldName(b) ? b : undefined), item: HARVEST_ITEM, label: town };
+  }
   if (!p.town || !p.town.trim()) return { area: "ES", item: HARVEST_ITEM, label: "Spain" };
   const q = foldName(p.town);
   if (ALIASES[q] === "total nacional" || q === "total nacional") return { area: "ES", item: HARVEST_ITEM, label: "Spain" };

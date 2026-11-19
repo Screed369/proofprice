@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { MUNICIPAL_ROWS, MUNICIPAL_SHEET, PROVINCE_ROWS } from "./fixtures";
 import {
-  esAppraisedHomes, esHarvest, esHistoryKey, findPlace, foldName, harvestRows, nameKeys, parseMunicipalSheet, parseProvinceSheet, qLabel,
+  esAppraisedHomes, esHarvest, esHistoryKey, findPlace, foldName, harvestRows, municipalHarvestRows, nameKeys, parseMunicipalSheet, parseProvinceSheet, qLabel,
 } from "./source";
 import { isSourceOutage } from "../../lib/http";
 import { defaultFetcher, looksLikeXls } from "./source";
@@ -114,8 +114,26 @@ test("harvest: one row per place for the newest quarter, no made-up counts, key 
     assert.ok(h.rows.some((r) => r.area === key.area), `${town} -> ${key.area}`);
   }
   assert.equal(esHistoryKey({})?.area, "ES");
-  assert.equal(esHistoryKey({ town: "Marbella" }), null);
-  assert.equal(esHistoryKey({ town: "Madrid", level: "municipality" }), null);
+  assert.equal(esHistoryKey({ town: "Marbella" })?.area, "m-marbella");
+  assert.equal(esHistoryKey({ town: "Madrid", level: "municipality" })?.area, "m-madrid");
+  assert.equal(esHistoryKey({ postcode: "29600" }), null);
+});
+
+test("harvest also keeps municipalities over 25,000 (5+ appraisals) so a blocked site is answered from the copy", async () => {
+  const mt = municipal();
+  const rows = municipalHarvestRows(mt);
+  assert.ok(rows.length > 0);
+  assert.ok(rows.every((r) => Number.isNaN(r.n) && r.area.startsWith("m-")));
+  const first = mt.rows.find((r) => r.total !== null && (r.count ?? 0) >= 5)!;
+  const key = esHistoryKey({ town: `${first.name}, ${first.province}` })!;
+  assert.ok(rows.some((r) => r.area === key.area), key.area);
+  for (const w of mt.rows.filter((r) => r.total === null || (r.count ?? 0) < 5)) {
+    assert.ok(!rows.some((r) => r.area === esHistoryKey({ town: `${w.name}, ${w.province}` })!.area), `withheld ${w.name}`);
+  }
+  const h = await esHarvest({ province: async () => province(), municipal: async () => mt });
+  assert.ok(h.rows.length > harvestRows(province()).rows.length);
+  const h2 = await esHarvest({ province: async () => province(), municipal: async () => { throw new Error("blocked"); } });
+  assert.equal(h2.rows.length, harvestRows(province()).rows.length);
 });
 
 test("manifest", () => {
