@@ -346,3 +346,16 @@ test("au-home-sales historyKey: the region of the place, null for an unknown pla
   assert.equal(absHistoryKey({})?.area, "AUS");
   assert.equal(absHistoryKey({ town: "Nowheresville" }), null);
 });
+
+// The ABS API switched from SDMX-JSON 2.0 (data.structures[0]) to 1.0 (data.structure) on or before 20 Nov 2026: both must parse,
+// or every live AU request 502s. Fixture: real 1.0 response captured 2026-11-20 (measures 4 and 5, Victoria and Australia, 2 quarters).
+test("au-home-sales: parseAbs reads SDMX-JSON 1.0 (data.structure) as well as 2.0", () => {
+  const v1 = JSON.parse(readFileSync(new URL("./fixtures/abs-res-dwell-st-sdmx1.json", import.meta.url), "utf8"));
+  assert.ok(v1.data.structure && !v1.data.structures);
+  const series = parseAbs(v1);
+  assert.equal(series.length, 4);
+  const vicPrice = series.find((s) => s.measure === "5" && s.region === "2");
+  assert.ok(vicPrice && vicPrice.points.length === 2 && vicPrice.points[1].period === "2026-Q2");
+  assert.ok(vicPrice.points[1].value > 100000 && vicPrice.unit === "AUD");
+  assert.deepEqual(parseAbs(FIX).length > 0, true);
+});

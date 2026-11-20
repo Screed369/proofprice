@@ -52,7 +52,8 @@ export function parseAbs(json: unknown): Series[] {
     throw new SourceError(`The ABS Data API refused the request: ${String(j.errors[0]?.message ?? JSON.stringify(j.errors[0])).slice(0, 200)}`);
   }
   const ds = j?.data?.dataSets?.[0];
-  const st = j?.data?.structures?.[0];
+  // SDMX-JSON 2.0 puts the structure in data.structures[0]; the ABS API currently answers 1.0, which uses data.structure (20 Nov 2026).
+  const st = j?.data?.structures?.[0] ?? j?.data?.structure;
   const seriesDims: any[] | undefined = st?.dimensions?.series;
   const timeDim = st?.dimensions?.observation?.find((d: any) => d.id === "TIME_PERIOD");
   if (!isObj(ds) || !isObj(ds.series) || !Array.isArray(seriesDims) || !timeDim || !Array.isArray(timeDim.values)) {
