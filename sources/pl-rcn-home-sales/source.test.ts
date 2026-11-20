@@ -22,6 +22,7 @@ test("parseSales reads the real WFS answer: 3 flats, market, price, area, city; 
 test("parseSales: an OGC exception report is a source error, junk is a format error", () => {
   assert.throws(() => parseSales("<ows:ExceptionReport><ows:Exception><ows:ExceptionText>bad filter</ows:ExceptionText></ows:Exception></ows:ExceptionReport>"), /returned an error/);
   assert.throws(() => parseSales("<html>hello</html>"), /unexpected format/);
+  try { parseSales("<html>hello</html>"); assert.fail("should throw"); } catch (e: any) { assert.equal(e.status, 503); } // an HTML page is an outage: the library copy answers
 });
 
 test("plausible drops tiny areas and absurd prices per m2", () => {

@@ -94,7 +94,7 @@ export function parseSales(gml: string): { sales: Sale[]; returned: number } {
     const m = gml.match(/<ows:ExceptionText>([\s\S]*?)<\/ows:ExceptionText>/);
     throw new SourceError("The Polish price register returned an error", (m?.[1] ?? gml).slice(0, 200));
   }
-  if (!/FeatureCollection/.test(gml)) throw new SourceError("The Polish price register answered in an unexpected format");
+  if (!/FeatureCollection/.test(gml)) throw new SourceError("The Polish price register answered in an unexpected format (a page instead of GML: blocked or overloaded)", gml.slice(0, 200), 503); // 503 = outage, so stale-if-error serves the library copy
   const members = gml.split("<wfs:member>").slice(1);
   const sales: Sale[] = [];
   for (const blockFull of members) {

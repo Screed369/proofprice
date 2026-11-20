@@ -19,6 +19,7 @@ test("parseSales: other functions are skipped, exception and junk are errors", (
   assert.equal(parseSales(GML.replace(/handlowoUslugowa/g, "mieszkalna")).sales.length, 0);
   assert.throws(() => parseSales("<ows:ExceptionReport><ows:ExceptionText>bad</ows:ExceptionText></ows:ExceptionReport>"), /returned an error/);
   assert.throws(() => parseSales("<html/>"), /unexpected format/);
+  try { parseSales("<html/>"); assert.fail("should throw"); } catch (e: any) { assert.equal(e.status, 503); } // an HTML page is an outage: the library copy answers
 });
 
 test("plausible drops tiny areas and absurd prices per m2", () => {
