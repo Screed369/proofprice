@@ -1,7 +1,7 @@
 // Spain: average APPRAISED value of free (non-protected) housing per m², from the Ministry of Transport / Housing's
 // "Estadística de Valor Tasado de Vivienda" (mortgage appraisals by licensed appraisal companies). Two legacy .xls files on
-// apps.fomento.gob.es (format checked live 2026-11-09): Table 1 (35101000.XLS: national, region and province, quarterly since 1995)
-// and Table 5 (35103500.XLS: municipalities over 25,000 inhabitants, one sheet per quarter, with the number of appraisals).
+// cdn.transportes.gob.es (format checked live 2026-11-09, files moved from apps.fomento.gob.es on or before 2026-11-21): Table 1 (35101000.xls: national, region and province, quarterly since 1995)
+// and Table 5 (35103500.xls: municipalities over 25,000 inhabitants, one sheet per quarter, with the number of appraisals).
 // These are appraisal values, NOT prices paid in sales: the answer is an official statistic and says so everywhere.
 
 import { buildStatisticAnswer, fmtMoney, PriceAnswer } from "../../lib/answer";
@@ -10,10 +10,10 @@ import { NO_COUNT } from "../../lib/stats";
 import type { DailyRow, HarvestResult, SourceInfo } from "../../lib/plugin";
 import { readXls } from "./xls";
 
-export const BASE = "https://apps.fomento.gob.es/BoletinOnline2/sedal/";
-export const PROVINCE_URL = BASE + "35101000.XLS";
-export const MUNICIPAL_URL = BASE + "35103500.XLS";
-export const INDEX_URL = "https://apps.fomento.gob.es/BoletinOnline2/?nivel=2&orden=35000000";
+export const BASE = "https://cdn.transportes.gob.es/estadistica/BoletinOnline2/"; // moved from apps.fomento.gob.es/BoletinOnline2/sedal/ (301 to boletinestadistico.transportes.gob.es, files on cdn.transportes.gob.es), seen 2026-11-21
+export const PROVINCE_URL = BASE + "35101000.xls";
+export const MUNICIPAL_URL = BASE + "35103500.xls";
+export const INDEX_URL = "https://boletinestadistico.transportes.gob.es/2?orden=35000000";
 const UA = "ProofPrice/1.0 (+https://proofprice.com; hello@proofprice.com)";
 
 export const INFO: SourceInfo = {

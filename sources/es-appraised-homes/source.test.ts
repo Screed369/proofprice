@@ -105,7 +105,7 @@ test("harvest: one row per place for the newest quarter, no made-up counts, key 
   assert.ok(h.rows.every((r) => Number.isNaN(r.n)));
   const spain = h.rows.find((r) => r.area === "ES")!;
   assert.equal(spain.median, 2355);
-  const r2 = await esHarvest({ province: async () => province() });
+  const r2 = await esHarvest({ province: async () => province(), municipal: async () => { throw new Error("offline in tests"); } });
   assert.equal(r2.rows.length, h.rows.length);
   for (const [town, label] of [["Málaga", "Málaga"], ["Madrid", "Madrid (Comunidad de)"], ["A Coruña", "Coruña (A)"], ["Alicante", "Alicante/Alacant"], ["Barcelona", "Barcelona"], ["Baleares", "Balears (Illes)"]]) {
     const key = esHistoryKey({ town })!;
@@ -155,4 +155,10 @@ test("a 200 HTML challenge page counts as an outage (stale copy answers), a real
   } finally {
     globalThis.fetch = orig;
   }
+});
+
+test("es-appraised-homes: table files are read from the ministry's new host (apps.fomento.gob.es now 301s to an HTML site)", async () => {
+  const { PROVINCE_URL, MUNICIPAL_URL } = await import("./source");
+  assert.equal(PROVINCE_URL, "https://cdn.transportes.gob.es/estadistica/BoletinOnline2/35101000.xls");
+  assert.equal(MUNICIPAL_URL, "https://cdn.transportes.gob.es/estadistica/BoletinOnline2/35103500.xls");
 });
