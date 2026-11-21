@@ -114,6 +114,7 @@ test("harvest: one row per place for the newest quarter, no made-up counts, key 
     assert.ok(h.rows.some((r) => r.area === key.area), `${town} -> ${key.area}`);
   }
   assert.equal(esHistoryKey({})?.area, "ES");
+  for (const t of ["Spain", "España", "nationwide", "Total nacional"]) assert.equal(esHistoryKey({ town: t })?.area, "ES", `national alias ${t} must use the ES key, not a municipality key`);
   assert.equal(esHistoryKey({ town: "Marbella" })?.area, "m-marbella");
   assert.equal(esHistoryKey({ town: "Madrid", level: "municipality" })?.area, "m-madrid");
   assert.equal(esHistoryKey({ postcode: "29600" }), null);

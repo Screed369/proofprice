@@ -449,6 +449,8 @@ export function esHistoryKey(p: { town?: string; postcode?: string; property_typ
   const t = (p.property_type ?? "any").trim().toLowerCase();
   if (t && t !== "any") return null;
   const town = (p.town ?? "").trim();
+  // National aliases (Spain, España, nationwide...) must reach the national key before the municipality branch.
+  if (town && (ALIASES[foldName(town)] === "total nacional" || foldName(town) === "total nacional")) return { area: "ES", item: HARVEST_ITEM, label: "Spain" };
   const forceMuni = (p.level ?? "").toLowerCase() === "municipality";
   if (town && (forceMuni || town.includes(",") || !KNOWN_KEYS.get(ALIASES[foldName(town)] ?? foldName(town)))) {
     const [a, b] = town.split(",", 2);
