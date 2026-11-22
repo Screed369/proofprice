@@ -98,9 +98,25 @@ export class CsvReader {
   private inQuotes = false;
   private pendingQuote = false; // saw a quote while inside quotes: either the end or a doubled quote
   private skipLF = false;
-  constructor(private onRow: (row: string[]) => void) {}
+  private delim: string | null = null; // "," or ";": the publisher switched to ";" in Nov 2026, so it is read from the header line
+  private head = "";
+  constructor(private onRow: (row: string[]) => void, delimiter?: string) {
+    this.delim = delimiter ?? null;
+  }
+
+  private decide(): void {
+    const line = this.head.split(/\r?\n/)[0] ?? "";
+    this.delim = line.split(";").length > line.split(",").length ? ";" : ",";
+  }
 
   push(text: string): void {
+    if (this.delim === null) {
+      this.head += text;
+      if (!/[\r\n]/.test(this.head) && this.head.length < 50000) return;
+      this.decide();
+      text = this.head;
+      this.head = "";
+    }
     for (let i = 0; i < text.length; i++) {
       const c = text[i];
       if (this.skipLF) {
@@ -121,7 +137,7 @@ export class CsvReader {
         continue;
       }
       if (c === '"' && this.field === "") this.inQuotes = true;
-      else if (c === ",") {
+      else if (c === this.delim) {
         this.row.push(this.field);
         this.field = "";
       } else if (c === "\n" || c === "\r") {
@@ -132,6 +148,12 @@ export class CsvReader {
   }
 
   end(): void {
+    if (this.delim === null && this.head) {
+      this.decide();
+      const t = this.head;
+      this.head = "";
+      this.push(t);
+    }
     if (this.pendingQuote) {
       this.pendingQuote = false;
       this.inQuotes = false;

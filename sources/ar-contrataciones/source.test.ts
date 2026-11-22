@@ -175,3 +175,20 @@ test("INFO: CC BY 4.0, contract prices, no suppliers", () => {
   assert.match(INFO.limits, /tax numbers in the open file are never read/);
   assert.match(INFO.attribution, /COMPR\.AR/);
 });
+
+test("CsvReader and columnsOf read the Nov 2026 layout: semicolons, spaced accented headers, d/m/yyyy hh:mm dates", () => {
+  const text =
+    "\uFEFFN\u00famero Procedimiento;Nro SAF;Fecha de Adjudicaci\u00f3n;Rubros;Documento Contractual;Tipo;Monto;Moneda\r\n" +
+    '101-0003-LPR19;622;26/9/2019 04:00;"SERV. PROFESIONAL Y COMERCIAL;";101-1015-OC19;Original;2772000.00;Peso Argentino\r\n';
+  const rows: string[][] = [];
+  const r = new CsvReader((row) => rows.push(row));
+  r.push(text.slice(0, 40));
+  r.push(text.slice(40));
+  r.end();
+  assert.equal(rows.length, 2);
+  const cols = columnsOf(rows[0].map((h) => h.replace(/^\uFEFF/, "")));
+  const a = awardOf(rows[1], cols, "2019-01-01", "2019-12-31");
+  assert.ok(a);
+  assert.equal(a!.date, "2019-09-26");
+  assert.equal(a!.value, 2772000);
+});
