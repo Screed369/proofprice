@@ -6,8 +6,19 @@ import tls from "node:tls";
 import { X509Certificate } from "node:crypto";
 
 /** Pure: the "CA Issuers" URL out of Node's infoAccess text, e.g. "CA Issuers - URI:http://x/ca.crt\nOCSP - URI:...". */
-export function caIssuersUrl(infoAccess: string | undefined): string | null {
-  const m = /CA Issuers - URI:(https?:\/\/\S+)/i.exec(infoAccess ?? "");
+export function caIssuersUrl(infoAccess: string | Record<string, string[] | string> | undefined | null): string | null {
+  // Newer Node versions give infoAccess as a null-prototype object ({ "CA Issuers - URI": ["http://..."] }); older ones give text.
+  // Reading the object as text throws "Cannot convert object to primitive value", which is what stopped the daily harvest.
+  if (infoAccess && typeof infoAccess === "object") {
+    for (const [k, v] of Object.entries(infoAccess)) {
+      if (!/^CA Issuers - URI$/i.test(k)) continue;
+      const list = Array.isArray(v) ? v : [v];
+      const hit = list.map((x) => String(x)).find((x) => /^https?:\/\//i.test(x));
+      if (hit) return hit;
+    }
+    return null;
+  }
+  const m = /CA Issuers - URI:(https?:\/\/\S+)/i.exec(typeof infoAccess === "string" ? infoAccess : "");
   return m ? m[1] : null;
 }
 

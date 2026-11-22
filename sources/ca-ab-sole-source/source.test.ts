@@ -109,6 +109,10 @@ import tls from "node:tls";
 test("tls chain helpers: issuer link, DER to PEM, root check", () => {
   assert.equal(caIssuersUrl("OCSP - URI:http://o.example/\nCA Issuers - URI:http://c.example/ca.crt\n"), "http://c.example/ca.crt");
   assert.equal(caIssuersUrl(undefined), null);
+  // Node 22 shape: a null-prototype object, not text (String() on it throws)
+  const obj = Object.assign(Object.create(null), { "OCSP - URI": ["http://o.example/"], "CA Issuers - URI": ["http://c.example/ca.crt"] });
+  assert.equal(caIssuersUrl(obj), "http://c.example/ca.crt");
+  assert.equal(caIssuersUrl(Object.assign(Object.create(null), { "OCSP - URI": ["http://o.example/"] })), null);
   const root = new X509Certificate(tls.rootCertificates[0]);
   const der = Buffer.from(root.raw);
   assert.equal(new X509Certificate(toPem(der)).fingerprint256, root.fingerprint256);
