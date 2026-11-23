@@ -12,12 +12,15 @@ import { dataCheck, previousByKey } from "../lib/library/check";
 import { libraryDates, readMeta, writeDaily, writeMeta, SourceMeta } from "../lib/library/store";
 import { passesGate } from "../lib/stats";
 import { harvestOrder, isKnownOutage } from "../lib/library/harvest-order";
+import { harvestConcurrency, laneOf, runLanes } from "../lib/library/harvest-pool";
 
 const TIMEOUT_MS = 10 * 60 * 1000;
 // A source that already failed on its previous harvest (a known outage) runs after the healthy ones, and the
 // whole run stops starting sources at DEADLINE_MS, so a few hanging outages can never push the workflow past its 60-minute limit
 // (the scheduled run of 29 Oct 09:54 UTC was cancelled at the old 45-minute limit with pl-bzp-contracts, gb-ukhpi and others timing out in a row).
 // Worst case: ~5 min setup (npm ci + npm test) + 36 min of sources + one last source of up to TIMEOUT_MS (10 min) = 51 min < 60.
+// Since 23 Nov 2026 sources run a few at a time (lib/library/harvest-pool.ts: HARVEST_CONCURRENCY, default 4, never two of one
+// country together), because one at a time the budget covered only 70 to 128 of about 208 sources and the rest were SKIPped.
 const DEADLINE_MS = 36 * 60 * 1000;
 
 
@@ -50,12 +53,8 @@ async function main() {
   // healthy sources first, known outages last; inside each group the longest-waiting source first, so a source skipped by the
   // time budget leads the queue next run instead of being skipped every day (lib/library/harvest-order.ts)
   const ordered = harvestOrder(targets, (id) => readMeta(id));
-  for (const s of ordered) {
+  const harvestOne = async (s: (typeof ordered)[number]): Promise<void> => {
     const id = s.info.id;
-    if (Date.now() - runStart > DEADLINE_MS) {
-      report.push(`SKIP ${id}: not started, the run's ${DEADLINE_MS / 60000}-minute budget was used up (it is collected on the next run)`);
-      continue;
-    }
     const started = new Date().toISOString();
     const prev: SourceMeta = readMeta(id) ?? {
       source: id, currency: null, unit: null, first_date: null, last_date: null, days: 0,
@@ -99,10 +98,18 @@ async function main() {
       // in Notion by the Monitor): it is reported as DOWN and does not count towards the workflow's "more than 3 new failures" alarm.
       report.push(`${prev.last_error && prev.last_harvest_at && !prev.last_error.startsWith("Data check held back") ? "DOWN" : "FAIL"} ${id}: ${msg}`);
     }
-  }
+  };
+  const concurrency = harvestConcurrency(process.env.HARVEST_CONCURRENCY);
+  await runLanes(ordered, {
+    concurrency,
+    laneOf: (s) => laneOf(s.info.id),
+    run: harvestOne,
+    expired: () => Date.now() - runStart > DEADLINE_MS,
+    onSkip: (s) => report.push(`SKIP ${s.info.id}: not started, the run's ${DEADLINE_MS / 60000}-minute budget was used up (it is collected on the next run)`),
+  });
   // the five slowest sources, so the next person sees what eats the time budget
   const slow = durations.sort((a, b) => b[1] - a[1]).slice(0, 5).map(([id, ms]) => `${id} ${Math.round(ms / 1000)}s`);
-  if (slow.length) report.push(`TIME slowest sources: ${slow.join(", ")}; total ${Math.round((Date.now() - runStart) / 60000)} min`);
+  if (slow.length) report.push(`TIME slowest sources: ${slow.join(", ")}; total ${Math.round((Date.now() - runStart) / 60000)} min, ${concurrency} at a time`);
   console.log(report.join("\n"));
   if (ok === 0 && targets.length) {
     console.error("Every source failed.");

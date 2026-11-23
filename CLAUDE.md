@@ -49,8 +49,12 @@ Owner: Simon (non-technical founder). Live at **https://proofprice.com** (public
   `library` (library status for the Monitor), `receipts/verify`, `receipts/sender-check`.
 - `lib/answer.ts` + `lib/stats.ts` — the one answer format and the statistics. Do not change the answer shape without a Decision.
 - `lib/library/` + `library/` — the **price library**: daily aggregate CSVs per source, written by
-  `scripts/harvest.ts`, run every day (first scheduled start among 00:37, 03:17, 05:47 UTC; a once-a-day guard skips the rest) by `.github/workflows/harvest.yml` (GitHub Actions, free),
-  committed to `main`, and shipped with each deployment. Aggregates only. To move to a database later, replace
+  `scripts/harvest.ts`, run every day (scheduled starts at 00:37, 03:17 and 05:47 UTC, which GitHub begins hours late) by `.github/workflows/harvest.yml` (GitHub Actions, free),
+  committed to `main`, and shipped with each deployment. Aggregates only. Sources are collected 4 at a time, never two of one country
+  together (`lib/library/harvest-pool.ts`). The guard skips a scheduled run only when the day is really done: at least 90% of collected
+  sources have a visit dated today in `library/*/meta.json` (`scripts/library_freshness.py guard`). It never reads commit messages, so a
+  one-source repair run cannot stand in for the full harvest (it did on 20, 22 and 23 Nov 2026 and the library went stale for three days).
+  Proof that a harvest worked is the count, not a green run: `python3 -I scripts/library_freshness.py report`. To move to a database later, replace
   `lib/library/store.ts` only.
 - `lib/usage.ts` + `/api/v1/usage` — anonymous usage meter (on only while a Blob store is connected). Counts questions apart from
   handshakes, the country ASKED ABOUT, directory checks apart from other apps, and distinct daily sessions via a daily-salted hash
@@ -96,5 +100,8 @@ Branch `src/<id>`, push, preview-deploy, test the example live, merge to `main`.
   `gh workflow run smoke.yml -R Screed369/proofprice --ref main`, wait ~4 min, then
   `git fetch -q origin +refs/heads/probes:refs/remotes/origin/probes && git show origin/probes:probes/smoke.txt`.
   It asks every coverage example and lists OK / STALE (answered from our library copy) / FAIL, plus collector errors.
+  Its last line is `LIBRARY FRESHNESS: ...`, counted across every collected source in `main`; it starts `ALARM ` when fewer than 80%
+  were visited by the collector in the last 30 hours. That is the alarm for a stalled harvest, kept outside the harvest on purpose;
+  the Monitor raises it in the Run Log and in "Simon is needed".
 - The library only reaches production when `main` is deployed: the daily Librarian task deploys `main` after the harvest.
 - If production breaks, redeploy the last good deployment and log it in Notion (Run Log + Source Pipeline status "Broken").

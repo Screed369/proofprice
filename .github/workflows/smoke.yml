@@ -39,6 +39,11 @@ jobs:
           rc=0; timeout 28m python3 -u -I scripts/smoke.py "$BASE" > /tmp/smoke.txt 2>&1 || rc=$?
           if [ "$rc" = 124 ]; then echo "TIMEOUT: the smoke test was stopped after 28 minutes; this report is incomplete (a FAILURE, not a pass)" >> /tmp/smoke.txt; fi
           if [ "$rc" = 0 ]; then echo "exit=0" > /tmp/smoke-exit.txt; else echo "exit=1" > /tmp/smoke-exit.txt; fi
+          # The alarm for the daily collector lives HERE, outside the collector (23 Nov 2026: the harvest skipped itself for three days
+          # and nothing said so). One line, counted across every collected source in main's library/: it starts "ALARM " when fewer
+          # than 80% were visited in the last 30 hours. The Monitor reads it and raises it in the Run Log and "Simon is needed".
+          # It never changes this run's result: this run is about production answering.
+          python3 -I scripts/library_freshness.py report --alarm-under 80 --max-age-hours 30 >> /tmp/smoke.txt 2>/dev/null || echo "ALARM LIBRARY FRESHNESS: could not be counted" >> /tmp/smoke.txt
           cat /tmp/smoke.txt
       - name: Save the report to the probes branch
         run: |

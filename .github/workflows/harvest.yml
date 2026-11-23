@@ -6,8 +6,11 @@ name: Daily price library harvest
 on:
   schedule:
     # GitHub starts scheduled runs late (the 03:17 run began at 10:19 to 10:59 UTC on 12-15 Nov, after the Librarian's 10:40 deploy,
-    # so production kept yesterday's library: Gap fixes LIBSTALE). Three chances before 10:40 UTC; the guard step below makes the
-    # first one that starts do the day's harvest and the others exit at once.
+    # so production kept yesterday's library: Gap fixes LIBSTALE). Three chances before 10:40 UTC. The guard step below lets a
+    # scheduled run exit at once only when the day's work is really DONE: at least 90% of collected sources were visited today.
+    # It counts the effect (library/*/meta.json), never a commit message, so a one-source repair run cannot stand in for the full
+    # harvest (20, 22 and 23 Nov 2026: a 05:00 one-source run committed "Library: daily harvest <date>", every scheduled run then
+    # skipped, and 212 of 214 sources went more than 30 hours stale). A run cut short by its time budget is finished by the next one.
     - cron: "37 0 * * *" # 00:37 UTC
     - cron: "17 3 * * *" # 03:17 UTC
     - cron: "47 5 * * *" # 05:47 UTC
@@ -40,12 +43,14 @@ jobs:
         with:
           ref: main
           fetch-depth: 100
-      - name: Guard (scheduled runs only collect once per UTC day)
+      - name: Guard (a scheduled run is skipped only when today's full harvest is already done)
         id: guard
         run: |
-          today=$(date -u +%F)
-          if [ "${{ github.event_name }}" = "schedule" ] && git log -n 100 --format=%s | grep -qx "Library: daily harvest $today"; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"; echo "Already harvested $today: nothing to do."
+          # "true" when at least 90% of collected sources have a visit dated today (UTC) in their meta.json. Any doubt means "false":
+          # collecting twice is harmless, not collecting is not.
+          done_today=$(python3 -I scripts/library_freshness.py guard --min-percent 90 || echo false)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$done_today" = "true" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"; echo "Today's harvest is already done: nothing to do."
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
@@ -64,6 +69,10 @@ jobs:
         env:
           SOURCES: ${{ github.event.inputs.sources }}
           ACCEPT: ${{ github.event.inputs.accept_changes }}
+          # Sources are collected a few at a time, never two of one country together (lib/library/harvest-pool.ts), so one run
+          # covers the whole library inside its budget. Several bulk files can be in memory at once: give Node room.
+          HARVEST_CONCURRENCY: "4"
+          NODE_OPTIONS: "--max-old-space-size=6144"
         # One source failing is recorded in its library status (/api/v1/library) and in the summary below, and must not email
         # Simon. The run fails only if the collector crashes, no source produced data (both exit non-zero), or more than 3 sources newly errored (a source that already failed on the previous harvest is a known outage, shown as DOWN).
         run: |
@@ -97,12 +106,20 @@ jobs:
           if [ "$failed" -gt 0 ]; then echo "::warning::$failed source(s) errored; see summary and /api/v1/library"; fi
       - name: Commit the day's library (also when some sources failed, so their errors are recorded)
         if: always() && steps.guard.outputs.skip != 'true'
+        env:
+          SOURCES: ${{ github.event.inputs.sources }}
         run: |
           git config user.name "proofprice-librarian"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add library
           if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
-          git commit -m "Library: daily harvest $(date -u +%F)"
+          # A run for named sources says so, so the history shows at a glance which commits are the day's full harvest.
+          if [ -n "$SOURCES" ]; then
+            ids=$(printf '%s' "$SOURCES" | tr -c 'A-Za-z0-9_, -' ' ' | tr -s ' ' | cut -c1-120)
+            git commit -m "Library: harvest of $ids only, $(date -u +%F)"
+          else
+            git commit -m "Library: daily harvest $(date -u +%F)"
+          fi
           for i in 1 2 3; do
             git pull --rebase origin main && git push origin HEAD:main && exit 0
             sleep 10
