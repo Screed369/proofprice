@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { buildQuery, findPlace, harvestOptions, INFO, liveOptions, ukHpi, parseMonths, parseRestMonths, placeRows, queryUrl, restUrl, ukHpiHarvest, ukHpiHistoryKey, ukhpiAnswer } from "./source";
+import { buildBulkQuery, parseBulkMonths, buildQuery, findPlace, harvestOptions, INFO, liveOptions, ukHpi, parseMonths, parseRestMonths, placeRows, queryUrl, restUrl, ukHpiHarvest, ukHpiHistoryKey, ukhpiAnswer } from "./source";
 import { NI_REST_JSON, SCOTLAND_JSON } from "./fixtures";
 import source from "./index";
 
@@ -109,13 +109,44 @@ describe("gb-ukhpi collector and library key", () => {
       assert.equal(r.date, "2026-07-31");
       assert.equal(r.currency, "GBP");
       assert.equal(r.unit, "per home");
-      assert.equal(calls, 45);
+      assert.equal(calls, 1 + 45); // one bulk try (this mock has no region column), then one query per place
       assert.equal(r.rows.length, 45 * 5);
     } finally {
       globalThis.fetch = original;
       harvestOptions.retryDelayMs = 3000;
       harvestOptions.pauseMs = 400;
     }
+  });
+  it("harvests every place with ONE bulk request when the publisher answers it", async () => {
+    const original = globalThis.fetch;
+    const urls: string[] = [];
+    const bindings: any[] = [];
+    const lit = (v: string) => ({ type: "literal", value: v });
+    globalThis.fetch = (async (u: any) => {
+      urls.push(String(u));
+      const q = decodeURIComponent(String(u).split("query=")[1]);
+      for (const slug of [...q.matchAll(/region\/([a-z-]+)>/g)].map((m) => m[1])) {
+        bindings.push({ r: { type: "uri", value: `http://landregistry.data.gov.uk/id/region/${slug}` }, m: lit("2026-07"), a: lit("200000"), ad: lit("300000"), as: lit("220000"), at: lit("180000"), af: lit("140000") });
+      }
+      return new Response(JSON.stringify({ results: { bindings } }), { status: 200, headers: { "content-type": "application/json" } });
+    }) as any;
+    try {
+      const r = await ukHpiHarvest();
+      assert.equal(urls.length, 1);
+      assert.equal(r.rows.length, 45 * 5);
+      assert.equal(r.date, "2026-07-31");
+    } finally {
+      globalThis.fetch = original;
+    }
+  });
+  it("builds a bulk query for many places and groups the answer by place", () => {
+    const q = buildBulkQuery(["scotland", "northern-ireland"], "2026-05");
+    assert.match(q, /VALUES \?r \{ <[^>]*\/scotland> <[^>]*\/northern-ireland> \}/);
+    assert.match(q, /"2026-05"\^\^<http:\/\/www\.w3\.org\/2001\/XMLSchema#gYearMonth>/);
+    assert.throws(() => buildBulkQuery(["bad slug"], "2026-05"));
+    const m = parseBulkMonths({ results: { bindings: [{ r: { value: "http://x/id/region/scotland" }, m: { value: "2026-06" }, a: { value: "1" } }, { r: { value: "http://x/id/region/scotland" }, m: { value: "2026-07" }, a: { value: "2" } }, { m: { value: "2026-07" }, a: { value: "3" } }] } });
+    assert.deepEqual([...m.keys()], ["scotland"]);
+    assert.equal(m.get("scotland")![0].month, "2026-07");
   });
   it("sends an identified client name (the Land Registry nginx 403s the generic one)", async () => {
     const original = globalThis.fetch;

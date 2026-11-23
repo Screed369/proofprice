@@ -202,6 +202,39 @@ export function buildQuery(slug: string): string {
   );
 }
 
+/** One SPARQL query for every place, newest few months only (the collector's burst of 45 queries is what the publisher's nginx refuses with 403). */
+export function buildBulkQuery(slugs: string[], sinceMonth: string): string {
+  if (!slugs.every((s) => /^[a-z-]+$/.test(s))) throw new InputError("Unknown place.");
+  if (!/^\d{4}-\d{2}$/.test(sinceMonth)) throw new InputError("Bad month.");
+  return (
+    "PREFIX ukhpi: <http://landregistry.data.gov.uk/def/ukhpi/>\n" +
+    "SELECT ?r ?m ?a ?ad ?as ?at ?af ?i ?y ?v WHERE { ?obs ukhpi:refRegion ?r ; ukhpi:refMonth ?m ; ukhpi:averagePrice ?a .\n" +
+    "OPTIONAL{?obs ukhpi:averagePriceDetached ?ad} OPTIONAL{?obs ukhpi:averagePriceSemiDetached ?as} OPTIONAL{?obs ukhpi:averagePriceTerraced ?at} OPTIONAL{?obs ukhpi:averagePriceFlatMaisonette ?af}\n" +
+    "OPTIONAL{?obs ukhpi:housePriceIndex ?i} OPTIONAL{?obs ukhpi:percentageAnnualChange ?y} OPTIONAL{?obs ukhpi:salesVolume ?v}\n" +
+    `VALUES ?r { ${slugs.map((s) => `<http://landregistry.data.gov.uk/id/region/${s}>`).join(" ")} }\n` +
+    `FILTER(?m >= "${sinceMonth}"^^<http://www.w3.org/2001/XMLSchema#gYearMonth>) }`
+  );
+}
+
+/** Bulk SPARQL JSON -> months per place slug (newest first). Rows without a region are ignored. */
+export function parseBulkMonths(json: any): Map<string, Month[]> {
+  const rows = json?.results?.bindings;
+  if (!Array.isArray(rows)) throw new SourceError("Unexpected answer from the UK House Price Index service", "no results.bindings");
+  const bySlug = new Map<string, any[]>();
+  for (const b of rows) {
+    const slug = String(b?.r?.value ?? "").split("/region/")[1];
+    if (!slug) continue;
+    if (!bySlug.has(slug)) bySlug.set(slug, []);
+    bySlug.get(slug)!.push(b);
+  }
+  const out = new Map<string, Month[]>();
+  for (const [slug, list] of bySlug) {
+    const months = parseMonths({ results: { bindings: list } });
+    if (months.length) out.set(slug, months);
+  }
+  return out;
+}
+
 export function queryUrl(slug: string): string {
   return `${SPARQL_URL}?output=json&query=${encodeURIComponent(buildQuery(slug))}`;
 }
@@ -432,12 +465,36 @@ async function monthsFor(place: Place, tries = harvestOptions.tries): Promise<Mo
   throw last;
 }
 
+function sinceMonth(): string {
+  const d = new Date();
+  d.setUTCDate(1);
+  d.setUTCMonth(d.getUTCMonth() - 5); // the index lags about two months; five back always holds the newest published one
+  return d.toISOString().slice(0, 7);
+}
+
+/** All places in one request. Returns null when the bulk answer is unusable so the caller can fall back to one query per place. */
+async function bulkMonths(): Promise<{ place: Place; months: Month[] }[] | null> {
+  const url = `${SPARQL_URL}?output=json&query=${encodeURIComponent(buildBulkQuery(PLACES.map((p) => p.slug), sinceMonth()))}`;
+  for (let i = 0; i < 3; i++) {
+    try {
+      const map = parseBulkMonths(await fetchJson(url, { headers: { accept: "application/sparql-results+json", "user-agent": UA } }, 60000));
+      const got = PLACES.filter((p) => map.has(p.slug)).map((place) => ({ place, months: map.get(place.slug)! }));
+      if (got.length >= Math.ceil(PLACES.length * 0.8)) return got;
+      return null;
+    } catch {
+      if (i < 2) await new Promise((r) => setTimeout(r, harvestOptions.retryDelayMs * (i + 1)));
+    }
+  }
+  return null;
+}
+
 /** The daily collector: the newest UK HPI month for every Scottish and Northern Irish place. */
 export async function ukHpiHarvest(): Promise<HarvestResult> {
-  const got: { place: Place; months: Month[] }[] = [];
-  let failed = 0;
+  const bulk = await bulkMonths();
+  const got: { place: Place; months: Month[] }[] = bulk ?? [];
+  let failed = bulk ? PLACES.length - bulk.length : 0;
   let firstError = "";
-  for (let i = 0; i < PLACES.length; i += harvestOptions.batch) {
+  for (let i = 0; !bulk && i < PLACES.length; i += harvestOptions.batch) {
     if (i > 0 && harvestOptions.pauseMs > 0) await new Promise((r) => setTimeout(r, harvestOptions.pauseMs));
     const results = await Promise.allSettled(PLACES.slice(i, i + harvestOptions.batch).map(async (place) => ({ place, months: await monthsFor(place) })));
     for (const r of results) {
