@@ -131,6 +131,10 @@ export function parseSheetRows(rows: Cell[][]): QuarterRow[] {
 }
 
 export function parseWorkbook(buf: Buffer): QuarterRow[] {
+  // A zip starts with "PK". The publisher's firewall answers HTTP 200 with an HTML error page instead (seen from 12 Nov 2026).
+  if (buf.length < 4 || buf[0] !== 0x50 || buf[1] !== 0x4b) {
+    throw new SourceError("FranceAgriMer's firewall answered an error page instead of the price workbook (HTTP 200, text/html)");
+  }
   const sheet = readXlsx(buf).find((s) => s.name.trim().toLowerCase() === SHEET_NAME.toLowerCase());
   if (!sheet) throw new SourceError(`FranceAgriMer's price workbook has no sheet '${SHEET_NAME}'`);
   return parseSheetRows(sheet.rows);

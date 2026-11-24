@@ -163,3 +163,8 @@ test("history key and manifest shape", () => {
   assert.ok(SOURCE_PLUGINS.some((x) => x.info.id === "fr-famag-grain"));
   assert.equal(typeof famHarvest, "function");
 });
+
+test("workbook: an HTML error page (publisher firewall, HTTP 200) gets a clear message, not 'Not a zip file'", () => {
+  const html = Buffer.from("<!DOCTYPE html><html><body><H2>Error</H2>This page can't be displayed.</body></html>");
+  assert.throws(() => parseWorkbook(html), /firewall answered an error page/);
+});
