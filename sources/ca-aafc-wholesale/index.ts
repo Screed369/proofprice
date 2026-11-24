@@ -17,11 +17,12 @@ export default defineSource({
       "The answer is the median CAD per kg of the week's wholesale asking quotes with the 10th to 90th percentile and the number of quotes; add market=Calgary, Edmonton, Vancouver or Winnipeg for one centre.",
   },
   extraParams: {
-    market: z.string().optional().describe("CA only: one wholesale centre (Calgary, Edmonton, Vancouver or Winnipeg). Leave out for all centres together. AAFC does not quote every centre every week (the latest file has only Calgary and Winnipeg); an unquoted centre answers with the list of centres that are quoted."),
+    market: z.string().optional().describe("CA only: one wholesale centre (Calgary, Edmonton, Vancouver or Winnipeg). Leave out for all centres together. AAFC does not quote every centre every week (some weeks have only two or three of the four); an unquoted centre answers with the list of centres that are quoted."),
   },
   examples: [
     { params: { country: "CA", product: "apples" } },
-    { params: { country: "CA", product: "carrots", market: "Calgary" } },
+    // Vancouver is quoted every week in the library (Calgary and Edmonton drop out of some weeks), so this example does not 400 on a thin week.
+    { params: { country: "CA", product: "carrots", market: "Vancouver" } },
   ],
   method: METHOD,
   harvest: caAafcHarvest,
