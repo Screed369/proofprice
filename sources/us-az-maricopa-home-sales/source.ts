@@ -200,9 +200,36 @@ export function zipEntry(buf: Buffer, nameRe: RegExp): { method: number; data: B
   throw new SourceError("The Maricopa zip does not contain the sales text file");
 }
 
+/** Inflate a whole zip entry into memory (used only for the 61 MB inner zip, never for the 269 MB text). */
+async function inflateEntry(e: { method: number; data: Buffer }): Promise<Buffer> {
+  if (e.method === 0) return e.data;
+  if (e.method !== 8) throw new SourceError(`The Maricopa zip uses an unsupported method (${e.method})`);
+  const inflate = createInflateRaw();
+  inflate.end(e.data);
+  const parts: Buffer[] = [];
+  for await (const chunk of inflate) parts.push(chunk as Buffer);
+  return Buffer.concat(parts);
+}
+
+/**
+ * Find Sales_Affidavits.txt. Since 24 Nov 2026 the ArcGIS download is a zip that holds ONE entry, Sales_Affidavits.zip, which holds
+ * the text (publisher wrapped it twice). Look for the text first; if it is not there, open one inner zip and look again.
+ */
+export async function findSalesEntry(buf: Buffer, depth = 0): Promise<{ method: number; data: Buffer }> {
+  try {
+    return zipEntry(buf, SALES_TXT);
+  } catch (e) {
+    if (depth >= 2) throw e;
+    let inner: { method: number; data: Buffer };
+    try { inner = zipEntry(buf, /\.zip$/i); } catch { throw e; }
+    return findSalesEntry(await inflateEntry(inner), depth + 1);
+  }
+}
+const SALES_TXT = /(^|\/)Sales_Affidavits\.txt$/i;
+
 /** Stream the (raw deflate or stored) entry through the parser in 1 MB steps, so the 269 MB text never sits in memory. */
 export async function parseZip(buf: Buffer, minIdx: number): Promise<{ sales: Sale[]; rows: number }> {
-  const { method, data } = zipEntry(buf, /(^|\/)Sales_Affidavits\.txt$/i);
+  const { method, data } = await findSalesEntry(buf);
   const parser = createSalesParser(minIdx);
   const dec = new StringDecoder("utf8");
   if (method === 0) {

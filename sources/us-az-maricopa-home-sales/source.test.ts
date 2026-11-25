@@ -100,11 +100,8 @@ test("US-AZ-Maricopa: place names: city with state, ZIP, county, unknown", () =>
   assert.equal(maricopaKey({ town: "Phoenix", property_type: "castle" }, known), null);
 });
 
-test("US-AZ-Maricopa: zip reading: the named entry is found among several and inflated in a stream", async () => {
-  const entries: { name: string; raw: Buffer; data: Buffer }[] = [
-    { name: "File Spec/Sales Affidavits - File Spec.pdf", raw: Buffer.from("%PDF-1.4 not the data"), data: Buffer.alloc(0) },
-    { name: "Data/Sales_Affidavits.txt", raw: Buffer.from(head, "utf8"), data: Buffer.alloc(0) },
-  ];
+/** Build an in-memory zip (deflate) from named entries. */
+function makeZip(entries: { name: string; raw: Buffer; data: Buffer }[]): Buffer {
   const parts: Buffer[] = [];
   const cds: Buffer[] = [];
   let off = 0;
@@ -118,13 +115,33 @@ test("US-AZ-Maricopa: zip reading: the named entry is found among several and in
     off += 30 + name.length + e.data.length;
   }
   const cd = Buffer.concat(cds);
-  const eocd = Buffer.alloc(22); eocd.writeUInt32LE(0x06054b50, 0); eocd.writeUInt16LE(2, 10); eocd.writeUInt32LE(cd.length, 12); eocd.writeUInt32LE(off, 16);
-  const zip = Buffer.concat([...parts, cd, eocd]);
+  const eocd = Buffer.alloc(22); eocd.writeUInt32LE(0x06054b50, 0); eocd.writeUInt16LE(entries.length, 10); eocd.writeUInt32LE(cd.length, 12); eocd.writeUInt32LE(off, 16);
+  return Buffer.concat([...parts, cd, eocd]);
+}
+
+test("US-AZ-Maricopa: zip reading: the named entry is found among several and inflated in a stream", async () => {
+  const zip = makeZip([
+    { name: "File Spec/Sales Affidavits - File Spec.pdf", raw: Buffer.from("%PDF-1.4 not the data"), data: Buffer.alloc(0) },
+    { name: "Data/Sales_Affidavits.txt", raw: Buffer.from(head, "utf8"), data: Buffer.alloc(0) },
+  ]);
   assert.equal(zipEntry(zip, /Sales_Affidavits\.txt$/).method, 8);
   assert.throws(() => zipEntry(zip, /nothing\.txt$/), /does not contain/);
   const { sales, rows } = await parseZip(zip, 0);
   assert.equal(rows, 7);
   assert.equal(sales.length, 3);
+});
+
+test("US-AZ-Maricopa: zip inside a zip (publisher change of 24 Nov 2026) is opened; a zip with no sales text still fails clearly", async () => {
+  const inner = makeZip([
+    { name: "Data/Sales_Affidavits.txt", raw: Buffer.from(head, "utf8"), data: Buffer.alloc(0) },
+    { name: "File Spec/Sales Affidavits - File Spec.pdf", raw: Buffer.from("%PDF-1.4"), data: Buffer.alloc(0) },
+  ]);
+  const outer = makeZip([{ name: "Sales_Affidavits.zip", raw: inner, data: Buffer.alloc(0) }]);
+  const { sales, rows } = await parseZip(outer, 0);
+  assert.equal(rows, 7);
+  assert.equal(sales.length, 3);
+  const empty = makeZip([{ name: "readme.txt", raw: Buffer.from("hi"), data: Buffer.alloc(0) }]);
+  await assert.rejects(() => parseZip(empty, 0), /does not contain/);
 });
 
 test("US-AZ-Maricopa: answer from the library: free, labelled, widened window, thin area, ZIP, unknown place", async () => {
