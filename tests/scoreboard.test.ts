@@ -89,3 +89,24 @@ test("method text says typical, never fair or guaranteed", () => {
   assert.doesNotMatch(text, /\b(fair|guaranteed|verified price)\b/i);
   assert.match(text, /typical/);
 });
+
+import { buildScoreboardView } from "../lib/scoreboard/view";
+import type { Snapshot } from "../lib/scoreboard/snapshot";
+
+test("view: every question gets its frozen key and an empty results file says so plainly", () => {
+  const v = buildScoreboardView(snapshot as Snapshot, []);
+  assert.equal(v.questions.length, QUESTIONS.length);
+  assert.ok(v.questions.every((q) => q.key.n >= MIN_PUBLISH));
+  assert.equal(v.runs.length, 0);
+  assert.match(v.no_results_note ?? "", /No assistant has been measured yet/);
+});
+
+test("view: a recorded run is scored against the frozen range, and a partial run is refused", () => {
+  const answers = QUESTIONS.map((q, i) => ({ question_id: q.id, value: i === 0 ? null : (snapshot as Snapshot).entries[i].median, reply_text: "x" }));
+  const run: RecordedRun = { model_id: "m", model_version: "1", asked_on: "2026-11-25", question_set: QUESTION_SET_ID, prompt_prefix: "", asked_by: "us", answers };
+  const v = buildScoreboardView(snapshot as Snapshot, [run]);
+  assert.equal(v.runs[0].tally.none, 1);
+  assert.equal(v.runs[0].tally.inside, QUESTIONS.length - 1);
+  assert.equal(v.no_results_note, null);
+  assert.throws(() => buildScoreboardView(snapshot as Snapshot, [{ ...run, answers: answers.slice(1) }]), /not valid/);
+});
