@@ -7,7 +7,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { exampleWords, matchItem } from "../../categories/groceries/items";
 import { parseJsonStat } from "../../lib/adapters";
-import { INFO, ITEMS, TABLE_URL, TABLE_URL_EN, buildQuery, changeOver, csbAnswer, findDimensions, lvCsbPrices, monthFromCode, monthWords, monthsBehind, readItem, shiftMonth } from "./source";
+import { INFO, ITEMS, TABLE_URL, TABLE_URL_EN, buildHarvestQuery, buildQuery, changeOver, csbAnswer, findDimensions, harvestRows, lvCsbHarvest, lvCsbHistoryKey, lvCsbPrices, monthFromCode, monthWords, monthsBehind, readItem, shiftMonth } from "./source";
 import manifest from "./index";
 
 const MONTHS = ["2025M09", "2025M10", "2025M11", "2025M12", "2026M01", "2026M02", "2026M03", "2026M04", "2026M05", "2026M06", "2026M07", "2026M08", "2026M09"];
@@ -162,4 +162,49 @@ test("asks the Latvian API path first and falls back to the English one when it 
   const urls2: string[] = [];
   await lvCsbPrices({ item: "milk", today: TODAY }, { poster: async (url) => { urls2.push(url); return JSON.parse(JSON.stringify(MILK)); } });
   assert.deepEqual(urls2, [TABLE_URL]);
+});
+
+// ---------- daily copy ----------
+function twoItems(): any {
+  const t = JSON.parse(JSON.stringify(MILK));
+  const codes = ["01.1.4.2.0.203", "01.1.1.3.1.307"];
+  t.size = [2, 1, MONTHS.length];
+  t.dimension.GOODS_SERVICES.category = { index: { [codes[0]]: 0, [codes[1]]: 1 }, label: { [codes[0]]: "Milk, 1 l", [codes[1]]: "Rye bread, 1kg" } };
+  // rye bread has no price in the newest month (null) so its newest month is one earlier
+  t.value = [...MILK.value, ...[2.1, 2.1, 2.1, 2.2, 2.2, 2.2, 2.2, 2.3, 2.3, 2.3, 2.3, 2.4, null]];
+  return t;
+}
+
+test("harvest: one row per item priced in the newest month, NO_COUNT, dated month end; history key", () => {
+  const h = harvestRows(parseJsonStat(twoItems()));
+  assert.equal(h.date, "2026-09-30");
+  assert.equal(h.currency, "EUR");
+  assert.deepEqual(h.rows.map((r) => r.item), ["Milk, 1 l"]);
+  assert.equal(h.rows[0].median, 1.2);
+  assert.equal(h.rows[0].area, "ALL");
+  assert.ok(Number.isNaN(h.rows[0].n), "NO_COUNT, never a made-up count");
+  assert.deepEqual(lvCsbHistoryKey({ item: "milk" }), { area: "ALL", item: "Milk, 1 l", label: "Latvia" });
+  assert.equal(lvCsbHistoryKey({ item: "zzz" }), null);
+});
+
+test("harvest query asks for every mapped item once, newest months", () => {
+  const q = buildHarvestQuery();
+  assert.equal(q.query[0].selection.values.length, new Set(ITEMS.map((d) => d.code)).size);
+  assert.deepEqual(q.query[2].selection, { filter: "top", values: ["3"] });
+});
+
+test("harvest retries then gives up; falls back to the English path", async () => {
+  let calls = 0;
+  await assert.rejects(() => lvCsbHarvest({ poster: async () => { calls++; throw new Error("down"); }, sleep: async () => {} }), /down/);
+  assert.equal(calls, 6); // 3 attempts x (Latvian + English path)
+  const urls: string[] = [];
+  const h = await lvCsbHarvest({ poster: async (u) => { urls.push(u); if (u === TABLE_URL) throw new Error("x"); return twoItems(); }, sleep: async () => {} });
+  assert.equal(h.rows.length, 1);
+  assert.deepEqual(urls, [TABLE_URL, TABLE_URL_EN]);
+});
+
+test("manifest: harvests with reference dates and a history key", () => {
+  assert.equal(typeof manifest.harvest, "function");
+  assert.equal(manifest.referenceDates, true);
+  assert.equal(manifest.nominalCounts, true);
 });

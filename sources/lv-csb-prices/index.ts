@@ -1,6 +1,6 @@
 // Manifest: Latvia grocery and everyday prices (CSB average retail prices of selected goods). Logic lives in ./source.ts.
 import { defineSource, str } from "../../lib/plugin";
-import { INFO, lvCsbPrices } from "./source";
+import { INFO, lvCsbHarvest, lvCsbHistoryKey, lvCsbPrices } from "./source";
 
 export default defineSource({
   info: INFO,
@@ -22,4 +22,9 @@ export default defineSource({
   method:
     "Latvia (groceries): the national average shop price of standard food and drink items that the Central Statistical Bureau publishes every month (table PCC010m), with the change on a year earlier. We pass on the published average and its month; it is an average of shelf prices recorded for price statistics, not receipts.",
   handle: (p, ctx) => lvCsbPrices({ item: String(p.item ?? ""), region: str(p.region), baseUrl: ctx.baseUrl }),
+  harvest: () => lvCsbHarvest(),
+  historyKey: (p) => lvCsbHistoryKey({ item: str(p.item) }),
+  referenceDates: true,
+  nominalCounts: true,
+  staleMaxDays: 45,
 });

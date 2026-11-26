@@ -10,7 +10,8 @@ import { buildStatisticAnswer, PriceAnswer } from "../../lib/answer";
 import { fetchJson, InputError, SourceError } from "../../lib/http";
 import { parseJsonStat, periodRange } from "../../lib/adapters";
 import type { JsonStatTable } from "../../lib/adapters";
-import type { SourceInfo } from "../../lib/plugin";
+import type { HarvestResult, SourceInfo } from "../../lib/plugin";
+import { NO_COUNT } from "../../lib/stats";
 import { exampleWords, ItemDef, matchItem } from "../../categories/groceries/items";
 
 export const INFO: SourceInfo = {
@@ -374,21 +375,85 @@ export function buildQuery(code: string): { query: Array<{ code: string; selecti
   };
 }
 
+/** POST one PxWeb query: Latvian path first, English path as the fallback (the CSB switched the English one off for a while in Nov 2026). */
+async function postTable(body: unknown, o: CsbOptions): Promise<unknown> {
+  const post = o.poster ?? ((url, b) => fetchJson(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(b) }, o.timeoutMs ?? 20000));
+  try {
+    return await post(TABLE_URL, body);
+  } catch (e) {
+    if (e instanceof InputError) throw e;
+    return await post(TABLE_URL_EN, body);
+  }
+}
+
 export async function lvCsbPrices(input: CsbQuery, o: CsbOptions = {}): Promise<PriceAnswer> {
   const item = input.item?.trim();
   if (!item) throw new InputError("item is required: an everyday item such as 'milk', 'bread' or 'eggs'.");
   const m = matchItem(ITEMS, item);
   if (!m.primary) return csbAnswer(null, null, [], input);
-  const post = o.poster ?? ((url, body) => fetchJson(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }, o.timeoutMs ?? 20000));
-  const body = buildQuery(m.primary.code);
-  let raw: unknown;
-  try {
-    raw = await post(TABLE_URL, body);
-  } catch (e) {
-    if (e instanceof InputError) throw e;
-    raw = await post(TABLE_URL_EN, body);
-  }
+  const raw = await postTable(buildQuery(m.primary.code), o);
   const table = parseJsonStat(raw);
   const reading = readItem(table, m.primary.code);
   return csbAnswer(reading, m.primary, m.related, input);
+}
+
+// ---------- daily copy (stale-if-error and history) ----------
+// data.stat.gov.lv resets or times out connections from cloud servers on some days (Nov 2026: LV milk and rye bread answered 502).
+// The collector (GitHub Actions) asks for every mapped item once a day and stores the newest month of each (one published average,
+// n is NO_COUNT, dated by the last day of the reference month), so an outage is answered from the copy and history builds month by month.
+
+export const NATIONAL_AREA = "ALL";
+const HARVEST_MONTHS = 3;
+
+/** One query for every mapped item and the newest months (a few hundred cells, far under the PxWeb limit). */
+export function buildHarvestQuery(): ReturnType<typeof buildQuery> {
+  const codes = [...new Set(ITEMS.map((d) => d.code))];
+  return {
+    query: [
+      { code: "GOODS_SERVICES", selection: { filter: "item", values: codes } },
+      { code: "ContentsCode", selection: { filter: "item", values: [TABLE_CODE] } },
+      { code: "TIME", selection: { filter: "top", values: [String(HARVEST_MONTHS)] } },
+    ],
+    response: { format: "json-stat2" },
+  };
+}
+
+/** Newest month any item has a price for, and one row per item priced in that month. Pure. */
+export function harvestRows(table: JsonStatTable): HarvestResult {
+  const readings = ITEMS.map((def) => ({ def, r: readItem(table, def.code) })).filter((x): x is { def: ItemDef; r: CsbReading } => !!x.r);
+  if (!readings.length) throw new SourceError("The CSB table held no price for any mapped item");
+  const month = readings.map((x) => x.r.latest.month).sort().pop()!;
+  const rows = readings
+    .filter((x) => x.r.latest.month === month)
+    .map((x) => {
+      const v = x.r.latest.value;
+      return { area: NATIONAL_AREA, item: x.def.label, n: NO_COUNT, median: v, low: v, high: v, min: v, max: v };
+    });
+  const range = periodRange(month);
+  return {
+    date: range?.to ?? `${month}-28`,
+    currency: "EUR",
+    unit: "per kg, litre or pack (named in the item)",
+    rows,
+    note: `CSB PCC010m: national average retail prices for ${month}, ${rows.length} items. Published averages, no record count.`,
+  };
+}
+
+export async function lvCsbHarvest(o: CsbOptions & { sleep?: (ms: number) => Promise<void> } = {}): Promise<HarvestResult> {
+  const sleep = o.sleep ?? ((ms: number) => new Promise<void>((r) => setTimeout(r, ms)));
+  let last: unknown;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      return harvestRows(parseJsonStat(await postTable(buildHarvestQuery(), { ...o, timeoutMs: o.timeoutMs ?? 60000 })));
+    } catch (err) {
+      last = err;
+      if (attempt < 3) await sleep(5000 * attempt);
+    }
+  }
+  throw last;
+}
+
+export function lvCsbHistoryKey(p: { item?: string }): { area: string; item: string; label: string } | null {
+  const def = matchItem(ITEMS, p.item ?? "").primary;
+  return def ? { area: NATIONAL_AREA, item: def.label, label: "Latvia" } : null;
 }
