@@ -16,7 +16,9 @@ export default defineSource({
     months: "BR: not used; each figure covers the contracts published in the last 7 days.",
   },
   examples: [
-    { params: { country: "BR", what: "security guard services" } },
+    // Smoke example: a purchase with 40+ contracts a day. Security guards hover around the 5-contract floor (6-10 a day, 0 on 24 Nov), so it moved to smoke:false.
+    { params: { country: "BR", what: "cleaning services" } },
+    { params: { country: "BR", what: "security guard services" }, smoke: false },
     { params: { country: "BR", what: "school meals", buyer_area: "SP" }, smoke: false },
   ],
   method:
