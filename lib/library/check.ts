@@ -67,6 +67,12 @@ export const isRateItem = (item: string) => item.endsWith(":yoy");
 export const isNearZero = (median: number, low: number, high: number) =>
   Number.isFinite(low) && Number.isFinite(high) && high > low && Math.abs(median) < 0.25 * (high - low);
 
+/** Keys whose own spread (p90 over p10) is at least this wide hold two price clusters (a block of flats with huge tax bases next to ordinary sales), so their median can flip between the clusters on a thin window with no broken feed. */
+export const WIDE_SPREAD = 5;
+/** A new median that lies inside the previous day's own p10 to p90 range of a wide-spread key: the same distribution, not a broken feed or a unit slip (a slip moves the whole range, so its median lands outside). */
+export const insidePreviousSpread = (median: number, prev: { low: number; high: number }) =>
+  Number.isFinite(prev.low) && Number.isFinite(prev.high) && prev.low > 0 && prev.high >= WIDE_SPREAD * prev.low && median >= prev.low && median <= prev.high;
+
 export const keyOf = (area: string, item: string) => `${area}\u0000${item}`;
 
 /** The newest stored row per area and item that is older than `before`. Reads month files newest first, so it is meant for the collector. */
@@ -107,7 +113,7 @@ export function dataCheck(opts: { result: HarvestResult; prevMeta: SourceMeta | 
   for (const r of result.rows) {
     const prev = previous.get(keyOf(r.area, r.item));
     if (!isRateItem(r.item) && passesGate(r.n) && prev && prev.median > 0 && Number.isFinite(r.median) && r.median > 0 &&
-      !isNearZero(prev.median, prev.low, prev.high) && !isNearZero(r.median, r.low, r.high)) {
+      !isNearZero(prev.median, prev.low, prev.high) && !isNearZero(r.median, r.low, r.high) && !insidePreviousSpread(r.median, prev)) {
       const ratio = r.median / prev.median;
       const thin = (Number.isFinite(r.n) && r.n < THIN_N) || (Number.isFinite(prev.n) && prev.n < THIN_N);
       const limit = Math.max(isSpotItem(r.item) ? MAX_RATIO_SPOT : MAX_RATIO, thin ? MAX_RATIO_THIN : 0);

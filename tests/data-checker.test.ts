@@ -180,3 +180,15 @@ test("a thin key (n under 30) may move up to 10x; a unit slip is still held", ()
   const thick = dataCheck({ result: day("2026-10-02", [row("ALL", "x", 400, 200)]), prevMeta: { ...meta(), source: "thick-src" }, previous: previousByKey("thick-src", "2026-10-02") });
   assert.equal(thick.held.length, 1);
 });
+
+test("a wide-spread key whose median flips between its own two clusters is not held (br-poa-itbi independencia 29860 then 9591)", () => {
+  const wide = (median: number): DailyRow => ({ area: "wide", item: "apartment-m2:3m", n: 113, median, low: 3997, high: 33660, min: 2571, max: 38830 });
+  writeDaily("wide-src", day("2026-10-14", [wide(29860)], "BRL", "per home"));
+  const prev = previousByKey("wide-src", "2026-11-26");
+  const inside = dataCheck({ result: day("2026-11-26", [wide(9591)], "BRL", "per home"), prevMeta: { ...meta("BRL", "per home"), source: "wide-src" }, previous: prev });
+  assert.equal(inside.held.length, 0);
+  assert.equal(inside.rows.length, 1);
+  // a slip of units moves the whole range: a median far outside the old p10..p90 is still held
+  const slip = dataCheck({ result: day("2026-11-26", [{ ...wide(2986000), low: 399700, high: 3366000 }], "BRL", "per home"), prevMeta: { ...meta("BRL", "per home"), source: "wide-src" }, previous: prev });
+  assert.equal(slip.held.length, 1);
+});
