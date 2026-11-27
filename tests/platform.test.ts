@@ -618,3 +618,22 @@ test("stale-if-error: Portugal's quarterly INE medians stay available for 35 day
   const ca = SOURCE_PLUGINS.find((s) => s.info.id === "ca-statcan-fuel")!;
   assert.equal(ca.staleMaxDays, undefined);
 });
+
+test("stale-if-error: Brazil's ANEEL tariffs stay available for 45 days after the last good collection, not for longer", () => {
+  const br = SOURCE_PLUGINS.find((s) => s.info.id === "br-aneel-electricity")!;
+  const energy = categoryById("energy")!;
+  assert.ok(br.harvest && br.referenceDates && br.staleMaxDays === 45);
+  const params = { country: "BR", energy: "electricity" };
+  const prepared = energy.prepare ? energy.prepare({ ...params }) : { ...params };
+  const key = br.historyKey!(prepared)!;
+  writeDaily("br-aneel-electricity", { date: "2026-11-11", currency: "BRL", unit: "per kWh before taxes", rows: [{ area: key.area, item: key.item, n: 97, median: 0.8126, low: 0.6733, high: 1.0186, min: 0.4, max: 1.5 }] });
+  const meta = { source: "br-aneel-electricity", currency: "BRL", unit: "per kWh before taxes", first_date: "2026-11-11", last_date: "2026-11-11", days: 1, last_harvest_at: null, last_rows: 1, last_error: null };
+  const base = { cat: energy, src: br, params: prepared, query: params, error: new SourceError("ANEEL timed out") };
+  writeMeta("br-aneel-electricity", { ...meta, last_ok_at: new Date(Date.now() - 20 * 86400000).toISOString() });
+  const a = staleAnswer(base)!;
+  assert.ok(a, "20 days after the last good collection the tariff in force is still the newest ANEEL has");
+  assert.equal(a.extra!.stale, true);
+  assert.match(a.notice, /our copy of the figure for 2026-11-11, collected on \d{4}-\d{2}-\d{2}\./);
+  writeMeta("br-aneel-electricity", { ...meta, last_ok_at: new Date(Date.now() - 50 * 86400000).toISOString() });
+  assert.equal(staleAnswer(base), null, "beyond 45 days no copy is served");
+});

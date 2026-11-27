@@ -32,4 +32,8 @@ export default defineSource({
   harvest: () => aneelHarvest(),
   nominalCounts: true,
   historyKey: (p) => aneelHistoryKey(p),
+  // ANEEL tariffs change once a year per distributor, and dadosabertos.aneel.gov.br has timed out for cloud servers since 11 Nov:
+  // the last good collection still states the tariff in force, so a copy may stand in for up to 45 days (the answer says so).
+  referenceDates: true,
+  staleMaxDays: 45,
 });
